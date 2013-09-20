@@ -727,43 +727,60 @@
   }
   #foodinc-entryreceived{
     section.page-body-content{
-      width: 66%;
+      width: 65%;
       float: left;
+      margin-left: 20px;
+      height: auto;
+      overflow: hidden;
+      @media (max-width: 1000px) {
+        width: 100%;
+      }
+      @media (max-width: 585px) {
+        margin-left: 5px;
+      }
     }
     .page-title{
       font-size: 20px;
       font-style: italic;
       color: $primary-color;
+      font-family: $header-font; font-weight: 500; font-style: italic;
+      font-size: 32px;
     }
     .additional-info{
       margin-top: 20px;
       .title{
         font-size: 18px;
         color: $primary-color;
+        font-family: $header-font; font-weight: 800; font-style: normal;
+        font-size: 24px;
       }
     }
-    .social-block{
+    .social{
       clear: both;
       height: auto;
       overflow: hidden;
-      margin: 10px 0px 20px 20px;
-      .social{
+      margin: 10px 0px 20px 0px;
+      float: left;
+      .tp-social-link {
         display: block;
         height: 40px;
         width: 152px;
         float: left;
-        margin-right: 8px;
+        margin: 0 7px 7px 0;
+        &:last-child{
+          margin-right: 0;
+        }
       }
-      .facebook{
+      a.tp-social-facebook{
         background: image-url('social_long_fb.png') no-repeat top center;
       }
-      .twitter{
+      a.tp-social-twitter{
         background: image-url('social_long_twitter.png') no-repeat top center;
       }
-      .googleplus{
+      a.tp-social-googleplus{
         background: image-url('social_long_google.png') no-repeat top center;
       }
-      .email{
+      a.tp-social-email{
         background: image-url('social_long_email.png') no-repeat top center;
       }
     }
@@ -771,6 +788,13 @@
       width: 30%;
       float: right;
       margin-right: 10px;
+      height: auto;
+      overflow: hidden;
+      @media (max-width: 1000px) {
+        float: none;
+        margin: 0 auto;
+        width: 300px;
+      }
     }
   }
 
@@ -843,7 +867,7 @@
       width: 550px;
     }
 
-   .entry-form-container {
+    .entry-form-container {
       section {
         margin-bottom: 30px;
         padding: 0px 10px 1px 10px;
@@ -1022,6 +1046,8 @@
     }
 
     @media (max-width: 700px) {
+      padding: 0;
+
       .left-rail, .right-rail {
         width: auto;
         display: block;
@@ -1083,7 +1109,9 @@
 //
 
 @media all and (max-width: 480px) {
-
+  .multipage-campaign #site-follow {
+    margin: 8px 7px 0 -10px;
+  }
   #site-header {
     padding: 0;
     min-height: 0;
