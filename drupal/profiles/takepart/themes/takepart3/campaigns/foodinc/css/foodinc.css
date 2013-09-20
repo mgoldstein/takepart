@@ -585,10 +585,6 @@
   padding: 12px;
   padding-top: 10px;
 }
-/* line 454, ../sass/foodinc.scss */
-#page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form .throbber {
-  display: none;
-}
 /* line 457, ../sass/foodinc.scss */
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form div.error {
   background: transparent;
@@ -1285,7 +1281,7 @@
     float: right;
     display: block;
     background-repeat: no-repeat;
-    background-image: url('../images/sitenav_open.png?1379634636');
+    background-image: url('../images/sitenav_open.png?1379634734');
     /** sprite-ref: mysprite; */
     width: 25px;
     height: 25px;
@@ -1295,7 +1291,7 @@
 
   /* line 1018, ../sass/foodinc.scss */
   .clickedon #site-header-inner:after {
-    background-image: url('../images/sitenav_close.png?1379634636');
+    background-image: url('../images/sitenav_close.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
@@ -1419,43 +1415,43 @@
 
   /* line 1123, ../sass/foodinc.scss */
   #site-main-nav .text-culture a:before {
-    background-image: url('../images/topic_culture.png?1379634636');
+    background-image: url('../images/topic_culture.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   /* line 1127, ../sass/foodinc.scss */
   #site-main-nav .text-food a:before {
-    background-image: url('../images/topic_food.png?1379634636');
+    background-image: url('../images/topic_food.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   /* line 1131, ../sass/foodinc.scss */
   #site-main-nav .text-environment a:before {
-    background-image: url('../images/topic_environment.png?1379634636');
+    background-image: url('../images/topic_environment.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   /* line 1135, ../sass/foodinc.scss */
   #site-main-nav .text-wildlife a:before {
-    background-image: url('../images/topic_wildlife.png?1379634636');
+    background-image: url('../images/topic_wildlife.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   /* line 1139, ../sass/foodinc.scss */
   #site-main-nav .text-social_justice a:before {
-    background-image: url('../images/topic_social_justice.png?1379634636');
+    background-image: url('../images/topic_social_justice.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   /* line 1143, ../sass/foodinc.scss */
   #site-main-nav .text-education a:before {
-    background-image: url('../images/topic_education.png?1379634636');
+    background-image: url('../images/topic_education.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
   /* line 1147, ../sass/foodinc.scss */
   #site-main-nav .text-health a:before {
-    background-image: url('../images/topic_health.png?1379634636');
+    background-image: url('../images/topic_health.png?1379634734');
     /** sprite-ref: mysprite; */
   }
 
