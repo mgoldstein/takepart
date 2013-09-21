@@ -709,3 +709,23 @@ function foodinc_awards_preprocess_menu_link(&$variables) {
     }
   }
 }
+
+function foodinc_awards_omniture_variables() {
+  $additions = array();
+  $path = current_path();
+  if ($path === 'wordlet/foodinc_entry') {
+    $additions['variables'] = array(
+      's.eVar24' => 'Food, Inc. Awards',
+      's.events' => 'event28',
+    );
+  }
+  return $additions;
+}
+
+function foodinc_awards_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'omniture_variables') {
+    $impl = $implementations['foodinc_awards'];
+    unset($implementations['foodinc_awards']);
+    $implementations['foodinc_awards'] = $impl;
+  }
+}
