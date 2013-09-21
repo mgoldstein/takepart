@@ -607,10 +607,10 @@ function foodinc_awards_entry_form_submit($form, &$form_state) {
         ),
       ));
     }
-    setcookie('foodinc_awards', 'true');
+    setcookie('foodinc_awards', 'true', 0, '/');
   }
   catch (SignupException $se) {
-    setcookie('foodinc_awards', 'false');
+    setcookie('foodinc_awards', 'false', 0, '/');
   }
   if (foodinc_awards_is_embedded()) {
     drupal_goto('foodinc/awards/enter/received', array('query' => array(
@@ -717,6 +717,11 @@ function foodinc_awards_omniture_variables() {
     $additions['variables'] = array(
       's.eVar24' => 'Food, Inc. Awards',
       's.events' => 'event28',
+    );
+  }
+  elseif ($path === 'wordlet/foodinc_entryreceived') {
+    $additions['variables'] = array(
+      'takepart.analytics.foodinc_awards_entry(s); //' => 'set conditional page view variables',
     );
   }
   return $additions;

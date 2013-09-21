@@ -16,6 +16,17 @@
     }
   };
 
+  $.extend(true, takepart, {analytics: {
+    foodinc_awards_entry: function (s) {
+      var status = $.cookie('foodinc_awards');
+      if (status == 'true') {
+        $.cookie('foodinc_awards', 'tracked', {path:'/'});
+        s.events = 'event29';
+        s.eVar24 = 'Food, Inc. Awards';
+      }
+    }
+  }});
+
   $.extend(true, Drupal, {behaviors: {
       responsiveNav:
       {
