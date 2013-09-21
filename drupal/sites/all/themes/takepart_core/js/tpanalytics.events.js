@@ -294,7 +294,7 @@ takepart.analytics.add({
         s.linkTrackEvents='event39';
         s.events = 'event39';
         s.eVar23 = options.name;
-        if (options.source) {
+        if ('source' in options && options.source && options.source != '') {
           s.eVar22 = options.source;
           s.linkTrackVars = 'eVar22,' + s.linkTrackVars;
         }
