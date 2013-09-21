@@ -835,6 +835,12 @@ function newsletter_campaign_email_only_signup_configuration($form, $config) {
     '#default_value' => $config['name'],
   );
 
+  $form['source'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Signup Source'),
+    '#default_value' => $config['source'],
+  );
+
   $form['header'] = array(
     '#type' => 'textarea',
     '#title' => t('Header'),
@@ -898,6 +904,9 @@ function newsletter_campaign_email_only_signup_form($form, &$form_state, $config
     'data-newsletter-name' => check_plain($config['name']),
     'class' => array('newsletter-signup'),
   );
+  if (!empty($config['source'])) {
+    $form['#attributes']['data-signup-source'] = check_plain($config['source']);
+  }
 
   $form['header'] = array(
     '#type' => 'markup',
@@ -1291,9 +1300,14 @@ function newsletter_campaign_direct_signup_form_callback($form, $form_state) {
   if (empty($errors)) {
     $config = $args['config'];
     $message = newsletter_campaign_preprocess_markup($config['thank_you_message']);
-    $message = '<div data-newsletter-name="'
-      . check_plain($config['name'])
-      . '" class="newsletter-signup thank-you-message"><p>' . $message . '</p></div>';
+    $attributes = array(
+      'data-newsletter-name' => $config['name'],
+      'class' => array('newsletter-signup', 'thank-you-message'),
+    );
+    if (!empty($config['source'])) {
+      $attributes['data-signup-source'] = $config['source'];
+    }
+    $message = '<div' . drupal_attributes($attributes) . '><p>' . $message . '</p></div>';
     $commands[] = ajax_command_replace($selector, $message);
   }
   else {

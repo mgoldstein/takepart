@@ -8,8 +8,10 @@
   Drupal.behaviors.newsletterSocialSignupSubmitted = {
     attach: function (context) {
       if ($(context).is('.newsletter-signup.thank-you-message')){
-         var name = context.attr('data-newsletter-name');
-         takepart.analytics.track('newsletter_signup', {name: name});
+        var name = context.attr('data-newsletter-name');
+        var source = context.attr('data-signup-source');
+        takepart.analytics.track('newsletter_signup',
+          {name: name, source: source});
       }
     }
   };

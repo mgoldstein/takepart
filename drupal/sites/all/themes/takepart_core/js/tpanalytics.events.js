@@ -294,6 +294,10 @@ takepart.analytics.add({
         s.linkTrackEvents='event39';
         s.events = 'event39';
         s.eVar23 = options.name;
+        if (options.source) {
+          s.eVar22 = options.source;
+          s.linkTrackVars = 'eVar22,' + s.linkTrackVars;
+        }
         s.eVar30 = s.pageName;
         s.tl(true, 'o', 'Newsletter Signup');
     },
