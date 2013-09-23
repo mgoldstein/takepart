@@ -95,7 +95,7 @@
                   description: social_text,
                   title: social_title,
                   url: social_url,
-                  caption: social_caption
+                  caption: social_text
                 },
                 {
                   name: 'twitter',
@@ -104,10 +104,7 @@
                   url: social_url
                 },
                 {
-                  name: 'googleplus',
-                  title: social_title,
-                  media: social_image,
-                  url: social_url
+                  name: 'googleplus'
                 },
                 {
                   name: 'email',
