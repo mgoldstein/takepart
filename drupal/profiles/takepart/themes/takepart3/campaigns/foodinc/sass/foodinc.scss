@@ -917,7 +917,6 @@
 
           &.date {
             @include inline-block;
-            width: 54px;
             float: left;
             height: 60px;
             .tpselect_input {
@@ -1053,6 +1052,9 @@
         }
 
         &.date {
+          label {
+            font-size: 10px;
+          }
           width: 24%;
           .tpselect_input {
             width: 83%;
