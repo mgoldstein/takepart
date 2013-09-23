@@ -121,7 +121,6 @@
                   via: 'TakePart'
                 },
                 {name: 'googleplus'},
-                {name: 'reddit'},
                 {name: 'email'}
               ]
             };
