@@ -50,7 +50,11 @@ googletag.cmd.push(function()
 				</div>
 					<div class="logo"><img src="<?php print w('foodin_logo')->img_src; ?>" alt="<?php print w('foodin_logo')->single; ?>"></div>
 					<?php if(current_path() == 'wordlet/foodinc_awards'): ?>
-	  				<aside id="foodinc-social" class="social">
+
+	  				<aside id="foodinc-social" class="social" social-title="<?php print w('foodinc_social_title')->single; ?>"
+	  					social-image="<?php print w('foodinc_social_image')->img_src; ?>" social-text="<?php print w('foodinc_social_text')->single; ?>"
+	  					social-caption="<?php print w('foodinc_social_caption')->single; ?>" social-twitter-via="<?php print w('foodinc_social_twitter_via')->single; ?>"
+	  					social-url="<?php print w('foodinc_social_url')->single; ?>">
 	  					<h3 class="headline"><?php print t('SHARE'); ?></h3>
 	  					<div class="tp-social"></div>
 	  				</aside>

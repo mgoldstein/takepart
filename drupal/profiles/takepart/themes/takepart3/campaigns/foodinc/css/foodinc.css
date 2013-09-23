@@ -49,7 +49,7 @@
 #page-wrapper.foodinc .hero .video .botr object {
   max-width: 100%;
 }
-@media (max-width: 585px) {
+@media (max-width: 700px) {
   #page-wrapper.foodinc .hero .video {
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -128,7 +128,7 @@
   margin-top: 30px;
   margin-left: 20px;
 }
-@media (max-width: 585px) {
+@media (max-width: 700px) {
   #page-wrapper.foodinc .logo {
     margin-left: 0px;
   }
@@ -173,7 +173,7 @@
   margin-top: -35px;
   /* rollovers */
 }
-@media (max-width: 680px) {
+@media (max-width: 700px) {
   #page-wrapper.foodinc .social {
     float: left;
     margin-top: 10px;
@@ -260,10 +260,11 @@
   width: 66%;
   float: left;
   clear: both;
+  display: block;
 }
 @media (max-width: 1000px) {
   #page-wrapper.foodinc #foodinc-awards section.page-body-content {
-    width: 100%;
+    width: auto;
   }
 }
 #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories {
@@ -281,6 +282,9 @@
   margin-bottom: 20px;
 }
 @media (max-width: 700px) {
+  #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row {
+    width: auto;
+  }
   #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .image {
     float: left;
   }
@@ -310,7 +314,7 @@
   margin-bottom: 15px;
   line-height: 24px;
 }
-@media (max-width: 680px) {
+@media (max-width: 700px) {
   #page-wrapper.foodinc #foodinc-awards section.page-body-content #foodinc-categories .row .categories-title {
     clear: left;
   }
@@ -579,14 +583,16 @@
   line-height: 24px;
   font-size: 14px;
   margin-left: 20px;
+  display: block;
 }
 @media (max-width: 1000px) {
   #page-wrapper.foodinc #foodinc-howto section.page-body-content {
-    width: 100%;
+    width: auto;
   }
 }
-@media (max-width: 680px) {
+@media (max-width: 700px) {
   #page-wrapper.foodinc #foodinc-howto section.page-body-content {
+    width: 100%;
     margin-left: 0;
   }
 }
@@ -676,7 +682,7 @@
 #page-wrapper.foodinc #foodinc-howto .additional-info .video {
   position: relative;
 }
-@media (max-width: 585px) {
+@media (max-width: 700px) {
   #page-wrapper.foodinc #foodinc-howto .additional-info .video {
     padding-bottom: 56.25%;
     padding-top: 30px;
@@ -779,14 +785,16 @@
   margin-left: 20px;
   height: auto;
   overflow: hidden;
+  display: block;
 }
 @media (max-width: 1000px) {
   #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
-    width: 100%;
+    width: auto;
   }
 }
-@media (max-width: 585px) {
+@media (max-width: 700px) {
   #page-wrapper.foodinc #foodinc-entryreceived section.page-body-content {
+    width: 100%;
     margin-left: 5px;
   }
 }
@@ -851,6 +859,7 @@
     float: none;
     margin: 0 auto;
     width: 300px;
+    clear: both;
   }
 }
 #page-wrapper.foodinc #foodinc-entryform {
