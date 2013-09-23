@@ -83,9 +83,11 @@
               services: [
                 {
                   name: 'facebook',
-                  media: social_image,
+                  image: social_image,
                   description: social_text,
-                  text: social_title
+                  title: social_title,
+                  url: social_url,
+                  caption: social_caption
                 },
                 {
                   name: 'twitter',
