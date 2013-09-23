@@ -5,6 +5,12 @@
     });
   });
 
+  // The window level TP Social click event needs to be attached to the
+  // TP Analytics social click handler.
+  $(window).bind('tp-social-click', function(e, args) {
+    takepart.analytics.track('tp-social-click', args);
+  });
+
   Drupal.behaviors.newsletterSocialSignupSubmitted = {
     attach: function (context) {
       if ($(context).is('.newsletter-signup.thank-you-message')){
@@ -16,14 +22,15 @@
     }
   };
 
+  // TODO: Move to TP Analytics by adding ability to alter page view call variables.
   $.extend(true, takepart, {analytics: {
     foodinc_awards_entry: function (s) {
       var status = $.cookie('foodinc_awards');
       if (status == 'true') {
-        $.cookie('foodinc_awards', 'tracked', {path:'/'});
         s.events = 'event29';
         s.eVar24 = 'Food, Inc. Awards';
       }
+      $.cookie('foodinc_awards', null, {path:'/'});
     }
   }});
 
@@ -70,6 +77,7 @@
       tpSocial:
       {
         attach: function(context) {
+
           var $body = $('body');
           if ( $body.is('.page-wordlet-foodinc-entryreceived') ) {
             var social_title = $('#foodinc-social-received').attr('social-title');
@@ -124,7 +132,6 @@
                 {name: 'email'}
               ]
             };
-
             $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
           }
         }
@@ -133,7 +140,7 @@
   })
 })(jQuery, Drupal, this, this.document);
 
-
+/*
 (function ($) {
   $('a.tp-social-facebook').click(
       function(e) {
@@ -172,3 +179,4 @@
       );
   });
 
+*/

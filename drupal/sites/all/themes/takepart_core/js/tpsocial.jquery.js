@@ -115,6 +115,7 @@ $.fn.tpsocial = function(args) {
 							srvc.share(data);
 							$window.trigger(cpre + 'click', data);
 							e.preventDefault();
+							return false;
 						}
 					})(srvc, $this, $link)
 				);
