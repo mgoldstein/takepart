@@ -831,6 +831,11 @@
   margin: 10px 0px 20px 0px;
   float: left;
 }
+#page-wrapper.foodinc #foodinc-entryreceived .social .wordlet_edit {
+  display: block !important;
+  height: auto;
+  overflow: hidden;
+}
 #page-wrapper.foodinc #foodinc-entryreceived .social .tp-social-link {
   display: block;
   height: 40px;
