@@ -64,7 +64,6 @@ $.tpsocial.add_service({
 
 		var text = args.text || '{{title}}';
 		var matches = text.match(twitter_tpl_reg);
-
 		var url_obj = {
 			url: args.url,
 			via: args.via,
