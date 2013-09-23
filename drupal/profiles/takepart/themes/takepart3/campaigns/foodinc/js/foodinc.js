@@ -54,32 +54,67 @@
             });
         }
       },
-
       tpSocial:
       {
         attach: function(context) {
-          var social_title = $('#foodinc-social').attr('social-title');
-          var social_image = $('#foodinc-social').attr('social-image');
-          var social_text = $('#foodinc-social').attr('social-text');
-          var social_caption = $('#foodinc-social').attr('social-caption');
-          var social_twitter_via = $('#foodinc-social').attr('social-twitter-via');
-          var social_url = $('#foodinc-social').attr('social-url');
-          var tp_social_config = {
-            url_append: '?cmpid=organic-share-{{name}}',
-            services: [
-              {name: 'facebook'},
-              {
-                name: 'twitter',
-                text: social_title,
-                via: social_twitter_via,
-                url: social_url,
-                text: social_text
-              },
-              {name: 'googleplus'},
-              {name: 'email'}
-            ]
-          };
-          $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+          var $body = $('body');
+          if ( $body.is('.page-wordlet-foodinc-entryreceived') ) {
+            var social_title = $('#foodinc-social-received').attr('social-title');
+            var social_image = $('#foodinc-social-received').attr('social-image');
+            var social_text = $('#foodinc-social-received').attr('social-text');
+            var social_caption = $('#foodinc-social-received').attr('social-caption');
+            var social_twitter_via = $('#foodinc-social-received').attr('social-twitter-via');
+            var social_url = $('#foodinc-social-received').attr('social-url');
+            var tp_social_config = {
+              url_append: '?cmpid=organic-share-{{name}}',
+              services: [
+                {
+                  name: 'facebook',
+                  media: social_image,
+                  description: social_text,
+                  text: social_title
+                },
+                {
+                  name: 'twitter',
+                  text: social_title,
+                  via: social_twitter_via,
+                  url: social_url
+                },
+                {
+                  name: 'googleplus',
+                  title: social_title,
+                  media: social_image,
+                  url: social_url
+                },
+                {
+                  name: 'email',
+                  url: social_url,
+                  title: social_title,
+                  text: social_text
+                }
+              ]
+            };
+            $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+          }
+          else{
+            // Social share buttons
+            var tp_social_config = {
+              url_append: '?cmpid=organic-share-{{name}}',
+              services: [
+                {name: 'facebook'},
+                {
+                  name: 'twitter',
+                  text: '{{title}}',
+                  via: 'TakePart'
+                },
+                {name: 'googleplus'},
+                {name: 'reddit'},
+                {name: 'email'}
+              ]
+            };
+
+            $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+          }
         }
       }
     }
