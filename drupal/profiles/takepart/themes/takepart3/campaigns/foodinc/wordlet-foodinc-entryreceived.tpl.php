@@ -16,6 +16,11 @@
           <div class="description"><?php print $w->multi; ?></div>
         </div>
       <? endforeach ?>
+                  <?php wa('foodinc_social_title'); ?>
+            <?php wa('foodinc_social_image'); ?>
+            <?php wa('foodinc_social_text'); ?>
+            <?php wa('foodinc_social_caption'); ?>
+            <?php wa('foodinc_social_twitter_via'); ?>
       <aside id="foodinc-social-received" class="social" social-title="<?php print w('foodinc_social_title')->single; ?>"
         social-image="<?php print w('foodinc_social_image')->img_src; ?>" social-text="<?php print w('foodinc_social_text')->single; ?>"
         social-caption="<?php print w('foodinc_social_caption')->single; ?>" social-twitter-via="<?php print w('foodinc_social_twitter_via')->single; ?>"
