@@ -715,8 +715,8 @@ function foodinc_awards_omniture_variables() {
   $path = current_path();
   if (strpos($path, 'wordlet/foodinc') === 0) {
     $additions['variables'] = array(
-      's.eVar4' => 'foodinc',
-      's.prop4' => 'foodinc',
+      's.eVar4' => 'campaign',
+      's.prop4' => 'campaign',
     );
     if ($path === 'wordlet/foodinc_entry') {
       $additions['variables'] += array(
