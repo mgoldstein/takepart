@@ -80,37 +80,48 @@
 
           var $body = $('body');
           if ( $body.is('.page-wordlet-foodinc-entryreceived') ) {
-            var social_title = $('#foodinc-social-received').attr('social-title');
-            var social_image = $('#foodinc-social-received').attr('social-image');
-            var social_text = $('#foodinc-social-received').attr('social-text');
-            var social_caption = $('#foodinc-social-received').attr('social-caption');
-            var social_twitter_via = $('#foodinc-social-received').attr('social-twitter-via');
-            var social_url = $('#foodinc-social-received').attr('social-url');
+            var facebook_title = $('#foodinc-social-received').attr('facebook-title');
+            var facebook_image = $('#foodinc-social-received').attr('facebook-image');
+            var facebook_url = $('#foodinc-social-received').attr('facebook-url');
+            var facebook_caption = $('#foodinc-social-received').attr('facebook-caption');
+
+            var twitter_text = $('#foodinc-social-received').attr('twitter-text');
+            var twitter_url = $('#foodinc-social-received').attr('twitter-url');
+            var twitter_via = $('#foodinc-social-received').attr('twitter-via');
+
+            var googleplus_title = $('#foodinc-social-received').attr('googleplus-title');
+            var googleplus_text = $('#foodinc-social-received').attr('googleplus-text');
+
+            var email_title = $('#foodinc-social-received').attr('email-title');
+            var email_url = $('#foodinc-social-received').attr('email-url');
+            var email_text = $('#foodinc-social-received').attr('email-text');
+
             var tp_social_config = {
               url_append: '?cmpid=organic-share-{{name}}',
               services: [
                 {
                   name: 'facebook',
-                  image: social_image,
-                  description: social_text,
-                  title: social_title,
-                  url: social_url,
-                  caption: social_text
+                  image: facebook_image,
+                  title: facebook_title,
+                  url: facebook_url,
+                  caption: facebook_caption
                 },
                 {
                   name: 'twitter',
-                  text: social_title,
-                  via: social_twitter_via,
-                  url: social_url
+                  text: twitter_text,
+                  via: twitter_via,
+                  url: twitter_url
                 },
                 {
-                  name: 'googleplus'
+                  name: 'googleplus',
+                  title: googleplus_title,
+                  text: googleplus_text
                 },
                 {
                   name: 'email',
-                  url: social_url,
-                  title: social_title,
-                  text: social_text
+                  url: email_url,
+                  title: email_title,
+                  text: email_text
                 }
               ]
             };
