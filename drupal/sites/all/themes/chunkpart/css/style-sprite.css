@@ -73,7 +73,7 @@ a:active {
 	width: 100%;
 	position: relative;
 	z-index: 2;
-	overflow: hidden;
+        overflow: hidden;
 }
 
 /* ============================================================
@@ -179,6 +179,10 @@ body #at16pt {
 
 /* Of The Day Module */
 
+#block-bean-of-the-day {
+	padding-top: 5px;
+}
+
 #block-bean-of-the-day li {
 	padding: 7px 0 10px 120px;
 	position: relative;
@@ -215,6 +219,12 @@ body #at16pt {
 
 #block-bean-of-the-day a:hover .link {
 	color: #1CA9E7;
+}
+
+/* From the Web (Scribol) block */
+
+#block-block-54 {
+    border-bottom: 1px solid #e8e8e8;
 }
 
 /* Newsletter form */
@@ -551,9 +561,10 @@ div.takepart-take-action-widget {
 	background: #f8fbff;
 	border: 1px solid #e0e0e0;
 	width: 15em;
-	padding: 1em;
+	padding: 1em 1em 1em 0.75em;
 	margin-bottom: 1em;
 	float: right;
+        text-align: center;
 }
 
 #topic_box:after,
@@ -590,7 +601,6 @@ div.takepart-take-action-widget {
 #topic_box a,
 #topic_box img {
 	display: block;
-	margin: auto;
 }
 
 #topic_box li {
@@ -613,16 +623,15 @@ div.takepart-take-action-widget {
 	font-size: 20px;
 }
 
-.page-tags li {
-	line-height: 1.25;
-	font-size: 14px;
-	text-transform: capitalize;
+.page-tags ul {
+    display: inline-block; *display: inline; *zoom: 1;
 }
 
-.page-tags ul,
-.page-tags li,
-.page-tags a {
-	display: inline;
+.page-tags li {
+    text-transform: capitalize;
+    font-size: 14px;
+    line-height: 1.286;
+    float: left;
 }
 
 .page-tags .headline {
@@ -654,7 +663,7 @@ div.takepart-take-action-widget {
 	font-family: TradeGothicLTStdCnBold, sans-serif;
 	margin-top: 1em;
 	margin-bottom: .5em;
-	padding: .4em 0 .5em 0;
+	padding: 0 0 .5em 0;
 	border-bottom: 1px solid #e8e8e8;
 	font-size: 20px;
 }
@@ -717,18 +726,18 @@ div.takepart-take-action-widget {
 }
 
 .related .headline {
-	text-transform: uppercase;
-	font-family: TradeGothicLTStdCnBold, sans-serif;
-	color: #333;
-	font-size: 20px;
-	margin-bottom: 6px;
+    text-transform: uppercase;
+    font-family: TradeGothicLTStdCnBold, sans-serif;
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 4px;
 }
 
 .related p,
 .related li {
-	font-size: 14px;
-	margin-bottom: 10px;
-	line-height: 1.25;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.286;
 }
 
 /* Article Header */
@@ -804,6 +813,12 @@ div.takepart-take-action-widget {
 .article-header .header-secondary .authors .author.last-child:after {
 	content: "";
 	display: none;
+}
+
+/* Content bottom */
+
+.region-content-bottom {
+	clear: both;
 }
 
 
@@ -945,11 +960,13 @@ div.takepart-take-action-widget {
 }
 
 .node-type-article #article-social #article-comments-link a {
+	background-position: 0 4px;
   background-image: url('../../takepart_core/css/style-sprite.png');
   background-position: left -1452px;
 }
 
 .node-type-article #article-social-more h4 a {
+	background-position: 0 4px;
   background-image: url('../../takepart_core/css/style-sprite.png');
   background-position: left -1486px;
 }
@@ -1387,6 +1404,11 @@ div.takepart-take-action-widget {
 	margin-top: 50px
 }
 
+.node-type-openpublish-photo-gallery .takepart-take-action-widget {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .node-type-openpublish-photo-gallery #gallery-body .drupal-embed {
 	display: none;
 }
@@ -1436,6 +1458,10 @@ div.takepart-take-action-widget {
 	line-height: 1.618em;
 }
 
+.node-type-openpublish-photo-gallery #gallery-content .photo-caption .topic {
+	display: none;
+}
+
 .node-type-openpublish-photo-gallery #gallery-content .photo-caption .caption h2 {
 	font-size: 18px;
 	color: #333;
@@ -1451,6 +1477,14 @@ div.takepart-take-action-widget {
 	font-size: 14px;
 	color: #333;
 	line-height: 1.618em;
+}
+
+.node-type-openpublish-photo-gallery #gallery-content .caption hr {
+	visibility: hidden;
+}
+
+.node-type-openpublish-photo-gallery #gallery-content .caption iframe {
+	max-width: 100%;
 }
 
 .node-type-openpublish-photo-gallery #gallery-photos #gallery-content {
@@ -1481,6 +1515,7 @@ div.takepart-take-action-widget {
 .node-type-openpublish-photo-gallery #gallery-photos .gallery-slide img {
 	display: inline-block;
 	vertical-align: middle;
+	cursor: pointer;
 }
 
 .node-type-openpublish-photo-gallery #gallery-cover-main {
@@ -1614,6 +1649,13 @@ div.takepart-take-action-widget {
 	font-size: 14px;
 	line-height: 1.75;
 }
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body .content hr {
+	visibility: hidden;
+}
+
+.node-type-openpublish-photo-gallery #gallery-description #gallery-body .content iframe {
+	max-width: 100%;
+}
 
 .node-type-openpublish-photo-gallery #gallery-description #gallery-body .enter-link {
 	font-size: 14px;
@@ -1671,36 +1713,16 @@ div.takepart-take-action-widget {
 	position: relative;
 }
 
+.node-type-openpublish-photo-gallery .forward-to-gallery,
 .node-type-openpublish-photo-gallery .back-to-cover {
 	display: none;
 }
 
-.node-type-openpublish-photo-gallery .on-first .back-to-cover {
-	display: block;
-}
-
-.node-type-openpublish-photo-gallery .back-to-cover a {
-	height: 35px;
-	overflow: hidden;
-	text-indent: 100%;
-	white-space: nowrap;
-	display: block;
-	background-repeat: no-repeat;
-	position: absolute;
-	z-index: 2;
-  background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -2063px;
-	left: 0;
-	bottom: -45px;
-	width: 22px;
-}
-
-.node-type-openpublish-photo-gallery .back-to-cover a:hover {
-  background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -2108px;
-}
-
 .node-type-openpublish-photo-gallery .on-first .tpslide_prev {
+	display: none;
+}
+
+.node-type-openpublish-photo-gallery .on-last .tpslide_next {
 	display: none;
 }
 
@@ -1756,12 +1778,17 @@ div.takepart-take-action-widget {
 	overflow: hidden;
 }
 
+.node-type-openpublish-photo-gallery .on-first .back-to-cover,
+.node-type-openpublish-photo-gallery .on-last .forward-to-gallery,
 .node-type-openpublish-photo-gallery .tpslide_nav {
+	display: block;
 	position: absolute;
 	bottom: -45px;
 	width: 620px;
 }
 
+.node-type-openpublish-photo-gallery .forward-to-gallery a,
+.node-type-openpublish-photo-gallery .back-to-cover a,
 .node-type-openpublish-photo-gallery .tpslide_prev,
 .node-type-openpublish-photo-gallery .tpslide_next {
 	width: 22px;
@@ -1776,26 +1803,32 @@ div.takepart-take-action-widget {
 	bottom: 0;
 }
 
+.node-type-openpublish-photo-gallery .forward-to-gallery a,
 .node-type-openpublish-photo-gallery .tpslide_next {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -2153px;
-	right: 0;
+  background-position: left -2063px;
+	left: 56%;
 }
 
+.node-type-openpublish-photo-gallery .back-to-cover a,
 .node-type-openpublish-photo-gallery .tpslide_prev {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -2063px;
-	left: 0;
+  background-position: left -2108px;
+	right: 56%;
 }
 
+.node-type-openpublish-photo-gallery .image-hover .forward-to-gallery a,
+.node-type-openpublish-photo-gallery .image-hover .tpslide_next,
+.node-type-openpublish-photo-gallery .forward-to-gallery a:hover,
 .node-type-openpublish-photo-gallery .tpslide_next:hover {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -2198px;
+  background-position: left -2153px;
 }
 
+.node-type-openpublish-photo-gallery .back-to-cover a:hover,
 .node-type-openpublish-photo-gallery .tpslide_prev:hover {
   background-image: url('../../takepart_core/css/style-sprite.png');
-  background-position: left -2108px;
+  background-position: left -2198px;
 }
 
 .node-type-openpublish-photo-gallery .tpslide_nav_slides {
