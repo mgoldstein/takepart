@@ -128,7 +128,12 @@ function takepart_core_menu_link(array $variables) {
   if ($element['#below']) {
     $sub_menu = drupal_render($element['#below']);
   }
-  $element['#localized_options']['absolute'] = TRUE;
+  if ($element['#theme'] === 'menu_link__food_inc_new_multipage_campaign') {
+    $element['#localized_options']['absolute'] = FALSE;
+  }
+  else {
+    $element['#localized_options']['absolute'] = TRUE;
+  }
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }

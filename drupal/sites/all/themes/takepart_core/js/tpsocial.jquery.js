@@ -113,10 +113,7 @@ $.fn.tpsocial = function(args) {
 							}
 
 							srvc.share(data);
-							if (srvc.name != 'email') {
-								// Email is handled through the add this share callback.
-  							$window.trigger(cpre + 'click', data);
-							}
+							$window.trigger(cpre + 'click', data);
 							e.preventDefault();
 							return false;
 						}
