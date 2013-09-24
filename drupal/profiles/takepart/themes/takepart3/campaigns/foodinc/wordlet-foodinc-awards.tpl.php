@@ -9,7 +9,7 @@
           <?php else: ?>
             <div class="botr">
               <?php global $is_https; ?>
-              <?php if(isset($is_https) && $is_https != NULL: ?>
+              <?php if(isset($is_https) && $is_https != NULL): ?>
                 <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
               <?php else: ?>
                 <script type="text/javascript" src="//video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
@@ -87,6 +87,5 @@
     </div>
   </section>
 </div>
-<?php print $messages; ?>
 
 
