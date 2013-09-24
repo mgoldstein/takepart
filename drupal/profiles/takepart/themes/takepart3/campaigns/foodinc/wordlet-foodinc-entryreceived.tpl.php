@@ -22,7 +22,7 @@
             <?php wa('foodinc_social_caption'); ?>
             <?php wa('foodinc_social_twitter_via'); ?>
       <aside id="foodinc-social-received" class="social" facebook-title="<?php print w('foodinc_entryreceived_facebook_title')->single; ?>"
-        facebook-url="<?php print w('foodinc_entryreceived_facebook_url')->img_src; ?>" facebook-image="<?php print w('foodinc_entryreceived_facebook_title')->img_src; ?>"
+        facebook-url="<?php print w('foodinc_entryreceived_facebook_url')->img_single; ?>" facebook-image="<?php print w('foodinc_entryreceived_facebook_image')->img_src; ?>"
         facebook-text="<?php print w('foodinc_entryreceived_facebook_caption')->multi; ?>" email-title="<?php print w('foodinc_entryreceived_email_title')->single; ?>"
         email-url="<?php print w('foodinc_entryreceived_email_url')->single; ?>" email-text="<?php print w('foodinc_entryreceived_email_text')->single; ?>"
         google-title="<?php print w('foodinc_entryreceived_googleplus_title')->single; ?>" google-url="<?php print w('foodinc_entryreceived_googleplus_url')->single; ?>"
