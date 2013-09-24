@@ -5,7 +5,7 @@ takepart.analytics.skip_addthis = false;
 takepart.analytics.addThis_shareEventHandler = function (evt) {
     if ( takepart.analytics.skip_addthis ) return;
     if (evt.type == 'addthis.menu.share') {
-        takepart.analytics.track('generic_addthis', {name: evt.data.service, url: this.href});
+        //takepart.analytics.track('generic_addthis', {name: evt.data.service, url: this.href});
     }
 };
 
@@ -110,6 +110,9 @@ var social_click = function(options) {
         s2.linkTrackVars = linkTrackVars.join(',');
         s2.linkTrackEvents = 'event25';
         s2.tl(options.url, 'o', 'Content Share');
+        s2.linkTrackVars = null;
+        s2.linkTrackEvents = null;
+        s2.events = null;
         _gaq.push(['_trackEvent', ga_category, ga_action, title]);
     }
 };
