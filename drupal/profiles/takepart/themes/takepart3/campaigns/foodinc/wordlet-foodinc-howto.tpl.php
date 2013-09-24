@@ -1,3 +1,4 @@
+<?php global $is_https; ?>
 <div class="content" id="foodinc-howto">
   <section class="page-body-content cms">
 
@@ -12,7 +13,7 @@
             <?php $youtube_id = substr(w('foodinc_howto_intro')->video, strrpos(w('foodinc_howto_intro')->video, '=') + 1);; ?>
             <iframe width="635" height="360" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
-            <?php if(isset($_REQUEST['signed_request'])): ?>
+            <?php if(isset($is_https) && $is_https != NULL: ?>
               <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('foodinc_howto_intro')->video; ?>.js"></script>
             <?php else: ?>
               <script type="text/javascript" src="//video.takepart.com/players/<?php print w('foodinc_howto_intro')->video; ?>.js"></script>
@@ -46,7 +47,7 @@
                 <?php $youtube_id = substr($w->video, strrpos($w->video, '=') + 1);; ?>
                 <iframe width="635" height="360" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
               <?php else: ?>
-                <?php if(isset($_REQUEST['signed_request'])): ?>
+                <?php if(isset($is_https) && $is_https != NULL: ?>
                   <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('foodinc_howto_additional_info')->video; ?>.js"></script>
                 <?php else: ?>
                   <script type="text/javascript" src="//video.takepart.com/players/<?php print w('foodinc_howto_additional_info')->video; ?>.js"></script>
