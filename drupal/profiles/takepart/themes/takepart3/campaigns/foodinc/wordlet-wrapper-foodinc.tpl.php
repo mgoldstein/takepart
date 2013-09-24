@@ -1,7 +1,7 @@
 <?
 	$menu_block = module_invoke('menu', 'block_view', 'food_inc_new_multipage_campaign');
 
-	$element = array(
+	$font = array(
 	  '#tag' => 'link',
 	  '#attributes' => array(
 	    'href' => '//cloud.typography.com/625388/701462/css/fonts.css',
@@ -9,7 +9,66 @@
 	    'type' => 'text/css',
 	  ),
 	);
-	drupal_add_html_head($element, 'archer');
+	drupal_add_html_head($font, 'archer');
+
+	$imgpath = image_style_url('thumb', w('fb_image')->img_src);
+	$og_image = array(
+	  '#tag' => 'meta',
+	  '#attributes' => array(
+	    'property' => 'og:image',
+	    'content' => $imgpath,
+	  ),
+	);
+	drupal_add_html_head($og_image, 'og_image');
+
+	$og_url = array(
+	  '#tag' => 'meta',
+	  '#attributes' => array(
+	    'property' => 'og:url',
+	    'content' => 'http://www.takepart.com',
+	  ),
+	);
+	drupal_add_html_head($og_url, 'og_url');
+
+	$og_description = array(
+	  '#tag' => 'meta',
+	  '#attributes' => array(
+	    'property' => 'og:description',
+	    'content' => w('fb_description')->multi,
+	  ),
+	);
+	drupal_add_html_head($og_description, 'og_description');
+
+	$og_fb_id = array(
+	  '#tag' => 'meta',
+	  '#attributes' => array(
+	    'property' => 'fb:app_id',
+	    'content' => '247137505296280',
+	  ),
+	);
+	drupal_add_html_head($og_fb_id, 'og_fb_id');
+
+	$og_type = array(
+	  '#tag' => 'meta',
+	  '#attributes' => array(
+	    'property' => 'og:type',
+	    'content' => 'article',
+	  ),
+	);
+	drupal_add_html_head($og_type, 'og_type');
+
+	$og_title = array(
+	  '#tag' => 'meta',
+	  '#attributes' => array(
+	    'property' => 'og:title',
+	    'content' => w('title')->single,
+	  ),
+	);
+	drupal_add_html_head($og_title, 'og_title');
+
+
+
+
 	drupal_add_js('//connect.facebook.net/en_US/all.js');
 ?>
 

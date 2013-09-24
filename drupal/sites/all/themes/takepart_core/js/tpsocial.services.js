@@ -211,7 +211,7 @@ $.tpsocial.add_service({
 	width: 600,
 	height: 600,
 	share: function(args) {
-		var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url) + '&summary=hello-this-is-a-test';
+		var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url);
 
 		var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
 		window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
