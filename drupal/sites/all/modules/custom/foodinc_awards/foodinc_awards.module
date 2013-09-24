@@ -702,6 +702,8 @@ function foodinc_awards_preprocess_menu_link(&$variables) {
     $theme = $variables['element']['#theme'];
     if ($theme === 'menu_link__food_inc_new_multipage_campaign') {
       if (foodinc_awards_is_embedded()) {
+        $variables['element']['#localized_options']['absolute'] = FALSE;
+        $variables['element']['#localized_options']['external'] = FALSE;
         $variables['element']['#localized_options']['query'] = array(
           'embedded' => 'true',
         );
