@@ -59,7 +59,7 @@ function comscore_direct_page_alter(&$page) {
             })();
           </script>
           <noscript>
-            <img src="http://b.scorecardresearch.com/p?c1=2&c2=' . $com_id . '&c3=&c4=' . $path . '&c5=' . $com_genre . '&c6=' . $comid_package . '&c15=' . $comid_client . '&cv=2.0&cj=1" />
+            <img src="//b.scorecardresearch.com/p?c1=2&c2=' . $com_id . '&c3=&c4=' . $path . '&c5=' . $com_genre . '&c6=' . $comid_package . '&c15=' . $comid_client . '&cv=2.0&cj=1" />
           </noscript>
       <!-- End comScore Tag -->'
         );
