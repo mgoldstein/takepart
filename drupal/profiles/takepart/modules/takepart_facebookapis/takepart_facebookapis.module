@@ -272,6 +272,7 @@ function takepart_facebookapis_requirements($phase) {
  * Implements hook_page_alter().
  */
 function takepart_facebookapis_page_alter(&$page) {
+    $channel_uri = preg_replace("@'@msi", "\'", "http://" . $_SERVER['HTTP_HOST'] . "/facebook_channel");
     $page['page_bottom']['fb-init-code'] = array(
       '#type' => 'markup',
       '#markup' => '<div id="fb-root"></div>
@@ -279,6 +280,7 @@ function takepart_facebookapis_page_alter(&$page) {
         window.fbAsyncInit = function() {
           FB.init({
             appId      : \'' . variable_get('fboauth_id', '') . '\', // App ID
+            channelUrl : \'//' . $_SERVER['HTTP_HOST']  . '/facebook/channel\', // Channel File
             status     : true, // check login status
             cookie     : true, // enable cookies to allow the server to access the session
             xfbml      : true  // parse XFBML

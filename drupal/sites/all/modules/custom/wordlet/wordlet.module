@@ -934,37 +934,37 @@ function wordlet_page_view_callback($page) {
     drupal_add_html_head( $metatag, 'facebook_image');
   }
 
-  $og_title = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'og:title',
-      'content' =>  $title,
-    ),
-   );
-  drupal_add_html_head( $og_title, 'og_title');
+  // $og_title = array(
+  //   '#type' => 'html_tag',
+  //   '#tag' => 'meta',
+  //   '#attributes' => array(
+  //     'property' => 'og:title',
+  //     'content' =>  $title,
+  //   ),
+  //  );
+  // drupal_add_html_head( $og_title, 'og_title');
 
-  global $base_url;
-  $url = $base_url. '/'. current_path();
-  $og_url = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'og:url',
-      'content' =>  $url,
-    ),
-   );
-  drupal_add_html_head( $og_url, 'og_url');
+  // global $base_url;
+  // $url = $base_url. '/'. current_path();
+  // $og_url = array(
+  //   '#type' => 'html_tag',
+  //   '#tag' => 'meta',
+  //   '#attributes' => array(
+  //     'property' => 'og:url',
+  //     'content' =>  $url,
+  //   ),
+  //  );
+  // drupal_add_html_head( $og_url, 'og_url');
 
-  $og_type = array(
-    '#type' => 'html_tag',
-    '#tag' => 'meta',
-    '#attributes' => array(
-      'property' => 'og:type',
-      'content' =>  'article',
-    ),
-   );
-  drupal_add_html_head($og_type, 'og_type');
+  // $og_type = array(
+  //   '#type' => 'html_tag',
+  //   '#tag' => 'meta',
+  //   '#attributes' => array(
+  //     'property' => 'og:type',
+  //     'content' =>  'article',
+  //   ),
+  //  );
+  // drupal_add_html_head($og_type, 'og_type');
 
 
 
