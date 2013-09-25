@@ -10,7 +10,7 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
   if(variable_get('fblogin_state', '1') != '1') {
     return;
   }
-  
+
   if(($form_id == 'user_login') && (variable_get('fblogin_backdoor_url', 'backdoor') == current_path()))  {
     if(isset($form['#validate'])) {
       array_unshift($form['#validate'], "_takepart_facebookapis_login_form_validate");
@@ -18,37 +18,37 @@ function takepart_facebookapis_form_alter(&$form, $form_state, $form_id) {
       $form['#validate'] = "_takepart_facebookapis_login_form_validate";
     }
   }
-  
+
   if(($form_id == 'user_login') && (variable_get('fblogin_backdoor_url', 'backdoor') != current_path()) && (variable_get('fblogin_state', 'No') != 'No')) {
-    
+
     $form = array();
 
     drupal_set_title(t(variable_get('fblogin_page_title', 'Login')));
-    
+
     $form['fblogin'] = array(
         '#type' => 'item',
         '#title' => t(' '),
         '#markup' => "<div id=\"fbloginbox\"><p id=\"fblogin_textoverbutton\">" . variable_get('fblogin_textoverbutton', 'If you have a <strong>Facebook Account</strong>') . "</p><div id=\"fb_buttonwrapper\">" . _takepart_facebookapis_getfblogin() . "</div></div>",
       );
-    
+
   }
-  
+
 }
 
 
 
 function _takepart_facebookapis_getfblogin($dest = null) {
- 
-  if(isset($GLOBALS["_takepart_facebookapis_getfblogin"])) { 
+
+  if(isset($GLOBALS["_takepart_facebookapis_getfblogin"])) {
     $GLOBALS["_takepart_facebookapis_getfblogin"]++;
   } else {
     $GLOBALS["_takepart_facebookapis_getfblogin"] = 0;
   }
-  
+
   if(($dest == null) && (isset($_GET['destination']))) {
     $dest = $_GET['destination'];
   }
-  
+
   if(strrpos($dest, "fb=logout") > -1) {
     $dest = str_replace("fb=logout", "", $dest);
   }
@@ -57,7 +57,7 @@ function _takepart_facebookapis_getfblogin($dest = null) {
     //nuclear option:
     return $block_rendered = fboauth_action_display('connect');
   }
-  
+
   if(variable_get('fbregistration_path', '/user/register') != "/" . $dest) {
     $dest = urlencode($dest);
     $regpath = 'http://' . $_SERVER['HTTP_HOST'] . (variable_get('fbregistration_path', '/user/register') . "?fbreg=true&destination=" . $dest);
@@ -76,7 +76,7 @@ function _takepart_facebookapis_getfblogin($dest = null) {
   } else {
     $fblogintag = str_replace('<fb:login-button', '<fb:login-button onlogin="takepart_facebookapi_check_login_session'.$GLOBALS["_takepart_facebookapis_getfblogin"].'()"', $fblogintag);
   }
-  
+
   drupal_add_js('function takepart_facebookapi_check_login_session'.$GLOBALS["_takepart_facebookapis_getfblogin"].'() {
         path = \'' . $authpath . '\';
         window.location = path;
@@ -95,20 +95,20 @@ function _takepart_facebookapis_clearcache() {
 }
 
 function _takepart_facebookapis_auth($action) {
-  
+
   _takepart_facebookapis_clearcache();
-  
+
   $action_name = $action['name'];
   $app_id = variable_get('fboauth_id', '');
   $app_secret = variable_get('fboauth_secret', '');
   $cookie = _takepart_facebookapis_get_facebook_cookie($app_id, $app_secret);
   if (isset($cookie['access_token'])) {
-    
+
   $_SESSION['_takepart_set_takeaction_cookie'] = $cookie;
   _takepart_set_takeaction_cookie($cookie);
 
     if(fboauth_uid_load($cookie['user_id']) != null) {
-      
+
       if(variable_get('fblogin_method_regredir', 0) != 0) {
         $uid = fboauth_uid_load($cookie['uid']);
         if(!$uid) {
@@ -121,30 +121,30 @@ function _takepart_facebookapis_auth($action) {
           die();
         }
       }
-      
-      
+
+
       if (isset($_SESSION['facebook'])) {
         unset($_SESSION['facebook']);
       }
-   
+
       $destination = fboauth_action_invoke($action_name, $app_id, $cookie['access_token']);
-                 
+
       if (empty($destination)) {
         $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
       }
       drupal_goto($destination);
-    } else { 
-      
-      
+    } else {
+
+
       if(isset($_GET['destination']) && (variable_get('fbregistration_path', '/user/register') != "/" . $_GET['destination'])) {
         $redir = (variable_get('fbregistration_path', '/user/register') . "?destination=" . $_GET['destination']);
       } else {
         $redir = (variable_get('fbregistration_path', '/user/register'));
       }
-      
+
       header("Location: $redir");
       die();
-      
+
     }
   } else {
     drupal_set_message( t('There was an issue communicating with facebook.'), 'error' );
@@ -239,7 +239,7 @@ function _takepart_facebookapis_backdoor() {
 /**
  * Implement hook_requirements().
  */
-// facebook 
+// facebook
 //facebook connect
 //facebook user mgmt
 //Facebook Apps
@@ -272,7 +272,6 @@ function takepart_facebookapis_requirements($phase) {
  * Implements hook_page_alter().
  */
 function takepart_facebookapis_page_alter(&$page) {
-    $channel_uri = preg_replace("@'@msi", "\'", "http://" . $_SERVER['HTTP_HOST'] . "/facebook_channel");
     $page['page_bottom']['fb-init-code'] = array(
       '#type' => 'markup',
       '#markup' => '<div id="fb-root"></div>
@@ -280,7 +279,6 @@ function takepart_facebookapis_page_alter(&$page) {
         window.fbAsyncInit = function() {
           FB.init({
             appId      : \'' . variable_get('fboauth_id', '') . '\', // App ID
-            channelUrl : \'//' . $_SERVER['HTTP_HOST']  . '/facebook/channel\', // Channel File
             status     : true, // check login status
             cookie     : true, // enable cookies to allow the server to access the session
             xfbml      : true  // parse XFBML
@@ -309,7 +307,7 @@ function takepart_facebookapis_menu_site_status_alter(&$menu_site_status, $path)
 /**
  * Implements hook_init().
  */
-function takepart_facebookapis_init() {  
+function takepart_facebookapis_init() {
   //echo "FBCOOKIE:" . $_SESSION['fbaccesstoken'];
   if ((isset($_GET['fb'])) && ($_GET['fb']=="logout")) {
     $app_id = variable_get('fboauth_id', '');
@@ -328,7 +326,7 @@ function takepart_facebookapis_init() {
  * Implements hook_omniture_variables().
  */
 function takepart_facebookapis_omniture_variables() {
-  
+
     $return = array();
     $linkTrackEvents = "";
     //page hit:
@@ -375,7 +373,7 @@ function takepart_facebookapis_omniture_variables() {
       }
       $return = array_merge($return, (array('s.linkTrackEvents'=>$linkTrackEvents,'s.events'=>$linkTrackEvents)));
     }
-    
+
     return array("variables" => $return);
 }
 
@@ -430,8 +428,8 @@ function _takepart_set_takeaction_cookie($cookie) {
         $iv = substr(md5(md5($secret)), 0, 16);
         $encrypted = mcrypt_encrypt(
           MCRYPT_RIJNDAEL_128,  // The cipher to use
-          md5($secret),         // The encryption key (it is recommended to use a hash of of the secret)  
-          $plaintext,           // The value to encrypt 
+          md5($secret),         // The encryption key (it is recommended to use a hash of of the secret)
+          $plaintext,           // The value to encrypt
           MCRYPT_MODE_CBC,      // Encryption mode one of ("ecb", "cbc", "cfb", "ofb", "nofb" or "stream")
           $iv                   // Initialization vector used for CBC mode
         );
@@ -440,7 +438,7 @@ function _takepart_set_takeaction_cookie($cookie) {
         $session_cookie = variable_get('takeaction_session_cookie_name', 'TAKEACTIONSESSION') . 'FB';
         $path = variable_get('takeaction_session_cookie_path', '/');
         $domain = variable_get('takeaction_session_cookie_domain', '.takepart.com');
-        setcookie($session_cookie, $encoded, 0, $path, $domain);   
+        setcookie($session_cookie, $encoded, 0, $path, $domain);
     } else {
         watchdog('takepart_facebookapis', 'mcrypt_encrypt is not installed, failed to set cookie', $session_cookie);
     }
