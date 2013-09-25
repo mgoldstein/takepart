@@ -1,5 +1,5 @@
 <?php
-  $imgpath = image_style_url('thumb', w('foodinc_entryreceived_facebook_image')->single);
+  $imgpath = w('foodinc_entryreceived_facebook_image')->single;
   $og_image = array(
     '#tag' => 'meta',
     '#attributes' => array(
