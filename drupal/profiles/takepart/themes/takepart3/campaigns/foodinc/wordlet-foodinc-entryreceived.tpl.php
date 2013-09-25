@@ -19,6 +19,16 @@
   );
   drupal_add_html_head($og_description, 'og_description');
 
+  $title = w('foodinc_entryreceived_facebook_title')->single;
+  $og_title = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'property' => 'og:title',
+      'content' => $title,
+    ),
+  );
+  drupal_add_html_head($og_title, 'og_title');
+
 ?>
 
 <div class="content" id="foodinc-entryreceived">
