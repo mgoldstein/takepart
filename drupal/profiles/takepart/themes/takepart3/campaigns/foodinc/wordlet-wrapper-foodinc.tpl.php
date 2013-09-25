@@ -1,4 +1,5 @@
 <?
+	global $is_https;
 	$menu_block = module_invoke('menu', 'block_view', 'food_inc_new_multipage_campaign');
 
 	$font = array(
