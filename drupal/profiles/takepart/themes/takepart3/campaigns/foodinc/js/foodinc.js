@@ -89,7 +89,7 @@
             var twitter_url = $('#foodinc-social-received').attr('twitter-url');
             var twitter_via = $('#foodinc-social-received').attr('twitter-via');
 
-            var googleplus_title = $('#foodinc-social-received').attr('googleplus-title');
+            var googleplus_title = $('#foodinc-social-received').attr('google-title');
             var googleplus_text = $('#foodinc-social-received').attr('googleplus-text');
 
             var email_title = $('#foodinc-social-received').attr('email-title');
