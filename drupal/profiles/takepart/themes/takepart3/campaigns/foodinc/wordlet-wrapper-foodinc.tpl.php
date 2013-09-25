@@ -45,7 +45,7 @@ googletag.cmd.push(function()
 	global $base_url;
 ?>
 <div id="page-wrapper" class="campaign foodinc">
-	<?php print foodinc_awards_is_embedded() ? '' : render($header); ?>
+	<?php print (isset($is_https) && $is_https != NULL ? render($header) : ''); ?>
 
 
 	<div class="page-wrap">
@@ -77,7 +77,7 @@ googletag.cmd.push(function()
 
 	<!-- end -->
 
-	<?php print foodinc_awards_is_embedded() ? '' : render($footer); ?>
+	<?php print (isset($is_https) && $is_https != NULL ? render($footer) : ''); ?>
 </div>
 <!-- /place in the <body> to display the 300x250 ad -->
 <!-- place in the <body> to display the background skin ad -->
