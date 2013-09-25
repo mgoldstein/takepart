@@ -424,14 +424,9 @@ function template_preprocess_jw_player(&$variables) {
  * Add the JW Player Javascript according to the method selected.
  */
 function jw_player_process_jw_player(&$variables) {
-
   $variables['jw_player_inline_js_code'] = stripslashes(json_encode($variables['config']));
-
-  // Add js file that enables url based seeking.
-  drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js');
-  //drupal_add_js(drupal_get_path('module', 'jw_player') . '/jw_player.js');
-  drupal_add_js(drupal_get_path('module', 'jw_player') . '/jw_player_seek.js');
-
+  // Make sure the javascript is on the page
+  jw_player_add_javascript();
 }
 
 /**
@@ -441,13 +436,51 @@ function jw_player_process_jw_player(&$variables) {
 function jw_player_init() {
   // Add script file if requested.
   if (variable_get('jw_player_all_pages', FALSE)) {
-    drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js');
+    jw_player_add_javascript();
   }
-  // Add key if available.
-  if ($key = variable_get('jw_player_key', NULL)) {
-    drupal_add_js('jwplayer.key="' . $key . '"',
-    array('type' => 'inline', 'scope' => 'header', 'weight' => 5)
-    );
+}
+
+function jw_player_add_javascript() {
+  static $added = FALSE;
+
+  if (!$added) {
+
+    $added = TRUE;
+    $scope = variable_get('jw_player_js_scope', 'header');
+    $hosting = variable_get('jw_player_hosting', 'cloud');
+
+    if ($hosting === 'self') {
+      // Add the player file from the library.
+      drupal_add_js(libraries_get_path('jwplayer') . '/jwplayer.js', array(
+        'type' => 'file',
+        'scope' => $scope,
+        'weight' => 4,
+      ));
+      // Add key if available.
+      if ($key = variable_get('jw_player_key', NULL)) {
+        drupal_add_js('jwplayer.key="' . $key . '"', array(
+          'type' => 'inline',
+          'scope' => $scope,
+          'weight' => 5
+        ));
+      }
+    }
+    else {
+      // Add the player from the cloud (if account token is set)
+      if ($token = variable_get('jw_player_account_token', NULL)) {
+        drupal_add_js('http://jwpsrv.com/library/' . $token . '.js', array(
+          'type' => 'external',
+          'scope' => $scope,
+          'weight' => 5
+        ));
+      }
+    }
+    // Add the player seek support from the module.
+    drupal_add_js(drupal_get_path('module', 'jw_player') . '/jw_player_seek.js', array(
+      'type' => 'file',
+      'scope' => $scope,
+      'weight' => 6,
+    ));
   }
 }
 
