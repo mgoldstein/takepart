@@ -347,7 +347,11 @@ var email_callback = function(addthis_event) {
 		//$window.trigger('tp-social-share', email_args);
 	}
 };
-var email_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+if ("https:" == document.location.protocol) {
+    var email_script = 'https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+} else {
+    var email_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+}
 var email_var = 'addthis';
 
 $.tpsocial.add_service({
