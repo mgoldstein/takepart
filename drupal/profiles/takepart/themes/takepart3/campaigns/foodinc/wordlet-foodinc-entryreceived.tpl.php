@@ -1,5 +1,5 @@
 <?php
-  $imgpath = image_style_url('thumb', w('foodinc_entryreceived_facebook_image')->img_src);
+  $imgpath = image_style_url('thumb', w('foodinc_entryreceived_facebook_image')->single);
   $og_image = array(
     '#tag' => 'meta',
     '#attributes' => array(
@@ -9,7 +9,7 @@
   );
   drupal_add_html_head($og_image, 'og_image');
 
-  $description = w('foodinc_entryreceived_facebook_caption')->single;
+  $description = w('foodinc_entryreceived_facebook_caption')->multi;
   $og_description = array(
     '#tag' => 'meta',
     '#attributes' => array(
