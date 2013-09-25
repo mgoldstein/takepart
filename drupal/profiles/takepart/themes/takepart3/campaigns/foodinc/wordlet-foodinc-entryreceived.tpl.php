@@ -48,7 +48,6 @@
     </div>
   </section>
 </div>
-<?php print $messages; ?>
 
 
 
