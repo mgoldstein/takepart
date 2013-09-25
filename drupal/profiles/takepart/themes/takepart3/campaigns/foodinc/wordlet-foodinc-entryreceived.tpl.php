@@ -1,3 +1,26 @@
+<?php
+  $imgpath = image_style_url('thumb', w('foodinc_entryreceived_facebook_image')->img_src);
+  $og_image = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'property' => 'og:image',
+      'content' => $imgpath,
+    ),
+  );
+  drupal_add_html_head($og_image, 'og_image');
+
+  $description = w('foodinc_entryreceived_facebook_caption')->single;
+  $og_description = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'property' => 'og:description',
+      'content' => $description,
+    ),
+  );
+  drupal_add_html_head($og_description, 'og_description');
+
+?>
+
 <div class="content" id="foodinc-entryreceived">
   <section class="page-body-content cms">
 
