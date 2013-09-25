@@ -1,5 +1,5 @@
 <?
-	global $is_https;
+  global $is_https;
 	$menu_block = module_invoke('menu', 'block_view', 'food_inc_new_multipage_campaign');
 
 	$font = array(
@@ -12,15 +12,14 @@
 	);
 	drupal_add_html_head($font, 'archer');
 
-	// $imgpath = image_style_url('thumb', w('fb_image')->img_src);
-	// $og_image = array(
-	//   '#tag' => 'meta',
-	//   '#attributes' => array(
-	//     'property' => 'og:image',
-	//     'content' => $imgpath,
-	//   ),
-	// );
-	// drupal_add_html_head($og_image, 'og_image');
+		$fb_id = array(
+		  '#tag' => 'meta',
+		  '#attributes' => array(
+		    'property' => 'fb:app_id',
+		    'content' => '247137505296280',
+		  ),
+		);
+		drupal_add_html_head($fb_id, 'fb_id');
 
 	drupal_add_js('//connect.facebook.net/en_US/all.js');
 ?>
