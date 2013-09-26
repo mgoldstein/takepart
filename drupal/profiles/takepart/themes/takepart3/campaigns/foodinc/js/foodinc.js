@@ -162,7 +162,6 @@
               var tp_social_config = {
                 url_append: '?cmpid=organic-share-{{name}}',
                 services: [
-                  {name: 'facebook'},
                   {
                     name: 'twitter',
                     text: '{{title}}',
@@ -177,6 +176,7 @@
               var tp_social_config = {
                 url_append: '?cmpid=organic-share-{{name}}',
                 services: [
+                  {name: 'facebook'},
                   {
                     name: 'twitter',
                     text: '{{title}}',
