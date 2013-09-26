@@ -19,7 +19,17 @@
 		    'content' => '247137505296280',
 		  ),
 		);
-		drupal_add_html_head($fb_id, 'fb_id');
+    drupal_add_html_head($fb_id, 'fb_id');
+
+    $og_title = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => 'og:title',
+        'content' => w('foodin_logo')->single,
+      ),
+    );
+    drupal_add_html_head($og_title, 'og_title');
+
 
 	drupal_add_js('//connect.facebook.net/en_US/all.js');
 ?>
