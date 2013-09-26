@@ -98,7 +98,32 @@
             var email_url = $('#foodinc-social-received').attr('data-email-url');
             var email_text = $('#foodinc-social-received').attr('data-email-text');
 
-            var tp_social_config = {
+
+            if ("https:" == document.location.protocol && $('#page-wrap').attr('data-fb-share') == 'no') {
+              var tp_social_config = {
+              url_append: '?cmpid=organic-share-{{name}}',
+              services: [
+                {
+                  name: 'twitter',
+                  text: twitter_text,
+                  via: twitter_via,
+                  url: twitter_url
+                },
+                {
+                  name: 'googleplus',
+                  title: googleplus_title,
+                  text: googleplus_text
+                },
+                {
+                  name: 'email',
+                  url: email_url,
+                  title: email_title,
+                  text: email_text
+                }
+              ]
+            };
+            } else {
+              var tp_social_config = {
               url_append: '?cmpid=organic-share-{{name}}',
               services: [
                 {
@@ -127,23 +152,41 @@
                 }
               ]
             };
+            }
+
+
             $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
           }
           else{
-            // Social share buttons
-            var tp_social_config = {
-              url_append: '?cmpid=organic-share-{{name}}',
-              services: [
-                {name: 'facebook'},
-                {
-                  name: 'twitter',
-                  text: '{{title}}',
-                  via: 'TakePart'
-                },
-                {name: 'googleplus'},
-                {name: 'email'}
-              ]
-            };
+            if ("https:" == document.location.protocol && $('#page-wrap').attr('data-fb-share') == 'no') {
+              var tp_social_config = {
+                url_append: '?cmpid=organic-share-{{name}}',
+                services: [
+                  {name: 'facebook'},
+                  {
+                    name: 'twitter',
+                    text: '{{title}}',
+                    via: 'TakePart'
+                  },
+                  {name: 'googleplus'},
+                  {name: 'email'}
+                ]
+              };
+            }
+            else{
+              var tp_social_config = {
+                url_append: '?cmpid=organic-share-{{name}}',
+                services: [
+                  {
+                    name: 'twitter',
+                    text: '{{title}}',
+                    via: 'TakePart'
+                  },
+                  {name: 'googleplus'},
+                  {name: 'email'}
+                ]
+              };
+            }
             $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
           }
         }
