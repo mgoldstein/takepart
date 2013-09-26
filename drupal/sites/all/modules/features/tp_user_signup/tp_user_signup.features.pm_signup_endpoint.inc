@@ -26,6 +26,7 @@ function tp_user_signup_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => FALSE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             '1008359',
             '1008357',
@@ -44,7 +45,7 @@ function tp_user_signup_pm_signup_endpoint_defaults() {
   $endpoints[] = array(
     'type' => 'TakePartUserSignupEndpoint',
     'name' => 'user_registration_opt_in_no',
-    'label' => 'TakePart User Registation w/ Opt-In',
+    'label' => 'TakePart User Registation w/o Opt-In',
     'configuration' => array(),
     'plugins' => array(
       'bluestatedigital.pm_signup.handler' => array(
@@ -58,6 +59,7 @@ function tp_user_signup_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => FALSE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array('1010762'),
           'fields' => array(
             '253159' => 'REGISTERED',
