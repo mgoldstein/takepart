@@ -286,7 +286,7 @@ function takepart_facebookapis_page_alter(&$page) {
             xfbml      : true  // parse XFBML
           });
           // Additional initialization code here
-        }();
+        };
         (function(d){
           var js, id = \'facebook-jssdk\'; if (d.getElementById(id)) {return;}
           js = d.createElement(\'script\'); js.id = id; js.async = true;
