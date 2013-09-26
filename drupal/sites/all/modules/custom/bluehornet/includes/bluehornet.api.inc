@@ -7,12 +7,19 @@ include_once dirname(__FILE__) . '/bluehornet.lib.inc';
  */
 class BlueHornet {
 
-  public static function Api() {
+  public static function Api($account = NULL) {
     static $instance = NULL;
     if ($instance === NULL) {
-      $api_domain = variable_get('bluehornet_api_domain', '');
-      $api_key = variable_get('bluehornet_api_key', '');
-      $shared_secret = variable_get('bluehornet_shared_secret', '');
+      if ($account === NULL) {
+        $account = variable_get('bluehornet_default_account', '');
+      }
+      $api_accounts = variable_get('bluehornet_api_accounts', NULL);
+      $api_domain = $api_key = $shared_secret = '';
+      if (isset($api_accounts) && isset($api_accounts[$account])) {
+        $api_domain = $api_accounts[$account]['domain'];
+        $api_key = $api_accounts[$account]['key'];
+        $shared_secret = $api_accounts[$account]['secret'];
+      }
       $instance = new BlueHornet($api_domain, $api_key, $shared_secret);
     }
     return $instance;

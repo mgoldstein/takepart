@@ -11,6 +11,34 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
   $endpoints = array();
   $endpoints[] = array(
     'type' => 'NewsletterCampaignSignupEndpoint',
+    'name' => 'can_email_signup',
+    'label' => 'CAN Email Signup',
+    'configuration' => array(),
+    'plugins' => array(
+      'bluestatedigital.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'form-id' => 140,
+          'email-field-id' => 2784,
+        ),
+      ),
+      'bluehornet.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'segments' => array(
+            0 => '1008407',
+          ),
+          'fields' => array(
+            252906 => 'Webform',
+            253159 => 'CAN',
+          ),
+          'send-welcome' => TRUE,
+        ),
+      ),
+    ),
+  );
+  $endpoints[] = array(
+    'type' => 'NewsletterCampaignSignupEndpoint',
     'name' => 'food_inc',
     'label' => 'Food, Inc.',
     'configuration' => array(),
@@ -25,6 +53,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             0 => '1008360',
           ),
@@ -40,12 +69,13 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
   $endpoints[] = array(
     'type' => 'NewsletterCampaignSignupEndpoint',
     'name' => 'food_inc_awards',
-    'label' => 'Food, Inc. Awards',
+    'label' => 'Food, Inc. Awards (Pivot Account)',
     'configuration' => array(),
     'plugins' => array(
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'pivot',
           'segments' => array(
             0 => '1008360',
             1 => '1022166',
@@ -75,6 +105,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             0 => '1009255',
           ),
@@ -109,6 +140,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             0 => '1008366',
             1 => '1008403',
@@ -138,6 +170,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             0 => '1009256',
           ),
@@ -145,6 +178,36 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
             252906 => 'Webform',
           ),
           'send-welcome' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $endpoints[] = array(
+    'type' => 'NewsletterCampaignSignupEndpoint',
+    'name' => 'newsletter_interstitial',
+    'label' => 'Newsletter Interstitial Signup',
+    'configuration' => array(),
+    'plugins' => array(
+      'bluestatedigital.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'form-id' => 5,
+          'email-field-id' => 52,
+        ),
+      ),
+      'bluehornet.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'segments' => array(
+            0 => '1008359',
+            1 => '1008357',
+            2 => '1008358',
+          ),
+          'fields' => array(
+            252906 => 'Marketing Interstitial',
+            253159 => 'NEWS',
+          ),
+          'send-welcome' => TRUE,
         ),
       ),
     ),
@@ -165,6 +228,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             0 => '1008364',
           ),
@@ -193,38 +257,13 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             0 => '1008361',
           ),
           'fields' => array(
             252906 => 'Webform',
             253159 => 'WFS',
-          ),
-          'send-welcome' => TRUE,
-        ),
-      ),
-    ),
-  );
-  $endpoints[] = array(
-    'type' => 'NewsletterCampaignSignupEndpoint',
-    'name' => 'teach_campaign',
-    'label' => 'Teach Campaign Signup',
-    'configuration' => array(),
-    'plugins' => array(
-      'bluestatedigital.pm_signup.handler' => array(
-        'enabled' => TRUE,
-        'configuration' => array(
-          'form-id' => 53,
-          'email-field-id' => 902,
-        ),
-      ),
-      'bluehornet.pm_signup.handler' => array(
-        'enabled' => TRUE,
-        'configuration' => array(
-          'segments' => array('1008361'),
-          'fields' => array(
-            '252906' => 'Teach Webform',
-            '253159' => 'TEACH',
           ),
           'send-welcome' => TRUE,
         ),
@@ -247,6 +286,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             0 => '1008363',
           ),
@@ -275,6 +315,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             0 => '1008359',
             1 => '1008357',
@@ -305,12 +346,42 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
+          'account' => 'takepart',
           'segments' => array(
             0 => '1008362',
           ),
           'fields' => array(
             252906 => 'Webform',
             253159 => 'COVE',
+          ),
+          'send-welcome' => TRUE,
+        ),
+      ),
+    ),
+  );
+  $endpoints[] = array(
+    'type' => 'NewsletterCampaignSignupEndpoint',
+    'name' => 'teach_campaign',
+    'label' => 'Teach Campaign Signup',
+    'configuration' => array(),
+    'plugins' => array(
+      'bluestatedigital.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'form-id' => 53,
+          'email-field-id' => 902,
+        ),
+      ),
+      'bluehornet.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'account' => 'takepart',
+          'segments' => array(
+            0 => '1008361',
+          ),
+          'fields' => array(
+            252906 => 'Teach Webform',
+            253159 => 'TEACH',
           ),
           'send-welcome' => TRUE,
         ),

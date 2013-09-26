@@ -25,7 +25,10 @@ class BlueHornetSignupHandler {
 
       $data = array('email' => $signup['email']);
 
-      $response = BlueHornet::Api()->addUpdateSubscriber($data,
+      $account = isset($this->configuration['account'])
+        ? $this->configuration['account'] : NULL;
+
+      $response = BlueHornet::Api($account)->addUpdateSubscriber($data,
         $this->configuration['segments'], $this->configuration['fields'],
         $this->configuration['send-welcome']);
 
@@ -67,7 +70,10 @@ class BlueHornetSignupHandler {
 
       $data = array('email' => $signup['email']);
 
-      $response = BlueHornet::Api()->addUpdateSubscriber($data,
+      $account = isset($this->configuration['account'])
+        ? $this->configuration['account'] : NULL;
+
+      $response = BlueHornet::Api($account)->addUpdateSubscriber($data,
         $segments, $fields, $send_welcome);
 
       $added_or_updated = $response['status'] == 1 || $response['status'] == 2;
@@ -88,7 +94,10 @@ class BlueHornetSignupHandler {
       $data['postal_code'] = $signup['address.postal-code'];
     }
 
-    $response = BlueHornet::Api()->addUpdateSubscriber($data,
+    $account = isset($this->configuration['account'])
+      ? $this->configuration['account'] : NULL;
+
+    $response = BlueHornet::Api($account)->addUpdateSubscriber($data,
       $this->configuration['segments'], $this->configuration['fields'],
       $this->configuration['send-welcome']);
 
