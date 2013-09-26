@@ -7,6 +7,8 @@
       ),
     );
     drupal_add_html_head($og_description, 'og_description');
+    global $base_url;
+    global $is_https;
 ?>
 <div class="content" id="foodinc-awards">
   <header>
@@ -18,8 +20,7 @@
             <iframe width="510" height="285" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
             <div class="botr">
-              <?php global $is_https; ?>
-              <?php if(isset($is_https) && $is_https != NULL): ?>
+              <?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
                 <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
               <?php else: ?>
                 <script type="text/javascript" src="//video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
@@ -97,5 +98,4 @@
     </div>
   </section>
 </div>
-
 

@@ -1,4 +1,5 @@
 <?
+  global $base_url;
   global $is_https;
 	$menu_block = module_invoke('menu', 'block_view', 'food_inc_new_multipage_campaign');
 
@@ -55,7 +56,7 @@ googletag.cmd.push(function()
 	global $base_url;
 ?>
 <div id="page-wrapper" class="campaign foodinc">
-	<?php print (isset($is_https) && $is_https != NULL ? '' : render($header)); ?>
+	<?php print ($base_url == 'https://foodinc.takepart.com' || $is_https != NULL ? '' : render($header)); ?>
 
 
 	<div class="page-wrap" data-fb-share="<?php print w('foodinc_facebook_share')->single; ?>">
@@ -86,7 +87,8 @@ googletag.cmd.push(function()
 
 	<!-- end -->
 
-	<?php print (isset($is_https) && $is_https != NULL ? '' : render($footer)); ?>
+	<?php print ($base_url == 'https://foodinc.takepart.com' || $is_https != NULL ? '' : render($footer)); ?>
+
 </div>
 <!-- /place in the <body> to display the 300x250 ad -->
 <!-- place in the <body> to display the background skin ad -->
