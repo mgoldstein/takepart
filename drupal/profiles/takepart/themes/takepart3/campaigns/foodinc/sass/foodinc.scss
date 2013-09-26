@@ -286,7 +286,7 @@
             color: $primary-color;
             text-align: right;
             margin-bottom: 15px;
-            line-height: 24px;
+            line-height: 26px;
             @media (max-width: 700px) {
               clear: left;
             }
@@ -478,7 +478,7 @@
             color: $primary-color;
             padding: 10px 20px;
             line-height: 18px;
-            font-size: 12px;
+            font-size: 13px;
             margin-top: 35px;
             background: image-url('signup-block-mid.jpg'), image-url('signup-block-bottom.jpg');
             background-position: center top, center bottom;
