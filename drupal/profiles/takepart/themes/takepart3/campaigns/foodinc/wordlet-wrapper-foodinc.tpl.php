@@ -55,7 +55,7 @@ googletag.cmd.push(function()
 	global $base_url;
 ?>
 <div id="page-wrapper" class="campaign foodinc">
-	<?php print (isset($is_https) && $is_https != NULL ? render($header) : ''); ?>
+	<?php print (isset($is_https) && $is_https != NULL ? '' : render($header)); ?>
 
 
 	<div class="page-wrap">
@@ -77,7 +77,6 @@ googletag.cmd.push(function()
 	  					<div class="tp-social"></div>
 	  				</aside>
   				<?php endif; ?>
-
 			</header>
 			<main id="page">
 				<?=$content?>
@@ -87,7 +86,7 @@ googletag.cmd.push(function()
 
 	<!-- end -->
 
-	<?php print (isset($is_https) && $is_https != NULL ? render($footer) : ''); ?>
+	<?php print (isset($is_https) && $is_https != NULL ? '' : render($footer)); ?>
 </div>
 <!-- /place in the <body> to display the 300x250 ad -->
 <!-- place in the <body> to display the background skin ad -->
@@ -99,3 +98,4 @@ googletag.cmd.push(function()
 );
 </script>
 </div>
+
