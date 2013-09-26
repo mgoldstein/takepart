@@ -58,7 +58,7 @@ googletag.cmd.push(function()
 	<?php print (isset($is_https) && $is_https != NULL ? '' : render($header)); ?>
 
 
-	<div class="page-wrap">
+	<div class="page-wrap" data-fb-share="<?php print w('foodinc_facebook_share')->single; ?>">
 		<?=w('background_skin')?>
 
 		<div class="main">
