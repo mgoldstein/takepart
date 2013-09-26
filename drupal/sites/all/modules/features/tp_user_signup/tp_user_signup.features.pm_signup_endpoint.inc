@@ -11,6 +11,28 @@ function tp_user_signup_pm_signup_endpoint_defaults() {
   $endpoints = array();
   $endpoints[] = array(
     'type' => 'TakePartUserSignupEndpoint',
+    'name' => 'mentor_strong',
+    'label' => 'Mentor Strong Search Signup (Pivot Account)',
+    'configuration' => array(),
+    'plugins' => array(
+      'bluehornet.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'account' => 'pivot',
+          'segments' => array(
+            '1017890',
+          ),
+          'fields' => array(
+            '253169' => 'MentorStrong',
+            '253168' => 'MENTOR',
+          ),
+          'send-welcome' => TRUE,
+        ),
+      ),
+    ),
+  );
+  $endpoints[] = array(
+    'type' => 'TakePartUserSignupEndpoint',
     'name' => 'user_registration_opt_in_yes',
     'label' => 'TakePart User Registation w/ Opt-In',
     'configuration' => array(),

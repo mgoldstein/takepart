@@ -69,13 +69,13 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
   $endpoints[] = array(
     'type' => 'NewsletterCampaignSignupEndpoint',
     'name' => 'food_inc_awards',
-    'label' => 'Food, Inc. Awards (Pivot Account)',
+    'label' => 'Food, Inc. Awards',
     'configuration' => array(),
     'plugins' => array(
       'bluehornet.pm_signup.handler' => array(
         'enabled' => TRUE,
         'configuration' => array(
-          'account' => 'pivot',
+          'account' => 'takepart',
           'segments' => array(
             0 => '1008360',
             1 => '1022166',
