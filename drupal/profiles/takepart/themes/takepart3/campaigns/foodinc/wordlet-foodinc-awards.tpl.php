@@ -1,3 +1,13 @@
+<?php
+    $og_description = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'property' => 'og:description',
+        'content' => w('fb_description')->multi,
+      ),
+    );
+    drupal_add_html_head($og_description, 'og_description');
+?>
 <div class="content" id="foodinc-awards">
   <header>
     <div class="hero">
