@@ -226,7 +226,8 @@ function pm_signup_api_parse(&$request) {
   }
 
   // Request content type must be JSON
-  if ($_SERVER['CONTENT_TYPE'] !== 'application/json') {
+  if (strlen($_SERVER['CONTENT_TYPE']) < 16
+    || strncasecmp($_SERVER['CONTENT_TYPE'], 'application/json', 16) !== 0) {
     return pm_signup_api_error(400, 'Invalid request content type.');
   }
 
