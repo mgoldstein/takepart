@@ -54,13 +54,13 @@
             <?php wa('foodinc_social_text'); ?>
             <?php wa('foodinc_social_caption'); ?>
             <?php wa('foodinc_social_twitter_via'); ?>
-      <aside id="foodinc-social-received" class="social" facebook-title="<?php print w('foodinc_entryreceived_facebook_title')->single; ?>"
-        facebook-url="<?php print w('foodinc_entryreceived_facebook_url')->single; ?>" facebook-image="<?php print w('foodinc_entryreceived_facebook_image')->img_src; ?>"
-        facebook-text="<?php print w('foodinc_entryreceived_facebook_caption')->multi; ?>" email-title="<?php print w('foodinc_entryreceived_email_title')->single; ?>"
-        email-url="<?php print w('foodinc_entryreceived_email_url')->single; ?>" email-text="<?php print w('foodinc_entryreceived_email_text')->single; ?>"
-        google-title="<?php print w('foodinc_entryreceived_googleplus_title')->single; ?>" google-url="<?php print w('foodinc_entryreceived_googleplus_url')->single; ?>"
-        twitter-via="<?php print w('foodinc_entryreceived_twitter_via')->single; ?>" twitter-text="<?php print w('foodinc_entryreceived_twitter_text')->single; ?>"
-        twitter-url="<?php print w('foodinc_entryreceived_twitter_url')->single; ?>">
+      <aside id="foodinc-social-received" class="social" data-facebook-title="<?php print w('foodinc_entryreceived_facebook_title')->single; ?>"
+        data-facebook-url="<?php print w('foodinc_entryreceived_facebook_url')->single; ?>" data-facebook-image="<?php print w('foodinc_entryreceived_facebook_image')->img_src; ?>"
+        data-facebook-text="<?php print w('foodinc_entryreceived_facebook_caption')->multi; ?>" data-email-title="<?php print w('foodinc_entryreceived_email_title')->single; ?>"
+        data-email-url="<?php print w('foodinc_entryreceived_email_url')->single; ?>" data-email-text="<?php print w('foodinc_entryreceived_email_text')->single; ?>"
+        data-google-title="<?php print w('foodinc_entryreceived_googleplus_title')->single; ?>" data-google-url="<?php print w('foodinc_entryreceived_googleplus_url')->single; ?>"
+        data-twitter-via="<?php print w('foodinc_entryreceived_twitter_via')->single; ?>" data-twitter-text="<?php print w('foodinc_entryreceived_twitter_text')->single; ?>"
+        data-twitter-url="<?php print w('foodinc_entryreceived_twitter_url')->single; ?>">
         <div class="tp-social"></div>
       </aside>
 

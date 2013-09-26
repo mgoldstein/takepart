@@ -82,21 +82,21 @@
 
           var $body = $('body');
           if ( $body.is('.page-wordlet-foodinc-entryreceived') ) {
-            var facebook_title = $('#foodinc-social-received').attr('facebook-title');
-            var facebook_image = $('#foodinc-social-received').attr('facebook-image');
-            var facebook_url = $('#foodinc-social-received').attr('facebook-url');
-            var facebook_caption = $('#foodinc-social-received').attr('facebook-caption');
+            var facebook_title = $('#foodinc-social-received').attr('data-facebook-title');
+            var facebook_image = $('#foodinc-social-received').attr('data-facebook-image');
+            var facebook_url = $('#foodinc-social-received').attr('data-facebook-url');
+            var facebook_caption = $('#foodinc-social-received').attr('data-facebook-caption');
 
-            var twitter_text = $('#foodinc-social-received').attr('twitter-text');
-            var twitter_url = $('#foodinc-social-received').attr('twitter-url');
-            var twitter_via = $('#foodinc-social-received').attr('twitter-via');
+            var twitter_text = $('#foodinc-social-received').attr('data-twitter-text');
+            var twitter_url = $('#foodinc-social-received').attr('data-twitter-url');
+            var twitter_via = $('#foodinc-social-received').attr('data-twitter-via');
 
-            var googleplus_title = $('#foodinc-social-received').attr('google-title');
-            var googleplus_text = $('#foodinc-social-received').attr('googleplus-text');
+            var googleplus_title = $('#foodinc-social-received').attr('data-google-title');
+            var googleplus_text = $('#foodinc-social-received').attr('data-googleplus-text');
 
-            var email_title = $('#foodinc-social-received').attr('email-title');
-            var email_url = $('#foodinc-social-received').attr('email-url');
-            var email_text = $('#foodinc-social-received').attr('email-text');
+            var email_title = $('#foodinc-social-received').attr('data-email-title');
+            var email_url = $('#foodinc-social-received').attr('data-email-url');
+            var email_text = $('#foodinc-social-received').attr('data-email-text');
 
             var tp_social_config = {
               url_append: '?cmpid=organic-share-{{name}}',
