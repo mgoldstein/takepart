@@ -1531,7 +1531,7 @@ function signature_send_signup($signature, $local = TRUE) {
 
     return pm_signup_handle(array(
       'type' => 'signature',
-      'endpoint' => $settings->pm_signup_endpoint_id,
+      'endpoint' => $signature->nid,
       'payload' => $payload,
     ));
   }
@@ -2143,7 +2143,7 @@ function signature_api_create($nid) {
   // Send the signup
   $sent = pm_signup_handle(array(
     'type' => 'signature',
-    'endpoint' => $settings->pm_signup_endpoint_id,
+    'endpoint' => $nid,
     'payload' => $payload,
   ));
 
