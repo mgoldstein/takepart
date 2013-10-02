@@ -26,7 +26,6 @@ function newsletter_campaign_follow_us_service_names() {
  * Newsletter Campaign Entity.
  */
 class NewsletterCampaign extends Entity {
-
   public function __construct($values = array()) {
     parent::__construct($values, 'newsletter_campaign');
   }
@@ -76,7 +75,7 @@ class NewsletterCampaignController extends EntityApiController {
       'header' => '',
       'promo_message' => '',
       'thankyou_message' => '',
-      'tos_link' => 'By clicking "Submit", I agree to be bound by TakePart\'s <a href="/terms-of-use" target="_blank">Terms of Use</a> and <a href="/privacy-policy" target="_blank">Privacy Policy</a>.',
+      'tos_link' => '',
       'campaign_id' => '',
       'follow_us_enabled' => FALSE,
       'follow_us_configuration' => $this->initializeFollowUs(),
@@ -101,12 +100,9 @@ class NewsletterCampaignController extends EntityApiController {
  * Newsletter Campaign Admin UI Controller.
  */
 class NewsletterCampaignUIController extends EntityDefaultUIController {
-
   public function hook_menu() {
-
     $items = parent::hook_menu();
     $items[$this->path]['description'] = 'Manage newsletter campaigns.';
-
     $items['admin/config/newsletter-campaign'] = array(
       'title' => 'Newsletter Campaigns',
       'description' => 'Configuration of Newsletter Campaigns',
@@ -521,7 +517,7 @@ function newsletter_campaign_block_view($delta) {
           'html' => FALSE,
         ),
       );
-*/
+      */
       $path = drupal_get_path('module', 'newsletter_campaign');
       drupal_add_js($path . '/js/newsletter_campaign_block.js');
 
@@ -562,7 +558,7 @@ function newsletter_campaign_block_view($delta) {
           'header' => filter_xss($newsletter->header, $allowed_tags),
           'body' => filter_xss($newsletter->promo_message, $allowed_tags),
           'form' => drupal_get_form('newsletter_campaign_social_form', $newsletter),
-          'tos_link' => filter_xss($newsletter->tos_link, $allowed_tags),
+          'body' => filter_xss($newsletter->tos_link, $allowed_tags),
           'social_links' => $social_links,
         ));
       }
@@ -576,7 +572,7 @@ function newsletter_campaign_block_view($delta) {
           'ncid' => (string) $newsletter->ncid,
           'body' => filter_xss($newsletter->promo_message, $allowed_tags),
           'form' => drupal_get_form('newsletter_campaign_signup_form', $newsletter),
-          'tos_link' => filter_xss($newsletter->tos_link, $allowed_tags),
+          'body' => filter_xss($newsletter->tos_link, $allowed_tags),
         ));
       }
     }

@@ -37,12 +37,17 @@ function newsletter_campaign_schema() {
             'promo_message' => array(
                 'type' => 'text',
                 'not null' => FALSE,
-                'description' => 'Message to display before a user submits their email .',
+                'description' => 'Message to display before a user submits their email.',
             ),
             'thankyou_message' => array(
                 'type' => 'text',
                 'not null' => FALSE,
                 'description' => 'Message to display after a user submits their email.',
+            ),
+            'tos_link' => array(
+                'type' => 'text',
+                'not null' => FALSE,
+                'description' => 'Terms of service copy and links.',
             ),
             'campaign_id' => array(
                 'type' => 'varchar',
@@ -276,9 +281,10 @@ function newsletter_campaign_update_7202(&$sandbox) {
  * Add Terms of Service field to Newsletters.
  */
 function newsletter_campaign_update_7203(&$sandbox) {
-    db_add_field('newsletter_campaign', 'tos_link', array(
-        'type' => 'text',
-        'not null' => FALSE,
-        'description' => 'Legal copy and links.'
-    ));
+    $schema = newsletter_campaign_schema();
+    $table = 'newsletter_campaign';
+    $fields = array('tos_link');
+    foreach ($fields as $field) {
+        db_add_field($table, $field, $schema[$table]['fields'][$field]);
+    }
 }
