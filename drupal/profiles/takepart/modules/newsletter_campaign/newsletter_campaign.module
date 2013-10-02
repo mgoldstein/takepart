@@ -134,7 +134,7 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
       t('Header'),
       t('Promo Message'),
       t('Thank You Message'),
-      t('Legal Terms'),
+      // t('Legal Terms'),
     );
     $render['#header'] = array_merge(array($label), $extra_headers, $headers);
     return $render;
@@ -147,7 +147,7 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
     $additional_cols[] = filter_xss($entity->header, $allowed_tags);
     $additional_cols[] = filter_xss($entity->promo_message, $allowed_tags);
     $additional_cols[] = filter_xss($entity->thankyou_message, $allowed_tags);
-    $additional_cols[] = filter_xss($entity->tos_link, $allowed_tags);
+    // $additional_cols[] = filter_xss($entity->tos_link, $allowed_tags);
     return parent::overviewTableRow($conditions, $id, $entity, $additional_cols);
   }
 }
