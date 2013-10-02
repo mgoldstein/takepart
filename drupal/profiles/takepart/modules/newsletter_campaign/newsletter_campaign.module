@@ -509,6 +509,7 @@ function newsletter_campaign_block_view($delta) {
         'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
 
       // Both blocks have a terms of service link.
+      /*
       $tos_link = array(
         '#theme' => 'link',
         '#text' => t("Terms & Conditions"),
@@ -520,7 +521,7 @@ function newsletter_campaign_block_view($delta) {
           'html' => FALSE,
         ),
       );
-
+*/
       $path = drupal_get_path('module', 'newsletter_campaign');
       drupal_add_js($path . '/js/newsletter_campaign_block.js');
 
