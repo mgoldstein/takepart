@@ -3,7 +3,7 @@
   <p class="message"><?= $variables['body'] ?></p>
   <?php echo drupal_render($variables['form']); ?>
   <p class="terms-of-service"><?php
-    echo drupal_render($variables['tos_link']);
+    echo $variables['tos_link'];
   ?></p>
 </div>
 <h3><?= t('Follow Us') ?></h3>
