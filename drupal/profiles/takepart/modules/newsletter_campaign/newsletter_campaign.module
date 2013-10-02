@@ -76,6 +76,7 @@ class NewsletterCampaignController extends EntityApiController {
       'header' => '',
       'promo_message' => '',
       'thankyou_message' => '',
+      'tos_link' => 'By clicking "Submit", I agree to be bound by TakePart\'s <a href="/terms-of-use">Terms of Use</a> and <a href="/privacy-policy">Privacy Policy</a>.',
       'campaign_id' => '',
       'follow_us_enabled' => FALSE,
       'follow_us_configuration' => $this->initializeFollowUs(),
@@ -137,6 +138,7 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
       t('Header'),
       t('Promo Message'),
       t('Thank You Message'),
+      t('Legal Terms'),
     );
     $render['#header'] = array_merge(array($label), $extra_headers, $headers);
     return $render;
@@ -149,6 +151,7 @@ class NewsletterCampaignUIController extends EntityDefaultUIController {
     $additional_cols[] = filter_xss($entity->header, $allowed_tags);
     $additional_cols[] = filter_xss($entity->promo_message, $allowed_tags);
     $additional_cols[] = filter_xss($entity->thankyou_message, $allowed_tags);
+    $additional_cols[] = filter_xss($entity->tos_link, $allowed_tags);
     return parent::overviewTableRow($conditions, $id, $entity, $additional_cols);
   }
 }
@@ -234,6 +237,7 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     'header' => $campaign->header,
     'promo_message' => $campaign->promo_message,
     'thankyou_message' => $campaign->thankyou_message,
+    'tos_link' => $campaign->tos_link,
     'signup_name' => $campaign->signup_name,
     'follow_us_enabled' => $campaign->follow_us_enabled,
   );
@@ -285,6 +289,14 @@ function newsletter_campaign_form($form, &$form_state, $campaign, $op = 'edit') 
     '#default_value' => $values['thankyou_message'],
     '#description' => t('Message to display after a user submits their email. Supports HTML tags a, i, strong, u, em, b, ul, ol, li, dl, dt, dd, p, br, div, and span.'),
     '#required' => TRUE,
+    '#rows' => 4,
+  );
+
+  $form['tos_link'] = array(
+    '#title' => t('Legal Terms'),
+    '#type' => 'textarea',
+    '#default_value' => $values['tos_link'],
+    '#description' => t('Legal copy and links. Supports HTML tags a, i, strong, u, em, b, ul, ol, li, dl, dt, dd, p, br, div, and span.'),
     '#rows' => 4,
   );
 
