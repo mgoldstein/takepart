@@ -11,7 +11,9 @@
       <?php if(w('foodinc_howto_intro')->video != NULL): ?>
         <div class="video">
           <?php if(substr(w('foodinc_howto_intro')->video, 0, 7 ) === "http://"): ?>
-            <?php $youtube_id = substr(w('foodinc_howto_intro')->video, strrpos(w('foodinc_howto_intro')->video, '=') + 1);; ?>
+            <?php $youtube_id = substr(w('foodinc_howto_intro')->video, strpos(w('foodinc_howto_intro')->video, '=') +1); ?>
+            <?php $count = 1; ?>
+            <?php $youtube_id = str_replace('&', '?', $youtube_id, $count); ?>
             <iframe width="635" height="360" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
             <?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
@@ -45,7 +47,9 @@
           <?php if($w->video != NULL): ?>
             <div class="video">
               <?php if(substr($w->video, 0, 7 ) === "http://"): ?>
-                <?php $youtube_id = substr($w->video, strrpos($w->video, '=') + 1);; ?>
+                <?php $youtube_id = substr($w->video, strpos($w->video, '=') +1); ?>
+                <?php $count = 1; ?>
+                <?php $youtube_id = str_replace('&', '?', $youtube_id, $count); ?>
                 <iframe width="635" height="360" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
               <?php else: ?>
                 <?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
