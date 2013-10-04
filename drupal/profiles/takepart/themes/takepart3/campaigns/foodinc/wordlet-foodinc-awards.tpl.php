@@ -16,7 +16,9 @@
       <?php if(w('hero_content')->video != NULL): ?>
         <div class="video">
           <?php if(substr(w('hero_content')->video, 0, 7 ) === "http://"): ?>
-            <?php $youtube_id = substr(w('hero_content')->video, strrpos(w('hero_content')->video, '=') + 1);; ?>
+            <?php $youtube_id = substr(w('hero_content')->video, strpos(w('hero_content')->video, '=') +1); ?>
+            <?php $count = 1; ?>
+            <?php $youtube_id = str_replace('&', '?', $youtube_id, $count); ?>
             <iframe width="510" height="285" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
             <div class="botr">
