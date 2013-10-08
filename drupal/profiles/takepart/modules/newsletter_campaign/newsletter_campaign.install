@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  *
@@ -12,159 +13,164 @@
  */
 function newsletter_campaign_schema() {
 
-  $schema['newsletter_campaign'] = array(
-    'description' => 'The base table for newsletter campaign entities.',
-    'fields' => array(
-      'ncid' => array(
-        'description' => 'Primary key identifier for the newsletter campaign.',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'title' => array(
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'description' => 'The main title of the newsletter campaign.',
-      ),
-      'header' => array(
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => FALSE,
-        'description' => 'Block header.',
-      ),
-      'promo_message' => array(
-        'type' => 'text',
-        'not null' => FALSE,
-        'description' => 'Message to display before a user submits their email .',
-      ),
-      'thankyou_message' => array(
-        'type' => 'text',
-        'not null' => FALSE,
-        'description' => 'Message to display after a user submits their email.',
-      ),
-      'campaign_id' => array(
-        'type' => 'varchar',
-        'length' => 60,
-  	    'not null' => TRUE,
-  	    'default' =>  '',
-        'description' => 'Campaign code generated from the BSD system.',
-      ),
-      'signup_name' => array(
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => FALSE,
-        'description' => 'Name of the signup.',
-      ),
-      'follow_us_enabled' => array(
-        'description' => 'Show Follow Us box (0 = Hidden, 1 = Visible).',
-        'type' => 'int',
-        'size' => 'tiny',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'follow_us_configuration' => array(
-        'type' => 'text',
-        'not null' => FALSE,
-        'description' => 'Serialized Follow Us configuration.',
-        'serialize' => TRUE,
-      ),
-    ),
-    'primary key' => array('ncid'),
-  );
+    $schema['newsletter_campaign'] = array(
+        'description' => 'The base table for newsletter campaign entities.',
+        'fields' => array(
+            'ncid' => array(
+                'description' => 'Primary key identifier for the newsletter campaign.',
+                'type' => 'serial',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+            ),
+            'title' => array(
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => TRUE,
+                'description' => 'The main title of the newsletter campaign.',
+            ),
+            'header' => array(
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => FALSE,
+                'description' => 'Block header.',
+            ),
+            'promo_message' => array(
+                'type' => 'text',
+                'not null' => FALSE,
+                'description' => 'Message to display before a user submits their email.',
+            ),
+            'thankyou_message' => array(
+                'type' => 'text',
+                'not null' => FALSE,
+                'description' => 'Message to display after a user submits their email.',
+            ),
+            'tos_link' => array(
+                'type' => 'text',
+                'not null' => FALSE,
+                'description' => 'Terms of service copy and links.',
+            ),
+            'campaign_id' => array(
+                'type' => 'varchar',
+                'length' => 60,
+                'not null' => TRUE,
+                'default' => '',
+                'description' => 'Campaign code generated from the BSD system.',
+            ),
+            'signup_name' => array(
+                'type' => 'varchar',
+                'length' => 255,
+                'not null' => FALSE,
+                'description' => 'Name of the signup.',
+            ),
+            'follow_us_enabled' => array(
+                'description' => 'Show Follow Us box (0 = Hidden, 1 = Visible).',
+                'type' => 'int',
+                'size' => 'tiny',
+                'unsigned' => TRUE,
+                'not null' => TRUE,
+                'default' => 0,
+            ),
+            'follow_us_configuration' => array(
+                'type' => 'text',
+                'not null' => FALSE,
+                'description' => 'Serialized Follow Us configuration.',
+                'serialize' => TRUE,
+            ),
+        ),
+        'primary key' => array('ncid'),
+    );
 
-  $schema['newsletter_signups'] = array(
-    'description' => 'Stores extra list information.',
-  	'fields' => array(
-  	  'tns_id' => array(
-        'type' => 'serial',
-        'not null' => TRUE,
-        'description' => 'Table primary key',
-      ),
-  	  'mail' => array(
-  	    'type' => 'varchar',
-  	    'length' => 60,
-  	    'description' => "Email address",
-  	  ),
-  	  'campaign_id' => array(
-  	    'type' => 'varchar',
-  	    'length' => 60,
-  	    'not null' => TRUE,
-  	    'default' =>  '',
-  	    'description' => "Campaign ID from BSD",
-  	  ),
-  	  'source' => array(
-  	    'type' => 'varchar',
-  	    'length' => 100,
-  	    'not null' => TRUE,
-  	    'default' =>  " ",
-  	    'description' => "Source of Email",
-  	  ),
-  	  'status' => array(
-  	    'type' => 'varchar',
-  	    'length' => 1,
-  	    'not null' => TRUE,
-  	    'default' =>  's',
-  	    'description' => "Status of Subscription (s or u)",
-  	  ),
-  	  'uid' => array(
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-        'description' => "Reference to {users}.uid",
-      ),
-      'subscribe_date' => array(
-        'description' => 'The Unix timestamp when the email was subscribed.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0
-      ),
-      'unsubscribe_date' => array(
-        'description' => 'The Unix timestamp when the email was unsubscribed.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0
-      ),
-    ),
-    'indexes' => array(
-      'mail' => array('mail'),
-      'campaign_id' => array('campaign_id'),
-      'uid' => array('uid'),
-    ),
-    'primary key' => array('tns_id'),
-  );
+    $schema['newsletter_signups'] = array(
+        'description' => 'Stores extra list information.',
+        'fields' => array(
+            'tns_id' => array(
+                'type' => 'serial',
+                'not null' => TRUE,
+                'description' => 'Table primary key',
+            ),
+            'mail' => array(
+                'type' => 'varchar',
+                'length' => 60,
+                'description' => "Email address",
+            ),
+            'campaign_id' => array(
+                'type' => 'varchar',
+                'length' => 60,
+                'not null' => TRUE,
+                'default' => '',
+                'description' => "Campaign ID from BSD",
+            ),
+            'source' => array(
+                'type' => 'varchar',
+                'length' => 100,
+                'not null' => TRUE,
+                'default' => " ",
+                'description' => "Source of Email",
+            ),
+            'status' => array(
+                'type' => 'varchar',
+                'length' => 1,
+                'not null' => TRUE,
+                'default' => 's',
+                'description' => "Status of Subscription (s or u)",
+            ),
+            'uid' => array(
+                'type' => 'int',
+                'not null' => TRUE,
+                'default' => 0,
+                'description' => "Reference to {users}.uid",
+            ),
+            'subscribe_date' => array(
+                'description' => 'The Unix timestamp when the email was subscribed.',
+                'type' => 'int',
+                'not null' => TRUE,
+                'default' => 0
+            ),
+            'unsubscribe_date' => array(
+                'description' => 'The Unix timestamp when the email was unsubscribed.',
+                'type' => 'int',
+                'not null' => TRUE,
+                'default' => 0
+            ),
+        ),
+        'indexes' => array(
+            'mail' => array('mail'),
+            'campaign_id' => array('campaign_id'),
+            'uid' => array('uid'),
+        ),
+        'primary key' => array('tns_id'),
+    );
 
-  return $schema;
+    return $schema;
 }
 
 /**
  * Implements hook_uninstall().
  */
 function newsletter_campaign_uninstall() {
-  variable_del('takepart_newsletter_signup_pluris_requester');
-  variable_del('takepart_newsletter_signup_pluris_unsubscribe_url');
-  variable_del('takepart_newsletter_signup_pluris_url');
-  variable_del('newsletter_campaign_unsubscribe_all_campaign_code');
-  variable_del('takepart_newsletter_signup_unsubscribe_problem_page');
-  variable_del('takepart_newsletter_signup_unsubscribe_confirmation_page');
-  variable_del('newsletter_campaign_tp_opt_in_code');
+    variable_del('takepart_newsletter_signup_pluris_requester');
+    variable_del('takepart_newsletter_signup_pluris_unsubscribe_url');
+    variable_del('takepart_newsletter_signup_pluris_url');
+    variable_del('newsletter_campaign_unsubscribe_all_campaign_code');
+    variable_del('takepart_newsletter_signup_unsubscribe_problem_page');
+    variable_del('takepart_newsletter_signup_unsubscribe_confirmation_page');
+    variable_del('newsletter_campaign_tp_opt_in_code');
 }
 
 /**
  * Move this modules weight to be later than the takepart user customization feature.
  */
 function newsletter_campaign_update_7100(&$sandbox) {
-  $weight = db_select('system', 's')
-              ->fields('s', array('weight'))
-              ->condition('name', 'takepart_user_customizations', '=')
-              ->execute()
-              ->fetchField();
+    $weight = db_select('system', 's')
+            ->fields('s', array('weight'))
+            ->condition('name', 'takepart_user_customizations', '=')
+            ->execute()
+            ->fetchField();
 
-  db_update('system')
-    ->fields(array('weight' => $weight +1))
-    ->condition('name', 'newsletter_campaign', '=')
-    ->execute();
+    db_update('system')
+            ->fields(array('weight' => $weight + 1))
+            ->condition('name', 'newsletter_campaign', '=')
+            ->execute();
 }
 
 /**
@@ -172,39 +178,37 @@ function newsletter_campaign_update_7100(&$sandbox) {
  * Update the size of the campaign_id column of the newsletter_signups table.
  */
 function newsletter_campaign_update_7101(&$sandbox) {
-  db_drop_index('newsletter_signups', 'campaign_id');
+    db_drop_index('newsletter_signups', 'campaign_id');
 
-  db_change_field('newsletter_signups', 'campaign_id', 'campaign_id',
-    array(
-      'type' => 'varchar',
-      'length' => 60,
-  	  'not null' => TRUE,
-  	  'default' =>  '',
-  	  'description' => "Campaign ID from BSD",
-    )
-  );
+    db_change_field('newsletter_signups', 'campaign_id', 'campaign_id', array(
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "Campaign ID from BSD",
+            )
+    );
 
-  db_add_index('newsletter_signups', 'campaign_id_index', array('campaign_id'));
+    db_add_index('newsletter_signups', 'campaign_id_index', array('campaign_id'));
 
-  db_change_field('newsletter_campaign', 'campaign_id', 'campaign_id',
-    array(
-      'type' => 'varchar',
-      'length' => 60,
-  	  'not null' => TRUE,
-  	  'default' =>  '',
-  	  'description' => "Campaign Code generated from the BSD system.",
-    )
-  );
+    db_change_field('newsletter_campaign', 'campaign_id', 'campaign_id', array(
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "Campaign Code generated from the BSD system.",
+            )
+    );
 }
 
 function newsletter_campaign_update_7102(&$sandbox) {
-  db_add_field('newsletter_campaign', 'signup_form_id', array(
-    'type' => 'varchar',
-    'length' => 60,
-    'not null' => TRUE,
-    'default' => '',
-    'description' => "Signup form ID from BSD"
-  ));
+    db_add_field('newsletter_campaign', 'signup_form_id', array(
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => "Signup form ID from BSD"
+    ));
 }
 
 /**
@@ -214,61 +218,73 @@ function newsletter_campaign_update_7102(&$sandbox) {
  */
 function newsletter_campaign_update_7200(&$sandbox) {
 
-  db_change_field('newsletter_campaign', 'title', 'title', array(
-    'type' => 'varchar',
-    'length' => 255,
-    'not null' => TRUE,
-    'description' => 'The main title of the newsletter campaign.',
-  ));
+    db_change_field('newsletter_campaign', 'title', 'title', array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The main title of the newsletter campaign.',
+    ));
 
-  db_change_field('newsletter_campaign', 'header', 'header', array(
-    'type' => 'varchar',
-    'length' => 255,
-    'not null' => FALSE,
-    'description' => 'Block header.',
-  ));
+    db_change_field('newsletter_campaign', 'header', 'header', array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'description' => 'Block header.',
+    ));
 
-  db_add_field('newsletter_campaign', 'bsd_form_id', array(
-    'type' => 'int',
-    'not null' => TRUE,
-    'default' =>  0,
-    'description' => 'ID code for BSD signup form serving this campaign.',
-  ));
+    db_add_field('newsletter_campaign', 'bsd_form_id', array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'ID code for BSD signup form serving this campaign.',
+    ));
 
-  db_add_field('newsletter_campaign', 'bsd_field_id', array(
-    'type' => 'int',
-    'not null' => TRUE,
-    'default' =>  0,
-    'description' => 'ID code for BSD signup form field serving this campaign.',
-  ));
+    db_add_field('newsletter_campaign', 'bsd_field_id', array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'ID code for BSD signup form field serving this campaign.',
+    ));
 
-  db_drop_field('newsletter_campaign', 'signup_form_id');
+    db_drop_field('newsletter_campaign', 'signup_form_id');
 }
 
 /**
  * Add 'Follow Us' box to Newsletter signups.
  */
 function newsletter_campaign_update_7201(&$sandbox) {
-  $schema = newsletter_campaign_schema();
-  $table = 'newsletter_campaign';
-  $fields = array('follow_us_enabled', 'follow_us_configuration');
-  foreach ($fields as $field) {
-    db_add_field($table, $field, $schema[$table]['fields'][$field]);
-  }
+    $schema = newsletter_campaign_schema();
+    $table = 'newsletter_campaign';
+    $fields = array('follow_us_enabled', 'follow_us_configuration');
+    foreach ($fields as $field) {
+        db_add_field($table, $field, $schema[$table]['fields'][$field]);
+    }
 }
 
 /**
  * Replace BSD fields with generic signup name.
  */
 function newsletter_campaign_update_7202(&$sandbox) {
-  $schema = newsletter_campaign_schema();
-  $table = 'newsletter_campaign';
-  $add_fields = array('signup_name');
-  $drop_fields = array('bsd_form_id', 'bsd_field_id');
-  foreach ($add_fields as $field) {
-    db_add_field($table, $field, $schema[$table]['fields'][$field]);
-  }
-  foreach ($drop_fields as $field) {
-    db_drop_field($table, $field);
-  }
+    $schema = newsletter_campaign_schema();
+    $table = 'newsletter_campaign';
+    $add_fields = array('signup_name');
+    $drop_fields = array('bsd_form_id', 'bsd_field_id');
+    foreach ($add_fields as $field) {
+        db_add_field($table, $field, $schema[$table]['fields'][$field]);
+    }
+    foreach ($drop_fields as $field) {
+        db_drop_field($table, $field);
+    }
+}
+
+/**
+ * Add Terms of Service field to Newsletters.
+ */
+function newsletter_campaign_update_7203(&$sandbox) {
+    $schema = newsletter_campaign_schema();
+    $table = 'newsletter_campaign';
+    $fields = array('tos_link');
+    foreach ($fields as $field) {
+        db_add_field($table, $field, $schema[$table]['fields'][$field]);
+    }
 }
