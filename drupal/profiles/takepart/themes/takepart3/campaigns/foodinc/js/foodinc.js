@@ -4,7 +4,6 @@
       $(this).tpselect();
     });
 
-    fbAsyncInit();
   });
 
   // The window level TP Social click event needs to be attached to the
