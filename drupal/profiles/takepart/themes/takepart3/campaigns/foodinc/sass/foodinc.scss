@@ -843,7 +843,7 @@
     .left-rail {
       @include inline-block;
       margin-right: 20px;
-      width: 365px;
+      max-width: 600px;
       margin-right: 20px;
       section {
         margin-bottom: 20px;
@@ -1034,7 +1034,7 @@
 
     @media (max-width: 1000px) {
       .left-rail {
-        width: 43%;
+        
       }
 
       .right-rail {
