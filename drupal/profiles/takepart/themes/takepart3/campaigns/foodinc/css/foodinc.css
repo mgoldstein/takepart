@@ -582,6 +582,9 @@
 #page-wrapper.foodinc #foodinc-awards section.right-rail .newsletter .form-wrapper-first form a {
   color: #5c2e13;
 }
+#page-wrapper.foodinc #foodinc-howto .ad {
+  margin-top: 0px;
+}
 #page-wrapper.foodinc #foodinc-howto section.page-body-content {
   width: 66%;
   float: left;
