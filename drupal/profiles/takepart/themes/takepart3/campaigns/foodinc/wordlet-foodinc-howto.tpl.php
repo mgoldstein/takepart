@@ -63,18 +63,6 @@
     </div>
   </section>
     <section class="right-rail">
-      <div class="instruction-block">
-        <div class="top"></div>
-        <div class="mid">
-          <?php foreach( wl('foodinc_howto_instruction_steps') as $key => $w ): ?>
-            <?php $number = $key + 1; ?>
-            <div class="item"><div class="number"><?php print $number; ?></div><span><?php print $w->single; ?></span></div>
-          <?php endforeach; ?>
-          <div class="button"><?php print l(w('foodinc_howto_instruction_button')->single, w('foodinc_howto_instruction_button')->href); ?></div>
-          <div class="extra"><?php print w('foodinc_howto_instruction_block')->multi; ?></div>
-        </div>
-        <div class="bottom"></div>
-      </div>
     <div class="ad">
             <!-- place in the <body> to display the 300x250 ad -->
       <!-- TP3_ROS_RR_ATF_300x250 -->
