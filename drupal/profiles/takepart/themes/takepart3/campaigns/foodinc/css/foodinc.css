@@ -909,8 +909,8 @@
   zoom: 1;
   *display: inline;
   margin-right: 20px;
-  max-width: 600px;
-  margin-right: 20px;
+  max-width: 100%;
+  margin-right: 0px;
 }
 #page-wrapper.foodinc #foodinc-entryform .left-rail section {
   margin-bottom: 20px;
