@@ -846,8 +846,8 @@
     .left-rail {
       @include inline-block;
       margin-right: 20px;
-      max-width: 600px;
-      margin-right: 20px;
+      max-width: 100%;
+      margin-right: 0px;
       section {
         margin-bottom: 20px;
         @include clearfix;
