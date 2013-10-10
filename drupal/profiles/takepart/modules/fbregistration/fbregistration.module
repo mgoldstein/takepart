@@ -252,7 +252,7 @@ function $fbsetfunction(cnt) {
         setTimeout("$fbsetfunction(" + cnt + ")", 1000);
     }
 }
-$fbsetfunction(0);
+//$fbsetfunction(0);
 function $fbregreloadfunction(cnt) {
     var newfbregtag = jQuery(document.getElementsByTagName('fb:registration')).html();
     var changed = false;
@@ -274,7 +274,7 @@ function $fbregreloadfunction(cnt) {
     fbregtag = newfbregtag;
     setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);
 }
-$fbregreloadfunction(0);          
+//$fbregreloadfunction(0);          
 HTM;
 
    
