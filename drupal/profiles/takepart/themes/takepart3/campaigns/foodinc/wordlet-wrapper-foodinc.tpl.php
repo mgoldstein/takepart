@@ -66,7 +66,7 @@ googletag.cmd.push(function()
 			<header class="header">
 				<span class="slug"><?=w('header_slug')?></span>
 				<h1 class="page-header"><?=w('header_title')?></h1>
-				<img src="<?php print $base_url; ?>/profiles/takepart/themes/takepart3/campaigns/foodinc/images/foodinc-banner.jpeg" alt="Food Inc">
+				<img src="<?php print w('foodinc_hero_image')->img_src; ?>" alt="<?php print w('foodinc_hero_image')->single; ?>">
 				<div id="main-navigation" class="menu-wrapper">
 						<?php print render($menu_block['content']); ?>
 				</div>
