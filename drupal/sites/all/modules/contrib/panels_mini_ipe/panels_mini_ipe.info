@@ -1,0 +1,14 @@
+name = Mini Panels In-Place Editor
+description = Extends Panels IPE functionality to Mini Panels
+stylesheets[all][] = panels-mini-ipe.css
+package = Panels
+dependencies[] = panels_ipe
+dependencies[] = panels_mini
+core = 7.x
+
+; Information added by drupal.org packaging script on 2013-04-06
+version = "7.x-1.0-beta2"
+core = "7.x"
+project = "panels_mini_ipe"
+datestamp = "1365228924"
+
