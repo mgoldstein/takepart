@@ -60,6 +60,7 @@ function tp_feature_homepage_fe_nodequeue_export_fields() {
     'reference' => '0',
     'reverse' => '0',
     'i18n' => '0',
+    'subqueues' => '1',
     'types' => array(
       0 => 'openpublish_article',
       1 => 'openpublish_photo_gallery',
