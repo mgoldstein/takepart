@@ -293,6 +293,23 @@ function _wordlet_configuration() {
       'load' => array('site', 'patt_campaign'),
     ),
 
+    // Place at the Table - Snap Alumni
+    'patt_snap_iframe' => array(
+      'title' => 'APATT - Gallery: SNAP Alumni (iframe)',
+      'path' => 'place-at-the-table/snap-gallery',
+      'published' => TRUE,
+      'wrappers' => array(/* 'patt', */ 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/patt/patt.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/patt/patt.js',
+      ),
+      'load' => array('site' , 'patt_campaign'),
+    ),
+      
     // Place at the Table - The Book
     'patt_book' => array(
       'title' => 'A Place at the Table - The Book',
