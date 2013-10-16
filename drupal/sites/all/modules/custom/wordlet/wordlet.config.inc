@@ -298,7 +298,7 @@ function _wordlet_configuration() {
       'title' => 'APATT - Gallery: SNAP Alumni (iframe)',
       'path' => 'place-at-the-table/snap-gallery',
       'published' => TRUE,
-      'wrappers' => array('patt', 'campaign', 'html'),
+      'wrappers' => array(/* 'patt', */ 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
         'campaigns/patt/patt.css',

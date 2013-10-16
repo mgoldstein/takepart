@@ -30,6 +30,25 @@ function wordlet_patt_snap_page_alter($page) {
     return '';
 }
 
+function wordlet_patt_snap_iframe_page_alter($page) {
+    if (isset($_GET['slide'])) {
+        $w = wordlet_find('snap_slides_iframe', 'token', $_GET['slide']);
+        if ($w && $w->img_src) {
+            $metatag = array(
+                '#type' => 'html_tag',
+                '#tag' => 'meta',
+                '#attributes' => array(
+                    'property' => 'og:image',
+                    'content' => $w->img_src,
+                ),
+            );
+
+            drupal_add_html_head($metatag, 'facebook_image');
+        }
+    }
+    return '';
+}
+
 function wordlet_page_intelchange_winners_teams_preprocess(&$variables) {
     if (isset($_GET['team'])) {
         $cur_team = $_GET['team'];
