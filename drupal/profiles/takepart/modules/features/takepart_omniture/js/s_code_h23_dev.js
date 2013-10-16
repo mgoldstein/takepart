@@ -224,7 +224,7 @@ s.m_i("Media");
 
 s.visitorNamespace="takepart";
 s.trackingServer="metrics.takepart.com";
-//s.trackingServerSecure="";
+s.trackingServerSecure="smetrics.takepart.com";
 s.dc=122;
 
 /************************** PLUGINS SECTION *************************/
@@ -534,9 +534,6 @@ s.clickPast=new Function("scp","ct_ev","cp_ev","cpc",""
     +"{cpc='s_cpc';}ev=s.events?s.events+',':'';if(scp){s.events=ev+ct_ev"
     +";s.c_w(cpc,1,0);}else{if(s.c_r(cpc)>=1){s.events=ev+cp_ev;s.c_w(cpc"
     +",0,0);}}}");
-
-s.trackingServer;
-s.trackingServerSecure;
 
 /* WARNING: Changing any of the below variables will cause drastic
 changes to how your visitor data is collected.  Changes should only be
