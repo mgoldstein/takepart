@@ -1,0 +1,16 @@
+<?php
+/**
+ * @file
+ * TakePart dule for functions related to the Nov 2013 redesign
+ * of TakePart and the TP4 Theme.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function tp4_support_help($path, $arg) {
+	switch ($path) {
+		case 'admin/help#tp4_support':
+			return '<p>' . t('Support module for the TP4 theme and the Nov, 2013 redesign.') . '</p>';		
+	}
+}
