@@ -52,11 +52,12 @@ function STARTERKIT_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function STARTERKIT_preprocess_page(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
+
+function tp4_preprocess_page(&$variables) {
+  $variables['skinny'] = render($variables['page']['skinny']);
+  $variables['sidebar'] = render($variables['page']['sidebar']);
 }
-// */
+
 
 /**
  * Override or insert variables into the node templates.

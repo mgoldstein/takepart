@@ -86,14 +86,13 @@ stylesheets[all][] = css/styles.css
 ;   <?php print $header_top; ?>
 
 regions[header]         = Header
-regions[navigation]     = Navigation bar
-regions[highlighted]    = Highlighted
-regions[help]           = Help
+regions[preface]        = Preface
 regions[content]        = Content
-regions[sidebar_first]  = First sidebar
-regions[sidebar_second] = Second sidebar
+regions[skinny]         = Skinny
+regions[sidebar]        = Sidebar
+regions[suffix]         = Suffix
 regions[footer]         = Footer
-regions[bottom]         = Page bottom
+
 
 ; The page_top and page_bottom regions are hidden, which means they will not
 ; show up on the blocks administration page. But they are required in order for

@@ -1,0 +1,18 @@
+// Homepage
+body.front{
+  $zen-column-count:  12;
+  $zen-gutter-width:  0px;
+  main#main{
+    @include zen-grid-container;
+    margin: 0 auto;
+    #primary{
+      @include zen-grid-item(6, 1);
+    }
+    #skinny{
+      @include zen-grid-item(2, 7); 
+    }
+    #sidebar{
+      @include zen-grid-item(4, 9); 
+    }
+  }
+}
