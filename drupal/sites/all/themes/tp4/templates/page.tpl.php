@@ -18,13 +18,13 @@
   <div id="preface">
     <?php print render($tabs); ?>
     <?php print $messages; ?>
-    <?php print render($page['preface']); ?>
     <?php print $breadcrumb; ?>
+    <?php print render($page['preface']); ?>
   </div>
 </div>
 <div class="main-wrapper">
   <main id="main">
-    <div id="primary" class="<?php print $sidebar ? 'with-sidebar' : '' ?>">
+    <div id="primary" class="<?php print $content_classes; ?>">
       <?php print render($page['help']); ?>
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>

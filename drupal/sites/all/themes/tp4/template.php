@@ -52,10 +52,14 @@ function STARTERKIT_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-
 function tp4_preprocess_page(&$variables) {
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
+
+  // build up a string of classes for the main content div
+  $variables['content_classes'] = 'content';
+  $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
+  $variables['content_classes'] .= ($variables['sidebar'] ? ' with-sidebar' : '');
 }
 
 
