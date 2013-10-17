@@ -21,6 +21,7 @@ features[ctools][] = views:views_default:3.0
 features[fe_nodequeue][] = latest_headlines
 features[features_api][] = api:1
 features[panels_mini][] = photo_galleries
+features[user_permission][] = use ccl
 features[views_view][] = homepage_columns
 features[views_view][] = latest_article_in_a_series
 features[views_view][] = latest_headlines

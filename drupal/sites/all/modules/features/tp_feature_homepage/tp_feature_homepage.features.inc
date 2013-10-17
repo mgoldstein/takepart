@@ -12,8 +12,8 @@ function tp_feature_homepage_ccl_features_preset() {
     'Edit Overrides' => array(
       'type' => 'block',
       'title' => 'Edit Overrides',
-      'link' => 'admin/structure/nodequeue/2/view/2',
-      'options' => 'a:11:{s:12:"advanced_css";s:0:"";s:14:"advanced_query";s:0:"";s:15:"advanced_target";s:7:"default";s:12:"node_options";s:4:"node";s:9:"node_type";s:6:"action";s:7:"node_id";s:35:" [nid: [nid: [nid: [nid: [nid:]]]]]";s:12:"block_global";i:0;s:12:"block_select";a:1:{s:28:"views|latest_headlines-block";s:28:"views|latest_headlines-block";}s:12:"view_options";s:1:"0";s:12:"view_display";s:22:"latest_headlines|block";s:9:"view_view";s:9:"campaigns";}',
+      'link' => 'admin/structure/nodequeue/1/view/1',
+      'options' => 'a:8:{s:12:"advanced_css";s:0:"";s:14:"advanced_query";s:0:"";s:15:"advanced_target";s:7:"default";s:12:"node_options";s:4:"node";s:9:"node_type";s:6:"action";s:7:"node_id";s:42:" [nid: [nid: [nid: [nid: [nid: [nid:]]]]]]";s:12:"block_global";i:0;s:12:"block_select";a:1:{s:28:"views|latest_headlines-block";s:28:"views|latest_headlines-block";}}',
     ),
   );
 }

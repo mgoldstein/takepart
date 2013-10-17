@@ -26,35 +26,41 @@ function tp_feature_homepage_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-latest_headlines-block' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'views-homepage_columns-block' => array(
           'module' => 'views',
-          'delta' => 'latest_headlines-block',
-          'region' => 'sidebar_second',
+          'delta' => 'homepage_columns-block',
+          'region' => 'skinny',
           'weight' => '-10',
         ),
         'boxes-box-3981ef30' => array(
           'module' => 'boxes',
           'delta' => 'box-3981ef30',
-          'region' => 'sidebar_second',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'views-latest_headlines-block' => array(
+          'module' => 'views',
+          'delta' => 'latest_headlines-block',
+          'region' => 'sidebar',
           'weight' => '-9',
         ),
         'newsletter_campaign-48' => array(
           'module' => 'newsletter_campaign',
           'delta' => '48',
-          'region' => 'sidebar_second',
+          'region' => 'sidebar',
           'weight' => '-8',
         ),
         'panels_mini-photo_galleries' => array(
           'module' => 'panels_mini',
           'delta' => 'photo_galleries',
-          'region' => 'sidebar_second',
+          'region' => 'sidebar',
           'weight' => '-7',
-        ),
-        'views-homepage_columns-block' => array(
-          'module' => 'views',
-          'delta' => 'homepage_columns-block',
-          'region' => 'sidebar_second',
-          'weight' => '-6',
         ),
       ),
     ),
