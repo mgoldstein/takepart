@@ -31,12 +31,16 @@
       <?php endif; ?>
       <?php print render($page['content']); ?>
     </div>
+    <?php if ($skinny) : ?>
     <div id="skinny">
-      <?php ($skinny ? print $skinny : ''); ?>
+      <?php print $skinny; ?>
     </div>
+    <?php endif; ?>
+    <?php if ($sidebar) : ?>
     <div id="sidebar">
-      <?php ($sidebar ? print $sidebar : ''); ?>
+      <?php print $sidebar; ?>
     </div>
+    <?php endif; ?>
   </main>
 </div>
 <div class="suffix-wrapper">
