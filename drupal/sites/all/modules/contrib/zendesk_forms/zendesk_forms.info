@@ -1,0 +1,10 @@
+name = Zendesk forms
+description = Forms to submit data to the Zendesk API.
+core = 7.x
+
+; Information added by drupal.org packaging script on 2013-08-09
+version = "7.x-1.0-beta1"
+core = "7.x"
+project = "zendesk_forms"
+datestamp = "1376049838"
+
