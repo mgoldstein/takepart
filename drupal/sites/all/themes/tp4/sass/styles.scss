@@ -15,6 +15,10 @@
 @import "compass/typography/vertical_rhythm";
 @import "zen";
 
+/* Base */
+@import "base/fonts";
+// @import "base/base";  //I don't like this
+
 
 /* Helpers */
 @import "helpers/mixins";
@@ -22,17 +26,16 @@
 
 /* Elements */
 @import "elements/pie";
+@import "elements/typography";
 // @import "elements/normalize";
-// @import "elements/misc";
+@import "elements/misc";
 // @import "elements/forms";
-// @import "elements/typography";
 
 /* Page */
 @import "page/homepage";
 
 /* Modules */
-// @import "modules/megamenu";
+@import "modules/megamenu";
 
-/* Layouts */
-@import "layouts/fixed";
-// @import "layouts/responsive";
+/* Fixed */
+@import "base/fixed";  // I don't like this

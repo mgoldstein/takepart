@@ -87,15 +87,36 @@ $arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
 // http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
 $courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
 
+
 // Now create some variables for the font stacks we want to use on this site.
-$base-font-family: $verdana; // The font family set on the html element.
-$font-body:        $verdana;
-$font-monospace:   $courier;
+// Make these better
+$ashbury-bold: "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
+$ashbury-light: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+$ashbury-light-italic: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
+$ashbury-regular: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+
+$adelle-light-italic: "AdelleSans-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
+$adelle-light: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+$adelle-regular: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+$adelle-italic: "AdelleSans-Italic", "Times New Roman", Georgia, "DejaVu Serif", serif;
 
 
 //
 // Colors, etc.
 //
+
+$light-blue: #00B5CC; //takepart live blue
+$blue: #0080A3; // blue used for text and icons
+$light-mint: #01BF9E;  //mint used for graphics
+$mint: #019F84;  // mint used for text and icons
+$dark-gray: #5C5C5C;
+$light-gray: #949494;
+$gray-background: #EEE;
+$gray-line: #CCC;
+$burnt-orange: #DD7132;
+
+
+
 
 // The amount lists, blockquotes and comments are indented.
 $indent-amount: 30px;

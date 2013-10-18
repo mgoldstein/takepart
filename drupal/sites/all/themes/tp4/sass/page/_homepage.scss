@@ -5,11 +5,13 @@ body.front{
   main#main{
     @include zen-grid-container;
     margin: 0 auto;
+    max-width: 960px;
+    width: 100%;
     #primary{
       @include zen-grid-item(6, 1);
     }
     #skinny{
-      @include zen-grid-item(2, 7); 
+      @include zen-grid-item(2, 7);
     }
     #sidebar{
       @include zen-grid-item(4, 9); 
