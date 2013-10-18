@@ -159,11 +159,12 @@ h2 {
 }
 
 /* line 40, ../sass/elements/_typography.scss */
-.section-headers {
+.section-header {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  line-height: 28px;
 }
 
-/* line 48, ../sass/elements/_typography.scss */
+/* line 49, ../sass/elements/_typography.scss */
 a {
   text-decoration: none;
   color: #01bf9e;
@@ -1019,20 +1020,20 @@ tr.selected td {
  *
  * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
  */
-/* line 22, ../sass/page/_layout.scss */
+/* line 21, ../sass/page/_layout.scss */
 body {
   width: 100%;
 }
 
-/* line 25, ../sass/page/_layout.scss */
+/* line 24, ../sass/page/_layout.scss */
 .header-wrapper, .preface-wrapper, .main-wrapper, .suffix-wrapper, .footer-wrapper {
   width: 100%;
   height: auto;
 }
 
-/* line 29, ../sass/page/_layout.scss */
+/* line 28, ../sass/page/_layout.scss */
 header#header, #preface, main#main, #suffix, footer {
-  max-width: 100%;
+  max-width: 980px;
   width: 100%;
   margin: 0 auto;
   clear: left;
@@ -1047,10 +1048,10 @@ header#header:after, #preface:after, main#main:after, #suffix:after, footer:afte
   clear: both;
 }
 
-/* line 37, ../sass/page/_layout.scss */
+/* line 36, ../sass/page/_layout.scss */
 main#main {
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 980px;
   width: 100%;
 }
 /* line 46, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
@@ -1062,7 +1063,7 @@ main#main:before, main#main:after {
 main#main:after {
   clear: both;
 }
-/* line 44, ../sass/page/_layout.scss */
+/* line 43, ../sass/page/_layout.scss */
 main#main #primary {
   float: left;
   width: 100%;
@@ -1076,7 +1077,7 @@ main#main #primary {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-/* line 47, ../sass/page/_layout.scss */
+/* line 46, ../sass/page/_layout.scss */
 main#main #sidebar {
   float: left;
   width: 33.33333%;
@@ -1090,7 +1091,7 @@ main#main #sidebar {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-/* line 51, ../sass/page/_layout.scss */
+/* line 50, ../sass/page/_layout.scss */
 main#main.with-skinny #primary {
   float: left;
   width: 83.33333%;
@@ -1104,7 +1105,7 @@ main#main.with-skinny #primary {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-/* line 54, ../sass/page/_layout.scss */
+/* line 53, ../sass/page/_layout.scss */
 main#main.with-skinny #skinny {
   float: left;
   width: 16.66667%;
@@ -1118,7 +1119,7 @@ main#main.with-skinny #skinny {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-/* line 59, ../sass/page/_layout.scss */
+/* line 58, ../sass/page/_layout.scss */
 main#main.with-sidebar #primary {
   float: left;
   width: 66.66667%;
@@ -1132,7 +1133,7 @@ main#main.with-sidebar #primary {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-/* line 64, ../sass/page/_layout.scss */
+/* line 63, ../sass/page/_layout.scss */
 main#main.with-sidebar.with-skinny #primary {
   float: left;
   width: 50%;
@@ -1146,7 +1147,7 @@ main#main.with-sidebar.with-skinny #primary {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-/* line 67, ../sass/page/_layout.scss */
+/* line 66, ../sass/page/_layout.scss */
 main#main.with-sidebar.with-skinny #skinny {
   float: left;
   width: 16.66667%;
@@ -1159,6 +1160,43 @@ main#main.with-sidebar.with-skinny #skinny {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
+}
+
+/* line 4, ../sass/page/_homepage.scss */
+body.front #sidebar .block-title {
+  border-top: 4px solid #000;
+  padding-top: 5px;
+}
+
+/* line 11, ../sass/page/_homepage.scss */
+.date {
+  float: right;
+}
+
+/* line 18, ../sass/page/_homepage.scss */
+.latest-headlines .views-row {
+  line-height: 24px;
+  font-size: 14px;
+  position: relative;
+  padding-left: 15px;
+}
+/* line 23, ../sass/page/_homepage.scss */
+.latest-headlines .views-row:before {
+  content: '';
+  height: 6px;
+  width: 6px;
+  background-color: #0080a3;
+  position: absolute;
+  top: 7px;
+  left: 0;
+}
+/* line 33, ../sass/page/_homepage.scss */
+.latest-headlines a {
+  color: #000;
+}
+/* line 35, ../sass/page/_homepage.scss */
+.latest-headlines a:hover {
+  color: #019f84;
 }
 
 /* Modules */

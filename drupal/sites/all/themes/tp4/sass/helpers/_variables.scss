@@ -52,6 +52,7 @@ $legacy-support-for-ie8: true;
 // use in the normalize.scss file.
 // @see http://compass-style.org/reference/compass/typography/vertical_rhythm/
 
+
 $base-font-size:   16px; // The font size set on the root html element.
 $base-line-height: 24px; // This line-height determines the basic unit of vertical rhythm.
 
@@ -83,13 +84,14 @@ $tahoma:          Tahoma, Verdana, "DejaVu Sans", sans-serif;
 $helvetica:       Helvetica, Arial, "Nimbus Sans L", sans-serif;
 $arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
 
-// For an explanation of why "sans-serif" is at the end of this list, see
-// http://meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
-$courier:         "Courier New", "DejaVu Sans Mono", monospace, sans-serif;
+//
+// Page
+//
+$page-width: 980px;
 
-
-// Now create some variables for the font stacks we want to use on this site.
-// Make these better
+//
+// Fonts
+//
 $ashbury-bold: "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
 $ashbury-light: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
 $ashbury-light-italic: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
@@ -102,9 +104,8 @@ $adelle-italic: "AdelleSans-Italic", "Times New Roman", Georgia, "DejaVu Serif",
 
 
 //
-// Colors, etc.
+// Colors
 //
-
 $light-blue: #00B5CC; //takepart live blue
 $blue: #0080A3; // blue used for text and icons
 $light-mint: #01BF9E;  //mint used for graphics
@@ -117,7 +118,9 @@ $burnt-orange: #DD7132;
 
 
 
-
+//
+// Misc
+//
 // The amount lists, blockquotes and comments are indented.
 $indent-amount: 30px;
 

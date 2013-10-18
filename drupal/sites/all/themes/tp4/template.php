@@ -63,6 +63,10 @@ function tp4_preprocess_page(&$variables) {
 }
 
 
+function tp4_preprocess_block(&$variables) {
+  $variables['title_attributes_array']['class'][] = 'section-header';
+}
+
 /**
  * Override or insert variables into the node templates.
  *
