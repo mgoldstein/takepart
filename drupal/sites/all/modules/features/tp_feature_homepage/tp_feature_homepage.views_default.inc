@@ -22,7 +22,7 @@ function tp_feature_homepage_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Homepage Columns';
+  $handler->display->display_options['title'] = 'columns';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -157,7 +157,8 @@ function tp_feature_homepage_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Latest Headlines';
+  $handler->display->display_options['title'] = 'latest headlines';
+  $handler->display->display_options['css_class'] = 'latest-headlines';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';

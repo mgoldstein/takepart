@@ -13,6 +13,7 @@ dependencies[] = panels_ipe
 dependencies[] = panels_mini
 dependencies[] = panels_mini_ipe
 dependencies[] = takepart_gallery
+dependencies[] = tp4_support
 features[ccl][] = Edit Overrides
 features[context][] = homepage
 features[ctools][] = context:context:3
