@@ -17,8 +17,6 @@
 
 /* Base */
 @import "base/fonts";
-// @import "base/base";  //I don't like this
-
 
 /* Helpers */
 @import "helpers/mixins";
@@ -32,10 +30,9 @@
 // @import "elements/forms";
 
 /* Page */
+@import "page/layout";
 @import "page/homepage";
 
 /* Modules */
 @import "modules/megamenu";
 
-/* Fixed */
-@import "base/fixed";  // I don't like this
