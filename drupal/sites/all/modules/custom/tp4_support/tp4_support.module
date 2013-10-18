@@ -14,3 +14,44 @@ function tp4_support_help($path, $arg) {
 			return '<p>' . t('Support module for the TP4 theme and the Nov, 2013 redesign.') . '</p>';		
 	}
 }
+
+/**
+* Implements hook_entity_info_alter().
+*
+* Add view modes for homepage content display.
+*/
+function tp4_support_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['feature_main'] = array(
+    'label' => t('Main Feature'),
+    'custom settings' => TRUE,
+  );
+  $entity_info['node']['view modes']['feature_secondary'] = array(
+    'label' => t('Secondary Feature'),
+    'custom settings' => TRUE,
+  );
+  $entity_info['node']['view modes']['feature_video'] = array(
+    'label' => t('Video Feature'),
+    'custom settings' => TRUE,
+  );
+}
+
+/**
+* Implements hook_preprocess_node().
+*
+* Add template suggestions for featured view modes.
+*/
+function tp4_support_preprocess_node(&$vars) {
+  if($vars['view_mode'] == 'feature_main') {
+	$vars['theme_hook_suggestions'][] = 'node__feature_main';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__feature_main';
+  }
+  if($vars['view_mode'] == 'feature_secondary') {
+	$vars['theme_hook_suggestions'][] = 'node__feature_secondary';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__feature_secondary';
+  }
+  if($vars['view_mode'] == 'feature_video') {
+	$vars['theme_hook_suggestions'][] = 'node__feature_video';
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__feature_video';
+  }
+
+}
