@@ -1,0 +1,5 @@
+name = TakePart4 Theme Support
+description = Module for functions related to the Nov 2013 redesign of TakePart and the TP4 Theme
+core = 7.x
+package = TP4
+version = 7.x-1.0
