@@ -42,13 +42,13 @@ function tp_feature_homepage_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-3981ef30',
           'region' => 'sidebar',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'views-latest_headlines-block' => array(
           'module' => 'views',
           'delta' => 'latest_headlines-block',
           'region' => 'sidebar',
-          'weight' => '-9',
+          'weight' => '-10',
         ),
         'newsletter_campaign-48' => array(
           'module' => 'newsletter_campaign',
