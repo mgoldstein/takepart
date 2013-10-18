@@ -11,18 +11,10 @@
 // We are going to create a 980px wide, 5 column grid with 20px gutters between
 // columns (applied as 10px of left/right padding on each column).
 
-$zen-column-count:  12;
-$zen-gutter-width:  20px;
-$zen-grid-width:    960px;
-
-// If you need IE6/7 support for box-sizing: border-box (default), see _base.scss
-// Since the same CSS unit for grid width and gutter width are set here
-// we can use box-sizing: content-box; without worrying about polyfills.
-$zen-box-sizing: content-box;
 
 // You can generate more efficient CSS if you manually apply the
 // zen-grid-item-base mixin to all grid items from within a single ruleset.
-$zen-auto-include-item-base: false;
+// $zen-auto-include-item-base: false;
 // $zen-auto-include-flow-item-base: false;
 
 html{
@@ -40,4 +32,40 @@ header#header, #preface, main#main, #suffix, footer{
   width: 100%;
   margin: 0 auto;
   @include zen-clear();
+}
+
+main#main{
+  $zen-column-count:  12;
+  $zen-gutter-width:  0px;
+  @include zen-grid-container;
+  margin: 0 auto;
+  max-width: 960px;
+  width: 100%;
+  #primary{
+    @include zen-grid-item(12, 1);
+  }
+  #sidebar{
+    @include zen-grid-item(4, 9);
+  }
+  &.with-skinny{
+    #primary{
+      @include zen-grid-item(10, 1);
+    }
+    #skinny{
+      @include zen-grid-item(2, 11);
+    }
+  }
+  &.with-sidebar{
+    #primary{
+      @include zen-grid-item(8, 1);
+    }
+  }
+  &.with-sidebar.with-skinny{
+    #primary{
+      @include zen-grid-item(6, 1);
+    }
+    #skinny{
+      @include zen-grid-item(2, 7);
+    }
+  }
 }

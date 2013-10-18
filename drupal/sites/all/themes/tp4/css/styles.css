@@ -1009,66 +1009,6 @@ tr.selected td {
 }
 
 /* Page */
-/* line 5, ../sass/page/_homepage.scss */
-body.front main#main {
-  margin: 0 auto;
-  max-width: 960px;
-  width: 100%;
-}
-/* line 46, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
-body.front main#main:before, body.front main#main:after {
-  content: "";
-  display: table;
-}
-/* line 50, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
-body.front main#main:after {
-  clear: both;
-}
-/* line 10, ../sass/page/_homepage.scss */
-body.front main#main #primary {
-  float: left;
-  width: 50%;
-  margin-left: 0%;
-  margin-right: -50%;
-  padding-left: 0px;
-  padding-right: 0px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  word-wrap: break-word;
-}
-/* line 13, ../sass/page/_homepage.scss */
-body.front main#main #skinny {
-  float: left;
-  width: 16.66667%;
-  margin-left: 50%;
-  margin-right: -66.66667%;
-  padding-left: 0px;
-  padding-right: 0px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  word-wrap: break-word;
-}
-/* line 16, ../sass/page/_homepage.scss */
-body.front main#main #sidebar {
-  float: left;
-  width: 33.33333%;
-  margin-left: 66.66667%;
-  margin-right: -100%;
-  padding-left: 0px;
-  padding-right: 0px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  word-wrap: break-word;
-}
-
-/* Modules */
-/* Fixed */
 /**
  * @file
  * Positioning for a fixed-width, desktop-centric layout.
@@ -1079,20 +1019,20 @@ body.front main#main #sidebar {
  *
  * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
  */
-/* line 30, ../sass/base/_fixed.scss */
+/* line 22, ../sass/page/_layout.scss */
 body {
   width: 100%;
 }
 
-/* line 33, ../sass/base/_fixed.scss */
+/* line 25, ../sass/page/_layout.scss */
 .header-wrapper, .preface-wrapper, .main-wrapper, .suffix-wrapper, .footer-wrapper {
   width: 100%;
   height: auto;
 }
 
-/* line 37, ../sass/base/_fixed.scss */
+/* line 29, ../sass/page/_layout.scss */
 header#header, #preface, main#main, #suffix, footer {
-  max-width: 960px;
+  max-width: 100%;
   width: 100%;
   margin: 0 auto;
   clear: left;
@@ -1106,3 +1046,119 @@ header#header:before, header#header:after, #preface:before, #preface:after, main
 header#header:after, #preface:after, main#main:after, #suffix:after, footer:after {
   clear: both;
 }
+
+/* line 37, ../sass/page/_layout.scss */
+main#main {
+  margin: 0 auto;
+  max-width: 960px;
+  width: 100%;
+}
+/* line 46, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
+main#main:before, main#main:after {
+  content: "";
+  display: table;
+}
+/* line 50, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
+main#main:after {
+  clear: both;
+}
+/* line 44, ../sass/page/_layout.scss */
+main#main #primary {
+  float: left;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: -100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+/* line 47, ../sass/page/_layout.scss */
+main#main #sidebar {
+  float: left;
+  width: 33.33333%;
+  margin-left: 66.66667%;
+  margin-right: -100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+/* line 51, ../sass/page/_layout.scss */
+main#main.with-skinny #primary {
+  float: left;
+  width: 83.33333%;
+  margin-left: 0%;
+  margin-right: -83.33333%;
+  padding-left: 0px;
+  padding-right: 0px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+/* line 54, ../sass/page/_layout.scss */
+main#main.with-skinny #skinny {
+  float: left;
+  width: 16.66667%;
+  margin-left: 83.33333%;
+  margin-right: -100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+/* line 59, ../sass/page/_layout.scss */
+main#main.with-sidebar #primary {
+  float: left;
+  width: 66.66667%;
+  margin-left: 0%;
+  margin-right: -66.66667%;
+  padding-left: 0px;
+  padding-right: 0px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+/* line 64, ../sass/page/_layout.scss */
+main#main.with-sidebar.with-skinny #primary {
+  float: left;
+  width: 50%;
+  margin-left: 0%;
+  margin-right: -50%;
+  padding-left: 0px;
+  padding-right: 0px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+/* line 67, ../sass/page/_layout.scss */
+main#main.with-sidebar.with-skinny #skinny {
+  float: left;
+  width: 16.66667%;
+  margin-left: 50%;
+  margin-right: -66.66667%;
+  padding-left: 0px;
+  padding-right: 0px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+/* Modules */

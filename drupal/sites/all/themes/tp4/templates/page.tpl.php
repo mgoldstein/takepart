@@ -23,8 +23,8 @@
   </div>
 </div>
 <div class="main-wrapper">
-  <main id="main">
-    <div id="primary" class="<?php print $content_classes; ?>">
+  <main id="main" class="<?php print $content_classes; ?>">
+    <div id="primary">
       <?php print render($page['help']); ?>
       <?php if ($action_links): ?>
         <ul class="action-links"><?php print render($action_links); ?></ul>
