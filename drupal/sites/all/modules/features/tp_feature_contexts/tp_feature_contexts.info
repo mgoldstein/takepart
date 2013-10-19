@@ -1,0 +1,17 @@
+name = TakePart Contexts
+description = Eventually all contexts will live here
+core = 7.x
+package = Content Display
+version = 7.x-1.0
+project = tp_feature_contexts
+dependencies[] = boxes
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = newsletter_campaign
+dependencies[] = panels_mini
+dependencies[] = system
+dependencies[] = takepart_gallery
+dependencies[] = views
+features[context][] = homepage
+features[ctools][] = context:context:3
+features[features_api][] = api:1

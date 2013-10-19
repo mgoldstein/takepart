@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * tp_feature_homepage.context.inc
+ * tp_feature_contexts.context.inc
  */
 
 /**
  * Implements hook_context_default_contexts().
  */
-function tp_feature_homepage_context_default_contexts() {
+function tp_feature_contexts_context_default_contexts() {
   $export = array();
 
   $context = new stdClass();
@@ -38,17 +38,17 @@ function tp_feature_homepage_context_default_contexts() {
           'region' => 'skinny',
           'weight' => '-10',
         ),
-        'boxes-box-3981ef30' => array(
-          'module' => 'boxes',
-          'delta' => 'box-3981ef30',
-          'region' => 'sidebar',
-          'weight' => '-9',
-        ),
         'views-latest_headlines-block' => array(
           'module' => 'views',
           'delta' => 'latest_headlines-block',
           'region' => 'sidebar',
           'weight' => '-10',
+        ),
+        'boxes-box-3981ef30' => array(
+          'module' => 'boxes',
+          'delta' => 'box-3981ef30',
+          'region' => 'sidebar',
+          'weight' => '-9',
         ),
         'newsletter_campaign-48' => array(
           'module' => 'newsletter_campaign',

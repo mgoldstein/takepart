@@ -1,7 +1,8 @@
-name = Theme Settings
+name = TakePart Theme Settings
 description = Theme settings with themekey.
 core = 7.x
-package = Content Display
+package = Config
+php = 5.2.4
 version = 7.x-1.0
 project = tp_feature_theme_settings
 dependencies[] = ctools

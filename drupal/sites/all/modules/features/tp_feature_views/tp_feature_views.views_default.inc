@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * tp_feature_homepage.views_default.inc
+ * tp_feature_views.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function tp_feature_homepage_views_default_views() {
+function tp_feature_views_views_default_views() {
   $export = array();
 
   $view = new view();
