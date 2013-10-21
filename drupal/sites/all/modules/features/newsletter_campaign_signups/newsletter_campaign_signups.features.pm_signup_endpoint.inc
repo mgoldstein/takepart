@@ -403,7 +403,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
             1 => '1008360',
           ),
           'fields' => array(
-            252906 => 'Teach Webform',
+            252906 => 'Webform',
             253159 => 'CHAVEZ',
           ),
           'send-welcome' => TRUE,
