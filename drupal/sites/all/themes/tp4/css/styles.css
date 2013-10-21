@@ -78,7 +78,7 @@
 /* Elements */
 /* line 27, ../sass/elements/_pie.scss */
 .pie-element, .bordered, .gradient {
-  behavior: url("/css/PIE.htc");
+  behavior: url("pie.htc");
   position: relative;
 }
 
@@ -109,13 +109,13 @@
 
 /* line 56, ../sass/elements/_pie.scss */
 .z-pie-element, .widget h3 {
-  behavior: url("/css/PIE.htc");
+  behavior: url("pie.htc");
   z-index: 0;
 }
 
 /* line 71, ../sass/elements/_pie.scss */
 .has-gradient {
-  behavior: url("/css/PIE.htc");
+  behavior: url("pie.htc");
   position: relative;
   background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #0000ff));
   background: -webkit-linear-gradient(#ff0000, #0000ff);
@@ -164,7 +164,16 @@ h2 {
   line-height: 28px;
 }
 
-/* line 49, ../sass/elements/_typography.scss */
+/* line 48, ../sass/elements/_typography.scss */
+.column-title {
+  font-family: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  font-size: 18px;
+  line-height: 20px;
+  color: #0080a3;
+  text-transform: uppercase;
+}
+
+/* line 56, ../sass/elements/_typography.scss */
 a {
   text-decoration: none;
   color: #01bf9e;
@@ -1091,7 +1100,12 @@ main#main #sidebar {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-/* line 50, ../sass/page/_layout.scss */
+/* line 49, ../sass/page/_layout.scss */
+main#main #skinny {
+  padding-right: 20px;
+  padding-left: 15px;
+}
+/* line 54, ../sass/page/_layout.scss */
 main#main.with-skinny #primary {
   float: left;
   width: 83.33333%;
@@ -1104,8 +1118,9 @@ main#main.with-skinny #primary {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
+  padding-right: 5px;
 }
-/* line 53, ../sass/page/_layout.scss */
+/* line 58, ../sass/page/_layout.scss */
 main#main.with-skinny #skinny {
   float: left;
   width: 16.66667%;
@@ -1118,8 +1133,10 @@ main#main.with-skinny #skinny {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
+  padding-right: 20px;
+  padding-left: 15px;
 }
-/* line 58, ../sass/page/_layout.scss */
+/* line 65, ../sass/page/_layout.scss */
 main#main.with-sidebar #primary {
   float: left;
   width: 66.66667%;
@@ -1132,8 +1149,9 @@ main#main.with-sidebar #primary {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
+  padding-right: 5px;
 }
-/* line 63, ../sass/page/_layout.scss */
+/* line 71, ../sass/page/_layout.scss */
 main#main.with-sidebar.with-skinny #primary {
   float: left;
   width: 50%;
@@ -1146,8 +1164,9 @@ main#main.with-sidebar.with-skinny #primary {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
+  padding-right: 5px;
 }
-/* line 66, ../sass/page/_layout.scss */
+/* line 75, ../sass/page/_layout.scss */
 main#main.with-sidebar.with-skinny #skinny {
   float: left;
   width: 16.66667%;
@@ -1160,27 +1179,32 @@ main#main.with-sidebar.with-skinny #skinny {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
+  padding-right: 20px;
+  padding-left: 15px;
 }
 
-/* line 4, ../sass/page/_homepage.scss */
+/* line 3, ../sass/page/_homepage.scss */
 body.front #sidebar .block-title {
   border-top: 4px solid #000;
   padding-top: 5px;
 }
 
-/* line 11, ../sass/page/_homepage.scss */
+/* line 10, ../sass/page/_homepage.scss */
 .date {
   float: right;
+  font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  color: #5c5c5c;
+  font-size: 13px;
 }
 
-/* line 18, ../sass/page/_homepage.scss */
+/* line 21, ../sass/page/_homepage.scss */
 .latest-headlines .views-row {
   line-height: 24px;
   font-size: 14px;
   position: relative;
   padding-left: 15px;
 }
-/* line 23, ../sass/page/_homepage.scss */
+/* line 26, ../sass/page/_homepage.scss */
 .latest-headlines .views-row:before {
   content: '';
   height: 6px;
@@ -1190,13 +1214,50 @@ body.front #sidebar .block-title {
   top: 7px;
   left: 0;
 }
-/* line 33, ../sass/page/_homepage.scss */
+/* line 36, ../sass/page/_homepage.scss */
 .latest-headlines a {
   color: #000;
+  height: 100%;
+  display: block;
 }
-/* line 35, ../sass/page/_homepage.scss */
+/* line 40, ../sass/page/_homepage.scss */
 .latest-headlines a:hover {
   color: #019f84;
+}
+
+/* line 48, ../sass/page/_homepage.scss */
+#skinny .columns {
+  text-align: center;
+}
+/* line 51, ../sass/page/_homepage.scss */
+#skinny .columns > .view-content > .views-row {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: dashed 1px #000;
+}
+/* line 55, ../sass/page/_homepage.scss */
+#skinny .columns > .view-content > .views-row:last-child {
+  border-bottom: none;
+}
+/* line 60, ../sass/page/_homepage.scss */
+#skinny #block-views-homepage-columns-block .block-title {
+  font-size: 12px;
+  color: #fff;
+  background-color: #0080a3;
+  border-bottom: 20px;
+  -webkit-border-radius: 0px 0px 37px 37px;
+  border-radius: 0px 0px 37px 37px;
+  width: 74px;
+  height: 37px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 20px;
+  behavior: url("pie.htc");
+}
+/* line 74, ../sass/page/_homepage.scss */
+#skinny #block-views-homepage-columns-block .line {
+  border-bottom: 1px solid #0080a3;
+  margin: 0 13px;
 }
 
 /* Modules */
