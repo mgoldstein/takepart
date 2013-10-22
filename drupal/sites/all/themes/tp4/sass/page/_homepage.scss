@@ -1,4 +1,10 @@
 body.front{
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
   #sidebar{
     .block-title{
       border-top: 4px solid #000;
