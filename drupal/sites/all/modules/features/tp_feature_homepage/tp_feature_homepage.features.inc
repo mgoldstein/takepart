@@ -9,11 +9,23 @@
  */
 function tp_feature_homepage_ccl_features_preset() {
   return array(
+    'Edit Homepage Columns' => array(
+      'type' => 'block',
+      'title' => 'Edit Homepage Columns',
+      'link' => 'admin/structure/taxonomy/series',
+      'options' => 'a:8:{s:12:"advanced_css";s:0:"";s:14:"advanced_query";s:0:"";s:15:"advanced_target";s:7:"default";s:12:"node_options";s:4:"node";s:9:"node_type";s:6:"action";s:7:"node_id";s:7:" [nid:]";s:12:"block_global";i:0;s:12:"block_select";a:1:{s:28:"views|homepage_columns-block";s:28:"views|homepage_columns-block";}}',
+    ),
     'Edit Overrides' => array(
       'type' => 'block',
       'title' => 'Edit Overrides',
       'link' => 'admin/structure/nodequeue/1/view/1',
       'options' => 'a:8:{s:12:"advanced_css";s:0:"";s:14:"advanced_query";s:0:"";s:15:"advanced_target";s:7:"default";s:12:"node_options";s:4:"node";s:9:"node_type";s:6:"action";s:7:"node_id";s:42:" [nid: [nid: [nid: [nid: [nid: [nid:]]]]]]";s:12:"block_global";i:0;s:12:"block_select";a:1:{s:28:"views|latest_headlines-block";s:28:"views|latest_headlines-block";}}',
+    ),
+    'Edit Photo Galleries Panel' => array(
+      'type' => 'block',
+      'title' => 'Edit Photo Galleries Panel',
+      'link' => 'admin/config/mini-panels-ipe/photo_galleries',
+      'options' => 'a:8:{s:12:"advanced_css";s:0:"";s:14:"advanced_query";s:0:"";s:15:"advanced_target";s:7:"default";s:12:"node_options";s:4:"node";s:9:"node_type";s:6:"action";s:7:"node_id";s:7:" [nid:]";s:12:"block_global";i:0;s:12:"block_select";a:1:{s:27:"panels_mini|photo_galleries";s:27:"panels_mini|photo_galleries";}}',
     ),
   );
 }

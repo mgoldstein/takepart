@@ -1,0 +1,81 @@
+/**
+ * FOOTER
+ */
+.footer-wrapper{
+  background-color: $gray-background;
+}
+footer{
+  @include zen-grid-container;
+  .footer-left {
+    @include breakpoint-grid-breakdown(1 3, $breakpoint-mobile $breakpoint-tablet, '.footer-menu');
+    ul{
+      width: 100%;
+      @include breakpoint-grid-breakdown(2 1, $breakpoint-mobile $breakpoint-tablet, 'li.menu__item');
+    }
+    @include breakpoint($breakpoint-mobile){
+      @include zen-grid-item(12, 1);
+      @include zen-clear();
+    }
+    @include breakpoint($breakpoint-tablet){
+      @include zen-grid-item(7, 1);
+      @include zen-clear(none);
+    }
+  }
+  .footer-right{
+    @include breakpoint($breakpoint-mobile){
+      @include zen-grid-item(12, 1);
+      @include zen-clear();
+    }
+    @include breakpoint($breakpoint-tablet){
+      @include zen-grid-item(5, 8);
+      @include zen-clear(none);
+    }
+  }
+  .footer-bottom{
+    @include zen-clear();
+    @include zen-grid-item(12, 1);
+  }
+}
+
+
+/**
+ * Social
+ */
+@import "social/*.png";
+@include all-social-sprites;
+footer{
+  .footer-right{
+    .footer-title.social{
+      float: right;
+    }
+    .follow-us{
+      width: 100%;
+      float: left;
+      clear: both;
+      ul{
+        clear: right;
+        float: right;
+        width: 204px;
+      }
+      li a{
+        height: social-sprite-height(facebook-black);
+        width: social-sprite-width(facebook-black);
+        display: block;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        float: left;
+        margin-left: 10px;
+      }
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+    .text{
+      float: right;
+      margin-top: 50px;
+      clear: both;
+      width: 80%;
+    }
+  }
+}

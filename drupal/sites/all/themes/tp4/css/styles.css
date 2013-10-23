@@ -424,7 +424,7 @@ menu,
 ol,
 ul {
   /* Address margins set differently in IE 6/7. */
-  margin: 1.5em 0;
+  margin: 0;
 }
 
 /* line 253, ../sass/elements/_normalize.scss */
@@ -681,6 +681,11 @@ table {
   /* Add vertical rhythm margins. */
   margin-top: 1.5em;
   margin-bottom: 1.5em;
+}
+
+/* line 492, ../sass/elements/_normalize.scss */
+a.edit-mini-panel-link {
+  display: none !important;
 }
 
 /**
@@ -1497,7 +1502,7 @@ tr.selected td {
 /* line 777, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1381442036');
+  background-image: url('../images/progress.gif?1382488900');
 }
 
 /* Page */
@@ -1919,86 +1924,6 @@ main#main #skinny {
   }
 }
 
-/* line 160, ../sass/page/_layout.scss */
-.footer-wrapper {
-  background-color: #eeeeee;
-}
-
-/* line 164, ../sass/page/_layout.scss */
-footer .footer-block {
-  width: 600px;
-}
-@media all and (min-width: 320px) {
-  /* line 55, ../sass/helpers/_mixins.scss */
-  footer .footer-block .footer-menu:nth-child(1n+0) {
-    float: left;
-    width: 100%;
-    margin-left: 0%;
-    margin-right: -100%;
-    padding-left: 0px;
-    padding-right: 0px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    clear: both;
-  }
-}
-@media all and (min-width: 768px) {
-  /* line 55, ../sass/helpers/_mixins.scss */
-  footer .footer-block .footer-menu:nth-child(3n+1) {
-    float: left;
-    width: 33.33333%;
-    margin-left: 0%;
-    margin-right: -33.33333%;
-    padding-left: 0px;
-    padding-right: 0px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    clear: both;
-  }
-  /* line 55, ../sass/helpers/_mixins.scss */
-  footer .footer-block .footer-menu:nth-child(3n+2) {
-    float: left;
-    width: 33.33333%;
-    margin-left: 33.33333%;
-    margin-right: -66.66667%;
-    padding-left: 0px;
-    padding-right: 0px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    clear: none;
-  }
-  /* line 55, ../sass/helpers/_mixins.scss */
-  footer .footer-block .footer-menu:nth-child(3n+0) {
-    float: left;
-    width: 33.33333%;
-    margin-left: 66.66667%;
-    margin-right: -100%;
-    padding-left: 0px;
-    padding-right: 0px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    word-wrap: break-word;
-    clear: none;
-  }
-}
-/* line 74, ../sass/helpers/_mixins.scss */
-footer .footer-block:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 /* line 3, ../sass/page/_homepage.scss */
 body.front img {
   max-width: 100% !important;
@@ -2093,6 +2018,7 @@ body.front #sidebar .block-title {
     box-sizing: border-box;
     word-wrap: break-word;
     clear: none;
+    padding: 0 20px;
   }
   /* line 55, ../sass/helpers/_mixins.scss */
   #skinny .columns > .view-content > .views-row:nth-child(3n+0) {
@@ -2108,6 +2034,7 @@ body.front #sidebar .block-title {
     box-sizing: border-box;
     word-wrap: break-word;
     clear: none;
+    padding: 0 20px;
   }
 }
 @media all and (min-width: 980px) {
@@ -2137,17 +2064,32 @@ body.front #sidebar .block-title {
 #skinny .columns {
   text-align: center;
 }
-/* line 60, ../sass/page/_homepage.scss */
-#skinny .columns > .view-content > .views-row {
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: dashed 1px #000;
+@media all and (min-width: 320px) {
+  /* line 60, ../sass/page/_homepage.scss */
+  #skinny .columns > .view-content > .views-row {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: dashed 1px #000;
+  }
+  /* line 65, ../sass/page/_homepage.scss */
+  #skinny .columns > .view-content > .views-row:last-child {
+    border-bottom: none;
+  }
 }
-/* line 64, ../sass/page/_homepage.scss */
-#skinny .columns > .view-content > .views-row:last-child {
-  border-bottom: none;
+@media all and (min-width: 768px) {
+  /* line 60, ../sass/page/_homepage.scss */
+  #skinny .columns > .view-content > .views-row {
+    border-bottom: none;
+    padding: 0 30px;
+  }
 }
-/* line 69, ../sass/page/_homepage.scss */
+@media all and (min-width: 980px) {
+  /* line 60, ../sass/page/_homepage.scss */
+  #skinny .columns > .view-content > .views-row {
+    border-bottom: dashed 1px #000;
+  }
+}
+/* line 78, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .block-title {
   font-size: 12px;
   color: #fff;
@@ -2162,10 +2104,343 @@ body.front #sidebar .block-title {
   margin-bottom: 20px;
   behavior: url("pie.htc");
 }
-/* line 83, ../sass/page/_homepage.scss */
+/* line 92, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .line {
   border-bottom: 1px solid #0080a3;
   margin: 0 13px;
 }
 
 /* Modules */
+/**
+ * FOOTER
+ */
+/* line 4, ../sass/modules/_footer.scss */
+.footer-wrapper {
+  background-color: #eeeeee;
+}
+
+/* line 46, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
+footer:before, footer:after {
+  content: "";
+  display: table;
+}
+/* line 50, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
+footer:after {
+  clear: both;
+}
+@media all and (min-width: 320px) {
+  /* line 55, ../sass/helpers/_mixins.scss */
+  footer .footer-left .footer-menu:nth-child(1n+0) {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: both;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 55, ../sass/helpers/_mixins.scss */
+  footer .footer-left .footer-menu:nth-child(3n+1) {
+    float: left;
+    width: 33.33333%;
+    margin-left: 0%;
+    margin-right: -33.33333%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: both;
+  }
+  /* line 55, ../sass/helpers/_mixins.scss */
+  footer .footer-left .footer-menu:nth-child(3n+2) {
+    float: left;
+    width: 33.33333%;
+    margin-left: 33.33333%;
+    margin-right: -66.66667%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+    padding: 0 20px;
+  }
+  /* line 55, ../sass/helpers/_mixins.scss */
+  footer .footer-left .footer-menu:nth-child(3n+0) {
+    float: left;
+    width: 33.33333%;
+    margin-left: 66.66667%;
+    margin-right: -100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+    padding: 0 20px;
+  }
+}
+/* line 74, ../sass/helpers/_mixins.scss */
+footer .footer-left:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 11, ../sass/modules/_footer.scss */
+footer .footer-left ul {
+  width: 100%;
+}
+@media all and (min-width: 320px) {
+  /* line 55, ../sass/helpers/_mixins.scss */
+  footer .footer-left ul li.menu__item:nth-child(2n+1) {
+    float: left;
+    width: 50%;
+    margin-left: 0%;
+    margin-right: -50%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: both;
+  }
+  /* line 55, ../sass/helpers/_mixins.scss */
+  footer .footer-left ul li.menu__item:nth-child(2n+0) {
+    float: left;
+    width: 50%;
+    margin-left: 50%;
+    margin-right: -100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+    padding: 0 20px;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 55, ../sass/helpers/_mixins.scss */
+  footer .footer-left ul li.menu__item:nth-child(1n+0) {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: both;
+  }
+}
+/* line 74, ../sass/helpers/_mixins.scss */
+footer .footer-left ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media all and (min-width: 320px) {
+  /* line 9, ../sass/modules/_footer.scss */
+  footer .footer-left {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: left;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 9, ../sass/modules/_footer.scss */
+  footer .footer-left {
+    float: left;
+    width: 58.33333%;
+    margin-left: 0%;
+    margin-right: -58.33333%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 24, ../sass/modules/_footer.scss */
+  footer .footer-right {
+    float: left;
+    width: 100%;
+    margin-left: 0%;
+    margin-right: -100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: left;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 24, ../sass/modules/_footer.scss */
+  footer .footer-right {
+    float: left;
+    width: 41.66667%;
+    margin-left: 58.33333%;
+    margin-right: -100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+  }
+}
+/* line 34, ../sass/modules/_footer.scss */
+footer .footer-bottom {
+  clear: left;
+  float: left;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: -100%;
+  padding-left: 0px;
+  padding-right: 0px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+/**
+ * Social
+ */
+/* line 130, social/*.png */
+.social-sprite, .social-facebook-black, .social-googleplus-black, .social-pinterest-black, .social-tumblr-black, .social-twitter-black, .social-youtube-black {
+  background: url('../images/social-s6ae5fa0b7b.png') no-repeat;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-facebook-black {
+  background-position: 0 -240px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-facebook-black:hover, .social-facebook-black.facebook-black_hover, .social-facebook-black.facebook-black-hover {
+  background-position: 0 -144px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-googleplus-black {
+  background-position: 0 -72px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-googleplus-black:hover, .social-googleplus-black.googleplus-black_hover, .social-googleplus-black.googleplus-black-hover {
+  background-position: 0 -24px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-pinterest-black {
+  background-position: 0 -192px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-pinterest-black:hover, .social-pinterest-black.pinterest-black_hover, .social-pinterest-black.pinterest-black-hover {
+  background-position: 0 0;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-black {
+  background-position: 0 -264px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-black:hover, .social-tumblr-black.tumblr-black_hover, .social-tumblr-black.tumblr-black-hover {
+  background-position: 0 -168px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-twitter-black {
+  background-position: 0 -216px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-twitter-black:hover, .social-twitter-black.twitter-black_hover, .social-twitter-black.twitter-black-hover {
+  background-position: 0 -96px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-youtube-black {
+  background-position: 0 -120px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-youtube-black:hover, .social-youtube-black.youtube-black_hover, .social-youtube-black.youtube-black-hover {
+  background-position: 0 -48px;
+}
+
+/* line 48, ../sass/modules/_footer.scss */
+footer .footer-right .footer-title.social {
+  float: right;
+}
+/* line 51, ../sass/modules/_footer.scss */
+footer .footer-right .follow-us {
+  width: 100%;
+  float: left;
+  clear: both;
+}
+/* line 55, ../sass/modules/_footer.scss */
+footer .footer-right .follow-us ul {
+  clear: right;
+  float: right;
+  width: 204px;
+}
+/* line 60, ../sass/modules/_footer.scss */
+footer .footer-right .follow-us li a {
+  height: 24px;
+  width: 24px;
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  float: left;
+  margin-left: 10px;
+}
+/* line 70, ../sass/modules/_footer.scss */
+footer .footer-right .follow-us:first-child {
+  margin-left: 0;
+}
+/* line 74, ../sass/modules/_footer.scss */
+footer .footer-right .text {
+  float: right;
+  margin-top: 50px;
+  clear: both;
+  width: 80%;
+}

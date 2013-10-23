@@ -81,7 +81,7 @@ function tp4_support_block_configure($delta = ''){
       '#type' => 'textarea',
       '#title' => t('Footer Text'),
       '#description' => t('Text for the footer region'),
-      '#default_value' => variable_get('footer_text', t('TakePart is the digital division of Participant Media')),
+      '#default_value' => variable_get('tp4_support_footer_text', t('TakePart is the digital division of Participant Media')),
     );
   }
   return $form;
@@ -93,7 +93,7 @@ function tp4_support_block_save($delta = '', $edit = array()) {
 }
 
 function tp4_support_hero(){
-  $footer_text = variable_get('footer_text', 'TakePart is the digital division of Participant Media');
+  $footer_text = variable_get('tp4_support_footer_text', 'TakePart is the digital division of Participant Media');
   return theme('tp4_support_footer', array('footer_text' => $footer_text));
 }
 

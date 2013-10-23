@@ -58,11 +58,20 @@ body.front{
     text-align: center;
   }
   .columns > .view-content > .views-row{
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: dashed 1px #000;
-    &:last-child{
+    @include breakpoint($breakpoint-mobile){
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: dashed 1px #000;
+      &:last-child{
+        border-bottom: none;
+      }
+    }
+    @include breakpoint($breakpoint-tablet){
       border-bottom: none;
+      padding: 0 30px;
+    }
+    @include breakpoint($breakpoint-desktop){
+      border-bottom: dashed 1px #000;
     }
   }
   #block-views-homepage-columns-block{

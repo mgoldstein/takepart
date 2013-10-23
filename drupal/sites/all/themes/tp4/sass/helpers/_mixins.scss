@@ -56,13 +56,13 @@
             $page-grid-column-span: $zen-column-count / $column-count;
             $page-grid-column-position: 1 + (($i - 1) * $page-grid-column-span);
             @include zen-grid-item($page-grid-column-span, $page-grid-column-position);
-
             // Clear the first item in every row so they don't stack on top
             // of each other.
             @if $remainder == 1 or $column-count == 1 {
               clear: both;
             } @else {
               clear: none;
+              padding: 0 20px;
             }
           }
         }
