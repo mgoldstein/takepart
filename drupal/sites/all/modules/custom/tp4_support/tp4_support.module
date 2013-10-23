@@ -55,3 +55,56 @@ function tp4_support_preprocess_node(&$vars) {
   }
 
 }
+
+function tp4_support_block_info(){
+  $blocks = array();
+  $blocks['tp4_footer'] = array(
+    'info' => t('Footer for Homepage Redesign'),
+  );
+  return $blocks;
+}
+
+function tp4_support_block_view($delta = ''){
+  $block = array();
+  switch($delta){
+    case 'tp4_footer':
+      $block['content'] = 'something';
+      $block['content'] = tp4_support_hero();
+    break;
+  }
+  return $block;
+}
+function tp4_support_block_configure($delta = ''){
+  $form = array();
+  if ($delta == 'tp4_footer') {
+    $form['tp4_support_footer_text'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Footer Text'),
+      '#description' => t('Text for the footer region'),
+      '#default_value' => variable_get('footer_text', t('TakePart is the digital division of Participant Media')),
+    );
+  }
+  return $form;
+}
+function tp4_support_block_save($delta = '', $edit = array()) {
+  if ($delta == 'tp4_footer') {
+    variable_set('tp4_support_footer_text', $edit['tp4_support_footer_text']);
+  }
+}
+
+function tp4_support_hero(){
+  $footer_text = variable_get('footer_text', 'TakePart is the digital division of Participant Media');
+  return theme('tp4_support_footer', array('footer_text' => $footer_text));
+}
+
+function tp4_support_theme() {
+  return array(
+    'tp4_support_footer' => array(
+      'arguments' => array(),
+      'variables' => array(
+        'footer_text' => $footer_text,
+      ),
+      'template' => 'tp4-support-footer'
+    )
+  );
+}
