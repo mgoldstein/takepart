@@ -4,12 +4,10 @@
  * Returns the HTML for the main featured node
  * on the TP4 Homepage.
  */
-  krumo($node);
-  krumo($content);
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
-    <header>
+    <header class="entry-header">
       <?php print render($content['field_article_main_image']); ?>
       <?php print render($title_prefix); ?>
       <?php if (!$page && $title): ?>
@@ -23,14 +21,13 @@
     </header>
   <?php endif; ?>
 
-  <div class="byline">
-    By <?php print render($content['field_author']); ?>
-  </div>
+  <?php print render($content['field_author']); ?>
+  <div class="entry-content">
   <?php
     // We hide the comments and links now so that we can render them later.
     hide($content['comments']);
     hide($content['links']);
     print render($content);
   ?>
-
+  </div>
 </article>
