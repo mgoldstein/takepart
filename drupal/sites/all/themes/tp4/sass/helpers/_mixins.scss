@@ -35,3 +35,45 @@
     @include element-invisible-off;
   }
 }
+
+
+@mixin breakpoint($breakpoint-size) {
+  @media all and (min-width: $breakpoint-size) {
+    @content;
+  }
+}
+
+//For views and list items
+@mixin breakpoint-grid-breakdown($column-counts, $breakpoints: $breakpoint-mobile $breakpoint-tablet $breakpoint-desktop, $selector: '.views-row') {
+  #{$selector} {
+    @each $breakpoint in $breakpoints {
+      $key: index($breakpoints, $breakpoint);
+      $column-count: nth($column-counts, $key);
+      @include breakpoint($breakpoint) {
+        @for $i from 1 through $column-count {
+          $remainder: $i % $column-count;
+          &:nth-child(#{$column-count}n+#{$remainder}) {
+            $page-grid-column-span: $zen-column-count / $column-count;
+            $page-grid-column-position: 1 + (($i - 1) * $page-grid-column-span);
+            @include zen-grid-item($page-grid-column-span, $page-grid-column-position);
+
+            // Clear the first item in every row so they don't stack on top
+            // of each other.
+            @if $remainder == 1 or $column-count == 1 {
+              clear: both;
+            } @else {
+              clear: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // A clearfix so elements following this grid will be placed correctly.
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

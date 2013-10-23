@@ -88,6 +88,9 @@ $arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
 // Page
 //
 $page-width: 980px;
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 980px;
 
 //
 // Fonts
@@ -104,6 +107,7 @@ $adelle-italic: "AdelleSans-Italic", "Times New Roman", Georgia, "DejaVu Serif",
 
 $tradegothic-regular: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
 
+$base-font-family: $ashbury-light;
 //
 // Colors
 //

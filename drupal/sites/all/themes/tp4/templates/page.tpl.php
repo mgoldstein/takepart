@@ -34,14 +34,14 @@
       <?php endif; ?>
       <?php print render($page['content']); ?>
     </div>
-    <?php if ($skinny) : ?>
-    <div id="skinny">
-      <?php print $skinny; ?>
-    </div>
-    <?php endif; ?>
     <?php if ($sidebar) : ?>
     <div id="sidebar">
       <?php print $sidebar; ?>
+    </div>
+    <?php endif; ?>
+    <?php if ($skinny) : ?>
+    <div id="skinny">
+      <?php print $skinny; ?>
     </div>
     <?php endif; ?>
   </main>
@@ -51,6 +51,7 @@
     <?php print render($page['suffix']); ?>
   </div>
 </div>
+
 <div class="footer-wrapper">
   <footer>
     <?php print render($page['footer']); ?>
