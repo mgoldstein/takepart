@@ -32,6 +32,12 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'tp4_support-tp4_footer' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_footer',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
         'views-homepage_columns-block' => array(
           'module' => 'views',
           'delta' => 'homepage_columns-block',

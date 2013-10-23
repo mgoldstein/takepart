@@ -1,4 +1,4 @@
-<div class="footer-block">
+<div class="footer-left">
   <div class="footer-menu">
     <span class="footer-title">takepart</span>
     <?php print drupal_render(menu_tree('menu-takepart-topics')); ?>
@@ -12,4 +12,15 @@
     <?php print drupal_render(menu_tree('menu-takepart-links')); ?>
   </div>
 </div>
-<?php print $footer_text; ?>
+<div class="footer-right">
+  <div class="follow-us">
+    <span class="footer-title social">connect</span>
+    <?php print drupal_render(menu_tree('menu-social-footer-follow')); ?>
+  </div>
+  <div class="text">
+    <?php print $footer_text; ?>
+  </div>
+</div>
+<div class="footer-bottom">
+  corporate menu goes here
+</div>

@@ -245,7 +245,7 @@ menu,
 ol,
 ul {
   /* Address margins set differently in IE 6/7. */
-  margin: rhythm(1) 0;
+  margin: 0;
 }
 ol,
 ul {
@@ -487,4 +487,8 @@ table {
   /* Add vertical rhythm margins. */
   @include leader(1);
   @include trailer(1);
+}
+
+a.edit-mini-panel-link{
+  display: none !important;
 }

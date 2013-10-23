@@ -151,20 +151,3 @@ main#main{
     }
   }
 }
-
-
-
-//
-// FOOTER
-//
-.footer-wrapper{
-  background-color: $gray-background;
-}
-footer{
-  .footer-block {
-    width: 600px;
-    @include breakpoint-grid-breakdown(1 3, $breakpoint-mobile $breakpoint-tablet, '.footer-menu');
-  }
-}
-
-
