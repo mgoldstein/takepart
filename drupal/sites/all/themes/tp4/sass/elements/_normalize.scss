@@ -149,7 +149,7 @@ a:active {
 
 /* Address `outline` inconsistency between Chrome and other browsers. */
 a:focus {
-  outline: thin dotted;
+  outline: none;
 }
 
 /* Improve readability when focused and also mouse hovered in all browsers. */
@@ -178,43 +178,7 @@ blockquote {
   margin: rhythm(1) $indent-amount;
 }
 
-/**
- * Address variable `h1` font-size and margin within `section` and `article`
- * contexts in Firefox 4+, Safari 5, and Chrome.
- */
-h1 {
-  /* Set the font-size and line-height while keeping a proper vertical rhythm. */
-  @include adjust-font-size-to( $h1-font-size );
 
-  /* Set 1 unit of vertical rhythm on the top and bottom margins. */
-  @include leader(1, $h1-font-size);
-  @include trailer(1, $h1-font-size);
-}
-h2 {
-  @include adjust-font-size-to( $h2-font-size );
-  @include leader(1, $h2-font-size);
-  @include trailer(1, $h2-font-size);
-}
-h3 {
-  @include adjust-font-size-to( $h3-font-size );
-  @include leader(1, $h3-font-size);
-  @include trailer(1, $h3-font-size);
-}
-h4 {
-  @include adjust-font-size-to( $h4-font-size );
-  @include leader(1, $h4-font-size);
-  @include trailer(1, $h4-font-size);
-}
-h5 {
-  @include adjust-font-size-to( $h5-font-size );
-  @include leader(1, $h5-font-size);
-  @include trailer(1, $h5-font-size);
-}
-h6 {
-  @include adjust-font-size-to( $h6-font-size );
-  @include leader(1, $h6-font-size);
-  @include trailer(1, $h6-font-size);
-}
 
 /* Address styling not present in IE 8/9, Safari 5, and Chrome. */
 abbr[title] {
@@ -247,31 +211,6 @@ mark {
   color: #000;
 }
 
-/* Correct font family set oddly in Safari 5 and Chrome. */
-code,
-kbd,
-pre,
-samp,
-tt,
-var {
-  font-family: $font-monospace; // The value of $font-monospace ends with ", serif".
-  @if $legacy-support-for-ie6 {
-    _font-family: 'courier new', monospace;
-  }
-  @include adjust-font-size-to( $base-font-size );
-}
-
-/* Improve readability of pre-formatted text in all browsers. */
-pre {
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    white-space: pre;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  @else {
-    white-space: pre-wrap;
-  }
-}
 
 /* Set consistent quote types. */
 q {
@@ -317,14 +256,17 @@ ul {
   }
 }
 dd {
-  margin: 0 0 0 $indent-amount; /* LTR */
+  margin: 0; /* LTR */
+}
+li{
+  list-style-type: none;
 }
 
 /* Address paddings set differently in IE 6/7. */
 menu,
 ol,
 ul {
-  padding: 0 0 0 $indent-amount; /* LTR */
+  padding: 0; /* LTR */
 }
 
 @if $legacy-support-for-ie7 {
