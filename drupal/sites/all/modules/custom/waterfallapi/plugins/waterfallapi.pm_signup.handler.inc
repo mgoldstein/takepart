@@ -21,6 +21,14 @@ class WaterfalllSignupHandler {
     $this->configuration = $configuration;
   }
 
+  public function getLabel() {
+    return t('Waterfall SMS');
+  }
+
+  public function validateConfiguration($type, $configuration) {
+    return array();
+  }
+
   protected function submitNewsletterCampaignSignup($signup) {
 
     $phone = $signup->getPhoneNumber('');

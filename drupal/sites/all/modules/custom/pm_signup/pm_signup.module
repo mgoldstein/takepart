@@ -72,7 +72,66 @@ function pm_signup_menu() {
       'access arguments' => array('access content'),
       'delivery callback' => 'pm_signup_deliver_api_page',
     ),
+    'api/signup/endpoints' => array(
+      'page callback' => 'pm_signup_api_endpoints',
+      'type' => MENU_CALLBACK,
+      'access arguments' => array('access content'),
+      'delivery callback' => 'pm_signup_deliver_api_page',
+    ),
+    'admin/config/signups/endpoints' => array(
+      'title' => 'Signup endpoints',
+      'description' => 'Manage signup endpoints',
+      'page callback' => 'pm_signup_endpoint_listing_page',
+      'access callback' => 'user_access',
+      'access arguments' => array('pm_signup configure settings'),
+      'file' => 'pm_signup.admin.inc',
+    ),
+    'admin/config/signups/endpoints/list' => array(
+      'title' => 'List',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => -10,
+    ),
+    'admin/config/signups/endpoints/add' => array(
+      'title' => 'Add endpoint',
+      'description' => 'Add a new signup endpoint',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pm_signup_endpoint_form', NULL, 'add'),
+      'access callback' => 'user_access',
+      'access arguments' => array('pm_signup configure settings'),
+      'type' => MENU_LOCAL_ACTION,
+      'file' => 'pm_signup.admin.inc',
+    ),
+    'admin/config/signups/endpoints/manage/%pm_signup_endpoint' => array(
+      'title callback' => 'pm_signup_endpoint_page_title',
+      'title arguments' => array(5),
+      'description' => 'Add a new signup endpoint',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pm_signup_endpoint_form', 5, 'edit'),
+      'access callback' => 'user_access',
+      'access arguments' => array('pm_signup configure settings'),
+      'file' => 'pm_signup.admin.inc',
+    ),
+    'admin/config/signups/endpoints/manage/%pm_signup_endpoint/edit' => array(
+      'title' => 'Edit',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => -10,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+    ),
+    'admin/config/signups/endpoints/manage/%pm_signup_endpoint/delete' => array(
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pm_signup_endpoint_delete_form', 5),
+      'access callback' => 'user_access',
+      'access arguments' => array('pm_signup configure settings'),
+      'file' => 'pm_signup.admin.inc',
+    ),
   );
+}
+
+/**
+ * SignupEndpoint placeholder loader.
+ */
+function pm_signup_endpoint_load($id) {
+  return SignupEndpoint::load($id);
 }
 
 /**
@@ -392,4 +451,20 @@ function pm_signup_handle($request, $disable_queue = FALSE) {
     ));
   }
   return FALSE;
+}
+
+function pm_signup_api_endpoints($type = NULL) {
+  $query = db_select('pm_signup_endpoint', 'ep');
+  $query->addField('ep', 'name','value');
+  $query->addField('ep', 'label', 'label');
+  $query->condition('name', '', '!=');
+  if (!is_null($type)) {
+    $query->condition('type', $type);
+  }
+  $query->orderBy('label');
+  $payload = $query->execute()->fetchAll();
+  return array(
+    'status' => '200 OK',
+    'payload' => $payload,
+  );
 }
