@@ -21,6 +21,7 @@ body.front{
 // Homepage Featured Area
 //
 .panel-takepart-homepage {
+
   // Layout
   .panel-panel {
     @include clearfix();
@@ -41,6 +42,9 @@ body.front{
   }
 
   // Content
+
+  // Image vertical alignments make it easier to overlay text
+  // with negative margins in the main feature
   .field-name-field-article-main-image img {
     vertical-align: bottom;
   }
@@ -49,10 +53,11 @@ body.front{
     a {
       color: black;
     }
+    // TODO Hover States
   }
 
   .node.view-mode-feature-main {
-    .node-title {
+    &.node-openpublish-article .node-title {
       position: relative;
       background-color: white;
       margin: -1em .5em .5em;
