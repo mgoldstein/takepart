@@ -31,12 +31,12 @@ body.front{
   .panel-tpl-secondary-featured {
     .panel-pane {
       @media (min-width: 728px) {
-	float: left;
-	width: 48.5596708%;
-	&:nth-child(2n+1) {
-	  margin-right: 2.7806584%;
-	  clear: left;
-	}
+        float: left;
+        width: 48.5596708%;
+        &:nth-child(2n+1) {
+          margin-right: 2.7806584%;
+          clear: left;
+        }
       }
     }
   }
@@ -86,7 +86,39 @@ body.front{
     }
     margin-bottom: 1em;
   }
-}
+
+  .tpl-headline {
+    border-top: 4px solid #00b5cc;
+    border-bottom: 4px solid #00b5cc;
+    margin: 0 0 1em;
+    padding: 0;
+    height: 60px;
+    @media (min-width: 768px) {
+      height: 30px;
+    }
+
+    .tpl-title,
+    .tpl-time {
+      display: block;
+      height: 30px;
+      margin: 0 auto;
+      background: transparent none scroll no-repeat top left;
+      @media (min-width: 768px) {
+        display: inline-block;
+        float: none;
+        margin: 0 .5em 0 0;
+      }
+    }
+    .tpl-title {
+      width: 140px;
+      background-image: image-url("tpl-title.jpg");
+    }
+    .tpl-time {
+      width: 252px;
+      background-image: image-url("tpl-time.jpg");
+    }
+  }
+} // .panel-takepart-homepage
 
 .date {
   float: right;
