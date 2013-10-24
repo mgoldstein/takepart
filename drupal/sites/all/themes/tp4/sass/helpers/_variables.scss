@@ -92,9 +92,9 @@ $breakpoint-mobile: 320px;
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 980px;
 
-//
-// Fonts
-//
+/*
+ *Fonts
+ */
 $ashbury-bold: "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
 $ashbury-light: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
 $ashbury-light-italic: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
@@ -107,10 +107,17 @@ $adelle-italic: "AdelleSans-Italic", "Times New Roman", Georgia, "DejaVu Serif",
 
 $tradegothic-regular: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
 
+$brown-regular: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+$brown-bold: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
+$brown-light: "BrownLight", "Times New Roman", Georgia, "DejaVu Serif", serif;
+
+
+
 $base-font-family: $ashbury-light;
-//
-// Colors
-//
+
+/*
+ *Colors
+ */
 $light-blue: #00B5CC; //takepart live blue
 $blue: #0080A3; // blue used for text and icons
 $light-mint: #01BF9E;  //mint used for graphics
@@ -123,9 +130,9 @@ $burnt-orange: #DD7132;
 
 
 
-//
-// Misc
-//
+/*
+ *Misc
+ */
 // The amount lists, blockquotes and comments are indented.
 $indent-amount: 30px;
 

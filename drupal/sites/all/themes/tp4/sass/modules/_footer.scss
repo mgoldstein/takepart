@@ -44,6 +44,20 @@ footer{
 @import "social/*.png";
 @include all-social-sprites;
 footer{
+  .footer-left{
+    ul{
+      padding-top: 15px;
+      a{
+        font-family: $adelle-light;
+        font-size: 14px;
+        line-height: 24px;
+        color: #000;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
   .footer-right{
     .footer-title.social{
       float: right;
