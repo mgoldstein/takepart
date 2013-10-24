@@ -74,7 +74,43 @@ body.front{
     .entry-content {
       margin: 0 2em 1em;
       border-bottom: 1px solid #ccc;
-      padding-bottom: 1em;
+
+      .field {
+        margin-bottom: 1em;
+      }
+      .field-name-field-tab-action-override {
+        .field-item {
+          position: relative;
+          padding-left: 1.5em;
+          margin-bottom: 1em;
+
+          &:before {
+            // TODO icon font ?
+            // Replace with correct icon
+            content: "»";
+            font-size: 2em;
+            line-height: .642857143;
+            color: #09bf9e;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+
+          a {
+            color: black;
+
+            &:before {
+              content: "take action: ";
+              font-family: "BrownRegular", verdana, sans-serif;
+            }
+            &:hover,
+            &:active {
+              color: #019f84;
+            }
+          }
+        }
+      }
     }
   }
 
