@@ -1,0 +1,10 @@
+name = TakePart Menus
+description = Eventually all menus and menu items will be here.
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = tp_feature_menus
+dependencies[] = features
+dependencies[] = menu
+features[features_api][] = api:1
+features[menu_custom][] = menu-participant-media-footer-me
