@@ -29,10 +29,6 @@ function tp4_support_entity_info_alter(&$entity_info) {
     'label' => t('Secondary Feature'),
     'custom settings' => TRUE,
   );
-  $entity_info['node']['view modes']['feature_video'] = array(
-    'label' => t('Video Feature'),
-    'custom settings' => TRUE,
-  );
 }
 
 /**
@@ -49,11 +45,6 @@ function tp4_support_preprocess_node(&$vars) {
 	$vars['theme_hook_suggestions'][] = 'node__feature_secondary';
     $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__feature_secondary';
   }
-  if($vars['view_mode'] == 'feature_video') {
-	$vars['theme_hook_suggestions'][] = 'node__feature_video';
-    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__feature_video';
-  }
-
 }
 
 function tp4_support_block_info(){
