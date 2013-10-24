@@ -38,7 +38,7 @@ h5{
   line-height: 20px;
 }
 .section-header{
-  font-family: $adelle-light;  // replace this with brown when it becomes available.
+  font-family: $brown-bold;  // replace this with brown when it becomes available.
   line-height: 28px;
 }
 
@@ -63,8 +63,11 @@ a {
 input{
 
 }
-
-
+.footer-title{
+  font-family: $brown-regular;
+  font-size: 16px;
+  color: #000;
+}
 
 
 
