@@ -196,6 +196,7 @@ body.front{
     text-align: center;
   }
   .columns > .view-content > .views-row{
+    padding-bottom: 10px;
     @include breakpoint($breakpoint-mobile){
       margin-bottom: 15px;
       padding-bottom: 15px;
@@ -206,7 +207,8 @@ body.front{
     }
     @include breakpoint($breakpoint-tablet){
       border-bottom: none;
-      padding: 0 30px;
+      padding-left: 30px;
+      padding-right: 30px;
     }
     @include breakpoint($breakpoint-desktop){
       border-bottom: dashed 1px #000;
@@ -232,5 +234,34 @@ body.front{
       margin: 0 13px;
 
     }
+    .views-field-field-profile-photo{
+      .field-content{
+        border: 1px solid #eee;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        margin: 5px auto;
+      }
+    }
   }
 }
+
+/*
+ *Photo Galleries
+ */
+#block-views-photo-galleries-promo-block{
+  font-family: $ashbury-light;
+  font-size: 16px;
+  line-height: 20px;
+  .views-row{
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+
+
