@@ -21,6 +21,8 @@ html{
 body{
   width: 100%;
   margin: 0;
+  border-top: 5px solid #01bf9e;
+  border-bottom: 5px solid #01bf93;
 }
 .header-wrapper, .preface-wrapper, .main-wrapper, .suffix-wrapper, .footer-wrapper{
   width: auto;
@@ -31,6 +33,12 @@ body{
   @include breakpoint($breakpoint-desktop){
     padding: 0;
   }
+}
+.header-wrapper {
+  padding-top: 1em;
+}
+.footer-wrapper {
+  padding-bottom: 1em;
 }
 header#header, #preface, main#main, #suffix, footer{
   @include zen-grid-container;

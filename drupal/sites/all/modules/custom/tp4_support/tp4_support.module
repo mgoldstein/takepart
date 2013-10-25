@@ -38,22 +38,12 @@ function tp4_support_entity_info_alter(&$entity_info) {
 /**
 * Implements hook_preprocess_node().
 *
-* Add template suggestions for featured view modes.
+* Add template suggestions for view modes and
+* node types per view view mode.
 */
 function tp4_support_preprocess_node(&$vars) {
-  if($vars['view_mode'] == 'feature_main') {
-	$vars['theme_hook_suggestions'][] = 'node__feature_main';
-    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__feature_main';
-  }
-  if($vars['view_mode'] == 'feature_secondary') {
-	$vars['theme_hook_suggestions'][] = 'node__feature_secondary';
-    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__feature_secondary';
-  }
-  if($vars['view_mode'] == 'feature_video') {
-	$vars['theme_hook_suggestions'][] = 'node__feature_video';
-    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__feature_video';
-  }
-
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
 }
 
 function tp4_support_block_info(){
