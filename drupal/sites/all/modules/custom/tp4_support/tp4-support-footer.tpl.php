@@ -22,5 +22,7 @@
   </div>
 </div>
 <div class="footer-bottom">
-  corporate menu goes here
+  <div class="footer-bottom-inner">
+    <span class="footer-title">takepart is a part of participant media:</span> <?php print drupal_render(menu_tree('menu-corporate-footer')); ?>
+  </div>
 </div>

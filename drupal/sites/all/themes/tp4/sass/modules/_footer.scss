@@ -1,8 +1,17 @@
 /**
  * FOOTER
  */
+ @import "social/*.png";
+@include all-social-sprites;
+  @import "logos/*.png";
+  @include all-logos-sprites;
+
+
+
 .footer-wrapper{
   background-color: $gray-background;
+  border-bottom: 5px solid $mint;
+  padding: 30px 0 15px 0;
 }
 footer{
   @include zen-grid-container;
@@ -38,58 +47,150 @@ footer{
 }
 
 
-/**
- * Social
- */
-@import "social/*.png";
-@include all-social-sprites;
 footer{
   .footer-left{
-    ul{
-      padding-top: 15px;
-      a{
-        font-family: $adelle-light;
-        font-size: 14px;
-        line-height: 24px;
-        color: #000;
-        &:hover{
-          text-decoration: underline;
+    @include breakpoint($breakpoint-mobile){
+      ul{
+        padding-top: 15px;
+        margin-bottom: 20px;
+        a{
+          font-family: $adelle-light;
+          font-size: 14px;
+          line-height: 24px;
+          color: #000;
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    @include breakpoint($breakpoint-tablet){
+      margin-bottom: 0px;
+    }
+  }
+  .footer-right{
+    @include breakpoint($breakpoint-mobile){
+      .footer-title.social{
+        float: left;
+        margin-bottom: 2px;
+      }
+      .follow-us{
+        width: 100%;
+        text-align: left;
+        clear: both;
+        ul{
+          clear: both;
+          text-align: left;
+          li{
+            a{
+              height: social-sprite-height(facebook-black);
+              width: social-sprite-width(facebook-black);
+              display: block;
+              text-indent: 100%;
+              white-space: nowrap;
+              overflow: hidden;
+              float: left;
+              margin-left: 6px;
+            }
+            &:first-child a{
+              margin-left: 0;
+            }
+          }
+        }
+      }
+      .text{
+        float: left;
+        margin-top: 40px;
+        width: 100%;
+      }
+    }
+    @include breakpoint($breakpoint-tablet){
+      .footer-title.social{
+        float: right;
+      }
+      .follow-us{
+        text-align: right;
+        ul{
+          float: right;
+          text-align: left;
+          li{
+            float: left;
+          }
+        }
+      }
+      .text{
+        float: right;
+        margin-top: 50px;
+        clear: both;
+        width: 80%;
+      }
+    }
+    @include breakpoint($breakpoint-desktop){
+
+    }
+  }
+  .footer-bottom{
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid $gray-line;
+    padding-top: 20px;
+    @include breakpoint($breakpoint-mobile){
+      text-align: center;
+      .footer-bottom-inner{
+        text-align: left;
+        // display: inline-block;
+        li{
+          display: inline-block;
+          margin-left: 10px;
+          height: auto;
+          width: auto;
+          overflow: hidden;
+          &:first-child{
+            margin-left: 0px;
+          }
+          a{
+            display: block;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            &.logos-takepart{
+              height: logos-sprite-height(takepart);
+              width: logos-sprite-width(takepart);
+            }
+            &.logos-participantmedia{
+              height: logos-sprite-height(participantmedia);
+              width: logos-sprite-width(participantmedia);
+            }
+            &.logos-pivot{
+              height: logos-sprite-height(pivot);
+              width: logos-sprite-width(pivot);
+            }
+          }
+        }
+      }
+    }
+    @include breakpoint($breakpoint-tablet){
+      .footer-bottom-inner{
+        display: inline-block;
+        .footer-title{
+          display: inline-block;
+          vertical-align: top;
+          margin-top: 8px;
+          margin-right: 10px;
+        }
+        ul{
+          display: inline-block;
         }
       }
     }
   }
-  .footer-right{
-    .footer-title.social{
-      float: right;
-    }
-    .follow-us{
-      width: 100%;
-      float: left;
-      clear: both;
-      ul{
-        clear: right;
-        float: right;
-        width: 204px;
-      }
-      li a{
-        height: social-sprite-height(facebook-black);
-        width: social-sprite-width(facebook-black);
-        display: block;
-        text-indent: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        float: left;
-        margin-left: 10px;
-      }
-      &:first-child{
-        margin-left: 0;
-      }
-    }
-    .text{
-      float: right;
-      margin-top: 50px;
-      clear: both;
-      width: 80%;
-    }
-  }
 }
+
+
+
+
+
+
+
+
+
