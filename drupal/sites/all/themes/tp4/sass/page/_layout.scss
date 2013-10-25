@@ -23,8 +23,14 @@ body{
   margin: 0;
 }
 .header-wrapper, .preface-wrapper, .main-wrapper, .suffix-wrapper, .footer-wrapper{
-  width: 100%;
+  width: auto;
   height: auto;
+  @include breakpoint($breakpoint-mobile){
+    padding: 0 10px;
+  }
+  @include breakpoint($breakpoint-desktop){
+    padding: 0;
+  }
 }
 header#header, #preface, main#main, #suffix, footer{
   @include zen-grid-container;
@@ -35,9 +41,7 @@ header#header, #preface, main#main, #suffix, footer{
 }
 
 main#main{
-  $zen-column-count:  12;
-  $zen-gutter-width:  0px;
-  @include zen-grid-container;
+  @include zen-grid-container();
   margin: 0 auto;
   max-width: $page-width;
   width: 100%;
@@ -52,6 +56,7 @@ main#main{
     @include breakpoint($breakpoint-desktop){
       @include zen-grid-item(12, 1);
       @include zen-clear(none);
+      padding: 0;
     }
   }
   #sidebar{
@@ -67,10 +72,6 @@ main#main{
       @include zen-grid-item(4, 9);
     }
   }
-  #skinny{
-    padding-right: 20px;
-    padding-left: 15px;
-  }
   &.with-skinny{
     #primary{
       @include breakpoint($breakpoint-mobile){
@@ -82,8 +83,8 @@ main#main{
       }
       @include breakpoint($breakpoint-desktop){
         @include zen-grid-item(10, 1);
-        padding-right: 5px;
         @include zen-clear(none);
+        padding: 0;
       }
     }
     #skinny{
@@ -97,8 +98,6 @@ main#main{
       }
       @include breakpoint($breakpoint-desktop){
         @include zen-grid-item(2, 11);
-        padding-right: 20px;
-        padding-left: 15px;
       }
     }
   }
@@ -113,8 +112,8 @@ main#main{
       }
       @include breakpoint($breakpoint-desktop){
         @include zen-grid-item(8, 1);
-        padding-right: 5px;
         @include zen-clear(none);
+        padding: 0;
       }
     }
   }
@@ -129,8 +128,8 @@ main#main{
       }
       @include breakpoint($breakpoint-desktop){
         @include zen-grid-item(6, 1);
-        padding-right: 5px;
         @include zen-clear(none);
+        padding: 0;
       }
     }
     #skinny{
@@ -144,8 +143,6 @@ main#main{
       }
       @include breakpoint($breakpoint-desktop){
         @include zen-grid-item(2, 7);
-        padding-right: 20px;
-        padding-left: 15px;
         @include zen-clear(none);
       }
     }
