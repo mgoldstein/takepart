@@ -62,11 +62,11 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-8',
         ),
-        'panels_mini-photo_galleries' => array(
-          'module' => 'panels_mini',
-          'delta' => 'photo_galleries',
+        'views-photo_galleries_promo-block' => array(
+          'module' => 'views',
+          'delta' => 'photo_galleries_promo-block',
           'region' => 'sidebar',
-          'weight' => '-7',
+          'weight' => '-6',
         ),
       ),
     ),

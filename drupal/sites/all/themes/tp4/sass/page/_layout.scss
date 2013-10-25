@@ -28,7 +28,8 @@ body{
   width: auto;
   height: auto;
   @include breakpoint($breakpoint-mobile){
-    padding: 0 10px;
+    padding: 0 0px;
+    padding-right: 10px;
   }
   @include breakpoint($breakpoint-desktop){
     padding: 0;
@@ -45,6 +46,7 @@ header#header, #preface, main#main, #suffix, footer{
   max-width: $page-width;
   width: 100%;
   margin: 0 auto;
+  padding: 0;
   @include zen-clear();
 }
 
@@ -71,6 +73,7 @@ main#main{
     @include breakpoint($breakpoint-mobile){
       @include zen-grid-item(12, 1);
       @include zen-clear();
+      padding-right: 0;
     }
     @include breakpoint($breakpoint-tablet){
       @include zen-grid-item(5, 8);
