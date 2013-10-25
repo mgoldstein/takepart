@@ -21,8 +21,8 @@ html{
 body{
   width: 100%;
   margin: 0;
-  border-top: 5px solid #01bf9e;
-  border-bottom: 5px solid #01bf93;
+  border-top: 5px solid $mint;
+  border-bottom: 5px solid $mint;
 }
 .header-wrapper, .preface-wrapper, .main-wrapper, .suffix-wrapper, .footer-wrapper{
   width: auto;
@@ -75,9 +75,11 @@ main#main{
     @include breakpoint($breakpoint-tablet){
       @include zen-grid-item(5, 8);
       @include zen-clear(none);
+      padding-right: 0;
     }
     @include breakpoint($breakpoint-desktop){
       @include zen-grid-item(4, 9);
+      padding-right: 0;
     }
   }
   &.with-skinny{
