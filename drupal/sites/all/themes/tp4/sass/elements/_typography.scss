@@ -1,0 +1,76 @@
+// Typography
+
+
+body{
+  font-family: $ashbury-light;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+%hN{
+  margin-top: 0px;
+  line-height: 1;
+  text-rendering: optimizeLegibility;
+}
+h1{
+  font-family: $ashbury-regular;
+  font-size: 28px;
+  line-height: 32px;
+  @extend %hN;
+}
+h2{
+  font-family: $ashbury-light;
+  @extend %hN;
+}
+h3{
+  @extend %hN;
+}
+h4{
+  @extend %hN;
+}
+h5{
+  @extend %hN;
+}
+
+.author{
+  font-family: $ashbury-light-italic;
+  font-size: 16px;
+  line-height: 20px;
+}
+.section-header{
+  font-family: $brown-bold;  // replace this with brown when it becomes available.
+  line-height: 28px;
+}
+
+.small{
+
+}
+.column-title{
+  font-family: $tradegothic-regular;
+  font-size: 18px;
+  line-height: 20px;
+  color: $blue;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  &:hover{
+    text-decoration: underline;
+  }
+  .more{
+
+  }
+}
+input{
+
+}
+.footer-title{
+  font-family: $brown-regular;
+  font-size: 16px;
+  color: #000;
+}
+
+
+

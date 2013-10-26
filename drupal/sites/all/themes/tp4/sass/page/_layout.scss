@@ -1,0 +1,163 @@
+/**
+ * @file
+ * Positioning for a fixed-width, desktop-centric layout.
+ *
+ * Define CSS classes to create a table-free, 3-column, 2-column, or single
+ * column layout depending on whether blocks are enabled in the left or right
+ * columns.
+ *
+ * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
+ */
+// We are going to create a 980px wide, 5 column grid with 20px gutters between
+// columns (applied as 10px of left/right padding on each column).
+
+
+// You can generate more efficient CSS if you manually apply the
+// zen-grid-item-base mixin to all grid items from within a single ruleset.
+// $zen-auto-include-item-base: false;
+// $zen-auto-include-flow-item-base: false;
+html{
+}
+body{
+  width: 100%;
+  margin: 0;
+  border-top: 5px solid $mint;
+  border-bottom: 5px solid $mint;
+}
+.header-wrapper, .preface-wrapper, .main-wrapper, .suffix-wrapper, .footer-wrapper{
+  width: auto;
+  height: auto;
+  @include breakpoint($breakpoint-mobile){
+    padding: 0 0px;
+    padding-right: 10px;
+  }
+  @include breakpoint($breakpoint-desktop){
+    padding: 0;
+  }
+}
+.header-wrapper {
+  padding-top: 1em;
+}
+.footer-wrapper {
+  padding-bottom: 1em;
+}
+header#header, #preface, main#main, #suffix, footer{
+  @include zen-grid-container;
+  max-width: $page-width;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  @include zen-clear();
+}
+
+main#main{
+  @include zen-grid-container();
+  margin: 0 auto;
+  max-width: $page-width;
+  width: 100%;
+  #primary{
+    @include breakpoint($breakpoint-mobile){
+      @include zen-grid-item(12, 1);
+      @include zen-clear();
+    }
+    @include breakpoint($breakpoint-tablet){
+      @include zen-grid-item(12, 1);
+    }
+    @include breakpoint($breakpoint-desktop){
+      @include zen-grid-item(12, 1);
+      @include zen-clear(none);
+      padding: 0;
+    }
+  }
+  #sidebar{
+    @include breakpoint($breakpoint-mobile){
+      @include zen-grid-item(12, 1);
+      @include zen-clear();
+      padding-right: 0;
+    }
+    @include breakpoint($breakpoint-tablet){
+      @include zen-grid-item(5, 8);
+      @include zen-clear(none);
+      padding-right: 0;
+    }
+    @include breakpoint($breakpoint-desktop){
+      @include zen-grid-item(4, 9);
+      padding-right: 0;
+    }
+  }
+  &.with-skinny{
+    #primary{
+      @include breakpoint($breakpoint-mobile){
+        @include zen-grid-item(12, 1);
+        @include zen-clear();
+      }
+      @include breakpoint($breakpoint-tablet){
+        @include zen-grid-item(7, 1);
+      }
+      @include breakpoint($breakpoint-desktop){
+        @include zen-grid-item(10, 1);
+        @include zen-clear(none);
+        padding: 0;
+      }
+    }
+    #skinny{
+      @include breakpoint($breakpoint-mobile){
+        @include zen-grid-item(12, 1);
+        @include zen-clear();
+      }
+      @include breakpoint($breakpoint-tablet){
+        @include zen-grid-item(5, 8);
+        @include zen-clear(none);
+      }
+      @include breakpoint($breakpoint-desktop){
+        @include zen-grid-item(2, 11);
+      }
+    }
+  }
+  &.with-sidebar{
+    #primary{
+      @include breakpoint($breakpoint-mobile){
+        @include zen-grid-item(12, 1);
+        @include zen-clear();
+      }
+      @include breakpoint($breakpoint-tablet){
+        @include zen-grid-item(7, 1);
+      }
+      @include breakpoint($breakpoint-desktop){
+        @include zen-grid-item(8, 1);
+        @include zen-clear(none);
+        padding: 0;
+      }
+    }
+  }
+  &.with-sidebar.with-skinny{
+    #primary{
+      @include breakpoint($breakpoint-mobile){
+        @include zen-grid-item(12, 1);
+        @include zen-clear();
+      }
+      @include breakpoint($breakpoint-tablet){
+        @include zen-grid-item(7, 1);
+      }
+      @include breakpoint($breakpoint-desktop){
+        @include zen-grid-item(6, 1);
+        @include zen-clear(none);
+        padding: 0;
+      }
+    }
+    #skinny{
+      @include breakpoint($breakpoint-mobile){
+        @include zen-grid-item(12, 1);
+        @include zen-clear();
+      }
+      @include breakpoint($breakpoint-tablet){
+        @include zen-grid-item(12, 1);
+        @include zen-clear(left);
+      }
+      @include breakpoint($breakpoint-desktop){
+        @include zen-grid-item(2, 7);
+        @include zen-clear(none);
+      }
+    }
+  }
+}
