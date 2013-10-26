@@ -10,11 +10,11 @@
 function tp_feature_menus_menu_default_menu_custom() {
   $menus = array();
 
-  // Exported menu: menu-participant-media-footer-me.
-  $menus['menu-participant-media-footer-me'] = array(
-    'menu_name' => 'menu-participant-media-footer-me',
-    'title' => 'Participant Media Footer Menu',
-    'description' => '',
+  // Exported menu: menu-corporate-footer.
+  $menus['menu-corporate-footer'] = array(
+    'menu_name' => 'menu-corporate-footer',
+    'title' => 'Corporate Footer',
+    'description' => 'Corporate menu at the very bottom of the page.',
   );
   // Exported menu: menu-social-footer-follow.
   $menus['menu-social-footer-follow'] = array(
@@ -30,8 +30,9 @@ function tp_feature_menus_menu_default_menu_custom() {
   );
   // Translatables
   // Included for use with string extractors like potx.
+  t('Corporate Footer');
+  t('Corporate menu at the very bottom of the page.');
   t('Global social follow menu for the tp4 theme.');
-  t('Participant Media Footer Menu');
   t('Social Footer Follow');
   t('Social Header Follow');
   t('Social links in the footer');

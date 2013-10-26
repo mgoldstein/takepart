@@ -1714,7 +1714,7 @@ tr.selected td {
 /* line 807, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1382717790');
+  background-image: url('../images/progress.gif?1382751895');
 }
 
 /* Page */
@@ -2291,12 +2291,12 @@ body.front #sidebar .block-title {
 /* line 148, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 140px;
-  background-image: url('../images/tpl-title.jpg?1382718230');
+  background-image: url('../images/tpl-title.jpg?1382751895');
 }
 /* line 152, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 252px;
-  background-image: url('../images/tpl-time.jpg?1382718230');
+  background-image: url('../images/tpl-time.jpg?1382751895');
 }
 
 /* line 159, ../sass/page/_homepage.scss */
