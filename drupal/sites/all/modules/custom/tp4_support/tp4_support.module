@@ -46,24 +46,38 @@ function tp4_support_preprocess_node(&$vars) {
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
 }
 
+/**
+ * Hook Black Info
+ */
 function tp4_support_block_info(){
   $blocks = array();
   $blocks['tp4_footer'] = array(
     'info' => t('Footer for Homepage Redesign'),
   );
+  $blocks['tp4_fat_header'] = array(
+    'info' => t('Fat Header for the new TP4 theme'),
+  );
   return $blocks;
 }
 
+/**
+ * Implements hook_block_view
+ */
 function tp4_support_block_view($delta = ''){
   $block = array();
   switch($delta){
     case 'tp4_footer':
-      $block['content'] = 'something';
-      $block['content'] = tp4_support_hero();
+      $block['content'] = tp4_support_footer();
+    break;
+    case 'tp4_fat_header':
+      $block['content'] = tp4_support_fat_header();
     break;
   }
   return $block;
 }
+/**
+ * Implements hook_block_configure
+ */
 function tp4_support_block_configure($delta = ''){
   $form = array();
   if ($delta == 'tp4_footer') {
@@ -76,17 +90,20 @@ function tp4_support_block_configure($delta = ''){
   }
   return $form;
 }
+
+/**
+ * Implements hook_block_save
+ */
 function tp4_support_block_save($delta = '', $edit = array()) {
   if ($delta == 'tp4_footer') {
     variable_set('tp4_support_footer_text', $edit['tp4_support_footer_text']);
   }
 }
 
-function tp4_support_hero(){
-  $footer_text = variable_get('tp4_support_footer_text', 'TakePart is the digital division of Participant Media');
-  return theme('tp4_support_footer', array('footer_text' => $footer_text));
-}
 
+/**
+ * Implements hook_theme
+ */
 function tp4_support_theme() {
   return array(
     'tp4_support_footer' => array(
@@ -95,6 +112,51 @@ function tp4_support_theme() {
         'footer_text' => $footer_text,
       ),
       'template' => 'tp4-support-footer'
+    ),
+    'tp4_support_fat_header' => array(
+      'arguments' => array(),
+      'template' => 'tp4-support-fat-header',
+      'variables' => array(
+        'logo' => $logo,
+        'user_links' => $user_links,
+        'search' => $search,
+      ),
     )
   );
 }
+
+function tp4_support_footer(){
+  $footer_text = variable_get('tp4_support_footer_text', 'TakePart is the digital division of Participant Media');
+  return theme('tp4_support_footer', array('footer_text' => $footer_text));
+}
+function tp4_support_fat_header(){
+  global $base_url;
+  global $user;
+  $logo = $base_url. '/'. drupal_get_path('theme', 'tp4'). '/images/takepart_logo.png';
+  if($user->uid == 0){
+    $user_links = array();
+    $user_links = array(
+      '<li>'. l('Sign in', $base_url. '/user'). '</li>',
+    );
+  }
+  else{
+    $user_links = array(
+      '<li class="user">'. l($user->name, $base_url. '/user'). '</li>',
+      '<li>'. l('Sign out', $base_url. '/user/logout'). '</li>',
+    );
+    $search = drupal_render(drupal_get_form('search_block_form'));
+  }
+
+
+  return theme('tp4_support_fat_header', array('logo' => $logo, 'user_links' => $user_links, 'search' => $search));
+}
+
+
+
+
+
+
+
+
+
+

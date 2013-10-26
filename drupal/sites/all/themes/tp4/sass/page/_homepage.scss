@@ -30,7 +30,7 @@ body.front{
   .panel-secondary-featured,
   .panel-tpl-secondary-featured {
     .panel-pane {
-      @media (min-width: 728px) {
+      @include breakpoint($breakpoint-tablet){
         float: left;
         width: 48.5596708%;
         &:nth-child(2n+1) {
@@ -73,7 +73,7 @@ body.front{
 
     .entry-content {
       margin: 0 2em 1em;
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid $gray-line;
 
       .field {
         margin-bottom: 1em;
@@ -106,7 +106,7 @@ body.front{
             }
             &:hover,
             &:active {
-              color: #019f84;
+              color: $light-mint;
             }
           }
         }
@@ -124,12 +124,12 @@ body.front{
   }
 
   .tpl-headline {
-    border-top: 4px solid #00b5cc;
-    border-bottom: 4px solid #00b5cc;
+    border-top: 4px solid $light-blue;
+    border-bottom: 4px solid $light-blue;
     margin: 0 0 1em;
     padding: 0;
     height: 60px;
-    @media (min-width: 768px) {
+    @include breakpoint($breakpoint-tablet){
       height: 30px;
     }
 
@@ -139,7 +139,7 @@ body.front{
       height: 30px;
       margin: 0 auto;
       background: transparent none scroll no-repeat top left;
-      @media (min-width: 768px) {
+      @include breakpoint($breakpoint-tablet){
         display: inline-block;
         float: none;
         margin: 0 .5em 0 0;

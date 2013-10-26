@@ -11,7 +11,7 @@
 
 <div class="header-wrapper">
   <header id="header">
-    <!-- header content goes here -->
+    <?php print render($page['header']); ?>
   </header>
 </div>
 <div class="preface-wrapper">
