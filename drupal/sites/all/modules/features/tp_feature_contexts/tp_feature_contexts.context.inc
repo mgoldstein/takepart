@@ -78,5 +78,33 @@ function tp_feature_contexts_context_default_contexts() {
   t('homepage redesign');
   $export['homepage'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_global';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'tp4_support-tp4_fat_header' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_fat_header',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+  $export['tp4_global'] = $context;
+
   return $export;
 }
