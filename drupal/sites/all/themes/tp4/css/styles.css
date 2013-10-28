@@ -2515,6 +2515,46 @@ body.front #sidebar .block-title {
   margin-bottom: 20px;
 }
 
+/*
+ *Promo "don't miss"
+ */
+@media all and (min-width: 320px) {
+  /* line 274, ../sass/page/_homepage.scss */
+  .promo {
+    text-align: left;
+  }
+  /* line 277, ../sass/page/_homepage.scss */
+  .promo .inner {
+    text-align: left;
+    display: inline-block;
+  }
+  /* line 280, ../sass/page/_homepage.scss */
+  .promo .inner label {
+    display: inline-block;
+    margin-right: 10px;
+    font-family: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
+    line-height: 28px;
+  }
+  /* line 286, ../sass/page/_homepage.scss */
+  .promo .inner .text {
+    display: inline-block;
+    font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+    font-size: 20px;
+  }
+  /* line 290, ../sass/page/_homepage.scss */
+  .promo .inner .text img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 274, ../sass/page/_homepage.scss */
+  .promo {
+    text-align: center;
+  }
+}
+
 /* Modules */
 /**
  * FOOTER
@@ -2999,7 +3039,7 @@ header .logo {
   /* line 78, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1382978133') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1382978986') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -3061,7 +3101,7 @@ header .search {
     border-radius: 0;
     text-indent: 200%;
     overflow: hidden;
-    background: url('../images/search-submit.png?1382978133') no-repeat center center;
+    background: url('../images/search-submit.png?1382978986') no-repeat center center;
   }
 }
 @media all and (min-width: 768px) {
@@ -3104,35 +3144,36 @@ header nav {
     text-align: center;
     line-height: 45px;
     cursor: pointer;
+    white-space: nowrap;
   }
-  /* line 165, ../sass/modules/_header.scss */
+  /* line 166, ../sass/modules/_header.scss */
   header nav ul li:hover {
     background-color: #000;
     color: #fff;
     -webkit-transition: all .1s linear .1s;
     transition: all .1s linear .1s;
   }
-  /* line 171, ../sass/modules/_header.scss */
+  /* line 172, ../sass/modules/_header.scss */
   header nav ul li.news {
     max-width: 20%;
     width: 100%;
   }
-  /* line 175, ../sass/modules/_header.scss */
+  /* line 176, ../sass/modules/_header.scss */
   header nav ul li.lifestyle {
     max-width: 20%;
     width: 100%;
   }
-  /* line 179, ../sass/modules/_header.scss */
+  /* line 180, ../sass/modules/_header.scss */
   header nav ul li.features {
     max-width: 20%;
     width: 100%;
   }
-  /* line 183, ../sass/modules/_header.scss */
+  /* line 184, ../sass/modules/_header.scss */
   header nav ul li.action {
     max-width: 20%;
     width: 100%;
   }
-  /* line 187, ../sass/modules/_header.scss */
+  /* line 188, ../sass/modules/_header.scss */
   header nav ul li.tpl {
     max-width: 20%;
     width: 100%;

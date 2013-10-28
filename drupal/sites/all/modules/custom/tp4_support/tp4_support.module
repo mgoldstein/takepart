@@ -57,6 +57,9 @@ function tp4_support_block_info(){
   $blocks['tp4_fat_header'] = array(
     'info' => t('Fat Header for the new TP4 theme'),
   );
+  $blocks['tp4_dont_miss'] = array(
+    'info' => t('Don\'t miss homepage promo'),
+  );
   return $blocks;
 }
 
@@ -71,6 +74,9 @@ function tp4_support_block_view($delta = ''){
     break;
     case 'tp4_fat_header':
       $block['content'] = tp4_support_fat_header();
+    break;
+    case 'tp4_dont_miss':
+      $block['content'] = tp4_support_dont_miss();
     break;
   }
   return $block;
@@ -88,6 +94,26 @@ function tp4_support_block_configure($delta = ''){
       '#default_value' => variable_get('tp4_support_footer_text', t('TakePart is the digital division of Participant Media')),
     );
   }
+  if ($delta == 'tp4_dont_miss') {
+    $form['tp4_support_dont_miss_label'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Label'),
+      '#description' => t('Label for the promo'),
+      '#default_value' => variable_get('tp4_support_dont_miss_label', NULL),
+    );
+    $form['tp4_support_dont_miss_text'] = array(
+      '#type' => 'textarea',
+      '#title' => t('Promo'),
+      '#description' => t('Text for the don\'t miss promo region'),
+      '#default_value' => variable_get('tp4_support_dont_miss_text', NULL),
+    );
+    $form['tp4_support_dont_miss_link'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Link'),
+      '#description' => t('URL for the promo text'),
+      '#default_value' => variable_get('tp4_support_domt_miss_link', NULL),
+    );
+  }
   return $form;
 }
 
@@ -97,6 +123,11 @@ function tp4_support_block_configure($delta = ''){
 function tp4_support_block_save($delta = '', $edit = array()) {
   if ($delta == 'tp4_footer') {
     variable_set('tp4_support_footer_text', $edit['tp4_support_footer_text']);
+  }
+  if ($delta == 'tp4_dont_miss') {
+    variable_set('tp4_support_dont_miss_label', $edit['tp4_support_dont_miss_label']);
+    variable_set('tp4_support_dont_miss_text', $edit['tp4_support_dont_miss_text']);
+    variable_set('tp4_support_dont_miss_link', $edit['tp4_support_dont_miss_link']);
   }
 }
 
@@ -150,7 +181,23 @@ function tp4_support_fat_header(){
 
   return theme('tp4_support_fat_header', array('logo' => $logo, 'user_links' => $user_links, 'search' => $search));
 }
-
+function tp4_support_dont_miss(){
+  $dont_miss_label = variable_get('tp4_support_dont_miss_label', NULL);
+  $dont_miss_text = variable_get('tp4_support_dont_miss_text', NULL);
+  $dont_miss_link = variable_get('tp4_support_dont_miss_link', NULL);
+  $output = '<div class="promo"><div class="inner">';
+  if($dont_miss_label != NULL){
+    $output .= '<label>'. $dont_miss_label. '</label>';
+  }
+  if($dont_miss_link == NULL){
+    $output .= '<div class="text">'. $dont_miss_text. '</div>';
+  }
+  else{
+    $output .= l($dont_miss_text, $dont_miss_link, array('html' => true));
+  }
+  $output .= '</div></div>';
+  return $output;
+}
 
 
 
