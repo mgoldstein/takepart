@@ -20,9 +20,9 @@
     <?php print $messages; ?>
     <?php print $breadcrumb; ?>
     <?php print render($page['preface']); ?>
-  <div class="date">
-    <?php print date("l, F n, Y"); ?>
-  </div>
+    <div class="date">
+      <?php print date("l, F n, Y"); ?>
+    </div>
   </div>
 </div>
 <div class="main-wrapper">

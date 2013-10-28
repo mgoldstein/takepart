@@ -162,6 +162,7 @@ header{
           text-align: center;
           line-height: 45px;
           cursor: pointer;
+          white-space: nowrap;
           &:hover{
             background-color: #000;
             color: #fff;
