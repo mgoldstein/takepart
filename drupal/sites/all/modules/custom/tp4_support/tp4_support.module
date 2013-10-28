@@ -60,6 +60,9 @@ function tp4_support_block_info(){
   $blocks['tp4_dont_miss'] = array(
     'info' => t('Don\'t miss homepage promo'),
   );
+  $blocks['tp4_graveyard'] = array(
+    'info' => t('Graveyard'),
+  );
   return $blocks;
 }
 
@@ -77,6 +80,10 @@ function tp4_support_block_view($delta = ''){
     break;
     case 'tp4_dont_miss':
       $block['content'] = tp4_support_dont_miss();
+    break;
+    case 'tp4_graveyard':
+      module_load_include('inc', 'tp4_support', 'tp4_support_graveyard');
+      $block['content'] = tp4_support_graveyard();
     break;
   }
   return $block;
@@ -152,6 +159,10 @@ function tp4_support_theme() {
         'user_links' => $user_links,
         'search' => $search,
       ),
+    ),
+    'tp4_support_graveyard' => array(
+      'arguments' => array(),
+      'template' => 'tp4-support-graveyard',
     )
   );
 }

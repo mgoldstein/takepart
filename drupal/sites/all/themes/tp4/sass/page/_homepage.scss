@@ -302,7 +302,23 @@ body.front{
       text-align: center;
     }
  }
-
+/*
+ *Graveyard
+ */
+.graveyard {
+  padding-top: 25px;
+  border-top: 1px solid $gray-line;
+  @include breakpoint-grid-breakdown(1 4, $breakpoint-mobile $breakpoint-tablet, '.topic');
+  .topic{
+    margin-bottom: 25px;
+    .topic-title{
+      font-family: $adelle-light;
+      font-size: 12px;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+  }
+}
 
 
 
