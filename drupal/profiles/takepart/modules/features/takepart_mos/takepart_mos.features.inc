@@ -17,20 +17,9 @@ function takepart_mos_ctools_plugin_api() {
     return array("version" => "1");
   }
   list($module, $api) = func_get_args();
-  if ($module == "field_validation" && $api == "default_field_validation_rules") {
-    return array("version" => "2");
-  }
-  list($module, $api) = func_get_args();
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
-}
-
-/**
- * Implements hook_views_api().
- */
-function takepart_mos_views_api() {
-  return array("version" => "3.0");
 }
 
 /**
@@ -47,18 +36,5 @@ function takepart_mos_node_info() {
       'help' => '',
     ),
   );
-  return $items;
-}
-
-/**
- * Implements hook_default_signature_type().
- */
-function takepart_mos_default_signature_type() {
-  $items = array();
-  $items['mos_signature'] = entity_import('signature_type', '{
-    "type" : "mos_signature",
-    "label" : "Messages of Support Signature",
-    "rdf_mapping" : []
-  }');
   return $items;
 }
