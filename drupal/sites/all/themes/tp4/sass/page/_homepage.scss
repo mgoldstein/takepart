@@ -157,10 +157,19 @@ body.front{
 } // .panel-takepart-homepage
 
 .date {
-  float: right;
-  font-family: $adelle-regular;
-  color: $dark-gray;
-  font-size: 13px;
+  @include breakpoint($breakpoint-mobile){
+    display: none;
+  }
+  @include breakpoint($breakpoint-desktop){
+    display: block;
+    float: left;
+    font-family: $adelle-regular;
+    color: $dark-gray;
+    font-size: 13px;
+  }
+  @include breakpoint($breakpoint-desktop){
+    float: right;
+  }
 }
 //
 // Latest Headlines
