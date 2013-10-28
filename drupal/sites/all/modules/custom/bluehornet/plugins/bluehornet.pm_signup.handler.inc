@@ -23,7 +23,7 @@ class BlueHornetSignupHandler {
     return t('Blue Hornet');
   }
 
-  public function validateConfiguration($type, $configuration) {
+  public static function validateConfiguration($type, $configuration) {
     return array();
   }
 

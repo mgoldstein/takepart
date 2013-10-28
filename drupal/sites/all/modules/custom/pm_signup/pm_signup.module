@@ -79,7 +79,7 @@ function pm_signup_menu() {
       'delivery callback' => 'pm_signup_deliver_api_page',
     ),
     'admin/config/signups/endpoints' => array(
-      'title' => 'Signup endpoints',
+      'title' => 'Signup Endpoints',
       'description' => 'Manage signup endpoints',
       'page callback' => 'pm_signup_endpoint_listing_page',
       'access callback' => 'user_access',

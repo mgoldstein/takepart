@@ -23,7 +23,7 @@ class BlueStateDigitalSignupHandler {
     return t('Blue State Digital');
   }
 
-  public function validateConfiguration($type, $configuration) {
+  public static function validateConfiguration($type, $configuration) {
     return array();
   }
 

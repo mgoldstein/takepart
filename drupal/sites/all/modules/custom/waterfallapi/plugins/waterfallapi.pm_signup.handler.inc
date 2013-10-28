@@ -25,7 +25,7 @@ class WaterfalllSignupHandler {
     return t('Waterfall SMS');
   }
 
-  public function validateConfiguration($type, $configuration) {
+  public static function validateConfiguration($type, $configuration) {
     return array();
   }
 
