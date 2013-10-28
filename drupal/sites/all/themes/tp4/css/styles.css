@@ -2299,22 +2299,37 @@ body.front #sidebar .block-title {
   background-image: url('../images/tpl-time.jpg?1382751895');
 }
 
-/* line 159, ../sass/page/_homepage.scss */
-.date {
-  float: right;
-  font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
-  color: #5c5c5c;
-  font-size: 13px;
+@media all and (min-width: 320px) {
+  /* line 159, ../sass/page/_homepage.scss */
+  .date {
+    display: none;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 159, ../sass/page/_homepage.scss */
+  .date {
+    display: block;
+    float: left;
+    font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+    color: #5c5c5c;
+    font-size: 13px;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 159, ../sass/page/_homepage.scss */
+  .date {
+    float: right;
+  }
 }
 
-/* line 169, ../sass/page/_homepage.scss */
+/* line 178, ../sass/page/_homepage.scss */
 .latest-headlines .views-row {
   line-height: 24px;
   font-size: 14px;
   position: relative;
   padding-left: 15px;
 }
-/* line 174, ../sass/page/_homepage.scss */
+/* line 183, ../sass/page/_homepage.scss */
 .latest-headlines .views-row:before {
   content: '';
   height: 6px;
@@ -2324,7 +2339,7 @@ body.front #sidebar .block-title {
   top: 7px;
   left: 0;
 }
-/* line 184, ../sass/page/_homepage.scss */
+/* line 193, ../sass/page/_homepage.scss */
 .latest-headlines a {
   height: 100%;
   display: block;
@@ -2421,28 +2436,28 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 195, ../sass/page/_homepage.scss */
+/* line 204, ../sass/page/_homepage.scss */
 #skinny .columns {
   text-align: center;
 }
-/* line 198, ../sass/page/_homepage.scss */
+/* line 207, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row {
   padding-bottom: 10px;
 }
 @media all and (min-width: 320px) {
-  /* line 198, ../sass/page/_homepage.scss */
+  /* line 207, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: dashed 1px #000;
   }
-  /* line 204, ../sass/page/_homepage.scss */
+  /* line 213, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row:last-child {
     border-bottom: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 198, ../sass/page/_homepage.scss */
+  /* line 207, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     border-bottom: none;
     padding-left: 30px;
@@ -2450,12 +2465,12 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 198, ../sass/page/_homepage.scss */
+  /* line 207, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     border-bottom: dashed 1px #000;
   }
 }
-/* line 218, ../sass/page/_homepage.scss */
+/* line 227, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .block-title {
   font-size: 12px;
   color: #fff;
@@ -2470,12 +2485,12 @@ body.front #sidebar .block-title {
   margin-bottom: 20px;
   behavior: url("pie.htc");
 }
-/* line 232, ../sass/page/_homepage.scss */
+/* line 241, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .line {
   border-bottom: 1px solid #0080a3;
   margin: 0 13px;
 }
-/* line 238, ../sass/page/_homepage.scss */
+/* line 247, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .views-field-field-profile-photo .field-content {
   border: 1px solid #eee;
   -webkit-border-radius: 50px;
@@ -2489,13 +2504,13 @@ body.front #sidebar .block-title {
 /*
  *Photo Galleries
  */
-/* line 254, ../sass/page/_homepage.scss */
+/* line 263, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block {
   font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
   line-height: 20px;
 }
-/* line 258, ../sass/page/_homepage.scss */
+/* line 267, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .views-row {
   margin-bottom: 20px;
 }
@@ -2984,7 +2999,7 @@ header .logo {
   /* line 78, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1382977399') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1382978133') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -3046,7 +3061,7 @@ header .search {
     border-radius: 0;
     text-indent: 200%;
     overflow: hidden;
-    background: url('../images/search-submit.png?1382973993') no-repeat center center;
+    background: url('../images/search-submit.png?1382978133') no-repeat center center;
   }
 }
 @media all and (min-width: 768px) {

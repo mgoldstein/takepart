@@ -56,17 +56,17 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-9',
         ),
-        'newsletter_campaign-48' => array(
-          'module' => 'newsletter_campaign',
-          'delta' => '48',
-          'region' => 'sidebar',
-          'weight' => '-8',
-        ),
         'views-photo_galleries_promo-block' => array(
           'module' => 'views',
           'delta' => 'photo_galleries_promo-block',
           'region' => 'sidebar',
           'weight' => '-6',
+        ),
+        'newsletter_campaign-49' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '49',
+          'region' => 'sidebar',
+          'weight' => '-8',
         ),
       ),
     ),
