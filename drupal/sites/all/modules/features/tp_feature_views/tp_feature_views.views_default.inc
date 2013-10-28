@@ -107,6 +107,13 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['relationships']['field_series_tid']['table'] = 'field_data_field_series';
   $handler->display->display_options['relationships']['field_series_tid']['field'] = 'field_series_tid';
   $handler->display->display_options['relationships']['field_series_tid']['required'] = TRUE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Field: Content: Author(s) */
   $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
   $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
@@ -135,6 +142,8 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'field_data_field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['label'] = '';
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
