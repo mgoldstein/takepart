@@ -247,16 +247,20 @@ class SignupEndpointEditForm {
     }
   }
 
-  public function submitButton() {
+  public function submitButton($weight = 40) {
     return array(
-      '#type' => 'submit',
-      '#value' => t('Save endpoint'),
-      '#weight' => 40,
+      '#type' => 'actions',
+      'submit' => array(
+        '#type' => 'submit',
+        '#value' => t('Save endpoint'),
+      ),
+      '#weight' => $weight,
     );
   }
 
   public function form($form, &$form_state) {
     $form_state['SignupEndpointEditForm'] = $this;
+    $form['submit_top'] = $this->submitButton(-40);
     $form['type'] = $this->typeField();
     $form['label'] = $this->labelField();
     $form['name'] = $this->nameField();
