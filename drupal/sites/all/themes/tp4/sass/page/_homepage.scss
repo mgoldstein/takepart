@@ -268,7 +268,40 @@ body.front{
     margin-bottom: 20px;
   }
 }
-
+/*
+ *Promo "don't miss"
+ */
+ .promo{
+    @include breakpoint($breakpoint-mobile){
+      text-align: left;
+      .inner{
+        text-align: left;
+        display: inline-block;
+        label{
+          display: inline-block;
+          margin-right: 10px;
+          font-family: $brown-bold;
+          line-height: 28px;
+        }
+        .text{
+          display: inline-block;
+          font-family: $ashbury-light;
+          font-size: 20px;
+          img{
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    @include breakpoint($breakpoint-tablet){
+  
+    }
+    @include breakpoint($breakpoint-desktop){
+      text-align: center;
+    }
+ }
 
 
 
