@@ -7,6 +7,8 @@
  *Social
 */
 header{
+  font-family: $adelle-regular;
+  color: $dark-gray;
   .logo{
     float: left;
   }
@@ -42,12 +44,12 @@ header{
     @include breakpoint($breakpoint-tablet){
       display: block;
       float: right;
+      a{
+        color: $dark-gray;
+      }
       li{
         display: inline-block;
         margin-right: 10px;
-        &.user{
-
-        }
         &:last-child{
           margin-right: 0px;
           padding-left: 10px;
@@ -70,21 +72,79 @@ header{
             display: none;
           }
         }
+        &.user{
+          position: relative;
+          padding-left: 20px;
+          &:before{
+            content: '';
+            background: image-url('avatar-icon.jpg') no-repeat center center;
+            height: 15px;
+            width: 12px;
+            display: block;
+            position: absolute;
+            left: 0;
+          }
+        }
       }
     }
   }
   .search{
+    font-size: 13px;
     @include breakpoint($breakpoint-mobile){
       display: none;
+      label{
+        display: inline-block;
+        float: left;
+        height: auto;
+        overflow: hidden;
+        width: auto;
+        margin-right: 10px;
+        vertical-align: bottom;
+        line-height: 23px;
+        font-weight: normal;
+        &.element-invisible{
+          position: relative !important;
+        }
+      }
+      [type=text]{
+        float: left;
+        height: 20px;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 0;
+        width: 140px;
+        line-height: 20px;
+        color: #777;
+        text-indent: 6px;
+        line-height: 21px;
+        &:focus{
+          outline: none;
+        }
+      }
+      .form-submit{
+        display: block;
+        float: left;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #ccc;
+        border-left: none;
+        background-color: #fff;
+        border-radius: 0;
+        text-indent: 200%;
+        overflow: hidden;
+        background: image-url('search-submit.png') no-repeat center center;
+      }
     }
     @include breakpoint($breakpoint-tablet){
+      display: block;
       float: right;
       clear: right;
       margin-top: 25px;
     }
   }
   nav{
-    @include breakpoint($breakpoint-desktop){
+    color: #000;
+    @include breakpoint($breakpoint-mobile){
       display: none;
     }
     @include breakpoint($breakpoint-tablet){
