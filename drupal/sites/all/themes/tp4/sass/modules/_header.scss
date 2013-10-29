@@ -193,7 +193,9 @@ header{
       }
     }
     @include breakpoint($breakpoint-desktop){
-
+      .test-push{
+        padding-left: 0px;
+      }
     }
   }
 }

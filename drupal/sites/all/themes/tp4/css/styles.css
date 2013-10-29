@@ -3290,3 +3290,9 @@ header nav {
     width: 100%;
   }
 }
+@media all and (min-width: 980px) {
+  /* line 196, ../sass/modules/_header.scss */
+  header nav .test-push {
+    padding-left: 0px;
+  }
+}
