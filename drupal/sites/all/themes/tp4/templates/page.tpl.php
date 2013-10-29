@@ -21,7 +21,7 @@
     <?php print $breadcrumb; ?>
     <?php print render($page['preface']); ?>
     <div class="date">
-      <?php print date("l, F n, Y"); ?>
+      <?php print date('l, F j, Y'); ?>
     </div>
   </div>
 </div>

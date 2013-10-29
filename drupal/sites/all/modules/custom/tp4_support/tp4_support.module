@@ -206,7 +206,7 @@ function tp4_support_dont_miss(){
       $output .= '<div class="text">'. $dont_miss_text. '</div>';
     }
     else{
-      $output .= l($dont_miss_text, $dont_miss_link, array('html' => true));
+      $output .= l($dont_miss_text, $dont_miss_link, array('html' => true, 'attributes' => array('class' => array ('text'))));
     }
     $output .= '</div></div>';
   }
