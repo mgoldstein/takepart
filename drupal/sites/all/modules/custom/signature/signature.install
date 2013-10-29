@@ -188,18 +188,11 @@ function signature_schema() {
         'not null' => TRUE,
       ),
       'type' => array(
-        'description' => 'The {signature_type}.type of the signature.',
+        'description' => 'The type of the signature.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
         'default' => '',
-      ),
-      'goal' => array(
-        'description' => 'The integer signature goal.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
       ),
       'bsd_form' => array(
         'description' => 'The signup form to use for sending data to BSD.',
@@ -214,64 +207,6 @@ function signature_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
         'default' => 0,
-      ),
-      'limit_to_dates' => array(
-        'description' => 'Flag for limiting signature collection to a specific date range.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'start_date' => array(
-        'description' => 'The Unix timestamp of the signature collection start date.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'end_date' => array(
-        'description' => 'The Unix timestamp of the signature collection end date.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'heading' => array(
-        'description' => 'The label used the heading of the signature form.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'sign_label' => array(
-        'description' => 'The label used on the submit button of the signature form.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'newsletter_opt_ins' => array(
-        'description' => 'Multiple newsletter opt-in label and group fields.',
-        'type' => 'text',
-        'serialize' => TRUE,
-      ),
-      'restrictions' => array(
-        'description' => 'The text of the restrictions note.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'terms_of_use' => array(
-        'description' => 'The text of the terms of use note.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'display_disclaimer' => array(
-        'description' => 'The text of the display disclaimer.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
       ),
     ),
     'primary key' => array('nid'),
@@ -347,4 +282,22 @@ function signature_update_7103(&$sandbox) {
   $schema = signature_schema();
   db_add_field('signature_node', 'pm_signup_endpoint_id',
     $schema['signature_node']['fields']['pm_signup_endpoint_id']);
+}
+
+/**
+ * Remove unused tables and fields.
+ */
+function signature_update_7200(&$sandbox) {
+  db_drop_table('signature');
+  db_drop_table('signature_type');
+  db_drop_field('signature_node', 'goal');
+  db_drop_field('signature_node', 'limit_to_dates');
+  db_drop_field('signature_node', 'start_date');
+  db_drop_field('signature_node', 'end_date');
+  db_drop_field('signature_node', 'heading');
+  db_drop_field('signature_node', 'sign_label');
+  db_drop_field('signature_node', 'newsletter_opt_ins');
+  db_drop_field('signature_node', 'restrictions');
+  db_drop_field('signature_node', 'terms_of_use');
+  db_drop_field('signature_node', 'display_disclaimer');
 }
