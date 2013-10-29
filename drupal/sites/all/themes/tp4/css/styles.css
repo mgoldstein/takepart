@@ -207,9 +207,10 @@ h2 {
 .section-header {
   font-family: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   line-height: 28px;
+  font-weight: normal;
 }
 
-/* line 48, ../sass/elements/_typography.scss */
+/* line 49, ../sass/elements/_typography.scss */
 .column-title {
   font-family: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 18px;
@@ -218,17 +219,17 @@ h2 {
   text-transform: uppercase;
 }
 
-/* line 56, ../sass/elements/_typography.scss */
+/* line 57, ../sass/elements/_typography.scss */
 a {
   text-decoration: none;
   color: #000;
 }
-/* line 59, ../sass/elements/_typography.scss */
+/* line 60, ../sass/elements/_typography.scss */
 a:hover {
   text-decoration: underline;
 }
 
-/* line 69, ../sass/elements/_typography.scss */
+/* line 70, ../sass/elements/_typography.scss */
 .footer-title {
   font-family: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
@@ -2536,12 +2537,16 @@ body.front #sidebar .block-title {
     line-height: 28px;
   }
   /* line 286, ../sass/page/_homepage.scss */
+  .promo .inner a.text:hover {
+    text-decoration: underline;
+  }
+  /* line 289, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: inline-block;
     font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 20px;
   }
-  /* line 290, ../sass/page/_homepage.scss */
+  /* line 293, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: inline-block;
     vertical-align: middle;
@@ -2558,7 +2563,7 @@ body.front #sidebar .block-title {
 /*
  *Graveyard
  */
-/* line 308, ../sass/page/_homepage.scss */
+/* line 311, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -2654,11 +2659,11 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 312, ../sass/page/_homepage.scss */
+/* line 315, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 314, ../sass/page/_homepage.scss */
+/* line 317, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;

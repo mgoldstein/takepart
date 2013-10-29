@@ -283,6 +283,9 @@ body.front{
           font-family: $brown-bold;
           line-height: 28px;
         }
+        a.text:hover{
+          text-decoration: underline;
+        }
         .text{
           display: inline-block;
           font-family: $ashbury-light;
