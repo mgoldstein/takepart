@@ -10,7 +10,7 @@
   </ul>
 </div>
 <div class="search">
-  <?php print $search; ?>
+  <?php print drupal_render(module_invoke('search_api_page', 'block_view', '2')); ?>
 </div>
 <nav>
   <ul>

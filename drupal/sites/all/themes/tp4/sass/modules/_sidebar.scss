@@ -1,0 +1,94 @@
+/**
+ * Styles for TP4 Sidebar Blocks
+ */
+
+//
+// Newsletter Signup Block
+//
+.block-newsletter-campaign {
+	.block-title {
+		text-transform: lowercase;
+	}
+
+
+
+	.message {
+		margin: .25em 0 .75em;
+	}
+	.form-item-email {
+		margin: 0;
+		display: inline-block;
+		font-family: $adelle-regular;
+		width: 66%;
+		label {
+			display: none;
+		}
+		input {
+			width: 100%;
+			border-width: 1px;
+			padding: 2px;
+			font-size: 12px;
+			line-height: 1.5;
+		}
+	}
+	input[type="submit"] {
+		width: 33%;
+		border: none;
+		float: right;
+		background-color: $mint;
+		color: white;
+		font-family: $adelle-regular;
+		text-transform: lowercase;
+	}
+
+	// doesn't work
+	// See http://css-tricks.com/snippets/css/style-placeholder-text/
+	// ::-webkit-input-placeholder,
+	// :-moz-placeholder,  /* Firefox 18- */
+	// ::-moz-placeholder, /* Firefox 19+ */
+	// :-ms-input-placeholder {
+	//    color: red;
+	// }
+
+	.terms-of-service {
+		clear: both;
+		margin: 0 0 .25em;
+		padding-bottom: .75em;
+		border-bottom: 1px solid $gray-line;
+		font-family: $adelle-regular;
+		a {
+			font-size: 12px;
+			line-height: 1.666666667;
+			color: $mint;
+		}
+	}
+	.follow-us {
+		font-family: $brown-bold;
+		text-transform: lowercase;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.social-links {
+		display: inline-block;
+		li {
+			display: inline-block;
+			line-height: 1;
+			a {
+				display: inline-block;
+				// they're the same width;
+				height: social-sprite-height(twitter-gray);
+				width: social-sprite-width(twitter-gray);
+				margin-right: social-sprite-width(twitter-gray) / 3; // reasonable margin
+				overflow: hidden;    // Image
+				text-indent: 100%;   // Replacement
+				white-space: nowrap; // Technique
+				&.facebook { @include social-sprite(facebook-gray);}
+				&.twitter { @include social-sprite(twitter-gray);}
+				&.google { @include social-sprite(googleplus-gray);}
+				&.pinterest { @include social-sprite(pinterest-gray);}
+				&.youtube { @include social-sprite(youtube-gray);}
+				&.tumblr { @include social-sprite(tumblr-gray);}
+			}
+		}
+	}
+}
