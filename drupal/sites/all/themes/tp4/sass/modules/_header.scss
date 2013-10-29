@@ -92,7 +92,7 @@ header{
     font-size: 13px;
     @include breakpoint($breakpoint-mobile){
       display: none;
-      label{
+      .form-item-keys-2{
         display: inline-block;
         float: left;
         height: auto;
@@ -102,8 +102,17 @@ header{
         vertical-align: bottom;
         line-height: 23px;
         font-weight: normal;
-        &.element-invisible{
-          position: relative !important;
+        margin: 0;
+        label {
+          height: auto;
+          overflow: hidden;
+          width: auto;
+          margin-right: 10px;
+          &.element-invisible{
+            display: inline-block;
+            float: left;
+            position: relative !important;
+          }
         }
       }
       [type=text]{
