@@ -1,0 +1,81 @@
+<?php
+/**
+ * @file
+ * TakePart MegaMenu for the new TP4 theme.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function tp_megamenu_help($path, $arg) {
+	switch ($path) {
+		case 'admin/help#tp_megamenu':
+			return '<p>' . t('The new MegaMenu for the TP4 theme') . '</p>';		
+	}
+}
+
+/**
+ * Hook Black Info
+ */
+function tp_megamenu_block_info(){
+  $blocks = array();
+  $blocks['tp_megamenu_megamenu'] = array(
+    'info' => t('MegaMenu for the TP4 theme'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view
+ */
+function tp_megamenu_block_view($delta = ''){
+  $block = array();
+  switch($delta){
+    case 'tp_megamenu_megamenu':
+      $block['content'] = tp_megamenu_megamenu();
+    break;
+  }
+  return $block;
+}
+
+
+/**
+ * Implements hook_theme
+ */
+function tp_megamenu_theme() {
+  return array(
+    'tp_megamenu_megamenu' => array(
+      'arguments' => array(),
+      'template' => 'tp-megamenu-megamenu'
+    )
+  );
+}
+
+function tp_megamenu_megamenu(){
+  /* render parent menu (In the News, Lifestyle, Featured & Columns, etc) */
+  $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 1);
+  menu_tree_add_active_path($mega_tree);
+  $parent_menu = drupal_render(menu_tree_output($mega_tree));
+  
+  /* render child block) */
+  $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 2);
+  $child_block = '';
+  $child_block .= '<div class="child-block>';
+
+  /* render child menu (Menu on left hand side) */
+  $child_block .= '<div class="menu">';
+  foreach($mega_tree as $key => $link){
+    $menu = render(menu_tree_output($mega_tree[$key]['below']));
+  }
+  $child_block .= '</div>';
+
+  /* render view) */
+
+  $child_block .= '</div>';
+
+  return theme('tp_megamenu_megamenu', array('parent_menu' => $parent_menu, 'child_block' => $child_block));
+}
+
+
+
+

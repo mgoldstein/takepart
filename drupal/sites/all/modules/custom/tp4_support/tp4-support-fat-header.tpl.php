@@ -14,12 +14,6 @@
 <div class="search">
   <?php print drupal_render(module_invoke('search_api_page', 'block_view', '2')); ?>
 </div>
-<nav>
-  <ul>
-    <li class="news">In the News</li>
-    <li class="lifestyle">Lifestyle</li>
-    <li class="features">Features & Columns</li>
-    <li class="action">Take Action</li>
-    <li class="tpl">TakePart Live</li>
-  </ul>
+<nav id="megamenu">
+  <?php print $megamenu; ?>
 </nav>
