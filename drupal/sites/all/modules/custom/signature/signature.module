@@ -4,7 +4,17 @@
  * Module for Signatures
  */
 
-include_once dirname(__FILE__) . '/signature.mapping.conf.inc';
+/**
+ * Implements hook_help().
+ */
+function signature_help($path, $arg) {
+  $output = '';
+  if ($path == 'admin/help#signature') {
+    $output .= '<h3>' . t('About') . '</h3>';
+    $output .= '<p>' . t("The TakePart Signature module provides action data imports at regular intervals.") . '</p>';
+  }
+  return $output;
+}
 
 /* Entity
  ******************************************************************************/
@@ -62,6 +72,11 @@ function signature_permission() {
       'title' => t('Delete Signature Node Settings'),
       'restrict access' => TRUE,
     ),
+    'signature configure import settings' => array(
+      'title' => t('Configure action import settings'),
+      'description' => t('Configure the donation action data import settings.'),
+      'restrict access' => TRUE,
+    ),
   );
 }
 
@@ -86,6 +101,15 @@ function signature_access($op, $entity, $account, $entity_type) {
  */
 function signature_menu() {
   return array(
+    'admin/config/participant-media/action-import' => array(
+      'title' => 'Action Import',
+      'description' => 'Configuraion of donation action import',
+      'weight' => 0,
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('signature_import_admin_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('signature configure import settings'),
+    ),
     'api/signature' => array(
       'page callback' => 'signature_api_create',
       'type' => MENU_CALLBACK,
@@ -387,4 +411,167 @@ function signature_api_create($nid) {
       'id' => 0xDeadBeef,
     ),
   );
+}
+
+/* Action Import
+ ******************************************************************************/
+/**
+ * Admin form callback.
+ */
+function signature_import_admin_form($form, &$form_state) {
+
+  $form['signature_import_feed'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Feed'),
+    '#description' => t('The full URL of the action data feed. Leave empty to disable imports.'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('signature_import_feed', ''),
+    '#element_validate' => array('pm_core_element_validate_url'),
+  );
+
+  $form['signature_import_interval'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Inteval'),
+    '#description' => t('The interval in minutes at which the feed should be imported.'),
+    '#required' => FALSE,
+    '#default_value' => variable_get('signature_import_interval', 5),
+    '#element_validate' => array('element_validate_integer_positive'),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Implements hook_cron_queue_info().
+ */
+function signature_cron_queue_info() {
+  return array(
+    'signature_import_queue' => array(
+      'worker callback' => 'signature_import_worker',
+      'time' => 15,
+    ),
+  );
+}
+
+/**
+ * Implements hook_cron().
+ */
+function signature_cron() {
+
+  // Read the configuration.
+  $feed_url = variable_get('signature_import_feed', '');
+  $interval = ((int) variable_get('signature_import_interval', 5)) * 60;
+
+  // Check that we have a workable configuration.
+  if (!empty($feed_url) && $interval > 0) {
+
+    // Get the last time cron ran.
+    $cron_last = db_query("SELECT timestamp FROM {watchdog} WHERE type = 'cron' ORDER BY timestamp DESC LIMIT 1")
+      ->fetchField();
+
+    // If the interval has passed, get a list of updated actions and
+    // queue them for import.
+    if ($cron_last > 0 && (time() - $cron_last) > $interval) {
+
+      // FIXME: Add in something that tracks the last time cron was run.
+      //        It doesn't need to worry about acquiring a lock when setting the
+      //        value, at most we update actions for two cron intervals this is
+      //        still much better than updating all actions all the time.
+      $actions = signature_read_import_feed($feed_url);
+      $queue = DrupalQueue::get('signature_import_queue');
+      foreach ($actions as $action) {
+        // Process only donation actions.
+        // FIXME: It would nice if the feed contained the actions last updated
+        //        timestamp so we can further limit the queued actions to those
+        //        that have been updated/created since the last cron run.
+        $queue->createItem($action);
+      }
+    }
+  }
+}
+
+/**
+ * Reads the updated action feed.
+ */
+function signature_read_import_feed($feed_url) {
+
+  $ch = curl_init();
+  curl_setopt($ch, CURLOPT_URL, $feed_url);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+  // Include the header in result.
+  curl_setopt($ch, CURLOPT_HEADER, 1);
+
+  // Make the request.
+  try {
+    $response = curl_exec($ch);
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+  }
+  catch (Exception $ex) {
+    @curl_close($ch);
+    $message = 'Unable to retrieve feed from [@url]';
+    watchdog('signature', $message, array(
+      '@endpoint' => $feed_url,
+    ));
+    // Nothing to queue.
+    return array();
+  }
+
+  if ($http_code !== 200) {
+    watchdog('signature', 'Error occurred while retrieving feed');
+    // Nothing to queue.
+    return array();
+  }
+
+  // Extract the response body.
+  $header_length = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+  $body = trim(substr($response, $header_length));
+
+  @curl_close($ch);
+
+  $data = json_decode($body);
+  if (!isset($data)) {
+    watchdog('signature', 'Unable to parse feed body');
+    // Nothing to queue.
+    return array();
+  }
+
+  return $data;
+}
+
+/**
+ * Cron queue worker callback.
+ *
+ * @param StdClass $action
+ *   An associative array containing the following:
+ *   - action_id: the TAP-to-TakePart id of the action.
+ *   - title: the title of the action.
+ *   - url: the path of action on the site.
+ *   - image_url: the URL of the action image.
+ *   - type: the type of action.
+ *   - topic: array of topic vocabulary terms for the action.
+ */
+function signature_import_worker($action) {
+
+  // TODO: Actually create/update the action. This should use the
+  //  signature_node table to determine if an action already has a
+  //  stub in the database or if one needs to be created.
+
+  // When creating an action set the type column of signature_node table to
+  // the type attribute of the $action.
+
+  // The signature_node table should also be used in the TakeAction
+  // action overrided module to translate Drupal node ids to the TAP action id.
+
+  // The reason for using the signature_node table and not creating
+  // a new content type are:
+  // - The action type already exists and is integrated into the various views
+  //   and filters on the site, meaning no additional work has to be done to
+  //   make TAP actions available to those views.
+  // - It allows TAP to add any number of new action types, as long as the
+  //   fields in the feed as constitent across all new action types.
+  // - It doesn't require any wonky id mapping scheme (like picking an id well
+  //   outside the existing node id range). Each system can simply use whatever
+  //   auto-generated id they are provided by the framework.
 }

@@ -42,142 +42,6 @@ function signature_uninstall() {
 function signature_schema() {
   $schema = array();
 
-  $schema['signature'] = array(
-    'description' => 'The base table for signature entities.',
-    'fields' => array(
-      'id' => array(
-        'description' => 'Primary key identifier for the signature.',
-        'type' => 'serial',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'type' => array(
-        'description' => 'The {signature_type}.type of the signature.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'nid' => array(
-        'description' => 'The {node}.nid to which the signature belongs.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'email' => array(
-        'description' => 'The email address of user who authored the signature.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'display' => array(
-        'description' => 'The public display status of the signature (0 = Not shown, 1 = Shown).',
-        'type' => 'int',
-        'size' => 'tiny',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'newsletter' => array(
-        'description' => 'The newsletter opt-in status of the signature (0 = Not Opted-In, 1 = Opted-In).',
-        'type' => 'int',
-        'size' => 'tiny',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'language' => array(
-        'description' => 'The {languages}.language of the signature.',
-        'type' => 'varchar',
-        'length' => 12,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'uid' => array(
-        'description' => 'The {users}.id who authored the signature. If set to 0, this signature was created by an anonymous user.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'hostname' => array(
-        'description' => "The author's hostname.",
-        'type' => 'varchar',
-        'length' => 128,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'status' => array(
-        'description' => 'The published status of this signature (0 = Not Published, 1 = Published).',
-        'type' => 'int',
-        'size' => 'tiny',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'created' => array(
-        'description' => 'The Unix timestamp when the signature was created.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'changed' => array(
-        'description' => 'The Unix timestamp when the signature was last changed.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-    ),
-    'primary key' => array('id'),
-    'indexes' => array(
-      'type' => array('type'),
-      'email' => array('email'),
-      'email_and_nid' => array('email', 'nid'),
-    ),
-  );
-
-  $schema['signature_type'] = array(
-    'description' => 'Store information about defined signature types',
-    'fields' => array(
-      'id' => array(
-        'description' => 'Primary key identifier of the signature type.',
-        'type' => 'serial',
-        'not null' => TRUE,
-      ),
-      'type' => array(
-        'description' => 'The machine readable name of the signature type.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-      ),
-      'label' => array(
-        'description' => 'The human readable name of the signature type.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      // Exportable entity fields.
-      'status' => array(
-        'description' => 'The exportable status of the entity.',
-        'type' => 'int',
-        'not null' => TRUE,
-        'default' => 0x01,
-        'size' => 'tiny',
-      ),
-      'module' => array(
-        'description' => 'The name of the providing module if the entity has been defined in code.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => FALSE,
-      ),
-    ),
-    'primary key' => array('id'),
-    'unique keys' => array(
-      'type' => array('type'),
-    ),
-  );
-
   $schema['signature_node'] = array(
     'description' => 'The table for per node signature configurations.',
     'fields' => array(
@@ -188,7 +52,7 @@ function signature_schema() {
         'not null' => TRUE,
       ),
       'type' => array(
-        'description' => 'The type of the signature.',
+        'description' => 'The type of the action.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
@@ -203,6 +67,13 @@ function signature_schema() {
       ),
       'pm_signup_endpoint_id' => array(
         'description' => 'The signup endpoint.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'tap_id' => array(
+        'description' => 'The Take Action Platform ID.',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
@@ -300,4 +171,15 @@ function signature_update_7200(&$sandbox) {
   db_drop_field('signature_node', 'restrictions');
   db_drop_field('signature_node', 'terms_of_use');
   db_drop_field('signature_node', 'display_disclaimer');
+}
+
+/**
+ * Add TAP id mapping field.
+ */
+function signature_update_7201(&$sandbox) {
+  $schema = signature_schema();
+  db_add_field('signature_node', 'tap_id',
+    $schema['signature_node']['fields']['tap_id']);
+  db_query('UPDATE signature_node SET tap_id = nid');
+  db_query('UPDATE signature_node SET tap_id = 9034989 WHERE nid = 34989');
 }
