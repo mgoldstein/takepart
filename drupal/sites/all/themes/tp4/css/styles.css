@@ -3173,7 +3173,7 @@ header .search {
     display: none;
   }
   /* line 95, ../sass/modules/_header.scss */
-  header .search label {
+  header .search .form-item-keys-2 {
     display: inline-block;
     float: left;
     height: auto;
@@ -3183,12 +3183,22 @@ header .search {
     vertical-align: bottom;
     line-height: 23px;
     font-weight: normal;
+    margin: 0;
   }
-  /* line 105, ../sass/modules/_header.scss */
-  header .search label.element-invisible {
+  /* line 106, ../sass/modules/_header.scss */
+  header .search .form-item-keys-2 label {
+    height: auto;
+    overflow: hidden;
+    width: auto;
+    margin-right: 10px;
+  }
+  /* line 111, ../sass/modules/_header.scss */
+  header .search .form-item-keys-2 label.element-invisible {
+    display: inline-block;
+    float: left;
     position: relative !important;
   }
-  /* line 109, ../sass/modules/_header.scss */
+  /* line 118, ../sass/modules/_header.scss */
   header .search [type=text] {
     float: left;
     height: 20px;
@@ -3201,11 +3211,11 @@ header .search {
     text-indent: 6px;
     line-height: 21px;
   }
-  /* line 120, ../sass/modules/_header.scss */
+  /* line 129, ../sass/modules/_header.scss */
   header .search [type=text]:focus {
     outline: none;
   }
-  /* line 124, ../sass/modules/_header.scss */
+  /* line 133, ../sass/modules/_header.scss */
   header .search .form-submit {
     display: block;
     float: left;
@@ -3229,18 +3239,18 @@ header .search {
     margin-top: 25px;
   }
 }
-/* line 145, ../sass/modules/_header.scss */
+/* line 154, ../sass/modules/_header.scss */
 header nav {
   color: #000;
 }
 @media all and (min-width: 320px) {
-  /* line 145, ../sass/modules/_header.scss */
+  /* line 154, ../sass/modules/_header.scss */
   header nav {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 145, ../sass/modules/_header.scss */
+  /* line 154, ../sass/modules/_header.scss */
   header nav {
     display: block;
     clear: both;
@@ -3248,13 +3258,13 @@ header nav {
     font-size: 20px;
     text-transform: uppercase;
   }
-  /* line 156, ../sass/modules/_header.scss */
+  /* line 165, ../sass/modules/_header.scss */
   header nav ul {
     height: 45px;
     border-top: 1px solid #000;
     border-bottom: 3px solid #000;
   }
-  /* line 160, ../sass/modules/_header.scss */
+  /* line 169, ../sass/modules/_header.scss */
   header nav ul li {
     float: left;
     text-align: center;
@@ -3262,41 +3272,41 @@ header nav {
     cursor: pointer;
     white-space: nowrap;
   }
-  /* line 166, ../sass/modules/_header.scss */
+  /* line 175, ../sass/modules/_header.scss */
   header nav ul li:hover {
     background-color: #000;
     color: #fff;
     -webkit-transition: all .1s linear .1s;
     transition: all .1s linear .1s;
   }
-  /* line 172, ../sass/modules/_header.scss */
+  /* line 181, ../sass/modules/_header.scss */
   header nav ul li.news {
     max-width: 20%;
     width: 100%;
   }
-  /* line 176, ../sass/modules/_header.scss */
+  /* line 185, ../sass/modules/_header.scss */
   header nav ul li.lifestyle {
     max-width: 20%;
     width: 100%;
   }
-  /* line 180, ../sass/modules/_header.scss */
+  /* line 189, ../sass/modules/_header.scss */
   header nav ul li.features {
     max-width: 20%;
     width: 100%;
   }
-  /* line 184, ../sass/modules/_header.scss */
+  /* line 193, ../sass/modules/_header.scss */
   header nav ul li.action {
     max-width: 20%;
     width: 100%;
   }
-  /* line 188, ../sass/modules/_header.scss */
+  /* line 197, ../sass/modules/_header.scss */
   header nav ul li.tpl {
     max-width: 20%;
     width: 100%;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 196, ../sass/modules/_header.scss */
+  /* line 205, ../sass/modules/_header.scss */
   header nav .test-push {
     padding-left: 0px;
   }
