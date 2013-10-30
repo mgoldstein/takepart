@@ -204,9 +204,8 @@ class SignatureSignupEndpoint extends SignupEndpoint {
     $this->limit($signup);
 
     // Convert the newsletter opt-ins to endpoints.
-    $endpoints = $this->convertOptInsToEndpoints(
+    $signup['action.opt-ins.newsletters'] = $this->convertOptInsToEndpoints(
       $signup['action.opt-ins.newsletters']);
-    $signup['action.opt-ins.newsletters'] = $endpoints;
 
     parent::submit($signup);
     if (count($errors) > 0) {
