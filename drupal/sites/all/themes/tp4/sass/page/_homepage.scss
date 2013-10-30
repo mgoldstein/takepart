@@ -60,7 +60,7 @@ body.front{
     &.node-openpublish-article .node-title {
       position: relative;
       background-color: white;
-      margin: -1em .5em .5em;
+      margin: -1em .5em 1px;
       padding: .5em .5em 0;
       font-size: 2em;
       line-height: 1.333333333;
@@ -76,7 +76,7 @@ body.front{
       border-bottom: 1px solid $gray-line;
 
       .field {
-        margin-bottom: 1em;
+	margin-bottom: .7em;
       }
       .field-name-field-tab-action-override {
         .field-item {
