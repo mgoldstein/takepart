@@ -13,9 +13,21 @@ class SignupEnpointListingPage {
 
   protected $_records;
 
+  public static function labelForType($type) {
+    $labels = array(
+      'NewsletterCampaignSignupEndpoint' => 'Newsletter',
+      'PartnerOptInSignupEndpoint' => 'Partner',
+      'TakePartOptInSignupEndpoint' => 'Action',
+    );
+    if (isset($labels[$type])) {
+      return $labels[$type];
+    }
+    return $type;
+  }
+
   public function __construct($limit = 25) {
     $data_query = db_select('pm_signup_endpoint', 'ep')
-      ->fields('ep', array('id', 'label', 'name'))
+      ->fields('ep', array('id', 'label', 'name', 'type'))
       ->condition('name', '', '!=')
       ->orderBy('label');
     $paged_query = $data_query->extend('PagerDefault')->limit($limit);
@@ -25,6 +37,7 @@ class SignupEnpointListingPage {
   public function headers() {
     return array(
       t('ID'),
+      t('Type'),
       t('Label'),
       t('Name'),
       array(
@@ -38,6 +51,7 @@ class SignupEnpointListingPage {
     $path = 'admin/config/signups/endpoints/manage/' . $record->id;
     return array(
       l($record->id, $path),
+      self::labelForType($record->type),
       $record->label,
       $record->name,
       l(t('edit'), $path),
