@@ -1,0 +1,13 @@
+diff --git a/drupal/sites/all/modules/contrib/ccl/ccl.module b/drupal/sites/all/modules/contrib/ccl/ccl.module
+index 4e1300c..2c7a875 100644
+--- a/drupal/sites/all/modules/contrib/ccl/ccl.module
++++ b/drupal/sites/all/modules/contrib/ccl/ccl.module
+@@ -104,6 +104,7 @@ function ccl_get_presets($title = NULL) {
+ function ccl_contextual_links_view_alter(&$element, $items) {
+   // Get the destination parameter.
+   $dest = drupal_get_destination();
++  $dest = '';
+
+   // Check if we have a node link to process.
+   if (isset($element['#element']['#node']->nid)) {
+(END)
