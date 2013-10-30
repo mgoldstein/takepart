@@ -462,10 +462,12 @@ function signature_process_import_feed($feed_url, $import_now = FALSE,
 
     if ($full_import || $action->last_modified >= $last_run) {
       if ($import_now) {
-        signature_import_worker($action);
+        if ($action->action_id == 9034991) {
+          signature_import_worker($action);
+        }
       }
       else {
-        $queue->createItem($action);
+        //$queue->createItem($action);
       }
     }
   }
@@ -588,7 +590,7 @@ class SignatureActionMapping {
     $mapping->_data = empty($record->data) ? NULL : unserialize($record->data);
     $mapping->_stub = new SignatureActionStub($record->nid, $mapping->_data);
     $mapping->_endpoint = new SignatureActionEndpoint(
-      $record->pm_signup_endpoint_id, $mapping->_data);
+      $record->pm_signup_endpoint_id);
     return $mapping;
   }
 
@@ -839,16 +841,14 @@ class SignatureActionStub {
 class SignatureActionEndpoint {
 
   protected $_endpoint = FALSE;
-  protected $_data = NULL;
 
-  public function __construct($endpoint_id = NULL, $data = NULL) {
+  public function __construct($endpoint_id = NULL) {
     if (!is_null($endpoint_id)) {
       $this->_endpoint = SignatureSignupEndpoint::load($endpoint_id);
     }
     else {
       $this->_endpoint = new SignatureSignupEndpoint();
     }
-    $this->_data = $data;
   }
 
   public function getID() {
@@ -861,6 +861,20 @@ class SignatureActionEndpoint {
 
   public function update($tap) {
 
+    // BlueHornet just needs to be enabled, the signups will contain a list
+    // of segments.
+    $this->_endpoint->setPluginEnabled(
+      'bluehornet.pm_signup.handler', TRUE);
+    $this->_endpoint->setPluginConfiguration(
+      'bluehornet.pm_signup.handler', array('account' => 'takepart'));
+
+    // Update Blue State Digital
+    $configuration = $this->_endpoint->getPluginConfiguration(
+      'bluestatedigital.pm_signup.handler');
+    $builder = new BlueStateDigitalConfigurationBuilder($configuration);
+    $builder->update($tap);
+    $this->_endpoint->setPluginConfiguration(
+      'bluestatedigital.pm_signup.handler', $builder->getConfiguration());
   }
 
   public function save() {
@@ -870,5 +884,167 @@ class SignatureActionEndpoint {
 
   public function delete() {
     $this->_endpoint->delete();
+  }
+}
+
+class BlueStateDigitalConfigurationBuilder {
+
+  public static function fieldLabelToNameMapping() {
+    return array(
+      'Email' => 'email',
+      'First Name' => 'name.first',
+      'Last Name' => 'name.last',
+      'Address' => 'address.address',
+      'City' => 'address.city',
+      'State/Region/Province' => 'address.state.code',
+      'Country' => 'address.country',
+      'Zip/Postal Code' => 'address.postal-code',
+      'Referrer Code' => 'partner.code',
+      'action-id' => 'action.id',
+      'User Custom Message' => 'action.message',
+      'Public Display Opt-In' => 'action.opt-ins.display',
+      'Referrer Opt-In' => 'action.opt-ins.partner',
+    );
+  }
+
+  public static function optInDefaultLabelMapping() {
+    return array(
+      'Newsletter Opt-In' => '',
+      'Newsletter Opt-In 2' => '',
+      'Newsletter Opt-In 3' => '',
+      'Newsletter Opt-In 4' => '',
+      'Newsletter Opt-In 5' => '',
+    );
+  }
+
+  protected static function fieldWithLabel($label, $fields) {
+    foreach ($fields as $id => $field) {
+      if ($field['label'] === $label) {
+        return $id;
+      }
+    }
+    return FALSE;
+  }
+
+  protected static function addOptInToMapping($new_opt_in, &$mapping) {
+    $next_slot = FALSE;
+    foreach ($mapping as $label => $opt_in) {
+      if (empty($opt_in)) {
+        $mapping[$label] = $new_opt_in;
+        return $label;
+      }
+    }
+    return FALSE;
+  }
+
+  protected $_configuration;
+
+  public function __construct($configuration) {
+    $this->_configuration = $configuration;
+  }
+
+  public function getConfiguration() {
+    return $this->_configuration;
+  }
+
+  protected function cloneSignupForm($tap_id, $title, $type) {
+    $api = bluestatedigital_get_api('signup');
+    $template_form_id = variable_get('signature_template_form_id', 31);
+    try {
+      $form_id = $api->cloneForm($template_form_id, $title,
+        "{$type} - {$title}", "action-{$tap_id}");
+    }
+    catch (BlueStateDigitalApiException $ex) {
+      return FALSE;
+    }
+    return $form_id;
+  }
+
+  protected function getSignupFormFields($form_id, $refresh = FALSE) {
+    static $fields = array();
+    if (!isset($fields[$form_id]) || $refresh) {
+      $api = bluestatedigital_get_api('signup');
+      try {
+        $fields[$form_id] = $api->listFormFields($form_id);
+      }
+      catch (BlueStateDigitalApiException $ex) {
+        return FALSE;
+      }
+    }
+    return $fields[$form_id];
+  }
+
+  protected function setConstituentGroup($field_id, $group_id) {
+    $api = bluestatedigital_get_api('signup');
+    try {
+      $api->setFieldConsGroup($field_id, $group_id);
+    }
+    catch (BlueStateDigitalApiException $ex) {
+      return FALSE;
+    }
+    return TRUE;
+  }
+
+  protected function buildFieldMapping($fields) {
+    $label_to_name = self::fieldLabelToNameMapping();
+    $mapping = array();
+    foreach ($fields as $id => $field) {
+      $label = $field['label'];
+      if (isset($label_to_name[$label])) {
+        $name = $label_to_name[$label];
+        $mapping[$name] = $id;
+      }
+    }
+    return $mapping;
+  }
+
+  protected function setConsGroupForOptIn($opt_in, $field_id) {
+    $endpoint = SignupEndpoint::loadByName($opt_in);
+    if ($endpoint !== FALSE) {
+      $configuration = $endpoint->getPluginConfiguration(
+        'bluestatedigital.pm_signup.handler');
+      if (isset($configuration['cons-group-id'])) {
+        $group_id = $configuration['cons-group-id'];
+        $this->setConstituentGroup($field_id, $group_id);
+      }
+    }
+  }
+
+  protected function getActiveOptIns() {
+    $opt_ins = self::optInDefaultLabelMapping();
+    if (isset($this->_configuration['opt-in-indexes'])) {
+      $opt_ins = $this->_configuration['opt-in-indexes'];
+    }
+    return $opt_ins;
+  }
+
+  protected function buildOptInMapping($opt_ins, $fields) {
+    $mapping = $this->getActiveOptIns();
+    foreach ($opt_ins as $opt_in) {
+      if (!in_array($opt_in->param, $mapping)) {
+        $label = self::addOptInToMapping($opt_in->param, $mapping);
+        if ($label !== FALSE) {
+          $field_id = self::fieldWithLabel($label, $fields);
+          $this->setConsGroupForOptIn($opt_in->param, $field_id);
+        }
+      }
+    }
+    return $mapping;
+  }
+
+  public function update($tap) {
+
+    // Create a form for the action if one does not exist.
+    if (!isset($this->_configuration['form-id'])) {
+      $this->_configuration['form-id'] = $this->cloneSignupForm($tap->action_id,
+        $tap->title, $tap->type);
+    }
+    $form_id = $this->_configuration['form-id'];
+
+    $fields = $this->getSignupFormFields($form_id);
+    $this->_configuration['field-ids'] = $this->buildFieldMapping($fields);
+
+    $this->_configuration['opt-in-indexes'] = $this->buildOptInMapping(
+      $tap->opt_ins, $fields);
   }
 }
