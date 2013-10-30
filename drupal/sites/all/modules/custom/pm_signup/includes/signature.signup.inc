@@ -184,3 +184,9 @@ class SignatureSignupEndpoint extends SignupEndpoint {
     }
   }
 }
+
+/**
+ * Signature opt-in endpoints.
+ */
+class PartnerOptInSignupEndpoint extends SimpleOptInSignupEndpoint {}
+class TakePartOptInSignupEndpoint extends SimpleOptInSignupEndpoint {}

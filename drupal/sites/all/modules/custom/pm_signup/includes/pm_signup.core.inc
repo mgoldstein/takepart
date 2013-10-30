@@ -51,76 +51,7 @@ abstract class SignupFieldSet {
   /* Field definitions.
    ****************************************************************************/
   public static function fields() {
-    return array(
-      'email' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.area-code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.exchange' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.number' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'name.full' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'name.first' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'name.last' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.address' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.city' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.state' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.state.code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.country' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.postal-code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.postal-code.type' => array(
-        'required' => FALSE,
-        'default' => FALSE,
-      ),
-      'address.postal-code.plus-four' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'partner.code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-    );
+    return array();
   }
 
   public static function requiredFields() {

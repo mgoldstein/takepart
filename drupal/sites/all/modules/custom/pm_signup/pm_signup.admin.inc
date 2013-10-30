@@ -133,7 +133,8 @@ class SignupEndpointEditForm {
   public static function types() {
     return array(
       'NewsletterCampaignSignupEndpoint' => t('Newsletter'),
-      'SignatureSignupEndpoint' => t('Action Opt-In'),
+      'PartnerOptInSignupEndpoint' => t('Action Opt-In (Partner)'),
+      'TakePartOptInSignupEndpoint' => t('Action Opt-In (TakePart)'),
       'TakePartUserSignupEndpoint' => t('User Registration'),
     );
   }
