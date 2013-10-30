@@ -39,8 +39,9 @@ h5{
 }
 .section-header{
   font-family: $brown-bold;
-  line-height: 28px;
+  line-height: 27px;
   font-weight: normal;
+  font-size: 20px;
 }
 
 .small{
@@ -61,7 +62,7 @@ a {
     text-decoration: underline;
   }
   .more{
-
+    font-size: 14px;
   }
 }
 input{

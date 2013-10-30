@@ -60,6 +60,7 @@ function tp4_preprocess_page(&$variables) {
   $variables['content_classes'] = 'content';
   $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
   $variables['content_classes'] .= ($variables['sidebar'] ? ' with-sidebar' : '');
+
 }
 
 

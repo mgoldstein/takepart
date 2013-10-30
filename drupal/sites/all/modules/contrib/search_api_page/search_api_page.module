@@ -415,7 +415,7 @@ function search_api_page_delete($id) {
 function search_api_page_search_form(array $form, array &$form_state, Entity $page, $keys = NULL, $compact = FALSE) {
   $form['keys_' . $page->id] = array(
     '#type' => 'textfield',
-    '#title' => $compact ? '' : t('Enter your keywords'),
+    '#title' => $compact ? '' : t('Search'),
     '#default_value' => $keys,
     '#size' => $compact ? 15 : 30,
   );

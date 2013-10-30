@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("//hello.myfonts.net/count/28b0b7");
 @import url("//hello.myfonts.net/count/289667");
 @import url("//hello.myfonts.net/count/289664");
@@ -110,6 +111,1597 @@
   font-style: normal;
 }
 
+/*
+* Symbolset
+* www.symbolset.com
+* Copyright © 2012 Oak Studios LLC
+*
+* Upload this file to your web server
+* and place this within your <head> tags.
+* <link href="webfonts/ss-pika.css" rel="stylesheet" />
+*/
+@font-face {
+  font-family: "SSGizmo";
+  src: url("../fonts/ss-gizmo/ss-gizmo.eot");
+  src: url("../fonts/ss-gizmo/ss-gizmo.eot?#iefix") format("embedded-opentype"), url("../fonts/ss-gizmo/ss-gizmo.woff") format("woff"), url("../fonts/ss-gizmo/ss-gizmo.ttf") format("truetype"), url("../fonts/ss-gizmo/ss-gizmo.svg#SSGizmo") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 111, ../sass/base/_fonts.scss */
+.ss-icon, .ss-icon.ss-gizmo,
+[class^="ss-"]:before, [class*=" ss-"]:before,
+[class^="ss-"].ss-gizmo:before, [class*=" ss-"].ss-gizmo:before,
+[class^="ss-"].right:after, [class*=" ss-"].right:after,
+[class^="ss-"].ss-gizmo.right:after, [class*=" ss-"].ss-gizmo.right:after {
+  font-family: "SSGizmo";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 129, ../sass/base/_fonts.scss */
+[class^="ss-"].right:before,
+[class*=" ss-"].right:before,
+[class*=" ss-"].ss-gizmo.right:before {
+  display: none;
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cursor:before, .ss-cursor.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-crosshair:before, .ss-crosshair.right:after {
+  content: '⌖';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-search:before, .ss-search.right:after {
+  content: '🔎';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-zoomin:before, .ss-zoomin.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-zoomout:before, .ss-zoomout.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-view:before, .ss-view.right:after {
+  content: '👀';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-attach:before, .ss-attach.right:after {
+  content: '📎';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-link:before, .ss-link.right:after {
+  content: '🔗';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-unlink:before, .ss-unlink.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-move:before, .ss-move.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-write:before, .ss-write.right:after {
+  content: '✎';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-writingdisabled:before, .ss-writingdisabled.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-erase:before, .ss-erase.right:after {
+  content: '✐';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-compose:before, .ss-compose.right:after {
+  content: '📝';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-lock:before, .ss-lock.right:after {
+  content: '🔒';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-unlock:before, .ss-unlock.right:after {
+  content: '🔓';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-key:before, .ss-key.right:after {
+  content: '🔑';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-backspace:before, .ss-backspace.right:after {
+  content: '⌫';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-ban:before, .ss-ban.right:after {
+  content: '🚫';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-smoking:before, .ss-smoking.right:after {
+  content: '🚬';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-nosmoking:before, .ss-nosmoking.right:after {
+  content: '🚭';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-trash:before, .ss-trash.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-target:before, .ss-target.right:after {
+  content: '◎';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-tag:before, .ss-tag.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-bookmark:before, .ss-bookmark.right:after {
+  content: '🔖';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-flag:before, .ss-flag.right:after {
+  content: '⚑';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-like:before, .ss-like.right:after {
+  content: '👍';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-dislike:before, .ss-dislike.right:after {
+  content: '👎';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-heart:before, .ss-heart.right:after {
+  content: '♥';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-star:before, .ss-star.right:after {
+  content: '⋆';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-sample:before, .ss-sample.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-crop:before, .ss-crop.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-layers:before, .ss-layers.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-layergroup:before, .ss-layergroup.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pen:before, .ss-pen.right:after {
+  content: '✒';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-bezier:before, .ss-bezier.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pixels:before, .ss-pixels.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-phone:before, .ss-phone.right:after {
+  content: '📞';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-phonedisabled:before, .ss-phonedisabled.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-touchtonephone:before, .ss-touchtonephone.right:after {
+  content: '☏';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-mail:before, .ss-mail.right:after {
+  content: '✉';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-inbox:before, .ss-inbox.right:after {
+  content: '📥';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-outbox:before, .ss-outbox.right:after {
+  content: '📤';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-chat:before, .ss-chat.right:after {
+  content: '💬';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-user:before, .ss-user.right:after {
+  content: '👤';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-users:before, .ss-users.right:after {
+  content: '👥';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-usergroup:before, .ss-usergroup.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-businessuser:before, .ss-businessuser.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-man:before, .ss-man.right:after {
+  content: '👨';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-male:before, .ss-male.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-woman:before, .ss-woman.right:after {
+  content: '👩';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-female:before, .ss-female.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-raisedhand:before, .ss-raisedhand.right:after {
+  content: '✋';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-hand:before, .ss-hand.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pointup:before, .ss-pointup.right:after {
+  content: '👆';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pointupright:before, .ss-pointupright.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pointright:before, .ss-pointright.right:after {
+  content: '👉';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pointdownright:before, .ss-pointdownright.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pointdown:before, .ss-pointdown.right:after {
+  content: '👇';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pointdownleft:before, .ss-pointdownleft.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pointleft:before, .ss-pointleft.right:after {
+  content: '👈';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pointupleft:before, .ss-pointupleft.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cart:before, .ss-cart.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-creditcard:before, .ss-creditcard.right:after {
+  content: '💳';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-calculator:before, .ss-calculator.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-barchart:before, .ss-barchart.right:after {
+  content: '📊';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-piechart:before, .ss-piechart.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-box:before, .ss-box.right:after {
+  content: '📦';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-home:before, .ss-home.right:after {
+  content: '⌂';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-globe:before, .ss-globe.right:after {
+  content: '🌎';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-navigate:before, .ss-navigate.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-compass:before, .ss-compass.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-signpost:before, .ss-signpost.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-location:before, .ss-location.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-floppydisk:before, .ss-floppydisk.right:after {
+  content: '💾';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-database:before, .ss-database.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-hdd:before, .ss-hdd.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-microchip:before, .ss-microchip.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-music:before, .ss-music.right:after {
+  content: '♫';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-headphones:before, .ss-headphones.right:after {
+  content: '🎧';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-discdrive:before, .ss-discdrive.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-volume:before, .ss-volume.right:after {
+  content: '🔈';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-lowvolume:before, .ss-lowvolume.right:after {
+  content: '🔉';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-mediumvolume:before, .ss-mediumvolume.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-highvolume:before, .ss-highvolume.right:after {
+  content: '🔊';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-airplay:before, .ss-airplay.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-camera:before, .ss-camera.right:after {
+  content: '📷';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-picture:before, .ss-picture.right:after {
+  content: '🌄';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-video:before, .ss-video.right:after {
+  content: '📹';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-webcam:before, .ss-webcam.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-film:before, .ss-film.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-playvideo:before, .ss-playvideo.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-videogame:before, .ss-videogame.right:after {
+  content: '🎮';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-play:before, .ss-play.right:after {
+  content: '▶';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pause:before, .ss-pause.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-stop:before, .ss-stop.right:after {
+  content: '■';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-record:before, .ss-record.right:after {
+  content: '●';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-rewind:before, .ss-rewind.right:after {
+  content: '⏪';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-fastforward:before, .ss-fastforward.right:after {
+  content: '⏩';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-skipback:before, .ss-skipback.right:after {
+  content: '⏮';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-skipforward:before, .ss-skipforward.right:after {
+  content: '⏭';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-eject:before, .ss-eject.right:after {
+  content: '⏏';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-repeat:before, .ss-repeat.right:after {
+  content: '🔁';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-replay:before, .ss-replay.right:after {
+  content: '↺';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-shuffle:before, .ss-shuffle.right:after {
+  content: '🔀';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-index:before, .ss-index.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-storagebox:before, .ss-storagebox.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-book:before, .ss-book.right:after {
+  content: '📕';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-notebook:before, .ss-notebook.right:after {
+  content: '📓';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-newspaper:before, .ss-newspaper.right:after {
+  content: '📰';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-gridlines:before, .ss-gridlines.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-rows:before, .ss-rows.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-columns:before, .ss-columns.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-thumbnails:before, .ss-thumbnails.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-mouse:before, .ss-mouse.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-usb:before, .ss-usb.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-desktop:before, .ss-desktop.right:after {
+  content: '💻';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-laptop:before, .ss-laptop.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-tablet:before, .ss-tablet.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-smartphone:before, .ss-smartphone.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cell:before, .ss-cell.right:after {
+  content: '📱';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-battery:before, .ss-battery.right:after {
+  content: '🔋';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-highbattery:before, .ss-highbattery.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-mediumbattery:before, .ss-mediumbattery.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-lowbattery:before, .ss-lowbattery.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-chargingbattery:before, .ss-chargingbattery.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-lightbulb:before, .ss-lightbulb.right:after {
+  content: '💡';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-washer:before, .ss-washer.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-downloadcloud:before, .ss-downloadcloud.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-download:before, .ss-download.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-downloadbox:before, .ss-downloadbox.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-uploadcloud:before, .ss-uploadcloud.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-upload:before, .ss-upload.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-uploadbox:before, .ss-uploadbox.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-fork:before, .ss-fork.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-merge:before, .ss-merge.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-refresh:before, .ss-refresh.right:after {
+  content: '↻';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-sync:before, .ss-sync.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-loading:before, .ss-loading.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-file:before, .ss-file.right:after {
+  content: '📄';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-files:before, .ss-files.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-addfile:before, .ss-addfile.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-removefile:before, .ss-removefile.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-checkfile:before, .ss-checkfile.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-deletefile:before, .ss-deletefile.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-exe:before, .ss-exe.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-zip:before, .ss-zip.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-doc:before, .ss-doc.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pdf:before, .ss-pdf.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-jpg:before, .ss-jpg.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-png:before, .ss-png.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-mp3:before, .ss-mp3.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-rar:before, .ss-rar.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-gif:before, .ss-gif.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-folder:before, .ss-folder.right:after {
+  content: '📁';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-openfolder:before, .ss-openfolder.right:after {
+  content: '📂';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-downloadfolder:before, .ss-downloadfolder.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-uploadfolder:before, .ss-uploadfolder.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-quote:before, .ss-quote.right:after {
+  content: '“';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-unquote:before, .ss-unquote.right:after {
+  content: '”';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-print:before, .ss-print.right:after {
+  content: '⎙';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-copier:before, .ss-copier.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-fax:before, .ss-fax.right:after {
+  content: '📠';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-scanner:before, .ss-scanner.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-printregistration:before, .ss-printregistration.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-shredder:before, .ss-shredder.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-expand:before, .ss-expand.right:after {
+  content: '⤢';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-contract:before, .ss-contract.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-help:before, .ss-help.right:after {
+  content: '❓';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-info:before, .ss-info.right:after {
+  content: 'ℹ';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-alert:before, .ss-alert.right:after {
+  content: '⚠';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-caution:before, .ss-caution.right:after {
+  content: '⛔';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-logout:before, .ss-logout.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-login:before, .ss-login.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-scaleup:before, .ss-scaleup.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-scaledown:before, .ss-scaledown.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-plus:before, .ss-plus.right:after {
+  content: '+';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-hyphen:before, .ss-hyphen.right:after {
+  content: '-';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-check:before, .ss-check.right:after {
+  content: '✓';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-delete:before, .ss-delete.right:after {
+  content: '␡';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-notifications:before, .ss-notifications.right:after {
+  content: '🔔';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-notificationsdisabled:before, .ss-notificationsdisabled.right:after {
+  content: '🔕';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-clock:before, .ss-clock.right:after {
+  content: '⏲';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-stopwatch:before, .ss-stopwatch.right:after {
+  content: '⏱';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-alarmclock:before, .ss-alarmclock.right:after {
+  content: '⏰';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-egg:before, .ss-egg.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-eggs:before, .ss-eggs.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cheese:before, .ss-cheese.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-chickenleg:before, .ss-chickenleg.right:after {
+  content: '🍗';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pizzapie:before, .ss-pizzapie.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pizza:before, .ss-pizza.right:after {
+  content: '🍕';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cheesepizza:before, .ss-cheesepizza.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-frenchfries:before, .ss-frenchfries.right:after {
+  content: '🍟';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-apple:before, .ss-apple.right:after {
+  content: '🍏';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-carrot:before, .ss-carrot.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-broccoli:before, .ss-broccoli.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cucumber:before, .ss-cucumber.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-orange:before, .ss-orange.right:after {
+  content: '🍊';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-lemon:before, .ss-lemon.right:after {
+  content: '🍋';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-onion:before, .ss-onion.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-bellpepper:before, .ss-bellpepper.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-peas:before, .ss-peas.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-grapes:before, .ss-grapes.right:after {
+  content: '🍇';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-strawberry:before, .ss-strawberry.right:after {
+  content: '🍓';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-bread:before, .ss-bread.right:after {
+  content: '🍞';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-mug:before, .ss-mug.right:after {
+  content: '☕';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-mugs:before, .ss-mugs.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-espresso:before, .ss-espresso.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-macchiato:before, .ss-macchiato.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cappucino:before, .ss-cappucino.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-latte:before, .ss-latte.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-icedcoffee:before, .ss-icedcoffee.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-coffeebean:before, .ss-coffeebean.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-coffeemilk:before, .ss-coffeemilk.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-coffeefoam:before, .ss-coffeefoam.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-coffeesugar:before, .ss-coffeesugar.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-sugarpackets:before, .ss-sugarpackets.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-capsule:before, .ss-capsule.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-capsulerecycling:before, .ss-capsulerecycling.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-insertcapsule:before, .ss-insertcapsule.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-tea:before, .ss-tea.right:after {
+  content: '🍵';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-teabag:before, .ss-teabag.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-jug:before, .ss-jug.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pitcher:before, .ss-pitcher.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-kettle:before, .ss-kettle.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-wineglass:before, .ss-wineglass.right:after {
+  content: '🍷';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-sugar:before, .ss-sugar.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-oven:before, .ss-oven.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-stove:before, .ss-stove.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-vent:before, .ss-vent.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-exhaust:before, .ss-exhaust.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-steam:before, .ss-steam.right:after {
+  content: '♨';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-dishwasher:before, .ss-dishwasher.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-toaster:before, .ss-toaster.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-microwave:before, .ss-microwave.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-electrickettle:before, .ss-electrickettle.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-refrigerator:before, .ss-refrigerator.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-freezer:before, .ss-freezer.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-utensils:before, .ss-utensils.right:after {
+  content: '🍴';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cookingutensils:before, .ss-cookingutensils.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-whisk:before, .ss-whisk.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pizzacutter:before, .ss-pizzacutter.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-measuringcup:before, .ss-measuringcup.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-colander:before, .ss-colander.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-eggtimer:before, .ss-eggtimer.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-platter:before, .ss-platter.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-plates:before, .ss-plates.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-steamplate:before, .ss-steamplate.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cups:before, .ss-cups.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-steamglass:before, .ss-steamglass.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-pot:before, .ss-pot.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-steampot:before, .ss-steampot.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-chef:before, .ss-chef.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-weathervane:before, .ss-weathervane.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-thermometer:before, .ss-thermometer.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-thermometerup:before, .ss-thermometerup.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-thermometerdown:before, .ss-thermometerdown.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-droplet:before, .ss-droplet.right:after {
+  content: '💧';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-sunrise:before, .ss-sunrise.right:after {
+  content: '🌅';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-sunset:before, .ss-sunset.right:after {
+  content: '🌇';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-sun:before, .ss-sun.right:after {
+  content: '☀';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-cloud:before, .ss-cloud.right:after {
+  content: '☁';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-clouds:before, .ss-clouds.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-partlycloudy:before, .ss-partlycloudy.right:after {
+  content: '⛅';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-rain:before, .ss-rain.right:after {
+  content: '☔';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-rainheavy:before, .ss-rainheavy.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-lightning:before, .ss-lightning.right:after {
+  content: '☇';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-thunderstorm:before, .ss-thunderstorm.right:after {
+  content: '⛈';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-umbrella:before, .ss-umbrella.right:after {
+  content: '☂';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-rainumbrella:before, .ss-rainumbrella.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-rainbow:before, .ss-rainbow.right:after {
+  content: '🌈';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-rainbowclouds:before, .ss-rainbowclouds.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-fog:before, .ss-fog.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-wind:before, .ss-wind.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-tornado:before, .ss-tornado.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-snowflake:before, .ss-snowflake.right:after {
+  content: '❄';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-snowcrystal:before, .ss-snowcrystal.right:after {
+  content: '❆';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-lightsnow:before, .ss-lightsnow.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-snow:before, .ss-snow.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-heavysnow:before, .ss-heavysnow.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-hail:before, .ss-hail.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-crescentmoon:before, .ss-crescentmoon.right:after {
+  content: '🌙';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-waxingcrescentmoon:before, .ss-waxingcrescentmoon.right:after {
+  content: '🌒';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-firstquartermoon:before, .ss-firstquartermoon.right:after {
+  content: '🌓';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-waxinggibbousmoon:before, .ss-waxinggibbousmoon.right:after {
+  content: '🌔';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-waninggibbousmoon:before, .ss-waninggibbousmoon.right:after {
+  content: '🌖';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-lastquartermoon:before, .ss-lastquartermoon.right:after {
+  content: '🌗';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-waningcrescentmoon:before, .ss-waningcrescentmoon.right:after {
+  content: '🌘';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-fan:before, .ss-fan.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-bike:before, .ss-bike.right:after {
+  content: '🚲';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-wheelchair:before, .ss-wheelchair.right:after {
+  content: '♿';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-briefcase:before, .ss-briefcase.right:after {
+  content: '💼';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-hanger:before, .ss-hanger.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-comb:before, .ss-comb.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-medicalcross:before, .ss-medicalcross.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-up:before, .ss-up.right:after {
+  content: '⬆';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-upright:before, .ss-upright.right:after {
+  content: '⬈';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-right:before, .ss-right.right:after {
+  content: '➡';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-downright:before, .ss-downright.right:after {
+  content: '⬊';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-down:before, .ss-down.right:after {
+  content: '⬇';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-downleft:before, .ss-downleft.right:after {
+  content: '⬋';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-left:before, .ss-left.right:after {
+  content: '⬅';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-upleft:before, .ss-upleft.right:after {
+  content: '⬉';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-navigateup:before, .ss-navigateup.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-navigateright:before, .ss-navigateright.right:after {
+  content: '▻';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-navigatedown:before, .ss-navigatedown.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-navigateleft:before, .ss-navigateleft.right:after {
+  content: '◅';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-retweet:before, .ss-retweet.right:after {
+  content: '';
+}
+
+/* line 131, ../sass/base/_fonts.scss */
+.ss-share:before, .ss-share.right:after {
+  content: '';
+}
+
 /* Helpers */
 /*
  *Fonts
@@ -206,11 +1798,12 @@ h2 {
 /* line 40, ../sass/elements/_typography.scss */
 .section-header {
   font-family: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
-  line-height: 28px;
+  line-height: 27px;
   font-weight: normal;
+  font-size: 20px;
 }
 
-/* line 49, ../sass/elements/_typography.scss */
+/* line 50, ../sass/elements/_typography.scss */
 .column-title {
   font-family: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 18px;
@@ -219,17 +1812,21 @@ h2 {
   text-transform: uppercase;
 }
 
-/* line 57, ../sass/elements/_typography.scss */
+/* line 58, ../sass/elements/_typography.scss */
 a {
   text-decoration: none;
   color: #000;
 }
-/* line 60, ../sass/elements/_typography.scss */
+/* line 61, ../sass/elements/_typography.scss */
 a:hover {
   text-decoration: underline;
 }
+/* line 64, ../sass/elements/_typography.scss */
+a .more {
+  font-size: 14px;
+}
 
-/* line 70, ../sass/elements/_typography.scss */
+/* line 71, ../sass/elements/_typography.scss */
 .footer-title {
   font-family: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
@@ -1733,8 +3330,8 @@ tr.selected td {
 body {
   width: 100%;
   margin: 0;
-  border-top: 5px solid #019f84;
-  border-bottom: 5px solid #019f84;
+  border-top: 5px solid #01bf9e;
+  border-bottom: 5px solid #01bf9e;
 }
 
 /* line 27, ../sass/page/_layout.scss */
@@ -2199,7 +3796,7 @@ body.front #sidebar .block-title {
 .panel-takepart-homepage .node.view-mode-feature-main.node-openpublish-article .node-title {
   position: relative;
   background-color: white;
-  margin: -1em .5em .5em;
+  margin: -1em .5em 1px;
   padding: .5em .5em 0;
   font-size: 2em;
   line-height: 1.333333333;
@@ -2216,7 +3813,7 @@ body.front #sidebar .block-title {
 }
 /* line 78, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field {
-  margin-bottom: 1em;
+  margin-bottom: .7em;
 }
 /* line 82, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item {
@@ -2226,39 +3823,39 @@ body.front #sidebar .block-title {
 }
 /* line 87, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item:before {
-  content: "»";
-  font-size: 2em;
-  line-height: .642857143;
-  color: #09bf9e;
+  content: "\23E9";
+  font-family: "SSGizmo";
+  line-height: 1.75;
+  color: #019f84;
   display: block;
   position: absolute;
   top: 0;
   left: 0;
 }
-/* line 100, ../sass/page/_homepage.scss */
+/* line 98, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a {
   color: black;
 }
-/* line 103, ../sass/page/_homepage.scss */
+/* line 101, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:before {
   content: "take action: ";
   font-family: "BrownRegular", verdana, sans-serif;
 }
-/* line 108, ../sass/page/_homepage.scss */
+/* line 106, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:hover, .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:active {
   color: #01bf9e;
 }
-/* line 117, ../sass/page/_homepage.scss */
+/* line 115, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary {
   margin-bottom: 1em;
 }
-/* line 118, ../sass/page/_homepage.scss */
+/* line 116, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary .node-title {
   font-size: 1.142857143em;
   line-height: 1.25;
   margin-top: .5em;
 }
-/* line 126, ../sass/page/_homepage.scss */
+/* line 124, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline {
   border-top: 4px solid #00b5cc;
   border-bottom: 4px solid #00b5cc;
@@ -2267,12 +3864,12 @@ body.front #sidebar .block-title {
   height: 60px;
 }
 @media all and (min-width: 768px) {
-  /* line 126, ../sass/page/_homepage.scss */
+  /* line 124, ../sass/page/_homepage.scss */
   .panel-takepart-homepage .tpl-headline {
     height: 30px;
   }
 }
-/* line 137, ../sass/page/_homepage.scss */
+/* line 135, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title,
 .panel-takepart-homepage .tpl-headline .tpl-time {
   display: block;
@@ -2281,7 +3878,7 @@ body.front #sidebar .block-title {
   background: transparent none scroll no-repeat top left;
 }
 @media all and (min-width: 768px) {
-  /* line 137, ../sass/page/_homepage.scss */
+  /* line 135, ../sass/page/_homepage.scss */
   .panel-takepart-homepage .tpl-headline .tpl-title,
   .panel-takepart-homepage .tpl-headline .tpl-time {
     display: inline-block;
@@ -2289,52 +3886,52 @@ body.front #sidebar .block-title {
     margin: 0 .5em 0 0;
   }
 }
-/* line 148, ../sass/page/_homepage.scss */
+/* line 146, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 140px;
   background-image: url('../images/tpl-title.jpg?1382751895');
 }
-/* line 152, ../sass/page/_homepage.scss */
+/* line 150, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 252px;
   background-image: url('../images/tpl-time.jpg?1382751895');
 }
 
-/* line 159, ../sass/page/_homepage.scss */
+/* line 157, ../sass/page/_homepage.scss */
 .date {
   margin-bottom: 2px;
 }
 @media all and (min-width: 320px) {
-  /* line 159, ../sass/page/_homepage.scss */
+  /* line 157, ../sass/page/_homepage.scss */
   .date {
     display: none;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 159, ../sass/page/_homepage.scss */
+  /* line 157, ../sass/page/_homepage.scss */
   .date {
     display: block;
     float: left;
     font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
-    color: #5c5c5c;
+    color: #5a5a5a;
     font-size: 13px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 159, ../sass/page/_homepage.scss */
+  /* line 157, ../sass/page/_homepage.scss */
   .date {
     float: right;
   }
 }
 
-/* line 179, ../sass/page/_homepage.scss */
+/* line 177, ../sass/page/_homepage.scss */
 .latest-headlines .views-row {
   line-height: 24px;
   font-size: 14px;
   position: relative;
   padding-left: 15px;
 }
-/* line 184, ../sass/page/_homepage.scss */
+/* line 182, ../sass/page/_homepage.scss */
 .latest-headlines .views-row:before {
   content: '';
   height: 6px;
@@ -2344,7 +3941,7 @@ body.front #sidebar .block-title {
   top: 7px;
   left: 0;
 }
-/* line 194, ../sass/page/_homepage.scss */
+/* line 192, ../sass/page/_homepage.scss */
 .latest-headlines a {
   height: 100%;
   display: block;
@@ -2441,36 +4038,36 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 205, ../sass/page/_homepage.scss */
+/* line 203, ../sass/page/_homepage.scss */
 #skinny .columns {
   text-align: center;
 }
-/* line 207, ../sass/page/_homepage.scss */
+/* line 205, ../sass/page/_homepage.scss */
 #skinny .columns a:hover {
   text-decoration: none;
 }
-/* line 211, ../sass/page/_homepage.scss */
+/* line 209, ../sass/page/_homepage.scss */
 #skinny .columns a .author:hover, #skinny .columns a .field-content:hover {
   text-decoration: underline;
 }
-/* line 216, ../sass/page/_homepage.scss */
+/* line 214, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row {
   padding-bottom: 10px;
 }
 @media all and (min-width: 320px) {
-  /* line 216, ../sass/page/_homepage.scss */
+  /* line 214, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: dashed 1px #000;
   }
-  /* line 222, ../sass/page/_homepage.scss */
+  /* line 220, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row:last-child {
     border-bottom: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 216, ../sass/page/_homepage.scss */
+  /* line 214, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     border-bottom: none;
     padding-left: 30px;
@@ -2478,12 +4075,12 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 216, ../sass/page/_homepage.scss */
+  /* line 214, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     border-bottom: dashed 1px #000;
   }
 }
-/* line 236, ../sass/page/_homepage.scss */
+/* line 234, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .block-title {
   font-size: 12px;
   color: #fff;
@@ -2498,12 +4095,12 @@ body.front #sidebar .block-title {
   margin-bottom: 20px;
   behavior: url("pie.htc");
 }
-/* line 250, ../sass/page/_homepage.scss */
+/* line 248, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .line {
   border-bottom: 1px solid #0080a3;
   margin: 0 13px;
 }
-/* line 256, ../sass/page/_homepage.scss */
+/* line 254, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .views-field-field-profile-photo .field-content {
   border: 1px solid #eee;
   -webkit-border-radius: 50px;
@@ -2517,31 +4114,35 @@ body.front #sidebar .block-title {
 /*
  *Photo Galleries
  */
-/* line 272, ../sass/page/_homepage.scss */
+/* line 270, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block {
   font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
   line-height: 20px;
 }
-/* line 276, ../sass/page/_homepage.scss */
+/* line 274, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .views-row {
   margin-bottom: 20px;
+}
+/* line 277, ../sass/page/_homepage.scss */
+#block-views-photo-galleries-promo-block .block-title {
+  margin-bottom: 8px;
 }
 
 /*
  *Promo "don't miss"
  */
 @media all and (min-width: 320px) {
-  /* line 283, ../sass/page/_homepage.scss */
+  /* line 284, ../sass/page/_homepage.scss */
   .promo {
     text-align: left;
   }
-  /* line 286, ../sass/page/_homepage.scss */
+  /* line 287, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: left;
     display: inline-block;
   }
-  /* line 289, ../sass/page/_homepage.scss */
+  /* line 290, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: inline-block;
     margin-right: 10px;
@@ -2549,17 +4150,17 @@ body.front #sidebar .block-title {
     line-height: 28px;
     font-weight: normal;
   }
-  /* line 296, ../sass/page/_homepage.scss */
+  /* line 297, ../sass/page/_homepage.scss */
   .promo .inner a.text:hover {
     text-decoration: underline;
   }
-  /* line 299, ../sass/page/_homepage.scss */
+  /* line 300, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: inline-block;
     font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 20px;
   }
-  /* line 303, ../sass/page/_homepage.scss */
+  /* line 304, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: inline-block;
     vertical-align: middle;
@@ -2567,7 +4168,7 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 283, ../sass/page/_homepage.scss */
+  /* line 284, ../sass/page/_homepage.scss */
   .promo {
     text-align: center;
   }
@@ -2576,7 +4177,7 @@ body.front #sidebar .block-title {
 /*
  *Graveyard
  */
-/* line 321, ../sass/page/_homepage.scss */
+/* line 322, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -2672,11 +4273,11 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 325, ../sass/page/_homepage.scss */
+/* line 326, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 327, ../sass/page/_homepage.scss */
+/* line 328, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;
@@ -3077,7 +4678,7 @@ footer .footer-bottom {
 /* line 9, ../sass/modules/_header.scss */
 header {
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
-  color: #5c5c5c;
+  color: #5a5a5a;
 }
 /* line 12, ../sass/modules/_header.scss */
 header .logo {
@@ -3130,7 +4731,7 @@ header .logo {
   }
   /* line 47, ../sass/modules/_header.scss */
   header .user-menu a {
-    color: #5c5c5c;
+    color: #5a5a5a;
   }
   /* line 50, ../sass/modules/_header.scss */
   header .user-menu li {

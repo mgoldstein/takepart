@@ -1,5 +1,7 @@
-<div class="logo">  
-  <img src="<?php print $logo; ?>">
+<div class="logo">
+  <?php $logo = '<img src="'. $logo. '">'; ?>
+  <?php global $base_url; ?>
+  <?php print l($logo, $base_url, array('html' => true)); ?>
 </div>
 <div class="follow-us">
   <div class="text">Follow Us</div><?php print drupal_render(menu_tree('menu-social-header-follow')); ?>
