@@ -61,10 +61,16 @@ a {
   &:hover{
     text-decoration: underline;
   }
-  .more{
+  &.more{
     font-size: 14px;
+    &:before {
+      content: "\23E9 ";
+      font-family: "SSGizmo";
+      color: $mint;
+    }
   }
 }
+
 input{
 
 }

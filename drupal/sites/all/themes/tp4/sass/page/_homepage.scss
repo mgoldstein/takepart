@@ -290,9 +290,9 @@ body.front{
     line-height: 1.5;
     .more {
       &:before {
-	content: "\23E9 ";
-	font-family: "SSGizmo";
-	color: $mint;
+    	content: "\23E9 ";
+    	font-family: "SSGizmo";
+    	color: $mint;
       }
     }
   }

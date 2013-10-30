@@ -18,7 +18,7 @@ footer{
       @include zen-clear();
     }
     @include breakpoint($breakpoint-tablet){
-      @include zen-grid-item(7, 1);
+      @include zen-grid-item(8, 1);
       @include zen-clear(none);
     }
   }
@@ -28,7 +28,7 @@ footer{
       @include zen-clear();
     }
     @include breakpoint($breakpoint-tablet){
-      @include zen-grid-item(5, 8);
+      @include zen-grid-item(4, 9);
       @include zen-clear(none);
     }
   }
@@ -58,6 +58,9 @@ footer{
     }
     @include breakpoint($breakpoint-tablet){
       margin-bottom: 0px;
+      ul{
+        margin-bottom: 7px;
+      }
     }
   }
   .footer-right{
@@ -101,7 +104,10 @@ footer{
         float: right;
         margin-top: 50px;
         clear: both;
-        width: 80%;
+        width: 90%;
+        font: $adelle-light;
+        font-size: 11px;
+        line-height: 16px;
       }
     }
     @include breakpoint($breakpoint-desktop){
@@ -120,7 +126,7 @@ footer{
         // display: inline-block;
         li{
           display: inline-block;
-          margin-left: 10px;
+          margin-left: 20px;
           height: auto;
           width: auto;
           overflow: hidden;
