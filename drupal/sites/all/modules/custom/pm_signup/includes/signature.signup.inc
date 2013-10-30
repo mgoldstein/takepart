@@ -183,6 +183,37 @@ class SignatureSignupEndpoint extends SignupEndpoint {
       throw new SignupValidationException(array('partner opt-in requires a partner code'));
     }
   }
+
+  protected function convertOptInsToEndpoints($names) {
+    $endpoints = array();
+    foreach ($names as $name) {
+      $endpoint = SignupEndpoint::loadByName($name);
+      if ($endpoint !== FALSE) {
+        $endpoints[$name] = $endpoint;
+      }
+      else {
+        $message = 'newsletter opt-in [' . $name . '] not found'
+        throw new SignupValidationException(array($message));
+      }
+    }
+    return $endpoints;
+  }
+
+  public function submit($signup) {
+    $this->validate($signup);
+    $this->limit($signup);
+
+    // Convert the newsletter opt-ins to endpoints.
+    $endpoints = $this->convertOptInsToEndpoints(
+      $signup['action.opt-ins.newsletters']);
+    $signup['action.opt-ins.newsletters'] = $endpoints;
+
+    parent::submit($signup);
+    if (count($errors) > 0) {
+      throw new SignupSubmissionException($errors);
+    }
+    $this->record($signup);
+  }
 }
 
 /**

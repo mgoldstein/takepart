@@ -642,16 +642,10 @@ abstract class SignupEndpoint extends SignupFieldSet {
     }
   }
 
-  public function submit($signup) {
-
-    $this->validate($signup);
-
-    $this->limit($signup);
-
+  protected function sendToAllHandlers($signup) {
     $plugins = ctools_get_plugins('pm_signup', 'handler');
     $errors = array();
     foreach ($plugins as $id => $plugin) {
-
       if ($this->getPluginEnabled($id)) {
 
         $class = ctools_plugin_get_class($plugin, 'handler');
@@ -684,11 +678,16 @@ abstract class SignupEndpoint extends SignupFieldSet {
         }
       }
     }
+    return $errors;
+  }
 
+  public function submit($signup) {
+    $this->validate($signup);
+    $this->limit($signup);
+    $error = $this->sendToAllHandlers($signup);
     if (count($errors) > 0) {
       throw new SignupSubmissionException($errors);
     }
-
     $this->record($signup);
   }
 
