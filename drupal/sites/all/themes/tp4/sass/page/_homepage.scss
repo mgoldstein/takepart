@@ -11,7 +11,7 @@ body.front{
   #sidebar{
     .block-title{
       border-top: 4px solid #000;
-      padding-top: 5px;
+      padding-top: 0px;
     }
   }
 }
@@ -157,6 +157,7 @@ body.front{
 } // .panel-takepart-homepage
 
 .date {
+  margin-bottom: 2px;
   @include breakpoint($breakpoint-mobile){
     display: none;
   }
