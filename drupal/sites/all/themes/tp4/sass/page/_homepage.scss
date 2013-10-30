@@ -68,7 +68,6 @@ body.front{
 
     .byline {
       margin: 0 2em 1em;
-      font-style: italic;
     }
 
     .entry-content {
@@ -210,26 +209,37 @@ body.front{
         text-decoration: underline;
       }
     }
-  }
-  .columns > .view-content > .views-row{
-    padding-bottom: 10px;
-    @include breakpoint($breakpoint-mobile){
-      margin-bottom: 15px;
-      padding-bottom: 15px;
-      border-bottom: dashed 1px #000;
-      &:last-child{
-        border-bottom: none;
-      }
+    .author {
+      padding: 4px 0 1px;
     }
-    @include breakpoint($breakpoint-tablet){
-      border-bottom: none;
-      padding-left: 30px;
-      padding-right: 30px;
-    }
-    @include breakpoint($breakpoint-desktop){
-      border-bottom: dashed 1px #000;
-    }
-  }
+    > .view-content {
+      > .views-row {
+	&:after {
+	  content: '';
+	  display: block;
+	  height: 0;
+	  width: 76px;
+	  margin: 1em auto 1.5em;
+	  border-bottom: dotted 2px $light-gray;
+	}
+	&:last-child:after {
+	  border-bottom: none;
+	}
+	@include breakpoint($breakpoint-tablet){
+	  padding-left: 30px;
+	  padding-right: 30px;
+	  &:after {
+	    display: none;
+	  }
+	}
+	@include breakpoint($breakpoint-desktop){
+	  &:after {
+	    display: block;
+	  }
+	}
+      } // > .view-row
+    } // > .view-content
+  } // .columns
   #block-views-homepage-columns-block{
     .block-title{
       font-size: 12px;
@@ -258,7 +268,7 @@ body.front{
         width: 50px;
         height: 50px;
         overflow: hidden;
-        margin: 5px auto;
+	margin: 0 auto 5px;
       }
     }
   }
