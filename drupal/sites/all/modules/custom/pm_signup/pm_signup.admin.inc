@@ -135,7 +135,6 @@ class SignupEndpointEditForm {
       'NewsletterCampaignSignupEndpoint' => t('Newsletter'),
       'PartnerOptInSignupEndpoint' => t('Action Opt-In (Partner)'),
       'TakePartOptInSignupEndpoint' => t('Action Opt-In (TakePart)'),
-      'TakePartUserSignupEndpoint' => t('User Registration'),
     );
   }
 
@@ -186,6 +185,17 @@ class SignupEndpointEditForm {
         'source' => array('label'),
       ),
       '#default_value' => $this->workingEndpoint()->getName(),
+    );
+  }
+
+  public function promptField() {
+    return array(
+      '#title' => t('User Prompt'),
+      '#description' => t('Prompt shown to the user.'),
+      '#type' => 'textfield',
+      '#required' => TRUE,
+      '#size' => 60,
+      '#default_value' => $this->workingEndpoint()->getUserPrompt(),
     );
   }
 
@@ -265,6 +275,7 @@ class SignupEndpointEditForm {
     $form['type'] = $this->typeField();
     $form['label'] = $this->labelField();
     $form['name'] = $this->nameField();
+    $form['prompt'] = $this->promptField();
     $this->addHandlerFieldsets($form);
     $form['submit'] = $this->submitButton();
     return $form;
@@ -324,6 +335,7 @@ class SignupEndpointEditForm {
     }
     $values = $form_state['values'];
     $this->_endpoint->labelForExport($values['label'], $values['name']);
+    $this->_endpoint->setUserPrompt($values['prompt']);
     foreach (array_keys($this->handlerClasses()) as $id) {
       $this->_prepareHandler($id, $values);
     }

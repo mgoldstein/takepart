@@ -92,4 +92,15 @@ class SimpleOptInSignupEndpoint extends SignupEndpoint {
       throw new SignupValidationException(array('an email or phone number is required'));
     }
   }
+
+  public function getUserPrompt() {
+    if (isset($this->configuration['user_prompt'])) {
+      return $this->configuration['user_prompt'];
+    }
+    return FALSE;
+  }
+
+  public function setUserPrompt($prompt) {
+    $this->configuration['user_prompt'] = $prompt;
+  }
 }

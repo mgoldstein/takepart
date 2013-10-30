@@ -452,14 +452,18 @@ function pm_signup_handle($request, $disable_queue = FALSE) {
 
 function pm_signup_api_endpoints($type = NULL) {
   $query = db_select('pm_signup_endpoint', 'ep');
-  $query->addField('ep', 'name','value');
+  $query->addField('ep', 'name', 'value');
   $query->addField('ep', 'label', 'label');
+  $query->addField('ep', 'configuration', 'configuration');
   $query->condition('name', '', '!=');
   if (!is_null($type)) {
     $query->condition('type', $type);
   }
   $query->orderBy('label');
   $payload = $query->execute()->fetchAll();
+  foreach ($payload as $endpoint) {
+    $endpoint->configuration = unserialize($endpoint->configuration);
+  }
   return array(
     'status' => '200 OK',
     'payload' => $payload,
