@@ -203,6 +203,14 @@ body.front{
   }
   .columns{
     text-align: center;
+    a:hover {
+      text-decoration: none;
+    }
+    a {
+      .author:hover, .field-content:hover{
+        text-decoration: underline;
+      }
+    }
   }
   .columns > .view-content > .views-row{
     padding-bottom: 10px;
