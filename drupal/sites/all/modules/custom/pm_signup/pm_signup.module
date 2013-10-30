@@ -205,10 +205,7 @@ function pm_signup_submit($request) {
   elseif ($request['type'] === 'signature') {
     $signup = SignatureSignup::create();
     $fields = array_keys(SignatureSignup::fields());
-    $settings = entity_load_single('signature_node', (int) $request['endpoint']);
-    if ($settings !== FALSE && !empty($settings->pm_signup_endpoint_id)) {
-      $endpoint = SignatureSignupEndpoint::load($settings->pm_signup_endpoint_id);
-    }
+    $endpoint = SignatureSignupEndpoint::load((int) $request['endpoint']);
   }
   elseif ($request['type'] === 'user') {
     $signup = TakePartUserSignup::create();

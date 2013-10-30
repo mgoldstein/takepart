@@ -157,7 +157,7 @@ function signature_deliver_api_page($page_callback_result) {
   print drupal_json_encode($page_callback_result['payload']);
 }
 
-function signature_api_create($nid) {
+function signature_api_create($tap_id) {
 
   // Creates are done through a POST
   if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -183,8 +183,8 @@ function signature_api_create($nid) {
     );
   }
 
-  // First (and only) path element is a nid
-  if (!preg_match('/^[0-9]+$/', $nid)) {
+  // First (and only) path element is a TAP id
+  if (!preg_match('/^[0-9]+$/', $tap_id)) {
     return array(
       'status' => '400 Bad Request',
       'payload' => array(
@@ -195,9 +195,9 @@ function signature_api_create($nid) {
     );
   }
 
-  // The nid must point to a valid node
-  $node = node_load($nid);
-  if ($node === FALSE) {
+  // The TAP id must point to a valid mapping
+  $mapping = SignatureActionMapping::load($tap_id);
+  if ($mapping === FALSE) {
     return array(
       'status' => '404 Not Found',
       'payload' => array(
@@ -208,26 +208,13 @@ function signature_api_create($nid) {
     );
   }
 
-  // The action must support signatures
-  if (!signature_node_is_signature_action($node)) {
+  // The nid must point to a valid node
+  if ($mapping->endpoint()->getID() === FALSE) {
     return array(
       'status' => '400 Bad Request',
       'payload' => array(
         'errors' => array(
-          'The requested action does not support signatures.',
-        ),
-      ),
-    );
-  }
-
-  // The action must has a signature configuration
-  $settings = entity_load_single('signature_node', $nid);
-  if ($settings === FALSE || empty($settings->pm_signup_endpoint_id)) {
-    return array(
-      'status' => '400 Bad Request',
-      'payload' => array(
-        'errors' => array(
-          'The requested action is not configured for signatures.',
+          'Action does not have a signup endpoint.',
         ),
       ),
     );
@@ -296,23 +283,8 @@ function signature_api_create($nid) {
     'action.id' => $nid,
     'action.signature-type' => 'international_signature',
     'action.opt-ins.display' => $request['display_signature'],
+    'action.opt-ins.newsletters' => $request['opt_ins'],
   );
-
-  // Newsletter opt-ins
-  $opt_ins = array(
-    'opt_in_1' => 'false',
-    'opt_in_2' => 'false',
-    'opt_in_3' => 'false',
-    'opt_in_4' => 'false',
-    'opt_in_5' => 'false',
-  );
-  foreach ($request['opt_ins'] as $opt_in) {
-    $name = $opt_in['name'];
-    if (!empty($opt_in['value']) && isset($opt_ins[$name])) {
-      $opt_ins[$name] = 'true';
-    }
-  }
-  $payload['action.opt-ins.newsletters'] = implode(',', $opt_ins);
 
   // Address
   if (!empty($request['address'])) {
@@ -355,7 +327,7 @@ function signature_api_create($nid) {
   // Send the signup
   $sent = pm_signup_handle(array(
     'type' => 'signature',
-    'endpoint' => $nid,
+    'endpoint' => $mapping->endpoint()->getID(),
     'payload' => $payload,
   ));
 
@@ -877,6 +849,14 @@ class SignatureActionEndpoint {
       $this->_endpoint = new SignatureSignupEndpoint();
     }
     $this->_data = $data;
+  }
+
+  public function getID() {
+    if ($this->_endpoint !== FALSE) {
+      $id = $this->_endpoint->getID();
+      return is_null($id) ? FALSE : $id;
+    }
+    return FALSE;
   }
 
   public function update($tap) {
