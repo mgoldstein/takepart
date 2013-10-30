@@ -2166,7 +2166,7 @@ body.front img {
 /* line 12, ../sass/page/_homepage.scss */
 body.front #sidebar .block-title {
   border-top: 4px solid #000;
-  padding-top: 5px;
+  padding-top: 0px;
 }
 
 /* line 26, ../sass/page/_homepage.scss */
@@ -2300,6 +2300,10 @@ body.front #sidebar .block-title {
   background-image: url('../images/tpl-time.jpg?1382751895');
 }
 
+/* line 159, ../sass/page/_homepage.scss */
+.date {
+  margin-bottom: 2px;
+}
 @media all and (min-width: 320px) {
   /* line 159, ../sass/page/_homepage.scss */
   .date {
@@ -2323,14 +2327,14 @@ body.front #sidebar .block-title {
   }
 }
 
-/* line 178, ../sass/page/_homepage.scss */
+/* line 179, ../sass/page/_homepage.scss */
 .latest-headlines .views-row {
   line-height: 24px;
   font-size: 14px;
   position: relative;
   padding-left: 15px;
 }
-/* line 183, ../sass/page/_homepage.scss */
+/* line 184, ../sass/page/_homepage.scss */
 .latest-headlines .views-row:before {
   content: '';
   height: 6px;
@@ -2340,7 +2344,7 @@ body.front #sidebar .block-title {
   top: 7px;
   left: 0;
 }
-/* line 193, ../sass/page/_homepage.scss */
+/* line 194, ../sass/page/_homepage.scss */
 .latest-headlines a {
   height: 100%;
   display: block;
@@ -2437,36 +2441,36 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 204, ../sass/page/_homepage.scss */
+/* line 205, ../sass/page/_homepage.scss */
 #skinny .columns {
   text-align: center;
 }
-/* line 206, ../sass/page/_homepage.scss */
+/* line 207, ../sass/page/_homepage.scss */
 #skinny .columns a:hover {
   text-decoration: none;
 }
-/* line 210, ../sass/page/_homepage.scss */
+/* line 211, ../sass/page/_homepage.scss */
 #skinny .columns a .author:hover, #skinny .columns a .field-content:hover {
   text-decoration: underline;
 }
-/* line 215, ../sass/page/_homepage.scss */
+/* line 216, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row {
   padding-bottom: 10px;
 }
 @media all and (min-width: 320px) {
-  /* line 215, ../sass/page/_homepage.scss */
+  /* line 216, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: dashed 1px #000;
   }
-  /* line 221, ../sass/page/_homepage.scss */
+  /* line 222, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row:last-child {
     border-bottom: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 215, ../sass/page/_homepage.scss */
+  /* line 216, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     border-bottom: none;
     padding-left: 30px;
@@ -2474,12 +2478,12 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 215, ../sass/page/_homepage.scss */
+  /* line 216, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     border-bottom: dashed 1px #000;
   }
 }
-/* line 235, ../sass/page/_homepage.scss */
+/* line 236, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .block-title {
   font-size: 12px;
   color: #fff;
@@ -2494,12 +2498,12 @@ body.front #sidebar .block-title {
   margin-bottom: 20px;
   behavior: url("pie.htc");
 }
-/* line 249, ../sass/page/_homepage.scss */
+/* line 250, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .line {
   border-bottom: 1px solid #0080a3;
   margin: 0 13px;
 }
-/* line 255, ../sass/page/_homepage.scss */
+/* line 256, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .views-field-field-profile-photo .field-content {
   border: 1px solid #eee;
   -webkit-border-radius: 50px;
@@ -2513,13 +2517,13 @@ body.front #sidebar .block-title {
 /*
  *Photo Galleries
  */
-/* line 271, ../sass/page/_homepage.scss */
+/* line 272, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block {
   font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
   line-height: 20px;
 }
-/* line 275, ../sass/page/_homepage.scss */
+/* line 276, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .views-row {
   margin-bottom: 20px;
 }
@@ -2528,33 +2532,34 @@ body.front #sidebar .block-title {
  *Promo "don't miss"
  */
 @media all and (min-width: 320px) {
-  /* line 282, ../sass/page/_homepage.scss */
+  /* line 283, ../sass/page/_homepage.scss */
   .promo {
     text-align: left;
   }
-  /* line 285, ../sass/page/_homepage.scss */
+  /* line 286, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: left;
     display: inline-block;
   }
-  /* line 288, ../sass/page/_homepage.scss */
+  /* line 289, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: inline-block;
     margin-right: 10px;
     font-family: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
     line-height: 28px;
+    font-weight: normal;
   }
-  /* line 294, ../sass/page/_homepage.scss */
+  /* line 296, ../sass/page/_homepage.scss */
   .promo .inner a.text:hover {
     text-decoration: underline;
   }
-  /* line 297, ../sass/page/_homepage.scss */
+  /* line 299, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: inline-block;
     font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 20px;
   }
-  /* line 301, ../sass/page/_homepage.scss */
+  /* line 303, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: inline-block;
     vertical-align: middle;
@@ -2562,7 +2567,7 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 282, ../sass/page/_homepage.scss */
+  /* line 283, ../sass/page/_homepage.scss */
   .promo {
     text-align: center;
   }
@@ -2571,7 +2576,7 @@ body.front #sidebar .block-title {
 /*
  *Graveyard
  */
-/* line 319, ../sass/page/_homepage.scss */
+/* line 321, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -2667,11 +2672,11 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 323, ../sass/page/_homepage.scss */
+/* line 325, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 325, ../sass/page/_homepage.scss */
+/* line 327, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;

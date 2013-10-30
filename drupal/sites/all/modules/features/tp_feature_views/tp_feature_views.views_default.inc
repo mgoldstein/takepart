@@ -203,6 +203,13 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   /* Field: Content: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'field_data_field_promo_headline';
@@ -211,6 +218,7 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['field_promo_headline']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_headline']['element_class'] = '[type]';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   /* Sort criterion: Nodequeue: Queue ID */
   $handler->display->display_options['sorts']['qid']['id'] = 'qid';
@@ -283,10 +291,15 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
   $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
-  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 0;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'photo_galleries_promo' => 'photo_galleries_promo',
     'latest_headlines' => 0,
-    'photo_galleries_promo' => 0,
+    'promo_features_columns' => 0,
+    'promo_take_action' => 0,
+    'promo_tpl' => 0,
+    'promo_lifestyle' => 0,
+    'promo_in_the_news' => 0,
   );
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -295,6 +308,13 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   /* Field: Content: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
@@ -315,6 +335,7 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['field_promo_headline']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_headline']['element_class'] = '[type]';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
