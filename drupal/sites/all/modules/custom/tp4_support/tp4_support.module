@@ -118,7 +118,17 @@ function tp4_support_block_configure($delta = ''){
       '#type' => 'textfield',
       '#title' => t('Link'),
       '#description' => t('URL for the promo text'),
-      '#default_value' => variable_get('tp4_support_domt_miss_link', NULL),
+      '#default_value' => variable_get('tp4_support_dont_miss_link', NULL),
+    );
+    $form['tp4_support_dont_miss_link_target'] = array(
+      '#type' => 'select',
+      '#title' => t('Link Target'),
+      '#options' => array(
+          0 => t('_blank'),
+          1 => t('_top'),
+       ),
+      '#description' => t('Target for the link'),
+      '#default_value' => variable_get('tp4_support_dont_miss_link_target', 1),
     );
   }
   return $form;
@@ -135,6 +145,7 @@ function tp4_support_block_save($delta = '', $edit = array()) {
     variable_set('tp4_support_dont_miss_label', $edit['tp4_support_dont_miss_label']);
     variable_set('tp4_support_dont_miss_text', $edit['tp4_support_dont_miss_text']);
     variable_set('tp4_support_dont_miss_link', $edit['tp4_support_dont_miss_link']);
+    variable_set('tp4_support_dont_miss_link_target', $edit['tp4_support_dont_miss_link_target']);
   }
 }
 
@@ -196,6 +207,7 @@ function tp4_support_dont_miss(){
   $dont_miss_label = variable_get('tp4_support_dont_miss_label', NULL);
   $dont_miss_text = variable_get('tp4_support_dont_miss_text', NULL);
   $dont_miss_link = variable_get('tp4_support_dont_miss_link', NULL);
+  $dont_miss_link_target = variable_get('tp4_support_dont_miss_link_target', 1);
   $output = '';
   if($dont_miss_text != NULL){
     $output .= '<div class="promo"><div class="inner">';
@@ -206,7 +218,8 @@ function tp4_support_dont_miss(){
       $output .= '<div class="text">'. $dont_miss_text. '</div>';
     }
     else{
-      $output .= l($dont_miss_text, $dont_miss_link, array('html' => true, 'attributes' => array('class' => array ('text'))));
+      $target = ($dont_miss_link_target == 1 ? '_top' : '_blank');
+      $output .= l($dont_miss_text, $dont_miss_link, array('html' => true, 'attributes' => array('class' => array ('text'), 'target' => $target)));
     }
     $output .= '</div></div>';
   }
