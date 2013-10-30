@@ -1,48 +1,8 @@
 <?php
 /**
  * @file
- * Module for Signatures
+ * Module for action import and stub.
  */
-
-/**
- * Implements hook_help().
- */
-function signature_help($path, $arg) {
-  $output = '';
-  if ($path == 'admin/help#signature') {
-    $output .= '<h3>' . t('About') . '</h3>';
-    $output .= '<p>' . t("The TakePart Signature module provides action data imports at regular intervals.") . '</p>';
-  }
-  return $output;
-}
-
-/* Entity
- ******************************************************************************/
-/**
- * Implements hook_entity_info().
- */
-function signature_entity_info() {
-
-  $info = array();
-
-  $info['signature_node'] = array(
-    'label' => t('Signature Node Settings'),
-    'entity class' => 'SignatureNode',
-    'controller class' => 'SignatureNodeController',
-    'base table' => 'signature_node',
-    'fieldable' => FALSE,
-    'entity keys' => array(
-      'id' => 'nid',
-      'label' => 'title',
-    ),
-    'uri callback' => 'entity_class_uri',
-    'access callback' => 'signature_access',
-    'module' => 'signature',
-  );
-
-  return $info;
-}
-
 
 /* Access Control
  ******************************************************************************/
@@ -52,45 +12,12 @@ function signature_entity_info() {
 function signature_permission() {
   // Return permissions for the standard API entity operations.
   return array(
-    'administer signature signature_node' => array(
-      'title' => t('Administer Signature Node Settings'),
-      'restrict access' => TRUE,
-    ),
-    'view signature signature_node' => array(
-      'title' => t('View Signature Node Settings'),
-      'restrict access' => TRUE,
-    ),
-    'update signature signature_node' => array(
-      'title' => t('Update Signature Node Settings'),
-      'restrict access' => TRUE,
-    ),
-    'create signature signature_node' => array(
-      'title' => t('Create Signature Node Settings'),
-      'restrict access' => TRUE,
-    ),
-    'delete signature signature_node' => array(
-      'title' => t('Delete Signature Node Settings'),
-      'restrict access' => TRUE,
-    ),
     'signature configure import settings' => array(
       'title' => t('Configure action import settings'),
       'description' => t('Configure the donation action data import settings.'),
       'restrict access' => TRUE,
     ),
   );
-}
-
-/**
- * Access callback for signatures.
- */
-function signature_access($op, $entity, $account, $entity_type) {
-  // Block unknown operations.
-  $allowed_ops = array('administer', 'view', 'update', 'create', 'delete');
-  if (in_array($op, $allowed_ops)) {
-    return user_access("$op signature $entity_type", $account)
-      || user_access("administer signature $entity_type", $account);
-  }
-  return FALSE;
 }
 
 
@@ -126,10 +53,8 @@ function signature_menu() {
  * Implements hook_preprocess_field().
  */
 function signature_preprocess_field(&$vars) {
-
   $field_name = $vars['element']['#field_name'];
   $view_mode = $vars['element']['#view_mode'];
-
   if ($field_name == 'field_action_type') {
     $object = $vars['element']['#object'];
     $type = $vars['element']['#entity_type'];
@@ -154,27 +79,77 @@ function signature_preprocess_node(&$vars) {
 }
 
 
-/* Signature AJAX API.
+/* Node Mapping
  ******************************************************************************/
 /**
  * Implements hook_node_delete().
  */
 function signature_node_delete($node) {
-  // Delete any existing node settings and field mapping.
-  entity_delete('signature_node', $node->nid);
+  $mapping = SignatureActionMapping::loadByNodeId($node->nid);
+  if ($mapping !== FALSE) {
+    $mapping->delete(FALSE, TRUE);
+  }
 }
 
 /**
- * Implements hook_entity_delete().
+ * Implements hook_token_info().
  */
-function signature_entity_delete($entity, $type) {
-  if ($type === 'signature_node') {
-    // Delete the accompaning signup endpoint.
-    if (!empty($entity->pm_signup_endpoint_id)) {
-      SignatureSignupEndpoint::deleteByID($entity->pm_signup_endpoint_id);
+function signature_token_info() {
+  return array(
+    'types' => array(
+      'node' => array(
+        'name' => t('Node'),
+        'description' => t('Tokens related to individual nodes.'),
+        'needs-data' => 'node'
+      ),
+    ),
+    'tokens' => array(
+      'node' => array(
+        'tap-action-path' => array(
+          'name' => t('TAP Action Path'),
+          'description' => t('Action page path as configured in TAP.')
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function signature_tokens($type, $tokens, array $data = array(),
+  array $options = array()) {
+  $sanitize = !empty($options['sanitize']);
+  $replacements = array();
+  if ($type == 'node' && !empty($data['node'])) {
+    $node = $data['node'];
+    foreach ($tokens as $name => $original) {
+      if ($name === 'tap-action-path') {
+        $path = NULL;
+        // Try grabbing the path from the node directly.
+        if (isset($node->signature_tap_path)) {
+          $path = $node->signature_tap_path;
+        }
+        // Load the signature action mapping and get the path from there.
+        else {
+          $mapping = SignatureActionMapping::loadByNodeId($node->nid);
+          if ($mapping !== FALSE) {
+            $path = $mapping->stub()->getPathAlias();
+          }
+        }
+        // Set the replacement (if one was found).
+        if (isset($path)) {
+          $replacements[$original] =  $sanitize ? check_plain($path) : $path;
+        }
+      }
     }
   }
+  return $replacements;
 }
+
+
+/* Signature AJAX API.
+ ******************************************************************************/
 
 function signature_deliver_api_page($page_callback_result) {
   drupal_add_http_header('Content-Type', 'application/json');
@@ -413,6 +388,7 @@ function signature_api_create($nid) {
   );
 }
 
+
 /* Action Import
  ******************************************************************************/
 /**
@@ -438,7 +414,33 @@ function signature_import_admin_form($form, &$form_state) {
     '#element_validate' => array('element_validate_integer_positive'),
   );
 
-  return system_settings_form($form);
+  $form = system_settings_form($form);
+
+  $form['actions']['submit']['#submit'] = $form['actions']['#subimt'];
+  unset($form['actions']['#submit']);
+
+  $form['actions']['import_now'] = array(
+    '#type' => 'submit',
+    '#value' => t('Import Now'),
+    '#submit' => array('signature_import_admin_form_import_now'),
+  );
+
+  return $form;
+}
+
+function signature_import_admin_form_import_now($form, &$form_state) {
+
+  // Ensure that we have an active configuration.
+  $feed_url = $form_state['values']['signature_import_feed'];
+  if (!empty($feed_url)) {
+    $count = signature_process_import_feed($feed_url, TRUE);
+    drupal_set_message(t('!count actions processed.', array(
+      '!count' => $count
+    )), 'status');
+  }
+  else {
+    drupal_set_message(t('Import requires an active configuration.'), 'error');
+  }
 }
 
 /**
@@ -448,7 +450,7 @@ function signature_cron_queue_info() {
   return array(
     'signature_import_queue' => array(
       'worker callback' => 'signature_import_worker',
-      'time' => 15,
+      'time' => 60,
     ),
   );
 }
@@ -462,32 +464,45 @@ function signature_cron() {
   $feed_url = variable_get('signature_import_feed', '');
   $interval = ((int) variable_get('signature_import_interval', 5)) * 60;
 
-  // Check that we have a workable configuration.
+  // Ensure that we have an active configuration.
   if (!empty($feed_url) && $interval > 0) {
-
     // Get the last time cron ran.
     $cron_last = db_query("SELECT timestamp FROM {watchdog} WHERE type = 'cron' ORDER BY timestamp DESC LIMIT 1")
       ->fetchField();
+    // If cron hasn't run or the interval has passed, process the feed.
+    if ($cron_last === FALSE || $cron_last > 0 && (time() - $cron_last) > $interval) {
+      signature_process_import_feed($feed_url);
+    }
+  }
+}
 
-    // If the interval has passed, get a list of updated actions and
-    // queue them for import.
-    if ($cron_last > 0 && (time() - $cron_last) > $interval) {
+/**
+ * Process the contents of the action feed.
+ */
+function signature_process_import_feed($feed_url, $import_now = FALSE,
+  $full_import = FALSE) {
 
-      // FIXME: Add in something that tracks the last time cron was run.
-      //        It doesn't need to worry about acquiring a lock when setting the
-      //        value, at most we update actions for two cron intervals this is
-      //        still much better than updating all actions all the time.
-      $actions = signature_read_import_feed($feed_url);
-      $queue = DrupalQueue::get('signature_import_queue');
-      foreach ($actions as $action) {
-        // Process only donation actions.
-        // FIXME: It would nice if the feed contained the actions last updated
-        //        timestamp so we can further limit the queued actions to those
-        //        that have been updated/created since the last cron run.
+  $actions = signature_read_import_feed($feed_url);
+  $queue = DrupalQueue::get('signature_import_queue');
+  $last_run = variable_get('signature_cron_last_run', 0);
+
+  foreach ($actions as $action) {
+
+    if ($full_import || $action->last_modified >= $last_run) {
+      if ($import_now) {
+        signature_import_worker($action);
+      }
+      else {
         $queue->createItem($action);
       }
     }
   }
+
+  // Store the last time the feed was imported to allow subsequent imports
+  // to skip unmodified actions.
+  variable_set('signature_cron_last_run', time());
+
+  return count($actions);
 }
 
 /**
@@ -543,7 +558,7 @@ function signature_read_import_feed($feed_url) {
 /**
  * Cron queue worker callback.
  *
- * @param StdClass $action
+ * @param StdClass $tap
  *   An associative array containing the following:
  *   - action_id: the TAP-to-TakePart id of the action.
  *   - title: the title of the action.
@@ -551,27 +566,315 @@ function signature_read_import_feed($feed_url) {
  *   - image_url: the URL of the action image.
  *   - type: the type of action.
  *   - topic: array of topic vocabulary terms for the action.
+ *   - tags: array of free tag vocabulary terms for the action.
  */
-function signature_import_worker($action) {
+function signature_import_worker($tap) {
+  $mapping = SignatureActionMapping::load($tap->action_id);
+  if ($mapping === FALSE) {
+    $mapping = SignatureActionMapping::create($tap->action_id);
+  }
+  $mapping->update($tap);
+  $mapping->save();
+}
 
-  // TODO: Actually create/update the action. This should use the
-  //  signature_node table to determine if an action already has a
-  //  stub in the database or if one needs to be created.
+class SignatureActionMapping {
 
-  // When creating an action set the type column of signature_node table to
-  // the type attribute of the $action.
+  protected $_existing = FALSE;
+  protected $_tap_id = NULL;
+  protected $_data = NULL;
 
-  // The signature_node table should also be used in the TakeAction
-  // action overrided module to translate Drupal node ids to the TAP action id.
+  protected $_stub = NULL;
+  protected $_endpoint = NULL;
 
-  // The reason for using the signature_node table and not creating
-  // a new content type are:
-  // - The action type already exists and is integrated into the various views
-  //   and filters on the site, meaning no additional work has to be done to
-  //   make TAP actions available to those views.
-  // - It allows TAP to add any number of new action types, as long as the
-  //   fields in the feed as constitent across all new action types.
-  // - It doesn't require any wonky id mapping scheme (like picking an id well
-  //   outside the existing node id range). Each system can simply use whatever
-  //   auto-generated id they are provided by the framework.
+  public static function load($tap_id) {
+    $record = db_select('signature_node', 'sn')
+      ->fields('sn')
+      ->condition('tap_id', $tap_id)
+      ->execute()
+      ->fetchObject();
+    if ($record !== FALSE) {
+      return self::read($record);
+    }
+    return FALSE;
+  }
+
+  public static function loadByNodeId($nid) {
+    $record = db_select('signature_node', 'sn')
+      ->fields('sn')
+      ->condition('nid', $nid)
+      ->execute()
+      ->fetchObject();
+    if ($record !== FALSE) {
+      return self::read($record);
+    }
+    return FALSE;
+  }
+
+  protected static function read($record) {
+    $mapping = new SignatureActionMapping($record->tap_id);
+    $mapping->_existing = TRUE;
+    $mapping->_data = empty($record->data) ? NULL : unserialize($record->data);
+    $mapping->_stub = new SignatureActionStub($record->nid, $mapping->_data);
+    $mapping->_endpoint = new SignatureActionEndpoint(
+      $record->pm_signup_endpoint_id, $mapping->_data);
+    return $mapping;
+  }
+
+  public static function create($tap_id) {
+    $mapping = new SignatureActionMapping($tap_id);
+    $mapping->_stub = new SignatureActionStub();
+    $mapping->_endpoint = new SignatureActionEndpoint();
+    return $mapping;
+  }
+
+  protected function __construct($tap_id) {
+    $this->_tap_id = $tap_id;
+  }
+
+  public function stub() {
+    return $this->_stub;
+  }
+
+  public function endpoint() {
+    return $this->_endpoint;
+  }
+
+  public function update($tap) {
+    $this->stub()->update($tap);
+    $this->endpoint()->update($tap);
+    $this->_data = $tap;
+  }
+
+  public function save() {
+    $nid = $this->stub()->save();
+    $endpoint_id = $this->endpoint()->save();
+    if ($nid !== FALSE && $endpoint_id !== FALSE) {
+        $data = is_null($this->_data) ? '' : serialize($this->_data);
+        if ($this->_existing) {
+          return db_update('signature_node')
+            ->fields(array(
+              'data' => $data,
+              'nid' => $nid,
+              'pm_signup_endpoint_id' => $endpoint_id,
+            ))
+            ->condition('tap_id', $this->_tap_id)
+            ->execute();
+        }
+        else {
+          db_insert('signature_node')
+            ->fields(array(
+              'tap_id' => $this->_tap_id,
+              'nid' => $nid,
+              'pm_signup_endpoint_id' => $endpoint_id,
+              'data' => $data,
+            ))
+            ->execute();
+        }
+    }
+  }
+
+  public function delete($stub = TRUE, $endpoint = TRUE) {
+    if (isset($this->_tap_id)) {
+      if ($stub) { $this->stub()->delete(); }
+      if ($endpoint) { $this->endpoint()->delete(); }
+      db_delete('signature_node')
+        ->condition('tap_id', $this->_tap_id)
+        ->execute();
+    }
+  }
+}
+
+class SignatureActionStub {
+
+  protected $_node = FALSE;
+  protected $_data = NULL;
+
+  public function __construct($nid = NULL, $data = NULL) {
+    $this->_node = node_load($nid);
+    $this->_data = $data;
+  }
+
+  protected static function createNode($title, $type) {
+    $node = new StdClass();
+    $node->title = $title;
+    $node->type = self::translateType($type);
+    $node->language = LANGUAGE_NONE;
+    node_object_prepare($node);
+    return $node;
+  }
+
+  public static function translateType($action_type) {
+    $content_types = array(
+      'Petition' => 'petition_action',
+      'Pledge' => 'pledge_action',
+      'Message' => 'mos_action',
+    );
+    return isset($content_types[$action_type])
+      ? $content_types[$action_type] : 'action';
+  }
+
+  public static function loadTopicTerms($names) {
+    $terms = array();
+    foreach ($names as $name) {
+      $name = trim($name);
+      $list = taxonomy_get_term_by_name($name, 'topic');
+      if ($terms !== FALSE) {
+        $terms[] = reset($list);
+      }
+    }
+    return $terms;
+  }
+
+  public static function createFreeTagTerm($name) {
+    $vocabulary = taxonomy_vocabulary_machine_name_load('free_tags');
+    $term = new StdClass();
+    $term->vid = $vocabulary->vid;
+    $term->name = $name;
+    $term->vocabulary_machine_name = 'free_tags';
+    taxonomy_term_save($term);
+    return $term;
+  }
+
+  public static function loadFreeTagTerms($names) {
+    $terms = array();
+    foreach ($names as $name) {
+      $name = trim($name);
+      $list = taxonomy_get_term_by_name($name, 'free_tags');
+      if ($terms !== FALSE) {
+        $terms[] = reset($list);
+      }
+      else {
+        $terms[] = self::createFreeTagTerm($name);
+      }
+    }
+    return $terms;
+  }
+
+  public static function taxonomyFieldValue($terms, $language) {
+    $value = array($language => array());
+    foreach ($terms as $term) {
+      $value[$language][] = array(
+        'tid' => $term->tid,
+      );
+    }
+    return $value;
+  }
+
+  public static function createMediaFile($url) {
+
+    // Break the URL into parts.
+    $url_parts = parse_url($url);
+    $path_parts = pathinfo($url_parts['path']);
+
+    // Prepare local storage
+    $local_path = 'public://action/images/' . $path_parts['basename'];
+
+    $dirname = drupal_dirname($local_path);
+    if (file_prepare_directory($dirname, FILE_CREATE_DIRECTORY)) {
+
+      // Copy down and save the image.
+      $response = drupal_http_request($url);
+      if (!isset($response->error) && !empty($response->data)) {
+        $normalized = file_stream_wrapper_uri_normalize($local_path);
+        $file = file_save_data($response->data, $normalized, FILE_EXISTS_RENAME);
+        return $file;
+      }
+    }
+    return FALSE;
+  }
+
+  public static function mediaFieldValue($fid, $language) {
+    return array($language => array(array(
+      'fid' => $fid,
+      'title' => NULL,
+      'data' => NULL,
+    )));
+  }
+
+  public function getPathAlias() {
+    if (isset($this->_data) && isset($this->_data->url)) {
+      $url = $this->_data->url;
+      return substr($url, 0, 1) === '/' ? substr($url, 1) : $url;
+    }
+    return NULL;
+  }
+
+  public function update($tap) {
+
+    // Create or update the base node.
+    $type = $this->translateType($tap->type);
+    if ($this->_node === FALSE) {
+      $this->_node = self::createNode($tap->title, $type);
+    }
+    else {
+      $this->_node->title = $tap->title;
+    }
+
+    // Update the action image if it has changed.
+    if (is_null($this->_data) || $tap->image_url !== $this->_data->image_url) {
+      $file = self::createMediaFile($tap->image_url);
+      if ($file !== FALSE) {
+        $this->_node->field_action_main_image = self::mediaFieldValue(
+          $file->fid, $this->_node->language);
+      }
+    }
+
+    // Update action topic(s).
+    $topics = self::loadTopicTerms($tap->topic);
+    $this->_node->field_topic = self::taxonomyFieldValue($topics,
+      $this->_node->language);
+
+    // Update the action free tags (creating any new tags).
+    $free_tags = self::loadFreeTagTerms($tap->tags);
+    $this->_node->field_free_tag = self::taxonomyFieldValue($free_tags,
+      $this->_node->language);
+
+    // Update the internal data to allow tap-action-path token replacement.
+    $this->_data = $tap;
+    $this->_node->signature_tap_path = $this->getPathAlias();
+  }
+
+  public function save() {
+    if ($this->_node !== FALSE) {
+      $node = node_submit($this->_node);
+      node_save($node);
+      return $node->nid;
+    }
+    return FALSE;
+  }
+
+  public function delete() {
+    if ($this->_node !== FALSE) {
+      node_delete($this->_node->nid);
+    }
+  }
+}
+
+class SignatureActionEndpoint {
+
+  protected $_endpoint = FALSE;
+  protected $_data = NULL;
+
+  public function __construct($endpoint_id = NULL, $data = NULL) {
+    if (!is_null($endpoint_id)) {
+      $this->_endpoint = SignatureSignupEndpoint::load($endpoint_id);
+    }
+    else {
+      $this->_endpoint = new SignatureSignupEndpoint();
+    }
+    $this->_data = $data;
+  }
+
+  public function update($tap) {
+
+  }
+
+  public function save() {
+    $this->_endpoint->save();
+    return $this->_endpoint->getID();
+  }
+
+  public function delete() {
+    $this->_endpoint->delete();
+  }
 }

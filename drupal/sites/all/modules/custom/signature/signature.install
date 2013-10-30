@@ -45,33 +45,6 @@ function signature_schema() {
   $schema['signature_node'] = array(
     'description' => 'The table for per node signature configurations.',
     'fields' => array(
-      'nid' => array(
-        'description' => 'The {node}.nid to which the configuration belongs.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-      ),
-      'type' => array(
-        'description' => 'The type of the action.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'bsd_form' => array(
-        'description' => 'The signup form to use for sending data to BSD.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
-      'pm_signup_endpoint_id' => array(
-        'description' => 'The signup endpoint.',
-        'type' => 'int',
-        'unsigned' => TRUE,
-        'not null' => TRUE,
-        'default' => 0,
-      ),
       'tap_id' => array(
         'description' => 'The Take Action Platform ID.',
         'type' => 'int',
@@ -79,8 +52,29 @@ function signature_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'nid' => array(
+        'description' => 'The {node}.nid of the action stub.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'pm_signup_endpoint_id' => array(
+        'description' => 'The id of the signup endpoint.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'data' => array(
+        'description' => 'Plugin configurations.',
+        'type' => 'text',
+        'size' => 'normal',
+      ),
     ),
-    'primary key' => array('nid'),
+    'primary key' => array('tap_id'),
+    'unique keys' => array(
+      'nid' => array('nid'),
+    ),
   );
 
   return $schema;
@@ -161,7 +155,9 @@ function signature_update_7103(&$sandbox) {
 function signature_update_7200(&$sandbox) {
   db_drop_table('signature');
   db_drop_table('signature_type');
+  db_drop_field('signature_node', 'type');
   db_drop_field('signature_node', 'goal');
+  db_drop_field('signature_node', 'bsd_form');
   db_drop_field('signature_node', 'limit_to_dates');
   db_drop_field('signature_node', 'start_date');
   db_drop_field('signature_node', 'end_date');
@@ -174,12 +170,16 @@ function signature_update_7200(&$sandbox) {
 }
 
 /**
- * Add TAP id mapping field.
+ * Add TAP id mapping field as primary key.
  */
 function signature_update_7201(&$sandbox) {
   $schema = signature_schema();
   db_add_field('signature_node', 'tap_id',
     $schema['signature_node']['fields']['tap_id']);
-  db_query('UPDATE signature_node SET tap_id = nid');
-  db_query('UPDATE signature_node SET tap_id = 9034989 WHERE nid = 34989');
+  db_add_field('signature_node', 'data',
+    $schema['signature_node']['fields']['data']);
+  db_query('UPDATE signature_node SET tap_id = nid;');
+  db_drop_primary_key('signature_node');
+  db_add_primary_key('signature_node', array('tap_id'));
+  db_add_unique_key('signature_node', 'nid', array('nid'));
 }
