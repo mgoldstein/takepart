@@ -478,30 +478,39 @@ abstract class SignupEndpoint extends SignupFieldSet {
     return FALSE;
   }
 
+  protected function update() {
+    return db_update('pm_signup_endpoint')
+      ->fields(array(
+        'type' => $this->type,
+        'name' => $this->name,
+        'label' => $this->label,
+        'configuration' => serialize($this->configuration),
+        'plugins' => serialize($this->plugins),
+      ))
+      ->condition('id', $this->id)
+      ->execute();
+  }
+
+  protected function insert() {
+    $result = db_insert('pm_signup_endpoint')
+      ->fields(array(
+        'type' => $this->type,
+        'name' => $this->name,
+        'label' => $this->label,
+        'configuration' => serialize($this->configuration),
+        'plugins' => serialize($this->plugins),
+      ))
+      ->execute();
+    $this->id = Database::getConnection()->lastInsertId();
+    return $result;
+  }
+
   public function save() {
     if (isset($this->id)) {
-      return db_update('pm_signup_endpoint')
-        ->fields(array(
-          'type' => $this->type,
-          'name' => $this->name,
-          'label' => $this->label,
-          'configuration' => serialize($this->configuration),
-          'plugins' => serialize($this->plugins),
-        ))
-        ->condition('id', $this->id)
-        ->execute();
+      return $this->update();
     }
     else {
-      db_insert('pm_signup_endpoint')
-        ->fields(array(
-          'type' => $this->type,
-          'name' => $this->name,
-          'label' => $this->label,
-          'configuration' => serialize($this->configuration),
-          'plugins' => serialize($this->plugins),
-        ))
-        ->execute();
-      $this->id = Database::getConnection()->lastInsertId();
+      return $this->insert();
     }
   }
 
@@ -532,13 +541,16 @@ abstract class SignupEndpoint extends SignupFieldSet {
     return $this->name;
   }
 
+  public static function machineName($label) {
+    $lowered = strtolower($label);
+    $underlined = preg_replace('/[^a-z0-9_]+/', '_', $lowered);
+    $deduped = preg_replace('/__+/', '_', $underlined);
+    return trim($deduped, '_');
+  }
+
   public function labelForExport($label, $name = NULL) {
-    // Build a machine name if one wasn't provided.
     if (is_null($name) && !is_null($label)) {
-      $lowered = strtolower($label);
-      $underlined = preg_replace('/[^a-z0-9_]+/', '_', $lowered);
-      $deduped = preg_replace('/__+/', '_', $underlined);
-      $name = trim($deduped, '_');
+      $name = self::machineName($label);
     }
     $this->label = $label;
     $this->name = $name;
@@ -599,8 +611,6 @@ abstract class SignupEndpoint extends SignupFieldSet {
   /* Signup processing.
    ****************************************************************************/
   protected function validate($signup) {
-
-    // Make sure the signup provides all required fields
     $required = array_keys(static::requiredFields());
     $provided = $signup->provides();
     $missing = array_diff($required, $provided);
@@ -614,7 +624,6 @@ abstract class SignupEndpoint extends SignupFieldSet {
   }
 
   protected function limit($signup) {
-
     $key = $signup->key_data();
     if (!empty($key)) {
       $record = db_select('pm_signup_ledger', 'sl')
@@ -642,7 +651,21 @@ abstract class SignupEndpoint extends SignupFieldSet {
     }
   }
 
-  protected function sendToAllHandlers($signup) {
+  protected function log($exception) {
+    if (variable_get('pm_signup_log', FALSE)) {
+      db_insert('pm_signup_log')
+        ->fields(array(
+          'handler' => $id,
+          'message' => $she->getMessage(),
+          'exception' => print_r($she, true),
+          'backtrace' => print_r(debug_backtrace(), true),
+          'created' => REQUEST_TIME,
+        ))
+        ->execute();
+    }
+  }
+
+  protected function send($signup) {
     $plugins = ctools_get_plugins('pm_signup', 'handler');
     $errors = array();
     foreach ($plugins as $id => $plugin) {
@@ -662,32 +685,21 @@ abstract class SignupEndpoint extends SignupFieldSet {
             $handler->submit($signup);
           }
           catch (SignupHandlerException $she) {
-            if (variable_get('pm_signup_log', FALSE)) {
-              db_insert('pm_signup_log')
-                ->fields(array(
-                  'handler' => $id,
-                  'message' => $she->getMessage(),
-                  'exception' => print_r($she, true),
-                  'backtrace' => print_r(debug_backtrace(), true),
-                  'created' => REQUEST_TIME,
-                ))
-                ->execute();
-            }
+            $this->log($she);
             $errors[] = $she;
           }
         }
       }
     }
-    return $errors;
+    if (count($errors) > 0) {
+      throw new SignupSubmissionException($errors);
+    }
   }
 
   public function submit($signup) {
     $this->validate($signup);
     $this->limit($signup);
-    $error = $this->sendToAllHandlers($signup);
-    if (count($errors) > 0) {
-      throw new SignupSubmissionException($errors);
-    }
+    $this->send($signup);
     $this->record($signup);
   }
 
