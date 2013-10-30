@@ -631,6 +631,10 @@ class SignatureActionMapping {
     $this->_tap_id = $tap_id;
   }
 
+  public function tapID() {
+    return $this->_tap_id;
+  }
+
   public function stub() {
     return $this->_stub;
   }
@@ -750,6 +754,11 @@ class SignatureActionStub {
     return $terms;
   }
 
+  public static function loadDisplayTagTerm($name) {
+    $terms = self::loadFreeTagTerms(array($name));
+    return reset($terms);
+  }
+
   public static function taxonomyFieldValue($terms, $language) {
     $value = array($language => array());
     foreach ($terms as $term) {
@@ -823,6 +832,11 @@ class SignatureActionStub {
     $topics = self::loadTopicTerms($tap->topic);
     $this->_node->field_topic = self::taxonomyFieldValue($topics,
       $this->_node->language);
+
+    // Update display tag
+    $display_tag = self::loadDisplayTagTerm('Action');
+    $this->_node->field_display_tag = self::taxonomyFieldValue(
+      array($display_tag), $this->_node->language);
 
     // Update the action free tags (creating any new tags).
     $free_tags = self::loadFreeTagTerms($tap->tags);
