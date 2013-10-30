@@ -206,11 +206,12 @@ h2 {
 /* line 40, ../sass/elements/_typography.scss */
 .section-header {
   font-family: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
-  line-height: 28px;
+  line-height: 27px;
   font-weight: normal;
+  font-size: 20px;
 }
 
-/* line 49, ../sass/elements/_typography.scss */
+/* line 50, ../sass/elements/_typography.scss */
 .column-title {
   font-family: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 18px;
@@ -219,17 +220,17 @@ h2 {
   text-transform: uppercase;
 }
 
-/* line 57, ../sass/elements/_typography.scss */
+/* line 58, ../sass/elements/_typography.scss */
 a {
   text-decoration: none;
   color: #000;
 }
-/* line 60, ../sass/elements/_typography.scss */
+/* line 61, ../sass/elements/_typography.scss */
 a:hover {
   text-decoration: underline;
 }
 
-/* line 70, ../sass/elements/_typography.scss */
+/* line 71, ../sass/elements/_typography.scss */
 .footer-title {
   font-family: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
