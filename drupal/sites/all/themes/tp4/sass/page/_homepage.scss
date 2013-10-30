@@ -285,13 +285,14 @@ body.front{
     margin-bottom: 20px;
     .views-field-field-promo-headline {
       a {
-	&:after {
-	  content: " \1F4F7;";
-	  font-family: "SSGizmo";
-	}
-	&:hover:after {
-	  text-decoration: none;
-	}
+      	&:after {
+      	  content: " \1F4F7";
+      	  font-family: "SSGizmo";
+          font-size: 24px;
+          line-height: 18px
+          vertical-align: bottom;
+          text-decoration: none !important;
+      	}
       }
     }
   }
@@ -303,6 +304,7 @@ body.front{
     	content: "\23E9 ";
     	font-family: "SSGizmo";
     	color: $mint;
+      vertical-align: bottom;
       }
     }
   }
