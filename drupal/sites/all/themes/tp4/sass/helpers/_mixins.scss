@@ -60,6 +60,7 @@
             // of each other.
             @if $remainder == 1 or $column-count == 1 {
               clear: both;
+              padding: 0;
             } @else {
               clear: none;
               padding-left: 20px;
