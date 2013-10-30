@@ -192,7 +192,7 @@ class SignatureSignupEndpoint extends SignupEndpoint {
         $endpoints[$name] = $endpoint;
       }
       else {
-        $message = 'newsletter opt-in [' . $name . '] not found'
+        $message = 'newsletter opt-in [' . $name . '] not found';
         throw new SignupValidationException(array($message));
       }
     }
