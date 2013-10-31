@@ -1791,11 +1791,9 @@ h2 {
 /* line 35, ../sass/elements/_typography.scss */
 .author {
   font-family: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
-  font-size: 16px;
-  line-height: 20px;
 }
 
-/* line 40, ../sass/elements/_typography.scss */
+/* line 38, ../sass/elements/_typography.scss */
 .section-header {
   font-family: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   line-height: 27px;
@@ -1803,7 +1801,7 @@ h2 {
   font-size: 20px;
 }
 
-/* line 50, ../sass/elements/_typography.scss */
+/* line 48, ../sass/elements/_typography.scss */
 .column-title {
   font-family: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 18px;
@@ -1812,27 +1810,27 @@ h2 {
   text-transform: uppercase;
 }
 
-/* line 58, ../sass/elements/_typography.scss */
+/* line 56, ../sass/elements/_typography.scss */
 a {
   text-decoration: none;
   color: #000;
 }
-/* line 61, ../sass/elements/_typography.scss */
+/* line 59, ../sass/elements/_typography.scss */
 a:hover {
   text-decoration: underline;
 }
-/* line 64, ../sass/elements/_typography.scss */
+/* line 62, ../sass/elements/_typography.scss */
 a.more {
   font-size: 14px;
 }
-/* line 66, ../sass/elements/_typography.scss */
+/* line 64, ../sass/elements/_typography.scss */
 a.more:before {
   content: "\23E9 ";
   font-family: "SSGizmo";
   color: #019f84;
 }
 
-/* line 77, ../sass/elements/_typography.scss */
+/* line 75, ../sass/elements/_typography.scss */
 .footer-title {
   font-family: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
@@ -3812,24 +3810,23 @@ body.front #sidebar .block-title {
 /* line 69, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .byline {
   margin: 0 2em 1em;
-  font-style: italic;
 }
-/* line 74, ../sass/page/_homepage.scss */
+/* line 73, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content {
   margin: 0 2em 1em;
   border-bottom: 1px solid #cccccc;
 }
-/* line 78, ../sass/page/_homepage.scss */
+/* line 77, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field {
   margin-bottom: .7em;
 }
-/* line 82, ../sass/page/_homepage.scss */
+/* line 81, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item {
   position: relative;
   padding-left: 1.5em;
   margin-bottom: 1em;
 }
-/* line 87, ../sass/page/_homepage.scss */
+/* line 86, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item:before {
   content: "\23E9";
   font-family: "SSGizmo";
@@ -3840,30 +3837,30 @@ body.front #sidebar .block-title {
   top: 0;
   left: 0;
 }
-/* line 98, ../sass/page/_homepage.scss */
+/* line 97, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a {
   color: black;
 }
-/* line 101, ../sass/page/_homepage.scss */
+/* line 100, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:before {
   content: "take action: ";
   font-family: "BrownRegular", verdana, sans-serif;
 }
-/* line 106, ../sass/page/_homepage.scss */
+/* line 105, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:hover, .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:active {
   color: #01bf9e;
 }
-/* line 115, ../sass/page/_homepage.scss */
+/* line 114, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary {
   margin-bottom: 1em;
 }
-/* line 116, ../sass/page/_homepage.scss */
+/* line 115, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary .node-title {
   font-size: 1.142857143em;
   line-height: 1.25;
   margin-top: .5em;
 }
-/* line 124, ../sass/page/_homepage.scss */
+/* line 123, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline {
   border-top: 4px solid #00b5cc;
   border-bottom: 4px solid #00b5cc;
@@ -3872,12 +3869,12 @@ body.front #sidebar .block-title {
   height: 60px;
 }
 @media all and (min-width: 768px) {
-  /* line 124, ../sass/page/_homepage.scss */
+  /* line 123, ../sass/page/_homepage.scss */
   .panel-takepart-homepage .tpl-headline {
     height: 30px;
   }
 }
-/* line 135, ../sass/page/_homepage.scss */
+/* line 134, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title,
 .panel-takepart-homepage .tpl-headline .tpl-time {
   display: block;
@@ -3886,7 +3883,7 @@ body.front #sidebar .block-title {
   background: transparent none scroll no-repeat top left;
 }
 @media all and (min-width: 768px) {
-  /* line 135, ../sass/page/_homepage.scss */
+  /* line 134, ../sass/page/_homepage.scss */
   .panel-takepart-homepage .tpl-headline .tpl-title,
   .panel-takepart-homepage .tpl-headline .tpl-time {
     display: inline-block;
@@ -3894,29 +3891,29 @@ body.front #sidebar .block-title {
     margin: 0 .5em 0 0;
   }
 }
-/* line 146, ../sass/page/_homepage.scss */
+/* line 145, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 140px;
   background-image: url('../images/tpl-title.jpg?1382751895');
 }
-/* line 150, ../sass/page/_homepage.scss */
+/* line 149, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 252px;
   background-image: url('../images/tpl-time.jpg?1382751895');
 }
 
-/* line 157, ../sass/page/_homepage.scss */
+/* line 156, ../sass/page/_homepage.scss */
 .date {
   margin-bottom: 2px;
 }
 @media all and (min-width: 320px) {
-  /* line 157, ../sass/page/_homepage.scss */
+  /* line 156, ../sass/page/_homepage.scss */
   .date {
     display: none;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 157, ../sass/page/_homepage.scss */
+  /* line 156, ../sass/page/_homepage.scss */
   .date {
     display: block;
     float: left;
@@ -3926,20 +3923,20 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 157, ../sass/page/_homepage.scss */
+  /* line 156, ../sass/page/_homepage.scss */
   .date {
     float: right;
   }
 }
 
-/* line 177, ../sass/page/_homepage.scss */
+/* line 176, ../sass/page/_homepage.scss */
 .latest-headlines .views-row {
   line-height: 24px;
   font-size: 14px;
   position: relative;
   padding-left: 15px;
 }
-/* line 182, ../sass/page/_homepage.scss */
+/* line 181, ../sass/page/_homepage.scss */
 .latest-headlines .views-row:before {
   content: '';
   height: 6px;
@@ -3949,7 +3946,7 @@ body.front #sidebar .block-title {
   top: 7px;
   left: 0;
 }
-/* line 192, ../sass/page/_homepage.scss */
+/* line 191, ../sass/page/_homepage.scss */
 .latest-headlines a {
   height: 100%;
   display: block;
@@ -4049,49 +4046,53 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 203, ../sass/page/_homepage.scss */
+/* line 202, ../sass/page/_homepage.scss */
 #skinny .columns {
   text-align: center;
 }
-/* line 205, ../sass/page/_homepage.scss */
+/* line 204, ../sass/page/_homepage.scss */
 #skinny .columns a:hover {
   text-decoration: none;
 }
-/* line 209, ../sass/page/_homepage.scss */
+/* line 208, ../sass/page/_homepage.scss */
 #skinny .columns a .author:hover, #skinny .columns a .field-content:hover {
   text-decoration: underline;
 }
-/* line 214, ../sass/page/_homepage.scss */
-#skinny .columns > .view-content > .views-row {
-  padding-bottom: 10px;
+/* line 212, ../sass/page/_homepage.scss */
+#skinny .columns .author {
+  padding: 4px 0 1px;
 }
-@media all and (min-width: 320px) {
-  /* line 214, ../sass/page/_homepage.scss */
-  #skinny .columns > .view-content > .views-row {
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    border-bottom: dashed 1px #000;
-  }
-  /* line 220, ../sass/page/_homepage.scss */
-  #skinny .columns > .view-content > .views-row:last-child {
-    border-bottom: none;
-  }
+/* line 217, ../sass/page/_homepage.scss */
+#skinny .columns > .view-content > .views-row:after {
+  content: '';
+  display: block;
+  height: 0;
+  width: 76px;
+  margin: 1em auto 1.5em;
+  border-bottom: dotted 2px #949494;
+}
+/* line 225, ../sass/page/_homepage.scss */
+#skinny .columns > .view-content > .views-row:last-child:after {
+  border-bottom: none;
 }
 @media all and (min-width: 768px) {
-  /* line 214, ../sass/page/_homepage.scss */
+  /* line 216, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
-    border-bottom: none;
     padding-left: 30px;
     padding-right: 30px;
   }
-}
-@media all and (min-width: 980px) {
-  /* line 214, ../sass/page/_homepage.scss */
-  #skinny .columns > .view-content > .views-row {
-    border-bottom: dashed 1px #000;
+  /* line 231, ../sass/page/_homepage.scss */
+  #skinny .columns > .view-content > .views-row:after {
+    display: none;
   }
 }
-/* line 234, ../sass/page/_homepage.scss */
+@media all and (min-width: 980px) {
+  /* line 236, ../sass/page/_homepage.scss */
+  #skinny .columns > .view-content > .views-row:after {
+    display: block;
+  }
+}
+/* line 244, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .block-title {
   font-size: 12px;
   color: #fff;
@@ -4106,12 +4107,12 @@ body.front #sidebar .block-title {
   margin-bottom: 20px;
   behavior: url("pie.htc");
 }
-/* line 248, ../sass/page/_homepage.scss */
+/* line 258, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .line {
   border-bottom: 1px solid #0080a3;
   margin: 0 13px;
 }
-/* line 254, ../sass/page/_homepage.scss */
+/* line 264, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .views-field-field-profile-photo .field-content {
   border: 1px solid #eee;
   -webkit-border-radius: 50px;
@@ -4119,43 +4120,44 @@ body.front #sidebar .block-title {
   width: 50px;
   height: 50px;
   overflow: hidden;
-  margin: 5px auto;
+  margin: 0 auto 5px;
 }
 
 /*
  *Photo Galleries
  */
-/* line 270, ../sass/page/_homepage.scss */
+/* line 280, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block {
   font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 1.142857143em;
   line-height: 1.25;
 }
-/* line 274, ../sass/page/_homepage.scss */
+/* line 284, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .views-row {
   margin-bottom: 20px;
 }
-/* line 278, ../sass/page/_homepage.scss */
-#block-views-photo-galleries-promo-block .views-row .views-field-field-promo-headline a:after {
-  content: " \1F4F7;";
-  font-family: "SSGizmo";
-}
-/* line 282, ../sass/page/_homepage.scss */
-#block-views-photo-galleries-promo-block .views-row .views-field-field-promo-headline a:hover:after {
-  text-decoration: none;
-}
 /* line 288, ../sass/page/_homepage.scss */
+#block-views-photo-galleries-promo-block .views-row .views-field-field-promo-headline a:after {
+  content: " \1F4F7";
+  font-family: "SSGizmo";
+  font-size: 24px;
+  line-height: 18px;
+  vertical-align: bottom;
+  text-decoration: none !important;
+}
+/* line 299, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .view-footer {
   font-size: .875em;
   line-height: 1.5;
 }
-/* line 292, ../sass/page/_homepage.scss */
+/* line 303, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .view-footer .more:before {
   content: "\23E9 ";
   font-family: "SSGizmo";
   color: #019f84;
+  vertical-align: bottom;
 }
-/* line 299, ../sass/page/_homepage.scss */
+/* line 311, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .block-title {
   margin-bottom: 8px;
 }
@@ -4164,16 +4166,16 @@ body.front #sidebar .block-title {
  *Promo "don't miss"
  */
 @media all and (min-width: 320px) {
-  /* line 306, ../sass/page/_homepage.scss */
+  /* line 318, ../sass/page/_homepage.scss */
   .promo {
     text-align: left;
   }
-  /* line 309, ../sass/page/_homepage.scss */
+  /* line 321, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: left;
     display: inline-block;
   }
-  /* line 312, ../sass/page/_homepage.scss */
+  /* line 324, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: inline-block;
     margin-right: 10px;
@@ -4181,17 +4183,17 @@ body.front #sidebar .block-title {
     line-height: 28px;
     font-weight: normal;
   }
-  /* line 319, ../sass/page/_homepage.scss */
+  /* line 331, ../sass/page/_homepage.scss */
   .promo .inner a.text:hover {
     text-decoration: underline;
   }
-  /* line 322, ../sass/page/_homepage.scss */
+  /* line 334, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: inline-block;
     font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 20px;
   }
-  /* line 326, ../sass/page/_homepage.scss */
+  /* line 338, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: inline-block;
     vertical-align: middle;
@@ -4199,7 +4201,7 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 306, ../sass/page/_homepage.scss */
+  /* line 318, ../sass/page/_homepage.scss */
   .promo {
     text-align: center;
   }
@@ -4208,7 +4210,7 @@ body.front #sidebar .block-title {
 /*
  *Graveyard
  */
-/* line 344, ../sass/page/_homepage.scss */
+/* line 356, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -4306,11 +4308,11 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 348, ../sass/page/_homepage.scss */
+/* line 360, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 350, ../sass/page/_homepage.scss */
+/* line 362, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;
