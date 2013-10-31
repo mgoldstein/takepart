@@ -397,6 +397,12 @@ function signature_import_admin_form($form, &$form_state) {
     '#submit' => array('signature_import_admin_form_import_now'),
   );
 
+  $form['actions']['import_all'] = array(
+    '#type' => 'submit',
+    '#value' => t('Import All'),
+    '#submit' => array('signature_import_admin_form_import_all'),
+  );
+
   return $form;
 }
 
@@ -406,6 +412,21 @@ function signature_import_admin_form_import_now($form, &$form_state) {
   $feed_url = $form_state['values']['signature_import_feed'];
   if (!empty($feed_url)) {
     $count = signature_process_import_feed($feed_url, TRUE);
+    drupal_set_message(t('!count actions processed.', array(
+      '!count' => $count
+    )), 'status');
+  }
+  else {
+    drupal_set_message(t('Import requires an active configuration.'), 'error');
+  }
+}
+
+function signature_import_admin_form_import_all($form, &$form_state) {
+
+  // Ensure that we have an active configuration.
+  $feed_url = $form_state['values']['signature_import_feed'];
+  if (!empty($feed_url)) {
+    $count = signature_process_import_feed($feed_url, TRUE, TRUE);
     drupal_set_message(t('!count actions processed.', array(
       '!count' => $count
     )), 'status');
