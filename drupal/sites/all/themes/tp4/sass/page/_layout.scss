@@ -157,6 +157,8 @@ main#main{
       @include breakpoint($breakpoint-desktop){
         @include zen-grid-item(2, 7);
         @include zen-clear(none);
+        padding-left: 15px;
+        padding-right: 15px;
       }
     }
   }

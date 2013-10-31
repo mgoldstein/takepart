@@ -34,8 +34,6 @@ h5{
 
 .author{
   font-family: $ashbury-light-italic;
-  font-size: 16px;
-  line-height: 20px;
 }
 .section-header{
   font-family: $brown-bold;
@@ -61,10 +59,16 @@ a {
   &:hover{
     text-decoration: underline;
   }
-  .more{
+  &.more{
     font-size: 14px;
+    &:before {
+      content: "\23E9 ";
+      font-family: "SSGizmo";
+      color: $mint;
+    }
   }
 }
+
 input{
 
 }
