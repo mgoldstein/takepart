@@ -4055,7 +4055,7 @@ body.front #sidebar .block-title {
   text-decoration: none;
 }
 /* line 208, ../sass/page/_homepage.scss */
-#skinny .columns a .author:hover, #skinny .columns a .field-content:hover {
+#skinny .columns a .field-content:hover {
   text-decoration: underline;
 }
 /* line 212, ../sass/page/_homepage.scss */
