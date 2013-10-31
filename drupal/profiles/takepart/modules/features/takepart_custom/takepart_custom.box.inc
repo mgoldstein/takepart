@@ -20,7 +20,7 @@ function takepart_custom_default_box() {
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_RR_BTF_300x600',
     'ga_ad_gpt_id' => 'div-gpt-ad-1345512885535-0',
-    'additional_classes' => 'block-boxes-ga_ad',
+    'additional_classes' => 'block-boxes-ga_ad block-boxes-ga_ad-bottom',
   );
   $export['box-1104adce'] = $box;
 
@@ -48,7 +48,7 @@ function takepart_custom_default_box() {
   $box->options = array(
     'view' => 'photo_galleries--block_2',
     'settings' => array(
-      'nid' => '33541+30259+34847',
+      'nid' => '39187+38183+39216',
     ),
     'view_object' => NULL,
     'view_more_text' => '',
