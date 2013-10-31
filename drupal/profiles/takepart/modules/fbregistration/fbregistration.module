@@ -215,71 +215,8 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
    $fbregreloadfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 9);
    $callcount = 10;
    $ziplabel = variable_get('fbregistration_foreign_zip', 'Postal Code');
-
-   $fbsetscript = <<<HTM
-var fbuserdata;
-var fbregtag;
-var fbvalidatezip = true;
-function $fbsetfunction(cnt) {
-    if (typeof (FB) !== 'undefined') {
-        FB.api('/me', function (response) {
-            if ((!response) || (response.error)) {
-                setTimeout("$fbsetfunction(" + cnt + ")", 1000);
-            } else {
-                FB.api({
-                        method: 'fql.query',
-                        query: 'SELECT current_location FROM user WHERE uid=' + FB.getUserID()
-                    },
-                    function (response) {
-                        try {
-                            var country = response[0]['current_location']['country'];
-                        } catch (err) {
-                            var country = '';
-                        }
-                        if(country != "United States") {  
-                            var registration = document.getElementsByTagName('fb:registration');
-                            var json = registration[0].getAttribute("fields");
-                            json = json.replace("{'name':'field_userzipcode','description':'ZIP Code','type':'text'},", '');
-                            registration[0].setAttribute("fields",json);
-                            FB.XFBML.parse();
-                            fbvalidatezip = false;
-                        }
-                    }
-                );
-            }
-        });
-    } else {
-        setTimeout("$fbsetfunction(" + cnt + ")", 1000);
-    }
-}
-$fbsetfunction(0);
-function $fbregreloadfunction(cnt) {
-    var newfbregtag = jQuery(document.getElementsByTagName('fb:registration')).html();
-    var changed = false;
-    //check the iframe tag for changes:
-    if ((fbregtag) && (newfbregtag != fbregtag)) {
-        //0=initial load, 1=facebooks resize
-        if (cnt > 0) {
-            FB.getLoginStatus(function (response) {
-                if ((response.status != 'connected') || (response.status == 'not_authorized')) {
-                    jQuery(document.getElementsByTagName('fb:registration')).children(':first').hide();
-                    window.location.reload();
-                }
-            });
-        }
-        if(jQuery(document.getElementsByTagName('fb:registration')).children(':first').height() > 200) {
-          cnt++;
-        }
-    }
-    fbregtag = newfbregtag;
-    setTimeout("$fbregreloadfunction(" + cnt + ")", 1000);
-}
-$fbregreloadfunction(0);          
-HTM;
-
    
-   drupal_add_js($fbsetscript .
-        'function fbregistration_validate(form) {' .
+   drupal_add_js('function fbregistration_validate(form) {' .
         '  var errors = {};' . "\n" .
            variable_get('fbregistration_validation', _fbregistration_default_validation())  . "\n" .
         '  return errors;' .

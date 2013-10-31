@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Admin page callbacks for the Search pages module.
- */
 
 /**
  * Displays an overview of all defined search pages.
@@ -28,11 +24,19 @@ function search_api_page_admin_overview() {
     '#title' => t('disabled'),
   );
   $t_disabled['class'] = array('search-api-status');
+  $t_enable = t('enable');
+  $t_disable = t('disable');
   $t_edit = t('edit');
+  $t_delete = t('delete');
   $pre = 'admin/config/search/search_api/page/';
   $pre_index = 'admin/config/search/search_api/index/';
+  $enable = '/enable';
+  $disable = '/disable';
+  $edit = '/edit';
+  $delete = '/delete';
 
   foreach (search_api_page_load_multiple() as $page) {
+    $url = $pre . $page->machine_name;
     $index = search_api_index_load($page->index_id);
     $rows[] = array(
       $page->enabled ? $t_enabled : $t_disabled,
@@ -40,7 +44,7 @@ function search_api_page_admin_overview() {
       l($page->name, $page->path),
       l($page->path, $page->path),
       l($index->name, $pre_index . $index->machine_name),
-      l($t_edit, $pre . $page->machine_name),
+      l($t_edit, $url . $edit),
     );
   }
 
@@ -83,9 +87,9 @@ function search_api_page_admin_add(array $form, array &$form_state) {
     );
     $form['machine_name'] = array(
       '#type' => 'machine_name',
-      '#maxlength' => 32,
+      '#maxlength' => 51,
       '#machine_name' => array(
-        'exists' => 'search_api_page_load',
+        'exists' => 'search_api_index_load',
       ),
     );
     $form['index_id'] = array(
@@ -178,13 +182,6 @@ function search_api_page_admin_add(array $form, array &$form_state) {
     '#title' => t('Allow GET override'),
     '#description' => t('Allow the „Results per page“ setting to be overridden from the URL, using the "per_page" GET parameter.<br />' .
         'Example: http://example.com/search_results?per_page=7'),
-    '#default_value' => FALSE,
-  );
-
-  $form['result_page_search_form'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Show search form on result page'),
-    '#description' => t('Enable or disable the search form on the result page'),
     '#default_value' => TRUE,
   );
 
@@ -210,24 +207,7 @@ function search_api_page_admin_add(array $form, array &$form_state) {
   else {
     $form['view_mode'] = array(
       '#type' => 'value',
-      '#value' => key($view_modes),
-    );
-  }
-
-  $languages = array(
-    'current' => t("Current user's language"),
-    'default' => t('Default site language'),
-  );
-  $languages += entity_metadata_language_list();
-  if (count($languages) > 4) {
-    $form['language_filter'] = array(
-      '#type' => 'select',
-      '#title' => t('Language filter'),
-      '#description' => t('Filter the results by language. Select none to show results independent of language.'),
-      '#options' => $languages,
-      '#multiple' => TRUE,
-      '#size' => min(4, count($languages)),
-      '#default_value' => array(),
+      '#value' => reset($view_modes),
     );
   }
 
@@ -379,13 +359,6 @@ function search_api_page_admin_edit(array $form, array &$form_state, Entity $pag
     '#default_value' => $page->options['per_page'],
   );
 
-  $form['options']['result_page_search_form'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Show search form on result page'),
-    '#description' => t('Enable or disable the search form on the result page'),
-    '#default_value' => isset($page->options['result_page_search_form']) ? $page->options['result_page_search_form'] : TRUE,
-  );
-
   $form['options']['get_per_page'] = array(
     '#type' => 'checkbox',
     '#title' => t('Allow GET override'),
@@ -416,24 +389,7 @@ function search_api_page_admin_edit(array $form, array &$form_state, Entity $pag
   else {
     $form['options']['view_mode'] = array(
       '#type' => 'value',
-      '#value' => key($view_modes),
-    );
-  }
-
-  $languages = array(
-    'current' => t("Current user's language"),
-    'default' => t('Default site language'),
-  );
-  $languages += entity_metadata_language_list();
-  if (count($languages) > 4) {
-    $form['options']['language_filter'] = array(
-      '#type' => 'select',
-      '#title' => t('Language filter'),
-      '#description' => t('Filter the results by language. Select none to show results independent of language.'),
-      '#options' => $languages,
-      '#multiple' => TRUE,
-      '#size' => min(4, count($languages)),
-      '#default_value' => isset($page->options['language_filter']) ? $page->options['language_filter'] : array(),
+      '#value' => reset($view_modes),
     );
   }
 
@@ -479,6 +435,7 @@ function search_api_page_admin_edit(array $form, array &$form_state, Entity $pag
     );
   }
 
+
   return $form;
 }
 
@@ -486,7 +443,7 @@ function search_api_page_admin_edit(array $form, array &$form_state, Entity $pag
  * Validation callback for search_api_page_admin_edit().
  */
 function search_api_page_admin_edit_validate(array $form, array &$form_state) {
-  if (!empty($form_state['values']['op']) && $form_state['values']['op'] == t('Save changes')) {
+  if ($form_state['values']['op'] == t('Save changes')) {
     $form_state['values']['path'] = drupal_strtolower(trim($form_state['values']['path']));
     $pages = search_api_page_load_multiple(FALSE, array('path' => $form_state['values']['path']));
     if (count($pages) > 1 || (($page = array_shift($pages)) && $page->machine_name != $form_state['page']->machine_name)) {

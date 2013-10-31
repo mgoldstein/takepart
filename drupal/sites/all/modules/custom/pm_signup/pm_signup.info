@@ -5,6 +5,7 @@ version = 7.x-1.0
 package = Customization
 
 files[] = includes/pm_signup.core.inc
+files[] = includes/optin.signup.inc
 files[] = includes/signature.signup.inc
 files[] = includes/user.signup.inc
 files[] = includes/newsletter.signup.inc

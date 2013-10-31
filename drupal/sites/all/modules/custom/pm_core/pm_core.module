@@ -65,3 +65,16 @@ function pm_split($value, $delimiter, $alternates = array()) {
   $trimmed = array_map('trim', $list);
   return array_filter($trimmed, 'strlen');
 }
+
+/**
+ * URL form element validation callback.
+ */
+function pm_core_element_validate_url($element, &$form_state) {
+  if (!empty($element['#value'])) {
+    if (!valid_url($element['#value'], TRUE)) {
+      form_error($element, t('@title must be an absolute URL.', array(
+        '@title' => $element['#title'],
+      )));
+    }
+  }
+}

@@ -19,6 +19,14 @@ class BlueStateDigitalSignupHandler {
     $this->configuration = $configuration;
   }
 
+  public function getLabel() {
+    return t('Blue State Digital');
+  }
+
+  public static function validateConfiguration($type, $configuration) {
+    return array();
+  }
+
   protected function sendSignupToServer($signup){
     try {
       $api = bluestatedigital_get_api('signup');

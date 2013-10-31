@@ -21,3 +21,5 @@ settings/settings.local.pglatz.inc
 
 sftp-config.json
 
+/drupal/nbproject/private/
+/drupal/nbproject/

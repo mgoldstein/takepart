@@ -21,3 +21,4 @@ features[pm_signup_endpoint][] = takepart_environment
 features[pm_signup_endpoint][] = takepart_newsletter
 features[pm_signup_endpoint][] = takepart_wildlife
 features[pm_signup_endpoint][] = teach_campaign
+features[pm_signup_endpoint][] = chavez_campaign

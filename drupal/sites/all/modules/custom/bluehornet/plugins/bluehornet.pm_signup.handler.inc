@@ -19,6 +19,14 @@ class BlueHornetSignupHandler {
     $this->configuration = $configuration;
   }
 
+  public function getLabel() {
+    return t('Blue Hornet');
+  }
+
+  public static function validateConfiguration($type, $configuration) {
+    return array();
+  }
+
   protected function submitNewsletterCampaignSignup($signup) {
 
     if (isset($signup['email'])) {
