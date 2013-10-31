@@ -383,7 +383,7 @@ function signature_import_admin_form($form, &$form_state) {
     '#description' => t('The interval in minutes at which the feed should be imported.'),
     '#required' => FALSE,
     '#default_value' => variable_get('signature_import_interval', 5),
-    '#element_validate' => array('element_validate_integer_positive'),
+    '#element_validate' => array('element_validate_integer'),
   );
 
   $form = system_settings_form($form);
@@ -462,12 +462,10 @@ function signature_process_import_feed($feed_url, $import_now = FALSE,
 
     if ($full_import || $action->last_modified >= $last_run) {
       if ($import_now) {
-        if ($action->action_id == 9034991) {
-          signature_import_worker($action);
-        }
+        signature_import_worker($action);
       }
       else {
-        //$queue->createItem($action);
+        $queue->createItem($action);
       }
     }
   }
@@ -718,7 +716,7 @@ class SignatureActionStub {
     foreach ($names as $name) {
       $name = trim($name);
       $list = taxonomy_get_term_by_name($name, 'free_tags');
-      if ($terms !== FALSE) {
+      if (!empty($list)) {
         $terms[] = reset($list);
       }
       else {
