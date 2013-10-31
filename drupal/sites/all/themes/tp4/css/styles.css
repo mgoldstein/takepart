@@ -5110,8 +5110,9 @@ header nav {
 .block-boxes-ga_ad {
   display: block;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
-/* line 101, ../sass/modules/_sidebar.scss */
+/* line 102, ../sass/modules/_sidebar.scss */
 .block-boxes-ga_ad:before {
   content: 'Advertisement';
   color: gray;
@@ -5119,7 +5120,7 @@ header nav {
   text-align: center;
   display: block;
 }
-/* line 107, ../sass/modules/_sidebar.scss */
+/* line 108, ../sass/modules/_sidebar.scss */
 .block-boxes-ga_ad:before .boxes-box-content {
   margin: 0 auto;
   display: block;
