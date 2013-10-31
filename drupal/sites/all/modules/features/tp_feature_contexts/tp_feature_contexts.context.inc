@@ -56,9 +56,9 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-10',
         ),
-        'boxes-box-3981ef30' => array(
+        'boxes-ga_homepage_top_right' => array(
           'module' => 'boxes',
-          'delta' => 'box-3981ef30',
+          'delta' => 'ga_homepage_top_right',
           'region' => 'sidebar',
           'weight' => '-9',
         ),
@@ -72,7 +72,7 @@ function tp_feature_contexts_context_default_contexts() {
           'module' => 'views',
           'delta' => 'photo_galleries_promo-block',
           'region' => 'sidebar',
-          'weight' => '-6',
+          'weight' => '-7',
         ),
         'tp4_support-tp4_graveyard' => array(
           'module' => 'tp4_support',
