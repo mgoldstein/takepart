@@ -94,3 +94,23 @@
 		}
 	}
 }
+
+.block-boxes-ga_ad {
+	display: block;
+	margin: 0 auto;
+	&:before{
+		content: 'Advertisement';
+		color: gray;
+		width: 100%;
+		text-align: center;
+		display: block;
+		.boxes-box-content{
+			margin: 0 auto;
+			display: block;
+		}
+	}
+}
+
+
+
+
