@@ -119,11 +119,12 @@ function takepart_article_default_box() {
   $box->api_version = 1;
   $box->delta = 'box-bedd1fbb';
   $box->plugin_key = 'simple';
-  $box->title = 'How Long is Forever?';
-  $box->description = 'Right Rail -- TakePart Takes On';
+  $box->title = 'TakePart Video';
+  $box->description = 'Right Rail -- TPL Playlist';
   $box->options = array(
-    'body' => '<iframe width="272" height="153" src="http://www.youtube.com/embed/7BnFlpsyF4c" frameborder="0" allowfullscreen></iframe>',
-    'additional_classes' => 'video-popup',
+    'body' => '<br />
+<script type="text/javascript" src="http://video.takepart.com/players/Y0y8DVG4-TPXPTQu4.js"></script>',
+    'additional_classes' => '',
   );
   $export['box-bedd1fbb'] = $box;
 
@@ -140,14 +141,14 @@ function takepart_article_default_box() {
 	<img src="http://www.takepart.com/sites/default/files/featuredcontributors1.gif" alt="Featured Contributers" />
 	</p>
 
-<h2><span>Justine Lucas</span></h2>
+<h2><span>Laura Bridgeman</span></h2>
 	
 	<div class="views-field views-field-field-thumbnail">
 		<div class="field-content" style="padding: 5px 5px 10px 0;">
-		<a href="http://www.takepart.com/author/justine-lucas-us-campaigns-manager-global-poverty-project" target="_self"><img src="http://www.takepart.com/sites/default/files/Justine_Lucas70.jpg" alt="Justine Lucas" /></a>
+		<a href="http://www.takepart.com/author/laura-bridgeman" target="_self"><img src="http://www.takepart.com/sites/default/files/Laura_Bridgeman_70ss.jpg" alt="Laura Bridgeman" /></a>
 	
 			<div class="views-field views-field-field-promo-headline" style="float:right;  width:140px; padding: 0px 15px 0 0; font-size:14px"">
-			<a href="http://www.takepart.com/author/justine-lucas-us-campaigns-manager-global-poverty-project" target="_self">Op-Ed: The Extreme Poverty Curse and How to Lift It</a>
+			<a href="http://www.takepart.com/article/2013/09/11/dolphin-intelligence-dumb-chickens-cetaceans" target="_self">Don\'t Believe the Lies You Hear About Dolphin Intelligence</a>
 </a>
 
 			</div>
@@ -155,14 +156,14 @@ function takepart_article_default_box() {
 	</div>
 
 
-<h2><span>Evan Handler</span></h2>
+<h2><span>Jennifer Feuerstein</span></h2>
 	
 	<div class="views-field views-field-field-thumbnail">
 		<div class="field-content" style="padding: 5px 5px 10px 0;">
-		<a href="http://www.takepart.com/author/evan-handler" target="_self"><img src="http://www.takepart.com/sites/default/files/EvenHandler70.jpg" alt="Evan Handler" /></a>
+		<a href="http://www.takepart.com/author/jennifer-feuerstein" target="_self"><img src="http://www.takepart.com/sites/default/files/jennifer_Feuerstein.jpg" alt="Jennifer Feuerstein" /></a>
 	
 			<div class="views-field views-field-field-promo-headline" style="float:right;  width:140px; padding: 0px 15px 0 0; font-size:14px"">
-			<a href="http://www.takepart.com/article/2013/03/18/i-love-livestrong-and-so-should-you" target="_self">Op-Ed: I Love LIVESTRONG—And So Should You</a>
+			<a href="http://www.takepart.com/article/2013/09/02/chimp-island-chrissy-movies-entertainment-recovery" target="_self">Reason Number One Why Chimps Should Never Act in Movies</a>
 </a>
 
 			</div>
@@ -170,21 +171,20 @@ function takepart_article_default_box() {
 	</div>
 
 
-<h2><span>Dean Puckett</span></h2>
+<h2><span>Alanna Mallon</span></h2>
 	
 	<div class="views-field views-field-field-thumbnail">
 		<div class="field-content" style="padding: 5px 5px 10px 0;">
-		<a href="http://www.takepart.com/author/dean-puckett" target="_self"><img src="http://www.takepart.com/sites/default/files/deanPuckett70.jpg" alt="Dean Puckett" /></a>
+		<a href="http://www.takepart.com/author/alanna-mallon" target="_self"><img src="http://www.takepart.com/sites/default/files/Alanna-Mallon_0.jpg" alt="Alanna Mallon" /></a>
 	
 			<div class="views-field views-field-field-promo-headline" style="float:right;  width:140px; padding: 0px 15px 0 0; font-size:14px"">
-			<a href="http://www.takepart.com/article/2013/03/15/op-ed-if-you-want-change-world-you-have-get-your-hands-dirty" target="_self">Op-Ed: Want to Change the World? You\'ll Have to Get Your Hands Dirty</a>
+			<a href="http://www.takepart.com/article/2013/08/26/op-ed-school-backpack-food-program-cambridge" target="_self">Facing the Hunger Crisis in Cambridge</a>
 </a>
 
 			</div>
 		</div>
 	</div>
-</div>
-',
+</div>',
     'additional_classes' => '',
   );
   $export['box-c49bfd54'] = $box;

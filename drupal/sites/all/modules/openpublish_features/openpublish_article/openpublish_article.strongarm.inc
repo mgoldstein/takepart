@@ -65,16 +65,16 @@ function openpublish_article_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '18',
+          'weight' => '12',
         ),
         'xmlsitemap' => array(
-          'weight' => '20',
+          'weight' => '14',
         ),
         'metatags' => array(
           'weight' => '40',
         ),
         'redirect' => array(
-          'weight' => '19',
+          'weight' => '13',
         ),
       ),
       'display' => array(),

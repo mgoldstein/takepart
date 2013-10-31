@@ -78,7 +78,7 @@ function takepart_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '15',
+          'weight' => '16',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -315,7 +315,7 @@ function takepart_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '14',
+          'weight' => '15',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -427,7 +427,7 @@ function takepart_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '14',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -533,7 +533,7 @@ function takepart_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '16',
+          'weight' => '17',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -636,7 +636,7 @@ function takepart_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '17',
+          'weight' => '18',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -764,7 +764,7 @@ function takepart_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '13',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -877,7 +877,7 @@ function takepart_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '20',
+          'weight' => '21',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -974,7 +974,7 @@ function takepart_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '19',
+          'weight' => '20',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -1100,7 +1100,7 @@ function takepart_article_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '18',
+          'weight' => '19',
         ),
         'feature_secondary' => array(
           'label' => 'above',
