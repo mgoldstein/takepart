@@ -4981,7 +4981,7 @@ header nav {
 }
 /* line 15, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .message {
-  margin: .25em 0 .75em;
+  margin: .75em 0;
 }
 /* line 18, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email {
