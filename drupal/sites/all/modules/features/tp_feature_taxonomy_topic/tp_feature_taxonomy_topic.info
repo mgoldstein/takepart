@@ -1,0 +1,15 @@
+name = TakePart Taxonomy Topic
+core = 7.x
+package = Taxonomy
+version = 7.x-1.0
+project = tp_feature_taxonomy_topic
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = field_sql_storage
+dependencies[] = takepart_custom
+dependencies[] = takepart_quick_study
+dependencies[] = takepart_topic_front
+dependencies[] = taxonomy
+features[features_api][] = api:1
+features[field][] = taxonomy_term-topic-field_promo_content
+features[taxonomy][] = topic

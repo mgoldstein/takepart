@@ -1,21 +1,21 @@
 <?php
 /**
  * @file
- * takepart_custom.features.taxonomy.inc
+ * tp_feature_taxonomy_topic.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function takepart_custom_taxonomy_default_vocabularies() {
+function tp_feature_taxonomy_topic_taxonomy_default_vocabularies() {
   return array(
-    'free_tags' => array(
-      'name' => 'Free Tags',
-      'machine_name' => 'free_tags',
-      'description' => 'These tags will be pretty fine-grained and will support more broad categorizations of content via the Topic vocabulary',
+    'topic' => array(
+      'name' => 'Topic',
+      'machine_name' => 'topic',
+      'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
-      'weight' => '-6',
+      'weight' => '-2',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
