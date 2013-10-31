@@ -10,16 +10,14 @@
 		text-transform: lowercase;
 	}
 
-
-
 	.message {
-		margin: .25em 0 .75em;
+		margin: .75em 0;
 	}
 	.form-item-email {
 		margin: 0;
 		display: inline-block;
 		font-family: $adelle-regular;
-		width: 66%;
+		width: 65%;
 		label {
 			display: none;
 		}
@@ -39,6 +37,10 @@
 		color: white;
 		font-family: $adelle-regular;
 		text-transform: lowercase;
+		padding: 4px 0 1px;
+		&:hover {
+			background-color: black;
+		}
 	}
 
 	// doesn't work

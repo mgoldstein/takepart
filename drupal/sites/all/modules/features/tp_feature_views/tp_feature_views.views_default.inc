@@ -218,6 +218,8 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['field_promo_headline']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['max_length'] = '45';
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['trim'] = TRUE;
   $handler->display->display_options['fields']['field_promo_headline']['element_class'] = '[type]';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   /* Sort criterion: Nodequeue: Queue ID */
@@ -253,6 +255,12 @@ function tp_feature_views_views_default_views() {
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'openpublish_video' => 'openpublish_video',
   );
+  /* Filter criterion: Content: Promo Headline (field_promo_headline) */
+  $handler->display->display_options['filters']['field_promo_headline_value']['id'] = 'field_promo_headline_value';
+  $handler->display->display_options['filters']['field_promo_headline_value']['table'] = 'field_data_field_promo_headline';
+  $handler->display->display_options['filters']['field_promo_headline_value']['field'] = 'field_promo_headline_value';
+  $handler->display->display_options['filters']['field_promo_headline_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_promo_headline_value']['value'] = 'NULL';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');

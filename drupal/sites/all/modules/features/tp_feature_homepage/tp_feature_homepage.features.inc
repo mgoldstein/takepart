@@ -24,8 +24,8 @@ function tp_feature_homepage_ccl_features_preset() {
     'Edit Photo Galleries Panel' => array(
       'type' => 'block',
       'title' => 'Edit Photo Galleries Panel',
-      'link' => 'admin/config/mini-panels-ipe/photo_galleries',
-      'options' => 'a:8:{s:12:"advanced_css";s:0:"";s:14:"advanced_query";s:0:"";s:15:"advanced_target";s:7:"default";s:12:"node_options";s:4:"node";s:9:"node_type";s:6:"action";s:7:"node_id";s:14:" [nid: [nid:]]";s:12:"block_global";i:0;s:12:"block_select";a:1:{s:33:"views|photo_galleries_promo-block";s:33:"views|photo_galleries_promo-block";}}',
+      'link' => 'admin/structure/nodequeue/11/view/11',
+      'options' => 'a:8:{s:12:"advanced_css";s:0:"";s:14:"advanced_query";s:0:"";s:15:"advanced_target";s:7:"default";s:12:"node_options";s:4:"node";s:9:"node_type";s:6:"action";s:7:"node_id";s:21:" [nid: [nid: [nid:]]]";s:12:"block_global";i:0;s:12:"block_select";a:1:{s:33:"views|photo_galleries_promo-block";s:33:"views|photo_galleries_promo-block";}}',
     ),
   );
 }
