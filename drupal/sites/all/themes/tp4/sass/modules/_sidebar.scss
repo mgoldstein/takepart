@@ -10,8 +10,6 @@
 		text-transform: lowercase;
 	}
 
-
-
 	.message {
 		margin: .75em 0;
 	}
@@ -19,7 +17,7 @@
 		margin: 0;
 		display: inline-block;
 		font-family: $adelle-regular;
-		width: 66%;
+		width: 65%;
 		label {
 			display: none;
 		}
@@ -39,6 +37,10 @@
 		color: white;
 		font-family: $adelle-regular;
 		text-transform: lowercase;
+		padding: 4px 0 1px;
+		&:hover {
+			background-color: black;
+		}
 	}
 
 	// doesn't work
