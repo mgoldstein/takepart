@@ -26,9 +26,14 @@ class SignupEnpointListingPage {
   }
 
   public function __construct($limit = 25) {
+    $types = array(
+      'NewsletterCampaignSignupEndpoint',
+      'PartnerOptInSignupEndpoint',
+      'TakePartOptInSignupEndpoint',
+    );
     $data_query = db_select('pm_signup_endpoint', 'ep')
       ->fields('ep', array('id', 'label', 'name', 'type'))
-      ->condition('name', '', '!=')
+      ->condition('type', $types, 'IN')
       ->orderBy('label');
     $paged_query = $data_query->extend('PagerDefault')->limit($limit);
     $this->_records = $paged_query->execute()->fetchAllAssoc('id');
@@ -115,7 +120,7 @@ class SignupEndpointDeleteForm {
 }
 
 function pm_signup_endpoint_delete_form($form, &$form_state, $endpoint) {
-  $controller = SignupEndpointDeleteForm($endpoint);
+  $controller = new SignupEndpointDeleteForm($endpoint);
   return $controller->form($form, $form_state);
 }
 
