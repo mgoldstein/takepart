@@ -4641,7 +4641,7 @@ footer .footer-bottom {
     margin-top: 50px;
     clear: both;
     width: 90%;
-    font: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+    font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 11px;
     line-height: 16px;
   }
