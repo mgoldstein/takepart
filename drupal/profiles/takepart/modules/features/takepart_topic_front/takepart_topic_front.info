@@ -2,6 +2,7 @@ name = TakePart Topic Front
 description = Views and Context for Topic Fronts
 core = 7.x
 package = Content Types
+php = 5.2.4
 version = 7.x-1.1
 project = takepart_topic_front
 dependencies[] = context_field

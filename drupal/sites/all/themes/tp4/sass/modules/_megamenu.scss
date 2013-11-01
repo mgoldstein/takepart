@@ -1,1 +1,127 @@
-// MegaMenu
+/*
+ *MegaMenu
+ */
+
+
+#megamenu{
+  clear: both;
+  > ul {
+    position: relative;
+    z-index: 9999;
+    > li {
+      float: left;
+      width: 20%;
+      border-top: 1px solid #000;
+      border-bottom: 2px solid #000;
+      &:first-child{
+        padding: 0;
+      } 
+      .title{
+        font-family: $tradegothic-regular;
+        font-size: 20px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        text-align: center;
+        color: #000;
+        position: relative;
+        a{
+          display: block;
+          width: 100%;
+          line-height: 40px;
+          height: 40px;
+          &:after{
+            content: '';
+            border-right: 1px solid $gray-line;
+            height: 23px;
+            width: auto;
+            position: absolute;
+            right: 0;
+            top: 9px;
+          }
+        }
+      }
+      .mega-content {
+        position: absolute;
+        left: -9999px; /* Hides the content */
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+        background-color: #fff;
+        padding: 35px;
+        -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, .5);
+        box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, .5);
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        box-sizing: border-box;
+        ul.menu{
+          float: left;
+          width: 15%;
+          height: auto;
+          overflow: hidden;
+          li{
+            float: left;
+            clear: left;
+            margin-bottom: 14px;
+            color: #231f20;
+          }
+        }
+        .categories{
+          float: right;
+          width: 85%;
+          height: auto;
+          overflow: hidden;
+          @include breakpoint-grid-breakdown(1 2 4, $breakpoint-mobile $breakpoint-tablet $breakpoint-desktop, ' > .sub-category');
+          .sub-category{
+            padding: 0 15px;
+            border-left: 1px solid $gray-line;
+            color: #000;
+            &:first-child{
+              padding: 0 15px;
+            }
+            .thumb{
+              max-width: 170px;
+              max-height: 115px;
+              margin-bottom: 18px;
+              height: auto;
+              overflow: hidden;
+            }
+            .term{
+              font-family: $adelle-regular;
+              font-weight: 900;
+              text-transform: uppercase;
+              margin-bottom: 15px;
+            }
+            .text{
+              font-family: $ashbury-light;
+            }
+          }
+        }
+      }
+    }
+    > li:last-child{
+      .title a:after{
+        border-right: none;
+      }
+    }
+    > li:hover{
+      .mega-content{
+        left: 0;
+        top: 38px;
+        clear: both;
+      }
+      .title a{
+        background-color: #000;
+        color: #fff;
+        &:after{
+          border-right: none;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+

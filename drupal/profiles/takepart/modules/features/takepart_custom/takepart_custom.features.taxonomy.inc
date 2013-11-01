@@ -15,30 +15,7 @@ function takepart_custom_taxonomy_default_vocabularies() {
       'description' => 'These tags will be pretty fine-grained and will support more broad categorizations of content via the Topic vocabulary',
       'hierarchy' => '0',
       'module' => 'taxonomy',
-      'weight' => '-7',
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
-    'topic' => array(
-      'name' => 'Topic',
-      'machine_name' => 'topic',
-      'description' => '',
-      'hierarchy' => '0',
-      'module' => 'taxonomy',
-      'weight' => '-3',
+      'weight' => '-6',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

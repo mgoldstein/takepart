@@ -143,10 +143,10 @@ function takepart_custom_field_default_fields() {
           'weight' => 4,
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'taxonomy_term',

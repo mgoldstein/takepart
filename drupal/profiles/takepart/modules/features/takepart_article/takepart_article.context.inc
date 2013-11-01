@@ -84,17 +84,11 @@ function takepart_article_context_default_contexts() {
           'region' => 'sidebar_second',
           'weight' => 0,
         ),
-        'newsletter_campaign-10' => array(
+        'newsletter_campaign-49' => array(
           'module' => 'newsletter_campaign',
-          'delta' => '10',
+          'delta' => '49',
           'region' => 'sidebar_second',
           'weight' => 1,
-        ),
-        'boxes-box-1104adce' => array(
-          'module' => 'boxes',
-          'delta' => 'box-1104adce',
-          'region' => 'sidebar_second',
-          'weight' => 2,
         ),
       ),
     ),
