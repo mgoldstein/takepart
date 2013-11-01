@@ -24,6 +24,7 @@ dependencies[] = styles
 dependencies[] = takepart_blog
 dependencies[] = takepart_campaign
 dependencies[] = taxonomy
+dependencies[] = tp_feature_taxonomy_topic
 dependencies[] = views
 features[box][] = box-15362653
 features[box][] = box-34ee1b08

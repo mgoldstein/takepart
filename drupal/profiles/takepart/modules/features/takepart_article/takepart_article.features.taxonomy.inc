@@ -13,9 +13,9 @@ function takepart_article_taxonomy_default_vocabularies() {
       'name' => 'Series',
       'machine_name' => 'series',
       'description' => '',
-      'hierarchy' => '1',
+      'hierarchy' => '0',
       'module' => 'taxonomy',
-      'weight' => '-4',
+      'weight' => '-3',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
