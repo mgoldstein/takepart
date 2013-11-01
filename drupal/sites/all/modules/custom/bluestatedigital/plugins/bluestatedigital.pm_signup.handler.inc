@@ -77,16 +77,20 @@ class BlueStateDigitalSignupHandler {
         ),
       );
     }
-
-    $opt_ins = explode(',', $signup['action.opt-ins.newsletters']);
-    foreach ($this->configuration['opt-in-ids'] as $index => $id) {
-      if (isset($opt_ins[$index]) && $opt_ins[$index] === 'true') {
-        $fields[$id] = array(
-          'value' => array(
-            'type' => 'value',
-            'value' => '1',
-          ),
-        );
+    
+    $opt_ins = $signup['action.opt-ins.newsletters'];
+    foreach ($opt_ins as $name => $opt_in) {
+      if ($opt_in->getPluginEnabled('bluestatedigital.pm_signup.handler')) {
+        $opt_in_field_ids = $this->configuration['opt-ins']['field-ids'];
+        if (isset($opt_in_field_ids[$name])) {
+          $id = $opt_in_field_ids[$name];
+          $fields[$id] = array(
+            'value' => array(
+              'type' => 'value',
+              'value' => '1',
+            ),
+          );
+        }
       }
     }
 

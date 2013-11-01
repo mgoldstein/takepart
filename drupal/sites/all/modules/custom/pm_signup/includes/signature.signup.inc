@@ -207,10 +207,7 @@ class SignatureSignupEndpoint extends SignupEndpoint {
     $signup['action.opt-ins.newsletters'] = $this->convertOptInsToEndpoints(
       $signup['action.opt-ins.newsletters']);
 
-    parent::submit($signup);
-    if (count($errors) > 0) {
-      throw new SignupSubmissionException($errors);
-    }
+    parent::send($signup);
     $this->record($signup);
   }
 }

@@ -651,12 +651,12 @@ abstract class SignupEndpoint extends SignupFieldSet {
     }
   }
 
-  protected function log($exception) {
+  protected function log($id, $exception) {
     if (variable_get('pm_signup_log', FALSE)) {
       db_insert('pm_signup_log')
         ->fields(array(
           'handler' => $id,
-          'message' => $she->getMessage(),
+          'message' => $exception->getMessage(),
           'exception' => print_r($she, true),
           'backtrace' => print_r(debug_backtrace(), true),
           'created' => REQUEST_TIME,
@@ -685,7 +685,7 @@ abstract class SignupEndpoint extends SignupFieldSet {
             $handler->submit($signup);
           }
           catch (SignupHandlerException $she) {
-            $this->log($she);
+            $this->log($id, $she);
             $errors[] = $she;
           }
         }
