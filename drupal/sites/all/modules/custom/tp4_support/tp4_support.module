@@ -169,6 +169,7 @@ function tp4_support_theme() {
         'logo' => $logo,
         'user_links' => $user_links,
         'search' => $search,
+        'megamenu' => $megamenu,
       ),
     ),
     'tp4_support_graveyard' => array(
@@ -199,9 +200,10 @@ function tp4_support_fat_header(){
     );
     $search = drupal_render(drupal_get_form('search_block_form'));
   }
+  $megamenu = module_invoke('tp_megamenu', 'block_view', 'tp_megamenu_megamenu');
+  $megamenu = $megamenu['content'];
 
-
-  return theme('tp4_support_fat_header', array('logo' => $logo, 'user_links' => $user_links, 'search' => $search));
+  return theme('tp4_support_fat_header', array('logo' => $logo, 'user_links' => $user_links, 'search' => $search, 'megamenu' => $megamenu));
 }
 function tp4_support_dont_miss(){
   $dont_miss_label = variable_get('tp4_support_dont_miss_label', NULL);
