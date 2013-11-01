@@ -495,14 +495,16 @@ function signature_cron() {
 function signature_process_import_feed($feed_url, $import_now = FALSE,
   $full_import = FALSE) {
 
+  // Get the last time it was run.
+  $last_run = variable_get('signature_cron_last_run', 0);
+
   // Store the last time the feed was imported to allow subsequent imports
   // to skip unmodified actions.
   variable_set('signature_cron_last_run', time());
 
   $actions = signature_read_import_feed($feed_url);
-  $queue = DrupalQueue::get('signature_import_queue');
-  $last_run = variable_get('signature_cron_last_run', 0);
 
+  $queue = DrupalQueue::get('signature_import_queue');
   foreach ($actions as $action) {
 
     if ($full_import || $action->last_modified >= $last_run) {
