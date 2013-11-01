@@ -37,6 +37,12 @@ function signature_menu() {
       'access callback' => 'user_access',
       'access arguments' => array('signature configure import settings'),
     ),
+    'api/action-import' => array(
+      'page callback' => 'signature_menu_hook_to_use_until_cron_works',
+      'type' => MENU_CALLBACK,
+      'access arguments' => array('access content'),
+      'delivery callback' => 'signature_deliver_api_page',
+    ),
     'api/signature' => array(
       'page callback' => 'signature_api_create',
       'type' => MENU_CALLBACK,
@@ -404,6 +410,20 @@ function signature_import_admin_form($form, &$form_state) {
   );
 
   return $form;
+}
+
+function signature_menu_hook_to_use_until_cron_works() {
+  $feed_url = variable_get('signature_import_feed', '');
+  $count = 0;
+  if (!empty($feed_url)) {
+    $count = signature_process_import_feed($feed_url, TRUE);
+  }
+  return array(
+    'status' => '200 OK',
+    'payload' => array(
+      'count' => $count,
+    ),
+  );
 }
 
 function signature_import_admin_form_import_now($form, &$form_state) {
