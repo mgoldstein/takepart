@@ -1074,10 +1074,10 @@ class BlueStateDigitalConfigurationBuilder {
         $available = array_diff(self::optInFieldLabels(), $used);
         $chosen = reset($available);
         if ($chosen !== FALSE) {
-          $field_id = self::fieldWithLabel($chosen);
+          $field_id = self::fieldWithLabel($chosen, $fields);
           $this->setConsGroupForOptIn($opt_in->param, $field_id);
 
-          $field_ids[$$opt_in->param] = $field_id;
+          $field_ids[$opt_in->param] = $field_id;
           $used[] = $chosen;
         }
       }
