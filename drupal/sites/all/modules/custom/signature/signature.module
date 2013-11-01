@@ -286,7 +286,7 @@ function signature_api_create($tap_id) {
     'email' => $request['email'],
     'name.first' => $request['first_name'],
     'name.last' => $request['last_name'],
-    'action.id' => $nid,
+    'action.id' => $tap_id,
     'action.signature-type' => 'international_signature',
     'action.opt-ins.display' => $request['display_signature'],
     'action.opt-ins.newsletters' => $request['opt_ins'],
