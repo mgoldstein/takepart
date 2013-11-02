@@ -32,12 +32,6 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'tp4_support-tp4_footer' => array(
-          'module' => 'tp4_support',
-          'delta' => 'tp4_footer',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
         'tp4_support-tp4_dont_miss' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_dont_miss',
@@ -110,6 +104,12 @@ function tp_feature_contexts_context_default_contexts() {
           'module' => 'tp4_support',
           'delta' => 'tp4_fat_header',
           'region' => 'header',
+          'weight' => '-10',
+        ),
+        'tp4_support-tp4_footer' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_footer',
+          'region' => 'footer',
           'weight' => '-10',
         ),
       ),
