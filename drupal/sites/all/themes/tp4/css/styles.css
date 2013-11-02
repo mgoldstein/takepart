@@ -5337,8 +5337,8 @@ header .search {
   }
   /* line 10, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item .node-title {
-    font-size: .857142857em;
-    line-height: 1.666666667;
+    font-size: 1.142857143em;
+    line-height: 1.25;
   }
   /* line 14, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:last-child {
@@ -5358,7 +5358,7 @@ header .search {
   }
   /* line 26, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:first-child .node-title {
-    font-size: 1.5em;
-    line-height: 1.5;
+    font-size: 2em;
+    line-height: 1.142857143;
   }
 }
