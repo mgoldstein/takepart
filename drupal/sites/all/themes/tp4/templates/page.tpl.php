@@ -20,9 +20,11 @@
     <?php print $messages; ?>
     <?php print $breadcrumb; ?>
     <?php print render($page['preface']); ?>
+    <?php if(drupal_is_front_page()) : // TODO Move this literally anywhere else ?>
     <div class="date">
       <?php print date('l, F j, Y'); ?>
     </div>
+    <?php endif; ?>
   </div>
 </div>
 <div class="main-wrapper">
