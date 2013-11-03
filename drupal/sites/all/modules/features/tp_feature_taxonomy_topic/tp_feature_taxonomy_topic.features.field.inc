@@ -72,10 +72,14 @@ function tp_feature_taxonomy_topic_field_default_fields() {
           'weight' => 5,
         ),
         'full' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
+          'label' => 'hidden',
+          'module' => 'entityreference',
+          'settings' => array(
+            'links' => 0,
+            'view_mode' => 'feature_secondary',
+          ),
+          'type' => 'entityreference_entity_view',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'taxonomy_term',

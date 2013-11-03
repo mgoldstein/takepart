@@ -273,8 +273,8 @@ function openpublish_article_field_default_fields() {
           'label' => 'hidden',
           'module' => 'media_image_formatter',
           'settings' => array(
-            'image_link' => '',
-            'image_style' => '',
+            'image_link' => 'content',
+            'image_style' => 'homepage_featured_image',
           ),
           'type' => 'image',
           'weight' => '0',
