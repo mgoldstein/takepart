@@ -4677,8 +4677,8 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 165, ../sass/modules/_megamenu.scss */
-  #megamenu > ul > li .mega-content .categories:last-child {
+  /* line 164, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category:last-child {
     display: block;
   }
 }
