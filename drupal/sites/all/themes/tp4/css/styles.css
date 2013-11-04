@@ -4488,11 +4488,11 @@ body.front #sidebar .block-title {
 }
 @media all and (min-width: 768px) {
   /* line 55, ../sass/helpers/_mixins.scss */
-  #megamenu > ul > li .mega-content .categories > .sub-category:nth-child(2n+1) {
+  #megamenu > ul > li .mega-content .categories > .sub-category:nth-child(3n+1) {
     float: left;
-    width: 50%;
+    width: 33.33333%;
     margin-left: 0%;
-    margin-right: -50%;
+    margin-right: -33.33333%;
     padding-left: 10px;
     padding-right: 10px;
     -moz-box-sizing: border-box;
@@ -4504,10 +4504,27 @@ body.front #sidebar .block-title {
     padding: 0;
   }
   /* line 55, ../sass/helpers/_mixins.scss */
-  #megamenu > ul > li .mega-content .categories > .sub-category:nth-child(2n+0) {
+  #megamenu > ul > li .mega-content .categories > .sub-category:nth-child(3n+2) {
     float: left;
-    width: 50%;
-    margin-left: 50%;
+    width: 33.33333%;
+    margin-left: 33.33333%;
+    margin-right: -66.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* line 55, ../sass/helpers/_mixins.scss */
+  #megamenu > ul > li .mega-content .categories > .sub-category:nth-child(3n+0) {
+    float: left;
+    width: 33.33333%;
+    margin-left: 66.66667%;
     margin-right: -100%;
     padding-left: 10px;
     padding-right: 10px;
@@ -4596,75 +4613,88 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 111, ../sass/modules/_megamenu.scss */
-#megamenu > ul > li .mega-content .categories .sub-category {
-  padding: 0 15px;
-  color: #000;
-  position: relative;
+@media all and (min-width: 768px) {
+  /* line 111, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category {
+    width: 75%;
+    padding: 0 15px;
+    color: #000;
+    position: relative;
+  }
+  /* line 114, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category:nth-child(2n+1) {
+    padding: 0 10px;
+  }
+  /* line 120, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category:before {
+    content: '';
+    height: 220px;
+    border-left: 1px solid #cccccc;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  /* line 128, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category:first-child {
+    padding: 0 15px;
+  }
+  /* line 131, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category:last-child {
+    display: none;
+  }
+  /* line 134, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category .thumb {
+    max-width: 170px;
+    max-height: 115px;
+    margin-bottom: 18px;
+    height: auto;
+    overflow: hidden;
+  }
+  /* line 141, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category .term {
+    font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  /* line 147, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category .text {
+    font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  }
 }
-/* line 112, ../sass/modules/_megamenu.scss */
-#megamenu > ul > li .mega-content .categories .sub-category:nth-child(2n+1) {
-  padding: 0 10px;
+@media all and (min-width: 980px) {
+  /* line 153, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories:last-child {
+    display: block;
+  }
 }
-/* line 118, ../sass/modules/_megamenu.scss */
-#megamenu > ul > li .mega-content .categories .sub-category:before {
-  content: '';
-  height: 220px;
-  border-left: 1px solid #cccccc;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-/* line 126, ../sass/modules/_megamenu.scss */
-#megamenu > ul > li .mega-content .categories .sub-category:first-child {
-  padding: 0 15px;
-}
-/* line 129, ../sass/modules/_megamenu.scss */
-#megamenu > ul > li .mega-content .categories .sub-category .thumb {
-  max-width: 170px;
-  max-height: 115px;
-  margin-bottom: 18px;
-  height: auto;
-  overflow: hidden;
-}
-/* line 136, ../sass/modules/_megamenu.scss */
-#megamenu > ul > li .mega-content .categories .sub-category .term {
-  font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-}
-/* line 142, ../sass/modules/_megamenu.scss */
-#megamenu > ul > li .mega-content .categories .sub-category .text {
-  font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
-}
-/* line 147, ../sass/modules/_megamenu.scss */
+/* line 158, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .more {
   clear: both;
   float: left;
   margin-top: 10px;
 }
-/* line 155, ../sass/modules/_megamenu.scss */
+/* line 166, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:last-child .title a:after {
   border-right: none;
 }
-/* line 160, ../sass/modules/_megamenu.scss */
+/* line 171, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .mega-content {
   left: 0;
   top: 43px;
   clear: both;
 }
-/* line 165, ../sass/modules/_megamenu.scss */
+/* line 176, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a {
   background-color: #000;
   color: #fff;
   text-decoration: none;
 }
-/* line 169, ../sass/modules/_megamenu.scss */
+/* line 180, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a:after {
   border-right: none;
 }
-/* line 173, ../sass/modules/_megamenu.scss */
+/* line 184, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
   background-image: url('../images/tpl-logo-hover.jpg?1383585987');
 }
