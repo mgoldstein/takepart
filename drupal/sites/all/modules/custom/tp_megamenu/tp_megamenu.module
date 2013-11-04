@@ -52,7 +52,7 @@ function tp_megamenu_megamenu(){
   foreach($mega_tree as $key => $link){
     $output .= '<li class="mega-item '. $link['link']['mlid']. '">';
     $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
-    $output .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path). '</div>';
+    $output .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path, array('attributes' => array('class' => array($link['link']['options']['attributes']['class'][0])))). '</div>';
     $output .= '<div class="mega-content">';
     //left menu curation
     $menu = render(menu_tree_output($mega_tree[$key]['below']));
@@ -79,7 +79,7 @@ function tp_megamenu_megamenu(){
     else{
       // url is not a node or taxonomy
     }
-
+    // dpm($link, 'link');
     $output .= '<div class="categories">';
     if(isset($entities->field_promo_content['und'])){  
  
