@@ -32,12 +32,6 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
-        'tp4_support-tp4_footer' => array(
-          'module' => 'tp4_support',
-          'delta' => 'tp4_footer',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
         'tp4_support-tp4_dont_miss' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_dont_miss',
@@ -112,11 +106,56 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
+        'tp4_support-tp4_footer' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_footer',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
   $context->condition_mode = 0;
   $export['tp4_global'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_global_not_front';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '~<front>' => '~<front>',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+  $export['tp4_global_not_front'] = $context;
 
   return $export;
 }

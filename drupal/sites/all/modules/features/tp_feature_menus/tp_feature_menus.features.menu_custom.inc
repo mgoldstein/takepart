@@ -16,6 +16,12 @@ function tp_feature_menus_menu_default_menu_custom() {
     'title' => 'Corporate Footer',
     'description' => 'Corporate menu at the very bottom of the page.',
   );
+  // Exported menu: menu-megamenu.
+  $menus['menu-megamenu'] = array(
+    'menu_name' => 'menu-megamenu',
+    'title' => 'MegaMenu',
+    'description' => 'New to the tp4 theme.',
+  );
   // Exported menu: menu-social-footer-follow.
   $menus['menu-social-footer-follow'] = array(
     'menu_name' => 'menu-social-footer-follow',
@@ -33,6 +39,8 @@ function tp_feature_menus_menu_default_menu_custom() {
   t('Corporate Footer');
   t('Corporate menu at the very bottom of the page.');
   t('Global social follow menu for the tp4 theme.');
+  t('MegaMenu');
+  t('New to the tp4 theme.');
   t('Social Footer Follow');
   t('Social Header Follow');
   t('Social links in the footer');

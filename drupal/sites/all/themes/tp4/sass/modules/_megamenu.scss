@@ -4,10 +4,16 @@
 
 
 #megamenu{
+  @include breakpoint($breakpoint-mobile){
+    display: none;
+  }
+  @include breakpoint($breakpoint-tablet){
+    display: block;
+  }
   clear: both;
   > ul {
     position: relative;
-    z-index: 9999;
+    z-index: 998;
     > li {
       float: left;
       width: 20%;
@@ -53,28 +59,56 @@
         -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
         -moz-box-sizing: border-box;    /* Firefox, other Gecko */
         box-sizing: border-box;
-        ul.menu{
+        .side-menu{
           float: left;
-          width: 15%;
+          
           height: auto;
           overflow: hidden;
-          li{
-            float: left;
-            clear: left;
-            margin-bottom: 14px;
-            color: #231f20;
+          @include breakpoint($breakpoint-tablet){
+            width: 25%;
+          }
+          @include breakpoint($breakpoint-desktop){
+            width: 15%;
+          }
+          ul.menu{
+            li{
+              float: left;
+              clear: left;
+              margin-bottom: 14px;
+              color: #231f20;
+            }
+          }
+          .text{
+            padding-right: 10px;
+            padding-bottom: 10px;
           }
         }
         .categories{
           float: right;
-          width: 85%;
           height: auto;
           overflow: hidden;
+          @include breakpoint($breakpoint-tablet){
+            width: 75%;
+          }
+          @include breakpoint($breakpoint-desktop){
+            width: 85%;
+          }
           @include breakpoint-grid-breakdown(1 2 4, $breakpoint-mobile $breakpoint-tablet $breakpoint-desktop, ' > .sub-category');
           .sub-category{
+            &:nth-child(2n+1){
+              padding: 0 10px;
+            }
             padding: 0 15px;
-            border-left: 1px solid $gray-line;
             color: #000;
+            position: relative;
+            &:before{
+              content: '';
+              height: 170px;
+              border-left: 1px solid $gray-line;
+              position: absolute;
+              left: 0;
+              top: 0;
+            }
             &:first-child{
               padding: 0 15px;
             }
@@ -96,6 +130,11 @@
             }
           }
         }
+        .more{
+          clear: both;
+          float: left;
+          margin-top: 10px;
+        }
       }
     }
     > li:last-child{
@@ -112,6 +151,7 @@
       .title a{
         background-color: #000;
         color: #fff;
+        text-decoration: none;
         &:after{
           border-right: none;
         }
