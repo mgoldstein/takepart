@@ -4165,17 +4165,21 @@ body.front #sidebar .block-title {
 /*
  *Promo "don't miss"
  */
+/* line 318, ../sass/page/_homepage.scss */
+.promo {
+  margin-top: 20px;
+}
 @media all and (min-width: 320px) {
   /* line 318, ../sass/page/_homepage.scss */
   .promo {
     text-align: left;
   }
-  /* line 321, ../sass/page/_homepage.scss */
+  /* line 322, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: left;
     display: inline-block;
   }
-  /* line 324, ../sass/page/_homepage.scss */
+  /* line 325, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: inline-block;
     margin-right: 10px;
@@ -4183,17 +4187,17 @@ body.front #sidebar .block-title {
     line-height: 28px;
     font-weight: normal;
   }
-  /* line 331, ../sass/page/_homepage.scss */
+  /* line 332, ../sass/page/_homepage.scss */
   .promo .inner a.text:hover {
     text-decoration: underline;
   }
-  /* line 334, ../sass/page/_homepage.scss */
+  /* line 335, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: inline-block;
     font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 20px;
   }
-  /* line 338, ../sass/page/_homepage.scss */
+  /* line 339, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: inline-block;
     vertical-align: middle;
@@ -4210,7 +4214,7 @@ body.front #sidebar .block-title {
 /*
  *Graveyard
  */
-/* line 356, ../sass/page/_homepage.scss */
+/* line 357, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -4308,11 +4312,11 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 360, ../sass/page/_homepage.scss */
+/* line 361, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 362, ../sass/page/_homepage.scss */
+/* line 363, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;
