@@ -160,10 +160,10 @@
                 font-family: $ashbury-light;
               }
             }
-          }
-          @include breakpoint($breakpoint-desktop){
-            &:last-child{
-              display: block;
+            @include breakpoint($breakpoint-desktop){
+              &:last-child{
+                display: block;
+              }
             }
           }
         }
