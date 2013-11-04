@@ -316,6 +316,7 @@ body.front{
  *Promo "don't miss"
  */
  .promo{
+    margin-top: 20px;
     @include breakpoint($breakpoint-mobile){
       text-align: left;
       .inner{
