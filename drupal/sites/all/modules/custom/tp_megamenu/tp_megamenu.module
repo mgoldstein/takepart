@@ -47,16 +47,21 @@ function tp_megamenu_megamenu(){
   
   /* render child block) */
   $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 2);
-  $child_block = '';
-  $child_block .= '<ul>';
+  $output = '';
+  $output .= '<ul>';
   foreach($mega_tree as $key => $link){
-    $child_block .= '<li class="mega-item '. $link['link']['mlid']. '">';
+    $output .= '<li class="mega-item '. $link['link']['mlid']. '">';
     $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
-    $child_block .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path). '</div>';
-    $child_block .= '<div class="mega-content">';
+    $output .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path). '</div>';
+    $output .= '<div class="mega-content">';
     //left menu curation
     $menu = render(menu_tree_output($mega_tree[$key]['below']));
-    $child_block .= $menu;
+    $output .= '<div class="side-menu">';
+    if($link['link']['options']['attributes']['title']){
+      $output .= '<div class="text">'. $link['link']['options']['attributes']['title']. '</div>';
+    }
+    $output .= $menu;
+    $output .= '</div>';
 
 
     //middle content curation
@@ -75,11 +80,9 @@ function tp_megamenu_megamenu(){
       // url is not a node or taxonomy
     }
 
-    //TODO separate out taxonomy terms and nodes (title behaves differently)
-    $child_block .= '<div class="categories">';
+    $output .= '<div class="categories">';
     if(isset($entities->field_promo_content['und'])){  
-
-      //TODO: limit to 4    
+ 
       foreach($entities->field_promo_content['und'] as $key => $entity){
         $node = node_load($entity['target_id']);
         $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
@@ -89,28 +92,28 @@ function tp_megamenu_megamenu(){
           $term = $node->field_topic['und'][0]['tid'];
           $term = taxonomy_term_load($term);
           $term_title = $term->name;
+          $term_path = drupal_get_path_alias('taxonomy/term/'. $term->tid);
         }
         else{
           $term_title = $node->title;
+          $term_path = drupal_get_path_alias('node/'. $node->nid);
         }
         $title = $node->field_promo_headline['und'][0]['value'];
-        $term_path = drupal_get_path_alias('taxonomy/term/'. $term->tid);
-
-        $child_block .= '<div class="sub-category"><a href="'. $term_path. '">';
-        $child_block .= '<div class="thumb">'. $thumb. '</div>';
-        $child_block .= '<div class="term">'. $term_title. '</div>';
-        $child_block .= '<div class="text">'. $title. '</div>';
-        $child_block .= '</a></div>'; //end .sub-category
+        $output .= '<div class="sub-category"><a href="'. $term_path. '">';
+        $output .= '<div class="thumb">'. $thumb. '</div>';
+        $output .= '<div class="term">'. $term_title. '</div>';
+        $output .= '<div class="text">'. $title. '</div>';
+        $output .= '</a></div>'; //end .sub-category
       }
-      $child_block .= '</div>'; //end .categories
+      $output .= '</div>'; //end .categories
+      $output .= l('See More '. $link['link']['link_title'], $path, array('attributes' => array('class' => array('more'))));
     }
-    $child_block .= '</div>'; //end .mega-content
-    $child_block .= '</li>'; //end .mega-item
+    $output .= '</div>'; //end .mega-content
+    $output .= '</li>'; //end .mega-item
   }
-  $child_block .= '</ul>';
+  $output .= '</ul>';
 
-  return $child_block;
-  // return theme('tp_megamenu_megamenu', array('child_block' => $child_block));
+  return $output;
 }
 
 
