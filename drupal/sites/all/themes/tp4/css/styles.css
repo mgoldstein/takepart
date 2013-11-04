@@ -4392,7 +4392,7 @@ body.front #sidebar .block-title {
   overflow: hidden;
   float: left;
   margin-left: 6px;
-  background: url('../images/tpl-logo.jpg?1383584711') no-repeat center center;
+  background: url('../images/tpl-logo.jpg?1383585987') no-repeat center center;
   margin: 0;
 }
 /* line 60, ../sass/modules/_megamenu.scss */
@@ -4442,21 +4442,24 @@ body.front #sidebar .block-title {
 #megamenu > ul > li .mega-content .side-menu .text {
   padding-right: 10px;
   padding-bottom: 10px;
+  font-family: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  font-size: 14px;
+  color: #000;
 }
-/* line 97, ../sass/modules/_megamenu.scss */
+/* line 100, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .categories {
   float: right;
   height: auto;
   overflow: hidden;
 }
 @media all and (min-width: 768px) {
-  /* line 97, ../sass/modules/_megamenu.scss */
+  /* line 100, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories {
     width: 75%;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 97, ../sass/modules/_megamenu.scss */
+  /* line 100, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories {
     width: 85%;
   }
@@ -4589,30 +4592,30 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 108, ../sass/modules/_megamenu.scss */
+/* line 111, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .categories .sub-category {
   padding: 0 15px;
   color: #000;
   position: relative;
 }
-/* line 109, ../sass/modules/_megamenu.scss */
+/* line 112, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .categories .sub-category:nth-child(2n+1) {
   padding: 0 10px;
 }
-/* line 115, ../sass/modules/_megamenu.scss */
+/* line 118, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .categories .sub-category:before {
   content: '';
-  height: 170px;
+  height: 220px;
   border-left: 1px solid #cccccc;
   position: absolute;
   left: 0;
   top: 0;
 }
-/* line 123, ../sass/modules/_megamenu.scss */
+/* line 126, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .categories .sub-category:first-child {
   padding: 0 15px;
 }
-/* line 126, ../sass/modules/_megamenu.scss */
+/* line 129, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .categories .sub-category .thumb {
   max-width: 170px;
   max-height: 115px;
@@ -4620,46 +4623,46 @@ body.front #sidebar .block-title {
   height: auto;
   overflow: hidden;
 }
-/* line 133, ../sass/modules/_megamenu.scss */
+/* line 136, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .categories .sub-category .term {
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: 900;
   text-transform: uppercase;
   margin-bottom: 15px;
 }
-/* line 139, ../sass/modules/_megamenu.scss */
+/* line 142, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .categories .sub-category .text {
   font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 144, ../sass/modules/_megamenu.scss */
+/* line 147, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .more {
   clear: both;
   float: left;
   margin-top: 10px;
 }
-/* line 152, ../sass/modules/_megamenu.scss */
+/* line 155, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:last-child .title a:after {
   border-right: none;
 }
-/* line 157, ../sass/modules/_megamenu.scss */
+/* line 160, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .mega-content {
   left: 0;
-  top: 38px;
+  top: 43px;
   clear: both;
 }
-/* line 162, ../sass/modules/_megamenu.scss */
+/* line 165, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a {
   background-color: #000;
   color: #fff;
   text-decoration: none;
 }
-/* line 166, ../sass/modules/_megamenu.scss */
+/* line 169, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a:after {
   border-right: none;
 }
-/* line 170, ../sass/modules/_megamenu.scss */
+/* line 173, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1383585369');
+  background-image: url('../images/tpl-logo-hover.jpg?1383585987');
 }
 
 /**
