@@ -21,40 +21,52 @@
       border-bottom: 2px solid #000;
       &:first-child{
         padding: 0;
-      } 
-      .title{
-        font-family: $tradegothic-regular;
-        font-size: 20px;
-        text-transform: uppercase;
-        white-space: nowrap;
-        text-align: center;
-        color: #000;
-        position: relative;
-        a{
+      }
+      &:last-child{
+        .title{
           display: block;
-          width: 100%;
-          line-height: 40px;
-          height: 40px;
-          &:after{
-            content: '';
-            border-right: 1px solid $gray-line;
-            height: 23px;
-            width: auto;
-            position: absolute;
-            right: 0;
-            top: 9px;
+          margin: 0 auto;
+          max-width: 178px;
+        }
+      }
+      .title{
+        @include breakpoint($breakpoint-tablet){
+          font-family: $tradegothic-regular;
+          font-size: 18px;
+          text-transform: uppercase;
+          white-space: nowrap;
+          text-align: center;
+          color: #000;
+          position: relative;
+          a{
+            display: block;
+            width: 100%;
+            line-height: 40px;
+            height: 40px;
+            &:after{
+              content: '';
+              border-right: 1px solid $gray-line;
+              height: 23px;
+              width: auto;
+              position: absolute;
+              right: 0;
+              top: 9px;
+            }
+          }
+          a.takepart-logo{
+            width: 100%;
+            display: block;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            float: left;
+            background: image-url('tpl-logo.jpg') no-repeat center center;
+            margin: 0;
+            background-size: 90%;
           }
         }
-        a.takepart-logo{
-          width: 100%;
-          display: block;
-          text-indent: 100%;
-          white-space: nowrap;
-          overflow: hidden;
-          float: left;
-          margin-left: 6px;
-          background: image-url('tpl-logo.jpg') no-repeat center center;
-          margin: 0;
+        @include breakpoint($breakpoint-desktop){
+          font-size: 20px;
         }
       }
       .mega-content {
@@ -168,6 +180,7 @@
       }
     }
     > li:hover{
+      background-color: #000;
       .mega-content{
         left: 0;
         top: 43px;
