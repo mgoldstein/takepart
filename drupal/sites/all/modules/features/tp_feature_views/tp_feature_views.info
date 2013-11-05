@@ -13,3 +13,4 @@ features[views_view][] = homepage_columns
 features[views_view][] = latest_article_in_a_series
 features[views_view][] = latest_headlines
 features[views_view][] = photo_galleries_promo
+features[views_view][] = topic_listing
