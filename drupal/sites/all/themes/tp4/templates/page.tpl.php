@@ -55,9 +55,7 @@
 </div>
 
 <div class="footer-wrapper">
-  <footer>
-    <?php print render($page['footer']); ?>
-  </footer>
+  <?php print render($page['footer']); ?>
 </div>
 
 
