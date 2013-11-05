@@ -77,6 +77,11 @@ function tp4_preprocess_block(&$variables) {
  *   The name of the template being rendered ("node" in this case.)
  */
 function tp4_preprocess_node(&$variables, $hook) {
+  // Add template suggestions for view modes and
+  // node types per view view mode.
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
+
   // Run node-type-specific preprocess functions, like
   // tp4_preprocess_node_page() or tp4_preprocess_node_story().
   $function = __FUNCTION__ . '_' . $variables['node']->type;
