@@ -16,24 +16,21 @@
 // zen-grid-item-base mixin to all grid items from within a single ruleset.
 // $zen-auto-include-item-base: false;
 // $zen-auto-include-flow-item-base: false;
-html{
-}
-body{
+html {}
+body {
   width: 100%;
   margin: 0;
   border-top: 5px solid $light-mint;
   border-bottom: 5px solid $light-mint;
 }
-.header-wrapper, .preface-wrapper, .main-wrapper, .suffix-wrapper, .footer-wrapper{
+.header-wrapper,
+.preface-wrapper,
+.main-wrapper,
+.suffix-wrapper,
+.footer-wrapper {
   width: auto;
   height: auto;
-  @include breakpoint($breakpoint-mobile){
-    padding: 0 0px;
-    padding-right: 10px;
-  }
-  @include breakpoint($breakpoint-desktop){
-    padding: 0;
-  }
+  padding: 0;
 }
 .header-wrapper {
   padding-top: 1em;
@@ -41,122 +38,81 @@ body{
 .footer-wrapper {
   padding-bottom: 1em;
 }
-header#header, #preface, main#main, #suffix, footer{
-  @include zen-grid-container;
+#header,
+#preface,
+#main,
+#suffix,
+#footer {
+  @include zen-grid-container();
   max-width: $page-width;
-  width: 100%;
   margin: 0 auto;
   padding: 0;
-  @include zen-clear();
 }
-
-main#main{
-  @include zen-grid-container();
-  margin: 0 auto;
-  max-width: $page-width;
-  width: 100%;
-  #primary{
-    @include breakpoint($breakpoint-mobile){
+#preface {
+  min-height: 1em; // TODO figure out a better way to do this
+}
+#main {
+  #primary { // mobile first and pages with no sidebar
       @include zen-grid-item(12, 1);
-      @include zen-clear();
-    }
-    @include breakpoint($breakpoint-tablet){
-      @include zen-grid-item(12, 1);
-    }
-    @include breakpoint($breakpoint-desktop){
-      @include zen-grid-item(12, 1);
-      @include zen-clear(none);
-      padding: 0;
-    }
   }
-  #sidebar{
-    @include breakpoint($breakpoint-mobile){
-      @include zen-grid-item(12, 1);
-      @include zen-clear();
-      padding-right: 0;
-    }
-    @include breakpoint($breakpoint-tablet){
-      @include zen-grid-item(5, 8);
-      @include zen-clear(none);
-      padding-right: 0;
-    }
-    @include breakpoint($breakpoint-desktop){
-      @include zen-grid-item(4, 9);
-      padding-right: 0;
-    }
-  }
-  &.with-skinny{
-    #primary{
-      @include breakpoint($breakpoint-mobile){
-        @include zen-grid-item(12, 1);
-        @include zen-clear();
-      }
-      @include breakpoint($breakpoint-tablet){
+  &.with-sidebar { // most pages
+    #primary {
+      @include breakpoint($breakpoint-tablet) {
         @include zen-grid-item(7, 1);
       }
+      @include breakpoint($breakpoint-desktop) {
+        @include zen-grid-item(8, 1);
+      }
+    }
+  }
+  &.with-skinny { // this should never happen
+    #primary{
       @include breakpoint($breakpoint-desktop){
         @include zen-grid-item(10, 1);
-        @include zen-clear(none);
-        padding: 0;
-      }
-    }
-    #skinny{
-      @include breakpoint($breakpoint-mobile){
-        @include zen-grid-item(12, 1);
-        @include zen-clear();
-      }
-      @include breakpoint($breakpoint-tablet){
-        @include zen-grid-item(5, 8);
-        @include zen-clear(none);
-      }
-      @include breakpoint($breakpoint-desktop){
-        @include zen-grid-item(2, 11);
       }
     }
   }
-  &.with-sidebar{
-    #primary{
-      @include breakpoint($breakpoint-mobile){
-        @include zen-grid-item(12, 1);
-        @include zen-clear();
-      }
-      @include breakpoint($breakpoint-tablet){
-        @include zen-grid-item(7, 1);
-      }
-      @include breakpoint($breakpoint-desktop){
-        @include zen-grid-item(8, 1);
-        @include zen-clear(none);
-        padding: 0;
+  &.with-sidebar.with-skinny { // homepage
+    #primary {
+        @include breakpoint($breakpoint-desktop){
+          @include zen-grid-item(6, 1);
+          @include zen-clear(none);
+          padding: 0;
       }
     }
   }
-  &.with-sidebar.with-skinny{
-    #primary{
-      @include breakpoint($breakpoint-mobile){
-        @include zen-grid-item(12, 1);
-        @include zen-clear();
-      }
-      @include breakpoint($breakpoint-tablet){
-        @include zen-grid-item(7, 1);
-      }
-      @include breakpoint($breakpoint-desktop){
-        @include zen-grid-item(6, 1);
-        @include zen-clear(none);
-        padding: 0;
-      }
+  #sidebar {
+    @include zen-grid-item(12, 1); // mobile-first
+    @include zen-clear();
+    @include breakpoint($breakpoint-tablet) {
+      @include zen-grid-item(5, 8);
+      @include zen-clear(none); // cancel clear
     }
+    @include breakpoint($breakpoint-desktop) {
+      @include zen-grid-item(4, 9);
+    }
+  }
+
+  // the default style establishes mobile first parameters
+  // and covers the unusual case where #skinny is by itself
+  #skinny { 
+    @include zen-grid-item(12, 1);
+    @include zen-clear();
+    @include breakpoint($breakpoint-tablet){
+      @include zen-grid-item(5, 8);
+    }
+    @include breakpoint($breakpoint-desktop){
+      @include zen-grid-item(2, 11);
+      @include zen-clear(none);
+    }
+  }
+  &.with-sidebar {
     #skinny{
-      @include breakpoint($breakpoint-mobile){
-        @include zen-grid-item(12, 1);
-        @include zen-clear();
-      }
       @include breakpoint($breakpoint-tablet){
         @include zen-grid-item(12, 1);
-        @include zen-clear(left);
       }
       @include breakpoint($breakpoint-desktop){
         @include zen-grid-item(2, 7);
-        @include zen-clear(none);
         padding-left: 15px;
         padding-right: 15px;
       }
