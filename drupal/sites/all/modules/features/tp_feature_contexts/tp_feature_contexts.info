@@ -18,6 +18,7 @@ dependencies[] = tp4_support
 dependencies[] = views
 features[box][] = ga_homepage_top_right
 features[context][] = homepage
+features[context][] = topic_general
 features[context][] = tp4_global
 features[context][] = tp4_global_not_front
 features[ctools][] = boxes:box:1
