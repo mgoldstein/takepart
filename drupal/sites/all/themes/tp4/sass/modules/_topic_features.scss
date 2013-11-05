@@ -30,5 +30,88 @@
         }
       }
     }
+  } // .field-name-field-promo-content
+
+  // hate to style with an ID, but there's no other way
+  // of making sure we're addressing only this block
+  #block-views-topic-listing-block h2 {
+    text-transform: lowercase;
   }
+
+  .view-topic-listing {
+    .views-row {
+      @include clearfix();
+      margin: 1em 0;
+      min-height: 80px;
+
+      // position thumbnails and items
+      .views-field-field-article-main-image,
+      .views-field-field-gallery-main-image {
+        float: left;
+      }
+      .views-field-type,
+      .views-field-title {
+        margin-left: 114px;
+      }
+
+      .views-field-type {
+        font-family: $adelle-light;
+        font-size: .857142857em;
+        text-transform: uppercase;
+      }
+
+      .views-field-title {
+        font-size: 1.142857143em;
+        line-height: 1.25;
+        
+        &:after {
+          content: '';
+          display: block;
+          height: 0;
+          width: 76px;
+          margin: .5em 0;
+          border-bottom: 1px dashed black;
+        }
+      }
+    } // .views-row
+
+    .pager {
+      .pager-item,
+      .pager-current {
+        font-family: $adelle-light;
+        font-size: .857142857em;
+        padding: 0 .1em;
+      }
+      .pager-current {
+        font-family: $adelle-regular;
+        font-weight: normal;
+      }
+      .pager-first,
+      .pager-previous,
+      .pager-next,
+      .pager-last {
+        &:before,
+        &:after {
+          display: inline;
+          color: $mint;
+          font-family: "SSGizmo";
+          font-size: 18px;
+          line-height: 1;
+          vertical-align: top;
+        }
+      }
+      .pager-first:before {
+          content: '\25C5 ';
+      }
+      .pager-previous:before {
+        content: "\23EA ";
+      }
+      .pager-next:after {
+          content: '\25BB';
+      }
+      .pager-last:after {
+        content: '\23E9';
+      }
+    }
+  } // .view-topic-listing
 }
