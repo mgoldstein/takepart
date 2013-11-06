@@ -43,7 +43,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Describes the intent of the message.  This is featured in the body of the action page and appears on the \'Read more\' screen in the banner widget.',
+      'description' => 'Describes the intent of the message.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -88,7 +88,7 @@ function takepart_mos_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '12',
+        'weight' => '14',
       ),
     ),
   );
@@ -130,7 +130,7 @@ function takepart_mos_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'Optional text will override the \'SEND YOUR SUPPORT\' header text atop the action form.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -173,7 +173,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '13',
       ),
     ),
   );
@@ -260,7 +260,7 @@ function takepart_mos_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '14',
+        'weight' => '32',
       ),
     ),
   );
@@ -291,10 +291,12 @@ function takepart_mos_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'article' => 0,
           'audio' => 0,
           'blog_front' => 0,
           'feed' => 0,
           'feed_item' => 0,
+          'mos_action' => 0,
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -358,20 +360,21 @@ function takepart_mos_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_organizer',
-      'label' => 'Action Organizer',
-      'required' => FALSE,
+      'label' => 'Organized By',
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
+        'active' => 1,
         'module' => 'node_reference',
         'settings' => array(
           'autocomplete_match' => 'contains',
           'autocomplete_path' => 'node_reference/autocomplete',
-          'size' => 60,
+          'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );
@@ -402,6 +405,7 @@ function takepart_mos_field_default_fields() {
       'settings' => array(
         'referenceable_types' => array(
           'action' => 0,
+          'article' => 0,
           'audio' => 0,
           'blog_front' => 0,
           'feed' => 0,
@@ -470,7 +474,7 @@ function takepart_mos_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_sponsor',
-      'label' => 'Action Sponsor',
+      'label' => 'Empowered By',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -485,6 +489,211 @@ function takepart_mos_field_default_fields() {
         ),
         'type' => 'node_reference_autocomplete',
         'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-mos_action-field_action_sponsor_paid'.
+  $fields['node-mos_action-field_action_sponsor_paid'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_action_sponsor_paid',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'node_reference',
+      'settings' => array(
+        'referenceable_types' => array(
+          'action' => 0,
+          'article' => 0,
+          'audio' => 0,
+          'blog_front' => 0,
+          'feed' => 0,
+          'feed_item' => 0,
+          'mos_action' => 0,
+          'openpublish_article' => 0,
+          'openpublish_blog_post' => 0,
+          'openpublish_photo' => 0,
+          'openpublish_photo_gallery' => 0,
+          'openpublish_video' => 0,
+          'petition_action' => 0,
+          'pledge_action' => 0,
+          'profile' => 0,
+          'section_front' => 0,
+          'section_front_wide' => 0,
+          'takepart_campaign' => 0,
+          'takepart_group' => 'takepart_group',
+          'takepart_list' => 0,
+          'takepart_page' => 0,
+          'takepart_quick_study' => 0,
+          'takepart_slide' => 0,
+          'topic_front' => 0,
+          'venue' => 0,
+          'webform' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'mos_action',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 33,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_action_sponsor_paid',
+      'label' => 'Presented By',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '8',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-mos_action-field_action_type'.
+  $fields['node-mos_action-field_action_type'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_action_type',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'action_type',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '1',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'mos_action',
+      'default_value' => array(
+        0 => array(
+          'tid' => '114499',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 32,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_action_type',
+      'label' => 'Action Type',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'content_taxonomy_opt_groups' => 0,
+        ),
+        'type' => 'options_select',
+        'weight' => '29',
       ),
     ),
   );
@@ -576,7 +785,7 @@ function takepart_mos_field_default_fields() {
           'progress_indicator' => 'throbber',
         ),
         'type' => 'image_image',
-        'weight' => '15',
+        'weight' => '30',
       ),
     ),
   );
@@ -672,7 +881,94 @@ function takepart_mos_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '16',
+        'weight' => '31',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-mos_action-field_admin_tag'.
+  $fields['node-mos_action-field_admin_tag'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_admin_tag',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'admin_tag',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'mos_action',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 34,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_admin_tag',
+      'label' => 'Admin Tag',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'content_taxonomy_opt_groups' => 0,
+        ),
+        'type' => 'options_select',
+        'weight' => '34',
       ),
     ),
   );
@@ -708,13 +1004,9 @@ function takepart_mos_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'mos_action',
-      'default_value' => array(
-        0 => array(
-          'value' => 'MESSAGE IS CLOSED',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Optional text overrides the \'Closed Action\' header text in the left rail of action pages or main banner widget screen, if provided.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -757,7 +1049,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '15',
       ),
     ),
   );
@@ -793,14 +1085,13 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => array(
         0 => array(
-          'value' => '<p class="p1">Thanks so much for deciding to take action.</p>
-<p class="p1">We\'ve closed this for one of many good reasons.&nbsp;There are other great actions you can add your voice to here at TakePart, so please browse around!</p>
+          'value' => '<p>Thanks so much for deciding to take action. We\'ve closed this action for one of many good reasons. There are other great actions you can add your voice to here at TakePart, so please browse around!</p>
 ',
           'format' => 'full_html',
         ),
       ),
       'deleted' => '0',
-      'description' => 'Optional text overrides the \'Closed Message\' message text in left rail of actions pages or main banner widget screen that signed in users have already completed.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -843,7 +1134,7 @@ function takepart_mos_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '14',
+        'weight' => '16',
       ),
     ),
   );
@@ -881,11 +1172,11 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => array(
         0 => array(
-          'value' => 'WE DID IT!',
+          'value' => 'We Did It!',
         ),
       ),
       'deleted' => '0',
-      'description' => 'Header text used for goal completion messaging (100% of target reached) in the body of the action page.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -928,7 +1219,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '15',
+        'weight' => '17',
       ),
     ),
   );
@@ -964,14 +1255,14 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => array(
         0 => array(
-          'value' => '<p class="p1">Thanks to all of you, we have reached our goal!</p>
-<p class="p1">However, &nbsp;we want as many of you to take action as possible, so please continue to spread the word!</p>
+          'value' => '<div>Thanks to all of you, we have reached our goal!&nbsp;</div>
+<div>However, your continued support can still make an impact, so please continue to spread the word!</div>
 ',
           'format' => 'full_html',
         ),
       ),
       'deleted' => '0',
-      'description' => 'Text used for goal completion messaging (100% of target reached) in the body of the action page.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1014,7 +1305,7 @@ function takepart_mos_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '16',
+        'weight' => '18',
       ),
     ),
   );
@@ -1199,7 +1490,7 @@ function takepart_mos_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '12',
+        'weight' => '14',
       ),
     ),
   );
@@ -1404,7 +1695,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Additional information about the MOS campaign that is displayed in the expandable region on action pages and in the \'Read more\' screen on the banner widget.  It supports WYSIWYG formatting and video embedding.',
+      'description' => 'Additional information about the MOS campaign. It is support WYSIWYG formatting and video embedding.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1585,7 +1876,7 @@ function takepart_mos_field_default_fields() {
         ),
       ),
       'deleted' => '0',
-      'description' => 'Text label displayed atop the custom user message field.',
+      'description' => 'Label displayed as an in-field label within the user message field.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1628,7 +1919,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '13',
+        'weight' => '12',
       ),
     ),
   );
@@ -1861,7 +2152,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Displayed atop banner widget main screen.  Limit text to 250 characters.',
+      'description' => 'Limit text to 250 characters.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1942,11 +2233,11 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => array(
         0 => array(
-          'value' => 'YOU\'VE TAKEN ACTION',
+          'value' => 'You\'ve Taken Action',
         ),
       ),
       'deleted' => '0',
-      'description' => 'Optional text overrides the \'Already Signed\' header text in the left rail of action pages or main banner widget screen, if provided.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1989,7 +2280,7 @@ function takepart_mos_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '11',
+        'weight' => '13',
       ),
     ),
   );
@@ -2025,14 +2316,14 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => array(
         0 => array(
-          'value' => '<p class="p1">You have already signed this.</p>
-<p class="p1">The best thing to do now is get the word out: share it with your friends, shout it from the rooftops, talk about it in conversation. You can make an impact.</p>
+          'value' => '<div>You have already sent a message.</div>
+<div>The best thing to do now is get the word out: share this with your friends, shout it from the rooftops, talk about it in conversation. You can make an impact.</div>
 ',
           'format' => 'full_html',
         ),
       ),
       'deleted' => '0',
-      'description' => 'Optional text overrides the \'Already Signed\' message text in left rail of actions pages or main banner widget screen that signed in users have already completed.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2075,7 +2366,7 @@ function takepart_mos_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '12',
+        'weight' => '14',
       ),
     ),
   );
@@ -2148,7 +2439,7 @@ function takepart_mos_field_default_fields() {
         'module' => 'takepart_addthis',
         'settings' => array(),
         'type' => 'addthis_config',
-        'weight' => '32',
+        'weight' => '17',
       ),
     ),
   );
@@ -2183,7 +2474,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => array(
         0 => array(
-          'value' => 1,
+          'value' => 0,
         ),
       ),
       'deleted' => '0',
@@ -2217,7 +2508,7 @@ function takepart_mos_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_tab_action',
-      'label' => 'Enable for TAB',
+      'label' => 'Show in TAB Modal',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -2315,6 +2606,87 @@ function takepart_mos_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-mos_action-field_tab_external_title'.
+  $fields['node-mos_action-field_tab_external_title'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_tab_external_title',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'mos_action',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 25,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_tab_external_title',
+      'label' => 'External Title',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '8',
+      ),
+    ),
+  );
+
   // Exported field: 'node-mos_action-field_tab_internal_title'.
   $fields['node-mos_action-field_tab_internal_title'] = array(
     'field_config' => array(
@@ -2378,7 +2750,7 @@ function takepart_mos_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_tab_internal_title',
-      'label' => 'Alternate Title',
+      'label' => 'Internal Title',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2429,7 +2801,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Optional text will override \'Thank You\' header text on banner widget and action page thank you screen if provided.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2508,7 +2880,7 @@ function takepart_mos_field_default_fields() {
       'bundle' => 'mos_action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Optional text appears on Impact Dashboard\'s action updates or banner widget \'Thank You\' screen when a user has competed an action.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2716,668 +3088,6 @@ function takepart_mos_field_default_fields() {
     ),
   );
 
-  // Exported field: 'signature-mos_signature-field_custom_message'.
-  $fields['signature-mos_signature-field_custom_message'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_custom_message',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'mos_signature',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 12,
-        ),
-      ),
-      'entity_type' => 'signature',
-      'field_name' => 'field_custom_message',
-      'label' => 'Custom Message',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '5',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '6',
-      ),
-    ),
-  );
-
-  // Exported field: 'signature-mos_signature-field_partner_code'.
-  $fields['signature-mos_signature-field_partner_code'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_partner_code',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'partnercode',
-      'settings' => array(
-        'allowed_values' => array(),
-        'url_parameter' => 'cmpid',
-      ),
-      'translatable' => '0',
-      'type' => 'partner_code',
-    ),
-    'field_instance' => array(
-      'bundle' => 'mos_signature',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'partnercode',
-          'settings' => array(),
-          'type' => 'partner_code_default',
-          'weight' => 11,
-        ),
-      ),
-      'entity_type' => 'signature',
-      'field_name' => 'field_partner_code',
-      'label' => 'Partner Code',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'partnercode',
-        'settings' => array(),
-        'type' => 'hidden_input',
-        'weight' => '8',
-      ),
-    ),
-  );
-
-  // Exported field: 'signature-mos_signature-field_partner_opt_in'.
-  $fields['signature-mos_signature-field_partner_opt_in'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_partner_opt_in',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'partnercode',
-      'settings' => array(
-        'allowed_values' => array(
-          'a21222324252627282920z' => 'Test',
-          '6e2d7fd8998e6940beeaa33f72253c97' => 'Social Reality',
-          'tp-ptnr-tab-6ba99c27457f3e84f6389a93a445349b' => 'The Daily Beast',
-        ),
-        'url_parameter' => 'cmpid',
-      ),
-      'translatable' => '0',
-      'type' => 'partner_code',
-    ),
-    'field_instance' => array(
-      'bundle' => 'mos_signature',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'partnercode',
-          'settings' => array(),
-          'type' => 'partner_code_default',
-          'weight' => 10,
-        ),
-      ),
-      'entity_type' => 'signature',
-      'field_name' => 'field_partner_opt_in',
-      'label' => 'I would like to receive email updates from @partner.',
-      'required' => 0,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'partnercode',
-        'settings' => array(),
-        'type' => 'opt_in_checkbox',
-        'weight' => '7',
-      ),
-    ),
-  );
-
-  // Exported field: 'signature-mos_signature-field_sig_country'.
-  $fields['signature-mos_signature-field_sig_country'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_sig_country',
-      'foreign keys' => array(),
-      'indexes' => array(
-        'value' => array(
-          0 => 'value',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'list',
-      'settings' => array(
-        'allowed_values' => array(
-          'Afghanistan' => 'Afghanistan',
-          'Albania' => 'Albania',
-          'Algeria' => 'Algeria',
-          'American Samoa' => 'American Samoa',
-          'Andorra' => 'Andorra',
-          'Angola' => 'Angola',
-          'Anguilla' => 'Anguilla',
-          'Antarctica' => 'Antarctica',
-          'Antigua and Barbuda' => 'Antigua and Barbuda',
-          'Argentina' => 'Argentina',
-          'Armenia' => 'Armenia',
-          'Aruba' => 'Aruba',
-          'Australia' => 'Australia',
-          'Austria' => 'Austria',
-          'Azerbaijan' => 'Azerbaijan',
-          'Bahamas' => 'Bahamas',
-          'Bahrain' => 'Bahrain',
-          'Bangladesh' => 'Bangladesh',
-          'Barbados' => 'Barbados',
-          'Belarus' => 'Belarus',
-          'Belgium' => 'Belgium',
-          'Belize' => 'Belize',
-          'Benin' => 'Benin',
-          'Bermuda' => 'Bermuda',
-          'Bhutan' => 'Bhutan',
-          'Bolivia' => 'Bolivia',
-          'Bosnia and Herzegovina' => 'Bosnia and Herzegovina',
-          'Botswana' => 'Botswana',
-          'Bouvet Island' => 'Bouvet Island',
-          'Brazil' => 'Brazil',
-          'British Indian Ocean Territory' => 'British Indian Ocean Territory',
-          'Brunei Darussalam' => 'Brunei Darussalam',
-          'Bulgaria' => 'Bulgaria',
-          'Burkina Faso' => 'Burkina Faso',
-          'Burundi' => 'Burundi',
-          'Cambodia' => 'Cambodia',
-          'Cameroon' => 'Cameroon',
-          'Canada' => 'Canada',
-          'Cape Verde' => 'Cape Verde',
-          'Cayman Islands' => 'Cayman Islands',
-          'Central African Republic' => 'Central African Republic',
-          'Chad' => 'Chad',
-          'Chile' => 'Chile',
-          'China' => 'China',
-          'Christmas Island' => 'Christmas Island',
-          'Cocos (Keeling) Islands' => 'Cocos (Keeling) Islands',
-          'Colombia' => 'Colombia',
-          'Comoros' => 'Comoros',
-          'Congo' => 'Congo',
-          'Congo, The Democratic Republic of The' => 'Congo, The Democratic Republic of The',
-          'Cook Islands' => 'Cook Islands',
-          'Costa Rica' => 'Costa Rica',
-          'Cote D\'ivoire' => 'Cote D\'ivoire',
-          'Croatia' => 'Croatia',
-          'Cuba' => 'Cuba',
-          'Cyprus' => 'Cyprus',
-          'Czech Republic' => 'Czech Republic',
-          'Denmark' => 'Denmark',
-          'Djibouti' => 'Djibouti',
-          'Dominica' => 'Dominica',
-          'Dominican Republic' => 'Dominican Republic',
-          'Ecuador' => 'Ecuador',
-          'Egypt' => 'Egypt',
-          'El Salvador' => 'El Salvador',
-          'Equatorial Guinea' => 'Equatorial Guinea',
-          'Eritrea' => 'Eritrea',
-          'Estonia' => 'Estonia',
-          'Ethiopia' => 'Ethiopia',
-          'Falkland Islands (Malvinas)' => 'Falkland Islands (Malvinas)',
-          'Faroe Islands' => 'Faroe Islands',
-          'Fiji' => 'Fiji',
-          'Finland' => 'Finland',
-          'France' => 'France',
-          'French Guiana' => 'French Guiana',
-          'French Polynesia' => 'French Polynesia',
-          'French Southern Territories' => 'French Southern Territories',
-          'Gabon' => 'Gabon',
-          'Gambia' => 'Gambia',
-          'Georgia' => 'Georgia',
-          'Germany' => 'Germany',
-          'Ghana' => 'Ghana',
-          'Gibraltar' => 'Gibraltar',
-          'Greece' => 'Greece',
-          'Greenland' => 'Greenland',
-          'Grenada' => 'Grenada',
-          'Guadeloupe' => 'Guadeloupe',
-          'Guam' => 'Guam',
-          'Guatemala' => 'Guatemala',
-          'Guinea' => 'Guinea',
-          'Guinea-bissau' => 'Guinea-bissau',
-          'Guyana' => 'Guyana',
-          'Haiti' => 'Haiti',
-          'Heard Island and Mcdonald Islands' => 'Heard Island and Mcdonald Islands',
-          'Holy See (Vatican City State)' => 'Holy See (Vatican City State)',
-          'Honduras' => 'Honduras',
-          'Hong Kong' => 'Hong Kong',
-          'Hungary' => 'Hungary',
-          'Iceland' => 'Iceland',
-          'India' => 'India',
-          'Indonesia' => 'Indonesia',
-          'Iran, Islamic Republic of' => 'Iran, Islamic Republic of',
-          'Iraq' => 'Iraq',
-          'Ireland' => 'Ireland',
-          'Israel' => 'Israel',
-          'Italy' => 'Italy',
-          'Jamaica' => 'Jamaica',
-          'Japan' => 'Japan',
-          'Jordan' => 'Jordan',
-          'Kazakhstan' => 'Kazakhstan',
-          'Kenya' => 'Kenya',
-          'Kiribati' => 'Kiribati',
-          'Korea, Democratic People\'s Republic of' => 'Korea, Democratic People\'s Republic of',
-          'Korea, Republic of' => 'Korea, Republic of',
-          'Kuwait' => 'Kuwait',
-          'Kyrgyzstan' => 'Kyrgyzstan',
-          'Lao People\'s Democratic Republic' => 'Lao People\'s Democratic Republic',
-          'Latvia' => 'Latvia',
-          'Lebanon' => 'Lebanon',
-          'Lesotho' => 'Lesotho',
-          'Liberia' => 'Liberia',
-          'Libyan Arab Jamahiriya' => 'Libyan Arab Jamahiriya',
-          'Liechtenstein' => 'Liechtenstein',
-          'Lithuania' => 'Lithuania',
-          'Luxembourg' => 'Luxembourg',
-          'Macao' => 'Macao',
-          'Macedonia, The Former Yugoslav Republic of' => 'Macedonia, The Former Yugoslav Republic of',
-          'Madagascar' => 'Madagascar',
-          'Malawi' => 'Malawi',
-          'Malaysia' => 'Malaysia',
-          'Maldives' => 'Maldives',
-          'Mali' => 'Mali',
-          'Malta' => 'Malta',
-          'Marshall Islands' => 'Marshall Islands',
-          'Martinique' => 'Martinique',
-          'Mauritania' => 'Mauritania',
-          'Mauritius' => 'Mauritius',
-          'Mayotte' => 'Mayotte',
-          'Mexico' => 'Mexico',
-          'Micronesia, Federated States of' => 'Micronesia, Federated States of',
-          'Moldova, Republic of' => 'Moldova, Republic of',
-          'Monaco' => 'Monaco',
-          'Mongolia' => 'Mongolia',
-          'Montserrat' => 'Montserrat',
-          'Morocco' => 'Morocco',
-          'Mozambique' => 'Mozambique',
-          'Myanmar' => 'Myanmar',
-          'Namibia' => 'Namibia',
-          'Nauru' => 'Nauru',
-          'Nepal' => 'Nepal',
-          'Netherlands' => 'Netherlands',
-          'Netherlands Antilles' => 'Netherlands Antilles',
-          'New Caledonia' => 'New Caledonia',
-          'New Zealand' => 'New Zealand',
-          'Nicaragua' => 'Nicaragua',
-          'Niger' => 'Niger',
-          'Nigeria' => 'Nigeria',
-          'Niue' => 'Niue',
-          'Norfolk Island' => 'Norfolk Island',
-          'Northern Mariana Islands' => 'Northern Mariana Islands',
-          'Norway' => 'Norway',
-          'Oman' => 'Oman',
-          'Pakistan' => 'Pakistan',
-          'Palau' => 'Palau',
-          'Palestinian Territory, Occupied' => 'Palestinian Territory, Occupied',
-          'Panama' => 'Panama',
-          'Papua New Guinea' => 'Papua New Guinea',
-          'Paraguay' => 'Paraguay',
-          'Peru' => 'Peru',
-          'Philippines' => 'Philippines',
-          'Pitcairn' => 'Pitcairn',
-          'Poland' => 'Poland',
-          'Portugal' => 'Portugal',
-          'Puerto Rico' => 'Puerto Rico',
-          'Qatar' => 'Qatar',
-          'Reunion' => 'Reunion',
-          'Romania' => 'Romania',
-          'Russian Federation' => 'Russian Federation',
-          'Rwanda' => 'Rwanda',
-          'Saint Helena' => 'Saint Helena',
-          'Saint Kitts and Nevis' => 'Saint Kitts and Nevis',
-          'Saint Lucia' => 'Saint Lucia',
-          'Saint Pierre and Miquelon' => 'Saint Pierre and Miquelon',
-          'Saint Vincent and The Grenadines' => 'Saint Vincent and The Grenadines',
-          'Samoa' => 'Samoa',
-          'San Marino' => 'San Marino',
-          'Sao Tome and Principe' => 'Sao Tome and Principe',
-          'Saudi Arabia' => 'Saudi Arabia',
-          'Senegal' => 'Senegal',
-          'Serbia and Montenegro' => 'Serbia and Montenegro',
-          'Seychelles' => 'Seychelles',
-          'Sierra Leone' => 'Sierra Leone',
-          'Singapore' => 'Singapore',
-          'Slovakia' => 'Slovakia',
-          'Slovenia' => 'Slovenia',
-          'Solomon Islands' => 'Solomon Islands',
-          'Somalia' => 'Somalia',
-          'South Africa' => 'South Africa',
-          'South Georgia and The South Sandwich Islands' => 'South Georgia and The South Sandwich Islands',
-          'Spain' => 'Spain',
-          'Sri Lanka' => 'Sri Lanka',
-          'Sudan' => 'Sudan',
-          'Suriname' => 'Suriname',
-          'Svalbard and Jan Mayen' => 'Svalbard and Jan Mayen',
-          'Swaziland' => 'Swaziland',
-          'Sweden' => 'Sweden',
-          'Switzerland' => 'Switzerland',
-          'Syrian Arab Republic' => 'Syrian Arab Republic',
-          'Taiwan' => 'Taiwan',
-          'Tajikistan' => 'Tajikistan',
-          'Tanzania, United Republic of' => 'Tanzania, United Republic of',
-          'Thailand' => 'Thailand',
-          'Timor-leste' => 'Timor-leste',
-          'Togo' => 'Togo',
-          'Tokelau' => 'Tokelau',
-          'Tonga' => 'Tonga',
-          'Trinidad and Tobago' => 'Trinidad and Tobago',
-          'Tunisia' => 'Tunisia',
-          'Turkey' => 'Turkey',
-          'Turkmenistan' => 'Turkmenistan',
-          'Turks and Caicos Islands' => 'Turks and Caicos Islands',
-          'Tuvalu' => 'Tuvalu',
-          'Uganda' => 'Uganda',
-          'Ukraine' => 'Ukraine',
-          'United Arab Emirates' => 'United Arab Emirates',
-          'United Kingdom' => 'United Kingdom',
-          'United States' => 'United States',
-          'United States Minor Outlying Islands' => 'United States Minor Outlying Islands',
-          'Uruguay' => 'Uruguay',
-          'Uzbekistan' => 'Uzbekistan',
-          'Vanuatu' => 'Vanuatu',
-          'Venezuela' => 'Venezuela',
-          'Viet Nam' => 'Viet Nam',
-          'Virgin Islands, British' => 'Virgin Islands, British',
-          'Virgin Islands, U.S.' => 'Virgin Islands, U.S.',
-          'Wallis and Futuna' => 'Wallis and Futuna',
-          'Western Sahara' => 'Western Sahara',
-          'Yemen' => 'Yemen',
-          'Zambia' => 'Zambia',
-          'Zimbabwe' => 'Zimbabwe',
-        ),
-        'allowed_values_function' => '',
-      ),
-      'translatable' => '0',
-      'type' => 'list_text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'mos_signature',
-      'default_value' => array(
-        0 => array(
-          'value' => 'United States',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'list',
-          'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 3,
-        ),
-      ),
-      'entity_type' => 'signature',
-      'field_name' => 'field_sig_country',
-      'label' => 'Country',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(
-          'content_taxonomy_opt_groups' => FALSE,
-        ),
-        'type' => 'options_select',
-        'weight' => '4',
-      ),
-    ),
-  );
-
-  // Exported field: 'signature-mos_signature-field_sig_first_name'.
-  $fields['signature-mos_signature-field_sig_first_name'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_sig_first_name',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'mos_signature',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'signature',
-      'field_name' => 'field_sig_first_name',
-      'label' => 'First Name',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '2',
-      ),
-    ),
-  );
-
-  // Exported field: 'signature-mos_signature-field_sig_last_name'.
-  $fields['signature-mos_signature-field_sig_last_name'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_sig_last_name',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'mos_signature',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 1,
-        ),
-      ),
-      'entity_type' => 'signature',
-      'field_name' => 'field_sig_last_name',
-      'label' => 'Last Name',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'signature-mos_signature-field_sig_zip_code'.
-  $fields['signature-mos_signature-field_sig_zip_code'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_sig_zip_code',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '20',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'mos_signature',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 9,
-        ),
-      ),
-      'entity_type' => 'signature',
-      'field_name' => 'field_sig_zip_code',
-      'label' => 'ZIP Code',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '5',
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('About The Message');
@@ -3385,12 +3095,11 @@ function takepart_mos_field_default_fields() {
   t('Action Header Image');
   t('Action Header Image Link');
   t('Action Image');
-  t('Action Organizer');
-  t('Action Sponsor');
-  t('Additional information about the MOS campaign that is displayed in the expandable region on action pages and in the \'Read more\' screen on the banner widget.  It supports WYSIWYG formatting and video embedding.');
+  t('Action Type');
+  t('Additional information about the MOS campaign. It is support WYSIWYG formatting and video embedding.');
+  t('Admin Tag');
   t('Already Signed Heading');
   t('Already Signed Message');
-  t('Alternate Title');
   t('Browser Title');
   t('Button Text');
   t('Campaign Page of');
@@ -3398,41 +3107,30 @@ function takepart_mos_field_default_fields() {
   t('Closed Message');
   t('Complete Heading');
   t('Complete Message');
-  t('Country');
-  t('Custom Message');
   t('Customize Label');
-  t('Describes the intent of the message.  This is featured in the body of the action page and appears on the \'Read more\' screen in the banner widget.');
+  t('Describes the intent of the message.');
   t('Display Tag');
-  t('Displayed atop banner widget main screen.  Limit text to 250 characters.');
   t('Displays within the main yellow sign-up form submit button.');
-  t('Enable for TAB');
+  t('Empowered By');
+  t('External Title');
   t('Featured');
-  t('First Name');
   t('Free Tags');
-  t('Header text used for goal completion messaging (100% of target reached) in the body of the action page.');
-  t('I would like to receive email updates from @partner.');
-  t('Last Name');
+  t('Internal Title');
+  t('Label displayed as an in-field label within the user message field.');
+  t('Limit text to 250 characters.');
   t('Message Text');
-  t('Optional text appears on Impact Dashboard\'s action updates or banner widget \'Thank You\' screen when a user has competed an action.');
-  t('Optional text overrides the \'Already Signed\' header text in the left rail of action pages or main banner widget screen, if provided.');
-  t('Optional text overrides the \'Already Signed\' message text in left rail of actions pages or main banner widget screen that signed in users have already completed.');
-  t('Optional text overrides the \'Closed Action\' header text in the left rail of action pages or main banner widget screen, if provided.');
-  t('Optional text overrides the \'Closed Message\' message text in left rail of actions pages or main banner widget screen that signed in users have already completed.');
-  t('Optional text will override \'Thank You\' header text on banner widget and action page thank you screen if provided.');
-  t('Optional text will override the \'SEND YOUR SUPPORT\' header text atop the action form.');
-  t('Partner Code');
+  t('Organized By');
+  t('Presented By');
   t('Recipient');
   t('Series');
   t('Short Introduction');
+  t('Show in TAB Modal');
   t('Social Sharing');
-  t('Text label displayed atop the custom user message field.');
-  t('Text used for goal completion messaging (100% of target reached) in the body of the action page.');
   t('Thank You');
   t('Thank You Heading');
   t('Thank You Message');
   t('This marks an Action as eligible to be included as a TAB modal recommendation.');
   t('Topic');
-  t('ZIP Code');
 
   return $fields;
 }

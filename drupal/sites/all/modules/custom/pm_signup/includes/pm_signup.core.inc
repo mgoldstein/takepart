@@ -51,76 +51,7 @@ abstract class SignupFieldSet {
   /* Field definitions.
    ****************************************************************************/
   public static function fields() {
-    return array(
-      'email' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.area-code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.exchange' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.number' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'name.full' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'name.first' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'name.last' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.address' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.city' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.state' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.state.code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.country' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.postal-code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'address.postal-code.type' => array(
-        'required' => FALSE,
-        'default' => FALSE,
-      ),
-      'address.postal-code.plus-four' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'partner.code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-    );
+    return array();
   }
 
   public static function requiredFields() {
@@ -547,30 +478,39 @@ abstract class SignupEndpoint extends SignupFieldSet {
     return FALSE;
   }
 
+  protected function update() {
+    return db_update('pm_signup_endpoint')
+      ->fields(array(
+        'type' => $this->type,
+        'name' => $this->name,
+        'label' => $this->label,
+        'configuration' => serialize($this->configuration),
+        'plugins' => serialize($this->plugins),
+      ))
+      ->condition('id', $this->id)
+      ->execute();
+  }
+
+  protected function insert() {
+    $result = db_insert('pm_signup_endpoint')
+      ->fields(array(
+        'type' => $this->type,
+        'name' => $this->name,
+        'label' => $this->label,
+        'configuration' => serialize($this->configuration),
+        'plugins' => serialize($this->plugins),
+      ))
+      ->execute();
+    $this->id = Database::getConnection()->lastInsertId();
+    return $result;
+  }
+
   public function save() {
     if (isset($this->id)) {
-      return db_update('pm_signup_endpoint')
-        ->fields(array(
-          'type' => $this->type,
-          'name' => $this->name,
-          'label' => $this->label,
-          'configuration' => serialize($this->configuration),
-          'plugins' => serialize($this->plugins),
-        ))
-        ->condition('id', $this->id)
-        ->execute();
+      return $this->update();
     }
     else {
-      db_insert('pm_signup_endpoint')
-        ->fields(array(
-          'type' => $this->type,
-          'name' => $this->name,
-          'label' => $this->label,
-          'configuration' => serialize($this->configuration),
-          'plugins' => serialize($this->plugins),
-        ))
-        ->execute();
-      $this->id = Database::getConnection()->lastInsertId();
+      return $this->insert();
     }
   }
 
@@ -601,13 +541,16 @@ abstract class SignupEndpoint extends SignupFieldSet {
     return $this->name;
   }
 
+  public static function machineName($label) {
+    $lowered = strtolower($label);
+    $underlined = preg_replace('/[^a-z0-9_]+/', '_', $lowered);
+    $deduped = preg_replace('/__+/', '_', $underlined);
+    return trim($deduped, '_');
+  }
+
   public function labelForExport($label, $name = NULL) {
-    // Build a machine name if one wasn't provided.
     if (is_null($name) && !is_null($label)) {
-      $lowered = strtolower($label);
-      $underlined = preg_replace('/[^a-z0-9_]+/', '_', $lowered);
-      $deduped = preg_replace('/__+/', '_', $underlined);
-      $name = trim($deduped, '_');
+      $name = self::machineName($label);
     }
     $this->label = $label;
     $this->name = $name;
@@ -668,8 +611,6 @@ abstract class SignupEndpoint extends SignupFieldSet {
   /* Signup processing.
    ****************************************************************************/
   protected function validate($signup) {
-
-    // Make sure the signup provides all required fields
     $required = array_keys(static::requiredFields());
     $provided = $signup->provides();
     $missing = array_diff($required, $provided);
@@ -683,7 +624,6 @@ abstract class SignupEndpoint extends SignupFieldSet {
   }
 
   protected function limit($signup) {
-
     $key = $signup->key_data();
     if (!empty($key)) {
       $record = db_select('pm_signup_ledger', 'sl')
@@ -711,16 +651,24 @@ abstract class SignupEndpoint extends SignupFieldSet {
     }
   }
 
-  public function submit($signup) {
+  protected function log($id, $exception) {
+    if (variable_get('pm_signup_log', FALSE)) {
+      db_insert('pm_signup_log')
+        ->fields(array(
+          'handler' => $id,
+          'message' => $exception->getMessage(),
+          'exception' => print_r($she, true),
+          'backtrace' => print_r(debug_backtrace(), true),
+          'created' => REQUEST_TIME,
+        ))
+        ->execute();
+    }
+  }
 
-    $this->validate($signup);
-
-    $this->limit($signup);
-
+  protected function send($signup) {
     $plugins = ctools_get_plugins('pm_signup', 'handler');
     $errors = array();
     foreach ($plugins as $id => $plugin) {
-
       if ($this->getPluginEnabled($id)) {
 
         $class = ctools_plugin_get_class($plugin, 'handler');
@@ -737,27 +685,21 @@ abstract class SignupEndpoint extends SignupFieldSet {
             $handler->submit($signup);
           }
           catch (SignupHandlerException $she) {
-            if (variable_get('pm_signup_log', FALSE)) {
-              db_insert('pm_signup_log')
-                ->fields(array(
-                  'handler' => $id,
-                  'message' => $she->getMessage(),
-                  'exception' => print_r($she, true),
-                  'backtrace' => print_r(debug_backtrace(), true),
-                  'created' => REQUEST_TIME,
-                ))
-                ->execute();
-            }
+            $this->log($id, $she);
             $errors[] = $she;
           }
         }
       }
     }
-
     if (count($errors) > 0) {
       throw new SignupSubmissionException($errors);
     }
+  }
 
+  public function submit($signup) {
+    $this->validate($signup);
+    $this->limit($signup);
+    $this->send($signup);
     $this->record($signup);
   }
 

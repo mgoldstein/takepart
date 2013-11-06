@@ -224,7 +224,7 @@ s.m_i("Media");
 
 s.visitorNamespace="takepart";
 s.trackingServer="metrics.takepart.com";
-//s.trackingServerSecure="";
+s.trackingServerSecure="smetrics.takepart.com";
 s.dc=122;
 
 /************************** PLUGINS SECTION *************************/
@@ -538,8 +538,6 @@ s.clickPast=new Function("scp","ct_ev","cp_ev","cpc",""
 /* WARNING: Changing any of the below variables will cause drastic
 changes to how your visitor data is collected.  Changes should only be
 made when instructed to do so by your account manager.*/
-// s.visitorNamespace="takepart"
-// s.trackingServer="takepart.122.2o7.net"
 
 /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
 var s_code='',s_objectID;
