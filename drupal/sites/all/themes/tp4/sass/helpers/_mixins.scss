@@ -79,3 +79,22 @@
     clear: both;
   }
 }
+
+@mixin icon-photo-gallery {
+  &:after {
+    content: " \1F4F7";
+    font-family: "SSGizmo";
+    font-size: 1.5em;
+    line-height: 0.666666667;
+    vertical-align: bottom;
+  }
+}
+@mixin icon-video {
+  &:after {
+    content: " \1F4F9";
+    font-family: "SSGizmo";
+    font-size: 1.5em;
+    line-height: 0.666666667;
+    vertical-align: bottom;
+  }
+}
