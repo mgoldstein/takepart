@@ -285,14 +285,7 @@ body.front{
     margin-bottom: 20px;
     .views-field-field-promo-headline {
       a {
-      	&:after {
-      	  content: " \1F4F7";
-      	  font-family: "SSGizmo";
-          font-size: 24px;
-          line-height: 18px;
-          vertical-align: bottom;
-          text-decoration: none !important;
-      	}
+        @include icon-photo-gallery();
       }
     }
   }

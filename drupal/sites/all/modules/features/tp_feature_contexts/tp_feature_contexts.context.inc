@@ -114,6 +114,12 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'content',
           'weight' => '10',
         ),
+	'menu_block-2' => array(
+	  'module' => 'menu_block',
+	  'delta' => '2',
+	  'region' => 'sidebar',
+	  'weight' => '-10',
+	),
       ),
     ),
   );
@@ -179,13 +185,13 @@ function tp_feature_contexts_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar',
-          'weight' => '-10',
+	  'weight' => '-9',
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
-          'weight' => '-9',
+	  'weight' => '9',
         ),
       ),
     ),

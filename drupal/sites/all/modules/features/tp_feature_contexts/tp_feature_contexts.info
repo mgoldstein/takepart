@@ -10,6 +10,7 @@ dependencies[] = context
 dependencies[] = context_condition_theme
 dependencies[] = ctools
 dependencies[] = ctr
+dependencies[] = menu_block
 dependencies[] = newsletter_campaign
 dependencies[] = panels_mini
 dependencies[] = takepart_custom
