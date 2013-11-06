@@ -79,15 +79,15 @@ function tp_megamenu_megamenu(){
     else{
       // url is not a node or taxonomy
     }
-    // dpm($link, 'link');
     $output .= '<div class="categories">';
-    if(isset($entities->field_promo_content['und'])){  
+    if(isset($entities->field_promo_content['und']) && isset($url)){  
  
       foreach($entities->field_promo_content['und'] as $key => $entity){
         $node = node_load($entity['target_id']);
+        $node_path = drupal_get_path_alias('node/'. $node->nid);
         $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
-        $thumb = file_create_url($thumb->uri);
-        $thumb = '<img src="'. $thumb. '">';
+        $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+
         if($url == 'taxonomy'){
           $term = $node->field_topic['und'][0]['tid'];
           $term = taxonomy_term_load($term);
@@ -99,11 +99,11 @@ function tp_megamenu_megamenu(){
           $term_path = drupal_get_path_alias('node/'. $node->nid);
         }
         $title = $node->field_promo_headline['und'][0]['value'];
-        $output .= '<div class="sub-category"><a href="'. $term_path. '">';
-        $output .= '<div class="thumb">'. $thumb. '</div>';
-        $output .= '<div class="term">'. $term_title. '</div>';
-        $output .= '<div class="text">'. $title. '</div>';
-        $output .= '</a></div>'; //end .sub-category
+        $output .= '<div class="sub-category">';
+        $output .= '<div class="thumb">'. l($thumb, $node_path, array('html' => true)). '</div>';
+        $output .= '<div class="term">'. l($term_title, $term_path). '</div>';
+        $output .= '<div class="text">'. l($title, $node_path). '</div>';
+        $output .= '</div>'; //end .sub-category
       }
       $output .= '</div>'; //end .categories
       $output .= l('See More '. $link['link']['link_title'], $path, array('attributes' => array('class' => array('more'))));

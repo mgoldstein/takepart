@@ -66,7 +66,10 @@
           }
         }
         @include breakpoint($breakpoint-desktop){
-          font-size: 20px;
+          font-size: 22px;
+          a.takepart-logo{
+            background-size: 100%;
+          }
         }
       }
       .mega-content {
@@ -94,6 +97,7 @@
             width: 15%;
           }
           ul.menu{
+            font-family: $adelle-light;
             li{
               float: left;
               clear: left;
@@ -123,8 +127,8 @@
           .sub-category{
             @include breakpoint($breakpoint-tablet){
               width: 75%;
-              &:nth-child(2n+1){
-                padding: 0 10px;
+              &:nth-child(1n+1), &:nth-child(2n+1), &:nth-child(3n+1){
+                padding: 0 15px;
               }
               padding: 0 15px;
               color: #000;
@@ -144,17 +148,14 @@
                 display: none;
               }
               .thumb{
-                max-width: 170px;
-                max-height: 115px;
-                margin-bottom: 18px;
-                height: auto;
+                margin-bottom: 7px;
                 overflow: hidden;
               }
               .term{
-                font-family: $adelle-regular;
+                font-family: $adelle-bold;
                 font-weight: 900;
                 text-transform: uppercase;
-                margin-bottom: 15px;
+                margin-bottom: 4px;
               }
               .text{
                 font-family: $ashbury-light;
@@ -168,9 +169,9 @@
           }
         }
         .more{
-          clear: both;
-          float: left;
-          margin-top: 10px;
+          position: absolute;
+          bottom: 35px;
+          left: 35px;
         }
       }
     }
@@ -185,6 +186,7 @@
         left: 0;
         top: 43px;
         clear: both;
+        height: 320px;
       }
       .title a{
         background-color: #000;
