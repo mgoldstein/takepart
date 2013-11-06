@@ -1822,16 +1822,24 @@ a:hover {
 /* line 62, ../sass/elements/_typography.scss */
 a.more {
   font-size: 14px;
+  position: relative;
+  padding-left: 15px;
+  font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 64, ../sass/elements/_typography.scss */
+/* line 67, ../sass/elements/_typography.scss */
 a.more:before {
   content: "\23E9 ";
   font-family: "SSGizmo";
   color: #019f84;
   vertical-align: bottom;
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 30px;
+  height: 20px;
 }
 
-/* line 76, ../sass/elements/_typography.scss */
+/* line 84, ../sass/elements/_typography.scss */
 .footer-title {
   font-family: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
@@ -3998,13 +4006,6 @@ body.front #sidebar .block-title {
   line-height: 1.5;
 }
 /* line 303, ../sass/page/_homepage.scss */
-#block-views-photo-galleries-promo-block .view-footer .more:before {
-  content: "\23E9 ";
-  font-family: "SSGizmo";
-  color: #019f84;
-  vertical-align: bottom;
-}
-/* line 311, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .block-title {
   margin-bottom: 8px;
 }
@@ -4012,21 +4013,21 @@ body.front #sidebar .block-title {
 /*
  *Promo "don't miss"
  */
-/* line 318, ../sass/page/_homepage.scss */
+/* line 310, ../sass/page/_homepage.scss */
 .promo {
   margin-top: 20px;
 }
 @media all and (min-width: 320px) {
-  /* line 318, ../sass/page/_homepage.scss */
+  /* line 310, ../sass/page/_homepage.scss */
   .promo {
     text-align: left;
   }
-  /* line 322, ../sass/page/_homepage.scss */
+  /* line 314, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: left;
     display: inline-block;
   }
-  /* line 325, ../sass/page/_homepage.scss */
+  /* line 317, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: inline-block;
     margin-right: 10px;
@@ -4034,17 +4035,17 @@ body.front #sidebar .block-title {
     line-height: 28px;
     font-weight: normal;
   }
-  /* line 332, ../sass/page/_homepage.scss */
+  /* line 324, ../sass/page/_homepage.scss */
   .promo .inner a.text:hover {
     text-decoration: underline;
   }
-  /* line 335, ../sass/page/_homepage.scss */
+  /* line 327, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: inline-block;
     font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 20px;
   }
-  /* line 339, ../sass/page/_homepage.scss */
+  /* line 331, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: inline-block;
     vertical-align: middle;
@@ -4052,7 +4053,7 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 318, ../sass/page/_homepage.scss */
+  /* line 310, ../sass/page/_homepage.scss */
   .promo {
     text-align: center;
   }
@@ -4061,7 +4062,7 @@ body.front #sidebar .block-title {
 /*
  *Graveyard
  */
-/* line 357, ../sass/page/_homepage.scss */
+/* line 349, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -4159,11 +4160,11 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 361, ../sass/page/_homepage.scss */
+/* line 353, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 363, ../sass/page/_homepage.scss */
+/* line 355, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;
@@ -4249,7 +4250,7 @@ body.front #sidebar .block-title {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1383585987') no-repeat center center;
+    background: url('../images/tpl-logo.jpg?1383770626') no-repeat center center;
     margin: 0;
     background-size: 90%;
   }
@@ -4567,7 +4568,7 @@ body.front #sidebar .block-title {
 }
 /* line 199, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1383585987');
+  background-image: url('../images/tpl-logo-hover.jpg?1383770626');
 }
 
 /**
@@ -5306,77 +5307,79 @@ header .search {
 /* line 2, ../sass/modules/_topic_features.scss */
 .section-topic .field-name-field-promo-content {
   overflow: hidden;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 1em;
 }
-/* line 4, ../sass/modules/_topic_features.scss */
+/* line 6, ../sass/modules/_topic_features.scss */
 .section-topic .field-name-field-promo-content .field-item {
   margin-bottom: 1em;
 }
 @media all and (min-width: 768px) {
-  /* line 4, ../sass/modules/_topic_features.scss */
+  /* line 6, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item {
     float: left;
     width: 29.5%;
     margin-right: 5%;
   }
-  /* line 10, ../sass/modules/_topic_features.scss */
+  /* line 12, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item .node-title {
     font-size: 1.142857143em;
     line-height: 1.25;
   }
-  /* line 14, ../sass/modules/_topic_features.scss */
+  /* line 16, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:last-child {
     margin-right: 0;
   }
-  /* line 17, ../sass/modules/_topic_features.scss */
+  /* line 19, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:first-child {
     float: none;
     width: 100%;
     overflow: hidden;
   }
-  /* line 21, ../sass/modules/_topic_features.scss */
+  /* line 23, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:first-child .field-name-field-article-main-image {
-    width: 50%;
-    margin-right: 2em;
+    width: 46.5625%;
+    margin-right: 1.5em;
     float: left;
   }
-  /* line 26, ../sass/modules/_topic_features.scss */
+  /* line 28, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:first-child .node-title {
     font-size: 2em;
     line-height: 1.142857143;
   }
 }
-/* line 37, ../sass/modules/_topic_features.scss */
+/* line 39, ../sass/modules/_topic_features.scss */
 .section-topic #block-views-topic-listing-block h2 {
   text-transform: lowercase;
 }
-/* line 42, ../sass/modules/_topic_features.scss */
+/* line 44, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row {
   overflow: hidden;
   margin: 1em 0;
   min-height: 80px;
 }
-/* line 49, ../sass/modules/_topic_features.scss */
+/* line 51, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-field-article-main-image,
 .section-topic .view-topic-listing .views-row .views-field-field-gallery-main-image {
   float: left;
 }
-/* line 53, ../sass/modules/_topic_features.scss */
+/* line 55, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-type,
 .section-topic .view-topic-listing .views-row .views-field-title {
-  margin-left: 114px;
+  margin-left: 117px;
 }
-/* line 57, ../sass/modules/_topic_features.scss */
+/* line 59, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-type {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: .857142857em;
   text-transform: uppercase;
 }
-/* line 63, ../sass/modules/_topic_features.scss */
+/* line 65, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-title {
   font-size: 1.142857143em;
   line-height: 1.25;
 }
-/* line 67, ../sass/modules/_topic_features.scss */
+/* line 69, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-title:after {
   content: '';
   display: block;
@@ -5385,19 +5388,19 @@ header .search {
   margin: .5em 0;
   border-bottom: 1px dashed black;
 }
-/* line 80, ../sass/modules/_topic_features.scss */
+/* line 82, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-item,
 .section-topic .view-topic-listing .pager .pager-current {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: .857142857em;
   padding: 0 .1em;
 }
-/* line 85, ../sass/modules/_topic_features.scss */
+/* line 87, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-current {
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
 }
-/* line 94, ../sass/modules/_topic_features.scss */
+/* line 96, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-first:before, .section-topic .view-topic-listing .pager .pager-first:after,
 .section-topic .view-topic-listing .pager .pager-previous:before,
 .section-topic .view-topic-listing .pager .pager-previous:after,
@@ -5412,19 +5415,19 @@ header .search {
   line-height: 1;
   vertical-align: top;
 }
-/* line 103, ../sass/modules/_topic_features.scss */
+/* line 105, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-first:before {
   content: '\25C5 ';
 }
-/* line 106, ../sass/modules/_topic_features.scss */
+/* line 108, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-previous:before {
   content: "\23EA ";
 }
-/* line 109, ../sass/modules/_topic_features.scss */
+/* line 111, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-next:after {
   content: '\25BB';
 }
-/* line 112, ../sass/modules/_topic_features.scss */
+/* line 114, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-last:after {
   content: '\23E9';
 }

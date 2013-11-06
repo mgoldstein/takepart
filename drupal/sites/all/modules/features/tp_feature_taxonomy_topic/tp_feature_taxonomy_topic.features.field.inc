@@ -76,7 +76,7 @@ function tp_feature_taxonomy_topic_field_default_fields() {
           'module' => 'entityreference',
           'settings' => array(
             'links' => 0,
-            'view_mode' => 'feature_secondary',
+            'view_mode' => 'feature_topic',
           ),
           'type' => 'entityreference_entity_view',
           'weight' => '0',
