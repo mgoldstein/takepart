@@ -388,5 +388,28 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
       ),
     ),
   );
+  $endpoints[] = array(
+    'type' => 'NewsletterCampaignSignupEndpoint',
+    'name' => 'chavez_campaign',
+    'label' => 'Chavez Campaign Signup',
+    'configuration' => array(),
+    'plugins' => array(
+      'bluehornet.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'account' => 'takepart',
+          'segments' => array(
+            0 => '1029994',
+            1 => '1008360',
+          ),
+          'fields' => array(
+            252906 => 'Webform',
+            253159 => 'CHAVEZ',
+          ),
+          'send-welcome' => TRUE,
+        ),
+      ),
+    ),
+  );
   return $endpoints;
 }
