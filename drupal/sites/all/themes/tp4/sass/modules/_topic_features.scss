@@ -1,6 +1,8 @@
 .section-topic {
   .field-name-field-promo-content {
     @include clearfix();
+    border-bottom: 1px solid $gray-line;
+    margin-bottom: 1em;
     .field-item {
       margin-bottom: 1em;
       @include breakpoint($breakpoint-tablet) {
@@ -19,8 +21,8 @@
           width: 100%;
           @include clearfix();
           .field-name-field-article-main-image {
-            width: 50%;
-            margin-right: 2em;
+            width: 46.5625%;
+            margin-right: 1.5em;
             float: left;
           }
           .node-title {
@@ -51,7 +53,7 @@
       }
       .views-field-type,
       .views-field-title {
-        margin-left: 114px;
+        margin-left: 117px;
       }
 
       .views-field-type {
