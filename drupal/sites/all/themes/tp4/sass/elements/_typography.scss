@@ -62,6 +62,8 @@ a {
   &.more{
     font-size: 14px;
     position: relative;
+    padding-left: 15px;
+    font-family: $ashbury-light;
     &:before {
       content: "\23E9 ";
       font-family: "SSGizmo";

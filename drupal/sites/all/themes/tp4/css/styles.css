@@ -1823,8 +1823,10 @@ a:hover {
 a.more {
   font-size: 14px;
   position: relative;
+  padding-left: 15px;
+  font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 65, ../sass/elements/_typography.scss */
+/* line 67, ../sass/elements/_typography.scss */
 a.more:before {
   content: "\23E9 ";
   font-family: "SSGizmo";
@@ -1837,7 +1839,7 @@ a.more:before {
   height: 20px;
 }
 
-/* line 82, ../sass/elements/_typography.scss */
+/* line 84, ../sass/elements/_typography.scss */
 .footer-title {
   font-family: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
@@ -4004,13 +4006,6 @@ body.front #sidebar .block-title {
   line-height: 1.5;
 }
 /* line 303, ../sass/page/_homepage.scss */
-#block-views-photo-galleries-promo-block .view-footer .more:before {
-  content: "\23E9 ";
-  font-family: "SSGizmo";
-  color: #019f84;
-  vertical-align: bottom;
-}
-/* line 311, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .block-title {
   margin-bottom: 8px;
 }
@@ -4018,21 +4013,21 @@ body.front #sidebar .block-title {
 /*
  *Promo "don't miss"
  */
-/* line 318, ../sass/page/_homepage.scss */
+/* line 310, ../sass/page/_homepage.scss */
 .promo {
   margin-top: 20px;
 }
 @media all and (min-width: 320px) {
-  /* line 318, ../sass/page/_homepage.scss */
+  /* line 310, ../sass/page/_homepage.scss */
   .promo {
     text-align: left;
   }
-  /* line 322, ../sass/page/_homepage.scss */
+  /* line 314, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: left;
     display: inline-block;
   }
-  /* line 325, ../sass/page/_homepage.scss */
+  /* line 317, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: inline-block;
     margin-right: 10px;
@@ -4040,17 +4035,17 @@ body.front #sidebar .block-title {
     line-height: 28px;
     font-weight: normal;
   }
-  /* line 332, ../sass/page/_homepage.scss */
+  /* line 324, ../sass/page/_homepage.scss */
   .promo .inner a.text:hover {
     text-decoration: underline;
   }
-  /* line 335, ../sass/page/_homepage.scss */
+  /* line 327, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: inline-block;
     font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 20px;
   }
-  /* line 339, ../sass/page/_homepage.scss */
+  /* line 331, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: inline-block;
     vertical-align: middle;
@@ -4058,7 +4053,7 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 318, ../sass/page/_homepage.scss */
+  /* line 310, ../sass/page/_homepage.scss */
   .promo {
     text-align: center;
   }
@@ -4067,7 +4062,7 @@ body.front #sidebar .block-title {
 /*
  *Graveyard
  */
-/* line 357, ../sass/page/_homepage.scss */
+/* line 349, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -4165,11 +4160,11 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 361, ../sass/page/_homepage.scss */
+/* line 353, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 363, ../sass/page/_homepage.scss */
+/* line 355, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;
@@ -4255,7 +4250,7 @@ body.front #sidebar .block-title {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1383585987') no-repeat center center;
+    background: url('../images/tpl-logo.jpg?1383770626') no-repeat center center;
     margin: 0;
     background-size: 90%;
   }
@@ -4573,7 +4568,7 @@ body.front #sidebar .block-title {
 }
 /* line 199, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1383585987');
+  background-image: url('../images/tpl-logo-hover.jpg?1383770626');
 }
 
 /**
