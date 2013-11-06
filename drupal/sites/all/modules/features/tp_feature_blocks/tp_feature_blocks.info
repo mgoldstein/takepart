@@ -1,0 +1,10 @@
+name = TakePart Blocks
+description = Blocks we have to export.
+core = 7.x
+package = Content Display
+version = 7.x-1.0
+project = tp_feature_blocks
+dependencies[] = fe_block
+dependencies[] = menu_block
+features[fe_block_settings][] = menu_block-2
+features[features_api][] = api:1
