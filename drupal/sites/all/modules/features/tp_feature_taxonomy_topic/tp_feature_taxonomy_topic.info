@@ -10,6 +10,7 @@ dependencies[] = takepart_custom
 dependencies[] = takepart_quick_study
 dependencies[] = takepart_topic_front
 dependencies[] = taxonomy
+dependencies[] = tp_feature_image_styles
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1
 features[field][] = taxonomy_term-topic-field_promo_content

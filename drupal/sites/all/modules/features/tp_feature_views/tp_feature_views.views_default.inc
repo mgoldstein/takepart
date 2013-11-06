@@ -401,7 +401,7 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_article_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_article_main_image']['type'] = 'image';
   $handler->display->display_options['fields']['field_article_main_image']['settings'] = array(
-    'image_style' => 'thumbnail',
+    'image_style' => 'topic_thumbnail',
     'image_link' => 'content',
   );
   /* Field: Content: Main Image */
@@ -414,7 +414,7 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_gallery_main_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_gallery_main_image']['type'] = 'image';
   $handler->display->display_options['fields']['field_gallery_main_image']['settings'] = array(
-    'image_style' => 'thumbnail',
+    'image_style' => 'topic_feature',
     'image_link' => 'content',
   );
   /* Field: Content: Type */
