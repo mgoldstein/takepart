@@ -1822,16 +1822,22 @@ a:hover {
 /* line 62, ../sass/elements/_typography.scss */
 a.more {
   font-size: 14px;
+  position: relative;
 }
-/* line 64, ../sass/elements/_typography.scss */
+/* line 65, ../sass/elements/_typography.scss */
 a.more:before {
   content: "\23E9 ";
   font-family: "SSGizmo";
   color: #019f84;
   vertical-align: bottom;
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 30px;
+  height: 20px;
 }
 
-/* line 76, ../sass/elements/_typography.scss */
+/* line 82, ../sass/elements/_typography.scss */
 .footer-title {
   font-family: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
