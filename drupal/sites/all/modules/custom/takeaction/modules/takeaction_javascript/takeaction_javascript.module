@@ -63,7 +63,10 @@ function takeaction_javascript_node_view($node, $view_mode, $langcode) {
   if ($items !== FALSE && $view_mode === 'full') {
     $action = array('null', 'null', 'null');
     foreach ($items as $delta => $item) {
-      $action[$delta] = $items[$delta]['nid'];
+      $mapping = SignatureActionMapping::loadByNodeId($items[$delta]['nid']);
+      if ($mapping !== FALSE) {
+        $action[$delta] = $mapping->tapID();
+      }
     }
     $override_js = "
       TP.action1 = {$action[0]};

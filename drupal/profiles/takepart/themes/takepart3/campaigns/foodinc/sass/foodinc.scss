@@ -1,5 +1,9 @@
 @import "assets";
 
+#main {
+  overflow: hidden;
+}
+
 #page-wrapper.foodinc{
   -webkit-font-smoothing: antialiased;
   background: #fff;
@@ -547,6 +551,9 @@
     }
   }
   #foodinc-howto{
+    .ad{
+      margin-top: 0px;
+    }
     section.page-body-content{
       width: 66%;
       float: left;
@@ -837,14 +844,14 @@
       color: $primary-color;
     }
     p {
-      color: #555;
+      color: #000;
     }
 
     .left-rail {
       @include inline-block;
       margin-right: 20px;
-      width: 365px;
-      margin-right: 20px;
+      max-width: 100%;
+      margin-right: 0px;
       section {
         margin-bottom: 20px;
         @include clearfix;
@@ -1034,7 +1041,7 @@
 
     @media (max-width: 1000px) {
       .left-rail {
-        width: 43%;
+        
       }
 
       .right-rail {
