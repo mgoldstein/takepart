@@ -29,6 +29,10 @@ function tp4_support_entity_info_alter(&$entity_info) {
     'label' => t('Secondary Feature'),
     'custom settings' => TRUE,
   );
+  $entity_info['node']['view modes']['feature_topic'] = array(
+    'label' => t('Topic Feature'),
+    'custom settings' => TRUE,
+  );
   $entity_info['node']['view modes']['feature_video'] = array(
     'label' => t('Video Feature'),
     'custom settings' => TRUE,

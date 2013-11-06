@@ -5307,77 +5307,79 @@ header .search {
 /* line 2, ../sass/modules/_topic_features.scss */
 .section-topic .field-name-field-promo-content {
   overflow: hidden;
+  border-bottom: 1px solid #cccccc;
+  margin-bottom: 1em;
 }
-/* line 4, ../sass/modules/_topic_features.scss */
+/* line 6, ../sass/modules/_topic_features.scss */
 .section-topic .field-name-field-promo-content .field-item {
   margin-bottom: 1em;
 }
 @media all and (min-width: 768px) {
-  /* line 4, ../sass/modules/_topic_features.scss */
+  /* line 6, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item {
     float: left;
     width: 29.5%;
     margin-right: 5%;
   }
-  /* line 10, ../sass/modules/_topic_features.scss */
+  /* line 12, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item .node-title {
     font-size: 1.142857143em;
     line-height: 1.25;
   }
-  /* line 14, ../sass/modules/_topic_features.scss */
+  /* line 16, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:last-child {
     margin-right: 0;
   }
-  /* line 17, ../sass/modules/_topic_features.scss */
+  /* line 19, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:first-child {
     float: none;
     width: 100%;
     overflow: hidden;
   }
-  /* line 21, ../sass/modules/_topic_features.scss */
+  /* line 23, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:first-child .field-name-field-article-main-image {
-    width: 50%;
-    margin-right: 2em;
+    width: 46.5625%;
+    margin-right: 1.5em;
     float: left;
   }
-  /* line 26, ../sass/modules/_topic_features.scss */
+  /* line 28, ../sass/modules/_topic_features.scss */
   .section-topic .field-name-field-promo-content .field-item:first-child .node-title {
     font-size: 2em;
     line-height: 1.142857143;
   }
 }
-/* line 37, ../sass/modules/_topic_features.scss */
+/* line 39, ../sass/modules/_topic_features.scss */
 .section-topic #block-views-topic-listing-block h2 {
   text-transform: lowercase;
 }
-/* line 42, ../sass/modules/_topic_features.scss */
+/* line 44, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row {
   overflow: hidden;
   margin: 1em 0;
   min-height: 80px;
 }
-/* line 49, ../sass/modules/_topic_features.scss */
+/* line 51, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-field-article-main-image,
 .section-topic .view-topic-listing .views-row .views-field-field-gallery-main-image {
   float: left;
 }
-/* line 53, ../sass/modules/_topic_features.scss */
+/* line 55, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-type,
 .section-topic .view-topic-listing .views-row .views-field-title {
-  margin-left: 114px;
+  margin-left: 117px;
 }
-/* line 57, ../sass/modules/_topic_features.scss */
+/* line 59, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-type {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: .857142857em;
   text-transform: uppercase;
 }
-/* line 63, ../sass/modules/_topic_features.scss */
+/* line 65, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-title {
   font-size: 1.142857143em;
   line-height: 1.25;
 }
-/* line 67, ../sass/modules/_topic_features.scss */
+/* line 69, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .views-row .views-field-title:after {
   content: '';
   display: block;
@@ -5386,19 +5388,19 @@ header .search {
   margin: .5em 0;
   border-bottom: 1px dashed black;
 }
-/* line 80, ../sass/modules/_topic_features.scss */
+/* line 82, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-item,
 .section-topic .view-topic-listing .pager .pager-current {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: .857142857em;
   padding: 0 .1em;
 }
-/* line 85, ../sass/modules/_topic_features.scss */
+/* line 87, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-current {
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
 }
-/* line 94, ../sass/modules/_topic_features.scss */
+/* line 96, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-first:before, .section-topic .view-topic-listing .pager .pager-first:after,
 .section-topic .view-topic-listing .pager .pager-previous:before,
 .section-topic .view-topic-listing .pager .pager-previous:after,
@@ -5413,19 +5415,19 @@ header .search {
   line-height: 1;
   vertical-align: top;
 }
-/* line 103, ../sass/modules/_topic_features.scss */
+/* line 105, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-first:before {
   content: '\25C5 ';
 }
-/* line 106, ../sass/modules/_topic_features.scss */
+/* line 108, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-previous:before {
   content: "\23EA ";
 }
-/* line 109, ../sass/modules/_topic_features.scss */
+/* line 111, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-next:after {
   content: '\25BB';
 }
-/* line 112, ../sass/modules/_topic_features.scss */
+/* line 114, ../sass/modules/_topic_features.scss */
 .section-topic .view-topic-listing .pager .pager-last:after {
   content: '\23E9';
 }
