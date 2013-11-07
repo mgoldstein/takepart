@@ -15,7 +15,7 @@ function tp_feature_taxonomy_topic_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'xmlsitemap_settings_taxonomy_term_topic';
   $strongarm->value = array(
-    'status' => '1',
+    'status' => '0',
     'priority' => '0.5',
   );
   $export['xmlsitemap_settings_taxonomy_term_topic'] = $strongarm;

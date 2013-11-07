@@ -45,10 +45,12 @@ function tp_feature_taxonomy_topic_field_default_fields() {
             'type' => 'none',
           ),
           'target_bundles' => array(
+            'action' => 'action',
             'openpublish_article' => 'openpublish_article',
             'openpublish_photo_gallery' => 'openpublish_photo_gallery',
             'openpublish_video' => 'openpublish_video',
             'section_front' => 'section_front',
+            'takepart_campaign' => 'takepart_campaign',
           ),
         ),
         'target_type' => 'node',
