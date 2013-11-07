@@ -58,7 +58,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Multi Page Campaign',
-    'weight' => '16',
+    'weight' => '15',
     'children' => array(
       0 => 'field_multi_page_campaign',
       1 => 'field_tp_campaign_header',
@@ -85,7 +85,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Cover',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_tp_campaign_cover_image',
       1 => 'field_tp_campaign_cover_intro',
@@ -113,7 +113,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Groups',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_tp_campaign_sponsors',
       1 => 'field_tp_campaign_alliances',
@@ -170,7 +170,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Intro',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_tp_campaign_4_things_link',
       1 => 'field_tp_campaign_5_things_head',
@@ -228,7 +228,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related Actions',
-    'weight' => '8',
+    'weight' => '7',
     'children' => array(
       0 => 'field_related_actions',
       1 => 'field_suggest_actions',
@@ -257,7 +257,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Segment 1',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
       0 => 'field_tp_campaign_seg_1_html',
       1 => 'field_tp_campaign_seg_1_label',
@@ -285,7 +285,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Segment 2',
-    'weight' => '12',
+    'weight' => '11',
     'children' => array(
       0 => 'field_tp_campaign_seg_2_html',
       1 => 'field_tp_campaign_seg_2_label',
@@ -313,7 +313,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Segment 3',
-    'weight' => '14',
+    'weight' => '13',
     'children' => array(
       0 => 'field_tp_campaign_seg_3_html',
       1 => 'field_tp_campaign_seg_3_label',
@@ -341,7 +341,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Segment 4',
-    'weight' => '15',
+    'weight' => '14',
     'children' => array(
       0 => 'field_tp_campaign_seg_4_html',
       1 => 'field_tp_campaign_seg_4_label',
@@ -369,7 +369,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Spotlight',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_tp_campaign_sl_html',
       1 => 'field_tp_campaign_sl_image',
@@ -397,7 +397,7 @@ function takepart_campaign_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tags',
-    'weight' => '18',
+    'weight' => '17',
     'children' => array(
       0 => 'field_topic',
     ),

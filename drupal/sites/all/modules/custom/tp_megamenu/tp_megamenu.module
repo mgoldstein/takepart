@@ -121,7 +121,13 @@ function tp_megamenu_megamenu(){
 
       }
       $output .= '</div>'; //end .categories
-      $output .= l('See More '. $link['link']['link_title'], $path, array('attributes' => array('class' => array('more'))));
+      //return more link
+      if(isset($link['link']['options']['attributes']['name'])){
+        $output .= l($link['link']['options']['attributes']['name'], $path, array('attributes' => array('class' => array('more'))));
+      }
+      else{
+        $output .= l('See More '. $link['link']['link_title'], $path, array('attributes' => array('class' => array('more'))));
+      }
     }
     $output .= '</div>'; //end .mega-content
     $output .= '</li>'; //end .mega-item
