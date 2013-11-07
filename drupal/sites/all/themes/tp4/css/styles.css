@@ -4518,7 +4518,7 @@ body.front #sidebar .block-title {
     overflow: hidden;
   }
   /* line 154, ../sass/modules/_megamenu.scss */
-  #megamenu > ul > li .mega-content .categories .sub-category .term {
+  #megamenu > ul > li .mega-content .categories .sub-category .label {
     font-family: "AdelleSans-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-weight: 900;
     text-transform: uppercase;

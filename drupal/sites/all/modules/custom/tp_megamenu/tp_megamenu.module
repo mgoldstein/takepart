@@ -81,29 +81,44 @@ function tp_megamenu_megamenu(){
     }
     $output .= '<div class="categories">';
     if(isset($entities->field_promo_content['und']) && isset($url)){  
- 
       foreach($entities->field_promo_content['und'] as $key => $entity){
         $node = node_load($entity['target_id']);
         $node_path = drupal_get_path_alias('node/'. $node->nid);
         $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
         $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
 
+        //Subcategory content menu item is linked to a taxonomy term
         if($url == 'taxonomy'){
           $term = $node->field_topic['und'][0]['tid'];
           $term = taxonomy_term_load($term);
-          $term_title = $term->name;
-          $term_path = drupal_get_path_alias('taxonomy/term/'. $term->tid);
+          //Subcategory content for menu items with the ID of 'series' (example: Features & Columns)
+          if(isset($link['link']['options']['attributes']['id']) && $link['link']['options']['attributes']['id'] == 'series'){
+            $author_node = node_load($node->field_author['und'][0]['nid']);
+            $series_term = taxonomy_term_load($node->field_series['und'][0]['tid']);
+            $text = '<div class="author">'. $author_node->title. '</div>'. l($node->field_promo_headline['und'][0]['value'], $node_path);  //author and promo_headline
+            $label = $series_term->name; //TODO: change to Series Name
+            $label_path = drupal_get_path_alias('taxonomy/term/'. $series_term->tid);
+          }
+          else{
+            $text = l($node->field_promo_headline['und'][0]['value'], $node_path);
+            $label = $term->name;
+            $label_path = drupal_get_path_alias('taxonomy/term/'. $term->tid);
+          }
         }
+        //Subcategory content menu item is linked to a node
         else{
-          $term_title = $node->title;
-          $term_path = drupal_get_path_alias('node/'. $node->nid);
+          $label = $node->title;
+          $label_path = drupal_get_path_alias('node/'. $node->nid);
+          $text = l($node->field_promo_headline['und'][0]['value'], $node_path);
         }
-        $title = $node->field_promo_headline['und'][0]['value'];
+        
+        //Output subcategories based on input from menu link ID field
         $output .= '<div class="sub-category">';
         $output .= '<div class="thumb">'. l($thumb, $node_path, array('html' => true)). '</div>';
-        $output .= '<div class="term">'. l($term_title, $term_path). '</div>';
-        $output .= '<div class="text">'. l($title, $node_path). '</div>';
+        $output .= '<div class="label">'. l($label, $label_path). '</div>';
+        $output .= '<div class="text">'. $text. '</div>';
         $output .= '</div>'; //end .sub-category
+
       }
       $output .= '</div>'; //end .categories
       $output .= l('See More '. $link['link']['link_title'], $path, array('attributes' => array('class' => array('more'))));
