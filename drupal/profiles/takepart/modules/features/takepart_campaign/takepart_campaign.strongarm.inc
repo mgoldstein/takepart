@@ -52,9 +52,6 @@ function takepart_campaign_strongarm() {
       'medium_preview' => array(
         'custom_settings' => FALSE,
       ),
-      'of_the_day' => array(
-        'custom_settings' => FALSE,
-      ),
       'inline_content' => array(
         'custom_settings' => FALSE,
       ),
@@ -65,7 +62,7 @@ function takepart_campaign_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '17',
+          'weight' => '16',
         ),
         'xmlsitemap' => array(
           'weight' => '4',
@@ -74,7 +71,7 @@ function takepart_campaign_strongarm() {
           'weight' => '21',
         ),
         'redirect' => array(
-          'weight' => '20',
+          'weight' => '19',
         ),
       ),
       'display' => array(),
