@@ -1,4 +1,7 @@
 .section-topic {
+  .page__title {
+    margin-bottom: .67em;
+  }
   .field-name-field-promo-content {
     @include clearfix();
     border-bottom: 1px solid $gray-line;
@@ -66,6 +69,10 @@
         font-size: 1.142857143em;
         line-height: 1.25;
         
+        .node-type-openpublish_photo_gallery {
+          @include icon-photo-gallery();
+        }
+        
         &:after {
           content: '';
           display: block;
@@ -116,4 +123,29 @@
       }
     }
   } // .view-topic-listing
+
+  .block-menu-block {
+    .block__title {
+      border-top: 4px solid black;
+      text-transform: lowercase;
+      &:before {
+        content: 'inside ';
+      }
+    }
+    .menu__item {
+      line-height: 24px;
+      font-size: 14px;
+      position: relative;
+      padding-left: 15px;
+      &:before {
+        content: '';
+        height: 6px;
+        width: 6px;
+        background-color: $blue;
+        position: absolute;
+        top: 7px;
+        left: 0;
+      }
+    }
+  }
 }
