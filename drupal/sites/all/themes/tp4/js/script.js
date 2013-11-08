@@ -26,7 +26,6 @@ Drupal.behaviors.snapper_settings = {
       element: document.getElementById('page-wrap')
     });
 
-
     snapper.settings({
       dragger: null,
       disable: 'none',
@@ -39,11 +38,21 @@ Drupal.behaviors.snapper_settings = {
       maxPosition: 280,
       minPosition: 0,
       tapToClose: true,
-      touchToDrag: true,
-      clickToDrag: false,
+      touchToDrag: false,
       slideIntent: 40,
       minDragDistance: 5
     });
+    
+    $('.menu-toggle').on('click', function(){
+        if( snapper.state().state=="left" ){
+            snapper.close();
+        } else {
+            snapper.open('left');
+        }
+    });
+
+
+
   }
 };
 

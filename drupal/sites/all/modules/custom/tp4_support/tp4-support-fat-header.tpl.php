@@ -1,3 +1,5 @@
+<div class="menu-toggle">
+</div>
 <div class="logo">
   <?php $logo = '<img src="'. $logo. '">'; ?>
   <?php global $base_url; ?>
