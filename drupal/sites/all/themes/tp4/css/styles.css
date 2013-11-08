@@ -3358,14 +3358,20 @@ body {
 body.snapjs-left {
   overflow: hidden;
   border-bottom: none;
+  position: static;
 }
-/* line 29, ../sass/page/_layout.scss */
+/* line 30, ../sass/page/_layout.scss */
 body.snapjs-left #page-wrap {
-  overflow: auto;
   position: absolute;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
 }
 
-/* line 35, ../sass/page/_layout.scss */
+/* line 41, ../sass/page/_layout.scss */
 #page-wrap {
   position: relative;
   background-color: #fff;
@@ -3373,7 +3379,7 @@ body.snapjs-left #page-wrap {
   overflow: hidden;
 }
 
-/* line 45, ../sass/page/_layout.scss */
+/* line 51, ../sass/page/_layout.scss */
 .header-wrapper,
 .preface-wrapper,
 .main-wrapper,
@@ -3384,17 +3390,17 @@ body.snapjs-left #page-wrap {
   padding: 0;
 }
 
-/* line 50, ../sass/page/_layout.scss */
+/* line 56, ../sass/page/_layout.scss */
 .header-wrapper {
   padding-top: 1em;
 }
 
-/* line 53, ../sass/page/_layout.scss */
+/* line 59, ../sass/page/_layout.scss */
 .footer-wrapper {
   padding-bottom: 1em;
 }
 
-/* line 60, ../sass/page/_layout.scss */
+/* line 66, ../sass/page/_layout.scss */
 #header,
 #preface,
 #main,
@@ -3426,12 +3432,12 @@ body.snapjs-left #page-wrap {
   clear: both;
 }
 
-/* line 66, ../sass/page/_layout.scss */
+/* line 72, ../sass/page/_layout.scss */
 #preface {
   min-height: 1em;
 }
 
-/* line 70, ../sass/page/_layout.scss */
+/* line 76, ../sass/page/_layout.scss */
 #main #primary {
   float: left;
   width: 100%;
@@ -3446,7 +3452,7 @@ body.snapjs-left #page-wrap {
   word-wrap: break-word;
 }
 @media all and (min-width: 768px) {
-  /* line 74, ../sass/page/_layout.scss */
+  /* line 80, ../sass/page/_layout.scss */
   #main.with-sidebar #primary {
     float: left;
     width: 58.33333%;
@@ -3462,7 +3468,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 74, ../sass/page/_layout.scss */
+  /* line 80, ../sass/page/_layout.scss */
   #main.with-sidebar #primary {
     float: left;
     width: 66.66667%;
@@ -3478,7 +3484,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 84, ../sass/page/_layout.scss */
+  /* line 90, ../sass/page/_layout.scss */
   #main.with-skinny #primary {
     float: left;
     width: 83.33333%;
@@ -3494,7 +3500,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 91, ../sass/page/_layout.scss */
+  /* line 97, ../sass/page/_layout.scss */
   #main.with-sidebar.with-skinny #primary {
     float: left;
     width: 50%;
@@ -3511,7 +3517,7 @@ body.snapjs-left #page-wrap {
     padding: 0;
   }
 }
-/* line 99, ../sass/page/_layout.scss */
+/* line 105, ../sass/page/_layout.scss */
 #main #sidebar {
   float: left;
   width: 100%;
@@ -3527,7 +3533,7 @@ body.snapjs-left #page-wrap {
   clear: left;
 }
 @media all and (min-width: 768px) {
-  /* line 99, ../sass/page/_layout.scss */
+  /* line 105, ../sass/page/_layout.scss */
   #main #sidebar {
     float: left;
     width: 41.66667%;
@@ -3544,7 +3550,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 99, ../sass/page/_layout.scss */
+  /* line 105, ../sass/page/_layout.scss */
   #main #sidebar {
     float: left;
     width: 33.33333%;
@@ -3559,7 +3565,7 @@ body.snapjs-left #page-wrap {
     word-wrap: break-word;
   }
 }
-/* line 113, ../sass/page/_layout.scss */
+/* line 119, ../sass/page/_layout.scss */
 #main #skinny {
   float: left;
   width: 100%;
@@ -3575,7 +3581,7 @@ body.snapjs-left #page-wrap {
   clear: left;
 }
 @media all and (min-width: 768px) {
-  /* line 113, ../sass/page/_layout.scss */
+  /* line 119, ../sass/page/_layout.scss */
   #main #skinny {
     float: left;
     width: 41.66667%;
@@ -3591,7 +3597,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 113, ../sass/page/_layout.scss */
+  /* line 119, ../sass/page/_layout.scss */
   #main #skinny {
     float: left;
     width: 16.66667%;
@@ -3608,7 +3614,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 125, ../sass/page/_layout.scss */
+  /* line 131, ../sass/page/_layout.scss */
   #main.with-sidebar #skinny {
     float: left;
     width: 100%;
@@ -3624,7 +3630,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 125, ../sass/page/_layout.scss */
+  /* line 131, ../sass/page/_layout.scss */
   #main.with-sidebar #skinny {
     float: left;
     width: 16.66667%;
@@ -5201,7 +5207,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1383934216') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1383937447') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -5253,7 +5259,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1383935752') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1383937447') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
@@ -5338,15 +5344,17 @@ header .search {
 /* line 55, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service {
   clear: both;
-  margin: 0 0 .25em;
-  padding-bottom: .75em;
+  margin: 1em 0;
+  padding-bottom: 1em;
+  line-height: 1.2em;
   border-bottom: 1px solid #cccccc;
+  font-size: 12px;
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
 /* line 61, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service a {
   font-size: 12px;
-  line-height: 1.666666667;
+  line-height: 1.2em;
   color: #019f84;
 }
 /* line 67, ../sass/modules/_sidebar.scss */
