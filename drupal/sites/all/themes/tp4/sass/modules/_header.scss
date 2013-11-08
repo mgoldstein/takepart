@@ -9,6 +9,14 @@
 header{
   font-family: $adelle-regular;
   color: $dark-gray;
+  .block{
+    @include breakpoint($breakpoint-mobile){
+      margin-bottom: 0em;
+    }
+    @include breakpoint($breakpoint-tablet){
+      margin-bottom: 1.5em;
+    }
+  }
   @include breakpoint($breakpoint-mobile){
     .menu-toggle{
       display: block;
@@ -113,18 +121,25 @@ header{
   .search{
     font-size: 13px;
     @include breakpoint($breakpoint-mobile){
-      display: none;
+      clear: both;
+      position: relative;
       .form-item-keys-2{
         display: inline-block;
         float: left;
         height: auto;
         overflow: hidden;
-        width: auto;
+        width: 100%;
         margin-right: 10px;
         vertical-align: bottom;
         line-height: 23px;
         font-weight: normal;
         margin: 0;
+        padding: 10px;
+        background-color: #000;
+        -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .3);
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .3);
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
         label {
           height: auto;
           overflow: hidden;
@@ -141,9 +156,8 @@ header{
         float: left;
         height: 20px;
         border: 1px solid #ccc;
-        border-right: none;
         border-radius: 0;
-        width: 140px;
+        width: 100%;
         line-height: 20px;
         color: #777;
         text-indent: 6px;
@@ -153,17 +167,18 @@ header{
         }
       }
       .form-submit{
-        display: block;
-        float: left;
-        width: 20px;
-        height: 20px;
-        border: 1px solid #ccc;
-        border-left: none;
-        background-color: #fff;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 48px;
+        color: white;
+        border: none;
+        background: image-url('mobile-search-hover.jpg') no-repeat center center;
+        background-color: #000;
         border-radius: 0;
         text-indent: 200%;
         overflow: hidden;
-        background: image-url('search-submit.png') no-repeat center center;
+        width: 34px;
       }
     }
     @include breakpoint($breakpoint-tablet){
@@ -171,9 +186,66 @@ header{
       float: right;
       clear: right;
       margin-top: 25px;
+      .form-item-keys-2{
+        padding: 0;
+        width: auto;
+        background-color: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+      [type=text]{
+        border-right: none;
+        width: 140px;
+      }
+      .form-submit{
+        position: relative;
+        display: block;
+        float: left;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #ccc;
+        border-left: none;
+        background-color: #fff;
+        background: image-url('search-submit.png') no-repeat center center;
+      }
     }
   }
 }
 
-
+@include breakpoint($breakpoint-mobile){
+  .search-toggle{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 48px;
+    color: white;
+    border: none;
+    background: image-url('mobile-search.jpg') no-repeat center center;
+    background-color: #fff;
+    border-radius: 0;
+    text-indent: 200%;
+    overflow: hidden;
+    width: 34px;
+  }
+  .search {
+    border-bottom: 2px solid #000;
+    form{
+      display: none;
+    }
+  }
+  .search.active {
+    border-bottom: none;
+    form{
+      display: block;
+    }
+  }
+}
+@include breakpoint($breakpoint-tablet){
+  .search-toggle{
+    display: none;
+  }
+  .search{
+    border-bottom: none;
+  }
+}
 
