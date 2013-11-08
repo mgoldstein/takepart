@@ -67,6 +67,7 @@ stylesheets[all][] = css/styles.css
 ; Optionally add some JavaScripts to your theme.
 
 scripts[] = js/doubletaptogo.js
+scripts[] = js/snap.js
 scripts[] = js/script.js
 
 
@@ -94,6 +95,7 @@ regions[skinny]         = Skinny
 regions[sidebar]        = Sidebar
 regions[suffix]         = Suffix
 regions[footer]         = Footer
+regions[left_drawer]    = Left Drawer
 
 
 ; The page_top and page_bottom regions are hidden, which means they will not
