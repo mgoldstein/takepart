@@ -9,8 +9,30 @@
 header{
   font-family: $adelle-regular;
   color: $dark-gray;
-  .logo{
-    float: left;
+  @include breakpoint($breakpoint-mobile){
+    .menu-toggle{
+      display: block;
+      width: 20px;
+      height: 3px;;
+      border-top: 9px double $light-mint;
+      border-bottom: 3px solid $light-mint;
+      cursor: pointer;
+      float: left;
+      margin-right: 10px;
+      margin-top: 4px;
+    }
+    .logo{
+      float: left;
+      width: 121px;
+    }
+  }
+  @include breakpoint($breakpoint-tablet){
+    .menu-toggle{
+      display: none;
+    }
+    .logo{
+      width: auto;
+    }
   }
   .follow-us{
     @include breakpoint($breakpoint-mobile){
@@ -152,3 +174,6 @@ header{
     }
   }
 }
+
+
+
