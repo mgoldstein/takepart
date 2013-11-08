@@ -61,9 +61,18 @@ function tp4_preprocess_page(&$variables) {
   $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
   $variables['content_classes'] .= ($variables['sidebar'] ? ' with-sidebar' : '');
 
+  // override page titles on certain node templates
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article'))) {
+    $variables['title'] = '';
+  }
 }
 
-
+/**
+ * Override or insert variables into block templates.
+ *
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ */
 function tp4_preprocess_block(&$variables) {
   $variables['title_attributes_array']['class'][] = 'section-header';
 }
@@ -77,11 +86,50 @@ function tp4_preprocess_block(&$variables) {
  *   The name of the template being rendered ("node" in this case.)
  */
 function tp4_preprocess_node(&$variables, $hook) {
+  // Add template suggestions for view modes and
+  // node types per view view mode.
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
+  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
+
   // Run node-type-specific preprocess functions, like
   // tp4_preprocess_node_page() or tp4_preprocess_node_story().
-  $function = __FUNCTION__ . '_' . $variables['node']->type;
+  $function = __FUNCTION__ . '__' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
+  }
+}
+
+/**
+ * Override or insert variables into the openpublish_article template.
+ */
+function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
+
+  // expose series tid in a data attribute on article.node
+  $variables['attributes_array']['data-series'] = $variables['field_series'][LANGUAGE_NONE][0]['tid'];
+
+  // get the caption working
+  $variables['main_image_image'] = render($variables['content']['field_article_main_image']);
+  $variables['main_image_caption'] = $variables['field_article_main_image'][0]['file']->field_media_caption[LANGUAGE_NONE][0]['safe_value'];
+}
+
+/**
+ * Final preparation of node template data for display.
+ */
+function tp4_process_node(&$variables, $hook) {
+  // Run node-type-specific process functions, like
+  // tp4_process_node_page() or tp4_process_node_story().
+  $function = __FUNCTION__ . '__' . $variables['node']->type;
+  if (function_exists($function)) {
+    $function($variables, $hook);
+  }
+}
+
+function tp4_process_node__openpublish_article(&$variables) {
+  // Deal with the author stuff
+  $variables['author_bios'] = array();
+  foreach ($variables['field_author'] as $author) {
+    $author_node = node_load($author['nid']);
+    $variables['author_bios'][] = $author_node;
   }
 }
 
