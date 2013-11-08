@@ -14,7 +14,7 @@
   <div id="<?= $variables['response_id'] ?>">
     <p class="message"><?= $variables['body'] ?></p>
     <?php echo drupal_render($variables['form']); ?>
-    <p class="terms-of-service"><?php print drupal_render($variables['tos_link']); ?></p>
+    <p class="terms-of-service"><?php print $variables['tos_link']; ?></p>
 </div>
 <h3 class="follow-us"><?= t('Follow Us') ?></h3>
 <ul class="social-links">
