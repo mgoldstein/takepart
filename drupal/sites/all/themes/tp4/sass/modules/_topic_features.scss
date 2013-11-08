@@ -72,15 +72,9 @@
         .node-type-openpublish_photo_gallery {
           @include icon-photo-gallery();
         }
+
+	@include dashed-separator-after();
         
-        &:after {
-          content: '';
-          display: block;
-          height: 0;
-          width: 76px;
-          margin: .5em 0;
-          border-bottom: 1px dashed black;
-        }
       }
     } // .views-row
 

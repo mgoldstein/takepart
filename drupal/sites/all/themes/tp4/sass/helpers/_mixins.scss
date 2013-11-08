@@ -80,21 +80,33 @@
   }
 }
 
+@mixin dashed-separator-after {
+  &:after {
+    content: '';
+    display: block;
+    height: 0;
+    width: 76px;
+    margin: .5em 0;
+    border-bottom: 1px dashed black;
+  }
+}
+
+@mixin tp-icon {
+  font-family: "SSGizmo";
+  font-size: 1.5em;
+  line-height: 0.666666667;
+  vertical-align: bottom;
+}
+
 @mixin icon-photo-gallery {
   &:after {
+    @include tp-icon();
     content: " \1F4F7";
-    font-family: "SSGizmo";
-    font-size: 1.5em;
-    line-height: 0.666666667;
-    vertical-align: bottom;
   }
 }
 @mixin icon-video {
   &:after {
+    @include tp-icon();
     content: " \1F4F9";
-    font-family: "SSGizmo";
-    font-size: 1.5em;
-    line-height: 0.666666667;
-    vertical-align: bottom;
   }
 }
