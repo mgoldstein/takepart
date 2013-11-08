@@ -154,6 +154,12 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-10',
         ),
+        'menu-menu-megamenu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-megamenu',
+          'region' => 'left_drawer',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

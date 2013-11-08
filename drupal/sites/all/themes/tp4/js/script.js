@@ -16,9 +16,34 @@
 // To understand behaviors, see https://drupal.org/node/756722#behaviors
 Drupal.behaviors.my_custom_behavior = {
   attach: function(context, settings) {
-
+    //prevent parent links on megamenu from linking on touch (link on double touch)
     $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
+  }
+};
+Drupal.behaviors.snapper_settings = {
+  attach: function(context, settings) {
+    var snapper = new Snap({
+      element: document.getElementById('page-wrap')
+    });
 
+
+    snapper.settings({
+      dragger: null,
+      disable: 'none',
+      addBodyClasses: true,
+      hyperextensible: true,
+      resistance: 0.5,
+      flickThreshold: 50,
+      transitionSpeed: 0.3,
+      easing: 'ease',
+      maxPosition: 280,
+      minPosition: 0,
+      tapToClose: true,
+      touchToDrag: true,
+      clickToDrag: false,
+      slideIntent: 40,
+      minDragDistance: 5
+    });
   }
 };
 
