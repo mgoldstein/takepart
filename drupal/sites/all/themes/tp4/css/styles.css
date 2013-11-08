@@ -5338,8 +5338,8 @@ header .search {
 /* line 55, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service {
   clear: both;
-  margin: .5em 0;
-  padding-bottom: .25em;
+  margin: 1em 0;
+  padding-bottom: .5em;
   line-height: 1.2em;
   border-bottom: 1px solid #cccccc;
   font-size: 12px;
