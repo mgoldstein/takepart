@@ -5344,15 +5344,17 @@ header .search {
 /* line 55, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service {
   clear: both;
-  margin: 0 0 .25em;
-  padding-bottom: .75em;
+  margin: 1em 0;
+  padding-bottom: 1em;
+  line-height: 1.2em;
   border-bottom: 1px solid #cccccc;
+  font-size: 12px;
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
 /* line 61, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service a {
   font-size: 12px;
-  line-height: 1.666666667;
+  line-height: 1.2em;
   color: #019f84;
 }
 /* line 67, ../sass/modules/_sidebar.scss */
