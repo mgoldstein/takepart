@@ -5002,7 +5002,19 @@ header {
   color: #5a5a5a;
 }
 @media all and (min-width: 320px) {
-  /* line 13, ../sass/modules/_header.scss */
+  /* line 12, ../sass/modules/_header.scss */
+  header .block {
+    margin-bottom: 0em;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 12, ../sass/modules/_header.scss */
+  header .block {
+    margin-bottom: 1.5em;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 21, ../sass/modules/_header.scss */
   header .menu-toggle {
     display: block;
     width: 20px;
@@ -5014,84 +5026,84 @@ header {
     margin-right: 10px;
     margin-top: 4px;
   }
-  /* line 24, ../sass/modules/_header.scss */
+  /* line 32, ../sass/modules/_header.scss */
   header .logo {
     float: left;
     width: 121px;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 30, ../sass/modules/_header.scss */
+  /* line 38, ../sass/modules/_header.scss */
   header .menu-toggle {
     display: none;
   }
-  /* line 33, ../sass/modules/_header.scss */
+  /* line 41, ../sass/modules/_header.scss */
   header .logo {
     width: auto;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 37, ../sass/modules/_header.scss */
+  /* line 45, ../sass/modules/_header.scss */
   header .follow-us {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 37, ../sass/modules/_header.scss */
+  /* line 45, ../sass/modules/_header.scss */
   header .follow-us {
     display: block;
     text-align: right;
     float: right;
   }
-  /* line 45, ../sass/modules/_header.scss */
+  /* line 53, ../sass/modules/_header.scss */
   header .follow-us .text {
     display: inline-block;
     margin: 0 10px;
   }
-  /* line 48, ../sass/modules/_header.scss */
+  /* line 56, ../sass/modules/_header.scss */
   header .follow-us .text:before {
     content: '|';
     padding-right: 10px;
   }
-  /* line 53, ../sass/modules/_header.scss */
+  /* line 61, ../sass/modules/_header.scss */
   header .follow-us ul {
     margin-top: -5px;
     float: right;
   }
-  /* line 56, ../sass/modules/_header.scss */
+  /* line 64, ../sass/modules/_header.scss */
   header .follow-us ul li {
     float: left;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 62, ../sass/modules/_header.scss */
+  /* line 70, ../sass/modules/_header.scss */
   header .user-menu {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 62, ../sass/modules/_header.scss */
+  /* line 70, ../sass/modules/_header.scss */
   header .user-menu {
     display: block;
     float: right;
   }
-  /* line 69, ../sass/modules/_header.scss */
+  /* line 77, ../sass/modules/_header.scss */
   header .user-menu a {
     color: #5a5a5a;
   }
-  /* line 72, ../sass/modules/_header.scss */
+  /* line 80, ../sass/modules/_header.scss */
   header .user-menu li {
     display: inline-block;
     margin-right: 10px;
   }
-  /* line 75, ../sass/modules/_header.scss */
+  /* line 83, ../sass/modules/_header.scss */
   header .user-menu li:last-child {
     margin-right: 0px;
     padding-left: 10px;
     position: relative;
     height: 20px;
   }
-  /* line 80, ../sass/modules/_header.scss */
+  /* line 88, ../sass/modules/_header.scss */
   header .user-menu li:last-child:before {
     content: '';
     height: 4px;
@@ -5103,16 +5115,16 @@ header {
     -webkit-border-radius: 4px;
     border-radius: 4px;
   }
-  /* line 93, ../sass/modules/_header.scss */
+  /* line 101, ../sass/modules/_header.scss */
   header .user-menu li:first-child:before {
     display: none;
   }
-  /* line 97, ../sass/modules/_header.scss */
+  /* line 105, ../sass/modules/_header.scss */
   header .user-menu li.user {
     position: relative;
     padding-left: 20px;
   }
-  /* line 100, ../sass/modules/_header.scss */
+  /* line 108, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
     background: url('../images/avatar-icon.jpg?1382978986') no-repeat center center;
@@ -5123,60 +5135,104 @@ header {
     left: 0;
   }
 }
-/* line 113, ../sass/modules/_header.scss */
+/* line 121, ../sass/modules/_header.scss */
 header .search {
   font-size: 13px;
 }
 @media all and (min-width: 320px) {
-  /* line 113, ../sass/modules/_header.scss */
+  /* line 121, ../sass/modules/_header.scss */
   header .search {
-    display: none;
+    clear: both;
+    position: relative;
   }
-  /* line 117, ../sass/modules/_header.scss */
+  /* line 126, ../sass/modules/_header.scss */
   header .search .form-item-keys-2 {
     display: inline-block;
     float: left;
     height: auto;
     overflow: hidden;
-    width: auto;
+    width: 100%;
     margin-right: 10px;
     vertical-align: bottom;
     line-height: 23px;
     font-weight: normal;
     margin: 0;
+    padding: 10px;
+    background-color: #000;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
   }
-  /* line 128, ../sass/modules/_header.scss */
+  /* line 143, ../sass/modules/_header.scss */
   header .search .form-item-keys-2 label {
     height: auto;
     overflow: hidden;
     width: auto;
     margin-right: 10px;
   }
-  /* line 133, ../sass/modules/_header.scss */
+  /* line 148, ../sass/modules/_header.scss */
   header .search .form-item-keys-2 label.element-invisible {
     display: inline-block;
     float: left;
     position: relative !important;
   }
-  /* line 140, ../sass/modules/_header.scss */
+  /* line 155, ../sass/modules/_header.scss */
   header .search [type=text] {
     float: left;
     height: 20px;
     border: 1px solid #ccc;
-    border-right: none;
     border-radius: 0;
-    width: 140px;
+    width: 100%;
     line-height: 20px;
     color: #777;
     text-indent: 6px;
     line-height: 21px;
   }
-  /* line 151, ../sass/modules/_header.scss */
+  /* line 165, ../sass/modules/_header.scss */
   header .search [type=text]:focus {
     outline: none;
   }
-  /* line 155, ../sass/modules/_header.scss */
+  /* line 169, ../sass/modules/_header.scss */
   header .search .form-submit {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 48px;
+    color: white;
+    border: none;
+    background: url('../images/mobile-search-hover.jpg?1383934216') no-repeat center center;
+    background-color: #000;
+    border-radius: 0;
+    text-indent: 200%;
+    overflow: hidden;
+    width: 34px;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 121, ../sass/modules/_header.scss */
+  header .search {
+    display: block;
+    float: right;
+    clear: right;
+    margin-top: 25px;
+  }
+  /* line 189, ../sass/modules/_header.scss */
+  header .search .form-item-keys-2 {
+    padding: 0;
+    width: auto;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  /* line 196, ../sass/modules/_header.scss */
+  header .search [type=text] {
+    border-right: none;
+    width: 140px;
+  }
+  /* line 200, ../sass/modules/_header.scss */
+  header .search .form-submit {
+    position: relative;
     display: block;
     float: left;
     width: 20px;
@@ -5184,22 +5240,56 @@ header .search {
     border: 1px solid #ccc;
     border-left: none;
     background-color: #fff;
-    border-radius: 0;
-    text-indent: 200%;
-    overflow: hidden;
     background: url('../images/search-submit.png?1382978986') no-repeat center center;
   }
 }
-@media all and (min-width: 768px) {
-  /* line 113, ../sass/modules/_header.scss */
-  header .search {
+
+@media all and (min-width: 320px) {
+  /* line 216, ../sass/modules/_header.scss */
+  .search-toggle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 48px;
+    color: white;
+    border: none;
+    background: url('../images/mobile-search.jpg?1383935752') no-repeat center center;
+    background-color: #fff;
+    border-radius: 0;
+    text-indent: 200%;
+    overflow: hidden;
+    width: 34px;
+  }
+
+  /* line 230, ../sass/modules/_header.scss */
+  .search {
+    border-bottom: 2px solid #000;
+  }
+  /* line 232, ../sass/modules/_header.scss */
+  .search form {
+    display: none;
+  }
+
+  /* line 236, ../sass/modules/_header.scss */
+  .search.active {
+    border-bottom: none;
+  }
+  /* line 238, ../sass/modules/_header.scss */
+  .search.active form {
     display: block;
-    float: right;
-    clear: right;
-    margin-top: 25px;
   }
 }
+@media all and (min-width: 768px) {
+  /* line 244, ../sass/modules/_header.scss */
+  .search-toggle {
+    display: none;
+  }
 
+  /* line 247, ../sass/modules/_header.scss */
+  .search {
+    border-bottom: none;
+  }
+}
 /**
  * Styles for TP4 Sidebar Blocks
  */
@@ -5559,7 +5649,11 @@ header .search {
   -o-transition: width 0.3s ease;
   transition: width 0.3s ease;
 }
-/* line 36, ../sass/modules/_left_drawer.scss */
+/* line 35, ../sass/modules/_left_drawer.scss */
+.snap-drawers #block-menu-menu-megamenu ul {
+  border-bottom: 5px solid #646464;
+}
+/* line 37, ../sass/modules/_left_drawer.scss */
 .snap-drawers #block-menu-menu-megamenu ul li {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 13px;
@@ -5570,7 +5664,7 @@ header .search {
   line-height: 48px;
   text-transform: none;
 }
-/* line 48, ../sass/modules/_left_drawer.scss */
+/* line 49, ../sass/modules/_left_drawer.scss */
 .snap-drawers #block-menu-menu-megamenu > ul > li {
   font-family: "TradeGothicLTStdCnLight", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 20px;
@@ -5578,19 +5672,19 @@ header .search {
   border-bottom: none;
   font-weight: 100;
 }
-/* line 55, ../sass/modules/_left_drawer.scss */
+/* line 56, ../sass/modules/_left_drawer.scss */
 .snap-drawers #block-menu-menu-megamenu a {
   color: #fff;
   border-bottom: 1px solid #646464;
   display: block;
   width: 100%;
 }
-/* line 60, ../sass/modules/_left_drawer.scss */
+/* line 61, ../sass/modules/_left_drawer.scss */
 .snap-drawers #block-menu-menu-megamenu a:hover {
   text-decoration: none;
   background-color: #333;
 }
-/* line 66, ../sass/modules/_left_drawer.scss */
+/* line 67, ../sass/modules/_left_drawer.scss */
 .snap-drawers .scrollable {
   overflow: auto;
   -webkit-transition-property: top, bottom;

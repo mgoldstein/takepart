@@ -18,6 +18,16 @@ Drupal.behaviors.my_custom_behavior = {
   attach: function(context, settings) {
     //prevent parent links on megamenu from linking on touch (link on double touch)
     $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
+
+    //Toggle search on mobile
+    $('html').click(function() {
+      $('.search-toggle').parent().removeClass('active');
+    });
+
+    $('.search-toggle').parent().click(function(event){
+        event.stopPropagation();
+        $(this).addClass('active');
+    });
   }
 };
 Drupal.behaviors.snapper_settings = {
