@@ -50,7 +50,7 @@ Drupal.behaviors.snapperSettings = {
       slideIntent: 40,
       minDragDistance: 5
     });
-    
+
     $('.menu-toggle').on('click', function(){
         if( snapper.state().state=="left" ){
             snapper.close();
@@ -58,6 +58,62 @@ Drupal.behaviors.snapperSettings = {
             snapper.open('left');
         }
     });
+  }
+};
+
+Drupal.behaviors.articleBehaviors = {
+  attach: function() {
+    var $body = $('body');
+
+    if ($body.is('.page-node.node-type-openpublish-article')) {
+      $('#article-social').tpsticky({offsetNode: '#article-content'});        
+
+      // Social share buttons
+      var tp_social_config = {
+        url_append: '?cmpid=organic-share-{{name}}',
+        services: [
+          {name: 'facebook'},
+          {
+            name: 'twitter',
+            text: '{{title}}',
+            via: 'TakePart'
+          },
+          {name: 'googleplus'},
+          {name: 'reddit'},
+          {name: 'email'}
+        ]
+      };
+
+      $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
+      var main_image = $('#article-image img').attr('src');
+      var more_services = {
+        pinterest: {
+          name: 'pinterest',
+          media: main_image
+        },
+        tumblr_link: {name: 'tumblr_link'},
+        gmail: {name: 'gmail'},
+        hotmail: {name: 'hotmail'},
+        yahoomail: {name: 'yahoomail'},
+        aolmail: {name: 'aolmail'},
+
+        //{name: 'myspace'},
+        //{name: 'delicious'},
+        linkedin: {name: 'linkedin'},
+        //{name: 'myaol'},
+        //{name: 'live'},
+        digg: {name: 'digg'},
+        stumbleupon: {name: 'stumbleupon'},
+        //{name: 'hyves'}
+      };
+
+      if ( !main_image ) delete more_services.pinterest;
+
+      $('#article-more-shares p').tpsocial({
+        services: more_services
+      });
+    }
   }
 };
 
