@@ -4219,28 +4219,82 @@ body.front #sidebar .block-title {
 }
 @media all and (min-width: 768px) {
   /* line 18, ../sass/page/_openpublish_article.scss */
-  .node-openpublish-article.view-mode-full #article-sidebar {
+  .node-openpublish-article.view-mode-full #article-social {
     float: left;
-    width: 30px;
-    padding: 6px;
-    background-color: blue;
+    width: 40px;
   }
-  /* line 24, ../sass/page/_openpublish_article.scss */
+  /* line 21, ../sass/page/_openpublish_article.scss */
+  .node-openpublish-article.view-mode-full #article-social .inner {
+    padding: 7px 1px;
+  }
+  /* line 25, ../sass/page/_openpublish_article.scss */
   .node-openpublish-article.view-mode-full #article-content {
-    margin-left: 50px;
+    margin-left: 55px;
   }
 }
-/* line 29, ../sass/page/_openpublish_article.scss */
+/* line 30, ../sass/page/_openpublish_article.scss */
+.node-openpublish-article.view-mode-full #article-social .tp-social-headline {
+  font-family: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  font-size: 14px;
+  line-height: 1;
+  color: #5a5a5a;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: -1px;
+  margin-bottom: .5em;
+}
+/* line 40, ../sass/page/_openpublish_article.scss */
+.node-openpublish-article.view-mode-full #article-social .comments-link {
+  margin: 0;
+}
+/* line 45, ../sass/page/_openpublish_article.scss */
+.node-openpublish-article.view-mode-full #article-social .tp-social-link,
+.node-openpublish-article.view-mode-full #article-social .comments-link a,
+.node-openpublish-article.view-mode-full #article-social .trigger a {
+  display: block;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  padding: 12px;
+  text-indent: 24px;
+  margin: 0 0 7px 5px;
+  background: red;
+  border-radius: 12px;
+}
+/* line 58, ../sass/page/_openpublish_article.scss */
+.node-openpublish-article.view-mode-full #article-social-more {
+  position: relative;
+  overflow: hidden;
+}
+/* line 61, ../sass/page/_openpublish_article.scss */
+.node-openpublish-article.view-mode-full #article-social-more.focusin {
+  overflow: visible;
+}
+/* line 64, ../sass/page/_openpublish_article.scss */
+.node-openpublish-article.view-mode-full #article-social-more #article-more-shares {
+  position: absolute;
+  bottom: 100%;
+  background: #fff;
+  border-radius: 5px;
+  border: 5px solid rgba(0, 0, 0, 0.5);
+  -webkit-background-clip: padding-box;
+  /* for Safari */
+  background-clip: padding-box;
+  /* for IE9+, Firefox 4+, Opera, Chrome */
+  min-width: 250px;
+  display: inline-block;
+}
+/* line 77, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .article-main-image figcaption p {
   margin-top: 0;
   font-family: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 34, ../sass/page/_openpublish_article.scss */
+/* line 82, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .author-bio {
   position: relative;
   padding: 10px;
 }
-/* line 37, ../sass/page/_openpublish_article.scss */
+/* line 85, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .author-bio:before {
   content: '';
   display: block;
@@ -4252,42 +4306,42 @@ body.front #sidebar .block-title {
   border-top: 1px solid #cccccc;
   border-left: 1px solid #cccccc;
 }
-/* line 50, ../sass/page/_openpublish_article.scss */
+/* line 98, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .author-bio .byline {
   display: inline;
 }
-/* line 54, ../sass/page/_openpublish_article.scss */
+/* line 102, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
   line-height: 1.5;
 }
-/* line 59, ../sass/page/_openpublish_article.scss */
+/* line 107, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body strong, .node-openpublish-article.view-mode-full .field-name-body b {
   font-family: "AdelleSans-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
 }
-/* line 60, ../sass/page/_openpublish_article.scss */
+/* line 108, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body em, .node-openpublish-article.view-mode-full .field-name-body i {
   font-family: "AdelleSans-Italic", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
 }
-/* line 61, ../sass/page/_openpublish_article.scss */
+/* line 109, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body strong em, .node-openpublish-article.view-mode-full .field-name-body em strong, .node-openpublish-article.view-mode-full .field-name-body b em, .node-openpublish-article.view-mode-full .field-name-body em b, .node-openpublish-article.view-mode-full .field-name-body strong i, .node-openpublish-article.view-mode-full .field-name-body i strong, .node-openpublish-article.view-mode-full .field-name-body b i, .node-openpublish-article.view-mode-full .field-name-body i b {
   font-family: "AdelleSans-Italic", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: bold;
 }
-/* line 64, ../sass/page/_openpublish_article.scss */
+/* line 112, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body a {
   color: #019f84;
   text-decoration: none;
 }
-/* line 65, ../sass/page/_openpublish_article.scss */
+/* line 113, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body a:hover, .node-openpublish-article.view-mode-full .field-name-body a:active {
   color: #01bf9e;
   text-decoration: underline;
 }
-/* line 68, ../sass/page/_openpublish_article.scss */
+/* line 116, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body:first-letter {
   float: left;
   font-size: 4em;
@@ -4297,29 +4351,29 @@ body.front #sidebar .block-title {
   font-family: "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
 }
-/* line 79, ../sass/page/_openpublish_article.scss */
+/* line 127, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body .node.view-mode-inline-content {
   text-align: center;
   border-top: 1px solid #0080a3;
 }
 @media all and (min-width: 768px) {
-  /* line 79, ../sass/page/_openpublish_article.scss */
+  /* line 127, ../sass/page/_openpublish_article.scss */
   .node-openpublish-article.view-mode-full .field-name-body .node.view-mode-inline-content {
     width: 25%;
     float: right;
     margin: .25em .5em;
   }
 }
-/* line 89, ../sass/page/_openpublish_article.scss */
+/* line 137, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body .node.view-mode-inline-content > header h2 {
   font-size: 14px;
   line-height: 1.285714286;
 }
-/* line 92, ../sass/page/_openpublish_article.scss */
+/* line 140, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body .node.view-mode-inline-content > header h2 a {
   color: black;
 }
-/* line 98, ../sass/page/_openpublish_article.scss */
+/* line 146, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body .node.view-mode-inline-content:before {
   content: 'related';
   display: block;
@@ -4349,7 +4403,7 @@ body.front #sidebar .block-title {
   margin: .5em 0;
   border-bottom: 1px dashed black;
 }
-/* line 116, ../sass/page/_openpublish_article.scss */
+/* line 164, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body .node.view-mode-inline-content:after {
   margin: 1em auto;
   visibility: visible;
@@ -5359,7 +5413,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1383952371') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1383952456') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -5411,7 +5465,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1383952371') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1383952456') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
