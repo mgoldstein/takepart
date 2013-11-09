@@ -15,14 +15,62 @@
     }
   }
   @include breakpoint($breakpoint-tablet) {
-    #article-sidebar {
+    #article-social {
       float: left;
-      width: 30px;
-      padding: 6px;
-      background-color: blue;
+      width: 40px;
+      .inner {
+        padding: 7px 1px;
+      }
     }
     #article-content {
-      margin-left: 50px;
+      margin-left: 55px;
+    }
+  }
+  #article-social {
+    .tp-social-headline {
+      font-family: $tradegothic-regular;
+      font-size: 14px;
+      line-height: 1;
+      color: $dark-gray;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: -1px;
+      margin-bottom: .5em;
+    }
+    .comments-link {
+      margin: 0;
+    }
+    .tp-social-link,
+    .comments-link a,
+    .trigger a {
+      display: block;
+      overflow: hidden;
+      width: 0;
+      height: 0;
+      padding: 12px;
+      text-indent: 24px;
+      margin: 0 0 7px 5px;
+
+      background: red;
+      border-radius: 12px;
+    }
+  } // #article-social
+  #article-social-more {
+    position: relative;
+    overflow: hidden;
+    &.focusin {
+      overflow: visible;
+    }
+    #article-more-shares {
+      position: absolute;
+      bottom: 100%;
+      background: #fff;
+      border-radius: 5px;
+      border: 5px solid rgba(0,0,0,.5);
+      -webkit-background-clip: padding-box; /* for Safari */
+        background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+        min-width: 250px;
+        display: inline-block;
     }
   }
   .article-main-image {
