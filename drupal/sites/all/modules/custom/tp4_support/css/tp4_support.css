@@ -2020,7 +2020,7 @@
   /* line 113, ../sass/_slimnav.scss */
   .slimnav .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1382978986') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1384193316') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -2094,7 +2094,7 @@
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1383937447') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1384193316') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -2124,7 +2124,7 @@
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1383937447') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1384193316') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
