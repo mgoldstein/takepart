@@ -1,20 +1,14 @@
 /**
  * @file
- * A JavaScript file for the theme.
- *
- * In order for this JavaScript to be loaded on pages, see the instructions in
- * the README.txt next to this file.
+ * Scripts for thetheme.
  */
 
-// JavaScript should be made compatible with libraries other than jQuery by
-// wrapping it with an "anonymous closure". See:
-// - https://drupal.org/node/1446420
-// - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
 
-
-// To understand behaviors, see https://drupal.org/node/756722#behaviors
-Drupal.behaviors.my_custom_behavior = {
+/**
+ * Megamenu Behaviors
+ */
+Drupal.behaviors.megaMenuBehaviors = {
   attach: function(context, settings) {
     //prevent parent links on megamenu from linking on touch (link on double touch)
     $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
@@ -30,7 +24,11 @@ Drupal.behaviors.my_custom_behavior = {
     });
   }
 };
-Drupal.behaviors.snapper_settings = {
+
+/**
+ * Settings for the snap.js library
+ */
+Drupal.behaviors.snapperSettings = {
   attach: function(context, settings) {
     var snapper = new Snap({
       element: document.getElementById('page-wrap')
@@ -48,11 +46,11 @@ Drupal.behaviors.snapper_settings = {
       maxPosition: 280,
       minPosition: 0,
       tapToClose: true,
-      touchToDrag: false,
+      touchToDrag: true,
       slideIntent: 40,
       minDragDistance: 5
     });
-    
+
     $('.menu-toggle').on('click', function(){
         if( snapper.state().state=="left" ){
             snapper.close();
@@ -60,11 +58,63 @@ Drupal.behaviors.snapper_settings = {
             snapper.open('left');
         }
     });
-
-
-
   }
 };
 
+Drupal.behaviors.articleBehaviors = {
+  attach: function() {
+    var $body = $('body');
+
+    if ($body.is('.page-node.node-type-openpublish-article')) {
+      $('#article-social').tpsticky({offsetNode: '#article-content'});        
+
+      // Social share buttons
+      var tp_social_config = {
+        url_append: '?cmpid=organic-share-{{name}}',
+        services: [
+          {name: 'facebook'},
+          {
+            name: 'twitter',
+            text: '{{title}}',
+            via: 'TakePart'
+          },
+          {name: 'googleplus'},
+          {name: 'reddit'},
+          {name: 'email'}
+        ]
+      };
+
+      $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
+      var main_image = $('#article-image img').attr('src');
+      var more_services = {
+        pinterest: {
+          name: 'pinterest',
+          media: main_image
+        },
+        tumblr_link: {name: 'tumblr_link'},
+        gmail: {name: 'gmail'},
+        hotmail: {name: 'hotmail'},
+        yahoomail: {name: 'yahoomail'},
+        aolmail: {name: 'aolmail'},
+
+        //{name: 'myspace'},
+        //{name: 'delicious'},
+        linkedin: {name: 'linkedin'},
+        //{name: 'myaol'},
+        //{name: 'live'},
+        digg: {name: 'digg'},
+        stumbleupon: {name: 'stumbleupon'},
+        //{name: 'hyves'}
+      };
+
+      if ( !main_image ) delete more_services.pinterest;
+
+      $('#article-more-shares p').tpsocial({
+        services: more_services
+      });
+    }
+  }
+};
 
 })(jQuery, Drupal, this, this.document);
