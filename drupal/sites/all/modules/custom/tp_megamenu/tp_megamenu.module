@@ -38,6 +38,17 @@ function tp_megamenu_block_view($delta = ''){
   return $block;
 }
 
+/*
+ *Implements hook_theme()
+ */
+function tp_megamenu_theme(){
+  return array(
+    'tp_megamenu_slimnav' => array(
+      'arguments' => array(),
+      'template' => 'tp-slimnav'
+    ),
+  );
+}
 
 function tp_megamenu_megamenu(){
   /* render parent menu (In the News, Lifestyle, Featured & Columns, etc) */
@@ -136,7 +147,4 @@ function tp_megamenu_megamenu(){
 
   return $output;
 }
-
-
-
 
