@@ -67,6 +67,9 @@ function tp4_support_block_info(){
   $blocks['tp4_graveyard'] = array(
     'info' => t('Graveyard'),
   );
+  $blocks['tp4_slim_nav'] = array(
+    'info' => t('Slim Nav'),
+  );
   return $blocks;
 }
 
@@ -88,6 +91,9 @@ function tp4_support_block_view($delta = ''){
     case 'tp4_graveyard':
       module_load_include('inc', 'tp4_support', 'tp4_support_graveyard');
       $block['content'] = tp4_support_graveyard();
+    break;
+    case 'tp4_slim_nav':
+      $block['content'] = tp4_support_slim_nav();
     break;
   }
   return $block;
@@ -176,6 +182,16 @@ function tp4_support_theme() {
         'megamenu' => $megamenu,
       ),
     ),
+    'tp4_support_slim_nav' => array(
+      'arguments' => array(),
+      'template' => 'tp4-support-slim-nav',
+      'variables' => array(
+        'logo' => $logo,
+        'user_links' => $user_links,
+        'search' => $search,
+        'megamenu' => $slimnav,
+      ),
+    ),
     'tp4_support_graveyard' => array(
       'arguments' => array(),
       'template' => 'tp4-support-graveyard',
@@ -209,6 +225,33 @@ function tp4_support_fat_header(){
 
   return theme('tp4_support_fat_header', array('logo' => $logo, 'user_links' => $user_links, 'search' => $search, 'megamenu' => $megamenu));
 }
+
+function tp4_support_slim_nav(){
+  global $base_url;
+  global $user;
+  drupal_add_css(drupal_get_path('module', 'tp4_support'). '/css/tp4_support.css', array());
+  drupal_add_js(drupal_get_path('module', 'tp4_support'). '/js/slimnav.js', array());
+  $logo = $base_url. '/'. drupal_get_path('theme', 'tp4'). '/images/takepart_logo.png';
+  if($user->uid == 0){
+    $user_links = array();
+    $user_links = array(
+      '<li>'. l('Sign in', $base_url. '/user'). '</li>',
+    );
+  }
+  else{
+    $user_links = array(
+      '<li class="user">'. l($user->name, $base_url. '/user'). '</li>',
+      '<li>'. l('Sign out', $base_url. '/user/logout'). '</li>',
+    );
+    $search = drupal_render(drupal_get_form('search_block_form'));
+  }
+  $slimnav = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 1);
+  menu_tree_add_active_path($slimnav);
+  $slimnav = drupal_render(menu_tree_output($slimnav));
+
+  return theme('tp4_support_slim_nav', array('logo' => $logo, 'user_links' => $user_links, 'search' => $search, 'slimnav' => $slimnav));
+}
+
 function tp4_support_dont_miss(){
   $dont_miss_label = variable_get('tp4_support_dont_miss_label', NULL);
   $dont_miss_text = variable_get('tp4_support_dont_miss_text', NULL);

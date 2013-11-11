@@ -1,0 +1,320 @@
+/*
+ *Slim Nav
+*/
+.slimnav{
+  height: auto;
+  overflow: hidden;
+  background-color: #fff;
+  font-family: $adelle-regular;
+  color: $dark-gray;
+  padding-top: 15px;
+  .block{
+    @include breakpoint($breakpoint-mobile){
+      margin-bottom: 0em;
+    }
+    @include breakpoint($breakpoint-tablet){
+      margin-bottom: 1.5em;
+    }
+  }
+  @include breakpoint($breakpoint-mobile){
+    .menu-toggle{
+      display: block;
+      width: 20px;
+      height: 3px;;
+      border-top: 9px double $light-mint;
+      border-bottom: 3px solid $light-mint;
+      cursor: pointer;
+      float: left;
+      margin-right: 10px;
+      margin-top: 4px;
+    }
+    .logo{
+      float: left;
+      width: 121px;
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+  @include breakpoint($breakpoint-tablet){
+    .menu-toggle{
+      display: none;
+    }
+  }
+  .follow-us{
+    @include breakpoint($breakpoint-mobile){
+      display: none;
+    }
+    @include breakpoint($breakpoint-tablet){
+      display: block;
+      text-align: right;
+      float: right;
+      padding-right: 39px;
+      .text{
+        display: inline-block;
+        margin: 0 10px;
+        &:before{
+          content: '|';
+          padding-right: 10px;
+        }
+      }
+      ul{
+        margin-top: -5px;
+        float: right;
+        li{
+          float: left;
+          list-style-type: none;
+          list-style-image: none;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+  .user-menu{
+    @include breakpoint($breakpoint-mobile){
+      display: none;
+    }
+    @include breakpoint($breakpoint-tablet){
+      display: block;
+      float: right;
+      padding-right: 15px;
+      a{
+        color: $dark-gray;
+      }
+      li{
+        display: inline-block;
+        margin-right: 10px;
+        &:last-child{
+          margin-right: 0px;
+          padding-left: 10px;
+          position: relative;
+          height: 20px;
+          &:before{
+            content: '';
+            height: 4px;
+            width: 4px;
+            background-color: $light-gray;
+            position: absolute;
+            top: 30%;
+            left: 0;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+          }
+        }
+        &:first-child{
+          &:before{
+            display: none;
+          }
+        }
+        &.user{
+          position: relative;
+          padding-left: 20px;
+          &:before{
+            content: '';
+            background: image-url('avatar-icon.jpg') no-repeat center center;
+            height: 15px;
+            width: 12px;
+            display: block;
+            position: absolute;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+  .search{
+    font-size: 13px;
+    @include breakpoint($breakpoint-mobile){
+      clear: both;
+      position: relative;
+      .form-item-keys-2{
+        display: inline-block;
+        float: left;
+        height: auto;
+        overflow: hidden;
+        width: 100%;
+        margin-right: 10px;
+        vertical-align: bottom;
+        line-height: 23px;
+        font-weight: normal;
+        margin: 0;
+        padding: 10px;
+        background-color: #000;
+        -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .3);
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .3);
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        label {
+          height: auto;
+          overflow: hidden;
+          width: auto;
+          margin-right: 10px;
+          &.element-invisible{
+            display: inline-block;
+            float: left;
+            position: relative !important;
+          }
+        }
+      }
+      [type=text]{
+        float: left;
+        height: 20px;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        width: 100%;
+        line-height: 20px;
+        color: #777;
+        text-indent: 6px;
+        line-height: 21px;
+        &:focus{
+          outline: none;
+        }
+      }
+      .form-submit{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 48px;
+        color: white;
+        border: none;
+        background: image-url('mobile-search-hover.jpg') no-repeat center center;
+        background-color: #000;
+        border-radius: 0;
+        text-indent: 200%;
+        overflow: hidden;
+        width: 34px;
+      }
+    }
+    @include breakpoint($breakpoint-tablet){
+      .form-item-keys-2{
+        width: 420px;
+        background-color: #fff;
+        float: right;
+        [type=text]{
+          width: 400px;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint($breakpoint-mobile){
+  .search-toggle{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 48px;
+    color: white;
+    border: none;
+    background: image-url('mobile-search.jpg') no-repeat center center;
+    background-color: #fff;
+    border-radius: 0;
+    text-indent: 200%;
+    overflow: hidden;
+    width: 34px;
+    cursor: pointer;
+  }
+  .search {
+    border-bottom: 2px solid #000;
+    form{
+      display: none;
+    }
+  }
+  .search.active {
+    border-bottom: none;
+    form{
+      display: block;
+    }
+  }
+}
+@include breakpoint($breakpoint-tablet){
+  .search.active {
+    border-bottom: 1px solid #000;;
+    form{
+      display: block;
+      padding: 5px;
+      margin-top: -4px;
+      margin-right: -2px;
+      float: right;
+    }
+  }
+}
+
+
+
+
+
+
+
+#main-menu{
+  @include breakpoint($breakpoint-mobile){
+    display: none;
+  }
+  @include breakpoint($breakpoint-tablet){
+    display: block;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box; /* Firefox */
+  }
+  float: left;
+  width: 572px;
+  padding-left: 20px;
+  padding-top: 3px;
+  li{
+    width: 20%;
+    float: left;
+    font-family: $tradegothic-regular;
+    font-size: 18px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    color: #000;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style-image: none;
+    list-style-type: none;
+    a{
+      color: #000;
+      position: relative;
+      width: 100%;
+      display: block;
+      &:hover{
+        text-decoration: none;
+      }
+      &:after{
+        content: '';
+        border-right: 1px solid $gray-line;
+        height: 18px;
+        width: auto;
+        position: absolute;
+        right: 0;
+        top: 4px;
+      }
+    }
+    &:nth-child(1){
+      width: 17%;
+      text-align: left;
+    }
+    &:nth-child(2){
+      width: 15%;
+    }
+    &:nth-child(3){
+      width: 30%;
+    }
+    &:nth-child(4){
+      width: 19%;
+    }
+    &:nth-child(5){
+      width: 19%;
+      text-align: right;
+      a:after{
+        border-right: none;
+      }
+    }
+
+  }
+}
+
+
+
