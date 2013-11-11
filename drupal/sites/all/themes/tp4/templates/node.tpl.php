@@ -17,7 +17,8 @@
       <?php endif; ?>
       <?php print render($title_suffix); ?>
 
-      <?php if ($display_submitted): ?>
+      <?php /* Don't ever print $submitted */ ?>
+      <?php if (FALSE && $display_submitted): ?>
         <p class="submitted">
           <?php print $user_picture; ?>
           <?php print $submitted; ?>
