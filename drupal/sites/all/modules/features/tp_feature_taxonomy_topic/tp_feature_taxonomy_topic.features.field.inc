@@ -92,7 +92,7 @@ function tp_feature_taxonomy_topic_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => 0,
+        'weight' => '0',
       ),
     ),
   );
@@ -224,79 +224,6 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
-  // Exported field: 'field_collection_item-field_promo_content_collection-field_thumbnail'.
-  $fields['field_collection_item-field_promo_content_collection-field_thumbnail'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_thumbnail',
-      'foreign keys' => array(
-        'file_managed' => array(
-          'columns' => array(
-            'fid' => 'fid',
-          ),
-          'table' => 'file_managed',
-        ),
-      ),
-      'indexes' => array(
-        'fid' => array(
-          0 => 'fid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'media',
-      'settings' => array(),
-      'translatable' => '1',
-      'type' => 'media',
-    ),
-    'field_instance' => array(
-      'bundle' => 'field_promo_content_collection',
-      'deleted' => '0',
-      'description' => 'Override the Promo Image that is being referenced.  If left blank, the Promo Image from the content that is being referenced will be used.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => NULL,
-          'settings' => array(),
-          'type' => 'media_large',
-          'weight' => 1,
-        ),
-      ),
-      'entity_type' => 'field_collection_item',
-      'field_name' => 'field_thumbnail',
-      'label' => 'Thumbnail',
-      'required' => 0,
-      'settings' => array(
-        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico css',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'media_views_widget',
-        'settings' => array(
-          'allowed_schemes' => array(
-            'private' => 'private',
-            'public' => 'public',
-            'vimeo' => 0,
-            'youtube' => 0,
-          ),
-          'allowed_types' => array(
-            'audio' => 0,
-            'default' => 0,
-            'image' => 'image',
-            'video' => 0,
-          ),
-          'progress_indicator' => 'throbber',
-          'view' => 'media_views_widget_default--default',
-        ),
-        'type' => 'media_generic_alt',
-        'weight' => '3',
-      ),
-    ),
-  );
-
   // Exported field: 'taxonomy_term-topic-field_promo_content_collection'.
   $fields['taxonomy_term-topic-field_promo_content_collection'] = array(
     'field_config' => array(
@@ -357,12 +284,10 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
   t('Override for the promo label.
 Text that labels what the promo is ("Most Popular"  "Trending").');
   t('Override the Promo Headline that is being referenced.  If left blank, the Promo Headline from the content that is being referenced will be used.');
-  t('Override the Promo Image that is being referenced.  If left blank, the Promo Image from the content that is being referenced will be used.');
   t('Promo Content');
   t('Promo Headline');
   t('Promo Label');
   t('Reference to promotional content.');
-  t('Thumbnail');
 
   return $fields;
 }
