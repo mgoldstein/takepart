@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * @file
+ * Main file for the TakePart Contact Us custom module.
+ */
+
+/**
+ * Implement hook_form_FORM_ID_alter
+ *
+ */
+function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$form_state, $form_id) {
+    $form['name'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Name'),
+        '#required' => TRUE,
+    );
+    $form['requester'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Email address'),
+        '#required' => TRUE,
+    );
+    $form['subject'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Subject'),
+        '#required' => TRUE,
+        '#maxlength' => 150,
+    );
+    $form['description'] = array(
+        '#type' => 'textarea',
+        '#title' => t('Message'),
+        '#required' => TRUE,
+        '#maxlength' => 1500,
+        '#maxlength_js' => TRUE,
+    );
+    $form['group_id'] = array(
+        '#type' => 'hidden',
+        '#value' => 20847042,
+    );
+    $form['zendesk_23560737'] = array(
+        '#type' => 'hidden',
+        '#default_value' => '',
+    );
+    $form['zendesk_23560727'] = array(
+        '#type' => 'hidden',
+        '#value' => $_SERVER['HTTP_REFERER'],
+    );
+    $form['zendesk_23643146'] = array(
+        '#type' => 'hidden',
+        '#value' => variable_get('site_name', ''),
+    );
+    $form['#submit'][0] = 'takepart_contact_us_form_submit';
+    return $form;
+}
+
+/*
+ * Need to turn off block caching or else the character limit javascript won't work
+ */
+function takepart_contact_us_block_info_alter(&$blocks, $theme, $code_blocks) {
+    $blocks['zendesk_forms']['zendesk_support_form']['cache'] = DRUPAL_NO_CACHE;
+}
+
+/*
+ * Alter the block to add the javascript to capture the user's browser information 
+ * and clear the subject field
+ */
+function takepart_contact_us_block_view_zendesk_forms_zendesk_support_form_alter(&$data, $block) {
+    $form_body = drupal_get_form('zendesk_forms_support_form');
+    $js = '<script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery("input[name=zendesk_23560737]").val(navigator.userAgent);
+        });
+        </script>';
+    $data['subject'] = t('');
+    $data['content'] = drupal_render($form_body) . "\n" . $js;
+}
+
+/*
+ * New submit handler for processing custom fields and group ID field
+ */
+function takepart_contact_us_form_submit($form, &$form_state) {
+    $ticket = array(
+        'description' => $form_state['values']['description'],
+        'requester' => array(
+            'name' => $form_state['values']['name'],
+            'email' => $form_state['values']['requester'],
+        ),
+        'group_id' => $form_state['values']['group_id'],
+    );
+    if (!empty($form_state['values']['subject'])) {
+        $ticket['subject'] = $form_state['values']['subject'];
+    }
+    // Get extra fields that are prefixed with zendesk_. Right now the only way
+    // to add extra fields is by using form alter though.
+    $extra_fields = array_filter(array_keys($form_state['values']), create_function('$item', 'return strpos($item, "zendesk_") === 0;'));
+    if (!empty($extra_fields)) {
+        $ticket['custom_fields'] = array();
+        $i = 0;
+        foreach ($extra_fields as $field_name) {
+            $ticket['custom_fields'][$i]['id'] = intval(substr($field_name, 8));
+            $ticket['custom_fields'][$i]['value'] = $form_state['values'][$field_name];
+            $i++;
+        }
+    }
+    // watchdog('Zen Desk', json_encode($ticket));
+    // Wrap the ticket array in yet another array and call the API.
+    $response = zendesk_forms_api_call(array('ticket' => $ticket), 'tickets.json');
+    if (!isset($response->error)) {
+        drupal_set_message(t('Your message has been sent'));
+    } else {
+        drupal_set_message(t('An error happened while sending the message.'), 'error');
+    }
+}

@@ -1,0 +1,6 @@
+name = Takepart Contact Us
+description = Custom alterations to Zendesk forms for TakePart
+core = 7.x
+version = 7.x-1.0
+package = Customization
+dependencies[] = zendesk_forms
