@@ -55,6 +55,21 @@ function takepart_campaign_strongarm() {
       'inline_content' => array(
         'custom_settings' => FALSE,
       ),
+      'feature_main' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_secondary' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_topic' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_video' => array(
+        'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

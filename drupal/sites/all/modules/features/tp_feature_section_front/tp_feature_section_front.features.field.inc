@@ -10,6 +10,80 @@
 function tp_feature_section_front_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'field_collection_item-field_promo_content_collection-field_promo_thumbnail'.
+  $fields['field_collection_item-field_promo_content_collection-field_promo_thumbnail'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_promo_thumbnail',
+      'foreign keys' => array(
+        'fid' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
+      'indexes' => array(
+        'fid' => array(
+          0 => 'fid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'image',
+      'settings' => array(
+        'default_image' => 0,
+        'uri_scheme' => 'public',
+      ),
+      'translatable' => '0',
+      'type' => 'image',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_promo_content_collection',
+      'deleted' => '0',
+      'description' => 'Overrides the promo image in the content being referenced.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => '',
+          ),
+          'type' => 'image',
+          'weight' => 4,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_promo_thumbnail',
+      'label' => 'Promo Thumbnail',
+      'required' => 0,
+      'settings' => array(
+        'alt_field' => 0,
+        'default_image' => 0,
+        'file_directory' => '',
+        'file_extensions' => 'png gif jpg jpeg',
+        'max_filesize' => '',
+        'max_resolution' => '',
+        'min_resolution' => '',
+        'title_field' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'image',
+        'settings' => array(
+          'preview_image_style' => 'thumbnail',
+          'progress_indicator' => 'throbber',
+        ),
+        'type' => 'image_image',
+        'weight' => '4',
+      ),
+    ),
+  );
+
   // Exported field: 'node-section_front-body'.
   $fields['node-section_front-body'] = array(
     'field_config' => array(
@@ -154,7 +228,7 @@ function tp_feature_section_front_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => '2',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -213,70 +287,36 @@ function tp_feature_section_front_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-section_front-field_promo_content'.
-  $fields['node-section_front-field_promo_content'] = array(
+  // Exported field: 'node-section_front-field_promo_content_collection'.
+  $fields['node-section_front-field_promo_content_collection'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_promo_content',
-      'foreign keys' => array(
-        'node' => array(
-          'columns' => array(
-            'target_id' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
+      'field_name' => 'field_promo_content_collection',
+      'foreign keys' => array(),
+      'indexes' => array(),
       'locked' => '0',
-      'module' => 'entityreference',
+      'module' => 'field_collection',
       'settings' => array(
-        'handler' => 'base',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'views-select-list' => array(
-              'status' => 0,
-            ),
-          ),
-          'sort' => array(
-            'type' => 'none',
-          ),
-          'target_bundles' => array(
-            'action' => 'action',
-            'openpublish_article' => 'openpublish_article',
-            'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-            'openpublish_video' => 'openpublish_video',
-            'petition_action' => 'petition_action',
-            'pledge_action' => 'pledge_action',
-            'section_front' => 'section_front',
-            'takepart_campaign' => 'takepart_campaign',
-          ),
-        ),
-        'target_type' => 'node',
+        'hide_blank_items' => 1,
+        'path' => '',
       ),
       'translatable' => '0',
-      'type' => 'entityreference',
+      'type' => 'field_collection',
     ),
     'field_instance' => array(
       'bundle' => 'section_front',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Promotional content that is associated with this node/term.',
+      'description' => '',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
-          'weight' => 3,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -316,22 +356,18 @@ function tp_feature_section_front_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_promo_content',
+      'field_name' => 'field_promo_content_collection',
       'label' => 'Promo Content',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'entityreference',
-        'settings' => array(
-          'match_operator' => 'CONTAINS',
-          'path' => '',
-          'size' => '60',
-        ),
-        'type' => 'entityreference_autocomplete',
-        'weight' => '4',
+        'active' => 0,
+        'module' => 'field_collection',
+        'settings' => array(),
+        'type' => 'field_collection_embed',
+        'weight' => '5',
       ),
     ),
   );
@@ -369,7 +405,7 @@ function tp_feature_section_front_field_default_fields() {
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => 1,
+          'weight' => '1',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -454,8 +490,9 @@ function tp_feature_section_front_field_default_fields() {
   t('Body');
   t('Context');
   t('HTML title Tag');
+  t('Overrides the promo image in the content being referenced.');
   t('Promo Content');
-  t('Promotional content that is associated with this node/term.');
+  t('Promo Thumbnail');
 
   return $fields;
 }
