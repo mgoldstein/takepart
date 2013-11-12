@@ -64,7 +64,7 @@ function tp_feature_taxonomy_topic_field_default_fields() {
       'bundle' => 'field_promo_content_collection',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Reference to promotional content.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -92,7 +92,7 @@ function tp_feature_taxonomy_topic_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '0',
+        'weight' => 0,
       ),
     ),
   );
@@ -130,7 +130,7 @@ function tp_feature_taxonomy_topic_field_default_fields() {
       'bundle' => 'field_promo_content_collection',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Override the Promo Headline that is being referenced.  If left blank, the Promo Headline from the content that is being referenced will be used.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -193,7 +193,8 @@ function tp_feature_taxonomy_topic_field_default_fields() {
       'bundle' => 'field_promo_content_collection',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Text that labels what the promo is ("Most Popular"  "Trending").',
+      'description' => 'Override for the promo label.
+Text that labels what the promo is ("Most Popular"  "Trending").',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -253,7 +254,7 @@ function tp_feature_taxonomy_topic_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'field_promo_content_collection',
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Override the Promo Image that is being referenced.  If left blank, the Promo Image from the content that is being referenced will be used.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -353,10 +354,14 @@ function tp_feature_taxonomy_topic_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Override for the promo label.
+Text that labels what the promo is ("Most Popular"  "Trending").');
+  t('Override the Promo Headline that is being referenced.  If left blank, the Promo Headline from the content that is being referenced will be used.');
+  t('Override the Promo Image that is being referenced.  If left blank, the Promo Image from the content that is being referenced will be used.');
   t('Promo Content');
   t('Promo Headline');
   t('Promo Label');
-  t('Text that labels what the promo is ("Most Popular"  "Trending").');
+  t('Reference to promotional content.');
   t('Thumbnail');
 
   return $fields;
