@@ -47,6 +47,7 @@ Drupal.behaviors.snapperSettings = {
       minPosition: 0,
       tapToClose: true,
       touchToDrag: true,
+      clickToDrag: false,
       slideIntent: 40,
       minDragDistance: 5
     });
