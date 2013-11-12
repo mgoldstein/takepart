@@ -899,7 +899,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'gmapfield',
           'settings' => array(),
           'type' => 'gmapfield_formatter',
-          'weight' => '33',
+          'weight' => '32',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -1001,7 +1001,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '31',
+          'weight' => '30',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -1099,7 +1099,7 @@ function takepart_campaign_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => '32',
+          'weight' => '31',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -1294,55 +1294,24 @@ function takepart_campaign_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-takepart_campaign-field_promo_content'.
-  $fields['node-takepart_campaign-field_promo_content'] = array(
+  // Exported field: 'node-takepart_campaign-field_promo_content_collection'.
+  $fields['node-takepart_campaign-field_promo_content_collection'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '1',
+      'cardinality' => '-1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_promo_content',
-      'foreign keys' => array(
-        'node' => array(
-          'columns' => array(
-            'target_id' => 'nid',
-          ),
-          'table' => 'node',
-        ),
-      ),
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
+      'field_name' => 'field_promo_content_collection',
+      'foreign keys' => array(),
+      'indexes' => array(),
       'locked' => '0',
-      'module' => 'entityreference',
+      'module' => 'field_collection',
       'settings' => array(
-        'handler' => 'base',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'views-select-list' => array(
-              'status' => 0,
-            ),
-          ),
-          'sort' => array(
-            'type' => 'none',
-          ),
-          'target_bundles' => array(
-            'action' => 'action',
-            'openpublish_article' => 'openpublish_article',
-            'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-            'openpublish_video' => 'openpublish_video',
-            'petition_action' => 'petition_action',
-            'pledge_action' => 'pledge_action',
-            'section_front' => 'section_front',
-            'takepart_campaign' => 'takepart_campaign',
-          ),
-        ),
-        'target_type' => 'node',
+        'hide_blank_items' => 1,
+        'path' => '',
       ),
       'translatable' => '0',
-      'type' => 'entityreference',
+      'type' => 'field_collection',
     ),
     'field_instance' => array(
       'bundle' => 'takepart_campaign',
@@ -1352,12 +1321,9 @@ function takepart_campaign_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'entityreference',
-          'settings' => array(
-            'link' => FALSE,
-          ),
-          'type' => 'entityreference_label',
-          'weight' => 36,
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '35',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -1403,22 +1369,18 @@ function takepart_campaign_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_promo_content',
+      'field_name' => 'field_promo_content_collection',
       'label' => 'Promo Content',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
       'widget' => array(
-        'active' => 1,
-        'module' => 'entityreference',
-        'settings' => array(
-          'match_operator' => 'CONTAINS',
-          'path' => '',
-          'size' => '60',
-        ),
-        'type' => 'entityreference_autocomplete',
-        'weight' => '22',
+        'active' => 0,
+        'module' => 'field_collection',
+        'settings' => array(),
+        'type' => 'field_collection_embed',
+        'weight' => '23',
       ),
     ),
   );
@@ -1730,7 +1692,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => 35,
+          'weight' => '34',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -1836,7 +1798,7 @@ function takepart_campaign_field_default_fields() {
             'image_style' => '',
           ),
           'type' => 'image',
-          'weight' => '34',
+          'weight' => '33',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -1959,7 +1921,7 @@ function takepart_campaign_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '29',
+          'weight' => '36',
         ),
         'feature_main' => array(
           'label' => 'above',

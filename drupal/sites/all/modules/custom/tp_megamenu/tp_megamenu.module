@@ -132,12 +132,13 @@ function tp_megamenu_megamenu(){
           $text = l($node->field_promo_headline['und'][0]['value'], $node_path);
         }
         
-
         //Check for overrides
         $label = (isset($field_collection->field_promo_label['und'][0]['value']) ? $field_collection->field_promo_label['und'][0]['value'] : $label);
         $text = (isset($field_collection->field_promo_headline['und'][0]['value']) ? $field_collection->field_promo_headline['und'][0]['value'] : $text);
-        $thumb = (isset($field_collection->field_thumbnail['und'][0]['value']) ? $field_collection->field_thumbnail['und'][0]['value'] : $thumb);
-
+        if(isset($field_collection->field_promo_thumbnail['und'][0]['fid'])){
+          $thumb = file_load($field_collection->field_promo_thumbnail['und'][0]['fid']);
+          $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+        }
 
         //Output subcategories based on input from menu link ID field
         $output .= '<div class="sub-category">';

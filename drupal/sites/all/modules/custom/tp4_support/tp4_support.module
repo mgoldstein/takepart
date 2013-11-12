@@ -184,6 +184,13 @@ function tp4_support_theme() {
     'tp4_support_graveyard' => array(
       'arguments' => array(),
       'template' => 'tp4-support-graveyard',
+    ),
+    'tp4_author_full' => array(
+      'template' => 'field-formatter--author-full',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+      )
     )
   );
 }
@@ -264,11 +271,34 @@ function tp4_support_dont_miss(){
   return $output;
 }
 
+/*
+ * Implements hook_field_formatter_info()
+ */
+function tp4_support_field_formatter_info(){
+  return array(
+    'tp4_author_full' => array(
+      'label' => t('Author w/ image and bio field formatter'),
+      'field types' => array('node_reference'),
+    ),
+  );
+}
 
-
-
-
-
-
+/*
+ * Implements hook_field_formatter_view()
+ */
+function tp4_support_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display){
+  $element = array();
+  $settings = $display['settings'];
+  switch($display['type']){
+    case 'tp4_author_full':
+      $element = array(
+        '#theme' => 'tp4_author_full',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
+    break;
+  }
+  return $element;
+}
 
 
