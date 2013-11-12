@@ -35,7 +35,7 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
     );
     $form['group_id'] = array(
         '#type' => 'hidden',
-        '#value' => 20847042,
+        '#value' => 20740327,
     );
     $form['zendesk_23560737'] = array(
         '#type' => 'hidden',
