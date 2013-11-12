@@ -206,20 +206,30 @@ function tp4_preprocess_field(&$variables, $hook) {
 }
 
 
+/**
+ * Outputs Free Tag Taxonomy Links for Article Nodes
+ */
+function tp4_field__field_topic__openpublish_article($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $item) {
+    $output .= '<li>' . drupal_render($item) . '</li>';
+  }
+
+  return $output;
+}
+
+/**
+ * Outputs topic taxonomy links for article nodes.
+ */
+function tp4_field__field_free_tag__openpublish_article($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
 function tp4_menu_link(array $variables) {
   if($variables['element']['#theme'] == 'menu_link__menu_megamenu'){
     $variables['element']['#attributes']['data-mlid'][] = $variables['element']['#original_link']['mlid'];
   }
   return theme_menu_link($variables);
 }
-
-
-
-
-
-
-
-
-
-
 

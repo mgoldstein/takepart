@@ -62,14 +62,17 @@ Drupal.behaviors.snapperSettings = {
   }
 };
 
+/**
+ * Behaviors for Article Nodes
+ */
 Drupal.behaviors.articleBehaviors = {
   attach: function() {
     var $body = $('body');
 
     if ($body.is('.page-node.node-type-openpublish-article')) {
-      $('#article-social').tpsticky({offsetNode: '#article-content'});        
+      $('#article-social').tpsticky();
 
-      // Social share buttons
+      // Setup Social Share Buttons
       var tp_social_config = {
         url_append: '?cmpid=organic-share-{{name}}',
         services: [
@@ -87,7 +90,8 @@ Drupal.behaviors.articleBehaviors = {
 
       $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
-      var main_image = $('#article-image img').attr('src');
+      // Set up secondary social share buttons
+      var main_image = $('figure.article-main-image img').attr('src');
       var more_services = {
         pinterest: {
           name: 'pinterest',
@@ -114,6 +118,31 @@ Drupal.behaviors.articleBehaviors = {
       $('#article-more-shares p').tpsocial({
         services: more_services
       });
+
+      // set up behavior of "more" social links
+      // this is untouched code from gerald burns and chunkpart
+      var social_more_close = function() {
+        $article_social_more.removeClass('focusin');
+        $body.unbind('click', social_more_close);
+      };
+
+      var $article_social_more = $('#article-social-more')
+        .bind('focusin', function() {
+          $article_social_more.addClass('focusin');
+        })
+        .bind('focusout', function() {
+          $article_social_more.removeClass('focusin');
+        })
+        .bind('click', function(e) {
+          if ( !$article_social_more.is('.focusin') ) {
+            $article_social_more.addClass('focusin');
+            setTimeout(function() {
+              $body.bind('click', social_more_close);
+            }, 100);
+          }
+          e.preventDefault();
+        })
+        ;
     }
   }
 };

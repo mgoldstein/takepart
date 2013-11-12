@@ -1,4 +1,139 @@
+// set up sprites for the tpsocial block;
+@import "tp-social/*.png";
+@include all-tp-social-sprites;
+.comments-link a { @include tp-social-sprite(comment); }
+.trigger a { @include tp-social-sprite(more); }
+
 .node-openpublish-article.view-mode-full {
+
+  //
+  // Basic Layout
+  // 
+  @include breakpoint($breakpoint-desktop) {
+    #article-social {
+      float: left;
+      width: 40px;
+      .inner {
+        padding: 7px 1px;
+      }
+    }
+    #article-main-image,
+    #article-content,
+    #series-navigation,
+    #article-footer,
+    #article-comments {
+      float: right;
+      clear: right;
+      width: 583px;
+    }
+    #article-body {
+      @include clearfix;
+    }
+  }
+
+  //
+  // Social Links
+  //
+  #article-social {
+
+    // Override tp-sticky styles on sizes below $breakpoint-desktop
+    // This is a shining example of that "mobile last" design
+    // that you hear so much about. </sarcasm>
+    @media (max-width: 979px) {
+      position: static !important;
+      width: 100% !important;
+      margin-bottom: 1em !important;
+      @include clearfix;
+
+      .takepart-take-action,
+      .comments-link,
+      #article-share,
+      #article-share .tp-social-link,
+      .comments-link a,
+      .trigger a {
+        float: left;
+      }
+    }
+    @media (max-width: 767px) {
+      .comments-link,
+      #article-social-more {
+        display: none;
+      }
+    }
+
+    .tp-social-headline {
+      font-family: $tradegothic-regular;
+      font-size: 14px;
+      line-height: 1;
+      color: $dark-gray;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: -1px;
+      margin-bottom: .5em;
+      float: left;
+      width: 38px;
+      @include breakpoint($breakpoint-desktop) {
+        width: auto;
+        float: none;
+      }
+    }
+    .takepart-take-action,
+    .comments-link {
+      margin: 0;
+    }
+    #article-share .tp-social-link,
+    .comments-link a,
+    .trigger a {
+      display: block;
+      overflow: hidden;
+      width: 0;
+      height: 0;
+      padding: 12px;
+      text-indent: 24px;
+      margin: 0 0 7px 5px;
+      background-color: transparent;
+    }
+  } // #article-social
+  #article-social-more {
+    position: relative;
+    overflow: hidden;
+    float: left;
+    #article-more-shares { // positioning
+      position: absolute;
+      bottom: 100%;
+      z-index: 9999;
+    }
+    &.focusin {
+      overflow: visible;
+      #article-more-shares {
+        top: 100%;
+        bottom: auto;
+      }
+    }
+    .header,
+    p {
+      margin: 0;
+      padding: .5em;
+      background: white;
+    }
+    .tp-social-link {
+      display: block;
+      width: 50%;
+      float: left;
+    }
+  }
+  #article-more-shares { // styling
+    background: #fff;
+    border-radius: 5px;
+    border: 5px solid rgba(0,0,0,.5);
+    @include background-clip(padding-box);
+    min-width: 250px;
+    display: inline-block;
+  }
+
+  //
+  // Article Styling
+  //
   .article-header {
     .node-title {
       // these values are extremely stupid.
@@ -14,66 +149,7 @@
       margin-bottom: 1em;
     }
   }
-  @include breakpoint($breakpoint-tablet) {
-    #article-social {
-      float: left;
-      width: 40px;
-      .inner {
-        padding: 7px 1px;
-      }
-    }
-    #article-content {
-      margin-left: 55px;
-    }
-  }
-  #article-social {
-    .tp-social-headline {
-      font-family: $tradegothic-regular;
-      font-size: 14px;
-      line-height: 1;
-      color: $dark-gray;
-      text-transform: uppercase;
-      text-align: center;
-      letter-spacing: -1px;
-      margin-bottom: .5em;
-    }
-    .comments-link {
-      margin: 0;
-    }
-    .tp-social-link,
-    .comments-link a,
-    .trigger a {
-      display: block;
-      overflow: hidden;
-      width: 0;
-      height: 0;
-      padding: 12px;
-      text-indent: 24px;
-      margin: 0 0 7px 5px;
-
-      background: red;
-      border-radius: 12px;
-    }
-  } // #article-social
-  #article-social-more {
-    position: relative;
-    overflow: hidden;
-    &.focusin {
-      overflow: visible;
-    }
-    #article-more-shares {
-      position: absolute;
-      bottom: 100%;
-      background: #fff;
-      border-radius: 5px;
-      border: 5px solid rgba(0,0,0,.5);
-      -webkit-background-clip: padding-box; /* for Safari */
-        background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
-        min-width: 250px;
-        display: inline-block;
-    }
-  }
-  .article-main-image {
+  #article-main-image {
     figcaption p {
       margin-top: 0;
       font-family: $ashbury-light-italic;
@@ -128,44 +204,101 @@
       text-align: center;
 
       @include breakpoint($breakpoint-tablet) {
-	width: 25%;
-	float: right;
-	margin: .25em .5em;
+      	width: 25%;
+      	float: right;
+      	margin: .25em .5em;
       }
 
       > header {
-	h2 {
-	  font-size: 14px;
-	  line-height: 1.285714286;
-	  a { color: black; }
-	}
+      	h2 {
+      	  font-size: 14px;
+      	  line-height: 1.285714286;
+      	  a { color: black; }
+        }
       }
 
       border-top: 1px solid $blue;
 
       &:before {
-	content: 'related';
-	display: block;
-	font-size: 12px;
-	line-height: 1;
-	font-family: $brown-bold;
-	font-weight: normal;
-	height: 12px;
-	padding: 9px 0 15px;
-	width: 75px;
-	color: white;
-	background-color: $light-blue;
-	margin: 0 auto 14px;
-	@include border-corner-radius(bottom, left, 36px);
-	@include border-corner-radius(bottom, right, 36px);
+      	content: 'related';
+      	display: block;
+      	font-size: 12px;
+      	line-height: 1;
+      	font-family: $brown-bold;
+      	font-weight: normal;
+      	height: 12px;
+      	padding: 9px 0 15px;
+      	width: 75px;
+      	color: white;
+      	background-color: $light-blue;
+      	margin: 0 auto 14px;
+      	@include border-corner-radius(bottom, left, 36px);
+      	@include border-corner-radius(bottom, right, 36px);
       }
 
       @include dashed-separator-after();
       &:after { // override the mixin
-	margin: 1em auto;
-	visibility: visible; // override clearfix settings on node.article
+      	margin: 1em auto;
+      	visibility: visible; // override clearfix settings on node.article
       }
+    } // inline content
+  } // body field
 
+
+  #article-footer,
+  #article-comments {
+    h3 {
+      font-family: $brown-bold;
+      font-weight: normal;
+      font-size: 1.5em;
+      line-height: 1.2;
+      margin: .667em 0; // account for different margins in the comp
+      text-transform: lowercase;
+
+      &.top-border {
+        @include header-top-border;
+      }
+      span {
+        font-family: $adelle-light;
+        font-weight: normal;
+        font-size: 14px;
+      }
+    }
+  }
+
+  #article-footer {
+    border-top: 1px solid $gray-line;
+    line-height: 1.5;
+
+    .field-name-field-related-stories {
+        margin-bottom: 2em;
+      .field-item {
+        @include blue-square-bullets;
+      }
+    }
+    .topic-links {
+      margin-bottom: 2em;
+      li {
+        padding: 0;
+        &:after {
+          content: ', ';
+          display: inline;
+        }
+        &:last-child:after {
+          content: '';
+        }
+      }
+      a {
+        font-family: $adelle-light;
+        color: $mint;
+        text-decoration: none;
+        text-transform: capitalize;
+        &:hover,
+        &:active {
+          color: $light-mint;
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
