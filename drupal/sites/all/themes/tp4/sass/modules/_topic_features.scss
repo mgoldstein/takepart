@@ -120,7 +120,7 @@
 
   .block-menu-block {
     .block__title {
-      border-top: 4px solid black;
+      @include header-top-border;
       text-transform: lowercase;
       &:before {
         content: 'inside ';
