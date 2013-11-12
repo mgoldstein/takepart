@@ -100,14 +100,8 @@ function tp_megamenu_megamenu(){
       foreach($entities->field_promo_content_collection['und'] as $key => $entity){
         $field_collection = entity_load('field_collection_item', array($entity['value']));
         $field_collection = current($field_collection);
-        dpm($field_collection, 'field collection');
         $nid = $field_collection->field_promo_content['und'][0]['target_id']; //TODO Change promo content to a single value
         $node = node_load($nid);
-
-
-        //TODO: if promo_headline exists, override $text
-        //TODO: if promo_label exists, override $label
-        //TODO: if thumbnail exists, override $thumb
 
         $node_path = drupal_get_path_alias('node/'. $node->nid);
         $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
