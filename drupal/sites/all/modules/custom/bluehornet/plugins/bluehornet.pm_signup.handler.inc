@@ -19,6 +19,14 @@ class BlueHornetSignupHandler {
     $this->configuration = $configuration;
   }
 
+  public function getLabel() {
+    return t('Blue Hornet');
+  }
+
+  public static function validateConfiguration($type, $configuration) {
+    return array();
+  }
+
   protected function submitNewsletterCampaignSignup($signup) {
 
     if (isset($signup['email'])) {
@@ -45,44 +53,28 @@ class BlueHornetSignupHandler {
 
   protected function submitSignatureSignup($signup) {
 
-    $have_at_least_one_opt_in = FALSE;
-    $segments = array();
-    $fields = array();
-    $send_welcome = TRUE;
+    $opt_ins = $signup['action.opt-ins.newsletters'];
+    foreach ($opt_ins as $opt_in) {
+      if ($opt_in->getPluginEnabled('bluehornet.pm_signup.handler')) {
+        $configuration = $opt_in->getPluginConfiguration(
+          'bluehornet.pm_signup.handler');
 
-    $opt_ins = explode(',', $signup['action.opt-ins.newsletters']);
-    foreach ($this->configuration['opt-ins'] as $index => $opt_in_config) {
-      if (!empty($opt_in_config)) {
-        if (isset($opt_ins[$index]) && $opt_ins[$index] === 'true') {
-          // We have an opt-in
-          $have_at_least_one_opt_in = TRUE;
-          // Merge it into the call data.
-          $segments += $opt_in_config['segments'];
-          $fields += $opt_in_config['fields'];
-          if ($opt_in_config['send-welcome']) {
-            $send_welcome = TRUE;
-          }
+        $account = isset($configuration['account'])
+          ? $configuration['account'] : NULL;
+
+        $data = array('email' => $signup['email']);
+        $response = BlueHornet::Api($account)->addUpdateSubscriber($data,
+          $configuration['segments'], $configuration['fields'],
+          $configuration['send-welcome']);
+
+        $added_or_updated = $response['status'] == 1 || $response['status'] == 2;
+        if (!$added_or_updated) {
+          $message = t('Error sending email signup [@email] @response', array(
+            '@email' => $signup['email'],
+            '@response' => print_r($response, TRUE),
+          ));
+          throw new SignupHandlerException($message);
         }
-      }
-    }
-
-    if ($have_at_least_one_opt_in) {
-
-      $data = array('email' => $signup['email']);
-
-      $account = isset($this->configuration['account'])
-        ? $this->configuration['account'] : NULL;
-
-      $response = BlueHornet::Api($account)->addUpdateSubscriber($data,
-        $segments, $fields, $send_welcome);
-
-      $added_or_updated = $response['status'] == 1 || $response['status'] == 2;
-      if (!$added_or_updated) {
-        $message = t('Error sending email signup [@email] @response', array(
-          '@email' => $signup['email'],
-          '@response' => print_r($response, TRUE),
-        ));
-        throw new SignupHandlerException($message);
       }
     }
   }

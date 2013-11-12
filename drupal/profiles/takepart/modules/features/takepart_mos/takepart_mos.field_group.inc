@@ -60,6 +60,7 @@ function takepart_mos_field_group_info() {
       0 => 'field_action_main_image',
       1 => 'field_actionheaderimg',
       2 => 'field_actionheaderimghref',
+      3 => 'field_action_type',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -147,6 +148,7 @@ function takepart_mos_field_group_info() {
       0 => 'field_action_organizer',
       1 => 'field_action_sponsor',
       2 => 'field_mos_recipient',
+      3 => 'field_action_sponsor_paid',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -178,6 +180,7 @@ function takepart_mos_field_group_info() {
       2 => 'field_multi_page_campaign',
       3 => 'field_series',
       4 => 'field_topic',
+      5 => 'field_admin_tag',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -32,7 +32,7 @@ $(function() {
 
 			// create ignore interstitial cookie and set to off
 			$.cookie('pm_igloo', 0, { path:'/' });
-			
+
 			// create referer list cookie
 			$.cookie('pm_referers', referers, { path:'/' });
 
@@ -42,7 +42,7 @@ $(function() {
 			if($interstitial_links.length <= 0){
 				return;
 			}
-			
+
 			// exclude referrer classes and map the remaining hrefs
 			var interstitial_links = $.map($interstitial_links, function(link, i){
 				if ($.inArray($(link).attr('data-interstitial-type'), excluded_links) === -1){
@@ -152,3 +152,27 @@ $(function() {
 });
 
 })(window, jQuery);
+
+(function ($, Drupal, window, document, undefined) {
+  Drupal.behaviors.geoLimiting = {
+    attach: function() {
+      $('.geo-limited-video').once('initialized', function(index, element) {
+        var player = element;
+        var showBlocked = function() {
+          $('.video-loading', player).hide();
+          $('.video-blocked', player).show();
+        };
+        var handleRegion = function(response) {
+          if (!response.country.iso_code) { showBlocked(); return false; }
+          var code = response.country.iso_code.toLowerCase();
+          var regions = $(player).attr('data-allowed-regions').split(',');
+          if ($.inArray(code, regions) < 0) { showBlocked(); return false; }
+          var url = "http://video.takepart.com/players/"
+            + $(player).attr('data-botr-id') + ".js";
+          $.getScript(url).fail(showBlocked);
+        };
+        geoip2.country(handleRegion, showBlocked);
+      });
+    }
+  };
+})(jQuery, Drupal, this, this.document);

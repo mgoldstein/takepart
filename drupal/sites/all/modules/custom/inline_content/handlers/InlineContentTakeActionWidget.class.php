@@ -68,7 +68,10 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
     $action = field_get_items('inline_content', $replacement, 'field_ic_action');
     if ($action !== FALSE && count($action) > 0) {
       $data = reset($action);
-      $attributes['data-action-id'] = $data['nid'];
+      $mapping = SignatureActionMapping::loadByNodeId($data['nid']);
+      if ($mapping !== FALSE) {
+        $attributes['data-action-id'] = $mapping->tapID();
+      }
     }
 
     // Set the widget's action title override.

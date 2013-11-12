@@ -3,7 +3,7 @@
 	<div id="<?=$variables['response_id'] ?>">
 		<? /*<p class="message"><?=$variables['body'] ?></p>*/ ?>
 		<?=drupal_render($variables['form']) ?>
-		<p class="tos-link"><?=drupal_render($variables['tos_link']) ?></p>
+		<p class="tos-link"><?= $variables['tos_link'] ?></p>
 	</div>
 </section>
 

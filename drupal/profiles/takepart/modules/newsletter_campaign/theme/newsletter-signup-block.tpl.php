@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="takepart-newsletter-terms">
-      <?php echo drupal_render($variables['tos_link']); ?>
+      <?php echo $variables['tos_link']; ?>
     </div>
   </div>
   <div id="<?= $result_wrapper_id ?>" class="takepart-newsletter-message">

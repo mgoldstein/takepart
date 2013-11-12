@@ -37,6 +37,8 @@ RewriteCond %{HTTP_HOST} !^web(1|2|3|4|5|6|7|8|9|10|11|12).prod.takepart.com$
 RewriteCond %{HTTP_HOST} !=www.takepart.com
 RewriteCond %{HTTP_HOST} !=origin.takepart.com
 RewriteCond %{HTTP_HOST} !=foodinc.takepart.com
+RewriteCond %{HTTP_HOST} !=qa-beta.takepart.com
+RewriteCond %{HTTP_HOST} !=ssl.takepart.com
 RewriteCond %{HTTP_HOST} !=origin.prod.takepart.com
 RewriteRule (.*) http://www.takepart.com/$1 [R=301,L,NC]
 
