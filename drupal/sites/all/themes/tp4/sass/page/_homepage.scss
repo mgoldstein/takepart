@@ -10,8 +10,7 @@ body.front{
 
   #sidebar{
     .block-title{
-      border-top: 4px solid #000;
-      padding-top: 0px;
+      @include header-top-border();
     }
   }
 }
@@ -176,17 +175,7 @@ body.front{
   .views-row{
     line-height: 24px;
     font-size: 14px;
-    position: relative;
-    padding-left: 15px;
-    &:before{
-      content: '';
-      height: 6px;
-      width: 6px;
-      background-color: $blue;
-      position: absolute;
-      top: 7px;
-      left: 0;
-    }
+    @include blue-square-bullets;
   }
   a{
     height: 100%;
