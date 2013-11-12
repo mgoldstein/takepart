@@ -660,7 +660,7 @@ function takepart_campaign_field_default_fields() {
           'module' => 'context_field',
           'settings' => array(),
           'type' => 'context_field_context',
-          'weight' => '6',
+          'weight' => '7',
         ),
         'embed' => array(
           'label' => 'above',
@@ -1298,7 +1298,7 @@ function takepart_campaign_field_default_fields() {
   $fields['node-takepart_campaign-field_promo_content'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_promo_content',
@@ -1333,6 +1333,8 @@ function takepart_campaign_field_default_fields() {
             'openpublish_article' => 'openpublish_article',
             'openpublish_photo_gallery' => 'openpublish_photo_gallery',
             'openpublish_video' => 'openpublish_video',
+            'petition_action' => 'petition_action',
+            'pledge_action' => 'pledge_action',
             'section_front' => 'section_front',
             'takepart_campaign' => 'takepart_campaign',
           ),
@@ -1802,7 +1804,14 @@ function takepart_campaign_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_thumbnail',
-      'foreign keys' => array(),
+      'foreign keys' => array(
+        'file_managed' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
       'indexes' => array(
         'fid' => array(
           0 => 'fid',

@@ -217,7 +217,7 @@ function tp_feature_section_front_field_default_fields() {
   $fields['node-section_front-field_promo_content'] = array(
     'field_config' => array(
       'active' => '1',
-      'cardinality' => '-1',
+      'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_promo_content',
@@ -252,6 +252,8 @@ function tp_feature_section_front_field_default_fields() {
             'openpublish_article' => 'openpublish_article',
             'openpublish_photo_gallery' => 'openpublish_photo_gallery',
             'openpublish_video' => 'openpublish_video',
+            'petition_action' => 'petition_action',
+            'pledge_action' => 'pledge_action',
             'section_front' => 'section_front',
             'takepart_campaign' => 'takepart_campaign',
           ),
