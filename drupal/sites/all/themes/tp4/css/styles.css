@@ -5867,18 +5867,11 @@ header .search {
   margin: 1em 0;
   padding-bottom: 1em;
   border-bottom: 1px solid #cccccc;
-<<<<<<< HEAD
-  font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
-=======
->>>>>>> epic/771-homepage-redesign
   font-size: 12px;
 }
 /* line 62, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service a {
-<<<<<<< HEAD
-=======
   line-height: 1.2em;
->>>>>>> epic/771-homepage-redesign
   color: #019f84;
 }
 /* line 68, ../sass/modules/_sidebar.scss */
