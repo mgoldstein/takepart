@@ -205,43 +205,26 @@ function tp4_preprocess_field(&$variables, $hook) {
   }
 }
 
-/**
- * Implementations of theme_field().
- *
- * You can override field output globally, per field, per content
- * type, or per field in a content type.
- *
- * @see https://api.drupal.org/api/drupal/modules!field!field.module/function/theme_field/7
- */
 
 /**
- * Implements theme_field().
- *
- * Outputs the author field for article nodes.
+ * Outputs Free Tag Taxonomy Links for Article Nodes
  */
-function tp4_field__field_author__openpublish_article($variables) {
+function tp4_field__field_topic__openpublish_article($variables) {
   $output = '';
 
-  $number_of_authors = count($variables['items']);
-
-  $output .= '<span' . $variables['content_attributes'] . '>';
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= '<span class="byline-author"' . $variables['item_attributes'][$delta] . '>';
-    $output .= drupal_render($item);
-    $output .= '</span>';
-    // add commas for lists of 3 or greater ($delta is zero-indexed)
-    $output .= ($number_of_authors > 2 && $delta < $number_of_authors - 2 ) ? ', ' :'';
-    // add 'and' for lists of 2 or greater ($delta is zero-indexed)
-    $output .= ($number_of_authors > 1 && $delta == $number_of_authors - 2 ) ? 'and ' :'';
+  foreach ($variables['items'] as $item) {
+    $output .= '<li>' . drupal_render($item) . '</li>';
   }
-  $output .= '</span>';
-
-  // Render the top-level div.
-  $output = '<div class="byline ' . $variables['classes'] . '"' . $variables['attributes'] . '>By ' . $output . '</div>';
 
   return $output;
 }
 
+/**
+ * Outputs topic taxonomy links for article nodes.
+ */
+function tp4_field__field_free_tag__openpublish_article($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
 
 function tp4_menu_link(array $variables) {
   if($variables['element']['#theme'] == 'menu_link__menu_megamenu'){
@@ -249,6 +232,4 @@ function tp4_menu_link(array $variables) {
   }
   return theme_menu_link($variables);
 }
-
-
 

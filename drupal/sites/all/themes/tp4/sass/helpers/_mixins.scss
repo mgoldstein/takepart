@@ -80,6 +80,11 @@
   }
 }
 
+@mixin header-top-border {
+  border-top: 4px solid #000;
+  padding-top: 0px;
+}
+
 @mixin dashed-separator-after {
   &:after {
     content: '';
@@ -108,5 +113,19 @@
   &:after {
     @include tp-icon();
     content: " \1F4F9";
+  }
+}
+
+@mixin blue-square-bullets {
+  position: relative;
+  padding-left: 15px;
+  &:before {
+    content: '';
+    height: 6px;
+    width: 6px;
+    background-color: $blue;
+    position: absolute;
+    top: 7px;
+    left: 0;
   }
 }
