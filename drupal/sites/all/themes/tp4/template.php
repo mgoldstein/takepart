@@ -94,6 +94,12 @@ function tp4_preprocess_node(&$variables, $hook) {
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
   
+  // Add template variables for the local node url
+  // (for compatability in dev/qa environments)
+  // and for the url to the same node on production
+  // (for facebook plugins and whatnot)
+  $variables['url_local'] = url('node/' . $variables['nid'], array('absolute' => TRUE));
+  $variables['url_production'] = 'http://www.takepart.com' . url('node/' . $variables['nid']);
 
   // Run node-type-specific preprocess functions, like
   // tp4_preprocess_node_page() or tp4_preprocess_node_story().
@@ -115,12 +121,18 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
   $variables['main_image_image'] = render($variables['content']['field_article_main_image']);
   $variables['main_image_caption'] = $variables['field_article_main_image'][0]['file']->field_media_caption[LANGUAGE_NONE][0]['safe_value'];
 
+  // render topic box
   $image = file_create_url($variables['field_topic_box'][0]['taxonomy_term']->field_topic_box_image['und'][0]['uri']);
   $image = '<img src="'. $image. '">';
   $url = (isset($variables['field_topic_box'][0]['taxonomy_term']->field_topic_box_link['und'][0]['url']) ? $variables['field_topic_box'][0]['taxonomy_term']->field_topic_box_link['und'][0]['url'] : '');
   $variables['field_topic_box_top'] = l($image, $url, array('html' => true));
 
+  // we're going to do some things only on the full view of an article
   if($variables['view_mode'] == 'full'){
+    // provide "on our radar" block
+    $variables['on_our_radar'] = module_invoke('bean', 'block_view', 'on-our-radar-block');
+
+    // provide a series prev/next nav if a series exists
     if(isset($variables['field_series'])){
       $series = taxonomy_term_load($variables['field_series']['und'][0]['tid']);
       $series_image = file_create_url($series->field_series_graphic_header['und'][0]['uri']);
@@ -162,9 +174,9 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
       $series_nav .= l($next, $next_url, array('html' => true));
 
       $variables['series_nav'] = $series_nav;
-    }
-  }
+    } // if isset($variables['field_series'])
 
+  } // if ($variables['view_mode'] == 'full')
 }
 
 /**
@@ -301,7 +313,7 @@ function tp4_field__field_author__openpublish_article($variables) {
     // add commas for lists of 3 or greater ($delta is zero-indexed)
     $output .= ($number_of_authors > 2 && $delta < $number_of_authors - 2 ) ? ', ' :'';
     // add 'and' for lists of 2 or greater ($delta is zero-indexed)
-    $output .= ($number_of_authors > 1 && $delta == $number_of_authors - 2 ) ? 'and ' :'';
+    $output .= ($number_of_authors > 1 && $delta == $number_of_authors - 2 ) ? ' and ' :'';
   }
   $output .= '</span>';
 
