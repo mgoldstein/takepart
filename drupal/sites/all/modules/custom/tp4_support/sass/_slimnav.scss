@@ -255,11 +255,16 @@
     display: block;
     box-sizing:border-box;
     -moz-box-sizing:border-box; /* Firefox */
+    clear: left;
+    float: left;
+    width: 572px;
+    padding: 0;
+    padding-top: 3px;
   }
-  float: left;
-  width: 572px;
-  padding-left: 20px;
-  padding-top: 3px;
+  @include breakpoint($breakpoint-desktop){
+    clear: none;
+    padding-left: 20px;
+  }
   li{
     width: 20%;
     float: left;
