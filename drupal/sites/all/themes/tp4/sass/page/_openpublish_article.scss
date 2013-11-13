@@ -1,8 +1,5 @@
 // set up sprites for the tpsocial block;
 @import "tp-social/*.png";
-@include all-tp-social-sprites;
-.comments-link a { @include tp-social-sprite(comment); }
-.trigger a { @include tp-social-sprite(more); }
 
 .node-openpublish-article.view-mode-full {
 
@@ -17,17 +14,11 @@
         padding: 7px 1px;
       }
     }
-    #article-main-image,
     #article-content,
     #series-navigation,
     #article-footer,
     #article-comments {
-      float: right;
-      clear: right;
-      width: 583px;
-    }
-    #article-body {
-      @include clearfix;
+      margin-left: 50px;
     }
   }
 
@@ -36,14 +27,19 @@
   //
   #article-social {
 
+    // Sprite Setup
+    @include all-tp-social-sprites;
+    .comments-link a { @include tp-social-sprite(comment); }
+    .trigger a { @include tp-social-sprite(more); }
+
     // Override tp-sticky styles on sizes below $breakpoint-desktop
     // This is a shining example of that "mobile last" design
     // that you hear so much about. </sarcasm>
     @media (max-width: 979px) {
+      // override inline styles from the tp-sticky library
       position: static !important;
-      width: 100% !important;
-      margin-bottom: 1em !important;
-      @include clearfix;
+      width: auto !important;
+      margin: 0 0 1em !important;
 
       .takepart-take-action,
       .comments-link,
@@ -72,6 +68,11 @@
       margin-bottom: .5em;
       float: left;
       width: 38px;
+      @media (max-width: 979px) {
+	&.share-headline {
+	  margin-top: 6px;
+	}
+      }
       @include breakpoint($breakpoint-desktop) {
         width: auto;
         float: none;
@@ -149,7 +150,7 @@
       margin-bottom: 1em;
     }
   }
-  #article-main-image {
+  .article-main-image {
     figcaption p {
       margin-top: 0;
       font-family: $ashbury-light-italic;
@@ -199,50 +200,75 @@
       font-family: $ashbury-bold;
       font-weight: normal;
     }
+  } // body field
 
-    .node.view-mode-inline-content {
-      text-align: center;
+  .inline-content-nodes {
+
+    &.vertical {
+      float: right;
+      margin: .25em .5em;
+      width: 33%;
+      @include breakpoint($breakpoint-tablet) {
+	width: 25%;
+      }
+    }
+
+    &.horizontal {
+      @include clearfix;
+      margin: 1.5em 0; // articles have padding
 
       @include breakpoint($breakpoint-tablet) {
-      	width: 25%;
-      	float: right;
-      	margin: .25em .5em;
-      }
-
-      > header {
-      	h2 {
-      	  font-size: 14px;
-      	  line-height: 1.285714286;
-      	  a { color: black; }
+	.node {
+	  width: 30%;
+	  float: left;
+	  margin-right: 2.4%;
+	  &:first-child { margin-left: 2.4%; }
         }
       }
+    }
 
-      border-top: 1px solid $blue;
-
-      &:before {
-      	content: 'related';
-      	display: block;
-      	font-size: 12px;
-      	line-height: 1;
-      	font-family: $brown-bold;
-      	font-weight: normal;
-      	height: 12px;
-      	padding: 9px 0 15px;
-      	width: 75px;
-      	color: white;
-      	background-color: $light-blue;
-      	margin: 0 auto 14px;
-      	@include border-corner-radius(bottom, left, 36px);
-      	@include border-corner-radius(bottom, right, 36px);
+    .node {
+      text-align: center;
+      > header {
+	h2 {
+	  font-size: 14px;
+	  line-height: 1.285714286;
+	  a { color: black; }
+	}
       }
 
       @include dashed-separator-after();
       &:after { // override the mixin
-      	margin: 1em auto;
-      	visibility: visible; // override clearfix settings on node.article
+	margin: 1em auto;
+	visibility: visible; // override clearfix settings on node.article
       }
-    } // inline content
-  } // body field
+      &:last-child:after {
+	margin-bottom: 0; // the <aside> container has the outermost margin
+      }
+    }
+
+
+    // style the damn thing
+    border-top: 1px solid $blue;
+    &:before {
+      content: 'related';
+      display: block;
+      font-size: 12px;
+      line-height: 1;
+      text-align: center;
+      font-family: $brown-bold;
+      font-weight: normal;
+      height: 12px;
+      padding: 9px 0 15px;
+      width: 75px;
+      color: white;
+      background-color: $light-blue;
+      margin: 0 auto 14px;
+      @include border-corner-radius(bottom, left, 36px);
+      @include border-corner-radius(bottom, right, 36px);
+    }
+  } // inline content
+
 
 
   #article-footer,
@@ -374,6 +400,94 @@
     }
   }
 }
-
-
-
+.topic-box img{
+  max-height: 30px;
+  overflow: hidden;
+}
+#series-navigation{
+  position: relative;
+  display: block;
+  width: auto;
+  overflow: auto;
+  padding: 10px;
+  margin-bottom: 43px;
+  margin-top: 30px;
+  .left-border{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 45px;
+    height: 95px;
+    border-left: 1px solid $gray-line;
+    border-top: 1px solid $gray-line;
+    z-index: 0;
+  }
+  .right-border{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 45px;
+    height: 95px;
+    border-right: 1px solid $gray-line;
+    border-top: 1px solid $gray-line;
+    z-index: 0;
+  }
+  img{
+    height: 30px;
+    display: block;
+    margin: 0 auto;
+  }
+  .more-prev{
+    float: left;
+    position: relative;
+    padding-left: 17px;
+    font-family: $ashbury-bold;
+    &:before {
+      content: "\23EA ";
+      font-family: "SSGizmo";
+      color: $mint;
+      vertical-align: bottom;
+      position: absolute;
+      left: 0;
+      top: 1px;
+      display: block;
+      width: 15px;
+      height: 20px;
+    }
+  }
+  .more-next{
+    float: right;
+    position: relative;
+    padding-right: 17px;
+    font-family: $ashbury-bold;
+    &:after {
+      content: "\23E9 ";
+      font-family: "SSGizmo";
+      color: $mint;
+      vertical-align: bottom;
+      position: absolute;
+      right: 0;
+      top: 1px;
+      display: block;
+      width: 15px;
+      height: 20px;
+    }
+  }
+  .previous{
+    float: left;
+    clear: left;
+    width: 230px;
+    margin-top: 5px;
+    position: relative;
+    z-index: 2;
+  }
+  .next {
+    float: right;
+    clear: right;
+    width: 230px;
+    text-align: right;
+    margin-top: 5px;
+    position: relative;
+    z-index: 2;
+  }
+}
