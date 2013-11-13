@@ -246,6 +246,8 @@ header{
   }
   .search{
     border-bottom: none;
+    form {
+      display: block;
+    }
   }
 }
-
