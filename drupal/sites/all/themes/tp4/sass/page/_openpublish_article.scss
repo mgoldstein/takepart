@@ -199,50 +199,75 @@
       font-family: $ashbury-bold;
       font-weight: normal;
     }
+  } // body field
 
-    .node.view-mode-inline-content {
-      text-align: center;
+  .inline-content-nodes {
+
+    &.vertical {
+      float: right;
+      margin: .25em .5em;
+      width: 33%;
+      @include breakpoint($breakpoint-tablet) {
+	width: 25%;
+      }
+    }
+
+    &.horizontal {
+      @include clearfix;
+      margin: 1.5em 0; // articles have padding
 
       @include breakpoint($breakpoint-tablet) {
-      	width: 25%;
-      	float: right;
-      	margin: .25em .5em;
-      }
-
-      > header {
-      	h2 {
-      	  font-size: 14px;
-      	  line-height: 1.285714286;
-      	  a { color: black; }
+	.node {
+	  width: 30%;
+	  float: left;
+	  margin-right: 2.4%;
+	  &:first-child { margin-left: 2.4%; }
         }
       }
+    }
 
-      border-top: 1px solid $blue;
-
-      &:before {
-      	content: 'related';
-      	display: block;
-      	font-size: 12px;
-      	line-height: 1;
-      	font-family: $brown-bold;
-      	font-weight: normal;
-      	height: 12px;
-      	padding: 9px 0 15px;
-      	width: 75px;
-      	color: white;
-      	background-color: $light-blue;
-      	margin: 0 auto 14px;
-      	@include border-corner-radius(bottom, left, 36px);
-      	@include border-corner-radius(bottom, right, 36px);
+    .node {
+      text-align: center;
+      > header {
+	h2 {
+	  font-size: 14px;
+	  line-height: 1.285714286;
+	  a { color: black; }
+	}
       }
 
       @include dashed-separator-after();
       &:after { // override the mixin
-      	margin: 1em auto;
-      	visibility: visible; // override clearfix settings on node.article
+	margin: 1em auto;
+	visibility: visible; // override clearfix settings on node.article
       }
-    } // inline content
-  } // body field
+      &:last-child:after {
+	margin-bottom: 0; // the <aside> container has the outermost margin
+      }
+    }
+
+
+    // style the damn thing
+    border-top: 1px solid $blue;
+    &:before {
+      content: 'related';
+      display: block;
+      font-size: 12px;
+      line-height: 1;
+      text-align: center;
+      font-family: $brown-bold;
+      font-weight: normal;
+      height: 12px;
+      padding: 9px 0 15px;
+      width: 75px;
+      color: white;
+      background-color: $light-blue;
+      margin: 0 auto 14px;
+      @include border-corner-radius(bottom, left, 36px);
+      @include border-corner-radius(bottom, right, 36px);
+    }
+  } // inline content
+
 
 
   #article-footer,
