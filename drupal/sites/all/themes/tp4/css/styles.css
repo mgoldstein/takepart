@@ -3332,7 +3332,7 @@ tr.selected td {
 /* line 807, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1382751895');
+  background-image: url('../images/progress.gif?1384302520');
 }
 
 /* Page */
@@ -3781,12 +3781,12 @@ body.front #sidebar .block-title {
 /* line 144, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 140px;
-  background-image: url('../images/tpl-title.jpg?1382751895');
+  background-image: url('../images/tpl-title.jpg?1384302521');
 }
 /* line 148, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 252px;
-  background-image: url('../images/tpl-time.jpg?1382751895');
+  background-image: url('../images/tpl-time.jpg?1384302521');
 }
 
 /* line 155, ../sass/page/_homepage.scss */
@@ -4801,7 +4801,7 @@ body.front #sidebar .block-title {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1383770626') no-repeat center center;
+    background: url('../images/tpl-logo.jpg?1384302521') no-repeat center center;
     margin: 0;
     background-size: 90%;
   }
@@ -5119,7 +5119,7 @@ body.front #sidebar .block-title {
 }
 /* line 199, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1383770626');
+  background-image: url('../images/tpl-logo-hover.jpg?1384302521');
 }
 
 /**
@@ -5653,7 +5653,7 @@ header {
   /* line 108, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1382978986') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1384302520') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -5727,7 +5727,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1383937447') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1384302520') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -5766,7 +5766,7 @@ header .search {
     border: 1px solid #ccc;
     border-left: none;
     background-color: #fff;
-    background: url('../images/search-submit.png?1382978986') no-repeat center center;
+    background: url('../images/search-submit.png?1384302520') no-repeat center center;
   }
 }
 
@@ -5779,7 +5779,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1383937447') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1384302520') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
@@ -5814,6 +5814,10 @@ header .search {
   /* line 247, ../sass/modules/_header.scss */
   .search {
     border-bottom: none;
+  }
+  /* line 249, ../sass/modules/_header.scss */
+  .search form {
+    display: block;
   }
 }
 /**
