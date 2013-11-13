@@ -301,7 +301,7 @@ function tp4_field__field_author__openpublish_article($variables) {
     // add commas for lists of 3 or greater ($delta is zero-indexed)
     $output .= ($number_of_authors > 2 && $delta < $number_of_authors - 2 ) ? ', ' :'';
     // add 'and' for lists of 2 or greater ($delta is zero-indexed)
-    $output .= ($number_of_authors > 1 && $delta == $number_of_authors - 2 ) ? 'and ' :'';
+    $output .= ($number_of_authors > 1 && $delta == $number_of_authors - 2 ) ? ' and ' :'';
   }
   $output .= '</span>';
 
