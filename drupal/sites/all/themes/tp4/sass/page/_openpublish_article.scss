@@ -203,19 +203,24 @@
   } // body field
 
   .inline-content-nodes {
+    margin: 1.5em 0; // articles have horizontal padding
 
     &.vertical {
-      float: right;
-      margin: .25em .5em;
-      width: 33%;
+      @media (max-width: 767px) {
+	@include clearfix;
+      }
       @include breakpoint($breakpoint-tablet) {
+	float: right;
+	margin: .25em .5em;
+	width: 33%;
+      }
+      @include breakpoint($breakpoint-desktop) {
 	width: 25%;
       }
     }
 
     &.horizontal {
       @include clearfix;
-      margin: 1.5em 0; // articles have padding
 
       @include breakpoint($breakpoint-tablet) {
 	.node {
@@ -325,15 +330,26 @@
           text-decoration: underline;
         }
       }
-    }
-  }
+    } // .topic-links
+    .on-our-radar {
+      ol {
+	li {
+	  @include blue-square-bullets;
+	  a {
+	    font-family: $adelle-regular;
+	    font-weight: normal;
+	    span {
+	      font-size: .857142857em;
+	      line-height: 1.5;
+	      font-family: $adelle-light;
+	      text-transform: uppercase;
+	    }
+	  }
+	}
+      }
+    } // .on-our-radar
+  } // #article-footer
 }
-
-
-
-
-
-
 
 .author-bio{
   width: auto;
