@@ -63,7 +63,6 @@ stylesheets[all][] = css/styles.css
 ;stylesheets-conditional[lte IE 8][all][] = css/ie8.css
 
 
-
 ; Optionally add some JavaScripts to your theme.
 
 scripts[] = js/doubletaptogo.js
@@ -72,8 +71,7 @@ scripts[] = js/tpsocial.jquery.js
 scripts[] = js/tpsocial.services.js
 scripts[] = js/tpsticky.jquery.js
 scripts[] = js/script.js
-
-
+scripts[] = js/custom-lib/tpregions.jquery.js
 
 
 ; This section lists the regions defined in Zen's default page.tpl.php and
