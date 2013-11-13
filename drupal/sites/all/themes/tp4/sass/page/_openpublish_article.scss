@@ -330,15 +330,26 @@
           text-decoration: underline;
         }
       }
-    }
-  }
+    } // .topic-links
+    .on-our-radar {
+      ol {
+	li {
+	  @include blue-square-bullets;
+	  a {
+	    font-family: $adelle-regular;
+	    font-weight: normal;
+	    span {
+	      font-size: .857142857em;
+	      line-height: 1.5;
+	      font-family: $adelle-light;
+	      text-transform: uppercase;
+	    }
+	  }
+	}
+      }
+    } // .on-our-radar
+  } // #article-footer
 }
-
-
-
-
-
-
 
 .author-bio{
   width: auto;

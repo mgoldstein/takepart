@@ -88,13 +88,13 @@
       <?php print render($content['field_free_tag']); ?>
     </ul>
 
-    <h3 class="top-border">takepart&#8217;s most popular</h3>
-
-    <h3>on our radar</h3>
+    <h3 class="top-border">Takepart&#8217;s Most Popular</h3>
+    <p>EMBED GOES HERE</p>
+    <?php print render($on_our_radar); ?>
   </footer>
 
   <div id="article-comments">
     <h3 class="top-border">Comments <span>(0)</span></h3>
-    <?php print drupal_render(module_invoke('comment_block_simple', 'block_view', 'comment_block')); ?>
+
   </div>
 </article>
