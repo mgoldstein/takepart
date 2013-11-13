@@ -94,6 +94,12 @@ function tp4_preprocess_node(&$variables, $hook) {
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
   
+  // Add template variables for the local node url
+  // (for compatability in dev/qa environments)
+  // and for the url to the same node on production
+  // (for facebook plugins and whatnot)
+  $variables['url_local'] = url('node/' . $variables['nid'], array('absolute' => TRUE));
+  $variables['url_production'] = 'http://www.takepart.com' . url('node/' . $variables['nid']);
 
   // Run node-type-specific preprocess functions, like
   // tp4_preprocess_node_page() or tp4_preprocess_node_story().
@@ -170,7 +176,6 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
       $variables['series_nav'] = $series_nav;
     } // if isset($variables['field_series'])
 
-    dpm($variables);
   } // if ($variables['view_mode'] == 'full')
 }
 
