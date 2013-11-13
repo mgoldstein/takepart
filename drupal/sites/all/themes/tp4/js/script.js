@@ -70,7 +70,7 @@ Drupal.behaviors.articleBehaviors = {
     var $body = $('body');
 
     if ($body.is('.page-node.node-type-openpublish-article')) {
-      $('#article-social').tpsticky();
+      $('#article-social').tpsticky({ offsetNode: '#article-content' });
 
       // Setup Social Share Buttons
       var tp_social_config = {
