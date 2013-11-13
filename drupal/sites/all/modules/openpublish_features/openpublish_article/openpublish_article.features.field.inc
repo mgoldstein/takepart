@@ -434,9 +434,9 @@ function openpublish_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'node_reference',
+          'module' => 'tp4_support',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'tp4_author_full',
           'weight' => '2',
         ),
         'feature_main' => array(

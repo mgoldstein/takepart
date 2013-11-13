@@ -27,7 +27,9 @@
     $output .= '<div class="bio">'. $author_node->body['und'][0]['value'];
       $output .= '<div class="more-links">';
         $output .= l('full bio', $author_path, array('attributes' => array('class' => array('more'))));
-        $output .= l($author_node->field_follow_twitter['und'][0]['title']. '<span class="social-twitter-black"></span>', $author_node->field_follow_twitter['und'][0]['url'], array('html' => true, 'attributes' => array('target' => '_blank', 'class' => array('more'))));
+        if(isset($author_node->field_follow_twitter['und'][0]['title'])){
+          $output .= l($author_node->field_follow_twitter['und'][0]['title']. '<span class="social-twitter-black"></span>', $author_node->field_follow_twitter['und'][0]['url'], array('html' => true, 'attributes' => array('target' => '_blank', 'class' => array('more'))));
+        }
     $output .= '</div></div>';
   $output .= '</div>';
 

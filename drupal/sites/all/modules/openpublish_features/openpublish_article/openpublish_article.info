@@ -20,6 +20,7 @@ dependencies[] = openpublish_media
 dependencies[] = strongarm
 dependencies[] = takepart_article
 dependencies[] = takepart_campaign
+dependencies[] = tp4_support
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:1
 features[field][] = node-openpublish_article-body
