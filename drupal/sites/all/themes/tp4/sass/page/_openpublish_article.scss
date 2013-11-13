@@ -1,8 +1,5 @@
 // set up sprites for the tpsocial block;
 @import "tp-social/*.png";
-@include all-tp-social-sprites;
-.comments-link a { @include tp-social-sprite(comment); }
-.trigger a { @include tp-social-sprite(more); }
 
 .node-openpublish-article.view-mode-full {
 
@@ -17,17 +14,11 @@
         padding: 7px 1px;
       }
     }
-    #article-main-image,
     #article-content,
     #series-navigation,
     #article-footer,
     #article-comments {
-      float: right;
-      clear: right;
-      width: 583px;
-    }
-    #article-body {
-      @include clearfix;
+      margin-left: 50px;
     }
   }
 
@@ -36,14 +27,19 @@
   //
   #article-social {
 
+    // Sprite Setup
+    @include all-tp-social-sprites;
+    .comments-link a { @include tp-social-sprite(comment); }
+    .trigger a { @include tp-social-sprite(more); }
+
     // Override tp-sticky styles on sizes below $breakpoint-desktop
     // This is a shining example of that "mobile last" design
     // that you hear so much about. </sarcasm>
     @media (max-width: 979px) {
+      // override inline styles from the tp-sticky library
       position: static !important;
-      width: 100% !important;
-      margin-bottom: 1em !important;
-      @include clearfix;
+      width: auto !important;
+      margin: 0 0 1em !important;
 
       .takepart-take-action,
       .comments-link,
@@ -72,6 +68,11 @@
       margin-bottom: .5em;
       float: left;
       width: 38px;
+      @media (max-width: 979px) {
+	&.share-headline {
+	  margin-top: 6px;
+	}
+      }
       @include breakpoint($breakpoint-desktop) {
         width: auto;
         float: none;
@@ -149,7 +150,7 @@
       margin-bottom: 1em;
     }
   }
-  #article-main-image {
+  .article-main-image {
     figcaption p {
       margin-top: 0;
       font-family: $ashbury-light-italic;
