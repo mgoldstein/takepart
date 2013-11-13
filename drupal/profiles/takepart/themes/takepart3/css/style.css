@@ -3188,3 +3188,11 @@ p.fb-login-text {
 .addthis_button_pinterest_pinit.at300b {
     width:80px;
 }
+
+.zendesk-support-form .form-textarea-wrapper {
+    width: 60%;
+}
+
+#edit-description--2-counter {
+    margin: 0.5em 0;
+}

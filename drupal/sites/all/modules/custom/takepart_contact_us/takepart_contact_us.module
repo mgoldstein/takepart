@@ -17,7 +17,7 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
     );
     $form['requester'] = array(
         '#type' => 'textfield',
-        '#title' => t('Email address'),
+        '#title' => t('Email'),
         '#required' => TRUE,
     );
     $form['subject'] = array(
