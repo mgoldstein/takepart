@@ -10,7 +10,7 @@
     // add commas for lists of 3 or greater ($delta is zero-indexed)
     $authors .= ($number_of_authors > 2 && $delta < $number_of_authors - 2 ) ? ', ' :'';
     // add 'and' for lists of 2 or greater ($delta is zero-indexed)
-    $authors .= ($number_of_authors > 1 && $delta == $number_of_authors - 2 ) ? 'and ' :'';
+    $authors .= ($number_of_authors > 1 && $delta == $number_of_authors - 2 ) ? ' and ' :'';
   }
   $authors .= '</span>';
   // Render the top-level div.
