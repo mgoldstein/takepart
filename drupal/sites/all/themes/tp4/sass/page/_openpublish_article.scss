@@ -203,19 +203,24 @@
   } // body field
 
   .inline-content-nodes {
+    margin: 1.5em 0; // articles have horizontal padding
 
     &.vertical {
-      float: right;
-      margin: .25em .5em;
-      width: 33%;
+      @media (max-width: 767px) {
+	@include clearfix;
+      }
       @include breakpoint($breakpoint-tablet) {
+	float: right;
+	margin: .25em .5em;
+	width: 33%;
+      }
+      @include breakpoint($breakpoint-desktop) {
 	width: 25%;
       }
     }
 
     &.horizontal {
       @include clearfix;
-      margin: 1.5em 0; // articles have padding
 
       @include breakpoint($breakpoint-tablet) {
 	.node {
