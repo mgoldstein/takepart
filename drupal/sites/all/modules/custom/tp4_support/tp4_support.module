@@ -191,6 +191,13 @@ function tp4_support_theme() {
         'items' => array(),
         'entity' => '',
       )
+    ),
+    'tp4_promo_content' => array(
+      'template' => 'field-formatter--promo-content',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+      )
     )
   );
 }
@@ -280,6 +287,10 @@ function tp4_support_field_formatter_info(){
       'label' => t('Author w/ image and bio field formatter'),
       'field types' => array('node_reference'),
     ),
+    'tp4_promo_content' => array(
+      'label' => t('Promo Content'),
+      'field types' => array('field_collection'),
+    ),
   );
 }
 
@@ -293,6 +304,13 @@ function tp4_support_field_formatter_view($entity_type, $entity, $field, $instan
     case 'tp4_author_full':
       $element = array(
         '#theme' => 'tp4_author_full',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
+    break;
+    case 'tp4_promo_content':
+      $element = array(
+        '#theme' => 'tp4_promo_content',
         '#items' => $items,
         '#entity' => $entity,
       );

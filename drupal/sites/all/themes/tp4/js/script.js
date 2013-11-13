@@ -151,6 +151,7 @@ Drupal.behaviors.articleBehaviors = {
 // Parent/ancestor vars to track in reverse order of importance
 $.tpregions.add({
 'Header': '#block-tp4-support-tp4-fat-header',
+'Slim Header' : '.slimnav',
 //'Mega Menu' : '#megamenu',
 'Footer': '#footer',
 'Graveyard' : '#block-tp4-support-tp4-graveyard',
