@@ -122,6 +122,7 @@ $(function() {
 	// Parent/ancestor vars to track in reverse order of importance
 	$.tpregions.add({
 		'Header': '#site-header',
+                'Slim Header' : '.slimnav',
 		'Footer': '#site-footer',
 		'Daily Featured Content': '.of_the_day_section',
 		'Partner Link': '.on_our_radar_section',
