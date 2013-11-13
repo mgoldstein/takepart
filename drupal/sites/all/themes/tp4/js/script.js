@@ -150,8 +150,8 @@ Drupal.behaviors.articleBehaviors = {
 // Omniture position tracking
 // Parent/ancestor vars to track in reverse order of importance
 $.tpregions.add({
-'Header': '#header',
-'Mega Menu' : '#megamenu',
+'Header': '#block-tp4-support-tp4-fat-header',
+//'Mega Menu' : '#megamenu',
 'Footer': '#footer',
 'Graveyard' : '#block-tp4-support-tp4-graveyard',
 'Daily Featured Content': '.of_the_day_section',
