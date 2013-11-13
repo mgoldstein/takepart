@@ -29,6 +29,7 @@ function takepart_core_preprocess_page(&$variables) {
   if ((!isset($variables['user_nav'])) || (!$variables['user_nav'])) {
     $variables['user_nav'] = _render_tp3_user_menu($variables);
   }
+  drupal_add_js('//j.maxmind.com/js/apis/geoip2/v2.0/geoip2.js', 'external');
 }
 
 /**
