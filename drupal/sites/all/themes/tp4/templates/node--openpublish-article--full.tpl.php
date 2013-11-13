@@ -9,7 +9,9 @@
 
   <?php if ($title_prefix || $title_suffix || $unpublished || $title): ?>
     <header class="article-header">
-      <?php print render($content['field_topic_box']); ?>
+      <div class="topic-box">
+        <?php print $variables['field_topic_box_top']; ?>
+      </div>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
 	<h1<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h1>
@@ -75,7 +77,8 @@
   </div>
 
   <nav id="series-navigation">
-    <p><strong>Put the series nav box here.</strong></p>
+  <div class="left-border"></div><div class="right-border"></div>
+    <?php print $variables['series_nav']; ?>
   </nav>
 
   <footer id="article-footer">
