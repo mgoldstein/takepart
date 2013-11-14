@@ -2255,3 +2255,89 @@
 #main-menu li:nth-child(5) a:after {
   border-right: none;
 }
+
+/* Show "Left" drawer for the "Right" drawer in the demo */
+/* line 330, ../sass/_slimnav.scss */
+.snap-drawers {
+  display: none;
+}
+
+/* line 333, ../sass/_slimnav.scss */
+.snapjs-left .snap-drawers {
+  display: block;
+}
+
+/* line 336, ../sass/_slimnav.scss */
+.snap-drawers {
+  background: #000;
+  color: #fff;
+  height: auto;
+  overflow: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+/* line 344, ../sass/_slimnav.scss */
+.snap-drawers .snap-drawer {
+  background: #000;
+  position: fixed;
+  top: 5px;
+  right: auto;
+  bottom: 0;
+  left: auto;
+  width: 280px;
+  height: auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-transition: width 0.3s ease;
+  -moz-transition: width 0.3s ease;
+  -ms-transition: width 0.3s ease;
+  -o-transition: width 0.3s ease;
+  transition: width 0.3s ease;
+}
+/* line 362, ../sass/_slimnav.scss */
+.snap-drawers #block-menu-menu-megamenu ul {
+  border-bottom: 5px solid #646464;
+}
+/* line 364, ../sass/_slimnav.scss */
+.snap-drawers #block-menu-menu-megamenu ul li {
+  font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  font-size: 13px;
+  padding: 15px 10px;
+  margin: 0;
+  padding: 0;
+  text-indent: 10px;
+  line-height: 48px;
+  text-transform: none;
+}
+/* line 376, ../sass/_slimnav.scss */
+.snap-drawers #block-menu-menu-megamenu > ul > li {
+  font-family: "TradeGothicLTStdCnLight", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-bottom: none;
+  font-weight: 100;
+}
+/* line 383, ../sass/_slimnav.scss */
+.snap-drawers #block-menu-menu-megamenu a {
+  color: #fff;
+  border-bottom: 1px solid #646464;
+  display: block;
+  width: 100%;
+}
+/* line 388, ../sass/_slimnav.scss */
+.snap-drawers #block-menu-menu-megamenu a:hover {
+  text-decoration: none;
+  background-color: #333;
+}
+/* line 394, ../sass/_slimnav.scss */
+.snap-drawers .scrollable {
+  overflow: auto;
+  -webkit-transition-property: top, bottom;
+  transition-property: top, bottom;
+  -webkit-transition-duration: .2s, .2s;
+  transition-duration: .2s, .2s;
+  -webkit-transition-timing-function: linear, linear;
+  transition-timing-function: linear, linear;
+  -webkit-overflow-scrolling: touch;
+}
