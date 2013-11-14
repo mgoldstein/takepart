@@ -151,19 +151,19 @@ Drupal.behaviors.articleBehaviors = {
 // Parent/ancestor vars to track in reverse order of importance
 $.tpregions.add({
 'Header': '#block-tp4-support-tp4-fat-header',
+'Slim Header' : '.slimnav',
 //'Mega Menu' : '#megamenu',
 'Footer': '#footer',
 'Graveyard' : '#block-tp4-support-tp4-graveyard',
 'Daily Featured Content': '.of_the_day_section',
-'Partner Link': '.on_our_radar_section',
-'Embedded Content': '#article-body .drupal-embed',
-'Related Stories': '.related-stories',
-'Next Article': '.next-article',
-'Keyword Link': '.page-tags',
-'Author Full Bio Link': '#article-author .full_bio_link',
-'Author Byline Link': '.authors',
-'Badge': '.badge',
-'Topic Box': '#topic_box',
+'Partner Link': 'aside.on-our-radar',
+'Embedded Content': '#article-content aside.inline-content',
+'Related Stories': '#article-footer .field-name-field-related-stories',
+'Series Navigation': '#series-navigation',
+'Keyword Link': '.topic-links',
+'Author Full Bio Link': '.author-bio',
+//'Badge': '.badge',
+//'Topic Box': '#topic_box',
 'Outbrain Widget': '.OUTBRAIN'
 });
         

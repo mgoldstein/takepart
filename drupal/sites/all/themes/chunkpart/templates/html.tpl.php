@@ -11,31 +11,37 @@
   <![endif]-->
 </head>
 <body class="<?=$classes ?>" <?=$attributes ?>>
+  <div class="snap-drawers scrollable">
+      <div class="snap-drawer snap-drawer-left">
+        <!-- coming soon -->
+    </div>
+  </div>
+  <div id="page-wrapper">
+    <? if (isset($page_top)): ?>
+        <?=$page_top ?>
+    <? endif ?>
 
-  <? if (isset($page_top)): ?>
-      <?=$page_top ?>
-  <? endif ?>
+    <? if (isset($page)): ?>
+        <?=$page ?>
+    <? endif ?>
 
-  <? if (isset($page)): ?>
-      <?=$page ?>
-  <? endif ?>
+    <?=$scripts ?>
 
-  <?=$scripts ?>
-
-  <? if (isset($custom)): ?>
-      <?=$custom ?>
-  <? endif ?>
+    <? if (isset($custom)): ?>
+        <?=$custom ?>
+    <? endif ?>
 
 
-  <? if (isset($page_bottom)): ?>
-      <?=$page_bottom ?>
-  <? endif ?>
+    <? if (isset($page_bottom)): ?>
+        <?=$page_bottom ?>
+    <? endif ?>
 
-  <? if (isset($tp_sysinfo_comment_tags)): ?>
-      <?=$tp_sysinfo_comment_tags ?>
-  <? endif ?>
+    <? if (isset($tp_sysinfo_comment_tags)): ?>
+        <?=$tp_sysinfo_comment_tags ?>
+    <? endif ?>
 
-  <? // Twitter widget ?>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <? // Twitter widget ?>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+  </div>
 </body>
 </html>

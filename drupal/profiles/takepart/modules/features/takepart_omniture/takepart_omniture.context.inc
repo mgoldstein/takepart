@@ -65,7 +65,6 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
         'action' => 'action',
         'audio' => 'audio',
         'blog_front' => 'blog_front',
-        'openpublish_article' => 'openpublish_article',
         'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_photo' => 'openpublish_photo',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -88,15 +87,18 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.prop19 = [tp_omniture:date:{node:created:raw}]
-s.eVar21 = [tp_omniture:value_or_empty:{node:field_display_tag}]
-s.prop20 = [tp_omniture:value_or_empty:{node:field_display_tag}]
-s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
-s.eVar18 = [tp_omniture:str_decode:{node:title}]
-s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.eVar17 = [tp_omniture:get_author:{node:nid}]
+      'variables' => 's.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
+s.prop6 = [node:nid]
 s.prop16 = [tp_omniture:get_author:{node:nid}]
-s.prop6 = [node:nid]',
+s.prop17 = [tp_omniture:str_decode:{node:title}]
+s.eVar18 = [tp_omniture:str_decode:{node:title}]
+s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
+s.eVar19 = [tp_omniture:value_or_empty:{node:field_series}]
+s.prop19 = [tp_omniture:date:{node:created:raw}]
+s.prop20 = [tp_omniture:lowercase:{node:field_topic}]
+s.eVar21 = [tp_omniture:lowercase:{node:field_topic}]
+s.prop43 = [tp_omniture:campaign_context:{node:nid}]
+s.eVar43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
   );
   $context->condition_mode = 0;
@@ -125,7 +127,20 @@ s.prop6 = [node:nid]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.events = event6',
+      'variables' => 's.events = event6
+s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
+s.prop6 = [node:nid]
+s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
+s.prop17 = [tp_omniture:str_decode:{node:title}]
+s.eVar17 = [tp_omniture:value_or_empty:{node:field_author}]
+s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
+s.eVar18 = [tp_omniture:str_decode:{node:title}]
+s.eVar19 = [tp_omniture:value_or_empty:{node:field_series}]
+s.prop19 = [tp_omniture:date:{node:created:raw}]
+s.prop20 = [tp_omniture:value_or_empty:{node:field_topic}]
+s.eVar21 = [tp_omniture:value_or_empty:{node:field_topic}]
+s.prop43 = [tp_omniture:campaign_context:{node:nid}]
+s.eVar43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
   );
   $context->condition_mode = 0;
@@ -189,7 +204,11 @@ s.prop2 = [current-page:url-arg:1]',
       'variables' => 's.prop14 = [tp_omniture:str_decode:{node:title}]
 s.eVar14 = [tp_omniture:str_decode:{node:title}]
 s.prop15 = [tp_omniture:get_first_photo_title:{node:nid}]
-s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]',
+s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]
+s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
+s.eVar17 = [tp_omniture:value_or_empty:{node:field_author}]
+s.prop20 = [tp_omniture:lowercase:{node:field_topic}]
+s.eVar21 = [tp_omniture:lowercase:{node:field_topic}]',
     ),
   );
   $context->condition_mode = 0;

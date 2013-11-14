@@ -2,7 +2,10 @@
     <a href="#main"><?= t('Skip to main content') ?></a>
 </div>
 
-<?=$header ?>
+          <div class="slimnav">
+    <?php $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav'); ?>
+    <?php print $slimnav['content']; ?>
+  </div>
 
 <main role="main" id="main">
   <?php if (isset($primary_local_tasks)): ?><ul class='links clearfix'><?php print render($primary_local_tasks) ?></ul><?php endif; ?>

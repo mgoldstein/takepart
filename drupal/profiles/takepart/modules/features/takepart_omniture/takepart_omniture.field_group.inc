@@ -29,7 +29,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'About The Petition',
       'instance_settings' => array(
-        'classes' => 'same-height-adjust',
+        'classes' => 'same-height-adjust group-about-the-petition field-group-htab',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -56,7 +56,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'About The Petition',
       'instance_settings' => array(
-        'classes' => 'same-height-adjust',
+        'classes' => 'same-height-adjust group-about-the-petition field-group-htab',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -75,21 +75,23 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Alternate States',
-    'weight' => '13',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_closed_message',
-      1 => 'field_signed_message',
-      2 => 'field_signed_heading',
-      3 => 'field_closed_heading',
-      4 => 'field_complete_heading',
-      5 => 'field_complete_message',
+      0 => 'field_thank_you_message',
+      1 => 'field_closed_message',
+      2 => 'field_signed_message',
+      3 => 'field_thank_you_heading',
+      4 => 'field_signed_heading',
+      5 => 'field_closed_heading',
+      6 => 'field_complete_heading',
+      7 => 'field_complete_message',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'label' => 'Alternate States',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-alternate-content field-group-tab',
         'description' => 'Content for alternate states of the petition.',
       ),
       'formatter' => 'closed',
@@ -108,21 +110,23 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Alternate States',
-    'weight' => '10',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_closed_message',
-      1 => 'field_signed_message',
-      2 => 'field_closed_heading',
-      3 => 'field_complete_heading',
-      4 => 'field_signed_heading',
-      5 => 'field_complete_message',
+      0 => 'field_thank_you_message',
+      1 => 'field_closed_message',
+      2 => 'field_signed_message',
+      3 => 'field_closed_heading',
+      4 => 'field_complete_heading',
+      5 => 'field_signed_heading',
+      6 => 'field_thank_you_heading',
+      7 => 'field_complete_message',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-alternate-states field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -149,7 +153,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Closed Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields closed inactive',
+        'classes' => 'signature-state-fields closed inactive group-closed-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -181,7 +185,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Closed Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields closed inactive',
+        'classes' => 'signature-state-fields closed inactive group-closed-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -213,7 +217,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Closed Fields',
       'instance_settings' => array(
-        'classes' => 'signature-fields-closed',
+        'classes' => 'signature-fields-closed group-closed-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -245,7 +249,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Closed Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields closed inactive',
+        'classes' => 'signature-state-fields closed inactive group-closed-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -277,7 +281,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Closed Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields closed inactive',
+        'classes' => 'signature-state-fields closed inactive group-closed-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -309,7 +313,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Closed Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields closed inactive',
+        'classes' => 'signature-state-fields closed inactive group-closed-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -341,7 +345,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Complete Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields complete inactive',
+        'classes' => 'signature-state-fields complete inactive group-complete-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -373,7 +377,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Complete Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields complete inactive',
+        'classes' => 'signature-state-fields complete inactive group-complete-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -405,7 +409,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Complete Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields signed unsigned closed complete inactive',
+        'classes' => 'signature-state-fields signed unsigned closed complete inactive group-complete-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -437,7 +441,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Complete Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields complete inactive',
+        'classes' => 'signature-state-fields complete inactive group-complete-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -469,7 +473,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Complete Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields complete inactive',
+        'classes' => 'signature-state-fields complete inactive group-complete-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -501,7 +505,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Complete Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields signed unsigned closed complete inactive',
+        'classes' => 'signature-state-fields signed unsigned closed complete inactive group-complete-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -533,7 +537,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Complete Message',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-complete-message field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -565,7 +569,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Complete Message',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-complete-message field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -597,7 +601,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-description field-group-htab',
       ),
     ),
   );
@@ -623,7 +627,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-description field-group-htab',
         'required_fields' => 1,
       ),
     ),
@@ -656,7 +660,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-fields-to-remove field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -691,7 +695,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-fields-to-remove field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -717,7 +721,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Full Petition Text',
       'instance_settings' => array(
-        'classes' => 'signature-tab-signed same-height-adjust',
+        'classes' => 'signature-tab-signed same-height-adjust group-full-petition-text field-group-htab',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -744,7 +748,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Full Petition Text',
       'instance_settings' => array(
-        'classes' => 'signature-tab-signed same-height-adjust',
+        'classes' => 'signature-tab-signed same-height-adjust group-full-petition-text field-group-htab',
         'description' => '',
       ),
       'formatter' => 'open',
@@ -773,7 +777,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-info field-group-htabs',
       ),
     ),
   );
@@ -800,7 +804,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-info field-group-htabs',
       ),
     ),
   );
@@ -825,7 +829,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Less View Fields',
       'instance_settings' => array(
-        'classes' => 'more-or-less-less-view',
+        'classes' => 'more-or-less-less-view group-less-view field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -856,7 +860,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Less View Field',
       'instance_settings' => array(
-        'classes' => 'more-or-less-less-view',
+        'classes' => 'more-or-less-less-view group-less-view field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -887,7 +891,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Less View Fields',
       'instance_settings' => array(
-        'classes' => 'more-or-less-less-view',
+        'classes' => 'more-or-less-less-view group-less-view field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -910,7 +914,7 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '6',
+    'weight' => '3',
     'children' => array(
       0 => 'field_actionheaderimg',
       1 => 'field_actionheaderimghref',
@@ -922,7 +926,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-main field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -940,7 +944,7 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '6',
+    'weight' => '3',
     'children' => array(
       0 => 'field_actionheaderimghref',
       1 => 'field_actionheaderimg',
@@ -952,7 +956,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-main field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -979,7 +983,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-map field-group-htab',
         'required_fields' => 1,
       ),
     ),
@@ -1006,7 +1010,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'More or Less Fields',
       'instance_settings' => array(
-        'classes' => 'more-or-less-container',
+        'classes' => 'more-or-less-container group-more-or-less field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1038,7 +1042,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'More or Less Fields',
       'instance_settings' => array(
-        'classes' => 'more-or-less-container',
+        'classes' => 'more-or-less-container group-more-or-less field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1070,7 +1074,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'More of Less',
       'instance_settings' => array(
-        'classes' => 'more-or-less-container',
+        'classes' => 'more-or-less-container group-more-or-less field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1102,7 +1106,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'More or Less',
       'instance_settings' => array(
-        'classes' => 'more-or-less-container',
+        'classes' => 'more-or-less-container group-more-or-less field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1134,7 +1138,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'More View Field',
       'instance_settings' => array(
-        'classes' => 'more-or-less-more-view',
+        'classes' => 'more-or-less-more-view group-more-view field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1165,7 +1169,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'More View Fields',
       'instance_settings' => array(
-        'classes' => 'more-or-less-more-view',
+        'classes' => 'more-or-less-more-view group-more-view field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1196,7 +1200,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'More View Fields',
       'instance_settings' => array(
-        'classes' => 'more-or-less-more-view',
+        'classes' => 'more-or-less-more-view group-more-view field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1227,7 +1231,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'More View Fields',
       'instance_settings' => array(
-        'classes' => 'more-or-less-more-view',
+        'classes' => 'more-or-less-more-view group-more-view field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1238,6 +1242,60 @@ function takepart_omniture_field_group_info() {
     ),
   );
   $export['group_more_view|node|pledge_action|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_share|node|petition_action|form';
+  $field_group->group_name = 'group_page_share';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'petition_action';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_thank_you_sharing';
+  $field_group->data = array(
+    'label' => 'Action Page Sharing',
+    'weight' => '37',
+    'children' => array(
+      0 => 'field_social_share_bar',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => ' group-page-share field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_page_share|node|petition_action|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_share|node|pledge_action|form';
+  $field_group->group_name = 'group_page_share';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'pledge_action';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_sharing';
+  $field_group->data = array(
+    'label' => 'Action Page Sharing',
+    'weight' => '30',
+    'children' => array(
+      0 => 'field_social_share_bar',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => ' group-page-share field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_page_share|node|pledge_action|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1260,7 +1318,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-petition-tabs field-group-htabs',
       ),
     ),
   );
@@ -1287,7 +1345,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'formatter' => '',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-petition-tabs field-group-htabs',
       ),
     ),
   );
@@ -1304,7 +1362,7 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Petition',
-    'weight' => '7',
+    'weight' => '5',
     'children' => array(
       0 => 'body',
       1 => 'field_petition_about',
@@ -1316,7 +1374,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-petition field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -1334,20 +1392,19 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Pledge',
-    'weight' => '7',
+    'weight' => '5',
     'children' => array(
       0 => 'body',
       1 => 'field_action_form_title',
-      2 => 'field_pledge_action_short',
-      3 => 'field_pledge_action_long',
-      4 => 'field_short_introduction',
+      2 => 'field_pledge_action_long',
+      3 => 'field_short_introduction',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-pledge field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -1376,7 +1433,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-promo field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -1405,7 +1462,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-promo field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -1437,7 +1494,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-related field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -1469,7 +1526,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-related field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -1495,7 +1552,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Signature Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields unsigned signed active',
+        'classes' => 'signature-state-fields unsigned signed active group-signature-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1526,7 +1583,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Signature Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields unsigned signed active',
+        'classes' => 'signature-state-fields unsigned signed active group-signature-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1558,7 +1615,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Signature Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields unsigned active',
+        'classes' => 'signature-state-fields unsigned active group-signature-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1590,7 +1647,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Signature Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields unsigned signed active',
+        'classes' => 'signature-state-fields unsigned signed active group-signature-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1622,7 +1679,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Signature Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields unsigned signed active',
+        'classes' => 'signature-state-fields unsigned signed active group-signature-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1655,7 +1712,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Signature Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields unsigned active',
+        'classes' => 'signature-state-fields unsigned active group-signature-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1687,7 +1744,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Already Signed Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields signed inactive',
+        'classes' => 'signature-state-fields signed inactive group-signed-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1719,7 +1776,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Already Signed Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields signed inactive',
+        'classes' => 'signature-state-fields signed inactive group-signed-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1742,16 +1799,17 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Social Sharing',
-    'weight' => '11',
+    'weight' => '8',
     'children' => array(
-      0 => 'field_social_share_bar',
+      0 => 'group_thank_you_share',
+      1 => 'group_page_share',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-social-sharing field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -1769,18 +1827,19 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sponsor / Recipient',
-    'weight' => '8',
+    'weight' => '6',
     'children' => array(
       0 => 'field_petition_recipient',
       1 => 'field_action_sponsor',
       2 => 'field_action_organizer',
+      3 => 'field_action_sponsor_paid',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-sponsor-recipient field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -1798,17 +1857,18 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Sponsor(s)',
-    'weight' => '8',
+    'weight' => '6',
     'children' => array(
       0 => 'field_action_sponsor',
       1 => 'field_action_organizer',
+      2 => 'field_action_sponsor_paid',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-sponsor field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -1835,7 +1895,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-storeinfo field-group-htab',
       ),
     ),
   );
@@ -1861,7 +1921,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-storeinfo field-group-htab',
         'required_fields' => 1,
       ),
     ),
@@ -1888,7 +1948,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-storemap field-group-htab',
       ),
     ),
   );
@@ -1915,7 +1975,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Summary',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-summary field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1948,7 +2008,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Summary',
       'instance_settings' => array(
-        'classes' => '',
+        'classes' => ' group-summary field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -1971,7 +2031,7 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tags',
-    'weight' => '17',
+    'weight' => '4',
     'children' => array(
       0 => 'field_multi_page_campaign',
       1 => 'field_topic',
@@ -1984,7 +2044,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-tags field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -2002,7 +2062,7 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tags',
-    'weight' => '14',
+    'weight' => '4',
     'children' => array(
       0 => 'field_display_tag',
       1 => 'field_free_tag',
@@ -2015,7 +2075,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-tags field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -2033,22 +2093,18 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'TakeAction Button',
-    'weight' => '18',
+    'weight' => '9',
     'children' => array(
       0 => 'field_tab_action',
       1 => 'field_tab_internal_title',
-      2 => 'field_tab_internal_desc',
-      3 => 'field_tab_external_title',
-      4 => 'field_tab_external_desc',
-      5 => 'field_tab_call_to_action',
-      6 => 'field_tab_exclude',
+      2 => 'field_tab_call_to_action',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-takeaction-button field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -2066,22 +2122,18 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'TakeAction Button',
-    'weight' => '15',
+    'weight' => '10',
     'children' => array(
       0 => 'field_tab_action',
       1 => 'field_tab_internal_title',
-      2 => 'field_tab_internal_desc',
-      3 => 'field_tab_external_title',
-      4 => 'field_tab_external_desc',
-      5 => 'field_tab_call_to_action',
-      6 => 'field_tab_exclude',
+      2 => 'field_tab_call_to_action',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-takeaction-button field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -2109,7 +2161,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Thank You Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields thankyou inactive',
+        'classes' => 'signature-state-fields thankyou inactive group-thank-you-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -2142,7 +2194,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Thank You Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields thankyou inactive',
+        'classes' => 'signature-state-fields thankyou inactive group-thank-you-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -2175,7 +2227,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Thank You Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields thankyou inactive',
+        'classes' => 'signature-state-fields thankyou inactive group-thank-you-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -2208,7 +2260,7 @@ function takepart_omniture_field_group_info() {
     'format_settings' => array(
       'label' => 'Thank You Fields',
       'instance_settings' => array(
-        'classes' => 'signature-state-fields thankyou inactive',
+        'classes' => 'signature-state-fields thankyou inactive group-thank-you-fields field-group-div',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -2223,6 +2275,60 @@ function takepart_omniture_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_thank_you_share|node|petition_action|form';
+  $field_group->group_name = 'group_thank_you_share';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'petition_action';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_thank_you_sharing';
+  $field_group->data = array(
+    'label' => 'Thank You Sharing',
+    'weight' => '36',
+    'children' => array(
+      0 => 'field_thank_you_share_bar',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => ' group-thank-you-share field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_thank_you_share|node|petition_action|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_thank_you_share|node|pledge_action|form';
+  $field_group->group_name = 'group_thank_you_share';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'pledge_action';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_social_sharing';
+  $field_group->data = array(
+    'label' => 'Thank You Sharing',
+    'weight' => '29',
+    'children' => array(
+      0 => 'field_thank_you_share_bar',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => ' group-thank-you-share field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_thank_you_share|node|pledge_action|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_thank_you_sharing|node|petition_action|form';
   $field_group->group_name = 'group_thank_you_sharing';
   $field_group->entity_type = 'node';
@@ -2231,16 +2337,17 @@ function takepart_omniture_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Social Sharing',
-    'weight' => '14',
+    'weight' => '8',
     'children' => array(
-      0 => 'field_social_share_bar',
+      0 => 'group_thank_you_share',
+      1 => 'group_page_share',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
       'label' => 'Social Sharing',
       'instance_settings' => array(
         'required_fields' => 1,
-        'classes' => '',
+        'classes' => ' group-thank-you-sharing field-group-tab',
         'description' => '',
       ),
       'formatter' => 'closed',
@@ -2270,7 +2377,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-thank-you-state field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -2299,7 +2406,7 @@ function takepart_omniture_field_group_info() {
       'formatter' => 'closed',
       'instance_settings' => array(
         'description' => '',
-        'classes' => '',
+        'classes' => ' group-thank-you-state field-group-tab',
         'required_fields' => 1,
       ),
     ),
@@ -2324,7 +2431,9 @@ function takepart_omniture_field_group_info() {
     'format_type' => 'hidden',
     'format_settings' => array(
       'formatter' => '',
-      'instance_settings' => array(),
+      'instance_settings' => array(
+        'classes' => ' group-updates-fields field-group-hidden',
+      ),
     ),
   );
   $export['group_updates_fields|node|pledge_action|embedaction_expanded'] = $field_group;
