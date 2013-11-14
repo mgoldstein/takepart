@@ -26,12 +26,14 @@
 /* ===GLOBAL=== */
 /* ------------------------------------------------------------------------*/
 body {
-    background: #f1f3f4;
+    background: #fff;
     color:#333;
     font-size:12px;
     font-family:Helvetica, Arial, sans-serif;
     margin:0;
     padding:0;
+    border-top: 5px solid #01BF9E;
+    border-bottom: 5px solid #01BF9E;
 }
 
 body.page-iframes-slim-header,
