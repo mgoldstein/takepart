@@ -11,34 +11,7 @@
             });
         }
     }
-/*
-    Drupal.behaviors.scCommentClick = {
-        attach: function (context, settings) {
-            $('form.comment-form input.form-submit', context).click(function(){
-                s.linkTrackVars="eVar31,eVar22,prop21,events";
-                s.linkTrackEvents="event24";
-                s.events="event24";
-                s.eVar22=s.pageName;
-                s.prop21=s.eVar5;
-                s.eVar31=s.eVar4;
-                s.tl(true, 'o', 'Comments');
-            });
-        }
-    }
-    */
-/* Remove embedded action metrics
-    Drupal.behaviors.scEmbeddedActionClick = {
-        attach: function (context, settings) {
-            $('.embed-action a').click(function(){
-                s.linkTrackVars="eVar28,events";
-                s.linkTrackEvents="event34, event19";
-                s.eVar28="editorial";
-                s.events="event34, event19";
-                s.tl(this.href, 'o', 'Embedded Action Click');
-            });
-        }
-    }
-*/
+
     Drupal.behaviors.scFiveThingsClick = {
         attach: function (context, settings) {
             $('.field-name-field-tp-campaign-4-things-link a').click(function(){
@@ -54,7 +27,7 @@
     Drupal.behaviors.scPhotoGalleryThumbClick = {
         attach: function (context, settings) {
             $('.views-slideshow-controls-top .views-content-field-gallery-images img').click(function(){
-            	gallery_swap_active(this);
+                gallery_swap_active(this);
                 // find our block id of this thumb
                 var blockId = $(this).parents('.views_slideshow_jcarousel_pager_item')[0].id;
                 var focusBlockId = blockId.replace('views_slideshow_jcarousel_pager_item_top_photo_gallery-', 
@@ -66,7 +39,7 @@
                 s.eVar15=s.prop17 +": "+ title;
                 s.prop15=s.eVar15;
                 s.events="event2,event15";
-                //s.tl(this.href, 'o', 'Gallery Photo View');
+            //s.tl(this.href, 'o', 'Gallery Photo View');
             });
         }
     }
@@ -74,14 +47,14 @@
     Drupal.behaviors.scPhotoGalleryNextClick = {
         attach: function (context, settings) {
             $('#views_slideshow_controls_text_next_photo_gallery-block').click(function(){
-              	var activeID = gallery_swap_active(this);
+                var activeID = gallery_swap_active(this);
                 var title = $('#views_slideshow_cycle_div_photo_gallery-block_' + activeID + ' .views-field-field-image-title h4').text();
                 s.linkTrackVars="eVar15,events";
                 s.linkTrackEvents="event2,event15";
                 s.eVar15=s.prop17 + ": " + title;
                 s.prop15=s.eVar15;
                 s.events="event2,event15";
-                //s.tl(this.href, 'o', 'Gallery Photo View');
+            //s.tl(this.href, 'o', 'Gallery Photo View');
             });
         }
     }
@@ -89,14 +62,14 @@
     Drupal.behaviors.scPhotoGalleryPrevClick = {
         attach: function (context, settings) {
             $('#views_slideshow_controls_text_previous_photo_gallery-block').click(function(){
-            	var activeID = gallery_swap_active(this);
+                var activeID = gallery_swap_active(this);
                 var title = $('#views_slideshow_cycle_div_photo_gallery-block_' + activeID.toString() + ' .views-field-field-image-title h4').text();
                 s.linkTrackVars="eVar15,events";
                 s.linkTrackEvents="event2,event15";
                 s.eVar15=s.prop17 + ":" + title;
                 s.prop15=s.eVar15;
                 s.events="event2,event15";
-                //s.tl(this.href, 'o', 'Gallery Photo View');
+            //s.tl(this.href, 'o', 'Gallery Photo View');
             });
         }
     }
