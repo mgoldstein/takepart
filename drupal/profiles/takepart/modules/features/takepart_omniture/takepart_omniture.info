@@ -33,6 +33,7 @@ features[context][] = omniture_registration
 features[context][] = omniture_site_wide
 features[context][] = omniture_tab_landing_page
 features[context][] = omniture_tab_thank_you
+features[context][] = omniture_topicfront
 features[ctools][] = context:context:3
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
