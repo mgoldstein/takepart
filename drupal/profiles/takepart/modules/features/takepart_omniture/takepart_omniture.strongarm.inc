@@ -248,9 +248,6 @@ function takepart_omniture_strongarm() {
       'medium_preview' => array(
         'custom_settings' => TRUE,
       ),
-      'of_the_day' => array(
-        'custom_settings' => TRUE,
-      ),
       'inline_content' => array(
         'custom_settings' => TRUE,
       ),
@@ -264,13 +261,13 @@ function takepart_omniture_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '2',
         ),
         'xmlsitemap' => array(
-          'weight' => '20',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '21',
+          'weight' => '11',
         ),
       ),
       'display' => array(
@@ -355,12 +352,8 @@ function takepart_omniture_strongarm() {
             'weight' => '15',
             'visible' => TRUE,
           ),
-          'of_the_day' => array(
-            'weight' => '31',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '10',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -393,12 +386,8 @@ function takepart_omniture_strongarm() {
             'weight' => '16',
             'visible' => TRUE,
           ),
-          'of_the_day' => array(
-            'weight' => '30',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '7',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -431,12 +420,8 @@ function takepart_omniture_strongarm() {
             'weight' => '18',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '25',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '8',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -469,12 +454,8 @@ function takepart_omniture_strongarm() {
             'weight' => '11',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '24',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '9',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -507,12 +488,8 @@ function takepart_omniture_strongarm() {
             'weight' => '17',
             'visible' => TRUE,
           ),
-          'of_the_day' => array(
-            'weight' => '19',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '6',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -545,12 +522,8 @@ function takepart_omniture_strongarm() {
             'weight' => '9',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '18',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '5',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -583,12 +556,8 @@ function takepart_omniture_strongarm() {
             'weight' => '12',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '20',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '1',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -621,12 +590,8 @@ function takepart_omniture_strongarm() {
             'weight' => '13',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '21',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '2',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -659,12 +624,8 @@ function takepart_omniture_strongarm() {
             'weight' => '12',
             'visible' => TRUE,
           ),
-          'of_the_day' => array(
-            'weight' => '23',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '3',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -697,12 +658,8 @@ function takepart_omniture_strongarm() {
             'weight' => '14',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '22',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '4',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -753,9 +710,6 @@ function takepart_omniture_strongarm() {
       'medium_preview' => array(
         'custom_settings' => TRUE,
       ),
-      'of_the_day' => array(
-        'custom_settings' => TRUE,
-      ),
       'inline_content' => array(
         'custom_settings' => TRUE,
       ),
@@ -769,13 +723,13 @@ function takepart_omniture_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '2',
         ),
         'redirect' => array(
-          'weight' => '18',
+          'weight' => '12',
         ),
         'xmlsitemap' => array(
-          'weight' => '17',
+          'weight' => '11',
         ),
       ),
       'display' => array(
@@ -864,10 +818,6 @@ function takepart_omniture_strongarm() {
             'weight' => '12',
             'visible' => TRUE,
           ),
-          'of_the_day' => array(
-            'weight' => '29',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
             'weight' => '0',
             'visible' => FALSE,
@@ -906,10 +856,6 @@ function takepart_omniture_strongarm() {
             'weight' => '13',
             'visible' => TRUE,
           ),
-          'of_the_day' => array(
-            'weight' => '30',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
             'weight' => '0',
             'visible' => FALSE,
@@ -946,10 +892,6 @@ function takepart_omniture_strongarm() {
           ),
           'embedaction_expanded' => array(
             'weight' => '15',
-            'visible' => FALSE,
-          ),
-          'of_the_day' => array(
-            'weight' => '25',
             'visible' => FALSE,
           ),
           'inline_content' => array(
@@ -990,10 +932,6 @@ function takepart_omniture_strongarm() {
             'weight' => '11',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '24',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
             'weight' => '0',
             'visible' => FALSE,
@@ -1032,10 +970,6 @@ function takepart_omniture_strongarm() {
             'weight' => '14',
             'visible' => TRUE,
           ),
-          'of_the_day' => array(
-            'weight' => '19',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
             'weight' => '0',
             'visible' => FALSE,
@@ -1072,10 +1006,6 @@ function takepart_omniture_strongarm() {
           ),
           'embedaction_expanded' => array(
             'weight' => '12',
-            'visible' => FALSE,
-          ),
-          'of_the_day' => array(
-            'weight' => '18',
             'visible' => FALSE,
           ),
           'inline_content' => array(
@@ -1116,10 +1046,6 @@ function takepart_omniture_strongarm() {
             'weight' => '7',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '20',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
             'weight' => '0',
             'visible' => FALSE,
@@ -1156,10 +1082,6 @@ function takepart_omniture_strongarm() {
           ),
           'embedaction_expanded' => array(
             'weight' => '9',
-            'visible' => FALSE,
-          ),
-          'of_the_day' => array(
-            'weight' => '21',
             'visible' => FALSE,
           ),
           'inline_content' => array(
@@ -1200,10 +1122,6 @@ function takepart_omniture_strongarm() {
             'weight' => '53',
             'visible' => TRUE,
           ),
-          'of_the_day' => array(
-            'weight' => '23',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
             'weight' => '0',
             'visible' => FALSE,
@@ -1242,10 +1160,6 @@ function takepart_omniture_strongarm() {
             'weight' => '10',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '22',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
             'weight' => '0',
             'visible' => FALSE,
@@ -1262,7 +1176,40 @@ function takepart_omniture_strongarm() {
   $strongarm->name = 'field_bundle_settings_node__profile';
   $strongarm->value = array(
     'view_modes' => array(
-      'of_the_day' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'vidpop_map' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedaction' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedaction_expanded' => array(
+        'custom_settings' => FALSE,
+      ),
+      'action_summary' => array(
+        'custom_settings' => FALSE,
+      ),
+      'medium_preview' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embed' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
         'custom_settings' => FALSE,
       ),
       'inline_content' => array(
@@ -1279,9 +1226,6 @@ function takepart_omniture_strongarm() {
         ),
         'xmlsitemap' => array(
           'weight' => '14',
-        ),
-        'metatags' => array(
-          'weight' => '40',
         ),
         'redirect' => array(
           'weight' => '30',
@@ -1328,7 +1272,10 @@ function takepart_omniture_strongarm() {
       'embedaction_expanded' => array(
         'custom_settings' => FALSE,
       ),
-      'of_the_day' => array(
+      'action_summary' => array(
+        'custom_settings' => FALSE,
+      ),
+      'medium_preview' => array(
         'custom_settings' => FALSE,
       ),
       'inline_content' => array(
@@ -1557,7 +1504,7 @@ function takepart_omniture_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'omniture_image_file_location';
-  $strongarm->value = ' http://takepart.122.2o7.net/b/ss/takeparttakepartdev2/1/H.23.4--NS/0';
+  $strongarm->value = '//takepart.122.2o7.net/b/ss/takeparttakepartdev2/1/H.23.4--NS/0';
   $export['omniture_image_file_location'] = $strongarm;
 
   $strongarm = new stdClass();
