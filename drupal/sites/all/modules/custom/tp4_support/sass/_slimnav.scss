@@ -2,13 +2,14 @@
  *Slim Nav
 */
 .slimnav{
-
   height: auto;
   overflow: hidden;
   background-color: #fff;
   font-family: $adelle-regular;
   color: $dark-gray;
-  padding-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 1px;
+  border-bottom: 2px solid #000;
   .block{
     @include breakpoint($breakpoint-mobile){
       margin-bottom: 0em;
@@ -51,7 +52,7 @@
       text-align: right;
       float: right;
       padding-right: 39px;
-      padding-top: 3px;
+      padding-top: 4px;
       .text{
         display: inline-block;
         margin: 0 10px;
@@ -80,7 +81,7 @@
     @include breakpoint($breakpoint-tablet){
       display: block;
       float: right;
-      padding-top: 8px;
+      padding-top: 7px;
       padding-right: 15px;
       font-family: $adelle-regular;
       font-size: 13px;
@@ -93,6 +94,7 @@
         &:last-child{
           margin-right: 0px;
           padding-left: 10px;
+          padding-right: 10px;
           position: relative;
           height: 20px;
           &:before{
@@ -105,6 +107,13 @@
             left: 0;
             -webkit-border-radius: 4px;
             border-radius: 4px;
+          }
+          &:after{
+            content: '|';
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: $light-gray;
           }
         }
         &:first-child{
@@ -121,14 +130,8 @@
   .search{
     font-size: 13px;
     @include breakpoint($breakpoint-mobile){
-      clear: both;
-      position: relative;
       .form-item-keys-2{
-        display: inline-block;
-        float: left;
-        height: auto;
-        overflow: hidden;
-        width: 100%;
+        display: none;
         margin-right: 10px;
         vertical-align: bottom;
         line-height: 23px;
@@ -140,17 +143,10 @@
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .3);
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        label {
-          height: auto;
-          overflow: hidden;
-          width: auto;
-          margin-right: 10px;
-          &.element-invisible{
-            display: inline-block;
-            float: left;
-            position: relative !important;
-          }
-        }
+        position: absolute;
+        top: 45px;
+        right: 0;
+        z-index: 9;
       }
       [type=text]{
         float: left;
@@ -167,9 +163,6 @@
         }
       }
       .form-submit{
-        position: absolute;
-        bottom: 0;
-        right: 0;
         height: 48px;
         color: white;
         border: none;
@@ -179,6 +172,10 @@
         text-indent: 200%;
         overflow: hidden;
         width: 34px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 45px;
       }
     }
     @include breakpoint($breakpoint-tablet){
@@ -196,43 +193,45 @@
 
 @include breakpoint($breakpoint-mobile){
   .search-toggle{
+    display: block;
     position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 48px;
-    color: white;
-    border: none;
-    background: image-url('mobile-search.jpg') no-repeat center center;
-    background-color: #fff;
-    border-radius: 0;
-    text-indent: 200%;
-    overflow: hidden;
+    z-index: 9;
     width: 34px;
-    cursor: pointer;
-  }
-  .search {
-    border-bottom: 2px solid #000;
-    form{
-      display: none;
+    height: 45px;
+    background: #fff;
+    right: 0;
+    top: 0;
+    &:before{
+      position: absolute;
+      top: 2px;
+      right: 10px;
+      color: $mint;
+      font-size: 20px;
+      content: "\1F50E";
+      font-family: "SSGizmo";
+      display: block;
+      z-index: 9;
+      line-height: 45px;
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH;
+      -ms-filter: "FlipH";
     }
   }
   .search.active {
-    border-bottom: none;
-    form{
+    .form-item-keys-2{
       display: block;
+    }
+    .search-toggle{
+      display: none;
     }
   }
 }
 @include breakpoint($breakpoint-tablet){
   .search.active {
-    border-bottom: 1px solid #000;;
-    form{
-      display: block;
-      padding: 5px;
-      margin-top: -4px;
-      margin-right: -2px;
-      float: right;
-    }
+
   }
 }
 
