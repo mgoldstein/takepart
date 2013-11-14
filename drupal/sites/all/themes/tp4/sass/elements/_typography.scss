@@ -61,20 +61,8 @@ a {
   }
   &.more{
     font-size: 14px;
-    position: relative;
-    padding-left: 15px;
     font-family: $ashbury-light;
-    &:before {
-      content: "\23E9 ";
-      font-family: "SSGizmo";
-      color: $mint;
-      vertical-align: bottom;
-      position: absolute;
-      left: 0;
-      display: block;
-      width: 30px;
-      height: 20px;
-    }
+    @include blue-arrow-bullets;
   }
 }
 
