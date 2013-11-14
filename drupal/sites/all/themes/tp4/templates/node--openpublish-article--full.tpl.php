@@ -9,9 +9,11 @@
 
   <?php if ($title_prefix || $title_suffix || $unpublished || $title): ?>
     <header class="article-header">
+      <?php if (isset($field_topic_box_top)) : ?>
       <div class="topic-box">
-        <?php print $variables['field_topic_box_top']; ?>
+	<?php print $field_topic_box_top; ?>
       </div>
+      <?php endif; ?>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
 	<h1<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h1>
@@ -74,10 +76,12 @@
   ?>
   </div>
 
+  <?php if (isset($series_nav)) : ?>
   <nav id="series-navigation">
   <div class="left-border"></div><div class="right-border"></div>
-    <?php print $variables['series_nav']; ?>
+    <?php print $series_nav; ?>
   </nav>
+  <?php endif; ?>
 
   <footer id="article-footer">
     <h3>Related Stories on TakePart</h3>
