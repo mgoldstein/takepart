@@ -1829,11 +1829,11 @@ a:hover {
 /* line 62, ../sass/elements/_typography.scss */
 a.more {
   font-size: 14px;
-  position: relative;
-  padding-left: 15px;
   font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  position: relative;
+  padding-left: 1.071428571em;
 }
-/* line 67, ../sass/elements/_typography.scss */
+/* line 122, ../sass/helpers/_mixins.scss */
 a.more:before {
   content: "\23E9 ";
   font-family: "SSGizmo";
@@ -1842,11 +1842,11 @@ a.more:before {
   position: absolute;
   left: 0;
   display: block;
-  width: 30px;
-  height: 20px;
+  width: 2.142857143em;
+  height: 1.428571429em;
 }
 
-/* line 84, ../sass/elements/_typography.scss */
+/* line 72, ../sass/elements/_typography.scss */
 .footer-title {
   font-family: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
@@ -3823,7 +3823,7 @@ body.front #sidebar .block-title {
   position: relative;
   padding-left: 15px;
 }
-/* line 122, ../sass/helpers/_mixins.scss */
+/* line 138, ../sass/helpers/_mixins.scss */
 .latest-headlines .views-row:before {
   content: '';
   height: 6px;
@@ -4631,7 +4631,7 @@ body.front #sidebar .block-title {
   position: relative;
   padding-left: 15px;
 }
-/* line 122, ../sass/helpers/_mixins.scss */
+/* line 138, ../sass/helpers/_mixins.scss */
 .node-openpublish-article.view-mode-full #article-footer .field-name-field-related-stories .field-item:before {
   content: '';
   height: 6px;
@@ -4675,7 +4675,7 @@ body.front #sidebar .block-title {
   position: relative;
   padding-left: 15px;
 }
-/* line 122, ../sass/helpers/_mixins.scss */
+/* line 138, ../sass/helpers/_mixins.scss */
 .node-openpublish-article.view-mode-full #article-footer .on-our-radar ol li:before {
   content: '';
   height: 6px;
@@ -4765,8 +4765,22 @@ body.front #sidebar .block-title {
   margin-right: 5px;
   line-height: 24px;
   display: inline-block;
+  position: relative;
+  padding-left: 1.071428571em;
 }
-/* line 409, ../sass/page/_openpublish_article.scss */
+/* line 122, ../sass/helpers/_mixins.scss */
+.author-bio .more-links .more:before {
+  content: "\23E9 ";
+  font-family: "SSGizmo";
+  color: #019f84;
+  vertical-align: bottom;
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 2.142857143em;
+  height: 1.428571429em;
+}
+/* line 410, ../sass/page/_openpublish_article.scss */
 .author-bio .more-links .more span {
   height: 24px;
   width: 24px;
@@ -4775,13 +4789,13 @@ body.front #sidebar .block-title {
   margin-left: 5px;
 }
 
-/* line 419, ../sass/page/_openpublish_article.scss */
+/* line 420, ../sass/page/_openpublish_article.scss */
 .topic-box img {
   max-height: 30px;
   overflow: hidden;
 }
 
-/* line 423, ../sass/page/_openpublish_article.scss */
+/* line 424, ../sass/page/_openpublish_article.scss */
 #series-navigation {
   position: relative;
   display: block;
@@ -4791,7 +4805,7 @@ body.front #sidebar .block-title {
   margin-bottom: 43px;
   margin-top: 30px;
 }
-/* line 431, ../sass/page/_openpublish_article.scss */
+/* line 432, ../sass/page/_openpublish_article.scss */
 #series-navigation .left-border {
   position: absolute;
   left: 0;
@@ -4802,7 +4816,7 @@ body.front #sidebar .block-title {
   border-top: 1px solid #cccccc;
   z-index: 0;
 }
-/* line 441, ../sass/page/_openpublish_article.scss */
+/* line 442, ../sass/page/_openpublish_article.scss */
 #series-navigation .right-border {
   position: absolute;
   right: 0;
@@ -4813,20 +4827,20 @@ body.front #sidebar .block-title {
   border-top: 1px solid #cccccc;
   z-index: 0;
 }
-/* line 451, ../sass/page/_openpublish_article.scss */
+/* line 452, ../sass/page/_openpublish_article.scss */
 #series-navigation img {
   height: 30px;
   display: block;
   margin: 0 auto;
 }
-/* line 456, ../sass/page/_openpublish_article.scss */
+/* line 457, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-prev {
   float: left;
   position: relative;
   padding-left: 17px;
   font-family: "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 461, ../sass/page/_openpublish_article.scss */
+/* line 462, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-prev:before {
   content: "\23EA ";
   font-family: "SSGizmo";
@@ -4839,14 +4853,14 @@ body.front #sidebar .block-title {
   width: 15px;
   height: 20px;
 }
-/* line 474, ../sass/page/_openpublish_article.scss */
+/* line 475, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-next {
   float: right;
   position: relative;
   padding-right: 17px;
   font-family: "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 479, ../sass/page/_openpublish_article.scss */
+/* line 480, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-next:after {
   content: "\23E9 ";
   font-family: "SSGizmo";
@@ -4859,7 +4873,7 @@ body.front #sidebar .block-title {
   width: 15px;
   height: 20px;
 }
-/* line 492, ../sass/page/_openpublish_article.scss */
+/* line 493, ../sass/page/_openpublish_article.scss */
 #series-navigation .previous {
   float: left;
   clear: left;
@@ -4868,7 +4882,7 @@ body.front #sidebar .block-title {
   position: relative;
   z-index: 2;
 }
-/* line 500, ../sass/page/_openpublish_article.scss */
+/* line 501, ../sass/page/_openpublish_article.scss */
 #series-navigation .next {
   float: right;
   clear: right;
@@ -4880,7 +4894,7 @@ body.front #sidebar .block-title {
 }
 
 @media all and (min-width: 980px) {
-  /* line 517, ../sass/page/_openpublish_article.scss */
+  /* line 518, ../sass/page/_openpublish_article.scss */
   .page-node.node-type-openpublish-article .block-boxes-ga_ad-bottom.sticky {
     position: fixed;
     top: 0;

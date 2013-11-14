@@ -60,10 +60,7 @@
     </figure>
     <?php endif; ?>
 
-    <div class="author-bio">
-      <?php print render($content['field_author']); ?>
-      <?php ?>
-    </div>
+  <?php print render($content['field_author']); ?>
 
   <?php
     // We hide the comments and links now so that we can render them later.
