@@ -178,21 +178,24 @@ Drupal.behaviors.articleBehaviors = {
 // Omniture position tracking
 // Parent/ancestor vars to track in reverse order of importance
 $.tpregions.add({
-'Header': '#block-tp4-support-tp4-fat-header',
-'Slim Header' : '.slimnav',
-//'Mega Menu' : '#megamenu',
-'Footer': '#footer',
-'Graveyard' : '#block-tp4-support-tp4-graveyard',
-'Daily Featured Content': '.of_the_day_section',
-'Partner Link': 'aside.on-our-radar',
-'Embedded Content': '#article-content aside.inline-content',
-'Related Stories': '#article-footer .field-name-field-related-stories',
-'Series Navigation': '#series-navigation',
-'Keyword Link': '.topic-links',
-'Author Full Bio Link': '.author-bio',
-//'Badge': '.badge',
-//'Topic Box': '#topic_box',
-'Outbrain Widget': '.OUTBRAIN'
+  'Header logo' : '.logo',
+  'Header social' : '.follow-us',
+  'Header user menu' : '.user-menu',
+  //'Header search' : '.search',
+  'Slim Header' : '.slimnav',
+  'Mega Menu' : '#megamenu',
+  'Footer' : '#footer',
+  'Graveyard' : '#block-tp4-support-tp4-graveyard',
+  'Daily Featured Content': '.of_the_day_section',
+  'Partner Link': 'aside.on-our-radar',
+  'Embedded Content' : '#article-content aside.inline-content',
+  'Related Stories' : '#article-footer .field-name-field-related-stories',
+  'Series Navigation' : '#series-navigation',
+  'Keyword Link' : '.topic-links',
+  'Author Full Bio Link' : '.author-bio',
+  //'Badge' : '.badge',
+  //'Topic Box': '#topic_box',
+  'Outbrain Widget': '.OUTBRAIN'
 });
         
 })(jQuery, Drupal, this, this.document);

@@ -21,8 +21,7 @@
     // Onload
     $(function() {
         // Add omniture region on mouseover/focus
-        $('body')
-        .delegate('a:not(.tplinkpos)', 'focus mouseover', function() {
+        $('body').delegate('a:not(.tplinkpos)', 'focus mouseover', function() {
             var a = this;
             var $a = $(this);
             $a.addClass('tplinkpos');
@@ -31,7 +30,9 @@
 
             for ( var pos in regions ) {
                 var sel = regions[pos];
-                if ( $a.is(sel + ' a') ) a.name += '&lpos=' + pos;
+                if ( $a.is(sel + ' a') ) { 
+                    a.name += '&lpos=' + pos;
+                }
             }
         });
     });
