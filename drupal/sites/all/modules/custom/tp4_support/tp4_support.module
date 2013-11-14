@@ -318,5 +318,3 @@ function tp4_support_field_formatter_view($entity_type, $entity, $field, $instan
   }
   return $element;
 }
-
-

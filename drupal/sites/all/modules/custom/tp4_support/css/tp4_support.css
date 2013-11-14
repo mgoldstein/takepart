@@ -1886,22 +1886,24 @@
   background-color: #fff;
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   color: #5a5a5a;
-  padding-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 1px;
+  border-bottom: 2px solid #000;
 }
 @media all and (min-width: 320px) {
-  /* line 12, ../sass/_slimnav.scss */
+  /* line 13, ../sass/_slimnav.scss */
   .slimnav .block {
     margin-bottom: 0em;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 12, ../sass/_slimnav.scss */
+  /* line 13, ../sass/_slimnav.scss */
   .slimnav .block {
     margin-bottom: 1.5em;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 21, ../sass/_slimnav.scss */
+  /* line 22, ../sass/_slimnav.scss */
   .slimnav .menu-toggle {
     display: block;
     width: 20px;
@@ -1913,53 +1915,53 @@
     margin-right: 10px;
     margin-top: 4px;
   }
-  /* line 32, ../sass/_slimnav.scss */
+  /* line 33, ../sass/_slimnav.scss */
   .slimnav .logo {
     float: left;
     width: 121px;
   }
-  /* line 35, ../sass/_slimnav.scss */
+  /* line 36, ../sass/_slimnav.scss */
   .slimnav .logo img {
     max-width: 100%;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 41, ../sass/_slimnav.scss */
+  /* line 42, ../sass/_slimnav.scss */
   .slimnav .menu-toggle {
     display: none;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 45, ../sass/_slimnav.scss */
+  /* line 46, ../sass/_slimnav.scss */
   .slimnav .follow-us {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 45, ../sass/_slimnav.scss */
+  /* line 46, ../sass/_slimnav.scss */
   .slimnav .follow-us {
     display: block;
     text-align: right;
     float: right;
     padding-right: 39px;
-    padding-top: 3px;
+    padding-top: 4px;
   }
-  /* line 55, ../sass/_slimnav.scss */
+  /* line 56, ../sass/_slimnav.scss */
   .slimnav .follow-us .text {
     display: inline-block;
     margin: 0 10px;
   }
-  /* line 58, ../sass/_slimnav.scss */
+  /* line 59, ../sass/_slimnav.scss */
   .slimnav .follow-us .text:before {
     content: '|';
     padding-right: 10px;
   }
-  /* line 63, ../sass/_slimnav.scss */
+  /* line 64, ../sass/_slimnav.scss */
   .slimnav .follow-us ul {
     margin-top: -5px;
     float: right;
   }
-  /* line 66, ../sass/_slimnav.scss */
+  /* line 67, ../sass/_slimnav.scss */
   .slimnav .follow-us ul li {
     float: left;
     list-style-type: none;
@@ -1969,38 +1971,39 @@
   }
 }
 @media all and (min-width: 320px) {
-  /* line 76, ../sass/_slimnav.scss */
+  /* line 77, ../sass/_slimnav.scss */
   .slimnav .user-menu {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 76, ../sass/_slimnav.scss */
+  /* line 77, ../sass/_slimnav.scss */
   .slimnav .user-menu {
     display: block;
     float: right;
-    padding-top: 8px;
+    padding-top: 7px;
     padding-right: 15px;
     font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 13px;
   }
-  /* line 87, ../sass/_slimnav.scss */
+  /* line 88, ../sass/_slimnav.scss */
   .slimnav .user-menu a {
     color: #5a5a5a;
   }
-  /* line 90, ../sass/_slimnav.scss */
+  /* line 91, ../sass/_slimnav.scss */
   .slimnav .user-menu li {
     display: inline-block;
     margin-right: 10px;
   }
-  /* line 93, ../sass/_slimnav.scss */
+  /* line 94, ../sass/_slimnav.scss */
   .slimnav .user-menu li:last-child {
     margin-right: 0px;
     padding-left: 10px;
+    padding-right: 10px;
     position: relative;
     height: 20px;
   }
-  /* line 98, ../sass/_slimnav.scss */
+  /* line 100, ../sass/_slimnav.scss */
   .slimnav .user-menu li:last-child:before {
     content: '';
     height: 4px;
@@ -2013,31 +2016,30 @@
     border-radius: 4px;
   }
   /* line 111, ../sass/_slimnav.scss */
+  .slimnav .user-menu li:last-child:after {
+    content: '|';
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #949494;
+  }
+  /* line 120, ../sass/_slimnav.scss */
   .slimnav .user-menu li:first-child:before {
     display: none;
   }
-  /* line 115, ../sass/_slimnav.scss */
+  /* line 124, ../sass/_slimnav.scss */
   .slimnav .user-menu li.user {
     position: relative;
   }
 }
-/* line 121, ../sass/_slimnav.scss */
+/* line 130, ../sass/_slimnav.scss */
 .slimnav .search {
   font-size: 13px;
 }
 @media all and (min-width: 320px) {
-  /* line 121, ../sass/_slimnav.scss */
-  .slimnav .search {
-    clear: both;
-    position: relative;
-  }
-  /* line 126, ../sass/_slimnav.scss */
+  /* line 133, ../sass/_slimnav.scss */
   .slimnav .search .form-item-keys-2 {
-    display: inline-block;
-    float: left;
-    height: auto;
-    overflow: hidden;
-    width: 100%;
+    display: none;
     margin-right: 10px;
     vertical-align: bottom;
     line-height: 23px;
@@ -2049,21 +2051,12 @@
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    z-index: 9;
   }
-  /* line 143, ../sass/_slimnav.scss */
-  .slimnav .search .form-item-keys-2 label {
-    height: auto;
-    overflow: hidden;
-    width: auto;
-    margin-right: 10px;
-  }
-  /* line 148, ../sass/_slimnav.scss */
-  .slimnav .search .form-item-keys-2 label.element-invisible {
-    display: inline-block;
-    float: left;
-    position: relative !important;
-  }
-  /* line 155, ../sass/_slimnav.scss */
+  /* line 151, ../sass/_slimnav.scss */
   .slimnav .search [type=text] {
     float: left;
     height: 20px;
@@ -2075,15 +2068,12 @@
     text-indent: 6px;
     line-height: 21px;
   }
-  /* line 165, ../sass/_slimnav.scss */
+  /* line 161, ../sass/_slimnav.scss */
   .slimnav .search [type=text]:focus {
     outline: none;
   }
-  /* line 169, ../sass/_slimnav.scss */
+  /* line 165, ../sass/_slimnav.scss */
   .slimnav .search .form-submit {
-    position: absolute;
-    bottom: 0;
-    right: 0;
     height: 48px;
     color: white;
     border: none;
@@ -2093,79 +2083,74 @@
     text-indent: 200%;
     overflow: hidden;
     width: 34px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 45px;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 185, ../sass/_slimnav.scss */
+  /* line 182, ../sass/_slimnav.scss */
   .slimnav .search .form-item-keys-2 {
     width: 420px;
     background-color: #fff;
     float: right;
   }
-  /* line 189, ../sass/_slimnav.scss */
+  /* line 186, ../sass/_slimnav.scss */
   .slimnav .search .form-item-keys-2 [type=text] {
     width: 400px;
   }
 }
 
 @media all and (min-width: 320px) {
-  /* line 198, ../sass/_slimnav.scss */
+  /* line 195, ../sass/_slimnav.scss */
   .search-toggle {
+    display: block;
     position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 48px;
-    color: white;
-    border: none;
-    background: url('../images/mobile-search.jpg?1384193316') no-repeat center center;
-    background-color: #fff;
-    border-radius: 0;
-    text-indent: 200%;
-    overflow: hidden;
+    z-index: 9;
     width: 34px;
-    cursor: pointer;
+    height: 45px;
+    background: #fff;
+    right: 0;
+    top: 0;
+  }
+  /* line 204, ../sass/_slimnav.scss */
+  .search-toggle:before {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    color: #019f84;
+    font-size: 20px;
+    content: "\1F50E";
+    font-family: "SSGizmo";
+    display: block;
+    z-index: 9;
+    line-height: 45px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
   }
 
-  /* line 213, ../sass/_slimnav.scss */
-  .search {
-    border-bottom: 2px solid #000;
-  }
-  /* line 215, ../sass/_slimnav.scss */
-  .search form {
-    display: none;
-  }
-
-  /* line 219, ../sass/_slimnav.scss */
-  .search.active {
-    border-bottom: none;
-  }
-  /* line 221, ../sass/_slimnav.scss */
-  .search.active form {
+  /* line 224, ../sass/_slimnav.scss */
+  .search.active .form-item-keys-2 {
     display: block;
   }
-}
-@media all and (min-width: 768px) {
   /* line 227, ../sass/_slimnav.scss */
-  .search.active {
-    border-bottom: 1px solid #000;
-  }
-  /* line 229, ../sass/_slimnav.scss */
-  .search.active form {
-    display: block;
-    padding: 5px;
-    margin-top: -4px;
-    margin-right: -2px;
-    float: right;
+  .search.active .search-toggle {
+    display: none;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 245, ../sass/_slimnav.scss */
+  /* line 244, ../sass/_slimnav.scss */
   #main-menu {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 245, ../sass/_slimnav.scss */
+  /* line 244, ../sass/_slimnav.scss */
   #main-menu {
     display: block;
     box-sizing: border-box;
@@ -2179,13 +2164,13 @@
   }
 }
 @media all and (min-width: 980px) {
-  /* line 245, ../sass/_slimnav.scss */
+  /* line 244, ../sass/_slimnav.scss */
   #main-menu {
     clear: none;
     padding-left: 20px;
   }
 }
-/* line 263, ../sass/_slimnav.scss */
+/* line 262, ../sass/_slimnav.scss */
 #main-menu li {
   width: 20%;
   float: left;
@@ -2201,18 +2186,18 @@
   list-style-image: none;
   list-style-type: none;
 }
-/* line 277, ../sass/_slimnav.scss */
+/* line 276, ../sass/_slimnav.scss */
 #main-menu li a {
   color: #000;
   position: relative;
   width: 100%;
   display: block;
 }
-/* line 282, ../sass/_slimnav.scss */
+/* line 281, ../sass/_slimnav.scss */
 #main-menu li a:hover {
   text-decoration: none;
 }
-/* line 285, ../sass/_slimnav.scss */
+/* line 284, ../sass/_slimnav.scss */
 #main-menu li a:after {
   content: '';
   border-right: 1px solid #cccccc;
@@ -2222,45 +2207,45 @@
   right: 0;
   top: 0;
 }
-/* line 295, ../sass/_slimnav.scss */
+/* line 294, ../sass/_slimnav.scss */
 #main-menu li:nth-child(1) {
   width: 17%;
   text-align: left;
 }
-/* line 299, ../sass/_slimnav.scss */
+/* line 298, ../sass/_slimnav.scss */
 #main-menu li:nth-child(2) {
   width: 15%;
 }
-/* line 302, ../sass/_slimnav.scss */
+/* line 301, ../sass/_slimnav.scss */
 #main-menu li:nth-child(3) {
   width: 30%;
 }
-/* line 305, ../sass/_slimnav.scss */
+/* line 304, ../sass/_slimnav.scss */
 #main-menu li:nth-child(4) {
   width: 19%;
 }
-/* line 308, ../sass/_slimnav.scss */
+/* line 307, ../sass/_slimnav.scss */
 #main-menu li:nth-child(5) {
   width: 19%;
   text-align: right;
 }
-/* line 311, ../sass/_slimnav.scss */
+/* line 310, ../sass/_slimnav.scss */
 #main-menu li:nth-child(5) a:after {
   border-right: none;
 }
 
 /* Show "Left" drawer for the "Right" drawer in the demo */
-/* line 325, ../sass/_slimnav.scss */
+/* line 324, ../sass/_slimnav.scss */
 .snap-drawers {
   display: none;
 }
 
-/* line 328, ../sass/_slimnav.scss */
+/* line 327, ../sass/_slimnav.scss */
 .snapjs-left .snap-drawers {
   display: block;
 }
 
-/* line 331, ../sass/_slimnav.scss */
+/* line 330, ../sass/_slimnav.scss */
 .snap-drawers {
   background: #000;
   color: #fff;
@@ -2270,7 +2255,7 @@
   bottom: 0;
   left: 0;
 }
-/* line 339, ../sass/_slimnav.scss */
+/* line 338, ../sass/_slimnav.scss */
 .snap-drawers .snap-drawer {
   background: #000;
   position: fixed;
@@ -2288,11 +2273,11 @@
   -o-transition: width 0.3s ease;
   transition: width 0.3s ease;
 }
-/* line 357, ../sass/_slimnav.scss */
+/* line 356, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu ul {
   border-bottom: 5px solid #646464;
 }
-/* line 359, ../sass/_slimnav.scss */
+/* line 358, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu ul li {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 13px;
@@ -2303,7 +2288,7 @@
   line-height: 48px;
   text-transform: none;
 }
-/* line 371, ../sass/_slimnav.scss */
+/* line 370, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu > ul > li {
   font-family: "TradeGothicLTStdCnLight", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 20px;
@@ -2311,19 +2296,19 @@
   border-bottom: none;
   font-weight: 100;
 }
-/* line 378, ../sass/_slimnav.scss */
+/* line 377, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu a {
   color: #fff;
   border-bottom: 1px solid #646464;
   display: block;
   width: 100%;
 }
-/* line 383, ../sass/_slimnav.scss */
+/* line 382, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu a:hover {
   text-decoration: none;
   background-color: #333;
 }
-/* line 389, ../sass/_slimnav.scss */
+/* line 388, ../sass/_slimnav.scss */
 .snap-drawers .scrollable {
   overflow: auto;
   -webkit-transition-property: top, bottom;
