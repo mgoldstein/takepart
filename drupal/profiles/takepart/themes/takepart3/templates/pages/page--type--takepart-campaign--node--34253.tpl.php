@@ -1,10 +1,17 @@
-<?php if ($is_multipage): ?>
+<div class="snap-drawers scrollable">
+    <div class="snap-drawer snap-drawer-left">
+    <?php print render($page['left_drawer']); ?>
+  </div>
+</div><?php if ($is_multipage): ?>
 <div id="page-wrapper" class="multipage-campaign">
 <?php else: ?>
 <div id="page-wrapper" class="campaign">
 <?php endif; ?>
 
-        <?php print $header ?>
+          <div class="slimnav">
+    <?php $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav'); ?>
+    <?php print $slimnav['content']; ?>
+  </div>
 
         <?php if ($page['highlighted']): ?>
             <div id='highlighted'>

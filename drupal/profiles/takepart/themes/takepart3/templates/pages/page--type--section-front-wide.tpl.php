@@ -1,6 +1,14 @@
+<div class="snap-drawers scrollable">
+    <div class="snap-drawer snap-drawer-left">
+    <?php print render($page['left_drawer']); ?>
+  </div>
+</div>
 <div id="page-wrapper">
 
-<?php print $header ?>
+  <div class="slimnav">
+    <?php $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav'); ?>
+    <?php print $slimnav['content']; ?>
+  </div>
  
   <?php if ($page['highlighted']): ?>
     <div class="clear" id='highlighted'><div class='limiter clearfix'>
