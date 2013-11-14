@@ -356,8 +356,8 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.prop2 = [tp_omniture:str_decode:{current-page:title}]
-s.prop4 = \'topic\'
+      'variables' => 's.prop2 = [tp_omniture:lowercase:{current-page:title}]
+s.prop4 = topic
 s.prop20 = [tp_omniture:str_decode:{current-page:title}]
 s.eVar21 = [tp_omniture:str_decode:{current-page:title}]',
     ),
