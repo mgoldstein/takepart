@@ -88,11 +88,14 @@ function tp4_preprocess_block(&$variables) {
 function tp4_preprocess_node(&$variables, $hook) {
   // Add template suggestions for view modes and
   // node types per view view mode.
-  if($variables['type'] == 'openpublish_video'){
-    $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
-  }
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
   $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
+  if($variables['type'] == 'openpublish_video' && $variables['view_mode'] == 'full'){
+    $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
+  }
+  if ($variables['view_mode'] == 'inline_content') {
+    $variables['theme_hook_suggestions'][] = 'node__inline_content';
+  }
   
   // Add template variables for the local node url
   // (for compatability in dev/qa environments)
