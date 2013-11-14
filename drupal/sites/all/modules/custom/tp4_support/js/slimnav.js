@@ -29,5 +29,47 @@ Drupal.behaviors.slimNav = {
   }
 };
 
+/**
+ * Settings for the snap.js library
+ */
+Drupal.behaviors.snapperSettings = {
+  attach: function(context, settings) {
+    var snapper = new Snap({
+      element: document.getElementById('page-wrap')
+    });
+
+    snapper.settings({
+      dragger: null,
+      disable: 'none',
+      addBodyClasses: true,
+      hyperextensible: true,
+      resistance: 0.5,
+      flickThreshold: 50,
+      transitionSpeed: 0.3,
+      easing: 'ease',
+      maxPosition: 280,
+      minPosition: 0,
+      tapToClose: true,
+      touchToDrag: true,
+      clickToDrag: false,
+      slideIntent: 40,
+      minDragDistance: 5
+    });
+
+    $('.menu-toggle').on('click', function(){
+        if( snapper.state().state=="left" ){
+            snapper.close();
+        } else {
+            snapper.open('left');
+        }
+    });
+  }
+};
+
+
+
+
+
+
 
 })(jQuery, Drupal, this, this.document);
