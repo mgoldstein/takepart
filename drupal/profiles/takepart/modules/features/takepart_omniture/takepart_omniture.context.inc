@@ -330,5 +330,45 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   t('Omniture parameters for TAB Thank You page');
   $export['omniture_tab_thank_you'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'omniture_topicfront';
+  $context->description = 'Variables set on topic front page load';
+  $context->tag = 'Omniture';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'topic_front' => 'topic_front',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+    'taxonomy_term' => array(
+      'values' => array(
+        'topic' => 'topic',
+      ),
+      'options' => array(
+        'term_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'omniture_reaction' => array(
+      'variables' => 's.prop2 = [tp_omniture:lowercase:{current-page:title}]
+s.prop4 = topic
+s.prop20 = [tp_omniture:str_decode:{current-page:title}]
+s.eVar21 = [tp_omniture:str_decode:{current-page:title}]',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Omniture');
+  t('Variables set on topic front page load');
+  $export['omniture_topicfront'] = $context;
+
   return $export;
 }
