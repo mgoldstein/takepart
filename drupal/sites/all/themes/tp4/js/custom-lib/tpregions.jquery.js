@@ -2,7 +2,7 @@
 
     var regions = {};
     // Only place it on internal urls
-    var relative_test = new RegExp("//" + location.host + "($|/)");
+    // var relative_test = new RegExp("//" + location.host + "($|/)");
 
     $.tpregions = {
         add: function(name, selector) {
@@ -26,8 +26,8 @@
             var a = this;
             var $a = $(this);
             $a.addClass('tplinkpos');
-            var is_local = (a.href.substring(0,4) === "http") ? relative_test.test(a.href) : true;
-            if ( !is_local ) return;
+            // var is_local = (a.href.substring(0,4) === "http") ? relative_test.test(a.href) : true;
+            // if ( !is_local ) return;
 
             for ( var pos in regions ) {
                 var sel = regions[pos];
