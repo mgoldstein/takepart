@@ -139,7 +139,7 @@ a:hover {
 /*page structure*/
 #page-wrapper {
     margin: 0px auto 0;
-    width:1000px;
+    width:100%;
     position: relative;
     z-index: 2;
 }
