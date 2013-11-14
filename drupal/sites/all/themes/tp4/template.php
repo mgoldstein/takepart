@@ -322,3 +322,8 @@ function tp4_field__field_author__openpublish_article($variables) {
 
   return $output;
 }
+
+
+
+
+
