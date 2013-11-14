@@ -70,7 +70,35 @@ Drupal.behaviors.articleBehaviors = {
     var $body = $('body');
 
     if ($body.is('.page-node.node-type-openpublish-article')) {
+      // sticky elements
       $('#article-social').tpsticky({ offsetNode: '#article-content' });
+
+      var $stickyAd = $('.block-boxes-ga_ad-bottom'),
+          stickyAdOffset = $stickyAd.offset().top,
+          stickyAdHeight = $stickyAd.height(),
+          $footer = $('.footer-wrapper'),
+          $doc = $(document);
+
+      $(window).on('scroll', function(e) {
+        var isSticky = $stickyAd.hasClass('sticky'),
+            documentHeight = $doc.height(),
+            stickyAdLowestPoint = documentHeight - stickyAdHeight - $footer.outerHeight();
+
+        // add/remove the sticky class
+        if (window.scrollY > stickyAdOffset) {
+          isSticky || $stickyAd.addClass('sticky');
+        } else {
+          !isSticky || $stickyAd.removeClass('sticky');
+        }
+
+        if (isSticky && window.scrollY > stickyAdLowestPoint) {
+          $stickyAd.css('top', stickyAdLowestPoint - window.scrollY);
+        } else {
+          $stickyAd.css('top', '');
+        }
+
+      });
+      
 
       // Setup Social Share Buttons
       var tp_social_config = {
