@@ -75,7 +75,7 @@ Drupal.behaviors.articleBehaviors = {
 
       var $stickyAd = $('.block-boxes-ga_ad-bottom'),
           stickyAdOffset = $stickyAd.offset().top,
-          stickyAdHeight = $stickyAd.height(),
+	  stickyAdHeight = $stickyAd.outerHeight(true),
           $footer = $('.footer-wrapper'),
           $doc = $(document);
 
