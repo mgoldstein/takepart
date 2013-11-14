@@ -507,3 +507,17 @@
     z-index: 2;
   }
 }
+
+//
+// Sticky Ad Unit for Sidebar
+// 
+.page-node.node-type-openpublish-article {
+  .block-boxes-ga_ad-bottom {
+    @include breakpoint($breakpoint-desktop) {
+      &.sticky {
+        position: fixed;
+        top: 0;
+      }
+    }
+  }
+}
