@@ -36,10 +36,8 @@
     hide($content['comments']);
     hide($content['links']);
     print render($content);
+    // print render($content['links']);
+    // print render($content['comments']);
   ?>
-
-  <?php print render($content['links']); ?>
-
-  <?php print render($content['comments']); ?>
 
 </article>
