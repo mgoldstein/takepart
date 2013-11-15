@@ -104,13 +104,6 @@ function s_doPlugins(s) {
         s.eVar40="D=c40";           // copy referring url to eVar
     }
 
-    /* Call to Days Since LastVisit Plugin */
-    s.eVar29 = s.getDaysSinceLastVisit();
-    s.prop29 = s.eVar29;
-    /* Call to New vs. Repeat Plugin */
-    /* Removed per 11753 */
-    /*		s.eVar30= s.getNewRepeat();*/
-
     /* Set Page View Event */
     s.events=s.apl(s.events,'event2',',',2)
 
@@ -119,9 +112,20 @@ function s_doPlugins(s) {
     if(!s.prop9&&!s.eVar9) s.prop9=s.eVar9=s.getTimeParting('d','-8'); // Set day 
     if(!s.prop10&&!s.eVar10) s.prop10=s.eVar10=s.getTimeParting('w','-8'); // Set weekday 
 
+    if(s.prop20){
+        s.prop20=s.prop20.toLowerCase();
+    }
+
+    if(s.prop2){
+        s.prop2=s.prop2.toLowerCase();
+    }
+    
+    if(s.prop4){
+        s.prop4=s.prop4.toLowerCase();
+    }
+    
     /* Copy props to eVars */
     s.eVar30=s.pageName?s.pageName:'';
-    s.eVar46=s.pageName?s.pageName:'';
     s.eVar1=s.prop1?s.prop1:'';    // Sub Section 1
     s.eVar2=s.prop2?s.prop2:'';    // Sub Section 2
     s.eVar3=s.prop3?s.prop3:'';    // Sub Section 3

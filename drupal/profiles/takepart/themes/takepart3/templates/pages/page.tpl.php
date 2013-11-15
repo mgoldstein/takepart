@@ -57,7 +57,11 @@
    <?php if ($page['full_width_bottom']): ?>
       <?php print render($page['full_width_bottom']); ?>
    <?php endif; ?>
-  
-<?php print $footer ?>
 
+</div>
+<div class="footer-wrapper"> 
+  <footer>
+    <?php $footer = module_invoke('tp4_support', 'block_view', 'tp4_footer'); ?>
+    <?php print $footer['content']; ?>
+  </footer>
 </div>
