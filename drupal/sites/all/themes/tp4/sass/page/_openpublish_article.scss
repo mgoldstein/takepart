@@ -14,6 +14,10 @@
       .inner {
         padding: 7px 1px;
       }
+      &.sticky {
+        position: fixed;
+        top: 0;
+      }
     }
     #article-content,
     #series-navigation,
