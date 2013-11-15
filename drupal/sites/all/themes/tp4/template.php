@@ -88,13 +88,10 @@ function tp4_preprocess_block(&$variables) {
 function tp4_preprocess_node(&$variables, $hook) {
   // Add template suggestions for view modes and
   // node types per view view mode.
-  $vars['theme_hook_suggestions'][] = 'node__' . $vars['view_mode'];
-  $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__' . $vars['view_mode'];
+  $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
+  $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $vars['view_mode'];
   if($variables['type'] == 'openpublish_video' && $variables['view_mode'] == 'full'){
     $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
-  }
-  if ($variables['view_mode'] == 'inline_content') {
-    $variables['theme_hook_suggestions'][] = 'node__inline_content';
   }
   
   // Add template variables for the local node url
@@ -120,26 +117,29 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
   // expose series tid in a data attribute on article.node
   $variables['attributes_array']['data-series'] = $variables['field_series'][LANGUAGE_NONE][0]['tid'];
 
-  // get the caption working
-  $variables['main_image_image'] = render($variables['content']['field_article_main_image']);
-  $variables['main_image_caption'] = $variables['field_article_main_image'][0]['file']->field_media_caption[LANGUAGE_NONE][0]['safe_value'];
-
-  // render topic box
-  $image = file_create_url($variables['field_topic_box'][0]['taxonomy_term']->field_topic_box_image['und'][0]['uri']);
-  $image = '<img src="'. $image. '">';
-  $url = (isset($variables['field_topic_box'][0]['taxonomy_term']->field_topic_box_link['und'][0]['url']) ? $variables['field_topic_box'][0]['taxonomy_term']->field_topic_box_link['und'][0]['url'] : '');
-  $variables['field_topic_box_top'] = l($image, $url, array('html' => true));
-
   // we're going to do some things only on the full view of an article
   if($variables['view_mode'] == 'full'){
     // provide "on our radar" block
     $variables['on_our_radar'] = module_invoke('bean', 'block_view', 'on-our-radar-block');
 
+    // get the caption working
+    $variables['main_image_image'] = render($variables['content']['field_article_main_image']);
+    $variables['main_image_caption'] = $variables['field_article_main_image'][0]['file']->field_media_caption[LANGUAGE_NONE][0]['safe_value'];
+
+    // provide topic box
+    if (!empty($variables['field_topic_box'])) {
+      $topic = taxonomy_term_load($variables['field_topic_box']['und'][0]['tid']);
+      if (!empty($topic->field_topic_box_image['und'][0]['uri'])) {
+	$image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));
+	$url = !empty($topic->field_topic_box_link) ? url($topic->field_topic_box_link['und'][0]['url'], array('absolute' => TRUE)) : '';
+	$variables['field_topic_box_top'] = empty($url) ? $image : l($image, $url, array('html' => true));
+      }
+    }
+
     // provide a series prev/next nav if a series exists
-    if(isset($variables['field_series'])){
+    if(!empty($variables['field_series'])){
       $series = taxonomy_term_load($variables['field_series']['und'][0]['tid']);
-      $series_image = file_create_url($series->field_series_graphic_header['und'][0]['uri']);
-      $series_image = '<img src="'. $series_image. '">';
+      $series_image = theme('image', array('path' => $series->field_series_graphic_header['und'][0]['uri']));
 
       $created = $variables['created'];
       $seriesQueryNext = new EntityFieldQuery();
