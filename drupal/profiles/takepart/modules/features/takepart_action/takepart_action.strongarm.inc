@@ -66,9 +66,6 @@ function takepart_action_strongarm() {
       'medium_preview' => array(
         'custom_settings' => TRUE,
       ),
-      'of_the_day' => array(
-        'custom_settings' => TRUE,
-      ),
       'inline_content' => array(
         'custom_settings' => TRUE,
       ),
@@ -79,16 +76,16 @@ function takepart_action_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '17',
+          'weight' => '10',
         ),
         'xmlsitemap' => array(
-          'weight' => '14',
+          'weight' => '8',
         ),
         'metatags' => array(
           'weight' => '15',
         ),
         'redirect' => array(
-          'weight' => '16',
+          'weight' => '9',
         ),
       ),
       'display' => array(
@@ -119,10 +116,6 @@ function takepart_action_strongarm() {
           ),
           'embed' => array(
             'weight' => '5',
-            'visible' => FALSE,
-          ),
-          'of_the_day' => array(
-            'weight' => '2',
             'visible' => FALSE,
           ),
           'inline_content' => array(
@@ -159,12 +152,8 @@ function takepart_action_strongarm() {
             'weight' => '4',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '0',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '1',
+            'weight' => '0',
             'visible' => FALSE,
           ),
         ),
@@ -197,12 +186,8 @@ function takepart_action_strongarm() {
             'weight' => '3',
             'visible' => FALSE,
           ),
-          'of_the_day' => array(
-            'weight' => '3',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '4',
+            'weight' => '3',
             'visible' => FALSE,
           ),
         ),
@@ -235,12 +220,8 @@ function takepart_action_strongarm() {
             'weight' => '0',
             'visible' => TRUE,
           ),
-          'of_the_day' => array(
-            'weight' => '1',
-            'visible' => FALSE,
-          ),
           'inline_content' => array(
-            'weight' => '3',
+            'weight' => '1',
             'visible' => FALSE,
           ),
         ),

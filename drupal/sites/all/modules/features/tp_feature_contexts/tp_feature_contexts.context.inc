@@ -44,6 +44,12 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'skinny',
           'weight' => '-10',
         ),
+        'views-takeaction_homepage-block' => array(
+          'module' => 'views',
+          'delta' => 'takeaction_homepage-block',
+          'region' => 'skinny',
+          'weight' => '-9',
+        ),
         'views-latest_headlines-block' => array(
           'module' => 'views',
           'delta' => 'latest_headlines-block',

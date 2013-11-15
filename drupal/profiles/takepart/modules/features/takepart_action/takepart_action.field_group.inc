@@ -45,7 +45,7 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '6',
+    'weight' => '3',
     'children' => array(
       0 => 'field_action_main_image',
       1 => 'field_action_type',
@@ -239,7 +239,7 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tags',
-    'weight' => '11',
+    'weight' => '4',
     'children' => array(
       0 => 'field_free_tag',
       1 => 'field_topic',
@@ -299,7 +299,7 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Action',
-    'weight' => '7',
+    'weight' => '5',
     'children' => array(
       0 => 'body',
       1 => 'field_action_url',
@@ -316,6 +316,33 @@ function takepart_action_field_group_info() {
     ),
   );
   $export['group_action|node|action|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_page_share|node|action|form';
+  $field_group->group_name = 'group_page_share';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'action';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Social Sharing',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_social_share_bar',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_page_share|node|action|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -415,16 +442,12 @@ function takepart_action_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'TakeAction Button',
-    'weight' => '12',
+    'weight' => '6',
     'children' => array(
       0 => 'field_tab_action',
       1 => 'field_tab_internal_title',
-      2 => 'field_tab_internal_desc',
-      3 => 'field_tab_external_title',
-      4 => 'field_tab_external_desc',
-      5 => 'field_tab_call_to_action',
-      6 => 'field_tab_link_only',
-      7 => 'field_tab_exclude',
+      2 => 'field_tab_call_to_action',
+      3 => 'field_tab_link_only',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
