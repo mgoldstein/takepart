@@ -106,7 +106,8 @@ function takepart_contact_us_form_submit($form, &$form_state) {
     // Wrap the ticket array in yet another array and call the API.
     $response = zendesk_forms_api_call(array('ticket' => $ticket), 'tickets.json');
     if (!isset($response->error)) {
-        drupal_set_message(t('Your message has been sent'));
+        // drupal_set_message(t('Your message has been sent'));
+        $form_state['redirect'] = 'thank-you';
     } else {
         drupal_set_message(t('An error happened while sending the message.'), 'error');
     }
