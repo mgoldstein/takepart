@@ -14,7 +14,7 @@
       var stickyEl = this,
           $stickyEl = $(this),
           stickyElOffset = $stickyEl.offset().top,
-          stickyElHeight = $stickyEl.outerHeight(),
+          stickyElHeight = $stickyEl.outerHeight(true),
           $doc = $(document),
           bottomElSelector = options.stopAt || '.footer-wrapper',
           $bottomEl = $(bottomElSelector);
