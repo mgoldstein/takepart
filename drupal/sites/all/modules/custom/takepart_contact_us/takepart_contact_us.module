@@ -43,7 +43,7 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
     );
     $form['zendesk_23560727'] = array(
         '#type' => 'hidden',
-        '#value' => $_SERVER['HTTP_REFERER'],
+        '#value' => '',
     );
     $form['zendesk_23643146'] = array(
         '#type' => 'hidden',
@@ -69,6 +69,8 @@ function takepart_contact_us_block_view_zendesk_forms_zendesk_support_form_alter
     $js = '<script type="text/javascript">
         jQuery(document).ready(function() {
             jQuery("input[name=zendesk_23560737]").val(navigator.userAgent);
+            jQuery("input[name=zendesk_23560727]").val(document.referrer);
+
         });
         </script>';
     $data['subject'] = t('');
