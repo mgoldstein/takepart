@@ -194,7 +194,7 @@ function takepart_article_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '3',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -1012,15 +1012,23 @@ function takepart_article_field_default_fields() {
           'weight' => '11',
         ),
         'feature_main' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '20',
+          'label' => 'hidden',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => 'content',
+            'image_style' => 'homepage_featured_image',
+          ),
+          'type' => 'image',
+          'weight' => '1',
         ),
         'feature_secondary' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
+          'label' => 'hidden',
+          'module' => 'media_image_formatter',
+          'settings' => array(
+            'image_link' => 'content',
+            'image_style' => 'homepage_featured_image',
+          ),
+          'type' => 'image',
           'weight' => '0',
         ),
         'feature_topic' => array(
