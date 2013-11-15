@@ -170,7 +170,7 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
 
       $series_nav = '';
       $series_nav .= $series_image;
-      $series_nav .= '<div class="more-prev">previous</div><div class="more-next">next</div>';
+      $series_nav .= '<div class="more-prev">' . l("previous", $previous_url) . '</div><div class="more-next">' . l('next', $next_url) . '</div>';
       $previous = '<div class="previous">'. (isset($previous->field_promo_headline['und'][0]['value']) ? $previous->field_promo_headline['und'][0]['value'] : drupal_render($previous->title)). '</div>';
       $next = '<div class="next">'. (isset($next->field_promo_headline['und'][0]['value']) ? $next->field_promo_headline['und'][0]['value'] : $next->title). '</div>';
       $series_nav .= l($previous, $previous_url, array('html' => true));
