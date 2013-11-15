@@ -33,7 +33,6 @@ function takepart_omniture_context_default_contexts() {
         'takepart_page' => 'takepart_page',
         'takepart_quick_study' => 'takepart_quick_study',
         'takepart_slide' => 'takepart_slide',
-        'topic_front' => 'topic_front',
         'venue' => 'venue',
         'webform' => 'webform',
       ),
@@ -187,10 +186,9 @@ s.eVar21 = [tp_omniture:lowercase:{node:field_topic}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.channel = home
-s.pageName = takepart:home:TakePart Home
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = home
+      'variables' => 's.pageName = takepart:home:TakePart Home
+s.channel = home
+s.prop1 = home
 s.prop4 = home
 s.prop7 =[current-user:uid]
 s.eVar30 = takepart:home:TakePart Home',
@@ -238,6 +236,11 @@ s.eVar11 = Logged_In',
   $context->description = 'Omniture Settings for the every page';
   $context->tag = 'Omniture';
   $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '~<front>' => '~<front>',
+      ),
+    ),
     'sitewide' => array(
       'values' => array(
         1 => 1,
@@ -249,10 +252,11 @@ s.eVar11 = Logged_In',
       'variables' => 's.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-',
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]',
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.

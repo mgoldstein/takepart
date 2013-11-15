@@ -81,9 +81,10 @@ function s_doPlugins(s) {
     }
 
     /* Page Name */
-    if(!s.pageType && !s.pageName)
+    if(!s.pageType && !s.pageName) {
         s.pageName=getPathFromUrl(s.getPageName());
-
+    }
+    
     /* campaign ID tracking */
     if(!s.campaign){
         s.campaign=s.getQueryParam('cmpid').toLowerCase();
