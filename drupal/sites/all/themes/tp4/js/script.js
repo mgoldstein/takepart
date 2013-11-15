@@ -75,7 +75,7 @@ Drupal.behaviors.articleBehaviors = {
 
       var $stickyAd = $('.block-boxes-ga_ad-bottom'),
           stickyAdOffset = $stickyAd.offset().top,
-          stickyAdHeight = $stickyAd.height(),
+	  stickyAdHeight = $stickyAd.outerHeight(true),
           $footer = $('.footer-wrapper'),
           $doc = $(document);
 
@@ -194,8 +194,8 @@ $.tpregions.add({
   'Keyword Link' : '.topic-links',
   'Author Full Bio Link' : '.author-bio',
   //'Badge' : '.badge',
-  //'Topic Box': '#topic_box',
-  'Outbrain Widget': '.OUTBRAIN'
+  //'Outbrain Widget': '.OUTBRAIN',
+  'Topic Box': '.topic-box'
 });
         
 })(jQuery, Drupal, this, this.document);
