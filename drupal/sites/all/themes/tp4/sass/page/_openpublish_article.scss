@@ -161,6 +161,9 @@
   // Article Styling
   //
   .article-header {
+    .topic-box {
+      margin-bottom: 1em;
+    }
     .node-title {
       // these values are extremely stupid.
       font-family: $ashbury-regular;
