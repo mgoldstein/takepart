@@ -183,9 +183,16 @@
     }
   }
   .article-main-image {
-    figcaption p {
-      margin-top: 0;
+    figcaption {
       font-family: $ashbury-light-italic;
+      p, h5 {
+        font-size: 1em;
+        line-height: 1.285714286;
+        margin-top: 0;
+        font-family: $ashbury-light-italic;
+        font-weight: normal;
+        font-style: normal;
+      }
     }
   }
   .author-bio {
