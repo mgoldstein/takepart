@@ -70,35 +70,10 @@ Drupal.behaviors.articleBehaviors = {
     var $body = $('body');
 
     if ($body.is('.page-node.node-type-openpublish-article')) {
-      // sticky elements
-      $('#article-social').tpsticky({ offsetNode: '#article-content' });
 
-      var $stickyAd = $('.block-boxes-ga_ad-bottom'),
-          stickyAdOffset = $stickyAd.offset().top,
-	  stickyAdHeight = $stickyAd.outerHeight(true),
-          $footer = $('.footer-wrapper'),
-          $doc = $(document);
-
-      $(window).on('scroll', function(e) {
-        var isSticky = $stickyAd.hasClass('sticky'),
-            documentHeight = $doc.height(),
-            stickyAdLowestPoint = documentHeight - stickyAdHeight - $footer.outerHeight();
-
-        // add/remove the sticky class
-        if (window.scrollY > stickyAdOffset) {
-          isSticky || $stickyAd.addClass('sticky');
-        } else {
-          !isSticky || $stickyAd.removeClass('sticky');
-        }
-
-        if (isSticky && window.scrollY > stickyAdLowestPoint) {
-          $stickyAd.css('top', stickyAdLowestPoint - window.scrollY);
-        } else {
-          $stickyAd.css('top', '');
-        }
-
-      });
-      
+      // make second ad sticky
+      // (sticky social buttons are done below)
+      $('.block-boxes-ga_ad-bottom').tp4Sticky();
 
       // Setup Social Share Buttons
       var tp_social_config = {
@@ -116,7 +91,9 @@ Drupal.behaviors.articleBehaviors = {
         ]
       };
 
-      $('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+      // initialize tpsocial and make it sticky.
+      $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
+      .then($('#article-social').tp4Sticky());
 
       // Set up secondary social share buttons
       var main_image = $('figure.article-main-image img').attr('src');
