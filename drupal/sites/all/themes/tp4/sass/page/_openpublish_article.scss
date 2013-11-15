@@ -1,5 +1,6 @@
 // set up sprites for the tpsocial block;
 @import "tp-social/*.png";
+@import "tp-social-more/*.png";
 
 .node-openpublish-article.view-mode-full {
 
@@ -31,6 +32,18 @@
     @include all-tp-social-sprites;
     .comments-link a { @include tp-social-sprite(comment); }
     .trigger a { @include tp-social-sprite(more); }
+
+    #article-more-shares {
+      .tp-social-link {
+	padding-left: 20px;
+	height: 16px;
+	@each $service in pinterest tumblr gmail hotmail yahoomail aolmail linkedin digg stumbleupon {
+	  &.tp-social-#{$service} {
+	    @include tp-social-more-sprite(#{$service});
+	  }
+	}
+      }
+    }
 
     // Override tp-sticky styles on sizes below $breakpoint-desktop
     // This is a shining example of that "mobile last" design
@@ -111,14 +124,10 @@
         bottom: auto;
       }
     }
-    .header,
-    p {
-      margin: 0;
-      padding: .5em;
-      background: white;
-    }
     .tp-social-link {
       display: block;
+      @include box-sizing(border-box);
+      position: relative;
       width: 50%;
       float: left;
     }
@@ -130,6 +139,22 @@
     @include background-clip(padding-box);
     min-width: 250px;
     display: inline-block;
+    .header, p {
+      padding: .5em;
+      margin: 0;
+    }
+    .header {
+      font-family: $brown-bold;
+      font-weight: normal;
+      font-size: 1.142857143em;
+      background-color: $light-gray;
+    }
+    .tp-social-link {
+      font-size: 16px;
+      line-height: 1;
+      margin-bottom: .25em;
+      background-color: white;
+    }
   }
 
   //
