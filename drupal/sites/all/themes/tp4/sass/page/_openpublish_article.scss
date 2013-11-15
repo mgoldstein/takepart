@@ -14,6 +14,10 @@
       .inner {
         padding: 7px 1px;
       }
+      &.sticky {
+        position: fixed;
+        top: 0;
+      }
     }
     #article-content,
     #series-navigation,
@@ -161,6 +165,9 @@
   // Article Styling
   //
   .article-header {
+    .topic-box {
+      margin-bottom: 1em;
+    }
     .node-title {
       // these values are extremely stupid.
       font-family: $ashbury-regular;
@@ -176,9 +183,16 @@
     }
   }
   .article-main-image {
-    figcaption p {
-      margin-top: 0;
+    figcaption {
       font-family: $ashbury-light-italic;
+      p, h5 {
+        font-size: 1em;
+        line-height: 1.285714286;
+        margin-top: 0;
+        font-family: $ashbury-light-italic;
+        font-weight: normal;
+        font-style: normal;
+      }
     }
   }
   .author-bio {
@@ -451,9 +465,9 @@
   display: block;
   width: auto;
   overflow: auto;
-  padding: 10px;
-  margin-bottom: 43px;
-  margin-top: 30px;
+  padding: 1em;
+  margin-bottom: 3em;
+  margin-top: 2em;
   .left-border{
     position: absolute;
     left: 0;
@@ -477,48 +491,42 @@
   img{
     height: 30px;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 1em;
+  }
+  .more-prev,
+  .more-next {
+    font-family: $ashbury-bold;
+    font-weight: normal;
+    position: relative;
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+      &:before,
+      &:after {
+        font-family: "SSGizmo";
+        color: $mint;
+        vertical-align: bottom;
+        display: inline-block;
+      }
+    }
   }
   .more-prev{
     float: left;
-    position: relative;
-    padding-left: 17px;
-    font-family: $ashbury-bold;
-    &:before {
-      content: "\23EA ";
-      font-family: "SSGizmo";
-      color: $mint;
-      vertical-align: bottom;
-      position: absolute;
-      left: 0;
-      top: 1px;
-      display: block;
-      width: 15px;
-      height: 20px;
+      a:before {
+      content: "\23EA  ";
     }
   }
   .more-next{
     float: right;
-    position: relative;
-    padding-right: 17px;
-    font-family: $ashbury-bold;
-    &:after {
-      content: "\23E9 ";
-      font-family: "SSGizmo";
-      color: $mint;
-      vertical-align: bottom;
-      position: absolute;
-      right: 0;
-      top: 1px;
-      display: block;
-      width: 15px;
-      height: 20px;
+    a:after {
+      content: "  \23E9";
     }
   }
   .previous{
     float: left;
     clear: left;
-    width: 230px;
+    width: 41%;
     margin-top: 5px;
     position: relative;
     z-index: 2;
@@ -526,7 +534,7 @@
   .next {
     float: right;
     clear: right;
-    width: 230px;
+    width: 41%;
     text-align: right;
     margin-top: 5px;
     position: relative;

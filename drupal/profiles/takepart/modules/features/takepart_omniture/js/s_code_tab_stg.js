@@ -126,27 +126,22 @@ function s_doPlugins(s) {
     
     /* Copy props to eVars */
     s.eVar30=s.pageName?s.pageName:'';
-    s.eVar1=s.prop1?s.prop1:'';    // Sub Section 1
-    s.eVar2=s.prop2?s.prop2:'';    // Sub Section 2
-    s.eVar3=s.prop3?s.prop3:'';    // Sub Section 3
-    s.eVar4=s.prop4?s.prop4:'';    // Type of Content
-    s.eVar5=s.prop5?s.prop5:'';    // Article Title
-    s.eVar6=s.prop6?s.prop6:'';    // Content ID
-    s.eVar7=s.prop7?s.prop7:'';    // Internal Search Terms
-    // s.eVar12=s.channel?s.channel:'';    // Site Sections
-    s.eVar13=s.prop13?s.prop13:'';  // 404 error page -- was previously "Featured Content ID"
-    //s.eVar15=s.prop14?s.prop14:'';  Retire -- was previuously "Article open click"
-    s.eVar17=s.prop16?s.prop16:''; // Author
-    s.eVar18=s.prop17?s.prop17:''; // Content Title
-    s.eVar19=s.prop18?s.prop18:''; // Blog Series
-    s.eVar20=s.prop19?s.prop19:''; // Content post date  CHECK
-    s.eVar21=s.prop20?s.prop20:''; // Display topic
-    // s.eVar22=s.prop21?s.prop21:''; // Title of content commented on
-    //s.eVar23=s.prop22?s.prop22:'';  Retire -- Was previously "article type created"
-    //s.eVar24=s.prop23?s.prop23:'';  Retire -- was previously "Issue type"
-    // s.eVar26=s.prop25?s.prop25:''; Retire -- was previously "Article saved"
-    s.eVar27=s.prop26?s.prop26:''; // Share method/channel
-    //s.eVar28=s.prop27?s.prop27:''; s.profp 27 Article Share clicked
+    s.eVar46=s.pageName?s.pageName:'';
+    s.eVar1=s.prop1?s.prop1:'';         // Sub Section 1
+    s.eVar2=s.prop2?s.prop2:'';         // Sub Section 2
+    s.eVar3=s.prop3?s.prop3:'';         // Sub Section 3
+    s.eVar4=s.prop4?s.prop4:'';         // Type of Content
+    s.eVar5=s.prop5?s.prop5:'';         // Article Title
+    s.eVar6=s.prop6?s.prop6:'';         // Content ID
+    s.eVar7=s.prop7?s.prop7:'';         // Internal Search Terms
+    s.eVar13=s.prop13?s.prop13:'';      // 404 error page -- was previously "Featured Content ID"
+    s.eVar17=s.prop16?s.prop16:'';      // Author
+    s.eVar18=s.prop17?s.prop17:'';      // Content Title
+    s.eVar19=s.prop18?s.prop18:'';      // Blog Series
+    s.eVar20=s.prop19?s.prop19:'';      // Content post date  CHECK
+    s.eVar21=s.prop20?s.prop20:'';      // Display topic
+    s.eVar27=s.prop26?s.prop26:'';      // Share method/channel
+    s.eVar43=s.prop43 ? s.prop43 : '';  // multipage campaign context
     s.previousPage=s.getPreviousValue(s.pageName,'gpv_p5','');
 }
 s.doPlugins=s_doPlugins
