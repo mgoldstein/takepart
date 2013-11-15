@@ -70,7 +70,7 @@ scripts[] = js/doubletaptogo.js
 scripts[] = js/snap.js
 scripts[] = js/tpsocial.jquery.js
 scripts[] = js/tpsocial.services.js
-scripts[] = js/tpsticky.jquery.js
+scripts[] = js/jquery.tp4sticky.js
 scripts[] = js/script.js
 
 
