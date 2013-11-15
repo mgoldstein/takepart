@@ -134,7 +134,6 @@ function s_doPlugins(s) {
 
     /* Copy props to eVars */
     s.eVar30=s.pageName?s.pageName:'';
-    s.eVar46=s.pageName?s.pageName:'';
     s.eVar1=s.prop1?s.prop1:'';         // Sub Section 1
     s.eVar2=s.prop2?s.prop2:'';         // Sub Section 2
     s.eVar3=s.prop3?s.prop3:'';         // Sub Section 3
@@ -154,11 +153,31 @@ function s_doPlugins(s) {
 }
 s.doPlugins=s_doPlugins;
 
+/*
 s.loadModule("Media");
 s.Media.autoTrack=false;
 s.Media.trackWhilePlaying=true;
 s.Media.trackVars="None";
 s.Media.trackEvents="None";
+*/
+
+s.loadModule("Media");
+s.Media.autoTrack=true;
+s.Media.trackWhilePlaying=true;
+s.Media.trackVars="events,eVar65,eVar66,eVar67,eVar4,eVar1,eVar30"; //Enter the variables to be sent withOmniture image requests
+s.Media.trackEvents="event91,event92,event93,event94"; //Enter the events to be sent withOmniture image requests
+s.Media.trackMilestones="10,20,30,40,60,80,90"; //could also use s.Media.trackSeconds, if desired
+s.Media.trackUsingContextData = true;
+
+s.Media.contextDataMapping = {
+  "a.media.name":"eVar65,prop65",
+  "a.media.segment":"eVar66",
+  "a.contentType":"eVar67",
+  "a.media.timePlayed":"event91",
+  "a.media.view":"event92",
+  "a.media.segmentView":"event94",
+  "a.media.complete":"event93"
+};
 
 /* WARNING: Changing any of the below variables will cause drastic
 changes to how your visitor data is collected.  Changes should only be
