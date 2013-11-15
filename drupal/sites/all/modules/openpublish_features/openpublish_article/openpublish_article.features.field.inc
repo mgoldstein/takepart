@@ -273,22 +273,14 @@ function openpublish_article_field_default_fields() {
         ),
         'feature_main' => array(
           'label' => 'hidden',
-          'module' => 'media_image_formatter',
-          'settings' => array(
-            'image_link' => 'content',
-            'image_style' => 'homepage_featured_image',
-          ),
-          'type' => 'image',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'feature_secondary' => array(
           'label' => 'hidden',
-          'module' => 'media_image_formatter',
-          'settings' => array(
-            'image_link' => 'content',
-            'image_style' => 'homepage_featured_image',
-          ),
-          'type' => 'image',
+          'settings' => array(),
+          'type' => 'hidden',
           'weight' => '0',
         ),
         'feature_topic' => array(
@@ -444,7 +436,7 @@ function openpublish_article_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_plain',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -1015,7 +1007,7 @@ function openpublish_article_field_default_fields() {
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
-	  'type' => 'hidden',
+          'type' => 'hidden',
           'weight' => '6',
         ),
         'feature_main' => array(
@@ -1158,7 +1150,7 @@ function openpublish_article_field_default_fields() {
           'module' => 'node_reference',
           'settings' => array(),
           'type' => 'node_reference_default',
-          'weight' => '3',
+          'weight' => '4',
         ),
         'feature_secondary' => array(
           'label' => 'above',
@@ -1269,7 +1261,7 @@ function openpublish_article_field_default_fields() {
         'default' => array(
           'label' => 'hidden',
           'settings' => array(),
-	  'type' => 'hidden',
+          'type' => 'hidden',
           'weight' => '5',
         ),
         'feature_main' => array(
