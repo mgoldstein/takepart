@@ -253,7 +253,8 @@ s.eVar11 = Logged_In',
 s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]',
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
+s.prop7 = [current-user:uid]',
     ),
   );
   $context->condition_mode = 1;
@@ -326,19 +327,20 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   $context->description = 'Variables set on topic front page load';
   $context->tag = 'Omniture';
   $context->conditions = array(
-    'node' => array(
+    'taxonomy_term' => array(
       'values' => array(
-        'topic_front' => 'topic_front',
+        'topic' => 'topic',
       ),
       'options' => array(
-        'node_form' => '0',
+        'term_form' => '1',
       ),
     ),
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.prop20 = [tp_omniture:str_decode:{node:title}]
-s.eVar21 = [tp_omniture:str_decode:{node:title}]',
+      'variables' => 's.prop4 = topic front
+s.prop20 = [tp_omniture:lowercase:{current-page:title}]
+',
     ),
   );
   $context->condition_mode = 0;
