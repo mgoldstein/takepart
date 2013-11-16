@@ -83,7 +83,7 @@
                 }
             }
 
-            if ( text ) url_obj.text = text;
+            if (text) url_obj.text = text;
 
             // Create twitter URL
             var url_parts = [];
@@ -225,7 +225,6 @@
         height: 600,
         share: function(args) {
             var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -238,7 +237,6 @@
         height: 450,
         share: function(args) {
             var url = 'http://www.myspace.com/Modules/PostTo/Pages/?u=' + encodeURIComponent(args.url) + '&t=' + encodeURIComponent(args.title);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -251,7 +249,6 @@
         height: 420,
         share: function(args) {
             var url = 'https://delicious.com/post?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&notes=';
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -264,7 +261,6 @@
         height: 390,
         share: function(args) {
             var url = 'http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&ro=false&summary=&source=';
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -277,7 +273,6 @@
         height: 370,
         share: function(args) {
             var url = 'http://favorites.my.aol.com/ffclient/AddBookmark?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&description=';
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -290,7 +285,6 @@
         height: 570,
         share: function(args) {
             var url = 'https://profile.live.com/P.mvc#!/badge?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -303,7 +297,6 @@
         height: 670,
         share: function(args) {
             var url = 'http://digg.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&bodytext=';
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -316,7 +309,6 @@
         height: 560,
         share: function(args) {
             var url = 'http://www.stumbleupon.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -329,14 +321,12 @@
         height: 700,
         share: function(args) {
             var url = 'http://www.hyves.nl/profilemanage/add/tips/?name=' + encodeURIComponent(args.title) + '&text=' + encodeURIComponent(args.url) + '&type=12#';
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
     });
 
     // Email
-
     var email_args;
     var email_once = function() {
     // Don't need to do this because of global tracking in analytics.js
@@ -391,7 +381,6 @@
     });
 
     // More
-
     var more_args;
     var more_once = function() {
         addthis.addEventListener('addthis.menu.share', more_callback);
@@ -428,16 +417,13 @@
 
             $.tpsocial.load_script(window[more_var], more_script, this, function() {
                 var note = template_value('note', args);
-
                 var more_config = {
                     ui_more_note: note
                 };
-
                 var addthis_config = {
                     url: args.url,
                     title: args.title
                 };
-
                 addthis.toolbox(
                     $(args.element).parent()[0],
                     more_config,
@@ -446,5 +432,4 @@
             }, more_once);
         }
     });
-
 })(window, jQuery);
