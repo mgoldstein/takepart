@@ -363,6 +363,90 @@ function tp_feature_views_views_default_views() {
   $export['photo_galleries_promo'] = $view;
 
   $view = new view();
+  $view->name = 'takeaction_homepage';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'TakeAction Homepage';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'TakeAction Homepage';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Nodequeue: Queue */
+  $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
+  $handler->display->display_options['relationships']['nodequeue_rel']['field'] = 'nodequeue_rel';
+  $handler->display->display_options['relationships']['nodequeue_rel']['required'] = TRUE;
+  $handler->display->display_options['relationships']['nodequeue_rel']['limit'] = 1;
+  $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
+    'takeaction_promo' => 'takeaction_promo',
+    'latest_headlines' => 0,
+    'photo_galleries_promo' => 0,
+  );
+  /* Field: Content: Action Type */
+  $handler->display->display_options['fields']['field_action_type']['id'] = 'field_action_type';
+  $handler->display->display_options['fields']['field_action_type']['table'] = 'field_data_field_action_type';
+  $handler->display->display_options['fields']['field_action_type']['field'] = 'field_action_type';
+  $handler->display->display_options['fields']['field_action_type']['label'] = '';
+  $handler->display->display_options['fields']['field_action_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_action_type']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Button Text */
+  $handler->display->display_options['fields']['field_tab_call_to_action']['id'] = 'field_tab_call_to_action';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['table'] = 'field_data_field_tab_call_to_action';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['field'] = 'field_tab_call_to_action';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['label'] = '';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['element_label_colon'] = FALSE;
+  /* Field: Content: Take Action Button URL */
+  $handler->display->display_options['fields']['field_action_url']['id'] = 'field_action_url';
+  $handler->display->display_options['fields']['field_action_url']['table'] = 'field_data_field_action_url';
+  $handler->display->display_options['fields']['field_action_url']['field'] = 'field_action_url';
+  $handler->display->display_options['fields']['field_action_url']['label'] = '';
+  $handler->display->display_options['fields']['field_action_url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_action_url']['click_sort_column'] = 'url';
+  /* Field: Content: Action Icon */
+  $handler->display->display_options['fields']['field_action_icon']['id'] = 'field_action_icon';
+  $handler->display->display_options['fields']['field_action_icon']['table'] = 'field_data_field_action_icon';
+  $handler->display->display_options['fields']['field_action_icon']['field'] = 'field_action_icon';
+  $handler->display->display_options['fields']['field_action_icon']['label'] = '';
+  $handler->display->display_options['fields']['field_action_icon']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_action_icon']['alter']['text'] = '<img src="[field_action_icon-value]" />';
+  $handler->display->display_options['fields']['field_action_icon']['element_label_colon'] = FALSE;
+  /* Sort criterion: Nodequeue: Position */
+  $handler->display->display_options['sorts']['position']['id'] = 'position';
+  $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['sorts']['position']['field'] = 'position';
+  $handler->display->display_options['sorts']['position']['relationship'] = 'nodequeue_rel';
+  /* Filter criterion: Nodequeue: In queue */
+  $handler->display->display_options['filters']['in_queue']['id'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['table'] = 'nodequeue_nodes';
+  $handler->display->display_options['filters']['in_queue']['field'] = 'in_queue';
+  $handler->display->display_options['filters']['in_queue']['relationship'] = 'nodequeue_rel';
+  $handler->display->display_options['filters']['in_queue']['value'] = '1';
+  $handler->display->display_options['filters']['in_queue']['group'] = 1;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $export['takeaction_homepage'] = $view;
+
+  $view = new view();
   $view->name = 'topic_listing';
   $view->description = 'A list of thumbnail/content types/titles for nodes of a given topic.';
   $view->tag = 'default';
