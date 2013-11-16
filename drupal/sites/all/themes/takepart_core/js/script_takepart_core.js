@@ -123,7 +123,7 @@ $(function() {
 	$.tpregions.add({
 		'Header': '#site-header',
                 'Slim Header' : '.slimnav',
-		'Footer': '#site-footer',
+		'Footer': 'footer',
 		'Daily Featured Content': '.of_the_day_section',
 		'Partner Link': '.on_our_radar_section',
 		'Embedded Content': '#article-body .drupal-embed',
