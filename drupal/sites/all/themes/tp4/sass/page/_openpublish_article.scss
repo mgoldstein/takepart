@@ -170,15 +170,11 @@
     }
     .node-title {
       // these values are extremely stupid.
-      font-family: $ashbury-regular;
-      font-weight: normal;
-      font-size: 2.428571429em;
-      line-height: 1.088235294;
-      margin-bottom: .25em;
+      font: normal 2.428571429em/1.088235294 $ashbury-regular;
+      margin-bottom: .411764706em; // 14px / 34px
     }
     .field-name-field-article-subhead {
-      font-family: $ashbury-light;
-      font-size: 1.142857143em;
+      font: normal 1.142857143em/1.125 $ashbury-light;
       margin-bottom: 1em;
     }
   }
