@@ -6212,26 +6212,27 @@ header .search {
 /**
  * Styles for TP4 Sidebar Blocks
  */
-/* line 9, ../sass/modules/_sidebar.scss */
-.block-newsletter-campaign .block-title {
+/* line 6, ../sass/modules/_sidebar.scss */
+#sidebar .block-title {
   text-transform: lowercase;
 }
-/* line 13, ../sass/modules/_sidebar.scss */
+
+/* line 16, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .message {
   margin: .75em 0;
 }
-/* line 16, ../sass/modules/_sidebar.scss */
+/* line 19, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email {
   margin: 0;
   display: inline-block;
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   width: 65%;
 }
-/* line 21, ../sass/modules/_sidebar.scss */
+/* line 24, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email label {
   display: none;
 }
-/* line 24, ../sass/modules/_sidebar.scss */
+/* line 27, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email input {
   width: 100%;
   border-width: 1px;
@@ -6239,7 +6240,7 @@ header .search {
   font-size: 12px;
   line-height: 1.5;
 }
-/* line 32, ../sass/modules/_sidebar.scss */
+/* line 35, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign input[type="submit"] {
   width: 33%;
   border: none;
@@ -6250,11 +6251,11 @@ header .search {
   text-transform: lowercase;
   padding: 4px 0 1px;
 }
-/* line 41, ../sass/modules/_sidebar.scss */
+/* line 44, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign input[type="submit"]:hover {
   background-color: black;
 }
-/* line 55, ../sass/modules/_sidebar.scss */
+/* line 58, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service {
   clear: both;
   margin: 1em 0;
@@ -6262,28 +6263,28 @@ header .search {
   border-bottom: 1px solid #cccccc;
   font-size: 12px;
 }
-/* line 62, ../sass/modules/_sidebar.scss */
+/* line 65, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service a {
   line-height: 1.2em;
   color: #019f84;
 }
-/* line 68, ../sass/modules/_sidebar.scss */
+/* line 71, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .follow-us {
   font-family: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   text-transform: lowercase;
   display: inline-block;
   vertical-align: middle;
 }
-/* line 74, ../sass/modules/_sidebar.scss */
+/* line 77, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links {
   display: inline-block;
 }
-/* line 76, ../sass/modules/_sidebar.scss */
+/* line 79, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li {
   display: inline-block;
   line-height: 1;
 }
-/* line 79, ../sass/modules/_sidebar.scss */
+/* line 82, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a {
   display: inline-block;
   height: 24px;
@@ -6293,7 +6294,7 @@ header .search {
   text-indent: 100%;
   white-space: nowrap;
 }
-/* line 88, ../sass/modules/_sidebar.scss */
+/* line 91, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.facebook {
   background-position: 0 -480px;
 }
@@ -6301,7 +6302,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.facebook:hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray_hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray-hover {
   background-position: 0 -432px;
 }
-/* line 89, ../sass/modules/_sidebar.scss */
+/* line 92, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.twitter {
   background-position: 0 -312px;
 }
@@ -6309,7 +6310,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.twitter:hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray_hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray-hover {
   background-position: 0 -240px;
 }
-/* line 90, ../sass/modules/_sidebar.scss */
+/* line 93, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.google {
   background-position: 0 -144px;
 }
@@ -6317,7 +6318,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.google:hover, .block-newsletter-campaign .social-links li a.google.googleplus-gray_hover, .block-newsletter-campaign .social-links li a.google.googleplus-gray-hover {
   background-position: 0 -120px;
 }
-/* line 91, ../sass/modules/_sidebar.scss */
+/* line 94, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.pinterest {
   background-position: 0 -192px;
 }
@@ -6325,7 +6326,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.pinterest:hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray_hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray-hover {
   background-position: 0 -288px;
 }
-/* line 92, ../sass/modules/_sidebar.scss */
+/* line 95, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.youtube {
   background-position: 0 0;
 }
@@ -6333,7 +6334,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.youtube:hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray_hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray-hover {
   background-position: 0 -48px;
 }
-/* line 93, ../sass/modules/_sidebar.scss */
+/* line 96, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.tumblr {
   background-position: 0 -456px;
 }
@@ -6342,13 +6343,13 @@ header .search {
   background-position: 0 -360px;
 }
 
-/* line 99, ../sass/modules/_sidebar.scss */
+/* line 102, ../sass/modules/_sidebar.scss */
 .block-boxes-ga_ad {
   display: block;
   margin: 0 auto;
   margin-bottom: 20px;
 }
-/* line 103, ../sass/modules/_sidebar.scss */
+/* line 106, ../sass/modules/_sidebar.scss */
 .block-boxes-ga_ad:before {
   content: 'Advertisement';
   color: gray;
@@ -6356,10 +6357,61 @@ header .search {
   text-align: center;
   display: block;
 }
-/* line 109, ../sass/modules/_sidebar.scss */
+/* line 112, ../sass/modules/_sidebar.scss */
 .block-boxes-ga_ad:before .boxes-box-content {
   margin: 0 auto;
   display: block;
+}
+
+/* line 120, ../sass/modules/_sidebar.scss */
+#block-bean-of-the-day .block-title {
+  border-top: 4px solid #000;
+  padding-top: 0px;
+}
+/* line 123, ../sass/modules/_sidebar.scss */
+#block-bean-of-the-day .of-the-day-item {
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+/* line 127, ../sass/modules/_sidebar.scss */
+#block-bean-of-the-day .of-the-day-item a:hover {
+  text-decoration: none;
+}
+/* line 129, ../sass/modules/_sidebar.scss */
+#block-bean-of-the-day .of-the-day-item a:hover .node-title {
+  text-decoration: underline;
+}
+/* line 134, ../sass/modules/_sidebar.scss */
+#block-bean-of-the-day .of-the-day-item img {
+  float: left;
+  margin-right: 1em;
+}
+/* line 138, ../sass/modules/_sidebar.scss */
+#block-bean-of-the-day .of-the-day-item .subhead {
+  font: normal 0.85714em/1.5 "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  line-height: 1.5;
+  margin: 1em 0 0;
+  text-transform: uppercase;
+}
+/* line 144, ../sass/modules/_sidebar.scss */
+#block-bean-of-the-day .of-the-day-item .node-title {
+  font-size: 1em;
+  line-height: 1.285714286;
+  font-weight: normal;
+  margin: 0;
+}
+/* line 89, ../sass/helpers/_mixins.scss */
+#block-bean-of-the-day .of-the-day-item .node-title:after {
+  content: '';
+  display: block;
+  height: 0;
+  width: 76px;
+  margin: .5em 0;
+  border-bottom: 1px dashed black;
+}
+/* line 150, ../sass/modules/_sidebar.scss */
+#block-bean-of-the-day .of-the-day-item .node-title:after {
+  margin-left: 114px;
 }
 
 /* line 2, ../sass/modules/_topic_features.scss */
