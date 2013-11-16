@@ -104,8 +104,6 @@ function tp_megamenu_megamenu(){
         $node = node_load($nid);
 
         $node_path = drupal_get_path_alias('node/'. $node->nid);
-        $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
-        $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
 
         //Subcategory content menu item is linked to a taxonomy term
         if($url == 'taxonomy'){
@@ -113,6 +111,8 @@ function tp_megamenu_megamenu(){
           $term = taxonomy_term_load($term);
           //Subcategory content for menu items with the ID of 'series' (example: Features & Columns)
           if(isset($link['link']['options']['attributes']['id']) && $link['link']['options']['attributes']['id'] == 'series'){
+            $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
             $author_node = node_load($node->field_author['und'][0]['nid']);
             $series_term = taxonomy_term_load($node->field_series['und'][0]['tid']);
             $text = '<div class="author">'. $author_node->title. '</div>'. l($node->field_promo_headline['und'][0]['value'], $node_path);  //author and promo_headline
@@ -120,6 +120,8 @@ function tp_megamenu_megamenu(){
             $label_path = drupal_get_path_alias('taxonomy/term/'. $series_term->tid);
           }
           else{
+            $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
             $text = l($node->field_promo_headline['und'][0]['value'], $node_path);
             $label = $term->name;
             $label_path = drupal_get_path_alias('taxonomy/term/'. $term->tid);
@@ -127,9 +129,20 @@ function tp_megamenu_megamenu(){
         }
         //Subcategory content menu item is linked to a node
         else{
-          $label = $node->title;
-          $label_path = drupal_get_path_alias('node/'. $node->nid);
-          $text = l($node->field_promo_headline['und'][0]['value'], $node_path);
+          if(isset($link['link']['options']['attributes']['id']) && $link['link']['options']['attributes']['id'] == 'action'){
+            $thumb = file_load($node->field_action_main_image['und'][0]['fid']);
+            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+            $label = taxonomy_term_load($node->field_action_type['und'][0]['tid']);
+            $label = $label->name;
+            $text = $node->field_tab_call_to_action['und'][0]['value'];
+          }
+          else{
+            $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+            $label = $node->title;
+            $label_path = drupal_get_path_alias('node/'. $node->nid);
+            $text = l($node->field_promo_headline['und'][0]['value'], $node_path);
+          }
         }
         
         //Check for overrides
