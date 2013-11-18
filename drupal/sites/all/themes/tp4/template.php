@@ -326,7 +326,22 @@ function tp4_field__field_author__openpublish_article($variables) {
   return $output;
 }
 
+function tp4_field__field_article_subhead__openpublish_article($variables) {
+  $output = '';
 
+  // Render the items.
+  $output .= '<span class="field-items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+    $output .= '<span class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</span>';
+  }
+  $output .= '</span>';
+
+  // Render the top-level DIV.
+  $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</h2>';
+
+  return $output;
+}
 
 
 

@@ -4,8 +4,6 @@
     var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
     var template_tplvar_clean_reg = /({{)|(}})/g;
 
-    var template_value = function(tpl_name, args) {
-        // Replace variables in twitter template
         var text = args[tpl_name] || '';
         var matches = text.match(twitter_tpl_reg);
 
