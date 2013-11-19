@@ -83,6 +83,7 @@ function takepart_article_field_group_info() {
       0 => 'field_promo_headline',
       1 => 'field_promo_text',
       2 => 'field_thumbnail',
+      3 => 'field_promo_short_headline',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

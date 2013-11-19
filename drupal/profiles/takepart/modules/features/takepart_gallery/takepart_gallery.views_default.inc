@@ -68,7 +68,7 @@ function takepart_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Thumbnail Image */
+  /* Field: Content: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -82,7 +82,7 @@ function takepart_gallery_views_default_views() {
     'image_style' => 'tp_popular_gallery_thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Promo Headline */
+  /* Field: Field: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'field_data_field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -178,7 +178,7 @@ function takepart_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Thumbnail Image */
+  /* Field: Content: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -192,7 +192,7 @@ function takepart_gallery_views_default_views() {
     'image_style' => 'tp_promo_feature_thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Promo Headline */
+  /* Field: Field: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'field_data_field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -246,7 +246,7 @@ function takepart_gallery_views_default_views() {
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Thumbnail Image */
+  /* Field: Content: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -260,7 +260,7 @@ function takepart_gallery_views_default_views() {
     'image_style' => 'tp_large_rail_wide',
     'image_link' => 'content',
   );
-  /* Field: Content: Promo Headline */
+  /* Field: Field: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'field_data_field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -492,7 +492,7 @@ function takepart_gallery_views_default_views() {
     'image_style' => 'tp_large_rail_wide',
     'image_link' => '',
   );
-  /* Field: Content: Promo Headline */
+  /* Field: Field: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'field_data_field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';

@@ -2,6 +2,7 @@ name = TakePart Gallery
 description = Custom changes to the OpenPublish gallery node for TakePart
 core = 7.x
 package = Content Types
+php = 5.2.4
 version = 7.x-1.2
 project = takepart_gallery
 dependencies[] = boxes

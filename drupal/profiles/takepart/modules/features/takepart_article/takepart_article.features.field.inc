@@ -724,7 +724,7 @@ function takepart_article_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '16',
+        'weight' => '17',
       ),
     ),
   );
@@ -988,7 +988,14 @@ function takepart_article_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_thumbnail',
-      'foreign keys' => array(),
+      'foreign keys' => array(
+        'file_managed' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -1097,7 +1104,7 @@ function takepart_article_field_default_fields() {
           'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic_alt',
-        'weight' => '17',
+        'weight' => '18',
       ),
     ),
   );
