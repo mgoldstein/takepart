@@ -374,7 +374,8 @@ function tp_feature_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'TakeAction Homepage';
+  $handler->display->display_options['title'] = 'TAKE <br>ACTION';
+  $handler->display->display_options['css_class'] = 'columns';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -383,6 +384,12 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="http://takeaction.takepart.com/actions" class="more">Find other ways to Take Action</a>';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
@@ -399,6 +406,7 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_action_type']['table'] = 'field_data_field_action_type';
   $handler->display->display_options['fields']['field_action_type']['field'] = 'field_action_type';
   $handler->display->display_options['fields']['field_action_type']['label'] = '';
+  $handler->display->display_options['fields']['field_action_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_action_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_action_type']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Button Text */
@@ -406,22 +414,32 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_tab_call_to_action']['table'] = 'field_data_field_tab_call_to_action';
   $handler->display->display_options['fields']['field_tab_call_to_action']['field'] = 'field_tab_call_to_action';
   $handler->display->display_options['fields']['field_tab_call_to_action']['label'] = '';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_tab_call_to_action']['element_label_colon'] = FALSE;
-  /* Field: Content: Take Action Button URL */
-  $handler->display->display_options['fields']['field_action_url']['id'] = 'field_action_url';
-  $handler->display->display_options['fields']['field_action_url']['table'] = 'field_data_field_action_url';
-  $handler->display->display_options['fields']['field_action_url']['field'] = 'field_action_url';
-  $handler->display->display_options['fields']['field_action_url']['label'] = '';
-  $handler->display->display_options['fields']['field_action_url']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_action_url']['click_sort_column'] = 'url';
   /* Field: Content: Action Icon */
   $handler->display->display_options['fields']['field_action_icon']['id'] = 'field_action_icon';
   $handler->display->display_options['fields']['field_action_icon']['table'] = 'field_data_field_action_icon';
   $handler->display->display_options['fields']['field_action_icon']['field'] = 'field_action_icon';
   $handler->display->display_options['fields']['field_action_icon']['label'] = '';
+  $handler->display->display_options['fields']['field_action_icon']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_action_icon']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_action_icon']['alter']['text'] = '<img src="[field_action_icon-value]" />';
   $handler->display->display_options['fields']['field_action_icon']['element_label_colon'] = FALSE;
+  /* Field: Content: Take Action Button URL */
+  $handler->display->display_options['fields']['field_action_url']['id'] = 'field_action_url';
+  $handler->display->display_options['fields']['field_action_url']['table'] = 'field_data_field_action_url';
+  $handler->display->display_options['fields']['field_action_url']['field'] = 'field_action_url';
+  $handler->display->display_options['fields']['field_action_url']['label'] = '';
+  $handler->display->display_options['fields']['field_action_url']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_action_url']['alter']['text'] = '<div class="action-type">[field_action_type]</div>
+<div class="tab-call-to-action">[field_tab_call_to_action]</div>
+<div class="action-icon">[field_action_icon]</div>
+<div class="action-url">[field_action_url]</div>';
+  $handler->display->display_options['fields']['field_action_url']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_action_url']['alter']['path'] = '[field_action_url-url]';
+  $handler->display->display_options['fields']['field_action_url']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['field_action_url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_action_url']['click_sort_column'] = 'url';
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';

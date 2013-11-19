@@ -65,6 +65,11 @@ body.front{
       line-height: 1.333333333;
     }
 
+    .field-name-field-article-subhead {
+      font-size: 1em;
+      line-height: 1.285714286; // 18px / 14px
+    }
+
     .byline {
       margin: 0 2em 1em;
     }
@@ -239,6 +244,20 @@ body.front{
       	  }
       	}
       } // > .view-row
+      @include breakpoint($breakpoint-tablet){
+        .views-row{
+          display: none;
+        }
+        .views-row:nth-child(1), .views-row:nth-child(2), .views-row:nth-child(3){
+          display: block;
+        }
+      }
+      @include breakpoint($breakpoint-desktop){
+        .views-row{
+          display: block;
+        }
+      }
+
     } // > .view-content
   } // .columns
   #block-views-homepage-columns-block, #block-views-takeaction-homepage-block{
@@ -287,21 +306,21 @@ body.front{
     .line{
       border-bottom: 1px solid $light-mint;
     }
-    .views-field-field-action-type{
+    .action-type{
       font-family: $adelle-bold;
       font-size: 18px;
       line-height: 24px;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 24px;
       text-transform: uppercase;
     }
-    .views-field-field-tab-call-to-action{
+    .tab-call-to-action{
       margin-bottom: 10px;
     }
-    .views-field-field-action-icon{
+    .action-icon{
       display: inline-block;
     }
-    .views-field-field-action-url{
+    .action-url{
       display: inline-block;
       margin-top: 2px;
       margin-left: 5px;
@@ -315,6 +334,14 @@ body.front{
       display: block;
       &:hover{
         text-decoration: underline;
+      }
+    }
+    .views-row{
+      &:hover{
+        text-decoration: none;
+        .action-url{
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -353,10 +380,9 @@ body.front{
     @include breakpoint($breakpoint-mobile){
       text-align: left;
       .inner{
-        text-align: left;
-        display: inline-block;
+        text-align: center;
         label{
-          display: inline-block;
+          display: block;
           margin-right: 10px;
           font-family: $brown-bold;
           line-height: 28px;
@@ -366,19 +392,34 @@ body.front{
           text-decoration: underline;
         }
         .text{
-          display: inline-block;
+          display: block;
           font-family: $ashbury-light;
           font-size: 20px;
           img{
-            display: inline-block;
+            display: block;
             vertical-align: middle;
-            margin-right: 10px;
+            margin: 0 auto;
+            margin-bottom: 10px;
           }
         }
       }
     }
     @include breakpoint($breakpoint-tablet){
-  
+      .inner{
+        text-align: left;
+        display: inline-block;
+        label{
+          display: inline-block;
+        }
+        .text{
+          display: inline-block;
+          img{
+            display: inline-block;
+            margin-bottom: 0;
+            margin-right: 10px;
+          }
+        }
+      }
     }
     @include breakpoint($breakpoint-desktop){
       text-align: center;
