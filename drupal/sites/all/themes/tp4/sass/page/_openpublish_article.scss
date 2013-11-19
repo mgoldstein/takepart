@@ -284,6 +284,13 @@
         bottom: -1em;
         right: -1em;
       }
+      // override some of this stuff on smaller screens
+      // this is that "mobile last" strategy you've heard so much about
+      @media (max-width: 979px) {
+	padding: 0 1em;
+	&:before { left: 0; }
+	&:after { right: 0; }
+      }
     }
   } // body field
 
