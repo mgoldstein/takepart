@@ -31,7 +31,7 @@ function drush_signature_action_import() {
   $timeout = variable_get('signature_import_timeout', 600);
   $count = 0;
   if (!empty($feed_url)) {
-    $count = signature_process_import_feed($feed_url, $timeout);
+    $count = signature_process_import_feed($feed_url, $timeout, TRUE);
   }
   drush_log(dt("Processed @count actions", array('@count' => $count)), 'ok');
 }

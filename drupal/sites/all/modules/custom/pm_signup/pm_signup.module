@@ -205,7 +205,11 @@ function pm_signup_submit($request) {
   elseif ($request['type'] === 'signature') {
     $signup = SignatureSignup::create();
     $fields = array_keys(SignatureSignup::fields());
-    $endpoint = SignatureSignupEndpoint::load((int) $request['endpoint']);
+    $mapping = SignatureActionMapping::load((int) $request['endpoint']);
+    if ($mapping === FALSE && $mapping->endpoint()->getID() !== FALSE) {
+      $endpoint = SignatureSignupEndpoint::load(
+        $mapping->endpoint()->getID());
+    }
   }
   elseif ($request['type'] === 'user') {
     $signup = TakePartUserSignup::create();
@@ -330,13 +334,6 @@ function pm_signup_api_parse(&$request) {
     // The payload is required and must be an array of strings.
     if (!isset($signup['payload']) || !is_array($signup['payload'])) {
       return pm_signup_api_error(400, 'Invalid payload.');
-    }
-    else {
-      foreach ($signup['payload'] as $key => $value) {
-        if (!is_string($value)) {
-          return pm_signup_api_error(400, 'Invalid payload value.');
-        }
-      }
     }
   }
 
