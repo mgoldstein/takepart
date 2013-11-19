@@ -15,7 +15,7 @@ function article_type_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'article_v2_blocks';
   $context->description = 'Blocks for the Article content type';
-  $context->tag = 'Blocks: Article';
+  $context->tag = 'Blocks: Content Type';
   $context->conditions = array(
     'node' => array(
       'values' => array(
@@ -58,7 +58,7 @@ function article_type_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Blocks for the Article content type');
-  t('Blocks: Article');
+  t('Blocks: Content Type');
   $export['article_v2_blocks'] = $context;
 
   return $export;
