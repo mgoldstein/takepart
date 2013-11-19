@@ -244,6 +244,20 @@ body.front{
       	  }
       	}
       } // > .view-row
+      @include breakpoint($breakpoint-tablet){
+        .views-row{
+          display: none;
+        }
+        .views-row:nth-child(1), .views-row:nth-child(2), .views-row:nth-child(3){
+          display: block;
+        }
+      }
+      @include breakpoint($breakpoint-desktop){
+        .views-row{
+          display: block;
+        }
+      }
+
     } // > .view-content
   } // .columns
   #block-views-homepage-columns-block, #block-views-takeaction-homepage-block{
