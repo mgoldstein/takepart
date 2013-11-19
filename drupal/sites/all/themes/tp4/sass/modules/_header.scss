@@ -32,6 +32,7 @@ header{
     .logo{
       float: left;
       width: 121px;
+      margin-bottom: 4px;
     }
   }
   @include breakpoint($breakpoint-tablet){

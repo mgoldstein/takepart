@@ -306,21 +306,21 @@ body.front{
     .line{
       border-bottom: 1px solid $light-mint;
     }
-    .views-field-field-action-type{
+    .action-type{
       font-family: $adelle-bold;
       font-size: 18px;
       line-height: 24px;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 24px;
       text-transform: uppercase;
     }
-    .views-field-field-tab-call-to-action{
+    .tab-call-to-action{
       margin-bottom: 10px;
     }
-    .views-field-field-action-icon{
+    .action-icon{
       display: inline-block;
     }
-    .views-field-field-action-url{
+    .action-url{
       display: inline-block;
       margin-top: 2px;
       margin-left: 5px;
@@ -334,6 +334,14 @@ body.front{
       display: block;
       &:hover{
         text-decoration: underline;
+      }
+    }
+    .views-row{
+      &:hover{
+        text-decoration: none;
+        .action-url{
+          text-decoration: underline;
+        }
       }
     }
   }
