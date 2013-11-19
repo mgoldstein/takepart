@@ -64,6 +64,15 @@
             margin: 0;
             background-size: 90%;
           }
+          a.takeaction-logo{
+            width: 100%;
+            display: block;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            background: image-url('takeaction-logo.png') no-repeat center center;
+            margin: 0;
+          }
         }
         @include breakpoint($breakpoint-desktop){
           font-size: 22px;

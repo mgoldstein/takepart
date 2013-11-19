@@ -3198,3 +3198,7 @@ p.fb-login-text {
 #edit-description--2-counter {
     margin: 0.5em 0;
 }
+
+fieldset.captcha {
+    width: 446px;
+}
