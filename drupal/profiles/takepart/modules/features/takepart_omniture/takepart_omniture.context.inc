@@ -246,10 +246,14 @@ s.eVar11 = Logged_In',
   $context->reactions = array(
     'omniture_reaction' => array(
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9fd932eac0411c1d873364f160f1dc7c0f2ead34
       'variables' => 's.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+<<<<<<< HEAD
 s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
 s.prop7 = [current-user:uid]',
 =======
@@ -259,6 +263,9 @@ s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
 s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]',
 >>>>>>> epic/771-homepage-redesign
+=======
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]',
+>>>>>>> 9fd932eac0411c1d873364f160f1dc7c0f2ead34
     ),
   );
   $context->condition_mode = 1;
