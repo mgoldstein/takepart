@@ -104,7 +104,7 @@ function takepart_contact_us_form_submit($form, &$form_state) {
             $i++;
         }
     }
-    watchdog('Zen Desk', json_encode($ticket));
+    watchdog('ZenDesk', json_encode($ticket));
     // Wrap the ticket array in yet another array and call the API.
     $response = zendesk_forms_api_call(array('ticket' => $ticket), 'tickets.json');
     if (!isset($response->error)) {
