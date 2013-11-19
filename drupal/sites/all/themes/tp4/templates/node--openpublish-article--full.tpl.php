@@ -80,8 +80,10 @@
       <?php print render($content['field_free_tag']); ?>
     </ul>
 
+<!--
     <h3 class="top-border">Takepart&#8217;s Most Popular</h3>
     <p>EMBED GOES HERE</p>
+-->
     <?php print render($on_our_radar); ?>
   </footer>
 
