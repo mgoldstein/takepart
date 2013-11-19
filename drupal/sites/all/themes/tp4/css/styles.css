@@ -5307,7 +5307,7 @@ body.front #sidebar .block-title {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1384887808') no-repeat center center;
+    background: url('../images/tpl-logo.jpg?1384889510') no-repeat center center;
     margin: 0;
     background-size: 90%;
   }
@@ -5318,7 +5318,7 @@ body.front #sidebar .block-title {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.png?1384885166') no-repeat center center;
+    background: url('../images/takeaction-logo.png?1384889510') no-repeat center center;
     margin: 0;
   }
 }
@@ -5595,51 +5595,59 @@ body.front #sidebar .block-title {
   #megamenu > ul > li .mega-content .categories .sub-category .text {
     font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   }
+  /* line 172, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category:hover {
+    text-decoration: none;
+  }
+  /* line 174, ../sass/modules/_megamenu.scss */
+  #megamenu > ul > li .mega-content .categories .sub-category:hover .text {
+    text-decoration: underline;
+  }
 }
 @media all and (min-width: 980px) {
-  /* line 174, ../sass/modules/_megamenu.scss */
+  /* line 180, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category:last-child {
     display: block;
   }
 }
-/* line 180, ../sass/modules/_megamenu.scss */
+/* line 186, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .more {
   position: absolute;
   bottom: 35px;
   left: 35px;
 }
-/* line 188, ../sass/modules/_megamenu.scss */
+/* line 194, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:last-child .title a:after {
   border-right: none;
 }
-/* line 192, ../sass/modules/_megamenu.scss */
+/* line 198, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover {
   background-color: #000;
 }
-/* line 194, ../sass/modules/_megamenu.scss */
+/* line 200, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .mega-content {
   left: 0;
   top: 43px;
   clear: both;
   height: 320px;
 }
-/* line 200, ../sass/modules/_megamenu.scss */
+/* line 206, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a {
   background-color: #000;
   color: #fff;
   text-decoration: none;
 }
-/* line 204, ../sass/modules/_megamenu.scss */
+/* line 210, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a:after {
   border-right: none;
 }
-/* line 208, ../sass/modules/_megamenu.scss */
+/* line 214, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1384887765');
+  background-image: url('../images/tpl-logo-hover.jpg?1384889510');
 }
-/* line 211, ../sass/modules/_megamenu.scss */
+/* line 217, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-hover.jpg?1384887808');
+  background-image: url('../images/takeaction-logo-hover.jpg?1384889510');
 }
 
 /**
