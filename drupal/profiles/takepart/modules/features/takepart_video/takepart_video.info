@@ -25,6 +25,7 @@ dependencies[] = takepart_ads
 dependencies[] = takepart_article
 dependencies[] = takepart_blog
 dependencies[] = taxonomy
+dependencies[] = tp_feature_taxonomy_topic
 dependencies[] = views
 features[box][] = box-208c3905
 features[box][] = box-7afa6acd

@@ -122,10 +122,6 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
     // provide "on our radar" block
     $variables['on_our_radar'] = module_invoke('bean', 'block_view', 'on-our-radar-block');
 
-    // get the caption working
-    $variables['main_image_image'] = render($variables['content']['field_article_main_image']);
-    $variables['main_image_caption'] = $variables['field_article_main_image'][0]['file']->field_media_caption[LANGUAGE_NONE][0]['safe_value'];
-
     // provide topic box
     if (!empty($variables['field_topic_box'])) {
       $topic = taxonomy_term_load($variables['field_topic_box']['und'][0]['tid']);
@@ -345,6 +341,23 @@ function tp4_field__field_article_subhead__openpublish_article($variables) {
 
 
 
+function tp4_field__field_article_main_image__openpublish_article($variables) {
+  $output = '';
+  if ($variables['items'][0]['#theme'] == 'image_formatter') {
+    // for legacy content, we output the regular thing
+    $output .= theme_field($variables);
+  } else {
+    foreach ($variables['items'] as $delta => $item) {
+      $output .= '<figure class="' . $item['#view_mode'] . '"' . $variables['item_attributes'][$delta] . '>';
+      $output .= drupal_render($item['file']);
+      $output .= '<figcaption>';
+      $output .= drupal_render($item['field_media_caption']);
+      $output .= '</figcaption></figure>';
+    }
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  }
+  return $output;
+}
 
 
 /**

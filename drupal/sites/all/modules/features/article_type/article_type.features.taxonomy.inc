@@ -38,7 +38,7 @@ function article_type_taxonomy_default_vocabularies() {
       'description' => 'Topic Box Badges',
       'hierarchy' => '1',
       'module' => 'taxonomy',
-      'weight' => '0',
+      'weight' => '1',
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
