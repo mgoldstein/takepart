@@ -178,7 +178,14 @@
       margin-bottom: 1em;
     }
   }
-  .article-main-image {
+  .field-name-field-article-main-image {
+    figure {
+      &.portrait {
+	float: left;
+	width: 400px;
+	margin-right: 1em;
+      }
+    }
     figcaption {
       font-family: $ashbury-light-italic;
       p, h5 {
@@ -189,26 +196,6 @@
         font-weight: normal;
         font-style: normal;
       }
-    }
-  }
-  .author-bio {
-    position: relative;
-    padding: 10px;
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 48px;
-      width: 48px;
-      border-top: 1px solid $gray-line;
-      border-left: 1px solid $gray-line;
-    }
-    .dateline {
-    }
-    .byline {
-      display: inline;
     }
   }
   .field-name-body {
@@ -443,10 +430,24 @@
   } // #article-footer
 }
 
+
 .author-bio{
   width: auto;
-  overflow: hidden;
-  padding-left: 10px;
+  padding: 10px;
+  position: relative;
+  margin-top: 1.5em;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 48px;
+    width: 48px;
+    border-top: 1px solid $gray-line;
+    border-left: 1px solid $gray-line;
+  }
+
   .bio-inner{
     padding-top: 5px;
   }
@@ -454,10 +455,12 @@
     font-family: $ashbury-light-italic;
   }
   .date{
-    float: left;
-    margin-right: 10px;
     position: relative;
+    margin-right: 10px;
     padding-right: 10px;
+    // override stuff from the global .date style
+    float: none;
+    display: inline;
     &:after{
       content: '';
       display: block;
@@ -465,7 +468,7 @@
       border-right: 1px solid #000;
       position: absolute;
       right: 0;
-      top: 1px;
+      top: -1px;
     }
   }
   .profile-photo{
@@ -483,15 +486,12 @@
   }
   .bio{
     padding-top: 5px;
-    width: 85%;
-    display: block;
-    float: left;
     p{
       margin: 0;
     }
   }
   .more-links{
-    clear: both;
+    @include clearfix;
     .more{
       margin-top: 5px;
       float: left;
