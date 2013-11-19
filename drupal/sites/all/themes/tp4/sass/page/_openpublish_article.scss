@@ -224,6 +224,24 @@
     a { color: $mint; text-decoration: none; }
     a:hover, a:active { color: $light-mint; text-decoration: underline; }
 
+    h2,
+    h3,
+    h4 {
+      font-family: $ashbury-regular;
+    }
+    h2 {
+      font-size: 1.5em; // 21px
+      margin-top: 1.333em; // 28px
+    }
+    h3 {
+      font-size: 1.285714286em; // 18px
+      margin-top: 1.555555556em; // 28px
+    }
+    h4 {
+      font-size: 1.142857143em; // 16px
+      margin-top: 1.75em; // 28px
+    }
+
     // drop cap
     &:first-letter {
       float: left;
@@ -234,6 +252,38 @@
       // TODO unfuck fonts
       font-family: $ashbury-bold;
       font-weight: normal;
+    }
+
+    // pullquote styling
+    q.pull-quote {
+      display: block;
+    }
+
+    // blockquote styling
+    blockquote {
+      font-family: $ashbury-light-italic;
+      margin: 2.5em 0;
+      position: relative;
+      &:before,
+      &:after {
+        content: '';
+        display: block;
+        height: 3em;
+        width: 3em;
+        position: absolute;
+      }
+      &:before {
+        border-top: 1px solid $gray-line;
+        border-left: 1px solid $gray-line;
+        top: -1em;
+        left: -1em;
+      }
+      &:after {
+        border-bottom: 1px solid $gray-line;
+        border-right: 1px solid $gray-line;
+        bottom: -1em;
+        right: -1em;
+      }
     }
   } // body field
 
