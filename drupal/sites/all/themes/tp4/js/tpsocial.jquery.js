@@ -200,7 +200,7 @@
             document.getElementsByTagName('head')[0].appendChild(s);
         }
     };
-
+/*
     $('a.tp-social-facebook').click(
         function(e) {
             // var s=s_gi('takepartprod');
@@ -252,5 +252,5 @@
             s.tl(true, 'o', 'Content Share');
         }
         );
-            
+ */
 })(window, jQuery);
