@@ -53,6 +53,9 @@ body {
   height: auto;
   padding: 0;
 }
+.header-wrapper, .suffix-wrapper, .preface-wrapper{
+  padding: 0 10px;
+}
 .header-wrapper {
   padding-top: 1em;
 }

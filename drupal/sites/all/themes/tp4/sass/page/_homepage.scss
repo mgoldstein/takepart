@@ -358,10 +358,9 @@ body.front{
     @include breakpoint($breakpoint-mobile){
       text-align: left;
       .inner{
-        text-align: left;
-        display: inline-block;
+        text-align: center;
         label{
-          display: inline-block;
+          display: block;
           margin-right: 10px;
           font-family: $brown-bold;
           line-height: 28px;
@@ -371,19 +370,34 @@ body.front{
           text-decoration: underline;
         }
         .text{
-          display: inline-block;
+          display: block;
           font-family: $ashbury-light;
           font-size: 20px;
           img{
-            display: inline-block;
+            display: block;
             vertical-align: middle;
-            margin-right: 10px;
+            margin: 0 auto;
+            margin-bottom: 10px;
           }
         }
       }
     }
     @include breakpoint($breakpoint-tablet){
-  
+      .inner{
+        text-align: left;
+        display: inline-block;
+        label{
+          display: inline-block;
+        }
+        .text{
+          display: inline-block;
+          img{
+            display: inline-block;
+            margin-bottom: 0;
+            margin-right: 10px;
+          }
+        }
+      }
     }
     @include breakpoint($breakpoint-desktop){
       text-align: center;
