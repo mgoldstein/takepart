@@ -179,11 +179,13 @@
     }
   }
   .field-name-field-article-main-image {
-    figure {
-      &.portrait {
-	float: left;
-	width: 400px;
-	margin-right: 1em;
+    @include breakpoint($breakpoint-desktop) {
+      figure {
+        &.portrait {
+          float: left;
+          width: 400px;
+          margin-right: 1em;
+        }
       }
     }
     figcaption {
@@ -419,6 +421,9 @@
       }
     } // .topic-links
     .on-our-radar {
+      h3 {
+        @include header-top-border;
+      }
       ol {
 	li {
 	  @include blue-square-bullets;
@@ -463,6 +468,7 @@
     font-family: $ashbury-light-italic;
   }
   .date{
+    font-family: $adelle-light;
     position: relative;
     margin-right: 10px;
     padding-right: 10px;
