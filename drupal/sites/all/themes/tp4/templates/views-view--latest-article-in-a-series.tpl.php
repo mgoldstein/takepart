@@ -32,6 +32,7 @@
   $term_id = $variables['view']->args[0];
   $term = taxonomy_term_load($term_id);
   $nid = $variables['view']->field['nid']->original_value;
+  $path = drupal_get_path_alias('node/'. $nid);
 ?>
 <div class="<?php print $classes; ?>">
   <?php print render($title_prefix); ?>
@@ -57,7 +58,7 @@
     </div>
   <?php endif; ?>
 
-  <a class="column-block" href="node/<?php print $nid; ?>">
+  <a class="column-block" href="<?php print $path; ?>">
   <?php print '<div class="column-title">'. $term->name. '</div>'; ?>
   <?php if ($rows): ?>
     <div class="view-content">

@@ -98,7 +98,12 @@ body {
         @include breakpoint($breakpoint-desktop){
           @include zen-grid-item(6, 1);
           @include zen-clear(none);
-          padding: 0;
+          //removed fluidity from Desktop to tablet
+          -moz-box-sizing: content-box;
+          -webkit-box-sizing: content-box;
+          -ms-box-sizing: content-box;
+          box-sizing: content-box;
+          padding-right: 8px;
       }
     }
   }
@@ -110,7 +115,15 @@ body {
       @include zen-clear(none); // cancel clear
     }
     @include breakpoint($breakpoint-desktop) {
-      @include zen-grid-item(4, 9);
+      //removed fluidity from Desktop to tablet
+      width: 300px;
+      float: right;
+      padding-right: 0px;
+      margin: 0;
+      -moz-box-sizing: content-box;
+      -webkit-box-sizing: content-box;
+      -ms-box-sizing: content-box;
+      box-sizing: content-box;
     }
   }
 

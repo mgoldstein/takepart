@@ -102,7 +102,10 @@
 	margin-bottom: 20px;
 	&:before{
 		content: 'Advertisement';
-		color: gray;
+		text-transform: uppercase;
+		font-family: $adelle-regular;
+		font-size: 11px;
+		color: #949494;
 		width: 100%;
 		text-align: center;
 		display: block;
