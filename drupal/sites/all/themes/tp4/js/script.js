@@ -5,6 +5,14 @@
 
 (function ($, Drupal, window, document, undefined) {
 
+$(window).bind('tp-social-share', function(e, args) {
+	takepart.analytics.track('tp-social-share', args);
+});
+
+$(window).bind('tp-social-click', function(e, args) {
+	takepart.analytics.track('tp-social-click', args);
+});
+
 /**
  * Megamenu Behaviors
  */

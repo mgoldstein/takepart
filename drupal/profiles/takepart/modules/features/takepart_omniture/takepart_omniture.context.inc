@@ -84,15 +84,11 @@ s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.eVar17 = [tp_omniture:value_or_empty:{node:field_author}]
 s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
-s.eVar18 = [tp_omniture:str_decode:{node:title}]
-s.eVar19 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
 s.prop20 = [tp_omniture:value_or_empty:{node:field_topic}]
-s.eVar21 = [tp_omniture:value_or_empty:{node:field_topic}]
-s.prop43 = [tp_omniture:campaign_context:{node:nid}]
-s.eVar43 = [tp_omniture:campaign_context:{node:nid}]',
+s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
+
     ),
   );
   $context->condition_mode = 0;
@@ -249,12 +245,20 @@ s.eVar11 = Logged_In',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
+<<<<<<< HEAD
       'variables' => 's.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
 s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
 s.prop7 = [current-user:uid]',
+=======
+      'variables' => 's.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]',
+>>>>>>> epic/771-homepage-redesign
     ),
   );
   $context->condition_mode = 1;
