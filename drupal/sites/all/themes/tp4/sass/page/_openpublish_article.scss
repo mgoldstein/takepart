@@ -244,6 +244,14 @@
     // pullquote styling
     q.pull-quote {
       display: block;
+      float: left;
+      width: 45%;
+      margin: 0 5% .875em 0;
+      border-top: 1px solid $gray-line;
+      border-bottom: 1px solid $gray-line;
+      font: normal 1.714285714em/1.5 $ashbury-light-italic;
+      padding: .875em 0;
+      quotes: "" "" "" "";
     }
 
     // blockquote styling
