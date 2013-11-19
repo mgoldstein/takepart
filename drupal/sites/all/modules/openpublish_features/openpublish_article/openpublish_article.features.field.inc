@@ -750,8 +750,8 @@ function openpublish_article_field_default_fields() {
       'bundle' => 'openpublish_article',
       'default_value' => array(
         0 => array(
-          'type' => 'image',
-          'settings' => 'a:2:{s:11:"image_style";s:20:"landscape_main_image";s:10:"image_link";s:0:"";}',
+	  'type' => 'media',
+	  'settings' => 'a:1:{s:14:"file_view_mode";s:9:"landscape";}',
         ),
       ),
       'deleted' => '0',

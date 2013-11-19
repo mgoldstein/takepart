@@ -49,17 +49,8 @@
 
 
   <div id="article-content">
-    <?php if ($main_image_image) : ?>
-    <figure class="article-main-image">
-      <?php print $main_image_image; ?>
-      <?php if ($main_image_caption) : ?>
-      <figcaption>
-	<?php print $main_image_caption; ?>
-      </figcaption>
-      <?php endif; ?>
-    </figure>
-    <?php endif; ?>
 
+  <?php print render($content['field_article_main_image']); ?>
   <?php print render($content['field_author']); ?>
 
   <?php
@@ -89,8 +80,10 @@
       <?php print render($content['field_free_tag']); ?>
     </ul>
 
+<!--
     <h3 class="top-border">Takepart&#8217;s Most Popular</h3>
     <p>EMBED GOES HERE</p>
+-->
     <?php print render($on_our_radar); ?>
   </footer>
 
