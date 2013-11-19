@@ -31,10 +31,10 @@
    }
 ?>
 <div class="author-bio">
-  <div class="date"><?php print date('F d, Y',$entity->created) ?></div>
-  <div class="byline author <?php print $variables['classes']?>" <?php print $variables['attributes']?>>
+  <span class="date"><?php print date('F d, Y',$entity->created) ?></span>
+  <span class="byline author <?php print $variables['classes']?>" <?php print $variables['attributes']?>>
     By <?php print $authors; ?>
-  </div>
+  </span>
   <div class="bio-inner">
     <div class="profile-photo"><img src="<?php print $thumb_src; ?>"></div>
     <div class="bio">

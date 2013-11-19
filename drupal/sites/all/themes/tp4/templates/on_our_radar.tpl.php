@@ -10,8 +10,6 @@
   <?php print render($title_prefix); ?>
   <h3<?php print $title_attributes; ?>>From The Web</h3>
   <?php print render($title_suffix); ?>
-    <p>EMBED GOES HERE</p>
-
     <ol>
       <?php foreach ( $links as $link ) : ?>
 	<?php if ( $link['title'] ) : ?>
