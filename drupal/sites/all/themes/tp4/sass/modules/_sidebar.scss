@@ -2,13 +2,16 @@
  * Styles for TP4 Sidebar Blocks
  */
 
+#sidebar {
+	.block-title {
+		text-transform: lowercase;
+	}
+}
+
 //
 // Newsletter Signup Block
 //
 .block-newsletter-campaign {
-	.block-title {
-		text-transform: lowercase;
-	}
 
 	.message {
 		margin: .75em 0;
@@ -116,6 +119,42 @@
 	}
 }
 
-
-
+#block-bean-of-the-day {
+	.block-title {
+		@include header-top-border();
+	}
+	.of-the-day-item {
+		@include clearfix;
+		margin-bottom: 1em;
+		a {
+			&:hover {
+				text-decoration: none;
+				.node-title {
+					text-decoration: underline;
+				}
+			}
+		}
+		img {
+			float: left;
+			margin-right: 1em;
+		}
+		.subhead {
+			font: normal .857142857em/1.5 $adelle-light;
+			line-height: 1.5;
+			margin: 1em 0 0;
+			text-transform: uppercase;
+		}
+		.node-title {
+			font-size: 1em;
+			line-height: 1.285714286;
+			font-weight: normal;
+			margin: 0;
+			@include dashed-separator-after;
+			&:after {
+				// TODO Debug why the dashed separator doesn't obey the float
+				margin-left: 114px;
+			}
+		}
+	}
+}
 

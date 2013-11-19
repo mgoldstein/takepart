@@ -326,7 +326,93 @@ function tp4_field__field_author__openpublish_article($variables) {
   return $output;
 }
 
+function tp4_field__field_article_subhead__openpublish_article($variables) {
+  $output = '';
+
+  // Render the items.
+  $output .= '<span class="field-items"' . $variables['content_attributes'] . '>';
+  foreach ($variables['items'] as $delta => $item) {
+    $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+    $output .= '<span class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</span>';
+  }
+  $output .= '</span>';
+
+  // Render the top-level DIV.
+  $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</h2>';
+
+  return $output;
+}
 
 
 
 
+
+/**
+ * Implements template_preprocess_entity().
+ *
+ * This is legacy code from chunkpart to make the "more on our site" bean work
+ */
+function tp4_preprocess_entity(&$variables, $hook) {
+
+  $variables["custom_render"] = array();
+
+  switch ($variables['entity_type']) {
+    case "bean":
+      if ($variables['bean']->{'type'} == "of_the_day") {
+	//Look for a tpl file called bean--of-the-day-custom.tpl.php:
+	$variables['theme_hook_suggestions'][] = 'bean__of_the_day_custom';
+
+	for ($i = 0; $i <= sizeof($variables['elements']['field_listing_collection']); $i++) {
+	  $listing = $variables['elements']['field_listing_collection'][$i];
+	  $collection = $listing['entity']['field_collection_item'];
+
+	  foreach ($collection as $key => $collectiondata) {
+
+	    $acnid = $collectiondata['field_associated_content']['#items'][0]['nid'];
+	    $node  = node_load($acnid);
+
+	    if ($node->status == 1) {
+
+	      $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
+
+	      if ($node->type == 'openpublish_article') {
+		$main_image = field_get_items('node', $node, 'field_thumbnail');
+	      }
+	      if ($node->type == 'action') {
+		$main_image = field_get_items('node', $node, 'field_action_main_image');
+	      }
+	      if ($node->type == 'openpublish_photo_gallery') {
+		//field_gallery_main_image would also work here:
+		$main_image = field_get_items('node', $node, 'field_gallery_images');
+	      }
+	      if ($node->type == 'openpublish_video') {
+		$main_image = field_get_items('node', $node, 'field_thumbnail');
+	      }
+	      if (isset($main_image[0]['fid'])) {
+		$img_url = file_load($main_image[0]['fid']);
+		$img_alt = field_get_items('file', $img_url, 'field_media_alt');
+		$variables['custom_render'][$key]['thumbnail_alt'] = $img_alt[0]['safe_value'];
+		if (isset($img_url->{'uri'})) {
+		  $variables['custom_render'][$key]['thumbnail'] = image_style_url('thumbnail_v2', $img_url->{'uri'});
+		}
+	      }
+
+	      $types = node_type_get_types();
+	      if (isset($types[$node->type]->{'name'})) {
+		$variables['custom_render'][$key]['type'] = $types[$node->type]->{'name'};
+	      }
+
+	      $variables['custom_render'][$key]['title'] = field_get_items('node', $node, 'field_promo_headline');
+
+	      if ((isset($node->{'title'})) && (!isset($variables['custom_render'][$key]['title']))) {
+		$variables['custom_render'][$key]['title'] = $node->{'title'};
+	      }
+
+	      $variables['custom_render'][$key]['url'] = url('node/' . $node->nid);
+	    }
+	  }
+	}
+      }
+    break;
+  }
+}

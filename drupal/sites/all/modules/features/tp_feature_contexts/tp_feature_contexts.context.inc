@@ -135,6 +135,48 @@ function tp_feature_contexts_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'tp4_article';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+	'openpublish_article' => 'openpublish_article',
+      ),
+      'options' => array(
+	'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+	'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+	'bean--of-the-day' => array(
+	  'module' => 'bean',
+	  'delta' => '-of-the-day',
+	  'region' => 'sidebar',
+	  'weight' => '-2',
+	),
+	'boxes-box-18786b90' => array(
+	  'module' => 'boxes',
+	  'delta' => 'box-18786b90',
+	  'region' => 'sidebar',
+	  'weight' => '-1',
+	),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+  $export['tp4_article'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tp4_global';
   $context->description = '';
   $context->tag = '';
