@@ -109,7 +109,7 @@ function takepart_contact_us_form_submit($form, &$form_state) {
     $response = zendesk_forms_api_call(array('ticket' => $ticket), 'tickets.json');
     if (!isset($response->error)) {
         // drupal_set_message(t('Your message has been sent'));
-        $form_state['redirect'] = 'thank-you';
+        $form_state['redirect'] = 'contact-us/thank-you';
     } else {
         drupal_set_message(t('An error happened while sending the message.'), 'error');
     }
