@@ -52,6 +52,30 @@ function article_type_field_default_fields() {
           'type' => 'text_default',
           'weight' => 0,
         ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'of_the_day' => array(
           'label' => 'above',
           'settings' => array(),
@@ -126,6 +150,30 @@ function article_type_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '4',
+        ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'of_the_day' => array(
           'label' => 'hidden',
@@ -224,6 +272,30 @@ function article_type_field_default_fields() {
           'settings' => array(),
           'type' => 'text_default',
           'weight' => 2,
+        ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'of_the_day' => array(
           'label' => 'above',
@@ -337,6 +409,30 @@ function article_type_field_default_fields() {
           'type' => 'node_reference_default',
           'weight' => 3,
         ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'of_the_day' => array(
           'label' => 'above',
           'settings' => array(),
@@ -425,6 +521,30 @@ function article_type_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '10',
         ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'of_the_day' => array(
           'label' => 'above',
           'settings' => array(),
@@ -507,6 +627,30 @@ function article_type_field_default_fields() {
           'type' => 'text_default',
           'weight' => 1,
         ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'of_the_day' => array(
           'label' => 'above',
           'settings' => array(),
@@ -588,6 +732,30 @@ function article_type_field_default_fields() {
           'type' => 'text_default',
           'weight' => 5,
         ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'of_the_day' => array(
           'label' => 'hidden',
           'module' => 'text',
@@ -668,6 +836,30 @@ function article_type_field_default_fields() {
           'type' => 'text_default',
           'weight' => 6,
         ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'of_the_day' => array(
           'label' => 'above',
           'settings' => array(),
@@ -738,6 +930,7 @@ function article_type_field_default_fields() {
           'blog_front' => 0,
           'feed' => 0,
           'feed_item' => 0,
+          'mos_action' => 0,
           'openpublish_article' => 'openpublish_article',
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -779,6 +972,30 @@ function article_type_field_default_fields() {
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => 14,
+        ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'of_the_day' => array(
           'label' => 'above',
@@ -869,6 +1086,30 @@ function article_type_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => '8',
         ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'of_the_day' => array(
           'label' => 'above',
           'settings' => array(),
@@ -898,7 +1139,9 @@ function article_type_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
         'weight' => '13',
       ),
@@ -954,6 +1197,30 @@ function article_type_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => 12,
         ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'of_the_day' => array(
           'label' => 'above',
           'settings' => array(),
@@ -983,7 +1250,9 @@ function article_type_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
         'weight' => '4',
       ),
@@ -1021,6 +1290,7 @@ function article_type_field_default_fields() {
           'blog_front' => 0,
           'feed' => 0,
           'feed_item' => 0,
+          'mos_action' => 'mos_action',
           'openpublish_article' => 0,
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -1062,6 +1332,30 @@ function article_type_field_default_fields() {
           'settings' => array(),
           'type' => 'node_reference_default',
           'weight' => '11',
+        ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'of_the_day' => array(
           'label' => 'above',
@@ -1111,7 +1405,14 @@ function article_type_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_thumbnail',
-      'foreign keys' => array(),
+      'foreign keys' => array(
+        'file_managed' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -1137,6 +1438,30 @@ function article_type_field_default_fields() {
           ),
           'type' => 'image',
           'weight' => '7',
+        ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'of_the_day' => array(
           'label' => 'above',
@@ -1239,6 +1564,30 @@ function article_type_field_default_fields() {
           'type' => 'taxonomy_term_reference_link',
           'weight' => 9,
         ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'of_the_day' => array(
           'label' => 'above',
           'settings' => array(),
@@ -1268,7 +1617,9 @@ function article_type_field_default_fields() {
       'widget' => array(
         'active' => 1,
         'module' => 'options',
-        'settings' => array(),
+        'settings' => array(
+          'content_taxonomy_opt_groups' => FALSE,
+        ),
         'type' => 'options_select',
         'weight' => '2',
       ),
@@ -1323,6 +1674,30 @@ function article_type_field_default_fields() {
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
           'weight' => 13,
+        ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
         ),
         'of_the_day' => array(
           'label' => 'above',
