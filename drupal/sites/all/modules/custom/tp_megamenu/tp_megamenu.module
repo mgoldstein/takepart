@@ -122,7 +122,7 @@ function tp_megamenu_megamenu(){
           else{
             $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
             $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
-            $text = l($node->field_promo_headline['und'][0]['value'], $node_path);
+            $text = $node->field_promo_headline['und'][0]['value'];
             $label = $term->name;
             $label_path = drupal_get_path_alias('taxonomy/term/'. $term->tid);
           }
@@ -141,7 +141,7 @@ function tp_megamenu_megamenu(){
             $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
             $label = $node->title;
             $label_path = drupal_get_path_alias('node/'. $node->nid);
-            $text = l($node->field_promo_headline['und'][0]['value'], $node_path);
+            $text = $node->field_promo_headline['und'][0]['value'];
           }
         }
         
@@ -154,11 +154,11 @@ function tp_megamenu_megamenu(){
         }
 
         //Output subcategories based on input from menu link ID field
-        $output .= '<div class="sub-category">';
-        $output .= '<div class="thumb">'. l($thumb, $node_path, array('html' => true)). '</div>';
-        $output .= '<div class="label">'. l($label, $label_path). '</div>';
+        $output .= '<a href="'. $node_path. '" class="sub-category">';
+        $output .= '<div class="thumb">'. $thumb. '</div>';
+        $output .= '<div class="label">'. $label. '</div>';
         $output .= '<div class="text">'. $text. '</div>';
-        $output .= '</div>'; //end .sub-category
+        $output .= '</a>'; //end .sub-category
 
       }
       $output .= '</div>'; //end .categories

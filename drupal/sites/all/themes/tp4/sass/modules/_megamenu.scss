@@ -169,6 +169,12 @@
               .text{
                 font-family: $ashbury-light;
               }
+              &:hover{
+                text-decoration: none;
+                .text{
+                  text-decoration: underline;
+                }
+              }
             }
             @include breakpoint($breakpoint-desktop){
               &:last-child{
