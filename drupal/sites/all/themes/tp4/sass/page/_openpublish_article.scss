@@ -2,12 +2,6 @@
 @import "tp-social/*.png";
 @import "tp-social-more/*.png";
 
-body.page-node.node-type-openpublish-article {
-  #preface {
-    min-height: 25px;
-  }
-}
-
 .node-openpublish-article.view-mode-full {
 
   //
@@ -429,7 +423,7 @@ body.page-node.node-type-openpublish-article {
     } // .topic-links
     .on-our-radar {
       h3 {
-        @include header-top-border;
+        text-transform: lowercase;
       }
       ol {
 	li {
