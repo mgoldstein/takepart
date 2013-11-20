@@ -174,6 +174,19 @@ $(function() {
         };
         geoip2.country(handleRegion, showBlocked);
       });
-    }
+    },
+    attach: function(context, settings) {
+	    //Toggle search on mobile
+	    $('html').click(function() {
+	      $('.search-toggle').parent().removeClass('active');
+	    });
+
+	    $('.search-toggle').parent().click(function(event){
+	        event.stopPropagation();
+	        $(this).addClass('active');
+	    });
+	  }
   };
 })(jQuery, Drupal, this, this.document);
+
+
