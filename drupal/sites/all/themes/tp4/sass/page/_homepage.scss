@@ -423,6 +423,15 @@ body.front{
     }
     @include breakpoint($breakpoint-desktop){
       text-align: center;
+      .inner{
+        .text{
+            vertical-align: middle;
+          img{
+            vertical-align: middle;
+            padding-bottom: 3px;
+          }
+        }
+      }
     }
  }
 /*
