@@ -6,7 +6,7 @@
   <div class="footer-menu">
     <span class="footer-title">films</span>
     <?php print drupal_render(menu_tree('menu-takepart-film-campaigns')); ?>
-    <div class="more"><?php print l('More films', '/films', array('attributes' => array('class' => array('more')))); ?></a></div>
+    <div class="more"><?php print l('More films', 'film-campaigns', array('attributes' => array('class' => array('more')))); ?></a></div>
   </div>
   <div class="footer-menu">
     <span class="footer-title">about takepart</span>

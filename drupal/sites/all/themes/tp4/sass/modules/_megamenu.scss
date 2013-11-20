@@ -19,6 +19,21 @@
       width: 20%;
       border-top: 1px solid #000;
       border-bottom: 2px solid #000;
+      &:nth-child(1){
+        width: 17%;
+      }
+      &:nth-child(2){
+        width: 15%;
+      }
+      &:nth-child(3){
+        width: 25%;
+      }
+      &:nth-child(4){
+        width: 20%;
+      }
+      &:nth-child(5){
+        width: 23%;
+      }
       &:first-child{
         padding: 0;
       }
@@ -32,7 +47,7 @@
       .title{
         @include breakpoint($breakpoint-tablet){
           font-family: $tradegothic-regular;
-          font-size: 18px;
+          font-size: 22px;
           text-transform: uppercase;
           white-space: nowrap;
           text-align: center;
@@ -62,7 +77,6 @@
             float: left;
             background: image-url('tpl-logo.jpg') no-repeat center center;
             margin: 0;
-            background-size: 90%;
           }
           a.takeaction-logo{
             width: 100%;
