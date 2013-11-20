@@ -56,7 +56,14 @@ googletag.cmd.push(function()
 	global $base_url;
 ?>
 <div id="page-wrapper" class="campaign foodinc">
-	<?php print ($base_url == 'https://foodinc.takepart.com' || $is_https != NULL ? '' : render($header)); ?>
+	<?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
+    <?php print ''; ?>
+  <?php else: ?>
+  <div class="slimnav responsive">
+    <?php $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav'); ?>
+    <?php print $slimnav['content']; ?>
+  </div>
+  <?php endif; ?>
 
 
 	<div class="page-wrap" data-fb-share="<?php print w('foodinc_facebook_share')->single; ?>">
@@ -86,10 +93,18 @@ googletag.cmd.push(function()
 	</div><!-- /.page-wrap -->
 
 	<!-- end -->
-
-	<?php print ($base_url == 'https://foodinc.takepart.com' || $is_https != NULL ? '' : render($footer)); ?>
-
 </div>
+	<?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
+    <?php print ''; ?>
+  <?php else: ?>
+    <div class="footer-wrapper responsive"> 
+      <footer>
+        <?php $footer = module_invoke('tp4_support', 'block_view', 'tp4_footer'); ?>
+        <?php print $footer['content']; ?>
+      </footer>
+    </div>
+  <?php endif; ?>
+
 <!-- /place in the <body> to display the 300x250 ad -->
 <!-- place in the <body> to display the background skin ad -->
 <!-- TP3_ROS_Background_1x1 -->

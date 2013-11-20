@@ -1,5 +1,8 @@
 <div id="page-wrapper" class="campaign">
-	<?php print $header ?>
+		  <div class="slimnav responsive mobile-only">
+    <?php $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav'); ?>
+    <?php print $slimnav['content']; ?>
+  </div>
 
 	<!-- start -->
 
@@ -40,5 +43,10 @@
 
 	<!-- end -->
 
-	<?php print $footer ?>
+</div>
+<div class="footer-wrapper non-responsive"> 
+  <footer>
+    <?php $footer = module_invoke('tp4_support', 'block_view', 'tp4_footer'); ?>
+    <?php print $footer['content']; ?>
+  </footer>
 </div>
