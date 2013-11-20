@@ -43,4 +43,5 @@ stylesheets[print][] = css/print.css
 stylesheets[all][] = css/responsive.css
 
 ;-------------- JS -------------
+scripts[] = js/snap.js
 scripts[] = js/script.js

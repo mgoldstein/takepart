@@ -233,7 +233,6 @@ function tp4_support_slim_nav(){
   global $base_url;
   global $user;
   drupal_add_css(drupal_get_path('module', 'tp4_support'). '/css/tp4_support.css', array());
-  drupal_add_js(drupal_get_path('module', 'tp4_support'). '/js/slimnav.js', array());
   $logo = $base_url. '/'. drupal_get_path('theme', 'tp4'). '/images/takepart_logo.png';
   if($user->uid == 0){
     $user_links = array();
