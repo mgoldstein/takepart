@@ -1,7 +1,13 @@
 /* http://csssprites.org/ */ /** sprite: mysprite; sprite-image: url('style-sprite.png'); sprite-layout: vertical; sprite-margin-right: 10px; sprite-margin-bottom: 10px; */
 
-/* Header */
+body.page-iframes-header{
+	border-bottom: none;
+}
+body.page-iframes-footer{
+	border-top: none;
+}
 
+/* Header */
 #site-header {
 	padding: 1em 0 0 0;
 	display: inline-block; *display: inline; zoom: 1;
