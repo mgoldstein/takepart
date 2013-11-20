@@ -276,8 +276,13 @@ body.front{
       behavior: $pie-behavior;
     }
     .line{
-      border-bottom: 1px solid $blue;
-      margin: 0 13px;
+      @include breakpoint($breakpoint-mobile){
+        border-bottom: 1px solid $blue;
+        margin: 0;
+      }
+      @include breakpoint($breakpoint-desktop){
+        margin: 0 13px;
+      }
 
     }
     .views-field-field-profile-photo{
@@ -332,6 +337,14 @@ body.front{
     a.more{
       text-align: left;
       display: block;
+      @include breakpoint($breakpoint-mobile){
+      }
+      @include breakpoint($breakpoint-tablet){
+        margin-top: 25px;
+      }
+      @include breakpoint($breakpoint-desktop){
+        margin-top: 0;
+      }
       &:hover{
         text-decoration: underline;
       }
@@ -452,6 +465,13 @@ body.front{
   }
 }
 
-
+    .megaphone{
+      display: block;
+      margin: 0 auto;
+      width: 33px;
+      height: 23px;
+      background: image-url('megaphone.jpg') no-repeat;
+      padding-bottom: 5px;
+    }
 
 
