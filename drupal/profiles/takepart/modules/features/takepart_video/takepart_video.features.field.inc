@@ -538,6 +538,123 @@ function takepart_video_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-openpublish_video-field_promo_short_headline'.
+  $fields['node-openpublish_video-field_promo_short_headline'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_promo_short_headline',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'openpublish_video',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 23,
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_promo_short_headline',
+      'label' => 'Promo Short Headline',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '5',
+      ),
+    ),
+  );
+
   // Exported field: 'node-openpublish_video-field_promo_text'.
   $fields['node-openpublish_video-field_promo_text'] = array(
     'field_config' => array(
@@ -2232,6 +2349,7 @@ function takepart_video_field_default_fields() {
   t('HTML title tag');
   t('Main Image');
   t('Promo Headline');
+  t('Promo Short Headline');
   t('Promo Text');
   t('Related Actions');
   t('Related Video');
