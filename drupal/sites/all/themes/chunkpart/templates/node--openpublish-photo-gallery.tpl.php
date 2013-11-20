@@ -220,8 +220,24 @@
 			</ul>
 		</nav>
 
-		<div class="OUTBRAIN" data-src="<?=_surl($node) ?>" data-widget-id="AR_5" data-ob-template="TakePart" ></div>
+		<!-- outbrain analytics snippet -->
+		<div class="OUTBRAIN" data-src="<?=_surl($node) ?>" data-widget-id="TR_1" data-ob-template="TakePart" ></div>
 		<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
+
+		<!-- taboola widgets -->
+		<h3 class="headline">Takepart's Most Popular</h3>
+		<div id='taboola-bottom-main-column-mix'></div>
+		<script type="text/javascript">
+		window._taboola = window._taboola || [];
+		_taboola.push({mode:'thumbs-1r-organic', container:'taboola-bottom-main-column-mix', placement:'bottom-main-column', target_type:'mix'});
+		</script>
+
+		<h3 class="headline">from the web</h3>
+		<div id='taboola-below-main-column'></div>
+		<script type="text/javascript">
+		window._taboola = window._taboola || [];
+		_taboola.push({mode:'thumbs-1r', container:'taboola-below-main-column', placement:'below-main-column'});
+		</script>
 
 		<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
 			<?=render($node_region['bean_on-our-radar-block']) ?>
