@@ -17,6 +17,7 @@ firesass = false
 
 
 # Location of the theme's resources.
+fonts_dir       = "../../../../all/themes/tp4/fonts"
 css_dir         = "css"
 sass_dir        = "sass"
 extensions_dir  = "sass-extensions"
