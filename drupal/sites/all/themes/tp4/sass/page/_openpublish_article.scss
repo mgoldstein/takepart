@@ -2,6 +2,12 @@
 @import "tp-social/*.png";
 @import "tp-social-more/*.png";
 
+body.page-node.node-type-openpublish-article {
+  #preface {
+    min-height: 25px;
+  }
+}
+
 .node-openpublish-article.view-mode-full {
 
   //
@@ -181,6 +187,7 @@
   .field-name-field-article-main-image {
     @include breakpoint($breakpoint-desktop) {
       figure {
+	margin-bottom: 30px;
         &.portrait {
           float: left;
           width: 400px;
@@ -519,6 +526,7 @@
         display: inline-block;
         vertical-align: middle;
         margin-left: 5px;
+	@include transform(scale(.791666667));
       }
     }
   }
