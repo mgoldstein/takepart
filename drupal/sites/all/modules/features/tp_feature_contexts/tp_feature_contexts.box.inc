@@ -13,6 +13,20 @@ function tp_feature_contexts_default_box() {
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'bg_skin_sponsor';
+  $box->plugin_key = 'ga_ad';
+  $box->title = '';
+  $box->description = 'GA: ROS Background Take-over';
+  $box->options = array(
+    'ga_ad_slot' => 'TP3_ROS_Background_1x1',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1371853059233-0',
+    'additional_classes' => '',
+  );
+  $export['bg_skin_sponsor'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'box-18786b90';
   $box->plugin_key = 'simple';
   $box->title = 'TakePart Video';
@@ -52,7 +66,7 @@ function tp_feature_contexts_default_box() {
     playlist: "http://video.takepart.com/jw6/Y0y8DVG4.xml",
     plugins: {
       "http://a.jwpcdn.com/player/6/653609/ping.js": {
-	"pixel": "http://video.takepart.com/ping.gif"
+        "pixel": "http://video.takepart.com/ping.gif"
       }
     },
     primary: "flash",

@@ -19,6 +19,7 @@ dependencies[] = takepart_custom
 dependencies[] = takepart_gallery
 dependencies[] = tp4_support
 dependencies[] = views
+features[box][] = bg_skin_sponsor
 features[box][] = box-18786b90
 features[box][] = ga_homepage_top_right
 features[context][] = homepage

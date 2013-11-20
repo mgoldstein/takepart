@@ -80,6 +80,12 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'suffix',
           'weight' => '-10',
         ),
+        'boxes-bg_skin_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'bg_skin_sponsor',
+          'region' => 'suffix',
+          'weight' => '-9',
+        ),
       ),
     ),
   );
@@ -141,33 +147,39 @@ function tp_feature_contexts_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
-	'openpublish_article' => 'openpublish_article',
+        'openpublish_article' => 'openpublish_article',
       ),
       'options' => array(
-	'node_form' => '1',
+        'node_form' => '1',
       ),
     ),
     'theme' => array(
       'values' => array(
-	'tp4' => 'tp4',
+        'tp4' => 'tp4',
       ),
     ),
   );
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-	'bean--of-the-day' => array(
-	  'module' => 'bean',
-	  'delta' => '-of-the-day',
-	  'region' => 'sidebar',
-	  'weight' => '-2',
-	),
-	'boxes-box-18786b90' => array(
-	  'module' => 'boxes',
-	  'delta' => 'box-18786b90',
-	  'region' => 'sidebar',
-	  'weight' => '-1',
-	),
+        'bean--of-the-day' => array(
+          'module' => 'bean',
+          'delta' => '-of-the-day',
+          'region' => 'sidebar',
+          'weight' => '-2',
+        ),
+        'boxes-box-18786b90' => array(
+          'module' => 'boxes',
+          'delta' => 'box-18786b90',
+          'region' => 'sidebar',
+          'weight' => '-1',
+        ),
+        'boxes-bg_skin_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'bg_skin_sponsor',
+          'region' => 'suffix',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
