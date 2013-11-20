@@ -51,7 +51,7 @@ body {
 	min-height: 100%;
 }
 #page-wrapper{
-	width: 49em;
+	max-width: 49em;
 	margin: auto;
 	position: relative;
 }

@@ -2279,19 +2279,79 @@ footer .footer-bottom {
   border-bottom: 2px solid #000;
 }
 @media all and (min-width: 320px) {
-  /* line 13, ../sass/_slimnav.scss */
+  /* line 4, ../sass/_slimnav.scss */
+  .slimnav {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 4, ../sass/_slimnav.scss */
+  .slimnav {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 4, ../sass/_slimnav.scss */
+  .slimnav {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+/* line 25, ../sass/_slimnav.scss */
+.slimnav .left {
+  float: left;
+}
+@media all and (min-width: 320px) {
+  /* line 25, ../sass/_slimnav.scss */
+  .slimnav .left {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 25, ../sass/_slimnav.scss */
+  .slimnav .left {
+    width: 70%;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 25, ../sass/_slimnav.scss */
+  .slimnav .left {
+    width: auto;
+  }
+}
+/* line 38, ../sass/_slimnav.scss */
+.slimnav .right {
+  float: right;
+}
+@media all and (min-width: 768px) {
+  /* line 38, ../sass/_slimnav.scss */
+  .slimnav .right {
+    width: 30%;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 38, ../sass/_slimnav.scss */
+  .slimnav .right {
+    width: auto;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 47, ../sass/_slimnav.scss */
   .slimnav .block {
     margin-bottom: 0em;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 13, ../sass/_slimnav.scss */
+  /* line 47, ../sass/_slimnav.scss */
   .slimnav .block {
     margin-bottom: 1.5em;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 22, ../sass/_slimnav.scss */
+  /* line 56, ../sass/_slimnav.scss */
   .slimnav .menu-toggle {
     display: block;
     width: 20px;
@@ -2303,30 +2363,30 @@ footer .footer-bottom {
     margin-right: 10px;
     margin-top: 4px;
   }
-  /* line 33, ../sass/_slimnav.scss */
+  /* line 67, ../sass/_slimnav.scss */
   .slimnav .logo {
     float: left;
     width: 121px;
   }
-  /* line 36, ../sass/_slimnav.scss */
+  /* line 70, ../sass/_slimnav.scss */
   .slimnav .logo img {
     max-width: 100%;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 42, ../sass/_slimnav.scss */
+  /* line 76, ../sass/_slimnav.scss */
   .slimnav .menu-toggle {
     display: none;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 46, ../sass/_slimnav.scss */
+  /* line 80, ../sass/_slimnav.scss */
   .slimnav .follow-us {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 46, ../sass/_slimnav.scss */
+  /* line 80, ../sass/_slimnav.scss */
   .slimnav .follow-us {
     display: block;
     text-align: right;
@@ -2334,22 +2394,22 @@ footer .footer-bottom {
     padding-right: 39px;
     padding-top: 4px;
   }
-  /* line 56, ../sass/_slimnav.scss */
+  /* line 90, ../sass/_slimnav.scss */
   .slimnav .follow-us .text {
     display: inline-block;
     margin: 0 10px;
   }
-  /* line 59, ../sass/_slimnav.scss */
+  /* line 93, ../sass/_slimnav.scss */
   .slimnav .follow-us .text:before {
     content: '|';
     padding-right: 10px;
   }
-  /* line 64, ../sass/_slimnav.scss */
+  /* line 98, ../sass/_slimnav.scss */
   .slimnav .follow-us ul {
     margin-top: -5px;
     float: right;
   }
-  /* line 67, ../sass/_slimnav.scss */
+  /* line 101, ../sass/_slimnav.scss */
   .slimnav .follow-us ul li {
     float: left;
     list-style-type: none;
@@ -2359,13 +2419,13 @@ footer .footer-bottom {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 77, ../sass/_slimnav.scss */
+  /* line 111, ../sass/_slimnav.scss */
   .slimnav .user-menu {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 77, ../sass/_slimnav.scss */
+  /* line 111, ../sass/_slimnav.scss */
   .slimnav .user-menu {
     display: block;
     float: right;
@@ -2374,16 +2434,16 @@ footer .footer-bottom {
     font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 13px;
   }
-  /* line 88, ../sass/_slimnav.scss */
+  /* line 122, ../sass/_slimnav.scss */
   .slimnav .user-menu a {
     color: #5a5a5a;
   }
-  /* line 91, ../sass/_slimnav.scss */
+  /* line 125, ../sass/_slimnav.scss */
   .slimnav .user-menu li {
     display: inline-block;
     margin-right: 10px;
   }
-  /* line 94, ../sass/_slimnav.scss */
+  /* line 128, ../sass/_slimnav.scss */
   .slimnav .user-menu li:last-child {
     margin-right: 0px;
     padding-left: 10px;
@@ -2391,7 +2451,7 @@ footer .footer-bottom {
     position: relative;
     height: 20px;
   }
-  /* line 100, ../sass/_slimnav.scss */
+  /* line 134, ../sass/_slimnav.scss */
   .slimnav .user-menu li:last-child:before {
     content: '';
     height: 4px;
@@ -2403,7 +2463,7 @@ footer .footer-bottom {
     -webkit-border-radius: 4px;
     border-radius: 4px;
   }
-  /* line 111, ../sass/_slimnav.scss */
+  /* line 145, ../sass/_slimnav.scss */
   .slimnav .user-menu li:last-child:after {
     content: '|';
     position: absolute;
@@ -2411,21 +2471,21 @@ footer .footer-bottom {
     top: 0;
     color: #949494;
   }
-  /* line 120, ../sass/_slimnav.scss */
+  /* line 154, ../sass/_slimnav.scss */
   .slimnav .user-menu li:first-child:before {
     display: none;
   }
-  /* line 124, ../sass/_slimnav.scss */
+  /* line 158, ../sass/_slimnav.scss */
   .slimnav .user-menu li.user {
     position: relative;
   }
 }
-/* line 130, ../sass/_slimnav.scss */
+/* line 164, ../sass/_slimnav.scss */
 .slimnav .search {
   font-size: 13px;
 }
 @media all and (min-width: 320px) {
-  /* line 133, ../sass/_slimnav.scss */
+  /* line 167, ../sass/_slimnav.scss */
   .slimnav .search .form-item-keys-2 {
     display: none;
     margin-right: 10px;
@@ -2443,8 +2503,9 @@ footer .footer-bottom {
     top: 45px;
     right: 0;
     z-index: 9;
+    width: 100%;
   }
-  /* line 151, ../sass/_slimnav.scss */
+  /* line 186, ../sass/_slimnav.scss */
   .slimnav .search [type=text] {
     float: left;
     height: 20px;
@@ -2456,11 +2517,11 @@ footer .footer-bottom {
     text-indent: 6px;
     line-height: 21px;
   }
-  /* line 161, ../sass/_slimnav.scss */
+  /* line 196, ../sass/_slimnav.scss */
   .slimnav .search [type=text]:focus {
     outline: none;
   }
-  /* line 165, ../sass/_slimnav.scss */
+  /* line 200, ../sass/_slimnav.scss */
   .slimnav .search .form-submit {
     height: 48px;
     color: white;
@@ -2478,20 +2539,20 @@ footer .footer-bottom {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 182, ../sass/_slimnav.scss */
+  /* line 217, ../sass/_slimnav.scss */
   .slimnav .search .form-item-keys-2 {
     width: 420px;
     background-color: #fff;
     float: right;
   }
-  /* line 186, ../sass/_slimnav.scss */
+  /* line 221, ../sass/_slimnav.scss */
   .slimnav .search .form-item-keys-2 [type=text] {
     width: 400px;
   }
 }
 
 @media all and (min-width: 320px) {
-  /* line 195, ../sass/_slimnav.scss */
+  /* line 230, ../sass/_slimnav.scss */
   .search-toggle {
     display: block;
     position: absolute;
@@ -2503,7 +2564,7 @@ footer .footer-bottom {
     top: 0;
     cursor: pointer;
   }
-  /* line 205, ../sass/_slimnav.scss */
+  /* line 240, ../sass/_slimnav.scss */
   .search-toggle:before {
     position: absolute;
     top: 2px;
@@ -2523,23 +2584,23 @@ footer .footer-bottom {
     -ms-filter: "FlipH";
   }
 
-  /* line 225, ../sass/_slimnav.scss */
+  /* line 260, ../sass/_slimnav.scss */
   .search.active .form-item-keys-2 {
     display: block;
   }
-  /* line 228, ../sass/_slimnav.scss */
+  /* line 263, ../sass/_slimnav.scss */
   .search.active .search-toggle {
     display: none;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 245, ../sass/_slimnav.scss */
+  /* line 280, ../sass/_slimnav.scss */
   #main-menu {
     display: none;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 245, ../sass/_slimnav.scss */
+  /* line 280, ../sass/_slimnav.scss */
   #main-menu {
     display: block;
     box-sizing: border-box;
@@ -2553,18 +2614,20 @@ footer .footer-bottom {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 245, ../sass/_slimnav.scss */
+  /* line 280, ../sass/_slimnav.scss */
   #main-menu {
     clear: none;
     padding-left: 20px;
+    line-height: 26px;
+    padding-top: 0;
   }
 }
-/* line 263, ../sass/_slimnav.scss */
+/* line 300, ../sass/_slimnav.scss */
 #main-menu li {
   width: 20%;
   float: left;
   font-family: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
-  font-size: 18px;
+  font-size: 17px;
   text-transform: uppercase;
   white-space: nowrap;
   text-align: center;
@@ -2575,18 +2638,18 @@ footer .footer-bottom {
   list-style-image: none;
   list-style-type: none;
 }
-/* line 277, ../sass/_slimnav.scss */
+/* line 314, ../sass/_slimnav.scss */
 #main-menu li a {
   color: #000;
   position: relative;
   width: 100%;
   display: block;
 }
-/* line 282, ../sass/_slimnav.scss */
+/* line 319, ../sass/_slimnav.scss */
 #main-menu li a:hover {
   text-decoration: none;
 }
-/* line 285, ../sass/_slimnav.scss */
+/* line 322, ../sass/_slimnav.scss */
 #main-menu li a:after {
   content: '';
   border-right: 1px solid #cccccc;
@@ -2596,45 +2659,45 @@ footer .footer-bottom {
   right: 0;
   top: 0;
 }
-/* line 295, ../sass/_slimnav.scss */
+/* line 332, ../sass/_slimnav.scss */
 #main-menu li:nth-child(1) {
   width: 17%;
   text-align: left;
 }
-/* line 299, ../sass/_slimnav.scss */
+/* line 336, ../sass/_slimnav.scss */
 #main-menu li:nth-child(2) {
   width: 15%;
 }
-/* line 302, ../sass/_slimnav.scss */
+/* line 339, ../sass/_slimnav.scss */
 #main-menu li:nth-child(3) {
   width: 30%;
 }
-/* line 305, ../sass/_slimnav.scss */
+/* line 342, ../sass/_slimnav.scss */
 #main-menu li:nth-child(4) {
   width: 19%;
 }
-/* line 308, ../sass/_slimnav.scss */
+/* line 345, ../sass/_slimnav.scss */
 #main-menu li:nth-child(5) {
   width: 19%;
   text-align: right;
 }
-/* line 311, ../sass/_slimnav.scss */
+/* line 348, ../sass/_slimnav.scss */
 #main-menu li:nth-child(5) a:after {
   border-right: none;
 }
 
 /* Show "Left" drawer for the "Right" drawer in the demo */
-/* line 325, ../sass/_slimnav.scss */
+/* line 362, ../sass/_slimnav.scss */
 .snap-drawers {
   display: none;
 }
 
-/* line 328, ../sass/_slimnav.scss */
+/* line 365, ../sass/_slimnav.scss */
 .snapjs-left .snap-drawers {
   display: block;
 }
 
-/* line 331, ../sass/_slimnav.scss */
+/* line 368, ../sass/_slimnav.scss */
 .snap-drawers {
   background: #000;
   color: #fff;
@@ -2644,7 +2707,7 @@ footer .footer-bottom {
   bottom: 0;
   left: 0;
 }
-/* line 339, ../sass/_slimnav.scss */
+/* line 376, ../sass/_slimnav.scss */
 .snap-drawers .snap-drawer {
   background: #000;
   position: fixed;
@@ -2662,11 +2725,11 @@ footer .footer-bottom {
   -o-transition: width 0.3s ease;
   transition: width 0.3s ease;
 }
-/* line 357, ../sass/_slimnav.scss */
+/* line 394, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu ul {
   border-bottom: 5px solid #646464;
 }
-/* line 359, ../sass/_slimnav.scss */
+/* line 396, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu ul li {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 13px;
@@ -2677,7 +2740,7 @@ footer .footer-bottom {
   line-height: 48px;
   text-transform: none;
 }
-/* line 371, ../sass/_slimnav.scss */
+/* line 408, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu > ul > li {
   font-family: "TradeGothicLTStdCnLight", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 20px;
@@ -2685,19 +2748,19 @@ footer .footer-bottom {
   border-bottom: none;
   font-weight: 100;
 }
-/* line 378, ../sass/_slimnav.scss */
+/* line 415, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu a {
   color: #fff;
   border-bottom: 1px solid #646464;
   display: block;
   width: 100%;
 }
-/* line 383, ../sass/_slimnav.scss */
+/* line 420, ../sass/_slimnav.scss */
 .snap-drawers #block-menu-menu-megamenu a:hover {
   text-decoration: none;
   background-color: #333;
 }
-/* line 389, ../sass/_slimnav.scss */
+/* line 426, ../sass/_slimnav.scss */
 .snap-drawers .scrollable {
   overflow: auto;
   -webkit-transition-property: top, bottom;
