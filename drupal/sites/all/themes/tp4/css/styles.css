@@ -4207,12 +4207,21 @@ body.front #sidebar .block-title {
   .promo {
     text-align: center;
   }
+  /* line 427, ../sass/page/_homepage.scss */
+  .promo .inner .text {
+    vertical-align: middle;
+  }
+  /* line 429, ../sass/page/_homepage.scss */
+  .promo .inner .text img {
+    vertical-align: middle;
+    padding-bottom: 3px;
+  }
 }
 
 /*
  *Graveyard
  */
-/* line 431, ../sass/page/_homepage.scss */
+/* line 440, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -4310,11 +4319,11 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 435, ../sass/page/_homepage.scss */
+/* line 444, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 437, ../sass/page/_homepage.scss */
+/* line 446, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;
