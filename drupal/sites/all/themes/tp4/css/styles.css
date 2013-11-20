@@ -3667,7 +3667,7 @@ body.front img {
 /* line 12, ../sass/page/_homepage.scss */
 body.front #sidebar .block-title {
   border-top: 4px solid #000;
-  padding-top: 0px;
+  padding-top: 5px;
 }
 
 /* line 25, ../sass/page/_homepage.scss */
@@ -4912,7 +4912,7 @@ body.front #sidebar .block-title {
 .node-openpublish-article.view-mode-full #article-footer h3.top-border,
 .node-openpublish-article.view-mode-full #article-comments h3.top-border {
   border-top: 4px solid #000;
-  padding-top: 0px;
+  padding-top: 5px;
 }
 /* line 382, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full #article-footer h3 span,
@@ -4976,8 +4976,7 @@ body.front #sidebar .block-title {
 }
 /* line 425, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full #article-footer .on-our-radar h3 {
-  border-top: 4px solid #000;
-  padding-top: 0px;
+  text-transform: lowercase;
 }
 /* line 429, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full #article-footer .on-our-radar ol li {
@@ -6626,7 +6625,7 @@ header .search {
 /* line 124, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .block-title {
   border-top: 4px solid #000;
-  padding-top: 0px;
+  padding-top: 5px;
 }
 /* line 127, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item {
@@ -6815,7 +6814,7 @@ header .search {
 /* line 121, ../sass/modules/_topic_features.scss */
 .section-topic .block-menu-block .block__title {
   border-top: 4px solid #000;
-  padding-top: 0px;
+  padding-top: 5px;
   text-transform: lowercase;
 }
 /* line 124, ../sass/modules/_topic_features.scss */

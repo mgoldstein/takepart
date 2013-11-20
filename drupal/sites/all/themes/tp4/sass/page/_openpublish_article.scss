@@ -423,7 +423,7 @@
     } // .topic-links
     .on-our-radar {
       h3 {
-        @include header-top-border;
+        text-transform: lowercase;
       }
       ol {
 	li {

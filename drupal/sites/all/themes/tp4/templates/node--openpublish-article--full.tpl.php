@@ -80,10 +80,14 @@
       <?php print render($content['field_free_tag']); ?>
     </ul>
 
-<!--
+
     <h3 class="top-border">Takepart&#8217;s Most Popular</h3>
-    <p>EMBED GOES HERE</p>
--->
+    <div id='taboola-bottom-main-column-mix'></div>
+    <script type="text/javascript">
+      window._taboola = window._taboola || [];
+      _taboola.push({mode:'thumbs-1r-organic', container:'taboola-bottom-main-column-mix', placement:'bottom-main-column', target_type:'mix'});
+    </script>
+
     <?php print render($on_our_radar); ?>
   </footer>
 
