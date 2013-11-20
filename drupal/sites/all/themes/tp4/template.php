@@ -65,6 +65,12 @@ function tp4_preprocess_page(&$variables) {
   if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article'))) {
     $variables['title'] = '';
   }
+
+  // add Taboola JS if we're on an article or photo gallery page
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'openpublish_photo_gallery'))) {
+    drupal_add_js(drupal_get_path('theme', 'tp4') . '/js/taboola.js', 'file');
+    drupal_add_js('window._taboola = window._taboola || []; _taboola.push({flush:true});', array('type' => 'inline', 'scope' => 'footer'));
+  }
 }
 
 /**
