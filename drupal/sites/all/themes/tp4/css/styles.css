@@ -3332,7 +3332,7 @@ tr.selected td {
 /* line 807, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1382751895');
+  background-image: url('../images/progress.gif?1384899685');
 }
 
 /* Page */
@@ -3792,12 +3792,12 @@ body.front #sidebar .block-title {
 /* line 149, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 140px;
-  background-image: url('../images/tpl-title.jpg?1382751895');
+  background-image: url('../images/tpl-title.jpg?1384899686');
 }
 /* line 153, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 252px;
-  background-image: url('../images/tpl-time.jpg?1382751895');
+  background-image: url('../images/tpl-time.jpg?1384899686');
 }
 
 /* line 160, ../sass/page/_homepage.scss */
@@ -4357,8 +4357,13 @@ body.front #sidebar .block-title {
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1384975157') no-repeat;
+  background: url('../images/megaphone.jpg?1384977433') no-repeat;
   padding-bottom: 5px;
+}
+
+/* line 477, ../sass/page/_homepage.scss */
+#div-gpt-ad-1376947900543-0 {
+  margin: 0 auto;
 }
 
 /* line 162, tp-social/*.png */
@@ -5224,6 +5229,11 @@ body.page-node.node-type-openpublish-article #preface {
   }
 }
 
+/* line 634, ../sass/page/_openpublish_article.scss */
+#1346089138325-0 {
+  margin: 0 auto;
+}
+
 @media all and (min-width: 320px) {
   /* line 4, ../sass/page/_topic_taxonomy.scss */
   body.page-taxonomy-term.section-topic .content ul.promo-content {
@@ -5406,7 +5416,7 @@ body.page-node.node-type-openpublish-article #preface {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1384975157') no-repeat center center;
+    background: url('../images/tpl-logo.jpg?1384977433') no-repeat center center;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -5416,7 +5426,7 @@ body.page-node.node-type-openpublish-article #preface {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.png?1384889510') no-repeat center center;
+    background: url('../images/takeaction-logo.png?1384899686') no-repeat center center;
     margin: 0;
   }
 }
@@ -5741,11 +5751,11 @@ body.page-node.node-type-openpublish-article #preface {
 }
 /* line 228, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1384889510');
+  background-image: url('../images/tpl-logo-hover.jpg?1384899686');
 }
 /* line 231, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-hover.jpg?1384889510');
+  background-image: url('../images/takeaction-logo-hover.jpg?1384899685');
 }
 
 /**
@@ -6280,7 +6290,7 @@ header {
   /* line 109, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1382978986') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1384899685') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -6342,7 +6352,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1383937447') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1384899685') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -6410,7 +6420,7 @@ header .search {
     border: 1px solid #ccc;
     border-left: none;
     background-color: #fff;
-    background: url('../images/search-submit.png?1382978986') no-repeat center center;
+    background: url('../images/search-submit.png?1384899685') no-repeat center center;
   }
 }
 
@@ -6423,7 +6433,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1383937447') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1384899685') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;

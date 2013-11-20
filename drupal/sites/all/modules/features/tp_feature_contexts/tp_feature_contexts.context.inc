@@ -178,7 +178,7 @@ function tp_feature_contexts_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'takepart',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-100',
         ),
         'bean--of-the-day' => array(
           'module' => 'bean',
