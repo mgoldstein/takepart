@@ -1,4 +1,4 @@
-(function(window, $, undefined) {
+(function($, Drupal, window, document, undefined) {
 
     var regions = {};
     // Only place it on internal urls
@@ -18,22 +18,27 @@
         }
     };
 
-    // Onload
-    $(function() {
-        // Add omniture region on mouseover/focus
-        $('body').delegate('a:not(.tplinkpos)', 'focus mouseover', function() {
-            var a = this;
-            var $a = $(this);
-            $a.addClass('tplinkpos');
-            // var is_local = (a.href.substring(0,4) === "http") ? relative_test.test(a.href) : true;
-            // if ( !is_local ) return;
+    /**
+     * Add omniture region on mouseover/focus.
+     */
+    Drupal.behaviors.addOmnitureRegion = {
+	attach: function() {
+	    $('body').delegate('a:not(.tplinkpos)', 'focus mouseover', function() {
+		var a = this;
+		var $a = $(this);
+		$a.addClass('tplinkpos');
+		// var is_local = (a.href.substring(0,4) === "http") ? relative_test.test(a.href) : true;
+		// if ( !is_local ) return;
 
-            for ( var pos in regions ) {
-                var sel = regions[pos];
-                if ( $a.is(sel + ' a') ) { 
-                    a.name += '&lpos=' + pos;
+		for ( var pos in regions ) {
+		    var sel = regions[pos];
+		    if ( $a.is(sel + ' a') ) {
+			a.name += '&lpos=' + pos;
+		    }
                 }
-            }
-        });
-    });
-})(window, jQuery);
+	    });
+	}
+    };
+
+
+})(jQuery, Drupal, this, this.document);
