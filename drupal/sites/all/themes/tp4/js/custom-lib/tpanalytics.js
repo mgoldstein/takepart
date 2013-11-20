@@ -1,11 +1,7 @@
-(function(window, undefined) {
+// define the takepart global object
+var takepart = takepart || {};
 
-// Setup ----------------
-
-if ( typeof takepart == 'undefined' ) {
-    window.takepart = {};
-    takepart = window.takepart;
-}
+(function(window, takepart, undefined) {
 
 //Analytics functions:
 takepart.analytics = takepart.analytics || {};
@@ -35,4 +31,4 @@ takepart.analytics.track = function(name, options) {
 	return e(options);
 };
 
-})(window);
+})(this, this.takepart);
