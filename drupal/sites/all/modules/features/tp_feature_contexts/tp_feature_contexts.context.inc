@@ -26,6 +26,12 @@ function tp_feature_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-ga_homepage_header' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_homepage_header',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',
@@ -74,17 +80,23 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-7',
         ),
+        'boxes-ga_homepage_bottom_right' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_homepage_bottom_right',
+          'region' => 'sidebar',
+          'weight' => '-6',
+        ),
         'tp4_support-tp4_graveyard' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_graveyard',
           'region' => 'suffix',
           'weight' => '-10',
         ),
-        'boxes-bg_skin_sponsor' => array(
+        'boxes-ga_hp_1x1_background' => array(
           'module' => 'boxes',
-          'delta' => 'bg_skin_sponsor',
+          'delta' => 'ga_hp_1x1_background',
           'region' => 'suffix',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -162,6 +174,12 @@ function tp_feature_contexts_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'bean--of-the-day' => array(
           'module' => 'bean',
           'delta' => '-of-the-day',
@@ -173,12 +191,6 @@ function tp_feature_contexts_context_default_contexts() {
           'delta' => 'box-18786b90',
           'region' => 'sidebar',
           'weight' => '-1',
-        ),
-        'boxes-bg_skin_sponsor' => array(
-          'module' => 'boxes',
-          'delta' => 'bg_skin_sponsor',
-          'region' => 'suffix',
-          'weight' => '-10',
         ),
       ),
     ),
@@ -253,17 +265,23 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-9',
         ),
+        'newsletter_campaign-49' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '49',
+          'region' => 'sidebar',
+          'weight' => '-8',
+        ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
           'weight' => '9',
         ),
-        'newsletter_campaign-49' => array(
-          'module' => 'newsletter_campaign',
-          'delta' => '49',
-          'region' => 'sidebar',
-          'weight' => '-8',
+        'boxes-bg_skin_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'bg_skin_sponsor',
+          'region' => 'suffix',
+          'weight' => '-10',
         ),
       ),
     ),
