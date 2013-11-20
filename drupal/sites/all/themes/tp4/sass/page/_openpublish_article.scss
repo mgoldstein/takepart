@@ -41,7 +41,7 @@
       .tp-social-link {
 	padding-left: 20px;
 	height: 16px;
-	@each $service in pinterest tumblr gmail hotmail yahoomail aolmail linkedin digg stumbleupon {
+	@each $service in pinterest tumblr_link gmail hotmail yahoomail aolmail linkedin digg stumbleupon {
 	  &.tp-social-#{$service} {
 	    @include tp-social-more-sprite(#{$service});
 	  }
