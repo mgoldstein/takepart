@@ -4366,6 +4366,11 @@ body.front #sidebar .block-title {
   padding-bottom: 5px;
 }
 
+/* line 477, ../sass/page/_homepage.scss */
+#div-gpt-ad-1376947900543-0 {
+  margin: 0 auto;
+}
+
 /* line 162, tp-social/*.png */
 .tp-social-sprite, .node-openpublish-article.view-mode-full #article-social .tp-social-comment, .node-openpublish-article.view-mode-full #article-social .tp-social-email, .node-openpublish-article.view-mode-full #article-social .tp-social-facebook, .node-openpublish-article.view-mode-full #article-social .tp-social-googleplus, .node-openpublish-article.view-mode-full #article-social .tp-social-more, .node-openpublish-article.view-mode-full #article-social .tp-social-reddit, .node-openpublish-article.view-mode-full #article-social .tp-social-takeaction, .node-openpublish-article.view-mode-full #article-social .tp-social-twitter, .node-openpublish-article.view-mode-full #article-social .comments-link a, .node-openpublish-article.view-mode-full #article-social .trigger a {
   background: url('../images/tp-social-sd3c8c9ca8a.png') no-repeat;
@@ -5221,6 +5226,11 @@ body.front #sidebar .block-title {
     position: fixed;
     top: 0;
   }
+}
+
+/* line 634, ../sass/page/_openpublish_article.scss */
+#1346089138325-0 {
+  margin: 0 auto;
 }
 
 @media all and (min-width: 320px) {
