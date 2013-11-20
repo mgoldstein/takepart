@@ -141,21 +141,10 @@ header{
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .3);
         -moz-box-sizing: border-box;
         box-sizing: border-box;
-        label {
-          height: auto;
-          overflow: hidden;
-          width: auto;
-          margin-right: 10px;
-          &.element-invisible{
-            display: inline-block;
-            float: left;
-            position: relative !important;
-          }
-        }
       }
       [type=text]{
         float: left;
-        height: 20px;
+        height: 24px;
         border: 1px solid #ccc;
         border-radius: 0;
         width: 100%;
@@ -163,6 +152,7 @@ header{
         color: #777;
         text-indent: 6px;
         line-height: 21px;
+        background: #fff;
         &:focus{
           outline: none;
         }
@@ -193,17 +183,41 @@ header{
         background-color: transparent;
         -webkit-box-shadow: none;
         box-shadow: none;
+        &:before{
+          content: "Search";
+          width: 45px;
+          height: 20px;
+          display: block;
+          left: 0;
+          bottom: 0;
+          position: absolute;
+          left: -45px;
+        }
       }
       [type=text]{
         border-right: none;
         width: 140px;
+        &::-webkit-input-placeholder {
+          opacity: 0;
+        }
+
+        &:-moz-placeholder { /* Firefox 18- */
+          opacity: 0;
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+          opacity: 0;
+        }
+
+:-ms-input-placeholder {  
+   color: red;  
+}
       }
       .form-submit{
         position: relative;
         display: block;
         float: left;
         width: 20px;
-        height: 20px;
+        height: 24px;
         border: 1px solid #ccc;
         border-left: none;
         background-color: #fff;

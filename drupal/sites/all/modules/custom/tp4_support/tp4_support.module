@@ -319,14 +319,15 @@ function tp4_support_field_formatter_view($entity_type, $entity, $field, $instan
   return $element;
 }
 
-
-
-
 function tp4_support_preprocess_block(&$variables) {
   if($variables['block_html_id'] == 'block-views-takeaction-homepage-block'){
     $variables['theme_hook_suggestions'][] = 'block__views__homepage_columns_block'; 
   }
 }
 
-
+function tp4_support_form_alter(&$form, &$form_state, $form_id){
+  if($form['#form_id'] == 'search_api_page_search_form_site_search'){
+    $form['keys_2']['#attributes']['placeholder'] = t('Search');
+  }
+}
 
