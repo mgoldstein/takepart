@@ -4357,7 +4357,7 @@ body.front #sidebar .block-title {
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1384973878') no-repeat;
+  background: url('../images/megaphone.jpg?1384975157') no-repeat;
   padding-bottom: 5px;
 }
 
@@ -5342,11 +5342,11 @@ body.page-node.node-type-openpublish-article #preface {
 }
 /* line 22, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:nth-child(1) {
-  width: 17%;
+  width: 16%;
 }
 /* line 25, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:nth-child(2) {
-  width: 15%;
+  width: 14%;
 }
 /* line 28, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:nth-child(3) {
@@ -5358,7 +5358,7 @@ body.page-node.node-type-openpublish-article #preface {
 }
 /* line 34, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:nth-child(5) {
-  width: 23%;
+  width: 25%;
 }
 /* line 37, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:first-child {
@@ -5406,7 +5406,7 @@ body.page-node.node-type-openpublish-article #preface {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1384972727') no-repeat center center;
+    background: url('../images/tpl-logo.jpg?1384975157') no-repeat center center;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */

@@ -97,6 +97,34 @@ function tp_feature_contexts_default_box() {
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'ga_homepage_bottom_right';
+  $box->plugin_key = 'ga_ad';
+  $box->title = '';
+  $box->description = 'GA: Homepage Bottom Right';
+  $box->options = array(
+    'ga_ad_slot' => 'TP3_Homepage_RR_BTF_300x600',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1376947919227-0',
+    'additional_classes' => 'block-boxes-ga_ad',
+  );
+  $export['ga_homepage_bottom_right'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'ga_homepage_header';
+  $box->plugin_key = 'ga_ad';
+  $box->title = '';
+  $box->description = 'GA: Homepage Leaderboard';
+  $box->options = array(
+    'ga_ad_slot' => 'TP3_Homepage_Leaderboard_728x90',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1376947900543-0',
+    'additional_classes' => '',
+  );
+  $export['ga_homepage_header'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'ga_homepage_top_right';
   $box->plugin_key = 'ga_ad';
   $box->title = '';
@@ -107,6 +135,20 @@ function tp_feature_contexts_default_box() {
     'additional_classes' => 'block-boxes-ga_ad',
   );
   $export['ga_homepage_top_right'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
+  $box->delta = 'ga_hp_1x1_background';
+  $box->plugin_key = 'ga_ad';
+  $box->title = '';
+  $box->description = 'GA: Homepage Background Take-over';
+  $box->options = array(
+    'ga_ad_slot' => 'TP3_Homepage_Background_1x1',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1376947700448-0',
+    'additional_classes' => '',
+  );
+  $export['ga_hp_1x1_background'] = $box;
 
   return $export;
 }

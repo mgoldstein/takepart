@@ -196,13 +196,14 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
     'latest_headlines' => 'latest_headlines',
   );
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
@@ -215,6 +216,8 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_promo_short_headline']['table'] = 'field_data_field_promo_short_headline';
   $handler->display->display_options['fields']['field_promo_short_headline']['field'] = 'field_promo_short_headline';
   $handler->display->display_options['fields']['field_promo_short_headline']['label'] = '';
+  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['path'] = '[path]';
   $handler->display->display_options['fields']['field_promo_short_headline']['element_class'] = '[type]';
   $handler->display->display_options['fields']['field_promo_short_headline']['element_label_colon'] = FALSE;
   /* Sort criterion: Nodequeue: Queue ID */
