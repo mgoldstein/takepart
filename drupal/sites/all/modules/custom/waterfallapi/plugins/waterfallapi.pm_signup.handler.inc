@@ -18,7 +18,7 @@ class WaterfalllSignupHandler {
 
   public function __construct($plugin, $configuration) {
     $this->plugin = $plugin;
-    $this->configuration = $configuration;
+    $this->configuration = (array) $configuration;
   }
 
   public function getLabel() {

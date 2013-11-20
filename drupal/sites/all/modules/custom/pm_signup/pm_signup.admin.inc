@@ -248,7 +248,7 @@ class SignupEndpointEditForm {
     $is_array = is_array($configuration);
     $is_empty = empty($configuration);
     $json = ($is_false || ($is_array && $is_empty)) ? ''
-      : json_encode($configuration, JSON_PRETTY_PRINT);
+      : json_encode($configuration);
     return array(
       '#title' => t('Configuration'),
       '#type' => 'textarea',

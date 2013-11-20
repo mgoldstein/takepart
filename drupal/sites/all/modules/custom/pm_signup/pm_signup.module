@@ -206,7 +206,7 @@ function pm_signup_submit($request) {
     $signup = SignatureSignup::create();
     $fields = array_keys(SignatureSignup::fields());
     $mapping = SignatureActionMapping::load((int) $request['endpoint']);
-    if ($mapping === FALSE && $mapping->endpoint()->getID() !== FALSE) {
+    if ($mapping !== FALSE && $mapping->endpoint()->getID() !== FALSE) {
       $endpoint = SignatureSignupEndpoint::load(
         $mapping->endpoint()->getID());
     }
@@ -352,6 +352,7 @@ function pm_signup_api_callback() {
 
   // Submit each signup
   $response = array();
+  $duplicate = FALSE;
   foreach ($request as $signup) {
     try {
       pm_signup_queue($signup);
@@ -376,6 +377,7 @@ function pm_signup_api_callback() {
         'endpoint' => $signup['endpoint'],
         'error' => 'Duplicate signup.',
       );
+      $duplicate = TRUE;
     }
     catch (SignupSubmissionException $sse) {
       $response[] = array(
@@ -387,7 +389,19 @@ function pm_signup_api_callback() {
   }
 
   // If any signups failed, report the reason for the failure
-  if (count($response) > 0) {
+  if (count($request) === 1 && $duplicate) {
+    return array(
+      'status' => '409 Conflict',
+      'payload' => $response,
+    );
+  }
+  elseif (count($response) == count($request)) {
+    return array(
+      'status' => '400 Bad Request',
+      'payload' => $response,
+    );
+  }
+  elseif (count($response) > 0) {
     return array(
       'status' => '202 Accepted',
       'payload' => $response,
