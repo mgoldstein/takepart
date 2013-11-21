@@ -210,6 +210,9 @@ header{
         width: 140px;
         -webkit-appearance: none;
 
+	height: 25px;
+	font-size: inherit;
+	line-height: normal;
         &::-webkit-input-placeholder {
           opacity: 0;
         }
