@@ -70,7 +70,6 @@ function takepart_contact_us_block_view_zendesk_forms_zendesk_support_form_alter
         jQuery(document).ready(function() {
             jQuery("input[name=zendesk_23560737]").val(navigator.userAgent);
             jQuery("input[name=zendesk_23560727]").val(document.referrer);
-
         });
         </script>';
     $data['subject'] = t('');
@@ -92,6 +91,7 @@ function takepart_contact_us_form_submit($form, &$form_state) {
     if (!empty($form_state['values']['subject'])) {
         $ticket['subject'] = $form_state['values']['subject'];
     }
+    
     // Get extra fields that are prefixed with zendesk_. Right now the only way
     // to add extra fields is by using form alter though.
     $extra_fields = array_filter(array_keys($form_state['values']), create_function('$item', 'return strpos($item, "zendesk_") === 0;'));
@@ -104,12 +104,13 @@ function takepart_contact_us_form_submit($form, &$form_state) {
             $i++;
         }
     }
-    watchdog('Zen Desk', json_encode($ticket));
+    
     // Wrap the ticket array in yet another array and call the API.
     $response = zendesk_forms_api_call(array('ticket' => $ticket), 'tickets.json');
     if (!isset($response->error)) {
-        // drupal_set_message(t('Your message has been sent'));
-        $form_state['redirect'] = 'contact-us/thank-you';
+        drupal_set_message(t('Your message has been sent'));
+        watchdog('ZenDesk', json_encode($ticket));
+        //$form_state['redirect'] = 'contact-us/thank-you';
     } else {
         drupal_set_message(t('An error happened while sending the message.'), 'error');
     }
