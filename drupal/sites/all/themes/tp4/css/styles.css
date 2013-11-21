@@ -3419,6 +3419,7 @@ body.snapjs-left #page-wrap {
   max-width: 980px;
   margin: 0 auto;
   padding: 0;
+  position: relative;
 }
 /* line 46, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 #header:before, #header:after,
@@ -3442,12 +3443,12 @@ body.snapjs-left #page-wrap {
   clear: both;
 }
 
-/* line 78, ../sass/page/_layout.scss */
+/* line 79, ../sass/page/_layout.scss */
 #preface {
   min-height: 1em;
 }
 
-/* line 82, ../sass/page/_layout.scss */
+/* line 83, ../sass/page/_layout.scss */
 #main #primary {
   float: left;
   width: 100%;
@@ -3462,7 +3463,7 @@ body.snapjs-left #page-wrap {
   word-wrap: break-word;
 }
 @media all and (min-width: 768px) {
-  /* line 86, ../sass/page/_layout.scss */
+  /* line 87, ../sass/page/_layout.scss */
   #main.with-sidebar #primary {
     float: left;
     width: 58.33333%;
@@ -3478,7 +3479,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 86, ../sass/page/_layout.scss */
+  /* line 87, ../sass/page/_layout.scss */
   #main.with-sidebar #primary {
     float: left;
     width: 66.66667%;
@@ -3494,7 +3495,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 96, ../sass/page/_layout.scss */
+  /* line 97, ../sass/page/_layout.scss */
   #main.with-skinny #primary {
     float: left;
     width: 83.33333%;
@@ -3510,7 +3511,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 103, ../sass/page/_layout.scss */
+  /* line 104, ../sass/page/_layout.scss */
   #main.with-sidebar.with-skinny #primary {
     float: left;
     width: 50%;
@@ -3531,7 +3532,7 @@ body.snapjs-left #page-wrap {
     padding-right: 8px;
   }
 }
-/* line 116, ../sass/page/_layout.scss */
+/* line 117, ../sass/page/_layout.scss */
 #main #sidebar {
   float: left;
   width: 100%;
@@ -3547,7 +3548,7 @@ body.snapjs-left #page-wrap {
   clear: left;
 }
 @media all and (min-width: 768px) {
-  /* line 116, ../sass/page/_layout.scss */
+  /* line 117, ../sass/page/_layout.scss */
   #main #sidebar {
     float: left;
     width: 41.66667%;
@@ -3564,7 +3565,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 116, ../sass/page/_layout.scss */
+  /* line 117, ../sass/page/_layout.scss */
   #main #sidebar {
     width: 300px;
     float: right;
@@ -3576,7 +3577,7 @@ body.snapjs-left #page-wrap {
     box-sizing: content-box;
   }
 }
-/* line 138, ../sass/page/_layout.scss */
+/* line 139, ../sass/page/_layout.scss */
 #main #skinny {
   float: left;
   width: 100%;
@@ -3592,7 +3593,7 @@ body.snapjs-left #page-wrap {
   clear: left;
 }
 @media all and (min-width: 768px) {
-  /* line 138, ../sass/page/_layout.scss */
+  /* line 139, ../sass/page/_layout.scss */
   #main #skinny {
     float: left;
     width: 41.66667%;
@@ -3608,7 +3609,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 138, ../sass/page/_layout.scss */
+  /* line 139, ../sass/page/_layout.scss */
   #main #skinny {
     float: left;
     width: 16.66667%;
@@ -3625,7 +3626,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 150, ../sass/page/_layout.scss */
+  /* line 151, ../sass/page/_layout.scss */
   #main.with-sidebar #skinny {
     float: left;
     width: 100%;
@@ -3641,7 +3642,7 @@ body.snapjs-left #page-wrap {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 150, ../sass/page/_layout.scss */
+  /* line 151, ../sass/page/_layout.scss */
   #main.with-sidebar #skinny {
     float: left;
     width: 16.66667%;
@@ -5768,6 +5769,8 @@ body.front #sidebar .block-title {
 .footer-wrapper {
   background-color: #eeeeee;
   padding: 30px 0 15px 0;
+  position: relative;
+  z-index: 2;
 }
 /* line 46, ../sass-extensions/zen-grids/stylesheets/zen/_grids.scss */
 .footer-wrapper footer:before, .footer-wrapper footer:after {
@@ -5854,7 +5857,7 @@ body.front #sidebar .block-title {
   display: table;
   clear: both;
 }
-/* line 11, ../sass/modules/_footer.scss */
+/* line 13, ../sass/modules/_footer.scss */
 .footer-wrapper footer .footer-left ul {
   width: 100%;
 }
@@ -5918,7 +5921,7 @@ body.front #sidebar .block-title {
   clear: both;
 }
 @media all and (min-width: 320px) {
-  /* line 9, ../sass/modules/_footer.scss */
+  /* line 11, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-left {
     float: left;
     width: 100%;
@@ -5935,7 +5938,7 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 9, ../sass/modules/_footer.scss */
+  /* line 11, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-left {
     float: left;
     width: 66.66667%;
@@ -5952,7 +5955,7 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 24, ../sass/modules/_footer.scss */
+  /* line 26, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right {
     float: left;
     width: 100%;
@@ -5969,7 +5972,7 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 24, ../sass/modules/_footer.scss */
+  /* line 26, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right {
     float: left;
     width: 33.33333%;
@@ -5985,7 +5988,7 @@ body.front #sidebar .block-title {
     clear: none;
   }
 }
-/* line 34, ../sass/modules/_footer.scss */
+/* line 36, ../sass/modules/_footer.scss */
 .footer-wrapper footer .footer-bottom {
   clear: left;
   float: left;
@@ -6001,79 +6004,79 @@ body.front #sidebar .block-title {
   word-wrap: break-word;
 }
 @media all and (min-width: 320px) {
-  /* line 44, ../sass/modules/_footer.scss */
+  /* line 46, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-left ul {
     padding-top: 15px;
     margin-bottom: 20px;
   }
-  /* line 47, ../sass/modules/_footer.scss */
+  /* line 49, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-left ul a {
     font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 14px;
     line-height: 24px;
     color: #000;
   }
-  /* line 52, ../sass/modules/_footer.scss */
+  /* line 54, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-left ul a:hover {
     text-decoration: underline;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 42, ../sass/modules/_footer.scss */
+  /* line 44, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-left {
     margin-bottom: 0px;
   }
-  /* line 60, ../sass/modules/_footer.scss */
+  /* line 62, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-left ul {
     margin-bottom: 7px;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 67, ../sass/modules/_footer.scss */
+  /* line 69, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .footer-title.social {
     float: left;
     margin-bottom: 2px;
   }
-  /* line 71, ../sass/modules/_footer.scss */
+  /* line 73, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .follow-us {
     width: 100%;
     text-align: left;
     clear: both;
   }
-  /* line 75, ../sass/modules/_footer.scss */
+  /* line 77, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .follow-us ul {
     text-align: left;
   }
-  /* line 79, ../sass/modules/_footer.scss */
+  /* line 81, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .text {
     float: left;
     margin-top: 40px;
     width: 100%;
   }
-  /* line 83, ../sass/modules/_footer.scss */
+  /* line 85, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .text a {
     color: #019f84;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 89, ../sass/modules/_footer.scss */
+  /* line 91, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .footer-title.social {
     float: right;
   }
-  /* line 92, ../sass/modules/_footer.scss */
+  /* line 94, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .follow-us {
     text-align: right;
   }
-  /* line 94, ../sass/modules/_footer.scss */
+  /* line 96, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .follow-us ul {
     float: right;
     text-align: left;
   }
-  /* line 97, ../sass/modules/_footer.scss */
+  /* line 99, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .follow-us ul li {
     float: left;
   }
-  /* line 102, ../sass/modules/_footer.scss */
+  /* line 104, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-right .text {
     float: right;
     margin-top: 50px;
@@ -6084,7 +6087,7 @@ body.front #sidebar .block-title {
     line-height: 16px;
   }
 }
-/* line 116, ../sass/modules/_footer.scss */
+/* line 118, ../sass/modules/_footer.scss */
 .footer-wrapper footer .footer-bottom {
   text-align: center;
   margin-top: 30px;
@@ -6092,15 +6095,15 @@ body.front #sidebar .block-title {
   padding-top: 20px;
 }
 @media all and (min-width: 320px) {
-  /* line 116, ../sass/modules/_footer.scss */
+  /* line 118, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom {
     text-align: center;
   }
-  /* line 123, ../sass/modules/_footer.scss */
+  /* line 125, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner {
     text-align: left;
   }
-  /* line 126, ../sass/modules/_footer.scss */
+  /* line 128, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner li {
     display: inline-block;
     margin-left: 20px;
@@ -6108,46 +6111,46 @@ body.front #sidebar .block-title {
     width: auto;
     overflow: hidden;
   }
-  /* line 132, ../sass/modules/_footer.scss */
+  /* line 134, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner li:first-child {
     margin-left: 0px;
   }
-  /* line 135, ../sass/modules/_footer.scss */
+  /* line 137, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner li a {
     display: block;
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
   }
-  /* line 140, ../sass/modules/_footer.scss */
+  /* line 142, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner li a.logos-takepart {
     height: 30px;
     width: 131px;
   }
-  /* line 144, ../sass/modules/_footer.scss */
+  /* line 146, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
     height: 31px;
     width: 144px;
   }
-  /* line 148, ../sass/modules/_footer.scss */
+  /* line 150, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner li a.logos-pivot {
     height: 28px;
     width: 77px;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 157, ../sass/modules/_footer.scss */
+  /* line 159, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner {
     display: inline-block;
   }
-  /* line 159, ../sass/modules/_footer.scss */
+  /* line 161, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner .footer-title {
     display: inline-block;
     vertical-align: top;
     margin-top: 8px;
     margin-right: 10px;
   }
-  /* line 165, ../sass/modules/_footer.scss */
+  /* line 167, ../sass/modules/_footer.scss */
   .footer-wrapper footer .footer-bottom .footer-bottom-inner ul {
     display: inline-block;
   }

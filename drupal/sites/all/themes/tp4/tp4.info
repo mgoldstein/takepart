@@ -70,6 +70,7 @@ scripts[] = js/custom-lib/tpanalytics.js
 scripts[] = js/tpanalytics.events.js
 scripts[] = js/doubletaptogo.js
 scripts[] = js/snap.js
+scripts[] = js/tp_ad_takeover.jquery.js
 scripts[] = js/tpsocial.jquery.js
 scripts[] = js/tpsocial.services.js
 scripts[] = js/jquery.tp4sticky.js
