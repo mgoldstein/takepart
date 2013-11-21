@@ -1039,10 +1039,17 @@ class BlueStateDigitalConfigurationBuilder {
 
   protected function cloneSignupForm($tap_id, $title, $type) {
     $api = bluestatedigital_get_api('signup');
+    $env = variable_get('signature_environment_prefix', '');
     $template_form_id = variable_get('signature_template_form_id', 31);
     try {
-      $form_id = $api->cloneForm($template_form_id, $title,
-        "{$type} - {$title}", "action-{$tap_id}");
+      $name = "{$type} - {$title}";
+      $slug = "action-{$tap_id}";
+      if (!empty($env)) {
+        $title = "{$env}: " . $title;
+        $name = "{$env}: " . $name;
+        $slug = strtolower($env) . "-{$slug}";
+      }
+      $form_id = $api->cloneForm($template_form_id, $title, $name, $slug);
     }
     catch (BlueStateDigitalApiException $ex) {
       return FALSE;
