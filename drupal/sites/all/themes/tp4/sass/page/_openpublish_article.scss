@@ -12,7 +12,7 @@
       float: left;
       width: 40px;
       .inner {
-        padding: 7px 1px;
+	padding: 7px 0;
       }
       &.sticky {
         position: fixed;
@@ -108,14 +108,20 @@
       height: 0;
       padding: 12px;
       text-indent: 24px;
-      margin: 0 0 7px 5px;
       background-color: transparent;
+      margin: 0 0 7px 5px;
+      @include breakpoint($breakpoint-desktop) {
+	margin: 0 auto 5px;
+      }
     }
   } // #article-social
   #article-social-more {
     position: relative;
     overflow: hidden;
     float: left;
+    @include breakpoint($breakpoint-desktop) {
+      margin-left: 8px;
+    }
     #article-more-shares { // positioning
       position: absolute;
       bottom: 100%;
@@ -237,6 +243,9 @@
     // take action widget
     .takepart-take-action-widget {
       margin: 0 auto;
+      @include breakpoint($breakpoint-tablet) {
+	padding-left: 20px;
+      }
     }
 
     // drop cap
