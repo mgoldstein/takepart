@@ -68,7 +68,7 @@
         <?php endif; ?>
 
 </div>
-<div class="footer-wrapper"> 
+<div class="footer-wrapper non-responsive"> 
   <footer>
     <?php $footer = module_invoke('tp4_support', 'block_view', 'tp4_footer'); ?>
     <?php print $footer['content']; ?>
