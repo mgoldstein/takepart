@@ -63,11 +63,13 @@ body.front{
       padding: .5em .5em 0;
       font-size: 2em;
       line-height: 1.333333333;
+      font-weight: normal;
     }
 
     .field-name-field-article-subhead {
       font-size: 1em;
       line-height: 1.285714286; // 18px / 14px
+      font-weight: normal;
     }
 
     .byline {
@@ -120,6 +122,7 @@ body.front{
       font-size: 1.142857143em;
       line-height: 1.25;
       margin-top: .5em;
+      font-weight: normal;
     }
     margin-bottom: 1em;
   }

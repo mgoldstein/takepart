@@ -59,6 +59,7 @@ header{
       display: block;
       text-align: right;
       float: right;
+      font-size: .928571429em; // 14px;
       .text{
         display: inline-block;
         margin: 0 10px;
@@ -83,6 +84,7 @@ header{
     @include breakpoint($breakpoint-tablet){
       display: block;
       float: right;
+      font-size: .928571429em; // 14px;
       a{
         color: $dark-gray;
       }
@@ -152,13 +154,14 @@ header{
       }
       [type=text]{
         float: left;
-        height: 24px;
+        height: 30px;
         border: 1px solid #ccc;
         border-radius: 0;
         width: 100%;
         line-height: 20px;
         color: #777;
         text-indent: 6px;
+        font-size: 16px;
         line-height: 21px;
         background: #fff;
         &:focus{
@@ -169,7 +172,8 @@ header{
         position: absolute;
         bottom: 0;
         right: 0;
-        height: 48px;
+        height: 0;
+        padding-top: 48px;
         color: white;
         border: none;
         background: image-url('mobile-search-hover.jpg') no-repeat center center;
@@ -205,6 +209,8 @@ header{
       [type=text]{
         border-right: none;
         width: 140px;
+        -webkit-appearance: none;
+
         &::-webkit-input-placeholder {
           opacity: 0;
         }
@@ -221,11 +227,12 @@ header{
 }
       }
       .form-submit{
-        position: relative;
         display: block;
         float: left;
         width: 20px;
-        height: 24px;
+        height: 0;
+        padding-top: 22px;
+        overflow: hidden;
         border: 1px solid #ccc;
         border-left: none;
         background-color: #fff;
