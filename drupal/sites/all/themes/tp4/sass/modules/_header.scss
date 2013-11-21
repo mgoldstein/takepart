@@ -17,6 +17,14 @@ header{
       margin-bottom: 1.5em;
     }
   }
+  .leaderboard{
+    @include breakpoint($breakpoint-mobile){
+      display: none;
+    }
+    @include breakpoint($breakpoint-tablet){
+      display: block;
+    }
+  }
   @include breakpoint($breakpoint-mobile){
     .menu-toggle{
       display: block;
