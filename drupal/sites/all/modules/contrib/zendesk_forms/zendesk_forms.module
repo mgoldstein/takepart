@@ -126,7 +126,7 @@ function zendesk_forms_support_form_submit($form, &$form_state) {
       $ticket[substr($field_name, 8)] = $form_state['values'][$field_name];
     }
   }
-  watchdog('ZenDesk', json_encode($ticket));
+  //watchdog('ZenDesk', json_encode($ticket));
   // Wrap the ticket array in yet another array and call the API.
   $response = zendesk_forms_api_call(array('ticket' => $ticket), 'tickets.json');
   if (!isset($response->error)) {
