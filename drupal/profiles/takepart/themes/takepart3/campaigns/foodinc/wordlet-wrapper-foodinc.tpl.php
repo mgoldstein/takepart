@@ -55,6 +55,21 @@ googletag.cmd.push(function()
 	$w = w('header_image');
 	global $base_url;
 ?>
+
+
+
+<div class="snap-drawers scrollable">
+    <div class="snap-drawer snap-drawer-left">
+      <?php
+        // wordlets is the worst thing ever. we have to pull in the contents of this region manually.  awesome!
+        $mobile_menu = drupal_render(module_invoke('menu', 'block_view', 'menu-megamenu'));
+        print $mobile_menu;
+      ?>
+
+  </div>
+</div>
+<?php print_r($page['left_drawer']); ?>
+
 <div id="page-wrapper" class="campaign foodinc">
 	<?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
     <?php print ''; ?>
@@ -70,6 +85,7 @@ googletag.cmd.push(function()
 		<?=w('background_skin')?>
 
 		<div class="main">
+    <?php print $messages; ?>
 			<header class="header">
 				<span class="slug"><?=w('header_slug')?></span>
 				<h1 class="page-header"><?=w('header_title')?></h1>

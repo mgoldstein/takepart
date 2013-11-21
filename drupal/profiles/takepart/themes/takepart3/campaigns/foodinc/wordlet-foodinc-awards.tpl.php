@@ -9,6 +9,7 @@
     drupal_add_html_head($og_description, 'og_description');
     global $base_url;
     global $is_https;
+    global $messages;
 ?>
 <div class="content" id="foodinc-awards">
   <header>
@@ -32,8 +33,6 @@
       <?php else: ?>
         <img src="<?php print w('hero_content')->img_src; ?>" alt="food inc awards">
       <?php endif; ?>
-
-
       <div class="hero-title"><?php print w('hero_content')->single; ?></div>
       <div class="hero-description"><?php print w('hero_content')->multi; ?></div>
       <div class="learn-more">
