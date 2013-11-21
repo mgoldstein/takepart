@@ -74,7 +74,7 @@
                 authors.push($(this).text());
             })
             evar17 = authors.join(',');
-            evar19 = $('.article').data('series');
+	    evar19 = $('.node-openpublish-article.view-mode-full').data('series');
             evar21 = s.eVar21;
         }
 
