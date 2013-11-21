@@ -1,6 +1,17 @@
 <?
 	$w = w('header_image')
 ?>
+
+<div class="snap-drawers scrollable">
+    <div class="snap-drawer snap-drawer-left">
+      <?php
+        $mobile_menu = drupal_render(module_invoke('menu', 'block_view', 'menu-megamenu'));
+        print $mobile_menu;
+      ?>
+
+  </div>
+</div>
+
 <div id="page-wrapper" class="campaign">
 
 	 <div class="slimnav responsive">
