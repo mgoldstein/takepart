@@ -3797,7 +3797,7 @@ body.front #sidebar .block-title {
 /* line 149, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1385000118');
+  background-image: url('../images/tpl-title.jpg?1385000280');
 }
 /* line 153, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
@@ -6556,12 +6556,11 @@ header .search {
 /* line 83, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a {
   display: inline-block;
-  height: 24px;
+  height: 0;
   width: 24px;
   margin-right: 6px;
+  padding-top: 24px;
   overflow: hidden;
-  text-indent: 100%;
-  white-space: nowrap;
 }
 /* line 92, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.facebook {

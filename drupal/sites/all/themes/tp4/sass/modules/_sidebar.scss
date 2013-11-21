@@ -83,12 +83,12 @@
 			a {
 				display: inline-block;
 				// they're the same width;
-				height: social-sprite-height(twitter-gray);
+				height: 0;
 				width: social-sprite-width(twitter-gray);
 				margin-right: social-sprite-width(twitter-gray) / 4; // reasonable margin
-				overflow: hidden;    // Image
-				text-indent: 100%;   // Replacement
-				white-space: nowrap; // Technique
+				// image replacement technique
+				padding-top: social-sprite-height(twitter-gray);
+				overflow: hidden;
 				&.facebook { @include social-sprite(facebook-gray);}
 				&.twitter { @include social-sprite(twitter-gray);}
 				&.google { @include social-sprite(googleplus-gray);}
