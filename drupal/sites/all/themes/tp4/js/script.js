@@ -167,50 +167,6 @@ Drupal.behaviors.socialEventsTracking = {
       takepart.analytics.track('tp-social-click', args);
     });
 
-    $('a.tp-social-facebook').on('click', function(e) {
-      // var s=s_gi('takepartprod');
-      s.linkTrackVars='eVar1,eVar4,eVar18,eVar20,eVar22,eVar27,eVar30,events';
-      s.linkTrackEvents='event25';
-      s.events='event25';
-      s.eVar18=s.pageName;
-      s.eVar27="Facebook";
-      s.eVar30=s.pageName;
-      s.tl(true, 'o', 'Content Share');
-    });
-      
-    $('a.tp-social-twitter').on('click', function(e) {
-      // var s=s_gi('takepartprod');
-      s.linkTrackVars='eVar1,eVar4,eVar18,eVar20,eVar22,eVar27,eVar30,events';
-      s.linkTrackEvents='event25';
-      s.events='event25';
-      s.eVar18=s.pageName;
-      s.eVar27="twitter";
-      s.eVar30=s.pageName;
-      s.tl(true, 'o', 'Content Share');
-    });
-      
-    $('a.tp-social-googleplus').on('click', function(e) {
-      // var s=s_gi('takepartprod');
-      s.linkTrackVars='eVar1,eVar4,eVar18,eVar20,eVar22,eVar27,eVar30,events';
-      s.linkTrackEvents='event25';
-      s.events='event25';
-      s.eVar18=s.pageName;
-      s.eVar27="Google Plus";
-      s.eVar30=s.pageName;
-      s.tl(true, 'o', 'Content Share');
-    });
-      
-    $('a.tp-social-reddit').on('click', function(e) {
-      // var s=s_gi('takepartprod');
-      s.linkTrackVars='eVar1,eVar4,eVar18,eVar20,eVar22,eVar27,eVar30,events';
-      s.linkTrackEvents='event25';
-      s.events='event25';
-      s.eVar18=s.pageName;
-      s.eVar27="Reddit";
-      s.eVar30=s.pageName;
-      s.tl(true, 'o', 'Content Share');
-    });
-
   }
 };
 
