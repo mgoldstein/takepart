@@ -61,13 +61,16 @@
 
     var social_click = function(options) {
         var title = normalize_share_title(options.name);
-        var evar4, evar17, evar19, evar21, linkTrackVars;
+        var evar1, evar4, evar17, evar19, evar21, linkTrackVars;
 
         // Series stuff for article, add photo gallery later
         if ( $('body').is('.node-type-article') || $('body').is('.node-type-openpublish-photo-gallery') ) {
+            // this is hack, but this will record the first element
+            // of the URL path
+            evar1 = $('body').is('.node-type-article') ? 'article' : 'photos';
             evar4 = s.prop4;
             var authors = [];
-            $('.article-header .authors a').each(function() {
+            $('.byline-author').each(function() {
                 authors.push($(this).text());
             })
             evar17 = authors.join(',');

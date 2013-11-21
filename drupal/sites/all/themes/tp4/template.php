@@ -121,7 +121,10 @@ function tp4_preprocess_node(&$variables, $hook) {
 function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
 
   // expose series tid in a data attribute on article.node
-  $variables['attributes_array']['data-series'] = $variables['field_series'][LANGUAGE_NONE][0]['tid'];
+  $series = taxonomy_term_load($variables['field_series'][LANGUAGE_NONE][0]['tid']);
+  if ($series) {
+    $variables['attributes_array']['data-series'] = $series->name;
+  }
 
   // we're going to do some things only on the full view of an article
   if($variables['view_mode'] == 'full'){
