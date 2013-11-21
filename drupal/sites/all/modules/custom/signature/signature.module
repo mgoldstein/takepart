@@ -488,7 +488,7 @@ function signature_process_import_feed($feed_url, $timeout, $import_now = FALSE,
   $full_import = FALSE) {
 
   // Get the last time it was run.
-  $last_run = variable_get('signature_cron_last_run', 0);
+  $last_run = (int) variable_get('signature_cron_last_run', 0);
 
   // Store the last time the feed was imported to allow subsequent imports
   // to skip unmodified actions.
@@ -499,7 +499,7 @@ function signature_process_import_feed($feed_url, $timeout, $import_now = FALSE,
   $queue = DrupalQueue::get('signature_import_queue');
   foreach ($actions as $action) {
 
-    if ($full_import || $action->last_modified >= $last_run) {
+    if ($full_import || ((int) $action->last_modified) >= $last_run) {
       if ($import_now) {
         signature_import_worker($action);
       }
@@ -948,7 +948,7 @@ class SignatureActionEndpoint {
   protected $_signup = FALSE;
 
   public function __construct($endpoint_id = NULL) {
-    if (!is_null($endpoint_id)) {
+    if (!empty($endpoint_id)) {
       $this->_endpoint = SignatureSignupEndpoint::load($endpoint_id);
     }
     else {
