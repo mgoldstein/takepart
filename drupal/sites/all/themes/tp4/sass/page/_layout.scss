@@ -75,6 +75,10 @@ body {
   margin: 0 auto;
   padding: 0;
   position: relative;
+  z-index: 2;
+}
+#header{
+  z-index: 3;
 }
 #preface {
   min-height: 1em; // TODO figure out a better way to do this

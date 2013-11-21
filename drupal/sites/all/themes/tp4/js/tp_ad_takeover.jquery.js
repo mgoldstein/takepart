@@ -21,7 +21,7 @@ window.tp_ad_takeover = function(bgcolor, bgimage, link) {
                         zIndex: 0
                 });
 
-        jQuery('body #page-wrap').prepend($a);
+        jQuery('body #page-wrap').append($a);
 };
 
 })(window, jQuery);
