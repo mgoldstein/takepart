@@ -55,14 +55,37 @@ googletag.cmd.push(function()
 	$w = w('header_image');
 	global $base_url;
 ?>
+
+
+
+<div class="snap-drawers scrollable">
+    <div class="snap-drawer snap-drawer-left">
+      <?php
+        // wordlets is the worst thing ever. we have to pull in the contents of this region manually.  awesome!
+        $mobile_menu = drupal_render(module_invoke('menu', 'block_view', 'menu-megamenu'));
+        print $mobile_menu;
+      ?>
+
+  </div>
+</div>
+<?php print_r($page['left_drawer']); ?>
+
 <div id="page-wrapper" class="campaign foodinc">
-	<?php print ($base_url == 'https://foodinc.takepart.com' || $is_https != NULL ? '' : render($header)); ?>
+	<?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
+    <?php print ''; ?>
+  <?php else: ?>
+  <div class="slimnav responsive">
+    <?php $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav'); ?>
+    <?php print $slimnav['content']; ?>
+  </div>
+  <?php endif; ?>
 
 
 	<div class="page-wrap" data-fb-share="<?php print w('foodinc_facebook_share')->single; ?>">
 		<?=w('background_skin')?>
 
 		<div class="main">
+    <?php print $messages; ?>
 			<header class="header">
 				<span class="slug"><?=w('header_slug')?></span>
 				<h1 class="page-header"><?=w('header_title')?></h1>
@@ -86,10 +109,18 @@ googletag.cmd.push(function()
 	</div><!-- /.page-wrap -->
 
 	<!-- end -->
-
-	<?php print ($base_url == 'https://foodinc.takepart.com' || $is_https != NULL ? '' : render($footer)); ?>
-
 </div>
+	<?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
+    <?php print ''; ?>
+  <?php else: ?>
+    <div class="footer-wrapper responsive"> 
+      <footer>
+        <?php $footer = module_invoke('tp4_support', 'block_view', 'tp4_footer'); ?>
+        <?php print $footer['content']; ?>
+      </footer>
+    </div>
+  <?php endif; ?>
+
 <!-- /place in the <body> to display the 300x250 ad -->
 <!-- place in the <body> to display the background skin ad -->
 <!-- TP3_ROS_Background_1x1 -->

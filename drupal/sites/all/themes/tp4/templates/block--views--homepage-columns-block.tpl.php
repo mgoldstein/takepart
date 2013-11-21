@@ -9,7 +9,7 @@
 ?>
 <div id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>
-  <?php if($variables['elements']['content']['#views_contextual_links_info']['views_ui']['view_name'] == 'takeaction_homepage'): ?>
+  <?php if($variables['elements']['#block']->bid == 'views-takeaction_homepage-block'): ?>
     <div class="megaphone"></div>
   <?php endif; ?>
   <div class="line"></div>

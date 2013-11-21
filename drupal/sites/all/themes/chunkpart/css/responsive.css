@@ -18,6 +18,8 @@
 	html,
 	body {
 		font-size: 10px;
+		border-top: 5px solid #01BF9E;
+		border-bottom: 5px solid #01BF9E;
 	}
 
 	#site-header {

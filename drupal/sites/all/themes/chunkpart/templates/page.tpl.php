@@ -2,7 +2,7 @@
     <a href="#main"><?= t('Skip to main content') ?></a>
 </div>
 
-  <div class="slimnav">
+  <div class="slimnav responsive mobile-only">
     <?php $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav'); ?>
     <?php print $slimnav['content']; ?>
   </div> 

@@ -1,3 +1,7 @@
+#main {
+  overflow: hidden;
+}
+
 #page-wrapper.foodinc {
   -webkit-font-smoothing: antialiased;
   background: #fff;
@@ -123,10 +127,6 @@
   color: #fff;
   font-size: 15px;
   display: inline-block;
-}
-#page-wrapper.foodinc .logo {
-  margin-top: 30px;
-  margin-left: 20px;
 }
 @media (max-width: 700px) {
   #page-wrapper.foodinc .logo {
