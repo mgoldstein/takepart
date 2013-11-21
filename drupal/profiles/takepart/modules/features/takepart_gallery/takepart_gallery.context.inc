@@ -29,101 +29,35 @@ function takepart_gallery_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-box-944fcfe9' => array(
-          'module' => 'boxes',
-          'delta' => 'box-944fcfe9',
-          'region' => 'full_width_top',
-          'weight' => '0',
-        ),
         'boxes-box-66c05d6f' => array(
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar_second',
-          'weight' => '0',
+          'weight' => '-10',
         ),
-        'newsletter_campaign-10' => array(
+        'newsletter_campaign-48' => array(
           'module' => 'newsletter_campaign',
-          'delta' => '10',
+          'delta' => '48',
           'region' => 'sidebar_second',
-          'weight' => '1',
+          'weight' => '-9',
         ),
-        'boxes-box-7fa6e22c' => array(
-          'module' => 'boxes',
-          'delta' => 'box-7fa6e22c',
+        'bean--of-the-day' => array(
+          'module' => 'bean',
+          'delta' => '-of-the-day',
           'region' => 'sidebar_second',
-          'weight' => '2',
-        ),
-        'views-related_content-block' => array(
-          'module' => 'views',
-          'delta' => 'related_content-block',
-          'region' => 'sidebar_second',
-          'weight' => '3',
+          'weight' => '-8',
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar_second',
-          'weight' => '4',
+          'weight' => '-7',
         ),
-        'boxes-box-6c13820e' => array(
+        'boxes-box-944fcfe9' => array(
           'module' => 'boxes',
-          'delta' => 'box-6c13820e',
-          'region' => 'content_top',
+          'delta' => 'box-944fcfe9',
+          'region' => 'full_width_top',
           'weight' => '0',
-        ),
-        'boxes-box-bb0b625d' => array(
-          'module' => 'boxes',
-          'delta' => 'box-bb0b625d',
-          'region' => 'content_top',
-          'weight' => '1',
-        ),
-        'takepart_custom-page_title_h1' => array(
-          'module' => 'takepart_custom',
-          'delta' => 'page_title_h1',
-          'region' => 'content_top',
-          'weight' => '2',
-        ),
-        'boxes-box-7fdc48e2' => array(
-          'module' => 'boxes',
-          'delta' => 'box-7fdc48e2',
-          'region' => 'content_top',
-          'weight' => '3',
-        ),
-        'boxes-box-e15d1292' => array(
-          'module' => 'boxes',
-          'delta' => 'box-e15d1292',
-          'region' => 'content_top',
-          'weight' => '4',
-        ),
-        'takepart_addthis-addthis_full' => array(
-          'module' => 'takepart_addthis',
-          'delta' => 'addthis_full',
-          'region' => 'content_top',
-          'weight' => '5',
-        ),
-        'boxes-box-4eb62add' => array(
-          'module' => 'boxes',
-          'delta' => 'box-4eb62add',
-          'region' => 'content_bottom',
-          'weight' => '0',
-        ),
-        'boxes-box-34ee1b08' => array(
-          'module' => 'boxes',
-          'delta' => 'box-34ee1b08',
-          'region' => 'content_bottom',
-          'weight' => '1',
-        ),
-        'boxes-box-7d1ce087' => array(
-          'module' => 'boxes',
-          'delta' => 'box-7d1ce087',
-          'region' => 'content_bottom',
-          'weight' => '2',
-        ),
-        'comment_block_simple-comment_block' => array(
-          'module' => 'comment_block_simple',
-          'delta' => 'comment_block',
-          'region' => 'content_bottom',
-          'weight' => '3',
         ),
       ),
     ),
