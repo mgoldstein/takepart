@@ -75,7 +75,7 @@ function takepart_action_node_info() {
       'base' => 'node_content',
       'description' => t('Used to add actions to the site.'),
       'has_title' => '1',
-      'title_label' => t('Page Title'),
+      'title_label' => t('Title'),
       'help' => '',
     ),
   );

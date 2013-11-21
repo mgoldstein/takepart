@@ -203,7 +203,7 @@ function takepart_action_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '45',
+        'weight' => '35',
       ),
       'widget_type' => 'text_textarea_with_summary',
     ),
@@ -321,7 +321,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '48',
+        'weight' => '5',
       ),
     ),
   );
@@ -334,7 +334,14 @@ function takepart_action_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_action_main_image',
-      'foreign keys' => array(),
+      'foreign keys' => array(
+        'file_managed' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -438,10 +445,10 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_main_image',
-      'label' => 'Article Image',
+      'label' => 'Main Image',
       'required' => 0,
       'settings' => array(
-        'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
+        'file_extensions' => 'jpg jpeg gif png',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -449,7 +456,7 @@ function takepart_action_field_default_fields() {
         'module' => 'media',
         'settings' => array(
           'allowed_schemes' => array(
-            'brightcove' => 0,
+            'private' => 0,
             'public' => 'public',
             'vimeo' => 0,
             'youtube' => 0,
@@ -461,10 +468,9 @@ function takepart_action_field_default_fields() {
             'video' => 0,
           ),
           'progress_indicator' => 'throbber',
-          'view' => 'media_views_widget_default--default',
         ),
         'type' => 'media_generic',
-        'weight' => '32',
+        'weight' => '2',
       ),
     ),
   );
@@ -599,7 +605,7 @@ function takepart_action_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '30',
+        'weight' => '1',
       ),
     ),
   );
@@ -638,7 +644,7 @@ function takepart_action_field_default_fields() {
       'bundle' => 'action',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'If a URL is provided in this field, the Take Action button that is displayed on the Action node page will be linked to this URL.',
+      'description' => 'The URL of the action relative to the TAP root. Do not use absolute URLs for actions hosted on TAP.',
       'display' => array(
         'action_summary' => array(
           'label' => 'above',
@@ -719,7 +725,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_action_url',
-      'label' => 'Take Action Button URL',
+      'label' => 'Action URL',
       'required' => 0,
       'settings' => array(
         'attributes' => array(
@@ -746,7 +752,7 @@ function takepart_action_field_default_fields() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_field',
-        'weight' => '47',
+        'weight' => '4',
       ),
     ),
   );
@@ -1030,6 +1036,129 @@ function takepart_action_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-action-field_admin_tag'.
+  $fields['node-action-field_admin_tag'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_admin_tag',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'admin_tag',
+            'parent' => '0',
+            'depth' => '',
+          ),
+        ),
+        'options_list_callback' => 'content_taxonomy_allowed_values',
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'action',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 45,
+        ),
+        'embed' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'full' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_admin_tag',
+      'label' => 'Admin Tag',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'content_taxonomy_opt_groups' => 0,
+        ),
+        'type' => 'options_select',
+        'weight' => '41',
+      ),
+    ),
+  );
+
   // Exported field: 'node-action-field_altcontent'.
   $fields['node-action-field_altcontent'] = array(
     'field_config' => array(
@@ -1154,7 +1283,7 @@ function takepart_action_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '34',
+        'weight' => '30',
       ),
     ),
   );
@@ -1292,7 +1421,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_display_tag',
-      'label' => 'Display Tag',
+      'label' => 'Display Tags',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -1306,7 +1435,7 @@ function takepart_action_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '11',
+        'weight' => '7',
       ),
     ),
   );
@@ -1423,7 +1552,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '11',
+        'weight' => '40',
       ),
     ),
   );
@@ -1558,7 +1687,7 @@ function takepart_action_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'taxonomy_autocomplete',
-        'weight' => '14',
+        'weight' => '8',
       ),
     ),
   );
@@ -1687,12 +1816,10 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '1',
+        'weight' => '31',
       ),
     ),
   );
-
-
 
   // Exported field: 'node-action-field_series'.
   $fields['node-action-field_series'] = array(
@@ -1824,7 +1951,7 @@ function takepart_action_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '15',
+        'weight' => '34',
       ),
     ),
   );
@@ -1934,7 +2061,7 @@ function takepart_action_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_short_introduction',
       'label' => 'Short Introduction',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'text_processing' => '0',
         'user_register_form' => FALSE,
@@ -1946,7 +2073,7 @@ function takepart_action_field_default_fields() {
           'rows' => '5',
         ),
         'type' => 'text_textarea',
-        'weight' => '2',
+        'weight' => '32',
       ),
     ),
   );
@@ -2070,7 +2197,7 @@ function takepart_action_field_default_fields() {
         'module' => 'takepart_addthis',
         'settings' => array(),
         'type' => 'addthis_config',
-        'weight' => '42',
+        'weight' => '39',
       ),
     ),
   );
@@ -2199,7 +2326,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '16',
+        'weight' => '36',
       ),
     ),
   );
@@ -2315,7 +2442,7 @@ function takepart_action_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_tab_call_to_action',
-      'label' => 'Button Text',
+      'label' => 'Call to Action Promo',
       'required' => 0,
       'settings' => array(
         'text_processing' => '0',
@@ -2328,7 +2455,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '19',
+        'weight' => '3',
       ),
     ),
   );
@@ -2457,7 +2584,7 @@ function takepart_action_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '18',
+        'weight' => '38',
       ),
     ),
   );
@@ -2586,7 +2713,7 @@ function takepart_action_field_default_fields() {
           'display_label' => 1,
         ),
         'type' => 'options_onoff',
-        'weight' => '17',
+        'weight' => '37',
       ),
     ),
   );
@@ -2721,7 +2848,7 @@ function takepart_action_field_default_fields() {
           'content_taxonomy_opt_groups' => FALSE,
         ),
         'type' => 'options_select',
-        'weight' => '13',
+        'weight' => '6',
       ),
     ),
   );
@@ -2855,414 +2982,36 @@ function takepart_action_field_default_fields() {
     ),
   );
 
-  // Exported field: 'taxonomy_term-action_type-field_action_open_label'.
-  $fields['taxonomy_term-action_type-field_action_open_label'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_action_open_label',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'action_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '3',
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_action_open_label',
-      'label' => 'Action Open Label',
-      'required' => 0,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '3',
-      ),
-    ),
-  );
-
-  // Exported field: 'taxonomy_term-action_type-field_action_taken'.
-  $fields['taxonomy_term-action_type-field_action_taken'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_action_taken',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'action_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '1',
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_action_taken',
-      'label' => 'Action Taken',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '5',
-      ),
-    ),
-  );
-
-  // Exported field: 'taxonomy_term-action_type-field_action_type_label'.
-  $fields['taxonomy_term-action_type-field_action_type_label'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_action_type_label',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'action_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '2',
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_action_type_label',
-      'label' => 'Action Type Label',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '2',
-      ),
-    ),
-  );
-
-  // Exported field: 'taxonomy_term-action_type-field_call_to_action'.
-  $fields['taxonomy_term-action_type-field_call_to_action'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_call_to_action',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'action_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '4',
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_call_to_action',
-      'label' => 'Call To Action',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '4',
-      ),
-    ),
-  );
-
-  // Exported field: 'taxonomy_term-action_type-field_units_plural'.
-  $fields['taxonomy_term-action_type-field_units_plural'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_units_plural',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'action_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '6',
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_units_plural',
-      'label' => 'Units Plural',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '7',
-      ),
-    ),
-  );
-
-  // Exported field: 'taxonomy_term-action_type-field_units_single'.
-  $fields['taxonomy_term-action_type-field_units_single'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_units_single',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => '255',
-      ),
-      'translatable' => '0',
-      'type' => 'text',
-    ),
-    'field_instance' => array(
-      'bundle' => 'action_type',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '5',
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'field_units_single',
-      'label' => 'Units Single',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '0',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '6',
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('Action Copy');
   t('Action Header Image');
   t('Action Header Image Link');
   t('Action Icon');
-  t('Action Open Label');
-  t('Action Taken');
   t('Action Type');
-  t('Action Type Label');
+  t('Action URL');
+  t('Admin Tag');
   t('Alternate Content');
   t('Alternate Title');
-  t('Article Image');
   t('Browser Title');
-  t('Button Text');
-  t('Call To Action');
+  t('Call to Action Promo');
   t('Comment');
   t('Context');
-  t('Display Tag');
+  t('Display Tags');
   t('Enable for TAB');
   t('Featured');
   t('Free Tag');
-  t('If a URL is provided in this field, the Take Action button that is displayed on the Action node page will be linked to this URL.');
   t('Link Only');
+  t('Main Image');
   t('Series');
   t('Short Introduction');
   t('Social Share');
-  t('Take Action Button URL');
+  t('The URL of the action relative to the TAP root. Do not use absolute URLs for actions hosted on TAP.');
   t('The title to show in the browser\'s title bar. If this field is empty, the Page Title will be used instead.');
   t('This marks an Action as eligible to be included as a TAB modal recommendation.');
   t('This will be displayed as an Action\'s title within TAB modal.');
   t('Topic');
   t('URL for the TakeAction icon.');
-  t('Units Plural');
-  t('Units Single');
   t('User can reference a Photo to be used as the Main Image for the Action.');
 
   return $fields;

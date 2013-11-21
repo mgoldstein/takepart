@@ -13,30 +13,6 @@ function takepart_action_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_action_actions|node|action|form';
-  $field_group->group_name = 'group_action_actions';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'action';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Actions',
-    'weight' => '4',
-    'children' => array(),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_action_actions|node|action|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_action_body|node|action|form';
   $field_group->group_name = 'group_action_body';
   $field_group->entity_type = 'node';
@@ -67,87 +43,6 @@ function takepart_action_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_action_campaigns|node|action|form';
-  $field_group->group_name = 'group_action_campaigns';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'action';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Campaigns',
-    'weight' => '3',
-    'children' => array(),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_action_campaigns|node|action|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_action_content|node|action|form';
-  $field_group->group_name = 'group_action_content';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'action';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Related',
-    'weight' => '10',
-    'children' => array(
-      0 => 'field_action_related',
-      1 => 'field_suggest_campaigns',
-      2 => 'field_related_content',
-      3 => 'field_suggest_content',
-      4 => 'field_related_campaigns',
-      5 => 'field_suggest_actions',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_action_content|node|action|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_action_htab1|node|action|form';
-  $field_group->group_name = 'group_action_htab1';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'action';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Content',
-    'weight' => '5',
-    'children' => array(),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'label' => 'Content',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => '',
-        'description' => '',
-      ),
-      'formatter' => 'closed',
-    ),
-  );
-  $export['group_action_htab1|node|action|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_action_media|node|action|form';
   $field_group->group_name = 'group_action_media';
   $field_group->entity_type = 'node';
@@ -171,34 +66,6 @@ function takepart_action_field_group_info() {
     ),
   );
   $export['group_action_media|node|action|form'] = $field_group;
-
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_action_sponsors|node|action|form';
-  $field_group->group_name = 'group_action_sponsors';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'action';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Sponsors',
-    'weight' => '8',
-    'children' => array(
-      0 => 'field_action_sponsor',
-      1 => 'field_action_organizer',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_action_sponsors|node|action|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -291,6 +158,47 @@ function takepart_action_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_deprecated_fields|node|action|form';
+  $field_group->group_name = 'group_deprecated_fields';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'action';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Deprecated Fields',
+    'weight' => '12',
+    'children' => array(
+      0 => 'body',
+      1 => 'field_multi_page_campaign',
+      2 => 'field_altcontent',
+      3 => 'field_actionheaderimghref',
+      4 => 'field_actionheaderimg',
+      5 => 'field_html_title',
+      6 => 'field_series',
+      7 => 'field_tab_action',
+      8 => 'field_tab_internal_title',
+      9 => 'field_tab_link_only',
+      10 => 'field_social_share_bar',
+      11 => 'field_short_introduction',
+      12 => 'field_featured',
+      13 => 'field_admin_tag',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Deprecated Fields',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_deprecated_fields|node|action|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_page_share|node|action|form';
   $field_group->group_name = 'group_page_share';
   $field_group->entity_type = 'node';
@@ -373,34 +281,6 @@ function takepart_action_field_group_info() {
     ),
   );
   $export['group_summary|node|action|medium_preview'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_supporting_content|node|action|form';
-  $field_group->group_name = 'group_supporting_content';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'action';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Supporting Content',
-    'weight' => '13',
-    'children' => array(
-      0 => 'field_tab_content_link',
-      1 => 'field_tab_update_text',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_supporting_content|node|action|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
