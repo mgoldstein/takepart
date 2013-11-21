@@ -232,6 +232,12 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'left_drawer',
           'weight' => '-10',
         ),
+        'pm_interstitial-interstitials' => array(
+          'module' => 'pm_interstitial',
+          'delta' => 'interstitials',
+          'region' => 'suffix',
+          'weight' => '-10',
+        ),
       ),
     ),
   );

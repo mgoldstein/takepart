@@ -74,6 +74,7 @@ scripts[] = js/tp_ad_takeover.jquery.js
 scripts[] = js/tpsocial.jquery.js
 scripts[] = js/tpsocial.services.js
 scripts[] = js/jquery.tp4sticky.js
+scripts[] = js/social_intersticial.js
 scripts[] = js/script.js
 
 
