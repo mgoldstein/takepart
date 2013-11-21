@@ -21,7 +21,7 @@ fonts_dir       = "../../../../all/themes/tp4/fonts"
 css_dir         = "css"
 sass_dir        = "sass"
 extensions_dir  = "sass-extensions"
-images_dir      = "images"
+images_dir      = "../../../../all/themes/tp4/images"
 javascripts_dir = "js"
 
 

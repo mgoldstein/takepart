@@ -2111,7 +2111,7 @@
  */
 /* line 226, social/*.png */
 .social-sprite, .social-facebook-black, .social-facebook-gray, .social-googleplus-black, .social-googleplus-gray, .social-pinterest-black, .social-pinterest-gray, .social-tumblr-black, .social-tumblr-gray, .social-twitter-black, .social-twitter-gray, .social-youtube-black, .social-youtube-gray {
-  background: url('../images/social-sdb493615aa.png') no-repeat;
+  background: url('../../../../themes/tp4/images/social-sdb493615aa.png') no-repeat;
 }
 
 /* line 60, ../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -2224,7 +2224,7 @@
 
 /* line 58, logos/*.png */
 .logos-sprite, .logos-participantmedia, .logos-pivot, .logos-takepart {
-  background: url('../images/logos-s21b94e0d34.png') no-repeat;
+  background: url('../../../../themes/tp4/images/logos-s21b94e0d34.png') no-repeat;
 }
 
 /* line 60, ../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -2524,7 +2524,7 @@
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1384193316') no-repeat center center;
+    background: url('../../../../themes/tp4/images/mobile-search-hover.jpg?1383937447') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -2925,7 +2925,7 @@
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1384193316') no-repeat center center;
+    background: url('../../../../themes/tp4/images/mobile-search-hover.jpg?1383937447') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -3252,7 +3252,7 @@
   height: 48px;
   color: white;
   border: none;
-  background: url('../images/mobile-search-hover.jpg?1384193316') no-repeat center center;
+  background: url('../../../../themes/tp4/images/mobile-search-hover.jpg?1383937447') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -3450,18 +3450,40 @@
   font-weight: 100;
 }
 /* line 1025, ../sass/_slimnav.scss */
+.snap-drawers .snap-drawer-left > ul > li:nth-child(4) > a {
+  width: 100%;
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  float: left;
+  background: url('../../../../themes/tp4/images/takeaction-logo-mobile.png?1385006161') no-repeat 10px center;
+  margin: 0;
+}
+/* line 1037, ../sass/_slimnav.scss */
+.snap-drawers .snap-drawer-left > ul > li:nth-child(5) > a {
+  width: 100%;
+  display: block;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  float: left;
+  background: url('../../../../themes/tp4/images/tpl-logo-mobile.png?1385006161') no-repeat 10px center;
+  margin: 0;
+}
+/* line 1049, ../sass/_slimnav.scss */
 .snap-drawers .snap-drawer-left a {
   color: #fff;
   border-bottom: 1px solid #646464;
   display: block;
   width: 100%;
 }
-/* line 1030, ../sass/_slimnav.scss */
+/* line 1054, ../sass/_slimnav.scss */
 .snap-drawers .snap-drawer-left a:hover {
   text-decoration: none;
   background-color: #333;
 }
-/* line 1036, ../sass/_slimnav.scss */
+/* line 1060, ../sass/_slimnav.scss */
 .snap-drawers .scrollable {
   overflow: auto;
   -webkit-transition-property: top, bottom;
@@ -3472,7 +3494,7 @@
   transition-timing-function: linear, linear;
   -webkit-overflow-scrolling: touch;
 }
-/* line 1046, ../sass/_slimnav.scss */
+/* line 1070, ../sass/_slimnav.scss */
 .snap-drawers li.collapsed ul {
   display: none;
 }
