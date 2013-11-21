@@ -442,7 +442,6 @@ function tp4_preprocess_entity(&$variables, $hook) {
 
 
 function tp4_preprocess_html(&$variables) {
-  dpm($variables, 'variables html');
   if($variables['page']['content']['system_main']['#entity_view_mode']['bundle'] == 'topic'){
     $variables['classes_array'][] = 'vocabulary-topic';
   }
