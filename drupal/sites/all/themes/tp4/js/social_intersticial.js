@@ -50,6 +50,73 @@ $(function() {
       show_interstitial(interstitial_links[Math.floor(Math.random() * interstitial_links.length)]);
     }
   }
+  function show_interstitial(interstitial_link){
+    var interstitial_modal_id = 'interstitial_modal_';
+    var address = interstitial_link.attr('href');
+    var $iframe = $('<iframe src="' + address + '"></iframe>').css({border: '0'});
+    var interstitial_type = interstitial_link.attr('data-interstitial-type');
+    var analytics_types = {
+      'email': 'Newsletter',
+      'social': 'Social'
+    };
+
+    $iframe.bind('load', function(){
+      var $modal = $('#' + interstitial_modal_id + 'modal');
+      $modal.show();
+      var w = $iframe.contents().find('#page').width();
+      var h = $iframe.contents().find('html').height();
+      $modal.hide();
+      $iframe.css({width: w, height: h});
+      $modal.css({overflow: 'hidden'});
+      $.tpmodal.showModal({id: interstitial_modal_id});
+      takepart.analytics.track('tpinterstitial_show_modal', {interstitial_type: analytics_types[interstitial_type]});
+    });
+
+    var extend_pm_interstitial_cookie = function(days){
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      $.cookie('pm_igloo', null);
+      $.cookie('pm_igloo', 1, { expires:date, path:'/' });
+    };
+
+    window.dont_show_interstitial = function() {
+      $.tpmodal.set({
+        id: interstitial_modal_id,
+        values: {
+          afterClose: function() {
+            extend_pm_interstitial_cookie(365 * 5);
+            takepart.analytics.track('tpinterstitial_dontshow', {interstitial_type: analytics_types[interstitial_type]});
+          }
+        }
+      });
+      $.tpmodal.hide({id: interstitial_modal_id});
+    };
+
+    window.interstitial_social_click = function(service){
+      if (service === "twitter"){
+        takepart.analytics.track('tpinterstitial_twitter');
+      } else if (service === "facebook"){
+        takepart.analytics.track('tpinterstitial_facebook');
+      }
+    }
+
+    window.interstitial_newsletter_signup = function(title){
+      takepart.analytics.track('tpinterstitial_newsletter_signup', {title: title});
+    }
+
+    $.tpmodal.load({
+      id: interstitial_modal_id,
+      node: $iframe,
+      afterClose: function() {
+        extend_pm_interstitial_cookie(7);
+        takepart.analytics.track('tpinterstitial_dismiss', {interstitial_type: analytics_types[interstitial_type]});
+      }
+    });
+  }
+
+
+
+  
 
 });
 
