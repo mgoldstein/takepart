@@ -492,7 +492,7 @@ function signature_process_import_feed($feed_url, $timeout, $import_now = FALSE,
 
   // Store the last time the feed was imported to allow subsequent imports
   // to skip unmodified actions.
-  variable_set('signature_cron_last_run', time());
+  $this_run = time();
 
   $actions = signature_read_import_feed($feed_url, $timeout);
 
@@ -508,6 +508,8 @@ function signature_process_import_feed($feed_url, $timeout, $import_now = FALSE,
       }
     }
   }
+
+  variable_set('signature_cron_last_run', $this_run);
 
   return count($actions);
 }
@@ -713,20 +715,33 @@ class SignatureActionStub {
   protected static function createNode($title, $type) {
     $node = new StdClass();
     $node->title = $title;
-    $node->type = self::translateType($type);
+    $node->type = $type;
     $node->language = LANGUAGE_NONE;
     node_object_prepare($node);
     return $node;
   }
 
-  public static function translateType($action_type) {
-    $content_types = array(
-      'Petition' => 'petition_action',
-      'Pledge' => 'pledge_action',
-      'Message' => 'mos_action',
-    );
-    return isset($content_types[$action_type])
-      ? $content_types[$action_type] : 'action';
+  public static function createTaxonomyTerm($vocabulary_name, $name) {
+    $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name);
+    $term = new StdClass();
+    $term->vid = $vocabulary->vid;
+    $term->name = $name;
+    $term->vocabulary_machine_name = $vocabulary_name;
+    taxonomy_term_save($term);
+    return $term;
+  }
+
+  public static function loadActionTypeTerm($name) {
+    $terms = array();
+    $name = trim($name);
+    $list = taxonomy_get_term_by_name($name, 'action_type');
+    if (!empty($list)) {
+      $terms[] = reset($list);
+    }
+    else {
+      $terms[] = self::createTaxonomyTerm('action_type', $name);
+    }
+    return reset($terms);
   }
 
   public static function loadTopicTerms($names) {
@@ -734,21 +749,11 @@ class SignatureActionStub {
     foreach ($names as $name) {
       $name = trim($name);
       $list = taxonomy_get_term_by_name($name, 'topic');
-      if ($terms !== FALSE) {
+      if (!empty($list)) {
         $terms[] = reset($list);
       }
     }
     return $terms;
-  }
-
-  public static function createFreeTagTerm($name) {
-    $vocabulary = taxonomy_vocabulary_machine_name_load('free_tags');
-    $term = new StdClass();
-    $term->vid = $vocabulary->vid;
-    $term->name = $name;
-    $term->vocabulary_machine_name = 'free_tags';
-    taxonomy_term_save($term);
-    return $term;
   }
 
   public static function loadFreeTagTerms($names) {
@@ -760,7 +765,7 @@ class SignatureActionStub {
         $terms[] = reset($list);
       }
       else {
-        $terms[] = self::createFreeTagTerm($name);
+        $terms[] = self::createTaxonomyTerm('free_tags', $name);
       }
     }
     return $terms;
@@ -778,6 +783,27 @@ class SignatureActionStub {
         'tid' => $term->tid,
       );
     }
+    return $value;
+  }
+
+  public static function textFieldValue($text, $language, $format = NULL) {
+    $value = array($language => array());
+    $value[$language][] = array(
+      'value' => $text,
+      'format' => $format,
+    );
+    return $value;
+  }
+
+  public static function linkFieldValue($url, $text, $language) {
+    $value = array($language => array());
+    $value[$language][] = array(
+      'url' => $url,
+      'title' => $text,
+      'attributes' => serialize(array(
+        'target' => '_blank',
+      )),
+    );
     return $value;
   }
 
@@ -820,25 +846,12 @@ class SignatureActionStub {
     return NULL;
   }
 
-  public function update($tap) {
+  public function updateTaxonomy($tap) {
 
-    // Create or update the base node.
-    $type = $this->translateType($tap->type);
-    if ($this->_node === FALSE) {
-      $this->_node = self::createNode($tap->title, $type);
-    }
-    else {
-      $this->_node->title = $tap->title;
-    }
-
-    // Update the action image if it has changed.
-    if (is_null($this->_data) || $tap->image_url !== $this->_data->image_url) {
-      $file = self::createMediaFile($tap->image_url);
-      if ($file !== FALSE) {
-        $this->_node->field_action_main_image = self::mediaFieldValue(
-          $file->fid, $this->_node->language);
-      }
-    }
+    // Update action type
+    $action_type = self::loadActionTypeTerm($tap->type);
+    $this->_node->field_action_type = self::taxonomyFieldValue(
+      array($action_type), $this->_node->language);
 
     // Update action topic(s).
     $topics = self::loadTopicTerms($tap->topic);
@@ -854,6 +867,47 @@ class SignatureActionStub {
     $free_tags = self::loadFreeTagTerms($tap->tags);
     $this->_node->field_free_tag = self::taxonomyFieldValue($free_tags,
       $this->_node->language);
+  }
+
+  public function updateActionEngagement($tap) {
+
+    // Update the call to action
+    $this->_node->field_tab_call_to_action = self::textFieldValue(
+      $tap->title, $this->_node->language);
+
+    // Update the action URL
+    $this->_node->field_action_url = self::linkFieldValue($tap->url,
+      $tap->call_to_action, $this->_node->language);
+
+    // Update the action icon
+    $this->_node->field_action_icon = self::textFieldValue($tap->icon,
+      $this->_node->language);
+  }
+
+  public function update($tap) {
+
+    // Create or update the base node.
+    if ($this->_node === FALSE) {
+      $this->_node = self::createNode($tap->title, 'action');
+    }
+    else {
+      $this->_node->title = $tap->title;
+    }
+
+    // Update the action image if it has changed.
+    if (is_null($this->_data) || $tap->image_url !== $this->_data->image_url) {
+      $file = self::createMediaFile($tap->image_url);
+      if ($file !== FALSE) {
+        $this->_node->field_action_main_image = self::mediaFieldValue(
+          $file->fid, $this->_node->language);
+      }
+    }
+
+    // Update the content taxonomy.
+    $this->updateTaxonomy($tap);
+
+    // Update the action engagement.
+    $this->updateActionEngagement($tap);
 
     // Update the internal data to allow tap-action-path token replacement.
     $this->_data = $tap;

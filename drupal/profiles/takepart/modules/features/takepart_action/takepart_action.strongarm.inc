@@ -14,7 +14,7 @@ function takepart_action_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_action';
-  $strongarm->value = 'edit-submission';
+  $strongarm->value = 'edit-scheduler';
   $export['additional_settings__active_tab_action'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -76,16 +76,16 @@ function takepart_action_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '8',
+          'weight' => '11',
         ),
         'metatags' => array(
           'weight' => '15',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
       ),
       'display' => array(
