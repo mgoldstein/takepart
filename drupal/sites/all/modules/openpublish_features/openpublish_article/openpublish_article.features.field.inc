@@ -861,10 +861,9 @@ function openpublish_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 22,
+	  'type' => 'hidden',
+	  'weight' => '22',
         ),
         'feature_main' => array(
           'label' => 'above',
