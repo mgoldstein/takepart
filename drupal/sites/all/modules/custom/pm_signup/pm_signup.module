@@ -331,7 +331,7 @@ function pm_signup_api_parse(&$request) {
       }
     }
 
-    // The payload is required and must be an array of strings.
+    // The payload is required and must be an array.
     if (!isset($signup['payload']) || !is_array($signup['payload'])) {
       return pm_signup_api_error(400, 'Invalid payload.');
     }
@@ -388,19 +388,21 @@ function pm_signup_api_callback() {
     }
   }
 
-  // If any signups failed, report the reason for the failure
+  // All signups are duplicates
   if (count($request) == $duplicates) {
     return array(
       'status' => '409 Conflict',
       'payload' => $response,
     );
   }
+  // All signups returned an error
   elseif (count($response) == count($request)) {
     return array(
       'status' => '400 Bad Request',
       'payload' => $response,
     );
   }
+  // Some signups returned an error
   elseif (count($response) > 0) {
     return array(
       'status' => '202 Accepted',

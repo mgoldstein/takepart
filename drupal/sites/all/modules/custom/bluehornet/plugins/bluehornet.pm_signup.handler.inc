@@ -56,7 +56,7 @@ class BlueHornetSignupHandler {
     $opt_ins = $signup['action.opt-ins.newsletters'];
     foreach ($opt_ins as $opt_in) {
       if ($opt_in->getPluginEnabled('bluehornet.pm_signup.handler')) {
-        $configuration = $opt_in->getPluginConfiguration(
+        $configuration = (array) $opt_in->getPluginConfiguration(
           'bluehornet.pm_signup.handler');
 
         $account = isset($configuration['account'])

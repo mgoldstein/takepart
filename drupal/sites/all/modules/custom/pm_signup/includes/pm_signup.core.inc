@@ -562,7 +562,7 @@ abstract class SignupEndpoint extends SignupFieldSet {
   }
 
   public function getConfiguration() {
-    return $this->configuration;
+    return (array) $this->configuration;
   }
 
   public function setConfiguration($configuration) {
@@ -590,7 +590,7 @@ abstract class SignupEndpoint extends SignupFieldSet {
 
   public function getPluginConfiguration($id) {
     if (isset($this->plugins[$id])) {
-      return $this->plugins[$id]['configuration'];
+      return (array) $this->plugins[$id]['configuration'];
     }
     return FALSE;
   }
