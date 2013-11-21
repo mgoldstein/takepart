@@ -225,7 +225,7 @@ jQuery(document).ready(function() {
             jQuery(this).parent().children().each(function() {
                 jQuery(this).addClass( 'collapsed' );
                 jQuery(this).removeClass( 'expanded' );
-                // jQuery(this).children('ul').hide();
+                jQuery(this).children('ul').hide();
             });
         });
     });

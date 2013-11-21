@@ -5,6 +5,7 @@ package = Content Types
 php = 5.2.4
 version = 7.x-1.3
 project = takepart_gallery
+dependencies[] = bean
 dependencies[] = boxes
 dependencies[] = comment_block_simple
 dependencies[] = context
