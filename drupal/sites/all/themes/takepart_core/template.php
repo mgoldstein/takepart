@@ -172,12 +172,12 @@ function _tp3_fill_template_vars(&$variables) {
 
 function _render_tp3_header(&$params) {
   $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav');
-  return '<div id="page-wrapper"><div class="slimnav non-responsive">'. $slimnav['content']. '</div></div>';
+  return '<div id="page-wrapper"><div class="slimnav responsive">'. $slimnav['content']. '</div></div>';
 }
 
 function _render_tp3_footer(&$params) {
     $footer= module_invoke('tp4_support', 'block_view', 'tp4_footer');
-    return '<div id="footer-wrapper"><div class="footer-wrapper"><footer>'. $footer['content']. '<footer></div></div>';  //this is dirty
+    return '<div id="footer-wrapper responsive"><div class="footer-wrapper"><footer>'. $footer['content']. '<footer></div></div>';  //this is dirty
 }
 
 function _alter_generated_css(&$css) {
