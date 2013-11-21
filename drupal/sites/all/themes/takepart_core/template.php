@@ -172,7 +172,7 @@ function _tp3_fill_template_vars(&$variables) {
 
 function _render_tp3_header(&$params) {
   $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav');
-  return '<div id="page-wrapper"><div class="slimnav">'. $slimnav['content']. '</div></div>';
+  return '<div id="page-wrapper"><div class="slimnav non-responsive">'. $slimnav['content']. '</div></div>';
 }
 
 function _render_tp3_footer(&$params) {
