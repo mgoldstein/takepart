@@ -15,6 +15,7 @@ dependencies[] = menu
 dependencies[] = menu_block
 dependencies[] = newsletter_campaign
 dependencies[] = panels_mini
+dependencies[] = pm_interstitial
 dependencies[] = takepart_custom
 dependencies[] = takepart_gallery
 dependencies[] = tp4_support
