@@ -16,7 +16,7 @@ class BlueStateDigitalSignupHandler {
 
   public function __construct($plugin, $configuration) {
     $this->plugin = $plugin;
-    $this->configuration = $configuration;
+    $this->configuration = (array) $configuration;
   }
 
   public function getLabel() {
@@ -77,7 +77,7 @@ class BlueStateDigitalSignupHandler {
         ),
       );
     }
-    
+
     $opt_ins = $signup['action.opt-ins.newsletters'];
     foreach ($opt_ins as $name => $opt_in) {
       if ($opt_in->getPluginEnabled('bluestatedigital.pm_signup.handler')) {

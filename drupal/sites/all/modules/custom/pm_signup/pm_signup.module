@@ -352,7 +352,7 @@ function pm_signup_api_callback() {
 
   // Submit each signup
   $response = array();
-  $duplicate = FALSE;
+  $duplicates = 0;
   foreach ($request as $signup) {
     try {
       pm_signup_queue($signup);
@@ -377,7 +377,7 @@ function pm_signup_api_callback() {
         'endpoint' => $signup['endpoint'],
         'error' => 'Duplicate signup.',
       );
-      $duplicate = TRUE;
+      $duplicates += 1;
     }
     catch (SignupSubmissionException $sse) {
       $response[] = array(
@@ -389,7 +389,7 @@ function pm_signup_api_callback() {
   }
 
   // If any signups failed, report the reason for the failure
-  if (count($request) === 1 && $duplicate) {
+  if (count($request) == $duplicates) {
     return array(
       'status' => '409 Conflict',
       'payload' => $response,
