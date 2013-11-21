@@ -3335,6 +3335,33 @@ tr.selected td {
   background-image: url('../images/progress.gif?1382751895');
 }
 
+/* Interstitials ------------------------- */
+/* Social */
+/* line 817, ../sass/elements/_misc.scss */
+.interstitial_modal_modal.tpmodal_modal {
+  background: transparent;
+  border-radius: 0;
+}
+
+/* line 822, ../sass/elements/_misc.scss */
+.interstitial_modal_modal .tpmodal_content {
+  padding: 0;
+}
+
+/* line 826, ../sass/elements/_misc.scss */
+.interstitial_modal_modal .tpmodal_close {
+  background: url(/profiles/takepart/themes/takepart3/campaigns/interstitials/images/close.png);
+  width: 40px;
+  height: 40px;
+}
+
+/* line 832, ../sass/elements/_misc.scss */
+.interstitial_modal_modal iframe {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+
 /* Page */
 /**
  * @file
