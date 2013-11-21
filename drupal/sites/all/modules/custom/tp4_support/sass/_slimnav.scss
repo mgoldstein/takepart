@@ -356,7 +356,7 @@
 */
 .slimnav.responsive.mobile-only{
   height: 47px;
-  overflow: hidden;
+  overflow: visible;
   background-color: #fff;
   font-family: $adelle-regular;
   color: $dark-gray;
@@ -364,7 +364,7 @@
   padding-bottom: 1px;
   border-bottom: 2px solid #000;
   position: relative;
-  z-index: 2;
+  z-index: 4;
   @include breakpoint($breakpoint-mobile){
     padding-left: 10px;
     padding-right: 10px;
@@ -623,7 +623,7 @@
       -moz-box-sizing:border-box; /* Firefox */
       clear: none;
       float: left;
-      width: 587px;
+      width: 530px;
       padding: 0;
       padding-left: 20px;
       line-height: 26px;
@@ -632,7 +632,7 @@
       width: 20%;
       float: left;
       font-family: $tradegothic-regular;
-      font-size: 17px;
+      font-size: 16px;
       text-transform: uppercase;
       white-space: nowrap;
       text-align: center;
@@ -694,8 +694,7 @@
  *Slim Nav NON-Responsive
 */
 .slimnav.non-responsive {
-  height: auto;
-  overflow: hidden;
+  height: 34px;
   background-color: #fff;
   font-family: $adelle-regular;
   color: $dark-gray;
