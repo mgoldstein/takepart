@@ -10,6 +10,8 @@
   padding-top: 10px;
   padding-bottom: 1px;
   border-bottom: 2px solid #000;
+  position: relative;
+  z-index: 2;
   @include breakpoint($breakpoint-mobile){
     padding-left: 10px;
     padding-right: 10px;
@@ -361,6 +363,8 @@
   padding-top: 10px;
   padding-bottom: 1px;
   border-bottom: 2px solid #000;
+  position: relative;
+  z-index: 2;
   @include breakpoint($breakpoint-mobile){
     padding-left: 10px;
     padding-right: 10px;
@@ -700,6 +704,8 @@
   border-bottom: 2px solid #000;
   padding-left: 0;
   padding-right: 0;
+  position: relative;
+  z-index: 2;
   .left{
     float: left;
     padding-left: 10px;

@@ -78,6 +78,8 @@ footer{
 .footer-wrapper.responsive.mobile-only{
   background-color: $gray-background;
   padding: 30px 0 15px 0;
+  position: relative;
+  z-index: 2;
   footer{
     @include breakpoint($breakpoint-mobile){
       width: 100%;
@@ -262,6 +264,8 @@ footer{
   background-color: $gray-background;
   padding: 30px 0 15px 0;
   width: 100%;
+  position: relative;
+  z-index: 2;
   footer{
     max-width: non-responsive;
     width: 1000px;

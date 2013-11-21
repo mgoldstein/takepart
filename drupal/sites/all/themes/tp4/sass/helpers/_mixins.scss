@@ -98,9 +98,9 @@
 
 @mixin tp-icon {
   font-family: "SSGizmo";
-  font-size: 1.5em;
-  line-height: 0.666666667;
-  vertical-align: bottom;
+  font-size: 1.25em;
+  line-height: 0.8;
+  vertical-align: text-bottom;
 }
 
 @mixin icon-photo-gallery {

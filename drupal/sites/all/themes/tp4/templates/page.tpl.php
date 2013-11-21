@@ -14,6 +14,7 @@
 </div>
 
 <div id="page-wrap">
+
   <div class="header-wrapper">
     <header id="header">
       <?php print render($page['header']); ?>
@@ -67,7 +68,5 @@
   <div class="footer-wrapper">
     <?php print render($page['footer']); ?>
   </div>
-
-
   <?php print render($page['bottom']); ?>
 </div>

@@ -4,6 +4,8 @@
 .footer-wrapper{
   background-color: $gray-background;
   padding: 30px 0 15px 0;
+  position: relative;
+  z-index: 2;
   footer{
     @include zen-grid-container;
     .footer-left {

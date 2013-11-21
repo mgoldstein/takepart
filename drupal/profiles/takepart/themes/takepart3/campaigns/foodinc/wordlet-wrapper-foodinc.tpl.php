@@ -68,7 +68,6 @@ googletag.cmd.push(function()
 
   </div>
 </div>
-<?php print_r($page['left_drawer']); ?>
 
 <div id="page-wrapper" class="campaign foodinc">
 	<?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
