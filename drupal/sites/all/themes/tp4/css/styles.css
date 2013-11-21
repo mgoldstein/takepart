@@ -5243,17 +5243,17 @@ body.front #sidebar .block-title {
 
 @media all and (min-width: 320px) {
   /* line 4, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content {
     font-size: 16px;
   }
   /* line 7, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li {
     margin-bottom: 20px;
   }
 }
 @media all and (min-width: 768px) {
   /* line 14, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li {
     float: left;
     width: 33%;
     padding-right: 20px;
@@ -5265,41 +5265,41 @@ body.front #sidebar .block-title {
     box-sizing: border-box;
   }
   /* line 22, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li .promo-image {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li .promo-image {
     padding-bottom: 10px;
     height: auto;
     overflow: hidden;
     height: 160px;
   }
   /* line 27, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li .promo-image img {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li .promo-image img {
     max-width: 190px;
   }
   /* line 31, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li .promo-headline {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li .promo-headline {
     font-size: 16px;
     line-height: 20px;
   }
   /* line 37, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li:first-child {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li:first-child {
     float: left;
     width: 100%;
     padding: 0;
     padding-bottom: 10px;
   }
   /* line 42, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li:first-child .promo-image {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li:first-child .promo-image {
     padding-bottom: 0;
     float: left;
     padding-right: 20px;
     height: auto;
   }
   /* line 47, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li:first-child .promo-image img {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li:first-child .promo-image img {
     max-width: 300px;
   }
   /* line 51, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li:first-child .promo-headline {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li:first-child .promo-headline {
     float: left;
     font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 28px;
@@ -5308,19 +5308,19 @@ body.front #sidebar .block-title {
     width: 300px;
   }
   /* line 60, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li:nth-child(2) {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li:nth-child(2) {
     clear: left;
   }
   /* line 62, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li:nth-child(2) img {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li:nth-child(2) img {
     float: left;
   }
   /* line 67, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li:nth-child(3) img {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li:nth-child(3) img {
     margin: 0 auto;
   }
   /* line 72, ../sass/page/_topic_taxonomy.scss */
-  body.page-taxonomy-term.section-topic .content ul.promo-content li:nth-child(4) img {
+  body.page-taxonomy-term.vocabulary-topic .content ul.promo-content li:nth-child(4) img {
     float: right;
   }
 }
