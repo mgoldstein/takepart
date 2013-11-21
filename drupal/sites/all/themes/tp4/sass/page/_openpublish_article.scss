@@ -172,10 +172,12 @@
       // these values are extremely stupid.
       font: normal 2.428571429em/1.088235294 $ashbury-regular;
       margin-bottom: .411764706em; // 14px / 34px
+      color: black;
     }
     .field-name-field-article-subhead {
       font: normal 1.142857143em/1.125 $ashbury-light;
       margin-bottom: 1em;
+      color: black;
     }
   }
   .field-name-field-article-main-image {
@@ -520,7 +522,8 @@
         display: inline-block;
         vertical-align: middle;
         margin-left: 5px;
-	@include transform(scale(.791666667));
+	     @include transform(scale(.791666667));
+       -webkit-backface-visibility: hidden;
       }
     }
   }
