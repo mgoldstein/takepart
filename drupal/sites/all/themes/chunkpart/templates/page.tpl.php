@@ -47,7 +47,5 @@
   <?=render($page['content_bottom']); ?>
 </main>
 
-<?=$footer ?>
-
 <? // TODO: Confirm this block can be here with the site JS below it ?>
 <?=render($page['footer']) ?>

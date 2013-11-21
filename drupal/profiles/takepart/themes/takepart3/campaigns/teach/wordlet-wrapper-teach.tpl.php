@@ -43,7 +43,7 @@
 	<!-- end -->
 
 </div>
-<div class="footer-wrapper non-responsive"> 
+<div class="footer-wrapper responsive"> 
   <footer>
     <?php $footer = module_invoke('tp4_support', 'block_view', 'tp4_footer'); ?>
     <?php print $footer['content']; ?>
