@@ -558,7 +558,6 @@
     z-index: 0;
   }
   img{
-    height: 30px;
     display: block;
     margin: 0 auto 1em;
   }
@@ -590,6 +589,12 @@
     float: right;
     a:after {
       content: "  \23E9";
+    }
+  }
+  > a:hover {
+    .previous,
+    .next {
+      text-decoration: underline;
     }
   }
   .previous{
