@@ -82,12 +82,14 @@
       text-transform: uppercase;
       text-align: center;
       letter-spacing: -1px;
-      margin-bottom: .5em;
+      margin-bottom: .1em;
       float: left;
       width: 38px;
       @media (max-width: 979px) {
-	&.share-headline {
 	  margin-top: 6px;
+	&.share-headline {
+	  margin-left: 6px;
+	  margin-top: 13px;
 	}
       }
       @include breakpoint($breakpoint-desktop) {
@@ -95,9 +97,16 @@
         float: none;
       }
     }
-    .takepart-take-action,
-    .comments-link {
-      margin: 0;
+    .takepart-take-action {
+      margin: 0 0 1em;
+    }
+    .comments-link,
+    .tp-social {
+      margin-top: 6px;
+      @include breakpoint($breakpoint-desktop) {
+	margin-top: 0;
+	margin-bottom: 0;
+      }
     }
     #article-share .tp-social-link,
     .comments-link a,
@@ -119,7 +128,9 @@
     position: relative;
     overflow: hidden;
     float: left;
+    margin-top: 6px;
     @include breakpoint($breakpoint-desktop) {
+      margin-top: 0;
       margin-left: 8px;
     }
     #article-more-shares { // positioning
