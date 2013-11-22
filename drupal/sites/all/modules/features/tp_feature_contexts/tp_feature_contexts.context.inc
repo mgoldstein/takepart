@@ -80,12 +80,6 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-7',
         ),
-        'boxes-ga_homepage_bottom_right' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_homepage_bottom_right',
-          'region' => 'sidebar',
-          'weight' => '-6',
-        ),
         'tp4_support-tp4_graveyard' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_graveyard',
