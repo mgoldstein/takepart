@@ -104,7 +104,7 @@ body.front{
             color: black;
 
             &:before {
-              content: "take action: ";
+              content: "take action:\0022";
               font-family: "BrownRegular", verdana, sans-serif;
             }
             &:hover,
