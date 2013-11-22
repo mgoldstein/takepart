@@ -3514,29 +3514,29 @@
   display: none;
 }
 
-/* line 1088, ../sass/_slimnav.scss */
+/* line 1085, ../sass/_slimnav.scss */
 body.page-iframes .slimnav.responsive .menu-toggle {
   display: none;
 }
 
-/* line 1091, ../sass/_slimnav.scss */
+/* line 1088, ../sass/_slimnav.scss */
 body.page-iframes-header {
   border-bottom: none;
 }
 
-/* line 1094, ../sass/_slimnav.scss */
+/* line 1091, ../sass/_slimnav.scss */
 body.page-iframes-footer {
   border-top: none;
 }
 
-/* line 1097, ../sass/_slimnav.scss */
+/* line 1094, ../sass/_slimnav.scss */
 .page-iframes #page-wrapper {
   width: 100%;
   max-width: 1000px;
 }
 
-/* line 1101, ../sass/_slimnav.scss */
-.clearfix {
+/* line 1098, ../sass/_slimnav.scss */
+.slimnav .clearfix {
   clear: both;
 }
 
