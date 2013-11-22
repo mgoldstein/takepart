@@ -175,6 +175,9 @@ body.front{
   @include breakpoint($breakpoint-desktop){
     float: right;
   }
+  &.extra-margin {
+    margin-top: 1.5em;
+  }
 }
 //
 // Latest Headlines
