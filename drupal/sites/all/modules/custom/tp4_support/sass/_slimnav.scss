@@ -12,7 +12,7 @@
   border-bottom: 2px solid #000;
   position: relative;
   z-index: 2;
-  height: 34px;
+  height: auto;
   overflow: visible;
   @include breakpoint($breakpoint-mobile){
     padding-left: 10px;
@@ -42,7 +42,7 @@
   .right{
     float: right;
     @include breakpoint($breakpoint-tablet){
-      width: 30%;
+      width: 40%;
     }
     @include breakpoint($breakpoint-desktop){
       width: auto;
@@ -89,7 +89,7 @@
       display: block;
       text-align: right;
       float: right;
-      padding-right: 39px;
+      padding-right: 20px;
       padding-top: 4px;
       .text{
         display: inline-block;
@@ -110,6 +110,9 @@
           padding: 0;
         }
       }
+    }
+    @include breakpoint($breakpoint-desktop){
+      padding-right: 39px;
     }
   }
   .user-menu{
@@ -1077,4 +1080,21 @@
   li.collapsed ul{
     display: none;
   }
+}
+
+body.page-iframes .slimnav.responsive .menu-toggle{
+  display: none;
+}
+body.page-iframes-header{
+  border-bottom: none;
+}
+body.page-iframes-footer{
+  border-top: none;
+}
+.page-iframes #page-wrapper{
+  width: 100%;
+  max-width: 1000px;
+}
+.clearfix{
+  clear: both;
 }

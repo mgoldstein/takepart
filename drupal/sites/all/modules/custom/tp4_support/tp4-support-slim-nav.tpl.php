@@ -24,3 +24,4 @@
     <?php print drupal_render(module_invoke('search_api_page', 'block_view', '2')); ?>
   </div>
 </div>
+<div class="clearfix"></div>
