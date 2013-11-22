@@ -3782,7 +3782,7 @@ body.front #sidebar .block-title {
 }
 /* line 106, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:before {
-  content: "take action: ";
+  content: "take action:\0022";
   font-family: "BrownRegular", verdana, sans-serif;
 }
 /* line 111, ../sass/page/_homepage.scss */
@@ -5044,7 +5044,7 @@ body.front #sidebar .block-title {
 }
 /* line 433, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full #article-footer .topic-links li:after {
-  content: ', ';
+  content: ',\0022';
   display: inline;
 }
 /* line 437, ../sass/page/_openpublish_article.scss */
