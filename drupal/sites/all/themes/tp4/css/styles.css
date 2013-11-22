@@ -3332,7 +3332,7 @@ tr.selected td {
 /* line 807, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1384910306');
+  background-image: url('../images/progress.gif?1385152374');
 }
 
 /* Interstitials ------------------------- */
@@ -3834,12 +3834,12 @@ body.front #sidebar .block-title {
 /* line 152, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1385000280');
+  background-image: url('../images/tpl-title.jpg?1385152374');
 }
 /* line 156, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 252px;
-  background-image: url('../images/tpl-time.jpg?1384910306');
+  background-image: url('../images/tpl-time.jpg?1385152374');
 }
 
 /* line 163, ../sass/page/_homepage.scss */
@@ -4403,7 +4403,7 @@ body.front #sidebar .block-title {
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1384985369') no-repeat;
+  background: url('../images/megaphone.jpg?1385152374') no-repeat;
   padding-bottom: 5px;
 }
 
@@ -4442,7 +4442,7 @@ body.front #sidebar .block-title {
   .node-openpublish-article.view-mode-full #series-navigation,
   .node-openpublish-article.view-mode-full #article-footer,
   .node-openpublish-article.view-mode-full #article-comments {
-    margin-left: 50px;
+    margin-left: 53px;
   }
 }
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -5504,7 +5504,7 @@ body.front #sidebar .block-title {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1384985369') no-repeat center center;
+    background: url('../images/tpl-logo.jpg?1385152374') no-repeat center center;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -5514,7 +5514,7 @@ body.front #sidebar .block-title {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.png?1384910569') no-repeat center center;
+    background: url('../images/takeaction-logo.png?1385152374') no-repeat center center;
     margin: 0;
   }
 }
@@ -5839,11 +5839,11 @@ body.front #sidebar .block-title {
 }
 /* line 228, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1384910569');
+  background-image: url('../images/tpl-logo-hover.jpg?1385152374');
 }
 /* line 231, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-hover.jpg?1384910569');
+  background-image: url('../images/takeaction-logo-hover.jpg?1385152374');
 }
 
 /**
@@ -6392,7 +6392,7 @@ header {
   /* line 119, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1384910306') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1385152374') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -6456,7 +6456,7 @@ header .search {
     padding-top: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1384910306') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1385152374') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -6526,7 +6526,7 @@ header .search {
     padding-top: 24px;
     overflow: hidden;
     background-color: transparent;
-    background: url('../images/search-submit.png?1384910306') no-repeat center center;
+    background: url('../images/search-submit.png?1385152374') no-repeat center center;
   }
 }
 
@@ -6539,7 +6539,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1384910306') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1385152374') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
@@ -7036,7 +7036,7 @@ header .search {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1385020080') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1385152374') no-repeat 10px center;
   margin: 0;
 }
 /* line 68, ../sass/modules/_left_drawer.scss */
@@ -7047,7 +7047,7 @@ header .search {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/tpl-logo-mobile.png?1385020080') no-repeat 10px center;
+  background: url('../images/tpl-logo-mobile.png?1385152374') no-repeat 10px center;
   margin: 0;
 }
 /* line 80, ../sass/modules/_left_drawer.scss */
