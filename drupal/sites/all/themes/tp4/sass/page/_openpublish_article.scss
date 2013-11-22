@@ -431,7 +431,7 @@
       li {
         padding: 0;
         &:after {
-          content: ', ';
+          content: ',\a0 ';
           display: inline;
         }
         &:last-child:after {

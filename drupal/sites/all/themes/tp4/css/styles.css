@@ -5044,7 +5044,7 @@ body.front #sidebar .block-title {
 }
 /* line 433, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full #article-footer .topic-links li:after {
-  content: ', ';
+  content: ',\a0 ';
   display: inline;
 }
 /* line 437, ../sass/page/_openpublish_article.scss */
