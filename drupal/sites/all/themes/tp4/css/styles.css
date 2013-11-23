@@ -1832,6 +1832,7 @@ a.more {
   font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   position: relative;
   padding-left: 1.071428571em;
+  display: inline-block;
 }
 /* line 122, ../sass/helpers/_mixins.scss */
 a.more:before {
@@ -1846,7 +1847,7 @@ a.more:before {
   height: 1.428571429em;
 }
 
-/* line 72, ../sass/elements/_typography.scss */
+/* line 73, ../sass/elements/_typography.scss */
 .footer-title {
   font-family: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 16px;
