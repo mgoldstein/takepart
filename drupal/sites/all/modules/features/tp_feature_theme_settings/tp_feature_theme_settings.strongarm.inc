@@ -728,8 +728,8 @@ foo
     'logo_path' => '',
     'logo_upload' => '',
     'default_favicon' => 0,
-    'favicon_path' => 'public://takepart_logo.ico',
-    'favicon_mimetype' => 'image/vnd.microsoft.icon',
+    'favicon_path' => 'public://tp_megaphone_favicon_16x16_0.png',
+    'favicon_mimetype' => 'image/png',
   );
   $export['theme_settings'] = $strongarm;
 
@@ -738,10 +738,14 @@ foo
   $strongarm->api_version = 1;
   $strongarm->name = 'theme_takepart3_settings';
   $strongarm->value = array(
+    'toggle_logo' => 1,
     'toggle_favicon' => 1,
-    'default_favicon' => 1,
-    'favicon_path' => '',
-    'favicon_upload' => '',
+    'default_logo' => 1,
+    'logo_path' => '',
+    'logo_upload' => '',
+    'default_favicon' => 0,
+    'favicon_path' => 'public://tp_megaphone_favicon_16x16_1.png',
+    'favicon_mimetype' => 'image/png',
   );
   $export['theme_takepart3_settings'] = $strongarm;
 
