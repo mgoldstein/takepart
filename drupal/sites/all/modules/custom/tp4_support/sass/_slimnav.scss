@@ -132,6 +132,8 @@
       li{
         display: inline-block;
         margin-right: 10px;
+        overflow: hidden;
+        height: 20px;
         &:last-child{
           margin-right: 0px;
           padding-left: 10px;
@@ -164,6 +166,9 @@
         }
         &.user{
           position: relative;
+          width: 50px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
     }
@@ -475,6 +480,8 @@
       li{
         display: inline-block;
         margin-right: 10px;
+        overflow: hidden;
+        height: 20px;
         &:last-child{
           margin-right: 0px;
           padding-left: 10px;
@@ -507,6 +514,9 @@
         }
         &.user{
           position: relative;
+          width: 50px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
     }
@@ -772,6 +782,8 @@
     li{
       display: inline-block;
       margin-right: 10px;
+      overflow: hidden;
+      height: 20px;
       &:last-child{
         margin-right: 0px;
         padding-left: 10px;
@@ -804,6 +816,9 @@
       }
       &.user{
         position: relative;
+        width: 50px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }
