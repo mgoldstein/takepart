@@ -1,5 +1,4 @@
 <?php
-dpm(get_defined_vars(), 'defined vars');
   if($variables['items'] != NULL){
     $authors = '';
     $number_of_authors = count($variables['items']);
