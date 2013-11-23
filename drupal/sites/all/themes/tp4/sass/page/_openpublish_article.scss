@@ -23,7 +23,7 @@
     #series-navigation,
     #article-footer,
     #article-comments {
-      margin-left: 50px;
+      margin-left: 53px;
     }
   }
 
@@ -431,7 +431,7 @@
       li {
         padding: 0;
         &:after {
-          content: ', ';
+          content: ',\0022';
           display: inline;
         }
         &:last-child:after {
