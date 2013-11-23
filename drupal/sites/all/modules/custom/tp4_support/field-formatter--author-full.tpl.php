@@ -1,4 +1,5 @@
 <?php
+dpm(get_defined_vars(), 'defined vars');
   $authors = '';
   $number_of_authors = count($variables['items']);
   $authors .= '<span' . $variables['content_attributes'] . '>';

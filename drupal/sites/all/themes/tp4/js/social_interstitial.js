@@ -76,7 +76,6 @@
             });
 
             var extend_pm_interstitial_cookie = function(days){
-              alert('testing');
               var date = new Date();
               date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
               $.cookie('pm_igloo', null);
