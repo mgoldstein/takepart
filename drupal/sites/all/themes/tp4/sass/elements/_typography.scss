@@ -63,6 +63,7 @@ a {
     font-size: 14px;
     font-family: $ashbury-light;
     @include blue-arrow-bullets;
+    display: inline-block;
   }
 }
 
