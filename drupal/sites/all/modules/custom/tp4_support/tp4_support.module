@@ -327,6 +327,6 @@ function tp4_support_preprocess_block(&$variables) {
 function tp4_support_form_alter(&$form, &$form_state, $form_id){
   if($form['#form_id'] == 'search_api_page_search_form_site_search'){
     $form['keys_2']['#attributes']['placeholder'] = t('Search');
+    $form['#action'] = '/';
   }
 }
-
