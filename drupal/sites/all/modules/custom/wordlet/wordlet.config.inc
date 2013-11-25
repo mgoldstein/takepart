@@ -179,7 +179,7 @@ function _wordlet_configuration() {
       'wrappers' => array('interstitials', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/interstitials/social_follows/social_interstitial.css',
+        'campaigns/interstitials/css/social_interstitial.css',
       ),
       'js' => array(
         'campaigns/interstitials/social_follows/social_interstitial.js',
@@ -194,7 +194,7 @@ function _wordlet_configuration() {
       'wrappers' => array('interstitials', 'campaign', 'html'),
       'css' => array(
         'css/normalize_cms.css',
-        'campaigns/interstitials/newsletter/newsletter.css',
+        'campaigns/interstitials/css/newsletter.css',
       ),
       'js' => array(
         'campaigns/interstitials/newsletter/newsletter.js',
