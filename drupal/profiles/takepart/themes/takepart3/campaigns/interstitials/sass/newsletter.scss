@@ -2,6 +2,8 @@ body {
 	background: #fff;
 	border-top: none;
 	border-bottom: none;
+	font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+	font-size: 14px;
 }
 
 #site-footer,
@@ -33,10 +35,8 @@ body {
 #page .headline {
 	padding-top: 20px;
 	margin-bottom: 5px;
-
 	font-size: 26px;
-	text-transform: uppercase;
-	font-family: TradeGothicLTStdCnBold, sans-serif;
+	font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
 
 #page .content {
@@ -62,14 +62,16 @@ body {
 .form-type-textfield label {
 	position: absolute;
 	z-index: 2;
-	line-height: 32px;
+	line-height: 40px;
 	padding: 0 5px;
+	padding-left: 10px;
+	color: #999;
 	border: 1px solid transparent;
 }
 
 .form-type-textfield input {
 	max-width: 100%;
-	font-size: 24px;
+	font-size: 18px;
 	z-index: 1;
 	border: 1px solid #ccc;
 	box-shadow: inset 5px 5px 10px 0 rgba(0, 0, 0, .1);
@@ -82,6 +84,7 @@ body {
 .form-type-textfield input:focus {
 	max-width: 100%;
 	z-index: 3;
+	outline: none;
 }
 
 .form-actions input {
@@ -101,4 +104,10 @@ body {
 }
 a {
 	color: #019F84;
+}
+.form-required{
+	display: none;
+}
+form{
+	color: #666;
 }

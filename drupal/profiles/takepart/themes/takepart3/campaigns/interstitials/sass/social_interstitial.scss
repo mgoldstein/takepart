@@ -1,5 +1,9 @@
 body {
-	background: green;
+	background: #fff;
+	border-top: none;
+	border-bottom: none;
+	font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+	font-size: 14px;
 }
 
 #site-footer,
@@ -14,6 +18,7 @@ body {
 #page {
 	display: inline-block;
 	vertical-align: top;
+	width: 400px;
 }
 
 #page .content,
@@ -24,10 +29,8 @@ body {
 #page .headline {
 	padding-top: 20px;
 	margin-bottom: 5px;
-
 	font-size: 26px;
-	text-transform: uppercase;
-	font-family: TradeGothicLTStdCnBold, sans-serif;
+	font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
 
 #page .content {
@@ -35,7 +38,6 @@ body {
 }
 
 #page .body {
-	width: 160px;
 	float: left;
 }
 
@@ -58,4 +60,11 @@ body {
 
 #page #dont {
 	font-size: 12px;
+	clear: left;
+}
+header img{
+	width: 400px;
+}
+a {
+	color: #019F84;
 }
