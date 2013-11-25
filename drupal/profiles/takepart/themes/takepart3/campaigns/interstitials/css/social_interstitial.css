@@ -1,73 +1,87 @@
 /* line 1, ../sass/social_interstitial.scss */
 body {
-  background: green;
+  background: #fff;
+  border-top: none;
+  border-bottom: none;
+  font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  font-size: 14px;
 }
 
-/* line 6, ../sass/social_interstitial.scss */
+/* line 10, ../sass/social_interstitial.scss */
 #site-footer,
 #site-header {
   display: none;
 }
 
-/* line 10, ../sass/social_interstitial.scss */
+/* line 14, ../sass/social_interstitial.scss */
 #page-wrapper {
   width: auto;
 }
 
-/* line 14, ../sass/social_interstitial.scss */
+/* line 18, ../sass/social_interstitial.scss */
 #page {
   display: inline-block;
   vertical-align: top;
+  width: 400px;
 }
 
-/* line 20, ../sass/social_interstitial.scss */
+/* line 25, ../sass/social_interstitial.scss */
 #page .content,
 #page .headline {
   padding: 0 40px;
 }
 
-/* line 24, ../sass/social_interstitial.scss */
+/* line 29, ../sass/social_interstitial.scss */
 #page .headline {
   padding-top: 20px;
   margin-bottom: 5px;
   font-size: 26px;
-  text-transform: uppercase;
-  font-family: TradeGothicLTStdCnBold, sans-serif;
+  font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
 
-/* line 33, ../sass/social_interstitial.scss */
+/* line 36, ../sass/social_interstitial.scss */
 #page .content {
   padding-bottom: 20px;
 }
 
-/* line 37, ../sass/social_interstitial.scss */
+/* line 40, ../sass/social_interstitial.scss */
 #page .body {
-  width: 160px;
   float: left;
 }
 
-/* line 42, ../sass/social_interstitial.scss */
+/* line 44, ../sass/social_interstitial.scss */
 #page .body p {
   margin-bottom: 5px;
 }
 
-/* line 46, ../sass/social_interstitial.scss */
+/* line 48, ../sass/social_interstitial.scss */
 #page .socials {
   float: left;
 }
 
-/* line 50, ../sass/social_interstitial.scss */
+/* line 52, ../sass/social_interstitial.scss */
 #page .socials .social {
   float: left;
   margin-left: 14px;
 }
 
-/* line 55, ../sass/social_interstitial.scss */
+/* line 57, ../sass/social_interstitial.scss */
 #page .socials .social img {
   display: block;
 }
 
-/* line 59, ../sass/social_interstitial.scss */
+/* line 61, ../sass/social_interstitial.scss */
 #page #dont {
   font-size: 12px;
+  clear: left;
+}
+
+/* line 65, ../sass/social_interstitial.scss */
+header img {
+  width: 400px;
+}
+
+/* line 68, ../sass/social_interstitial.scss */
+a {
+  color: #019F84;
 }
