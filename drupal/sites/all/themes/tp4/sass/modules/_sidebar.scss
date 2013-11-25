@@ -21,8 +21,16 @@
 		display: inline-block;
 		font-family: $adelle-regular;
 		width: 65%;
+		position: relative;
 		label {
 			display: none;
+			font: normal 12px/1 $adelle-regular;
+			position: absolute;
+			left: 0;
+			bottom: 100%;
+			&.error {
+				display: inline;
+			}
 		}
 		input {
 			width: 100%;
