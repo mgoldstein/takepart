@@ -6600,14 +6600,16 @@ header .search {
  */
 /* line 6, ../sass/modules/_sidebar.scss */
 #sidebar .block-title {
+  border-top: 4px solid #000;
+  padding-top: 5px;
   text-transform: lowercase;
 }
 
-/* line 16, ../sass/modules/_sidebar.scss */
+/* line 17, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .message {
   margin: .75em 0;
 }
-/* line 19, ../sass/modules/_sidebar.scss */
+/* line 20, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email {
   margin: 0;
   display: inline-block;
@@ -6615,7 +6617,7 @@ header .search {
   width: 65%;
   position: relative;
 }
-/* line 25, ../sass/modules/_sidebar.scss */
+/* line 26, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email label {
   display: none;
   font: normal 12px/1 "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
@@ -6623,11 +6625,11 @@ header .search {
   left: 0;
   bottom: 100%;
 }
-/* line 31, ../sass/modules/_sidebar.scss */
+/* line 32, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email label.error {
   display: inline;
 }
-/* line 35, ../sass/modules/_sidebar.scss */
+/* line 36, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email input {
   width: 100%;
   border: 1px solid #CCC;
@@ -6641,7 +6643,7 @@ header .search {
   font-size: 12px;
   line-height: 1.5;
 }
-/* line 45, ../sass/modules/_sidebar.scss */
+/* line 46, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign input[type="submit"] {
   width: 33%;
   border: none;
@@ -6657,11 +6659,11 @@ header .search {
   text-transform: lowercase;
   padding: 4px 0 1px;
 }
-/* line 56, ../sass/modules/_sidebar.scss */
+/* line 57, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign input[type="submit"]:hover {
   background-color: black;
 }
-/* line 70, ../sass/modules/_sidebar.scss */
+/* line 71, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service {
   clear: both;
   margin: 1em 0;
@@ -6669,12 +6671,12 @@ header .search {
   border-bottom: 1px solid #cccccc;
   font-size: 12px;
 }
-/* line 77, ../sass/modules/_sidebar.scss */
+/* line 78, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service a {
   line-height: 1.2em;
   color: #019f84;
 }
-/* line 83, ../sass/modules/_sidebar.scss */
+/* line 84, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .follow-us {
   font: normal 20px/1 "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   text-transform: lowercase;
@@ -6682,16 +6684,16 @@ header .search {
   vertical-align: top;
   margin: 2px 8px 0 0;
 }
-/* line 90, ../sass/modules/_sidebar.scss */
+/* line 91, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links {
   display: inline-block;
 }
-/* line 92, ../sass/modules/_sidebar.scss */
+/* line 93, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li {
   display: inline-block;
   line-height: 1;
 }
-/* line 95, ../sass/modules/_sidebar.scss */
+/* line 96, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a {
   display: inline-block;
   height: 0;
@@ -6700,7 +6702,7 @@ header .search {
   padding-top: 24px;
   overflow: hidden;
 }
-/* line 104, ../sass/modules/_sidebar.scss */
+/* line 105, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.facebook {
   background-position: 0 -480px;
 }
@@ -6708,7 +6710,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.facebook:hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray_hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray-hover {
   background-position: 0 -432px;
 }
-/* line 105, ../sass/modules/_sidebar.scss */
+/* line 106, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.twitter {
   background-position: 0 -312px;
 }
@@ -6716,7 +6718,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.twitter:hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray_hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray-hover {
   background-position: 0 -240px;
 }
-/* line 106, ../sass/modules/_sidebar.scss */
+/* line 107, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.google {
   background-position: 0 -144px;
 }
@@ -6724,7 +6726,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.google:hover, .block-newsletter-campaign .social-links li a.google.googleplus-gray_hover, .block-newsletter-campaign .social-links li a.google.googleplus-gray-hover {
   background-position: 0 -120px;
 }
-/* line 107, ../sass/modules/_sidebar.scss */
+/* line 108, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.pinterest {
   background-position: 0 -192px;
 }
@@ -6732,7 +6734,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.pinterest:hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray_hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray-hover {
   background-position: 0 -288px;
 }
-/* line 108, ../sass/modules/_sidebar.scss */
+/* line 109, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.youtube {
   background-position: 0 0;
 }
@@ -6740,7 +6742,7 @@ header .search {
 .block-newsletter-campaign .social-links li a.youtube:hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray_hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray-hover {
   background-position: 0 -48px;
 }
-/* line 109, ../sass/modules/_sidebar.scss */
+/* line 110, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.tumblr {
   background-position: 0 -456px;
   margin-right: 0;
@@ -6750,13 +6752,13 @@ header .search {
   background-position: 0 -360px;
 }
 
-/* line 115, ../sass/modules/_sidebar.scss */
+/* line 116, ../sass/modules/_sidebar.scss */
 .block-boxes-ga_ad {
   display: block;
   margin: 0 auto;
   margin-bottom: 20px;
 }
-/* line 119, ../sass/modules/_sidebar.scss */
+/* line 120, ../sass/modules/_sidebar.scss */
 .block-boxes-ga_ad:before {
   content: 'Advertisement';
   text-transform: uppercase;
@@ -6767,43 +6769,43 @@ header .search {
   text-align: center;
   display: block;
 }
-/* line 128, ../sass/modules/_sidebar.scss */
+/* line 129, ../sass/modules/_sidebar.scss */
 .block-boxes-ga_ad:before .boxes-box-content {
   margin: 0 auto;
   display: block;
 }
 
-/* line 136, ../sass/modules/_sidebar.scss */
+/* line 137, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .block-title {
   border-top: 4px solid #000;
   padding-top: 5px;
 }
-/* line 139, ../sass/modules/_sidebar.scss */
+/* line 140, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item {
   overflow: hidden;
   margin-bottom: 1em;
 }
-/* line 143, ../sass/modules/_sidebar.scss */
+/* line 144, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item a:hover {
   text-decoration: none;
 }
-/* line 145, ../sass/modules/_sidebar.scss */
+/* line 146, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item a:hover .node-title {
   text-decoration: underline;
 }
-/* line 150, ../sass/modules/_sidebar.scss */
+/* line 151, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item img {
   float: left;
   margin-right: 1em;
 }
-/* line 154, ../sass/modules/_sidebar.scss */
+/* line 155, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item .subhead {
   font: normal 0.85714em/1.5 "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   line-height: 1.5;
   margin: 1em 0 0;
   text-transform: uppercase;
 }
-/* line 160, ../sass/modules/_sidebar.scss */
+/* line 161, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item .node-title {
   font-size: 1em;
   line-height: 1.285714286;
@@ -6819,7 +6821,7 @@ header .search {
   margin: .5em 0;
   border-bottom: 1px dashed black;
 }
-/* line 166, ../sass/modules/_sidebar.scss */
+/* line 167, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item .node-title:after {
   margin-left: 114px;
 }

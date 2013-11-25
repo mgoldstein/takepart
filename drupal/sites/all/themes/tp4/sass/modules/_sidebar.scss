@@ -4,6 +4,7 @@
 
 #sidebar {
 	.block-title {
+		@include header-top-border();
 		text-transform: lowercase;
 	}
 }
