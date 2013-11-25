@@ -145,8 +145,10 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
     if(!empty($variables['field_series'])){
       $series = taxonomy_term_load($variables['field_series']['und'][0]['tid']);
       $series_image = theme('image', array('path' => $series->field_series_graphic_header['und'][0]['uri']));
-
       $created = $variables['created'];
+
+      // find the next article, if any
+      // (if it doesn't exist, $next will be an empty array)
       $seriesQueryNext = new EntityFieldQuery();
       $seriesQueryNext->entityCondition('entity_type', 'node')
               ->entityCondition('bundle', 'openpublish_article')
@@ -156,10 +158,14 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
               ->propertyOrderBy('created', 'ASC')
               ->range(0,1);
       $next = $seriesQueryNext->execute();
-      $next = current($next['node']);
-      $next = node_load($next->nid);
-      $next_url = drupal_get_path_alias('node/'. $next->nid);
+      if (!empty($next)) {
+            $next = current($next['node']);
+            $next = node_load($next->nid);
+            $next_url = drupal_get_path_alias('node/'. $next->nid);
+      }
 
+      // find the previous article, if any
+      // (if it doesn't exist, $previous will be an empty array)
       $seriesQueryPrev = new EntityFieldQuery();
       $seriesQueryPrev->entityCondition('entity_type', 'node')
               ->entityCondition('bundle', 'openpublish_article')
@@ -169,17 +175,28 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
               ->propertyOrderBy('created', 'DESC')
               ->range(0,1);
       $previous = $seriesQueryPrev->execute();
-      $previous = current($previous['node']);
-      $previous = node_load($previous->nid);
-      $previous_url = drupal_get_path_alias('node/'. $previous->nid);
+      if (!empty($previous)) {
+            $previous = current($previous['node']);
+            $previous = node_load($previous->nid);
+            $previous_url = drupal_get_path_alias('node/'. $previous->nid);
+      }
 
+      // build up the series nav div
       $series_nav = '';
       $series_nav .= $series_image;
-      $series_nav .= '<div class="more-prev">' . l("previous", $previous_url) . '</div><div class="more-next">' . l('next', $next_url) . '</div>';
-      $previous = '<div class="previous">'. (isset($previous->field_promo_headline['und'][0]['value']) ? $previous->field_promo_headline['und'][0]['value'] : drupal_render($previous->title)). '</div>';
-      $next = '<div class="next">'. (isset($next->field_promo_headline['und'][0]['value']) ? $next->field_promo_headline['und'][0]['value'] : $next->title). '</div>';
-      $series_nav .= l($previous, $previous_url, array('html' => true));
-      $series_nav .= l($next, $next_url, array('html' => true));
+
+      // weird ternary operators will hide nav elements if they don't exist
+      $series_nav .= empty($previous) ? '' : '<div class="more-prev">' . l("previous", $previous_url) . '</div>';
+      $series_nav .= empty($next) ? '' : '<div class="more-next">' . l('next', $next_url) . '</div>';
+
+      if (!empty($previous)) {
+            $previous = '<div class="previous">'. (isset($previous->field_promo_headline['und'][0]['value']) ? $previous->field_promo_headline['und'][0]['value'] : drupal_render($previous->title)). '</div>';
+            $series_nav .= l($previous, $previous_url, array('html' => true));
+      }
+      if (!empty($next)) {
+            $next = '<div class="next">'. (isset($next->field_promo_headline['und'][0]['value']) ? $next->field_promo_headline['und'][0]['value'] : $next->title). '</div>';
+            $series_nav .= l($next, $next_url, array('html' => true));
+      }
 
       $variables['series_nav'] = $series_nav;
     } // if isset($variables['field_series'])
