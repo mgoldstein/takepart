@@ -13,16 +13,15 @@
 <div class="content">
 	<div class="body">
 		<?=w('body') ?>
-		<p id="dont">
-			<a href="#"><?=w('do_not_show') ?></a>
-		</p>
-	</div>
-
-	<div class="socials" <?=wa('socials') ?>>
+		<div class="socials" <?=wa('socials') ?>>
 		<? foreach ( wl('socials') as $social ): ?>
 			<a href="<?=$social->href ?>" class="social-link" data-service="<?=$social->token ?>" target="_blank">
 				<img src="<?=$social->img_src ?>" alt="<?=$social->single(false) ?>">
 			</a>
 		<? endforeach ?>
+	</div>
+		<p id="dont">
+			<a href="#"><?=w('do_not_show') ?></a>
+		</p>
 	</div>
 </div>
