@@ -86,11 +86,14 @@
       float: left;
       width: 38px;
       @media (max-width: 979px) {
-	  margin-top: 6px;
-	&.share-headline {
-	  margin-left: 6px;
-	  margin-top: 13px;
-	}
+    	  margin-top: 6px;
+        &.take-action-headline {
+          margin-right: 6px;
+        }
+      	&.share-headline {
+      	  margin-left: 6px;
+      	  margin-top: 13px;
+      	}
       }
       @include breakpoint($breakpoint-desktop) {
         width: auto;
