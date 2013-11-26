@@ -810,6 +810,50 @@ tr.selected td {
   }
 }
 
+/* TP Modal Library ---------------------- */
+/* -- copied from takepart_core ---------- */
+
+.tpmodal_overlay {
+    background: #000;
+}
+
+.tpmodal_modal {
+    background: #fff;
+    border-radius: 10px;
+    overflow: auto;
+
+    max-height: 100%;
+    max-width: 100%;
+    min-height: 40px;
+    min-width: 40px;
+}
+
+.tpmodal_modal.tpmodal_position {
+    display: none !important;
+}
+
+.tpmodal_loading {
+    background: #fff url(/profiles/takepart/themes/takepart3/images/spinner.gif) center center no-repeat;
+}
+
+.tpmodal_content {
+    padding: 20px;
+    opacity: 1;
+}
+
+.tpmodal_loading .tpmodal_content {
+    opacity: 0;
+}
+
+.tpmodal_close {
+    background: url(/sites/all/modules/custom/unipop/css/images/close_popup.png) no-repeat;
+    height: 13px;
+    width: 13px;
+    margin: 5px 5px 0 0;
+    text-indent: 100%;
+    overflow: hidden;
+}
+
 /* Interstitials ------------------------- */
 
 /* Social */
@@ -817,6 +861,7 @@ tr.selected td {
 .interstitial_modal_modal.tpmodal_modal {
   background: transparent;
   border-radius: 0;
+  max-width: 100% !important;
 }
 
 .interstitial_modal_modal .tpmodal_content {
@@ -833,6 +878,7 @@ tr.selected td {
   width: 400px;
   height: 400px;
   overflow: hidden;
+
 }
 .interstitial_modal_overlay{
   background: #000;
