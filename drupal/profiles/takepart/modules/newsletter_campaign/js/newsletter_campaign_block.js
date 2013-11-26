@@ -3,8 +3,9 @@
     // Newsletter signup event
     $(".takepart-newsletter-wrapper > .takepart-newsletter-message").bind(
       'newsletter_signup', function(e, title) {
-        s.linkTrackVars = "eVar23,eVar30,events";
+	s.linkTrackVars = "evar22,eVar23,eVar30,events";
         s.linkTrackEvents = "event39";
+	s.evar22 = "Sidebar Sign-up Block";
         s.eVar23 = title;
         s.eVar30 = s.pageName;
         s.events = 'event39';
@@ -13,8 +14,9 @@
     );
     $("body").bind(
       'newsletter_social_signup', function(e, title) {
-        s.linkTrackVars = "eVar23,eVar30,events";
+	s.linkTrackVars = "evar22,eVar23,eVar30,events";
         s.linkTrackEvents = "event39";
+	s.evar22 = "Sidebar Sign-up Block w/Social Shares";
         s.eVar23 = title;
         s.eVar30 = s.pageName;
         s.events = 'event39';
