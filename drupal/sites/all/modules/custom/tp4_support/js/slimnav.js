@@ -18,11 +18,11 @@ Drupal.behaviors.slimNav = {
   attach: function(context, settings) {
 
     //Toggle search on mobile
-    $('html').click(function() {
+    $('html').on('click', function() {
       $('.search-toggle').parent().removeClass('active');
     });
 
-    $('.search-toggle').parent().click(function(event){
+    $('.search-toggle').parent().on('click', function(event){
         event.stopPropagation();
         $(this).addClass('active');
     });
