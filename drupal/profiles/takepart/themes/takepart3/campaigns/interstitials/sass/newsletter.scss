@@ -18,7 +18,8 @@ body {
 #page {
 	float: left;
 	vertical-align: top;
-	width: 400px;
+	width: 100%;
+	max-width: 400px;
 }
 
 #page * {
@@ -110,4 +111,10 @@ a {
 }
 form{
 	color: #666;
+}
+header{
+	img{
+		width: 100%;
+		max-width: 400px;
+	}
 }
