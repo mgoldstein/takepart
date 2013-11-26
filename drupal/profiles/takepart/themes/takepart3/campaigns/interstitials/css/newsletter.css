@@ -22,23 +22,24 @@ body {
 #page {
   float: left;
   vertical-align: top;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 }
 
-/* line 24, ../sass/newsletter.scss */
+/* line 25, ../sass/newsletter.scss */
 #page * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 31, ../sass/newsletter.scss */
+/* line 32, ../sass/newsletter.scss */
 #page .content,
 #page .headline {
   padding: 0 40px;
 }
 
-/* line 35, ../sass/newsletter.scss */
+/* line 36, ../sass/newsletter.scss */
 #page .headline {
   padding-top: 20px;
   margin-bottom: 5px;
@@ -46,32 +47,32 @@ body {
   font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
 
-/* line 42, ../sass/newsletter.scss */
+/* line 43, ../sass/newsletter.scss */
 #page .content {
   padding-bottom: 20px;
 }
 
-/* line 46, ../sass/newsletter.scss */
+/* line 47, ../sass/newsletter.scss */
 #page .body p {
   margin-bottom: 5px;
 }
 
-/* line 50, ../sass/newsletter.scss */
+/* line 51, ../sass/newsletter.scss */
 #page #dont {
   font-size: 12px;
 }
 
-/* line 54, ../sass/newsletter.scss */
+/* line 55, ../sass/newsletter.scss */
 #page .form {
   margin-bottom: 1em;
 }
 
-/* line 58, ../sass/newsletter.scss */
+/* line 59, ../sass/newsletter.scss */
 .form-type-textfield {
   position: relative;
 }
 
-/* line 62, ../sass/newsletter.scss */
+/* line 63, ../sass/newsletter.scss */
 .form-type-textfield label {
   position: absolute;
   z-index: 2;
@@ -82,7 +83,7 @@ body {
   border: 1px solid transparent;
 }
 
-/* line 72, ../sass/newsletter.scss */
+/* line 73, ../sass/newsletter.scss */
 .form-type-textfield input {
   max-width: 100%;
   font-size: 18px;
@@ -95,14 +96,14 @@ body {
   position: relative;
 }
 
-/* line 84, ../sass/newsletter.scss */
+/* line 85, ../sass/newsletter.scss */
 .form-type-textfield input:focus {
   max-width: 100%;
   z-index: 3;
   outline: none;
 }
 
-/* line 90, ../sass/newsletter.scss */
+/* line 91, ../sass/newsletter.scss */
 .form-actions input {
   border: none;
   font-size: 24px;
@@ -115,22 +116,28 @@ body {
   background: #01BF9E;
 }
 
-/* line 102, ../sass/newsletter.scss */
+/* line 103, ../sass/newsletter.scss */
 .form .thank-you-message {
   margin-top: 1em;
 }
 
-/* line 105, ../sass/newsletter.scss */
+/* line 106, ../sass/newsletter.scss */
 a {
   color: #019F84;
 }
 
-/* line 108, ../sass/newsletter.scss */
+/* line 109, ../sass/newsletter.scss */
 .form-required {
   display: none;
 }
 
-/* line 111, ../sass/newsletter.scss */
+/* line 112, ../sass/newsletter.scss */
 form {
   color: #666;
+}
+
+/* line 116, ../sass/newsletter.scss */
+header img {
+  width: 100%;
+  max-width: 400px;
 }
