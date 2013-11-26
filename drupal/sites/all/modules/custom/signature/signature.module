@@ -421,7 +421,7 @@ function signature_import_admin_form_import_now($form, &$form_state) {
   $feed_url = $form_state['values']['signature_import_feed'];
   $timeout = $form_state['values']['signature_import_timeout'];
   if (!empty($feed_url)) {
-    $count = signature_process_import_feed($feed_url, $timeout, TRUE);
+    $count = signature_process_import_feed($feed_url, $timeout);
     drupal_set_message(t('!count actions processed.', array(
       '!count' => $count
     )), 'status');
@@ -437,7 +437,7 @@ function signature_import_admin_form_import_all($form, &$form_state) {
   $feed_url = $form_state['values']['signature_import_feed'];
   $timeout = $form_state['values']['signature_import_timeout'];
   if (!empty($feed_url)) {
-    $count = signature_process_import_feed($feed_url, $timeout, TRUE, TRUE);
+    $count = signature_process_import_feed($feed_url, $timeout, TRUE);
     drupal_set_message(t('!count actions processed.', array(
       '!count' => $count
     )), 'status');
@@ -460,32 +460,9 @@ function signature_cron_queue_info() {
 }
 
 /**
- * Implements hook_cron().
- */
-// function signature_cron() {
-
-//   // Read the configuration.
-//   $feed_url = variable_get('signature_import_feed', '');
-//   $timeout = variable_get('signature_import_timeout', 600);
-//   $interval = ((int) variable_get('signature_import_interval', 5)) * 60;
-
-//   // Ensure that we have an active configuration.
-//   if (!empty($feed_url) && $interval > 0) {
-//     // Get the last time cron ran.
-//     $cron_last = db_query("SELECT timestamp FROM {watchdog} WHERE type = 'cron' ORDER BY timestamp DESC LIMIT 1")
-//       ->fetchField();
-//     // If cron hasn't run or the interval has passed, process the feed.
-//     if ($cron_last === FALSE || $cron_last > 0 && (time() - $cron_last) > $interval) {
-//       signature_process_import_feed($feed_url, $timeout);
-//     }
-//   }
-// }
-
-/**
  * Process the contents of the action feed.
  */
-function signature_process_import_feed($feed_url, $timeout, $import_now = FALSE,
-  $full_import = FALSE) {
+function signature_process_import_feed($feed_url, $timeout, $full_import = FALSE) {
 
   // Get the last time it was run.
   $last_run = (int) variable_get('signature_cron_last_run', 0);
@@ -494,24 +471,20 @@ function signature_process_import_feed($feed_url, $timeout, $import_now = FALSE,
   // to skip unmodified actions.
   $this_run = time();
 
+  $count = 0;
   $actions = signature_read_import_feed($feed_url, $timeout);
-
-  $queue = DrupalQueue::get('signature_import_queue');
   foreach ($actions as $action) {
-
-    if ($full_import || ((int) $action->last_modified) >= $last_run) {
-      if ($import_now) {
-        signature_import_worker($action);
-      }
-      else {
-        $queue->createItem($action);
-      }
+    $changed = ((int) $action->last_modified) >= $last_run;
+    $mapping = SignatureActionMapping::load($action->action_id);
+    if ($full_import || $changed || $mapping === FALSE) {
+      signature_import_worker($action);
+      $count += 1;
     }
   }
 
   variable_set('signature_cron_last_run', $this_run);
 
-  return count($actions);
+  return $count;
 }
 
 /**
@@ -927,7 +900,7 @@ class SignatureActionStub {
 
   public function save() {
     if ($this->_node !== FALSE) {
-      $node->uid = 1;
+      $this->_node->uid = 1;
       $node = node_submit($this->_node);
       node_save($node);
       return $node->nid;
