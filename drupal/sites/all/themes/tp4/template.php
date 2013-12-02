@@ -369,22 +369,31 @@ function tp4_field__field_article_subhead__openpublish_article($variables) {
 
 function tp4_field__field_article_main_image__openpublish_article($variables) {
   $output = '';
-  if ($variables['items'][0]['#theme'] == 'image_formatter') {
-    // for legacy content, we output the regular thing
-    $output .= theme_field($variables);
-  } else {
-    foreach ($variables['items'] as $delta => $item) {
-      $output .= '<figure class="' . $item['#view_mode'] . '"' . $variables['item_attributes'][$delta] . '>';
-      $output .= drupal_render($item['file']);
-      $output .= '<figcaption>';
-      $output .= drupal_render($item['field_media_caption']);
-      $output .= '</figcaption></figure>';
+
+  foreach ($variables['items'] as $delta => $item) {
+
+    // set up some variables we're going to need.
+    $image = array();
+    $image['path'] = $item['#file']->uri;
+
+    // pick out the image style, defaulting to landscape
+    $image['style_name'] = 'landscape_main_image';
+    if ($item['#view_mode'] == 'portrait') $image['style_name'] = 'portrait_main_image';
+
+    // TODO: do this through drupal APIs
+    $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
+
+    $output .= '<figure class="' . $item['#view_mode'] . '"' . $variables['item_attributes'][$delta] . '>';
+    // $output .= drupal_render($item['file']);
+    // $output .= theme('image', $item['#file']);
+    $output .= theme('image_style', $image);
+    $output .= '<figcaption>';
+    $output .= drupal_render($item['field_media_caption']);
+    $output .= '</figcaption></figure>';
     }
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-  }
   return $output;
 }
-
 
 /**
  * Implements template_preprocess_entity().
