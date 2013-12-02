@@ -23,6 +23,18 @@
                 event.stopPropagation();
                 $(this).addClass('active');
             });
+
+            function makeTall(){$(this).find('.mega-content').fadeIn(100);}
+            function makeShort(){$(this).find('.mega-content').fadeOut(100);}
+
+            $("#megamenu").hoverIntent({
+                over: makeTall,
+                out: makeShort,
+                selector: 'li.mega-item'
+            });
+
+
+
         }
     };
 
