@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Implements hook_custom_theme().
+ */
+function newsletter_campaign_custom_theme() {
+  if (isset($_POST['form_id']) && $_POST['form_id'] == 'newsletter_campaign_social_form') {
+    return $_POST['ajax_page_state']['theme'];
+  }
+  return NULL;
+}
+
 function newsletter_campaign_follow_us_service_urls() {
   return array(
     'facebook' => 'http://www.facebook.com/takepart',
