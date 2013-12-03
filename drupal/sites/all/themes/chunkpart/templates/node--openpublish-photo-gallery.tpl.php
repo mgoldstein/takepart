@@ -225,14 +225,14 @@
 		<script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
 
 		<!-- taboola widgets -->
-<!--
+
 		<h3 style="font-size: 20px; margin-bottom: 4px; text-transform: uppercase; font-family: TradeGothicLTStdCnBold, sans-serif;">Takepart's Most Popular</h3>
 		<div id='taboola-bottom-main-column-mix'></div>
 		<script type="text/javascript">
 		window._taboola = window._taboola || [];
 		_taboola.push({mode:'thumbs-1r-organic', container:'taboola-bottom-main-column-mix', placement:'bottom-main-column', target_type:'mix'});
 		</script>
--->
+
 
 		<? if ( isset($node_region['bean_on-our-radar-block']) ): ?>
 			<?=render($node_region['bean_on-our-radar-block']) ?>
