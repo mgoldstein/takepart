@@ -71,7 +71,7 @@ foreach(node_titles() as $nid => $title) {
     );
     save_metatag($metatag);
   }
-  else //if (!isset($metatag->data['title'])) {
+  else { //if (!isset($metatag->data['title'])) {
     $metatag->data['title'] = array('value' => "{$title} | [site:name]");
     save_metatag($metatag);
   }
