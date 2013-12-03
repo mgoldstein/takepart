@@ -219,9 +219,11 @@ function tp4_process_node(&$variables, $hook) {
 function tp4_process_node__openpublish_article(&$variables) {
   
   $variables['author_bios'] = array();
-  foreach ($variables['field_author'] as $author) {
-    $author_node = node_load($author['nid']);
-    $variables['author_bios'][] = $author_node;
+  if(isset($variables['field_author'])){
+    foreach ($variables['field_author'] as $author) {
+      $author_node = node_load($author['nid']);
+      $variables['author_bios'][] = $author_node;
+    }
   }
 }
 
