@@ -49,7 +49,7 @@ function tp_feature_feature_article_field_default_fields() {
           'label' => 'hidden',
           'module' => 'inline_content',
           'settings' => array(
-            'source' => '',
+            'source' => 'field_inline_replacements',
           ),
           'type' => 'text_with_inline_content',
           'weight' => '3',
