@@ -22,7 +22,12 @@
     $thumb_src = image_style_url('thumbnail_v2', $thumb->uri);//TODO: what image style are authors using?
     $author_path = drupal_get_path_alias('node/'. $author_node->nid);
 
-    $bio_link = l('full bio', $author_path, array('attributes' => array('class' => array('more'))));
+    $bio_link = l('full bio', $author_path, array(
+        'attributes' => array(
+            'class' => array('more'), 
+            'rel' => 'author'
+            ) 
+        ));
     $social_links = '';
     if(!empty($author_node->field_follow_twitter['und'][0]['url'])){
       $social_links .= l('<span class="social-twitter-black"></span>', $author_node->field_follow_twitter['und'][0]['url'], array('html' => true, 'attributes' => array('target' => '_blank', 'title' => $author_node->field_follow_twitter['und'][0]['title'] )));
