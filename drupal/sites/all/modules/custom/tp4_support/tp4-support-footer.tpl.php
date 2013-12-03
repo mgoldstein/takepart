@@ -24,6 +24,6 @@
 </div>
 <div class="footer-bottom">
   <div class="footer-bottom-inner">
-    <span class="footer-title">takepart is a part of participant media:</span> <?php print drupal_render(menu_tree('menu-corporate-footer')); ?>
+    <span class="footer-title">takepart is a division of participant media:</span> <?php print drupal_render(menu_tree('menu-corporate-footer')); ?>
   </div>
 </div>
