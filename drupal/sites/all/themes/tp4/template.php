@@ -412,7 +412,6 @@ function tp4_preprocess_entity(&$variables, $hook) {
       	//Look for a tpl file called bean--of-the-day-custom.tpl.php:
       	$variables['theme_hook_suggestions'][] = 'bean__of_the_day_custom';
 
-        dpm($variables['elements'], 'variable elements');
         $children = element_children($variables['elements']['field_listing_collection'], $sort = FALSE);
 
         foreach($children as $child){
