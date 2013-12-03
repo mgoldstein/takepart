@@ -61,8 +61,13 @@ function tp4_preprocess_page(&$variables) {
   $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
   $variables['content_classes'] .= ($variables['sidebar'] ? ' with-sidebar' : '');
 
+  // Add Node-specific page templates
+  if (!empty($variables['node'])) {
+    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
+  }
+
   // override page titles on certain node templates
-  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article'))) {
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article'))) {
     $variables['title'] = '';
   }
 
