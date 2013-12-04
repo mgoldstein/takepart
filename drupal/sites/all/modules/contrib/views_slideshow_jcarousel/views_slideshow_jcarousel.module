@@ -122,7 +122,7 @@ function views_slideshow_jcarousel_pager_views_slideshow_widget_pager_form_optio
     '#type' => 'checkboxes',
     '#title' => t('Pager fields'),
     '#options' => $options,
-    '#default_value' => $defaults['views_slideshow_jcarousel_pager'],
+    '#default_value' => $defaults['views_slideshow_jcarousel_pager_fields'],
     '#description' => t("Choose the fields that will appear in the pager."),
     '#prefix' => '<div id="' . $dependency . '-views-slideshow-jcarousel-pager-fields-wrapper">',
     '#suffix' => '</div>',
