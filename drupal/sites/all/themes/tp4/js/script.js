@@ -216,7 +216,10 @@
         'Keyword Link' : '.topic-links',
         'Author Full Bio Link' : '.author-bio',
         //'Badge' : '.badge',
-        //'Outbrain Widget': '.OUTBRAIN',
+        'Taboola Widget - Article Page' : '#taboola-bottom-main-column-mix',
+        // TODO Going to have to add wrapping divs to distinguish
+        // between article and gallery Taboola widgets
+        // 'Taboola Widget - Gallery Page' : '',
         'Topic Box' : '.topic-box',
         'Home - featured columns' : '#block-views-homepage-columns-block',
         'Home - featured actions' : '#block-views-takeaction-homepage-block',
