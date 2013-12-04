@@ -3202,3 +3202,7 @@ p.fb-login-text {
 fieldset.captcha {
     width: 446px;
 }
+
+.field-name-field-series-graphic-header {
+    margin-bottom: 20px;
+}
