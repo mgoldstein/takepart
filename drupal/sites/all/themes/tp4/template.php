@@ -113,7 +113,7 @@ function tp4_preprocess_node(&$variables, $hook) {
   $variables['url_production'] = 'http://www.takepart.com' . url('node/' . $variables['nid']);
 
   // Run node-type-specific preprocess functions, like
-  // tp4_preprocess_node_page() or tp4_preprocess_node_story().
+  // tp4_preprocess_node__page() or tp4_preprocess_node__story().
   $function = __FUNCTION__ . '__' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
