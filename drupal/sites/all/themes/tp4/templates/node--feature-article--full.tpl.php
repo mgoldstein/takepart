@@ -9,18 +9,23 @@
 
   <?php if ($title_prefix || $title_suffix || $unpublished || $title): ?>
     <header class="article-header">
-      <?php if (isset($field_topic_box_top)) : ?>
-      <div class="topic-box">
-  <?php print $field_topic_box_top; ?>
-      </div>
-      <?php endif; ?>
+      <div class="feature-article-header-fullwidth">
+
+      <?php print render($content['field_article_main_image']); ?>
+
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
   <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
-
+      </div>
       <? print render($content['field_article_subhead']); ?>
+
+      <?php if (isset($field_topic_box_top)) : ?>
+      <div class="topic-box">
+        <?php print $field_topic_box_top; ?>
+      </div>
+      <?php endif; ?>
 
       <?php if ($unpublished): ?>
   <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
@@ -48,10 +53,11 @@
     </div></aside><!-- / #article-social -->
 
 
-  <div id="article-content">
+  <div id="article-author">
+    <?php print render($content['field_author']); ?>
+  </div>
 
-  <?php print render($content['field_article_main_image']); ?>
-  <?php print render($content['field_author']); ?>
+  <div id="article-content">
 
   <?php
     // We hide the comments and links now so that we can render them later.
@@ -83,23 +89,19 @@
     <div class="OUTBRAIN" data-src="<?php print $url_production; ?>" data-widget-id="TR_1" data-ob-template="TakePart" ></div>
     <script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
 
-<!--
     <h3 class="top-border">Takepart&#8217;s Most Popular</h3>
     <div id='taboola-bottom-main-column-mix'></div>
     <script type="text/javascript">
       window._taboola = window._taboola || [];
       _taboola.push({mode:'thumbs-1r-organic', container:'taboola-bottom-main-column-mix', placement:'bottom-main-column', target_type:'mix'});
     </script>
--->
 
-<!--
     <h3>From The Web</h3>
     <div id='taboola-below-main-column'></div>
     <script type="text/javascript">
     window._taboola = window._taboola || [];
     _taboola.push({mode:'thumbs-1r', container:'taboola-below-main-column', placement:'below-main-column'});
     </script>
--->
 
     <?php print render($on_our_radar); ?>
   </footer>
