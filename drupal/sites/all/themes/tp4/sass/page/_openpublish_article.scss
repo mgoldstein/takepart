@@ -2,8 +2,12 @@
 @import "tp-social/*.png";
 @import "tp-social-more/*.png";
 
-.node-openpublish-article.view-mode-full {
 
+//
+// TP Social Styles for both short and longform articles
+//
+.node-openpublish-article.view-mode-full,
+.node-feature-article.view-mode-full {
   //
   // Basic Layout
   // 
@@ -182,7 +186,9 @@
       background-color: white;
     }
   }
+}
 
+.node-openpublish-article.view-mode-full {
   //
   // Article Styling
   //

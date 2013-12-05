@@ -63,103 +63,102 @@
         }
     };
 
-    /**
- * Behaviors for Article Nodes
+/**
+ * Behaviors for tpsocial shares
  */
-    Drupal.behaviors.articleBehaviors = {
-        attach: function() {
-            var $body = $('body');
 
-            if ($body.is('.page-node.node-type-openpublish-article')) {
+Drupal.behaviors.tpsocialShares = {
+    attach: function() {
+        var $body = $('body');
 
-                // make second ad sticky
-                // (sticky social buttons are done below)
-                $('.block-boxes-ga_ad-bottom').tp4Sticky();
+        if (
+            $body.is('.page-node.node-type-openpublish-article')
+            || $body.is('.page-node.node-type-feature-article')
+        ) {
+            // Setup Social Share Buttons
+            var tp_social_config = {
+                url_append: '?cmpid=organic-share-{{name}}',
+                services: [
+                {
+                    name: 'facebook'
+                },
 
-                // Setup Social Share Buttons
-                var tp_social_config = {
-                    url_append: '?cmpid=organic-share-{{name}}',
-                    services: [
-                    {
-                        name: 'facebook'
-                    },
+                {
+                    name: 'twitter',
+                    text: '{{title}}' + ($body.is('.node-type-feature-article') ? ' #longform' : ''),
+                    via: 'TakePart'
+                },
+                {
+                    name: 'googleplus'
+                },
 
-                    {
-                        name: 'twitter',
-                        text: '{{title}}',
-                        via: 'TakePart'
-                    },
-                    {
-                        name: 'googleplus'
-                    },
+                {
+                    name: 'reddit'
+                },
 
-                    {
-                        name: 'reddit'
-                    },
+                {
+                    name: 'email'
+                }
+                ]
+            };
 
-                    {
-                        name: 'email'
-                    }
-                    ]
-                };
+            // initialize tpsocial and make it sticky.
+            $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
+            .then($('#article-social').tp4Sticky());
 
-                // initialize tpsocial and make it sticky.
-                $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-                .then($('#article-social').tp4Sticky());
+            // Set up secondary social share buttons
+            var main_image = $('figure.article-main-image img').attr('src');
+            var more_services = {
+                pinterest: {
+                    name: 'pinterest',
+                    media: main_image
+                },
+                tumblr_link: {
+                    name: 'tumblr_link'
+                },
+                gmail: {
+                    name: 'gmail'
+                },
+                hotmail: {
+                    name: 'hotmail'
+                },
+                yahoomail: {
+                    name: 'yahoomail'
+                },
+                aolmail: {
+                    name: 'aolmail'
+                },
 
-                // Set up secondary social share buttons
-                var main_image = $('figure.article-main-image img').attr('src');
-                var more_services = {
-                    pinterest: {
-                        name: 'pinterest',
-                        media: main_image
-                    },
-                    tumblr_link: {
-                        name: 'tumblr_link'
-                    },
-                    gmail: {
-                        name: 'gmail'
-                    },
-                    hotmail: {
-                        name: 'hotmail'
-                    },
-                    yahoomail: {
-                        name: 'yahoomail'
-                    },
-                    aolmail: {
-                        name: 'aolmail'
-                    },
+                //{name: 'myspace'},
+                //{name: 'delicious'},
+                linkedin: {
+                    name: 'linkedin'
+                },
+                //{name: 'myaol'},
+                //{name: 'live'},
+                digg: {
+                    name: 'digg'
+                },
+                stumbleupon: {
+                    name: 'stumbleupon'
+                },
+            //{name: 'hyves'}
+            };
 
-                    //{name: 'myspace'},
-                    //{name: 'delicious'},
-                    linkedin: {
-                        name: 'linkedin'
-                    },
-                    //{name: 'myaol'},
-                    //{name: 'live'},
-                    digg: {
-                        name: 'digg'
-                    },
-                    stumbleupon: {
-                        name: 'stumbleupon'
-                    },
-                //{name: 'hyves'}
-                };
+            if ( !main_image ) delete more_services.pinterest;
 
-                if ( !main_image ) delete more_services.pinterest;
+            $('#article-more-shares p').tpsocial({
+                services: more_services
+            });
 
-                $('#article-more-shares p').tpsocial({
-                    services: more_services
-                });
+            // set up behavior of "more" social links
+            // this is untouched code from gerald burns and chunkpart
+            var social_more_close = function() {
+                $article_social_more.removeClass('focusin');
+                $body.unbind('click', social_more_close);
+            };
 
-                // set up behavior of "more" social links
-                // this is untouched code from gerald burns and chunkpart
-                var social_more_close = function() {
-                    $article_social_more.removeClass('focusin');
-                    $body.unbind('click', social_more_close);
-                };
-
-                var $article_social_more = $('#article-social-more')
+            var $article_social_more = $('#article-social-more')
                 .bind('focusin', function() {
                     $article_social_more.addClass('focusin');
                 })
@@ -176,6 +175,23 @@
                     e.preventDefault();
                 })
             ;
+        }
+    }
+};
+
+    /**
+ * Behaviors for Article Nodes
+ */
+    Drupal.behaviors.articleBehaviors = {
+        attach: function() {
+            var $body = $('body');
+
+            if ($body.is('.page-node.node-type-openpublish-article')) {
+
+                // make second ad sticky
+                // (sticky social buttons are done below)
+                $('.block-boxes-ga_ad-bottom').tp4Sticky();
+
             }
         }
     };

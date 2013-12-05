@@ -249,6 +249,7 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
     'openpublish_photo' => 'openpublish_photo',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'openpublish_video' => 'openpublish_video',
@@ -425,7 +426,7 @@ function tp_feature_views_views_default_views() {
   $handler->display->display_options['fields']['field_action_icon']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_action_icon']['alter']['text'] = '<img src="[field_action_icon-value]" />';
   $handler->display->display_options['fields']['field_action_icon']['element_label_colon'] = FALSE;
-  /* Field: Content: Take Action Button URL */
+  /* Field: Content: Action URL */
   $handler->display->display_options['fields']['field_action_url']['id'] = 'field_action_url';
   $handler->display->display_options['fields']['field_action_url']['table'] = 'field_data_field_action_url';
   $handler->display->display_options['fields']['field_action_url']['field'] = 'field_action_url';

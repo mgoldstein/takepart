@@ -113,7 +113,7 @@ function tp4_preprocess_node(&$variables, $hook) {
   $variables['url_production'] = 'http://www.takepart.com' . url('node/' . $variables['nid']);
 
   // Run node-type-specific preprocess functions, like
-  // tp4_preprocess_node_page() or tp4_preprocess_node_story().
+  // tp4_preprocess_node__page() or tp4_preprocess_node__story().
   $function = __FUNCTION__ . '__' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
@@ -156,7 +156,7 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
       // (if it doesn't exist, $next will be an empty array)
       $seriesQueryNext = new EntityFieldQuery();
       $seriesQueryNext->entityCondition('entity_type', 'node')
-              ->entityCondition('bundle', 'openpublish_article')
+              ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
               ->propertyCondition('status', 1)
               ->propertyCondition('created', $created, '>')
               ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -173,7 +173,7 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
       // (if it doesn't exist, $previous will be an empty array)
       $seriesQueryPrev = new EntityFieldQuery();
       $seriesQueryPrev->entityCondition('entity_type', 'node')
-              ->entityCondition('bundle', 'openpublish_article')
+              ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
               ->propertyCondition('status', 1)
               ->propertyCondition('created', $created, '<')
               ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -207,6 +207,16 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
     } // if isset($variables['field_series'])
 
   } // if ($variables['view_mode'] == 'full')
+}
+
+/**
+ * Override or insert variables into the feature_article template.
+ *
+ * Largely this reproduces the author, series, and topic markup
+ * from the openpublish_article template.
+ */
+function tp4_preprocess_node__feature_article(&$variables, $hook) {
+  tp4_preprocess_node__openpublish_article($variables);
 }
 
 /**
@@ -300,7 +310,7 @@ function tp4_preprocess_field(&$variables, $hook) {
 
 
 /**
- * Outputs Free Tag Taxonomy Links for Article Nodes
+ * Outputs Topic Taxonomy Links for Article Nodes
  */
 function tp4_field__field_topic__openpublish_article($variables) {
   $output = '';
@@ -313,9 +323,23 @@ function tp4_field__field_topic__openpublish_article($variables) {
 }
 
 /**
- * Outputs topic taxonomy links for article nodes.
+ * Outputs Free Tag taxonomy links for article nodes.
  */
 function tp4_field__field_free_tag__openpublish_article($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs Topic Taxonomy links for featre article nodes.
+ */
+function tp4_field__field_topic__feature_article($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs free tag taxonomy links for feature article nodes.
+ */
+function tp4_field__field_free_tag__feature_article($variables) {
   return tp4_field__field_topic__openpublish_article($variables);
 }
 
@@ -325,10 +349,6 @@ function tp4_menu_link(array $variables) {
   }
   return theme_menu_link($variables);
 }
-
-
-
-
 
 function tp4_field__field_author__openpublish_article($variables) {
   $output = '';
@@ -351,6 +371,10 @@ function tp4_field__field_author__openpublish_article($variables) {
   $output = '<div class="byline ' . $variables['classes'] . '"' . $variables['attributes'] . '>By ' . $output . '</div>';
 
   return $output;
+}
+
+function tp4_field__field_author__feature_article($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
 }
 
 function tp4_field__field_article_subhead__openpublish_article($variables) {
