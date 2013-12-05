@@ -1427,6 +1427,7 @@ function tp_feature_feature_article_field_default_fields() {
           'article' => 0,
           'audio' => 0,
           'blog_front' => 0,
+          'feature_article' => 'feature_article',
           'feed' => 0,
           'feed_item' => 0,
           'mos_action' => 0,
