@@ -46,6 +46,7 @@ function tp_feature_taxonomy_topic_field_default_fields() {
           ),
           'target_bundles' => array(
             'action' => 'action',
+            'feature_article' => 'feature_article',
             'openpublish_article' => 'openpublish_article',
             'openpublish_photo_gallery' => 'openpublish_photo_gallery',
             'openpublish_video' => 'openpublish_video',
@@ -88,11 +89,12 @@ function tp_feature_taxonomy_topic_field_default_fields() {
         'module' => 'entityreference',
         'settings' => array(
           'match_operator' => 'CONTAINS',
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'path' => '',
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '0',
+        'weight' => 0,
       ),
     ),
   );
