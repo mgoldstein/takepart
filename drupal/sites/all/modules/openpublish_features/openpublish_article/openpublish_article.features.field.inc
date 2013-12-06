@@ -817,7 +817,9 @@ function openpublish_article_field_default_fields() {
       'widget' => array(
         'active' => 0,
         'module' => 'formatter_field',
-        'settings' => array(),
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
         'type' => 'formatter_select',
         'weight' => '5',
       ),
@@ -862,8 +864,8 @@ function openpublish_article_field_default_fields() {
         'default' => array(
           'label' => 'above',
           'settings' => array(),
-	  'type' => 'hidden',
-	  'weight' => '22',
+          'type' => 'hidden',
+          'weight' => '22',
         ),
         'feature_main' => array(
           'label' => 'above',
@@ -957,6 +959,7 @@ function openpublish_article_field_default_fields() {
           'article' => 0,
           'audio' => 0,
           'blog_front' => 0,
+          'feature_article' => 'feature_article',
           'feed' => 0,
           'feed_item' => 0,
           'mos_action' => 0,
@@ -1058,6 +1061,7 @@ function openpublish_article_field_default_fields() {
         'settings' => array(
           'autocomplete_match' => 'contains',
           'autocomplete_path' => 'node_reference/autocomplete',
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',

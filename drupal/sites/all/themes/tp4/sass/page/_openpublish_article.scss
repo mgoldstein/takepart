@@ -4,25 +4,24 @@
 
 
 //
-// TP Social Styles for both short and longform articles
+// Basic Layout: Widths and floats for articles
 //
-.node-openpublish-article.view-mode-full,
-.node-feature-article.view-mode-full {
-  //
-  // Basic Layout
-  // 
-  @include breakpoint($breakpoint-desktop) {
+@include breakpoint($breakpoint-desktop) {
+  .node-openpublish-article.view-mode-full,
+  .node-feature-article.view-mode-full {
     #article-social {
       float: left;
       width: 40px;
       .inner {
-	padding: 7px 0;
+        padding: 7px 0;
       }
       &.sticky {
         position: fixed;
         top: 0;
       }
     }
+  }
+  .node-openpublish-article.view-mode-full {
     #article-content,
     #series-navigation,
     #article-footer,
@@ -30,7 +29,26 @@
       margin-left: 53px;
     }
   }
+  .node-feature-article.view-mode-full {
+    //40 social +28 gutter +66 offett + 780 column + 66offset
+    #article-content,
+    #series-navigation {
+      margin-left: 134px;
+      width: 780px;
+    }
+    #article-footer,
+    #article-comments {
+      margin-left: 234px;
+      width: 580px;
+    }
+  }
+}
 
+//
+// TP Social Styles for both short and longform articles
+//
+.node-openpublish-article.view-mode-full,
+.node-feature-article.view-mode-full {
   //
   // Social Links
   //
@@ -188,6 +206,10 @@
   }
 }
 
+//
+// HEADER STYLING
+// openpublish_article specific
+// 
 .node-openpublish-article.view-mode-full {
   //
   // Article Styling
@@ -231,6 +253,18 @@
       }
     }
   }
+}
+
+//
+// HEADER STYLING
+// feature specific
+//
+.node-feature-article.view-mode-full {
+
+}
+
+.node-feature-article.view-mode-full,
+.node-openpublish-article.view-mode-full {
   .field-name-body {
     font-family: $adelle-light;
     font-weight: normal;
@@ -246,18 +280,20 @@
 
     h2,
     h3,
-    h4 {
+    h4,
+    h5 {
       font-family: $ashbury-regular;
     }
-    h2 {
+    h2,
+    h3 {
       font-size: 1.5em; // 21px
       margin-top: 1.333em; // 28px
     }
-    h3 {
+    h4 {
       font-size: 1.285714286em; // 18px
       margin-top: 1.555555556em; // 28px
     }
-    h4 {
+    h5 {
       font-size: 1.142857143em; // 16px
       margin-top: 1.75em; // 28px
     }
@@ -484,6 +520,37 @@
   } // #article-footer
 }
 
+//
+// Feature Article Overrides
+//
+.node-feature-article.view-mode-full {
+  .author-bio {
+    width: 550px;
+  }
+
+  .field-name-body {
+    font-size: 1.142857143em;
+  }
+
+  .block-boxes-ga_ad {
+    float: right;
+    margin-left: 1em;
+    margin-right: -66px;
+  }
+
+  // utility classes for offsets
+  .pull-right {
+    float: right;
+    margin-left: 1em;
+    margin-right: -66px;
+  }
+  .pull-left {
+    float: left;
+    margin-right: 1em;
+    margin-left: -66px;
+  }
+
+}
 
 .author-bio{
   width: auto;

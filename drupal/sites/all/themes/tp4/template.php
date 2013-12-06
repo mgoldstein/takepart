@@ -217,6 +217,10 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
  */
 function tp4_preprocess_node__feature_article(&$variables, $hook) {
   tp4_preprocess_node__openpublish_article($variables);
+
+  // populate $main_ad with the first ad position
+  $ad_box = block_load('boxes', 'box-66c05d6f');
+  $variables['main_ad'] = _block_get_renderable_array(_block_render_blocks(array($ad_box)));
 }
 
 /**
