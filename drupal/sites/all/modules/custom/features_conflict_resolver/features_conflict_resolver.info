@@ -1,4 +1,0 @@
-name = "Features Conflict Resolver"
-description = "Automatically resolves conflicts and moves them to neutral features."
-package = "Features"
-core = "7.x"
