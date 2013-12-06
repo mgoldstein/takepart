@@ -19,14 +19,6 @@
       <?php endif; ?>
       <?php print render($title_suffix); ?>
       </div>
-      <? print render($content['field_article_subhead']); ?>
-
-      <?php if (isset($field_topic_box_top)) : ?>
-      <div class="topic-box">
-        <?php print $field_topic_box_top; ?>
-      </div>
-      <?php endif; ?>
-
       <?php if ($unpublished): ?>
   <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
       <?php endif; ?>
@@ -52,12 +44,16 @@
       </div>
     </div></aside><!-- / #article-social -->
 
-
-  <div id="article-author">
-    <?php print render($content['field_author']); ?>
-  </div>
-
   <div id="article-content">
+  <? print render($content['field_article_subhead']); ?>
+
+  <?php if (isset($field_topic_box_top)) : ?>
+  <div class="topic-box">
+    <?php print $field_topic_box_top; ?>
+  </div>
+  <?php endif; ?>
+
+  <?php print render($content['field_author']); ?>
 
   <?php
     // We hide the comments and links now so that we can render them later.
