@@ -266,9 +266,11 @@ function tp_feature_feature_article_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'formatter_field',
-          'settings' => array(),
-          'type' => 'from_field',
+          'module' => 'media',
+          'settings' => array(
+            'file_view_mode' => 'default',
+          ),
+          'type' => 'media',
           'weight' => '1',
         ),
         'feature_main' => array(
@@ -976,102 +978,6 @@ function tp_feature_feature_article_field_default_fields() {
         ),
         'type' => 'inline_entity_form',
         'weight' => '6',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-feature_article-field_main_image_format'.
-  $fields['node-feature_article-field_main_image_format'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_main_image_format',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'formatter_field',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'formatter',
-    ),
-    'field_instance' => array(
-      'bundle' => 'feature_article',
-      'default_value' => array(
-        0 => array(
-          'type' => 'media',
-          'settings' => 'a:1:{s:14:"file_view_mode";s:9:"landscape";}',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '18',
-        ),
-        'feature_main' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '9',
-        ),
-        'feature_secondary' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-        'feature_topic' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '4',
-        ),
-        'feature_video' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'inline_content' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '0',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'vidpop_map' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_main_image_format',
-      'label' => 'Main Image Format',
-      'required' => 0,
-      'settings' => array(
-        'field_name' => 'field_article_main_image',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'formatter_field',
-        'settings' => array(
-          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        ),
-        'type' => 'formatter_select',
-        'weight' => '4',
       ),
     ),
   );
@@ -2040,6 +1946,110 @@ function tp_feature_feature_article_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-feature_article-field_title_color'.
+  $fields['node-feature_article-field_title_color'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_title_color',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'white' => 'White',
+          'black' => 'Black',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'feature_article',
+      'default_value' => array(
+        0 => array(
+          'value' => 'White',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'You can change the title color to black for better contrast against the hero image.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '18',
+        ),
+        'feature_main' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_video' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'inline_content' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'vidpop_map' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_title_color',
+      'label' => 'Title Color',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_buttons',
+        'weight' => '4',
+      ),
+    ),
+  );
+
   // Exported field: 'node-feature_article-field_topic'.
   $fields['node-feature_article-field_topic'] = array(
     'field_config' => array(
@@ -2285,7 +2295,6 @@ function tp_feature_feature_article_field_default_fields() {
   t('Free Tag');
   t('Inline Replacements');
   t('Main Image');
-  t('Main Image Format');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');
@@ -2297,8 +2306,10 @@ function tp_feature_feature_article_field_default_fields() {
   t('These tags are intended for internal use to organize content for distribution to RSS feeds and the like; they are not visible to external users.');
   t('This is displayed beneath the Article\'s title on the node page');
   t('Thumbnail Image');
+  t('Title Color');
   t('Topic');
   t('Topic Box');
+  t('You can change the title color to black for better contrast against the hero image.');
 
   return $fields;
 }
