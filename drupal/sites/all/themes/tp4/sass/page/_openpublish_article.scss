@@ -44,6 +44,19 @@
   }
 }
 
+// social embeds needs a clearfix
+// this is a modified "micro clearfix"
+// @see http://nicolasgallagher.com/micro-clearfix-hack/
+@media (max-width:979px) {
+  #article-social {
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+  }
+}
+
 //
 // TP Social Styles for both short and longform articles
 //
@@ -207,40 +220,20 @@
 }
 
 //
-// HEADER STYLING
-// openpublish_article specific
+// HEADER STYLES
+// common styles
 // 
-.node-openpublish-article.view-mode-full {
-  //
-  // Article Styling
-  //
+.node-openpublish-article.view-mode-full,
+.node-feature-article.view-mode-full {
   .article-header {
-    .topic-box {
-      margin-bottom: 1em;
-    }
     .node-title {
       // these values are extremely stupid.
       font: normal 2.428571429em/1.088235294 $ashbury-regular;
       margin-bottom: .411764706em; // 14px / 34px
       color: black;
     }
-    .field-name-field-article-subhead {
-      font: normal 1.142857143em/1.125 $ashbury-light;
-      margin-bottom: 1em;
-      color: black;
-    }
   }
   .field-name-field-article-main-image {
-    @include breakpoint($breakpoint-desktop) {
-      figure {
-	margin-bottom: 30px;
-        &.portrait {
-          float: left;
-          width: 400px;
-          margin-right: 1em;
-        }
-      }
-    }
     figcaption {
       font-family: $ashbury-light-italic;
       p, h5 {
@@ -253,14 +246,81 @@
       }
     }
   }
+  .topic-box {
+    margin-bottom: 1em;
+  }
+  .field-name-field-article-subhead {
+    font: normal 1.142857143em/1.125 $ashbury-light;
+    margin-bottom: 1em;
+    color: black;
+  }
 }
 
 //
-// HEADER STYLING
+// HEADER STYLES
+// openpublish_article specific
+// 
+.node-openpublish-article.view-mode-full {
+  //
+  // Article Styling
+  //
+    @include breakpoint($breakpoint-desktop) {
+      figure {
+  margin-bottom: 30px;
+        &.portrait {
+          float: left;
+          width: 400px;
+          margin-right: 1em;
+        }
+      }
+    }
+}
+
+//
+// HEADER STYLES
 // feature specific
 //
 .node-feature-article.view-mode-full {
-
+  // mobile first. finally.
+  .article-header {
+    margin: 0 -10px;
+    figure {
+      margin: 0 0 1em;
+    }
+    figcaption {
+      text-align: right;
+      margin: 0 10px;
+    }  
+  }
+  .field-name-field-article-subhead {
+    font: normal 1.285714286em/1.125 $ashbury-light;
+  }
+  @include breakpoint($breakpoint-tablet) {
+    .article-header {
+      margin-bottom: 1.5em;
+      position: relative;
+      figure {
+        margin: 0;
+      }
+      figcaption {
+        position: absolute;
+        margin: 0;
+        top: 100%;
+        right: 10px;
+      }
+      .node-title {
+        position: absolute;
+        bottom: 14px;
+        left: 2.5%;
+        width: 95%;
+        font: normal 2.25em/1 $ashbury-bold;
+        color: white;
+        &.black {
+          color: black;
+        }
+      }
+    }
+  }
 }
 
 .node-feature-article.view-mode-full,
@@ -542,12 +602,16 @@
   .pull-right {
     float: right;
     margin-left: 1em;
-    margin-right: -66px;
+    @include breakpoint($breakpoint-desktop) {
+      margin-right: -66px;      
+    }
   }
   .pull-left {
     float: left;
     margin-right: 1em;
-    margin-left: -66px;
+    @include breakpoint($breakpoint-desktop) {
+      margin-left: -66px;
+    }
   }
 
 }
