@@ -218,9 +218,13 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
 function tp4_preprocess_node__feature_article(&$variables, $hook) {
   tp4_preprocess_node__openpublish_article($variables);
 
+  // put the title color as a class on the title.
+  $variables['title_attributes_array']['class'][] = $variables['field_title_color'][LANGUAGE_NONE][0]['value'];
+
   // populate $main_ad with the first ad position
   $ad_box = block_load('boxes', 'box-66c05d6f');
   $variables['main_ad'] = _block_get_renderable_array(_block_render_blocks(array($ad_box)));
+
 }
 
 /**
@@ -398,6 +402,9 @@ function tp4_field__field_article_subhead__openpublish_article($variables) {
   return $output;
 }
 
+function tp4_field__field_article_subhead__feature_article($variables) {
+  return tp4_field__field_article_subhead__openpublish_article($variables);
+}
 
 
 function tp4_field__field_article_main_image__openpublish_article($variables) {
@@ -427,6 +434,36 @@ function tp4_field__field_article_main_image__openpublish_article($variables) {
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
   return $output;
 }
+
+function tp4_field__field_article_main_image__feature_article($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $delta => $item) {
+
+    // set up some variables we're going to need.
+    $image = array();
+    $image['path'] = $item['#file']->uri;
+    $image['width'] = '980';
+
+    // pick out the image style, defaulting to landscape
+    $image['style_name'] = 'feature_article_hero';
+
+    // TODO: do this through drupal APIs
+    $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
+
+    // Don't display the caption label no matter what
+    $item['field_media_caption']['#label_display'] = 'hidden';
+
+    $output .= '<figure ' . $variables['item_attributes'][$delta] . '>';
+    $output .= theme('image_style', $image);
+    $output .= '<figcaption>';
+    $output .= drupal_render($item['field_media_caption']);
+    $output .= '</figcaption></figure>';
+  }
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  return $output;
+}
+
 
 /**
  * Implements template_preprocess_entity().

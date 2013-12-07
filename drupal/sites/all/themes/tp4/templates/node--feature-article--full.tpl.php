@@ -9,7 +9,6 @@
 
   <?php if ($title_prefix || $title_suffix || $unpublished || $title): ?>
     <header class="article-header">
-      <div class="feature-article-header-fullwidth">
 
       <?php print render($content['field_article_main_image']); ?>
 
@@ -18,7 +17,6 @@
   <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
-      </div>
       <?php if ($unpublished): ?>
   <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
       <?php endif; ?>
