@@ -91,32 +91,68 @@ function remove_feature_include_files() {
     grep "${SUFFIX}"'$' |
     # Remove each file
     while read FILENAME ; do
-      echo rm "${FILENAME}"
+      rm "${FILENAME}"
     done
 }
 
+# Export active variable values to JSON
 function export_variables() {
   local FILENAME=$1
   (cat "${FILENAME}") |
+  # Get the variable values while Drupal is boot-strapped
   drush php-eval '
     $values = array();
     while ($line = fgets(STDIN)) {
       $name = trim($line);
       $values[$name] = variable_get($name, NULL);
-      echo $line . "\n";
     }
     print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
 
+function push_variables_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}" ) |
+  # (Re)save the variable values while Drupal is boot-strapped
+  drush php-eval '
+    while ($line = fgets(STDIN)) {
+      $name = trim($line);
+      // Using a default value of NULL is not an issue as each variable
+      // will have a value either in the database or the feature the
+      // variable name was pulled from.
+      $value = variable_get($name, NULL);
+      variable_set($name, $value);
+    }
+  '
+}
+
+function remove_variable_features() {
+  local VARIABLE_LIST="variable-list.txt"
+  local BEFORE_EXPORT="variables-before.json"
+  local AFTER_EXPORT="variables-after.json"
+  # Get a list of the variables defined by a feature
+  list_features "variable" > "${VARIABLE_LIST}"
+  # Export their values before making any changes
+  export_variables "${VARIABLE_LIST}" > "${BEFORE_EXPORT}"
+  # Remove all variables from features
+  remove_features_from_info_files "variable"
+  remove_ctools_versions_from_info_files "strongarm"
+  remove_feature_include_files ".strongarm.inc"
+  # Export the variable values again for the purpose of
+  # verifying that no values were changed.
+  export_variables "${VARIABLE_LIST}" > "${AFTER_EXPORT}"
+}
+
+
+remove_variable_features
 
 
 
-#remove_features_from_info_files "variable"
-#remove_ctools_versions_from_info_files "strongarm"
-#remove_feature_include_files ".strongarm.inc"
-#list_features "variable" > "variables.txt"
-#export_variables "variables.txt"
+
+
+
+
+
 
 # list_features "ctools"
 # list_features "features_api"
