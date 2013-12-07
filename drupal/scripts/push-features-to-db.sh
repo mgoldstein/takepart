@@ -18,7 +18,7 @@ function list_features() {
     # Exclude contributed modules
     grep -v "modules/contrib" |
     # Examine only info files
-    grep "\.info$" |
+    grep '\.info$' |
     # Extract feature identifiers from each file found
     while read FILENAME ; do
       # Look for feature declaration lines
@@ -37,6 +37,86 @@ function list_features() {
     # before and after comparisons easier
     sort
 }
+
+# Remove feature indentifiers of a specified type from info files
+function remove_features_from_info_files() {
+  local NAME=$1
+  # Search through the site code base
+  find "${DRUPAL_ROOT}" -type f |
+    # Exclude contributed modules
+    grep -v "modules/contrib" |
+    # Examine only info files
+    grep '\.info$' |
+    # Remove feature identifiers from each file found
+    while read FILENAME ; do
+      TEMPFILE="${FILENAME}.features-removed"
+      # Dump the info file into a temporary file without the feature identifiers
+      grep -v '^features\['"${NAME}"'\]\[\]' "${FILENAME}" > "${TEMPFILE}"
+      # Copy the temporary file over the original
+      cp "${TEMPFILE}" "${FILENAME}"
+      # Remove the temporary file
+      rm "${TEMPFILE}"
+    done
+}
+
+# Remove ctools versions of a specified type from info files
+function remove_ctools_versions_from_info_files() {
+  local NAME=$1
+  # Search through the site code base
+  find "${DRUPAL_ROOT}" -type f |
+    # Exclude contributed modules
+    grep -v "modules/contrib" |
+    # Examine only info files
+    grep '\.info$' |
+    # Remove the appropriate ctools version from each file found
+    while read FILENAME ; do
+      TEMPFILE="${FILENAME}.version-removed"
+      # Dump the info file into a temporary file without the version
+      grep -v '^features\[ctools\]\[\] = '"${NAME}" "${FILENAME}" > "${TEMPFILE}"
+      # Copy the temporary file over the original
+      cp "${TEMPFILE}" "${FILENAME}"
+      # Remove the temporary file
+      rm "${TEMPFILE}"
+    done
+}
+
+# Remove feature files of a specified type
+function remove_feature_include_files() {
+  local SUFFIX=$(echo "$1" | sed 's/\./\\\./g')
+  # Search through the site code base
+  find "${DRUPAL_ROOT}" -type f |
+    # Exclude contributed modules
+    grep -v "modules/contrib" |
+    # Examine only info files
+    grep "${SUFFIX}"'$' |
+    # Remove each file
+    while read FILENAME ; do
+      echo rm "${FILENAME}"
+    done
+}
+
+function export_variables() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $name = trim($line);
+      $values[$name] = variable_get($name, NULL);
+      echo $line . "\n";
+    }
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
+  '
+}
+
+
+
+
+#remove_features_from_info_files "variable"
+#remove_ctools_versions_from_info_files "strongarm"
+#remove_feature_include_files ".strongarm.inc"
+#list_features "variable" > "variables.txt"
+#export_variables "variables.txt"
 
 # list_features "ctools"
 # list_features "features_api"
@@ -62,7 +142,6 @@ function list_features() {
 # list_features "search_api_server"
 # list_features "taxonomy"
 # list_features "user_permission"
-# list_features "variable"
 # list_features "views_view"
 
 
