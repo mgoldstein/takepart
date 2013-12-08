@@ -38,7 +38,7 @@ function list_features() {
     sort
 }
 
-# Remove feature indentifiers of a specified type from info files
+# Remove feature identifiers of a specified type from info files
 function remove_features_from_info_files() {
   local NAME=$1
   # Search through the site code base
@@ -95,11 +95,245 @@ function remove_feature_include_files() {
     done
 }
 
-# Export active variable values to JSON
-function export_variables() {
+# Complete remove features of a specified type
+function remove_features_of_type() {
+  local TYPE=$1
+  local VERSION_NAME=$2
+  local INCLUDE_SUFFIX=$3
+
+  local IDENTIFIER_LIST="${TYPE}-identifiers.txt"
+  local BEFORE_EXPORT="${TYPE}-values-before.json"
+  local AFTER_EXPORT="${TYPE}-values-after.json"
+
+  # Get a list of the identifiers for the specified type of feature
+  list_features "${TYPE}" > "${IDENTIFIER_LIST}"
+
+  # Export their values before making any changes
+  export_${TYPE}_values "${IDENTIFIER_LIST}" > "${BEFORE_EXPORT}"
+
+  # Push the feature values to the database
+  push_${TYPE}_values_to_db "${IDENTIFIER_LIST}"
+
+  # Remove all variables from features
+  remove_features_from_info_files "${TYPE}"
+  remove_ctools_versions_from_info_files "${VERSION_NAME}"
+  if [[ ! -z "${INCLUDE_SUFFIX}" ]] ; then
+    remove_feature_include_files "${INCLUDE_SUFFIX}"
+  fi
+
+  # Export the values again for the purpose of
+  # verifying that no values were changed.
+  export_${TYPE}_values "${IDENTIFIER_LIST}" > "${AFTER_EXPORT}"
+}
+
+function export_bean_type_values() {
   local FILENAME=$1
   (cat "${FILENAME}") |
-  # Get the variable values while Drupal is boot-strapped
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = ctools_export_load_object("bean_type");
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
+  '
+}
+
+function export_box_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = boxes_box_load();
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
+  '
+}
+
+function export_ccl_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = ccl_get_presets();
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
+  '
+}
+
+function export_context_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = context_load(NULL, TRUE);
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
+  '
+}
+
+function export_facetapi_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = ctools_export_load_object("facetapi");
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
+  '
+}
+
+function export_fe_block_boxes_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_fe_block_settings_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_fe_nodequeue_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $data = array();
+    while ($line = fgets(STDIN)) {
+      $data[] = trim($line);
+    }
+  '
+}
+
+function export_feeds_importer_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_field_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = array(
+      "bases" => array(),
+      "instances" => array(),
+    );
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      list($entity_type, $bundle, $name) = explode("-", $identifier);
+      if (!array_key_exists($name, $values["bases"])) {
+        $values["bases"][$name] = field_info_field($name);
+      }
+      $values["instances"][$identifier] = field_info_instance(
+        $entity_type, $name, $bundle);
+    }
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
+  '
+}
+
+function export_field_group_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      list($name, $entity_type, $bundle, $mode) = explode("|", $identifier);
+      $values[$identifier] = field_group_load_field_group(
+        $name, $entity_type, $bundle, $mode);
+    }
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
+  '
+}
+
+function export_filter_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_image_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_menu_custom_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_node_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_panels_mini_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_pm_signup_endpoint_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_search_api_index_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_search_api_server_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_taxonomy_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_user_permission_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function export_variable_values() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
   drush php-eval '
     $values = array();
     while ($line = fgets(STDIN)) {
@@ -110,10 +344,229 @@ function export_variables() {
   '
 }
 
-function push_variables_to_db() {
+function export_views_view_values() {
   local FILENAME=$1
-  (cat "${FILENAME}" ) |
-  # (Re)save the variable values while Drupal is boot-strapped
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+
+
+
+
+
+
+
+
+function push_bean_type_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = ctools_export_load_object("bean_type");
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $bean_type = $values[$identifier];
+      drupal_write_record("bean_type", $bean_type, array("type_id"));
+    }
+  '
+}
+
+function push_box_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = ctools_export_load_object("box");
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $box = $values[$identifier];
+      drupal_write_record("box", $box, array("delta"));
+    }
+  '
+}
+
+function push_ccl_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $presets = ccl_get_presets();
+    foreach($presets as $record) {
+      drupal_write_record("ccl", $record, array("clid"));
+    }
+  '
+}
+
+function push_context_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = ctools_export_load_object("context");
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $context = $values[$identifier];
+      context_save($context);
+    }
+  '
+}
+
+function push_facetapi_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+    $values = ctools_export_load_object("facetapi");
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $facetapi = $values[$identifier];
+      drupal_write_record("facetapi", $facetapi, array("name"));
+    }
+  '
+}
+
+function push_fe_block_boxes_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_fe_block_settings_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_fe_nodequeue_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_feeds_importer_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_field_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_field_group_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # (Re)save the values while Drupal is boot-strapped
+  drush php-eval '
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      list($name, $entity_type, $bundle, $mode) = explode("|", $identifier);
+      $record = field_group_load_field_group(
+        $name, $entity_type, $bundle, $mode);
+      field_group_group_save($record);
+    }
+  '
+}
+
+function push_filter_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_image_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_menu_custom_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_node_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_panels_mini_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_pm_signup_endpoint_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_search_api_index_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_search_api_server_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_taxonomy_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_user_permission_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
+}
+
+function push_variable_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # (Re)save the values while Drupal is boot-strapped
   drush php-eval '
     while ($line = fgets(STDIN)) {
       $name = trim($line);
@@ -126,125 +579,19 @@ function push_variables_to_db() {
   '
 }
 
-function remove_variable_features() {
-  local VARIABLE_LIST="variable-list.txt"
-  local BEFORE_EXPORT="variables-before.json"
-  local AFTER_EXPORT="variables-after.json"
-  # Get a list of the variables defined by a feature
-  list_features "variable" > "${VARIABLE_LIST}"
-  # Export their values before making any changes
-  export_variables "${VARIABLE_LIST}" > "${BEFORE_EXPORT}"
-  # Remove all variables from features
-  remove_features_from_info_files "variable"
-  remove_ctools_versions_from_info_files "strongarm"
-  remove_feature_include_files ".strongarm.inc"
-  # Export the variable values again for the purpose of
-  # verifying that no values were changed.
-  export_variables "${VARIABLE_LIST}" > "${AFTER_EXPORT}"
+function push_views_view_values_to_db() {
+  local FILENAME=$1
+  (cat "${FILENAME}") |
+  # Get the values while Drupal is boot-strapped
+  drush php-eval '
+  '
 }
 
+remove_features_of_type "bean_type" "bean_type" ".bean.inc"
+remove_features_of_type "box" "boxes" ".box.inc"
+remove_features_of_type "ccl" "ccl"
+remove_features_of_type "context" "context" ".context.inc"
+remove_features_of_type "facetapi" "facetapi" ".facetapi_defaults.inc"
 
-remove_variable_features
-
-
-
-
-
-
-
-
-
-# list_features "ctools"
-# list_features "features_api"
-
-# list_features "bean_type"
-# list_features "box"
-# list_features "ccl"
-# list_features "context"
-# list_features "facetapi"
-# list_features "fe_block_boxes"
-# list_features "fe_block_settings"
-# list_features "fe_nodequeue"
-# list_features "feeds_importer"
-# list_features "field"
-# list_features "field_group"
-# list_features "filter"
-# list_features "image"
-# list_features "menu_custom"
-# list_features "node"
-# list_features "panels_mini"
-# list_features "pm_signup_endpoint"
-# list_features "search_api_index"
-# list_features "search_api_server"
-# list_features "taxonomy"
-# list_features "user_permission"
-# list_features "views_view"
-
-
-
-
-
-
-# function remove_features_from_info_file() {
-#   local NAME=$1
-#   find "${DRUPAL_ROOT}" -type f | grep "\.info$" | while read FILENAME ; do
-#     grep -v '^features\['"${NAME}"'\]\[\]' "${FILENAME}" > "/tmp/no-${NAME}-info"
-#     cp "/tmp/no-${NAME}-info" "${FILENAME}"
-#   done
-# }
-
-# function remove_versions_from_info_file() {
-#   local NAME=$1
-#   find "${DRUPAL_ROOT}" -type f | grep "\.info$" | while read FILENAME ; do
-#     grep -v '^features\[ctools\]\[\] = '"${NAME}" "${FILENAME}" > "/tmp/no-${NAME}-version-info"
-#     cp "/tmp/no-${NAME}-version-info" "${FILENAME}"
-#   done
-# }
-
-# # Remove variables from features
-# list_features "variable"
-# drush scr "export-variables.php" > "variables-before.json"
-# drush scr "push-variables-to-db.php"
-# remove_features_from_info_file "variable"
-# remove_versions_from_info_file "strongarm"
-# drush scr "export-variables.php" > "variables-after.json"
-
-# # Remove field groups from features
-# list_features "field_group" > "field-group-features.txt"
-# drush scr "export-field-groups.php" > "field-groups-before.json"
-# drush scr "push-field-groups-to-db.php"
-# remove_features_from_info_file "field_group"
-# remove_versions_from_info_file "field_group"
-# drush scr "export-field-groups.php" > "field-groups-after.json"
-
-
-
-# # List strongarm feature files
-# find . -type f | grep "strongarm\.inc$"
-
-# # Remove variable features from info files
-# find . -type f | grep "\.info$" | while read FILENAME; do grep -v "features\[variable\]\[\]" "$FILENAME" > /tmp/no-vars-info; cp /tmp/no-vars-info "$FILENAME"; done
-
-# # List remaining features
-# find . -type f | grep info$ | while read filename; do grep 'features\[' "$filename"; done | sort
-
-
-# # Remove variable features from info files
-# find . -type f | grep "\.info$" | while read FILENAME; do grep -v "features\[field_group\]\[\]" "$FILENAME" > /tmp/no-field-group-info; cp /tmp/no-field-group-info "$FILENAME"; done
-
-
-
-# find . -type f | grep "\.info$" | while read FILENAME; do grep -v "features\[ctools\]\[\] = field_group:" "$FILENAME" > /tmp/no-fg-version-info; cp /tmp/no-fg-version-info "$FILENAME"; done
-
-
-
-# find . -type f | grep "\.info$" | while read FILENAME ; do
-#   grep -v "features\[field\]\[\]" "$FILENAME" > /tmp/no-field-info;
-#   cp /tmp/no-field-info "$FILENAME";
-# done
-
-# find . -type f | grep "\.info$" | while read FILENAME ; do
-#   grep -v "features\[ctools\]\[\] = strongarm:" "$FILENAME" > /tmp/no-strongarm-info;
-#   cp /tmp/no-strongarm-info "$FILENAME";
-# done
-
+remove_features_of_type "field_group" "field_group" ".field_group.inc"
+remove_features_of_type "variable" "strongarm" ".strongarm.inc"
