@@ -465,6 +465,38 @@ function push_field_values_to_db() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    $bases = array();
+    while ($line = fgets(STDIN)) {
+
+      $identifier = trim($line);
+      list($entity_type, $bundle, $name) = explode("-", $identifier);
+
+      if (!array_key_exists($name, $bases)) {
+        $bases[$name] = field_info_field($name);
+        unset($bases[$name]["field_config"]["columns"]);
+        if ($bases[$name]["field_config"]["storage"]["type"]
+          == variable_get("field_storage_default", "field_sql_storage")) {
+          unset($bases[$name]["field_config"]["storage"]);
+        }
+        if (isset($bases[$name]["field_config"]["storage"]["details"])) {
+          unset($bases[$name]["field_config"]["storage"]["details"]);
+        }
+        if (isset($bases[$name]["id"])) {
+          field_update_field($bases[$name]);
+        }
+        else {
+          field_create_field($bases[$name]);
+        }
+      }
+
+      $instance_config = field_info_instance($entity_type, $name, $bundle);
+      if (isset($existing_instances[$entity_type][$bundle][$name]["id"])) {
+        field_update_instance($instance_config);
+      }
+      else {
+        field_create_instance($instance_config);
+      }
+    }
   '
 }
 
