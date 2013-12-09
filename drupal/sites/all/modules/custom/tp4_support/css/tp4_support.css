@@ -3642,15 +3642,16 @@ footer .footer-bottom a.logos-pivot {
   padding: 30px 0 15px 0;
   position: relative;
   z-index: 2;
+  width: 1000px;
 }
 @media all and (min-width: 320px) {
-  /* line 83, ../sass/_footer.scss */
+  /* line 84, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer {
     width: 100%;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 83, ../sass/_footer.scss */
+  /* line 84, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer {
     width: 1000px;
     margin: 0 auto;
@@ -3741,7 +3742,7 @@ footer .footer-bottom a.logos-pivot {
   display: table;
   clear: both;
 }
-/* line 94, ../sass/_footer.scss */
+/* line 95, ../sass/_footer.scss */
 .footer-wrapper.responsive.mobile-only footer .footer-left ul {
   width: 100%;
 }
@@ -3805,7 +3806,7 @@ footer .footer-bottom a.logos-pivot {
   clear: both;
 }
 @media all and (min-width: 320px) {
-  /* line 92, ../sass/_footer.scss */
+  /* line 93, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left {
     float: left;
     width: 100%;
@@ -3822,7 +3823,7 @@ footer .footer-bottom a.logos-pivot {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 92, ../sass/_footer.scss */
+  /* line 93, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left {
     float: left;
     width: 66.66667%;
@@ -3839,7 +3840,7 @@ footer .footer-bottom a.logos-pivot {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 107, ../sass/_footer.scss */
+  /* line 108, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right {
     float: left;
     width: 100%;
@@ -3856,7 +3857,7 @@ footer .footer-bottom a.logos-pivot {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 107, ../sass/_footer.scss */
+  /* line 108, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right {
     float: left;
     width: 33.33333%;
@@ -3872,7 +3873,7 @@ footer .footer-bottom a.logos-pivot {
     clear: none;
   }
 }
-/* line 117, ../sass/_footer.scss */
+/* line 118, ../sass/_footer.scss */
 .footer-wrapper.responsive.mobile-only footer .footer-bottom {
   clear: left;
   float: left;
@@ -3888,79 +3889,79 @@ footer .footer-bottom a.logos-pivot {
   word-wrap: break-word;
 }
 @media all and (min-width: 320px) {
-  /* line 127, ../sass/_footer.scss */
+  /* line 128, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left ul {
     padding-top: 15px;
     margin-bottom: 20px;
   }
-  /* line 130, ../sass/_footer.scss */
+  /* line 131, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left ul a {
     font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
     font-size: 14px;
     line-height: 24px;
     color: #000;
   }
-  /* line 135, ../sass/_footer.scss */
+  /* line 136, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left ul a:hover {
     text-decoration: underline;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 125, ../sass/_footer.scss */
+  /* line 126, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left {
     margin-bottom: 0px;
   }
-  /* line 143, ../sass/_footer.scss */
+  /* line 144, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left ul {
     margin-bottom: 7px;
   }
 }
 @media all and (min-width: 320px) {
-  /* line 150, ../sass/_footer.scss */
+  /* line 151, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .footer-title.social {
     float: left;
     margin-bottom: 2px;
   }
-  /* line 154, ../sass/_footer.scss */
+  /* line 155, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .follow-us {
     width: 100%;
     text-align: left;
     clear: both;
   }
-  /* line 158, ../sass/_footer.scss */
+  /* line 159, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .follow-us ul {
     text-align: left;
   }
-  /* line 162, ../sass/_footer.scss */
+  /* line 163, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .text {
     float: left;
     margin-top: 40px;
     width: 100%;
   }
-  /* line 166, ../sass/_footer.scss */
+  /* line 167, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .text a {
     color: #019f84;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 172, ../sass/_footer.scss */
+  /* line 173, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .footer-title.social {
     float: right;
   }
-  /* line 175, ../sass/_footer.scss */
+  /* line 176, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .follow-us {
     text-align: right;
   }
-  /* line 177, ../sass/_footer.scss */
+  /* line 178, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .follow-us ul {
     float: right;
     text-align: left;
   }
-  /* line 180, ../sass/_footer.scss */
+  /* line 181, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .follow-us ul li {
     float: left;
   }
-  /* line 185, ../sass/_footer.scss */
+  /* line 186, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .text {
     float: right;
     margin-top: 50px;
@@ -3971,7 +3972,7 @@ footer .footer-bottom a.logos-pivot {
     line-height: 16px;
   }
 }
-/* line 196, ../sass/_footer.scss */
+/* line 197, ../sass/_footer.scss */
 .footer-wrapper.responsive.mobile-only footer .footer-bottom {
   text-align: center;
   margin-top: 30px;
@@ -3979,15 +3980,15 @@ footer .footer-bottom a.logos-pivot {
   padding-top: 20px;
 }
 @media all and (min-width: 320px) {
-  /* line 196, ../sass/_footer.scss */
+  /* line 197, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom {
     text-align: center;
   }
-  /* line 203, ../sass/_footer.scss */
+  /* line 204, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner {
     text-align: left;
   }
-  /* line 206, ../sass/_footer.scss */
+  /* line 207, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner li {
     display: inline-block;
     margin-left: 20px;
@@ -3995,46 +3996,46 @@ footer .footer-bottom a.logos-pivot {
     width: auto;
     overflow: hidden;
   }
-  /* line 212, ../sass/_footer.scss */
+  /* line 213, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner li:first-child {
     margin-left: 0px;
   }
-  /* line 215, ../sass/_footer.scss */
+  /* line 216, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner li a {
     display: block;
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
   }
-  /* line 220, ../sass/_footer.scss */
+  /* line 221, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner li a.logos-takepart {
     height: 30px;
     width: 131px;
   }
-  /* line 224, ../sass/_footer.scss */
+  /* line 225, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
     height: 31px;
     width: 144px;
   }
-  /* line 228, ../sass/_footer.scss */
+  /* line 229, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner li a.logos-pivot {
     height: 28px;
     width: 77px;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 237, ../sass/_footer.scss */
+  /* line 238, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner {
     display: inline-block;
   }
-  /* line 239, ../sass/_footer.scss */
+  /* line 240, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner .footer-title {
     display: inline-block;
     vertical-align: top;
     margin-top: 8px;
     margin-right: 10px;
   }
-  /* line 245, ../sass/_footer.scss */
+  /* line 246, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner ul {
     display: inline-block;
   }
@@ -4043,7 +4044,7 @@ footer .footer-bottom a.logos-pivot {
 /**
  * FOOTER NON-RESPONSIVE
  */
-/* line 263, ../sass/_footer.scss */
+/* line 264, ../sass/_footer.scss */
 .footer-wrapper.non-responsive {
   background-color: #eeeeee;
   padding: 30px 0 15px 0;
@@ -4051,7 +4052,7 @@ footer .footer-bottom a.logos-pivot {
   position: relative;
   z-index: 2;
 }
-/* line 269, ../sass/_footer.scss */
+/* line 270, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer {
   max-width: non-responsive;
   width: 1000px;
@@ -4065,7 +4066,7 @@ footer .footer-bottom a.logos-pivot {
 .footer-wrapper.non-responsive footer:after {
   clear: both;
 }
-/* line 273, ../sass/_footer.scss */
+/* line 274, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left {
   width: 100%;
   float: left;
@@ -4191,11 +4192,11 @@ footer .footer-bottom a.logos-pivot {
   display: table;
   clear: both;
 }
-/* line 276, ../sass/_footer.scss */
+/* line 277, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left ul {
   width: 100%;
 }
-/* line 282, ../sass/_footer.scss */
+/* line 283, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right {
   float: left;
   width: 33.33333%;
@@ -4210,7 +4211,7 @@ footer .footer-bottom a.logos-pivot {
   word-wrap: break-word;
   clear: none;
 }
-/* line 286, ../sass/_footer.scss */
+/* line 287, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom {
   clear: left;
   float: left;
@@ -4225,47 +4226,47 @@ footer .footer-bottom a.logos-pivot {
   box-sizing: border-box;
   word-wrap: break-word;
 }
-/* line 294, ../sass/_footer.scss */
+/* line 295, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left {
   margin-bottom: 0px;
 }
-/* line 296, ../sass/_footer.scss */
+/* line 297, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left ul {
   padding-top: 15px;
   margin-bottom: 7px;
 }
-/* line 299, ../sass/_footer.scss */
+/* line 300, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left ul a {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 14px;
   line-height: 24px;
   color: #000;
 }
-/* line 304, ../sass/_footer.scss */
+/* line 305, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left ul a:hover {
   text-decoration: underline;
 }
-/* line 311, ../sass/_footer.scss */
+/* line 312, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .footer-title.social {
   float: right;
   margin-bottom: 2px;
 }
-/* line 315, ../sass/_footer.scss */
+/* line 316, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .follow-us {
   width: 100%;
   clear: both;
   text-align: right;
 }
-/* line 319, ../sass/_footer.scss */
+/* line 320, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .follow-us ul {
   float: right;
   text-align: left;
 }
-/* line 322, ../sass/_footer.scss */
+/* line 323, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .follow-us ul li {
   float: left;
 }
-/* line 327, ../sass/_footer.scss */
+/* line 328, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .text {
   float: right;
   margin-top: 50px;
@@ -4275,11 +4276,11 @@ footer .footer-bottom a.logos-pivot {
   font-size: 11px;
   line-height: 16px;
 }
-/* line 335, ../sass/_footer.scss */
+/* line 336, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .text a {
   color: #019f84;
 }
-/* line 340, ../sass/_footer.scss */
+/* line 341, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom {
   text-align: center;
   margin-top: 30px;
@@ -4287,12 +4288,12 @@ footer .footer-bottom a.logos-pivot {
   padding-top: 20px;
   text-align: center;
 }
-/* line 346, ../sass/_footer.scss */
+/* line 347, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner {
   text-align: left;
   display: inline-block;
 }
-/* line 349, ../sass/_footer.scss */
+/* line 350, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li {
   display: inline-block;
   margin-left: 20px;
@@ -4300,40 +4301,40 @@ footer .footer-bottom a.logos-pivot {
   width: auto;
   overflow: hidden;
 }
-/* line 355, ../sass/_footer.scss */
+/* line 356, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li:first-child {
   margin-left: 0px;
 }
-/* line 358, ../sass/_footer.scss */
+/* line 359, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li a {
   display: block;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 363, ../sass/_footer.scss */
+/* line 364, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li a.logos-takepart {
   height: 30px;
   width: 131px;
 }
-/* line 367, ../sass/_footer.scss */
+/* line 368, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
   height: 31px;
   width: 144px;
 }
-/* line 371, ../sass/_footer.scss */
+/* line 372, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li a.logos-pivot {
   height: 28px;
   width: 77px;
 }
-/* line 377, ../sass/_footer.scss */
+/* line 378, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner .footer-title {
   display: inline-block;
   vertical-align: top;
   margin-top: 8px;
   margin-right: 10px;
 }
-/* line 383, ../sass/_footer.scss */
+/* line 384, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner ul {
   display: inline-block;
 }

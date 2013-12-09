@@ -80,6 +80,7 @@ footer{
   padding: 30px 0 15px 0;
   position: relative;
   z-index: 2;
+  width: 1000px;
   footer{
     @include breakpoint($breakpoint-mobile){
       width: 100%;
