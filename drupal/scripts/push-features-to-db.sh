@@ -337,8 +337,8 @@ function export_variable_values() {
   drush php-eval '
     $values = array();
     while ($line = fgets(STDIN)) {
-      $name = trim($line);
-      $values[$name] = variable_get($name, NULL);
+      $identifier = trim($line);
+      $values[$identifier] = variable_get($identifier, NULL);
     }
     print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
@@ -569,12 +569,12 @@ function push_variable_values_to_db() {
   # (Re)save the values while Drupal is boot-strapped
   drush php-eval '
     while ($line = fgets(STDIN)) {
-      $name = trim($line);
+      $identifier = trim($line);
       // Using a default value of NULL is not an issue as each variable
       // will have a value either in the database or the feature the
       // variable name was pulled from.
-      $value = variable_get($name, NULL);
-      variable_set($name, $value);
+      $value = variable_get($identifier, NULL);
+      variable_set($identifier, $value);
     }
   '
 }
