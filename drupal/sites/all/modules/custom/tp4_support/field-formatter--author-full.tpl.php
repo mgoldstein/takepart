@@ -6,7 +6,12 @@
     foreach ($variables['items'] as $delta => $item) {
       $authors .= '<span class="byline-author"' . $variables['item_attributes'][$delta] . '>';
       $author_node = node_load($item['nid']);
-      $authors .= $author_node->title;
+      $author_path = drupal_get_path_alias('node/'. $author_node->nid);
+      $authors .= l($author_node->title, $author_path, array(
+        'attributes' => array(
+            'rel' => 'author'
+            ) 
+        ) );
       $authors .= '</span>';
       // add commas for lists of 3 or greater ($delta is zero-indexed)
       $authors .= ($number_of_authors > 2 && $delta < $number_of_authors - 2 ) ? ', ' :'';
