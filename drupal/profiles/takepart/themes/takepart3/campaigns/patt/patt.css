@@ -103,7 +103,7 @@ body {
 	height:132px;
 	position:relative;
 	top:13px;
-	z-index:50;
+	z-index: 0;
 }
 
 .table.int .header .logo {
@@ -171,7 +171,7 @@ body {
 
 .table .nav li:after {
 	background:url('/profiles/takepart/themes/takepart3/campaigns/patt/images/interior-nav-bg-white.png') no-repeat;
-	z-index: 49;
+	z-index: -50;
 	position: absolute;
 	display: block;
 	width:125px;
