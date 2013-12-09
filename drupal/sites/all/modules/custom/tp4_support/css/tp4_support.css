@@ -2541,7 +2541,7 @@
     height: 48px;
     color: white;
     border: none;
-    background: url('../../../../themes/tp4/images/mobile-search-hover.jpg?1383937447') no-repeat center center;
+    background: url('../../../../themes/tp4/images/mobile-search-hover.jpg?1386108801') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -2949,7 +2949,7 @@
     height: 48px;
     color: white;
     border: none;
-    background: url('../../../../themes/tp4/images/mobile-search-hover.jpg?1383937447') no-repeat center center;
+    background: url('../../../../themes/tp4/images/mobile-search-hover.jpg?1386108801') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -3282,7 +3282,7 @@
   height: 48px;
   color: white;
   border: none;
-  background: url('../../../../themes/tp4/images/mobile-search-hover.jpg?1383937447') no-repeat center center;
+  background: url('../../../../themes/tp4/images/mobile-search-hover.jpg?1386108801') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -3487,7 +3487,7 @@
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../../../../themes/tp4/images/takeaction-logo-mobile.png?1385007455') no-repeat 10px center;
+  background: url('../../../../themes/tp4/images/takeaction-logo-mobile.png?1386108801') no-repeat 10px center;
   margin: 0;
 }
 /* line 1062, ../sass/_slimnav.scss */
@@ -3498,7 +3498,7 @@
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../../../../themes/tp4/images/tpl-logo-mobile.png?1385007455') no-repeat 10px center;
+  background: url('../../../../themes/tp4/images/tpl-logo-mobile.png?1386108801') no-repeat 10px center;
   margin: 0;
 }
 /* line 1074, ../sass/_slimnav.scss */
@@ -3649,7 +3649,7 @@ footer .footer-bottom a.logos-pivot {
     width: 100%;
   }
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 768px) {
   /* line 83, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer {
     width: 1000px;
@@ -3683,7 +3683,7 @@ footer .footer-bottom a.logos-pivot {
     padding: 0;
   }
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 768px) {
   /* line 55, ../../../../themes/tp4/sass/helpers/_mixins.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left .footer-menu:nth-child(3n+1) {
     float: left;
@@ -3780,7 +3780,7 @@ footer .footer-bottom a.logos-pivot {
     padding-right: 20px;
   }
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 768px) {
   /* line 55, ../../../../themes/tp4/sass/helpers/_mixins.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left ul li.menu__item:nth-child(1n+0) {
     float: left;
@@ -3821,7 +3821,7 @@ footer .footer-bottom a.logos-pivot {
     clear: left;
   }
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 768px) {
   /* line 92, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left {
     float: left;
@@ -3838,7 +3838,7 @@ footer .footer-bottom a.logos-pivot {
     clear: none;
   }
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 320px) {
   /* line 107, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right {
     float: left;
@@ -3855,7 +3855,7 @@ footer .footer-bottom a.logos-pivot {
     clear: left;
   }
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 768px) {
   /* line 107, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right {
     float: left;
@@ -3905,7 +3905,7 @@ footer .footer-bottom a.logos-pivot {
     text-decoration: underline;
   }
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 768px) {
   /* line 125, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-left {
     margin-bottom: 0px;
@@ -3942,7 +3942,7 @@ footer .footer-bottom a.logos-pivot {
     color: #019f84;
   }
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 768px) {
   /* line 172, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-right .footer-title.social {
     float: right;
@@ -4022,7 +4022,7 @@ footer .footer-bottom a.logos-pivot {
     width: 77px;
   }
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 768px) {
   /* line 237, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner {
     display: inline-block;

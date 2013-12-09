@@ -53,7 +53,7 @@ body {
 	border-bottom: 5px solid #01BF9E;
 }
 #page-wrapper{
-	max-width: 49em;
+	width: 49em;
 	margin: auto;
 	position: relative;
 }
