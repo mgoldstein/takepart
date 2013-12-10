@@ -54,6 +54,11 @@ body {
 	border-top: 5px solid #01BF9E;
 	border-bottom: 5px solid #01BF9E;
 }
+#page-wrapper{
+	width: 49em;
+	margin: auto;
+	position: relative;
+}
 
 a:link,
 a:visited {
