@@ -161,7 +161,11 @@ function export_context_values() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
-    $values = context_load(NULL, TRUE);
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $values[$identifier] = context_load($identifier, TRUE);
+    }
     print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
@@ -263,6 +267,12 @@ function export_image_values() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $values[$identifier] = image_style_load($identifier);
+    }
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
 
@@ -279,6 +289,12 @@ function export_node_values() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $values[$identifier] = node_type_get_type($identifier);
+    }
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
 
@@ -319,6 +335,12 @@ function export_taxonomy_values() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $values[$identifier] = taxonomy_vocabulary_machine_name_load($identifier);
+    }
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
 
@@ -327,6 +349,58 @@ function export_user_permission_values() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    function fptdb_user_features_get_roles() {
+      $roles = array();
+      foreach (user_roles() as $rid => $name) {
+        switch ($rid) {
+          case DRUPAL_ANONYMOUS_RID:
+              $roles[$rid] = "anonymous user";
+            break;
+          case DRUPAL_AUTHENTICATED_RID:
+              $roles[$rid] = "authenticated user";
+            break;
+          default:
+            $roles[$rid] = $name;
+            break;
+        }
+      }
+      return $roles;
+    }
+
+    function fptdb_user_features_get_permissions() {
+      $map = user_permission_get_modules();
+      $roles = fptdb_user_features_get_roles();
+      $permissions = array();
+      foreach (user_role_permissions($roles) as $rid => $role_permissions) {
+        foreach (array_keys(array_filter($role_permissions)) as $permission) {
+          if (isset($map[$permission])) {
+            $permissions[$permission][] = $roles[$rid];
+          }
+        }
+      }
+      return $permissions;
+    }
+
+    $perm_modules = user_permission_get_modules();
+    $permissions = fptdb_user_features_get_permissions();
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $values[$identifier] = array(
+        "name" => $identifier,
+      );
+      if (isset($permissions[$identifier])) {
+        sort($permissions[$identifier]);
+        $values[$identifier]["roles"] = $permissions[$identifier];
+      }
+      else {
+        $values[$identifier]["roles"] = array();
+      }
+      if (isset($perm_modules[$identifier])) {
+        $values[$identifier]["module"] = $perm_modules[$identifier];
+      }
+    }
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
 
@@ -349,6 +423,12 @@ function export_views_view_values() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $values[$identifier] = views_get_view($identifier, TRUE);
+    }
+    print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
 
@@ -405,10 +485,9 @@ function push_context_values_to_db() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
-    $values = ctools_export_load_object("context");
     while ($line = fgets(STDIN)) {
       $identifier = trim($line);
-      $context = $values[$identifier];
+      $context = context_load($identifier, TRUE);
       context_save($context);
     }
   '
@@ -490,7 +569,7 @@ function push_field_values_to_db() {
       }
 
       $instance_config = field_info_instance($entity_type, $name, $bundle);
-      if (isset($existing_instances[$entity_type][$bundle][$name]["id"])) {
+      if (isset($instance_config["id"])) {
         field_update_instance($instance_config);
       }
       else {
@@ -528,6 +607,12 @@ function push_image_values_to_db() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $style = image_style_load($identifier);
+      image_style_save($style);
+    }
   '
 }
 
@@ -544,6 +629,12 @@ function push_node_values_to_db() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $type = node_type_get_type($identifier);
+      node_type_save($type);
+    }
   '
 }
 
@@ -584,6 +675,12 @@ function push_taxonomy_values_to_db() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $vocabulary = taxonomy_vocabulary_machine_name_load($identifier);
+      taxonomy_vocabulary_save($vocabulary);
+    }
   '
 }
 
@@ -616,14 +713,41 @@ function push_views_view_values_to_db() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
+    $values = array();
+    while ($line = fgets(STDIN)) {
+      $identifier = trim($line);
+      $view = views_get_view($identifier, TRUE);
+      views_save_view($view);
+    }
   '
 }
 
-remove_features_of_type "bean_type" "bean_type" ".bean.inc"
-remove_features_of_type "box" "boxes" ".box.inc"
-remove_features_of_type "ccl" "ccl"
-remove_features_of_type "context" "context" ".context.inc"
-remove_features_of_type "facetapi" "facetapi" ".facetapi_defaults.inc"
+#  13 features[taxonomy][]
+#  17 features[pm_signup_endpoint][]
+#  27 features[node][]
+#  27 features[views_view][]
+#  34 features[context][]
+#  34 features[image][]
+#  38 features[user_permission][]
+#  55 features[box][]
+#  56 features[features_api][]
+#  95 features[ctools][]
+# 139 features[field_group][]
+# 317 features[variable][]
+# 430 features[field][]
 
+remove_features_of_type "taxonomy" "taxonomy" ".features.taxonomy.inc"
+remove_features_of_type "pm_signup_endpoint" "pm_signup_endpoint" ".features.pm_signup_endpoint.inc"
+remove_features_of_type "node" "node"
+remove_features_of_type "views_view" "views" ".views_default.inc"
+remove_features_of_type "context" "context" ".context.inc"
+remove_features_of_type "image" "image"
+remove_features_of_type "user_permission" "user_permission" ".features.user_permission.inc"
+remove_features_of_type "box" "boxes" ".box.inc"
 remove_features_of_type "field_group" "field_group" ".field_group.inc"
 remove_features_of_type "variable" "strongarm" ".strongarm.inc"
+remove_features_of_type "field" "field" ".features.field.inc"
+
+remove_features_of_type "bean_type" "bean_type" ".bean.inc"
+remove_features_of_type "ccl" "ccl"
+remove_features_of_type "facetapi" "facetapi" ".facetapi_defaults.inc"
