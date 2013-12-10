@@ -29,8 +29,7 @@
 
     $bio_link = l('full bio', $author_path, array(
         'attributes' => array(
-            'class' => array('more'), 
-            'rel' => 'author'
+            'class' => array('more')
             ) 
         ));
     $social_links = '';
