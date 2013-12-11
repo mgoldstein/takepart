@@ -49,7 +49,7 @@ function tp_feature_image_styles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '400',
+          'width' => '480',
           'height' => '',
           'upscale' => 0,
         ),
@@ -73,7 +73,7 @@ function tp_feature_image_styles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '480',
+          'width' => '400',
           'height' => '',
           'upscale' => 0,
         ),
