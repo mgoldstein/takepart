@@ -35,6 +35,7 @@
     #series-navigation {
       margin-left: 134px;
       width: 780px;
+      box-sizing: border-box;
     }
     #article-footer,
     #article-comments {
@@ -595,25 +596,40 @@
   .block-boxes-ga_ad {
     float: right;
     margin-left: 1em;
-    margin-right: -66px;
+    @include breakpoint($breakpoint-desktop) {
+      margin-right: -66px;
+    }
   }
 
+  figure {
+    &.image-portrait {
+      width: 400px;
+    }
+    &.image-landscape {
+      width: 480px;
+    }
+  }
   // utility classes for offsets
-  .pull-right {
+  .align-right {
     float: right;
     margin-left: 1em;
+    margin-bottom: 1em;
     @include breakpoint($breakpoint-desktop) {
       margin-right: -66px;      
     }
   }
-  .pull-left {
+  .align-left {
     float: left;
     margin-right: 1em;
+    margin-bottom: 1em;
     @include breakpoint($breakpoint-desktop) {
       margin-left: -66px;
     }
   }
-
+  .align-center {
+    display: block;
+    margin: 1em auto;
+  }
 }
 
 .author-bio{
