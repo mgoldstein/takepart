@@ -116,11 +116,11 @@ function remove_features_of_type() {
   push_${TYPE}_values_to_db "${IDENTIFIER_LIST}"
 
   # Remove all variables from features
-  remove_features_from_info_files "${TYPE}"
-  remove_ctools_versions_from_info_files "${VERSION_NAME}"
-  if [[ ! -z "${INCLUDE_SUFFIX}" ]] ; then
-    remove_feature_include_files "${INCLUDE_SUFFIX}"
-  fi
+  # remove_features_from_info_files "${TYPE}"
+  # remove_ctools_versions_from_info_files "${VERSION_NAME}"
+  # if [[ ! -z "${INCLUDE_SUFFIX}" ]] ; then
+  #   remove_feature_include_files "${INCLUDE_SUFFIX}"
+  # fi
 
   # Export the values again for the purpose of
   # verifying that no values were changed.
@@ -746,7 +746,7 @@ remove_features_of_type "pm_signup_endpoint" "pm_signup_endpoint" ".features.pm_
 remove_features_of_type "node" "node"
 remove_features_of_type "views_view" "views" ".views_default.inc"
 remove_features_of_type "context" "context" ".context.inc"
-remove_features_of_type "image" "image"
+#remove_features_of_type "image" "image"
 remove_features_of_type "user_permission" "user_permission" ".features.user_permission.inc"
 remove_features_of_type "box" "boxes" ".box.inc"
 remove_features_of_type "field_group" "field_group" ".field_group.inc"
