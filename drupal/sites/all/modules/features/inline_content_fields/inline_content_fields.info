@@ -10,6 +10,7 @@ dependencies[] = features
 dependencies[] = link
 dependencies[] = list
 dependencies[] = media
+dependencies[] = media_views_widget
 dependencies[] = node_reference
 dependencies[] = options
 features[features_api][] = api:1
