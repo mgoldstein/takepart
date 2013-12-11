@@ -404,21 +404,20 @@ function tp4_field__field_article_main_image__openpublish_article($variables) {
  */
 function tp4_preprocess_entity(&$variables, $hook) {
 
-  $variables["custom_render"] = array();
-
+  $variables['custom_render'] = array();
   switch ($variables['entity_type']) {
     case "bean":
       if ($variables['bean']->{'type'} == "of_the_day") {
       	//Look for a tpl file called bean--of-the-day-custom.tpl.php:
       	$variables['theme_hook_suggestions'][] = 'bean__of_the_day_custom';
-
         $children = element_children($variables['elements']['field_listing_collection'], $sort = FALSE);
 
-        foreach($children as $child){
+        foreach($children as $key => $child){
           $collectiondata = $variables['elements']['field_listing_collection'][$child];
+          $collectiondata = current($collectiondata['entity']['field_collection_item']);
+
       	  $acnid = $collectiondata['field_associated_content']['#items'][0]['nid'];
       	  $node  = node_load($acnid);
-
     	    if ($node->status == 1) {
     	      $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
 
@@ -470,7 +469,12 @@ function tp4_preprocess_html(&$variables) {
 }
 
 
-
+function tp4_preprocess_panels_pane(&$variables) {
+  $variables['testing'] = 'this is a test';
+  if($variables['pane']->panel == 'main_featured'){
+    $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
+  }
+}
 
 
 
