@@ -104,6 +104,7 @@ function remove_features_of_type() {
   local IDENTIFIER_LIST="${TYPE}-identifiers.txt"
   local BEFORE_EXPORT="${TYPE}-values-before.json"
   local AFTER_EXPORT="${TYPE}-values-after.json"
+  local EXPORT_DIFF="${TYPE}-values.diff"
 
   # Get a list of the identifiers for the specified type of feature
   list_features "${TYPE}" > "${IDENTIFIER_LIST}"
@@ -123,7 +124,11 @@ function remove_features_of_type() {
 
   # Export the values again for the purpose of
   # verifying that no values were changed.
+  drush cc all
   export_${TYPE}_values "${IDENTIFIER_LIST}" > "${AFTER_EXPORT}"
+
+  # Get the difference between before and after
+  diff "${BEFORE_EXPORT}" "${AFTER_EXPORT}" > "${EXPORT_DIFF}"
 }
 
 function export_bean_type_values() {
@@ -132,6 +137,7 @@ function export_bean_type_values() {
   # Get the values while Drupal is boot-strapped
   drush php-eval '
     $values = ctools_export_load_object("bean_type");
+    ksort($values);
     print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
@@ -142,6 +148,7 @@ function export_box_values() {
   # Get the values while Drupal is boot-strapped
   drush php-eval '
     $values = boxes_box_load();
+    ksort($values);
     print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
@@ -152,6 +159,7 @@ function export_ccl_values() {
   # Get the values while Drupal is boot-strapped
   drush php-eval '
     $values = ccl_get_presets();
+    ksort($values);
     print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
@@ -176,6 +184,7 @@ function export_facetapi_values() {
   # Get the values while Drupal is boot-strapped
   drush php-eval '
     $values = ctools_export_load_object("facetapi");
+    ksort($values);
     print json_encode($values, JSON_PRETTY_PRINT) . "\n";
   '
 }
@@ -201,10 +210,6 @@ function export_fe_nodequeue_values() {
   (cat "${FILENAME}") |
   # Get the values while Drupal is boot-strapped
   drush php-eval '
-    $data = array();
-    while ($line = fgets(STDIN)) {
-      $data[] = trim($line);
-    }
   '
 }
 
@@ -449,7 +454,7 @@ function push_bean_type_values_to_db() {
     while ($line = fgets(STDIN)) {
       $identifier = trim($line);
       $bean_type = $values[$identifier];
-      drupal_write_record("bean_type", $bean_type, array("type_id"));
+      drupal_write_record("bean_type", $bean_type, array("name"));
     }
   '
 }
@@ -462,8 +467,8 @@ function push_box_values_to_db() {
     $values = ctools_export_load_object("box");
     while ($line = fgets(STDIN)) {
       $identifier = trim($line);
-      $box = $values[$identifier];
-      drupal_write_record("box", $box, array("delta"));
+      $box = boxes_box::load($identifier);
+      $box->save();
     }
   '
 }
@@ -748,6 +753,6 @@ remove_features_of_type "field_group" "field_group" ".field_group.inc"
 remove_features_of_type "variable" "strongarm" ".strongarm.inc"
 remove_features_of_type "field" "field" ".features.field.inc"
 
-remove_features_of_type "bean_type" "bean_type" ".bean.inc"
+#remove_features_of_type "bean_type" "bean_type" ".bean.inc"
 remove_features_of_type "ccl" "ccl"
 remove_features_of_type "facetapi" "facetapi" ".facetapi_defaults.inc"
