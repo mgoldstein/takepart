@@ -3333,7 +3333,7 @@ tr.selected td {
 /* line 807, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1382751895');
+  background-image: url('../images/progress.gif?1386108801');
 }
 
 /* TP Modal Library ---------------------- */
@@ -3794,7 +3794,7 @@ body.front #sidebar .block-title {
   color: black;
 }
 /* line 59, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main.node-openpublish-article .node-title {
+.panel-takepart-homepage .panel-main-featured .pane-title {
   position: relative;
   background-color: white;
   margin: -1em .5em 1px;
@@ -3804,32 +3804,32 @@ body.front #sidebar .block-title {
   font-weight: normal;
 }
 /* line 69, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main .field-name-field-article-subhead {
+.panel-takepart-homepage .panel-main-featured .field-name-field-article-subhead {
   font-size: 1em;
   line-height: 1.285714286;
   font-weight: normal;
 }
 /* line 75, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main .byline {
+.panel-takepart-homepage .panel-main-featured .byline {
   margin: 0 2em 1em;
 }
 /* line 79, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main .entry-content {
+.panel-takepart-homepage .panel-main-featured .entry-content {
   margin: 0 2em 1em;
   border-bottom: 1px solid #cccccc;
 }
 /* line 83, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main .entry-content .field {
+.panel-takepart-homepage .panel-main-featured .entry-content .field {
   margin-bottom: .7em;
 }
 /* line 87, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item {
+.panel-takepart-homepage .panel-main-featured .entry-content .field-name-field-tab-action-override .field-item {
   position: relative;
   padding-left: 1.5em;
   margin-bottom: 1em;
 }
 /* line 92, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item:before {
+.panel-takepart-homepage .panel-main-featured .entry-content .field-name-field-tab-action-override .field-item:before {
   content: "\23E9";
   font-family: "SSGizmo";
   line-height: 1.75;
@@ -3840,16 +3840,16 @@ body.front #sidebar .block-title {
   left: 0;
 }
 /* line 103, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a {
+.panel-takepart-homepage .panel-main-featured .entry-content .field-name-field-tab-action-override .field-item a {
   color: black;
 }
 /* line 106, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:before {
+.panel-takepart-homepage .panel-main-featured .entry-content .field-name-field-tab-action-override .field-item a:before {
   content: "take action:\0020";
   font-family: "BrownRegular", verdana, sans-serif;
 }
 /* line 111, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:hover, .panel-takepart-homepage .node.view-mode-feature-main .entry-content .field-name-field-tab-action-override .field-item a:active {
+.panel-takepart-homepage .panel-main-featured .entry-content .field-name-field-tab-action-override .field-item a:hover, .panel-takepart-homepage .panel-main-featured .entry-content .field-name-field-tab-action-override .field-item a:active {
   color: #01bf9e;
 }
 /* line 120, ../sass/page/_homepage.scss */
@@ -3897,12 +3897,12 @@ body.front #sidebar .block-title {
 /* line 152, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1385003126');
+  background-image: url('../images/tpl-title.jpg?1386108801');
 }
 /* line 156, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 252px;
-  background-image: url('../images/tpl-time.jpg?1382751895');
+  background-image: url('../images/tpl-time.jpg?1386108801');
 }
 
 /* line 163, ../sass/page/_homepage.scss */
@@ -4467,7 +4467,7 @@ body.front #sidebar .block-title {
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1384975157') no-repeat;
+  background: url('../images/megaphone.jpg?1386108801') no-repeat;
   padding-bottom: 5px;
 }
 
@@ -5574,7 +5574,7 @@ body.front #sidebar .block-title {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1384975157') no-repeat center center;
+    background: url('../images/tpl-logo.jpg?1386108801') no-repeat center center;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -5584,7 +5584,7 @@ body.front #sidebar .block-title {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.png?1384889510') no-repeat center center;
+    background: url('../images/takeaction-logo.png?1386108801') no-repeat center center;
     margin: 0;
   }
 }
@@ -5911,11 +5911,11 @@ body.front #sidebar .block-title {
 }
 /* line 230, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1384889510');
+  background-image: url('../images/tpl-logo-hover.jpg?1386108801');
 }
 /* line 233, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-hover.jpg?1384889510');
+  background-image: url('../images/takeaction-logo-hover.jpg?1386108801');
 }
 
 /**
@@ -6464,7 +6464,7 @@ header {
   /* line 119, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1382978986') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1386108801') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -6528,7 +6528,7 @@ header .search {
     padding-top: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1383937447') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1386108801') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -6598,7 +6598,7 @@ header .search {
     padding-top: 24px;
     overflow: hidden;
     background-color: transparent;
-    background: url('../images/search-submit.png?1382978986') no-repeat center center;
+    background: url('../images/search-submit.png?1386108801') no-repeat center center;
   }
 }
 
@@ -6611,7 +6611,7 @@ header .search {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1383937447') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1386108801') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
@@ -7119,7 +7119,7 @@ header .search {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1385007455') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1386108801') no-repeat 10px center;
   margin: 0;
 }
 /* line 68, ../sass/modules/_left_drawer.scss */
@@ -7130,7 +7130,7 @@ header .search {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/tpl-logo-mobile.png?1385007455') no-repeat 10px center;
+  background: url('../images/tpl-logo-mobile.png?1386108801') no-repeat 10px center;
   margin: 0;
 }
 /* line 80, ../sass/modules/_left_drawer.scss */

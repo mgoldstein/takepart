@@ -470,7 +470,6 @@ function tp4_preprocess_html(&$variables) {
 
 
 function tp4_preprocess_panels_pane(&$variables) {
-  $variables['testing'] = 'this is a test';
   if($variables['pane']->panel == 'main_featured'){
     $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
   }
