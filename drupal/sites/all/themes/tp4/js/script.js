@@ -226,7 +226,7 @@
         'Series Navigation' : '#series-navigation',
         'Keyword Link' : '.topic-links',
         'Author Full Bio Link' : '.author-bio',
-        "Taboola Article Widget: TP's Most Popular" : '#taboola-bottom-main-column-mix',
+        'Taboola Article Widget: TPs Most Popular' : '#taboola-bottom-main-column-mix',
         'Taboola Article Widget: From the Web' : '#taboola-below-main-column',
         'Topic Box' : '.topic-box',
         'Home - featured columns' : '#block-views-homepage-columns-block',
