@@ -110,7 +110,7 @@ function remove_features_of_type() {
   list_features "${TYPE}" > "${IDENTIFIER_LIST}"
 
   # Export their values before making any changes
-  export_${TYPE}_values "${IDENTIFIER_LIST}" > "${BEFORE_EXPORT}"
+  #export_${TYPE}_values "${IDENTIFIER_LIST}" > "${BEFORE_EXPORT}"
 
   # Push the feature values to the database
   push_${TYPE}_values_to_db "${IDENTIFIER_LIST}"
@@ -124,11 +124,11 @@ function remove_features_of_type() {
 
   # Export the values again for the purpose of
   # verifying that no values were changed.
-  drush cc all
-  export_${TYPE}_values "${IDENTIFIER_LIST}" > "${AFTER_EXPORT}"
+  #drush cc all
+  #export_${TYPE}_values "${IDENTIFIER_LIST}" > "${AFTER_EXPORT}"
 
   # Get the difference between before and after
-  diff "${BEFORE_EXPORT}" "${AFTER_EXPORT}" > "${EXPORT_DIFF}"
+  #diff "${BEFORE_EXPORT}" "${AFTER_EXPORT}" > "${EXPORT_DIFF}"
 }
 
 function export_bean_type_values() {
