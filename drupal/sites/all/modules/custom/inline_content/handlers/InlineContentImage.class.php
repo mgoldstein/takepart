@@ -40,7 +40,7 @@ class InlineContentImage extends InlineContentReplacementController {
       'path' => $file->uri,
       'alt' => drupal_render($image_alt),
     );
-    if ($format == 'portrait' || $format == 'landscape') {
+    if ($format != 'none') {
       $image['style_name'] = 'feature_article_' . $format;
       $image_markup = theme('image_style', $image);
     } else {
@@ -54,12 +54,16 @@ class InlineContentImage extends InlineContentReplacementController {
     // generate attributes for the wrapping <figure> element
     $attributes = array();
 
+    $attributes['class'][] = 'inline-content-image';
     $attributes['class'][] = 'image-' . $format;
     $attributes['class'][] = 'align-' . $alignment;
 
     if ($alignment == 'center') {
       $image_info = image_get_info($file->uri);
       if (is_array($image_info)) {
+        if ($format != 'none') {
+          image_style_transform_dimensions('feature_article_' . $format, $image_info);
+        }
         $attributes['style'][] = 'width: ' . $image_info['width'] . 'px;';          
       }
     }

@@ -29,8 +29,9 @@ function inline_content_fields_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'left' => 'Left',
-          'center' => 'Center',
           'right' => 'Right',
+          'center' => 'Center',
+          'full' => 'Full Width (break column on desktop)',
         ),
         'allowed_values_function' => '',
       ),
@@ -168,6 +169,7 @@ function inline_content_fields_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'none' => 'None (use the original uploaded image file)',
+          'full' => 'Full Width',
           'portrait' => 'Portrait',
           'landscape' => 'Landscape',
         ),
