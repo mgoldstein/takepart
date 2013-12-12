@@ -6,17 +6,18 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
   <?php if ($title_prefix || $title_suffix || $unpublished || $title): ?>
     <header class="article-header">
 
       <?php print render($content['field_article_main_image']); ?>
 
+      <div class="title-block">
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
   <h1<?php print $title_attributes; ?>><?php print $title; ?></h1>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
+      </div>
       <?php if ($unpublished): ?>
   <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
       <?php endif; ?>

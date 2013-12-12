@@ -29,8 +29,9 @@ function inline_content_fields_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'left' => 'Left',
-          'center' => 'Center',
           'right' => 'Right',
+          'center' => 'Center',
+          'full' => 'Full Width (break column on desktop)',
         ),
         'allowed_values_function' => '',
       ),
@@ -125,7 +126,7 @@ function inline_content_fields_field_default_fields() {
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'media',
+        'module' => 'media_views_widget',
         'settings' => array(
           'allowed_schemes' => array(
             'private' => 0,
@@ -141,8 +142,9 @@ function inline_content_fields_field_default_fields() {
           ),
           'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'progress_indicator' => 'throbber',
+          'view' => 'media_views_widget_default--default',
         ),
-        'type' => 'media_generic',
+        'type' => 'media_generic_alt',
         'weight' => '1',
       ),
     ),
@@ -167,6 +169,7 @@ function inline_content_fields_field_default_fields() {
       'settings' => array(
         'allowed_values' => array(
           'none' => 'None (use the original uploaded image file)',
+          'full' => 'Full Width',
           'portrait' => 'Portrait',
           'landscape' => 'Landscape',
         ),

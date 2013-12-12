@@ -45,11 +45,14 @@
   }
 }
 
-// social embeds needs a clearfix
-// this is a modified "micro clearfix"
-// @see http://nicolasgallagher.com/micro-clearfix-hack/
 @media (max-width:979px) {
   #article-social {
+    float: left;
+    border-top: 1px solid $gray-line;
+    border-bottom: 1px solid $gray-line;
+    // social embeds needs a clearfix
+    // this is a modified "micro clearfix"
+    // @see http://nicolasgallagher.com/micro-clearfix-hack/
     &:after {
       content: " ";
       display: table;
@@ -291,13 +294,28 @@
     figcaption {
       text-align: right;
       margin: 0 10px;
-    }  
-  }
-  .field-name-field-article-subhead {
-    font: normal 1.285714286em/1.125 $ashbury-light;
-  }
-  @include breakpoint($breakpoint-tablet) {
-    .article-header {
+      p, h5 {
+        @media (max-width: 767px) {
+          font-size: .857142857em;
+        }
+      }
+    }
+    .node-title {
+      font: normal 1.571428571em/1.090909091 $ashbury-bold;
+      color: black;
+    }
+    .takepart-features-branding {
+      display: block;
+      color: black;
+      font: normal .928571429em/1.076923077 $adelle-regular;
+      text-transform: uppercase;
+      margin-bottom: .25em;
+    }
+    .field-name-field-article-subhead {
+      font: normal 1.142857143em/1.125 $ashbury-regular;
+      color: black;
+    }
+    @include breakpoint($breakpoint-tablet) {
       margin-bottom: 1.5em;
       position: relative;
       figure {
@@ -309,16 +327,37 @@
         top: 100%;
         right: 10px;
       }
-      .node-title {
+      .title-block {
         position: absolute;
         bottom: 14px;
         left: 2.5%;
         width: 95%;
-        font: normal 2.25em/1 $ashbury-bold;
-        color: white;
-        &.black {
+        .white {
+          color: white;
+        }
+        .black {
           color: black;
         }
+      }
+      .takepart-features-branding {
+        font-size: 1.142857143em;
+      }
+      .node-title {
+        font-size: 2.428571429em;
+      }
+      .field-name-field-article-subhead {
+        font-size: 1.571428571em;
+      }
+    } // tablet
+    @include breakpoint($breakpoint-desktop) {
+      .takepart-features-branding {
+        font-size: 1.285714286em;
+      }
+      .node-title {
+        font-size: 2.857142857em;
+      }
+      .field-name-field-article-subhead {
+        font-size: 1.714285714em;
       }
     }
   }
@@ -428,6 +467,55 @@
       }
     }
   } // body field
+
+  figure.inline-content-image {
+    // set width of portrait and landscape photos
+    // for tablet sizes and above
+    // These use "portrait" so they will override the width
+    // set in the style attribute
+    // when they are 
+    @include breakpoint($breakpoint-tablet) {
+      &.image-portrait {
+        width: 400px !important;
+      }
+      &.image-landscape {
+        width: 480px !important;
+      }
+    }
+    figcaption {
+      p, h5 {
+        font: normal .875em/1.5 $ashbury-light;
+        margin: 0;
+      }
+      h5 {
+        font-family: $ashbury-light-italic;
+      }
+    }
+  }
+
+  // utility classes for offsets
+  .align-right {
+    @include breakpoint($breakpoint-tablet) {      
+      float: right;
+      margin-left: 1em;
+      margin-bottom: 1em;
+    }
+  }
+  .align-left {
+    @include breakpoint($breakpoint-tablet) {      
+      float: left;
+      margin-right: 1em;
+      margin-bottom: 1em;
+    }
+  }
+  .align-center {
+    display: block;
+    margin: 1em auto;
+    max-width: 100% !important; // override style attribute for large images
+  }
+  .align-full {
+    width: 100%;
+  }
 
   .inline-content-nodes {
     margin: 1.5em 0; // articles have horizontal padding
@@ -594,34 +682,23 @@
   }
 
   .block-boxes-ga_ad {
-    float: right;
-    margin-left: 1em;
+    @include breakpoint($breakpoint-tablet) {
+      float: right;
+      margin-left: 1em;
+    }
     @include breakpoint($breakpoint-desktop) {
       margin-right: -66px;
     }
   }
 
-  figure {
-    &.image-portrait {
-      width: 400px;
-    }
-    &.image-landscape {
-      width: 480px;
-    }
-  }
-  // utility classes for offsets
+  // utility classes for offsets (not just <figure>s)
+  // get extra styling for breaking the grid
   .align-right {
-    float: right;
-    margin-left: 1em;
-    margin-bottom: 1em;
     @include breakpoint($breakpoint-desktop) {
       margin-right: -66px;      
     }
   }
   .align-left {
-    float: left;
-    margin-right: 1em;
-    margin-bottom: 1em;
     @include breakpoint($breakpoint-desktop) {
       margin-left: -66px;
     }
@@ -629,6 +706,14 @@
   .align-center {
     display: block;
     margin: 1em auto;
+    max-width: 100% !important; // override style attribute for large images
+  }
+  .align-full {
+    @include breakpoint($breakpoint-desktop) {
+      width: 912px;
+      margin-left: -66px;
+      margin-right: -66px;
+    }
   }
 }
 
