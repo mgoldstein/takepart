@@ -154,7 +154,7 @@
                     },
                     stumbleupon: {
                         name: 'stumbleupon'
-                    },
+                    }
                 //{name: 'hyves'}
                 };
 
@@ -216,7 +216,6 @@
         'Header logo' : '.logo',
         'Header social' : '.follow-us',
         'Header user menu' : '.user-menu',
-        //'Header search' : '.search',
         'Slim Header' : '.slimnav',
         'Mega Menu' : '#megamenu',
         'Footer' : '#footer',
@@ -227,8 +226,9 @@
         'Series Navigation' : '#series-navigation',
         'Keyword Link' : '.topic-links',
         'Author Full Bio Link' : '.author-bio',
-        //'Badge' : '.badge',
-        'Taboola Widget - Article Page' : '#taboola-bottom-main-column-mix',
+        "Taboola Article Widget: TP\'s Most Popular" : '#taboola-bottom-main-column-mix',
+        "Taboola Article Widget: From the Web" : '#taboola-below-main-column',
+        // 'Taboola Widget - Article Page' : '#taboola-bottom-main-column-mix',
         // TODO Going to have to add wrapping divs to distinguish
         // between article and gallery Taboola widgets
         // 'Taboola Widget - Gallery Page' : '',
