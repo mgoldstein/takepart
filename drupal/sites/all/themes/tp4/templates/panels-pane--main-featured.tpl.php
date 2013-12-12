@@ -25,34 +25,29 @@
     <?php print $admin_links; ?>
   <?php endif; ?>
 
-  <?php print render($title_prefix); ?>
-  <?php if ($title): ?>
-    <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+    <header class="entry-header">
+      <?php print render($variables['content']['field_thumbnail']); ?>
+      <?php print render($title_prefix); ?>
+      <?php if ($title): ?>
+        <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
+      <?php if ($unpublished): ?>
+        <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
+      <?php endif; ?>
+    </header>
 
-  <?php if ($feeds): ?>
-    <div class="feed">
-      <?php print $feeds; ?>
-    </div>
-  <?php endif; ?>
-
-  <div class="pane-content">
-    <?php print render($content); ?>
-  </div>
-
-  <?php if ($links): ?>
-    <div class="links">
-      <?php print $links; ?>
-    </div>
-  <?php endif; ?>
-
-  <?php if ($more): ?>
-    <div class="more-link">
-      <?php print $more; ?>
-    </div>
-  <?php endif; ?>
+    <?php print render($variables['content']['field_author']); ?>
+    <?php
+      // We hide the comments and links now so that we can render them later.
+      hide($variables['content']['comments']);
+      hide($variables['content']['links']);
+      print render($variables['content']);
+    ?>
 </div>
-<?php if ($pane_suffix): ?>
-  <?php print $pane_suffix; ?>
-<?php endif; ?>
+
+
+
+
+
+
