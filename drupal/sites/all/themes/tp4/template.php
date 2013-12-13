@@ -207,6 +207,18 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
       $variables['series_nav'] = $series_nav;
     } // if isset($variables['field_series'])
 
+    // Add schema.org Article microdata
+    $variables['attributes_array']['itemscope'] = 'itemscope';
+    $variables['attributes_array']['itemtype'] = 'http://schema.org/Article';
+    $variables['title_attributes_array']['itemprop'] = 'headline';
+    // these work because of some magic in hook_preprocess_field
+    $variables['content']['field_article_subhead']['#attributes_array']['itemprop'] = "description";
+    $variables['content']['body']['#attributes_array']['itemprop'] = 'articleBody';
+    // for more microdata:
+    // @see tp4_field__field_article_main_image__feature_article()
+    // @see tp4_field__field_article_main_image__openpublish_article()
+    // @see field-formatter--author-full.tpl.php
+
   } // if ($variables['view_mode'] == 'full')
 }
 
@@ -317,6 +329,14 @@ function tp4_preprocess_field(&$variables, $hook) {
   if ('field_author' == $variables['element']['#field_name']) {
     $variables['classes_array'][] = 'author';
   }
+
+  // allow us to add attributes to a field from hook_preprocess_node.
+  if (isset($variables['element']['#attributes_array'])) {
+    if (!isset($variables['attributes_array'])) {
+       $variables['attributes_array'] = array();
+     }
+    $variables['attributes_array'] += $variables['element']['#attributes_array'];
+  }
 }
 
 
@@ -423,6 +443,10 @@ function tp4_field__field_article_main_image__openpublish_article($variables) {
     $image['style_name'] = 'landscape_main_image';
     if ($item['#view_mode'] == 'portrait') $image['style_name'] = 'portrait_main_image';
 
+    // schema.org article microdata
+    $image['attributes'] = array();
+    $image['attributes']['itemprop'] = 'image';
+
     // TODO: do this through drupal APIs
     $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
 
@@ -447,9 +471,9 @@ function tp4_field__field_article_main_image__feature_article($variables) {
     $image = array();
     $image['path'] = $item['#file']->uri;
     $image['width'] = '980';
-
-    // pick out the image style, defaulting to landscape
     $image['style_name'] = 'feature_article_hero';
+    $image['attributes'] = array();
+    $image['attributes']['itemprop'] = 'image';
 
     // TODO: do this through drupal APIs
     $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
