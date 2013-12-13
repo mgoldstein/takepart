@@ -209,7 +209,6 @@
         }
     };
 
-
     // Omniture position tracking
     // Parent/ancestor vars to track in reverse order of importance
     $.tpregions.add({
