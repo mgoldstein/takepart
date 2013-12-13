@@ -1,5 +1,0 @@
-name = Zip Code Field
-description = Defines zip code field types.
-package = TakePart
-core = 7.x
-dependencies[] = field
