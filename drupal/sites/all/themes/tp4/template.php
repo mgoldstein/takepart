@@ -135,7 +135,8 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
   // we're going to do some things only on the full view of an article
   if($variables['view_mode'] == 'full'){
     // provide "on our radar" block
-    $variables['on_our_radar'] = module_invoke('bean', 'block_view', 'on-our-radar-block');
+    $on_our_radar_block = block_load('bean', 'on-our-radar-block');
+    $variables['on_our_radar'] = _block_get_renderable_array(_block_render_blocks(array($on_our_radar_block)));
 
     // provide topic box
     if (!empty($variables['field_topic_box'])) {
@@ -219,13 +220,25 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
 function tp4_preprocess_node__feature_article(&$variables, $hook) {
   tp4_preprocess_node__openpublish_article($variables);
 
-  // put the title color as a class on the title.
-  $variables['title_attributes_array']['class'][] = $variables['field_title_color'][LANGUAGE_NONE][0]['value'];
+  if($variables['view_mode'] == 'full'){
+    // put the title color as a class on the title.
+    $variables['title_attributes_array']['class'][] = $variables['field_title_color'][LANGUAGE_NONE][0]['value'];
 
-  // populate $main_ad with the first ad position
-  $ad_box = block_load('boxes', 'box-66c05d6f');
-  $variables['main_ad'] = _block_get_renderable_array(_block_render_blocks(array($ad_box)));
+    // ad "TakePart Features" branding
+    $variables['title_prefix'][] = array(
+      '#theme' => 'link',
+      '#text' => 'TakePart Features',
+      '#path' => 'taxonomy/term/114900',
+      '#options' => array(
+        'attributes' => array('class' => array('takepart-features-branding', $variables['field_title_color'][LANGUAGE_NONE][0]['value'])),
+        'html' => FALSE,
+      ),
+    );
 
+    // populate $main_ad with the first ad position
+    $ad_box = block_load('boxes', 'box-66c05d6f');
+    $variables['main_ad'] = _block_get_renderable_array(_block_render_blocks(array($ad_box)));
+  }
 }
 
 /**

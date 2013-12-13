@@ -10,6 +10,30 @@
 function tp_feature_image_styles_image_default_styles() {
   $styles = array();
 
+  // Exported image style: feature_article_full.
+  $styles['feature_article_full'] = array(
+    'name' => 'feature_article_full',
+    'label' => 'Feature Article: Full',
+    'effects' => array(
+      60 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => '912',
+          'height' => '',
+          'upscale' => 1,
+        ),
+        'weight' => '1',
+      ),
+    ),
+  );
+
   // Exported image style: feature_article_hero.
   $styles['feature_article_hero'] = array(
     'name' => 'feature_article_hero',
@@ -49,7 +73,7 @@ function tp_feature_image_styles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '400',
+          'width' => '480',
           'height' => '',
           'upscale' => 0,
         ),
@@ -73,7 +97,7 @@ function tp_feature_image_styles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale',
         'data' => array(
-          'width' => '480',
+          'width' => '400',
           'height' => '',
           'upscale' => 0,
         ),
