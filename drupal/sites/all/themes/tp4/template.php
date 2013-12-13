@@ -252,15 +252,6 @@ function tp4_process_node(&$variables, $hook) {
   }
 }
 
-function tp4_process_node__openpublish_article(&$variables) {
-  
-  $variables['author_bios'] = array();
-  foreach ($variables['field_author'] as $author) {
-    $author_node = node_load($author['nid']);
-    $variables['author_bios'][] = $author_node;
-  }
-}
-
 /**
  * Override or insert variables into the comment templates.
  *
@@ -323,8 +314,7 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
  *   The name of the template being rendered ("node" in this case.)
  */
 function tp4_preprocess_field(&$variables, $hook) {
-  // not sure this is the best way to test for the field type
-  if ('field-author' == $variables['field_name_css']) {
+  if ('field_author' == $variables['element']['#field_name']) {
     $variables['classes_array'][] = 'author';
   }
 }
