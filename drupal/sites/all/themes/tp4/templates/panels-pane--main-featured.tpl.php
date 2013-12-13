@@ -37,11 +37,19 @@
       <?php endif; ?>
     </header>
 
-    <?php print render($variables['content']['field_author']); ?>
+    <?php 
+      hide($variables['content']['comments']);
+      hide($variables['content']['links']);
+      $tab_title_override = variable_get('main_feature_tab_title_override', NULL);
+      if($tab_title_override != NULL){
+        $variables['content']['field_tab_action_override'][0]['#title'] = $tab_title_override;
+      }
+    ?>
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($variables['content']['comments']);
       hide($variables['content']['links']);
+      print render($variables['content']['field_author']);
       print render($variables['content']);
     ?>
 </div>
