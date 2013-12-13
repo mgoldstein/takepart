@@ -34,7 +34,7 @@
 ?>
 <?php if($variables['items'] != NULL): ?>
 <div class="author-bio">
-  <span class="date"><?php print date('F d, Y',$entity->created) ?></span>
+  <date class="date" itemprop="datePublished" datetime="<?php print date('c', $entity->created); ?>"><?php print date('F d, Y',$entity->created) ?></date>
   <span class="byline author <?php print $variables['classes']?>" <?php print $variables['attributes']?>>
     By <?php print $authors; ?>
   </span>
