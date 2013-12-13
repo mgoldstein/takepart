@@ -23,6 +23,18 @@
                 event.stopPropagation();
                 $(this).addClass('active');
             });
+
+            function makeTall(){$(this).find('.mega-content').fadeIn(100);}
+            function makeShort(){$(this).find('.mega-content').fadeOut(100);}
+
+            $("#megamenu").hoverIntent({
+                over: makeTall,
+                out: makeShort,
+                selector: 'li.mega-item'
+            });
+
+
+
         }
     };
 
@@ -213,14 +225,12 @@ Drupal.behaviors.tpsocialShares = {
         }
     };
 
-
     // Omniture position tracking
     // Parent/ancestor vars to track in reverse order of importance
     $.tpregions.add({
         'Header logo' : '.logo',
         'Header social' : '.follow-us',
         'Header user menu' : '.user-menu',
-        //'Header search' : '.search',
         'Slim Header' : '.slimnav',
         'Mega Menu' : '#megamenu',
         'Footer' : '#footer',
@@ -231,8 +241,8 @@ Drupal.behaviors.tpsocialShares = {
         'Series Navigation' : '#series-navigation',
         'Keyword Link' : '.topic-links',
         'Author Full Bio Link' : '.author-bio',
-        //'Badge' : '.badge',
-        //'Outbrain Widget': '.OUTBRAIN',
+        'Taboola - TPs Most Popular' : '#taboola-bottom-main-column-mix',
+        'Taboola - From the Web' : '#taboola-below-main-column',
         'Topic Box' : '.topic-box',
         'Home - featured columns' : '#block-views-homepage-columns-block',
         'Home - featured actions' : '#block-views-takeaction-homepage-block',

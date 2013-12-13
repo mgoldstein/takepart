@@ -97,6 +97,7 @@
       }
       .mega-content {
         position: absolute;
+        display: none;
         left: -9999px; /* Hides the content */
         height: auto;
         width: 100%;
@@ -210,6 +211,7 @@
       }
     }
     > li:hover{
+      display: block;
       background-color: #000;
       .mega-content{
         left: 0;
