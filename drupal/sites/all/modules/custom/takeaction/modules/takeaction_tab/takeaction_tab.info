@@ -1,7 +1,0 @@
-name = TakeAction TAB
-description = Implements API to interact with a TAB.
-core = 7.x
-package = TakeAction Button
-version = 7.x-1.0
-dependencies[] = takeaction_feed
-

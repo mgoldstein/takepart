@@ -1,5 +1,0 @@
-name = Modal Prompt Field
-description = Defines modal prompt field types.
-package = TakePart
-core = 7.x
-dependencies[] = field
