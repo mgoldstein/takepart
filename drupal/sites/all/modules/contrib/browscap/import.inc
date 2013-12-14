@@ -14,13 +14,8 @@ function _browscap_import($cron = TRUE) {
   // Check the local browscap data version number
   $local_version = variable_get('browscap_version', 0);
 
-  // Retrieve the current browscap data version number using HTTPS
-  $current_version = drupal_http_request('https://browsers.garykeith.com/versions/version-number.asp');
-
-  // If the version number could not be checked using HTTPS, try HTTP
-  if (isset($current_version->error)) {
-    $current_version = drupal_http_request('http://browsers.garykeith.com/versions/version-number.asp');
-  }
+  // Retrieve the current browscap data version number using HTTP
+  $current_version = drupal_http_request('http://tempdownloads.browserscap.com/versions/version-number.php');
 
   // Log an error if the browscap version number could not be retrieved
   if (isset($current_version->error)) {
@@ -52,13 +47,8 @@ function _browscap_import($cron = TRUE) {
     return;
   }
 
-  // Retrieve the browscap data using HTTPS
-  $browscap_data = drupal_http_request('https://browsers.garykeith.com/stream.asp?PHP_BrowsCapINI');
-
-  // If the browscap data could not be checked using HTTPS, try HTTP
-  if (isset($browscap_data->error)) {
-    $browscap_data = drupal_http_request('http://browsers.garykeith.com/stream.asp?PHP_BrowsCapINI');
-  }
+  // Retrieve the browscap data using HTTP
+  $browscap_data = drupal_http_request('http://tempdownloads.browserscap.com/stream.php?BrowsCapINI');
 
   // Log an error if the browscap data could not be retrieved
   if (isset($browscap_data->error) || empty($browscap_data)) {
@@ -80,7 +70,17 @@ function _browscap_import($cron = TRUE) {
     $browscap_data = $browscap_data->data;
 
     // Replace 'true' and 'false' with '1' and '0'
-    $browscap_data = strtr($browscap_data, array("=true\r" => "=1\r", "=false\r" => "=0\r"));
+    $browscap_data = preg_replace(
+      array(
+        "/=\s*true\s*\n/",
+        "/=\s*false\s*\n/",
+      ),
+      array(
+        "=1\n",
+        "=0\n",
+      ),
+      $browscap_data
+    );
 
     // Parse the browscap data as a string
     $browscap_data = parse_ini_string($browscap_data, TRUE, INI_SCANNER_RAW);

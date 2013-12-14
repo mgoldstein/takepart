@@ -107,8 +107,10 @@ function article_support_preprocess_node(&$variables) {
 
   // Transfer all additional variables added when the view of the article was
   // built to the template.
-  foreach ($variables['elements']['#additional_variables'] as $key => $value) {
-    $variables[$key] = $value;
+  if(isset($variables['elements']['#additional_variables'])){
+    foreach ($variables['elements']['#additional_variables'] as $key => $value) {
+      $variables[$key] = $value;
+    }
   }
 }
 

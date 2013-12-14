@@ -6,22 +6,21 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <header class="entry-header">
-  <?php print render($content['field_thumbnail']); ?>
-  <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
+    <header class="entry-header">
+      <?php print render($content['field_thumbnail']); ?>
+
       <?php print render($title_prefix); ?>
-      <?php if (!$page && $title): ?>
-	<h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <?php if ($title): ?>
+        <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
-
       <?php if ($unpublished): ?>
-	<mark class="unpublished"><?php print t('Unpublished'); ?></mark>
+        <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
       <?php endif; ?>
-  <?php endif; ?>
-  </header>
 
-  <?php print render($content['field_author']); ?>
+      <?php print render($content['field_author']); ?>
+    </header>
+
   <div class="entry-content">
   <?php
     // We hide the comments and links now so that we can render them later.

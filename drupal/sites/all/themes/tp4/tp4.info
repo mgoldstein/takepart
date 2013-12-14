@@ -73,6 +73,7 @@ scripts[] = js/snap.js
 scripts[] = js/tp_ad_takeover.jquery.js
 scripts[] = js/tpsocial.jquery.js
 scripts[] = js/tpsocial.services.js
+scripts[] = js/hoverintent.js
 scripts[] = js/jquery.tp4sticky.js
 scripts[] = ../takepart_core/js/tpmodal.jquery.js
 scripts[] = js/social_interstitial.js

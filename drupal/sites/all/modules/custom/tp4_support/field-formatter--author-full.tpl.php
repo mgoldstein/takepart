@@ -6,7 +6,12 @@
     foreach ($variables['items'] as $delta => $item) {
       $authors .= '<span class="byline-author"' . $variables['item_attributes'][$delta] . '>';
       $author_node = node_load($item['nid']);
-      $authors .= $author_node->title;
+      $author_path = drupal_get_path_alias('node/'. $author_node->nid);
+      $authors .= l($author_node->title, $author_path, array(
+        'attributes' => array(
+            'rel' => 'author'
+            ) 
+        ) );
       $authors .= '</span>';
       // add commas for lists of 3 or greater ($delta is zero-indexed)
       $authors .= ($number_of_authors > 2 && $delta < $number_of_authors - 2 ) ? ', ' :'';
@@ -22,7 +27,11 @@
     $thumb_src = image_style_url('thumbnail_v2', $thumb->uri);//TODO: what image style are authors using?
     $author_path = drupal_get_path_alias('node/'. $author_node->nid);
 
-    $bio_link = l('full bio', $author_path, array('attributes' => array('class' => array('more'))));
+    $bio_link = l('full bio', $author_path, array(
+        'attributes' => array(
+            'class' => array('more')
+            ) 
+        ));
     $social_links = '';
     if(!empty($author_node->field_follow_twitter['und'][0]['url'])){
       $social_links .= l('<span class="social-twitter-black"></span>', $author_node->field_follow_twitter['und'][0]['url'], array('html' => true, 'attributes' => array('target' => '_blank', 'title' => $author_node->field_follow_twitter['und'][0]['title'] )));
