@@ -514,6 +514,17 @@
     width: 100%;
   }
 
+  // INLINE CONTENT
+  // google ad slot
+  .block-boxes-ga_ad {
+    @include breakpoint($breakpoint-tablet) {
+      float: right;
+      margin-left: 1em;
+    }
+  }
+
+  // INLINE CONTENT
+  // related nodes
   .inline-content-nodes {
     margin: 1.5em 0; // articles have horizontal padding
 
@@ -678,11 +689,10 @@
     font-size: 1.142857143em;
   }
 
+  // INLINE CONTENT
+  // google ad slot
+  // extra styling for breaking the grid
   .block-boxes-ga_ad {
-    @include breakpoint($breakpoint-tablet) {
-      float: right;
-      margin-left: 1em;
-    }
     @include breakpoint($breakpoint-desktop) {
       margin-right: -66px;
     }
