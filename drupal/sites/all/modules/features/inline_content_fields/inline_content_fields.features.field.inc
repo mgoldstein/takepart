@@ -936,12 +936,139 @@ function inline_content_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'inline_content-take_action_widget-field_ic_tap_widget_alignment'.
+  $fields['inline_content-take_action_widget-field_ic_tap_widget_alignment'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ic_tap_widget_alignment',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'left' => 'Left',
+          'center' => 'Center',
+          'right' => 'Right',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'take_action_widget',
+      'default_value' => array(
+        0 => array(
+          'value' => 'center',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 5,
+        ),
+      ),
+      'entity_type' => 'inline_content',
+      'field_name' => 'field_ic_tap_widget_alignment',
+      'label' => 'Widget Alignment',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'options_buttons',
+        'weight' => '5',
+      ),
+    ),
+  );
+
+  // Exported field: 'inline_content-take_action_widget-field_ic_tap_widget_width'.
+  $fields['inline_content-take_action_widget-field_ic_tap_widget_width'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ic_tap_widget_width',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'take_action_widget',
+      'default_value' => array(
+        0 => array(
+          'value' => '480',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => 'Enter the widget\'s width, in pixels. Min: 300; Max: 500.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => 4,
+        ),
+      ),
+      'entity_type' => 'inline_content',
+      'field_name' => 'field_ic_tap_widget_width',
+      'label' => 'Widget Width',
+      'required' => 0,
+      'settings' => array(
+        'max' => '500',
+        'min' => '300',
+        'prefix' => '',
+        'suffix' => 'px',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        ),
+        'type' => 'number',
+        'weight' => '4',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Action Override');
   t('Alignment');
   t('Article URL');
   t('Content');
+  t('Enter the widget\'s width, in pixels. Min: 300; Max: 500.');
   t('Expanded');
   t('Horizontal orientation will only work with <em>EXACTLY</em> 3 pieces of content.');
   t('Image');
@@ -952,6 +1079,8 @@ function inline_content_fields_field_default_fields() {
   t('Newsletter');
   t('Orientation');
   t('Title Override');
+  t('Widget Alignment');
+  t('Widget Width');
 
   return $fields;
 }
