@@ -392,6 +392,12 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentImage',
   );
 
+  $types['ad_block'] = array(
+    'label' => t('Ad Block'),
+    'description' => t('300x250 advertisment floated right.'),
+    'controller' => 'InlineContentAdBlock',
+  );
+
   return $types;
 }
 
