@@ -43,6 +43,8 @@ class InlineContentAdBlock extends InlineContentReplacementController {
     if ($this->index < 3) {
       $ad_box = block_load('boxes', $this->ad_slots[$this->index]);
       $replacement = _block_get_renderable_array(_block_render_blocks(array($ad_box)));
+      $replacement['#prefix'] = '<div class="block-boxes-ga_ad">';
+      $replacement['#suffix'] = '</div>';
       $this->index++;
     }
 
