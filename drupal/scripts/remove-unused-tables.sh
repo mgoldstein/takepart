@@ -11,9 +11,9 @@ DEFAULT_DB_NAME="code_cleanup"
 DEFAULT_DB_HOST="localhost"
 
 DB_USER=${1:-$DEFAULT_DB_USER}
-DB_PASS=${1:-$DEFAULT_DB_PASS}
-DB_NAME=${1:-$DEFAULT_DB_NAME}
-DB_HOST=${1:-$DEFAULT_DB_HOST}
+DB_PASS=${2:-$DEFAULT_DB_PASS}
+DB_NAME=${3:-$DEFAULT_DB_NAME}
+DB_HOST=${4:-$DEFAULT_DB_HOST}
 
 function execute_mysql_command() {
   local COMMAND=$1
