@@ -3,6 +3,8 @@
 SCRIPT_DIR=$(dirname "$0")
 SCRIPT_DIR=$(cd "${SCRIPT_DIR}" && pwd -P)
 
+DRUSH="${SCRIPT_DIR}/../../drush/drush"
+
 DEFAULT_DB_USER="takepart"
 DEFAULT_DB_PASS="asdfasdf"
 DEFAULT_DB_NAME="code_cleanup"
@@ -23,7 +25,7 @@ while read TABLE_NAME ; do
   echo "${TABLE_NAME}"
 done | sort > "tables-in-database.txt"
 
-drush php-eval '
+${DRUSH} php-eval '
   $schemas = drupal_get_complete_schema(TRUE);
   foreach ($schemas as $table => $schema) {
     print "{$table}\n";
