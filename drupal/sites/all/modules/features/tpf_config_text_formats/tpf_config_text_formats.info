@@ -1,0 +1,14 @@
+name = TakePart Config Text Formats
+core = 7.x
+package = Config
+version = 7.x-1.0
+project = tpf_config_text_formats
+dependencies[] = filter
+features[features_api][] = api:2
+features[filter][] = full_html
+features[filter][] = limited_html
+features[filter][] = no_wysiwg_full_html
+features_exclude[dependencies][ckeditor_link] = ckeditor_link
+features_exclude[dependencies][cketawembed] = cketawembed
+features_exclude[dependencies][features] = features
+features_exclude[dependencies][media] = media
