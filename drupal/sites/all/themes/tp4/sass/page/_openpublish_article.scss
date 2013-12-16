@@ -698,6 +698,17 @@
     }
   }
 
+  // break the grid for horizontal inline content
+  .inline-content-nodes {
+    .horizontal {
+      @include breakpoint($breakpoint-desktop) {
+        width: 550px;
+        float: right;
+        margin: 0 -66px 0 1em;
+      }
+    }
+  }
+
   // utility classes for offsets (not just <figure>s)
   // get extra styling for breaking the grid
   .align-right {
@@ -722,7 +733,7 @@
       margin-right: -66px;
     }
   }
-}
+} // .node-feature-article
 
 .author-bio{
   width: auto;
