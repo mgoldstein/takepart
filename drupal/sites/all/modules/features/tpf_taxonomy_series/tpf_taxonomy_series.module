@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Taxonomy Series feature.
+ */
+
+include_once 'tpf_taxonomy_series.features.inc';

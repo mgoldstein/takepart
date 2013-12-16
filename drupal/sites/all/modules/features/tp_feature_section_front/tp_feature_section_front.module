@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Section Front feature.
- */
-
-include_once 'tp_feature_section_front.features.inc';

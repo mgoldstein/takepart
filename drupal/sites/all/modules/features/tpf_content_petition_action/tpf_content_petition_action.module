@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Content Petition Action feature.
+ */
+
+include_once 'tpf_content_petition_action.features.inc';
