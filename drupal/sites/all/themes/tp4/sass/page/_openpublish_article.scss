@@ -496,7 +496,7 @@
       .quotation {
         font-size: 1.714285714em;
         line-height: 1.333333333;
-        margin: 0 0 .667em;
+        margin: 0;
         padding-left: 1em;
         padding-top: .166666667em;
         position: relative;
@@ -520,8 +520,11 @@
       }
 
       cite {
+        display: block;
         font: normal 1em/1.285714286 $ashbury-light;
-        padding-left: 1.714285714em;
+        margin-top: 1.285714286em;
+        margin-left: 2.714285714em;
+        text-indent: -1em;
       }
     } // .pull-quote-alt
 
