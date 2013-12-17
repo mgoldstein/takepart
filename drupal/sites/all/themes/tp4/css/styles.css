@@ -4551,6 +4551,8 @@ body.front #sidebar .block-title {
   .node-feature-article.view-mode-full #series-navigation {
     margin-left: 134px;
     width: 780px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
   /* line 41, ../sass/page/_openpublish_article.scss */

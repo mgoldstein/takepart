@@ -35,7 +35,7 @@
     #series-navigation {
       margin-left: 134px;
       width: 780px;
-      box-sizing: border-box;
+      @include box-sizing(border-box);
     }
     #article-footer,
     #article-comments {
