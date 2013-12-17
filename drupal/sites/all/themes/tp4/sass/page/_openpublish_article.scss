@@ -463,6 +463,68 @@
 	&:after { right: 0; }
       }
     }
+
+    // override <blockquote> styles for inline_content
+    // pull quotes
+    .pull-quote-alt {
+      margin-top: 0;
+      margin-bottom: 1em;
+      padding: 1.5em 0;
+      border-top: 6px solid black;
+      border-bottom: 6px solid black;
+
+      &:before,
+      &:after {
+        display: none;
+      }
+
+      @include breakpoint($breakpoint-tablet) {
+        width: 285px;
+        &.align-left {
+          margin-right: 2em;
+        }
+        &.align-right {
+          margin-left: 2em;
+        }
+        &.align-center {
+          width: 500px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      .quotation {
+        font-size: 1.714285714em;
+        line-height: 1.333333333;
+        margin: 0 0 .667em;
+        padding-left: 1em;
+        padding-top: .166666667em;
+        position: relative;
+
+        &:before {
+          display: block;
+          content: '\201c';
+          font-size: 2em;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+        &:after {
+          display: inline-block;
+          content: '\201d';
+          font-size: 2em;
+          line-height: .15;
+          vertical-align: text-bottom;
+          padding-left: .125em;
+        }
+      }
+
+      cite {
+        font: normal 1em/1.285714286 $ashbury-light;
+        padding-left: 1.714285714em;
+      }
+    } // .pull-quote-alt
+
   } // body field
 
   figure.inline-content-image {
@@ -713,24 +775,24 @@
   // get extra styling for breaking the grid
   .align-right {
     @include breakpoint($breakpoint-desktop) {
-      margin-right: -66px;      
+      margin-right: -66px !important;
     }
   }
   .align-left {
     @include breakpoint($breakpoint-desktop) {
-      margin-left: -66px;
+      margin-left: -66px !important;
     }
   }
   .align-center {
     display: block;
-    margin: 1em auto;
+    margin: 1em auto !important;
     max-width: 100% !important; // override style attribute for large images
   }
   .align-full {
     @include breakpoint($breakpoint-desktop) {
       width: 912px;
-      margin-left: -66px;
-      margin-right: -66px;
+      margin-left: -66px !important;
+      margin-right: -66px !important;
     }
   }
 } // .node-feature-article

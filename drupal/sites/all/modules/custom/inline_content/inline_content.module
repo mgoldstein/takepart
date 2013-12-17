@@ -398,6 +398,12 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentAdBlock',
   );
 
+  $types['pull_quote'] = array(
+    'label' => t('Pull Quote'),
+    'description' => t('Pull Quote With Optional Citation'),
+    'controller' => 'InlineContentPullQuote',
+  );
+
   return $types;
 }
 

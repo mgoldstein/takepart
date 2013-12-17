@@ -639,6 +639,136 @@ function inline_content_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'inline_content-pull_quote-field_ic_citation'.
+  $fields['inline_content-pull_quote-field_ic_citation'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ic_citation',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'pull_quote',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Do not include a leading dash.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 1,
+        ),
+      ),
+      'entity_type' => 'inline_content',
+      'field_name' => 'field_ic_citation',
+      'label' => 'Citation',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'maxlength_js' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'inline_content-pull_quote-field_ic_quotation'.
+  $fields['inline_content-pull_quote-field_ic_quotation'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ic_quotation',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'pull_quote',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Do not wrap the text in quotation marks.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'inline_content',
+      'field_name' => 'field_ic_quotation',
+      'label' => 'Quotation',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'maxlength_js' => '',
+          'maxlength_js_enforce' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'maxlength_js_truncate_html' => 0,
+          'rows' => '5',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '0',
+      ),
+    ),
+  );
+
   // Exported field: 'inline_content-take_action_widget-field_ic_action'.
   $fields['inline_content-take_action_widget-field_ic_action'] = array(
     'field_config' => array(
@@ -1067,7 +1197,10 @@ function inline_content_fields_field_default_fields() {
   t('Action Override');
   t('Alignment');
   t('Article URL');
+  t('Citation');
   t('Content');
+  t('Do not include a leading dash.');
+  t('Do not wrap the text in quotation marks.');
   t('Enter the widget\'s width, in pixels. Min: 300; Max: 500.');
   t('Expanded');
   t('Horizontal orientation will only work with <em>EXACTLY</em> 3 pieces of content.');
@@ -1078,6 +1211,7 @@ function inline_content_fields_field_default_fields() {
   t('Media');
   t('Newsletter');
   t('Orientation');
+  t('Quotation');
   t('Title Override');
   t('Widget Alignment');
   t('Widget Width');
