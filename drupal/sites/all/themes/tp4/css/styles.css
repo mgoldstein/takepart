@@ -5648,7 +5648,7 @@ body.front #sidebar .block-title {
 }
 @media all and (min-width: 980px) {
   /* line 768, ../sass/page/_openpublish_article.scss */
-  .node-feature-article.view-mode-full .inline-content-nodes .horizontal {
+  .node-feature-article.view-mode-full .inline-content-nodes.horizontal {
     width: 550px;
     float: right;
     margin: 0 -66px 0 1em;

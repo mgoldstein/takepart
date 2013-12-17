@@ -765,7 +765,7 @@
 
   // break the grid for horizontal inline content
   .inline-content-nodes {
-    .horizontal {
+    &.horizontal {
       @include breakpoint($breakpoint-desktop) {
         width: 550px;
         float: right;
