@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Display Boxes feature.
+ */
+
+include_once 'tpf_display_boxes.features.inc';
