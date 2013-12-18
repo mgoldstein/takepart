@@ -4,4 +4,4 @@
  * Code for the GA: Articles Bottom Right Feature feature.
  */
 
-include_once 'ga_articles_bottom_right_feature.features.inc';
+include_once 'tpf_config_block_settings.features.inc';
