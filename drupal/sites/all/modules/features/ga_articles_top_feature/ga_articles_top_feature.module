@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the GA: Articles Top Feature feature.
+ */
+
+include_once 'ga_articles_top_feature.features.inc';

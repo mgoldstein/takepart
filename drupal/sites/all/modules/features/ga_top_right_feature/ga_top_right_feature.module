@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the GA: Top Right Feature feature.
+ */
+
+include_once 'ga_top_right_feature.features.inc';
