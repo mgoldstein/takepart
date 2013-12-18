@@ -228,5 +228,38 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'panels',
   );
 
+  // Exported permission: 'access search_api_page'.
+  $permissions['access search_api_page'] = array(
+    'name' => 'access search_api_page',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'search_api_page',
+  );
+
+  // Exported permission: 'search content'.
+  $permissions['search content'] = array(
+    'name' => 'search content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'search',
+  );
+
+  // Exported permission: 'use search_api_sorts'.
+  $permissions['use search_api_sorts'] = array(
+    'name' => 'use search_api_sorts',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'search_api_sorts',
+  );
+
   return $permissions;
 }
