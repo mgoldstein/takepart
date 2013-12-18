@@ -1,10 +1,4 @@
 <?php
-/**
- * @file
- * Code for the TakePart Action feature.
- */
-
-include_once('takepart_action.features.inc');
 
 function takepart_action_form_action_node_form_alter(&$form, &$form_state, $form_id) {
   drupal_add_css(
@@ -35,9 +29,7 @@ function takepart_action_field_attach_load($entity_type, $entities, $age, $optio
     }
   }
 }
-/**
- * handle some node preprocessing.  remove submitted
- */
+
 function takepart_action_preprocess_node(&$variables) {
   if($variables['type'] == 'action') {
     $variables['submitted'] = NULL;

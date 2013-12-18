@@ -1,14 +1,11 @@
 <?php
-/**
- * @file
- * Code for the TakePart Search feature.
- */
-
-include_once('takepart_search.features.inc');
 
 function takepart_search_form_search_api_page_search_form_alter(&$form, &$form_state, $form_id) {
   if (!empty($form['form']['keys_2']['#default_value'])) {
-    $form['form']['keys_2']['#title'] = t('Search:') . '<span class="search-term"> ' . $form['form']['keys_2']['#default_value'] . '</span>';
+    $form['form']['keys_2']['#title'] = t('Search:')
+      . '<span class="search-term"> '
+      . $form['form']['keys_2']['#default_value']
+      . '</span>';
   }
 }
 

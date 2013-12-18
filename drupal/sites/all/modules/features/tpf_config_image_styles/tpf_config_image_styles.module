@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Config Image Styles feature.
+ */
+
+include_once 'tpf_config_image_styles.features.inc';

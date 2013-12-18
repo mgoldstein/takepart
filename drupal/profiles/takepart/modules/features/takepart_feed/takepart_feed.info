@@ -1,12 +1,6 @@
 name = takepart Feed
 description = Provides Feed to topic and blog front pages
 core = 7.x
-package = Features
-php = 5.2.4
-version = 7.x-1.2
+package = Legacy Feature Module
+version = 7.x-2.0
 project = takepart_feed
-dependencies[] = views
-features[ctools][] = views:views_default:3.0
-features[features_api][] = api:1
-features[views_view][] = content_types_posts_feed
-features[views_view][] = terms_posts_feed

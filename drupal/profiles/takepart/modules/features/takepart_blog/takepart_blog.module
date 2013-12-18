@@ -1,11 +1,9 @@
 <?php
-/**
- * @file
- * Code for the TakePart Blog Post feature.
- */
 
-include_once('takepart_blog.features.inc');
-include_once('takepart_blog.custom.inc');
+function takepart_blog_entity_info_alter(&$entity_info) {
+  $entity_info['taxonomy_term']['view modes']['summary'] = array('label' => 'Summary', 'custom settings' => FALSE);
+  $entity_info['taxonomy_term']['view modes']['our_blogs_summary'] = array('label' => 'Our Blogs Summary', 'custom settings' => FALSE);
+}
 
 function takepart_blog_form_openpublish_blog_post_node_form_alter(&$form, &$form_state, $form_id) {
   drupal_add_css(

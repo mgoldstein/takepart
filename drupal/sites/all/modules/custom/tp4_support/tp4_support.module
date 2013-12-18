@@ -329,4 +329,26 @@ function tp4_support_form_alter(&$form, &$form_state, $form_id){
     $form['keys_2']['#attributes']['placeholder'] = t('Search');
     $form['#action'] = '/';
   }
+
+  $tab_title_override = variable_get('main_feature_tab_title_override', NULL);
+  if($form['#form_id'] == 'ctools_node_content_type_edit_form'){
+    dpm($form, 'form');
+    $form['main_feature_tab_title_override'] = array(
+      '#title' => t('TAB Title Override'),
+      '#default_value' => t($tab_title_override),
+      '#type' => 'textfield',
+      '#description' => t('Override for the take action title'),
+      '#states' => array(
+        'visible' => array(
+          ':input[name="build_mode"]' => array('value' => 'feature_main'),
+        ),
+      )
+    );
+    $form['#submit'][] = 'tp4_support_panel_main_feature';
+  }
+}
+
+
+function tp4_support_panel_main_feature($form, &$form_state) {
+  variable_set('main_feature_tab_title_override', $form['main_feature_tab_title_override']['#value']);
 }

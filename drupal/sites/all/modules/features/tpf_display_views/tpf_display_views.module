@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Display Views feature.
+ */
+
+include_once 'tpf_display_views.features.inc';

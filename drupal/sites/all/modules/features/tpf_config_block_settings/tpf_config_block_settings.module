@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the GA: Articles Bottom Right Feature feature.
+ */
+
+include_once 'tpf_config_block_settings.features.inc';

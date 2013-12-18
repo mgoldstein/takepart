@@ -26,11 +26,34 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'enabled' => TRUE,
         'configuration' => array(
           'segments' => array(
-            0 => '1008407',
+            0 => 1008407,
           ),
           'fields' => array(
             252906 => 'Webform',
             253159 => 'CAN',
+          ),
+          'send-welcome' => TRUE,
+        ),
+      ),
+    ),
+  );
+  $endpoints[] = array(
+    'type' => 'NewsletterCampaignSignupEndpoint',
+    'name' => 'chavez_campaign',
+    'label' => 'Chavez Campaign Signup',
+    'configuration' => array(),
+    'plugins' => array(
+      'bluehornet.pm_signup.handler' => array(
+        'enabled' => TRUE,
+        'configuration' => array(
+          'account' => 'takepart',
+          'segments' => array(
+            0 => 1029994,
+            1 => 1008360,
+          ),
+          'fields' => array(
+            252906 => 'Webform',
+            253159 => 'CHAVEZ',
           ),
           'send-welcome' => TRUE,
         ),
@@ -55,7 +78,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1008360',
+            0 => 1008360,
           ),
           'fields' => array(
             252906 => 'Webform',
@@ -77,8 +100,8 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1008360',
-            1 => '1022166',
+            0 => 1008360,
+            1 => 1022166,
           ),
           'fields' => array(
             252906 => 'Food Inc Awards',
@@ -107,7 +130,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1009255',
+            0 => 1009255,
           ),
           'fields' => array(
             252906 => 'Webform',
@@ -142,8 +165,8 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1008366',
-            1 => '1008403',
+            0 => 1008366,
+            1 => 1008403,
           ),
           'fields' => array(
             252906 => 'Webform',
@@ -172,7 +195,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1009256',
+            0 => 1009256,
           ),
           'fields' => array(
             252906 => 'Webform',
@@ -199,9 +222,9 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'enabled' => TRUE,
         'configuration' => array(
           'segments' => array(
-            0 => '1008359',
-            1 => '1008357',
-            2 => '1008358',
+            0 => 1008359,
+            1 => 1008357,
+            2 => 1008358,
           ),
           'fields' => array(
             252906 => 'Marketing Interstitial',
@@ -230,7 +253,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1008364',
+            0 => 1008364,
           ),
           'fields' => array(
             252906 => 'Webform',
@@ -259,7 +282,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1008361',
+            0 => 1008361,
           ),
           'fields' => array(
             252906 => 'Webform',
@@ -288,7 +311,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1008363',
+            0 => 1008363,
           ),
           'fields' => array(
             252906 => 'Webform',
@@ -317,9 +340,9 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1008359',
-            1 => '1008357',
-            2 => '1008358',
+            0 => 1008359,
+            1 => 1008357,
+            2 => 1008358,
           ),
           'fields' => array(
             252906 => 'Webform',
@@ -348,7 +371,7 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1008362',
+            0 => 1008362,
           ),
           'fields' => array(
             252906 => 'Webform',
@@ -377,34 +400,11 @@ function newsletter_campaign_signups_pm_signup_endpoint_defaults() {
         'configuration' => array(
           'account' => 'takepart',
           'segments' => array(
-            0 => '1008361',
+            0 => 1008361,
           ),
           'fields' => array(
             252906 => 'Teach Webform',
             253159 => 'TEACH',
-          ),
-          'send-welcome' => TRUE,
-        ),
-      ),
-    ),
-  );
-  $endpoints[] = array(
-    'type' => 'NewsletterCampaignSignupEndpoint',
-    'name' => 'chavez_campaign',
-    'label' => 'Chavez Campaign Signup',
-    'configuration' => array(),
-    'plugins' => array(
-      'bluehornet.pm_signup.handler' => array(
-        'enabled' => TRUE,
-        'configuration' => array(
-          'account' => 'takepart',
-          'segments' => array(
-            0 => '1029994',
-            1 => '1008360',
-          ),
-          'fields' => array(
-            252906 => 'Webform',
-            253159 => 'CHAVEZ',
           ),
           'send-welcome' => TRUE,
         ),

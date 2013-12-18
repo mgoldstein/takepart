@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Content Profile feature.
+ */
+
+include_once 'tpf_content_profile.features.inc';

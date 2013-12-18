@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Feature Homepage feature.
+ */
+
+include_once 'tpf_feature_homepage.features.inc';

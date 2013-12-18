@@ -1,15 +1,8 @@
 <?php
-/**
- * @file
- */
-
-// Drupal needs this blank file.
-include_once('takepart_feed.features.inc');
-
 
 /* all of this is to inject the RSS feed icon to the result pages of Topics and front Blogs */
 function takepart_feed_views_pre_render(&$vars) {
-    switch ($vars->name) {        
+    switch ($vars->name) {
         case 'blog_posts':
           if ($vars->current_display == 'block_1') {
             if (is_numeric($vars->args[0]) && !empty($vars->result)){
@@ -26,7 +19,7 @@ function takepart_feed_views_pre_render(&$vars) {
             }
           }
         break;
-        default:            
+        default:
           break;
     }
   }
