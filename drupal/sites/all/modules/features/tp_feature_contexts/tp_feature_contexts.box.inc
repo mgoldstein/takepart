@@ -83,7 +83,7 @@ function tp_feature_contexts_default_box() {
   if (enable_pre_roll_ads) {
     player_config[\'advertising\'] = {
       "client":"vast",
-      "tag":"http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_Siderail_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=__page-url__&correlator=__timestamp__",
+      "tag": "http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_Siderail_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]",
       "admessage":"You can skip this ad in XX more seconds"
     };
   }
@@ -118,7 +118,7 @@ function tp_feature_contexts_default_box() {
   $box->options = array(
     'ga_ad_slot' => 'TP3_Homepage_Leaderboard_728x90',
     'ga_ad_gpt_id' => 'div-gpt-ad-1376947900543-0',
-    'additional_classes' => '',
+    'additional_classes' => 'leaderboard',
   );
   $export['ga_homepage_header'] = $box;
 

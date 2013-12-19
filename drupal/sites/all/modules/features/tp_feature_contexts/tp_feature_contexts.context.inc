@@ -68,9 +68,9 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-9',
         ),
-        'newsletter_campaign-49' => array(
+        'newsletter_campaign-51' => array(
           'module' => 'newsletter_campaign',
-          'delta' => '49',
+          'delta' => '51',
           'region' => 'sidebar',
           'weight' => '-8',
         ),
@@ -141,7 +141,7 @@ function tp_feature_contexts_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
   $export['topic_general'] = $context;
 
   $context = new stdClass();
@@ -265,9 +265,9 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-9',
         ),
-        'newsletter_campaign-49' => array(
+        'newsletter_campaign-51' => array(
           'module' => 'newsletter_campaign',
-          'delta' => '49',
+          'delta' => '51',
           'region' => 'sidebar',
           'weight' => '-8',
         ),
@@ -275,7 +275,7 @@ function tp_feature_contexts_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'boxes-bg_skin_sponsor' => array(
           'module' => 'boxes',
