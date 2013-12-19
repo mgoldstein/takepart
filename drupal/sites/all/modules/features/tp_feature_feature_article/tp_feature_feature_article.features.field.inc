@@ -977,7 +977,7 @@ function tp_feature_feature_article_field_default_fields() {
           ),
         ),
         'type' => 'inline_entity_form',
-        'weight' => '6',
+        'weight' => '7',
       ),
     ),
   );
@@ -1438,7 +1438,7 @@ function tp_feature_feature_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -1808,7 +1808,7 @@ function tp_feature_feature_article_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '8',
+        'weight' => '9',
       ),
     ),
   );

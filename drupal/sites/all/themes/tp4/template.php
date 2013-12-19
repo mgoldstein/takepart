@@ -247,9 +247,10 @@ function tp4_preprocess_node__feature_article(&$variables, $hook) {
       ),
     );
 
-    // populate $main_ad with the first ad position
-    $ad_box = block_load('boxes', 'box-66c05d6f');
-    $variables['main_ad'] = _block_get_renderable_array(_block_render_blocks(array($ad_box)));
+    // orphan protection for headlines
+    $title = trim($variables['title']);
+    $last_space = strrpos($title, ' ');
+    $variables['title'] = substr($title, 0, $last_space) . '&nbsp;' . substr(strrchr($title, ' '), 1);
   }
 }
 

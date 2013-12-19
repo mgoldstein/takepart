@@ -11,16 +11,13 @@ class InlineContentImage extends InlineContentReplacementController {
    */
   public function updateLabel($replacement) {
 
-    $file = field_get_items('inline_content', $replacement, 'field_ic_image');
+    $label = field_get_items('inline_content', $replacement, 'field_ic_image_label');
     $format = field_get_items('inline_content', $replacement, 'field_ic_image_format');
     $alignment = field_get_items('inline_content', $replacement, 'field_ic_alignment');
 
-    $file_entity  = entity_load_single('file', $file[0]['fid']);
-    $filename = $file_entity->filename;
-
     // Format the label.
-    $replacement->label = t('Feature Image: @filename (format: @format; alignment: @alignment)', array(
-      '@filename' => $filename,
+    $replacement->label = t('Feature Image: @label (format: @format; alignment: @alignment)', array(
+      '@label' => $label[0]['value'],
       '@format' => $format[0]['value'],
       '@alignment' => $alignment[0]['value'],
     ));

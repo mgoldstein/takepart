@@ -13,6 +13,33 @@ function tp_feature_feature_article_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_inline_replacements|node|feature_article|form';
+  $field_group->group_name = 'group_inline_replacements';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'feature_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Inline Replacements',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_inline_replacements',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-inline-replacements field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_inline_replacements|node|feature_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_promo|node|feature_article|form';
   $field_group->group_name = 'group_promo';
   $field_group->entity_type = 'node';
@@ -21,12 +48,12 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_promo_headline',
-      1 => 'field_promo_text',
-      2 => 'field_thumbnail',
-      3 => 'field_promo_short_headline',
+      1 => 'field_promo_short_headline',
+      2 => 'field_promo_text',
+      3 => 'field_thumbnail',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -51,15 +78,15 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
-      0 => 'field_display_tag',
-      1 => 'field_free_tag',
-      2 => 'field_series',
-      3 => 'field_topic',
+      0 => 'field_admin_tag',
+      1 => 'field_display_tag',
+      2 => 'field_free_tag',
+      3 => 'field_series',
       4 => 'field_significance',
-      5 => 'field_topic_box',
-      6 => 'field_admin_tag',
+      5 => 'field_topic',
+      6 => 'field_topic_box',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

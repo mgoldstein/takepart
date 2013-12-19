@@ -120,13 +120,16 @@ function tp_feature_feature_article_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
-        ),
-        'redirect' => array(
           'weight' => '12',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '13',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '14',
+        ),
+        'metatags' => array(
+          'weight' => '15',
         ),
       ),
       'display' => array(),

@@ -61,7 +61,6 @@
     hide($content['field_related_stories']);
     hide($content['field_topic']);
     hide($content['field_free_tag']);
-    print render($main_ad);
     print render($content);
   ?>
   </div>
