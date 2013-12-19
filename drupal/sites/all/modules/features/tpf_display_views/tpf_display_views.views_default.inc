@@ -11,250 +11,6 @@ function tpf_display_views_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'all_actions';
-  $view->description = 'A detailed list of all action nodes that are in our system, including publication date and display topic';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'All Actions';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'All Actions';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['grouping'] = 'title';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'title' => 'title',
-    'created' => 'created',
-    'field_action_type' => 'field_action_type',
-    'field_display_tag' => 'field_display_tag',
-    'field_free_tag' => 'field_free_tag',
-    'field_action_sponsor' => 'field_action_sponsor',
-  );
-  $handler->display->display_options['row_options']['separator'] = '<br>';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'long';
-  /* Field: Content: Action Type */
-  $handler->display->display_options['fields']['field_action_type']['id'] = 'field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['table'] = 'field_data_field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['field'] = 'field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_action_type']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_action_type']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Display Tag */
-  $handler->display->display_options['fields']['field_display_tag']['id'] = 'field_display_tag';
-  $handler->display->display_options['fields']['field_display_tag']['table'] = 'field_data_field_display_tag';
-  $handler->display->display_options['fields']['field_display_tag']['field'] = 'field_display_tag';
-  $handler->display->display_options['fields']['field_display_tag']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_display_tag']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Free Tag */
-  $handler->display->display_options['fields']['field_free_tag']['id'] = 'field_free_tag';
-  $handler->display->display_options['fields']['field_free_tag']['table'] = 'field_data_field_free_tag';
-  $handler->display->display_options['fields']['field_free_tag']['field'] = 'field_free_tag';
-  $handler->display->display_options['fields']['field_free_tag']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_free_tag']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_free_tag']['delta_offset'] = '0';
-  /* Field: Content: Empowered By */
-  $handler->display->display_options['fields']['field_action_sponsor']['id'] = 'field_action_sponsor';
-  $handler->display->display_options['fields']['field_action_sponsor']['table'] = 'field_data_field_action_sponsor';
-  $handler->display->display_options['fields']['field_action_sponsor']['field'] = 'field_action_sponsor';
-  $handler->display->display_options['fields']['field_action_sponsor']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Multi Page Campaign */
-  $handler->display->display_options['fields']['field_multi_page_campaign']['id'] = 'field_multi_page_campaign';
-  $handler->display->display_options['fields']['field_multi_page_campaign']['table'] = 'field_data_field_multi_page_campaign';
-  $handler->display->display_options['fields']['field_multi_page_campaign']['field'] = 'field_multi_page_campaign';
-  $handler->display->display_options['fields']['field_multi_page_campaign']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Series */
-  $handler->display->display_options['fields']['field_series']['id'] = 'field_series';
-  $handler->display->display_options['fields']['field_series']['table'] = 'field_data_field_series';
-  $handler->display->display_options['fields']['field_series']['field'] = 'field_series';
-  $handler->display->display_options['fields']['field_series']['hide_alter_empty'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'action' => 'action',
-    'petition_action' => 'petition_action',
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'all-actions';
-  $export['all_actions'] = $view;
-
-  $view = new view();
-  $view->name = 'all_tab_only_actions';
-  $view->description = 'A detailed list of all action nodes that are in our system, including publication date and display topic';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'All TAB Only Actions';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'All Actions';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['grouping'] = 'title';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['row_options']['inline'] = array(
-    'title' => 'title',
-    'created' => 'created',
-    'field_action_type' => 'field_action_type',
-    'field_display_tag' => 'field_display_tag',
-    'field_free_tag' => 'field_free_tag',
-    'field_action_sponsor' => 'field_action_sponsor',
-  );
-  $handler->display->display_options['row_options']['separator'] = '<br>';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'long';
-  /* Field: Content: Action Type */
-  $handler->display->display_options['fields']['field_action_type']['id'] = 'field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['table'] = 'field_data_field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['field'] = 'field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_action_type']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_action_type']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Display Tag */
-  $handler->display->display_options['fields']['field_display_tag']['id'] = 'field_display_tag';
-  $handler->display->display_options['fields']['field_display_tag']['table'] = 'field_data_field_display_tag';
-  $handler->display->display_options['fields']['field_display_tag']['field'] = 'field_display_tag';
-  $handler->display->display_options['fields']['field_display_tag']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_display_tag']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Free Tag */
-  $handler->display->display_options['fields']['field_free_tag']['id'] = 'field_free_tag';
-  $handler->display->display_options['fields']['field_free_tag']['table'] = 'field_data_field_free_tag';
-  $handler->display->display_options['fields']['field_free_tag']['field'] = 'field_free_tag';
-  $handler->display->display_options['fields']['field_free_tag']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_free_tag']['type'] = 'taxonomy_term_reference_plain';
-  $handler->display->display_options['fields']['field_free_tag']['delta_offset'] = '0';
-  /* Field: Content: Empowered By */
-  $handler->display->display_options['fields']['field_action_sponsor']['id'] = 'field_action_sponsor';
-  $handler->display->display_options['fields']['field_action_sponsor']['table'] = 'field_data_field_action_sponsor';
-  $handler->display->display_options['fields']['field_action_sponsor']['field'] = 'field_action_sponsor';
-  $handler->display->display_options['fields']['field_action_sponsor']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Multi Page Campaign */
-  $handler->display->display_options['fields']['field_multi_page_campaign']['id'] = 'field_multi_page_campaign';
-  $handler->display->display_options['fields']['field_multi_page_campaign']['table'] = 'field_data_field_multi_page_campaign';
-  $handler->display->display_options['fields']['field_multi_page_campaign']['field'] = 'field_multi_page_campaign';
-  $handler->display->display_options['fields']['field_multi_page_campaign']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Series */
-  $handler->display->display_options['fields']['field_series']['id'] = 'field_series';
-  $handler->display->display_options['fields']['field_series']['table'] = 'field_data_field_series';
-  $handler->display->display_options['fields']['field_series']['field'] = 'field_series';
-  $handler->display->display_options['fields']['field_series']['hide_alter_empty'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'OR',
-  );
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Enable for TAB (field_tab_action) */
-  $handler->display->display_options['filters']['field_tab_action_value_1']['id'] = 'field_tab_action_value_1';
-  $handler->display->display_options['filters']['field_tab_action_value_1']['table'] = 'field_data_field_tab_action';
-  $handler->display->display_options['filters']['field_tab_action_value_1']['field'] = 'field_tab_action_value';
-  $handler->display->display_options['filters']['field_tab_action_value_1']['value'] = array(
-    1 => '1',
-  );
-  $handler->display->display_options['filters']['field_tab_action_value_1']['group'] = 1;
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_tab_exclude_value']['id'] = 'field_tab_exclude_value';
-  $handler->display->display_options['filters']['field_tab_exclude_value']['table'] = 'field_data_field_tab_exclude';
-  $handler->display->display_options['filters']['field_tab_exclude_value']['field'] = 'field_tab_exclude_value';
-  $handler->display->display_options['filters']['field_tab_exclude_value']['operator'] = 'empty';
-  $handler->display->display_options['filters']['field_tab_exclude_value']['value'] = array();
-  $handler->display->display_options['filters']['field_tab_exclude_value']['group'] = 2;
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_tab_exclude_value_1']['id'] = 'field_tab_exclude_value_1';
-  $handler->display->display_options['filters']['field_tab_exclude_value_1']['table'] = 'field_data_field_tab_exclude';
-  $handler->display->display_options['filters']['field_tab_exclude_value_1']['field'] = 'field_tab_exclude_value';
-  $handler->display->display_options['filters']['field_tab_exclude_value_1']['operator'] = 'in';
-  $handler->display->display_options['filters']['field_tab_exclude_value_1']['value'] = array(
-    0 => '0',
-  );
-  $handler->display->display_options['filters']['field_tab_exclude_value_1']['group'] = 2;
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'all-tab-actions';
-  $export['all_tab_only_actions'] = $view;
-
-  $view = new view();
   $view->name = 'author_contributions';
   $view->description = '';
   $view->tag = 'default';
@@ -990,51 +746,6 @@ function tpf_display_views_views_default_views() {
   $export['campaigns'] = $view;
 
   $view = new view();
-  $view->name = 'clone_of_marigold_ideas_for_good';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'ideasforgood_finalist';
-  $view->human_name = 'Marigold Ideas for Good June Voting';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'locked';
-  /* Field: Marigold Ideas for Good Finalist: Marigold ideas for good finalist ID */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Sort criterion: Marigold Ideas for Good Finalist: Last Name (ideasforgood_finalist_last_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['id'] = 'ideasforgood_finalist_last_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['table'] = 'field_data_ideasforgood_finalist_last_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['field'] = 'ideasforgood_finalist_last_name_value';
-  /* Sort criterion: Marigold Ideas for Good Finalist: First Name (ideasforgood_finalist_first_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['id'] = 'ideasforgood_finalist_first_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['table'] = 'field_data_ideasforgood_finalist_first_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['field'] = 'ideasforgood_finalist_first_name_value';
-  /* Filter criterion: Marigold Ideas for Good Finalist: Voting_group */
-  $handler->display->display_options['filters']['voting_group']['id'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['filters']['voting_group']['field'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['value'] = 'Marigold Ideas for Good June Finalists';
-  $handler->display->display_options['filters']['voting_group']['group'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['clone_of_marigold_ideas_for_good'] = $view;
-
-  $view = new view();
   $view->name = 'content_types_posts_feed';
   $view->description = '';
   $view->tag = 'takepart_feed';
@@ -1061,7 +772,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Broken/missing handler */
+  /* Relationship: Entity Reference: Referenced Entity */
   $handler->display->display_options['relationships']['field_inline_replacements_target_id']['id'] = 'field_inline_replacements_target_id';
   $handler->display->display_options['relationships']['field_inline_replacements_target_id']['table'] = 'field_data_field_inline_replacements';
   $handler->display->display_options['relationships']['field_inline_replacements_target_id']['field'] = 'field_inline_replacements_target_id';
@@ -1614,58 +1325,6 @@ echo $separator;
   $export['content_types_posts_feed'] = $view;
 
   $view = new view();
-  $view->name = 'content_updates';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'followup';
-  $view->human_name = 'Content Updates';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Action Updates';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  /* Field: Follow Up: Follow up ID */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'followup';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Sort criterion: Follow Up: Timestamp (field_tab_update_timestamp) */
-  $handler->display->display_options['sorts']['field_tab_update_timestamp_value']['id'] = 'field_tab_update_timestamp_value';
-  $handler->display->display_options['sorts']['field_tab_update_timestamp_value']['table'] = 'field_data_field_tab_update_timestamp';
-  $handler->display->display_options['sorts']['field_tab_update_timestamp_value']['field'] = 'field_tab_update_timestamp_value';
-  $handler->display->display_options['sorts']['field_tab_update_timestamp_value']['order'] = 'DESC';
-  /* Contextual filter: Follow Up: Nid */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'followup';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Follow Up: Status */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'followup';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['operator'] = '!=';
-  $handler->display->display_options['filters']['status']['value']['value'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['content_updates'] = $view;
-
-  $view = new view();
   $view->name = 'display_tag_search';
   $view->description = 'Diagnostic to find missing display tags, per issue #29975';
   $view->tag = 'default';
@@ -2097,7 +1756,7 @@ print $value;
     'image_style' => 'tp_secondary_feature_thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Action Image */
+  /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['table'] = 'field_data_field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
@@ -2251,719 +1910,6 @@ print $value;
   /* Display: Action Sponsor */
   $handler = $view->new_display('block', 'Action Sponsor', 'block');
   $export['groups'] = $view;
-
-  $view = new view();
-  $view->name = 'link_only_awareness_actions';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'Link Only Awareness Actions';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Link Only Awareness Actions';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    7 => '7',
-    3 => '3',
-    5 => '5',
-    6 => '6',
-  );
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['quantity'] = '9';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page'] = TRUE;
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options'] = '5, 10, 20, 40, 60, 100';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = TRUE;
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'title' => 'title',
-    'field_action_type' => 'field_action_type',
-  );
-  $handler->display->display_options['style_options']['default'] = '-1';
-  $handler->display->display_options['style_options']['info'] = array(
-    'title' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_action_type' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-  );
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Action Type */
-  $handler->display->display_options['fields']['field_action_type']['id'] = 'field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['table'] = 'field_data_field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['field'] = 'field_action_type';
-  /* Field: Content: Action URL */
-  $handler->display->display_options['fields']['field_action_url']['id'] = 'field_action_url';
-  $handler->display->display_options['fields']['field_action_url']['table'] = 'field_data_field_action_url';
-  $handler->display->display_options['fields']['field_action_url']['field'] = 'field_action_url';
-  $handler->display->display_options['fields']['field_action_url']['label'] = 'Take Action Button URL';
-  $handler->display->display_options['fields']['field_action_url']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['field_action_url']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_action_url']['type'] = 'link_plain';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  $handler->display->display_options['sorts']['created']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['created']['expose']['label'] = 'Post date';
-  /* Sort criterion: Content: Action Type (field_action_type) */
-  $handler->display->display_options['sorts']['field_action_type_tid']['id'] = 'field_action_type_tid';
-  $handler->display->display_options['sorts']['field_action_type_tid']['table'] = 'field_data_field_action_type';
-  $handler->display->display_options['sorts']['field_action_type_tid']['field'] = 'field_action_type_tid';
-  $handler->display->display_options['sorts']['field_action_type_tid']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_action_type_tid']['expose']['label'] = 'Action Type';
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'action' => 'action',
-  );
-  /* Filter criterion: Content: Link Only (field_tab_link_only) */
-  $handler->display->display_options['filters']['field_tab_link_only_value']['id'] = 'field_tab_link_only_value';
-  $handler->display->display_options['filters']['field_tab_link_only_value']['table'] = 'field_data_field_tab_link_only';
-  $handler->display->display_options['filters']['field_tab_link_only_value']['field'] = 'field_tab_link_only_value';
-  $handler->display->display_options['filters']['field_tab_link_only_value']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_tab_link_only_value']['value'] = array(
-    'all' => 'all',
-  );
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'link-only-awareness-actions';
-  $export['link_only_awareness_actions'] = $view;
-
-  $view = new view();
-  $view->name = 'marigold_august_voting';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'ideasforgood_finalist';
-  $view->human_name = 'Marigold Ideas for Good August Voting';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'locked';
-  /* Footer: Global: Text area */
-  $handler->display->display_options['footer']['area']['id'] = 'area';
-  $handler->display->display_options['footer']['area']['table'] = 'views';
-  $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['label'] = 'Winners Disclaimer';
-  $handler->display->display_options['footer']['area']['content'] = '<div style="clear: both"><p style="font-style: italic; font-size: 10px; padding-top: 10px;">User votes count for 50% of the overall decision<p></div>';
-  $handler->display->display_options['footer']['area']['format'] = 'full_html';
-  /* Field: Marigold Ideas for Good Finalist: Marigold ideas for good finalist ID */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Sort criterion: Marigold Ideas for Good Finalist: Last Name (ideasforgood_finalist_last_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['id'] = 'ideasforgood_finalist_last_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['table'] = 'field_data_ideasforgood_finalist_last_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['field'] = 'ideasforgood_finalist_last_name_value';
-  /* Sort criterion: Marigold Ideas for Good Finalist: First Name (ideasforgood_finalist_first_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['id'] = 'ideasforgood_finalist_first_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['table'] = 'field_data_ideasforgood_finalist_first_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['field'] = 'ideasforgood_finalist_first_name_value';
-  /* Filter criterion: Marigold Ideas for Good Finalist: Voting_group */
-  $handler->display->display_options['filters']['voting_group']['id'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['filters']['voting_group']['field'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['value'] = 'Marigold Ideas for Good August Finalists';
-  $handler->display->display_options['filters']['voting_group']['group'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['marigold_august_voting'] = $view;
-
-  $view = new view();
-  $view->name = 'marigold_ideas_for_good_april_vo';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'ideasforgood_finalist';
-  $view->human_name = 'Marigold Ideas for Good April Voting';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'locked';
-  /* Field: Marigold Ideas for Good Finalist: Marigold ideas for good finalist ID */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Sort criterion: Marigold Ideas for Good Finalist: Last Name (ideasforgood_finalist_last_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['id'] = 'ideasforgood_finalist_last_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['table'] = 'field_data_ideasforgood_finalist_last_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['field'] = 'ideasforgood_finalist_last_name_value';
-  /* Sort criterion: Marigold Ideas for Good Finalist: First Name (ideasforgood_finalist_first_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['id'] = 'ideasforgood_finalist_first_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['table'] = 'field_data_ideasforgood_finalist_first_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['field'] = 'ideasforgood_finalist_first_name_value';
-  /* Filter criterion: Marigold Ideas for Good Finalist: Voting_group */
-  $handler->display->display_options['filters']['voting_group']['id'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['filters']['voting_group']['field'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['value'] = 'Marigold Ideas for Good Treehouse';
-  $handler->display->display_options['filters']['voting_group']['group'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['marigold_ideas_for_good_april_vo'] = $view;
-
-  $view = new view();
-  $view->name = 'marigold_ideas_for_good_july_vot';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'ideasforgood_finalist';
-  $view->human_name = 'Marigold Ideas for Good July Voting';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'locked';
-  /* Field: Marigold Ideas for Good Finalist: Marigold ideas for good finalist ID */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Sort criterion: Marigold Ideas for Good Finalist: Last Name (ideasforgood_finalist_last_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['id'] = 'ideasforgood_finalist_last_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['table'] = 'field_data_ideasforgood_finalist_last_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['field'] = 'ideasforgood_finalist_last_name_value';
-  /* Sort criterion: Marigold Ideas for Good Finalist: First Name (ideasforgood_finalist_first_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['id'] = 'ideasforgood_finalist_first_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['table'] = 'field_data_ideasforgood_finalist_first_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['field'] = 'ideasforgood_finalist_first_name_value';
-  /* Filter criterion: Marigold Ideas for Good Finalist: Voting_group */
-  $handler->display->display_options['filters']['voting_group']['id'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['filters']['voting_group']['field'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['value'] = 'Marigold Ideas for Good July Finalists';
-  $handler->display->display_options['filters']['voting_group']['group'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['marigold_ideas_for_good_july_vot'] = $view;
-
-  $view = new view();
-  $view->name = 'marigold_ideas_for_good_may';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'ideasforgood_finalist';
-  $view->human_name = 'Marigold Ideas for Good May Voting';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'locked';
-  /* Field: Marigold Ideas for Good Finalist: Marigold ideas for good finalist ID */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Sort criterion: Marigold Ideas for Good Finalist: Last Name (ideasforgood_finalist_last_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['id'] = 'ideasforgood_finalist_last_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['table'] = 'field_data_ideasforgood_finalist_last_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['field'] = 'ideasforgood_finalist_last_name_value';
-  /* Sort criterion: Marigold Ideas for Good Finalist: First Name (ideasforgood_finalist_first_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['id'] = 'ideasforgood_finalist_first_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['table'] = 'field_data_ideasforgood_finalist_first_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['field'] = 'ideasforgood_finalist_first_name_value';
-  /* Filter criterion: Marigold Ideas for Good Finalist: Voting_group */
-  $handler->display->display_options['filters']['voting_group']['id'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['filters']['voting_group']['field'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['value'] = 'Marigold Ideas for Good May Finalists';
-  $handler->display->display_options['filters']['voting_group']['group'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['marigold_ideas_for_good_may'] = $view;
-
-  $view = new view();
-  $view->name = 'marigold_ideas_for_good_sept_vot';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'ideasforgood_finalist';
-  $view->human_name = 'Clone of Marigold Ideas for Good September Voting';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'locked';
-  /* Footer: Global: Text area */
-  $handler->display->display_options['footer']['area']['id'] = 'area';
-  $handler->display->display_options['footer']['area']['table'] = 'views';
-  $handler->display->display_options['footer']['area']['field'] = 'area';
-  $handler->display->display_options['footer']['area']['label'] = 'Winners Disclaimer';
-  $handler->display->display_options['footer']['area']['content'] = '<div style="clear: both"><p style="font-style: italic; font-size: 10px; padding-top: 10px;">User votes count for 50% of the overall decision<p></div>';
-  $handler->display->display_options['footer']['area']['format'] = 'full_html';
-  /* Field: Marigold Ideas for Good Finalist: Marigold ideas for good finalist ID */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-  /* Sort criterion: Marigold Ideas for Good Finalist: Last Name (ideasforgood_finalist_last_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['id'] = 'ideasforgood_finalist_last_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['table'] = 'field_data_ideasforgood_finalist_last_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_last_name_value']['field'] = 'ideasforgood_finalist_last_name_value';
-  /* Sort criterion: Marigold Ideas for Good Finalist: First Name (ideasforgood_finalist_first_name) */
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['id'] = 'ideasforgood_finalist_first_name_value';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['table'] = 'field_data_ideasforgood_finalist_first_name';
-  $handler->display->display_options['sorts']['ideasforgood_finalist_first_name_value']['field'] = 'ideasforgood_finalist_first_name_value';
-  /* Filter criterion: Marigold Ideas for Good Finalist: Voting_group */
-  $handler->display->display_options['filters']['voting_group']['id'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['table'] = 'ideasforgood_finalist';
-  $handler->display->display_options['filters']['voting_group']['field'] = 'voting_group';
-  $handler->display->display_options['filters']['voting_group']['value'] = 'Marigold Ideas for Good September Finalists';
-  $handler->display->display_options['filters']['voting_group']['group'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['marigold_ideas_for_good_sept_vot'] = $view;
-
-  $view = new view();
-  $view->name = 'overridden_tab_actions';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'Overridden TAB Actions';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Pages w/ specific TAB Widget Actions';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'administer nodes';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
-  $handler->display->display_options['style_plugin'] = 'table';
-  /* Relationship: Broken/missing handler */
-  $handler->display->display_options['relationships']['field_inline_replacements_target_id']['id'] = 'field_inline_replacements_target_id';
-  $handler->display->display_options['relationships']['field_inline_replacements_target_id']['table'] = 'field_data_field_inline_replacements';
-  $handler->display->display_options['relationships']['field_inline_replacements_target_id']['field'] = 'field_inline_replacements_target_id';
-  $handler->display->display_options['relationships']['field_inline_replacements_target_id']['label'] = 'Inline Content entity referenced from field_inline_replacements';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  $handler->display->display_options['filter_groups']['operator'] = 'OR';
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'AND',
-    3 => 'AND',
-  );
-  /* Filter criterion: Content: TAB Action Overrides (field_tab_action_override) */
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['id'] = 'field_tab_action_override_nid';
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['table'] = 'field_data_field_tab_action_override';
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['field'] = 'field_tab_action_override_nid';
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['group'] = 2;
-  /* Filter criterion: : field_ic_action (field_ic_action) */
-  $handler->display->display_options['filters']['field_ic_action_nid']['id'] = 'field_ic_action_nid';
-  $handler->display->display_options['filters']['field_ic_action_nid']['table'] = 'field_data_field_ic_action';
-  $handler->display->display_options['filters']['field_ic_action_nid']['field'] = 'field_ic_action_nid';
-  $handler->display->display_options['filters']['field_ic_action_nid']['relationship'] = 'field_inline_replacements_target_id';
-  $handler->display->display_options['filters']['field_ic_action_nid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_ic_action_nid']['group'] = 3;
-  /* Filter criterion: Content: Inline Replacements (field_inline_replacements) */
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['id'] = 'field_inline_replacements_target_id';
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['table'] = 'field_data_field_inline_replacements';
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['field'] = 'field_inline_replacements_target_id';
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['group'] = 3;
-
-  /* Display: TAB Button Overrides */
-  $handler = $view->new_display('page', 'TAB Button Overrides', 'page');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Pages w/ specific TAB Button Overrides';
-  $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h1>Pages with TAB Button Overrides</h1>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
-  $handler->display->display_options['defaults']['relationships'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['filter_groups']['operator'] = 'OR';
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'AND',
-    3 => 'AND',
-  );
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: TAB Action Overrides (field_tab_action_override) */
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['id'] = 'field_tab_action_override_nid';
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['table'] = 'field_data_field_tab_action_override';
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['field'] = 'field_tab_action_override_nid';
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_tab_action_override_nid']['group'] = 2;
-  $handler->display->display_options['path'] = 'reports/overridden-tab-actions';
-
-  /* Display: TAB Widget Actions */
-  $handler = $view->new_display('page', 'TAB Widget Actions', 'page_1');
-  $handler->display->display_options['defaults']['header'] = FALSE;
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h1>Pages w/ specific TAB Widget Actions</h1>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['filter_groups']['operator'] = 'OR';
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'AND',
-    3 => 'AND',
-  );
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: : field_ic_action (field_ic_action) */
-  $handler->display->display_options['filters']['field_ic_action_nid']['id'] = 'field_ic_action_nid';
-  $handler->display->display_options['filters']['field_ic_action_nid']['table'] = 'field_data_field_ic_action';
-  $handler->display->display_options['filters']['field_ic_action_nid']['field'] = 'field_ic_action_nid';
-  $handler->display->display_options['filters']['field_ic_action_nid']['relationship'] = 'field_inline_replacements_target_id';
-  $handler->display->display_options['filters']['field_ic_action_nid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_ic_action_nid']['group'] = 3;
-  /* Filter criterion: Content: Inline Replacements (field_inline_replacements) */
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['id'] = 'field_inline_replacements_target_id';
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['table'] = 'field_data_field_inline_replacements';
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['field'] = 'field_inline_replacements_target_id';
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_inline_replacements_target_id']['group'] = 3;
-  $handler->display->display_options['path'] = 'reports/tab-widget-actions';
-  $export['overridden_tab_actions'] = $view;
-
-  $view = new view();
-  $view->name = 'petition_signature_block';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'signature';
-  $view->human_name = 'Petition Signature Block';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'People Who Have Signed';
-  $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'field_sig_last_name' => 'field_sig_last_name',
-    'field_sig_first_name' => 'field_sig_first_name',
-    'created' => 'created',
-    'field_sig_city' => 'field_sig_city',
-  );
-  $handler->display->display_options['style_options']['default'] = '-1';
-  $handler->display->display_options['style_options']['info'] = array(
-    'field_sig_last_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-    'field_sig_first_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-    'created' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-    'field_sig_city' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-  );
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'No Signatures';
-  $handler->display->display_options['empty']['area']['content'] = '<h2>No Signatures</h2>';
-  $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Field: : field_sig_last_name */
-  $handler->display->display_options['fields']['field_sig_last_name']['id'] = 'field_sig_last_name';
-  $handler->display->display_options['fields']['field_sig_last_name']['table'] = 'field_data_field_sig_last_name';
-  $handler->display->display_options['fields']['field_sig_last_name']['field'] = 'field_sig_last_name';
-  $handler->display->display_options['fields']['field_sig_last_name']['label'] = '';
-  $handler->display->display_options['fields']['field_sig_last_name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['max_length'] = '1';
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_last_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_last_name']['hide_alter_empty'] = FALSE;
-  /* Field: : field_sig_first_name */
-  $handler->display->display_options['fields']['field_sig_first_name']['id'] = 'field_sig_first_name';
-  $handler->display->display_options['fields']['field_sig_first_name']['table'] = 'field_data_field_sig_first_name';
-  $handler->display->display_options['fields']['field_sig_first_name']['field'] = 'field_sig_first_name';
-  $handler->display->display_options['fields']['field_sig_first_name']['label'] = '';
-  $handler->display->display_options['fields']['field_sig_first_name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_first_name']['alter']['text'] = '[field_sig_first_name] [field_sig_last_name]';
-  $handler->display->display_options['fields']['field_sig_first_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_first_name']['hide_alter_empty'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'signature';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  /* Field: : field_sig_city */
-  $handler->display->display_options['fields']['field_sig_city']['id'] = 'field_sig_city';
-  $handler->display->display_options['fields']['field_sig_city']['table'] = 'field_data_field_sig_city';
-  $handler->display->display_options['fields']['field_sig_city']['field'] = 'field_sig_city';
-  $handler->display->display_options['fields']['field_sig_city']['label'] = '';
-  $handler->display->display_options['fields']['field_sig_city']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_city']['hide_alter_empty'] = FALSE;
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'signature';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Broken/missing handler */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'signature';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['display']['id'] = 'display';
-  $handler->display->display_options['filters']['display']['table'] = 'signature';
-  $handler->display->display_options['filters']['display']['field'] = 'display';
-  $handler->display->display_options['filters']['display']['operator'] = '!=';
-  $handler->display->display_options['filters']['display']['value'] = array(
-    'value' => '0',
-  );
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'signature';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['operator'] = '!=';
-  $handler->display->display_options['filters']['status']['value'] = array(
-    'value' => '0',
-  );
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['petition_signature_block'] = $view;
-
-  $view = new view();
-  $view->name = 'petition_signature_list';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'signature';
-  $view->human_name = 'Petition Signature List';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Petition Signature List';
-  $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'table';
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'No Signatures';
-  $handler->display->display_options['empty']['area']['content'] = '<h2>No Signatures</h2>';
-  $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Field: : field_sig_last_name */
-  $handler->display->display_options['fields']['field_sig_last_name']['id'] = 'field_sig_last_name';
-  $handler->display->display_options['fields']['field_sig_last_name']['table'] = 'field_data_field_sig_last_name';
-  $handler->display->display_options['fields']['field_sig_last_name']['field'] = 'field_sig_last_name';
-  $handler->display->display_options['fields']['field_sig_last_name']['label'] = '';
-  $handler->display->display_options['fields']['field_sig_last_name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['max_length'] = '1';
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_last_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_last_name']['hide_alter_empty'] = FALSE;
-  /* Field: : field_sig_first_name */
-  $handler->display->display_options['fields']['field_sig_first_name']['id'] = 'field_sig_first_name';
-  $handler->display->display_options['fields']['field_sig_first_name']['table'] = 'field_data_field_sig_first_name';
-  $handler->display->display_options['fields']['field_sig_first_name']['field'] = 'field_sig_first_name';
-  $handler->display->display_options['fields']['field_sig_first_name']['label'] = '';
-  $handler->display->display_options['fields']['field_sig_first_name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_first_name']['alter']['text'] = '[field_sig_first_name] [field_sig_last_name]';
-  $handler->display->display_options['fields']['field_sig_first_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_first_name']['hide_alter_empty'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'signature';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  /* Field: : field_sig_city */
-  $handler->display->display_options['fields']['field_sig_city']['id'] = 'field_sig_city';
-  $handler->display->display_options['fields']['field_sig_city']['table'] = 'field_data_field_sig_city';
-  $handler->display->display_options['fields']['field_sig_city']['field'] = 'field_sig_city';
-  $handler->display->display_options['fields']['field_sig_city']['label'] = '';
-  $handler->display->display_options['fields']['field_sig_city']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_city']['hide_alter_empty'] = FALSE;
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'signature';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Broken/missing handler */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'signature';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_action'] = 'empty';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['nid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['nid']['validate']['type'] = 'numeric';
-  $handler->display->display_options['arguments']['nid']['validate']['fail'] = 'empty';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['display']['id'] = 'display';
-  $handler->display->display_options['filters']['display']['table'] = 'signature';
-  $handler->display->display_options['filters']['display']['field'] = 'display';
-  $handler->display->display_options['filters']['display']['operator'] = '!=';
-  $handler->display->display_options['filters']['display']['value'] = array(
-    'min' => '',
-    'max' => '',
-    'value' => '0',
-  );
-  $handler->display->display_options['filters']['display']['group'] = '0';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'signature';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['operator'] = '!=';
-  $handler->display->display_options['filters']['status']['value'] = array(
-    'min' => '',
-    'max' => '',
-    'value' => '0',
-  );
-  $handler->display->display_options['filters']['status']['group'] = '0';
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'petition-signature-list';
-  $export['petition_signature_list'] = $view;
 
   $view = new view();
   $view->name = 'photo_galleries';
@@ -3566,150 +2512,6 @@ print $value;
   $export['photo_gallery'] = $view;
 
   $view = new view();
-  $view->name = 'pledge_signature_block';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'signature';
-  $view->human_name = 'Pledge Signature Block';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Pledges Made';
-  $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '300';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '300';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['grouping'] = '';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'field_sig_last_name' => 'field_sig_last_name',
-    'field_sig_first_name' => 'field_sig_first_name',
-    'created' => 'created',
-    'field_sig_city' => 'field_sig_city',
-  );
-  $handler->display->display_options['style_options']['default'] = '-1';
-  $handler->display->display_options['style_options']['info'] = array(
-    'field_sig_last_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-    'field_sig_first_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-    'created' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-    'field_sig_city' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-  );
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['label'] = 'No Signatures';
-  $handler->display->display_options['empty']['area']['content'] = '<h2>No Signatures</h2>';
-  $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Field: : field_sig_last_name */
-  $handler->display->display_options['fields']['field_sig_last_name']['id'] = 'field_sig_last_name';
-  $handler->display->display_options['fields']['field_sig_last_name']['table'] = 'field_data_field_sig_last_name';
-  $handler->display->display_options['fields']['field_sig_last_name']['field'] = 'field_sig_last_name';
-  $handler->display->display_options['fields']['field_sig_last_name']['label'] = '';
-  $handler->display->display_options['fields']['field_sig_last_name']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['max_length'] = '1';
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_last_name']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_last_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_last_name']['hide_alter_empty'] = FALSE;
-  /* Field: : field_sig_first_name */
-  $handler->display->display_options['fields']['field_sig_first_name']['id'] = 'field_sig_first_name';
-  $handler->display->display_options['fields']['field_sig_first_name']['table'] = 'field_data_field_sig_first_name';
-  $handler->display->display_options['fields']['field_sig_first_name']['field'] = 'field_sig_first_name';
-  $handler->display->display_options['fields']['field_sig_first_name']['label'] = '';
-  $handler->display->display_options['fields']['field_sig_first_name']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_sig_first_name']['alter']['text'] = '[field_sig_first_name] [field_sig_last_name]';
-  $handler->display->display_options['fields']['field_sig_first_name']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_first_name']['hide_alter_empty'] = FALSE;
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'signature';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  /* Field: : field_sig_city */
-  $handler->display->display_options['fields']['field_sig_city']['id'] = 'field_sig_city';
-  $handler->display->display_options['fields']['field_sig_city']['table'] = 'field_data_field_sig_city';
-  $handler->display->display_options['fields']['field_sig_city']['field'] = 'field_sig_city';
-  $handler->display->display_options['fields']['field_sig_city']['label'] = '';
-  $handler->display->display_options['fields']['field_sig_city']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_sig_city']['hide_alter_empty'] = FALSE;
-  /* Sort criterion: Broken/missing handler */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'signature';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Broken/missing handler */
-  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['table'] = 'signature';
-  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
-  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['display']['id'] = 'display';
-  $handler->display->display_options['filters']['display']['table'] = 'signature';
-  $handler->display->display_options['filters']['display']['field'] = 'display';
-  $handler->display->display_options['filters']['display']['operator'] = '!=';
-  $handler->display->display_options['filters']['display']['value'] = array(
-    'min' => '',
-    'max' => '',
-    'value' => '0',
-  );
-  $handler->display->display_options['filters']['display']['group'] = '0';
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'signature';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['operator'] = '!=';
-  $handler->display->display_options['filters']['status']['value'] = array(
-    'min' => '',
-    'max' => '',
-    'value' => '0',
-  );
-  $handler->display->display_options['filters']['status']['group'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['pledge_signature_block'] = $view;
-
-  $view = new view();
   $view->name = 'promo';
   $view->description = '';
   $view->tag = 'default';
@@ -3752,7 +2554,7 @@ print $value;
     'image_style' => 'tp_actions_impact_thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Action Image */
+  /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['table'] = 'field_data_field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
@@ -3899,7 +2701,7 @@ print $value;
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail_1']['group_column'] = 'fid';
-  /* Field: Content: Action Image */
+  /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['table'] = 'field_data_field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
@@ -4252,7 +3054,7 @@ return TRUE;';
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Sponsored Actions';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Empowered By (field_action_sponsor) */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_action_sponsor_nid']['id'] = 'field_action_sponsor_nid';
   $handler->display->display_options['arguments']['field_action_sponsor_nid']['table'] = 'field_data_field_action_sponsor';
   $handler->display->display_options['arguments']['field_action_sponsor_nid']['field'] = 'field_action_sponsor_nid';
@@ -4755,90 +3557,6 @@ return TRUE;';
   $export['related_content'] = $view;
 
   $view = new view();
-  $view->name = 'series_navigation';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'Series Navigation';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Series Navigation Block';
-  $handler->display->display_options['css_class'] = 'series-view-list';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Thumbnail */
-  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
-  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_thumbnail']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
-  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => 'square_thumbnail_small',
-    'image_link' => 'content',
-  );
-  $handler->display->display_options['fields']['field_thumbnail']['group_column'] = 'fid';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Series (field_series) */
-  $handler->display->display_options['arguments']['field_series_tid']['id'] = 'field_series_tid';
-  $handler->display->display_options['arguments']['field_series_tid']['table'] = 'field_data_field_series';
-  $handler->display->display_options['arguments']['field_series_tid']['field'] = 'field_series_tid';
-  $handler->display->display_options['arguments']['field_series_tid']['default_action'] = 'not found';
-  $handler->display->display_options['arguments']['field_series_tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_series_tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_series_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_series_tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_series_tid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['field_series_tid']['validate']['type'] = 'taxonomy_term';
-  $handler->display->display_options['arguments']['field_series_tid']['validate_options']['vocabularies'] = array(
-    'series' => 'series',
-    'action_type' => 0,
-    'agency' => 0,
-    'blog' => 0,
-    'free_tags' => 0,
-    'group_type' => 0,
-    'photo_credit' => 0,
-    'topic' => 0,
-    'video_series' => 0,
-  );
-  $handler->display->display_options['arguments']['field_series_tid']['validate_options']['type'] = 'convert';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['series_navigation'] = $view;
-
-  $view = new view();
   $view->name = 'sitemap_exclusions';
   $view->description = '';
   $view->tag = 'default';
@@ -5112,115 +3830,6 @@ return TRUE;';
   $export['slide_rotator'] = $view;
 
   $view = new view();
-  $view->name = 'solr_facets';
-  $view->description = 'This view creates a Drupal block to display Solr search facets';
-  $view->tag = 'default';
-  $view->base_table = 'search_api_facet';
-  $view->human_name = 'Solr Facets';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Search Filters';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['slave'] = TRUE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '5';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['id']['id'] = 'id';
-  $handler->display->display_options['fields']['id']['table'] = 'search_api_facet';
-  $handler->display->display_options['fields']['id']['field'] = 'id';
-
-  /* Display: Solr Facets Block */
-  $handler = $view->new_display('block', 'Solr Facets Block', 'block');
-  $handler->display->display_options['display_description'] = 'Displays Solr Facets';
-  $export['solr_facets'] = $view;
-
-  $view = new view();
-  $view->name = 'takeaction_landing_page_recent_a';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'TakeAction Landing Page Recent Action';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '7';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'node';
-  $handler->display->display_options['row_options']['view_mode'] = 'medium_preview';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'action' => 'action',
-    'petition_action' => 'petition_action',
-    'pledge_action' => 'pledge_action',
-  );
-  /* Filter criterion: Content: Action Image (field_action_main_image:fid) */
-  $handler->display->display_options['filters']['field_action_main_image_fid']['id'] = 'field_action_main_image_fid';
-  $handler->display->display_options['filters']['field_action_main_image_fid']['table'] = 'field_data_field_action_main_image';
-  $handler->display->display_options['filters']['field_action_main_image_fid']['field'] = 'field_action_main_image_fid';
-  $handler->display->display_options['filters']['field_action_main_image_fid']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_action_main_image_fid']['group'] = '0';
-  /* Filter criterion: Field: Promo Headline (field_promo_headline) */
-  $handler->display->display_options['filters']['field_promo_headline_value']['id'] = 'field_promo_headline_value';
-  $handler->display->display_options['filters']['field_promo_headline_value']['table'] = 'field_data_field_promo_headline';
-  $handler->display->display_options['filters']['field_promo_headline_value']['field'] = 'field_promo_headline_value';
-  $handler->display->display_options['filters']['field_promo_headline_value']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_promo_headline_value']['group'] = '0';
-  /* Filter criterion: Content: Short Introduction (field_short_introduction) */
-  $handler->display->display_options['filters']['field_short_introduction_value']['id'] = 'field_short_introduction_value';
-  $handler->display->display_options['filters']['field_short_introduction_value']['table'] = 'field_data_field_short_introduction';
-  $handler->display->display_options['filters']['field_short_introduction_value']['field'] = 'field_short_introduction_value';
-  $handler->display->display_options['filters']['field_short_introduction_value']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_short_introduction_value']['group'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['takeaction_landing_page_recent_a'] = $view;
-
-  $view = new view();
   $view->name = 'takepart_on_tuesday_rss';
   $view->description = '';
   $view->tag = 'default';
@@ -5252,7 +3861,7 @@ return TRUE;';
   $handler->display->display_options['relationships']['field_article_main_image_fid']['table'] = 'field_data_field_article_main_image';
   $handler->display->display_options['relationships']['field_article_main_image_fid']['field'] = 'field_article_main_image_fid';
   $handler->display->display_options['relationships']['field_article_main_image_fid']['label'] = 'field_article_main_image';
-  /* Relationship: Content: Action Image (field_action_main_image:fid) */
+  /* Relationship: Content: Main Image (field_action_main_image:fid) */
   $handler->display->display_options['relationships']['field_action_main_image_fid']['id'] = 'field_action_main_image_fid';
   $handler->display->display_options['relationships']['field_action_main_image_fid']['table'] = 'field_data_field_action_main_image';
   $handler->display->display_options['relationships']['field_action_main_image_fid']['field'] = 'field_action_main_image_fid';
@@ -6678,145 +5287,6 @@ return TRUE;';
   $export['topic_listing'] = $view;
 
   $view = new view();
-  $view->name = 'unclassified_actions';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'node';
-  $view->human_name = 'Unclassified Actions';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Unclassified Actions';
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    7 => '7',
-  );
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['style_plugin'] = 'table';
-  $handler->display->display_options['style_options']['columns'] = array(
-    'changed' => 'changed',
-    'title' => 'title',
-    'field_action_type' => 'field_action_type',
-    'view_node' => 'view_node',
-    'edit_node' => 'edit_node',
-  );
-  $handler->display->display_options['style_options']['default'] = 'changed';
-  $handler->display->display_options['style_options']['info'] = array(
-    'changed' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'desc',
-      'align' => '',
-      'separator' => '',
-    ),
-    'title' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-    'field_action_type' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-    ),
-    'view_node' => array(
-      'align' => '',
-      'separator' => '',
-    ),
-    'edit_node' => array(
-      'align' => '',
-      'separator' => '',
-    ),
-  );
-  /* Field: Content: Updated date */
-  $handler->display->display_options['fields']['changed']['id'] = 'changed';
-  $handler->display->display_options['fields']['changed']['table'] = 'node';
-  $handler->display->display_options['fields']['changed']['field'] = 'changed';
-  $handler->display->display_options['fields']['changed']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['changed']['date_format'] = 'short';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Action Type */
-  $handler->display->display_options['fields']['field_action_type']['id'] = 'field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['table'] = 'field_data_field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['field'] = 'field_action_type';
-  $handler->display->display_options['fields']['field_action_type']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Link */
-  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Edit link */
-  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['hide_alter_empty'] = FALSE;
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'AND',
-    2 => 'OR',
-  );
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'action' => 'action',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Action Image (field_action_main_image:fid) */
-  $handler->display->display_options['filters']['field_action_main_image_fid']['id'] = 'field_action_main_image_fid';
-  $handler->display->display_options['filters']['field_action_main_image_fid']['table'] = 'field_data_field_action_main_image';
-  $handler->display->display_options['filters']['field_action_main_image_fid']['field'] = 'field_action_main_image_fid';
-  $handler->display->display_options['filters']['field_action_main_image_fid']['operator'] = 'empty';
-  $handler->display->display_options['filters']['field_action_main_image_fid']['group'] = 2;
-  /* Filter criterion: Field: Promo Headline (field_promo_headline) */
-  $handler->display->display_options['filters']['field_promo_headline_value']['id'] = 'field_promo_headline_value';
-  $handler->display->display_options['filters']['field_promo_headline_value']['table'] = 'field_data_field_promo_headline';
-  $handler->display->display_options['filters']['field_promo_headline_value']['field'] = 'field_promo_headline_value';
-  $handler->display->display_options['filters']['field_promo_headline_value']['operator'] = 'empty';
-  $handler->display->display_options['filters']['field_promo_headline_value']['group'] = 2;
-  /* Filter criterion: Content: Short Introduction (field_short_introduction) */
-  $handler->display->display_options['filters']['field_short_introduction_value']['id'] = 'field_short_introduction_value';
-  $handler->display->display_options['filters']['field_short_introduction_value']['table'] = 'field_data_field_short_introduction';
-  $handler->display->display_options['filters']['field_short_introduction_value']['field'] = 'field_short_introduction_value';
-  $handler->display->display_options['filters']['field_short_introduction_value']['operator'] = 'empty';
-  $handler->display->display_options['filters']['field_short_introduction_value']['group'] = 2;
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'unclassified-actions';
-  $export['unclassified_actions'] = $view;
-
-  $view = new view();
   $view->name = 'user_count';
   $view->description = '';
   $view->tag = 'default';
@@ -7142,7 +5612,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'venue_pagination_sorter:page_1';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
-  /* Contextual filter: Field: Listing (field_associated_content) */
+  /* Contextual filter: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['arguments']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['arguments']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['arguments']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7175,7 +5645,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7213,7 +5683,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7243,7 +5713,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7273,7 +5743,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7303,7 +5773,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7333,7 +5803,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7363,7 +5833,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7393,7 +5863,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7423,7 +5893,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7453,7 +5923,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7470,7 +5940,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
   $handler = $view->new_display('freepager', 'Contextual', 'freepager_12');
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Listing (field_associated_content) */
+  /* Contextual filter: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['arguments']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['arguments']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['arguments']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7516,7 +5986,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7546,7 +6016,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7576,7 +6046,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7606,7 +6076,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7636,7 +6106,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7666,7 +6136,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7696,7 +6166,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7726,7 +6196,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7756,7 +6226,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7786,7 +6256,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -7882,7 +6352,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
-  /* Contextual filter: Field: Listing (field_associated_content) */
+  /* Contextual filter: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['arguments']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['arguments']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['arguments']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -8669,80 +7139,6 @@ return TRUE;';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $export['video'] = $view;
-
-  $view = new view();
-  $view->name = 'water_bill_of_rights_signatures';
-  $view->description = '';
-  $view->tag = 'default';
-  $view->base_table = 'petition_signature';
-  $view->human_name = 'Water Bill of Rights Signatures';
-  $view->core = 7;
-  $view->api_version = '3.0';
-  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
-
-  /* Display: Master */
-  $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Water Bill of Rights Signatures';
-  $handler->display->display_options['use_ajax'] = TRUE;
-  $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'none';
-  $handler->display->display_options['cache']['type'] = 'none';
-  $handler->display->display_options['query']['type'] = 'views_query';
-  $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['row_plugin'] = 'entity';
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['empty'] = TRUE;
-  $handler->display->display_options['header']['area']['content'] = '<div id="wbor-signature-list-header">
-<h2><span>See Why People Are Signing</span></h2>
-</div>';
-  $handler->display->display_options['header']['area']['format'] = 'full_html';
-  /* Field: Petition Signature: Petition signature ID */
-  $handler->display->display_options['fields']['signature_id']['id'] = 'signature_id';
-  $handler->display->display_options['fields']['signature_id']['table'] = 'petition_signature';
-  $handler->display->display_options['fields']['signature_id']['field'] = 'signature_id';
-  /* Sort criterion: Petition Signature: Date created */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'petition_signature';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Petition Signature: Display my signature. (signature_public_display) */
-  $handler->display->display_options['filters']['signature_public_display_value']['id'] = 'signature_public_display_value';
-  $handler->display->display_options['filters']['signature_public_display_value']['table'] = 'field_data_signature_public_display';
-  $handler->display->display_options['filters']['signature_public_display_value']['field'] = 'signature_public_display_value';
-  $handler->display->display_options['filters']['signature_public_display_value']['value'] = array(
-    1 => '1',
-  );
-  $handler->display->display_options['filters']['signature_public_display_value']['group'] = '0';
-  /* Filter criterion: Petition Signature: Your reason for signing (optional) (signature_comment) */
-  $handler->display->display_options['filters']['signature_comment_value']['id'] = 'signature_comment_value';
-  $handler->display->display_options['filters']['signature_comment_value']['table'] = 'field_data_signature_comment';
-  $handler->display->display_options['filters']['signature_comment_value']['field'] = 'signature_comment_value';
-  $handler->display->display_options['filters']['signature_comment_value']['operator'] = 'longerthan';
-  $handler->display->display_options['filters']['signature_comment_value']['value'] = '0';
-  $handler->display->display_options['filters']['signature_comment_value']['group'] = '0';
-  /* Filter criterion: Petition Signature: Status */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'petition_signature';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value']['value'] = '1';
-  $handler->display->display_options['filters']['status']['group'] = '0';
-  /* Filter criterion: Petition Signature: Your reason for signing (optional) (signature_comment) */
-  $handler->display->display_options['filters']['signature_comment_value_1']['id'] = 'signature_comment_value_1';
-  $handler->display->display_options['filters']['signature_comment_value_1']['table'] = 'field_data_signature_comment';
-  $handler->display->display_options['filters']['signature_comment_value_1']['field'] = 'signature_comment_value';
-  $handler->display->display_options['filters']['signature_comment_value_1']['operator'] = 'not';
-  $handler->display->display_options['filters']['signature_comment_value_1']['value'] = 'http';
-  $handler->display->display_options['filters']['signature_comment_value_1']['group'] = '0';
-
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
-  $export['water_bill_of_rights_signatures'] = $view;
 
   return $export;
 }
