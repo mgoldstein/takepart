@@ -18,6 +18,7 @@ class InlineContentAdBlock extends InlineContentReplacementController {
    * @var array
    */
   private $ad_slots = array(
+    'box-66c05d6f',
     'ga_features_ad2',
     'ga_features_ad3',
     'ga_features_ad4',
@@ -40,11 +41,16 @@ class InlineContentAdBlock extends InlineContentReplacementController {
     );
 
     // We will render a maximum of 3 ads
-    if ($this->index < 3) {
+    if ($this->index < 4) {
       $ad_box = block_load('boxes', $this->ad_slots[$this->index]);
       $replacement = _block_get_renderable_array(_block_render_blocks(array($ad_box)));
-      $replacement['#prefix'] = '<div class="block-boxes-ga_ad">';
-      $replacement['#suffix'] = '</div>';
+
+      // for whatever reason, tne first ad, box-66c05d6f
+      // is already wrapped in a <div> with the correct class
+      if ($this->index > 0) {
+        $replacement['#prefix'] = '<div class="block-boxes-ga_ad">';
+        $replacement['#suffix'] = '</div>';        
+      }
       $this->index++;
     }
 
