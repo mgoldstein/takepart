@@ -18,6 +18,7 @@ features[features_api][] = api:1
 features[field][] = inline_content-image-field_ic_alignment
 features[field][] = inline_content-image-field_ic_image
 features[field][] = inline_content-image-field_ic_image_format
+features[field][] = inline_content-image-field_ic_image_label
 features[field][] = inline_content-markup-field_ic_label
 features[field][] = inline_content-markup-field_ic_markup
 features[field][] = inline_content-media-field_ic_media

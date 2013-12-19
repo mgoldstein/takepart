@@ -214,6 +214,71 @@ function inline_content_fields_field_default_fields() {
     ),
   );
 
+  // Exported field: 'inline_content-image-field_ic_image_label'.
+  $fields['inline_content-image-field_ic_image_label'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_ic_image_label',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'image',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'A label to identify your image in the editing interface. (This is not displayed on the public site.)',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 3,
+        ),
+      ),
+      'entity_type' => 'inline_content',
+      'field_name' => 'field_ic_image_label',
+      'label' => 'Label',
+      'required' => 1,
+      'settings' => array(
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'maxlength_js' => 0,
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '0',
+      ),
+    ),
+  );
+
   // Exported field: 'inline_content-markup-field_ic_label'.
   $fields['inline_content-markup-field_ic_label'] = array(
     'field_config' => array(
@@ -1194,6 +1259,7 @@ function inline_content_fields_field_default_fields() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('A label to identify your image in the editing interface. (This is not displayed on the public site.)');
   t('Action Override');
   t('Alignment');
   t('Article URL');
