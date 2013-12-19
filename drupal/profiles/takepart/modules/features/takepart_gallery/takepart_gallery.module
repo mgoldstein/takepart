@@ -1,10 +1,5 @@
 <?php
-/**
- * @file
- * Code for the TakePart Gallery feature.
- */
 
-include_once('takepart_gallery.features.inc');
 drupal_add_css(drupal_get_path("module", "takepart_gallery") ."/takepart_gallery.css");
 
 /*

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Content Article feature.
+ */
+
+include_once 'tpf_content_article.features.inc';
