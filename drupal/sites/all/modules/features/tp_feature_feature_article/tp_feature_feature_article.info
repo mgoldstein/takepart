@@ -50,6 +50,7 @@ features[field][] = node-feature_article-field_thumbnail
 features[field][] = node-feature_article-field_title_color
 features[field][] = node-feature_article-field_topic
 features[field][] = node-feature_article-field_topic_box
+features[field_group][] = group_inline_replacements|node|feature_article|form
 features[field_group][] = group_promo|node|feature_article|form
 features[field_group][] = group_tagging|node|feature_article|form
 features[node][] = feature_article
