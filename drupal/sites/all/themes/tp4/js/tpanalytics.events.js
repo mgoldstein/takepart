@@ -62,19 +62,25 @@
     var social_click = function(options) {
         var title = normalize_share_title(options.name);
         var evar1, evar4, evar17, evar19, evar21, linkTrackVars;
+        var $body = $('body');
 
-        // Series stuff for article, add photo gallery later
-        if ( $('body').is('.node-type-article') || $('body').is('.node-type-openpublish-photo-gallery') ) {
+        // Series stuff for article and feature, add photo gallery later
+        if (
+            $body.is('.node-type-article')
+            || $body.is('.node-type-openpublish-photo-gallery') 
+            || $body.is('.node-type-feature-article')
+        ) {
             // this is hack, but this will record the first element
             // of the URL path
-            evar1 = $('body').is('.node-type-article') ? 'article' : 'photos';
+            var pathArray = document.location.pathname.split('/');
+            evar1 = pathArray[1]; // pathArray[0] will be empty
             evar4 = s.prop4;
             var authors = [];
             $('.byline-author').each(function() {
                 authors.push($(this).text());
             })
             evar17 = authors.join(',');
-	    evar19 = $('.node-openpublish-article.view-mode-full').data('series');
+	    evar19 = $('.node.view-mode-full').data('series');
             evar21 = s.eVar21;
         }
 
