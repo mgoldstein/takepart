@@ -249,7 +249,6 @@ function tp4_preprocess_node__feature_article(&$variables, $hook) {
 
     // orphan protection for headlines
     $title = trim($variables['title']);
-    $title = str_replace('///', '<br>', $title);
     $last_space = strrpos($title, ' ');
     $variables['title'] = substr($title, 0, $last_space) . '&nbsp;' . substr(strrchr($title, ' '), 1);
 
