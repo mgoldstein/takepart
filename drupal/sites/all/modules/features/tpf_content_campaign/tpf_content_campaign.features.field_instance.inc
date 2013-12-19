@@ -91,79 +91,6 @@ function tpf_content_campaign_field_default_field_instances() {
     'widget_type' => 'text_textarea_with_summary',
   );
 
-  // Exported field_instance: 'node-takepart_campaign-field_calendar'
-  $field_instances['node-takepart_campaign-field_calendar'] = array(
-    'bundle' => 'takepart_campaign',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'takepart_calendar',
-        'settings' => array(),
-        'type' => 'takepart_calendar_formatter',
-        'weight' => 30,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_calendar',
-    'label' => 'calendar',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'takepart_calendar',
-      'settings' => array(),
-      'type' => 'takepart_calendar',
-      'weight' => 19,
-    ),
-  );
-
   // Exported field_instance: 'node-takepart_campaign-field_google_map'
   $field_instances['node-takepart_campaign-field_google_map'] = array(
     'bundle' => 'takepart_campaign',
@@ -3289,7 +3216,6 @@ function tpf_content_campaign_field_default_field_instances() {
   t('User references one or more nodes to be listed within this segment, represented by promo headline/text.');
   t('Users can choose a set of nodes to be displayed in the Spotlight block (Promo headline/text displayed for each).');
   t('Users can create a set of 5 links with custom labels and URLs to be overlaid on top of a full-width image atop the Campaign page.');
-  t('calendar');
 
   return $field_instances;
 }
