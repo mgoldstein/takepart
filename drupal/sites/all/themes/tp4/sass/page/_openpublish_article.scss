@@ -57,11 +57,17 @@
   }
 }
 
-@media (max-width:979px) {
-  #article-social {
-    float: left;
+//
+// Social Links
+//
+#article-social {
+
+  @media (max-width:979px) {
     border-top: 1px solid $gray-line;
     border-bottom: 1px solid $gray-line;
+    margin-bottom: 1.5em;
+    height: 50px;
+    max-width: 427px;
     // social embeds needs a clearfix
     // this is a modified "micro clearfix"
     // @see http://nicolasgallagher.com/micro-clearfix-hack/
@@ -71,169 +77,167 @@
       clear: both;
     }
   }
-}
 
-//
-// TP Social Styles for both short and longform articles
-//
-.node-openpublish-article.view-mode-full,
-.node-feature-article.view-mode-full {
-  //
-  // Social Links
-  //
-  #article-social {
+  @media (max-width: 767px) {
+    margin-bottom: 1em;
+  }
 
-    // Sprite Setup
-    @include all-tp-social-sprites;
-    .comments-link a { @include tp-social-sprite(comment); }
-    .trigger a { @include tp-social-sprite(more); }
+  // Sprite Setup
+  @include all-tp-social-sprites;
+  .comments-link a { @include tp-social-sprite(comment); }
+  .trigger a { @include tp-social-sprite(more); }
 
-    #article-more-shares {
-      .tp-social-link {
-	padding-left: 20px;
-	height: 16px;
-	@each $service in pinterest tumblr_link gmail hotmail yahoomail aolmail linkedin digg stumbleupon {
-	  &.tp-social-#{$service} {
-	    @include tp-social-more-sprite(#{$service});
-	  }
-	}
-      }
-    }
-
-    // Override tp-sticky styles on sizes below $breakpoint-desktop
-    // This is a shining example of that "mobile last" design
-    // that you hear so much about. </sarcasm>
-    @media (max-width: 979px) {
-      // override inline styles from the tp-sticky library
-      position: static !important;
-      width: auto !important;
-      margin: 0 0 1em !important;
-
-      .takepart-take-action,
-      .comments-link,
-      #article-share,
-      #article-share .tp-social-link,
-      .comments-link a,
-      .trigger a {
-        float: left;
-      }
-    }
-    @media (max-width: 767px) {
-      .comments-link,
-      #article-social-more {
-        display: none;
-      }
-    }
-
-    .tp-social-headline {
-      font-family: $tradegothic-regular;
-      font-size: 14px;
-      line-height: 1;
-      color: $dark-gray;
-      text-transform: uppercase;
-      text-align: center;
-      letter-spacing: -1px;
-      margin-bottom: .1em;
-      float: left;
-      width: 38px;
-      @media (max-width: 979px) {
-    	  margin-top: 6px;
-        &.take-action-headline {
-          margin-right: 6px;
+  #article-more-shares {
+    .tp-social-link {
+      padding-left: 20px;
+      height: 16px;
+      @each $service in pinterest tumblr_link gmail hotmail yahoomail aolmail linkedin digg stumbleupon {
+        &.tp-social-#{$service} {
+          @include tp-social-more-sprite(#{$service});
         }
-      	&.share-headline {
-      	  margin-left: 6px;
-      	  margin-top: 13px;
-      	}
-      }
-      @include breakpoint($breakpoint-desktop) {
-        width: auto;
-        float: none;
       }
     }
-    .takepart-take-action {
-      height: 40px;
-      width: 40px;
-      margin: 0 0 1em;
-    }
+  }
+
+  // Override tp-sticky styles on sizes below $breakpoint-desktop
+  // This is a shining example of that "mobile last" design
+  // that you hear so much about. </sarcasm>
+  @media (max-width: 979px) {      
+    .takepart-take-action,
     .comments-link,
-    .tp-social {
-      margin-top: 6px;
-      @include breakpoint($breakpoint-desktop) {
-	margin-top: 0;
-	margin-bottom: 0;
-      }
-    }
+    #article-share,
     #article-share .tp-social-link,
     .comments-link a,
     .trigger a {
-      display: block;
-      overflow: hidden;
-      width: 0;
-      height: 0;
-      padding: 12px;
-      text-indent: 24px;
-      background-color: transparent;
-      margin: 0 0 7px 5px;
-      @include breakpoint($breakpoint-desktop) {
-	margin: 0 auto 5px;
-      }
-    }
-  } // #article-social
-  #article-social-more {
-    position: relative;
-    overflow: hidden;
-    width: 40px;
-    float: left;
-    margin-top: 6px;
-
-    @include breakpoint($breakpoint-desktop) {
-      margin-top: 0;
-      margin-left: 0;
-    }
-    #article-more-shares { // positioning
-      position: absolute;
-      bottom: 100%;
-      z-index: 9999;
-    }
-    &.focusin {
-      overflow: visible;
-      #article-more-shares {
-        top: 100%;
-        bottom: auto;
-      }
-    }
-    .tp-social-link {
-      display: block;
-      @include box-sizing(border-box);
-      position: relative;
-      width: 50%;
       float: left;
     }
   }
-  #article-more-shares { // styling
-    background: #fff;
-    border-radius: 5px;
-    border: 5px solid rgba(0,0,0,.5);
-    @include background-clip(padding-box);
-    min-width: 250px;
-    display: inline-block;
-    .header, p {
-      padding: .5em;
-      margin: 0;
+  @media (max-width: 767px) {
+    .comments-link,
+    #article-social-more {
+      display: none;
     }
-    .header {
-      font-family: $brown-bold;
-      font-weight: normal;
-      font-size: 1.142857143em;
-      background-color: $light-gray;
+  }
+
+  .tp-social-headline {
+    font-family: $tradegothic-regular;
+    font-size: 14px;
+    line-height: 1;
+    color: $dark-gray;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -1px;
+    margin: 12px 7px 0 0;
+    float: left;
+    width: 38px;
+  	&.share-headline {
+  	  margin: 18px 0 0 19px;
+  	}
+    @include breakpoint($breakpoint-tablet) {
+      width: auto;
+      margin-top: 18px;
+      &.share-headline {
+        margin: 18px 0 0 30px;
+      }
     }
-    .tp-social-link {
-      font-size: 16px;
-      line-height: 1;
-      margin-bottom: .25em;
-      background-color: white;
+    @include breakpoint($breakpoint-desktop) {
+      width: 38px;
+      margin: 0 0 .1em;
+      width: auto;
+      float: none;
+      &.share-headline {
+        margin: 0 0 .1em;
+      }
     }
+  }
+  .takepart-take-action {
+    height: 40px;
+    width: 40px;
+    margin: 2px 0 0;
+    @include breakpoint($breakpoint-desktop) {
+      margin: 0 0 1em;
+    }
+  }
+  .comments-link,
+  .tp-social {
+    margin-top: 12px;
+    @include breakpoint($breakpoint-desktop) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  #article-share .tp-social-link,
+  .comments-link a,
+  .trigger a {
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    padding: 12px;
+    text-indent: 24px;
+    background-color: transparent;
+    margin: 0 0 7px 6px;
+    @include breakpoint($breakpoint-tablet) {
+      margin-left: 9px;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      margin: 0 auto 5px;
+    }
+  }
+} // #article-social
+#article-social-more {
+  position: relative;
+  overflow: hidden;
+  width: 40px;
+  float: left;
+  margin-top: 12px;
+
+  @include breakpoint($breakpoint-desktop) {
+    margin-top: 0;
+    margin-left: 0;
+  }
+  #article-more-shares { // positioning
+    position: absolute;
+    bottom: 100%;
+    z-index: 9999;
+  }
+  &.focusin {
+    overflow: visible;
+    #article-more-shares {
+      top: 100%;
+      bottom: auto;
+    }
+  }
+  .tp-social-link {
+    display: block;
+    @include box-sizing(border-box);
+    position: relative;
+    width: 50%;
+    float: left;
+  }
+}
+#article-more-shares { // styling
+  background: #fff;
+  border-radius: 5px;
+  border: 5px solid rgba(0,0,0,.5);
+  @include background-clip(padding-box);
+  min-width: 250px;
+  display: inline-block;
+  .header, p {
+    padding: .5em;
+    margin: 0;
+  }
+  .header {
+    font-family: $brown-bold;
+    font-weight: normal;
+    font-size: 1.142857143em;
+    background-color: $light-gray;
+  }
+  .tp-social-link {
+    font-size: 16px;
+    line-height: 1;
+    margin-bottom: .25em;
+    background-color: white;
   }
 }
 
@@ -329,11 +333,14 @@
       text-transform: uppercase;
       margin-bottom: .25em;
     }
-    .field-name-field-article-subhead {
-      font: normal 1.571428571em/1.181818182 $ashbury-regular;
-      color: black;
-    }
-    @include breakpoint($breakpoint-tablet) {
+  }
+  .field-name-field-article-subhead {
+    color: black;
+    font: normal 1.142857143em/1.125 $ashbury-regular;
+    margin-bottom: .5em;
+  }
+  @include breakpoint($breakpoint-tablet) {
+    .article-header {
       margin-bottom: 2.642857143em;
       position: relative;
       figure {
@@ -364,11 +371,14 @@
       .node-title {
         font-size: 2.428571429em;
       }
-      .field-name-field-article-subhead {
-        font-size: 1.571428571em; // 22px -- same
-      }
-    } // tablet
-    @include breakpoint($breakpoint-desktop) {
+    }
+    .field-name-field-article-subhead {
+      font-size: 1.571428571em; // 22px -- same
+      margin-bottom: .863636364em;
+    }
+  } // tablet
+  @include breakpoint($breakpoint-desktop) {
+    .article-header {
       figcaption {
         right: 0;
       }
@@ -378,9 +388,11 @@
       .node-title {
         font-size: 2.857142857em;
       }
-      .field-name-field-article-subhead {
-        font-size: 1.714285714em;
-      }
+    }
+    .field-name-field-article-subhead {
+      font-size: 1.714285714em;
+      line-height: 1.25;
+      margin-bottom: .5em;
     }
   }
 }
