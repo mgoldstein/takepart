@@ -445,7 +445,7 @@
     }
 
     // drop cap
-    p:first-of-type::first-letter {
+    > p:first-of-type::first-letter {
       float: left;
       font-size: 4em;
       line-height: 1;

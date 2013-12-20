@@ -5248,8 +5248,8 @@ body.front #sidebar .block-title {
   list-style-type: decimal;
 }
 /* line 448, ../sass/page/_openpublish_article.scss */
-.node-feature-article.view-mode-full .field-name-body p:first-of-type::first-letter,
-.node-openpublish-article.view-mode-full .field-name-body p:first-of-type::first-letter {
+.node-feature-article.view-mode-full .field-name-body > p:first-of-type::first-letter,
+.node-openpublish-article.view-mode-full .field-name-body > p:first-of-type::first-letter {
   float: left;
   font-size: 4em;
   line-height: 1;
