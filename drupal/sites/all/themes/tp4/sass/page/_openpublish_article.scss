@@ -438,6 +438,7 @@
     }
 
     ol {
+      margin: 1.5em 0;
       padding-left: 2em;
       li {
         list-style-type: decimal;
@@ -445,7 +446,7 @@
     }
 
     // drop cap
-    > p:first-of-type::first-letter {
+    .field-items .field-item > p:first-of-type::first-letter {
       float: left;
       font-size: 4em;
       line-height: 1;
