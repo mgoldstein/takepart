@@ -6,29 +6,32 @@
  * as its default "lowest point" for sticky elements.
  */
 
-(function ($, Drupal, window, document, undefined) {
-  $.fn.tp4Sticky = function(options) {
+(function ($, window, document, undefined) {
+  $.fn.tp4Sticky = function(opts) {
 
-    return this.each(function(options) {
+    var defaults = {
+      stopAt: '.footer-wrapper',
+      wrapperClass: 'sticky-wrapper',
+      stickyClass: 'sticky'
+    },
+    options = $.extend({}, defaults, opts);
 
-      var stickyEl = this,
-          $stickyEl = $(this),
-          stickyElOffset = $stickyEl.offset().top,
-          stickyElHeight = $stickyEl.outerHeight(true),
-          $doc = $(document),
-          bottomElSelector = options.stopAt || '.footer-wrapper',
-          $bottomEl = $(bottomElSelector);
+    return this.each(function(index) {
+
+      var $stickyEl = $(this),
+          $wrap = $stickyEl.wrap('<div class="' + options.wrapperClass +  '" />').parent().css('position', 'static'),
+          $bottomEl = $(options.stopAt);
 
       $(window).on('scroll', function(e) {
-        var isSticky = $stickyEl.hasClass('sticky'),
-            documentHeight = $doc.height(),
-            stickyElLowestPoint = documentHeight - stickyElHeight - $bottomEl.outerHeight();
+        var isSticky = $stickyEl.hasClass(options.stickyClass),
+            stickyElLowestPoint = $bottomEl.offset().top - $stickyEl.outerHeight(true);
 
         // add/remove the sticky class
-        if (window.scrollY > stickyElOffset) {
-          isSticky || $stickyEl.addClass('sticky');
+        // TODO: Add height to the wrapping element so that it maintains the space of the sticky element.
+        if (window.scrollY > $wrap.offset().top) {
+          isSticky || $stickyEl.addClass(options.stickyClass);
         } else {
-          !isSticky || $stickyEl.removeClass('sticky');
+          !isSticky || $stickyEl.removeClass(options.stickyClass);
         }
 
         if (isSticky && window.scrollY > stickyElLowestPoint) {
@@ -41,5 +44,4 @@
     });
 
   };
-})(jQuery, Drupal, this, this.document);
-
+})(jQuery, this, this.document);

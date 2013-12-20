@@ -244,6 +244,7 @@ Drupal.behaviors.tpsocialShares = {
         'Taboola - TPs Most Popular' : '#taboola-bottom-main-column-mix',
         'Taboola - From the Web' : '#taboola-below-main-column',
         'Topic Box' : '.topic-box',
+        'TakePart Features': '.node-feature-article .title-block',
         'Home - featured columns' : '#block-views-homepage-columns-block',
         'Home - featured actions' : '#block-views-takeaction-homepage-block',
         'Home - latest headlines' : 'body.page-tp4-homepage #block-views-latest-headlines-block',
