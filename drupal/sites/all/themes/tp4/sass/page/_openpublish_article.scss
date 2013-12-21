@@ -458,15 +458,19 @@
     }
 
     // drop cap
-    .field-items .field-item > p:first-of-type::first-letter {
-      float: left;
-      font-size: 4em;
-      line-height: 1;
-      margin-right: .25em;
-      margin-bottom: -.25em;
-      // TODO unfuck fonts
-      font-family: $ashbury-bold;
-      font-weight: normal;
+    > .field-items > .field-item > p:first-of-type {
+      margin-top: 0;
+
+      ::first-letter {
+        float: left;
+        font-size: 4em;
+        line-height: 1;
+        margin-right: .25em;
+        margin-bottom: -.25em;
+        // TODO unfuck fonts
+        font-family: $ashbury-bold;
+        font-weight: normal;
+      }
     }
 
     // pullquote styling
