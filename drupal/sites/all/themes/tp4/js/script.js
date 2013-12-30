@@ -116,7 +116,7 @@ Drupal.behaviors.tpsocialShares = {
 
             // initialize tpsocial and make it sticky.
             $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-            .then($('#article-social').tp4Sticky());
+            .then($('#article-social').tp4Sticky({offset: 7}));
 
             // Set up secondary social share buttons
             var main_image = $('figure.article-main-image img').attr('src');
