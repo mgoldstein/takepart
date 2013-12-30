@@ -12,12 +12,9 @@
     #article-social {
       float: left;
       width: 40px;
-      .inner {
-        padding: 7px 0;
-      }
       &.sticky {
         position: fixed;
-        top: 0;
+        top: 7px; // this corresponds to the offset value in tp4sticky.js's options
       }
     }
     .social-sticky-wrapper {
@@ -662,6 +659,7 @@
 	float: right;
 	margin: .25em .5em;
 	width: 33%;
+  max-width: 150px; // this is the max width of the thumbnail image style we're using
       }
       @include breakpoint($breakpoint-desktop) {
 	width: 25%;
@@ -829,9 +827,18 @@
   .inline-content-nodes {
     &.horizontal {
       @include breakpoint($breakpoint-desktop) {
-        width: 550px;
+        width: 500px;
         float: right;
         margin: 0 -66px 0 1em;
+
+        .node {
+          max-width: 150px;
+          margin-right: 0;
+          margin-left: 25px;
+          &:first-child {
+            margin-left: 0;
+          }       
+        }
       }
     }
   }
