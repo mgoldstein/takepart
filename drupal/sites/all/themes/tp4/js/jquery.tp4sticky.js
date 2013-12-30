@@ -10,6 +10,7 @@
   $.fn.tp4Sticky = function(opts) {
 
     var defaults = {
+      offset: 0,
       stopAt: '.footer-wrapper',
       wrapperClass: 'sticky-wrapper',
       stickyClass: 'sticky'
@@ -28,7 +29,7 @@
 
         // add/remove the sticky class
         // TODO: Add height to the wrapping element so that it maintains the space of the sticky element.
-        if (window.scrollY > $wrap.offset().top) {
+        if (window.scrollY > ($wrap.offset().top - options.offset)) {
           isSticky || $stickyEl.addClass(options.stickyClass);
         } else {
           !isSticky || $stickyEl.removeClass(options.stickyClass);
