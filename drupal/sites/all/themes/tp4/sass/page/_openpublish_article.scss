@@ -461,7 +461,7 @@
     > .field-items > .field-item > p:first-of-type {
       margin-top: 0;
 
-      ::first-letter {
+      &::first-letter {
         float: left;
         font-size: 4em;
         line-height: 1;

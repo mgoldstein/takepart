@@ -5177,8 +5177,8 @@ body.front #sidebar .block-title {
   margin-top: 0;
 }
 /* line 464, ../sass/page/_openpublish_article.scss */
-.node-feature-article.view-mode-full .field-name-body > .field-items > .field-item > p:first-of-type ::first-letter,
-.node-openpublish-article.view-mode-full .field-name-body > .field-items > .field-item > p:first-of-type ::first-letter {
+.node-feature-article.view-mode-full .field-name-body > .field-items > .field-item > p:first-of-type::first-letter,
+.node-openpublish-article.view-mode-full .field-name-body > .field-items > .field-item > p:first-of-type::first-letter {
   float: left;
   font-size: 4em;
   line-height: 1;
