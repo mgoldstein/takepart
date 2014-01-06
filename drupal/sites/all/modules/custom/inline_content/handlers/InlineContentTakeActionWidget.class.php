@@ -81,6 +81,24 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
       $attributes['data-action-title'] = $data['value'];
     }
 
+    // Set the widget's width, defaulting to 480px
+    $width = field_get_items('inline_content', $replacement, 'field_ic_tap_widget_width');
+    if ($width !== FALSE && count($width) > 0) {
+      $data = reset($width);
+      $attributes['style'] = "width: {$data['value']}px;";
+    } else {
+      $attributes['style'] = "width: 480px;";
+    }
+
+    // Set the widget's alignment, defaulting to center.
+    $align = field_get_items('inline_content', $replacement, 'field_ic_tap_widget_alignment');
+    if ($align !== FALSE && count($align) > 0) {
+      $data = reset($align);
+      $attributes['class'][] = 'align-' . $data['value'];
+    } else {
+      $attributes['class'][] = 'align-center';
+    }
+
     $content['#replacements'][] = array(
       '#type' => 'markup',
       '#markup' => '<div' . drupal_attributes($attributes) . '></div>',

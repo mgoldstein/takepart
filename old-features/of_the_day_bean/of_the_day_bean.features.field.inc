@@ -39,6 +39,7 @@ function of_the_day_bean_field_default_fields() {
           'article' => 'article',
           'audio' => 0,
           'blog_front' => 0,
+          'feature_article' => 'feature_article',
           'feed' => 0,
           'feed_item' => 0,
           'mos_action' => 0,
@@ -191,6 +192,7 @@ function of_the_day_bean_field_default_fields() {
           'article' => 'article',
           'audio' => 0,
           'blog_front' => 0,
+          'feature_article' => 'feature_article',
           'feed' => 0,
           'feed_item' => 0,
           'mos_action' => 0,
@@ -250,6 +252,7 @@ function of_the_day_bean_field_default_fields() {
         'settings' => array(
           'autocomplete_match' => 'contains',
           'autocomplete_path' => 'node_reference/autocomplete',
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',

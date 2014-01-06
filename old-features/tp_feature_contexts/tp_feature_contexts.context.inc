@@ -68,9 +68,9 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-9',
         ),
-        'newsletter_campaign-49' => array(
+        'newsletter_campaign-51' => array(
           'module' => 'newsletter_campaign',
-          'delta' => '49',
+          'delta' => '51',
           'region' => 'sidebar',
           'weight' => '-8',
         ),
@@ -101,6 +101,42 @@ function tp_feature_contexts_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('homepage redesign');
   $export['homepage'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'omniture_feature';
+  $context->description = 'Variables to set on feature article pages (feature_article content type).';
+  $context->tag = 'Omniture';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'feature_article' => 'feature_article',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'omniture_reaction' => array(
+      'variables' => 's.events = event2
+s.prop4 = feature
+s.prop6 = [node:nid]
+s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
+s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
+s.prop19 = [tp_omniture:date:{node:created:raw}]
+s.prop20 = [tp_omniture:value_or_empty:{node:field_topic}]
+',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Omniture');
+  t('Variables to set on feature article pages (feature_article content type).');
+  $export['omniture_feature'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -141,7 +177,7 @@ function tp_feature_contexts_context_default_contexts() {
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
   $export['topic_general'] = $context;
 
   $context = new stdClass();
@@ -265,9 +301,9 @@ function tp_feature_contexts_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-9',
         ),
-        'newsletter_campaign-49' => array(
+        'newsletter_campaign-51' => array(
           'module' => 'newsletter_campaign',
-          'delta' => '49',
+          'delta' => '51',
           'region' => 'sidebar',
           'weight' => '-8',
         ),
@@ -275,7 +311,7 @@ function tp_feature_contexts_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
-          'weight' => '9',
+          'weight' => '10',
         ),
         'boxes-bg_skin_sponsor' => array(
           'module' => 'boxes',

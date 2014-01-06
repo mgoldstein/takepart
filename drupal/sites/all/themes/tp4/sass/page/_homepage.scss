@@ -55,8 +55,9 @@ body.front{
     // TODO Hover States
   }
 
-  .panel-main-featured {
-    .pane-title {
+  .node.view-mode-feature-main {
+    &.node-openpublish-article .node-title,
+    &.node-feature-article .node-title {
       position: relative;
       background-color: white;
       margin: -1em .5em 1px;

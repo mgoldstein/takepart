@@ -95,6 +95,9 @@ body {
       @include breakpoint($breakpoint-desktop) {
         @include zen-grid-item(8, 1);
       }
+      body.page-node.node-type-feature-article & {
+        @include zen-grid-item(12,1);
+      }
     }
   }
   &.with-skinny { // this should never happen
