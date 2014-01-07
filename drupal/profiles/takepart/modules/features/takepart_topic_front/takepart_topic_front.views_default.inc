@@ -139,7 +139,7 @@ print $value;
   $handler->display->display_options['fields']['path']['exclude'] = TRUE;
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['path']['element_default_classes'] = FALSE;
-  /* Field: Content: Thumbnail */
+  /* Field: Content: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -174,7 +174,7 @@ print $value;
   $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Thumbnail */
+  /* Field: Content: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -239,7 +239,7 @@ print $value;
   $handler->display->display_options['pager']['options']['items_per_page'] = '12';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Thumbnail */
+  /* Field: Content: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -267,7 +267,7 @@ print $value;
     'image_style' => 'tp_secondary_feature_thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Action Image */
+  /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['table'] = 'field_data_field_action_main_image';
   $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
@@ -513,14 +513,13 @@ print $value;
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'audio' => 'audio',
     'openpublish_blog_post' => 'openpublish_blog_post',
+    'feature_article' => 'feature_article',
     'mos_action' => 'mos_action',
     'takepart_page' => 'takepart_page',
     'petition_action' => 'petition_action',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'pledge_action' => 'pledge_action',
-    'takepart_quick_study' => 'takepart_quick_study',
     'openpublish_video' => 'openpublish_video',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
@@ -603,13 +602,10 @@ print $value;
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'audio' => 'audio',
     'openpublish_blog_post' => 'openpublish_blog_post',
-    'mos_action' => 'mos_action',
+    'feature_article' => 'feature_article',
     'takepart_page' => 'takepart_page',
-    'petition_action' => 'petition_action',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-    'pledge_action' => 'pledge_action',
     'openpublish_video' => 'openpublish_video',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
@@ -795,6 +791,84 @@ print $value;
   $handler->display->display_options['fields']['field_promo_text']['label'] = '';
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'content/%/tag_feed.xml';
+
+  /* Display: Admin Tag */
+  $handler = $view->new_display('block', 'Admin Tag', 'block_3');
+  $handler->display->display_options['display_description'] = 'Search results based on Admin tag';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Indexed Content: Node ID */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
+  /* Field: Indexed Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Indexed Content: Promo Headline */
+  $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
+  $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
+  $handler->display->display_options['fields']['field_promo_headline']['label'] = '';
+  $handler->display->display_options['fields']['field_promo_headline']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['text'] = '[field_promo_headline] now';
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['path'] = '[url]';
+  $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
+  $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = TRUE;
+  /* Field: Indexed Content: Content type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['link_to_entity'] = 0;
+  $handler->display->display_options['fields']['type']['format_name'] = 1;
+  /* Field: Linked Headline */
+  $handler->display->display_options['fields']['url']['id'] = 'url';
+  $handler->display->display_options['fields']['url']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['url']['field'] = 'url';
+  $handler->display->display_options['fields']['url']['ui_name'] = 'Linked Headline';
+  $handler->display->display_options['fields']['url']['label'] = '';
+  $handler->display->display_options['fields']['url']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['url']['alter']['text'] = '[field_promo_headline] ';
+  $handler->display->display_options['fields']['url']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['url']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['url']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['url']['link_to_entity'] = 1;
+  /* Field: Indexed Content: Promo Text */
+  $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
+  $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
+  $handler->display->display_options['fields']['field_promo_text']['label'] = '';
+  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Admin Tag [taxonomy_term] */
+  $handler->display->display_options['arguments']['field_admin_tag']['id'] = 'field_admin_tag';
+  $handler->display->display_options['arguments']['field_admin_tag']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['arguments']['field_admin_tag']['field'] = 'field_admin_tag';
+  $handler->display->display_options['arguments']['field_admin_tag']['ui_name'] = 'Admin Tag [taxonomy_term]';
+  $handler->display->display_options['arguments']['field_admin_tag']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_admin_tag']['default_argument_type'] = 'taxonomy_tid';
+  $handler->display->display_options['arguments']['field_admin_tag']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_admin_tag']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_admin_tag']['not'] = 0;
   $export['taxonomy_search_list'] = $view;
 
   return $export;
