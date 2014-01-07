@@ -574,8 +574,10 @@ function inline_content_fields_field_default_fields() {
           'article' => 'article',
           'audio' => 0,
           'blog_front' => 0,
+          'feature_article' => 'feature_article',
           'feed' => 0,
           'feed_item' => 0,
+          'mos_action' => 0,
           'openpublish_article' => 'openpublish_article',
           'openpublish_blog_post' => 0,
           'openpublish_photo' => 0,
@@ -634,10 +636,11 @@ function inline_content_fields_field_default_fields() {
         'settings' => array(
           'autocomplete_match' => 'contains',
           'autocomplete_path' => 'node_reference/autocomplete',
+          'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
           'size' => '60',
         ),
         'type' => 'node_reference_autocomplete',
-        'weight' => '0',
+        'weight' => 0,
       ),
     ),
   );

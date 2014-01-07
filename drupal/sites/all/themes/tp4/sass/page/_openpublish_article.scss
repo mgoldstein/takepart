@@ -846,11 +846,17 @@
   // utility classes for offsets (not just <figure>s)
   // get extra styling for breaking the grid
   .align-right {
+    @include breakpoint($breakpoint-tablet) {
+      margin-left: 2em;
+    }
     @include breakpoint($breakpoint-desktop) {
       margin-right: -66px !important;
     }
   }
   .align-left {
+    @include breakpoint($breakpoint-tablet) {
+      margin-right: 2em;
+    }
     @include breakpoint($breakpoint-desktop) {
       margin-left: -66px !important;
     }
