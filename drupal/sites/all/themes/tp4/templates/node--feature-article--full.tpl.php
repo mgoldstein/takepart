@@ -6,6 +6,10 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <?php if ($unpublished): ?>
+    <div><mark class="unpublished"><?php print t('Unpublished'); ?></mark></div>
+  <?php endif; ?>
+
   <?php if ($title_prefix || $title_suffix || $unpublished || $title): ?>
     <header class="article-header">
 
@@ -18,9 +22,6 @@
       <?php endif; ?>
       <?php print render($title_suffix); ?>
       </div>
-      <?php if ($unpublished): ?>
-  <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
-      <?php endif; ?>
     </header>
   <?php endif; ?>
 
