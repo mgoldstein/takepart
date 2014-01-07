@@ -247,7 +247,14 @@ function tp_feature_feature_article_field_default_fields() {
       'deleted' => '0',
       'entity_types' => array(),
       'field_name' => 'field_article_main_image',
-      'foreign keys' => array(),
+      'foreign keys' => array(
+        'file_managed' => array(
+          'columns' => array(
+            'fid' => 'fid',
+          ),
+          'table' => 'file_managed',
+        ),
+      ),
       'indexes' => array(
         'fid' => array(
           0 => 'fid',
@@ -1976,7 +1983,7 @@ function tp_feature_feature_article_field_default_fields() {
       'bundle' => 'feature_article',
       'default_value' => array(
         0 => array(
-          'value' => 'White',
+          'value' => 'white',
         ),
       ),
       'deleted' => '0',
@@ -2034,7 +2041,7 @@ function tp_feature_feature_article_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'field_title_color',
       'label' => 'Title Color',
-      'required' => 1,
+      'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
       ),
