@@ -34,15 +34,10 @@ function STARTERKIT_preprocess_maintenance_page(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function STARTERKIT_preprocess_html(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
-
-  // The body tag's classes are controlled by the $classes_array variable. To
-  // remove a class from $classes_array, use array_diff().
-  //$variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
+function tp4_preprocess_html(&$variables, $hook) {
+  // add jquery cookie library to tp4 pages
+  drupal_add_library('system', 'jquery.cookie', true);
 }
-// */
 
 /**
  * Override or insert variables into the page templates.
