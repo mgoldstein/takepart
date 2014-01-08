@@ -28,6 +28,7 @@ dependencies[] = text
 dependencies[] = user_reference
 dependencies[] = views_field
 features[features_api][] = api:2
+features[field_base][] = field_title_color
 features[field_base][] = body
 features[field_base][] = comment_body
 features[field_base][] = field_account_dateofbirth
