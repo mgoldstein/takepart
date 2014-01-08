@@ -53,9 +53,3 @@
       print render($variables['content']);
     ?>
 </div>
-
-
-
-
-
-

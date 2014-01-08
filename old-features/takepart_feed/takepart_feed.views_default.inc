@@ -81,6 +81,7 @@ function takepart_feed_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
     'petition_action' => 'petition_action',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'pledge_action' => 'pledge_action',
@@ -108,6 +109,7 @@ function takepart_feed_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
     'petition_action' => 'petition_action',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'pledge_action' => 'pledge_action',
@@ -198,6 +200,7 @@ function takepart_feed_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
     'petition_action' => 'petition_action',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'pledge_action' => 'pledge_action',
@@ -336,6 +339,7 @@ echo $separator;
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
   );
   $handler->display->display_options['path'] = 'content/%/yahoo_feed.xml ';
 
@@ -586,6 +590,7 @@ echo $separator;
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'openpublish_video' => 'openpublish_video',
   );

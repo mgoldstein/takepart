@@ -1,6 +1,0 @@
-name = TakeAction Button Feeds
-description = Module to provide a JSON feed of all actions on the TakePart site
-core = 7.x
-package = TakeAction Button
-version = 7.x-1.0
-dependencies[] = takeaction

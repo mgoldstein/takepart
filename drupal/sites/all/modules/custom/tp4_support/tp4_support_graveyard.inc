@@ -27,7 +27,7 @@ function tp4_support_graveyard() {
     /* Query the latest article for the Topic */
     $articleQuery = new EntityFieldQuery();
     $articleQuery->entityCondition('entity_type', 'node')
-            ->propertyCondition('type', 'openpublish_article')
+            ->propertyCondition('type', array('openpublish_article', 'feature_article'))
             ->propertyOrderBy('created', 'DESC')
             ->fieldCondition('field_topic', 'tid', $topic_id)
             ->range(0,1);

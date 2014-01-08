@@ -34,15 +34,20 @@ function STARTERKIT_preprocess_maintenance_page(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function STARTERKIT_preprocess_html(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
-
-  // The body tag's classes are controlled by the $classes_array variable. To
-  // remove a class from $classes_array, use array_diff().
-  //$variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
+function tp4_preprocess_html(&$variables, $hook) {
+  if($variables['page']['content']['system_main']['#entity_view_mode']['bundle'] == 'topic'){
+    $variables['classes_array'][] = 'vocabulary-topic';
+  }
+  drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
+    'type' => 'external',
+    'scope' => 'footer',
+    'group' => JS_DEFAULT,
+    'every_page' => TRUE,
+    'weight' => -1,
+  ));
+  // add jquery cookie library to tp4 pages
+  drupal_add_library('system', 'jquery.cookie', true);
 }
-// */
 
 /**
  * Override or insert variables into the page templates.
@@ -61,14 +66,19 @@ function tp4_preprocess_page(&$variables) {
   $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
   $variables['content_classes'] .= ($variables['sidebar'] ? ' with-sidebar' : '');
 
+  // Add Node-specific page templates
+  if (!empty($variables['node'])) {
+    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
+  }
+
   // override page titles on certain node templates
-  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article'))) {
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article'))) {
     $variables['title'] = '';
   }
 
   // add Taboola JS if we're on an article or photo gallery page
-  // but only if we're on the production site
-  if (variable_get('environment', 'dev') == 'prod' && !empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'openpublish_photo_gallery'))) {
+  // only if we're on the production site: variable_get('environment', 'dev') == 'prod' 
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'openpublish_photo_gallery'))) {
     drupal_add_js(drupal_get_path('theme', 'tp4') . '/js/taboola.js', 'file');
     drupal_add_js('window._taboola = window._taboola || []; _taboola.push({flush:true});', array('type' => 'inline', 'scope' => 'footer'));
   }
@@ -109,7 +119,7 @@ function tp4_preprocess_node(&$variables, $hook) {
   $variables['url_production'] = 'http://www.takepart.com' . url('node/' . $variables['nid']);
 
   // Run node-type-specific preprocess functions, like
-  // tp4_preprocess_node_page() or tp4_preprocess_node_story().
+  // tp4_preprocess_node__page() or tp4_preprocess_node__story().
   $function = __FUNCTION__ . '__' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
@@ -130,7 +140,8 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
   // we're going to do some things only on the full view of an article
   if($variables['view_mode'] == 'full'){
     // provide "on our radar" block
-    $variables['on_our_radar'] = module_invoke('bean', 'block_view', 'on-our-radar-block');
+    $on_our_radar_block = block_load('bean', 'on-our-radar-block');
+    $variables['on_our_radar'] = _block_get_renderable_array(_block_render_blocks(array($on_our_radar_block)));
 
     // provide topic box
     if (!empty($variables['field_topic_box'])) {
@@ -152,7 +163,7 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
       // (if it doesn't exist, $next will be an empty array)
       $seriesQueryNext = new EntityFieldQuery();
       $seriesQueryNext->entityCondition('entity_type', 'node')
-              ->entityCondition('bundle', 'openpublish_article')
+              ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
               ->propertyCondition('status', 1)
               ->propertyCondition('created', $created, '>')
               ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -169,7 +180,7 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
       // (if it doesn't exist, $previous will be an empty array)
       $seriesQueryPrev = new EntityFieldQuery();
       $seriesQueryPrev->entityCondition('entity_type', 'node')
-              ->entityCondition('bundle', 'openpublish_article')
+              ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
               ->propertyCondition('status', 1)
               ->propertyCondition('created', $created, '<')
               ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -202,7 +213,50 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
       $variables['series_nav'] = $series_nav;
     } // if isset($variables['field_series'])
 
+    // Add schema.org Article microdata
+    $variables['attributes_array']['itemscope'] = 'itemscope';
+    $variables['attributes_array']['itemtype'] = 'http://schema.org/Article';
+    $variables['title_attributes_array']['itemprop'] = 'headline';
+    // these work because of some magic in hook_preprocess_field
+    $variables['content']['field_article_subhead']['#attributes_array']['itemprop'] = "description";
+    $variables['content']['body']['#attributes_array']['itemprop'] = 'articleBody';
+    // for more microdata:
+    // @see tp4_field__field_article_main_image__feature_article()
+    // @see tp4_field__field_article_main_image__openpublish_article()
+    // @see field-formatter--author-full.tpl.php
+
   } // if ($variables['view_mode'] == 'full')
+}
+
+/**
+ * Override or insert variables into the feature_article template.
+ *
+ * Largely this reproduces the author, series, and topic markup
+ * from the openpublish_article template.
+ */
+function tp4_preprocess_node__feature_article(&$variables, $hook) {
+  tp4_preprocess_node__openpublish_article($variables);
+
+  if($variables['view_mode'] == 'full'){
+    // put the title color as a class on the title.
+    $variables['title_attributes_array']['class'][] = $variables['field_title_color'][LANGUAGE_NONE][0]['value'];
+
+    // ad "TakePart Features" branding
+    $variables['title_prefix'][] = array(
+      '#theme' => 'link',
+      '#text' => 'TakePart Features',
+      '#path' => 'taxonomy/term/114900',
+      '#options' => array(
+        'attributes' => array('class' => array('takepart-features-branding', $variables['field_title_color'][LANGUAGE_NONE][0]['value'])),
+        'html' => FALSE,
+      ),
+    );
+
+    // orphan protection for headlines
+    $title = trim($variables['title']);
+    $last_space = strrpos($title, ' ');
+    $variables['title'] = substr($title, 0, $last_space) . '&nbsp;' . substr(strrchr($title, ' '), 1);
+  }
 }
 
 /**
@@ -214,17 +268,6 @@ function tp4_process_node(&$variables, $hook) {
   $function = __FUNCTION__ . '__' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
-  }
-}
-
-function tp4_process_node__openpublish_article(&$variables) {
-  
-  $variables['author_bios'] = array();
-  if(isset($variables['field_author'])){
-    foreach ($variables['field_author'] as $author) {
-      $author_node = node_load($author['nid']);
-      $variables['author_bios'][] = $author_node;
-    }
   }
 }
 
@@ -290,15 +333,22 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
  *   The name of the template being rendered ("node" in this case.)
  */
 function tp4_preprocess_field(&$variables, $hook) {
-  // not sure this is the best way to test for the field type
-  if ('field-author' == $variables['field_name_css']) {
+  if ('field_author' == $variables['element']['#field_name']) {
     $variables['classes_array'][] = 'author';
+  }
+
+  // allow us to add attributes to a field from hook_preprocess_node.
+  if (isset($variables['element']['#attributes_array'])) {
+    if (!isset($variables['attributes_array'])) {
+       $variables['attributes_array'] = array();
+     }
+    $variables['attributes_array'] += $variables['element']['#attributes_array'];
   }
 }
 
 
 /**
- * Outputs Free Tag Taxonomy Links for Article Nodes
+ * Outputs Topic Taxonomy Links for Article Nodes
  */
 function tp4_field__field_topic__openpublish_article($variables) {
   $output = '';
@@ -311,9 +361,23 @@ function tp4_field__field_topic__openpublish_article($variables) {
 }
 
 /**
- * Outputs topic taxonomy links for article nodes.
+ * Outputs Free Tag taxonomy links for article nodes.
  */
 function tp4_field__field_free_tag__openpublish_article($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs Topic Taxonomy links for featre article nodes.
+ */
+function tp4_field__field_topic__feature_article($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs free tag taxonomy links for feature article nodes.
+ */
+function tp4_field__field_free_tag__feature_article($variables) {
   return tp4_field__field_topic__openpublish_article($variables);
 }
 
@@ -323,10 +387,6 @@ function tp4_menu_link(array $variables) {
   }
   return theme_menu_link($variables);
 }
-
-
-
-
 
 function tp4_field__field_author__openpublish_article($variables) {
   $output = '';
@@ -351,6 +411,10 @@ function tp4_field__field_author__openpublish_article($variables) {
   return $output;
 }
 
+function tp4_field__field_author__feature_article($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+
 function tp4_field__field_article_subhead__openpublish_article($variables) {
   $output = '';
 
@@ -368,6 +432,9 @@ function tp4_field__field_article_subhead__openpublish_article($variables) {
   return $output;
 }
 
+function tp4_field__field_article_subhead__feature_article($variables) {
+  return tp4_field__field_article_subhead__openpublish_article($variables);
+}
 
 
 function tp4_field__field_article_main_image__openpublish_article($variables) {
@@ -383,6 +450,10 @@ function tp4_field__field_article_main_image__openpublish_article($variables) {
     $image['style_name'] = 'landscape_main_image';
     if ($item['#view_mode'] == 'portrait') $image['style_name'] = 'portrait_main_image';
 
+    // schema.org article microdata
+    $image['attributes'] = array();
+    $image['attributes']['itemprop'] = 'image';
+
     // TODO: do this through drupal APIs
     $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
 
@@ -397,6 +468,36 @@ function tp4_field__field_article_main_image__openpublish_article($variables) {
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
   return $output;
 }
+
+function tp4_field__field_article_main_image__feature_article($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $delta => $item) {
+
+    // set up some variables we're going to need.
+    $image = array();
+    $image['path'] = $item['#file']->uri;
+    $image['width'] = '980';
+    $image['style_name'] = 'feature_article_hero';
+    $image['attributes'] = array();
+    $image['attributes']['itemprop'] = 'image';
+
+    // TODO: do this through drupal APIs
+    $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
+
+    // Don't display the caption label no matter what
+    $item['field_media_caption']['#label_display'] = 'hidden';
+
+    $output .= '<figure ' . $variables['item_attributes'][$delta] . '>';
+    $output .= theme('image_style', $image);
+    $output .= '<figcaption>';
+    $output .= drupal_render($item['field_media_caption']);
+    $output .= '</figcaption></figure>';
+  }
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  return $output;
+}
+
 
 /**
  * Implements template_preprocess_entity().
@@ -422,7 +523,7 @@ function tp4_preprocess_entity(&$variables, $hook) {
     	    if ($node->status == 1) {
     	      $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
 
-    	      if ($node->type == 'openpublish_article') {
+    	      if ($node->type == 'openpublish_article' || $node->type == 'feature_article') {
     		      $main_image = field_get_items('node', $node, 'field_thumbnail');
     	      }
     	      if ($node->type == 'action') {
@@ -459,19 +560,6 @@ function tp4_preprocess_entity(&$variables, $hook) {
       }
     break;
   }
-}
-
-function tp4_preprocess_html(&$variables) {
-  if($variables['page']['content']['system_main']['#entity_view_mode']['bundle'] == 'topic'){
-    $variables['classes_array'][] = 'vocabulary-topic';
-  }
-   drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
-        'type' => 'external',
-        'scope' => 'footer',
-        'group' => JS_DEFAULT,
-        'every_page' => TRUE,
-        'weight' => -1,
-    ));
 }
 
 function tp4_preprocess_panels_pane(&$variables) {

@@ -69,8 +69,10 @@ class boxes_ga_ad extends boxes_box {
      takepart_ads($slot);
 
      if ($gptid) {
-       $adsize = substr( strrchr( $slot, '_' ), 1);
-       $lr = explode("x", $adsize);
+       $adsize = '';
+       preg_match('/[0-9]+x[0-9]+/', $slot, $adsize);
+
+       $lr = explode("x", $adsize[0]);
 
        $gptfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
 

@@ -337,6 +337,15 @@ function inline_content_type_load($name) {
   return FALSE;
 }
 
+
+/**
+ * Register inline content replacement types.
+ *
+ * N.B. -- you need to add the file with the controler class
+ * to this module's .info file
+ *
+ * @return array An associative array of inline content replacement types.
+ */
 function inline_content_replacement_types() {
 
   $types = array();
@@ -375,6 +384,24 @@ function inline_content_replacement_types() {
     'label' => t('Take Action Widget'),
     'description' => t('Take Action Widget.'),
     'controller' => 'InlineContentTakeActionWidget',
+  );
+
+  $types['image'] = array(
+    'label' => t('Feature Image'),
+    'description' => t('Image with caption and display options.'),
+    'controller' => 'InlineContentImage',
+  );
+
+  $types['ad_block'] = array(
+    'label' => t('Ad Block'),
+    'description' => t('300x250 advertisment floated right.'),
+    'controller' => 'InlineContentAdBlock',
+  );
+
+  $types['pull_quote'] = array(
+    'label' => t('Pull Quote'),
+    'description' => t('Pull Quote With Optional Citation'),
+    'controller' => 'InlineContentPullQuote',
   );
 
   return $types;

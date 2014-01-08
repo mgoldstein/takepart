@@ -1,7 +1,0 @@
-name = TakeAction Button Thank You Page
-description = Module that provides blocks used on the TakeAction Thank You page.
-core = 7.x
-package = TakeAction Button
-version = 7.x-1.0
-dependencies[] = takeaction
-dependencies[] = signature
