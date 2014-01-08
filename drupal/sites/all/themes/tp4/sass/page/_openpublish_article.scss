@@ -646,6 +646,15 @@
     }
   }
 
+  // with hard-coded style attribute values for the take action widget,
+  // we need to make sure that the widget doesn't overflow the viewport
+  // when it's less than 500px wide (te max width of the TAP widget)
+  .takepart-take-action-widget {
+    @media (max-width: 499px) {
+      max-width: 100% !important;      
+    }
+  }
+
   // INLINE CONTENT
   // related nodes
   .inline-content-nodes {
@@ -846,11 +855,17 @@
   // utility classes for offsets (not just <figure>s)
   // get extra styling for breaking the grid
   .align-right {
+    @include breakpoint($breakpoint-tablet) {
+      margin-left: 2em;
+    }
     @include breakpoint($breakpoint-desktop) {
       margin-right: -66px !important;
     }
   }
   .align-left {
+    @include breakpoint($breakpoint-tablet) {
+      margin-right: 2em;
+    }
     @include breakpoint($breakpoint-desktop) {
       margin-left: -66px !important;
     }

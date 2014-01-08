@@ -126,6 +126,12 @@ function takepart_topic_front_field_default_fields() {
           'type' => 'hidden',
           'weight' => 0,
         ),
+        'feature_topic' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
         'feature_video' => array(
           'label' => 'above',
           'settings' => array(),
@@ -207,6 +213,12 @@ function takepart_topic_front_field_default_fields() {
           'weight' => 0,
         ),
         'feature_secondary' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'feature_topic' => array(
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',

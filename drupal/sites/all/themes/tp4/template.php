@@ -34,15 +34,20 @@ function STARTERKIT_preprocess_maintenance_page(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function STARTERKIT_preprocess_html(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
-
-  // The body tag's classes are controlled by the $classes_array variable. To
-  // remove a class from $classes_array, use array_diff().
-  //$variables['classes_array'] = array_diff($variables['classes_array'], array('class-to-remove'));
+function tp4_preprocess_html(&$variables, $hook) {
+  if($variables['page']['content']['system_main']['#entity_view_mode']['bundle'] == 'topic'){
+    $variables['classes_array'][] = 'vocabulary-topic';
+  }
+  drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
+    'type' => 'external',
+    'scope' => 'footer',
+    'group' => JS_DEFAULT,
+    'every_page' => TRUE,
+    'weight' => -1,
+  ));
+  // add jquery cookie library to tp4 pages
+  drupal_add_library('system', 'jquery.cookie', true);
 }
-// */
 
 /**
  * Override or insert variables into the page templates.
@@ -518,7 +523,7 @@ function tp4_preprocess_entity(&$variables, $hook) {
     	    if ($node->status == 1) {
     	      $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
 
-    	      if ($node->type == 'openpublish_article') {
+    	      if ($node->type == 'openpublish_article' || $node->type == 'feature_article') {
     		      $main_image = field_get_items('node', $node, 'field_thumbnail');
     	      }
     	      if ($node->type == 'action') {
@@ -555,19 +560,6 @@ function tp4_preprocess_entity(&$variables, $hook) {
       }
     break;
   }
-}
-
-function tp4_preprocess_html(&$variables) {
-  if($variables['page']['content']['system_main']['#entity_view_mode']['bundle'] == 'topic'){
-    $variables['classes_array'][] = 'vocabulary-topic';
-  }
-   drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
-        'type' => 'external',
-        'scope' => 'footer',
-        'group' => JS_DEFAULT,
-        'every_page' => TRUE,
-        'weight' => -1,
-    ));
 }
 
 function tp4_preprocess_panels_pane(&$variables) {
