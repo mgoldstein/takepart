@@ -4469,7 +4469,7 @@ body.front #sidebar .block-title {
 }
 /* line 466, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
-  font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+  font-family: "AdelleSans-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;
   margin-bottom: 5px;
   text-transform: uppercase;
