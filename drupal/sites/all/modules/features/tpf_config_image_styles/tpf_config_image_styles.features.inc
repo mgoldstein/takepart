@@ -150,6 +150,173 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: feature_article_full.
+  $styles['feature_article_full'] = array(
+    'name' => 'feature_article_full',
+    'label' => 'Feature Article: Full',
+    'effects' => array(
+      66 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 912,
+          'height' => '',
+          'upscale' => 1,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: feature_article_hero.
+  $styles['feature_article_hero'] = array(
+    'name' => 'feature_article_hero',
+    'label' => 'Feature Article: Hero',
+    'effects' => array(
+      67 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 980,
+          'height' => '',
+          'upscale' => 1,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: feature_article_landscape.
+  $styles['feature_article_landscape'] = array(
+    'name' => 'feature_article_landscape',
+    'label' => 'Feature Article: Landscape',
+    'effects' => array(
+      68 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 480,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: feature_article_portrait.
+  $styles['feature_article_portrait'] = array(
+    'name' => 'feature_article_portrait',
+    'label' => 'Feature Article: Portrait',
+    'effects' => array(
+      69 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 400,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: inline_thumbnail.
+  $styles['inline_thumbnail'] = array(
+    'name' => 'inline_thumbnail',
+    'label' => 'inline_thumbnail',
+    'effects' => array(
+      57 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 150,
+          'height' => 100,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: landscape_main_image.
+  $styles['landscape_main_image'] = array(
+    'name' => 'landscape_main_image',
+    'label' => 'landscape_main_image',
+    'effects' => array(
+      58 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 583,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: portrait_main_image.
+  $styles['portrait_main_image'] = array(
+    'name' => 'portrait_main_image',
+    'label' => 'portrait_main_image',
+    'effects' => array(
+      59 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 400,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: right-sidebar-thumbnails.
   $styles['right-sidebar-thumbnails'] = array(
     'name' => 'right-sidebar-thumbnails',
@@ -243,6 +410,52 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: topic_feature.
+  $styles['topic_feature'] = array(
+    'name' => 'topic_feature',
+    'label' => 'Topic Feature',
+    'effects' => array(
+      70 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 640,
+          'height' => 477,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: topic_thumbnail.
+  $styles['topic_thumbnail'] = array(
+    'name' => 'topic_thumbnail',
+    'label' => 'Topic Thumbnail',
+    'effects' => array(
+      71 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 96,
+          'height' => 64,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: tp_250_wide.
   $styles['tp_250_wide'] = array(
     'name' => 'tp_250_wide',
@@ -285,6 +498,52 @@ function tpf_config_image_styles_image_default_styles() {
           'width' => 272,
           'height' => '',
           'upscale' => 1,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: tp_actions_impact_thumbnail.
+  $styles['tp_actions_impact_thumbnail'] = array(
+    'name' => 'tp_actions_impact_thumbnail',
+    'label' => 'tp_actions_impact_thumbnail',
+    'effects' => array(
+      60 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 151,
+          'height' => 90,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: tp_alliances_thumbnail.
+  $styles['tp_alliances_thumbnail'] = array(
+    'name' => 'tp_alliances_thumbnail',
+    'label' => 'tp_alliances_thumbnail',
+    'effects' => array(
+      61 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 45,
+          'height' => 45,
         ),
         'weight' => 1,
       ),
@@ -408,6 +667,30 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: tp_page_wide.
+  $styles['tp_page_wide'] = array(
+    'name' => 'tp_page_wide',
+    'label' => 'tp_page_wide',
+    'effects' => array(
+      62 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 980,
+          'height' => '',
+          'upscale' => 1,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: tp_popular_gallery_thumbnail.
   $styles['tp_popular_gallery_thumbnail'] = array(
     'name' => 'tp_popular_gallery_thumbnail',
@@ -448,6 +731,77 @@ function tpf_config_image_styles_image_default_styles() {
         'data' => array(
           'width' => 298,
           'height' => 222,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: tp_quick_study_wide.
+  $styles['tp_quick_study_wide'] = array(
+    'name' => 'tp_quick_study_wide',
+    'label' => 'tp_quick_study_wide',
+    'effects' => array(
+      63 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 218,
+          'height' => '',
+          'upscale' => 1,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: tp_secondary_feature_thumbnail.
+  $styles['tp_secondary_feature_thumbnail'] = array(
+    'name' => 'tp_secondary_feature_thumbnail',
+    'label' => 'tp_secondary_feature_thumbnail',
+    'effects' => array(
+      64 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 194,
+          'height' => 160,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: tp_sponsored_by_wide.
+  $styles['tp_sponsored_by_wide'] = array(
+    'name' => 'tp_sponsored_by_wide',
+    'label' => 'tp_sponsored_by_wide',
+    'effects' => array(
+      65 => array(
+        'label' => 'Scale',
+        'help' => 'Scaling will maintain the aspect-ratio of the original image. If only a single dimension is specified, the other dimension will be calculated.',
+        'effect callback' => 'image_scale_effect',
+        'dimensions callback' => 'image_scale_dimensions',
+        'form callback' => 'image_scale_form',
+        'summary theme' => 'image_scale_summary',
+        'module' => 'image',
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 90,
+          'height' => '',
+          'upscale' => 1,
         ),
         'weight' => 1,
       ),
