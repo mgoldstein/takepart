@@ -187,6 +187,13 @@ body.front{
     line-height: 24px;
     font-size: 14px;
     @include blue-square-bullets;
+    .openpublish_photo_gallery:after{
+      font-family: "SSGizmo";
+      font-size: 1.25em;
+      line-height: 0.8;
+      vertical-align: text-bottom;
+      content: " \1F4F7";
+    }
   }
   a{
     height: 100%;

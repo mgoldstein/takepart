@@ -211,6 +211,7 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
   /* Field: Content: Promo Short Headline */
   $handler->display->display_options['fields']['field_promo_short_headline']['id'] = 'field_promo_short_headline';
   $handler->display->display_options['fields']['field_promo_short_headline']['table'] = 'field_data_field_promo_short_headline';
@@ -218,7 +219,7 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_promo_short_headline']['label'] = '';
   $handler->display->display_options['fields']['field_promo_short_headline']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_promo_short_headline']['alter']['path'] = '[path]';
-  $handler->display->display_options['fields']['field_promo_short_headline']['element_class'] = '[type]';
+  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['link_class'] = '[type]';
   $handler->display->display_options['fields']['field_promo_short_headline']['element_label_colon'] = FALSE;
   /* Sort criterion: Nodequeue: Queue ID */
   $handler->display->display_options['sorts']['qid']['id'] = 'qid';
@@ -313,7 +314,7 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_action_type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_action_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_action_type']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content: Button Text */
+  /* Field: Content: Call to Action Promo */
   $handler->display->display_options['fields']['field_tab_call_to_action']['id'] = 'field_tab_call_to_action';
   $handler->display->display_options['fields']['field_tab_call_to_action']['table'] = 'field_data_field_tab_call_to_action';
   $handler->display->display_options['fields']['field_tab_call_to_action']['field'] = 'field_tab_call_to_action';
