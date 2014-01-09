@@ -69,10 +69,10 @@ hr {
     position: absolute;
     background: url("/profiles/takepart/themes/takepart3/images/logo.png") no-repeat scroll 0 0 transparent;
 }
+
 body.maintenance-page #logo a {
     position: static;
 }
-
 
 div.dotted-rule {
     border-top:1px dotted #000;
@@ -139,10 +139,12 @@ a:hover {
     top: 20px;
     left: 0px;
 }
+
 body.maintenance-page #logo {
     float: none;
     position: static;
 }
+
 /*page structure*/
 #page-wrapper {
     margin: 0px auto 0;
