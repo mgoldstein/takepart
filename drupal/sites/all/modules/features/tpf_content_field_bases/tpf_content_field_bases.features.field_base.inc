@@ -170,7 +170,7 @@ function tpf_content_field_bases_field_default_field_bases() {
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -560,7 +560,7 @@ function tpf_content_field_bases_field_default_field_bases() {
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -677,7 +677,7 @@ function tpf_content_field_bases_field_default_field_bases() {
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -780,14 +780,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_blog_branding_image',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -995,14 +1002,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_blogpost_main_image',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -1486,14 +1500,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_gallery_images',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -1506,14 +1527,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_gallery_main_image',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -1644,14 +1672,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_group_logo',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -1664,14 +1699,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_group_main_image',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -2089,7 +2131,7 @@ function tpf_content_field_bases_field_default_field_bases() {
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 0,
     'type' => 'media',
@@ -2312,14 +2354,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_main_image',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -2644,14 +2693,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_page_main_image',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -3378,14 +3434,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_quickstudy_main_image',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -3991,14 +4054,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_slide_main_media',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -4399,7 +4469,7 @@ function tpf_content_field_bases_field_default_field_bases() {
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -4794,14 +4864,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tp_campaign_cover_image',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -4871,14 +4948,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tp_campaign_header',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 0,
     'type' => 'media',
@@ -4918,14 +5002,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tp_campaign_intro_media',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -5427,14 +5518,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tp_campaign_sl_image',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',
@@ -5777,14 +5875,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_video_embedded',
-    'foreign keys' => array(),
+    'foreign keys' => array(
+      'file_managed' => array(
+        'columns' => array(
+          'fid' => 'fid',
+        ),
+        'table' => 'file_managed',
+      ),
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
       ),
     ),
     'locked' => 0,
-    'module' => 'media',
+    'module' => 'mediafield',
     'settings' => array(),
     'translatable' => 1,
     'type' => 'media',

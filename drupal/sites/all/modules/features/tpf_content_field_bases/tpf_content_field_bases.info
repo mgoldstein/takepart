@@ -20,6 +20,7 @@ dependencies[] = link
 dependencies[] = list
 dependencies[] = location_cck
 dependencies[] = media
+dependencies[] = mediafield
 dependencies[] = node_reference
 dependencies[] = takepart_addthis
 dependencies[] = takepart_calendar
