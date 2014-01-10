@@ -1102,6 +1102,9 @@ body.page-iframes .slimnav.responsive .menu-toggle{
 }
 body.page-iframes-header{
   border-bottom: none;
+  .slimnav.responsive .follow-us {
+    padding-right: 0;
+  }
 }
 body.page-iframes-footer{
   border-top: none;
