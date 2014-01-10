@@ -68,6 +68,7 @@ stylesheets[all][] = css/styles.css
 scripts[] = js/custom-lib/tpregions.jquery.js
 scripts[] = js/custom-lib/tpanalytics.js
 scripts[] = js/tpanalytics.events.js
+scripts[] = js/tpanalytics.media.js
 scripts[] = js/doubletaptogo.js
 scripts[] = js/snap.js
 scripts[] = js/tp_ad_takeover.jquery.js
