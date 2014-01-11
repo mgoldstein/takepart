@@ -153,16 +153,8 @@ function s_doPlugins(s) {
 }
 s.doPlugins=s_doPlugins;
 
-/*
 s.loadModule("Media");
-s.Media.autoTrack=false;
-s.Media.trackWhilePlaying=true;
-s.Media.trackVars="None";
-s.Media.trackEvents="None";
-*/
-
-s.loadModule("Media");
-s.Media.autoTrack=false;
+s.Media.autoTrack=false; //For compatible players only.
 s.Media.trackWhilePlaying=true;
 s.Media.trackVars="events,eVar65,eVar66,eVar67,eVar4,eVar1,eVar30"; //Enter the variables to be sent withOmniture image requests
 s.Media.trackEvents="event91,event92,event93,event94"; //Enter the events to be sent withOmniture image requests
