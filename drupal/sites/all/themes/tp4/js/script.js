@@ -81,23 +81,26 @@
 
 Drupal.behaviors.tpsocialShares = {
     attach: function() {
-        var $body = $('body');
+        var $body = $('body'),
+            isOpenpublishArticle = $body.is('.page-node.node-type-openpublish-article'),
+            isFeatureArticle = $body.is('.page-node.node-type-feature-article');
 
         if (
-            $body.is('.page-node.node-type-openpublish-article')
-            || $body.is('.page-node.node-type-feature-article')
+            isOpenpublishArticle
+            || isFeatureArticle
         ) {
             // Setup Social Share Buttons
             var tp_social_config = {
                 url_append: '?cmpid=organic-share-{{name}}',
                 services: [
                 {
-                    name: 'facebook'
+                    name: 'facebook',
+                    description: isFeatureArticle ? $('.field-name-field-article-subhead .field-item').text() : null
                 },
 
                 {
                     name: 'twitter',
-                    text: '{{title}}' + ($body.is('.node-type-feature-article') ? ' #longform' : ''),
+                    text: '{{title}}' + (isFeatureArticle ? ' #longform' : ''),
                     via: 'TakePart'
                 },
                 {
@@ -119,7 +122,12 @@ Drupal.behaviors.tpsocialShares = {
             .then($('#article-social').tp4Sticky({offset: 7}));
 
             // Set up secondary social share buttons
-            var main_image = $('figure.article-main-image img').attr('src');
+            var main_image;
+            if (isOpenpublishArticle) {
+                main_image = $('figure.article-main-image').find('img').attr('src');
+            } else if (isFeatureArticle) {
+                main_image = $('.field-name-field-article-main-image').find('img').attr('src');
+            }
             var more_services = {
                 pinterest: {
                     name: 'pinterest',
