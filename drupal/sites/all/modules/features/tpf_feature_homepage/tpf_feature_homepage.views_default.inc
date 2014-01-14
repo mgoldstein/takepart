@@ -162,6 +162,7 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
   );
   $export['latest_article_in_a_series'] = $view;
 
