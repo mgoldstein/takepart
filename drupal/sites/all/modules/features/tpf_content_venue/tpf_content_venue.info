@@ -10,7 +10,6 @@ dependencies[] = field_group
 dependencies[] = gmapfield
 dependencies[] = media
 dependencies[] = media_image_formatter
-dependencies[] = media_views_widget
 dependencies[] = node_reference
 dependencies[] = options
 dependencies[] = strongarm

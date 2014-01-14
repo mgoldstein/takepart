@@ -14,7 +14,6 @@ dependencies[] = link
 dependencies[] = list
 dependencies[] = media
 dependencies[] = media_image_formatter
-dependencies[] = media_views_widget
 dependencies[] = node_reference
 dependencies[] = node_reference_view_formatter
 dependencies[] = options

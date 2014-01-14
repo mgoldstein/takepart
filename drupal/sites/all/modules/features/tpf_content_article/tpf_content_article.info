@@ -11,7 +11,6 @@ dependencies[] = field_group
 dependencies[] = formatter_field
 dependencies[] = inline_entity_form
 dependencies[] = media_image_formatter
-dependencies[] = media_views_widget
 dependencies[] = node_reference
 dependencies[] = options
 dependencies[] = strongarm

@@ -13,7 +13,6 @@ dependencies[] = list
 dependencies[] = location_cck
 dependencies[] = media
 dependencies[] = media_image_formatter
-dependencies[] = media_views_widget
 dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = taxonomy

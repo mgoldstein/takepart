@@ -12,7 +12,6 @@ dependencies[] = inline_entity_form
 dependencies[] = list
 dependencies[] = media
 dependencies[] = media_image_formatter
-dependencies[] = media_views_widget
 dependencies[] = node
 dependencies[] = node_reference
 dependencies[] = options
