@@ -93,7 +93,7 @@ function takepart_search_feature_facetapi_default_facet_settings() {
   $facet->searcher = 'search_api@site_node_index';
   $facet->realm = 'block';
   $facet->facet = 'field_series';
-  $facet->enabled = FALSE;
+  $facet->enabled = TRUE;
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_links',
