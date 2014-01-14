@@ -545,25 +545,25 @@ function tpf_display_context_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar_second',
-          'weight' => '-10',
+          'weight' => '-8',
         ),
         'newsletter_campaign-48' => array(
           'module' => 'newsletter_campaign',
           'delta' => '48',
           'region' => 'sidebar_second',
-          'weight' => '-9',
+          'weight' => '-7',
         ),
         'bean--of-the-day' => array(
           'module' => 'bean',
           'delta' => '-of-the-day',
           'region' => 'sidebar_second',
-          'weight' => '-8',
+          'weight' => '-6',
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar_second',
-          'weight' => '-7',
+          'weight' => '-5',
         ),
         'boxes-box-944fcfe9' => array(
           'module' => 'boxes',
@@ -1667,6 +1667,7 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
     'path' => array(
       'values' => array(
         '~<front>' => '~<front>',
+        '~feature/*' => '~feature/*',
       ),
     ),
     'theme' => array(
