@@ -129,6 +129,12 @@ function tpf_content_page_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_admin_tag',
@@ -719,7 +725,7 @@ function tpf_content_page_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'default',
         ),
@@ -1367,7 +1373,7 @@ function tpf_content_page_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'default',
         ),
@@ -1551,6 +1557,12 @@ function tpf_content_page_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

@@ -25,6 +25,7 @@ features[field_group][] = group_blogpost_actions|node|openpublish_blog_post|form
 features[field_group][] = group_blogpost_body|node|openpublish_blog_post|form
 features[field_group][] = group_blogpost_campaigns|node|openpublish_blog_post|form
 features[field_group][] = group_blogpost_content|node|openpublish_blog_post|form
+features[field_group][] = group_blogpost_htab1|node|openpublish_blog_post|form
 features[field_group][] = group_blogpost_main|node|openpublish_blog_post|form
 features[field_group][] = group_blogpost_media|node|openpublish_blog_post|form
 features[field_group][] = group_blogpost_promos|node|openpublish_blog_post|form

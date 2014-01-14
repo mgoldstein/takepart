@@ -323,6 +323,7 @@ function tpf_content_campaign_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
@@ -818,6 +819,7 @@ function tpf_content_campaign_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
@@ -1682,7 +1684,7 @@ function tpf_content_campaign_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'media_original',
         ),
@@ -1753,6 +1755,7 @@ function tpf_content_campaign_field_default_field_instances() {
           'image' => 'image',
           'video' => 'video',
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',

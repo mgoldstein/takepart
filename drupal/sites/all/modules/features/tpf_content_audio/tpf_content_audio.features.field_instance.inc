@@ -93,7 +93,7 @@ function tpf_content_audio_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'media_link',
         ),
@@ -158,6 +158,7 @@ function tpf_content_audio_field_default_field_instances() {
           'image' => 0,
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',

@@ -130,6 +130,34 @@ function tpf_content_blog_post_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_blogpost_htab1|node|openpublish_blog_post|form';
+  $field_group->group_name = 'group_blogpost_htab1';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'openpublish_blog_post';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content',
+    'weight' => '2',
+    'children' => array(
+      0 => 'group_blogpost_main',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Content',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => ' group-blogpost-htab1 field-group-tab',
+        'description' => '',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_blogpost_htab1|node|openpublish_blog_post|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_blogpost_main|node|openpublish_blog_post|form';
   $field_group->group_name = 'group_blogpost_main';
   $field_group->entity_type = 'node';

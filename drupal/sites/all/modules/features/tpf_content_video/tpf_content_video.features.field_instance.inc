@@ -2017,7 +2017,7 @@ function tpf_content_video_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'media_large',
         ),
@@ -2026,7 +2026,7 @@ function tpf_content_video_field_default_field_instances() {
       ),
       'embed' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'media_small',
         ),
@@ -2059,7 +2059,7 @@ function tpf_content_video_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'media_large',
         ),
@@ -2080,7 +2080,7 @@ function tpf_content_video_field_default_field_instances() {
       ),
       'vidpop_map' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'media_large',
         ),
@@ -2109,6 +2109,7 @@ function tpf_content_video_field_default_field_instances() {
           'image' => 0,
           'video' => 'video',
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',

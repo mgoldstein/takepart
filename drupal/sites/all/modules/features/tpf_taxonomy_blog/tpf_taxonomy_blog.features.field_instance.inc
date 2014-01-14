@@ -18,7 +18,7 @@ function tpf_taxonomy_blog_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'default',
         ),
@@ -53,9 +53,11 @@ function tpf_taxonomy_blog_field_default_field_instances() {
       ),
       'token' => array(
         'label' => 'above',
-        'module' => NULL,
-        'settings' => array(),
-        'type' => 'media_large',
+        'module' => 'mediafield',
+        'settings' => array(
+          'file_view_mode' => 'default',
+        ),
+        'type' => 'media',
         'weight' => 2,
       ),
     ),
@@ -80,6 +82,7 @@ function tpf_taxonomy_blog_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',

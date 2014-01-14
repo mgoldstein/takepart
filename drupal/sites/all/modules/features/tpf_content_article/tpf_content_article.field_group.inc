@@ -63,6 +63,7 @@ function tpf_content_article_field_group_info() {
       0 => 'field_article_action',
       1 => 'field_related_actions',
       2 => 'field_multi_page_campaign',
+      3 => 'field_html_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

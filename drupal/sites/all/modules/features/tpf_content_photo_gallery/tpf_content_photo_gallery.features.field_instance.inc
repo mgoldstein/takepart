@@ -732,6 +732,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
@@ -828,6 +829,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
@@ -2283,7 +2285,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_views_widget',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'private' => 0,
@@ -2297,10 +2299,11 @@ function tpf_content_photo_gallery_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic_alt',
+      'type' => 'media_generic',
       'weight' => 37,
     ),
   );

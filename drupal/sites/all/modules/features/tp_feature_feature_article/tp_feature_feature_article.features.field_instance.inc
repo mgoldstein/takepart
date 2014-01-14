@@ -182,7 +182,7 @@ function tp_feature_feature_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'default',
         ),
@@ -252,21 +252,30 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_views_widget',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'private' => 0,
           'public' => 'public',
+          'vimeo' => 0,
+          'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 'media_internet',
+          'upload' => 'upload',
+        ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
-        'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic_alt',
+      'type' => 'media_generic',
       'weight' => 3,
     ),
   );
@@ -1319,7 +1328,7 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_views_widget',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
@@ -1330,10 +1339,11 @@ function tp_feature_feature_article_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic_alt',
+      'type' => 'media_generic',
       'weight' => 20,
     ),
   );

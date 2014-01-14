@@ -143,6 +143,12 @@ function tpf_content_blog_post_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
     ),
     'entity_type' => 'node',
     'field_name' => 'field_admin_tag',
@@ -513,7 +519,7 @@ function tpf_content_blog_post_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'media',
+        'module' => 'mediafield',
         'settings' => array(
           'file_view_mode' => 'media_large',
         ),
