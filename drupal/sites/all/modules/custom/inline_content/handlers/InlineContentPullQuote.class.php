@@ -29,7 +29,7 @@ class InlineContentPullQuote extends InlineContentReplacementController {
 
     // build up the markup string. We know we'll have a quote;
     // not sure whether we'll have a cite.
-    $markup = '<p class="quotation">' . $quote[0]['safe_value'] . '</p>';
+    $markup = '<p class="quotation">' . trim($quote[0]['safe_value']) . '</p>';
     if ($cite) {
       $markup .= '<cite>&mdash; ' . $cite[0]['safe_value'] . '</cite>';
     }
