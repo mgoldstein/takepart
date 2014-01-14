@@ -72,9 +72,10 @@ function tpf_feature_homepage_fe_nodequeue_export_fields() {
     'i18n' => 0,
     'subqueues' => 1,
     'types' => array(
-      0 => 'openpublish_article',
-      1 => 'openpublish_photo_gallery',
-      2 => 'openpublish_video',
+      0 => 'feature_article',
+      1 => 'openpublish_article',
+      2 => 'openpublish_photo_gallery',
+      3 => 'openpublish_video',
     ),
     'roles' => array(),
     'count' => 0,
