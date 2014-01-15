@@ -718,7 +718,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_views_widget_plupload',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'brightcove' => 0,
@@ -736,7 +736,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_views_widget_plupload',
+      'type' => 'media_generic',
       'weight' => 42,
     ),
   );
@@ -2278,7 +2278,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_thumbnail',
     'label' => 'Thumbnail',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
       'user_register_form' => FALSE,
@@ -2295,13 +2295,18 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         ),
         'allowed_types' => array(
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
-        'view' => 'media_views_widget_default--default',
       ),
       'type' => 'media_generic',
       'weight' => 37,
