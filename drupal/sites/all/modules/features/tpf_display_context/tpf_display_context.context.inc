@@ -1757,6 +1757,12 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
           'region' => 'left_drawer',
           'weight' => '-10',
         ),
+        'takepart_gallery_support-takepart_gallery_cover_slide' => array(
+          'module' => 'takepart_gallery_support',
+          'delta' => 'takepart_gallery_cover_slide',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
         'boxes-box-66c05d6f' => array(
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
