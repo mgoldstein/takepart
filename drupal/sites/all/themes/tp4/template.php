@@ -72,7 +72,7 @@ function tp4_preprocess_page(&$variables) {
   }
 
   // override page titles on certain node templates
-  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article'))) {
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery'))) {
     $variables['title'] = '';
   }
 
