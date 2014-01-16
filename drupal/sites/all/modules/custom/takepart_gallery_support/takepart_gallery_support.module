@@ -1,0 +1,61 @@
+<?php
+/**
+ * @file
+ * TakePart module for functions related to the January 2014 redesign
+ * of Takepart Galleries
+ */
+
+/**
+ * Implements hook_help().
+ */
+function takepart_gallery_support_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#takepart_gallery_support':
+      return '<p>' . t('Support module for TP galleries.') . '</p>';    
+  }
+}
+
+/**
+ * Implements hook_block_info();
+ */
+function takepart_gallery_support_block_info() {
+  $blocks = array();
+
+  $blocks['takepart_gallery_cover_slide'] = array(
+    'info' => t('Takepart Gallery Cover Slide'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view();
+ */
+function takepart_gallery_support_block_view($delta) {
+  $block = array();
+
+  switch ($delta) {
+    case 'takepart_gallery_cover_slide':
+      $block['content'] = _takepart_gallery_cover_slide();
+      break;
+  }
+
+  return $block;
+}
+
+/**
+ * Utility function to render out the 
+ */
+function _takepart_gallery_cover_slide() {
+
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node = node_load($nid);
+    $show_cover = field_get_items('node', $node, 'field_display_cover');
+
+    if ($show_cover[0]['value']) {
+      return "COVER";
+    }
+  }
+}
