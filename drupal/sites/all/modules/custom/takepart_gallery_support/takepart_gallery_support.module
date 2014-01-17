@@ -44,8 +44,56 @@ function takepart_gallery_support_block_view($delta) {
   return $block;
 }
 
+
 /**
- * Utility function to render out the 
+ * Implements hook_theme().
+ */
+function takepart_gallery_support_theme() {
+  return array(
+    'gallery_cover_slide' => array(
+      'variables' => array(
+        'node' => NULL,
+      ),
+      'template' => 'gallery-cover-slide',
+    ),
+  );
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ *
+ * Prepare variables for including in the cover slide template
+ */
+function template_preprocess_gallery_cover_slide(&$variables) {
+  $node = $variables['node'];
+  $variables['gallery_title'] = $node->title;
+
+  if ($node->field_gallery_main_image) {
+    $cover_slide = field_get_items('node', $node, 'field_gallery_main_image');
+  } else {
+    $cover_slide = field_get_items('node', $node, 'field_thumbnail');
+  }
+
+  $variables['gallery_cover_image'] = theme('image_style', array(
+    'path' => $cover_slide[0]['file']->uri,
+    'style_name' => 'tp_gallery_slide',
+    'alt' => $node->title,
+  ));
+}
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Put a class on the cover slide for theming.
+ */
+function takepart_gallery_support_preprocess_block(&$variables) {
+  if($variables['block']->delta == 'takepart_gallery_cover_slide') {
+    $variables['classes_array'][] = 'takepart-gallery-cover-slide';
+  }
+}
+
+/**
+ * Utility function to render out the cover slide.
  */
 function _takepart_gallery_cover_slide() {
 
@@ -55,7 +103,7 @@ function _takepart_gallery_cover_slide() {
     $show_cover = field_get_items('node', $node, 'field_display_cover');
 
     if ($show_cover[0]['value']) {
-      return "COVER";
+      return theme('gallery_cover_slide', array('node' => $node));
     }
   }
 }
