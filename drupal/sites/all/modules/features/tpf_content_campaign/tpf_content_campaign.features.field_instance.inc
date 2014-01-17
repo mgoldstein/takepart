@@ -1326,7 +1326,7 @@ function tpf_content_campaign_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_views_widget',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
@@ -1337,10 +1337,11 @@ function tpf_content_campaign_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic_alt',
+      'type' => 'media_generic',
       'weight' => 11,
     ),
   );
@@ -1580,7 +1581,7 @@ function tpf_content_campaign_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_views_widget',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'brightcove' => 0,
@@ -1592,10 +1593,11 @@ function tpf_content_campaign_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic_alt',
+      'type' => 'media_generic',
       'weight' => 8,
     ),
   );
@@ -1684,11 +1686,12 @@ function tpf_content_campaign_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'mediafield',
+        'module' => 'media_image_formatter',
         'settings' => array(
-          'file_view_mode' => 'media_original',
+          'image_link' => '',
+          'image_style' => '',
         ),
-        'type' => 'media',
+        'type' => 'image',
         'weight' => 2,
       ),
       'feature_main' => array(
@@ -2919,7 +2922,7 @@ function tpf_content_campaign_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_views_widget',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
@@ -2930,10 +2933,11 @@ function tpf_content_campaign_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
+        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic_alt',
+      'type' => 'media_generic',
       'weight' => 11,
     ),
   );
