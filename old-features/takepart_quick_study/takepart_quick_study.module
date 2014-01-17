@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Takepart Quick Study feature.
- */
-
-include_once('takepart_quick_study.features.inc');

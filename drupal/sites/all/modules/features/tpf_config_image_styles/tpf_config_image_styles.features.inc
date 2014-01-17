@@ -363,10 +363,10 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
-  // Exported image style: square_thumbnail_small.
-  $styles['square_thumbnail_small'] = array(
-    'name' => 'square_thumbnail_small',
-    'label' => 'square_thumbnail_small',
+  // Exported image style: square_thumbnail.
+  $styles['square_thumbnail'] = array(
+    'name' => 'square_thumbnail',
+    'label' => 'square_thumbnail',
     'effects' => array(
       11 => array(
         'label' => 'Scale',

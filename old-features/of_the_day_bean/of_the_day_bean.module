@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the of_the_day_bean feature.
- */
-
-include_once 'of_the_day_bean.features.inc';

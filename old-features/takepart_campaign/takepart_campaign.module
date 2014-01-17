@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Campaign feature.
- */
-
-include_once('takepart_campaign.features.inc');
