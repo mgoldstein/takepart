@@ -410,6 +410,29 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: thumbnail_v2.
+  $styles['thumbnail_v2'] = array(
+    'name' => 'thumbnail_v2',
+    'label' => 'Thumbnail V2',
+    'effects' => array(
+      57 => array(
+        'label' => 'Scale and crop',
+        'help' => 'Scale and crop will maintain the aspect-ratio of the original image, then crop the larger dimension. This is most useful for creating perfectly square thumbnails without stretching the image.',
+        'effect callback' => 'image_scale_and_crop_effect',
+        'dimensions callback' => 'image_resize_dimensions',
+        'form callback' => 'image_resize_form',
+        'summary theme' => 'image_resize_summary',
+        'module' => 'image',
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 100,
+          'height' => 100,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: topic_feature.
   $styles['topic_feature'] = array(
     'name' => 'topic_feature',
