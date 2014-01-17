@@ -460,6 +460,10 @@ function tp4_field__field_author__feature_article($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
 
+function tp4_field__field_author__openpublish_photo_gallery($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+
 function tp4_field__field_article_subhead__openpublish_article($variables) {
   $output = '';
 
