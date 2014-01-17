@@ -19,11 +19,11 @@ function tpf_content_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
+        'module' => 'inline_content',
         'settings' => array(
           'source' => 'field_inline_replacements',
         ),
-        'type' => 'text_default',
+        'type' => 'text_with_inline_content',
         'weight' => 3,
       ),
       'feature_main' => array(
