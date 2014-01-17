@@ -206,11 +206,20 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
       $variables['attributes_array']['data-series'] = $series->name;
     }
 
+    // Decide whether to display a TAP banner
+    if ($variables['field_display_tab_banner']['und'][0]['value']) {
+      $variables['gallery_tap_banner'] = array(
+        '#type' => 'markup',
+        '#markup' => '<div class="takepart-take-action-widget"></div>',
+      );
+    }
+
     // provide "on our radar" block
     _tp4_on_our_radar_block($variables);
 
     // provide topic box
     _tp4_topic_box($variables);
+
   }
 }
 
@@ -406,6 +415,11 @@ function tp4_field__field_topic__openpublish_article($variables) {
 }
 
 /**
+ * @todo TODO can we do this with one set of functions instead of 3?
+ * I.e., Are these fields printed out anywhere else?
+ */
+
+/**
  * Outputs Free Tag taxonomy links for article nodes.
  */
 function tp4_field__field_free_tag__openpublish_article($variables) {
@@ -423,6 +437,20 @@ function tp4_field__field_topic__feature_article($variables) {
  * Outputs free tag taxonomy links for feature article nodes.
  */
 function tp4_field__field_free_tag__feature_article($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs Topic Taxonomy links for gallery nodes.
+ */
+function tp4_field__field_topic__openpublish_photo_gallery($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs free tag taxonomy links for gallery nodes.
+ */
+function tp4_field__field_free_tag__openpublish_photo_gallery($variables) {
   return tp4_field__field_topic__openpublish_article($variables);
 }
 
