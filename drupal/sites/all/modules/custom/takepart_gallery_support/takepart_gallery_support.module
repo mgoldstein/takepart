@@ -5,6 +5,8 @@
  * of Takepart Galleries
  */
 
+define("TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH", drupal_get_path('module', 'takepart_gallery_support') . '/templates');
+
 /**
  * Implements hook_help().
  */
@@ -55,6 +57,7 @@ function takepart_gallery_support_theme() {
         'node' => NULL,
       ),
       'template' => 'gallery-cover-slide',
+      'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH, 
     ),
   );
 }
