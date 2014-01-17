@@ -28,6 +28,11 @@ function takepart_gallery_support_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['takepart_gallery_content'] = array(
+    'info' => t('Takepart Gallery Content'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
   return $blocks;
 }
 
@@ -41,6 +46,9 @@ function takepart_gallery_support_block_view($delta) {
     case 'takepart_gallery_cover_slide':
       $block['content'] = _takepart_gallery_cover_slide();
       break;
+    case 'takepart_gallery_content':
+      $block['content'] = _takepart_gallery_content();
+      break;
   }
 
   return $block;
@@ -51,15 +59,26 @@ function takepart_gallery_support_block_view($delta) {
  * Implements hook_theme().
  */
 function takepart_gallery_support_theme() {
-  return array(
-    'gallery_cover_slide' => array(
-      'variables' => array(
-        'node' => NULL,
-      ),
-      'template' => 'gallery-cover-slide',
-      'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH, 
+  $theme_hooks = array();
+
+  $theme_hooks['gallery_cover_slide'] = array(
+    'variables' => array(
+      'node' => NULL,
     ),
+    'template' => 'gallery-cover-slide',
+    'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH, 
   );
+
+  $theme_hooks['gallery_content'] = array(
+    'variables' => array(
+      'node' => NULL,
+    ),
+    'template' => 'gallery-content',
+    'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH, 
+  );
+
+
+  return $theme_hooks;
 }
 
 /**
@@ -85,13 +104,26 @@ function template_preprocess_gallery_cover_slide(&$variables) {
 }
 
 /**
+ * Implements template_preprocess_HOOK().
+ *
+ * Prepare variables for including in the gallery-content template
+ */
+function template_preprocess_gallery_content(&$variables) {
+  $node = $variables['node'];
+  $variables['gallery_title'] = $node->title;
+}
+
+/**
  * Implements hook_preprocess_block().
  *
- * Put a class on the cover slide for theming.
+ * Put a class on the gallery blocks.
  */
 function takepart_gallery_support_preprocess_block(&$variables) {
   if($variables['block']->delta == 'takepart_gallery_cover_slide') {
     $variables['classes_array'][] = 'takepart-gallery-cover-slide';
+  }
+  if($variables['block']->delta == 'takepart_gallery_content') {
+    $variables['classes_array'][] = 'takepart-gallery-content';
   }
 }
 
@@ -108,5 +140,17 @@ function _takepart_gallery_cover_slide() {
     if ($show_cover[0]['value']) {
       return theme('gallery_cover_slide', array('node' => $node));
     }
+  }
+}
+
+/**
+ * Utility function to render out the gallery content
+ */
+function _takepart_gallery_content() {
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node = node_load($nid);
+
+    return theme('gallery_content', array('node' => $node));
   }
 }
