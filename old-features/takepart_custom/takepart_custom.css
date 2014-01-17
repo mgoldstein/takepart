@@ -1,8 +1,0 @@
-/*
- * There is a an issue with the way that rubic does multip table inputs
- * that makes nodeconnect truncate the field badly
- * this insure that the field stays a reasonable size
- */
-table.field-multiple-table input.fluid {
-  width:95%
-}
