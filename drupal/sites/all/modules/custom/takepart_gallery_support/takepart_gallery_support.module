@@ -242,9 +242,11 @@ function template_preprocess_gallery_content(&$variables) {
 function takepart_gallery_support_preprocess_block(&$variables) {
   if($variables['block']->delta == 'takepart_gallery_cover_slide') {
     $variables['classes_array'][] = 'takepart-gallery-cover-slide';
+    $variables['classes_array'][] = 'hidden';
   }
   if($variables['block']->delta == 'takepart_gallery_content') {
     $variables['classes_array'][] = 'takepart-gallery-content';
+    $variables['classes_array'][] = 'hidden';
   }
 }
 

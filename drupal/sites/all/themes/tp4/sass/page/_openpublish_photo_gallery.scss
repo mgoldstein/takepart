@@ -2,6 +2,15 @@
 .takepart-gallery-content {
   @include zen-clear;
   @include zen-grid-item(12,1);
+  &.hidden {
+    display: none;
+  }
+}
+
+.gallery-description {
+  &.hidden {
+    display: none;
+  }
 }
 
 .gallery-cover-slide {

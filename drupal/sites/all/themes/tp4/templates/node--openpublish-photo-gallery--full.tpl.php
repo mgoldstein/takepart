@@ -9,7 +9,7 @@
 ?>
 <div class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if( $gallery_description =  render($content['body'])) : ?>
-  <div id="gallery-description" class="gallery-description">
+  <div id="gallery-description" class="gallery-description hidden">
     <?php print $gallery_description; ?>
     <p class="enter-link"><a href="#enter-gallery">Enter Photo Gallery</a></p>
   </div>
