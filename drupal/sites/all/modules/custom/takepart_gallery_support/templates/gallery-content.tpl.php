@@ -37,6 +37,25 @@
       </figure>
     </li>
     <?php endforeach; ?>
+    <?php if ($next_gallery) : ?>
+      <li id="next-gallery"<?php print drupal_attributes($next_gallery['attributes']); ?>>
+        <figure>
+          <a href="<?php print $next_gallery['href']; ?>">
+            <div class="slide-image-wrapper">
+              <?php print $next_gallery['image']; ?>
+              <div class="gallery-cover-content">
+                <div class="gallery-cover-branding"><?php print t('Up Next'); ?></div>
+                <div class="gallery-cover-title"><?php print $next_gallery['title']; ?></div>
+                <div class="gallery-cover-enter"><?php print t('Enter Photo Gallery'); ?></div>
+              </div>
+            </div>
+          </a>
+          <figcaption class="slide-caption">
+          <h2 class="slide-caption-headline"><?php print $next_gallery['title']; ?></h2>
+          <div class="slide-caption-content"><?php print $next_gallery['caption']; ?></div>
+          </figcaption>
+        </figure>
+      </li>
+    <?php endif; ?>
   </ul>
-  <?php kpr($slides_temp); ?>
 </article>

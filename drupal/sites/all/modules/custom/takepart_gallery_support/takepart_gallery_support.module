@@ -173,7 +173,7 @@ function template_preprocess_gallery_content(&$variables) {
       $slide['title'] = $items[0]['safe_value'];
 
       $slide['attributes'] = array();
-      $slide['attributes']['class'][] = 'slide';
+      $slide['attributes']['class'][] = 'gallery-slide';
       $slide['attributes']['class'][] = 'slide' . $delta;      
       if($slide['title']) {
         $slide['attributes']['data-token'] = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $slide['title'])));
@@ -192,9 +192,45 @@ function template_preprocess_gallery_content(&$variables) {
       $slide['caption'] = drupal_render($caption);
 
       $variables['slides'][$delta] = $slide;
-
-      $variables['slides_temp'][$delta] = $file;
     }
+  }
+
+  //next gallery
+  $next_gallery = article_support_next_story($node, 'openpublish_photo_gallery');
+  $variables['next_gallery'] = array();
+
+  if ($next_gallery) {
+    $slide = array();
+
+    $next_gallery_node = $next_gallery->node;
+    $slide['title'] = check_plain($next_gallery_node->title);
+
+    $slide['attributes'] = array();
+    $slide['attributes']['class'][] = 'gallery-slide';
+    $slide['attributes']['class'][] = 'gallery-slide-next-gallery';
+    $slide['attributes']['class'][] = 'slide' . ($delta + 1);
+    $slide['attributes']['data-token'] = 'next-gallery';
+
+    if ($next_gallery_node->field_gallery_main_image) {
+      $cover_slide = field_get_items('node', $next_gallery_node, 'field_gallery_main_image');
+    } else {
+      $cover_slide = field_get_items('node', $next_gallery_node, 'field_thumbnail');
+    }
+
+    $cover_slide = file_load($cover_slide[0]['fid']);
+    $slide['image'] = theme('image_style', array(
+      'path' => $cover_slide->uri,
+      'style_name' => 'tp_gallery_slide',
+      'alt' => $node->title,
+    ));
+
+    $items = field_get_items('node', $next_gallery_node, 'body');
+    $caption = field_view_value('node', $next_gallery_node, 'body', $items[0]);
+    $slide['caption'] = drupal_render($caption);
+
+    $slide['href'] = $next_gallery->href . '/first-slide';
+
+    $variables['next_gallery'] = $slide;
   }
 }
 
