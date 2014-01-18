@@ -5,7 +5,7 @@
  */
 ?>
 <article id="node-<?php print $node->nid; ?>" class="gallery-content">
-  <header id="gallery-header">
+  <header id="gallery-header" class="gallery-header">
     <?php if (isset($field_topic_box_top)) : ?>
     <div class="topic-box">
       <?php print $field_topic_box_top; ?>
@@ -15,7 +15,7 @@
     <?php print render($gallery_subhead); ?>
     <div class="author">
       <date class="publish-date" datetime="<?php print date('c', $node->created); ?>"><?php print date('F d, Y',$node->created) ?></date>
-      <span class="byline author">By <?php print $gallery_authors; ?></span>
+      <span class="byline"><?php print $gallery_authors; ?></span>
     </div>
     <aside id="gallery-content-social" class="social">
       <h3 class="headline"><?=t('Share Photo') ?></h3>
