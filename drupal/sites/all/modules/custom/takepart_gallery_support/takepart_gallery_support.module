@@ -88,7 +88,7 @@ function takepart_gallery_support_theme() {
  */
 function template_preprocess_gallery_cover_slide(&$variables) {
   $node = $variables['node'];
-  $variables['gallery_title'] = $node->title;
+  $variables['gallery_title'] = check_plain($node->title);
 
   if ($node->field_gallery_main_image) {
     $cover_slide = field_get_items('node', $node, 'field_gallery_main_image');
@@ -110,7 +110,92 @@ function template_preprocess_gallery_cover_slide(&$variables) {
  */
 function template_preprocess_gallery_content(&$variables) {
   $node = $variables['node'];
-  $variables['gallery_title'] = $node->title;
+
+  // prepare the gallery headlines and stuff
+  // topic box
+  $items = field_get_items('node', $node, 'field_topic_box');
+  if ($items) {
+    $topic = taxonomy_term_load($items[0]['tid']);
+    if (!empty($topic->field_topic_box_image['und'][0]['uri'])) {
+      $image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));
+      $url = !empty($topic->field_topic_box_link) ? url($topic->field_topic_box_link['und'][0]['url'], array('absolute' => TRUE)) : '';
+      $variables['field_topic_box_top'] = empty($url) ? $image : l($image, $url, array('html' => true));
+    }
+  }
+
+  // headline
+  $variables['gallery_title'] = check_plain($node->title);
+
+  // subheadline
+  $items = field_get_items('node', $node, 'field_subhead');
+  $variables['gallery_subhead'] = field_view_value('node', $node, 'field_subhead', $items[0]);
+  if ($variables['gallery_subhead']) {
+    $variables['gallery_subhead']['#prefix'] = '<h2 class="gallery-subhead">';
+    $variables['gallery_subhead']['#suffix'] = '</h2>';
+  }
+
+
+  /**
+   * @todo this is duplicated code
+   */
+  // byline
+  $items = field_get_items('node', $node, 'field_author');
+  $authors = '';
+  if ($items) {
+    $number_of_authors = count($items);
+    foreach ($items as $delta => $author) {
+      $author_node = node_load($author['nid']);
+      $authors .= '<span class="byline-author">';
+      $authors .= l($author_node->title, 'node/' . $author_node->nid, array(
+        'attributes' => array(
+            'rel' => 'author'
+            ) 
+        ) );
+      $authors .= '</span>';
+      // add commas for lists of 3 or greater ($delta is zero-indexed)
+      $authors .= ($number_of_authors > 2 && $delta < $number_of_authors - 2 ) ? ', ' :'';
+      // add 'and' for lists of 2 or greater ($delta is zero-indexed)
+      $authors .= ($number_of_authors > 1 && $delta == $number_of_authors - 2 ) ? ' and ' :'';
+    }
+  }
+  $variables ['gallery_authors'] = $authors;
+
+  // slides
+  $variables['slides'] = array();
+  $slides = field_get_items('node', $node, 'field_gallery_images');
+  $variables['slides_temp'] = array();
+  if ($slides) {
+    foreach ($slides as $delta => $item) {
+      $file = $item['file'];
+      $slide = array();
+
+      $items = field_get_items('file', $file, 'field_image_title');
+      $slide['title'] = $items[0]['safe_value'];
+
+      $slide['attributes'] = array();
+      $slide['attributes']['class'][] = 'slide';
+      $slide['attributes']['class'][] = 'slide' . $delta;      
+      if($slide['title']) {
+        $slide['attributes']['data-token'] = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $slide['title'])));
+      } else {
+        $slide['attributes']['data-token'] = strtolower(strtok(htmlspecialchars_decode($file->filename, ENT_QUOTES), "."));
+      }
+
+      $slide['image'] = theme('image_style', array(
+        'style_name' => 'tp_gallery_slide',
+        'path' => $file->uri,
+        'alt' => $slide['title'],
+      ));
+
+      $items = field_get_items('file', $file, 'field_media_caption');
+      $caption = field_view_value('file', $file, 'field_media_caption', $items[0]);
+      $slide['caption'] = drupal_render($caption);
+
+      $variables['slides'][$delta] = $slide;
+
+      $variables['slides_temp'][$delta] = $file;
+    }
+  }
 }
 
 /**
