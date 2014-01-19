@@ -6051,12 +6051,39 @@ body.front #sidebar .block-title {
     float: right;
   }
 }
+/* line 80, ../sass/page/_openpublish_photo_gallery.scss */
+.gallery-slide-next-gallery .gallery-cover-content .gallery-cover-enter {
+  position: absolute;
+  right: 0;
+  top: 6px;
+  background-color: transparent;
+  font: normal 0.92857em/1.07692 "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+}
+/* line 87, ../sass/page/_openpublish_photo_gallery.scss */
+.gallery-slide-next-gallery .gallery-cover-content .gallery-cover-enter:after {
+  display: none;
+}
+/* line 90, ../sass/page/_openpublish_photo_gallery.scss */
+.gallery-slide-next-gallery .gallery-cover-content .gallery-cover-enter:before {
+  content: '\23e9\0020';
+  display: inline;
+  font-family: "SSGizmo";
+}
+@media all and (min-width: 768px) {
+  /* line 80, ../sass/page/_openpublish_photo_gallery.scss */
+  .gallery-slide-next-gallery .gallery-cover-content .gallery-cover-enter {
+    top: auto;
+    bottom: 6px;
+    font-size: 1em;
+    line-height: 1;
+  }
+}
 
-/* line 82, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 106, ../sass/page/_openpublish_photo_gallery.scss */
 .social {
   float: right;
 }
-/* line 85, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 109, ../sass/page/_openpublish_photo_gallery.scss */
 .social .headline {
   font: normal 1em/1 "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   text-transform: uppercase;
@@ -6064,40 +6091,40 @@ body.front #sidebar .block-title {
 }
 
 @media all and (min-width: 980px) {
-  /* line 93, ../sass/page/_openpublish_photo_gallery.scss */
+  /* line 117, ../sass/page/_openpublish_photo_gallery.scss */
   .gallery-content {
     margin-left: 51px;
   }
 }
-/* line 97, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 121, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-header {
   color: black;
   overflow: hidden;
 }
-/* line 101, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 125, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-headline {
   font: normal 2.42857em/1.08824 "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   margin-bottom: .235294118em;
 }
-/* line 106, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 130, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-subhead {
   font: normal 1.14286em/1.125 "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   margin-bottom: .5em;
 }
 @media all and (min-width: 980px) {
-  /* line 110, ../sass/page/_openpublish_photo_gallery.scss */
+  /* line 134, ../sass/page/_openpublish_photo_gallery.scss */
   .gallery-content .author {
     float: left;
   }
 }
-/* line 114, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 138, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .author .publish-date {
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   padding-right: .75em;
   border-right: 1px solid black;
   margin-right: .5em;
 }
-/* line 121, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 145, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .social {
   float: none;
   max-width: 620px;
@@ -6105,13 +6132,13 @@ body.front #sidebar .block-title {
   text-align: right;
 }
 @media all and (min-width: 980px) {
-  /* line 121, ../sass/page/_openpublish_photo_gallery.scss */
+  /* line 145, ../sass/page/_openpublish_photo_gallery.scss */
   .gallery-content .social {
     float: right;
     margin-right: 289px;
   }
 }
-/* line 131, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 155, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .swipe {
   overflow: hidden;
   position: relative;
@@ -6119,31 +6146,32 @@ body.front #sidebar .block-title {
   margin: 0 auto 1.5em;
 }
 @media all and (min-width: 980px) {
-  /* line 131, ../sass/page/_openpublish_photo_gallery.scss */
+  /* line 155, ../sass/page/_openpublish_photo_gallery.scss */
   .gallery-content .swipe {
     max-width: 100%;
   }
 }
-/* line 141, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 165, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .swipe-wrap {
   overflow: hidden;
   position: relative;
 }
-/* line 145, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 169, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide {
   width: 100%;
   float: left;
   position: relative;
 }
-/* line 150, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 174, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-image-wrapper {
   background-color: black;
 }
-/* line 153, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 177, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-image-wrapper img {
-  vertical-align: bottom;
+  display: block;
+  margin: 0 auto;
 }
-/* line 157, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 182, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-caption {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -6151,73 +6179,79 @@ body.front #sidebar .block-title {
   padding: 1em;
   height: 150px;
   overflow-y: scroll;
+  border: 1px solid #e5e5e5;
 }
-/* line 163, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 189, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-caption .slide-caption-headline {
   font: normal 1.5em/1.14286 "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   margin-bottom: .667em;
 }
-/* line 168, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 194, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-caption .slide-caption-content {
   font: normal 1em/1.5 "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 170, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 196, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-caption .slide-caption-content b, .gallery-content .gallery-slide .slide-caption .slide-caption-content strong {
   font-weight: normal;
   font-family: "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 171, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 197, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-caption .slide-caption-content i, .gallery-content .gallery-slide .slide-caption .slide-caption-content em {
   font-weight: normal;
   font-family: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 172, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 198, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-caption .slide-caption-content p {
   margin: 1em 0;
 }
-/* line 175, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 201, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-caption .slide-caption-content h5 {
   line-height: 1.5;
 }
-/* line 178, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 204, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide .slide-caption .slide-caption-content a {
   color: #019f84;
 }
 @media all and (min-width: 980px) {
-  /* line 145, ../sass/page/_openpublish_photo_gallery.scss */
+  /* line 169, ../sass/page/_openpublish_photo_gallery.scss */
   .gallery-content .gallery-slide {
     height: 413px;
   }
-  /* line 186, ../sass/page/_openpublish_photo_gallery.scss */
+  /* line 212, ../sass/page/_openpublish_photo_gallery.scss */
   .gallery-content .gallery-slide .slide-image-wrapper {
     float: left;
     width: 620px;
     height: 413px;
   }
-  /* line 191, ../sass/page/_openpublish_photo_gallery.scss */
+  /* line 217, ../sass/page/_openpublish_photo_gallery.scss */
   .gallery-content .gallery-slide .slide-caption {
     margin-left: 620px;
     height: 413px;
     overflow-y: scroll;
   }
 }
-/* line 199, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 225, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-slide-next-gallery .slide-image-wrapper {
   position: relative;
 }
-/* line 203, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 229, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-nav {
   width: 100%;
-  max-width: 620px;
   text-align: center;
 }
-/* line 208, ../sass/page/_openpublish_photo_gallery.scss */
+@media all and (min-width: 980px) {
+  /* line 229, ../sass/page/_openpublish_photo_gallery.scss */
+  .gallery-content .gallery-nav {
+    max-width: 620px;
+  }
+}
+/* line 236, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-nav .pagination {
   font: normal 0.92857em/2.07692 "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   display: inline-block;
   vertical-align: top;
 }
-/* line 213, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 241, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-nav .gallery-nav-link {
   display: inline-block;
   vertical-align: top;
@@ -6225,67 +6259,76 @@ body.front #sidebar .block-title {
   line-height: 1;
   overflow: hidden;
 }
-/* line 222, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 249, ../sass/page/_openpublish_photo_gallery.scss */
+.gallery-content .gallery-nav .gallery-nav-link.hidden {
+  cursor: default;
+  color: white;
+}
+/* line 253, ../sass/page/_openpublish_photo_gallery.scss */
+.gallery-content .gallery-nav .gallery-nav-link.hidden.hover, .gallery-content .gallery-nav .gallery-nav-link.hidden:hover {
+  color: white;
+}
+/* line 259, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-nav .gallery-nav-link.hover, .gallery-content .gallery-nav .gallery-nav-link:hover {
   color: #019f84;
   text-decoration: none;
 }
-/* line 226, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 263, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-nav .gallery-nav-link:after {
   display: inline;
   font-family: 'SSGizmo';
   content: '\25C5';
 }
-/* line 231, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 268, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-nav .gallery-nav-link.next:after {
   content: '\25BB';
 }
 
-/* line 241, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 278, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery {
   font: normal 1em/1.5 "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
 @media all and (min-width: 980px) {
-  /* line 244, ../sass/page/_openpublish_photo_gallery.scss */
+  /* line 281, ../sass/page/_openpublish_photo_gallery.scss */
   .node-type-openpublish-photo-gallery .node-openpublish-photo-gallery {
     margin-left: 51px;
   }
 }
-/* line 251, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 288, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery b, .node-openpublish-photo-gallery strong {
   font-weight: normal;
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 252, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 289, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery i, .node-openpublish-photo-gallery em {
   font-weight: normal;
   font-family: "AdelleSans-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 253, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 290, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery b i, .node-openpublish-photo-gallery b em, .node-openpublish-photo-gallery strong i, .node-openpublish-photo-gallery strong em, .node-openpublish-photo-gallery i b, .node-openpublish-photo-gallery i strong, .node-openpublish-photo-gallery em b, .node-openpublish-photo-gallery em strong {
   font-weight: normal;
   font-family: "AdelleSans-Italic", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 257, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 294, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .enter-link {
   font: normal 1em/1.5 "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   color: #019f84;
 }
-/* line 260, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 297, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .enter-link:before {
   content: '\23e9\0020';
   display: inline;
   font-family: "SSGizmo";
 }
-/* line 265, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 302, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .enter-link a {
   color: #019f84;
 }
-/* line 270, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 307, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .takepart-take-action-widget {
   margin: 1.5em auto 2em;
 }
-/* line 274, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 311, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery h2.block-title, .node-openpublish-photo-gallery h3 {
   font-family: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
@@ -6294,22 +6337,22 @@ body.front #sidebar .block-title {
   margin: .667em 0;
   text-transform: lowercase;
 }
-/* line 282, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 319, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery h2.block-title.top-border, .node-openpublish-photo-gallery h3.top-border {
   border-top: 4px solid #000;
   padding-top: 5px;
 }
-/* line 285, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 322, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery h2.block-title span, .node-openpublish-photo-gallery h3 span {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
   font-size: 14px;
 }
-/* line 292, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 329, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .field-name-field-related-stories {
   margin-bottom: 2em;
 }
-/* line 294, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 331, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .field-name-field-related-stories .field-item {
   position: relative;
   padding-left: 15px;
@@ -6324,39 +6367,39 @@ body.front #sidebar .block-title {
   top: 7px;
   left: 0;
 }
-/* line 299, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 336, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .topic-links {
   margin-bottom: 2em;
 }
-/* line 301, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 338, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .topic-links li {
   padding: 0;
 }
-/* line 303, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 340, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .topic-links li:after {
   content: ',\0020';
   display: inline;
 }
-/* line 307, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 344, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .topic-links li:last-child:after {
   content: '';
 }
-/* line 311, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 348, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .topic-links a {
   color: #019f84;
   text-decoration: none;
   text-transform: capitalize;
 }
-/* line 316, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 353, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .topic-links a:hover, .node-openpublish-photo-gallery .topic-links a:active {
   color: #01bf9e;
   text-decoration: underline;
 }
-/* line 323, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 360, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .on-our-radar {
   margin-bottom: 2em;
 }
-/* line 325, ../sass/page/_openpublish_photo_gallery.scss */
+/* line 362, ../sass/page/_openpublish_photo_gallery.scss */
 .node-openpublish-photo-gallery .on-our-radar li {
   position: relative;
   padding-left: 15px;

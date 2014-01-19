@@ -76,6 +76,30 @@
       width: auto;
       float: right;
     }
+
+    .gallery-slide-next-gallery & {
+      position: absolute;
+      right: 0;
+      top: 6px;
+      background-color: transparent;
+      font: normal .928571429em/1.076923077 $ashbury-light;
+
+      &:after {
+        display: none;
+      }
+      &:before {
+        content: '\23e9\0020';
+        display: inline;
+        font-family: "SSGizmo";
+      }
+
+      @include breakpoint($breakpoint-tablet) {
+        top: auto;
+        bottom: 6px;
+        font-size: 1em;
+        line-height: 1;
+      }
+    }
   }
 } // .gallery-cover-content
 
@@ -151,7 +175,8 @@
       background-color: black;
 
       img {
-        vertical-align: bottom;
+        display: block;
+        margin: 0 auto;
       }
     }
     .slide-caption {
@@ -159,6 +184,7 @@
       padding: 1em;
       height: 150px;
       overflow-y: scroll;
+      border: 1px solid #e5e5e5;
 
       .slide-caption-headline {
         font: normal 1.5em/1.142857143 $ashbury-bold;
@@ -202,8 +228,10 @@
   }
   .gallery-nav {
     width: 100%;
-    max-width: 620px;
     text-align: center;
+    @include breakpoint($breakpoint-desktop) {
+      max-width: 620px;
+    }
 
     .pagination {
       font: normal .928571429em/2.076923077 $adelle-regular;
@@ -217,6 +245,15 @@
       font-size: 2.5em; // 35px / 14px
       line-height: 1;
       overflow: hidden;
+
+      &.hidden {
+        cursor: default;
+        color: white;
+        &.hover,
+        &:hover {
+          color: white;
+        }
+      }
 
       &.hover,
       &:hover {
