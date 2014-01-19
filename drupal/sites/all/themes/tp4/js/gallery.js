@@ -42,11 +42,27 @@
     }
   };
 
+  // utility functionto update social share variables 
+  var updateTpSocialMedia = function(imageSrc, shareDescription) {
+    tp_social_config.services.pinterest.media = imageSrc;
+    tp_social_config.services.tumblr.source = imageSrc;
+    tp_social_config.services.pinterest.description = shareDescription;
+    tp_social_config.services.tumblr.caption = shareDescription;    
+  };
+
   // prevent 2 email calls from firing
   window.takepart.analytics.skip_addthis = true;
 
   // analytics
   var skip_next_pageview = false;
+
+  // establish base values for URL/token functions
+  var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
+  var query = '';
+  if(base_url.indexOf('?') > 0) {
+      query = base_url.substring(base_url.indexOf('?'), base_url.length);
+      base_url = base_url.substring(0,base_url.indexOf('?'));
+  }
 
   // utility function to get current token
   var getCurrentToken = function() {
@@ -84,95 +100,172 @@
     }
   };
 
-  var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
-  var query = '';
-  if(base_url.indexOf('?') > 0) {
-      query = base_url.substring(base_url.indexOf('?'), base_url.length);
-      base_url = base_url.substring(0,base_url.indexOf('?'));
-  }
+  // keep track of gallery variables
+  // this is a global for debugging
+  gallery = {
+    // top-level properties
+    slideshow: null,
+    isShowing: false,
+    $slides: null,
 
-  // keep track of whetehr the gallery is showing
-  var galleryShowing = false;
+    // specific slides
+    hasCover: false,
+    $galleryCoverSlide: null,
+    $galleryDescription: null,
+    $galleryContent: null,
 
-  Drupal.behaviors.coverBehavior = {
-    attach: function() {
-      var $galleryCoverSlide = $('#block-takepart-gallery-support-takepart-gallery-cover-slide');
-      var $galleryContent = $('#block-takepart-gallery-support-takepart-gallery-content');
+    // next gallery stuff
+    $nextGallery: null,
+    nextGalleryHeadline: null,
+    nextGalleryTopic: null,
 
-      var showGallery = function(replace) {
-        if ( galleryShowing ) return;
+    // current properties
+    currentSlideIndex: 0,
+    $currentSlide: null,
 
-        var currentImage = $galleryContent.find('img').attr('src');
-        tp_social_config.services.pinterest.media = currentImage;
-        tp_social_config.services.tumblr.source = currentImage;
+    // gallery nav
+    $nav: null,
+    $previousSlide: null,
+    $nextSlide: null,
+    $paginationTotal: null,
+    $paginationCurrent: null,
 
-        var currentDescription = $galleryContent.find('.slide-caption-headline').text();
-        tp_social_config.services.pinterest.description = currentDescription;
-        tp_social_config.services.tumblr.caption = currentDescription;
+    showCover: function() {
+      // upate tpsocial values
+      updateTpSocialMedia(this.$galleryCoverSlide.find('img').attr('src'), this.$galleryCoverSlide.find('.gallery-cover-title').text());
+      this.$galleryCoverSlide.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
-        $galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+      // show the cover
+      this.$galleryCoverSlide.removeClass('hidden');
+      this.$galleryDescription.removeClass('hidden');
+      this.$galleryContent.addClass('hidden');
+      this.isShowing = false;
 
+      $('.gallery-cover-slide, .enter-link').find('> a').on('click.enterGallery', function(e){
+        e.preventDefault();
+        gallery.showGallery();
+      });
+    },
 
-        $galleryCoverSlide.addClass('hidden');
-        $('#gallery-description').addClass('hidden');
-        $galleryContent.removeClass('hidden');
-        galleryShowing = true;
+    showGallery: function(replace) {
+      if ( this.isShowing ) return;
 
-        // TODO $current_slide
-        hpush($current_slide.data('token'), $current_slide.find('.headline').text(), replace);
+      // update tpsocial values
+      updateTpSocialMedia(this.$galleryContent.find('img').attr('src'), this.$galleryContent.find('.slide-caption-headline').text());
+      this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
-        refreshDfpAds();
-      };
+      // show the gallery
+      this.$galleryCoverSlide.addClass('hidden');
+      this.$galleryDescription.addClass('hidden');
+      this.$galleryContent.removeClass('hidden');
+      this.isShowing = true;
 
-      var showCover = function() {
-        $galleryCoverSlide.removeClass('hidden');
-        $('#gallery-description').removeClass('hidden');
-        $galleryContent.addClass('hidden');
-        galleryShowing = false;
+      // update the state of the page
+      // hpush($current_slide.data('token'), $current_slide.find('.headline').text(), replace);
+      refreshDfpAds();
+    },
 
-        var currentImage = $galleryCoverSlide.find('img').attr('src');
-        tp_social_config.services.pinterest.media = currentImage;
-        tp_social_config.services.tumblr.source = currentImage;
-
-        var currentDescription = $galleryCoverSlide.find('.gallery-cover-title').text();
-        tp_social_config.services.pinterest.description = currentDescription;
-        tp_social_config.services.tumblr.caption = currentDescription;
-
-        $galleryCoverSlide.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
-
-        $('.gallery-cover-slide, .enter-link').find('> a').on('click.enterGallery', function(e){
-          e.preventDefault();
-          showGallery();
-        });
-      };
-
-      // Initialize page based on URL
-      if ( getCurrentToken() && getCurrentToken() != 'first-slide' ) {
-        var token = get_curtoken();
-        var $slide = $galleryContent.find('[data-token="' + token + '"]');
-        $slides.tpslide_to($slide);
-        showGallery();
-      } else if ( getCurrentToken() == 'first-slide' ) {
-        skip_next_pageview = true;
-        showGallery(true);
-      } else if ( $galleryCoverSlide.length ) {
-        showCover();
-      } else {
-        skip_next_pageview = true;
-        showGallery(true);
+    next: function() {
+      // if we're on the last slide (currentSlideIndex is zero-indexed)
+      // go to the next gallery if there is one; in any case, return
+      if (this.currentSlideIndex == (this.slideshow.getNumSlides() - 1)) {
+        this.$nextGallery.length && alert('next gallery!'); // TODO
+        return;
       }
 
+      this.slideTo(this.currentSlideIndex + 1);
+    },
+    previous: function() {
+      // if we're on the first slide go back to the cover
+      // if there is one; in any case, return
+      if (this.currentSlideIndex == 0) {
+        this.hasCover && this.showCover();
+        return;
+      }
+
+      this.slideTo(this.currentSlideIndex - 1);
+    },
+
+    slideTo: function(slideIndex) {
+      this.slideshow.slide(slideIndex);
+      this.currentSlideIndex = slideIndex;
+      this.$currentSlide = this.$slides.find('[data-index=' + slideIndex + ']');
+
+      this.$paginationCurrent.html(slideIndex + 1);
+    },
+
+    slideCallback: function() {
+      var previousSlideIndex = this.currentSlideIndex;
+      var newSlideIndex = this.slideshow.getPos();
     }
   };
 
   Drupal.behaviors.slideshowBehavior = {
     attach: function() {
-      // TODO: Initialize Slideshow
+      gallery.$slides = $('#slides');
 
-      // TODO: highlight "next" arrow on slide hover
-      // TODO: Setup click on slide = advance behavior
+      gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
+      gallery.nextGalleryHeadline = gallery.$nextGallery.find('slide-caption-headline').text();
+      // TODO add topics to template
+      // gallery.nextGalleryTopic - gallery.$nextGallery.find('.topic').text();
 
-      // TODO: resize all slides on window resize      
+      gallery.$nav = $('#gallery-nav');
+      gallery.$previousSlide = $('#previous-slide');
+      gallery.$nextSlide = $('#next-slide');
+
+      gallery.slideshow = new Swipe(document.getElementById('slides'), {
+        continuous: false,
+        callback: $.proxy(gallery.slideCallback, gallery)
+      });
+
+      // populate slide nav with current and total numbers
+      gallery.$paginationTotal = $('#total-slides').html(gallery.slideshow.getNumSlides());
+      gallery.$paginationCurrent = $('#current-slide').html('1');
+
+      // clicking images (on all slides by the last) advances slideshow
+      gallery.$slides.find('.gallery-slide').not(gallery.$nextGallery)
+        .on('click', 'img', function() { gallery.$nextSlide.trigger('click'); })
+        .on('mouseover', 'img', function() { gallery.$nextSlide.addClass('hover'); })
+        .on('mouseout', 'img', function () { gallery.$nextSlide.removeClass('hover'); })
+      ;
+
+      // previous/next behavior
+      gallery.$previousSlide.on('click', function (e) {
+        e.preventDefault();
+        gallery.previous.call(gallery);
+      });
+
+      gallery.$nextSlide.on('click', function (e) {
+        e.preventDefault();
+        gallery.next.call(gallery);
+      });
+
+      // TODO: resize all slides on window resize?
+    }
+  };
+
+  Drupal.behaviors.coverBehavior = {
+    attach: function() {
+      gallery.$galleryCoverSlide = $('#block-takepart-gallery-support-takepart-gallery-cover-slide');
+      gallery.$galleryDescription = $('#gallery-description');
+      gallery.$galleryContent = $('#block-takepart-gallery-support-takepart-gallery-content');
+      gallery.hasCover = gallery.$galleryCoverSlide.length;
+
+      // Initialize page based on URL
+      var token = getCurrentToken();
+      if ( token && token != 'first-slide' ) {
+        var slideIndex = gallery.$slides.find("[data-token='" + token + "']").data('index');
+        gallery.slideTo(slideIndex);
+        gallery.showGallery();
+      } else if ( token == 'first-slide' ) {
+        skip_next_pageview = true;
+        gallery.showGallery(true);
+      } else if ( gallery.hasCover ) {
+        gallery.showCover();
+      } else {
+        skip_next_pageview = true;
+        gallery.showGallery(true);
+      }
     }
   };
 
