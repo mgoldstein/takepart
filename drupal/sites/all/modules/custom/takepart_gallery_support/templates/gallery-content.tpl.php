@@ -23,22 +23,23 @@
     </aside>
   </header>
 
-  <ul id="slides">
+  <div id="slides" class="swipe">
+    <div class="swipe-wrap">
     <?php foreach($slides as $delta => $slide) : ?>
-    <li<?php print drupal_attributes($slide['attributes']) ?>>
-      <figure>
-        <div class="slide-image-wrapper">
-          <?php print $slide['image']; ?>
-        </div>
-        <figcaption class="slide-caption">
-          <h2 class="slide-caption-headline"><?php print $slide['title']; ?></h2>
-          <div class="slide-caption-content"><?php print $slide['caption']; ?></div>
-        </figcaption>
-      </figure>
-    </li>
+      <div<?php print drupal_attributes($slide['attributes']) ?>>
+        <figure>
+          <div class="slide-image-wrapper">
+            <?php print $slide['image']; ?>
+          </div>
+          <figcaption class="slide-caption">
+            <h2 class="slide-caption-headline"><?php print $slide['title']; ?></h2>
+            <div class="slide-caption-content"><?php print $slide['caption']; ?></div>
+          </figcaption>
+        </figure>
+      </div>
     <?php endforeach; ?>
     <?php if ($next_gallery) : ?>
-      <li id="next-gallery"<?php print drupal_attributes($next_gallery['attributes']); ?>>
+      <div id="next-gallery"<?php print drupal_attributes($next_gallery['attributes']); ?>>
         <figure>
           <a href="<?php print $next_gallery['href']; ?>">
             <div class="slide-image-wrapper">
@@ -55,7 +56,13 @@
           <div class="slide-caption-content"><?php print $next_gallery['caption']; ?></div>
           </figcaption>
         </figure>
-      </li>
+      </div>
     <?php endif; ?>
-  </ul>
+    </div>
+  </div>
+  <nav id="gallery-nav" class="gallery-nav">
+    <a href="#" id="previous-slide" class="gallery-nav-link previous" title="Previous Slide"></a>
+    <span class="pagination"><span id="current-slide">0</span> of <span id="total-slides">0</span></span>
+    <a href="#" id="next-slide" class="gallery-nav-link next" title="Next Slide"></a>
+  </nav>
 </article>
