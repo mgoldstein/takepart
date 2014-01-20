@@ -158,8 +158,6 @@
 
     // next gallery properties
     $nextGallery: null,
-    nextGalleryHeadline: null,
-    nextGalleryTopic: null,
 
     // state
     isShowing: false,
@@ -315,13 +313,13 @@
     attach: function() {
       // if there is a next gallery slide, set it up
       gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
-      gallery.nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
-      gallery.nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
+      var nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
+      var nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
       gallery.$nextGallery.find('a:first').on('click', function(e) {
         takepart.analytics.track('gallery-next-gallery-click', {
-          headline: gallery.nextGalleryHeadline,
-          topic: gallery.nextGalleryTopic,
+          headline: nextGalleryHeadline,
+          topic: nextGalleryTopic,
           a: this
         });
       });
