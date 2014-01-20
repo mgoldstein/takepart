@@ -57,6 +57,12 @@
 //
 // Social Links
 //
+.social {
+  // Sprite Setup
+  @include all-tp-social-sprites;
+  .comments-link a { @include tp-social-sprite(comment); }
+  .trigger a { @include tp-social-sprite(more); }
+}
 #article-social {
 
   @media (max-width:979px) {
@@ -78,11 +84,6 @@
   @media (max-width: 767px) {
     margin-bottom: 1em;
   }
-
-  // Sprite Setup
-  @include all-tp-social-sprites;
-  .comments-link a { @include tp-social-sprite(comment); }
-  .trigger a { @include tp-social-sprite(more); }
 
   #article-more-shares {
     .tp-social-link {

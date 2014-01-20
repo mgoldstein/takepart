@@ -103,13 +103,35 @@
   }
 } // .gallery-cover-content
 
-.social {
+//
+// social links
+// sprites are in page/_openpublish_article.scss
+// 
+.node-type-openpublish-photo-gallery .social {
   float: right;
+  margin: .571428571em 0;
 
   .headline {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
     font: normal 1em/1 $tradegothic-regular;
     text-transform: uppercase;
     color: $dark-gray;
+  }
+  .tp-social {
+    display: inline-block;
+  }
+  .tp-social-link {
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    padding: 12px;
+    text-indent: 24px;
+    overflow: hidden;
+    background-color: transparent;
+    margin-left: 6px;
   }
 }
 
@@ -134,6 +156,7 @@
   .author {
     @include breakpoint($breakpoint-desktop) {
       float: left;
+      margin-top: .571428571em;
     }
     .publish-date {
       font-family: $adelle-regular;
@@ -145,7 +168,8 @@
   .social {
     float: none;
     max-width: 620px;
-    margin: 0 auto;
+    margin-right: auto;
+    margin-left: auto;
     text-align: right;
     @include breakpoint($breakpoint-desktop) {
       float: right;
