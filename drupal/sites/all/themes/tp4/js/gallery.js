@@ -48,7 +48,7 @@
     tp_social_config.services.pinterest.media = imageSrc;
     tp_social_config.services.tumblr.source = imageSrc;
     tp_social_config.services.pinterest.description = shareDescription;
-    tp_social_config.services.tumblr.caption = shareDescription;    
+    tp_social_config.services.tumblr.caption = shareDescription;
   };
 
   // prevent 2 email calls from firing
@@ -90,7 +90,7 @@
     if ( curtoken == token ) return;
 
     // TODO
-    // update_page(token);
+    // updatePage(token);
 
     if ( replace ) {
       history.replaceState(null, title, base_url + '/' + token + query);
@@ -131,9 +131,7 @@
 
       show_fb_comments(fb_comment_el, base_url + '/' + token);
 
-      if ( googletag != undefined ) {
-        googletag.pubads().refresh();
-      }
+      refreshDfpAds();
     }, 500);
   };
 
@@ -310,8 +308,6 @@
         e.preventDefault();
         gallery.next.call(gallery);
       });
-
-      // TODO: resize all slides on window resize?
     }
   };
 
@@ -340,9 +336,9 @@
       gallery.$galleryContent = $('#block-takepart-gallery-support-takepart-gallery-content');
       gallery.hasCover = gallery.$galleryCoverSlide.length;
 
+
       $('.gallery-cover-slide, .enter-link').find('> a').on('click', function(e){
         e.preventDefault();
-        // gallery.slideTo(0); // shouldn't need this (index should already be at zero)
         gallery.showGallery();
       });
 
