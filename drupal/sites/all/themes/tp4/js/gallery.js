@@ -7,6 +7,7 @@
 
   //
   // Set up gallery-wide variables
+  // and functions
   // 
 
   // social config
@@ -51,10 +52,8 @@
   };
 
   // prevent 2 email calls from firing
+  // (Legacy TP code)
   window.takepart.analytics.skip_addthis = true;
-
-  // analytics
-  var skip_next_pageview = false;
 
   // establish base values for URL/token functions
   var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
@@ -80,18 +79,18 @@
     }
   };
 
-  // Update html5 history if token is new
+  // Update html5 history if token is new,
+  // with option to replace state instead of updating
   var hpush = function(token, title, replace) {
-    var curtoken = getCurrentToken();
+
+    if (typeof window.history == 'undefined') return;
+
     var replace = replace || false;
+    var curtoken = getCurrentToken();
     if ( curtoken == token ) return;
 
     // TODO
     // update_page(token);
-
-    if ( typeof window.history != 'undefined' ) {
-      return;
-    }
 
     if ( replace ) {
       history.replaceState(null, title, base_url + '/' + token + query);
@@ -100,58 +99,94 @@
     }
   };
 
+  var skip_next_pageview = false;
+  var updateTo = null;
+  var updatePage = function(token) {
+    clearTimeout(updateTo);
+
+    // skip the 
+    if ( !skip_next_pageview ) {
+      setTimeout((function(token, skip_next_pageview) {
+        return function() {
+          takepart.analytics.track('gallery-track-slide', {
+            token: token,
+            skip_pageview: skip_next_pageview,
+            next_gallery_headline: next_gallery_headline,
+            next_gallery_topic: next_gallery_topic
+          });
+        }
+      })(token, skip_next_pageview), 500);
+    } else {
+      skip_next_pageview = false;
+    }
+
+    updateTo = setTimeout(function() {
+      var token = get_curtoken();
+
+      if ( token == 'next-gallery' ) {
+        $fb_comment.hide();
+      } else {
+        $fb_comment.show();
+      }
+
+      show_fb_comments(fb_comment_el, base_url + '/' + token);
+
+      if ( googletag != undefined ) {
+        googletag.pubads().refresh();
+      }
+    }, 500);
+  };
+
+
   // keep track of gallery variables
   // this is a global for debugging
   gallery = {
-    // top-level properties
+    // gallery-wide properties
     slideshow: null,
-    isShowing: false,
     $slides: null,
 
-    // specific slides
+    // Cover Slide properties
     hasCover: false,
     $galleryCoverSlide: null,
     $galleryDescription: null,
     $galleryContent: null,
 
-    // next gallery stuff
-    $nextGallery: null,
-    nextGalleryHeadline: null,
-    nextGalleryTopic: null,
-
-    // current properties
-    currentSlideIndex: 0,
-    $currentSlide: null,
-
-    // gallery nav
+    // gallery nav properties
     $nav: null,
     $previousSlide: null,
     $nextSlide: null,
     $paginationTotal: null,
     $paginationCurrent: null,
 
-    showCover: function() {
-      // upate tpsocial values
-      updateTpSocialMedia(this.$galleryCoverSlide.find('img').attr('src'), this.$galleryCoverSlide.find('.gallery-cover-title').text());
-      this.$galleryCoverSlide.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+    // next gallery properties
+    $nextGallery: null,
+    nextGalleryHeadline: null,
+    nextGalleryTopic: null,
 
+    // state
+    isShowing: false,
+    currentSlideIndex: 0,
+    $currentSlide: null,
+
+    showCover: function() {
+      // upate tpsocial values if we ahven't done them already
+      if (!this.$galleryCoverSlide.find('.tp-social:not(.tp-social-skip)').is('tp-social-processed')) {
+        updateTpSocialMedia(this.$galleryCoverSlide.find('img').attr('src'), this.$galleryCoverSlide.find('.gallery-cover-title').text());
+        this.$galleryCoverSlide.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+      }
       // show the cover
       this.$galleryCoverSlide.removeClass('hidden');
       this.$galleryDescription.removeClass('hidden');
       this.$galleryContent.addClass('hidden');
       this.isShowing = false;
 
-      $('.gallery-cover-slide, .enter-link').find('> a').on('click.enterGallery', function(e){
-        e.preventDefault();
-        gallery.showGallery();
-      });
     },
 
     showGallery: function(replace) {
       if ( this.isShowing ) return;
 
-      // update tpsocial values
-      updateTpSocialMedia(this.$galleryContent.find('img').attr('src'), this.$galleryContent.find('.slide-caption-headline').text());
+      // update social values
+      updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
       this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
       // show the gallery
@@ -160,9 +195,8 @@
       this.$galleryContent.removeClass('hidden');
       this.isShowing = true;
 
-      // update the state of the page
-      // hpush($current_slide.data('token'), $current_slide.find('.headline').text(), replace);
-      refreshDfpAds();
+      this.hpushCurrentSlide(replace);
+
     },
 
     next: function() {
@@ -179,54 +213,83 @@
       // if we're on the first slide go back to the cover
       // if there is one; in any case, return
       if (this.currentSlideIndex == 0) {
-        this.hasCover && this.showCover();
+        if(this.hasCover) {
+          this.showCover();
+          hpush('', this.$galleryCoverSlide.find('.gallery-cover-title').text);
+        }
         return;
       }
 
       this.slideTo(this.currentSlideIndex - 1);
     },
 
+    // wrapper function for sliding for consistency
+    // in the gallery object's interface
     slideTo: function(slideIndex) {
-      this.slideshow.slide(slideIndex);
       this.currentSlideIndex = slideIndex;
-      this.$currentSlide = this.$slides.find('[data-index=' + slideIndex + ']');
+      this.$currentSlide = this.$slides.find('[data-index=' + this.currentSlideIndex + ']');
 
-      this.$paginationCurrent.html(slideIndex + 1);
+      // update pagination
+      this.$paginationCurrent.html(this.currentSlideIndex + 1);
+
+      // TODO
+      // set variables/classes for "on first" or "on last" slides?
+
+      // and finally, we slide
+      this.slideshow.slide(slideIndex);
     },
 
     slideCallback: function() {
-      var previousSlideIndex = this.currentSlideIndex;
-      var newSlideIndex = this.slideshow.getPos();
+      // update tpsocial values and hide if we're on the "next gallery" slide
+      updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
+      this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+      if (this.$currentSlide[0] === this.$nextGallery[0]) {
+        //  TODO
+        //  hide social buttons
+      } else {
+        // TODO
+        // show social buttons
+      }
+
+      // TODO re-size slideshow based on height of the current slide?
+
+      // if the gallery is showing, update the state of the page
+      if (!this.isShowing) return;
+      this.hpushCurrentSlide();
+      // TODO do this in the page update?
+      refreshDfpAds();
+    },
+
+    hpushCurrentSlide: function(replaceState) {
+      hpush(this.$currentSlide.data('token'), this.$currentSlide.find('.slide-caption-headline').text(), replaceState);
     }
   };
 
   Drupal.behaviors.slideshowBehavior = {
     attach: function() {
-      gallery.$slides = $('#slides');
-
-      gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
-      gallery.nextGalleryHeadline = gallery.$nextGallery.find('slide-caption-headline').text();
-      // TODO add topics to template
-      // gallery.nextGalleryTopic - gallery.$nextGallery.find('.topic').text();
-
-      gallery.$nav = $('#gallery-nav');
-      gallery.$previousSlide = $('#previous-slide');
-      gallery.$nextSlide = $('#next-slide');
-
+      // first, create the slideshow
       gallery.slideshow = new Swipe(document.getElementById('slides'), {
         continuous: false,
         callback: $.proxy(gallery.slideCallback, gallery)
       });
+      // store the top gallery div jquery object
+      gallery.$slides = $('#slides');
+      gallery.$currentSlide = gallery.$slides.find('[data-index=' + this.currentSlideIndex + ']');
 
-      // populate slide nav with current and total numbers
+      // populate gallery nav properties
+      gallery.$nav = $('#gallery-nav');
+      gallery.$previousSlide = $('#previous-slide');
+      gallery.$nextSlide = $('#next-slide');
       gallery.$paginationTotal = $('#total-slides').html(gallery.slideshow.getNumSlides());
       gallery.$paginationCurrent = $('#current-slide').html('1');
 
+      // hovering on all slides lights lights up "next" nav
       // clicking images (on all slides by the last) advances slideshow
-      gallery.$slides.find('.gallery-slide').not(gallery.$nextGallery)
-        .on('click', 'img', function() { gallery.$nextSlide.trigger('click'); })
+      gallery.$slides.find('.gallery-slide')
         .on('mouseover', 'img', function() { gallery.$nextSlide.addClass('hover'); })
         .on('mouseout', 'img', function () { gallery.$nextSlide.removeClass('hover'); })
+      .not(gallery.$nextGallery)
+        .on('click', 'img', function() { gallery.$nextSlide.trigger('click'); })
       ;
 
       // previous/next behavior
@@ -244,15 +307,41 @@
     }
   };
 
+  Drupal.behaviors.nextGalleryBehavior = {
+    attach: function() {
+      // if there is a next gallery slide, set it up
+      gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
+      gallery.nextGalleryHeadline = gallery.$nextGallery.find('slide-caption-headline').text();
+      // TODO add topics to template
+      // gallery.nextGalleryTopic - gallery.$nextGallery.find('.topic').text();
+
+      gallery.$nextGallery.on('click', 'a:first', function() {
+        takepart.analytics.track('gallery-next-gallery-click', {
+          headline: gallery.nextGalleryHeadline,
+          topic: gallery.nextGalleryTopic,
+          a: this
+        });
+      });
+    }
+  };
+
   Drupal.behaviors.coverBehavior = {
     attach: function() {
+      // populate gallery properties with cover, slideshow, and description
       gallery.$galleryCoverSlide = $('#block-takepart-gallery-support-takepart-gallery-cover-slide');
       gallery.$galleryDescription = $('#gallery-description');
       gallery.$galleryContent = $('#block-takepart-gallery-support-takepart-gallery-content');
       gallery.hasCover = gallery.$galleryCoverSlide.length;
 
+      $('.gallery-cover-slide, .enter-link').find('> a').on('click', function(e){
+        e.preventDefault();
+        // gallery.slideTo(0); // shouldn't need this (index should already be at zero)
+        gallery.showGallery();
+      });
+
       // Initialize page based on URL
       var token = getCurrentToken();
+
       if ( token && token != 'first-slide' ) {
         var slideIndex = gallery.$slides.find("[data-token='" + token + "']").data('index');
         gallery.slideTo(slideIndex);
@@ -269,9 +358,29 @@
     }
   };
 
-  Drupal.behaviors.galleryAnalytics = {
+  Drupal.behaviors.galleryPopstateBehavior = {
     attach: function() {
-      // TODO
+
+      // Listen for html5 history updates/back button
+      var firstPop = true;
+      window.addEventListener('popstate', function(e) {
+        // don't track the first popstate event
+        if (firstPop) return firstPop = false;
+
+        var token = getCurrentToken();
+        alert(token);
+        if (token) {
+          var slideIndex = gallery.$slides.find("[data-token='" + token + "']").data('index');
+          gallery.slideTo(slideIndex);
+          gallery.showGallery();
+        } else if ( gallery.hasCover ) {
+          gallery.showCover();
+        }
+
+        // TODO ??
+        // update_page(token);
+      });
     }
   };
+
 })(jQuery, Drupal, this, this.document);
