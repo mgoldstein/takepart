@@ -227,41 +227,45 @@
       this.slideTo(this.currentSlideIndex - 1);
     },
 
-    // wrapper function for sliding for consistency
-    // in the gallery object's interface
+    // wrapper function for sliding for interface consistency
+    // and for dealing with instances where we're already on the requested slide
     slideTo: function(slideIndex) {
-      this.currentSlideIndex = slideIndex;
-      this.$currentSlide = this.$slides.find('[data-index=' + this.currentSlideIndex + ']');
+      // if we're on the requested slide already, just run the callback
+      if (slideIndex == this.currentSlideIndex) {
+	this.slideCallback();
+      } else {
+	// set the properties before triggering the slide
+	// so they're available to the callback
+	// (could probably do this in the callback with "this.slideshow.getPos()")
+	this.currentSlideIndex = slideIndex;
+	this.$currentSlide = this.$slides.find('[data-index=' + this.currentSlideIndex + ']');
+	this.slideshow.slide(slideIndex);
+      }
+    },
+
+    slideCallback: function() {
+      // update tpsocial values
+      updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
+      this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+
+      // hide social buttons on the "next gallery slide"
+      if (this.$currentSlide[0] === this.$nextGallery[0]) {
+	this.$galleryContent.find('#gallery-content-social').css('visibility', 'hidden');
+      } else {
+	this.$galleryContent.find('#gallery-content-social').css('visibility', 'visible');
+      }
 
       // update pagination
       this.$paginationCurrent.html(this.currentSlideIndex + 1);
+      this.$previousSlide.toggleClass('hidden', this.currentSlideIndex == 0 && !this.hasCover);
+      this.$nextSlide.toggleClass('hidden', this.currentSlideIndex == (this.slideshow.getNumSlides() - 1) && !this.$nextGallery.length);
 
       // TODO
       // set variables/classes for "on first" or "on last" slides?
 
-      // and finally, we slide
-      this.slideshow.slide(slideIndex);
-    },
-
-    slideCallback: function() {
-      // update tpsocial values and hide if we're on the "next gallery" slide
-      updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
-      this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
-      if (this.$currentSlide[0] === this.$nextGallery[0]) {
-        //  TODO
-        //  hide social buttons
-      } else {
-        // TODO
-        // show social buttons
-      }
-
-      // TODO re-size slideshow based on height of the current slide?
-
-      // if the gallery is showing, update the state of the page
+      // if the gallery isn't showing, don't update the state of the page
       if (!this.isShowing) return;
       this.hpushCurrentSlide();
-      // TODO do this in the page update?
-      refreshDfpAds();
     },
 
     hpushCurrentSlide: function(replaceState) {
