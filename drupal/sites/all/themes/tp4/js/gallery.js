@@ -312,8 +312,7 @@
       // if there is a next gallery slide, set it up
       gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
       gallery.nextGalleryHeadline = gallery.$nextGallery.find('slide-caption-headline').text();
-      // TODO add topics to template
-      // gallery.nextGalleryTopic - gallery.$nextGallery.find('.topic').text();
+      gallery.nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
       gallery.$nextGallery.on('click', 'a:first', function() {
         takepart.analytics.track('gallery-next-gallery-click', {

@@ -196,8 +196,9 @@ function template_preprocess_gallery_content(&$variables) {
   }
 
   //next gallery
-  $next_gallery = article_support_next_story($node, 'openpublish_photo_gallery');
-  $variables['next_gallery'] = array();
+  if (function_exists('article_support_next_story')) {
+    $next_gallery = article_support_next_story($node, 'openpublish_photo_gallery');
+  }
 
   if ($next_gallery) {
     $slide = array();
@@ -230,6 +231,15 @@ function template_preprocess_gallery_content(&$variables) {
 
     $slide['href'] = $next_gallery->href . '/first-slide';
 
+    $items = field_get_items('node', $next_gallery_node, 'field_topic');
+    $topics = '';
+    foreach ($items as $item) {
+      $topic = taxonomy_term_load($item['tid']);
+      $topics .= check_plain($topic->name) . ' ';
+    }
+    $slide['attributes']['data-topic'] = trim($topics);
+
+    $slide['node'] = $next_gallery_node; // mostly for debugging
     $variables['next_gallery'] = $slide;
   }
 }
