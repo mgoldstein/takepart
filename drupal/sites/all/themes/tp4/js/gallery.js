@@ -203,7 +203,11 @@
       // if we're on the last slide (currentSlideIndex is zero-indexed)
       // go to the next gallery if there is one; in any case, return
       if (this.currentSlideIndex == (this.slideshow.getNumSlides() - 1)) {
-        this.$nextGallery.length && alert('next gallery!'); // TODO
+	if (this.$nextGallery.length) {
+	  var $anchor = this.$nextGallery.find('a:first');
+	  $anchor.trigger('click');
+	  window.location.href = $anchor.attr('href');
+	}
         return;
       }
 
@@ -311,10 +315,10 @@
     attach: function() {
       // if there is a next gallery slide, set it up
       gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
-      gallery.nextGalleryHeadline = gallery.$nextGallery.find('slide-caption-headline').text();
+      gallery.nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
       gallery.nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
-      gallery.$nextGallery.on('click', 'a:first', function() {
+      gallery.$nextGallery.find('a:first').on('click', function(e) {
         takepart.analytics.track('gallery-next-gallery-click', {
           headline: gallery.nextGalleryHeadline,
           topic: gallery.nextGalleryTopic,
