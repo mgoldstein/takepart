@@ -89,8 +89,7 @@
     var curtoken = getCurrentToken();
     if ( curtoken == token ) return;
 
-    // TODO
-    // updatePage(token);
+    updatePage(token);
 
     if ( replace ) {
       history.replaceState(null, title, base_url + '/' + token + query);
@@ -99,37 +98,41 @@
     }
   };
 
-  var skip_next_pageview = false;
+  var skipNextPageview = false;
   var updateTo = null;
+  var $facebookComments; // initialized elsewhere
   var updatePage = function(token) {
     clearTimeout(updateTo);
 
-    // skip the 
-    if ( !skip_next_pageview ) {
-      setTimeout((function(token, skip_next_pageview) {
+    // allow calls to this function to prevent
+    // the analytics call from being fired
+    if ( !skipNextPageview ) {
+      setTimeout((function(token, skipNextPageview) {
         return function() {
           takepart.analytics.track('gallery-track-slide', {
             token: token,
-            skip_pageview: skip_next_pageview,
-            next_gallery_headline: next_gallery_headline,
-            next_gallery_topic: next_gallery_topic
+            skip_pageview: skipNextPageview,
+            next_gallery_headline: gallery.nextGalleryHeadline,
+            next_gallery_topic: gallery.nextGalleryTopic
           });
         }
-      })(token, skip_next_pageview), 500);
+      })(token, skipNextPageview), 500);
     } else {
-      skip_next_pageview = false;
+      skipNextPageview = false;
     }
 
+    $facebookComments = $facebookComments || $('#gallery-comments');
     updateTo = setTimeout(function() {
-      var token = get_curtoken();
+      var token = getCurrentToken();
 
       if ( token == 'next-gallery' ) {
-        $fb_comment.hide();
+        $facebookComments.hide();
       } else {
-        $fb_comment.show();
+        $facebookComments.show();
       }
 
-      show_fb_comments(fb_comment_el, base_url + '/' + token);
+      // TODO
+      // show_fb_comments(fb_comment_el, base_url + '/' + token);
 
       refreshDfpAds();
     }, 500);
@@ -158,6 +161,8 @@
 
     // next gallery properties
     $nextGallery: null,
+    nextGalleryHeadline: null,
+    nextGalleryTopic: null,
 
     // state
     isShowing: false,
@@ -191,6 +196,10 @@
 
       this.hpushCurrentSlide(replace);
 
+    },
+
+    getIndex: function(token) {
+      return this.$slides.find("[data-token='" + token + "']").data('index');
     },
 
     next: function() {
@@ -324,8 +333,8 @@
 
   Drupal.behaviors.nextGalleryBehavior = {
     attach: function() {
-      var nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
-      var nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
+      gallery.nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
+      gallery.nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
       gallery.$nextGallery.find('a:first').on('click', function(e) {
         takepart.analytics.track('gallery-next-gallery-click', {
@@ -348,16 +357,16 @@
       var token = getCurrentToken();
 
       if ( token && token != 'first-slide' ) {
-        var slideIndex = gallery.$slides.find("[data-token='" + token + "']").data('index');
+        var slideIndex = gallery.getIndex(token);
         gallery.slideTo(slideIndex);
         gallery.showGallery();
       } else if ( token == 'first-slide' ) {
-        skip_next_pageview = true;
+        skipNextPageview = true;
         gallery.showGallery(true);
       } else if ( gallery.hasCover ) {
         gallery.showCover();
       } else {
-        skip_next_pageview = true;
+        skipNextPageview = true;
         gallery.showGallery(true);
       }
     }
@@ -374,15 +383,14 @@
 
         var token = getCurrentToken();
         if (token) {
-          var slideIndex = gallery.$slides.find("[data-token='" + token + "']").data('index');
+          var slideIndex = gallery.getIndex(token);
           gallery.slideTo(slideIndex);
           gallery.showGallery();
         } else if ( gallery.hasCover ) {
           gallery.showCover();
         }
 
-        // TODO ??
-        // update_page(token);
+        updatePage(token);
       });
     }
   };
