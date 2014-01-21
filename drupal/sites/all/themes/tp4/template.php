@@ -72,13 +72,13 @@ function tp4_preprocess_page(&$variables) {
   }
 
   // override page titles on certain node templates
-  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article'))) {
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'video'))) {
     $variables['title'] = '';
   }
 
   // add Taboola JS if we're on an article, feature or photo gallery page
   // but only if we're on the production site
-  if (variable_get('environment', 'dev') == 'prod' && !empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery'))) {
+  if (variable_get('environment', 'dev') == 'prod' && !empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
     drupal_add_js(drupal_get_path('theme', 'tp4') . '/js/taboola.js', 'file');
     drupal_add_js('window._taboola = window._taboola || []; _taboola.push({flush:true});', array('type' => 'inline', 'scope' => 'footer'));
   }
@@ -107,10 +107,10 @@ function tp4_preprocess_node(&$variables, $hook) {
   // node types per view view mode.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $vars['view_mode'];
-  if($variables['type'] == 'openpublish_video' && $variables['view_mode'] == 'full'){
+  if(in_array($variables['type'], array('openpublish_video', 'video')) && $variables['view_mode'] == 'full'){
     $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
   }
-  
+
   // Add template variables for the local node url
   // (for compatability in dev/qa environments)
   // and for the url to the same node on production

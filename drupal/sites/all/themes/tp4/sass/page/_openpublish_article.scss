@@ -8,6 +8,7 @@
 //
 @include breakpoint($breakpoint-desktop) {
   .node-openpublish-article.view-mode-full,
+  .node-video.view-mode-full,
   .node-feature-article.view-mode-full {
     #article-social {
       float: left;
@@ -21,7 +22,8 @@
       float: left;
     }
   }
-  .node-openpublish-article.view-mode-full {
+  .node-openpublish-article.view-mode-full,
+  .node-video.view-mode-full {
     #article-content,
     #series-navigation,
     #article-footer,
@@ -241,9 +243,10 @@
 //
 // HEADER STYLES
 // common styles
-// 
+//
 .node-openpublish-article.view-mode-full,
-.node-feature-article.view-mode-full {
+.node-feature-article.view-mode-full,
+.node-video.view-mode-full {
   .article-header {
     .node-title {
       // these values are extremely stupid.
@@ -395,7 +398,8 @@
 }
 
 .node-feature-article.view-mode-full,
-.node-openpublish-article.view-mode-full {
+.node-openpublish-article.view-mode-full,
+.node-video.view-mode-full {
   .field-name-body {
     font-family: $adelle-light;
     font-weight: normal;
@@ -1059,8 +1063,9 @@
 
 //
 // Sticky Ad Unit for Sidebar
-// 
-.page-node.node-type-openpublish-article {
+//
+.page-node.node-type-openpublish-article,
+.page-node.node-type.video {
   .block-boxes-ga_ad-bottom {
     @include breakpoint($breakpoint-desktop) {
       &.sticky {
