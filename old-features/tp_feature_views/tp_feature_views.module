@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Views feature.
- */
-
-include_once 'tp_feature_views.features.inc';

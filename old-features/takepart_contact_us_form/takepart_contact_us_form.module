@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Contact Us Form feature.
- */
-
-include_once('takepart_contact_us_form.features.inc');

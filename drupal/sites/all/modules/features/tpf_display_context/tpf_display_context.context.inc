@@ -1709,5 +1709,113 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
   $context->condition_mode = 1;
   $export['tp4_global_not_front'] = $context;
 
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_photo_gallery';
+  $context->description = '';
+  $context->tag = '';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-9',
+        ),
+        'tp4_support-tp4_slim_nav' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_slim_nav',
+          'region' => 'header',
+          'weight' => '-8',
+        ),
+        'tp4_support-tp4_footer' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_footer',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+        'menu-menu-megamenu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-megamenu',
+          'region' => 'left_drawer',
+          'weight' => '-10',
+        ),
+        'takepart_gallery_support-takepart_gallery_cover_slide' => array(
+          'module' => 'takepart_gallery_support',
+          'delta' => 'takepart_gallery_cover_slide',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
+        'takepart_gallery_support-takepart_gallery_content' => array(
+          'module' => 'takepart_gallery_support',
+          'delta' => 'takepart_gallery_content',
+          'region' => 'preface',
+          'weight' => '-9',
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'newsletter_campaign-48' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '48',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
+        'bean--of-the-day' => array(
+          'module' => 'bean',
+          'delta' => '-of-the-day',
+          'region' => 'sidebar',
+          'weight' => '-8',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar',
+          'weight' => '-7',
+        ),
+        'pm_interstitial-interstitials' => array(
+          'module' => 'pm_interstitial',
+          'delta' => 'interstitials',
+          'region' => 'suffix',
+          'weight' => '-10',
+        ),
+        'boxes-bg_skin_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'bg_skin_sponsor',
+          'region' => 'suffix',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+    'disable_context' => array(
+      'disabled' => array(
+        'tp4_global' => 'tp4_global',
+        'tp4_global_not_front' => 'tp4_global_not_front',
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+  $export['tp4_photo_gallery'] = $context;
+
   return $export;
 }

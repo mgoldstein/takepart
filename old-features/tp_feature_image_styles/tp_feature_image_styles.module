@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Takepart Image Styles feature.
- */
-
-include_once 'tp_feature_image_styles.features.inc';
