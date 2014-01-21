@@ -55,6 +55,10 @@
   // (Legacy TP code)
   window.takepart.analytics.skip_addthis = true;
 
+  var isTouch = 'ontouchstart' in window || 'msmaxtouchpoints' in window.navigator;
+  var isTouchmove = false;
+  var click = isTouch ? "touchend" : "click";
+
   // establish base values for URL/token functions
   var base_url = document.location.href.split(/\/|#/).slice(0,5).join('/');
   var query = '';
@@ -228,7 +232,7 @@
       if (this.currentSlideIndex == (this.slideshow.getNumSlides() - 1)) {
 	if (this.$nextGallery.length) {
 	  var $anchor = this.$nextGallery.find('a:first');
-	  $anchor.trigger('click');
+	  $anchor.trigger(click);
 	  window.location.href = $anchor.attr('href');
 	}
         return;
@@ -333,20 +337,28 @@
 
       // hovering on all slides lights lights up "next" nav
       // clicking images (on all slides by the last) advances slideshow
+      // (or touchend, on touch-enabled devices)
       gallery.$slides.find('.gallery-slide')
         .on('mouseover', 'img', function() { gallery.$nextSlide.addClass('hover'); })
         .on('mouseout', 'img', function () { gallery.$nextSlide.removeClass('hover'); })
       .not(gallery.$nextGallery)
-        .on('click', 'img', function() { gallery.$nextSlide.trigger('click'); })
+        .on(click, 'img', function() { gallery.$nextSlide.trigger(click); })
       ;
 
+      // deal with touch events
+      $('body').on('touchmove', function() {
+        isTouchmove = true;
+      });
+
       // previous/next behavior
-      gallery.$previousSlide.on('click', function (e) {
+      gallery.$previousSlide.on(click, function (e) {
+        if (isTouchmove) return isTouchmove = false;
         e.preventDefault();
         gallery.previous.call(gallery);
       });
 
-      gallery.$nextSlide.on('click', function (e) {
+      gallery.$nextSlide.on(click, function (e) {
+        if (isTouchmove) return isTouchmove = false;
         e.preventDefault();
         gallery.next.call(gallery);
       });
@@ -360,7 +372,8 @@
       gallery.nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
       gallery.nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
-      gallery.$nextGallery.find('a:first').on('click', function(e) {
+      gallery.$nextGallery.find('a:first').on(click, function(e) {
+        if (isTouchmove) return isTouchmove = false;
         takepart.analytics.track('gallery-next-gallery-click', {
           headline: nextGalleryHeadline,
           topic: nextGalleryTopic,
@@ -374,7 +387,8 @@
     attach: function() {
       if (!$('body').is('.node-type-openpublish-photo-gallery')) return;
 
-      $('.gallery-cover-slide, .enter-link').find('> a').on('click', function(e){
+      $('.gallery-cover-slide, .enter-link').find('> a').on(click, function(e){
+        if (isTouchmove) return isTouchmove = false;
         e.preventDefault();
         gallery.showGallery();
       });
