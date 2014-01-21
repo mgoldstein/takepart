@@ -161,7 +161,7 @@
 
     // state
     isShowing: false,
-    currentSlideIndex: 0,
+    currentSlideIndex: null,
     $currentSlide: null,
 
     showCover: function() {
@@ -181,9 +181,7 @@
     showGallery: function(replace) {
       if ( this.isShowing ) return;
 
-      // update social values
-      updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
-      this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+      this.slideCallback();
 
       // show the gallery
       this.$galleryCoverSlide.addClass('hidden');
@@ -256,12 +254,11 @@
       this.$previousSlide.toggleClass('hidden', this.currentSlideIndex == 0 && !this.hasCover);
       this.$nextSlide.toggleClass('hidden', this.currentSlideIndex == (this.slideshow.getNumSlides() - 1) && !this.$nextGallery.length);
 
-      // TODO
-      // set variables/classes for "on first" or "on last" slides?
-
-      // if the gallery isn't showing, don't update the state of the page
-      if (!this.isShowing) return;
-      this.hpushCurrentSlide();
+      // only update the history and state of the page
+      // if the gallery is showing.
+      if (this.isShowing) {
+        this.hpushCurrentSlide();        
+      }
     },
 
     hpushCurrentSlide: function(replaceState) {
@@ -269,24 +266,40 @@
     }
   };
 
-  Drupal.behaviors.slideshowBehavior = {
+  Drupal.behaviors.sideshowInit = {
     attach: function() {
       // first, create the slideshow
       gallery.slideshow = new Swipe(document.getElementById('slides'), {
         continuous: false,
         callback: $.proxy(gallery.slideCallback, gallery)
       });
-      // store the top gallery div jquery object
-      gallery.$slides = $('#slides');
-      gallery.$currentSlide = gallery.$slides.find('[data-index=' + this.currentSlideIndex + ']');
 
-      // populate gallery nav properties
+      // populate gallery properties
+      gallery.$slides = $('#slides');
+
+      // gallery nav
       gallery.$nav = $('#gallery-nav');
       gallery.$previousSlide = $('#previous-slide');
       gallery.$nextSlide = $('#next-slide');
       gallery.$paginationTotal = $('#total-slides').html(gallery.slideshow.getNumSlides());
       gallery.$paginationCurrent = $('#current-slide').html('1');
 
+      // next gallery slide
+      gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
+
+      // cover properties
+      gallery.$galleryCoverSlide = $('#block-takepart-gallery-support-takepart-gallery-cover-slide');
+      gallery.$galleryDescription = $('#gallery-description');
+      gallery.$galleryContent = $('#block-takepart-gallery-support-takepart-gallery-content');
+      gallery.hasCover = gallery.$galleryCoverSlide.length;
+
+      // fire the callback to populate all the relevant data
+      gallery.slideTo(0);
+    }
+  };
+
+  Drupal.behaviors.slideshowBehavior = {
+    attach: function() {
       // hovering on all slides lights lights up "next" nav
       // clicking images (on all slides by the last) advances slideshow
       gallery.$slides.find('.gallery-slide')
@@ -311,8 +324,6 @@
 
   Drupal.behaviors.nextGalleryBehavior = {
     attach: function() {
-      // if there is a next gallery slide, set it up
-      gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
       var nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
       var nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
@@ -328,13 +339,6 @@
 
   Drupal.behaviors.coverBehavior = {
     attach: function() {
-      // populate gallery properties with cover, slideshow, and description
-      gallery.$galleryCoverSlide = $('#block-takepart-gallery-support-takepart-gallery-cover-slide');
-      gallery.$galleryDescription = $('#gallery-description');
-      gallery.$galleryContent = $('#block-takepart-gallery-support-takepart-gallery-content');
-      gallery.hasCover = gallery.$galleryCoverSlide.length;
-
-
       $('.gallery-cover-slide, .enter-link').find('> a').on('click', function(e){
         e.preventDefault();
         gallery.showGallery();
@@ -369,7 +373,6 @@
         if (firstPop) return firstPop = false;
 
         var token = getCurrentToken();
-        alert(token);
         if (token) {
           var slideIndex = gallery.$slides.find("[data-token='" + token + "']").data('index');
           gallery.slideTo(slideIndex);
