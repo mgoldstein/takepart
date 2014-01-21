@@ -84,10 +84,12 @@ Drupal.behaviors.tpsocialShares = {
         var $body = $('body'),
             isOpenpublishArticle = $body.is('.page-node.node-type-openpublish-article'),
             isFeatureArticle = $body.is('.page-node.node-type-feature-article');
+            isVideoArticle = $body.is('.page-node.node-type-video');
 
         if (
             isOpenpublishArticle
             || isFeatureArticle
+            || isVideoArticle
         ) {
             // Setup Social Share Buttons
             var tp_social_config = {
@@ -206,7 +208,8 @@ Drupal.behaviors.tpsocialShares = {
         attach: function() {
             var $body = $('body');
 
-            if ($body.is('.page-node.node-type-openpublish-article')) {
+            if ($body.is('.page-node.node-type-openpublish-article')
+              || $body.is('.page-node.node-type-video')) {
 
                 // make second ad sticky
                 // (sticky social buttons are done below)
@@ -263,5 +266,5 @@ Drupal.behaviors.tpsocialShares = {
         'Home - stories under lead' : 'body.page-tp4-homepage .panel-secondary-featured',
         'Home - top horizontal promo' : '#block-tp4-support-tp4-dont-miss'
     });
-        
+
 })(jQuery, Drupal, this, this.document);
