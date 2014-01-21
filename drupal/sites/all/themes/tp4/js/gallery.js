@@ -72,13 +72,6 @@
     return token;
   };
 
-  // utility function to refresh ads
-  var refreshDfpAds = function() {
-    if(typeof googletag != 'undefined') {
-      googletag.pubads().refresh();
-    }
-  };
-
   // Update html5 history if token is new,
   // with option to replace state instead of updating
   var hpush = function(token, title, replace) {
@@ -100,7 +93,6 @@
 
   var skipNextPageview = false;
   var updateTo = null;
-  var $facebookComments; // initialized elsewhere
   var updatePage = function(token) {
     clearTimeout(updateTo);
 
@@ -121,21 +113,43 @@
       skipNextPageview = false;
     }
 
-    $facebookComments = $facebookComments || $('#gallery-comments');
     updateTo = setTimeout(function() {
-      var token = getCurrentToken();
-
-      if ( token == 'next-gallery' ) {
-        $facebookComments.hide();
-      } else {
-        $facebookComments.show();
-      }
-
-      // TODO
-      // show_fb_comments(fb_comment_el, base_url + '/' + token);
-
+      showFacebookComments(token);
       refreshDfpAds();
     }, 500);
+  };
+
+  // utility function to refresh ads
+  var refreshDfpAds = function() {
+    if(typeof googletag != 'undefined') {
+      googletag.pubads().refresh();
+    }
+  };
+
+  // utility funcitions to show/hide and replace facebook comments
+  var $facebookComments = null;
+  var facebookCommentsTemplate = null;
+  var showFacebookComments = function(token) {
+
+    $facebookComments = $facebookComments || $('#gallery-comments');
+
+    if ( token == 'next-gallery' ) {
+      $facebookComments.hide();
+    } else {
+      $facebookComments.show();
+    }
+
+      updateFacebookComments(base_url + '/' + token);
+  };
+
+  var updateFacebookComments = function(url) {
+    facebookCommentsTemplate = facebookCommentsTemplate || $('#facebook-comments-template').text();
+
+    if ( url ) {
+      $facebookComments.html(facebookCommentsTemplate.replace(/href="[^"]+"/g, 'href="' + url + '"'));
+    }
+
+    FB.XFBML.parse($facebookComments[0]);
   };
 
 
@@ -194,8 +208,14 @@
       this.$galleryContent.removeClass('hidden');
       this.isShowing = true;
 
+      // store the token to catch a corner case where page updates
+      // fail to fire when the first slide is loaded.
+      var token = getCurrentToken();
       this.hpushCurrentSlide(replace);
 
+      if (token == getCurrentToken()) {
+	showFacebookComments(token);
+      }
     },
 
     getIndex: function(token) {
@@ -266,7 +286,7 @@
       // only update the history and state of the page
       // if the gallery is showing.
       if (this.isShowing) {
-        this.hpushCurrentSlide();        
+	this.hpushCurrentSlide();
       }
     },
 
@@ -358,8 +378,8 @@
 
       if ( token && token != 'first-slide' ) {
         var slideIndex = gallery.getIndex(token);
-        gallery.slideTo(slideIndex);
         gallery.showGallery();
+	gallery.slideTo(slideIndex);
       } else if ( token == 'first-slide' ) {
         skipNextPageview = true;
         gallery.showGallery(true);

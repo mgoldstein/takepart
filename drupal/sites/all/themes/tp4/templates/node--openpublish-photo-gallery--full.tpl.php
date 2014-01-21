@@ -46,6 +46,9 @@
       <h3 class="top-border"><?php print t('Comments'); ?> <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
       <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
     </div>
-
+    <script id="facebook-comments-template" type="text/x-javascript-template">
+      <h3 class="top-border"><?php print t('Comments'); ?> <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
+      <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
+    </script>
   </aside>
 </div>
