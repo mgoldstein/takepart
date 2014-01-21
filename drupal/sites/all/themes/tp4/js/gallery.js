@@ -297,6 +297,8 @@
 
   Drupal.behaviors.sideshowInit = {
     attach: function() {
+      if (!$('body').is('.node-type-openpublish-photo-gallery')) return;
+
       // first, create the slideshow
       gallery.slideshow = new Swipe(document.getElementById('slides'), {
         continuous: false,
@@ -329,6 +331,8 @@
 
   Drupal.behaviors.slideshowBehavior = {
     attach: function() {
+      if (!$('body').is('.node-type-openpublish-photo-gallery')) return;
+
       // hovering on all slides lights lights up "next" nav
       // clicking images (on all slides by the last) advances slideshow
       gallery.$slides.find('.gallery-slide')
@@ -353,6 +357,8 @@
 
   Drupal.behaviors.nextGalleryBehavior = {
     attach: function() {
+      if (!$('body').is('.node-type-openpublish-photo-gallery')) return;
+
       gallery.nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
       gallery.nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
@@ -368,6 +374,8 @@
 
   Drupal.behaviors.coverBehavior = {
     attach: function() {
+      if (!$('body').is('.node-type-openpublish-photo-gallery')) return;
+
       $('.gallery-cover-slide, .enter-link').find('> a').on('click', function(e){
         e.preventDefault();
         gallery.showGallery();
@@ -394,6 +402,7 @@
 
   Drupal.behaviors.galleryPopstateBehavior = {
     attach: function() {
+      if (!$('body').is('.node-type-openpublish-photo-gallery')) return;
 
       // Listen for html5 history updates/back button
       var firstPop = true;
