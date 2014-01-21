@@ -257,16 +257,14 @@
       if (slideIndex == this.currentSlideIndex) {
 	this.slideCallback();
       } else {
-	// set the properties before triggering the slide
-	// so they're available to the callback
-	// (could probably do this in the callback with "this.slideshow.getPos()")
-	this.currentSlideIndex = slideIndex;
-	this.$currentSlide = this.$slides.find('[data-index=' + this.currentSlideIndex + ']');
 	this.slideshow.slide(slideIndex);
       }
     },
 
     slideCallback: function() {
+      this.currentSlideIndex = this.slideshow.getPos();
+      this.$currentSlide = this.$slides.find('[data-index=' + this.currentSlideIndex + ']');
+
       // update tpsocial values
       updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
       this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
