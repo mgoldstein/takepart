@@ -256,7 +256,7 @@ function takepart_gallery_support_preprocess_block(&$variables) {
   }
   if($variables['block']->delta == 'takepart_gallery_content') {
     $variables['classes_array'][] = 'takepart-gallery-content';
-    $variables['classes_array'][] = 'hidden';
+    // $variables['classes_array'][] = 'hidden';
   }
 }
 
