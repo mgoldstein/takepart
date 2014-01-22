@@ -5224,7 +5224,7 @@ body.front #sidebar .block-title {
 .node-feature-article.view-mode-full .field-name-body blockquote,
 .node-openpublish-article.view-mode-full .field-name-body blockquote {
   font-family: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
-  margin: 2.5em 0;
+  margin: 2.5em 1em;
   position: relative;
 }
 /* line 493, ../sass/page/_openpublish_article.scss */
