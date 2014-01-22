@@ -1,7 +1,6 @@
 .takepart-gallery-cover-slide,
 .takepart-gallery-content {
   width: 100%;
-  max-width: 960px; // mimic grid items padding
   margin: 0 auto 1.5em;
   &.hidden {
     display: none;
@@ -57,15 +56,21 @@
     }
   }
   .gallery-cover-enter {
-    background-color: $light-mint;
+    display: block;
     padding: .5em 1em; // 16px
     font: normal 1.142857143em/1.125 $adelle-regular;
     text-transform: lowercase;
     text-align: center;
+    background-color: $light-mint;
+    a:hover & {
+      background-color: black;
+    }
     &:after {
       content: '\0020\23e9';
       display: inline;
       font-family: "SSGizmo";
+      line-height: .9;
+      vertical-align: bottom;
     }
     position: absolute;
     @include box-sizing(border-box);
@@ -75,30 +80,6 @@
       position: static;
       width: auto;
       float: right;
-    }
-
-    .gallery-slide-next-gallery & {
-      position: absolute;
-      right: 0;
-      top: 6px;
-      background-color: transparent;
-      font: normal .928571429em/1.076923077 $ashbury-light;
-
-      &:after {
-        display: none;
-      }
-      &:before {
-        content: '\23e9\0020';
-        display: inline;
-        font-family: "SSGizmo";
-      }
-
-      @include breakpoint($breakpoint-tablet) {
-        top: auto;
-        bottom: 6px;
-        font-size: 1em;
-        line-height: 1;
-      }
     }
   }
 } // .gallery-cover-content
@@ -137,9 +118,6 @@
 
 // slides
 .gallery-content {
-  @include breakpoint($breakpoint-desktop) {
-    margin-left: 51px;
-  }
   .gallery-header {
     color: black;
     @include clearfix;
@@ -173,7 +151,6 @@
     text-align: right;
     @include breakpoint($breakpoint-desktop) {
       float: right;
-      margin-right: 289px;
     }
   }
   .swipe {
@@ -206,13 +183,12 @@
     .slide-caption {
       @include box-sizing(border-box);
       padding: 1em;
-      height: 150px;
       overflow-y: scroll;
       border: 1px solid #e5e5e5;
 
       .slide-caption-headline {
         font: normal 1.5em/1.142857143 $ashbury-bold;
-        margin-bottom: .667em;
+        margin-bottom: .476190476em; // 10px / 21px 
       }
 
       .slide-caption-content {
@@ -221,15 +197,26 @@
         i, em { font-weight: normal; font-family: $ashbury-light-italic; }
         p {
           margin: 1em 0;
+          &:first-child {
+            margin-top: 0;
+          }
         }
         h5 {
-          line-height: 1.5;
+          font-size: 1em;
+          line-height: 1.5em;
         }
         a {
           color: $mint;
         }
       }
-
+    }
+    &.gallery-slide-next-gallery {
+      .slide-caption {
+        padding-top: 3.5em;
+        @include breakpoint($breakpoint-desktop) {
+          padding-top: 1em;
+        }
+      }
     }
     @include breakpoint($breakpoint-desktop) {
       height: 413px;
@@ -281,7 +268,7 @@
 
       &.hover,
       &:hover {
-        color: $mint;
+        color: $light-mint;
         text-decoration: none;
       }
       &:after {
@@ -300,13 +287,6 @@
 
 //supplementary content
 .node-openpublish-photo-gallery {
-
-  @include breakpoint($breakpoint-desktop) {
-    .node-type-openpublish-photo-gallery & {
-      margin-left: 51px;      
-    }
-  }
-
   font: normal 1em/1.5 $adelle-light;
 
   b, strong { font-weight: normal; font-family: $adelle-regular; }
@@ -322,6 +302,8 @@
       content: '\23e9\0020';
       display: inline;
       font-family: "SSGizmo";
+      line-height: 1;
+      vertical-align: text-bottom;
     }
     a {
       color: $mint;
@@ -329,7 +311,7 @@
   }
 
   .takepart-take-action-widget {
-    margin: 1.5em auto 2em;
+    margin: 0 auto;
   }
 
   h2.block-title, h3 {
@@ -388,5 +370,11 @@
     }
   }
 
+}
 
+// slides
+.node-type-openpublish-photo-gallery.gallery-showing .region-sidebar {
+  @include breakpoint($breakpoint-desktop) {
+    margin-top: -57px;
+  }
 }

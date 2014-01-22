@@ -95,11 +95,15 @@ function template_preprocess_gallery_cover_slide(&$variables) {
   } else {
     $cover_slide = field_get_items('node', $node, 'field_thumbnail');
   }
+  $alt_text = $node->title;
+  if ($alt_items = field_get_items('file', $cover_slide[0]['file'], 'field_file_image_alt_text')) {
+    $alt_text = drupal_render(field_view_value('file', $cover_slide[0]['file'], 'field_file_image_alt_text', $alt_items[0]));
+  }
 
   $variables['gallery_cover_image'] = theme('image_style', array(
     'path' => $cover_slide[0]['file']->uri,
     'style_name' => 'tp_gallery_slide',
-    'alt' => $node->title,
+    'alt' => $alt_text,
   ));
 }
 
@@ -181,10 +185,15 @@ function template_preprocess_gallery_content(&$variables) {
         $slide['attributes']['data-token'] = strtolower(strtok(htmlspecialchars_decode($file->filename, ENT_QUOTES), "."));
       }
 
+      $alt_text = $slide['title'];
+      if ($alt_items = field_get_items('file', $file, 'field_file_image_alt_text')) {
+        $alt_text = drupal_render(field_view_value('file', $file, 'field_file_image_alt_text', $alt_items[0]));
+      }
+
       $slide['image'] = theme('image_style', array(
         'style_name' => 'tp_gallery_slide',
         'path' => $file->uri,
-        'alt' => $slide['title'],
+        'alt' => $alt_text,
       ));
 
       $items = field_get_items('file', $file, 'field_media_caption');

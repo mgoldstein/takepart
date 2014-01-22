@@ -198,6 +198,7 @@
       this.$galleryDescription.removeClass('hidden');
       this.$galleryContent.addClass('hidden');
       this.isShowing = false;
+      $('body').removeClass('gallery-showing');
 
     },
 
@@ -211,6 +212,7 @@
       this.$galleryDescription.addClass('hidden');
       this.$galleryContent.removeClass('hidden');
       this.isShowing = true;
+      $('body').addClass('gallery-showing');
 
       // store the token to catch a corner case where page updates
       // fail to fire when the first slide is loaded.
