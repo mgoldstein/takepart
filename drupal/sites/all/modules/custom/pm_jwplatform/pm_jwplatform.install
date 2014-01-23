@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function pm_jwplatform_schema() {
+  return array(
+    'cache_pm_jwplatform' => drupal_get_schema_unprocessed('system', 'cache'),
+  );
+}

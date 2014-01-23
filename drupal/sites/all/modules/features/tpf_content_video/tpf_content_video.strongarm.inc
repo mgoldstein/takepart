@@ -228,23 +228,26 @@ function tpf_content_video_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '10',
-        ),
-        'redirect' => array(
           'weight' => '11',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '12',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '13',
         ),
       ),
       'display' => array(),
@@ -325,6 +328,41 @@ function tpf_content_video_strongarm() {
   $strongarm->name = 'node_submitted_video';
   $strongarm->value = 1;
   $export['node_submitted_video'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pm_jwplatform_api_key';
+  $strongarm->value = 'NnnOqH8r';
+  $export['pm_jwplatform_api_key'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pm_jwplatform_api_secret';
+  $strongarm->value = 'fJoeVtVS5YriI0Bnh8v6lo1i';
+  $export['pm_jwplatform_api_secret'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pm_jwplatform_content_dns_mask';
+  $strongarm->value = 'video.takepart.com';
+  $export['pm_jwplatform_content_dns_mask'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pm_jwplayer_account_token';
+  $strongarm->value = 'esP2FhWwEeODmBIxOUCPzg';
+  $export['pm_jwplayer_account_token'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pm_jwplayer_player_key';
+  $strongarm->value = 'xlvA/gqv5vAkINGetf3aFsus8xjtNRWt+WzQqA==';
+  $export['pm_jwplayer_player_key'] = $strongarm;
 
   return $export;
 }
