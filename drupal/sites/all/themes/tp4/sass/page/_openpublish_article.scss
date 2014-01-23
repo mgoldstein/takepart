@@ -59,6 +59,12 @@
 //
 // Social Links
 //
+.social {
+  // Sprite Setup
+  @include all-tp-social-sprites;
+  .comments-link a { @include tp-social-sprite(comment); }
+  .trigger a { @include tp-social-sprite(more); }
+}
 #article-social {
 
   @media (max-width:979px) {
@@ -80,11 +86,6 @@
   @media (max-width: 767px) {
     margin-bottom: 1em;
   }
-
-  // Sprite Setup
-  @include all-tp-social-sprites;
-  .comments-link a { @include tp-social-sprite(comment); }
-  .trigger a { @include tp-social-sprite(more); }
 
   #article-more-shares {
     .tp-social-link {
@@ -490,7 +491,7 @@
     // blockquote styling
     blockquote {
       font-family: $ashbury-light-italic;
-      margin: 2.5em 0;
+      margin: 2.5em 1em;
       position: relative;
       &:before,
       &:after {
