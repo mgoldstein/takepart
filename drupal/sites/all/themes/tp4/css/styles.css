@@ -6239,7 +6239,7 @@ a:hover .gallery-cover-content .gallery-cover-enter {
 .gallery-content .gallery-slide.gallery-slide-next-gallery .slide-caption {
   padding-top: 3.5em;
 }
-@media all and (min-width: 980px) {
+@media all and (min-width: 768px) {
   /* line 221, ../sass/page/_openpublish_photo_gallery.scss */
   .gallery-content .gallery-slide.gallery-slide-next-gallery .slide-caption {
     padding-top: 1em;

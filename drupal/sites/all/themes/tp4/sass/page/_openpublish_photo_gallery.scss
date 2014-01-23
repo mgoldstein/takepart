@@ -220,7 +220,7 @@
     &.gallery-slide-next-gallery {
       .slide-caption {
         padding-top: 3.5em;
-        @include breakpoint($breakpoint-desktop) {
+        @include breakpoint($breakpoint-tablet) {
           padding-top: 1em;
         }
       }
