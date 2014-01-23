@@ -28,7 +28,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     ),
     'layout' => array(
       'controls' => 'true',
-      'responsive' => 'tur',
+      'responsive' => 'true',
       'aspectratio' => '16:9',
       'width' => '',
       'height' => '',
@@ -43,18 +43,18 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'repeat' => 'false',
     ),
     'region_limits' => array(
-      'allowed_regions' => '',
+      'allowed_regions' => '[node:field-allowed-regions]',
     ),
     'listbar' => array(
-      'position' => '',
-      'size' => '',
-      'layout' => '',
+      'position' => '[node:field-playlist-position]',
+      'size' => '[node:field-playlist-size]',
+      'layout' => '[node:field-playlist-layout]',
     ),
     'sharing' => array(
-      'enabled' => '',
-      'link' => '',
+      'enabled' => '[node:field-sharing-enabled]',
+      'link' => '[node:url:absolute]',
       'code' => '',
-      'heading' => '',
+      'heading' => 'Share This Video',
     ),
     'related' => array(
       'file' => '',
@@ -64,9 +64,9 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'dimensions' => '',
     ),
     'advertising' => array(
-      'client' => '',
-      'tag' => '',
-      'admessage' => '',
+      'client' => '[node:field-ads-client]',
+      'tag' => '[node:field-ads-tag]',
+      'admessage' => 'Your video will start in XX seconds',
     ),
     'jwplayer_analytics' => array(
       'enabled' => 'true',
@@ -77,7 +77,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     ),
     'sitecatalyst' => array(
       'mediaName' => '[node:title]',
-      'playerName' => 'Full Conent',
+      'playerName' => 'Embedded',
     ),
   );
   $export['embedded'] = $pm_jwplayer_preset;
@@ -115,18 +115,18 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'repeat' => 'false',
     ),
     'region_limits' => array(
-      'allowed_regions' => '',
+      'allowed_regions' => '[node:field-allowed-regions]',
     ),
     'listbar' => array(
-      'position' => '',
-      'size' => '',
-      'layout' => '',
+      'position' => '[node:field-playlist-position]',
+      'size' => '[node:field-playlist-size]',
+      'layout' => '[node:field-playlist-layout]',
     ),
     'sharing' => array(
-      'enabled' => '',
-      'link' => '',
+      'enabled' => '[node:field-sharing-enabled]',
+      'link' => '[node:url:absolute]',
       'code' => '',
-      'heading' => '',
+      'heading' => 'Share This Video',
     ),
     'related' => array(
       'file' => '',
@@ -136,9 +136,9 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'dimensions' => '',
     ),
     'advertising' => array(
-      'client' => '',
-      'tag' => '',
-      'admessage' => '',
+      'client' => '[node:field-ads-client]',
+      'tag' => '[node:field-ads-tag]',
+      'admessage' => 'Your video will start in XX seconds',
     ),
     'jwplayer_analytics' => array(
       'enabled' => 'true',
@@ -172,7 +172,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     ),
     'layout' => array(
       'controls' => 'true',
-      'responsive' => 'tur',
+      'responsive' => 'true',
       'aspectratio' => '16:9',
       'width' => '',
       'height' => '',
@@ -187,18 +187,18 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'repeat' => 'false',
     ),
     'region_limits' => array(
-      'allowed_regions' => '',
+      'allowed_regions' => '[node:field-allowed-regions]',
     ),
     'listbar' => array(
-      'position' => '',
-      'size' => '',
-      'layout' => '',
+      'position' => '[node:field-playlist-position]',
+      'size' => '[node:field-playlist-size]',
+      'layout' => '[node:field-playlist-layout]',
     ),
     'sharing' => array(
-      'enabled' => '',
-      'link' => '',
+      'enabled' => '[node:field-sharing-enabled]',
+      'link' => '[node:url:absolute]',
       'code' => '',
-      'heading' => '',
+      'heading' => 'Share This Video',
     ),
     'related' => array(
       'file' => '',
@@ -208,9 +208,9 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'dimensions' => '',
     ),
     'advertising' => array(
-      'client' => '',
-      'tag' => '',
-      'admessage' => '',
+      'client' => '[node:field-ads-client]',
+      'tag' => '[node:field-ads-tag]',
+      'admessage' => 'Your video will start in XX seconds',
     ),
     'jwplayer_analytics' => array(
       'enabled' => 'true',
@@ -221,7 +221,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     ),
     'sitecatalyst' => array(
       'mediaName' => '[node:title]',
-      'playerName' => 'Full Conent',
+      'playerName' => 'Teaser',
     ),
   );
   $export['teaser'] = $pm_jwplayer_preset;
