@@ -1,0 +1,14 @@
+name = JW Player
+description = Custom JW Player media field formatter.
+core = 7.x
+version = 7.x-1.0
+dependencies[] = ctools
+dependencies[] = field
+dependencies[] = file
+dependencies[] = token
+configure = admin/config/media/pm_jwplayer
+
+files[] = lib/Drupal/JWPlayer/Configuration.php
+files[] = lib/Drupal/JWPlayer/FieldFormatter.php
+files[] = lib/Drupal/JWPlayer/UI/PresetFormController.php
+files[] = lib/Drupal/JWPlayer/UI/PresetSettingsFormController.php
