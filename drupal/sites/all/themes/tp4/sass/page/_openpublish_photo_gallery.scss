@@ -153,15 +153,22 @@
       float: right;
     }
   }
+  .slides-wrapper {
+    position: relative;
+    padding-top: 39px;
+    max-width: 620px;
+    margin: 0 auto;
+    @include breakpoint($breakpoint-desktop) {
+      padding-top: 0;
+      margin: 0;
+      max-width: 100%;
+    }
+  }
   .swipe {
     // visibility: hidden;
     overflow: hidden;
     position: relative;
-    max-width: 620px;
-    margin: 0 auto 1.5em;
-    @include breakpoint($breakpoint-desktop) {
-      max-width: 100%;
-    }
+    margin-bottom: 1.5em;
   }
   .swipe-wrap {
     overflow: hidden;
@@ -213,7 +220,7 @@
     &.gallery-slide-next-gallery {
       .slide-caption {
         padding-top: 3.5em;
-        @include breakpoint($breakpoint-desktop) {
+        @include breakpoint($breakpoint-tablet) {
           padding-top: 1em;
         }
       }
@@ -239,9 +246,15 @@
   }
   .gallery-nav {
     width: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -50%;
     text-align: center;
     @include breakpoint($breakpoint-desktop) {
+      position: static;
       max-width: 620px;
+      margin: 0;
     }
 
     .pagination {
@@ -263,6 +276,16 @@
         &.hover,
         &:hover {
           color: white;
+        }
+      }
+
+      float: left;
+      &.next {
+        float: right;
+      }
+      @include breakpoint($breakpoint-desktop) {
+        &.previous, &.next {
+          float: none;
         }
       }
 
@@ -295,6 +318,10 @@
     font-weight: normal; font-family: $adelle-italic;
   }
 
+  a {
+    color: $mint;
+  }
+
   .enter-link {
     font: normal 1em/1.5 $ashbury-regular;
     color: $mint;
@@ -304,9 +331,6 @@
       font-family: "SSGizmo";
       line-height: 1;
       vertical-align: text-bottom;
-    }
-    a {
-      color: $mint;
     }
   }
 
