@@ -1,8 +1,0 @@
-name = JW Player
-description = Adds a theme function which allows theme developers to use the JW Player
-version = VERSION
-core = 7.x
-dependencies[] = file
-dependencies[] = libraries
-dependencies[] = ctools
-configure = admin/config/media/jw_player/settings
