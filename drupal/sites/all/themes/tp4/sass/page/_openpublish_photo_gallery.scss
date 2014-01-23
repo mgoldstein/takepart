@@ -318,6 +318,10 @@
     font-weight: normal; font-family: $adelle-italic;
   }
 
+  a {
+    color: $mint;
+  }
+
   .enter-link {
     font: normal 1em/1.5 $ashbury-regular;
     color: $mint;
@@ -327,9 +331,6 @@
       font-family: "SSGizmo";
       line-height: 1;
       vertical-align: text-bottom;
-    }
-    a {
-      color: $mint;
     }
   }
 
