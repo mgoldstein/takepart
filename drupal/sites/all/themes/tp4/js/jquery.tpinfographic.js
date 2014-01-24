@@ -8,6 +8,7 @@
         return this.each(function() {
             // store a reference to the current object
             var $this = $(this);
+            var infographicAlt = $this.find('img').attr('alt');
 
             // Create a wrapping div for the embed code and toggle link
             var $container = $('<div class="tpinfographic_embed_container" />').insertAfter(this);
@@ -36,17 +37,17 @@
                     .on('click', 'a', function(e) {
                         e.preventDefault();
                         if (!$embed.is(':visible')) {
+                            takepart.analytics.track('tpinfographic_embed_show', {name: infographicAlt});
                             $embed.slideDown();
-                            takepart.analytics.track('tpinfographic_embed_show', {name: $this.closest('.tpinfographic_container').find('img')[0].alt});
                         }
                     })
                     .prependTo($container);
             ;
 
-            $this.on('click', '> a', function(e){
+            $this.on('click', 'a', function(e){
                 e.preventDefault();
+                takepart.analytics.track('tpinfographic_show', {name: infographicAlt});
                 $.tpmodal.show({id: 'tpinfographic_modal_', url: this.href, hideOnModalClick: true});
-                takepart.analytics.track('tpinfographic_show', {name: $(this).find('img').attr('alt')});
             });
 
         });
