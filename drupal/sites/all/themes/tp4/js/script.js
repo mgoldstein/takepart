@@ -236,6 +236,15 @@ Drupal.behaviors.tpsocialShares = {
         }
     };
 
+    /**
+     * Handle TP Infographics
+     */
+    Drupal.behaviors.infographics = {
+        attach: function() {
+            $('.tpinfographic').tpInfographic();
+        }
+    };
+
     // Omniture position tracking
     // Parent/ancestor vars to track in reverse order of importance
     $.tpregions.add({
