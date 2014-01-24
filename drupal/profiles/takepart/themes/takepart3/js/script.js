@@ -74,7 +74,7 @@
         });
 
         // Sticky social nav on article page
-        $('.node-type-openpublish-article #left-rail .region-sidebar-first').tpsticky({
+        $('.node-type-openpublish-article', '.node-type-video').children('#left-rail .region-sidebar-first').tpsticky({
             offsetNode: '#content'
         });
 
