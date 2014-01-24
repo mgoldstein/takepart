@@ -167,7 +167,7 @@ var tpmodal = function(parameters) {
 	}
 
 	this.showImage = function(parameters, src) {
-		loadImage(parameters, src, function() {
+		me.loadImage(parameters, src, function() {
 			me.showModal(parameters);
 		});
 	};
