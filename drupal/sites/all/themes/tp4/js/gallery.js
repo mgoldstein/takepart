@@ -390,8 +390,8 @@
       gallery.$nextGallery.find('a:first').on(click, function(e) {
         if (isTouchmove) return isTouchmove = false;
         takepart.analytics.track('gallery-next-gallery-click', {
-          headline: nextGalleryHeadline,
-          topic: nextGalleryTopic,
+          headline: gallery.nextGalleryHeadline,
+          topic: gallery.nextGalleryTopic,
           a: this
         });
       });
