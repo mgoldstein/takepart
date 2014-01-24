@@ -281,11 +281,6 @@
       updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
       this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
-      console.log([
-        this.$currentSlide.find('img').attr('src'),
-        this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n")
-      ]);
-
       // hide social buttons on the "next gallery slide"
       if (this.$currentSlide[0] === this.$nextGallery[0]) {
 	this.$galleryContent.find('#gallery-content-social').css('visibility', 'hidden');
@@ -395,8 +390,8 @@
       gallery.$nextGallery.find('a:first').on(click, function(e) {
         if (isTouchmove) return isTouchmove = false;
         takepart.analytics.track('gallery-next-gallery-click', {
-          headline: nextGalleryHeadline,
-          topic: nextGalleryTopic,
+          headline: gallery.nextGalleryHeadline,
+          topic: gallery.nextGalleryTopic,
           a: this
         });
       });
