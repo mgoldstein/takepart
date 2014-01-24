@@ -318,8 +318,11 @@
     font-weight: normal; font-family: $adelle-italic;
   }
 
-  a {
-    color: $mint;
+  .field-name-body,
+  .enter-link {
+    a {
+      color: $mint;
+    }
   }
 
   .enter-link {
