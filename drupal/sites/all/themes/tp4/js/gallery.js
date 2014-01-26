@@ -174,6 +174,7 @@
     $nav: null,
     $previousSlide: null,
     $nextSlide: null,
+    $nextGalleryNavLink: null,
     $paginationTotal: null,
     $paginationCurrent: null,
 
@@ -274,6 +275,8 @@
     slideCallback: function() {
       this.currentSlideIndex = this.slideshow.getPos();
       this.$currentSlide = this.$slides.find('[data-index=' + this.currentSlideIndex + ']');
+      var onFirstSlide = this.currentSlideIndex == 0;
+      var onLastSlide = this.currentSlideIndex == (this.slideshow.getNumSlides() - 1);
 
       this.adjustSlideshowHeight();
 
@@ -290,8 +293,9 @@
 
       // update pagination
       this.$paginationCurrent.html(this.currentSlideIndex + 1);
-      this.$previousSlide.toggleClass('hidden', this.currentSlideIndex == 0 && !this.hasCover);
-      this.$nextSlide.toggleClass('hidden', this.currentSlideIndex == (this.slideshow.getNumSlides() - 1) && !this.$nextGallery.length);
+      this.$previousSlide.toggleClass('hidden', onFirstSlide && !this.hasCover);
+      this.$nextSlide.toggleClass('hidden', onLastSlide);
+      this.$nextGalleryNavLink.toggleClass('hidden', !(onLastSlide && this.$nextGallery.length));
 
       // only update the history and state of the page
       // if the gallery is showing.
@@ -322,6 +326,7 @@
       gallery.$nav = $('#gallery-nav');
       gallery.$previousSlide = $('#previous-slide');
       gallery.$nextSlide = $('#next-slide');
+      gallery.$nextGalleryNavLink = $('#next-gallery-nav-link');
       gallery.$paginationTotal = $('#total-slides').html(gallery.slideshow.getNumSlides());
       gallery.$paginationCurrent = $('#current-slide').html('1');
 

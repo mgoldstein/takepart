@@ -271,20 +271,15 @@
       overflow: hidden;
 
       &.hidden {
-        cursor: default;
-        color: white;
-        &.hover,
-        &:hover {
-          color: white;
-        }
+        display: none;
       }
 
       float: left;
-      &.next {
+      &[class*="next"] {
         float: right;
       }
       @include breakpoint($breakpoint-desktop) {
-        &.previous, &.next {
+        &.previous, &[class*="next"] { // equal specificity to the preivous rule
           float: none;
         }
       }
@@ -297,10 +292,10 @@
       &:after {
         display: inline;
         font-family: 'SSGizmo';
-        content: '\25C5';
-      }
-      &.next:after {
         content: '\25BB';
+      }
+      &.previous:after {
+        content: '\25C5';
       }
     }
   }

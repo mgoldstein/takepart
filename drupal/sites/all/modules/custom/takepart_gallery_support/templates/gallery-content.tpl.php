@@ -65,6 +65,7 @@
       <a href="#" id="previous-slide" class="gallery-nav-link previous" title="Previous Slide"></a>
       <span class="pagination"><span id="current-slide">0</span> of <span id="total-slides">0</span></span>
       <a href="#" id="next-slide" class="gallery-nav-link next" title="Next Slide"></a>
+      <?php if($next_gallery) : ?><a href="<?php print $next_gallery['href']; ?>" id="next-gallery-nav-link" class="gallery-nav-link next-gallery hidden" title="Next Slide"></a><? endif; ?>
     </nav>
   </div>
 </article>
