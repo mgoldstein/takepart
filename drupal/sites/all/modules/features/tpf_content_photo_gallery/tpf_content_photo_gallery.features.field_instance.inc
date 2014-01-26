@@ -1014,7 +1014,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1219,7 +1219,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'widget_setting' => 'bob',
       ),
       'type' => 'views_field',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -2198,7 +2198,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 50,
+      'weight' => 14,
     ),
   );
 
