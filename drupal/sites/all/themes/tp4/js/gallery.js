@@ -331,7 +331,7 @@
       gallery.$paginationCurrent = $('#current-slide').html('1');
 
       // next gallery slide
-      gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
+      gallery.$nextGallery = gallery.$slides.find('#next-gallery');
 
       // cover properties
       gallery.$galleryCoverSlide = $('#block-takepart-gallery-support-takepart-gallery-cover-slide');
@@ -392,7 +392,7 @@
       gallery.nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
       gallery.nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
-      gallery.$nextGallery.find('a:first').on(click, function(e) {
+      gallery.$nextGallery.on(click, '#next-gallery-enter-link', function(e) {
         if (isTouchmove) return isTouchmove = false;
         takepart.analytics.track('gallery-next-gallery-click', {
           headline: gallery.nextGalleryHeadline,
@@ -407,11 +407,20 @@
     attach: function() {
       if (!$('body').is('.node-type-openpublish-photo-gallery')) return;
 
-      $('.gallery-cover-slide, .enter-link').find('> a').on(click, function(e){
+      $('#gallery-enter-link, #gallery-description-enter-link').on(click, function(e){
         if (isTouchmove) return isTouchmove = false;
         e.preventDefault();
         gallery.showGallery();
       });
+
+      $('#gallery-enter-link, #next-gallery-enter-link')
+        .on('mouseenter', function() {
+          $(this).addClass('hover');
+        })
+        .on('mouseleave', function() {
+          $(this).removeClass('hover');
+        })
+      ;
 
       // Initialize page based on URL
       var token = getCurrentToken();

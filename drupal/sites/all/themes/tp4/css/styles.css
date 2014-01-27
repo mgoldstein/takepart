@@ -6183,7 +6183,7 @@ body.front #sidebar .block-title {
   width: 100%;
 }
 /* line 68, ../sass/page/_openpublish_photo_gallery.scss */
-a:hover .gallery-cover-content .gallery-cover-enter {
+a.hover .gallery-cover-content .gallery-cover-enter {
   background-color: black;
 }
 /* line 71, ../sass/page/_openpublish_photo_gallery.scss */
