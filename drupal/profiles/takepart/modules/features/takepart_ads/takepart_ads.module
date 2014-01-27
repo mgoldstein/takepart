@@ -1,5 +1,13 @@
 <?php
 
+function _custom_targeting_overrides($stringwithkeyvalue) {
+   //$pairs_array = explode(":", $stringwithkeyvalue);
+   
+   foreach($pairs_array as $key => $value ) {
+       
+   }
+}
+
 function takepart_ads_preprocess_page(&$vars) {
 
     if (function_exists('wordlet_active_page')) {
@@ -50,6 +58,11 @@ function takepart_ads_preprocess_page(&$vars) {
     $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
     $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
 
+    $override = $_GET["dfpKeyval"];
+    $pairs = explode(",", $_GET["dfpKeyval"]);
+    print_r($pairs);
+    // print_r( explode(":", $override) );
+    
     if (count($field_topic)) {
         $topic = "";
         $gpt_topic = "";
