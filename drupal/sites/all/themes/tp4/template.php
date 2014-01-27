@@ -85,6 +85,14 @@ function tp4_preprocess_page(&$variables) {
 }
 
 /**
+ * Implements hook_css_alter().
+ */
+function tp4_css_alter(&$css) {
+ // Take out tp4_support's slimnav CSS file to avoid duplication of code
+  unset($css[drupal_get_path('module', 'tp4_support') . '/css/tp4_support.css']);
+}
+
+/**
  * Override or insert variables into block templates.
  *
  * @param $variables
@@ -92,6 +100,13 @@ function tp4_preprocess_page(&$variables) {
  */
 function tp4_preprocess_block(&$variables) {
   $variables['title_attributes_array']['class'][] = 'section-header';
+  // add slim nav class to slim nav block
+  if ($variables['block']->delta == "tp4_fat_header") {
+    $variables['classes_array'][] = "tp4-fat-header";
+  }
+  if ($variables['block']->delta == "tp4_slim_nav") {
+    $variables['classes_array'][] = "slim-nav";
+  }
 }
 
 /**
