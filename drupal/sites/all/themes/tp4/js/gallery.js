@@ -278,7 +278,7 @@
       var onFirstSlide = this.currentSlideIndex == 0;
       var onLastSlide = this.currentSlideIndex == (this.slideshow.getNumSlides() - 1);
 
-      this.adjustSlideshowHeight();
+      if (this.isShowing) this.adjustSlideshowHeight();
 
       // update tpsocial values
       updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
