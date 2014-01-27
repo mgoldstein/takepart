@@ -45,10 +45,12 @@
 
   // utility functionto update social share variables 
   var updateTpSocialMedia = function(imageSrc, shareDescription) {
+    imageSrc = imageSrc.split('?')[0].split('#')[0];
     tp_social_config.services.pinterest.media = imageSrc;
     tp_social_config.services.tumblr.source = imageSrc;
     tp_social_config.services.pinterest.description = shareDescription;
     tp_social_config.services.tumblr.caption = shareDescription;
+    tp_social_config.services.facebook.description = shareDescription;
   };
 
   // prevent 2 email calls from firing
