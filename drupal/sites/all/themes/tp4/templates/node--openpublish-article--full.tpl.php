@@ -50,7 +50,12 @@
 
   <div id="article-content">
 
-  <?php print render($content['field_article_main_image']); ?>
+  <?php if (!empty($content['field_video'])) {
+    print render($content['field_video']);
+  }
+  else {
+    print render($content['field_article_main_image']);
+  } ?>
   <?php print render($content['field_author']); ?>
 
   <?php
