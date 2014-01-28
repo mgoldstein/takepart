@@ -2564,7 +2564,11 @@ function tpf_content_video_field_default_field_instances() {
   // Exported field_instance: 'node-video-field_ads_tag'
   $field_instances['node-video-field_ads_tag'] = array(
     'bundle' => 'video',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
