@@ -45,10 +45,12 @@
 
   // utility functionto update social share variables 
   var updateTpSocialMedia = function(imageSrc, shareDescription) {
+    imageSrc = imageSrc.split('?')[0].split('#')[0];
     tp_social_config.services.pinterest.media = imageSrc;
     tp_social_config.services.tumblr.source = imageSrc;
     tp_social_config.services.pinterest.description = shareDescription;
     tp_social_config.services.tumblr.caption = shareDescription;
+    tp_social_config.services.facebook.description = shareDescription;
   };
 
   // prevent 2 email calls from firing
@@ -278,7 +280,7 @@
       var onFirstSlide = this.currentSlideIndex == 0;
       var onLastSlide = this.currentSlideIndex == (this.slideshow.getNumSlides() - 1);
 
-      this.adjustSlideshowHeight();
+      if (this.isShowing) this.adjustSlideshowHeight();
 
       // update tpsocial values
       updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
