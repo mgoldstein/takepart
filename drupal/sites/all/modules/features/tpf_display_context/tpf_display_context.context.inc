@@ -1080,7 +1080,11 @@ s.prop2 = [current-page:url-arg:1]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
+      'variables' => 's.prop14 = [tp_omniture:str_decode:{node:title}]
+s.eVar14 = [tp_omniture:str_decode:{node:title}]
+s.prop15 = [tp_omniture:get_first_photo_title:{node:nid}]
+s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]
+s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
 s.eVar17 = [tp_omniture:value_or_empty:{node:field_author}]
 s.prop20 = [tp_omniture:lowercase:{node:field_topic}]
 s.eVar21 = [tp_omniture:lowercase:{node:field_topic}]',
