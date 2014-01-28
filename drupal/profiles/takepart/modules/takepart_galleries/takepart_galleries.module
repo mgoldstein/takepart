@@ -247,10 +247,18 @@ function _takepart_galleries_metatags($nid) {
   $path = $_SERVER["REQUEST_URI"];
   $path = preg_replace('/\?.*/', '', $path);
   $dirs = explode('/', $path);
+
+  $gallery = _takepart_galleries_mappings($nid);
+
+  $node = node_load($nid);
+  $gallery_has_cover = !!$node->field_display_cover[LANGUAGE_NONE][0]['value']; // hacky
+
+  $phototitle = $photocaption = $photopath = null;
+
+  // if we are on a gallery slide, find values for og: tags
+  // that match the current gallery slide
   if(($dirs[1] == 'photos') && (count($dirs) > 3)) {
-    
     $last_folder = substr(substr($path,1), strrpos(substr($path,0), "/"), strlen($path));
-    $gallery = _takepart_galleries_mappings($nid);
 
     for ($i = 0; $i < count($gallery); ++$i) {
       if($last_folder == $gallery[$i]['url']) {
@@ -260,6 +268,20 @@ function _takepart_galleries_metatags($nid) {
       }
     }
 
+  } else {
+    // otherwise...
+    // if the gallery has a cover, the metatag module takes care of us
+    // but if not, we populate with values from the first slide
+    // (We don't default to these above to prevent duplicate og: meta tags)
+    if (!$gallery_has_cover) {
+      $phototitle = $gallery[0]['title'];
+      $photocaption = $gallery[0]['caption'];
+      $photopath = file_create_url($gallery[0]['filename']);
+    }
+  }
+
+
+  if ($phototitle) {
     //$photopath = url('sites/default/files/'.$photopath, array('absolute'=>true));
  
     $extra_meta_tags = array(
