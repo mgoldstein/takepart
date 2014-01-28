@@ -43,16 +43,16 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'repeat' => 'false',
     ),
     'region_limits' => array(
-      'allowed_regions' => '[node:field-allowed-regions]',
+      'allowed_regions' => '[node:field_allowed_regions]',
     ),
     'listbar' => array(
-      'position' => '[node:field-playlist-position]',
-      'size' => '[node:field-playlist-size]',
-      'layout' => '[node:field-playlist-layout]',
+      'position' => '[node:field_playlist_position]',
+      'size' => '[node:field_playlist_size]',
+      'layout' => '[node:field_playlist_layout]',
     ),
     'sharing' => array(
-      'enabled' => '[node:field-sharing-enabled]',
-      'link' => '[node:url:absolute]',
+      'enabled' => '[node:field_sharing_enabled]',
+      'link' => '[node:url:absolute]?cmpid=longtailshare',
       'code' => '',
       'heading' => 'Share This Video',
     ),
@@ -64,8 +64,8 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'dimensions' => '',
     ),
     'advertising' => array(
-      'client' => '[node:field-ads-client]',
-      'tag' => '[node:field-ads-tag]',
+      'client' => '[node:field_ads_client]',
+      'tag' => '[node:field_ads_tag]',
       'admessage' => 'Your video will start in XX seconds',
     ),
     'jwplayer_analytics' => array(
@@ -115,16 +115,16 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'repeat' => 'false',
     ),
     'region_limits' => array(
-      'allowed_regions' => '[node:field-allowed-regions]',
+      'allowed_regions' => '[node:field_allowed_regions]',
     ),
     'listbar' => array(
-      'position' => '[node:field-playlist-position]',
-      'size' => '[node:field-playlist-size]',
-      'layout' => '[node:field-playlist-layout]',
+      'position' => '[node:field_playlist_position]',
+      'size' => '[node:field_playlist_size]',
+      'layout' => '[node:field_playlist_layout]',
     ),
     'sharing' => array(
-      'enabled' => '[node:field-sharing-enabled]',
-      'link' => '[node:url:absolute]',
+      'enabled' => '[node:field_sharing_enabled]',
+      'link' => '[node:url:absolute]?cmpid=longtailshare',
       'code' => '',
       'heading' => 'Share This Video',
     ),
@@ -136,8 +136,8 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'dimensions' => '',
     ),
     'advertising' => array(
-      'client' => '[node:field-ads-client]',
-      'tag' => '[node:field-ads-tag]',
+      'client' => '[node:field_ads_client]',
+      'tag' => '[node:field_ads_tag]',
       'admessage' => 'Your video will start in XX seconds',
     ),
     'jwplayer_analytics' => array(
@@ -187,16 +187,16 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'repeat' => 'false',
     ),
     'region_limits' => array(
-      'allowed_regions' => '[node:field-allowed-regions]',
+      'allowed_regions' => '[node:field_allowed_regions]',
     ),
     'listbar' => array(
-      'position' => '[node:field-playlist-position]',
-      'size' => '[node:field-playlist-size]',
-      'layout' => '[node:field-playlist-layout]',
+      'position' => '[node:field_playlist_position]',
+      'size' => '[node:field_playlist_size]',
+      'layout' => '[node:field_playlist_layout]',
     ),
     'sharing' => array(
-      'enabled' => '[node:field-sharing-enabled]',
-      'link' => '[node:url:absolute]',
+      'enabled' => '[node:field_sharing_enabled]',
+      'link' => '[node:url:absolute]?cmpid=longtailshare',
       'code' => '',
       'heading' => 'Share This Video',
     ),
@@ -208,8 +208,8 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'dimensions' => '',
     ),
     'advertising' => array(
-      'client' => '[node:field-ads-client]',
-      'tag' => '[node:field-ads-tag]',
+      'client' => '[node:field_ads_client]',
+      'tag' => '[node:field_ads_tag]',
       'admessage' => 'Your video will start in XX seconds',
     ),
     'jwplayer_analytics' => array(
