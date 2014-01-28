@@ -26,7 +26,12 @@
   <?php endif; ?>
 
     <header class="entry-header">
-      <?php print render($variables['content']['field_thumbnail']); ?>
+      <?php if (!empty($variables['content']['field_video'])) {
+        print render($variables['content']['field_video']);
+      }
+      else {
+        print render($variables['content']['field_thumbnail']);
+      } ?>
       <?php print render($title_prefix); ?>
       <?php if ($title): ?>
         <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
@@ -37,7 +42,7 @@
       <?php endif; ?>
     </header>
 
-    <?php 
+    <?php
       hide($variables['content']['comments']);
       hide($variables['content']['links']);
       $tab_title_override = variable_get('main_feature_tab_title_override', NULL);
