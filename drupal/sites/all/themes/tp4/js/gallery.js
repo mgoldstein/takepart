@@ -45,10 +45,12 @@
 
   // utility functionto update social share variables 
   var updateTpSocialMedia = function(imageSrc, shareDescription) {
+    imageSrc = imageSrc.split('?')[0].split('#')[0];
     tp_social_config.services.pinterest.media = imageSrc;
     tp_social_config.services.tumblr.source = imageSrc;
     tp_social_config.services.pinterest.description = shareDescription;
     tp_social_config.services.tumblr.caption = shareDescription;
+    tp_social_config.services.facebook.description = shareDescription;
   };
 
   // prevent 2 email calls from firing
@@ -278,7 +280,7 @@
       var onFirstSlide = this.currentSlideIndex == 0;
       var onLastSlide = this.currentSlideIndex == (this.slideshow.getNumSlides() - 1);
 
-      this.adjustSlideshowHeight();
+      if (this.isShowing) this.adjustSlideshowHeight();
 
       // update tpsocial values
       updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
@@ -331,7 +333,7 @@
       gallery.$paginationCurrent = $('#current-slide').html('1');
 
       // next gallery slide
-      gallery.$nextGallery = gallery.$slides.find('.gallery-slide-next-gallery');
+      gallery.$nextGallery = gallery.$slides.find('#next-gallery');
 
       // cover properties
       gallery.$galleryCoverSlide = $('#block-takepart-gallery-support-takepart-gallery-cover-slide');
@@ -392,7 +394,7 @@
       gallery.nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
       gallery.nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
-      gallery.$nextGallery.find('a:first').on(click, function(e) {
+      gallery.$nextGallery.on(click, '#next-gallery-enter-link', function(e) {
         if (isTouchmove) return isTouchmove = false;
         takepart.analytics.track('gallery-next-gallery-click', {
           headline: gallery.nextGalleryHeadline,
@@ -407,11 +409,20 @@
     attach: function() {
       if (!$('body').is('.node-type-openpublish-photo-gallery')) return;
 
-      $('.gallery-cover-slide, .enter-link').find('> a').on(click, function(e){
+      $('#gallery-enter-link, #gallery-description-enter-link').on(click, function(e){
         if (isTouchmove) return isTouchmove = false;
         e.preventDefault();
         gallery.showGallery();
       });
+
+      $('#gallery-enter-link, #next-gallery-enter-link')
+        .on('mouseenter', function() {
+          $(this).addClass('hover');
+        })
+        .on('mouseleave', function() {
+          $(this).removeClass('hover');
+        })
+      ;
 
       // Initialize page based on URL
       var token = getCurrentToken();

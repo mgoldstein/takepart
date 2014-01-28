@@ -11,7 +11,7 @@
   <?php if( $gallery_description =  render($content['body'])) : ?>
   <div id="gallery-description" class="gallery-description hidden">
     <?php print $gallery_description; ?>
-    <p class="enter-link"><a href="#enter-gallery">Enter Photo Gallery</a></p>
+    <p class="enter-link"><a id="gallery-description-enter-link" href="#enter-gallery">Enter Photo Gallery</a></p>
   </div>
   <?php endif; ?>
   <aside id="gallery-footer">
