@@ -58,20 +58,19 @@ function takepart_ads_preprocess_page(&$vars) {
     $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
     $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
     $field_series = isset($vars['node']->field_series['und']) ? $vars['node']->field_series['und'] : array();
-            
+
     if (count($field_topic)) {
         $topic = "";
         $gpt_topic = "";
         $topic_terms = array();
         foreach ($field_topic as $key => $value) {
             $tterm = taxonomy_term_load($value['tid']);
-            $tterms[] = str_replace(" & ","-",$tterm->name);
+            $tterms[] = str_replace(" & ", "-", $tterm->name);
         }
         $topic .= 'GA_googleAddAttr("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
         $gpt_topic .= 'googletag.pubads().setTargeting("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
     }
 
-    // $override = filter_var($_GET["dfpKeyval"]);
     $override = filter_input(INPUT_GET, 'dfpKeyval');
     if ($override) {
         $pairs = explode(",", $override);
@@ -89,11 +88,13 @@ function takepart_ads_preprocess_page(&$vars) {
     if (count($field_free_tag)) {
         $free_tags = "";
         $gpt_free_tags = "";
-
         foreach ($field_free_tag as $key => $value) {
             $term = taxonomy_term_load($value['tid']);
             $terms[] = htmlspecialchars(trim($term->name), ENT_COMPAT, "UTF-8");
         }
+    }
+
+    if (count($field_free_tag) || $override) {
         $free_tags .= 'GA_googleAddAttr("FreeTag", ["' . implode('", "', $terms) . '"]);' . "\n";
         $gpt_free_tags .= 'googletag.pubads().setTargeting("FreeTag", ["' . implode('", "', $terms) . '"]);' . "\n";
     }
@@ -107,7 +108,7 @@ function takepart_ads_preprocess_page(&$vars) {
             $gpt_topic .= 'googletag.pubads().setTargeting("Series", "' . htmlspecialchars(trim($sterm->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
         }
     }
-    
+
     if (count($actionSponsor) || count($petitionSponsor)) {
         $sponsor_tags = "";
         $gpt_sponsor_tags = "";
