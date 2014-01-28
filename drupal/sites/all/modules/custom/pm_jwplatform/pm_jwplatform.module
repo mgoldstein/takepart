@@ -286,10 +286,11 @@ function pm_jwplatform_file_formatter_image_view($file, $display, $langcode) {
       ? $file->override['attributes']['alt'] : $file->filename;
     $thumbnail = $wrapper->getLocalThumbnailPath();
     if (empty($thumbnail)) {
+      $default_base = drupal_get_path('module', 'media') . '/images/icons';
       $element = array(
         '#theme' => 'image',
-        '#path' => media_variable_get('icon_base_directory') . '/'
-          . media_variable_get('icon_set') . '/video-x-generic.png',
+        '#path' => variable_get('media__icon_base_directory', $default_base) . '/'
+          . variable_get('media__icon_set', 'default') . '/video-x-generic.png',
         '#alt' => $alt,
       );
     }
