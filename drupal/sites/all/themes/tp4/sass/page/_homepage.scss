@@ -65,6 +65,9 @@ body.front{
       line-height: 1.333333333;
       font-weight: normal;
     }
+    .pane-title.no-overlap {
+      margin: 0em .5em 1px;
+    }
 
     .field-name-field-article-subhead {
       font-size: 1em;
@@ -230,12 +233,12 @@ body.front{
       	  border-bottom: dotted 2px $light-gray;
       	}
         &:hover{
-          
+
           .column-title{
             text-decoration: none;
           }
           .author{
-            text-decoration: none; 
+            text-decoration: none;
           }
           .views-field-field-promo-headline{
             text-decoration: underline;

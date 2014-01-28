@@ -209,6 +209,10 @@ function tp4_preprocess_node__feature_article(&$variables, $hook) {
   }
 }
 
+function tp4_preprocess_node__video(&$variables, $hook) {
+  tp4_preprocess_node__openpublish_article($variables, $hook);
+}
+
 /**
  * Override or insert variables into the openpublish_photo_gallery template.
  */
@@ -469,6 +473,20 @@ function tp4_field__field_free_tag__openpublish_photo_gallery($variables) {
   return tp4_field__field_topic__openpublish_article($variables);
 }
 
+/**
+ * Outputs Topic Taxonomy links for gallery nodes.
+ */
+function tp4_field__field_topic__video($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs free tag taxonomy links for gallery nodes.
+ */
+function tp4_field__field_free_tag__video($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
 function tp4_menu_link(array $variables) {
   if($variables['element']['#theme'] == 'menu_link__menu_megamenu'){
     $variables['element']['#attributes']['data-mlid'][] = $variables['element']['#original_link']['mlid'];
@@ -507,6 +525,10 @@ function tp4_field__field_author__openpublish_photo_gallery($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
 
+function tp4_field__field_author__video($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+
 function tp4_field__field_article_subhead__openpublish_article($variables) {
   $output = '';
 
@@ -525,6 +547,10 @@ function tp4_field__field_article_subhead__openpublish_article($variables) {
 }
 
 function tp4_field__field_article_subhead__feature_article($variables) {
+  return tp4_field__field_article_subhead__openpublish_article($variables);
+}
+
+function tp4_field__field_article_subhead__video($variables) {
   return tp4_field__field_article_subhead__openpublish_article($variables);
 }
 
@@ -590,6 +616,21 @@ function tp4_field__field_article_main_image__feature_article($variables) {
   return $output;
 }
 
+function tp4_field__field_video__video($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<figure ' . $variables['item_attributes'][$delta] . '>';
+    $output .= render($item);
+    //$caption = $item['#item']['field_media_caption']['und'][0]['value'];
+    if (!empty($caption)) {
+      $output .= '<figcaption>' . $caption . '</figure>';
+    }
+  }
+
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  return $output;
+}
 
 /**
  * Implements template_preprocess_entity().
@@ -659,5 +700,8 @@ function tp4_preprocess_entity(&$variables, $hook) {
 function tp4_preprocess_panels_pane(&$variables) {
   if($variables['pane']->panel == 'main_featured'){
     $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
+    if ($variables['content']['#bundle'] == 'video') {
+      $variables['title_attributes_array']['class'][] = 'no-overlap';
+    }
   }
 }
