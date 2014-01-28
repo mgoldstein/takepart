@@ -61,10 +61,12 @@ function takepart_ads_preprocess_page(&$vars) {
     $override = $_GET["dfpKeyval"];
     $pairs = explode(",", $_GET["dfpKeyval"]);
     // print_r($pairs);
+    $keysnvalues = array();
     foreach($pairs as $param) {
-        print_r( explode(":", $param) );
+        //print_r( explode(":", $param) );
+        $keysnvalues[] = explode(":", $param);
     }
-    // print_r( explode(":", $override) );
+    print_r($keysnvalues);
     
     if (count($field_topic)) {
         $topic = "";
