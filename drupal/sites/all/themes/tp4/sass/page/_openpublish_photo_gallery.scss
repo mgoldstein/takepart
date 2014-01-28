@@ -65,7 +65,7 @@
     text-transform: lowercase;
     text-align: center;
     background-color: $light-mint;
-    a:hover & {
+    a.hover & {
       background-color: black;
     }
     &:after {

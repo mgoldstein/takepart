@@ -9,7 +9,7 @@
     <h3 class="headline"><?=t('Share Gallery') ?></h3>
     <div class="tp-social" id="gallery-cover-share"></div>
   </aside>
-  <a href="#enter-gallery">
+  <a id="gallery-enter-link" href="#enter-gallery">
     <?php print $gallery_cover_image; ?>
     <div class="gallery-cover-content">
       <div class="gallery-cover-branding"><?php print t('Photo Gallery'); ?></div>

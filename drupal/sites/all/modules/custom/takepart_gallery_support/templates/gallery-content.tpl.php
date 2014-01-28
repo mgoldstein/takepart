@@ -42,7 +42,7 @@
       <?php if ($next_gallery) : ?>
         <div id="next-gallery"<?php print drupal_attributes($next_gallery['attributes']); ?>>
           <figure>
-            <a href="<?php print $next_gallery['href']; ?>">
+            <a id="next-gallery-enter-link" href="<?php print $next_gallery['href']; ?>">
               <div class="slide-image-wrapper">
                 <?php print $next_gallery['image']; ?>
                 <div class="gallery-cover-content">
