@@ -211,6 +211,9 @@ function tp4_preprocess_node__feature_article(&$variables, $hook) {
 
 function tp4_preprocess_node__video(&$variables, $hook) {
   tp4_preprocess_node__openpublish_article($variables, $hook);
+  if ($variables['view_mode'] == 'embed') {
+    $variables['title'] = '';
+  }
 }
 
 /**
