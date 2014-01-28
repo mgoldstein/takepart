@@ -2323,11 +2323,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'text_with_inline_content',
         'weight' => 3,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 24,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -2402,11 +2408,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 17,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 17,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -2481,11 +2493,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 19,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -2539,7 +2557,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 17,
+      'weight' => 24,
     ),
   );
 
@@ -2556,11 +2574,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 20,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 11,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -2616,7 +2640,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 120,
       ),
       'type' => 'text_textfield',
-      'weight' => 18,
+      'weight' => 25,
     ),
   );
 
@@ -2633,11 +2657,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 21,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -2693,7 +2723,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 26,
     ),
   );
 
@@ -2710,6 +2740,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 0,
+      ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2791,6 +2827,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'tp4_author_full',
         'weight' => 2,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'feature_main' => array(
         'label' => 'hidden',
         'module' => 'node_reference',
@@ -2870,11 +2912,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 13,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 14,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -2948,11 +2996,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 5,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 16,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3024,11 +3078,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 7,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 20,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3109,11 +3169,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 23,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3167,7 +3233,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 21,
+      'weight' => 28,
     ),
   );
 
@@ -3188,11 +3254,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 22,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3246,7 +3318,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 20,
+      'weight' => 27,
     ),
   );
 
@@ -3267,11 +3339,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 24,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3328,7 +3406,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 22,
+      'weight' => 29,
     ),
   );
 
@@ -3345,11 +3423,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 9,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 23,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3422,11 +3506,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 10,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 22,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3499,11 +3589,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 11,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 19,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3579,11 +3675,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'node_reference_default',
         'weight' => 4,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 21,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3656,11 +3758,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 15,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 15,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3735,11 +3843,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 18,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3793,7 +3907,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 16,
+      'weight' => 23,
     ),
   );
 
@@ -3810,11 +3924,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 16,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 18,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -3880,6 +4000,12 @@ function tpf_content_video_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
+      ),
+      'embed' => array(
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
@@ -3962,15 +4088,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 12,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'feature_main' => array(
         'label' => 'hidden',
-        'module' => 'media_image_formatter',
-        'settings' => array(
-          'image_link' => 'content',
-          'image_style' => 'homepage_featured_image',
-        ),
-        'type' => 'image',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'feature_secondary' => array(
         'label' => 'hidden',
@@ -4068,11 +4196,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 6,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 13,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -4144,11 +4278,17 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 14,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 12,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -4229,11 +4369,23 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'pm_jwplayer',
         'weight' => 1,
       ),
+      'embed' => array(
+        'label' => 'hidden',
+        'module' => 'pm_jwplayer',
+        'settings' => array(
+          'pm_jwplayer_preset' => 'embedded',
+        ),
+        'type' => 'pm_jwplayer',
+        'weight' => 0,
+      ),
       'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
+        'label' => 'hidden',
+        'module' => 'pm_jwplayer',
+        'settings' => array(
+          'pm_jwplayer_preset' => 'embedded',
+        ),
+        'type' => 'pm_jwplayer',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'above',
