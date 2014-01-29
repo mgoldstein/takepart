@@ -77,8 +77,8 @@ function tp4_preprocess_page(&$variables) {
   }
 
   // add Taboola JS if we're on an article, feature or photo gallery page
-  // but only if we're on the production site
-  if (variable_get('environment', 'dev') == 'prod' && !empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
+  // but only if we're on the production site: variable_get('environment', 'dev') == 'prod' &&
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
     drupal_add_js(drupal_get_path('theme', 'tp4') . '/js/taboola.js', 'file');
     drupal_add_js('window._taboola = window._taboola || []; _taboola.push({flush:true});', array('type' => 'inline', 'scope' => 'footer'));
   }
@@ -280,7 +280,7 @@ function _tp4_series_nav(&$variables) {
     // (if it doesn't exist, $next will be an empty array)
     $seriesQueryNext = new EntityFieldQuery();
     $seriesQueryNext->entityCondition('entity_type', 'node')
-            ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
+            ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video'))
             ->propertyCondition('status', 1)
             ->propertyCondition('created', $created, '>')
             ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -297,7 +297,7 @@ function _tp4_series_nav(&$variables) {
     // (if it doesn't exist, $previous will be an empty array)
     $seriesQueryPrev = new EntityFieldQuery();
     $seriesQueryPrev->entityCondition('entity_type', 'node')
-            ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
+            ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video'))
             ->propertyCondition('status', 1)
             ->propertyCondition('created', $created, '<')
             ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -705,6 +705,7 @@ function tp4_preprocess_panels_pane(&$variables) {
     $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
     if ($variables['content']['#bundle'] == 'video') {
       $variables['title_attributes_array']['class'][] = 'no-overlap';
+      $variables['title_link'] = url('node/' . $variables['content']['#node']->nid);
     }
   }
 }

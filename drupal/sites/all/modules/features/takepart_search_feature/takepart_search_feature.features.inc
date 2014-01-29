@@ -107,14 +107,10 @@ function takepart_search_feature_default_search_api_index() {
               "takepart_campaign" : "takepart_campaign",
               "feature_article" : "feature_article",
               "takepart_page" : "takepart_page",
-              "petition_action" : "petition_action",
               "openpublish_photo_gallery" : "openpublish_photo_gallery",
-              "pledge_action" : "pledge_action",
               "profile" : "profile",
-              "topic_front" : "topic_front",
               "venue" : "venue",
-              "openpublish_video" : "openpublish_video",
-              "webform" : "webform"
+              "video" : "video"
             }
           }
         }
