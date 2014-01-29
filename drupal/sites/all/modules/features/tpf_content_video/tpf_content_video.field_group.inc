@@ -31,6 +31,8 @@ function tpf_content_video_field_group_info() {
       5 => 'field_playlist_size',
       6 => 'field_sharing_enabled',
       7 => 'field_auto_play',
+      8 => 'field_mute_playback',
+      9 => 'field_player_skin',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
