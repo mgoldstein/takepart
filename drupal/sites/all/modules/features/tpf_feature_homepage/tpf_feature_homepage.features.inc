@@ -76,6 +76,7 @@ function tpf_feature_homepage_fe_nodequeue_export_fields() {
       1 => 'openpublish_article',
       2 => 'openpublish_photo_gallery',
       3 => 'openpublish_video',
+      4 => 'video',
     ),
     'roles' => array(),
     'count' => 0,
