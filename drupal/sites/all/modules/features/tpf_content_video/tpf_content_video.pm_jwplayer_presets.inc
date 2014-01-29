@@ -36,7 +36,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'stretching' => 'uniform',
     ),
     'playback' => array(
-      'autostart' => 'false',
+      'autostart' => '[node:field_auto_play]',
       'fallback' => 'false',
       'mute' => 'false',
       'primary' => 'html5',
@@ -72,8 +72,8 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'enabled' => 'true',
     ),
     'google_analytics' => array(
-      'idstring' => '',
-      'trackingobject' => '',
+      'idstring' => 'title',
+      'trackingobject' => '_gaq',
     ),
     'sitecatalyst' => array(
       'mediaName' => '[node:title]',
@@ -108,7 +108,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'stretching' => 'uniform',
     ),
     'playback' => array(
-      'autostart' => 'false',
+      'autostart' => '[node:field_auto_play]',
       'fallback' => 'false',
       'mute' => 'false',
       'primary' => 'html5',
@@ -144,8 +144,8 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'enabled' => 'true',
     ),
     'google_analytics' => array(
-      'idstring' => '',
-      'trackingobject' => '',
+      'idstring' => 'title',
+      'trackingobject' => '_gaq',
     ),
     'sitecatalyst' => array(
       'mediaName' => '[node:title]',
@@ -180,7 +180,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'stretching' => 'uniform',
     ),
     'playback' => array(
-      'autostart' => 'false',
+      'autostart' => '[node:field_auto_play]',
       'fallback' => 'false',
       'mute' => 'false',
       'primary' => 'html5',
@@ -216,8 +216,8 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'enabled' => 'true',
     ),
     'google_analytics' => array(
-      'idstring' => '',
-      'trackingobject' => '',
+      'idstring' => 'title',
+      'trackingobject' => '_gaq',
     ),
     'sitecatalyst' => array(
       'mediaName' => '[node:title]',

@@ -1,7 +1,7 @@
 name = TakePart Content Video
 core = 7.x
 package = Content Types
-version = 7.x-1.4
+version = 7.x-1.5
 project = tpf_content_video
 dependencies[] = context
 dependencies[] = context_field
@@ -65,6 +65,7 @@ features[field_instance][] = node-video-field_ads_tag
 features[field_instance][] = node-video-field_allowed_regions
 features[field_instance][] = node-video-field_article_subhead
 features[field_instance][] = node-video-field_author
+features[field_instance][] = node-video-field_auto_play
 features[field_instance][] = node-video-field_display_tag
 features[field_instance][] = node-video-field_free_tag
 features[field_instance][] = node-video-field_inline_replacements
