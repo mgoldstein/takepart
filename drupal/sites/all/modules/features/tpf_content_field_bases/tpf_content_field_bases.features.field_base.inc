@@ -678,9 +678,10 @@ function tpf_content_field_bases_field_default_field_bases() {
     'settings' => array(
       'referenceable_types' => array(
         'action' => 'action',
-        'article' => 'article',
+        'article' => 0,
         'audio' => 0,
         'blog_front' => 0,
+        'feature_article' => 'feature_article',
         'feed' => 0,
         'feed_item' => 0,
         'mos_action' => 0,
@@ -689,8 +690,6 @@ function tpf_content_field_bases_field_default_field_bases() {
         'openpublish_photo' => 0,
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
         'openpublish_video' => 'openpublish_video',
-        'petition_action' => 'petition_action',
-        'pledge_action' => 'pledge_action',
         'profile' => 0,
         'section_front' => 0,
         'section_front_wide' => 0,
@@ -702,6 +701,7 @@ function tpf_content_field_bases_field_default_field_bases() {
         'takepart_slide' => 0,
         'topic_front' => 0,
         'venue' => 'venue',
+        'video' => 'video',
         'webform' => 0,
       ),
       'view' => array(
