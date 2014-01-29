@@ -154,6 +154,7 @@ class JWPlayerConfiguration {
     if (!empty($settings['controls'])) {
       $values['controls'] = self::booleanValue($settings['controls']);
     }
+    $values['skin'] = 'glow';
     if (!empty($settings['skin'])) {
       $values['skin'] = $settings['skin'];
     }
@@ -186,6 +187,7 @@ class JWPlayerConfiguration {
     if (!empty($settings['fallback'])) {
       $values['fallback'] = self::booleanValue($settings['fallback']);
     }
+    $values['mute'] = 'false';
     if (!empty($settings['mute'])) {
       $values['mute'] = self::booleanValue($settings['mute']);
     }
