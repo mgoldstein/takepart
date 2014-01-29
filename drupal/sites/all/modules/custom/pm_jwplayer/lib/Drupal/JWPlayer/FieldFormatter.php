@@ -97,18 +97,12 @@ class JWPlayerFieldFormatter {
   }
 
   public function viewItem($item, $delta, $configuration) {
-    $player_id = implode('-', array(
-      'pm_jwplayer',
-      $this->_field['field_name'],
-      $delta,
-      $this->_preset->machine_name,
-    ));
     return array(
       '#theme' => 'pm_jwplayer',
       '#item' => $item,
       '#configuration' => $configuration->setupHash($item['uri']),
       '#allowed_regions' => $configuration->allowedRegions(),
-      '#player_id' => drupal_html_id($player_id),
+      '#player_id' => drupal_html_id('pm_jwplayer'),
     );
   }
 }

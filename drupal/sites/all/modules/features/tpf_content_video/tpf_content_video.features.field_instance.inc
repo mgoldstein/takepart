@@ -2915,10 +2915,9 @@ function tpf_content_video_field_default_field_instances() {
     'description' => 'Auto start video playback.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'list',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 25,
       ),
       'embed' => array(
