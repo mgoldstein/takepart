@@ -1072,7 +1072,6 @@ echo $separator;
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
-    'video' => 'video',
   );
   $handler->display->display_options['path'] = 'content/%/yahoo_feed.xml ';
 
