@@ -1,7 +1,7 @@
 name = TakePart Display Boxes
 core = 7.x
 package = Content Display
-version = 7.x-1.0
+version = 7.x-1.1
 project = tpf_display_boxes
 dependencies[] = boxes
 dependencies[] = context
@@ -58,6 +58,7 @@ features[box][] = ga_articles_top
 features[box][] = ga_articles_top_right
 features[box][] = ga_homepage_bottom_right
 features[box][] = our_blogs_summary_1
+features[box][] = right_rail_video_promo_articles
 features[box][] = takepart
 features[ctools][] = boxes:box:1
 features[features_api][] = api:2

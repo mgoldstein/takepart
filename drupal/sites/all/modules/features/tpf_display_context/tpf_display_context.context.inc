@@ -1599,11 +1599,11 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
           'region' => 'sidebar',
           'weight' => '-2',
         ),
-        'boxes-box-18786b90' => array(
+        'boxes-right_rail_video_promo_articles' => array(
           'module' => 'boxes',
-          'delta' => 'box-18786b90',
+          'delta' => 'right_rail_video_promo_articles',
           'region' => 'sidebar',
-          'weight' => '-1',
+          'weight' => '0',
         ),
       ),
     ),
