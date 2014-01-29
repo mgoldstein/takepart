@@ -197,6 +197,13 @@ body.front{
       vertical-align: text-bottom;
       content: " \1F4F7";
     }
+    .video:after{
+      font-family: "SSGizmo";
+      font-size: 1.25em;
+      line-height: 0.8;
+      vertical-align: text-bottom;
+      content: " \1F4F9";
+    }
   }
   a{
     height: 100%;
