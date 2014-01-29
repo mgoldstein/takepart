@@ -659,7 +659,7 @@ function tp4_preprocess_entity(&$variables, $hook) {
     	    if ($node->status == 1) {
     	      $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
 
-    	      if ($node->type == 'openpublish_article' || $node->type == 'feature_article') {
+    	      if ($node->type == 'openpublish_article' || $node->type == 'feature_article' || $node->type == 'video') {
     		      $main_image = field_get_items('node', $node, 'field_thumbnail');
     	      }
     	      if ($node->type == 'action') {
