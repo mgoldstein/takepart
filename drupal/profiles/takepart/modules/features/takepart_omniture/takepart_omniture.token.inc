@@ -161,6 +161,10 @@ function takepart_omniture_lowercase($str) {
     return strtolower($str);
 }
 
+function takepart_omniture_stringfixes($str) {
+    return strtolower(str_replace('&amp;', '&', $str));
+}
+
 /**
  * built in date token with custom formatter was not working.
  */
