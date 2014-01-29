@@ -71,6 +71,9 @@
         .node-type-openpublish_photo_gallery {
           @include icon-photo-gallery();
         }
+        .node-type-video {
+          @include icon-video();
+        }
 
 	@include dashed-separator-after();
         

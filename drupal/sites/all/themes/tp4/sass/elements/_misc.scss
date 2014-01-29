@@ -889,3 +889,20 @@ tr.selected td {
   overflow: hidden;
 }
 
+/* Video Player ------------------------- */
+.pm-jwplayer{
+  &.loading{
+    width: 100%;
+    background: image-url('video-loading.gif');
+    background-size: cover;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 */
+  }
+  &.blocked{
+    width: 100%;
+    background: image-url('video-blocked.gif') no-repeat center center;
+    background-size: cover;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 */
+  }
+}

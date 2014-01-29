@@ -127,6 +127,28 @@ body.front{
       margin-top: .5em;
       font-weight: normal;
     }
+    &.node-openpublish-photo-gallery{
+      h2.node-title{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F7";
+        }
+      }
+    }
+    &.node-video{
+      h2.node-title{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F9";
+        }
+      }
+    }
     margin-bottom: 1em;
   }
 
