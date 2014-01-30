@@ -347,6 +347,7 @@ header {
           max-width: 50px;
           white-space: nowrap;
           text-overflow: ellipsis;
+          padding-right: 5px;
         }
       }
     }
@@ -408,6 +409,16 @@ header {
       @include box-sizing(border-box);
       [type=text]{
         height: 20px;
+        &::-webkit-input-placeholder {
+          opacity: 1;
+        }
+
+        &:-moz-placeholder { /* Firefox 18- */
+          opacity: 1;
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+          opacity: 1;
+        }
       }
       @include breakpoint($breakpoint-tablet){
         background: #FFF;
