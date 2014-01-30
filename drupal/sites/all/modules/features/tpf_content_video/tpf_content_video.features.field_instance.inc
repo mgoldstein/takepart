@@ -2518,6 +2518,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'text_summary_or_trimmed',
         'weight' => 3,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2605,6 +2611,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 9,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -2697,6 +2709,13 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 3,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2788,6 +2807,13 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 4,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2876,6 +2902,13 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 5,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -2970,6 +3003,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3061,6 +3100,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'node_reference_default',
         'weight' => 1,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -3155,6 +3200,13 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 1,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3241,6 +3293,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 10,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -3332,6 +3390,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 7,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3419,6 +3483,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 13,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -3517,6 +3587,13 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 2,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3607,6 +3684,13 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 9,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -3699,6 +3783,13 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 7,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3789,6 +3880,13 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 6,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -3881,6 +3979,13 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number_unformatted',
+        'weight' => 8,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3971,6 +4076,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 15,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4060,6 +4171,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 17,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4148,6 +4265,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 16,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -4241,6 +4364,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 12,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4329,6 +4458,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 5,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -4421,6 +4556,13 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4507,6 +4649,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 8,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -4595,6 +4743,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 14,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -4691,6 +4845,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 11,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -4799,6 +4959,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 4,
       ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4885,6 +5051,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 6,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -4997,6 +5169,12 @@ function tpf_content_video_field_default_field_instances() {
         ),
         'type' => 'pm_jwplayer',
         'weight' => 2,
+      ),
+      'token' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'vidpop_map' => array(
         'label' => 'above',

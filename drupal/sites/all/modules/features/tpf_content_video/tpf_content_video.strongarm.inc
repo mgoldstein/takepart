@@ -226,10 +226,13 @@ function tpf_content_video_strongarm() {
         'custom_settings' => TRUE,
       ),
       'token' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'diff_standard' => array(
         'custom_settings' => FALSE,
+      ),
+      'feature_main_tpl' => array(
+        'custom_settings' => TRUE,
       ),
     ),
     'extra_fields' => array(
