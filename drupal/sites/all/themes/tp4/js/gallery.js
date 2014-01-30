@@ -217,6 +217,7 @@
       this.isShowing = true;
       $('body').addClass('gallery-showing');
 
+      this.slideshow.setup();
       this.adjustSlideshowHeight();
 
       // store the token to catch a corner case where page updates
