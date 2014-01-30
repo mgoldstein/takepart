@@ -954,6 +954,7 @@ function tpf_display_context_context_default_contexts() {
         'action' => 'action',
         'audio' => 'audio',
         'blog_front' => 'blog_front',
+        'feature_article' => 'feature_article',
         'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_photo' => 'openpublish_photo',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -966,6 +967,7 @@ function tpf_display_context_context_default_contexts() {
         'takepart_quick_study' => 'takepart_quick_study',
         'takepart_slide' => 'takepart_slide',
         'venue' => 'venue',
+        'video' => 'video',
         'webform' => 'webform',
       ),
       'options' => array(
