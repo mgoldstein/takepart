@@ -386,15 +386,9 @@ function pm_signup_cors_check() {
     }
   }
   elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (pm_signup_cors_allowed_domain($origin)) {
+    if (!empty($_SERVER['HTTP_ORIGIN'])) {
+      $origin = $_SERVER['HTTP_ORIGIN'];
       header("Access-Control-Allow-Origin: $origin");
-    }
-    else {
-      return array(
-        'Status' => '403 Access Forbidden',
-        'Content-Type' => 'text/plain',
-        'Payload' => 'The way is shut',
-      );
     }
   }
   return FALSE;
