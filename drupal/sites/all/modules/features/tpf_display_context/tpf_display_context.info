@@ -28,6 +28,7 @@ dependencies[] = takepart_gallery_support
 dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = tp4_support
+dependencies[] = tp_feature_feature_article
 dependencies[] = tpf_content_action
 dependencies[] = tpf_content_article
 dependencies[] = tpf_content_audio
