@@ -51,7 +51,7 @@ function node_titles() {
   $nodes = db_select('field_data_field_html_title', 'f')
     ->fields('f', array('entity_id', 'field_html_title_value'))
     ->condition('entity_type', 'node')
-    ->condition('bundle', 'openpublish_article')
+    ->condition('bundle', 'openpublish_photo_gallery')
     ->execute()
     ->fetchAllKeyed();
   $non_empty = array();
