@@ -219,9 +219,8 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_promo_short_headline']['table'] = 'field_data_field_promo_short_headline';
   $handler->display->display_options['fields']['field_promo_short_headline']['field'] = 'field_promo_short_headline';
   $handler->display->display_options['fields']['field_promo_short_headline']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['path'] = '[path]';
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['link_class'] = '[type]';
+  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['text'] = '<span class="[type]"><a href="[path]">[field_promo_short_headline]</a></span>';
   $handler->display->display_options['fields']['field_promo_short_headline']['element_label_colon'] = FALSE;
   /* Sort criterion: Nodequeue: Queue ID */
   $handler->display->display_options['sorts']['qid']['id'] = 'qid';
