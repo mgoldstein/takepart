@@ -36,6 +36,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -120,6 +126,12 @@ function tpf_content_group_field_default_field_instances() {
         'weight' => 8,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -239,6 +251,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -319,6 +337,12 @@ function tpf_content_group_field_default_field_instances() {
         'weight' => 2,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -423,6 +447,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -516,6 +546,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -593,6 +629,12 @@ function tpf_content_group_field_default_field_instances() {
         'weight' => 7,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -679,6 +721,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -757,6 +805,12 @@ function tpf_content_group_field_default_field_instances() {
         'weight' => 5,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -857,6 +911,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -933,6 +993,12 @@ function tpf_content_group_field_default_field_instances() {
         'weight' => 9,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1056,6 +1122,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1137,6 +1209,12 @@ function tpf_content_group_field_default_field_instances() {
         'weight' => 10,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

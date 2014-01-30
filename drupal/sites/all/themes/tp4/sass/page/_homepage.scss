@@ -151,6 +151,37 @@ body.front{
     }
     margin-bottom: 1em;
   }
+  .view-mode-feature-main-tpl {
+    .field-name-field-article-subhead {
+      font-size: 1.142857143em;
+      line-height: 1.25;
+      margin-top: .5em;
+      font-weight: normal;
+    }
+    &.node-openpublish-photo-gallery{
+      h2.field-name-field-article-subhead{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F7";
+        }
+      }
+    }
+    &.node-video{
+      h2.field-name-field-article-subhead{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F9";
+        }
+      }
+    }
+    margin-bottom: 1em;
+  }
 
   .tpl-headline {
     border-top: 4px solid $light-blue;

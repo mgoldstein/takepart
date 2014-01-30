@@ -30,6 +30,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -111,6 +117,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -179,6 +191,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 30,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -257,6 +275,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 31,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -345,6 +369,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 28,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -450,6 +480,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -518,6 +554,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 25,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -604,6 +646,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -674,6 +722,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 34,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -753,6 +807,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 33,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -846,6 +906,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -916,6 +982,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 4,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1011,6 +1083,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1082,6 +1160,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 20,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1162,6 +1246,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 2,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1279,6 +1369,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1366,6 +1462,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1437,6 +1539,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 17,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1534,6 +1642,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1622,6 +1736,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1695,6 +1815,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 2,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1790,6 +1916,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1866,6 +1998,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1937,6 +2075,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 6,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2023,6 +2167,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2099,6 +2249,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2170,6 +2326,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 9,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2256,6 +2418,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2332,6 +2500,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2403,6 +2577,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 12,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2489,6 +2669,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2565,6 +2751,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2636,6 +2828,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 15,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2722,6 +2920,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2792,6 +2996,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 24,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2870,6 +3080,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 22,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2962,6 +3178,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3041,6 +3263,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3113,6 +3341,12 @@ function tpf_content_campaign_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
