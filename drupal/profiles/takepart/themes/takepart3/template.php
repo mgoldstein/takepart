@@ -1064,3 +1064,12 @@ function takepart3_html_head_alter(&$head_elements) {
     }
 }
 
+function takepart3_field__field_video__video($variables) {
+  $output = '';
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= render($item);
+  }
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  return $output;
+}
+
