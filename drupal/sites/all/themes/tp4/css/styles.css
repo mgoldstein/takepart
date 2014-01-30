@@ -3770,6 +3770,19 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 
+/* line 172, ../sass/page/_layout.scss */
+#tp_ad_takeover {
+  display: none;
+  visibility: hidden;
+}
+@media all and (min-width: 980px) {
+  /* line 172, ../sass/page/_layout.scss */
+  #tp_ad_takeover {
+    display: block;
+    visibility: visible;
+  }
+}
+
 /* line 6, ../sass/page/_homepage.scss */
 body.front img {
   max-width: 100% !important;
