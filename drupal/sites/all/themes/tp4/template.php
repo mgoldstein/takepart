@@ -553,7 +553,12 @@ function tp4_field__field_article_subhead__openpublish_article($variables) {
   $output .= '</span>';
 
   // Render the top-level DIV.
-  $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</h2>';
+  if($variables['element']['#view_mode'] == 'feature_main_tpl'){
+    $path = drupal_get_path_alias('node/'. $variables['element']['#object']->nid);
+    $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . l($output, $path, array('html' => true)) . '</h2>';
+  }else{
+    $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</h2>';
+  }
 
   return $output;
 }
