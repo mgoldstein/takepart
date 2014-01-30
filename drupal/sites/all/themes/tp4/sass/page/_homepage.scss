@@ -386,8 +386,8 @@ body.front{
   .views-row{
     margin-bottom: 20px;
     .views-field-field-promo-headline {
-      a {
-        @include icon-photo-gallery();
+      .field-content {
+            @include icon-photo-gallery();
       }
     }
   }
