@@ -1067,7 +1067,7 @@
 // Sticky Ad Unit for Sidebar
 //
 .page-node.node-type-openpublish-article,
-.page-node.node-type.video {
+.page-node.node-type-video {
   .block-boxes-ga_ad-bottom {
     @include breakpoint($breakpoint-desktop) {
       &.sticky {
@@ -1077,6 +1077,7 @@
     }
   }
 }
+
 
 .leaderboard div {
   margin: 0 auto;
