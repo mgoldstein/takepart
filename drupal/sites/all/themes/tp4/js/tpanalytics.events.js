@@ -193,9 +193,6 @@
         },
         'gallery-track-slide': function(options) {
             var token = options.token;
-            omniture = s.prop15.split(':');
-            s.prop15 = omniture[0] + ':' + omniture[1] + ((token) ? ':' + token : '');
-            s.eVar15 = s.prop15;
             s.events = ( options.skip_pageview ) ? '' : 'event2';
             s.linkTrackEvents = ( options.skip_pageview ) ? '' : 'event2';
 
@@ -207,7 +204,6 @@
                 s.linkTrackEvents += 'event16';
                 s.eVar16 = 'Up Next Gallery Cover';
                 s.eVar33 = options.next_gallery_headline;
-                s.eVar34 = options.next_gallery_topic.toLowerCase();
             // Photo view
             } else if ( token ) {
                 if ( s.events ) s.events += ',';
