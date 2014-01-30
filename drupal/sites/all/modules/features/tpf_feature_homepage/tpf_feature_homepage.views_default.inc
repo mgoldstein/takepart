@@ -164,6 +164,7 @@ function tpf_feature_homepage_views_default_views() {
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'video' => 'video',
   );
   $export['latest_article_in_a_series'] = $view;
 
