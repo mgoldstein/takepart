@@ -1631,7 +1631,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'module' => 'tp4_support',
           'delta' => 'tp4_fat_header',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'tp4_support-tp4_footer' => array(
           'module' => 'tp4_support',
@@ -1829,6 +1829,66 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   // Included for use with string extractors like potx.
   t('TP4');
   $export['tp4_photo_gallery'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_video';
+  $context->description = 'Right rail content for TP4 videos (plus leaderboard)';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'video' => 'video',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-11',
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'bean--of-the-day' => array(
+          'module' => 'bean',
+          'delta' => '-of-the-day',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
+        'boxes-box-18786b90' => array(
+          'module' => 'boxes',
+          'delta' => 'box-18786b90',
+          'region' => 'sidebar',
+          'weight' => '-8',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar',
+          'weight' => '-7',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Right rail content for TP4 videos (plus leaderboard)');
+  t('TP4');
+  $export['tp4_video'] = $context;
 
   return $export;
 }
