@@ -217,6 +217,7 @@
       this.isShowing = true;
       $('body').addClass('gallery-showing');
 
+      this.slideshow.setup();
       this.adjustSlideshowHeight();
 
       // store the token to catch a corner case where page updates
@@ -364,6 +365,12 @@
       $('body').on('touchmove', function() {
         isTouchmove = true;
       });
+
+      // unbind click events
+      if (isTouch) {
+        gallery.$previousSlide.on('click', function(e) { e.preventDefault(); })
+        gallery.$nextSlide.on('click', function(e) { e.preventDefault(); })
+      }
 
       // previous/next behavior
       gallery.$previousSlide.on(click, function (e) {
