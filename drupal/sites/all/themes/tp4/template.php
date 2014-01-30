@@ -413,6 +413,15 @@ function tp4_preprocess_field(&$variables, $hook) {
     $variables['classes_array'][] = 'author';
   }
 
+  if ('field_tab_action_override' == $variables['element']['#field_name']
+   && 'feature_main' == $variables['element']['#view_mode']) {
+    // Limit the main feature to one action override.
+    if (!empty($variables['items'])) {
+      $first = reset($variables['items']);
+      $variables['items'] = array($first);
+    }
+  }
+
   // allow us to add attributes to a field from hook_preprocess_node.
   if (isset($variables['element']['#attributes_array'])) {
     if (!isset($variables['attributes_array'])) {
