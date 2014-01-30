@@ -1084,7 +1084,7 @@ s.prop2 = [current-page:url-arg:1]',
     'omniture_reaction' => array(
       'variables' => 's.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
 s.eVar17 = [tp_omniture:value_or_empty:{node:field_author}]
-s.prop20 = [tp_omniture:lowercase:{node:field_topic}]
+s.prop20 = [tp_omniture:stringfixes:{node:field_topic}]
 s.eVar21 = [tp_omniture:lowercase:{node:field_topic}]',
     ),
   );
