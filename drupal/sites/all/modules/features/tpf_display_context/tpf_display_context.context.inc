@@ -1086,7 +1086,7 @@ s.prop15 = [tp_omniture:get_first_photo_title:{node:nid}]
 s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]
 s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
 s.eVar17 = [tp_omniture:value_or_empty:{node:field_author}]
-s.prop20 = [tp_omniture:lowercase:{node:field_topic}]
+s.prop20 = [tp_omniture:stringfixes:{node:field_topic}]
 s.eVar21 = [tp_omniture:lowercase:{node:field_topic}]',
     ),
   );
