@@ -1568,7 +1568,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context->api_version = 3;
   $context->name = 'tp4_article';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'TP4';
   $context->conditions = array(
     'node' => array(
       'values' => array(
@@ -1609,6 +1609,10 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
     ),
   );
   $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
   $export['tp4_article'] = $context;
 
   $context = new stdClass();
@@ -1616,7 +1620,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context->api_version = 3;
   $context->name = 'tp4_global';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'TP4';
   $context->conditions = array(
     'theme' => array(
       'values' => array(
@@ -1655,6 +1659,10 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
     ),
   );
   $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
   $export['tp4_global'] = $context;
 
   $context = new stdClass();
@@ -1662,12 +1670,13 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context->api_version = 3;
   $context->name = 'tp4_global_not_front';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'TP4';
   $context->conditions = array(
     'path' => array(
       'values' => array(
         '~<front>' => '~<front>',
         '~feature/*' => '~feature/*',
+        '~video/*' => '~video/*',
       ),
     ),
     'theme' => array(
@@ -1707,6 +1716,10 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
     ),
   );
   $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
   $export['tp4_global_not_front'] = $context;
 
   $context = new stdClass();
@@ -1714,7 +1727,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context->api_version = 3;
   $context->name = 'tp4_photo_gallery';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'TP4';
   $context->conditions = array(
     'node' => array(
       'values' => array(
@@ -1815,6 +1828,10 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
     ),
   );
   $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
   $export['tp4_photo_gallery'] = $context;
 
   return $export;
