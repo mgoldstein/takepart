@@ -981,7 +981,7 @@ s.prop16 = [tp_omniture:get_author:{node:nid}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:lowercase:{node:field_topic}]
+s.prop20 = [tp_omniture:stringfixes:{node:field_topic}]
 s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
   );
@@ -1018,7 +1018,7 @@ s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:value_or_empty:{node:field_topic}]
+s.prop20 = [tp_omniture:stringfixes:{node:field_topic}]
 s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
   );
@@ -1265,7 +1265,7 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.prop4 = topic front
-s.prop20 = [tp_omniture:lowercase:{current-page:title}]
+s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
 ',
     ),
   );
