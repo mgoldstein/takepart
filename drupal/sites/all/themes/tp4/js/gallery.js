@@ -217,14 +217,14 @@
       this.isShowing = true;
       $('body').addClass('gallery-showing');
 
+      this.adjustSlideshowHeight();
+
       // store the token to catch a corner case where page updates
       // fail to fire when the first slide is loaded.
       var token = getCurrentToken();
       this.hpushCurrentSlide(replace);
+      showFacebookComments(token);
 
-      if (token == getCurrentToken()) {
-	showFacebookComments(token);
-      }
     },
 
     adjustSlideshowHeight: function() {
@@ -394,7 +394,7 @@
       gallery.nextGalleryHeadline = gallery.$nextGallery.find('.slide-caption-headline').text();
       gallery.nextGalleryTopic = $('<div />').html(gallery.$nextGallery.data('topic')).text(); // hack to decode entities
 
-      gallery.$nextGallery.on(click, '#next-gallery-enter-link', function(e) {
+      gallery.$galleryContent.on(click, '#next-gallery-enter-link, #next-gallery-nav-link', function() {
         if (isTouchmove) return isTouchmove = false;
         takepart.analytics.track('gallery-next-gallery-click', {
           headline: gallery.nextGalleryHeadline,
@@ -428,9 +428,9 @@
       var token = getCurrentToken();
 
       if ( token && token != 'first-slide' ) {
-        var slideIndex = gallery.getIndex(token);
+      	gallery.slideTo(gallery.getIndex(token));
+        skipNextPageview = true;
         gallery.showGallery();
-	gallery.slideTo(slideIndex);
       } else if ( token == 'first-slide' ) {
         skipNextPageview = true;
         gallery.showGallery(true);
