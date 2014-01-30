@@ -264,7 +264,11 @@ body.front{
 }
 
 //Center Column
+a.column-header:hover{
+  text-decoration: none;
+}
 #skinny {
+
   .columns > .view-content {
     @include breakpoint-grid-breakdown(1 3 1, $breakpoint-mobile $breakpoint-tablet $breakpoint-desktop, ' > .views-row');
   }
