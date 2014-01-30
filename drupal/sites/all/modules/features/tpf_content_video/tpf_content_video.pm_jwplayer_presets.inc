@@ -37,7 +37,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     ),
     'playback' => array(
       'autostart' => '[node:field_auto_play]',
-      'fallback' => 'false',
+      'fallback' => 'true',
       'mute' => '[node:field_mute_playback]',
       'primary' => 'html5',
       'repeat' => 'false',
@@ -109,7 +109,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     ),
     'playback' => array(
       'autostart' => '[node:field_auto_play]',
-      'fallback' => 'false',
+      'fallback' => 'true',
       'mute' => '[node:field_mute_playback]',
       'primary' => 'html5',
       'repeat' => 'false',
@@ -181,7 +181,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     ),
     'playback' => array(
       'autostart' => '[node:field_auto_play]',
-      'fallback' => 'false',
+      'fallback' => 'true',
       'mute' => '[node:field_mute_playback]',
       'primary' => 'html5',
       'repeat' => 'false',
