@@ -265,10 +265,11 @@ Drupal.behaviors.tpsocialShares = {
         'Gallery - next slide >': '#block-takepart-gallery-support-takepart-gallery-content #next-slide',
         'Gallery - previous slide <': '#block-takepart-gallery-support-takepart-gallery-content #previous-slide',
         'Gallery - next gallery >': '#block-takepart-gallery-support-takepart-gallery-content #previous-slide',
+        'Gallery - related stories': '#gallery-footer .field-name-field-related-stories',
 
         'Partner Link': '#block-bean-on-our-radar-block',
         'Embedded Content' : '#article-content aside.inline-content',
-        'Related Stories' : '#article-footer .field-name-field-related-stories',
+        'Article - Related Stories' : '#article-footer .field-name-field-related-stories',
         'Series Navigation' : '#series-navigation',
         'Keyword Link' : '.topic-links',
         'Author Full Bio Link' : '.author-bio',
