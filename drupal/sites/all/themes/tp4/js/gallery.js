@@ -366,12 +366,6 @@
         isTouchmove = true;
       });
 
-      // unbind click events
-      if (isTouch) {
-        gallery.$previousSlide.on('click', function(e) { e.preventDefault(); })
-        gallery.$nextSlide.on('click', function(e) { e.preventDefault(); })
-      }
-
       // previous/next behavior
       gallery.$previousSlide.on(click, function (e) {
         if (isTouchmove) return isTouchmove = false;
