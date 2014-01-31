@@ -1,7 +1,7 @@
 name = TakePart Config Permissions
 core = 7.x
 package = Config
-version = 7.x-1.1
+version = 7.x-1.2
 project = tpf_config_permissions
 dependencies[] = comment
 dependencies[] = comscore_direct
@@ -30,6 +30,7 @@ features[user_permission][] = access search_api_page
 features[user_permission][] = administer SiteCatalyst configuration
 features[user_permission][] = administer checked out documents
 features[user_permission][] = administer comments
+features[user_permission][] = administer files
 features[user_permission][] = administer mini panels
 features[user_permission][] = administer panels layouts
 features[user_permission][] = administer panels styles

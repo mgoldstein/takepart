@@ -100,6 +100,18 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'comment',
   );
 
+  // Exported permission: 'administer files'.
+  $permissions['administer files'] = array(
+    'name' => 'administer files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'file_entity',
+  );
+
   // Exported permission: 'administer mini panels'.
   $permissions['administer mini panels'] = array(
     'name' => 'administer mini panels',
