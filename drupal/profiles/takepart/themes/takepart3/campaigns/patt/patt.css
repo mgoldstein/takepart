@@ -1862,8 +1862,3 @@ h1.tile-header {
         page-break-after: avoid;
     }
 }
-.game iframe{
-	height: 700px;
-	width: 100%;
-	border: none;
-}
