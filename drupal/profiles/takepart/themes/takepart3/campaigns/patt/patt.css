@@ -1862,6 +1862,10 @@ h1.tile-header {
         page-break-after: avoid;
     }
 }
+.game{
+	-webkit-overflow-scrolling:touch;
+	overflow: auto;
+}
 .game > iframe, .game object{
 	height: 700px;
 	max-width: 100%;
