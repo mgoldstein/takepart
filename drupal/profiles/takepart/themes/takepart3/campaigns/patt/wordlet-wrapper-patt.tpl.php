@@ -1,5 +1,5 @@
 <div id="page-wrapper" class="campaign">
-		  <div class="slimnav responsive mobile-only">
+		  <div class="slimnav <?php print (current_path() == 'wordlet/patt_game' ? 'non-responsive' : 'responsive mobile-only'); ?>">		  
     <?php $slimnav = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav'); ?>
     <?php print $slimnav['content']; ?>
   </div>
@@ -44,7 +44,7 @@
 	<!-- end -->
 
 </div>
-<div class="footer-wrapper responsive mobile-only"> 
+<div class="footer-wrapper <?php print (current_path() == 'wordlet/patt_game' ? 'non-responsive' : 'responsive mobile-only'); ?>"> 
   <footer>
     <?php $footer = module_invoke('tp4_support', 'block_view', 'tp4_footer'); ?>
     <?php print $footer['content']; ?>
