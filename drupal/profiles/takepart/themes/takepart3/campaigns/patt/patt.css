@@ -10,6 +10,9 @@ body {
 	margin: 0;
 	padding: 0;
 }
+body.page-wordlet-patt-game{
+	min-width: 1000px;
+}
 
 .multipage-campaign #site-header {
 	height: 36px;
