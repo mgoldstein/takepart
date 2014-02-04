@@ -915,154 +915,154 @@ body.page-wordlet-patt-game{
    ========================================================================== */
 
 @media only screen and (max-width: 499px) {
-	body:not(.page-wordlet-patt-game) .mobile {
+	.mobile {
 		display: block;
 	}
 
-	body:not(.page-wordlet-patt-game) #footer,
-	body:not(.page-wordlet-patt-game) #page-wrapper {
+	#footer,
+	#page-wrapper {
 		width: auto;
 	}
 
-	body:not(.page-wordlet-patt-game) * {
+	* {
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
 		max-width: 100% !important;
 	}
 
-	body:not(.page-wordlet-patt-game) img {
+	img {
 		height: auto !important;
 	}
 
 	/* nav */
 
-	body:not(.page-wordlet-patt-game) .multipage-campaign #site-header #site-logo {
+	.multipage-campaign #site-header #site-logo {
 		padding-right: 0;
 		position: absolute;
 		left: 0;
 		top: 0;
 	}
 
-	body:not(.page-wordlet-patt-game) .multipage-campaign #site-header {
+	.multipage-campaign #site-header {
 		margin-bottom: 0;
 		height: auto;
 	}
 
-	body:not(.page-wordlet-patt-game) .multipage-campaign #site-main-nav {
+	.multipage-campaign #site-main-nav {
 		padding: 5px 0;
 	}
 
-	body:not(.page-wordlet-patt-game) #site-header li {
+	#site-header li {
 		line-height: 1.5;
 	}
 
-	body:not(.page-wordlet-patt-game) #site-header-inner {
+	#site-header-inner {
 		height: auto;
 		float: left;
 		padding-left: 47px;
 	}
 
-	body:not(.page-wordlet-patt-game) #site-navs {
+	#site-navs {
 		float: none;
 	}
 
-	body:not(.page-wordlet-patt-game) #site-main-nav {
+	#site-main-nav {
 		float: none;
 	}
 
-	body:not(.page-wordlet-patt-game) #site-header div ul {
+	#site-header div ul {
 		float: none;
 	}
 
-	body:not(.page-wordlet-patt-game) #site-hot-nav,
-	body:not(.page-wordlet-patt-game) #top-search,
-	body:not(.page-wordlet-patt-game) #join-login-top,
-	body:not(.page-wordlet-patt-game) #top-follow-wrapper,
-	body:not(.page-wordlet-patt-game) #site-more-navs {
+	#site-hot-nav,
+	#top-search,
+	#join-login-top,
+	#top-follow-wrapper,
+	#site-more-navs {
 		display: none;
 	}
 
-	body:not(.page-wordlet-patt-game) .header-right {
+	.header-right {
 		display: inline;
 		float: none;
 	}
 
-	body:not(.page-wordlet-patt-game) .header-right #nav-wrap {
+	.header-right #nav-wrap {
 		display: inline;
 		float: none;
 	}
 
-	body:not(.page-wordlet-patt-game) .header-right #nav-wrap:after {
+	.header-right #nav-wrap:after {
 		display: none;
 	}
 
-	body:not(.page-wordlet-patt-game) #block-menu-block-1 {
+	#block-menu-block-1 {
 		display: inline;
 		float: none;
 	}
 
-	body:not(.page-wordlet-patt-game) #header-wrapper {
+	#header-wrapper {
 		margin: 0;
 		position: relative;
 		z-index: 2;
 	}
 
 	/* wrap */
-	body:not(.page-wordlet-patt-game) .page-wrap {
+	.page-wrap {
 		top: -46px;
 		position: relative;
 		z-index: 1;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int #page {
+	.table.int #page {
 		margin-left: 0;
 	}
 
 	/* patt */
-	body:not(.page-wordlet-patt-game) .table.int {
+	.table.int {
 		padding: 0 1em;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main {
+	.table.int .main {
 		margin: 0;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main,
-	body:not(.page-wordlet-patt-game) .table.int .main .column-1,
-	body:not(.page-wordlet-patt-game) .table.int .main .column-2,
-	body:not(.page-wordlet-patt-game) .table.int .main .column-3 {
+	.table.int .main,
+	.table.int .main .column-1,
+	.table.int .main .column-2,
+	.table.int .main .column-3 {
 		height: auto !important;
 		width: auto;
 		float: none;
 		margin: 0;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main {
+	.table.int .main {
 		background: none;
 		margin-top: -45px;
 		position: relative;
 		z-index: 60;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .nav {
+	.table.int .nav {
 		display: none;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column-3,
-	body:not(.page-wordlet-patt-game) .table.int .main .column-1 {
+	.table.int .main .column-3,
+	.table.int .main .column-1 {
 		background: none;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column {
+	.table.int .main .column {
 		position: static !important;
 		margin-top: 0 !important;
 		width: auto !important;
 		height: auto !important;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column-1 .content,
-	body:not(.page-wordlet-patt-game) .table.int .main .column-3 .content {
+	.table.int .main .column-1 .content,
+	.table.int .main .column-3 .content {
 		position: static !important;
 		margin-top: 0 !important;
 		width: auto !important;
@@ -1070,23 +1070,23 @@ body.page-wordlet-patt-game{
 		padding: 10px;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column-2,
-	body:not(.page-wordlet-patt-game) .table.int .main .column-3 {
+	.table.int .main .column-2,
+	.table.int .main .column-3 {
 		background: rgba(0,0,0,.6);
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column-3,
-	body:not(.page-wordlet-patt-game) .table.int .main .column-2 {
+	.table.int .main .column-3,
+	.table.int .main .column-2 {
 		margin: 0 5px;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column-1 ol {
+	.table.int .main .column-1 ol {
 		display: inline-block;
 		width: 100%;
 		padding: 0 0 0 5px;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column-1 ol li {
+	.table.int .main .column-1 ol li {
 		width: 32.33%;
 		float: left;
 		background: rgba(0,0,0,.6);
@@ -1098,116 +1098,116 @@ body.page-wordlet-patt-game{
 		border-radius: 2px;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column-1 ol li a {
+	.table.int .main .column-1 ol li a {
 		display: block;
 		height: 48px;
 		line-height: 46px;
 		padding: 0;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column-1 ol li a span {
+	.table.int .main .column-1 ol li a span {
 		display: inline-block;
 		padding: 0 5px;
 		vertical-align: middle;
 		line-height: 1em;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .column-1 ol li a span span {
+	.table.int .main .column-1 ol li a span span {
 		font-size: 1em;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .nav li {
+	.table.int .nav li {
 		margin-right: 0;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .header {
+	.table.int .header {
 		height: auto;
 		background: none;
 		top: 0;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .header .logo {
+	.table.int .header .logo {
 		position: static;
 		text-align: center;
 		margin-top: 0;
 	}
 
-	body:not(.page-wordlet-patt-game) .table.int .main .two-columns {
+	.table.int .main .two-columns {
 		margin-left: 0;
 	}
 
 	/* Home */
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .table {
+	.page-wordlet-patt-home .table {
 		height: auto;
 		padding: 0;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .header,
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .table .nav {
+	.page-wordlet-patt-home .header,
+	.page-wordlet-patt-home .table .nav {
 		display: block;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .table .nav {
+	.page-wordlet-patt-home .table .nav {
 		display: inline-block; *display: inline; zoom: 1;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .page-wrap {
+	.page-wordlet-patt-home .page-wrap {
 		margin-bottom: -46px;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home #mobile_back,
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .table #page {
+	.page-wordlet-patt-home #mobile_back,
+	.page-wordlet-patt-home .table #page {
 		display: none;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .table.int .nav li:after {
+	.page-wordlet-patt-home .table.int .nav li:after {
 		display: none;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .table.int .nav li {
+	.page-wordlet-patt-home .table.int .nav li {
 		width: 50%;
 		height: 172px;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .table.int .nav li img {
+	.page-wordlet-patt-home .table.int .nav li img {
 		display: block;
 		margin: auto;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .table.int .nav li span {
+	.page-wordlet-patt-home .table.int .nav li span {
 		display: none;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .hunger {
+	.page-wordlet-patt-home .hunger {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-news.png) center top no-repeat;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .patt_film_url {
+	.page-wordlet-patt-home .patt_film_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-film.png) center top no-repeat;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .patt_book_url {
+	.page-wordlet-patt-home .patt_book_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-book.png) center top no-repeat;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .patt_videos_url {
+	.page-wordlet-patt-home .patt_videos_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-videos.png) center top no-repeat;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .patt_events_url {
+	.page-wordlet-patt-home .patt_events_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-events.png) center top no-repeat;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .patt_snap_url {
+	.page-wordlet-patt-home .patt_snap_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-gallery.png) center top no-repeat;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .patt_assistance_url {
+	.page-wordlet-patt-home .patt_assistance_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-assistance.png) center top no-repeat;
 	}
 
-	body:not(.page-wordlet-patt-game) .page-wordlet-patt-home .patt_action_url {
+	.page-wordlet-patt-home .patt_action_url {
 		background: url(/profiles/takepart/themes/takepart3/campaigns/patt/images/mobile-table-tag-action.png) center top no-repeat;
 	}
 
