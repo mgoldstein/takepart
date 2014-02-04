@@ -71,10 +71,12 @@ function takepart_ads_preprocess_page(&$vars) {
         $gpt_topic .= 'googletag.pubads().setTargeting("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
     }
 
+    $terms = array();
+
     $override = filter_input(INPUT_GET, 'dfpKeyval');
     if ($override) {
         $pairs = explode(",", $override);
-        $terms = array();
+
         foreach ($pairs as $param) {
             $i = strpos($param, ":");
             if (strtolower(substr($param, 0, $i)) === "freetag") {
