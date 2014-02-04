@@ -355,3 +355,19 @@ function tp4_support_form_alter(&$form, &$form_state, $form_id){
 function tp4_support_panel_main_feature($form, &$form_state) {
   variable_set('main_feature_tab_title_override', $form['main_feature_tab_title_override']['#value']);
 }
+
+/*
+ * Implements hook_menu()
+ */
+function tp4_support_menu(){
+  //iframe for APATT
+  $items['iframe/patt-game'] = array(
+    'page callback' => 'tp4_support_patt_game',
+    'access arguments' => array('access content'),
+  );
+return $items;
+}
+//Stand alone iframe for APATT
+function tp4_support_patt_game(){
+  print '<iframe src="http://xivic.dev.takepart.com/demo2/#" width="810px" height="660px" style="border: none;">';
+}
