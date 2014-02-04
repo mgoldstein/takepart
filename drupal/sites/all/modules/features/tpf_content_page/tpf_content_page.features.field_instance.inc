@@ -774,7 +774,6 @@ function tpf_content_page_field_default_field_instances() {
   // Exported field_instance: 'node-takepart_page-field_page_main_image'
   $field_instances['node-takepart_page-field_page_main_image'] = array(
     'bundle' => 'takepart_page',
-    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -840,7 +839,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'media_views_widget',
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
@@ -851,11 +850,10 @@ function tpf_content_page_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic',
+      'type' => 'media_generic_alt',
       'weight' => 5,
     ),
   );
@@ -1478,7 +1476,6 @@ function tpf_content_page_field_default_field_instances() {
   // Exported field_instance: 'node-takepart_page-field_thumbnail'
   $field_instances['node-takepart_page-field_thumbnail'] = array(
     'bundle' => 'takepart_page',
-    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1544,7 +1541,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'media_views_widget',
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
@@ -1555,11 +1552,10 @@ function tpf_content_page_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic',
+      'type' => 'media_generic_alt',
       'weight' => 10,
     ),
   );

@@ -8,6 +8,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = media_image_formatter
+dependencies[] = media_views_widget
 dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = taxonomy
