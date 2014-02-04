@@ -25,10 +25,6 @@ function tp4_support_entity_info_alter(&$entity_info) {
     'label' => t('Main Feature'),
     'custom settings' => TRUE,
   );
-  $entity_info['node']['view modes']['feature_main_tpl'] = array(
-    'label' => t('Main TPL Feature'),
-    'custom settings' => TRUE,
-  );
   $entity_info['node']['view modes']['feature_secondary'] = array(
     'label' => t('Secondary Feature'),
     'custom settings' => TRUE,
@@ -356,25 +352,4 @@ function tp4_support_panel_main_feature($form, &$form_state) {
   variable_set('main_feature_tab_title_override', $form['main_feature_tab_title_override']['#value']);
 }
 
-/*
- * Implements hook_menu()
- */
-function tp4_support_menu(){
-  //iframe for APATT
-  $items['iframe/patt-game'] = array(
-    'page callback' => 'tp4_support_patt_game',
-    'access arguments' => array('access content'),
-  );
-  $items['iframe/patt-game-1'] = array(
-    'page callback' => 'tp4_support_patt_game_1',
-    'access arguments' => array('access content'),
-  );
-return $items;
-}
-//Stand alone iframe for APATT
-function tp4_support_patt_game(){
-  print '<iframe src="http://xivic.dev.takepart.com/demo2/#" width="810px" height="660px" style="border: none;">';
-}
-function tp4_support_patt_game_1(){
-  print '<iframe src="http://xivic.dev.takepart.com/demo2/#" width="100%" height="660px" style="border: none;">';
-}
+
