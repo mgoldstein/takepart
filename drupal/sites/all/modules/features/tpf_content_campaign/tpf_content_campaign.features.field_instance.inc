@@ -3408,6 +3408,92 @@ function tpf_content_campaign_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-takepart_campaign-field_trailer_video'
+  $field_instances['node-takepart_campaign-field_trailer_video'] = array(
+    'bundle' => 'takepart_campaign',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(
+          'node_reference_view_mode' => 'embed',
+        ),
+        'type' => 'node_reference_node',
+        'weight' => 37,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_trailer_video',
+    'label' => 'Trailer Video',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',
+      'weight' => 31,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('  Segment 4 HTML');
@@ -3450,6 +3536,7 @@ function tpf_content_campaign_field_default_field_instances() {
   t('TAB Action Overrides');
   t('Thumbnail');
   t('Topic');
+  t('Trailer Video');
   t('User can create and/or reference a Photo to serve as the Spotlight Image.');
   t('User can populate custom HTML to be displayed in the Spotlight block instead of (or in addition to) Spotlight Nodes.');
   t('User can reference one or more Group nodes that sponsor this Campaign. The Groups will be featured prominently on the Campaign page in order to indicate their affiliation.');

@@ -471,15 +471,15 @@ ul,ol {
 }
 
 #block-menu-block-1 li.dhtml-menu a:hover,
-#block-menu-block-1 li.expanded a { 
-    background: #4eade7; 
-    background: -moz-linear-gradient(left, #4eade7 0%, #82ccf1 50%, #4eade7 100%); 
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#4eade7), color-stop(50%,#82ccf1), color-	stop(100%,#4eade7)); 
-    background: -webkit-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-    background: -o-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
-    background: -ms-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+#block-menu-block-1 li.expanded a {
+    background: #4eade7;
+    background: -moz-linear-gradient(left, #4eade7 0%, #82ccf1 50%, #4eade7 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,#4eade7), color-stop(50%,#82ccf1), color-	stop(100%,#4eade7));
+    background: -webkit-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%);
+    background: -o-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%);
+    background: -ms-linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4eade7', endColorstr='#4eade7',GradientType=1 );
-    background: linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%); 
+    background: linear-gradient(left, #4eade7 0%,#82ccf1 50%,#4eade7 100%);
     display: block;
     z-index: 1;
 }
@@ -931,7 +931,7 @@ body.front .main-content .block-boxes-current-promo h2 span,
     text-transform: uppercase;
     font-weight: 300;
 }
-.main-content .block-boxes-current-taxonomy_search_list h2 
+.main-content .block-boxes-current-taxonomy_search_list h2
 {
     margin: 15px 0;
 }
@@ -945,7 +945,7 @@ body.front .main-content .block-boxes-current-promo h2 span,
 
 
 body.front .main-content .block-boxes-current-promo .view-content,
-.main-content .block-boxes-title-features .view-content 
+.main-content .block-boxes-title-features .view-content
 {
     display: inline-block;
     padding: 5px 4px 1px;
@@ -970,7 +970,7 @@ body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail
 }
 
 .main-content .block-boxes-title-features .views-field-field-thumbnail-1 .field-content img,
-body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1 .field-content img, 
+body.front .main-content .block-boxes-current-promo .views-field-field-thumbnail-1 .field-content img,
 .block-boxes-current-promo .views-field-field-action-main-image .field-content img
 {
     width:200px;
@@ -1639,7 +1639,7 @@ body.page-search #right-rail h2 {
 body.node-type-takepart-campaign .main-content .region-content-top {
     padding:0 0 20px 0;
 }
-    
+
 body.node-type-takepart-campaign .main-content #left-rail {
     padding-bottom: 20px;
     padding-left: 0;
@@ -2532,7 +2532,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     padding-bottom:0;
 }
 .primary-feature,
-.secondary-feature 
+.secondary-feature
 {
     clear: both;
 }
@@ -2544,7 +2544,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 }
 
 .primary-feature .views-field-field-thumbnail,
-.primary-feature .views-field-field-thumbnail img 
+.primary-feature .views-field-field-thumbnail img
 {
     border: none;
     float: left;
@@ -2574,13 +2574,13 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     text-decoration: none;
 }
 
-.primary-feature .views-field-field-promo-text 
+.primary-feature .views-field-field-promo-text
 {
     font-size: 14px;
     line-height: 20px;
 }
 
-.node-type-topic-front .primary-feature .views-field-php, 
+.node-type-topic-front .primary-feature .views-field-php,
 .node-type-takepart-campaign .primary-feature .views-field-php
 {
     padding-top: 3em;
@@ -2605,7 +2605,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     font-size: 18px;
 }
 
-.secondary-feature .views-row 
+.secondary-feature .views-row
 {
     float:left;
     display: block;
@@ -2616,7 +2616,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
     background-color: #FFFFFF;
 }
 
-.secondary-feature .views-field-field-thumbnail img 
+.secondary-feature .views-field-field-thumbnail img
 {
     border: none;
     height: 160px;
@@ -2714,7 +2714,7 @@ div.takepart_addthis_leftpanel div.addthis_toolbox a.addthis_button_google_pluso
 .node-type-takepart-campaign.multipage-campaign #highlighted .region-highlighted {
     padding:10px;
 }
- 
+
 #edit-terms-of-use {
     display: none;
 }
@@ -2959,8 +2959,8 @@ p.fb-login-text {
     border: 4px solid #EFF3F5;
     padding: 10px;
 }
-.embedaction-wrapper h1 { 
-    display:none; 
+.embedaction-wrapper h1 {
+    display:none;
 }
 .map_canvas {
   border: 0;
@@ -3214,4 +3214,13 @@ fieldset.captcha {
 
 .field-name-field-series-graphic-header {
     margin-bottom: 20px;
+}
+
+/* Embed Videos on Campaign Pages */
+#block-boxes-box-2988d8fb #boxes-box-box-2988d8fb .field-name-field-trailer-video .field-item.even {
+  position: absolute;
+  top: 30px;
+  left: 70px;
+  width: 480px;
+  height: 270px;
 }
