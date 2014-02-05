@@ -225,7 +225,6 @@ features[field_base][] = field_tp_campaign_sl_image
 features[field_base][] = field_tp_campaign_sl_nodes
 features[field_base][] = field_tp_campaign_sponsors
 features[field_base][] = field_tp_campaign_subheadline
-features[field_base][] = field_trailer_video
 features[field_base][] = field_type_label
 features[field_base][] = field_units_plural
 features[field_base][] = field_units_single

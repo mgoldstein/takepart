@@ -283,8 +283,10 @@
 
       if (this.isShowing) this.adjustSlideshowHeight();
 
-      // update tpsocial values
-      updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), this.$currentSlide.find('.slide-caption').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n"));
+      // update tpsocial values with URL and slide title, if any, plus description
+      var slideHeadline = this.$currentSlide.find('.slide-caption-headline').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
+      var slideContent = this.$currentSlide.find('.slide-caption-content').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
+      updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), (slideHeadline ? slideHeadline + ': ' : '') + slideContent);
       this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
       // hide social buttons on the "next gallery slide"

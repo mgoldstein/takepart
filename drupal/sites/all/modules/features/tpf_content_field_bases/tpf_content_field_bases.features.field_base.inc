@@ -6229,67 +6229,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_trailer_video'
-  $field_bases['field_trailer_video'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_trailer_video',
-    'foreign keys' => array(
-      'nid' => array(
-        'columns' => array(
-          'nid' => 'nid',
-        ),
-        'table' => 'node',
-      ),
-    ),
-    'indexes' => array(
-      'nid' => array(
-        0 => 'nid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'node_reference',
-    'settings' => array(
-      'referenceable_types' => array(
-        'action' => 0,
-        'article' => 0,
-        'audio' => 0,
-        'blog_front' => 0,
-        'feature_article' => 0,
-        'feed' => 0,
-        'feed_item' => 0,
-        'mos_action' => 0,
-        'openpublish_article' => 0,
-        'openpublish_blog_post' => 0,
-        'openpublish_photo' => 0,
-        'openpublish_photo_gallery' => 0,
-        'openpublish_video' => 0,
-        'profile' => 0,
-        'section_front' => 0,
-        'section_front_wide' => 0,
-        'takepart_campaign' => 0,
-        'takepart_group' => 0,
-        'takepart_list' => 0,
-        'takepart_page' => 0,
-        'takepart_quick_study' => 0,
-        'takepart_slide' => 0,
-        'topic_front' => 0,
-        'venue' => 0,
-        'video' => 'video',
-        'webform' => 0,
-      ),
-      'view' => array(
-        'args' => array(),
-        'display_name' => '',
-        'view_name' => '',
-      ),
-    ),
-    'translatable' => 0,
-    'type' => 'node_reference',
-  );
-
   // Exported field_base: 'field_type_label'
   $field_bases['field_type_label'] = array(
     'active' => 1,
