@@ -1,6 +1,0 @@
-name = Metatag: Take Action Button
-description = Provides custom meta tags for the TAB platform.
-package = SEO
-core = 7.x
-dependencies[] = metatag
-dependencies[] = token_function
