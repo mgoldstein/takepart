@@ -620,7 +620,10 @@ function tp4_field__field_article_main_image__feature_article($variables) {
     // TODO: do this through drupal APIs
     $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
 
-    // Don't display the caption label no matter what
+    // The caption field is not shown on the default file display mode.
+    // TODO: Make it available on a display mode.
+    $caption_items = field_get_items('file', $item['#file'], 'field_media_caption');
+    $item['field_media_caption'] = field_view_value('file', $item['#file'], 'field_media_caption', $caption_items[0]);
     $item['field_media_caption']['#label_display'] = 'hidden';
 
     $output .= '<figure ' . $variables['item_attributes'][$delta] . '>';
