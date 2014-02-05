@@ -663,9 +663,11 @@
 
   // INLINE CONTENT
   // related nodes
+  a:hover .inline-content-nodes h2{
+    text-decoration: underline;
+  }
   .inline-content-nodes {
     margin: 1.5em 0; // articles have horizontal padding
-
     &.vertical {
       @media (max-width: 767px) {
 	@include clearfix;
@@ -701,7 +703,7 @@
 	  font-size: 14px;
 	  line-height: 1.285714286;
     margin-top: 0;
-	  a { color: black; }
+	  color: black;
 	}
       }
 
