@@ -23,4 +23,3 @@
 		<a href="#"><?=w('do_not_show') ?></a>
 	</p>
 </div>
-<?php print $messages; ?>

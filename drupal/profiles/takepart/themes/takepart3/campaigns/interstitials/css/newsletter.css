@@ -80,69 +80,72 @@ body {
 /* line 67, ../sass/newsletter.scss */
 .form-type-textfield input {
   max-width: 100%;
-  font-size: 18px;
+  font-size: 12px;
+  font-family: AdelleSans-Light, sans-serif;
   z-index: 1;
   border: 1px solid #ccc;
   box-shadow: inset 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
   background: #fff;
   line-height: 32px;
+  min-height: 32px;
   padding: 0 5px;
   position: relative;
 }
-/* line 77, ../sass/newsletter.scss */
+/* line 79, ../sass/newsletter.scss */
 .form-type-textfield input:focus::-webkit-input-placeholder {
   color: transparent;
 }
-/* line 78, ../sass/newsletter.scss */
+/* line 80, ../sass/newsletter.scss */
 .form-type-textfield input:focus:-moz-placeholder {
   color: transparent;
 }
-/* line 79, ../sass/newsletter.scss */
+/* line 81, ../sass/newsletter.scss */
 .form-type-textfield input:focus::-moz-placeholder {
   color: transparent;
 }
 
-/* line 82, ../sass/newsletter.scss */
+/* line 84, ../sass/newsletter.scss */
 .form-type-textfield input:focus {
   max-width: 100%;
   z-index: 3;
   outline: none;
 }
 
-/* line 88, ../sass/newsletter.scss */
+/* line 90, ../sass/newsletter.scss */
 .form-actions input {
   border: none;
-  font-size: 24px;
-  text-transform: uppercase;
-  font-family: TradeGothicLTStdCnBold, sans-serif;
   color: #fff;
   width: 100%;
   padding: .25em;
   cursor: pointer;
   background: #01BF9E;
+  font-size: 24px;
+  font-family: AdelleSans-Regular, sans-serif;
 }
 
-/* line 100, ../sass/newsletter.scss */
+/* line 101, ../sass/newsletter.scss */
 .form .thank-you-message {
   margin-top: 1em;
 }
 
-/* line 103, ../sass/newsletter.scss */
+/* line 104, ../sass/newsletter.scss */
 a {
   color: #019F84;
 }
 
-/* line 106, ../sass/newsletter.scss */
+/* line 107, ../sass/newsletter.scss */
 .form-required {
   display: none;
 }
 
-/* line 109, ../sass/newsletter.scss */
+/* line 110, ../sass/newsletter.scss */
 form {
-  color: #666;
+  color: #555;
+  font-family: AdelleSans-Light, sans-serif;
+  font-size: 12px;
 }
 
-/* line 113, ../sass/newsletter.scss */
+/* line 116, ../sass/newsletter.scss */
 header img {
   width: 100%;
   max-width: 400px;

@@ -3377,7 +3377,6 @@ tr.selected td {
 
 /* line 848, ../sass/elements/_misc.scss */
 .tpmodal_close {
-  background: url(/sites/all/modules/custom/unipop/css/images/close_popup.png) no-repeat;
   height: 13px;
   width: 13px;
   margin: 5px 5px 0 0;
@@ -3387,38 +3386,47 @@ tr.selected td {
 
 /* Interstitials ------------------------- */
 /* Social */
-/* line 861, ../sass/elements/_misc.scss */
+/* line 860, ../sass/elements/_misc.scss */
 .interstitial_modal_modal.tpmodal_modal {
   background: transparent;
   border-radius: 0;
   max-width: 100% !important;
 }
 
-/* line 867, ../sass/elements/_misc.scss */
+/* line 866, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_content {
   padding: 0;
 }
 
-/* line 871, ../sass/elements/_misc.scss */
+/* line 870, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_close {
-  background: url(/profiles/takepart/themes/takepart3/campaigns/interstitials/images/close.png);
   width: 40px;
   height: 40px;
 }
+/* line 873, ../sass/elements/_misc.scss */
+.interstitial_modal_modal .tpmodal_close:before {
+  content: '\2421';
+  font-size: 23px;
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  color: white;
+  font-family: SSGizmo;
+}
 
-/* line 877, ../sass/elements/_misc.scss */
+/* line 884, ../sass/elements/_misc.scss */
 .interstitial_modal_modal iframe {
   width: 400px;
   height: 400px;
   overflow: hidden;
 }
 
-/* line 883, ../sass/elements/_misc.scss */
+/* line 890, ../sass/elements/_misc.scss */
 .interstitial_modal_overlay {
   background: #000;
 }
 
-/* line 886, ../sass/elements/_misc.scss */
+/* line 893, ../sass/elements/_misc.scss */
 .tpmodal_close {
   margin: 5px 5px 0 0;
   text-indent: 100%;
@@ -3426,7 +3434,7 @@ tr.selected td {
 }
 
 /* Video Player ------------------------- */
-/* line 894, ../sass/elements/_misc.scss */
+/* line 901, ../sass/elements/_misc.scss */
 .pm-jwplayer.loading {
   width: 100%;
   background: url('../images/video-loading.gif?1391480774');
@@ -3435,7 +3443,7 @@ tr.selected td {
   padding-bottom: 56.25%;
   /* 16:9 */
 }
-/* line 901, ../sass/elements/_misc.scss */
+/* line 908, ../sass/elements/_misc.scss */
 .pm-jwplayer.blocked {
   width: 100%;
   background: url('../images/video-blocked.gif?1391480774') no-repeat center center;
