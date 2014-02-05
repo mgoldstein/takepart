@@ -74,16 +74,10 @@ body {
 
 /* line 63, ../sass/newsletter.scss */
 .form-type-textfield label {
-  position: absolute;
-  z-index: 2;
-  line-height: 40px;
-  padding: 0 5px;
-  padding-left: 10px;
-  color: #999;
-  border: 1px solid transparent;
+  display: none;
 }
 
-/* line 73, ../sass/newsletter.scss */
+/* line 67, ../sass/newsletter.scss */
 .form-type-textfield input {
   max-width: 100%;
   font-size: 18px;
@@ -95,15 +89,27 @@ body {
   padding: 0 5px;
   position: relative;
 }
+/* line 77, ../sass/newsletter.scss */
+.form-type-textfield input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+/* line 78, ../sass/newsletter.scss */
+.form-type-textfield input:focus:-moz-placeholder {
+  color: transparent;
+}
+/* line 79, ../sass/newsletter.scss */
+.form-type-textfield input:focus::-moz-placeholder {
+  color: transparent;
+}
 
-/* line 85, ../sass/newsletter.scss */
+/* line 82, ../sass/newsletter.scss */
 .form-type-textfield input:focus {
   max-width: 100%;
   z-index: 3;
   outline: none;
 }
 
-/* line 91, ../sass/newsletter.scss */
+/* line 88, ../sass/newsletter.scss */
 .form-actions input {
   border: none;
   font-size: 24px;
@@ -116,27 +122,27 @@ body {
   background: #01BF9E;
 }
 
-/* line 103, ../sass/newsletter.scss */
+/* line 100, ../sass/newsletter.scss */
 .form .thank-you-message {
   margin-top: 1em;
 }
 
-/* line 106, ../sass/newsletter.scss */
+/* line 103, ../sass/newsletter.scss */
 a {
   color: #019F84;
 }
 
-/* line 109, ../sass/newsletter.scss */
+/* line 106, ../sass/newsletter.scss */
 .form-required {
   display: none;
 }
 
-/* line 112, ../sass/newsletter.scss */
+/* line 109, ../sass/newsletter.scss */
 form {
   color: #666;
 }
 
-/* line 116, ../sass/newsletter.scss */
+/* line 113, ../sass/newsletter.scss */
 header img {
   width: 100%;
   max-width: 400px;

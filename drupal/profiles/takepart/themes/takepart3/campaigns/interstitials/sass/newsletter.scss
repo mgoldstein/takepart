@@ -61,13 +61,7 @@ body {
 }
 
 .form-type-textfield label {
-	position: absolute;
-	z-index: 2;
-	line-height: 40px;
-	padding: 0 5px;
-	padding-left: 10px;
-	color: #999;
-	border: 1px solid transparent;
+	display: none;
 }
 
 .form-type-textfield input {
@@ -80,6 +74,9 @@ body {
 	line-height: 32px;
 	padding: 0 5px;
 	position: relative;
+	&:focus::-webkit-input-placeholder { color:transparent; }
+	&:focus:-moz-placeholder { color:transparent; }
+	&:focus::-moz-placeholder { color:transparent; }
 }
 
 .form-type-textfield input:focus {
