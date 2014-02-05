@@ -5596,6 +5596,12 @@ a.column-header:hover {
   }
 }
 /* line 666, ../sass/page/_openpublish_article.scss */
+.node-feature-article.view-mode-full a:hover .inline-content-nodes h2,
+.node-openpublish-article.view-mode-full a:hover .inline-content-nodes h2,
+.node-video.view-mode-full a:hover .inline-content-nodes h2 {
+  text-decoration: underline;
+}
+/* line 669, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .inline-content-nodes,
 .node-openpublish-article.view-mode-full .inline-content-nodes,
 .node-video.view-mode-full .inline-content-nodes {
@@ -5603,7 +5609,7 @@ a.column-header:hover {
   border-top: 1px solid #0080a3;
 }
 @media (max-width: 767px) {
-  /* line 669, ../sass/page/_openpublish_article.scss */
+  /* line 671, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .inline-content-nodes.vertical,
   .node-openpublish-article.view-mode-full .inline-content-nodes.vertical,
   .node-video.view-mode-full .inline-content-nodes.vertical {
@@ -5611,7 +5617,7 @@ a.column-header:hover {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 669, ../sass/page/_openpublish_article.scss */
+  /* line 671, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .inline-content-nodes.vertical,
   .node-openpublish-article.view-mode-full .inline-content-nodes.vertical,
   .node-video.view-mode-full .inline-content-nodes.vertical {
@@ -5622,21 +5628,21 @@ a.column-header:hover {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 669, ../sass/page/_openpublish_article.scss */
+  /* line 671, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .inline-content-nodes.vertical,
   .node-openpublish-article.view-mode-full .inline-content-nodes.vertical,
   .node-video.view-mode-full .inline-content-nodes.vertical {
     width: 25%;
   }
 }
-/* line 684, ../sass/page/_openpublish_article.scss */
+/* line 686, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .inline-content-nodes.horizontal,
 .node-openpublish-article.view-mode-full .inline-content-nodes.horizontal,
 .node-video.view-mode-full .inline-content-nodes.horizontal {
   overflow: hidden;
 }
 @media all and (min-width: 768px) {
-  /* line 688, ../sass/page/_openpublish_article.scss */
+  /* line 690, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .inline-content-nodes.horizontal .node,
   .node-openpublish-article.view-mode-full .inline-content-nodes.horizontal .node,
   .node-video.view-mode-full .inline-content-nodes.horizontal .node {
@@ -5644,20 +5650,20 @@ a.column-header:hover {
     float: left;
     margin-right: 2.4%;
   }
-  /* line 692, ../sass/page/_openpublish_article.scss */
+  /* line 694, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .inline-content-nodes.horizontal .node:first-child,
   .node-openpublish-article.view-mode-full .inline-content-nodes.horizontal .node:first-child,
   .node-video.view-mode-full .inline-content-nodes.horizontal .node:first-child {
     margin-left: 2.4%;
   }
 }
-/* line 697, ../sass/page/_openpublish_article.scss */
+/* line 699, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .inline-content-nodes .node,
 .node-openpublish-article.view-mode-full .inline-content-nodes .node,
 .node-video.view-mode-full .inline-content-nodes .node {
   text-align: center;
 }
-/* line 700, ../sass/page/_openpublish_article.scss */
+/* line 702, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .inline-content-nodes .node > header h2,
 .node-openpublish-article.view-mode-full .inline-content-nodes .node > header h2,
 .node-video.view-mode-full .inline-content-nodes .node > header h2 {
@@ -5677,20 +5683,20 @@ a.column-header:hover {
   margin: .5em 0;
   border-bottom: 1px dashed black;
 }
-/* line 709, ../sass/page/_openpublish_article.scss */
+/* line 711, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .inline-content-nodes .node:after,
 .node-openpublish-article.view-mode-full .inline-content-nodes .node:after,
 .node-video.view-mode-full .inline-content-nodes .node:after {
   margin: 1em auto;
   visibility: visible;
 }
-/* line 713, ../sass/page/_openpublish_article.scss */
+/* line 715, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .inline-content-nodes .node:last-child:after,
 .node-openpublish-article.view-mode-full .inline-content-nodes .node:last-child:after,
 .node-video.view-mode-full .inline-content-nodes .node:last-child:after {
   margin-bottom: 0;
 }
-/* line 721, ../sass/page/_openpublish_article.scss */
+/* line 723, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .inline-content-nodes:before,
 .node-openpublish-article.view-mode-full .inline-content-nodes:before,
 .node-video.view-mode-full .inline-content-nodes:before {
@@ -5714,7 +5720,7 @@ a.column-header:hover {
   -webkit-border-bottom-right-radius: 36px;
   border-bottom-right-radius: 36px;
 }
-/* line 744, ../sass/page/_openpublish_article.scss */
+/* line 746, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer h2.block-title, .node-feature-article.view-mode-full #article-footer h3,
 .node-feature-article.view-mode-full #article-comments h2.block-title,
 .node-feature-article.view-mode-full #article-comments h3,
@@ -5733,7 +5739,7 @@ a.column-header:hover {
   margin: .667em 0;
   text-transform: lowercase;
 }
-/* line 752, ../sass/page/_openpublish_article.scss */
+/* line 754, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer h2.block-title.top-border, .node-feature-article.view-mode-full #article-footer h3.top-border,
 .node-feature-article.view-mode-full #article-comments h2.block-title.top-border,
 .node-feature-article.view-mode-full #article-comments h3.top-border,
@@ -5748,7 +5754,7 @@ a.column-header:hover {
   border-top: 4px solid #000;
   padding-top: 5px;
 }
-/* line 755, ../sass/page/_openpublish_article.scss */
+/* line 757, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer h2.block-title span, .node-feature-article.view-mode-full #article-footer h3 span,
 .node-feature-article.view-mode-full #article-comments h2.block-title span,
 .node-feature-article.view-mode-full #article-comments h3 span,
@@ -5764,20 +5770,20 @@ a.column-header:hover {
   font-weight: normal;
   font-size: 14px;
 }
-/* line 763, ../sass/page/_openpublish_article.scss */
+/* line 765, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer,
 .node-openpublish-article.view-mode-full #article-footer,
 .node-video.view-mode-full #article-footer {
   border-top: 1px solid #cccccc;
   line-height: 1.5;
 }
-/* line 767, ../sass/page/_openpublish_article.scss */
+/* line 769, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .field-name-field-related-stories,
 .node-openpublish-article.view-mode-full #article-footer .field-name-field-related-stories,
 .node-video.view-mode-full #article-footer .field-name-field-related-stories {
   margin-bottom: 2em;
 }
-/* line 769, ../sass/page/_openpublish_article.scss */
+/* line 771, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .field-name-field-related-stories .field-item,
 .node-openpublish-article.view-mode-full #article-footer .field-name-field-related-stories .field-item,
 .node-video.view-mode-full #article-footer .field-name-field-related-stories .field-item {
@@ -5796,32 +5802,32 @@ a.column-header:hover {
   top: 7px;
   left: 0;
 }
-/* line 773, ../sass/page/_openpublish_article.scss */
+/* line 775, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .topic-links,
 .node-openpublish-article.view-mode-full #article-footer .topic-links,
 .node-video.view-mode-full #article-footer .topic-links {
   margin-bottom: 2em;
 }
-/* line 775, ../sass/page/_openpublish_article.scss */
+/* line 777, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .topic-links li,
 .node-openpublish-article.view-mode-full #article-footer .topic-links li,
 .node-video.view-mode-full #article-footer .topic-links li {
   padding: 0;
 }
-/* line 777, ../sass/page/_openpublish_article.scss */
+/* line 779, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .topic-links li:after,
 .node-openpublish-article.view-mode-full #article-footer .topic-links li:after,
 .node-video.view-mode-full #article-footer .topic-links li:after {
   content: ',\0020';
   display: inline;
 }
-/* line 781, ../sass/page/_openpublish_article.scss */
+/* line 783, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .topic-links li:last-child:after,
 .node-openpublish-article.view-mode-full #article-footer .topic-links li:last-child:after,
 .node-video.view-mode-full #article-footer .topic-links li:last-child:after {
   content: '';
 }
-/* line 785, ../sass/page/_openpublish_article.scss */
+/* line 787, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .topic-links a,
 .node-openpublish-article.view-mode-full #article-footer .topic-links a,
 .node-video.view-mode-full #article-footer .topic-links a {
@@ -5830,7 +5836,7 @@ a.column-header:hover {
   text-decoration: none;
   text-transform: capitalize;
 }
-/* line 791, ../sass/page/_openpublish_article.scss */
+/* line 793, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .topic-links a:hover, .node-feature-article.view-mode-full #article-footer .topic-links a:active,
 .node-openpublish-article.view-mode-full #article-footer .topic-links a:hover,
 .node-openpublish-article.view-mode-full #article-footer .topic-links a:active,
@@ -5839,13 +5845,13 @@ a.column-header:hover {
   color: #01bf9e;
   text-decoration: underline;
 }
-/* line 798, ../sass/page/_openpublish_article.scss */
+/* line 800, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .on-our-radar h3,
 .node-openpublish-article.view-mode-full #article-footer .on-our-radar h3,
 .node-video.view-mode-full #article-footer .on-our-radar h3 {
   text-transform: lowercase;
 }
-/* line 802, ../sass/page/_openpublish_article.scss */
+/* line 804, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .on-our-radar ol li,
 .node-openpublish-article.view-mode-full #article-footer .on-our-radar ol li,
 .node-video.view-mode-full #article-footer .on-our-radar ol li {
@@ -5864,14 +5870,14 @@ a.column-header:hover {
   top: 7px;
   left: 0;
 }
-/* line 804, ../sass/page/_openpublish_article.scss */
+/* line 806, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .on-our-radar ol li a,
 .node-openpublish-article.view-mode-full #article-footer .on-our-radar ol li a,
 .node-video.view-mode-full #article-footer .on-our-radar ol li a {
   font-family: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
 }
-/* line 807, ../sass/page/_openpublish_article.scss */
+/* line 809, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full #article-footer .on-our-radar ol li a span,
 .node-openpublish-article.view-mode-full #article-footer .on-our-radar ol li a span,
 .node-video.view-mode-full #article-footer .on-our-radar ol li a span {
@@ -5881,70 +5887,70 @@ a.column-header:hover {
   text-transform: uppercase;
 }
 
-/* line 824, ../sass/page/_openpublish_article.scss */
+/* line 826, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .author-bio {
   max-width: 550px;
 }
-/* line 828, ../sass/page/_openpublish_article.scss */
+/* line 830, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .field-name-body {
   font-size: 1.142857143em;
 }
 @media all and (min-width: 980px) {
-  /* line 835, ../sass/page/_openpublish_article.scss */
+  /* line 837, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .block-boxes-ga_ad {
     margin-right: -66px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 843, ../sass/page/_openpublish_article.scss */
+  /* line 845, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .inline-content-nodes.horizontal {
     width: 500px;
     float: right;
     margin: 0 -66px 0 1em;
   }
-  /* line 849, ../sass/page/_openpublish_article.scss */
+  /* line 851, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .inline-content-nodes.horizontal .node {
     max-width: 150px;
     margin-right: 0;
     margin-left: 25px;
   }
-  /* line 853, ../sass/page/_openpublish_article.scss */
+  /* line 855, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .inline-content-nodes.horizontal .node:first-child {
     margin-left: 0;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 863, ../sass/page/_openpublish_article.scss */
+  /* line 865, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .align-right {
     margin-left: 2em;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 863, ../sass/page/_openpublish_article.scss */
+  /* line 865, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .align-right {
     margin-right: -66px !important;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 871, ../sass/page/_openpublish_article.scss */
+  /* line 873, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .align-left {
     margin-right: 2em;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 871, ../sass/page/_openpublish_article.scss */
+  /* line 873, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .align-left {
     margin-left: -66px !important;
   }
 }
-/* line 879, ../sass/page/_openpublish_article.scss */
+/* line 881, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .align-center {
   display: block;
   margin: 1em auto !important;
   max-width: 100% !important;
 }
 @media all and (min-width: 980px) {
-  /* line 884, ../sass/page/_openpublish_article.scss */
+  /* line 886, ../sass/page/_openpublish_article.scss */
   .node-feature-article.view-mode-full .align-full {
     width: 912px;
     margin-left: -66px !important;
@@ -5952,14 +5958,14 @@ a.column-header:hover {
   }
 }
 
-/* line 893, ../sass/page/_openpublish_article.scss */
+/* line 895, ../sass/page/_openpublish_article.scss */
 .author-bio {
   width: auto;
   padding: 10px;
   position: relative;
   margin: 1.5em 0;
 }
-/* line 898, ../sass/page/_openpublish_article.scss */
+/* line 900, ../sass/page/_openpublish_article.scss */
 .author-bio:before {
   content: '';
   display: block;
@@ -5971,15 +5977,15 @@ a.column-header:hover {
   border-top: 1px solid #cccccc;
   border-left: 1px solid #cccccc;
 }
-/* line 910, ../sass/page/_openpublish_article.scss */
+/* line 912, ../sass/page/_openpublish_article.scss */
 .author-bio .bio-inner {
   padding-top: 5px;
 }
-/* line 913, ../sass/page/_openpublish_article.scss */
+/* line 915, ../sass/page/_openpublish_article.scss */
 .author-bio .author {
   font-family: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
 }
-/* line 916, ../sass/page/_openpublish_article.scss */
+/* line 918, ../sass/page/_openpublish_article.scss */
 .author-bio .date {
   font-family: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
   position: relative;
@@ -5988,7 +5994,7 @@ a.column-header:hover {
   float: none;
   display: inline;
 }
-/* line 924, ../sass/page/_openpublish_article.scss */
+/* line 926, ../sass/page/_openpublish_article.scss */
 .author-bio .date:after {
   content: '';
   display: block;
@@ -5998,7 +6004,7 @@ a.column-header:hover {
   right: 0;
   top: -1px;
 }
-/* line 934, ../sass/page/_openpublish_article.scss */
+/* line 936, ../sass/page/_openpublish_article.scss */
 .author-bio .profile-photo {
   float: left;
   margin-right: 10px;
@@ -6012,20 +6018,20 @@ a.column-header:hover {
   -moz-filter: grayscale(100%);
   filter: grayscale(100%);
 }
-/* line 947, ../sass/page/_openpublish_article.scss */
+/* line 949, ../sass/page/_openpublish_article.scss */
 .author-bio .bio {
   padding-top: 5px;
   margin-left: 62px;
 }
-/* line 950, ../sass/page/_openpublish_article.scss */
+/* line 952, ../sass/page/_openpublish_article.scss */
 .author-bio .bio p {
   margin: 0;
 }
-/* line 954, ../sass/page/_openpublish_article.scss */
+/* line 956, ../sass/page/_openpublish_article.scss */
 .author-bio .more-links {
   overflow: hidden;
 }
-/* line 956, ../sass/page/_openpublish_article.scss */
+/* line 958, ../sass/page/_openpublish_article.scss */
 .author-bio .more-links .more {
   margin-top: 5px;
   float: left;
@@ -6047,7 +6053,7 @@ a.column-header:hover {
   width: 2.142857143em;
   height: 1.428571429em;
 }
-/* line 963, ../sass/page/_openpublish_article.scss */
+/* line 965, ../sass/page/_openpublish_article.scss */
 .author-bio .more-links .more span {
   height: 24px;
   width: 24px;
@@ -6062,13 +6068,13 @@ a.column-header:hover {
   -webkit-backface-visibility: hidden;
 }
 
-/* line 975, ../sass/page/_openpublish_article.scss */
+/* line 977, ../sass/page/_openpublish_article.scss */
 .topic-box img {
   max-height: 30px;
   overflow: hidden;
 }
 
-/* line 979, ../sass/page/_openpublish_article.scss */
+/* line 981, ../sass/page/_openpublish_article.scss */
 #series-navigation {
   position: relative;
   display: block;
@@ -6078,7 +6084,7 @@ a.column-header:hover {
   margin-bottom: 3em;
   margin-top: 2em;
 }
-/* line 987, ../sass/page/_openpublish_article.scss */
+/* line 989, ../sass/page/_openpublish_article.scss */
 #series-navigation .left-border {
   position: absolute;
   left: 0;
@@ -6089,7 +6095,7 @@ a.column-header:hover {
   border-top: 1px solid #cccccc;
   z-index: 0;
 }
-/* line 997, ../sass/page/_openpublish_article.scss */
+/* line 999, ../sass/page/_openpublish_article.scss */
 #series-navigation .right-border {
   position: absolute;
   right: 0;
@@ -6100,24 +6106,24 @@ a.column-header:hover {
   border-top: 1px solid #cccccc;
   z-index: 0;
 }
-/* line 1007, ../sass/page/_openpublish_article.scss */
+/* line 1009, ../sass/page/_openpublish_article.scss */
 #series-navigation img {
   display: block;
   margin: 0 auto 1em;
 }
-/* line 1012, ../sass/page/_openpublish_article.scss */
+/* line 1014, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-prev,
 #series-navigation .more-next {
   font-family: "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-weight: normal;
   position: relative;
 }
-/* line 1017, ../sass/page/_openpublish_article.scss */
+/* line 1019, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-prev a:hover,
 #series-navigation .more-next a:hover {
   text-decoration: none;
 }
-/* line 1021, ../sass/page/_openpublish_article.scss */
+/* line 1023, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-prev a:before, #series-navigation .more-prev a:after,
 #series-navigation .more-next a:before,
 #series-navigation .more-next a:after {
@@ -6126,28 +6132,28 @@ a.column-header:hover {
   vertical-align: bottom;
   display: inline-block;
 }
-/* line 1029, ../sass/page/_openpublish_article.scss */
+/* line 1031, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-prev {
   float: left;
 }
-/* line 1031, ../sass/page/_openpublish_article.scss */
+/* line 1033, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-prev a:before {
   content: "\23EA  ";
 }
-/* line 1035, ../sass/page/_openpublish_article.scss */
+/* line 1037, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-next {
   float: right;
 }
-/* line 1037, ../sass/page/_openpublish_article.scss */
+/* line 1039, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-next a:after {
   content: "  \23E9";
 }
-/* line 1043, ../sass/page/_openpublish_article.scss */
+/* line 1045, ../sass/page/_openpublish_article.scss */
 #series-navigation > a:hover .previous,
 #series-navigation > a:hover .next {
   text-decoration: underline;
 }
-/* line 1047, ../sass/page/_openpublish_article.scss */
+/* line 1049, ../sass/page/_openpublish_article.scss */
 #series-navigation .previous {
   float: left;
   clear: left;
@@ -6156,7 +6162,7 @@ a.column-header:hover {
   position: relative;
   z-index: 2;
 }
-/* line 1055, ../sass/page/_openpublish_article.scss */
+/* line 1057, ../sass/page/_openpublish_article.scss */
 #series-navigation .next {
   float: right;
   clear: right;
@@ -6168,7 +6174,7 @@ a.column-header:hover {
 }
 
 @media all and (min-width: 980px) {
-  /* line 1073, ../sass/page/_openpublish_article.scss */
+  /* line 1075, ../sass/page/_openpublish_article.scss */
   .page-node.node-type-openpublish-article .block-boxes-ga_ad-bottom.sticky,
   .page-node.node-type-video .block-boxes-ga_ad-bottom.sticky {
     position: fixed;
@@ -6176,7 +6182,7 @@ a.column-header:hover {
   }
 }
 
-/* line 1082, ../sass/page/_openpublish_article.scss */
+/* line 1084, ../sass/page/_openpublish_article.scss */
 .leaderboard div {
   margin: 0 auto;
 }
