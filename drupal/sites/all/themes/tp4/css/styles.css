@@ -3404,7 +3404,7 @@ tr.selected td {
   height: 40px;
 }
 /* line 873, ../sass/elements/_misc.scss */
-.interstitial_modal_modal .tpmodal_close:before {
+.interstitial_modal_modal .tpmodal_close:before, .interstitial_modal_modal .tpmodal_close::before {
   content: '\2421';
   font-size: 23px;
   position: absolute;
