@@ -59,25 +59,26 @@ body {
 
 /* line 51, ../sass/newsletter.scss */
 #page #dont {
+  font-family: AdelleSans-Light, sans-serif;
   font-size: 12px;
 }
 
-/* line 55, ../sass/newsletter.scss */
+/* line 56, ../sass/newsletter.scss */
 #page .form {
   margin-bottom: 1em;
 }
 
-/* line 59, ../sass/newsletter.scss */
+/* line 60, ../sass/newsletter.scss */
 .form-type-textfield {
   position: relative;
 }
 
-/* line 63, ../sass/newsletter.scss */
+/* line 64, ../sass/newsletter.scss */
 .form-type-textfield label {
   display: none;
 }
 
-/* line 67, ../sass/newsletter.scss */
+/* line 68, ../sass/newsletter.scss */
 .form-type-textfield input {
   max-width: 100%;
   font-size: 12px;
@@ -90,28 +91,30 @@ body {
   min-height: 32px;
   padding: 0 5px;
   position: relative;
+  margin: 0;
+  width: 100%;
 }
-/* line 79, ../sass/newsletter.scss */
+/* line 82, ../sass/newsletter.scss */
 .form-type-textfield input:focus::-webkit-input-placeholder {
   color: transparent;
 }
-/* line 80, ../sass/newsletter.scss */
+/* line 83, ../sass/newsletter.scss */
 .form-type-textfield input:focus:-moz-placeholder {
   color: transparent;
 }
-/* line 81, ../sass/newsletter.scss */
+/* line 84, ../sass/newsletter.scss */
 .form-type-textfield input:focus::-moz-placeholder {
   color: transparent;
 }
 
-/* line 84, ../sass/newsletter.scss */
+/* line 87, ../sass/newsletter.scss */
 .form-type-textfield input:focus {
   max-width: 100%;
   z-index: 3;
   outline: none;
 }
 
-/* line 90, ../sass/newsletter.scss */
+/* line 93, ../sass/newsletter.scss */
 .form-actions input {
   border: none;
   color: #fff;
@@ -123,29 +126,29 @@ body {
   font-family: AdelleSans-Regular, sans-serif;
 }
 
-/* line 101, ../sass/newsletter.scss */
+/* line 104, ../sass/newsletter.scss */
 .form .thank-you-message {
   margin-top: 1em;
 }
 
-/* line 104, ../sass/newsletter.scss */
+/* line 107, ../sass/newsletter.scss */
 a {
   color: #019F84;
 }
 
-/* line 107, ../sass/newsletter.scss */
+/* line 110, ../sass/newsletter.scss */
 .form-required {
   display: none;
 }
 
-/* line 110, ../sass/newsletter.scss */
+/* line 113, ../sass/newsletter.scss */
 form {
   color: #555;
   font-family: AdelleSans-Light, sans-serif;
   font-size: 12px;
 }
 
-/* line 116, ../sass/newsletter.scss */
+/* line 119, ../sass/newsletter.scss */
 header img {
   width: 100%;
   max-width: 400px;
