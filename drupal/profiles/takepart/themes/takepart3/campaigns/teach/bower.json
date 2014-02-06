@@ -1,0 +1,19 @@
+{
+  "name": "teach",
+  "version": "0.1.0",
+  "homepage": "https://github.com/takepart/takepart-com",
+  "authors": [
+    "Matthew Wrather <matt@wrathercreative.com>"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "dropzone": "~3.8.3"
+  }
+}
