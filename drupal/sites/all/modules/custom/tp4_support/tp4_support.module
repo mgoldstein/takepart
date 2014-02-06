@@ -25,6 +25,10 @@ function tp4_support_entity_info_alter(&$entity_info) {
     'label' => t('Main Feature'),
     'custom settings' => TRUE,
   );
+  $entity_info['node']['view modes']['feature_main_tpl'] = array(
+    'label' => t('Main TPL Feature'),
+    'custom settings' => TRUE,
+  );
   $entity_info['node']['view modes']['feature_secondary'] = array(
     'label' => t('Secondary Feature'),
     'custom settings' => TRUE,
