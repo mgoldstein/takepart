@@ -870,9 +870,9 @@ tr.selected td {
 .interstitial_modal_modal .tpmodal_close {
   width: 40px;
   height: 40px;
-  &:before{
+  &:before, &::before{
     content: '\2421';
-    font-size: 23px;
+    font-size: 36px;
     position: absolute;
     right: 5px;
     top: 10px;
