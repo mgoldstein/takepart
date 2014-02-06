@@ -49,6 +49,7 @@ body {
 }
 
 #page #dont {
+	font-family: AdelleSans-Light, sans-serif;
 	font-size: 12px;
 }
 
@@ -76,6 +77,8 @@ body {
 	min-height: 32px;
 	padding: 0 5px;
 	position: relative;
+	margin: 0;
+	width: 100%;
 	&:focus::-webkit-input-placeholder { color:transparent; }
 	&:focus:-moz-placeholder { color:transparent; }
 	&:focus::-moz-placeholder { color:transparent; }
