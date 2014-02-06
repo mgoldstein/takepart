@@ -4524,12 +4524,6 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
