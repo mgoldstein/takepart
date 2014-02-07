@@ -522,6 +522,58 @@ function _wordlet_configuration() {
       'load' => array('site', 'teach_campaign'),
     ),
 
+    // teach Share Your Story
+    'teach_share_your_story' => array(
+      'title' => 'TEACH - Share Your Story',
+      'path' => 'teach/share-your-story',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/css/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/js/teach.js',
+        'campaigns/teach/js/teach.app.js', // the "share your story" app
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
+    // teach Film Page
+    'teach_film' => array(
+      'title' => 'TEACH - The Film',
+      'path' => 'teach/film',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/css/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/js/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
+    // teach Teacher Stories Page
+    'teach_teacher_stories' => array(
+      'title' => 'TEACH - Teacher Stories',
+      'path' => 'teach/teacher-stories',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/css/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/js/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
     // -----------------------------
     // FOOD INC Campaign ----------------
     // -----------------------------
