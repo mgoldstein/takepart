@@ -19,7 +19,7 @@
 ?>
 <?php
   $nid = $variables['element']['#inline_content']->field_ic_content['und'][0]['nid'];
-  $path = drupal_get_path_alias('node/'. $nid);
+  $path = url('node/'. $nid); // drupal_get_path_alias('node/'. $nid);
 ?>
 <a href="<?php print $path; ?>">
   <aside class="inline-content inline-content-nodes <?=$element['#orientation']?>">
