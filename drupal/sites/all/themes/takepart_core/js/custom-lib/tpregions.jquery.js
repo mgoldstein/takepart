@@ -36,5 +36,33 @@
                 }
             }
         });
+        $('body').delegate('iframe#twitter-widget-0:not(.tplinkpos)', 'focus mouseover', function() {
+            var a = this;
+            var $a = $(this);
+            $a.addClass('tplinkpos');
+            // var is_local = (a.href.substring(0,4) === "http") ? relative_test.test(a.href) : true;
+            // if ( !is_local ) return;
+
+            for ( var pos in regions ) {
+                var sel = regions[pos];
+                if ( $a.is(sel + ' a') ) {
+                    a.name += '&lpos=' + pos;
+                }
+            }
+        });
+        $('body').delegate('.fb_iframe_widget iframe:not(.tplinkpos)', 'focus mouseover', function() {
+            var a = this;
+            var $a = $(this);
+            $a.addClass('tplinkpos');
+            // var is_local = (a.href.substring(0,4) === "http") ? relative_test.test(a.href) : true;
+            // if ( !is_local ) return;
+
+            for ( var pos in regions ) {
+                var sel = regions[pos];
+                if ( $a.is(sel + ' a') ) {
+                    a.name += '&lpos=' + pos;
+                }
+            }
+        });
     });
 })(window, jQuery);
