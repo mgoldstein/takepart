@@ -1,1 +1,2 @@
 /*! teach - v0.1.0 - 2014-02-10 */
+!function(a,b,c){a(c).ready(function(){a("input[maxlength], textarea[maxlength]").each(function(){var b=a(this),c=b.attr("maxlength"),d=b.parent().find(".character-count"),e=d.find("span");e.html(c),b.on("keyup",function(){var a=c-b.val().length;e.html(a),d.toggleClass("count-alert",c/4>a),d.toggleClass("count-warning",c/10>a)})})})}(jQuery,this,this.document);

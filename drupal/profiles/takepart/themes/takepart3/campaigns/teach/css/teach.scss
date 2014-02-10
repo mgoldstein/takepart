@@ -8,6 +8,7 @@ $content-width: $page-width - $page-margins;
 
 $primary-color: #ea5f11;
 $primary-grey: #666;
+$dark-grey: #777;
 
 $primary-font: Helvetica,Arial,sans-serif;
 $secondary-font: 'GlyphaLTPro-Black', serif;
@@ -17,6 +18,9 @@ $primary-white: white;
 $light-white: #ccc;
 $body-copy-black: #313131;
 
+
+@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+// font-family: 'Shadows Into Light', cursive;
 
 /* # General
 ================================================== */
@@ -465,10 +469,10 @@ p {
 }
 
 
-
 .teach-video-page,
 .page-wordlet-teach-alliances .content,
-.teach-news-content {
+.teach-news-content,
+.teach-sys-content {
   position: relative;
   background: #ecedf6 image-url('paper-background-texture-temp.jpg') scroll repeat;
   margin-top: 30px;
@@ -1151,4 +1155,128 @@ p {
       }
     }
   } // .view-taxonomy-search-list
+}
+
+/* # All the grid we actually need 
+================================================== */
+@media (min-width: 768px) {
+  .row {
+    @include clearfix;
+
+    [class^=col-] {
+      @include box-sizing(border-box);
+      float: left;
+      padding: 0 10px;
+
+      // eliminate padding on first/last
+      &.alpha, &:first-of-type {padding-left:  0;}
+      &.omega, &:last-of-type  {padding-right: 0;}    
+    }
+
+    .col-1-1,
+    .col-2-2,
+    .col-3-3,
+    .col-4-4 { width: 100%;  }
+    .col-1-2,
+    .col-2-4 { width: 50%;   }
+    .col-1-3 { width: 33.3%; }
+    .col-2-3 { width: 66.7%; }
+    .col-1-4 { width: 25%;   }
+    .col-3-4 { width: 75%;   }
+
+  }
+
+  .pull-right { float: right; }
+  .pull-left  { float: left;  }
+}
+
+
+/* # Share Your Story Page
+================================================== */
+
+// GRID ADAPTATION
+// copying this min-width value from elsewhere in the stylesheet
+// where the hell does it come from? what does it mean?
+.teach-sys-content {
+  @media(min-width: 848px) {
+    .col-1-2 {
+      width: 45%;
+      &:first-of-type { width: 55%; }
+    }
+  }
+
+  // hide certain parts of the page initially
+  &.initially-hidden {
+    display: none;
+  }
+}
+
+.sys-headline {
+  font-family: $secondary-font;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 40px;
+  line-height: 1.375;
+  @include rotate(-4deg);
+}
+
+// this is the form
+.sys-form {
+  a { color: $primary-color; }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 1em;
+  }
+
+  legend {
+    font-weight: bold;
+  }
+
+  label {
+    font-weight: normal;
+    display: none;
+    &.visible { display: inline; }
+  }
+
+  .field-wrapper {
+    position: relative;
+  }
+
+  .character-count {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    margin: 0;
+    &.character-count-story-body {
+      bottom: auto;
+      top: 100%;
+    }
+    &.count-alert { color: orange; }
+    &.count-warning { color: red; }
+  }
+
+  .sys-button {
+    display: block;
+    @include box-sizing(border-box);
+    margin-bottom: 1em;
+    padding: .6em 1em .4em;
+    background-color: $dark-grey;
+    color: white;
+    text-align: center;
+    font: normal 1.4em/1 $secondary-font;
+    text-transform: uppercase;
+    &.sys-button-submit{ background-color: $primary-color; margin-bottom: 0; }
+    &:hover { text-decoration: none; }
+    @media(min-width: 768px) {
+      float: left;
+      width: 45%;
+      margin-bottom: 0;
+      margin-right: 4.9%;
+      &.sys-button-submit {
+        margin-right: 0;
+      }
+    }
+  }
 }
