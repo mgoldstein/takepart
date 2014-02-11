@@ -1,17 +1,19 @@
 <div id="sys-form-content" class="content teach-sys-content">
     <div class="row">
         <div class="col-1-2">
-            <h1 class="sys-headline"><?php print w('page_headline'); ?></h1>
-            <p><?php print w('intro_body'); ?></p>
+            <div class="sys-intro">
+                <h1 class="sys-headline"><span><?php print w('page_headline'); ?></span></h1>
+                <?php print w('intro_body'); ?>
+            </div>
             <?php include('partials/teach-sys-form.tpl.php'); ?>
         </div>
         <div class="col-1-2">
             <aside class="sys-update">
-                <h2><span>The Teach Fund</span> <span><?php print w('update_count'); ?></span> <span>and counting</span></h2>
-                <p><?php print w('update_body'); ?></p>
+                <h2 class="sys-headline"><span>The Teach Fund</span> <span><?php print w('update_count'); ?></span> <span>and counting!</span></h2>
+                <div class="sys-intro-body"><?php print w('update_body'); ?></div>
             </aside>
             <aside class="sys-tips">
-                <h2><?php print w('tips_headline'); ?></h2>
+                <h2 class="sys-headline"><span><?php print w('tips_headline'); ?></span></h2>
                 <p><?php print w('tips_body'); ?></p>
             </aside>
         </div>
