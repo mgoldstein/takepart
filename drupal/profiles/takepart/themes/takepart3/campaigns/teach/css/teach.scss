@@ -2,21 +2,28 @@
 @import "compass/utilities/general/clearfix";
 @import "typeface";
 
+@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+
 $page-width: 1000px;
 $page-margins: 20px;
 $content-width: $page-width - $page-margins;
 
 $primary-color: #ea5f11;
 $primary-grey: #666;
+$dark-grey: #777;
 
 $primary-font: Helvetica,Arial,sans-serif;
 $secondary-font: 'GlyphaLTPro-Black', serif;
 $third-font: 'OpenSans_Condensed', sans-serif;
+$cursive-font: 'Shadows Into Light', cursive;
 
 $primary-white: white;
 $light-white: #ccc;
 $body-copy-black: #313131;
 
+
+@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+// font-family: 'Shadows Into Light', cursive;
 
 /* # General
 ================================================== */
@@ -465,10 +472,10 @@ p {
 }
 
 
-
 .teach-video-page,
 .page-wordlet-teach-alliances .content,
-.teach-news-content {
+.teach-news-content,
+.teach-sys-content {
   position: relative;
   background: #ecedf6 image-url('paper-background-texture-temp.jpg') scroll repeat;
   margin-top: 30px;
@@ -1151,4 +1158,326 @@ p {
       }
     }
   } // .view-taxonomy-search-list
+}
+
+/* # All the grid we actually need 
+================================================== */
+@media (min-width: 768px) {
+  .row {
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+    }
+
+    [class^=col-] {
+      @include box-sizing(border-box);
+      float: left;
+      padding: 0 10px;
+
+      // eliminate padding on first/last
+      &.alpha, &:first-of-type {padding-left:  0;}
+      &.omega, &:last-of-type  {padding-right: 0;}    
+    }
+
+    .col-1-1,
+    .col-2-2,
+    .col-3-3,
+    .col-4-4 { width: 100%;  }
+    .col-1-2,
+    .col-2-4 { width: 50%;   }
+    .col-1-3 { width: 33.3%; }
+    .col-2-3 { width: 66.7%; }
+    .col-1-4 { width: 25%;   }
+    .col-3-4 { width: 75%;   }
+
+  }
+
+  .pull-right { float: right; }
+  .pull-left  { float: left;  }
+}
+
+
+/* # Share Your Story Page
+================================================== */
+
+.teach-sys-content {
+  font: normal 14px/1.5 helvetica, sans-serif;
+  overflow: visible;
+
+  // GRID ADAPTATION
+  // copying this min-width value from elsewhere in the stylesheet
+  // where the hell does it come from? what does it mean?
+  @media(min-width: 848px) {
+    .col-1-2 {
+      width: 45%;
+      &:first-of-type { width: 55%; }
+    }
+  }
+
+  // hide certain parts of the page initially
+  &.initially-hidden {
+    display: none;
+  }
+
+  // overridde the reset
+  ul {
+    margin: 0 0 1em 1em;
+    li {
+      padding-left: 1em;
+      text-indent: -1em;
+    }
+  }
+}
+
+.sys-headline {
+  font-family: $secondary-font;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+h1.sys-headline {
+  font-size: 34px;
+  // @include rotate(-3deg);
+  background: transparent image-url("sys-headline-bg.png") scroll no-repeat top left;
+  padding: .67em 0 .75em .5em;
+  span {
+    display: block;
+    @include transform(rotate(-1.5deg));
+  }
+}
+.sys-intro {
+}
+
+.sys-update {
+  // TODO: MOBILE
+  background: transparent image-url("sys-bg-paper.png") scroll no-repeat top left;
+  background-size: contain;
+  min-height: 403px; // make sure we see the whole background image at desktop sizes
+  padding: 56px 32px 40px 40px;
+  @include transform(scale(1.1) translateX(17px) rotate(1deg));
+  margin: 1em 0 3em;
+
+  h2 {
+    margin: 0 1.5em .2em 1em;
+    font: normal 32px/1 $cursive-font;
+    color: lighten(black, 40%); // this photoshop comp is literally the worst.
+    span {
+      display: block;
+      &:nth-child(1) {
+        text-transform: capitalize;
+        text-align: left;
+      }
+      &:nth-child(2) {
+        text-align: center;
+        color: black;
+        font-size: 1.5em;
+        line-height: .8;
+        font-family: $secondary-font;
+        &:before {
+          display: inline-block;
+          vertical-align: top;
+          content: "$";
+          font-size: .6em;
+          line-height: 1;
+        }
+      }
+      &:nth-child(3) {
+        text-align: right;
+        text-transform: lowercase;
+      }
+    }
+  } // h2 -- can you believe it?
+}
+
+.sys-intro-body {
+  p,
+  ul {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+}
+
+.sys-tips {
+  h2 {
+    padding: 1.4em 0 1em .5em;
+    background: transparent image-url("sys-subhead-bg.png") scroll no-repeat top left;
+    span {
+      display: block;
+      @include transform(rotate(-1.5deg));
+    }
+  }
+
+  li {
+    margin-bottom: .65em;
+  }
+}
+
+// here's a mixin for the input styling
+
+@mixin sys-input-styling {
+    @include box-sizing(border-box);
+    @include border-radius(4px);
+    border: 1px solid #ccc;
+    @include box-shadow(-4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999);
+    background-color: white;
+}
+
+// this is the form
+.sys-form {
+  a { color: $primary-color; }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0 0 1em;
+  }
+
+  legend {
+    font-weight: bold;
+  }
+
+  .field-wrapper {
+    position: relative;
+    margin-bottom: .75em;
+  }
+
+  input[type=checkbox] {
+    display: none;
+    & ~ label.visible:before {
+      content: "\0020";
+      display: inline-block;
+      vertical-align: middle;
+      width: 1.333333333em;
+      height: 1.333333333em;
+      padding: .15em .25em .35em;
+      font-size: 1.5em;
+      line-height: 1;
+      text-align: center;
+      @include sys-input-styling;
+    }
+    &:checked ~ label.visible:before {
+      content: "\2713";
+    }
+  }
+
+  label {
+    font-weight: normal;
+    display: none;
+    &.visible { 
+      display: inline;
+      .vertically-center {
+        display: inline-block;
+        @media (min-width: 768px) {
+          margin-top: 1.4em;
+        }
+      }
+    }
+
+    // these should always be in the context of a form wrapper
+    // so they are positioned absolutely
+    &.error {
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      z-index: 1;
+      background-color: #D00;
+      color: white;
+      @include box-sizing(border-box);
+      border: 2px solid white;      
+      padding: 4px 1.5em;
+      @include border-radius(5px);
+      margin-bottom: 7px;
+
+      &:before,
+      &:after {
+        top: 100%;
+        border: solid transparent;
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+      }
+      &:after { // white arrow border
+        border-color: transparentize(#D00, 1);
+        border-top-color: #d00;
+        border-width: 6px;
+        right: 52px;
+      }
+      &:before { // red arrow
+        border-color: transparentize(white, 1);
+        border-top-color: white;
+        border-width: 8px;
+        right: 50px;
+      }
+    }
+  }
+
+  input[type=text],
+  input[type=email],
+  textarea {
+    @include sys-input-styling;
+    margin: 4px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.714285714; // 24px / 14px
+    padding: 11px 13px;    
+    margin-bottom: 0;
+  }
+  input.story-year { width: 5em; margin-right: -4px; }
+
+  .character-count {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    margin: 0 0 4px;
+    font-size: 11px;
+    line-height: 1;
+    &.character-count-story-body {
+      bottom: auto;
+      top: 100%;
+    }
+    &.count-alert { color: orange; }
+    &.count-warning { color: red; }
+  }
+
+  .sys-image {
+    @include box-sizing(border-box);
+    text-align: center;
+    padding: 20px;
+    border: 2px dashed black;
+  }
+
+  .sys-button {
+    display: block;
+    @include box-sizing(border-box);
+    margin-bottom: .535714286em;
+    padding: .6em 1em .4em;
+    background-color: $dark-grey;
+    color: white;
+    text-align: center;
+    font: normal 1.4em/1 $secondary-font;
+    text-transform: uppercase;
+    &.sys-button-submit{ background-color: $primary-color; margin-bottom: 0; }
+    &:hover { text-decoration: none; }
+    &:active { position: relative; top: 1px; }
+  }
+
+  // utility classes for positioning, listed here
+  // so they will come last in the cascade
+
+  .left, .right { float: none; }
+  @media (min-width: 768px) {
+    .left,
+    .right {
+      display: inline-block;
+      width: 47.4%;
+    }
+    .right {
+      margin-left: 4.3%;
+    }
+  } 
 }
