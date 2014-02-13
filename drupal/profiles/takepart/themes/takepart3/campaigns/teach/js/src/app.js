@@ -8,7 +8,9 @@
       var $this = $(this),
           maxlength = $this.attr('maxlength');
 
-      // build up character count elements <p class="character-count character-count-story-body"><span></span> Characters Left</p>
+      // build up character count elements:
+      // <p class="character-count character-count-story-body"><span></span> Characters Left</p>
+      // @todo This should be templated
       var $characterCountWrapper = $('<p class="character-count" />')
             .addClass('character-count-' + $this.attr('id').split('_').join('-'))
             .html(' Characters Left')
@@ -33,18 +35,17 @@
     // Preview
     $('#sys-preview').on('click', function(e) {
       e.preventDefault();
-      alert('preview coming soon!');
+      var $modal = $('<div />');
+      $('<h1>').html('Preview Coming Soon').appendTo($modal);
+      $('<p>').html('Stay tuned for preview functionality&hellip;').appendTo($modal);
+      $.tpmodal.show({node: $modal[0]});
     });
 
     $('#sys-submit').on('click', function(e) {
       e.preventDefault();
 
-      var $form = $('#sys-form');
-
-      if ($form.valid()) {
-        alert('form submission coming soon!');
-      } else {
-        $form.validate();
+      if ($('#sys-form').valid()) {
+        alert('yes!');
       }
 
     });
