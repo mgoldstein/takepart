@@ -1446,7 +1446,7 @@ p a {
 ================================================== */
 .teach-sys-content {
   font: normal 14px/1.5 helvetica, sans-serif;
-  overflow: visible;
+  padding: 20px;
 }
 @media (min-width: 848px) {
   .teach-sys-content .col-1-2 {
@@ -1474,9 +1474,15 @@ p a {
 }
 
 h1.sys-headline {
-  font-size: 34px;
-  background: transparent url('../img/sys-headline-bg.png?1392235761') scroll no-repeat top left;
-  padding: .67em 0 .75em .5em;
+  background: transparent url('../img/sys-headline-bg.png?1392239551') scroll no-repeat top left;
+  font-size: 1.642857143em;
+  padding: 1.3em 0 1em .5em;
+}
+@media (min-width: 850px) {
+  h1.sys-headline {
+    font-size: 34px;
+    padding: .67em 0 .75em .5em;
+  }
 }
 h1.sys-headline span {
   display: block;
@@ -1487,22 +1493,28 @@ h1.sys-headline span {
   transform: rotate(-1.5deg);
 }
 
-.sys-update {
-  background: transparent url('../img/sys-bg-paper.png?1392230651') scroll no-repeat top left;
-  background-size: contain;
-  min-height: 403px;
-  padding: 56px 32px 40px 40px;
-  -webkit-transform: scale(1.1) translateX(17px) rotate(1deg);
-  -moz-transform: scale(1.1) translateX(17px) rotate(1deg);
-  -ms-transform: scale(1.1) translateX(17px) rotate(1deg);
-  -o-transform: scale(1.1) translateX(17px) rotate(1deg);
-  transform: scale(1.1) translateX(17px) rotate(1deg);
-  margin: 1em 0 3em;
+@media (min-width: 980px) {
+  .sys-update {
+    background: transparent url('../img/sys-bg-paper.png?1392239551') scroll no-repeat top left;
+    background-size: contain;
+    min-height: 403px;
+    padding: 56px 32px 40px 40px;
+    -webkit-transform: scale(1.1) translateX(17px) rotate(1deg);
+    -moz-transform: scale(1.1) translateX(17px) rotate(1deg);
+    -ms-transform: scale(1.1) translateX(17px) rotate(1deg);
+    -o-transform: scale(1.1) translateX(17px) rotate(1deg);
+    transform: scale(1.1) translateX(17px) rotate(1deg);
+    margin: 1em 0 3em;
+  }
 }
 .sys-update h2 {
-  margin: 0 1.5em .2em 1em;
   font: normal 32px/1 "Shadows Into Light", cursive;
   color: #666666;
+}
+@media (min-width: 980px) {
+  .sys-update h2 {
+    margin: 0 1.5em .2em 1em;
+  }
 }
 .sys-update h2 span {
   display: block;
@@ -1537,8 +1549,22 @@ h1.sys-headline span {
 }
 
 .sys-tips h2 {
+  font-size: 1.142857143em;
+  line-height: 2.1875;
   padding: 1.4em 0 1em .5em;
-  background: transparent url('../img/sys-subhead-bg.png?1392235855') scroll no-repeat top left;
+  background: transparent url('../img/sys-subhead-bg.png?1392239551') scroll no-repeat top left;
+}
+@media (min-width: 768px) {
+  .sys-tips h2 {
+    font-size: 1.285714286;
+    line-height: 1.666666667;
+  }
+}
+@media (min-width: 1000px) {
+  .sys-tips h2 {
+    font-size: 1.428571429em;
+    line-height: 1.25;
+  }
 }
 .sys-tips h2 span {
   display: block;
@@ -1572,11 +1598,12 @@ h1.sys-headline span {
 }
 .sys-form input[type=checkbox] ~ label.visible:before {
   content: "\0020";
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
+  float: left;
   width: 1.333333333em;
   height: 1.333333333em;
   padding: .15em .25em .35em;
+  margin-right: .25em;
   font-size: 1.5em;
   line-height: 1;
   text-align: center;
@@ -1644,13 +1671,13 @@ h1.sys-headline span {
   border-color: rgba(221, 0, 0, 0);
   border-top-color: #d00;
   border-width: 6px;
-  right: 52px;
+  right: 27px;
 }
 .sys-form label.error:before {
   border-color: rgba(255, 255, 255, 0);
   border-top-color: white;
   border-width: 8px;
-  right: 50px;
+  right: 25px;
 }
 .sys-form input[type=text],
 .sys-form input[type=email],
@@ -1668,7 +1695,6 @@ h1.sys-headline span {
   -moz-box-shadow: -4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999999;
   box-shadow: -4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999999;
   background-color: white;
-  margin: 4px;
   width: 100%;
   font-size: 14px;
   line-height: 1.714285714;
@@ -1677,7 +1703,6 @@ h1.sys-headline span {
 }
 .sys-form input.story-year {
   width: 5em;
-  margin-right: -4px;
 }
 .sys-form .character-count {
   position: absolute;
@@ -1739,6 +1764,6 @@ h1.sys-headline span {
     width: 47.4%;
   }
   .sys-form .right {
-    margin-left: 4.3%;
+    margin-left: 3.9%;
   }
 }

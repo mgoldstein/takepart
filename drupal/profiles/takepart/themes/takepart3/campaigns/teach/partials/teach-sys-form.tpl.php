@@ -15,8 +15,8 @@
   <fieldset>
     <legend>Your Story</legend>
     <div class="field-wrapper"><label for="story_title">Story Title</label><input type="text" name="story_title" id="story_title" placeholder="Story Title*" maxlength="100" required></div>
-    <div class="field-wrapper clearfix"><label class="visible"><span class="vertically-center">Approximate Year This Story Happened</span><input type="text" maxlength="4" id="story_year" name="story_year" class="story-year pull-right" required></label></div>
-    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="10" placeholder="Tell us your story" maxlength="400"></textarea></div>
+    <div class="field-wrapper field-wrapper-story-year clearfix"><label class="visible"><span class="vertically-center">Approximate Year This Story Happened</span><input type="text" maxlength="4" id="story_year" name="story_year" class="story-year pull-right" required></label></div>
+    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="10" placeholder="Tell us your story" maxlength="400" required></textarea></div>
   </fieldset>
   <fieldset>
     <legend>Pictures Make The Story</legend>

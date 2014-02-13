@@ -1206,7 +1206,8 @@ p {
 
 .teach-sys-content {
   font: normal 14px/1.5 helvetica, sans-serif;
-  overflow: visible;
+
+  padding: 20px;
 
   // GRID ADAPTATION
   // copying this min-width value from elsewhere in the stylesheet
@@ -1239,10 +1240,16 @@ p {
   text-transform: uppercase;
 }
 h1.sys-headline {
-  font-size: 34px;
   // @include rotate(-3deg);
   background: transparent image-url("sys-headline-bg.png") scroll no-repeat top left;
-  padding: .67em 0 .75em .5em;
+  font-size: 1.642857143em;
+  padding: 1.3em 0 1em .5em;
+
+  @media (min-width:850px) {
+    font-size: 34px;
+    padding: .67em 0 .75em .5em;  
+  }
+
   span {
     display: block;
     @include transform(rotate(-1.5deg));
@@ -1253,15 +1260,19 @@ h1.sys-headline {
 
 .sys-update {
   // TODO: MOBILE
-  background: transparent image-url("sys-bg-paper.png") scroll no-repeat top left;
-  background-size: contain;
-  min-height: 403px; // make sure we see the whole background image at desktop sizes
-  padding: 56px 32px 40px 40px;
-  @include transform(scale(1.1) translateX(17px) rotate(1deg));
-  margin: 1em 0 3em;
+  @media (min-width: 980px) {      
+    background: transparent image-url("sys-bg-paper.png") scroll no-repeat top left;
+    background-size: contain;
+    min-height: 403px; // make sure we see the whole background image at desktop sizes
+    padding: 56px 32px 40px 40px;
+    @include transform(scale(1.1) translateX(17px) rotate(1deg));
+    margin: 1em 0 3em;
+  }  
 
   h2 {
-    margin: 0 1.5em .2em 1em;
+    @media (min-width: 980px) {
+      margin: 0 1.5em .2em 1em;
+    }
     font: normal 32px/1 $cursive-font;
     color: lighten(black, 40%); // this photoshop comp is literally the worst.
     span {
@@ -1302,7 +1313,17 @@ h1.sys-headline {
 
 .sys-tips {
   h2 {
+    font-size: 1.142857143em;
+    line-height: 2.1875;
     padding: 1.4em 0 1em .5em;
+    @media (min-width:768px) {
+      font-size: 1.285714286;
+      line-height: 1.666666667;
+    }
+    @media (min-width: 1000px) {
+      font-size: 1.428571429em;
+      line-height: 1.25;
+    }
     background: transparent image-url("sys-subhead-bg.png") scroll no-repeat top left;
     span {
       display: block;
@@ -1348,11 +1369,12 @@ h1.sys-headline {
     display: none;
     & ~ label.visible:before {
       content: "\0020";
-      display: inline-block;
-      vertical-align: middle;
+      display: block;
+      float: left;
       width: 1.333333333em;
       height: 1.333333333em;
       padding: .15em .25em .35em;
+      margin-right: .25em;
       font-size: 1.5em;
       line-height: 1;
       text-align: center;
@@ -1405,13 +1427,13 @@ h1.sys-headline {
         border-color: transparentize(#D00, 1);
         border-top-color: #d00;
         border-width: 6px;
-        right: 52px;
+        right: 27px;
       }
       &:before { // red arrow
         border-color: transparentize(white, 1);
         border-top-color: white;
         border-width: 8px;
-        right: 50px;
+        right: 25px;
       }
     }
   }
@@ -1420,14 +1442,14 @@ h1.sys-headline {
   input[type=email],
   textarea {
     @include sys-input-styling;
-    margin: 4px;
+    // margin: 4px;
     width: 100%;
     font-size: 14px;
     line-height: 1.714285714; // 24px / 14px
     padding: 11px 13px;    
     margin-bottom: 0;
   }
-  input.story-year { width: 5em; margin-right: -4px; }
+  input.story-year { width: 5em; }
 
   .character-count {
     position: absolute;
@@ -1477,7 +1499,7 @@ h1.sys-headline {
       width: 47.4%;
     }
     .right {
-      margin-left: 4.3%;
+      margin-left: 3.9%;
     }
   } 
 }
