@@ -20,8 +20,10 @@
     </div>
 </div>
 <div id="sys-coppa-content" class="content teach-sys-content initially-hidden">
-    <p>COPPA ERROR MESSAGE</p>
+    <h1 class="sys-headline"><span><?php print w('coppa_headline'); ?></span></h1>
+    <?php print w('coppa_message'); ?>
 </div>
 <div id="sys-thanks-content" class="content teach-sys-content initially-hidden">
-    <p>THANK YOU MESSAGE</p>
+    <h1 class="sys-headline"><span><?php print w('thanks_headline'); ?></span></h1>
+    <?php print w('thanks_message'); ?>
 </div>

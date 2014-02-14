@@ -24,7 +24,11 @@ module.exports = function(grunt) {
 	stripBanners: true
       },
       dist: {
-	src: ['bower_components/jquery.validation/jquery.validate.js', 'js/src/*.js'],
+	src: [
+    'bower_components/jquery.validation/jquery.validate.js',
+    'bower_components/jquery.customSelect/jquery.customSelect.js',
+    'js/src/*.js'
+  ],
 	dest: '.tmp/<%= pkg.name %>.app.js'
       }
     },
