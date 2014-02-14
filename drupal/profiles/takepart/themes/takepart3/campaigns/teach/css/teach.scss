@@ -1345,6 +1345,10 @@ h1.sys-headline {
     @include box-shadow(-4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999);
     background-color: white;
 }
+@mixin sys-input-error-styling {
+  @include box-shadow(-4px -4px #D00, -4px 4px #D00, 4px -4px #D00, 4px 4px #D00, inset 0 0 4px #999);
+  color: #d00;
+}
 
 // this is the form
 .sys-form {
@@ -1366,7 +1370,10 @@ h1.sys-headline {
   }
 
   input[type=checkbox] {
-    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
     & ~ label.visible:before {
       content: "\0020";
       display: block;
@@ -1379,6 +1386,9 @@ h1.sys-headline {
       line-height: 1;
       text-align: center;
       @include sys-input-styling;
+    }
+    &.error ~ label.visible:before {
+      @include sys-input-error-styling;
     }
     &:checked ~ label.visible:before {
       content: "\2713";
@@ -1438,9 +1448,23 @@ h1.sys-headline {
     }
   }
 
+  .field-wrapper-terms-agree label.error {
+    left: 0;
+    right: auto;
+    &:after {
+      right: auto;
+      left: 27px;
+    }
+    &:before {
+      right: auto;
+      left: 25px;
+    }
+  }
+
   input[type=text],
   input[type=email],
-  textarea {
+  textarea,
+  .customSelect {
     @include sys-input-styling;
     // margin: 4px;
     width: 100%;
@@ -1448,8 +1472,32 @@ h1.sys-headline {
     line-height: 1.714285714; // 24px / 14px
     padding: 11px 13px;    
     margin-bottom: 0;
+    &.error {
+      @include sys-input-error-styling;
+    }
   }
-  input.story-year { width: 5em; }
+
+  // customselect overrides
+  .customSelect {
+    margin: 0 auto .5em;
+    &:after {
+      display: block;
+      content: "\25BC";
+      float: right;
+    }
+    @media (min-width: 1000px) {
+      margin: 0 0 0 .5em;
+      width: 8em;
+    }
+  }
+  select.error ~ .customSelect {
+    @include sys-input-error-styling;
+  }
+
+  // position select-boxes
+  select[name="story_year"].hasCustomSelect {
+    right: 0;
+  }
 
   .character-count {
     position: absolute;
@@ -1473,19 +1521,22 @@ h1.sys-headline {
     border: 2px dashed black;
   }
 
-  .sys-button {
-    display: block;
+  input[type="button"],
+  input[type="submit"] {
     @include box-sizing(border-box);
     margin-bottom: .535714286em;
     padding: .6em 1em .4em;
     background-color: $dark-grey;
+    border: none;
     color: white;
     text-align: center;
-    font: normal 1.4em/1 $secondary-font;
+    font: normal normal 1.4em/1 $secondary-font;
     text-transform: uppercase;
-    &.sys-button-submit{ background-color: $primary-color; margin-bottom: 0; }
-    &:hover { text-decoration: none; }
     &:active { position: relative; top: 1px; }
+  }
+  input[type="submit"] {
+    background-color: $primary-color;
+    margin-bottom: 0;
   }
 
   // utility classes for positioning, listed here

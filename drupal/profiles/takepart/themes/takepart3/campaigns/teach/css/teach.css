@@ -1594,7 +1594,10 @@ h1.sys-headline span {
   margin-bottom: .75em;
 }
 .sys-form input[type=checkbox] {
-  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
 }
 .sys-form input[type=checkbox] ~ label.visible:before {
   content: "\0020";
@@ -1620,6 +1623,12 @@ h1.sys-headline span {
   -moz-box-shadow: -4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999999;
   box-shadow: -4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999999;
   background-color: white;
+}
+.sys-form input[type=checkbox].error ~ label.visible:before {
+  -webkit-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  -moz-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  color: #d00;
 }
 .sys-form input[type=checkbox]:checked ~ label.visible:before {
   content: "\2713";
@@ -1679,9 +1688,22 @@ h1.sys-headline span {
   border-width: 8px;
   right: 25px;
 }
+.sys-form .field-wrapper-terms-agree label.error {
+  left: 0;
+  right: auto;
+}
+.sys-form .field-wrapper-terms-agree label.error:after {
+  right: auto;
+  left: 27px;
+}
+.sys-form .field-wrapper-terms-agree label.error:before {
+  right: auto;
+  left: 25px;
+}
 .sys-form input[type=text],
 .sys-form input[type=email],
-.sys-form textarea {
+.sys-form textarea,
+.sys-form .customSelect {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1701,8 +1723,37 @@ h1.sys-headline span {
   padding: 11px 13px;
   margin-bottom: 0;
 }
-.sys-form input.story-year {
-  width: 5em;
+.sys-form input[type=text].error,
+.sys-form input[type=email].error,
+.sys-form textarea.error,
+.sys-form .customSelect.error {
+  -webkit-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  -moz-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  color: #d00;
+}
+.sys-form .customSelect {
+  margin: 0 auto .5em;
+}
+.sys-form .customSelect:after {
+  display: block;
+  content: "\25BC";
+  float: right;
+}
+@media (min-width: 1000px) {
+  .sys-form .customSelect {
+    margin: 0 0 0 .5em;
+    width: 8em;
+  }
+}
+.sys-form select.error ~ .customSelect {
+  -webkit-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  -moz-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  color: #d00;
+}
+.sys-form select[name="story_year"].hasCustomSelect {
+  right: 0;
 }
 .sys-form .character-count {
   position: absolute;
@@ -1730,29 +1781,28 @@ h1.sys-headline span {
   padding: 20px;
   border: 2px dashed black;
 }
-.sys-form .sys-button {
-  display: block;
+.sys-form input[type="button"],
+.sys-form input[type="submit"] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin-bottom: .535714286em;
   padding: .6em 1em .4em;
   background-color: #777777;
+  border: none;
   color: white;
   text-align: center;
-  font: normal 1.4em/1 "GlyphaLTPro-Black", serif;
+  font: normal normal 1.4em/1 "GlyphaLTPro-Black", serif;
   text-transform: uppercase;
 }
-.sys-form .sys-button.sys-button-submit {
-  background-color: #ea5f11;
-  margin-bottom: 0;
-}
-.sys-form .sys-button:hover {
-  text-decoration: none;
-}
-.sys-form .sys-button:active {
+.sys-form input[type="button"]:active,
+.sys-form input[type="submit"]:active {
   position: relative;
   top: 1px;
+}
+.sys-form input[type="submit"] {
+  background-color: #ea5f11;
+  margin-bottom: 0;
 }
 .sys-form .left, .sys-form .right {
   float: none;
