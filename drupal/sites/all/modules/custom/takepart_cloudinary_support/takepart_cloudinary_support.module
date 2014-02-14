@@ -1,0 +1,58 @@
+<?php
+/**
+ * @file
+ * Module for support functions for dealing with Cloudinary's API
+ */
+
+define('CLOUDINARY_CLOUD_NAME', 'takepart-dev');
+define('CLOUDINARY_API_KEY', '631362422786584');
+define('CLOUDINARY_API_SECRET', 'WXOO-sdwQ_Rgm6RZRnBStD9u7s8');
+
+define('CLOUDINARY_SUPPORT_PATH', drupal_get_path('module', 'takepart_cloudinary_support'));
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function takepart_cloudinary_support_preprocess_html(&$variables) {
+  $js_path = CLOUDINARY_SUPPORT_PATH . '/lib/cloudinary-js/js';
+
+  drupal_add_js($js_path . '/jquery.ui.widget.js');
+  drupal_add_js($js_path . '/jquery.iframe-transport.js');
+  drupal_add_js($js_path . '/jquery.fileupload.js');
+  drupal_add_js($js_path . '/jquery.cloudinary.js');
+  drupal_add_js(CLOUDINARY_SUPPORT_PATH . '/js/jquery.takepart-cloudinary-support.js');
+  drupal_add_js(array(
+    'cloudinary_support' => array(
+      'config' => array(
+        'cloud_name' => CLOUDINARY_CLOUD_NAME,
+        'api_key' => CLOUDINARY_API_KEY
+      ),
+      'file_field_data' => _takepart_cloudinary_support_generate_signature()
+    ),
+  ), 'setting');
+}
+
+/**
+ * Generates cloudinary JS config without exposing our API secret to the world.
+ * 
+ * @return array An associative array of Cloudinary config params
+ */
+function _takepart_cloudinary_support_generate_signature() {
+  global $base_url;
+
+  $callback = $base_url . '/' . CLOUDINARY_SUPPORT_PATH . '/lib/cloudinary-js/html/cloudinary_cors.html';
+  $time = time();
+
+  // a string in the form param=value&param=value with API secret appended
+  // excluding the "api_key" param.
+  // It will be sha1 encoded in the return statement
+  // @see http://cloudinary.com/documentation/upload_images#request_authentication
+  $signature_string = "callback=$callback&timestamp=$time" . CLOUDINARY_API_SECRET;
+
+  return array(
+    'api_key' => CLOUDINARY_API_KEY,
+    'callback' => $callback,
+    'timestamp' => $time,
+    'signature' => sha1($signature_string),
+  );
+}
