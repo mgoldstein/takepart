@@ -1,5 +1,6 @@
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
+
 @import "typeface";
 
 @import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
@@ -1515,10 +1516,32 @@ h1.sys-headline {
   }
 
   .sys-image {
-    @include box-sizing(border-box);
+    @include sys-input-styling;
+    background-color: #ddd;
     text-align: center;
     padding: 20px;
     border: 2px dashed black;
+    margin-top: 1em;
+    p { line-height: 1; }
+    .error {
+      @include sys-input-error-styling;
+    }
+
+    .upload-button {
+      width: 8em;
+      margin: 0 auto;
+      padding: .25em 0;
+      background-color: black;
+      color: white;
+      font: normal 1em/1 $secondary-font;
+      text-transform: uppercase;
+    }
+  }
+
+  .dz-started {
+    .sys-image-content {
+      display: none;
+    }
   }
 
   input[type="button"],
@@ -1547,6 +1570,7 @@ h1.sys-headline {
     .left,
     .right {
       display: inline-block;
+      vertical-align: top;
       width: 47.4%;
     }
     .right {

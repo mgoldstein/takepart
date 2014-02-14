@@ -98,8 +98,15 @@
         $form.find('select').customSelect();
     }
 
+    // this makes them look nicer
+    var height = 0;
+    $form.find('.sys-image-description').each(function() {
+      var thisHeight = $(this).height();
+      height = thisHeight > height ? thisHeight : height;
+    }).height(height);
+
     // Preview
-    $('#sys-preview').on('click', function(e) {
+    $form.find('#sys-preview').on('click', function(e) {
       e.preventDefault();
       var $modal = $('<div />');
       $('<h1>').html('Preview Coming Soon').appendTo($modal);

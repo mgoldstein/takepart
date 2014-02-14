@@ -1777,9 +1777,42 @@ h1.sys-headline span {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: -4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999999;
+  -moz-box-shadow: -4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999999;
+  box-shadow: -4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999999;
+  background-color: white;
+  background-color: #ddd;
   text-align: center;
   padding: 20px;
   border: 2px dashed black;
+  margin-top: 1em;
+}
+.sys-form .sys-image p {
+  line-height: 1;
+}
+.sys-form .sys-image .error {
+  -webkit-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  -moz-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
+  color: #d00;
+}
+.sys-form .sys-image .upload-button {
+  width: 8em;
+  margin: 0 auto;
+  padding: .25em 0;
+  background-color: black;
+  color: white;
+  font: normal 1em/1 "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+}
+.sys-form .dz-started .sys-image-content {
+  display: none;
 }
 .sys-form input[type="button"],
 .sys-form input[type="submit"] {
@@ -1811,6 +1844,7 @@ h1.sys-headline span {
   .sys-form .left,
   .sys-form .right {
     display: inline-block;
+    vertical-align: top;
     width: 47.4%;
   }
   .sys-form .right {

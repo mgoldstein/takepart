@@ -49,13 +49,20 @@
   </fieldset>
   <fieldset>
     <legend>Pictures Make The Story</legend>
+    <p>Drag and drop image files into the dotted lines to upload.</p>
     <input type="hidden" name="image_link">
     <input type="hidden" name="teacher_image_link">
     <div id="sys-image-user" class="sys-image sys-image-user left">
-      USER IMAGE
+      <div class="sys-image-content">
+        <p><strong>Your Picture</strong><br /><small>(recommended)</small></p>
+        <p class="sys-image-description"><small>Preferably a yearbook or school picture. Alternately one during the time period.</small></p>
+      </div>
     </div>
     <div id="sys-image-teacher" class="sys-image sys-image-teacher right">
-      TEACHER IMAGE
+      <div class="sys-image-content">
+        <p><strong>Your Teacher's Picture</strong><br /><small>(recommended)</small></p>
+        <p class="sys-image-description"><small>A picture of the teacher or the school.</small></p>
+      </div>
     </div>
   </fieldset>
   <fieldset>
