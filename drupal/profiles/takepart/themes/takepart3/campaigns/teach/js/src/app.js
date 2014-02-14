@@ -11,7 +11,7 @@
   // Simple JavaScript Templating
   // John Resig - http://ejohn.org/ - MIT Licensed
   var templateCache = {};
- 
+
   var tmpl = function tmpl(str, data){
     // Figure out if we're getting a template, or if we need to
     // load the template - and be sure to cache the result.
