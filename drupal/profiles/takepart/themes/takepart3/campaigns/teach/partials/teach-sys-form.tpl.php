@@ -49,20 +49,22 @@
   </fieldset>
   <fieldset>
     <legend>Pictures Make The Story</legend>
-    <p>Drag and drop image files into the dotted lines to upload.</p>
-    <input type="hidden" name="image_link">
-    <input type="hidden" name="teacher_image_link">
+    <p>Click or drag image files onto the upload button.</p>
+    <input type="hidden" id="image_user_id" name="image_user_id">
+    <input type="hidden" id="image_teacher_id" name="image_teacher_id">
     <div id="sys-image-user" class="sys-image sys-image-user left">
       <div class="sys-image-content">
         <p><strong>Your Picture</strong><br /><small>(recommended)</small></p>
         <p class="sys-image-description"><small>Preferably a yearbook or school picture. Alternately one during the time period.</small></p>
       </div>
+      <input type="file" name="image_user" id="image_user" class="cloudinary-fileupload" data-cloudinary-field="image_user_id">
     </div>
     <div id="sys-image-teacher" class="sys-image sys-image-teacher right">
       <div class="sys-image-content">
         <p><strong>Your Teacher's Picture</strong><br /><small>(recommended)</small></p>
         <p class="sys-image-description"><small>A picture of the teacher or the school.</small></p>
       </div>
+      <input type="file" name="image_teacher" id="image_teacher" class="cloudinary-fileupload" data-cloudinary-field="image_teacher_id">
     </div>
   </fieldset>
   <fieldset>
@@ -75,3 +77,21 @@
   </p>
   <p class="fine-print clearfix">By clicking "Submit Story" above, you agree to TakePart's <?php print l('Terms of Use', 'terms-of-use', array('attributes' => array('target' => '_blank'))); ?> and <?php print l('Privacy Policy', 'privacy-policy', array('attributes' => array('target' => '_blank'))); ?></p>
 </form>
+<script type="text/x-microtemplate" id="story_template">
+  <div class="sys-story-preview">
+    <h2 class="sys-preview-headline">Teacher Stories From <span class="teach-logo">Teach</span></h2>
+    <img id="sys-preview-teacher-image" class="sys-preview-teacher-image" src="http://placehold.it/325x450&text=loading...">
+    <div class="content">
+      <h2 class="sys-preview-subhead"><%=teacher_first_name%> <%=teacher_last_name%></h2>
+      <img id="sys-preview-user-image" class="sys-preview-user-image" src="http://placehold.it/150x200&text=loading...">
+      <h3>School</h3>
+      <p>School Info TBD</p>
+      <h3>Submitted By</h3>
+      <p><%=first_name%> <%=last_name%></p>
+      <h3><%=story_title%></h3>
+      <p><%=story_body%></p>
+    </div>
+  </div>
+</script>
+
+

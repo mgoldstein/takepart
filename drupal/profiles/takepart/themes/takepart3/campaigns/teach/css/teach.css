@@ -1755,6 +1755,11 @@ h1.sys-headline span {
 .sys-form select[name="story_year"].hasCustomSelect {
   right: 0;
 }
+.sys-form input:focus,
+.sys-form .customSelectFocus {
+  outline: #5b9dd9 auto 5px;
+  outline-offset: -2px;
+}
 .sys-form .character-count {
   position: absolute;
   right: 0;
@@ -1850,4 +1855,55 @@ h1.sys-headline span {
   .sys-form .right {
     margin-left: 3.9%;
   }
+}
+
+.sys-story-preview {
+  position: relative;
+}
+.sys-story-preview .sys-preview-headline {
+  position: absolute;
+  top: -1em;
+  left: -2em;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  transform: rotate(2deg);
+  font: normal 1.5em/1 "GlyphaLTPro-Black", serif;
+  background-color: white;
+}
+.sys-story-preview img {
+  background-color: white;
+  padding: 2px;
+  max-width: 45%;
+  -webkit-box-shadow: 0 0 4px black;
+  -moz-box-shadow: 0 0 4px black;
+  box-shadow: 0 0 4px black;
+}
+.sys-story-preview .sys-preview-teacher-image {
+  float: left;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+.sys-story-preview .content {
+  margin-left: 50%;
+}
+.sys-story-preview .sys-preview-user-image {
+  float: right;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+}
+.sys-story-preview h3 {
+  font: normal 1.25em/1 "GlyphaLTPro-Black", serif;
+  margin-bottom: .8em;
+}
+.sys-story-preview p {
+  margin: 0;
+  line-height: 1;
 }

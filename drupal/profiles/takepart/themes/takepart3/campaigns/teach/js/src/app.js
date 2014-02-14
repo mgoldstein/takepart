@@ -1,3 +1,4 @@
+
 (function($, window, document, undefined){
 
   var touchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
@@ -7,6 +8,42 @@
       msDay = 24 * 60 * 60 * 1000, // one day in milliseconds
       ageRequirement = Date.now() - 13 * 365 * msDay; // 13 years in milliseconds
 
+  // Simple JavaScript Templating
+  // John Resig - http://ejohn.org/ - MIT Licensed
+  var templateCache = {};
+ 
+  var tmpl = function tmpl(str, data){
+    // Figure out if we're getting a template, or if we need to
+    // load the template - and be sure to cache the result.
+    var fn = !/\W/.test(str) ?
+      templateCache[str] = templateCache[str] ||
+        tmpl(document.getElementById(str).innerHTML) :
+     
+      // Generate a reusable function that will serve as a template
+      // generator (and which will be cached).
+      new Function("obj",
+        "var p=[],print=function(){p.push.apply(p,arguments);};" +
+       
+        // Introduce the data as local variables using with(){}
+        "with(obj){p.push('" +
+       
+        // Convert the template into pure JavaScript
+        str
+          .replace(/[\r\t\n]/g, " ")
+          .split("<%").join("\t")
+          .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+          .replace(/\t=(.*?)%>/g, "',$1,'")
+          .split("\t").join("');")
+          .split("%>").join("p.push('")
+          .split("\r").join("\\'")
+      + "');}return p.join('');");
+   
+    // Provide some basic currying to the user
+    return data ? fn( data ) : fn;
+  };
+
+
+
   // show coppa error message and delete form from page
   var showCoppaErrorMessage = function() {
       $('#sys-form-content').slideUp().remove();
@@ -14,16 +51,8 @@
   };
 
   var sysFormSubmit = function(form) {
-    var $form = $(form),
-        formData = {};
-
-    // let's get all the data
-    $form.find("input, textarea, select").not('[type="checkbox"]').each(function() {
-      formData[this.id] = $(this).val();
-    });
-    formData.email_subscribe = $form.find('#email_subscribe').is(':checked');
-    formData.terms_agree = $form.find('#terms_agree').is(':checked');
-    console.log(formData); // TODO remove after debugging
+    var $form = $(form);
+    var formData = parseFormData($form);
 
     var userBirthdate = formData.user_year + '-' + formData.user_month + '-' + formData.user_day;
 
@@ -45,6 +74,30 @@
     $('#sys-form-content').slideUp().remove();
     $('#sys-thanks-content').slideDown();
   };
+
+  var parseFormData = function($form) {
+    var formData = {};
+    $form.find("input, textarea, select").not('[type="checkbox"], [type="file"]').each(function() {
+      formData[this.id] = $(this).val();
+    });
+
+    // get more useful checkbox values
+    formData.email_subscribe = $form.find('#email_subscribe').is(':checked');
+    formData.terms_agree = $form.find('#terms_agree').is(':checked');
+
+    // do some very elementary sanitization
+    formData.story_body = formData.story_body.trim().replace(/\n+/g, ' ');
+
+    console.log(formData); // TODO Remove this before launch!
+    return formData;
+  };
+
+  // polyfill for String.trim()
+  if (!String.prototype.trim) {
+    String.prototype.trim = function () {
+      return this.replace(/^\s+|\s+$/g, '');
+    };
+  }
 
   // not using Drupal.behaviors because this JS has nothing to do with drupal
   $(document).ready(function() {
@@ -108,10 +161,13 @@
     // Preview
     $form.find('#sys-preview').on('click', function(e) {
       e.preventDefault();
-      var $modal = $('<div />');
-      $('<h1>').html('Preview Coming Soon').appendTo($modal);
-      $('<p>').html('Stay tuned for preview functionality&hellip;').appendTo($modal);
-      $.tpmodal.show({node: $modal[0]});
+      if (!$form.valid()) return;
+      $modal = $(tmpl('story_template', parseFormData($form)));
+      $.tpmodal.show({
+        id: "sys_preview_",
+        node: $modal[0],
+        width: Math.min(window.innerWidth, 800) + "px"
+      });
     });
 
     $form.validate({

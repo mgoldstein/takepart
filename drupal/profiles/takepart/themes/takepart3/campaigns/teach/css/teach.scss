@@ -1500,6 +1500,13 @@ h1.sys-headline {
     right: 0;
   }
 
+  // focus states
+  input:focus,
+  .customSelectFocus {
+    outline: rgb(91, 157, 217) auto 5px;
+    outline-offset: -2px;
+  }
+
   .character-count {
     position: absolute;
     right: 0;
@@ -1577,4 +1584,48 @@ h1.sys-headline {
       margin-left: 3.9%;
     }
   } 
+}
+
+.sys-story-preview {
+  position: relative;
+
+  .sys-preview-headline {
+    position: absolute;
+    top: -1em;
+    left: -2em;
+    @include transform(rotate(2deg));
+    font: normal 1.5em/1 $secondary-font;
+    background-color: white;
+  }
+
+  img {
+    background-color: white;
+    padding: 2px;
+    max-width: 45%;
+    @include box-shadow(0 0 4px black);
+  }
+
+  .sys-preview-teacher-image {
+    float: left;
+    @include transform(rotate(2deg));
+  }
+
+  .content {
+    margin-left: 50%;
+  }
+
+  .sys-preview-user-image {
+    float: right;
+    @include transform(rotate(-2deg));
+  }
+
+  h3 {
+    font: normal 1.25em/1 $secondary-font;
+    margin-bottom: .8em;
+  }
+  p {
+    margin: 0;
+    line-height: 1;
+  }
+
 }
