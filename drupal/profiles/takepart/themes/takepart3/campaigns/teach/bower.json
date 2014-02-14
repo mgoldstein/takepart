@@ -13,9 +13,7 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "dropzone": "~3.8.3"
-  },
+  "devDependencies": {},
   "dependencies": {
     "jquery.validation": "~1.11.1",
     "jquery.customSelect": "https://github.com/adamcoulombe/jquery.customSelect.git"
