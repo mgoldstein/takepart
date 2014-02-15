@@ -42,7 +42,16 @@
     return data ? fn( data ) : fn;
   };
 
+  String.prototype.htmlEntities = function() {
+      return this.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
 
+  // polyfill for String.trim()
+  if (!String.prototype.trim) {
+    String.prototype.trim = function () {
+      return this.replace(/^\s+|\s+$/g, '');
+    };
+  }
 
   // show coppa error message and delete form from page
   var showCoppaErrorMessage = function() {
@@ -78,26 +87,17 @@
   var parseFormData = function($form) {
     var formData = {};
     $form.find("input, textarea, select").not('[type="checkbox"], [type="file"]').each(function() {
-      formData[this.id] = $(this).val();
+      // @see String.prototype.htmlEntities
+      formData[this.id] = $(this).val().trim().replace(/\n+/g, ' ').htmlEntities();
     });
 
     // get more useful checkbox values
     formData.email_subscribe = $form.find('#email_subscribe').is(':checked');
     formData.terms_agree = $form.find('#terms_agree').is(':checked');
 
-    // do some very elementary sanitization
-    formData.story_body = formData.story_body.trim().replace(/\n+/g, ' ');
-
     console.log(formData); // TODO Remove this before launch!
     return formData;
   };
-
-  // polyfill for String.trim()
-  if (!String.prototype.trim) {
-    String.prototype.trim = function () {
-      return this.replace(/^\s+|\s+$/g, '');
-    };
-  }
 
   // not using Drupal.behaviors because this JS has nothing to do with drupal
   $(document).ready(function() {
@@ -164,9 +164,10 @@
       if (!$form.valid()) return;
       $modal = $(tmpl('story_template', parseFormData($form)));
       $.tpmodal.show({
-        id: "sys_preview_",
+	id: "sys_modal_",
         node: $modal[0],
-        width: Math.min(window.innerWidth, 800) + "px"
+	width: Math.min(window.innerWidth, 800) + "px",
+	height: Math.min(window.innerHeight, 500) + "px"
       });
     });
 

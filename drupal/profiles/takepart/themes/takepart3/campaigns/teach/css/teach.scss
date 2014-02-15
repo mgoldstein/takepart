@@ -1533,22 +1533,6 @@ h1.sys-headline {
     .error {
       @include sys-input-error-styling;
     }
-
-    .upload-button {
-      width: 8em;
-      margin: 0 auto;
-      padding: .25em 0;
-      background-color: black;
-      color: white;
-      font: normal 1em/1 $secondary-font;
-      text-transform: uppercase;
-    }
-  }
-
-  .dz-started {
-    .sys-image-content {
-      display: none;
-    }
   }
 
   input[type="button"],
@@ -1560,8 +1544,9 @@ h1.sys-headline {
     border: none;
     color: white;
     text-align: center;
-    font: normal normal 1.4em/1 $secondary-font;
+    font: normal normal 1.4em/1.25 $secondary-font;
     text-transform: uppercase;
+    white-space: normal;
     &:active { position: relative; top: 1px; }
   }
   input[type="submit"] {
@@ -1586,46 +1571,110 @@ h1.sys-headline {
   } 
 }
 
-.sys-story-preview {
-  position: relative;
+// story preview modal
+.tpmodal_modal.sys_modal_modal {
+  background: transparent none !important;
+}
 
-  .sys-preview-headline {
-    position: absolute;
-    top: -1em;
-    left: -2em;
-    @include transform(rotate(2deg));
-    font: normal 1.5em/1 $secondary-font;
-    background-color: white;
+.tpmodal_close.sys_modal_close {
+  background: transparent none !important;
+  height: auto !important;
+  width: auto !important;
+  top: -5px !important;
+  color: white;
+  font-family: $secondary-font;
+  text-transform: uppercase;
+  padding-right: 20px;
+  text-indent: 0;
+
+  &:before {
+    display: inline;
+    content: "\00d7\0020";
+    font-size: 1.5em;
+    line-height: .667;
   }
+}
 
-  img {
-    background-color: white;
-    padding: 2px;
-    max-width: 45%;
-    @include box-shadow(0 0 4px black);
+.sys-story-modal {
+  // clearfix
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
   }
+  @include box-sizing(border-box);
+  background-color: white;
+  padding: 20px;
 
-  .sys-preview-teacher-image {
-    float: left;
-    @include transform(rotate(2deg));
-  }
-
-  .content {
-    margin-left: 50%;
-  }
-
-  .sys-preview-user-image {
-    float: right;
-    @include transform(rotate(-2deg));
+  h2,
+  h3 {
+    font-family: $secondary-font;
+    text-transform: uppercase;
   }
 
   h3 {
-    font: normal 1.25em/1 $secondary-font;
-    margin-bottom: .8em;
+    font: normal 1.3em/1.25 $secondary-font;
+    margin-bottom: 0;
+    color: #666;
   }
+
+  .sys-story-headline {
+    font: normal 1.75em/1 $secondary-font;
+    padding: .25em;
+    background: transparent image-url("sys-headline-bg.png") no-repeat scroll top left;
+    padding: 19px 0 25px 10px;
+    margin-top: -45px;
+    margin-left: -25px;
+    & > span {
+      display: block;
+      @include transform(rotate(-2deg));
+    }
+  }
+
+  .teach-logo {
+    display: inline-block;
+    color: white;
+    padding: .25em .25em .15em;
+    background-color: $primary-color;
+  }
+
+  .sys-story-subhead {
+    font-size: 2em;
+    margin-bottom: .667em;
+  }
+
+
+  img {
+    background-color: white;
+    padding: 4px;
+    @include box-shadow(0 0 12px rgba(0,0,0,.5));
+  }
+
+  .sys-story-teacher-image {
+    @media (min-width: 768px) {
+      max-width: 45%;
+      float: left;
+    }
+    margin-bottom: 1em; // use clearfix to clear floats;
+    @include transform(rotate(-2deg));
+  }
+
+  .sys-story-user-image {
+    float: right;
+    @include transform(rotate(2deg));
+    margin-left: 1em;
+  }
+
+  .content {
+    @media (min-width: 768px) {
+      margin-left: 50%;
+    }
+  }
+
   p {
-    margin: 0;
-    line-height: 1;
+    margin: 0 0 1em;
+    line-height: 1.5;
+    color: #666;
   }
 
 }
