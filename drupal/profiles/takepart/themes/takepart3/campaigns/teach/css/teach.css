@@ -149,7 +149,7 @@
   color: white;
 }
 .header .menu-wrapper {
-  font: bold 19px/100% "GlyphaLTPro-Black", serif;
+  font: bold 17px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
   background: url('../img/orange_felt.png?1377714705');
   -webkit-border-radius: 5px;
@@ -170,7 +170,7 @@
   height: 39px;
 }
 .header .menu-wrapper .menu .item {
-  margin: 0;
+  margin: 0 0 0 .8em;
   padding: 0;
   overflow: visible;
   display: -moz-inline-stack;
@@ -188,9 +188,9 @@
   zoom: 1;
   *display: inline;
   padding: 8px 0;
-  width: 127px;
   text-align: center;
   color: white;
+  text-transform: uppercase;
   text-shadow: 0 -1px 2px #A84300;
   -webkit-transition-property: color;
   -moz-transition-property: color;
@@ -209,8 +209,27 @@
   text-decoration: none;
   color: black;
 }
+.header .menu-wrapper .menu .item:first-of-type {
+  margin: 0;
+}
+.header .menu-wrapper .menu .item:first-of-type a {
+  background: transparent url('../img/menu-home.png?1392688662') no-repeat scroll top left;
+  background-size: 21px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  padding: 21px 21px 0 0;
+  margin: 4px 7px 7px;
+}
+.header .menu-wrapper .menu .item:first-of-type.active {
+  margin-top: 0;
+}
+.header .menu-wrapper .menu .item:first-of-type.active a {
+  margin: 7px;
+  background-position: 0 -21px;
+}
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377714705') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377714705') no-repeat top center;
   margin-top: -3px;
   height: 43px;
 }
@@ -1003,10 +1022,7 @@ p a {
     font-size: 20px;
   }
   .header .menu-wrapper {
-    font-size: 15px;
-  }
-  .header .menu-wrapper .menu .item a {
-    width: 90px;
+    font-size: 12px;
   }
 
   .page-wordlet-teach-home .social-menu {
@@ -1029,7 +1045,17 @@ p a {
     width: 59%;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+  .menu-wrapper {
+    font-size: 14px;
+  }
+}
+@media (max-width: 800px) {
+  .menu-wrapper {
+    font-size: 13px;
+  }
+}
+@media (max-width: 767px) {
   #page-wrapper {
     overflow: hidden;
   }

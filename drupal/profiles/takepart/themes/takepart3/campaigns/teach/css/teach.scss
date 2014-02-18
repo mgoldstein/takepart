@@ -137,7 +137,7 @@ $body-copy-black: #313131;
 
   /* menu */
   .menu-wrapper {
-    font: bold 19px/100% $secondary-font;
+    font: bold 17px/100% $secondary-font;
     padding: 5px;
     background: image-url('orange_felt.png');
     @include border-radius(5px);
@@ -152,16 +152,16 @@ $body-copy-black: #313131;
       overflow: visible;
       height: 39px;
       .item {
-        margin: 0;
+        margin: 0 0 0 .8em;
         padding: 0;
         overflow: visible;
         @include inline-block;
         a {
           @include inline-block;
           padding: 8px 0;
-          width: 127px;
           text-align: center;
           color: $primary-white;
+          text-transform: uppercase;
           text-shadow: 0 -1px 2px #A84300;
           @include transition-property(color);
           @include transition-duration(0.15s);
@@ -172,8 +172,27 @@ $body-copy-black: #313131;
             color: black;
           }
         }
+        &:first-of-type {
+          margin: 0;
+          a {
+            background: transparent image-url("menu-home.png") no-repeat scroll top left;
+            background-size: 21px;
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            padding: 21px 21px 0 0;
+            margin: 4px 7px 7px;
+          }
+          &.active {
+            margin-top: 0;
+            a {
+              margin: 7px;
+              background-position: 0 -21px;
+            }
+          }
+        }
         &.active {
-          background: image-url('active_menu_bg.png') no-repeat -17px 0;
+          background: image-url('active_menu_bg.png') no-repeat top center;
           margin-top: -3px;
           height: 43px;
           a {
@@ -779,10 +798,7 @@ p {
     }
 
     .menu-wrapper {
-      font-size: 15px;
-      .menu .item a {
-        width: 90px;
-      }
+      font-size: 12px;
     }
   }
 
@@ -811,7 +827,19 @@ p {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+ .menu-wrapper {
+    font-size: 14px;
+  } 
+}
+
+@media (max-width: 800px) {
+ .menu-wrapper {
+    font-size: 13px;
+  } 
+}
+
+@media (max-width: 767px) {
   #page-wrapper {
     overflow: hidden;
   }
