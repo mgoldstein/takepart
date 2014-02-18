@@ -1,4 +1,4 @@
-name = TakePart Cooudinary Support
+name = TakePart Cloudinary Support
 description = Module for support functions for dealing with Cloudinary's API
 core = 7.x
 package = TP4

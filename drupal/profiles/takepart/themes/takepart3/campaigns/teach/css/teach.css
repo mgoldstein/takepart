@@ -85,7 +85,7 @@
   font-family: "OpenSans_Condensed", sans-serif;
   padding: 20px;
   position: relative;
-  min-height: 422px;
+  min-height: 225px;
   color: white;
   background: url('../img/hero-background.jpg?1377834613');
   clear: both;
@@ -95,42 +95,49 @@
 .header .page-header {
   color: white;
   background-color: #ea5f11;
-  padding: .1em;
-  width: 400px;
+  padding: .25em .277777778em;
+  width: 265px;
   margin-left: -20px;
+  font: normal 72px/0.69444 "GlyphaLTPro-Black", serif;
   font-family: "GlyphaLTPro-Black", serif;
 }
 .header .hero {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 20px;
   margin-bottom: 50px;
   z-index: 6;
 }
 .header .slug {
-  font-family: Helvetica, Arial, sans-serif;
   display: block;
-  font-size: 27px;
-  line-height: 150%;
+  font: normal 16px/2 Helvetica, Arial, sans-serif;
 }
 .header .credit {
-  display: block;
+  display: none;
   font-size: 24px;
   margin-top: 5px;
   margin-bottom: 5px;
   width: 300px;
 }
-.header .date {
-  display: block;
-  font-size: 32px;
-  line-height: 80%;
-  margin-bottom: .7em;
-}
 .header .burst {
   display: block;
-  font: bold 33px Helvetica, Arial, sans-serif;
+  margin-top: .25em;
+  font: normal 21px/1 Helvetica, Arial, sans-serif;
+}
+.header .burst span {
+  display: inline-block;
+  vertical-align: text-top;
+}
+.header .logos {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.header .date {
+  display: block;
+  font-size: 18px;
 }
 .header .fine {
+  display: none;
   font-size: 13px;
   color: #cccccc;
   position: absolute;
@@ -141,15 +148,65 @@
   right: 20px;
   text-shadow: 0 0 3px black;
 }
-.header .fine .logos {
-  display: block;
-  margin-bottom: 5px;
-}
 .header .fine .right {
   color: white;
 }
+.header .campaign-social-share {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  position: absolute;
+  bottom: 0;
+  right: 40px;
+  padding: .5em 1em .5em 1.25em;
+  margin-bottom: 50px;
+  background-color: white;
+  font: normal 16px/1.49 "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+  color: black;
+  z-index: 10;
+}
+.header .campaign-social-share ul {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+}
+.header .campaign-social-share ul li {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+}
+.header .campaign-social-share ul li a {
+  display: block;
+  height: 0;
+  width: 0;
+  text-indent: 12px;
+  overflow: hidden;
+  padding: 12px;
+  margin-left: 6px;
+  background: transparent url('../img/social-scribbles.png?1392698192') top left;
+  background-size: 24px;
+}
+.header .campaign-social-share ul li a.facebook {
+  background-position: 0 0;
+}
+.header .campaign-social-share ul li a.twitter {
+  background-position: 0 -24px;
+}
+.header .campaign-social-share ul li a.googleplus {
+  background-position: 0 -48px;
+}
 .header .menu-wrapper {
-  font: bold 19px/100% "GlyphaLTPro-Black", serif;
+  font: bold 17px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
   background: url('../img/orange_felt.png?1377714705');
   -webkit-border-radius: 5px;
@@ -170,7 +227,7 @@
   height: 39px;
 }
 .header .menu-wrapper .menu .item {
-  margin: 0;
+  margin: 0 0 0 .8em;
   padding: 0;
   overflow: visible;
   display: -moz-inline-stack;
@@ -188,9 +245,9 @@
   zoom: 1;
   *display: inline;
   padding: 8px 0;
-  width: 127px;
   text-align: center;
   color: white;
+  text-transform: uppercase;
   text-shadow: 0 -1px 2px #A84300;
   -webkit-transition-property: color;
   -moz-transition-property: color;
@@ -209,8 +266,27 @@
   text-decoration: none;
   color: black;
 }
+.header .menu-wrapper .menu .item:first-of-type {
+  margin: 0;
+}
+.header .menu-wrapper .menu .item:first-of-type a {
+  background: transparent url('../img/menu-home.png?1392688662') no-repeat scroll top left;
+  background-size: 21px;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  padding: 21px 21px 0 0;
+  margin: 4px 7px 7px;
+}
+.header .menu-wrapper .menu .item:first-of-type.active {
+  margin-top: 0;
+}
+.header .menu-wrapper .menu .item:first-of-type.active a {
+  margin: 7px;
+  background-position: 0 -21px;
+}
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377714705') no-repeat -17px 0;
+  background: url('../img/active_menu_bg.png?1377714705') no-repeat top center;
   margin-top: -3px;
   height: 43px;
 }
@@ -991,22 +1067,8 @@ p a {
     width: 100%;
   }
 
-  .header .hero {
-    width: 77%;
-    height: auto;
-  }
-  .header .logos {
-    width: 25%;
-    height: auto;
-  }
-  .header .credit {
-    font-size: 20px;
-  }
   .header .menu-wrapper {
-    font-size: 15px;
-  }
-  .header .menu-wrapper .menu .item a {
-    width: 90px;
+    font-size: 14px;
   }
 
   .page-wordlet-teach-home .social-menu {
@@ -1029,7 +1091,17 @@ p a {
     width: 59%;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+  .header .menu-wrapper {
+    font-size: 13px;
+  }
+}
+@media (min-width: 768px) and (max-width: 800px) {
+  .header .menu-wrapper {
+    font-size: 12px;
+  }
+}
+@media (max-width: 767px) {
   #page-wrapper {
     overflow: hidden;
   }
@@ -1039,19 +1111,23 @@ p a {
   }
 
   .header {
+    overflow: hidden;
     padding: 0;
     text-align: center;
     background: none;
+    font-size: 0;
   }
   .header .slug {
-    font-size: 18px;
-    padding: .5em 0;
+    display: none;
   }
   .header .page-header {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-size: 80px;
+    margin: .166666667em auto;
+  }
+  .header .burst,
+  .header .date {
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
   }
   .header .credit {
     margin: .5em auto;
@@ -1068,14 +1144,14 @@ p a {
     text-align: center;
     width: 100%;
   }
-  .header .fine .logos {
-    width: 65%;
-    height: auto;
-    display: block;
-    margin: 10px auto;
-  }
   .header .fine .right {
     display: none;
+  }
+  .header .campaign-social-share {
+    position: static;
+    bottom: auto;
+    right: auto;
+    margin: -40px 0 0;
   }
   .header .menu-wrapper {
     -webkit-border-radius: 0;
