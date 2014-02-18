@@ -1807,18 +1807,6 @@ h1.sys-headline span {
   box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
   color: #d00;
 }
-.sys-form .sys-image .upload-button {
-  width: 8em;
-  margin: 0 auto;
-  padding: .25em 0;
-  background-color: black;
-  color: white;
-  font: normal 1em/1 "GlyphaLTPro-Black", serif;
-  text-transform: uppercase;
-}
-.sys-form .dz-started .sys-image-content {
-  display: none;
-}
 .sys-form input[type="button"],
 .sys-form input[type="submit"] {
   -webkit-box-sizing: border-box;
@@ -1830,8 +1818,9 @@ h1.sys-headline span {
   border: none;
   color: white;
   text-align: center;
-  font: normal normal 1.4em/1 "GlyphaLTPro-Black", serif;
+  font: normal normal 1.4em/1.25 "GlyphaLTPro-Black", serif;
   text-transform: uppercase;
+  white-space: normal;
 }
 .sys-form input[type="button"]:active,
 .sys-form input[type="submit"]:active {
@@ -1857,53 +1846,113 @@ h1.sys-headline span {
   }
 }
 
-.sys-story-preview {
-  position: relative;
+.tpmodal_modal.sys_modal_modal {
+  background: transparent none !important;
 }
-.sys-story-preview .sys-preview-headline {
-  position: absolute;
-  top: -1em;
-  left: -2em;
-  -webkit-transform: rotate(2deg);
-  -moz-transform: rotate(2deg);
-  -ms-transform: rotate(2deg);
-  -o-transform: rotate(2deg);
-  transform: rotate(2deg);
-  font: normal 1.5em/1 "GlyphaLTPro-Black", serif;
+
+.tpmodal_close.sys_modal_close {
+  background: transparent none !important;
+  height: auto !important;
+  width: auto !important;
+  top: -5px !important;
+  color: white;
+  font-family: "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+  padding-right: 20px;
+  text-indent: 0;
+}
+.tpmodal_close.sys_modal_close:before {
+  display: inline;
+  content: "\00d7\0020";
+  font-size: 1.5em;
+  line-height: .667;
+}
+
+.sys-story-modal {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   background-color: white;
+  padding: 20px;
 }
-.sys-story-preview img {
-  background-color: white;
-  padding: 2px;
-  max-width: 45%;
-  -webkit-box-shadow: 0 0 4px black;
-  -moz-box-shadow: 0 0 4px black;
-  box-shadow: 0 0 4px black;
+.sys-story-modal:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
-.sys-story-preview .sys-preview-teacher-image {
-  float: left;
-  -webkit-transform: rotate(2deg);
-  -moz-transform: rotate(2deg);
-  -ms-transform: rotate(2deg);
-  -o-transform: rotate(2deg);
-  transform: rotate(2deg);
+.sys-story-modal h2,
+.sys-story-modal h3 {
+  font-family: "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
 }
-.sys-story-preview .content {
-  margin-left: 50%;
+.sys-story-modal h3 {
+  font: normal 1.3em/1.25 "GlyphaLTPro-Black", serif;
+  margin-bottom: 0;
+  color: #666;
 }
-.sys-story-preview .sys-preview-user-image {
-  float: right;
+.sys-story-modal .sys-story-headline {
+  font: normal 1.75em/1 "GlyphaLTPro-Black", serif;
+  padding: .25em;
+  background: transparent url('../img/sys-headline-bg.png?1392239551') no-repeat scroll top left;
+  padding: 19px 0 25px 10px;
+  margin-top: -45px;
+  margin-left: -25px;
+}
+.sys-story-modal .sys-story-headline > span {
+  display: block;
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
   -ms-transform: rotate(-2deg);
   -o-transform: rotate(-2deg);
   transform: rotate(-2deg);
 }
-.sys-story-preview h3 {
-  font: normal 1.25em/1 "GlyphaLTPro-Black", serif;
-  margin-bottom: .8em;
+.sys-story-modal .teach-logo {
+  display: inline-block;
+  color: white;
+  padding: .25em .25em .15em;
+  background-color: #ea5f11;
 }
-.sys-story-preview p {
-  margin: 0;
-  line-height: 1;
+.sys-story-modal .sys-story-subhead {
+  font-size: 2em;
+  margin-bottom: .667em;
+}
+.sys-story-modal img {
+  background-color: white;
+  padding: 4px;
+  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+.sys-story-modal .sys-story-teacher-image {
+  margin-bottom: 1em;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+}
+@media (min-width: 768px) {
+  .sys-story-modal .sys-story-teacher-image {
+    max-width: 45%;
+    float: left;
+  }
+}
+.sys-story-modal .sys-story-user-image {
+  float: right;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  transform: rotate(2deg);
+  margin-left: 1em;
+}
+@media (min-width: 768px) {
+  .sys-story-modal .content {
+    margin-left: 50%;
+  }
+}
+.sys-story-modal p {
+  margin: 0 0 1em;
+  line-height: 1.5;
+  color: #666;
 }

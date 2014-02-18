@@ -78,12 +78,12 @@
   <p class="fine-print clearfix">By clicking "Submit Story" above, you agree to TakePart's <?php print l('Terms of Use', 'terms-of-use', array('attributes' => array('target' => '_blank'))); ?> and <?php print l('Privacy Policy', 'privacy-policy', array('attributes' => array('target' => '_blank'))); ?></p>
 </form>
 <script type="text/x-microtemplate" id="story_template">
-  <div class="sys-story-preview">
-    <h2 class="sys-preview-headline">Teacher Stories From <span class="teach-logo">Teach</span></h2>
-    <img id="sys-preview-teacher-image" class="sys-preview-teacher-image" src="http://placehold.it/325x450&text=loading...">
+  <div class="sys-story-modal">
+    <h2 class="sys-story-headline"><span>Teacher Stories From <span class="teach-logo">Teach</span></span></h2>
+    <img id="sys-story-teacher-image" class="sys-story-teacher-image" src="http://placehold.it/350x410&text=loading...">
     <div class="content">
-      <h2 class="sys-preview-subhead"><%=teacher_first_name%> <%=teacher_last_name%></h2>
-      <img id="sys-preview-user-image" class="sys-preview-user-image" src="http://placehold.it/150x200&text=loading...">
+      <h2 class="sys-story-subhead"><%=teacher_first_name%> <%=teacher_last_name%></h2>
+      <img id="sys-story-user-image" class="sys-story-user-image" src="http://placehold.it/150x200&text=loading...">
       <h3>School</h3>
       <p>School Info TBD</p>
       <h3>Submitted By</h3>
@@ -93,5 +93,3 @@
     </div>
   </div>
 </script>
-
-
