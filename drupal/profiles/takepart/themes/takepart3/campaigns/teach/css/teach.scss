@@ -65,7 +65,7 @@ $body-copy-black: #313131;
   font-family: $third-font;
   padding: $page-margins;
   position: relative;
-  min-height: 422px;
+  min-height: 225px;
   color: $primary-white;
   background: image-url('hero-background.jpg');
   clear: both;
@@ -74,48 +74,55 @@ $body-copy-black: #313131;
   .page-header {
     color: white;
     background-color: $primary-color;
-    padding: .1em;
-    width: 400px;
+    padding: .25em .277777778em;
+    width: 265px;
     margin-left: -$page-margins;
+    font: normal 72px/.694444444 $secondary-font;
     font-family: $secondary-font;
   }
 
   .hero {
     position: absolute;
     bottom: 0;
-    right: 0;
+    right: 20px;
     margin-bottom: 50px;
     z-index: 6;
   }
 
   .slug {
-    font-family: $primary-font;
     display: block;
-    font-size: 27px;
-    line-height: 150%;
+    font: normal 16px/2 $primary-font;
   }
 
   .credit {
-    display: block;
+    display: none; // hidden in current comps
     font-size: 24px;
     margin-top: 5px;
     margin-bottom: 5px;
     width: 300px;
   }
 
-  .date {
-    display: block;
-    font-size: 32px;
-    line-height: 80%;
-    margin-bottom: .7em;
-  }
-
   .burst {
     display: block;
-    font: bold 33px $primary-font;
+    margin-top: .25em;
+    font: normal 21px/1 $primary-font;
+    span {
+      display: inline-block;
+      vertical-align: text-top;
+    }
+  }
+  .logos {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  .date {
+    display: block;
+    font-size: 18px;
   }
 
   .fine {
+    display: none; // not in the current comp
     font-size: 13px;
     color: $light-white;
     position: absolute;
@@ -125,12 +132,48 @@ $body-copy-black: #313131;
     left: $page-margins;
     right: $page-margins;
     @include text-shadow(0 0 3px black);
-    .logos {
-      display: block;
-      margin-bottom: 5px;
-    }
     .right { 
       color: white;
+    }
+  } 
+
+  .campaign-social-share {
+    @include inline-block;
+    position: absolute; 
+    bottom: 0;
+    right: 40px;
+    padding: .5em 1em .5em 1.25em;
+    margin-bottom: 50px;
+    background-color: white;
+    font: normal 16px/1.49 $secondary-font;
+    text-transform: uppercase;
+    color: black;
+    z-index: 10;
+    ul {
+      @include inline-block;
+      li {
+        @include inline-block;
+        a {
+          display: block;
+          height: 0;
+          width: 0;
+          text-indent: 12px;
+          overflow: hidden;
+          padding: 12px;
+          margin-left: 6px;
+          background: transparent image-url("social-scribbles.png") top left;
+          background-size: 24px;
+          &.facebook {
+            background-position: 0 0;
+          }
+          &.twitter {
+            background-position: 0 -24px;
+          }
+          &.googleplus {
+            background-position: 0 -48px;
+          }
+        }
+      }
     }
   }
 
@@ -783,22 +826,10 @@ p {
   #page-wrapper {
     width: 100%;
   }
-  .header {
-    .hero {
-      width: 77%;
-      height: auto;
-    }
-    .logos {
-      width: 25%;
-      height: auto;
-    }
 
-    .credit {
-      font-size: 20px;
-    }
-
+  .header {    
     .menu-wrapper {
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 
@@ -828,15 +859,19 @@ p {
 }
 
 @media (max-width: 900px) {
- .menu-wrapper {
-    font-size: 14px;
-  } 
+  .header {  
+   .menu-wrapper {
+      font-size: 13px;
+    } 
+  }
 }
 
-@media (max-width: 800px) {
- .menu-wrapper {
-    font-size: 13px;
-  } 
+@media (min-width: 768px) and (max-width: 800px) {
+  .header {  
+   .menu-wrapper {
+      font-size: 12px;
+    } 
+  }
 }
 
 @media (max-width: 767px) {
@@ -848,18 +883,22 @@ p {
   }
 
   .header {
+    overflow: hidden;
     padding: 0;
     text-align: center;
     background: none;
+    font-size: 0;
     .slug {
-      font-size: 18px;
-      padding: .5em 0;
+      display: none;
     }
     .page-header {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      font-size: 80px;
+      margin: .166666667em auto;
+    }
+    .burst,
+    .date  {
+      width: 300px;
+      margin: 0 auto;
+      text-align: left;
     }
     .credit {
       margin: .5em auto;
@@ -875,15 +914,16 @@ p {
       margin: 0px;
       text-align: center;
       width: 100%;
-      .logos {
-        width: 65%;
-        height: auto;
-        display: block;
-        margin: 10px auto;
-      }
       .right {
         display: none;
       }
+    }
+
+    .campaign-social-share {
+      position: static;
+      bottom: auto;
+      right: auto;
+      margin: -40px 0 0;
     }
 
     .menu-wrapper {

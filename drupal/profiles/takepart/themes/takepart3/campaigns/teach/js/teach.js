@@ -38,4 +38,12 @@
       }
     }
   }
+  Drupal.behaviors.campaignShare = {
+    attach: function() {
+      $('.campaign-social-share').on('click', 'a', function(e) {
+        e.preventDefault();
+        alert($(this).text() + " Share"); // TODO Implement Social Shares
+      });
+    }
+  };
 })(jQuery, Drupal, this, this.document);
