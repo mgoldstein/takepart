@@ -126,6 +126,13 @@ function tp4_preprocess_node(&$variables, $hook) {
     $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
   }
 
+  // Group all Campaign Card content types in one node template
+  // The below might not be needed since panelizer strips everything from node_preprocess
+  $cards = array('campaign_card_media', 'campaign_card_news');
+  if(in_array($variables['type'], $cards) == TRUE) {
+    $variables['theme_hook_suggestions'][] = 'node__campaign_cards';
+  }
+
   // Add template variables for the local node url
   // (for compatability in dev/qa environments)
   // and for the url to the same node on production
@@ -369,14 +376,11 @@ function STARTERKIT_preprocess_comment(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("region" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function STARTERKIT_preprocess_region(&$variables, $hook) {
-  // Don't use Zen's region--sidebar.tpl.php template for sidebars.
-  //if (strpos($variables['region'], 'sidebar_') === 0) {
-  //  $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('region__sidebar'));
-  //}
+
+function tp4_preprocess_region(&$variables, $hook) {
+  // dpm($variables, 'variables');
 }
-// */
+
 
 /**
  * Override or insert variables into the block templates.
@@ -658,7 +662,6 @@ function tp4_field__field_video__video($variables) {
  * This is legacy code from chunkpart to make the "more on our site" bean work
  */
 function tp4_preprocess_entity(&$variables, $hook) {
-
   $variables['custom_render'] = array();
   switch ($variables['entity_type']) {
     case "bean":
