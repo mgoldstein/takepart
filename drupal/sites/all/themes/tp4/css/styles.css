@@ -3333,7 +3333,7 @@ tr.selected td {
 /* line 807, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1386108801');
+  background-image: url('../images/progress.gif?1389823777');
 }
 
 /* TP Modal Library ---------------------- */
@@ -3437,7 +3437,7 @@ tr.selected td {
 /* line 901, ../sass/elements/_misc.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1391480774');
+  background: url('../images/video-loading.gif?1391196728');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3446,7 +3446,7 @@ tr.selected td {
 /* line 908, ../sass/elements/_misc.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1391480774') no-repeat center center;
+  background: url('../images/video-blocked.gif?1391196728') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3999,12 +3999,12 @@ body.front #sidebar .block-title {
 /* line 208, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1386108801');
+  background-image: url('../images/tpl-title.jpg?1389823777');
 }
 /* line 212, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 252px;
-  background-image: url('../images/tpl-time.jpg?1386108801');
+  background-image: url('../images/tpl-time.jpg?1389823777');
 }
 
 /* line 219, ../sass/page/_homepage.scss */
@@ -4590,7 +4590,7 @@ a.column-header:hover {
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1386108801') no-repeat;
+  background: url('../images/megaphone.jpg?1389823777') no-repeat;
   padding-bottom: 5px;
 }
 
@@ -6779,6 +6779,136 @@ a.hover .gallery-cover-content .gallery-cover-enter {
   }
 }
 
+/*
+ * Campaign Specific Styles
+ * This is not a partial and is not apart of style.css.  It is only called on campaign pages.
+ * Ordering: Layouts, Elements, Pages, Widgets
+ */
+/*
+ * Giant List of TODOs:
+ * 1) Move this to it's own stylsheet so it doesn't affect the rest of the site.
+ * 2) Change zen-gutter width to what it should be.
+ */
+/* line 13, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page {
+  /*
+   * Layouts
+   */
+  /*
+   * Global Elements
+   */
+}
+/* line 24, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe-wrap .panel-display {
+  float: left;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: -100%;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+@media all and (min-width: 768px) {
+  /* line 26, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .swipe-wrap .panel-display .panel-instructional {
+    float: left;
+    width: 58.33333%;
+    margin-left: 16.66667%;
+    margin-right: -75%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 33, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .swipe-wrap .panel-display .panel-col-left {
+    float: left;
+    width: 50%;
+    margin-left: 8.33333%;
+    margin-right: -58.33333%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: left;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 39, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .swipe-wrap .panel-display .panel-col-right {
+    float: left;
+    width: 33.33333%;
+    margin-left: 58.33333%;
+    margin-right: -91.66667%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+/* line 45, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe-wrap .card {
+  height: 100%;
+  overflow: hidden;
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+/* line 58, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .panelizer-view-mode > h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+/* line 67, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page #main {
+  max-width: 100%;
+}
+/* line 73, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+/* line 78, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+/* line 82, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe-wrap > div {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+/* line 89, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .card {
+  background-size: 700px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+@media all and (min-width: 768px) {
+  /* line 89, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card {
+    background-size: 100%;
+  }
+}
+
 /* Modules */
 /*
  *MegaMenu
@@ -6877,7 +7007,7 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1386108801') no-repeat center center;
+    background: url('../images/tpl-logo.jpg?1389823777') no-repeat center center;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -6887,7 +7017,7 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.png?1386108801') no-repeat center center;
+    background: url('../images/takeaction-logo.png?1389823777') no-repeat center center;
     margin: 0;
   }
 }
@@ -6982,8 +7112,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7000,8 +7130,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 33.33333%;
     margin-left: 0%;
     margin-right: -33.33333%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7016,8 +7146,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 33.33333%;
     margin-left: 33.33333%;
     margin-right: -66.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7033,8 +7163,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7052,8 +7182,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 25%;
     margin-left: 0%;
     margin-right: -25%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7068,8 +7198,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 25%;
     margin-left: 25%;
     margin-right: -50%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7085,8 +7215,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 25%;
     margin-left: 50%;
     margin-right: -75%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7102,8 +7232,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 25%;
     margin-left: 75%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7214,11 +7344,11 @@ a.hover .gallery-cover-content .gallery-cover-enter {
 }
 /* line 230, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1386108801');
+  background-image: url('../images/tpl-logo-hover.jpg?1389823777');
 }
 /* line 233, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-hover.jpg?1386108801');
+  background-image: url('../images/takeaction-logo-hover.jpg?1389823777');
 }
 
 /**
@@ -7247,8 +7377,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7265,8 +7395,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 33.33333%;
     margin-left: 0%;
     margin-right: -33.33333%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7281,8 +7411,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 33.33333%;
     margin-left: 33.33333%;
     margin-right: -66.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7298,8 +7428,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7327,8 +7457,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 50%;
     margin-left: 0%;
     margin-right: -50%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7343,8 +7473,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 50%;
     margin-left: 50%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7362,8 +7492,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7386,8 +7516,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7403,8 +7533,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 66.66667%;
     margin-left: 0%;
     margin-right: -66.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7420,8 +7550,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7437,8 +7567,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7454,8 +7584,8 @@ a.hover .gallery-cover-content .gallery-cover-enter {
   width: 100%;
   margin-left: 0%;
   margin-right: -100%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -7759,7 +7889,7 @@ header .user-menu {
   /* line 107, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1386108801') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1389823777') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -7821,7 +7951,7 @@ header .search .form-submit {
   padding-top: 48px;
   color: white;
   border: none;
-  background: url('../images/mobile-search-hover.jpg?1386108801') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -7890,7 +8020,7 @@ header .search .form-submit {
     padding-top: 24px;
     overflow: hidden;
     background-color: transparent;
-    background: url('../images/search-submit.png?1386108801') no-repeat center center;
+    background: url('../images/search-submit.png?1389823777') no-repeat center center;
   }
 }
 
@@ -7903,7 +8033,7 @@ header .search .form-submit {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1386108801') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1389823777') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
@@ -8184,7 +8314,7 @@ header .search .form-submit {
 }
 /* line 448, ../sass/modules/_header.scss */
 .slim-nav .search.active .form-submit {
-  background: url('../images/mobile-search-hover.jpg?1386108801') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
   background-color: #000;
 }
 /* line 454, ../sass/modules/_header.scss */
@@ -8733,7 +8863,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1386108801') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1389823777') no-repeat 10px center;
   margin: 0;
 }
 /* line 68, ../sass/modules/_left_drawer.scss */
@@ -8744,7 +8874,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/tpl-logo-mobile.png?1386108801') no-repeat 10px center;
+  background: url('../images/tpl-logo-mobile.png?1389823777') no-repeat 10px center;
   margin: 0;
 }
 /* line 80, ../sass/modules/_left_drawer.scss */

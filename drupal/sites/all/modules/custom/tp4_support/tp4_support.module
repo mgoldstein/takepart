@@ -202,6 +202,20 @@ function tp4_support_theme() {
         'items' => array(),
         'entity' => '',
       )
+    ),
+    'tp4_card_tray' => array(
+      'template' => 'field-formatter--card-tray',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+      )
+    ),
+    'tp4_card_reference' => array(
+      'template' => 'field-formatter--card-reference',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+      )
     )
   );
 }
@@ -294,6 +308,14 @@ function tp4_support_field_formatter_info(){
       'label' => t('Promo Content'),
       'field types' => array('field_collection'),
     ),
+    'tp4_card_tray' => array(
+      'label' => t('Card Tray'),
+      'field types' => array('entityreference'),
+    ),
+    'tp4_card_reference' => array(
+      'label' => t('Card Reference'),
+      'field types' => array('entityreference'),
+    ),
   );
 }
 
@@ -314,6 +336,20 @@ function tp4_support_field_formatter_view($entity_type, $entity, $field, $instan
     case 'tp4_promo_content':
       $element = array(
         '#theme' => 'tp4_promo_content',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
+    break;
+    case 'tp4_card_tray':
+      $element = array(
+        '#theme' => 'tp4_card_tray',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
+    break;
+    case 'tp4_card_reference':
+      $element = array(
+        '#theme' => 'tp4_card_reference',
         '#items' => $items,
         '#entity' => $entity,
       );

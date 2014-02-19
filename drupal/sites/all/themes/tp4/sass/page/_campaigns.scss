@@ -1,0 +1,97 @@
+/*
+ * Campaign Specific Styles
+ * This is not a partial and is not apart of style.css.  It is only called on campaign pages.
+ * Ordering: Layouts, Elements, Pages, Widgets
+ */
+
+ /*
+  * Giant List of TODOs:
+  * 1) Move this to it's own stylsheet so it doesn't affect the rest of the site.
+  * 2) Change zen-gutter width to what it should be.
+  */
+
+body.node-type-campaign-page{
+
+  /*
+   * Layouts
+   */
+
+  $zen-column-count:  12;
+  $zen-gutter-width:  1%; //TODO: change this to respond to the width of the containing element.
+
+  // Two column campaign: equal widths
+  .swipe-wrap {
+    .panel-display {
+      @include zen-grid-item(12, 1);
+      .panel-instructional{
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(7, 3);
+          padding-bottom: 40px;
+          text-align: center;
+        }
+      }
+      .panel-col-left{
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(6, 2);
+          @include zen-clear();
+        }
+      }
+      .panel-col-right{
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(4, 8);
+        }
+      }
+    }
+    .card{
+      height: 100%;
+      overflow: hidden;
+      padding-top: 50px;
+      padding-bottom: 60px;
+    }
+  }
+
+
+  /*
+   * Global Elements
+   */
+  .panelizer-view-mode{
+    > h1{
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  }
+
+
+
+
+  #main{
+    max-width: 100%;
+  }
+
+
+  // Swiper
+  .swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+  }
+  .swipe-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+  .swipe-wrap > div {
+    float:left;
+    width:100%;
+    position: relative;
+  }
+
+  //Background Properties
+  .card{
+    background-size: 700px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    @include breakpoint($breakpoint-tablet){
+      background-size: 100%;
+    }
+  }
+}
