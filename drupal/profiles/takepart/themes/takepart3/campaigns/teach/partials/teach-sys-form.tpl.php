@@ -30,8 +30,20 @@
     <legend>Your Teacher</legend>
     <div class="field-wrapper left"><label for="teacher_first_name">First Name</label><input type="text" name="teacher_first_name" id="teacher_first_name" placeholder="First Name*" required></div>
     <div class="field-wrapper right"><label for="teacher_last_name">Last Name</label><input type="text" name="teacher_last_name" id="teacher_last_name" placeholder="Last Name*" required></div>
-    <div>School Selection TBD</div>
   </fieldset>
+  <fieldset>
+    <legend>Your School</legend>
+    <input type="hidden" name="school_id" id="school_id">
+    <div class="field-wrapper">
+      <label for="school_state">State</label>
+      <select name="school_state" id="school_state" required>
+        <option value="">State</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+      </select>
+      <label for="school_name">School Name</label>
+      <input type="text" name="school_name" id="school_name" class="input-school-name" placeholder="School Name*" disabled="disabled" required>
+    </div>
+  </fieldset>
+
   <fieldset>
     <legend>Your Story</legend>
     <div class="field-wrapper"><label for="story_title">Story Title</label><input type="text" name="story_title" id="story_title" placeholder="Story Title*" maxlength="100" required></div>
@@ -57,15 +69,16 @@
         <p><strong>Your Picture</strong><br /><small>(recommended)</small></p>
         <p class="sys-image-description"><small>Preferably a yearbook or school picture. Alternately one during the time period.</small></p>
       </div>
-      <input type="file" name="image_user" id="image_user" class="cloudinary-fileupload" data-cloudinary-field="image_user_id">
+      <input type="file" name="image_user" id="image_user" class="cfu" data-cloudinary-field="image_user_id">
     </div>
     <div id="sys-image-teacher" class="sys-image sys-image-teacher right">
       <div class="sys-image-content">
         <p><strong>Your Teacher's Picture</strong><br /><small>(recommended)</small></p>
         <p class="sys-image-description"><small>A picture of the teacher or the school.</small></p>
       </div>
-      <input type="file" name="image_teacher" id="image_teacher" class="cloudinary-fileupload" data-cloudinary-field="image_teacher_id">
+      <input type="file" name="file" id="image_teacher" class="cfu" data-cloudinary-field="image_teacher_id">
     </div>
+      <!-- <input type="file" name="file" id="fileUpload" class="cfu" style="display: none;"> -->
   </fieldset>
   <fieldset>
     <div class="field-wrapper clearfix"><input type="checkbox" class="pull-left" id="email_subscribe" name="email_subscribe"><label for="email_subscribe" class="visible">I would like to receive TakePart's newsletter on topics related to teaching and education</label></div>
