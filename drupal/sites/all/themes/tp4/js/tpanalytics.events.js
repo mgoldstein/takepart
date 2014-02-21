@@ -408,6 +408,7 @@
         // -----------------------------------
         // Article ---------------------------
         // -----------------------------------
+        
         'article_more_on_takepart': function(options) {
             var s=s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'prop36';
@@ -416,6 +417,7 @@
             s.prop36 = options.name;
             s.tl(options.target, 'o', options.name, null, 'navigate');
         }
+        
     });
 
     // Document Ready
@@ -429,13 +431,14 @@
         .delegate('a.addthis_button_pinterest_pinit', 'click', function() {
             takepart.analytics.track('generic_addthis', 'pinterest');
         })
+        
         .delegate('.node-type-openpublish-article #block-bean-of-the-day a[href]', 'click', function(event) {
             takepart.analytics.track('article_more_on_takepart', {name: 'Article - right rail - more on tp', target: this});
-            return false;
+            // return false;
         })
         .delegate('.panel-takepart-homepage .panel-tpl-secondary-featured a[href]', 'click', function(event) {
             takepart.analytics.track('homepage_secondary_featured', {name: 'Home - tpl featured stories', target: this});
-            return false;
+            // return false;
         });
 
     /* // Track clicks to addthis iframes
