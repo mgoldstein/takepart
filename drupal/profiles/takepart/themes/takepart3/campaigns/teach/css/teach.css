@@ -193,7 +193,7 @@
   overflow: hidden;
   padding: 12px;
   margin-left: 6px;
-  background: transparent url('../img/social-scribbles.png?1392698192') top left;
+  background: transparent url('../img/social-scribbles.png?1392700113') top left;
   background-size: 24px;
 }
 .header .campaign-social-share ul li a.facebook {
@@ -270,7 +270,7 @@
   margin: 0;
 }
 .header .menu-wrapper .menu .item:first-of-type a {
-  background: transparent url('../img/menu-home.png?1392688662') no-repeat scroll top left;
+  background: transparent url('../img/menu-home.png?1392700113') no-repeat scroll top left;
   background-size: 21px;
   height: 0;
   width: 0;
@@ -1808,6 +1808,12 @@ h1.sys-headline span {
   box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
   color: #d00;
 }
+.sys-form input[type=text][disabled],
+.sys-form input[type=email][disabled],
+.sys-form textarea[disabled],
+.sys-form .customSelect[disabled] {
+  background-color: #EEE;
+}
 .sys-form .customSelect {
   margin: 0 auto .5em;
 }
@@ -1853,6 +1859,11 @@ h1.sys-headline span {
 }
 .sys-form .character-count.count-warning {
   color: red;
+}
+@media (min-width: 1000px) {
+  .sys-form input.input-school-name[type=text] {
+    width: 362px;
+  }
 }
 .sys-form .sys-image {
   -webkit-box-sizing: border-box;

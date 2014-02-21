@@ -4,6 +4,10 @@ class Tp3Site {
     public static $logo;
 }
 
+function wordlet_teach_share_your_story_page_alter($page) {
+    drupal_add_library('system', 'ui.autocomplete');   
+}
+
 function wordlet_patt_nav_page_alter($page) {
     // remove analytics from this page
     global $conf;

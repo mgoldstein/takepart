@@ -151,7 +151,52 @@
         $form.find('select').customSelect();
     }
 
-    // this makes them look nicer
+    // School ID field stuff
+    var $schoolId = $('#school_id');
+    var $schoolState = $('#school_state');
+    var $schoolName = $('#school_name');
+    var nameCache = {}; // TODO html5 localstorage
+
+    // enable/disable school name field based on state value
+    $schoolState.on('change', function() {
+      $schoolName.attr('disabled', $schoolState.val() === "");
+    });
+
+    var updateSchoolFields = function(e, ui) {
+      $schoolName.val(ui.item.label.split(' (')[0]);
+      $schoolId.val(ui.item.value);
+      return false; // prevent default behaivor
+    };
+    $schoolName.autocomplete({
+      minLength: 4,
+      select: updateSchoolFields,
+      focus: updateSchoolFields,
+      source: function(request, response) {
+
+        var hash = encodeURIComponent('&state=' + $schoolState.val() + '&q=' + request.term);
+        if (hash in nameCache) {
+          response(nameCache[hash]);
+          return;
+        }
+
+        $.ajax({
+          url: '/proxy?request=' + encodeURIComponent('http://api.greatschools.org/search/schools/?key=zzlcyx4aijxe1nmnagoziqxx') + hash,
+          success: function (data, textStatus, jqXHR) {
+            var schools = [];
+            $(data).find('school').each(function(){
+              var $this = $(this);
+              schools.push({
+                label: $this.find('name').text() + ' (' + $this.find('city').text() + ', ' + $this.find('state').text() + ')',
+                value: $this.find('gsId').text()
+              });
+            });
+            nameCache[hash] = schools;
+          }
+        });
+      }
+    });
+
+    // this makes file upload fields look nicer
     var height = 0;
     $form.find('.sys-image-description').each(function() {
       var thisHeight = $(this).height();
