@@ -6798,29 +6798,33 @@ body.node-type-campaign-page {
    * Global Elements
    */
 }
-/* line 24, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .swipe-wrap .panel-display {
+/* line 22, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .tray {
   float: left;
   width: 100%;
   margin-left: 0%;
   margin-right: -100%;
-  padding-left: 0.5%;
-  padding-right: 0.5%;
+  padding-left: 10px;
+  padding-right: 10px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
 }
+/* line 24, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .tray .slider {
+  clear: left;
+}
 @media all and (min-width: 768px) {
-  /* line 26, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .swipe-wrap .panel-display .panel-instructional {
+  /* line 28, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-instructional {
     float: left;
-    width: 58.33333%;
+    width: 66.66667%;
     margin-left: 16.66667%;
-    margin-right: -75%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    margin-right: -83.33333%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6831,14 +6835,14 @@ body.node-type-campaign-page .swipe-wrap .panel-display {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 33, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .swipe-wrap .panel-display .panel-col-left {
+  /* line 35, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-left {
     float: left;
     width: 50%;
     margin-left: 8.33333%;
     margin-right: -58.33333%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6848,14 +6852,14 @@ body.node-type-campaign-page .swipe-wrap .panel-display {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 39, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .swipe-wrap .panel-display .panel-col-right {
+  /* line 41, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-right {
     float: left;
     width: 33.33333%;
     margin-left: 58.33333%;
     margin-right: -91.66667%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6863,48 +6867,107 @@ body.node-type-campaign-page .swipe-wrap .panel-display {
     word-wrap: break-word;
   }
 }
-/* line 45, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .swipe-wrap .card {
+/* line 49, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .tray .card {
   height: 100%;
   overflow: hidden;
   padding-top: 50px;
   padding-bottom: 60px;
 }
-/* line 58, ../sass/page/_campaigns.scss */
+/* line 62, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .panelizer-view-mode > h1 {
   margin-bottom: 20px;
   text-align: center;
 }
 /* line 67, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page h1.title {
+  text-align: center;
+}
+/* line 70, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #main {
   max-width: 100%;
 }
 /* line 73, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .tray-header {
+  position: absolute;
+  top: 0;
+  padding-top: 50px;
+  width: 100%;
+}
+/* line 80, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .card.has-tray-title h1.title {
+  display: none;
+}
+/* line 85, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page header #block-tp4-support-tp4-slim-nav.block {
+  margin-bottom: 0;
+}
+/* line 88, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page.panels-ipe {
+  margin-bottom: 0 !important;
+}
+/* line 96, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe {
   overflow: hidden;
   visibility: hidden;
   position: relative;
 }
-/* line 78, ../sass/page/_campaigns.scss */
+/* line 101, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe-wrap {
   overflow: hidden;
   position: relative;
 }
-/* line 82, ../sass/page/_campaigns.scss */
+/* line 105, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe-wrap > div {
   float: left;
   width: 100%;
   position: relative;
 }
-/* line 89, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .card {
+/* line 110, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe {
+  position: relative;
+}
+/* line 112, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe .left-arrow {
+  position: absolute;
+  left: 0;
+  width: 60px;
+  height: 38px;
+  z-index: 10;
+  text-align: center;
+  line-height: 40px;
+  display: inline-block;
+  color: #fff;
+  top: 50%;
+  cursor: pointer;
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* line 127, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe .right-arrow {
+  position: absolute;
+  right: 0;
+  width: 60px;
+  height: 38px;
+  z-index: 10;
+  text-align: center;
+  line-height: 40px;
+  display: inline-block;
+  color: #fff;
+  top: 50%;
+  cursor: pointer;
+  font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/* line 150, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .card, body.node-type-campaign-page .slider {
   background-size: 700px;
-  background-position: center center;
+  background-position: top center;
   background-repeat: no-repeat;
 }
 @media all and (min-width: 768px) {
-  /* line 89, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card {
+  /* line 150, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card, body.node-type-campaign-page .slider {
     background-size: 100%;
   }
 }
@@ -7112,8 +7175,8 @@ body.node-type-campaign-page .card {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7130,8 +7193,8 @@ body.node-type-campaign-page .card {
     width: 33.33333%;
     margin-left: 0%;
     margin-right: -33.33333%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7146,8 +7209,8 @@ body.node-type-campaign-page .card {
     width: 33.33333%;
     margin-left: 33.33333%;
     margin-right: -66.66667%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7163,8 +7226,8 @@ body.node-type-campaign-page .card {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7182,8 +7245,8 @@ body.node-type-campaign-page .card {
     width: 25%;
     margin-left: 0%;
     margin-right: -25%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7198,8 +7261,8 @@ body.node-type-campaign-page .card {
     width: 25%;
     margin-left: 25%;
     margin-right: -50%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7215,8 +7278,8 @@ body.node-type-campaign-page .card {
     width: 25%;
     margin-left: 50%;
     margin-right: -75%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7232,8 +7295,8 @@ body.node-type-campaign-page .card {
     width: 25%;
     margin-left: 75%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7377,8 +7440,8 @@ body.node-type-campaign-page .card {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7395,8 +7458,8 @@ body.node-type-campaign-page .card {
     width: 33.33333%;
     margin-left: 0%;
     margin-right: -33.33333%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7411,8 +7474,8 @@ body.node-type-campaign-page .card {
     width: 33.33333%;
     margin-left: 33.33333%;
     margin-right: -66.66667%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7428,8 +7491,8 @@ body.node-type-campaign-page .card {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7457,8 +7520,8 @@ body.node-type-campaign-page .card {
     width: 50%;
     margin-left: 0%;
     margin-right: -50%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7473,8 +7536,8 @@ body.node-type-campaign-page .card {
     width: 50%;
     margin-left: 50%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7492,8 +7555,8 @@ body.node-type-campaign-page .card {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7516,8 +7579,8 @@ body.node-type-campaign-page .card {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7533,8 +7596,8 @@ body.node-type-campaign-page .card {
     width: 66.66667%;
     margin-left: 0%;
     margin-right: -66.66667%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7550,8 +7613,8 @@ body.node-type-campaign-page .card {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7567,8 +7630,8 @@ body.node-type-campaign-page .card {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7584,8 +7647,8 @@ body.node-type-campaign-page .card {
   width: 100%;
   margin-left: 0%;
   margin-right: -100%;
-  padding-left: 0.5%;
-  padding-right: 0.5%;
+  padding-left: 10px;
+  padding-right: 10px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;

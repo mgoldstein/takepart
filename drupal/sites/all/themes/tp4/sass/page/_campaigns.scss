@@ -17,30 +17,34 @@ body.node-type-campaign-page{
    */
 
   $zen-column-count:  12;
-  $zen-gutter-width:  1%; //TODO: change this to respond to the width of the containing element.
+  $zen-gutter-width:  20px; //TODO: change this to respond to the width of the containing element.
 
-  // Two column campaign: equal widths
-  .swipe-wrap {
-    .panel-display {
-      @include zen-grid-item(12, 1);
-      .panel-instructional{
-        @include breakpoint($breakpoint-tablet) {
-          @include zen-grid-item(7, 3);
-          padding-bottom: 40px;
-          text-align: center;
+  .tray {
+    @include zen-grid-item(12, 1);
+    .slider{
+      @include zen-clear();
+      //Two column layout: equal width
+      .panel-campaign-2col{
+        .panel-instructional{
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(8, 3);
+            padding-bottom: 40px;
+            text-align: center;
+          }
+        }
+        .panel-col-left{
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(6, 2);
+            @include zen-clear();
+          }
+        }
+        .panel-col-right{
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(4, 8);
+          }
         }
       }
-      .panel-col-left{
-        @include breakpoint($breakpoint-tablet) {
-          @include zen-grid-item(6, 2);
-          @include zen-clear();
-        }
-      }
-      .panel-col-right{
-        @include breakpoint($breakpoint-tablet) {
-          @include zen-grid-item(4, 8);
-        }
-      }
+      // Add more panelizer layouts here
     }
     .card{
       height: 100%;
@@ -60,16 +64,35 @@ body.node-type-campaign-page{
       text-align: center;
     }
   }
-
-
-
-
+  h1.title{
+    text-align: center;
+  }
   #main{
     max-width: 100%;
+  }
+  .tray-header{
+    position: absolute;
+    top: 0;
+    padding-top: 50px;
+    width: 100%;
+  }
+  .card.has-tray-title{
+    h1.title{
+      display: none;
+    }
+  }
+
+  header #block-tp4-support-tp4-slim-nav.block{
+    margin-bottom: 0;
+  }
+  &.panels-ipe{
+    margin-bottom: 0 !important; //panelizer gets confused when embedding a node
   }
 
 
   // Swiper
+
+    // position: relative;
   .swipe {
     overflow: hidden;
     visibility: hidden;
@@ -84,11 +107,49 @@ body.node-type-campaign-page{
     width:100%;
     position: relative;
   }
+  .swipe{
+    position: relative;
+    .left-arrow{
+      position: absolute;
+      left: 0;
+      width: 60px;
+      height: 38px;
+      z-index: 10;
+      text-align: center;
+      line-height: 40px;
+      display: inline-block;
+      color: #fff;
+      top: 50%;
+      cursor: pointer;
+      font-size: 30px;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .right-arrow{
+      position: absolute;
+      right: 0;
+      width: 60px;
+      height: 38px;
+      z-index: 10;
+      text-align: center;
+      line-height: 40px;
+      display: inline-block;
+      color: #fff;
+      top: 50%;
+      cursor: pointer;
+      font-size: 30px;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .pagination{
+
+    }
+  }
+  
+
 
   //Background Properties
-  .card{
+  .card, .slider{
     background-size: 700px;
-    background-position: center center;
+    background-position: top center;
     background-repeat: no-repeat;
     @include breakpoint($breakpoint-tablet){
       background-size: 100%;

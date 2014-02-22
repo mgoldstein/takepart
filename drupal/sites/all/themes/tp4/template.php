@@ -126,13 +126,6 @@ function tp4_preprocess_node(&$variables, $hook) {
     $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
   }
 
-  // Group all Campaign Card content types in one node template
-  // The below might not be needed since panelizer strips everything from node_preprocess
-  $cards = array('campaign_card_media', 'campaign_card_news');
-  if(in_array($variables['type'], $cards) == TRUE) {
-    $variables['theme_hook_suggestions'][] = 'node__campaign_cards';
-  }
-
   // Add template variables for the local node url
   // (for compatability in dev/qa environments)
   // and for the url to the same node on production

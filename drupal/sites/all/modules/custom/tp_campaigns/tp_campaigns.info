@@ -1,0 +1,5 @@
+name = TakePart Campaigns
+description = Module for for the TP4 Campaigns
+core = 7.x
+package = TakePart
+version = 7.x-1.0
