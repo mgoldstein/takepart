@@ -1,0 +1,40 @@
+
+.panel-campaign-1col { 
+/*  overflow: hidden;  */
+}
+.panel-campaign-1col .panel-instructional { 
+  float: left; 
+  width: 100%; 
+}
+* html .panel-campaign-1col .panel-instructional {
+  width: 49.9%;
+}
+
+.panel-campaign-1col .panel-instructional .inside { 
+  margin: 0 .5em 1em 0;
+}
+
+.panel-campaign-1col .panel-col { 
+  float: left; 
+  width: 50%; 
+}
+* html .panel-campaign-1col .panel-col {
+  width: 49.9%;
+}
+
+.panel-campaign-1col .panel-col .inside { 
+  margin: 0 .5em 1em 0;
+}
+
+.panel-campaign-1col .panel-col-right .inside { 
+  margin: 0 0 1em .5em;
+}
+
+#panels-edit-display .panel-pane,
+#panels-edit-display .helperclass {
+  margin: .5em;
+}
+
+.panel-campaign-1col .panel-separator {
+  margin: 0 0 1em 0;
+}

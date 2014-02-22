@@ -8,7 +8,7 @@
       $.each(Drupal.settings.color_field_spectrum, function (selector) {
         $('#' + this.id).spectrum({
           preferredFormat: "hex",
-          showInput: true,
+          showInput: this.show_input,
           showAlpha: false,
           showInitial: true,
           showPalette: this.show_palette,
