@@ -1,5 +1,11 @@
-
 (function($, window, document, undefined){
+
+  // tap values that may change
+  var TAP = {
+    postURL: "http://qa-web1.tab.takepart.com/user_teach_stories",
+    action_id: "9035072",
+    partner_code: "8e42f2980097d0f37462d2539122b698"
+  };
 
   var touchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
 
@@ -79,9 +85,49 @@
 
     // we've passed the age check. Lets have a beer.
 
-    alert('TODO: successful form submit goes here.');
-    $('#sys-form-content').slideUp().remove();
-    $('#sys-thanks-content').slideDown();
+    var json = {
+      "action_id": TAP.action_id,
+      "opt_ins": {
+        // todo
+      },
+      "user_action": {
+        "partner_code": TAP.partner_code,
+        "email": formData.email,
+        "last_name": formData.first_name,
+        "first_name": formData.last_name,
+        "image_link": "" //formData.image_user_id
+      },
+      "story": {
+        "year": formData.story_year,
+        "preview": "",
+        "title": formData.story_title,
+        "body": formData.story_body
+      },
+
+      "teacher": {
+        "first_name": formData.teacher_first_name,
+        "last_name":  formData.teacher_last_name,
+        "image_link": "" // formData.image_teacher_id
+      },
+      "school": {
+        // TODO
+        // "name": "Jefferson High School",
+        // "city": "Los Angeles",
+        // "state": "California",
+        "external_id": formData.school_id
+      }
+    };
+
+    $.post(TAP.postURL, JSON.stringify(json), function(data, textStatus, jqXHR) {
+      $('#sys-form-content').slideUp().remove();
+      $('#sys-thanks-content').slideDown();
+
+      // todo remove before deploy
+      console.log(data);
+      console.log(textStatus);
+      console.log(jqXHR);
+    });
+
   };
 
   var parseFormData = function($form) {
