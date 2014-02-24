@@ -37,6 +37,7 @@
     if(isset($tray_background) == true){
       $card_classes[] = 'has-tray-background';
     }
+    $card_classes[] = $node->type;
 
     print '<div class="card-wrapper">';
     print '<div class="card '. implode(' ', $card_classes). '" '. $card_styles. '>'. $title. ' '. drupal_render(node_view($node, 'full', NULL)). '</div>';

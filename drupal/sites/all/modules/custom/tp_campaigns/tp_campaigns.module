@@ -78,4 +78,15 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
   return $element;
 }
 
+/*
+ * Implements hook_init
+ */
+function tp_campaigns_init(){
+  $card_types = array(
+    'campaign_card_media',
+    'campaign_card_iframe',
+    'campaign_card_social',
+    );
+  variable_set('card_types', $card_types);
+}
 

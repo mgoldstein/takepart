@@ -5,9 +5,7 @@
 
 <?php //separate panelizer display for campaigns from others ?>
 <?php
-  $card_bundles = array(
-    'campaign_card_media',
-  );
+  $card_bundles = variable_get('card_types');
 ?>
 <?php if(in_array($element['#bundle'], $card_bundles) == true): ?>
   <div class="<?php print $classes; ?>"<?php print $attributes; ?>>

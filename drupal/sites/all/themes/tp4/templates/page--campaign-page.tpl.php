@@ -20,6 +20,7 @@
   </div>
   <main id="main" class="<?php print $content_classes; ?>">
     <div id="primary">
+      <?php print $messages; ?>
       <?php print render($page['content']); ?>
     </div>
   </main>

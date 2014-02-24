@@ -6797,9 +6797,12 @@ body.node-type-campaign-page {
   /*
    * Global Elements
    */
+  /*
+   * Card Types/Pages
+   */
 }
-/* line 22, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .tray {
+/* line 24, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .tray .slider {
   float: left;
   width: 100%;
   margin-left: 0%;
@@ -6811,18 +6814,16 @@ body.node-type-campaign-page .tray {
   -ms-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap: break-word;
-}
-/* line 24, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .tray .slider {
   clear: left;
+  padding: 0;
 }
-@media all and (min-width: 768px) {
-  /* line 28, ../sass/page/_campaigns.scss */
+@media all and (min-width: 320px) {
+  /* line 30, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-instructional {
     float: left;
-    width: 66.66667%;
-    margin-left: 16.66667%;
-    margin-right: -83.33333%;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
     padding-left: 10px;
     padding-right: 10px;
     -moz-box-sizing: border-box;
@@ -6835,12 +6836,28 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 35, ../sass/page/_campaigns.scss */
+  /* line 30, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-instructional {
+    float: left;
+    width: 66.66667%;
+    margin-left: 16.66667%;
+    margin-right: -83.33333%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 40, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-left {
     float: left;
-    width: 50%;
+    width: 83.33333%;
     margin-left: 8.33333%;
-    margin-right: -58.33333%;
+    margin-right: -91.66667%;
     padding-left: 10px;
     padding-right: 10px;
     -moz-box-sizing: border-box;
@@ -6852,8 +6869,139 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 41, ../sass/page/_campaigns.scss */
+  /* line 40, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-left {
+    float: left;
+    width: 41.66667%;
+    margin-left: 8.33333%;
+    margin-right: -50%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 49, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-right {
+    float: left;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 49, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-right {
+    float: left;
+    width: 41.66667%;
+    margin-left: 50%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 59, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-instructional {
+    float: left;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 59, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-instructional {
+    float: left;
+    width: 66.66667%;
+    margin-left: 16.66667%;
+    margin-right: -83.33333%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 69, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-col-left {
+    float: left;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: left;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 69, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-col-left {
+    float: left;
+    width: 50%;
+    margin-left: 8.33333%;
+    margin-right: -58.33333%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 78, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-col-right {
+    float: left;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 78, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-col-right {
     float: left;
     width: 33.33333%;
     margin-left: 58.33333%;
@@ -6867,67 +7015,225 @@ body.node-type-campaign-page .tray .slider {
     word-wrap: break-word;
   }
 }
-/* line 49, ../sass/page/_campaigns.scss */
+@media all and (min-width: 320px) {
+  /* line 88, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-instructional {
+    float: left;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 88, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-instructional {
+    float: left;
+    width: 66.66667%;
+    margin-left: 16.66667%;
+    margin-right: -83.33333%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 98, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-col-left {
+    float: left;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: left;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 98, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-col-left {
+    float: left;
+    width: 33.33333%;
+    margin-left: 8.33333%;
+    margin-right: -41.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 107, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-col-right {
+    float: left;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 107, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-col-right {
+    float: left;
+    width: 50%;
+    margin-left: 41.66667%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 117, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-1col .panel-instructional {
+    float: left;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    padding-bottom: 40px;
+    text-align: center;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 117, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-1col .panel-instructional {
+    float: left;
+    width: 66.66667%;
+    margin-left: 16.66667%;
+    margin-right: -83.33333%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+  }
+}
+@media all and (min-width: 320px) {
+  /* line 127, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .tray .slider .panel-campaign-1col .panel-col {
+    float: left;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
+    padding-left: 10px;
+    padding-right: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: left;
+  }
+}
+/* line 136, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .tray .card {
   height: 100%;
   overflow: hidden;
   padding-top: 50px;
   padding-bottom: 60px;
 }
-/* line 62, ../sass/page/_campaigns.scss */
+/* line 149, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .panelizer-view-mode > h1 {
   margin-bottom: 20px;
   text-align: center;
 }
-/* line 67, ../sass/page/_campaigns.scss */
+/* line 154, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page h1.title {
   text-align: center;
 }
-/* line 70, ../sass/page/_campaigns.scss */
+/* line 157, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #main {
   max-width: 100%;
 }
-/* line 73, ../sass/page/_campaigns.scss */
+/* line 159, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page #main #primary {
+  padding: 0;
+}
+/* line 163, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .tray-header {
   position: absolute;
   top: 0;
   padding-top: 50px;
   width: 100%;
 }
-/* line 80, ../sass/page/_campaigns.scss */
+/* line 170, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card.has-tray-title h1.title {
   display: none;
 }
-/* line 85, ../sass/page/_campaigns.scss */
+/* line 175, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header #block-tp4-support-tp4-slim-nav.block {
   margin-bottom: 0;
 }
-/* line 88, ../sass/page/_campaigns.scss */
+/* line 178, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page.panels-ipe {
   margin-bottom: 0 !important;
 }
-/* line 96, ../sass/page/_campaigns.scss */
+/* line 181, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page #primary {
+  padding: 0;
+}
+/* line 189, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe {
   overflow: hidden;
   visibility: hidden;
   position: relative;
 }
-/* line 101, ../sass/page/_campaigns.scss */
+/* line 194, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe-wrap {
   overflow: hidden;
   position: relative;
 }
-/* line 105, ../sass/page/_campaigns.scss */
+/* line 198, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe-wrap > div {
   float: left;
   width: 100%;
   position: relative;
 }
-/* line 110, ../sass/page/_campaigns.scss */
+/* line 203, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe {
   position: relative;
 }
-/* line 112, ../sass/page/_campaigns.scss */
+/* line 205, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe .left-arrow {
   position: absolute;
   left: 0;
@@ -6943,7 +7249,7 @@ body.node-type-campaign-page .swipe .left-arrow {
   font-size: 30px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 127, ../sass/page/_campaigns.scss */
+/* line 220, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe .right-arrow {
   position: absolute;
   right: 0;
@@ -6959,17 +7265,23 @@ body.node-type-campaign-page .swipe .right-arrow {
   font-size: 30px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 150, ../sass/page/_campaigns.scss */
+/* line 242, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card, body.node-type-campaign-page .slider {
   background-size: 700px;
   background-position: top center;
   background-repeat: no-repeat;
 }
 @media all and (min-width: 768px) {
-  /* line 150, ../sass/page/_campaigns.scss */
+  /* line 242, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page .card, body.node-type-campaign-page .slider {
     background-size: 100%;
   }
+}
+/* line 258, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .campaign_card_media img {
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 /* Modules */
