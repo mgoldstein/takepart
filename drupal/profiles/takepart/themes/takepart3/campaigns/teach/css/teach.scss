@@ -1034,14 +1034,15 @@ p {
     }
     counter-reset: li;
     li {
-      clear: left;
       list-style-type: none;
       position: relative;
+      padding-left: 3em;
       &:before {
         content: counter(li);
         counter-increment: li;
         display: block;
-        float: left;
+        position: absolute;
+        left: 0;
         font: normal 2.5em/1 $secondary-font;
         width: 1em;
       }

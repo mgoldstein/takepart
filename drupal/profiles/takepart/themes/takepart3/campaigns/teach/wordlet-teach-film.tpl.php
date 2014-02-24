@@ -7,9 +7,9 @@
   <div class="row">
     <div class="col-1-2">
       <h3 class="sect-headline"><?php print w('film_section_headline'); ?></h3>
-      <?php print w('film_section_body'); ?>
+      <div class="sect-body"><?php print w('film_section_body'); ?></div>
       <h3 class="sect-headline"><?php print w('screening_headline'); ?></h3>
-      <?php print w('screening_body'); ?>
+      <div class="sect-body"><?php print w('screening_body'); ?></div>
       <ol <?php print wa('screening_steps'); ?>>
         <?php foreach (wl('screening_steps') as $w) : ?>
         <li><?php print $w->multi; ?></li>
