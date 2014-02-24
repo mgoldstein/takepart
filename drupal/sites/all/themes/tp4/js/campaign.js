@@ -28,14 +28,14 @@
           transitionEnd: function(index, elem) {}
         });
 
-        Slider = $(sliderID).Swipe().data('Swipe');
-        Slider_0 = $('#slider_0').Swipe().data('Swipe');
-        $('.left-arrow').on('click', Slider_0.prev);  
-        $('.right-arrow').on('click', Slider_0.next); 
+        // Slider = $(sliderID).Swipe().data('Swipe');
+        // Slider_0 = $('#slider_0').Swipe().data('Swipe');
+        // $('.left-arrow').on('click', Slider_0.prev);  
+        // $('.right-arrow').on('click', Slider_0.next); 
 
-        Slider_2 = $('#slider_2').Swipe().data('Swipe');
-        $('.left-arrow').on('click', Slider_2.prev);  
-        $('.right-arrow').on('click', Slider_2.next); 
+        // Slider_2 = $('#slider_2').Swipe().data('Swipe');
+        // $('.left-arrow').on('click', Slider_2.prev);  
+        // $('.right-arrow').on('click', Slider_2.next); 
 
         // $('.slider').each(function(){
         //   var $this = $(this);

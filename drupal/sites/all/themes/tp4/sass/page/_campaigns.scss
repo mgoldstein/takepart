@@ -17,30 +17,117 @@ body.node-type-campaign-page{
    */
 
   $zen-column-count:  12;
-  $zen-gutter-width:  20px; //TODO: change this to respond to the width of the containing element.
+  // $zen-gutter-width:  20px; //TODO: change this to respond to the width of the containing element.
 
   .tray {
-    @include zen-grid-item(12, 1);
+    
     .slider{
+      @include zen-grid-item(12, 1);
       @include zen-clear();
+      padding: 0;
       //Two column layout: equal width
       .panel-campaign-2col{
         .panel-instructional{
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(8, 3);
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
             padding-bottom: 40px;
             text-align: center;
           }
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(8, 3);
+          }
         }
         .panel-col-left{
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(6, 2);
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
             @include zen-clear();
+          }
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(5, 2);
           }
         }
         .panel-col-right{
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
+          }
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(5, 7);
+          }
+        }
+      }
+      .panel-campaign-2col-left{
+        .panel-instructional{
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
+            padding-bottom: 40px;
+            text-align: center;
+          }
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(8, 3);
+          }
+        }
+        .panel-col-left{
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
+            @include zen-clear();
+          }
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(6, 2);
+          }
+        }
+        .panel-col-right{
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
+          }
           @include breakpoint($breakpoint-tablet) {
             @include zen-grid-item(4, 8);
+          }
+        }
+      }
+      .panel-campaign-2col-right{
+        .panel-instructional{
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
+            padding-bottom: 40px;
+            text-align: center;
+          }
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(8, 3);
+          }
+        }
+        .panel-col-left{
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
+            @include zen-clear();
+          }
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(4, 2);
+          }
+        }
+        .panel-col-right{
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
+          }
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(6, 6);
+          }
+        }
+      }
+      .panel-campaign-1col{
+        .panel-instructional{
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
+            padding-bottom: 40px;
+            text-align: center;
+          }
+          @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(8, 3);
+          }
+        }
+        .panel-col{
+          @include breakpoint($breakpoint-mobile) {
+            @include zen-grid-item(10, 2);
+            @include zen-clear();
           }
         }
       }
@@ -69,6 +156,9 @@ body.node-type-campaign-page{
   }
   #main{
     max-width: 100%;
+    #primary{
+      padding: 0;
+    }
   }
   .tray-header{
     position: absolute;
@@ -87,6 +177,9 @@ body.node-type-campaign-page{
   }
   &.panels-ipe{
     margin-bottom: 0 !important; //panelizer gets confused when embedding a node
+  }
+  #primary{
+    padding: 0;
   }
 
 
@@ -145,7 +238,6 @@ body.node-type-campaign-page{
   }
   
 
-
   //Background Properties
   .card, .slider{
     background-size: 700px;
@@ -155,4 +247,22 @@ body.node-type-campaign-page{
       background-size: 100%;
     }
   }
+
+
+  /*
+   * Card Types/Pages
+   */
+
+  //Media
+  .campaign_card_media{
+    img{
+      display: block;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+  }
+
+
+
+
 }
