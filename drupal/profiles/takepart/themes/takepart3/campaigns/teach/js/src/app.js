@@ -87,15 +87,14 @@
 
     var json = {
       "action_id": TAP.action_id,
-      "opt_ins": {
-        // todo
-      },
+      "opt_ins": {},
       "user_action": {
         "partner_code": TAP.partner_code,
         "email": formData.email,
         "last_name": formData.first_name,
         "first_name": formData.last_name,
-        "image_link": "" //formData.image_user_id
+        "image_link": "todo", //formData.image_user_id
+        "image_uid": "todo"
       },
       "story": {
         "year": formData.story_year,
@@ -107,7 +106,8 @@
       "teacher": {
         "first_name": formData.teacher_first_name,
         "last_name":  formData.teacher_last_name,
-        "image_link": "" // formData.image_teacher_id
+        "image_link": "todo", // formData.image_teacher_id
+        "image_uid": "todo"
       },
       "school": {
         // TODO
@@ -117,6 +117,10 @@
         "external_id": formData.school_id
       }
     };
+
+    if (formData.email_subscribe == true) {
+      json.opt_ins.teach_campaign = "true";
+    }
 
     $.post(TAP.postURL, JSON.stringify(json), function(data, textStatus, jqXHR) {
       $('#sys-form-content').slideUp().remove();
