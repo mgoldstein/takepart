@@ -1298,15 +1298,16 @@ p a {
   clear: both;
 }
 .teach-film-page ol li {
-  clear: left;
   list-style-type: none;
   position: relative;
+  padding-left: 3em;
 }
 .teach-film-page ol li:before {
   content: counter(li);
   counter-increment: li;
   display: block;
-  float: left;
+  position: absolute;
+  left: 0;
   font: normal 2.5em/1 "GlyphaLTPro-Black", serif;
   width: 1em;
 }
@@ -1314,7 +1315,7 @@ p a {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: transparent url('../img/film-watch-bg.png?1393189723') scroll no-repeat top center;
+  background: transparent url('../img/film-watch-bg.png?1393207506') scroll no-repeat top center;
   background-size: contain;
   max-width: 285px;
   min-height: 384px;
@@ -1354,7 +1355,7 @@ p a {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: transparent url('../img/post-it-bg.png?1393186859') scroll no-repeat top center;
+  background: transparent url('../img/post-it-bg.png?1393207506') scroll no-repeat top center;
   background-size: contain;
   max-width: 300px;
   min-height: 312px;
