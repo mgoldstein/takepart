@@ -538,7 +538,8 @@ p {
 .teach-video-page,
 .page-wordlet-teach-alliances .content,
 .teach-news-content,
-.teach-sys-content {
+.teach-sys-content,
+.teach-film-content {
   position: relative;
   background: #ecedf6 image-url('paper-background-texture-temp.jpg') scroll repeat;
   margin-top: 30px;
@@ -992,6 +993,131 @@ p {
   } // .page-wordlet-teach-home (homepage styles)
 }
 
+
+/* # Film Page
+================================================== */
+
+.teach-film-page {
+  .content-preheader {
+    font-size: 38px;
+  }
+  .content-subheadline {
+    max-width: 100%;
+    margin: 1em 10px;
+  }
+  .sect-headline {
+    font: normal 22px/1.25em $secondary-font;
+    text-transform: uppercase;
+  }
+  p, li {
+    font-size: 16px;
+    line-height: 1.25em;
+    margin: 1em 0;
+  }
+  @media (min-width: 768px) {
+    .row {
+      .col-1-2 {
+        padding: 20px;
+        width: 33.3%;
+        &:first-child {
+          width: 66.6%;          
+        }
+      }
+    }
+  }
+
+  ol {
+    &:after {
+      content: " ";
+      display: block;
+      clear: both;
+    }
+    counter-reset: li;
+    li {
+      clear: left;
+      list-style-type: none;
+      position: relative;
+      &:before {
+        content: counter(li);
+        counter-increment: li;
+        display: block;
+        float: left;
+        font: normal 2.5em/1 $secondary-font;
+        width: 1em;
+      }
+    }
+  }
+
+  .teach-watch-promo {
+    @include box-sizing(border-box);
+    background: transparent image-url("film-watch-bg.png") scroll no-repeat top center;
+    background-size: contain;
+    max-width: 285px;
+    min-height: 384px;
+    margin: 0 auto 2em;
+    padding: 60px 50px 0;
+
+    .teach-watch-promo-content {
+      max-width: 100%;
+      padding: 0;
+    }
+    .sect-headline {
+      text-align: center;
+    }
+    li {
+      display: block;
+      width: 100%;
+      a {
+        display: block;
+        text-align: center;
+      }
+      img {
+        margin: 0;
+        width: 100%;
+      }
+      span {
+        display: block;
+        clear: both;
+        width: 100%;
+        font-size: 13px;
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .screening-tips {
+    clear: both;
+    @include box-sizing(border-box);
+    background: transparent image-url("post-it-bg.png") scroll no-repeat top center;
+    background-size: contain;
+    max-width: 300px;
+    min-height: 312px;
+    margin: 0 auto;
+    padding: 5% 3.5% 0 5%;
+
+    @include transform(rotate(5deg) scale(1.05));
+
+    // clear paperclip
+    &:before {
+      content: " ";
+      display: block;
+      float: right;
+      width: 37px;
+      height: 87px;
+    }
+    .tips-header {
+      font: bold 3em/1 $cursive-font;
+      text-align: center;
+    }
+    li {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+  }
+
+} // .teach-film-page
 
 
 /* # Video Pages
