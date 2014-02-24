@@ -9,7 +9,7 @@
           <span><?=$w->single(false)?></span>
         </a>
       </li>
-      <? endforeach ?>
+      <? endforeach; ?>
     </ul>
   </div>
 </section>

@@ -614,7 +614,8 @@ p a {
 .teach-video-page,
 .page-wordlet-teach-alliances .content,
 .teach-news-content,
-.teach-sys-content {
+.teach-sys-content,
+.teach-film-content {
   position: relative;
   background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1377830748') scroll repeat;
   margin-top: 30px;
@@ -626,7 +627,8 @@ p a {
   .teach-video-page,
   .page-wordlet-teach-alliances .content,
   .teach-news-content,
-  .teach-sys-content {
+  .teach-sys-content,
+  .teach-film-content {
     margin-top: 0;
     padding: 20px;
   }
@@ -634,7 +636,8 @@ p a {
 .teach-video-page .content-headline,
 .page-wordlet-teach-alliances .content .content-headline,
 .teach-news-content .content-headline,
-.teach-sys-content .content-headline {
+.teach-sys-content .content-headline,
+.teach-film-content .content-headline {
   font-family: "GlyphaLTPro-Black", serif;
   font-weight: normal;
   font-size: 42px;
@@ -647,7 +650,8 @@ p a {
   .teach-video-page .content-headline,
   .page-wordlet-teach-alliances .content .content-headline,
   .teach-news-content .content-headline,
-  .teach-sys-content .content-headline {
+  .teach-sys-content .content-headline,
+  .teach-film-content .content-headline {
     font-size: 30px;
     margin: 10px;
   }
@@ -655,7 +659,8 @@ p a {
 .teach-video-page .content-subheadline,
 .page-wordlet-teach-alliances .content .content-subheadline,
 .teach-news-content .content-subheadline,
-.teach-sys-content .content-subheadline {
+.teach-sys-content .content-subheadline,
+.teach-film-content .content-subheadline {
   font-weight: normal;
   color: #666565;
   font-size: 16px;
@@ -666,7 +671,8 @@ p a {
 .teach-video-page .main-video-wrapper,
 .page-wordlet-teach-alliances .content .main-video-wrapper,
 .teach-news-content .main-video-wrapper,
-.teach-sys-content .main-video-wrapper {
+.teach-sys-content .main-video-wrapper,
+.teach-film-content .main-video-wrapper {
   clear: right;
   max-width: 859px;
   padding: 4px;
@@ -682,7 +688,8 @@ p a {
   .teach-video-page .main-video-wrapper,
   .page-wordlet-teach-alliances .content .main-video-wrapper,
   .teach-news-content .main-video-wrapper,
-  .teach-sys-content .main-video-wrapper {
+  .teach-sys-content .main-video-wrapper,
+  .teach-film-content .main-video-wrapper {
     -webkit-transform: scale(1.02, 1.02);
     -moz-transform: scale(1.02, 1.02);
     -ms-transform: scale(1.02, 1.02);
@@ -693,7 +700,8 @@ p a {
 .teach-video-page .social-menu,
 .page-wordlet-teach-alliances .content .social-menu,
 .teach-news-content .social-menu,
-.teach-sys-content .social-menu {
+.teach-sys-content .social-menu,
+.teach-film-content .social-menu {
   clear: both;
   text-align: center;
 }
@@ -701,7 +709,8 @@ p a {
   .teach-video-page .social-menu,
   .page-wordlet-teach-alliances .content .social-menu,
   .teach-news-content .social-menu,
-  .teach-sys-content .social-menu {
+  .teach-sys-content .social-menu,
+  .teach-film-content .social-menu {
     background-color: black;
     padding: 20px;
   }
@@ -710,7 +719,8 @@ p a {
   .teach-video-page .social-menu,
   .page-wordlet-teach-alliances .content .social-menu,
   .teach-news-content .social-menu,
-  .teach-sys-content .social-menu {
+  .teach-sys-content .social-menu,
+  .teach-film-content .social-menu {
     background: transparent url('../img/video-page-social-block-bg.png?1377758768') scroll no-repeat bottom center;
     min-height: 241px;
     max-width: 830px;
@@ -721,7 +731,8 @@ p a {
 .teach-video-page .social-menu h1.sect-headline,
 .page-wordlet-teach-alliances .content .social-menu h1.sect-headline,
 .teach-news-content .social-menu h1.sect-headline,
-.teach-sys-content .social-menu h1.sect-headline {
+.teach-sys-content .social-menu h1.sect-headline,
+.teach-film-content .social-menu h1.sect-headline {
   font-family: "GlyphaLTPro-Black", serif;
   font-weight: normal;
   font-size: 22px;
@@ -735,7 +746,8 @@ p a {
   .teach-video-page .social-menu h1.sect-headline,
   .page-wordlet-teach-alliances .content .social-menu h1.sect-headline,
   .teach-news-content .social-menu h1.sect-headline,
-  .teach-sys-content .social-menu h1.sect-headline {
+  .teach-sys-content .social-menu h1.sect-headline,
+  .teach-film-content .social-menu h1.sect-headline {
     color: white;
     margin-top: 0;
   }
@@ -743,7 +755,8 @@ p a {
 .teach-video-page .social-menu .item,
 .page-wordlet-teach-alliances .content .social-menu .item,
 .teach-news-content .social-menu .item,
-.teach-sys-content .social-menu .item {
+.teach-sys-content .social-menu .item,
+.teach-film-content .social-menu .item {
   font-size: 11.5px;
   line-height: 1;
   vertical-align: middle;
@@ -754,7 +767,8 @@ p a {
   .teach-video-page .social-menu .item,
   .page-wordlet-teach-alliances .content .social-menu .item,
   .teach-news-content .social-menu .item,
-  .teach-sys-content .social-menu .item {
+  .teach-sys-content .social-menu .item,
+  .teach-film-content .social-menu .item {
     color: white;
   }
 }
@@ -762,7 +776,8 @@ p a {
   .teach-video-page .social-menu .item,
   .page-wordlet-teach-alliances .content .social-menu .item,
   .teach-news-content .social-menu .item,
-  .teach-sys-content .social-menu .item {
+  .teach-sys-content .social-menu .item,
+  .teach-film-content .social-menu .item {
     display: inline-block;
     *display: inline;
     *zoom: 1;
@@ -773,7 +788,8 @@ p a {
 .teach-video-page .social-menu .item p,
 .page-wordlet-teach-alliances .content .social-menu .item p,
 .teach-news-content .social-menu .item p,
-.teach-sys-content .social-menu .item p {
+.teach-sys-content .social-menu .item p,
+.teach-film-content .social-menu .item p {
   font-size: 11.5px;
   line-height: 1;
   color: black;
@@ -782,14 +798,16 @@ p a {
   .teach-video-page .social-menu .item p,
   .page-wordlet-teach-alliances .content .social-menu .item p,
   .teach-news-content .social-menu .item p,
-  .teach-sys-content .social-menu .item p {
+  .teach-sys-content .social-menu .item p,
+  .teach-film-content .social-menu .item p {
     color: white;
   }
 }
 .teach-video-page .social-menu .item .sect-headline,
 .page-wordlet-teach-alliances .content .social-menu .item .sect-headline,
 .teach-news-content .social-menu .item .sect-headline,
-.teach-sys-content .social-menu .item .sect-headline {
+.teach-sys-content .social-menu .item .sect-headline,
+.teach-film-content .social-menu .item .sect-headline {
   font-family: "GlyphaLTPro-Black", serif;
   font-weight: normal;
   font-size: 18px;
@@ -800,7 +818,8 @@ p a {
 .teach-video-page .social-menu .item .sect-headline strong,
 .page-wordlet-teach-alliances .content .social-menu .item .sect-headline strong,
 .teach-news-content .social-menu .item .sect-headline strong,
-.teach-sys-content .social-menu .item .sect-headline strong {
+.teach-sys-content .social-menu .item .sect-headline strong,
+.teach-film-content .social-menu .item .sect-headline strong {
   color: black;
   font-weight: normal;
 }
@@ -808,14 +827,16 @@ p a {
   .teach-video-page .social-menu .item .sect-headline strong,
   .page-wordlet-teach-alliances .content .social-menu .item .sect-headline strong,
   .teach-news-content .social-menu .item .sect-headline strong,
-  .teach-sys-content .social-menu .item .sect-headline strong {
+  .teach-sys-content .social-menu .item .sect-headline strong,
+  .teach-film-content .social-menu .item .sect-headline strong {
     color: white;
   }
 }
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form,
 .teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form,
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form {
+.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form,
+.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form {
   width: 217px;
   margin: 0 auto;
   position: relative;
@@ -823,13 +844,15 @@ p a {
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form label,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form label,
 .teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form label,
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form label {
+.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form label,
+.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form label {
   display: none;
 }
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
 .teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"] {
+.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
+.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"] {
   background: transparent url('../img/text-field-small.png?1377758768');
   border: 0;
   width: 217px;
@@ -840,7 +863,8 @@ p a {
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions,
 .teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions,
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions {
+.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions,
+.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions {
   position: absolute;
   top: 4px;
   right: -2px;
@@ -849,7 +873,8 @@ p a {
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"],
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"],
 .teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"],
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"] {
+.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"],
+.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"] {
   cursor: pointer;
   -webkit-appearance: none;
   border: none;
@@ -862,7 +887,8 @@ p a {
 .teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error,
 .page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error,
 .teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error,
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error {
+.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error,
+.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error {
   position: absolute;
   background: transparent none;
   padding: 0;
@@ -875,7 +901,8 @@ p a {
 .teach-video-page .social-menu .item:before,
 .page-wordlet-teach-alliances .content .social-menu .item:before,
 .teach-news-content .social-menu .item:before,
-.teach-sys-content .social-menu .item:before {
+.teach-sys-content .social-menu .item:before,
+.teach-film-content .social-menu .item:before {
   display: block;
   content: '';
   position: absolute;
@@ -886,13 +913,15 @@ p a {
 .teach-video-page .social-menu .item.text,
 .page-wordlet-teach-alliances .content .social-menu .item.text,
 .teach-news-content .social-menu .item.text,
-.teach-sys-content .social-menu .item.text {
+.teach-sys-content .social-menu .item.text,
+.teach-film-content .social-menu .item.text {
   margin-top: 73px;
 }
 .teach-video-page .social-menu .item.text:before,
 .page-wordlet-teach-alliances .content .social-menu .item.text:before,
 .teach-news-content .social-menu .item.text:before,
-.teach-sys-content .social-menu .item.text:before {
+.teach-sys-content .social-menu .item.text:before,
+.teach-film-content .social-menu .item.text:before {
   background-image: url('../img/social-phone.png?1377735601');
   width: 72px;
   height: 73px;
@@ -902,7 +931,8 @@ p a {
   .teach-video-page .social-menu .item.text:before,
   .page-wordlet-teach-alliances .content .social-menu .item.text:before,
   .teach-news-content .social-menu .item.text:before,
-  .teach-sys-content .social-menu .item.text:before {
+  .teach-sys-content .social-menu .item.text:before,
+  .teach-film-content .social-menu .item.text:before {
     background-image: url('../img/social-phone-white.png?1377822363');
     width: 52px;
     height: 60px;
@@ -912,13 +942,15 @@ p a {
 .teach-video-page .social-menu .item.connected,
 .page-wordlet-teach-alliances .content .social-menu .item.connected,
 .teach-news-content .social-menu .item.connected,
-.teach-sys-content .social-menu .item.connected {
+.teach-sys-content .social-menu .item.connected,
+.teach-film-content .social-menu .item.connected {
   margin-top: 79px;
 }
 .teach-video-page .social-menu .item.connected:before,
 .page-wordlet-teach-alliances .content .social-menu .item.connected:before,
 .teach-news-content .social-menu .item.connected:before,
-.teach-sys-content .social-menu .item.connected:before {
+.teach-sys-content .social-menu .item.connected:before,
+.teach-film-content .social-menu .item.connected:before {
   background-image: url('../img/social-envelopes.png?1377735601');
   width: 72px;
   height: 79px;
@@ -928,7 +960,8 @@ p a {
   .teach-video-page .social-menu .item.connected:before,
   .page-wordlet-teach-alliances .content .social-menu .item.connected:before,
   .teach-news-content .social-menu .item.connected:before,
-  .teach-sys-content .social-menu .item.connected:before {
+  .teach-sys-content .social-menu .item.connected:before,
+  .teach-film-content .social-menu .item.connected:before {
     background-image: url('../img/social-envelopes-white.png?1377822363');
     width: 42px;
     height: 47px;
@@ -938,13 +971,15 @@ p a {
 .teach-video-page .social-menu .item.discussion,
 .page-wordlet-teach-alliances .content .social-menu .item.discussion,
 .teach-news-content .social-menu .item.discussion,
-.teach-sys-content .social-menu .item.discussion {
+.teach-sys-content .social-menu .item.discussion,
+.teach-film-content .social-menu .item.discussion {
   margin-top: 55px;
 }
 .teach-video-page .social-menu .item.discussion:before,
 .page-wordlet-teach-alliances .content .social-menu .item.discussion:before,
 .teach-news-content .social-menu .item.discussion:before,
-.teach-sys-content .social-menu .item.discussion:before {
+.teach-sys-content .social-menu .item.discussion:before,
+.teach-film-content .social-menu .item.discussion:before {
   background-image: url('../img/social-chat.png?1377821572');
   width: 72px;
   height: 55px;
@@ -954,7 +989,8 @@ p a {
   .teach-video-page .social-menu .item.discussion:before,
   .page-wordlet-teach-alliances .content .social-menu .item.discussion:before,
   .teach-news-content .social-menu .item.discussion:before,
-  .teach-sys-content .social-menu .item.discussion:before {
+  .teach-sys-content .social-menu .item.discussion:before,
+  .teach-film-content .social-menu .item.discussion:before {
     background-image: url('../img/social-chat-white.png?1377822363');
     width: 50px;
     height: 45px;
@@ -964,7 +1000,8 @@ p a {
 .teach-video-page .ad,
 .page-wordlet-teach-alliances .content .ad,
 .teach-news-content .ad,
-.teach-sys-content .ad {
+.teach-sys-content .ad,
+.teach-film-content .ad {
   width: 728px;
   height: 90px;
   background-color: white;
@@ -978,7 +1015,8 @@ p a {
   .teach-video-page .ad,
   .page-wordlet-teach-alliances .content .ad,
   .teach-news-content .ad,
-  .teach-sys-content .ad {
+  .teach-sys-content .ad,
+  .teach-film-content .ad {
     display: none;
   }
 }
@@ -1224,6 +1262,126 @@ p a {
     padding: 20px;
   }
 }
+/* # Film Page
+================================================== */
+.teach-film-page .content-preheader {
+  font-size: 38px;
+}
+.teach-film-page .content-subheadline {
+  max-width: 100%;
+  margin: 1em 10px;
+}
+.teach-film-page .sect-headline {
+  font: normal 22px/1.25em "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+}
+.teach-film-page p, .teach-film-page li {
+  font-size: 16px;
+  line-height: 1.25em;
+  margin: 1em 0;
+}
+@media (min-width: 768px) {
+  .teach-film-page .row .col-1-2 {
+    padding: 20px;
+    width: 33.3%;
+  }
+  .teach-film-page .row .col-1-2:first-child {
+    width: 66.6%;
+  }
+}
+.teach-film-page ol {
+  counter-reset: li;
+}
+.teach-film-page ol:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.teach-film-page ol li {
+  clear: left;
+  list-style-type: none;
+  position: relative;
+}
+.teach-film-page ol li:before {
+  content: counter(li);
+  counter-increment: li;
+  display: block;
+  float: left;
+  font: normal 2.5em/1 "GlyphaLTPro-Black", serif;
+  width: 1em;
+}
+.teach-film-page .teach-watch-promo {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: transparent url('../img/film-watch-bg.png?1393189723') scroll no-repeat top center;
+  background-size: contain;
+  max-width: 285px;
+  min-height: 384px;
+  margin: 0 auto 2em;
+  padding: 60px 50px 0;
+}
+.teach-film-page .teach-watch-promo .teach-watch-promo-content {
+  max-width: 100%;
+  padding: 0;
+}
+.teach-film-page .teach-watch-promo .sect-headline {
+  text-align: center;
+}
+.teach-film-page .teach-watch-promo li {
+  display: block;
+  width: 100%;
+}
+.teach-film-page .teach-watch-promo li a {
+  display: block;
+  text-align: center;
+}
+.teach-film-page .teach-watch-promo li img {
+  margin: 0;
+  width: 100%;
+}
+.teach-film-page .teach-watch-promo li span {
+  display: block;
+  clear: both;
+  width: 100%;
+  font-size: 13px;
+}
+.teach-film-page .teach-watch-promo li span:before {
+  display: none;
+}
+.teach-film-page .screening-tips {
+  clear: both;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: transparent url('../img/post-it-bg.png?1393186859') scroll no-repeat top center;
+  background-size: contain;
+  max-width: 300px;
+  min-height: 312px;
+  margin: 0 auto;
+  padding: 5% 3.5% 0 5%;
+  -webkit-transform: rotate(5deg) scale(1.05);
+  -moz-transform: rotate(5deg) scale(1.05);
+  -ms-transform: rotate(5deg) scale(1.05);
+  -o-transform: rotate(5deg) scale(1.05);
+  transform: rotate(5deg) scale(1.05);
+}
+.teach-film-page .screening-tips:before {
+  content: " ";
+  display: block;
+  float: right;
+  width: 37px;
+  height: 87px;
+}
+.teach-film-page .screening-tips .tips-header {
+  font: bold 3em/1 "Shadows Into Light", cursive;
+  text-align: center;
+}
+.teach-film-page .screening-tips li {
+  margin-left: 1em;
+  text-indent: -1em;
+}
+
 /* # Video Pages
 ================================================== */
 @media (max-width: 480px) {
