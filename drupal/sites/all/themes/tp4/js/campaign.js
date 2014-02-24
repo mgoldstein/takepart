@@ -28,20 +28,12 @@
           transitionEnd: function(index, elem) {}
         });
 
-        // Slider = $(sliderID).Swipe().data('Swipe');
-        // Slider_0 = $('#slider_0').Swipe().data('Swipe');
-        // $('.left-arrow').on('click', Slider_0.prev);  
-        // $('.right-arrow').on('click', Slider_0.next); 
-
-        // Slider_2 = $('#slider_2').Swipe().data('Swipe');
-        // $('.left-arrow').on('click', Slider_2.prev);  
-        // $('.right-arrow').on('click', Slider_2.next); 
-
-        // $('.slider').each(function(){
-        //   var $this = $(this);
-        //   $this.find('.left-arrow').on('click', $this.prev);
-        //   $this.find('.right-arrow').on('click', $this.next); 
-        // });
+        $('.slider').each(function(){
+          var $this = $(this);
+          var $Slider = $('#' + $this.attr('id')).Swipe().data('Swipe');
+          $this.find('.left-arrow').on('click', function(){$Slider.prev()});
+          $this.find('.right-arrow').on('click', function(){$Slider.next()}); 
+        });
       }
 
       // Detect height on page load and on page resize

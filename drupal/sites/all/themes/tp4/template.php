@@ -722,3 +722,12 @@ function tp4_preprocess_panels_pane(&$variables) {
     }
   }
 }
+
+function tp4_field__field_campaign_media_title($variables) {
+  return tp4_field_campaign_media_title($variables);
+}
+function tp4_field_campaign_media_title($variables){
+  $output = '';
+  $output .= '<h4 class="title">'. $variables['items'][0]['#markup']. '</h4>';
+  return $output;
+}
