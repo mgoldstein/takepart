@@ -20,7 +20,7 @@
       <?php include('partials/teach-watch-promo.tpl.php'); ?>
       <aside class="screening-tips">
         <h3 class="tips-header"><?php print w('screening_tips_headline'); ?></h3>
-        <?php print w('screening_tips_body'); ?>
+        <div><?php print w('screening_tips_body'); ?></div>
       </aside>
     </div>
   </div>
