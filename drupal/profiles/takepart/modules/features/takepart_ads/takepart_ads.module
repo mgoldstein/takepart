@@ -1,14 +1,22 @@
 <?php
 
+function _custom_targeting_overrides($stringwithkeyvalue) {
+    //$pairs_array = explode(":", $stringwithkeyvalue);
+
+    foreach ($pairs_array as $key => $value) {
+        
+    }
+}
+
 function takepart_ads_preprocess_page(&$vars) {
 
     if (function_exists('wordlet_active_page')) {
-      $wordlet_page = wordlet_active_page();
-      if ($wordlet_page !== FALSE) {
-        if ($wordlet_page['suppress_ad_block']) {
-          return;
+        $wordlet_page = wordlet_active_page();
+        if ($wordlet_page !== FALSE) {
+            if ($wordlet_page['suppress_ad_block']) {
+                return;
+            }
         }
-      }
     }
 
     // $ad_slots = array();
@@ -49,27 +57,58 @@ function takepart_ads_preprocess_page(&$vars) {
     $field_free_tag = isset($vars['node']->field_free_tag['und']) ? $vars['node']->field_free_tag['und'] : array();
     $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
     $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
+    $field_series = isset($vars['node']->field_series['und']) ? $vars['node']->field_series['und'] : array();
 
     if (count($field_topic)) {
         $topic = "";
         $gpt_topic = "";
-        if ($field_topic[0]['tid'] != 0) {
-            $term = $field_topic[0]['taxonomy_term'];
-            $topic .= 'GA_googleAddAttr("Topic", "' . htmlspecialchars(trim($term->name), ENT_QUOTES, "UTF-8") . '");' . "\n";
-            $gpt_topic .= 'googletag.pubads().setTargeting("Topic", "' . htmlspecialchars(trim($term->name), ENT_QUOTES, "UTF-8") . '");' . "\n";
+        $topic_terms = array();
+        foreach ($field_topic as $key => $value) {
+            $tterm = taxonomy_term_load($value['tid']);
+            $tterms[] = str_replace(" & ", "-", $tterm->name);
+        }
+        $topic .= 'GA_googleAddAttr("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
+        $gpt_topic .= 'googletag.pubads().setTargeting("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
+    }
+
+    $terms = array();
+
+    $override = filter_input(INPUT_GET, 'dfpKeyval');
+    if ($override) {
+        $pairs = explode(",", $override);
+
+        foreach ($pairs as $param) {
+            $i = strpos($param, ":");
+            if (strtolower(substr($param, 0, $i)) === "freetag") {
+                $i++;
+                $term = substr($param, $i);
+                $terms[] = htmlspecialchars(trim($term), ENT_QUOTES, "UTF-8");
+            }
         }
     }
 
     if (count($field_free_tag)) {
         $free_tags = "";
         $gpt_free_tags = "";
-        $terms = array();
         foreach ($field_free_tag as $key => $value) {
             $term = taxonomy_term_load($value['tid']);
-            $terms[] = htmlspecialchars(trim($term->name), ENT_QUOTES, "UTF-8");
+            $terms[] = htmlspecialchars(trim($term->name), ENT_COMPAT, "UTF-8");
         }
+    }
+
+    if (count($field_free_tag) || $override) {
         $free_tags .= 'GA_googleAddAttr("FreeTag", ["' . implode('", "', $terms) . '"]);' . "\n";
         $gpt_free_tags .= 'googletag.pubads().setTargeting("FreeTag", ["' . implode('", "', $terms) . '"]);' . "\n";
+    }
+
+    if (count($field_series)) {
+        $series = "";
+        $gpt_series = "";
+        if ($field_series[0]['tid'] != 0) {
+            $sterm = taxonomy_term_load($field_series[0]['tid']);
+            $topic .= 'GA_googleAddAttr("Series", "' . htmlspecialchars(trim($sterm->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
+            $gpt_topic .= 'googletag.pubads().setTargeting("Series", "' . htmlspecialchars(trim($sterm->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
+        }
     }
 
     if (count($actionSponsor) || count($petitionSponsor)) {
@@ -77,18 +116,18 @@ function takepart_ads_preprocess_page(&$vars) {
         $gpt_sponsor_tags = "";
         $sponsors = array();
         foreach ($actionSponsor as $key => $value) {
-            $sponsors[] = htmlspecialchars(trim($value['node']->title), ENT_QUOTES, "UTF-8");
+            $sponsors[] = htmlspecialchars(trim($value['node']->title), ENT_COMPAT, "UTF-8");
         }
         foreach ($petitionSponsor as $key => $value) {
-            $sponsors[] = htmlspecialchars(trim($value['title']), ENT_QUOTES, "UTF-8");
+            $sponsors[] = htmlspecialchars(trim($value['title']), ENT_COMPAT, "UTF-8");
         }
         $sponsor_tags .= 'GA_googleAddAttr("Sponsor", ["' . implode('", "', $sponsors) . '"]);' . "\n";
         $gpt_sponsor_tags .= 'googletag.pubads().setTargeting("Sponsor", ["' . implode('", "', $sponsors) . '"]);' . "\n";
     }
 
     if ($vars['node']->title != "") {
-        $pageTitle = 'GA_googleAddAttr("PageTitle", "' . htmlspecialchars(trim($vars['node']->title), ENT_QUOTES, "UTF-8") . '");' . "\n";
-        $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "' . htmlspecialchars(trim($vars['node']->title), ENT_QUOTES, "UTF-8") . '");' . "\n";
+        $pageTitle = 'GA_googleAddAttr("PageTitle", "' . htmlspecialchars(trim($vars['node']->title), ENT_COMPAT, "UTF-8") . '");' . "\n";
+        $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "' . htmlspecialchars(trim($vars['node']->title), ENT_COMPAT, "UTF-8") . '");' . "\n";
     }
 
     $targeting = "";
@@ -109,7 +148,7 @@ function takepart_ads_preprocess_page(&$vars) {
         $targeting .= $sponsor_tags;
         $gpt_targeting .= $gpt_sponsor_tags;
     }
-    if ($pageTitle != "" || $gpt_pageTitle !="") {
+    if ($pageTitle != "" || $gpt_pageTitle != "") {
         $targeting .= $pageTitle;
         $gpt_targeting .= $gpt_pageTitle;
     }
@@ -197,23 +236,23 @@ function takepart_ads_menu() {
  * System settings form to manage ad variables
  */
 function takepart_ads_configure_ads() {
-  $form['takepart_ads_dfp_property_code'] = array(
-    '#type' => 'textfield',
-    '#title' => t('GAM Property Code'),
-    '#description' => t('Enter your DFP Propery Code here.'),
-    '#default_value' => variable_get('takepart_ads_dfp_property_code', ''),
-    '#required' => TRUE
-  );
+    $form['takepart_ads_dfp_property_code'] = array(
+        '#type' => 'textfield',
+        '#title' => t('GAM Property Code'),
+        '#description' => t('Enter your DFP Propery Code here.'),
+        '#default_value' => variable_get('takepart_ads_dfp_property_code', ''),
+        '#required' => TRUE
+    );
 
-  $form['takepart_ads_dfp_property_code'] = array(
-      '#type' => 'textfield',
-      '#title' => t('GPT Property Code'),
-      '#description' => t('Enter your DFP Propery Code here.'),
-      '#default_value' => variable_get('takepart_ads_dfp_property_code_gpt', '4355895'),
-      '#required' => TRUE
-  );
+    $form['takepart_ads_dfp_property_code'] = array(
+        '#type' => 'textfield',
+        '#title' => t('GPT Property Code'),
+        '#description' => t('Enter your DFP Propery Code here.'),
+        '#default_value' => variable_get('takepart_ads_dfp_property_code_gpt', '4355895'),
+        '#required' => TRUE
+    );
 
-  return system_settings_form($form, FALSE);
+    return system_settings_form($form, FALSE);
 }
 
 /**

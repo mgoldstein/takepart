@@ -163,6 +163,8 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
+    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'video' => 'video',
   );
   $export['latest_article_in_a_series'] = $view;
 
@@ -218,9 +220,8 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_promo_short_headline']['table'] = 'field_data_field_promo_short_headline';
   $handler->display->display_options['fields']['field_promo_short_headline']['field'] = 'field_promo_short_headline';
   $handler->display->display_options['fields']['field_promo_short_headline']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['path'] = '[path]';
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['link_class'] = '[type]';
+  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['text'] = '<span class="[type]"><a href="[path]">[field_promo_short_headline]</a></span>';
   $handler->display->display_options['fields']['field_promo_short_headline']['element_label_colon'] = FALSE;
   /* Sort criterion: Nodequeue: Queue ID */
   $handler->display->display_options['sorts']['qid']['id'] = 'qid';
@@ -252,9 +253,10 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
+    'openpublish_video' => 'openpublish_video',
     'openpublish_photo' => 'openpublish_photo',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-    'openpublish_video' => 'openpublish_video',
+    'video' => 'video',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Promo Short Headline (field_promo_short_headline) */

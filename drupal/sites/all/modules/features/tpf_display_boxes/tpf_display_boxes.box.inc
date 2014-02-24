@@ -311,7 +311,7 @@ function tpf_display_boxes_default_box() {
   $box->description = 'GA: ROS Background Take-over';
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_Background_1x1',
-    'ga_ad_gpt_id' => 'div-gpt-ad-1371853059233-0',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1391020952974-0',
     'additional_classes' => '',
   );
   $export['bg_skin_sponsor'] = $box;
@@ -325,7 +325,7 @@ function tpf_display_boxes_default_box() {
   $box->description = 'GA: ROS Bottom Right';
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_RR_BTF_300x600',
-    'ga_ad_gpt_id' => 'div-gpt-ad-1345512885535-0',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1391020952974-3',
     'additional_classes' => 'block-boxes-ga_ad block-boxes-ga_ad-bottom',
   );
   $export['box-1104adce'] = $box;
@@ -721,9 +721,9 @@ function tpf_display_boxes_default_box() {
       'field_tp_campaign_5_things_head' => 'field_tp_campaign_5_things_head',
       'field_tp_campaign_4_things_link' => 'field_tp_campaign_4_things_link',
       'field_tp_campaign_intro_html' => 'field_tp_campaign_intro_html',
+      'field_trailer_video' => 'field_trailer_video',
       'field_tp_campaign_intro_media' => 'field_tp_campaign_intro_media',
       'body' => 0,
-      'field_topic' => 0,
       'field_tp_campaign_cover_image' => 0,
       'field_tp_campaign_seg_1_html' => 0,
       'field_tp_campaign_seg_1_label' => 0,
@@ -740,8 +740,7 @@ function tpf_display_boxes_default_box() {
       'field_tp_campaign_sl_html' => 0,
       'field_tp_campaign_sl_image' => 0,
       'field_tp_campaign_subheadline' => 0,
-      'field_related_actions' => 0,
-      'field_suggest_actions' => 0,
+      'field_topic' => 0,
       'field_multi_page_campaign' => 0,
       'field_tp_campaign_cover_intro' => 0,
       'field_tp_campaign_sl_nodes' => 0,
@@ -750,12 +749,20 @@ function tpf_display_boxes_default_box() {
       'field_tp_campaign_header' => 0,
       'field_tp_campaign_cover_link' => 0,
       'field_tp_campaign_alliances' => 0,
+      'field_related_actions' => 0,
+      'field_suggest_actions' => 0,
       'field_tp_campaign_show_title' => 0,
-      'field_calendar' => 0,
+      'field_html_title' => 0,
+      'field_main_image' => 0,
+      'field_google_map' => 0,
+      'field_thumbnail' => 0,
+      'field_tab_action_override' => 0,
+      'field_promo_content_collection' => 0,
     ),
     'use_page' => 1,
     'exclude_from_content' => 0,
     'view_mode' => 'default',
+    'additional_classes' => '',
   );
   $export['box-2988d8fb'] = $box;
 
@@ -1018,7 +1025,7 @@ GA_googleFillSlot("TP3_Home_RR_ATF_300x250");
   $box->description = 'GA: ROS Top Right';
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_RR_ATF_300x250',
-    'ga_ad_gpt_id' => 'div-gpt-ad-1367970740963-0',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1391020952974-2',
     'additional_classes' => 'block-boxes-ga_ad',
   );
   $export['box-66c05d6f'] = $box;
@@ -2016,13 +2023,61 @@ z-index:5000;
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
+  $box->delta = 'right_rail_video_promo_articles';
+  $box->plugin_key = 'field';
+  $box->title = 'TakePart Video';
+  $box->description = 'Right Rail Video Promo for Articles';
+  $box->options = array(
+    'entity_type' => 'node',
+    'entity_id' => 'TakePart Video [id:42193]',
+    'bundle' => 'video',
+    'field' => array(
+      'field_video' => 'field_video',
+      'body' => 0,
+      'field_author' => 0,
+      'field_series' => 0,
+      'field_free_tag' => 0,
+      'field_topic' => 0,
+      'field_promo_headline' => 0,
+      'field_promo_text' => 0,
+      'field_thumbnail' => 0,
+      'field_display_tag' => 0,
+      'field_tab_action_override' => 0,
+      'field_admin_tag' => 0,
+      'field_inline_replacements' => 0,
+      'field_related_stories' => 0,
+      'field_topic_box' => 0,
+      'field_promo_short_headline' => 0,
+      'field_article_subhead' => 0,
+      'field_significance' => 0,
+      'field_ads_client' => 0,
+      'field_ads_tag' => 0,
+      'field_allowed_regions' => 0,
+      'field_auto_play' => 0,
+      'field_mute_playback' => 0,
+      'field_player_skin' => 0,
+      'field_playlist_layout' => 0,
+      'field_playlist_position' => 0,
+      'field_playlist_size' => 0,
+      'field_sharing_enabled' => 0,
+    ),
+    'use_page' => 0,
+    'exclude_from_content' => 0,
+    'view_mode' => 'embed',
+    'additional_classes' => '',
+  );
+  $export['right_rail_video_promo_articles'] = $box;
+
+  $box = new stdClass();
+  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
+  $box->api_version = 1;
   $box->delta = 'takepart';
   $box->plugin_key = 'ga_ad';
   $box->title = '';
   $box->description = 'GA: ROS Leaderboard';
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_Leaderboard_728x90',
-    'ga_ad_gpt_id' => 'div-gpt-ad-1346089138325-0',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1391020952974-1',
     'additional_classes' => 'leaderboard',
   );
   $export['takepart'] = $box;

@@ -1,0 +1,7 @@
+name = Media 2.x Widget Plupload
+description = Provides a batch upload Media functionality
+package = Media
+core = 7.x
+
+dependencies[] = media
+

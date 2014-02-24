@@ -1,0 +1,191 @@
+<?php
+
+/* Admin
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_permission().
+ */
+function pm_jwplayer_permission() {
+  return array(
+    'configure pm_jwplayer' => array(
+      'title' => t('Configure the JW Player'),
+      'description' => t('Configure presets for the JW Player field formatter.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pm_jwplayer_menu() {
+  return array(
+    'admin/config/media/pm_jwplayer/settings' => array(
+      'title' => 'Account Settings',
+      'description' => 'Set the cloud hosting account token and player license key.',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pm_jwplayer_settings_form'),
+      'access arguments' => array('configure pm_jwplayer'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'pm_jwplayer.admin.inc',
+    ),
+  );
+}
+
+
+/* JavaScript libraries
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_init().
+ */
+function pm_jwplayer_init() {
+  if ($token = variable_get('pm_jwplayer_account_token', NULL)) {
+    drupal_add_js('//jwpsrv.com/library/' . $token . '.js', array(
+      'type' => 'external',
+      'scope' => 'header',
+      'weight' => 5,
+    ));
+    drupal_add_js('//j.maxmind.com/js/apis/geoip2/v2.0/geoip2.js', array(
+      'type' => 'external',
+      'scope' => 'header',
+      'weight' => 5,
+    ));
+  }
+}
+
+
+/* Exportable presets
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function pm_jwplayer_ctools_plugin_api($owner, $api) {
+  if ($owner == 'pm_jwplayer' && $api == 'pm_jwplayer_presets') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function pm_jwplayer_ctools_plugin_directory($module, $type) {
+  if ($type == 'export_ui') {
+    return 'plugins/export_ui';
+  }
+}
+
+/**
+ * Preset loading function.
+ */
+function pm_jwplayer_preset_load($machine_name = NULL) {
+  ctools_include('export');
+  if (isset($machine_name)) {
+    return ctools_export_crud_load('pm_jwplayer_presets', $machine_name);
+  }
+  else {
+    return ctools_export_crud_load_all('pm_jwplayer_presets');
+  }
+}
+
+
+/* Field formatter
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_field_formatter_info().
+ */
+function pm_jwplayer_field_formatter_info() {
+  return array(
+    'pm_jwplayer' => JWPlayerFieldFormatter::info(),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function pm_jwplayer_field_formatter_settings_form($field, $instance,
+  $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  $formatter = new JWPlayerFieldFormatter($field, $instance, $display);
+  return $formatter->settingsForm($form, $form_state);
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function pm_jwplayer_field_formatter_settings_summary($field, $instance,
+  $view_mode) {
+  $display = $instance['display'][$view_mode];
+  $formatter = new JWPlayerFieldFormatter($field, $instance, $display);
+  return $formatter->settingsSummary();
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function pm_jwplayer_field_formatter_view($entity_type, $entity, $field,
+  $instance, $langcode, $items, $display) {
+  $formatter = new JWPlayerFieldFormatter($field, $instance, $display);
+  return $formatter->viewItems($entity_type, $entity, $langcode, $items);
+}
+
+
+/* Theming
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_theme().
+ */
+function pm_jwplayer_theme() {
+  return array(
+    'pm_jwplayer' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+/**
+ * Helper function for adding client side player configurations.
+ */
+function pm_jwplayer_add_player($player_id, $configuration) {
+  static $setup_function_added = FALSE;
+  if (!$setup_function_added) {
+    $js_path = drupal_get_path('module', 'pm_jwplayer') . '/pm-jwplayer.js';
+    drupal_add_js($js_path, array(
+      'type' => 'file',
+      'scope' => 'header',
+      'weight' => 6,
+    ));
+    drupal_add_js(array('pm_jwplayer' => array(
+      'key' => variable_get('pm_jwplayer_player_key', ''),
+    )), 'setting');
+    $setup_function_added = TRUE;
+  }
+  drupal_add_js(array('pm_jwplayer' => array(
+    'configurations' => array(
+      $player_id => $configuration
+    ),
+  )), 'setting');
+}
+
+/**
+ * Implements theme_hook().
+ */
+function theme_pm_jwplayer($variables) {
+  $element = $variables['element'];
+
+  pm_jwplayer_add_player($element['#player_id'], $element['#configuration']);
+
+  $attributes = array(
+    'id' => $element['#player_id'],
+    'class' => array('pm-jwplayer'),
+  );
+
+  if (count($variables['element']['#allowed_regions']) > 0) {
+    $attributes['class'][] = 'loading';
+    $attributes['data-allowed-regions']
+      = implode(',', $variables['element']['#allowed_regions']);
+  }
+
+  $output = '<div' . drupal_attributes($attributes) . '></div>';
+
+  return $output;
+}

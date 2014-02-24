@@ -9,6 +9,7 @@ dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = formatter_field
+dependencies[] = inline_content
 dependencies[] = inline_entity_form
 dependencies[] = media_image_formatter
 dependencies[] = node_reference

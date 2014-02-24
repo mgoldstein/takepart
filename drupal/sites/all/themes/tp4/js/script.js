@@ -84,10 +84,12 @@ Drupal.behaviors.tpsocialShares = {
         var $body = $('body'),
             isOpenpublishArticle = $body.is('.page-node.node-type-openpublish-article'),
             isFeatureArticle = $body.is('.page-node.node-type-feature-article');
+            isVideoArticle = $body.is('.page-node.node-type-video');
 
         if (
             isOpenpublishArticle
             || isFeatureArticle
+            || isVideoArticle
         ) {
             // Setup Social Share Buttons
             var tp_social_config = {
@@ -206,7 +208,8 @@ Drupal.behaviors.tpsocialShares = {
         attach: function() {
             var $body = $('body');
 
-            if ($body.is('.page-node.node-type-openpublish-article')) {
+            if ($body.is('.page-node.node-type-openpublish-article')
+              || $body.is('.page-node.node-type-video')) {
 
                 // make second ad sticky
                 // (sticky social buttons are done below)
@@ -233,19 +236,40 @@ Drupal.behaviors.tpsocialShares = {
         }
     };
 
+    /**
+     * Handle TP Infographics
+     */
+    Drupal.behaviors.infographics = {
+        attach: function() {
+            $('.tpinfographic').tpInfographic();
+        }
+    };
+
     // Omniture position tracking
     // Parent/ancestor vars to track in reverse order of importance
     $.tpregions.add({
         'Header logo' : '.logo',
         'Header social' : '.follow-us',
         'Header user menu' : '.user-menu',
-        'Slim Header' : '.slimnav',
+        'Slim Header' : '.slim-nav',
         'Mega Menu' : '#megamenu',
         'Footer' : '#footer',
-        'Daily Featured Content': '.of_the_day_section',
-        'Partner Link': 'aside.on-our-radar',
+        'Daily Featured Content': '#block-bean-of-the-day',
+
+        // Gallery Properties
+        'Gallery - author name': '#block-takepart-gallery-support-takepart-gallery-content .author',
+        'Gallery - cover - share icons': '#gallery-cover-social',
+        'Gallery - share icons': '#galllery-content-social',
+        'Gallery - cover slide - enter gallery': '#gallery-cover',
+        'Gallery - gallery description - enter gallery': '#gallery-description .enter-link',
+        'Gallery - next slide >': '#block-takepart-gallery-support-takepart-gallery-content #next-slide',
+        'Gallery - previous slide <': '#block-takepart-gallery-support-takepart-gallery-content #previous-slide',
+        'Gallery - next gallery >': '#block-takepart-gallery-support-takepart-gallery-content #previous-slide',
+        'Gallery - related stories': '#gallery-footer .field-name-field-related-stories',
+
+        'Partner Link': '#block-bean-on-our-radar-block',
         'Embedded Content' : '#article-content aside.inline-content',
-        'Related Stories' : '#article-footer .field-name-field-related-stories',
+        'Article - Related Stories' : '#article-footer .field-name-field-related-stories',
         'Series Navigation' : '#series-navigation',
         'Keyword Link' : '.topic-links',
         'Author Full Bio Link' : '.author-bio',
@@ -263,5 +287,5 @@ Drupal.behaviors.tpsocialShares = {
         'Home - stories under lead' : 'body.page-tp4-homepage .panel-secondary-featured',
         'Home - top horizontal promo' : '#block-tp4-support-tp4-dont-miss'
     });
-        
+
 })(jQuery, Drupal, this, this.document);

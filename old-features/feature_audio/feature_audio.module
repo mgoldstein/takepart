@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the feature_audio feature.
- */
-
-include_once 'feature_audio.features.inc';

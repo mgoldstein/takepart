@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Rotator Slide feature.
- */
-
-include_once('takepart_rotator_slide.features.inc');

@@ -1,0 +1,56 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the JW Player module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function pm_jwplayer_schema() {
+  $schema = array();
+
+  $schema['pm_jwplayer_presets'] = array(
+    'description' => 'Stores information of JW Player presets',
+    'export' => array(
+      'key' => 'machine_name',
+      'identifier' => 'pm_jwplayer_preset',
+      'default hook' => 'default_pm_jwplayer_presets', // Function hook name
+      'api' => array(
+        'owner' => 'pm_jwplayer',
+        'api' => 'pm_jwplayer_presets', // Base name for api include files.
+        'minimum_version' => 1,
+        'current_version' => 1,
+      ),
+    ),
+    'fields' => array(
+      'preset_name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'description' => 'Name for the preset.'
+      ),
+      'machine_name' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'description' => 'Unique machine name for every configuration preset.'
+      ),
+      'description' => array(
+          'description' => "Provide text summary for the preset",
+          'type' => 'text',
+      ),
+      'settings' => array(
+        'description' => 'Serialized settings array of a given preset.',
+        'type' => 'blob',
+        'size' => 'big',
+        'not null' => FALSE,
+        'serialize' => TRUE,
+      ),
+    ),
+    'unique keys' => array(
+      'machine_name' => array('machine_name'),
+    ),
+    'primary key' => array('machine_name'),
+  );
+
+  return $schema;
+}

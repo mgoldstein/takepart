@@ -128,7 +128,7 @@ var tpmodal = function(parameters) {
 	};
 
 	this.show = function(parameters) {
-		this.load(parameters);
+		me.load(parameters);
 		var settings = get_settings(parameters);
 
 		if ( settings.url ) {
@@ -167,7 +167,7 @@ var tpmodal = function(parameters) {
 	}
 
 	this.showImage = function(parameters, src) {
-		loadImage(parameters, src, function() {
+		me.loadImage(parameters, src, function() {
 			me.showModal(parameters);
 		});
 	};
@@ -235,9 +235,25 @@ var tpmodal = function(parameters) {
 
 	this.showModal = function(parameters) {
 		var settings = get_settings(parameters);
-		
-		var modal_content_height = $modal_content.children().first().height();
-		var modal_content_width = $modal_content.children().first().width();
+
+		// store the modal's contents. At this point, the
+		// the modal is hidden, so we need to clone the contents,
+		// display them, and test height and width.
+		var $child = $modal_content.children().first().clone();
+
+		$child
+			.css({
+				position: 'absolute',
+				bottom: '100%' // off the top of the page
+			})
+			.appendTo('body')
+			.show()
+		;
+
+		var modalHeight = $child.height();
+		var modalWidth = $child.width();
+
+		$child.remove();
 
 		$modal_content.css({
 			height: 'auto',
@@ -247,10 +263,9 @@ var tpmodal = function(parameters) {
 		});
 		
 		me.position(parameters, {
-			height: modal_content_height,
-			width: modal_content_width
+			height: modalHeight,
+			width: modalWidth
 		});
-
 
 		$modal_content
 			.css({

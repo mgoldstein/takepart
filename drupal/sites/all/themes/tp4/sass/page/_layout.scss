@@ -167,3 +167,13 @@ body {
     }
   }
 }
+
+// Hide/disable #tp_ad_takeover anchors for page skins on touch devices
+#tp_ad_takeover {
+  display: none;
+  visibility: hidden;
+  @include breakpoint($breakpoint-desktop) {
+    display: block;
+    visibility: visible;
+  }
+}

@@ -58,6 +58,17 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'webform',
   );
 
+  // Exported permission: 'access search_api_page'.
+  $permissions['access search_api_page'] = array(
+    'name' => 'access search_api_page',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'search_api_page',
+  );
+
   // Exported permission: 'administer SiteCatalyst configuration'.
   $permissions['administer SiteCatalyst configuration'] = array(
     'name' => 'administer SiteCatalyst configuration',
@@ -87,6 +98,18 @@ function tpf_config_permissions_user_default_permissions() {
       'layout editor' => 'layout editor',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'administer files'.
+  $permissions['administer files'] = array(
+    'name' => 'administer files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: 'administer mini panels'.
@@ -130,6 +153,18 @@ function tpf_config_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'search_api',
+  );
+
+  // Exported permission: 'create files'.
+  $permissions['create files'] = array(
+    'name' => 'create files',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'file_entity',
   );
 
   // Exported permission: 'create mini panels'.
@@ -186,6 +221,18 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'webform',
   );
 
+  // Exported permission: 'import media'.
+  $permissions['import media'] = array(
+    'name' => 'import media',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'media',
+  );
+
   // Exported permission: 'post comments'.
   $permissions['post comments'] = array(
     'name' => 'post comments',
@@ -195,6 +242,17 @@ function tpf_config_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'search content'.
+  $permissions['search content'] = array(
+    'name' => 'search content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'search',
   );
 
   // Exported permission: 'skip comment approval'.
@@ -226,28 +284,6 @@ function tpf_config_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'panels',
-  );
-
-  // Exported permission: 'access search_api_page'.
-  $permissions['access search_api_page'] = array(
-    'name' => 'access search_api_page',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'search_api_page',
-  );
-
-  // Exported permission: 'search content'.
-  $permissions['search content'] = array(
-    'name' => 'search content',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'anonymous user' => 'anonymous user',
-      'authenticated user' => 'authenticated user',
-    ),
-    'module' => 'search',
   );
 
   // Exported permission: 'use search_api_sorts'.

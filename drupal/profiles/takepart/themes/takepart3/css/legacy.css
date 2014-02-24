@@ -1390,11 +1390,11 @@ h2.title a{
     background-position: -371px -318px;
 }
 
-.node-openpublish-article .field-name-body h1 {
+.node-openpublish-article,.node-video .field-name-body h1 {
     display: block;
 }
 
-.node-openpublish-article .field-name-body h2 {
+.node-openpublish-article,.node-video .field-name-body h2 {
     font-size: 25px;
 }
 

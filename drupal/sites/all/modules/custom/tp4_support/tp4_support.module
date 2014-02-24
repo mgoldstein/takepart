@@ -25,6 +25,10 @@ function tp4_support_entity_info_alter(&$entity_info) {
     'label' => t('Main Feature'),
     'custom settings' => TRUE,
   );
+  $entity_info['node']['view modes']['feature_main_tpl'] = array(
+    'label' => t('Main TPL Feature'),
+    'custom settings' => TRUE,
+  );
   $entity_info['node']['view modes']['feature_secondary'] = array(
     'label' => t('Secondary Feature'),
     'custom settings' => TRUE,
@@ -289,7 +293,7 @@ function tp4_support_field_formatter_info(){
     'tp4_promo_content' => array(
       'label' => t('Promo Content'),
       'field types' => array('field_collection'),
-    ),
+    )
   );
 }
 
@@ -351,3 +355,5 @@ function tp4_support_form_alter(&$form, &$form_state, $form_id){
 function tp4_support_panel_main_feature($form, &$form_state) {
   variable_set('main_feature_tab_title_override', $form['main_feature_tab_title_override']['#value']);
 }
+
+

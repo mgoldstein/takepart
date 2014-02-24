@@ -7,10 +7,6 @@
       });
       function interstitial_init(){
 
-        // DISABLE INTERSTITIALS ON FIREFOX
-        if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
-          return;
-        }
 
         // // FOR TESTING
         // var interstitial_links = $('#block-pm-interstitial-interstitials .content a');

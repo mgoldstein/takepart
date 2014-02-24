@@ -253,10 +253,16 @@ function pm_signup_queue($request) {
 /**
  * API response delivery callback.
  */
-function pm_signup_deliver_api_page($page_callback_result) {
-  drupal_add_http_header('Content-Type', 'application/json');
-  drupal_add_http_header('Status', $page_callback_result['status']);
-  print drupal_json_encode($page_callback_result['payload']);
+function pm_signup_deliver_api_page($result) {
+  $result += array('Content-Type' => 'application/json');
+  drupal_add_http_header('Content-Type', $result['Content-Type']);
+  drupal_add_http_header('Status', $result['Status']);
+  if ($result['Content-Type'] == 'application/json') {
+    print drupal_json_encode($result['Payload']);
+  }
+  else {
+    print $result['Payload'];
+  }
 }
 
 /**
@@ -270,8 +276,8 @@ function pm_signup_api_error($error, $message) {
     500 => '500 Internal Server Error',
   );
   return array(
-    'status' => isset($statuses[$error]) ? $statuses[$error] : $statuses[500],
-    'payload' => array('errors' => array($message)),
+    'Status' => isset($statuses[$error]) ? $statuses[$error] : $statuses[500],
+    'Payload' => array('errors' => array($message)),
   );
 }
 
@@ -286,10 +292,10 @@ function pm_signup_api_parse(&$request) {
   }
 
   // Request content type must be JSON
-  if (strlen($_SERVER['CONTENT_TYPE']) < 16
-    || strncasecmp($_SERVER['CONTENT_TYPE'], 'application/json', 16) !== 0) {
-    return pm_signup_api_error(400, 'Invalid request content type.');
-  }
+//  if (strlen($_SERVER['CONTENT_TYPE']) < 16
+//    || strncasecmp($_SERVER['CONTENT_TYPE'], 'application/json', 16) !== 0) {
+//    return pm_signup_api_error(400, 'Invalid request content type.');
+//  }
 
   // Decode the JSON payload
   $body = file_get_contents('php://input');
@@ -340,10 +346,62 @@ function pm_signup_api_parse(&$request) {
   return FALSE;
 }
 
+function pm_signup_cors_allowed_domain(&$origin) {
+  $host = parse_url($_SERVER['HTTP_ORIGIN'], PHP_URL_HOST);
+  $allowed = variable_get('pm_signup_allowed_domains', array(
+    '.takepart.com',
+    '.pivot.tv',
+    '.changethecourse.us',
+  ));
+  foreach ($allowed as $tld) {
+    if (substr($host, -strlen($tld)) === $tld) {
+      $origin = $_SERVER['HTTP_ORIGIN'];
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+function pm_signup_cors_check() {
+  $origin = '';
+  if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    if (pm_signup_cors_allowed_domain($origin)) {
+      header("Access-Control-Allow-Origin: $origin");
+      header('Access-Control-Allow-Methods: POST, OPTIONS');
+      //header('Access-Control-Allow-Headers: X-PINGARUNER');
+      header('Access-Control-Max-Age: 1728000');
+      header("Content-Length: 0");
+      return array(
+        'Status' => '200 OK',
+        'Content-Type' => 'text/plain',
+        'Payload' => '',
+      );
+    }
+    else {
+      return array(
+        'Status' => '403 Access Forbidden',
+        'Content-Type' => 'text/plain',
+        'Payload' => 'You shall not pass!',
+      );
+    }
+  }
+  elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!empty($_SERVER['HTTP_ORIGIN'])) {
+      $origin = $_SERVER['HTTP_ORIGIN'];
+      header("Access-Control-Allow-Origin: $origin");
+    }
+  }
+  return FALSE;
+}
+
 /**
  * AJAX API endpoint handler
  */
 function pm_signup_api_callback() {
+
+  // Enforce cross domain access
+  $cors_response = pm_signup_cors_check();
+  if ($cors_response !== FALSE) { return $cors_response; }
 
   // Parse and validate the request
   $request = NULL;
@@ -391,29 +449,29 @@ function pm_signup_api_callback() {
   // All signups are duplicates
   if (count($request) == $duplicates) {
     return array(
-      'status' => '409 Conflict',
-      'payload' => $response,
+      'Status' => '409 Conflict',
+      'Payload' => $response,
     );
   }
   // All signups returned an error
   elseif (count($response) == count($request)) {
     return array(
-      'status' => '400 Bad Request',
-      'payload' => $response,
+      'Status' => '400 Bad Request',
+      'Payload' => $response,
     );
   }
   // Some signups returned an error
   elseif (count($response) > 0) {
     return array(
-      'status' => '202 Accepted',
-      'payload' => $response,
+      'Status' => '202 Accepted',
+      'Payload' => $response,
     );
   }
 
   // All signups were submitted sucessfully
   return array(
-    'status' => '200 OK',
-    'payload' => '',
+    'Status' => '200 OK',
+    'Payload' => '',
   );
 }
 
@@ -464,6 +522,11 @@ function pm_signup_handle($request, $disable_queue = FALSE) {
 }
 
 function pm_signup_api_endpoints($type = NULL) {
+
+  // Enforce cross domain access
+  $cors_response = pm_signup_cors_check();
+  if ($cors_response !== FALSE) { return $cors_response; }
+
   $query = db_select('pm_signup_endpoint', 'ep');
   $query->addField('ep', 'name', 'value');
   $query->addField('ep', 'label', 'label');
@@ -474,11 +537,13 @@ function pm_signup_api_endpoints($type = NULL) {
   }
   $query->orderBy('label');
   $payload = $query->execute()->fetchAll();
+
   foreach ($payload as $endpoint) {
     $endpoint->configuration = unserialize($endpoint->configuration);
   }
+
   return array(
-    'status' => '200 OK',
-    'payload' => $payload,
+    'Status' => '200 OK',
+    'Payload' => $payload,
   );
 }

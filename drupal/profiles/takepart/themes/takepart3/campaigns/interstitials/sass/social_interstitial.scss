@@ -70,3 +70,29 @@ header img{
 a {
 	color: #019F84;
 }
+.fb_iframe_widget {
+	span {
+		width: 70px !important;
+		height: 33px !important;
+		iframe{
+			transform: scale(1.4);
+			-ms-transform: scale(1.4); 
+			-webkit-transform: scale(1.4); 
+			-o-transform: scale(1.4); 
+			-moz-transform: scale(1.4); 
+			transform-origin: top left;
+			-ms-transform-origin: top left;
+			-webkit-transform-origin: top left;
+			-moz-transform-origin: top left;
+			-webkit-transform-origin: top left;
+		}
+	}
+}
+
+
+
+
+
+
+
+

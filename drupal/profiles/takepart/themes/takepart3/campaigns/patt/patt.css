@@ -10,6 +10,9 @@ body {
 	margin: 0;
 	padding: 0;
 }
+body.page-wordlet-patt-game{
+	min-width: 1000px;
+}
 
 .multipage-campaign #site-header {
 	height: 36px;
@@ -1861,4 +1864,14 @@ h1.tile-header {
     h3 {
         page-break-after: avoid;
     }
+}
+.game{
+	-webkit-overflow-scrolling:touch;
+	overflow: auto;
+}
+.game > iframe, .game object{
+	height: 700px;
+	max-width: 100%;
+	width: 100%;
+	border: none;
 }

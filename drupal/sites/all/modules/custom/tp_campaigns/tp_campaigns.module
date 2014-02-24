@@ -1,0 +1,92 @@
+<?php
+/**
+ * @file
+ * TakePart Campaign Redesign
+ */
+
+/**
+ * Implements hook_help().
+ */
+function tp_campaigns_help($path, $arg) {
+	switch ($path) {
+		case 'admin/help#tp_campaigns':
+			return '<p>' . t('Module for the Campaign Redesign, April 2014') . '</p>';		
+	}
+}
+
+
+/**
+ * Implements hook_theme
+ */
+function tp_campaigns_theme() {
+  return array(
+    'tp_card_tray' => array(
+      'template' => 'field-formatter--card-tray',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+      )
+    ),
+    'tp_card_reference' => array(
+      'template' => 'field-formatter--card-reference',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+      )
+    )
+  );
+}
+
+/*
+ * Implements hook_field_formatter_info()
+ */
+function tp_campaigns_field_formatter_info(){
+  return array(
+    'tp_card_tray' => array(
+      'label' => t('Card Tray'),
+      'field types' => array('entityreference'),
+    ),
+    'tp_card_reference' => array(
+      'label' => t('Card Reference'),
+      'field types' => array('entityreference'),
+    ),
+  );
+}
+
+/*
+ * Implements hook_field_formatter_view()
+ */
+function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display){
+  $element = array();
+  $settings = $display['settings'];
+  switch($display['type']){
+    case 'tp_card_tray':
+      $element = array(
+        '#theme' => 'tp_card_tray',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
+    break;
+    case 'tp_card_reference':
+      $element = array(
+        '#theme' => 'tp_card_reference',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
+    break;
+  }
+  return $element;
+}
+
+/*
+ * Implements hook_init
+ */
+function tp_campaigns_init(){
+  $card_types = array(
+    'campaign_card_media',
+    'campaign_card_iframe',
+    'campaign_card_social',
+    );
+  variable_set('card_types', $card_types);
+}
+

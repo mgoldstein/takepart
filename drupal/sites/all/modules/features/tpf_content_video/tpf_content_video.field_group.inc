@@ -13,6 +13,106 @@ function tpf_content_video_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_player_config|node|video|form';
+  $field_group->group_name = 'group_player_config';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'video';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Player Configuration',
+    'weight' => '10',
+    'children' => array(
+      0 => 'field_ads_client',
+      1 => 'field_ads_tag',
+      2 => 'field_allowed_regions',
+      3 => 'field_auto_play',
+      4 => 'field_mute_playback',
+      5 => 'field_player_skin',
+      6 => 'field_playlist_layout',
+      7 => 'field_playlist_position',
+      8 => 'field_playlist_size',
+      9 => 'field_sharing_enabled',
+      10 => 'field_share_url',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-player-config field-group-tab',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_player_config|node|video|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_promo|node|video|form';
+  $field_group->group_name = 'group_promo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'video';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_promo_headline',
+      1 => 'field_promo_short_headline',
+      2 => 'field_promo_text',
+      3 => 'field_thumbnail',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-promo field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_promo|node|video|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tagging|node|video|form';
+  $field_group->group_name = 'group_tagging';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'video';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Tagging',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_admin_tag',
+      1 => 'field_display_tag',
+      2 => 'field_free_tag',
+      3 => 'field_series',
+      4 => 'field_significance',
+      5 => 'field_topic',
+      6 => 'field_topic_box',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-tagging field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_tagging|node|video|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_video_main|node|openpublish_video|form';
   $field_group->group_name = 'group_video_main';
   $field_group->entity_type = 'node';

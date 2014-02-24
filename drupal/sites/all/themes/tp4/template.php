@@ -72,16 +72,24 @@ function tp4_preprocess_page(&$variables) {
   }
 
   // override page titles on certain node templates
-  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article'))) {
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
     $variables['title'] = '';
   }
 
   // add Taboola JS if we're on an article, feature or photo gallery page
-  // but only if we're on the production site
-  if (variable_get('environment', 'dev') == 'prod' && !empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery'))) {
+  // but only if we're on the production site: variable_get('environment', 'dev') == 'prod' &&
+  if (variable_get('environment', 'dev') === 'prod' && !empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
     drupal_add_js(drupal_get_path('theme', 'tp4') . '/js/taboola.js', 'file');
     drupal_add_js('window._taboola = window._taboola || []; _taboola.push({flush:true});', array('type' => 'inline', 'scope' => 'footer'));
   }
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function tp4_css_alter(&$css) {
+ // Take out tp4_support's slimnav CSS file to avoid duplication of code
+  unset($css[drupal_get_path('module', 'tp4_support') . '/css/tp4_support.css']);
 }
 
 /**
@@ -92,6 +100,13 @@ function tp4_preprocess_page(&$variables) {
  */
 function tp4_preprocess_block(&$variables) {
   $variables['title_attributes_array']['class'][] = 'section-header';
+  // add slim nav class to slim nav block
+  if ($variables['block']->delta == "tp4_fat_header") {
+    $variables['classes_array'][] = "tp4-fat-header";
+  }
+  if ($variables['block']->delta == "tp4_slim_nav") {
+    $variables['classes_array'][] = "slim-nav";
+  }
 }
 
 /**
@@ -107,10 +122,10 @@ function tp4_preprocess_node(&$variables, $hook) {
   // node types per view view mode.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $vars['view_mode'];
-  if($variables['type'] == 'openpublish_video' && $variables['view_mode'] == 'full'){
+  if(in_array($variables['type'], array('openpublish_video', 'video')) && $variables['view_mode'] == 'full'){
     $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
   }
-  
+
   // Add template variables for the local node url
   // (for compatability in dev/qa environments)
   // and for the url to the same node on production
@@ -131,7 +146,7 @@ function tp4_preprocess_node(&$variables, $hook) {
  */
 function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
 
-  // expose series tid in a data attribute on article.node
+  // expose series tid in a data attribute
   $series = taxonomy_term_load($variables['field_series'][LANGUAGE_NONE][0]['tid']);
   if ($series) {
     $variables['attributes_array']['data-series'] = $series->name;
@@ -140,78 +155,13 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
   // we're going to do some things only on the full view of an article
   if($variables['view_mode'] == 'full'){
     // provide "on our radar" block
-    $on_our_radar_block = block_load('bean', 'on-our-radar-block');
-    $variables['on_our_radar'] = _block_get_renderable_array(_block_render_blocks(array($on_our_radar_block)));
+    _tp4_on_our_radar_block($variables);
 
     // provide topic box
-    if (!empty($variables['field_topic_box'])) {
-      $topic = taxonomy_term_load($variables['field_topic_box']['und'][0]['tid']);
-      if (!empty($topic->field_topic_box_image['und'][0]['uri'])) {
-	$image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));
-	$url = !empty($topic->field_topic_box_link) ? url($topic->field_topic_box_link['und'][0]['url'], array('absolute' => TRUE)) : '';
-	$variables['field_topic_box_top'] = empty($url) ? $image : l($image, $url, array('html' => true));
-      }
-    }
+    _tp4_topic_box($variables);
 
     // provide a series prev/next nav if a series exists
-    if(!empty($variables['field_series'])){
-      $series = taxonomy_term_load($variables['field_series']['und'][0]['tid']);
-      $series_image = theme('image', array('path' => $series->field_series_graphic_header['und'][0]['uri']));
-      $created = $variables['created'];
-
-      // find the next article, if any
-      // (if it doesn't exist, $next will be an empty array)
-      $seriesQueryNext = new EntityFieldQuery();
-      $seriesQueryNext->entityCondition('entity_type', 'node')
-              ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
-              ->propertyCondition('status', 1)
-              ->propertyCondition('created', $created, '>')
-              ->fieldCondition('field_series', 'tid', $series->tid, '=')
-              ->propertyOrderBy('created', 'ASC')
-              ->range(0,1);
-      $next = $seriesQueryNext->execute();
-      if (!empty($next)) {
-            $next = current($next['node']);
-            $next = node_load($next->nid);
-            $next_url = drupal_get_path_alias('node/'. $next->nid);
-      }
-
-      // find the previous article, if any
-      // (if it doesn't exist, $previous will be an empty array)
-      $seriesQueryPrev = new EntityFieldQuery();
-      $seriesQueryPrev->entityCondition('entity_type', 'node')
-              ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
-              ->propertyCondition('status', 1)
-              ->propertyCondition('created', $created, '<')
-              ->fieldCondition('field_series', 'tid', $series->tid, '=')
-              ->propertyOrderBy('created', 'DESC')
-              ->range(0,1);
-      $previous = $seriesQueryPrev->execute();
-      if (!empty($previous)) {
-            $previous = current($previous['node']);
-            $previous = node_load($previous->nid);
-            $previous_url = drupal_get_path_alias('node/'. $previous->nid);
-      }
-
-      // build up the series nav div
-      $series_nav = '';
-      $series_nav .= $series_image;
-
-      // weird ternary operators will hide nav elements if they don't exist
-      $series_nav .= empty($previous) ? '' : '<div class="more-prev">' . l("previous", $previous_url) . '</div>';
-      $series_nav .= empty($next) ? '' : '<div class="more-next">' . l('next', $next_url) . '</div>';
-
-      if (!empty($previous)) {
-            $previous = '<div class="previous">'. (isset($previous->field_promo_headline['und'][0]['value']) ? $previous->field_promo_headline['und'][0]['value'] : drupal_render($previous->title)). '</div>';
-            $series_nav .= l($previous, $previous_url, array('html' => true));
-      }
-      if (!empty($next)) {
-            $next = '<div class="next">'. (isset($next->field_promo_headline['und'][0]['value']) ? $next->field_promo_headline['und'][0]['value'] : $next->title). '</div>';
-            $series_nav .= l($next, $next_url, array('html' => true));
-      }
-
-      $variables['series_nav'] = $series_nav;
-    } // if isset($variables['field_series'])
+    _tp4_series_nav($variables);
 
     // Add schema.org Article microdata
     $variables['attributes_array']['itemscope'] = 'itemscope';
@@ -259,17 +209,143 @@ function tp4_preprocess_node__feature_article(&$variables, $hook) {
   }
 }
 
-/**
- * Final preparation of node template data for display.
- */
-function tp4_process_node(&$variables, $hook) {
-  // Run node-type-specific process functions, like
-  // tp4_process_node_page() or tp4_process_node_story().
-  $function = __FUNCTION__ . '__' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
+function tp4_preprocess_node__video(&$variables, $hook) {
+  tp4_preprocess_node__openpublish_article($variables, $hook);
+  if ($variables['view_mode'] == 'embed') {
+    $variables['title'] = '';
   }
 }
+
+/**
+ * Override or insert variables into the openpublish_photo_gallery template.
+ */
+function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
+  if ($variables['view_mode'] == 'full') {
+
+    // expose series tid in a data attribute
+    $series = taxonomy_term_load($variables['field_series'][LANGUAGE_NONE][0]['tid']);
+    if ($series) {
+      $variables['attributes_array']['data-series'] = $series->name;
+    }
+
+    // Decide whether to display a TAP banner
+    if ($variables['field_display_tab_banner']['und'][0]['value']) {
+      $variables['gallery_tap_banner'] = array(
+        '#type' => 'markup',
+        '#markup' => '<div class="takepart-take-action-widget"></div>',
+      );
+    }
+
+    // provide "on our radar" block
+    _tp4_on_our_radar_block($variables);
+
+    // provide topic box
+    _tp4_topic_box($variables);
+
+  }
+}
+
+/**
+ * Utility function to provide "On Our Radar" block to node templates
+ */
+function _tp4_on_our_radar_block(&$variables) {
+  $on_our_radar_block = block_load('bean', 'on-our-radar-block');
+  $variables['on_our_radar'] = _block_get_renderable_array(_block_render_blocks(array($on_our_radar_block)));
+}
+
+/**
+ * Utility function to provide topic box to node templates
+ */
+function _tp4_topic_box(&$variables) {
+  if (!empty($variables['field_topic_box'])) {
+    $topic = taxonomy_term_load($variables['field_topic_box']['und'][0]['tid']);
+    if (!empty($topic->field_topic_box_image['und'][0]['uri'])) {
+      $image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));
+      $url = !empty($topic->field_topic_box_link) ? url($topic->field_topic_box_link['und'][0]['url'], array('absolute' => TRUE)) : '';
+      $variables['field_topic_box_top'] = empty($url) ? $image : l($image, $url, array('html' => true));
+    }
+  }
+}
+
+/**
+ * Utility function to provide series nav to node templates
+ */
+function _tp4_series_nav(&$variables) {
+  if(!empty($variables['field_series'])){
+    $series = taxonomy_term_load($variables['field_series']['und'][0]['tid']);
+    $series_image = theme('image', array('path' => $series->field_series_graphic_header['und'][0]['uri']));
+    $created = $variables['created'];
+
+    // find the next article, if any
+    // (if it doesn't exist, $next will be an empty array)
+    $seriesQueryNext = new EntityFieldQuery();
+    $seriesQueryNext->entityCondition('entity_type', 'node')
+            ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video'))
+            ->propertyCondition('status', 1)
+            ->propertyCondition('created', $created, '>')
+            ->fieldCondition('field_series', 'tid', $series->tid, '=')
+            ->propertyOrderBy('created', 'ASC')
+            ->range(0,1);
+    $next = $seriesQueryNext->execute();
+    if (!empty($next)) {
+          $next = current($next['node']);
+          $next = node_load($next->nid);
+          $next_url = drupal_get_path_alias('node/'. $next->nid);
+    }
+
+    // find the previous article, if any
+    // (if it doesn't exist, $previous will be an empty array)
+    $seriesQueryPrev = new EntityFieldQuery();
+    $seriesQueryPrev->entityCondition('entity_type', 'node')
+            ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video'))
+            ->propertyCondition('status', 1)
+            ->propertyCondition('created', $created, '<')
+            ->fieldCondition('field_series', 'tid', $series->tid, '=')
+            ->propertyOrderBy('created', 'DESC')
+            ->range(0,1);
+    $previous = $seriesQueryPrev->execute();
+    if (!empty($previous)) {
+          $previous = current($previous['node']);
+          $previous = node_load($previous->nid);
+          $previous_url = drupal_get_path_alias('node/'. $previous->nid);
+    }
+
+    // build up the series nav div
+    $series_nav = '';
+    $series_nav .= $series_image;
+
+    // weird ternary operators will hide nav elements if they don't exist
+    $series_nav .= empty($previous) ? '' : '<div class="more-prev">' . l("previous", $previous_url) . '</div>';
+    $series_nav .= empty($next) ? '' : '<div class="more-next">' . l('next', $next_url) . '</div>';
+
+    if (!empty($previous)) {
+          $previous = '<div class="previous">'. (isset($previous->field_promo_headline['und'][0]['value']) ? $previous->field_promo_headline['und'][0]['value'] : drupal_render($previous->title)). '</div>';
+          $series_nav .= l($previous, $previous_url, array('html' => true));
+    }
+    if (!empty($next)) {
+          $next = '<div class="next">'. (isset($next->field_promo_headline['und'][0]['value']) ? $next->field_promo_headline['und'][0]['value'] : $next->title). '</div>';
+          $series_nav .= l($next, $next_url, array('html' => true));
+    }
+
+    $variables['series_nav'] = $series_nav;
+  } // if isset($variables['field_series'])
+}
+
+
+/**
+ * Final preparation of node template data for display.
+ *
+ * Commented out by MW on 2014-01-15
+ * Because we have no use for it
+ */
+// function tp4_process_node(&$variables, $hook) {
+//   // Run node-type-specific process functions, like
+//   // tp4_process_node_page() or tp4_process_node_story().
+//   $function = __FUNCTION__ . '__' . $variables['node']->type;
+//   if (function_exists($function)) {
+//     $function($variables, $hook);
+//   }
+// }
 
 /**
  * Override or insert variables into the comment templates.
@@ -293,14 +369,11 @@ function STARTERKIT_preprocess_comment(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("region" in this case.)
  */
-/* -- Delete this line if you want to use this function
-function STARTERKIT_preprocess_region(&$variables, $hook) {
-  // Don't use Zen's region--sidebar.tpl.php template for sidebars.
-  //if (strpos($variables['region'], 'sidebar_') === 0) {
-  //  $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('region__sidebar'));
-  //}
+
+function tp4_preprocess_region(&$variables, $hook) {
+  // dpm($variables, 'variables');
 }
-// */
+
 
 /**
  * Override or insert variables into the block templates.
@@ -337,6 +410,15 @@ function tp4_preprocess_field(&$variables, $hook) {
     $variables['classes_array'][] = 'author';
   }
 
+  if ('field_tab_action_override' == $variables['element']['#field_name']
+   && 'feature_main' == $variables['element']['#view_mode']) {
+    // Limit the main feature to one action override.
+    if (!empty($variables['items'])) {
+      $first = reset($variables['items']);
+      $variables['items'] = array($first);
+    }
+  }
+
   // allow us to add attributes to a field from hook_preprocess_node.
   if (isset($variables['element']['#attributes_array'])) {
     if (!isset($variables['attributes_array'])) {
@@ -361,6 +443,11 @@ function tp4_field__field_topic__openpublish_article($variables) {
 }
 
 /**
+ * @todo TODO can we do this with one set of functions instead of 3?
+ * I.e., Are these fields printed out anywhere else?
+ */
+
+/**
  * Outputs Free Tag taxonomy links for article nodes.
  */
 function tp4_field__field_free_tag__openpublish_article($variables) {
@@ -378,6 +465,34 @@ function tp4_field__field_topic__feature_article($variables) {
  * Outputs free tag taxonomy links for feature article nodes.
  */
 function tp4_field__field_free_tag__feature_article($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs Topic Taxonomy links for gallery nodes.
+ */
+function tp4_field__field_topic__openpublish_photo_gallery($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs free tag taxonomy links for gallery nodes.
+ */
+function tp4_field__field_free_tag__openpublish_photo_gallery($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs Topic Taxonomy links for gallery nodes.
+ */
+function tp4_field__field_topic__video($variables) {
+  return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs free tag taxonomy links for gallery nodes.
+ */
+function tp4_field__field_free_tag__video($variables) {
   return tp4_field__field_topic__openpublish_article($variables);
 }
 
@@ -415,6 +530,14 @@ function tp4_field__field_author__feature_article($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
 
+function tp4_field__field_author__openpublish_photo_gallery($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+
+function tp4_field__field_author__video($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+
 function tp4_field__field_article_subhead__openpublish_article($variables) {
   $output = '';
 
@@ -427,12 +550,21 @@ function tp4_field__field_article_subhead__openpublish_article($variables) {
   $output .= '</span>';
 
   // Render the top-level DIV.
-  $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</h2>';
+  if($variables['element']['#view_mode'] == 'feature_main_tpl'){
+    $path = drupal_get_path_alias('node/'. $variables['element']['#object']->nid);
+    $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . l($output, $path, array('html' => true)) . '</h2>';
+  }else{
+    $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</h2>';
+  }
 
   return $output;
 }
 
 function tp4_field__field_article_subhead__feature_article($variables) {
+  return tp4_field__field_article_subhead__openpublish_article($variables);
+}
+
+function tp4_field__field_article_subhead__video($variables) {
   return tp4_field__field_article_subhead__openpublish_article($variables);
 }
 
@@ -485,7 +617,10 @@ function tp4_field__field_article_main_image__feature_article($variables) {
     // TODO: do this through drupal APIs
     $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
 
-    // Don't display the caption label no matter what
+    // The caption field is not shown on the default file display mode.
+    // TODO: Make it available on a display mode.
+    $caption_items = field_get_items('file', $item['#file'], 'field_media_caption');
+    $item['field_media_caption'] = field_view_value('file', $item['#file'], 'field_media_caption', $caption_items[0]);
     $item['field_media_caption']['#label_display'] = 'hidden';
 
     $output .= '<figure ' . $variables['item_attributes'][$delta] . '>';
@@ -498,6 +633,21 @@ function tp4_field__field_article_main_image__feature_article($variables) {
   return $output;
 }
 
+function tp4_field__field_video__video($variables) {
+  $output = '';
+
+  foreach ($variables['items'] as $delta => $item) {
+    $output .= '<figure ' . $variables['item_attributes'][$delta] . '>';
+    $output .= render($item);
+    //$caption = $item['#item']['field_media_caption']['und'][0]['value'];
+    if (!empty($caption)) {
+      $output .= '<figcaption>' . $caption . '</figure>';
+    }
+  }
+
+  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+  return $output;
+}
 
 /**
  * Implements template_preprocess_entity().
@@ -505,7 +655,6 @@ function tp4_field__field_article_main_image__feature_article($variables) {
  * This is legacy code from chunkpart to make the "more on our site" bean work
  */
 function tp4_preprocess_entity(&$variables, $hook) {
-
   $variables['custom_render'] = array();
   switch ($variables['entity_type']) {
     case "bean":
@@ -523,15 +672,17 @@ function tp4_preprocess_entity(&$variables, $hook) {
     	    if ($node->status == 1) {
     	      $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
 
-    	      if ($node->type == 'openpublish_article' || $node->type == 'feature_article') {
+    	      if ($node->type == 'openpublish_article' || $node->type == 'feature_article' || $node->type == 'video') {
     		      $main_image = field_get_items('node', $node, 'field_thumbnail');
     	      }
     	      if ($node->type == 'action') {
     		      $main_image = field_get_items('node', $node, 'field_action_main_image');
     	      }
     	      if ($node->type == 'openpublish_photo_gallery') {
-    		      //field_gallery_main_image would also work here:
-    		      $main_image = field_get_items('node', $node, 'field_gallery_images');
+              $main_image = field_get_items('node', $node, 'field_thumbnail');
+              if($main_image == NULL){
+                $main_image = field_get_items('node', $node, 'field_gallery_images');
+              }
     	      }
     	      if ($node->type == 'openpublish_video') {
     		      $main_image = field_get_items('node', $node, 'field_thumbnail');
@@ -565,5 +716,18 @@ function tp4_preprocess_entity(&$variables, $hook) {
 function tp4_preprocess_panels_pane(&$variables) {
   if($variables['pane']->panel == 'main_featured'){
     $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
+    if ($variables['content']['#bundle'] == 'video') {
+      $variables['title_attributes_array']['class'][] = 'no-overlap';
+      $variables['title_link'] = url('node/' . $variables['content']['#node']->nid);
+    }
   }
+}
+
+function tp4_field__field_campaign_media_title($variables) {
+  return tp4_field_campaign_media_title($variables);
+}
+function tp4_field_campaign_media_title($variables){
+  $output = '';
+  $output .= '<h4 class="title">'. $variables['items'][0]['#markup']. '</h4>';
+  return $output;
 }

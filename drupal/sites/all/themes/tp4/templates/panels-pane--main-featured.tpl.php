@@ -26,18 +26,29 @@
   <?php endif; ?>
 
     <header class="entry-header">
-      <?php print render($variables['content']['field_thumbnail']); ?>
+      <?php if (!empty($variables['content']['field_video'])) {
+        print render($variables['content']['field_video']);
+      }
+      else {
+        print render($variables['content']['field_thumbnail']);
+      } ?>
       <?php print render($title_prefix); ?>
-      <?php if ($title): ?>
-        <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
-      <?php endif; ?>
+      <?php if ($title) {
+        if (!empty($title_link)) {
+          $title_heading = '<a href="' . $title_link . '">' . $title . '</a>';
+        }
+        else {
+          $title_heading = $title;
+        }
+        print '<h2' . $title_attributes . '>' . $title_heading . '</h2>';
+      } ?>
       <?php print render($title_suffix); ?>
       <?php if ($unpublished): ?>
         <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
       <?php endif; ?>
     </header>
 
-    <?php 
+    <?php
       hide($variables['content']['comments']);
       hide($variables['content']['links']);
       $tab_title_override = variable_get('main_feature_tab_title_override', NULL);

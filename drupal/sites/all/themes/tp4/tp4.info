@@ -68,17 +68,21 @@ stylesheets[all][] = css/styles.css
 scripts[] = js/custom-lib/tpregions.jquery.js
 scripts[] = js/custom-lib/tpanalytics.js
 scripts[] = js/tpanalytics.events.js
-scripts[] = js/tpanalytics.media.js
 scripts[] = js/doubletaptogo.js
 scripts[] = js/snap.js
+scripts[] = js/vendor/swipe/swipe.js
 scripts[] = js/tp_ad_takeover.jquery.js
 scripts[] = js/tpsocial.jquery.js
 scripts[] = js/tpsocial.services.js
 scripts[] = js/hoverintent.js
 scripts[] = js/jquery.tp4sticky.js
-scripts[] = ../takepart_core/js/tpmodal.jquery.js
+scripts[] = js/jquery.tpinfographic.js
+scripts[] = js/tpmodal.jquery.js
 scripts[] = js/social_interstitial.js
 scripts[] = js/script.js
+scripts[] = js/gallery.js
+scripts[] = js/campaign.js
+
 
 
 ; This section lists the regions defined in Zen's default page.tpl.php and

@@ -107,14 +107,10 @@ function takepart_search_feature_default_search_api_index() {
               "takepart_campaign" : "takepart_campaign",
               "feature_article" : "feature_article",
               "takepart_page" : "takepart_page",
-              "petition_action" : "petition_action",
               "openpublish_photo_gallery" : "openpublish_photo_gallery",
-              "pledge_action" : "pledge_action",
               "profile" : "profile",
-              "topic_front" : "topic_front",
               "venue" : "venue",
-              "openpublish_video" : "openpublish_video",
-              "webform" : "webform"
+              "video" : "video"
             }
           }
         }
@@ -216,28 +212,13 @@ function takepart_search_feature_default_search_api_index() {
  */
 function takepart_search_feature_default_search_api_server() {
   $items = array();
-  $items['solr'] = entity_import('search_api_server', '{
-    "name" : "Phase2 Development SOLR Server",
-    "machine_name" : "solr",
-    "description" : "This is the Phase2 Development SOLR Server to be used on P2 development sites.",
-    "class" : "search_api_solr_service",
-    "options" : {
-      "host" : "solr.p2technology.com",
-      "port" : "8081",
-      "path" : "\\/solr-www.takepart.com",
-      "http_user" : "",
-      "http_pass" : ""
-    },
-    "enabled" : "0",
-    "rdf_mapping" : []
-  }');
   $items['takepart_solr_production'] = entity_import('search_api_server', '{
     "name" : "TakePart SOLR Production",
     "machine_name" : "takepart_solr_production",
     "description" : "Used for SOLR on TakePart.com",
     "class" : "search_api_solr_service",
     "options" : {
-      "host" : "stage-solr.dev.takepart.com",
+      "host" : "solr.prod.takepart.com",
       "port" : "8080",
       "path" : "\\/solr",
       "http_user" : "",

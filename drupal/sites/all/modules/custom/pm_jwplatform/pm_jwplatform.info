@@ -1,0 +1,15 @@
+name = JW Platform
+description = JW Platform hosted and stream video integration for Media.
+core = 7.x
+version = 7.x-1.0
+dependencies[] = media
+dependencies[] = media_internet
+dependencies[] = libraries (2.x)
+configure = admin/config/media/pm_jwplatform
+
+files[] = lib/Drupal/JWPlatform/ContentStreamWrapper.php
+files[] = lib/Drupal/JWPlatform/ChannelStreamWrapper.php
+files[] = lib/Drupal/JWPlatform/VideoStreamWrapper.php
+files[] = lib/Drupal/JWPlatform/MediaInternet/ContentProvider.php
+files[] = lib/Drupal/JWPlatform/MediaInternet/ChannelProvider.php
+files[] = lib/Drupal/JWPlatform/MediaInternet/VideoProvider.php

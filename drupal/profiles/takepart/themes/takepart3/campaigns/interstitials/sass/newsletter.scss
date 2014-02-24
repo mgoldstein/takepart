@@ -49,6 +49,7 @@ body {
 }
 
 #page #dont {
+	font-family: AdelleSans-Light, sans-serif;
 	font-size: 12px;
 }
 
@@ -61,25 +62,26 @@ body {
 }
 
 .form-type-textfield label {
-	position: absolute;
-	z-index: 2;
-	line-height: 40px;
-	padding: 0 5px;
-	padding-left: 10px;
-	color: #999;
-	border: 1px solid transparent;
+	display: none;
 }
 
 .form-type-textfield input {
 	max-width: 100%;
-	font-size: 18px;
+	font-size: 12px;
+	font-family: AdelleSans-Light, sans-serif;
 	z-index: 1;
 	border: 1px solid #ccc;
 	box-shadow: inset 5px 5px 10px 0 rgba(0, 0, 0, .1);
 	background: #fff;
 	line-height: 32px;
+	min-height: 32px;
 	padding: 0 5px;
 	position: relative;
+	margin: 0;
+	width: 100%;
+	&:focus::-webkit-input-placeholder { color:transparent; }
+	&:focus:-moz-placeholder { color:transparent; }
+	&:focus::-moz-placeholder { color:transparent; }
 }
 
 .form-type-textfield input:focus {
@@ -90,14 +92,13 @@ body {
 
 .form-actions input {
 	border: none;
-	font-size: 24px;
-	text-transform: uppercase;
-	font-family: TradeGothicLTStdCnBold, sans-serif;
 	color: #fff;
 	width: 100%;
 	padding: .25em;
 	cursor: pointer;
 	background: #01BF9E;
+	font-size: 24px;
+	font-family: AdelleSans-Regular, sans-serif;
 }
 
 .form .thank-you-message {
@@ -110,7 +111,9 @@ a {
 	display: none;
 }
 form{
-	color: #666;
+	color: #555;
+	font-family: AdelleSans-Light, sans-serif;
+	font-size: 12px;
 }
 header{
 	img{

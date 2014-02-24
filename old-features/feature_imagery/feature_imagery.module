@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the feature_imagery feature.
- */
-
-include_once 'feature_imagery.features.inc';

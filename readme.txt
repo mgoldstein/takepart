@@ -3,17 +3,16 @@ All changes should be isolated to the sites/all directory and it subdirectories,
 or to the profiles/takepart directory for fixes. DO NOT modify the core Drupal
 files or the OpenPublish files.
 
-
 Directories in this section should not be modified as they are part of the
 Drupal or OpenPublish cores and modifications will break the upgrade path.
-
-  ./themes (do NOT modify)
-
-		Drupal core themes.
 
 	./includes (do NOT modify)
 
 		Include files that make up Drupal core.
+
+  ./misc (do NOT modify)
+
+    Miscellaneoud assets for Drupal core.
 
 	./modules (do NOT modify)
 
@@ -21,16 +20,36 @@ Drupal or OpenPublish cores and modifications will break the upgrade path.
 
 	./scripts
 
-		Scripts for automating CMS activities.
+		Scripts for automating CMS activities. The following scripts are provided
+    as part of Drupal core and should NOT be modified, any additional scripts
+    are custom scripts used for site release and maintenance.
+
+    - code-clean.sh
+    - cron-curl.sh
+    - cron-lynx.sh
+    - drupal.sh
+    - dump-database-d6.sh
+    - dump-database-d7.sh
+    - generate-d6-content.sh
+    - generate-d7-content.sh
+    - password-hash.sh
+    - run-tests.sh
+    - test.script
+
+  ./themes (do NOT modify)
+
+    Drupal core themes.
 
 	./profiles
 
-		Drupal installation profiles. This is code that is part of the core
-    distribution, in our case OpenPublish
+		Drupal installation profiles. The following profiles are provided as part
+    of Drupal core.
 
-	./profiles/openpublish
+    - minimal
+    - standard
+    - testing
 
-		The OpenPublish profile that extends Drupal core.
+    The TakePart profile (takepart) is a custom profile specific to our site.
 
 
 Directories in this section can be modified if necessary for a fix, new
@@ -52,22 +71,18 @@ development should be done in the sites/all directory
 
 		The primary TakePart theme. Including js, css, templates and images
 
-	./profiles/takepart/themes/takepart_embeddable
-
-		Theme for partnership with Starbucks, renders site without a footer or
-    header
-
 	./profiles/takepart/modules
 
-		Custom TakePart modules. These should be in sites/all/modules/custom
+		Custom TakePart modules. These are being phased out in favor of contributed
+    modules and a limited number of custom modules in sites/all/modules/custom
 
 	./profiles/takepart/modules/features
 
-		Custom TakePart features (CMS content in code). These should be in
-    site/all/modules/custom/features (or possibly sites/all/modules/features,
-    as long as it does not conflict with the directory for the Features module
-    itself)
-
+    Legacy feature modules that have been extended to be modules. The features
+    portion of these modules have been migrated to the current set of features
+    in sites/all/module/features. The remaining module functionality is being
+    phased out in favor of contributed modules and a limited number of custom
+    modules in sites/all/modules/custom
 
 Directories in this section can be modified as needed, a separation of
 contributed modules and theming from custom TakePart modules and theming should
@@ -77,15 +92,11 @@ done in a manner that would allow them to be contributed back to the community.
 	./sites
 
 		All the modules and themes developed or used specifically for the TakePart
-    site 
+    site
 
 	./sites/all
 
 		Any code not part of core or the installation/distribution profile.
-
-	./sites/all/themes
-
-		Custom and 3rd party themes 
 
 	./sites/all/libraries
 
@@ -95,28 +106,52 @@ done in a manner that would allow them to be contributed back to the community.
 
 		Modules for augmenting Drupal's core functionality
 
+  ./sites/all/modules/contrib
+
+    Contributed modules
+
+  ./sites/all/modules/contrib/features
+
+    The 'Features' contributed module (NOT for features created using said
+    module)
+
 	./sites/all/modules/custom
 
 		Custom TakePart modules
 
-	./sites/all/modules/contrib
+  ./sites/all/modules/development
 
-		Contributed 3rd party modules
+    Development modules only. Any modules that are for development use only
+    (e.g. devel) should be downloaded and enabled in this directory.
 
-	./sites/all/modules/contrib/features
+  ./sites/all/modules/features
 
-		The 'Features' module (not for features created using the Features module)
+    Site features created using the contributed 'Features' module. Files in this
+    directory should not be editted directly. IMPORTANT: These modules are meant
+    to be generated using the Features modules and must NOT be extended with
+    custom module code.
 
 	./sites/all/modules/openpublish_features
 
-		OpenPublish features (CMS content in code)
+		Legacy Openpublish feature module that provided Features Boxes and Image
+    Boxes. This module is being phased out.
 
-	./sites/default
+  ./sites/all/themes
 
-		Drupal settings files and location of 'files' symlink to assets directory
+    Contributed themes
 
-	./systems 
+    - pangea
+    - rubik
+    - tao
+    - zen
 
-		Files for integration with external systems/libraries and tests. This
-    directory needs further review before making any modifications
+    Custom themes
+
+    - chunkpart (being phased out)
+    - takepart_core (parent theme to chunkpart and takepart3, being phased out)
+    - tp4 (current theme)
+
+  ./sites/default
+
+    Drupal settings files and location of 'files' symlink to assets directory
 

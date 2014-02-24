@@ -8,6 +8,7 @@
 //
 @include breakpoint($breakpoint-desktop) {
   .node-openpublish-article.view-mode-full,
+  .node-video.view-mode-full,
   .node-feature-article.view-mode-full {
     #article-social {
       float: left;
@@ -21,7 +22,8 @@
       float: left;
     }
   }
-  .node-openpublish-article.view-mode-full {
+  .node-openpublish-article.view-mode-full,
+  .node-video.view-mode-full {
     #article-content,
     #series-navigation,
     #article-footer,
@@ -57,6 +59,12 @@
 //
 // Social Links
 //
+.social {
+  // Sprite Setup
+  @include all-tp-social-sprites;
+  .comments-link a { @include tp-social-sprite(comment); }
+  .trigger a { @include tp-social-sprite(more); }
+}
 #article-social {
 
   @media (max-width:979px) {
@@ -78,11 +86,6 @@
   @media (max-width: 767px) {
     margin-bottom: 1em;
   }
-
-  // Sprite Setup
-  @include all-tp-social-sprites;
-  .comments-link a { @include tp-social-sprite(comment); }
-  .trigger a { @include tp-social-sprite(more); }
 
   #article-more-shares {
     .tp-social-link {
@@ -241,9 +244,10 @@
 //
 // HEADER STYLES
 // common styles
-// 
+//
 .node-openpublish-article.view-mode-full,
-.node-feature-article.view-mode-full {
+.node-feature-article.view-mode-full,
+.node-video.view-mode-full {
   .article-header {
     .node-title {
       // these values are extremely stupid.
@@ -395,7 +399,8 @@
 }
 
 .node-feature-article.view-mode-full,
-.node-openpublish-article.view-mode-full {
+.node-openpublish-article.view-mode-full,
+.node-video.view-mode-full {
   .field-name-body {
     font-family: $adelle-light;
     font-weight: normal;
@@ -486,7 +491,7 @@
     // blockquote styling
     blockquote {
       font-family: $ashbury-light-italic;
-      margin: 2.5em 0;
+      margin: 2.5em 1em;
       position: relative;
       &:before,
       &:after {
@@ -569,6 +574,7 @@
           line-height: .15;
           vertical-align: text-bottom;
           padding-left: .125em;
+          white-space: nowrap;
         }
       }
 
@@ -657,9 +663,11 @@
 
   // INLINE CONTENT
   // related nodes
+  a:hover .inline-content-nodes h2{
+    text-decoration: underline;
+  }
   .inline-content-nodes {
     margin: 1.5em 0; // articles have horizontal padding
-
     &.vertical {
       @media (max-width: 767px) {
 	@include clearfix;
@@ -695,7 +703,7 @@
 	  font-size: 14px;
 	  line-height: 1.285714286;
     margin-top: 0;
-	  a { color: black; }
+	  color: black;
 	}
       }
 
@@ -724,7 +732,7 @@
       padding: 9px 0 15px;
       width: 75px;
       color: white;
-      background-color: $light-blue;
+      background-color: $blue;
       margin: 0 auto 14px;
       @include border-corner-radius(bottom, left, 36px);
       @include border-corner-radius(bottom, right, 36px);
@@ -888,7 +896,7 @@
   width: auto;
   padding: 10px;
   position: relative;
-  margin-top: 1.5em;
+  margin: 1.5em 0;
   &:before {
     content: '';
     display: block;
@@ -1059,8 +1067,9 @@
 
 //
 // Sticky Ad Unit for Sidebar
-// 
-.page-node.node-type-openpublish-article {
+//
+.page-node.node-type-openpublish-article,
+.page-node.node-type-video {
   .block-boxes-ga_ad-bottom {
     @include breakpoint($breakpoint-desktop) {
       &.sticky {
@@ -1070,6 +1079,7 @@
     }
   }
 }
+
 
 .leaderboard div {
   margin: 0 auto;

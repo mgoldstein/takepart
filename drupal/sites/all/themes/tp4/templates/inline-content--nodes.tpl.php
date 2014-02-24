@@ -17,9 +17,14 @@
  * $element['#attributes'] - The attributes (class, id, etc...) of the replacement
  */
 ?>
-
-<aside class="inline-content inline-content-nodes <?=$element['#orientation']?>">
-  <?php foreach ($element['#replacements'] as $key => $item): ?>
-    <?php print render($item); ?>
-  <?php endforeach; ?>
-</aside>
+<?php
+  $nid = $variables['element']['#inline_content']->field_ic_content['und'][0]['nid'];
+  $path = url('node/'. $nid); // drupal_get_path_alias('node/'. $nid);
+?>
+<a href="<?php print $path; ?>">
+  <aside class="inline-content inline-content-nodes <?=$element['#orientation']?>">
+    <?php foreach ($element['#replacements'] as $key => $item): ?>
+      <?php print render($item); ?>
+    <?php endforeach; ?>
+  </aside>
+</a>

@@ -6,7 +6,12 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print render($content['field_article_main_image']); ?>
+  <?php if (!empty($content['field_video'])) {
+    print render($content['field_video']);
+  }
+  else {
+    print render($content['field_article_main_image']);
+  } ?>
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
     <?php print render($title_prefix); ?>
     <?php if (!$page && $title): ?>

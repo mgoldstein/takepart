@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the comscore_settings feature.
- */
-
-include_once 'comscore_settings.features.inc';

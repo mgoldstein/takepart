@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Group feature.
- */
-
-include_once('takepart_group.features.inc');

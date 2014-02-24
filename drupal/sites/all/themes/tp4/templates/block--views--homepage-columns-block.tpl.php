@@ -8,16 +8,25 @@
  */
 ?>
 <div id="<?php print $block_html_id; ?>" class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php print render($title_prefix); ?>
-  <?php if($variables['elements']['#block']->bid == 'views-takeaction_homepage-block'): ?>
-    <div class="megaphone"></div>
-  <?php endif; ?>
-  <div class="line"></div>
-  <?php if ($title): ?>
-    <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+  <?php
+  $output = '';
+  $output .= render($title_prefix);
+  if($variables['elements']['#block']->bid == 'views-takeaction_homepage-block'){
+    $output .= '<div class="megaphone"></div>';
+    $path = '//takeaction.takepart.com';
+  }
+  else{
+    global $base_url;
+    $path = $base_url. '/features-columns';
+  }
+  $output .= '<div class="line"></div>';
+  if ($title){
+    $output .= '<h2'. $title_attributes. '>'. $title. '</h2>';
+  }
+  $output .= render($title_suffix);
 
-  <?php print $content; ?>
+  print l($output, $path, array('html' => true, 'attributes' => array('class' => array('column-header'))));
+  print $content;
+  ?>
 
 </div>

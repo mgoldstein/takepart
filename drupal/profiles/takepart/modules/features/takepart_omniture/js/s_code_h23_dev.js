@@ -97,7 +97,7 @@ function s_doPlugins(s) {
     s.setupFormAnalysis();
 
     /* Site Search */
-    if(s.prop7){
+    if (s.prop7) {
         s.prop7=s.prop7.toLowerCase();
         s.eVar7=s.prop7;
         var t_search=s.getValOnce(s.eVar7,'ev7',0);

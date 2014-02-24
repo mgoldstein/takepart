@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the of_the_day feature.
+ */
+
+include_once 'of_the_day.features.inc';

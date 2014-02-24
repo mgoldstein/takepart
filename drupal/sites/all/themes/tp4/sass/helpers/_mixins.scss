@@ -105,6 +105,7 @@
 
 @mixin icon-photo-gallery {
   &:after {
+    display: inline;
     @include tp-icon();
     content: " \1F4F7";
   }

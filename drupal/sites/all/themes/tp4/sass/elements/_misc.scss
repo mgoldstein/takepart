@@ -846,7 +846,6 @@ tr.selected td {
 }
 
 .tpmodal_close {
-    background: url(/sites/all/modules/custom/unipop/css/images/close_popup.png) no-repeat;
     height: 13px;
     width: 13px;
     margin: 5px 5px 0 0;
@@ -869,9 +868,17 @@ tr.selected td {
 }
 
 .interstitial_modal_modal .tpmodal_close {
-  background: url(/profiles/takepart/themes/takepart3/campaigns/interstitials/images/close.png);
   width: 40px;
   height: 40px;
+  &:before, &::before{
+    content: '\2421';
+    font-size: 36px;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: white;
+    font-family: SSGizmo;
+  }
 }
 
 .interstitial_modal_modal iframe {
@@ -889,3 +896,20 @@ tr.selected td {
   overflow: hidden;
 }
 
+/* Video Player ------------------------- */
+.pm-jwplayer{
+  &.loading{
+    width: 100%;
+    background: image-url('video-loading.gif');
+    background-size: cover;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 */
+  }
+  &.blocked{
+    width: 100%;
+    background: image-url('video-blocked.gif') no-repeat center center;
+    background-size: cover;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 */
+  }
+}

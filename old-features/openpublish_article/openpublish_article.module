@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Article feature.
- */
-
-include_once('openpublish_article.features.inc');

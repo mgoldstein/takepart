@@ -442,7 +442,7 @@ function inline_content_permission() {
       'title' => t('Update Inline Content'),
       'restrict access' => TRUE,
     ),
-    'create inline_content signature' => array(
+    'create inline_content inline_content' => array(
       'title' => t('Create Inline Content'),
       'restrict access' => TRUE,
     ),

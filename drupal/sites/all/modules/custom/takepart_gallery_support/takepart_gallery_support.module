@@ -1,0 +1,304 @@
+<?php
+/**
+ * @file
+ * TakePart module for functions related to the January 2014 redesign
+ * of Takepart Galleries
+ */
+
+define("TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH", drupal_get_path('module', 'takepart_gallery_support') . '/templates');
+
+/**
+ * Implements hook_help().
+ */
+function takepart_gallery_support_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#takepart_gallery_support':
+      return '<p>' . t('Support module for TP galleries.') . '</p>';    
+  }
+}
+
+/**
+ * Implements hook_block_info();
+ */
+function takepart_gallery_support_block_info() {
+  $blocks = array();
+
+  $blocks['takepart_gallery_cover_slide'] = array(
+    'info' => t('Takepart Gallery Cover Slide'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  $blocks['takepart_gallery_content'] = array(
+    'info' => t('Takepart Gallery Content'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view();
+ */
+function takepart_gallery_support_block_view($delta) {
+  $block = array();
+
+  switch ($delta) {
+    case 'takepart_gallery_cover_slide':
+      $block['content'] = _takepart_gallery_cover_slide();
+      break;
+    case 'takepart_gallery_content':
+      $block['content'] = _takepart_gallery_content();
+      break;
+  }
+
+  return $block;
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function takepart_gallery_support_theme() {
+  $theme_hooks = array();
+
+  $theme_hooks['gallery_cover_slide'] = array(
+    'variables' => array(
+      'node' => NULL,
+    ),
+    'template' => 'gallery-cover-slide',
+    'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH, 
+  );
+
+  $theme_hooks['gallery_content'] = array(
+    'variables' => array(
+      'node' => NULL,
+    ),
+    'template' => 'gallery-content',
+    'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH, 
+  );
+
+
+  return $theme_hooks;
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ *
+ * Prepare variables for including in the cover slide template
+ */
+function template_preprocess_gallery_cover_slide(&$variables) {
+  $node = $variables['node'];
+  $variables['gallery_title'] = check_plain($node->title);
+
+  if ($node->field_gallery_main_image) {
+    $cover_slide = field_get_items('node', $node, 'field_gallery_main_image');
+  } else {
+    $cover_slide = field_get_items('node', $node, 'field_thumbnail');
+  }
+  $alt_text = $node->title;
+  if ($alt_items = field_get_items('file', $cover_slide[0]['file'], 'field_media_alt')) {
+    $alt_text = drupal_render(field_view_value('file', $cover_slide[0]['file'], 'field_media_alt', $alt_items[0]));
+  }
+
+  $variables['gallery_cover_image'] = theme('image_style', array(
+    'path' => $cover_slide[0]['file']->uri,
+    'style_name' => 'tp_gallery_slide',
+    'alt' => $alt_text,
+  ));
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ *
+ * Prepare variables for including in the gallery-content template
+ */
+function template_preprocess_gallery_content(&$variables) {
+  $node = $variables['node'];
+
+  // prepare the gallery headlines and stuff
+  // topic box
+  $items = field_get_items('node', $node, 'field_topic_box');
+  if ($items) {
+    $topic = taxonomy_term_load($items[0]['tid']);
+    if (!empty($topic->field_topic_box_image['und'][0]['uri'])) {
+      $image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));
+      $url = !empty($topic->field_topic_box_link) ? url($topic->field_topic_box_link['und'][0]['url'], array('absolute' => TRUE)) : '';
+      $variables['field_topic_box_top'] = empty($url) ? $image : l($image, $url, array('html' => true));
+    }
+  }
+
+  // headline
+  $variables['gallery_title'] = check_plain($node->title);
+
+  // subheadline
+  $items = field_get_items('node', $node, 'field_subhead');
+  $variables['gallery_subhead'] = field_view_value('node', $node, 'field_subhead', $items[0]);
+  if ($variables['gallery_subhead']) {
+    $variables['gallery_subhead']['#prefix'] = '<h2 class="gallery-subhead">';
+    $variables['gallery_subhead']['#suffix'] = '</h2>';
+  }
+
+
+  /**
+   * @todo this is duplicated code
+   */
+  // byline
+  $items = field_get_items('node', $node, 'field_author');
+  $authors = '';
+  if ($items) {
+    $number_of_authors = count($items);
+    foreach ($items as $delta => $author) {
+      $author_node = node_load($author['nid']);
+      $authors .= '<span class="byline-author">';
+      $authors .= l($author_node->title, 'node/' . $author_node->nid, array(
+        'attributes' => array(
+            'rel' => 'author'
+            ) 
+        ) );
+      $authors .= '</span>';
+      // add commas for lists of 3 or greater ($delta is zero-indexed)
+      $authors .= ($number_of_authors > 2 && $delta < $number_of_authors - 2 ) ? ', ' :'';
+      // add 'and' for lists of 2 or greater ($delta is zero-indexed)
+      $authors .= ($number_of_authors > 1 && $delta == $number_of_authors - 2 ) ? ' and ' :'';
+    }
+  }
+  $variables ['gallery_authors'] = $authors;
+
+  // slides
+  $variables['slides'] = array();
+  $slides = field_get_items('node', $node, 'field_gallery_images');
+  $variables['slides_temp'] = array();
+  if ($slides) {
+    foreach ($slides as $delta => $item) {
+      $file = $item['file'];
+      $slide = array();
+
+      $items = field_get_items('file', $file, 'field_image_title');
+      $slide['title'] = $items[0]['safe_value'];
+
+      $slide['attributes'] = array();
+      $slide['attributes']['class'][] = 'gallery-slide';
+      $slide['attributes']['class'][] = 'slide' . $delta;      
+      if($slide['title']) {
+        $slide['attributes']['data-token'] = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", htmlspecialchars_decode($slide['title'], ENT_QUOTES))));
+      } else {
+        $slide['attributes']['data-token'] = strtolower(strtok(htmlspecialchars_decode($file->filename, ENT_QUOTES), "."));
+      }
+
+      $alt_text = $slide['title'];
+      if ($alt_items = field_get_items('file', $file, 'field_media_alt')) {
+        $alt_text = drupal_render(field_view_value('file', $file, 'field_media_alt', $alt_items[0]));
+      }
+
+      $slide['image'] = theme('image_style', array(
+        'style_name' => 'tp_gallery_slide',
+        'path' => $file->uri,
+        'alt' => $alt_text,
+      ));
+
+      $items = field_get_items('file', $file, 'field_media_caption');
+      $caption = field_view_value('file', $file, 'field_media_caption', $items[0]);
+      $slide['caption'] = drupal_render($caption);
+
+      $variables['slides'][$delta] = $slide;
+    }
+  }
+
+  //next gallery
+  if (function_exists('article_support_next_story')) {
+    $next_gallery = article_support_next_story($node, 'openpublish_photo_gallery');
+  }
+
+  if ($next_gallery) {
+    $slide = array();
+
+    $next_gallery_node = $next_gallery->node;
+    $slide['title'] = check_plain($next_gallery_node->title);
+
+    $slide['attributes'] = array();
+    $slide['attributes']['class'][] = 'gallery-slide';
+    $slide['attributes']['class'][] = 'gallery-slide-next-gallery';
+    $slide['attributes']['class'][] = 'slide' . ($delta + 1);
+    $slide['attributes']['data-token'] = 'next-gallery';
+
+    if ($next_gallery_node->field_gallery_main_image) {
+      $cover_slide = field_get_items('node', $next_gallery_node, 'field_gallery_main_image');
+    } else {
+      $cover_slide = field_get_items('node', $next_gallery_node, 'field_thumbnail');
+    }
+
+    $cover_slide = file_load($cover_slide[0]['fid']);
+
+    $alt_text = $node->title;
+    if ($alt_items = field_get_items('file', $cover_slide, 'field_media_alt')) {
+      $alt_text = drupal_render(field_view_value('file', $cover_slide, 'field_media_alt', $alt_items[0]));
+    }
+
+    $slide['image'] = theme('image_style', array(
+      'path' => $cover_slide->uri,
+      'style_name' => 'tp_gallery_slide',
+      'alt' => $alt_text,
+    ));
+
+    $items = field_get_items('node', $next_gallery_node, 'body');
+    $caption = field_view_value('node', $next_gallery_node, 'body', $items[0]);
+    $slide['caption'] = drupal_render($caption);
+
+    $slide['href'] = $next_gallery->href . '#first-slide';
+
+    $items = field_get_items('node', $next_gallery_node, 'field_topic');
+    $topics = '';
+    foreach ($items as $item) {
+      $topic = taxonomy_term_load($item['tid']);
+      $topics .= check_plain($topic->name) . ' ';
+    }
+    $slide['attributes']['data-topic'] = trim($topics);
+
+    $slide['node'] = $next_gallery_node; // mostly for debugging
+    $variables['next_gallery'] = $slide;
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ *
+ * Put a class on the gallery blocks.
+ */
+function takepart_gallery_support_preprocess_block(&$variables) {
+  if($variables['block']->delta == 'takepart_gallery_cover_slide') {
+    $variables['classes_array'][] = 'takepart-gallery-cover-slide';
+    $variables['classes_array'][] = 'hidden';
+  }
+  if($variables['block']->delta == 'takepart_gallery_content') {
+    $variables['classes_array'][] = 'takepart-gallery-content';
+    // $variables['classes_array'][] = 'hidden';
+  }
+}
+
+/**
+ * Utility function to render out the cover slide.
+ */
+function _takepart_gallery_cover_slide() {
+
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node = node_load($nid);
+    $show_cover = field_get_items('node', $node, 'field_display_cover');
+
+    if ($show_cover[0]['value']) {
+      return theme('gallery_cover_slide', array('node' => $node));
+    }
+  }
+}
+
+/**
+ * Utility function to render out the gallery content
+ */
+function _takepart_gallery_content() {
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+    $node = node_load($nid);
+
+    return theme('gallery_content', array('node' => $node));
+  }
+}

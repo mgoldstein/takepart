@@ -80,6 +80,17 @@ function takepart_omniture_token_info() {
     ),
   );
 
+  $info['tokens']['tp_omniture']['stringfixes'] = array(
+    'name' => t('Stringfixes'),
+    'description' => t('Cleanup common problems.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_stringfixes",
+    ),
+  );
+
+
   $info['tokens']['tp_omniture']['first_word'] = array(
     'name' => t('Grab the first word'),
     'description' => t('Grab the first word with html_entity_decode function.'),

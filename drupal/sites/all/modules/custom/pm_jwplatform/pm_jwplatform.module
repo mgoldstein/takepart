@@ -1,0 +1,352 @@
+<?php
+
+/* Admin
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_permission().
+ */
+function pm_jwplatform_permission() {
+  return array(
+    'configure pm_jwplatform' => array(
+      'title' => t('Configure the JW Platform'),
+      'description' => t('Configure the API settings for the JW Platform.'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pm_jwplatform_menu() {
+  return array(
+    'admin/config/media/pm_jwplatform' => array(
+      'title' => 'JW Platform',
+      'description' => 'Settings for JW Platform hosting and streaming.',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('pm_jwplatform_settings_form'),
+      'access arguments' => array('configure pm_jwplatform'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'pm_jwplatform.admin.inc',
+    ),
+  );
+}
+
+
+/* Libraries
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_libraries_info().
+ */
+function pm_jwplatform_libraries_info() {
+  return array(
+    'jwplatform' => array(
+      'name' => 'JW Platform API',
+      'vendor url' => 'http://developer.longtailvideo.com/botr/',
+      'download url' => 'http://developer.longtailvideo.com/botr/',
+      'version arguments' => array(
+        'file' => 'botr/api.php',
+        'pattern' => '/Version:\s+(\d[.\d]*)/',
+        'lines' => 12,
+      ),
+      'files' => array(
+        'php' => array(
+          'botr/api.php',
+        ),
+      ),
+    ),
+  );
+}
+
+function pm_jwplatform_api_available() {
+  $library = libraries_detect('jwplatform');
+  if ($library && !empty($library['installed'])) {
+    $key = variable_get('pm_jwplatform_api_key', '');
+    $secret = variable_get('pm_jwplatform_api_secret', '');
+    if (!empty($key) && !empty($secret)) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
+
+function pm_jwplatform_get_api() {
+  $library = libraries_load('jwplatform');
+  if ($library && !empty($library['loaded'])) {
+    $key = variable_get('pm_jwplatform_api_key', '');
+    $secret = variable_get('pm_jwplatform_api_secret', '');
+    if (!empty($key) && !empty($secret)) {
+      return new BotrAPI($key, $secret);
+    }
+  }
+  return FALSE;
+}
+
+
+/* Cached API data
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_flush_caches().
+ */
+function pm_jwplatform_flush_caches() {
+  return array('cache_pm_jwplatform');
+}
+
+/* Media Internet Providers
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_media_internet_providers().
+ */
+function pm_jwplatform_media_internet_providers() {
+  return array(
+    'JWPlatformMediaInternetVideoProvider' => array(
+      'title' => t('JW Platform Video'),
+    ),
+    'JWPlatformMediaInternetChannelProvider' => array(
+      'title' => t('JW Platform Channel'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_stream_wrappers().
+ */
+function pm_jwplatform_stream_wrappers() {
+  return array(
+    'jwplatform-video' => array(
+      'name' => t('JW Platform videos'),
+      'class' => 'JWPlatformVideoStreamWrapper',
+      'description' => t('Videos provided by JW Platform.'),
+      'type' => STREAM_WRAPPERS_READ_VISIBLE,
+    ),
+    'jwplatform-channel' => array(
+      'name' => t('JW Platform channels'),
+      'class' => 'JWPlatformChannelStreamWrapper',
+      'description' => t('Channels provided by JW Platform.'),
+      'type' => STREAM_WRAPPERS_READ_VISIBLE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_file_mimetype_mapping_alter().
+ */
+function pm_jwplatform_file_mimetype_mapping_alter(&$mapping) {
+  $mapping['mimetypes'][] = 'video/jwplatform';
+}
+
+
+/* Default Displays
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function pm_jwplatform_ctools_plugin_api($owner, $api) {
+  static $api_versions = array(
+    'file_entity' => array(
+      'file_default_displays' => 1,
+    ),
+  );
+  if (isset($api_versions[$owner][$api])) {
+    return array('version' => $api_versions[$owner][$api]);
+  }
+}
+
+/**
+ * Implements hook_file_default_displays().
+ */
+function pm_jwplatform_file_default_displays() {
+
+  // Default settings for displaying as a video.
+  $default_displays = array();
+
+  $default_video_settings = array(
+    'default' => array(
+      'width' => 640,
+      'height' => 390,
+    ),
+    'teaser' => array(
+      'width' => 560,
+      'height' => 340,
+      'autoplay' => FALSE,
+    ),
+    // Legacy view modes included to support older versions of Media,
+    // before #1051090 went through. They do no harm and can sit here
+    // until there is a Media 2.x stable.
+    // @TODO: Remove when Media 2.0 is released.
+    'media_large' => array(
+      'width' => 480,
+      'height' => 360,
+    ),
+    'media_original' => array(
+      'width' => 640,
+      'height' => 480,
+    ),
+  );
+  foreach ($default_video_settings as $view_mode => $settings) {
+    $display_name = 'video__' . $view_mode . '__pm_jwplatform_video';
+    $default_displays[$display_name] = (object) array(
+      'api_version' => 1,
+      'name' => $display_name,
+      'status' => 1,
+      'weight' => 1,
+      'settings' => $settings,
+    );
+  }
+
+  // Default settings for displaying a video preview image.
+  // We enable preview images even for view modes that also play video
+  // for use inside a running WYSIWYG editor. We weight them so video
+  // formatters come first in the cascade to make sure the video formatter
+  // is used whenever possible.
+  $default_image_styles = array(
+    'default' => 'large',
+    'preview' => 'square_thumbnail',
+    'teaser' => 'large',
+    // Legacy view modes, see note above.
+    'media_preview' => 'square_thumbnail',
+    'media_large' => 'large',
+    'media_original' => '',
+  );
+  foreach ($default_image_styles as $view_mode => $image_style) {
+    $display_name = 'video__' . $view_mode . '__pm_jwplatform_image';
+    $default_displays[$display_name] = (object) array(
+      'api_version' => 1,
+      'name' => $display_name,
+      'status' => 1,
+      'weight' => 2,
+      'settings' => array('image_style' => $image_style),
+    );
+  }
+
+  return $default_displays;
+}
+
+
+/* File Formatters
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_file_formatter_info().
+ */
+function pm_jwplatform_file_formatter_info() {
+  return array(
+    'pm_jwplatform_video' => array(
+      'label' => t('JW Platform Video'),
+      'file types' => array('video'),
+      'view callback' => 'pm_jwplatform_file_formatter_video_view',
+    ),
+    'pm_jwplatform_image' => array(
+      'label' => t('JW Platform Preview Image'),
+      'file types' => array('video'),
+      'default settings' => array(
+        'image_style' => '',
+      ),
+      'view callback' => 'pm_jwplatform_file_formatter_image_view',
+      'settings callback' => 'pm_jwplatform_file_formatter_image_settings',
+    ),
+  );
+}
+
+/**
+ * Implements hook_file_formatter_FORMATTER_view().
+ */
+function pm_jwplatform_file_formatter_video_view($file, $display, $langcode) {
+  $scheme = file_uri_scheme($file->uri);
+  // WYSIWYG does not yet support video inside a running editor instance.
+  $is_jwplatform_content = in_array($scheme, array(
+    'jwplatform-video',
+    'jwplatform-channel',
+  ));
+  if ($is_jwplatform_content && empty($file->override['wysiwyg'])) {
+    $element = array(
+      '#theme' => 'pm_jwplatform_video',
+      '#uri' => $file->uri,
+      '#options' => array(),
+    );
+    return $element;
+  }
+}
+
+/**
+ * Implements hook_file_formatter_FORMATTER_view().
+ */
+function pm_jwplatform_file_formatter_image_view($file, $display, $langcode) {
+  $scheme = file_uri_scheme($file->uri);
+  $is_jwplatform_content = in_array($scheme, array(
+    'jwplatform-video',
+    'jwplatform-channel',
+  ));
+  if ($is_jwplatform_content) {
+    $wrapper = file_stream_wrapper_get_instance_by_uri($file->uri);
+    $image_style = $display['settings']['image_style'];
+    $valid_image_styles = image_style_options(FALSE);
+    // @TODO: If autosubmit is removed and we allow view modes that insert
+    // images in the WYSIWYG, add file->overrides handling.
+    $alt = isset($file->override['attributes']['alt'])
+      ? $file->override['attributes']['alt'] : $file->filename;
+    $thumbnail = $wrapper->getLocalThumbnailPath();
+    if (empty($thumbnail)) {
+      $default_base = drupal_get_path('module', 'media') . '/images/icons';
+      $element = array(
+        '#theme' => 'image',
+        '#path' => variable_get('media__icon_base_directory', $default_base) . '/'
+          . variable_get('media__icon_set', 'default') . '/video-x-generic.png',
+        '#alt' => $alt,
+      );
+    }
+    elseif (empty($image_style) || !isset($valid_image_styles[$image_style])) {
+      $element = array(
+        '#theme' => 'image',
+        '#path' => file_create_url($thumbnail),
+        '#alt' => $alt,
+      );
+    }
+    else {
+      $element = array(
+        '#theme' => 'image_style',
+        '#style_name' => $image_style,
+        '#path' => $thumbnail,
+        '#alt' => $alt,
+      );
+    }
+
+    return $element;
+  }
+}
+
+/**
+ * Implements hook_file_formatter_FORMATTER_settings().
+ */
+function pm_jwplatform_file_formatter_image_settings($form, &$form_state, $settings) {
+  $element = array();
+  $element['image_style'] = array(
+    '#title' => t('Image style'),
+    '#type' => 'select',
+    '#options' => image_style_options(FALSE),
+    '#default_value' => $settings['image_style'],
+    '#empty_option' => t('None (original image)'),
+  );
+  return $element;
+}
+
+
+/* Theming
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+/**
+ * Implements hook_theme().
+ */
+function pm_jwplatform_theme() {
+  return array(
+    'pm_jwplatform_video' => array(
+      'render element' => 'element',
+    ),
+  );
+}
+
+/**
+ * Implements theme_hook().
+ */
+function theme_pm_jwplatform_video($variables) {
+  $wrapper = file_stream_wrapper_get_instance_by_uri($variables['element']["#uri"]);
+  return '<script type="text/javascript" src="' . $wrapper->getJavaScriptUrl() . '"></script>';
+}

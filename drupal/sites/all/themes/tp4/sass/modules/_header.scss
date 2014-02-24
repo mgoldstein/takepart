@@ -6,60 +6,50 @@
 /*
  *Social
 */
-header{
+header {
   font-family: $adelle-regular;
   color: $dark-gray;
   .block{
-    @include breakpoint($breakpoint-mobile){
-      margin-bottom: 0em;
-    }
+    margin-bottom: 0em;
     @include breakpoint($breakpoint-tablet){
       margin-bottom: 1.5em;
     }
   }
   .leaderboard{
-    @include breakpoint($breakpoint-mobile){
-      display: none;
-    }
+    display: none;
     @include breakpoint($breakpoint-tablet){
       display: block;
     }
   }
-  @include breakpoint($breakpoint-mobile){
-    .menu-toggle{
-      display: block;
-      width: 20px;
-      height: 3px;;
-      border-top: 9px double $light-mint;
-      border-bottom: 3px solid $light-mint;
-      cursor: pointer;
-      float: left;
-      margin-right: 10px;
-      margin-top: 4px;
-    }
-    .logo{
-      float: left;
-      width: 121px;
-      margin-bottom: 4px;
-    }
-  }
-  @include breakpoint($breakpoint-tablet){
-    .menu-toggle{
+  .menu-toggle{
+    display: block;
+    width: 20px;
+    height: 3px;
+    border-top: 9px double $light-mint;
+    border-bottom: 3px solid $light-mint;
+    cursor: pointer;
+    float: left;
+    margin-right: 10px;
+    margin-top: 4px;
+    @include breakpoint($breakpoint-tablet){
       display: none;
     }
-    .logo{
+  }
+  .logo{
+    float: left;
+    width: 121px;
+    margin-bottom: 4px;
+    @include breakpoint($breakpoint-tablet){
       width: auto;
     }
   }
   .follow-us{
-    @include breakpoint($breakpoint-mobile){
-      display: none;
-    }
+    display: none;
     @include breakpoint($breakpoint-tablet){
       display: block;
       text-align: right;
       float: right;
-      font-size: .928571429em; // 14px;
+      font-size: .928571429em; // 13px;
       .text{
         display: inline-block;
         margin: 0 10px;
@@ -78,13 +68,11 @@ header{
     }
   }
   .user-menu{
-    @include breakpoint($breakpoint-mobile){
-      display: none;
-    }
+    display: none;
     @include breakpoint($breakpoint-tablet){
       display: block;
       float: right;
-      font-size: .928571429em; // 14px;
+      font-size: .928571429em; // 13px;
       a{
         color: $dark-gray;
       }
@@ -130,59 +118,55 @@ header{
     }
   }
   .search{
-    font-size: 13px;
-    @include breakpoint($breakpoint-mobile){
-      clear: both;
-      position: relative;
-      .form-item-keys-2{
-        display: inline-block;
-        float: left;
-        height: auto;
-        overflow: hidden;
-        width: 100%;
-        margin-right: 10px;
-        vertical-align: bottom;
-        line-height: 23px;
-        font-weight: normal;
-        margin: 0;
-        padding: 10px;
-        background-color: #000;
-        -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .3);
-        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, .3);
-        -moz-box-sizing: border-box;
-        box-sizing: border-box;
+    font-size: .928571429em;
+    clear: both;
+    position: relative;
+    .form-item-keys-2{
+      display: inline-block;
+      float: left;
+      height: auto;
+      overflow: hidden;
+      width: 100%;
+      margin-right: 10px;
+      vertical-align: bottom;
+      line-height: 23px;
+      font-weight: normal;
+      margin: 0;
+      padding: 10px;
+      @include box-shadow(0px 0px 5px 1px rgba(0, 0, 0, .3));
+      @include box-sizing(border-box);
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    [type=text]{
+      float: left;
+      height: 30px;
+      border: 1px solid #ccc;
+      border-radius: 0;
+      width: 100%;
+      color: #777;
+      text-indent: 6px;
+      font-size: 16px;
+      line-height: 21px;
+      background: #fff;
+      &:focus{
+        outline: none;
       }
-      [type=text]{
-        float: left;
-        height: 30px;
-        border: 1px solid #ccc;
-        border-radius: 0;
-        width: 100%;
-        line-height: 20px;
-        color: #777;
-        text-indent: 6px;
-        font-size: 16px;
-        line-height: 21px;
-        background: #fff;
-        &:focus{
-          outline: none;
-        }
-      }
-      .form-submit{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        height: 0;
-        padding-top: 48px;
-        color: white;
-        border: none;
-        background: image-url('mobile-search-hover.jpg') no-repeat center center;
-        background-color: #000;
-        border-radius: 0;
-        text-indent: 200%;
-        overflow: hidden;
-        width: 34px;
-      }
+    }
+    .form-submit{
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 0;
+      padding-top: 48px;
+      color: white;
+      border: none;
+      background: image-url('mobile-search-hover.jpg') no-repeat center center;
+      background-color: #000;
+      border-radius: 0;
+      text-indent: 200%;
+      overflow: hidden;
+      width: 34px;
     }
     @include breakpoint($breakpoint-tablet){
       display: block;
@@ -278,6 +262,249 @@ header{
     border-bottom: none;
     form {
       display: block;
+    }
+  }
+}
+
+//
+// Slim Nav
+//
+.slim-nav {
+  height: auto;
+  position: relative;
+  overflow: visible;
+  z-index: 2;
+
+  background-color: #fff;
+  font-family: $adelle-regular;
+  color: $dark-gray;
+  border-bottom: 2px solid #000;
+
+  padding-top: 10px 10px 1px;
+  @include breakpoint($breakpoint-tablet) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @include breakpoint($breakpoint-desktop) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .left {
+    float: left;
+    @include breakpoint($breakpoint-tablet) {
+      width: 50%;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      padding-left: 10px;
+      width: auto;
+    }
+  }
+  .right {
+    float: right;
+    @include breakpoint($breakpoint-tablet) {
+      width: 40%;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      width: auto;
+    }
+  }
+
+  .logo {
+    width: 121px; // <img> is already locked down to max-width 100%
+  }
+  .follow-us {
+    @include breakpoint($breakpoint-tablet) {
+      padding-right: 39px;
+      padding-top: 7px;
+    }
+  }
+  .user-menu {
+    @include breakpoint($breakpoint-tablet){
+      padding-top: 7px;
+      padding-right: 7px;
+      li {
+        overflow: hidden;
+        height: 20px;
+        margin: 0;
+        &:first-child{
+          &:before{
+            display: none;
+          }
+        }
+        &:last-child{
+          padding-right: 10px;
+          &:after{
+            content: '|';
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: $light-gray;
+          }
+        }
+        &.user{
+          position: relative;
+          padding-left: 0;
+          max-width: 50px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+  .search {
+    float: none;
+    margin-top: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    @include breakpoint($breakpoint-tablet) {
+      right: 20px;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      right: 0;
+    }
+    .search-toggle{
+      display: block;
+      position: relative;
+      z-index: 9;
+      width: 34px;
+      height: 38px;
+      cursor: pointer;
+      &:before{
+        display: block;
+        width: 34px;
+        height: 38px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $mint;
+        font-size: 20px;
+        line-height: 30px;
+        content: "\1F50E";
+        font-family: "SSGizmo";
+        display: block;
+        z-index: 9;
+        @include transform2d(scaleX(-1));
+        filter: FlipH;
+        -ms-filter: "FlipH";
+      }
+      @include breakpoint($breakpoint-tablet) {
+        height: 30px;
+        &:before {
+          height: 30px;
+        }
+      }
+    }
+    .form-item-keys-2{
+      display: none;
+      position: absolute;
+      top: 38px;
+      right: 0;
+      z-index: 9;
+      width: 300px;
+      background-color: #000;
+      padding: 10px;
+      @include box-shadow(0px 0px 5px 1px black);
+      @include box-sizing(border-box);
+      [type=text]{
+        padding-top: .25em;
+        &::-webkit-input-placeholder {
+          opacity: 1;
+        }
+
+        &:-moz-placeholder { /* Firefox 18- */
+          opacity: 1;
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+          opacity: 1;
+        }
+      }
+      @include breakpoint($breakpoint-tablet){
+        background: #FFF;
+        width: 420px;
+        [type=text] {
+          width: 400px;
+        }
+      }
+    }
+    .form-submit{
+      top: 0;
+      bottom: auto;
+      padding: 19px 17px;
+      text-indent: 100px;
+      background: transparent none;
+      @include breakpoint($breakpoint-tablet) {
+        padding: 19px 15px;
+      }
+    }
+    &.active {
+      .form-item-keys-2{
+        display: block;
+      }
+      .search-toggle{
+        display: none;
+      }
+      .form-submit {
+        background: image-url('mobile-search-hover.jpg') no-repeat center center;
+        background-color: #000;
+      }
+    }
+  }
+  #main-menu{
+    display: none;
+    @include breakpoint($breakpoint-tablet) {
+      display: block;
+      width: 700px;
+      clear: left;
+      float: left;
+      padding: 3px 0 14px;
+      padding-top: 3px;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      width: auto;
+      clear: none;
+      padding: 0 0 0 20px;
+      line-height: 26px;
+    }
+    li{
+      float: left;
+      font-family: $tradegothic-regular;
+      font-size: 17px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: #000;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style-image: none;
+      list-style-type: none;
+      padding-right: 1em;
+      &:after{
+        content: '';
+        display: inline-block;
+        border-right: 1px solid $gray-line;
+        height: 20px;
+        width: auto;
+        position: absolute;
+        right: .5em;
+        top: 0;
+      }
+      &:last-child {
+        padding-right: 0;
+        &:after {
+          display: none;
+        }
+      }
+      a{
+        color: #000;
+        position: relative;
+        width: 100%;
+        display: block;
+        &:hover{
+          text-decoration: none;
+        }
+      }
     }
   }
 }

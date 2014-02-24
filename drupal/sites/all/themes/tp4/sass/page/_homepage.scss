@@ -65,6 +65,9 @@ body.front{
       line-height: 1.333333333;
       font-weight: normal;
     }
+    .pane-title.no-overlap {
+      margin: 0em .5em 1px;
+    }
 
     .field-name-field-article-subhead {
       font-size: 1em;
@@ -123,6 +126,59 @@ body.front{
       line-height: 1.25;
       margin-top: .5em;
       font-weight: normal;
+    }
+    &.node-openpublish-photo-gallery{
+      h2.node-title{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F7";
+        }
+      }
+    }
+    &.node-video{
+      h2.node-title{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F9";
+        }
+      }
+    }
+    margin-bottom: 1em;
+  }
+  .view-mode-feature-main-tpl {
+    .field-name-field-article-subhead {
+      font-size: 1.142857143em;
+      line-height: 1.25;
+      margin-top: .5em;
+      font-weight: normal;
+    }
+    &.node-openpublish-photo-gallery{
+      h2.field-name-field-article-subhead{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F7";
+        }
+      }
+    }
+    &.node-video{
+      h2.field-name-field-article-subhead{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F9";
+        }
+      }
     }
     margin-bottom: 1em;
   }
@@ -194,15 +250,25 @@ body.front{
       vertical-align: text-bottom;
       content: " \1F4F7";
     }
+    .video:after{
+      font-family: "SSGizmo";
+      font-size: 1.25em;
+      line-height: 0.8;
+      vertical-align: text-bottom;
+      content: " \1F4F9";
+    }
   }
   a{
     height: 100%;
-    display: block;
   }
 }
 
 //Center Column
+a.column-header:hover{
+  text-decoration: none;
+}
 #skinny {
+
   .columns > .view-content {
     @include breakpoint-grid-breakdown(1 3 1, $breakpoint-mobile $breakpoint-tablet $breakpoint-desktop, ' > .views-row');
   }
@@ -230,12 +296,12 @@ body.front{
       	  border-bottom: dotted 2px $light-gray;
       	}
         &:hover{
-          
+
           .column-title{
             text-decoration: none;
           }
           .author{
-            text-decoration: none; 
+            text-decoration: none;
           }
           .views-field-field-promo-headline{
             text-decoration: underline;
@@ -386,8 +452,8 @@ body.front{
   .views-row{
     margin-bottom: 20px;
     .views-field-field-promo-headline {
-      a {
-        @include icon-photo-gallery();
+      .field-content {
+            @include icon-photo-gallery();
       }
     }
   }

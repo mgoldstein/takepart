@@ -50,7 +50,12 @@
 
   <div id="article-content">
 
-  <?php print render($content['field_article_main_image']); ?>
+  <?php if (!empty($content['field_video'])) {
+    print render($content['field_video']);
+  }
+  else {
+    print render($content['field_article_main_image']);
+  } ?>
   <?php print render($content['field_author']); ?>
 
   <?php
@@ -105,7 +110,7 @@
   </footer>
 
   <div id="article-comments">
-    <h3 class="top-border">Comments <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
-    <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
+    <h3 class="top-border">Comments <span>(<fb:comments-count href="<?php print $url_local; ?>"></fb:comments-count>)</span></h3>
+    <fb:comments href="<?php print $url_local; ?>" numposts="15"></fb:comments>
   </div>
 </article>

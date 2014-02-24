@@ -1,6 +1,0 @@
-<?php
-/**
- * @file
- */
-include_once('takepart_author.features.inc');
-// Drupal needs this blank file.

@@ -954,6 +954,7 @@ function tpf_display_context_context_default_contexts() {
         'action' => 'action',
         'audio' => 'audio',
         'blog_front' => 'blog_front',
+        'feature_article' => 'feature_article',
         'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_photo' => 'openpublish_photo',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -966,6 +967,7 @@ function tpf_display_context_context_default_contexts() {
         'takepart_quick_study' => 'takepart_quick_study',
         'takepart_slide' => 'takepart_slide',
         'venue' => 'venue',
+        'video' => 'video',
         'webform' => 'webform',
       ),
       'options' => array(
@@ -981,7 +983,7 @@ s.prop16 = [tp_omniture:get_author:{node:nid}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:lowercase:{node:field_topic}]
+s.prop20 = [tp_omniture:stringfixes:{node:field_topic}]
 s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
   );
@@ -1018,7 +1020,7 @@ s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:value_or_empty:{node:field_topic}]
+s.prop20 = [tp_omniture:stringfixes:{node:field_topic}]
 s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
   );
@@ -1080,13 +1082,9 @@ s.prop2 = [current-page:url-arg:1]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.prop14 = [tp_omniture:str_decode:{node:title}]
-s.eVar14 = [tp_omniture:str_decode:{node:title}]
-s.prop15 = [tp_omniture:get_first_photo_title:{node:nid}]
-s.eVar15 = [tp_omniture:get_first_photo_title:{node:nid}]
-s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
+      'variables' => 's.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
 s.eVar17 = [tp_omniture:value_or_empty:{node:field_author}]
-s.prop20 = [tp_omniture:lowercase:{node:field_topic}]
+s.prop20 = [tp_omniture:stringfixes:{node:field_topic}]
 s.eVar21 = [tp_omniture:lowercase:{node:field_topic}]',
     ),
   );
@@ -1265,7 +1263,7 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.prop4 = topic front
-s.prop20 = [tp_omniture:lowercase:{current-page:title}]
+s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
 ',
     ),
   );
@@ -1568,7 +1566,7 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
   $context->api_version = 3;
   $context->name = 'tp4_article';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'TP4';
   $context->conditions = array(
     'node' => array(
       'values' => array(
@@ -1599,24 +1597,147 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
           'region' => 'sidebar',
           'weight' => '-2',
         ),
-        'boxes-box-18786b90' => array(
+        'boxes-right_rail_video_promo_articles' => array(
           'module' => 'boxes',
-          'delta' => 'box-18786b90',
+          'delta' => 'right_rail_video_promo_articles',
           'region' => 'sidebar',
-          'weight' => '-1',
+          'weight' => '0',
         ),
       ),
     ),
   );
   $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
   $export['tp4_article'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_campaign_cards';
+  $context->description = '';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'campaign_card_iframe' => 'campaign_card_iframe',
+        'campaign_card_media' => 'campaign_card_media',
+        'campaign_card_news' => 'campaign_card_news',
+        'campaign_card_social' => 'campaign_card_social',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'disable_context' => array(
+      'disabled' => array(
+        'tp4_global' => 'tp4_global',
+        'tp4_global_not_front' => 'tp4_global_not_front',
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
+  $export['tp4_campaign_cards'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_campaign_pages';
+  $context->description = '';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'campaign_page' => 'campaign_page',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-9',
+        ),
+        'tp4_support-tp4_slim_nav' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_slim_nav',
+          'region' => 'header',
+          'weight' => '-8',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'tp4_support-tp4_footer' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_footer',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+        'menu-menu-megamenu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-megamenu',
+          'region' => 'left_drawer',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'disable_context' => array(
+      'disabled' => array(
+        'tp4_global' => 'tp4_global',
+        'tp4_global_not_front' => 'tp4_global_not_front',
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
+  $export['tp4_campaign_pages'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'tp4_global';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'TP4';
   $context->conditions = array(
     'theme' => array(
       'values' => array(
@@ -1631,7 +1752,7 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
           'module' => 'tp4_support',
           'delta' => 'tp4_fat_header',
           'region' => 'header',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'tp4_support-tp4_footer' => array(
           'module' => 'tp4_support',
@@ -1655,6 +1776,10 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
     ),
   );
   $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
   $export['tp4_global'] = $context;
 
   $context = new stdClass();
@@ -1662,12 +1787,13 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
   $context->api_version = 3;
   $context->name = 'tp4_global_not_front';
   $context->description = '';
-  $context->tag = '';
+  $context->tag = 'TP4';
   $context->conditions = array(
     'path' => array(
       'values' => array(
         '~<front>' => '~<front>',
         '~feature/*' => '~feature/*',
+        '~video/*' => '~video/*',
       ),
     ),
     'theme' => array(
@@ -1707,7 +1833,189 @@ s.prop20 = [tp_omniture:lowercase:{current-page:title}]
     ),
   );
   $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
   $export['tp4_global_not_front'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_photo_gallery';
+  $context->description = '';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-9',
+        ),
+        'tp4_support-tp4_slim_nav' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_slim_nav',
+          'region' => 'header',
+          'weight' => '-8',
+        ),
+        'tp4_support-tp4_footer' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_footer',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+        'menu-menu-megamenu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-megamenu',
+          'region' => 'left_drawer',
+          'weight' => '-10',
+        ),
+        'takepart_gallery_support-takepart_gallery_cover_slide' => array(
+          'module' => 'takepart_gallery_support',
+          'delta' => 'takepart_gallery_cover_slide',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
+        'takepart_gallery_support-takepart_gallery_content' => array(
+          'module' => 'takepart_gallery_support',
+          'delta' => 'takepart_gallery_content',
+          'region' => 'preface',
+          'weight' => '-9',
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'newsletter_campaign-48' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '48',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
+        'bean--of-the-day' => array(
+          'module' => 'bean',
+          'delta' => '-of-the-day',
+          'region' => 'sidebar',
+          'weight' => '-8',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar',
+          'weight' => '-7',
+        ),
+        'pm_interstitial-interstitials' => array(
+          'module' => 'pm_interstitial',
+          'delta' => 'interstitials',
+          'region' => 'suffix',
+          'weight' => '-10',
+        ),
+        'boxes-bg_skin_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'bg_skin_sponsor',
+          'region' => 'suffix',
+          'weight' => '-9',
+        ),
+      ),
+    ),
+    'disable_context' => array(
+      'disabled' => array(
+        'tp4_global' => 'tp4_global',
+        'tp4_global_not_front' => 'tp4_global_not_front',
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
+  $export['tp4_photo_gallery'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_video';
+  $context->description = 'Right rail content for TP4 videos (plus leaderboard)';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'video' => 'video',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-11',
+        ),
+        'boxes-box-66c05d6f' => array(
+          'module' => 'boxes',
+          'delta' => 'box-66c05d6f',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'newsletter_campaign-51' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '51',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
+        'bean--of-the-day' => array(
+          'module' => 'bean',
+          'delta' => '-of-the-day',
+          'region' => 'sidebar',
+          'weight' => '-8',
+        ),
+        'boxes-right_rail_video_promo_articles' => array(
+          'module' => 'boxes',
+          'delta' => 'right_rail_video_promo_articles',
+          'region' => 'sidebar',
+          'weight' => '-7',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar',
+          'weight' => '-6',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Right rail content for TP4 videos (plus leaderboard)');
+  t('TP4');
+  $export['tp4_video'] = $context;
 
   return $export;
 }
