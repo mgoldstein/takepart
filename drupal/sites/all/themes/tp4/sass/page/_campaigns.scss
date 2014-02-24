@@ -17,10 +17,9 @@ body.node-type-campaign-page{
    */
 
   $zen-column-count:  12;
-  // $zen-gutter-width:  20px; //TODO: change this to respond to the width of the containing element.
+  $zen-gutter-width:  20px; //TODO: change this to respond to the width of the containing element.
 
   .tray {
-    
     .slider{
       @include zen-grid-item(12, 1);
       @include zen-clear();
@@ -181,6 +180,11 @@ body.node-type-campaign-page{
   #primary{
     padding: 0;
   }
+  .field-name-field-campaign-media-video{
+    figure > div > object {
+      left: 0;
+    }
+  }
 
 
   // Swiper
@@ -259,6 +263,19 @@ body.node-type-campaign-page{
       display: block;
       margin: 0 auto;
       overflow: hidden;
+    }
+    h4.title{
+      padding-top: 20px;
+      padding-bottom: 15px;
+      margin-bottom: 0;
+    }
+    .field-name-field-campaign-media-caption{
+      padding-top: 5px;
+    }
+    .node-video{
+      h2.node-title{
+        display: none;
+      }
     }
   }
 
