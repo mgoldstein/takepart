@@ -1253,13 +1253,16 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   $context->conditions = array(
     'path' => array(
       'values' => array(
-        'teach/share-your-story' => 'teach/share-your-story',
+        'wordlet/teach_share_your_story' => 'wordlet/teach_share_your_story',
       ),
     ),
   );
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.events = event86',
+    ),
+    'theme_html' => array(
+      'class' => 'test-omniture',
     ),
   );
   $context->condition_mode = 0;
