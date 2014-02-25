@@ -48,9 +48,11 @@ body.node-type-campaign-page{
         .panel-col-right{
           @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(10, 2);
+            @include zen-clear();
           }
           @include breakpoint($breakpoint-tablet) {
             @include zen-grid-item(5, 7);
+            @include zen-clear(none);
           }
         }
       }
@@ -77,9 +79,11 @@ body.node-type-campaign-page{
         .panel-col-right{
           @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(10, 2);
+            @include zen-clear();
           }
           @include breakpoint($breakpoint-tablet) {
             @include zen-grid-item(4, 8);
+            @include zen-clear(none);
           }
         }
       }
@@ -106,9 +110,11 @@ body.node-type-campaign-page{
         .panel-col-right{
           @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(10, 2);
+            @include zen-clear();
           }
           @include breakpoint($breakpoint-tablet) {
             @include zen-grid-item(6, 6);
+            @include zen-clear(none);
           }
         }
       }
