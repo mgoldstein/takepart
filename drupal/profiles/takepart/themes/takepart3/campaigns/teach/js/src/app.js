@@ -122,14 +122,22 @@
       json.opt_ins.teach_campaign = "true";
     }
 
-    $.post(TAP.postURL, JSON.stringify(json), function(data, textStatus, jqXHR) {
-      $('#sys-form-content').slideUp().remove();
-      $('#sys-thanks-content').slideDown();
+    $.ajax({
+      type: 'POST',
+      url: TAP.postURL,
+      data: JSON.stringify(json),
+      contentType: 'application/json',
+      dataType: 'json',
+      success: function(data, textStatus, jqXHR) {
+        $('#sys-form-content').slideUp().remove();
+        $('#sys-thanks-content').slideDown();
 
-      // todo remove before deploy
-      console.log(data);
-      console.log(textStatus);
-      console.log(jqXHR);
+        // todo remove before deploy
+        console.log(json);
+        console.log(data);
+        console.log(textStatus);
+        console.log(jqXHR);
+      }
     });
 
   };
