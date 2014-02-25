@@ -1247,6 +1247,32 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'omniture_teach_campaign';
+  $context->description = 'Analytics configuration for Teach campaign pages';
+  $context->tag = 'Omniture';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'teach/share-your-story' => 'teach/share-your-story',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'omniture_reaction' => array(
+      'variables' => 's.events = event86',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Analytics configuration for Teach campaign pages');
+  t('Omniture');
+  $export['omniture_teach_campaign'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'omniture_topicfront';
   $context->description = 'Variables set on topic front page load';
   $context->tag = 'Omniture';
