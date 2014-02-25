@@ -8,9 +8,13 @@
     </div>
     <?php endforeach; ?>
   </div>
-  <section class="featured-articles">
-    <h2><?php print w('featured_articles_headline'); ?></h2>
+  <section class="teach-home-featured-articles">
+    <h2><span><?php print w('featured_articles_headline'); ?></span></h2>
     <div><?php print w('featured_stories_block');?></div>
+    <div class="more-news" <?php print wa('more_news'); ?>>
+      <?php $w = w('more_news'); ?>
+      <a href="<?php print $w->href; ?>"><?php print $w->single; ?></a>
+    </div>
   </section>
   <section class="social-menu">
     <? include('partials/teach-social-block.tpl.php') ?>

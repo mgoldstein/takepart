@@ -282,7 +282,7 @@ p {
     @include box-shadow(0 0 6px 4px #A79B84 inset);
     position: relative;
   }
-}
+} // .page-wordlet-teach-home
 
 .home-section {
   .image-wrapper {
@@ -324,9 +324,124 @@ p {
       }
     }
   }
+} // .home-section
 
-}
+.teach-home-featured-articles {
+  position: relative;
+  background: #809d96 none;
+  padding: 0 10px 10px;
+  margin: 1em auto;
 
+  @media (min-width: 768px) {
+    &:before {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: transparent image-url("teach-home-featured-bg.jpg") scroll no-repeat top center;
+      background-size: cover;
+    }
+  }
+
+  h2 {
+    text-align: center;
+    font: normal 2em/1 $secondary-font;
+    text-transform: uppercase;
+    background: transparent image-url("teach-home-featured-header-bg.png") scroll no-repeat top center;
+
+    position: relative;
+    top: -15px;
+
+    span {
+      display: block;
+      @include transform(rotate(-2deg));
+      padding: 1em 0;
+    }
+  }
+  .secondary-feature {
+    background: transparent none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+
+    .views-row {
+      @include box-sizing(border-box);
+      background: transparent none;
+      float: none;
+      width: auto;
+      height: auto;
+      margin: 0;
+
+      @media (min-width: 768px) {
+        float: left;
+        width: 33%;
+        padding: 0 10px; 
+        &:first-of-type { padding-left: 0; }
+        &:last-of-type { padding-right: 0; }
+      }
+
+      img {
+        @include box-sizing(border-box);
+        display: block;
+        background: white none;
+        padding: 4px;
+        @include box-shadow(0 0 4px transparentize(black, 0.4));
+        width: 100% !important;
+        height: auto !important;
+        @include transform(rotate(-0.5deg));
+      }
+    }
+    .views-field-php {
+      font: normal 1em/1.5 helvetica, sans-serif;
+      margin: 1em 0;
+      background: transparent none;
+
+      .field-content {
+        padding: 0;
+      }
+
+      a {
+        font: normal 1.166666667em/1.285714286 helvetica, sans-serif; 
+        color: white;
+        position: relative;
+
+        &:after {
+          content: "\0020\00BB";
+          display: inline;
+        }
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  } // .secondary-feature
+  .more-news {
+    position: relative;
+    text-align: center;
+
+    a {
+      font: normal 1.166666667em/1 $secondary-font;
+      text-transform: uppercase;
+      color: white;
+
+      &:after {
+        content: "\0020\00BB";
+        display: inline;
+        color: $primary-color;
+      }
+    }
+
+    @media (min-width: 768px) {
+      position: absolute;
+      top: 20px;
+      right: 10px;
+    }
+  }
+} // .teach-home-featured-articles
 
 /* # Common elements for some interior pages
 */
