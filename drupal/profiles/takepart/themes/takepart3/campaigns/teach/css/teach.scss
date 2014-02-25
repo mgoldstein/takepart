@@ -274,156 +274,59 @@ p {
     display: block;
   }
 
-  .content {
-    overflow: visible;
-    position: relative;
-  }
-  .content-header {
-    background: url('../img/header1_bg.png?1377730837') no-repeat;
-    color: black;
-    font-size: 26px;
-    margin-bottom: -35px;
-    padding: 0px 10px;
-    width: 400px;
-    line-height: 200%;
-    height: 85px;
-
-    span {
-      @include rotate(-2deg);
-      display: block;
-    }
-  }
-  .call-to-share {
-    margin: 0px 0 20px 0;
-    position: relative;
-    z-index: 10;
-    float: right;
-    a {
-      font: normal 18px $secondary-font;
-      color: $primary-white;
-      .fb {
-        background: image-url('social-facebook-white.png') no-repeat;
-        @include inline-block;
-        width: 30px;
-        height: 30px;
-        margin: 0 5px;
-      }
-      &:hover {
-        @include text-shadow(0 0 1px white);
-        text-decoration: none;
-      }
-    }
-  }
-
-  .main-video-wrapper {
-    width: 637px;
-    margin-left: -5px;
-    border: 5px solid white;
-    position: relative;
-    z-index: 10;
-    vertical-align: top;
-    background-color: black;
-    @include inline-block;
-    @include box-shadow(0 0 10px black);
-  }
-
-  .social-menu {
-    width: 277px;
-    background: image-url('paper_right.png') no-repeat right 10px;
-    padding: 90px 30px 40px 300px;
-    top: -50px;
-    margin-left: -300px;
-    margin-right: -$page-margins;
-    position: relative;
-    z-index: 5;
-    @include inline-block;
-    vertical-align: top;
-    float: right;
-    min-height: 450px;
-
-    h1 { display: none; }
-    .item {
-      background-repeat: no-repeat;
-      background-position: 0 -7px;
-      padding-left: 90px;
-
-      &.text { background-image: image-url('social-phone.png'); }
-      &.connected { background-image: image-url('social-envelopes.png'); }
-      &.discussion { background-image: image-url('social-chat.png'); }
-
-      p {
-        line-height: 130%;
-        .terms {
-          font-size: 12px;
-          line-height: 25px;
-        }
-      }
-
-      .newsletter-signup {
-        position: relative;
-        label { display: none; }
-        .form-type-textfield input {
-          background: image-url('text-field-large.png') no-repeat;
-          width: 240px;
-          height: 46px;
-          border: none;
-          margin-left: -80px;
-          padding: 0 15px;
-        }
-        .form-actions {
-          position: absolute;
-          top: 9px;
-          right: 20px;
-          margin: 0px;
-          input {
-            cursor: pointer;
-            -webkit-appearance: none;
-            border: none;
-            background-color: black;
-            font: normal 12px/140% $secondary-font;
-            color: $primary-white;
-            text-transform: uppercase;
-            width: 57px;
-          }
-        }
-      .messages.error {
-        position: absolute;
-        background: transparent none;
-        padding: 0;
-        margin: 0 0 0 -71px;
-        border: none;
-        color: red;
-        bottom: 94%;
-      }
-      } // .newsletter-signup
-
-      .sect-headline {
-        font: normal 24px/90% $secondary-font;
-        color: $primary-color;
-        strong {
-          font-weight: normal;
-          color: $body-copy-black;
-        }
-      }
-    }
-  }
-
   .page-body-content {
-    padding: 100px $page-margins $page-margins $page-margins;
-    margin: -60px 20px 0 6px;
+    @include clearfix;
+    padding: $page-margins;
     background-color: #D4D4D4;
     @include background(linear-gradient(-89deg, #FFFFFF 0%, #DBDBDB 90%, #B1A99A));
     @include box-shadow(0 0 6px 4px #A79B84 inset);
     position: relative;
+  }
+}
 
+.home-section {
+  .image-wrapper {
+    padding: 4px;
+    background-color: white;
+    @include box-shadow(0 0 4px transparentize(black, .4));
+    @include transform(scale(1.1));
     img {
-      float: right;
-      margin-left: $page-margins;
-      margin-right: -33px;
+      display: block;
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  &:nth-of-type(2) {
+    .image-wrapper {
+      @include transform(rotate(-2deg) scale(1.1));
+    }
+  }
+  &:last-of-type {
+    .image-wrapper {
+      @include transform(rotate(1deg) scale(1.1));
+    }
+  }
+  
+  .headline {
+    font: normal 2em/1.5 $secondary-font;
+    margin-top: .5em;
+    text-transform: uppercase;
+  }
+  .body {
+      line-height: 1.5;
+    a {
+      font-family: $secondary-font;
+      text-transform: uppercase;
+      &:after {
+        content: "\0020\00BB";
+        display: inline;
+      }
     }
   }
 
 }
+
 
 /* # Common elements for some interior pages
 */
@@ -582,168 +485,6 @@ p {
       @include scale(1.02);
     }
   }
-  .social-menu {
-    clear: both;
-    text-align: center;
-    @media (max-width: 480px) {
-      background-color: black;
-      padding: 20px;
-    }
-    @media (min-width: 848px) {
-      background: transparent image-url('video-page-social-block-bg.png') scroll no-repeat bottom center;
-      min-height: 241px;
-      max-width: 830px;
-      margin: 0 auto;
-      padding: 0 9px 30px;
-    }
-    h1.sect-headline {
-      font-family: $secondary-font;
-      font-weight: normal;
-      font-size: 22px;
-      line-height: 1.25;
-      text-transform: uppercase;
-      text-align: center;
-      max-width: 500px;
-      margin: 1em auto 0.5em;
-      @media (max-width: 480px) {
-        color: white;
-        margin-top: 0;
-      }
-    }
-    .item {
-      font-size: 11.5px;
-      line-height: 1;
-      vertical-align: middle;
-      color: black;
-      @media (max-width: 480px) {
-        color: white;
-      }
-      @media (min-width: 848px) {
-        display: inline-block; *display: inline; *zoom: 1;
-        width: 27%;
-        margin: 0px 3%;
-      }      
-      p { //override
-        font-size: 11.5px;
-        line-height: 1;
-        color: black;
-        @media (max-width: 480px) {
-          color: white;        
-        }
-      }
-      .sect-headline {
-        font-family: $secondary-font;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 1;
-        color: $primary-color;
-        margin-bottom: .15em;
-        strong {
-          color: black;
-          font-weight: normal;
-          @media (max-width: 480px) {
-            color: white;
-          }
-        }
-      }
-      // form styling
-      #newsletter-campaign-email-only-signup-form {
-        width: 217px;
-        margin: 0 auto;
-        position: relative;
-        label { display: none;}
-        input[name="email"] {
-          background: transparent image-url('text-field-small.png');
-          border: 0;
-          width: 217px;
-          height: 30px;
-          margin: 0 auto;
-          padding: 0 10px;
-        }        
-        .form-actions {
-          position: absolute;
-          top: 4px;
-          right: -2px;
-          margin: 0;
-          input[type="submit"] {
-            cursor: pointer;
-            -webkit-appearance: none;
-            border: none;
-            background-color: black;
-            font: normal normal 12px/1.2 $secondary-font, serif;
-            color: white;
-            text-transform: uppercase;
-            width: 57px;
-          }
-        }
-        .messages.error {
-          position: absolute;
-          background: transparent none;
-          padding: 0;
-          margin: 0;
-          border: none;
-          font-size: 13px;
-          color: red;
-          bottom: 85%;
-        }
-      }
-      // Icons for these social follows
-      position: relative;
-      &:before {
-        display: block;
-        content: '';
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        background-color: transparent;
-      }
-      &.text {
-        margin-top: 73px;
-        &:before {
-          background-image: image-url('social-phone.png');
-          width: 72px;
-          height: 73px;
-          margin-left: -36px;
-          @media (max-width: 480px) {
-            background-image: image-url('social-phone-white.png');
-            width: 52px;
-            height: 60px;
-            margin-left: -26px;
-          }
-        }
-      }
-      &.connected {
-      margin-top: 79px;
-        &:before {
-          background-image: image-url('social-envelopes.png');
-          width: 72px;
-          height: 79px;
-          margin-left: -36px;
-          @media (max-width: 480px) {
-            background-image: image-url('social-envelopes-white.png');
-            width: 42px;
-            height: 47px;
-            margin-left: -21px;
-          }
-        }
-      }
-      &.discussion {
-        margin-top: 55px;
-        &:before {
-          background-image: image-url('social-chat.png');
-          width: 72px;
-          height: 55px;
-          margin-left: -36px;
-          @media (max-width: 480px) {
-            background-image: image-url('social-chat-white.png');
-            width: 50px;
-            height: 45px;
-            margin-left: -25px;
-          }
-        }
-      }
-    } // .item
-  } // .social-menu
   .ad {
     width: 728px;
     height: 90px;
@@ -820,6 +561,170 @@ p {
   }
 }
 
+// social menu module
+.social-menu {
+  clear: both;
+  text-align: center;
+  @media (max-width: 480px) {
+    background-color: black;
+    padding: 20px;
+  }
+  @media (min-width: 848px) {
+    background: transparent image-url('video-page-social-block-bg.png') scroll no-repeat bottom center;
+    min-height: 241px;
+    max-width: 830px;
+    margin: 0 auto;
+    padding: 0 9px 30px;
+  }
+  h1.sect-headline {
+    font-family: $secondary-font;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 1.25;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 500px;
+    margin: 1em auto 0.5em;
+    @media (max-width: 480px) {
+      color: white;
+      margin-top: 0;
+    }
+  }
+  .item {
+    font-size: 11.5px;
+    line-height: 1;
+    vertical-align: middle;
+    color: black;
+    @media (max-width: 480px) {
+      color: white;
+    }
+    @media (min-width: 848px) {
+      display: inline-block; *display: inline; *zoom: 1;
+      width: 27%;
+      margin: 0px 3%;
+    }      
+    p { //override
+      font-size: 11.5px;
+      line-height: 1;
+      color: black;
+      @media (max-width: 480px) {
+        color: white;        
+      }
+    }
+    .sect-headline {
+      font-family: $secondary-font;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 1;
+      color: $primary-color;
+      margin-bottom: .15em;
+      strong {
+        color: black;
+        font-weight: normal;
+        @media (max-width: 480px) {
+          color: white;
+        }
+      }
+    }
+    // form styling
+    #newsletter-campaign-email-only-signup-form {
+      width: 217px;
+      margin: 0 auto;
+      position: relative;
+      label { display: none;}
+      input[name="email"] {
+        background: transparent image-url('text-field-small.png');
+        border: 0;
+        width: 217px;
+        height: 30px;
+        margin: 0 auto;
+        padding: 0 10px;
+      }        
+      .form-actions {
+        position: absolute;
+        top: 4px;
+        right: -2px;
+        margin: 0;
+        input[type="submit"] {
+          cursor: pointer;
+          -webkit-appearance: none;
+          border: none;
+          background-color: black;
+          font: normal normal 12px/1.2 $secondary-font, serif;
+          color: white;
+          text-transform: uppercase;
+          width: 57px;
+        }
+      }
+      .messages.error {
+        position: absolute;
+        background: transparent none;
+        padding: 0;
+        margin: 0;
+        border: none;
+        font-size: 13px;
+        color: red;
+        bottom: 85%;
+      }
+    }
+    // Icons for these social follows
+    position: relative;
+    &:before {
+      display: block;
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      background-color: transparent;
+    }
+    &.text {
+      margin-top: 73px;
+      &:before {
+        background-image: image-url('social-phone.png');
+        width: 72px;
+        height: 73px;
+        margin-left: -36px;
+        @media (max-width: 480px) {
+          background-image: image-url('social-phone-white.png');
+          width: 52px;
+          height: 60px;
+          margin-left: -26px;
+        }
+      }
+    }
+    &.connected {
+    margin-top: 79px;
+      &:before {
+        background-image: image-url('social-envelopes.png');
+        width: 72px;
+        height: 79px;
+        margin-left: -36px;
+        @media (max-width: 480px) {
+          background-image: image-url('social-envelopes-white.png');
+          width: 42px;
+          height: 47px;
+          margin-left: -21px;
+        }
+      }
+    }
+    &.discussion {
+      margin-top: 55px;
+      &:before {
+        background-image: image-url('social-chat.png');
+        width: 72px;
+        height: 55px;
+        margin-left: -36px;
+        @media (max-width: 480px) {
+          background-image: image-url('social-chat-white.png');
+          width: 50px;
+          height: 45px;
+          margin-left: -25px;
+        }
+      }
+    }
+  } // .item
+} // .social-menu
+
 
 /* # Responsive Layout
 ================================================== */
@@ -831,30 +736,6 @@ p {
   .header {    
     .menu-wrapper {
       font-size: 14px;
-    }
-  }
-
-  .page-wordlet-teach-home {
-    .social-menu {
-      width: 38%;
-      padding: 80px 30px 20px 300px;
-      min-height: 330px;
-      .item {
-        background-position: 0 -5px;
-        background-size: 25%;
-        padding-left: 70px;
-
-        .sect-headline {
-          font-size: 20px;
-        }
-
-        p {
-          font-size: 13px;
-        }
-      }
-    }
-    .main-video-wrapper {
-      width: 59%;
     }
   }
 }
@@ -952,45 +833,6 @@ p {
       }
     } // .menu-wrapper
   }
-
-  .page-wordlet-teach-home {
-    .call-to-share {
-      float: none;
-      text-align: center;
-      width: 100%;
-    }
-    .content-header {
-      background-size: 100%;
-      width: 80%;
-      font-size: 19px;
-    }
-   .main-video-wrapper {
-      box-sizing: border-box;
-      width: 100%;
-      height: auto !important;
-      margin: 0;
-      border-width: 4px;
-      position: relative;
-    }
-
-   .social-menu {
-      box-sizing: border-box;
-      width: 100%;
-      top: auto;
-      display: block;
-      position: relative;
-      float: none;
-      padding: 20px;
-      margin: 0 auto;
-      background: none white;
-      @include box-shadow(0 0 40px #666 inset);
-      @include background(linear-gradient(top, #eee, #ccc));
-    }
-    .page-body-content {
-      margin: 0;
-      padding: 20px;
-    }
-  } // .page-wordlet-teach-home (homepage styles)
 }
 
 
