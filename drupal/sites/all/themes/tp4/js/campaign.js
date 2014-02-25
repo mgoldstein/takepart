@@ -52,4 +52,24 @@
     }
   };
 
+
+  Drupal.behaviors.equalHeights = {
+    attach: function() {
+      $(document).ready(function() {
+        $('.swipe-wrap').each(function(){  
+          var $this = $(this);
+           $this.find('.card-wrapper').css("height", $this.height());
+        });      
+      });
+      window.onresize = function(event) {
+        $('.swipe-wrap').each(function(){  
+          var $this = $(this);
+          $this.find('.card-wrapper').css("height", $this.height());
+        });      
+      };
+    }
+  };
+
+
+
 })(jQuery, Drupal, this, this.document);
