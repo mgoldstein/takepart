@@ -154,8 +154,8 @@ $body-copy-black: #313131;
 
   /* menu */
   .menu-wrapper {
-    font: bold 17px/100% $secondary-font;
-    padding: 5px;
+    font: normal 17px/100% $secondary-font;
+    padding: 5px; 
     background: image-url('orange_felt.png');
     @include border-radius(5px);
     position: absolute;
@@ -191,6 +191,7 @@ $body-copy-black: #313131;
         }
         &:first-of-type {
           margin: 0;
+          height: 43px;
           a {
             background: transparent image-url("menu-home.png") no-repeat scroll top left;
             background-size: 21px;
@@ -198,12 +199,13 @@ $body-copy-black: #313131;
             width: 0;
             overflow: hidden;
             padding: 21px 21px 0 0;
-            margin: 4px 7px 7px;
+            margin: 7px;
           }
           &.active {
             margin-top: 0;
             a {
               margin: 7px;
+              padding: 21px 21px 0 0;
               background-position: 0 -21px;
             }
           }
@@ -213,9 +215,9 @@ $body-copy-black: #313131;
           margin-top: -3px;
           height: 43px;
           a {
+              padding: 14px 5px 0;
               text-shadow: none;
               color: black;
-              margin-top: 3px;
             }
         }
       }
@@ -369,7 +371,7 @@ p {
       }
     }
     .views-field-php {
-      font: normal 1em/1.5 helvetica, sans-serif;
+      font: normal 1em/1.5 $primary-font;
       margin: 1em 0;
       background: transparent none;
 
@@ -378,7 +380,7 @@ p {
       }
 
       a {
-        font: normal 1.166666667em/1.285714286 helvetica, sans-serif; 
+        font: normal 1.166666667em/1.285714286 $primary-font; 
         color: white;
         position: relative;
 
@@ -1244,7 +1246,7 @@ ul.scribble-share {
         background-color: transparent;
         .field-content {
           padding: 0;
-          font: normal normal 14px/1.25 helvetica, sans-serif;
+          font: normal normal 14px/1.25 $primary-font;
           text-align: center;
           a {
             color: #333;
@@ -1354,7 +1356,7 @@ ul.scribble-share {
 ================================================== */
 
 .teach-sys-content {
-  font: normal 14px/1.5 helvetica, sans-serif;
+  font: normal 14px/1.5 $primary-font;
 
   padding: 20px;
 
@@ -1433,9 +1435,7 @@ h1.sys-headline {
       &:nth-child(2) {
         text-align: center;
         color: black;
-        font-size: 1.5em;
-        line-height: .8;
-        font-family: $secondary-font;
+        font: normal 1.5em/1 $secondary-font;
         &:before {
           display: inline-block;
           vertical-align: top;
@@ -1488,6 +1488,7 @@ h1.sys-headline {
 // here's a mixin for the input styling
 
 @mixin sys-input-styling {
+    font-family: $primary-font;
     @include box-sizing(border-box);
     @include border-radius(4px);
     border: 1px solid #ccc;
@@ -1501,6 +1502,7 @@ h1.sys-headline {
 
 // this is the form
 .sys-form {
+  color: $dark-grey;
   a { color: $primary-color; }
 
   fieldset {
@@ -1511,6 +1513,7 @@ h1.sys-headline {
 
   legend {
     font-weight: bold;
+    color: $primary-grey;
   }
 
   .field-wrapper {
@@ -1741,7 +1744,7 @@ h1.sys-headline {
   color: white;
   font-family: $secondary-font;
   text-transform: uppercase;
-  padding-right: 20px;
+  padding-right: 30px;
   text-indent: 0;
 
   &:before {
@@ -1762,6 +1765,9 @@ h1.sys-headline {
   @include box-sizing(border-box);
   background-color: white;
   padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 
   h2,
   h3 {
@@ -1770,16 +1776,16 @@ h1.sys-headline {
   }
 
   h3 {
-    font: normal 1.3em/1.25 $secondary-font;
+    font: normal 1.666666667em/1.5 $secondary-font;
     margin-bottom: 0;
     color: #666;
   }
 
   .sys-story-headline {
-    font: normal 1.75em/1 $secondary-font;
+    font: normal 1.95em/1 $secondary-font;
     padding: .25em;
     background: transparent image-url("sys-headline-bg.png") no-repeat scroll top left;
-    padding: 19px 0 25px 10px;
+    padding: 17px 0 30px 10px;
     margin-top: -45px;
     margin-left: -25px;
     & > span {
@@ -1807,13 +1813,42 @@ h1.sys-headline {
     @include box-shadow(0 0 12px rgba(0,0,0,.5));
   }
 
-  .sys-story-teacher-image {
+  .sys-story-teacher-image-wrapper {
+    position: relative;
+    float: left;
     @media (min-width: 768px) {
       max-width: 45%;
       float: left;
     }
-    margin-bottom: 1em; // use clearfix to clear floats;
+    margin-bottom: 1em; // use clearfix on the parent container
     @include transform(rotate(-2deg));
+
+    &:before,
+    &:after {
+      content: " ";
+      display: block;
+      position: absolute;
+      background: transparent none;
+    }
+    &:before {
+      top: -15px;
+      right: -39px;
+      width: 113px;
+      height: 62px;
+      background-image: image-url("stupid-tape-2.png");
+    }
+    &:after {
+      bottom: -25px;
+      left: -15px;
+      width: 61px;
+      height: 129px;
+      background-image: image-url("stupid-tape-1.png");
+    }
+  }
+  .sys-story-teacher-image {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
   }
 
   .sys-story-user-image {
