@@ -38,7 +38,7 @@
 				<img class="hero" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/hero-teachers.png" alt="Teachers" />
         <div class="campaign-social-share">
           Share
-          <ul>
+          <ul class="scribble-share">
             <li><a href="#" class="facebook">Facebook</a></li>
             <li><a href="#" class="twitter">Twitter</a></li>
             <li><a href="#" class="googleplus">Google Plus</a></li>
