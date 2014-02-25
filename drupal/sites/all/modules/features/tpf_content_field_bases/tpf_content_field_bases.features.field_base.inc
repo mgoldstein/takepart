@@ -1286,8 +1286,10 @@ function tpf_content_field_bases_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'campaign_card_iframe' => 'campaign_card_iframe',
           'campaign_card_media' => 'campaign_card_media',
           'campaign_card_news' => 'campaign_card_news',
+          'campaign_card_social' => 'campaign_card_social',
         ),
       ),
       'target_type' => 'node',
