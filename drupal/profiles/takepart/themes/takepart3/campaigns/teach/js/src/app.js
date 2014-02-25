@@ -94,7 +94,13 @@
         "last_name": formData.first_name,
         "first_name": formData.last_name,
         "image_link": "todo", //formData.image_user_id
-        "image_uid": "todo"
+        "image_uid": "todo", 
+
+        // boilerplate
+        "zip":"90210",
+        "state":"CA",
+        "city":"Beverly Hills",
+        "address":"331 Foothill Rd."
       },
       "story": {
         "year": formData.story_year,
@@ -110,10 +116,9 @@
         "image_uid": "todo"
       },
       "school": {
-        // TODO
-        // "name": "Jefferson High School",
-        // "city": "Los Angeles",
-        // "state": "California",
+        "name": "TODO School Name",
+        "city": "TODO Los Angeles",
+        "state": "TODO CA",
         "external_id": formData.school_id
       }
     };
