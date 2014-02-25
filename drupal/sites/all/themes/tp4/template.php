@@ -749,11 +749,24 @@ function tp4_preprocess_panels_pane(&$variables) {
     }
 }
 
+/*
+ * Campaign Field Overrides
+ */
 function tp4_field__field_campaign_media_title($variables) {
   return tp4_field_campaign_media_title($variables);
+}
+function tp4_field__field_campaign_iframe($variables){
+  return tp4_field_campaign_iframe($variables);
 }
 function tp4_field_campaign_media_title($variables){
   $output = '';
   $output .= '<h4 class="title">'. $variables['items'][0]['#markup']. '</h4>';
+  return $output;
+}
+function tp4_field_campaign_iframe($variables){
+  $output = '';
+  $height = $variables['element']['#object']->field_campaign_iframe_height['und'][0]['value'];
+  $width = $variables['element']['#object']->field_campaign_iframe_width['und'][0]['value'];
+  $output .= '<iframe src="'. $variables['items'][0]['#markup']. '" width="'. $width. '" height="'. $height. '"></iframe>';
   return $output;
 }

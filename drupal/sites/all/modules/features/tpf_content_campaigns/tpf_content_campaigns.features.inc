@@ -37,7 +37,7 @@ function tpf_content_campaigns_node_info() {
       'base' => 'node_content',
       'description' => t('Iframes that are hosted by 3rd parties.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Admin Card Title'),
       'help' => '',
     ),
     'campaign_card_media' => array(
@@ -45,7 +45,7 @@ function tpf_content_campaigns_node_info() {
       'base' => 'node_content',
       'description' => t('Card that hold media content (image and videos).'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Admin Card Title'),
       'help' => '',
     ),
     'campaign_card_news' => array(
@@ -53,7 +53,7 @@ function tpf_content_campaigns_node_info() {
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Admin Card Title'),
       'help' => '',
     ),
     'campaign_card_social' => array(
@@ -61,7 +61,7 @@ function tpf_content_campaigns_node_info() {
       'base' => 'node_content',
       'description' => t('Social Follow Card for the Campaign pages.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Admin Card Title'),
       'help' => '',
     ),
     'campaign_page' => array(

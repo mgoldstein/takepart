@@ -1014,42 +1014,7 @@ function tpf_content_campaigns_strongarm() {
         'default' => 1,
         'choice' => 1,
       ),
-      'full' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
       'teaser' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'rss' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'search_index' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'search_result' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'diff_standard' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'embedaction' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'embedaction_expanded' => array(
         'status' => 0,
         'default' => 0,
         'choice' => 0,
@@ -1059,17 +1024,7 @@ function tpf_content_campaigns_strongarm() {
         'default' => 0,
         'choice' => 0,
       ),
-      'embed' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
       'vidpop_map' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'token' => array(
         'status' => 0,
         'default' => 0,
         'choice' => 0,
@@ -1120,42 +1075,7 @@ function tpf_content_campaigns_strongarm() {
         'default' => 0,
         'choice' => 0,
       ),
-      'full' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
       'teaser' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'rss' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'search_index' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'search_result' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'diff_standard' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'embedaction' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'embedaction_expanded' => array(
         'status' => 0,
         'default' => 0,
         'choice' => 0,
@@ -1165,17 +1085,7 @@ function tpf_content_campaigns_strongarm() {
         'default' => 0,
         'choice' => 0,
       ),
-      'embed' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
       'vidpop_map' => array(
-        'status' => 0,
-        'default' => 0,
-        'choice' => 0,
-      ),
-      'token' => array(
         'status' => 0,
         'default' => 0,
         'choice' => 0,
