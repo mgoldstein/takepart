@@ -317,165 +317,10 @@ p a {
 .page-wordlet-teach-home #page {
   display: block;
 }
-.page-wordlet-teach-home .content {
-  overflow: visible;
-  position: relative;
-}
-.page-wordlet-teach-home .content-header {
-  background: url("../img/header1_bg.png?1377730837") no-repeat;
-  color: black;
-  font-size: 26px;
-  margin-bottom: -35px;
-  padding: 0px 10px;
-  width: 400px;
-  line-height: 200%;
-  height: 85px;
-}
-.page-wordlet-teach-home .content-header span {
-  -webkit-transform: rotate(-2deg);
-  -moz-transform: rotate(-2deg);
-  -ms-transform: rotate(-2deg);
-  -o-transform: rotate(-2deg);
-  transform: rotate(-2deg);
-  display: block;
-}
-.page-wordlet-teach-home .call-to-share {
-  margin: 0px 0 20px 0;
-  position: relative;
-  z-index: 10;
-  float: right;
-}
-.page-wordlet-teach-home .call-to-share a {
-  font: normal 18px "GlyphaLTPro-Black", serif;
-  color: white;
-}
-.page-wordlet-teach-home .call-to-share a .fb {
-  background: url('../img/social-facebook-white.png?1377822354') no-repeat;
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-  width: 30px;
-  height: 30px;
-  margin: 0 5px;
-}
-.page-wordlet-teach-home .call-to-share a:hover {
-  text-shadow: 0 0 1px white;
-  text-decoration: none;
-}
-.page-wordlet-teach-home .main-video-wrapper {
-  width: 637px;
-  margin-left: -5px;
-  border: 5px solid white;
-  position: relative;
-  z-index: 10;
-  vertical-align: top;
-  background-color: black;
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-  -webkit-box-shadow: 0 0 10px black;
-  -moz-box-shadow: 0 0 10px black;
-  box-shadow: 0 0 10px black;
-}
-.page-wordlet-teach-home .social-menu {
-  width: 277px;
-  background: url('../img/paper_right.png?1377714705') no-repeat right 10px;
-  padding: 90px 30px 40px 300px;
-  top: -50px;
-  margin-left: -300px;
-  margin-right: -20px;
-  position: relative;
-  z-index: 5;
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-  vertical-align: top;
-  float: right;
-  min-height: 450px;
-}
-.page-wordlet-teach-home .social-menu h1 {
-  display: none;
-}
-.page-wordlet-teach-home .social-menu .item {
-  background-repeat: no-repeat;
-  background-position: 0 -7px;
-  padding-left: 90px;
-}
-.page-wordlet-teach-home .social-menu .item.text {
-  background-image: url('../img/social-phone.png?1377735601');
-}
-.page-wordlet-teach-home .social-menu .item.connected {
-  background-image: url('../img/social-envelopes.png?1377735601');
-}
-.page-wordlet-teach-home .social-menu .item.discussion {
-  background-image: url('../img/social-chat.png?1377821572');
-}
-.page-wordlet-teach-home .social-menu .item p {
-  line-height: 130%;
-}
-.page-wordlet-teach-home .social-menu .item p .terms {
-  font-size: 12px;
-  line-height: 25px;
-}
-.page-wordlet-teach-home .social-menu .item .newsletter-signup {
-  position: relative;
-}
-.page-wordlet-teach-home .social-menu .item .newsletter-signup label {
-  display: none;
-}
-.page-wordlet-teach-home .social-menu .item .newsletter-signup .form-type-textfield input {
-  background: url('../img/text-field-large.png?1377758755') no-repeat;
-  width: 240px;
-  height: 46px;
-  border: none;
-  margin-left: -80px;
-  padding: 0 15px;
-}
-.page-wordlet-teach-home .social-menu .item .newsletter-signup .form-actions {
-  position: absolute;
-  top: 9px;
-  right: 20px;
-  margin: 0px;
-}
-.page-wordlet-teach-home .social-menu .item .newsletter-signup .form-actions input {
-  cursor: pointer;
-  -webkit-appearance: none;
-  border: none;
-  background-color: black;
-  font: normal 12px/140% "GlyphaLTPro-Black", serif;
-  color: white;
-  text-transform: uppercase;
-  width: 57px;
-}
-.page-wordlet-teach-home .social-menu .item .newsletter-signup .messages.error {
-  position: absolute;
-  background: transparent none;
-  padding: 0;
-  margin: 0 0 0 -71px;
-  border: none;
-  color: red;
-  bottom: 94%;
-}
-.page-wordlet-teach-home .social-menu .item .sect-headline {
-  font: normal 24px/90% "GlyphaLTPro-Black", serif;
-  color: #ea5f11;
-}
-.page-wordlet-teach-home .social-menu .item .sect-headline strong {
-  font-weight: normal;
-  color: #313131;
-}
 .page-wordlet-teach-home .page-body-content {
-  padding: 100px 20px 20px 20px;
-  margin: -60px 20px 0 6px;
+  overflow: hidden;
+  *zoom: 1;
+  padding: 20px;
   background-color: #D4D4D4;
   background: -webkit-linear-gradient(-89deg, #ffffff 0%, #dbdbdb 90%, #b1a99a);
   background: -moz-linear-gradient(-89deg, #ffffff 0%, #dbdbdb 90%, #b1a99a);
@@ -486,10 +331,53 @@ p a {
   box-shadow: 0 0 6px 4px #a79b84 inset;
   position: relative;
 }
-.page-wordlet-teach-home .page-body-content img {
-  float: right;
-  margin-left: 20px;
-  margin-right: -33px;
+
+.home-section .image-wrapper {
+  padding: 4px;
+  background-color: white;
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.home-section .image-wrapper img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+}
+.home-section:nth-of-type(2) .image-wrapper {
+  -webkit-transform: rotate(-2deg) scale(1.1);
+  -moz-transform: rotate(-2deg) scale(1.1);
+  -ms-transform: rotate(-2deg) scale(1.1);
+  -o-transform: rotate(-2deg) scale(1.1);
+  transform: rotate(-2deg) scale(1.1);
+}
+.home-section:last-of-type .image-wrapper {
+  -webkit-transform: rotate(1deg) scale(1.1);
+  -moz-transform: rotate(1deg) scale(1.1);
+  -ms-transform: rotate(1deg) scale(1.1);
+  -o-transform: rotate(1deg) scale(1.1);
+  transform: rotate(1deg) scale(1.1);
+}
+.home-section .headline {
+  font: normal 2em/1.5 "GlyphaLTPro-Black", serif;
+  margin-top: .5em;
+  text-transform: uppercase;
+}
+.home-section .body {
+  line-height: 1.5;
+}
+.home-section .body a {
+  font-family: "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+}
+.home-section .body a:after {
+  content: "\0020\00BB";
+  display: inline;
 }
 
 /* # Common elements for some interior pages
@@ -697,306 +585,6 @@ p a {
     transform: scale(1.02, 1.02);
   }
 }
-.teach-video-page .social-menu,
-.page-wordlet-teach-alliances .content .social-menu,
-.teach-news-content .social-menu,
-.teach-sys-content .social-menu,
-.teach-film-content .social-menu {
-  clear: both;
-  text-align: center;
-}
-@media (max-width: 480px) {
-  .teach-video-page .social-menu,
-  .page-wordlet-teach-alliances .content .social-menu,
-  .teach-news-content .social-menu,
-  .teach-sys-content .social-menu,
-  .teach-film-content .social-menu {
-    background-color: black;
-    padding: 20px;
-  }
-}
-@media (min-width: 848px) {
-  .teach-video-page .social-menu,
-  .page-wordlet-teach-alliances .content .social-menu,
-  .teach-news-content .social-menu,
-  .teach-sys-content .social-menu,
-  .teach-film-content .social-menu {
-    background: transparent url('../img/video-page-social-block-bg.png?1377758768') scroll no-repeat bottom center;
-    min-height: 241px;
-    max-width: 830px;
-    margin: 0 auto;
-    padding: 0 9px 30px;
-  }
-}
-.teach-video-page .social-menu h1.sect-headline,
-.page-wordlet-teach-alliances .content .social-menu h1.sect-headline,
-.teach-news-content .social-menu h1.sect-headline,
-.teach-sys-content .social-menu h1.sect-headline,
-.teach-film-content .social-menu h1.sect-headline {
-  font-family: "GlyphaLTPro-Black", serif;
-  font-weight: normal;
-  font-size: 22px;
-  line-height: 1.25;
-  text-transform: uppercase;
-  text-align: center;
-  max-width: 500px;
-  margin: 1em auto 0.5em;
-}
-@media (max-width: 480px) {
-  .teach-video-page .social-menu h1.sect-headline,
-  .page-wordlet-teach-alliances .content .social-menu h1.sect-headline,
-  .teach-news-content .social-menu h1.sect-headline,
-  .teach-sys-content .social-menu h1.sect-headline,
-  .teach-film-content .social-menu h1.sect-headline {
-    color: white;
-    margin-top: 0;
-  }
-}
-.teach-video-page .social-menu .item,
-.page-wordlet-teach-alliances .content .social-menu .item,
-.teach-news-content .social-menu .item,
-.teach-sys-content .social-menu .item,
-.teach-film-content .social-menu .item {
-  font-size: 11.5px;
-  line-height: 1;
-  vertical-align: middle;
-  color: black;
-  position: relative;
-}
-@media (max-width: 480px) {
-  .teach-video-page .social-menu .item,
-  .page-wordlet-teach-alliances .content .social-menu .item,
-  .teach-news-content .social-menu .item,
-  .teach-sys-content .social-menu .item,
-  .teach-film-content .social-menu .item {
-    color: white;
-  }
-}
-@media (min-width: 848px) {
-  .teach-video-page .social-menu .item,
-  .page-wordlet-teach-alliances .content .social-menu .item,
-  .teach-news-content .social-menu .item,
-  .teach-sys-content .social-menu .item,
-  .teach-film-content .social-menu .item {
-    display: inline-block;
-    *display: inline;
-    *zoom: 1;
-    width: 27%;
-    margin: 0px 3%;
-  }
-}
-.teach-video-page .social-menu .item p,
-.page-wordlet-teach-alliances .content .social-menu .item p,
-.teach-news-content .social-menu .item p,
-.teach-sys-content .social-menu .item p,
-.teach-film-content .social-menu .item p {
-  font-size: 11.5px;
-  line-height: 1;
-  color: black;
-}
-@media (max-width: 480px) {
-  .teach-video-page .social-menu .item p,
-  .page-wordlet-teach-alliances .content .social-menu .item p,
-  .teach-news-content .social-menu .item p,
-  .teach-sys-content .social-menu .item p,
-  .teach-film-content .social-menu .item p {
-    color: white;
-  }
-}
-.teach-video-page .social-menu .item .sect-headline,
-.page-wordlet-teach-alliances .content .social-menu .item .sect-headline,
-.teach-news-content .social-menu .item .sect-headline,
-.teach-sys-content .social-menu .item .sect-headline,
-.teach-film-content .social-menu .item .sect-headline {
-  font-family: "GlyphaLTPro-Black", serif;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 1;
-  color: #ea5f11;
-  margin-bottom: .15em;
-}
-.teach-video-page .social-menu .item .sect-headline strong,
-.page-wordlet-teach-alliances .content .social-menu .item .sect-headline strong,
-.teach-news-content .social-menu .item .sect-headline strong,
-.teach-sys-content .social-menu .item .sect-headline strong,
-.teach-film-content .social-menu .item .sect-headline strong {
-  color: black;
-  font-weight: normal;
-}
-@media (max-width: 480px) {
-  .teach-video-page .social-menu .item .sect-headline strong,
-  .page-wordlet-teach-alliances .content .social-menu .item .sect-headline strong,
-  .teach-news-content .social-menu .item .sect-headline strong,
-  .teach-sys-content .social-menu .item .sect-headline strong,
-  .teach-film-content .social-menu .item .sect-headline strong {
-    color: white;
-  }
-}
-.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form,
-.page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form,
-.teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form,
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form,
-.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form {
-  width: 217px;
-  margin: 0 auto;
-  position: relative;
-}
-.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form label,
-.page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form label,
-.teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form label,
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form label,
-.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form label {
-  display: none;
-}
-.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
-.page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
-.teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"],
-.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"] {
-  background: transparent url('../img/text-field-small.png?1377758768');
-  border: 0;
-  width: 217px;
-  height: 30px;
-  margin: 0 auto;
-  padding: 0 10px;
-}
-.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions,
-.page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions,
-.teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions,
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions,
-.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions {
-  position: absolute;
-  top: 4px;
-  right: -2px;
-  margin: 0;
-}
-.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"],
-.page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"],
-.teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"],
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"],
-.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"] {
-  cursor: pointer;
-  -webkit-appearance: none;
-  border: none;
-  background-color: black;
-  font: normal normal 12px/1.2 "GlyphaLTPro-Black", serif, serif;
-  color: white;
-  text-transform: uppercase;
-  width: 57px;
-}
-.teach-video-page .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error,
-.page-wordlet-teach-alliances .content .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error,
-.teach-news-content .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error,
-.teach-sys-content .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error,
-.teach-film-content .social-menu .item #newsletter-campaign-email-only-signup-form .messages.error {
-  position: absolute;
-  background: transparent none;
-  padding: 0;
-  margin: 0;
-  border: none;
-  font-size: 13px;
-  color: red;
-  bottom: 85%;
-}
-.teach-video-page .social-menu .item:before,
-.page-wordlet-teach-alliances .content .social-menu .item:before,
-.teach-news-content .social-menu .item:before,
-.teach-sys-content .social-menu .item:before,
-.teach-film-content .social-menu .item:before {
-  display: block;
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  background-color: transparent;
-}
-.teach-video-page .social-menu .item.text,
-.page-wordlet-teach-alliances .content .social-menu .item.text,
-.teach-news-content .social-menu .item.text,
-.teach-sys-content .social-menu .item.text,
-.teach-film-content .social-menu .item.text {
-  margin-top: 73px;
-}
-.teach-video-page .social-menu .item.text:before,
-.page-wordlet-teach-alliances .content .social-menu .item.text:before,
-.teach-news-content .social-menu .item.text:before,
-.teach-sys-content .social-menu .item.text:before,
-.teach-film-content .social-menu .item.text:before {
-  background-image: url('../img/social-phone.png?1377735601');
-  width: 72px;
-  height: 73px;
-  margin-left: -36px;
-}
-@media (max-width: 480px) {
-  .teach-video-page .social-menu .item.text:before,
-  .page-wordlet-teach-alliances .content .social-menu .item.text:before,
-  .teach-news-content .social-menu .item.text:before,
-  .teach-sys-content .social-menu .item.text:before,
-  .teach-film-content .social-menu .item.text:before {
-    background-image: url('../img/social-phone-white.png?1377822363');
-    width: 52px;
-    height: 60px;
-    margin-left: -26px;
-  }
-}
-.teach-video-page .social-menu .item.connected,
-.page-wordlet-teach-alliances .content .social-menu .item.connected,
-.teach-news-content .social-menu .item.connected,
-.teach-sys-content .social-menu .item.connected,
-.teach-film-content .social-menu .item.connected {
-  margin-top: 79px;
-}
-.teach-video-page .social-menu .item.connected:before,
-.page-wordlet-teach-alliances .content .social-menu .item.connected:before,
-.teach-news-content .social-menu .item.connected:before,
-.teach-sys-content .social-menu .item.connected:before,
-.teach-film-content .social-menu .item.connected:before {
-  background-image: url('../img/social-envelopes.png?1377735601');
-  width: 72px;
-  height: 79px;
-  margin-left: -36px;
-}
-@media (max-width: 480px) {
-  .teach-video-page .social-menu .item.connected:before,
-  .page-wordlet-teach-alliances .content .social-menu .item.connected:before,
-  .teach-news-content .social-menu .item.connected:before,
-  .teach-sys-content .social-menu .item.connected:before,
-  .teach-film-content .social-menu .item.connected:before {
-    background-image: url('../img/social-envelopes-white.png?1377822363');
-    width: 42px;
-    height: 47px;
-    margin-left: -21px;
-  }
-}
-.teach-video-page .social-menu .item.discussion,
-.page-wordlet-teach-alliances .content .social-menu .item.discussion,
-.teach-news-content .social-menu .item.discussion,
-.teach-sys-content .social-menu .item.discussion,
-.teach-film-content .social-menu .item.discussion {
-  margin-top: 55px;
-}
-.teach-video-page .social-menu .item.discussion:before,
-.page-wordlet-teach-alliances .content .social-menu .item.discussion:before,
-.teach-news-content .social-menu .item.discussion:before,
-.teach-sys-content .social-menu .item.discussion:before,
-.teach-film-content .social-menu .item.discussion:before {
-  background-image: url('../img/social-chat.png?1377821572');
-  width: 72px;
-  height: 55px;
-  margin-left: -36px;
-}
-@media (max-width: 480px) {
-  .teach-video-page .social-menu .item.discussion:before,
-  .page-wordlet-teach-alliances .content .social-menu .item.discussion:before,
-  .teach-news-content .social-menu .item.discussion:before,
-  .teach-sys-content .social-menu .item.discussion:before,
-  .teach-film-content .social-menu .item.discussion:before {
-    background-image: url('../img/social-chat-white.png?1377822363');
-    width: 50px;
-    height: 45px;
-    margin-left: -25px;
-  }
-}
 .teach-video-page .ad,
 .page-wordlet-teach-alliances .content .ad,
 .teach-news-content .ad,
@@ -1098,6 +686,191 @@ p a {
   }
 }
 
+.social-menu {
+  clear: both;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .social-menu {
+    background-color: black;
+    padding: 20px;
+  }
+}
+@media (min-width: 848px) {
+  .social-menu {
+    background: transparent url('../img/video-page-social-block-bg.png?1377758768') scroll no-repeat bottom center;
+    min-height: 241px;
+    max-width: 830px;
+    margin: 0 auto;
+    padding: 0 9px 30px;
+  }
+}
+.social-menu h1.sect-headline {
+  font-family: "GlyphaLTPro-Black", serif;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-align: center;
+  max-width: 500px;
+  margin: 1em auto 0.5em;
+}
+@media (max-width: 480px) {
+  .social-menu h1.sect-headline {
+    color: white;
+    margin-top: 0;
+  }
+}
+.social-menu .item {
+  font-size: 11.5px;
+  line-height: 1;
+  vertical-align: middle;
+  color: black;
+  position: relative;
+}
+@media (max-width: 480px) {
+  .social-menu .item {
+    color: white;
+  }
+}
+@media (min-width: 848px) {
+  .social-menu .item {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 27%;
+    margin: 0px 3%;
+  }
+}
+.social-menu .item p {
+  font-size: 11.5px;
+  line-height: 1;
+  color: black;
+}
+@media (max-width: 480px) {
+  .social-menu .item p {
+    color: white;
+  }
+}
+.social-menu .item .sect-headline {
+  font-family: "GlyphaLTPro-Black", serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1;
+  color: #ea5f11;
+  margin-bottom: .15em;
+}
+.social-menu .item .sect-headline strong {
+  color: black;
+  font-weight: normal;
+}
+@media (max-width: 480px) {
+  .social-menu .item .sect-headline strong {
+    color: white;
+  }
+}
+.social-menu .item #newsletter-campaign-email-only-signup-form {
+  width: 217px;
+  margin: 0 auto;
+  position: relative;
+}
+.social-menu .item #newsletter-campaign-email-only-signup-form label {
+  display: none;
+}
+.social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"] {
+  background: transparent url('../img/text-field-small.png?1377758768');
+  border: 0;
+  width: 217px;
+  height: 30px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.social-menu .item #newsletter-campaign-email-only-signup-form .form-actions {
+  position: absolute;
+  top: 4px;
+  right: -2px;
+  margin: 0;
+}
+.social-menu .item #newsletter-campaign-email-only-signup-form .form-actions input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  border: none;
+  background-color: black;
+  font: normal normal 12px/1.2 "GlyphaLTPro-Black", serif, serif;
+  color: white;
+  text-transform: uppercase;
+  width: 57px;
+}
+.social-menu .item #newsletter-campaign-email-only-signup-form .messages.error {
+  position: absolute;
+  background: transparent none;
+  padding: 0;
+  margin: 0;
+  border: none;
+  font-size: 13px;
+  color: red;
+  bottom: 85%;
+}
+.social-menu .item:before {
+  display: block;
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  background-color: transparent;
+}
+.social-menu .item.text {
+  margin-top: 73px;
+}
+.social-menu .item.text:before {
+  background-image: url('../img/social-phone.png?1377735601');
+  width: 72px;
+  height: 73px;
+  margin-left: -36px;
+}
+@media (max-width: 480px) {
+  .social-menu .item.text:before {
+    background-image: url('../img/social-phone-white.png?1377822363');
+    width: 52px;
+    height: 60px;
+    margin-left: -26px;
+  }
+}
+.social-menu .item.connected {
+  margin-top: 79px;
+}
+.social-menu .item.connected:before {
+  background-image: url('../img/social-envelopes.png?1377735601');
+  width: 72px;
+  height: 79px;
+  margin-left: -36px;
+}
+@media (max-width: 480px) {
+  .social-menu .item.connected:before {
+    background-image: url('../img/social-envelopes-white.png?1377822363');
+    width: 42px;
+    height: 47px;
+    margin-left: -21px;
+  }
+}
+.social-menu .item.discussion {
+  margin-top: 55px;
+}
+.social-menu .item.discussion:before {
+  background-image: url('../img/social-chat.png?1377821572');
+  width: 72px;
+  height: 55px;
+  margin-left: -36px;
+}
+@media (max-width: 480px) {
+  .social-menu .item.discussion:before {
+    background-image: url('../img/social-chat-white.png?1377822363');
+    width: 50px;
+    height: 45px;
+    margin-left: -25px;
+  }
+}
+
 /* # Responsive Layout
 ================================================== */
 @media (max-width: 1000px) {
@@ -1107,26 +880,6 @@ p a {
 
   .header .menu-wrapper {
     font-size: 14px;
-  }
-
-  .page-wordlet-teach-home .social-menu {
-    width: 38%;
-    padding: 80px 30px 20px 300px;
-    min-height: 330px;
-  }
-  .page-wordlet-teach-home .social-menu .item {
-    background-position: 0 -5px;
-    background-size: 25%;
-    padding-left: 70px;
-  }
-  .page-wordlet-teach-home .social-menu .item .sect-headline {
-    font-size: 20px;
-  }
-  .page-wordlet-teach-home .social-menu .item p {
-    font-size: 13px;
-  }
-  .page-wordlet-teach-home .main-video-wrapper {
-    width: 59%;
   }
 }
 @media (max-width: 900px) {
@@ -1218,48 +971,6 @@ p a {
     background-position: center 3px;
     background-size: 420px 100%;
     height: auto;
-  }
-
-  .page-wordlet-teach-home .call-to-share {
-    float: none;
-    text-align: center;
-    width: 100%;
-  }
-  .page-wordlet-teach-home .content-header {
-    background-size: 100%;
-    width: 80%;
-    font-size: 19px;
-  }
-  .page-wordlet-teach-home .main-video-wrapper {
-    box-sizing: border-box;
-    width: 100%;
-    height: auto !important;
-    margin: 0;
-    border-width: 4px;
-    position: relative;
-  }
-  .page-wordlet-teach-home .social-menu {
-    box-sizing: border-box;
-    width: 100%;
-    top: auto;
-    display: block;
-    position: relative;
-    float: none;
-    padding: 20px;
-    margin: 0 auto;
-    background: none white;
-    -webkit-box-shadow: 0 0 40px #666666 inset;
-    -moz-box-shadow: 0 0 40px #666666 inset;
-    box-shadow: 0 0 40px #666666 inset;
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #cccccc));
-    background: -webkit-linear-gradient(top, #eeeeee, #cccccc);
-    background: -moz-linear-gradient(top, #eeeeee, #cccccc);
-    background: -o-linear-gradient(top, #eeeeee, #cccccc);
-    background: linear-gradient(top, #eeeeee, #cccccc);
-  }
-  .page-wordlet-teach-home .page-body-content {
-    margin: 0;
-    padding: 20px;
   }
 }
 /* # Film Page
