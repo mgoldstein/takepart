@@ -82,7 +82,7 @@
   </fieldset>
   <fieldset>
     <div class="field-wrapper clearfix"><input type="checkbox" class="pull-left" id="email_subscribe" name="email_subscribe"><label for="email_subscribe" class="visible">I would like to receive TakePart's newsletter on topics related to teaching and education</label></div>
-    <div class="field-wrapper field-wrapper-terms-agree"><input type="checkbox" id="terms_agree" name="terms_agree" required><label for="terms_agree" class="visible">I have read and agree to the <a href="#">content submission agreement</a></label></div>
+    <div class="field-wrapper field-wrapper-terms-agree"><input type="checkbox" id="terms_agree" name="terms_agree" required><label for="terms_agree" class="visible">I have read and agree to the <a id="content-submission-agreement" href="#">Content Submission Agreement</a></label></div>
   </fieldset>
   <p class="clearfix">
     <input type="button" id="sys-preview" class="sys-button left" value="Preview Story" />
@@ -93,15 +93,16 @@
 <script type="text/x-microtemplate" id="story_template">
   <div class="sys-story-modal">
     <h2 class="sys-story-headline"><span>Teacher Stories From <span class="teach-logo">Teach</span></span></h2>
-    <img id="sys-story-teacher-image" class="sys-story-teacher-image" src="http://placehold.it/350x410&text=loading...">
+    <div class="sys-story-teacher-image-wrapper"><img id="sys-story-teacher-image" class="sys-story-teacher-image" src="http://placehold.it/350x410&text=loading..."></div>
     <div class="content">
+      <h3>Teacher</h3>
       <h2 class="sys-story-subhead"><%=teacher_first_name%> <%=teacher_last_name%></h2>
       <img id="sys-story-user-image" class="sys-story-user-image" src="http://placehold.it/150x200&text=loading...">
       <h3>School</h3>
       <p>School Info TBD</p>
       <h3>Submitted By</h3>
       <p><%=first_name%> <%=last_name%></p>
-      <h3><%=story_title%></h3>
+      <h3><%=story_title%> (<%=story_year%>)</h3>
       <p><%=story_body%></p>
     </div>
   </div>
