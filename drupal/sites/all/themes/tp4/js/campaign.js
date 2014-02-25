@@ -61,6 +61,12 @@
            $this.find('.card-wrapper').css("height", $this.height());
         });      
       });
+      window.onresize = function(event) {
+        $('.swipe-wrap').each(function(){  
+          var $this = $(this);
+          $this.find('.card-wrapper').css("height", $this.height());
+        });      
+      };
     }
   };
 
