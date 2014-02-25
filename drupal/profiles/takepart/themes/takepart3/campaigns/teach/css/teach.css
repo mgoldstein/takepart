@@ -1863,7 +1863,12 @@ h1.sys-headline span {
     width: 362px;
   }
 }
-.sys-form .sys-image {
+.sys-form .sys-image img {
+  max-width: 100%;
+  height: auto !important;
+}
+.sys-form .sys-image-content {
+  display: block;
   font-family: Helvetica, Arial, sans-serif;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1881,17 +1886,32 @@ h1.sys-headline span {
   background-color: #ddd;
   text-align: center;
   padding: 20px;
-  border: 2px dashed black;
   margin-top: 1em;
 }
-.sys-form .sys-image p {
+.sys-form .sys-image-content p {
   line-height: 1;
 }
-.sys-form .sys-image .error {
+.sys-form .sys-image-content .error {
   -webkit-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
   -moz-box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
   box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
   color: #d00;
+}
+.sys-form .sys-upload-buttons span {
+  display: inline-block;
+  padding: .25em .5em;
+  color: white;
+  background-color: #333;
+  font-family: "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+  margin-left: .25em;
+}
+.sys-form .sys-upload-buttons span:first-child {
+  margin-left: 0;
+}
+.sys-form input[type="file"] {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
 }
 .sys-form input[type="button"],
 .sys-form input[type="submit"] {
@@ -2039,14 +2059,14 @@ h1.sys-headline span {
   right: -39px;
   width: 113px;
   height: 62px;
-  background-image: url('../img/stupid-tape-2.png?1393353271');
+  background-image: url('../img/stupid-tape-2.png?1393356771');
 }
 .sys-story-modal .sys-story-teacher-image-wrapper:after {
   bottom: -25px;
   left: -15px;
   width: 61px;
   height: 129px;
-  background-image: url('../img/stupid-tape-1.png?1393353254');
+  background-image: url('../img/stupid-tape-1.png?1393356771');
 }
 .sys-story-modal .sys-story-teacher-image {
   display: block;
