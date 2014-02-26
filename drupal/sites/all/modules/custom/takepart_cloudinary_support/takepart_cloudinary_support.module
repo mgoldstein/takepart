@@ -7,6 +7,7 @@
 define('CLOUDINARY_CLOUD_NAME', 'takepartdev');
 define('CLOUDINARY_API_KEY', '631362422786584');
 define('CLOUDINARY_API_SECRET', 'WXOO-sdwQ_Rgm6RZRnBStD9u7s8');
+define('CLOUDINARY_TAGS', 'temp'); // comma-separated list
 
 define('CLOUDINARY_SUPPORT_PATH', drupal_get_path('module', 'takepart_cloudinary_support'));
 
@@ -47,12 +48,13 @@ function _takepart_cloudinary_support_generate_signature() {
   // excluding the "api_key" param.
   // It will be sha1 encoded in the return statement
   // @see http://cloudinary.com/documentation/upload_images#request_authentication
-  $signature_string = "callback=$callback&timestamp=$time" . CLOUDINARY_API_SECRET;
+  $signature_string = "callback=$callback&tags=" . CLOUDINARY_TAGS . "&timestamp=$time" . CLOUDINARY_API_SECRET;
 
   return array(
     'cloud_name' => CLOUDINARY_CLOUD_NAME,
     'api_key' => CLOUDINARY_API_KEY,
     'callback' => $callback,
+    'tags' => CLOUDINARY_TAGS,
     'timestamp' => $time,
     'signature' => sha1($signature_string),
   );

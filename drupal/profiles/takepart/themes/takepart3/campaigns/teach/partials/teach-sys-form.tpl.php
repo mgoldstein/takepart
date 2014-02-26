@@ -33,7 +33,8 @@
   </fieldset>
   <fieldset>
     <legend>Your School</legend>
-    <input type="hidden" name="school_id" id="school_id">
+    <input type="hidden" name="school_id" id="school_id" value="0">
+    <input type="hidden" name="school_city" id="school_city" value="">
     <div class="field-wrapper">
       <label for="school_state">State</label>
       <select name="school_state" id="school_state" required>
@@ -61,24 +62,26 @@
   </fieldset>
   <fieldset>
     <legend>Pictures Make The Story</legend>
-    <p>Click or drag image files onto the upload button.</p>
-    <input type="hidden" id="image_user_id" name="image_user_id">
-    <input type="hidden" id="image_teacher_id" name="image_teacher_id">
     <div id="sys-image-user" class="sys-image sys-image-user left">
-      <div class="sys-image-content">
+      <label class="sys-image-content" for="user_image">
         <p><strong>Your Picture</strong><br /><small>(recommended)</small></p>
         <p class="sys-image-description"><small>Preferably a yearbook or school picture. Alternately one during the time period.</small></p>
-      </div>
-      <input type="file" name="image_user" id="image_user" class="cfu" data-cloudinary-field="image_user_id">
+	<p class="sys-upload-buttons"><span>Upload</span></p>
+      </label>
+      <input type="file" name="file" id="user_image">
+      <input type="hidden" id="user_image_id" name="user_image_id">
+      <input type="hidden" id="user_image_link" name="user_image_link">
     </div>
     <div id="sys-image-teacher" class="sys-image sys-image-teacher right">
-      <div class="sys-image-content">
+      <label class="sys-image-content" for="teacher_image">
         <p><strong>Your Teacher's Picture</strong><br /><small>(recommended)</small></p>
         <p class="sys-image-description"><small>A picture of the teacher or the school.</small></p>
-      </div>
-      <input type="file" name="file" id="image_teacher" class="cfu" data-cloudinary-field="image_teacher_id">
+	<p class="sys-upload-buttons"><span>Upload</span></p>
+      </label>
+      <input type="file" name="file" id="teacher_image">
+      <input type="hidden" id="teacher_image_id" name="teacher_image_id">
+      <input type="hidden" id="teacher_image_link" name="teacher_image_link">
     </div>
-      <!-- <input type="file" name="file" id="fileUpload" class="cfu" style="display: none;"> -->
   </fieldset>
   <fieldset>
     <div class="field-wrapper clearfix"><input type="checkbox" class="pull-left" id="email_subscribe" name="email_subscribe"><label for="email_subscribe" class="visible">I would like to receive TakePart's newsletter on topics related to teaching and education</label></div>
@@ -93,13 +96,13 @@
 <script type="text/x-microtemplate" id="story_template">
   <div class="sys-story-modal">
     <h2 class="sys-story-headline"><span>Teacher Stories From <span class="teach-logo">Teach</span></span></h2>
-    <div class="sys-story-teacher-image-wrapper"><img id="sys-story-teacher-image" class="sys-story-teacher-image" src="http://placehold.it/350x410&text=loading..."></div>
+    <div class="sys-story-teacher-image-wrapper"><img id="sys-story-teacher-image" class="sys-story-teacher-image" src="http://placehold.it/350x410&text=loading..." data-src="<%=teacher_image_id%>.jpg" data-width="350" data-height="410" data-crop="fill" data-gravity="faces"></div>
     <div class="content">
       <h3>Teacher</h3>
       <h2 class="sys-story-subhead"><%=teacher_first_name%> <%=teacher_last_name%></h2>
-      <img id="sys-story-user-image" class="sys-story-user-image" src="http://placehold.it/150x200&text=loading...">
+      <img id="sys-story-user-image" class="sys-story-user-image" src="http://placehold.it/150x200&text=loading..." data-src="<%=user_image_id%>.jpg" data-width="150" data-height="200" data-crop="fill" data-gravity="faces">
       <h3>School</h3>
-      <p>School Info TBD</p>
+      <p><%=school_name%><br /><%=school_city%>, <%=school_state%></p>
       <h3>Submitted By</h3>
       <p><%=first_name%> <%=last_name%></p>
       <h3><%=story_title%> (<%=story_year%>)</h3>

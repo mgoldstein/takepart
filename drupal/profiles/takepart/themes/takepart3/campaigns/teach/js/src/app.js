@@ -86,6 +86,7 @@
     // we've passed the age check. Lets have a beer.
 
     var json = {
+      "format": "json",
       "action_id": TAP.action_id,
       "opt_ins": {},
       "user_action": {
@@ -93,8 +94,8 @@
         "email": formData.email,
         "last_name": formData.first_name,
         "first_name": formData.last_name,
-        "image_link": "todo", //formData.image_user_id
-        "image_uid": "todo", 
+	"image_link": formData.user_image_link,
+	"image_uid": formData.user_image_id,
 
         // boilerplate
         "zip":"90210",
@@ -112,13 +113,13 @@
       "teacher": {
         "first_name": formData.teacher_first_name,
         "last_name":  formData.teacher_last_name,
-        "image_link": "todo", // formData.image_teacher_id
-        "image_uid": "todo"
+	"image_link": formData.teacher_image_link,
+	"image_uid": formData.teacher_image_id
       },
       "school": {
-        "name": "TODO School Name",
-        "city": "TODO Los Angeles",
-        "state": "TODO CA",
+	"name": formData.school_name,
+	"city": formData.school_city,
+	"state": formData.school_state,
         "external_id": formData.school_id
       }
     };
@@ -218,6 +219,7 @@
     var $schoolId = $('#school_id');
     var $schoolState = $('#school_state');
     var $schoolName = $('#school_name');
+    var $schoolCity = $('#school_city');
     var nameCache = {}; // TODO html5 localstorage
 
     // enable/disable school name field based on state value
@@ -225,9 +227,12 @@
       $schoolName.attr('disabled', $schoolState.val() === "");
     });
 
+    // TODO delete gsid on name change
+
     var updateSchoolFields = function(e, ui) {
       $schoolName.val(ui.item.label.split(' (')[0]);
-      $schoolId.val(ui.item.value);
+      $schoolId.val(ui.item.value.school_id);
+      $schoolCity.val(ui.item.value.school_city);
       return false; // prevent default behaivor
     };
     $schoolName.autocomplete({
@@ -250,27 +255,74 @@
               var $this = $(this);
               schools.push({
                 label: $this.find('name').text() + ' (' + $this.find('city').text() + ', ' + $this.find('state').text() + ')',
-                value: $this.find('gsId').text()
+		value: {
+		  school_id: $this.find('gsId').text(),
+		  school_city: $this.find('city').text(),
+		  school_state: $this.find('state').text()
+		}
               });
             });
             nameCache[hash] = schools;
+	    response(schools);
           }
         });
       }
     });
 
     // this makes file upload fields look nicer
-    var height = 0;
-    $form.find('.sys-image-description').each(function() {
-      var thisHeight = $(this).height();
-      height = thisHeight > height ? thisHeight : height;
-    }).height(height);
+    var $imageInputs = $form.find('.sys-image');
+    var equalizeImageHeights = function(){
+      var height = 0;
+      $imageInputs.find('.sys-image-description').each(function() {
+	var thisHeight = $(this).height();
+	height = thisHeight > height ? thisHeight : height;
+      }).css({minHeight: height + 'px'});
+    };
+
+    equalizeImageHeights();
+
+    // get the Cloudinary support going
+    $form.find('.sys-image').each(function() {
+      var $this = $(this);
+      var $file = $this.find('input[type="file"]');
+      var id = $file.attr('id');
+
+      var done = function(e, data) {
+	var response = JSON.parse(data.jqXHR.responseText);
+	var $id = $('#' + id + "_id").val(response.public_id);
+	var $url = $('#' + id + "_link").val(response.url);
+
+	$this.find('.sys-image-description').hide();
+
+	$('<p>').addClass('thumbnail').html($.cloudinary.image(response.public_id + '.jpg', {width: 150, height: 150, crop: 'fill'})).insertAfter($this.find('p:first-child'));
+	equalizeImageHeights();
+
+	$('<span />').text('Remove').on('click', function(e) {
+	  e.preventDefault();
+	  e.stopPropagation();
+
+	  $this.find('.thumbnail').remove();
+	  $this.find('.sys-image-description').show();
+
+	  $id.val('');
+	  $url.val('');
+
+	  $(this).off('click').remove();
+	}).appendTo($this.find('.sys-upload-buttons'));
+      };
+
+      $file.cloudinary_fileupload({
+	formData: Drupal.settings.cloudinary_support.file_field_data,
+	done: done
+      });
+    });
 
     // Preview
     $form.find('#sys-preview').on('click', function(e) {
       e.preventDefault();
       if (!$form.valid()) return;
       $modal = $(tmpl('story_template', parseFormData($form)));
+      $modal.find('img').cloudinary();
       $.tpmodal.show({
 	id: "sys_modal_",
         node: $modal[0],

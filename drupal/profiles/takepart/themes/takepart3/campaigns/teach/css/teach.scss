@@ -1683,16 +1683,43 @@ h1.sys-headline {
   }
 
   .sys-image {
+    img {
+      max-width: 100%;
+      height: auto !important;
+    }
+  }
+
+  .sys-image-content {
+    display: block;
     @include sys-input-styling;
     background-color: #ddd;
     text-align: center;
     padding: 20px;
-    border: 2px dashed black;
+    // border: 2px dashed black; // replace when we get drag-and-drop working
     margin-top: 1em;
     p { line-height: 1; }
     .error {
       @include sys-input-error-styling;
     }
+  }
+
+  .sys-upload-buttons {
+    span {
+      display: inline-block;
+      padding: .25em .5em;
+      color: white;
+      background-color: #333;
+      font-family: $secondary-font;
+      text-transform: uppercase;
+      margin-left: .25em;
+      &:first-child {
+	margin-left: 0;
+      }
+    }
+  }
+
+  input[type="file"] {
+    @include opacity(0);
   }
 
   input[type="button"],
