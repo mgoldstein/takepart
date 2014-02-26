@@ -159,7 +159,21 @@
     formData.email_subscribe = $form.find('#email_subscribe').is(':checked');
     formData.terms_agree = $form.find('#terms_agree').is(':checked');
 
-    console.log(formData); // TODO Remove this before launch!
+    // replace Cloudinary values with defaults
+    if (!formData.user_image_id) {
+      formData.user_image_id = 'sys-defaults/avatar-temp';
+      formData.user_image_link = $.cloudinary.url(formData.user_image_id + '.jpg');
+      $form.find('#user_image_id').val(formData.user_image_id);
+      $form.find('#user_image_link').val(formData.user_image_link);
+    }
+
+    if (!formData.teacher_image_id) {
+      formData.teacher_image_id = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
+      formData.teacher_image_link = $.cloudinary.url(formData.teacher_image_id + '.jpg');
+      $form.find('#teacher_image_id').val(formData.teacher_image_id);
+      $form.find('#teacher_image_link').val(formData.teacher_image_link);
+    }
+
     return formData;
   };
 
