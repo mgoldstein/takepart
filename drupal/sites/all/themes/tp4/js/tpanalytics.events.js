@@ -393,7 +393,31 @@
             s.eVar73="SNAP Alumni Gallery";
             s.prop73="SNAP Alumni Gallery";
             s.tl(true, 'o', 'SNAP Gallery share');
+        },
+        // -----------------------------------
+        // Homepage --------------------------
+        // -----------------------------------
+        'homepage_secondary_featured': function(options) {
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars = 'prop36';
+            s.linkTrackEvents = 'None';
+            s.events = null;
+            s.prop36 = options.name;
+            s.tl(options.target, 'o', options.name, null, 'navigate');
+        },
+        // -----------------------------------
+        // Article ---------------------------
+        // -----------------------------------
+        
+        'article_more_on_takepart': function(options) {
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars = 'prop36';
+            s.linkTrackEvents = 'None';
+            s.events = null;
+            s.prop36 = options.name;
+            s.tl(options.target, 'o', options.name, null, 'navigate');
         }
+        
     });
 
     // Document Ready
@@ -406,6 +430,15 @@
         $('body')
         .delegate('a.addthis_button_pinterest_pinit', 'click', function() {
             takepart.analytics.track('generic_addthis', 'pinterest');
+        })
+        
+        .delegate('.node-type-openpublish-article #block-bean-of-the-day a[href]', 'click', function(event) {
+            takepart.analytics.track('article_more_on_takepart', {name: 'Article - right rail - more on tp', target: this});
+            // return false;
+        })
+        .delegate('.panel-takepart-homepage .panel-tpl-secondary-featured a[href]', 'click', function(event) {
+            takepart.analytics.track('homepage_secondary_featured', {name: 'Home - tpl featured stories', target: this});
+            // return false;
         });
 
     /* // Track clicks to addthis iframes

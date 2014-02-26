@@ -133,6 +133,7 @@ function s_doPlugins(s) {
     s.eVar5=s.prop5?s.prop5:'';         // Article Title
     s.eVar6=s.prop6?s.prop6:'';         // Content ID
     s.eVar7=s.prop7?s.prop7:'';         // Internal Search Terms
+    s.eVar12=s.prop12?s.prop12:'';      // Cleaned page URL
     s.eVar13=s.prop13?s.prop13:'';      // 404 error page -- was previously "Featured Content ID"
     s.eVar17=s.prop16?s.prop16:'';      // Author
     s.eVar18=s.prop17?s.prop17:'';      // Content Title
