@@ -252,12 +252,12 @@
   background-position: 0 -21px;
 }
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377714705') no-repeat top center;
+  background: url('../img/active_menu_bg.png?1393382695') no-repeat top right;
   margin-top: -3px;
   height: 43px;
 }
 .header .menu-wrapper .menu .item.active a {
-  padding: 14px 5px 0;
+  padding: 16px 10px 0;
   text-shadow: none;
   color: black;
 }
@@ -993,6 +993,11 @@ ul.scribble-share li a.googleplus {
   .social-menu .item.follow:before {
     background-image: url('../img/social-follow-white.png?1393311708');
   }
+}
+
+.in-progress {
+  background: transparent url('../img/spinner-black-white.gif?1393386891') scroll no-repeat 98% center;
+  background-size: auto 50%;
 }
 
 /* # Responsive Layout
@@ -1936,6 +1941,11 @@ h1.sys-headline span {
 .sys-form input[type="submit"] {
   background-color: #ea5f11;
   margin-bottom: 0;
+}
+.sys-form input[type="submit"].in-progress {
+  background-image: url('../img/spinner-white-orange.gif?1393386871');
+  background-size: auto 40%;
+  background-position-x: 95%;
 }
 .sys-form .left, .sys-form .right {
   float: none;

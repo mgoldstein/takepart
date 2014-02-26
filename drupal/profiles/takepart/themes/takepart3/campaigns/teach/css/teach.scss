@@ -211,14 +211,14 @@ $body-copy-black: #313131;
           }
         }
         &.active {
-          background: image-url('active_menu_bg.png') no-repeat top center;
+          background: image-url('active_menu_bg.png') no-repeat top right;
           margin-top: -3px;
           height: 43px;
           a {
-              padding: 14px 5px 0;
-              text-shadow: none;
-              color: black;
-            }
+            padding: 16px 10px 0;
+            text-shadow: none;
+            color: black;
+          }
         }
       }
     }
@@ -524,10 +524,7 @@ p {
       }
     }
   }
-
-
 }
-
 
 .teach-video-page,
 .page-wordlet-teach-alliances .content,
@@ -838,6 +835,10 @@ ul.scribble-share {
   } // .item
 } // .social-menu
 
+.in-progress {
+  background: transparent image-url("spinner-black-white.gif") scroll no-repeat 98% center;
+  background-size: auto 50%;
+}
 
 /* # Responsive Layout
 ================================================== */
@@ -1418,7 +1419,7 @@ h1.sys-headline {
     padding: 56px 32px 40px 40px;
     @include transform(scale(1.1) translateX(17px) rotate(1deg));
     margin: 1em 0 3em;
-  }  
+  }
 
   h2 {
     @media (min-width: 980px) {
@@ -1739,6 +1740,11 @@ h1.sys-headline {
   input[type="submit"] {
     background-color: $primary-color;
     margin-bottom: 0;
+    &.in-progress {
+      background-image: image-url("spinner-white-orange.gif");
+      background-size: auto 40%;
+      background-position-x: 95%;
+    }
   }
 
   // utility classes for positioning, listed here
