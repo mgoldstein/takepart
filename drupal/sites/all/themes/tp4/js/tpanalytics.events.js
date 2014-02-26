@@ -61,10 +61,10 @@
 
     var social_click = function(options) {
         var title = normalize_share_title(options.name);
-        var evar1, evar4, evar17, evar19, evar21, linkTrackVars;
+        var evar1, evar4, evar17, evar19, evar20, evar21, linkTrackVars;
         var $body = $('body');
 
-        // Series stuff for article and feature, add photo gallery later
+        // Add video page?
         if (
             $body.is('.node-type-article')
             || $body.is('.node-type-openpublish-photo-gallery') 
@@ -81,6 +81,7 @@
             })
             evar17 = authors.join(',');
 	    evar19 = $('.node.view-mode-full').data('series');
+            evar20 = s.eVar20;
             evar21 = s.eVar21;
         }
 
@@ -106,6 +107,12 @@
                 linkTrackVars.push('eVar19');
                 s2.prop18 = evar19;
                 linkTrackVars.push('prop18');
+            }
+            if ( evar20 ) {
+                s2.eVar20 = evar20;
+                linkTrackVars.push('eVar20');
+                s2.prop20 = evar20;
+                linkTrackVars.push('prop20');
             }
             if ( evar21 ) {
                 s2.eVar21 = evar21;
