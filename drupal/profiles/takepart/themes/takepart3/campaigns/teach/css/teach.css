@@ -252,7 +252,7 @@
   background-position: 0 -21px;
 }
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1393382695') no-repeat top right;
+  background: url('../img/active_menu_bg.png?1393444248') no-repeat top right;
   margin-top: -3px;
   height: 43px;
 }
@@ -996,7 +996,7 @@ ul.scribble-share li a.googleplus {
 }
 
 .in-progress {
-  background: transparent url('../img/spinner-black-white.gif?1393386891') scroll no-repeat 98% center;
+  background: transparent url('../img/spinner-black-white.gif?1393444248') scroll no-repeat 98% center;
   background-size: auto 50%;
 }
 
@@ -1215,7 +1215,7 @@ ul.scribble-share li a.googleplus {
   height: 87px;
 }
 .teach-film-page .screening-tips .tips-header {
-  font: bold 3em/1 "Shadows Into Light", cursive;
+  font: bold 2.5em/1 "Shadows Into Light", cursive;
   text-align: center;
 }
 .teach-film-page .screening-tips li {
@@ -1943,7 +1943,7 @@ h1.sys-headline span {
   margin-bottom: 0;
 }
 .sys-form input[type="submit"].in-progress {
-  background-image: url('../img/spinner-white-orange.gif?1393386871');
+  background-image: url('../img/spinner-white-orange.gif?1393444248');
   background-size: auto 40%;
   background-position-x: 95%;
 }
