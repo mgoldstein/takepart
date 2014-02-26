@@ -3,11 +3,20 @@
   // tap values that may change
   var TAP = {
     postURL: "http://qa-web1.tab.takepart.com/user_teach_stories",
-    action_id: "9035072",
+    action_id: "9035089",
     partner_code: "8e42f2980097d0f37462d2539122b698"
   };
 
   var touchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
+  var hasStorage = (function() {
+    try {
+      localStorage.setItem('foo', 'test');
+      localStorage.removeItem('test');
+      return true;
+    } catch(e) {
+      return false;
+    }
+  })();
 
   var coppaCookieName = "pm_sys_user_birthdate",
       coppaCookieExpires = 1, // days to keep the cookie
@@ -68,8 +77,9 @@
   var sysFormSubmit = function(form) {
     var $form = $(form);
     var formData = parseFormData($form);
-
     var userBirthdate = formData.user_year + '-' + formData.user_month + '-' + formData.user_day;
+
+    var $submit = $form.find('input[type=submit]').addClass('in-progress');
 
     if (Date.parse(userBirthdate) > ageRequirement) {
 
@@ -94,8 +104,8 @@
         "email": formData.email,
         "last_name": formData.first_name,
         "first_name": formData.last_name,
-	"image_link": formData.user_image_link,
-	"image_uid": formData.user_image_id,
+      	"image_link": formData.user_image_link,
+      	"image_uid": formData.user_image_id,
 
         // boilerplate
         "zip":"90210",
@@ -135,14 +145,12 @@
       contentType: 'application/json',
       dataType: 'json',
       success: function(data, textStatus, jqXHR) {
-        $('#sys-form-content').slideUp().remove();
-        $('#sys-thanks-content').slideDown();
-
-        // todo remove before deploy
-        console.log(json);
-        console.log(data);
-        console.log(textStatus);
-        console.log(jqXHR);
+        $('#sys-form-content').hide();
+        $('#sys-thanks-content').removeClass('initially-hidden');
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        $submit.removeClass('in-progress');
+        alert('There was an error submitting your story.');
       }
     });
 
@@ -234,7 +242,12 @@
     var $schoolState = $('#school_state');
     var $schoolName = $('#school_name');
     var $schoolCity = $('#school_city');
-    var nameCache = {}; // TODO html5 localstorage
+    var nameCache = (hasStorage && JSON.parse(localStorage.getItem('sysSchoolCache'))) || {};
+
+    var $schoolNameMessage = $('<p class="character-count" />')
+      .addClass('character-count-school-name')
+      .insertAfter($schoolName)
+    ;
 
     // enable/disable school name field based on state value
     $schoolState.on('change', function() {
@@ -242,20 +255,45 @@
     });
 
     // TODO delete gsid on name change
+    $schoolName.on('change', function(){
+      if (!$schoolName.data('autocompleteOpen')) {
+        $schoolId.val('0');
+        $schoolCity.val('&nbsp;');
+      }
+    });
+
+    var resetSchoolNameMessage = function() {
+      $schoolNameMessage.removeClass('count-warning').html('');
+    };
 
     var updateSchoolFields = function(e, ui) {
       $schoolName.val(ui.item.label.split(' (')[0]);
       $schoolId.val(ui.item.value.school_id);
       $schoolCity.val(ui.item.value.school_city);
+      resetSchoolNameMessage();
       return false; // prevent default behaivor
     };
+
     $schoolName.autocomplete({
       minLength: 4,
       select: updateSchoolFields,
       focus: updateSchoolFields,
+      blur: updateSchoolFields,
+      search: function() {
+        $schoolName.addClass('in-progress');
+        resetSchoolNameMessage();
+      },
+      open: function() {
+        $schoolName.removeClass('in-progress').data('autocompleteOpen', true);
+        resetSchoolNameMessage();
+      },
+      close: function() {
+        resetSchoolNameMessage();
+        setTimeout(function() {$schoolName.data('autocompleteOpen', false);}, 1000)
+      },
       source: function(request, response) {
 
-        var hash = encodeURIComponent('&state=' + $schoolState.val() + '&q=' + request.term);
+        var hash = encodeURIComponent('&state=' + $schoolState.val() + '&q=' + request.term.replace(/\s+/g, "+"));
         if (hash in nameCache) {
           response(nameCache[hash]);
           return;
@@ -263,21 +301,32 @@
 
         $.ajax({
           url: '/proxy?request=' + encodeURIComponent('http://api.greatschools.org/search/schools/?key=zzlcyx4aijxe1nmnagoziqxx') + hash,
+          error: function() {
+            var errorMessage = [
+              "We can't find &quot;" + request.term.htmlEntities() + "&quot;.",
+              "For best results, type a single, complete word and choose from the list."
+            ];
+            $schoolName.removeClass('in-progress');
+            $schoolNameMessage
+              .addClass('count-warning')
+              .html(errorMessage.join('<br/>'));
+          },
           success: function (data, textStatus, jqXHR) {
             var schools = [];
             $(data).find('school').each(function(){
               var $this = $(this);
               schools.push({
                 label: $this.find('name').text() + ' (' + $this.find('city').text() + ', ' + $this.find('state').text() + ')',
-		value: {
-		  school_id: $this.find('gsId').text(),
-		  school_city: $this.find('city').text(),
-		  school_state: $this.find('state').text()
-		}
+            		value: {
+            		  school_id: $this.find('gsId').text(),
+            		  school_city: $this.find('city').text(),
+            		  school_state: $this.find('state').text()
+            		}
               });
             });
             nameCache[hash] = schools;
-	    response(schools);
+            hasStorage && localStorage.setItem('sysSchoolCache', JSON.stringify(nameCache));
+      	    response(schools);
           }
         });
       }
@@ -334,7 +383,10 @@
     // Preview
     $form.find('#sys-preview').on('click', function(e) {
       e.preventDefault();
-      if (!$form.valid()) return;
+      if (!$form.valid()) {
+        $form.find('.error').first().focus();
+        return;
+      }
       $modal = $(tmpl('story_template', parseFormData($form)));
       $modal.find('img').cloudinary();
       $.tpmodal.show({
