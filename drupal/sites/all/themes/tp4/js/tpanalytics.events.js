@@ -111,8 +111,8 @@
             if ( evar20 ) {
                 s2.eVar20 = evar20;
                 linkTrackVars.push('eVar20');
-                s2.prop20 = evar20;
-                linkTrackVars.push('prop20');
+                s2.prop21 = evar20;
+                linkTrackVars.push('prop21');
             }
             if ( evar21 ) {
                 s2.eVar21 = evar21;
