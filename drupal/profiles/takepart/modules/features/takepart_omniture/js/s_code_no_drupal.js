@@ -45,6 +45,18 @@ s.channelDomain="Partner|americanexpress.com"; /*KN: Remove/update? */
 s.usePlugins=true
 function s_doPlugins(s) {
 
+    /* Record page URL in prop12 */
+    var pageURL = document.URL;
+    var cleanURL = "";
+    if (pageURL.indexOf("?") > -1) {
+        var noQuery=pageURL.split("?");
+        cleanURL = noQuery[0].toLowerCase();
+    }
+    else {
+        cleanURL = pageURL.toLowerCase();
+    }
+    s.prop12=cleanURL;
+    
     /*Channel Manager*/
     //s.referrer="www.americanexpress.com"; //use this to change the referrer for testing
     s.channelManager('cmpid','','','1');
@@ -123,6 +135,7 @@ function s_doPlugins(s) {
     s.eVar5=s.prop5?s.prop5:'';         // Article Title
     s.eVar6=s.prop6?s.prop6:'';         // Content ID
     s.eVar7=s.prop7?s.prop7:'';         // Internal Search Terms
+    s.eVar12=s.prop12?s.prop12:'';      // Cleaned page URL
     s.eVar13=s.prop13?s.prop13:'';      // 404 error page -- was previously "Featured Content ID"
     s.eVar17=s.prop16?s.prop16:'';      // Author
     s.eVar18=s.prop17?s.prop17:'';      // Content Title
