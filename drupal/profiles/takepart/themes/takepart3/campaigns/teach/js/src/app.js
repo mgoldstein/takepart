@@ -147,6 +147,14 @@
       success: function(data, textStatus, jqXHR) {
         $('#sys-form-content').hide();
         $('#sys-thanks-content').removeClass('initially-hidden');
+        $.extend(true, takepart, {analytics: {
+          teach_story_entry: function (s) {
+          s.events = 'event87';
+          s.eVar30 = s.pageName;
+          s.prop42 = 'Teach';
+          s.eVar42 = 'Teach';
+      }
+  }});
       },
       error: function(jqXHR, textStatus, errorThrown) {
         $submit.removeClass('in-progress');
