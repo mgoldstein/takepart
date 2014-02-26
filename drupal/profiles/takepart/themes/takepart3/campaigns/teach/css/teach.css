@@ -594,7 +594,8 @@ p a {
 .page-wordlet-teach-alliances .content,
 .teach-news-content,
 .teach-sys-content,
-.teach-film-content {
+.teach-film-content,
+.teach-fund-about-content {
   position: relative;
   background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1377830748') scroll repeat;
   margin-top: 30px;
@@ -607,7 +608,8 @@ p a {
   .page-wordlet-teach-alliances .content,
   .teach-news-content,
   .teach-sys-content,
-  .teach-film-content {
+  .teach-film-content,
+  .teach-fund-about-content {
     margin-top: 0;
     padding: 20px;
   }
@@ -616,7 +618,8 @@ p a {
 .page-wordlet-teach-alliances .content .content-headline,
 .teach-news-content .content-headline,
 .teach-sys-content .content-headline,
-.teach-film-content .content-headline {
+.teach-film-content .content-headline,
+.teach-fund-about-content .content-headline {
   font-family: "GlyphaLTPro-Black", serif;
   font-weight: normal;
   font-size: 42px;
@@ -630,7 +633,8 @@ p a {
   .page-wordlet-teach-alliances .content .content-headline,
   .teach-news-content .content-headline,
   .teach-sys-content .content-headline,
-  .teach-film-content .content-headline {
+  .teach-film-content .content-headline,
+  .teach-fund-about-content .content-headline {
     font-size: 30px;
     margin: 10px;
   }
@@ -639,7 +643,8 @@ p a {
 .page-wordlet-teach-alliances .content .content-subheadline,
 .teach-news-content .content-subheadline,
 .teach-sys-content .content-subheadline,
-.teach-film-content .content-subheadline {
+.teach-film-content .content-subheadline,
+.teach-fund-about-content .content-subheadline {
   font-weight: normal;
   color: #666565;
   font-size: 16px;
@@ -651,7 +656,8 @@ p a {
 .page-wordlet-teach-alliances .content .main-video-wrapper,
 .teach-news-content .main-video-wrapper,
 .teach-sys-content .main-video-wrapper,
-.teach-film-content .main-video-wrapper {
+.teach-film-content .main-video-wrapper,
+.teach-fund-about-content .main-video-wrapper {
   clear: right;
   max-width: 859px;
   padding: 4px;
@@ -668,7 +674,8 @@ p a {
   .page-wordlet-teach-alliances .content .main-video-wrapper,
   .teach-news-content .main-video-wrapper,
   .teach-sys-content .main-video-wrapper,
-  .teach-film-content .main-video-wrapper {
+  .teach-film-content .main-video-wrapper,
+  .teach-fund-about-content .main-video-wrapper {
     -webkit-transform: scale(1.02, 1.02);
     -moz-transform: scale(1.02, 1.02);
     -ms-transform: scale(1.02, 1.02);
@@ -680,7 +687,8 @@ p a {
 .page-wordlet-teach-alliances .content .ad,
 .teach-news-content .ad,
 .teach-sys-content .ad,
-.teach-film-content .ad {
+.teach-film-content .ad,
+.teach-fund-about-content .ad {
   width: 728px;
   height: 90px;
   background-color: white;
@@ -695,7 +703,8 @@ p a {
   .page-wordlet-teach-alliances .content .ad,
   .teach-news-content .ad,
   .teach-sys-content .ad,
-  .teach-film-content .ad {
+  .teach-film-content .ad,
+  .teach-fund-about-content .ad {
     display: none;
   }
 }

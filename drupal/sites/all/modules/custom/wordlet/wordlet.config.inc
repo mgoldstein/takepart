@@ -540,6 +540,23 @@ function _wordlet_configuration() {
       'load' => array('site', 'teach_campaign'),
     ),
 
+    // teach Teach Fund More Information
+    'teach_fund_about' => array(
+      'title' => 'TEACH - About the Teach Fund',
+      'path' => 'teach/about-teach-fund',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+	'css/normalize_cms.css',
+	'campaigns/teach/css/teach.css',
+      ),
+      'js' => array(
+	'campaigns/campaign.js',
+	'campaigns/teach/js/teach.js',
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
     // teach Film Page
     'teach_film' => array(
       'title' => 'TEACH - The Film',
