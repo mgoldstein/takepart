@@ -211,14 +211,14 @@ $body-copy-black: #313131;
           }
         }
         &.active {
-          background: image-url('active_menu_bg.png') no-repeat top center;
+          background: image-url('active_menu_bg.png') no-repeat top right;
           margin-top: -3px;
           height: 43px;
           a {
-              padding: 14px 5px 0;
-              text-shadow: none;
-              color: black;
-            }
+            padding: 16px 10px 0;
+            text-shadow: none;
+            color: black;
+          }
         }
       }
     }
@@ -1418,7 +1418,7 @@ h1.sys-headline {
     padding: 56px 32px 40px 40px;
     @include transform(scale(1.1) translateX(17px) rotate(1deg));
     margin: 1em 0 3em;
-  }  
+  }
 
   h2 {
     @media (min-width: 980px) {

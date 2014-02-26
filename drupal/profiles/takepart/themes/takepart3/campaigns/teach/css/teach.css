@@ -252,12 +252,12 @@
   background-position: 0 -21px;
 }
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1377714705') no-repeat top center;
+  background: url('../img/active_menu_bg.png?1393382695') no-repeat top right;
   margin-top: -3px;
   height: 43px;
 }
 .header .menu-wrapper .menu .item.active a {
-  padding: 14px 5px 0;
+  padding: 16px 10px 0;
   text-shadow: none;
   color: black;
 }
