@@ -61,7 +61,7 @@
 
     var social_click = function(options) {
         var title = normalize_share_title(options.name);
-        var evar4, evar17, evar19, evar21, linkTrackVars;
+        var evar4, evar17, evar19, evar20, evar21, linkTrackVars;
 
         // Series stuff for article, add photo gallery later
         if ( $('body').is('.node-type-article') || $('body').is('.node-type-openpublish-photo-gallery') ) {
@@ -72,6 +72,7 @@
             })
             evar17 = authors.join(',');
             evar19 = $('.article').data('series');
+            evar20 = s.eVar20;
             evar21 = s.eVar21;
         }
 
@@ -97,6 +98,12 @@
                 linkTrackVars.push('eVar19');
                 s2.prop18 = evar19;
                 linkTrackVars.push('prop18');
+            }
+            if ( evar20 ) {
+                s2.eVar20 = evar20;
+                linkTrackVars.push('eVar20');
+                s2.prop20 = evar20;
+                linkTrackVars.push('prop20');
             }
             if ( evar21 ) {
                 s2.eVar21 = evar21;
