@@ -524,10 +524,7 @@ p {
       }
     }
   }
-
-
 }
-
 
 .teach-video-page,
 .page-wordlet-teach-alliances .content,
@@ -838,6 +835,10 @@ ul.scribble-share {
   } // .item
 } // .social-menu
 
+.in-progress {
+  background: transparent image-url("spinner-black-white.gif") scroll no-repeat 98% center;
+  background-size: auto 50%;
+}
 
 /* # Responsive Layout
 ================================================== */
@@ -1739,6 +1740,11 @@ h1.sys-headline {
   input[type="submit"] {
     background-color: $primary-color;
     margin-bottom: 0;
+    &.in-progress {
+      background-image: image-url("spinner-white-orange.gif");
+      background-size: auto 40%;
+      background-position-x: 95%;
+    }
   }
 
   // utility classes for positioning, listed here
