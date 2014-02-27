@@ -5,7 +5,7 @@ TEACH front-end development is now using [grunt]
 Before you start, make sure you have [```node.js```](http://nodejs.org/) and ```npm``` installed. You may want to use [Homebrew](http://brew.sh/) for this.
 
 **Install the Grunt CLI and [Twitter Bower](http://bower.io/)**
-```npm -g grunt-cli bower```
+```npm install -g grunt-cli bower```
 
 Then, from within the ```drupal/profiles/takepart/themes/takepart3/campaigns/teach``` directory in the repository, run the following commands:
 
