@@ -64,7 +64,12 @@
         var evar4, evar17, evar19, evar20, evar21, linkTrackVars;
 
         // Series stuff for article, add photo gallery later
-        if ( $('body').is('.node-type-article') || $('body').is('.node-type-openpublish-photo-gallery') ) {
+        if (
+            $body.is('.node-type-article')
+            || $body.is('.node-type-openpublish-photo-gallery') 
+            || $body.is('.node-type-feature-article')
+            || $body.is('.node-type-video')
+        ) {
             evar4 = s.prop4;
             var authors = [];
             $('.article-header .authors a').each(function() {

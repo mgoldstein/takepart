@@ -63,12 +63,11 @@
         var title = normalize_share_title(options.name);
         var evar1, evar4, evar17, evar19, evar20, evar21, linkTrackVars;
         var $body = $('body');
-
-        // Add video page?
         if (
             $body.is('.node-type-article')
             || $body.is('.node-type-openpublish-photo-gallery') 
             || $body.is('.node-type-feature-article')
+            || $body.is('.node-type-video')
         ) {
             // this is hack, but this will record the first element
             // of the URL path
