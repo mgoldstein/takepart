@@ -70,8 +70,8 @@
 
   // show coppa error message and delete form from page
   var showCoppaErrorMessage = function() {
-      $('#sys-form-content').slideUp().remove();
-      $('#sys-coppa-content').slideDown();
+      $('#sys-form-content').slideUp();
+      $('#sys-coppa-content').removeClass('initially-hidden');
   };
 
   var sysFormSubmit = function(form) {
@@ -145,7 +145,7 @@
       contentType: 'application/json',
       dataType: 'json',
       success: function(data, textStatus, jqXHR) {
-        $('#sys-form-content').hide();
+        $('#sys-form-content').slideUp();
         $('#sys-thanks-content').removeClass('initially-hidden');
         $.extend(true, takepart, {analytics: {
           teach_story_entry: function (s) {
