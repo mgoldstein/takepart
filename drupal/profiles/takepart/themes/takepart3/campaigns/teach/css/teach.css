@@ -235,7 +235,7 @@
   height: 43px;
 }
 .header .menu-wrapper .menu .item:first-of-type a {
-  background: transparent url('../img/menu-home.png?1392700113') no-repeat scroll top left;
+  background: transparent url('../img/menu-home.png?1393461763') no-repeat scroll top left;
   background-size: 21px;
   height: 0;
   width: 0;
@@ -252,7 +252,7 @@
   background-position: 0 -21px;
 }
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1393444248') no-repeat top right;
+  background: url('../img/active_menu_bg.png?1393461763') no-repeat top right;
   margin-top: -3px;
   height: 43px;
 }
@@ -363,7 +363,7 @@ a {
     bottom: 0;
     left: 0;
     right: 0;
-    background: transparent url('../img/teach-home-featured-bg.jpg?1393311709') scroll no-repeat top center;
+    background: transparent url('../img/teach-home-featured-bg.jpg?1393461763') scroll no-repeat top center;
     background-size: cover;
   }
 }
@@ -371,7 +371,7 @@ a {
   text-align: center;
   font: normal 2em/1 "GlyphaLTPro-Black", serif;
   text-transform: uppercase;
-  background: transparent url('../img/teach-home-featured-header-bg.png?1393311709') scroll no-repeat top center;
+  background: transparent url('../img/teach-home-featured-header-bg.png?1393461763') scroll no-repeat top center;
   position: relative;
   top: -15px;
 }
@@ -788,7 +788,7 @@ a {
   }
 }
 
-ul.scribble-share {
+.scribble-share {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -798,33 +798,51 @@ ul.scribble-share {
   margin: 0;
   padding: 0;
 }
-ul.scribble-share li {
+.scribble-share li,
+.scribble-share span {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
   *vertical-align: auto;
   zoom: 1;
   *display: inline;
+  vertical-align: text-top;
 }
-ul.scribble-share li a {
-  display: block;
+.scribble-share a {
+  display: inline-block;
+  vertical-align: bottom;
   height: 0;
   width: 0;
   text-indent: 12px;
   overflow: hidden;
   padding: 12px;
   margin-left: 6px;
-  background: transparent url('../img/social-scribbles.png?1392700113') top left;
+  background: transparent url('../img/social-scribbles.png?1393461763') top left;
   background-size: 24px;
 }
-ul.scribble-share li a.facebook {
-  background-position: 0 0;
+.scribble-share a.facebook, .scribble-share a.tp-social-facebook {
+  background-position-y: 0;
 }
-ul.scribble-share li a.twitter {
-  background-position: 0 -24px;
+.scribble-share a.twitter, .scribble-share a.tp-social-twitter {
+  background-position-y: -24px;
 }
-ul.scribble-share li a.googleplus {
-  background-position: 0 -48px;
+.scribble-share a.googleplus, .scribble-share a.tp-social-googleplus {
+  background-position-y: -48px;
+}
+.scribble-share.large a {
+  text-indent: 24px;
+  padding: 24px;
+  margin-left: 12px;
+  background-size: 48px;
+}
+.scribble-share.large a.facebook, .scribble-share.large a.tp-social-facebook {
+  background-position-y: 0;
+}
+.scribble-share.large a.twitter, .scribble-share.large a.tp-social-twitter {
+  background-position-y: -48px;
+}
+.scribble-share.large a.googleplus, .scribble-share.large a.tp-social-googleplus {
+  background-position-y: -96px;
 }
 
 .social-menu {
@@ -839,7 +857,7 @@ ul.scribble-share li a.googleplus {
 }
 @media (min-width: 940px) {
   .social-menu {
-    background: transparent url('../img/video-page-social-block-bg.png?1393311709') scroll no-repeat top center;
+    background: transparent url('../img/video-page-social-block-bg.png?1393461763') scroll no-repeat top center;
     min-height: 269px;
     max-width: 848px;
     margin: 0 auto;
@@ -967,47 +985,47 @@ ul.scribble-share li a.googleplus {
   margin-top: 51px;
 }
 .social-menu .item.text:before {
-  background-image: url('../img/social-phone.png?1393311709');
+  background-image: url('../img/social-phone.png?1393461763');
   width: 37px;
   height: 51px;
   margin-left: -18px;
 }
 @media (max-width: 480px) {
   .social-menu .item.text:before {
-    background-image: url('../img/social-phone-white.png?1393311708');
+    background-image: url('../img/social-phone-white.png?1393461763');
   }
 }
 .social-menu .item.connected {
   margin-top: 51px;
 }
 .social-menu .item.connected:before {
-  background-image: url('../img/social-envelopes.png?1393311708');
+  background-image: url('../img/social-envelopes.png?1393461763');
   width: 46px;
   height: 51px;
   margin-left: -23px;
 }
 @media (max-width: 480px) {
   .social-menu .item.connected:before {
-    background-image: url('../img/social-envelopes-white.png?1393311708');
+    background-image: url('../img/social-envelopes-white.png?1393461763');
   }
 }
 .social-menu .item.follow {
   margin-top: 48px;
 }
 .social-menu .item.follow:before {
-  background-image: url('../img/social-follow.png?1393311708');
+  background-image: url('../img/social-follow.png?1393461763');
   width: 50px;
   height: 48px;
   margin-left: -25px;
 }
 @media (max-width: 480px) {
   .social-menu .item.follow:before {
-    background-image: url('../img/social-follow-white.png?1393311708');
+    background-image: url('../img/social-follow-white.png?1393461763');
   }
 }
 
 .in-progress {
-  background: transparent url('../img/spinner-black-white.gif?1393444248') scroll no-repeat 96% center;
+  background: transparent url('../img/spinner-black-white.gif?1393461763') scroll no-repeat 96% center;
   background-size: auto 50%;
 }
 
@@ -1166,7 +1184,7 @@ ul.scribble-share li a.googleplus {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: transparent url('../img/film-watch-bg.png?1393207506') scroll no-repeat top center;
+  background: transparent url('../img/film-watch-bg.png?1393461763') scroll no-repeat top center;
   background-size: contain;
   max-width: 285px;
   min-height: 384px;
@@ -1206,7 +1224,7 @@ ul.scribble-share li a.googleplus {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: transparent url('../img/post-it-bg.png?1393207506') scroll no-repeat top center;
+  background: transparent url('../img/post-it-bg.png?1393461763') scroll no-repeat top center;
   background-size: contain;
   max-width: 300px;
   min-height: 312px;
@@ -1560,7 +1578,7 @@ ul.scribble-share li a.googleplus {
 }
 
 h1.sys-headline {
-  background: transparent url('../img/sys-headline-bg.png?1392239551') scroll no-repeat top left;
+  background: transparent url('../img/sys-headline-bg.png?1393461763') scroll no-repeat top left;
   font-size: 1.642857143em;
   padding: 1.3em 0 1em .5em;
 }
@@ -1581,7 +1599,7 @@ h1.sys-headline span {
 
 @media (min-width: 980px) {
   .sys-update {
-    background: transparent url('../img/sys-bg-paper.png?1392239551') scroll no-repeat top left;
+    background: transparent url('../img/sys-bg-paper.png?1393461763') scroll no-repeat top left;
     background-size: contain;
     min-height: 403px;
     padding: 56px 32px 40px 40px;
@@ -1636,7 +1654,7 @@ h1.sys-headline span {
   font-size: 1.142857143em;
   line-height: 2.1875;
   padding: 1.4em 0 1em .5em;
-  background: transparent url('../img/sys-subhead-bg.png?1392239551') scroll no-repeat top left;
+  background: transparent url('../img/sys-subhead-bg.png?1393461763') scroll no-repeat top left;
 }
 @media (min-width: 768px) {
   .sys-tips h2 {
@@ -1961,7 +1979,7 @@ h1.sys-headline span {
   margin-bottom: 0;
 }
 .sys-form input[type="submit"].in-progress {
-  background-image: url('../img/spinner-white-orange.gif?1393444248');
+  background-image: url('../img/spinner-white-orange.gif?1393461763');
   background-size: auto 40%;
   background-position-x: 95%;
 }
@@ -2031,7 +2049,7 @@ h1.sys-headline span {
 .sys-story-modal .sys-story-headline {
   font: normal 1.95em/1 "GlyphaLTPro-Black", serif;
   padding: .25em;
-  background: transparent url('../img/sys-headline-bg.png?1392239551') no-repeat scroll top left;
+  background: transparent url('../img/sys-headline-bg.png?1393461763') no-repeat scroll top left;
   padding: 17px 0 30px 10px;
   margin-top: -45px;
   margin-left: -25px;
@@ -2088,21 +2106,21 @@ h1.sys-headline span {
   right: -39px;
   width: 113px;
   height: 62px;
-  background-image: url('../img/stupid-tape-2.png?1393356771');
+  background-image: url('../img/stupid-tape-2.png?1393461763');
 }
 .sys-story-modal .sys-story-teacher-image-wrapper:after {
   bottom: -25px;
   left: -15px;
   width: 61px;
   height: 129px;
-  background-image: url('../img/stupid-tape-1.png?1393356771');
+  background-image: url('../img/stupid-tape-1.png?1393461763');
 }
 .sys-story-modal .sys-story-teacher-image {
   display: block;
   width: 100% !important;
   height: auto !important;
 }
-.sys-story-modal .sys-story-user-image {
+.sys-story-modal .sys-story-user-image-wrapper {
   float: right;
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
@@ -2111,6 +2129,21 @@ h1.sys-headline span {
   transform: rotate(2deg);
   margin-left: 1em;
   margin-bottom: 1em;
+  position: relative;
+}
+.sys-story-modal .sys-story-user-image-wrapper:before {
+  content: " ";
+  display: block;
+  position: relative;
+  top: 15px;
+  left: 50%;
+  margin-left: -41px;
+  width: 82px;
+  height: 23px;
+  background: transparent url('../img/sys-user-image-tape.png?1393469072') scroll no-repeat center center;
+}
+.sys-story-modal .sys-story-user-image-wrapper img {
+  display: block;
 }
 @media (min-width: 768px) {
   .sys-story-modal .content {

@@ -652,35 +652,61 @@ a {
   }
 }
 
-ul.scribble-share {
+.scribble-share {
   @include inline-block;
   margin: 0;
   padding: 0;
-  li {
+  li,
+  span {
     @include inline-block;
+    vertical-align: text-top;
+  }
+  a {
+    display: inline-block;
+    vertical-align: bottom;
+    height: 0;
+    width: 0;
+    text-indent: 12px;
+    overflow: hidden;
+    padding: 12px;
+    margin-left: 6px;
+    background: transparent image-url("social-scribbles.png") top left;
+    background-size: 24px;
+    &.facebook,
+    &.tp-social-facebook {
+      background-position-y: 0;
+    }
+    &.twitter,
+    &.tp-social-twitter {
+      background-position-y: -24px;
+    }
+    &.googleplus,
+    &.tp-social-googleplus {
+      background-position-y: -48px;
+    }
+  }
+
+  &.large {
     a {
-      display: block;
-      height: 0;
-      width: 0;
-      text-indent: 12px;
-      overflow: hidden;
-      padding: 12px;
-      margin-left: 6px;
-      background: transparent image-url("social-scribbles.png") top left;
-      background-size: 24px;
-      &.facebook {
-        background-position: 0 0;
+      text-indent: 24px;
+      padding: 24px;
+      margin-left: 12px;
+      background-size: 48px;
+      &.facebook,
+      &.tp-social-facebook {
+        background-position-y: 0;
       }
-      &.twitter {
-        background-position: 0 -24px;
+      &.twitter,
+      &.tp-social-twitter {
+        background-position-y: -48px;
       }
-      &.googleplus {
-        background-position: 0 -48px;
+      &.googleplus,
+      &.tp-social-googleplus {
+        background-position-y: -96px;
       }
     }
   }
 }
-
 
 // social menu module
 .social-menu {
@@ -1893,11 +1919,27 @@ h1.sys-headline {
     height: auto !important;
   }
 
-  .sys-story-user-image {
+  .sys-story-user-image-wrapper {
     float: right;
     @include transform(rotate(2deg));
     margin-left: 1em;
     margin-bottom: 1em;
+    position: relative; // 82x23
+    &:before {
+      content: " ";
+      display: block;
+      position: relative;
+      top: 15px;
+      left: 50%;
+      margin-left: -41px;
+      width: 82px;
+      height: 23px;
+      background: transparent image-url("sys-user-image-tape.png") scroll no-repeat center center;
+    }
+
+    img {
+      display: block;
+    }
   }
 
   .content {

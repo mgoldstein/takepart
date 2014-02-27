@@ -36,13 +36,8 @@
 					<div class="right"><?=w('header_photo_credit')?></div>
 				</div>
 				<img class="hero" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/hero-teachers.png" alt="Teachers" />
-        <div class="campaign-social-share">
-          Share
-          <ul class="scribble-share">
-            <li><a href="#" class="facebook">Facebook</a></li>
-            <li><a href="#" class="twitter">Twitter</a></li>
-            <li><a href="#" class="googleplus">Google Plus</a></li>
-          </ul>
+        <div class="campaign-social-share scribble-share scribble-share-24">
+          <span>Share</span>
         </div><!--
 				--><div class="menu-wrapper">
 					<ul class='menu' <?=wa('menu') ?>>
