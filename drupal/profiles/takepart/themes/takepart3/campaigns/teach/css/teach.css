@@ -268,7 +268,8 @@ p {
   color: #313131;
   -webkit-font-smoothing: antialiased;
 }
-p a {
+
+a {
   color: #ea5f11;
 }
 
@@ -331,7 +332,8 @@ p a {
 }
 .home-section .headline {
   font: normal 2em/1.5 "GlyphaLTPro-Black", serif;
-  margin-top: .5em;
+  color: #555;
+  margin-top: 1em;
   text-transform: uppercase;
 }
 .home-section .body {
@@ -1005,7 +1007,7 @@ ul.scribble-share li a.googleplus {
 }
 
 .in-progress {
-  background: transparent url('../img/spinner-black-white.gif?1393444248') scroll no-repeat 98% center;
+  background: transparent url('../img/spinner-black-white.gif?1393444248') scroll no-repeat 96% center;
   background-size: auto 50%;
 }
 
@@ -1666,6 +1668,12 @@ h1.sys-headline span {
 .sys-form a {
   color: #ea5f11;
 }
+.sys-form p {
+  color: #777777;
+}
+.sys-form strong {
+  color: #666666;
+}
 .sys-form fieldset {
   border: none;
   padding: 0;
@@ -1941,6 +1949,7 @@ h1.sys-headline span {
   font: normal normal 1.4em/1.25 "GlyphaLTPro-Black", serif;
   text-transform: uppercase;
   white-space: normal;
+  -webkit-appearance: none;
 }
 .sys-form input[type="button"]:active,
 .sys-form input[type="submit"]:active {
@@ -2014,7 +2023,8 @@ h1.sys-headline span {
   text-transform: uppercase;
 }
 .sys-story-modal h3 {
-  font: normal 1.66667em/1.5 "GlyphaLTPro-Black", serif;
+  font-size: 1.666666667em;
+  line-height: 1.25;
   margin-bottom: 0;
   color: #666;
 }
@@ -2100,6 +2110,7 @@ h1.sys-headline span {
   -o-transform: rotate(2deg);
   transform: rotate(2deg);
   margin-left: 1em;
+  margin-bottom: 1em;
 }
 @media (min-width: 768px) {
   .sys-story-modal .content {

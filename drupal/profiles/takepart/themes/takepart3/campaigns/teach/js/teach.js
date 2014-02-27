@@ -46,4 +46,24 @@
       });
     }
   };
+  Drupal.behaviors.teachTextLightbox = {
+    attach: function() {
+      var modalOptions = {
+	id: 'teach_text_lightbox_'
+      };
+
+      $('body').on('click', '.teach-text-lightbox', function(e) {
+	e.preventDefault();
+
+	$.tpmodal.show(modalOptions);
+
+	$node = $('<div />')
+	  .css({maxWidth: "800px"})
+	  .load($(this).attr('href') + ' .view-mode-full', function() {
+	    $.tpmodal.show($.extend(modalOptions, {node: this}));
+	  })
+	;
+      });
+    }
+  };
 })(jQuery, Drupal, this, this.document);

@@ -231,9 +231,10 @@ $body-copy-black: #313131;
 p {
   color: $body-copy-black;
   -webkit-font-smoothing: antialiased;
-  a {
-    color: $primary-color;
-  }
+}
+
+a {
+  color: $primary-color;
 }
 
 #page {
@@ -286,7 +287,8 @@ p {
   
   .headline {
     font: normal 2em/1.5 $secondary-font;
-    margin-top: .5em;
+    color: #555;
+    margin-top: 1em;
     text-transform: uppercase;
   }
   .body {
@@ -837,7 +839,7 @@ ul.scribble-share {
 } // .social-menu
 
 .in-progress {
-  background: transparent image-url("spinner-black-white.gif") scroll no-repeat 98% center;
+  background: transparent image-url("spinner-black-white.gif") scroll no-repeat 96% center;
   background-size: auto 50%;
 }
 
@@ -1506,6 +1508,8 @@ h1.sys-headline {
 .sys-form {
   color: $dark-grey;
   a { color: $primary-color; }
+  p { color: $dark-grey; }
+  strong { color: $primary-grey; }
 
   fieldset {
     border: none;
@@ -1699,7 +1703,9 @@ h1.sys-headline {
     padding: 20px;
     // border: 2px dashed black; // replace when we get drag-and-drop working
     margin-top: 1em;
-    p { line-height: 1; }
+    p {
+      line-height: 1;
+    }
     .error {
       @include sys-input-error-styling;
     }
@@ -1736,6 +1742,7 @@ h1.sys-headline {
     font: normal normal 1.4em/1.25 $secondary-font;
     text-transform: uppercase;
     white-space: normal;
+    -webkit-appearance: none;
     &:active { position: relative; top: 1px; }
   }
   input[type="submit"] {
@@ -1810,7 +1817,8 @@ h1.sys-headline {
   }
 
   h3 {
-    font: normal 1.666666667em/1.5 $secondary-font;
+    font-size: 1.666666667em;
+    line-height: 1.25;
     margin-bottom: 0;
     color: #666;
   }
@@ -1889,6 +1897,7 @@ h1.sys-headline {
     float: right;
     @include transform(rotate(2deg));
     margin-left: 1em;
+    margin-bottom: 1em;
   }
 
   .content {
