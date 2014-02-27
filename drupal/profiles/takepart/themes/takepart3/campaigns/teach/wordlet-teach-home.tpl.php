@@ -19,4 +19,5 @@
   <section class="social-menu">
     <? include('partials/teach-social-block.tpl.php') ?>
   </section>
+  <?php include('partials/teach-watch-promo.tpl.php'); ?>
 </div>
