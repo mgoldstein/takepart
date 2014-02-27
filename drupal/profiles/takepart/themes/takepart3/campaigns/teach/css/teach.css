@@ -821,13 +821,13 @@ a {
   background-size: 24px;
 }
 .scribble-share a.facebook, .scribble-share a.tp-social-facebook {
-  background-position-y: 0;
+  background-position: 0 0;
 }
 .scribble-share a.twitter, .scribble-share a.tp-social-twitter {
-  background-position-y: -24px;
+  background-position: 0 -24px;
 }
 .scribble-share a.googleplus, .scribble-share a.tp-social-googleplus {
-  background-position-y: -48px;
+  background-position: 0 -48px;
 }
 .scribble-share.large a {
   text-indent: 24px;
@@ -836,13 +836,13 @@ a {
   background-size: 48px;
 }
 .scribble-share.large a.facebook, .scribble-share.large a.tp-social-facebook {
-  background-position-y: 0;
+  background-position: 0 0;
 }
 .scribble-share.large a.twitter, .scribble-share.large a.tp-social-twitter {
-  background-position-y: -48px;
+  background-position: 0 -48px;
 }
 .scribble-share.large a.googleplus, .scribble-share.large a.tp-social-googleplus {
-  background-position-y: -96px;
+  background-position: 0 -96px;
 }
 
 .social-menu {
@@ -1981,7 +1981,7 @@ h1.sys-headline span {
 .sys-form input[type="submit"].in-progress {
   background-image: url('../img/spinner-white-orange.gif?1393461763');
   background-size: auto 40%;
-  background-position-x: 95%;
+  background-position: 95% center;
 }
 .sys-form .left, .sys-form .right {
   float: none;
@@ -2020,6 +2020,47 @@ h1.sys-headline span {
   line-height: .667;
 }
 
+.sys-thanks-social-share {
+  background: transparent url('../img/sys-thanks-paper-small.png?1393482585') scroll no-repeat top center;
+  background-size: contain;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 265px;
+  min-height: 317px;
+  margin: 25px auto 0;
+  padding: 4% 2.5% 2.5%;
+  text-align: center;
+}
+.sys-thanks-social-share:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  margin-left: -80px;
+  width: 159px;
+  height: 50px;
+  background: transparent url('../img/sys-thanks-tape.png?1393482598') scroll no-repeat center center;
+}
+@media (min-width: 768px) {
+  .sys-thanks-social-share {
+    background-image: url('../img/sys-thanks-paper-large.png?1393482544');
+    min-height: 154px;
+    max-width: none;
+    padding: 3% 6%;
+  }
+  .sys-thanks-social-share .col-2-3 {
+    text-align: left;
+  }
+}
+.sys-thanks-social-share h3 {
+  font: normal 1.6em/1.25 "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+}
+
 .sys-story-modal {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -2027,6 +2068,7 @@ h1.sys-headline span {
   background-color: white;
   padding: 20px;
   width: 100%;
+  min-height: 317px;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -2140,7 +2182,7 @@ h1.sys-headline span {
   margin-left: -41px;
   width: 82px;
   height: 23px;
-  background: transparent url('../img/sys-user-image-tape.png?1393469072') scroll no-repeat center center;
+  background: transparent url('../img/sys-user-image-tape.png?1393470343') scroll no-repeat center center;
 }
 .sys-story-modal .sys-story-user-image-wrapper img {
   display: block;

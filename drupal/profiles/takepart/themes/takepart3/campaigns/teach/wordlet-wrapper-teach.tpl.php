@@ -36,10 +36,13 @@
 					<div class="right"><?=w('header_photo_credit')?></div>
 				</div>
 				<img class="hero" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/hero-teachers.png" alt="Teachers" />
-        <div class="campaign-social-share scribble-share scribble-share-24">
-          <span>Share</span>
-        </div><!--
-				--><div class="menu-wrapper">
+       <div class="campaign-social-share scribble-share" <?php print wa('header_share_data'); ?>
+          <?php $w = w('header_share_data'); ?>
+          data-shareURL="<?php print $w->href_raw; ?>"
+          data-shareTitle="<?php print $w->single_no_markup; ?>"
+          data-shareDescription="<?php print $w->multi_short_no_markup; ?>"
+        ><span>Share</span></div>
+				<div class="menu-wrapper">
 					<ul class='menu' <?=wa('menu') ?>>
 						<? foreach( wl('menu') as $w ): ?>
 							<li class="item <?=ws($w->href)?>"><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>

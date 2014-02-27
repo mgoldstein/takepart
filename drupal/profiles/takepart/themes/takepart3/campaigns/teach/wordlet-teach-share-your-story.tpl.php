@@ -25,5 +25,6 @@
 </div>
 <div id="sys-thanks-content" class="content teach-sys-content initially-hidden">
     <h1 class="sys-headline"><span><?php print w('thanks_headline'); ?></span></h1>
-    <?php print w('thanks_message'); ?>
+    <div><?php print w('thanks_message'); ?></div>
+    <?php include('partials/teach-sys-thanks.tpl.php'); ?>
 </div>
