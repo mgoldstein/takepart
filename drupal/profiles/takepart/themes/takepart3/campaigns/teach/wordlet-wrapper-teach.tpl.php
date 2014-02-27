@@ -29,7 +29,7 @@
 				<span class="slug"><?=w('header_slug')?></span>
 				<h1 class="page-header"><?=w('header_title')?></h1>
 				<span class="credit"><?=w('header_credit')?></span>
-				<span class="burst"><span><?=w('header_burst')?></span> <img class="logos" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/hero-logos.png" alt="CBS | Participant media" /></span>
+				<span class="burst"><span><?=w('header_burst')?></span><!--<img class="logos" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/hero-logos.png" alt="CBS | Participant media" />--></span>
 				<span class="date"><?=w('header_date')?></span>
 				<div class="fine">
 					<?=w('header_fine')?>
