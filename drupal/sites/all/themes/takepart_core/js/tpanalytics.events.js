@@ -4,7 +4,7 @@
 
     takepart.analytics.addThis_shareEventHandler = function (evt) {
         if ( takepart.analytics.skip_addthis ) return;
-        if (evt.type == 'addthis.menu.share') {
+        if (evt.type === 'addthis.menu.share') {
         //takepart.analytics.track('generic_addthis', {name: evt.data.service, url: this.href});
         }
     };
@@ -74,7 +74,7 @@
             var authors = [];
             $('.article-header .authors a').each(function() {
                 authors.push($(this).text());
-            })
+            });
             evar17 = authors.join(',');
             evar19 = $('.article').data('series');
             evar20 = s.eVar20;
@@ -114,7 +114,7 @@
                 s2.eVar21 = evar21;
                 linkTrackVars.push('eVar21');
             }
-            linkTrackVars.push('eVar30,eVar27,prop26,events')
+            linkTrackVars.push('eVar30,eVar27,prop26,events');
 
             s2.prop26 = title;
             s2.eVar27 = title;
@@ -189,7 +189,7 @@
             var authors = [];
             $('.article-header .authors a').each(function() {
                 authors.push($(this).text());
-            })
+            });
             s2.eVar17=authors.join(',');
             s2.prop16=s2.eVar17;
             s2.tl(options.a, 'o', 'Click on Up Next Promo Gallery');
@@ -203,7 +203,7 @@
             s.linkTrackEvents = ( options.skip_pageview ) ? '' : 'event2';
 
             // Next gallery
-            if ( token == 'next-gallery' ) {
+            if ( token === 'next-gallery' ) {
                 if ( s.events ) s.events += ',';
                 s.events += 'event16';
                 if ( s.linkTrackEvents ) s.linkTrackEvents += ',';
@@ -309,7 +309,7 @@
             s.linkTrackEvents='event39';
             s.events = 'event39';
             s.eVar23 = options.name;
-            if ('source' in options && options.source && options.source != '') {
+            if ('source' in options && options.source && options.source !== '') {
                 s.eVar22 = options.source;
                 s.linkTrackVars = 'eVar22,' + s.linkTrackVars;
             }
@@ -405,7 +405,7 @@
 
     // Document Ready
     $(function() {
-        if (typeof addthis != "undefined" && addthis) {
+        if (typeof addthis !== "undefined" && addthis) {
             addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
         }
 
