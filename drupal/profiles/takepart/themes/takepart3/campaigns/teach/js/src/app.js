@@ -363,7 +363,9 @@
 	var $id = $('#' + id + "_id").val(response.public_id);
 	var $url = $('#' + id + "_link").val(response.url);
 
+  // hide the description and get rid of anything from previous uploads.
 	$this.find('.sys-image-description').hide();
+  $this.find('.thumbnail, .sys-upload-buttons span:not(:first-child)').remove();
 
 	$('<p>').addClass('thumbnail').html($.cloudinary.image(response.public_id + '.jpg', {width: 150, height: 150, crop: 'fill'})).insertAfter($this.find('p:first-child'));
 	equalizeImageHeights();
