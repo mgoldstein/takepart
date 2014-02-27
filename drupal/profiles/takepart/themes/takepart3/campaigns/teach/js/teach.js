@@ -40,9 +40,37 @@
   }
   Drupal.behaviors.campaignShare = {
     attach: function() {
-      $('.campaign-social-share').on('click', 'a', function(e) {
-        e.preventDefault();
-        alert($(this).text() + " Share"); // TODO Implement Social Shares
+      $('.campaign-social-share:not(.tp-social-skip)').each(function() {
+
+        var $this = $(this);
+        var url = $this.data('shareUrl') || 'http://www.takepart.com/teach';
+        var title = $this.data('shareTitle') || 'TEACH | Join the “Teacher Stories” initiative and help us support great teachers.';
+        var description = $this.data('description') || 'Share a teacher story and you’ll help us give away more than $10,000 to public schools.';
+
+        var opts = {
+          url_append: '?cmpid=organic-share-{{name}}',
+          services: [
+            {
+                name: 'facebook',
+                url: url,
+                title: title,
+                description: description
+            },
+            {
+                name: 'twitter',
+                url: url,
+                text: description,
+                via: 'TeachMovie'
+            },
+            {
+                name: 'googleplus',
+                url: url
+            }
+          ]
+        };
+
+        $this.tpsocial(opts);
+
       });
     }
   };
