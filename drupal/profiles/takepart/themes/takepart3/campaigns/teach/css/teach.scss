@@ -1919,11 +1919,27 @@ h1.sys-headline {
     height: auto !important;
   }
 
-  .sys-story-user-image {
+  .sys-story-user-image-wrapper {
     float: right;
     @include transform(rotate(2deg));
     margin-left: 1em;
     margin-bottom: 1em;
+    position: relative; // 82x23
+    &:before {
+      content: " ";
+      display: block;
+      position: relative;
+      top: 15px;
+      left: 50%;
+      margin-left: -41px;
+      width: 82px;
+      height: 23px;
+      background: transparent image-url("sys-user-image-tape.png") scroll no-repeat center center;
+    }
+
+    img {
+      display: block;
+    }
   }
 
   .content {

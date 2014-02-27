@@ -100,7 +100,7 @@
     <div class="content">
       <h3>Teacher</h3>
       <h2 class="sys-story-subhead"><%=teacher_first_name%> <%=teacher_last_name%></h2>
-      <img id="sys-story-user-image" class="sys-story-user-image" src="http://placehold.it/150x200&text=loading..." data-src="<%=user_image_id%>.jpg" data-width="150" data-height="200" data-crop="fill" data-gravity="faces">
+      <div class="sys-story-user-image-wrapper"><img id="sys-story-user-image" class="sys-story-user-image" src="http://placehold.it/150x200&text=loading..." data-src="<%=user_image_id%>.jpg" data-width="150" data-height="200" data-crop="fill" data-gravity="faces"></div>
       <h3>School</h3>
       <p><%=school_name%><br /><%=school_city%>, <%=school_state%></p>
       <h3>Submitted By</h3>

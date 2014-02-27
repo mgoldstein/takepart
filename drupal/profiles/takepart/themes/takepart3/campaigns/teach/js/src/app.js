@@ -177,7 +177,7 @@
 
     // replace Cloudinary values with defaults
     if (!formData.user_image_id) {
-      formData.user_image_id = 'sys-defaults/avatar-temp';
+      formData.user_image_id = 'sys-defaults/avatar';
       formData.user_image_link = $.cloudinary.url(formData.user_image_id + '.jpg');
       $form.find('#user_image_id').val(formData.user_image_id);
       $form.find('#user_image_link').val(formData.user_image_link);

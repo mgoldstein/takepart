@@ -2120,7 +2120,7 @@ h1.sys-headline span {
   width: 100% !important;
   height: auto !important;
 }
-.sys-story-modal .sys-story-user-image {
+.sys-story-modal .sys-story-user-image-wrapper {
   float: right;
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
@@ -2129,6 +2129,21 @@ h1.sys-headline span {
   transform: rotate(2deg);
   margin-left: 1em;
   margin-bottom: 1em;
+  position: relative;
+}
+.sys-story-modal .sys-story-user-image-wrapper:before {
+  content: " ";
+  display: block;
+  position: relative;
+  top: 15px;
+  left: 50%;
+  margin-left: -41px;
+  width: 82px;
+  height: 23px;
+  background: transparent url('../img/sys-user-image-tape.png?1393469072') scroll no-repeat center center;
+}
+.sys-story-modal .sys-story-user-image-wrapper img {
+  display: block;
 }
 @media (min-width: 768px) {
   .sys-story-modal .content {
