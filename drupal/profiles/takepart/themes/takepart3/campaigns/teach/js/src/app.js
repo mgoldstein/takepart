@@ -135,7 +135,7 @@
     };
 
     if (formData.email_subscribe == true) {
-      json.opt_ins.teach_campaign = "true";
+      json.opt_ins.teach_stories = "true";
     }
 
     $.ajax({
