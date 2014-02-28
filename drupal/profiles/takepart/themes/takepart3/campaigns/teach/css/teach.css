@@ -53,6 +53,14 @@
 #main {
   overflow: hidden;
 }
+#main p, #main ul {
+  font: normal 14px/1.71429 Helvetica, Arial, sans-serif;
+  margin: 0 0 1em;
+}
+#main ul li {
+  margin-left: 1em;
+  text-indent: -1em;
+}
 
 .page-wrap {
   width: auto;
@@ -1149,6 +1157,14 @@ a {
   line-height: 1.25em;
   margin: 1em 0;
 }
+.teach-film-page .row {
+  padding: 0 20px 20px;
+}
+@media (min-width: 481px) {
+  .teach-film-page .row {
+    padding: 0;
+  }
+}
 @media (min-width: 768px) {
   .teach-film-page .row .col-1-2 {
     padding: 20px;
@@ -1579,13 +1595,28 @@ a {
 
 h1.sys-headline {
   background: transparent url('../img/sys-headline-bg.png?1393461763') scroll no-repeat top left;
-  font-size: 1.642857143em;
-  padding: 1.3em 0 1em .5em;
+  font-size: 1.4em;
+  padding: 1.8em 0 1em .5em;
+}
+@media (min-width: 400px) {
+  h1.sys-headline {
+    font-size: 1.642857143em;
+    padding: 1.3em 0 1em .5em;
+  }
 }
 @media (min-width: 850px) {
   h1.sys-headline {
     font-size: 34px;
     padding: .67em 0 .75em .5em;
+  }
+}
+.teach-sys-thanks-content h1.sys-headline {
+  background-image: url('../img/teach-home-featured-header-bg.png?1393461763');
+  padding: 1.1em;
+}
+@media (min-width: 850px) {
+  .teach-sys-thanks-content h1.sys-headline {
+    padding: .47em 0 .85em .5em;
   }
 }
 h1.sys-headline span {
@@ -1651,14 +1682,21 @@ h1.sys-headline span {
 }
 
 .sys-tips h2 {
-  font-size: 1.142857143em;
-  line-height: 2.1875;
-  padding: 1.4em 0 1em .5em;
   background: transparent url('../img/sys-subhead-bg.png?1393461763') scroll no-repeat top left;
+  padding: 2.5em 0 2em .5em;
+  font-size: 1em;
+  line-height: 1;
+}
+@media (min-width: 480px) {
+  .sys-tips h2 {
+    padding: 1.4em 0 1em .5em;
+    font-size: 1.142857143em;
+    line-height: 2.1875;
+  }
 }
 @media (min-width: 768px) {
   .sys-tips h2 {
-    font-size: 1.285714286;
+    font-size: 1.285714286em;
     line-height: 1.666666667;
   }
 }
@@ -2032,7 +2070,7 @@ h1.sys-headline span {
   max-width: 265px;
   min-height: 317px;
   margin: 25px auto 0;
-  padding: 4% 2.5% 2.5%;
+  padding: 9% 2.5%;
   text-align: center;
 }
 .sys-thanks-social-share:before {
@@ -2051,15 +2089,20 @@ h1.sys-headline span {
     background-image: url('../img/sys-thanks-paper-large.png?1393529972');
     min-height: 154px;
     max-width: none;
-    padding: 3% 6%;
+    padding: 5% 6%;
   }
   .sys-thanks-social-share .col-2-3 {
     text-align: left;
   }
 }
 .sys-thanks-social-share h3 {
-  font: normal 1.6em/1.25 "GlyphaLTPro-Black", serif;
+  font: normal 1.5em/1.25 "GlyphaLTPro-Black", serif;
   text-transform: uppercase;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .sys-thanks-social-share h3 {
+    font-size: 1.15em;
+  }
 }
 
 .sys-story-modal {

@@ -4,9 +4,9 @@
  * Module for support functions for dealing with Cloudinary's API
  */
 
-define('CLOUDINARY_CLOUD_NAME', 'takepartdev');
-define('CLOUDINARY_API_KEY', '631362422786584');
-define('CLOUDINARY_API_SECRET', 'WXOO-sdwQ_Rgm6RZRnBStD9u7s8');
+define('CLOUDINARY_CLOUD_NAME', 'takepart');
+define('CLOUDINARY_API_KEY', '131373166326748');
+define('CLOUDINARY_API_SECRET', 'TEs2ElYnqCdu1bcBZu9L_Qq1Nsw');
 define('CLOUDINARY_TAGS', 'temp'); // comma-separated list
 
 define('CLOUDINARY_SUPPORT_PATH', drupal_get_path('module', 'takepart_cloudinary_support'));
