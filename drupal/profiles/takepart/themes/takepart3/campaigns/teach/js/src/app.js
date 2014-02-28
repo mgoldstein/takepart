@@ -213,6 +213,15 @@
   // not using Drupal.behaviors because this JS has nothing to do with drupal
   $(document).ready(function() {
 
+    // hide some things when we're on facebook
+    // (i.e., when the site is loaded in an iframe)
+    if (loadedInIframe) {
+      $('.footer-wrapper, .slimnav').remove();
+      $('body').css('border', 'none');
+      $('.page-wrap').css('padding', '0');
+      // $('#page').css('padding', '0'); // in case we want to go even wider
+    }
+
     // coppa check
     var birthDate = null;
     $.each(document.cookie.split(";"), function() {
@@ -228,14 +237,6 @@
     // we've passed the age test. have a beer.
     var $form = $('#sys-form');
 
-    // hide some things when we're on facebook
-    // (i.e., when the site is loaded in an iframe)
-    if (loadedInIframe) {
-      $('.footer-wrapper, .slimnav').remove();
-      $('body').css('border', 'none');
-      $('.page-wrap').css('padding', '0');
-      // $('#page').css('padding', '0'); // in case we want to go even wider
-    }
 
     // populate character count divs from maxlength properties
     $form.find('input[maxlength], textarea[maxlength]').each(function() {
@@ -267,8 +268,8 @@
     });
 
     // style select boxes on non-touch-enabled devices
-    if (!touchEnabled) {
-        $form.find('select').customSelect();
+    if (!touchEnabled && !loadedInIframe) {
+      $form.find('select').customSelect();
     }
 
     // School ID field stuff
