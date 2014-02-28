@@ -1157,6 +1157,14 @@ a {
   line-height: 1.25em;
   margin: 1em 0;
 }
+.teach-film-page .row {
+  padding: 0 20px 20px;
+}
+@media (min-width: 481px) {
+  .teach-film-page .row {
+    padding: 0;
+  }
+}
 @media (min-width: 768px) {
   .teach-film-page .row .col-1-2 {
     padding: 20px;

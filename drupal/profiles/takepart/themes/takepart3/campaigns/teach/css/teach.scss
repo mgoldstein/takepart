@@ -1011,8 +1011,15 @@ a {
     line-height: 1.25em;
     margin: 1em 0;
   }
-  @media (min-width: 768px) {
-    .row {
+  .row {
+
+    padding: 0 20px 20px;
+
+    @media (min-width: 481px) {
+      padding: 0;
+    }
+
+    @media (min-width: 768px) {
       .col-1-2 {
         padding: 20px;
         width: 33.3%;
@@ -1021,6 +1028,7 @@ a {
         }
       }
     }
+
   }
 
   ol {
