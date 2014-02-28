@@ -103,9 +103,13 @@ $body-copy-black: #313131;
   }
 
   .burst {
-    display: block;
     margin-top: .25em;
-    font: normal 21px/1 $primary-font;
+  }
+
+  .burst,
+  .date {
+    display: block;
+    font-size: 22px;
     span {
       display: inline-block;
       vertical-align: text-top;
@@ -114,11 +118,6 @@ $body-copy-black: #313131;
   .logos {
     display: inline-block;
     vertical-align: bottom;
-  }
-
-  .date {
-    display: block;
-    font-size: 18px;
   }
 
   .fine {
