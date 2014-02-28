@@ -273,7 +273,11 @@
     } else {
       // If we don't use styled customSelect widgets
       // the alignment is off
-      $form.find('.vertically-center').removeClass('vertically-center');
+      $form
+        .find('.vertically-center')
+        .removeClass('vertically-center')
+        .css('display', 'block')
+      ;
     }
 
     // School ID field stuff

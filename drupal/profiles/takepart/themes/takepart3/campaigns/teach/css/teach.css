@@ -1595,8 +1595,14 @@ a {
 
 h1.sys-headline {
   background: transparent url('../img/sys-headline-bg.png?1393461763') scroll no-repeat top left;
-  font-size: 1.642857143em;
-  padding: 1.3em 0 1em .5em;
+  font-size: 1.4em;
+  padding: 1.8em 0 1em .5em;
+}
+@media (min-width: 400px) {
+  h1.sys-headline {
+    font-size: 1.642857143em;
+    padding: 1.3em 0 1em .5em;
+  }
 }
 @media (min-width: 850px) {
   h1.sys-headline {
@@ -1676,14 +1682,21 @@ h1.sys-headline span {
 }
 
 .sys-tips h2 {
-  font-size: 1.142857143em;
-  line-height: 2.1875;
-  padding: 1.4em 0 1em .5em;
   background: transparent url('../img/sys-subhead-bg.png?1393461763') scroll no-repeat top left;
+  padding: 2.5em 0 2em .5em;
+  font-size: 1em;
+  line-height: 1;
+}
+@media (min-width: 480px) {
+  .sys-tips h2 {
+    padding: 1.4em 0 1em .5em;
+    font-size: 1.142857143em;
+    line-height: 2.1875;
+  }
 }
 @media (min-width: 768px) {
   .sys-tips h2 {
-    font-size: 1.285714286;
+    font-size: 1.285714286em;
     line-height: 1.666666667;
   }
 }

@@ -1442,10 +1442,14 @@ a {
 }
 
 h1.sys-headline {
-  // @include rotate(-3deg);
   background: transparent image-url("sys-headline-bg.png") scroll no-repeat top left;
-  font-size: 1.642857143em;
-  padding: 1.3em 0 1em .5em;
+  font-size: 1.4em;
+  padding: 1.8em 0 1em .5em;
+
+  @media (min-width: 400px) {
+    font-size: 1.642857143em;
+    padding: 1.3em 0 1em .5em;
+  }
 
   @media (min-width:850px) {
     font-size: 34px;
@@ -1520,18 +1524,25 @@ h1.sys-headline {
 
 .sys-tips {
   h2 {
-    font-size: 1.142857143em;
-    line-height: 2.1875;
-    padding: 1.4em 0 1em .5em;
+
+    background: transparent image-url("sys-subhead-bg.png") scroll no-repeat top left;
+    padding: 2.5em 0 2em .5em;
+    font-size: 1em;
+    line-height: 1;
+
+    @media (min-width:480px) {
+      padding: 1.4em 0 1em .5em;
+      font-size: 1.142857143em;
+      line-height: 2.1875;
+    }
     @media (min-width:768px) {
-      font-size: 1.285714286;
+      font-size: 1.285714286em;
       line-height: 1.666666667;
     }
     @media (min-width: 1000px) {
       font-size: 1.428571429em;
       line-height: 1.25;
     }
-    background: transparent image-url("sys-subhead-bg.png") scroll no-repeat top left;
     span {
       display: block;
       @include transform(rotate(-1.5deg));
