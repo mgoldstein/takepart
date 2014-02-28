@@ -1432,6 +1432,7 @@ a {
   font-weight: normal;
   text-transform: uppercase;
 }
+
 h1.sys-headline {
   // @include rotate(-3deg);
   background: transparent image-url("sys-headline-bg.png") scroll no-repeat top left;
@@ -1443,12 +1444,19 @@ h1.sys-headline {
     padding: .67em 0 .75em .5em;  
   }
 
+  .teach-sys-thanks-content & {
+    background-image: image-url("teach-home-featured-header-bg.png");
+    padding: 1.1em;
+
+    @media (min-width:850px) {
+      padding: .47em 0 .85em .5em;
+    }
+  }
+
   span {
     display: block;
     @include transform(rotate(-1.5deg));
   }
-}
-.sys-intro {
 }
 
 .sys-update {

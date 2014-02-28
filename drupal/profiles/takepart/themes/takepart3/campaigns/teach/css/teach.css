@@ -1596,6 +1596,15 @@ h1.sys-headline {
     padding: .67em 0 .75em .5em;
   }
 }
+.teach-sys-thanks-content h1.sys-headline {
+  background-image: url('../img/teach-home-featured-header-bg.png?1393461763');
+  padding: 1.1em;
+}
+@media (min-width: 850px) {
+  .teach-sys-thanks-content h1.sys-headline {
+    padding: .47em 0 .85em .5em;
+  }
+}
 h1.sys-headline span {
   display: block;
   -webkit-transform: rotate(-1.5deg);
