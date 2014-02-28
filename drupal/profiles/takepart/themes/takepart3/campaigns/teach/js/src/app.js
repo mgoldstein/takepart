@@ -270,6 +270,10 @@
     // style select boxes on non-touch-enabled devices
     if (!touchEnabled && !loadedInIframe) {
       $form.find('select').customSelect();
+    } else {
+      // If we don't use styled customSelect widgets
+      // the alignment is off
+      $form.find('.vertically-center').removeClass('vertically-center');
     }
 
     // School ID field stuff

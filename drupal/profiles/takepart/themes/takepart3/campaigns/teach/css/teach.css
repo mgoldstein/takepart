@@ -120,21 +120,21 @@
   width: 300px;
 }
 .header .burst {
-  display: block;
   margin-top: .25em;
-  font: normal 21px/1 Helvetica, Arial, sans-serif;
 }
-.header .burst span {
+.header .burst,
+.header .date {
+  display: block;
+  font-size: 22px;
+}
+.header .burst span,
+.header .date span {
   display: inline-block;
   vertical-align: text-top;
 }
 .header .logos {
   display: inline-block;
   vertical-align: bottom;
-}
-.header .date {
-  display: block;
-  font-size: 18px;
 }
 .header .fine {
   display: none;
