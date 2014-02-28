@@ -599,7 +599,7 @@ a {
 .teach-film-content,
 .teach-fund-about-content {
   position: relative;
-  background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1393543286') scroll repeat;
+  background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1393550697') scroll repeat;
   margin-top: 30px;
   -webkit-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
@@ -1945,6 +1945,7 @@ h1.sys-headline span {
   font-family: "GlyphaLTPro-Black", serif;
   text-transform: uppercase;
   margin-left: .25em;
+  margin-bottom: .25em;
 }
 .sys-form .sys-upload-buttons span:first-child {
   margin-left: 0;
