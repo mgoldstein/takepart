@@ -1852,7 +1852,7 @@ h1.sys-headline {
   max-width: 265px;
   min-height: 317px;
   margin: 25px auto 0;
-  padding: 4% 2.5% 2.5%;
+  padding: 9% 2.5%;
   text-align: center;
 
   &:before {
@@ -1871,7 +1871,7 @@ h1.sys-headline {
     background-image: image-url("sys-thanks-paper-large.png");
     min-height: 154px;
     max-width: none;
-    padding: 3% 6%;
+    padding: 5% 6%;
 
     .col-2-3 {
       text-align: left;
@@ -1880,8 +1880,12 @@ h1.sys-headline {
 
 
   h3 {
-    font: normal 1.6em/1.25 $secondary-font;
+    font: normal 1.5em/1.25 $secondary-font;
     text-transform: uppercase;
+
+    @media (min-width: 768px) and (max-width: 979px) {
+      font-size: 1.15em;
+    }
   }
 }
 

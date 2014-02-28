@@ -2049,7 +2049,7 @@ h1.sys-headline span {
   max-width: 265px;
   min-height: 317px;
   margin: 25px auto 0;
-  padding: 4% 2.5% 2.5%;
+  padding: 9% 2.5%;
   text-align: center;
 }
 .sys-thanks-social-share:before {
@@ -2068,15 +2068,20 @@ h1.sys-headline span {
     background-image: url('../img/sys-thanks-paper-large.png?1393529972');
     min-height: 154px;
     max-width: none;
-    padding: 3% 6%;
+    padding: 5% 6%;
   }
   .sys-thanks-social-share .col-2-3 {
     text-align: left;
   }
 }
 .sys-thanks-social-share h3 {
-  font: normal 1.6em/1.25 "GlyphaLTPro-Black", serif;
+  font: normal 1.5em/1.25 "GlyphaLTPro-Black", serif;
   text-transform: uppercase;
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .sys-thanks-social-share h3 {
+    font-size: 1.15em;
+  }
 }
 
 .sys-story-modal {
