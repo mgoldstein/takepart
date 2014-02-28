@@ -3,8 +3,8 @@
   // magic numbers
   var TAP = {
     postURL: "http://qa-web1.tab.takepart.com/user_teach_stories",
-    action_id: "9035089",
-    partner_code: "8e42f2980097d0f37462d2539122b698"
+    action_id: "9035092",
+    partner_code: "38ec3cd1db216fd6964277e5969f4cb2"
   };
 
   //
