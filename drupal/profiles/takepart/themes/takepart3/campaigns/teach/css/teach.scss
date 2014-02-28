@@ -36,6 +36,19 @@ $body-copy-black: #313131;
 
 #main {
   overflow: hidden;
+
+  p, ul {
+    font: normal 14px/1.714285714 $primary-font;
+    margin: 0 0 1em;
+  }
+
+  ul {
+    li {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+  }
+
 }
 
 .page-wrap {
