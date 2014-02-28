@@ -1,13 +1,20 @@
 (function($, window, document, undefined){
 
-  // tap values that may change
+  // magic numbers
   var TAP = {
     postURL: "http://qa-web1.tab.takepart.com/user_teach_stories",
     action_id: "9035089",
     partner_code: "8e42f2980097d0f37462d2539122b698"
   };
 
+  //
+  // Our own little modernizr
+  //
+
+  // detect touch support
   var touchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
+
+  // detect localstorage
   var hasStorage = (function() {
     try {
       localStorage.setItem('foo', 'test');
@@ -18,6 +25,16 @@
     }
   })();
 
+  // detect whether we're in an iframe
+  var loadedInIframe  = (function(){
+    try {
+      return window.self !== window.top;
+    } catch (e) {
+      return true;
+    }
+  })();
+
+  // convenience values for COPPA compliance
   var coppaCookieName = "pm_sys_user_birthdate",
       coppaCookieExpires = 1, // days to keep the cookie
       msDay = 24 * 60 * 60 * 1000, // one day in milliseconds
@@ -210,6 +227,15 @@
 
     // we've passed the age test. have a beer.
     var $form = $('#sys-form');
+
+    // hide some things when we're on facebook
+    // (i.e., when the site is loaded in an iframe)
+    if (loadedInIframe) {
+      $('header.header, .footer-wrapper, .slimnav').remove();
+      $('body').css('border', 'none');
+      $('.page-wrap').css('padding', '0');
+      // $('#page').css('padding', '0'); // in case we want to go even wider
+    }
 
     // populate character count divs from maxlength properties
     $form.find('input[maxlength], textarea[maxlength]').each(function() {
