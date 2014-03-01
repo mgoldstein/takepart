@@ -1655,7 +1655,6 @@ h1.sys-headline span {
   display: block;
 }
 .sys-update h2 span:nth-child(1) {
-  text-transform: capitalize;
   text-align: left;
 }
 .sys-update h2 span:nth-child(2) {
