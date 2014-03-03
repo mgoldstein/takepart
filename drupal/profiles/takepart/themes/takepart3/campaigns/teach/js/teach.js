@@ -43,9 +43,9 @@
       $('.campaign-social-share:not(.tp-social-skip)').each(function() {
 
         var $this = $(this);
-        var url = $this.data('shareUrl') || 'http://www.takepart.com/teach';
-        var title = $this.data('shareTitle') || 'TEACH | Join the “Teacher Stories” initiative and help us support great teachers.';
-        var description = $this.data('shareDescription') || 'Share a teacher story and you’ll help us give away more than $10,000 to public schools.';
+        var url = $this.data('shareurl') || 'http://www.takepart.com/teach';
+        var title = $this.data('sharetitle') || 'TEACH | Join the “Teacher Stories” initiative and help us support great teachers.';
+        var description = $this.data('sharedescription') || 'Share a teacher story and you’ll help us give away more than $10,000 to public schools.';
 
         var opts = {
           url_append: '?cmpid=organic-share-{{name}}',

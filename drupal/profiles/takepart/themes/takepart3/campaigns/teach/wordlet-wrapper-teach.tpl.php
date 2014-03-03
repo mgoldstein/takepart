@@ -38,9 +38,9 @@
 				<img class="hero" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/hero-teachers.png" alt="Teachers" />
        <div class="campaign-social-share scribble-share" <?php print wa('header_share_data'); ?>
           <?php $w = w('header_share_data'); ?>
-          data-shareURL="<?php print $w->href_raw; ?>"
-          data-shareTitle="<?php print $w->single_no_markup; ?>"
-          data-shareDescription="<?php print $w->multi_short_no_markup; ?>"
+          data-shareurl="<?php print $w->href_raw; ?>"
+          data-sharetitle="<?php print $w->single_no_markup; ?>"
+          data-sharedescription="<?php print $w->multi_short_no_markup; ?>"
         ><span>Share</span></div>
 				<div class="menu-wrapper">
 					<ul class='menu' <?=wa('menu') ?>>
