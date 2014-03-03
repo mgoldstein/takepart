@@ -64,7 +64,7 @@
     var social_click = function(options) {
         var $body = $('body');
         var title = normalize_share_title(options.name);
-        var evar4, evar17, evar19, evar20, evar21, linkTrackVars;
+        var evar1, evar4, evar17, evar19, evar20, evar21, linkTrackVars;
 
         if ($body.is('.node-type-article')
                 || $body.is('.node-type-openpublish-photo-gallery')
@@ -82,6 +82,7 @@
             evar21 = s.eVar21;
         }
         else if ($body.is('.page-wordlet')) {
+            evar1 = s.channel;
             evar4 = 'campaign';
         }
 
@@ -89,6 +90,13 @@
             var s2 = s_gi(Drupal.settings.omniture.s_account);
             s2.events = 'event25';
             linkTrackVars = [];
+            
+            if (evar1) {
+                s2.eVar1 = evar1;
+                linkTrackVars.push('eVar1');
+                s2.prop1 = evar1;
+                linkTrackVars.push('prop1');
+            }
 
             if (evar4) {
                 s2.eVar4 = evar4;
