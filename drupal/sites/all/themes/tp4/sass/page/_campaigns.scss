@@ -10,140 +10,149 @@
   * 2) Change zen-gutter width to what it should be.
   */
 
-body.node-type-campaign-page{
 
-  /*
-   * Layouts
-   */
-
+/*
+ * Layouts
+ */
+body.node-type-campaign-page,
+body.node-type-campaign-card-media{
   $zen-column-count:  12;
-  $zen-gutter-width:  20px; //TODO: change this to respond to the width of the containing element.
+  $zen-gutter-width:  30px; //TODO: change this to respond to the width of the containing element.
 
-  .tray {
-    .slider{
-      @include zen-grid-item(12, 1);
-      @include zen-clear();
-      padding: 0;
-      //Two column layout: equal width
-      .panel-campaign-2col{
-        .panel-instructional{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            padding-bottom: 40px;
-            text-align: center;
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(8, 3);
-          }
+  .card{
+    @include zen-grid-item(12, 1);
+    @include zen-clear();
+    padding: 0;
+    //Two column layout: equal width
+    &.campaign-2col{
+      .instructional{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          padding-bottom: 40px;
+          text-align: center;
         }
-        .panel-col-left{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            @include zen-clear();
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(5, 2);
-          }
-        }
-        .panel-col-right{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            @include zen-clear();
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(5, 7);
-            @include zen-clear(none);
-          }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(8, 3);
         }
       }
-      .panel-campaign-2col-left{
-        .panel-instructional{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            padding-bottom: 40px;
-            text-align: center;
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(8, 3);
-          }
+      .left-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          @include zen-clear();
         }
-        .panel-col-left{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            @include zen-clear();
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(6, 2);
-          }
-        }
-        .panel-col-right{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            @include zen-clear();
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(4, 8);
-            @include zen-clear(none);
-          }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(5, 2);
         }
       }
-      .panel-campaign-2col-right{
-        .panel-instructional{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            padding-bottom: 40px;
-            text-align: center;
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(8, 3);
-          }
+      .right-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          @include zen-clear();
         }
-        .panel-col-left{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            @include zen-clear();
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(4, 2);
-          }
-        }
-        .panel-col-right{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            @include zen-clear();
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(6, 6);
-            @include zen-clear(none);
-          }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(5, 7);
+          @include zen-clear(none);
         }
       }
-      .panel-campaign-1col{
-        .panel-instructional{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            padding-bottom: 40px;
-            text-align: center;
-          }
-          @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(8, 3);
-          }
-        }
-        .panel-col{
-          @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(10, 2);
-            @include zen-clear();
-          }
-        }
-      }
-      // Add more panelizer layouts here
     }
-    .card{
-      height: 100%;
-      overflow: hidden;
-      padding-top: 50px;
-      padding-bottom: 60px;
+    &.campaign-2col-left{
+      .instructional{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          padding-bottom: 40px;
+          text-align: center;
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(8, 3);
+        }
+      }
+      .left-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(6, 2);
+        }
+      }
+      .right-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(4, 8);
+          @include zen-clear(none);
+        }
+      }
     }
+    &.campaign-2col-right{
+      .instructional{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          padding-bottom: 40px;
+          text-align: center;
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(8, 3);
+        }
+      }
+      .left-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(4, 2);
+        }
+      }
+      .right-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(6, 6);
+          @include zen-clear(none);
+        }
+      }
+    }
+    &.campaign-1col{
+      .instructional{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          padding-bottom: 40px;
+          text-align: center;
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(8, 3);
+        }
+      }
+      .content{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+          @include zen-clear();
+        }
+      }
+    }
+    &.campaign.news-page{
+      @include breakpoint-grid-breakdown(5, $breakpoint-mobile, ' > .news-col');
+
+    }
+    // Add more layouts here
+  }
+}
+
+#main.card-page{
+  width: 100%;
+  max-width: 100%;
+}
+body.node-type-campaign-page, #main.card-page{
+  .card{
+    height: 100%;
+    overflow: hidden;
+    padding-top: 50px;
+    padding-bottom: 60px;
   }
 
 
@@ -156,7 +165,7 @@ body.node-type-campaign-page{
       text-align: center;
     }
   }
-  h1.title{
+  h1.card-title{
     text-align: center;
   }
   #main{
@@ -171,9 +180,14 @@ body.node-type-campaign-page{
     padding-top: 50px;
     width: 100%;
   }
-  .card.has-tray-title{
-    h1.title{
+  .card-wrapper.has-tray-title{
+    h1.card-title{
       display: none;
+    }
+  }
+  .slider.has-tray-background{
+    .card{
+      background-image: none !important;
     }
   }
 
@@ -282,6 +296,11 @@ body.node-type-campaign-page{
       h2.node-title{
         display: none;
       }
+    }
+  }
+  .type-card{
+    .header-wrapper{
+      padding: 0;
     }
   }
 

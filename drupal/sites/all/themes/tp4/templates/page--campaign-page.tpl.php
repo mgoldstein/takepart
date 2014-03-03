@@ -18,7 +18,7 @@
       <?php print render($page['header']); ?>
     </header>
   </div>
-  <main id="main" class="<?php print $content_classes; ?>">
+  <main id="main" class="<?php print $content_classes. ' '. implode($variables['classes_array'], ' '); ?>">
     <div id="primary">
       <?php print $messages; ?>
       <?php print render($page['content']); ?>
