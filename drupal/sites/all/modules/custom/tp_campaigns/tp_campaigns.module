@@ -90,3 +90,19 @@ function tp_campaigns_init(){
   variable_set('card_types', $card_types);
 }
 
+
+
+
+//hook form alter
+function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
+  $form['field_campaign_media_photo']['#states'] = array(
+    'visible' => array(   // action to take.
+      ':input[name=field_campaign_media_type\[und\]]' => array('value' => 0),
+    ),
+  );
+  $form['field_campaign_media_video']['#states'] = array(
+    'visible' => array(   // action to take.
+      ':input[name=field_campaign_media_type\[und\]]' => array('value' => 1),
+    ),
+  );
+}

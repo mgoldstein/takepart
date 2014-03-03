@@ -82,6 +82,11 @@ function tp4_preprocess_page(&$variables) {
     drupal_add_js(drupal_get_path('theme', 'tp4') . '/js/taboola.js', 'file');
     drupal_add_js('window._taboola = window._taboola || []; _taboola.push({flush:true});', array('type' => 'inline', 'scope' => 'footer'));
   }
+  $card_types = variable_get('card_types');
+  if(in_array($variables['node']->type, $card_types) == true){
+    $variables['theme_hook_suggestions'][] = 'page__campaign_page';
+    $variables['classes_array'][] = 'card-page';
+  }
 }
 
 /**
@@ -139,6 +144,129 @@ function tp4_preprocess_node(&$variables, $hook) {
   if (function_exists($function)) {
     $function($variables, $hook);
   }
+  $types = variable_get('card_types');
+  if(in_array($variables['type'], $types) == true){
+
+    // begin nested if statement
+    // $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
+    // if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
+    //   $left = 'left side';
+    //   $right = 'right side';
+    //   $instructional = 'instructional';
+    // }
+    // elseif($column_count == 0){ //single column
+
+    // }
+  }
+
+}
+
+/**
+ * Override or insert variables into the campaign card media template
+ */
+function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
+  // begin nested if statement
+  $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
+  if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
+
+    //Prepare Media
+    if($variables['field_campaign_media_type'][0]['value'] == 1){  //Media is a video
+      $media = $variables['field_campaign_media_video'];  //TODO integrate video with a new view mode
+    }
+    else{ //Media is a photo
+      $image = file_create_url($variables['field_campaign_media_photo'][0]['uri']);
+      $media = '<img src="'. $image. '">';
+    }
+
+    //Set Layout
+    if($variables['field_campaign_content_side'][0]['value'] == 0){ // Media goes on the left
+      //Prepare the left side content
+      $left = '';
+      $left .= $media;
+      $left .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
+
+      $right = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+    }
+    else{
+      $right = '';
+      $right .= $media;
+      $right .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
+
+      $left = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+    }
+
+    $instructional = $variables['field_campaign_instructional'][0]['value'];
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
+  }
+  elseif($column_count == 0){ //single column
+    $content = '';
+    $instructional = 'instructional';
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  }
+  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
+  $variables['left'] = $left;
+  $variables['right'] = $right;
+  $variables['instructional'] =  $instructional;
+}
+
+/**
+ * Override or insert variables into the campaign card social template
+ */
+function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
+    // Count the number of values
+    if($variables['field_campaign_news_type'][0]['value'] == 1){ //change this to '0'
+
+      $nids = array();
+      foreach($variables['field_campaign_multi_news_ref'] as $key => $item){
+        $nids[] = $item['target_id'];
+      }
+
+      // Query non referenced content (max 5)
+      $count = count($variables['field_campaign_multi_news_ref']);
+      $campaignNewsArticles = new EntityFieldQuery();
+      $campaignNewsArticles->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article'))
+        ->fieldCondition('field_article_main_image', 'fid', 0, '>')
+        ->propertyCondition('status', 1)
+        ->propertyOrderBy('created', 'DESC')
+        ->range(0, 5 - $count);
+      $articles = $campaignNewsArticles->execute();
+
+      foreach($articles['node'] as $key => $item){
+        $nids[] = $item->nid;
+      }
+      $variables['output'] = node_load_multiple($nids);
+    }
+}
+
+/**
+ * Override or insert variables into the campaign card news
+ */
+function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
+    // Count the number of values
+    if($variables['field_campaign_news_type'][0]['value'] == 1){ //change this to '0'
+
+      $nids = array();
+      foreach($variables['field_campaign_multi_news_ref'] as $key => $item){
+        $nids[] = $item['target_id'];
+      }
+
+      // Query non referenced content (max 5)
+      $count = count($variables['field_campaign_multi_news_ref']);
+      $campaignNewsArticles = new EntityFieldQuery();
+      $campaignNewsArticles->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article'))
+        ->fieldCondition('field_article_main_image', 'fid', 0, '>')
+        ->propertyCondition('status', 1)
+        ->propertyOrderBy('created', 'DESC')
+        ->range(0, 5 - $count);
+      $articles = $campaignNewsArticles->execute();
+
+      foreach($articles['node'] as $key => $item){
+        $nids[] = $item->nid;
+      }
+      $variables['output'] = node_load_multiple($nids);
+    }
 }
 
 /**
@@ -369,10 +497,6 @@ function STARTERKIT_preprocess_comment(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("region" in this case.)
  */
-
-function tp4_preprocess_region(&$variables, $hook) {
-  // dpm($variables, 'variables');
-}
 
 
 /**
@@ -649,6 +773,7 @@ function tp4_field__field_video__video($variables) {
   return $output;
 }
 
+
 /**
  * Implements template_preprocess_entity().
  *
@@ -744,3 +869,16 @@ function tp4_field_campaign_iframe($variables){
   $output .= '<iframe src="'. $variables['items'][0]['#markup']. '" width="'. $width. '" height="'. $height. '"></iframe>';
   return $output;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

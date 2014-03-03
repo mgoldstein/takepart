@@ -6789,26 +6789,18 @@ a.hover .gallery-cover-content .gallery-cover-enter {
  * 1) Move this to it's own stylsheet so it doesn't affect the rest of the site.
  * 2) Change zen-gutter width to what it should be.
  */
-/* line 13, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page {
-  /*
-   * Layouts
-   */
-  /*
-   * Global Elements
-   */
-  /*
-   * Card Types/Pages
-   */
-}
-/* line 23, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .tray .slider {
+/*
+ * Layouts
+ */
+/* line 22, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .card,
+body.node-type-campaign-card-media .card {
   float: left;
   width: 100%;
   margin-left: 0%;
   margin-right: -100%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
@@ -6818,14 +6810,15 @@ body.node-type-campaign-page .tray .slider {
   padding: 0;
 }
 @media all and (min-width: 320px) {
-  /* line 29, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-instructional {
+  /* line 28, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col .instructional {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6836,14 +6829,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 29, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-instructional {
+  /* line 28, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col .instructional {
     float: left;
     width: 66.66667%;
     margin-left: 16.66667%;
     margin-right: -83.33333%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6852,14 +6846,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 39, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-left {
+  /* line 38, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col .left-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6869,14 +6864,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 39, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-left {
+  /* line 38, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col .left-column {
     float: left;
     width: 41.66667%;
     margin-left: 8.33333%;
     margin-right: -50%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6885,14 +6881,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 48, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-right {
+  /* line 47, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col .right-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6902,14 +6899,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 48, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col .panel-col-right {
+  /* line 47, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col .right-column {
     float: left;
     width: 41.66667%;
     margin-left: 50%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6919,14 +6917,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 60, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-instructional {
+  /* line 59, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-left .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col-left .instructional {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6937,14 +6936,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 60, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-instructional {
+  /* line 59, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-left .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col-left .instructional {
     float: left;
     width: 66.66667%;
     margin-left: 16.66667%;
     margin-right: -83.33333%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6953,14 +6953,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 70, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-col-left {
+  /* line 69, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-left .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col-left .left-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6970,14 +6971,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 70, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-col-left {
+  /* line 69, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-left .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col-left .left-column {
     float: left;
     width: 50%;
     margin-left: 8.33333%;
     margin-right: -58.33333%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -6986,14 +6988,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 79, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-col-right {
+  /* line 78, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-left .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col-left .right-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7003,14 +7006,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 79, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-left .panel-col-right {
+  /* line 78, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-left .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col-left .right-column {
     float: left;
     width: 33.33333%;
     margin-left: 58.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7020,14 +7024,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 91, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-instructional {
+  /* line 90, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-right .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col-right .instructional {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7038,14 +7043,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 91, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-instructional {
+  /* line 90, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-right .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col-right .instructional {
     float: left;
     width: 66.66667%;
     margin-left: 16.66667%;
     margin-right: -83.33333%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7054,14 +7060,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 101, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-col-left {
+  /* line 100, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-right .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col-right .left-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7071,14 +7078,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 101, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-col-left {
+  /* line 100, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-right .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col-right .left-column {
     float: left;
     width: 33.33333%;
     margin-left: 8.33333%;
     margin-right: -41.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7087,14 +7095,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 110, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-col-right {
+  /* line 109, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-right .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col-right .right-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7104,14 +7113,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 110, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-2col-right .panel-col-right {
+  /* line 109, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-2col-right .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col-right .right-column {
     float: left;
     width: 50%;
     margin-left: 41.66667%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7121,14 +7131,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 122, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-1col .panel-instructional {
+  /* line 121, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-1col .instructional,
+  body.node-type-campaign-card-media .card.campaign-1col .instructional {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7139,14 +7150,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 122, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-1col .panel-instructional {
+  /* line 121, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-1col .instructional,
+  body.node-type-campaign-card-media .card.campaign-1col .instructional {
     float: left;
     width: 66.66667%;
     margin-left: 16.66667%;
     margin-right: -83.33333%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7155,14 +7167,15 @@ body.node-type-campaign-page .tray .slider {
   }
 }
 @media all and (min-width: 320px) {
-  /* line 132, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .tray .slider .panel-campaign-1col .panel-col {
+  /* line 131, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card.campaign-1col .content,
+  body.node-type-campaign-card-media .card.campaign-1col .content {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
     margin-right: -91.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7171,80 +7184,198 @@ body.node-type-campaign-page .tray .slider {
     clear: left;
   }
 }
-/* line 141, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .tray .card {
+@media all and (min-width: 320px) {
+  /* line 55, ../sass/helpers/_mixins.scss */
+  body.node-type-campaign-page .card.campaign.news-page > .news-col:nth-child(5n+1),
+  body.node-type-campaign-card-media .card.campaign.news-page > .news-col:nth-child(5n+1) {
+    float: left;
+    width: 20%;
+    margin-left: 0%;
+    margin-right: -20%;
+    padding-left: 15px;
+    padding-right: 15px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: both;
+    padding: 0;
+  }
+  /* line 55, ../sass/helpers/_mixins.scss */
+  body.node-type-campaign-page .card.campaign.news-page > .news-col:nth-child(5n+2),
+  body.node-type-campaign-card-media .card.campaign.news-page > .news-col:nth-child(5n+2) {
+    float: left;
+    width: 20%;
+    margin-left: 20%;
+    margin-right: -40%;
+    padding-left: 15px;
+    padding-right: 15px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* line 55, ../sass/helpers/_mixins.scss */
+  body.node-type-campaign-page .card.campaign.news-page > .news-col:nth-child(5n+3),
+  body.node-type-campaign-card-media .card.campaign.news-page > .news-col:nth-child(5n+3) {
+    float: left;
+    width: 20%;
+    margin-left: 40%;
+    margin-right: -60%;
+    padding-left: 15px;
+    padding-right: 15px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* line 55, ../sass/helpers/_mixins.scss */
+  body.node-type-campaign-page .card.campaign.news-page > .news-col:nth-child(5n+4),
+  body.node-type-campaign-card-media .card.campaign.news-page > .news-col:nth-child(5n+4) {
+    float: left;
+    width: 20%;
+    margin-left: 60%;
+    margin-right: -80%;
+    padding-left: 15px;
+    padding-right: 15px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  /* line 55, ../sass/helpers/_mixins.scss */
+  body.node-type-campaign-page .card.campaign.news-page > .news-col:nth-child(5n+0),
+  body.node-type-campaign-card-media .card.campaign.news-page > .news-col:nth-child(5n+0) {
+    float: left;
+    width: 20%;
+    margin-left: 80%;
+    margin-right: -100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    clear: none;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/* line 76, ../sass/helpers/_mixins.scss */
+body.node-type-campaign-page .card.campaign.news-page:after,
+body.node-type-campaign-card-media .card.campaign.news-page:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 146, ../sass/page/_campaigns.scss */
+#main.card-page {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* line 150, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page, #main.card-page {
+  /*
+   * Global Elements
+   */
+  /*
+   * Card Types/Pages
+   */
+}
+/* line 151, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .card, #main.card-page .card {
   height: 100%;
   overflow: hidden;
   padding-top: 50px;
   padding-bottom: 60px;
 }
-/* line 154, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .panelizer-view-mode > h1 {
+/* line 163, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .panelizer-view-mode > h1, #main.card-page .panelizer-view-mode > h1 {
   margin-bottom: 20px;
   text-align: center;
 }
-/* line 159, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page h1.title {
+/* line 168, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page h1.card-title, #main.card-page h1.card-title {
   text-align: center;
 }
-/* line 162, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page #main {
+/* line 171, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page #main, #main.card-page #main {
   max-width: 100%;
 }
-/* line 164, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page #main #primary {
+/* line 173, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page #main #primary, #main.card-page #main #primary {
   padding: 0;
 }
-/* line 168, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .tray-header {
+/* line 177, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .tray-header, #main.card-page .tray-header {
   position: absolute;
   top: 0;
   padding-top: 50px;
   width: 100%;
 }
-/* line 175, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .card.has-tray-title h1.title {
+/* line 184, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .card-wrapper.has-tray-title h1.card-title, #main.card-page .card-wrapper.has-tray-title h1.card-title {
   display: none;
 }
-/* line 180, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page header #block-tp4-support-tp4-slim-nav.block {
+/* line 189, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .slider.has-tray-background .card, #main.card-page .slider.has-tray-background .card {
+  background-image: none !important;
+}
+/* line 194, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page header #block-tp4-support-tp4-slim-nav.block, #main.card-page header #block-tp4-support-tp4-slim-nav.block {
   margin-bottom: 0;
 }
-/* line 183, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page.panels-ipe {
+/* line 197, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page.panels-ipe, #main.card-page.panels-ipe {
   margin-bottom: 0 !important;
 }
-/* line 186, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page #primary {
+/* line 200, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page #primary, #main.card-page #primary {
   padding: 0;
 }
-/* line 190, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .field-name-field-campaign-media-video figure > div > object {
+/* line 204, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .field-name-field-campaign-media-video figure > div > object, #main.card-page .field-name-field-campaign-media-video figure > div > object {
   left: 0;
 }
-/* line 199, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .swipe {
+/* line 213, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe, #main.card-page .swipe {
   overflow: hidden;
   visibility: hidden;
   position: relative;
 }
-/* line 204, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .swipe-wrap {
+/* line 218, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe-wrap, #main.card-page .swipe-wrap {
   overflow: hidden;
   position: relative;
 }
-/* line 208, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .swipe-wrap > div {
+/* line 222, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe-wrap > div, #main.card-page .swipe-wrap > div {
   float: left;
   width: 100%;
   position: relative;
 }
-/* line 213, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .swipe {
+/* line 227, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe, #main.card-page .swipe {
   position: relative;
 }
-/* line 215, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .swipe .left-arrow {
+/* line 229, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe .left-arrow, #main.card-page .swipe .left-arrow {
   position: absolute;
   left: 0;
   width: 60px;
@@ -7259,8 +7390,8 @@ body.node-type-campaign-page .swipe .left-arrow {
   font-size: 30px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 230, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .swipe .right-arrow {
+/* line 244, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .swipe .right-arrow, #main.card-page .swipe .right-arrow {
   position: absolute;
   right: 0;
   width: 60px;
@@ -7275,37 +7406,41 @@ body.node-type-campaign-page .swipe .right-arrow {
   font-size: 30px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 252, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .card, body.node-type-campaign-page .slider {
+/* line 266, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .card, body.node-type-campaign-page .slider, #main.card-page .card, #main.card-page .slider {
   background-size: 700px;
   background-position: top center;
   background-repeat: no-repeat;
 }
 @media all and (min-width: 768px) {
-  /* line 252, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card, body.node-type-campaign-page .slider {
+  /* line 266, ../sass/page/_campaigns.scss */
+  body.node-type-campaign-page .card, body.node-type-campaign-page .slider, #main.card-page .card, #main.card-page .slider {
     background-size: 100%;
   }
 }
-/* line 268, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .campaign_card_media img {
+/* line 282, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .campaign_card_media img, #main.card-page .campaign_card_media img {
   display: block;
   margin: 0 auto;
   overflow: hidden;
 }
-/* line 273, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .campaign_card_media h4.title {
+/* line 287, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .campaign_card_media h4.title, #main.card-page .campaign_card_media h4.title {
   padding-top: 20px;
   padding-bottom: 15px;
   margin-bottom: 0;
 }
-/* line 278, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .campaign_card_media .field-name-field-campaign-media-caption {
+/* line 292, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .campaign_card_media .field-name-field-campaign-media-caption, #main.card-page .campaign_card_media .field-name-field-campaign-media-caption {
   padding-top: 5px;
 }
-/* line 282, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
+/* line 296, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .campaign_card_media .node-video h2.node-title, #main.card-page .campaign_card_media .node-video h2.node-title {
   display: none;
+}
+/* line 302, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .type-card .header-wrapper, #main.card-page .type-card .header-wrapper {
+  padding: 0;
 }
 
 /* Modules */
@@ -7511,8 +7646,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7529,8 +7664,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 33.33333%;
     margin-left: 0%;
     margin-right: -33.33333%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7545,8 +7680,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 33.33333%;
     margin-left: 33.33333%;
     margin-right: -66.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7562,8 +7697,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7581,8 +7716,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 25%;
     margin-left: 0%;
     margin-right: -25%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7597,8 +7732,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 25%;
     margin-left: 25%;
     margin-right: -50%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7614,8 +7749,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 25%;
     margin-left: 50%;
     margin-right: -75%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7631,8 +7766,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 25%;
     margin-left: 75%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7776,8 +7911,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7794,8 +7929,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 33.33333%;
     margin-left: 0%;
     margin-right: -33.33333%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7810,8 +7945,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 33.33333%;
     margin-left: 33.33333%;
     margin-right: -66.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7827,8 +7962,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7856,8 +7991,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 50%;
     margin-left: 0%;
     margin-right: -50%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7872,8 +8007,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 50%;
     margin-left: 50%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7891,8 +8026,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7915,8 +8050,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7932,8 +8067,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 66.66667%;
     margin-left: 0%;
     margin-right: -66.66667%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7949,8 +8084,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7966,8 +8101,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -7983,8 +8118,8 @@ body.node-type-campaign-page .campaign_card_media .node-video h2.node-title {
   width: 100%;
   margin-left: 0%;
   margin-right: -100%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
