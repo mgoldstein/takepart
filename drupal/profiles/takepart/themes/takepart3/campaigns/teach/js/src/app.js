@@ -11,6 +11,14 @@
     // Our own little modernizr
     //
 
+    /* 
+     * The window level TP Social click event needs to be attached to the
+     * TP Analytics social click handler.
+     */
+    $(window).bind('tp-social-click', function(e, args) {
+        takepart.analytics.track('tp-social-click', args);
+    });
+
     // detect touch support
     var touchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
 
