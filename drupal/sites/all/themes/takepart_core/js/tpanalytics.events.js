@@ -304,9 +304,9 @@
         // Newsletter Signups ----------------
         // -----------------------------------
         'newsletter_signup': function(options) {
-            var s=s_gi(Drupal.settings.omniture.s_account);
-            s.linkTrackVars='eVar23,eVar30,events';
-            s.linkTrackEvents='event39';
+            var s = s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars = 'eVar23,eVar30,events';
+            s.linkTrackEvents = 'event39';
             s.events = 'event39';
             s.eVar23 = options.name;
             if ('source' in options && options.source && options.source !== '') {
@@ -315,6 +315,19 @@
             }
             s.eVar30 = s.pageName;
             s.tl(true, 'o', 'Newsletter Signup');
+        },
+        // -----------------------------------
+        // Teach Share your Story Signups ----------------
+        // -----------------------------------
+        'teach_story_entry': function(options) {
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars='eVar30,eVar42,prop42,events';
+            s.linkTrackEvents='event87';
+            s.events = 'event87';
+            s.eVar30 = s.pageName;
+            s.prop42 = 'Teach';
+            s.eVar42 = 'Teach';
+            s.tl(true, 'o', 'Teach Share Your Story Submission');
         },
         // -----------------------------------
         // Place at the Table ----------------
