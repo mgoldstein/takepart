@@ -2036,6 +2036,12 @@ h1.sys-headline span {
   }
 }
 
+.page-wordlet-teach-share-your-story .ui-autocomplete {
+  max-height: 12em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
 .tpmodal_modal.sys_modal_modal {
   background: transparent none !important;
 }

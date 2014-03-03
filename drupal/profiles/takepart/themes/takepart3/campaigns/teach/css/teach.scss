@@ -1837,6 +1837,16 @@ h1.sys-headline {
   } 
 }
 
+
+// lock down the height of the autocomplete
+.page-wordlet-teach-share-your-story {
+  .ui-autocomplete {
+    max-height: 12em;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
+
 // story preview modal
 .tpmodal_modal.sys_modal_modal {
   background: transparent none !important;
