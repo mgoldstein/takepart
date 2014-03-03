@@ -27,7 +27,7 @@
 		<div class="main">
 			<header class="header">
 				<span class="slug"><?=w('header_slug')?></span>
-				<h1 class="page-header"><?=w('header_title')?></h1>
+				<h1 class="page-header"><a href="/teach"><?=w('header_title')?></a></h1>
 				<span class="credit"><?=w('header_credit')?></span>
 				<span class="burst"><span><?=w('header_burst')?></span><!--<img class="logos" src="/profiles/takepart/themes/takepart3/campaigns/teach/img/hero-logos.png" alt="CBS | Participant media" />--></span>
 				<span class="date"><?=w('header_date')?></span>

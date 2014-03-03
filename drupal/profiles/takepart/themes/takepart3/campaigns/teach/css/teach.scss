@@ -67,6 +67,13 @@ $body-copy-black: #313131;
 
 }
 
+.page-header a {
+  color: white;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .right { float: right; }
 .left { float: left; }
 .text-right { text-align: right; }
@@ -286,16 +293,16 @@ a {
     }
   }
 
-  &:nth-of-type(2) {
-    .image-wrapper {
-      @include transform(rotate(-2deg) scale(1.1));
-    }
-  }
-  &:last-of-type {
-    .image-wrapper {
-      @include transform(rotate(1deg) scale(1.1));
-    }
-  }
+  // &:nth-of-type(2) {
+  //   .image-wrapper {
+  //     @include transform(rotate(-2deg) scale(1.1));
+  //   }
+  // }
+  // &:last-of-type {
+  //   .image-wrapper {
+  //     @include transform(rotate(1deg) scale(1.1));
+  //   }
+  // }
   
   .headline {
     font: normal 2em/1.5 $secondary-font;
@@ -376,12 +383,12 @@ a {
       img {
         @include box-sizing(border-box);
         display: block;
+        position: relative;
         background: white none;
         padding: 4px;
         @include box-shadow(0 0 4px transparentize(black, 0.4));
         width: 100% !important;
         height: auto !important;
-        @include transform(rotate(-0.5deg));
       }
     }
     .views-field-php {
@@ -572,7 +579,7 @@ a {
     color: #666565;
     font-size: 16px;
     line-height: 1.25;
-    margin: 10px 20px 0;
+    margin: 1em 20px;
     max-width: 400px;
   }
   .main-video-wrapper {
