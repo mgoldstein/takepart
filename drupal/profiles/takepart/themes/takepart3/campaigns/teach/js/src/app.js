@@ -11,14 +11,6 @@
     // Our own little modernizr
     //
 
-    /* 
-     * The window level TP Social click event needs to be attached to the
-     * TP Analytics social click handler.
-     */
-    $(window).bind('tp-social-click', function(e, args) {
-        takepart.analytics.track('tp-social-click', args);
-    });
-
     // detect touch support
     var touchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
 
@@ -210,6 +202,14 @@
     // not using Drupal.behaviors because this JS has nothing to do with drupal
     $(document).ready(function() {
 
+        //
+        // The window level TP Social click event needs to be attached to the
+        // TP Analytics social click handler.
+        //
+        $(window).on('tp-social-click', function(e, args) {
+            takepart.analytics.track('tp-social-click', args);
+        });
+
         // hide some things when we're on facebook
         // (i.e., when the site is loaded in an iframe)
         if (loadedInIframe) {
@@ -247,9 +247,10 @@
                     .addClass('character-count-' + $this.attr('id').split('_').join('-'))
                     .html(' Characters Left')
                     .insertAfter($this)
-                    ,
-                    $characterCount = $('<span />').html(maxlength).prependTo($characterCountWrapper)
-                    ;
+                    .toggleClass('hidden', maxlength > 400)
+                ,
+                $characterCount = $('<span />').html(maxlength).prependTo($characterCountWrapper)
+            ;
 
             // set initial value
             $characterCount.html(maxlength);
@@ -259,6 +260,7 @@
             $this.on('keyup', function() {
                 var count = maxlength - $this.val().length;
                 $characterCount.html(count);
+                $characterCountWrapper.toggleClass('hidden', count > 400);
                 $characterCountWrapper.toggleClass('count-alert', count < maxlength / 4);
                 $characterCountWrapper.toggleClass('count-warning', count < maxlength / 10);
             });

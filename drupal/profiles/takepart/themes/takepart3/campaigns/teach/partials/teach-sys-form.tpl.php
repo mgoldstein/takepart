@@ -58,7 +58,7 @@
         </select>
       </label>
     </div>
-    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="6" placeholder="Tell us your story" maxlength="400" required></textarea></div>
+    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="6" placeholder="Tell us your story" maxlength="1000" required></textarea></div>
   </fieldset>
   <fieldset>
     <legend>Pictures Make The Story!</legend>

@@ -75,6 +75,13 @@
   font: normal 100px "GlyphaLTPro-Black", serif;
 }
 
+.page-header a {
+  color: white;
+}
+.page-header a:hover {
+  text-decoration: none;
+}
+
 .right {
   float: right;
 }
@@ -324,20 +331,6 @@ a {
   width: 100% !important;
   height: auto !important;
 }
-.home-section:nth-of-type(2) .image-wrapper {
-  -webkit-transform: rotate(-2deg) scale(1.1);
-  -moz-transform: rotate(-2deg) scale(1.1);
-  -ms-transform: rotate(-2deg) scale(1.1);
-  -o-transform: rotate(-2deg) scale(1.1);
-  transform: rotate(-2deg) scale(1.1);
-}
-.home-section:last-of-type .image-wrapper {
-  -webkit-transform: rotate(1deg) scale(1.1);
-  -moz-transform: rotate(1deg) scale(1.1);
-  -ms-transform: rotate(1deg) scale(1.1);
-  -o-transform: rotate(1deg) scale(1.1);
-  transform: rotate(1deg) scale(1.1);
-}
 .home-section .headline {
   font: normal 2em/1.5 "GlyphaLTPro-Black", serif;
   color: #555;
@@ -426,6 +419,7 @@ a {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   display: block;
+  position: relative;
   background: white none;
   padding: 4px;
   -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
@@ -433,11 +427,6 @@ a {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
   width: 100% !important;
   height: auto !important;
-  -webkit-transform: rotate(-0.5deg);
-  -moz-transform: rotate(-0.5deg);
-  -ms-transform: rotate(-0.5deg);
-  -o-transform: rotate(-0.5deg);
-  transform: rotate(-0.5deg);
 }
 .teach-home-featured-articles .secondary-feature .views-field-php {
   font: normal 1em/1.5 Helvetica, Arial, sans-serif;
@@ -659,7 +648,7 @@ a {
   color: #666565;
   font-size: 16px;
   line-height: 1.25;
-  margin: 10px 20px 0;
+  margin: 1em 20px;
   max-width: 400px;
 }
 .teach-video-page .main-video-wrapper,
@@ -1925,6 +1914,9 @@ h1.sys-headline span {
   font-size: 11px;
   line-height: 1;
 }
+.sys-form .character-count.hidden {
+  visibility: hidden;
+}
 .sys-form .character-count.character-count-story-body {
   bottom: auto;
   top: 100%;
@@ -2034,6 +2026,12 @@ h1.sys-headline span {
   .sys-form .right {
     margin-left: 3.9%;
   }
+}
+
+.page-wordlet-teach-share-your-story .ui-autocomplete {
+  max-height: 12em;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .tpmodal_modal.sys_modal_modal {
