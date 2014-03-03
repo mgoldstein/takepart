@@ -1925,6 +1925,9 @@ h1.sys-headline span {
   font-size: 11px;
   line-height: 1;
 }
+.sys-form .character-count.hidden {
+  visibility: hidden;
+}
 .sys-form .character-count.character-count-story-body {
   bottom: auto;
   top: 100%;

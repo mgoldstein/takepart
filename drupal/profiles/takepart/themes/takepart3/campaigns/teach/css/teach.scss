@@ -1738,6 +1738,9 @@ h1.sys-headline {
     margin: 0 0 4px;
     font-size: 11px;
     line-height: 1;
+    &.hidden {
+      visibility: hidden;
+    }
     &.character-count-story-body {
       bottom: auto;
       top: 100%;

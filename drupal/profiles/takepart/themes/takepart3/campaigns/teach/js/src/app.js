@@ -247,9 +247,10 @@
                     .addClass('character-count-' + $this.attr('id').split('_').join('-'))
                     .html(' Characters Left')
                     .insertAfter($this)
-                    ,
-                    $characterCount = $('<span />').html(maxlength).prependTo($characterCountWrapper)
-                    ;
+                    .toggleClass('hidden', maxlength > 400)
+                ,
+                $characterCount = $('<span />').html(maxlength).prependTo($characterCountWrapper)
+            ;
 
             // set initial value
             $characterCount.html(maxlength);
@@ -259,6 +260,7 @@
             $this.on('keyup', function() {
                 var count = maxlength - $this.val().length;
                 $characterCount.html(count);
+                $characterCountWrapper.toggleClass('hidden', count > 400);
                 $characterCountWrapper.toggleClass('count-alert', count < maxlength / 4);
                 $characterCountWrapper.toggleClass('count-warning', count < maxlength / 10);
             });
