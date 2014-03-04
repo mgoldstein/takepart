@@ -54,23 +54,27 @@ function tp4_preprocess_html(&$variables, $hook) {
  *  An array of meta tags included in the HTML head of the document
  */
 function tp4_html_head_alter(&$head_elements) {
-    $head_elements['metatag_fb:app_id']['#weight'] = -900;
-    $head_elements['metatag_fb:admins']['#weight'] = -890;
-    $head_elements['metatag_og:site_name']['#weight'] = -880;
-    $head_elements['metatag_og:title']['#weight'] = -870;
-    $head_elements['metatag_og:description']['#weight'] = -860;
-    $head_elements['metatag_og:url']['#weight'] = -850;
-    $head_elements['metatag_og:type']['#weight'] = -840;
-    $head_elements['metatag_og:image']['#weight'] = -830;
     /*
      *  Twitter cards
      */
-    $head_elements['metatag_twitter:card']['#weight'] = -800;
-    $head_elements['metatag_twitter:site']['#weight'] = -790;
-    $head_elements['metatag_twitter:title']['#weight'] = -780;
-    $head_elements['metatag_twitter:description']['#weight'] = -770;
-    $head_elements['metatag_twitter:url']['#weight'] = -760;
-    $head_elements['metatag_twitter:image']['#weight'] = -750;
+    $head_elements['metatag_twitter:card']['#weight'] = -900;
+    $head_elements['metatag_twitter:site']['#weight'] = -890;
+    $head_elements['metatag_twitter:title']['#weight'] = -880;
+    $head_elements['metatag_twitter:description']['#weight'] = -870;
+    $head_elements['metatag_twitter:url']['#weight'] = -860;
+    $head_elements['metatag_twitter:image']['#weight'] = -850;
+    /*
+     * Open graph
+     */
+    $head_elements['metatag_fb:app_id']['#weight'] = -800;
+    $head_elements['metatag_fb:admins']['#weight'] = -790;
+    $head_elements['metatag_og:site_name']['#weight'] = -780;
+    $head_elements['metatag_og:title']['#weight'] = -770;
+    $head_elements['metatag_og:description']['#weight'] = -760;
+    $head_elements['metatag_og:url']['#weight'] = -750;
+    $head_elements['metatag_og:type']['#weight'] = -740;
+    $head_elements['metatag_og:image']['#weight'] = -730;
+    
 }
 
 /**
