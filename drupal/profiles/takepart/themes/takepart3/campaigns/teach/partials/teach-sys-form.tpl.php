@@ -85,7 +85,7 @@
   </fieldset>
   <fieldset>
     <div class="field-wrapper clearfix"><input type="checkbox" class="pull-left" id="email_subscribe" name="email_subscribe"  checked="checked"><label for="email_subscribe" class="visible">I would like to receive TakePart's newsletter on topics related to teaching and education and email updates on the TEACH campaign and contest.</label></div>
-    <div class="field-wrapper field-wrapper-terms-agree"><input type="checkbox" id="terms_agree" name="terms_agree" required><label for="terms_agree" class="visible">I have read and agree to the <a class="teach-text-lightbox" href="/teach-content-submission-agreement">Content Submission Agreement</a></label></div>
+    <div class="field-wrapper field-wrapper-terms-agree"><input type="checkbox" id="terms_agree" name="terms_agree" required><label for="terms_agree" class="visible">I have read and agree to the <a class="teach-text-lightbox" href="/teach-official-rules">Official Rules</a>.</label></div>
   </fieldset>
   <p class="clearfix">
     <input type="button" id="sys-preview" class="sys-button left" value="Preview Story" />
