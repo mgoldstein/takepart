@@ -159,6 +159,9 @@
             success: function(data, textStatus, jqXHR) {
                 $('#sys-form-content').slideUp();
                 $('#sys-thanks-content').removeClass('initially-hidden');
+		$('html, body').animate({
+		    scrollTop: $('.menu-wrapper').offset().top - 25
+		});
                 /* Analytics */
                 takepart.analytics.track('teach_story_entry');
             },
@@ -267,8 +270,17 @@
         });
 
         // style select boxes on non-touch-enabled devices
+	var $selects = $form.find('select');
+	var resizeTimeout = null;
         if (!touchEnabled && !loadedInIframe) {
-            $form.find('select').customSelect();
+	    $selects.customSelect();
+	    $(window).on('resize', function() {
+		clearTimeout (resizeTimeout);
+
+		resizeTimeout = setTimeout(function() {
+		    $selects.trigger('update');
+		}, 750);
+	    });
         } else {
             // If we don't use styled customSelect widgets
             // the alignment is off
@@ -302,7 +314,9 @@
                 $schoolId.val('0');
                 $schoolCity.val('&nbsp;');
             }
-        });
+	}).on('blur', function() {
+	    $schoolName.removeClass('<in-progress></in-progress>');
+	})
 
         var resetSchoolNameMessage = function() {
             $schoolNameMessage.removeClass('count-warning').html('');
