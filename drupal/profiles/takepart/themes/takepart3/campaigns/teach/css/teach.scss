@@ -1697,6 +1697,7 @@ h1.sys-headline {
     @include sys-input-styling;
     // margin: 4px;
     width: 100%;
+    height: 48px; // hardcoded for IE
     font-size: 14px;
     line-height: 1.714285714; // 24px / 14px
     padding: 11px 13px;    
