@@ -144,33 +144,20 @@ function tp4_preprocess_node(&$variables, $hook) {
   if (function_exists($function)) {
     $function($variables, $hook);
   }
-  $types = variable_get('card_types');
-  if(in_array($variables['type'], $types) == true){
-
-    // begin nested if statement
-    // $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
-    // if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
-    //   $left = 'left side';
-    //   $right = 'right side';
-    //   $instructional = 'instructional';
-    // }
-    // elseif($column_count == 0){ //single column
-
-    // }
-  }
-
 }
 
 /**
  * Override or insert variables into the campaign card media template
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
-  // begin nested if statement
+  
   $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
   $instructional = $variables['field_campaign_instructional'][0]['value'];
   //Prepare Media
   if($variables['field_campaign_media_type'][0]['value'] == 1){  //Media is a video
     $media = $variables['field_campaign_media_video'];  //TODO integrate video with a new view mode
+    $media_node = node_load($variables['field_campaign_media_video'][0]['target_id']);
+    $media = drupal_render(node_view($media_node, 'embed'));
   }
   else{ //Media is a photo
     $image = file_create_url($variables['field_campaign_media_photo'][0]['uri']);
