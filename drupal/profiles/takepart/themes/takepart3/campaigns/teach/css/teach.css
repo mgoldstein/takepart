@@ -250,20 +250,22 @@
   height: 43px;
 }
 .header .menu-wrapper .menu .item:first-of-type a {
+  display: block;
   background: transparent url('../img/menu-home.png?1393893502') no-repeat scroll top left;
   background-size: 21px;
-  height: 0;
-  width: 0;
+  height: 21px;
+  width: 21px;
+  text-indent: 200%;
   overflow: hidden;
-  padding: 21px 21px 0 0;
   margin: 7px;
+  padding: 0;
 }
 .header .menu-wrapper .menu .item:first-of-type.active {
   margin-top: 0;
 }
 .header .menu-wrapper .menu .item:first-of-type.active a {
   margin: 7px;
-  padding: 21px 21px 0 0;
+  padding: 0;
   background-position: 0 -21px;
 }
 .header .menu-wrapper .menu .item.active {
@@ -808,11 +810,10 @@ a {
 .scribble-share a {
   display: inline-block;
   vertical-align: bottom;
-  height: 0;
-  width: 0;
-  text-indent: 12px;
+  height: 24px;
+  width: 24px;
+  text-indent: 100%;
   overflow: hidden;
-  padding: 12px;
   margin-left: 6px;
   background: transparent url('../img/social-scribbles.png?1393893502') top left;
   background-size: 24px;
@@ -827,8 +828,8 @@ a {
   background-position: 0 -48px;
 }
 .scribble-share.large a {
-  text-indent: 24px;
-  padding: 24px;
+  height: 48px;
+  width: 48px;
   margin-left: 12px;
   background-size: 48px;
 }

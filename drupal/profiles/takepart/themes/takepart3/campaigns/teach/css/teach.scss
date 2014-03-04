@@ -212,19 +212,21 @@ $body-copy-black: #313131;
           margin: 0;
           height: 43px;
           a {
+	    display: block;
             background: transparent image-url("menu-home.png") no-repeat scroll top left;
             background-size: 21px;
-            height: 0;
-            width: 0;
+	    height: 21px;
+	    width: 21px;
+	    text-indent: 200%;
             overflow: hidden;
-            padding: 21px 21px 0 0;
             margin: 7px;
+	    padding: 0;
           }
           &.active {
             margin-top: 0;
             a {
               margin: 7px;
-              padding: 21px 21px 0 0;
+	      padding: 0;
               background-position: 0 -21px;
             }
           }
@@ -683,11 +685,10 @@ a {
   a {
     display: inline-block;
     vertical-align: bottom;
-    height: 0;
-    width: 0;
-    text-indent: 12px;
+    height: 24px;
+    width: 24px;
+    text-indent: 100%;
     overflow: hidden;
-    padding: 12px;
     margin-left: 6px;
     background: transparent image-url("social-scribbles.png") top left;
     background-size: 24px;
@@ -707,8 +708,8 @@ a {
 
   &.large {
     a {
-      text-indent: 24px;
-      padding: 24px;
+      height: 48px;
+      width: 48px;
       margin-left: 12px;
       background-size: 48px;
       &.facebook,
