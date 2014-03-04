@@ -118,8 +118,8 @@
                 "email": formData.email,
                 "last_name": formData.first_name,
                 "first_name": formData.last_name,
-                "image_link": formData.user_image_link,
-                "image_uid": formData.user_image_id,
+		"image_link": formData.user_image_link || '',
+		"image_uid": formData.user_image_id || '',
                 // boilerplate
                 "zip": "90210",
                 "state": "CA",
@@ -135,8 +135,8 @@
             "teacher": {
                 "first_name": formData.teacher_first_name,
                 "last_name": formData.teacher_last_name,
-                "image_link": formData.teacher_image_link,
-                "image_uid": formData.teacher_image_id
+		"image_link": formData.teacher_image_link || '',
+		"image_uid": formData.teacher_image_id || ''
             },
             "school": {
                 "name": formData.school_name,
@@ -184,21 +184,6 @@
         formData.email_subscribe = $form.find('#email_subscribe').is(':checked');
         formData.terms_agree = $form.find('#terms_agree').is(':checked');
 
-        // replace Cloudinary values with defaults
-        if (!formData.user_image_id) {
-            formData.user_image_id = 'sys-defaults/avatar';
-            formData.user_image_link = $.cloudinary.url(formData.user_image_id + '.jpg');
-            $form.find('#user_image_id').val(formData.user_image_id);
-            $form.find('#user_image_link').val(formData.user_image_link);
-        }
-
-        if (!formData.teacher_image_id) {
-            formData.teacher_image_id = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
-            formData.teacher_image_link = $.cloudinary.url(formData.teacher_image_id + '.jpg');
-            $form.find('#teacher_image_id').val(formData.teacher_image_id);
-            $form.find('#teacher_image_link').val(formData.teacher_image_link);
-        }
-
         return formData;
     };
 
@@ -236,7 +221,6 @@
 
         // we've passed the age test. have a beer.
         var $form = $('#sys-form');
-
 
         // populate character count divs from maxlength properties
         $form.find('input[maxlength], textarea[maxlength]').each(function() {
@@ -447,7 +431,21 @@
                 $form.find('.error').first().focus();
                 return;
             }
-            $modal = $(tmpl('story_template', parseFormData($form)));
+
+	    var formData = parseFormData($form);
+
+	    // replace Cloudinary values with defaults
+	    if (!formData.user_image_id) {
+		formData.user_image_id = 'sys-defaults/avatar';
+		formData.user_image_link = $.cloudinary.url(formData.user_image_id + '.jpg');
+	    }
+
+	    if (!formData.teacher_image_id) {
+		formData.teacher_image_id = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
+		formData.teacher_image_link = $.cloudinary.url(formData.teacher_image_id + '.jpg');
+	    }
+
+	    $modal = $(tmpl('story_template', formData));
             $modal.find('img').cloudinary();
             $.tpmodal.show({
                 id: "sys_modal_",
