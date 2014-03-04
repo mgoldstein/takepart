@@ -247,8 +247,13 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     // Count the number of values
-    if($variables['field_campaign_news_type'][0]['value'] == 1){ //change this to '0'
 
+    $instructional = $variables['field_campaign_instructional'][0]['value'];
+    $more = ''; //Add this to news and media
+    if($variables['field_campaign_news_type'][0]['value'] == 0){  //single value
+      $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
+    }
+    else{ //multivalue
       $nids = array();
       foreach($variables['field_campaign_multi_news_ref'] as $key => $item){
         $nids[] = $item['target_id'];
@@ -268,8 +273,27 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       foreach($articles['node'] as $key => $item){
         $nids[] = $item->nid;
       }
-      $variables['output'] = node_load_multiple($nids);
+      $nodes = node_load_multiple($nids);
+      $center = '';
+      foreach($nodes as $key => $node){
+        $file = file_load($node->field_article_main_image['und'][0]['fid']);
+        $image = file_create_url($file->uri);
+        $media = '<img src="'. $image. '">';
+        $headline = $node->field_promo_headline['und'][0]['value'];
+        $center .= '<div class="news-column">';
+        $center .= $media;
+        $center .= '<h5>'. $headline. '</h5>';
+        $center .= '</div>';
+      }
+      $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
+
+    $variables['instructional'] = $instructional;
+    $variables['left'] = $left;
+    $variables['right'] = $right;
+    $variables['center'] = $center;
+    $variables['more'] = $more;
+
 }
 
 /**
