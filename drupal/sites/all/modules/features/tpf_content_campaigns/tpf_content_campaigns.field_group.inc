@@ -49,7 +49,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bg_color',
@@ -77,12 +77,13 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Media',
-    'weight' => '2',
+    'weight' => '4',
     'children' => array(
       0 => 'field_campaign_media_photo',
       1 => 'field_campaign_media_video',
       2 => 'field_campaign_media_title',
       3 => 'field_campaign_media_caption',
+      4 => 'field_campaign_media_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

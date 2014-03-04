@@ -1657,33 +1657,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_card_text'
-  $field_bases['field_card_text'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_card_text',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'field_credits'
   $field_bases['field_credits'] = array(
     'active' => 1,
