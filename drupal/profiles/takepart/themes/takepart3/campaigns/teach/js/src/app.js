@@ -312,7 +312,7 @@
         $schoolName.on('change', function() {
             if (!$schoolName.data('autocompleteOpen')) {
                 $schoolId.val('0');
-                $schoolCity.val('&nbsp;');
+		$schoolCity.val('');
             }
 	}).on('blur', function() {
 	    $schoolName.removeClass('<in-progress></in-progress>');
