@@ -64,8 +64,8 @@
     <legend>Pictures Make The Story!</legend>
     <div id="sys-image-user" class="sys-image sys-image-user left">
       <label class="sys-image-content" for="user_image">
-        <p><strong>Your Picture</strong><br /><small>(recommended)</small></p>
-	<p class="sys-image-description"><small>Upload a photo you own or have the rights to upload here (a yearbook photo, family photo, etc.).</small></p>
+	<p><strong>Your Picture</strong><br /><small>(Optional)</small></p>
+	<p class="sys-image-description"><small>Upload a photo you own or have the rights to here (a yearbook photo, family photo, etc.).</small></p>
 	<p class="sys-upload-buttons"><span>Upload</span></p>
       </label>
       <input type="file" name="file" id="user_image">
@@ -74,8 +74,8 @@
     </div>
     <div id="sys-image-teacher" class="sys-image sys-image-teacher right">
       <label class="sys-image-content" for="teacher_image">
-        <p><strong>Your Teacher's Picture</strong><br /><small>(recommended)</small></p>
-	<p class="sys-image-description"><small>Upload a photo of the teacher or school featured in your story that you own or have the rights to upload here.</small></p>
+	<p><strong>Your Teacher's Picture</strong><br /><small>(Optional)</small></p>
+	<p class="sys-image-description"><small>Upload a photo of the teacher or school featured in your story that you own or have the rights to here.</small></p>
 	<p class="sys-upload-buttons"><span>Upload</span></p>
       </label>
       <input type="file" name="file" id="teacher_image">
