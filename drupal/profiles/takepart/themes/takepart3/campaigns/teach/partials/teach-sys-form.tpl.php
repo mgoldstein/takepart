@@ -41,7 +41,7 @@
 	<option value="">State*</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
       </select>
       <label for="school_name">School Name</label>
-      <input type="text" name="school_name" id="school_name" class="input-school-name" placeholder="School Name*" disabled="disabled" required>
+      <input type="text" name="school_name" id="school_name" class="input-school-name" placeholder="Name Of School Where You Had This Teacher*" disabled="disabled" required>
     </div>
   </fieldset>
 
@@ -58,14 +58,14 @@
         </select>
       </label>
     </div>
-    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="6" placeholder="Tell us your story" maxlength="1000" required></textarea></div>
+    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="8" placeholder="Tell Us Your Story" maxlength="1000" required></textarea></div>
   </fieldset>
   <fieldset>
     <legend>Pictures Make The Story!</legend>
     <div id="sys-image-user" class="sys-image sys-image-user left">
       <label class="sys-image-content" for="user_image">
         <p><strong>Your Picture</strong><br /><small>(recommended)</small></p>
-        <p class="sys-image-description"><small>Preferably a yearbook or school picture. Alternately one during the time period.</small></p>
+	<p class="sys-image-description"><small>Upload a photo you own or have the rights to upload here (a yearbook photo, family photo, etc.).</small></p>
 	<p class="sys-upload-buttons"><span>Upload</span></p>
       </label>
       <input type="file" name="file" id="user_image">
@@ -75,7 +75,7 @@
     <div id="sys-image-teacher" class="sys-image sys-image-teacher right">
       <label class="sys-image-content" for="teacher_image">
         <p><strong>Your Teacher's Picture</strong><br /><small>(recommended)</small></p>
-	<p class="sys-image-description"><small>Preferably a picture of the teacher or the school.</small></p>
+	<p class="sys-image-description"><small>Upload a photo of the teacher or school featured in your story that you own or have the rights to upload here.</small></p>
 	<p class="sys-upload-buttons"><span>Upload</span></p>
       </label>
       <input type="file" name="file" id="teacher_image">
@@ -84,7 +84,7 @@
     </div>
   </fieldset>
   <fieldset>
-    <div class="field-wrapper clearfix"><input type="checkbox" class="pull-left" id="email_subscribe" name="email_subscribe"  checked="checked"><label for="email_subscribe" class="visible">I would like to receive TakePart's newsletter on topics related to teaching and education</label></div>
+    <div class="field-wrapper clearfix"><input type="checkbox" class="pull-left" id="email_subscribe" name="email_subscribe"  checked="checked"><label for="email_subscribe" class="visible">I would like to receive TakePart's newsletter on topics related to teaching and education and email updates on the TEACH campaign and contest.</label></div>
     <div class="field-wrapper field-wrapper-terms-agree"><input type="checkbox" id="terms_agree" name="terms_agree" required><label for="terms_agree" class="visible">I have read and agree to the <a class="teach-text-lightbox" href="/teach-content-submission-agreement">Content Submission Agreement</a></label></div>
   </fieldset>
   <p class="clearfix">

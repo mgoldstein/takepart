@@ -1632,7 +1632,7 @@ h1.sys-headline span {
   }
 }
 .sys-update h2 {
-  font: normal 32px/1 "Shadows Into Light", cursive;
+  font: normal 30px/1 "Shadows Into Light", cursive;
   color: #666666;
 }
 @media (min-width: 980px) {
@@ -1879,6 +1879,9 @@ h1.sys-headline span {
 .sys-form textarea[disabled],
 .sys-form .customSelect[disabled] {
   background-color: #EEE;
+}
+.sys-form textarea {
+  height: auto;
 }
 .sys-form .customSelect {
   margin: 0 auto .5em;
