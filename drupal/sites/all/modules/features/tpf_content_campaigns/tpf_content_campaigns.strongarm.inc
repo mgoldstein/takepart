@@ -464,19 +464,19 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
       ),
       'display' => array(),
@@ -493,19 +493,19 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'xmlsitemap' => array(
-          'weight' => '3',
+          'weight' => '5',
         ),
       ),
       'display' => array(),
@@ -941,7 +941,7 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'panelizer_defaults_node_campaign_card_iframe';
   $strongarm->value = array(
-    'status' => 1,
+    'status' => 0,
     'view modes' => array(
       'page_manager' => array(
         'status' => 0,
@@ -949,9 +949,9 @@ function tpf_content_campaigns_strongarm() {
         'choice' => 0,
       ),
       'default' => array(
-        'status' => 1,
-        'default' => 1,
-        'choice' => 1,
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
       ),
       'teaser' => array(
         'status' => 0,
@@ -1002,7 +1002,7 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'panelizer_defaults_node_campaign_card_media';
   $strongarm->value = array(
-    'status' => 1,
+    'status' => 0,
     'view modes' => array(
       'page_manager' => array(
         'status' => 0,
@@ -1010,9 +1010,9 @@ function tpf_content_campaigns_strongarm() {
         'choice' => 0,
       ),
       'default' => array(
-        'status' => 1,
-        'default' => 1,
-        'choice' => 1,
+        'status' => 0,
+        'default' => 0,
+        'choice' => 0,
       ),
       'teaser' => array(
         'status' => 0,
