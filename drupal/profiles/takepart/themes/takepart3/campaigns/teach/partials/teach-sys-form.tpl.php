@@ -51,7 +51,7 @@
     <div class="field-wrapper field-wrapper-story-year clearfix">
       <label class="visible"><span class="vertically-center">Approximate Year This Story Happened</span>
         <select name="story_year" id="story_year" class="pull-right" required>
-          <option value="">Year</option>
+	  <option value="">Year*</option>
           <?php foreach (array_reverse(range(1950, date(Y))) as $year) : ?>
           <option value="<?php print $year; ?>"><?php print $year; ?></option>
           <?php endforeach; ?>
