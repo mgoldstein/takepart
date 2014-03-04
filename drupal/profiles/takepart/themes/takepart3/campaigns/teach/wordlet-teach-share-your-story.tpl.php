@@ -9,7 +9,7 @@
         </div>
         <div class="col-1-2">
             <aside class="sys-update">
-		<h2 class=""><span>We're donating</span> <span><?php print w('update_count'); ?></span> <span>or more to selected schools and classrooms.</span></h2>
+		<h2 class=""><span>We're donating more than</span> <span><?php print w('update_count'); ?></span> <span>to schools and classrooms!</span></h2>
                 <div class="sys-intro-body"><?php print w('update_body'); ?></div>
             </aside>
             <aside class="sys-tips">

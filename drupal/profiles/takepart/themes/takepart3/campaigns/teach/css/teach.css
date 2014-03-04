@@ -53,7 +53,9 @@
 #main {
   overflow: hidden;
 }
-#main p, #main ul {
+#main p,
+#main ul li {
+  color: red;
   font: normal 14px/1.71429 Helvetica, Arial, sans-serif;
   margin: 0 0 1em;
 }
@@ -785,6 +787,10 @@ a {
   .peek-a-boo a .fb {
     background: transparent url('../img/social-facebook.png?1377821572');
   }
+}
+
+.teach-fund-about-content p, .teach-fund-about-content ul {
+  font: normal 14px/1.5 Helvetica, Arial, sans-serif;
 }
 
 .scribble-share {
@@ -1633,7 +1639,7 @@ h1.sys-headline span {
   }
 }
 .sys-update h2 {
-  font: normal 30px/1 "Shadows Into Light", cursive;
+  font: normal 32px/1 "Shadows Into Light", cursive;
   color: #666666;
 }
 @media (min-width: 980px) {

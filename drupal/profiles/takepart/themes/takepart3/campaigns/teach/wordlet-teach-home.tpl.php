@@ -2,7 +2,7 @@
   <div class="row" <?php print wa('home_sections'); ?> >
     <?php foreach (wl('home_sections') as $w) : ?>
     <div class="col-1-3 home-section">
-      <div class="image-wrapper"><img src="<?php print $w->img_src; ?>"></div>
+      <div class="image-wrapper"><a href="<?php print $w->href; ?>"><img src="<?php print $w->img_src; ?>"></a></div>
       <h2 class="headline"><?php print $w->single; ?></h2>
       <div class="body"><?php print $w->multi; ?></div>
     </div>

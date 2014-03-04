@@ -37,7 +37,9 @@ $body-copy-black: #313131;
 #main {
   overflow: hidden;
 
-  p, ul {
+  p,
+  ul li {
+    color: red;
     font: normal 14px/1.714285714 $primary-font;
     margin: 0 0 1em;
   }
@@ -48,7 +50,6 @@ $body-copy-black: #313131;
       text-indent: -1em;
     }
   }
-
 }
 
 .page-wrap {
@@ -670,6 +671,12 @@ a {
         background: transparent image-url('social-facebook.png');
       }
     }
+  }
+}
+
+.teach-fund-about-content {
+  p, ul {
+    font: normal 14px/1.5 $primary-font;
   }
 }
 
@@ -1494,7 +1501,7 @@ h1.sys-headline {
     @media (min-width: 980px) {
       margin: 0 1.5em .2em 1em;
     }
-    font: normal 30px/1 $cursive-font;
+    font: normal 32px/1 $cursive-font;
     color: lighten(black, 40%); // this photoshop comp is literally the worst.
     span {
       display: block;

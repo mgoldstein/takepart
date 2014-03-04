@@ -64,8 +64,8 @@
     <legend>Pictures Make The Story!</legend>
     <div id="sys-image-user" class="sys-image sys-image-user left">
       <label class="sys-image-content" for="user_image">
-        <p><strong>Your Picture</strong><br /><small>(recommended)</small></p>
-	<p class="sys-image-description"><small>Upload a photo you own or have the rights to upload here (a yearbook photo, family photo, etc.).</small></p>
+	<p><strong>Your Picture</strong><br /><small>(Optional)</small></p>
+	<p class="sys-image-description"><small>Upload a photo you own or have the rights to here (a yearbook photo, family photo, etc.).</small></p>
 	<p class="sys-upload-buttons"><span>Upload</span></p>
       </label>
       <input type="file" name="file" id="user_image">
@@ -74,8 +74,8 @@
     </div>
     <div id="sys-image-teacher" class="sys-image sys-image-teacher right">
       <label class="sys-image-content" for="teacher_image">
-        <p><strong>Your Teacher's Picture</strong><br /><small>(recommended)</small></p>
-	<p class="sys-image-description"><small>Upload a photo of the teacher or school featured in your story that you own or have the rights to upload here.</small></p>
+	<p><strong>Your Teacher's Picture</strong><br /><small>(Optional)</small></p>
+	<p class="sys-image-description"><small>Upload a photo of the teacher or school featured in your story that you own or have the rights to here.</small></p>
 	<p class="sys-upload-buttons"><span>Upload</span></p>
       </label>
       <input type="file" name="file" id="teacher_image">
@@ -85,7 +85,7 @@
   </fieldset>
   <fieldset>
     <div class="field-wrapper clearfix"><input type="checkbox" class="pull-left" id="email_subscribe" name="email_subscribe"  checked="checked"><label for="email_subscribe" class="visible">I would like to receive TakePart's newsletter on topics related to teaching and education and email updates on the TEACH campaign and contest.</label></div>
-    <div class="field-wrapper field-wrapper-terms-agree"><input type="checkbox" id="terms_agree" name="terms_agree" required><label for="terms_agree" class="visible">I have read and agree to the <a class="teach-text-lightbox" href="/teach-content-submission-agreement">Content Submission Agreement</a></label></div>
+    <div class="field-wrapper field-wrapper-terms-agree"><input type="checkbox" id="terms_agree" name="terms_agree" required><label for="terms_agree" class="visible">I have read and agree to the <a class="teach-text-lightbox" href="/teach-official-rules">Official Rules</a>.</label></div>
   </fieldset>
   <p class="clearfix">
     <input type="button" id="sys-preview" class="sys-button left" value="Preview Story" />
