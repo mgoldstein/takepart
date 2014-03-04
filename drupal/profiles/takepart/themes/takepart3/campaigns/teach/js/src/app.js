@@ -159,6 +159,9 @@
             success: function(data, textStatus, jqXHR) {
                 $('#sys-form-content').slideUp();
                 $('#sys-thanks-content').removeClass('initially-hidden');
+		$('html, body').animate({
+		    scrollTop: $('.menu-wrapper').offset().top - 25
+		});
                 /* Analytics */
                 takepart.analytics.track('teach_story_entry');
             },
