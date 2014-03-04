@@ -128,10 +128,19 @@ body.node-type-campaign-card-media{
           @include zen-grid-item(8, 3);
         }
       }
-      .content{
+      .center-column{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(10, 2);
           @include zen-clear();
+          img{
+            margin: 0 auto;
+          }
+          .description{
+            text-align: center;
+          }
+          .caption{
+            text-align: center;
+          }
         }
       }
     }
