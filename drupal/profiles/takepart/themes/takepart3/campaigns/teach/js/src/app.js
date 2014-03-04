@@ -337,7 +337,7 @@
             },
             source: function(request, response) {
 
-                var hash = encodeURIComponent('&state=' + $schoolState.val() + '&q=' + request.term.replace(/\s+/g, "+"));
+                var hash = encodeURIComponent('&state=' + $schoolState.val() + '&q=' + encodeURIComponent(request.term));
                 if (hash in nameCache) {
                     response(nameCache[hash]);
                     return;
