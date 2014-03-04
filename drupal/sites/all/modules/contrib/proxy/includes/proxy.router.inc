@@ -20,7 +20,7 @@ function proxy_router() {
 
   // Define parameters
   $params = array(
-    'request_uri' => !empty($_GET[PROXY_ROUTER_QUERY_VAR]) ? urldecode($_GET[PROXY_ROUTER_QUERY_VAR]) : '',
+    'request_uri' => !empty($_GET[PROXY_ROUTER_QUERY_VAR]) ? $_GET[PROXY_ROUTER_QUERY_VAR] : '',
   );
 
   // Check for reset
