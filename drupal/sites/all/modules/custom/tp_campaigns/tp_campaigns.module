@@ -86,6 +86,7 @@ function tp_campaigns_init(){
     'campaign_card_media',
     'campaign_card_iframe',
     'campaign_card_social',
+    'campaign_card_news',
     );
   variable_set('card_types', $card_types);
 }
@@ -104,6 +105,8 @@ function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
       ),
     ),
   );
+
+  //Campaign Media Card
   $form['field_campaign_media_photo']['#states'] = array(
     'visible' => array(   // action to take.
       ':input[name=field_campaign_media_type\[und\]]' => array('value' => 0),
@@ -114,4 +117,18 @@ function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
       ':input[name=field_campaign_media_type\[und\]]' => array('value' => 1),
     ),
   );
+  
+  //Campaign News Card
+  $form['field_campaign_single_news_ref']['#states'] = array(
+    'visible' => array(   // action to take.
+      ':input[name=field_campaign_news_type\[und\]]' => array('value' => 0),
+    ),
+  );
+  $form['field_campaign_multi_news_ref']['#states'] = array(
+    'visible' => array(   // action to take.
+      ':input[name=field_campaign_news_type\[und\]]' => array('value' => 1),
+    ),
+  );
+
+
 }

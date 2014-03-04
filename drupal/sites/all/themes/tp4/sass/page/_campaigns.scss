@@ -15,7 +15,8 @@
  * Layouts
  */
 body.node-type-campaign-page,
-body.node-type-campaign-card-media{
+body.node-type-campaign-card-media,
+body.node-type-campaign-card-news{
   $zen-column-count:  12;
   $zen-gutter-width:  30px; //TODO: change this to respond to the width of the containing element.
 
@@ -143,10 +144,6 @@ body.node-type-campaign-card-media{
           }
         }
       }
-    }
-    &.campaign.news-page{
-      @include breakpoint-grid-breakdown(5, $breakpoint-mobile, ' > .news-col');
-
     }
     // Add more layouts here
   }
@@ -313,6 +310,10 @@ body.node-type-campaign-page, #main.card-page{
     }
   }
 
+  //News
+  .center-column{
+    @include breakpoint-grid-breakdown(1 5, $breakpoint-mobile $breakpoint-tablet, ' > .news-column');
+  }
 
 
 
