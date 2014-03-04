@@ -305,7 +305,9 @@
                 $schoolId.val('0');
                 $schoolCity.val('&nbsp;');
             }
-        });
+	}).on('blur', function() {
+	    $schoolName.removeClass('<in-progress></in-progress>');
+	})
 
         var resetSchoolNameMessage = function() {
             $schoolNameMessage.removeClass('count-warning').html('');
