@@ -1,0 +1,6 @@
+name = Metatag: Take Action Platform
+description = Provides custom meta tags for the TakeAction Platform.
+package = SEO
+core = 7.x
+dependencies[] = metatag
+dependencies[] = token_function
