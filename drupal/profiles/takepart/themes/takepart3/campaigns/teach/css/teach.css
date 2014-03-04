@@ -1780,10 +1780,11 @@ h1.sys-headline span {
   display: inline;
 }
 .sys-form label.visible .vertically-center {
-  display: inline-block;
+  display: block;
 }
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   .sys-form label.visible .vertically-center {
+    display: inline-block;
     margin-top: 1.4em;
   }
 }
@@ -1899,8 +1900,10 @@ h1.sys-headline span {
   box-shadow: -4px -4px #dd0000, -4px 4px #dd0000, 4px -4px #dd0000, 4px 4px #dd0000, inset 0 0 4px #999999;
   color: #d00;
 }
-.sys-form select[name="story_year"].hasCustomSelect {
-  right: 0;
+@media (min-width: 1000px) {
+  .sys-form select[name="story_year"].hasCustomSelect {
+    right: 0;
+  }
 }
 .sys-form input:focus,
 .sys-form .customSelectFocus {

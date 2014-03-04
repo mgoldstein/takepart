@@ -1630,8 +1630,9 @@ h1.sys-headline {
     &.visible { 
       display: inline;
       .vertically-center {
-        display: inline-block;
-        @media (min-width: 768px) {
+	display: block;
+	@media (min-width: 1000px) {
+	  display: inline-block;
           margin-top: 1.4em;
         }
       }
@@ -1728,8 +1729,13 @@ h1.sys-headline {
   }
 
   // position select-boxes
-  select[name="story_year"].hasCustomSelect {
-    right: 0;
+  @media (min-width: 1000px) {
+    .hasCustomSelect {
+      // display: block;
+    }
+    select[name="story_year"].hasCustomSelect {
+      right: 0;
+    }
   }
 
   // focus states

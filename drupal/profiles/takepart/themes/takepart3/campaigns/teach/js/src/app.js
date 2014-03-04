@@ -270,8 +270,17 @@
         });
 
         // style select boxes on non-touch-enabled devices
+	var $selects = $form.find('select');
+	var resizeTimeout = null;
         if (!touchEnabled && !loadedInIframe) {
-            $form.find('select').customSelect();
+	    $selects.customSelect();
+	    $(window).on('resize', function() {
+		clearTimeout (resizeTimeout);
+
+		resizeTimeout = setTimeout(function() {
+		    $selects.trigger('update');
+		}, 750);
+	    });
         } else {
             // If we don't use styled customSelect widgets
             // the alignment is off
