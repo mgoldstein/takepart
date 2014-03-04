@@ -28,6 +28,8 @@
           transitionEnd: function(index, elem) {}
         });
 
+        //TODO: There is an error when testing videos with only 2 slides
+        //swipejs duplicates slides if only two exist throwing an error with videos
         $('.slider').each(function(){
           var $this = $(this);
           var $Slider = $('#' + $this.attr('id')).Swipe().data('Swipe');
@@ -38,16 +40,17 @@
 
       // Detect height on page load and on page resize
       window.onresize = function(event) {
-          $('.slider').each(function(){
-              var $this = $(this);
-              $this.find('.card.has-tray-title').css("padding-top", $this.find('.tray-header').height() + 50);
-          });
+        $('.slider').each(function(){
+          var $this = $(this);
+          $this.find('.card-wrapper.has-tray-title').parent().css("padding-top", $this.find('.tray-header').height());
+          console.log($this.find('.tray-header').height());
+        });
       };
-        window.onload = function(event) {
-          $('.slider').each(function(){
-              var $this = $(this);
-              $this.find('.card.has-tray-title').css("padding-top", $this.find('.tray-header').height() + 50);
-          });
+      window.onload = function(event) {
+        $('.slider').each(function(){
+          var $this = $(this);
+          $this.find('.card-wrapper.has-tray-title').parent().css("padding-top", $this.find('.tray-header').height());
+        });
       };
     }
   };

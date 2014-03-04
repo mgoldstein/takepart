@@ -5,8 +5,6 @@
     $tray_title = $variables['entity']->field_campaign_tray_title['und'][0]['value'];
   }
 
-  // Does the Tray background exist?
-
 
 ?>
 <div class="swipe-wrap">
@@ -39,8 +37,8 @@
     }
     $card_classes[] = $node->type;
 
-    print '<div class="card-wrapper">';
-    print '<div class="card '. implode(' ', $card_classes). '" '. $card_styles. '>'. $title. ' '. drupal_render(node_view($node, 'full', NULL)). '</div>';
+    print '<div class="card-wrapper '. implode(' ', $card_classes). '" '. $card_styles. '">';
+    print drupal_render(node_view($node, 'full', NULL));
     print '</div>';
   }
 ?>
@@ -50,7 +48,7 @@
 <?php if(isset($variables['entity']->field_campaign_card_reference[1]) == true || isset($variables['entity']->field_campaign_card_reference['und'][1]) == true): ?>
   <div class="tray-header">
     <?php if(isset($tray_title) == true): ?>
-      <h1 class="title 2"><?php print $tray_title; ?></h1>
+      <h1 class="card-title"><?php print $tray_title; ?></h1>
     <?php endif; ?>
     <div class="slider pagination"></div>
   </div>
