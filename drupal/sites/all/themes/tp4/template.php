@@ -251,7 +251,17 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     $instructional = $variables['field_campaign_instructional'][0]['value'];
     $more = ''; //Add this to news and media
     if($variables['field_campaign_news_type'][0]['value'] == 0){  //single value
-      $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
+
+      $node = node_load($variables['field_campaign_single_news_ref'][0]['target_id']);
+
+      $file = file_load($node->field_article_main_image['und'][0]['fid']);
+      $image = file_create_url($file->uri);
+      $center = '';  // single news reference will use one column now
+      $center .= '<img src="'. $image. '">';  //image
+      $center .= '<h3 class="headline">'. $node->field_promo_headline['und'][0]['value']. '</h3>';  //headline
+      $center .= '<h5 class="short-headline">'. $node->field_promo_short_headline['und'][0]['value']. '</h3>';  //short headline
+
+      $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
     else{ //multivalue
       $nids = array();
@@ -289,8 +299,6 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     }
 
     $variables['instructional'] = $instructional;
-    $variables['left'] = $left;
-    $variables['right'] = $right;
     $variables['center'] = $center;
     $variables['more'] = $more;
 
