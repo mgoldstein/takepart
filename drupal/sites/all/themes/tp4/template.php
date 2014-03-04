@@ -167,18 +167,17 @@ function tp4_preprocess_node(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   // begin nested if statement
   $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
+  $instructional = $variables['field_campaign_instructional'][0]['value'];
+  //Prepare Media
+  if($variables['field_campaign_media_type'][0]['value'] == 1){  //Media is a video
+    $media = $variables['field_campaign_media_video'];  //TODO integrate video with a new view mode
+  }
+  else{ //Media is a photo
+    $image = file_create_url($variables['field_campaign_media_photo'][0]['uri']);
+    $media = '<img src="'. $image. '">';
+  }
+  //Set Layout
   if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
-
-    //Prepare Media
-    if($variables['field_campaign_media_type'][0]['value'] == 1){  //Media is a video
-      $media = $variables['field_campaign_media_video'];  //TODO integrate video with a new view mode
-    }
-    else{ //Media is a photo
-      $image = file_create_url($variables['field_campaign_media_photo'][0]['uri']);
-      $media = '<img src="'. $image. '">';
-    }
-
-    //Set Layout
     if($variables['field_campaign_content_side'][0]['value'] == 0){ // Media goes on the left
       //Prepare the left side content
       $left = '';
@@ -195,17 +194,21 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
       $left = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
     }
 
-    $instructional = $variables['field_campaign_instructional'][0]['value'];
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
   }
   elseif($column_count == 0){ //single column
-    $content = '';
+    $center = '';
+    $center .= $media;
+    $center .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
+
+    $center .= (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
     $instructional = 'instructional';
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['left'] = $left;
   $variables['right'] = $right;
+  $variables['center'] = $center;
   $variables['instructional'] =  $instructional;
 }
 

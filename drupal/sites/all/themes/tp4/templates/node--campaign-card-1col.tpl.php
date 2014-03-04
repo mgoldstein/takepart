@@ -7,36 +7,14 @@
  * @see https://drupal.org/node/1728164
  */
 ?>
-<article class="card-inner">
-  <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
-    <header>
-      <?php print render($title_prefix); ?>
-      <?php if (!$page && $title): ?>
-        <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-      <?php endif; ?>
-      <?php print render($title_suffix); ?>
-
-      <?php /* Don't ever print $submitted */ ?>
-      <?php if (FALSE && $display_submitted): ?>
-        <p class="submitted">
-          <?php print $user_picture; ?>
-          <?php print $submitted; ?>
-        </p>
-      <?php endif; ?>
-
-      <?php if ($unpublished): ?>
-        <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
-      <?php endif; ?>
-    </header>
-  <?php endif; ?>
-
-  <?php
-    // We hide the comments and links now so that we can render them later.
-    hide($content['comments']);
-    hide($content['links']);
-    print render($content);
-    // print render($content['links']);
-    // print render($content['comments']);
-  ?>
-
-</article>
+<div class="card campaign-1col" style="background-image: url('<?php print $variables['card_background']; ?>')">
+  <article class="card-inner">
+    <h1 class="card-title"><?php print $title; ?></h1>
+    <div class="instructional">
+      <?php print $variables['instructional']; ?>
+    </div>
+    <div class="center-column">
+      <?php print $variables['center']; ?>
+    </div>
+  </article>
+</div>
