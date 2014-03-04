@@ -1,0 +1,19 @@
+commit e3f468446fb417c06b0026a6e78579acfe3dd8b3
+Author: jpedius <jp@takepart.com>
+Date:   Mon Mar 3 16:33:46 2014 -0800
+
+    Removed double urldecode
+
+diff --git a/drupal/sites/all/modules/contrib/proxy/includes/proxy.router.inc b/drupal/sites/all/modules/contrib/proxy/includes/proxy.router.inc
+index 12394e3..686d2f3 100644
+--- a/drupal/sites/all/modules/contrib/proxy/includes/proxy.router.inc
++++ b/drupal/sites/all/modules/contrib/proxy/includes/proxy.router.inc
+@@ -20,7 +20,7 @@ function proxy_router() {
+ 
+   // Define parameters
+   $params = array(
+-    'request_uri' => !empty($_GET[PROXY_ROUTER_QUERY_VAR]) ? urldecode($_GET[PROXY_ROUTER_QUERY_VAR]) : '',
++    'request_uri' => !empty($_GET[PROXY_ROUTER_QUERY_VAR]) ? $_GET[PROXY_ROUTER_QUERY_VAR] : '',
+   );
+ 
+   // Check for reset
