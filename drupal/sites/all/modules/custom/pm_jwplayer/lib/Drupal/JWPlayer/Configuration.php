@@ -226,7 +226,7 @@ class JWPlayerConfiguration {
         $values['link'] = $settings['link'];
       }
       if (!empty($settings['code'])) {
-        $values['code'] = urlencode($settings['code']);
+        $values['code'] = rawurlencode($settings['code']);
       }
       if (!empty($settings['heading'])) {
         $values['heading'] = $settings['heading'];
