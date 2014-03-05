@@ -130,6 +130,10 @@ function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
       ':input[name=field_campaign_news_type\[und\]]' => array('value' => 1),
     ),
   );
-
+  $form['field_campaign_news_filter_tag']['#states'] = array(
+    'visible' => array(   // action to take.
+      ':input[name=field_campaign_news_type\[und\]]' => array('value' => 1),
+    ),
+  );
 
 }

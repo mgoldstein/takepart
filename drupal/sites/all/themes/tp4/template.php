@@ -258,11 +258,38 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
 }
 
 /**
+ * Implementation of hook_query_TAG_alter
+ */
+function tp4_query_filter_alter(QueryAlterableInterface $query) {
+  $node = node_load();
+  $tags = $query->alterMetaData['entity_field_query']->tags;
+  $nid = array_slice($tags, 1, 1);
+  $node = node_load($nid[0]);
+  
+  if(isset($node->field_campaign_news_filter_tag['und'][0]['target_id'])){
+    $term_id = $node->field_campaign_news_filter_tag['und'][0]['target_id'];
+    $query
+      ->leftJoin('field_data_field_topic', 'a', 'node.nid = a.entity_id');
+    $query
+      ->leftJoin('field_data_field_series', 'b', 'node.nid = b.entity_id');
+    $query
+      ->leftJoin('field_data_field_free_tag', 'c', 'node.nid = c.entity_id');
+    $or = db_or()
+      ->condition('a.field_topic_tid', array($term_id), 'IN')
+      ->condition('b.field_series_tid', array($term_id), 'IN')
+      ->condition('c.field_free_tag_tid', array($term_id), 'IN');
+    $query
+      ->condition($or);
+  }
+
+}
+
+
+/**
  * Override or insert variables into the campaign card news
  */
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     // Count the number of values
-
     $instructional = $variables['field_campaign_instructional'][0]['value'];
     $more = ''; //Add this to news and media
     $more = '<div class="more-link">'. $variables['field_campaign_more_link'][0]['value']. '</div>';
@@ -275,12 +302,15 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center = '';  // single news reference will use one column now
       $center .= '<img src="'. $image. '">';  //image
       $center .= '<h3 class="headline">'. $node->field_promo_headline['und'][0]['value']. '</h3>';  //headline
-      $center .= '<h5 class="short-headline">'. $node->field_promo_short_headline['und'][0]['value']. '</h3>';  //short headline
+      $center .= '<p class="short-headline">'. $node->field_promo_short_headline['und'][0]['value']. '</p>';  //short headline
       $center .= $more;
 
       $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
     else{ //multivalue
+
+      $term_id = $variables['field_campaign_news_filter_tag'][0]['target_id'];
+
       $nids = array();
       foreach($variables['field_campaign_multi_news_ref'] as $key => $item){
         $nids[] = $item['target_id'];
@@ -294,6 +324,8 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         ->fieldCondition('field_thumbnail', 'fid', 0, '>')
         ->propertyCondition('status', 1)
         ->propertyOrderBy('created', 'DESC')
+        ->addTag('filter')
+        ->addTag($variables['nid'])
         ->range(0, 5 - $count);
       $articles = $campaignNewsArticles->execute();
 
@@ -303,6 +335,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $nodes = node_load_multiple($nids);
       $center = '';
       foreach($nodes as $key => $node){
+
         $file = file_load($node->field_thumbnail['und'][0]['fid']);
         $image = file_create_url($file->uri);
         $media = '<img src="'. $image. '">';
