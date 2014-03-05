@@ -282,6 +282,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
     $instructional = $variables['field_campaign_instructional'][0]['value'];
     $more = ''; //Add this to news and media
+    $more = '<div class="more-link">'. $variables['field_campaign_more_link'][0]['value']. '</div>';
     if($variables['field_campaign_news_type'][0]['value'] == 0){  //single value
 
       $node = node_load($variables['field_campaign_single_news_ref'][0]['target_id']);
@@ -292,6 +293,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center .= '<img src="'. $image. '">';  //image
       $center .= '<h3 class="headline">'. $node->field_promo_headline['und'][0]['value']. '</h3>';  //headline
       $center .= '<h5 class="short-headline">'. $node->field_promo_short_headline['und'][0]['value']. '</h3>';  //short headline
+      $center .= $more;
 
       $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
@@ -315,8 +317,41 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       foreach($articles['node'] as $key => $item){
         $nids[] = $item->nid;
       }
+<<<<<<< HEAD
       $variables['output'] = node_load_multiple($nids);
     }
+=======
+      $nodes = node_load_multiple($nids);
+      $center = '';
+      foreach($nodes as $key => $node){
+        $file = file_load($node->field_article_main_image['und'][0]['fid']);
+        $image = file_create_url($file->uri);
+        $media = '<img src="'. $image. '">';
+        $headline = $node->field_promo_headline['und'][0]['value'];
+        $center .= '<div class="news-column">';
+        $center .= $media;
+        $center .= '<h5>'. $headline. '</h5>';
+        $center .= '</div>';
+        $center .= $more;
+      }
+      $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+    }
+
+    $variables['instructional'] = $instructional;
+    $variables['center'] = $center;
+
+>>>>>>> added iframe
+}
+function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
+  $instructional = $variables['field_campaign_instructional'][0]['value'];
+  $center = '';
+  $height = $variables['field_campaign_iframe_height'][0]['value'];
+  $width = $variables['field_campaign_iframe_width'][0]['value'];
+  $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" width="'. $width. '" height="'. $height. '"></iframe>';
+
+  $variables['instructional'] = $instructional;
+  $variables['center'] = $center;
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 }
 
 /**
