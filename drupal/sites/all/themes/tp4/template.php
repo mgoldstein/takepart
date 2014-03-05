@@ -256,7 +256,7 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
       $nodes = node_load_multiple($nids);
       $center = '';
       foreach($nodes as $key => $node){
-        $file = file_load($node->field_article_main_image['und'][0]['fid']);
+        $file = file_load($node->field_thumbnail['und'][0]['fid']);
         $image = file_create_url($file->uri);
         $media = '<img src="'. $image. '">';
         $headline = $node->field_promo_headline['und'][0]['value'];
