@@ -86,21 +86,24 @@
     var showCoppaErrorMessage = function() {
         $('#sys-form-content').slideUp();
         $('#sys-coppa-content').removeClass('initially-hidden');
+        $('html, body').animate({
+            scrollTop: $('.menu-wrapper').offset().top - 25
+        });
     };
 
     var sysFormSubmit = function(form) {
         var $form = $(form);
         var formData = parseFormData($form);
-        var userBirthdate = formData.user_year + '-' + formData.user_month + '-' + formData.user_day;
+        var userBirthdate = new Date(formData.user_year, formData.user_month, formData.user_day);
 
         var $submit = $form.find('input[type=submit]').addClass('in-progress');
 
-        if (Date.parse(userBirthdate) > ageRequirement) {
+        if (userBirthdate.getTime() > ageRequirement) {
 
             // set coppa cookie
             var expires = new Date();
             expires.setTime(expires.getTime() + coppaCookieExpires * msDay);
-            document.cookie = escape(coppaCookieName) + "=" + escape(userBirthdate) + "; expires=" + expires.toGMTString() + '; path=/';
+            document.cookie = escape(coppaCookieName) + "=" + userBirthdate.getTime() + "; expires=" + expires.toGMTString() + '; path=/';
 
             showCoppaErrorMessage();
 
@@ -211,10 +214,11 @@
         var birthDate = null;
         $.each(document.cookie.split(";"), function() {
             if (this.trim().indexOf(escape(coppaCookieName)) === 0) {
-                birthDate = unescape(this.substring(escape(coppaCookieName).length + 1, this.length));
+                birthDate = unescape(this.trim().substring(escape(coppaCookieName).length + 1, this.length));
             }
         });
-        if (birthDate && (Date.parse(birthDate) > ageRequirement)) {
+
+        if (birthDate && (birthDate > ageRequirement)) {
             showCoppaErrorMessage();
             return false;
         }
