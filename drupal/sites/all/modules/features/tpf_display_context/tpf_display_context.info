@@ -10,6 +10,7 @@ dependencies[] = context
 dependencies[] = context_field
 dependencies[] = context_related_menu
 dependencies[] = ctools
+dependencies[] = entityreference
 dependencies[] = facetapi
 dependencies[] = features
 dependencies[] = field_group

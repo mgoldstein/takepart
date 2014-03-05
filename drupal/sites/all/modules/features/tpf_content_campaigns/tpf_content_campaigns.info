@@ -59,6 +59,7 @@ features[field_instance][] = node-campaign_card_media-field_campaign_media_video
 features[field_instance][] = node-campaign_card_news-field_campaign_instructional
 features[field_instance][] = node-campaign_card_news-field_campaign_more_link
 features[field_instance][] = node-campaign_card_news-field_campaign_multi_news_ref
+features[field_instance][] = node-campaign_card_news-field_campaign_news_filter_tag
 features[field_instance][] = node-campaign_card_news-field_campaign_news_type
 features[field_instance][] = node-campaign_card_news-field_campaign_single_news_ref
 features[field_instance][] = node-campaign_card_news-field_card_background
