@@ -243,8 +243,8 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
       $count = count($variables['field_campaign_multi_news_ref']);
       $campaignNewsArticles = new EntityFieldQuery();
       $campaignNewsArticles->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article'))
-        ->fieldCondition('field_article_main_image', 'fid', 0, '>')
+        ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video'))
+        ->fieldCondition('field_thumbnail', 'fid', 0, '>')
         ->propertyCondition('status', 1)
         ->propertyOrderBy('created', 'DESC')
         ->range(0, 5 - $count);
