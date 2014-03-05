@@ -243,6 +243,164 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
       $count = count($variables['field_campaign_multi_news_ref']);
       $campaignNewsArticles = new EntityFieldQuery();
       $campaignNewsArticles->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article'))
+        ->fieldCondition('field_article_main_image', 'fid', 0, '>')
+        ->propertyCondition('status', 1)
+        ->propertyOrderBy('created', 'DESC')
+        ->range(0, 5 - $count);
+      $articles = $campaignNewsArticles->execute();
+
+      foreach($articles['node'] as $key => $item){
+        $nids[] = $item->nid;
+      }
+      $variables['output'] = node_load_multiple($nids);
+    }
+}
+
+/**
+ * Override or insert variables into the campaign card news
+ */
+function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
+    // Count the number of values
+
+    $instructional = $variables['field_campaign_instructional'][0]['value'];
+    $more = ''; //Add this to news and media
+    $more = '<div class="more-link">'. $variables['field_campaign_more_link'][0]['value']. '</div>';
+    if($variables['field_campaign_news_type'][0]['value'] == 0){  //single value
+
+      $node = node_load($variables['field_campaign_single_news_ref'][0]['target_id']);
+
+      $file = file_load($node->field_article_main_image['und'][0]['fid']);
+      $image = file_create_url($file->uri);
+      $center = '';  // single news reference will use one column now
+      $center .= '<img src="'. $image. '">';  //image
+      $center .= '<h3 class="headline">'. $node->field_promo_headline['und'][0]['value']. '</h3>';  //headline
+      $center .= '<h5 class="short-headline">'. $node->field_promo_short_headline['und'][0]['value']. '</h3>';  //short headline
+      $center .= $more;
+
+      $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+    }
+    else{ //multivalue
+      $nids = array();
+      foreach($variables['field_campaign_multi_news_ref'] as $key => $item){
+        $nids[] = $item['target_id'];
+      }
+
+      // Query non referenced content (max 5)
+      $count = count($variables['field_campaign_multi_news_ref']);
+      $campaignNewsArticles = new EntityFieldQuery();
+      $campaignNewsArticles->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video'))
+        ->fieldCondition('field_thumbnail', 'fid', 0, '>')
+        ->propertyCondition('status', 1)
+        ->propertyOrderBy('created', 'DESC')
+        ->range(0, 5 - $count);
+      $articles = $campaignNewsArticles->execute();
+
+      foreach($articles['node'] as $key => $item){
+        $nids[] = $item->nid;
+      }
+      $nodes = node_load_multiple($nids);
+      $center = '';
+      foreach($nodes as $key => $node){
+        $file = file_load($node->field_thumbnail['und'][0]['fid']);
+        $image = file_create_url($file->uri);
+        $media = '<img src="'. $image. '">';
+        $headline = $node->field_promo_headline['und'][0]['value'];
+        $center .= '<div class="news-column">';
+        $center .= $media;
+        $center .= '<h5>'. $headline. '</h5>';
+        $center .= '</div>';
+        $center .= $more;
+      }
+      $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+    }
+
+    $variables['instructional'] = $instructional;
+    $variables['center'] = $center;
+
+}
+function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
+  $instructional = $variables['field_campaign_instructional'][0]['value'];
+  $center = '';
+  $height = $variables['field_campaign_iframe_height'][0]['value'];
+  $width = $variables['field_campaign_iframe_width'][0]['value'];
+  $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" width="'. $width. '" height="'. $height. '"></iframe>';
+
+  $variables['instructional'] = $instructional;
+  $variables['center'] = $center;
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+}
+
+/**
+ * Override or insert variables into the openpublish_article template.
+ */
+function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
+  
+  $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
+  $instructional = $variables['field_campaign_instructional'][0]['value'];
+  //Prepare Media
+  if($variables['field_campaign_media_type'][0]['value'] == 1){  //Media is a video
+    $media = $variables['field_campaign_media_video'];  //TODO integrate video with a new view mode
+    $media_node = node_load($variables['field_campaign_media_video'][0]['target_id']);
+    $media = drupal_render(node_view($media_node, 'embed'));
+  }
+  else{ //Media is a photo
+    $image = file_create_url($variables['field_campaign_media_photo'][0]['uri']);
+    $media = '<img src="'. $image. '">';
+  }
+  //Set Layout
+  if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
+    if($variables['field_campaign_content_side'][0]['value'] == 0){ // Media goes on the left
+      //Prepare the left side content
+      $left = '';
+      $left .= $media;
+      $left .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
+
+      $right = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+    }
+    else{
+      $right = '';
+      $right .= $media;
+      $right .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
+
+      $left = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+    }
+
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
+  }
+  elseif($column_count == 0){ //single column
+    $center = '';
+    $center .= $media;
+    $center .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
+
+    $center .= (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+    $instructional = 'instructional';
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  }
+  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
+  $variables['left'] = $left;
+  $variables['right'] = $right;
+  $variables['center'] = $center;
+  $variables['instructional'] =  $instructional;
+}
+
+/**
+ * Override or insert variables into the campaign card social template
+ */
+function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
+    // Count the number of values
+    if($variables['field_campaign_news_type'][0]['value'] == 1){ //change this to '0'
+
+      $nids = array();
+      foreach($variables['field_campaign_multi_news_ref'] as $key => $item){
+        $nids[] = $item['target_id'];
+      }
+
+      // Query non referenced content (max 5)
+      $count = count($variables['field_campaign_multi_news_ref']);
+      $campaignNewsArticles = new EntityFieldQuery();
+      $campaignNewsArticles->entityCondition('entity_type', 'node')
         ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video'))
         ->fieldCondition('field_thumbnail', 'fid', 0, '>')
         ->propertyCondition('status', 1)
@@ -317,10 +475,6 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       foreach($articles['node'] as $key => $item){
         $nids[] = $item->nid;
       }
-<<<<<<< HEAD
-      $variables['output'] = node_load_multiple($nids);
-    }
-=======
       $nodes = node_load_multiple($nids);
       $center = '';
       foreach($nodes as $key => $node){
@@ -340,7 +494,6 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     $variables['instructional'] = $instructional;
     $variables['center'] = $center;
 
->>>>>>> added iframe
 }
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   $instructional = $variables['field_campaign_instructional'][0]['value'];
