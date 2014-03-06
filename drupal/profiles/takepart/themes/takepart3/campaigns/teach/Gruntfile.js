@@ -10,11 +10,11 @@ module.exports = function(grunt) {
     watch: {
       js: {
         files: ['js/src/{,*/}*.js'],
-        tasks: ['newer:jshint','concat', 'uglify']
+        tasks: ['jsCompile']
       },
       compass: {
         files: ['css/{,*/}*.scss'],
-        tasks: ['newer:compass']
+        tasks: ['sassCompile']
       }
     },
     concat: {
@@ -72,6 +72,18 @@ module.exports = function(grunt) {
     },
     compass: {
       config: 'config.rb'
+    },
+    notify: {
+      compass: {
+        options: {
+          message: "SASS Compiled"
+        }
+      },
+      uglify: {
+        options: {
+          message: "JS Compiled"
+        }
+      }
     }
   });
 
@@ -81,8 +93,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-notify');
 
   // Default task.
-  grunt.registerTask('default', ['newer:compass', 'newer:jshint', 'concat', 'uglify']);
+  grunt.registerTask('sassCompile', ['newer:compass', 'notify:compass']);
+  grunt.registerTask('jsCompile', ['newer:jshint', 'concat', 'uglify', 'notify:uglify']);
+  grunt.registerTask('default', ['sassCompile', 'jsCompile']);
 
 };
