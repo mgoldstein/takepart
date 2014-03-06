@@ -1,4 +1,4 @@
-<div id="sys-form-content" class="content teach-sys-content">
+<div id="sys-form-content" class="content teach-story-content teach-sys-content">
     <div class="row">
         <div class="col-1-2">
             <div class="sys-intro">
