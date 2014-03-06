@@ -231,30 +231,26 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
  * Override or insert variables into the campaign card social template
  */
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
-    // Count the number of values
-    if($variables['field_campaign_news_type'][0]['value'] == 1){ //change this to '0'
+    // social!
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $instructional = $variables['field_campaign_instructional'][0]['value'];
 
-      $nids = array();
-      foreach($variables['field_campaign_multi_news_ref'] as $key => $item){
-        $nids[] = $item['target_id'];
-      }
+  $collections = array();
+  foreach($variables['field_campaign_social_follow'] as $key => $collection){
+    $collections[] = $collection['value'];
+  }
+  $collections = entity_load('field_collection_item', $collections);
+  $center = '';
+  foreach($collections as $key => $item){
+    $name = $item->field_social_network['und'][0]['entity']->name;
+    $name = strtolower($name);
+    $name = preg_replace("/[\s_]/", "-", $name);
+    $url = $item->field_social_link['und'][0]['url'];
+    $center .= l($name, $url, array('html' => true, 'attributes' => array('class' => array($name))));
+  }
 
-      // Query non referenced content (max 5)
-      $count = count($variables['field_campaign_multi_news_ref']);
-      $campaignNewsArticles = new EntityFieldQuery();
-      $campaignNewsArticles->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article'))
-        ->fieldCondition('field_article_main_image', 'fid', 0, '>')
-        ->propertyCondition('status', 1)
-        ->propertyOrderBy('created', 'DESC')
-        ->range(0, 5 - $count);
-      $articles = $campaignNewsArticles->execute();
-
-      foreach($articles['node'] as $key => $item){
-        $nids[] = $item->nid;
-      }
-      $variables['output'] = node_load_multiple($nids);
-    }
+  $variables['instructional'] = $instructional;
+  $variables['center'] = $center;
 }
 
 /**
