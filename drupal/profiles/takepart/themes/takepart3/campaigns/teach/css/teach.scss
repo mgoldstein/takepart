@@ -346,21 +346,16 @@ a {
     }
   }
 
-  h2 {
+  .short-headline {
     text-align: center;
-    font: normal 2em/1 $secondary-font;
-    text-transform: uppercase;
-    background: transparent image-url("teach-home-featured-header-bg.png") scroll no-repeat top center;
-
+    background-position: top center;
     position: relative;
     top: -15px;
-
     span {
-      display: block;
-      @include transform(rotate(-2deg));
-      padding: 1em 0;
+      padding-left: 0;
     }
   }
+
   .secondary-feature {
     background: transparent none;
     margin: 0;
@@ -629,6 +624,18 @@ a {
     display: none;
   }
 }
+
+.short-headline {
+  font: normal 2em/1 $secondary-font;
+  text-transform: uppercase;
+  background: transparent image-url("teach-home-featured-header-bg.png") scroll no-repeat top left;
+  span {
+    display: block;
+    @include transform(rotate(-2deg));
+    padding: 1em 0 1em 1em;
+  }
+}
+
 
 // common style for peek-a-boo element
 // behind the video player
@@ -1417,9 +1424,178 @@ a {
 }
 
 
+/* # Teacher Stories Landing Page
+================================================== */
+.teach-teacher-stories-content {
+  color: $dark-grey;
+  strong { color: $primary-grey; }
+
+  @media (min-width: 768px) {
+    .sys-intro-body {
+      width: 60%;
+    }
+  }
+}
+
+.sys-stats {
+  position: relative;
+
+  .sys-stats-content {
+    background: transparent image-url('notebook_paper_middle.png') scroll repeat-y top center;
+    background-size: contain;    
+    
+    padding: 0 5% 0 15%;
+    //micro clearfix, to prevent margin collapse
+    &:before,
+    &:after {
+      content: ' ';
+      display: table;
+      clear: both;
+    }
+    & > :first-child {
+      margin-top: -1em;
+    }
+  }
+
+  margin: 1em auto;
+
+  &:before,
+  &:after {
+    content: ' ';
+    display: block;
+    background: transparent image_url('notebook_paper_top.png') scroll no-repeat top center;
+    background-size: contain;
+    width: 100%;
+    height: 0;
+    padding-top: 23.7250554%;
+  }
+  &:after {
+    background-image: image_url('notebook_paper_bottom.png');
+    padding-top: 21.0643016%;
+  }
+
+  h2 {
+    font: normal 3em/1 $cursive-font;
+    position: relative;
+    span {
+      display: block;
+      &:last-child {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.featured-stories {
+  // extra padding to clear the post-it
+  @media (min-width: 1000px) {
+    margin-top: 2em;
+  }
+  .short-headline {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// featured stories module
+.featured-story {
+  @include box-sizing(border-box);
+  width: 100%;
+  height: 0;
+  padding-top: 92.6121372%;
+  margin-bottom: 1em;
+  background: transparent image-url("polaroid_blue_pin.png") scroll no-repeat top center;
+  background-size: contain;
+  overflow: hidden;
+  position: relative;
+
+  font: normal 1.25em/1.125 $primary-font;
+
+  @media (min-width: 1000px) {
+    font-size: 1.3333em;
+  }
+
+  // the polaroid is 379px / 351px
+  // have fun calculating percentages.
+
+  & > img {
+    display: block;
+    position: absolute;
+    top: 9.25%;
+    left: 3.5%;
+    width: 92.348285% !important; // override inline styles and attributes
+    height: 68.3760684% !important;
+  }
+
+  & > blockquote {
+    position: absolute;
+    bottom: 22%;
+    left: 3.5%;
+    width: 92.348285%; // override inline styles and attributes
+
+    @include box-sizing(border-box);
+    margin: 0;
+    background-color: white;
+    background-color: rgba(255,255,255,.75);
+    padding: .5em 0 .5em 2em;
+    font-style: italic;
+
+    &:before {
+      content: "\201C";
+      display: block;
+      font-size: 3em;
+      line-height: .3333;
+      position: absolute;
+      left: .1em;
+      top: .35em;
+    }
+    &:after {
+      content: "\201D";
+      display: inline-block;
+      font-size: 3em;
+      line-height: .01;
+      vertical-align: bottom;
+    }
+  }
+
+
+
+  .story-content {
+    position: absolute;
+    top: 79.2022792%;
+    left: 7%;
+    width: 85.348285%;
+    height: 18.5185185%;
+    overflow: hidden;
+
+    h2 {
+      margin: 0;
+      font-size: 1.125em;
+      line-height: 1.25;
+    }
+    p {
+      margin: 0;
+      font-size: 1em;
+      line-height: 1.25em;
+
+      a {
+        font-size: .75em;
+      }
+    }
+  }
+
+  &:nth-of-type(3n+1) {
+    @include transform(rotate(-2deg));
+    margin-top: -3em;
+  }
+  &:nth-of-type(3n) {
+    @include transform(rotate(3deg));
+  }
+}
+
+
 /* # Share Your Story Page
 ================================================== */
-
 .teach-sys-content {
   font: normal 14px/1.5 $primary-font;
 
@@ -1536,9 +1712,52 @@ h1.sys-headline {
   }
 }
 
+// the post-it
+.sys-cta {
+  @include box-sizing(border-box);
+  width: 293px;
+  height: 294px;
+  overflow: hidden;
+  background: transparent image-url("post_it_paperclip_293x294.png") scroll no-repeat top left;
+  font-size: 1.33333em; // 16px;
+  line-height: 1.25;
+  color: black;
+  margin: 1em auto;
+  padding: 1.5em 1em 1em 2em;
+  text-align: center;
+
+  @include transform(rotate(4deg));
+
+  h3 {
+    font: normal 2em/1 $cursive-font;
+    text-decoration: underline;
+    margin-bottom: .5em;
+    text-align: center;
+  }
+  .sys-cta-body {
+    text-align: left;
+    margin-bottom: 1em;
+  }
+  & > a {
+    padding: .5em 1em;
+    font: normal .8em/1.25 $secondary-font;
+    text-transform: uppercase;
+    color: white;
+    background-color: $primary-color;
+  }
+  @media (min-width: 768px) {
+    position: absolute;
+    top: -12px;
+    right: -5px;
+    margin: 0;
+    background-image: image-url("post_it_paperclip_315x241.png");
+    max-width: 315px;
+    max-height: 241px;
+  }
+}
+
 .sys-tips {
   h2 {
-
     background: transparent image-url("sys-subhead-bg.png") scroll no-repeat top left;
     padding: 2.5em 0 2em .5em;
     font-size: 1em;
