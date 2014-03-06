@@ -596,7 +596,7 @@ a {
 .teach-video-page,
 .page-wordlet-teach-alliances .content,
 .teach-news-content,
-.teach-sys-content,
+.teach-story-content,
 .teach-film-content,
 .teach-fund-about-content {
   position: relative;
@@ -610,7 +610,7 @@ a {
   .teach-video-page,
   .page-wordlet-teach-alliances .content,
   .teach-news-content,
-  .teach-sys-content,
+  .teach-story-content,
   .teach-film-content,
   .teach-fund-about-content {
     margin-top: 0;
@@ -620,7 +620,7 @@ a {
 .teach-video-page .content-headline,
 .page-wordlet-teach-alliances .content .content-headline,
 .teach-news-content .content-headline,
-.teach-sys-content .content-headline,
+.teach-story-content .content-headline,
 .teach-film-content .content-headline,
 .teach-fund-about-content .content-headline {
   font-family: "GlyphaLTPro-Black", serif;
@@ -635,7 +635,7 @@ a {
   .teach-video-page .content-headline,
   .page-wordlet-teach-alliances .content .content-headline,
   .teach-news-content .content-headline,
-  .teach-sys-content .content-headline,
+  .teach-story-content .content-headline,
   .teach-film-content .content-headline,
   .teach-fund-about-content .content-headline {
     font-size: 30px;
@@ -645,7 +645,7 @@ a {
 .teach-video-page .content-subheadline,
 .page-wordlet-teach-alliances .content .content-subheadline,
 .teach-news-content .content-subheadline,
-.teach-sys-content .content-subheadline,
+.teach-story-content .content-subheadline,
 .teach-film-content .content-subheadline,
 .teach-fund-about-content .content-subheadline {
   font-weight: normal;
@@ -658,7 +658,7 @@ a {
 .teach-video-page .main-video-wrapper,
 .page-wordlet-teach-alliances .content .main-video-wrapper,
 .teach-news-content .main-video-wrapper,
-.teach-sys-content .main-video-wrapper,
+.teach-story-content .main-video-wrapper,
 .teach-film-content .main-video-wrapper,
 .teach-fund-about-content .main-video-wrapper {
   clear: right;
@@ -676,7 +676,7 @@ a {
   .teach-video-page .main-video-wrapper,
   .page-wordlet-teach-alliances .content .main-video-wrapper,
   .teach-news-content .main-video-wrapper,
-  .teach-sys-content .main-video-wrapper,
+  .teach-story-content .main-video-wrapper,
   .teach-film-content .main-video-wrapper,
   .teach-fund-about-content .main-video-wrapper {
     -webkit-transform: scale(1.02, 1.02);
@@ -689,7 +689,7 @@ a {
 .teach-video-page .ad,
 .page-wordlet-teach-alliances .content .ad,
 .teach-news-content .ad,
-.teach-sys-content .ad,
+.teach-story-content .ad,
 .teach-film-content .ad,
 .teach-fund-about-content .ad {
   width: 728px;
@@ -705,7 +705,7 @@ a {
   .teach-video-page .ad,
   .page-wordlet-teach-alliances .content .ad,
   .teach-news-content .ad,
-  .teach-sys-content .ad,
+  .teach-story-content .ad,
   .teach-film-content .ad,
   .teach-fund-about-content .ad {
     display: none;

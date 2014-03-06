@@ -1,3 +1,3 @@
-<div class="content teach-browse-stories-content">
+<div class="content teach-story-content">
     TEACHER STORIES
 </div>
