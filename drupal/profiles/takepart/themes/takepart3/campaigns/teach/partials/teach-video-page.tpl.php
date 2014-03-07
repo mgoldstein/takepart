@@ -48,7 +48,4 @@
         <? include('teach-social-block.tpl.php') ?>
     </section>
     <? include('teach-watch-promo.tpl.php') ?>
-    <div class="ad">
-        <?=w('ad')?>
-    </div>
 </div>
