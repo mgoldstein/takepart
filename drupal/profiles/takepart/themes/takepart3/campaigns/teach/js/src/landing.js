@@ -33,6 +33,17 @@
   // not using Drupal.behaviors because
   // this code has nothing to do with Drupal
   $(document).ready(function(){
+
+    var $mostStoriesNav = $('#most-stories-nav');
+    var $mostStoriesLists = $('.most-stories-list');
+    $mostStoriesLists.hide().filter(':first').show();
+    $mostStoriesNav.find('a:first').addClass('active');
+    $mostStoriesNav.on('click', 'a', function(e){
+      e.preventDefault();
+      $mostStoriesNav.find('a').removeClass('active').filter(this).addClass('active');
+      $mostStoriesLists.hide().filter(e.target.hash).show();
+    });
+
     $('.featured-stories').find('.featured-story').each(function() {
       var $this = $(this);
       $this.html(tmpl('featured_story_template', {}));

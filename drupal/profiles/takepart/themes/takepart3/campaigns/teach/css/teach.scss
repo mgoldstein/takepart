@@ -26,6 +26,70 @@ $body-copy-black: #313131;
 @import url(//fonts.googleapis.com/css?family=Shadows+Into+Light);
 // font-family: 'Shadows Into Light', cursive;
 
+/* # Sprites
+================================================== */
+
+@import "stats/*.png";
+@include all-stats-sprites;
+
+
+/* # Mixins
+================================================== */
+
+@mixin dollar-sign {
+    &:before {
+    display: inline-block;
+    vertical-align: top;
+    content: "$";
+    font-size: .6em;
+    line-height: 1;
+  }
+}
+
+@mixin sys-input-styling {
+    font-family: $primary-font;
+    @include box-sizing(border-box);
+    @include border-radius(4px);
+    border: 1px solid #ccc;
+    @include box-shadow(-4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999);
+    background-color: white;
+}
+
+@mixin sys-input-error-styling {
+  @include box-shadow(-4px -4px #D00, -4px 4px #D00, 4px -4px #D00, 4px 4px #D00, inset 0 0 4px #999);
+  color: #d00;
+}
+
+@mixin big-number-list {
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  counter-reset: li;
+  li {
+    list-style-type: none;
+    position: relative;
+    padding-left: 3em;
+    &:before {
+      content: counter(li);
+      counter-increment: li;
+      display: block;
+      position: absolute;
+      left: 0;
+      font: normal 2.5em/1 $secondary-font;
+      width: 1em;
+    }
+  }
+}
+
+@mixin campaign-stat {
+  color: black;
+  font-weight: normal;
+  font-family: $secondary-font;
+  text-shadow: 1px 1px $primary-color;
+}
+
 /* # General
 ================================================== */
 #page-wrapper {
@@ -1054,26 +1118,7 @@ a {
   }
 
   ol {
-    &:after {
-      content: " ";
-      display: block;
-      clear: both;
-    }
-    counter-reset: li;
-    li {
-      list-style-type: none;
-      position: relative;
-      padding-left: 3em;
-      &:before {
-        content: counter(li);
-        counter-increment: li;
-        display: block;
-        position: absolute;
-        left: 0;
-        font: normal 2.5em/1 $secondary-font;
-        width: 1em;
-      }
-    }
+    @include big-number-list;
   }
 
   .teach-watch-promo {
@@ -1423,7 +1468,6 @@ a {
   .pull-left  { float: left;  }
 }
 
-
 /* # Teacher Stories Landing Page
 ================================================== */
 .teach-teacher-stories-content {
@@ -1439,12 +1483,20 @@ a {
 
 .sys-stats {
   position: relative;
+  margin: 1em auto;
+  font-size: 1.333333333em;
+  line-height: 1.25;
+
+  .campaign-stat {
+    @include campaign-stat;
+  }
 
   .sys-stats-content {
     background: transparent image-url('notebook_paper_middle.png') scroll repeat-y top center;
     background-size: contain;    
     
-    padding: 0 5% 0 15%;
+    padding: 0 5% 0 14%;
+
     //micro clearfix, to prevent margin collapse
     &:before,
     &:after {
@@ -1456,8 +1508,6 @@ a {
       margin-top: -1em;
     }
   }
-
-  margin: 1em auto;
 
   &:before,
   &:after {
@@ -1475,12 +1525,115 @@ a {
   }
 
   h2 {
-    font: normal 3em/1 $cursive-font;
     position: relative;
+    font: normal 2.5em/1 $cursive-font;
+    margin: 1em 0 .5em -.5em;
+    @include transform(rotate(-3deg));
     span {
       display: block;
       &:last-child {
         text-decoration: underline;
+      }
+    }
+  }
+
+  p,
+  ol {
+    font-size: 1em;
+    color: black;
+  }
+
+  nav {
+    margin: 1em 0;
+    text-align: center;
+    a.active {
+      color: black;
+      font-weight: bold;
+      cursor: normal;
+      text-decoration: underline;
+    }
+  }
+
+  .teach-fund-headline {
+    float: left;
+    span:nth-of-type(1) {
+      font-size: 0.6em;
+      line-height: 1;
+      margin-bottom: -.5em;
+      margin-left: 1.5em;
+    }
+  }
+
+  .teach-fund-count {
+    float: right;
+    text-align: right;
+    color: black;
+    @include transform(rotate(3deg));
+    span {
+      display: block;
+      &.count {
+        font-size: 3em;
+        margin-top: .5em;
+        @include dollar-sign;
+      }
+      &:last-of-type {
+        font: bold 1.5em/1 $cursive-font;
+      }
+    }
+  }
+
+  .teach-fund-body {
+    clear: both;
+  }
+
+  .teach-fund-button {
+    text-align: center;
+    a {
+      display: inline-block;
+      padding: .5em 1em;
+      font-family: $secondary-font;
+      text-transform: uppercase;
+      color: white;
+      background-color: black;
+    }
+  }
+
+  .most-stories-headline {
+    font-size: 2.5em;
+    letter-spacing: -1px;
+  }
+
+  .most-stories-list {
+    @include big-number-list;
+    li {
+      margin-bottom: 1em;
+      padding-left: 2.5em;
+      &:before {
+        @include campaign-stat;
+      }
+    }
+  }
+
+  .teacher-story-stat {
+    margin: 0 auto 1em;
+    width: 50%;
+    padding-left: 65px;
+
+    font-family: $secondary-font;
+    text-transform: uppercase;
+    @media (min-width: 1000px) {
+      @include box-sizing(border-box);
+      // padding: 0 10px 0 60px;
+      margin: 0 0 1em;
+      float: left;
+    }
+
+    span {
+      display: block;
+      font-size: 1.125em;
+      line-height: 1;
+      &.campaign-stat {
+        font-size: 2.25em;
       }
     }
   }
@@ -1688,13 +1841,7 @@ h1.sys-headline {
         text-align: center;
         color: black;
         font: normal 1.5em/1 $secondary-font;
-        &:before {
-          display: inline-block;
-          vertical-align: top;
-          content: "$";
-          font-size: .6em;
-          line-height: 1;
-        }
+        @include dollar-sign;
       }
       &:nth-child(3) {
         text-align: right;
@@ -1785,21 +1932,6 @@ h1.sys-headline {
   li {
     margin-bottom: .65em;
   }
-}
-
-// here's a mixin for the input styling
-
-@mixin sys-input-styling {
-    font-family: $primary-font;
-    @include box-sizing(border-box);
-    @include border-radius(4px);
-    border: 1px solid #ccc;
-    @include box-shadow(-4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999);
-    background-color: white;
-}
-@mixin sys-input-error-styling {
-  @include box-shadow(-4px -4px #D00, -4px 4px #D00, 4px -4px #D00, 4px 4px #D00, inset 0 0 4px #999);
-  color: #d00;
 }
 
 // this is the form
