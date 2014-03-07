@@ -33,7 +33,6 @@
   // not using Drupal.behaviors because
   // this code has nothing to do with Drupal
   $(document).ready(function(){
-
     var $body = $('body');
 
     // delegate clicks on stories/schools
@@ -45,6 +44,21 @@
         alert('@todo - navigate to school ID ' + $(this).data('schoolid'));
       })
     ;
+
+    // setup form browse behavior
+    $('#browse-by-school')
+      .schoolBrowser()
+      .on('submit', function(e) {
+        e.preventDefault();
+        var $this = $(this),
+            id = $this.find('#school_id').val();
+
+        if (id != 0) {
+          alert('@todo - navigate to school ID ' + id);
+        } else {
+          alert('@todo - navigate to "other" schools in ' + $this.find('#school_state').val());
+        }
+      });
 
     // set up most stories lists 
     var $mostStoriesNav = $('#most-stories-nav');

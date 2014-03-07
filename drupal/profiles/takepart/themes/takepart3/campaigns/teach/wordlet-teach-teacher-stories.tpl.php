@@ -10,7 +10,7 @@
             <span>Find Stories from</span>
             <span>Your School</span>
           </h2>
-          <div>WIDGET GOES HERE</div>
+          <?php include ('partials/teach-sys-browse-by-school.tpl.php'); ?>
 
           <h2 class="teach-fund-headline"><span>the</span><span>Teach Fund</span></h2>
           <div class="teach-fund-count"><span class="campaign-stat count"><?php print w('update_count'); ?></span><span>and counting</span></div>

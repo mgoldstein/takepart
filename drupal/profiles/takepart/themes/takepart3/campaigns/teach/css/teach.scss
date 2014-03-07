@@ -1554,6 +1554,52 @@ a {
     }
   }
 
+
+  .sys-form {
+
+
+    input.input-school-name[type=text] {
+      margin-top: 1em;
+    }
+
+    @media (min-width: 1000px) {
+      .customSelect {
+        width: 6em;
+        margin: 0;
+      }
+      input.input-school-name[type=text] {
+        width: 240px;
+        margin-top: 0;
+        margin-left: 1em;
+      }
+    }
+
+    input[type=submit] {
+      position: absolute;
+      right: 22px;
+      bottom: 10px;
+      background: transparent image-url("school-search-submit.png") scroll no-repeat top left;
+      background-size: 24px auto;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      text-indent: 100%;
+      overflow: hidden;
+
+      // override button behavior
+      &:active {
+        position: absolute;
+        top: auto;
+        bottom: 9px;
+      }
+    }
+
+    [disabled] ~ input[type=submit],
+    .in-progress ~ input[type=submit] {
+      display: none;
+    }
+  }
+
   .teach-fund-headline {
     float: left;
     span:nth-of-type(1) {
