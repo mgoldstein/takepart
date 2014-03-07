@@ -42,6 +42,30 @@
   font-weight: bold;
 }
 
+/* # Sprites
+================================================== */
+.stats-sprite, .stats-schools, .stats-states, .stats-stories, .stats-teachers {
+  background: url('../img/stats-s834cc49059.png') no-repeat;
+}
+
+.stats-schools {
+  background-position: 0 -129px;
+}
+
+.stats-states {
+  background-position: 0 -188px;
+}
+
+.stats-stories {
+  background-position: 0 0;
+}
+
+.stats-teachers {
+  background-position: 0 -64px;
+}
+
+/* # Mixins
+================================================== */
 /* # General
 ================================================== */
 #page-wrapper {
@@ -1582,11 +1606,19 @@ a {
 .sys-stats {
   position: relative;
   margin: 1em auto;
+  font-size: 1.333333333em;
+  line-height: 1.25;
+}
+.sys-stats .campaign-stat {
+  color: black;
+  font-weight: normal;
+  font-family: "GlyphaLTPro-Black", serif;
+  text-shadow: 1px 1px #ea5f11;
 }
 .sys-stats .sys-stats-content {
-  background: transparent url('../img/notebook_paper_middle.png?1394144499') scroll repeat-y top center;
+  background: transparent url('../img/notebook_paper_middle.png?1394149748') scroll repeat-y top center;
   background-size: contain;
-  padding: 0 5% 0 15%;
+  padding: 0 5% 0 14%;
 }
 .sys-stats .sys-stats-content:before, .sys-stats .sys-stats-content:after {
   content: ' ';
@@ -1599,25 +1631,156 @@ a {
 .sys-stats:before, .sys-stats:after {
   content: ' ';
   display: block;
-  background: transparent url('../img/notebook_paper_top.png?1394068903') scroll no-repeat top center;
+  background: transparent url('../img/notebook_paper_top.png?1394149748') scroll no-repeat top center;
   background-size: contain;
   width: 100%;
   height: 0;
   padding-top: 23.7250554%;
 }
 .sys-stats:after {
-  background-image: url('../img/notebook_paper_bottom.png?1394069123');
+  background-image: url('../img/notebook_paper_bottom.png?1394149748');
   padding-top: 21.0643016%;
 }
 .sys-stats h2 {
-  font: normal 3em/1 "Shadows Into Light", cursive;
   position: relative;
+  font: normal 2.5em/1 "Shadows Into Light", cursive;
+  margin: 1em 0 .5em -.5em;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  transform: rotate(-3deg);
 }
 .sys-stats h2 span {
   display: block;
 }
 .sys-stats h2 span:last-child {
   text-decoration: underline;
+}
+.sys-stats p,
+.sys-stats ol {
+  font-size: 1em;
+  color: black;
+}
+.sys-stats nav {
+  margin: 1em 0;
+  text-align: center;
+}
+.sys-stats nav a.active {
+  color: black;
+  font-weight: bold;
+  cursor: normal;
+  text-decoration: underline;
+}
+.sys-stats .teach-fund-headline {
+  float: left;
+}
+.sys-stats .teach-fund-headline span:nth-of-type(1) {
+  font-size: 0.6em;
+  line-height: 1;
+  margin-bottom: -.5em;
+  margin-left: 1.5em;
+}
+.sys-stats .teach-fund-count {
+  float: right;
+  text-align: right;
+  color: black;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
+}
+.sys-stats .teach-fund-count span {
+  display: block;
+}
+.sys-stats .teach-fund-count span.count {
+  font-size: 3em;
+  margin-top: .5em;
+}
+.sys-stats .teach-fund-count span.count:before {
+  display: inline-block;
+  vertical-align: top;
+  content: "$";
+  font-size: .6em;
+  line-height: 1;
+}
+.sys-stats .teach-fund-count span:last-of-type {
+  font: bold 1.5em/1 "Shadows Into Light", cursive;
+}
+.sys-stats .teach-fund-body {
+  clear: both;
+}
+.sys-stats .teach-fund-button {
+  text-align: center;
+}
+.sys-stats .teach-fund-button a {
+  display: inline-block;
+  padding: .5em 1em;
+  font-family: "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+  color: white;
+  background-color: black;
+}
+.sys-stats .most-stories-headline {
+  font-size: 2.5em;
+  letter-spacing: -1px;
+}
+.sys-stats .most-stories-list {
+  counter-reset: li;
+}
+.sys-stats .most-stories-list:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+.sys-stats .most-stories-list li {
+  list-style-type: none;
+  position: relative;
+  padding-left: 3em;
+}
+.sys-stats .most-stories-list li:before {
+  content: counter(li);
+  counter-increment: li;
+  display: block;
+  position: absolute;
+  left: 0;
+  font: normal 2.5em/1 "GlyphaLTPro-Black", serif;
+  width: 1em;
+}
+.sys-stats .most-stories-list li {
+  margin-bottom: 1em;
+  padding-left: 2.5em;
+}
+.sys-stats .most-stories-list li:before {
+  color: black;
+  font-weight: normal;
+  font-family: "GlyphaLTPro-Black", serif;
+  text-shadow: 1px 1px #ea5f11;
+}
+.sys-stats .teacher-story-stat {
+  margin: 0 auto 1em;
+  width: 50%;
+  padding-left: 65px;
+  font-family: "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+}
+@media (min-width: 1000px) {
+  .sys-stats .teacher-story-stat {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 0 1em;
+    float: left;
+  }
+}
+.sys-stats .teacher-story-stat span {
+  display: block;
+  font-size: 1.125em;
+  line-height: 1;
+}
+.sys-stats .teacher-story-stat span.campaign-stat {
+  font-size: 2.25em;
 }
 
 @media (min-width: 1000px) {
@@ -1638,7 +1801,7 @@ a {
   height: 0;
   padding-top: 92.6121372%;
   margin-bottom: 1em;
-  background: transparent url('../img/polaroid_blue_pin.png?1394137923') scroll no-repeat top center;
+  background: transparent url('../img/polaroid_blue_pin.png?1394149748') scroll no-repeat top center;
   background-size: contain;
   overflow: hidden;
   position: relative;
@@ -1849,7 +2012,7 @@ h1.sys-headline span {
   width: 293px;
   height: 294px;
   overflow: hidden;
-  background: transparent url('../img/post_it_paperclip_293x294.png?1394068327') scroll no-repeat top left;
+  background: transparent url('../img/post_it_paperclip_293x294.png?1394149748') scroll no-repeat top left;
   font-size: 1.33333em;
   line-height: 1.25;
   color: black;
@@ -1885,7 +2048,7 @@ h1.sys-headline span {
     top: -12px;
     right: -5px;
     margin: 0;
-    background-image: url('../img/post_it_paperclip_315x241.png?1394068461');
+    background-image: url('../img/post_it_paperclip_315x241.png?1394149748');
     max-width: 315px;
     max-height: 241px;
   }

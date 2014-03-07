@@ -5,14 +5,54 @@
     <div class="col-1-2">
       <section class="sys-stats">
         <div class="sys-stats-content">
+
           <h2>
-            <span>Headline Number 1</span>
-            <span>Headline Number 2</span>
-            <span>Headline Number 3</span>
+            <span>Find Stories from</span>
+            <span>Your School</span>
           </h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div>WIDGET GOES HERE</div>
+
+          <h2 class="teach-fund-headline"><span>the</span><span>Teach Fund</span></h2>
+          <div class="teach-fund-count"><span class="campaign-stat count"><?php print w('update_count'); ?></span><span>and counting</span></div>
+          <div class="teach-fund-body"><?php print w('teach_fund_body'); ?></div>
+          <?php $w = w('teach_fund_button'); ?>
+          <div class="teach-fund-button"><a href="<?php print $w->href; ?>" wa('teach_fund_button')><?php print $w->single; ?></a></div>
+
+          <h2 class="most-stories-headline"><span>Schools with the Most Stories</span></h2>
+          <ol class="most-stories-list" id="most-stories-latest">
+            <li>LATEST School Name<br>City Name, ST</li>
+            <li>School Name<br>City Name, ST</li>
+            <li>School Name<br>City Name, ST</li>
+            <li>School Name<br>City Name, ST</li>
+            <li>School Name<br>City Name, ST</li>
+          </ol>
+          <ol class="most-stories-list" id="most-stories-overall">
+            <li>OVERALL School Name<br>City Name, ST</li>
+            <li>School Name<br>City Name, ST</li>
+            <li>School Name<br>City Name, ST</li>
+            <li>School Name<br>City Name, ST</li>
+            <li>School Name<br>City Name, ST</li>
+          </ol>
+          <nav id="most-stories-nav" class="most-stories-nav"><a href="#most-stories-latest">show latest</a> | <a href="#most-stories-overall">overall</a></nav>
+
+          <h2><span>Teacher Story Stats</span></h2>
+          <div class="teacher-story-stat stats-stories">
+            <span class="campaign-stat">54,321</span>
+            <span class="stat-label">Stories</span>
+          </div>
+          <div class="teacher-story-stat stats-teachers">
+            <span class="campaign-stat">54,321</span>
+            <span class="stat-label">Teachers</span>
+          </div>
+          <div class="teacher-story-stat stats-schools">
+            <span class="campaign-stat">54,321</span>
+            <span class="stat-label">Schools</span>
+          </div>
+          <div class="teacher-story-stat stats-states">
+            <span class="campaign-stat">53</span>
+            <span class="stat-label">States</span>
+          </div>
+          <nav><a href="/teach/stories">browse stories</a>
         </div>
       </section>
     </div>
