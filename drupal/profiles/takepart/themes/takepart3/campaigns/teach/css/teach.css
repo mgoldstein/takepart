@@ -1605,6 +1605,12 @@ a {
     width: 60%;
   }
 }
+@media (min-width: 1000px) {
+  .teach-browse-stories-content .sys-intro-body,
+  .teach-teacher-stories-content .sys-intro-body {
+    width: 68%;
+  }
+}
 
 /* # Teacher Stories Landing Page
 ================================================== */

@@ -1475,9 +1475,12 @@ a {
   color: $body-copy-black;
   strong { color: $dark-grey; }
 
-  @media (min-width: 768px) {
-    .sys-intro-body {
+  .sys-intro-body {
+    @media (min-width: 768px) {
       width: 60%;
+    }
+    @media (min-width: 1000px) {
+      width: 68%;
     }
   }
 }
