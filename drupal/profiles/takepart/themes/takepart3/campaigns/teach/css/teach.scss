@@ -1468,11 +1468,12 @@ a {
   .pull-left  { float: left;  }
 }
 
-/* # Teacher Stories Landing Page
+/* # Teacher Stories Pages
 ================================================== */
+.teach-browse-stories-content,
 .teach-teacher-stories-content {
-  color: $dark-grey;
-  strong { color: $primary-grey; }
+  color: $body-copy-black;
+  strong { color: $dark-grey; }
 
   @media (min-width: 768px) {
     .sys-intro-body {
@@ -1480,6 +1481,9 @@ a {
     }
   }
 }
+
+/* # Teacher Stories Landing Page
+================================================== */
 
 .sys-stats {
   position: relative;
@@ -1927,7 +1931,7 @@ h1.sys-headline {
   @include transform(rotate(4deg));
 
   h3 {
-    font: normal 2em/1 $cursive-font;
+    font: bold 2em/1 $cursive-font;
     text-decoration: underline;
     margin-bottom: .5em;
     text-align: center;

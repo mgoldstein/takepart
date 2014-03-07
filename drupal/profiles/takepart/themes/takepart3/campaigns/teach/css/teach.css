@@ -1589,20 +1589,25 @@ a {
     float: left;
   }
 }
-/* # Teacher Stories Landing Page
+/* # Teacher Stories Pages
 ================================================== */
+.teach-browse-stories-content,
 .teach-teacher-stories-content {
+  color: #313131;
+}
+.teach-browse-stories-content strong,
+.teach-teacher-stories-content strong {
   color: #777777;
 }
-.teach-teacher-stories-content strong {
-  color: #666666;
-}
 @media (min-width: 768px) {
+  .teach-browse-stories-content .sys-intro-body,
   .teach-teacher-stories-content .sys-intro-body {
     width: 60%;
   }
 }
 
+/* # Teacher Stories Landing Page
+================================================== */
 .sys-stats {
   position: relative;
   margin: 1em auto;
@@ -1690,7 +1695,7 @@ a {
   position: absolute;
   right: 22px;
   bottom: 10px;
-  background: transparent url('../img/school-search-submit.png?1394230780') scroll no-repeat top left;
+  background: transparent url('../img/school-search-submit.png?1394231687') scroll no-repeat top left;
   background-size: 24px auto;
   width: 24px;
   height: 24px;
@@ -2066,7 +2071,7 @@ h1.sys-headline span {
   transform: rotate(4deg);
 }
 .sys-cta h3 {
-  font: normal 2em/1 "Shadows Into Light", cursive;
+  font: bold 2em/1 "Shadows Into Light", cursive;
   text-decoration: underline;
   margin-bottom: .5em;
   text-align: center;
