@@ -1616,7 +1616,7 @@ a {
   text-shadow: 1px 1px #ea5f11;
 }
 .sys-stats .sys-stats-content {
-  background: transparent url('../img/notebook_paper_middle.png?1394149748') scroll repeat-y top center;
+  background: transparent url('../img/notebook_paper_middle.png?1394221614') scroll repeat-y top center;
   background-size: contain;
   padding: 0 5% 0 14%;
 }
@@ -1631,14 +1631,14 @@ a {
 .sys-stats:before, .sys-stats:after {
   content: ' ';
   display: block;
-  background: transparent url('../img/notebook_paper_top.png?1394149748') scroll no-repeat top center;
+  background: transparent url('../img/notebook_paper_top.png?1394221614') scroll no-repeat top center;
   background-size: contain;
   width: 100%;
   height: 0;
   padding-top: 23.7250554%;
 }
 .sys-stats:after {
-  background-image: url('../img/notebook_paper_bottom.png?1394149748');
+  background-image: url('../img/notebook_paper_bottom.png?1394221614');
   padding-top: 21.0643016%;
 }
 .sys-stats h2 {
@@ -1660,7 +1660,7 @@ a {
 .sys-stats p,
 .sys-stats ol {
   font-size: 1em;
-  color: black;
+  color: #313131;
 }
 .sys-stats nav {
   margin: 1em 0;
@@ -1671,6 +1671,41 @@ a {
   font-weight: bold;
   cursor: normal;
   text-decoration: underline;
+}
+.sys-stats .sys-form input.input-school-name[type=text] {
+  margin-top: 1em;
+}
+@media (min-width: 1000px) {
+  .sys-stats .sys-form .customSelect {
+    width: 6em;
+    margin: 0;
+  }
+  .sys-stats .sys-form input.input-school-name[type=text] {
+    width: 240px;
+    margin-top: 0;
+    margin-left: 1em;
+  }
+}
+.sys-stats .sys-form input[type=submit] {
+  position: absolute;
+  right: 22px;
+  bottom: 10px;
+  background: transparent url('../img/school-search-submit.png?1394230780') scroll no-repeat top left;
+  background-size: 24px auto;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  text-indent: 100%;
+  overflow: hidden;
+}
+.sys-stats .sys-form input[type=submit]:active {
+  position: absolute;
+  top: auto;
+  bottom: 9px;
+}
+.sys-stats .sys-form [disabled] ~ input[type=submit],
+.sys-stats .sys-form .in-progress ~ input[type=submit] {
+  display: none;
 }
 .sys-stats .teach-fund-headline {
   float: left;
@@ -1773,6 +1808,11 @@ a {
     margin: 0 0 1em;
     float: left;
   }
+  .sys-stats .teacher-story-stat:last-of-type {
+    float: none;
+    clear: both;
+    margin: 0 auto 1em;
+  }
 }
 .sys-stats .teacher-story-stat span {
   display: block;
@@ -1801,7 +1841,7 @@ a {
   height: 0;
   padding-top: 92.6121372%;
   margin-bottom: 1em;
-  background: transparent url('../img/polaroid_blue_pin.png?1394149748') scroll no-repeat top center;
+  background: transparent url('../img/polaroid_blue_pin.png?1394221614') scroll no-repeat top center;
   background-size: contain;
   overflow: hidden;
   position: relative;
@@ -2012,7 +2052,7 @@ h1.sys-headline span {
   width: 293px;
   height: 294px;
   overflow: hidden;
-  background: transparent url('../img/post_it_paperclip_293x294.png?1394149748') scroll no-repeat top left;
+  background: transparent url('../img/post_it_paperclip_293x294.png?1394221614') scroll no-repeat top left;
   font-size: 1.33333em;
   line-height: 1.25;
   color: black;
@@ -2048,7 +2088,7 @@ h1.sys-headline span {
     top: -12px;
     right: -5px;
     margin: 0;
-    background-image: url('../img/post_it_paperclip_315x241.png?1394149748');
+    background-image: url('../img/post_it_paperclip_315x241.png?1394221614');
     max-width: 315px;
     max-height: 241px;
   }

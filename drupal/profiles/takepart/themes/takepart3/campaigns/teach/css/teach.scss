@@ -1540,7 +1540,7 @@ a {
   p,
   ol {
     font-size: 1em;
-    color: black;
+    color: $body-copy-black;
   }
 
   nav {
@@ -1551,6 +1551,52 @@ a {
       font-weight: bold;
       cursor: normal;
       text-decoration: underline;
+    }
+  }
+
+
+  .sys-form {
+
+
+    input.input-school-name[type=text] {
+      margin-top: 1em;
+    }
+
+    @media (min-width: 1000px) {
+      .customSelect {
+        width: 6em;
+        margin: 0;
+      }
+      input.input-school-name[type=text] {
+        width: 240px;
+        margin-top: 0;
+        margin-left: 1em;
+      }
+    }
+
+    input[type=submit] {
+      position: absolute;
+      right: 22px;
+      bottom: 10px;
+      background: transparent image-url("school-search-submit.png") scroll no-repeat top left;
+      background-size: 24px auto;
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      text-indent: 100%;
+      overflow: hidden;
+
+      // override button behavior
+      &:active {
+        position: absolute;
+        top: auto;
+        bottom: 9px;
+      }
+    }
+
+    [disabled] ~ input[type=submit],
+    .in-progress ~ input[type=submit] {
+      display: none;
     }
   }
 
@@ -1626,6 +1672,11 @@ a {
       // padding: 0 10px 0 60px;
       margin: 0 0 1em;
       float: left;
+      &:last-of-type {
+        float: none;
+        clear: both;
+        margin: 0 auto 1em;
+      }
     }
 
     span {

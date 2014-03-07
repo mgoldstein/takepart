@@ -30,9 +30,13 @@ module.exports = function(grunt) {
             'js/src/form.js'
           ],
           '.tmp/<%= pkg.name %>.landing.js': [
+            'bower_components/jquery.customSelect/jquery.customSelect.js',
+            'js/src/jquery.school-browser.js',
             'js/src/landing.js'
           ],
           '.tmp/<%= pkg.name %>.app.js': [
+            'bower_components/jquery.customSelect/jquery.customSelect.js',
+            'js/src/jquery.school-browser.js',
             'js/src/app.js'
           ]
         }
