@@ -299,7 +299,7 @@
 		$schoolCity.val('');
             }
 	}).on('blur', function() {
-	    $schoolName.removeClass('<in-progress></in-progress>');
+	    $schoolName.removeClass('in-progress');
 	})
 
         var resetSchoolNameMessage = function() {
