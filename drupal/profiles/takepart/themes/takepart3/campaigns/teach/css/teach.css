@@ -1660,7 +1660,7 @@ a {
 .sys-stats p,
 .sys-stats ol {
   font-size: 1em;
-  color: black;
+  color: #313131;
 }
 .sys-stats nav {
   margin: 1em 0;
