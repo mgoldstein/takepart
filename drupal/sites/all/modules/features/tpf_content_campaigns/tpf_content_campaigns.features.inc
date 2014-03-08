@@ -25,9 +25,9 @@ function tpf_content_campaigns_ctools_plugin_api($module = NULL, $api = NULL) {
 function tpf_content_campaigns_node_info() {
   $items = array(
     'campaign' => array(
-      'name' => t('campaign'),
+      'name' => t('Campaign'),
       'base' => 'node_content',
-      'description' => '',
+      'description' => t('New campaigns.  Campaign nodes host fields for the hero, menu, images, stylesheets, etc that are applied to all campaign pages referencing the campaign.'),
       'has_title' => '1',
       'title_label' => t('Title'),
       'help' => '',

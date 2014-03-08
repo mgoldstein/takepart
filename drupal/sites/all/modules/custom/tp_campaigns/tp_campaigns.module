@@ -14,6 +14,29 @@ function tp_campaigns_help($path, $arg) {
 	}
 }
 
+/**
+ * Implements hook_block_info().
+ */
+function tp_campaigns_block_info(){
+  $blocks = array();
+  $blocks['tp_campaigns_hero'] = array(
+    'info' => t('Campaign Hero')
+   );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tp_campaigns_block_view($delta = ''){
+  $block = array();
+  switch ($delta) {
+    case 'tp_campaigns_hero':
+      $block['content'] = tp_campaigns_hero();
+      break;
+  }
+  return $block;
+}
 
 /**
  * Implements hook_theme
@@ -32,6 +55,15 @@ function tp_campaigns_theme() {
       'variables' => array(
         'items' => array(),
         'entity' => '',
+      )
+    ),
+    'tp_campaigns_hero' => array(
+      'template' => 'campaign-hero',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+        'campaign_node' => '',
+
       )
     )
   );
@@ -106,7 +138,7 @@ function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
   //     ),
   //   ),
   // );
-
+  
   //Campaign Media Card
   $form['field_campaign_media_photo']['#states'] = array(
     'visible' => array(   // action to take.
@@ -137,3 +169,51 @@ function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
   );
 
 }
+
+function tp_campaigns_form_campaign_node_form_alter(&$form, &$form_state){
+
+  //if the menu has a value, disable it
+  if(isset($form_state['node']->field_campaign_menu['und'][0]['value']) == TRUE){
+    $form['field_campaign_menu']['#disabled'] = TRUE;
+    $form['field_campaign_menu']['#attributes']['class'][] = 'disabled';
+  }
+}
+
+/*
+ * Create us some menus.
+ */
+function tp_campaigns_node_presave($node) {
+  if($node->type == 'campaign' && isset($node->field_campaign_menu['und'][0]['value']) == true){
+  
+    //check to see if menu exists, if it doesn't, create it.  
+    $menu_name = $node->field_campaign_menu['und'][0]['value'];
+    if(menu_tree_all_data($menu_name) == NULL){
+      $menu = array(
+       'menu_name' => 'menu-'. $menu_name,
+       'title' => $node->title,
+       'description' => 'Campaign Menu For '. $node->title,
+      );
+    }
+    menu_save($menu); //uncomment this line when ready and no longer testing
+  }
+}
+
+
+function tp_campaigns_hero(){
+  // code for the tp campaigns block
+  $node = 'node';
+  $node = node_load(arg(1));
+  if(isset($node->field_campaign_reference['und'][0]['target_id']) == true){
+    $node = $node->field_campaign_reference['und'][0]['target_id'];
+    $campaign_node = node_load($node);
+  }
+
+  return theme('tp_campaigns_hero', array('campaign_node' => $campaign_node));
+}
+
+
+
+
+
+
+

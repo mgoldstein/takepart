@@ -23,6 +23,21 @@ body.node-type-campaign-card-social,
   $zen-column-count:  12;
   $zen-gutter-width:  30px; //TODO: change this to respond to the width of the containing element.
 
+
+  //make header full width for menu/branding
+  .header-wrapper{
+    padding: 0;
+  }
+  header#header{
+    max-width: 100%;
+    #block-tp4-support-tp4-slim-nav.block{
+      max-width: 980px;
+      margin: 0 auto;
+    }
+  }
+
+
+
   .card{
     @include zen-grid-item(12, 1);
     @include zen-clear();
@@ -168,10 +183,40 @@ body.node-type-campaign-page, #main.card-page{
   /*
    * Global Elements
    */
-  .panelizer-view-mode{
-    > h1{
-      margin-bottom: 20px;
-      text-align: center;
+  #block-tp-campaigns-tp-campaigns-hero{
+    width: 100%;
+    margin-bottom: 0;
+    .branding-header{
+      background-position: top center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    .menu{
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      ul.nice-menu{
+        clear:left;
+        float:left;
+        list-style:none;
+        margin:0;
+        padding:0;
+        position:relative;
+        left:50%;
+        text-align:center;
+        li{
+          display: block;
+          float: left;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          right: 50%;
+          li{
+            right: 0%;
+          }
+        }
+      }
     }
   }
   h1.card-title{
