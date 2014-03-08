@@ -28,8 +28,17 @@
           .insertAfter($schoolName)
         ;
 
+        var resizeTimeout = null;
         if ($.fn.customSelect) {
           $schoolState.not('.hasCustomSelect').customSelect();
+
+          $(window).on('resize', function(e) {
+            clearTimeout(resizeTimeout);
+
+            resizeTimeout = setTimeout(function() {
+              $schoolState.filter('.hasCustomSelect').trigger('update');
+            }, 750);
+          });
         }
 
         $schoolState.on('change', function() {

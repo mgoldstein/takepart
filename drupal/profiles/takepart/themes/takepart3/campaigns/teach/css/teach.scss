@@ -90,6 +90,33 @@ $body-copy-black: #313131;
   text-shadow: 1px 1px $primary-color;
 }
 
+@mixin magnifying-glass-submit {
+    input[type=submit] {
+    position: absolute;
+    right: 22px;
+    bottom: 10px;
+    background: transparent image-url("school-search-submit.png") scroll no-repeat top left;
+    background-size: 24px auto;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    text-indent: 100%;
+    overflow: hidden;
+
+    // override button behavior
+    &:active {
+      position: absolute;
+      top: auto;
+      bottom: 9px;
+    }
+  }
+
+  [disabled] ~ input[type=submit],
+  .in-progress ~ input[type=submit] {
+    display: none;
+  }
+}
+
 /* # General
 ================================================== */
 #page-wrapper {
@@ -273,28 +300,30 @@ $body-copy-black: #313131;
             color: black;
           }
         }
-        &:first-of-type {
-          margin: 0;
-          height: 43px;
-          a {
-	    display: block;
-            background: transparent image-url("menu-home.png") no-repeat scroll top left;
-            background-size: 21px;
-	    height: 21px;
-	    width: 21px;
-	    text-indent: 200%;
-            overflow: hidden;
-            margin: 7px;
-	    padding: 0;
-          }
-          &.active {
-            margin-top: 0;
+        @media (min-width: 768px) {
+          &:first-of-type {
+            margin: 0;
+            height: 43px;
             a {
+              display: block;
+              background: transparent image-url("menu-home.png") no-repeat scroll top left;
+              background-size: 21px;
+              height: 21px;
+              width: 21px;
+              text-indent: 200%;
+              overflow: hidden;
               margin: 7px;
-	      padding: 0;
-              background-position: 0 -21px;
+              padding: 0;
             }
-          }
+            &.active {
+              margin-top: 0;
+              a {
+                margin: 7px;
+                padding: 0;
+                background-position: 0 -21px;
+              }
+            }
+          }          
         }
         &.active {
           background: image-url('active_menu_bg.png') no-repeat top right;
@@ -1475,8 +1504,8 @@ a {
   color: $body-copy-black;
   strong { color: $dark-grey; }
 
-  @media (min-width: 768px) {
-    .sys-intro-body {
+  .sys-intro-body {
+    @media (min-width: 768px) {
       width: 60%;
     }
   }
@@ -1553,7 +1582,7 @@ a {
     a.active {
       color: black;
       font-weight: bold;
-      cursor: normal;
+      cursor: default;
       text-decoration: underline;
     }
   }
@@ -1578,30 +1607,8 @@ a {
       }
     }
 
-    input[type=submit] {
-      position: absolute;
-      right: 22px;
-      bottom: 10px;
-      background: transparent image-url("school-search-submit.png") scroll no-repeat top left;
-      background-size: 24px auto;
-      width: 24px;
-      height: 24px;
-      padding: 0;
-      text-indent: 100%;
-      overflow: hidden;
+    @include magnifying-glass-submit;
 
-      // override button behavior
-      &:active {
-        position: absolute;
-        top: auto;
-        bottom: 9px;
-      }
-    }
-
-    [disabled] ~ input[type=submit],
-    .in-progress ~ input[type=submit] {
-      display: none;
-    }
   }
 
   .teach-fund-headline {
@@ -2483,5 +2490,81 @@ h1.sys-headline {
     line-height: 1.5;
     color: #666;
   }
+}
 
+/* # Browse Stories Page
+================================================== */
+.teach-app {
+  .app-nav {
+    font: normal 1.666666667em/1 $secondary-font; 
+    text-align: center;
+    @media (min-width: 850px) {
+      text-align: left;
+    }
+    a {
+      display: inline-block;
+      margin-bottom: 1em;
+      margin-right: 1em;
+      text-transform: uppercase;
+      &.active {
+        color: black;
+        border-bottom: 4px solid black;
+        position: relative;
+        &:hover {
+          text-decoration: none;
+          cursor: default;
+        }
+        &:after {
+          content: ' ';
+          display: block;
+          position: absolute;
+          bottom: -16px; // 12px pseudo-element height plus 4px border
+          left: 50%;
+          margin-left: -6px;
+          width: 0;
+          height: 0;
+          border: 6px solid transparent;
+          border-top-color: black;
+        }
+      }
+    }
+  }
+
+  .sys-form {
+    background-color: white;
+    margin: 0 auto 5%;
+    padding: 2em 3em 1.5em;
+    border: 1px solid transparentize(black, .92);
+    @include box-shadow(0 0 8px transparentize(black, .94));
+    position: relative;
+
+    // man I hate these gull-wing shadows
+    &:after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 0;
+      padding: 2.8571429% 0;
+      background: transparent image-url("app-search-box-shadow.png") scroll no-repeat center top;
+      background-size: contain;
+    }
+
+    input[type=text].input-school-name {
+      margin-top: 1em;
+    }
+
+    @include magnifying-glass-submit;
+
+    @media (min-width: 1000px) {
+      max-width: 550px;
+      input[type=text].input-school-name {
+        width: 410px;
+        margin-top: 0;
+        margin-left: 1em;
+      }
+    }
+  }
 }

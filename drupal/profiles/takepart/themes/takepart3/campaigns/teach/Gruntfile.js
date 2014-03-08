@@ -37,6 +37,8 @@ module.exports = function(grunt) {
           '.tmp/<%= pkg.name %>.app.js': [
             'bower_components/jquery.customSelect/jquery.customSelect.js',
             'js/src/jquery.school-browser.js',
+            'bower_components/underscore/underscore.js',
+            'bower_components/backbone/backbone.js',
             'js/src/app.js'
           ]
         }
