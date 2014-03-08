@@ -19,6 +19,9 @@
     </header>
   </div>
   <main id="main" class="<?php print $content_classes. ' '. implode($variables['classes_array'], ' '); ?>">
+  <div class="preface">
+    <?php print render($page['preface']); ?>
+  </div>
     <div id="primary">
       <?php print $messages; ?>
       <?php print render($page['content']); ?>
@@ -35,3 +38,26 @@
   </div>
   <?php print render($page['bottom']); ?>
 </div>
+            <script type="text/javascript">
+              //initiating jQuery  
+              jQuery(function($) {
+                $(document).ready( function() {
+                  //enabling stickUp on the '.navbar-wrapper' class
+                  $('#block-tp-campaigns-tp-campaigns-hero').stickUp({
+                                parts: {
+                                  0:'home',
+                                  1:'features',
+                                  2: 'news',
+                                  3: 'installation',
+                                  4: 'one-pager',
+                                  5: 'extras',
+                                  6: 'wordpress',
+                                  7: 'contact'
+                                },
+                                itemClass: 'menuItem',
+                                itemHover: 'active'
+                              });
+                });
+              });
+            
+            </script>
