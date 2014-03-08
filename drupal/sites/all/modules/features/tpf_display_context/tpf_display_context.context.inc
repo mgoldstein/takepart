@@ -1724,6 +1724,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'region' => 'header',
           'weight' => '-8',
         ),
+        'tp_campaigns-tp_campaigns_hero' => array(
+          'module' => 'tp_campaigns',
+          'delta' => 'tp_campaigns_hero',
+          'region' => 'header',
+          'weight' => '-7',
+        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',

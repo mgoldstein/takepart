@@ -69,6 +69,37 @@ function tpf_content_campaigns_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_header_branding|node|campaign|form';
+  $field_group->group_name = 'group_header_branding';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Header/Branding',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_campaign_menu',
+      1 => 'field_campaign_background',
+      2 => 'field_campaign_bg_color',
+      3 => 'field_campaign_logo',
+      4 => 'field_campaign_min_height',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-header-branding field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_header_branding|node|campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_media|node|campaign_card_media|form';
   $field_group->group_name = 'group_media';
   $field_group->entity_type = 'node';
