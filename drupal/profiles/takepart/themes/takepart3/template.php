@@ -10,8 +10,9 @@ function wordlet_teach_share_your_story_page_alter($page) {
 function wordlet_teach_teacher_stories_page_alter($page) {
     drupal_add_library('system', 'ui.autocomplete');   
 }
-
-
+function wordlet_teach_browse_stories_page_alter($page) {
+    drupal_add_library('system', 'ui.autocomplete');   
+}
 
 function wordlet_patt_nav_page_alter($page) {
     // remove analytics from this page
