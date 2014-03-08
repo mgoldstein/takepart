@@ -271,28 +271,30 @@
   text-decoration: none;
   color: black;
 }
-.header .menu-wrapper .menu .item:first-of-type {
-  margin: 0;
-  height: 43px;
-}
-.header .menu-wrapper .menu .item:first-of-type a {
-  display: block;
-  background: transparent url('../img/menu-home.png?1393893502') no-repeat scroll top left;
-  background-size: 21px;
-  height: 21px;
-  width: 21px;
-  text-indent: 200%;
-  overflow: hidden;
-  margin: 7px;
-  padding: 0;
-}
-.header .menu-wrapper .menu .item:first-of-type.active {
-  margin-top: 0;
-}
-.header .menu-wrapper .menu .item:first-of-type.active a {
-  margin: 7px;
-  padding: 0;
-  background-position: 0 -21px;
+@media (min-width: 768px) {
+  .header .menu-wrapper .menu .item:first-of-type {
+    margin: 0;
+    height: 43px;
+  }
+  .header .menu-wrapper .menu .item:first-of-type a {
+    display: block;
+    background: transparent url('../img/menu-home.png?1393893502') no-repeat scroll top left;
+    background-size: 21px;
+    height: 21px;
+    width: 21px;
+    text-indent: 200%;
+    overflow: hidden;
+    margin: 7px;
+    padding: 0;
+  }
+  .header .menu-wrapper .menu .item:first-of-type.active {
+    margin-top: 0;
+  }
+  .header .menu-wrapper .menu .item:first-of-type.active a {
+    margin: 7px;
+    padding: 0;
+    background-position: 0 -21px;
+  }
 }
 .header .menu-wrapper .menu .item.active {
   background: url('../img/active_menu_bg.png?1393893502') no-repeat top right;
@@ -1605,12 +1607,6 @@ a {
     width: 60%;
   }
 }
-@media (min-width: 1000px) {
-  .teach-browse-stories-content .sys-intro-body,
-  .teach-teacher-stories-content .sys-intro-body {
-    width: 68%;
-  }
-}
 
 /* # Teacher Stories Landing Page
 ================================================== */
@@ -1680,7 +1676,7 @@ a {
 .sys-stats nav a.active {
   color: black;
   font-weight: bold;
-  cursor: normal;
+  cursor: default;
   text-decoration: underline;
 }
 .sys-stats .sys-form input.input-school-name[type=text] {
@@ -2680,4 +2676,99 @@ h1.sys-headline span {
   margin: 0 0 1em;
   line-height: 1.5;
   color: #666;
+}
+
+/* # Browse Stories Page
+================================================== */
+.teach-app .app-nav {
+  font: normal 1.66667em/1 "GlyphaLTPro-Black", serif;
+  text-align: center;
+}
+@media (min-width: 850px) {
+  .teach-app .app-nav {
+    text-align: left;
+  }
+}
+.teach-app .app-nav a {
+  display: inline-block;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  text-transform: uppercase;
+}
+.teach-app .app-nav a.active {
+  color: black;
+  border-bottom: 4px solid black;
+  position: relative;
+}
+.teach-app .app-nav a.active:hover {
+  text-decoration: none;
+  cursor: default;
+}
+.teach-app .app-nav a.active:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  margin-left: -6px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-top-color: black;
+}
+.teach-app .sys-form {
+  background-color: white;
+  margin: 0 auto 5%;
+  padding: 2em 3em 1.5em;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+.teach-app .sys-form:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 0;
+  padding: 2.8571429% 0;
+  background: transparent url('../img/app-search-box-shadow.png?1394308102') scroll no-repeat center top;
+  background-size: contain;
+}
+.teach-app .sys-form input[type=text].input-school-name {
+  margin-top: 1em;
+}
+.teach-app .sys-form input[type=submit] {
+  position: absolute;
+  right: 22px;
+  bottom: 10px;
+  background: transparent url('../img/school-search-submit.png?1394231687') scroll no-repeat top left;
+  background-size: 24px auto;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  text-indent: 100%;
+  overflow: hidden;
+}
+.teach-app .sys-form input[type=submit]:active {
+  position: absolute;
+  top: auto;
+  bottom: 9px;
+}
+.teach-app .sys-form [disabled] ~ input[type=submit],
+.teach-app .sys-form .in-progress ~ input[type=submit] {
+  display: none;
+}
+@media (min-width: 1000px) {
+  .teach-app .sys-form {
+    max-width: 550px;
+  }
+  .teach-app .sys-form input[type=text].input-school-name {
+    width: 410px;
+    margin-top: 0;
+    margin-left: 1em;
+  }
 }
