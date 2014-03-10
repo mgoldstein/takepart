@@ -34,6 +34,16 @@ body.node-type-campaign-card-social,
       max-width: 980px;
       margin: 0 auto;
     }
+    .header-inner{
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+    }
+    img.logo{
+      display: block;
+      margin: 0 auto;
+      float: none;
+    }
   }
 
 
@@ -367,6 +377,24 @@ body.node-type-campaign-page, #main.card-page{
       text-align: center;
     }
   }
+
+
+  //Card and Header background properties
+  header{
+    .header-bg-image-full{
+      background-size: 100%;
+    }
+    .header-bg-image-980{
+      background-size: 980px;
+    }
+    .header-full{
+
+    }
+    .header-980{
+
+    }
+}
+
 
 
 
