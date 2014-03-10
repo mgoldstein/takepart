@@ -13,6 +13,35 @@ function tpf_content_campaigns_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_image|node|campaign|form';
+  $field_group->group_name = 'group_background_image';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_header_branding';
+  $field_group->data = array(
+    'label' => 'Background Image',
+    'weight' => '21',
+    'children' => array(
+      0 => 'field_campaign_background',
+      1 => 'field_campaign_bgw',
+      2 => 'field_campaign_bgw_image',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-image field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_image|node|campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_card_background|node|campaign_card_iframe|form';
   $field_group->group_name = 'group_card_background';
   $field_group->entity_type = 'node';
@@ -80,10 +109,10 @@ function tpf_content_campaigns_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_campaign_menu',
-      1 => 'field_campaign_background',
-      2 => 'field_campaign_bg_color',
-      3 => 'field_campaign_logo',
-      4 => 'field_campaign_min_height',
+      1 => 'field_campaign_bg_color',
+      2 => 'field_campaign_logo',
+      3 => 'field_campaign_min_height',
+      4 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
