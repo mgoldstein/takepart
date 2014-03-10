@@ -3,7 +3,8 @@
 
 @import "typeface";
 
-@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+@import url(//fonts.googleapis.com/css?family=Shadows+Into+Light);
+// font-family: 'Shadows Into Light', cursive;
 
 $page-width: 1000px;
 $page-margins: 20px;
@@ -21,10 +22,6 @@ $cursive-font: 'Shadows Into Light', cursive;
 $primary-white: white;
 $light-white: #ccc;
 $body-copy-black: #313131;
-
-
-@import url(//fonts.googleapis.com/css?family=Shadows+Into+Light);
-// font-family: 'Shadows Into Light', cursive;
 
 /* # Sprites
 ================================================== */

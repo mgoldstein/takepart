@@ -1,38 +1,4 @@
-(function($, window, document, undefined) {
-
-    // magic numbers
-    var TAP = {
-	postURL: "http://takeaction.takepart.com/user_teach_stories",
-	action_id: "9035114",
-	partner_code: "04a1744b80e16bc495c06aad0c6294a3"
-    };
-
-    //
-    // Our own little modernizr
-    //
-
-    // detect touch support
-    var touchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
-
-    // detect localstorage
-    var hasStorage = (function() {
-        try {
-            localStorage.setItem('foo', 'test');
-            localStorage.removeItem('test');
-            return true;
-        } catch (e) {
-            return false;
-        }
-    })();
-
-    // detect whether we're in an iframe
-    var loadedInIframe = (function() {
-        try {
-            return window.self !== window.top;
-        } catch (e) {
-            return true;
-        }
-    })();
+(function($, TEACH, window, document, undefined) {
 
     // convenience values for COPPA compliance
     var coppaCookieName = "pm_sys_user_birthdate",
@@ -40,47 +6,6 @@
             msDay = 24 * 60 * 60 * 1000, // one day in milliseconds
             ageRequirement = Date.now() - 13 * 365 * msDay; // 13 years in milliseconds
 
-    // Simple JavaScript Templating
-    // John Resig - http://ejohn.org/ - MIT Licensed
-    var templateCache = {};
-
-    var tmpl = function tmpl(str, data) {
-        // Figure out if we're getting a template, or if we need to
-        // load the template - and be sure to cache the result.
-        var fn = !/\W/.test(str) ?
-                templateCache[str] = templateCache[str] ||
-                tmpl(document.getElementById(str).innerHTML) :
-                // Generate a reusable function that will serve as a template
-                // generator (and which will be cached).
-                new Function("obj",
-                        "var p=[],print=function(){p.push.apply(p,arguments);};" +
-                        // Introduce the data as local variables using with(){}
-                        "with(obj){p.push('" +
-                        // Convert the template into pure JavaScript
-                        str
-                        .replace(/[\r\t\n]/g, " ")
-                        .split("<%").join("\t")
-                        .replace(/((^|%>)[^\t]*)'/g, "$1\r")
-                        .replace(/\t=(.*?)%>/g, "',$1,'")
-                        .split("\t").join("');")
-                        .split("%>").join("p.push('")
-                        .split("\r").join("\\'")
-                        + "');}return p.join('');");
-
-        // Provide some basic currying to the user
-        return data ? fn(data) : fn;
-    };
-
-    String.prototype.htmlEntities = function() {
-        return this.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    };
-
-    // polyfill for String.trim()
-    if (!String.prototype.trim) {
-        String.prototype.trim = function() {
-            return this.replace(/^\s+|\s+$/g, '');
-        };
-    }
 
     // show coppa error message and delete form from page
     var showCoppaErrorMessage = function() {
@@ -114,10 +39,10 @@
 
         var json = {
             "format": "json",
-            "action_id": TAP.action_id,
+            "action_id": TEACH.TAP.action_id,
             "opt_ins": {},
             "user_action": {
-                "partner_code": TAP.partner_code,
+                "partner_code": TEACH.TAP.partner_code,
                 "email": formData.email,
                 "last_name": formData.first_name,
                 "first_name": formData.last_name,
@@ -155,7 +80,7 @@
 
         $.ajax({
             type: 'POST',
-            url: TAP.postURL,
+            url: TEACH.TAP.postURL,
             data: JSON.stringify(json),
             contentType: 'application/json',
             dataType: 'json',
@@ -199,7 +124,7 @@
         */
         // hide some things when we're on facebook
         // (i.e., when the site is loaded in an iframe)
-        if (loadedInIframe) {
+        if (TEACH.support.loadedInIframe) {
             $('.footer-wrapper, .slimnav').remove();
             $('body').css('border', 'none');
             $('.page-wrap').css('padding', '0');
@@ -256,7 +181,7 @@
         // style select boxes on non-touch-enabled devices
 	var $selects = $form.find('select');
 	var resizeTimeout = null;
-        if (!touchEnabled && !loadedInIframe) {
+        if (!TEACH.support.touchEnabled && !TEACH.support.loadedInIframe) {
 	    $selects.customSelect();
 	    $(window).on('resize', function() {
 		clearTimeout (resizeTimeout);
@@ -280,7 +205,7 @@
         var $schoolState = $('#school_state');
         var $schoolName = $('#school_name');
         var $schoolCity = $('#school_city');
-        var nameCache = (hasStorage && JSON.parse(localStorage.getItem('sysSchoolCache'))) || {};
+        var nameCache = (TEACH.support.hasStorage && JSON.parse(localStorage.getItem('sysSchoolCache'))) || {};
 
         var $schoolNameMessage = $('<p class="character-count" />')
                 .addClass('character-count-school-name')
@@ -367,7 +292,7 @@
                             });
                         });
                         nameCache[hash] = schools;
-                        hasStorage && localStorage.setItem('sysSchoolCache', JSON.stringify(nameCache));
+                        TEACH.support.hasStorage && localStorage.setItem('sysSchoolCache', JSON.stringify(nameCache));
                         response(schools);
                     }
                 });
@@ -445,7 +370,7 @@
 		formData.teacher_image_link = $.cloudinary.url(formData.teacher_image_id + '.jpg');
 	    }
 
-	    $modal = $(tmpl('story_template', formData));
+	    $modal = $(TEACH.tmpl('story_template', formData));
             $modal.find('img').cloudinary();
             $.tpmodal.show({
                 id: "sys_modal_",
@@ -466,4 +391,4 @@
 
     }); // $(document).ready() callback
 
-})(jQuery, this, this.document)
+})(jQuery, TEACH, this, this.document)

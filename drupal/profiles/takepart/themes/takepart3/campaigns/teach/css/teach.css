@@ -1,5 +1,4 @@
 @import url("//hello.myfonts.net/count/2826af");
-@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
 @import url(//fonts.googleapis.com/css?family=Shadows+Into+Light);
 /* @license
  * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
@@ -2735,7 +2734,7 @@ h1.sys-headline span {
   width: 100%;
   height: 0;
   padding: 2.8571429% 0;
-  background: transparent url('../img/app-search-box-shadow.png?1394308102') scroll no-repeat center top;
+  background: transparent url('../img/app-search-box-shadow.png?1394314043') scroll no-repeat center top;
   background-size: contain;
 }
 .teach-app .sys-form input[type=text].input-school-name {
