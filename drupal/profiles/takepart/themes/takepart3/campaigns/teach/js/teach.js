@@ -1,4 +1,84 @@
+TEACH = window.TEACH || { support: {}, Models: {}, Collections: {}, Views: {} };
+
+// Magic Numbers
+TEACH.TAP = {
+    postURL: "http://takeaction.takepart.com/user_teach_stories",
+    action_id: "9035114",
+    partner_code: "04a1744b80e16bc495c06aad0c6294a3"
+};
+
+//
+// Our own little modernizr
+//
+
+// detect touch support
+TEACH.support.touchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
+
+// detect localstorage
+TEACH.support.hasStorage = (function() {
+    try {
+        localStorage.setItem('foo', 'test');
+        localStorage.removeItem('test');
+        return true;
+    } catch (e) {
+        return false;
+    }
+})();
+
+// detect whether we're in an iframe
+TEACH.support.loadedInIframe = (function() {
+    try {
+        return window.self !== window.top;
+    } catch (e) {
+        return true;
+    }
+})();
+
+// Simple JavaScript Templating
+// John Resig - http://ejohn.org/ - MIT Licensed
+TEACH.templateCache = {};
+
+TEACH.tmpl = function tmpl(str, data) {
+    // Figure out if we're getting a template, or if we need to
+    // load the template - and be sure to cache the result.
+    var fn = !/\W/.test(str) ?
+            TEACH.templateCache[str] = TEACH.templateCache[str] ||
+            tmpl(document.getElementById(str).innerHTML) :
+            // Generate a reusable function that will serve as a template
+            // generator (and which will be cached).
+            new Function("obj",
+                    "var p=[],print=function(){p.push.apply(p,arguments);};" +
+                    // Introduce the data as local variables using with(){}
+                    "with(obj){p.push('" +
+                    // Convert the template into pure JavaScript
+                    str
+                    .replace(/[\r\t\n]/g, " ")
+                    .split("<%").join("\t")
+                    .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+                    .replace(/\t=(.*?)%>/g, "',$1,'")
+                    .split("\t").join("');")
+                    .split("%>").join("p.push('")
+                    .split("\r").join("\\'")
+                    + "');}return p.join('');");
+
+    // Provide some basic currying to the user
+    return data ? fn(data) : fn;
+};
+
+// augment String.prototype with some things
+String.prototype.htmlEntities = function() {
+    return this.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+};
+
+// polyfill for String.trim()
+if (!String.prototype.trim) {
+    String.prototype.trim = function() {
+        return this.replace(/^\s+|\s+$/g, '');
+    };
+}
+
 (function($, Drupal, window, document, undefined) {
+
     Drupal.behaviors.punishInternetExplorerUsers = {
         attach: function(context) {
             var message = '<p>The TEACH website is a richly interactive web experience and full functionality requires a <a href="http://browsehappy.com/" target="_blank">recent web browser</a>.</p>',
