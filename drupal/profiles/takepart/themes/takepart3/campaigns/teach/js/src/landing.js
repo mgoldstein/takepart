@@ -8,10 +8,10 @@
     // delegate clicks on stories/schools
     $body
       .on('click', '[data-storyid]', function() {
-        alert('@todo - navigate to story ID ' + $(this).data('storyid'));
+        window.location = "/teach/stories#story/" + $(this).data('storyid');
       })
       .on('click', '[data-schoolid]', function() {
-        alert('@todo - navigate to school ID ' + $(this).data('schoolid'));
+        window.location = "/teach/stories#school/" + $(this).data('schoolid');
       })
     ;
 
@@ -23,11 +23,7 @@
         var $this = $(this),
             id = $this.find('#school_id').val();
 
-        if (id != 0) {
-          alert('@todo - navigate to school ID ' + id);
-        } else {
-          alert('@todo - navigate to "other" schools in ' + $this.find('#school_state').val());
-        }
+        window.location = "/teach/stories#school/" + (id != 0 ? id : $this.find('#school_state').val());
       });
 
     // set up most stories lists 
@@ -61,8 +57,20 @@
     // populate the featured stories in polaroids
     $('.featured-stories').find('.featured-story').each(function() {
       var $this = $(this);
-      // @todo ajax call
-      $this.html(TEACH.tmpl('featured_story_template', {}));
+      var storyId = $this.data('storyid');
+      $.ajax('/proxy?request=' + encodeURIComponent(TEACH.TAP.postURL + '/' + storyId + '?action_id=' + TEACH.TAP.action_id + '&publisher_key=' + TEACH.TAP.partner_code), {
+        success: function(data) {
+
+          // replace empty teacher image with defaults
+          data.teacher.image_uid || data.teacher.image_uid = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
+
+          $this
+            .html(TEACH.tmpl('featured_story_template', data))
+            .on('click', 'a', function(e) { e.stopPropagation(); })
+            .find('img').cloudinary()
+          ;
+        }
+      });
     });
   });
 })(jQuery, TEACH, this, this.document)
