@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * tp_feature_feature_article.features.field_base.inc
+ * tpf_content_article.features.field_base.inc
  */
 
 /**
  * Implements hook_field_default_field_bases().
  */
-function tp_feature_feature_article_field_default_field_bases() {
+function tpf_content_article_field_default_field_bases() {
   $field_bases = array();
 
   // Exported field_base: 'field_syndication'

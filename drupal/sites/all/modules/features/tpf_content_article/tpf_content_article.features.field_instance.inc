@@ -32,6 +32,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 5,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -119,6 +125,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 12,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -192,6 +204,12 @@ function tpf_content_article_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 16,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -274,6 +292,12 @@ function tpf_content_article_field_default_field_instances() {
       ),
       'feature_main' => array(
         'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -380,6 +404,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -464,6 +494,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'node_reference_plain',
         'weight' => 2,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -546,6 +582,12 @@ function tpf_content_article_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 15,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -630,6 +672,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 14,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -712,6 +760,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 6,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -791,6 +845,12 @@ function tpf_content_article_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 7,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -874,6 +934,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 9,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -941,6 +1007,12 @@ function tpf_content_article_field_default_field_instances() {
         'weight' => 17,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1052,6 +1124,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 17,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1133,6 +1211,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1207,6 +1291,12 @@ function tpf_content_article_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 18,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -1288,6 +1378,12 @@ function tpf_content_article_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 13,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -1372,6 +1468,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1448,6 +1550,12 @@ function tpf_content_article_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 21,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -1529,6 +1637,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 10,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1584,6 +1698,86 @@ function tpf_content_article_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-openpublish_article-field_syndication'
+  $field_instances['node-openpublish_article-field_syndication'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_syndication',
+    'label' => 'Syndication',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_buttons',
+      'weight' => 41,
+    ),
+  );
+
   // Exported field_instance: 'node-openpublish_article-field_tab_action_override'
   $field_instances['node-openpublish_article-field_tab_action_override'] = array(
     'bundle' => 'openpublish_article',
@@ -1603,6 +1797,12 @@ function tpf_content_article_field_default_field_instances() {
         'settings' => array(),
         'type' => 'node_reference_default',
         'weight' => 4,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -1688,6 +1888,12 @@ function tpf_content_article_field_default_field_instances() {
         ),
         'type' => 'image',
         'weight' => 1,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'hidden',
@@ -1790,6 +1996,12 @@ function tpf_content_article_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 19,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1847,7 +2059,7 @@ function tpf_content_article_field_default_field_instances() {
       'settings' => array(
         'content_taxonomy_opt_groups' => FALSE,
       ),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 8,
     ),
   );
@@ -1870,6 +2082,12 @@ function tpf_content_article_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 11,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'feature_secondary' => array(
         'label' => 'above',
@@ -1955,6 +2173,7 @@ function tpf_content_article_field_default_field_instances() {
   t('Series');
   t('Significance');
   t('Subhead');
+  t('Syndication');
   t('TAB Action Overrides');
   t('These tags are intended for internal use to organize content for distribution to RSS feeds and the like; they are not visible to external users.');
   t('This is displayed beneath the Article\'s title on the node page');
