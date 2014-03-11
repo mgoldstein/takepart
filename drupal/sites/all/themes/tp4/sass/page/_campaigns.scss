@@ -300,7 +300,7 @@ body.node-type-campaign-page, #main.card-page{
       line-height: 40px;
       display: inline-block;
       color: #fff;
-      top: 50%;
+      // top: 50%;
       cursor: pointer;
       font-size: 30px;
       background-color: rgba(0,0,0,0.5);
@@ -315,10 +315,20 @@ body.node-type-campaign-page, #main.card-page{
       line-height: 40px;
       display: inline-block;
       color: #fff;
-      top: 50%;
+      // top: 50%;
       cursor: pointer;
       font-size: 30px;
       background-color: rgba(0,0,0,0.5);
+    }
+    nav.slider-nav{
+      position: absolute;
+      top: 200px;
+      width: 100%;
+      .slider-inner{
+        max-width: 980px;
+        margin: 0 auto;
+        position: relative;
+      }
     }
     .pagination{
 
@@ -393,7 +403,18 @@ body.node-type-campaign-page, #main.card-page{
     .header-980{
 
     }
-}
+  }
+  .card-inner{
+    height: auto;
+    overflow: hidden;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .card-width-980{
+    float: none;
+    max-width: 980px;
+    margin: 0 auto;
+  }
 
 
 

@@ -183,7 +183,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   $instructional = $variables['field_campaign_instructional'][0]['value'];
   //Prepare Media
   if($variables['field_campaign_media_type'][0]['value'] == 1){  //Media is a video
-    $media = $variables['field_campaign_media_video'];  //TODO integrate video with a new view mode
+    $media = $variables['field_campaign_media_video'];
     $media_node = node_load($variables['field_campaign_media_video'][0]['target_id']);
     $media = drupal_render(node_view($media_node, 'embed'));
   }
@@ -219,6 +219,21 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     $center .= (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
     $instructional = 'instructional';
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  }
+  //Width and height variables
+  $variables['styles'] = array();
+  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
+  if($variables['field_campaign_bgw'][0]['value'] == 0){
+    $variables['classes_array'][] = 'card-width-full';
+  }
+  else{
+    $variables['classes_array'][] = 'card-width-980';
+  }
+  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+    $variables['styles'][] = 'background-size: 100%;';
+  }
+  else{
+    $variables['styles'][] = 'background-size: 980px;';
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['left'] = $left;

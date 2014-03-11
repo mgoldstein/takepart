@@ -344,7 +344,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bg_color',
-      2 => 'field_campaign_bg_width',
+      2 => 'field_campaign_bgw_image',
+      3 => 'field_campaign_bgw',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
