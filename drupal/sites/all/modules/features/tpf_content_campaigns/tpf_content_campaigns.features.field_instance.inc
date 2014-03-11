@@ -813,7 +813,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_iframe',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
@@ -898,7 +898,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_iframe',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
@@ -1690,7 +1690,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_media',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
@@ -1775,7 +1775,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_media',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
@@ -2728,7 +2728,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_news',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
@@ -2813,7 +2813,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_news',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
@@ -3704,7 +3704,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_social',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
@@ -3789,7 +3789,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_social',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,

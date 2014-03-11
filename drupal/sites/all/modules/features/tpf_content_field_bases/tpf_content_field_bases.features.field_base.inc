@@ -1244,7 +1244,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => 'Full Width',
-        1 => '980px',
+        1 => '1000px',
       ),
       'allowed_values_function' => '',
     ),
@@ -1270,7 +1270,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => 'Full Width',
-        1 => '980px',
+        1 => '1000px',
       ),
       'allowed_values_function' => '',
     ),
