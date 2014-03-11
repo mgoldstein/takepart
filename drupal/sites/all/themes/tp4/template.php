@@ -220,9 +220,13 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     $instructional = 'instructional';
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   }
+
   //Width and height variables
   $variables['styles'] = array();
   $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
+  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  }
   if($variables['field_campaign_bgw'][0]['value'] == 0){
     $variables['classes_array'][] = 'card-width-full';
   }
@@ -235,6 +239,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   else{
     $variables['styles'][] = 'background-size: 980px;';
   }
+  
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['left'] = $left;
   $variables['right'] = $right;
@@ -262,6 +267,25 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
     $name = preg_replace("/[\s_]/", "-", $name);
     $url = $item->field_social_link['und'][0]['url'];
     $center .= l($name, $url, array('html' => true, 'attributes' => array('class' => array($name))));
+  }
+
+  //Width and height variables
+  $variables['styles'] = array();
+  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
+  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  }
+  if($variables['field_campaign_bgw'][0]['value'] == 0){
+    $variables['classes_array'][] = 'card-width-full';
+  }
+  else{
+    $variables['classes_array'][] = 'card-width-980';
+  }
+  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+    $variables['styles'][] = 'background-size: 100%;';
+  }
+  else{
+    $variables['styles'][] = 'background-size: 980px;';
   }
 
   $variables['instructional'] = $instructional;
@@ -360,6 +384,25 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
 
+  //Width and height variables
+  $variables['styles'] = array();
+  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
+  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  }
+  if($variables['field_campaign_bgw'][0]['value'] == 0){
+    $variables['classes_array'][] = 'card-width-full';
+  }
+  else{
+    $variables['classes_array'][] = 'card-width-980';
+  }
+  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+    $variables['styles'][] = 'background-size: 100%;';
+  }
+  else{
+    $variables['styles'][] = 'background-size: 980px;';
+  }
+
     $variables['instructional'] = $instructional;
     $variables['center'] = $center;
 
@@ -370,6 +413,25 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   $height = $variables['field_campaign_iframe_height'][0]['value'];
   $width = $variables['field_campaign_iframe_width'][0]['value'];
   $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" width="'. $width. '" height="'. $height. '"></iframe>';
+
+  //Width and height variables
+  $variables['styles'] = array();
+  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
+  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  }
+  if($variables['field_campaign_bgw'][0]['value'] == 0){
+    $variables['classes_array'][] = 'card-width-full';
+  }
+  else{
+    $variables['classes_array'][] = 'card-width-980';
+  }
+  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+    $variables['styles'][] = 'background-size: 100%;';
+  }
+  else{
+    $variables['styles'][] = 'background-size: 980px;';
+  }
 
   $variables['instructional'] = $instructional;
   $variables['center'] = $center;
