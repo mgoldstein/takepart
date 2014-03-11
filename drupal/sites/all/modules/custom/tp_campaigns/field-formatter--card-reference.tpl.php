@@ -1,11 +1,25 @@
 
 <?php
+  dpm(get_defined_vars(), 'defined vars');
+  $bg_width = $variables['entity']->field_campaign_bgw['und'][0]['value'];
+  $bg_width_img = $variables['entity']->field_campaign_bgw_img['und'][0]['value'];
   // Does the Tray title exist?
   if(isset($variables['entity']->field_campaign_tray_title['und'][0]['value']) == TRUE) {
     $tray_title = $variables['entity']->field_campaign_tray_title['und'][0]['value'];
   }
-
-
+  $classes = array();
+  if($bg_width == 0){
+    $classes[] = 'background-full';
+  }
+  else{
+    $classes[] = 'background-980';
+  }
+  if($bg_width_img == 0){
+    $classes[] = 'background-img-full';
+  }
+  else{
+    $classes[] = 'background-img-980';
+  }
 ?>
 <div class="swipe-wrap">
 <?php
@@ -20,10 +34,11 @@
     //If a tray has a background we make the card transparent and set the background on the slider level.
     $card_styles = '';
     if(isset($variables['entity']->field_campaign_background) ==  true && $variables['entity']->field_campaign_background != NULL){
-      $card_styles = 'style="background-image: none; background-color: transparent;"';
+      $card_styles = 'style="background-image: none; background-color: transparent; background-size: 980px;"';
+
     }
     else{
-      $card_styles = 'style="background-image: url(\''. $background_image. '\');"';
+      // $card_styles = 'style="background-image: url(\''. $background_image. '\');"';
     }
 
 
@@ -56,6 +71,17 @@
 
 <?php // Print arrows is multiple cards exist in the card ?>
 <?php if(isset($variables['entity']->field_campaign_card_reference['und'][1]) == true): ?>
-  <div class="left-arrow"><</div>
-  <div class="right-arrow">></div>
+  <nav class="slider-nav">
+    <div class="slider-inner">
+      <div class="left-arrow"><</div>
+      <div class="right-arrow">></div>
+    </div>
+  </nav>
 <?php endif; ?>
+
+
+
+
+
+
+
