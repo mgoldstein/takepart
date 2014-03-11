@@ -74,7 +74,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'campaign_card_news';
   $field_group->mode = 'form';
-  $field_group->parent_name = '_add_new_group';
+  $field_group->parent_name = 'group_background';
   $field_group->data = array(
     'label' => 'Background Image',
     'weight' => '6',
