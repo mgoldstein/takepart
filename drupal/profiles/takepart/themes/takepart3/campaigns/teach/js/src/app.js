@@ -61,18 +61,31 @@
   });
 
   TEACH.Collections.Stories = Backbone.Collection.extend({
-    model: TEACH.Models.Story
+    model: TEACH.Models.Story,
+
+    parse: function(response) {
+      return response.signatures;
+    }
   });
 
   TEACH.Views.StoriesView = Backbone.View.extend({
     className: "teach-app-pane stories-view",
 
     initialize: function() {
-      this.collection = new TEACH.Collections.Stories();
-      this.$el.html(this.id + ' view');
+      this.listenTo(this.collection, 'change', this.render);
     },
 
     render: function() {
+      var that = this; // ugh
+
+      this.collection.each(function(model) {
+        var view = new TEACH.Views.StoryView({
+          model: model,
+          id: 'story-' + model.get('id')
+        });
+        view.render().$el.appendTo(that.$el);
+      });
+
       return this;
     }
   });
@@ -118,11 +131,22 @@
 
       this.$nav = this.$('.app-nav');
 
-      this.views.featured = new TEACH.Views.StoriesView({id: 'pane-featured'});
-      this.views.popular = new TEACH.Views.StoriesView({id: 'pane-popular'});
-      this.views.recent = new TEACH.Views.StoriesView({id: 'pane-recent'});
+      this.views.featured = new TEACH.Views.StoriesView({id: 'pane-featured', collection: new TEACH.Collections.Stories() });
+      this.views.featured.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
+      this.views.popular = new TEACH.Views.StoriesView({id: 'pane-popular', collection: new TEACH.Collections.Stories() });
+      this.views.popular.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
+      this.views.recent = new TEACH.Views.StoriesView({ id: 'pane-recent', collection: new TEACH.Collections.Stories() });
+      this.views.recent.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
+
       this.views.school = new TEACH.Views.FindSchoolView();
-      _.each(this.views, function(view) { view.$el.appendTo(this.$el).hide(); }, this);
+      _.each(this.views, function(view) {
+        view.$el.appendTo(this.$el).hide();
+        if (view.collection) {
+          view.collection.fetch({
+            success: function() { view.render(); }
+          });
+        }
+      }, this);
 
       // the router sets up the state of the application
       this.listenTo(router, 'route', this.route);
@@ -147,10 +171,11 @@
           break;
         case "schoolView":
         case "tagView":
-        case "storyView":
           this.views.extra = new TEACH.Views.StoriesView({id: route + '-' + params[0]});
           this.views.extra.render().$el.appendTo(this.$el).show();
           break;
+        case "storyView":
+          $.tpmodal.show({id: 'sys_modal_', node: $('<div>').html('story')[0]});
       }
     }
 
@@ -160,5 +185,6 @@
     var router = new TEACH.AppRouter();
     var app = new TEACH.Views.AppView(router);
     Backbone.history.start();
+    window.app = app; // @todo delete me
   });
 })(jQuery, TEACH, this, this.document)
