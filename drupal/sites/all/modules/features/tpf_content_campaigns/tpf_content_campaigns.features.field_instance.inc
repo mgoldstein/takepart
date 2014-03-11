@@ -178,7 +178,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
         'allowed_schemes' => array(
           'jwplatform-channel' => 0,
@@ -201,9 +201,10 @@ function tpf_content_campaigns_field_default_field_instances() {
           'upload' => 0,
         ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 23,
     ),
   );
@@ -1573,7 +1574,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
         'allowed_schemes' => array(
           'jwplatform-channel' => 0,
@@ -1596,9 +1597,10 @@ function tpf_content_campaigns_field_default_field_instances() {
           'upload' => 0,
         ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 1,
     ),
   );
@@ -4459,7 +4461,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
         'allowed_schemes' => array(
           'jwplatform-channel' => 0,
@@ -4482,9 +4484,10 @@ function tpf_content_campaigns_field_default_field_instances() {
           'upload' => 0,
         ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 2,
     ),
   );
