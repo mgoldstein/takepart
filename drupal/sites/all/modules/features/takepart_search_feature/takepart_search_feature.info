@@ -1,4 +1,4 @@
-name = Old TakePart Feature Search
+name = TakePart Search Feature
 description = Search API items exported
 core = 7.x
 package = Features
@@ -24,5 +24,4 @@ features[facetapi][] = search_api@site_node_index:block:field_topic
 features[facetapi][] = search_api@site_node_index:block:type
 features[features_api][] = api:2
 features[search_api_index][] = site_node_index
-features[search_api_server][] = solr
 features[search_api_server][] = takepart_solr_production
