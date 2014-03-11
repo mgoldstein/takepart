@@ -55,13 +55,18 @@
   </section>
 </div>
 <script type="text/x-microtemplate" id="featured_story_template">
-  <img src="http://placehold.it/350x240" data-src=".jpg" data-width="350" data-height="240" data-crop="fill" data-gravity="faces"/>
-  <blockquote>Story Preview Blockquote Lorem ipsum dolor sit amet, consectetur adipisicing elit.</blockquote>
+  <img src="http://placehold.it/350x240" data-src="<%=teacher.image_uid%>.jpg" data-width="350" data-height="240" data-crop="fill" data-gravity="faces"/>
+  <% if (story.preview) { %>
+  <blockquote><%= story.preview %></blockquote>
+  <% } %>
   <div class="story-content">
-    <h2 class="teacher-name">Teacher Name</h2>
+    <h2 class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></h2>
     <p class="story-meta">
-      School Name<br />
-      City Name, ST <a href="#">read story &raquo;</a>
+      <%= school.name %><br />
+      <% if (school.city) { %>
+      <%= school.city %>,&nbsp;
+      <% } %>
+      <%= school.state %> <a href="/teach/stories#story/<%=id%>">read story &raquo;</a>
     </p>
   </div>
 </script>

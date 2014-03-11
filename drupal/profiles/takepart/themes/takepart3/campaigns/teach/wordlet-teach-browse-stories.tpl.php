@@ -17,6 +17,18 @@
     <a id="nav-school" href="#school">Find a School</a>
   </nav>
 </script>
+<script type="text/x-template" id="story_view">
+  <img src="http://placehold.it/300x300&text=loading..." data-src="<%=teacher.image_uid%>.jpg" data-width="300" data-height="600" data-crop="fit" />
+  <h2 class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></h2>
+  <p class="story-meta">
+    <%= school.name %><br />
+    <% if (school.city) { %>
+    <%= school.city %>,&nbsp;
+    <% } %>
+    <%= school.state %>
+  </p>
+  <h3 class="story-title"><%= story.title %><h3>
+</script>
 <script type="text/x-template" id="school_view">
   <?php include ('partials/teach-sys-browse-by-school.tpl.php'); ?>
 </script>

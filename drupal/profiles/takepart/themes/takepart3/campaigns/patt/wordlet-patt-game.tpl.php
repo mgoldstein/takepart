@@ -1,27 +1,11 @@
-<div class="column column-1">
-  <div class="content">
-    <h4 class="side_header">
-      <?=w('side_header')?>
-    </h4>
-    <ol <?=wa('side_links')?>>
-      <? foreach ( wl('side_links') as $w ): ?>
-        <li><a href="<?=$w->href?>">
-          <span><span><?=$w->single(false)?></span></span>
-        </a></li>
-      <? endforeach ?>
-    </ol>
+<?php
+  $iframe = w('game_iframe')->single;
+  $browser = browscap_get_browser();
+?>
+<?php if($browser['ismobiledevice'] == 'true'): ?>
+    <?php drupal_goto($iframe); ?>
+<?php else: ?>
+  <div class="game">
+    <iframe src="<?php print w('game_iframe')->single; ?>"></iframe>
   </div>
-</div><!-- /.column-1 -->
-<div class="column column-2">
-  <div class="inner">
-    <div class="overview">
-      <div class="cms">
-        <?=w('body')?>
-      </div>
-      <div class="sms">
-        <?=w('sms')?>
-      </div>
-    </div>
-  </div><!-- /.inner -->
-</div><!-- /.column-2 -->
-<? include_once('subtemplates/patt-right.tpl.php') ?>
+<?php endif; ?>
