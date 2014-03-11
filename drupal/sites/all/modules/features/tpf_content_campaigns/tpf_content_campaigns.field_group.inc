@@ -13,6 +13,118 @@ function tpf_content_campaigns_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_image|node|campaign_card_iframe|form';
+  $field_group->group_name = 'group_background_image';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_iframe';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_card_background';
+  $field_group->data = array(
+    'label' => 'Background Image',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_card_background',
+      1 => 'field_campaign_bgw_image',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-image field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_image|node|campaign_card_iframe|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_image|node|campaign_card_media|form';
+  $field_group->group_name = 'group_background_image';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_media';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_card_background';
+  $field_group->data = array(
+    'label' => 'Background Image',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_campaign_background',
+      1 => 'field_campaign_bgw_image',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-image field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_image|node|campaign_card_media|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_image|node|campaign_card_news|form';
+  $field_group->group_name = 'group_background_image';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_news';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '_add_new_group';
+  $field_group->data = array(
+    'label' => 'Background Image',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_card_background',
+      1 => 'field_campaign_bgw_image',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-image field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_image|node|campaign_card_news|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_image|node|campaign_card_social|form';
+  $field_group->group_name = 'group_background_image';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_social';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Image',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_campaign_bgw_image',
+      1 => 'field_campaign_background',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-image field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_image|node|campaign_card_social|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_background_image|node|campaign|form';
   $field_group->group_name = 'group_background_image';
   $field_group->entity_type = 'node';
@@ -42,6 +154,64 @@ function tpf_content_campaigns_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_background|node|campaign_card_news|form';
+  $field_group->group_name = 'group_background';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_news';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Background',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_campaign_bgw',
+      1 => 'field_campaign_bg_color',
+      2 => 'group_background_image',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background|node|campaign_card_news|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background|node|campaign_card_social|form';
+  $field_group->group_name = 'group_background';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_social';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Background',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_bgw',
+      2 => 'group_background_image',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background|node|campaign_card_social|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_card_background|node|campaign_card_iframe|form';
   $field_group->group_name = 'group_card_background';
   $field_group->entity_type = 'node';
@@ -52,8 +222,9 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background',
     'weight' => '5',
     'children' => array(
-      0 => 'field_card_background',
-      1 => 'field_campaign_bg_color',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_bgw',
+      2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -78,10 +249,11 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_campaign_background',
-      1 => 'field_campaign_bg_color',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_bgw',
+      2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
