@@ -13,19 +13,68 @@
     }
   });
 
+  TEACH.Models.Story = Backbone.Model.extend({
+    defaults: {
+        id: null,
+        first_name: '',
+        last_name: '',
+        image_uid: null,
+        image_link: '',
+        story: {},
+        school: {},
+        teacher: {}
+    },
+
+    parse: function(data) {
+      if (!data.image_uid) {
+        data.image_uid = 'sys-defaults/avatar';
+        data.image_link = $.cloudinary.url(data.image_uid + '.jpg');
+      }
+      if (!data.teacher.image_uid) {
+        data.teacher.image_uid = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
+        data.teacher.image_link = $.cloudinary.url(data.teacher.image_uid + '.jpg');
+      }
+      return data;
+    },
+
+    initialize: function() {
+      // fill in image values if necessary
+      this.set(this.parse(this.attributes));
+    }
+  });
+
   TEACH.Views.StoryView = Backbone.View.extend({
-    className: "story"
+    tagName: "article",
+    className: "story",
+    initialize: function() {
+      this.template = _.template($('#story_view').html());
+      this.listenTo(this.model, "change", this.render);
+    },
+
+    render: function() {
+      this.$el
+        .html(this.template(this.model.toJSON()))
+        .find('img').cloudinary()
+      ;
+      return this;
+    }
+  });
+
+  TEACH.Collections.Stories = Backbone.Collection.extend({
+    model: TEACH.Models.Story
   });
 
   TEACH.Views.StoriesView = Backbone.View.extend({
     className: "teach-app-pane stories-view",
+
     initialize: function() {
+      this.collection = new TEACH.Collections.Stories();
       this.$el.html(this.id + ' view');
     },
+
     render: function() {
       return this;
     }
-
   });
 
   TEACH.Views.FindSchoolView = Backbone.View.extend({

@@ -2527,6 +2527,55 @@ h1.sys-headline {
     }
   }
 
+  .stories-view {
+    overflow: hidden; // clearfix
+
+    .story {
+      @include box-sizing(border-box);
+      position: relative;
+      width: 100%;
+      background-color: white;
+      @include box-shadow(0 0 5px transparentize(black, .89));
+      padding: 4px;
+      margin-bottom: 1em;
+
+      @media (min-width: 768px) {
+        float: left;
+        width: 48.5%;
+        margin-right: 2.9%;
+        &:nth-of-type(2n) {
+          margin-right: 0;
+        }
+      }
+      @media (min-width: 1000px) {
+        width: 31.8%;
+        margin-right: 2.2%;
+        &:nth-of-type(3n) {
+          margin-right: 0;
+        }
+      }
+
+      img {
+        display: block;
+        width: 100% !important;
+        height: auto !important;
+      }
+      .teacher-name {
+        font: bold 1.333333333em/1.125 $primary-font;
+        text-transform: uppercase;
+        margin: .8em .5em .2em;
+      }
+      .story-meta {
+        line-height: 1;
+        margin: 0 .571428571em 1em;
+      }
+      .story-title {
+        font: bold 1.166666667em/1 $primary-font;
+        margin: 0 .571428571em;
+      }
+    }
+  }
+
   .sys-form {
     background-color: white;
     margin: 0 auto 5%;
