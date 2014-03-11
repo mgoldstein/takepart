@@ -1320,7 +1320,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   $field_instances['node-campaign_card_iframe-field_card_background'] = array(
     'bundle' => 'campaign_card_iframe',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Background image should fade at the bottom to a background color, and that the background color should also be specified to match.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1500,7 +1500,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   $field_instances['node-campaign_card_media-field_campaign_background'] = array(
     'bundle' => 'campaign_card_media',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Background image should fade at the bottom to a background color, and that the background color should also be specified to match.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1576,26 +1576,6 @@ function tpf_content_campaigns_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'allowed_schemes' => array(
-          'jwplatform-channel' => 0,
-          'jwplatform-video' => 0,
-          'private' => 'private',
-          'public' => 'public',
-          'vimeo' => 0,
-          'youtube' => 0,
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
@@ -3417,7 +3397,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   $field_instances['node-campaign_card_news-field_card_background'] = array(
     'bundle' => 'campaign_card_news',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Background image should fade at the bottom to a background color, and that the background color should also be specified to match.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3510,7 +3490,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   $field_instances['node-campaign_card_social-field_campaign_background'] = array(
     'bundle' => 'campaign_card_social',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Background image should fade at the bottom to a background color, and that the background color should also be specified to match.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3588,32 +3568,13 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'image',
       'settings' => array(
-        'allowed_schemes' => array(
-          'jwplatform-channel' => 0,
-          'jwplatform-video' => 0,
-          'private' => 'private',
-          'public' => 'public',
-          'vimeo' => 0,
-          'youtube' => 0,
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'document' => 0,
-          'image' => 'image',
-          'video' => 0,
-        ),
-        'browser_plugins' => array(
-          'media_default--media_browser_1' => 0,
-          'media_default--media_browser_my_files' => 0,
-          'media_internet' => 0,
-          'upload' => 0,
-        ),
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'image_image',
       'weight' => 15,
     ),
   );
@@ -4665,6 +4626,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   t('\'100%, \'600px\', etc.');
   t('Background Image Width');
   t('Background color');
+  t('Background image should fade at the bottom to a background color, and that the background color should also be specified to match.');
   t('Background width');
   t('Body');
   t('Campaign Background');
