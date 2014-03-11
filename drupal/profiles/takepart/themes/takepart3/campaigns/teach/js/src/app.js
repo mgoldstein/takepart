@@ -60,8 +60,25 @@
     }
   });
 
-  TEACH.Collections.Stories = Backbone.Collection.extend({
+  TEACH.Collections.Stories = Backbone.PageableCollection.extend({
     model: TEACH.Models.Story,
+
+    url: TEACH.TAP.postURL,
+
+    state: {
+        pageSize: 6,
+        totalRecords: 0
+    },
+
+    queryParams: {
+        pageSize: 'per',
+        totalPages: null,
+        totalRecords: null,
+        sortKey: null,
+        order: null,
+        action_id: TEACH.TAP.action_id,
+        publisher_key: TEACH.TAP.partner_code
+    },
 
     parse: function(response) {
       return response.signatures;
@@ -71,12 +88,18 @@
   TEACH.Views.StoriesView = Backbone.View.extend({
     className: "teach-app-pane stories-view",
 
+    events:  {
+        'click .story': "showStoriesModal"
+    },
+
     initialize: function() {
       this.listenTo(this.collection, 'add destroy', this.render);
     },
 
     render: function() {
       var that = this; // ugh
+
+      this.$el.empty(); // @todo inefficient
 
       this.collection.each(function(model) {
         var view = new TEACH.Views.StoryView({
@@ -86,7 +109,13 @@
         view.render().$el.appendTo(that.$el);
       });
 
+
       return this;
+    },
+
+    showStoriesModal: function(e) {
+        e.preventDefault();
+        $.tpmodal.show();
     }
   });
 
@@ -131,11 +160,8 @@
       this.$nav = this.$('.app-nav');
 
       this.views.featured = new TEACH.Views.StoriesView({id: 'pane-featured', collection: new TEACH.Collections.Stories() });
-      this.views.featured.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
       this.views.popular = new TEACH.Views.StoriesView({id: 'pane-popular', collection: new TEACH.Collections.Stories() });
-      this.views.popular.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
       this.views.recent = new TEACH.Views.StoriesView({ id: 'pane-recent', collection: new TEACH.Collections.Stories() });
-      this.views.recent.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
       this.views.school = new TEACH.Views.FindSchoolView({ id: 'pane-find-school' });
 
       // add the views to the app.
