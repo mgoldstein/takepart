@@ -113,6 +113,9 @@ function tp_feature_feature_article_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'feature_main_tpl' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
