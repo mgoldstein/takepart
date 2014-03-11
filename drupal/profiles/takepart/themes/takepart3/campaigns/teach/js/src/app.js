@@ -72,7 +72,7 @@
     className: "teach-app-pane stories-view",
 
     initialize: function() {
-      this.listenTo(this.collection, 'change', this.render);
+      this.listenTo(this.collection, 'add destroy', this.render);
     },
 
     render: function() {
@@ -91,8 +91,6 @@
   });
 
   TEACH.Views.FindSchoolView = Backbone.View.extend({
-    id: 'pane-find-school',
-
     className: 'teach-app-pane school-view',
 
     events: {
@@ -129,6 +127,7 @@
     initialize: function(router) {
       this.$el.html(_.template($('#app_view').html(), {}));
 
+      // cache jQuery objects for convenience
       this.$nav = this.$('.app-nav');
 
       this.views.featured = new TEACH.Views.StoriesView({id: 'pane-featured', collection: new TEACH.Collections.Stories() });
@@ -137,14 +136,13 @@
       this.views.popular.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
       this.views.recent = new TEACH.Views.StoriesView({ id: 'pane-recent', collection: new TEACH.Collections.Stories() });
       this.views.recent.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
+      this.views.school = new TEACH.Views.FindSchoolView({ id: 'pane-find-school' });
 
-      this.views.school = new TEACH.Views.FindSchoolView();
+      // add the views to the app.
       _.each(this.views, function(view) {
         view.$el.appendTo(this.$el).hide();
         if (view.collection) {
-          view.collection.fetch({
-            success: function() { view.render(); }
-          });
+          view.collection.fetch();
         }
       }, this);
 
@@ -176,6 +174,7 @@
           break;
         case "storyView":
           $.tpmodal.show({id: 'sys_modal_', node: $('<div>').html('story')[0]});
+          break;
       }
     }
 
