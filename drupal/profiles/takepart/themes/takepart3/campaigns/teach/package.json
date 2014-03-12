@@ -6,10 +6,10 @@
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.6.3",
     "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-compass": "~0.7.1",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-newer": "~0.6.1",
-    "grunt-notify": "~0.2.18"
+    "grunt-notify": "~0.2.18",
+    "grunt-text-replace": "~0.3.11"
   }
 }
