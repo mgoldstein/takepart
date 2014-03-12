@@ -2055,11 +2055,11 @@ function tpf_content_article_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
         'content_taxonomy_opt_groups' => FALSE,
       ),
-      'type' => 'options_buttons',
+      'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 8,
     ),
   );
