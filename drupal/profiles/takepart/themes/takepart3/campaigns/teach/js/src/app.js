@@ -99,7 +99,6 @@
     },
 
     parseRecords: function(response) {
-      // @todo set total stories if it's not set yet
       return response.signatures;
     },
 
@@ -288,6 +287,8 @@
           this.views.extra.render().$el.appendTo(this.$el);
           break;
         case "storyView":
+          // @ todo fire call to "show story" tap endpoint
+          // and potentially analytics
           $.tpmodal.show({id: 'sys_modal_'});
           this.views.extra = new TEACH.Views.StoryFullView({
             model: new TEACH.Models.Story()
