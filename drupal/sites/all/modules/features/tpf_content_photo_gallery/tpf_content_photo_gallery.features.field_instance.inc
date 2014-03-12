@@ -768,25 +768,32 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'media_2x_widget_plupload',
       'settings' => array(
         'allowed_schemes' => array(
-          'brightcove' => 0,
+          'jwplatform-channel' => 0,
+          'jwplatform-video' => 0,
+          'private' => 0,
           'public' => 'public',
           'vimeo' => 0,
           'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
-        'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic',
+      'type' => 'media_2x_widget_plupload',
       'weight' => 42,
     ),
   );
@@ -2558,7 +2565,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
       'settings' => array(
         'content_taxonomy_opt_groups' => FALSE,
       ),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 59,
     ),
   );
@@ -2568,7 +2575,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2641,25 +2648,17 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_topic_box',
     'label' => 'Topic Box',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'term_reference_tree',
+      'active' => 0,
+      'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
-        'cascading_selection' => 0,
-        'filter_view' => '',
-        'leaves_only' => 1,
-        'max_depth' => '',
-        'parent_term_id' => '',
-        'select_parents' => 0,
-        'start_minimized' => 1,
-        'token_display' => '',
-        'track_list' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
-      'type' => 'term_reference_tree',
+      'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 58,
     ),
   );
@@ -2785,6 +2784,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
   t('Remove Headline from Display');
   t('Series');
   t('Slideshow');
+  t('Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.');
   t('Sub Head');
   t('Suggest Related Actions?');
   t('Suggest Related Content?');

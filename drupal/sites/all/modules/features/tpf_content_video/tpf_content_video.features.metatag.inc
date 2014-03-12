@@ -42,12 +42,6 @@ function tpf_content_video_metatag_export_default() {
       'og:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
-      'tab-keywords' => array(
-        'value' => '[tab_metatags:topic_freetags:{node:field_topic}, {node:field_free_tag}]',
-      ),
-      'twitter:url' => array(
-        'value' => '[current-page:url]',
-      ),
       'twitter:title' => array(
         'value' => '[node:title]',
       ),
