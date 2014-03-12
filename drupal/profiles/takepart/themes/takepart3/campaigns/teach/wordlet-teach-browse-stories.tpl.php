@@ -29,6 +29,9 @@
   </p>
   <h3 class="story-title"><%= story.title %><h3>
 </script>
+<script type="text/x-template" id="load_more_stories_view">
+<div class="load-more-stories"><a class="load-more-stories-button" href="#"><%= button_text %></a></div>
+</script>
 <script type="text/x-template" id="school_view">
   <?php include ('partials/teach-sys-browse-by-school.tpl.php'); ?>
 </script>

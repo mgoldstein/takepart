@@ -63,11 +63,12 @@
   TEACH.Collections.Stories = Backbone.PageableCollection.extend({
     model: TEACH.Models.Story,
 
+    mode: 'infinite',
+
     url: TEACH.TAP.postURL,
 
     state: {
-        pageSize: 6,
-        totalRecords: 0
+        pageSize: 6
     },
 
     queryParams: {
@@ -80,8 +81,32 @@
         publisher_key: TEACH.TAP.partner_code
     },
 
-    parse: function(response) {
+    parseRecords: function(response) {
+      // @todo set total stories if it's not set yet
       return response.signatures;
+    },
+
+    parseLinks: function() {
+      var response = {
+        first: TEACH.TAP.postURL,
+      };
+
+      if (this.state.currentPage != 1) {
+        response.prev = TEACH.TAP.postURL;
+      }
+
+      // @todo alter the conditional to fail if we're on the last page
+      if (true) {
+        response.next = TEACH.TAP.postURL;        
+      }
+
+      return response;
+    },
+
+    parseState: function (response) {
+      // @todo update the pagination state based on response from the server
+      // @see http://backbone-paginator.github.io/backbone-pageable/api/#!/api/Backbone.PageableCollection
+      return {};
     }
   });
 
@@ -89,11 +114,12 @@
     className: "teach-app-pane stories-view",
 
     events:  {
-        'click .story': "showStoriesModal"
+        'click .story': "showStoriesModal",
+        'click .load-more-stories-button': "loadMoreStories"
     },
 
     initialize: function() {
-      this.listenTo(this.collection, 'add destroy', this.render);
+      this.listenTo(this.collection.fullCollection, 'add', this.render);
     },
 
     render: function() {
@@ -101,7 +127,7 @@
 
       this.$el.empty(); // @todo inefficient
 
-      this.collection.each(function(model) {
+      this.collection.fullCollection.each(function(model) {
         var view = new TEACH.Views.StoryView({
           model: model,
           id: 'story-' + model.get('id')
@@ -109,13 +135,25 @@
         view.render().$el.appendTo(that.$el);
       });
 
+      // @todo masonry
+
+      // @todo render the total number of stories
+      $('<div>').addClass('story-count').text(this.collection.fullCollection.length + ' Stories').prependTo(this.$el);
+      // @todo add conditional to only add this button if there are more stories
+      $(_.template($('#load_more_stories_view').html(), {button_text: "Load More Stories"})).appendTo(this.$el);
 
       return this;
     },
 
     showStoriesModal: function(e) {
-        e.preventDefault();
-        $.tpmodal.show();
+      e.preventDefault();
+      $.tpmodal.show();
+    },
+
+    loadMoreStories: function(e) {
+      e.preventDefault();
+      this.$el.find('.load-more-stories-button').addClass('in-progress');
+      this.collection.getNextPage();
     }
   });
 
@@ -159,9 +197,26 @@
       // cache jQuery objects for convenience
       this.$nav = this.$('.app-nav');
 
-      this.views.featured = new TEACH.Views.StoriesView({id: 'pane-featured', collection: new TEACH.Collections.Stories() });
-      this.views.popular = new TEACH.Views.StoriesView({id: 'pane-popular', collection: new TEACH.Collections.Stories() });
-      this.views.recent = new TEACH.Views.StoriesView({ id: 'pane-recent', collection: new TEACH.Collections.Stories() });
+      this.views.featured = new TEACH.Views.StoriesView({
+        id: 'pane-featured',
+        collection: new TEACH.Collections.Stories([], {
+          queryParams: {
+            filter: 'feature'
+          }
+        })
+      });
+      this.views.popular = new TEACH.Views.StoriesView({
+        id: 'pane-popular',
+        collection: new TEACH.Collections.Stories([], {
+          queryParams: {
+            sort: 'popular'
+          }
+        })
+      });
+      this.views.recent = new TEACH.Views.StoriesView({
+        id: 'pane-recent',
+        collection: new TEACH.Collections.Stories()
+      });
       this.views.school = new TEACH.Views.FindSchoolView({ id: 'pane-find-school' });
 
       // add the views to the app.

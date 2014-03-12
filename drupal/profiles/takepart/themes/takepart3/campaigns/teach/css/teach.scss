@@ -1505,6 +1505,9 @@ a {
     @media (min-width: 768px) {
       width: 60%;
     }
+    @media (min-width: 1000px) {
+      min-height: 9em;
+    }
   }
 }
 
@@ -2528,7 +2531,23 @@ h1.sys-headline {
   }
 
   .stories-view {
-    overflow: hidden; // clearfix
+    position: relative;
+
+    &:after {
+      content: ' ';
+      display: table;
+      clear: both;
+    }
+
+    .story-count {
+      position: absolute;
+      bottom: 100%;
+      right: 1em;
+      font: bold 1.166666667em/1 $primary-font;
+      color: $primary-grey;
+      text-transform: uppercase;
+      margin-bottom: 1.857142857em;
+    }
 
     .story {
       @include box-sizing(border-box);
@@ -2589,8 +2608,34 @@ h1.sys-headline {
         font: bold 1.166666667em/1 $primary-font;
         margin: 0 .571428571em;
       }
+    } //story
+
+    .load-more-stories {
+      margin: 2em 0;
+      text-align: center;
+      clear: both;
+      a {
+        display: inline-block;
+        padding: .75em 2em;
+        font: normal 1.333em/1 $secondary-font;
+        color: white;
+        text-transform: uppercase;
+        background-color: $primary-color;
+        &:hover {
+          text-decoration: none;
+        }
+        &:active {
+          position: relative;
+          top: 1px;
+        }
+        &.in-progress {
+          background-image: image-url("spinner-white-orange.gif");
+          background-size: auto 46%;
+          background-position: 96% center;
+        }
+      }
     }
-  }
+  } // .stories-view
 
   .sys-form {
     background-color: white;
