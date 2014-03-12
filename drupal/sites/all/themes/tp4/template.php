@@ -86,6 +86,7 @@ function tp4_html_head_alter(&$head_elements) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function tp4_preprocess_page(&$variables) {
+    dpm($variables, 'variables');
     $variables['skinny'] = render($variables['page']['skinny']);
     $variables['sidebar'] = render($variables['page']['sidebar']);
 
