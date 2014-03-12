@@ -2481,7 +2481,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -2555,17 +2555,17 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_topic',
     'label' => 'Topic',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'options',
+      'active' => 0,
+      'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
-      'type' => 'options_buttons',
+      'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 59,
     ),
   );
@@ -2575,7 +2575,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2648,18 +2648,27 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_topic_box',
     'label' => 'Topic Box',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy_term_reference_sortable_widget',
+      'active' => 1,
+      'module' => 'term_reference_tree',
       'settings' => array(
+        'cascading_selection' => 0,
+        'filter_view' => '',
+        'leaves_only' => 0,
+        'max_depth' => '',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'parent_term_id' => '',
+        'select_parents' => 0,
+        'start_minimized' => 0,
+        'token_display' => '',
+        'track_list' => 0,
       ),
-      'type' => 'taxonomy_term_reference_sortable_widget',
-      'weight' => 58,
+      'type' => 'term_reference_tree',
+      'weight' => 65,
     ),
   );
 
