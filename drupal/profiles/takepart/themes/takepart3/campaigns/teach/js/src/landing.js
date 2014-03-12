@@ -68,7 +68,9 @@
         success: function(data) {
 
           // replace empty teacher image with defaults
-          data.teacher.image_uid || data.teacher.image_uid = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
+          if (data.teacher.image_uid == "") {
+            data.teacher.image_uid = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
+          }
 
           $this
             .html(TEACH.tmpl('featured_story_template', data))
