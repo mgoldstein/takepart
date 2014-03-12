@@ -51,8 +51,14 @@
 
     // populate the story stats
     var $storyStats = $('.teacher-story-stat');
-    // @todo ajax call
-    $storyStats.find('.campaign-stat').html("54,321");
+    $.ajax('/proxy?request=' + TEACH.TAP.postURL + '/stats' + encodeURIComponent('?action_id=' + TEACH.TAP.action_id), {
+      success: function(data) {
+        // this could be templated.
+        $storyStats.filter('.stats-stories').find('.campaign-stat').text(data.stories_count);
+        $storyStats.filter('.stats-states').find('.campaign-stat').text(data.uniq_states_count);
+        $storyStats.filter('.stats-schools').find('.campaign-stat').text(data.uniq_school_count);
+      }
+    });
 
     // populate the featured stories in polaroids
     $('.featured-stories').find('.featured-story').each(function() {
