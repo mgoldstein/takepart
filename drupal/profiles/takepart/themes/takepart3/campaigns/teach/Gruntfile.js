@@ -39,6 +39,7 @@ module.exports = function(grunt) {
             'js/src/jquery.school-browser.js',
             'bower_components/underscore/underscore.js',
             'bower_components/backbone/backbone.js',
+            'bower_components/backbone-pageable/lib/backbone-pageable.js',
             'js/src/app.js'
           ]
         }
@@ -46,7 +47,8 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '<%= banner %>'
+        banner: '<%= banner %>',
+        sourceMap: true
       },
       dist: {
         files: {

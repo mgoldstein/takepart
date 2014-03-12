@@ -18,6 +18,7 @@
     "jquery.validation": "~1.11.1",
     "jquery.customSelect": "https://github.com/adamcoulombe/jquery.customSelect.git",
     "backbone": "~1.1.2",
-    "underscore": "~1.6.0"
+    "underscore": "~1.6.0",
+    "backbone-pageable": "~1.4.5"
   }
 }

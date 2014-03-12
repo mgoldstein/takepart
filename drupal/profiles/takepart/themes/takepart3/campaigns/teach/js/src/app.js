@@ -60,25 +60,74 @@
     }
   });
 
-  TEACH.Collections.Stories = Backbone.Collection.extend({
+  TEACH.Collections.Stories = Backbone.PageableCollection.extend({
     model: TEACH.Models.Story,
 
-    parse: function(response) {
+    mode: 'infinite',
+
+    url: TEACH.TAP.postURL,
+
+    state: {
+        pageSize: 6
+    },
+
+    queryParams: {
+        pageSize: 'per',
+        totalPages: null,
+        totalRecords: null,
+        sortKey: null,
+        order: null,
+        action_id: TEACH.TAP.action_id,
+        publisher_key: TEACH.TAP.partner_code
+    },
+
+    parseRecords: function(response) {
+      // @todo set total stories if it's not set yet
       return response.signatures;
+    },
+
+    parseLinks: function() {
+      var response = {
+        first: TEACH.TAP.postURL,
+      };
+
+      if (this.state.currentPage != 1) {
+        response.prev = TEACH.TAP.postURL;
+      }
+
+      // @todo alter the conditional to fail if we're on the last page
+      if (true) {
+        response.next = TEACH.TAP.postURL;        
+      }
+
+      return response;
+    },
+
+    parseState: function (response) {
+      // @todo update the pagination state based on response from the server
+      // @see http://backbone-paginator.github.io/backbone-pageable/api/#!/api/Backbone.PageableCollection
+      return {};
     }
   });
 
   TEACH.Views.StoriesView = Backbone.View.extend({
     className: "teach-app-pane stories-view",
 
+    events:  {
+        'click .story': "showStoriesModal",
+        'click .load-more-stories-button': "loadMoreStories"
+    },
+
     initialize: function() {
-      this.listenTo(this.collection, 'change', this.render);
+      this.listenTo(this.collection.fullCollection, 'add', this.render);
     },
 
     render: function() {
       var that = this; // ugh
 
-      this.collection.each(function(model) {
+      this.$el.empty(); // @todo inefficient
+
+      this.collection.fullCollection.each(function(model) {
         var view = new TEACH.Views.StoryView({
           model: model,
           id: 'story-' + model.get('id')
@@ -86,13 +135,29 @@
         view.render().$el.appendTo(that.$el);
       });
 
+      // @todo masonry
+
+      // @todo render the total number of stories
+      $('<div>').addClass('story-count').text(this.collection.fullCollection.length + ' Stories').prependTo(this.$el);
+      // @todo add conditional to only add this button if there are more stories
+      $(_.template($('#load_more_stories_view').html(), {button_text: "Load More Stories"})).appendTo(this.$el);
+
       return this;
+    },
+
+    showStoriesModal: function(e) {
+      e.preventDefault();
+      $.tpmodal.show();
+    },
+
+    loadMoreStories: function(e) {
+      e.preventDefault();
+      this.$el.find('.load-more-stories-button').addClass('in-progress');
+      this.collection.getNextPage();
     }
   });
 
   TEACH.Views.FindSchoolView = Backbone.View.extend({
-    id: 'pane-find-school',
-
     className: 'teach-app-pane school-view',
 
     events: {
@@ -129,22 +194,36 @@
     initialize: function(router) {
       this.$el.html(_.template($('#app_view').html(), {}));
 
+      // cache jQuery objects for convenience
       this.$nav = this.$('.app-nav');
 
-      this.views.featured = new TEACH.Views.StoriesView({id: 'pane-featured', collection: new TEACH.Collections.Stories() });
-      this.views.featured.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
-      this.views.popular = new TEACH.Views.StoriesView({id: 'pane-popular', collection: new TEACH.Collections.Stories() });
-      this.views.popular.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
-      this.views.recent = new TEACH.Views.StoriesView({ id: 'pane-recent', collection: new TEACH.Collections.Stories() });
-      this.views.recent.collection.url = 'http://qa-web1.tab.takepart.com/user_teach_stories?action_id=9035092&publisher_key=38ec3cd1db216fd6964277e5969f4cb2';
+      this.views.featured = new TEACH.Views.StoriesView({
+        id: 'pane-featured',
+        collection: new TEACH.Collections.Stories([], {
+          queryParams: {
+            filter: 'feature'
+          }
+        })
+      });
+      this.views.popular = new TEACH.Views.StoriesView({
+        id: 'pane-popular',
+        collection: new TEACH.Collections.Stories([], {
+          queryParams: {
+            sort: 'popular'
+          }
+        })
+      });
+      this.views.recent = new TEACH.Views.StoriesView({
+        id: 'pane-recent',
+        collection: new TEACH.Collections.Stories()
+      });
+      this.views.school = new TEACH.Views.FindSchoolView({ id: 'pane-find-school' });
 
-      this.views.school = new TEACH.Views.FindSchoolView();
+      // add the views to the app.
       _.each(this.views, function(view) {
         view.$el.appendTo(this.$el).hide();
         if (view.collection) {
-          view.collection.fetch({
-            success: function() { view.render(); }
-          });
+          view.collection.fetch();
         }
       }, this);
 
@@ -176,6 +255,7 @@
           break;
         case "storyView":
           $.tpmodal.show({id: 'sys_modal_', node: $('<div>').html('story')[0]});
+          break;
       }
     }
 
