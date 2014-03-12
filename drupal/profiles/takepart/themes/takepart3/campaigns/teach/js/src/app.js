@@ -60,6 +60,23 @@
     }
   });
 
+  TEACH.Views.StoryFullView = Backbone.View.extend({
+    tagName: "article",
+    className: "sys-story-modal",
+    initialize: function() {
+      this.template = _.template($('#story_full_view').html());
+      this.listenTo(this.model, "change", this.render);
+    },
+
+    render: function() {
+      this.$el
+        .html(this.template(this.model.toJSON()))
+        .find('img').cloudinary()
+      ;
+      return this;
+    }
+  });
+
   TEACH.Collections.Stories = Backbone.PageableCollection.extend({
     model: TEACH.Models.Story,
 
@@ -235,6 +252,8 @@
     },
 
     route: function(route, params) {
+      var queryParams = {};
+
       this.$nav.find('a').removeClass('active');
       this.$el.find('.teach-app-pane').hide();
       this.views.extra && this.views.extra.remove();
@@ -250,11 +269,40 @@
           break;
         case "schoolView":
         case "tagView":
-          this.views.extra = new TEACH.Views.StoriesView({id: route + '-' + params[0]});
-          this.views.extra.render().$el.appendTo(this.$el).show();
+          if (route == "tagView") {
+            queryParams.tag = params[0];
+          } else {
+            if (isNaN(parseInt(params[0], 10))) {
+              queryParams.state = params[0];
+            } else {
+              queryParams.school_external_id = params[0];
+            }
+          }
+          this.views.extra = new TEACH.Views.StoriesView({
+            id: 'pane-' + route,
+            collection: new TEACH.Collections.Stories([], {
+              queryParams: queryParams
+            })
+          });
+          this.views.extra.collection.fetch();
+          this.views.extra.render().$el.appendTo(this.$el);
           break;
         case "storyView":
-          $.tpmodal.show({id: 'sys_modal_', node: $('<div>').html('story')[0]});
+          $.tpmodal.show({id: 'sys_modal_'});
+          this.views.extra = new TEACH.Views.StoryFullView({
+            model: new TEACH.Models.Story()
+          });
+          this.views.extra.model.url = '/proxy?request=' + TEACH.TAP.postURL + '/' + params[0] + encodeURIComponent('?action_id = ' + TEACH.TAP.action_id + '&publisher_key=' + TEACH.TAP.partner_code);
+          this.views.extra.model.fetch({
+            success: _.bind(function() {
+              $.tpmodal.show({
+                id: 'sys_modal_',
+                node: this.views.extra.el
+              });
+            }, this)
+          });
+          this.$nav.find('#nav-featured').addClass('active');
+          this.views.featured.render().$el.show();
           break;
       }
     }
