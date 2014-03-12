@@ -36,6 +36,12 @@ function tpf_content_action_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -127,6 +133,12 @@ function tpf_content_action_field_default_field_instances() {
         'weight' => 25,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -253,6 +265,12 @@ function tpf_content_action_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -348,6 +366,12 @@ function tpf_content_action_field_default_field_instances() {
         'weight' => 2,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -471,6 +495,12 @@ function tpf_content_action_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -536,7 +566,7 @@ function tpf_content_action_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 8,
+      'weight' => 50,
     ),
   );
 
@@ -566,6 +596,12 @@ function tpf_content_action_field_default_field_instances() {
         'weight' => 35,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -672,6 +708,12 @@ function tpf_content_action_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'feature_secondary' => array(
         'label' => 'above',
         'settings' => array(),
@@ -745,7 +787,7 @@ function tpf_content_action_field_default_field_instances() {
     'bundle' => 'action',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.',
     'display' => array(
       'action_summary' => array(
         'label' => 'hidden',
@@ -767,6 +809,12 @@ function tpf_content_action_field_default_field_instances() {
         'weight' => 34,
       ),
       'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -824,17 +872,17 @@ function tpf_content_action_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_topic',
     'label' => 'Topic',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'options',
+      'active' => 0,
+      'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
-      'type' => 'options_select',
+      'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 7,
     ),
   );
@@ -848,6 +896,7 @@ function tpf_content_action_field_default_field_instances() {
   t('Display Tags');
   t('Free Tag');
   t('Main Image');
+  t('Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.');
   t('The absolute URL of the action.');
   t('Topic');
   t('URL for the TakeAction icon.');

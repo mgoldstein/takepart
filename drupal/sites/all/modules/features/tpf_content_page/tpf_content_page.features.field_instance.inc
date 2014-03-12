@@ -774,7 +774,6 @@ function tpf_content_page_field_default_field_instances() {
   // Exported field_instance: 'node-takepart_page-field_page_main_image'
   $field_instances['node-takepart_page-field_page_main_image'] = array(
     'bundle' => 'takepart_page',
-    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -840,7 +839,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'media_views_widget',
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
@@ -851,11 +850,10 @@ function tpf_content_page_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic',
+      'type' => 'media_generic_alt',
       'weight' => 5,
     ),
   );
@@ -1478,7 +1476,6 @@ function tpf_content_page_field_default_field_instances() {
   // Exported field_instance: 'node-takepart_page-field_thumbnail'
   $field_instances['node-takepart_page-field_thumbnail'] = array(
     'bundle' => 'takepart_page',
-    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1544,7 +1541,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'media_views_widget',
       'settings' => array(
         'allowed_schemes' => array(
           'public' => 'public',
@@ -1555,11 +1552,10 @@ function tpf_content_page_field_default_field_instances() {
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
         'progress_indicator' => 'throbber',
         'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic',
+      'type' => 'media_generic_alt',
       'weight' => 10,
     ),
   );
@@ -1569,7 +1565,7 @@ function tpf_content_page_field_default_field_instances() {
     'bundle' => 'takepart_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1624,17 +1620,17 @@ function tpf_content_page_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_topic',
     'label' => 'Topic',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'options',
+      'active' => 0,
+      'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
-      'type' => 'options_select',
+      'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 17,
     ),
   );
@@ -1735,6 +1731,7 @@ function tpf_content_page_field_default_field_instances() {
   t('Related Content');
   t('Remove Headline from Display');
   t('Series');
+  t('Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.');
   t('Subhead');
   t('Suggest Related Campaigns?');
   t('Suggest Related Content?');

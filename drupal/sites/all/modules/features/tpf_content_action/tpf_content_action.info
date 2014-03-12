@@ -17,6 +17,7 @@ dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = takepart_addthis
 dependencies[] = taxonomy
+dependencies[] = taxonomy_term_reference_sortable_widget
 dependencies[] = text
 dependencies[] = tpf_content_field_bases
 dependencies[] = tpf_display_context

@@ -20,6 +20,7 @@ dependencies[] = taxonomy
 dependencies[] = term_reference_tree
 dependencies[] = text
 dependencies[] = tp4_support
+dependencies[] = tpf_content_article
 dependencies[] = tpf_content_field_bases
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1

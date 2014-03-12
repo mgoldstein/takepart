@@ -273,7 +273,7 @@ function tpf_content_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -824,7 +824,7 @@ function tpf_content_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 8,
     ),
   );
 
@@ -1101,7 +1101,7 @@ function tpf_content_article_field_default_field_instances() {
         ),
       ),
       'type' => 'context_field_select',
-      'weight' => 24,
+      'weight' => 11,
     ),
   );
 
@@ -1444,7 +1444,7 @@ function tpf_content_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 16,
+      'weight' => 10,
     ),
   );
 
@@ -1981,7 +1981,7 @@ function tpf_content_article_field_default_field_instances() {
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -2049,7 +2049,7 @@ function tpf_content_article_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_topic',
     'label' => 'Topic',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -2057,7 +2057,7 @@ function tpf_content_article_field_default_field_instances() {
       'active' => 1,
       'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 8,
@@ -2172,6 +2172,7 @@ function tpf_content_article_field_default_field_instances() {
   t('Related Stories');
   t('Series');
   t('Significance');
+  t('Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.');
   t('Subhead');
   t('Syndication');
   t('TAB Action Overrides');
