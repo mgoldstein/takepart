@@ -1,6 +1,6 @@
 
 <?php
-  dpm(get_defined_vars(), 'defined vars');
+
   $bg_width = $variables['entity']->field_campaign_bgw['und'][0]['value'];
   $bg_width_img = $variables['entity']->field_campaign_bgw_img['und'][0]['value'];
   // Does the Tray title exist?
