@@ -272,7 +272,8 @@
             queryParams.tag = params[0];
           } else {
             if (isNaN(parseInt(params[0], 10))) {
-              queryParams.state = params[0];
+              queryParams.school_state = params[0];
+              queryParams.school_external_id = 0;
             } else {
               queryParams.school_external_id = params[0];
             }
