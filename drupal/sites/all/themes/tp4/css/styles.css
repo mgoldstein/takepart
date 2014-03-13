@@ -7671,14 +7671,19 @@ body.node-type-campaign-page header a.big-link, #main.card-page header a.big-lin
   bottom: 0;
   z-index: 0;
 }
-/* line 434, ../sass/page/_campaigns.scss */
+/* line 433, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page header .isStuck, #main.card-page header .isStuck {
+  -webkit-box-shadow: 1px 1px 1px 1px #000000;
+  box-shadow: 1px 1px 1px 1px #000000;
+}
+/* line 438, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card-inner, #main.card-page .card-inner {
   height: auto;
   overflow: hidden;
   max-width: 1000px;
   margin: 0 auto;
 }
-/* line 440, ../sass/page/_campaigns.scss */
+/* line 444, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card-width-980, #main.card-page .card-width-980 {
   float: none;
   max-width: 1000px;
