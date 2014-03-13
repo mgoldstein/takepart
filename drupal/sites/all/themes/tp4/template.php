@@ -1042,8 +1042,3 @@ function tp4_field_campaign_iframe($variables){
 
 
 
-
-
-
-
-

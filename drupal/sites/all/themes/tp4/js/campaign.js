@@ -73,6 +73,10 @@
     }
   };
 
-
+  Drupal.behaviors.equalHeights = {
+    attach: function() {
+      $('ul.sf-menu').superfish();
+    }
+  };
 
 })(jQuery, Drupal, this, this.document);

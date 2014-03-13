@@ -208,10 +208,20 @@ function tp_campaigns_hero(){
     $campaign_node = node_load($node);
   }
 
+
+    $superfish_path = libraries_get_path('superfish');
+    drupal_add_js($superfish_path. '/src/js/hoverintent.js');
+    drupal_add_js($superfish_path. '/src/js/superfish.js');
+    drupal_add_js($superfish_path. '/src/js/supersub.js');
+    drupal_add_css($superfish_path. '/src/css/superfish.css');
+    drupal_add_css($superfish_path. '/src/css/superfish-navbar.css');
+
+
+
+
+
   return theme('tp_campaigns_hero', array('campaign_node' => $campaign_node));
 }
-
-
 
 
 
