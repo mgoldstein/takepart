@@ -40,9 +40,9 @@ body.node-type-campaign-card-social,
       position: relative;
     }
     img.logo{
-      display: block;
-      margin: 0 auto;
-      float: none;
+      // display: block;
+      // margin: 0 auto;
+      // float: none;
     }
   }
 
@@ -205,7 +205,7 @@ body.node-type-campaign-page, #main.card-page{
       width: 100%;
       position: absolute;
       bottom: 0;
-      ul.nice-menu{
+      ul.sf-menu{
         clear:left;
         float:left;
         list-style:none;
@@ -227,6 +227,8 @@ body.node-type-campaign-page, #main.card-page{
           }
         }
       }
+      &.sf-navbar{
+        margin-bottom: 0;      }
     }
   }
   h1.card-title{
@@ -402,6 +404,17 @@ body.node-type-campaign-page, #main.card-page{
     }
     .header-980{
 
+    }
+    .logo-left{
+      float: left;
+    }
+    .logo-right{
+      float: right;
+    }
+    .logo-center{
+      display: block;
+      margin: 0 auto;
+      float: none;
     }
   }
   .card-inner{

@@ -9,7 +9,7 @@
         $('#' + this.id).spectrum({
           preferredFormat: "hex",
           showInput: this.show_input,
-          showAlpha: false,
+          showAlpha: true,
           showInitial: true,
           showPalette: this.show_palette,
           showPaletteOnly: this.show_palette_only,
