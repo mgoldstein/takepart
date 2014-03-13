@@ -117,15 +117,6 @@
 
     // not using Drupal.behaviors because this JS has nothing to do with drupal
     $(document).ready(function() {
-        // hide some things when we're on facebook
-        // (i.e., when the site is loaded in an iframe)
-        if (TEACH.support.loadedInIframe) {
-            $('.footer-wrapper, .slimnav').remove();
-            $('body').css('border', 'none');
-            $('.page-wrap').css('padding', '0');
-            // $('#page').css('padding', '0'); // in case we want to go even wider
-        }
-
         // coppa check
         var birthDate = null;
         $.each(document.cookie.split(";"), function() {
