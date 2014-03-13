@@ -205,6 +205,8 @@ body.node-type-campaign-page, #main.card-page{
       width: 100%;
       position: absolute;
       bottom: 0;
+      z-index: 99;
+      cursor: default;
       ul.sf-menu{
         clear:left;
         float:left;
@@ -228,7 +230,8 @@ body.node-type-campaign-page, #main.card-page{
         }
       }
       &.sf-navbar{
-        margin-bottom: 0;      }
+        margin-bottom: 0;
+      }
     }
   }
   h1.card-title{
@@ -393,6 +396,9 @@ body.node-type-campaign-page, #main.card-page{
 
   //Card and Header background properties
   header{
+    .branding-header{
+      cursor: pointer;
+    }
     .header-bg-image-full{
       background-size: 100%;
     }
@@ -415,6 +421,14 @@ body.node-type-campaign-page, #main.card-page{
       display: block;
       margin: 0 auto;
       float: none;
+    }
+    a.big-link{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
     }
   }
   .card-inner{

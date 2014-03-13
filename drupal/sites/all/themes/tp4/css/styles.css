@@ -7348,8 +7348,10 @@ body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu, #main.
   width: 100%;
   position: absolute;
   bottom: 0;
+  z-index: 99;
+  cursor: default;
 }
-/* line 208, ../sass/page/_campaigns.scss */
+/* line 210, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu {
   clear: left;
   float: left;
@@ -7360,7 +7362,7 @@ body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-m
   left: 50%;
   text-align: center;
 }
-/* line 217, ../sass/page/_campaigns.scss */
+/* line 219, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu li, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu li {
   display: block;
   float: left;
@@ -7370,79 +7372,79 @@ body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-m
   position: relative;
   right: 50%;
 }
-/* line 225, ../sass/page/_campaigns.scss */
+/* line 227, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu li li, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu li li {
   right: 0%;
 }
-/* line 230, ../sass/page/_campaigns.scss */
+/* line 232, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu.sf-navbar, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu.sf-navbar {
   margin-bottom: 0;
 }
-/* line 234, ../sass/page/_campaigns.scss */
+/* line 237, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page h1.card-title, #main.card-page h1.card-title {
   text-align: center;
 }
-/* line 237, ../sass/page/_campaigns.scss */
+/* line 240, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #main, #main.card-page #main {
   max-width: 100%;
 }
-/* line 239, ../sass/page/_campaigns.scss */
+/* line 242, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #main #primary, #main.card-page #main #primary {
   padding: 0;
 }
-/* line 243, ../sass/page/_campaigns.scss */
+/* line 246, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .tray-header, #main.card-page .tray-header {
   position: absolute;
   top: 0;
   padding-top: 50px;
   width: 100%;
 }
-/* line 250, ../sass/page/_campaigns.scss */
+/* line 253, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card-wrapper.has-tray-title h1.card-title, #main.card-page .card-wrapper.has-tray-title h1.card-title {
   display: none;
 }
-/* line 255, ../sass/page/_campaigns.scss */
+/* line 258, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .slider.has-tray-background .card, #main.card-page .slider.has-tray-background .card {
   background-image: none !important;
 }
-/* line 260, ../sass/page/_campaigns.scss */
+/* line 263, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header #block-tp4-support-tp4-slim-nav.block, #main.card-page header #block-tp4-support-tp4-slim-nav.block {
   margin-bottom: 0;
 }
-/* line 263, ../sass/page/_campaigns.scss */
+/* line 266, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page.panels-ipe, #main.card-page.panels-ipe {
   margin-bottom: 0 !important;
 }
-/* line 266, ../sass/page/_campaigns.scss */
+/* line 269, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #primary, #main.card-page #primary {
   padding: 0;
 }
-/* line 270, ../sass/page/_campaigns.scss */
+/* line 273, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .field-name-field-campaign-media-video figure > div > object, #main.card-page .field-name-field-campaign-media-video figure > div > object {
   left: 0;
 }
-/* line 279, ../sass/page/_campaigns.scss */
+/* line 282, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe, #main.card-page .swipe {
   overflow: hidden;
   visibility: hidden;
   position: relative;
 }
-/* line 284, ../sass/page/_campaigns.scss */
+/* line 287, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe-wrap, #main.card-page .swipe-wrap {
   overflow: hidden;
   position: relative;
 }
-/* line 288, ../sass/page/_campaigns.scss */
+/* line 291, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe-wrap > div, #main.card-page .swipe-wrap > div {
   float: left;
   width: 100%;
   position: relative;
 }
-/* line 293, ../sass/page/_campaigns.scss */
+/* line 296, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe, #main.card-page .swipe {
   position: relative;
 }
-/* line 295, ../sass/page/_campaigns.scss */
+/* line 298, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe .left-arrow, #main.card-page .swipe .left-arrow {
   position: absolute;
   left: 0;
@@ -7457,7 +7459,7 @@ body.node-type-campaign-page .swipe .left-arrow, #main.card-page .swipe .left-ar
   font-size: 30px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 310, ../sass/page/_campaigns.scss */
+/* line 313, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe .right-arrow, #main.card-page .swipe .right-arrow {
   position: absolute;
   right: 0;
@@ -7472,51 +7474,51 @@ body.node-type-campaign-page .swipe .right-arrow, #main.card-page .swipe .right-
   font-size: 30px;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 325, ../sass/page/_campaigns.scss */
+/* line 328, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe nav.slider-nav, #main.card-page .swipe nav.slider-nav {
   position: absolute;
   top: 200px;
   width: 100%;
 }
-/* line 329, ../sass/page/_campaigns.scss */
+/* line 332, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .swipe nav.slider-nav .slider-inner, #main.card-page .swipe nav.slider-nav .slider-inner {
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
 }
-/* line 342, ../sass/page/_campaigns.scss */
+/* line 345, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card, body.node-type-campaign-page .slider, #main.card-page .card, #main.card-page .slider {
   background-size: 700px;
   background-position: top center;
   background-repeat: no-repeat;
 }
 @media all and (min-width: 768px) {
-  /* line 342, ../sass/page/_campaigns.scss */
+  /* line 345, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page .card, body.node-type-campaign-page .slider, #main.card-page .card, #main.card-page .slider {
     background-size: 100%;
   }
 }
-/* line 358, ../sass/page/_campaigns.scss */
+/* line 361, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .campaign_card_media img, #main.card-page .campaign_card_media img {
   display: block;
   margin: 0 auto;
   overflow: hidden;
 }
-/* line 363, ../sass/page/_campaigns.scss */
+/* line 366, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .campaign_card_media h4.title, #main.card-page .campaign_card_media h4.title {
   padding-top: 20px;
   padding-bottom: 15px;
   margin-bottom: 0;
 }
-/* line 368, ../sass/page/_campaigns.scss */
+/* line 371, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .campaign_card_media .field-name-field-campaign-media-caption, #main.card-page .campaign_card_media .field-name-field-campaign-media-caption {
   padding-top: 5px;
 }
-/* line 372, ../sass/page/_campaigns.scss */
+/* line 375, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .campaign_card_media .node-video h2.node-title, #main.card-page .campaign_card_media .node-video h2.node-title {
   display: none;
 }
-/* line 378, ../sass/page/_campaigns.scss */
+/* line 381, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .type-card .header-wrapper, #main.card-page .type-card .header-wrapper {
   padding: 0;
 }
@@ -7630,40 +7632,53 @@ body.node-type-campaign-page .card.node-campaign-card-news .center-column:after,
   display: table;
   clear: both;
 }
-/* line 388, ../sass/page/_campaigns.scss */
+/* line 391, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card.node-campaign-card-news .headline, body.node-type-campaign-page .card.node-campaign-card-news .short-headline, body.node-type-campaign-page .card.node-campaign-card-news .more-link, #main.card-page .card.node-campaign-card-news .headline, #main.card-page .card.node-campaign-card-news .short-headline, #main.card-page .card.node-campaign-card-news .more-link {
   text-align: center;
 }
-/* line 396, ../sass/page/_campaigns.scss */
+/* line 399, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page header .branding-header, #main.card-page header .branding-header {
+  cursor: pointer;
+}
+/* line 402, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .header-bg-image-full, #main.card-page header .header-bg-image-full {
   background-size: 100%;
 }
-/* line 399, ../sass/page/_campaigns.scss */
+/* line 405, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .header-bg-image-980, #main.card-page header .header-bg-image-980 {
   background-size: 1000px;
 }
-/* line 408, ../sass/page/_campaigns.scss */
+/* line 414, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .logo-left, #main.card-page header .logo-left {
   float: left;
 }
-/* line 411, ../sass/page/_campaigns.scss */
+/* line 417, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .logo-right, #main.card-page header .logo-right {
   float: right;
 }
-/* line 414, ../sass/page/_campaigns.scss */
+/* line 420, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .logo-center, #main.card-page header .logo-center {
   display: block;
   margin: 0 auto;
   float: none;
 }
-/* line 420, ../sass/page/_campaigns.scss */
+/* line 425, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page header a.big-link, #main.card-page header a.big-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+/* line 434, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card-inner, #main.card-page .card-inner {
   height: auto;
   overflow: hidden;
   max-width: 1000px;
   margin: 0 auto;
 }
-/* line 426, ../sass/page/_campaigns.scss */
+/* line 440, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card-width-980, #main.card-page .card-width-980 {
   float: none;
   max-width: 1000px;

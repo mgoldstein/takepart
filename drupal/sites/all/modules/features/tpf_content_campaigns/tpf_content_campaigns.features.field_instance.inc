@@ -460,6 +460,92 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign-field_campaign_homepage'
+  $field_instances['node-campaign-field_campaign_homepage'] = array(
+    'bundle' => 'campaign',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'What is the homepage for this campaign?  This will be used for promotable campaigns as well as a destination for the campaign header to link.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 11,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_homepage',
+    'label' => 'Homepage',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign-field_campaign_logo'
   $field_instances['node-campaign-field_campaign_logo'] = array(
     'bundle' => 'campaign',
@@ -553,6 +639,92 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign-field_campaign_logo_position'
+  $field_instances['node-campaign-field_campaign_logo_position'] = array(
+    'bundle' => 'campaign',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 10,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_logo_position',
+    'label' => 'Logo Position',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_select',
+      'weight' => 24,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign-field_campaign_menu'
   $field_instances['node-campaign-field_campaign_menu'] = array(
     'bundle' => 'campaign',
@@ -634,6 +806,91 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
       'type' => 'text_textfield',
       'weight' => 25,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign-field_campaign_menu_color_child'
+  $field_instances['node-campaign-field_campaign_menu_color_child'] = array(
+    'bundle' => 'campaign',
+    'default_value' => array(
+      0 => array(
+        'rgb' => '#ffffff',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'color_field',
+        'settings' => array(),
+        'type' => 'color_field_default_formatter',
+        'weight' => 9,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_menu_color_child',
+    'label' => 'Menu Color Child',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'color_field',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'color_field_spectrum_widget',
+      'weight' => 27,
     ),
   );
 
@@ -724,6 +981,91 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
       'type' => 'number',
       'weight' => 24,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign-field_menu_color_parent'
+  $field_instances['node-campaign-field_menu_color_parent'] = array(
+    'bundle' => 'campaign',
+    'default_value' => array(
+      0 => array(
+        'rgb' => '#ffbdd2',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'color_field',
+        'settings' => array(),
+        'type' => 'color_field_default_formatter',
+        'weight' => 8,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_menu_color_parent',
+    'label' => 'Menu Color Parent',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'color_field',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'color_field_spectrum_widget',
+      'weight' => 26,
     ),
   );
 
@@ -4910,15 +5252,19 @@ function tpf_content_campaigns_field_default_field_instances() {
   t('Content Side');
   t('Filter');
   t('Height in pixels.  Do not include \'px\'');
+  t('Homepage');
   t('Iframe');
   t('Instructional Copy');
   t('Is this media card a photo or a video?');
+  t('Logo Position');
   t('Media Caption');
   t('Media Photo');
   t('Media Title');
   t('Media Type');
   t('Media Video');
   t('Menu');
+  t('Menu Color Child');
+  t('Menu Color Parent');
   t('Minimum Card Height');
   t('Minimum Height');
   t('Minimum height for the content in pixels.  Leave blank if you would like the height to fit to the size of the content.');
@@ -4932,6 +5278,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   t('Tray');
   t('Type');
   t('What campaign does this page belong to?');
+  t('What is the homepage for this campaign?  This will be used for promotable campaigns as well as a destination for the campaign header to link.');
   t('Which side should the media content appear on?');
   t('iFrame Height');
   t('iFrame Width');

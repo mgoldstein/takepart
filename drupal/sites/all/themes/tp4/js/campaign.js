@@ -73,9 +73,14 @@
     }
   };
 
-  Drupal.behaviors.equalHeights = {
+  Drupal.behaviors.campaignHeader = {
     attach: function() {
       $('ul.sf-menu').superfish();
+
+      // $(".branding-header").click(function(){
+      //   window.location=$(this).attr("href"); 
+      //   return false;
+      // });
     }
   };
 
