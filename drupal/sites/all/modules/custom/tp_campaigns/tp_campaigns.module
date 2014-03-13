@@ -206,8 +206,6 @@ function tp_campaigns_hero(){
   if(isset($node->field_campaign_reference['und'][0]['target_id']) == true){
     $node = $node->field_campaign_reference['und'][0]['target_id'];
     $campaign_node = node_load($node);
-  }
-
 
     $superfish_path = libraries_get_path('superfish');
     drupal_add_js($superfish_path. '/src/js/hoverintent.js');
@@ -216,11 +214,11 @@ function tp_campaigns_hero(){
     drupal_add_css($superfish_path. '/src/css/superfish.css');
     drupal_add_css($superfish_path. '/src/css/superfish-navbar.css');
 
-
-
-
-
-  return theme('tp_campaigns_hero', array('campaign_node' => $campaign_node));
+    return theme('tp_campaigns_hero', array('campaign_node' => $campaign_node));
+  }
+  else{
+    return;
+  }
 }
 
 
