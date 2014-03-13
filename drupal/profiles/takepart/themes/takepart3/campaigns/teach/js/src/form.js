@@ -108,6 +108,8 @@
             formData[this.id] = $(this).val().trim().replace(/\n+/g, ' ').htmlEntities();
         });
 
+        formData.story_title = formData.teacher_first_name + ' ' + formData.teacher_last_name;
+
         // get more useful checkbox values
         formData.email_subscribe = $form.find('#email_subscribe').is(':checked');
         formData.terms_agree = $form.find('#terms_agree').is(':checked');
