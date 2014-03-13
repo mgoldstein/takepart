@@ -6,7 +6,6 @@
   $menu_color_parent = $variables['campaign_node']->field_menu_color_parent['und'][0]['rgb'];
   $menu_color_child = $variables['campaign_node']->field_campaign_menu_color_child['und'][0]['rgb'];
 
-  dpm($variables, 'variables');
   $logo_position = $variables['campaign_node']->field_campaign_logo_position['und'][0]['value']; // 0 => Center, 1 => Left, 2 => Right
   $uri = $campaign_variables->field_campaign_background['und'][0]['uri'];
   $image_url = file_create_url($uri);
@@ -20,10 +19,8 @@
   //Header link
   if(isset($variables['campaign_node']->field_campaign_homepage['und'][0]['target_id']) == true){
     $homepage_id = $variables['campaign_node']->field_campaign_homepage['und'][0]['target_id'];
-    dpm($homepage_id, 'homepage id');
     global $base_url;
     $homepage_link = $base_url. '/'. drupal_get_path_alias('node/'. $homepage_id);
-    dpm($homepage_link, 'homepage_link');
 
   }
 
