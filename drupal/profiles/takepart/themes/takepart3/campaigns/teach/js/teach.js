@@ -177,9 +177,11 @@ if (!String.prototype.trim) {
 
     // The window level TP Social click event needs to be attached to the
     // TP Analytics social click handler.
-    $(document).ready(function() {
-        $(window).on('tp-social-click', function(e, args) {
-            takepart.analytics.track('tp-social-click', args);
-        });
-    }); // $(document).ready() callback
+    Drupal.behaviors.trackSocialClicks = {
+        attach: function() {
+            $(window).on('tp-social-click', function(e, args) {
+                takepart.analytics.track('tp-social-click', args);
+            });
+        }
+    };
 })(jQuery, Drupal, this, this.document);

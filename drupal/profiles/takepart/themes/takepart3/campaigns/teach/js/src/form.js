@@ -117,11 +117,6 @@
 
     // not using Drupal.behaviors because this JS has nothing to do with drupal
     $(document).ready(function() {
-        /*
-        $(window).on('tp-social-click', function(e, args) {
-            takepart.analytics.track('tp-social-click', args);
-        });
-        */
         // hide some things when we're on facebook
         // (i.e., when the site is loaded in an iframe)
         if (TEACH.support.loadedInIframe) {
