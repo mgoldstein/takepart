@@ -6,6 +6,7 @@
   $menu_color_parent = $variables['campaign_node']->field_menu_color_parent['und'][0]['rgb'];
   $menu_color_child = $variables['campaign_node']->field_campaign_menu_color_child['und'][0]['rgb'];
 
+  dpm($variables, 'variables');
   $logo_position = $variables['campaign_node']->field_campaign_logo_position['und'][0]['value']; // 0 => Center, 1 => Left, 2 => Right
   $uri = $campaign_variables->field_campaign_background['und'][0]['uri'];
   $image_url = file_create_url($uri);
@@ -15,6 +16,20 @@
   $bg_width_image = $variables['campaign_node']->field_campaign_bgw_image['und'][0]['value'];
   $styles = array();
   $classes = array();
+
+  //Header link
+  if(isset($variables['campaign_node']->field_campaign_homepage['und'][0]['target_id']) == true){
+    $homepage_id = $variables['campaign_node']->field_campaign_homepage['und'][0]['target_id'];
+    dpm($homepage_id, 'homepage id');
+    global $base_url;
+    $homepage_link = $base_url. '/'. drupal_get_path_alias('node/'. $homepage_id);
+    dpm($homepage_link, 'homepage_link');
+
+  }
+
+
+
+  //background
   if(isset($campaign_variables->field_campaign_background['und'][0]['uri']) == true){
     $uri = $campaign_variables->field_campaign_background['und'][0]['uri'];
     $image_url = file_create_url($uri);
@@ -60,6 +75,9 @@
 
 <div class="branding-header <?php print implode(' ', $classes); ?>" style="<?php print implode(' ', $styles); ?>">
   <div class="header-inner" style="min-height: <?php print $min_height; ?>px">
+<!--   <a class="big-link" href="http://espn.com"></a> -->
+  <?php print l(' ', $homepage_link, array('attributes' => array('class' => array('big-link')))); ?>
+
   <?php
     $menu = 'menu-'. $campaign_variables->field_campaign_menu['und'][0]['value'];
     $menu_tree = menu_tree_all_data($menu);

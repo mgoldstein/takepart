@@ -278,13 +278,13 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Header/Branding',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_campaign_menu',
-      1 => 'field_campaign_bg_color',
-      2 => 'field_campaign_logo',
-      3 => 'field_campaign_min_height',
-      4 => 'group_background_image',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_min_height',
+      2 => 'group_background_image',
+      3 => 'group_menu',
+      4 => 'group_logo',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -297,6 +297,34 @@ function tpf_content_campaigns_field_group_info() {
     ),
   );
   $export['group_header_branding|node|campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_logo|node|campaign|form';
+  $field_group->group_name = 'group_logo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_header_branding';
+  $field_group->data = array(
+    'label' => 'Logo',
+    'weight' => '22',
+    'children' => array(
+      0 => 'field_campaign_logo',
+      1 => 'field_campaign_logo_position',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-logo field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_logo|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -328,6 +356,35 @@ function tpf_content_campaigns_field_group_info() {
     ),
   );
   $export['group_media|node|campaign_card_media|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_menu|node|campaign|form';
+  $field_group->group_name = 'group_menu';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_header_branding';
+  $field_group->data = array(
+    'label' => 'Menu',
+    'weight' => '25',
+    'children' => array(
+      0 => 'field_campaign_menu',
+      1 => 'field_menu_color_parent',
+      2 => 'field_campaign_menu_color_child',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-menu field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_menu|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
