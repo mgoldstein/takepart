@@ -54,7 +54,7 @@
     else{ //Right
       $logo_class = 'logo-right';
     }
-    $logo = '<img src="'. $logo. '" class="logo '. $logo_class. '">';
+    $logo = '<img src="'. $logo. '" class="campaign-logo '. $logo_class. '">';
   }
 
 ?>
