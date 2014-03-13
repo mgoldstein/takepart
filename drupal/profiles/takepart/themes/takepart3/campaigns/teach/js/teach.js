@@ -79,6 +79,19 @@ if (!String.prototype.trim) {
 
 (function($, Drupal, window, document, undefined) {
 
+    Drupal.behaviors.iFrameBuster = {
+        attach: function() {
+            // hide some things when we're on facebook
+            // (i.e., when the site is loaded in an iframe)
+            if (TEACH.support.loadedInIframe) {
+                $('.footer-wrapper, .slimnav').remove();
+                $('body').css('border', 'none');
+                $('.page-wrap').css('padding', '0');
+                // $('#page').css('padding', '0'); // in case we want to go even wider
+            }
+        }
+    };
+
     Drupal.behaviors.punishInternetExplorerUsers = {
         attach: function(context) {
             var message = '<p>The TEACH website is a richly interactive web experience and full functionality requires a <a href="http://browsehappy.com/" target="_blank">recent web browser</a>.</p>',
@@ -177,9 +190,11 @@ if (!String.prototype.trim) {
 
     // The window level TP Social click event needs to be attached to the
     // TP Analytics social click handler.
-    $(document).ready(function() {
-        $(window).on('tp-social-click', function(e, args) {
-            takepart.analytics.track('tp-social-click', args);
-        });
-    }); // $(document).ready() callback
+    Drupal.behaviors.trackSocialClicks = {
+        attach: function() {
+            $(window).on('tp-social-click', function(e, args) {
+                takepart.analytics.track('tp-social-click', args);
+            });
+        }
+    };
 })(jQuery, Drupal, this, this.document);

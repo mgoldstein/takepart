@@ -108,6 +108,8 @@
             formData[this.id] = $(this).val().trim().replace(/\n+/g, ' ').htmlEntities();
         });
 
+        formData.story_title = formData.teacher_first_name + ' ' + formData.teacher_last_name;
+
         // get more useful checkbox values
         formData.email_subscribe = $form.find('#email_subscribe').is(':checked');
         formData.terms_agree = $form.find('#terms_agree').is(':checked');
@@ -117,20 +119,6 @@
 
     // not using Drupal.behaviors because this JS has nothing to do with drupal
     $(document).ready(function() {
-        /*
-        $(window).on('tp-social-click', function(e, args) {
-            takepart.analytics.track('tp-social-click', args);
-        });
-        */
-        // hide some things when we're on facebook
-        // (i.e., when the site is loaded in an iframe)
-        if (TEACH.support.loadedInIframe) {
-            $('.footer-wrapper, .slimnav').remove();
-            $('body').css('border', 'none');
-            $('.page-wrap').css('padding', '0');
-            // $('#page').css('padding', '0'); // in case we want to go even wider
-        }
-
         // coppa check
         var birthDate = null;
         $.each(document.cookie.split(";"), function() {
@@ -159,7 +147,7 @@
                     .addClass('character-count-' + $this.attr('id').split('_').join('-'))
                     .html(' Characters Left')
                     .insertAfter($this)
-                    .toggleClass('hidden', maxlength > 400)
+                    .toggleClass('hidden', maxlength > 1000)
                 ,
                 $characterCount = $('<span />').html(maxlength).prependTo($characterCountWrapper)
             ;
@@ -172,8 +160,8 @@
             $this.on('keyup', function() {
                 var count = maxlength - $this.val().length;
                 $characterCount.html(count);
-                $characterCountWrapper.toggleClass('hidden', count > 400);
-                $characterCountWrapper.toggleClass('count-alert', count < maxlength / 4);
+                $characterCountWrapper.toggleClass('hidden', count > 1000);
+                $characterCountWrapper.toggleClass('count-alert', count < maxlength / 5);
                 $characterCountWrapper.toggleClass('count-warning', count < maxlength / 10);
             });
         });

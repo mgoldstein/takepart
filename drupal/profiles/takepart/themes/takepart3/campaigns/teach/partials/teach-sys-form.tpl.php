@@ -47,7 +47,6 @@
 
   <fieldset>
     <legend>Your Story</legend>
-    <div class="field-wrapper"><label for="story_title">Story Title</label><input type="text" name="story_title" id="story_title" placeholder="Story Title*" maxlength="100" required></div>
     <div class="field-wrapper field-wrapper-story-year clearfix">
       <label class="visible"><span class="vertically-center">Approximate Year This Story Happened</span>
         <select name="story_year" id="story_year" class="pull-right" required>
@@ -58,7 +57,7 @@
         </select>
       </label>
     </div>
-    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="8" placeholder="Tell Us Your Story" maxlength="1000" required></textarea></div>
+    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="8" placeholder="Tell Us Your Story" maxlength="2500" required></textarea></div>
   </fieldset>
   <fieldset>
     <legend>Pictures Make The Story!</legend>
@@ -102,10 +101,13 @@
       <h2 class="sys-story-subhead"><%=teacher_first_name%> <%=teacher_last_name%></h2>
       <div class="sys-story-user-image-wrapper"><img id="sys-story-user-image" class="sys-story-user-image" src="http://placehold.it/150x200&text=loading..." data-src="<%=user_image_id%>.jpg" data-width="150" data-height="200" data-crop="fill" data-gravity="faces"></div>
       <h3>School</h3>
-      <p><%=school_name%><br /><%=school_city%>, <%=school_state%></p>
+      <p>
+        <%=school_name%><br />
+        <% if (school_city ) { %><%=school_city%>, <% } %>
+        <%=school_state%><br />
+        <%=story_year%></p>
       <h3>Submitted By</h3>
       <p><%=first_name%> <%=last_name%></p>
-      <h3><%=story_title%> (<%=story_year%>)</h3>
       <p><%=story_body%></p>
     </div>
   </div>
