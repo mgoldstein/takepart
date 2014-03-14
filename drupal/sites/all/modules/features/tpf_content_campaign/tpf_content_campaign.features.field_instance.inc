@@ -892,7 +892,7 @@ function tpf_content_campaign_field_default_field_instances() {
     'bundle' => 'takepart_campaign',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.',
+    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3442,7 +3442,7 @@ function tpf_content_campaign_field_default_field_instances() {
   t('Segment 2 HTML');
   t('Segment 2 Label');
   t('Segment 2 Related Content');
-  t('Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.');
+  t('Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.');
   t('Spotlight HTML');
   t('Spotlight Image');
   t('Spotlight Nodes');

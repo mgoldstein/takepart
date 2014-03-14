@@ -17,3 +17,8 @@ table.field-multiple-table input.fluid {
   background: green none;
   color: white;
 }
+
+#sortable2 li.ui-state-highlight:first-of-type:after {
+  content: " (primary topic)";
+  font-size: smaller; 
+}

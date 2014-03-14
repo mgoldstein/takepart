@@ -1981,7 +1981,7 @@ function tpf_content_article_field_default_field_instances() {
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.',
+    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -2054,7 +2054,7 @@ function tpf_content_article_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 0,
       'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
@@ -2172,7 +2172,7 @@ function tpf_content_article_field_default_field_instances() {
   t('Related Stories');
   t('Series');
   t('Significance');
-  t('Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.');
+  t('Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.');
   t('Subhead');
   t('Syndication');
   t('TAB Action Overrides');

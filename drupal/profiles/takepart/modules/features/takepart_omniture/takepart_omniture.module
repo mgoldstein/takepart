@@ -141,5 +141,14 @@ function takepart_omniture_token_info() {
     ),
   );
 
+    $info['tokens']['tp_omniture']['primary_topic'] = array(
+    'name' => t('Grab the primary topic'),
+    'description' => t('Grab the first term from the topic field.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_primary_topic",
+    ),
+  );
     return $info;
 }

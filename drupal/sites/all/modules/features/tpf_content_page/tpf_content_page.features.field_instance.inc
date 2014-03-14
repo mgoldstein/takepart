@@ -1565,7 +1565,7 @@ function tpf_content_page_field_default_field_instances() {
     'bundle' => 'takepart_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.',
+    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1731,7 +1731,7 @@ function tpf_content_page_field_default_field_instances() {
   t('Related Content');
   t('Remove Headline from Display');
   t('Series');
-  t('Sort the topics in order of priority. The first topic in the list will be recognized as the primary topic for this piece of content.');
+  t('Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.');
   t('Subhead');
   t('Suggest Related Campaigns?');
   t('Suggest Related Content?');
