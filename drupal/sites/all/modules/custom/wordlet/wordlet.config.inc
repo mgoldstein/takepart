@@ -570,6 +570,7 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/campaign.js',
         'campaigns/teach/js/teach.js',
+        'campaigns/teach/js/film.js'
       ),
       'load' => array('site', 'teach_campaign'),
     ),
