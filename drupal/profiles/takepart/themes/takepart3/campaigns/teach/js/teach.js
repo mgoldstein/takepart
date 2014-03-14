@@ -1,4 +1,4 @@
-TEACH = window.TEACH || { support: {}, Models: {}, Collections: {}, Views: {} };
+TEACH = window.TEACH || { support: {}, social: {}, Models: {}, Collections: {}, Views: {} };
 
 // Magic Numbers
 TEACH.TAP = {
@@ -33,6 +33,24 @@ TEACH.support.loadedInIframe = (function() {
         return true;
     }
 })();
+
+// social share options
+TEACH.social.options = {
+    url_append: '?cmpid=organic-share-{{name}}',
+    services: [
+        {
+            name: 'facebook'
+        },
+        {
+            name: 'twitter',
+            text: '{{title}}'
+        },
+        {
+            name: 'googleplus'
+        }
+    ]
+};
+
 
 // Simple JavaScript Templating
 // John Resig - http://ejohn.org/ - MIT Licensed
@@ -140,8 +158,7 @@ if (!String.prototype.trim) {
                 var title = $this.data('sharetitle') || 'TEACH | Join the “Teacher Stories” initiative and help us support great teachers.';
                 var description = $this.data('sharedescription').replace(/<[^>]+>/ig, '') || 'Share a teacher story and you’ll help us give away more than $10,000 to public schools.';
 
-                var opts = {
-                    url_append: '?cmpid=organic-share-{{name}}',
+                var opts = $.extend({}, TEACH.social.options, {
                     services: [
                         {
                             name: 'facebook',
@@ -160,7 +177,7 @@ if (!String.prototype.trim) {
                             url: url
                         }
                     ]
-                };
+                });
 
                 $this.tpsocial(opts);
 

@@ -2636,8 +2636,8 @@ h1.sys-headline span {
   background-image: url('../img/stupid-tape-2.png?1393893502');
 }
 .sys-story-modal .sys-story-teacher-image-wrapper:after {
-  bottom: -25px;
-  left: -15px;
+  bottom: 40px;
+  left: -24px;
   width: 61px;
   height: 129px;
   background-image: url('../img/stupid-tape-1.png?1393893502');
@@ -2682,9 +2682,81 @@ h1.sys-headline span {
   line-height: 1.5;
   color: #666;
 }
+.sys-story-modal .story-social-share {
+  display: block;
+  width: 100%;
+  padding: .9em 4px 0;
+  background: transparent url('../img/story-modal-social-share-bg.png?1394748930') scroll no-repeat center top;
+  background-size: contain;
+  min-height: 4.1em;
+}
+.sys-story-modal .story-social-share span {
+  font: normal 1.66667em/1 "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+  margin-left: 1.2em;
+}
+.sys-story-modal .story-comments {
+  max-width: 638px;
+  margin: 0 auto;
+}
+.sys-story-modal .story-comments h3 {
+  display: inline-block;
+  font-size: 2.166666667em;
+}
+.sys-story-modal .story-comments .story-fb-like {
+  display: inline-block;
+  vertical-align: baseline;
+  float: right;
+}
 
 /* # Browse Stories Page
 ================================================== */
+.page-wordlet-teach-browse-stories .button {
+  display: inline-block;
+  padding: .75em 2em;
+  font: normal 1.333em/1 "GlyphaLTPro-Black", serif;
+  color: white;
+  text-transform: uppercase;
+  background-color: #ea5f11;
+}
+.page-wordlet-teach-browse-stories .button:hover {
+  text-decoration: none;
+}
+.page-wordlet-teach-browse-stories .button:active {
+  position: relative;
+  top: 1px;
+}
+.page-wordlet-teach-browse-stories .button.in-progress {
+  background-image: url('../img/spinner-white-orange.gif?1393893502');
+  background-size: auto 46%;
+  background-position: 96% center;
+}
+.page-wordlet-teach-browse-stories .orange-button-container {
+  margin: 2em 0;
+  text-align: center;
+  clear: both;
+}
+.page-wordlet-teach-browse-stories .orange-button-container a {
+  display: inline-block;
+  padding: .75em 2em;
+  font: normal 1.333em/1 "GlyphaLTPro-Black", serif;
+  color: white;
+  text-transform: uppercase;
+  background-color: #ea5f11;
+}
+.page-wordlet-teach-browse-stories .orange-button-container a:hover {
+  text-decoration: none;
+}
+.page-wordlet-teach-browse-stories .orange-button-container a:active {
+  position: relative;
+  top: 1px;
+}
+.page-wordlet-teach-browse-stories .orange-button-container a.in-progress {
+  background-image: url('../img/spinner-white-orange.gif?1393893502');
+  background-size: auto 46%;
+  background-position: 96% center;
+}
+
 .teach-app .app-nav {
   font: normal 1.66667em/1 "GlyphaLTPro-Black", serif;
   text-align: center;
@@ -2801,31 +2873,6 @@ h1.sys-headline span {
 .teach-app .stories-view .story .story-title {
   font: bold 1.16667em/1 Helvetica, Arial, sans-serif;
   margin: 0 .571428571em;
-}
-.teach-app .stories-view .load-more-stories {
-  margin: 2em 0;
-  text-align: center;
-  clear: both;
-}
-.teach-app .stories-view .load-more-stories a {
-  display: inline-block;
-  padding: .75em 2em;
-  font: normal 1.333em/1 "GlyphaLTPro-Black", serif;
-  color: white;
-  text-transform: uppercase;
-  background-color: #ea5f11;
-}
-.teach-app .stories-view .load-more-stories a:hover {
-  text-decoration: none;
-}
-.teach-app .stories-view .load-more-stories a:active {
-  position: relative;
-  top: 1px;
-}
-.teach-app .stories-view .load-more-stories a.in-progress {
-  background-image: url('../img/spinner-white-orange.gif?1393893502');
-  background-size: auto 46%;
-  background-position: 96% center;
 }
 .teach-app .sys-form {
   background-color: white;
