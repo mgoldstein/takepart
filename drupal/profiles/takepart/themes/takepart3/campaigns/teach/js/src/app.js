@@ -65,14 +65,22 @@
     className: "sys-story-modal",
     initialize: function() {
       this.template = _.template($('#story_full_view').html());
+      this.socialOptions = $.extend({}, TEACH.social.options);
+
       this.listenTo(this.model, "change", this.render);
     },
 
     render: function() {
-      this.$el
-        .html(this.template(this.model.toJSON()))
-        .find('img').cloudinary()
-      ;
+      this.$el.html(this.template(this.model.toJSON()));
+      this.$el.find('img').cloudinary();
+      this.$el.find('#story-social-share').tpsocial(this.socialOptions);
+      window.FB && FB.XFBML.parse(this.el);
+
+      this.$el.find('#story-tags').on('click', 'a', _.bind(function(e){
+        $.tpmodal.hide({id: 'sys_modal_'});
+        this.remove();
+      }, this));
+
       return this;
     }
   });

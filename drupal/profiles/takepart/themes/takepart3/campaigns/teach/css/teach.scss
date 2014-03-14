@@ -114,6 +114,36 @@ $body-copy-black: #313131;
   }
 }
 
+@mixin orange-button {
+  display: inline-block;
+  padding: .75em 2em;
+  font: normal 1.333em/1 $secondary-font;
+  color: white;
+  text-transform: uppercase;
+  background-color: $primary-color;
+  &:hover {
+    text-decoration: none;
+  }
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+  &.in-progress {
+    background-image: image-url("spinner-white-orange.gif");
+    background-size: auto 46%;
+    background-position: 96% center;
+  }
+}
+
+@mixin orange-button-container {
+  margin: 2em 0;
+  text-align: center;
+  clear: both;
+  a {
+    @include orange-button;
+  }
+}
+
 /* # General
 ================================================== */
 #page-wrapper {
@@ -2443,8 +2473,8 @@ h1.sys-headline {
       background-image: image-url("stupid-tape-2.png");
     }
     &:after {
-      bottom: -25px;
-      left: -15px;
+      bottom: 40px;
+      left: -24px;
       width: 61px;
       height: 129px;
       background-image: image-url("stupid-tape-1.png");
@@ -2490,11 +2520,51 @@ h1.sys-headline {
     line-height: 1.5;
     color: #666;
   }
+
+  .story-social-share {
+    display: block;
+    width: 100%; // explicit, so it doesn't get all "border-box"
+    padding: .9em 4px 0;
+    background: transparent image-url("story-modal-social-share-bg.png") scroll no-repeat center top;
+    background-size: contain;
+    min-height: 4.1em;
+
+    span {
+      font: normal 1.666666667em/1 $secondary-font;
+      text-transform: uppercase;
+      margin-left: 1.2em;
+    }
+  }
+
+  .story-comments {
+    max-width: 638px;
+    margin: 0 auto;
+    h3 {
+      display: inline-block;
+      font-size: 2.166666667em;
+    }
+    .story-fb-like {
+      display: inline-block;
+      vertical-align: baseline;
+      float: right;
+    }
+  }
 }
 
 /* # Browse Stories Page
 ================================================== */
+// general styles can happen anywhere in the body
+.page-wordlet-teach-browse-stories {
+  .button {
+    @include orange-button;
+  }
+  .orange-button-container {
+    @include orange-button-container;
+  }
+}
+
 .teach-app {
+
   .app-nav {
     font: normal 1.666666667em/1 $secondary-font; 
     text-align: center;
@@ -2610,31 +2680,6 @@ h1.sys-headline {
       }
     } //story
 
-    .load-more-stories {
-      margin: 2em 0;
-      text-align: center;
-      clear: both;
-      a {
-        display: inline-block;
-        padding: .75em 2em;
-        font: normal 1.333em/1 $secondary-font;
-        color: white;
-        text-transform: uppercase;
-        background-color: $primary-color;
-        &:hover {
-          text-decoration: none;
-        }
-        &:active {
-          position: relative;
-          top: 1px;
-        }
-        &.in-progress {
-          background-image: image-url("spinner-white-orange.gif");
-          background-size: auto 46%;
-          background-position: 96% center;
-        }
-      }
-    }
   } // .stories-view
 
   .sys-form {
