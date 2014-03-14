@@ -53,7 +53,13 @@
     </p>
     <h3>Submitted By</h3>
     <p><%=first_name%> <%=last_name%></p>
-    <p><%=story.body%></p>
+    <% 
+      var paragraphs = [];
+      _.each(story.body.split(/\n+/g), function(paragraph) {
+        paragraphs.push(paragraph.replace(/^\s+|\s+$/g, ''));
+      });
+    %>
+    <p><%=paragraphs.join('</p><p>')%></p>
     <% 
       var tags = [];
       _.each(story.tags.split(/,\s?/g), function(tag) {
