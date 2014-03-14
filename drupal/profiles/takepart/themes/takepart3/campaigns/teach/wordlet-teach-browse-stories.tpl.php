@@ -27,6 +27,12 @@
     <% } %>
     <%= school.state %>
   </p>
+  <p class="story-meta">
+  <% if (story.preview !== '') { %>
+    <%= story.preview %>
+  <% } %>
+  <a href="#">read more &raquo;</a>
+  </p>
 </script>
 <script type="text/x-template" id="story_full_view">
   <h2 class="sys-story-headline"><span>Teacher Stories From <span class="teach-logo">Teach</span></span></h2>
