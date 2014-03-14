@@ -105,7 +105,7 @@
         var formData = {};
         $form.find("input, textarea, select").not('[type="checkbox"], [type="file"]').each(function() {
             // @see String.prototype.htmlEntities
-            formData[this.id] = $(this).val().trim().replace(/\n+/g, ' ').htmlEntities();
+            formData[this.id] = $(this).val().trim().htmlEntities();
         });
 
         formData.story_title = formData.teacher_first_name + ' ' + formData.teacher_last_name;
