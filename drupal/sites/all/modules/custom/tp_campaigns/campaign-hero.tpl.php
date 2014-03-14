@@ -72,8 +72,8 @@
 
 <div class="branding-header <?php print implode(' ', $classes); ?>" style="<?php print implode(' ', $styles); ?>">
   <div class="header-inner" style="min-height: <?php print $min_height; ?>px">
-<!--   <a class="big-link" href="http://espn.com"></a> -->
-  <?php print l(' ', $homepage_link, array('attributes' => array('class' => array('big-link')))); ?>
+  
+  <?php print (isset($homepage_link) == true ? l(' ', $homepage_link, array('attributes' => array('class' => array('big-link')))) : ''); ?>
 
   <?php
     $menu = 'menu-'. $campaign_variables->field_campaign_menu['und'][0]['value'];
