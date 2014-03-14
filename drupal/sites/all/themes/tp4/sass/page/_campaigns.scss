@@ -396,6 +396,17 @@ body.node-type-campaign-page, #main.card-page{
 
   //Card and Header background properties
   header{
+    .header-inner{
+      padding-top: 15px;
+      @include breakpoint($breakpoint-tablet){
+        padding-top: 20px;
+      }
+    }
+    .branding-header{
+      &.has-menu{
+        margin-bottom: 20px;
+      }
+    }
     .header-bg-image-full{
       background-size: 100%;
     }
@@ -428,8 +439,11 @@ body.node-type-campaign-page, #main.card-page{
       z-index: 0;
     }
     .isStuck{
-      -webkit-box-shadow: 1px 1px 1px 1px #000000;
-      box-shadow: 1px 1px 1px 1px #000000;
+      .branding-header{
+        -webkit-box-shadow: 1px 1px 1px 1px #000000;
+        box-shadow: 1px 1px 1px 1px #000000;
+        margin-bottom: 0;
+      }
     }
   }
   .card-inner{
