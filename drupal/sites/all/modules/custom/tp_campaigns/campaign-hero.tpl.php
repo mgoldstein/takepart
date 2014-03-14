@@ -24,6 +24,10 @@
 
   }
 
+  //If menu exists, add additional padding to the hero unit
+  if(isset($campaign_variables->field_campaign_menu['und'][0]['value']) == true && $campaign_variables->field_campaign_menu['und'][0]['value'] != NULL){
+    $classes[] = 'has-menu';
+  }
 
 
   //background
