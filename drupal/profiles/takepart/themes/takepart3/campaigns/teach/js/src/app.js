@@ -63,26 +63,69 @@
   TEACH.Views.StoryFullView = Backbone.View.extend({
     tagName: "article",
     className: "sys-story-modal",
+
     initialize: function() {
       this.template = _.template($('#story_full_view').html());
-      this.socialOptions = $.extend({}, TEACH.social.options);
 
       this.listenTo(this.model, "change", this.render);
     },
 
     render: function() {
+      // set up social options
+      var title = "Teacher Stories: " + [this.model.get('teacher').first_name, this.model.get('teacher').last_name].join(' ');
+      var description = "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
+      var socialOptions = $.extend({}, TEACH.social.options, {
+        services: [
+          {
+            name: 'facebook',
+            title: title,
+            description: description,
+            image: this.model.get('teacher').image_link
+          },
+          {
+            name: 'twitter',
+            text: description,
+            via: 'TeachMovie'
+          },
+          {
+            name: 'googleplus'
+          }
+        ]
+      });
+
+      // render the element
       this.$el.html(this.template(this.model.toJSON()));
       this.$el.find('img').cloudinary();
-      this.$el.find('#story-social-share').tpsocial(this.socialOptions);
+      this.$el.find('#story-social-share').tpsocial(socialOptions);
       window.FB && FB.XFBML.parse(this.el);
 
+      // bind social share event to contact TAP
+      this.$el.find('#story-social-share a').on('click', _.bind(function(){
+        $.ajax(TEACH.TAP.postURL + '/' + this.model.get('id') + '/share?publisher_key=' + TEACH.TAP.partner_code, {
+          success: function(data) {
+            console.log(data);
+          }
+        });
+      }, this));
+
+      // When we click on a tag, close the tpmodal
+      // (otherwise, this )
       this.$el.find('#story-tags').on('click', 'a', _.bind(function(e){
+        this.trigger('tpmodalclose');
         $.tpmodal.hide({id: 'sys_modal_'});
         this.remove();
       }, this));
 
+      // phone home and say we have a successful view
+      $.ajax(TEACH.TAP.postURL + '/' + this.model.get('id') + '/view?publisher_key=' + TEACH.TAP.partner_code, {
+        success: function(data) {
+          console.log(data);
+        }
+      });
+
       return this;
-    }
+    },
+
   });
 
   TEACH.Collections.Stories = Backbone.PageableCollection.extend({
