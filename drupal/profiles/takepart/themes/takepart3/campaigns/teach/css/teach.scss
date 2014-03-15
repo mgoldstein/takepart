@@ -2720,3 +2720,47 @@ h1.sys-headline {
     }
   }
 }
+
+// Teach App Story Modal View Overrides
+.page-wordlet-teach-browse-stories {
+  .tpmodal_close.sys_modal_close {
+    // ugh
+    @media (max-width: 767px) {
+    width: 100% !important;
+    text-align: center;
+    margin: 0;
+    padding: 1.25em 0 0;
+    font-size: 1.75em;
+    }
+    @media (min-width: 768px) {
+      padding-right: 60px;
+    }
+  }
+  .sys_modal_content {
+    padding: 75px 20px;
+    @media (min-width: 768px) {
+      padding: 20px 60px;
+    }
+    .story-nav {
+      display: block;
+      width: 31px;
+      height: 53px;
+      background: transparent inline-image("story-modal-nav-previous.png") scroll no-repeat center center; 
+      position: absolute;
+      top: 0;
+      padding: 10px 20px;
+      @media (min-width: 768px) {
+        padding: 20px 10px 20px 20px;
+        top: 50%;
+        margin-top: -37px;
+      }
+    }
+    .previous-story {
+      left: 0;
+    }
+    .next-story {
+      background-image: inline-image("story-modal-nav-next.png");
+      right: 0;
+    }
+  }
+}

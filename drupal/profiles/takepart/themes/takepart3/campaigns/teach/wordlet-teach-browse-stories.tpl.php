@@ -62,11 +62,13 @@
     <p><%=paragraphs.join('</p><p>')%></p>
     <% 
       var tags = [];
-      _.each(story.tags.split(/,\s?/g), function(tag) {
-        tags.push('<a href="' + window.location.pathname + '#tag/' + encodeURIComponent(tag)  + '">' + tag + '</a>');
-      });
+      if (story.tags) {
+        _.each(story.tags.split(/,\s?/g), function(tag) {
+          tags.push('<a href="' + window.location.pathname + '#tag/' + encodeURIComponent(tag)  + '">' + tag + '</a>');
+        });
+      }
     %>
-    <% if (tags[0] !== "") { %>
+    <% if (story.tags && tags[0] !== "") { %>
     <h3>Tags</h3>
     <p id="story-tags"><%=tags.join(', ')%></p>
     <% } %>
@@ -77,6 +79,8 @@
     <div class="story-fb-like"><fb:like href="<%=window.location.href%>" layout="button" action="like" show_faces="false" share="false"></fb:like></div>
     <fb:comments href="<%=window.location.href%>" width="638" numposts="5" colorscheme="light"></fb:comments>
   </div>
+</script>
+<script type="text/x-template" id="stories_view">
 </script>
 <script type="text/x-template" id="load_more_stories_view">
 <div class="load-more-stories orange-button-container"><a class="load-more-stories-button" href="#"><%= button_text %></a></div>

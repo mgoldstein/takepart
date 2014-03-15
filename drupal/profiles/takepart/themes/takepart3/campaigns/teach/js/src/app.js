@@ -125,7 +125,6 @@
 
       return this;
     },
-
   });
 
   TEACH.Collections.Stories = Backbone.PageableCollection.extend({
@@ -181,26 +180,29 @@
     className: "teach-app-pane stories-view",
 
     events:  {
-        'click .story': "showStoriesModal",
-        'click .load-more-stories-button': "loadMoreStories"
+      'click .story': 'showStoriesModal',
+      'click .load-more-stories-button': "loadMoreStories"
     },
+
+    modal: null,
 
     initialize: function() {
       this.listenTo(this.collection.fullCollection, 'add', this.render);
     },
 
     render: function() {
-      var that = this; // ugh
-
       this.$el.empty(); // @todo inefficient
 
-      this.collection.fullCollection.each(function(model) {
+      this.collection.fullCollection.each(_.bind(function(model, i, collection) {
         var view = new TEACH.Views.StoryView({
           model: model,
           id: 'story-' + model.get('id')
         });
-        view.render().$el.appendTo(that.$el);
-      });
+        view.render().$el
+          .data('index', collection.indexOf(model))
+          .appendTo(this.$el)
+        ;
+      },this));
 
       // @todo masonry
 
@@ -212,14 +214,87 @@
       return this;
     },
 
-    showStoriesModal: function(e) {
-      e.preventDefault();
-      $.tpmodal.show();
-    },
-
     loadMoreStories: function(e) {
       e.preventDefault();
       this.$el.find('.load-more-stories-button').addClass('in-progress');
+      this.collection.getNextPage();
+    },
+
+    showStoriesModal: function(e) {
+      e.preventDefault();
+      this.modal && this.modal.remove();
+      this.modal = new TEACH.Views.StoriesModalView({
+        collection: new TEACH.Collections.Stories(this.collection.fullCollection.clone().models, {
+          mode: 'client',
+          parentView: this,
+          state: {
+            firstPage: 0,
+            pageSize: 1,
+            currentPage: $(e.currentTarget).data('index')
+          }
+        })
+      });
+      this.modal.render();
+    }
+  });
+
+  TEACH.Views.StoriesModalView = Backbone.View.extend({
+
+    currentStory: null,
+
+    events: {
+      'click #previous-story': 'showPreviousStory',
+      'click #next-story': 'showNextStory'
+    },
+
+    initialize: function() {
+      this.listenTo(this.collection, 'reset', this.render);
+
+      this.$el.html([
+        '<a id="previous-story" class="story-nav previous-story"></a>',
+        '<a id="next-story" class="story-nav next-story"></a>'
+      ].join(''));
+    },
+    render: function() {
+      // clean up
+      this.$('.sys-story-modal').remove();
+      if (this.currentStory) {
+        this.currentStory.remove();
+      }
+      // put the story in
+      this.currentStory = new TEACH.Views.StoryFullView({
+        model: this.collection.models[0] // there's only one model
+      });
+      this.currentStory.render().$el.appendTo(this.$el);
+
+      // show the links we want
+      this.$('.story-nav').hide();
+      if (this.collection.state.currentPage != 0) {
+        this.$('#previous-story').show();
+      }
+      if (this.collection.state.currentPage != this.collection.state.lastPage) {
+        this.$('#next-story').show();
+      }
+      $.tpmodal.show({
+        id: 'sys_modal_',
+        node: this.el,
+        afterClose: _.bind(function() {
+          this.remove();
+        },this)
+      });
+      window.teachRouter.navigate('story/' + this.collection.models[0].get('id'), {
+        replace: true
+      });
+      this.delegateEvents();
+    },
+
+    showPreviousStory: function(e) {
+      e.preventDefault();
+      this.collection.getPreviousPage();
+    },
+
+    showNextStory: function(e) {
+      e.preventDefault();
       this.collection.getNextPage();
     }
   });
@@ -258,7 +333,7 @@
 
     views: {},
 
-    initialize: function(router) {
+    initialize: function() {
       this.$el.html(_.template($('#app_view').html(), {}));
 
       // cache jQuery objects for convenience
@@ -295,9 +370,9 @@
       }, this);
 
       // the router sets up the state of the application
-      this.listenTo(router, 'route', this.route);
+      this.listenTo(window.teachRouter, 'route', this.route);
       this.listenTo(this.views.school, 'browseschool', function(id, state){
-        router.navigate('school/' + (id != 0 ? id : state), {trigger: true});
+        window.teachRouter.navigate('school/' + (id != 0 ? id : state), {trigger: true});
       });
     },
 
@@ -308,7 +383,7 @@
       this.$el.find('.teach-app-pane').hide();
       this.views.extra && this.views.extra.remove();
 
-      switch (route) {        
+      switch (route) {
         case "featured":
         case "popular":
         case "recent":
@@ -339,9 +414,6 @@
           this.views.extra.render().$el.appendTo(this.$el);
           break;
         case "storyView":
-          // @ todo fire call to "show story" tap endpoint
-          // and potentially analytics
-          $.tpmodal.show({id: 'sys_modal_'});
           this.views.extra = new TEACH.Views.StoryFullView({
             model: new TEACH.Models.Story()
           });
@@ -350,7 +422,10 @@
             success: _.bind(function() {
               $.tpmodal.show({
                 id: 'sys_modal_',
-                node: this.views.extra.el
+                node: this.views.extra.el,
+                afterClose: _.bind(function() {
+                  this.views.extra.remove();
+                }, this)
               });
             }, this)
           });
@@ -359,12 +434,11 @@
           break;
       }
     }
-
   });
 
   $(document).ready(function() {
-    var router = new TEACH.AppRouter();
-    var app = new TEACH.Views.AppView(router);
+    window.teachRouter = new TEACH.AppRouter(); // @todo remove global?
+    var app = new TEACH.Views.AppView();
     Backbone.history.start();
     window.app = app; // @todo delete me
   });
