@@ -2481,7 +2481,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.',
+    'description' => 'The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -2793,11 +2793,11 @@ function tpf_content_photo_gallery_field_default_field_instances() {
   t('Remove Headline from Display');
   t('Series');
   t('Slideshow');
-  t('Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.');
   t('Sub Head');
   t('Suggest Related Actions?');
   t('Suggest Related Content?');
   t('TAB Action Overrides');
+  t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('Thumbnail');
   t('Topic');
   t('Topic Box');

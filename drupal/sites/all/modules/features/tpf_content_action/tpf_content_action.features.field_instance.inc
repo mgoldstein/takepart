@@ -787,7 +787,7 @@ function tpf_content_action_field_default_field_instances() {
     'bundle' => 'action',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.',
+    'description' => 'The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.',
     'display' => array(
       'action_summary' => array(
         'label' => 'hidden',
@@ -896,8 +896,8 @@ function tpf_content_action_field_default_field_instances() {
   t('Display Tags');
   t('Free Tag');
   t('Main Image');
-  t('Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.');
   t('The absolute URL of the action.');
+  t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('Topic');
   t('URL for the TakeAction icon.');
   t('User can reference a Photo to be used as the Main Image for the Action.');

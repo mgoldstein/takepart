@@ -5103,7 +5103,7 @@ function tpf_content_video_field_default_field_instances() {
     'bundle' => 'video',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.',
+    'description' => 'The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -5463,11 +5463,11 @@ function tpf_content_video_field_default_field_instances() {
   t('Series');
   t('Share URL Override');
   t('Significance');
-  t('Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.');
   t('Subhead');
   t('Suggest Related Actions?');
   t('Suggest Related Videos?');
   t('TAB Action Overrides');
+  t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('This is displayed beneath the Video\'s title on the node page');
   t('Thumbnail');
   t('Thumbnail Image');

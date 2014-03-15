@@ -13,6 +13,10 @@ table.field-multiple-table input.fluid {
  * tracking purposes.
  */
 
+#sortable1 {
+  height: 600px;    
+}
+
 #sortable2 li.ui-state-highlight:first-of-type {
   background: green none;
   color: white;
