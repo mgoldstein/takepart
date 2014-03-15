@@ -5,7 +5,10 @@
 (function() {
   JWP.Create = (function() {
     function Create() {
-      jwplayer('teach-film-player').setup( this.settings() );
+      JWP.player = this;
+      jQuery(document).ready( function() {
+        jwplayer('teach-film-player').setup( JWP.player.settings() );
+      });
     }
 
     Create.prototype.jwData = function( name ) {
@@ -72,4 +75,4 @@
   })();
 }).call(this);
 
-setTimeout( function() {new JWP.Create()} );
+new JWP.Create();
