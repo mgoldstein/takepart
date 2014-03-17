@@ -87,8 +87,6 @@
     $menu_elements = element_children($menu_tree);
     $improved = array();
     foreach($menu_elements as $key => $item){
-      // $menu_tree[$item]['#attributes']['style'] = array();
-      // $menu_tree[$item]['#attributes']['style'][] = 'background-color: green;';
       $improved[] = $menu_tree[$item];
     }
     // it's ok, "changing the menu color in the CMS is easy right?"
@@ -98,7 +96,7 @@
     print '<ul class="sf-menu" style="background-color: '. $menu_color_parent. ';">';
     foreach($improved as $key => $link){
       if(isset($link['#below']) == true && $link['#below'] != NULL){
-        print '<li style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href']);
+        print '<li class="parent-item" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href']);
         print '<ul>';
         $child_elements = element_children($link['#below']);
         foreach($child_elements as $key_child => $link_child){
@@ -108,7 +106,7 @@
         print '</ul></li>';
       }
       else{
-        print '<li style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href']). '</li>';
+        print '<li class="parent-item" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href']). '</li>';
       }
     }
     print '</ul>';

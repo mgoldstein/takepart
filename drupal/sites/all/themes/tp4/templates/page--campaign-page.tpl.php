@@ -7,6 +7,7 @@
  * @see https://drupal.org/node/1728148
  */
 ?>
+<?php dpm(get_defined_vars(), 'get defined vars adsfd'); ?>
 <div class="snap-drawers scrollable">
     <div class="snap-drawer snap-drawer-left">
     <?php print render($page['left_drawer']); ?>
@@ -38,26 +39,27 @@
   </div>
   <?php print render($page['bottom']); ?>
 </div>
-            <script type="text/javascript">
-              //initiating jQuery  
-              jQuery(function($) {
-                $(document).ready( function() {
-                  //enabling stickUp on the '.navbar-wrapper' class
-                  $('#block-tp-campaigns-tp-campaigns-hero').stickUp({
-                                parts: {
-                                  0:'home',
-                                  1:'features',
-                                  2: 'news',
-                                  3: 'installation',
-                                  4: 'one-pager',
-                                  5: 'extras',
-                                  6: 'wordpress',
-                                  7: 'contact'
-                                },
-                                itemClass: 'menuItem',
-                                itemHover: 'active'
-                              });
-                });
-              });
-            
-            </script>
+
+
+
+
+<script type="text/javascript">
+  //initiating jQuery  
+  jQuery(function($) {
+    $(document).ready( function() {
+      //enabling stickUp on the '.navbar-wrapper' class
+      $('#block-tp-campaigns-tp-campaigns-hero').stickUp({
+        parts: {
+        <?php
+        foreach($variables['anchor_tags'] as $key => $item){
+          print $key. ': \''. $item. '\',';
+        }
+        ?>
+        },
+        itemClass: 'parent-item',
+        itemHover: 'active'
+      });
+    });
+  });
+
+</script>
