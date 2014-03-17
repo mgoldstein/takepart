@@ -83,6 +83,7 @@ features[field_instance][] = node-campaign_card_media-field_campaign_content_sid
 features[field_instance][] = node-campaign_card_media-field_campaign_instructional
 features[field_instance][] = node-campaign_card_media-field_campaign_media_caption
 features[field_instance][] = node-campaign_card_media-field_campaign_media_col
+features[field_instance][] = node-campaign_card_media-field_campaign_media_image_link
 features[field_instance][] = node-campaign_card_media-field_campaign_media_photo
 features[field_instance][] = node-campaign_card_media-field_campaign_media_title
 features[field_instance][] = node-campaign_card_media-field_campaign_media_type
