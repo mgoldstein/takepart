@@ -207,6 +207,12 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
   $instructional = $variables['field_campaign_instructional'][0]['value'];
+
+  $media_title = '';
+  if(isset($variables['field_campaign_media_title'][0]['value']) == true){
+    $media_title = '<div class="media-title">'. $variables['field_campaign_media_title'][0]['value']. '</div>';
+  }
+
   //Prepare Media
   if($variables['field_campaign_media_type'][0]['value'] == 1){  //Media is a video
     $media = $variables['field_campaign_media_video'];
@@ -231,13 +237,15 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     if($variables['field_campaign_content_side'][0]['value'] == 0){ // Media goes on the left
       //Prepare the left side content
       $left = '';
+      $left .= $media_title;
       $left .= $media;
       $left .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
       $right = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
     }
-    else{
+    else{  //media goes on the right
       $right = '';
+      $right .= $media_title;
       $right .= $media;
       $right .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
@@ -248,6 +256,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   }
   elseif($column_count == 0){ //single column
     $center = '';
+    $center .= $media_title;
     $center .= $media;
     $center .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
