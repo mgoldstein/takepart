@@ -193,6 +193,15 @@ body.node-type-campaign-page, #main.card-page{
   /*
    * Global Elements
    */
+  a.card-anchor{
+    display: block;
+    position: absolute;
+    top: -200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+  }
   #block-tp-campaigns-tp-campaigns-hero{
     width: 100%;
     margin-bottom: 0;
@@ -233,7 +242,7 @@ body.node-type-campaign-page, #main.card-page{
         margin-bottom: 0;
       }
       li.parent-item.active a{
-        color: purple;
+        color: yellow;
       }
     }
   }

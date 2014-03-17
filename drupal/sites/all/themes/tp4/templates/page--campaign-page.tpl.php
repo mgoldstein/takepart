@@ -7,7 +7,6 @@
  * @see https://drupal.org/node/1728148
  */
 ?>
-<?php dpm(get_defined_vars(), 'get defined vars adsfd'); ?>
 <div class="snap-drawers scrollable">
     <div class="snap-drawer snap-drawer-left">
     <?php print render($page['left_drawer']); ?>
