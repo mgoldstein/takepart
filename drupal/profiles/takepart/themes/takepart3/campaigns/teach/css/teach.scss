@@ -2054,6 +2054,8 @@ h1.sys-headline {
     top: 0;
     left: 0;
     opacity: 0;
+    width: 24px;
+    height: 24px;
     & ~ label.visible:before {
       content: "\0020";
       display: block;
