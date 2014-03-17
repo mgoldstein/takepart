@@ -116,6 +116,31 @@ function tp4_preprocess_page(&$variables) {
     $variables['theme_hook_suggestions'][] = 'page__campaign_page';
     $variables['classes_array'][] = 'card-page';
   }
+
+
+
+  //stuff for the campaign page
+  if($variables['node']->type == 'campaign_page'){
+    $campaign_ref = $variables['node']->field_campaign_reference['und'][0]['target_id'];
+    $campaign_ref = node_load($campaign_ref);
+    $campaign_menu = 'menu-'. $campaign_ref->field_campaign_menu['und'][0]['value'];
+    $menu_tree = menu_tree_all_data($campaign_menu);
+    $menu_tree = menu_tree_output($menu_tree);
+    
+    $menu_elements = element_children($menu_tree);
+    $improved = array();
+    foreach($menu_elements as $key => $item){
+      $improved[] = $menu_tree[$item];
+    }
+    $anchor_tags = array();
+    foreach($improved as $key => $item){
+      $anchor_tags[] = substr($item['#href'], strpos($item['#href'], "#") + 1);
+    }
+    $variables['anchor_tags'] = $anchor_tags;
+  }
+
+
+
 }
 
 /**

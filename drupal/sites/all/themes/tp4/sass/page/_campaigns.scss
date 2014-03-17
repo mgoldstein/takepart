@@ -232,6 +232,9 @@ body.node-type-campaign-page, #main.card-page{
       &.sf-navbar{
         margin-bottom: 0;
       }
+      li.parent-item.active a{
+        color: purple;
+      }
     }
   }
   h1.card-title{
@@ -412,12 +415,6 @@ body.node-type-campaign-page, #main.card-page{
     }
     .header-bg-image-980{
       background-size: 1000px;
-    }
-    .header-full{
-
-    }
-    .header-980{
-
     }
     .logo-left{
       float: left;
