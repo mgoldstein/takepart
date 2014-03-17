@@ -9,7 +9,7 @@
     <?php endforeach; ?>
   </div>
   <section class="teach-home-featured-articles">
-    <h2><span><?php print w('featured_articles_headline'); ?></span></h2>
+    <h2 class="short-headline"><span><?php print w('featured_articles_headline'); ?></span></h2>
     <div><?php print w('featured_stories_block');?></div>
     <div class="more-news" <?php print wa('more_news'); ?>>
       <?php $w = w('more_news'); ?>

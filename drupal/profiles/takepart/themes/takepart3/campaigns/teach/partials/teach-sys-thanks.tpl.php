@@ -6,7 +6,7 @@
         <?php $w = w('thanks_share_data'); ?>
         data-shareurl="<?php print $w->href_raw; ?>"
         data-sharetitle="<?php print $w->single_no_markup; ?>"
-        data-sharedescription="<?php print $w->multi_short_no_markup; ?>"
+        data-sharedescription="<?php print preg_replace('/<[^>]+>/i', '', $w->multi_short_no_markup); ?>"
       ></div>
    </div>
   </div>

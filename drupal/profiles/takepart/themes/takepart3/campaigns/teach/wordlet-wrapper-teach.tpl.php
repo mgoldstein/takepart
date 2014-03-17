@@ -40,7 +40,7 @@
           <?php $w = w('header_share_data'); ?>
           data-shareurl="<?php print $w->href_raw; ?>"
           data-sharetitle="<?php print $w->single_no_markup; ?>"
-          data-sharedescription="<?php print $w->multi_short_no_markup; ?>"
+          data-sharedescription="<?php print preg_replace('/<[^>]+>/i', '', $w->multi_short_no_markup); ?>"
         ><span>Share</span></div>
 				<div class="menu-wrapper">
 					<ul class='menu' <?=wa('menu') ?>>

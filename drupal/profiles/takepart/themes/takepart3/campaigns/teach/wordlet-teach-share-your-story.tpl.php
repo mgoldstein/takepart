@@ -1,4 +1,4 @@
-<div id="sys-form-content" class="content teach-sys-content">
+<div id="sys-form-content" class="content teach-story-content teach-sys-content">
     <div class="row">
         <div class="col-1-2">
             <div class="sys-intro">
@@ -19,11 +19,11 @@
         </div>
     </div>
 </div>
-<div id="sys-coppa-content" class="content teach-sys-content teach-sys-coppa-content initially-hidden">
+<div id="sys-coppa-content" class="content teach-story-content teach-sys-content teach-sys-coppa-content initially-hidden">
     <h1 class="sys-headline"><span><?php print w('coppa_headline'); ?></span></h1>
     <?php print w('coppa_message'); ?>
 </div>
-<div id="sys-thanks-content" class="content teach-sys-content teach-sys-thanks-content initially-hidden">
+<div id="sys-thanks-content" class="content teach-story-content teach-sys-content teach-sys-thanks-content initially-hidden">
     <h1 class="sys-headline"><span><?php print w('thanks_headline'); ?></span></h1>
     <div><?php print w('thanks_message'); ?></div>
     <?php include('partials/teach-sys-thanks.tpl.php'); ?>
