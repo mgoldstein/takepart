@@ -58,7 +58,14 @@
   }
 ?>
 </div>
+<?php
+    $title = strtolower($variables['entity']->title);
+    $title = preg_replace("/[^a-z0-9_\s-]/", "", $title);
+    $title = preg_replace("/[\s-]+/", " ", $title);
+    $title = preg_replace("/[\s_]/", "-", $title);
+?>
 
+<?php print '<a class="card-anchor" id="'. $title. '"></a>'; ?>
 <?php // Print arrows is multiple cards exist in the card ?>
 <?php if(isset($variables['entity']->field_campaign_card_reference[1]) == true || isset($variables['entity']->field_campaign_card_reference['und'][1]) == true): ?>
   <div class="tray-header">

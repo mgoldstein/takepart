@@ -13,8 +13,8 @@
       $slider_class = '';
       $slider_styles = '';
     }
+
     print '<div id="slider_'. $key. '" class="swipe slider '. $slider_class. '" '. $slider_styles. '>';
     print drupal_render(node_view($node, 'full', NULL));
     print '</div>';
-  }
-?>
+  }?>

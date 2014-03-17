@@ -89,7 +89,7 @@ function tp4_preprocess_page(&$variables) {
 
     $variables['skinny'] = render($variables['page']['skinny']);
     $variables['sidebar'] = render($variables['page']['sidebar']);
-
+    
     // build up a string of classes for the main content div
     $variables['content_classes'] = 'content';
     $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
@@ -204,7 +204,7 @@ function tp4_preprocess_node(&$variables, $hook) {
  * Override or insert variables into the campaign card media template
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
-  
+
   $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
   $instructional = $variables['field_campaign_instructional'][0]['value'];
   //Prepare Media
@@ -214,8 +214,17 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     $media = drupal_render(node_view($media_node, 'embed'));
   }
   else{ //Media is a photo
+
     $image = file_create_url($variables['field_campaign_media_photo'][0]['uri']);
-    $media = '<img src="'. $image. '">';
+    //Check if photo has a link
+    if(isset($variables['field_campaign_media_image_link'][0]['url']) == true){
+      $link = $variables['field_campaign_media_image_link'][0];
+      $media = l('<img src="'. $image. '">', $link['url'], array('html' => true, 'attributes' => array('target' => $link['attributes']['target'])));
+    }
+    else{
+      $media = '<img src="'. $image. '">';
+    }
+
   }
   //Set Layout
   if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
