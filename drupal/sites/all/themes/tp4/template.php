@@ -252,7 +252,6 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     $center .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
     $center .= (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
-    $instructional = 'instructional';
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   }
 
