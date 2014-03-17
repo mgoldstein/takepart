@@ -1,9 +1,14 @@
 <div class="content teach-film-page teach-video-page">
   <h1 class="content-preheader"><?php print w('film_headline'); ?></h1>
   <h2 class="content-subheadline"><?php print w('film_subheadline'); ?></h2>
-  <div id="teach-film-player-wrapper" data-jwposter-frame="http://video.takepart.com/thumbs/QwdMXZLz-1280.jpg" data-jwplaylist="<?php print w('video'); ?>" class="main-video-wrapper" <?php print wa('video'); ?>>
-      <div id="teach-film-player"></div>
+
+  <div data-jwposter-frame="<?= w('video')->src; ?>"
+       data-jwplaylist="<?= w('video')->href; ?>"
+       id="main-video-wrapper"
+       class="main-video-wrapper" <?= wa('video'); ?>>
+      <div id="main-video"></div>
   </div>
+
   <div class="row">
     <div class="col-1-2">
       <h3 class="sect-headline"><?php print w('film_section_headline'); ?></h3>
