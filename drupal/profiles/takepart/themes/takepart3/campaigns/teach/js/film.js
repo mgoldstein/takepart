@@ -7,13 +7,13 @@
     function Create() {
       JWP.player = this;
       jQuery(document).ready( function() {
-        jwplayer('teach-film-player').setup( JWP.player.settings() );
-        jwplayer('teach-film-player').onResize( JWP.player.resize );
+        jwplayer('main-video').setup( JWP.player.settings() );
+        jwplayer('main-video').onResize( JWP.player.resize );
       });
     }
 
     Create.prototype.jwData = function( name ) {
-      var $jwplayerContainer = jQuery('#teach-film-player-wrapper');
+      var $jwplayerContainer = jQuery('#main-video-wrapper');
       return $jwplayerContainer.data( name );
     };
 
@@ -22,8 +22,8 @@
     };
 
     Create.prototype.listbarPosition = function() {
-      this.layout = ( this.screenWidth() >= 769 ) ? "right" : "bottom"
-      return this.layout;
+      this.position = ( this.screenWidth() >= 769 ) ? "right" : "bottom"
+      return this.position;
     };
 
     Create.prototype.listbarSettings = function() {
@@ -74,9 +74,9 @@
     };
 
     Create.prototype.resize = function( data ) {
-      var lastLayout = JWP.player.layout;
+      var lastLayout = JWP.player.position;
       JWP.player.listbarPosition()
-      if ( lastLayout != JWP.player.layout )
+      if ( lastLayout != JWP.player.position )
         JWP.player.constructor();
     };
 
