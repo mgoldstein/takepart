@@ -75,9 +75,7 @@
 
 
 <div class="branding-header <?php print implode(' ', $classes); ?>" style="<?php print implode(' ', $styles); ?>">
-  <div class="header-inner" style="min-height: <?php print $min_height; ?>px">
-  
-  <?php print (isset($homepage_link) == true ? l(' ', $homepage_link, array('attributes' => array('class' => array('big-link')))) : ''); ?>
+
 
   <?php
     $menu = 'menu-'. $campaign_variables->field_campaign_menu['und'][0]['value'];
@@ -89,9 +87,9 @@
     foreach($menu_elements as $key => $item){
       $improved[] = $menu_tree[$item];
     }
-    // it's ok, "changing the menu color in the CMS is easy right?"
+    dpm(get_defined_vars(), 'get defined vars');
+    // it's ok, "changing the menu color in the CMS is easy, right?"
 
-    print (isset($logo) == true ? $logo : '');
     print '<div class="menu sf-navbar" style="background-color: '. $menu_color_parent. ';"">';
     print '<ul class="sf-menu" style="background-color: '. $menu_color_parent. ';">';
     foreach($improved as $key => $link){
@@ -113,7 +111,12 @@
     }
     print '</ul>';
     print '</div>';
-  ?>
+    ?>
+
+  <div class="header-inner" style="min-height: <?php print $min_height; ?>px">
+    <?php print (isset($homepage_link) == true ? l(' ', $homepage_link, array('attributes' => array('class' => array('big-link')))) : ''); ?>
+    <?php print (isset($logo) == true ? $logo : ''); ?>
   </div>
+
 </div>
 
