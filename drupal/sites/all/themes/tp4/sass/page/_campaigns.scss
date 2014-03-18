@@ -197,9 +197,6 @@ body.node-type-campaign-page, #main.card-page{
     display: block;
     position: absolute;
     top: -200px;
-    bottom: 0;
-    left: 0;
-    right: 0;
     visibility: hidden;
   }
   #block-tp-campaigns-tp-campaigns-hero{
@@ -243,6 +240,9 @@ body.node-type-campaign-page, #main.card-page{
       }
       li.parent-item.active a{
         color: yellow;
+      }
+      a.active{
+        color: white;
       }
     }
   }

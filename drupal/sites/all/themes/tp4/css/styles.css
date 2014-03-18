@@ -7337,23 +7337,20 @@ body.node-type-campaign-page a.card-anchor, #main.card-page a.card-anchor {
   display: block;
   position: absolute;
   top: -200px;
-  bottom: 0;
-  left: 0;
-  right: 0;
   visibility: hidden;
 }
-/* line 205, ../sass/page/_campaigns.scss */
+/* line 202, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero, #main.card-page #block-tp-campaigns-tp-campaigns-hero {
   width: 100%;
   margin-bottom: 0;
 }
-/* line 208, ../sass/page/_campaigns.scss */
+/* line 205, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .branding-header, #main.card-page #block-tp-campaigns-tp-campaigns-hero .branding-header {
   background-position: top center;
   background-repeat: no-repeat;
   position: relative;
 }
-/* line 213, ../sass/page/_campaigns.scss */
+/* line 210, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu {
   width: 100%;
   position: absolute;
@@ -7361,7 +7358,7 @@ body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu, #main.
   z-index: 99;
   cursor: default;
 }
-/* line 219, ../sass/page/_campaigns.scss */
+/* line 216, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu {
   clear: left;
   float: left;
@@ -7372,7 +7369,7 @@ body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-m
   left: 50%;
   text-align: center;
 }
-/* line 228, ../sass/page/_campaigns.scss */
+/* line 225, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu li, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu li {
   display: block;
   float: left;
@@ -7382,17 +7379,21 @@ body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-m
   position: relative;
   right: 50%;
 }
-/* line 236, ../sass/page/_campaigns.scss */
+/* line 233, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu li li, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu li li {
   right: 0%;
 }
-/* line 241, ../sass/page/_campaigns.scss */
+/* line 238, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu.sf-navbar, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu.sf-navbar {
   margin-bottom: 0;
 }
-/* line 244, ../sass/page/_campaigns.scss */
+/* line 241, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu li.parent-item.active a, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu li.parent-item.active a {
   color: yellow;
+}
+/* line 244, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu a.active, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu a.active {
+  color: white;
 }
 /* line 249, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page h1.card-title, #main.card-page h1.card-title {

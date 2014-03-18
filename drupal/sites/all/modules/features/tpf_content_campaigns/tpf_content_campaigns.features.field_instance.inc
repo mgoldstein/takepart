@@ -5054,6 +5054,89 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign_tray-field_campaign_anchor_tag'
+  $field_instances['node-campaign_tray-field_campaign_anchor_tag'] = array(
+    'bundle' => 'campaign_tray',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'The anchor tag is used for linking within a campaign page.  Please use lowercase and do NOT use spaces.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_anchor_tag',
+    'label' => 'Anchor Tag',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_tray-field_campaign_background'
   $field_instances['node-campaign_tray-field_campaign_background'] = array(
     'bundle' => 'campaign_tray',
@@ -5064,7 +5147,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5243,7 +5326,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -5258,7 +5341,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5334,6 +5417,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('\'100%\', \'600px\', etc.');
   t('\'100%, \'600px\', etc.');
+  t('Anchor Tag');
   t('Background Image Width');
   t('Background color');
   t('Background image should fade at the bottom to a background color, and that the background color should also be specified to match.');
@@ -5374,6 +5458,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   t('Social Follow');
   t('Social Link');
   t('Social Network');
+  t('The anchor tag is used for linking within a campaign page.  Please use lowercase and do NOT use spaces.');
   t('Tray');
   t('Type');
   t('What campaign does this page belong to?');

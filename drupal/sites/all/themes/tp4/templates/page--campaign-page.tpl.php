@@ -51,11 +51,11 @@
         parts: {
         <?php
         foreach($variables['anchor_tags'] as $key => $item){
-          print $key. ': \''. $item. '\',';
+          print $key. ': \''. $item. '\','. PHP_EOL;
         }
         ?>
         },
-        itemClass: 'parent-item',
+        itemClass: 'anchored',
         itemHover: 'active'
       });
     });

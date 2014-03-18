@@ -59,10 +59,12 @@
 ?>
 </div>
 <?php
-    $title = strtolower($variables['entity']->title);
-    $title = preg_replace("/[^a-z0-9_\s-]/", "", $title);
-    $title = preg_replace("/[\s-]+/", " ", $title);
-    $title = preg_replace("/[\s_]/", "-", $title);
+    if(isset($variables['entity']->field_campaign_anchor_tag['und'][0]['value']) == true){
+      $title = strtolower($variables['entity']->field_campaign_anchor_tag['und'][0]['value']);
+      $title = preg_replace("/[^a-z0-9_\s-]/", "", $title);
+      $title = preg_replace("/[\s-]+/", " ", $title);
+      $title = preg_replace("/[\s_]/", "-", $title);
+    }
 ?>
 
 <?php print '<a class="card-anchor" id="'. $title. '"></a>'; ?>
