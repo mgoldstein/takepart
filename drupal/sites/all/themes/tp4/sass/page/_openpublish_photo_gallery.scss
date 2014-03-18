@@ -52,7 +52,8 @@
     margin-left: .761904762em;
     @include breakpoint($breakpoint-tablet) {
       float: left;
-      width: 415px;
+      width: 405px;
+      padding-right: 10px;
       font-size: 2.428571429em;
       line-height: 1.088235294;
       margin-left: .470588235em;
