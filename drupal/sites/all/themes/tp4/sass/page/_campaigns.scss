@@ -247,8 +247,14 @@ body.node-type-campaign-page, #main.card-page{
       &.sf-navbar{
         margin-bottom: 0;
       }
-      li.parent-item.active a{
-        color: yellow;
+      li.parent-item.active {
+        a{
+          color: yellow;
+        }
+        li a{
+          text-align: left;
+          color: #fff;
+        }
       }
       a.active{
         color: white;
