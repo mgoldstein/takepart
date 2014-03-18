@@ -187,11 +187,12 @@
     modal: null,
 
     initialize: function() {
+      this.template = _.template($('#stories_view').html());
       this.listenTo(this.collection.fullCollection, 'add', this.render);
     },
 
     render: function() {
-      this.$el.empty(); // @todo inefficient
+      this.$el.empty().html(this.template({})); // @todo inefficient
 
       this.collection.fullCollection.each(_.bind(function(model, i, collection) {
         var view = new TEACH.Views.StoryView({
@@ -200,7 +201,7 @@
         });
         view.render().$el
           .data('index', collection.indexOf(model))
-          .appendTo(this.$el)
+          .appendTo(this.$('.stories'))
         ;
       },this));
 
