@@ -101,27 +101,16 @@
 
       // bind social share event to contact TAP
       this.$el.find('#story-social-share a').on('click', _.bind(function(){
-        $.ajax(TEACH.TAP.postURL + '/' + this.model.get('id') + '/share?publisher_key=' + TEACH.TAP.partner_code, {
-          success: function(data) {
-            console.log(data);
-          }
-        });
+        $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/share?publisher_key=' + TEACH.TAP.partner_code);
       }, this));
 
-      // When we click on a tag, close the tpmodal
-      // (otherwise, this )
+      // When we click on a tag, remove the view
       this.$el.find('#story-tags').on('click', 'a', _.bind(function(e){
-        this.trigger('tpmodalclose');
-        $.tpmodal.hide({id: 'sys_modal_'});
         this.remove();
       }, this));
 
       // phone home and say we have a successful view
-      $.ajax(TEACH.TAP.postURL + '/' + this.model.get('id') + '/view?publisher_key=' + TEACH.TAP.partner_code, {
-        success: function(data) {
-          console.log(data);
-        }
-      });
+      $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/view?publisher_key=' + TEACH.TAP.partner_code);
 
       return this;
     },
@@ -187,11 +176,12 @@
     modal: null,
 
     initialize: function() {
+      this.template = _.template($('#stories_view').html());
       this.listenTo(this.collection.fullCollection, 'add', this.render);
     },
 
     render: function() {
-      this.$el.empty(); // @todo inefficient
+      this.$el.empty().html(this.template({})); // @todo inefficient
 
       this.collection.fullCollection.each(_.bind(function(model, i, collection) {
         var view = new TEACH.Views.StoryView({
@@ -200,11 +190,13 @@
         });
         view.render().$el
           .data('index', collection.indexOf(model))
-          .appendTo(this.$el)
+          .appendTo(this.$('.stories-wrapper'))
         ;
       },this));
 
-      // @todo masonry
+      this.$('.stories-wrapper').append('<div class="story-gutter" />').masonry({
+        'gutter': 20
+      });
 
       // @todo render the total number of stories
       $('<div>').addClass('story-count').text(this.collection.fullCollection.length + ' Stories').prependTo(this.$el);
@@ -382,6 +374,7 @@
       this.$nav.find('a').removeClass('active');
       this.$el.find('.teach-app-pane').hide();
       this.views.extra && this.views.extra.remove();
+      $.tpmodal.hide({id: 'sys_modal_'});
 
       switch (route) {
         case "featured":
