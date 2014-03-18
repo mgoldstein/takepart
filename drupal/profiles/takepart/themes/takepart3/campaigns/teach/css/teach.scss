@@ -2170,11 +2170,16 @@ h1.sys-headline {
   // customselect overrides
   .customSelect {
     margin: 0 auto .5em;
-    &:after {
-      display: block;
-      content: "\25BC";
-      float: right;
+
+    .customSelectInner {
+      width: 100% !important;
+      &:after {
+        display: inline-block;
+        content: "\25BC";
+        float: right;
+      }
     }
+
     @media (min-width: 1000px) {
       margin: 0 0 0 .5em;
       width: 8em;
