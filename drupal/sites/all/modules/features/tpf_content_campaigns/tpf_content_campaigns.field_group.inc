@@ -361,6 +361,34 @@ function tpf_content_campaigns_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_menu_background_image|node|campaign|form';
+  $field_group->group_name = 'group_menu_background_image';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_menu';
+  $field_group->data = array(
+    'label' => 'Menu Background Image',
+    'weight' => '29',
+    'children' => array(
+      0 => 'field_campaign_menu_bg_image',
+      1 => 'field_campaign_menu_bg_image_w',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-menu-background-image field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_menu_background_image|node|campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_menu|node|campaign|form';
   $field_group->group_name = 'group_menu';
   $field_group->entity_type = 'node';
@@ -374,6 +402,8 @@ function tpf_content_campaigns_field_group_info() {
       0 => 'field_campaign_menu',
       1 => 'field_menu_color_parent',
       2 => 'field_campaign_menu_color_child',
+      3 => 'field_campaign_menu_width',
+      4 => 'group_menu_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
