@@ -9,7 +9,9 @@
 ?>
 <div class="card campaign-2col <?php print implode(' ', $variables['classes_array']); ?>" style="background-image: url('<?php print $variables['card_background']; ?>'); <?php print implode(' ', $variables['styles']); ?>">
   <article class="card-inner">
-    <h1 class="card-title"><?php print $title; ?></h1>
+    <?php if(isset($field_campaign_media_title[0]['value']) == true): ?>
+      <h1 class="card-title"><?php print $field_campaign_media_title[0]['value']; ?></h1>
+    <?php endif; ?>
     <div class="instructional">
       <?php print $variables['instructional']; ?>
     </div>
