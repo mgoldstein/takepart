@@ -104,11 +104,8 @@
         $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/share?publisher_key=' + TEACH.TAP.partner_code);
       }, this));
 
-      // When we click on a tag, close the tpmodal
-      // (otherwise, this )
+      // When we click on a tag, remove the view
       this.$el.find('#story-tags').on('click', 'a', _.bind(function(e){
-        this.trigger('tpmodalclose');
-        $.tpmodal.hide({id: 'sys_modal_'});
         this.remove();
       }, this));
 
@@ -375,6 +372,7 @@
       this.$nav.find('a').removeClass('active');
       this.$el.find('.teach-app-pane').hide();
       this.views.extra && this.views.extra.remove();
+      $.tpmodal.hide({id: 'sys_modal_'});
 
       switch (route) {
         case "featured":
