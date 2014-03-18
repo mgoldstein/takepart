@@ -101,11 +101,7 @@
 
       // bind social share event to contact TAP
       this.$el.find('#story-social-share a').on('click', _.bind(function(){
-        $.ajax(TEACH.TAP.postURL + '/' + this.model.get('id') + '/share?publisher_key=' + TEACH.TAP.partner_code, {
-          success: function(data) {
-            console.log(data);
-          }
-        });
+        $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/share?publisher_key=' + TEACH.TAP.partner_code);
       }, this));
 
       // When we click on a tag, close the tpmodal
@@ -117,11 +113,7 @@
       }, this));
 
       // phone home and say we have a successful view
-      $.ajax(TEACH.TAP.postURL + '/' + this.model.get('id') + '/view?publisher_key=' + TEACH.TAP.partner_code, {
-        success: function(data) {
-          console.log(data);
-        }
-      });
+      $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/view?publisher_key=' + TEACH.TAP.partner_code);
 
       return this;
     },
