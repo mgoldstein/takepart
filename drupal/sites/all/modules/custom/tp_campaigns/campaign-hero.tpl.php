@@ -87,7 +87,7 @@
     foreach($menu_elements as $key => $item){
       $improved[] = $menu_tree[$item];
     }
-    dpm(get_defined_vars(), 'get defined vars');
+    // dpm(get_defined_vars(), 'get defined vars');
     // it's ok, "changing the menu color in the CMS is easy, right?"
 
     print '<div class="menu sf-navbar" style="background-color: '. $menu_color_parent. ';"">';
