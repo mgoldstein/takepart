@@ -35,28 +35,33 @@
     $mostStoriesLists.hide().filter(':first').show();
     $mostStoriesNav.find('a:first').addClass('active');
 
-    var listItem = TEACH.tmpl('most_stories_list_template');
-    // @todo ajax call
-    var data = [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}];    
-    $.each(data, function() {
-      $(listItem(this)).appendTo($mostStoriesLatest);
-      $(listItem(this)).appendTo($mostStoriesOverall);
-    });
-
     $mostStoriesNav.on('click', 'a', function(e){
       e.preventDefault();
       $mostStoriesNav.find('a').removeClass('active').filter(this).addClass('active');
       $mostStoriesLists.hide().filter(e.target.hash).show();
     });
 
-    // populate the story stats
+    // populate the story stats and latest school list
     var $storyStats = $('.teacher-story-stat');
-    $.ajax('/proxy?request=' + TEACH.TAP.postURL + '/stats' + encodeURIComponent('?action_id=' + TEACH.TAP.action_id), {
+    var listItem = TEACH.tmpl('most_stories_list_template');
+    $.ajax('/proxy?request=' + TEACH.TAP.postURL + '/stats' + encodeURIComponent('?interval=overall&action_id=' + TEACH.TAP.action_id), {
       success: function(data) {
         // this could be templated.
         $storyStats.filter('.stats-stories').find('.campaign-stat').text(data.stories_count);
         $storyStats.filter('.stats-states').find('.campaign-stat').text(data.uniq_states_count);
         $storyStats.filter('.stats-schools').find('.campaign-stat').text(data.uniq_school_count);
+
+        $.each(data.school_list.slice(0,5), function() {
+          $(listItem(this)).appendTo($mostStoriesOverall);
+        })
+      }
+    });
+
+    $.ajax('/proxy?request=' + TEACH.TAP.postURL + '/stats' + encodeURIComponent('?interval=latest&action_id=' + TEACH.TAP.action_id), {
+      success: function(data) {
+        $.each(data.school_list.slice(0,5), function() {
+          $(listItem(this)).appendTo($mostStoriesLatest);
+        })
       }
     });
 
