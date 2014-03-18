@@ -809,6 +809,91 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign-field_campaign_menu_bg_color'
+  $field_instances['node-campaign-field_campaign_menu_bg_color'] = array(
+    'bundle' => 'campaign',
+    'default_value' => array(
+      0 => array(
+        'rgb' => '#000000',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'The color of the Menu Bar.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'color_field',
+        'settings' => array(),
+        'type' => 'color_field_default_formatter',
+        'weight' => 15,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_menu_bg_color',
+    'label' => 'Menu Bar Color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'color_field',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'color_field_spectrum_widget',
+      'weight' => 29,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign-field_campaign_menu_bg_image'
   $field_instances['node-campaign-field_campaign_menu_bg_image'] = array(
     'bundle' => 'campaign',
@@ -5712,6 +5797,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   t('Menu');
   t('Menu Background Image');
   t('Menu Background Image Width');
+  t('Menu Bar Color');
   t('Menu Color Child');
   t('Menu Color Parent');
   t('Minimum Card Height');
@@ -5725,6 +5811,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   t('Social Link');
   t('Social Network');
   t('The anchor tag is used for linking within a campaign page.  Please use lowercase and do NOT use spaces.');
+  t('The color of the Menu Bar.');
   t('Tray');
   t('Type');
   t('What campaign does this page belong to?');

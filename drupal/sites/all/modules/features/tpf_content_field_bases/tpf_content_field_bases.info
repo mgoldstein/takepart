@@ -83,6 +83,7 @@ features[field_base][] = field_campaign_media_photo
 features[field_base][] = field_campaign_media_title
 features[field_base][] = field_campaign_media_video
 features[field_base][] = field_campaign_menu
+features[field_base][] = field_campaign_menu_bg_color
 features[field_base][] = field_campaign_menu_bg_image
 features[field_base][] = field_campaign_menu_bg_image_w
 features[field_base][] = field_campaign_menu_color_child
