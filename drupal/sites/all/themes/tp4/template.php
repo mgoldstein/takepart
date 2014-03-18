@@ -134,7 +134,9 @@ function tp4_preprocess_page(&$variables) {
     }
     $anchor_tags = array();
     foreach($improved as $key => $item){
-      $anchor_tags[] = substr($item['#href'], strpos($item['#href'], "#") + 1);
+      if(isset($item['#localized_options']['attributes']['rel']) == true){
+        $anchor_tags[] = $item['#localized_options']['attributes']['rel'];
+      }
     }
     $variables['anchor_tags'] = $anchor_tags;
   }

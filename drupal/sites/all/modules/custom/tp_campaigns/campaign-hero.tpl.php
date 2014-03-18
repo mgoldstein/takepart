@@ -95,18 +95,20 @@
     print '<div class="menu sf-navbar" style="background-color: '. $menu_color_parent. ';"">';
     print '<ul class="sf-menu" style="background-color: '. $menu_color_parent. ';">';
     foreach($improved as $key => $link){
+      $anchor = $link['#localized_options']['attributes']['rel'];
       if(isset($link['#below']) == true && $link['#below'] != NULL){
-        print '<li class="parent-item" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href']);
+        print '<li class="parent-item '. ($anchor != NULL ? 'anchored' : ''). '" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href'], array('fragment' => $anchor));
         print '<ul>';
         $child_elements = element_children($link['#below']);
         foreach($child_elements as $key_child => $link_child){
-          print '<li style="background-color: '. $menu_color_child. '">'. l($link['#below'][$link_child]['#title'], $link['#below'][$link_child]['#href'], array('#attributes' => array('class' => array('sf-with-ul')))). '</li>';
+          $anchor = $link_child['#localized_options']['attributes']['rel'];
+          print '<li style="background-color: '. $menu_color_child. '">'. l($link['#below'][$link_child]['#title'], $link['#below'][$link_child]['#href'], array('fragment' => $anchor, '#attributes' => array('class' => array('sf-with-ul')))). '</li>';
 
         }
         print '</ul></li>';
       }
       else{
-        print '<li class="parent-item" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href']). '</li>';
+        print '<li class="parent-item '. ($anchor != NULL ? 'anchored' : ''). '" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href'], array('fragment' => $anchor)). '</li>';
       }
     }
     print '</ul>';
