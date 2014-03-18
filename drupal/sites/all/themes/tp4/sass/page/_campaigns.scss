@@ -207,12 +207,20 @@ body.node-type-campaign-page, #main.card-page{
       background-repeat: no-repeat;
       position: relative;
     }
-    .menu{
+    .menu-wrapper{
       width: 100%;
       position: absolute;
       bottom: 0;
       z-index: 99;
       cursor: default;
+    }
+    .menu{
+      display: block;
+      height: auto;
+      // width is inline
+      margin: 0 auto;
+      background-position: top center;
+      background-repeat: no-repeat;
       ul.sf-menu{
         clear:left;
         float:left;
@@ -222,6 +230,7 @@ body.node-type-campaign-page, #main.card-page{
         position:relative;
         left:50%;
         text-align:center;
+        background: transparent;
         li{
           display: block;
           float: left;

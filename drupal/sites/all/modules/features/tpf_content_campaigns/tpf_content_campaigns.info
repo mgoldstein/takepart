@@ -64,6 +64,7 @@ features[field_instance][] = node-campaign-field_campaign_homepage
 features[field_instance][] = node-campaign-field_campaign_logo
 features[field_instance][] = node-campaign-field_campaign_logo_position
 features[field_instance][] = node-campaign-field_campaign_menu
+features[field_instance][] = node-campaign-field_campaign_menu_bg_color
 features[field_instance][] = node-campaign-field_campaign_menu_bg_image
 features[field_instance][] = node-campaign-field_campaign_menu_bg_image_w
 features[field_instance][] = node-campaign-field_campaign_menu_color_child

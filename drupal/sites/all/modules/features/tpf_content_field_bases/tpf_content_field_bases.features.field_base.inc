@@ -1668,6 +1668,32 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_campaign_menu_bg_color'
+  $field_bases['field_campaign_menu_bg_color'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_campaign_menu_bg_color',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'rgb' => array(
+        0 => 'rgb',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'color_field',
+    'settings' => array(
+      'palette' => '',
+      'show_buttons' => 1,
+      'show_input' => 1,
+      'show_palette' => 0,
+      'show_palette_only' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'color_field_rgb',
+  );
+
   // Exported field_base: 'field_campaign_menu_bg_image'
   $field_bases['field_campaign_menu_bg_image'] = array(
     'active' => 1,

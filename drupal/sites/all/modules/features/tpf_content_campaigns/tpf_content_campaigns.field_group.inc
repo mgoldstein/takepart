@@ -369,7 +369,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = 'group_menu';
   $field_group->data = array(
     'label' => 'Menu Background Image',
-    'weight' => '29',
+    'weight' => '30',
     'children' => array(
       0 => 'field_campaign_menu_bg_image',
       1 => 'field_campaign_menu_bg_image_w',
@@ -403,7 +403,8 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_menu_color_parent',
       2 => 'field_campaign_menu_color_child',
       3 => 'field_campaign_menu_width',
-      4 => 'group_menu_background_image',
+      4 => 'field_campaign_menu_bg_color',
+      5 => 'group_menu_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
