@@ -190,11 +190,13 @@
         });
         view.render().$el
           .data('index', collection.indexOf(model))
-          .appendTo(this.$('.stories'))
+          .appendTo(this.$('.stories-wrapper'))
         ;
       },this));
 
-      // @todo masonry
+      this.$('.stories-wrapper').append('<div class="story-gutter" />').masonry({
+        'gutter': 20
+      });
 
       // @todo render the total number of stories
       $('<div>').addClass('story-count').text(this.collection.fullCollection.length + ' Stories').prependTo(this.$el);

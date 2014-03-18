@@ -2619,6 +2619,21 @@ h1.sys-headline {
       margin-bottom: 1.857142857em;
     }
 
+    .stories-wrapper {
+      overflow: hidden;
+    }
+
+    .story-gutter {
+      height: 0;
+      width: 0;
+      @media (min-width: 768px) {
+        width: 4.9%;
+      }
+      @media (min-width: 1000px) {
+        width: 2.25%;
+      }
+    }
+
     .story {
       @include box-sizing(border-box);
       position: relative;
@@ -2631,20 +2646,9 @@ h1.sys-headline {
       @media (min-width: 768px) {
         float: left;
         width: 48.5%;
-        margin-right: 2.9%;
-        &:nth-of-type(2n) {
-          margin-right: 0;
-        }
       }
       @media (min-width: 1000px) {
         width: 31.8%;
-        margin-right: 2.2%;
-        &:nth-of-type(2n) {
-          margin-right: 2.2%;
-        }
-        &:nth-of-type(3n) {
-          margin-right: 0;
-        }
       }
 
       // stupid gull-wing shadow

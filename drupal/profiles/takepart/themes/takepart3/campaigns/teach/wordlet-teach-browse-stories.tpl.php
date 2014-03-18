@@ -82,7 +82,7 @@
 </script>
 <script type="text/x-template" id="stories_view">
 <div class="view-messages"></div>
-<div class="stories"></div>
+<div class="stories-wrapper"></div>
 </script>
 <script type="text/x-template" id="load_more_stories_view">
 <div class="load-more-stories orange-button-container"><a class="load-more-stories-button" href="#"><%= button_text %></a></div>
