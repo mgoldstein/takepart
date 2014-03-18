@@ -72,6 +72,7 @@ features[field_base][] = field_campaign_bg_color
 features[field_base][] = field_campaign_bgw
 features[field_base][] = field_campaign_bgw_image
 features[field_base][] = field_campaign_card_reference
+features[field_base][] = field_campaign_card_title
 features[field_base][] = field_campaign_homepage
 features[field_base][] = field_campaign_iframe
 features[field_base][] = field_campaign_instructional
