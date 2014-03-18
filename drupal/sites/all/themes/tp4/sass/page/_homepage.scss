@@ -240,13 +240,14 @@ body.front{
 //
 .latest-headlines{
   .views-row{
-    line-height: 24px;
+    line-height: 1.4em;
     font-size: 14px;
+    padding-top: 3px;
     @include blue-square-bullets;
     .openpublish_photo_gallery:after{
       font-family: "SSGizmo";
       font-size: 1.25em;
-      line-height: 0.8;
+      line-height: 0.8em;
       vertical-align: text-bottom;
       content: " \1F4F7";
     }
