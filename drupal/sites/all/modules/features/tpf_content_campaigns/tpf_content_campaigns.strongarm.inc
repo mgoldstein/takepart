@@ -934,9 +934,7 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_campaign_page';
-  $strongarm->value = array(
-    0 => 'status',
-  );
+  $strongarm->value = array();
   $export['node_options_campaign_page'] = $strongarm;
 
   $strongarm = new stdClass();
