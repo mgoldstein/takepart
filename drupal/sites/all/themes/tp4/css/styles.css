@@ -6974,11 +6974,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 320px) {
   /* line 88, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-left .instructional,
-  body.node-type-campaign-card-media .card.campaign-2col-left .instructional,
-  body.node-type-campaign-card-news .card.campaign-2col-left .instructional,
-  body.node-type-campaign-card-iframe .card.campaign-2col-left .instructional,
-  body.node-type-campaign-card-social .card.campaign-2col-left .instructional {
+  body.node-type-campaign-page .card.campaign-2col.left-large .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col.left-large .instructional,
+  body.node-type-campaign-card-news .card.campaign-2col.left-large .instructional,
+  body.node-type-campaign-card-iframe .card.campaign-2col.left-large .instructional,
+  body.node-type-campaign-card-social .card.campaign-2col.left-large .instructional {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
@@ -6996,11 +6996,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 768px) {
   /* line 88, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-left .instructional,
-  body.node-type-campaign-card-media .card.campaign-2col-left .instructional,
-  body.node-type-campaign-card-news .card.campaign-2col-left .instructional,
-  body.node-type-campaign-card-iframe .card.campaign-2col-left .instructional,
-  body.node-type-campaign-card-social .card.campaign-2col-left .instructional {
+  body.node-type-campaign-page .card.campaign-2col.left-large .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col.left-large .instructional,
+  body.node-type-campaign-card-news .card.campaign-2col.left-large .instructional,
+  body.node-type-campaign-card-iframe .card.campaign-2col.left-large .instructional,
+  body.node-type-campaign-card-social .card.campaign-2col.left-large .instructional {
     float: left;
     width: 66.66667%;
     margin-left: 16.66667%;
@@ -7016,11 +7016,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 320px) {
   /* line 98, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-left .left-column,
-  body.node-type-campaign-card-media .card.campaign-2col-left .left-column,
-  body.node-type-campaign-card-news .card.campaign-2col-left .left-column,
-  body.node-type-campaign-card-iframe .card.campaign-2col-left .left-column,
-  body.node-type-campaign-card-social .card.campaign-2col-left .left-column {
+  body.node-type-campaign-page .card.campaign-2col.left-large .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col.left-large .left-column,
+  body.node-type-campaign-card-news .card.campaign-2col.left-large .left-column,
+  body.node-type-campaign-card-iframe .card.campaign-2col.left-large .left-column,
+  body.node-type-campaign-card-social .card.campaign-2col.left-large .left-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
@@ -7037,11 +7037,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 768px) {
   /* line 98, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-left .left-column,
-  body.node-type-campaign-card-media .card.campaign-2col-left .left-column,
-  body.node-type-campaign-card-news .card.campaign-2col-left .left-column,
-  body.node-type-campaign-card-iframe .card.campaign-2col-left .left-column,
-  body.node-type-campaign-card-social .card.campaign-2col-left .left-column {
+  body.node-type-campaign-page .card.campaign-2col.left-large .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col.left-large .left-column,
+  body.node-type-campaign-card-news .card.campaign-2col.left-large .left-column,
+  body.node-type-campaign-card-iframe .card.campaign-2col.left-large .left-column,
+  body.node-type-campaign-card-social .card.campaign-2col.left-large .left-column {
     float: left;
     width: 50%;
     margin-left: 8.33333%;
@@ -7057,11 +7057,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 320px) {
   /* line 107, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-left .right-column,
-  body.node-type-campaign-card-media .card.campaign-2col-left .right-column,
-  body.node-type-campaign-card-news .card.campaign-2col-left .right-column,
-  body.node-type-campaign-card-iframe .card.campaign-2col-left .right-column,
-  body.node-type-campaign-card-social .card.campaign-2col-left .right-column {
+  body.node-type-campaign-page .card.campaign-2col.left-large .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col.left-large .right-column,
+  body.node-type-campaign-card-news .card.campaign-2col.left-large .right-column,
+  body.node-type-campaign-card-iframe .card.campaign-2col.left-large .right-column,
+  body.node-type-campaign-card-social .card.campaign-2col.left-large .right-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
@@ -7078,11 +7078,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 768px) {
   /* line 107, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-left .right-column,
-  body.node-type-campaign-card-media .card.campaign-2col-left .right-column,
-  body.node-type-campaign-card-news .card.campaign-2col-left .right-column,
-  body.node-type-campaign-card-iframe .card.campaign-2col-left .right-column,
-  body.node-type-campaign-card-social .card.campaign-2col-left .right-column {
+  body.node-type-campaign-page .card.campaign-2col.left-large .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col.left-large .right-column,
+  body.node-type-campaign-card-news .card.campaign-2col.left-large .right-column,
+  body.node-type-campaign-card-iframe .card.campaign-2col.left-large .right-column,
+  body.node-type-campaign-card-social .card.campaign-2col.left-large .right-column {
     float: left;
     width: 33.33333%;
     margin-left: 58.33333%;
@@ -7099,11 +7099,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 320px) {
   /* line 119, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-right .instructional,
-  body.node-type-campaign-card-media .card.campaign-2col-right .instructional,
-  body.node-type-campaign-card-news .card.campaign-2col-right .instructional,
-  body.node-type-campaign-card-iframe .card.campaign-2col-right .instructional,
-  body.node-type-campaign-card-social .card.campaign-2col-right .instructional {
+  body.node-type-campaign-page .card.campaign-2col.right-large .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col.right-large .instructional,
+  body.node-type-campaign-card-news .card.campaign-2col.right-large .instructional,
+  body.node-type-campaign-card-iframe .card.campaign-2col.right-large .instructional,
+  body.node-type-campaign-card-social .card.campaign-2col.right-large .instructional {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
@@ -7121,11 +7121,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 768px) {
   /* line 119, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-right .instructional,
-  body.node-type-campaign-card-media .card.campaign-2col-right .instructional,
-  body.node-type-campaign-card-news .card.campaign-2col-right .instructional,
-  body.node-type-campaign-card-iframe .card.campaign-2col-right .instructional,
-  body.node-type-campaign-card-social .card.campaign-2col-right .instructional {
+  body.node-type-campaign-page .card.campaign-2col.right-large .instructional,
+  body.node-type-campaign-card-media .card.campaign-2col.right-large .instructional,
+  body.node-type-campaign-card-news .card.campaign-2col.right-large .instructional,
+  body.node-type-campaign-card-iframe .card.campaign-2col.right-large .instructional,
+  body.node-type-campaign-card-social .card.campaign-2col.right-large .instructional {
     float: left;
     width: 66.66667%;
     margin-left: 16.66667%;
@@ -7141,11 +7141,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 320px) {
   /* line 129, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-right .left-column,
-  body.node-type-campaign-card-media .card.campaign-2col-right .left-column,
-  body.node-type-campaign-card-news .card.campaign-2col-right .left-column,
-  body.node-type-campaign-card-iframe .card.campaign-2col-right .left-column,
-  body.node-type-campaign-card-social .card.campaign-2col-right .left-column {
+  body.node-type-campaign-page .card.campaign-2col.right-large .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col.right-large .left-column,
+  body.node-type-campaign-card-news .card.campaign-2col.right-large .left-column,
+  body.node-type-campaign-card-iframe .card.campaign-2col.right-large .left-column,
+  body.node-type-campaign-card-social .card.campaign-2col.right-large .left-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
@@ -7162,11 +7162,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 768px) {
   /* line 129, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-right .left-column,
-  body.node-type-campaign-card-media .card.campaign-2col-right .left-column,
-  body.node-type-campaign-card-news .card.campaign-2col-right .left-column,
-  body.node-type-campaign-card-iframe .card.campaign-2col-right .left-column,
-  body.node-type-campaign-card-social .card.campaign-2col-right .left-column {
+  body.node-type-campaign-page .card.campaign-2col.right-large .left-column,
+  body.node-type-campaign-card-media .card.campaign-2col.right-large .left-column,
+  body.node-type-campaign-card-news .card.campaign-2col.right-large .left-column,
+  body.node-type-campaign-card-iframe .card.campaign-2col.right-large .left-column,
+  body.node-type-campaign-card-social .card.campaign-2col.right-large .left-column {
     float: left;
     width: 33.33333%;
     margin-left: 8.33333%;
@@ -7182,11 +7182,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 320px) {
   /* line 138, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-right .right-column,
-  body.node-type-campaign-card-media .card.campaign-2col-right .right-column,
-  body.node-type-campaign-card-news .card.campaign-2col-right .right-column,
-  body.node-type-campaign-card-iframe .card.campaign-2col-right .right-column,
-  body.node-type-campaign-card-social .card.campaign-2col-right .right-column {
+  body.node-type-campaign-page .card.campaign-2col.right-large .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col.right-large .right-column,
+  body.node-type-campaign-card-news .card.campaign-2col.right-large .right-column,
+  body.node-type-campaign-card-iframe .card.campaign-2col.right-large .right-column,
+  body.node-type-campaign-card-social .card.campaign-2col.right-large .right-column {
     float: left;
     width: 83.33333%;
     margin-left: 8.33333%;
@@ -7203,11 +7203,11 @@ body.node-type-campaign-card-social .card {
 }
 @media all and (min-width: 768px) {
   /* line 138, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.campaign-2col-right .right-column,
-  body.node-type-campaign-card-media .card.campaign-2col-right .right-column,
-  body.node-type-campaign-card-news .card.campaign-2col-right .right-column,
-  body.node-type-campaign-card-iframe .card.campaign-2col-right .right-column,
-  body.node-type-campaign-card-social .card.campaign-2col-right .right-column {
+  body.node-type-campaign-page .card.campaign-2col.right-large .right-column,
+  body.node-type-campaign-card-media .card.campaign-2col.right-large .right-column,
+  body.node-type-campaign-card-news .card.campaign-2col.right-large .right-column,
+  body.node-type-campaign-card-iframe .card.campaign-2col.right-large .right-column,
+  body.node-type-campaign-card-social .card.campaign-2col.right-large .right-column {
     float: left;
     width: 50%;
     margin-left: 41.66667%;

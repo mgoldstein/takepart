@@ -206,7 +206,7 @@ function tp4_preprocess_node(&$variables, $hook) {
  * Override or insert variables into the campaign card media template
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
-
+  dpm($variables, 'variables');
   $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
   $instructional = $variables['field_campaign_instructional'][0]['value'];
 
@@ -236,6 +236,17 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   }
   //Set Layout
   if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
+    dpm(get_defined_vars(), 'get defined vars');
+
+    // 1:even, 2:left-large, 3:right-large
+    if($column_count == 2){
+      $variables['classes_array'][] = 'left-large';
+    }
+    elseif($column_count == 3){
+      $variables['classes_array'][] = 'right-large';
+    }
+
+
     if($variables['field_campaign_content_side'][0]['value'] == 0){ // Media goes on the left
       //Prepare the left side content
       $left = '';
