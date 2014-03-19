@@ -23,7 +23,7 @@
         var $this = $(this),
             id = $this.find('#school_id').val();
 
-        window.location = "/teach/stories#school/" + (id != 0 ? id : $this.find('#school_state').val());
+        window.location = "/teach/stories#school/" + $this.find('#school_state').val() + (id != 0 ? '/' + id : '');
       });
 
     // set up most stories lists 

@@ -90,3 +90,13 @@
 <script type="text/x-template" id="school_view">
   <?php include ('partials/teach-sys-browse-by-school.tpl.php'); ?>
 </script>
+<script type="text/x-template" id="school_count_results_view">
+  <p>There <%=verb%> <%=count%> <%=plural%> for <%=schoolName%>.</p>
+</script>
+<script type="text/x-template" id="school_no_gsid_results_view">
+  <p>We couldn&#8217;t find that school in our database. There <%=verb%> <%=count%> <%=plural%> for unindexed school in <%=state%>.</p>
+</script>
+<script type="text/x-template" id="school_no_results_view">
+  <p>Be the first and add to the TEACH fund! Every story makes a difference.</p>
+  <div class="orange-button-container"><a href="/teach/share-your-story">Add Your Teacher Story</a></div>
+</script>
