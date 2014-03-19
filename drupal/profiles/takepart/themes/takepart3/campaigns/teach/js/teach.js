@@ -207,13 +207,17 @@ if (!String.prototype.trim) {
         }
     };
 
-    // The window level TP Social click event needs to be attached to the
-    // TP Analytics social click handler.
+    // attach window-level events to their various handlers
     Drupal.behaviors.trackSocialClicks = {
         attach: function() {
-            $(window).on('tp-social-click', function(e, args) {
-                takepart.analytics.track('tp-social-click', args);
-            });
+            $(window)
+                .on('tp-social-click', function(e, args) {
+                    takepart.analytics.track('tp-social-click', args);
+                })
+                .on('teach-story-view', function(e, args) {
+                    takepart.analytics.track('teach-story-view', args);
+                })
+            ;
         }
     };
 })(jQuery, Drupal, this, this.document);
