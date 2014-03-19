@@ -205,7 +205,7 @@
       });
 
 
-      $('<div>').addClass('story-count').text(this.collection.state.totalRecords + ' Stories').prependTo(this.$el);
+      $('<div>').addClass('story-count').text((this.collection.state.totalRecords ? this.collection.state.totalRecords : '0') + ' Stories').prependTo(this.$el);
 
       if (this.collection.fullCollection.length < this.collection.state.totalRecords) {
         $(_.template($('#load_more_stories_view').html(), {button_text: "Load More Stories"})).appendTo(this.$el);
