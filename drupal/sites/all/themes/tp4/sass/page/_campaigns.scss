@@ -369,8 +369,14 @@ body.node-type-campaign-page, #main.card-page{
   
 
   //Background Properties
+
+  @media all and (max-width: 767px){
+    .card, .slider{
+      background-size: 768px !important;
+    }
+  }
+
   .card, .slider{
-    background-size: 700px;
     background-position: top center;
     background-repeat: no-repeat;
     @include breakpoint($breakpoint-tablet){
