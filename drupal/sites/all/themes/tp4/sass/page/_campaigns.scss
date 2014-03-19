@@ -84,7 +84,7 @@ body.node-type-campaign-card-social,
         }
       }
     }
-    &.campaign-2col-left{
+    &.campaign-2col.left-large{
       .instructional{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(10, 2);
@@ -115,7 +115,7 @@ body.node-type-campaign-card-social,
         }
       }
     }
-    &.campaign-2col-right{
+    &.campaign-2col.right-large{
       .instructional{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(10, 2);
