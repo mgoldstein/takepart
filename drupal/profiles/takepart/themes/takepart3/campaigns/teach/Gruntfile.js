@@ -50,6 +50,9 @@ module.exports = function(grunt) {
             'bower_components/outlayer/outlayer.js',
             'bower_components/masonry/masonry.js',
 
+            // imagesloaded
+            'bower_components/imagesloaded/imagesloaded.js',
+
             'bower_components/underscore/underscore.js',
             'bower_components/backbone/backbone.js',
             'bower_components/backbone-pageable/lib/backbone-pageable.js',
