@@ -194,9 +194,14 @@
         ;
       },this));
 
-      this.$('.stories-wrapper').append('<div class="story-gutter" />').masonry({
-        'gutter': 20
+      var $wrapper = this.$('.stories-wrapper').append('<div class="story-gutter" />');
+
+      $wrapper.imagesLoaded(function() {
+        $wrapper.masonry({
+          'gutter': 20
+        });
       });
+
 
       $('<div>').addClass('story-count').text(this.collection.state.totalRecords + ' Stories').prependTo(this.$el);
 
