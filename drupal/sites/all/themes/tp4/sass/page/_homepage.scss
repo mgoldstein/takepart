@@ -29,7 +29,7 @@ body.front{
   .panel-secondary-featured,
   .panel-tpl-secondary-featured {
     .panel-pane {
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         float: left;
         width: 48.5596708%;
         &:nth-child(2n+1) {
@@ -108,7 +108,7 @@ body.front{
 
             &:before {
               content: "take action:\0020";
-              font-family: "BrownRegular", verdana, sans-serif;
+              font-family: $main-brand-font;
             }
             &:hover,
             &:active {
@@ -189,7 +189,7 @@ body.front{
     margin: 0 0 1em;
     padding: 0;
     height: 60px;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       height: 30px;
     }
 
@@ -199,7 +199,7 @@ body.front{
       height: 30px;
       margin: 0 auto;
       background: transparent none scroll no-repeat top left;
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         display: inline-block;
         float: none;
         margin: 0 .5em 0 0;
@@ -218,17 +218,17 @@ body.front{
 
 .date {
   margin-bottom: 2px;
-  @include breakpoint($breakpoint-mobile){
+  @include breakpoint($breakpoint-mobile) {
     display: none;
   }
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
     display: block;
     float: left;
-    font-family: $adelle-regular;
+    font-family: $primary-sans-font;
     color: $dark-gray;
     font-size: 13px;
   }
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
     float: right;
   }
   &.extra-margin {
@@ -311,28 +311,28 @@ a.column-header:hover{
       	&:last-child:after {
       	  border-bottom: none;
       	}
-      	@include breakpoint($breakpoint-tablet){
+      	@include breakpoint($breakpoint-tablet) {
       	  padding-left: 30px;
       	  padding-right: 30px;
       	  &:after {
       	    display: none;
       	  }
       	}
-      	@include breakpoint($breakpoint-desktop){
+      	@include breakpoint($breakpoint-desktop) {
       	  &:after {
       	    display: block;
       	  }
       	}
       } // > .view-row
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         .views-row{
           display: none;
         }
-        .views-row:nth-child(1), .views-row:nth-child(2), .views-row:nth-child(3){
+        .views-row:nth-child(1), .views-row:nth-child(2), .views-row:nth-child(3) {
           display: block;
         }
       }
-      @include breakpoint($breakpoint-desktop){
+      @include breakpoint($breakpoint-desktop) {
         .views-row{
           display: block;
         }
@@ -356,11 +356,11 @@ a.column-header:hover{
       behavior: $pie-behavior;
     }
     .line{
-      @include breakpoint($breakpoint-mobile){
+      @include breakpoint($breakpoint-mobile) {
         border-bottom: 1px solid $blue;
         margin: 0;
       }
-      @include breakpoint($breakpoint-desktop){
+      @include breakpoint($breakpoint-desktop) {
         margin: 0 13px;
       }
 
@@ -382,7 +382,7 @@ a.column-header:hover{
     .block-title{
       background-color: $light-mint;
       line-height: 15px;
-      font-family: $tradegothic-regular;
+      font-family: $secondary-sans-font;
       font-size: 13px;
       letter-spacing: .4px;
       vertical-align: bottom;
@@ -392,11 +392,7 @@ a.column-header:hover{
       border-bottom: 1px solid $light-mint;
     }
     .action-type{
-      font-family: $adelle-bold;
-      font-size: 18px;
-      line-height: 24px;
-      font-size: 14px;
-      line-height: 18px;
+      font: bold 14px/18px $primary-sans-font;
       text-transform: uppercase;
       padding-bottom: 2px;
     }
@@ -418,12 +414,12 @@ a.column-header:hover{
     a.more{
       text-align: left;
       display: block;
-      @include breakpoint($breakpoint-mobile){
+      @include breakpoint($breakpoint-mobile) {
       }
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         margin-top: 25px;
       }
-      @include breakpoint($breakpoint-desktop){
+      @include breakpoint($breakpoint-desktop) {
         margin-top: 0;
       }
       &:hover{
@@ -447,9 +443,7 @@ a.column-header:hover{
  *Photo Galleries
  */
 #block-views-photo-galleries-promo-block{
-  font-family: $ashbury-light;
-  font-size: 1.142857143em;
-  line-height: 1.25;
+  font: 100 1.142857143em/1.25 $primary-serif-font;
   .views-row{
     margin-bottom: 20px;
     .views-field-field-promo-headline {
@@ -471,24 +465,23 @@ a.column-header:hover{
  */
  .promo{
     margin-top: 20px;
-    @include breakpoint($breakpoint-mobile){
+    @include breakpoint($breakpoint-mobile) {
       text-align: left;
       .inner{
         text-align: center;
         label{
           display: block;
           margin-right: 10px;
-          font-family: $brown-bold;
+          font-family: $main-brand-font;
           line-height: 28px;
-          font-weight: normal;
+          font-weight: bold;
         }
         a.text:hover{
           text-decoration: underline;
         }
         .text{
           display: block;
-          font-family: $ashbury-light;
-          font-size: 20px;
+          font: italic 20px $primary-serif-font;
           img{
             display: block;
             vertical-align: middle;
@@ -498,7 +491,7 @@ a.column-header:hover{
         }
       }
     }
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       .inner{
         text-align: left;
         display: inline-block;
@@ -515,7 +508,7 @@ a.column-header:hover{
         }
       }
     }
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       text-align: center;
       .inner{
         .text{
@@ -538,8 +531,7 @@ a.column-header:hover{
   .topic{
     margin-bottom: 25px;
     .topic-title{
-      font-family: $adelle-bold;
-      font-size: 12px;
+      font: bold 12px $primary-sans-font;
       margin-bottom: 5px;
       text-transform: uppercase;
     }

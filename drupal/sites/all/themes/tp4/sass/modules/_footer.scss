@@ -14,21 +14,21 @@
         width: 100%;
         @include breakpoint-grid-breakdown(2 1, $breakpoint-mobile $breakpoint-tablet, 'li.menu__item');
       }
-      @include breakpoint($breakpoint-mobile){
+      @include breakpoint($breakpoint-mobile) {
         @include zen-grid-item(12, 1);
         @include zen-clear();
       }
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         @include zen-grid-item(8, 1);
         @include zen-clear(none);
       }
     }
     .footer-right{
-      @include breakpoint($breakpoint-mobile){
+      @include breakpoint($breakpoint-mobile) {
         @include zen-grid-item(12, 1);
         @include zen-clear();
       }
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         @include zen-grid-item(4, 9);
         @include zen-clear(none);
       }
@@ -42,14 +42,12 @@
 
   footer{
     .footer-left{
-      @include breakpoint($breakpoint-mobile){
+      @include breakpoint($breakpoint-mobile) {
         ul{
           padding-top: 15px;
           margin-bottom: 20px;
           a{
-            font-family: $adelle-light;
-            font-size: 14px;
-            line-height: 24px;
+            font: 100 14px/24px $primary-sans-font;
             color: #000;
             &:hover{
               text-decoration: underline;
@@ -57,7 +55,7 @@
           }
         }
       }
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         margin-bottom: 0px;
         ul{
           margin-bottom: 7px;
@@ -65,7 +63,7 @@
       }
     }
     .footer-right{
-      @include breakpoint($breakpoint-mobile){
+      @include breakpoint($breakpoint-mobile) {
         .footer-title.social{
           float: left;
           margin-bottom: 2px;
@@ -87,7 +85,7 @@
           }
         }
       }
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         .footer-title.social{
           float: right;
         }
@@ -106,12 +104,10 @@
           margin-top: 50px;
           clear: both;
           width: 90%;
-          font-family: $adelle-light;
-          font-size: 11px;
-          line-height: 16px;
+          font: 100 11px/16px $primary-sans-font;
         }
       }
-      @include breakpoint($breakpoint-desktop){
+      @include breakpoint($breakpoint-desktop) {
 
       }
     }
@@ -120,7 +116,7 @@
       margin-top: 30px;
       border-top: 1px solid $gray-line;
       padding-top: 20px;
-      @include breakpoint($breakpoint-mobile){
+      @include breakpoint($breakpoint-mobile) {
         text-align: center;
         .footer-bottom-inner{
           text-align: left;
@@ -155,7 +151,7 @@
           }
         }
       }
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         .footer-bottom-inner{
           display: inline-block;
           .footer-title{
