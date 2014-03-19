@@ -12,9 +12,12 @@ table.field-multiple-table input.fluid {
  * for that piece of content. The primary topic is used by analytics for
  * tracking purposes.
  */
+#sortable1, #sortable2 {
+  height: 600px !important;    
+}
 
-#sortable1 {
-  height: 600px;    
+#sortable1 li, #sortable2 li {
+  padding: 3px !important;    
 }
 
 #sortable2 li.ui-state-highlight:first-of-type {
