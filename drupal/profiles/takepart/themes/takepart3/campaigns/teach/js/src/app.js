@@ -7,7 +7,7 @@
       'popular(/)': 'popular',
       'recent(/)': 'recent',
       'school(/)': 'school',
-      'school/:school': 'schoolView',
+      'school/:state(/:id)': 'schoolView',
       'tag/:tag': 'tagView',
       'story/:id': 'storyView'
     }
@@ -141,27 +141,27 @@
       return response.signatures;
     },
 
-    parseLinks: function() {
-      var response = {
+    parseLinks: function(response) {
+      var data = {
         first: TEACH.TAP.postURL,
       };
 
       if (this.state.currentPage != 1) {
-        response.prev = TEACH.TAP.postURL;
+        data.prev = TEACH.TAP.postURL;
       }
 
-      // @todo alter the conditional to fail if we're on the last page
-      if (true) {
-        response.next = TEACH.TAP.postURL;        
+      if (this.state.currentPage < response.total_pages) {
+        data.next = TEACH.TAP.postURL;
       }
 
-      return response;
+      return data;
     },
 
     parseState: function (response) {
-      // @todo update the pagination state based on response from the server
-      // @see http://backbone-paginator.github.io/backbone-pageable/api/#!/api/Backbone.PageableCollection
-      return {};
+      return {
+        // the new signatures are added AFTERWARDS to the calculation
+        totalRecords: response.total_signature_count - response.signatures.length
+      };
     }
   });
 
@@ -194,14 +194,20 @@
         ;
       },this));
 
-      this.$('.stories-wrapper').append('<div class="story-gutter" />').masonry({
-        'gutter': 20
+      var $wrapper = this.$('.stories-wrapper').append('<div class="story-gutter" />');
+
+      $wrapper.imagesLoaded(function() {
+        $wrapper.masonry({
+          'gutter': 20
+        });
       });
 
-      // @todo render the total number of stories
-      $('<div>').addClass('story-count').text(this.collection.fullCollection.length + ' Stories').prependTo(this.$el);
-      // @todo add conditional to only add this button if there are more stories
-      $(_.template($('#load_more_stories_view').html(), {button_text: "Load More Stories"})).appendTo(this.$el);
+
+      $('<div>').addClass('story-count').text(this.collection.state.totalRecords + ' Stories').prependTo(this.$el);
+
+      if (this.collection.fullCollection.length < this.collection.state.totalRecords) {
+        $(_.template($('#load_more_stories_view').html(), {button_text: "Load More Stories"})).appendTo(this.$el);
+      }
 
       return this;
     },
@@ -227,6 +233,59 @@
         })
       });
       this.modal.render();
+    }
+  });
+
+  TEACH.Views.StoriesSchoolSearchView = TEACH.Views.StoriesView.extend({
+    initialize: function() {
+      TEACH.Views.StoriesView.prototype.initialize.apply(this);
+
+      // "reset" covers the case where there are no stories
+      this.listenTo(this.collection, 'reset', this.render);
+      this.listenTo(this.collection, 'reset', this.getSchoolName);
+      this.collection.fetch();
+    },
+
+    getSchoolName: function() {
+      if (parseInt(this.attributes['data-gsid']) > 0 && typeof this.schoolName === 'undefined') {
+        $.ajax({
+          url: '/proxy?request=' + encodeURIComponent('http://api.greatschools.org/schools/' + this.attributes['data-state'] + '/' + this.attributes['data-gsid'] + '?key=zzlcyx4aijxe1nmnagoziqxx'),
+          success: _.bind(function(response) {
+            this.schoolName = $(response).find('school name').text();
+            this.render();
+          }, this)
+        });
+      }
+    },
+
+    render: function() {
+      TEACH.Views.StoriesView.prototype.render.apply(this);
+      this.$('.story-count').remove();
+
+      var viewMessages = [];
+
+      var templateVars = {
+        count: this.collection.length > 0 ? this.collection.state.totalRecords : 'no',
+        schoolName: this.schoolName ? this.schoolName : 'that school',
+        state: TEACH.stateNames[this.attributes['data-state']],
+        verb: this.collection.state.totalRecords == 1 ? 'is' : 'are',
+        plural: this.collection.state.totalRecords == 1 ? 'story' : 'stories'
+      };
+
+      viewMessages.push(_.template($('#school_count_results_view').html(), templateVars));
+
+      // replace the message if there's no GSID
+      if (!this.attributes['data-gsid']) {
+        viewMessages = [_.template($('#school_no_gsid_results_view').html(), templateVars)];
+      }
+
+      if (this.collection.length == 0) {
+        viewMessages.push(_.template($('#school_no_results_view').html(), {}));
+      }
+
+      this.$('.view-messages').html(viewMessages.join(''));
+
+      return this;
     }
   });
 
@@ -315,6 +374,7 @@
 
     formSubmitHandler: function(e) {
       e.preventDefault();
+      this.$('.school-name').removeClass('in-progress');
       this.trigger('browseschool', this.$('#school_id').val(), this.$('#school_state').val());
     }
   });
@@ -363,8 +423,8 @@
 
       // the router sets up the state of the application
       this.listenTo(window.teachRouter, 'route', this.route);
-      this.listenTo(this.views.school, 'browseschool', function(id, state){
-        window.teachRouter.navigate('school/' + (id != 0 ? id : state), {trigger: true});
+      this.listenTo(this.views.school, 'browseschool', function(id, state) {
+        window.teachRouter.navigate('school/' + state + (id != 0 ? '/' + id : ''), {trigger: true});
       });
     },
 
@@ -382,23 +442,36 @@
         case "recent":
         case "school":
           this.$nav.find('#nav-' + route).addClass('active');
-          this.views[route].render().$el.show();
+          this.views[route].$el.show();
+          this.views[route].render();
           this.views[route].trigger('show');
           break;
         case "schoolView":
-        case "tagView":
-          if (route == "tagView") {
-            queryParams.tag = params[0];
-          } else {
-            if (isNaN(parseInt(params[0], 10))) {
-              queryParams.school_state = params[0];
-              queryParams.school_external_id = 0;
-            } else {
-              queryParams.school_external_id = params[0];
+          queryParams.school_state = params[0];
+          queryParams.school_external_id = params[1] ? params[1] : 0;
+
+          this.views.extra = new TEACH.Views.StoriesSchoolSearchView({
+            id: 'pane-schoolView',
+            collection: new TEACH.Collections.Stories([], {
+              queryParams: queryParams
+            }),
+            attributes: {
+              "data-state": queryParams.school_state,
+              "data-gsid": queryParams.school_external_id
             }
-          }
+          });
+
+          // show the search box
+          this.$nav.find('#nav-school').addClass('active');
+          this.views.school.render().$el.show();
+          this.views.school.trigger('show');
+
+          this.views.extra.$el.appendTo(this.$el);
+          break;
+        case "tagView":
+          queryParams.tag = params[0];
           this.views.extra = new TEACH.Views.StoriesView({
-            id: 'pane-' + route,
+            id: 'pane-tagView',
             collection: new TEACH.Collections.Stories([], {
               queryParams: queryParams
             })

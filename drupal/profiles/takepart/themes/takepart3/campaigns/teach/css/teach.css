@@ -1,4 +1,5 @@
-@charset "UTF-8";
+@import url("//hello.myfonts.net/count/2826af");
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
 /* @license
  * MyFonts Webfont Build ID 2631343, 2013-08-27T17:12:57-0400
  * 
@@ -19,8 +20,6 @@
  * © 2013 MyFonts Inc
 */
 /* @import must be at top of file, otherwise CSS will not work */
-@import url("//hello.myfonts.net/count/2826af");
-@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
 @font-face {
   font-family: 'GlyphaLTPro-Black';
   src: url("fonts/GlyphaLTPro-Black.eot");
@@ -94,7 +93,7 @@
   -webkit-font-smoothing: antialiased;
 }
 .page-wrap .main {
-  background: url('../img/blackboard.jpg?1382037165');
+  background: url('../img/blackboard.jpg?1377714697');
 }
 .page-wrap .page-header,
 .page-wrap .content-header {
@@ -128,7 +127,7 @@
   position: relative;
   min-height: 225px;
   color: white;
-  background: url('../img/hero-background.jpg?1382037165');
+  background: url('../img/hero-background.jpg?1377834613');
   clear: both;
   zoom: 1;
   /* menu */
@@ -213,7 +212,7 @@
 .header .menu-wrapper {
   font: normal 17px/100% "GlyphaLTPro-Black", serif;
   padding: 5px;
-  background: url('../img/orange_felt.png?1382037165');
+  background: url('../img/orange_felt.png?1377714705');
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -278,7 +277,7 @@
   }
   .header .menu-wrapper .menu .item:first-of-type a {
     display: block;
-    background: transparent url('../img/menu-home.png?1394761326') no-repeat scroll top left;
+    background: transparent url('../img/menu-home.png?1393893502') no-repeat scroll top left;
     background-size: 21px;
     height: 21px;
     width: 21px;
@@ -297,7 +296,7 @@
   }
 }
 .header .menu-wrapper .menu .item.active {
-  background: url('../img/active_menu_bg.png?1394761326') no-repeat top right;
+  background: url('../img/active_menu_bg.png?1393893502') no-repeat top right;
   margin-top: -3px;
   height: 43px;
 }
@@ -394,7 +393,7 @@ a {
     bottom: 0;
     left: 0;
     right: 0;
-    background: transparent url('../img/teach-home-featured-bg.jpg?1394761326') scroll no-repeat top center;
+    background: transparent url('../img/teach-home-featured-bg.jpg?1393893502') scroll no-repeat top center;
     background-size: cover;
   }
 }
@@ -495,7 +494,7 @@ a {
 /* # Common elements for some interior pages
 */
 .teach-watch-promo {
-  background: url('../img/teach-watch-bg.png?1383871950') no-repeat;
+  background: url('../img/teach-watch-bg.png?1380823387') no-repeat;
   margin: -10px auto 0;
   clear: both;
   width: 840px;
@@ -618,7 +617,7 @@ a {
 .teach-film-content,
 .teach-fund-about-content {
   position: relative;
-  background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1394761326') scroll repeat;
+  background: #ecedf6 url('../img/paper-background-texture-temp.jpg?1393893502') scroll repeat;
   margin-top: 30px;
   -webkit-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.2);
@@ -740,7 +739,7 @@ a {
   font-size: 40px;
   line-height: 1.375;
   text-transform: uppercase;
-  background: transparent url('../img/video-page-label-background.png?1382037165') no-repeat scroll top left;
+  background: transparent url('../img/video-page-label-background.png?1377830748') no-repeat scroll top left;
   -webkit-transform: rotate(-4deg);
   -moz-transform: rotate(-4deg);
   -ms-transform: rotate(-4deg);
@@ -758,7 +757,7 @@ a {
 .short-headline {
   font: normal 2em/1 "GlyphaLTPro-Black", serif;
   text-transform: uppercase;
-  background: transparent url('../img/teach-home-featured-header-bg.png?1394761326') scroll no-repeat top left;
+  background: transparent url('../img/teach-home-featured-header-bg.png?1393893502') scroll no-repeat top left;
 }
 .short-headline span {
   display: block;
@@ -785,7 +784,7 @@ a {
     margin: 1em 25px 0 auto;
     margin-right: 25px;
     float: right;
-    background: transparent url('../img/paper-peek-a-boo.png?1382037165') no-repeat scroll top right;
+    background: transparent url('../img/paper-peek-a-boo.png?1377758768') no-repeat scroll top right;
     padding: 10px 0;
     -webkit-box-shadow: 0 0 4px black;
     -moz-box-shadow: 0 0 4px black;
@@ -811,14 +810,14 @@ a {
   vertical-align: top;
   width: 24px;
   height: 22px;
-  background-image: url('../img/social-facebook-white-small.png?1382037165');
+  background-image: url('../img/social-facebook-white-small.png?1377822363');
 }
 @media (min-width: 481px) {
   .peek-a-boo a {
     color: black;
   }
   .peek-a-boo a .fb {
-    background: transparent url('../img/social-facebook.png?1382037165');
+    background: transparent url('../img/social-facebook.png?1377821572');
   }
 }
 
@@ -854,7 +853,7 @@ a {
   text-indent: 100%;
   overflow: hidden;
   margin-left: 6px;
-  background: transparent url('../img/social-scribbles.png?1394761326') top left;
+  background: transparent url('../img/social-scribbles.png?1393893502') top left;
   background-size: 24px;
 }
 .scribble-share a.facebook, .scribble-share a.tp-social-facebook {
@@ -894,7 +893,7 @@ a {
 }
 @media (min-width: 940px) {
   .social-menu {
-    background: transparent url('../img/video-page-social-block-bg.png?1394761326') scroll no-repeat top center;
+    background: transparent url('../img/video-page-social-block-bg.png?1393893502') scroll no-repeat top center;
     min-height: 269px;
     max-width: 848px;
     margin: 0 auto;
@@ -977,7 +976,7 @@ a {
   display: none;
 }
 .social-menu .item #newsletter-campaign-email-only-signup-form input[name="email"] {
-  background: transparent url('../img/text-field-small.png?1382037165');
+  background: transparent url('../img/text-field-small.png?1377758768');
   border: 0;
   width: 217px;
   height: 30px;
@@ -1022,47 +1021,47 @@ a {
   margin-top: 51px;
 }
 .social-menu .item.text:before {
-  background-image: url('../img/social-phone.png?1394761326');
+  background-image: url('../img/social-phone.png?1393893502');
   width: 37px;
   height: 51px;
   margin-left: -18px;
 }
 @media (max-width: 480px) {
   .social-menu .item.text:before {
-    background-image: url('../img/social-phone-white.png?1394761326');
+    background-image: url('../img/social-phone-white.png?1393893502');
   }
 }
 .social-menu .item.connected {
   margin-top: 51px;
 }
 .social-menu .item.connected:before {
-  background-image: url('../img/social-envelopes.png?1394761326');
+  background-image: url('../img/social-envelopes.png?1393893502');
   width: 46px;
   height: 51px;
   margin-left: -23px;
 }
 @media (max-width: 480px) {
   .social-menu .item.connected:before {
-    background-image: url('../img/social-envelopes-white.png?1394761326');
+    background-image: url('../img/social-envelopes-white.png?1393893502');
   }
 }
 .social-menu .item.follow {
   margin-top: 48px;
 }
 .social-menu .item.follow:before {
-  background-image: url('../img/social-follow.png?1394761326');
+  background-image: url('../img/social-follow.png?1393893502');
   width: 50px;
   height: 48px;
   margin-left: -25px;
 }
 @media (max-width: 480px) {
   .social-menu .item.follow:before {
-    background-image: url('../img/social-follow-white.png?1394761326');
+    background-image: url('../img/social-follow-white.png?1393893502');
   }
 }
 
 .in-progress {
-  background: transparent url('../img/spinner-black-white.gif?1394761326') scroll no-repeat 96% center;
+  background: transparent url('../img/spinner-black-white.gif?1393893502') scroll no-repeat 96% center;
   background-size: auto 50%;
 }
 
@@ -1229,7 +1228,7 @@ a {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: transparent url('../img/film-watch-bg.png?1394761326') scroll no-repeat top center;
+  background: transparent url('../img/film-watch-bg.png?1393893502') scroll no-repeat top center;
   background-size: contain;
   max-width: 285px;
   min-height: 384px;
@@ -1269,7 +1268,7 @@ a {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: transparent url('../img/post-it-bg.png?1394761326') scroll no-repeat top center;
+  background: transparent url('../img/post-it-bg.png?1393893502') scroll no-repeat top center;
   background-size: contain;
   max-width: 300px;
   min-height: 312px;
@@ -1629,7 +1628,7 @@ a {
   text-shadow: 1px 1px #ea5f11;
 }
 .sys-stats .sys-stats-content {
-  background: transparent url('../img/notebook_paper_middle.png?1395084687') scroll repeat-y top center;
+  background: transparent url('../img/notebook_paper_middle.png?1394561652') scroll repeat-y top center;
   background-size: contain;
   padding: 0 5% 0 14%;
 }
@@ -1644,14 +1643,14 @@ a {
 .sys-stats:before, .sys-stats:after {
   content: ' ';
   display: block;
-  background: transparent url('../img/notebook_paper_top.png?1395084687') scroll no-repeat top center;
+  background: transparent url('../img/notebook_paper_top.png?1394561652') scroll no-repeat top center;
   background-size: contain;
   width: 100%;
   height: 0;
   padding-top: 23.7250554%;
 }
 .sys-stats:after {
-  background-image: url('../img/notebook_paper_bottom.png?1395084687');
+  background-image: url('../img/notebook_paper_bottom.png?1394561652');
   padding-top: 21.0643016%;
 }
 .sys-stats h2 {
@@ -1703,7 +1702,7 @@ a {
   position: absolute;
   right: 22px;
   bottom: 10px;
-  background: transparent url('../img/school-search-submit.png?1395084687') scroll no-repeat top left;
+  background: transparent url('../img/school-search-submit.png?1394561652') scroll no-repeat top left;
   background-size: 24px auto;
   width: 24px;
   height: 24px;
@@ -1854,7 +1853,7 @@ a {
   height: 0;
   padding-top: 92.6121372%;
   margin-bottom: 1em;
-  background: transparent url('../img/polaroid_blue_pin.png?1395084687') scroll no-repeat top center;
+  background: transparent url('../img/polaroid_blue_pin.png?1394561652') scroll no-repeat top center;
   background-size: contain;
   overflow: hidden;
   position: relative;
@@ -1972,7 +1971,7 @@ a {
 }
 
 h1.sys-headline {
-  background: transparent url('../img/sys-headline-bg.png?1394761326') scroll no-repeat top left;
+  background: transparent url('../img/sys-headline-bg.png?1393893502') scroll no-repeat top left;
   font-size: 1.4em;
   padding: 1.8em 0 1em .5em;
 }
@@ -1989,7 +1988,7 @@ h1.sys-headline {
   }
 }
 .teach-sys-thanks-content h1.sys-headline {
-  background-image: url('../img/teach-home-featured-header-bg.png?1394761326');
+  background-image: url('../img/teach-home-featured-header-bg.png?1393893502');
   padding: 1.1em;
 }
 @media (min-width: 850px) {
@@ -2008,7 +2007,7 @@ h1.sys-headline span {
 
 @media (min-width: 980px) {
   .sys-update {
-    background: transparent url('../img/sys-bg-paper.png?1394761326') scroll no-repeat top left;
+    background: transparent url('../img/sys-bg-paper.png?1393893502') scroll no-repeat top left;
     background-size: contain;
     min-height: 403px;
     padding: 56px 32px 40px 40px;
@@ -2065,7 +2064,7 @@ h1.sys-headline span {
   width: 293px;
   height: 294px;
   overflow: hidden;
-  background: transparent url('../img/post_it_paperclip_293x294.png?1395084687') scroll no-repeat top left;
+  background: transparent url('../img/post_it_paperclip_293x294.png?1394561652') scroll no-repeat top left;
   font-size: 1.33333em;
   line-height: 1.25;
   color: black;
@@ -2101,14 +2100,14 @@ h1.sys-headline span {
     top: -12px;
     right: -5px;
     margin: 0;
-    background-image: url('../img/post_it_paperclip_315x241.png?1395084687');
+    background-image: url('../img/post_it_paperclip_315x241.png?1394561652');
     max-width: 315px;
     max-height: 241px;
   }
 }
 
 .sys-tips h2 {
-  background: transparent url('../img/sys-subhead-bg.png?1394761326') scroll no-repeat top left;
+  background: transparent url('../img/sys-subhead-bg.png?1393893502') scroll no-repeat top left;
   padding: 2.5em 0 2em .5em;
   font-size: 1em;
   line-height: 1;
@@ -2326,8 +2325,11 @@ h1.sys-headline span {
 .sys-form .customSelect {
   margin: 0 auto .5em;
 }
-.sys-form .customSelect:after {
-  display: block;
+.sys-form .customSelect .customSelectInner {
+  width: 100% !important;
+}
+.sys-form .customSelect .customSelectInner:after {
+  display: inline-block;
   content: "\25BC";
   float: right;
 }
@@ -2456,7 +2458,7 @@ h1.sys-headline span {
   margin-bottom: 0;
 }
 .sys-form input[type="submit"].in-progress {
-  background-image: url('../img/spinner-white-orange.gif?1394761326');
+  background-image: url('../img/spinner-white-orange.gif?1393893502');
   background-size: auto 40%;
   background-position: 95% center;
 }
@@ -2504,7 +2506,7 @@ h1.sys-headline span {
 }
 
 .sys-thanks-social-share {
-  background: transparent url('../img/sys-thanks-paper-small.png?1394761326') scroll no-repeat top center;
+  background: transparent url('../img/sys-thanks-paper-small.png?1393893502') scroll no-repeat top center;
   background-size: contain;
   position: relative;
   -webkit-box-sizing: border-box;
@@ -2526,11 +2528,11 @@ h1.sys-headline span {
   margin-left: -80px;
   width: 159px;
   height: 50px;
-  background: transparent url('../img/sys-thanks-tape.png?1394761326') scroll no-repeat center center;
+  background: transparent url('../img/sys-thanks-tape.png?1393893502') scroll no-repeat center center;
 }
 @media (min-width: 768px) {
   .sys-thanks-social-share {
-    background-image: url('../img/sys-thanks-paper-large.png?1394761326');
+    background-image: url('../img/sys-thanks-paper-large.png?1393893502');
     min-height: 154px;
     max-width: none;
     padding: 5% 6%;
@@ -2579,7 +2581,7 @@ h1.sys-headline span {
 .sys-story-modal .sys-story-headline {
   font: normal 1.95em/1 "GlyphaLTPro-Black", serif;
   padding: .25em;
-  background: transparent url('../img/sys-headline-bg.png?1394761326') no-repeat scroll top left;
+  background: transparent url('../img/sys-headline-bg.png?1393893502') no-repeat scroll top left;
   padding: 17px 0 30px 10px;
   margin-top: -45px;
   margin-left: -25px;
@@ -2636,14 +2638,14 @@ h1.sys-headline span {
   right: -39px;
   width: 113px;
   height: 62px;
-  background-image: url('../img/stupid-tape-2.png?1394761326');
+  background-image: url('../img/stupid-tape-2.png?1393893502');
 }
 .sys-story-modal .sys-story-teacher-image-wrapper:after {
   bottom: 40px;
   left: -24px;
   width: 61px;
   height: 129px;
-  background-image: url('../img/stupid-tape-1.png?1394761326');
+  background-image: url('../img/stupid-tape-1.png?1393893502');
 }
 .sys-story-modal .sys-story-teacher-image {
   display: block;
@@ -2670,7 +2672,7 @@ h1.sys-headline span {
   margin-left: -41px;
   width: 82px;
   height: 23px;
-  background: transparent url('../img/sys-user-image-tape.png?1394761326') scroll no-repeat center center;
+  background: transparent url('../img/sys-user-image-tape.png?1393893502') scroll no-repeat center center;
 }
 .sys-story-modal .sys-story-user-image-wrapper img {
   display: block;
@@ -2689,7 +2691,7 @@ h1.sys-headline span {
   display: block;
   width: 100%;
   padding: .9em 4px 0;
-  background: transparent url('../img/story-modal-social-share-bg.png?1395084687') scroll no-repeat center top;
+  background: transparent url('../img/story-modal-social-share-bg.png?1394759171') scroll no-repeat center top;
   background-size: contain;
   min-height: 4.1em;
 }
@@ -2730,7 +2732,7 @@ h1.sys-headline span {
   top: 1px;
 }
 .page-wordlet-teach-browse-stories .button.in-progress {
-  background-image: url('../img/spinner-white-orange.gif?1394761326');
+  background-image: url('../img/spinner-white-orange.gif?1393893502');
   background-size: auto 46%;
   background-position: 96% center;
 }
@@ -2755,7 +2757,7 @@ h1.sys-headline span {
   top: 1px;
 }
 .page-wordlet-teach-browse-stories .orange-button-container a.in-progress {
-  background-image: url('../img/spinner-white-orange.gif?1394761326');
+  background-image: url('../img/spinner-white-orange.gif?1393893502');
   background-size: auto 46%;
   background-position: 96% center;
 }
@@ -2803,6 +2805,13 @@ h1.sys-headline span {
   content: ' ';
   display: table;
   clear: both;
+}
+.teach-app .stories-view .view-messages {
+  text-align: center;
+}
+.teach-app .stories-view .view-messages p:first-of-type {
+  font-weight: bold;
+  text-decoration: underline;
 }
 .teach-app .stories-view .story-count {
   position: absolute;
@@ -2862,7 +2871,7 @@ h1.sys-headline span {
   width: 100%;
   height: 0;
   padding-top: 4.379562%;
-  background: transparent url('../img/browse-story-shadow.png?1395084687') scroll no-repeat top center;
+  background: transparent url('../img/browse-story-shadow.png?1394561652') scroll no-repeat top center;
   background-size: contain;
 }
 .teach-app .stories-view .story img {
@@ -2902,7 +2911,7 @@ h1.sys-headline span {
   width: 100%;
   height: 0;
   padding: 2.8571429% 0;
-  background: transparent url('../img/app-search-box-shadow.png?1395084687') scroll no-repeat center top;
+  background: transparent url('../img/app-search-box-shadow.png?1394561652') scroll no-repeat center top;
   background-size: contain;
 }
 .teach-app .sys-form input[type=text].input-school-name {
@@ -2912,7 +2921,7 @@ h1.sys-headline span {
   position: absolute;
   right: 22px;
   bottom: 10px;
-  background: transparent url('../img/school-search-submit.png?1395084687') scroll no-repeat top left;
+  background: transparent url('../img/school-search-submit.png?1394561652') scroll no-repeat top left;
   background-size: 24px auto;
   width: 24px;
   height: 24px;
@@ -2970,6 +2979,7 @@ h1.sys-headline span {
   position: absolute;
   top: 0;
   padding: 10px 20px;
+  z-index: 10001;
 }
 @media (min-width: 768px) {
   .page-wordlet-teach-browse-stories .sys_modal_content .story-nav {

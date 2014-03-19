@@ -62,7 +62,7 @@
   <div class="story-content">
     <h2 class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></h2>
     <p class="story-meta">
-      <%= school.name %><br />
+      <%= school.name %><br>
       <% if (school.city) { %>
       <%= school.city %>,&nbsp;
       <% } %>
@@ -71,5 +71,11 @@
   </div>
 </script>
 <script type="text/x-microtemplate" id="most_stories_list_template">
-  <li data-schoolid="<%=id%>">School Name<br>City Name, ST</li>
+  <li data-schoolid="<%=external_id%>">
+    <%=school_name%><br>
+    <% if (city) { %>
+    <%=city%>,
+    <% } %>
+    <%=state%>
+    </li>
 </script>
