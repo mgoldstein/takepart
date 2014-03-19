@@ -90,6 +90,7 @@ features[field_base][] = field_campaign_menu_bg_image_w
 features[field_base][] = field_campaign_menu_color_child
 features[field_base][] = field_campaign_menu_width
 features[field_base][] = field_campaign_min_height
+features[field_base][] = field_campaign_news_count
 features[field_base][] = field_campaign_news_filter_tag
 features[field_base][] = field_campaign_newsletter
 features[field_base][] = field_campaign_reference

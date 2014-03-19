@@ -105,6 +105,7 @@ features[field_instance][] = node-campaign_card_news-field_campaign_instructiona
 features[field_instance][] = node-campaign_card_news-field_campaign_min_height
 features[field_instance][] = node-campaign_card_news-field_campaign_more_link
 features[field_instance][] = node-campaign_card_news-field_campaign_multi_news_ref
+features[field_instance][] = node-campaign_card_news-field_campaign_news_count
 features[field_instance][] = node-campaign_card_news-field_campaign_news_filter_tag
 features[field_instance][] = node-campaign_card_news-field_campaign_news_type
 features[field_instance][] = node-campaign_card_news-field_campaign_single_news_ref
