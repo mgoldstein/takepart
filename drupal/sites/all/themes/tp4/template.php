@@ -380,16 +380,6 @@ function tp4_query_filter_alter(QueryAlterableInterface $query) {
  */
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
-    /*
-     * Spec change! There can be 1 - 5 stories, not just 1 or 5.
-     * Instead of creating two separate fields, create one multivalue reference
-     * TODO: Change this, update featues and update campaign module
-     */
-
-
-
-
-
     // Count the number of values
     $instructional = $variables['field_campaign_instructional'][0]['value'];
     $more = ''; //Add this to news and media
