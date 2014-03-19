@@ -59,7 +59,8 @@
       }
 
       .views-field-type {
-        font-family: $adelle-light;
+        font-family: $primary-sans-font;
+        font-weight: 100;
         font-size: .857142857em;
         text-transform: uppercase;
       }
@@ -83,12 +84,13 @@
     .pager {
       .pager-item,
       .pager-current {
-        font-family: $adelle-light;
+        font-family: $primary-sans-font;
+        font-weight: 100;
         font-size: .857142857em;
         padding: 0 .1em;
       }
       .pager-current {
-        font-family: $adelle-regular;
+        font-family: $primary-sans-font;
         font-weight: normal;
       }
       .pager-first,
