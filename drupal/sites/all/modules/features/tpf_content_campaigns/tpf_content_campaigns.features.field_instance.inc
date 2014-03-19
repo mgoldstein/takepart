@@ -2073,10 +2073,10 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_instructional',
-    'label' => 'Instructional Copy',
+    'label' => 'Introductory Copy',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2942,10 +2942,10 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_instructional',
-    'label' => 'Instructional Copy',
+    'label' => 'Instroductory Copy',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -4080,10 +4080,10 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_instructional',
-    'label' => 'Instructional Copy',
+    'label' => 'Instroductory Copy',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -5215,10 +5215,10 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_instructional',
-    'label' => 'Instructional Copy',
+    'label' => 'Instroductory Copy',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -6139,7 +6139,8 @@ function tpf_content_campaigns_field_default_field_instances() {
   t('Homepage');
   t('Iframe');
   t('Image Link');
-  t('Instructional Copy');
+  t('Instroductory Copy');
+  t('Introductory Copy');
   t('Is this media card a photo or a video?');
   t('Logo Position');
   t('Media Caption');
