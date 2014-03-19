@@ -2326,8 +2326,11 @@ h1.sys-headline span {
 .sys-form .customSelect {
   margin: 0 auto .5em;
 }
-.sys-form .customSelect:after {
-  display: block;
+.sys-form .customSelect .customSelectInner {
+  width: 100% !important;
+}
+.sys-form .customSelect .customSelectInner:after {
+  display: inline-block;
   content: "\25BC";
   float: right;
 }
