@@ -2979,6 +2979,7 @@ h1.sys-headline span {
   position: absolute;
   top: 0;
   padding: 10px 20px;
+  z-index: 10001;
 }
 @media (min-width: 768px) {
   .page-wordlet-teach-browse-stories .sys_modal_content .story-nav {
