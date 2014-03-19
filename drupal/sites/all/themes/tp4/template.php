@@ -421,17 +421,21 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       }
 
       // Query non referenced content (max 5)
+      $max_count = $variables['field_campaign_news_count'][0]['value'] + 2;
       $count = count($variables['field_campaign_multi_news_ref']);
-      $campaignNewsArticles = new EntityFieldQuery();
-      $campaignNewsArticles->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video'))
-        ->fieldCondition('field_thumbnail', 'fid', 0, '>')
-        ->propertyCondition('status', 1)
-        ->propertyOrderBy('created', 'DESC')
-        ->addTag('filter')
-        ->addTag($variables['nid'])
-        ->range(0, 5 - $count);
-      $articles = $campaignNewsArticles->execute();
+
+      if($max_count > $count) {
+        $campaignNewsArticles = new EntityFieldQuery();
+        $campaignNewsArticles->entityCondition('entity_type', 'node')
+          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video'))
+          ->fieldCondition('field_thumbnail', 'fid', 0, '>')
+          ->propertyCondition('status', 1)
+          ->propertyOrderBy('created', 'DESC')
+          ->addTag('filter')
+          ->addTag($variables['nid'])
+          ->range(0, $max_count - $count);
+        $articles = $campaignNewsArticles->execute();
+      }
 
       foreach($articles['node'] as $key => $item){
         $nids[] = $item->nid;
@@ -440,14 +444,14 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center = '';
       foreach($nodes as $key => $node){
 
+        $node_path = drupal_get_path_alias('node/'. $node->nid);
         $file = file_load($node->field_thumbnail['und'][0]['fid']);
         $image = file_create_url($file->uri);
         $media = '<img src="'. $image. '">';
         $headline = $node->field_promo_headline['und'][0]['value'];
-        $center .= '<div class="news-column">';
-        $center .= $media;
-        $center .= '<h5>'. $headline. '</h5>';
-        $center .= '</div>';
+        $news_column = $media;
+        $news_column .= '<h5>'. $headline. '</h5>';
+        $center .= l($news_column, $node_path, array('html' => true, 'attributes' => array('class' => array('news-column'))));
       }
       $center .= $more;
       $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
