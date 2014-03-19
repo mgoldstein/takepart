@@ -53,7 +53,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     'sharing' => array(
       'enabled' => '[node:field_sharing_enabled]',
       'link' => '[f:bool:{node:field_share_url}:{node:field_share_url}:{node:url:absolute}]?cmpid=longtailshare',
-      'code' => '',
+      'code' => '[node:field_player_embed_code]',
       'heading' => 'Share This Video',
     ),
     'related' => array(
@@ -125,7 +125,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     'sharing' => array(
       'enabled' => '[node:field_sharing_enabled]',
       'link' => '[f:bool:{node:field_share_url}:{node:field_share_url}:{node:url:absolute}]?cmpid=longtailshare',
-      'code' => '',
+      'code' => '[node:field_player_embed_code]',
       'heading' => 'Share This Video',
     ),
     'related' => array(
@@ -197,7 +197,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     'sharing' => array(
       'enabled' => '[node:field_sharing_enabled]',
       'link' => '[f:bool:{node:field_share_url}:{node:field_share_url}:{node:url:absolute}]?cmpid=longtailshare',
-      'code' => '',
+      'code' => '[node:field_player_embed_code]',
       'heading' => 'Share This Video',
     ),
     'related' => array(

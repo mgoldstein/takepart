@@ -273,7 +273,7 @@ function tpf_content_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -824,7 +824,7 @@ function tpf_content_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 0,
+      'weight' => 8,
     ),
   );
 
@@ -1101,7 +1101,7 @@ function tpf_content_article_field_default_field_instances() {
         ),
       ),
       'type' => 'context_field_select',
-      'weight' => 24,
+      'weight' => 11,
     ),
   );
 
@@ -1444,7 +1444,7 @@ function tpf_content_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 16,
+      'weight' => 10,
     ),
   );
 
@@ -1981,7 +1981,7 @@ function tpf_content_article_field_default_field_instances() {
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -2049,17 +2049,17 @@ function tpf_content_article_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_topic',
     'label' => 'Topic',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'options',
+      'active' => 0,
+      'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
-      'type' => 'options_buttons',
+      'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 8,
     ),
   );
@@ -2175,6 +2175,7 @@ function tpf_content_article_field_default_field_instances() {
   t('Subhead');
   t('Syndication');
   t('TAB Action Overrides');
+  t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('These tags are intended for internal use to organize content for distribution to RSS feeds and the like; they are not visible to external users.');
   t('This is displayed beneath the Article\'s title on the node page');
   t('Thumbnail Image');

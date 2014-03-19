@@ -768,25 +768,32 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'media_2x_widget_plupload',
       'settings' => array(
         'allowed_schemes' => array(
-          'brightcove' => 0,
+          'jwplatform-channel' => 0,
+          'jwplatform-video' => 0,
+          'private' => 0,
           'public' => 'public',
           'vimeo' => 0,
           'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
-        'view' => 'media_views_widget_default--default',
       ),
-      'type' => 'media_generic',
+      'type' => 'media_2x_widget_plupload',
       'weight' => 42,
     ),
   );
@@ -2474,7 +2481,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -2548,17 +2555,17 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_topic',
     'label' => 'Topic',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'options',
+      'active' => 0,
+      'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
-      'type' => 'options_select',
+      'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 59,
     ),
   );
@@ -2651,16 +2658,17 @@ function tpf_content_photo_gallery_field_default_field_instances() {
       'settings' => array(
         'cascading_selection' => 0,
         'filter_view' => '',
-        'leaves_only' => 1,
+        'leaves_only' => 0,
         'max_depth' => '',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'parent_term_id' => '',
         'select_parents' => 0,
-        'start_minimized' => 1,
+        'start_minimized' => 0,
         'token_display' => '',
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 58,
+      'weight' => 65,
     ),
   );
 
@@ -2789,6 +2797,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
   t('Suggest Related Actions?');
   t('Suggest Related Content?');
   t('TAB Action Overrides');
+  t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('Thumbnail');
   t('Topic');
   t('Topic Box');

@@ -6,3 +6,23 @@
 table.field-multiple-table input.fluid {
   width:95%
 }
+
+/*
+ * This highlights the first topic term in the topic field as the primary topic
+ * for that piece of content. The primary topic is used by analytics for
+ * tracking purposes.
+ */
+
+#sortable1 {
+  height: 600px;    
+}
+
+#sortable2 li.ui-state-highlight:first-of-type {
+  background: green none;
+  color: white;
+}
+
+#sortable2 li.ui-state-highlight:first-of-type:after {
+  content: " (primary topic)";
+  font-size: smaller; 
+}

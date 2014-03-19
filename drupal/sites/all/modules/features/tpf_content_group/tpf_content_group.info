@@ -16,6 +16,7 @@ dependencies[] = media_image_formatter
 dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = taxonomy
+dependencies[] = taxonomy_term_reference_sortable_widget
 dependencies[] = text
 dependencies[] = tpf_content_field_bases
 features[ctools][] = strongarm:strongarm:1
