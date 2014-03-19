@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Content Rotator Slide feature.
+ */
+
+include_once 'tpf_content_rotator_slide.features.inc';
