@@ -141,27 +141,27 @@
       return response.signatures;
     },
 
-    parseLinks: function() {
-      var response = {
+    parseLinks: function(response) {
+      var data = {
         first: TEACH.TAP.postURL,
       };
 
       if (this.state.currentPage != 1) {
-        response.prev = TEACH.TAP.postURL;
+        data.prev = TEACH.TAP.postURL;
       }
 
-      // @todo alter the conditional to fail if we're on the last page
-      if (true) {
-        response.next = TEACH.TAP.postURL;        
+      if (this.state.currentPage < response.total_pages) {
+        data.next = TEACH.TAP.postURL;
       }
 
-      return response;
+      return data;
     },
 
     parseState: function (response) {
-      // @todo update the pagination state based on response from the server
-      // @see http://backbone-paginator.github.io/backbone-pageable/api/#!/api/Backbone.PageableCollection
-      return {};
+      return {
+        // the new signatures are added AFTERWARDS to the calculation
+        totalRecords: response.total_signature_count - response.signatures.length
+      };
     }
   });
 
@@ -198,10 +198,11 @@
         'gutter': 20
       });
 
-      // @todo render the total number of stories
-      $('<div>').addClass('story-count').text(this.collection.fullCollection.length + ' Stories').prependTo(this.$el);
-      // @todo add conditional to only add this button if there are more stories
-      $(_.template($('#load_more_stories_view').html(), {button_text: "Load More Stories"})).appendTo(this.$el);
+      $('<div>').addClass('story-count').text(this.collection.state.totalRecords + ' Stories').prependTo(this.$el);
+
+      if (this.collection.fullCollection.length < this.collection.state.totalRecords) {
+        $(_.template($('#load_more_stories_view').html(), {button_text: "Load More Stories"})).appendTo(this.$el);
+      }
 
       return this;
     },
