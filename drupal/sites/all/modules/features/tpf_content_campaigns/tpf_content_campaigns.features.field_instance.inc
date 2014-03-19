@@ -4531,12 +4531,14 @@ Note: If you manually reference more items than selected here, the number refere
       'active' => 1,
       'module' => 'entityreference',
       'settings' => array(
+        'apply_chosen' => '',
+        'content_taxonomy_opt_groups' => FALSE,
         'match_operator' => 'CONTAINS',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
+      'type' => 'entityreference_autocomplete_tags',
       'weight' => 6,
     ),
   );
