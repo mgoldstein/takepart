@@ -4187,7 +4187,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -4273,7 +4273,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -4360,6 +4360,93 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign_card_news-field_campaign_news_count'
+  $field_instances['node-campaign_card_news-field_campaign_news_count'] = array(
+    'bundle' => 'campaign_card_news',
+    'default_value' => array(
+      0 => array(
+        'value' => 3,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'How many news articles do you want to display?
+Note: If you manually reference more items than selected here, the number referenced will override your selection here.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 13,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_news_count',
+    'label' => 'News Count',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_select',
+      'weight' => 8,
     ),
   );
 
@@ -6137,6 +6224,8 @@ function tpf_content_campaigns_field_default_field_instances() {
   t('Filter');
   t('Height in pixels.  Do not include \'px\'');
   t('Homepage');
+  t('How many news articles do you want to display?
+Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
   t('Iframe');
   t('Image Link');
   t('Instroductory Copy');
@@ -6160,6 +6249,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   t('More Link');
   t('Multi News Reference');
   t('Name of the card that gets displayed.  If a tray title exists, this title will get overwritten.');
+  t('News Count');
   t('SMS');
   t('Single News Reference');
   t('Social Follow');

@@ -172,6 +172,11 @@ function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
       ':input[name=field_campaign_news_type\[und\]]' => array('value' => 1),
     ),
   );
+  $form['field_campaign_news_count']['#states'] = array(
+    'visible' => array(
+      ':input[name=field_campaign_news_type\[und\]]' => array('value' => 1),
+    ),
+  );
 
 }
 

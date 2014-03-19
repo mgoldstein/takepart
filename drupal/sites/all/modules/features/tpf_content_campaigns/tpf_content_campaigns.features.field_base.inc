@@ -267,8 +267,11 @@ function tpf_content_campaigns_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Single Article',
-        1 => 'Five Articles',
+        0 => 'One',
+        1 => 'Two',
+        2 => 'Three',
+        3 => 'Four',
+        4 => 'Five',
       ),
       'allowed_values_function' => '',
     ),
