@@ -11,7 +11,8 @@
         window.location = "/teach/stories#story/" + $(this).data('storyid');
       })
       .on('click', '[data-schoolid]', function() {
-        window.location = "/teach/stories#school/" + $(this).data('schoolid');
+        var id = $(this).data('schoolid');
+        window.location = '/teach/stories#school/' + $(this).data('state') + (id != 0 ? '/' + id : '');
       })
     ;
 
