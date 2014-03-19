@@ -1805,6 +1805,9 @@ a {
   font-family: "GlyphaLTPro-Black", serif;
   text-shadow: 1px 1px #ea5f11;
 }
+.sys-stats .most-stories-list li:hover {
+  text-decoration: underline;
+}
 .sys-stats .teacher-story-stat {
   margin: 0 auto 1em;
   width: 50%;

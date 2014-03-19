@@ -1698,6 +1698,9 @@ a {
       &:before {
         @include campaign-stat;
       }
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 

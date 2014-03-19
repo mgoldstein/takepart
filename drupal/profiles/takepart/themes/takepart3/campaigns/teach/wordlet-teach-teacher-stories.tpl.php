@@ -71,7 +71,7 @@
   </div>
 </script>
 <script type="text/x-microtemplate" id="most_stories_list_template">
-  <li data-schoolid="<%=external_id%>">
+  <li data-schoolid="<%=external_id%>" data-state="<%=state%>">
     <%=school_name%><br>
     <% if (city) { %>
     <%=city%>,
