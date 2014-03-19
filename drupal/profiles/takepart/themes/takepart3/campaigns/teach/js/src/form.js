@@ -44,8 +44,8 @@
             "user_action": {
                 "partner_code": TEACH.TAP.partner_code,
                 "email": formData.email,
-                "last_name": formData.first_name,
-                "first_name": formData.last_name,
+                "last_name": formData.last_name,
+                "first_name": formData.first_name,
 		"image_link": formData.user_image_link || '',
 		"image_uid": formData.user_image_id || '',
                 // boilerplate

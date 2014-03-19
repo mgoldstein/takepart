@@ -369,7 +369,7 @@
     },
 
     updateCustomSelect: function() {
-      this.$('.hasCustomSelect').trigger('update');
+      this.$('.hasCustomSelect').trigger('update').trigger('change');
     },
 
     formSubmitHandler: function(e) {
