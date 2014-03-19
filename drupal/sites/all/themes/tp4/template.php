@@ -379,10 +379,24 @@ function tp4_query_filter_alter(QueryAlterableInterface $query) {
  * Override or insert variables into the campaign card news
  */
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
+
+    /*
+     * Spec change! There can be 1 - 5 stories, not just 1 or 5.
+     * Instead of creating two separate fields, create one multivalue reference
+     * TODO: Change this, update featues and update campaign module
+     */
+
+
+
+
+
     // Count the number of values
     $instructional = $variables['field_campaign_instructional'][0]['value'];
     $more = ''; //Add this to news and media
     $more = '<div class="more-link">'. $variables['field_campaign_more_link'][0]['value']. '</div>';
+
+
+
     if($variables['field_campaign_news_type'][0]['value'] == 0){  //single value
 
       $node = node_load($variables['field_campaign_single_news_ref'][0]['target_id']);
@@ -434,8 +448,8 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $center .= $media;
         $center .= '<h5>'. $headline. '</h5>';
         $center .= '</div>';
-        $center .= $more;
       }
+      $center .= $more;
       $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
 
