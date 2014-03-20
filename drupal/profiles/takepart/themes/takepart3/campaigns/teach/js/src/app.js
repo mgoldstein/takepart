@@ -178,38 +178,47 @@
     modal: null,
 
     initialize: function() {
-      this.template = _.template($('#stories_view').html());
-      this.listenTo(this.collection.fullCollection, 'add', this.render);
+      this.$el.empty().html(_.template($('#stories_view').html(), {}));
+      this.$wrapper = this.$('.stories-wrapper').masonry({
+        gutter: 20,
+        transitionDuration: 0
+      });
+
+      this.listenTo(this.collection, 'reset', this.render);
+      this.on('show', _.bind(function() {
+        this.$wrapper.masonry('layout');
+      }, this));
+      this.collection.fetch();
     },
 
     render: function() {
-      this.$el.empty().html(this.template({})); // @todo inefficient
+      var $newElements;
 
-      this.collection.fullCollection.each(_.bind(function(model, i, collection) {
+      // drop in the new stories
+      this.collection.each(_.bind(function(model, i, collection) {
         var view = new TEACH.Views.StoryView({
           model: model,
           id: 'story-' + model.get('id')
         });
         view.render().$el
           .data('index', collection.indexOf(model))
-          .appendTo(this.$('.stories-wrapper'))
         ;
+        $newElements = $newElements ? $newElements.add(view.$el) : view.$el;
       },this));
 
-      var $wrapper = this.$('.stories-wrapper').append('<div class="story-gutter" />');
+      $newElements.appendTo(this.$wrapper);
 
-      $wrapper.imagesLoaded(function() {
-        $wrapper.masonry({
-          'gutter': 20
-        });
-      });
+      $newElements.imagesLoaded(_.bind(function() {      
+        this.$wrapper.masonry('appended', $newElements).masonry('layout');
+      }, this));
 
+      this.$('.story-count').text((this.collection.state.totalRecords ? this.collection.state.totalRecords : '0') + ' Stories').prependTo(this.$el);
 
-      $('<div>').addClass('story-count').text(this.collection.state.totalRecords + ' Stories').prependTo(this.$el);
-
-      if (this.collection.fullCollection.length < this.collection.state.totalRecords) {
-        $(_.template($('#load_more_stories_view').html(), {button_text: "Load More Stories"})).appendTo(this.$el);
-      }
+      this.$('.load-more-stories')
+        .toggleClass('hidden', this.collection.fullCollection.length == this.collection.state.totalRecords)
+        .find('a')
+          .removeClass('in-progress')
+      ;
 
       return this;
     },
@@ -239,53 +248,41 @@
   });
 
   TEACH.Views.StoriesSchoolSearchView = TEACH.Views.StoriesView.extend({
-    initialize: function() {
-      TEACH.Views.StoriesView.prototype.initialize.apply(this);
-
-      // "reset" covers the case where there are no stories
-      this.listenTo(this.collection, 'reset', this.render);
-      this.listenTo(this.collection, 'reset', this.getSchoolName);
-      this.collection.fetch();
-    },
-
     getSchoolName: function() {
-      if (parseInt(this.attributes['data-gsid']) > 0 && typeof this.schoolName === 'undefined') {
-        $.ajax({
-          url: '/proxy?request=' + encodeURIComponent('http://api.greatschools.org/schools/' + this.attributes['data-state'] + '/' + this.attributes['data-gsid'] + '?key=zzlcyx4aijxe1nmnagoziqxx'),
-          success: _.bind(function(response) {
-            this.schoolName = $(response).find('school name').text();
-            this.render();
-          }, this)
-        });
-      }
+      $.ajax({
+        url: '/proxy?request=' + encodeURIComponent('http://api.greatschools.org/schools/' + this.attributes['data-state'] + '/' + this.attributes['data-gsid'] + '?key=zzlcyx4aijxe1nmnagoziqxx'),
+        success: _.bind(function(response) {
+          this.schoolName = $(response).find('school name').text()
+          this.$('#school_search_results_name').text(this.schoolName);
+        }, this)
+      });
     },
 
     render: function() {
       TEACH.Views.StoriesView.prototype.render.apply(this);
-      this.$('.story-count').remove();
+      this.$('.story-count').hide();
 
       var viewMessages = [];
 
       var templateVars = {
         count: this.collection.length > 0 ? this.collection.state.totalRecords : 'no',
-        schoolName: this.schoolName ? this.schoolName : 'that school',
         state: TEACH.stateNames[this.attributes['data-state']],
         verb: this.collection.state.totalRecords == 1 ? 'is' : 'are',
         plural: this.collection.state.totalRecords == 1 ? 'story' : 'stories'
       };
 
-      viewMessages.push(_.template($('#school_count_results_view').html(), templateVars));
+      var messagesTemplate = this.attributes['data-gsid'] ? '#school_count_results_view' : '#school_no_gsid_results_view';
 
-      // replace the message if there's no GSID
-      if (!this.attributes['data-gsid']) {
-        viewMessages = [_.template($('#school_no_gsid_results_view').html(), templateVars)];
-      }
+      viewMessages.push(_.template($(messagesTemplate).html(), templateVars));
 
       if (this.collection.length == 0) {
         viewMessages.push(_.template($('#school_no_results_view').html(), {}));
       }
 
       this.$('.view-messages').html(viewMessages.join(''));
+      if (parseInt(this.attributes['data-gsid']) > 0 && typeof this.schoolName === 'undefined') {
+        this.getSchoolName();
+      }
 
       return this;
     }
@@ -418,9 +415,6 @@
       // add the views to the app.
       _.each(this.views, function(view) {
         view.$el.appendTo(this.$el).hide();
-        if (view.collection) {
-          view.collection.fetch();
-        }
       }, this);
 
       // the router sets up the state of the application
@@ -445,7 +439,6 @@
         case "school":
           this.$nav.find('#nav-' + route).addClass('active');
           this.views[route].$el.show();
-          this.views[route].render();
           this.views[route].trigger('show');
           break;
         case "schoolView":
@@ -465,7 +458,7 @@
 
           // show the search box
           this.$nav.find('#nav-school').addClass('active');
-          this.views.school.render().$el.show();
+          this.views.school.$el.show();
           this.views.school.trigger('show');
 
           this.views.extra.$el.appendTo(this.$el);
@@ -478,8 +471,7 @@
               queryParams: queryParams
             })
           });
-          this.views.extra.collection.fetch();
-          this.views.extra.render().$el.appendTo(this.$el);
+          this.views.extra.$el.appendTo(this.$el);
           break;
         case "storyView":
           this.views.extra = new TEACH.Views.StoryFullView({
@@ -498,7 +490,7 @@
             }, this)
           });
           this.$nav.find('#nav-featured').addClass('active');
-          this.views.featured.render().$el.show();
+          this.views.featured.$el.show();
           break;
       }
     }
