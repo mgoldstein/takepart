@@ -333,7 +333,7 @@
             s.tl(true, 'o', 'Newsletter Signup');
         },
         // -----------------------------------
-        // Teach Share your Story Signups ----------------
+        // Teach Share your Story Events -----
         // -----------------------------------
         'teach_story_entry': function(options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
@@ -344,6 +344,14 @@
             s.prop42 = 'Teach';
             s.eVar42 = 'Teach';
             s.tl(true, 'o', 'Teach Share Your Story Submission');
+        },
+        'teach-story-view' : function(options) {
+            var s = s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars = 'eVar30,events';
+            s.linkTrackEvents = 'event88';
+            s.events = 'event88';
+            s.eVar30 = s.pageName;
+            s.tl(true, 'o', 'Teach Share Your Story Individual Story View');
         },
         // -----------------------------------
         // Place at the Table ----------------

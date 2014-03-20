@@ -110,7 +110,9 @@
       }, this));
 
       // phone home and say we have a successful view
+      // and trigger the analytics event
       $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/view?publisher_key=' + TEACH.TAP.partner_code);
+      $(window).trigger('teach-story-view');
 
       return this;
     },
