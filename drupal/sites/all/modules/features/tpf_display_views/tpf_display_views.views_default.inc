@@ -2903,7 +2903,7 @@ print $value;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'publication-report';
+  $handler->display->display_options['path'] = 'reports/publication-report';
   $export['publication_report'] = $view;
 
   $view = new view();
