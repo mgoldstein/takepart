@@ -383,6 +383,12 @@ body.node-type-campaign-page, #main.card-page{
       background-size: 100%;
     }
   }
+  .slider.tray-img-width-1000{
+    background-size: 768px;
+    @include breakpoint($breakpoint-tablet){
+      background-size: 1000px;
+    }
+  }
 
 
   /*

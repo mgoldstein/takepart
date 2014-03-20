@@ -1,25 +1,10 @@
 
 <?php
-
-  $bg_width = $variables['entity']->field_campaign_bgw['und'][0]['value'];
-  $bg_width_img = $variables['entity']->field_campaign_bgw_img['und'][0]['value'];
   // Does the Tray title exist?
   if(isset($variables['entity']->field_campaign_tray_title['und'][0]['value']) == TRUE) {
     $tray_title = $variables['entity']->field_campaign_tray_title['und'][0]['value'];
   }
-  $classes = array();
-  if($bg_width == 0){
-    $classes[] = 'background-full';
-  }
-  else{
-    $classes[] = 'background-980';
-  }
-  if($bg_width_img == 0){
-    $classes[] = 'background-img-full';
-  }
-  else{
-    $classes[] = 'background-img-980';
-  }
+
 ?>
 <div class="swipe-wrap">
 <?php
@@ -50,6 +35,7 @@
     if(isset($tray_background) == true){
       $card_classes[] = 'has-tray-background';
     }
+
     $card_classes[] = $node->type;
 
     print '<div class="card-wrapper '. implode(' ', $card_classes). '" '. $card_styles. '">';
