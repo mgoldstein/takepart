@@ -81,17 +81,16 @@
   </div>
 </script>
 <script type="text/x-template" id="stories_view">
+<div class="story-count"></div>
 <div class="view-messages"></div>
 <div class="stories-wrapper"></div>
-</script>
-<script type="text/x-template" id="load_more_stories_view">
-<div class="load-more-stories orange-button-container"><a class="load-more-stories-button" href="#"><%= button_text %></a></div>
+<div class="load-more-stories orange-button-container"><a class="load-more-stories-button" href="#">Load More Stories</a></div>
 </script>
 <script type="text/x-template" id="school_view">
   <?php include ('partials/teach-sys-browse-by-school.tpl.php'); ?>
 </script>
 <script type="text/x-template" id="school_count_results_view">
-  <p>There <%=verb%> <%=count%> <%=plural%> for <%=schoolName%>.</p>
+  <p>There <%=verb%> <%=count%> <%=plural%> for <span id="school_search_results_name">that school</span>.</p>
 </script>
 <script type="text/x-template" id="school_no_gsid_results_view">
   <p>We couldn&#8217;t find that school in our database. There <%=verb%> <%=count%> <%=plural%> for unindexed schools in <%=state%>.</p>
