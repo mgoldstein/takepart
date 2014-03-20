@@ -180,10 +180,15 @@
     initialize: function() {
       this.$el.empty().html(_.template($('#stories_view').html(), {}));
       this.$wrapper = this.$('.stories-wrapper').masonry({
-        gutter: 20
+        gutter: 20,
+        transitionDuration: 0
       });
 
       this.listenTo(this.collection, 'reset', this.render);
+      this.on('show', _.bind(function() {
+        this.$wrapper.masonry('layout');
+      }, this));
+      this.collection.fetch();
     },
 
     render: function() {
@@ -243,11 +248,6 @@
   });
 
   TEACH.Views.StoriesSchoolSearchView = TEACH.Views.StoriesView.extend({
-    initialize: function() {
-      TEACH.Views.StoriesView.prototype.initialize.apply(this);
-      this.collection.fetch();
-    },
-
     getSchoolName: function() {
       $.ajax({
         url: '/proxy?request=' + encodeURIComponent('http://api.greatschools.org/schools/' + this.attributes['data-state'] + '/' + this.attributes['data-gsid'] + '?key=zzlcyx4aijxe1nmnagoziqxx'),
@@ -415,9 +415,6 @@
       // add the views to the app.
       _.each(this.views, function(view) {
         view.$el.appendTo(this.$el).hide();
-        if (view.collection) {
-          view.collection.fetch();
-        }
       }, this);
 
       // the router sets up the state of the application
@@ -442,7 +439,6 @@
         case "school":
           this.$nav.find('#nav-' + route).addClass('active');
           this.views[route].$el.show();
-          this.views[route].render();
           this.views[route].trigger('show');
           break;
         case "schoolView":
@@ -462,7 +458,7 @@
 
           // show the search box
           this.$nav.find('#nav-school').addClass('active');
-          this.views.school.render().$el.show();
+          this.views.school.$el.show();
           this.views.school.trigger('show');
 
           this.views.extra.$el.appendTo(this.$el);
@@ -475,8 +471,7 @@
               queryParams: queryParams
             })
           });
-          this.views.extra.collection.fetch();
-          this.views.extra.render().$el.appendTo(this.$el);
+          this.views.extra.$el.appendTo(this.$el);
           break;
         case "storyView":
           this.views.extra = new TEACH.Views.StoryFullView({
@@ -495,7 +490,7 @@
             }, this)
           });
           this.$nav.find('#nav-featured').addClass('active');
-          this.views.featured.render().$el.show();
+          this.views.featured.$el.show();
           break;
       }
     }
