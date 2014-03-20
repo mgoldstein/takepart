@@ -1,7 +1,7 @@
 name = TakePart Display Views
 core = 7.x
 package = Content Display
-version = 7.x-1.1
+version = 7.x-1.2
 project = tpf_display_views
 dependencies[] = bean
 dependencies[] = context
@@ -31,6 +31,7 @@ features[views_view][] = photo_galleries
 features[views_view][] = photo_galleries_promo
 features[views_view][] = photo_gallery
 features[views_view][] = promo
+features[views_view][] = publication_report
 features[views_view][] = quick_study
 features[views_view][] = related_actions
 features[views_view][] = related_campaigns
