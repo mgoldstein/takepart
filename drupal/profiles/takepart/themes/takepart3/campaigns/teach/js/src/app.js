@@ -206,6 +206,9 @@
         $newElements = $newElements ? $newElements.add(view.$el) : view.$el;
       },this));
 
+      // handle an empty result set
+      if (!$newElements) return this;
+
       $newElements.appendTo(this.$wrapper);
 
       $newElements.imagesLoaded(_.bind(function() {      

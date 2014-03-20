@@ -2582,12 +2582,22 @@ h1.sys-headline span {
   color: #666;
 }
 .sys-story-modal .sys-story-headline {
-  font: normal 1.95em/1 "GlyphaLTPro-Black", serif;
-  padding: .25em;
-  background: transparent url('../img/sys-headline-bg.png?1393893502') no-repeat scroll top left;
-  padding: 17px 0 30px 10px;
-  margin-top: -45px;
-  margin-left: -25px;
+  font: normal 2.3em/1 "GlyphaLTPro-Black", serif;
+  background: transparent url('../img/sys-headline-bg.png?1393893502') no-repeat scroll top right;
+  background-size: cover;
+  padding: 30px 0 30px 10px;
+  margin: -60px -30px 0 -15px;
+  text-align: center;
+}
+@media (min-width: 480px) {
+  .sys-story-modal .sys-story-headline {
+    text-align: left;
+    background-position: top left;
+    background-size: auto;
+    font-size: 1.95em;
+    padding: 17px 0 30px 10px;
+    margin: -45px -25px 0 0;
+  }
 }
 .sys-story-modal .sys-story-headline > span {
   display: block;
@@ -2616,7 +2626,6 @@ h1.sys-headline span {
 }
 .sys-story-modal .sys-story-teacher-image-wrapper {
   position: relative;
-  float: left;
   margin-bottom: 1em;
   -webkit-transform: rotate(-2deg);
   -moz-transform: rotate(-2deg);
@@ -2656,15 +2665,14 @@ h1.sys-headline span {
   height: auto !important;
 }
 .sys-story-modal .sys-story-user-image-wrapper {
-  float: right;
   -webkit-transform: rotate(2deg);
   -moz-transform: rotate(2deg);
   -ms-transform: rotate(2deg);
   -o-transform: rotate(2deg);
   transform: rotate(2deg);
-  margin-left: 1em;
-  margin-bottom: 1em;
   position: relative;
+  max-width: 50%;
+  float: right;
 }
 .sys-story-modal .sys-story-user-image-wrapper:before {
   content: " ";
@@ -2680,6 +2688,11 @@ h1.sys-headline span {
 .sys-story-modal .sys-story-user-image-wrapper img {
   display: block;
 }
+@media (min-width: 480px) {
+  .sys-story-modal .sys-story-user-image-wrapper {
+    margin: 0 0 1em 1em;
+  }
+}
 @media (min-width: 768px) {
   .sys-story-modal .content {
     margin-left: 50%;
@@ -2693,15 +2706,31 @@ h1.sys-headline span {
 .sys-story-modal .story-social-share {
   display: block;
   width: 100%;
-  padding: .9em 4px 0;
+  padding: .6em 4px 0;
   background: transparent url('../img/story-modal-social-share-bg.png?1394759171') scroll no-repeat center top;
   background-size: contain;
   min-height: 4.1em;
+  text-align: center;
+}
+@media (min-width: 480px) {
+  .sys-story-modal .story-social-share {
+    padding-top: .9em;
+  }
 }
 .sys-story-modal .story-social-share span {
-  font: normal 1.66667em/1 "GlyphaLTPro-Black", serif;
+  font: normal 1.4em/1 "GlyphaLTPro-Black", serif;
   text-transform: uppercase;
-  margin-left: 1.2em;
+}
+@media (min-width: 480px) {
+  .sys-story-modal .story-social-share span {
+    font-size: 1.666666667em;
+    display: inline;
+  }
+}
+@media (min-width: 768px) {
+  .sys-story-modal .story-social-share span {
+    margin-left: 1.2em;
+  }
 }
 .sys-story-modal .story-comments {
   max-width: 638px;
@@ -2970,7 +2999,7 @@ h1.sys-headline span {
   }
 }
 .page-wordlet-teach-browse-stories .sys_modal_content {
-  padding: 75px 20px;
+  padding: 75px 0;
 }
 @media (min-width: 768px) {
   .page-wordlet-teach-browse-stories .sys_modal_content {
