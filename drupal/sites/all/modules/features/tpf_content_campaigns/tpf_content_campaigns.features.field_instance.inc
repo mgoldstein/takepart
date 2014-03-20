@@ -5854,7 +5854,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5936,7 +5936,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6044,10 +6044,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'color_field',
         'settings' => array(),
-        'type' => 'color_field_default_formatter',
-        'weight' => 5,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6116,91 +6115,6 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
-  // Exported field_instance: 'node-campaign_tray-field_campaign_bgw'
-  $field_instances['node-campaign_tray-field_campaign_bgw'] = array(
-    'bundle' => 'campaign_tray',
-    'default_value' => array(
-      0 => array(
-        'value' => 1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 6,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_campaign_bgw',
-    'label' => 'Background width',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_buttons',
-      'weight' => 16,
-    ),
-  );
-
   // Exported field_instance: 'node-campaign_tray-field_campaign_bgw_image'
   $field_instances['node-campaign_tray-field_campaign_bgw_image'] = array(
     'bundle' => 'campaign_tray',
@@ -6214,10 +6128,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6381,7 +6294,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
