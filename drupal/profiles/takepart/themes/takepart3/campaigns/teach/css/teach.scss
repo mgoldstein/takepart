@@ -2432,12 +2432,21 @@ h1.sys-headline {
   }
 
   .sys-story-headline {
-    font: normal 1.95em/1 $secondary-font;
-    padding: .25em;
-    background: transparent image-url("sys-headline-bg.png") no-repeat scroll top left;
-    padding: 17px 0 30px 10px;
-    margin-top: -45px;
-    margin-left: -25px;
+    font: normal 2.3em/1 $secondary-font;
+    background: transparent image-url("sys-headline-bg.png") no-repeat scroll top right;
+    background-size: cover;
+    padding: 30px 0 30px 10px;
+    margin: -60px -30px 0 -15px;
+    text-align: center;
+
+    @media (min-width: 480px) {
+      text-align: left;
+      background-position: top left;
+      background-size: auto;
+      font-size: 1.95em;
+      padding: 17px 0 30px 10px;
+      margin: -45px -25px 0 0;
+    }
     & > span {
       display: block;
       @include transform(rotate(-2deg));
@@ -2465,7 +2474,6 @@ h1.sys-headline {
 
   .sys-story-teacher-image-wrapper {
     position: relative;
-    float: left;
     @media (min-width: 768px) {
       max-width: 45%;
       float: left;
@@ -2502,11 +2510,10 @@ h1.sys-headline {
   }
 
   .sys-story-user-image-wrapper {
-    float: right;
     @include transform(rotate(2deg));
-    margin-left: 1em;
-    margin-bottom: 1em;
     position: relative; // 82x23
+    max-width: 50%;
+    float: right;
     &:before {
       content: " ";
       display: block;
@@ -2521,6 +2528,10 @@ h1.sys-headline {
 
     img {
       display: block;
+    }
+
+    @media (min-width: 480px) {
+      margin: 0 0 1em 1em;
     }
   }
 
@@ -2539,15 +2550,28 @@ h1.sys-headline {
   .story-social-share {
     display: block;
     width: 100%; // explicit, so it doesn't get all "border-box"
-    padding: .9em 4px 0;
+    padding: .6em 4px 0;
     background: transparent image-url("story-modal-social-share-bg.png") scroll no-repeat center top;
     background-size: contain;
     min-height: 4.1em;
+    text-align: center;
+
+    @media (min-width: 480px) {
+      padding-top: .9em;
+    }
 
     span {
-      font: normal 1.666666667em/1 $secondary-font;
+      font: normal 1.4em/1 $secondary-font;
       text-transform: uppercase;
-      margin-left: 1.2em;
+
+      @media (min-width: 480px) {
+        font-size: 1.666666667em;
+        display: inline;
+      }
+      @media (min-width: 768px) {
+        margin-left: 1.2em;
+      }
+
     }
   }
 
@@ -2764,7 +2788,7 @@ h1.sys-headline {
     }
   }
   .sys_modal_content {
-    padding: 75px 20px;
+    padding: 75px 0;
     @media (min-width: 768px) {
       padding: 20px 60px;
     }
