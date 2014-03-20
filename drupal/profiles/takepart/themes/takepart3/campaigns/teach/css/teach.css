@@ -2764,6 +2764,9 @@ h1.sys-headline span {
   background-size: auto 46%;
   background-position: 96% center;
 }
+.page-wordlet-teach-browse-stories .orange-button-container.hidden a {
+  display: none;
+}
 
 .teach-app .app-nav {
   font: normal 1.66667em/1 "GlyphaLTPro-Black", serif;

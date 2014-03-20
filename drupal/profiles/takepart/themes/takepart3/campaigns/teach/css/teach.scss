@@ -142,6 +142,11 @@ $body-copy-black: #313131;
   a {
     @include orange-button;
   }
+  &.hidden {
+    a {
+      display: none;
+    }
+  }
 }
 
 /* # General
