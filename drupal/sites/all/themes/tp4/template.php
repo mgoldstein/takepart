@@ -366,7 +366,6 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   // social!
-  dpm($variables, 'variables');
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   $instructional = $variables['field_campaign_instructional']['und'][0]['value'];
 
