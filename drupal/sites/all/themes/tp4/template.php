@@ -386,7 +386,7 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
     $name = strtolower($name);
     $name = preg_replace("/[\s_]/", "-", $name);
     $url = $item->field_social_link['und'][0]['url'];
-    $center .= l($name, $url, array('html' => true, 'attributes' => array('class' => array($name, 'social-icon'))));
+    $center .= l($name, $url, array('html' => true, 'attributes' => array('target' => '_blank', 'class' => array($name, 'social-icon'))));
   }
   $center .= '</div>';
   if(isset($variables['field_campaign_newsletter'][0]['target_id']) == true){
