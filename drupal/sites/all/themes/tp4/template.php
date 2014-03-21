@@ -386,10 +386,10 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   $center .= '</div>';
   if(isset($variables['field_campaign_newsletter'][0]['target_id']) == true){
     $block_id = $variables['field_campaign_newsletter'][0]['target_id'];
-    $block =  module_invoke('newsletter_campaign', 'block_view', $block_id);
-    $center .= $blcok['content'];
+    $block = block_load('newsletter_campaign',$block_id);
+    $renderable_block =  _block_get_renderable_array(_block_render_blocks(array($block)));
+    $center .= drupal_render($renderable_block);
   }
-  $center .= $block['content'];
   if(isset($variables['field_campaign_sms'][0]['value']) == true){
     $center .= '<div class="sms">'. $variables['field_campaign_sms'][0]['value']. '</div>';
 
