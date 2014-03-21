@@ -207,7 +207,10 @@
       },this));
 
       // handle an empty result set
-      if (!$newElements) return this;
+      if (!$newElements) {
+        this.$('.load-more-stories').addClass('hidden');
+        return this;
+      }
 
       $newElements.appendTo(this.$wrapper);
 
