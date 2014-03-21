@@ -302,6 +302,70 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   $variables['instructional'] =  $instructional;
 }
 
+
+
+
+function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
+
+  $column_count = $variables['field_campaign_media_col'][0]['value'];
+
+  $instructional = $variables['field_campaign_instructional'][0]['value'];
+
+  //Set Layout
+  if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
+
+    // 1:even, 2:left-large, 3:right-large
+    if($column_count == 2){
+      $variables['classes_array'][] = 'left-large';
+    }
+    elseif($column_count == 3){
+      $variables['classes_array'][] = 'right-large';
+    }
+
+    $left = (isset($variables['field_campaign_text_left'][0]['value']) ? '<div class="text">'. $variables['field_campaign_text_left'][0]['value']. '</div>' : '');
+    $right = (isset($variables['field_campaign_text_right'][0]['value']) ? '<div class="text">'. $variables['field_campaign_text_right'][0]['value']. '</div>' : '');
+
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
+  }
+
+  elseif($column_count == 0){ //single column
+    $center = (isset($variables['field_campaign_text_left'][0]['value']) ? '<div class="text">'. $variables['field_campaign_text_left'][0]['value']. '</div>' : '');
+
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  }
+
+  //Width and height variables
+  $variables['styles'] = array();
+  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
+  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  }
+  if($variables['field_campaign_bgw'][0]['value'] == 0){
+    $variables['classes_array'][] = 'card-width-full';
+  }
+  else{
+    $variables['classes_array'][] = 'card-width-980';
+  }
+  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+    $variables['styles'][] = 'background-size: 100%;';
+  }
+  else{
+    $variables['styles'][] = 'background-size: 980px;';
+  }
+  
+  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
+  $variables['left'] = $left;
+  $variables['right'] = $right;
+  $variables['center'] = $center;
+  $variables['instructional'] =  $instructional;
+}
+
+
+
+
+
+
+
 /**
  * Override or insert variables into the campaign card social template
  */
