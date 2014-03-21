@@ -436,6 +436,41 @@ body.node-type-campaign-page, #main.card-page{
     }
   }
 
+  //Social
+  .social-follow{
+    white-space: nowrap;
+    text-align: center;
+    a.social-icon {
+      width: 100px;
+      height: 100px;
+      margin-right: 30px;
+      overflow: hidden;
+      text-indent: 1000px;
+      display: inline-block;
+      vertical-align: middle;
+      &:before{
+        content: '';
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: $mint;
+      }
+      &:last-child{
+        margin-right: 0;
+      }
+    }
+  }
+  .sms{
+    text-align: center;
+    margin-top: 20px;
+  }
+  .takepart-newsletter-wrapper{
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+  }
+
 
   //Card and Header background properties
   header{
