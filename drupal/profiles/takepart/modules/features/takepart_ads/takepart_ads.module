@@ -1,15 +1,12 @@
 <?php
 
 function _custom_targeting_overrides($stringwithkeyvalue) {
-    //$pairs_array = explode(":", $stringwithkeyvalue);
-
     foreach ($pairs_array as $key => $value) {
-        
     }
 }
 
 function takepart_ads_preprocess_page(&$vars) {
-
+ 
     if (function_exists('wordlet_active_page')) {
         $wordlet_page = wordlet_active_page();
         if ($wordlet_page !== FALSE) {
@@ -19,7 +16,6 @@ function takepart_ads_preprocess_page(&$vars) {
         }
     }
 
-    // $ad_slots = array();
     $ad_slots = takepart_ads();
     $gptad_slots = takepart_gpt_ads();
 
@@ -50,19 +46,10 @@ function takepart_ads_preprocess_page(&$vars) {
         }
     }
 
-    $gptad_html .= 'googletag.pubads().collapseEmptyDivs();';
-    $contentType = isset($vars['node']->type) ? 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n" : "";
-    $gpt_contentType = isset($vars['node']->type) ? 'googletag.pubads().setTargeting("Type", "' . $vars['node']->type . '");' . "\n" : "";
-    $field_topic = isset($vars['node']->field_topic['und']) ? $vars['node']->field_topic['und'] : array();
-    $field_free_tag = isset($vars['node']->field_free_tag['und']) ? $vars['node']->field_free_tag['und'] : array();
-    $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
-    $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
-    $field_series = isset($vars['node']->field_series['und']) ? $vars['node']->field_series['und'] : array();
-
-    if (count($field_topic)) {
+    if ( isset($vars['node']->field_topic['und']) ) {
+        $field_topic = $vars['node']->field_topic['und'];
         $topic = "";
         $gpt_topic = "";
-        $topic_terms = array();
         foreach ($field_topic as $key => $value) {
             $tterm = taxonomy_term_load($value['tid']);
             $tterms[] = str_replace(" & ", "-", $tterm->name);
@@ -70,6 +57,19 @@ function takepart_ads_preprocess_page(&$vars) {
         $topic .= 'GA_googleAddAttr("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
         $gpt_topic .= 'googletag.pubads().setTargeting("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
     }
+    elseif ( isset($vars['page']['content']['system_main']['#term']) ) {
+        $field_topic = $vars['page']['content']['system_main']['#term'];
+        $topic .= 'GA_googleAddAttr("Topic", "' . $field_topic->name . '");' . "\n";
+        $gpt_topic .= 'googletag.pubads().setTargeting("Topic", "' . $field_topic->name . '");' . "\n";
+    }
+
+    $gptad_html .= 'googletag.pubads().collapseEmptyDivs();';
+    $contentType = isset($vars['node']->type) ? 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n" : "";
+    $gpt_contentType = isset($vars['node']->type) ? 'googletag.pubads().setTargeting("Type", "' . $vars['node']->type . '");' . "\n" : "";
+    $field_free_tag = isset($vars['node']->field_free_tag['und']) ? $vars['node']->field_free_tag['und'] : array();
+    $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
+    $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
+    $field_series = isset($vars['node']->field_series['und']) ? $vars['node']->field_series['und'] : array();
 
     $terms = array();
 
@@ -106,8 +106,8 @@ function takepart_ads_preprocess_page(&$vars) {
         $gpt_series = "";
         if ($field_series[0]['tid'] != 0) {
             $sterm = taxonomy_term_load($field_series[0]['tid']);
-            $topic .= 'GA_googleAddAttr("Series", "' . htmlspecialchars(trim($sterm->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
-            $gpt_topic .= 'googletag.pubads().setTargeting("Series", "' . htmlspecialchars(trim($sterm->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
+            $series .= 'GA_googleAddAttr("Series", "' . htmlspecialchars(trim($sterm->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
+            $gpt_series .= 'googletag.pubads().setTargeting("Series", "' . htmlspecialchars(trim($sterm->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
         }
     }
 
@@ -128,6 +128,15 @@ function takepart_ads_preprocess_page(&$vars) {
     if ($vars['node']->title != "") {
         $pageTitle = 'GA_googleAddAttr("PageTitle", "' . htmlspecialchars(trim($vars['node']->title), ENT_COMPAT, "UTF-8") . '");' . "\n";
         $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "' . htmlspecialchars(trim($vars['node']->title), ENT_COMPAT, "UTF-8") . '");' . "\n";
+    }
+    elseif (isset($vars['page']['content']['system_main']['#term']->name)) {
+        $pageTitle = 'GA_googleAddAttr("PageTitle", "' . htmlspecialchars(trim($vars['page']['content']['system_main']['#term']->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
+        $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "' . htmlspecialchars(trim($vars['page']['content']['system_main']['#term']->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
+    }
+    elseif ($vars['is_front']) {
+        $pageTitle = 'GA_googleAddAttr("PageTitle", "homepage");' . "\n";
+        $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "homepage");' . "\n";
+
     }
 
     $targeting = "";
