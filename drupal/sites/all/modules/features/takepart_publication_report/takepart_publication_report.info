@@ -1,0 +1,16 @@
+name = TakePart Publication Report
+description = Allows internal users to filter content by publication date
+core = 7.x
+package = Content Display
+version = 7.x-1.0
+project = takepart_publication_report
+dependencies[] = features
+dependencies[] = publication_date
+dependencies[] = tpf_display_views
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[user_role][] = administrator
+features[user_role][] = editor
+features[user_role][] = layout editor
+features_exclude[dependencies][ctools] = ctools
