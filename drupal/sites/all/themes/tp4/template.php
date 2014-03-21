@@ -366,11 +366,12 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   // social!
+  dpm($variables, 'variables');
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   $instructional = $variables['field_campaign_instructional']['und'][0]['value'];
 
   $collections = array();
-  foreach($variables['field_campaign_social_follow'] as $key => $collection){
+  foreach($variables['field_campaign_social_follow']['und'] as $key => $collection){
     $collections[] = $collection['value'];
   }
   $collections = entity_load('field_collection_item', $collections);
