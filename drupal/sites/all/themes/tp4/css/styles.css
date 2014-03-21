@@ -7714,39 +7714,73 @@ body.node-type-campaign-page .card.node-campaign-card-news .headline, body.node-
 body.node-type-campaign-page .card.node-campaign-card-news .more-link, #main.card-page .card.node-campaign-card-news .more-link {
   clear: both;
 }
-/* line 442, ../sass/page/_campaigns.scss */
+/* line 440, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .social-follow, #main.card-page .social-follow {
+  white-space: nowrap;
+  text-align: center;
+}
+/* line 443, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .social-follow a.social-icon, #main.card-page .social-follow a.social-icon {
+  width: 100px;
+  height: 100px;
+  margin-right: 30px;
+  overflow: hidden;
+  text-indent: 1000px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 451, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .social-follow a.social-icon:before, #main.card-page .social-follow a.social-icon:before {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-color: #019f84;
+}
+/* line 458, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .social-follow a.social-icon:last-child, #main.card-page .social-follow a.social-icon:last-child {
+  margin-right: 0;
+}
+/* line 463, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .takepart-newsletter-wrapper, #main.card-page .takepart-newsletter-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+}
+/* line 473, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .header-inner, #main.card-page header .header-inner {
   padding-top: 15px;
 }
 @media all and (min-width: 768px) {
-  /* line 442, ../sass/page/_campaigns.scss */
+  /* line 473, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page header .header-inner, #main.card-page header .header-inner {
     padding-top: 20px;
   }
 }
-/* line 448, ../sass/page/_campaigns.scss */
+/* line 479, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .header-bg-image-full, #main.card-page header .header-bg-image-full {
   background-size: 100%;
 }
-/* line 451, ../sass/page/_campaigns.scss */
+/* line 482, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .header-bg-image-980, #main.card-page header .header-bg-image-980 {
   background-size: 1000px;
 }
-/* line 454, ../sass/page/_campaigns.scss */
+/* line 485, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .logo-left, #main.card-page header .logo-left {
   float: left;
 }
-/* line 457, ../sass/page/_campaigns.scss */
+/* line 488, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .logo-right, #main.card-page header .logo-right {
   float: right;
 }
-/* line 460, ../sass/page/_campaigns.scss */
+/* line 491, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .logo-center, #main.card-page header .logo-center {
   display: block;
   margin: 0 auto;
   float: none;
 }
-/* line 465, ../sass/page/_campaigns.scss */
+/* line 496, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header a.big-link, #main.card-page header a.big-link {
   position: absolute;
   top: 0;
@@ -7755,20 +7789,20 @@ body.node-type-campaign-page header a.big-link, #main.card-page header a.big-lin
   bottom: 0;
   z-index: 0;
 }
-/* line 474, ../sass/page/_campaigns.scss */
+/* line 505, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .isStuck .branding-header, #main.card-page header .isStuck .branding-header {
   -webkit-box-shadow: 0px -7px 10px 8px #000;
   box-shadow: 0px -7px 10px 8px #000;
   margin-bottom: 0;
 }
-/* line 481, ../sass/page/_campaigns.scss */
+/* line 512, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card-inner, #main.card-page .card-inner {
   height: auto;
   overflow: hidden;
   max-width: 1000px;
   margin: 0 auto;
 }
-/* line 487, ../sass/page/_campaigns.scss */
+/* line 518, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card-width-980, #main.card-page .card-width-980 {
   float: none;
   max-width: 1000px;

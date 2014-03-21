@@ -370,7 +370,7 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
  * Override or insert variables into the campaign card social template
  */
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
-    // social!
+  // social!
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   $instructional = $variables['field_campaign_instructional'][0]['value'];
 
@@ -380,14 +380,21 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   }
   $collections = entity_load('field_collection_item', $collections);
   $center = '';
+  $center .= '<div class=social-follow>';
   foreach($collections as $key => $item){
     $name = $item->field_social_network['und'][0]['entity']->name;
     $name = strtolower($name);
     $name = preg_replace("/[\s_]/", "-", $name);
     $url = $item->field_social_link['und'][0]['url'];
-    $center .= l($name, $url, array('html' => true, 'attributes' => array('class' => array($name))));
+    $center .= l($name, $url, array('html' => true, 'attributes' => array('class' => array($name, 'social-icon'))));
   }
-
+  $center .= '</div>';
+  if(isset($variables['field_campaign_newsletter'][0]['target_id']) == true){
+    $block_id = $variables['field_campaign_newsletter'][0]['target_id'];
+    $block =  module_invoke('newsletter_campaign', 'block_view', $block_id);
+    $center .= $blcok['content'];
+  }
+  $center .= $block['content'];
   //Width and height variables
   $variables['styles'] = array();
   $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
