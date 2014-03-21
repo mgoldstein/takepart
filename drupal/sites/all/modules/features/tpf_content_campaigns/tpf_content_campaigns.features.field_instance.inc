@@ -1430,10 +1430,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'color_field',
         'settings' => array(),
-        'type' => 'color_field_default_formatter',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1515,9 +1514,8 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 8,
       ),
       'feature_main' => array(
@@ -1600,9 +1598,8 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'feature_main' => array(
@@ -1684,7 +1681,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1852,7 +1849,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1936,7 +1933,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2020,7 +2017,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2103,15 +2100,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 9,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2192,13 +2183,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2288,7 +2275,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2374,7 +2361,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2468,7 +2455,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2550,10 +2537,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 14,
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2635,10 +2621,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 12,
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2719,7 +2704,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2807,7 +2792,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3064,7 +3049,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3146,7 +3131,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 15,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3429,7 +3414,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 11,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3595,15 +3580,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 13,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3689,10 +3668,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'color_field',
         'settings' => array(),
-        'type' => 'color_field_default_formatter',
-        'weight' => 10,
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3774,10 +3752,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3859,10 +3836,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 8,
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3943,7 +3919,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 12,
+        'weight' => 0,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4027,7 +4003,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4110,15 +4086,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 11,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4203,7 +4173,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4291,7 +4261,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 3,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4380,7 +4350,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 13,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4464,7 +4434,7 @@ Note: If you manually reference more items than selected here, the number refere
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4559,7 +4529,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4642,7 +4612,7 @@ Note: If you manually reference more items than selected here, the number refere
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4722,13 +4692,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4815,13 +4781,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 8,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4913,10 +4875,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'color_field',
         'settings' => array(),
-        'type' => 'color_field_default_formatter',
-        'weight' => 5,
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4998,9 +4959,8 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'feature_main' => array(
@@ -5083,10 +5043,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 6,
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5167,7 +5126,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5251,7 +5210,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5334,15 +5293,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 9,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5430,7 +5383,7 @@ Note: If you manually reference more items than selected here, the number refere
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5512,7 +5465,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5598,7 +5551,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5690,7 +5643,7 @@ Note: If you manually reference more items than selected here, the number refere
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5768,10 +5721,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'color_field',
         'settings' => array(),
-        'type' => 'color_field_default_formatter',
-        'weight' => 5,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5853,10 +5805,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 6,
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5938,9 +5889,8 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 8,
       ),
       'feature_main' => array(
@@ -6022,7 +5972,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6106,7 +6056,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6192,7 +6142,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6271,15 +6221,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 9,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6364,7 +6308,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6450,7 +6394,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6532,13 +6476,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 7,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',

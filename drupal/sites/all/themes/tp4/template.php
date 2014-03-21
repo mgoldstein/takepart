@@ -279,16 +279,16 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   //Width and height variables
   $variables['styles'] = array();
   $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
   }
-  if($variables['field_campaign_bgw'][0]['value'] == 0){
+  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
     $variables['classes_array'][] = 'card-width-full';
   }
   else{
     $variables['classes_array'][] = 'card-width-980';
   }
-  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
@@ -337,16 +337,16 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   //Width and height variables
   $variables['styles'] = array();
   $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
   }
-  if($variables['field_campaign_bgw'][0]['value'] == 0){
+  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
     $variables['classes_array'][] = 'card-width-full';
   }
   else{
     $variables['classes_array'][] = 'card-width-980';
   }
-  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
@@ -359,11 +359,6 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   $variables['center'] = $center;
   $variables['instructional'] =  $instructional;
 }
-
-
-
-
-
 
 
 /**
@@ -410,24 +405,24 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   //Width and height variables
   $variables['styles'] = array();
   $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
   }
-  if($variables['field_campaign_bgw'][0]['value'] == 0){
+  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
     $variables['classes_array'][] = 'card-width-full';
   }
   else{
     $variables['classes_array'][] = 'card-width-980';
   }
-  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
     $variables['styles'][] = 'background-size: 980px;';
   }
-
-  $variables['instructional'] = $instructional;
+  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['center'] = $center;
+  $variables['instructional'] =  $instructional;
 }
 
 /**
@@ -533,22 +528,23 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
   //Width and height variables
   $variables['styles'] = array();
   $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
   }
-  if($variables['field_campaign_bgw'][0]['value'] == 0){
+  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
     $variables['classes_array'][] = 'card-width-full';
   }
   else{
     $variables['classes_array'][] = 'card-width-980';
   }
-  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
     $variables['styles'][] = 'background-size: 980px;';
   }
 
+    $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
     $variables['instructional'] = $instructional;
     $variables['center'] = $center;
 
@@ -563,22 +559,23 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   //Width and height variables
   $variables['styles'] = array();
   $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height'][0]['value']. 'px;';
+  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
+    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
   }
-  if($variables['field_campaign_bgw'][0]['value'] == 0){
+  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
     $variables['classes_array'][] = 'card-width-full';
   }
   else{
     $variables['classes_array'][] = 'card-width-980';
   }
-  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
     $variables['styles'][] = 'background-size: 980px;';
   }
 
+  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['instructional'] = $instructional;
   $variables['center'] = $center;
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
