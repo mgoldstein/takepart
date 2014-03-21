@@ -465,6 +465,8 @@
           this.views.school.trigger('show');
 
           this.views.extra.$el.appendTo(this.$el);
+
+          window.scroll(0,this.$nav.offset().top);
           break;
         case "tagView":
           queryParams.tag = params[0];
