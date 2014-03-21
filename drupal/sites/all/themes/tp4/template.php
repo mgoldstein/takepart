@@ -367,7 +367,7 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   // social!
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $instructional = $variables['field_campaign_instructional'][0]['value'];
+  $instructional = $variables['field_campaign_instructional']['und'][0]['value'];
 
   $collections = array();
   foreach($variables['field_campaign_social_follow'] as $key => $collection){
@@ -384,18 +384,20 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
     $center .= l($name, $url, array('html' => true, 'attributes' => array('target' => '_blank', 'class' => array($name, 'social-icon'))));
   }
   $center .= '</div>';
-  if(isset($variables['field_campaign_newsletter'][0]['target_id']) == true){
-    $block_id = $variables['field_campaign_newsletter'][0]['target_id'];
+
+  if(isset($variables['field_campaign_newsletter']['und'][0]['target_id']) == true){
+
+    $block_id = $variables['field_campaign_newsletter']['und'][0]['target_id'];
     $block = block_load('newsletter_campaign',$block_id);
     $renderable_block =  _block_get_renderable_array(_block_render_blocks(array($block)));
     $center .= drupal_render($renderable_block);
   }
-  if(isset($variables['field_campaign_sms'][0]['value']) == true){
-    $center .= '<div class="sms">'. $variables['field_campaign_sms'][0]['value']. '</div>';
+  if(isset($variables['field_campaign_sms']['und'][0]['value']) == true){
+    $center .= '<div class="sms">'. $variables['field_campaign_sms']['und'][0]['value']. '</div>';
 
     //if legal override exists, print it, otherwise print the global copy
-    if(isset($variables['field_campaign_sms_legal'][0]['value']) == true){
-      $sms_legal = $variables['field_campaign_sms_legal'][0]['value'];
+    if(isset($variables['field_campaign_sms_legal']['und'][0]['value']) == true){
+      $sms_legal = $variables['field_campaign_sms_legal']['und'][0]['value'];
     }else{
       $sms_legal = variable_get('sms_legal', '');
     }
