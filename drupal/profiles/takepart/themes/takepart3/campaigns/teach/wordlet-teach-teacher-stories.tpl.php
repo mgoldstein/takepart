@@ -13,7 +13,7 @@
           <?php include ('partials/teach-sys-browse-by-school.tpl.php'); ?>
 
           <h2 class="teach-fund-headline"><span>the</span><span>Teach Fund</span></h2>
-          <div class="teach-fund-count"><span class="campaign-stat count"><?php print w('update_count'); ?></span><span>and counting</span></div>
+          <div class="teach-fund-count"><span>Help Us Raise</span><span class="campaign-stat count">50,000</span><span>For Classrooms!</span></div>
           <div class="teach-fund-body"><?php print w('teach_fund_body'); ?></div>
           <?php $w = w('teach_fund_button'); ?>
           <div class="teach-fund-button"><a href="<?php print $w->href; ?>" wa('teach_fund_button')><?php print $w->single; ?></a></div>

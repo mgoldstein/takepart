@@ -1737,13 +1737,13 @@ a {
   -ms-transform: rotate(3deg);
   -o-transform: rotate(3deg);
   transform: rotate(3deg);
+  margin-top: .5em;
 }
 .sys-stats .teach-fund-count span {
   display: block;
 }
 .sys-stats .teach-fund-count span.count {
   font-size: 3em;
-  margin-top: .5em;
 }
 .sys-stats .teach-fund-count span.count:before {
   display: inline-block;
@@ -1752,7 +1752,7 @@ a {
   font-size: .6em;
   line-height: 1;
 }
-.sys-stats .teach-fund-count span:last-of-type {
+.sys-stats .teach-fund-count span:not(.count) {
   font: bold 1.5em/1 "Shadows Into Light", cursive;
 }
 .sys-stats .teach-fund-body {
@@ -2847,6 +2847,7 @@ h1.sys-headline span {
 .teach-app .stories-view .view-messages p:first-of-type {
   font-weight: bold;
   text-decoration: underline;
+  font-size: 1.5em;
 }
 .teach-app .stories-view .story-count {
   position: absolute;
@@ -2929,7 +2930,7 @@ h1.sys-headline span {
 }
 .teach-app .sys-form {
   background-color: white;
-  margin: 0 auto 5%;
+  margin: 0 auto 2.5%;
   padding: 2em 3em 1.5em;
   border: 1px solid rgba(0, 0, 0, 0.08);
   -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.06);
