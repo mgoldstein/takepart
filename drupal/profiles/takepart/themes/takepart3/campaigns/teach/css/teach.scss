@@ -1661,14 +1661,14 @@ a {
     text-align: right;
     color: black;
     @include transform(rotate(3deg));
+    margin-top: .5em;
     span {
       display: block;
       &.count {
         font-size: 3em;
-        margin-top: .5em;
         @include dollar-sign;
       }
-      &:last-of-type {
+      &:not(.count) {
         font: bold 1.5em/1 $cursive-font;
       }
     }

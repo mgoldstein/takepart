@@ -1737,13 +1737,13 @@ a {
   -ms-transform: rotate(3deg);
   -o-transform: rotate(3deg);
   transform: rotate(3deg);
+  margin-top: .5em;
 }
 .sys-stats .teach-fund-count span {
   display: block;
 }
 .sys-stats .teach-fund-count span.count {
   font-size: 3em;
-  margin-top: .5em;
 }
 .sys-stats .teach-fund-count span.count:before {
   display: inline-block;
@@ -1752,7 +1752,7 @@ a {
   font-size: .6em;
   line-height: 1;
 }
-.sys-stats .teach-fund-count span:last-of-type {
+.sys-stats .teach-fund-count span:not(.count) {
   font: bold 1.5em/1 "Shadows Into Light", cursive;
 }
 .sys-stats .teach-fund-body {
