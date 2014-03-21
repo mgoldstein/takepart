@@ -75,7 +75,9 @@
 
   Drupal.behaviors.campaignHeader = {
     attach: function() {
-      $('ul.sf-menu').superfish();
+      if($('body').hasClass('node-type-campaign-page')){
+        $('ul.sf-menu').superfish();
+      }
 
     }
   };
