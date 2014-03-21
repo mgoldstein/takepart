@@ -122,6 +122,7 @@ features[field_instance][] = node-campaign_card_social-field_campaign_instructio
 features[field_instance][] = node-campaign_card_social-field_campaign_min_height
 features[field_instance][] = node-campaign_card_social-field_campaign_newsletter
 features[field_instance][] = node-campaign_card_social-field_campaign_sms
+features[field_instance][] = node-campaign_card_social-field_campaign_sms_legal
 features[field_instance][] = node-campaign_card_social-field_campaign_social_follow
 features[field_instance][] = node-campaign_card_text-field_campaign_bg_color
 features[field_instance][] = node-campaign_card_text-field_campaign_bgw
