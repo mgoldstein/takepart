@@ -64,6 +64,14 @@ function tpf_content_campaigns_node_info() {
       'title_label' => t('Admin Card Title'),
       'help' => '',
     ),
+    'campaign_card_text' => array(
+      'name' => t('Campaign Card Text'),
+      'base' => 'node_content',
+      'description' => t('Campaign Card that just contains text.'),
+      'has_title' => '1',
+      'title_label' => t('Admin Card Title'),
+      'help' => '',
+    ),
     'campaign_page' => array(
       'name' => t('Campaign Page'),
       'base' => 'node_content',
