@@ -195,19 +195,22 @@
       var $newElements;
 
       // drop in the new stories
-      this.collection.each(_.bind(function(model, i, collection) {
+      this.collection.each(_.bind(function(model) {
         var view = new TEACH.Views.StoryView({
           model: model,
           id: 'story-' + model.get('id')
         });
         view.render().$el
-          .data('index', collection.indexOf(model))
+          .data('index', this.collection.fullCollection.indexOf(model))
         ;
         $newElements = $newElements ? $newElements.add(view.$el) : view.$el;
       },this));
 
       // handle an empty result set
-      if (!$newElements) return this;
+      if (!$newElements) {
+        this.$('.load-more-stories').addClass('hidden');
+        return this;
+      }
 
       $newElements.appendTo(this.$wrapper);
 
@@ -465,6 +468,8 @@
           this.views.school.trigger('show');
 
           this.views.extra.$el.appendTo(this.$el);
+
+          window.scroll(0,this.$nav.offset().top);
           break;
         case "tagView":
           queryParams.tag = params[0];
@@ -487,7 +492,12 @@
                 id: 'sys_modal_',
                 node: this.views.extra.el,
                 afterClose: _.bind(function() {
+                  // @todo this isn't firing
                   this.views.extra.remove();
+                  delete this.views['extra'];
+                  window.teachRouter.navigate('', {
+                    replace: true
+                  });
                 }, this)
               });
             }, this)
