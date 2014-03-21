@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Publication Report feature.
+ */
+
+include_once 'takepart_publication_report.features.inc';
