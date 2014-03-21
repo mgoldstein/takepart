@@ -13,6 +13,18 @@ function tp_campaigns_help($path, $arg) {
 			return '<p>' . t('Module for the Campaign Redesign, April 2014') . '</p>';		
 	}
 }
+/**
+ * Implements hook_menu().
+ */
+function tp_campaigns_menu(){
+  $items['admin/config/campaigns'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_campaigns_settings_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
 
 /**
  * Implements hook_block_info().
@@ -232,7 +244,21 @@ function tp_campaigns_hero(){
   }
 }
 
-
-
+function tp_campaigns_settings_form($form, &$form_state){
+  $form['legal_copy'] = array(
+    '#type' => 'text_format',
+    '#title' => t('SMS Legal Copy'),
+    '#description' => t('Global legal copy for the SMS field'),
+    '#default_value' => variable_get('sms_legal', ''),
+  );
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit Settings'),
+  );
+  return $form;
+}
+function tp_campaigns_settings_form_validate($form, &$form_state){
+  variable_set('sms_legal', $form_state['input']['legal_copy']['value']);
+}
 
 

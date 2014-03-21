@@ -95,6 +95,7 @@ features[field_base][] = field_campaign_news_filter_tag
 features[field_base][] = field_campaign_newsletter
 features[field_base][] = field_campaign_reference
 features[field_base][] = field_campaign_sms
+features[field_base][] = field_campaign_sms_legal
 features[field_base][] = field_campaign_social_follow
 features[field_base][] = field_campaign_text_left
 features[field_base][] = field_campaign_text_right

@@ -5411,7 +5411,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -5583,6 +5583,92 @@ Note: If you manually reference more items than selected here, the number refere
       ),
       'type' => 'text_textarea',
       'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign_card_social-field_campaign_sms_legal'
+  $field_instances['node-campaign_card_social-field_campaign_sms_legal'] = array(
+    'bundle' => 'campaign_card_social',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Text to override the global SMS copy.  The global legal copy will appear if this field is left blank.  Legal copy will only show if the SMS field has a value.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_sms_legal',
+    'label' => 'Legal SMS',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
     ),
   );
 
@@ -7256,6 +7342,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Introductory Copy');
   t('Is this media card a photo or a video?');
   t('Left/Center Text');
+  t('Legal SMS');
   t('Logo Position');
   t('Media Caption');
   t('Media Photo');
@@ -7281,6 +7368,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Social Follow');
   t('Social Link');
   t('Social Network');
+  t('Text to override the global SMS copy.  The global legal copy will appear if this field is left blank.  Legal copy will only show if the SMS field has a value.');
   t('Text will appear on the left if two columns exist and in the center if only one exists.');
   t('The anchor tag is used for linking within a campaign page.  Please use lowercase and do NOT use spaces.');
   t('The color of the Menu Bar.');

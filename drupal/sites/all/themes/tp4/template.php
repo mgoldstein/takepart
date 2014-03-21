@@ -397,6 +397,14 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   $center .= $block['content'];
   if(isset($variables['field_campaign_sms'][0]['value']) == true){
     $center .= '<div class="sms">'. $variables['field_campaign_sms'][0]['value']. '</div>';
+
+    //if legal override exists, print it, otherwise print the global copy
+    if(isset($variables['field_campaign_sms_legal'][0]['value']) == true){
+      $sms_legal = $variables['field_campaign_sms_legal'][0]['value'];
+    }else{
+      $sms_legal = variable_get('sms_legal', '');
+    }
+    $center .= '<div class="sms-legal">'. $sms_legal. '</div>';
   }
 
   //Width and height variables
