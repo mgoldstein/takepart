@@ -395,6 +395,10 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
     $center .= $blcok['content'];
   }
   $center .= $block['content'];
+  if(isset($variables['field_campaign_sms'][0]['value']) == true){
+    $center .= '<div class="sms">'. $variables['field_campaign_sms'][0]['value']. '</div>';
+  }
+
   //Width and height variables
   $variables['styles'] = array();
   $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';

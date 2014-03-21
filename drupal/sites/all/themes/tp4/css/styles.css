@@ -7742,45 +7742,50 @@ body.node-type-campaign-page .social-follow a.social-icon:last-child, #main.card
   margin-right: 0;
 }
 /* line 463, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page .sms, #main.card-page .sms {
+  text-align: center;
+  margin-top: 20px;
+}
+/* line 467, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .takepart-newsletter-wrapper, #main.card-page .takepart-newsletter-wrapper {
   max-width: 500px;
   margin: 0 auto;
   text-align: center;
   margin-top: 20px;
 }
-/* line 473, ../sass/page/_campaigns.scss */
+/* line 477, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .header-inner, #main.card-page header .header-inner {
   padding-top: 15px;
 }
 @media all and (min-width: 768px) {
-  /* line 473, ../sass/page/_campaigns.scss */
+  /* line 477, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page header .header-inner, #main.card-page header .header-inner {
     padding-top: 20px;
   }
 }
-/* line 479, ../sass/page/_campaigns.scss */
+/* line 483, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .header-bg-image-full, #main.card-page header .header-bg-image-full {
   background-size: 100%;
 }
-/* line 482, ../sass/page/_campaigns.scss */
+/* line 486, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .header-bg-image-980, #main.card-page header .header-bg-image-980 {
   background-size: 1000px;
 }
-/* line 485, ../sass/page/_campaigns.scss */
+/* line 489, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .logo-left, #main.card-page header .logo-left {
   float: left;
 }
-/* line 488, ../sass/page/_campaigns.scss */
+/* line 492, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .logo-right, #main.card-page header .logo-right {
   float: right;
 }
-/* line 491, ../sass/page/_campaigns.scss */
+/* line 495, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .logo-center, #main.card-page header .logo-center {
   display: block;
   margin: 0 auto;
   float: none;
 }
-/* line 496, ../sass/page/_campaigns.scss */
+/* line 500, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header a.big-link, #main.card-page header a.big-link {
   position: absolute;
   top: 0;
@@ -7789,20 +7794,20 @@ body.node-type-campaign-page header a.big-link, #main.card-page header a.big-lin
   bottom: 0;
   z-index: 0;
 }
-/* line 505, ../sass/page/_campaigns.scss */
+/* line 509, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page header .isStuck .branding-header, #main.card-page header .isStuck .branding-header {
   -webkit-box-shadow: 0px -7px 10px 8px #000;
   box-shadow: 0px -7px 10px 8px #000;
   margin-bottom: 0;
 }
-/* line 512, ../sass/page/_campaigns.scss */
+/* line 516, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card-inner, #main.card-page .card-inner {
   height: auto;
   overflow: hidden;
   max-width: 1000px;
   margin: 0 auto;
 }
-/* line 518, ../sass/page/_campaigns.scss */
+/* line 522, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card-width-980, #main.card-page .card-width-980 {
   float: none;
   max-width: 1000px;
