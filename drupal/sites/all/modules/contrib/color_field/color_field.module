@@ -178,16 +178,16 @@ function color_field_field_widget_info() {
  * @see color_field_widget_error()
  */
 function color_field_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
-  foreach ($items as $delta => $item) {
-    if (!empty($item['rgb'])) {
-      if (!preg_match('@^#[0-9a-fA-F]{6}$@', $item['rgb'])) {
-        $errors[$field['field_name']][$langcode][$delta][] = array(
-          'error' => 'color_field_invalid',
-          'message' => t('Color must be in the hexadecimal format #abcdef.'),
-        );
-      }
-    }
-  }
+  // foreach ($items as $delta => $item) {
+  //   if (!empty($item['rgb'])) {
+  //     if (!preg_match('@^#[0-9a-fA-F]{6}$@', $item['rgb'])) {
+  //       $errors[$field['field_name']][$langcode][$delta][] = array(
+  //         'error' => 'color_field_invalid',
+  //         'message' => t('Color must be in the hexadecimal format #abcdef.'),
+  //       );
+  //     }
+  //   }
+  // }
 }
 
 /**
@@ -521,7 +521,7 @@ function color_field_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#type' => 'textfield',
         '#default_value' => $value,
         '#size' => 7,
-        '#maxlength' => 7,
+        '#maxlength' => 30,
       );
       break;
 
@@ -535,7 +535,7 @@ function color_field_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#description' => t('Format #FFFFFF'),
         '#default_value' => $value,
         '#size' => 7,
-        '#maxlength' => 7,
+        '#maxlength' => 30,
         '#prefix' => '<div id=' . $settings['picker_id'] . '></div>',
         '#attached' => array(
           // Add Farbtastic color picker.
@@ -577,7 +577,7 @@ function color_field_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#description' => t('Format #FFFFFF'),
         '#default_value' => $value,
         '#size' => 7,
-        '#maxlength' => 7,
+        '#maxlength' => 30,
       );
       break;
 
@@ -605,7 +605,7 @@ function color_field_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#description' => t('Format #FFFFFF'),
         '#default_value' => $value,
         '#size' => 7,
-        '#maxlength' => 7,
+        '#maxlength' => 30,
         '#attached' => array(
           // Add Spectrum color picker.
           'library' => array(array('color_field', 'spectrum')),
@@ -656,7 +656,7 @@ function color_field_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#type' => 'token',
         '#default_value' => $value,
         '#size' => 7,
-        '#maxlength' => 7,
+        '#maxlength' => 30,
       );
       break;
   }

@@ -232,6 +232,9 @@ body.node-type-campaign-page, #main.card-page{
         left:50%;
         text-align:center;
         background: transparent;
+        a{
+          color: #000;
+        }
         li{
           display: block;
           float: left;
@@ -250,15 +253,15 @@ body.node-type-campaign-page, #main.card-page{
       }
       li.parent-item.active {
         a{
-          color: yellow;
+          color: #777;
         }
         li a{
           text-align: left;
-          color: #fff;
+          color: #000;
         }
       }
       a.active{
-        color: white;
+        color: #000;
       }
     }
   }
