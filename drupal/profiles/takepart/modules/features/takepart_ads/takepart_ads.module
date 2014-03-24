@@ -73,12 +73,12 @@ function takepart_ads_preprocess_page(&$vars) {
 
     $terms = array();
     if (isset($vars['node']->type)) {
-        $contentType = 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");';
-        $gpt_contentType = 'googletag.pubads().setTargeting("Type", "' . $vars['node']->type . '");';
+        $contentType = 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n";
+        $gpt_contentType = 'googletag.pubads().setTargeting("Type", "' . $vars['node']->type . '");' . "\n";
     }
     elseif ($vars['page']['content']['system_main']['#bundle'] === 'topic') {
-        $contentType = 'GA_googleAddAttr("Type", "topic_hub");';
-        $gpt_contentType = 'googletag.pubads().setTargeting("Type", "topic_hub");;
+        $contentType = 'GA_googleAddAttr("Type", "topic_hub");' . "\n";
+        $gpt_contentType = 'googletag.pubads().setTargeting("Type", "topic_hub");' . "\n";
     }
     else {
         $contentType = "";
