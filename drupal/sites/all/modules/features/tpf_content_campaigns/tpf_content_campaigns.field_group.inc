@@ -137,6 +137,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_card_background',
       1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_background',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -278,8 +279,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background',
     'weight' => '7',
     'children' => array(
-      0 => 'field_campaign_bg_color',
-      1 => 'field_campaign_bgw',
+      0 => 'field_campaign_bgw',
+      1 => 'field_campaign_bg_color',
       2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
