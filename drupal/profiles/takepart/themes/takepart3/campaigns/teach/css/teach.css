@@ -1600,6 +1600,18 @@ a {
 .teach-teacher-stories-content strong {
   color: #777777;
 }
+.teach-browse-stories-content .preface,
+.teach-teacher-stories-content .preface {
+  font-size: 14px;
+  line-height: 24px;
+}
+.teach-browse-stories-content .sys-intro-body p,
+.teach-browse-stories-content .sys-intro-body ul,
+.teach-teacher-stories-content .sys-intro-body p,
+.teach-teacher-stories-content .sys-intro-body ul {
+  font-size: 14px;
+  line-height: 24px;
+}
 @media (min-width: 768px) {
   .teach-browse-stories-content .sys-intro-body,
   .teach-teacher-stories-content .sys-intro-body {
@@ -1609,7 +1621,7 @@ a {
 @media (min-width: 1000px) {
   .teach-browse-stories-content .sys-intro-body,
   .teach-teacher-stories-content .sys-intro-body {
-    min-height: 9em;
+    min-height: 10em;
   }
 }
 
@@ -1976,18 +1988,18 @@ a {
 h1.sys-headline {
   background: transparent url('../img/sys-headline-bg.png?1393893502') scroll no-repeat top left;
   font-size: 1.4em;
-  padding: 1.8em 0 1em .5em;
+  padding: 1.3em 0 1em .5em;
 }
 @media (min-width: 400px) {
   h1.sys-headline {
-    font-size: 1.642857143em;
-    padding: 1.3em 0 1em .5em;
+    font-size: 1.4em;
+    padding: 1.7em 0 1em .5em;
   }
 }
-@media (min-width: 850px) {
+@media (min-width: 930px) {
   h1.sys-headline {
-    font-size: 34px;
-    padding: .67em 0 .75em .5em;
+    font-size: 1.8em;
+    padding: 1.1em 0 .75em .5em;
   }
 }
 .teach-sys-thanks-content h1.sys-headline {
@@ -2500,6 +2512,8 @@ h1.sys-headline span {
   text-transform: uppercase;
   padding-right: 30px;
   text-indent: 0;
+  font-size: 1.3em;
+  line-height: 2em;
 }
 .tpmodal_close.sys_modal_close:before {
   display: inline;
@@ -2653,7 +2667,7 @@ h1.sys-headline span {
   background-image: url('../img/stupid-tape-2.png?1393893502');
 }
 .sys-story-modal .sys-story-teacher-image-wrapper:after {
-  bottom: 40px;
+  bottom: 92px;
   left: -24px;
   width: 61px;
   height: 129px;
@@ -3004,7 +3018,7 @@ h1.sys-headline span {
 }
 @media (min-width: 768px) {
   .page-wordlet-teach-browse-stories .sys_modal_content {
-    padding: 20px 60px;
+    padding: 30px 60px 20px;
   }
 }
 .page-wordlet-teach-browse-stories .sys_modal_content .story-nav {
