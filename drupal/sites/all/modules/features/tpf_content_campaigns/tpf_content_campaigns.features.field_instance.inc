@@ -2785,7 +2785,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Which side should the media content appear on?',
+    'description' => 'Which side should the media content appear on (photo/video)?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2845,7 +2845,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_content_side',
-    'label' => 'Content Side',
+    'label' => 'Media Side',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -7256,7 +7256,6 @@ Note: If you manually reference more items than selected here, the number refere
   t('Card Background');
   t('Card Title');
   t('Column Count');
-  t('Content Side');
   t('Filter');
   t('Height in pixels.  Do not include \'px\'');
   t('Homepage');
@@ -7272,6 +7271,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Logo Position');
   t('Media Caption');
   t('Media Photo');
+  t('Media Side');
   t('Media Title');
   t('Media Type');
   t('Media Video');
@@ -7302,7 +7302,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Type');
   t('What campaign does this page belong to?');
   t('What is the homepage for this campaign?  This will be used for promotable campaigns as well as a destination for the campaign header to link.');
-  t('Which side should the media content appear on?');
+  t('Which side should the media content appear on (photo/video)?');
   t('iFrame Height');
   t('iFrame Width');
 
