@@ -2521,6 +2521,10 @@ h1.sys-headline span {
   font-size: 1.5em;
   line-height: .667;
 }
+.tpmodal_close.sys_modal_close:hover {
+  text-decoration: none;
+  color: #ea5f11;
+}
 
 .sys-thanks-social-share {
   background: transparent url('../img/sys-thanks-paper-small.png?1393893502') scroll no-repeat top center;
