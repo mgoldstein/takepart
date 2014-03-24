@@ -814,7 +814,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign',
     'default_value' => array(
       0 => array(
-        'rgb' => '#000000',
+        'rgb' => 'rgba(0, 0, 0, 0)',
       ),
     ),
     'deleted' => 0,
@@ -1337,7 +1337,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign',
     'default_value' => array(
       0 => array(
-        'rgb' => '#ffbdd2',
+        'rgb' => 'rgba(0, 0, 0, 0.01)',
       ),
     ),
     'deleted' => 0,
