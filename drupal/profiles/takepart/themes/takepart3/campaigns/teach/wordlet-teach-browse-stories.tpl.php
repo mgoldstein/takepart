@@ -49,8 +49,15 @@
     <div class="sys-story-user-image-wrapper"><img id="sys-story-user-image" class="sys-story-user-image" src="http://placehold.it/150x200&text=loading..." data-src="<%=image_uid%>.jpg" data-width="150" data-height="200" data-crop="fill" data-gravity="faces"></div>
     <h3>School</h3>
     <p>
-      <%=school.name%><br />
+      <% if (school.external_id && parseInt(school.external_id) > 0) { %>
+      <a id="school-name" href="#school/<%= school.state %>/<%=school.external_id%>"><%=school.name%></a>
+      <% } else { %>
+      <%=school.name%>
+      <% } %>
+      <br />
+      <% if (school.city) { %>
       <%=school.city%>, 
+      <% } %>
       <%=school.state%><br />
       <%=story.year%>
     </p>
