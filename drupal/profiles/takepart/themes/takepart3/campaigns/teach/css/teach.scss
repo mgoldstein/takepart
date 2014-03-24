@@ -2369,6 +2369,11 @@ h1.sys-headline {
     font-size: 1.5em;
     line-height: .667;
   }
+
+  &:hover {
+    text-decoration: none;
+    color: $primary-color;
+  }
 }
 
 .sys-thanks-social-share {
