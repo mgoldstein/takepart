@@ -1,6 +1,8 @@
 <div class="content teach-story-content teach-browse-stories-content">
-  <h1 class="sys-headline"><span><?php print w('browse_stories_headline'); ?></span></h1>
-  <div class="sys-intro-body"><?php print w('browse_stories_intro'); ?></div>
+  <div class="preface">
+    <h1 class="sys-headline"><span><?php print w('browse_stories_headline'); ?></span></h1>
+    <div class="sys-intro-body"><?php print w('browse_stories_intro'); ?></div>
+  </div>
   <?php include('partials/teach-sys-cta.tpl.php'); ?>
   <section id="app" class="teach-app">
     <p style="text-align: center;">Loading&hellip;</p>
@@ -38,7 +40,8 @@
   <h2 class="sys-story-headline"><span>Teacher Stories From <span class="teach-logo">Teach</span></span></h2>
   <div class="sys-story-teacher-image-wrapper">
     <img id="sys-story-teacher-image" class="sys-story-teacher-image" src="http://placehold.it/350x410&text=loading..." data-src="<%=teacher.image_uid%>.jpg" data-width="350" data-height="410" data-crop="fill" data-gravity="faces">
-    <div id="story-social-share" class="scribble-share story-social-share"><span>Share This Story</span></div>
+    <div id="story-social-share" class="scribble-share story-social-share"<% if (story.preview) { %> data-preview="<%= story.preview.htmlEntities() %>"<% } %>><span>Share This Story</span></div>
+    <div class="orange-button-container"><a href="/teach/share-your-story">Add Your Teacher Story</a></p></div>
   </div>
   <div class="content">
     <h3>Teacher</h3>
@@ -73,7 +76,6 @@
     <p id="story-tags"><%=tags.join(', ')%></p>
     <% } %>
   </div>
-  <div class="orange-button-container"><a href="/teach/share-your-story">Add Your Teacher Story</a></p></div>
   <div id="story-comments" class="story-comments">
     <h3>Comments</h3>
     <div class="story-fb-like"><fb:like href="<%=window.location.href%>" layout="button" action="like" show_faces="false" share="false"></fb:like></div>

@@ -1536,12 +1536,23 @@ a {
   color: $body-copy-black;
   strong { color: $dark-grey; }
 
+  .preface {
+    font-size: 14px;
+    line-height: 24px;
+  }
+
   .sys-intro-body {
+    p,
+    ul {
+      font-size: 14px;
+      line-height: 24px;
+    }
+
     @media (min-width: 768px) {
       width: 60%;
     }
     @media (min-width: 1000px) {
-      min-height: 9em;
+      min-height: 10em;
     }
   }
 }
@@ -1888,16 +1899,16 @@ a {
 h1.sys-headline {
   background: transparent image-url("sys-headline-bg.png") scroll no-repeat top left;
   font-size: 1.4em;
-  padding: 1.8em 0 1em .5em;
+  padding: 1.3em 0 1em .5em;
 
   @media (min-width: 400px) {
-    font-size: 1.642857143em;
-    padding: 1.3em 0 1em .5em;
+    font-size: 1.4em;
+    padding: 1.7em 0 1em .5em;
   }
 
-  @media (min-width:850px) {
-    font-size: 34px;
-    padding: .67em 0 .75em .5em;  
+  @media (min-width:930px) {
+    font-size: 1.8em;
+    padding: 1.1em 0 .75em .5em;
   }
 
   .teach-sys-thanks-content & {
@@ -2349,6 +2360,9 @@ h1.sys-headline {
   padding-right: 30px;
   text-indent: 0;
 
+  font-size: 1.3em;
+  line-height: 2em;
+
   &:before {
     display: inline;
     content: "\00d7\0020";
@@ -2496,7 +2510,7 @@ h1.sys-headline {
       background-image: image-url("stupid-tape-2.png");
     }
     &:after {
-      bottom: 40px;
+      bottom: 92px;
       left: -24px;
       width: 61px;
       height: 129px;
@@ -2791,7 +2805,7 @@ h1.sys-headline {
   .sys_modal_content {
     padding: 75px 0;
     @media (min-width: 768px) {
-      padding: 20px 60px;
+      padding: 30px 60px 20px;
     }
     .story-nav {
       display: block;

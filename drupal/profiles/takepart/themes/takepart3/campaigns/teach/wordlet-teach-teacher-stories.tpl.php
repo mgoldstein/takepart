@@ -1,6 +1,8 @@
 <div class="content teach-story-content teach-teacher-stories-content">
-  <h1 class="sys-headline"><span><?php print w('teacher_stories_headline'); ?></span></h1>
-  <div class="sys-intro-body"><?php print w('teacher_stories_intro_body'); ?></div>
+  <div class="preface">
+    <h1 class="sys-headline"><span><?php print w('teacher_stories_headline'); ?></span></h1>
+    <div class="sys-intro-body"><?php print w('teacher_stories_intro_body'); ?></div>
+  </div>
   <div class="row">
     <div class="col-1-2">
       <section class="sys-stats">

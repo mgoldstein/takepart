@@ -71,9 +71,18 @@
     },
 
     render: function() {
+
+      // render the element
+      this.$el.html(this.template(this.model.toJSON()));
+      this.$('img').cloudinary();
+
       // set up social options
-      var title = "Teacher Stories: " + [this.model.get('teacher').first_name, this.model.get('teacher').last_name].join(' ');
-      var description = "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
+      var title =  [
+        "Teacher Stories:",
+        this.model.get('teacher').first_name,
+        this.model.get('teacher').last_name
+      ].join(' ');
+      var description = this.$('#story-social-share').data('preview') || "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
       var socialOptions = $.extend({}, TEACH.social.options, {
         services: [
           {
@@ -93,19 +102,16 @@
         ]
       });
 
-      // render the element
-      this.$el.html(this.template(this.model.toJSON()));
-      this.$el.find('img').cloudinary();
-      this.$el.find('#story-social-share').tpsocial(socialOptions);
+      this.$('#story-social-share').tpsocial(socialOptions);
       window.FB && FB.XFBML.parse(this.el);
 
       // bind social share event to contact TAP
-      this.$el.find('#story-social-share a').on('click', _.bind(function(){
+      this.$('#story-social-share a').on('click', _.bind(function(){
         $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/share?publisher_key=' + TEACH.TAP.partner_code);
       }, this));
 
       // When we click on a tag, remove the view
-      this.$el.find('#story-tags').on('click', 'a', _.bind(function(e){
+      this.$('#story-tags').on('click', 'a', _.bind(function(e){
         this.remove();
       }, this));
 
