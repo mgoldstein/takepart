@@ -22,7 +22,7 @@ function tpf_content_campaign_ctools_plugin_api($module = NULL, $api = NULL) {
 function tpf_content_campaign_node_info() {
   $items = array(
     'takepart_campaign' => array(
-      'name' => t('Campaign (Old Tymer)'),
+      'name' => t('Legacy Campaigns'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
