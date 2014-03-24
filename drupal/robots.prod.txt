@@ -37,6 +37,7 @@ Disallow: /node
 Disallow: /node/
 Disallow: /profiles/
 Disallow: /recent/
+Disallow: /reports/
 Disallow: /rg/
 Disallow: /scripts/
 Disallow: /search/
