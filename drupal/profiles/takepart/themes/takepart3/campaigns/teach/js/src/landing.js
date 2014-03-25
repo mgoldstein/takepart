@@ -27,22 +27,8 @@
         window.location = "/teach/stories#school/" + $this.find('#school_state').val() + (id != 0 ? '/' + id : '');
       });
 
-    // set up most stories lists 
-    var $mostStoriesNav = $('#most-stories-nav');
-    var $mostStoriesLists = $('.most-stories-list');
-    var $mostStoriesLatest = $mostStoriesLists.filter('#most-stories-latest');
-    var $mostStoriesOverall = $mostStoriesLists.filter('#most-stories-overall');
-
-    $mostStoriesLists.hide().filter(':first').show();
-    $mostStoriesNav.find('a:first').addClass('active');
-
-    $mostStoriesNav.on('click', 'a', function(e){
-      e.preventDefault();
-      $mostStoriesNav.find('a').removeClass('active').filter(this).addClass('active');
-      $mostStoriesLists.hide().filter(e.target.hash).show();
-    });
-
     // populate the story stats and latest school list
+    var $mostStoriesOverall = $('#most-stories-overall');
     var $storyStats = $('.teacher-story-stat');
     var listItem = TEACH.tmpl('most_stories_list_template');
     $.ajax('/proxy?request=' + TEACH.TAP.postURL + '/stats' + encodeURIComponent('?interval=overall&action_id=' + TEACH.TAP.action_id), {
@@ -54,14 +40,6 @@
 
         $.each(data.school_list.slice(0,5), function() {
           $(listItem(this)).appendTo($mostStoriesOverall);
-        })
-      }
-    });
-
-    $.ajax('/proxy?request=' + TEACH.TAP.postURL + '/stats' + encodeURIComponent('?interval=latest&action_id=' + TEACH.TAP.action_id), {
-      success: function(data) {
-        $.each(data.school_list.slice(0,5), function() {
-          $(listItem(this)).appendTo($mostStoriesLatest);
         })
       }
     });

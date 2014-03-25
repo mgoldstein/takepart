@@ -1605,6 +1605,19 @@ a {
   font-size: 14px;
   line-height: 24px;
 }
+.teach-browse-stories-content .preface .teach-fund-button,
+.teach-teacher-stories-content .preface .teach-fund-button {
+  text-align: center;
+}
+.teach-browse-stories-content .preface .teach-fund-button a,
+.teach-teacher-stories-content .preface .teach-fund-button a {
+  display: inline-block;
+  padding: .5em 1em;
+  font-family: "GlyphaLTPro-Black", serif;
+  text-transform: uppercase;
+  color: white;
+  background-color: black;
+}
 .teach-browse-stories-content .sys-intro-body p,
 .teach-browse-stories-content .sys-intro-body ul,
 .teach-teacher-stories-content .sys-intro-body p,
@@ -1640,7 +1653,7 @@ a {
   text-shadow: 1px 1px #ea5f11;
 }
 .sys-stats .sys-stats-content {
-  background: transparent url('../img/notebook_paper_middle.png?1394561652') scroll repeat-y top center;
+  background: transparent url('../img/notebook_paper_middle.png?1395781686') scroll repeat-y top center;
   background-size: contain;
   padding: 0 5% 0 14%;
 }
@@ -1655,14 +1668,14 @@ a {
 .sys-stats:before, .sys-stats:after {
   content: ' ';
   display: block;
-  background: transparent url('../img/notebook_paper_top.png?1394561652') scroll no-repeat top center;
+  background: transparent url('../img/notebook_paper_top.png?1395781686') scroll no-repeat top center;
   background-size: contain;
   width: 100%;
   height: 0;
   padding-top: 23.7250554%;
 }
 .sys-stats:after {
-  background-image: url('../img/notebook_paper_bottom.png?1394561652');
+  background-image: url('../img/notebook_paper_bottom.png?1395781686');
   padding-top: 21.0643016%;
 }
 .sys-stats h2 {
@@ -1714,7 +1727,7 @@ a {
   position: absolute;
   right: 22px;
   bottom: 10px;
-  background: transparent url('../img/school-search-submit.png?1394561652') scroll no-repeat top left;
+  background: transparent url('../img/school-search-submit.png?1395781686') scroll no-repeat top left;
   background-size: 24px auto;
   width: 24px;
   height: 24px;
@@ -1770,19 +1783,8 @@ a {
 .sys-stats .teach-fund-body {
   clear: both;
 }
-.sys-stats .teach-fund-button {
-  text-align: center;
-}
-.sys-stats .teach-fund-button a {
-  display: inline-block;
-  padding: .5em 1em;
-  font-family: "GlyphaLTPro-Black", serif;
-  text-transform: uppercase;
-  color: white;
-  background-color: black;
-}
 .sys-stats .most-stories-headline {
-  font-size: 2.5em;
+  font-size: 2.2em;
   letter-spacing: -1px;
 }
 .sys-stats .most-stories-list {
@@ -1868,7 +1870,7 @@ a {
   height: 0;
   padding-top: 92.6121372%;
   margin-bottom: 1em;
-  background: transparent url('../img/polaroid_blue_pin.png?1394561652') scroll no-repeat top center;
+  background: transparent url('../img/polaroid_blue_pin.png?1395781686') scroll no-repeat top center;
   background-size: contain;
   overflow: hidden;
   position: relative;
@@ -2079,7 +2081,7 @@ h1.sys-headline span {
   width: 293px;
   height: 294px;
   overflow: hidden;
-  background: transparent url('../img/post_it_paperclip_293x294.png?1394561652') scroll no-repeat top left;
+  background: transparent url('../img/post_it_paperclip_293x294.png?1395781686') scroll no-repeat top left;
   font-size: 1.33333em;
   line-height: 1.25;
   color: black;
@@ -2115,7 +2117,7 @@ h1.sys-headline span {
     top: -12px;
     right: -5px;
     margin: 0;
-    background-image: url('../img/post_it_paperclip_315x241.png?1394561652');
+    background-image: url('../img/post_it_paperclip_315x241.png?1395781686');
     max-width: 315px;
     max-height: 241px;
   }
@@ -2725,7 +2727,7 @@ h1.sys-headline span {
   display: block;
   width: 100%;
   padding: .6em 4px 0;
-  background: transparent url('../img/story-modal-social-share-bg.png?1394759171') scroll no-repeat center top;
+  background: transparent url('../img/story-modal-social-share-bg.png?1395781686') scroll no-repeat center top;
   background-size: contain;
   min-height: 4.1em;
   text-align: center;
@@ -2925,7 +2927,7 @@ h1.sys-headline span {
   width: 100%;
   height: 0;
   padding-top: 4.379562%;
-  background: transparent url('../img/browse-story-shadow.png?1394561652') scroll no-repeat top center;
+  background: transparent url('../img/browse-story-shadow.png?1395781686') scroll no-repeat top center;
   background-size: contain;
 }
 .teach-app .stories-view .story img {
@@ -2965,7 +2967,7 @@ h1.sys-headline span {
   width: 100%;
   height: 0;
   padding: 2.8571429% 0;
-  background: transparent url('../img/app-search-box-shadow.png?1394561652') scroll no-repeat center top;
+  background: transparent url('../img/app-search-box-shadow.png?1395781686') scroll no-repeat center top;
   background-size: contain;
 }
 .teach-app .sys-form input[type=text].input-school-name {
@@ -2975,7 +2977,7 @@ h1.sys-headline span {
   position: absolute;
   right: 22px;
   bottom: 10px;
-  background: transparent url('../img/school-search-submit.png?1394561652') scroll no-repeat top left;
+  background: transparent url('../img/school-search-submit.png?1395781686') scroll no-repeat top left;
   background-size: 24px auto;
   width: 24px;
   height: 24px;
