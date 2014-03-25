@@ -8782,3 +8782,51 @@ header .search .form-submit {
   transition-timing-function: linear, linear;
   -webkit-overflow-scrolling: touch;
 }
+
+/* line 2, ../sass/modules/_poll.scss */
+.poll label {
+  width: 100%;
+  display: block;
+  font-weight: normal;
+}
+/* line 8, ../sass/modules/_poll.scss */
+.poll .meterContainer {
+  margin: 20px 0;
+}
+/* line 12, ../sass/modules/_poll.scss */
+.poll .meter {
+  background-color: #eeeeee;
+  width: 80%;
+  height: 14px;
+  padding: 0;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+}
+/* line 18, ../sass/modules/_poll.scss */
+.poll .meter span {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  height: 14px;
+  background-color: #01bf9e;
+}
+/* line 25, ../sass/modules/_poll.scss */
+.poll .percent {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  width: 5%;
+  margin-right: 10px;
+  text-align: left;
+  font: normal 12px black;
+}

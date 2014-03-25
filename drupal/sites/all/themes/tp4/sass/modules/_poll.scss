@@ -1,0 +1,32 @@
+.poll {
+  label {
+    width: 100%;
+    display: block;
+    font-weight: normal;
+  }
+
+  .meterContainer {
+    margin: 20px 0;
+  }
+
+  .meter {
+    background-color: $gray-background;
+    width: 80%;
+    height: 14px;
+    padding: 0;
+    @include inline-block;
+    span {
+      @include inline-block;
+      height: 14px;
+      background-color: $light-mint;
+    }
+  }
+
+  .percent {
+    @include inline-block;
+    width: 5%;
+    margin-right: 10px;
+    text-align: left;
+    font: normal 12px black;
+  }
+}
