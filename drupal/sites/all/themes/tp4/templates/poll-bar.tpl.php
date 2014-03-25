@@ -17,8 +17,8 @@
  */
 ?>
 
-<div class="meterContainer">
+<li class="meterContainer">
   <label><?php print $title; ?></label>
   <span class="percent"><?php print $percentage; ?>%</span>
   <div class="meter"><span style="width: <?php print $percentage; ?>%;" class="foreground"></span></div>
-</div>
+</li>

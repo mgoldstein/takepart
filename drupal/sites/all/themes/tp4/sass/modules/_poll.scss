@@ -1,4 +1,10 @@
 .poll {
+
+  padding: $zen-gutter-width;
+  border: 1px solid $gray-line;
+  @include header-top-border();
+  @include box-sizing(box-content);
+
   label {
     width: 100%;
     display: block;
@@ -11,7 +17,7 @@
 
   .meter {
     background-color: $gray-background;
-    width: 80%;
+    width: 91%;
     height: 14px;
     padding: 0;
     @include inline-block;
@@ -28,5 +34,10 @@
     margin-right: 10px;
     text-align: left;
     font: normal 12px black;
+    white-space: nowrap;
+  }
+
+  .total {
+    text-align: left;
   }
 }
