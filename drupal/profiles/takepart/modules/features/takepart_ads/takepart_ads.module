@@ -58,9 +58,9 @@ function takepart_ads_preprocess_page(&$vars) {
         $gpt_topic .= 'googletag.pubads().setTargeting("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
     }
     elseif ( isset($vars['page']['content']['system_main']['#term']->name) && ($vars['page']['content']['system_main']['#bundle'] === 'topic') ) {
-        $field_topic = $vars['page']['content']['system_main']['#term'];
-        $topic .= 'GA_googleAddAttr("Topic", "' . $field_topic->name . '");' . "\n";
-        $gpt_topic .= 'googletag.pubads().setTargeting("Topic", "' . $field_topic->name . '");' . "\n";
+        $field_topic = strtolower(str_replace(" & ", "-", $vars['page']['content']['system_main']['#term']->name));
+        $topic .= 'GA_googleAddAttr("Topic", "' . $field_topic . '");' . "\n";
+        $gpt_topic .= 'googletag.pubads().setTargeting("Topic", "' . $field_topic . '");' . "\n";
     }
 
     $gptad_html .= 'googletag.pubads().collapseEmptyDivs();';
