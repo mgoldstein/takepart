@@ -80,7 +80,9 @@
       var title =  [
         "Teacher Stories:",
         this.model.get('teacher').first_name,
-        this.model.get('teacher').last_name
+        this.model.get('teacher').last_name,
+        '-',
+        this.model.get('school').name
       ].join(' ');
       var description = this.$('#story-social-share').data('preview') || "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
       var socialOptions = $.extend({}, TEACH.social.options, {

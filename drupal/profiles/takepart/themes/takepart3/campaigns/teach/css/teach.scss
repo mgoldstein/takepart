@@ -1539,6 +1539,18 @@ a {
   .preface {
     font-size: 14px;
     line-height: 24px;
+
+    .teach-fund-button {
+      text-align: center;
+      a {
+        display: inline-block;
+        padding: .5em 1em;
+        font-family: $secondary-font;
+        text-transform: uppercase;
+        color: white;
+        background-color: black;
+      }
+    }
   }
 
   .sys-intro-body {
@@ -1689,20 +1701,8 @@ a {
     clear: both;
   }
 
-  .teach-fund-button {
-    text-align: center;
-    a {
-      display: inline-block;
-      padding: .5em 1em;
-      font-family: $secondary-font;
-      text-transform: uppercase;
-      color: white;
-      background-color: black;
-    }
-  }
-
   .most-stories-headline {
-    font-size: 2.5em;
+    font-size: 2.2em;
     letter-spacing: -1px;
   }
 
