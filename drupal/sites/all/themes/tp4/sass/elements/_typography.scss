@@ -2,9 +2,7 @@
 
 
 body{
-  font-family: $ashbury-light;
-  font-size: 14px;
-  line-height: 18px;
+  font: 100 14px/18px $primary-serif-font;
 }
 
 %hN{
@@ -13,13 +11,14 @@ body{
   text-rendering: optimizeLegibility;
 }
 h1{
-  font-family: $ashbury-regular;
+  font-family: $primary-serif-font;
   font-size: 28px;
   line-height: 32px;
   @extend %hN;
 }
 h2{
-  font-family: $ashbury-light;
+  font-family: $primary-serif-font;
+  font-weight: 100;
   @extend %hN;
 }
 h3{
@@ -33,12 +32,14 @@ h5{
 }
 
 .author{
-  font-family: $ashbury-light-italic;
+  font-family: $primary-serif-font;
+  font-style: italic;
+  font-weight: 100;
 }
 .section-header{
-  font-family: $brown-bold;
+  font-family: $main-brand-font;
   line-height: 27px;
-  font-weight: normal;
+  font-weight: bold;
   font-size: 20px;
 }
 
@@ -46,7 +47,7 @@ h5{
 
 }
 .column-title{
-  font-family: $tradegothic-regular;
+  font-family: $secondary-sans-font;
   font-size: 18px;
   line-height: 20px;
   color: $blue;
@@ -61,7 +62,8 @@ a {
   }
   &.more{
     font-size: 14px;
-    font-family: $ashbury-light;
+    font-weight: 100;
+    font-family: $primary-serif-font;
     @include blue-arrow-bullets;
     display: inline-block;
   }
@@ -71,7 +73,8 @@ input{
 
 }
 .footer-title{
-  font-family: $brown-regular;
+  font-family: $main-brand-font;
+  font-weight: bold;
   font-size: 16px;
   color: #000;
 }

@@ -46,7 +46,7 @@
       }
       .title{
         @include breakpoint($breakpoint-tablet){
-          font-family: $tradegothic-regular;
+          font-family: $secondary-sans-font;
           font-size: 22px;
           text-transform: uppercase;
           white-space: nowrap;
@@ -121,7 +121,8 @@
             width: 15%;
           }
           ul.menu{
-            font-family: $adelle-light;
+            font-family: $secondary-sans-font;
+            font-weight: 100;
             li{
               float: left;
               clear: left;
@@ -132,8 +133,7 @@
           .text{
             padding-right: 10px;
             padding-bottom: 10px;
-            font-family: $ashbury-light-italic;
-            font-size: 14px;
+            font: 100 italic 14px $primary-serif-font;
             color: #000;
           }
         }
@@ -176,13 +176,13 @@
                 overflow: hidden;
               }
               .label{
-                font-family: $adelle-bold;
-                font-weight: 900;
+                font-family: $primary-sans-font;
+                font-weight: bold;
                 text-transform: uppercase;
                 margin-bottom: 4px;
               }
               .text{
-                font-family: $ashbury-light;
+                font-family: $primary-serif-font;
               }
               &:hover{
                 text-decoration: none;

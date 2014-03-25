@@ -2,7 +2,7 @@ body.page-taxonomy-term.vocabulary-topic{
   .content{
     @include breakpoint($breakpoint-mobile){
       ul.promo-content{
-        $font-family: $ashbury-regular;
+        $font-family: $primary-serif-font;
         font-size: 16px;
         li{
           margin-bottom: 20px;
@@ -29,7 +29,7 @@ body.page-taxonomy-term.vocabulary-topic{
             }
           }
           .promo-headline{
-            $font-family: $ashbury-regular;
+            $font-family: $primary-serif-font;
             font-size: 16px;
             line-height: 20px;
           }
@@ -50,7 +50,7 @@ body.page-taxonomy-term.vocabulary-topic{
           }
           .promo-headline{
             float: left;
-            font-family: $ashbury-regular;
+            font-family: $primary-serif-font;
             font-size: 28px;
             line-height: 32px;
             display: block;

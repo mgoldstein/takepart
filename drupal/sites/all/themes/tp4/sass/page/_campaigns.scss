@@ -485,12 +485,12 @@ body.node-type-campaign-page, #main.card-page{
     .form-item-email {
       margin: 0;
       display: inline-block;
-      font-family: $adelle-regular;
+      font-family: $primary-sans-font;
       width: 65%;
       position: relative;
       label {
         display: none;
-        font: normal 12px/1 $adelle-regular;
+        font: normal 12px/1 $primary-sans-font;
         position: absolute;
         left: 0;
         bottom: 100%;
@@ -515,7 +515,7 @@ body.node-type-campaign-page, #main.card-page{
       @include border-radius(0);
       background-color: $light-mint;
       color: white;
-      font-family: $adelle-regular;
+      font-family: $primary-sans-font;
       text-transform: lowercase;
       padding: 4px 0 1px;
       
@@ -538,7 +538,7 @@ body.node-type-campaign-page, #main.card-page{
       }
     }
     .follow-us {
-      font: normal 20px/1 $brown-bold;
+      font: normal 20px/1 $main-brand-font;
       text-transform: lowercase;
       display: inline-block;
       vertical-align: top;
