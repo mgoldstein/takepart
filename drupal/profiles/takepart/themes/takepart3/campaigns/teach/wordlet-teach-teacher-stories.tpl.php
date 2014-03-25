@@ -1,7 +1,11 @@
 <div class="content teach-story-content teach-teacher-stories-content">
   <div class="preface">
     <h1 class="sys-headline"><span><?php print w('teacher_stories_headline'); ?></span></h1>
-    <div class="sys-intro-body"><?php print w('teacher_stories_intro_body'); ?></div>
+    <div class="sys-intro-body">
+      <?php print w('teacher_stories_intro_body'); ?>
+      <?php $w = w('teach_fund_button'); ?>
+      <div class="teach-fund-button"><a href="<?php print $w->href; ?>" wa('teach_fund_button')><?php print $w->single; ?></a></div>
+    </div>
   </div>
   <div class="row">
     <div class="col-1-2">
@@ -14,16 +18,8 @@
           </h2>
           <?php include ('partials/teach-sys-browse-by-school.tpl.php'); ?>
 
-          <h2 class="teach-fund-headline"><span>the</span><span>Teach Fund</span></h2>
-          <div class="teach-fund-count"><span>Help Us Raise</span><span class="campaign-stat count">50,000</span><span>For Classrooms!</span></div>
-          <div class="teach-fund-body"><?php print w('teach_fund_body'); ?></div>
-          <?php $w = w('teach_fund_button'); ?>
-          <div class="teach-fund-button"><a href="<?php print $w->href; ?>" wa('teach_fund_button')><?php print $w->single; ?></a></div>
-
           <h2 class="most-stories-headline"><span>Schools with the Most Stories</span></h2>
-          <ol class="most-stories-list" id="most-stories-latest"></ol>
           <ol class="most-stories-list" id="most-stories-overall"></ol>
-          <nav id="most-stories-nav" class="most-stories-nav"><a href="#most-stories-latest">show latest</a> | <a href="#most-stories-overall">overall</a></nav>
 
           <h2><span>Teacher Story Stats</span></h2>
           <div class="teacher-story-stat stats-stories">
@@ -43,7 +39,10 @@
       </section>
     </div>
     <div class="col-1-2">
-      <?php include('partials/teach-sys-cta.tpl.php'); ?>
+      <aside class="sys-cta">
+        <h3><?php print w('story_cta_headlne'); ?></h3>
+        <div class="sys-cta-body"><?php print w('story_cta_body'); ?></div>
+      </aside>
       <section class="featured-stories" <?php print wa('featured_stories'); ?>>
         <h2 class="short-headline"><span><?php print w('featured_stories_headline'); ?></span></h2>
         <?php foreach(wl('featured_stories') as $w) : ?>
