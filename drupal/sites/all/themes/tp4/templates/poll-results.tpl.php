@@ -19,12 +19,14 @@
  */
 ?>
 <div class="poll">
+  <h3>what do you think?</h3>
+  <div class="question"><?php print $title ?></div>
   <ul class="meters">
     <?php print $results; ?>
   </ul>
-  <div class="total">
-    <?php print t('Total votes: @votes', array('@votes' => $votes)); ?>
-  </div>
+  <label class="total">Total votes: </label>
+  <span class="value"><?php print t('@votes', array('@votes' => $votes)); ?></span>
+  
   <?php if (!empty($cancel_form)): ?>
     <?php print $cancel_form; ?>
   <?php endif; ?>

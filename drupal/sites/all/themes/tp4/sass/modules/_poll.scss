@@ -1,23 +1,47 @@
 .poll {
 
-  padding: $zen-gutter-width;
   border: 1px solid $gray-line;
   @include header-top-border();
   @include box-sizing(box-content);
+  padding: $zen-gutter-width;
 
-  label {
-    width: 100%;
-    display: block;
-    font-weight: normal;
+  h3 {
+    font: bold 20px $main-brand-font;
+    text-transform: lowercase;
+  }
+
+  %left-margin {
+    margin-left: 9%;
+    padding-left: 10px;
+  }
+
+  .question {
+    font: 100 14px/130% $primary-serif-font;
+    margin-left: 9%;
+    padding-left: 10px;
+    position: relative;
+    &:before {
+      content: 'Q.';
+      font: bold 34px/90% $primary-serif-font;
+      margin-left: -5px;
+      position: absolute;
+      left: -9%;
+    }
   }
 
   .meterContainer {
+    label {
+      width: 100%;
+      display: block;
+      font-weight: normal;
+    }
+
     margin: 20px 0;
   }
 
   .meter {
     background-color: $gray-background;
-    width: 91%;
+    width: 87%;
     height: 14px;
     padding: 0;
     @include inline-block;
@@ -30,14 +54,44 @@
 
   .percent {
     @include inline-block;
-    width: 5%;
+    width: 9%;
     margin-right: 10px;
     text-align: left;
-    font: normal 12px black;
+    font: normal 12px $primary-sans-font;
     white-space: nowrap;
   }
 
   .total {
     text-align: left;
+    @include inline-block;
+    vertical-align: super;
+    margin-right: 1ex;
+    font: normal 12px $primary-sans-font;
+    text-transform: uppercase;
+  }
+  .value {
+    font: normal 30px $primary-sans-font;
+  }
+
+  input[type=submit] {
+    @extend %button;
+  }
+
+  .vote-form {
+    text-align: left;
+    margin-left: 9%;
+    padding-left: 10px;
+    .choices {
+      margin: 10px 0;
+    }
+  }
+  .form-item {
+    margin: 10px 0;
+    text-indent: -18px;
+    left: 10px;
+    position: relative;
+    label.option {
+      margin-left: .5ex;
+    }
   }
 }

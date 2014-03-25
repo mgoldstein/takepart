@@ -619,6 +619,23 @@ span.field-label {
   }
 }
 
+%button {
+  border: none;
+  @include border-radius(0);
+  background-color: $light-mint;
+  color: white;
+  font-family: $primary-sans-font;
+  text-transform: lowercase;
+  height: 24px;
+  padding: 2px 15px 3px 15px;
+  -webkit-font-smoothing: antialiased;
+  @include box-sizing(border-box);
+
+  &:hover {
+    background-color: black;
+  }
+}
+
 /* The part of the label that indicates a required field. */
 .form-required {
   color: #c00;
