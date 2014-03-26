@@ -384,7 +384,6 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
     // $name = $item->field_social_network['und'][0]['entity']->name;
     $name = strtolower($name);
     $name = preg_replace("/[\s_]/", "-", $name);
-    dpm($name, 'name');
     $url = $item->field_social_link['und'][0]['url'];
 
     $center .= l('', $url, array('html' => true, 'attributes' => array('target' => '_blank', 'class' => array($name, 'social-icon', 'tp-social-link'))));
