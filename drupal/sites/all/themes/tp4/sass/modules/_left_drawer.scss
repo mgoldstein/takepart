@@ -35,7 +35,8 @@
     ul{
       border-bottom: 5px solid #646464;
       li{
-        font-family: $adelle-light;
+        font-family: $primary-sans-font;
+        font-weight: 100;
         font-size: 13px;
         padding: 15px 10px;
         margin: 0;
@@ -47,7 +48,7 @@
 
     }
     > ul > li {
-      font-family: $tradegothic-light;
+      font-family: $secondary-sans-font;
       font-size: 20px;
       text-transform: uppercase;
       border-bottom: none;

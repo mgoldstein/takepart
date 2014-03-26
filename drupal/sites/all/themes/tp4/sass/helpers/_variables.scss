@@ -95,27 +95,12 @@ $breakpoint-desktop: 980px;
 /*
  *Fonts
  */
-$ashbury-bold: "Ashbury-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$ashbury-light: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$ashbury-light-italic: "Ashbury-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$ashbury-regular: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+$primary-serif-font: "Ashbury", $times-new-roman;
+$primary-sans-font: "AdelleSans", $verdana;
+$secondary-sans-font: "tradegothicbold", $verdana;
+$main-brand-font: "Brown", $verdana;
 
-$adelle-light-italic: "AdelleSans-LightItalic", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$adelle-light: "AdelleSans-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$adelle-regular: "AdelleSans-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$adelle-italic: "AdelleSans-Italic", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$adelle-bold: "AdelleSans-Bold", "Times New Roman", Georgia, "DejaVu Serif", serif;
-
-$tradegothic-regular: "TradeGothicLTStdCnBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$tradegothic-light: "TradeGothicLTStdCnLight", "Times New Roman", Georgia, "DejaVu Serif", serif;
-
-$brown-regular: "BrownRegular", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$brown-bold: "BrownBold", "Times New Roman", Georgia, "DejaVu Serif", serif;
-$brown-light: "BrownLight", "Times New Roman", Georgia, "DejaVu Serif", serif;
-
-
-
-$base-font-family: $ashbury-light;
+$base-font-family: $primary-serif-font;
 
 /*
  *Colors

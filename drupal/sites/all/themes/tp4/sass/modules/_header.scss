@@ -7,7 +7,7 @@
  *Social
 */
 header {
-  font-family: $adelle-regular;
+  font-family: $primary-sans-font;
   color: $dark-gray;
   .block{
     margin-bottom: 0em;
@@ -276,7 +276,7 @@ header {
   z-index: 2;
 
   background-color: #fff;
-  font-family: $adelle-regular;
+  font-family: $primary-sans-font;
   color: $dark-gray;
   border-bottom: 2px solid #000;
 
@@ -469,7 +469,7 @@ header {
     }
     li{
       float: left;
-      font-family: $tradegothic-regular;
+      font-family: $secondary-sans-font;
       font-size: 17px;
       text-transform: uppercase;
       white-space: nowrap;

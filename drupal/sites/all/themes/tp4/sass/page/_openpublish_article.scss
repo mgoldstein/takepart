@@ -120,7 +120,7 @@
   }
 
   .tp-social-headline {
-    font-family: $tradegothic-regular;
+    font-family: $secondary-sans-font;
     font-size: 14px;
     line-height: 1;
     color: $dark-gray;
@@ -228,8 +228,8 @@
     margin: 0;
   }
   .header {
-    font-family: $brown-bold;
-    font-weight: normal;
+    font-family: $main-brand-font;
+    font-weight: bold;
     font-size: 1.142857143em;
     background-color: $light-gray;
   }
@@ -251,22 +251,24 @@
   .article-header {
     .node-title {
       // these values are extremely stupid.
-      font: normal 2.428571429em/1.088235294 $ashbury-regular;
+      font: normal 2.428571429em/1.088235294 $primary-serif-font;
       margin-bottom: .411764706em; // 14px / 34px
       color: black;
     }
   }
   .field-name-field-article-main-image {
     figcaption {
-      font-family: $ashbury-light-italic;
+      font-family: $primary-serif-font;
+      font-weight: 100;
+      font-style: italic;
       p, h5 {
         color: black;
         font-size: 1em;
         line-height: 1.285714286;
         margin-top: 0;
-        font-family: $ashbury-light-italic;
-        font-weight: normal;
-        font-style: normal;
+        font-family: $primary-serif-font;
+        font-weight: 100;
+        font-style: italic;
       }
     }
   }
@@ -274,7 +276,7 @@
     margin-bottom: 1em;
   }
   .field-name-field-article-subhead {
-    font: normal 1.142857143em/1.125 $ashbury-light;
+    font: 100 1.142857143em/1.125 $primary-serif-font;
     margin-bottom: 1em;
     color: black;
   }
@@ -324,20 +326,20 @@
       margin: 0 10px;
     }
     .node-title {
-      font: normal 1.571428571em/1.090909091 $ashbury-bold;
+      font: bold 1.571428571em/1.090909091 $primary-serif-font;
       color: black;
     }
     .takepart-features-branding {
       display: block;
       color: black;
-      font: normal .928571429em/1.076923077 $adelle-regular;
+      font: normal .928571429em/1.076923077 $primary-sans-font;
       text-transform: uppercase;
       margin-bottom: .25em;
     }
   }
   .field-name-field-article-subhead {
     color: black;
-    font: normal 1.142857143em/1.125 $ashbury-regular;
+    font: normal 1.142857143em/1.125 $primary-serif-font;
     margin-bottom: .5em;
   }
   @include breakpoint($breakpoint-tablet) {
@@ -402,13 +404,9 @@
 .node-openpublish-article.view-mode-full,
 .node-video.view-mode-full {
   .field-name-body {
-    font-family: $adelle-light;
-    font-weight: normal;
+    font-family: $primary-sans-font;
+    font-weight: 100;
     line-height: 1.5;
-    // TODO unfuck fonts theme-wide
-    strong, b { font-family: $adelle-bold; font-weight: normal; }
-    em, i { font-family: $adelle-italic; font-weight: normal; }
-    strong em, em strong, b em, em b, strong i, i strong, b i, i b { font-family: $adelle-italic; font-weight: bold; }
 
     // base link styles
     a { color: $mint; text-decoration: none; }
@@ -418,7 +416,7 @@
     h3,
     h4,
     h5 {
-      font-family: $ashbury-regular;
+      font-family: $primary-serif-font;
     }
     h2,
     h3 {
@@ -470,8 +468,8 @@
         margin-right: .25em;
         margin-bottom: -.25em;
         // TODO unfuck fonts
-        font-family: $ashbury-bold;
-        font-weight: normal;
+        font-family: $primary-serif-font;
+        font-weight: bold;
       }
     }
 
@@ -483,14 +481,16 @@
       margin: 0 5% .875em 0;
       border-top: 1px solid $gray-line;
       border-bottom: 1px solid $gray-line;
-      font: normal 1.714285714em/1.5 $ashbury-light-italic;
+      font: 100 italic 1.714285714em/1.5 $primary-serif-font;
       padding: .875em 0;
       quotes: "" "" "" "";
     }
 
     // blockquote styling
     blockquote {
-      font-family: $ashbury-light-italic;
+      font-family: $primary-serif-font;
+      font-weight: 100;
+      font-style: italic;
       margin: 2.5em 1em;
       position: relative;
       &:before,
@@ -580,7 +580,7 @@
 
       cite {
         display: block;
-        font: normal .875em/1.285714286 $ashbury-light; // 14px over 18px
+        font: 100 .875em/1.285714286 $primary-serif-font; // 14px over 18px
         margin-top: 1.285714286em;
         margin-left: 2.714285714em;
         text-indent: -1em;
@@ -610,11 +610,13 @@
     }
     figcaption {
       p, h5 {
-        font: normal .875em/1.5 $ashbury-light;
+        font: 100 .875em/1.5 $primary-serif-font;
         margin: 0;
       }
       h5 {
-        font-family: $ashbury-light-italic;
+        font-family: $primary-serif-font;
+        font-weight: 100;
+        font-style: italic;
       }
     }
   }
@@ -726,8 +728,8 @@
       font-size: 12px;
       line-height: 1;
       text-align: center;
-      font-family: $brown-bold;
-      font-weight: normal;
+      font-family: $main-brand-font;
+      font-weight: bold;
       height: 12px;
       padding: 9px 0 15px;
       width: 75px;
@@ -744,8 +746,8 @@
   #article-footer,
   #article-comments {
     h2.block-title, h3 {
-      font-family: $brown-bold;
-      font-weight: normal;
+      font-family: $main-brand-font;
+      font-weight: bold;
       font-size: 1.5em;
       line-height: 1.2;
       margin: .667em 0; // account for different margins in the comp
@@ -755,8 +757,8 @@
         @include header-top-border;
       }
       span {
-        font-family: $adelle-light;
-        font-weight: normal;
+        font-family: $primary-sans-font;
+        font-weight: 100;
         font-size: 14px;
       }
     }
@@ -785,7 +787,8 @@
         }
       }
       a {
-        font-family: $adelle-light;
+        font-family: $primary-sans-font;
+        font-weight: 100;
         color: $mint;
         text-decoration: none;
         text-transform: capitalize;
@@ -804,12 +807,13 @@
 	li {
 	  @include blue-square-bullets;
 	  a {
-	    font-family: $adelle-regular;
+	    font-family: $primary-sans-font;
 	    font-weight: normal;
 	    span {
 	      font-size: .857142857em;
 	      line-height: 1.5;
-	      font-family: $adelle-light;
+	      font-family: $primary-sans-font;
+        font-weight: 100;
 	      text-transform: uppercase;
 	    }
 	  }
@@ -913,10 +917,13 @@
     padding-top: 5px;
   }
   .author{
-    font-family: $ashbury-light-italic;
+    font-family: $primary-serif-font;
+    font-weight: 100;
+    font-style: italic;
   }
   .date{
-    font-family: $adelle-light;
+    font-family: $primary-sans-font;
+    font-weight: 100;
     position: relative;
     margin-right: 10px;
     padding-right: 10px;
@@ -1012,8 +1019,8 @@
   }
   .more-prev,
   .more-next {
-    font-family: $ashbury-bold;
-    font-weight: normal;
+    font-family: $primary-serif-font;
+    font-weight: bold;
     position: relative;
     a {
       &:hover {

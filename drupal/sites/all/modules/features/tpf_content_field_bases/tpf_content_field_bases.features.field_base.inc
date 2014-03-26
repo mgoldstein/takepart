@@ -1316,6 +1316,7 @@ function tpf_content_field_bases_field_default_field_bases() {
           'campaign_card_media' => 'campaign_card_media',
           'campaign_card_news' => 'campaign_card_news',
           'campaign_card_social' => 'campaign_card_social',
+          'campaign_card_text' => 'campaign_card_text',
         ),
       ),
       'target_type' => 'node',
