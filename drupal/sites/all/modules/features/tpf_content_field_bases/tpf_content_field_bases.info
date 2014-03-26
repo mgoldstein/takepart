@@ -102,7 +102,6 @@ features[field_base][] = field_campaign_text_right
 features[field_base][] = field_campaign_tray
 features[field_base][] = field_campaign_tray_title
 features[field_base][] = field_caption
-features[field_base][] = field_card_background
 features[field_base][] = field_card_text
 features[field_base][] = field_credits
 features[field_base][] = field_description
