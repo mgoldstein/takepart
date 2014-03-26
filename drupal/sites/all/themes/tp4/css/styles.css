@@ -4153,23 +4153,24 @@ body.front #sidebar .block-title {
 .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field-name-field-tab-action-override .field-item a:before {
   content: "take action:\0020";
   font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-weight: normal;
 }
-/* line 114, ../sass/page/_homepage.scss */
+/* line 115, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field-name-field-tab-action-override .field-item a:hover, .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field-name-field-tab-action-override .field-item a:active {
   color: #01bf9e;
 }
-/* line 123, ../sass/page/_homepage.scss */
+/* line 124, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary {
   margin-bottom: 1em;
 }
-/* line 124, ../sass/page/_homepage.scss */
+/* line 125, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary .node-title {
   font-size: 1.142857143em;
   line-height: 1.25;
   margin-top: .5em;
   font-weight: normal;
 }
-/* line 132, ../sass/page/_homepage.scss */
+/* line 133, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary.node-openpublish-photo-gallery h2.node-title:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4177,7 +4178,7 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F7";
 }
-/* line 143, ../sass/page/_homepage.scss */
+/* line 144, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary.node-video h2.node-title:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4185,18 +4186,18 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F9";
 }
-/* line 154, ../sass/page/_homepage.scss */
+/* line 155, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .view-mode-feature-main-tpl {
   margin-bottom: 1em;
 }
-/* line 155, ../sass/page/_homepage.scss */
+/* line 156, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .view-mode-feature-main-tpl .field-name-field-article-subhead {
   font-size: 1.142857143em;
   line-height: 1.25;
   margin-top: .5em;
   font-weight: normal;
 }
-/* line 163, ../sass/page/_homepage.scss */
+/* line 164, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .view-mode-feature-main-tpl.node-openpublish-photo-gallery h2.field-name-field-article-subhead:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4204,7 +4205,7 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F7";
 }
-/* line 174, ../sass/page/_homepage.scss */
+/* line 175, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .view-mode-feature-main-tpl.node-video h2.field-name-field-article-subhead:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4212,7 +4213,7 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F9";
 }
-/* line 186, ../sass/page/_homepage.scss */
+/* line 187, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline {
   border-top: 4px solid #00b5cc;
   border-bottom: 4px solid #00b5cc;
@@ -4221,12 +4222,12 @@ body.front #sidebar .block-title {
   height: 60px;
 }
 @media all and (min-width: 768px) {
-  /* line 186, ../sass/page/_homepage.scss */
+  /* line 187, ../sass/page/_homepage.scss */
   .panel-takepart-homepage .tpl-headline {
     height: 30px;
   }
 }
-/* line 197, ../sass/page/_homepage.scss */
+/* line 198, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title,
 .panel-takepart-homepage .tpl-headline .tpl-time {
   display: block;
@@ -4235,7 +4236,7 @@ body.front #sidebar .block-title {
   background: transparent none scroll no-repeat top left;
 }
 @media all and (min-width: 768px) {
-  /* line 197, ../sass/page/_homepage.scss */
+  /* line 198, ../sass/page/_homepage.scss */
   .panel-takepart-homepage .tpl-headline .tpl-title,
   .panel-takepart-homepage .tpl-headline .tpl-time {
     display: inline-block;
@@ -4243,29 +4244,29 @@ body.front #sidebar .block-title {
     margin: 0 .5em 0 0;
   }
 }
-/* line 208, ../sass/page/_homepage.scss */
+/* line 209, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
   background-image: url('../images/tpl-title.jpg?1390331116');
 }
-/* line 212, ../sass/page/_homepage.scss */
+/* line 213, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 252px;
   background-image: url('../images/tpl-time.jpg?1390331116');
 }
 
-/* line 219, ../sass/page/_homepage.scss */
+/* line 220, ../sass/page/_homepage.scss */
 .date {
   margin-bottom: 2px;
 }
 @media all and (min-width: 320px) {
-  /* line 219, ../sass/page/_homepage.scss */
+  /* line 220, ../sass/page/_homepage.scss */
   .date {
     display: none;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 219, ../sass/page/_homepage.scss */
+  /* line 220, ../sass/page/_homepage.scss */
   .date {
     display: block;
     float: left;
@@ -4275,17 +4276,17 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 219, ../sass/page/_homepage.scss */
+  /* line 220, ../sass/page/_homepage.scss */
   .date {
     float: right;
   }
 }
-/* line 234, ../sass/page/_homepage.scss */
+/* line 235, ../sass/page/_homepage.scss */
 .date.extra-margin {
   margin-top: 1.5em;
 }
 
-/* line 242, ../sass/page/_homepage.scss */
+/* line 243, ../sass/page/_homepage.scss */
 .latest-headlines .views-row {
   line-height: 24px;
   font-size: 14px;
@@ -4302,7 +4303,7 @@ body.front #sidebar .block-title {
   top: 7px;
   left: 0;
 }
-/* line 246, ../sass/page/_homepage.scss */
+/* line 247, ../sass/page/_homepage.scss */
 .latest-headlines .views-row .openpublish_photo_gallery:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4310,7 +4311,7 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F7";
 }
-/* line 253, ../sass/page/_homepage.scss */
+/* line 254, ../sass/page/_homepage.scss */
 .latest-headlines .views-row .video:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4318,12 +4319,12 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F9";
 }
-/* line 261, ../sass/page/_homepage.scss */
+/* line 262, ../sass/page/_homepage.scss */
 .latest-headlines a {
   height: 100%;
 }
 
-/* line 267, ../sass/page/_homepage.scss */
+/* line 268, ../sass/page/_homepage.scss */
 a.column-header:hover {
   text-decoration: none;
 }
@@ -4422,23 +4423,23 @@ a.column-header:hover {
   display: table;
   clear: both;
 }
-/* line 275, ../sass/page/_homepage.scss */
+/* line 276, ../sass/page/_homepage.scss */
 #skinny .columns {
   text-align: center;
 }
-/* line 277, ../sass/page/_homepage.scss */
+/* line 278, ../sass/page/_homepage.scss */
 #skinny .columns a:hover {
   text-decoration: none;
 }
-/* line 281, ../sass/page/_homepage.scss */
+/* line 282, ../sass/page/_homepage.scss */
 #skinny .columns a .field-content:hover {
   text-decoration: underline;
 }
-/* line 285, ../sass/page/_homepage.scss */
+/* line 286, ../sass/page/_homepage.scss */
 #skinny .columns .author {
   padding: 4px 0 1px;
 }
-/* line 290, ../sass/page/_homepage.scss */
+/* line 291, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:after {
   content: '';
   display: block;
@@ -4447,56 +4448,56 @@ a.column-header:hover {
   margin: 1em auto 1.5em;
   border-bottom: dotted 2px #949494;
 }
-/* line 300, ../sass/page/_homepage.scss */
+/* line 301, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:hover .column-title {
   text-decoration: none;
 }
-/* line 303, ../sass/page/_homepage.scss */
+/* line 304, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:hover .author {
   text-decoration: none;
 }
-/* line 306, ../sass/page/_homepage.scss */
+/* line 307, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:hover .views-field-field-promo-headline {
   text-decoration: underline;
 }
-/* line 310, ../sass/page/_homepage.scss */
+/* line 311, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:last-child:after {
   border-bottom: none;
 }
 @media all and (min-width: 768px) {
-  /* line 289, ../sass/page/_homepage.scss */
+  /* line 290, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     padding-left: 30px;
     padding-right: 30px;
   }
-  /* line 316, ../sass/page/_homepage.scss */
+  /* line 317, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row:after {
     display: none;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 321, ../sass/page/_homepage.scss */
+  /* line 322, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row:after {
     display: block;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 327, ../sass/page/_homepage.scss */
+  /* line 328, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content .views-row {
     display: none;
   }
-  /* line 330, ../sass/page/_homepage.scss */
+  /* line 331, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content .views-row:nth-child(1), #skinny .columns > .view-content .views-row:nth-child(2), #skinny .columns > .view-content .views-row:nth-child(3) {
     display: block;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 335, ../sass/page/_homepage.scss */
+  /* line 336, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content .views-row {
     display: block;
   }
 }
-/* line 343, ../sass/page/_homepage.scss */
+/* line 344, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .block-title, #skinny #block-views-takeaction-homepage-block .block-title {
   font-size: 12px;
   color: #fff;
@@ -4512,19 +4513,19 @@ a.column-header:hover {
   behavior: url("pie.htc");
 }
 @media all and (min-width: 320px) {
-  /* line 357, ../sass/page/_homepage.scss */
+  /* line 358, ../sass/page/_homepage.scss */
   #skinny #block-views-homepage-columns-block .line, #skinny #block-views-takeaction-homepage-block .line {
     border-bottom: 1px solid #0080a3;
     margin: 0;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 357, ../sass/page/_homepage.scss */
+  /* line 358, ../sass/page/_homepage.scss */
   #skinny #block-views-homepage-columns-block .line, #skinny #block-views-takeaction-homepage-block .line {
     margin: 0 13px;
   }
 }
-/* line 368, ../sass/page/_homepage.scss */
+/* line 369, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .views-field-field-profile-photo .field-content, #skinny #block-views-takeaction-homepage-block .views-field-field-profile-photo .field-content {
   border: 1px solid #eee;
   -webkit-border-radius: 50px;
@@ -4534,7 +4535,7 @@ a.column-header:hover {
   overflow: hidden;
   margin: 0 auto 5px;
 }
-/* line 381, ../sass/page/_homepage.scss */
+/* line 382, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .block-title {
   background-color: #01bf9e;
   line-height: 15px;
@@ -4544,61 +4545,61 @@ a.column-header:hover {
   vertical-align: bottom;
   padding-top: 2px;
 }
-/* line 390, ../sass/page/_homepage.scss */
+/* line 391, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .line {
   border-bottom: 1px solid #01bf9e;
 }
-/* line 393, ../sass/page/_homepage.scss */
+/* line 394, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .action-type {
   font: bold 14px/18px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: uppercase;
   padding-bottom: 2px;
 }
-/* line 398, ../sass/page/_homepage.scss */
+/* line 399, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .tab-call-to-action {
   margin-bottom: 10px;
 }
-/* line 401, ../sass/page/_homepage.scss */
+/* line 402, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .action-icon {
   display: inline-block;
 }
-/* line 404, ../sass/page/_homepage.scss */
+/* line 405, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .action-url {
   display: inline-block;
   margin-top: 2px;
   margin-left: 5px;
   vertical-align: top;
 }
-/* line 409, ../sass/page/_homepage.scss */
+/* line 410, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .action-url a {
   color: #019f84;
 }
-/* line 413, ../sass/page/_homepage.scss */
+/* line 414, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block a.more {
   text-align: left;
   display: block;
 }
 @media all and (min-width: 768px) {
-  /* line 413, ../sass/page/_homepage.scss */
+  /* line 414, ../sass/page/_homepage.scss */
   #skinny #block-views-takeaction-homepage-block a.more {
     margin-top: 25px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 413, ../sass/page/_homepage.scss */
+  /* line 414, ../sass/page/_homepage.scss */
   #skinny #block-views-takeaction-homepage-block a.more {
     margin-top: 0;
   }
 }
-/* line 424, ../sass/page/_homepage.scss */
+/* line 425, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block a.more:hover {
   text-decoration: underline;
 }
-/* line 429, ../sass/page/_homepage.scss */
+/* line 430, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .views-row:hover {
   text-decoration: none;
 }
-/* line 431, ../sass/page/_homepage.scss */
+/* line 432, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .views-row:hover .action-url {
   text-decoration: underline;
 }
@@ -4606,11 +4607,11 @@ a.column-header:hover {
 /*
  *Photo Galleries
  */
-/* line 444, ../sass/page/_homepage.scss */
+/* line 445, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block {
   font: 100 1.14286em/1.25 "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
 }
-/* line 446, ../sass/page/_homepage.scss */
+/* line 447, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .views-row {
   margin-bottom: 20px;
 }
@@ -4623,12 +4624,12 @@ a.column-header:hover {
   vertical-align: text-bottom;
   content: " \1F4F7";
 }
-/* line 454, ../sass/page/_homepage.scss */
+/* line 455, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .view-footer {
   font-size: .875em;
   line-height: 1.5;
 }
-/* line 458, ../sass/page/_homepage.scss */
+/* line 459, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .block-title {
   margin-bottom: 8px;
 }
@@ -4636,20 +4637,20 @@ a.column-header:hover {
 /*
  *Promo "don't miss"
  */
-/* line 465, ../sass/page/_homepage.scss */
+/* line 466, ../sass/page/_homepage.scss */
 .promo {
   margin-top: 20px;
 }
 @media all and (min-width: 320px) {
-  /* line 465, ../sass/page/_homepage.scss */
+  /* line 466, ../sass/page/_homepage.scss */
   .promo {
     text-align: left;
   }
-  /* line 469, ../sass/page/_homepage.scss */
+  /* line 470, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: center;
   }
-  /* line 471, ../sass/page/_homepage.scss */
+  /* line 472, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: block;
     margin-right: 10px;
@@ -4657,16 +4658,16 @@ a.column-header:hover {
     line-height: 28px;
     font-weight: bold;
   }
-  /* line 478, ../sass/page/_homepage.scss */
+  /* line 479, ../sass/page/_homepage.scss */
   .promo .inner a.text:hover {
     text-decoration: underline;
   }
-  /* line 481, ../sass/page/_homepage.scss */
+  /* line 482, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: block;
     font: italic 20px "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   }
-  /* line 484, ../sass/page/_homepage.scss */
+  /* line 485, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: block;
     vertical-align: middle;
@@ -4675,20 +4676,20 @@ a.column-header:hover {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 494, ../sass/page/_homepage.scss */
+  /* line 495, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: left;
     display: inline-block;
   }
-  /* line 497, ../sass/page/_homepage.scss */
+  /* line 498, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: inline-block;
   }
-  /* line 500, ../sass/page/_homepage.scss */
+  /* line 501, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: inline-block;
   }
-  /* line 502, ../sass/page/_homepage.scss */
+  /* line 503, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: inline-block;
     margin-bottom: 0;
@@ -4696,15 +4697,15 @@ a.column-header:hover {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 465, ../sass/page/_homepage.scss */
+  /* line 466, ../sass/page/_homepage.scss */
   .promo {
     text-align: center;
   }
-  /* line 513, ../sass/page/_homepage.scss */
+  /* line 514, ../sass/page/_homepage.scss */
   .promo .inner .text {
     vertical-align: middle;
   }
-  /* line 515, ../sass/page/_homepage.scss */
+  /* line 516, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     vertical-align: middle;
     padding-bottom: 3px;
@@ -4714,7 +4715,7 @@ a.column-header:hover {
 /*
  *Graveyard
  */
-/* line 526, ../sass/page/_homepage.scss */
+/* line 527, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -4812,18 +4813,18 @@ a.column-header:hover {
   display: table;
   clear: both;
 }
-/* line 530, ../sass/page/_homepage.scss */
+/* line 531, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 532, ../sass/page/_homepage.scss */
+/* line 533, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font: bold 12px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   margin-bottom: 5px;
   text-transform: uppercase;
 }
 
-/* line 540, ../sass/page/_homepage.scss */
+/* line 541, ../sass/page/_homepage.scss */
 .megaphone {
   display: block;
   margin: 0 auto;
@@ -4833,7 +4834,7 @@ a.column-header:hover {
   padding-bottom: 5px;
 }
 
-/* line 549, ../sass/page/_homepage.scss */
+/* line 550, ../sass/page/_homepage.scss */
 #div-gpt-ad-1376947900543-0 {
   margin: 0 auto;
 }
@@ -8606,7 +8607,7 @@ header .search .form-submit {
   text-transform: uppercase;
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-size: 11px;
-  color: #949494;
+  color: #5a5a5a;
   width: 100%;
   text-align: center;
   display: block;

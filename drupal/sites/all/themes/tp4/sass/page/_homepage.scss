@@ -109,6 +109,7 @@ body.front{
             &:before {
               content: "take action:\0020";
               font-family: $main-brand-font;
+              font-weight: normal;
             }
             &:hover,
             &:active {
