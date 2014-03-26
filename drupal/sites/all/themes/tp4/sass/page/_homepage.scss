@@ -381,12 +381,14 @@ a.column-header:hover{
   #block-views-takeaction-homepage-block{
     .block-title{
       background-color: $light-mint;
-      line-height: 15px;
+      line-height: 100%;
       font-family: $secondary-sans-font;
       font-size: 13px;
       letter-spacing: .4px;
       vertical-align: bottom;
-      padding-top: 2px;
+      padding-top: 4px;
+      @include box-sizing(border-box);
+      height: 38px;
     }
     .line{
       border-bottom: 1px solid $light-mint;
