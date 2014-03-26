@@ -492,10 +492,10 @@ body.node-type-campaign-page, #main.card-page{
         }
         &.tumblr:before{
           @extend .tp-social-link.tp-social-Tumblr:before;
-          background-color: #3d5b96;
+          background-color: #385774;
         }
         &.tumblr:hover:before{
-          background-color: #637fab;
+          background-color: #529ecc;
         }
         &.email:before{
           @extend .tp-social-link.tp-social-Email:before;
@@ -506,31 +506,31 @@ body.node-type-campaign-page, #main.card-page{
         }
         &.linkedin:before{
           @extend .tp-social-link.tp-social-Linkedin:before;
-          background-color: #3d5b96;
+          background-color: #0977b4;
         }
         &.linkedin:hover:before{
-          background-color: #637fab;
+          background-color: #0c9bea;
         }
         &.youtube:before{
           @extend .tp-social-link.tp-social-Youtube:before;
-          background-color: #3d5b96;
+          background-color: #cc181e;
         }
         &.youtube:hover:before{
-          background-color: #637fab;
+          background-color: #ff1e26;
         }
         &.vine:before{
           @extend .tp-social-link.tp-social-Vine:before;
-          background-color: #3d5b96;
+          background-color: #00b386;
         }
         &.vine:hover:before{
-          background-color: #637fab;
+          background-color: #00d9a2;
         }
         &.instagram:before{
           @extend .tp-social-link.tp-social-Instagram:before;
-          background-color: #3d5b96;
+          background-color: #3f729b;
         }
         &.instagram:hover:before{
-          background-color: #637fab;
+          background-color: #5092c6;
         }
       }
       &:last-child{
