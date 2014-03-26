@@ -479,9 +479,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $file = file_load($node->field_article_main_image['und'][0]['fid']);
       $image = file_create_url($file->uri);
       $center = '';  // single news reference will use one column now
-      dpm($node, 'node');
       $path = drupal_get_path_alias('node/'. $node->nid);
-      dpm($path, 'path');
       $image = '<img src="'. $image. '">';  //image
       $center .= l($image, $path, array('html' => true));
       $center .= '<h3 class="headline">'. l($node->field_promo_headline['und'][0]['value'], $path). '</h3>';  //headline

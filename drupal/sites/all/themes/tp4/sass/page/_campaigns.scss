@@ -457,8 +457,9 @@ body.node-type-campaign-page, #main.card-page{
 
   //Social
   .social-follow{
-    white-space: nowrap;
     text-align: center;
+    line-height: 90px;
+    margin-right: -20px;
     a.social-icon {
       width: 100px;
       height: 100px;
@@ -548,9 +549,6 @@ body.node-type-campaign-page, #main.card-page{
         &.instagram:hover:before{
           background-color: #5092c6;
         }
-      }
-      &:last-child{
-        margin-right: 0;
       }
     }
   }
