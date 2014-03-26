@@ -429,7 +429,23 @@ body.node-type-campaign-page, #main.card-page{
   //News
   .card.node-campaign-card-news{
     .center-column{
-      @include breakpoint-grid-breakdown(1 5, $breakpoint-mobile $breakpoint-tablet, ' > .news-column');
+      text-align: center;  
+      white-space: nowrap;
+      line-height: 12px;
+      overflow: hidden;
+      .news-column{
+        width: 18%;
+        display: inline-block;
+        vertical-align: top;
+        white-space: normal;
+        margin-right: 2%;
+        &:last-child{
+          margin-right: 0;
+        }
+        img{
+          padding-bottom: 10px;
+        }
+      }
     }
     .headline, .short-headline, .more-link{
       text-align: center;
