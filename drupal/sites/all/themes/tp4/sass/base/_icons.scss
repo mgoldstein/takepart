@@ -1,0 +1,77 @@
+.icon {
+  &:after {
+    font-family: takepart;
+  }
+
+   /* Enable Ligatures ================ */
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // Custom TakePart
+  &.i-take-action:after { content: '\e100'; }
+  &.i-pledge:after { content: '\e101'; }
+  &.i-petition:after { content: '\e102'; }
+  &.i-messages-of-support:after { content: '\e103'; }
+  &.i-awareness:after { content: '\e104'; }
+  &.i-donation:after { content: '\e105'; }
+  &.i-story:after { content: '\e106'; }
+
+  // Generic UI
+  &.i-double-arrow-left:after { content: '\e605\e605'; letter-spacing: -1px; }
+  &.i-double-arrow-right:after { content: '\e606\e606'; letter-spacing: -1px; }
+  &.i-double-arrow-up:after { content: '\e603'; }
+  &.i-double-arrow-down:after { content: '\e604'; }
+  &.i-zoom-in:after { content: "\e614"; }
+  &.i-zoom-out:after { content: "\e615"; }
+  
+  &.i-remove:after { content: "\e610"; }
+  &.i-minus:after { content: "\e611"; }
+  &.i-plus:after, &.i-add:after { content: "\e612"; }
+  &.i-ok:after { content: "\e613"; }
+
+
+  &.i-arrow-left:after { content: '\e605'; }
+  &.i-arrow-right:after { content: '\e606'; }
+  &.i-arrow-up:after { content: '\e607'; }
+  &.i-arrow-down:after { content: '\e608'; }
+
+  // Social Sharing
+  &.i-facebook:after { content: '\e301' }
+  &.i-twitter:after { content: '\e302'; }
+  &.i-google_plusone_share:after { content: '\e303'; }
+  &.i-email:after { content: '\e305'; }
+}
+
+.tp-social-link {
+  &:before {
+    font-family: takepart;
+  }
+
+   /* Enable Ligatures ================ */
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // Social Sharing
+  &.tp-social-Pinterest:before { content: '\e300'; }
+  &.tp-social-Facebook:before { content: '\e301' }
+  &.tp-social-Twitter:before { content: '\e302'; }
+  &.tp-social-GooglePlus:before { content: '\e303'; }
+  &.tp-social-Tumblr:before { content: '\e304'; }
+  &.tp-social-Email:before { content: '\e305'; }
+}
