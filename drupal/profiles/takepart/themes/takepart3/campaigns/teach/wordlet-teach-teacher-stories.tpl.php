@@ -39,10 +39,7 @@
       </section>
     </div>
     <div class="col-1-2">
-      <aside class="sys-cta">
-        <h3><?php print w('story_cta_headlne'); ?></h3>
-        <div class="sys-cta-body"><?php print w('story_cta_body'); ?></div>
-      </aside>
+      <?php include('partials/teach-sys-cta.tpl.php'); ?>
       <section class="featured-stories" <?php print wa('featured_stories'); ?>>
         <h2 class="short-headline"><span><?php print w('featured_stories_headline'); ?></span></h2>
         <?php foreach(wl('featured_stories') as $w) : ?>
