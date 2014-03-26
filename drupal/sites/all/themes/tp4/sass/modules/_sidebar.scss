@@ -45,18 +45,8 @@
 	}
 	input[type="submit"] {
 		width: 33%;
-		border: none;
 		float: right;
-		@include border-radius(0);
-		background-color: $light-mint;
-		color: white;
-		font-family: $primary-sans-font;
-		text-transform: lowercase;
-		padding: 4px 0 1px;
-		
-		&:hover {
-			background-color: black;
-		}
+		@extend %button;
 	}
 
 	// doesn't work
