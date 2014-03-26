@@ -2,9 +2,9 @@ TEACH = window.TEACH || { support: {}, social: {}, Models: {}, Collections: {}, 
 
 // Magic Numbers
 TEACH.TAP = {
-    postURL: "http://qa-web1.tab.takepart.com/user_teach_stories",
-    action_id: "9035092",
-    partner_code: "38ec3cd1db216fd6964277e5969f4cb2"
+    postURL: "http://tab.takepart.com/user_teach_stories",
+    action_id: "9035114",
+    partner_code: "04a1744b80e16bc495c06aad0c6294a3"
 };
 
 //
