@@ -446,17 +446,92 @@ body.node-type-campaign-page, #main.card-page{
     a.social-icon {
       width: 100px;
       height: 100px;
-      margin-right: 30px;
+      margin-right: 15px;
       overflow: hidden;
       text-indent: 1000px;
-      display: inline-block;
       vertical-align: middle;
+      color: #fff;
+      font-size: 60px;
       &:before{
-        content: '';
-        display: block;
         width: 100px;
         height: 100px;
-        background-color: $mint;
+        padding: 10px;
+        border-radius: 44px;
+      }
+      &.tp-social-link {
+        &:hover{
+          text-decoration: none;
+        }
+        &.facebook:before{
+          @extend .tp-social-link.tp-social-Facebook:before;
+          background-color: #3d5b96;
+        }
+        &.facebook:hover:before{
+          background-color: #637fab;
+        }
+        &.twitter:before{
+          @extend .tp-social-link.tp-social-Twitter:before;
+          background-color: #34aadf;
+        }
+        &.twitter:hover:before{
+          background-color: #70c5e7;
+        }
+        &.pinterest:before{
+          @extend .tp-social-link.tp-social-Pinterest:before;
+          background-color: #3d5b96;
+        }
+        &.pinterest:hover:before{
+          background-color: #637fab;
+        }
+        &.google-plus:before{
+          @extend .tp-social-link.tp-social-GooglePlus:before;
+          background-color: #d84a3b;
+        }
+        &.google-plus:hover:before{
+          background-color: #f35648;
+        }
+        &.tumblr:before{
+          @extend .tp-social-link.tp-social-Tumblr:before;
+          background-color: #3d5b96;
+        }
+        &.tumblr:hover:before{
+          background-color: #637fab;
+        }
+        &.email:before{
+          @extend .tp-social-link.tp-social-Email:before;
+          background-color: #fc5d45;
+        }
+        &.email:hover:before{
+          background-color: #fd8776;
+        }
+        &.linkedin:before{
+          @extend .tp-social-link.tp-social-Linkedin:before;
+          background-color: #3d5b96;
+        }
+        &.linkedin:hover:before{
+          background-color: #637fab;
+        }
+        &.youtube:before{
+          @extend .tp-social-link.tp-social-Youtube:before;
+          background-color: #3d5b96;
+        }
+        &.youtube:hover:before{
+          background-color: #637fab;
+        }
+        &.vine:before{
+          @extend .tp-social-link.tp-social-Vine:before;
+          background-color: #3d5b96;
+        }
+        &.vine:hover:before{
+          background-color: #637fab;
+        }
+        &.instagram:before{
+          @extend .tp-social-link.tp-social-Instagram:before;
+          background-color: #3d5b96;
+        }
+        &.instagram:hover:before{
+          background-color: #637fab;
+        }
       }
       &:last-child{
         margin-right: 0;
