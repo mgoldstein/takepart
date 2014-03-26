@@ -517,6 +517,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       }
       $nodes = node_load_multiple($nids);
       $center = '';
+      $center .= '<div class="news-column-wrapper">';
       foreach($nodes as $key => $node){
 
         $node_path = drupal_get_path_alias('node/'. $node->nid);
@@ -528,6 +529,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $news_column .= '<h5>'. $headline. '</h5>';
         $center .= l($news_column, $node_path, array('html' => true, 'attributes' => array('class' => array('news-column'))));
       }
+      $center .= '</div>';
       $center .= $more;
       $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
