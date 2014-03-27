@@ -303,13 +303,14 @@ body.node-type-campaign-page, #main.card-page{
       left: 0;
     }
   }
-  ol li{
-    list-style-type: decimal;
+  #main{
+    ol li{
+      list-style-type: decimal;
+    }
+    ul li{
+      list-style-type: disc;
+    }
   }
-  ul li{
-    list-style-type: disc;
-  }
-
 
   // Swiper
 
