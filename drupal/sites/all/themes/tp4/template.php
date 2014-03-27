@@ -565,7 +565,14 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   $center = '';
   $height = $variables['field_campaign_iframe_height'][0]['value'];
   $width = $variables['field_campaign_iframe_width'][0]['value'];
-  $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" width="'. $width. '" height="'. $height. '"></iframe>';
+  if(isset($variables['field_campaign_iframe'][0]['value']) == true){
+    $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" width="'. $width. '" height="'. $height. '"></iframe>';
+  }
+  else{
+    $center .= '<div class="embed">'. $variables['body'][0]['value']. '</div>';
+  }
+  dpm($variables, 'variables');
+  
 
   //Width and height variables
   $variables['styles'] = array();

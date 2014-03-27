@@ -78,6 +78,7 @@ features[field_instance][] = node-campaign-field_campaign_menu_color_child
 features[field_instance][] = node-campaign-field_campaign_menu_width
 features[field_instance][] = node-campaign-field_campaign_min_height
 features[field_instance][] = node-campaign-field_menu_color_parent
+features[field_instance][] = node-campaign_card_iframe-body
 features[field_instance][] = node-campaign_card_iframe-field_campaign_background
 features[field_instance][] = node-campaign_card_iframe-field_campaign_bg_color
 features[field_instance][] = node-campaign_card_iframe-field_campaign_bgw

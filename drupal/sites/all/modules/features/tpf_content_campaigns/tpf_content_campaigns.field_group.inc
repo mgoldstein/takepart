@@ -23,9 +23,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background Image',
     'weight' => '6',
     'children' => array(
-      0 => 'field_card_background',
-      1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_background',
+      0 => 'field_campaign_bgw_image',
+      1 => 'field_campaign_background',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -308,7 +307,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_campaign_bgw',
       1 => 'field_campaign_bg_color',
