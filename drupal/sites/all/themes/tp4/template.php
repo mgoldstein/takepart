@@ -571,7 +571,6 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   else{
     $center .= '<div class="embed">'. $variables['body'][0]['value']. '</div>';
   }
-  dpm($variables, 'variables');
   
 
   //Width and height variables
