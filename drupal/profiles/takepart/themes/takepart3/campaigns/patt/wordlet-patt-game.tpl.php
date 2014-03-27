@@ -13,7 +13,7 @@
 
 <script language=javascript>
 <!--
-if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i) || (navigator.userAgent.match(/Android/i))) {
+if ((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i) || (navigator.userAgent.match(/iPad/i) || (navigator.userAgent.match(/Android/i))) {
    location.replace("<?=wa('game_iframe')?>");
 }
 -->
