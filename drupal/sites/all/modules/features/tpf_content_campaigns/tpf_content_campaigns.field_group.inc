@@ -367,8 +367,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Header/Branding',
     'weight' => '2',
     'children' => array(
-      0 => 'field_campaign_bg_color',
-      1 => 'field_campaign_min_height',
+      0 => 'field_campaign_min_height',
+      1 => 'field_campaign_bg_color',
       2 => 'group_background_image',
       3 => 'group_menu',
       4 => 'group_logo',
@@ -487,10 +487,10 @@ function tpf_content_campaigns_field_group_info() {
     'weight' => '25',
     'children' => array(
       0 => 'field_campaign_menu',
-      1 => 'field_menu_color_parent',
-      2 => 'field_campaign_menu_color_child',
-      3 => 'field_campaign_menu_width',
-      4 => 'field_campaign_menu_bg_color',
+      1 => 'field_campaign_menu_width',
+      2 => 'field_campaign_menu_bg_color',
+      3 => 'field_campaign_menu_color_child',
+      4 => 'field_menu_color_parent',
       5 => 'group_menu_background_image',
     ),
     'format_type' => 'fieldset',
@@ -504,6 +504,68 @@ function tpf_content_campaigns_field_group_info() {
     ),
   );
   $export['group_menu|node|campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_promo|node|campaign_page|form';
+  $field_group->group_name = 'group_promo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_page';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_promo_thumbnail',
+      1 => 'field_promo_headline',
+      2 => 'field_promo_short_headline',
+      3 => 'field_article_subhead',
+      4 => 'field_promo_text',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-promo field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_promo|node|campaign_page|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_promo|node|campaign|form';
+  $field_group->group_name = 'group_promo';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Promo',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_promo_thumbnail',
+      1 => 'field_promo_headline',
+      2 => 'field_promo_short_headline',
+      3 => 'field_article_subhead',
+      4 => 'field_promo_text',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-promo field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_promo|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
