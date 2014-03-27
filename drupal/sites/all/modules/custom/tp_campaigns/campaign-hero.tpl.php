@@ -8,7 +8,7 @@
   $logo_position = $variables['campaign_node']->field_campaign_logo_position['und'][0]['value']; // 0 => Center, 1 => Left, 2 => Right
   $uri = $campaign_variables->field_campaign_background['und'][0]['uri'];
   $image_url = file_create_url($uri);
-  $min_height = $campaign_variables->field_campaign_min_height['und'][0]['value'];
+  $min_height = $campaign_variables->field_campaign_min_height['und'][0]['value'] - 20;
   $bg_color = $campaign_variables->field_campaign_bg_color['und'][0]['rgb'];
   $bg_width = $variables['campaign_node']->field_campaign_bgw['und'][0]['value'];
   $bg_width_image = $variables['campaign_node']->field_campaign_bgw_image['und'][0]['value'];
