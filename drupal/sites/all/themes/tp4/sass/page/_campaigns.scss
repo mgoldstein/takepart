@@ -429,6 +429,13 @@ body.node-type-campaign-page, #main.card-page{
     }
   }
 
+  //iFrame!
+  iframe{
+    display: block;
+    margin: 0 auto;
+    border: none;
+  }
+
   //News
   .card.node-campaign-card-news{
     .center-column{

@@ -585,7 +585,6 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   else{
     $variables['styles'][] = 'background-size: 980px;';
   }
-
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['instructional'] = $instructional;
   $variables['center'] = $center;
