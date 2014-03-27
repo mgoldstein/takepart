@@ -483,7 +483,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $image = '<img src="'. $image. '">';  //image
       $center .= l($image, $path, array('html' => true));
       $center .= '<h3 class="headline">'. l($node->field_promo_headline['und'][0]['value'], $path). '</h3>';  //headline
-      $center .= '<p class="short-headline">'. $node->field_promo_short_headline['und'][0]['value']. '</p>';  //short headline
+      $center .= '<p class="short-headline">'. $node->field_article_subhead['und'][0]['value']. '</p>';  //short headline
       $center .= $more;
 
       $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
