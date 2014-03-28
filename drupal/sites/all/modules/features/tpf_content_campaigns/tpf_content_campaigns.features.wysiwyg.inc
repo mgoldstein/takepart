@@ -53,7 +53,8 @@ function tpf_content_campaigns_wysiwyg_default_profiles() {
           'Link' => 1,
         ),
         'drupal' => array(
-          'block' => 1,
+          'embed' => 1,
+          'entity' => 1,
           'node' => 1,
           'media' => 1,
           'break' => 1,
