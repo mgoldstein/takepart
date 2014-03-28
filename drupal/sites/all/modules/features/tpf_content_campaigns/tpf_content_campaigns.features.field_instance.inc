@@ -235,7 +235,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -346,7 +346,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -431,7 +431,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -516,7 +516,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -579,27 +579,25 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-campaign-field_campaign_homepage'
-  $field_instances['node-campaign-field_campaign_homepage'] = array(
+  // Exported field_instance: 'node-campaign-field_campaign_hp'
+  $field_instances['node-campaign-field_campaign_hp'] = array(
     'bundle' => 'campaign',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What is the homepage for this campaign?  This will be used for promotable campaigns as well as a destination for the campaign header to link.',
+    'description' => 'The URL to the campaign homepage.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 11,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 24,
       ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 0,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -611,7 +609,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 0,
       ),
       'feature_topic' => array(
         'label' => 'above',
@@ -629,7 +627,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -645,23 +643,37 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_campaign_homepage',
-    'label' => 'Homepage',
+    'field_name' => 'field_campaign_hp',
+    'label' => 'Campaign Homepage',
     'required' => 0,
     'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
       'user_register_form' => FALSE,
+      'validate_url' => 1,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
+      'active' => 0,
+      'module' => 'link',
       'settings' => array(
-        'match_operator' => 'CONTAINS',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'path' => '',
-        'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 1,
+      'type' => 'link_field',
+      'weight' => 2,
     ),
   );
 
@@ -685,7 +697,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -780,7 +792,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 19,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -862,7 +874,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 20,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -950,7 +962,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1033,7 +1045,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1128,7 +1140,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1213,7 +1225,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1298,7 +1310,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1384,7 +1396,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1473,7 +1485,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1554,7 +1566,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1672,7 +1684,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1790,7 +1802,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1889,6 +1901,91 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign-field_tab_action_override'
+  $field_instances['node-campaign-field_tab_action_override'] = array(
+    'bundle' => 'campaign',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 23,
+      ),
+      'feature_main' => array(
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 2,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tab_action_override',
+    'label' => 'TAB Action Overrides',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',
+      'weight' => 39,
     ),
   );
 
@@ -7618,7 +7715,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -7735,7 +7832,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -7816,7 +7913,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -7906,7 +8003,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -8143,7 +8240,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -8242,6 +8339,91 @@ Note: If you manually reference more items than selected here, the number refere
       ),
       'type' => 'text_textarea',
       'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign_page-field_tab_action_override'
+  $field_instances['node-campaign_page-field_tab_action_override'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 9,
+      ),
+      'feature_main' => array(
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 2,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tab_action_override',
+    'label' => 'TAB Action Overrides',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',
+      'weight' => 20,
     ),
   );
 
@@ -8896,6 +9078,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Body');
   t('Campaign Background');
   t('Campaign Card Reference');
+  t('Campaign Homepage');
   t('Campaign Logo');
   t('Campaign Menu Width');
   t('Campaign Newsletter');
@@ -8906,7 +9089,6 @@ Note: If you manually reference more items than selected here, the number refere
   t('Embed');
   t('Filter');
   t('Height in pixels.  Do not include \'px\'');
-  t('Homepage');
   t('How many news articles do you want to display?
 Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
   t('Iframe');
@@ -8947,15 +9129,16 @@ Note: If you manually reference more items than selected here, the number refere
   t('Social Link');
   t('Social Network');
   t('Subhead');
+  t('TAB Action Overrides');
   t('Text to override the global SMS copy.  The global legal copy will appear if this field is left blank.  Legal copy will only show if the SMS field has a value.');
   t('Text will appear on the left if two columns exist and in the center if only one exists.');
+  t('The URL to the campaign homepage.');
   t('The anchor tag is used for linking within a campaign page.  Please use lowercase and do NOT use spaces.');
   t('The color of the Menu Bar.');
   t('Thumbnail Image');
   t('Tray');
   t('Type');
   t('What campaign does this page belong to?');
-  t('What is the homepage for this campaign?  This will be used for promotable campaigns as well as a destination for the campaign header to link.');
   t('Which side should the media content appear on (photo/video)?');
   t('iFrame Height');
   t('iFrame Width');
