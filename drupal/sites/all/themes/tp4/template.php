@@ -202,6 +202,13 @@ function tp4_preprocess_node(&$variables, $hook) {
   }
 }
 
+
+function tp4_preprocess_node__campaign(&$variables, $hook) {
+  if(isset($variables['field_campaign_hp'][0]['url']) == true){
+    drupal_goto($variables['field_campaign_hp'][0]['url']);
+  }
+}
+
 /**
  * Override or insert variables into the campaign card media template
  */

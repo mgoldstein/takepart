@@ -579,27 +579,25 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-campaign-field_campaign_homepage'
-  $field_instances['node-campaign-field_campaign_homepage'] = array(
+  // Exported field_instance: 'node-campaign-field_campaign_hp'
+  $field_instances['node-campaign-field_campaign_hp'] = array(
     'bundle' => 'campaign',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'What is the homepage for this campaign?  This will be used for promotable campaigns as well as a destination for the campaign header to link.',
+    'description' => 'The URL to the campaign homepage.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 11,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 24,
       ),
       'feature_main' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 0,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -611,7 +609,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 0,
       ),
       'feature_topic' => array(
         'label' => 'above',
@@ -629,7 +627,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -645,23 +643,37 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_campaign_homepage',
-    'label' => 'Homepage',
+    'field_name' => 'field_campaign_hp',
+    'label' => 'Campaign Homepage',
     'required' => 0,
     'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
       'user_register_form' => FALSE,
+      'validate_url' => 1,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
+      'active' => 0,
+      'module' => 'link',
       'settings' => array(
-        'match_operator' => 'CONTAINS',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'path' => '',
-        'size' => 60,
       ),
-      'type' => 'entityreference_autocomplete',
-      'weight' => 1,
+      'type' => 'link_field',
+      'weight' => 2,
     ),
   );
 
@@ -9066,6 +9078,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Body');
   t('Campaign Background');
   t('Campaign Card Reference');
+  t('Campaign Homepage');
   t('Campaign Logo');
   t('Campaign Menu Width');
   t('Campaign Newsletter');
@@ -9076,7 +9089,6 @@ Note: If you manually reference more items than selected here, the number refere
   t('Embed');
   t('Filter');
   t('Height in pixels.  Do not include \'px\'');
-  t('Homepage');
   t('How many news articles do you want to display?
 Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
   t('Iframe');
@@ -9120,13 +9132,13 @@ Note: If you manually reference more items than selected here, the number refere
   t('TAB Action Overrides');
   t('Text to override the global SMS copy.  The global legal copy will appear if this field is left blank.  Legal copy will only show if the SMS field has a value.');
   t('Text will appear on the left if two columns exist and in the center if only one exists.');
+  t('The URL to the campaign homepage.');
   t('The anchor tag is used for linking within a campaign page.  Please use lowercase and do NOT use spaces.');
   t('The color of the Menu Bar.');
   t('Thumbnail Image');
   t('Tray');
   t('Type');
   t('What campaign does this page belong to?');
-  t('What is the homepage for this campaign?  This will be used for promotable campaigns as well as a destination for the campaign header to link.');
   t('Which side should the media content appear on (photo/video)?');
   t('iFrame Height');
   t('iFrame Width');
