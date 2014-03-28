@@ -180,6 +180,12 @@ body.node-type-campaign-card-text,
   max-width: 100%;
 }
 body.node-type-campaign-page, #main.card-page{
+
+  .tabs-primary {
+    max-width: 1000px;
+    margin: 1.5em auto;
+  }  
+
   .card{
     height: 100%;
     overflow: hidden;
@@ -303,7 +309,7 @@ body.node-type-campaign-page, #main.card-page{
       left: 0;
     }
   }
-  #main{
+  .card {
     ol li{
       list-style-type: decimal;
     }
