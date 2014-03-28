@@ -1652,6 +1652,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
         'campaign_card_media' => 'campaign_card_media',
         'campaign_card_news' => 'campaign_card_news',
         'campaign_card_social' => 'campaign_card_social',
+        'campaign_card_text' => 'campaign_card_text',
       ),
       'options' => array(
         'node_form' => '1',
