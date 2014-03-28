@@ -20,6 +20,8 @@
   </div>
   <main id="main" class="<?php print $content_classes. ' '. implode($variables['classes_array'], ' '); ?>">
   <div class="preface">
+    <?php print render($tabs); ?>
+    <?php print $messages; ?>
     <?php print render($page['preface']); ?>
   </div>
     <div id="primary">
