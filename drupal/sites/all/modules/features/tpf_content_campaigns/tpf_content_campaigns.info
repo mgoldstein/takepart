@@ -86,6 +86,7 @@ features[field_instance][] = node-campaign-field_promo_short_headline
 features[field_instance][] = node-campaign-field_promo_text
 features[field_instance][] = node-campaign-field_tab_action_override
 features[field_instance][] = node-campaign-field_thumbnail
+features[field_instance][] = node-campaign-field_topic
 features[field_instance][] = node-campaign_card_iframe-body
 features[field_instance][] = node-campaign_card_iframe-field_campaign_background
 features[field_instance][] = node-campaign_card_iframe-field_campaign_bg_color
