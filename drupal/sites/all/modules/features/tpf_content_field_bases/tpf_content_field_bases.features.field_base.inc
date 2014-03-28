@@ -4817,6 +4817,8 @@ function tpf_content_field_bases_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'action' => 'action',
+          'campaign' => 'campaign',
+          'campaign_page' => 'campaign_page',
           'feature_article' => 'feature_article',
           'openpublish_article' => 'openpublish_article',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
