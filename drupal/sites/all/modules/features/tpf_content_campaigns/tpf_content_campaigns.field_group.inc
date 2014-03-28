@@ -523,6 +523,7 @@ function tpf_content_campaigns_field_group_info() {
       2 => 'field_article_subhead',
       3 => 'field_promo_text',
       4 => 'field_thumbnail',
+      5 => 'field_tab_action_override',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -554,6 +555,7 @@ function tpf_content_campaigns_field_group_info() {
       2 => 'field_article_subhead',
       3 => 'field_promo_text',
       4 => 'field_thumbnail',
+      5 => 'field_tab_action_override',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

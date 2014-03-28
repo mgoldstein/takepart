@@ -235,7 +235,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -346,7 +346,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -431,7 +431,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -516,7 +516,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -599,7 +599,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -685,7 +685,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -780,7 +780,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 19,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -862,7 +862,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 20,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -950,7 +950,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1033,7 +1033,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1128,7 +1128,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1213,7 +1213,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1298,7 +1298,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1384,7 +1384,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1473,7 +1473,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1554,7 +1554,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1672,7 +1672,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1790,7 +1790,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1889,6 +1889,91 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign-field_tab_action_override'
+  $field_instances['node-campaign-field_tab_action_override'] = array(
+    'bundle' => 'campaign',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 23,
+      ),
+      'feature_main' => array(
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 2,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tab_action_override',
+    'label' => 'TAB Action Overrides',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',
+      'weight' => 39,
     ),
   );
 
@@ -7618,7 +7703,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -7735,7 +7820,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -7816,7 +7901,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -7906,7 +7991,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -8143,7 +8228,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -8242,6 +8327,91 @@ Note: If you manually reference more items than selected here, the number refere
       ),
       'type' => 'text_textarea',
       'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign_page-field_tab_action_override'
+  $field_instances['node-campaign_page-field_tab_action_override'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 9,
+      ),
+      'feature_main' => array(
+        'label' => 'hidden',
+        'module' => 'node_reference',
+        'settings' => array(),
+        'type' => 'node_reference_default',
+        'weight' => 2,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tab_action_override',
+    'label' => 'TAB Action Overrides',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',
+      'weight' => 20,
     ),
   );
 
@@ -8947,6 +9117,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Social Link');
   t('Social Network');
   t('Subhead');
+  t('TAB Action Overrides');
   t('Text to override the global SMS copy.  The global legal copy will appear if this field is left blank.  Legal copy will only show if the SMS field has a value.');
   t('Text will appear on the left if two columns exist and in the center if only one exists.');
   t('The anchor tag is used for linking within a campaign page.  Please use lowercase and do NOT use spaces.');
