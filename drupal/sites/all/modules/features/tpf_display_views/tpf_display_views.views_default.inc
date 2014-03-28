@@ -817,6 +817,8 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
+    'campaign' => 'campaign',
+    'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -935,6 +937,8 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'campaign' => 'campaign',
+    'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -1072,6 +1076,8 @@ echo $separator;
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'campaign' => 'campaign',
+    'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
   );
   $handler->display->display_options['path'] = 'content/%/yahoo_feed.xml ';
