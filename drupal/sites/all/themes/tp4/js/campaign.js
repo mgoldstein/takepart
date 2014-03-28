@@ -82,4 +82,17 @@
     }
   };
 
+  Drupal.behaviors.slideshowCardContextualLinks = {
+    attach: function() {
+      if($('body').hasClass('node-type-campaign-page')){
+        $('.slider').filter('.has-multiple-cards').each(function() {
+          var $this = $(this);
+          $this.find('.contextual-links-wrapper').css({
+            top: $this.find('.tray-header').outerHeight() + 2
+          });
+        });
+      }
+    }
+  };
+
 })(jQuery, Drupal, this, this.document);
