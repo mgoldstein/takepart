@@ -8,6 +8,8 @@
  */
 ?>
 <div class="card campaign-2col <?php print implode(' ', $variables['classes_array']); ?>" style="background-image: url('<?php print $variables['card_background']; ?>'); <?php print implode(' ', $variables['styles']); ?>">
+  <?php print render($title_prefix); ?>
+  <?php print render($title_suffix);  // contextual links ?>
   <article class="card-inner">
     <?php if(isset($field_campaign_card_title[0]['value']) == true): ?>
       <h1 class="card-title"><?php print $field_campaign_card_title[0]['value']; ?></h1>

@@ -186,6 +186,13 @@ body.node-type-campaign-page, #main.card-page{
     margin: 1.5em auto;
   }  
 
+  .has-multiple-cards {
+    .contextual-links-wrapper {
+      top: 52px; // clear the tray header
+    }
+  }
+
+
   .card{
     height: 100%;
     overflow: hidden;
@@ -309,7 +316,7 @@ body.node-type-campaign-page, #main.card-page{
       left: 0;
     }
   }
-  .card {
+  .card-inner {
     ol li{
       list-style-type: decimal;
     }
