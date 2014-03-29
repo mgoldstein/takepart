@@ -485,6 +485,8 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
       $file = file_load($node->field_article_main_image['und'][0]['fid']);
       $image = file_create_url($file->uri);
+      $image = image_style_url('campaign_news_3x2', $file->uri);
+      dpm($image, 'image');
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
       $image = '<img src="'. $image. '">';  //image
@@ -1127,7 +1129,7 @@ function tp4_preprocess_entity(&$variables, $hook) {
                     if ($node->status == 1) {
                         $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
 
-                        if ($node->type == 'openpublish_article' || $node->type == 'feature_article' || $node->type == 'video') {
+                        if ($node->type == 'openpublish_article' || $node->type == 'feature_article' || $node->type == 'video' || $node->type == 'campaign' || $node->type == 'campaign_page') {
                             $main_image = field_get_items('node', $node, 'field_thumbnail');
                         }
                         if ($node->type == 'action') {
