@@ -1,0 +1,112 @@
+h1{
+  font-family: $secondary-sans-font;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 36px;
+  line-height: 38px;
+  color: #000;
+}
+h2{
+  font-family: $main-brand-font;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000;
+}
+h3{
+  font-family: $primary-serif-font;
+  font-style: italic;
+  font-size: 24px;
+  line-height: 30px;
+  color: #000;
+}
+h4{
+  font-family: $primary-sans-font;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+  line-height: 20px;
+  color: #000;
+}
+h5{
+  font-family: $primary-sans-font;
+  font-weight: 100;
+  font-stretch: italic;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000;
+}
+p{
+  font-family: $primary-sans-font;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 24px;
+}
+button{
+  border: none;
+  padding: 8px;
+}
+button.primary{
+  font-family: $primary-sans-font;
+  font-size: 18px;
+  background-color: $light-mint;
+  a{
+    color: #fff;
+  }
+  &:hover{
+    background-color: #000;
+    a{
+      text-decoration: none;
+    }
+  }
+}
+button.secondary{
+  font-family: $primary-serif-font;
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000;
+  background-color: transparent;
+  a {
+    position: relative;
+    padding-left: 20px;
+    &:before{
+      font-family: "SSGizmo";
+      color: $light-mint;
+      content: '\23E9';
+      position: absolute;
+      top: -1px;
+      left: 0;
+    }
+  }
+  &:hover{
+    a{
+      text-decoration: underline;
+    }
+  }
+  // Add gizmodo arrows 
+}
+.plain a{
+  
+}
+.left-arrow{
+
+}
+.right-arrow{
+
+}
+ul li{
+
+}
+ol li{
+
+}
+.dot{
+  // I believe this is for pagination.
+}
+.media-caption{
+  font-family: $primary-sans-font;
+  font-size: 14px;
+  line-height: 22px;
+  color: #000;
+}

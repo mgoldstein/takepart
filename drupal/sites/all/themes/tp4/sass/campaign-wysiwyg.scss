@@ -28,20 +28,6 @@
 @import "elements/typography";
 @import "elements/normalize";
 @import "elements/misc";
-// @import "elements/forms";
-
-/* Page */
-@import "page/layout";
-@import "page/homepage";
-@import "page/openpublish_article";
-@import "page/openpublish_photo_gallery";
-@import "page/topic_taxonomy";
-@import "page/campaigns";
 
 /* Modules */
-@import "modules/megamenu";
-@import "modules/footer";
-@import "modules/header";
-@import "modules/sidebar";
-@import "modules/topic_features";
-@import "modules/left_drawer";
+@import "modules/wysiwyg";

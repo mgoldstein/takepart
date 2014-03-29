@@ -204,6 +204,7 @@ body.node-type-campaign-page, #main.card-page{
   /*
    * Global Elements
    */
+  @import "modules/wysiwyg";
   a.card-anchor{
     display: block;
     position: absolute;
@@ -344,35 +345,39 @@ body.node-type-campaign-page, #main.card-page{
   }
   .swipe{
     position: relative;
-    .left-arrow{
+    .arrow{
       position: absolute;
-      left: 0;
-      width: 60px;
-      height: 38px;
       z-index: 10;
       text-align: center;
-      line-height: 40px;
       display: inline-block;
-      color: #fff;
-      // top: 50%;
+      color: #000;
       cursor: pointer;
-      font-size: 30px;
-      background-color: rgba(0,0,0,0.5);
-    }
-    .right-arrow{
-      position: absolute;
-      right: 0;
-      width: 60px;
-      height: 38px;
-      z-index: 10;
-      text-align: center;
-      line-height: 40px;
-      display: inline-block;
-      color: #fff;
-      // top: 50%;
-      cursor: pointer;
-      font-size: 30px;
-      background-color: rgba(0,0,0,0.5);
+      font-size: 72px;
+      &:hover{
+        color: $light-mint;
+      }
+      &.left-arrow{
+        left: 0;
+        .arrow-inner{
+          position: relative;
+          &:after{
+            font-family: "SSGizmo";
+            content: '\25C5';
+            background-color: rgba(255,255,255,0.2);
+          }
+        }
+      }
+      &.right-arrow{
+        right: 0;
+        .arrow-inner{
+          position: relative;
+          &:after{
+            font-family: "SSGizmo";
+            content: '\25BB';
+            background-color: rgba(255,255,255,0.2);
+          }
+        }
+      }
     }
     nav.slider-nav{
       position: absolute;
