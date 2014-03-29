@@ -7870,10 +7870,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -7990,7 +7989,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8071,7 +8070,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'tp_campaigns',
         'settings' => array(),
         'type' => 'tp_card_tray',
-        'weight' => 2,
+        'weight' => 0,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8158,10 +8157,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8276,10 +8274,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 5,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -8395,10 +8392,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8515,10 +8511,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'node_reference',
         'settings' => array(),
-        'type' => 'node_reference_default',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -8599,12 +8594,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'media',
-        'weight' => 8,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'hidden',
