@@ -72,15 +72,15 @@ function tpf_content_campaigns_wysiwyg_default_profiles() {
       'paste_auto_cleanup_on_paste' => 1,
       'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
       'css_setting' => 'self',
-      'css_path' => '/sites/all/themes/tp4/css/modules/campaign-wysiwyg.css',
+      'css_path' => '/sites/all/themes/tp4/css/campaign-wysiwyg.css',
       'css_classes' => 'h1=h1
 h2=h2
 h3=h3
 h4=h4
 h5=h5
-primary button=div.button-primary
-secondary button=div.button-secondary
-plain link=div.link-plain
+primary button=button.primary
+secondary button=button.secondary
+plain link=button.plain
 media caption=div.media-caption',
     ),
     'rdf_mapping' => array(),

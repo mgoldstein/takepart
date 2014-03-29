@@ -68,8 +68,8 @@
 <?php if(isset($variables['entity']->field_campaign_card_reference['und'][1]) == true): ?>
   <nav class="slider-nav">
     <div class="slider-inner">
-      <div class="left-arrow"><</div>
-      <div class="right-arrow">></div>
+      <div class="arrow left-arrow"><div class="arrow-inner"></div></div>
+      <div class="arrow right-arrow"><div class="arrow-inner"></div></div>
     </div>
   </nav>
 <?php endif; ?>
