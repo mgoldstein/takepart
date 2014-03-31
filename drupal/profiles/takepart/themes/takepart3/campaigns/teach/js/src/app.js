@@ -84,22 +84,25 @@
         '-',
         this.model.get('school').name
       ].join(' ');
-      var description = this.$('#story-social-share').data('preview') || "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
+      var description = "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
       var socialOptions = $.extend({}, TEACH.social.options, {
         services: [
           {
             name: 'facebook',
             title: title,
             description: description,
+            url: window.location.href,
             image: this.model.get('teacher').image_link
           },
           {
             name: 'twitter',
             text: description,
+            url: window.location.href,
             via: 'TeachMovie'
           },
           {
-            name: 'googleplus'
+            name: 'googleplus',
+            url: window.location.href
           }
         ]
       });
