@@ -80,7 +80,7 @@ h4=h4
 h5=h5
 primary button=button.primary
 secondary button=button.secondary
-plain link=button.plain
+plain link=div.plain
 media caption=div.media-caption',
     ),
     'rdf_mapping' => array(),
