@@ -14,9 +14,11 @@
     <?php if(isset($field_campaign_card_title[0]['value']) == true): ?>
       <h1 class="card-title"><?php print $field_campaign_card_title[0]['value']; ?></h1>
     <?php endif; ?>
-    <div class="instructional">
-      <?php print $variables['instructional']; ?>
-    </div>
+    <?php if(isset($variables['instructional']) == true): ?>
+      <div class="instructional">
+        <?php print $variables['instructional']; ?>
+      </div>
+    <?php endif; ?>
     <div class="left-column">
       <?php print $variables['left']; ?>
     </div>

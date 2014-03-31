@@ -132,6 +132,10 @@ function tp_campaigns_init(){
     'campaign_card_social',
     'campaign_card_news',
     'campaign_card_text',
+    'campaign_card_branding',
+    'campaign_card_tap',
+    'campaign_card_twitter',
+    'campaign_card_empty',
     );
   variable_set('card_types', $card_types);
 }
