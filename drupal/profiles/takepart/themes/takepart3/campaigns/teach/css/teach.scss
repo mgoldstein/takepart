@@ -671,7 +671,7 @@ a {
 }
 
 .teach-video-page,
-.page-wordlet-teach-alliances .content,
+.teach-alliances-content,
 .teach-news-content,
 .teach-story-content,
 .teach-film-content,
@@ -1331,55 +1331,53 @@ a {
 
 /* # Alliances Page
 ================================================== */
-.page-wordlet-teach-alliances {
-  .content {
-    .main-image-wrapper {
-      margin: 0.5em 20px;
-      text-align: center;
-      img {
-        max-width: 100% !important;
-        height: auto !important;
-      }
+.teach-alliances-content {
+  .main-image-wrapper {
+    margin: 0.5em 20px;
+    text-align: center;
+    img {
+      max-width: 100% !important;
+      height: auto !important;
     }
-    .content-main,
-    .alliances {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      padding: 0 20px;
-      width: 100%;
-      float: left;
+  }
+  .content-main,
+  .alliances {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 100%;
+    float: left;
+  }
+  .alliance {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: white none;
+    @include box-shadow(0 0 6px rgba(0,0,0,0.6));
+    text-align: center;
+    overflow: hidden;
+    padding: 10px;
+    margin-bottom: 20px;
+    @media (min-width: 321px) {
+    	float: left;
+    	width: 45%;
+    	margin-right: 5%;
+    	&.alliance-even {
+    	  margin-right: 0;
+    	}
     }
-    .alliance {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      background: white none;
-      @include box-shadow(0 0 6px rgba(0,0,0,0.6));
-      text-align: center;
-      overflow: hidden;
-      padding: 10px;
-      margin-bottom: 20px;
-      @media (min-width: 321px) {
-      	float: left;
-      	width: 45%;
-      	margin-right: 5%;
-      	&.alliance-even {
-      	  margin-right: 0;
-      	}
-      }
-      @media (min-width: 769px) {
-      	width: 22%;
-      	margin-right: 4%;
-      	&.alliance-nth-child-4n {
-      	  margin-right: 0;
-      	}
-      }
-      img {
-      	max-width: 100% !important;
-      	height: auto !important;
-      	vertical-align: middle;
-      }
+    @media (min-width: 769px) {
+    	width: 22%;
+    	margin-right: 4%;
+    	&.alliance-nth-child-4n {
+    	  margin-right: 0;
+    	}
+    }
+    img {
+    	max-width: 100% !important;
+    	height: auto !important;
+    	vertical-align: middle;
     }
   }
 }

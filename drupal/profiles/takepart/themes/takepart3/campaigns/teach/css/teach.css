@@ -611,7 +611,7 @@ a {
 }
 
 .teach-video-page,
-.page-wordlet-teach-alliances .content,
+.teach-alliances-content,
 .teach-news-content,
 .teach-story-content,
 .teach-film-content,
@@ -625,7 +625,7 @@ a {
 }
 @media (min-width: 481px) {
   .teach-video-page,
-  .page-wordlet-teach-alliances .content,
+  .teach-alliances-content,
   .teach-news-content,
   .teach-story-content,
   .teach-film-content,
@@ -635,7 +635,7 @@ a {
   }
 }
 .teach-video-page .content-headline,
-.page-wordlet-teach-alliances .content .content-headline,
+.teach-alliances-content .content-headline,
 .teach-news-content .content-headline,
 .teach-story-content .content-headline,
 .teach-film-content .content-headline,
@@ -650,7 +650,7 @@ a {
 }
 @media (max-width: 480px) {
   .teach-video-page .content-headline,
-  .page-wordlet-teach-alliances .content .content-headline,
+  .teach-alliances-content .content-headline,
   .teach-news-content .content-headline,
   .teach-story-content .content-headline,
   .teach-film-content .content-headline,
@@ -660,7 +660,7 @@ a {
   }
 }
 .teach-video-page .content-subheadline,
-.page-wordlet-teach-alliances .content .content-subheadline,
+.teach-alliances-content .content-subheadline,
 .teach-news-content .content-subheadline,
 .teach-story-content .content-subheadline,
 .teach-film-content .content-subheadline,
@@ -673,7 +673,7 @@ a {
   max-width: 400px;
 }
 .teach-video-page .main-video-wrapper,
-.page-wordlet-teach-alliances .content .main-video-wrapper,
+.teach-alliances-content .main-video-wrapper,
 .teach-news-content .main-video-wrapper,
 .teach-story-content .main-video-wrapper,
 .teach-film-content .main-video-wrapper,
@@ -691,7 +691,7 @@ a {
 }
 @media (max-width: 480px) {
   .teach-video-page .main-video-wrapper,
-  .page-wordlet-teach-alliances .content .main-video-wrapper,
+  .teach-alliances-content .main-video-wrapper,
   .teach-news-content .main-video-wrapper,
   .teach-story-content .main-video-wrapper,
   .teach-film-content .main-video-wrapper,
@@ -704,7 +704,7 @@ a {
   }
 }
 .teach-video-page .ad,
-.page-wordlet-teach-alliances .content .ad,
+.teach-alliances-content .ad,
 .teach-news-content .ad,
 .teach-story-content .ad,
 .teach-film-content .ad,
@@ -720,7 +720,7 @@ a {
 }
 @media (max-width: 819px) {
   .teach-video-page .ad,
-  .page-wordlet-teach-alliances .content .ad,
+  .teach-alliances-content .ad,
   .teach-news-content .ad,
   .teach-story-content .ad,
   .teach-film-content .ad,
@@ -1377,16 +1377,16 @@ a {
 
 /* # Alliances Page
 ================================================== */
-.page-wordlet-teach-alliances .content .main-image-wrapper {
+.teach-alliances-content .main-image-wrapper {
   margin: 0.5em 20px;
   text-align: center;
 }
-.page-wordlet-teach-alliances .content .main-image-wrapper img {
+.teach-alliances-content .main-image-wrapper img {
   max-width: 100% !important;
   height: auto !important;
 }
-.page-wordlet-teach-alliances .content .content-main,
-.page-wordlet-teach-alliances .content .alliances {
+.teach-alliances-content .content-main,
+.teach-alliances-content .alliances {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1394,7 +1394,7 @@ a {
   width: 100%;
   float: left;
 }
-.page-wordlet-teach-alliances .content .alliance {
+.teach-alliances-content .alliance {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1408,25 +1408,25 @@ a {
   margin-bottom: 20px;
 }
 @media (min-width: 321px) {
-  .page-wordlet-teach-alliances .content .alliance {
+  .teach-alliances-content .alliance {
     float: left;
     width: 45%;
     margin-right: 5%;
   }
-  .page-wordlet-teach-alliances .content .alliance.alliance-even {
+  .teach-alliances-content .alliance.alliance-even {
     margin-right: 0;
   }
 }
 @media (min-width: 769px) {
-  .page-wordlet-teach-alliances .content .alliance {
+  .teach-alliances-content .alliance {
     width: 22%;
     margin-right: 4%;
   }
-  .page-wordlet-teach-alliances .content .alliance.alliance-nth-child-4n {
+  .teach-alliances-content .alliance.alliance-nth-child-4n {
     margin-right: 0;
   }
 }
-.page-wordlet-teach-alliances .content .alliance img {
+.teach-alliances-content .alliance img {
   max-width: 100% !important;
   height: auto !important;
   vertical-align: middle;
