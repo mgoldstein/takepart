@@ -266,6 +266,9 @@ body.node-type-campaign-page, #main.card-page{
         background: transparent;
         a{
           color: #000;
+          font-family: $primary-sans-font;
+          font-weight: bold;
+          font-size: 14px;
         }
         li{
           display: block;
@@ -275,8 +278,20 @@ body.node-type-campaign-page, #main.card-page{
           padding: 0;
           position: relative;
           right: 50%;
+          &:hover a{
+            color: #fff;
+            text-decoration: none;
+          }
           li{
             right: 0%;
+            a{
+              font-weight: 100;
+              font-size: 14px;
+              line-height: 18px;
+            }
+            &:hover a{
+              text-decoration: underline;
+            }
           }
         }
       }
@@ -336,14 +351,6 @@ body.node-type-campaign-page, #main.card-page{
   .field-name-field-campaign-media-video{
     figure > div > object {
       left: 0;
-    }
-  }
-  .card-inner {
-    ol li{
-      list-style-type: decimal;
-    }
-    ul li{
-      list-style-type: disc;
     }
   }
 
