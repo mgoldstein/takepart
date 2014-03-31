@@ -60,11 +60,12 @@
   <div class="story-content">
     <h2 class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></h2>
     <p class="story-meta">
-      <%= school.name %><br>
+      <%= school.name %>,
       <% if (school.city) { %>
       <%= school.city %>,&nbsp;
       <% } %>
-      <%= school.state %> <a href="/teach/stories#story/<%=id%>">read story &raquo;</a>
+      <%= school.state %><br/>
+      Written by <%=first_name%> <%=last_name%> <a href="/teach/stories#story/<%=id%>">read story &raquo;</a>
     </p>
   </div>
 </script>
