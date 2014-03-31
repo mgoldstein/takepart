@@ -3825,7 +3825,67 @@ button.secondary:hover a {
   text-decoration: underline;
 }
 
-/* line 107, ../sass/modules/_wysiwyg.scss */
+/* line 89, ../sass/modules/_wysiwyg.scss */
+.plain a {
+  color: #019f84;
+}
+/* line 91, ../sass/modules/_wysiwyg.scss */
+.plain a:hover {
+  text-decoration: underline;
+}
+
+/* line 102, ../sass/modules/_wysiwyg.scss */
+#main ul:not(.tabs) li {
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 24px;
+  position: relative;
+  padding-left: 15px;
+  list-style-type: none;
+}
+/* line 110, ../sass/modules/_wysiwyg.scss */
+#main ul:not(.tabs) li:before {
+  content: '';
+  height: 6px;
+  width: 6px;
+  background-color: #0080a3;
+  position: absolute;
+  top: 7px;
+  left: 0;
+}
+
+/* line 121, ../sass/modules/_wysiwyg.scss */
+#main ol {
+  counter-reset: li;
+  margin-left: 0;
+  padding-left: 0;
+}
+/* line 125, ../sass/modules/_wysiwyg.scss */
+#main ol > li {
+  position: relative;
+  list-style: none;
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000;
+  text-indent: 15px;
+  padding-bottom: 10px;
+}
+/* line 135, ../sass/modules/_wysiwyg.scss */
+#main ol > li:before {
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  font-weight: 500;
+  left: -22px;
+  color: #0080A3;
+  font-size: 30px;
+  text-align: center;
+}
+
+/* line 150, ../sass/modules/_wysiwyg.scss */
 .media-caption {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-size: 14px;

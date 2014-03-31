@@ -87,7 +87,10 @@ button.secondary{
   // Add gizmodo arrows 
 }
 .plain a{
-  
+  color: $mint;
+  &:hover{
+    text-decoration: underline;
+  }
 }
 .left-arrow{
 
@@ -95,11 +98,51 @@ button.secondary{
 .right-arrow{
 
 }
-ul li{
-
+#main ul:not(.tabs){
+  li{
+    font-family: $primary-sans-font;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 24px;
+    position: relative;
+    padding-left: 15px;
+    list-style-type: none;
+    &:before{
+      content: '';
+      height: 6px;
+      width: 6px;
+      background-color: #0080a3;
+      position: absolute;
+      top: 7px;
+      left: 0;
+    }
+  }
 }
-ol li{
-
+#main ol{
+  counter-reset:li;
+  margin-left:0; 
+  padding-left:0;
+  > li{
+    position:relative;
+    list-style:none;
+    font-family: $primary-sans-font;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    text-indent: 15px;
+    padding-bottom: 10px;
+    &:before{
+      content:counter(li);
+      counter-increment:li;
+      position:absolute;
+      font-weight: 500;
+      left: -22px;
+      color:#0080A3;
+      font-size: 30px;
+      text-align:center;
+    }
+  }
 }
 .dot{
   // I believe this is for pagination.
