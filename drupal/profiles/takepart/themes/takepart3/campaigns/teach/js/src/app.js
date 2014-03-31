@@ -402,7 +402,14 @@
       this.$el.html(_.template($('#app_view').html(), {}));
 
       // cache jQuery objects for convenience
-      this.$nav = this.$('.app-nav');
+      this.$nav = this.$('#app-nav');
+
+      // setup navigation behavior
+      this.$nav.on('click', 'a', function(e) {
+        e.preventDefault();
+        // app links must have the id nav-<route>
+        window.teachRouter.navigate($(this).attr('id').split('-')[1], {trigger: true});
+      });
 
       this.views.featured = new TEACH.Views.StoriesView({
         id: 'pane-featured',
@@ -520,7 +527,10 @@
   $(document).ready(function() {
     window.teachRouter = new TEACH.AppRouter(); // @todo remove global?
     var app = new TEACH.Views.AppView();
-    Backbone.history.start();
+    Backbone.history.start({
+      pushState: true,
+      root: "/teach/stories"
+    });
     window.app = app; // @todo delete me
   });
 })(jQuery, TEACH, this, this.document)

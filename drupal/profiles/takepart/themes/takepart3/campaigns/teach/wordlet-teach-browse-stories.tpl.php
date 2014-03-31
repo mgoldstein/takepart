@@ -13,10 +13,10 @@
 </div>
 <script type="text/x-template" id="app_view">
   <nav id="app-nav" class="app-nav">
-    <a id="nav-featured" href="#featured">Editor&rsquo;s Picks</a>
-    <a id="nav-popular" href="#popular">Most Popular</a>
-    <a id="nav-recent" href="#recent">Most Recent</a>
-    <a id="nav-school" href="#school">Find a School</a>
+    <a id="nav-featured" href="#">Editor&rsquo;s Picks</a>
+    <a id="nav-popular" href="#">Most Popular</a>
+    <a id="nav-recent" href="#">Most Recent</a>
+    <a id="nav-school" href="#">Find a School</a>
   </nav>
 </script>
 <script type="text/x-template" id="story_view">
