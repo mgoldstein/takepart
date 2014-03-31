@@ -83,16 +83,12 @@
     <p id="story-tags"><%=tags.join(', ')%></p>
     <% } %>
   </div>
-</script>
-<?php
-/*
   <div id="story-comments" class="story-comments">
     <h3>Comments</h3>
     <div class="story-fb-like"><fb:like href="<%=window.location.href%>" layout="button" action="like" show_faces="false" share="false"></fb:like></div>
     <fb:comments href="<%=window.location.href%>" width="638" numposts="5" colorscheme="light"></fb:comments>
   </div>
-*/
-?>
+</script>
 <script type="text/x-template" id="stories_view">
 <div class="story-count"></div>
 <div class="view-messages"></div>
