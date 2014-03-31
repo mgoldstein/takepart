@@ -23,11 +23,12 @@
   <img src="http://placehold.it/300x300&text=loading..." data-src="<%=teacher.image_uid%>.jpg" data-width="300" data-height="600" data-crop="fit" />
   <h2 class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></h2>
   <p class="story-meta">
-    <%= school.name %><br />
+    <%= school.name %><br/> 
     <% if (school.city) { %>
     <%= school.city %>,&nbsp;
     <% } %>
-    <%= school.state %>
+    <%= school.state %><br />
+    Written by <%=first_name%> <%=last_name%>
   </p>
   <p class="story-meta">
   <% if (story.preview !== '') { %>
