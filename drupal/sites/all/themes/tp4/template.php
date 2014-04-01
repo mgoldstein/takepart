@@ -237,10 +237,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
       $media = l('<img src="'. $image. '">', $link['url'], array('html' => true, 'attributes' => array('target' => $link['attributes']['target'])));
     }
     else{
-      $media = '<div class="media-wrapper">';
-      $media .= '<figure><img src="'. $image. '">';
-      $media .= '<figurecaption class="media-title">TESTING TITLE</figurecaption>';
-      $media .= '</div>';
+      $media .= '<img src="'. $image. '">';
     }
 
   }
