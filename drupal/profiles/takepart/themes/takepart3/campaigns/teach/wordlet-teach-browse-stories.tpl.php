@@ -83,11 +83,11 @@
     <h3>Tags</h3>
     <p id="story-tags"><%=tags.join(', ')%></p>
     <% } %>
-    <p><fb:like href="<%=window.location.href%>" layout="button" action="like" show_faces="false" share="false"></fb:like></p>
+    <p><fb:like href="<%=window.location.origin%>/teach/stories/story/<%=id%>" layout="button" action="like" show_faces="false" share="false"></fb:like></p>
   </div>
   <div id="story-comments" class="story-comments">
     <h3>Comments</h3>
-    <fb:comments href="<%=window.location.href%>" width="638" numposts="5" colorscheme="light"></fb:comments>
+    <fb:comments href="<%=window.location.origin%>/teach/stories/story/<%=id%>" width="638" numposts="5" colorscheme="light"></fb:comments>
   </div>
 </script>
 <script type="text/x-template" id="stories_view">
