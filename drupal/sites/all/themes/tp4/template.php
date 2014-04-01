@@ -237,7 +237,10 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
       $media = l('<img src="'. $image. '">', $link['url'], array('html' => true, 'attributes' => array('target' => $link['attributes']['target'])));
     }
     else{
-      $media = '<img src="'. $image. '">';
+      $media = '<div class="media-wrapper">';
+      $media .= '<figure><img src="'. $image. '">';
+      $media .= '<figurecaption class="media-title">TESTING TITLE</figurecaption>';
+      $media .= '</div>';
     }
 
   }
@@ -299,7 +302,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
-    $variables['styles'][] = 'background-size: 980px;';
+    $variables['styles'][] = 'background-size: 1000px;';
   }
   
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
@@ -357,7 +360,7 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
-    $variables['styles'][] = 'background-size: 980px;';
+    $variables['styles'][] = 'background-size: 1000px;';
   }
   
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
@@ -432,7 +435,7 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
-    $variables['styles'][] = 'background-size: 980px;';
+    $variables['styles'][] = 'background-size: 1000px;';
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['center'] = $center;
@@ -560,7 +563,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
-    $variables['styles'][] = 'background-size: 980px;';
+    $variables['styles'][] = 'background-size: 1000px;';
   }
 
     $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
@@ -597,7 +600,7 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
-    $variables['styles'][] = 'background-size: 980px;';
+    $variables['styles'][] = 'background-size: 1000px;';
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['instructional'] = $instructional;
@@ -640,7 +643,7 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
-    $variables['styles'][] = 'background-size: 980px;';
+    $variables['styles'][] = 'background-size: 1000px;';
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['instructional'] = $instructional;
