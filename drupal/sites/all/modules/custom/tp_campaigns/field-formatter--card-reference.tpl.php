@@ -55,6 +55,9 @@
 
 <?php print '<a class="card-anchor" id="'. $title. '"></a>'; ?>
 <?php // Print arrows is multiple cards exist in the card ?>
+
+
+
 <?php if(isset($variables['entity']->field_campaign_card_reference[1]) == true || isset($variables['entity']->field_campaign_card_reference['und'][1]) == true): ?>
   <div class="tray-header">
     <?php if(isset($tray_title) == true): ?>
@@ -72,9 +75,13 @@
       <div class="arrow right-arrow"><div class="arrow-inner"></div></div>
     </div>
   </nav>
+<?php else: ?>
+  <div class="tray-header">
+    <?php if(isset($tray_title) == true): ?>
+      <h1 class="card-title"><?php print $tray_title; ?></h1>
+    <?php endif; ?>
+  </div>
 <?php endif; ?>
-
-
 
 
 
