@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function tpf_content_campaigns_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "boxes" && $api == "box") {
+    return array("version" => "1");
+  }
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }

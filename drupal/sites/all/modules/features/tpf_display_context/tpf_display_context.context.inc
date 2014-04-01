@@ -1714,11 +1714,11 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-takepart' => array(
+        'boxes-ga_campaign_header' => array(
           'module' => 'boxes',
-          'delta' => 'takepart',
+          'delta' => 'ga_campaign_header',
           'region' => 'header',
-          'weight' => '-9',
+          'weight' => '-10',
         ),
         'tp4_support-tp4_slim_nav' => array(
           'module' => 'tp4_support',
