@@ -219,7 +219,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   $media_title = '';
   if(isset($variables['field_campaign_media_title'][0]['value']) == true){
-    $media_title = '<div class="media-title">'. $variables['field_campaign_media_title'][0]['value']. '</div>';
+    $media_title = '<h4 class="media-title">'. $variables['field_campaign_media_title'][0]['value']. '</h4>';
   }
 
   //Prepare Media
