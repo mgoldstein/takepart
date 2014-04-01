@@ -2247,6 +2247,17 @@ h1.sys-headline {
     }
   }
 
+  .school-name-instructions {
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 0;
+    .sys-stats-content & {
+      max-width: 20em;
+      margin: 0 auto;
+    }
+  }
+
   .sys-image {
     img {
       max-width: 100%;

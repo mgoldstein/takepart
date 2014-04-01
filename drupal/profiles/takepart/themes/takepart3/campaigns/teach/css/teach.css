@@ -2398,6 +2398,16 @@ h1.sys-headline span {
     width: 362px;
   }
 }
+.sys-form .school-name-instructions {
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 0;
+}
+.sys-stats-content .sys-form .school-name-instructions {
+  max-width: 20em;
+  margin: 0 auto;
+}
 .sys-form .sys-image img {
   max-width: 100%;
   height: auto !important;
