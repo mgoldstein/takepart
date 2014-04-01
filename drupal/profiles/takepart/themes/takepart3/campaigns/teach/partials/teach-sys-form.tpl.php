@@ -43,6 +43,7 @@
       <label for="school_name">School Name</label>
       <input type="text" name="school_name" id="school_name" class="input-school-name" placeholder="Name Of School Where You Had This Teacher*" disabled="disabled" required>
     </div>
+    <p class="school-name-instructions">Type at least one full word from the name of your school and then select it from the list.</p>
   </fieldset>
 
   <fieldset>

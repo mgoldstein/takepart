@@ -13,21 +13,22 @@
 </div>
 <script type="text/x-template" id="app_view">
   <nav id="app-nav" class="app-nav">
-    <a id="nav-featured" href="#featured">Editor&rsquo;s Picks</a>
-    <a id="nav-popular" href="#popular">Most Popular</a>
-    <a id="nav-recent" href="#recent">Most Recent</a>
-    <a id="nav-school" href="#school">Find a School</a>
+    <a id="nav-featured" href="#">Editor&rsquo;s Picks</a>
+    <a id="nav-popular" href="#">Most Popular</a>
+    <a id="nav-recent" href="#">Most Recent</a>
+    <a id="nav-school" href="#">Find a School</a>
   </nav>
 </script>
 <script type="text/x-template" id="story_view">
   <img src="http://placehold.it/300x300&text=loading..." data-src="<%=teacher.image_uid%>.jpg" data-width="300" data-height="600" data-crop="fit" />
   <h2 class="teacher-name"><%= teacher.first_name %> <%= teacher.last_name %></h2>
   <p class="story-meta">
-    <%= school.name %><br />
+    <%= school.name %><br/> 
     <% if (school.city) { %>
     <%= school.city %>,&nbsp;
     <% } %>
-    <%= school.state %>
+    <%= school.state %><br />
+    Written by <%=first_name%> <%=last_name%>
   </p>
   <p class="story-meta">
   <% if (story.preview !== '') { %>
@@ -82,17 +83,13 @@
     <h3>Tags</h3>
     <p id="story-tags"><%=tags.join(', ')%></p>
     <% } %>
+    <p><fb:like href="<%=window.location.href%>" layout="button" action="like" show_faces="false" share="false"></fb:like></p>
   </div>
-</script>
-<?php
-/*
   <div id="story-comments" class="story-comments">
     <h3>Comments</h3>
-    <div class="story-fb-like"><fb:like href="<%=window.location.href%>" layout="button" action="like" show_faces="false" share="false"></fb:like></div>
     <fb:comments href="<%=window.location.href%>" width="638" numposts="5" colorscheme="light"></fb:comments>
   </div>
-*/
-?>
+</script>
 <script type="text/x-template" id="stories_view">
 <div class="story-count"></div>
 <div class="view-messages"></div>

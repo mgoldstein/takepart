@@ -611,7 +611,7 @@ a {
 }
 
 .teach-video-page,
-.page-wordlet-teach-alliances .content,
+.teach-alliances-content,
 .teach-news-content,
 .teach-story-content,
 .teach-film-content,
@@ -625,7 +625,7 @@ a {
 }
 @media (min-width: 481px) {
   .teach-video-page,
-  .page-wordlet-teach-alliances .content,
+  .teach-alliances-content,
   .teach-news-content,
   .teach-story-content,
   .teach-film-content,
@@ -635,7 +635,7 @@ a {
   }
 }
 .teach-video-page .content-headline,
-.page-wordlet-teach-alliances .content .content-headline,
+.teach-alliances-content .content-headline,
 .teach-news-content .content-headline,
 .teach-story-content .content-headline,
 .teach-film-content .content-headline,
@@ -650,7 +650,7 @@ a {
 }
 @media (max-width: 480px) {
   .teach-video-page .content-headline,
-  .page-wordlet-teach-alliances .content .content-headline,
+  .teach-alliances-content .content-headline,
   .teach-news-content .content-headline,
   .teach-story-content .content-headline,
   .teach-film-content .content-headline,
@@ -660,7 +660,7 @@ a {
   }
 }
 .teach-video-page .content-subheadline,
-.page-wordlet-teach-alliances .content .content-subheadline,
+.teach-alliances-content .content-subheadline,
 .teach-news-content .content-subheadline,
 .teach-story-content .content-subheadline,
 .teach-film-content .content-subheadline,
@@ -673,7 +673,7 @@ a {
   max-width: 400px;
 }
 .teach-video-page .main-video-wrapper,
-.page-wordlet-teach-alliances .content .main-video-wrapper,
+.teach-alliances-content .main-video-wrapper,
 .teach-news-content .main-video-wrapper,
 .teach-story-content .main-video-wrapper,
 .teach-film-content .main-video-wrapper,
@@ -691,7 +691,7 @@ a {
 }
 @media (max-width: 480px) {
   .teach-video-page .main-video-wrapper,
-  .page-wordlet-teach-alliances .content .main-video-wrapper,
+  .teach-alliances-content .main-video-wrapper,
   .teach-news-content .main-video-wrapper,
   .teach-story-content .main-video-wrapper,
   .teach-film-content .main-video-wrapper,
@@ -704,7 +704,7 @@ a {
   }
 }
 .teach-video-page .ad,
-.page-wordlet-teach-alliances .content .ad,
+.teach-alliances-content .ad,
 .teach-news-content .ad,
 .teach-story-content .ad,
 .teach-film-content .ad,
@@ -720,7 +720,7 @@ a {
 }
 @media (max-width: 819px) {
   .teach-video-page .ad,
-  .page-wordlet-teach-alliances .content .ad,
+  .teach-alliances-content .ad,
   .teach-news-content .ad,
   .teach-story-content .ad,
   .teach-film-content .ad,
@@ -1377,16 +1377,16 @@ a {
 
 /* # Alliances Page
 ================================================== */
-.page-wordlet-teach-alliances .content .main-image-wrapper {
+.teach-alliances-content .main-image-wrapper {
   margin: 0.5em 20px;
   text-align: center;
 }
-.page-wordlet-teach-alliances .content .main-image-wrapper img {
+.teach-alliances-content .main-image-wrapper img {
   max-width: 100% !important;
   height: auto !important;
 }
-.page-wordlet-teach-alliances .content .content-main,
-.page-wordlet-teach-alliances .content .alliances {
+.teach-alliances-content .content-main,
+.teach-alliances-content .alliances {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1394,7 +1394,7 @@ a {
   width: 100%;
   float: left;
 }
-.page-wordlet-teach-alliances .content .alliance {
+.teach-alliances-content .alliance {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -1408,25 +1408,25 @@ a {
   margin-bottom: 20px;
 }
 @media (min-width: 321px) {
-  .page-wordlet-teach-alliances .content .alliance {
+  .teach-alliances-content .alliance {
     float: left;
     width: 45%;
     margin-right: 5%;
   }
-  .page-wordlet-teach-alliances .content .alliance.alliance-even {
+  .teach-alliances-content .alliance.alliance-even {
     margin-right: 0;
   }
 }
 @media (min-width: 769px) {
-  .page-wordlet-teach-alliances .content .alliance {
+  .teach-alliances-content .alliance {
     width: 22%;
     margin-right: 4%;
   }
-  .page-wordlet-teach-alliances .content .alliance.alliance-nth-child-4n {
+  .teach-alliances-content .alliance.alliance-nth-child-4n {
     margin-right: 0;
   }
 }
-.page-wordlet-teach-alliances .content .alliance img {
+.teach-alliances-content .alliance img {
   max-width: 100% !important;
   height: auto !important;
   vertical-align: middle;
@@ -1653,7 +1653,7 @@ a {
   text-shadow: 1px 1px #ea5f11;
 }
 .sys-stats .sys-stats-content {
-  background: transparent url('../img/notebook_paper_middle.png?1395879431') scroll repeat-y top center;
+  background: transparent url('../img/notebook_paper_middle.png?1396292427') scroll repeat-y top center;
   background-size: contain;
   padding: 0 5% 0 14%;
 }
@@ -1668,14 +1668,14 @@ a {
 .sys-stats:before, .sys-stats:after {
   content: ' ';
   display: block;
-  background: transparent url('../img/notebook_paper_top.png?1395879431') scroll no-repeat top center;
+  background: transparent url('../img/notebook_paper_top.png?1396292427') scroll no-repeat top center;
   background-size: contain;
   width: 100%;
   height: 0;
   padding-top: 23.7250554%;
 }
 .sys-stats:after {
-  background-image: url('../img/notebook_paper_bottom.png?1395879431');
+  background-image: url('../img/notebook_paper_bottom.png?1396292427');
   padding-top: 21.0643016%;
 }
 .sys-stats h2 {
@@ -1727,7 +1727,7 @@ a {
   position: absolute;
   right: 22px;
   bottom: 10px;
-  background: transparent url('../img/school-search-submit.png?1395879431') scroll no-repeat top left;
+  background: transparent url('../img/school-search-submit.png?1396292427') scroll no-repeat top left;
   background-size: 24px auto;
   width: 24px;
   height: 24px;
@@ -1870,7 +1870,7 @@ a {
   height: 0;
   padding-top: 92.6121372%;
   margin-bottom: 1em;
-  background: transparent url('../img/polaroid_blue_pin.png?1395879431') scroll no-repeat top center;
+  background: transparent url('../img/polaroid_blue_pin.png?1396292427') scroll no-repeat top center;
   background-size: contain;
   overflow: hidden;
   position: relative;
@@ -2081,7 +2081,7 @@ h1.sys-headline span {
   width: 293px;
   height: 294px;
   overflow: hidden;
-  background: transparent url('../img/post_it_paperclip_293x294.png?1395879431') scroll no-repeat top left;
+  background: transparent url('../img/post_it_paperclip_293x294.png?1396292427') scroll no-repeat top left;
   font-size: 1.33333em;
   line-height: 1.25;
   color: black;
@@ -2117,7 +2117,7 @@ h1.sys-headline span {
     top: -12px;
     right: -5px;
     margin: 0;
-    background-image: url('../img/post_it_paperclip_315x241.png?1395879431');
+    background-image: url('../img/post_it_paperclip_315x241.png?1396292427');
     max-width: 315px;
     max-height: 241px;
   }
@@ -2397,6 +2397,16 @@ h1.sys-headline span {
   .sys-form input.input-school-name[type=text] {
     width: 362px;
   }
+}
+.sys-form .school-name-instructions {
+  font-size: 12px;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 0;
+}
+.sys-stats-content .sys-form .school-name-instructions {
+  max-width: 20em;
+  margin: 0 auto;
 }
 .sys-form .sys-image img {
   max-width: 100%;
@@ -2727,7 +2737,7 @@ h1.sys-headline span {
   display: block;
   width: 100%;
   padding: .6em 4px 0;
-  background: transparent url('../img/story-modal-social-share-bg.png?1395879431') scroll no-repeat center top;
+  background: transparent url('../img/story-modal-social-share-bg.png?1396292427') scroll no-repeat center top;
   background-size: contain;
   min-height: 4.1em;
   text-align: center;
@@ -2760,11 +2770,6 @@ h1.sys-headline span {
 .sys-story-modal .story-comments h3 {
   display: inline-block;
   font-size: 2.166666667em;
-}
-.sys-story-modal .story-comments .story-fb-like {
-  display: inline-block;
-  vertical-align: baseline;
-  float: right;
 }
 
 /* # Browse Stories Page
@@ -2928,7 +2933,7 @@ h1.sys-headline span {
   width: 100%;
   height: 0;
   padding-top: 4.379562%;
-  background: transparent url('../img/browse-story-shadow.png?1395879431') scroll no-repeat top center;
+  background: transparent url('../img/browse-story-shadow.png?1396292427') scroll no-repeat top center;
   background-size: contain;
 }
 .teach-app .stories-view .story img {
@@ -2968,7 +2973,7 @@ h1.sys-headline span {
   width: 100%;
   height: 0;
   padding: 2.8571429% 0;
-  background: transparent url('../img/app-search-box-shadow.png?1395879431') scroll no-repeat center top;
+  background: transparent url('../img/app-search-box-shadow.png?1396292427') scroll no-repeat center top;
   background-size: contain;
 }
 .teach-app .sys-form input[type=text].input-school-name {
@@ -2978,7 +2983,7 @@ h1.sys-headline span {
   position: absolute;
   right: 22px;
   bottom: 10px;
-  background: transparent url('../img/school-search-submit.png?1395879431') scroll no-repeat top left;
+  background: transparent url('../img/school-search-submit.png?1396292427') scroll no-repeat top left;
   background-size: 24px auto;
   width: 24px;
   height: 24px;

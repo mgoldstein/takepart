@@ -84,22 +84,25 @@
         '-',
         this.model.get('school').name
       ].join(' ');
-      var description = this.$('#story-social-share').data('preview') || "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
+      var description = "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
       var socialOptions = $.extend({}, TEACH.social.options, {
         services: [
           {
             name: 'facebook',
             title: title,
             description: description,
+            url: window.location.href,
             image: this.model.get('teacher').image_link
           },
           {
             name: 'twitter',
             text: description,
+            url: window.location.href,
             via: 'TeachMovie'
           },
           {
-            name: 'googleplus'
+            name: 'googleplus',
+            url: window.location.href
           }
         ]
       });
@@ -402,7 +405,14 @@
       this.$el.html(_.template($('#app_view').html(), {}));
 
       // cache jQuery objects for convenience
-      this.$nav = this.$('.app-nav');
+      this.$nav = this.$('#app-nav');
+
+      // setup navigation behavior
+      this.$nav.on('click', 'a', function(e) {
+        e.preventDefault();
+        // app links must have the id nav-<route>
+        window.teachRouter.navigate($(this).attr('id').split('-')[1], {trigger: true});
+      });
 
       this.views.featured = new TEACH.Views.StoriesView({
         id: 'pane-featured',
@@ -520,7 +530,10 @@
   $(document).ready(function() {
     window.teachRouter = new TEACH.AppRouter(); // @todo remove global?
     var app = new TEACH.Views.AppView();
-    Backbone.history.start();
+    Backbone.history.start({
+      pushState: true,
+      root: "/teach/stories"
+    });
     window.app = app; // @todo delete me
   });
 })(jQuery, TEACH, this, this.document)
