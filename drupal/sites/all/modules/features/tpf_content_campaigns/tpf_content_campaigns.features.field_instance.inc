@@ -7646,13 +7646,9 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
-        ),
-        'type' => 'image',
-        'weight' => 10,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8276,7 +8272,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',

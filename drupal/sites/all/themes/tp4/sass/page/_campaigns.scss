@@ -160,6 +160,7 @@ body.node-type-campaign-card-branding,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(10, 2);
           @include zen-clear();
+          height: 100%;
           img{
             margin: 0 auto;
           }
@@ -176,22 +177,20 @@ body.node-type-campaign-card-branding,
   }
 }
 body.node-type-campaign-page .card.node-campaign-card-news,
-body.node-type-campaign-card-news{
-  .card{
-    &.campaign-1col{
-      .center-column{
-        @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(6, 4);
-          @include zen-clear();
-          img{
-            margin: 0 auto;
-          }
-          .description{
-            text-align: center;
-          }
-          .caption{
-            text-align: center;
-          }
+body.node-type-campaign-card-news .card.campaign-1col{
+  &.campaign-1col{
+    .center-column{
+      @include breakpoint($breakpoint-mobile) {
+        @include zen-grid-item(6, 4);
+        @include zen-clear();
+        img{
+          margin: 0 auto;
+        }
+        .description{
+          text-align: center;
+        }
+        .caption{
+          text-align: center;
         }
       }
     }
