@@ -13,7 +13,7 @@ function tpf_taxonomy_campaigns_taxonomy_default_vocabularies() {
       'name' => 'Campaign Categories',
       'machine_name' => 'campaign_categories',
       'description' => 'Allows editors to categorize campaigns.',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
       'rdf_mapping' => array(

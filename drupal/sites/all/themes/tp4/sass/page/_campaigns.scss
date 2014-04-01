@@ -20,6 +20,7 @@ body.node-type-campaign-card-news,
 body.node-type-campaign-card-iframe,
 body.node-type-campaign-card-social,
 body.node-type-campaign-card-text,
+body.node-type-campaign-card-branding,
 {
   $zen-column-count:  12;
   $zen-gutter-width:  30px; //TODO: change this to respond to the width of the containing element.
@@ -174,6 +175,7 @@ body.node-type-campaign-card-text,
     // Add more layouts here
   }
 }
+body.node-type-campaign-page .card.node-campaign-card-news,
 body.node-type-campaign-card-news{
   .card{
     &.campaign-1col{
@@ -481,6 +483,11 @@ body.node-type-campaign-page, #main.card-page{
     display: block;
     margin: 0 auto;
     border: none;
+  }
+
+  //Branding
+  .card.node-campaign-card-branding{
+    padding: 10px 0;
   }
 
   //News
