@@ -488,6 +488,16 @@ body.node-type-campaign-page, #main.card-page{
   .card.node-campaign-card-branding{
     padding: 10px 0;
   }
+  .branding-content{
+    text-align: center;
+    .branding-text{
+      display: inline-block;
+    }
+    img{
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
 
   //News
   .card.node-campaign-card-news{
@@ -730,6 +740,18 @@ body.node-type-campaign-page, #main.card-page{
         }
       }
     }
+    .takepart-newsletter-wrapper{
+      img{
+        display: none;  //this is horrible.
+      }
+      .form-submit{
+        opacity: .8;
+        margin-left: -50px;
+        &:hover{
+          opacity: 1;
+        }
+      }
+    }
   }
 
 
@@ -799,4 +821,33 @@ body.node-type-campaign-page, #main.card-page{
 
 
 
+}
+
+@media only screen and (max-width: 768px)
+{
+    
+  body.node-type-campaign-page{
+    
+    header#header{
+      .campaign-menu-toggle{
+        width: 20px;
+        height: 3px;
+        border-top: 9px double #000;
+        border-bottom: 3px solid #000;
+        cursor: pointer;
+        position: absolute;
+        right: 25px;
+        top: 17px;
+      }
+    }
+    
+    #block-tp-campaigns-tp-campaigns-hero{
+      //margin-top: 35px;
+      .menu-wrapper{
+            display: none;
+      }
+    }
+    
+  } 
+  
 }

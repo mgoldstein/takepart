@@ -78,8 +78,8 @@ h2=h2
 h3=h3
 h4=h4
 h5=h5
-primary button=button.primary
-secondary button=button.secondary
+primary button=div.primary-button
+secondary button=div.secondary-button
 plain link=div.plain
 media caption=div.media-caption',
     ),

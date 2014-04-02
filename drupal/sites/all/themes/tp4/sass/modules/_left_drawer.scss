@@ -31,7 +31,100 @@
     -o-transition: width 0.3s ease;
     transition: width 0.3s ease;
   }
+
+  
   #block-menu-menu-megamenu{
+    ul{
+      border-bottom: 5px solid #646464;
+      li{
+        font-family: $primary-sans-font;
+        font-weight: 100;
+        font-size: 13px;
+        padding: 15px 10px;
+        margin: 0;
+        padding: 0;
+        text-indent: 10px;
+        line-height: 48px;
+        text-transform: none;
+      }
+
+    }
+    > ul > li {
+      font-family: $secondary-sans-font;
+      font-size: 20px;
+      text-transform: uppercase;
+      border-bottom: none;
+      font-weight: 100;
+      &:nth-child(4){
+        > a{
+          width: 100%;
+          display: block;
+          text-indent: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          float: left;
+          background: image-url('takeaction-logo-mobile.png') no-repeat 10px center;
+          margin: 0;
+        }
+      }
+      &:nth-child(5){
+        > a{
+          width: 100%;
+          display: block;
+          text-indent: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          float: left;
+          background: image-url('tpl-logo-mobile.png') no-repeat 10px center;
+          margin: 0;
+        }
+      }
+    }
+    a{
+      color: #fff;
+      border-bottom: 1px solid #646464;
+      display: block;
+      width: 100%;
+      &:hover{
+        text-decoration: none;
+        background-color: #333;
+      }
+    }
+  }
+  .scrollable{
+    overflow: auto;
+    -webkit-transition-property: top, bottom;
+    transition-property: top, bottom;
+    -webkit-transition-duration: .2s, .2s;
+    transition-duration: .2s, .2s;
+    -webkit-transition-timing-function: linear, linear;
+    transition-timing-function: linear, linear;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.snap-drawers-campaign {
+  background: #000;
+  color: #fff;
+  height: auto;
+  overflow: auto;
+  position: absolute;
+  left: 0;
+  display:none;
+  .snap-drawer-campaign {
+    background: #000;
+    position: fixed;
+    width: 280px;
+    height: auto;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: width 0.3s ease;
+    -moz-transition: width 0.3s ease;
+    -ms-transition: width 0.3s ease;
+    -o-transition: width 0.3s ease;
+    transition: width 0.3s ease;
+  }
+  #block-menu-menu-campaign{
     ul{
       border-bottom: 5px solid #646464;
       li{

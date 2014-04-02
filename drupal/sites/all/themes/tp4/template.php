@@ -77,6 +77,144 @@ function tp4_html_head_alter(&$head_elements) {
     
 }
 
+function tp4_campaign_megamenu($nid){
+	
+  
+  $campaign = node_load($nid);		
+
+  /* Parent Menu */
+
+  $mega_tree = menu_tree_all_data('menu-'.$campaign->field_campaign_menu['und'][0]['value'], $link = NULL, $max_depth = 1);
+  menu_tree_add_active_path($mega_tree);
+  $parent_menu = drupal_render(menu_tree_output($mega_tree));
+  
+  /* Child Block*/
+  $mega_tree = menu_tree_all_data('menu-'.$campaign->field_campaign_menu['und'][0]['value'], $link = NULL, $max_depth = 2);
+  $output = '';
+  $output .= '<ul>';
+  foreach($mega_tree as $key => $link){
+    $output .= '<li class="mega-item '. $link['link']['mlid']. '">';
+    $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
+    $output .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path, array('fragment' => $mega_tree[$key]['link']['localized_options']['attributes']['rel'], 'attributes' => array('class' => array($link['link']['options']['attributes']['class'][0])))). '</div>';
+    $output .= '<div class="mega-content">';
+    //left menu curation
+    $menu = render(menu_tree_output($mega_tree[$key]['below']));
+    $output .= '<div class="side-menu">';
+    if($link['link']['options']['attributes']['title']){
+      $output .= '<div class="text">'. $link['link']['options']['attributes']['title']. '</div>';
+    }
+    $output .= $menu;
+    $output .= '</div>';
+
+
+    //middle content curation
+    $url = current(explode("/", $link['link']['href']));
+    if($url != 'taxonomy' && $url != 'node'){
+      $url = drupal_lookup_path("source", $link['link']['href']);
+      $url = current(explode("/", $url));
+    }
+    if($url == 'taxonomy'){
+      $entities = menu_get_object('taxonomy_term', 2, $link['link']['href']);
+    }
+    elseif($url == 'node'){
+      $entities = menu_get_object('node', 1, $link['link']['href']);
+    }
+    else{
+      // url is not a node or taxonomy
+    }
+
+
+
+
+
+    $output .= '<div class="categories">';;
+    if(isset($entities->field_promo_content_collection['und']) && isset($url)){  
+      foreach($entities->field_promo_content_collection['und'] as $key => $entity){
+        $field_collection = entity_load('field_collection_item', array($entity['value']));
+        $field_collection = current($field_collection);
+        $nid = $field_collection->field_promo_content['und'][0]['target_id']; //TODO Change promo content to a single value
+        $node = node_load($nid);
+
+        global $base_url;
+        $node_path = drupal_get_path_alias('node/'. $node->nid);
+
+        //Subcategory content menu item is linked to a taxonomy term
+        if($url == 'taxonomy'){
+          $term = $node->field_topic['und'][0]['tid'];
+          $term = taxonomy_term_load($term);
+          //Subcategory content for menu items with the ID of 'series' (example: Features & Columns)
+          if(isset($link['link']['options']['attributes']['id']) && $link['link']['options']['attributes']['id'] == 'series'){
+            $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+            $author_node = node_load($node->field_author['und'][0]['nid']);
+            $series_term = taxonomy_term_load($node->field_series['und'][0]['tid']);
+            $text = '<div class="author">'. $author_node->title. '</div>'. $node->field_promo_headline['und'][0]['value'];  //author and promo_headline
+            $label = $series_term->name;
+            $label_path = drupal_get_path_alias('taxonomy/term/'. $series_term->tid);
+          }
+          else{
+            $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+            $text = $node->field_promo_headline['und'][0]['value'];
+            $label = $term->name;
+            $label_path = drupal_get_path_alias('taxonomy/term/'. $term->tid);
+          }
+        }
+        //Subcategory content menu item is linked to a node
+        else{
+          if(isset($link['link']['options']['attributes']['id']) && $link['link']['options']['attributes']['id'] == 'action'){
+            $thumb = file_load($node->field_action_main_image['und'][0]['fid']);
+            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+            $label = taxonomy_term_load($node->field_action_type['und'][0]['tid']);
+            $label = $label->name;
+            if($node->type == 'petition_action' || $node->type == 'pledge_action'){
+              $text = $node->title;
+            }
+            else{
+              $text = $node->field_tab_call_to_action['und'][0]['value'];
+            }
+          }
+          else{
+            $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+            $label = $node->title;
+            $text = $node->field_promo_headline['und'][0]['value'];
+          }
+        }
+        
+        //Check for overrides
+        $label = (isset($field_collection->field_promo_label['und'][0]['value']) ? $field_collection->field_promo_label['und'][0]['value'] : $label);
+        $text = (isset($field_collection->field_promo_headline['und'][0]['value']) ? $field_collection->field_promo_headline['und'][0]['value'] : $text);
+        if(isset($field_collection->field_promo_thumbnail['und'][0]['fid'])){
+          $thumb = file_load($field_collection->field_promo_thumbnail['und'][0]['fid']);
+          $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+        }
+
+        //Output subcategories based on input from menu link ID field
+        $output .= '<a href="'. $base_url. '/'. $node_path. '" class="sub-category">';
+        $output .= '<div class="thumb">'. $thumb. '</div>';
+        $output .= '<div class="label">'. $label. '</div>';
+        $output .= '<div class="text">'. $text. '</div>';
+        $output .= '</a>'; //end .sub-category
+
+      }
+      $output .= '</div>'; //end .categories
+      //return more link
+      if(isset($link['link']['options']['attributes']['name'])){
+        $output .= l($link['link']['options']['attributes']['name'], $path, array('attributes' => array('class' => array('more'))));
+      }
+      else{
+        $output .= l('See More '. $link['link']['link_title'], $path, array('attributes' => array('class' => array('more'))));
+      }
+    }
+    $output .= '</div>'; //end .mega-content
+    $output .= '</li>'; //end .mega-item
+  }
+  $output .= '</ul>';
+
+  return $output;
+  
+}
 /**
  * Override or insert variables into the page templates.
  *
@@ -87,6 +225,11 @@ function tp4_html_head_alter(&$head_elements) {
  */
 function tp4_preprocess_page(&$variables) {
 
+    $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
+	$variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
+			
+			
+				
     $variables['skinny'] = render($variables['page']['skinny']);
     $variables['sidebar'] = render($variables['page']['sidebar']);
     
@@ -178,8 +321,9 @@ function tp4_preprocess_block(&$variables) {
  * @param $hook
  *   The name of the template being rendered ("node" in this case.)
  */
-function tp4_preprocess_node(&$variables, $hook) {
-    // Add template suggestions for view modes and
+function tp4_preprocess_node(&$variables, $hook) {		
+				
+	// Add template suggestions for view modes and
     // node types per view view mode.
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $vars['view_mode'];
@@ -613,10 +757,11 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   if(isset($campaign_category->field_campaign_category_image['und'][0]['uri']) == true){
     $url = file_create_url($campaign_category->field_campaign_category_image['und'][0]['uri']);
     $image .= '<img src="'. $url. '">';
-    if(isset($variables['field_campaign_branding_url'][0]['url']) == true){
-      $branding_url = $variables['field_campaign_branding_url'][0]['url'];
-      $target = $variables['field_campaign_branding_url'][0]['attributes']['target'];
-      $center .= l($image, $branding_url, array('html' => true, 'attributes' => array('target' => $target)));
+    if(isset($campaign_category->field_campaign_branding_url['und'][0]['url']) == true){
+      $branding_url = $campaign_category->field_campaign_branding_url['und'][0]['url'];
+      $target = $campaign_category->field_campaign_branding_url['und'][0]['attributes']['target'];
+      $center .= '<div class="branding-content"><div class="branding-text">'. $campaign_category->field_campaign_branding_text['und'][0]['value']. '</div>';
+      $center .= l($image, $branding_url, array('html' => true, 'attributes' => array('target' => $target))). '</div>';
     }
     else{
       $center .= $image;
