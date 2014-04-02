@@ -1,5 +1,20 @@
 <form id="sys-form" class="sys-form" action="/">
   <fieldset>
+    <legend>Your Story</legend>
+    <div class="field-wrapper field-wrapper-story-year clearfix">
+      <label class="visible"><span class="vertically-center">Approximate Year This Story Happened</span>
+        <select name="story_year" id="story_year" class="pull-right" required>
+	  <option value="">Year*</option>
+          <?php foreach (array_reverse(range(1950, date(Y))) as $year) : ?>
+          <option value="<?php print $year; ?>"><?php print $year; ?></option>
+          <?php endforeach; ?>
+        </select>
+      </label>
+    </div>
+    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="8" placeholder="Tell Us Your Story" maxlength="2500" required></textarea></div>
+  </fieldset>
+    
+  <fieldset>
     <legend>About You</legend>
     <div class="field-wrapper left"><label for="first_name">First Name</label><input type="text" name="first_name" id="first_name" placeholder="First Name*" required></div>
     <div class="field-wrapper right"><label for="last_name">Last Name</label><input type="text" name="last_name" id="last_name" placeholder="Last Name*" required></div>
@@ -26,6 +41,7 @@
       </select>
     </div>
   </fieldset>
+    
   <fieldset>
     <legend>Your Teacher</legend>
     <div class="field-wrapper left"><label for="teacher_first_name">First Name</label><input type="text" name="teacher_first_name" id="teacher_first_name" placeholder="First Name*" required></div>
@@ -47,24 +63,10 @@
   </fieldset>
 
   <fieldset>
-    <legend>Your Story</legend>
-    <div class="field-wrapper field-wrapper-story-year clearfix">
-      <label class="visible"><span class="vertically-center">Approximate Year This Story Happened</span>
-        <select name="story_year" id="story_year" class="pull-right" required>
-	  <option value="">Year*</option>
-          <?php foreach (array_reverse(range(1950, date(Y))) as $year) : ?>
-          <option value="<?php print $year; ?>"><?php print $year; ?></option>
-          <?php endforeach; ?>
-        </select>
-      </label>
-    </div>
-    <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="8" placeholder="Tell Us Your Story" maxlength="2500" required></textarea></div>
-  </fieldset>
-  <fieldset>
-    <legend>Pictures Make The Story!</legend>
+    <legend>OPTIONAL: Pictures Make The Story!</legend>
     <div id="sys-image-user" class="sys-image sys-image-user left">
       <label class="sys-image-content" for="user_image">
-	<p><strong>Your Picture</strong><br /><small>(Optional)</small></p>
+	<p><strong>Your Picture</strong></p>
 	<p class="sys-image-description"><small>Upload a photo you own or have the rights to here (a yearbook photo, family photo, etc.).</small></p>
 	<p class="sys-upload-buttons"><span>Upload</span></p>
       </label>
@@ -74,7 +76,7 @@
     </div>
     <div id="sys-image-teacher" class="sys-image sys-image-teacher right">
       <label class="sys-image-content" for="teacher_image">
-	<p><strong>Your Teacher's Picture</strong><br /><small>(Optional)</small></p>
+	<p><strong>Your Teacher's Picture</strong></p>
 	<p class="sys-image-description"><small>Upload a photo of the teacher or school featured in your story that you own or have the rights to here.</small></p>
 	<p class="sys-upload-buttons"><span>Upload</span></p>
       </label>
