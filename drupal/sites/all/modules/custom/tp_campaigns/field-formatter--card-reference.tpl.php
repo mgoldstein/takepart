@@ -75,11 +75,9 @@
       <div class="arrow right-arrow"><div class="arrow-inner"></div></div>
     </div>
   </nav>
-<?php else: ?>
+<?php elseif(isset($tray_title) == true): ?>
   <div class="tray-header">
-    <?php if(isset($tray_title) == true): ?>
-      <h1 class="card-title"><?php print $tray_title; ?></h1>
-    <?php endif; ?>
+    <h1 class="card-title"><?php print $tray_title; ?></h1>
   </div>
 <?php endif; ?>
 
