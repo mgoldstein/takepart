@@ -47,7 +47,7 @@ function takepart_federatedmedia_page_alter(&$page) {
         return;
     }
 
-    $fmscripturl = check_plain(variable_get("federatedmedia_js_file_location", 'http://static.fmpub.net/site/takepart'));
+    $fmscripturl = check_plain(variable_get("federatedmedia_js_file_location", '//static.fmpub.net/site/takepart'));
     $fmbug = "<!-- FM Tracking Pixel -->" . "\n";
     $fmbug .= '<script type="text/javascript" src="' . $fmscripturl . '"></script>' . "\n";
     $fmbug .= "<!-- /FM Tracking Pixel -->" . "\n";
@@ -75,7 +75,7 @@ function federatedmedia_admin_settings() {
     $form['general']['federatedmedia_js_file_location'] = array(
         '#type' => 'textfield',
         '#title' => t("Complete path to Federated Media Javascript file"),
-        '#default_value' => check_plain(variable_get("federatedmedia_js_file_location", 'http://static.fmpub.net/site/takepart')),
+        '#default_value' => check_plain(variable_get("federatedmedia_js_file_location", '//static.fmpub.net/site/takepart')),
     );
 
     $form['roles'] = array(

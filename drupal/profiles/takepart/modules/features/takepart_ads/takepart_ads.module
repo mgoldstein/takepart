@@ -181,7 +181,7 @@ GS_googleEnableAllServices();';
     $header3 = 'GA_googleFetchAds();';
 
     if (!empty($ad_html)) {
-        drupal_add_js('http://partner.googleadservices.com/gampad/google_service.js', 'external');
+        drupal_add_js('//partner.googleadservices.com/gampad/google_service.js', 'external');
         drupal_add_js($header1, 'inline');
         drupal_add_js($header2, 'inline');
         drupal_add_js($header3, 'inline');
