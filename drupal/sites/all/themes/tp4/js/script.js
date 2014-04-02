@@ -38,11 +38,12 @@
         }
     };
 
-    /**
+/**
  * Settings for the snap.js library
  */
     Drupal.behaviors.snapperSettings = {
         attach: function(context, settings) {
+        	
             var snapper = new Snap({
                 element: document.getElementById('page-wrap')
             });
@@ -68,12 +69,65 @@
             $('.menu-toggle').on('click', function(){
                 if( snapper.state().state=="left" ){
                     snapper.close();
+                    $('.snap-drawer').css("display", "none");
                 } else {
                     snapper.open('left');
+                     if($('.snap-drawer').css('display') == 'none'){
+            	     	$('.snap-drawer').css("display", "block");
+            	     }
+                    
                 }
             });
         }
     };
+
+
+    // Campaign Page 
+    Drupal.behaviors.campaignsnapperSettings = {
+        attach: function(context, settings) {
+        	
+            var campaignsnapper = new Snap({
+                element: document.getElementById('main')
+            });
+
+            campaignsnapper.settings({
+                dragger: null,
+                disable: 'none',
+                addBodyClasses: true,
+                hyperextensible: true,
+                resistance: 0.5,
+                flickThreshold: 50,
+                transitionSpeed: 0.3,
+                easing: 'ease',
+                maxPosition: 280,
+                minPosition: 0,
+                tapToClose: true,
+                touchToDrag: false,
+                clickToDrag: false,
+                slideIntent: 40,
+                minDragDistance: 5
+            });
+
+            $('.campaign-menu-toggle').on('click', function(){
+                if( campaignsnapper.state().state=="left" ){
+                    campaignsnapper.close();
+                    $('.snap-drawers-campaign').css("display", "none");
+                } else {
+                    campaignsnapper.open('left');
+                    $('.snap-drawers-campaign').css("display", "block");
+                    if($('.snap-drawer').css('display') == 'block'){
+
+            	    	$('.snap-drawer').css("display", "none");
+            	    }
+                   
+                    
+                }
+            });
+        }
+    };
+
+
+
 
 /**
  * Behaviors for tpsocial shares
