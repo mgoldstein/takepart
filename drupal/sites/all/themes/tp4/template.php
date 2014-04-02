@@ -284,7 +284,7 @@ function tp4_preprocess_page(&$variables) {
     $variables['anchor_tags'] = $anchor_tags;
   }
 
-
+  dpm($variables); // todo
 
 }
 

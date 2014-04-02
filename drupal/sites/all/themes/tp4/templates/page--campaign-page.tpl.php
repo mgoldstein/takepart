@@ -36,7 +36,6 @@
     <?php print render($page['preface']); ?>
   </div>
     <div id="primary">
-      <?php print $messages; ?>
       <?php print render($page['content']); ?>
     </div>
   </main>
