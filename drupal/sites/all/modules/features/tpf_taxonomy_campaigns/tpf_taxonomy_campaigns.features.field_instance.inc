@@ -15,14 +15,14 @@ function tpf_taxonomy_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_categories',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Text that will appear before the campaign logo.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -33,13 +33,13 @@ function tpf_taxonomy_campaigns_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'campaign_full_html' => 'campaign_full_html',
-          'full_html' => 'full_html',
-          'limited_html' => 'limited_html',
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
-          'php_code' => 'php_code',
+          'full_html' => 0,
+          'limited_html' => 0,
+          'no_wysiwg_full_html' => 0,
+          'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -64,18 +64,20 @@ function tpf_taxonomy_campaigns_field_default_field_instances() {
           ),
         ),
       ),
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'maxlength_js' => 0,
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
       ),
-      'type' => 'text_textfield',
+      'type' => 'text_textarea',
       'weight' => 1,
     ),
   );
@@ -92,7 +94,7 @@ function tpf_taxonomy_campaigns_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 1,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'taxonomy_term',
@@ -180,7 +182,6 @@ function tpf_taxonomy_campaigns_field_default_field_instances() {
   t('Branding Image');
   t('Branding Text');
   t('Branding URL');
-  t('Text that will appear before the campaign logo.');
 
   return $field_instances;
 }
