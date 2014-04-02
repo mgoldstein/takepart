@@ -35,6 +35,16 @@
           var $Slider = $('#' + $this.attr('id')).Swipe().data('Swipe');
           $this.find('.left-arrow').on('click', function(){$Slider.prev()});
           $this.find('.right-arrow').on('click', function(){$Slider.next()}); 
+
+          // set up pagination -- active class and click event
+          $this.find('.slider-pagination')
+            .find('a:first').addClass('active')
+            .parent().on('click', 'a', function(e) {
+            var $link = $(this); // don't clobber $this in case we need it
+            e.preventDefault();
+            $link.addClass('active').siblings('.active').removeClass('active');
+            $Slider.slide($link.data('slide'));
+          });
         });
       }
 

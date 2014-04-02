@@ -258,6 +258,27 @@ function tp4_preprocess_page(&$variables) {
   if(in_array($variables['node']->type, $card_types) == true){
     $variables['theme_hook_suggestions'][] = 'page__campaign_page';
     $variables['classes_array'][] = 'card-page';
+
+    $variables['campaign_content_meta'] = array();
+    // Create some meta information if the user can edit the node
+    if (node_access("update", $variables['node'], $variables['user'])) {
+      $variables['campaign_content_meta']['#prefix'] = '<p class="campaign-content-meta">';
+      $variables['campaign_content_meta']['#suffix'] = '</p>';
+
+      $variables['campaign_content_meta']['header'] = array(
+        '#prefix' => '<strong>',
+        '#suffix' => '</strong>',
+        '#markup' => 'Campaign Card <small>(' . end(explode('_', $variables['node']->type)) . ')</small>',
+      );
+      $variables['campaign_content_meta']['node_title'] = array(
+        '#prefix' => ' &middot; ',
+        '#suffix' => ' &middot; ',
+        '#markup' => $variables['node']->title,
+      );
+      $variables['campaign_content_meta']['edit_link'] = array(
+        '#markup' => l('Edit', 'node/' . $variables['node']->nid . '/edit')
+      );
+    }
   }
 
 
@@ -757,15 +778,17 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   if(isset($campaign_category->field_campaign_category_image['und'][0]['uri']) == true){
     $url = file_create_url($campaign_category->field_campaign_category_image['und'][0]['uri']);
     $image .= '<img src="'. $url. '">';
+    $center .= '<div class="branding-content">';
+    $center .= '<div class="branding-text">'. $campaign_category->field_campaign_branding_text['und'][0]['value']. '</div>';
     if(isset($campaign_category->field_campaign_branding_url['und'][0]['url']) == true){
       $branding_url = $campaign_category->field_campaign_branding_url['und'][0]['url'];
       $target = $campaign_category->field_campaign_branding_url['und'][0]['attributes']['target'];
-      $center .= '<div class="branding-content"><div class="branding-text">'. $campaign_category->field_campaign_branding_text['und'][0]['value']. '</div>';
-      $center .= l($image, $branding_url, array('html' => true, 'attributes' => array('target' => $target))). '</div>';
+      $center .= l($image, $branding_url, array('html' => true, 'attributes' => array('target' => $target)));
     }
     else{
       $center .= $image;
     }
+    $center .= '</div>';
     
   }
 
