@@ -263,6 +263,7 @@ body.node-type-campaign-page, #main.card-page{
           font-family: $primary-sans-font;
           font-weight: bold;
           font-size: 14px;
+          text-transform: uppercase;
         }
         li{
           display: block;
@@ -384,6 +385,7 @@ body.node-type-campaign-page, #main.card-page{
       }
       &.left-arrow{
         left: 0;
+        top: 100px;
         .arrow-inner{
           position: relative;
           &:after{
@@ -395,6 +397,7 @@ body.node-type-campaign-page, #main.card-page{
       }
       &.right-arrow{
         right: 0;
+        top: 100px;
         .arrow-inner{
           position: relative;
           &:after{
@@ -525,7 +528,7 @@ body.node-type-campaign-page, #main.card-page{
       }
       p.short-headline{
         margin: 0;
-        padding-top: 10px;
+        padding-top: 0;
       }
       .more-link p{
         padding-top: 30px;
@@ -553,7 +556,7 @@ body.node-type-campaign-page, #main.card-page{
       text-indent: 1000px;
       vertical-align: middle;
       color: #fff;
-      font-size: 60px;
+      font-size: 40px;
       &:before{
         width: 100px;
         height: 100px;
