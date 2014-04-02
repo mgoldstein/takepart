@@ -40,14 +40,14 @@
  * @see template_process()
  */
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
-    "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" version="XHTML+RDFa 1.0" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?> >
+    "//www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="//www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" version="XHTML+RDFa 1.0" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?> >
 
     <head profile="<?php print $grddl_profile; ?>">
         <title><?php print $head_title; ?></title>
         <?php print $head; ?>
         <? if ( $is_iframed ): ?>
-            <base href="<?php print 'http://' . $_SERVER['HTTP_HOST']; ?>" target="_parent" />
+            <base href="<?php print '//' . $_SERVER['HTTP_HOST']; ?>" target="_parent" />
         <? endif ?>
         <meta name="viewport" content="width=device-width">
         <?php print $styles; ?>
