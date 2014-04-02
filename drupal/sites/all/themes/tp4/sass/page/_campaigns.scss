@@ -52,7 +52,7 @@ body.node-type-campaign-card-branding,
       .instructional{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(10, 2);
-          padding-bottom: 40px;
+          padding-bottom: 20px;
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(8, 3);
@@ -82,7 +82,7 @@ body.node-type-campaign-card-branding,
       .instructional{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(10, 2);
-          padding-bottom: 40px;
+          padding-bottom: 20px;
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(8, 3);
@@ -112,7 +112,7 @@ body.node-type-campaign-card-branding,
       .instructional{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(10, 2);
-          padding-bottom: 40px;
+          padding-bottom: 20px;
           text-align: center;
         }
         @include breakpoint($breakpoint-tablet) {
@@ -143,7 +143,7 @@ body.node-type-campaign-card-branding,
       .instructional{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(10, 2);
-          padding-bottom: 40px;
+          padding-bottom: 20px;
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(8, 3);
@@ -308,6 +308,10 @@ body.node-type-campaign-page, #main.card-page{
   }
   h1.card-title{
     text-align: center;
+    margin-bottom: 20px;
+    &.has-instructional{
+      margin-bottom: 20px;
+    }
   }
   #main{
     max-width: 100%;
