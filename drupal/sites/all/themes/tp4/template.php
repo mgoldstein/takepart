@@ -258,6 +258,27 @@ function tp4_preprocess_page(&$variables) {
   if(in_array($variables['node']->type, $card_types) == true){
     $variables['theme_hook_suggestions'][] = 'page__campaign_page';
     $variables['classes_array'][] = 'card-page';
+
+    $variables['campaign_content_meta'] = array();
+    // Create some meta information if the user can edit the node
+    if (node_access("update", $variables['node'], $variables['user'])) {
+      $variables['campaign_content_meta']['#prefix'] = '<p class="campaign-content-meta">';
+      $variables['campaign_content_meta']['#suffix'] = '</p>';
+
+      $variables['campaign_content_meta']['header'] = array(
+        '#prefix' => '<strong>',
+        '#suffix' => '</strong>',
+        '#markup' => 'Campaign Card <small>(' . end(explode('_', $variables['node']->type)) . ')</small>',
+      );
+      $variables['campaign_content_meta']['node_title'] = array(
+        '#prefix' => ' &middot; ',
+        '#suffix' => ' &middot; ',
+        '#markup' => $variables['node']->title,
+      );
+      $variables['campaign_content_meta']['edit_link'] = array(
+        '#markup' => l('Edit', 'node/' . $variables['node']->nid . '/edit')
+      );
+    }
   }
 
 
@@ -284,7 +305,7 @@ function tp4_preprocess_page(&$variables) {
     $variables['anchor_tags'] = $anchor_tags;
   }
 
-  dpm($variables); // todo
+
 
 }
 
