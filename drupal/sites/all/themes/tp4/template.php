@@ -613,10 +613,11 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   if(isset($campaign_category->field_campaign_category_image['und'][0]['uri']) == true){
     $url = file_create_url($campaign_category->field_campaign_category_image['und'][0]['uri']);
     $image .= '<img src="'. $url. '">';
-    if(isset($variables['field_campaign_branding_url'][0]['url']) == true){
-      $branding_url = $variables['field_campaign_branding_url'][0]['url'];
-      $target = $variables['field_campaign_branding_url'][0]['attributes']['target'];
-      $center .= l($image, $branding_url, array('html' => true, 'attributes' => array('target' => $target)));
+    if(isset($campaign_category->field_campaign_branding_url['und'][0]['url']) == true){
+      $branding_url = $campaign_category->field_campaign_branding_url['und'][0]['url'];
+      $target = $campaign_category->field_campaign_branding_url['und'][0]['attributes']['target'];
+      $center .= '<div class="branding-content"><div class="branding-text">'. $campaign_category->field_campaign_branding_text['und'][0]['value']. '</div>';
+      $center .= l($image, $branding_url, array('html' => true, 'attributes' => array('target' => $target))). '</div>';
     }
     else{
       $center .= $image;

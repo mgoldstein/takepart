@@ -488,6 +488,16 @@ body.node-type-campaign-page, #main.card-page{
   .card.node-campaign-card-branding{
     padding: 10px 0;
   }
+  .branding-content{
+    text-align: center;
+    .branding-text{
+      display: inline-block;
+    }
+    img{
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
 
   //News
   .card.node-campaign-card-news{
