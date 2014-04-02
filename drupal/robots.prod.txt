@@ -46,7 +46,6 @@ Disallow: /tag/
 Disallow: /taxonomy/
 Disallow: /themes/
 Disallow: /url/
-Disallow: /user
 Disallow: /user/
 Disallow: /users/
 Disallow: /CHANGELOG.txt
