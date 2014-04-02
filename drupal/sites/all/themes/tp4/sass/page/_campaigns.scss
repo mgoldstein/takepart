@@ -740,6 +740,18 @@ body.node-type-campaign-page, #main.card-page{
         }
       }
     }
+    .takepart-newsletter-wrapper{
+      img{
+        display: none;  //this is horrible.
+      }
+      .form-submit{
+        opacity: .8;
+        margin-left: -50px;
+        &:hover{
+          opacity: 1;
+        }
+      }
+    }
   }
 
 
