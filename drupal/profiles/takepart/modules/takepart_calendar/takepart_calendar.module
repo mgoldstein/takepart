@@ -268,7 +268,7 @@ function _takepart_calendar_init() {
 						(function() {
 						    if((typeof gapi != 'undefined') && (gapi)) {
         						gapi.plusone.go();
-        						var script = 'http://s7.addthis.com/js/250/addthis_widget.js#domready=1';
+        						var script = '//s7.addthis.com/js/250/addthis_widget.js#domready=1';
     							if (window.addthis){
         							window.addthis = null;
     							}
@@ -362,7 +362,7 @@ function takepart_calendar_field_formatter_view($entity_type, $entity, $field, $
           foreach ($matches as $val) {
           
             if(isset($val[2])) {
-              $url = 'http://w.takepart.com/donorschoose/dcdata/dc-' . trim(str_replace("'", '', $val[2]))  . '.inc';
+              $url = '//w.takepart.com/donorschoose/dcdata/dc-' . trim(str_replace("'", '', $val[2]))  . '.inc';
               $inc = takepart_calendar_curl($url);
             }
             

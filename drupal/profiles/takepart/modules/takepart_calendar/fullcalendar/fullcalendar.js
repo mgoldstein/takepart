@@ -4915,7 +4915,7 @@ function enableTextSelection(element) {
 			
 
 			
-                facebookurl = 	"http://www.facebook.com/sharer.php?s=100" + 
+                facebookurl = 	"//www.facebook.com/sharer.php?s=100" + 
                 "&amp;p[title]=" + htmlEscape(event.title) +
                 "&amp;p[url]=" + htmlEscape(url);
 			
