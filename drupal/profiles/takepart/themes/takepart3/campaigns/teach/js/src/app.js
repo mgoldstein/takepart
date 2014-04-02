@@ -85,24 +85,25 @@
         this.model.get('school').name
       ].join(' ');
       var description = "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
+      var url = window.location.origin + '/teach/stories/story/' + this.model.get('id');
       var socialOptions = $.extend({}, TEACH.social.options, {
         services: [
           {
             name: 'facebook',
             title: title,
             description: description,
-            url: window.location.href,
+            url: url,
             image: this.model.get('teacher').image_link
           },
           {
             name: 'twitter',
             text: description,
-            url: window.location.href,
+            url: url,
             via: 'TeachMovie'
           },
           {
             name: 'googleplus',
-            url: window.location.href
+            url: url
           }
         ]
       });
