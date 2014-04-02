@@ -1,6 +1,6 @@
 h1{
   font-family: $secondary-sans-font;
-  font-weight: bold;
+  font-weight: 100;
   text-transform: uppercase;
   font-size: 36px;
   line-height: 38px;
@@ -42,11 +42,10 @@ p{
   font-size: 16px;
   line-height: 24px;
 }
-button{
+.primary-button{
   border: none;
   padding: 8px;
-}
-button.primary{
+  display: inline-block;
   font-family: $primary-sans-font;
   font-size: 18px;
   background-color: $light-mint;
@@ -63,7 +62,10 @@ button.primary{
 p{
   margin: 0;
 }
-button.secondary{
+.secondary-button{
+  border: none;
+  padding: 8px;
+  display: inline-block;
   font-family: $primary-serif-font;
   font-weight: 100;
   font-size: 18px;
