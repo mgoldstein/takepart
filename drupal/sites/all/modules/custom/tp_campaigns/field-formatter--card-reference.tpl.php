@@ -63,7 +63,11 @@
     <?php if(isset($tray_title) == true): ?>
       <h1 class="card-title"><?php print $tray_title; ?></h1>
     <?php endif; ?>
-    <div class="slider pagination"></div>
+    <nav class="slider-pagination">
+      <?php for($i = 1; $i <= count($items); $i++) : ?>
+        <a href="#" data-slide="<?php print $i; ?>"><?php print $i; ?></a>
+      <?php endfor; ?>
+    </nav>
   </div>
 <?php endif; ?>
 
