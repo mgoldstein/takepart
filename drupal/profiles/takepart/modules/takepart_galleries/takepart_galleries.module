@@ -290,7 +290,7 @@ function _takepart_galleries_metatags($nid) {
             '#tag' => 'meta',
             '#attributes' => array(
                 'property' => 'og:url',
-                'content' => 'http://' . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]
+                'content' => '//' . $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"]
             ),
         ),
         'takepart_galleries_og_title' => array(

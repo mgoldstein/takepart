@@ -34,6 +34,7 @@ function tpf_content_video_field_group_info() {
       8 => 'field_playlist_size',
       9 => 'field_sharing_enabled',
       10 => 'field_share_url',
+      11 => 'field_player_embed_code',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -91,12 +92,11 @@ function tpf_content_video_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_admin_tag',
-      1 => 'field_display_tag',
-      2 => 'field_free_tag',
-      3 => 'field_series',
-      4 => 'field_significance',
-      5 => 'field_topic',
-      6 => 'field_topic_box',
+      1 => 'field_free_tag',
+      2 => 'field_series',
+      3 => 'field_significance',
+      4 => 'field_topic',
+      5 => 'field_topic_box',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

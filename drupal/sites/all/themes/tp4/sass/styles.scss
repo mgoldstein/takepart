@@ -17,6 +17,7 @@
 
 /* Base */
 @import "base/fonts";
+@import "base/icons";
 
 /* Helpers */
 @import "helpers/mixins";
@@ -43,3 +44,4 @@
 @import "modules/sidebar";
 @import "modules/topic_features";
 @import "modules/left_drawer";
+@import "modules/poll";

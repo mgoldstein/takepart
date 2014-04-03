@@ -1,469 +1,539 @@
-(function($, window, document, undefined) {
+(function($, TEACH, window, document, undefined) {
 
-    // magic numbers
-    var TAP = {
-	postURL: "http://takeaction.takepart.com/user_teach_stories",
-	action_id: "9035114",
-	partner_code: "04a1744b80e16bc495c06aad0c6294a3"
-    };
-
-    //
-    // Our own little modernizr
-    //
-
-    // detect touch support
-    var touchEnabled = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch;
-
-    // detect localstorage
-    var hasStorage = (function() {
-        try {
-            localStorage.setItem('foo', 'test');
-            localStorage.removeItem('test');
-            return true;
-        } catch (e) {
-            return false;
-        }
-    })();
-
-    // detect whether we're in an iframe
-    var loadedInIframe = (function() {
-        try {
-            return window.self !== window.top;
-        } catch (e) {
-            return true;
-        }
-    })();
-
-    // convenience values for COPPA compliance
-    var coppaCookieName = "pm_sys_user_birthdate",
-            coppaCookieExpires = 1, // days to keep the cookie
-            msDay = 24 * 60 * 60 * 1000, // one day in milliseconds
-            ageRequirement = Date.now() - 13 * 365 * msDay; // 13 years in milliseconds
-
-    // Simple JavaScript Templating
-    // John Resig - http://ejohn.org/ - MIT Licensed
-    var templateCache = {};
-
-    var tmpl = function tmpl(str, data) {
-        // Figure out if we're getting a template, or if we need to
-        // load the template - and be sure to cache the result.
-        var fn = !/\W/.test(str) ?
-                templateCache[str] = templateCache[str] ||
-                tmpl(document.getElementById(str).innerHTML) :
-                // Generate a reusable function that will serve as a template
-                // generator (and which will be cached).
-                new Function("obj",
-                        "var p=[],print=function(){p.push.apply(p,arguments);};" +
-                        // Introduce the data as local variables using with(){}
-                        "with(obj){p.push('" +
-                        // Convert the template into pure JavaScript
-                        str
-                        .replace(/[\r\t\n]/g, " ")
-                        .split("<%").join("\t")
-                        .replace(/((^|%>)[^\t]*)'/g, "$1\r")
-                        .replace(/\t=(.*?)%>/g, "',$1,'")
-                        .split("\t").join("');")
-                        .split("%>").join("p.push('")
-                        .split("\r").join("\\'")
-                        + "');}return p.join('');");
-
-        // Provide some basic currying to the user
-        return data ? fn(data) : fn;
-    };
-
-    String.prototype.htmlEntities = function() {
-        return this.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    };
-
-    // polyfill for String.trim()
-    if (!String.prototype.trim) {
-        String.prototype.trim = function() {
-            return this.replace(/^\s+|\s+$/g, '');
-        };
+  TEACH.AppRouter = Backbone.Router.extend({
+    routes: {
+      '(/)': 'featured',      
+      'featured(/)': 'featured',
+      'popular(/)': 'popular',
+      'recent(/)': 'recent',
+      'school(/)': 'school',
+      'school/:state(/:id)': 'schoolView',
+      'tag/:tag': 'tagView',
+      'story/:id': 'storyView'
     }
+  });
 
-    // show coppa error message and delete form from page
-    var showCoppaErrorMessage = function() {
-        $('#sys-form-content').slideUp();
-        $('#sys-coppa-content').removeClass('initially-hidden');
-        $('html, body').animate({
-            scrollTop: $('.menu-wrapper').offset().top - 25
+  TEACH.Models.Story = Backbone.Model.extend({
+    defaults: {
+        id: null,
+        first_name: '',
+        last_name: '',
+        image_uid: null,
+        image_link: '',
+        story: {},
+        school: {},
+        teacher: {}
+    },
+
+    parse: function(data) {
+      if (!data.image_uid) {
+        data.image_uid = 'sys-defaults/avatar';
+        data.image_link = $.cloudinary.url(data.image_uid + '.jpg');
+      }
+      if (!data.teacher.image_uid) {
+        data.teacher.image_uid = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
+        data.teacher.image_link = $.cloudinary.url(data.teacher.image_uid + '.jpg');
+      }
+      return data;
+    },
+
+    initialize: function() {
+      // fill in image values if necessary
+      this.set(this.parse(this.attributes));
+    }
+  });
+
+  TEACH.Views.StoryView = Backbone.View.extend({
+    tagName: "article",
+    className: "story",
+    initialize: function() {
+      this.template = _.template($('#story_view').html());
+      this.listenTo(this.model, "change", this.render);
+    },
+
+    render: function() {
+      this.$el
+        .html(this.template(this.model.toJSON()))
+        .find('img').cloudinary()
+      ;
+      return this;
+    }
+  });
+
+  TEACH.Views.StoryFullView = Backbone.View.extend({
+    tagName: "article",
+    className: "sys-story-modal",
+
+    initialize: function() {
+      this.template = _.template($('#story_full_view').html());
+
+      this.listenTo(this.model, "change", this.render);
+    },
+
+    render: function() {
+
+      // render the element
+      this.$el.html(this.template(this.model.toJSON()));
+      this.$('img').cloudinary();
+
+      // set up social options
+      var title =  [
+        "Teacher Stories:",
+        this.model.get('teacher').first_name,
+        this.model.get('teacher').last_name,
+        '-',
+        this.model.get('school').name
+      ].join(' ');
+      var description = "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
+      var socialOptions = $.extend({}, TEACH.social.options, {
+        services: [
+          {
+            name: 'facebook',
+            title: title,
+            description: description,
+            url: window.location.href,
+            image: this.model.get('teacher').image_link
+          },
+          {
+            name: 'twitter',
+            text: description,
+            url: window.location.href,
+            via: 'TeachMovie'
+          },
+          {
+            name: 'googleplus',
+            url: window.location.href
+          }
+        ]
+      });
+
+      this.$('#story-social-share').tpsocial(socialOptions);
+      window.FB && FB.XFBML.parse(this.el);
+
+      // bind social share event to contact TAP
+      this.$('#story-social-share a').on('click', _.bind(function(){
+        $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/share?publisher_key=' + TEACH.TAP.partner_code);
+      }, this));
+
+      // When we click on a tag, remove the view
+      this.$('#story-tags').on('click', 'a', _.bind(function(e){
+        this.remove();
+      }, this));
+
+      // phone home and say we have a successful view
+      // and trigger the analytics event
+      $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/view?publisher_key=' + TEACH.TAP.partner_code);
+      $(window).trigger('teach-story-view');
+
+      return this;
+    },
+  });
+
+  TEACH.Collections.Stories = Backbone.PageableCollection.extend({
+    model: TEACH.Models.Story,
+
+    mode: 'infinite',
+
+    url: TEACH.TAP.postURL,
+
+    state: {
+        pageSize: 6
+    },
+
+    queryParams: {
+        pageSize: 'per',
+        totalPages: null,
+        totalRecords: null,
+        sortKey: null,
+        order: null,
+        action_id: TEACH.TAP.action_id,
+        publisher_key: TEACH.TAP.partner_code
+    },
+
+    parseRecords: function(response) {
+      return response.signatures;
+    },
+
+    parseLinks: function(response) {
+      var data = {
+        first: TEACH.TAP.postURL,
+      };
+
+      if (this.state.currentPage != 1) {
+        data.prev = TEACH.TAP.postURL;
+      }
+
+      if (this.state.currentPage < response.total_pages) {
+        data.next = TEACH.TAP.postURL;
+      }
+
+      return data;
+    },
+
+    parseState: function (response) {
+      return {
+        // the new signatures are added AFTERWARDS to the calculation
+        totalRecords: response.total_signature_count - response.signatures.length
+      };
+    }
+  });
+
+  TEACH.Views.StoriesView = Backbone.View.extend({
+    className: "teach-app-pane stories-view",
+
+    events:  {
+      'click .story': 'showStoriesModal',
+      'click .load-more-stories-button': "loadMoreStories"
+    },
+
+    modal: null,
+
+    initialize: function() {
+      this.$el.empty().html(_.template($('#stories_view').html(), {}));
+      this.$wrapper = this.$('.stories-wrapper').masonry({
+        gutter: 20,
+        transitionDuration: 0
+      });
+
+      this.listenTo(this.collection, 'reset', this.render);
+      this.on('show', _.bind(function() {
+        this.$wrapper.masonry('layout');
+      }, this));
+      this.collection.fetch();
+    },
+
+    render: function() {
+      var $newElements;
+
+      // drop in the new stories
+      this.collection.each(_.bind(function(model) {
+        var view = new TEACH.Views.StoryView({
+          model: model,
+          id: 'story-' + model.get('id')
         });
-    };
+        view.render().$el
+          .data('index', this.collection.fullCollection.indexOf(model))
+        ;
+        $newElements = $newElements ? $newElements.add(view.$el) : view.$el;
+      },this));
 
-    var sysFormSubmit = function(form) {
-        var $form = $(form);
-        var formData = parseFormData($form);
-        var userBirthdate = new Date(formData.user_year, formData.user_month, formData.user_day);
+      // handle an empty result set
+      if (!$newElements) {
+        this.$('.load-more-stories').addClass('hidden');
+        return this;
+      }
 
-        var $submit = $form.find('input[type=submit]').addClass('in-progress');
+      $newElements.appendTo(this.$wrapper);
 
-        if (userBirthdate.getTime() > ageRequirement) {
+      $newElements.imagesLoaded(_.bind(function() {      
+        this.$wrapper.masonry('appended', $newElements).masonry('layout');
+      }, this));
 
-            // set coppa cookie
-            var expires = new Date();
-            expires.setTime(expires.getTime() + coppaCookieExpires * msDay);
-            document.cookie = escape(coppaCookieName) + "=" + userBirthdate.getTime() + "; expires=" + expires.toGMTString() + '; path=/';
+      this.$('.story-count').text((this.collection.state.totalRecords ? this.collection.state.totalRecords : '0') + ' Stories').prependTo(this.$el);
 
-            showCoppaErrorMessage();
+      this.$('.load-more-stories')
+        .toggleClass('hidden', this.collection.fullCollection.length == this.collection.state.totalRecords)
+        .find('a')
+          .removeClass('in-progress')
+      ;
 
-            return false;
-        }
+      return this;
+    },
 
-        // we've passed the age check. Lets have a beer.
+    loadMoreStories: function(e) {
+      e.preventDefault();
+      this.$el.find('.load-more-stories-button').addClass('in-progress');
+      this.collection.getNextPage();
+    },
 
-        var json = {
-            "format": "json",
-            "action_id": TAP.action_id,
-            "opt_ins": {},
-            "user_action": {
-                "partner_code": TAP.partner_code,
-                "email": formData.email,
-                "last_name": formData.first_name,
-                "first_name": formData.last_name,
-		"image_link": formData.user_image_link || '',
-		"image_uid": formData.user_image_id || '',
-                // boilerplate
-                "zip": "90210",
-                "state": "CA",
-                "city": "Beverly Hills",
-                "address": "331 Foothill Rd."
-            },
-            "story": {
-                "year": formData.story_year,
-                "preview": "",
-                "title": formData.story_title,
-                "body": formData.story_body
-            },
-            "teacher": {
-                "first_name": formData.teacher_first_name,
-                "last_name": formData.teacher_last_name,
-		"image_link": formData.teacher_image_link || '',
-		"image_uid": formData.teacher_image_id || ''
-            },
-            "school": {
-                "name": formData.school_name,
-                "city": formData.school_city,
-                "state": formData.school_state,
-                "external_id": formData.school_id
+    showStoriesModal: function(e) {
+      e.preventDefault();
+      this.modal && this.modal.remove();
+      this.modal = new TEACH.Views.StoriesModalView({
+        collection: new TEACH.Collections.Stories(this.collection.fullCollection.clone().models, {
+          mode: 'client',
+          parentView: this,
+          state: {
+            firstPage: 0,
+            pageSize: 1,
+            currentPage: $(e.currentTarget).data('index')
+          }
+        })
+      });
+      this.modal.render();
+    }
+  });
+
+  TEACH.Views.StoriesSchoolSearchView = TEACH.Views.StoriesView.extend({
+    getSchoolName: function() {
+      $.ajax({
+        url: '/proxy?request=' + encodeURIComponent('http://api.greatschools.org/schools/' + this.attributes['data-state'] + '/' + this.attributes['data-gsid'] + '?key=zzlcyx4aijxe1nmnagoziqxx'),
+        success: _.bind(function(response) {
+          this.schoolName = $(response).find('school name').text()
+          this.$('#school_search_results_name').text(this.schoolName);
+        }, this)
+      });
+    },
+
+    render: function() {
+      TEACH.Views.StoriesView.prototype.render.apply(this);
+      this.$('.story-count').hide();
+
+      var viewMessages = [];
+
+      var templateVars = {
+        count: this.collection.length > 0 ? this.collection.state.totalRecords : 'no',
+        state: TEACH.stateNames[this.attributes['data-state']],
+        verb: this.collection.state.totalRecords == 1 ? 'is' : 'are',
+        plural: this.collection.state.totalRecords == 1 ? 'story' : 'stories'
+      };
+
+      var messagesTemplate = this.attributes['data-gsid'] ? '#school_count_results_view' : '#school_no_gsid_results_view';
+
+      viewMessages.push(_.template($(messagesTemplate).html(), templateVars));
+
+      if (this.collection.length == 0) {
+        viewMessages.push(_.template($('#school_no_results_view').html(), {}));
+      }
+
+      this.$('.view-messages').html(viewMessages.join(''));
+      if (parseInt(this.attributes['data-gsid']) > 0 && typeof this.schoolName === 'undefined') {
+        this.getSchoolName();
+      }
+
+      return this;
+    }
+  });
+
+  TEACH.Views.StoriesModalView = Backbone.View.extend({
+
+    currentStory: null,
+
+    events: {
+      'click #previous-story': 'showPreviousStory',
+      'click #next-story': 'showNextStory'
+    },
+
+    initialize: function() {
+      this.listenTo(this.collection, 'reset', this.render);
+
+      this.$el.html([
+        '<a id="previous-story" class="story-nav previous-story"></a>',
+        '<a id="next-story" class="story-nav next-story"></a>'
+      ].join(''));
+    },
+    render: function() {
+      // clean up
+      this.$('.sys-story-modal').remove();
+      if (this.currentStory) {
+        this.currentStory.remove();
+      }
+      // put the story in
+      this.currentStory = new TEACH.Views.StoryFullView({
+        model: this.collection.models[0] // there's only one model
+      });
+      this.currentStory.render().$el.appendTo(this.$el);
+
+      // show the links we want
+      this.$('.story-nav').hide();
+      if (this.collection.state.currentPage != 0) {
+        this.$('#previous-story').show();
+      }
+      if (this.collection.state.currentPage != this.collection.state.lastPage) {
+        this.$('#next-story').show();
+      }
+      $.tpmodal.show({
+        id: 'sys_modal_',
+        node: this.el,
+        afterClose: _.bind(function() {
+          this.remove();
+        },this)
+      });
+      window.teachRouter.navigate('story/' + this.collection.models[0].get('id'), {
+        replace: true
+      });
+      this.delegateEvents();
+    },
+
+    showPreviousStory: function(e) {
+      e.preventDefault();
+      this.collection.getPreviousPage();
+    },
+
+    showNextStory: function(e) {
+      e.preventDefault();
+      this.collection.getNextPage();
+    }
+  });
+
+  TEACH.Views.FindSchoolView = Backbone.View.extend({
+    className: 'teach-app-pane school-view',
+
+    events: {
+      'submit form': 'formSubmitHandler'
+    },
+
+    initialize: function() {
+      this.$el.html(_.template($('#school_view').html(), {}));
+
+      if ($.fn.schoolBrowser) {
+        this.$('form').schoolBrowser();
+      }
+
+      // this function needs to be proxied to "this"
+      this.on('show', this.updateCustomSelect, this);
+    },
+
+    updateCustomSelect: function() {
+      this.$('.hasCustomSelect').trigger('update').trigger('change');
+    },
+
+    formSubmitHandler: function(e) {
+      e.preventDefault();
+      this.$('.school-name').removeClass('in-progress');
+      this.trigger('browseschool', this.$('#school_id').val(), this.$('#school_state').val());
+    }
+  });
+
+  TEACH.Views.AppView = Backbone.View.extend({
+
+    el: 'section#app',
+
+    views: {},
+
+    initialize: function() {
+      this.$el.html(_.template($('#app_view').html(), {}));
+
+      // cache jQuery objects for convenience
+      this.$nav = this.$('#app-nav');
+
+      // setup navigation behavior
+      this.$nav.on('click', 'a', function(e) {
+        e.preventDefault();
+        // app links must have the id nav-<route>
+        window.teachRouter.navigate($(this).attr('id').split('-')[1], {trigger: true});
+      });
+
+      this.views.featured = new TEACH.Views.StoriesView({
+        id: 'pane-featured',
+        collection: new TEACH.Collections.Stories([], {
+          queryParams: {
+            filter: 'feature'
+          }
+        })
+      });
+      this.views.popular = new TEACH.Views.StoriesView({
+        id: 'pane-popular',
+        collection: new TEACH.Collections.Stories([], {
+          queryParams: {
+            sort: 'popular'
+          }
+        })
+      });
+      this.views.recent = new TEACH.Views.StoriesView({
+        id: 'pane-recent',
+        collection: new TEACH.Collections.Stories()
+      });
+      this.views.school = new TEACH.Views.FindSchoolView({ id: 'pane-find-school' });
+
+      // add the views to the app.
+      _.each(this.views, function(view) {
+        view.$el.appendTo(this.$el).hide();
+      }, this);
+
+      // the router sets up the state of the application
+      this.listenTo(window.teachRouter, 'route', this.route);
+      this.listenTo(this.views.school, 'browseschool', function(id, state) {
+        window.teachRouter.navigate('school/' + state + (id != 0 ? '/' + id : ''), {trigger: true});
+      });
+    },
+
+    route: function(route, params) {
+      var queryParams = {};
+
+      this.$nav.find('a').removeClass('active');
+      this.$el.find('.teach-app-pane').hide();
+      this.views.extra && this.views.extra.remove();
+      $.tpmodal.hide({id: 'sys_modal_'});
+
+      switch (route) {
+        case "featured":
+        case "popular":
+        case "recent":
+        case "school":
+          this.$nav.find('#nav-' + route).addClass('active');
+          this.views[route].$el.show();
+          this.views[route].trigger('show');
+          break;
+        case "schoolView":
+          queryParams.school_state = params[0];
+          queryParams.school_external_id = params[1] ? params[1] : 0;
+
+          this.views.extra = new TEACH.Views.StoriesSchoolSearchView({
+            id: 'pane-schoolView',
+            collection: new TEACH.Collections.Stories([], {
+              queryParams: queryParams
+            }),
+            attributes: {
+              "data-state": queryParams.school_state,
+              "data-gsid": queryParams.school_external_id
             }
-        };
+          });
 
-        if (formData.email_subscribe == true) {
-            json.opt_ins.teach_stories = "true";
-        }
+          // show the search box
+          this.$nav.find('#nav-school').addClass('active');
+          this.views.school.$el.show();
+          this.views.school.trigger('show');
 
-        $.ajax({
-            type: 'POST',
-            url: TAP.postURL,
-            data: JSON.stringify(json),
-            contentType: 'application/json',
-            dataType: 'json',
-            success: function(data, textStatus, jqXHR) {
-                $('#sys-form-content').slideUp();
-                $('#sys-thanks-content').removeClass('initially-hidden');
-		$('html, body').animate({
-		    scrollTop: $('.menu-wrapper').offset().top - 25
-		});
-                /* Analytics */
-                takepart.analytics.track('teach_story_entry');
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                $submit.removeClass('in-progress');
-                alert('There was an error submitting your story.');
-            }
-        });
+          this.views.extra.$el.appendTo(this.$el);
 
-    };
+          window.scroll(0,this.$nav.offset().top);
+          break;
+        case "tagView":
+          queryParams.tag = params[0];
+          this.views.extra = new TEACH.Views.StoriesView({
+            id: 'pane-tagView',
+            collection: new TEACH.Collections.Stories([], {
+              queryParams: queryParams
+            })
+          });
+          this.views.extra.$el.appendTo(this.$el);
+          break;
+        case "storyView":
+          this.views.extra = new TEACH.Views.StoryFullView({
+            model: new TEACH.Models.Story()
+          });
+          this.views.extra.model.url = '/proxy?request=' + TEACH.TAP.postURL + '/' + params[0] + encodeURIComponent('?action_id=' + TEACH.TAP.action_id + '&publisher_key=' + TEACH.TAP.partner_code);
+          this.views.extra.model.fetch({
+            success: _.bind(function() {
+              $.tpmodal.show({
+                id: 'sys_modal_',
+                node: this.views.extra.el,
+                afterClose: _.bind(function() {
+                  // @todo this isn't firing
+                  this.views.extra.remove();
+                  delete this.views['extra'];
+                  window.teachRouter.navigate('', {
+                    replace: true
+                  });
+                }, this)
+              });
+            }, this)
+          });
+          this.$nav.find('#nav-featured').addClass('active');
+          this.views.featured.$el.show();
+          break;
+      }
+    }
+  });
 
-    var parseFormData = function($form) {
-        var formData = {};
-        $form.find("input, textarea, select").not('[type="checkbox"], [type="file"]').each(function() {
-            // @see String.prototype.htmlEntities
-            formData[this.id] = $(this).val().trim().replace(/\n+/g, ' ').htmlEntities();
-        });
-
-        // get more useful checkbox values
-        formData.email_subscribe = $form.find('#email_subscribe').is(':checked');
-        formData.terms_agree = $form.find('#terms_agree').is(':checked');
-
-        return formData;
-    };
-
-    // not using Drupal.behaviors because this JS has nothing to do with drupal
-    $(document).ready(function() {
-        /*
-        $(window).on('tp-social-click', function(e, args) {
-            takepart.analytics.track('tp-social-click', args);
-        });
-        */
-        // hide some things when we're on facebook
-        // (i.e., when the site is loaded in an iframe)
-        if (loadedInIframe) {
-            $('.footer-wrapper, .slimnav').remove();
-            $('body').css('border', 'none');
-            $('.page-wrap').css('padding', '0');
-            // $('#page').css('padding', '0'); // in case we want to go even wider
-        }
-
-        // coppa check
-        var birthDate = null;
-        $.each(document.cookie.split(";"), function() {
-            if (this.trim().indexOf(escape(coppaCookieName)) === 0) {
-                birthDate = unescape(this.trim().substring(escape(coppaCookieName).length + 1, this.length));
-            }
-        });
-
-        if (birthDate && (birthDate > ageRequirement)) {
-            showCoppaErrorMessage();
-            return false;
-        }
-
-        // we've passed the age test. have a beer.
-        var $form = $('#sys-form');
-
-        // populate character count divs from maxlength properties
-        $form.find('input[maxlength], textarea[maxlength]').each(function() {
-            var $this = $(this),
-                    maxlength = $this.attr('maxlength');
-
-            // build up character count elements:
-            // <p class="character-count character-count-story-body"><span></span> Characters Left</p>
-            // @todo This should be templated
-            var $characterCountWrapper = $('<p class="character-count" />')
-                    .addClass('character-count-' + $this.attr('id').split('_').join('-'))
-                    .html(' Characters Left')
-                    .insertAfter($this)
-                    .toggleClass('hidden', maxlength > 400)
-                ,
-                $characterCount = $('<span />').html(maxlength).prependTo($characterCountWrapper)
-            ;
-
-            // set initial value
-            $characterCount.html(maxlength);
-
-            // when the value of the input changes, adjust the character count
-            // and add classes for alert/warning to the characer count wrapper
-            $this.on('keyup', function() {
-                var count = maxlength - $this.val().length;
-                $characterCount.html(count);
-                $characterCountWrapper.toggleClass('hidden', count > 400);
-                $characterCountWrapper.toggleClass('count-alert', count < maxlength / 4);
-                $characterCountWrapper.toggleClass('count-warning', count < maxlength / 10);
-            });
-        });
-
-        // style select boxes on non-touch-enabled devices
-	var $selects = $form.find('select');
-	var resizeTimeout = null;
-        if (!touchEnabled && !loadedInIframe) {
-	    $selects.customSelect();
-	    $(window).on('resize', function() {
-		clearTimeout (resizeTimeout);
-
-		resizeTimeout = setTimeout(function() {
-		    $selects.trigger('update');
-		}, 750);
-	    });
-        } else {
-            // If we don't use styled customSelect widgets
-            // the alignment is off
-            $form
-                    .find('.vertically-center')
-                    .removeClass('vertically-center')
-                    .css('display', 'block')
-                    ;
-        }
-
-        // School ID field stuff
-        var $schoolId = $('#school_id');
-        var $schoolState = $('#school_state');
-        var $schoolName = $('#school_name');
-        var $schoolCity = $('#school_city');
-        var nameCache = (hasStorage && JSON.parse(localStorage.getItem('sysSchoolCache'))) || {};
-
-        var $schoolNameMessage = $('<p class="character-count" />')
-                .addClass('character-count-school-name')
-                .insertAfter($schoolName)
-                ;
-
-        // enable/disable school name field based on state value
-        $schoolState.on('change', function() {
-            $schoolName.attr('disabled', $schoolState.val() === "");
-        });
-
-        // TODO delete gsid on name change
-        $schoolName.on('change', function() {
-            if (!$schoolName.data('autocompleteOpen')) {
-                $schoolId.val('0');
-		$schoolCity.val('');
-            }
-	}).on('blur', function() {
-	    $schoolName.removeClass('<in-progress></in-progress>');
-	})
-
-        var resetSchoolNameMessage = function() {
-            $schoolNameMessage.removeClass('count-warning').html('');
-        };
-
-        var updateSchoolFields = function(e, ui) {
-            $schoolName.val(ui.item.label.split(' (')[0]);
-            $schoolId.val(ui.item.value.school_id);
-            $schoolCity.val(ui.item.value.school_city);
-            resetSchoolNameMessage();
-            return false; // prevent default behaivor
-        };
-
-        $schoolName.autocomplete({
-            minLength: 4,
-            select: updateSchoolFields,
-            focus: updateSchoolFields,
-            blur: updateSchoolFields,
-            search: function() {
-                $schoolName.addClass('in-progress');
-                resetSchoolNameMessage();
-            },
-            open: function() {
-                $schoolName.removeClass('in-progress').data('autocompleteOpen', true);
-                resetSchoolNameMessage();
-            },
-            close: function() {
-                resetSchoolNameMessage();
-                setTimeout(function() {
-                    $schoolName.data('autocompleteOpen', false);
-                }, 1000)
-            },
-            source: function(request, response) {
-
-                var hash = encodeURIComponent('&state=' + $schoolState.val() + '&q=' + encodeURIComponent(request.term));
-                if (hash in nameCache) {
-                    response(nameCache[hash]);
-                    return;
-                }
-
-                $.ajax({
-                    url: '/proxy?request=' + encodeURIComponent('http://api.greatschools.org/search/schools/?key=zzlcyx4aijxe1nmnagoziqxx') + hash,
-                    error: function() {
-                        var errorMessage = [
-                            "We can't find &quot;" + request.term.htmlEntities() + "&quot;.",
-                            "For best results, type a single, complete word and choose from the list."
-                        ];
-                        $schoolName.removeClass('in-progress');
-                        $schoolNameMessage
-                                .addClass('count-warning')
-                                .html(errorMessage.join('<br/>'));
-                    },
-                    success: function(data, textStatus, jqXHR) {
-                        var schools = [];
-                        $(data).find('school').each(function() {
-                            var $this = $(this);
-                            schools.push({
-                                label: $this.find('name').text() + ' (' + $this.find('city').text() + ', ' + $this.find('state').text() + ')',
-                                value: {
-                                    school_id: $this.find('gsId').text(),
-                                    school_city: $this.find('city').text(),
-                                    school_state: $this.find('state').text()
-                                }
-                            });
-                        });
-                        nameCache[hash] = schools;
-                        hasStorage && localStorage.setItem('sysSchoolCache', JSON.stringify(nameCache));
-                        response(schools);
-                    }
-                });
-            }
-        });
-
-        // this makes file upload fields look nicer
-        var $imageInputs = $form.find('.sys-image');
-        var equalizeImageHeights = function() {
-            var height = 0;
-            $imageInputs.find('.sys-image-description').each(function() {
-                var thisHeight = $(this).height();
-                height = thisHeight > height ? thisHeight : height;
-            }).css({minHeight: height + 'px'});
-        };
-
-        equalizeImageHeights();
-
-        // get the Cloudinary support going
-        $form.find('.sys-image').each(function() {
-            var $this = $(this);
-            var $file = $this.find('input[type="file"]');
-            var id = $file.attr('id');
-
-            var done = function(e, data) {
-                var response = JSON.parse(data.jqXHR.responseText);
-                var $id = $('#' + id + "_id").val(response.public_id);
-                var $url = $('#' + id + "_link").val(response.url);
-
-                // hide the description and get rid of anything from previous uploads.
-                $this.find('.sys-image-description').hide();
-                $this.find('.thumbnail, .sys-upload-buttons span:not(:first-child)').remove();
-
-                $('<p>').addClass('thumbnail').html($.cloudinary.image(response.public_id + '.jpg', {width: 150, height: 150, crop: 'fill'})).insertAfter($this.find('p:first-child'));
-                equalizeImageHeights();
-
-                $('<span />').text('Remove').on('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    $this.find('.thumbnail').remove();
-                    $this.find('.sys-image-description').show();
-
-                    $id.val('');
-                    $url.val('');
-
-                    $(this).off('click').remove();
-                }).appendTo($this.find('.sys-upload-buttons'));
-            };
-
-            $file.cloudinary_fileupload({
-                formData: Drupal.settings.cloudinary_support.file_field_data,
-                done: done
-            });
-        });
-
-        // Preview
-        $form.find('#sys-preview').on('click', function(e) {
-            e.preventDefault();
-            if (!$form.valid()) {
-                $form.find('.error').first().focus();
-                return;
-            }
-
-	    var formData = parseFormData($form);
-
-	    // replace Cloudinary values with defaults
-	    if (!formData.user_image_id) {
-		formData.user_image_id = 'sys-defaults/avatar';
-		formData.user_image_link = $.cloudinary.url(formData.user_image_id + '.jpg');
-	    }
-
-	    if (!formData.teacher_image_id) {
-		formData.teacher_image_id = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
-		formData.teacher_image_link = $.cloudinary.url(formData.teacher_image_id + '.jpg');
-	    }
-
-	    $modal = $(tmpl('story_template', formData));
-            $modal.find('img').cloudinary();
-            $.tpmodal.show({
-                id: "sys_modal_",
-                node: $modal[0],
-                width: Math.min(window.innerWidth, 800) + "px",
-                height: Math.min(window.innerHeight, 500) + "px"
-            });
-        });
-
-        $form.validate({
-            submitHandler: sysFormSubmit,
-            messages: {
-                terms_agree: {
-                    required: "You must agree to to submit your story."
-                }
-            }
-        });
-
-    }); // $(document).ready() callback
-
-})(jQuery, this, this.document)
+  $(document).ready(function() {
+    window.teachRouter = new TEACH.AppRouter(); // @todo remove global?
+    var app = new TEACH.Views.AppView();
+    Backbone.history.start({
+      pushState: true,
+      root: "/teach/stories"
+    });
+    window.app = app; // @todo delete me
+  });
+})(jQuery, TEACH, this, this.document)

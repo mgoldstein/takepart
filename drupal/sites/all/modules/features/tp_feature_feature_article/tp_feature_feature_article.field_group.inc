@@ -48,7 +48,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -78,15 +78,14 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
       0 => 'field_admin_tag',
-      1 => 'field_display_tag',
-      2 => 'field_free_tag',
-      3 => 'field_series',
-      4 => 'field_significance',
-      5 => 'field_topic',
-      6 => 'field_topic_box',
+      1 => 'field_free_tag',
+      2 => 'field_series',
+      3 => 'field_significance',
+      4 => 'field_topic',
+      5 => 'field_topic_box',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

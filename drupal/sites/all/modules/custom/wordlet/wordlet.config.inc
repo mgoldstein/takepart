@@ -450,6 +450,7 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/campaign.js',
         'campaigns/teach/js/teach.js',
+        'campaigns/teach/js/film.js'
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -467,6 +468,7 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/campaign.js',
         'campaigns/teach/js/teach.js',
+        'campaigns/teach/js/film.js'
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -484,6 +486,7 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/campaign.js',
         'campaigns/teach/js/teach.js',
+        'campaigns/teach/js/film.js'
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -535,7 +538,7 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/campaign.js',
         'campaigns/teach/js/teach.js',
-        'campaigns/teach/js/teach.app.js', // the "share your story" app
+        'campaigns/teach/js/teach.form.js', // the "share your story" app
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -570,6 +573,7 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/campaign.js',
         'campaigns/teach/js/teach.js',
+        'campaigns/teach/js/film.js'
       ),
       'load' => array('site', 'teach_campaign'),
     ),
@@ -587,9 +591,28 @@ function _wordlet_configuration() {
       'js' => array(
         'campaigns/campaign.js',
         'campaigns/teach/js/teach.js',
+        'campaigns/teach/js/teach.landing.js' // the landing page app
       ),
       'load' => array('site', 'teach_campaign'),
     ),
+
+    'teach_browse_stories' => array(
+      'title' => 'TEACH - Browse Stories',
+      'path' => 'teach/stories',
+      'published' => TRUE,
+      'wrappers' => array('teach', 'campaign', 'html'),
+      'css' => array(
+        'css/normalize_cms.css',
+        'campaigns/teach/css/teach.css',
+      ),
+      'js' => array(
+        'campaigns/campaign.js',
+        'campaigns/teach/js/teach.js',
+        'campaigns/teach/js/teach.app.js' // the browse app
+      ),
+      'load' => array('site', 'teach_campaign'),
+    ),
+
 
     // -----------------------------
     // FOOD INC Campaign ----------------

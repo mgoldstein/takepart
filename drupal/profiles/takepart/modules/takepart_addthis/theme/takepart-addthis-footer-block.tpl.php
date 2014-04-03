@@ -19,9 +19,7 @@ $node = menu_get_object();
 </div>
 <?php
   //Add these scripts for the block
-  //<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
-  //<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e090234793de9ba"></script>
   drupal_add_js('var addthis_config = {"data_track_clickback":true};', 'inline');
-  drupal_add_js('http://s7.addthis.com/js/250/addthis_widget.js#pubid=' . $variables['addthis_pubid'], 'external');
+  drupal_add_js('//s7.addthis.com/js/250/addthis_widget.js#pubid=' . $variables['addthis_pubid'], 'external');
 ?>
 <!-- AddThis Button END -->

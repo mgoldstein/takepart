@@ -20,12 +20,12 @@
 	.form-item-email {
 		margin: 0;
 		display: inline-block;
-		font-family: $adelle-regular;
+		font-family: $primary-sans-font;
 		width: 65%;
 		position: relative;
 		label {
 			display: none;
-			font: normal 12px/1 $adelle-regular;
+			font: normal 12px/1 $primary-sans-font;
 			position: absolute;
 			left: 0;
 			bottom: 100%;
@@ -45,18 +45,8 @@
 	}
 	input[type="submit"] {
 		width: 33%;
-		border: none;
 		float: right;
-		@include border-radius(0);
-		background-color: $light-mint;
-		color: white;
-		font-family: $adelle-regular;
-		text-transform: lowercase;
-		padding: 4px 0 1px;
-		
-		&:hover {
-			background-color: black;
-		}
+		@extend %button;
 	}
 
 	// doesn't work
@@ -74,7 +64,7 @@
 		padding-bottom: 1em;
 		border-bottom: 1px solid $gray-line;
                 font-size: 12px;
-		// font-family: $adelle-regular;
+		// font-family: $primary-sans-font;
 		a {
 			
 			line-height: 1.2em;
@@ -82,7 +72,7 @@
 		}
 	}
 	.follow-us {
-		font: normal 20px/1 $brown-bold;
+		font: bold 20px/1 $main-brand-font;
 		text-transform: lowercase;
 		display: inline-block;
 		vertical-align: top;
@@ -120,9 +110,9 @@
 	&:before{
 		content: 'Advertisement';
 		text-transform: uppercase;
-		font-family: $adelle-regular;
+		font-family: $primary-sans-font;
 		font-size: 11px;
-		color: #949494;
+		color: $dark-gray;
 		width: 100%;
 		text-align: center;
 		display: block;
@@ -153,7 +143,7 @@
 			margin-right: 1em;
 		}
 		.subhead {
-			font: normal .857142857em/1.5 $adelle-light;
+			font: 100 .857142857em/1.5 $primary-sans-font;
 			line-height: 1.5;
 			margin: 1em 0 0;
 			text-transform: uppercase;

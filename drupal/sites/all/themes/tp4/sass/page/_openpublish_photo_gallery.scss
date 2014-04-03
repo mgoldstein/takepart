@@ -43,16 +43,17 @@
   @include box-sizing(border-box);
 
   .gallery-cover-branding{
-    font: normal .928571429em/2 $adelle-regular; // 13px / 14px
+    font: normal .928571429em/2 $primary-sans-font; // 13px / 14px
     text-transform: uppercase;
     margin-left: 1.230769231em; // 16px / 13px
   }
   .gallery-cover-title {
-    font: normal 1.5em/1 $ashbury-regular;
+    font: normal 1.5em/1 $primary-serif-font;
     margin-left: .761904762em;
     @include breakpoint($breakpoint-tablet) {
       float: left;
-      width: 415px;
+      width: 405px;
+      padding-right: 10px;
       font-size: 2.428571429em;
       line-height: 1.088235294;
       margin-left: .470588235em;
@@ -61,7 +62,7 @@
   .gallery-cover-enter {
     display: block;
     padding: .5em 1em; // 16px
-    font: normal 1.142857143em/1.125 $adelle-regular;
+    font: normal 1.142857143em/1.125 $primary-sans-font;
     text-transform: lowercase;
     text-align: center;
     background-color: $light-mint;
@@ -99,7 +100,7 @@
     display: inline-block;
     vertical-align: middle;
     margin: 0;
-    font: normal 1em/1 $tradegothic-regular;
+    font: normal 1em/1 $secondary-sans-font;
     text-transform: uppercase;
     color: $dark-gray;
   }
@@ -127,11 +128,11 @@
   }
   .gallery-headline {
     // desktop values;
-    font: normal 2.428571429em/1.205882353 $ashbury-regular;
+    font: normal 2.428571429em/1.205882353 $primary-serif-font;
     margin-bottom: .235294118em;
   }
   .gallery-subhead {
-    font: normal 1.142857143em/1.125 $ashbury-light;
+    font: 100 1.142857143em/1.125 $primary-serif-font;
     margin-bottom: .5em;
   }
   .author {
@@ -140,7 +141,7 @@
       margin-top: .571428571em;
     }
     .publish-date {
-      font-family: $adelle-regular;
+      font-family: $primary-sans-font;
       padding-right: .75em;
       border-right: 1px solid black;
       margin-right: .5em;
@@ -197,14 +198,12 @@
       border: 1px solid #e5e5e5;
 
       .slide-caption-headline {
-        font: normal 1.5em/1.142857143 $ashbury-bold;
+        font: bold 1.5em/1.142857143 $primary-serif-font;
         margin-bottom: .476190476em; // 10px / 21px 
       }
 
       .slide-caption-content {
-        font: normal 1em/1.5 $ashbury-light;
-        b, strong { font-weight: normal; font-family: $ashbury-bold; }
-        i, em { font-weight: normal; font-family: $ashbury-light-italic; }
+        font: 100 1em/1.5 $primary-serif-font;
         p {
           margin: 1em 0;
           &:first-child {
@@ -261,7 +260,7 @@
     }
 
     .pagination {
-      font: normal .928571429em/2.076923077 $adelle-regular;
+      font: normal .928571429em/2.076923077 $primary-sans-font;
       display: inline-block;
       vertical-align: top;
     }
@@ -308,14 +307,7 @@
 
 //supplementary content
 .node-openpublish-photo-gallery {
-  font: normal 1em/1.5 $adelle-light;
-
-  b, strong { font-weight: normal; font-family: $adelle-regular; }
-  i, em { font-weight: normal; font-family: $adelle-light-italic; }
-  b i, b em, strong i, strong em, i b, i strong, em b, em strong {
-    font-weight: normal; font-family: $adelle-italic;
-  }
-
+  font: 100 1em/1.5 $primary-sans-font;
   .field-name-body,
   .enter-link {
     a {
@@ -324,7 +316,7 @@
   }
 
   .enter-link {
-    font: normal 1em/1.5 $ashbury-regular;
+    font: normal 1em/1.5 $primary-serif-font;
     color: $mint;
     &:before {
       content: '\23e9\0020';
@@ -340,8 +332,8 @@
   }
 
   h2.block-title, h3 {
-    font-family: $brown-bold;
-    font-weight: normal;
+    font-family: $main-brand-font;
+    font-weight: bold;
     font-size: 1.5em;
     line-height: 1.2;
     margin: .667em 0; // account for different margins in the comp
@@ -351,9 +343,7 @@
       @include header-top-border;
     }
     span {
-      font-family: $adelle-light;
-      font-weight: normal;
-      font-size: 14px;
+      font: 100 14px $primary-sans-font;
     }
   }
 
