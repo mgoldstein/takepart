@@ -108,7 +108,7 @@
         ]
       });
 
-      this.$('#story-social-share').tpsocial(socialOptions);
+      _.defer(_.bind(function(){this.$('#story-social-share').tpsocial(socialOptions);}, this));
       window.FB && FB.XFBML.parse(this.el);
 
       // bind social share event to contact TAP
@@ -308,8 +308,6 @@
 
   TEACH.Views.StoriesModalView = Backbone.View.extend({
 
-    currentStory: null,
-
     events: {
       'click #previous-story': 'showPreviousStory',
       'click #next-story': 'showNextStory'
@@ -326,14 +324,11 @@
     render: function() {
       // clean up
       this.$('.sys-story-modal').remove();
-      if (this.currentStory) {
-        this.currentStory.remove();
-      }
-      // put the story in
-      this.currentStory = new TEACH.Views.StoryFullView({
+
+      var currentStory = new TEACH.Views.StoryFullView({
         model: this.collection.models[0] // there's only one model
       });
-      this.currentStory.render().$el.appendTo(this.$el);
+      currentStory.render().$el.appendTo(this.$el);
 
       // show the links we want
       this.$('.story-nav').hide();
