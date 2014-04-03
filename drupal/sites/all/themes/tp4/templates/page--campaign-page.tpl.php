@@ -84,9 +84,10 @@
       }
       else{
       	
+      	if($(window).width() < 768){
       	$('.campaign-logo-div').css('float', 'left');
       	$('.campaign-logo-div').css('width', '80%');
-      	
+      	}
       	
       }
       
