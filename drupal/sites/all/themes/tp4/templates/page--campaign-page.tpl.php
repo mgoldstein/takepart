@@ -36,7 +36,7 @@
     <?php print render($page['preface']); ?>
   </div>
     <div id="primary">
-      <?php print render($campaign_content_meta); ?>
+      <?php print $messages; ?>
       <?php print render($page['content']); ?>
     </div>
   </main>
@@ -54,12 +54,13 @@
 
 
 
-<!--
+
 <script type="text/javascript">
   //initiating jQuery  
   jQuery(function($) {
     $(document).ready( function() {
       //enabling stickUp on the '.navbar-wrapper' class
+      if($(window).width() > 768){
       $('#block-tp-campaigns-tp-campaigns-hero').stickUp({
         parts: {
         <?php
@@ -71,9 +72,10 @@
         itemClass: 'anchored',
         itemHover: 'active'
       });
+      }
+      
+      
     });
   });
 
 </script>
-
--->
