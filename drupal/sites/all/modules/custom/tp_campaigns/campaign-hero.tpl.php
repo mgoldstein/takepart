@@ -61,7 +61,7 @@
     else{ //Right
       $logo_class = 'logo-right';
     }
-    $logo = '<img src="'. $logo. '" class="campaign-logo '. $logo_class. '">';
+    $logo = '<div class="campaign-logo-div"><img src="'. $logo. '" class="campaign-logo '. $logo_class. '"></div>';
   }
 
   //Menu Styling
