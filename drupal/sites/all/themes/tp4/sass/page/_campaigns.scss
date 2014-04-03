@@ -23,7 +23,7 @@ body.node-type-campaign-card-text,
 body.node-type-campaign-card-branding,
 {
   $zen-column-count:  12;
-  $zen-gutter-width:  30px; //TODO: change this to respond to the width of the containing element.
+  $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
 
 
   //make header full width for menu/branding
@@ -55,8 +55,8 @@ body.node-type-campaign-card-branding,
     &.campaign-2col{
       .instructional{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
-          padding-bottom: 20px;
+          @include zen-grid-item(12, 1);
+          padding-bottom: 15px;
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(8, 3);
@@ -64,7 +64,7 @@ body.node-type-campaign-card-branding,
       }
       .left-column{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
+          @include zen-grid-item(12, 1);
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -73,7 +73,7 @@ body.node-type-campaign-card-branding,
       }
       .right-column{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
+          @include zen-grid-item(12, 1);
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -85,8 +85,8 @@ body.node-type-campaign-card-branding,
     &.campaign-2col.left-large{
       .instructional{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
-          padding-bottom: 20px;
+          @include zen-grid-item(12, 1);
+          padding-bottom: 15px;
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(8, 3);
@@ -94,7 +94,7 @@ body.node-type-campaign-card-branding,
       }
       .left-column{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
+          @include zen-grid-item(12, 1);
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -103,7 +103,7 @@ body.node-type-campaign-card-branding,
       }
       .right-column{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
+          @include zen-grid-item(12, 1);
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -115,8 +115,8 @@ body.node-type-campaign-card-branding,
     &.campaign-2col.right-large{
       .instructional{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
-          padding-bottom: 20px;
+          @include zen-grid-item(12, 1);
+          padding-bottom: 15px;
           text-align: center;
         }
         @include breakpoint($breakpoint-tablet) {
@@ -125,7 +125,7 @@ body.node-type-campaign-card-branding,
       }
       .left-column{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
+          @include zen-grid-item(12, 1);
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -134,7 +134,7 @@ body.node-type-campaign-card-branding,
       }
       .right-column{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
+          @include zen-grid-item(12, 1);
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -146,8 +146,8 @@ body.node-type-campaign-card-branding,
     &.campaign-1col{
       .instructional{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
-          padding-bottom: 20px;
+          @include zen-grid-item(12, 1);
+          padding-bottom: 15px;
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(8, 3);
@@ -155,7 +155,7 @@ body.node-type-campaign-card-branding,
       }
       .center-column{
         @include breakpoint($breakpoint-mobile) {
-          @include zen-grid-item(10, 2);
+          @include zen-grid-item(12, 1);
           @include zen-clear();
           height: 100%;
           img{
@@ -175,10 +175,10 @@ body.node-type-campaign-card-branding,
 }
 body.node-type-campaign-page .card.node-campaign-card-news,
 body.node-type-campaign-card-news .card.campaign-1col{
-  &.campaign-1col{
+  &.campaign-1col:not(.multi-news){
     .center-column{
       @include breakpoint($breakpoint-mobile) {
-        @include zen-grid-item(6, 4);
+        @include zen-grid-item(12, 1);
         @include zen-clear();
         img{
           margin: 0 auto;
@@ -189,6 +189,9 @@ body.node-type-campaign-card-news .card.campaign-1col{
         .caption{
           text-align: center;
         }
+      }
+      @include breakpoint($breakpoint-tablet) {
+        @include zen-grid-item(6, 4);
       }
     }
   }
@@ -215,7 +218,6 @@ body.node-type-campaign-page, #main.card-page{
   .card{
     height: 100%;
     overflow: hidden;
-    padding-top: 50px;
     padding-bottom: 60px;
   }
 
@@ -469,6 +471,12 @@ body.node-type-campaign-page, #main.card-page{
       background-size: 1000px;
     }
   }
+  .card-wrapper.has-card-title,
+  .card-wrapper.has-tray-title{
+    .card-inner{
+      border-top: 1px solid #dadada;
+    }
+  }
 
 
   /*
@@ -486,7 +494,6 @@ body.node-type-campaign-page, #main.card-page{
       margin: 0 auto;
     }
     h4.media-title{
-      padding-top: 20px;
       padding-bottom: 15px;
       margin-bottom: 0;
     }
@@ -513,7 +520,7 @@ body.node-type-campaign-page, #main.card-page{
   }
 
   //Branding
-  .card.node-campaign-card-branding{
+  .card.node-campaign-card-branding .card-inner{
     padding: 10px 0;
   }
   .branding-content{
@@ -531,11 +538,15 @@ body.node-type-campaign-page, #main.card-page{
   .card.node-campaign-card-news{
     .center-column{
       text-align: center;  
-      white-space: nowrap;
       line-height: 12px;
       overflow: hidden;
       .news-column{
-        width: 18%;
+        @include breakpoint($breakpoint-mobile) {
+          width: 31%;
+        }
+        @include breakpoint($breakpoint-tablet) {
+          width: 18%;
+        }
         display: inline-block;
         vertical-align: top;
         white-space: normal;
@@ -544,7 +555,11 @@ body.node-type-campaign-page, #main.card-page{
           margin-right: 0;
         }
         img{
-          padding-bottom: 10px;
+          padding-bottom: 5px;
+        }
+        h5{
+          text-align: left;
+          white-space: normal;
         }
       }
       h3.headline{
@@ -556,7 +571,7 @@ body.node-type-campaign-page, #main.card-page{
         padding-top: 0;
       }
       .more-link p{
-        padding-top: 30px;
+        padding-top: 20px;
         margin: 0;
       }
     }
@@ -839,6 +854,7 @@ body.node-type-campaign-page, #main.card-page{
     overflow: hidden;
     max-width: 1000px;
     margin: 0 auto;
+    padding-top: 50px;
   }
   .card-width-980{
     float: none;

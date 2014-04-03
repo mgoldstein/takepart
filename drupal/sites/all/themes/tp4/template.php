@@ -663,6 +663,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     }
     else{ //multivalue
 
+      $variables['classes_array'][] = 'multi-news';
       $term_id = $variables['field_campaign_news_filter_tag'][0]['target_id'];
 
       $nids = array();
