@@ -1414,6 +1414,7 @@ function tpf_content_field_bases_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'campaign_card_branding' => 'campaign_card_branding',
+          'campaign_card_empty' => 'campaign_card_empty',
           'campaign_card_iframe' => 'campaign_card_iframe',
           'campaign_card_media' => 'campaign_card_media',
           'campaign_card_news' => 'campaign_card_news',

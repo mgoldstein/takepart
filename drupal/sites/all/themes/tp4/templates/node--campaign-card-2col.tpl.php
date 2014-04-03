@@ -12,7 +12,7 @@
   <?php print render($title_suffix);  // contextual links ?>
   <article class="card-inner">
     <?php if(isset($node->field_campaign_card_title['und'][0]['value']) == true): ?>
-      <h1 class="card-title <?php print (isset($variables['instructional']) == true ? 'has-instructional' : ''); ?>"><?php print $node->field_campaign_card_title['und'][0]['value']; ?></h1>
+      <div class="title-wrapper"><h1 class="card-title <?php print (isset($variables['instructional']) == true ? 'has-instructional' : ''); ?>"><?php print $node->field_campaign_card_title['und'][0]['value']; ?></h1></div>
     <?php endif; ?>
     <?php if(isset($variables['instructional']) == true): ?>
       <div class="instructional">
