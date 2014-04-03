@@ -21,6 +21,7 @@ body.node-type-campaign-card-iframe,
 body.node-type-campaign-card-social,
 body.node-type-campaign-card-text,
 body.node-type-campaign-card-branding,
+body.node-type-campaign-card-empty,
 {
   $zen-column-count:  12;
   $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
@@ -583,6 +584,84 @@ body.node-type-campaign-page, #main.card-page{
     }
     .more-link{
       clear: both;
+    }
+  }
+
+  //Empty
+  .card.node-campaign-card-empty{
+    padding: 0;
+    @include breakpoint($breakpoint-mobile) {
+      .center-column{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .card-inner{
+        padding-top: 0px;
+        width: 100%;
+        max-width: 100%;
+      }
+      img{
+        width: 768px;
+        max-width: 768px;
+      }
+    }
+    @include breakpoint($breakpoint-tablet) {
+      .center-column{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .card-inner{
+        padding-top: 0px;
+        width: 100%;
+        max-width: 1000px;
+      }
+      img{
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+    &.card-image-width-full{
+      @include breakpoint($breakpoint-mobile) {
+        img{
+          width: 768px;
+          max-width: 768px;
+        }
+      }
+      @include breakpoint($breakpoint-tablet) {
+        img{
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+      .center-column{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .card-inner{
+        padding-top: 0px;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+    img{
+      visibility: hidden;
+      display: block;
+    }
+    .card-inner{
+      position: relative;
+    }
+    .title-wrapper{
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      max-width: 100%;
+      h1.card-title{
+        position: relative;
+        left: -50%;
+      }
     }
   }
 
