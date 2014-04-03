@@ -8603,8 +8603,8 @@ body.node-type-campaign-page .card-width-980, #main.card-page .card-width-980 {
     border-bottom: 3px solid #000;
     cursor: pointer;
     position: absolute;
-    right: 25px;
-    top: 17px;
+    right: 10%;
+    bottom: 50%;
   }
   /* line 893, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu-wrapper {
@@ -9906,7 +9906,7 @@ header .search .form-submit {
   position: relative;
   z-index: 9;
   width: 34px;
-  height: 38px;
+  height: 37px;
   cursor: pointer;
 }
 /* line 374, ../sass/modules/_header.scss */

@@ -74,6 +74,22 @@
       });
       }
       
+      // Check if campaign page has its menu
+      // If yes, make the logo float to left per Grid
+      // If not, hide the hamburger icon
+      if($('.snap-drawers-campaign li').length == 0){
+      	
+      	$('.campaign-menu-toggle').css('display', 'none');
+      	
+      }
+      else{
+      	
+      	$('.campaign-logo-div').css('float', 'left');
+      	$('.campaign-logo-div').css('width', '80%');
+      	
+      	
+      }
+      
       
     });
   });
