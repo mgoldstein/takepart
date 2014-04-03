@@ -52,14 +52,14 @@
       window.onresize = function(event) {
         $('.slider').each(function(){
           var $this = $(this);
-          $this.find('.card-wrapper.has-tray-title .card').css("padding-top", $this.find('.tray-header').height() + 50);
+          $this.find('.card-wrapper.has-tray-title .card-inner').css("padding-top", $this.find('.tray-header').height() + 50);
           console.log($this.find('.tray-header').height());
         });
       };
       window.onload = function(event) {
         $('.slider').each(function(){
           var $this = $(this);
-          $this.find('.card-wrapper.has-tray-title .card').css("padding-top", $this.find('.tray-header').height() + 50);
+          $this.find('.card-wrapper.has-tray-title .card-inner').css("padding-top", $this.find('.tray-header').height() + 50);
         });
       };
     }

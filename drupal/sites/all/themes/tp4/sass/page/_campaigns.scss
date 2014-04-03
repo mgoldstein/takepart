@@ -215,7 +215,6 @@ body.node-type-campaign-page, #main.card-page{
   .card{
     height: 100%;
     overflow: hidden;
-    padding-top: 50px;
     padding-bottom: 60px;
   }
 
@@ -469,6 +468,12 @@ body.node-type-campaign-page, #main.card-page{
       background-size: 1000px;
     }
   }
+  .card-wrapper.has-card-title,
+  .card-wrapper.has-tray-title{
+    .card-inner{
+      border-top: 1px solid #dadada;
+    }
+  }
 
 
   /*
@@ -513,7 +518,7 @@ body.node-type-campaign-page, #main.card-page{
   }
 
   //Branding
-  .card.node-campaign-card-branding{
+  .card.node-campaign-card-branding .card-inner{
     padding: 10px 0;
   }
   .branding-content{
@@ -556,7 +561,7 @@ body.node-type-campaign-page, #main.card-page{
         padding-top: 0;
       }
       .more-link p{
-        padding-top: 30px;
+        padding-top: 20px;
         margin: 0;
       }
     }
@@ -839,6 +844,7 @@ body.node-type-campaign-page, #main.card-page{
     overflow: hidden;
     max-width: 1000px;
     margin: 0 auto;
+    padding-top: 50px;
   }
   .card-width-980{
     float: none;

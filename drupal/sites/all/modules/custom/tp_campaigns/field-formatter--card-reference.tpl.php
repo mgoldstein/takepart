@@ -35,6 +35,9 @@
     if(isset($tray_background) == true){
       $card_classes[] = 'has-tray-background';
     }
+    if(isset($node->field_campaign_card_title['und'][0]['value']) == true){
+      $card_classes[] = 'has-card-title';
+    }
 
     $card_classes[] = $node->type;
 
