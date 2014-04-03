@@ -2,6 +2,7 @@
 # http://www.robotstxt.org/orig.html
 
 User-agent: *
+Allow: /user_actions/
 Disallow: /add/
 Disallow: /admin/
 Disallow: /backdoor
