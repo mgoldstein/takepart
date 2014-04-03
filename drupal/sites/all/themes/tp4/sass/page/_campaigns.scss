@@ -168,6 +168,9 @@ body.node-type-campaign-card-branding,
             text-align: center;
           }
         }
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+        }
       }
     }
     // Add more layouts here
@@ -880,8 +883,8 @@ body.node-type-campaign-page, #main.card-page{
         border-bottom: 3px solid #000;
         cursor: pointer;
         position: absolute;
-        right: 25px;
-        top: 17px;
+        right: 10%;
+        bottom: 50%;
       }
     }
     
