@@ -168,6 +168,9 @@ body.node-type-campaign-card-branding,
             text-align: center;
           }
         }
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+        }
       }
     }
     // Add more layouts here

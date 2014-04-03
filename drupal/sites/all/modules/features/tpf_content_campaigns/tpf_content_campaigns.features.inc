@@ -43,6 +43,14 @@ function tpf_content_campaigns_node_info() {
       'title_label' => t('Admin Title'),
       'help' => '',
     ),
+    'campaign_card_empty' => array(
+      'name' => t('Campaign Card Empty'),
+      'base' => 'node_content',
+      'description' => t('Campaign Card that contains nothing but an image.'),
+      'has_title' => '1',
+      'title_label' => t('Admin Card Title'),
+      'help' => '',
+    ),
     'campaign_card_iframe' => array(
       'name' => t('Campaign Card Iframe'),
       'base' => 'node_content',
