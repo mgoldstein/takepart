@@ -48,9 +48,10 @@
         $sliders.each(function() {
           var $this = $(this);
           var titleHeight = $this.find('.tray-header').outerHeight();
+          var multipleCards = $this.is('.has-multiple-cards');
 
           // Set all cards to equal height
-          if ($this.is('.has-multiple-cards')) {
+          if (multipleCards) {
             $this.find('.swipe-wrap').each(function(){
               var $this = $(this);
               $this.find('.card-wrapper').css("height", $this.height());
@@ -63,7 +64,10 @@
             $this.find('.card')
               .css("padding-top", titleHeight)
               .find('.contextual-links-wrapper')
-                .css('top', titleHeight + 2)
+                .css({
+                  top: titleHeight + 2,
+                  right: multipleCards ? 80 : 5
+                })
             ;
           }
         });

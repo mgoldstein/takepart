@@ -212,13 +212,6 @@ body.node-type-campaign-page, #main.card-page{
     margin: 1.5em auto;
   }  
 
-  .has-multiple-cards {
-    .contextual-links-wrapper {
-      top: 52px; // clear the tray header
-    }
-  }
-
-
   .card{
     height: 100%;
     overflow: hidden;
@@ -523,9 +516,13 @@ body.node-type-campaign-page, #main.card-page{
   }
 
   //Branding
-  .card.node-campaign-card-branding .card-inner{
-    padding: 10px 0;
+  .card.node-campaign-card-branding {
+    padding: 0;
+    .card-inner{
+      padding: 10px 0;
+    }
   }
+
   .branding-content{
     text-align: center;
     .branding-text{
@@ -906,14 +903,20 @@ body.node-type-campaign-page, #main.card-page{
     }
     .logo-left{
       float: left;
+      padding-left: 1.5%;
     }
     .logo-right{
       float: right;
+      padding-right: 1.5%;
     }
     .logo-center{
       display: block;
       margin: 0 auto;
       float: none;
+    }
+    .campaign-logo-div{
+      height: auto;
+      overflow: hidden;
     }
     a.big-link{
       position: absolute;
