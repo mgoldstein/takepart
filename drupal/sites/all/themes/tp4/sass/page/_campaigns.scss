@@ -59,6 +59,8 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-bottom: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(8, 3);
@@ -67,6 +69,7 @@ body.node-type-campaign-card-empty,
       .left-column{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
+          padding-left: 10px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -76,6 +79,7 @@ body.node-type-campaign-card-empty,
       .right-column{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
+          padding-right: 10px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -89,6 +93,8 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-bottom: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(8, 3);
@@ -97,6 +103,7 @@ body.node-type-campaign-card-empty,
       .left-column{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
+          padding-left: 10px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -110,6 +117,7 @@ body.node-type-campaign-card-empty,
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(4, 8);
+          padding-right: 10px;
           @include zen-clear(none);
         }
       }
@@ -119,6 +127,8 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-bottom: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
           text-align: center;
         }
         @include breakpoint($breakpoint-tablet) {
@@ -128,6 +138,7 @@ body.node-type-campaign-card-empty,
       .left-column{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
+          padding-left: 10px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -137,6 +148,7 @@ body.node-type-campaign-card-empty,
       .right-column{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
+          padding-right: 10px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -150,6 +162,8 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-bottom: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(8, 3);
@@ -184,6 +198,8 @@ body.node-type-campaign-card-news .card.campaign-1col{
     .center-column{
       @include breakpoint($breakpoint-mobile) {
         @include zen-grid-item(12, 1);
+        padding-left: 10px;
+        padding-right: 10px;
         @include zen-clear();
         img{
           margin: 0 auto;
@@ -376,38 +392,45 @@ body.node-type-campaign-page, #main.card-page{
   }
   .swipe{
     position: relative;
-    .arrow{
-      position: absolute;
-      z-index: 10;
-      text-align: center;
-      display: inline-block;
-      color: #000;
-      cursor: pointer;
-      font-size: 72px;
-      &:hover{
-        color: $light-mint;
+    @include breakpoint($breakpoint-mobile) {
+      .arrow{
+        display: none;
       }
-      &.left-arrow{
-        left: 0;
-        top: 100px;
-        .arrow-inner{
-          position: relative;
-          &:after{
-            font-family: "SSGizmo";
-            content: '\25C5';
-            background-color: rgba(255,255,255,0.2);
+    }
+    @include breakpoint($breakpoint-tablet) {
+      .arrow{
+        position: absolute;
+        z-index: 10;
+        text-align: center;
+        display: inline-block;
+        color: #000;
+        cursor: pointer;
+        font-size: 72px;
+        &:hover{
+          color: $light-mint;
+        }
+        &.left-arrow{
+          left: 0;
+          top: 100px;
+          .arrow-inner{
+            position: relative;
+            &:after{
+              font-family: "SSGizmo";
+              content: '\25C5';
+              background-color: rgba(255,255,255,0.2);
+            }
           }
         }
-      }
-      &.right-arrow{
-        right: 0;
-        top: 100px;
-        .arrow-inner{
-          position: relative;
-          &:after{
-            font-family: "SSGizmo";
-            content: '\25BB';
-            background-color: rgba(255,255,255,0.2);
+        &.right-arrow{
+          right: 0;
+          top: 100px;
+          .arrow-inner{
+            position: relative;
+            &:after{
+              font-family: "SSGizmo";
+              content: '\25BB';
+              background-color: rgba(255,255,255,0.2);
+            }
           }
         }
       }
@@ -421,12 +444,14 @@ body.node-type-campaign-page, #main.card-page{
         margin: 0 auto;
         position: relative;
       }
+
     }
     .slider-pagination{
       text-align: center;
       margin-bottom: 1em;
 
       a {
+        margin-bottom: 2px;
         display: inline-block;
         font-size: 10px;
         height: 1em;
@@ -442,6 +467,29 @@ body.node-type-campaign-page, #main.card-page{
         &.active {
           background-color: $mint;
           cursor: default;
+        }
+      }
+      @include breakpoint($breakpoint-mobile) {
+        .mobile-arrow{
+          display: inline-block;
+          &.arrow-left{
+            &:after{
+              font-family: "SSGizmo";
+              content: '\25C5';
+            }
+          }
+          &.arrow-right{
+            margin-left: .3em;
+            &:after{
+              font-family: "SSGizmo";
+              content: '\25BB';
+            }
+          }
+        }
+      }
+      @include breakpoint($breakpoint-tablet) {
+        .mobile-arrow{
+          display: none;
         }
       }
     }
