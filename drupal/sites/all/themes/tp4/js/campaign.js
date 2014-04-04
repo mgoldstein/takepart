@@ -5,102 +5,84 @@
 
 (function ($, Drupal, window, document, undefined) {
 
-  Drupal.behaviors.campaignSlideShow = {
+  Drupal.behaviors.campaignSlideShows = {
     attach: function() {
-      var count = $('.slider').length;
-      for (var i=0; i<=count; i++){
-        sliderID = '#slider_' + i;
-        paginationID = '#pagination_' + i;
-        window.mySwipe = new Swipe(document.getElementById('slider_' + i), {
-          auto: 0,
-          speed: 800,
-          continuous: true,
-          disableScroll: false,
-          stopPropagation: false,
-          callback: function(index, elem) {
-            var i = paginationID.length; //Gets the number of items (em elements) in the var bullets.
-            while (i--) {
-              bullets[i].className = ' '; //Sets the inactive position indicators.
-            }
-            bullets[pos].className = 'on'; //Applies styling of .on to active position indicator.
+      if (!$('body').is('.node-type-campaign-page')) {
+        return;
+      }
 
-          },
-          transitionEnd: function(index, elem) {}
+      //TODO: There is an error when testing videos with only 2 slides
+      //swipejs duplicates slides if only two exist throwing an error with videos
+
+      var $sliders = $('.slider');
+
+      // setup slideshows
+      $sliders.each(function() {
+        // set up the slider
+        var $this = $(this).Swipe({
+          callback: function(index, slide) {
+            $navLinks
+              .filter('[data-slide=' + index % $navLinks.length + ']').addClass('active')
+              .siblings('.active').removeClass('active')
+            ;
+          }
         });
+        var slider = $this.data('Swipe');
+        var $navLinks = $this.find('.slider-pagination a');
 
-        //TODO: There is an error when testing videos with only 2 slides
-        //swipejs duplicates slides if only two exist throwing an error with videos
-        $('.slider').each(function(){
-          var $this = $(this);
-          var $Slider = $('#' + $this.attr('id')).Swipe().data('Swipe');
-          $this.find('.left-arrow').on('click', function(){$Slider.prev()});
-          $this.find('.right-arrow').on('click', function(){$Slider.next()}); 
+        // setup forward/back nav
+        $this.find('.left-arrow').on('click', function() { slider.prev() });
+        $this.find('.right-arrow').on('click', function() { slider.next() });
 
-          // set up pagination -- active class and click event
-          $this.find('.slider-pagination')
-            .find('a:first').addClass('active')
-            .parent().on('click', 'a', function(e) {
-            var $link = $(this); // don't clobber $this in case we need it
+        // set up pagination -- active class and click event
+        $navLinks.filter(':first').addClass('active')
+          .parent().on('click', 'a', function(e) {
             e.preventDefault();
-            $link.addClass('active').siblings('.active').removeClass('active');
-            $Slider.slide($link.data('slide'));
-          });
-        });
-      }
+            slider.slide($(this).data('slide'));
+          })
+        ;
+      }); // end $sliders.each()
 
-      // Detect height on page load and on page resize
-      window.onresize = function(event) {
-        $('.slider').each(function(){
+      // deal with card padding
+      var adjustCardHeightsAndPadding = function() {
+        $sliders.each(function() {
           var $this = $(this);
-          $this.find('.card-wrapper.has-tray-title .card-inner').css("padding-top", $this.find('.tray-header').height() + 50);
-          console.log($this.find('.tray-header').height());
+          var titleHeight = $this.find('.tray-header').outerHeight();
+
+          // Set all cards to equal height
+          if ($this.is('.has-multiple-cards')) {
+            $this.find('.swipe-wrap').each(function(){
+              var $this = $(this);
+              $this.find('.card-wrapper').css("height", $this.height());
+            });
+          }
+
+          // if there is a tray title, set card padding
+          // and contextual link position
+          if (titleHeight > 0) {
+            $this.find('.card')
+              .css("padding-top", titleHeight)
+              .find('.contextual-links-wrapper')
+                .css('top', titleHeight + 2)
+            ;
+          }
         });
       };
-      window.onload = function(event) {
-        $('.slider').each(function(){
-          var $this = $(this);
-          $this.find('.card-wrapper.has-tray-title .card-inner').css("padding-top", $this.find('.tray-header').height() + 50);
-        });
-      };
-    }
-  };
 
-
-  Drupal.behaviors.equalHeights = {
-    attach: function() {
-      $(document).ready(function() {
-        $('.has-multiple-cards .swipe-wrap').each(function(){  
-          var $this = $(this);
-           $this.find('.card-wrapper').css("height", $this.height());
-        });      
+      // bind the previous function to window load and resize
+      // debouncing for 300ms
+      var resizeTimeout = null;
+      $(window).on('load resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout($.proxy(adjustCardHeightsAndPadding, this), 250);
       });
-      window.onresize = function(event) {
-        $('.has-multiple-cards .swipe-wrap').each(function(){  
-          var $this = $(this);
-          $this.find('.card-wrapper').css("height", $this.height());
-        });      
-      };
     }
   };
 
-  Drupal.behaviors.campaignHeader = {
+  Drupal.behaviors.campaignHeaderMenu = {
     attach: function() {
-      if($('body').hasClass('node-type-campaign-page')){
+      if ($('body').is('.node-type-campaign-page')) {
         $('ul.sf-menu').superfish();
-      }
-
-    }
-  };
-
-  Drupal.behaviors.slideshowCardContextualLinks = {
-    attach: function() {
-      if($('body').hasClass('node-type-campaign-page')){
-        $('.slider').filter('.has-multiple-cards').each(function() {
-          var $this = $(this);
-          $this.find('.contextual-links-wrapper').css({
-            top: $this.find('.tray-header').outerHeight() + 2
-          });
-        });
       }
     }
   };
