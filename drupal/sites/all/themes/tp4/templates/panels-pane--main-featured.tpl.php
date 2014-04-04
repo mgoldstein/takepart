@@ -16,6 +16,7 @@
  * - $display: The complete panels display object containing all kinds of
  *   data including the contexts and all of the other panes being displayed.
  */
+$headline = !empty($content['#node']->field_promo_headline) ? $content['#node']->field_promo_headline['und'][0]['safe_value'] : $title;
 ?>
 <?php if ($pane_prefix): ?>
   <?php print $pane_prefix; ?>
@@ -33,12 +34,12 @@
         print render($variables['content']['field_thumbnail']);
       } ?>
       <?php print render($title_prefix); ?>
-      <?php if ($title) {
+      <?php if ($headline) {
         if (!empty($title_link)) {
-          $title_heading = '<a href="' . $title_link . '">' . $title . '</a>';
+          $title_heading = '<a href="' . $title_link . '">' . $headline . '</a>';
         }
         else {
-          $title_heading = $title;
+          $title_heading = $headline;
         }
         print '<h2' . $title_attributes . '>' . $title_heading . '</h2>';
       } ?>
