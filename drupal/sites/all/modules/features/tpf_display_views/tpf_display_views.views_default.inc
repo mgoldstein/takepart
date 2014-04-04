@@ -818,7 +818,6 @@ function tpf_display_views_views_default_views() {
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
-    'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -846,10 +845,9 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'campaign' => 'campaign',
     'feature_article' => 'feature_article',
-    'petition_action' => 'petition_action',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-    'pledge_action' => 'pledge_action',
   );
   $handler->display->display_options['path'] = 'content/%/feed_old.xml';
 
@@ -938,7 +936,6 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
-    'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -1334,6 +1331,7 @@ echo $separator;
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -5308,6 +5306,7 @@ return TRUE;';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
+    'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
