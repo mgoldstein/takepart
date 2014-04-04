@@ -29,7 +29,8 @@ body.node-type-campaign-card-empty,
 
   //make header full width for menu/branding
   .header-wrapper{
-    padding: 0;
+  padding: 0;
+  padding-top: 1em !important;
   }
   header#header{
     max-width: 100%;
@@ -563,12 +564,14 @@ body.node-type-campaign-page, #main.card-page{
         }
       }
       h3.headline{
-        padding-top: 17px;
+        padding-top: 13px;
         margin: 0;
       }
       p.short-headline{
         margin: 0;
         padding-top: 0;
+        line-height: 16px;
+        padding-bottom:24px;
       }
       .more-link p{
         padding-top: 20px;
