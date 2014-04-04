@@ -1080,6 +1080,11 @@ echo $separator;
     'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
   );
+  /* Filter criterion: Content: Syndication (field_syndication) */
+  $handler->display->display_options['filters']['field_syndication_value']['id'] = 'field_syndication_value';
+  $handler->display->display_options['filters']['field_syndication_value']['table'] = 'field_data_field_syndication';
+  $handler->display->display_options['filters']['field_syndication_value']['field'] = 'field_syndication_value';
+  $handler->display->display_options['filters']['field_syndication_value']['operator'] = 'empty';
   $handler->display->display_options['path'] = 'content/%/yahoo_feed.xml ';
 
   /* Display: Content Types Feed Page */

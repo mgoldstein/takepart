@@ -81,7 +81,7 @@
 							<div class="video-wrapper">
 								<div class="video">
 								<script type="text/x-javascript-template" class="video-template">
-									<iframe class="video-player" width="515" height="315" src="http://www.youtube.com/embed/<?=$w2->video?>" frameborder="0" allowfullscreen></iframe>
+									<iframe class="video-player" width="515" height="315" src="//www.youtube.com/embed/<?=$w2->video?>" frameborder="0" allowfullscreen></iframe>
 								</script>
 								</div>
 								<div class="info cms">
@@ -93,7 +93,7 @@
 							<div class="snap-gallery" <?=wa($w->token . "_" . $w2->token."_snap_gallery")?>>
 								<!-- SnapWidget -->
 								<iframe allowtransparency="true" frameborder="0" scrolling="no"
-								src="http://snapwidget.com/p/widget/?id=<?=w($w->token . "_" . $w2->token . "_snap_gallery")->single(false)?>"
+								src="//snapwidget.com/p/widget/?id=<?=w($w->token . "_" . $w2->token . "_snap_gallery")->single(false)?>"
 								style="border:none; overflow:hidden; width:495px; height: 365px"></iframe>
 							</div>
 							<? else: ?>

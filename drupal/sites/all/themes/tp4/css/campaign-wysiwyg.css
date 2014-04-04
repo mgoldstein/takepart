@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * @file
  * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
@@ -2091,11 +2092,11 @@ a.more {
   padding-left: 1.071428571em;
   display: inline-block;
 }
-/* line 123, ../sass/helpers/_mixins.scss */
+/* line 125, ../sass/helpers/_mixins.scss */
 a.more:before {
   content: "\23E9 ";
   font-family: "SSGizmo";
-  color: #019f84;
+  color: #018b73;
   vertical-align: bottom;
   position: absolute;
   left: 0;
@@ -2642,110 +2643,110 @@ a.edit-mini-panel-link {
   background: url('../images/social-sdb493615aa.png') no-repeat;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-black {
   background-position: 0 -528px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-black:hover, .social-facebook-black.facebook-black_hover, .social-facebook-black.facebook-black-hover {
   background-position: 0 -408px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-gray {
   background-position: 0 -480px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-gray:hover, .social-facebook-gray.facebook-gray_hover, .social-facebook-gray.facebook-gray-hover {
   background-position: 0 -432px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-googleplus-black {
   background-position: 0 -168px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-googleplus-black:hover, .social-googleplus-black.googleplus-black_hover, .social-googleplus-black.googleplus-black-hover {
   background-position: 0 -96px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-googleplus-gray {
   background-position: 0 -144px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-googleplus-gray:hover, .social-googleplus-gray.googleplus-gray_hover, .social-googleplus-gray.googleplus-gray-hover {
   background-position: 0 -120px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-black {
   background-position: 0 -384px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-black:hover, .social-pinterest-black.pinterest-black_hover, .social-pinterest-black.pinterest-black-hover {
   background-position: 0 -264px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-gray {
   background-position: 0 -192px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-gray:hover, .social-pinterest-gray.pinterest-gray_hover, .social-pinterest-gray.pinterest-gray-hover {
   background-position: 0 -288px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-black {
   background-position: 0 -552px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-black:hover, .social-tumblr-black.tumblr-black_hover, .social-tumblr-black.tumblr-black-hover {
   background-position: 0 -336px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-gray {
   background-position: 0 -456px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-gray:hover, .social-tumblr-gray.tumblr-gray_hover, .social-tumblr-gray.tumblr-gray-hover {
   background-position: 0 -360px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-black {
   background-position: 0 -504px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-black:hover, .social-twitter-black.twitter-black_hover, .social-twitter-black.twitter-black-hover {
   background-position: 0 -216px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-gray {
   background-position: 0 -312px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-gray:hover, .social-twitter-gray.twitter-gray_hover, .social-twitter-gray.twitter-gray-hover {
   background-position: 0 -240px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-youtube-black {
   background-position: 0 -72px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-youtube-black:hover, .social-youtube-black.youtube-black_hover, .social-youtube-black.youtube-black-hover {
   background-position: 0 -24px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-youtube-gray {
   background-position: 0 0;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-youtube-gray:hover, .social-youtube-gray.youtube-gray_hover, .social-youtube-gray.youtube-gray-hover {
   background-position: 0 -48px;
 }
@@ -2755,17 +2756,17 @@ a.edit-mini-panel-link {
   background: url('../images/logos-s21b94e0d34.png') no-repeat;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -61px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -31px;
 }
@@ -3383,20 +3384,20 @@ tr.odd .form-item, tr.even .form-item {
 }
 
 /* The part of the label that indicates a required field. */
-/* line 623, ../sass/elements/_misc.scss */
+/* line 641, ../sass/elements/_misc.scss */
 .form-required {
   color: #c00;
 }
 
 /* Labels for radios and checkboxes. */
-/* line 628, ../sass/elements/_misc.scss */
+/* line 646, ../sass/elements/_misc.scss */
 label.option {
   display: inline;
   font-weight: normal;
 }
 
 /* Buttons used by contrib modules like Media. */
-/* line 634, ../sass/elements/_misc.scss */
+/* line 652, ../sass/elements/_misc.scss */
 a.button {
   -webkit-appearance: button;
   -moz-appearance: button;
@@ -3404,14 +3405,14 @@ a.button {
 }
 
 /* Password confirmation. */
-/* line 640, ../sass/elements/_misc.scss */
+/* line 658, ../sass/elements/_misc.scss */
 .password-parent,
 .confirm-parent {
   margin: 0;
 }
 
 /* Drupal's default login form block. */
-/* line 645, ../sass/elements/_misc.scss */
+/* line 663, ../sass/elements/_misc.scss */
 #user-login-form {
   text-align: left;
   /* LTR */
@@ -3424,20 +3425,20 @@ a.button {
  * styling of list items.
  */
 /* OpenID creates a new ul above the login form's links. */
-/* line 657, ../sass/elements/_misc.scss */
+/* line 675, ../sass/elements/_misc.scss */
 .openid-links {
   /* Position OpenID's ul next to the rest of the links. */
   margin-bottom: 0;
 }
 
 /* The "Log in using OpenID" and "Cancel OpenID login" links. */
-/* line 664, ../sass/elements/_misc.scss */
+/* line 682, ../sass/elements/_misc.scss */
 .openid-link,
 .user-link {
   margin-top: 1.5em;
 }
 
-/* line 668, ../sass/elements/_misc.scss */
+/* line 686, ../sass/elements/_misc.scss */
 html.js #user-login-form li.openid-link,
 #user-login-form li.openid-link {
   /* Un-do some of the padding on the ul list. */
@@ -3445,7 +3446,7 @@ html.js #user-login-form li.openid-link,
   /* LTR */
 }
 
-/* line 672, ../sass/elements/_misc.scss */
+/* line 690, ../sass/elements/_misc.scss */
 #user-login ul {
   margin: 1.5em 0;
 }
@@ -3453,7 +3454,7 @@ html.js #user-login-form li.openid-link,
 /**
  * Drupal admin tables.
  */
-/* line 680, ../sass/elements/_misc.scss */
+/* line 698, ../sass/elements/_misc.scss */
 form th {
   text-align: left;
   /* LTR */
@@ -3461,16 +3462,16 @@ form th {
   /* LTR */
   border-bottom: 3px solid #ccc;
 }
-/* line 685, ../sass/elements/_misc.scss */
+/* line 703, ../sass/elements/_misc.scss */
 form tbody {
   border-top: 1px solid #ccc;
 }
-/* line 688, ../sass/elements/_misc.scss */
+/* line 706, ../sass/elements/_misc.scss */
 form table ul {
   margin: 0;
 }
 
-/* line 693, ../sass/elements/_misc.scss */
+/* line 711, ../sass/elements/_misc.scss */
 tr.even,
 tr.odd {
   background-color: #eee;
@@ -3478,26 +3479,26 @@ tr.odd {
   padding: 0.1em 0.6em;
 }
 
-/* line 698, ../sass/elements/_misc.scss */
+/* line 716, ../sass/elements/_misc.scss */
 tr.even {
   background-color: #fff;
 }
 
 /* Markup generated by theme_tablesort_indicator(). */
-/* line 713, ../sass/elements/_misc.scss */
+/* line 731, ../sass/elements/_misc.scss */
 td.active {
   background-color: #ddd;
 }
 
 /* Center checkboxes inside table cell. */
-/* line 719, ../sass/elements/_misc.scss */
+/* line 737, ../sass/elements/_misc.scss */
 td.checkbox,
 th.checkbox {
   text-align: center;
 }
 
 /* Drupal core wrongly puts this in system.menus.css. Since we override that, add it back. */
-/* line 724, ../sass/elements/_misc.scss */
+/* line 742, ../sass/elements/_misc.scss */
 td.menu-disabled {
   background: #ccc;
 }
@@ -3508,7 +3509,7 @@ td.menu-disabled {
  * @see autocomplete.js
  */
 /* Suggestion list. */
-/* line 735, ../sass/elements/_misc.scss */
+/* line 753, ../sass/elements/_misc.scss */
 #autocomplete .selected {
   background: #0072b9;
   color: #fff;
@@ -3519,7 +3520,7 @@ td.menu-disabled {
  *
  * @see collapse.js
  */
-/* line 746, ../sass/elements/_misc.scss */
+/* line 764, ../sass/elements/_misc.scss */
 html.js .collapsible .fieldset-legend {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
   background-position: 5px 65%;
@@ -3528,14 +3529,14 @@ html.js .collapsible .fieldset-legend {
   padding-left: 15px;
   /* LTR */
 }
-/* line 755, ../sass/elements/_misc.scss */
+/* line 773, ../sass/elements/_misc.scss */
 html.js .collapsed .fieldset-legend {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
   /* LTR */
   background-position: 5px 50%;
   /* LTR */
 }
-/* line 762, ../sass/elements/_misc.scss */
+/* line 780, ../sass/elements/_misc.scss */
 .fieldset-legend .summary {
   color: #999;
   font-size: 0.9em;
@@ -3547,17 +3548,17 @@ html.js .collapsed .fieldset-legend {
  *
  * @see tabledrag.js
  */
-/* line 774, ../sass/elements/_misc.scss */
+/* line 792, ../sass/elements/_misc.scss */
 tr.drag {
   background-color: #fffff0;
 }
 
-/* line 777, ../sass/elements/_misc.scss */
+/* line 795, ../sass/elements/_misc.scss */
 tr.drag-previous {
   background-color: #ffd;
 }
 
-/* line 780, ../sass/elements/_misc.scss */
+/* line 798, ../sass/elements/_misc.scss */
 .tabledrag-toggle-weight {
   font-size: 0.9em;
 }
@@ -3567,7 +3568,7 @@ tr.drag-previous {
  *
  * @see tableselect.js
  */
-/* line 789, ../sass/elements/_misc.scss */
+/* line 807, ../sass/elements/_misc.scss */
 tr.selected td {
   background: #ffc;
 }
@@ -3577,11 +3578,11 @@ tr.selected td {
  *
  * @see progress.js
  */
-/* line 798, ../sass/elements/_misc.scss */
+/* line 816, ../sass/elements/_misc.scss */
 .progress {
   font-weight: bold;
 }
-/* line 801, ../sass/elements/_misc.scss */
+/* line 819, ../sass/elements/_misc.scss */
 .progress .bar {
   background: #ccc;
   border-color: #666;
@@ -3592,20 +3593,20 @@ tr.selected td {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 807, ../sass/elements/_misc.scss */
+/* line 825, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1389823777');
+  background-image: url('../images/progress.gif?1389035865');
 }
 
 /* TP Modal Library ---------------------- */
 /* -- copied from takepart_core ---------- */
-/* line 816, ../sass/elements/_misc.scss */
+/* line 834, ../sass/elements/_misc.scss */
 .tpmodal_overlay {
   background: #000;
 }
 
-/* line 820, ../sass/elements/_misc.scss */
+/* line 838, ../sass/elements/_misc.scss */
 .tpmodal_modal {
   background: #fff;
   border-radius: 10px;
@@ -3616,28 +3617,28 @@ tr.selected td {
   min-width: 40px;
 }
 
-/* line 831, ../sass/elements/_misc.scss */
+/* line 849, ../sass/elements/_misc.scss */
 .tpmodal_modal.tpmodal_position {
   display: none !important;
 }
 
-/* line 835, ../sass/elements/_misc.scss */
+/* line 853, ../sass/elements/_misc.scss */
 .tpmodal_loading {
   background: white url(/profiles/takepart/themes/takepart3/images/spinner.gif) center center no-repeat;
 }
 
-/* line 839, ../sass/elements/_misc.scss */
+/* line 857, ../sass/elements/_misc.scss */
 .tpmodal_content {
   padding: 20px;
   opacity: 1;
 }
 
-/* line 844, ../sass/elements/_misc.scss */
+/* line 862, ../sass/elements/_misc.scss */
 .tpmodal_loading .tpmodal_content {
   opacity: 0;
 }
 
-/* line 848, ../sass/elements/_misc.scss */
+/* line 866, ../sass/elements/_misc.scss */
 .tpmodal_close {
   height: 13px;
   width: 13px;
@@ -3648,24 +3649,24 @@ tr.selected td {
 
 /* Interstitials ------------------------- */
 /* Social */
-/* line 860, ../sass/elements/_misc.scss */
+/* line 878, ../sass/elements/_misc.scss */
 .interstitial_modal_modal.tpmodal_modal {
   background: transparent;
   border-radius: 0;
   max-width: 100% !important;
 }
 
-/* line 866, ../sass/elements/_misc.scss */
+/* line 884, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_content {
   padding: 0;
 }
 
-/* line 870, ../sass/elements/_misc.scss */
+/* line 888, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_close {
   width: 40px;
   height: 40px;
 }
-/* line 873, ../sass/elements/_misc.scss */
+/* line 891, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_close:before, .interstitial_modal_modal .tpmodal_close::before {
   content: '\2421';
   font-size: 36px;
@@ -3674,21 +3675,22 @@ tr.selected td {
   top: 10px;
   color: white;
   font-family: SSGizmo;
+  text-indent: 0;
 }
 
-/* line 884, ../sass/elements/_misc.scss */
+/* line 903, ../sass/elements/_misc.scss */
 .interstitial_modal_modal iframe {
   width: 400px;
   height: 400px;
   overflow: hidden;
 }
 
-/* line 890, ../sass/elements/_misc.scss */
+/* line 909, ../sass/elements/_misc.scss */
 .interstitial_modal_overlay {
   background: #000;
 }
 
-/* line 893, ../sass/elements/_misc.scss */
+/* line 912, ../sass/elements/_misc.scss */
 .tpmodal_close {
   margin: 5px 5px 0 0;
   text-indent: 100%;
@@ -3696,19 +3698,19 @@ tr.selected td {
 }
 
 /* Video Player ------------------------- */
-/* line 901, ../sass/elements/_misc.scss */
+/* line 920, ../sass/elements/_misc.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1393277866');
+  background: url('../images/video-loading.gif?1394491404');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
   /* 16:9 */
 }
-/* line 908, ../sass/elements/_misc.scss */
+/* line 927, ../sass/elements/_misc.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
+  background: url('../images/video-blocked.gif?1394491404') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3835,7 +3837,7 @@ p {
 
 /* line 97, ../sass/modules/_wysiwyg.scss */
 .plain a {
-  color: #019f84;
+  color: #018b73;
 }
 /* line 99, ../sass/modules/_wysiwyg.scss */
 .plain a:hover {

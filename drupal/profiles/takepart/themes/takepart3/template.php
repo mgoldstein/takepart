@@ -7,6 +7,12 @@ class Tp3Site {
 function wordlet_teach_share_your_story_page_alter($page) {
     drupal_add_library('system', 'ui.autocomplete');   
 }
+function wordlet_teach_teacher_stories_page_alter($page) {
+    drupal_add_library('system', 'ui.autocomplete');   
+}
+function wordlet_teach_browse_stories_page_alter($page) {
+    drupal_add_library('system', 'ui.autocomplete');   
+}
 
 function wordlet_patt_nav_page_alter($page) {
     // remove analytics from this page
@@ -27,7 +33,6 @@ function wordlet_patt_snap_page_alter($page) {
                     'content' => $w->img_src,
                 ),
             );
-
             drupal_add_html_head($metatag, 'facebook_image');
         }
     }
@@ -150,8 +155,7 @@ function takepart3_preprocess_html(&$vars) {
     }
 
     // Remove tracking from place at the table iframed header
-    // TODO: Fucking fix this.
-    // Potty mouth
+    // TODO: fix this.
     if (preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI'])
       || preg_match('/^\/interstitials/', $_SERVER['REQUEST_URI'])
         ) {

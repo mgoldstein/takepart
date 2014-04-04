@@ -56,7 +56,7 @@
           a{
             display: block;
             width: 100%;
-            line-height: 40px;
+            line-height: 45px;
             height: 40px;
             &:after{
               content: '';
@@ -75,7 +75,7 @@
             white-space: nowrap;
             overflow: hidden;
             float: left;
-            background: image-url('tpl-logo.jpg') no-repeat center center;
+            background: image-url('tpl-logo.jpg') no-repeat center 9px;
             margin: 0;
           }
           a.takeaction-logo{
@@ -121,8 +121,7 @@
             width: 15%;
           }
           ul.menu{
-            font-family: $secondary-sans-font;
-            font-weight: 100;
+            font: 100 14px/120% $primary-sans-font;
             li{
               float: left;
               clear: left;

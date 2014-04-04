@@ -356,4 +356,15 @@ function tp4_support_panel_main_feature($form, &$form_state) {
   variable_set('main_feature_tab_title_override', $form['main_feature_tab_title_override']['#value']);
 }
 
-
+/**
+ * Implements hook_url_inbound_alter().
+ *
+ * Performs the following substitutions:
+ * * Redirect paths that begin with "teach/stories" to the
+ *   teach stories webapp.
+ */
+function tp4_support_url_inbound_alter(&$path, $original_path, $path_language) {
+  if (preg_match('/^teach\/stories/', $path)) {
+    $path = 'wordlet/teach_browse_stories';
+  }
+}

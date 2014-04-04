@@ -17,5 +17,5 @@ $node = menu_get_object();
     </div>
   </div>
 </div>
-<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=<?php print $variables['addthis_pubid'] ?>"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js#pubid=<?php print $variables['addthis_pubid'] ?>"></script>
 <!-- AddThis Button END -->

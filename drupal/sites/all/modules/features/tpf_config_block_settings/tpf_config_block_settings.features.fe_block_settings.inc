@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * ga_articles_bottom_right_feature.features.fe_block_settings.inc
+ * tpf_config_block_settings.features.fe_block_settings.inc
  */
 
 /**
@@ -23,12 +23,6 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'chunkpart' => array(
-        'region' => 'sidebar_second',
-        'status' => 1,
-        'theme' => 'chunkpart',
-        'weight' => 50,
-      ),
       'takepart3' => array(
         'region' => '',
         'status' => 0,
@@ -46,6 +40,34 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'visibility' => 0,
   );
 
+  $export['boxes-box-66c05d6f'] = array(
+    'cache' => -2,
+    'custom' => 0,
+    'delta' => 'box-66c05d6f',
+    'module' => 'boxes',
+    'node_types' => array(
+      0 => 'openpublish_article',
+    ),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'takepart3' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'takepart3',
+        'weight' => -82,
+      ),
+      'tp4' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'tp4',
+        'weight' => -82,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
   $export['boxes-ga_articles_top'] = array(
     'cache' => -2,
     'custom' => 0,
@@ -55,12 +77,6 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'chunkpart' => array(
-        'region' => 'content_top',
-        'status' => 1,
-        'theme' => 'chunkpart',
-        'weight' => 0,
-      ),
       'takepart3' => array(
         'region' => '',
         'status' => 0,
@@ -87,12 +103,6 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'chunkpart' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'chunkpart',
-        'weight' => -87,
-      ),
       'takepart3' => array(
         'region' => '',
         'status' => 0,
@@ -104,40 +114,6 @@ function tpf_config_block_settings_default_fe_block_settings() {
         'status' => 0,
         'theme' => 'tp4',
         'weight' => -87,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['boxes-box-66c05d6f'] = array(
-    'cache' => -2,
-    'custom' => 0,
-    'delta' => 'box-66c05d6f',
-    'module' => 'boxes',
-    'node_types' => array(
-      0 => 'openpublish_article',
-    ),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'chunkpart' => array(
-        'region' => 'sidebar_second',
-        'status' => 1,
-        'theme' => 'chunkpart',
-        'weight' => -100,
-      ),
-      'takepart3' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'takepart3',
-        'weight' => -82,
-      ),
-      'tp4' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'tp4',
-        'weight' => -82,
       ),
     ),
     'title' => '',

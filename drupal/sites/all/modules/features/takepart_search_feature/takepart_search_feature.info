@@ -1,4 +1,4 @@
-name = Old TakePart Feature Search
+name = TakePart Search Feature
 description = Search API items exported
 core = 7.x
 package = Features

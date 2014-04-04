@@ -106,7 +106,6 @@ function takepart_search_feature_default_search_api_index() {
               "takepart_campaign" : "takepart_campaign",
               "takepart_page" : "takepart_page",
               "openpublish_photo_gallery" : "openpublish_photo_gallery",
-              "venue" : "venue",
               "video" : "video"
             }
           }
@@ -218,7 +217,10 @@ function takepart_search_feature_default_search_api_server() {
       "port" : "8080",
       "path" : "\\/solr",
       "http_user" : "",
-      "http_pass" : ""
+      "http_pass" : "",
+      "excerpt" : 0,
+      "retrieve_data" : 0,
+      "highlight_data" : 0
     },
     "enabled" : "1"
   }');

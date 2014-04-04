@@ -113,6 +113,9 @@ function tp_feature_feature_article_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'feature_main_tpl' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -120,16 +123,16 @@ function tp_feature_feature_article_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '12',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '12',
         ),
         'xmlsitemap' => array(
-          'weight' => '14',
+          'weight' => '13',
         ),
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '14',
         ),
       ),
       'display' => array(),
