@@ -4331,6 +4331,7 @@ return TRUE;';
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
     'openpublish_blog_post' => 'openpublish_blog_post',
+    'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
