@@ -107,14 +107,23 @@
                 slideIntent: 40,
                 minDragDistance: 5
             });
+            campaignsnapper.on('close', function(){
+			   $('.snap-drawer-campaign').css("display", "none");
+			});
 
             $('.campaign-menu-toggle').on('click', function(){
                 if( campaignsnapper.state().state=="left" ){
                     campaignsnapper.close();
-                    $('.snap-drawers-campaign').css("display", "none");
+                    $('.snap-drawer-campaign').css("display", "none");
                 } else {
                     campaignsnapper.open('left');
-                    $('.snap-drawers-campaign').css("display", "block");
+              
+                    $('.snap-drawer-campaign').css("display", "block");
+                    
+                    if($('.snap-drawer-campaign').css('display') == 'none'){
+            	     	$('.snap-drawer-campaign').css("display", "block");
+            	     }
+            	     
                     if($('.snap-drawer').css('display') == 'block'){
 
             	    	$('.snap-drawer').css("display", "none");

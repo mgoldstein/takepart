@@ -957,13 +957,13 @@ body.node-type-campaign-page, #main.card-page{
     
     header#header{
       .campaign-menu-toggle{
-        width: 20px;
+        width: 5%;
         height: 3px;
         border-top: 9px double #000;
         border-bottom: 3px solid #000;
         cursor: pointer;
         position: absolute;
-        right: 10%;
+        left: 85%;
         bottom: 50%;
       }
     }
