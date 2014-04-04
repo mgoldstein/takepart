@@ -903,14 +903,20 @@ body.node-type-campaign-page, #main.card-page{
     }
     .logo-left{
       float: left;
+      padding-left: 1.5%;
     }
     .logo-right{
       float: right;
+      padding-right: 1.5%;
     }
     .logo-center{
       display: block;
       margin: 0 auto;
       float: none;
+    }
+    .campaign-logo-div{
+      height: auto;
+      overflow: hidden;
     }
     a.big-link{
       position: absolute;
