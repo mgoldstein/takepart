@@ -523,9 +523,13 @@ body.node-type-campaign-page, #main.card-page{
   }
 
   //Branding
-  .card.node-campaign-card-branding .card-inner{
-    padding: 10px 0;
+  .card.node-campaign-card-branding {
+    padding: 0;
+    .card-inner{
+      padding: 10px 0;
+    }
   }
+
   .branding-content{
     text-align: center;
     .branding-text{
