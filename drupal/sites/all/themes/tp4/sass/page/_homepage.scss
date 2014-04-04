@@ -109,6 +109,7 @@ body.front{
             &:before {
               content: "take action:\0020";
               font-family: $main-brand-font;
+              font-weight: normal;
             }
             &:hover,
             &:active {
@@ -240,13 +241,14 @@ body.front{
 //
 .latest-headlines{
   .views-row{
-    line-height: 24px;
+    line-height: 1.4em;
     font-size: 14px;
+    padding-top: 3px;
     @include blue-square-bullets;
     .openpublish_photo_gallery:after{
       font-family: "SSGizmo";
       font-size: 1.25em;
-      line-height: 0.8;
+      line-height: 0.8em;
       vertical-align: text-bottom;
       content: " \1F4F7";
     }
@@ -380,12 +382,14 @@ a.column-header:hover{
   #block-views-takeaction-homepage-block{
     .block-title{
       background-color: $light-mint;
-      line-height: 15px;
+      line-height: 100%;
       font-family: $secondary-sans-font;
       font-size: 13px;
       letter-spacing: .4px;
       vertical-align: bottom;
-      padding-top: 2px;
+      padding-top: 4px;
+      @include box-sizing(border-box);
+      height: 38px;
     }
     .line{
       border-bottom: 1px solid $light-mint;

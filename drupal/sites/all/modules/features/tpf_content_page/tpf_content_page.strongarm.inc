@@ -104,6 +104,9 @@ function tpf_content_page_strongarm() {
         'redirect' => array(
           'weight' => '30',
         ),
+        'metatags' => array(
+          'weight' => '40',
+        ),
       ),
       'display' => array(),
     ),

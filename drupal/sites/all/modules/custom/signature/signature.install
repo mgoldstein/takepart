@@ -65,6 +65,13 @@ function signature_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
+      'end_date' => array(
+        'description' => 'The end date of the action as a UNIX timestamp.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
       'data' => array(
         'description' => 'Plugin configurations.',
         'type' => 'text',
@@ -182,4 +189,13 @@ function signature_update_7201(&$sandbox) {
   db_drop_primary_key('signature_node');
   db_add_primary_key('signature_node', array('tap_id'));
   db_add_unique_key('signature_node', 'nid', array('nid'));
+}
+
+/**
+ * Add TAP Action end date.
+ */
+function signature_update_7202(&$sandbox) {
+  $schema = signature_schema();
+  db_add_field('signature_node', 'end_date',
+    $schema['signature_node']['fields']['end_date']);
 }

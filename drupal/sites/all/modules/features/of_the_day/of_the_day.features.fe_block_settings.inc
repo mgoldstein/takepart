@@ -23,12 +23,6 @@ function of_the_day_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'chunkpart' => array(
-        'region' => 'sidebar_second',
-        'status' => 1,
-        'theme' => 'chunkpart',
-        'weight' => -80,
-      ),
       'takepart3' => array(
         'region' => '',
         'status' => 0,

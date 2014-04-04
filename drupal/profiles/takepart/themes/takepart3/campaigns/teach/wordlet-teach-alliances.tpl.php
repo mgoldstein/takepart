@@ -1,4 +1,4 @@
-<div class="content">
+<div class="teach-alliances-content">
     <article class="content-inner">
         <h1 class="content-headline"><?=w('page_headline')?></h1>
         <h2 class="content-subheadline"><?=w('page_subheadline')?></h2>

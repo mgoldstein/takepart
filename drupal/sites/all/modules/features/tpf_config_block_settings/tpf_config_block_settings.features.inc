@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * ga_articles_bottom_right_feature.features.inc
+ * tpf_config_block_settings.features.inc
  */
 
 /**

@@ -60,7 +60,7 @@ function takepart_vidpop_get_map_details() {
     $uri = $vnode['field_video_embedded'][0]['file']['#uri'];
     $u2 = explode('/', $uri);
     $youtube_id = $u2[3];
-    $output = '<iframe width="640" height="360" src="http://www.youtube.com/embed/' . $youtube_id . '?hl=en&fs=1&showinfo=1" frameborder="0" allowfullscreen></iframe>';
+    $output = '<iframe width="640" height="360" src="//www.youtube.com/embed/' . $youtube_id . '?hl=en&fs=1&showinfo=1" frameborder="0" allowfullscreen></iframe>';
 
   }
   else {

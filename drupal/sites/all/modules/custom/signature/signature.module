@@ -147,6 +147,32 @@ function signature_tokens($type, $tokens, array $data = array(),
   return $replacements;
 }
 
+/**
+ * Implements hook_entity_info_alter().
+ */
+function signature_entity_info_alter(&$entity_info) {
+  $entity_info['node']['bundles']['action']['uri callback'] =
+    'signature_action_uri_callback';
+}
+
+function signature_action_uri_callback($entity) {
+  $items = field_get_items('node', $entity, 'field_action_url');
+  if (!empty($items)) {
+    $item = reset($items);
+    if (!empty($item)) {
+      $url = SignatureActionStub::resolveToExternalURL($item['url']);
+      return array(
+        'path' => $url,
+        'options' => array(
+          'absolute' => TRUE,
+          'alias' => TRUE,
+          'external' => TRUE,
+        ),
+      );
+    }
+  }
+  return array('path' => 'node/' . $entity->nid);
+}
 
 /* Signature AJAX API.
  ******************************************************************************/
@@ -448,18 +474,6 @@ function signature_import_admin_form_import_all($form, &$form_state) {
 }
 
 /**
- * Implements hook_cron_queue_info().
- */
-function signature_cron_queue_info() {
-  return array(
-    'signature_import_queue' => array(
-      'worker callback' => 'signature_import_worker',
-      'time' => 60,
-    ),
-  );
-}
-
-/**
  * Process the contents of the action feed.
  */
 function signature_process_import_feed($feed_url, $timeout, $full_import = FALSE) {
@@ -471,16 +485,19 @@ function signature_process_import_feed($feed_url, $timeout, $full_import = FALSE
   // to skip unmodified actions.
   $this_run = time();
 
+  $since = $full_import ? 0 : $last_run;
   $count = 0;
-  $actions = signature_read_import_feed($feed_url, $timeout);
+  $actions = signature_read_import_feed($feed_url, $timeout, $since);
   foreach ($actions as $action) {
-    $changed = ((int) $action->last_modified) >= $last_run;
+    $changed = ((int) $action->last_modified) >= $since;
     $mapping = SignatureActionMapping::load($action->action_id);
-    if ($full_import || $changed || $mapping === FALSE) {
+    if ($changed || $mapping === FALSE) {
       signature_import_worker($action);
       $count += 1;
     }
   }
+
+  SignatureActionMapping::unpublishEndedActions();
 
   variable_set('signature_cron_last_run', $this_run);
 
@@ -490,7 +507,11 @@ function signature_process_import_feed($feed_url, $timeout, $full_import = FALSE
 /**
  * Reads the updated action feed.
  */
-function signature_read_import_feed($feed_url, $timeout) {
+function signature_read_import_feed($feed_url, $timeout, $since) {
+
+  $options = array('absolute' => TRUE);
+  $options['query'] = $since ? array('since' => $since) : array('all' => 'all');
+  $feed_url = url($feed_url, $options);
 
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $feed_url);
@@ -562,6 +583,7 @@ function signature_import_worker($tap) {
 class SignatureActionMapping {
 
   protected $_existing = FALSE;
+  protected $_end_date = 0;
   protected $_tap_id = NULL;
   protected $_data = NULL;
 
@@ -595,6 +617,7 @@ class SignatureActionMapping {
   protected static function read($record) {
     $mapping = new SignatureActionMapping($record->tap_id);
     $mapping->_existing = TRUE;
+    $mapping->_end_date = $record->end_date;
     $mapping->_data = empty($record->data) ? NULL : unserialize($record->data);
     $mapping->_stub = new SignatureActionStub($record->nid, $mapping->_data);
     if ($record->pm_signup_endpoint_id !== 0) {
@@ -609,9 +632,16 @@ class SignatureActionMapping {
 
   public static function create($tap_id) {
     $mapping = new SignatureActionMapping($tap_id);
+    $mapping->_end_date = 0;
     $mapping->_stub = new SignatureActionStub();
     $mapping->_endpoint = new SignatureActionEndpoint();
     return $mapping;
+  }
+
+  public static function unpublishEndedActions() {
+    db_query('UPDATE node SET status = 0 WHERE nid IN (SELECT nid FROM signature_node WHERE end_date < :end_date AND end_date != 0)', array(
+      ':end_date' => time()
+    ));
   }
 
   protected function __construct($tap_id) {
@@ -633,6 +663,7 @@ class SignatureActionMapping {
   public function update($tap) {
     $this->stub()->update($tap);
     $this->endpoint()->update($tap);
+    $this->_end_date = $tap->end_date;
     $this->_data = $tap;
   }
 
@@ -645,6 +676,7 @@ class SignatureActionMapping {
           return db_update('signature_node')
             ->fields(array(
               'data' => $data,
+              'end_date' => empty($this->_end_date) ? 0 : $this->_end_date,
               'nid' => $nid,
               'pm_signup_endpoint_id' => $endpoint_id,
             ))
@@ -658,6 +690,7 @@ class SignatureActionMapping {
               'nid' => $nid,
               'pm_signup_endpoint_id' => $endpoint_id,
               'data' => $data,
+              'end_date' => empty($this->_end_date) ? 0 : $this->_end_date,
             ))
             ->execute();
         }
@@ -842,7 +875,7 @@ class SignatureActionStub {
       $this->_node->language);
   }
 
-  public function resolveToExternalURL($url) {
+  public static function resolveToExternalURL($url) {
     if (!(strlen($url) > 4 && strpos($url, 'http') === 0)) {
       $tap_domain = variable_get('signature_action_import_tap_domain',
         'takeaction.takepart.com');
@@ -877,6 +910,7 @@ class SignatureActionStub {
     else {
       $this->_node->title = $tap->title;
     }
+    $this->_node->status = $tap->published ? 1 : 0;
 
     // Update the action image if it has changed.
     if (is_null($this->_data) || $tap->image_url !== $this->_data->image_url) {
@@ -900,6 +934,7 @@ class SignatureActionStub {
 
   public function save() {
     if ($this->_node !== FALSE) {
+      $this->_node->path = array('pathauto' => FALSE);
       $this->_node->uid = 1;
       $node = node_submit($this->_node);
       node_save($node);

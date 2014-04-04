@@ -3,9 +3,13 @@
     <h1 class="content-headline"><?=w('page_headline')?></h1>
     <h2 class="content-subheadline"><?=w('page_subheadline')?></h2>
     <!-- <h4 class="peek-a-boo"><?=w('social_follow_body')?></h4> -->
-    <div class="main-video-wrapper" <?=wa('video')?>>
-        <script src="<?=w('video')?>"></script>
+    <div data-jwposter-frame="<?= w('video')->src; ?>"
+         data-jwplaylist="<?= w('video')->href; ?>"
+         id="main-video-wrapper"
+         class="main-video-wrapper" <?= wa('video'); ?>>
+      <div id="main-video"></div>
     </div>
+
     <div class="columns-wrapper">
     <? foreach ( wl('columns') as $i => $w ): ?>
         <? $column_number = $i + 1; // the array is zero indexed ?>
@@ -48,7 +52,4 @@
         <? include('teach-social-block.tpl.php') ?>
     </section>
     <? include('teach-watch-promo.tpl.php') ?>
-    <div class="ad">
-        <?=w('ad')?>
-    </div>
 </div>
