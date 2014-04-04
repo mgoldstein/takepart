@@ -61,9 +61,10 @@ function tpf_content_article_field_group_info() {
     'weight' => '15',
     'children' => array(
       0 => 'field_article_action',
-      1 => 'field_related_actions',
-      2 => 'field_multi_page_campaign',
-      3 => 'field_html_title',
+      1 => 'field_display_tag',
+      2 => 'field_related_actions',
+      3 => 'field_multi_page_campaign',
+      4 => 'field_html_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -120,13 +121,12 @@ function tpf_content_article_field_group_info() {
     'label' => 'Tagging',
     'weight' => '11',
     'children' => array(
-      0 => 'field_display_tag',
-      1 => 'field_free_tag',
-      2 => 'field_series',
-      3 => 'field_topic',
-      4 => 'field_significance',
-      5 => 'field_topic_box',
-      6 => 'field_admin_tag',
+      0 => 'field_free_tag',
+      1 => 'field_series',
+      2 => 'field_topic',
+      3 => 'field_significance',
+      4 => 'field_topic_box',
+      5 => 'field_admin_tag',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -120,9 +120,7 @@
   }
 
   .tp-social-headline {
-    font-family: $secondary-sans-font;
-    font-size: 14px;
-    line-height: 1;
+    font: normal 14px/100% $secondary-sans-font;
     color: $dark-gray;
     text-transform: uppercase;
     text-align: center;

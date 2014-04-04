@@ -1202,6 +1202,35 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
+  // Exported field_base: 'field_campaign_base_url'
+  $field_bases['field_campaign_base_url'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_campaign_base_url',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_campaign_bg_color'
   $field_bases['field_campaign_bg_color'] = array(
     'active' => 1,
@@ -2125,6 +2154,35 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
+  // Exported field_base: 'field_campaign_seo_title'
+  $field_bases['field_campaign_seo_title'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_campaign_seo_title',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_campaign_sms'
   $field_bases['field_campaign_sms'] = array(
     'active' => 1,
@@ -2649,64 +2707,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 1,
     'type' => 'text_with_summary',
-  );
-
-  // Exported field_base: 'field_file_image_alt_text'
-  $field_bases['field_file_image_alt_text'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_file_image_alt_text',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_file_image_title_text'
-  $field_bases['field_file_image_title_text'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_file_image_title_text',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_follow_google'
@@ -3939,41 +3939,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'formatter',
   );
 
-  // Exported field_base: 'field_media_agency'
-  $field_bases['field_media_agency'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_media_agency',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'parent' => 0,
-          'vocabulary' => 'agency',
-        ),
-      ),
-      'options_list_callback' => 'content_taxonomy_allowed_values',
-    ),
-    'translatable' => 1,
-    'type' => 'taxonomy_term_reference',
-  );
-
   // Exported field_base: 'field_media_alt'
   $field_bases['field_media_alt'] = array(
     'active' => 1,
@@ -4028,70 +3993,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 1,
     'type' => 'text_long',
-  );
-
-  // Exported field_base: 'field_media_credit'
-  $field_bases['field_media_credit'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_media_credit',
-    'foreign keys' => array(
-      'tid' => array(
-        'columns' => array(
-          'tid' => 'tid',
-        ),
-        'table' => 'taxonomy_term_data',
-      ),
-    ),
-    'indexes' => array(
-      'tid' => array(
-        0 => 'tid',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'taxonomy',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => array(
-          'parent' => 0,
-          'vocabulary' => 'photo_credit',
-        ),
-      ),
-      'options_list_callback' => 'content_taxonomy_allowed_values',
-    ),
-    'translatable' => 1,
-    'type' => 'taxonomy_term_reference',
-  );
-
-  // Exported field_base: 'field_media_rights'
-  $field_bases['field_media_rights'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_media_rights',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 1,
-    'type' => 'text',
   );
 
   // Exported field_base: 'field_media_title'

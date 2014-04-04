@@ -1178,19 +1178,19 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'xmlsitemap' => array(
-          'weight' => '4',
+          'weight' => '10',
         ),
       ),
       'display' => array(),
@@ -7273,7 +7273,7 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_campaign_page_pattern';
-  $strongarm->value = '[node:field_campaign_reference]/[node:title]';
+  $strongarm->value = '[node:field-campaign-reference:field_campaign_base_url]/[node:title]';
   $export['pathauto_node_campaign_page_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

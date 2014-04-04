@@ -12,6 +12,6 @@ $node = menu_get_object();
 </div>
 <?php
   drupal_add_js('var addthis_config = {"data_track_clickback":true};', 'inline');
-  drupal_add_js('http://s7.addthis.com/js/250/addthis_widget.js#pubid=' . $variables['addthis_pubid'], 'external');
+  drupal_add_js('//s7.addthis.com/js/250/addthis_widget.js#pubid=' . $variables['addthis_pubid'], 'external');
 ?>
 <!-- AddThis Button END -->

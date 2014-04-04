@@ -239,7 +239,7 @@ function _takepart_rss_parseHref($html) {
   $regex = "/<a href=\"(.*)\">(.*)<\/a>/";
   if (preg_match_all($regex, $html, $links)) {
     if($links[1]) {
-      return 'http://'. $_SERVER['SERVER_NAME'] . ($links[1][0]);
+      return '//'. $_SERVER['SERVER_NAME'] . ($links[1][0]);
     } else {
       return false;
     }

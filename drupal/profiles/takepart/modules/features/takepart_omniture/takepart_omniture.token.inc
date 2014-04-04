@@ -5,6 +5,15 @@ function takepart_omniture_first_word($str) {
     return html_entity_decode($content_type_array[0], ENT_QUOTES);
 }
 
+function takepart_omniture_primary_topic($nid) {
+    if (!is_numeric($nid)) {
+        return 'Not-A-Number';
+    }
+    $node = node_load($nid);
+    $primary_topic = $node->field_topic['und'][0]['taxonomy_term']->name;
+    return $primary_topic;
+}
+
 function takepart_omniture_tab_uid($param) {
     $guid = FALSE;
     $from_db = FALSE;

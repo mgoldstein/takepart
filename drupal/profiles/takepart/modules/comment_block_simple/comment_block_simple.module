@@ -146,7 +146,7 @@ function comment_block_simple_block_view($delta = 1) {
         // Generate the page data-href.
         $url = $_SERVER["REQUEST_URI"];
         $url = preg_replace('/\?.*/', '', $url);
-        $url = 'http://' . $_SERVER["SERVER_NAME"] . $url;
+        $url = '//' . $_SERVER["SERVER_NAME"] . $url;
 
         // Set the template variables.
         $content['#fb_comments'] = array(

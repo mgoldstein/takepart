@@ -77,19 +77,19 @@ function takepart_search_feature_default_search_api_index() {
                 "name" : "Terms",
                 "type" : "fulltext",
                 "fields" : [
-                  "field_display_tag",
                   "field_free_tag",
-                  "field_series",
                   "field_topic",
+                  "field_display_tag",
+                  "field_series",
                   "field_video_series",
                   "field_group_topic",
                   "field_free_tag:name",
-                  "field_series:name",
                   "field_topic:name",
+                  "field_series:name",
                   "field_video_series:name",
                   "field_group_topic:name"
                 ],
-                "description" : "A Fulltext aggregation of the following fields: Display Tag, Free Tag, Series, Topic, Video Series, Topic, Free Tag \\u00bb Name, Series \\u00bb Name, Topic \\u00bb Name, Video Series \\u00bb Name, Topic \\u00bb Name."
+                "description" : "A Fulltext aggregation of the following fields: Free Tag, Topic, Display Tag, Series, Video Series, Topic, Free Tag \\u00bb Name, Topic \\u00bb Name, Series \\u00bb Name, Video Series \\u00bb Name, Topic \\u00bb Name."
               }
             }
           }
@@ -101,15 +101,11 @@ function takepart_search_feature_default_search_api_index() {
             "default" : "0",
             "bundles" : {
               "openpublish_article" : "openpublish_article",
-              "audio" : "audio",
-              "blog_front" : "blog_front",
-              "openpublish_blog_post" : "openpublish_blog_post",
-              "takepart_campaign" : "takepart_campaign",
+              "campaign" : "campaign",
               "feature_article" : "feature_article",
+              "takepart_campaign" : "takepart_campaign",
               "takepart_page" : "takepart_page",
               "openpublish_photo_gallery" : "openpublish_photo_gallery",
-              "profile" : "profile",
-              "venue" : "venue",
               "video" : "video"
             }
           }
@@ -131,8 +127,8 @@ function takepart_search_feature_default_search_api_index() {
           "weight" : "0",
           "settings" : { "fields" : {
               "field_free_tag:name" : true,
-              "field_series:name" : true,
               "field_topic:name" : true,
+              "field_series:name" : true,
               "field_video_series:name" : true,
               "field_group_topic:name" : true
             }
@@ -177,8 +173,8 @@ function takepart_search_feature_default_search_api_index() {
               "search_api_aggregation_1" : true,
               "body:value" : true,
               "field_free_tag:name" : true,
-              "field_series:name" : true,
               "field_topic:name" : true,
+              "field_series:name" : true,
               "field_video_series:name" : true,
               "field_profile_photo:alt" : true,
               "field_group_topic:name" : true
@@ -201,8 +197,7 @@ function takepart_search_feature_default_search_api_index() {
       }
     },
     "enabled" : "1",
-    "read_only" : "0",
-    "rdf_mapping" : []
+    "read_only" : "0"
   }');
   return $items;
 }
@@ -222,10 +217,12 @@ function takepart_search_feature_default_search_api_server() {
       "port" : "8080",
       "path" : "\\/solr",
       "http_user" : "",
-      "http_pass" : ""
+      "http_pass" : "",
+      "excerpt" : 0,
+      "retrieve_data" : 0,
+      "highlight_data" : 0
     },
-    "enabled" : "1",
-    "rdf_mapping" : []
+    "enabled" : "1"
   }');
   return $items;
 }

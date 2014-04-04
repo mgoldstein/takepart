@@ -1080,6 +1080,11 @@ echo $separator;
     'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
   );
+  /* Filter criterion: Content: Syndication (field_syndication) */
+  $handler->display->display_options['filters']['field_syndication_value']['id'] = 'field_syndication_value';
+  $handler->display->display_options['filters']['field_syndication_value']['table'] = 'field_data_field_syndication';
+  $handler->display->display_options['filters']['field_syndication_value']['field'] = 'field_syndication_value';
+  $handler->display->display_options['filters']['field_syndication_value']['operator'] = 'empty';
   $handler->display->display_options['path'] = 'content/%/yahoo_feed.xml ';
 
   /* Display: Content Types Feed Page */
@@ -4331,6 +4336,7 @@ return TRUE;';
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
     'openpublish_blog_post' => 'openpublish_blog_post',
+    'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',

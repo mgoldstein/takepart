@@ -37,6 +37,7 @@
                 link: args.url + '',
                 picture: args.image,
                 caption: args.caption,
+                display: 'popup',
                 description: args.description //,
             // message: 'Facebook Dialogs are easy!' ???
             },

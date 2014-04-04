@@ -366,8 +366,8 @@ header {
     }
     .search-toggle{
       display: block;
-      position: relative;
       z-index: 9;
+      top: -3px;
       width: 34px;
       height: 37px;
       cursor: pointer;

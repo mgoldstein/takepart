@@ -3,7 +3,8 @@
 
 @import "typeface";
 
-@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
+// font-family: 'Shadows Into Light', cursive;
 
 $page-width: 1000px;
 $page-margins: 20px;
@@ -22,9 +23,131 @@ $primary-white: white;
 $light-white: #ccc;
 $body-copy-black: #313131;
 
+/* # Sprites
+================================================== */
 
-@import url(//fonts.googleapis.com/css?family=Shadows+Into+Light);
-// font-family: 'Shadows Into Light', cursive;
+@import "stats/*.png";
+@include all-stats-sprites;
+
+
+/* # Mixins
+================================================== */
+
+@mixin dollar-sign {
+    &:before {
+    display: inline-block;
+    vertical-align: top;
+    content: "$";
+    font-size: .6em;
+    line-height: 1;
+  }
+}
+
+@mixin sys-input-styling {
+    font-family: $primary-font;
+    @include box-sizing(border-box);
+    @include border-radius(4px);
+    border: 1px solid #ccc;
+    @include box-shadow(-4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999);
+    background-color: white;
+}
+
+@mixin sys-input-error-styling {
+  @include box-shadow(-4px -4px #D00, -4px 4px #D00, 4px -4px #D00, 4px 4px #D00, inset 0 0 4px #999);
+  color: #d00;
+}
+
+@mixin big-number-list {
+  &:after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  counter-reset: li;
+  li {
+    list-style-type: none;
+    position: relative;
+    padding-left: 3em;
+    &:before {
+      content: counter(li);
+      counter-increment: li;
+      display: block;
+      position: absolute;
+      left: 0;
+      font: normal 2.5em/1 $secondary-font;
+      width: 1em;
+    }
+  }
+}
+
+@mixin campaign-stat {
+  color: black;
+  font-weight: normal;
+  font-family: $secondary-font;
+  text-shadow: 1px 1px $primary-color;
+}
+
+@mixin magnifying-glass-submit {
+    input[type=submit] {
+    position: absolute;
+    right: 22px;
+    bottom: 10px;
+    background: transparent image-url("school-search-submit.png") scroll no-repeat top left;
+    background-size: 24px auto;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    text-indent: 100%;
+    overflow: hidden;
+
+    // override button behavior
+    &:active {
+      position: absolute;
+      top: auto;
+      bottom: 9px;
+    }
+  }
+
+  [disabled] ~ input[type=submit],
+  .in-progress ~ input[type=submit] {
+    display: none;
+  }
+}
+
+@mixin orange-button {
+  display: inline-block;
+  padding: .75em 2em;
+  font: normal 1.333em/1 $secondary-font;
+  color: white;
+  text-transform: uppercase;
+  background-color: $primary-color;
+  &:hover {
+    text-decoration: none;
+  }
+  &:active {
+    position: relative;
+    top: 1px;
+  }
+  &.in-progress {
+    background-image: image-url("spinner-white-orange.gif");
+    background-size: auto 46%;
+    background-position: 96% center;
+  }
+}
+
+@mixin orange-button-container {
+  margin: 2em 0;
+  text-align: center;
+  clear: both;
+  a {
+    @include orange-button;
+  }
+  &.hidden {
+    a {
+      display: none;
+    }
+  }
+}
 
 /* # General
 ================================================== */
@@ -209,28 +332,30 @@ $body-copy-black: #313131;
             color: black;
           }
         }
-        &:first-of-type {
-          margin: 0;
-          height: 43px;
-          a {
-	    display: block;
-            background: transparent image-url("menu-home.png") no-repeat scroll top left;
-            background-size: 21px;
-	    height: 21px;
-	    width: 21px;
-	    text-indent: 200%;
-            overflow: hidden;
-            margin: 7px;
-	    padding: 0;
-          }
-          &.active {
-            margin-top: 0;
+        @media (min-width: 768px) {
+          &:first-of-type {
+            margin: 0;
+            height: 43px;
             a {
+              display: block;
+              background: transparent image-url("menu-home.png") no-repeat scroll top left;
+              background-size: 21px;
+              height: 21px;
+              width: 21px;
+              text-indent: 200%;
+              overflow: hidden;
               margin: 7px;
-	      padding: 0;
-              background-position: 0 -21px;
+              padding: 0;
             }
-          }
+            &.active {
+              margin-top: 0;
+              a {
+                margin: 7px;
+                padding: 0;
+                background-position: 0 -21px;
+              }
+            }
+          }          
         }
         &.active {
           background: image-url('active_menu_bg.png') no-repeat top right;
@@ -346,21 +471,16 @@ a {
     }
   }
 
-  h2 {
+  .short-headline {
     text-align: center;
-    font: normal 2em/1 $secondary-font;
-    text-transform: uppercase;
-    background: transparent image-url("teach-home-featured-header-bg.png") scroll no-repeat top center;
-
+    background-position: top center;
     position: relative;
     top: -15px;
-
     span {
-      display: block;
-      @include transform(rotate(-2deg));
-      padding: 1em 0;
+      padding-left: 0;
     }
   }
+
   .secondary-feature {
     background: transparent none;
     margin: 0;
@@ -551,9 +671,9 @@ a {
 }
 
 .teach-video-page,
-.page-wordlet-teach-alliances .content,
+.teach-alliances-content,
 .teach-news-content,
-.teach-sys-content,
+.teach-story-content,
 .teach-film-content,
 .teach-fund-about-content {
   position: relative;
@@ -629,6 +749,18 @@ a {
     display: none;
   }
 }
+
+.short-headline {
+  font: normal 2em/1 $secondary-font;
+  text-transform: uppercase;
+  background: transparent image-url("teach-home-featured-header-bg.png") scroll no-repeat top left;
+  span {
+    display: block;
+    @include transform(rotate(-2deg));
+    padding: 1em 0 1em 1em;
+  }
+}
+
 
 // common style for peek-a-boo element
 // behind the video player
@@ -1047,26 +1179,7 @@ a {
   }
 
   ol {
-    &:after {
-      content: " ";
-      display: block;
-      clear: both;
-    }
-    counter-reset: li;
-    li {
-      list-style-type: none;
-      position: relative;
-      padding-left: 3em;
-      &:before {
-        content: counter(li);
-        counter-increment: li;
-        display: block;
-        position: absolute;
-        left: 0;
-        font: normal 2.5em/1 $secondary-font;
-        width: 1em;
-      }
-    }
+    @include big-number-list;
   }
 
   .teach-watch-promo {
@@ -1218,55 +1331,53 @@ a {
 
 /* # Alliances Page
 ================================================== */
-.page-wordlet-teach-alliances {
-  .content {
-    .main-image-wrapper {
-      margin: 0.5em 20px;
-      text-align: center;
-      img {
-        max-width: 100% !important;
-        height: auto !important;
-      }
+.teach-alliances-content {
+  .main-image-wrapper {
+    margin: 0.5em 20px;
+    text-align: center;
+    img {
+      max-width: 100% !important;
+      height: auto !important;
     }
-    .content-main,
-    .alliances {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      padding: 0 20px;
-      width: 100%;
-      float: left;
+  }
+  .content-main,
+  .alliances {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 100%;
+    float: left;
+  }
+  .alliance {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: white none;
+    @include box-shadow(0 0 6px rgba(0,0,0,0.6));
+    text-align: center;
+    overflow: hidden;
+    padding: 10px;
+    margin-bottom: 20px;
+    @media (min-width: 321px) {
+    	float: left;
+    	width: 45%;
+    	margin-right: 5%;
+    	&.alliance-even {
+    	  margin-right: 0;
+    	}
     }
-    .alliance {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      background: white none;
-      @include box-shadow(0 0 6px rgba(0,0,0,0.6));
-      text-align: center;
-      overflow: hidden;
-      padding: 10px;
-      margin-bottom: 20px;
-      @media (min-width: 321px) {
-      	float: left;
-      	width: 45%;
-      	margin-right: 5%;
-      	&.alliance-even {
-      	  margin-right: 0;
-      	}
-      }
-      @media (min-width: 769px) {
-      	width: 22%;
-      	margin-right: 4%;
-      	&.alliance-nth-child-4n {
-      	  margin-right: 0;
-      	}
-      }
-      img {
-      	max-width: 100% !important;
-      	height: auto !important;
-      	vertical-align: middle;
-      }
+    @media (min-width: 769px) {
+    	width: 22%;
+    	margin-right: 4%;
+    	&.alliance-nth-child-4n {
+    	  margin-right: 0;
+    	}
+    }
+    img {
+    	max-width: 100% !important;
+    	height: auto !important;
+    	vertical-align: middle;
     }
   }
 }
@@ -1416,10 +1527,337 @@ a {
   .pull-left  { float: left;  }
 }
 
+/* # Teacher Stories Pages
+================================================== */
+.teach-browse-stories-content,
+.teach-teacher-stories-content {
+  color: $body-copy-black;
+  strong { color: $dark-grey; }
+
+  .preface {
+    font-size: 14px;
+    line-height: 24px;
+
+    .teach-fund-button {
+      text-align: center;
+      a {
+        display: inline-block;
+        padding: .5em 1em;
+        font-family: $secondary-font;
+        text-transform: uppercase;
+        color: white;
+        background-color: black;
+      }
+    }
+  }
+
+  .sys-intro-body {
+    p,
+    ul {
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    @media (min-width: 768px) {
+      width: 60%;
+    }
+    @media (min-width: 1000px) {
+      min-height: 10em;
+    }
+  }
+}
+
+/* # Teacher Stories Landing Page
+================================================== */
+
+.sys-stats {
+  position: relative;
+  margin: 1em auto;
+  font-size: 1.333333333em;
+  line-height: 1.25;
+
+  .campaign-stat {
+    @include campaign-stat;
+  }
+
+  .sys-stats-content {
+    background: transparent image-url('notebook_paper_middle.png') scroll repeat-y top center;
+    background-size: contain;    
+    
+    padding: 0 5% 0 14%;
+
+    //micro clearfix, to prevent margin collapse
+    &:before,
+    &:after {
+      content: ' ';
+      display: table;
+      clear: both;
+    }
+    & > :first-child {
+      margin-top: -1em;
+    }
+  }
+
+  &:before,
+  &:after {
+    content: ' ';
+    display: block;
+    background: transparent image_url('notebook_paper_top.png') scroll no-repeat top center;
+    background-size: contain;
+    width: 100%;
+    height: 0;
+    padding-top: 23.7250554%;
+  }
+  &:after {
+    background-image: image_url('notebook_paper_bottom.png');
+    padding-top: 21.0643016%;
+  }
+
+  h2 {
+    position: relative;
+    font: normal 2.5em/1 $cursive-font;
+    margin: 1em 0 .5em -.5em;
+    @include transform(rotate(-3deg));
+    span {
+      display: block;
+      &:last-child {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  p,
+  ol {
+    font-size: 1em;
+    color: $body-copy-black;
+  }
+
+  nav {
+    margin: 1em 0;
+    text-align: center;
+    a.active {
+      color: black;
+      font-weight: bold;
+      cursor: default;
+      text-decoration: underline;
+    }
+  }
+
+
+  .sys-form {
+
+
+    input.input-school-name[type=text] {
+      margin-top: 1em;
+    }
+
+    @media (min-width: 1000px) {
+      .customSelect {
+        width: 6em;
+        margin: 0;
+      }
+      input.input-school-name[type=text] {
+        width: 240px;
+        margin-top: 0;
+        margin-left: 1em;
+      }
+    }
+
+    @include magnifying-glass-submit;
+
+  }
+
+  .teach-fund-headline {
+    float: left;
+    span:nth-of-type(1) {
+      font-size: 0.6em;
+      line-height: 1;
+      margin-bottom: -.5em;
+      margin-left: 1.5em;
+    }
+  }
+
+  .teach-fund-count {
+    float: right;
+    text-align: right;
+    color: black;
+    @include transform(rotate(3deg));
+    margin-top: .5em;
+    span {
+      display: block;
+      &.count {
+        font-size: 3em;
+        @include dollar-sign;
+      }
+      &:not(.count) {
+        font: bold 1.5em/1 $cursive-font;
+      }
+    }
+  }
+
+  .teach-fund-body {
+    clear: both;
+  }
+
+  .most-stories-headline {
+    font-size: 2.2em;
+    letter-spacing: -1px;
+  }
+
+  .most-stories-list {
+    @include big-number-list;
+    li {
+      margin-bottom: 1em;
+      padding-left: 2.5em;
+      &:before {
+        @include campaign-stat;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .teacher-story-stat {
+    margin: 0 auto 1em;
+    width: 50%;
+    padding-left: 65px;
+
+    font-family: $secondary-font;
+    text-transform: uppercase;
+    @media (min-width: 1000px) {
+      @include box-sizing(border-box);
+      // padding: 0 10px 0 60px;
+      margin: 0 0 1em;
+      float: left;
+      &:last-of-type {
+        float: none;
+        clear: both;
+        margin: 0 auto 1em;
+      }
+    }
+
+    span {
+      display: block;
+      font-size: 1.125em;
+      line-height: 1;
+      &.campaign-stat {
+        font-size: 2.25em;
+      }
+    }
+  }
+}
+
+.featured-stories {
+  // extra padding to clear the post-it
+  @media (min-width: 1000px) {
+    margin-top: 2em;
+  }
+  .short-headline {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// featured stories module
+.featured-story {
+  @include box-sizing(border-box);
+  width: 100%;
+  height: 0;
+  padding-top: 92.6121372%;
+  margin-bottom: 1em;
+  background: transparent image-url("polaroid_blue_pin.png") scroll no-repeat top center;
+  background-size: contain;
+  overflow: hidden;
+  position: relative;
+
+  font: normal 1.25em/1.125 $primary-font;
+
+  @media (min-width: 1000px) {
+    font-size: 1.3333em;
+  }
+
+  // the polaroid is 379px / 351px
+  // have fun calculating percentages.
+
+  & > img {
+    display: block;
+    position: absolute;
+    top: 9.25%;
+    left: 3.5%;
+    width: 92.348285% !important; // override inline styles and attributes
+    height: 68.3760684% !important;
+  }
+
+  & > blockquote {
+    position: absolute;
+    bottom: 22%;
+    left: 3.5%;
+    width: 92.348285%; // override inline styles and attributes
+
+    @include box-sizing(border-box);
+    margin: 0;
+    background-color: white;
+    background-color: rgba(255,255,255,.75);
+    padding: .5em 0 .5em 2em;
+    font-style: italic;
+
+    &:before {
+      content: "\201C";
+      display: block;
+      font-size: 3em;
+      line-height: .3333;
+      position: absolute;
+      left: .1em;
+      top: .35em;
+    }
+    &:after {
+      content: "\201D";
+      display: inline-block;
+      font-size: 3em;
+      line-height: .01;
+      vertical-align: bottom;
+    }
+  }
+
+
+
+  .story-content {
+    position: absolute;
+    top: 79.2022792%;
+    left: 7%;
+    width: 85.348285%;
+    height: 18.5185185%;
+    overflow: hidden;
+
+    h2 {
+      margin: 0;
+      font-size: 1.125em;
+      line-height: 1.25;
+    }
+    p {
+      margin: 0;
+      font-size: 1em;
+      line-height: 1.25em;
+
+      a {
+        font-size: .75em;
+      }
+    }
+  }
+
+  &:nth-of-type(3n+1) {
+    @include transform(rotate(-2deg));
+    margin-top: -3em;
+  }
+  &:nth-of-type(3n) {
+    @include transform(rotate(3deg));
+  }
+}
+
 
 /* # Share Your Story Page
 ================================================== */
-
 .teach-sys-content {
   font: normal 14px/1.5 $primary-font;
 
@@ -1459,16 +1897,16 @@ a {
 h1.sys-headline {
   background: transparent image-url("sys-headline-bg.png") scroll no-repeat top left;
   font-size: 1.4em;
-  padding: 1.8em 0 1em .5em;
+  padding: 1.3em 0 1em .5em;
 
   @media (min-width: 400px) {
-    font-size: 1.642857143em;
-    padding: 1.3em 0 1em .5em;
+    font-size: 1.4em;
+    padding: 1.7em 0 1em .5em;
   }
 
-  @media (min-width:850px) {
-    font-size: 34px;
-    padding: .67em 0 .75em .5em;  
+  @media (min-width:930px) {
+    font-size: 1.8em;
+    padding: 1.1em 0 .75em .5em;
   }
 
   .teach-sys-thanks-content & {
@@ -1512,13 +1950,7 @@ h1.sys-headline {
         text-align: center;
         color: black;
         font: normal 1.5em/1 $secondary-font;
-        &:before {
-          display: inline-block;
-          vertical-align: top;
-          content: "$";
-          font-size: .6em;
-          line-height: 1;
-        }
+        @include dollar-sign;
       }
       &:nth-child(3) {
         text-align: right;
@@ -1536,9 +1968,52 @@ h1.sys-headline {
   }
 }
 
+// the post-it
+.sys-cta {
+  @include box-sizing(border-box);
+  width: 293px;
+  height: 294px;
+  overflow: hidden;
+  background: transparent image-url("post_it_paperclip_293x294.png") scroll no-repeat top left;
+  font-size: 1.33333em; // 16px;
+  line-height: 1.25;
+  color: black;
+  margin: 1em auto;
+  padding: 1.5em 1em 1em 2em;
+  text-align: center;
+
+  @include transform(rotate(4deg));
+
+  h3 {
+    font: bold 2em/1 $cursive-font;
+    text-decoration: underline;
+    margin-bottom: .5em;
+    text-align: center;
+  }
+  .sys-cta-body {
+    text-align: left;
+    margin-bottom: 1em;
+  }
+  & > a {
+    padding: .5em 1em;
+    font: normal .8em/1.25 $secondary-font;
+    text-transform: uppercase;
+    color: white;
+    background-color: $primary-color;
+  }
+  @media (min-width: 768px) {
+    position: absolute;
+    top: -12px;
+    right: -5px;
+    margin: 0;
+    background-image: image-url("post_it_paperclip_315x241.png");
+    max-width: 315px;
+    max-height: 241px;
+  }
+}
+
 .sys-tips {
   h2 {
-
     background: transparent image-url("sys-subhead-bg.png") scroll no-repeat top left;
     padding: 2.5em 0 2em .5em;
     font-size: 1em;
@@ -1566,21 +2041,6 @@ h1.sys-headline {
   li {
     margin-bottom: .65em;
   }
-}
-
-// here's a mixin for the input styling
-
-@mixin sys-input-styling {
-    font-family: $primary-font;
-    @include box-sizing(border-box);
-    @include border-radius(4px);
-    border: 1px solid #ccc;
-    @include box-shadow(-4px -4px #dddde3, -4px 4px #dddde3, 4px -4px #dddde3, 4px 4px #dddde3, inset 0 0 4px #999);
-    background-color: white;
-}
-@mixin sys-input-error-styling {
-  @include box-shadow(-4px -4px #D00, -4px 4px #D00, 4px -4px #D00, 4px 4px #D00, inset 0 0 4px #999);
-  color: #d00;
 }
 
 // this is the form
@@ -1611,6 +2071,8 @@ h1.sys-headline {
     top: 0;
     left: 0;
     opacity: 0;
+    width: 24px;
+    height: 24px;
     & ~ label.visible:before {
       content: "\0020";
       display: block;
@@ -1725,11 +2187,16 @@ h1.sys-headline {
   // customselect overrides
   .customSelect {
     margin: 0 auto .5em;
-    &:after {
-      display: block;
-      content: "\25BC";
-      float: right;
+
+    .customSelectInner {
+      width: 100% !important;
+      &:after {
+        display: inline-block;
+        content: "\25BC";
+        float: right;
+      }
     }
+
     @media (min-width: 1000px) {
       margin: 0 0 0 .5em;
       width: 8em;
@@ -1777,6 +2244,17 @@ h1.sys-headline {
   input.input-school-name[type=text] {
     @media (min-width: 1000px) {
       width: 362px;
+    }
+  }
+
+  .school-name-instructions {
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 0;
+    .sys-stats-content & {
+      max-width: 20em;
+      margin: 0 auto;
     }
   }
 
@@ -1857,7 +2335,7 @@ h1.sys-headline {
     .right {
       display: inline-block;
       vertical-align: top;
-      width: 47.4%;
+      width: 47.3%;
     }
     .right {
       margin-left: 3.9%;
@@ -1891,11 +2369,19 @@ h1.sys-headline {
   padding-right: 30px;
   text-indent: 0;
 
+  font-size: 1.3em;
+  line-height: 2em;
+
   &:before {
     display: inline;
     content: "\00d7\0020";
     font-size: 1.5em;
     line-height: .667;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $primary-color;
   }
 }
 
@@ -1974,12 +2460,21 @@ h1.sys-headline {
   }
 
   .sys-story-headline {
-    font: normal 1.95em/1 $secondary-font;
-    padding: .25em;
-    background: transparent image-url("sys-headline-bg.png") no-repeat scroll top left;
-    padding: 17px 0 30px 10px;
-    margin-top: -45px;
-    margin-left: -25px;
+    font: normal 2.3em/1 $secondary-font;
+    background: transparent image-url("sys-headline-bg.png") no-repeat scroll top right;
+    background-size: cover;
+    padding: 30px 0 30px 10px;
+    margin: -60px -30px 0 -15px;
+    text-align: center;
+
+    @media (min-width: 480px) {
+      text-align: left;
+      background-position: top left;
+      background-size: auto;
+      font-size: 1.95em;
+      padding: 17px 0 30px 10px;
+      margin: -45px -25px 0 0;
+    }
     & > span {
       display: block;
       @include transform(rotate(-2deg));
@@ -2007,7 +2502,6 @@ h1.sys-headline {
 
   .sys-story-teacher-image-wrapper {
     position: relative;
-    float: left;
     @media (min-width: 768px) {
       max-width: 45%;
       float: left;
@@ -2030,8 +2524,8 @@ h1.sys-headline {
       background-image: image-url("stupid-tape-2.png");
     }
     &:after {
-      bottom: -25px;
-      left: -15px;
+      bottom: 92px;
+      left: -24px;
       width: 61px;
       height: 129px;
       background-image: image-url("stupid-tape-1.png");
@@ -2044,11 +2538,10 @@ h1.sys-headline {
   }
 
   .sys-story-user-image-wrapper {
-    float: right;
     @include transform(rotate(2deg));
-    margin-left: 1em;
-    margin-bottom: 1em;
     position: relative; // 82x23
+    max-width: 50%;
+    float: right;
     &:before {
       content: " ";
       display: block;
@@ -2064,6 +2557,10 @@ h1.sys-headline {
     img {
       display: block;
     }
+
+    @media (min-width: 480px) {
+      margin: 0 0 1em 1em;
+    }
   }
 
   .content {
@@ -2078,4 +2575,269 @@ h1.sys-headline {
     color: #666;
   }
 
+  .story-social-share {
+    display: block;
+    width: 100%; // explicit, so it doesn't get all "border-box"
+    padding: .6em 4px 0;
+    background: transparent image-url("story-modal-social-share-bg.png") scroll no-repeat center top;
+    background-size: contain;
+    min-height: 4.1em;
+    text-align: center;
+
+    @media (min-width: 480px) {
+      padding-top: .9em;
+    }
+
+    span {
+      font: normal 1.4em/1 $secondary-font;
+      text-transform: uppercase;
+
+      @media (min-width: 480px) {
+        font-size: 1.666666667em;
+        display: inline;
+      }
+      @media (min-width: 768px) {
+        margin-left: 1.2em;
+      }
+
+    }
+  }
+
+  .story-comments {
+    max-width: 638px;
+    margin: 0 auto;
+    clear: both;
+    h3 {
+      display: inline-block;
+      font-size: 2.166666667em;
+    }
+  }
+}
+
+/* # Browse Stories Page
+================================================== */
+// general styles can happen anywhere in the body
+.page-wordlet-teach-browse-stories {
+  .button {
+    @include orange-button;
+  }
+  .orange-button-container {
+    @include orange-button-container;
+  }
+}
+
+.teach-app {
+
+  .app-nav {
+    font: normal 1.666666667em/1 $secondary-font; 
+    text-align: center;
+    @media (min-width: 850px) {
+      text-align: left;
+    }
+    a {
+      display: inline-block;
+      margin-bottom: 1em;
+      margin-right: 1em;
+      text-transform: uppercase;
+      &.active {
+        color: black;
+        border-bottom: 4px solid black;
+        position: relative;
+        &:hover {
+          text-decoration: none;
+          cursor: default;
+        }
+        &:after {
+          content: ' ';
+          display: block;
+          position: absolute;
+          bottom: -16px; // 12px pseudo-element height plus 4px border
+          left: 50%;
+          margin-left: -6px;
+          width: 0;
+          height: 0;
+          border: 6px solid transparent;
+          border-top-color: black;
+        }
+      }
+    }
+  }
+
+  .stories-view {
+    position: relative;
+
+    &:after {
+      content: ' ';
+      display: table;
+      clear: both;
+    }
+
+    .view-messages {
+      text-align: center;
+      p:first-of-type {
+        font-weight: bold;
+        text-decoration: underline;
+        font-size: 1.5em;
+      }
+    }
+
+    .story-count {
+      position: absolute;
+      bottom: 100%;
+      right: 1em;
+      font: bold 1.166666667em/1 $primary-font;
+      color: $primary-grey;
+      text-transform: uppercase;
+      margin-bottom: 1.857142857em;
+    }
+
+    .stories-wrapper {
+      overflow: hidden;
+    }
+
+    .story-gutter {
+      height: 0;
+      width: 0;
+      @media (min-width: 768px) {
+        width: 4.9%;
+      }
+      @media (min-width: 1000px) {
+        width: 2.25%;
+      }
+    }
+
+    .story {
+      @include box-sizing(border-box);
+      position: relative;
+      width: 100%;
+      background-color: white;
+      @include box-shadow(0 0 5px transparentize(black, .89));
+      padding: 4px;
+      margin-bottom: 2em;
+
+      @media (min-width: 768px) {
+        float: left;
+        width: 48.5%;
+      }
+      @media (min-width: 1000px) {
+        width: 31.8%;
+      }
+
+      // stupid gull-wing shadow
+      &:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: 0;
+        padding-top: 4.379562%;
+        background: transparent image-url("browse-story-shadow.png") scroll no-repeat top center;
+        background-size: contain;
+      }
+
+      img {
+        display: block;
+        width: 100% !important;
+        height: auto !important;
+      }
+      .teacher-name {
+        font: bold 1.333333333em/1.125 $primary-font;
+        text-transform: uppercase;
+        margin: .8em .5em .2em;
+      }
+      .story-meta {
+        line-height: 1;
+        margin: 0 .571428571em 1em;
+      }
+      .story-title {
+        font: bold 1.166666667em/1 $primary-font;
+        margin: 0 .571428571em;
+      }
+    } //story
+
+  } // .stories-view
+
+  .sys-form {
+    background-color: white;
+    margin: 0 auto 2.5%;
+    padding: 2em 3em 1.5em;
+    border: 1px solid transparentize(black, .92);
+    @include box-shadow(0 0 8px transparentize(black, .94));
+    position: relative;
+
+    // man I hate these gull-wing shadows
+    &:after {
+      content: ' ';
+      display: block;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 0;
+      padding: 2.8571429% 0;
+      background: transparent image-url("app-search-box-shadow.png") scroll no-repeat center top;
+      background-size: contain;
+    }
+
+    input[type=text].input-school-name {
+      margin-top: 1em;
+    }
+
+    @include magnifying-glass-submit;
+
+    @media (min-width: 1000px) {
+      max-width: 550px;
+      input[type=text].input-school-name {
+        width: 410px;
+        margin-top: 0;
+        margin-left: 1em;
+      }
+    }
+  }
+}
+
+// Teach App Story Modal View Overrides
+.page-wordlet-teach-browse-stories {
+  .tpmodal_close.sys_modal_close {
+    // ugh
+    @media (max-width: 767px) {
+    width: 100% !important;
+    text-align: center;
+    margin: 0;
+    padding: 1.25em 0 0;
+    font-size: 1.75em;
+    }
+    @media (min-width: 768px) {
+      padding-right: 60px;
+    }
+  }
+  .sys_modal_content {
+    padding: 75px 0;
+    @media (min-width: 768px) {
+      padding: 30px 60px 20px;
+    }
+    .story-nav {
+      display: block;
+      width: 31px;
+      height: 53px;
+      background: transparent inline-image("story-modal-nav-previous.png") scroll no-repeat center center; 
+      position: absolute;
+      top: 0;
+      padding: 10px 20px;
+      z-index: 10001;
+      @media (min-width: 768px) {
+        padding: 20px 10px 20px 20px;
+        top: 50%;
+        margin-top: -37px;
+      }
+    }
+    .previous-story {
+      left: 0;
+    }
+    .next-story {
+      background-image: inline-image("story-modal-nav-next.png");
+      right: 0;
+    }
+  }
 }

@@ -946,6 +946,7 @@ function wordlet_page_view_callback($page) {
 
   global $base_url;
   $url = $base_url. '/'. current_path();
+  /*
   $og_url = array(
     '#type' => 'html_tag',
     '#tag' => 'meta',
@@ -953,7 +954,7 @@ function wordlet_page_view_callback($page) {
       'property' => 'og:url',
       'content' =>  $url,
     ),
-   );
+   ); */
   drupal_add_html_head( $og_url, 'og_url');
 
   // $og_type = array(
