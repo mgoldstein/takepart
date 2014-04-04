@@ -69,6 +69,7 @@ features[field_base][] = field_blogpost_main_image
 features[field_base][] = field_blogpost_subhead
 features[field_base][] = field_call_to_action
 features[field_base][] = field_campaign_background
+features[field_base][] = field_campaign_base_url
 features[field_base][] = field_campaign_bg_color
 features[field_base][] = field_campaign_bgw
 features[field_base][] = field_campaign_bgw_image

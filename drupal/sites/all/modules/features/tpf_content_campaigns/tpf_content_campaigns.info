@@ -79,6 +79,7 @@ features[field_instance][] = field_collection_item-field_campaign_social_follow-
 features[field_instance][] = field_collection_item-field_campaign_social_follow-field_social_network
 features[field_instance][] = node-campaign-field_article_subhead
 features[field_instance][] = node-campaign-field_campaign_background
+features[field_instance][] = node-campaign-field_campaign_base_url
 features[field_instance][] = node-campaign-field_campaign_bg_color
 features[field_instance][] = node-campaign-field_campaign_bgw
 features[field_instance][] = node-campaign-field_campaign_bgw_image

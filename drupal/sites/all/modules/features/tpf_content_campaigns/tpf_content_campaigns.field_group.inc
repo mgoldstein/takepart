@@ -479,7 +479,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Header/Branding',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_campaign_min_height',
       1 => 'field_campaign_bg_color',
@@ -662,7 +662,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -694,7 +694,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_topic',
       1 => 'field_series',
