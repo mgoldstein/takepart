@@ -61,7 +61,7 @@
           // if there is a tray title, set card padding
           // and contextual link position
           if (titleHeight > 0) {
-            $this.find('.card')
+            $this.find('.card .card-inner')
               .css("padding-top", titleHeight)
               .find('.contextual-links-wrapper')
                 .css({
