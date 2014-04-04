@@ -63,14 +63,14 @@
 
 <?php if(isset($variables['entity']->field_campaign_card_reference[1]) == true || isset($variables['entity']->field_campaign_card_reference['und'][1]) == true): ?>
   <div class="tray-header">
-    <?php if(isset($tray_title) == true): ?>
-      <h1 class="card-title"><?php print $tray_title; ?></h1>
-    <?php endif; ?>
     <nav class="slider-pagination">
-      <?php for($i = 1; $i <= count($items); $i++) : ?>
+      <?php for($i = 0; $i < count($items); $i++) : ?>
         <a href="#" data-slide="<?php print $i; ?>"><?php print $i; ?></a>
       <?php endfor; ?>
     </nav>
+    <?php if(isset($tray_title) == true): ?>
+      <h1 class="card-title"><?php print $tray_title; ?></h1>
+    <?php endif; ?>
   </div>
 <?php endif; ?>
 

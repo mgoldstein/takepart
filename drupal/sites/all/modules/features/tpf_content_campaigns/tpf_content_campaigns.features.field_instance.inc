@@ -5054,7 +5054,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_instructional',
-    'label' => 'Instroductory Copy',
+    'label' => 'Introductory Copy',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -6306,7 +6306,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_instructional',
-    'label' => 'Instroductory Copy',
+    'label' => 'Introductory Copy',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -7491,7 +7491,7 @@ Note: If you manually reference more items than selected here, the number refere
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_instructional',
-    'label' => 'Instroductory Copy',
+    'label' => 'Introductory Copy',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -8481,7 +8481,7 @@ Note: If you manually reference more items than selected here, the number refere
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_instructional',
-    'label' => 'Instroductory Copy',
+    'label' => 'Introductory Copy',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -10331,7 +10331,6 @@ Note: If you manually reference more items than selected here, the number refere
 Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
   t('Iframe');
   t('Image Link');
-  t('Instroductory Copy');
   t('Introductory Copy');
   t('Is this media card a photo or a video?');
   t('Left/Center Text');
