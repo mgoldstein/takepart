@@ -15,7 +15,7 @@ function tpf_content_campaigns_metatag_export_default() {
     'instance' => 'node:campaign_page',
     'config' => array(
       'title' => array(
-        'value' => '[node:field-action-type:field-feature-video:field_campaign_seo_title] | [site:name]',
+        'value' => '[node:field_campaign_seo_title] | [site:name]',
       ),
     ),
   );
