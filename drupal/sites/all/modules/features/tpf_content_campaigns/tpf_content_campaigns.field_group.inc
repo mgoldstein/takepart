@@ -630,7 +630,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '3',
+    'weight' => '5',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
