@@ -140,6 +140,55 @@ function tp_campaigns_init(){
   variable_set('card_types', $card_types);
 }
 
+/**
+ * Implements hook_token_info().
+ */
+function tp_campaigns_token_info() {
+
+  $info['tokens']['node']['seo-title'] = array(
+    'name' => t('SEO Title'),
+    'description' => t("Uses SEO Title field or Title if SEO Title field is not present"),
+    'type' => 'format',
+  );
+  $info['tokens']['node']['campaign-base-url'] = array(
+    'name' => t('Campaign Base URL'),
+    'description' => t("The Base URL for Campaign Pages"),
+    'type' => 'format',
+  );
+
+  return $info;
+}
+
+/*
+ * Implements hook_tokens().
+ */
+function tp_campaigns_tokens($type, $tokens, array $data = array(), array $options = array()) {
+ $replacements = array();
+
+  if ($type == 'node' && !empty($data['node'])) {
+    $node = $data['node'];
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'seo-title':
+          if (isset($node->field_campaign_seo_title['und'][0]['value']) == true) {
+            $replacements[$original] = $node->field_campaign_seo_title['und'][0]['value'];
+          }
+          else{
+            $replacements[$original] = $node->title;
+          }
+        break;
+        case 'campaign-base-url':
+          if ($items = field_get_items('node', $node, 'field_campaign_reference')) {
+            $node = node_load($items[0]['target_id']);
+            $replacements[$original] = $node->field_campaign_base_url['und'][0]['value'];
+          }
+        break;
+      }
+    }
+  }
+  return $replacements;
+}
 
 
 
