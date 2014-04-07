@@ -80,10 +80,12 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-right: 10px;
+          padding-top: 20px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(5, 7);
+          padding-top: 0;
           @include zen-clear(none);
         }
       }
@@ -113,11 +115,13 @@ body.node-type-campaign-card-empty,
       .right-column{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
+          padding-top: 20px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(4, 8);
           padding-right: 10px;
+          padding-top: 0;
           @include zen-clear(none);
         }
       }
@@ -149,10 +153,12 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-right: 10px;
+          padding-top: 20px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(6, 6);
+          padding-top: 0;
           @include zen-clear(none);
         }
       }
@@ -715,8 +721,19 @@ body.node-type-campaign-page, #main.card-page{
 
   //Social
   .social-follow{
+    margin-left: -5px;
+    a.social-icon {
+      font-size: 35px;
+    }
+    @include breakpoint($breakpoint-tablet) {
+      margin-left: 0;
+      a.social-icon {
+        font-size: 40px;
+      }
+    }
+
     text-align: center;
-    line-height: 90px;
+    line-height: 65px;
     margin-right: -20px;
     a.social-icon {
       width: 100px;
@@ -726,7 +743,6 @@ body.node-type-campaign-page, #main.card-page{
       text-indent: 1000px;
       vertical-align: middle;
       color: #fff;
-      font-size: 40px;
       &:before{
         width: 100px;
         height: 100px;
@@ -947,7 +963,7 @@ body.node-type-campaign-page, #main.card-page{
       }
     }
     .header-bg-image-full{
-      background-size: 100%;
+      background-size: cover;
     }
     .header-bg-image-980{
       background-size: 1000px;
