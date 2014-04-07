@@ -329,8 +329,8 @@ body.node-type-campaign-page, #main.card-page{
 
     .social {
       position: absolute;
-      right: 0;
-      top: 18px;
+      right: 10px;
+      top: 15px;
 
       .tp-social-headline,
       .tp-social,
@@ -1119,8 +1119,19 @@ body.node-type-campaign-page, #main.card-page{
       .menu-wrapper{
             display: none;
       }
+      .header-inner{
+        padding-top: 50px;
+      }
     }
     
   } 
+  
+}
+
+@media only screen and (min-width: 768px)
+{
+  #campaign-page-social{
+    display: none;
+  }
   
 }
