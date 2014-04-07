@@ -167,7 +167,7 @@ body.node-type-campaign-card-empty,
       .instructional{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
-          padding-bottom: 15px;
+          padding-bottom: 0px;
           padding-left: 10px;
           padding-right: 10px;
         }
