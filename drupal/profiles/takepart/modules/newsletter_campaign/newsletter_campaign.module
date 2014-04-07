@@ -605,8 +605,8 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign) {
     '#maxlength' => 128,
   );
 
-  $submit_src = drupal_get_path('theme', 'takepart3') . '/images/submit_off.png';
-  $hover_src = drupal_get_path('theme', 'takepart3') . '/images/submit_on.png';
+  $submit_src = drupal_get_path('theme', 'tp4') . '/images/newsletter_submit.png';
+  $hover_src = drupal_get_path('theme', 'tp4') . '/images/newsletter_submit_over.png';
   $form['newsletter_campaign_signup'] = array(
     '#type' => 'image_button',
     '#src' => $submit_src,
