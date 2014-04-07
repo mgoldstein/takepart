@@ -1160,6 +1160,12 @@ s.eVar11 = Logged_In',
   $context->description = 'Omniture Settings for the every page';
   $context->tag = 'Omniture';
   $context->conditions = array(
+    'context_all' => array(
+      'values' => array(
+        '~tp4_campaign_cards' => '~tp4_campaign_cards',
+        '~tp4_campaign_pages' => '~tp4_campaign_pages',
+      ),
+    ),
     'path' => array(
       'values' => array(
         '~<front>' => '~<front>',
