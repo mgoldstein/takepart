@@ -8482,7 +8482,7 @@ body.node-type-campaign-page .card.node-campaign-card-news .center-column p.shor
   margin: 0;
   padding-top: 0;
   line-height: 16px;
-  padding-bottom: 24px;
+  padding-bottom: 3px;
 }
 /* line 723, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .card.node-campaign-card-news .center-column .more-link p, #main.card-page .card.node-campaign-card-news .center-column .more-link p {
@@ -8591,7 +8591,7 @@ body.node-type-campaign-page .card.node-campaign-card-empty .title-wrapper h1.ca
 body.node-type-campaign-page .social-follow, #main.card-page .social-follow {
   margin-left: -5px;
   text-align: center;
-  line-height: 80px;
+  line-height: 65px;
   margin-right: -20px;
 }
 /* line 818, ../sass/page/_campaigns.scss */
