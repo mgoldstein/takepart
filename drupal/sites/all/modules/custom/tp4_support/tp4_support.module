@@ -368,3 +368,12 @@ function tp4_support_url_inbound_alter(&$path, $original_path, $path_language) {
     $path = 'wordlet/teach_browse_stories';
   }
 }
+
+function tp4_support_page_alter(&$page) {
+  $node = menu_get_object();
+  $campaign_types = variable_get('card_types', array());
+  $campaign_types[] = 'campaign_page';
+  if (isset($node) && in_array($node->type, $campaign_types)) {
+    unset($page['page_bottom']['omniture']);
+  }
+}
