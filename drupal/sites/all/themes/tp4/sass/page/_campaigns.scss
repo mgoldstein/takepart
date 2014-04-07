@@ -80,10 +80,12 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-right: 10px;
+          padding-top: 20px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(5, 7);
+          padding-top: 0;
           @include zen-clear(none);
         }
       }
@@ -113,11 +115,13 @@ body.node-type-campaign-card-empty,
       .right-column{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
+          padding-top: 20px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(4, 8);
           padding-right: 10px;
+          padding-top: 0;
           @include zen-clear(none);
         }
       }
@@ -149,10 +153,12 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-right: 10px;
+          padding-top: 20px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(6, 6);
+          padding-top: 0;
           @include zen-clear(none);
         }
       }
@@ -325,6 +331,99 @@ body.node-type-campaign-page, #main.card-page{
       a.active{
         color: #000;
       }
+    }
+
+    .social {
+      position: absolute;
+      right: 10px;
+      top: 15px;
+
+      .tp-social-headline,
+      .tp-social,
+      #campaign-page-social-more {
+        display: inline-block;
+        vertical-align: middle;
+        height: 24px;
+        margin-left: 8px;
+      }
+
+      .tp-social-headline {
+        font: normal 14px/1 $secondary-sans-font;
+        height: 14px;
+        color: $dark-gray;
+        text-transform: uppercase;
+        margin: 4px 0 0 0;
+      }
+
+      .tp-social-link,
+      .trigger a {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        overflow: hidden;
+        text-indent: 30px;
+        margin-left: 8px;
+        &:first-of-type {
+          margin-left: 0;
+        }
+      }
+
+
+      #campaign-page-social-more {
+        width: 24px; // contain 8px margin
+        height: 24px;
+        margin-left: 8px;
+        overflow: hidden;
+        position: relative;
+        h4.trigger {
+          margin: 0;
+        }
+        &.focus {
+          overflow: visible;
+          #campaign-page-more-shares {
+            top: 100%;
+          }
+        }
+      }
+
+
+      #campaign-page-more-shares {
+        position: absolute;
+        right: 0;
+        top: -75px; // accounts for margin, padding, and shadow
+        width: 120px;
+        p {
+          background-color: white;
+          height: 24px;
+          margin: 16px 0 0 0;
+          padding: 16px;
+          position: relative;
+          @include box-shadow(0 0 4px rgba(0,0,0,.5));
+          &:before,
+          &:after {
+            content: ' ';
+            display: block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            bottom: 100%;
+            border: 8px solid transparent;
+          }
+          &:after {
+            right: 4px;
+            border-bottom-color: white;
+            border-bottom-width: 14px;
+          }
+          &:before {
+            right: 2px;
+            border-width: 10px;
+            border-bottom-width: 16px;
+            border-bottom-color: rgba(0,0,0,.15);
+          }
+        }
+      }
+
     }
   }
   h1.card-title{
@@ -715,8 +814,19 @@ body.node-type-campaign-page, #main.card-page{
 
   //Social
   .social-follow{
+    margin-left: -5px;
+    a.social-icon {
+      font-size: 35px;
+    }
+    @include breakpoint($breakpoint-tablet) {
+      margin-left: 0;
+      a.social-icon {
+        font-size: 40px;
+      }
+    }
+
     text-align: center;
-    line-height: 90px;
+    line-height: 65px;
     margin-right: -20px;
     a.social-icon {
       width: 100px;
@@ -726,7 +836,6 @@ body.node-type-campaign-page, #main.card-page{
       text-indent: 1000px;
       vertical-align: middle;
       color: #fff;
-      font-size: 40px;
       &:before{
         width: 100px;
         height: 100px;
@@ -918,11 +1027,7 @@ body.node-type-campaign-page, #main.card-page{
         display: none;  //this is horrible.
       }
       .form-submit{
-        opacity: .8;
         margin-left: -50px;
-        &:hover{
-          opacity: 1;
-        }
       }
     }
   }
@@ -947,7 +1052,7 @@ body.node-type-campaign-page, #main.card-page{
       }
     }
     .header-bg-image-full{
-      background-size: 100%;
+      background-size: cover;
     }
     .header-bg-image-980{
       background-size: 1000px;
@@ -1026,8 +1131,19 @@ body.node-type-campaign-page, #main.card-page{
       .menu-wrapper{
             display: none;
       }
+      .header-inner{
+        padding-top: 50px;
+      }
     }
     
   } 
+  
+}
+
+@media only screen and (min-width: 768px)
+{
+  #campaign-page-social{
+    display: none;
+  }
   
 }

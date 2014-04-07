@@ -3,8 +3,6 @@
 // move this to .module file
   $campaign_variables = $variables['campaign_node'];
 
-
-
   $logo_position = $variables['campaign_node']->field_campaign_logo_position['und'][0]['value']; // 0 => Center, 1 => Left, 2 => Right
   $uri = $campaign_variables->field_campaign_background['und'][0]['uri'];
   $image_url = file_create_url($uri);
@@ -100,7 +98,6 @@
 
 ?>
 
-
 <div class="branding-header <?php print implode(' ', $classes); ?>" style="<?php print implode(' ', $styles); ?>">
 
 
@@ -141,6 +138,20 @@
     ?>
 
   <div class="header-inner" style="min-height: <?php print $min_height; ?>px">
+    <?php // social links ?>
+    <aside id="campaign-page-social" class="social" data-title="<?php print $share_headline; ?>" data-description="<?php print $share_description; ?>" data-imagesrc="<?php print $share_imagesrc; ?>">
+      <div class="inner">
+        <h3 class="tp-social-headline share-headline">Share</h3>
+        <div class="tp-social" id="campaign-page-share"></div>
+        <div id="campaign-page-social-more">
+          <h4 class="trigger"><a href="#campaign-page-more-shares">More</a></h4>
+          <div id="campaign-page-more-shares">
+          <p></p>
+          </div>
+        </div>
+      </div>
+    </aside><!-- / #campaign-page-social -->
+
     <?php print (isset($homepage_link) == true ? l(' ', $homepage_link, array('attributes' => array('class' => array('big-link')))) : ''); ?>
     <?php print (isset($logo) == true ? $logo : ''); ?>
     

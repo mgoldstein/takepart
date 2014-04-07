@@ -374,6 +374,30 @@ function tp4_preprocess_node__campaign(&$variables, $hook) {
   }
 }
 
+function tp4_preprocess_node__campaign_page(&$variables, $hook) {
+ 	
+	if($variables['field_article_subhead']['und'][0]['value'] == ''){	
+		$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
+		
+		 $meta_description = array(
+            '#type' => 'html_tag',
+            '#tag' => 'meta',
+            '#attributes' => array(
+                'name' => 'description',
+                'content' => $campaign_node->field_article_subhead['und'][0]['value']
+            )
+   		 );
+		 
+		 drupal_add_html_head( $meta_description, 'meta_description' );
+		 
+		
+	}
+	
+	
+}
+
+
+
 /**
  * Override or insert variables into the campaign card media template
  */

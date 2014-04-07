@@ -91,4 +91,89 @@
     }
   };
 
+  //needed to override TakePart3 theming of the Newsletter block.
+  Drupal.behaviors.newsletterSubmit = {
+    attach: function() {
+      $('.takepart-newsletter-form input.rollover-image-off').hover(
+        function(){
+          $(this).attr('old-src', $(this).attr('src'));
+          $(this).attr('src', $(this).parent().find('img.rollover-image-on').attr('src'));
+        },
+        function(){
+          $(this).attr('src', $(this).attr('old-src'));
+        }
+      );
+    }
+  };
+
+  Drupal.behaviors.campaignPageSocialShare = {
+    attach: function() {
+      if (!$('body').is('.node-type-campaign-page')) {
+        return;
+      }
+
+      var $social = $('#campaign-page-social');
+      var title = $social.data('title');
+      var description = $social.data('description');
+      var imageSrc = $social.data('imagesrc');
+
+      var mainShares = {
+          url_append: '?cmpid=organic-share-{{name}}',
+          services: [
+            {
+              name: 'facebook',
+              title: title,
+              image: imageSrc,
+              description: description
+            },
+            {
+              name: 'twitter',
+              text: title
+            },
+            {
+              name: 'googleplus'
+            }
+          ]
+      };
+      var moreShares = {
+          url_append: '?cmpid=organic-share-{{name}}',
+          services: [
+            {
+              name: 'pinterest',
+              media: imageSrc,
+              descritpion: title
+            },
+            {
+              name: 'tumblr',
+              source: imageSrc,
+              caption: title + " - " + description
+            },
+            {
+              name: 'email',
+              title: title,
+              note: description
+            }
+          ]
+      };
+
+      $('#campaign-page-share').tpsocial(mainShares);
+      $('#campaign-page-more-shares').find('p').tpsocial(moreShares);
+
+      $moreShares = $('#campaign-page-social-more');
+
+      $moreShares
+        .on('click', '.trigger a', function(e) {
+          e.preventDefault();
+          $moreShares.toggleClass('focus');
+        })
+        .on('focus', '.trigger a', function() {
+          $moreShares.addClass('focus');
+        })
+        .on('focusout', '.trigger a', function() {
+          $moreShares.removeClass('focus');
+        })
+      ;
+    }
+  };
+
 })(jQuery, Drupal, this, this.document);
