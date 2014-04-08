@@ -107,8 +107,9 @@
                 slideIntent: 40,
                 minDragDistance: 5
             });
-            campaignsnapper.on('close', function(){
+            $('#block-menu-menu-campaign a').on('click', function(){
 			   $('.snap-drawer-campaign').css("display", "none");
+			   $('#main').css("-webkit-transform", "translate3d(0,0,0)");
 			});
 
             $('.campaign-menu-toggle').on('click', function(){
