@@ -41,7 +41,7 @@
 
     $card_classes[] = $node->type;
 
-    print '<div class="card-wrapper '. implode(' ', $card_classes). '" '. $card_styles. '">';
+    print '<div class="card-wrapper '. implode(' ', $card_classes). '" '. $card_styles. '>';
     print drupal_render(node_view($node, 'full', NULL));
     print '</div>';
   }
