@@ -46,6 +46,18 @@ function tp4_preprocess_html(&$variables, $hook) {
     ));
     // add jquery cookie library to tp4 pages
     drupal_add_library('system', 'jquery.cookie', true);
+
+    $node = menu_get_object();
+    $campaign_types = variable_get('card_types');
+    $campaign_types[] = 'campaign_page';
+    if (isset($node) && in_array($node->type, $campaign_types)) {
+      $variables['use_production_dtm'] = variable_get('use_production_dtm', FALSE);
+      $variables['use_development_dtm'] = variable_get('use_production_dtm', FALSE) ? FALSE : TRUE;
+    }
+    else {
+      $variables['use_production_dtm'] = FALSE;
+      $variables['use_development_dtm'] = FALSE;
+    }
 }
 
 /*
@@ -342,12 +354,12 @@ function tp4_preprocess_block(&$variables) {
  * @param $hook
  *   The name of the template being rendered ("node" in this case.)
  */
-function tp4_preprocess_node(&$variables, $hook) {		
-				
+function tp4_preprocess_node(&$variables, $hook) {
+
 	// Add template suggestions for view modes and
     // node types per view view mode.
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
-    $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $vars['view_mode'];
+    $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
     if (in_array($variables['type'], array('openpublish_video', 'video')) && $variables['view_mode'] == 'full') {
         $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
     }
