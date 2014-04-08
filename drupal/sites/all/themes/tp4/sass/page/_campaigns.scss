@@ -1140,6 +1140,7 @@ body.node-type-campaign-page, #main.card-page{
     
     header#header{
       .campaign-menu-toggle{
+        min-width: 15px;
         width: 5%;
         height: 3px;
         border-top: 9px double #000;
