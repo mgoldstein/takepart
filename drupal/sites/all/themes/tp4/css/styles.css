@@ -7582,7 +7582,7 @@ body.node-type-campaign-card-empty .card {
     -ms-box-sizing: border-box;
     box-sizing: border-box;
     word-wrap: break-word;
-    padding-bottom: 0px;
+    padding-bottom: 15px;
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -8166,7 +8166,7 @@ body.node-type-campaign-page h1.card-title, #main.card-page h1.card-title {
 }
 /* line 435, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page h1.card-title.has-instructional, #main.card-page h1.card-title.has-instructional {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 /* line 439, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #main, #main.card-page #main {
