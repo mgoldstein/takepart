@@ -1049,7 +1049,9 @@ body.node-type-campaign-page, #main.card-page{
         display: none;  //this is horrible.
       }
       .form-submit{
-        margin-left: -50px;
+        @include breakpoint($breakpoint-tablet){
+          margin-left: -50px;
+        }
       }
     }
   }
