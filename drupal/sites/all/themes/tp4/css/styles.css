@@ -8983,12 +8983,6 @@ body.node-type-campaign-page .card-width-980, #main.card-page .card-width-980 {
     padding-top: 50px;
   }
 }
-@media only screen and (min-width: 768px) {
-  /* line 1161, ../sass/page/_campaigns.scss */
-  #campaign-page-social {
-    display: none;
-  }
-}
 /* Modules */
 /*
  *MegaMenu
