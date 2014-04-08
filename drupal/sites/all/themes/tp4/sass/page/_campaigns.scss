@@ -592,6 +592,15 @@ body.node-type-campaign-page, #main.card-page{
         }
       }
     }
+    &.on-first-slide .left-arrow,
+    &.on-first-slide .arrow-left{
+      display: none;
+    }
+    &.on-last-slide .right-arrow,
+    &.on-last-slide .arrow-right{
+      display: none;
+
+    }
   }
   
 
