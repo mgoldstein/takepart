@@ -66,14 +66,6 @@
           var titleHeight = $this.find('.tray-header').outerHeight();
           var multipleCards = $this.is('.has-multiple-cards');
 
-          // Set all cards to equal height
-          if (multipleCards) {
-            $this.find('.swipe-wrap').each(function(){
-              var $this = $(this);
-              $this.find('.card-wrapper').css("height", $this.height());
-            });
-          }
-
           // if there is a tray title, set card padding
           // and contextual link position
           if (titleHeight > 0) {
