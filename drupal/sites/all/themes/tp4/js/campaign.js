@@ -20,19 +20,35 @@
       $sliders.each(function() {
         // set up the slider
         var $this = $(this).Swipe({
+          continuous: false,
+          speed: 800,
           callback: function(index, slide) {
             $navLinks
               .filter('[data-slide=' + index % $navLinks.length + ']').addClass('active')
               .siblings('.active').removeClass('active')
             ;
+            var maxCards = $this.data('Swipe').getNumSlides() - 1;
+
+            if(index  === 0){
+              $this.addClass('on-first-slide');
+              $this.removeClass('on-last-slide');
+            }
+            else if(index == maxCards){
+              $this.addClass('on-last-slide');
+              $this.removeClass('on-first-slide');
+            }
+            else{
+              $this.removeClass('on-last-slide');
+              $this.removeClass('on-first-slide');
+            }
           }
         });
         var slider = $this.data('Swipe');
         var $navLinks = $this.find('.slider-pagination a');
 
         // setup forward/back nav
-        $this.find('.left-arrow').on('click', function() { slider.prev() });
-        $this.find('.right-arrow').on('click', function() { slider.next() });
+        $this.find('.left-arrow').on('click', function() { slider.prev(); });
+        $this.find('.right-arrow').on('click', function() { slider.next();  });
 
         // set up pagination -- active class and click event
         $navLinks.filter(':first').addClass('active')
