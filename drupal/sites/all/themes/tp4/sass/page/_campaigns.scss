@@ -341,9 +341,10 @@ body.node-type-campaign-page, #main.card-page{
       .tp-social-headline,
       .tp-social,
       #campaign-page-social-more {
+        float: left;
         display: inline-block;
         vertical-align: middle;
-        height: 24px;
+        height: 30px;
         margin-left: 8px;
       }
 
@@ -360,7 +361,7 @@ body.node-type-campaign-page, #main.card-page{
         display: inline-block;
         width: 24px;
         height: 24px;
-        line-height: 24px;
+        line-height: 37px;
         overflow: hidden;
         text-indent: 30px;
         margin-left: 8px;
@@ -376,6 +377,7 @@ body.node-type-campaign-page, #main.card-page{
         margin-left: 8px;
         overflow: hidden;
         position: relative;
+        float: right;
         h4.trigger {
           margin: 0;
         }
@@ -399,6 +401,7 @@ body.node-type-campaign-page, #main.card-page{
           margin: 16px 0 0 0;
           padding: 16px;
           position: relative;
+          z-index: 10;
           @include box-shadow(0 0 4px rgba(0,0,0,.5));
           &:before,
           &:after {
@@ -1082,6 +1085,7 @@ body.node-type-campaign-page, #main.card-page{
     .campaign-logo-div{
       height: auto;
       overflow: hidden;
+      margin-left: 5px;
     }
     a.big-link{
       position: absolute;
