@@ -32,6 +32,7 @@ dependencies[] = panelizer
 dependencies[] = shs
 dependencies[] = strongarm
 dependencies[] = taxonomy
+dependencies[] = taxonomy_term_reference_sortable_widget
 dependencies[] = text
 dependencies[] = tp_campaigns
 dependencies[] = tpf_content_field_bases

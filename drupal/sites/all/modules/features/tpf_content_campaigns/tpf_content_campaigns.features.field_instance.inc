@@ -2377,12 +2377,12 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'taxonomy_term_reference_sortable_widget',
       'settings' => array(
         'content_taxonomy_opt_groups' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
-      'type' => 'options_select',
+      'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 5,
     ),
   );
