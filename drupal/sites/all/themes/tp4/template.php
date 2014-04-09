@@ -387,11 +387,56 @@ function tp4_preprocess_node__campaign(&$variables, $hook) {
 }
 
 function tp4_preprocess_node__campaign_page(&$variables, $hook) {
- 	
-	// Check if subheadline is empty, if yes get meta description from campaign reference
-	if($variables['field_article_subhead']['und'][0]['value'] == ''){	
-		$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
+ 		
+ 	$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
+	
+	// Check if alt text is empty then add title as alt text for campaign logo
+	if($campaign_node->field_campaign_logo['und'][0]['alt'] == ''){
+		$campaign_node->field_campaign_logo['und'][0]['alt'] = $campaign_node->title;
+	}
+	
+	// Get count of campaign cards in tray
+	$campaign_cards = count($variables['field_campaign_tray']);
+	
+	// If not empty
+	if($campaign_cards != 0){
+	
+	// Loop and check if field_campaign_media_photo alt is not empty
+	// Then use card title as alt text
+	for($x = 0; $x < $campaign_cards; $x++){
 		
+		$campaign_card_reference = node_load($variables['field_campaign_tray'][$x]['target_id']);
+		$campaign_card = node_load($campaign_card_reference->field_campaign_card_reference['und'][0]['target_id']);
+		
+		if($campaign_card->type == 'campaign_card_media'){
+			if($campaign_card->field_campaign_media_photo != ''){
+				if($campaign_card->field_campaign_media_photo['und'][0]['alt'] == ''){
+					$campaign_card->field_campaign_media_photo['und'][0]['alt'] = $campaign_card->title;
+				}
+				
+			}
+		}
+			
+	}	
+	
+	}
+	
+	// Check if added images for css alt is empty then add image name as alt text
+	$campaign_custom_styling_images = count($campaign_node->field_images_for_css['und']);
+	if($campaign_custom_styling_images != 0){
+	
+		for($y = 0; $y < $campaign_custom_styling_images; $y++){
+			
+			if($campaign_node->field_images_for_css['und'][$y]['alt'] == ''){
+				$campaign_node->field_images_for_css['und'][$y]['alt'] = $campaign_node->field_images_for_css['und'][$y]['filename'];
+			}
+			
+		}
+	}
+		
+	// Check if subheadline is empty, if yes get meta description from campaign reference
+	if($variables['field_article_subhead']['und'][0]['value'] == ''){
+					
 		 $meta_description = array(
             '#type' => 'html_tag',
             '#tag' => 'meta',
@@ -409,9 +454,6 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 	// Check if campaign reference is not empty
 	if($variables['field_campaign_reference']['und'][0]['target_id'] != ''){
 
-	    // Load campaign
-		$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
-		
 		//Get field css
 		$uri = $campaign_node->field_css['und'][0]['uri'];
 		
