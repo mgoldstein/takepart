@@ -417,7 +417,7 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 		
 		// If file exist, add the css file to the campaign page
 		if (file_exists($uri)){
-			  drupal_add_css($uri);
+			  drupal_add_css($uri, array('group' => CSS_THEME, 'weight' => 999));
 		}
 	
 	}
