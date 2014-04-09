@@ -539,7 +539,14 @@ function pm_signup_api_endpoints($type = NULL) {
   $payload = $query->execute()->fetchAll();
 
   foreach ($payload as $endpoint) {
-    $endpoint->configuration = unserialize($endpoint->configuration);
+    $configuration = unserialize($endpoint->configuration);
+    if (!isset($configuration['user_prompt'])) {
+      $configuration['user_prompt'] = '';
+    }
+    if (!isset($configuration['checked_by_default'])) {
+      $configuration['checked_by_default'] = 1;
+    }
+    $endpoint->configuration = $configuration;
   }
 
   return array(

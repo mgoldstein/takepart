@@ -103,4 +103,12 @@ class SimpleOptInSignupEndpoint extends SignupEndpoint {
   public function setUserPrompt($prompt) {
     $this->configuration['user_prompt'] = $prompt;
   }
+
+  public function getCheckedByDefault() {
+    return empty($this->configuration['checked_by_default']) ? 0 : 1;
+  }
+
+  public function setCheckedByDefault($checkedByDefault) {
+    $this->configuration['checked_by_default'] = $checkedByDefault;
+  }
 }
