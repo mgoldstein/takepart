@@ -388,6 +388,7 @@ function tp4_preprocess_node__campaign(&$variables, $hook) {
 
 function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  	
+	// Check if subheadline is empty, if yes get meta description from campaign reference
 	if($variables['field_article_subhead']['und'][0]['value'] == ''){	
 		$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
 		
@@ -403,6 +404,22 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 		 drupal_add_html_head( $meta_description, 'meta_description' );
 		 
 		
+	}
+	
+	// Check if campaign reference is not empty
+	if($variables['field_campaign_reference']['und'][0]['target_id'] != ''){
+
+	    // Load campaign
+		$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
+		
+		//Get field css
+		$uri = $campaign_node->field_css['und'][0]['uri'];
+		
+		// If file exist, add the css file to the campaign page
+		if (file_exists($uri)){
+			  drupal_add_css($uri);
+		}
+	
 	}
 	
 	

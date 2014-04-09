@@ -17,6 +17,9 @@ function tpf_content_campaigns_metatag_export_default() {
       'title' => array(
         'value' => '[node:seo-title] | [site:name]',
       ),
+      'description' => array(
+        'value' => '[node:field_article_subhead]',
+      ),
     ),
   );
 
