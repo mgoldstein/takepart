@@ -164,8 +164,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background Image',
     'weight' => '13',
     'children' => array(
-      0 => 'field_campaign_bgw_image',
-      1 => 'field_campaign_background',
+      0 => 'field_campaign_background',
+      1 => 'field_campaign_bgw_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -365,8 +365,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background',
     'weight' => '7',
     'children' => array(
-      0 => 'field_campaign_bg_color',
-      1 => 'field_campaign_bgw',
+      0 => 'field_campaign_bgw',
+      1 => 'field_campaign_bg_color',
       2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
@@ -484,8 +484,8 @@ function tpf_content_campaigns_field_group_info() {
       0 => 'field_campaign_min_height',
       1 => 'field_campaign_bg_color',
       2 => 'group_background_image',
-      3 => 'group_menu',
-      4 => 'group_logo',
+      3 => 'group_logo',
+      4 => 'group_menu',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -664,12 +664,12 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Promo',
     'weight' => '4',
     'children' => array(
-      0 => 'field_promo_headline',
-      1 => 'field_promo_short_headline',
-      2 => 'field_article_subhead',
+      0 => 'field_article_subhead',
+      1 => 'field_promo_headline',
+      2 => 'field_promo_short_headline',
       3 => 'field_promo_text',
-      4 => 'field_thumbnail',
-      5 => 'field_tab_action_override',
+      4 => 'field_tab_action_override',
+      5 => 'field_thumbnail',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -71,6 +71,9 @@ p{
   }
 }
 p{
+  margin-bottom: 0;
+}
+p:first-child{
   margin: 0;
 }
 .secondary-button{
@@ -164,7 +167,8 @@ p{
   // I believe this is for pagination.
 }
 .media-caption{
-  font-family: $primary-sans-font;
+  font-family: $primary-serif-font;
+  font-weight: 100;
   font-size: 14px;
   line-height: 22px;
   color: #000;

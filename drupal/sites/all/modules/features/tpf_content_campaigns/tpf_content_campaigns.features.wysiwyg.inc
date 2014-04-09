@@ -44,7 +44,6 @@ function tpf_content_campaigns_wysiwyg_default_profiles() {
           'PasteText' => 1,
           'PasteFromWord' => 1,
           'RemoveFormat' => 1,
-          'Format' => 1,
           'Styles' => 1,
           'Table' => 1,
           'Scayt' => 1,
@@ -70,21 +69,19 @@ function tpf_content_campaigns_wysiwyg_default_profiles() {
       'remove_linebreaks' => 1,
       'apply_source_formatting' => 1,
       'paste_auto_cleanup_on_paste' => 1,
-      'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
+      'block_formats' => 'p,h2,h3,h4,h5,h6,div.primary',
       'css_setting' => 'self',
-      'css_path' => '/sites/all/themes/tp4/css/campaign-wysiwyg.css',
+      'css_path' => '/sites/all/themes/tp4/css/campaign-wysiwyg.css?v=2',
       'css_classes' => 'h1=h1
 h2=h2
 h3=h3
 h4=h4
 h5=h5
 h6=h6
-primary button=div.primary-button
-secondary button=div.secondary-button
-plain link=div.plain
-media caption=div.media-caption',
+primary button=span.primary-button
+secondary button=span.secondary-button
+media caption=span.media-caption',
     ),
-    'rdf_mapping' => array(),
   );
 
   return $profiles;
