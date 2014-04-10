@@ -10,7 +10,6 @@
         <div class="col-1-2">
             <aside class="sys-tips">
 		<h2 class="sys-headline"><span>Featured Story</span></h2>
-                <div><?php //print w('update_count'); ?></div>
                 <div class="sys-intro-body"><?php print w('update_body'); ?></div>
             </aside>
             <aside class="sys-tips">
