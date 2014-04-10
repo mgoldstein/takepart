@@ -248,6 +248,14 @@ body.node-type-campaign-page, #main.card-page{
   /*
    * Global Elements
    */
+   h1{
+    font-family: $secondary-sans-font;
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: 36px;
+    line-height: 38px;
+    color: #000;
+  }
   .card-inner{ 
     @import "modules/wysiwyg";
   }
@@ -500,7 +508,7 @@ body.node-type-campaign-page, #main.card-page{
   // Swiper
 
     // position: relative;
-  .swipe {
+  .swipe.slider {
     overflow: hidden;
     visibility: hidden;
     position: relative;
