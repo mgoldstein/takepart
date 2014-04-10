@@ -15,6 +15,7 @@
       //swipejs duplicates slides if only two exist throwing an error with videos
 
       var $sliders = $('.slider');
+      var $swipes = $('.swipe');
 
       // setup slideshows
       $sliders.each(function() {
@@ -61,7 +62,7 @@
 
       // deal with card padding
       var adjustCardHeightsAndPadding = function() {
-        $sliders.each(function() {
+        $swipes.each(function() {
           var $this = $(this);
           var titleHeight = $this.find('.tray-header').outerHeight();
           var multipleCards = $this.is('.has-multiple-cards');
