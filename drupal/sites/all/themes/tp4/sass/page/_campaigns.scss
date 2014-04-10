@@ -245,7 +245,9 @@ body.node-type-campaign-page, #main.card-page{
   /*
    * Global Elements
    */
-  @import "modules/wysiwyg";
+  .card-inner{ 
+    @import "modules/wysiwyg";
+  }
   a.card-anchor{
     display: block;
     position: absolute;

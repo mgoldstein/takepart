@@ -47,6 +47,16 @@ h6{
   line-height: 14px;
   color: #000;
 }
+h1, h2, h3, h4, h5, h6{
+  a{
+    color: #000;
+  }
+}
+a:hover {
+  h1, h2, h3, h4, h5, h6{
+    text-decoration: underline;
+  }
+}
 p{
   font-family: $primary-sans-font;
   font-weight: 100;
@@ -84,11 +94,11 @@ p:first-child{
   font-weight: 100;
   font-size: 18px;
   line-height: 22px;
-  color: #000;
   background-color: transparent;
   a {
     position: relative;
     padding-left: 20px;
+    color: #000;
     &:before{
       font-family: "SSGizmo";
       color: $light-mint;
@@ -103,19 +113,6 @@ p:first-child{
       text-decoration: underline;
     }
   }
-  // Add gizmodo arrows 
-}
-.plain a{
-  color: $mint;
-  &:hover{
-    text-decoration: underline;
-  }
-}
-.left-arrow{
-
-}
-.right-arrow{
-
 }
 #main ul:not(.tabs){
   li{
@@ -162,9 +159,6 @@ p:first-child{
       text-align:center;
     }
   }
-}
-.dot{
-  // I believe this is for pagination.
 }
 .media-caption{
   font-family: $primary-serif-font;
