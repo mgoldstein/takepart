@@ -255,6 +255,9 @@ body.node-type-campaign-page, #main.card-page{
   .card-inner a{
     color: $mint;
   }
+  .takepart-take-action-widget{
+    margin: 0 auto;
+  }
   #block-tp-campaigns-tp-campaigns-hero{
     width: 100%;
     margin-bottom: 0;
@@ -347,6 +350,7 @@ body.node-type-campaign-page, #main.card-page{
       position: absolute;
       right: 10px;
       top: 15px;
+      z-index: 1;
 
       .tp-social-headline,
       .tp-social,

@@ -14,11 +14,8 @@
   $classes = array();
 
   //Header link
-  if(isset($variables['campaign_node']->field_campaign_homepage['und'][0]['target_id']) == true){
-    $homepage_id = $variables['campaign_node']->field_campaign_homepage['und'][0]['target_id'];
-    global $base_url;
-    $homepage_link = $base_url. '/'. drupal_get_path_alias('node/'. $homepage_id);
-
+  if(isset($variables['campaign_node']->field_campaign_hp['und'][0]['url']) == true){
+    $homepage_link = $variables['campaign_node']->field_campaign_hp['und'][0]['url'];
   }
 
   //background
