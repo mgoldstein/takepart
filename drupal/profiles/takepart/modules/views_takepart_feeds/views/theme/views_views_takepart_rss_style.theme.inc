@@ -45,7 +45,6 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
     $rows = $vars["rows"];
     $options = $vars["options"];
     $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?" . ">\n";
-
     $u_agent = $_SERVER['HTTP_USER_AGENT'];
 
     /* Styles for browsers without their own RSS themes:
@@ -103,23 +102,27 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         $content = '';
         $related_content = '';
         foreach ($row as $id => $object) {
-            if ($id == 'created') {
+            /* if ($id == 'created') {
                 $xml .= "\t\t\t<pubDate><![CDATA[" . $object->content . "]]></pubDate>\n";
-            } else if ($id == 'title') {
+            } */
+            if ($id == 'published_at') {
+                $xml .= "\t\t\t<pubDate><![CDATA[" . $object->content . "]]></pubDate>\n";
+            } 
+            elseif ($id == 'title') {
                 $xml .= "\t\t\t<title><![CDATA[" . $object->raw . "]]></title>\n";
                 $poslink = _takepart_rss_parseHref($object->content);
                 if ($poslink) {
                     $xml .= "\t\t\t<link><![CDATA[" . $poslink . "]]></link>\n";
                 }
-            } else if ($id == 'field_author') {
+            } elseif ($id == 'field_author') {
                 $xml .= "\t\t\t<author><![CDATA[" . $object->content . "]]></author>\n";
-            } else if ($id == 'field_display_tag' && $object->content != '') {
+            } elseif ($id == 'field_display_tag' && $object->content != '') {
                 $xml .= "\t\t\t<category><![CDATA[" . $object->content . "]]></category>\n";
-            } else if ($id == 'field_promo_text' && $object->content != '') {
+            } elseif ($id == 'field_promo_text' && $object->content != '') {
                 $xml .= "\t\t\t<description><![CDATA[" . $object->content . "]]></description>\n";
-            } else if ($id == 'field_related_stories' && $object->content != '') {
+            } elseif ($id == 'field_related_stories' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
-            } else if ($id == 'inline_content_embedded' && $object->content != '') {
+            } elseif ($id == 'inline_content_embedded' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } else {
                 $content .= ($object->content);
