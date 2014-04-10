@@ -82,6 +82,7 @@ primary button=span.primary-button
 secondary button=span.secondary-button
 media caption=span.media-caption',
     ),
+    'rdf_mapping' => array(),
   );
 
   return $profiles;
