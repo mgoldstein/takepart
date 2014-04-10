@@ -27,8 +27,9 @@
     }
     if(isset($node->field_campaign_card_reference['und'][1]) == true){
       $slider_class[] = 'has-multiple-cards';
+      $slider_class[] = 'slider';
     }
-    print '<div id="slider_'. $key. '" class="swipe slider on-first-slide '. implode(' ', $slider_class). '" style="'. implode(' ', $slider_styles). '">';
+    print '<div id="slider_'. $key. '" class="swipe on-first-slide '. implode(' ', $slider_class). '" style="'. implode(' ', $slider_styles). '">';
     print drupal_render(node_view($node, 'full', NULL));
     print '</div>';
   }?>
