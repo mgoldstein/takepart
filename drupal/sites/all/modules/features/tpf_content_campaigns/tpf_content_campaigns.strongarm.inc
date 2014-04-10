@@ -7294,7 +7294,7 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_campaign_page_pattern';
-  $strongarm->value = '[node:field_campaign_reference]/[node:title]';
+  $strongarm->value = '[node:campaign-base-url]/[node:title]';
   $export['pathauto_node_campaign_page_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
