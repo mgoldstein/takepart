@@ -157,6 +157,21 @@ function tp_campaigns_token_info() {
     'description' => t("The Base URL for Campaign Pages"),
     'type' => 'format',
   );
+  $info['tokens']['node']['campaign-name'] = array(
+    'name' => t('Campaign Name'),
+    'description' => t("The Name for Campaign Pages"),
+    'type' => 'format',
+  );
+  $info['tokens']['node']['campaign-topic'] = array(
+    'name' => t('Campaign Topic'),
+    'description' => t("The Primary Topic for Campaign Pages"),
+    'type' => 'format',
+  );
+  $info['tokens']['node']['campaign-series'] = array(
+    'name' => t('Campaign Series'),
+    'description' => t("The Series for Campaign Pages"),
+    'type' => 'format',
+  );
 
   return $info;
 }
@@ -184,6 +199,54 @@ function tp_campaigns_tokens($type, $tokens, array $data = array(), array $optio
           if ($items = field_get_items('node', $node, 'field_campaign_reference')) {
             $node = node_load($items[0]['target_id']);
             $replacements[$original] = $node->field_campaign_base_url['und'][0]['value'];
+          }
+        break;
+        case 'campaign-name':
+          if ($items = field_get_items('node', $node, 'field_campaign_reference')) {
+            $node = node_load($items[0]['target_id']);
+            $replacements[$original] = $node->title;
+          }
+        break;
+        case 'campaign-topic':
+          $references = field_get_items('node', $node, 'field_campaign_reference');
+          if (!empty($references)) {
+            $reference = reset($references);
+            if (!empty($reference)) {
+              $node = node_load($reference['target_id']);
+              if (!empty($node)) {
+                $items = field_get_items('node', $node, 'field_topic');
+                if (!empty($items)) {
+                  $first = reset($items);
+                  if (!empty($first)) {
+                    $term = taxonomy_term_load($first['tid']);
+                    if (!empty($term)) {
+                      $replacements[$original] = $term->name;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        break;
+        case 'campaign-series':
+          $references = field_get_items('node', $node, 'field_campaign_reference');
+          if (!empty($references)) {
+            $reference = reset($references);
+            if (!empty($reference)) {
+              $node = node_load($reference['target_id']);
+              if (!empty($node)) {
+                $items = field_get_items('node', $node, 'field_series');
+                if (!empty($items)) {
+                  $first = reset($items);
+                  if (!empty($first)) {
+                    $term = taxonomy_term_load($first['tid']);
+                    if (!empty($term)) {
+                      $replacements[$original] = $term->name;
+                    }
+                  }
+                }
+              }
+            }
           }
         break;
       }

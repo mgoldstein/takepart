@@ -81,6 +81,7 @@ body.node-type-campaign-card-empty,
           @include zen-grid-item(12, 1);
           padding-right: 10px;
           padding-top: 20px;
+          padding-left: 10px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
@@ -116,11 +117,12 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-top: 20px;
+          padding-left: 10px;
+          padding-right: 10px;
           @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
           @include zen-grid-item(4, 8);
-          padding-right: 10px;
           padding-top: 0;
           @include zen-clear(none);
         }
@@ -153,6 +155,7 @@ body.node-type-campaign-card-empty,
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
           padding-right: 10px;
+          padding-left: 10px;
           padding-top: 20px;
           @include zen-clear();
         }
@@ -245,7 +248,9 @@ body.node-type-campaign-page, #main.card-page{
   /*
    * Global Elements
    */
-  @import "modules/wysiwyg";
+  .card-inner{ 
+    @import "modules/wysiwyg";
+  }
   a.card-anchor{
     display: block;
     position: absolute;
