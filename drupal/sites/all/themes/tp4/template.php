@@ -387,38 +387,12 @@ function tp4_preprocess_node__campaign(&$variables, $hook) {
 }
 
 function tp4_preprocess_node__campaign_page(&$variables, $hook) {
- 		
- 	$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
 	
+ 	$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
+
 	// Check if alt text is empty then add title as alt text for campaign logo
 	if($campaign_node->field_campaign_logo['und'][0]['alt'] == ''){
 		$campaign_node->field_campaign_logo['und'][0]['alt'] = $campaign_node->title;
-	}
-	
-	// Get count of campaign cards in tray
-	$campaign_cards = count($variables['field_campaign_tray']);
-	
-	// If not empty
-	if($campaign_cards != 0){
-	
-	// Loop and check if field_campaign_media_photo alt is not empty
-	// Then use card title as alt text
-	for($x = 0; $x < $campaign_cards; $x++){
-		
-		$campaign_card_reference = node_load($variables['field_campaign_tray'][$x]['target_id']);
-		$campaign_card = node_load($campaign_card_reference->field_campaign_card_reference['und'][0]['target_id']);
-		
-		if($campaign_card->type == 'campaign_card_media'){
-			if($campaign_card->field_campaign_media_photo != ''){
-				if($campaign_card->field_campaign_media_photo['und'][0]['alt'] == ''){
-					$campaign_card->field_campaign_media_photo['und'][0]['alt'] = $campaign_card->title;
-				}
-				
-			}
-		}
-			
-	}	
-	
 	}
 	
 	// Check if added images for css alt is empty then add image name as alt text
@@ -474,9 +448,15 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
+  if($variables['field_campaign_media_photo'][0]['alt'] == ''){
+  	$variables['field_campaign_media_photo'][0]['alt'] = $variables['title'];	
+  }
+  
+  $alt =   $variables['field_campaign_media_photo'][0]['alt'];
+
+  
   $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
   $instructional = $variables['field_campaign_instructional'][0]['value'];
-
   $media_title = '';
   if(isset($variables['field_campaign_media_title'][0]['value']) == true){
     $media_title = '<h4 class="media-title">'. $variables['field_campaign_media_title'][0]['value']. '</h4>';
@@ -494,10 +474,10 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     //Check if photo has a link
     if(isset($variables['field_campaign_media_image_link'][0]['url']) == true){
       $link = $variables['field_campaign_media_image_link'][0];
-      $media = l('<img src="'. $image. '">', $link['url'], array('html' => true, 'attributes' => array('target' => $link['attributes']['target'])));
+      $media = l('<img src="'. $image. '" alt="'.$alt.'">', $link['url'], array('html' => true, 'attributes' => array('target' => $link['attributes']['target'])));
     }
     else{
-      $media .= '<img src="'. $image. '">';
+      $media .= '<img src="'. $image. '" alt="'.$alt.'">';
     }
 
   }
@@ -744,11 +724,12 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $node = node_load($variables['field_campaign_single_news_ref'][0]['target_id']);
 
       $file = file_load($node->field_article_main_image['und'][0]['fid']);
-      $image = file_create_url($file->uri);
+      $image = file_create_url($file->uri);	  
       $image = image_style_url('campaign_news_3x2', $file->uri);
+	  $alt = $node->title;
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
-      $image = '<img src="'. $image. '">';  //image
+      $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
       $center .= l($image, $path, array('html' => true));
       $center .= '<h3 class="headline">'. l($node->field_promo_headline['und'][0]['value'], $path). '</h3>';  //headline
       $center .= '<p class="short-headline">'. $node->field_article_subhead['und'][0]['value']. '</p>';  //short headline
@@ -795,7 +776,8 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $file = file_load($node->field_thumbnail['und'][0]['fid']);
         $image = file_create_url($file->uri);
         $image = image_style_url('campaign_news_3x2', $file->uri);
-        $media = '<img src="'. $image. '">';
+		$alt = $node->title;
+        $media = '<img src="'. $image. '" alt="'.$alt.'">';
         $headline = $node->field_promo_headline['und'][0]['value'];
         $news_column = $media;
         $news_column .= '<h5>'. $headline. '</h5>';
