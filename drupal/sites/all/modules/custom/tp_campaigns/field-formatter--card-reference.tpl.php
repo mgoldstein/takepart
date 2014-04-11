@@ -63,15 +63,20 @@
 
 <?php if(isset($variables['entity']->field_campaign_card_reference[1]) == true || isset($variables['entity']->field_campaign_card_reference['und'][1]) == true): ?>
   <div class="tray-header">
-    
+
     <nav class="slider-pagination">
     <div class="mobile-arrow arrow-left"></div>
       <?php for($i = 0; $i < count($items); $i++) : ?>
-        <a href="#" data-slide="<?php print $i; ?>"><?php print $i; ?></a>
+        <a<?php print drupal_attributes(array(
+            'href' => '#',
+            'data-slide' => $i,
+            'data-for-tray' => $variables['entity']->title,
+          ));
+          ?>><?php print $i; ?></a>
       <?php endfor; ?>
       <div class="mobile-arrow arrow-right"></div>
     </nav>
-    
+
     <?php if(isset($tray_title) == true): ?>
       <h1 class="card-title"><?php print $tray_title; ?></h1>
     <?php endif; ?>
@@ -82,8 +87,14 @@
 <?php if(isset($variables['entity']->field_campaign_card_reference['und'][1]) == true): ?>
   <nav class="slider-nav">
     <div class="slider-inner">
-      <div class="arrow left-arrow"><div class="arrow-inner"></div></div>
-      <div class="arrow right-arrow"><div class="arrow-inner"></div></div>
+      <div<?php print drupal_attributes(array(
+        'class' => array('arrow','left-arrow'),
+        'data-for-tray' => $variables['entity']->title)); ?>
+        ><div class="arrow-inner"></div></div>
+      <div<?php print drupal_attributes(array(
+        'class' => array('arrow','right-arrow'),
+        'data-for-tray' => $variables['entity']->title)); ?>
+        ><div class="arrow-inner"></div></div>
     </div>
   </nav>
 <?php elseif(isset($tray_title) == true): ?>

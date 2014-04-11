@@ -1116,10 +1116,14 @@ body.node-type-campaign-page, #main.card-page{
       margin: 0 auto;
       float: none;
     }
-    .campaign-logo-div{
+    .campaign-logo-div {
       height: auto;
       overflow: hidden;
       margin-left: 5px;
+      @media all and (max-width: 767px) {
+        float: left;
+        width: 80%;
+      }
     }
     a.big-link{
       position: absolute;
@@ -1155,22 +1159,21 @@ body.node-type-campaign-page, #main.card-page{
 
 }
 
-@media only screen and (max-width: 768px)
+@media only screen and (max-width: 767px)
 {
     
   body.node-type-campaign-page{
     
     header#header{
-      .campaign-menu-toggle{
-        min-width: 15px;
-        width: 5%;
-        height: 3px;
-        border-top: 9px double #000;
-        border-bottom: 3px solid #000;
-        cursor: pointer;
+      .campaign-menu-toggle {
         position: absolute;
-        left: 85%;
-        bottom: 50%;
+        left: 78%;
+        bottom: 33%;
+        font-size: 2em;
+        padding: 25px;
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
     
@@ -1184,6 +1187,14 @@ body.node-type-campaign-page, #main.card-page{
       }
     }
     
-  } 
-  
+  }   
+}
+@media only screen and (min-width: 768px) {    
+  body.node-type-campaign-page {    
+    header#header{
+      .campaign-menu-toggle {
+        display: none;
+      }
+    }
+  }
 }
