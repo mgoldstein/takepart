@@ -1221,7 +1221,7 @@ function tpf_content_flashcard_field_default_field_instances() {
     'bundle' => 'flashcard',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Enter every synonym that might use this flashcard. Enter each different spelling or punctuation separately: e.g., "GMOs", "G.M.O.s" and "gmos."',
+    'description' => 'Enter each text string that should link to this flashcard. Enter different spellings or punctuations separately: e.g., "GMOs", "G.M.O.s" and "gmos."',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1281,7 +1281,7 @@ function tpf_content_flashcard_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_flashcard_synonyms',
-    'label' => 'Synonyms',
+    'label' => 'Text to Match',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -1999,7 +1999,7 @@ function tpf_content_flashcard_field_default_field_instances() {
   t('Admin Tag');
   t('Body');
   t('Call To Action Text');
-  t('Enter every synonym that might use this flashcard. Enter each different spelling or punctuation separately: e.g., "GMOs", "G.M.O.s" and "gmos."');
+  t('Enter each text string that should link to this flashcard. Enter different spellings or punctuations separately: e.g., "GMOs", "G.M.O.s" and "gmos."');
   t('Free Tag');
   t('Image');
   t('Inline Replacements');
@@ -2019,8 +2019,8 @@ function tpf_content_flashcard_field_default_field_instances() {
   t('Short Definition');
   t('Significance');
   t('Subhead');
-  t('Synonyms');
   t('Term Display Name');
+  t('Text to Match');
   t('The call to action following related content will link to the first of these categories. And if you don\'t specify related content, the flashcard page will fill up the related content module with the most recent stories from any of these topics or free tags.');
   t('The display name appears at the head of the flashcard popup in articles and at the head of the definition box on flashcard pages.');
   t('This is the abbreviated definition that appears on flashcard popups and in the definition box.');
