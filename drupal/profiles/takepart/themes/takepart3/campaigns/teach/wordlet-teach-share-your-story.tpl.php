@@ -8,8 +8,8 @@
             <?php include('partials/teach-sys-form.tpl.php'); ?>
         </div>
         <div class="col-1-2">
-            <aside class="sys-update">
-		<h2 class=""><span>Help us raise</span> <span><?php print w('update_count'); ?></span> <span>for schools and classrooms!</span></h2>
+            <aside class="sys-tips">
+		<h2 class="sys-headline"><span><?php print w('update_count'); ?></span></h2>
                 <div class="sys-intro-body"><?php print w('update_body'); ?></div>
             </aside>
             <aside class="sys-tips">
