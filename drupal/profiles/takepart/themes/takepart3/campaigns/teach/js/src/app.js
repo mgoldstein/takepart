@@ -85,29 +85,30 @@
         this.model.get('school').name
       ].join(' ');
       var description = "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
+      var url = window.location.origin + '/teach/stories/story/' + this.model.get('id');
       var socialOptions = $.extend({}, TEACH.social.options, {
         services: [
           {
             name: 'facebook',
             title: title,
             description: description,
-            url: window.location.href,
+            url: url,
             image: this.model.get('teacher').image_link
           },
           {
             name: 'twitter',
             text: description,
-            url: window.location.href,
+            url: url,
             via: 'TeachMovie'
           },
           {
             name: 'googleplus',
-            url: window.location.href
+            url: url
           }
         ]
       });
 
-      this.$('#story-social-share').tpsocial(socialOptions);
+      _.defer(_.bind(function(){this.$('#story-social-share').tpsocial(socialOptions);}, this));
       window.FB && FB.XFBML.parse(this.el);
 
       // bind social share event to contact TAP
@@ -307,8 +308,6 @@
 
   TEACH.Views.StoriesModalView = Backbone.View.extend({
 
-    currentStory: null,
-
     events: {
       'click #previous-story': 'showPreviousStory',
       'click #next-story': 'showNextStory'
@@ -325,14 +324,11 @@
     render: function() {
       // clean up
       this.$('.sys-story-modal').remove();
-      if (this.currentStory) {
-        this.currentStory.remove();
-      }
-      // put the story in
-      this.currentStory = new TEACH.Views.StoryFullView({
+
+      var currentStory = new TEACH.Views.StoryFullView({
         model: this.collection.models[0] // there's only one model
       });
-      this.currentStory.render().$el.appendTo(this.$el);
+      currentStory.render().$el.appendTo(this.$el);
 
       // show the links we want
       this.$('.story-nav').hide();
