@@ -1961,11 +1961,20 @@ h1.sys-headline {
 }
 
 .sys-intro-body {
+    line-height: 1.2em;
   p,
-  ul, 
+  ul {
+    font-size: 15px;
+    line-height: 1.2em
+  } 
   h4 {
-    font-size: 13px;
-    line-height: 1.2;
+    font-size: 17px;
+  }
+  span.bullet {
+      font-size: 12px;
+  }
+  span.bullet :after {
+      content:' >>';
   }
 }
 
