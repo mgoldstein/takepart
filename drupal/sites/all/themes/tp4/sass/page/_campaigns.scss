@@ -311,7 +311,6 @@ body.node-type-campaign-page, #main.card-page{
           font-family: $primary-sans-font;
           font-weight: bold;
           font-size: 14px;
-          text-transform: uppercase;
         }
         > li{
           display: block;
@@ -321,6 +320,9 @@ body.node-type-campaign-page, #main.card-page{
           padding: 0;
           position: relative;
           right: 50%;
+          > a{
+            text-transform: uppercase;
+          }
           &:hover > a{
             color: #fff;
             text-decoration: none;
