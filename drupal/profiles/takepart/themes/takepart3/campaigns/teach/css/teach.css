@@ -2075,6 +2075,7 @@ h1.sys-headline span {
 .sys-intro-body p,
 .sys-intro-body ul {
   font-size: 15px;
+  line-height: 1.2em;
 }
 .sys-intro-body h4 {
   font-size: 17px;
