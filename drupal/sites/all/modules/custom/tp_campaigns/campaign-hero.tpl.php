@@ -152,8 +152,7 @@
     <?php print (isset($homepage_link) == true ? l(' ', $homepage_link, array('attributes' => array('class' => array('big-link')))) : ''); ?>
     <?php print (isset($logo) == true ? $logo : ''); ?>
     
-    <div class="campaign-menu-toggle">
-	</div>
+    <a href="#" class="campaign-menu-toggle icon i-touch-menu"></a>
 	
   </div>
 
