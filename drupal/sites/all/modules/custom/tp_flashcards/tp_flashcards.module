@@ -1,0 +1,15 @@
+<?php
+/**
+ * @file
+ * TakePart module for functions related to flashcards.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function tp_flashcards_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#tp_flashcards':
+    return '<p>' . t('Support module for TakePart flashcards.') . '</p>';
+  }
+}

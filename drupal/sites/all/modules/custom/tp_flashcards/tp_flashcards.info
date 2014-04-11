@@ -1,0 +1,6 @@
+name = TakePart Flashcards
+description = Custom functions for the TPF flashcards
+core = 7.x
+package = TP4
+version = 7.x-1.0
+dependencies[] = tpf_content_flashcard
