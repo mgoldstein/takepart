@@ -45,6 +45,13 @@ class SimpleOptInSignup extends Signup {
 
 class SimpleOptInSignupEndpoint extends SignupEndpoint {
 
+  public function __construct($record = NULL) {
+    parent::__construct($record);
+    if (is_null($record)) {
+      $this->configuration = array('checked_by_default' => 1);
+    }
+  }
+
   public static function namedEnpoints() {
     return db_select('pm_signup_endpoint', 'ep')
       ->fields('ep', array('name', 'label'))
@@ -102,5 +109,13 @@ class SimpleOptInSignupEndpoint extends SignupEndpoint {
 
   public function setUserPrompt($prompt) {
     $this->configuration['user_prompt'] = $prompt;
+  }
+
+  public function getCheckedByDefault() {
+    return empty($this->configuration['checked_by_default']) ? 0 : 1;
+  }
+
+  public function setCheckedByDefault($checkedByDefault) {
+    $this->configuration['checked_by_default'] = $checkedByDefault;
   }
 }
