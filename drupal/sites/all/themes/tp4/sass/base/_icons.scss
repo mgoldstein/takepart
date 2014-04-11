@@ -32,6 +32,7 @@
   &.i-zoom-in:after { content: "\e614"; }
   &.i-zoom-out:after { content: "\e615"; }
   
+  &.i-touch-menu:after { content: "\e609"; }
   &.i-remove:after { content: "\e610"; }
   &.i-minus:after { content: "\e611"; }
   &.i-plus:after, &.i-add:after { content: "\e612"; }
@@ -74,8 +75,4 @@
   &.tp-social-GooglePlus:before { content: '\e303'; }
   &.tp-social-Tumblr:before { content: '\e304'; }
   &.tp-social-Email:before { content: '\e305'; }
-  &.tp-social-Linkedin:before { content: '\e308'; }
-  &.tp-social-Vine:before { content: '\e309'; }
-  &.tp-social-Instagram:before { content: '\e306'; }
-  &.tp-social-Youtube:before { content: '\e307'; }
 }
