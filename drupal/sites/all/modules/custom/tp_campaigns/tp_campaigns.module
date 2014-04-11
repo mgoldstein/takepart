@@ -352,7 +352,7 @@ function tp_campaigns_hero(){
     $superfish_path = libraries_get_path('superfish');
     drupal_add_js($superfish_path. '/src/js/hoverintent.js');
     drupal_add_js($superfish_path. '/src/js/superfish.js');
-    drupal_add_js($superfish_path. '/src/js/supersub.js');
+    // drupal_add_js($superfish_path. '/src/js/supersubs.js');
     drupal_add_css($superfish_path. '/src/css/superfish.css');
     drupal_add_css($superfish_path. '/src/css/superfish-navbar.css');
 
