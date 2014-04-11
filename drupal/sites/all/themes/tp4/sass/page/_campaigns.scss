@@ -248,6 +248,14 @@ body.node-type-campaign-page, #main.card-page{
   /*
    * Global Elements
    */
+   h1{
+    font-family: $secondary-sans-font;
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: 36px;
+    line-height: 38px;
+    color: #000;
+  }
   .card-inner{ 
     @import "modules/wysiwyg";
   }
@@ -303,7 +311,6 @@ body.node-type-campaign-page, #main.card-page{
           font-family: $primary-sans-font;
           font-weight: bold;
           font-size: 14px;
-          text-transform: uppercase;
         }
         > li{
           display: block;
@@ -313,6 +320,9 @@ body.node-type-campaign-page, #main.card-page{
           padding: 0;
           position: relative;
           right: 50%;
+          > a{
+            text-transform: uppercase;
+          }
           &:hover > a{
             color: #fff;
             text-decoration: none;
@@ -500,7 +510,7 @@ body.node-type-campaign-page, #main.card-page{
   // Swiper
 
     // position: relative;
-  .swipe {
+  .swipe.slider {
     overflow: hidden;
     visibility: hidden;
     position: relative;
