@@ -82,7 +82,7 @@
     $menu_styles[] = 'width: 100%;';
   }
   else{ //1000px
-    $menu_styles[] = 'width: 1000px;';
+    $menu_styles[] = 'max-width: 1000px;';
   }
   if(isset($menu_bar_color) == TRUE && $menu_bar_color != NULL){
     $menu_styles[] = 'background-color: '. $menu_bar_color. ';';
@@ -99,39 +99,41 @@
 
 
   <?php
-    $menu = 'menu-'. $campaign_variables->field_campaign_menu['und'][0]['value'];
-    $menu_tree = menu_tree_all_data($menu);
-    $menu_tree = menu_tree_output($menu_tree);
-    
-    $menu_elements = element_children($menu_tree);
-    $improved = array();
-    foreach($menu_elements as $key => $item){
-      $improved[] = $menu_tree[$item];
-    }
-    // it's ok, "changing the menu color in the CMS is easy, right?"
+    if(isset($campaign_variables->field_campaign_menu['und'][0]['value']) == true){
+      $menu = 'menu-'. $campaign_variables->field_campaign_menu['und'][0]['value'];
+      $menu_tree = menu_tree_all_data($menu);
+      $menu_tree = menu_tree_output($menu_tree);
+      
+      $menu_elements = element_children($menu_tree);
+      $improved = array();
+      foreach($menu_elements as $key => $item){
+        $improved[] = $menu_tree[$item];
+      }
+      // it's ok, "changing the menu color in the CMS is easy, right?"
 
-    print '<div class=menu-wrapper>';
-    print '<div class="menu sf-navbar" style="'. implode(' ', $menu_styles). '">';
-    print '<ul class="sf-menu" style="background-color: transparent;">';
-    foreach($improved as $key => $link){
-      $anchor = $link['#localized_options']['attributes']['rel'];
-      if(isset($link['#below']) == true && $link['#below'] != NULL){
-        print '<li class="parent-item '. ($anchor != NULL ? 'anchored' : ''). '" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href'], array('fragment' => $anchor));
-        print '<ul>';
-        $child_elements = element_children($link['#below']);
-        foreach($child_elements as $key_child => $link_child){
-          $anchor = $link_child['#localized_options']['attributes']['rel'];
-          print '<li style="background-color: '. $menu_color_child. '">'. l($link['#below'][$link_child]['#title'], $link['#below'][$link_child]['#href'], array('fragment' => $anchor, '#attributes' => array('class' => array('sf-with-ul')))). '</li>';
+      print '<div class=menu-wrapper>';
+      print '<div class="menu sf-navbar" style="'. implode(' ', $menu_styles). '">';
+      print '<ul class="sf-menu" style="background-color: transparent;">';
+      foreach($improved as $key => $link){
+        $anchor = $link['#localized_options']['attributes']['rel'];
+        if(isset($link['#below']) == true && $link['#below'] != NULL){
+          print '<li class="parent-item '. ($anchor != NULL ? 'anchored' : ''). '" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href'], array('fragment' => $anchor));
+          print '<ul>';
+          $child_elements = element_children($link['#below']);
+          foreach($child_elements as $key_child => $link_child){
+            $anchor = $link_child['#localized_options']['attributes']['rel'];
+            print '<li style="background-color: '. $menu_color_child. '">'. l($link['#below'][$link_child]['#title'], $link['#below'][$link_child]['#href'], array('fragment' => $anchor, '#attributes' => array('class' => array('sf-with-ul')))). '</li>';
 
+          }
+          print '</ul></li>';
         }
-        print '</ul></li>';
+        else{
+          print '<li class="parent-item '. ($anchor != NULL ? 'anchored' : ''). '" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href'], array('fragment' => $anchor)). '</li>';
+        }
       }
-      else{
-        print '<li class="parent-item '. ($anchor != NULL ? 'anchored' : ''). '" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href'], array('fragment' => $anchor)). '</li>';
-      }
+      print '</ul>';
+      print '<div class="clearfix"></div></div></div>';
     }
-    print '</ul>';
-    print '<div class="clearfix"></div></div></div>';
     ?>
 
   <div class="header-inner" style="min-height: <?php print $min_height; ?>px">
