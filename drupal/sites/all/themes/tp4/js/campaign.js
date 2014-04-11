@@ -13,11 +13,11 @@
             return;
           }
 
-<<<<<<< HEAD
           //TODO: There is an error when testing videos with only 2 slides
           //swipejs duplicates slides if only two exist throwing an error with videos
 
           var $sliders = $('.slider');
+          var $swipes = $('.swipe');
 
           // setup slideshows
           $sliders.each(function() {
@@ -32,11 +32,11 @@
                 ;
                 var maxCards = $this.data('Swipe').getNumSlides() - 1;
 
-                if (index  === 0) {
+                if(index  === 0){
                   $this.addClass('on-first-slide');
                   $this.removeClass('on-last-slide');
                 }
-                else if (index == maxCards) {
+                else if(index == maxCards){
                   $this.addClass('on-last-slide');
                   $this.removeClass('on-first-slide');
                 }
@@ -59,31 +59,13 @@
                 e.preventDefault();
                 slider.slide($(this).data('slide'));
               })
-=======
-      //TODO: There is an error when testing videos with only 2 slides
-      //swipejs duplicates slides if only two exist throwing an error with videos
-
-      var $sliders = $('.slider');
-      var $swipes = $('.swipe');
-
-      // setup slideshows
-      $sliders.each(function() {
-        // set up the slider
-        var $this = $(this).Swipe({
-          continuous: false,
-          speed: 800,
-          callback: function(index, slide) {
-            $navLinks
-              .filter('[data-slide=' + index % $navLinks.length + ']').addClass('active')
-              .siblings('.active').removeClass('active')
->>>>>>> 5549bee2570b91ab4006630a0bf55e8ce519c5c2
             ;
           }); // end $sliders.each()
 
           // deal with card padding
           var adjustCardHeightsAndPadding = function() {
-            $sliders.each(function() {
-              var $this = $(this);
+            $swipes.each(function() {
+              var $this = $(this);
               var titleHeight = $this.find('.tray-header').outerHeight();
               var multipleCards = $this.is('.has-multiple-cards');
 
@@ -140,7 +122,6 @@
               $('.campaign-menu-toggle').css('display', 'none');
             }
           }
-<<<<<<< HEAD
           setTimeout( bindStickupToMenus, 0 );
         }
       },
@@ -164,43 +145,6 @@
         attach: function() {
           if (!$('body').is('.node-type-campaign-page')) {
             return;
-=======
-        });
-        var slider = $this.data('Swipe');
-        var $navLinks = $this.find('.slider-pagination a');
-
-        // setup forward/back nav
-        $this.find('.left-arrow').on('click', function() { slider.prev(); });
-        $this.find('.right-arrow').on('click', function() { slider.next();  });
-
-        // set up pagination -- active class and click event
-        $navLinks.filter(':first').addClass('active')
-          .parent().on('click', 'a', function(e) {
-            e.preventDefault();
-            slider.slide($(this).data('slide'));
-          })
-        ;
-      }); // end $sliders.each()
-
-      // deal with card padding
-      var adjustCardHeightsAndPadding = function() {
-        $swipes.each(function() {
-          var $this = $(this);
-          var titleHeight = $this.find('.tray-header').outerHeight();
-          var multipleCards = $this.is('.has-multiple-cards');
-
-          // if there is a tray title, set card padding
-          // and contextual link position
-          if (titleHeight > 0) {
-            $this.find('.card .card-inner')
-              .css("padding-top", titleHeight)
-              .find('.contextual-links-wrapper')
-                .css({
-                  top: titleHeight + 2,
-                  right: multipleCards ? 80 : 5
-                })
-            ;
->>>>>>> 5549bee2570b91ab4006630a0bf55e8ce519c5c2
           }
 
           var $social = $('#campaign-page-social');
