@@ -3157,104 +3157,6 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-campaign_card_branding-field_campaign_branding_url'
-  $field_instances['node-campaign_card_branding-field_campaign_branding_url'] = array(
-    'bundle' => 'campaign_card_branding',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(),
-        'type' => 'link_default',
-        'weight' => 7,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_campaign_branding_url',
-    'label' => 'Branding URL',
-    'required' => 0,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'user',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'rel_remove' => 'default',
-      'title' => 'none',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'link_field',
-      'weight' => 3,
-    ),
-  );
-
   // Exported field_instance: 'node-campaign_card_branding-field_campaign_card_title'
   $field_instances['node-campaign_card_branding-field_campaign_card_title'] = array(
     'bundle' => 'campaign_card_branding',
@@ -11593,7 +11495,6 @@ Note: If you manually reference more items than selected here, the number refere
   t('Base URL');
   t('Body');
   t('Branding Category');
-  t('Branding URL');
   t('CSS');
   t('Campaign Background');
   t('Campaign Card Reference');
