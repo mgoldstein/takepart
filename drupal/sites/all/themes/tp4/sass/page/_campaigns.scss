@@ -463,7 +463,7 @@ body.node-type-campaign-page, #main.card-page{
   }
   h1.card-title{
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     &.has-instructional{
       margin-bottom: 5px;
     }
@@ -690,6 +690,7 @@ body.node-type-campaign-page, #main.card-page{
     }
     .caption{
       padding-top: 5px;
+      margin-bottom: 8px;
     }
     .node-video{
       h2.node-title{
@@ -701,6 +702,9 @@ body.node-type-campaign-page, #main.card-page{
     .header-wrapper{
       padding: 0;
     }
+  }
+  .campaign-2col.node-campaign-card-media .description{
+    margin-top: -7px;
   }
 
   //iFrame!
@@ -1094,6 +1098,23 @@ body.node-type-campaign-page, #main.card-page{
 
   //Card and Header background properties
   header{
+    .branding-header.has-menu{
+      .campaign-logo-div {
+        @include breakpoint($breakpoint-mobile){
+          float: left;
+          width: 80%;
+        }
+        @include breakpoint($breakpoint-tablet){
+          float: none;
+          width: auto;
+        }
+      }
+    }
+    .branding-header:not(.has-menu){
+      .campaign-menu-toggle{
+        display: none;
+      }
+    }
     .header-inner{
       padding-top: 15px;
       @include breakpoint($breakpoint-tablet){
@@ -1123,10 +1144,6 @@ body.node-type-campaign-page, #main.card-page{
       height: auto;
       overflow: hidden;
       margin-left: 5px;
-      @media all and (max-width: 767px) {
-        float: left;
-        width: 80%;
-      }
     }
     a.big-link{
       position: absolute;
