@@ -703,6 +703,9 @@ body.node-type-campaign-page, #main.card-page{
   .campaign-2col.node-campaign-card-media .description{
     margin-top: -7px;
   }
+  .campaign-1col.node-campaign-card-media .caption{
+    text-align: left;
+  }
 
   //iFrame!
   iframe{
