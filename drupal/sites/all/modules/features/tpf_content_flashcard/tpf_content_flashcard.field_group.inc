@@ -21,12 +21,12 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Flashcard Page',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'body',
-      1 => 'field_flashcard_page_headline',
-      2 => 'field_article_subhead',
-      3 => 'field_flashcard_organizations',
+      1 => 'field_article_subhead',
+      2 => 'field_flashcard_organizations',
+      3 => 'field_flashcard_page_headline',
       4 => 'group_inline_replacements',
       5 => 'group_related',
     ),
@@ -53,12 +53,11 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Flashcard Popup',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_flashcard_display_name',
       1 => 'field_flashcard_pronunciation',
       2 => 'field_flashcard_short_definition',
-      3 => 'field_flashcard_synonyms',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -113,10 +112,10 @@ function tpf_content_flashcard_field_group_info() {
     'label' => 'Promo',
     'weight' => '4',
     'children' => array(
-      0 => 'field_thumbnail',
-      1 => 'field_promo_headline',
-      2 => 'field_promo_short_headline',
-      3 => 'field_promo_text',
+      0 => 'field_promo_headline',
+      1 => 'field_promo_short_headline',
+      2 => 'field_promo_text',
+      3 => 'field_thumbnail',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -143,10 +142,10 @@ function tpf_content_flashcard_field_group_info() {
     'label' => 'Related Content',
     'weight' => '12',
     'children' => array(
-      0 => 'field_flashcard_related_primary',
-      1 => 'field_flashcard_related',
-      2 => 'field_flashcard_related_category',
-      3 => 'field_flashcard_related_cta_text',
+      0 => 'field_flashcard_related',
+      1 => 'field_flashcard_related_category',
+      2 => 'field_flashcard_related_cta_text',
+      3 => 'field_flashcard_related_primary',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -173,12 +172,10 @@ function tpf_content_flashcard_field_group_info() {
     'label' => 'Tagging',
     'weight' => '5',
     'children' => array(
-      0 => 'field_topic_box',
-      1 => 'field_topic',
-      2 => 'field_free_tag',
-      3 => 'field_series',
-      4 => 'field_significance',
-      5 => 'field_admin_tag',
+      0 => 'field_admin_tag',
+      1 => 'field_free_tag',
+      2 => 'field_significance',
+      3 => 'field_topic',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -1,7 +1,7 @@
 name = TakePart Content Flashcard
 core = 7.x
 package = Content Types
-version = 7.x-0.1-alpha
+version = 7.x-1.0
 project = tpf_content_flashcard
 dependencies[] = context
 dependencies[] = ctools
