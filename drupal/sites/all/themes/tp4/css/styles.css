@@ -8188,7 +8188,7 @@ body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .social #camp
 /* line 461, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page h1.card-title, #main.card-page h1.card-title {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 /* line 464, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page h1.card-title.has-instructional, #main.card-page h1.card-title.has-instructional {
@@ -8449,8 +8449,8 @@ body.node-type-campaign-page .type-card .header-wrapper, #main.card-page .type-c
   padding: 0;
 }
 /* line 703, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .campaign-2col .node-campaign-card-media img, #main.card-page .campaign-2col .node-campaign-card-media img {
-  margin-top: 7px;
+body.node-type-campaign-page .campaign-2col.node-campaign-card-media .description, #main.card-page .campaign-2col.node-campaign-card-media .description {
+  margin-top: -7px;
 }
 /* line 708, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page iframe, #main.card-page iframe {

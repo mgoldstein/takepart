@@ -460,7 +460,7 @@ body.node-type-campaign-page, #main.card-page{
   }
   h1.card-title{
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     &.has-instructional{
       margin-bottom: 5px;
     }
@@ -700,8 +700,8 @@ body.node-type-campaign-page, #main.card-page{
       padding: 0;
     }
   }
-  .campaign-2col .node-campaign-card-media img{
-    margin-top: 7px;
+  .campaign-2col.node-campaign-card-media .description{
+    margin-top: -7px;
   }
 
   //iFrame!
