@@ -34,6 +34,11 @@ function tp_flashcards_preprocess_page(&$variables) {
   }
 
   drupal_add_js(array('flashcards' => $data), 'setting');
+
+  drupal_add_css(drupal_get_path('module', 'tp_flashcards') . '/css/tooltipster.css');
+  drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/vendor/jquery.tooltipster.min.js');
+
+  drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/tp_flashcards.js');
 }
 
 /**
