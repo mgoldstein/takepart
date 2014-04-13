@@ -9,3 +9,82 @@ a.flashcard {
     text-decoration: none !important;
   }
 }
+
+/* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
+.tooltipster-flashcard {
+  background: #fff;
+  color: #000;
+
+  .tooltipster-content {
+    font-family: $primary-sans-font;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 3em 1.25em 2em;
+    border-top: 4px solid $blue;
+    overflow: hidden;
+    position: relative;
+    @include box-shadow(0 0 4em rgba(0,0,0,.3));
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: .5em;
+
+      small {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: .5em;
+        padding-left: 1em;
+      }
+    }
+
+    p {
+      margin: 1em 0;
+    }
+
+    a {
+      color: $mint;
+      &:hover {
+        color: $light-mint;
+      }
+    }
+
+    .flashcard-article-link {
+      @include blue-arrow-bullets;
+      display: block;
+      &:before {
+        color: $mint;
+        top: 2px;
+      }
+      &:hover:before {
+        color: $light-mint;
+      }
+    }
+
+    &:before {
+      content: 'flashcards';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 24px;
+      padding: 0 1em;
+      font: bold 12px/2 $main-brand-font;
+      background-color: $blue;
+      color: white;
+    }
+
+    .flashcard-close {
+      position: absolute;
+      top: -4px;
+      right: 0;
+      width: 24px;
+      height: 28px;
+      overflow: hidden;
+      background-color: $blue;
+      color: white;
+      font-size: 36px;
+      line-height: .5em;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+}

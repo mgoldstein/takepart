@@ -9126,3 +9126,101 @@ a.flashcard:hover, a.flashcard:active {
   color: #018b73 !important;
   text-decoration: none !important;
 }
+
+/* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
+/* line 14, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard {
+  background: #fff;
+  color: #000;
+}
+/* line 18, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content {
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 3em 1.25em 2em;
+  border-top: 4px solid #0080a3;
+  overflow: hidden;
+  position: relative;
+  -webkit-box-shadow: 0 0 4em rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 4em rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 4em rgba(0, 0, 0, 0.3);
+}
+/* line 28, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content h2 {
+  font-size: 2em;
+  margin-bottom: .5em;
+}
+/* line 32, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content h2 small {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: .5em;
+  padding-left: 1em;
+}
+/* line 40, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content p {
+  margin: 1em 0;
+}
+/* line 44, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content a {
+  color: #018b73;
+}
+/* line 46, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content a:hover {
+  color: #01bf9e;
+}
+/* line 51, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content .flashcard-article-link {
+  position: relative;
+  padding-left: 1.071428571em;
+  display: block;
+}
+/* line 125, ../sass/helpers/_mixins.scss */
+.tooltipster-flashcard .tooltipster-content .flashcard-article-link:before {
+  content: "\23E9 ";
+  font-family: "SSGizmo";
+  color: #018b73;
+  vertical-align: bottom;
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 2.142857143em;
+  height: 1.428571429em;
+}
+/* line 54, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content .flashcard-article-link:before {
+  color: #018b73;
+  top: 2px;
+}
+/* line 58, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content .flashcard-article-link:hover:before {
+  color: #01bf9e;
+}
+/* line 63, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content:before {
+  content: 'flashcards';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 24px;
+  padding: 0 1em;
+  font: bold 12px/2 "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  background-color: #0080a3;
+  color: white;
+}
+/* line 75, ../sass/modules/_flashcard.scss */
+.tooltipster-flashcard .tooltipster-content .flashcard-close {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  width: 24px;
+  height: 28px;
+  overflow: hidden;
+  background-color: #0080a3;
+  color: white;
+  font-size: 36px;
+  line-height: .5em;
+  text-align: center;
+  cursor: pointer;
+}
