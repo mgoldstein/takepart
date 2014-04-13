@@ -1,0 +1,11 @@
+a.flashcard {
+  font-weight: bold;
+  white-space: nowrap;
+  border-bottom: 2px dotted $mint;
+
+  &:hover,
+  &:active {
+    color: $mint !important;
+    text-decoration: none !important;
+  }
+}

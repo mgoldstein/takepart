@@ -933,7 +933,7 @@ function tpf_content_flashcard_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_flashcard_related_category',
     'label' => 'Related Content Category',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'behaviors' => array(
         'taxonomy-index' => array(
@@ -1296,7 +1296,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 1,
     ),
   );
 
