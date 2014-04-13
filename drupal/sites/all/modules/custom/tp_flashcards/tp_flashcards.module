@@ -15,6 +15,28 @@ function tp_flashcards_help($path, $arg) {
 }
 
 /**
+ * Implements template_preprocess_page().
+ */
+function tp_flashcards_preprocess_page(&$variables) {
+  $data = array();
+
+  foreach (_tp_flashcards_get_all() as $nid => $flashcard) {
+    $card = array();
+    $items = field_get_items('node', $flashcard, 'field_flashcard_display_name');
+    $card['title'] = drupal_render(field_view_value('node', $flashcard, 'field_flashcard_display_name', $items[0]));
+    $items = field_get_items('node', $flashcard, 'field_flashcard_pronunciation');
+    $card['pronunciation'] = drupal_render(field_view_value('node', $flashcard, 'field_flashcard_pronunciation', $items[0]));
+    $items = field_get_items('node', $flashcard, 'field_flashcard_short_definition');
+    $card['definition'] = drupal_render(field_view_value('node', $flashcard, 'field_flashcard_short_definition', $items[0]));
+    $items = field_get_items('node', $flashcard, 'field_flashcard_page_headline');
+    $card['page_title'] = drupal_render(field_view_value('node', $flashcard, 'field_flashcard_page_headline', $items[0]));
+    $data[$nid] = $card;
+  }
+
+  drupal_add_js(array('flashcards' => $data), 'setting');
+}
+
+/**
  * Implements template_preprocess_node().
  *
  * For the full view of certain nodes, filter the node body
