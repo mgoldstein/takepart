@@ -176,7 +176,7 @@
                 {
                   name: 'pinterest',
                   media: imageSrc,
-                  descritpion: title
+                  description: title
                 },
                 {
                   name: 'tumblr',
