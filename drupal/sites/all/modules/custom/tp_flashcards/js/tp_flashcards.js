@@ -39,7 +39,14 @@
           arrow: false,
           touchDevices: false,
           interactive: true,
-          maxWidth: 350
+          maxWidth: 350,
+          functionBefore: function(origin, continueTooltip) {
+            origin.addClass('hover');
+            continueTooltip();
+          },
+          functionAfter: function(origin) {
+            origin.removeClass('hover');
+          }
         });
       });
 

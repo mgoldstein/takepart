@@ -9121,19 +9121,20 @@ a.flashcard {
   white-space: nowrap;
   border-bottom: 2px dotted #018b73;
 }
-/* line 7, ../sass/modules/_flashcard.scss */
-a.flashcard:hover, a.flashcard:active {
-  color: #018b73 !important;
+/* line 8, ../sass/modules/_flashcard.scss */
+a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
+  color: black !important;
+  border-bottom-color: black;
   text-decoration: none !important;
 }
 
 /* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
-/* line 14, ../sass/modules/_flashcard.scss */
+/* line 16, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard {
   background: #fff;
   color: #000;
 }
-/* line 18, ../sass/modules/_flashcard.scss */
+/* line 20, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-size: 14px;
@@ -9146,31 +9147,31 @@ a.flashcard:hover, a.flashcard:active {
   -moz-box-shadow: 0 0 4em rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 4em rgba(0, 0, 0, 0.3);
 }
-/* line 28, ../sass/modules/_flashcard.scss */
+/* line 30, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content h2 {
   font-size: 2em;
   margin-bottom: .5em;
 }
-/* line 32, ../sass/modules/_flashcard.scss */
+/* line 34, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content h2 small {
   display: inline-block;
   vertical-align: middle;
   font-size: .5em;
   padding-left: 1em;
 }
-/* line 40, ../sass/modules/_flashcard.scss */
+/* line 42, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content p {
   margin: 1em 0;
 }
-/* line 44, ../sass/modules/_flashcard.scss */
+/* line 46, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content a {
   color: #018b73;
 }
-/* line 46, ../sass/modules/_flashcard.scss */
+/* line 48, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content a:hover {
   color: #01bf9e;
 }
-/* line 51, ../sass/modules/_flashcard.scss */
+/* line 53, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content .flashcard-article-link {
   position: relative;
   padding-left: 1.071428571em;
@@ -9188,16 +9189,16 @@ a.flashcard:hover, a.flashcard:active {
   width: 2.142857143em;
   height: 1.428571429em;
 }
-/* line 54, ../sass/modules/_flashcard.scss */
+/* line 56, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content .flashcard-article-link:before {
   color: #018b73;
   top: 2px;
 }
-/* line 58, ../sass/modules/_flashcard.scss */
+/* line 60, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content .flashcard-article-link:hover:before {
   color: #01bf9e;
 }
-/* line 63, ../sass/modules/_flashcard.scss */
+/* line 65, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content:before {
   content: 'flashcards';
   display: block;
@@ -9209,7 +9210,7 @@ a.flashcard:hover, a.flashcard:active {
   background-color: #0080a3;
   color: white;
 }
-/* line 75, ../sass/modules/_flashcard.scss */
+/* line 77, ../sass/modules/_flashcard.scss */
 .tooltipster-flashcard .tooltipster-content .flashcard-close {
   position: absolute;
   top: -4px;
