@@ -10,13 +10,25 @@
   * 2) Change zen-gutter width to what it should be.
   */
 
+.iframe-wrapper{
+  position: relative;
+  padding-top: 25px;
+  height: 0;
+  overflow: hidden;
+  iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
 
 /*
  * Layouts
  */
-html{
-  height: 100%;
-}
 body.node-type-campaign-page,
 body.node-type-campaign-card-media,
 body.node-type-campaign-card-news,
@@ -26,7 +38,6 @@ body.node-type-campaign-card-text,
 body.node-type-campaign-card-branding,
 body.node-type-campaign-card-empty,
 {
-  height: 100%;
   $zen-column-count:  12;
   $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
 
