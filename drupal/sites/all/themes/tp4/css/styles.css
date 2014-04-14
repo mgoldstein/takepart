@@ -8555,7 +8555,7 @@ body.node-type-campaign-page .card.node-campaign-card-news .center-column h3.hea
 body.node-type-campaign-page .card.node-campaign-card-news .center-column p.short-headline, #main.card-page .card.node-campaign-card-news .center-column p.short-headline {
   margin: 0;
   padding-top: 0;
-  line-height: 16px;
+  line-height: 24px;
   padding-bottom: 3px;
 }
 /* line 777, ../sass/page/_campaigns.scss */
