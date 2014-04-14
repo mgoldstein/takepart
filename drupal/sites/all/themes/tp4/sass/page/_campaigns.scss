@@ -538,38 +538,37 @@ body.node-type-campaign-page, #main.card-page{
     @include breakpoint($breakpoint-tablet) {
       .arrow{
         position: absolute;
+        left: 0; // right side overrides below
+        top: 100px;
         z-index: 10;
         text-align: center;
-        display: inline-block;
+        display: block;
         color: #000;
         cursor: pointer;
         font-size: 72px;
-        &:hover{
-          color: $light-mint;
-        }
-        &.left-arrow{
-          left: 0;
-          top: 100px;
-          .arrow-inner{
-            position: relative;
-            &:after{
-              font-family: "SSGizmo";
-              content: '\25C5';
-              background-color: rgba(255,255,255,0.2);
-            }
+        line-height: 1em;
+        .arrow-inner{
+          &:after{
+            display: block;
+            font-family: "SSGizmo";
+            content: '\25C5';
+            background-color: rgba(255,255,255,0.2);
+            height: 1em;
+            line-height: 1.2;
+            padding: 10px 0;
           }
         }
         &.right-arrow{
+          left: auto;
           right: 0;
-          top: 100px;
           .arrow-inner{
-            position: relative;
             &:after{
-              font-family: "SSGizmo";
               content: '\25BB';
-              background-color: rgba(255,255,255,0.2);
             }
           }
+        }
+        &:hover{
+          color: $light-mint;
         }
       }
     }
