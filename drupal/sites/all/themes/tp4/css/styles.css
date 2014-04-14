@@ -8056,6 +8056,12 @@ body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-m
   font-size: 14px;
 }
 /* line 319, ../sass/page/_campaigns.scss */
+body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu ul, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu ul {
+  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+/* line 322, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li {
   display: block;
   float: left;
@@ -8065,21 +8071,15 @@ body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-m
   position: relative;
   right: 50%;
 }
-/* line 327, ../sass/page/_campaigns.scss */
+/* line 330, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li > a, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li > a {
   text-transform: uppercase;
 }
-/* line 330, ../sass/page/_campaigns.scss */
+/* line 333, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li:hover > a, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li:hover > a {
   color: #fff;
   text-decoration: none;
   background-color: #000;
-}
-/* line 335, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li ul, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li ul {
-  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
 }
 /* line 338, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li li, #main.card-page #block-tp-campaigns-tp-campaigns-hero .menu ul.sf-menu > li li {
