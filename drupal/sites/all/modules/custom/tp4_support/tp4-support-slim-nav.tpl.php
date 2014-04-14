@@ -3,7 +3,10 @@
 <div class="left">
   <div class="logo">
     <?php $logo = '<img src="'. $logo. '">'; ?>
-    <?php global $base_url; ?>
+    <?php global $base_url; 
+    
+    print $base_url;
+    ?>
     <?php print l($logo, $base_url, array('html' => true)); ?>
   </div>
   <nav id="main-menu">
