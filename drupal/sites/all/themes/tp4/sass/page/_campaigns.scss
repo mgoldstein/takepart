@@ -14,6 +14,9 @@
 /*
  * Layouts
  */
+html{
+  height: 100%;
+}
 body.node-type-campaign-page,
 body.node-type-campaign-card-media,
 body.node-type-campaign-card-news,
@@ -23,6 +26,7 @@ body.node-type-campaign-card-text,
 body.node-type-campaign-card-branding,
 body.node-type-campaign-card-empty,
 {
+  height: 100%;
   $zen-column-count:  12;
   $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
 
