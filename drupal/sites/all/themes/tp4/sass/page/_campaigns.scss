@@ -1110,7 +1110,9 @@ body.node-type-campaign-page, #main.card-page{
         }
         @include breakpoint($breakpoint-tablet){
           float: none;
-          width: auto;
+          width: 65%;
+          margin-left: 17.5%;
+          margin-right: 17.5%;
         }
       }
     }
