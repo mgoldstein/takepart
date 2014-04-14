@@ -237,6 +237,13 @@ body.node-type-campaign-card-news .card.campaign-1col{
 }
 body.node-type-campaign-page, #main.card-page{
 
+  #block-boxes-ga-campaign-header {
+    display: none;
+    @media (min-width: 728px) {
+      display: block;
+    }
+  }
+
   .tabs-primary {
     max-width: 1000px;
     margin: 1.5em auto;
