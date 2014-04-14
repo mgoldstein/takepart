@@ -1952,6 +1952,22 @@
 .tp-social-link.tp-social-Email:before, body.node-type-campaign-page .social-follow a.social-icon.tp-social-link.email:before, #main.card-page .social-follow a.social-icon.tp-social-link.email:before {
   content: '\e305';
 }
+/* line 78, ../sass/base/_icons.scss */
+.tp-social-link.tp-social-Linkedin:before, body.node-type-campaign-page .social-follow a.social-icon.tp-social-link.linkedin:before, #main.card-page .social-follow a.social-icon.tp-social-link.linkedin:before {
+  content: '\e308';
+}
+/* line 79, ../sass/base/_icons.scss */
+.tp-social-link.tp-social-Vine:before, body.node-type-campaign-page .social-follow a.social-icon.tp-social-link.vine:before, #main.card-page .social-follow a.social-icon.tp-social-link.vine:before {
+  content: '\e309';
+}
+/* line 80, ../sass/base/_icons.scss */
+.tp-social-link.tp-social-Instagram:before, body.node-type-campaign-page .social-follow a.social-icon.tp-social-link.instagram:before, #main.card-page .social-follow a.social-icon.tp-social-link.instagram:before {
+  content: '\e306';
+}
+/* line 81, ../sass/base/_icons.scss */
+.tp-social-link.tp-social-Youtube:before, body.node-type-campaign-page .social-follow a.social-icon.tp-social-link.youtube:before, #main.card-page .social-follow a.social-icon.tp-social-link.youtube:before {
+  content: '\e307';
+}
 
 /* Helpers */
 /*
