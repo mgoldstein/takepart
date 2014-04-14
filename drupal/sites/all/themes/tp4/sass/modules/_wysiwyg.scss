@@ -114,7 +114,7 @@ p:first-child{
     }
   }
 }
-#main ul:not(.tabs){
+ul:not(.tabs){
   li{
     font-family: $primary-sans-font;
     font-weight: 100;
@@ -134,7 +134,7 @@ p:first-child{
     }
   }
 }
-#main ol{
+ol{
   counter-reset:li;
   margin-left:0; 
   padding-left:0;

@@ -315,8 +315,11 @@ function tp_campaigns_form_campaign_node_form_alter(&$form, &$form_state){
 
   //if the menu has a value, disable it
   if(isset($form_state['node']->field_campaign_menu['und'][0]['value']) == TRUE){
-    $form['field_campaign_menu']['#disabled'] = TRUE;
-    $form['field_campaign_menu']['#attributes']['class'][] = 'disabled';
+    global $user;
+    if (in_array('administrator', $user->roles) != true) {
+      $form['field_campaign_menu']['#disabled'] = TRUE;
+      $form['field_campaign_menu']['#attributes']['class'][] = 'disabled';
+    }
   }
 }
 

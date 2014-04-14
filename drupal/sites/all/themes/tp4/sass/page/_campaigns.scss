@@ -10,13 +10,25 @@
   * 2) Change zen-gutter width to what it should be.
   */
 
+.iframe-wrapper{
+  position: relative;
+  padding-top: 25px;
+  height: 0;
+  overflow: hidden;
+  iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
 
 /*
  * Layouts
  */
-html{
-  height: 100%;
-}
 body.node-type-campaign-page,
 body.node-type-campaign-card-media,
 body.node-type-campaign-card-news,
@@ -26,7 +38,6 @@ body.node-type-campaign-card-text,
 body.node-type-campaign-card-branding,
 body.node-type-campaign-card-empty,
 {
-  height: 100%;
   $zen-column-count:  12;
   $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
 
@@ -240,6 +251,13 @@ body.node-type-campaign-card-news .card.campaign-1col{
 }
 body.node-type-campaign-page, #main.card-page{
 
+  #block-boxes-ga-campaign-header {
+    display: none;
+    @media (min-width: 728px) {
+      display: block;
+    }
+  }
+
   .tabs-primary {
     max-width: 1000px;
     margin: 1.5em auto;
@@ -318,6 +336,9 @@ body.node-type-campaign-page, #main.card-page{
           font-family: $primary-sans-font;
           font-weight: bold;
           font-size: 14px;
+        }
+        ul {
+          @include box-shadow(0 0 4px rgba(0,0,0,0.5));
         }
         > li{
           display: block;
@@ -541,38 +562,37 @@ body.node-type-campaign-page, #main.card-page{
     @include breakpoint($breakpoint-tablet) {
       .arrow{
         position: absolute;
+        left: 0; // right side overrides below
+        top: 100px;
         z-index: 10;
         text-align: center;
-        display: inline-block;
+        display: block;
         color: #000;
         cursor: pointer;
         font-size: 72px;
-        &:hover{
-          color: $light-mint;
-        }
-        &.left-arrow{
-          left: 0;
-          top: 100px;
-          .arrow-inner{
-            position: relative;
-            &:after{
-              font-family: "SSGizmo";
-              content: '\25C5';
-              background-color: rgba(255,255,255,0.2);
-            }
+        line-height: 1em;
+        .arrow-inner{
+          &:after{
+            display: block;
+            font-family: "SSGizmo";
+            content: '\25C5';
+            background-color: rgba(255,255,255,0.2);
+            height: 1em;
+            line-height: 1.2;
+            padding: 10px 0;
           }
         }
         &.right-arrow{
+          left: auto;
           right: 0;
-          top: 100px;
           .arrow-inner{
-            position: relative;
             &:after{
-              font-family: "SSGizmo";
               content: '\25BB';
-              background-color: rgba(255,255,255,0.2);
             }
           }
+        }
+        &:hover{
+          color: $light-mint;
         }
       }
     }
@@ -775,7 +795,7 @@ body.node-type-campaign-page, #main.card-page{
       p.short-headline{
         margin: 0;
         padding-top: 0;
-        line-height: 16px;
+        line-height: 24px;
         padding-bottom:3px;
       }
       .more-link p{
@@ -982,6 +1002,10 @@ body.node-type-campaign-page, #main.card-page{
   }
   .sms-legal{
     text-align: center;
+    p {
+      font-size: .875em;
+      line-height: 1.5;
+    }
   }
 
   //
@@ -1113,7 +1137,9 @@ body.node-type-campaign-page, #main.card-page{
         }
         @include breakpoint($breakpoint-tablet){
           float: none;
-          width: auto;
+          width: 65%;
+          margin-left: 17.5%;
+          margin-right: 17.5%;
         }
       }
     }
@@ -1186,7 +1212,7 @@ body.node-type-campaign-page, #main.card-page{
 
 }
 
-@media only screen and (max-width: 767px)
+@media only screen and (max-width: 700px)
 {
     
   body.node-type-campaign-page{
@@ -1216,7 +1242,7 @@ body.node-type-campaign-page, #main.card-page{
     
   }   
 }
-@media only screen and (min-width: 768px) {    
+@media only screen and (min-width: 701px) {    
   body.node-type-campaign-page {    
     header#header{
       .campaign-menu-toggle {
