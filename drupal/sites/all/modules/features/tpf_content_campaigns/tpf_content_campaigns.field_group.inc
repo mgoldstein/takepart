@@ -77,7 +77,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = 'group_card_background';
   $field_group->data = array(
     'label' => 'Background Image',
-    'weight' => '6',
+    'weight' => '18',
     'children' => array(
       0 => 'field_campaign_bgw_image',
       1 => 'field_campaign_background',
@@ -135,9 +135,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background Image',
     'weight' => '6',
     'children' => array(
-      0 => 'field_card_background',
-      1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_background',
+      0 => 'field_campaign_bgw_image',
+      1 => 'field_campaign_background',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -421,7 +420,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '7',
+    'weight' => '9',
     'children' => array(
       0 => 'field_campaign_bgw',
       1 => 'field_campaign_bg_color',
@@ -467,6 +466,33 @@ function tpf_content_campaigns_field_group_info() {
     ),
   );
   $export['group_card_background|node|campaign_card_media|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_color_scheme|node|campaign|form';
+  $field_group->group_name = 'group_color_scheme';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Color Scheme',
+    'weight' => '45',
+    'children' => array(
+      0 => 'field_color_scheme',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-color-scheme field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_color_scheme|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -750,10 +776,10 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_campaign_bg_color',
-      1 => 'field_campaign_bgw',
+      0 => 'field_campaign_bgw',
+      1 => 'field_campaign_bg_color',
       2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',

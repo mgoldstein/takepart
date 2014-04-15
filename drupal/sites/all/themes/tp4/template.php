@@ -390,6 +390,47 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 	
  	$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
 
+	$campaign_trays = count($variables['field_campaign_tray']);
+	
+	for($i=0; $i < $campaign_trays; $i++){
+		
+		$campaign_tray = node_load($variables['field_campaign_tray'][$i]['target_id']);
+
+		if(!empty($campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'])){
+			$campaign_tray->field_campaign_tray_title['und'][0]['value'] = '<font color="'.$campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'].'">'.$campaign_tray->field_campaign_tray_title['und'][0]['value'].'</font>';
+		}
+		
+		$campaign_card = node_load($campaign_tray->field_campaign_card_reference['und'][0]['target_id']);
+		$card_color_scheme = $campaign_card->field_card_color_scheme['und'][0]['value']; // color 1	
+		
+		// Array of campaign color schemes
+		$color_schemes = $campaign_node->field_color_scheme['und'];
+	
+		foreach ($color_schemes as $field_collection) {
+		  $color_scheme = field_collection_item_load($field_collection['value']);
+		  // If card color scheme exists in campaign color scheme then inherit the value	
+		  if($color_scheme->field_color_scheme_name['und'][0]['value'] == $card_color_scheme)
+		  {
+			$card_new_font_color = $color_scheme->field_color_scheme_font_color['und'][0]['rgb'];
+			
+			//$card_new_background = $color_scheme->field_color_scheme_background['und'][0]['rgb'];
+			//if(!empty($card_new_background)){
+				// Apply the background from color scheme
+				//$campaign_card->field_campaign_bg_color['und'][0]['rgb'] = $card_new_background;
+			//}
+
+			if(!empty($card_new_font_color)){
+				// Add font color to variables
+				$campaign_card->field_card_color_scheme_font = $card_new_font_color;
+			}
+		  }
+		  		  
+		}
+		
+		
+	}	
+	//$campaign_card->field_campaign_bg_color['und'][0]['rgb'] = "#000000";
+	
 	// Check if alt text is empty then add title as alt text for campaign logo
 	if($campaign_node->field_campaign_logo['und'][0]['alt'] == ''){
 		$campaign_node->field_campaign_logo['und'][0]['alt'] = $campaign_node->title;
@@ -440,8 +481,6 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 	
 	
 }
-
-
 
 /**
  * Override or insert variables into the campaign card media template
@@ -547,6 +586,38 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   $variables['right'] = $right;
   $variables['center'] = $center;
   $variables['instructional'] =  $instructional;
+
+  // If color scheme is enabled add font color to major html tag inside the card
+  if(!empty($variables['field_card_color_scheme'])){
+    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
+  	$campaign_style['style'] = 
+  	'.color_scheme_'.$variables['nid'].', 
+  	.color_scheme_'.$variables['nid'].' h1, 
+  	.color_scheme_'.$variables['nid'].' h2, 
+  	.color_scheme_'.$variables['nid'].' h3, 
+  	.color_scheme_'.$variables['nid'].' h4, 
+  	.color_scheme_'.$variables['nid'].' h5, 
+  	.color_scheme_'.$variables['nid'].' h6, 
+  	.color_scheme_'.$variables['nid'].' a,
+  	.color_scheme_'.$variables['nid'].' p, 
+  	.color_scheme_'.$variables['nid'].' label, 
+  	.color_scheme_'.$variables['nid'].' ul, 
+  	.color_scheme_'.$variables['nid'].' li,
+  	.color_scheme_'.$variables['nid'].' th,
+  	.color_scheme_'.$variables['nid'].' td
+  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
+    
+    drupal_add_css($campaign_style['style'], 
+				  array(
+				        'group' => CSS_THEME,
+				        'type' => 'inline',
+				        'media' => 'screen',
+				        'preprocess' => FALSE,
+				        'weight' => '9999',
+				  ));
+  }  
+
+  
 }
 
 
@@ -605,6 +676,37 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   $variables['right'] = $right;
   $variables['center'] = $center;
   $variables['instructional'] =  $instructional;
+  
+  // If color scheme is enabled add font color to major html tag inside the card
+  if(!empty($variables['field_card_color_scheme'])){
+    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
+  	$campaign_style['style'] = 
+  	'.color_scheme_'.$variables['nid'].', 
+  	.color_scheme_'.$variables['nid'].' h1, 
+  	.color_scheme_'.$variables['nid'].' h2, 
+  	.color_scheme_'.$variables['nid'].' h3, 
+  	.color_scheme_'.$variables['nid'].' h4, 
+  	.color_scheme_'.$variables['nid'].' h5, 
+  	.color_scheme_'.$variables['nid'].' h6, 
+  	.color_scheme_'.$variables['nid'].' a,
+  	.color_scheme_'.$variables['nid'].' p, 
+  	.color_scheme_'.$variables['nid'].' label, 
+  	.color_scheme_'.$variables['nid'].' ul, 
+  	.color_scheme_'.$variables['nid'].' li,
+  	.color_scheme_'.$variables['nid'].' th,
+  	.color_scheme_'.$variables['nid'].' td
+  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
+    
+    drupal_add_css($campaign_style['style'], 
+				  array(
+				        'group' => CSS_THEME,
+				        'type' => 'inline',
+				        'media' => 'screen',
+				        'preprocess' => FALSE,
+				        'weight' => '9999',
+				  ));
+  } 
+
 }
 
 
@@ -677,6 +779,38 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['center'] = $center;
   $variables['instructional'] =  $instructional;
+  
+  // If color scheme is enabled add font color to major html tag inside the card
+  if(!empty($variables['field_card_color_scheme'])){
+    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
+  	$campaign_style['style'] = 
+  	'.color_scheme_'.$variables['nid'].', 
+  	.color_scheme_'.$variables['nid'].' h1, 
+  	.color_scheme_'.$variables['nid'].' h2, 
+  	.color_scheme_'.$variables['nid'].' h3, 
+  	.color_scheme_'.$variables['nid'].' h4, 
+  	.color_scheme_'.$variables['nid'].' h5, 
+  	.color_scheme_'.$variables['nid'].' h6, 
+  	.color_scheme_'.$variables['nid'].' a,
+  	.color_scheme_'.$variables['nid'].' p, 
+  	.color_scheme_'.$variables['nid'].' label, 
+  	.color_scheme_'.$variables['nid'].' ul, 
+  	.color_scheme_'.$variables['nid'].' li,
+  	.color_scheme_'.$variables['nid'].' th,
+  	.color_scheme_'.$variables['nid'].' td
+  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
+    
+    drupal_add_css($campaign_style['style'], 
+				  array(
+				        'group' => CSS_THEME,
+				        'type' => 'inline',
+				        'media' => 'screen',
+				        'preprocess' => FALSE,
+				        'weight' => '9999',
+				  ));
+  } 
+
+
 }
 
 /**
@@ -810,6 +944,37 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
     $variables['instructional'] = $instructional;
     $variables['center'] = $center;
+	
+  // If color scheme is enabled add font color to major html tag inside the card
+  if(!empty($variables['field_card_color_scheme'])){
+    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
+  	$campaign_style['style'] = 
+  	'.color_scheme_'.$variables['nid'].', 
+  	.color_scheme_'.$variables['nid'].' h1, 
+  	.color_scheme_'.$variables['nid'].' h2, 
+  	.color_scheme_'.$variables['nid'].' h3, 
+  	.color_scheme_'.$variables['nid'].' h4, 
+  	.color_scheme_'.$variables['nid'].' h5, 
+  	.color_scheme_'.$variables['nid'].' h6, 
+  	.color_scheme_'.$variables['nid'].' a,
+  	.color_scheme_'.$variables['nid'].' p, 
+  	.color_scheme_'.$variables['nid'].' label, 
+  	.color_scheme_'.$variables['nid'].' ul, 
+  	.color_scheme_'.$variables['nid'].' li,
+  	.color_scheme_'.$variables['nid'].' th,
+  	.color_scheme_'.$variables['nid'].' td
+  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
+    
+    drupal_add_css($campaign_style['style'], 
+				  array(
+				        'group' => CSS_THEME,
+				        'type' => 'inline',
+				        'media' => 'screen',
+				        'preprocess' => FALSE,
+				        'weight' => '9999',
+				  ));
+  } 
+
 
 }
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
@@ -818,7 +983,18 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   $height = $variables['field_campaign_iframe_height'][0]['value'];
   $width = $variables['field_campaign_iframe_width'][0]['value'];
   if(isset($variables['field_campaign_iframe'][0]['value']) == true){
-    $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" width="'. $width. '" height="'. $height. '"></iframe>';
+    if($variables['field_campaign_iframe_type'][0]['value'] == 1){
+      $ratio = $height/$width * 100;
+      $center .= '<div class="iframe-wrapper" style="padding-bottom: '. $ratio. '%;">';
+      $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '"></iframe>';
+      $center .= '</div>';
+    }
+    else{
+      $center .= '<div class="iframe-wrapper-fixed">';
+      $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" height="'. $height. '" width="'. $width. '"></iframe>';
+      $center .= '</div>';
+    }
+
   }
   else{
     $center .= '<div class="embed">'. $variables['body'][0]['value']. '</div>';
@@ -847,6 +1023,37 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   $variables['instructional'] = $instructional;
   $variables['center'] = $center;
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  
+  // If color scheme is enabled add font color to major html tag inside the card
+  if(!empty($variables['field_card_color_scheme'])){
+    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
+  	$campaign_style['style'] = 
+  	'.color_scheme_'.$variables['nid'].', 
+  	.color_scheme_'.$variables['nid'].' h1, 
+  	.color_scheme_'.$variables['nid'].' h2, 
+  	.color_scheme_'.$variables['nid'].' h3, 
+  	.color_scheme_'.$variables['nid'].' h4, 
+  	.color_scheme_'.$variables['nid'].' h5, 
+  	.color_scheme_'.$variables['nid'].' h6, 
+  	.color_scheme_'.$variables['nid'].' a,
+  	.color_scheme_'.$variables['nid'].' p, 
+  	.color_scheme_'.$variables['nid'].' label, 
+  	.color_scheme_'.$variables['nid'].' ul, 
+  	.color_scheme_'.$variables['nid'].' li,
+  	.color_scheme_'.$variables['nid'].' th,
+  	.color_scheme_'.$variables['nid'].' td
+  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
+    
+    drupal_add_css($campaign_style['style'], 
+				  array(
+				        'group' => CSS_THEME,
+				        'type' => 'inline',
+				        'media' => 'screen',
+				        'preprocess' => FALSE,
+				        'weight' => '9999',
+				  ));
+  } 
+
 }
 function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   $center = '';
@@ -893,6 +1100,37 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   $variables['instructional'] = $instructional;
   $variables['center'] = $center;
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+
+  // If color scheme is enabled add font color to major html tag inside the card
+  if(!empty($variables['field_card_color_scheme'])){
+    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
+  	$campaign_style['style'] = 
+  	'.color_scheme_'.$variables['nid'].', 
+  	.color_scheme_'.$variables['nid'].' h1, 
+  	.color_scheme_'.$variables['nid'].' h2, 
+  	.color_scheme_'.$variables['nid'].' h3, 
+  	.color_scheme_'.$variables['nid'].' h4, 
+  	.color_scheme_'.$variables['nid'].' h5, 
+  	.color_scheme_'.$variables['nid'].' h6, 
+  	.color_scheme_'.$variables['nid'].' a,
+  	.color_scheme_'.$variables['nid'].' p, 
+  	.color_scheme_'.$variables['nid'].' label, 
+  	.color_scheme_'.$variables['nid'].' ul, 
+  	.color_scheme_'.$variables['nid'].' li,
+  	.color_scheme_'.$variables['nid'].' th,
+  	.color_scheme_'.$variables['nid'].' td
+  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
+    
+    drupal_add_css($campaign_style['style'], 
+				  array(
+				        'group' => CSS_THEME,
+				        'type' => 'inline',
+				        'media' => 'screen',
+				        'preprocess' => FALSE,
+				        'weight' => '9999',
+				  ));
+  } 
+
 }
 function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
   $image = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
@@ -922,6 +1160,37 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
   $variables['instructional'] = $instructional;
   $variables['center'] = $center;
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  
+  // If color scheme is enabled add font color to major html tag inside the card
+  if(!empty($variables['field_card_color_scheme'])){
+    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
+  	$campaign_style['style'] = 
+  	'.color_scheme_'.$variables['nid'].', 
+  	.color_scheme_'.$variables['nid'].' h1, 
+  	.color_scheme_'.$variables['nid'].' h2, 
+  	.color_scheme_'.$variables['nid'].' h3, 
+  	.color_scheme_'.$variables['nid'].' h4, 
+  	.color_scheme_'.$variables['nid'].' h5, 
+  	.color_scheme_'.$variables['nid'].' h6, 
+  	.color_scheme_'.$variables['nid'].' a,
+  	.color_scheme_'.$variables['nid'].' p, 
+  	.color_scheme_'.$variables['nid'].' label, 
+  	.color_scheme_'.$variables['nid'].' ul, 
+  	.color_scheme_'.$variables['nid'].' li,
+  	.color_scheme_'.$variables['nid'].' th,
+  	.color_scheme_'.$variables['nid'].' td
+  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
+    
+    drupal_add_css($campaign_style['style'], 
+				  array(
+				        'group' => CSS_THEME,
+				        'type' => 'inline',
+				        'media' => 'screen',
+				        'preprocess' => FALSE,
+				        'weight' => '9999',
+				  ));
+  } 
+
 }
 
 /**
