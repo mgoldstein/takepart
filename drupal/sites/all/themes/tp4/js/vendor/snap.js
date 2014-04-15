@@ -128,10 +128,10 @@
 
       toggleCampaignSidebar: function() {
         var db = Drupal.behaviors; 
-        if ( db.campaignsnapper.state().state == "left" ) 
+        if ( db.campaignsnapper.state().state == "right" ) 
           db.closeCampaignsSidebar();
         else  
-          db.campaignsnapper.open('left');
+          db.campaignsnapper.open('right');
       },
 
       captureInboundClicks: function(e) {
