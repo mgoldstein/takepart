@@ -4534,13 +4534,18 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_iframe',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '\'100%, \'600px\', etc.',
+    'description' => 'Integer in Pixels',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => ' ',
+        ),
+        'type' => 'number_integer',
         'weight' => 1,
       ),
       'feature_main' => array(
@@ -4597,18 +4602,19 @@ function tpf_content_campaigns_field_default_field_instances() {
     'label' => 'iFrame Height',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'number',
       'settings' => array(
-        'maxlength_js' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
       ),
-      'type' => 'text_textfield',
+      'type' => 'number',
       'weight' => 7,
     ),
   );

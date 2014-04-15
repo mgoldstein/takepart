@@ -983,10 +983,18 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   $height = $variables['field_campaign_iframe_height'][0]['value'];
   $width = $variables['field_campaign_iframe_width'][0]['value'];
   if(isset($variables['field_campaign_iframe'][0]['value']) == true){
-    $ratio = $height/$width * 100;
-    $center .= '<div class="iframe-wrapper" style="padding-bottom: '. $ratio. '%;">';
-    $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '"></iframe>';
-    $center .= '</div>';
+    if($variables['field_campaign_iframe_type'][0]['value'] == 1){
+      $ratio = $height/$width * 100;
+      $center .= '<div class="iframe-wrapper" style="padding-bottom: '. $ratio. '%;">';
+      $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '"></iframe>';
+      $center .= '</div>';
+    }
+    else{
+      $center .= '<div class="iframe-wrapper-fixed">';
+      $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" height="'. $height. '" width="'. $width. '"></iframe>';
+      $center .= '</div>';
+    }
+
   }
   else{
     $center .= '<div class="embed">'. $variables['body'][0]['value']. '</div>';
