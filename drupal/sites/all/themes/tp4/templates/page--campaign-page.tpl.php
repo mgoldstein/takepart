@@ -12,14 +12,13 @@
     )), 'setting');
 ?>
 <div id="tp-drawers" class="snap-drawers scrollable">
-    <div class="snap-drawer snap-drawer-left">
-  
+    <div class="snap-drawer snap-drawer-left">  
     <?php print render($page['left_drawer']); ?>
   </div>
 </div>
 
 <div id="campaign-drawers" class="snap-drawers scrollable">
-  <div class="snap-drawer snap-drawer-left">
+  <div class="snap-drawer snap-drawer-right">
     <div id="block-menu-menu" class="block block-menu first last odd" role="navigation">
       <?php print render($variables['campaign_menu']); ?>
     </div>

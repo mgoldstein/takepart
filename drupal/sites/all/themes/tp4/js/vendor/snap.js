@@ -1,364 +1,568 @@
-/**
- * @file
- * Scripts for the theme.
+/*
+ * Snap.js
+ *
+ * Copyright 2013, Jacob Kelley - http://jakiestfu.com/
+ * Released under the MIT Licence
+ * http://opensource.org/licenses/MIT
+ *
+ * Github:  http://github.com/jakiestfu/Snap.js/
+ * Version: 1.9.3
  */
-(function ($, Drupal, window, document, undefined) {
-  $.extend(true, this, {Drupal: {
-    behaviors: {
-      /**
-      * Megamenu Behaviors
-      */
-      megaMenuBehaviors: {
-            attach: function(context, settings) {
-                //prevent parent links on megamenu from linking on touch (link on double touch)
-                $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
-
-                //Toggle search on mobile
-                $('html').click(function() {
-                    $('.search-toggle').parent().removeClass('active');
-                });
-
-                $('.search-toggle').parent().click(function(event){
-                    event.stopPropagation();
-                    $(this).addClass('active');
-                });
-
-                function makeTall(){$(this).find('.mega-content').fadeIn(100);}
-                function makeShort(){$(this).find('.mega-content').fadeOut(100);}
-
-                $("#megamenu").hoverIntent({
-                    over: makeTall,
-                    out: makeShort,
-                    selector: 'li.mega-item'
-                });
+/*jslint browser: true*/
+/*global define, module, ender*/
+(function(win, doc) {
+    'use strict';
+    var Snap = Snap || function(userOpts) {
+        var settings = {
+            element: null,
+            dragger: null,
+            disable: 'none',
+            addBodyClasses: true,
+            hyperextensible: true,
+            resistance: 0.5,
+            flickThreshold: 50,
+            transitionSpeed: 0.3,
+            easing: 'ease',
+            maxPosition: 266,
+            minPosition: -266,
+            tapToClose: true,
+            touchToDrag: true,
+            slideIntent: 40, // degrees
+            minDragDistance: 5
+        },
+        cache = {
+            simpleStates: {
+                opening: null,
+                towards: null,
+                hyperExtending: null,
+                halfway: null,
+                flick: null,
+                translation: {
+                    absolute: 0,
+                    relative: 0,
+                    sinceDirectionChange: 0,
+                    percentage: 0
+                }
             }
-      },
-      /**
-        Settings for the snap.js library
-      */
-      snapperSettings: {
-          attach: function(context, settings) {
-          	
-              var snapper = new Snap({
-                  element: document.getElementById('page-wrap')
-              });
+        },
+        eventList = {},
+        utils = {
+            hasTouch: ('ontouchstart' in doc.documentElement || win.navigator.msPointerEnabled),
+            eventType: function(action) {
+                var eventTypes = {
+                    down: (utils.hasTouch ? 'touchstart' : settings.clickToDrag ? 'mousedown' : ''),
+                    move: (utils.hasTouch ? 'touchmove' : settings.clickToDrag ? 'mousemove' : ''),
+                    up: (utils.hasTouch ? 'touchend' : settings.clickToDrag ? 'mouseup': ''),
+                    out: (utils.hasTouch ? 'touchcancel' : settings.clickToDrag ? 'mouseout' : '')
+                    };
+                return eventTypes[action];
+            },
+            page: function(t, e){
+                return (utils.hasTouch && e.touches.length && e.touches[0]) ? e.touches[0]['page'+t] : e['page'+t];
+            },
+            klass: {
+                has: function(el, name){
+                    return (el.className).indexOf(name) !== -1;
+                },
+                add: function(el, name){
+                    if(!utils.klass.has(el, name) && settings.addBodyClasses){
+                        el.className += " "+name;
+                    }
+                },
+                remove: function(el, name){
+                    if(settings.addBodyClasses){
+                        el.className = (el.className).replace(name, "").replace(/^\s+|\s+$/g, '');
+                    }
+                }
+            },
+            dispatchEvent: function(type) {
+                if (typeof eventList[type] === 'function') {
+                    return eventList[type].call();
+                }
+            },
+            vendor: function(){
+                var tmp = doc.createElement("div"),
+                    prefixes = 'webkit Moz O ms'.split(' '),
+                    i;
+                for (i in prefixes) {
+                    if (typeof tmp.style[prefixes[i] + 'Transition'] !== 'undefined') {
+                        return prefixes[i];
+                    }
+                }
+            },
+            transitionCallback: function(){
+                return (cache.vendor==='Moz' || cache.vendor==='ms') ? 'transitionend' : cache.vendor+'TransitionEnd';
+            },
+            canTransform: function(){
+                return typeof settings.element.style[cache.vendor+'Transform'] !== 'undefined';
+            },
+            deepExtend: function(destination, source) {
+                var property;
+                for (property in source) {
+                    if (source[property] && source[property].constructor && source[property].constructor === Object) {
+                        destination[property] = destination[property] || {};
+                        utils.deepExtend(destination[property], source[property]);
+                    } else {
+                        destination[property] = source[property];
+                    }
+                }
+                return destination;
+            },
+            angleOfDrag: function(x, y) {
+                var degrees, theta;
+                // Calc Theta
+                theta = Math.atan2(-(cache.startDragY - y), (cache.startDragX - x));
+                if (theta < 0) {
+                    theta += 2 * Math.PI;
+                }
+                // Calc Degrees
+                degrees = Math.floor(theta * (180 / Math.PI) - 180);
+                if (degrees < 0 && degrees > -180) {
+                    degrees = 360 - Math.abs(degrees);
+                }
+                return Math.abs(degrees);
+            },
+            events: {
+                addEvent: function addEvent(element, eventName, func) {
+                    if (element.addEventListener) {
+                        return element.addEventListener(eventName, func, false);
+                    } else if (element.attachEvent) {
+                        return element.attachEvent("on" + eventName, func);
+                    }
+                },
+                removeEvent: function addEvent(element, eventName, func) {
+                    if (element.addEventListener) {
+                        return element.removeEventListener(eventName, func, false);
+                    } else if (element.attachEvent) {
+                        return element.detachEvent("on" + eventName, func);
+                    }
+                },
+                prevent: function(e) {
+                    if (e.preventDefault) {
+                        e.preventDefault();
+                    } else {
+                        e.returnValue = false;
+                    }
+                }
+            },
+            parentUntil: function(el, attr) {
+                var isStr = typeof attr === 'string';
+                while (el.parentNode) {
+                    if (isStr && el.getAttribute && el.getAttribute(attr)){
+                        return el;
+                    } else if(!isStr && el === attr){
+                        return el;
+                    }
+                    el = el.parentNode;
+                }
+                return null;
+            }
+        },
+        action = {
+            translate: {
+                get: {
+                    matrix: function(index) {
 
-              snapper.settings({
-                  dragger: null,
-                  disable: 'none',
-                  addBodyClasses: true,
-                  hyperextensible: true,
-                  resistance: 0.5,
-                  flickThreshold: 50,
-                  transitionSpeed: 0.3,
-                  easing: 'ease',
-                  maxPosition: 280,
-                  minPosition: 0,
-                  tapToClose: true,
-                  touchToDrag: false,
-                  clickToDrag: false,
-                  slideIntent: 40,
-                  minDragDistance: 5
-              });
+                        if( !utils.canTransform() ){
+                            return parseInt(settings.element.style.left, 10);
+                        } else {
+                            var matrix = win.getComputedStyle(settings.element)[cache.vendor+'Transform'].match(/\((.*)\)/),
+                                ieOffset = 8;
+                            if (matrix) {
+                                matrix = matrix[1].split(',');
+                                if(matrix.length===16){
+                                    index+=ieOffset;
+                                }
+                                return parseInt(matrix[index], 10);
+                            }
+                            return 0;
+                        }
+                    }
+                },
+                easeCallback: function(){
+                    settings.element.style[cache.vendor+'Transition'] = '';
+                    cache.translation = action.translate.get.matrix(4);
+                    cache.easing = false;
+                    clearInterval(cache.animatingInterval);
 
-              $('.menu-toggle').on('click', function(){
-                  if( snapper.state().state == "left" )
-                      snapper.close();
-                  else
-                      snapper.open('left');
-              });
-          }
-      },
+                    if(cache.easingTo===0){
+                        utils.klass.remove(doc.body, 'snapjs-right');
+                        utils.klass.remove(doc.body, 'snapjs-left');
+                    }
 
-      // Campaign Page 
-      campaignsnapperSettings: {
-          attach: function(context, settings) {
-          	Drupal.behaviors.snapperDomElement = document.getElementById('page-wrap');
-              Drupal.behaviors.campaignsnapper = new Snap({
-                  element: Drupal.behaviors.snapperDomElement
-              });
+                    utils.dispatchEvent('animated');
+                    utils.events.removeEvent(settings.element, utils.transitionCallback(), action.translate.easeCallback);
+                },
+                easeTo: function(n) {
 
-              Drupal.behaviors.campaignsnapper.settings({
-                  dragger: null,
-                  disable: 'none',
-                  addBodyClasses: true,
-                  hyperextensible: true,
-                  resistance: 0.5,
-                  flickThreshold: 50,
-                  transitionSpeed: 0.3,
-                  easing: 'ease',
-                  maxPosition: 280,
-                  minPosition: 0,
-                  tapToClose: true,
-                  touchToDrag: false,
-                  clickToDrag: false,
-                  slideIntent: 40,
-                  minDragDistance: 5
-              });
+                    if( !utils.canTransform() ){
+                        cache.translation = n;
+                        action.translate.x(n);
+                    } else {
+                        cache.easing = true;
+                        cache.easingTo = n;
 
+                        settings.element.style[cache.vendor+'Transition'] = 'all ' + settings.transitionSpeed + 's ' + settings.easing;
 
-              var db = Drupal.behaviors,
-                       campaignHeaderTop = $('#block-tp-campaigns-tp-campaigns-hero').offset().top;
+                        cache.animatingInterval = setInterval(function() {
+                            utils.dispatchEvent('animating');
+                        }, 1);
+                        
+                        utils.events.addEvent(settings.element, utils.transitionCallback(), action.translate.easeCallback);
+                        action.translate.x(n);
+                    }
+                    if(n===0){
+                           settings.element.style[cache.vendor+'Transform'] = '';
+                       }
+                },
+                x: function(n) {
+                    if( (settings.disable==='left' && n>0) ||
+                        (settings.disable==='right' && n<0)
+                    ){ return; }
+                    
+                    if( !settings.hyperextensible ){
+                        if( n===settings.maxPosition || n>settings.maxPosition ){
+                            n=settings.maxPosition;
+                        } else if( n===settings.minPosition || n<settings.minPosition ){
+                            n=settings.minPosition;
+                        }
+                    }
+                    
+                    n = parseInt(n, 10);
+                    if(isNaN(n)){
+                        n = 0;
+                    }
 
-              $('#campaign-drawers .snap-drawer').css({ top: campaignHeaderTop + 'px' });
-              $('.snap-drawer a').click( db.closeCampaignsSidebar );
-              $('.campaign-menu-toggle').on('click', db.toggleCampaignSidebar );
-              $('#campaign-drawers a[href*=#]').on('click', db.captureInboundClicks );
-              db.campaignsnapper.on('animated', db.scrollToAnchor );
-              db.campaignsnapper.on('drag', db.preventHorizontalScrolling );
+                    if( utils.canTransform() ){
+                        var theTranslate = 'translate3d(' + n + 'px, 0,0)';
+                        settings.element.style[cache.vendor+'Transform'] = theTranslate;
+                    } else {
+                        settings.element.style.width = (win.innerWidth || doc.documentElement.clientWidth)+'px';
 
-              setTimeout( db.offsetAnchorsForStickyHeader, 250 );
-          }
-      },
+                        settings.element.style.left = n+'px';
+                        settings.element.style.right = '';
+                    }
+                }
+            },
+            drag: {
+                listen: function() {
+                    cache.translation = 0;
+                    cache.easing = false;
+                    utils.events.addEvent(settings.element, utils.eventType('down'), action.drag.startDrag);
+                    utils.events.addEvent(settings.element, utils.eventType('move'), action.drag.dragging);
+                    utils.events.addEvent(settings.element, utils.eventType('up'), action.drag.endDrag);
+                },
+                stopListening: function() {
+                    utils.events.removeEvent(settings.element, utils.eventType('down'), action.drag.startDrag);
+                    utils.events.removeEvent(settings.element, utils.eventType('move'), action.drag.dragging);
+                    utils.events.removeEvent(settings.element, utils.eventType('up'), action.drag.endDrag);
+                },
+                startDrag: function(e) {
+                    // No drag on ignored elements
+                    var target = e.target ? e.target : e.srcElement,
+                        ignoreParent = utils.parentUntil(target, 'data-snap-ignore');
+                    
+                    if (ignoreParent) {
+                        utils.dispatchEvent('ignore');
+                        return;
+                    }
+                    
+                    
+                    if(settings.dragger){
+                        var dragParent = utils.parentUntil(target, settings.dragger);
+                        
+                        // Only use dragger if we're in a closed state
+                        if( !dragParent && 
+                            (cache.translation !== settings.minPosition && 
+                            cache.translation !== settings.maxPosition
+                        )){
+                            return;
+                        }
+                    }
+                    
+                    utils.dispatchEvent('start');
+                    settings.element.style[cache.vendor+'Transition'] = '';
+                    cache.isDragging = true;
+                    cache.hasIntent = null;
+                    cache.intentChecked = false;
+                    cache.startDragX = utils.page('X', e);
+                    cache.startDragY = utils.page('Y', e);
+                    cache.dragWatchers = {
+                        current: 0,
+                        last: 0,
+                        hold: 0,
+                        state: ''
+                    };
+                    cache.simpleStates = {
+                        opening: null,
+                        towards: null,
+                        hyperExtending: null,
+                        halfway: null,
+                        flick: null,
+                        translation: {
+                            absolute: 0,
+                            relative: 0,
+                            sinceDirectionChange: 0,
+                            percentage: 0
+                        }
+                    };
+                },
+                dragging: function(e) {
+                    if (cache.isDragging && settings.touchToDrag) {
 
-      offsetAnchorsForStickyHeader: function() {
-        var $header       = $('.header-wrapper'),
-            headerHeight  = $header.height() + 30;
+                        var thePageX = utils.page('X', e),
+                            thePageY = utils.page('Y', e),
+                            translated = cache.translation,
+                            absoluteTranslation = action.translate.get.matrix(4),
+                            whileDragX = thePageX - cache.startDragX,
+                            openingLeft = absoluteTranslation > 0,
+                            translateTo = whileDragX,
+                            diff;
 
-        if (  $(window).width() > 768 )
-          $('a.card-anchor').css({ top: -headerHeight + 'px' });
-      },
+                        // Shown no intent already
+                        if((cache.intentChecked && !cache.hasIntent)){
+                            return;
+                        }
 
-      preventHorizontalScrolling: function() {
-      },
+                        if(settings.addBodyClasses){
+                            if((absoluteTranslation)>0){
+                                utils.klass.add(doc.body, 'snapjs-left');
+                                utils.klass.remove(doc.body, 'snapjs-right');
+                            } else if((absoluteTranslation)<0){
+                                utils.klass.add(doc.body, 'snapjs-right');
+                                utils.klass.remove(doc.body, 'snapjs-left');
+                            }
+                        }
 
-      closeCampaignsSidebar: function() {
-        Drupal.behaviors.campaignsnapper.close();
-      },
+                        if (cache.hasIntent === false || cache.hasIntent === null) {
+                            var deg = utils.angleOfDrag(thePageX, thePageY),
+                                inRightRange = (deg >= 0 && deg <= settings.slideIntent) || (deg <= 360 && deg > (360 - settings.slideIntent)),
+                                inLeftRange = (deg >= 180 && deg <= (180 + settings.slideIntent)) || (deg <= 180 && deg >= (180 - settings.slideIntent));
+                            if (!inLeftRange && !inRightRange) {
+                                cache.hasIntent = false;
+                            } else {
+                                cache.hasIntent = true;
+                            }
+                            cache.intentChecked = true;
+                        }
 
-      toggleCampaignSidebar: function() {
-        var db = Drupal.behaviors; 
-        if ( db.campaignsnapper.state().state == "right" ) 
-          db.closeCampaignsSidebar();
-        else  
-          db.campaignsnapper.open('right');
-      },
+                        if (
+                            (settings.minDragDistance>=Math.abs(thePageX-cache.startDragX)) || // Has user met minimum drag distance?
+                            (cache.hasIntent === false)
+                        ) {
+                            return;
+                        }
 
-      captureInboundClicks: function(e) {
-        e.preventDefault();
-        var path = $(e.target)[0].href;
-        Drupal.settings.anchorTarget = '#' + path.split('#')[1];
-      },
+                        utils.events.prevent(e);
+                        utils.dispatchEvent('drag');
 
-      scrollToAnchor: function() {
-        if (Drupal.settings.anchorTarget) {
-          $.scrollTo( Drupal.settings.anchorTarget, 250 );
-          Drupal.settings.anchorTarget = null;
-        }
-      },
+                        cache.dragWatchers.current = thePageX;
+                        // Determine which direction we are going
+                        if (cache.dragWatchers.last > thePageX) {
+                            if (cache.dragWatchers.state !== 'left') {
+                                cache.dragWatchers.state = 'left';
+                                cache.dragWatchers.hold = thePageX;
+                            }
+                            cache.dragWatchers.last = thePageX;
+                        } else if (cache.dragWatchers.last < thePageX) {
+                            if (cache.dragWatchers.state !== 'right') {
+                                cache.dragWatchers.state = 'right';
+                                cache.dragWatchers.hold = thePageX;
+                            }
+                            cache.dragWatchers.last = thePageX;
+                        }
+                        if (openingLeft) {
+                            // Pulling too far to the right
+                            if (settings.maxPosition < absoluteTranslation) {
+                                diff = (absoluteTranslation - settings.maxPosition) * settings.resistance;
+                                translateTo = whileDragX - diff;
+                            }
+                            cache.simpleStates = {
+                                opening: 'left',
+                                towards: cache.dragWatchers.state,
+                                hyperExtending: settings.maxPosition < absoluteTranslation,
+                                halfway: absoluteTranslation > (settings.maxPosition / 2),
+                                flick: Math.abs(cache.dragWatchers.current - cache.dragWatchers.hold) > settings.flickThreshold,
+                                translation: {
+                                    absolute: absoluteTranslation,
+                                    relative: whileDragX,
+                                    sinceDirectionChange: (cache.dragWatchers.current - cache.dragWatchers.hold),
+                                    percentage: (absoluteTranslation/settings.maxPosition)*100
+                                }
+                            };
+                        } else {
+                            // Pulling too far to the left
+                            if (settings.minPosition > absoluteTranslation) {
+                                diff = (absoluteTranslation - settings.minPosition) * settings.resistance;
+                                translateTo = whileDragX - diff;
+                            }
+                            cache.simpleStates = {
+                                opening: 'right',
+                                towards: cache.dragWatchers.state,
+                                hyperExtending: settings.minPosition > absoluteTranslation,
+                                halfway: absoluteTranslation < (settings.minPosition / 2),
+                                flick: Math.abs(cache.dragWatchers.current - cache.dragWatchers.hold) > settings.flickThreshold,
+                                translation: {
+                                    absolute: absoluteTranslation,
+                                    relative: whileDragX,
+                                    sinceDirectionChange: (cache.dragWatchers.current - cache.dragWatchers.hold),
+                                    percentage: (absoluteTranslation/settings.minPosition)*100
+                                }
+                            };
+                        }
+                        action.translate.x(translateTo + translated);
+                    }
+                },
+                endDrag: function(e) {
+                    if (cache.isDragging) {
+                        utils.dispatchEvent('end');
+                        var translated = action.translate.get.matrix(4);
 
-      /**
-       * Behaviors for tpsocial shares
-       */
-      tpsocialShares: {
-          attach: function() {
-              var $body = $('body'),
-                  isOpenpublishArticle = $body.is('.page-node.node-type-openpublish-article'),
-                  isFeatureArticle = $body.is('.page-node.node-type-feature-article');
-                  isVideoArticle = $body.is('.page-node.node-type-video');
+                        // Tap Close
+                        if (cache.dragWatchers.current === 0 && translated !== 0 && settings.tapToClose) {
+                            utils.dispatchEvent('close');
+                            utils.events.prevent(e);
+                            action.translate.easeTo(0);
+                            cache.isDragging = false;
+                            cache.startDragX = 0;
+                            return;
+                        }
 
-              if (
-                  isOpenpublishArticle
-                  || isFeatureArticle
-                  || isVideoArticle
-              ) {
-                  // Setup Social Share Buttons
-                  var tp_social_config = {
-                      url_append: '?cmpid=organic-share-{{name}}',
-                      services: [
-                      {
-                          name: 'facebook',
-                          description: isFeatureArticle ? $('.field-name-field-article-subhead .field-item').text() : null
-                      },
+                        // Revealing Left
+                        if (cache.simpleStates.opening === 'left') {
+                            // Halfway, Flicking, or Too Far Out
+                            if ((cache.simpleStates.halfway || cache.simpleStates.hyperExtending || cache.simpleStates.flick)) {
+                                if (cache.simpleStates.flick && cache.simpleStates.towards === 'left') { // Flicking Closed
+                                    action.translate.easeTo(0);
+                                } else if (
+                                    (cache.simpleStates.flick && cache.simpleStates.towards === 'right') || // Flicking Open OR
+                                    (cache.simpleStates.halfway || cache.simpleStates.hyperExtending) // At least halfway open OR hyperextending
+                                ) {
+                                    action.translate.easeTo(settings.maxPosition); // Open Left
+                                }
+                            } else {
+                                action.translate.easeTo(0); // Close Left
+                            }
+                            // Revealing Right
+                        } else if (cache.simpleStates.opening === 'right') {
+                            // Halfway, Flicking, or Too Far Out
+                            if ((cache.simpleStates.halfway || cache.simpleStates.hyperExtending || cache.simpleStates.flick)) {
+                                if (cache.simpleStates.flick && cache.simpleStates.towards === 'right') { // Flicking Closed
+                                    action.translate.easeTo(0);
+                                } else if (
+                                    (cache.simpleStates.flick && cache.simpleStates.towards === 'left') || // Flicking Open OR
+                                    (cache.simpleStates.halfway || cache.simpleStates.hyperExtending) // At least halfway open OR hyperextending
+                                ) {
+                                    action.translate.easeTo(settings.minPosition); // Open Right
+                                }
+                            } else {
+                                action.translate.easeTo(0); // Close Right
+                            }
+                        }
+                        cache.isDragging = false;
+                        cache.startDragX = utils.page('X', e);
+                    }
+                }
+            }
+        },
+        init = function(opts) {
+            if (opts.element) {
+                utils.deepExtend(settings, opts);
+                cache.vendor = utils.vendor();
+                action.drag.listen();
+            }
+        };
+        /*
+         * Public
+         */
+        this.open = function(side) {
+            utils.dispatchEvent('open');
+            utils.klass.remove(doc.body, 'snapjs-expand-left');
+            utils.klass.remove(doc.body, 'snapjs-expand-right');
 
-                      {
-                          name: 'twitter',
-                          text: '{{title}}' + (isFeatureArticle ? ' #longform' : ''),
-                          via: 'TakePart'
-                      },
-                      {
-                          name: 'googleplus'
-                      },
+            if (side === 'left') {
+                cache.simpleStates.opening = 'left';
+                cache.simpleStates.towards = 'right';
+                utils.klass.add(doc.body, 'snapjs-left');
+                utils.klass.remove(doc.body, 'snapjs-right');
+                action.translate.easeTo(settings.maxPosition);
+            } else if (side === 'right') {
+                cache.simpleStates.opening = 'right';
+                cache.simpleStates.towards = 'left';
+                utils.klass.remove(doc.body, 'snapjs-left');
+                utils.klass.add(doc.body, 'snapjs-right');
+                action.translate.easeTo(settings.minPosition);
+            }
+        };
+        this.close = function() {
+            utils.dispatchEvent('close');
+            action.translate.easeTo(0);
+        };
+        this.expand = function(side){
+            var to = win.innerWidth || doc.documentElement.clientWidth;
 
-                      {
-                          name: 'reddit'
-                      },
+            if(side==='left'){
+                utils.dispatchEvent('expandLeft');
+                utils.klass.add(doc.body, 'snapjs-expand-left');
+                utils.klass.remove(doc.body, 'snapjs-expand-right');
+            } else {
+                utils.dispatchEvent('expandRight');
+                utils.klass.add(doc.body, 'snapjs-expand-right');
+                utils.klass.remove(doc.body, 'snapjs-expand-left');
+                to *= -1;
+            }
+            action.translate.easeTo(to);
+        };
 
-                      {
-                          name: 'email'
-                      }
-                      ]
-                  };
+        this.on = function(evt, fn) {
+            eventList[evt] = fn;
+            return this;
+        };
+        this.off = function(evt) {
+            if (eventList[evt]) {
+                eventList[evt] = false;
+            }
+        };
 
-                  // initialize tpsocial and make it sticky.
-                  $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-                  .then($('#article-social').tp4Sticky({offset: 7}));
+        this.enable = function() {
+            utils.dispatchEvent('enable');
+            action.drag.listen();
+        };
+        this.disable = function() {
+            utils.dispatchEvent('disable');
+            action.drag.stopListening();
+        };
 
-                  // Set up secondary social share buttons
-                  var main_image;
-                  if (isOpenpublishArticle) {
-                      main_image = $('figure.article-main-image').find('img').attr('src');
-                  } else if (isFeatureArticle) {
-                      main_image = $('.field-name-field-article-main-image').find('img').attr('src');
-                  }
-                  var more_services = {
-                      pinterest: {
-                          name: 'pinterest',
-                          media: main_image
-                      },
-                      tumblr_link: {
-                          name: 'tumblr_link'
-                      },
-                      gmail: {
-                          name: 'gmail'
-                      },
-                      hotmail: {
-                          name: 'hotmail'
-                      },
-                      yahoomail: {
-                          name: 'yahoomail'
-                      },
-                      aolmail: {
-                          name: 'aolmail'
-                      },
+        this.settings = function(opts){
+            utils.deepExtend(settings, opts);
+        };
 
-                      //{name: 'myspace'},
-                      //{name: 'delicious'},
-                      linkedin: {
-                          name: 'linkedin'
-                      },
-                      //{name: 'myaol'},
-                      //{name: 'live'},
-                      digg: {
-                          name: 'digg'
-                      },
-                      stumbleupon: {
-                          name: 'stumbleupon'
-                      },
-                  //{name: 'hyves'}
-                  };
-
-                  if ( !main_image ) delete more_services.pinterest;
-
-                  $('#article-more-shares p').tpsocial({
-                      services: more_services
-                  });
-
-                  // set up behavior of "more" social links
-                  // this is untouched code from gerald burns and chunkpart
-                  var social_more_close = function() {
-                      $article_social_more.removeClass('focusin');
-                      $body.unbind('click', social_more_close);
-                  };
-
-                  var $article_social_more = $('#article-social-more')
-                      .bind('focusin', function() {
-                          $article_social_more.addClass('focusin');
-                      })
-                      .bind('focusout', function() {
-                          $article_social_more.removeClass('focusin');
-                      })
-                      .bind('click', function(e) {
-                          if ( !$article_social_more.is('.focusin') ) {
-                              $article_social_more.addClass('focusin');
-                              setTimeout(function() {
-                                  $body.bind('click', social_more_close);
-                              }, 100);
-                          }
-                          e.preventDefault();
-                      })
-                  ;
-              }
-          }
-      },
-
-      /**
-       * Behaviors for Article Nodes
-       */
-      articleBehaviors: {
-          attach: function() {
-              var $body = $('body');
-
-              if ($body.is('.page-node.node-type-openpublish-article')
-                || $body.is('.page-node.node-type-video')) {
-
-                  // make second ad sticky
-                  // (sticky social buttons are done below)
-                  $('.block-boxes-ga_ad-bottom').tp4Sticky();
-
-              }
-          }
-      },
-
-          /**
-       * Social Events tracking
-       */
-      socialEventsTracking: {
-          attach: function() {
-
-              $(window).bind('tp-social-share', function(e, args) {
-                  takepart.analytics.track('tp-social-share', args);
-              });
-
-              $(window).bind('tp-social-click', function(e, args) {
-                  takepart.analytics.track('tp-social-click', args);
-              });
-
-          }
-      },
-
-      /**
-       * Handle TP Infographics
-       */
-      infographics: {
-          attach: function() {
-              $('.tpinfographic').tpInfographic();
-          }
-      }
+        this.state = function() {
+            var state,
+                fromLeft = action.translate.get.matrix(4);
+            if (fromLeft === settings.maxPosition) {
+                state = 'left';
+            } else if (fromLeft === settings.minPosition) {
+                state = 'right';
+            } else {
+                state = 'closed';
+            }
+            return {
+                state: state,
+                info: cache.simpleStates
+            };
+        };
+        init(userOpts);
+    };
+    if ((typeof module !== 'undefined') && module.exports) {
+        module.exports = Snap;
     }
-  }});
-
-    // Omniture position tracking
-    // Parent/ancestor vars to track in reverse order of importance
-  $.tpregions.add({
-      'Header logo' : '.logo',
-      'Header social' : '.follow-us',
-      'Header user menu' : '.user-menu',
-      'Slim Header' : '.slim-nav',
-      'Mega Menu' : '#megamenu',
-      'Footer' : '#footer',
-      'Daily Featured Content': '#block-bean-of-the-day',
-
-      // Gallery Properties
-      'Gallery - author name': '#block-takepart-gallery-support-takepart-gallery-content .author',
-      'Gallery - cover - share icons': '#gallery-cover-social',
-      'Gallery - share icons': '#galllery-content-social',
-      'Gallery - cover slide - enter gallery': '#gallery-cover',
-      'Gallery - gallery description - enter gallery': '#gallery-description .enter-link',
-      'Gallery - next slide >': '#block-takepart-gallery-support-takepart-gallery-content #next-slide',
-      'Gallery - previous slide <': '#block-takepart-gallery-support-takepart-gallery-content #previous-slide',
-      'Gallery - next gallery >': '#block-takepart-gallery-support-takepart-gallery-content #previous-slide',
-      'Gallery - related stories': '#gallery-footer .field-name-field-related-stories',
-
-      'Partner Link': '#block-bean-on-our-radar-block',
-      'Embedded Content' : '#article-content aside.inline-content',
-      'Article - Related Stories' : '#article-footer .field-name-field-related-stories',
-      'Series Navigation' : '#series-navigation',
-      'Keyword Link' : '.topic-links',
-      'Author Full Bio Link' : '.author-bio',
-      'Taboola - TPs Most Popular' : '#taboola-bottom-main-column-mix',
-      'Taboola - From the Web' : '#taboola-below-main-column',
-      'Topic Box' : '.topic-box',
-      'TakePart Features': '.node-feature-article .title-block',
-      'Home - featured columns' : '#block-views-homepage-columns-block',
-      'Home - featured actions' : '#block-views-takeaction-homepage-block',
-      'Home - latest headlines' : 'body.page-tp4-homepage #block-views-latest-headlines-block',
-      'Home - lead story action' : 'body.page-tp4-homepage .field-name-field-tab-action-override',
-      'Home - lead story' : 'body.page-tp4-homepage .panel-main-featured',
-      'Home - right rail galleries' : 'body.page-tp4-homepage #block-views-photo-galleries-promo-block',
-      'Home - graveyard' : '#block-tp4-support-tp4-graveyard',
-      'Home - stories under lead' : 'body.page-tp4-homepage .panel-secondary-featured',
-      'Home - top horizontal promo' : '#block-tp4-support-tp4-dont-miss'
-  });
-
-})(jQuery, Drupal, this, this.document);
+    if (typeof ender === 'undefined') {
+        this.Snap = Snap;
+    }
+    if ((typeof define === "function") && define.amd) {
+        define("snap", [], function() {
+            return Snap;
+        });
+    }
+}).call(this, window, document);

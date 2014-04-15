@@ -11052,6 +11052,10 @@ header .search .form-submit {
 .snap-drawers#tp-drawers {
   top: 5px;
 }
+/* line 28, ../sass/modules/_left_drawer.scss */
+.snap-drawers#campaign-drawers .snap-drawer {
+  right: 0;
+}
 /* line 32, ../sass/modules/_left_drawer.scss */
 .snap-drawers .snap-drawer {
   background: #000;

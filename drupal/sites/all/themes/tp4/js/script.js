@@ -9,106 +9,110 @@
       * Megamenu Behaviors
       */
       megaMenuBehaviors: {
-            attach: function(context, settings) {
-                //prevent parent links on megamenu from linking on touch (link on double touch)
-                $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
+        attach: function(context, settings) {
+          //prevent parent links on megamenu from linking on touch (link on double touch)
+          $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
 
-                //Toggle search on mobile
-                $('html').click(function() {
-                    $('.search-toggle').parent().removeClass('active');
-                });
+          //Toggle search on mobile
+          $('html').click(function() {
+            $('.search-toggle').parent().removeClass('active');
+          });
 
-                $('.search-toggle').parent().click(function(event){
-                    event.stopPropagation();
-                    $(this).addClass('active');
-                });
+          $('.search-toggle').parent().click(function(event){
+            event.stopPropagation();
+            $(this).addClass('active');
+          });
 
-                function makeTall(){$(this).find('.mega-content').fadeIn(100);}
-                function makeShort(){$(this).find('.mega-content').fadeOut(100);}
+          function makeTall(){$(this).find('.mega-content').fadeIn(100);}
+          function makeShort(){$(this).find('.mega-content').fadeOut(100);}
 
-                $("#megamenu").hoverIntent({
-                    over: makeTall,
-                    out: makeShort,
-                    selector: 'li.mega-item'
-                });
-            }
+          $("#megamenu").hoverIntent({
+            over: makeTall,
+            out: makeShort,
+            selector: 'li.mega-item'
+          });
+        }
       },
       /**
         Settings for the snap.js library
       */
       snapperSettings: {
-          attach: function(context, settings) {
-          	
-              var snapper = new Snap({
-                  element: document.getElementById('page-wrap')
-              });
+        attach: function(context, settings) {
+          var snapper = new Snap({
+              element: document.getElementById('page-wrap')
+          });
 
-              snapper.settings({
-                  dragger: null,
-                  disable: 'none',
-                  addBodyClasses: true,
-                  hyperextensible: true,
-                  resistance: 0.5,
-                  flickThreshold: 50,
-                  transitionSpeed: 0.3,
-                  easing: 'ease',
-                  maxPosition: 280,
-                  minPosition: 0,
-                  tapToClose: true,
-                  touchToDrag: false,
-                  clickToDrag: false,
-                  slideIntent: 40,
-                  minDragDistance: 5
-              });
-
-              $('.menu-toggle').on('click', function(){
-                  if( snapper.state().state == "left" )
-                      snapper.close();
-                  else
-                      snapper.open('left');
-              });
-          }
+          snapper.settings({
+            dragger: null,
+            disable: 'none',
+            addBodyClasses: true,
+            hyperextensible: true,
+            resistance: 0.5,
+            flickThreshold: 50,
+            transitionSpeed: 0.3,
+            easing: 'ease',
+            maxPosition: 280,
+            minPosition: 0,
+            tapToClose: true,
+            touchToDrag: false,
+            clickToDrag: false,
+            slideIntent: 40,
+            minDragDistance: 5
+          });
+          $('.menu-toggle').on('click', function(e){
+            e.preventDefault();
+            if( snapper.state().state == "left" ) {
+              $('.snap-drawers').hide();
+              snapper.close();
+            }
+            else {
+              $('#campaign-drawers').hide();
+              $('#tp-drawers').show();
+              snapper.open('left');
+            }
+          });
+        }
       },
 
       // Campaign Page 
       campaignsnapperSettings: {
-          attach: function(context, settings) {
-          	Drupal.behaviors.snapperDomElement = document.getElementById('page-wrap');
-              Drupal.behaviors.campaignsnapper = new Snap({
-                  element: Drupal.behaviors.snapperDomElement
-              });
+        attach: function(context, settings) {
+        	Drupal.behaviors.snapperDomElement = document.getElementById('page-wrap');
+          Drupal.behaviors.campaignsnapper = new Snap({
+            element: Drupal.behaviors.snapperDomElement
+          });
 
-              Drupal.behaviors.campaignsnapper.settings({
-                  dragger: null,
-                  disable: 'none',
-                  addBodyClasses: true,
-                  hyperextensible: true,
-                  resistance: 0.5,
-                  flickThreshold: 50,
-                  transitionSpeed: 0.3,
-                  easing: 'ease',
-                  maxPosition: 280,
-                  minPosition: 0,
-                  tapToClose: true,
-                  touchToDrag: false,
-                  clickToDrag: false,
-                  slideIntent: 40,
-                  minDragDistance: 5
-              });
+          Drupal.behaviors.campaignsnapper.settings({
+            dragger: null,
+            disable: 'none',
+            addBodyClasses: true,
+            hyperextensible: false,
+            resistance: 0.5,
+            flickThreshold: 50,
+            transitionSpeed: 0.3,
+            easing: 'ease',
+            maxPosition: -280,
+            minPosition: 50,
+            tapToClose: true,
+            touchToDrag: false,
+            clickToDrag: false,
+            slideIntent: 40,
+            minDragDistance: 5
+          });
 
 
-              var db = Drupal.behaviors,
-                       campaignHeaderTop = $('#block-tp-campaigns-tp-campaigns-hero').offset().top;
+          var db = Drupal.behaviors,
+              campaignHeaderTop = $('#block-tp-campaigns-tp-campaigns-hero').offset().top;
 
-              $('#campaign-drawers .snap-drawer').css({ top: campaignHeaderTop + 'px' });
-              $('.snap-drawer a').click( db.closeCampaignsSidebar );
-              $('.campaign-menu-toggle').on('click', db.toggleCampaignSidebar );
-              $('#campaign-drawers a[href*=#]').on('click', db.captureInboundClicks );
-              db.campaignsnapper.on('animated', db.scrollToAnchor );
-              db.campaignsnapper.on('drag', db.preventHorizontalScrolling );
+          $('#campaign-drawers .snap-drawer').css({ top: campaignHeaderTop + 'px' });
+          $('.snap-drawer a').click( db.closeCampaignsSidebar );
+          $('.campaign-menu-toggle').on('click', db.toggleCampaignSidebar );
+          $('#campaign-drawers a[href*=#]').on('click', db.captureInboundClicks );
+          db.campaignsnapper.on('animated', db.scrollToAnchor );
+          db.campaignsnapper.on('drag', db.preventHorizontalScrolling );
 
-              setTimeout( db.offsetAnchorsForStickyHeader, 250 );
-          }
+          setTimeout( db.offsetAnchorsForStickyHeader, 250 );
+        }
       },
 
       offsetAnchorsForStickyHeader: function() {
@@ -126,12 +130,18 @@
         Drupal.behaviors.campaignsnapper.close();
       },
 
-      toggleCampaignSidebar: function() {
-        var db = Drupal.behaviors; 
-        if ( db.campaignsnapper.state().state == "left" ) 
-          db.closeCampaignsSidebar();
-        else  
+      toggleCampaignSidebar: function(e) {
+        e.preventDefault();
+        var db = Drupal.behaviors;
+        if ( db.campaignsnapper.state().state == "closed" ) {
+          $('#tp-drawers').hide();
+          $('#campaign-drawers').show();
           db.campaignsnapper.open('left');
+        }
+        else  {
+          db.closeCampaignsSidebar();
+          $('.snap-drawers').hide();
+        }
       },
 
       captureInboundClicks: function(e) {
