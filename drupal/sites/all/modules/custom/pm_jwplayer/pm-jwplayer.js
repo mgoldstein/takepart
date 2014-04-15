@@ -5,6 +5,9 @@
       $('.pm-jwplayer').once('initialized', function(index, element) {
         var element_id = $(element).attr('id');
         var settings = Drupal.settings.pm_jwplayer.configurations[element_id];
+        if (!window.s || !window.s.Media) {
+          delete settings['sitecatalyst'];
+        }
         var attribute = $(element).attr('data-allowed-regions');
         var regions = attribute ? attribute.split(',') : [];
         if (regions.length > 0) {
