@@ -143,7 +143,9 @@
 
       campaignPageSocialShare: {
         attach: function() {
-          if (!$('body').is('.node-type-campaign-page')) {
+          var $body = $('body');
+
+          if (!$body.is('.node-type-campaign-page')) {
             return;
           }
 
@@ -196,15 +198,25 @@
 
           $moreShares = $('#campaign-page-social-more');
 
+          var moreSharesClose = function() {
+            $moreShares.removeClass('focus');
+            $body.off('click.campaignSocial');
+          };
+
           $moreShares
             .on('click', '.trigger a', function(e) {
               e.preventDefault();
-              $moreShares.toggleClass('focus');
+              if (!$moreShares.is('.focus')) {
+                $moreShares.addClass('focus');
+                setTimeout(function() {
+                  $body.on('click.campaignSocial', moreSharesClose);
+                }, 100);
+              }
             })
-            .on('focus', '.trigger a', function() {
+            .on('focusin', function() {
               $moreShares.addClass('focus');
             })
-            .on('focusout', '.trigger a', function() {
+            .on('focusout', function() {
               $moreShares.removeClass('focus');
             })
           ;

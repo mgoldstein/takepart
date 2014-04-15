@@ -4,7 +4,10 @@
  * Implements hook_custom_theme().
  */
 function newsletter_campaign_custom_theme() {
-  if (isset($_POST['form_id']) && $_POST['form_id'] == 'newsletter_campaign_social_form') {
+  if (isset($_POST['form_id']) && in_array($_POST['form_id'], array(
+    'newsletter_campaign_social_form',
+    'newsletter_campaign_signup_form',
+  ))) {
     return $_POST['ajax_page_state']['theme'];
   }
   return NULL;

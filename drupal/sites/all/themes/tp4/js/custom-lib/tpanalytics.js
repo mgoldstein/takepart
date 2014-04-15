@@ -6,6 +6,10 @@ var takepart = takepart || {};
 //Analytics functions:
 takepart.analytics = takepart.analytics || {};
 
+//Analytics DTM direct call parameter:
+takepart.analytics.parameters = takepart.analytics.parameters || {};
+
+
 // c = prop
 // v = evar
 
