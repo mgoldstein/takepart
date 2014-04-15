@@ -68,7 +68,7 @@
     <div class="mobile-arrow arrow-left"></div>
       <?php for($i = 0; $i < count($items); $i++) : ?>
         <a<?php print drupal_attributes(array(
-            'href' => '#',
+            'href' => 'javascript:void(0);',
             'data-slide' => $i,
             'data-for-tray' => $variables['entity']->title,
           ));
