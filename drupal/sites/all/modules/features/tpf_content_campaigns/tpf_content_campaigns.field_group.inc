@@ -77,7 +77,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = 'group_card_background';
   $field_group->data = array(
     'label' => 'Background Image',
-    'weight' => '6',
+    'weight' => '18',
     'children' => array(
       0 => 'field_campaign_bgw_image',
       1 => 'field_campaign_background',
@@ -420,7 +420,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '7',
+    'weight' => '9',
     'children' => array(
       0 => 'field_campaign_bgw',
       1 => 'field_campaign_bg_color',

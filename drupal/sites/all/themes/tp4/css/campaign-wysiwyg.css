@@ -3985,7 +3985,7 @@ p:first-child {
 }
 
 /* line 118, ../sass/modules/_wysiwyg.scss */
-#main ul:not(.tabs) li {
+ul:not(.tabs) li {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
   font-size: 16px;
@@ -3995,7 +3995,7 @@ p:first-child {
   list-style-type: none;
 }
 /* line 126, ../sass/modules/_wysiwyg.scss */
-#main ul:not(.tabs) li:before {
+ul:not(.tabs) li:before {
   content: '';
   height: 6px;
   width: 6px;
@@ -4006,13 +4006,13 @@ p:first-child {
 }
 
 /* line 137, ../sass/modules/_wysiwyg.scss */
-#main ol {
+ol {
   counter-reset: li;
   margin-left: 0;
   padding-left: 0;
 }
 /* line 141, ../sass/modules/_wysiwyg.scss */
-#main ol > li {
+ol > li {
   position: relative;
   list-style: none;
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
@@ -4024,7 +4024,7 @@ p:first-child {
   padding-bottom: 10px;
 }
 /* line 151, ../sass/modules/_wysiwyg.scss */
-#main ol > li:before {
+ol > li:before {
   content: counter(li);
   counter-increment: li;
   position: absolute;

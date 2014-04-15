@@ -141,6 +141,7 @@ features[field_instance][] = node-campaign_card_iframe-field_campaign_bgw_image
 features[field_instance][] = node-campaign_card_iframe-field_campaign_card_title
 features[field_instance][] = node-campaign_card_iframe-field_campaign_iframe
 features[field_instance][] = node-campaign_card_iframe-field_campaign_iframe_height
+features[field_instance][] = node-campaign_card_iframe-field_campaign_iframe_type
 features[field_instance][] = node-campaign_card_iframe-field_campaign_iframe_width
 features[field_instance][] = node-campaign_card_iframe-field_campaign_instructional
 features[field_instance][] = node-campaign_card_iframe-field_campaign_min_height
