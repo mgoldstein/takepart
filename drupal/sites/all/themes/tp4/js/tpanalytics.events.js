@@ -317,7 +317,7 @@
             var $body = $('body');
             if ($body.is('.node-type-campaign-page')) {
                 takepart.analytics.parameters.newsletter_name = options.name;
-                takepart.analytics.parameters.newsletter_signup_method = 'Campaign Social Card';
+                takepart.analytics.parameters.newsletter_signup_method = 'Campaign Email Signup + Social Card';
                 _satellite.track('newsletter_signup');
             }
             else {
