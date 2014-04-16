@@ -38,48 +38,53 @@
       */
       snapperSettings: {
         attach: function(context, settings) {
-          var snapper = new Snap({
-              element: document.getElementById('page-wrap')
+          Drupal.behaviors.snapper = new Snap({
+            element: document.getElementById('page-wrap')
           });
 
-          snapper.settings({
+          Drupal.behaviors.snapper.settings({
             dragger: null,
             disable: 'none',
             addBodyClasses: true,
-            hyperextensible: true,
+            hyperextensible: false,
             resistance: 0.5,
             flickThreshold: 50,
             transitionSpeed: 0.3,
             easing: 'ease',
             maxPosition: 280,
-            minPosition: 0,
+            minPosition: -1,
             tapToClose: true,
             touchToDrag: false,
             clickToDrag: false,
             slideIntent: 40,
             minDragDistance: 5
           });
+
+          Drupal.behaviors.snapper.on('animated', Drupal.behaviors.closeTpSidebar);
+
           $('.menu-toggle').on('click', function(e){
             e.preventDefault();
-            if( snapper.state().state == "left" ) {
-              $('.snap-drawers').hide();
-              snapper.close();
-            }
-            else {
+            if ( Drupal.behaviors.snapper.state().state == "closed" ) {
               $('#campaign-drawers').hide();
               $('#tp-drawers').show();
-              snapper.open('left');
+              Drupal.behaviors.snapper.open('left');
             }
           });
+        }
+      },
+
+      closeTpSidebar: function() {
+        if ( Drupal.behaviors.snapper.state().state == "closed" ) {
+          Drupal.behaviors.snapper.close();
+          jQuery('.snap-drawers').hide();
         }
       },
 
       // Campaign Page 
       campaignsnapperSettings: {
         attach: function(context, settings) {
-        	Drupal.behaviors.snapperDomElement = document.getElementById('page-wrap');
           Drupal.behaviors.campaignsnapper = new Snap({
-            element: Drupal.behaviors.snapperDomElement
+            element: document.getElementById('page-wrap')
           });
 
           Drupal.behaviors.campaignsnapper.settings({
@@ -126,22 +131,22 @@
       preventHorizontalScrolling: function() {
       },
 
-      closeCampaignsSidebar: function() {
-        Drupal.behaviors.campaignsnapper.close();
-      },
-
       toggleCampaignSidebar: function(e) {
         e.preventDefault();
         var db = Drupal.behaviors;
         if ( db.campaignsnapper.state().state == "closed" ) {
           $('#tp-drawers').hide();
           $('#campaign-drawers').show();
-          db.campaignsnapper.open('left');
+          db.campaignsnapper.open('right');
         }
         else  {
-          db.closeCampaignsSidebar();
-          $('.snap-drawers').hide();
+          dp.closeCampaignsSidebar();
         }
+      },
+
+      closeCampaignsSidebar: function() {
+        Drupal.behaviors.campaignsnapper.close();
+        $('.snap-drawers').hide();
       },
 
       captureInboundClicks: function(e) {
