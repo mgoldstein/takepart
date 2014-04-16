@@ -258,14 +258,20 @@ body.node-type-campaign-page, #main.card-page{
   /*
    * Global Elements
    */
-   h1{
-    font-family: $secondary-sans-font;
-    font-weight: 100;
+   h1 {
+    font: 100 36px/38px $secondary-sans-font;
     text-transform: uppercase;
-    font-size: 36px;
-    line-height: 38px;
     color: #000;
   }
+
+  .campaign-sidebar-header {
+    font: 100 24px/150% $secondary-sans-font;
+    text-transform: uppercase;
+    color: white;
+    padding: 10px;
+    margin-bottom: 0;
+  }
+
   .card-inner{ 
     @import "modules/wysiwyg";
   }

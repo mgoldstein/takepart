@@ -106,10 +106,8 @@
           });
 
 
-          var db = Drupal.behaviors,
-              campaignHeaderTop = $('#block-tp-campaigns-tp-campaigns-hero').offset().top;
+          var db = Drupal.behaviors;
 
-          $('#campaign-drawers .snap-drawer').css({ top: campaignHeaderTop + 'px' });
           $('.snap-drawer a').click( db.closeCampaignsSidebar );
           $('.campaign-menu-toggle').on('click', db.toggleCampaignSidebar );
           $('#campaign-drawers a[href*=#]').on('click', db.captureInboundClicks );
