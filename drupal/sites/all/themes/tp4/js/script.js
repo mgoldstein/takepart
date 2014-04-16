@@ -69,6 +69,10 @@
               $('#tp-drawers').show();
               Drupal.behaviors.snapper.open('left');
             }
+            else {
+              Drupal.behaviors.snapper.close();
+              jQuery('.snap-drawers').hide();
+            }
           });
         }
       },
