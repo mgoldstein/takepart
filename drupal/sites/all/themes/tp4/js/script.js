@@ -114,13 +114,13 @@
           db.campaignsnapper.on('animated', db.scrollToAnchor );
           db.campaignsnapper.on('drag', db.preventHorizontalScrolling );
 
-          setTimeout( db.offsetAnchorsForStickyHeader, 250 );
+          setTimeout( db.offsetAnchorsForStickyHeader, 1000 );
         }
       },
 
       offsetAnchorsForStickyHeader: function() {
         var $header       = $('.header-wrapper'),
-            headerHeight  = $header.height() + 30;
+            headerHeight  = $header.height() - 30;
 
         if (  $(window).width() > 768 )
           $('a.card-anchor').css({ top: -headerHeight + 'px' });
