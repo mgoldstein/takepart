@@ -297,6 +297,7 @@ function tp4_preprocess_page(&$variables) {
 
   //stuff for the campaign page
   if($variables['node']->type == 'campaign_page'){
+
     $campaign_ref = $variables['node']->field_campaign_reference['und'][0]['target_id'];
     $campaign_ref = node_load($campaign_ref);
     $campaign_menu = 'menu-'. $campaign_ref->field_campaign_menu['und'][0]['value'];
@@ -314,6 +315,14 @@ function tp4_preprocess_page(&$variables) {
         $anchor_tags[] = $item['#localized_options']['attributes']['rel'];
       }
     }
+
+    if(isset($campaign_ref->field_promo_headline['und'][0]['value']) == true){
+      $variables['promo_title'] = $campaign_ref->field_promo_headline['und'][0]['value'];
+    }else{
+      $variables['promo_title'] = '';
+    }
+
+
     $variables['anchor_tags'] = $anchor_tags;
   }
 

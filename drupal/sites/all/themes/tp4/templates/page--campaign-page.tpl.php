@@ -27,6 +27,7 @@
 <div class="snap-drawers-campaign scrollable">
   <div class="snap-drawer-campaign snap-drawer-left">
   	<div id="block-menu-menu-campaign" class="block block-menu first last odd" role="navigation">
+      <?php print $variables['promo_title']; ?>
       <?php print render($variables['campaign_menu']); ?>
     </div>
   </div>
