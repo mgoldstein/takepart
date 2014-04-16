@@ -122,8 +122,8 @@
         $parent_menu_classes      = array('parent-item');
         $parent_link_classes      = array();
         if (!is_null($anchor)) {
-          // $parent_menu_classes[]  = 'anchored';
-          $parent_link_classes[]  = 'anchored';
+          $parent_menu_classes[]  = 'anchored';
+          $parent_link_classes[]  = 'anchored-child';
         }
 
         $parent_menu_attrs = drupal_attributes(array(
