@@ -742,6 +742,31 @@ body.node-type-campaign-page, #main.card-page{
     overflow: hidden;
   }
 
+  .card.iframe-fixed{
+    .center-column{
+      @include breakpoint($breakpoint-mobile) {
+        @include zen-grid-item(12, 1);
+        @include zen-clear();
+        height: 100%;
+        img{
+          margin: 0 auto;
+        }
+        .description{
+          text-align: center;
+        }
+        .caption{
+          text-align: center;
+        }
+      }
+      @include breakpoint($breakpoint-tablet) {
+        @include zen-grid-item(10, 2);
+      }
+    }
+  }
+
+
+
+
   //Branding
   .card.node-campaign-card-branding {
     padding: 0;

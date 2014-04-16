@@ -990,6 +990,7 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
       $center .= '</div>';
     }
     else{
+      $variables['classes_array'][] = 'iframe-fixed';
       $center .= '<div class="iframe-wrapper-fixed">';
       $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" height="'. $height. '" width="'. $width. '"></iframe>';
       $center .= '</div>';
