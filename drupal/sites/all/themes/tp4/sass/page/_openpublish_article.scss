@@ -405,6 +405,7 @@
     font-family: $primary-sans-font;
     font-weight: 100;
     line-height: 1.5;
+    position: relative;
 
     // base link styles
     a { color: $mint; text-decoration: none; }

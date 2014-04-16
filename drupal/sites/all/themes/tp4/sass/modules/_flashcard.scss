@@ -3,9 +3,11 @@ a.flashcard {
   white-space: nowrap;
   border-bottom: 2px dotted $mint;
 
+  &.hover,
   &:hover,
   &:active {
-    color: $mint !important;
+    color: black !important;
+    border-bottom-color: black;
     text-decoration: none !important;
   }
 }
