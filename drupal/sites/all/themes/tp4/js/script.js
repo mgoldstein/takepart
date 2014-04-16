@@ -140,7 +140,7 @@
           db.campaignsnapper.open('right');
         }
         else  {
-          dp.closeCampaignsSidebar();
+          db.closeCampaignsSidebar();
         }
       },
 
