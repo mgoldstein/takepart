@@ -43,7 +43,7 @@
 .sf-navbar li:hover,
 .sf-navbar li.sfHover,
 .sf-navbar ul li.current {
-	background: #BDD2FF;
+	/*background: #BDD2FF;*/
 }
 .sf-navbar ul li:hover,
 .sf-navbar ul li.sfHover,
