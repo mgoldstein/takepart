@@ -159,7 +159,7 @@ function _takepart_facebookapis_auth($action) {
 */
 function takepart_facebookapis_rdf_namespaces() {
   return array(
-    'fb' => '//ogp.me/ns/fb#',
+    'fb' => 'http://ogp.me/ns/fb#',
   );
 }
 

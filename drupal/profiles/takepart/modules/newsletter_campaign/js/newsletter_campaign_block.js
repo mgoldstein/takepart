@@ -3,30 +3,18 @@
     // Newsletter signup event
     $(".takepart-newsletter-wrapper > .takepart-newsletter-message").bind(
       'newsletter_signup', function(e, title) {
-        s.linkTrackVars = "eVar22,eVar23,eVar30,events";
-        s.linkTrackEvents = "event39";
-        s.eVar22 = "Sidebar Sign-up Block";
-        s.eVar23 = title;
-        s.eVar30 = s.pageName;
-        s.events = 'event39';
-        s.tl(true, 'o', 'Newsletter Signup');
-        s.linkTrackVars = null;
-        s.linkTrackEvents = null;
-        s.events = null;
+        takepart.analytics.track('newsletter_signup', {
+          name: title,
+          source: 'Sidebar Sign-up Block'
+        });
       }
     );
     $("body").bind(
       'newsletter_social_signup', function(e, title) {
-        s.linkTrackVars = "eVar22,eVar23,eVar30,events";
-        s.linkTrackEvents = "event39";
-        s.eVar22 = "Sidebar Sign-up Block w/Social Shares";
-        s.eVar23 = title;
-        s.eVar30 = s.pageName;
-        s.events = 'event39';
-        s.tl(true, 'o', 'Newsletter Signup');
-        s.linkTrackVars = null;
-        s.linkTrackEvents = null;
-        s.events = null;
+        takepart.analytics.track('newsletter_signup', {
+          name: title,
+          source: 'Sidebar Sign-up Block w/Social Shares'
+        });
       }
     );
     $(".takepart-newsletter-wrapper").each(function() {

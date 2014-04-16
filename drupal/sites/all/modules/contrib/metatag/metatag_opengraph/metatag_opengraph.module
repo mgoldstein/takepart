@@ -7,7 +7,7 @@ function metatag_opengraph_preprocess_html(&$variables) {
   // The RDF module adds the Open Graph namespace itself.
   // @see rdf_rdf_namespaces()
   if (!module_exists('rdf')) {
-    $variables['rdf_namespaces'] .= "\n  xmlns:og=\"//ogp.me/ns#\"";
+    $variables['rdf_namespaces'] .= "\n  xmlns:og=\"http://ogp.me/ns#\"";
   }
 }
 

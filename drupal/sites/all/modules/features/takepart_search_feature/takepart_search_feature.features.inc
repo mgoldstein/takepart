@@ -101,8 +101,9 @@ function takepart_search_feature_default_search_api_index() {
             "default" : "0",
             "bundles" : {
               "openpublish_article" : "openpublish_article",
-              "takepart_campaign" : "takepart_campaign",
+              "campaign" : "campaign",
               "feature_article" : "feature_article",
+              "takepart_campaign" : "takepart_campaign",
               "takepart_page" : "takepart_page",
               "openpublish_photo_gallery" : "openpublish_photo_gallery",
               "video" : "video"

@@ -1,0 +1,1304 @@
+/*
+ * Campaign Specific Styles
+ * This is not a partial and is not apart of style.css.  It is only called on campaign pages.
+ * Ordering: Layouts, Elements, Pages, Widgets
+ */
+
+ /*
+  * Giant List of TODOs:
+  * 1) Move this to it's own stylsheet so it doesn't affect the rest of the site.
+  * 2) Change zen-gutter width to what it should be.
+  */
+
+
+/*
+ * Layouts
+ */
+body.node-type-campaign-page,
+body.node-type-campaign-card-media,
+body.node-type-campaign-card-news,
+body.node-type-campaign-card-iframe,
+body.node-type-campaign-card-social,
+body.node-type-campaign-card-text,
+body.node-type-campaign-card-branding,
+body.node-type-campaign-card-empty,
+{
+  $zen-column-count:  12;
+  $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
+
+
+  //make header full width for menu/branding
+  .header-wrapper{
+  padding: 0;
+  padding-top: 1em !important;
+  }
+  header#header{
+    max-width: 100%;
+    #block-tp4-support-tp4-slim-nav.block{
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .header-inner{
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+    #div-gpt-ad-1394222082576-0 {
+      margin: 0 auto;
+    }
+  }
+
+  .campaign-content-meta {
+    text-align: center;
+  }
+
+  .card{
+    @include zen-grid-item(12, 1);
+    @include zen-clear();
+    padding: 0;
+    //Two column layout: equal width
+    &.campaign-2col{
+      .instructional{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-bottom: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(8, 3);
+        }
+      }
+      .left-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-left: 10px;
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(5, 2);
+        }
+      }
+      .right-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-right: 10px;
+          padding-top: 20px;
+          padding-left: 10px;
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(5, 7);
+          padding-top: 0;
+          @include zen-clear(none);
+        }
+      }
+    }
+    &.campaign-2col.left-large{
+      .instructional{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-bottom: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(8, 3);
+        }
+      }
+      .left-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-left: 10px;
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(6, 2);
+        }
+      }
+      .right-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-top: 20px;
+          padding-left: 10px;
+          padding-right: 10px;
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(4, 8);
+          padding-top: 0;
+          @include zen-clear(none);
+        }
+      }
+    }
+    &.campaign-2col.right-large{
+      .instructional{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-bottom: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
+          text-align: center;
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(8, 3);
+        }
+      }
+      .left-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-left: 10px;
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(4, 2);
+        }
+      }
+      .right-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-right: 10px;
+          padding-left: 10px;
+          padding-top: 20px;
+          @include zen-clear();
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(6, 6);
+          padding-top: 0;
+          @include zen-clear(none);
+        }
+      }
+    }
+    &.campaign-1col{
+      .instructional{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          padding-bottom: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        @include breakpoint($breakpoint-tablet) {
+          @include zen-grid-item(8, 3);
+        }
+      }
+      .center-column{
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(12, 1);
+          @include zen-clear();
+          height: 100%;
+          img{
+            margin: 0 auto;
+          }
+          .description{
+            text-align: center;
+          }
+          .caption{
+            text-align: center;
+          }
+        }
+        @include breakpoint($breakpoint-mobile) {
+          @include zen-grid-item(10, 2);
+        }
+      }
+    }
+    // Add more layouts here
+  }
+}
+body.node-type-campaign-page .card.node-campaign-card-news,
+body.node-type-campaign-card-news .card.campaign-1col{
+  &.campaign-1col:not(.multi-news){
+    .center-column{
+      @include breakpoint($breakpoint-mobile) {
+        @include zen-grid-item(12, 1);
+        padding-left: 10px;
+        padding-right: 10px;
+        @include zen-clear();
+        img{
+          margin: 0 auto;
+        }
+        .description{
+          text-align: center;
+        }
+        .caption{
+          text-align: center;
+        }
+      }
+      @include breakpoint($breakpoint-tablet) {
+        @include zen-grid-item(6, 4);
+      }
+    }
+  }
+}
+
+#main.card-page{
+  width: 100%;
+  max-width: 100%;
+}
+body.node-type-campaign-page, #main.card-page{
+
+  #block-boxes-ga-campaign-header {
+    display: none;
+    @media (min-width: 728px) {
+      display: block;
+    }
+  }
+
+  .tabs-primary {
+    max-width: 1000px;
+    margin: 1.5em auto;
+  }  
+
+  .card{
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 60px;
+  }
+
+
+  /*
+   * Global Elements
+   */
+   h1 {
+    font: 100 36px/38px $secondary-sans-font;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .campaign-sidebar-header {
+    font: 100 24px/150% $secondary-sans-font;
+    text-transform: uppercase;
+    color: white;
+    padding: 10px;
+    margin-bottom: 0;
+  }
+
+  .card-inner{ 
+    @import "modules/wysiwyg";
+  }
+  a.card-anchor {
+    display: block;
+    position: absolute;
+    top: 0px;
+    visibility: hidden;
+  }
+  .card-inner a{
+    color: $mint;
+  }
+  .takepart-take-action-widget{
+    margin: 0 auto;
+  }
+  #block-tp-campaigns-tp-campaigns-hero{
+    width: 100%;
+    margin-bottom: 0;
+    .branding-header{
+      background-position: top center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+    .menu-wrapper{
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      z-index: 99;
+      cursor: default;
+    }
+    .menu{
+      display: block;
+      height: auto;
+      // width is inline
+      margin: 0 auto;
+      background-position: top center;
+      background-repeat: no-repeat;
+      .sf-arrows .sf-with-ul{
+        padding-right: 1em;
+      }
+      ul.sf-menu{
+        clear:left;
+        float:left;
+        list-style:none;
+        margin:0;
+        padding:0;
+        position:relative;
+        left:50%;
+        text-align:center;
+        background: transparent;
+        a{
+          color: #000;
+          font-family: $primary-sans-font;
+          font-weight: bold;
+          font-size: 14px;
+        }
+        ul {
+          @include box-shadow(0 0 4px rgba(0,0,0,0.5));
+        }
+        > li{
+          display: block;
+          float: left;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          position: relative;
+          right: 50%;
+          > a{
+            text-transform: uppercase;
+          }
+          &:hover > a{
+            color: #fff;
+            text-decoration: none;
+            background-color: #000;
+          }
+          li{
+            text-align: left;
+          }
+          li{
+            right: 0%;
+            a{
+              font-weight: 100;
+              font-size: 14px;
+              line-height: 18px;
+            }
+            &:hover a{
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      &.sf-navbar{
+        margin-bottom: 0;
+      }
+      li.parent-item.active {
+        a{
+          color: $mint;
+        }
+        li a{
+          text-align: left;
+          color: #000;
+        }
+      }
+      a.active{
+        color: #000;
+      }
+    }
+
+    .social {
+      position: absolute;
+      right: 10px;
+      top: 15px;
+      z-index: 100;
+
+      .tp-social-headline,
+      .tp-social,
+      #campaign-page-social-more {
+        float: left;
+        display: inline-block;
+        vertical-align: middle;
+        height: 30px;
+        margin-left: 8px;
+      }
+
+      .tp-social-headline {
+        font: normal 14px/1 $secondary-sans-font;
+        height: 14px;
+        color: $dark-gray;
+        text-transform: uppercase;
+        margin: 4px 0 0 0;
+      }
+
+      .tp-social-link,
+      .trigger a {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        line-height: 37px;
+        overflow: hidden;
+        text-indent: 30px;
+        margin-left: 8px;
+        &:first-of-type {
+          margin-left: 0;
+        }
+      }
+
+
+      #campaign-page-social-more {
+        width: 24px; // contain 8px margin
+        height: 24px;
+        margin-left: 8px;
+        overflow: hidden;
+        position: relative;
+        float: right;
+        h4.trigger {
+          margin: 0;
+        }
+        &.focus {
+          overflow: visible;
+          #campaign-page-more-shares {
+            top: 100%;
+          }
+        }
+      }
+
+
+      #campaign-page-more-shares {
+        position: absolute;
+        right: 0;
+        top: -75px; // accounts for margin, padding, and shadow
+        width: 120px;
+        p {
+          background-color: white;
+          height: 24px;
+          margin: 16px 0 0 0;
+          padding: 16px;
+          position: relative;
+          z-index: 10;
+          @include box-shadow(0 0 4px rgba(0,0,0,.5));
+          &:before,
+          &:after {
+            content: ' ';
+            display: block;
+            height: 0;
+            width: 0;
+            position: absolute;
+            bottom: 100%;
+            border: 8px solid transparent;
+          }
+          &:after {
+            right: 4px;
+            border-bottom-color: white;
+            border-bottom-width: 14px;
+          }
+          &:before {
+            right: 2px;
+            border-width: 10px;
+            border-bottom-width: 16px;
+            border-bottom-color: rgba(0,0,0,.15);
+          }
+        }
+      }
+
+    }
+  }
+  h1.card-title{
+    text-align: center;
+    margin-bottom: 30px;
+    &.has-instructional{
+      margin-bottom: 5px;
+    }
+  }
+  #main-wrap {
+    position: relative;
+  }
+  #main{
+    overflow: hidden;
+    max-width: 100%;
+    -webkit-transition: -webkit-transform .5s ease;
+    -moz-transition: -moz-transform .5s ease;
+    transition: transform .5s ease;
+    #primary{
+      padding: 0;
+    }
+  }
+  .tray-header{
+    position: absolute;
+    top: 0;
+    padding-top: 50px;
+    width: 100%;
+  }
+  .card-wrapper.has-tray-title{
+    h1.card-title{
+      display: none;
+    }
+  }
+  .card-wrapper{
+    height: auto;
+  }
+  .slider.has-tray-background{
+    .card{
+      background-image: none !important;
+      background-color: transparent !important;
+    }
+  }
+
+  header #block-tp4-support-tp4-slim-nav.block{
+    margin-bottom: 0;
+  }
+  &.panels-ipe{
+    margin-bottom: 0 !important; //panelizer gets confused when embedding a node
+  }
+  #primary{
+    padding: 0;
+  }
+  .field-name-field-campaign-media-video{
+    figure > div > object {
+      left: 0;
+    }
+  }
+
+  // Swiper
+
+    // position: relative;
+  .swipe.slider {
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+  }
+  .swipe-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+  .swipe-wrap > div {
+    float:left;
+    width:100%;
+    position: relative;
+  }
+  .swipe{
+    position: relative;
+    @include breakpoint($breakpoint-mobile) {
+      .arrow{
+        display: none;
+      }
+    }
+    @include breakpoint($breakpoint-tablet) {
+      .arrow{
+        position: absolute;
+        left: 0; // right side overrides below
+        top: 100px;
+        z-index: 10;
+        text-align: center;
+        display: block;
+        color: #000;
+        cursor: pointer;
+        font-size: 72px;
+        line-height: 1em;
+        .arrow-inner{
+          &:after{
+            display: block;
+            font-family: "SSGizmo";
+            content: '\25C5';
+            background-color: rgba(255,255,255,0.2);
+            height: 1em;
+            line-height: 1.2;
+            padding: 10px 0;
+          }
+        }
+        &.right-arrow{
+          left: auto;
+          right: 0;
+          .arrow-inner{
+            &:after{
+              content: '\25BB';
+            }
+          }
+        }
+        &:hover{
+          color: $light-mint;
+        }
+      }
+    }
+    nav.slider-nav{
+      position: absolute;
+      top: 200px;
+      width: 100%;
+      .slider-inner{
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+    }
+    .slider-pagination{
+      text-align: center;
+      margin-bottom: 1em;
+
+      a {
+        margin-bottom: 2px;
+        display: inline-block;
+        font-size: 10px;
+        height: 1em;
+        width: 1em;
+        margin-left: .5em;
+        overflow: hidden;
+        text-indent: 1em;
+        background-color: #8b8b8b;
+        @include border-radius(5px);
+        @include box-shadow(inset 0 0 2px rgba(0,0,0,.5));
+
+        &:hover,
+        &.active {
+          background-color: $mint;
+          cursor: default;
+        }
+      }
+      @include breakpoint($breakpoint-mobile) {
+        .mobile-arrow{
+          display: inline-block;
+          &.arrow-left{
+            &:after{
+              font-family: "SSGizmo";
+              content: '\25C5';
+            }
+          }
+          &.arrow-right{
+            margin-left: .3em;
+            &:after{
+              font-family: "SSGizmo";
+              content: '\25BB';
+            }
+          }
+        }
+      }
+      @include breakpoint($breakpoint-tablet) {
+        .mobile-arrow{
+          display: none;
+        }
+      }
+    }
+    &.on-first-slide .left-arrow,
+    &.on-first-slide .arrow-left{
+      display: none;
+    }
+    &.on-last-slide .right-arrow,
+    &.on-last-slide .arrow-right{
+      display: none;
+
+    }
+  }
+  
+
+  //Background Properties
+  @media all and (max-width: 767px){
+    .card, .slider{
+      background-size: 768px !important;
+    }
+  }
+
+  .card, .slider{
+    background-position: top center;
+    background-repeat: no-repeat;
+    @include breakpoint($breakpoint-tablet){
+      background-size: 100%;
+    }
+  }
+  .slider.tray-img-width-1000{
+    background-size: 768px;
+    @include breakpoint($breakpoint-tablet){
+      background-size: 1000px;
+    }
+  }
+  .card-wrapper.has-card-title,
+  .card-wrapper.has-tray-title{
+    .card-inner{
+      border-top: 1px solid #dadada;
+    }
+  }
+
+
+  /*
+   * Card Types/Pages
+   */
+
+  //Media
+  .node-campaign-card-media{
+    img{
+      display: block;
+      margin: 0;
+      overflow: hidden;
+    }
+    .center-column img{
+      margin: 0 auto;
+    }
+    h4.media-title{
+      padding-bottom: 12px;
+      margin-bottom: 0;
+    }
+    .caption{
+      padding-top: 5px;
+      margin-bottom: 8px;
+    }
+    .node-video{
+      h2.node-title{
+        display: none;
+      }
+    }
+  }
+  .type-card{
+    .header-wrapper{
+      padding: 0;
+    }
+  }
+  .campaign-2col.node-campaign-card-media .description{
+    margin-top: -7px;
+  }
+  .campaign-1col.node-campaign-card-media .caption{
+    text-align: left;
+  }
+
+  //iFrame!
+  iframe{
+    display: block;
+    margin: 0 auto;
+    border: none;
+  }
+  .iframe-wrapper{
+    position: relative;
+    padding-top: 25px;
+    height: 0;
+    overflow: hidden;
+    iframe{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .iframe-wrapper-fixed{
+    overflow: hidden;
+  }
+
+  .card.iframe-fixed{
+    .center-column{
+      @include breakpoint($breakpoint-mobile) {
+        @include zen-grid-item(12, 1);
+        @include zen-clear();
+        height: 100%;
+        img{
+          margin: 0 auto;
+        }
+        .description{
+          text-align: center;
+        }
+        .caption{
+          text-align: center;
+        }
+      }
+      @include breakpoint($breakpoint-tablet) {
+        @include zen-grid-item(10, 2);
+      }
+    }
+  }
+
+
+
+
+  //Branding
+  .card.node-campaign-card-branding {
+    padding: 0;
+    .card-inner{
+      padding: 10px 0;
+    }
+  }
+
+  .branding-content{
+    text-align: center;
+    .branding-text{
+      display: inline-block;
+    }
+    img{
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  //News
+  .card.node-campaign-card-news{
+    .center-column{
+      text-align: center;  
+      line-height: 12px;
+      overflow: hidden;
+      .news-column{
+        @include breakpoint($breakpoint-mobile) {
+          width: 31%;
+        }
+        @include breakpoint($breakpoint-tablet) {
+          width: 18%;
+        }
+        display: inline-block;
+        vertical-align: top;
+        white-space: normal;
+        margin-right: 2%;
+        &:last-child{
+          margin-right: 0;
+        }
+        img{
+          padding-bottom: 5px;
+        }
+        h5{
+          text-align: left;
+          white-space: normal;
+        }
+      }
+      h3.headline{
+        padding-top: 13px;
+        margin: 0;
+      }
+      p.short-headline{
+        margin: 0;
+        padding-top: 0;
+        line-height: 24px;
+        padding-bottom:3px;
+      }
+      .more-link p{
+        padding-top: 20px;
+        margin: 0;
+      }
+    }
+    .headline, .short-headline, .more-link{
+      text-align: center;
+    }
+    .more-link{
+      clear: both;
+    }
+  }
+
+  //Empty
+  .card.node-campaign-card-empty{
+    padding: 0;
+    @include breakpoint($breakpoint-mobile) {
+      .center-column{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .card-inner{
+        padding-top: 0px;
+        width: 100%;
+        max-width: 100%;
+      }
+      img{
+        width: 768px;
+        max-width: 768px;
+      }
+    }
+    @include breakpoint($breakpoint-tablet) {
+      .center-column{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .card-inner{
+        padding-top: 0px;
+        width: 100%;
+        max-width: 1000px;
+      }
+      img{
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+    &.card-image-width-full{
+      @include breakpoint($breakpoint-mobile) {
+        img{
+          width: 768px;
+          max-width: 768px;
+        }
+      }
+      @include breakpoint($breakpoint-tablet) {
+        img{
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+      .center-column{
+        width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .card-inner{
+        padding-top: 0px;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+    img{
+      visibility: hidden;
+      display: block;
+    }
+    .card-inner{
+      position: relative;
+    }
+    .title-wrapper{
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      max-width: 100%;
+      width: 100%;
+      h1.card-title{
+        position: relative;
+        left: -50%;
+      }
+    }
+  }
+
+  //Social
+  .social-follow{
+    margin-left: -5px;
+    a.social-icon {
+      font-size: 35px;
+    }
+    @include breakpoint($breakpoint-tablet) {
+      margin-left: 0;
+      a.social-icon {
+        font-size: 40px;
+      }
+    }
+
+    text-align: center;
+    line-height: 65px;
+    margin-right: -20px;
+    a.social-icon {
+      width: 100px;
+      height: 100px;
+      margin-right: 15px;
+      overflow: hidden;
+      text-indent: 1000px;
+      vertical-align: middle;
+      color: #fff;
+      &:before{
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        border-radius: 44px;
+      }
+      &.tp-social-link {
+        &:hover{
+          text-decoration: none;
+        }
+        &.facebook:before{
+          @extend .tp-social-link.tp-social-Facebook:before;
+          background-color: #3d5b96;
+        }
+        &.facebook:hover:before{
+          background-color: #637fab;
+        }
+        &.twitter:before{
+          @extend .tp-social-link.tp-social-Twitter:before;
+          background-color: #34aadf;
+        }
+        &.twitter:hover:before{
+          background-color: #70c5e7;
+        }
+        &.pinterest:before{
+          @extend .tp-social-link.tp-social-Pinterest:before;
+          background-color: #3d5b96;
+        }
+        &.pinterest:hover:before{
+          background-color: #637fab;
+        }
+        &.google-plus:before{
+          @extend .tp-social-link.tp-social-GooglePlus:before;
+          background-color: #d84a3b;
+        }
+        &.google-plus:hover:before{
+          background-color: #f35648;
+        }
+        &.tumblr:before{
+          @extend .tp-social-link.tp-social-Tumblr:before;
+          background-color: #385774;
+        }
+        &.tumblr:hover:before{
+          background-color: #529ecc;
+        }
+        &.email:before{
+          @extend .tp-social-link.tp-social-Email:before;
+          background-color: #fc5d45;
+        }
+        &.email:hover:before{
+          background-color: #fd8776;
+        }
+        &.linkedin:before{
+          @extend .tp-social-link.tp-social-Linkedin:before;
+          background-color: #0977b4;
+        }
+        &.linkedin:hover:before{
+          background-color: #0c9bea;
+        }
+        &.youtube:before{
+          @extend .tp-social-link.tp-social-Youtube:before;
+          background-color: #cc181e;
+        }
+        &.youtube:hover:before{
+          background-color: #ff1e26;
+        }
+        &.vine:before{
+          @extend .tp-social-link.tp-social-Vine:before;
+          background-color: #00b386;
+        }
+        &.vine:hover:before{
+          background-color: #00d9a2;
+        }
+        &.instagram:before{
+          @extend .tp-social-link.tp-social-Instagram:before;
+          background-color: #3f729b;
+        }
+        &.instagram:hover:before{
+          background-color: #5092c6;
+        }
+      }
+    }
+  }
+  .sms{
+    margin-top: 20px;
+  }
+  .sms-legal{
+    text-align: center;
+    p {
+      font-size: .875em;
+      line-height: 1.5;
+    }
+  }
+
+  //
+  // Newsletter Signup Block
+  //
+  .block-newsletter-campaign {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    .message {
+      margin: .75em 0;
+    }
+    .form-item-email {
+      margin: 0;
+      display: inline-block;
+      font-family: $primary-sans-font;
+      width: 65%;
+      position: relative;
+      label {
+        display: none;
+        font: normal 12px/1 $primary-sans-font;
+        position: absolute;
+        left: 0;
+        bottom: 100%;
+        &.error {
+          display: inline;
+        }
+      }
+      input {
+        width: 100%;
+        border: 1px solid #CCC;
+        @include border-radius(0);
+        -webkit-appearance: none;
+        padding: 2px;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+    }
+    input[type="submit"] {
+      width: 33%;
+      border: none;
+      float: right;
+      @include border-radius(0);
+      background-color: $light-mint;
+      color: white;
+      font-family: $primary-sans-font;
+      text-transform: lowercase;
+      padding: 4px 0 1px;
+      
+      &:hover {
+        background-color: black;
+      }
+    }
+
+    .terms-of-service {
+      clear: both;
+      margin: 1em 0;
+      padding-bottom: 1em;
+      border-bottom: 1px solid $gray-line;
+                  font-size: 12px;
+      // font-family: $adelle-regular;
+      a {
+        
+        line-height: 1.2em;
+        color: $mint;
+      }
+    }
+    .follow-us {
+      font: normal 20px/1 $main-brand-font;
+      text-transform: lowercase;
+      display: inline-block;
+      vertical-align: top;
+      margin: 2px 8px 0 0;
+    }
+    .social-links {
+      display: inline-block;
+      li {
+        display: inline-block;
+        line-height: 1;
+        a {
+          display: inline-block;
+          // they're the same width;
+          height: 0;
+          width: social-sprite-width(twitter-gray);
+          margin-right: social-sprite-width(twitter-gray) / 4; // reasonable margin
+          // image replacement technique
+          padding-top: social-sprite-height(twitter-gray);
+          overflow: hidden;
+          &.facebook { @include social-sprite(facebook-gray);}
+          &.twitter { @include social-sprite(twitter-gray);}
+          &.google { @include social-sprite(googleplus-gray);}
+          &.pinterest { @include social-sprite(pinterest-gray);}
+          &.youtube { @include social-sprite(youtube-gray);}
+          &.tumblr { @include social-sprite(tumblr-gray); margin-right: 0; } // no margin on last link
+        }
+      }
+    }
+    .takepart-newsletter-wrapper{
+      img{
+        display: none;  //this is horrible.
+      }
+      .form-submit{
+        @include breakpoint($breakpoint-tablet){
+          margin-left: -50px;
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  //Card and Header background properties
+  header{
+    .branding-header.has-menu{
+      .campaign-logo-div {
+        @include breakpoint($breakpoint-mobile){
+          float: left;
+          width: 80%;
+        }
+        @include breakpoint($breakpoint-tablet){
+          float: none;
+          width: 65%;
+          margin-left: 17.5%;
+          margin-right: 17.5%;
+        }
+      }
+    }
+    .branding-header:not(.has-menu){
+      .campaign-menu-toggle{
+        display: none;
+      }
+    }
+    .header-inner{
+      padding-top: 15px;
+      @include breakpoint($breakpoint-tablet){
+        padding-top: 20px;
+      }
+    }
+    .header-bg-image-full{
+      background-size: cover;
+    }
+    .header-bg-image-980{
+      background-size: 1000px;
+    }
+    .logo-left{
+      float: left;
+      padding-left: 0%;
+      @include breakpoint($breakpoint-tablet){
+      padding-left: 1.5%;
+      }
+    }
+    .logo-right{
+      float: right;
+      padding-right: 0%;
+      @include breakpoint($breakpoint-tablet){
+      padding-right: 1.5%;
+      }
+    }
+    .logo-center{
+      display: block;
+      margin: 0 auto;
+      float: none;
+    }
+    .campaign-logo-div {
+      height: auto;
+      overflow: hidden;
+      margin-left: 5px;
+    }
+    @media all and (max-width: 767px) {
+      .campaign-logo-div {
+        float: left;
+        width: 80%;
+      }
+    }
+    a.big-link{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+    .isStuck{
+      .branding-header{
+        -webkit-box-shadow: 0px -7px 10px 8px #000;
+        box-shadow: 0px -7px 10px 8px #000;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .card-inner{
+    height: auto;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+  .card-width-980{
+    float: none;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+
+
+
+}
+
+@media only screen and (max-width: 700px)
+{
+    
+  body.node-type-campaign-page{
+    
+    header#header{
+      .campaign-menu-toggle {
+        position: absolute;
+        left: 78%;
+        bottom: 33%;
+        font-size: 2em;
+        padding: 25px;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+    
+    #block-tp-campaigns-tp-campaigns-hero{
+      //margin-top: 35px;
+      .menu-wrapper{
+            display: none;
+      }
+      .header-inner{
+        padding-top: 50px;
+      }
+    }
+    
+  }   
+}
+@media only screen and (min-width: 701px) {    
+  body.node-type-campaign-page {    
+    header#header{
+      .campaign-menu-toggle {
+        display: none;
+      }
+    }
+  }
+}
