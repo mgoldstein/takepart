@@ -34,7 +34,7 @@
         $this.tooltipster({
           content: $popup,
           theme: 'tooltipster-flashcard',
-          position: 'bottom-right',
+          position: $this.position().left < $this.parent().width() / 2 ? 'bottom-left' : 'bottom-right',
           positionTracker: true,
           arrow: false,
           touchDevices: false,
