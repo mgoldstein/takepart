@@ -103,7 +103,7 @@
       $menu = 'menu-'. $campaign_variables->field_campaign_menu['und'][0]['value'];
       $menu_tree = menu_tree_all_data($menu);
       $menu_tree = menu_tree_output($menu_tree);
-      
+
       $menu_elements = element_children($menu_tree);
       $improved = array();
       foreach($menu_elements as $key => $item){
@@ -116,20 +116,69 @@
       print '<ul class="sf-menu" style="background-color: transparent;">';
       foreach($improved as $key => $link){
         $anchor = $link['#localized_options']['attributes']['rel'];
-        if(isset($link['#below']) == true && $link['#below'] != NULL){
-          print '<li class="parent-item '. ($anchor != NULL ? 'anchored' : ''). '" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href'], array('fragment' => $anchor));
+
+        $parent_menu_title = $link['#title'];
+
+        $parent_menu_classes = array('parent-item');
+        $parent_link_classes = array();
+        if (!is_null($anchor)) {
+          $parent_menu_classes[] = 'anchored';
+          $parent_link_classes[] = 'anchored';
+        }
+
+        $parent_menu_attrs = drupal_attributes(array(
+          'class' => $parent_menu_classes,
+          'style' => array(
+            'background-color ' . $menu_color_parent . ';',
+          ),
+        ));
+
+        $parent_menu_link = l($parent_menu_title, $link['#href'], array(
+          'fragment' => $anchor,
+          'attributes' => array(
+            'data-path' => $parent_menu_title,
+            'class' => $parent_link_classes,
+          ),
+        ));
+
+        print '<li' . $parent_menu_attrs . '>' . $parent_menu_link;
+
+        if (isset($link['#below']) == true && $link['#below'] != NULL) {
+
           print '<ul>';
           $child_elements = element_children($link['#below']);
-          foreach($child_elements as $key_child => $link_child){
-            $anchor = $link_child['#localized_options']['attributes']['rel'];
-            print '<li style="background-color: '. $menu_color_child. '">'. l($link['#below'][$link_child]['#title'], $link['#below'][$link_child]['#href'], array('fragment' => $anchor, '#attributes' => array('class' => array('sf-with-ul')))). '</li>';
+          foreach ($child_elements as $key_child => $link_child){
 
+            $child_menu_anchor = $link_child['#localized_options']['attributes']['rel'];
+
+            $child_menu_title = $link['#below'][$link_child]['#title'];
+
+            $child_menu_attrs = drupal_attributes(array(
+              'style' => array(
+                'background-color: ' . $menu_color_child . ';'
+              ),
+            ));
+
+            $child_link_classes = array('sf-with-ul');
+            if (!is_null($child_menu_anchor)) {
+              $child_link_classes[] = 'anchored';
+            }
+
+            $child_menu_link = l($child_menu_title,
+              $link['#below'][$link_child]['#href'], array(
+                'fragment' => $child_menu_anchor,
+                'attributes' => array(
+                  'class' => $child_link_classes,
+                  'data-path' => $parent_menu_title . ': ' . $child_menu_title,
+                ),
+              ));
+
+            print '<li' . $child_menu_attrs . '>' . $child_menu_link . '</li>';
           }
-          print '</ul></li>';
+          print '</ul>';
         }
-        else{
-          print '<li class="parent-item '. ($anchor != NULL ? 'anchored' : ''). '" style="background-color: '. $menu_color_parent. ';">'. l($link['#title'], $link['#href'], array('fragment' => $anchor)). '</li>';
-        }
+
+        print '</li>';
       }
       print '</ul>';
       print '<div class="clearfix"></div></div></div>';
@@ -153,9 +202,9 @@
 
     <?php print (isset($homepage_link) == true ? l(' ', $homepage_link, array('attributes' => array('class' => array('big-link')))) : ''); ?>
     <?php print (isset($logo) == true ? $logo : ''); ?>
-    
+
     <a href="#" class="campaign-menu-toggle icon i-touch-menu"></a>
-	
+
   </div>
 
 </div>
