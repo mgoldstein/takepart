@@ -869,7 +869,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $file = file_load($node->field_article_main_image['und'][0]['fid']);
       $image = file_create_url($file->uri);	  
       $image = image_style_url('campaign_news_3x2', $file->uri);
-	  $alt = $node->title;
+      $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
       $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
@@ -917,9 +917,9 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
         $node_path = drupal_get_path_alias('node/'. $node->nid);
         $file = file_load($node->field_thumbnail['und'][0]['fid']);
+        $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
         $image = file_create_url($file->uri);
         $image = image_style_url('campaign_news_3x2', $file->uri);
-		$alt = $node->title;
         $media = '<img src="'. $image. '" alt="'.$alt.'">';
         $headline = $node->field_promo_headline['und'][0]['value'];
         $news_column = $media;
