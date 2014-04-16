@@ -11579,8 +11579,6 @@ Note: If you manually reference more items than selected here, the number refere
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('\'100%\', \'600px\', etc.');
-  t('\'100%, \'600px\', etc.');
   t('Anchor Tag');
   t('Background Image Width');
   t('Background color');
@@ -11612,6 +11610,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Iframe');
   t('Image Link');
   t('Images for CSS');
+  t('Integer in Pixels');
   t('Introductory Copy');
   t('Is this media card a photo or a video?');
   t('Left/Center Text');

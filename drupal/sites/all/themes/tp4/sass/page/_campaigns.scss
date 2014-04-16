@@ -258,21 +258,26 @@ body.node-type-campaign-page, #main.card-page{
   /*
    * Global Elements
    */
-   h1{
-    font-family: $secondary-sans-font;
-    font-weight: 100;
+   h1 {
+    font: 100 36px/38px $secondary-sans-font;
     text-transform: uppercase;
-    font-size: 36px;
-    line-height: 38px;
     color: #000;
   }
+
+  .campaign-sidebar-header {
+    font: 100 24px/150% $secondary-sans-font;
+    text-transform: uppercase;
+    color: white;
+    padding: 10px;
+    margin-bottom: 0;
+  }
+
   .card-inner{ 
     @import "modules/wysiwyg";
   }
-  a.card-anchor{
+  a.card-anchor {
     display: block;
     position: absolute;
-    top: -200px;
     visibility: hidden;
   }
   .card-inner a{
@@ -478,8 +483,15 @@ body.node-type-campaign-page, #main.card-page{
       margin-bottom: 5px;
     }
   }
+  #main-wrap {
+    position: relative;
+  }
   #main{
+    overflow: hidden;
     max-width: 100%;
+    -webkit-transition: -webkit-transform .5s ease;
+    -moz-transition: -moz-transform .5s ease;
+    transition: transform .5s ease;
     #primary{
       padding: 0;
     }
@@ -1209,6 +1221,12 @@ body.node-type-campaign-page, #main.card-page{
       height: auto;
       overflow: hidden;
       margin-left: 5px;
+    }
+    @media all and (max-width: 767px) {
+      .campaign-logo-div {
+        float: left;
+        width: 80%;
+      }
     }
     a.big-link{
       position: absolute;

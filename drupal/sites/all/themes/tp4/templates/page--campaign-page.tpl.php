@@ -11,41 +11,44 @@
       'stickupParts' => (object) $variables['anchor_tags'],
     )), 'setting');
 ?>
-<div class="snap-drawers scrollable">
-    <div class="snap-drawer snap-drawer-left">
-  
+<div id="tp-drawers" class="snap-drawers scrollable">
+    <div class="snap-drawer snap-drawer-left">  
     <?php print render($page['left_drawer']); ?>
   </div>
 </div>
+
+<div id="campaign-drawers" class="snap-drawers scrollable">
+  <div class="snap-drawer snap-drawer-right">
+    <h3 class="campaign-sidebar-header"><?php print $variables['promo_title']; ?></h3>
+    <div id="block-menu-menu" class="block block-menu first last odd" role="navigation">
+      <?php print render($variables['campaign_menu']); ?>
+    </div>
+  </div>
+</div>
+
 <div id="page-wrap">
   <div class="header-wrapper">
     <header id="header">
       <?php print render($page['header']); ?>
     </header>
   </div>
-  
-<div class="snap-drawers-campaign scrollable">
-  <div class="snap-drawer-campaign snap-drawer-left">
-  	<div id="block-menu-menu-campaign" class="block block-menu first last odd" role="navigation">
-      <?php print render($variables['campaign_menu']); ?>
-    </div>
-  </div>
-</div>
 
-  <main id="main" class="<?php print $content_classes. ' '. implode($variables['classes_array'], ' '); ?>">
-  <div class="preface">
-    <?php print render($tabs); ?>
-    <?php print $messages; ?>
-    <?php print render($page['preface']); ?>
-  </div>
-    <div id="primary">
-      <?php print render($campaign_content_meta); ?>
-      <?php print render($page['content']); ?>
-    </div>
-  </main>
-  <div class="suffix-wrapper">
-    <div id="suffix">
-      <?php print render($page['suffix']); ?>
+  <div id="main-wrap">
+    <main id="main" class="<?php print $content_classes. ' '. implode($variables['classes_array'], ' '); ?>">
+      <div class="preface">
+        <?php print render($tabs); ?>
+        <?php print $messages; ?>
+        <?php print render($page['preface']); ?>
+      </div>
+      <div id="primary">
+        <?php print render($campaign_content_meta); ?>
+        <?php print render($page['content']); ?>
+      </div>
+    </main>
+    <div class="suffix-wrapper">
+      <div id="suffix">
+        <?php print render($page['suffix']); ?>
+      </div>
     </div>
   </div>
 
