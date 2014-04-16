@@ -1007,6 +1007,7 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
 
   }
   else{
+    $variables['classes_array'][] = 'embed-field';
     $center .= '<div class="embed">'. $variables['body'][0]['value']. '</div>';
   }
   

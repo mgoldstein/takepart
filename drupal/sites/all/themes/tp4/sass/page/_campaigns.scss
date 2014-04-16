@@ -755,7 +755,7 @@ body.node-type-campaign-page, #main.card-page{
     overflow: hidden;
   }
 
-  .card.iframe-fixed{
+  .card.iframe-fixed, .card.embed-field{
     .center-column{
       @include breakpoint($breakpoint-mobile) {
         @include zen-grid-item(12, 1);
