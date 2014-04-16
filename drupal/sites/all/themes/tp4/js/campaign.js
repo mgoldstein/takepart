@@ -2,9 +2,7 @@
  * @file
  * Scripts for Takepart Campaigns.
  */
-
 (function ($, Drupal, window, document, undefined) {
-
   $.extend(true, this, {Drupal: {
     behaviors: {
       campaignSlideShows: {
@@ -108,21 +106,23 @@
             //initiating jQuery  
             //enabling stickUp on the '.navbar-wrapper' class
             var desktopWidth = ( $(window).width() > 768),
-                campaignHasMenu = $('.snap-drawers-campaign li').length == 0;
+                campaignHasNoMenus = $('#campaign-drawers li').length == 0,
+                stickUpSettings = {
+                  parts:     Drupal.settings.tp_campaigns.stickupParts,
+                  itemClass: 'anchored',
+                  itemHover: 'active'
+                }; 
 
             if ( desktopWidth ) {
-              var stickUpSettings = {
-                parts:     Drupal.settings.tp_campaigns.stickupParts,
-                itemClass: 'anchored',
-                itemHover: 'active'
-              }
               $('#block-tp-campaigns-tp-campaigns-hero').stickUp( stickUpSettings );
             }
-            if ( campaignHasMenu ) {
-              $('.campaign-menu-toggle').css('display', 'none');
+            if ( campaignHasNoMenus ) {
+              $('.campaign-menu-toggle').hide();
             }
           }
-          setTimeout( bindStickupToMenus, 0 );
+  
+          if ( Drupal.settings.tp_campaigns )
+            setTimeout( bindStickupToMenus );
         }
       },
 
