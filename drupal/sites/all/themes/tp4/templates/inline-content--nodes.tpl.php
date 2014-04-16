@@ -18,11 +18,13 @@
  */
 ?>
 <?php
+
   $nid = $variables['element']['#inline_content']->field_ic_content['und'][0]['nid'];
   $path = url('node/'. $nid); // drupal_get_path_alias('node/'. $nid);
+  $type = ($element['#replacements'][0]['#bundle'] != null) ? "inline-node-".$element['#replacements'][0]['#bundle'] : "";
 ?>
 <a href="<?php print $path; ?>">
-  <aside class="inline-content inline-content-nodes <?=$element['#orientation']?>">
+  <aside class="inline-content inline-content-nodes <?=$element['#orientation']?> <?=$type?>">
     <?php foreach ($element['#replacements'] as $key => $item): ?>
       <?php print render($item); ?>
     <?php endforeach; ?>
