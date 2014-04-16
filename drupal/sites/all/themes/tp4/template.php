@@ -406,7 +406,7 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 		$campaign_tray = node_load($variables['field_campaign_tray'][$i]['target_id']);
 
 		if(!empty($campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'])){
-			$campaign_tray->field_campaign_tray_title['und'][0]['value'] = '<font color="'.$campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'].'">'.$campaign_tray->field_campaign_tray_title['und'][0]['value'].'</font>';
+			$campaign_tray->field_campaign_tray_title['und'][0]['value'] = '<span style ="color:'.$campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'].'">'.$campaign_tray->field_campaign_tray_title['und'][0]['value'].'</font>';
 		}
 		
 		$campaign_card = node_load($campaign_tray->field_campaign_card_reference['und'][0]['target_id']);
