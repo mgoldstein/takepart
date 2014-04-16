@@ -67,6 +67,24 @@ function tp_flashcards_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements hook_node_presave().
+ */
+function tp_flashcards_node_presave($node) {
+  if ($node->type == 'flashcard') {
+    cache_clear_all('tp_flashcards_list', 'cache');
+  }
+}
+
+/**
+ * Implements hook_node_delete().
+ */
+function tp_flashcards_node_delete($node) {
+  if ($node->type == 'flashcard') {
+    cache_clear_all('tp_flashcards_list', 'cache');
+  }
+}
+
+/**
  * Return an associative array of flashcards.
  *
  * Uses a static variable and a the database for caching.
