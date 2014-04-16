@@ -269,10 +269,9 @@ body.node-type-campaign-page, #main.card-page{
   .card-inner{ 
     @import "modules/wysiwyg";
   }
-  a.card-anchor{
+  a.card-anchor {
     display: block;
     position: absolute;
-    top: -200px;
     visibility: hidden;
   }
   .card-inner a{
@@ -478,8 +477,15 @@ body.node-type-campaign-page, #main.card-page{
       margin-bottom: 5px;
     }
   }
+  #main-wrap {
+    position: relative;
+  }
   #main{
+    overflow: hidden;
     max-width: 100%;
+    -webkit-transition: -webkit-transform .5s ease;
+    -moz-transition: -moz-transform .5s ease;
+    transition: transform .5s ease;
     #primary{
       padding: 0;
     }
@@ -1209,6 +1215,12 @@ body.node-type-campaign-page, #main.card-page{
       height: auto;
       overflow: hidden;
       margin-left: 5px;
+    }
+    @media all and (max-width: 767px) {
+      .campaign-logo-div {
+        float: left;
+        width: 80%;
+      }
     }
     a.big-link{
       position: absolute;
