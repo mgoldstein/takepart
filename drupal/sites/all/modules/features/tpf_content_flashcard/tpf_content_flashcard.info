@@ -67,3 +67,4 @@ features[variable][] = menu_parent_flashcard
 features[variable][] = node_options_flashcard
 features[variable][] = node_preview_flashcard
 features[variable][] = node_submitted_flashcard
+features[variable][] = pathauto_node_flashcard_pattern
