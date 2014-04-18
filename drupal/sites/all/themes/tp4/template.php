@@ -100,7 +100,14 @@ function tp4_preprocess_page(&$variables) {
     }
 
     // override page titles on certain node templates
-    if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
+    $override_page_title_types = array(
+        'openpublish_article',
+        'feature_article',
+        'openpublish_photo_gallery',
+        'video',
+        'flashcard',
+    );
+    if (!empty($variables['node']) && in_array($variables['node']->type, $override_page_title_types)) {
         $variables['title'] = '';
     }
 
@@ -269,6 +276,18 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
         // provide topic box
         _tp4_topic_box($variables);
     }
+}
+
+function tp4_preprocess_node__flashcard(&$variables) {
+ 
+    $variables['content']['flashcard_related_content_primary'] = array(
+        '#weight'=> 10,
+        '#prefix' => '<aside class="flashcard-realted-content-primary">',
+        '#suffix' => '</aside>',
+    );
+    $variables['content']['flashcard_related_content_primary'][] = $variables['content']['field_flashcard_related_primary'];
+    $variables['content']['flashcard_related_content_primary'][] = array_merge($variables['flashcard_cta_link'], array('#weight' => 10));
+    unset($variables['content']['field_flashcard_related_primary']);
 }
 
 /**
@@ -563,6 +582,22 @@ function tp4_field__field_author__video($variables) {
     return tp4_field__field_author__openpublish_article($variables);
 }
 
+function tp4_field__field_flashcard_page_headline__flashcard($variables) {
+    $output = '<h1 class="node-title ' . $variables['classes'] . '"' . $variables['attributes'] . '>';
+
+    // Render the items.
+    $output .= '<span class="field-items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+        $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+        $output .= '<span class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</span>';
+    }
+    $output .= '</span>';
+
+    $output .= '</h1>';
+
+    return $output;
+}
+
 function tp4_field__field_article_subhead__openpublish_article($variables) {
     $output = '';
 
@@ -590,6 +625,10 @@ function tp4_field__field_article_subhead__feature_article($variables) {
 }
 
 function tp4_field__field_article_subhead__video($variables) {
+    return tp4_field__field_article_subhead__openpublish_article($variables);
+}
+
+function tp4_field__field_article_subhead__flashcard($variables) {
     return tp4_field__field_article_subhead__openpublish_article($variables);
 }
 
@@ -673,6 +712,39 @@ function tp4_field__field_video__video($variables) {
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
     return $output;
 }
+
+function tp4_field__field_flashcard_display_name__flashcard($variables) {
+    $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '><dfn>';
+
+    // Render the items.
+    $output .= '<span class="field-items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+        $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+        $output .= '<span class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</span>';
+    }
+    $output .= '</span>';
+
+    $output .= '</dfn></h2>';
+
+    return $output;
+}
+
+function tp4_field__field_flashcard_pronunciation__flashcard($variables) {
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>[';
+
+    // Render the items.
+    $output .= '<span class="field-items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+        $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+        $output .= '<span class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</span>';
+    }
+    $output .= '</span>';
+
+    $output .= ']</div>';
+
+    return $output;
+}
+
 
 /**
  * Implements template_preprocess_entity().
