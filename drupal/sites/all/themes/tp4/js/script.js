@@ -85,11 +85,13 @@ Drupal.behaviors.tpsocialShares = {
             isOpenpublishArticle = $body.is('.page-node.node-type-openpublish-article'),
             isFeatureArticle = $body.is('.page-node.node-type-feature-article');
             isVideoArticle = $body.is('.page-node.node-type-video');
+            isFlashcard = $body.is('.page-node.node-type-flashcard');
 
         if (
             isOpenpublishArticle
             || isFeatureArticle
             || isVideoArticle
+            || isFlashcard
         ) {
             // Setup Social Share Buttons
             var tp_social_config = {
