@@ -1700,6 +1700,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
         '~<front>' => '~<front>',
         '~feature/*' => '~feature/*',
         '~video/*' => '~video/*',
+        '~flashcards/*' => '~flashcards/*',
       ),
     ),
     'theme' => array(
