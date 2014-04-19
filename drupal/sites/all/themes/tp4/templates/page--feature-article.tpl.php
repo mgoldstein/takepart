@@ -7,7 +7,7 @@
  * @see https://drupal.org/node/1728148
  */
 ?>
-<div class="snap-drawers scrollable">
+<div id="tp-drawers" class="snap-drawers scrollable">
     <div class="snap-drawer snap-drawer-left">
     <?php print render($page['left_drawer']); ?>
   </div>
