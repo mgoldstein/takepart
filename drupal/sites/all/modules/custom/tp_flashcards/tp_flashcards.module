@@ -17,11 +17,12 @@ function tp_flashcards_help($path, $arg) {
 /**
  * Implements template_preprocess_page().
  *
- * Include flashcards JS/CSS in every page.
+ * Include flashcards JS/CSS in every page, and disable
+ * the system_main block on flashcard node pages.
  */
 function tp_flashcards_preprocess_page(&$variables) {
+  // build up the array of flashcard terms for the tooltip displays
   $data = array();
-
   foreach (_tp_flashcards_get_all() as $nid => $flashcard) {
     $card = array();
     $items = field_get_items('node', $flashcard, 'field_flashcard_display_name');
@@ -36,11 +37,16 @@ function tp_flashcards_preprocess_page(&$variables) {
   }
 
   drupal_add_js(array('flashcards' => $data), 'setting');
-
   drupal_add_css(drupal_get_path('module', 'tp_flashcards') . '/css/tooltipster.css');
   drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/vendor/jquery.tooltipster.min.js');
-
   drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/tp_flashcards.js');
+
+  // the tp4_flashcards context (in a feature required by this module)
+  // renders the system_main block in the preface region.
+  // we can delete it from the content region on flashcard node pages
+  if (!path_is_admin(current_path()) && isset($variables['node']) && $variables['node']->type === 'flashcard') {
+    unset($variables['page']['content']['system_main']);
+  }
 }
 
 /**
