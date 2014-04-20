@@ -1662,10 +1662,40 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'tp_flashcards-flashcard_related_content' => array(
+          'module' => 'tp_flashcards',
+          'delta' => 'flashcard_related_content',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'tp_flashcards-flashcard_comments' => array(
+          'module' => 'tp_flashcards',
+          'delta' => 'flashcard_comments',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',
           'region' => 'preface',
+          'weight' => '-10',
+        ),
+        'newsletter_campaign-51' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '51',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
+        'boxes-bg_skin_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'bg_skin_sponsor',
+          'region' => 'suffix',
           'weight' => '-10',
         ),
       ),

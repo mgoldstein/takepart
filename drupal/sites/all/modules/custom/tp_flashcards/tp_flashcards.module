@@ -4,6 +4,8 @@
  * TakePart module for functions related to flashcards.
  */
 
+module_load_include('inc', 'tp_flashcards', 'tp_flashcards.block');
+
 /**
  * Implements hook_help().
  */
