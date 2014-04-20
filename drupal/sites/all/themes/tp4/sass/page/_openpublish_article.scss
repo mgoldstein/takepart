@@ -46,6 +46,10 @@
       margin-left: 50px;
     }
   }
+  #block-tp-flashcards-flashcard-related-content,
+  #block-tp-flashcards-flashcard-comments {
+      margin-left: 40px;
+  }
 }
 
 .node-feature-article.view-mode-full {
@@ -1019,6 +1023,62 @@
       line-height: 1.25;
       margin: .5em 0;
     }    
+  }
+
+  .block-tp-flashcards {
+    margin-bottom: 3em;
+
+    h2.section-header {
+      font-family: $main-brand-font;
+      font-weight: bold;
+      font-size: 1.5em;
+      line-height: 1.2;
+      margin: .667em 0; // account for different margins in the comp
+      text-transform: lowercase;
+      @include header-top-border;
+
+      span {
+        font-family: $primary-sans-font;
+        font-weight: 100;
+        font-size: 14px;
+      }
+    }
+
+    .flashcard-cta-link {
+      display: inline-block;
+    }
+  }
+
+  .flashcard-related-content-wrapper {
+    @include clearfix;
+    .node {
+      margin-bottom: 1em;
+      .node-title {
+        font-size: 1em;
+        line-height: 1.285714286;
+      }
+      @include breakpoint($breakpoint-tablet) {
+        float: left;
+        width: 47.4%;
+        margin-left: 5%;
+        &:nth-child(2n+1) {
+          clear: left;
+          margin-left: 0;
+        }
+      }
+      @include breakpoint($breakpoint-desktop) {
+        width: 23.1%;
+        margin-left: 2.5%;
+        &:nth-child(2n+1) { // override tablet styling
+          clear: none;
+          margin-left: 2.5%;
+        }
+        &:nth-child(4n+1) {
+          clear: left;
+          margin-left: 0;
+        }
+      }
+    }
   }
 }
 
