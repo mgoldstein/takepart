@@ -13,6 +13,34 @@ function tpf_content_flashcard_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_definition|node|flashcard|default';
+  $field_group->group_name = 'group_definition';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'flashcard';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Definition',
+    'weight' => '2',
+    'children' => array(
+      0 => 'field_flashcard_display_name',
+      1 => 'field_flashcard_pronunciation',
+      2 => 'field_flashcard_short_definition',
+    ),
+    'format_type' => 'html5',
+    'format_settings' => array(
+      'label' => 'Definition',
+      'instance_settings' => array(
+        'classes' => 'flashcard-definition',
+        'wrapper' => 'aside',
+      ),
+    ),
+  );
+  $export['group_definition|node|flashcard|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_flashcard_page|node|flashcard|form';
   $field_group->group_name = 'group_flashcard_page';
   $field_group->entity_type = 'node';

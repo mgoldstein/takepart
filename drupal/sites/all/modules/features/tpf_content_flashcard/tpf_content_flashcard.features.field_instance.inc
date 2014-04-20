@@ -197,10 +197,12 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'module' => 'inline_content',
+        'settings' => array(
+          'source' => 'field_inline_replacements',
+        ),
+        'type' => 'text_with_inline_content',
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -283,10 +285,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 17,
+        'type' => 'hidden',
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -364,11 +365,11 @@ function tpf_content_flashcard_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -448,11 +449,11 @@ function tpf_content_flashcard_field_default_field_instances() {
     'description' => 'The display name appears at the head of the flashcard popup in articles and at the head of the definition box on flashcard pages.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -533,16 +534,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
-        'weight' => 22,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -619,11 +613,11 @@ function tpf_content_flashcard_field_default_field_instances() {
     'description' => 'This will appear at the top of a flashcard page as the headline.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 0,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -703,11 +697,11 @@ function tpf_content_flashcard_field_default_field_instances() {
     'description' => 'Phonetic pronunciation for the term definition.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -788,12 +782,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 19,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -874,12 +865,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 20,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -969,10 +957,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 21,
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1052,13 +1039,14 @@ function tpf_content_flashcard_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'links' => 0,
+          'view_mode' => 'feature_secondary',
         ),
-        'type' => 'entityreference_label',
-        'weight' => 18,
+        'type' => 'entityreference_entity_view',
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1138,11 +1126,11 @@ function tpf_content_flashcard_field_default_field_instances() {
     'description' => 'This is the abbreviated definition that appears on flashcard popups and in the definition box.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1225,10 +1213,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 4,
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1309,10 +1296,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 14,
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1392,12 +1378,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 7,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1482,10 +1465,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1566,10 +1548,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 10,
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1650,10 +1631,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 11,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1727,6 +1707,87 @@ function tpf_content_flashcard_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-flashcard-field_series'
+  $field_instances['node-flashcard-field_series'] = array(
+    'bundle' => 'flashcard',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_series',
+    'label' => 'Series',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_select',
+      'weight' => 12,
+    ),
+  );
+
   // Exported field_instance: 'node-flashcard-field_significance'
   $field_instances['node-flashcard-field_significance'] = array(
     'bundle' => 'flashcard',
@@ -1736,10 +1797,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 16,
+        'type' => 'hidden',
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1817,12 +1877,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'media',
-        'weight' => 8,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1922,10 +1979,9 @@ function tpf_content_flashcard_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 13,
+        'type' => 'hidden',
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2016,6 +2072,7 @@ function tpf_content_flashcard_field_default_field_instances() {
   t('Pronunciation');
   t('Related Content');
   t('Related Content Category');
+  t('Series');
   t('Short Definition');
   t('Significance');
   t('Subhead');

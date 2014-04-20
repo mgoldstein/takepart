@@ -9,6 +9,7 @@
 @include breakpoint($breakpoint-desktop) {
   .node-openpublish-article.view-mode-full,
   .node-video.view-mode-full,
+  .node-flashcard.view-mode-full,
   .node-feature-article.view-mode-full {
     #article-social {
       float: left;
@@ -39,6 +40,15 @@
       width: 780px;
       @include box-sizing(border-box);
     }
+  }
+  .node-flashcard.view-mode-full {
+    .field-name-body {
+      margin-left: 50px;
+    }
+  }
+  #block-tp-flashcards-flashcard-related-content,
+  #block-tp-flashcards-flashcard-comments {
+      margin-left: 40px;
   }
 }
 
@@ -245,7 +255,8 @@
 //
 .node-openpublish-article.view-mode-full,
 .node-feature-article.view-mode-full,
-.node-video.view-mode-full {
+.node-video.view-mode-full,
+.node-flashcard.view-mode-full {
   .article-header {
     .node-title {
       // these values are extremely stupid.
@@ -398,9 +409,22 @@
   }
 }
 
+//
+// HEADER STYLES
+// flashcard specific
+//
+.node-flashcard.view-mode-full {
+  .article-header {
+    .node-title {
+      margin-bottom: 0;
+    }
+  }
+}
+
 .node-feature-article.view-mode-full,
 .node-openpublish-article.view-mode-full,
-.node-video.view-mode-full {
+.node-video.view-mode-full,
+.node-flashcard.view-mode-full {
   .field-name-body {
     font-family: $primary-sans-font;
     font-weight: 100;
@@ -894,6 +918,169 @@
     }
   }
 } // .node-feature-article
+
+//
+// Flashcard Overrides
+//
+.node-flashcard.view-mode-full {
+  .flashcard-definition {
+    @include box-sizing(border-box);
+    @include box-shadow(0 0 0 1px #e0e0e0);
+    padding: .5em 1em 1em;
+    border-top: 4px solid $blue;
+
+    &:before {
+      content: 'definition';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: $blue;
+      color: white;
+      font: normal 1em/1 $main-brand-font;
+      padding: .25em 1.5em;
+    }
+    @include breakpoint($breakpoint-tablet) {
+      width: 410px;
+    }
+
+    .field-name-field-flashcard-display-name {
+      display: inline-block;
+      font-size: 2.142857143em;
+      margin: 0;
+      dfn {
+        font-style: normal;
+      }
+    }
+    .field-name-field-flashcard-pronunciation {
+      display: inline-block;
+      margin-left: 1em;
+      vertical-align: middle;
+    }
+  }
+  .flashcard-realted-content-primary {
+    @include breakpoint($breakpoint-tablet) {
+      width: 237px;
+    }
+  }
+  .flashcard-definition,
+  .flashcard-realted-content-primary {
+    margin-bottom: 1.5em;
+    position: relative;
+    z-index: 1;
+    @include breakpoint($breakpoint-tablet) {
+      float: right;
+      clear: right;
+      margin: 0 0 1.5em 1.5em;
+    }
+  }
+
+  .field-name-body {
+    & > .field-items > .field-item > p:first-of-type {
+      &::first-letter {
+        float: none;
+        margin: 0;
+        font: normal 1em/1.5 $primary-sans-font;
+      }
+    }
+  }
+}
+
+//
+// Flashcard pages non-node content
+// 
+.page-node.node-type-flashcard {
+  .flashcard-cta-link {
+    display: block;
+    padding: .5em 1.5em;
+    background-color: $light-mint;
+    color: white;
+    font-family: $primary-sans-font;
+    line-height: 1.5em;
+    @include blue-arrow-bullets;
+    &:before {
+      display: inline-block;
+      position: static;
+      color: white;
+      width: auto;
+      padding-right: 0.45em;
+      vertical-align: sub;
+    }
+    &:hover {
+      text-decoration: none;
+      background-color: black;
+    }
+  }
+  .flashcard-branding {
+    margin-bottom: 1em;
+  }
+  .node.view-mode-feature-secondary {
+    .field-name-field-thumbnail {
+      margin-bottom: 1em;
+    }
+    .node-title {
+      font-size: 1.142857143em;
+      line-height: 1.25;
+      margin: .5em 0;
+    }    
+  }
+
+  .block-tp-flashcards {
+    margin-bottom: 3em;
+
+    h2.section-header {
+      font-family: $main-brand-font;
+      font-weight: bold;
+      font-size: 1.5em;
+      line-height: 1.2;
+      margin: .667em 0; // account for different margins in the comp
+      text-transform: lowercase;
+      @include header-top-border;
+
+      span {
+        font-family: $primary-sans-font;
+        font-weight: 100;
+        font-size: 14px;
+      }
+    }
+
+    .flashcard-cta-link {
+      display: inline-block;
+    }
+  }
+
+  .flashcard-related-content-wrapper {
+    @include clearfix;
+    .node {
+      margin-bottom: 1em;
+      .node-title {
+        font-size: 1em;
+        line-height: 1.285714286;
+      }
+      @include breakpoint($breakpoint-tablet) {
+        float: left;
+        width: 47.4%;
+        margin-left: 5%;
+        &:nth-child(2n+1) {
+          clear: left;
+          margin-left: 0;
+        }
+      }
+      @include breakpoint($breakpoint-desktop) {
+        width: 23.1%;
+        margin-left: 2.5%;
+        &:nth-child(2n+1) { // override tablet styling
+          clear: none;
+          margin-left: 2.5%;
+        }
+        &:nth-child(4n+1) {
+          clear: left;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
 
 .author-bio{
   width: auto;
