@@ -460,6 +460,8 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 		
 	// Check if subheadline is empty, if yes get meta description from campaign reference
 	if($variables['field_article_subhead']['und'][0]['value'] == ''){
+		
+		if($variables['metatags']['und']['description']['value'] == ''){		
 					
 		 $meta_description = array(
             '#type' => 'html_tag',
@@ -472,6 +474,7 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 		 
 		 drupal_add_html_head( $meta_description, 'meta_description' );
 		 
+		}
 		
 	}
 	
