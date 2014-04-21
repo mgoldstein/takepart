@@ -47,6 +47,7 @@
     }
   }
   #block-tp-flashcards-flashcard-related-content,
+  #block-tp-flashcards-flashcard-get-more,
   #block-tp-flashcards-flashcard-comments {
       margin-left: 40px;
   }
@@ -764,7 +765,11 @@
     }
   } // inline content
 
-
+  .topic-links {
+    margin-bottom: 2em;
+    @include comma-list;
+    @include mint-sans-links;
+  } // .topic-links
 
   #article-footer,
   #article-comments {
@@ -797,31 +802,6 @@
         @include blue-square-bullets;
       }
     }
-    .topic-links {
-      margin-bottom: 2em;
-      li {
-        padding: 0;
-        &:after {
-          content: ',\0020';
-          display: inline;
-        }
-        &:last-child:after {
-          content: '';
-        }
-      }
-      a {
-        font-family: $primary-sans-font;
-        font-weight: 100;
-        color: $mint;
-        text-decoration: none;
-        text-transform: capitalize;
-        &:hover,
-        &:active {
-          color: $light-mint;
-          text-decoration: underline;
-        }
-      }
-    } // .topic-links
     .on-our-radar {
       h3 {
         text-transform: lowercase;
@@ -881,7 +861,7 @@
           margin-left: 25px;
           &:first-child {
             margin-left: 0;
-          }       
+          }
         }
       }
     }
@@ -991,7 +971,7 @@
 // 
 .page-node.node-type-flashcard {
   .flashcard-cta-link {
-    display: block;
+    display: inline-block;
     padding: .5em 1.5em;
     background-color: $light-mint;
     color: white;
@@ -1010,13 +990,19 @@
       text-decoration: none;
       background-color: black;
     }
+    @include breakpoint($breakpoint-tablet) {
+      display: block;
+    }
   }
   .flashcard-branding {
     margin-bottom: 1em;
   }
   .node.view-mode-feature-secondary {
     .field-name-field-thumbnail {
-      margin-bottom: 1em;
+      margin-bottom: .5em;
+    }
+    .flashcard-node-label {
+      margin: 0;
     }
     .node-title {
       font-size: 1.142857143em;
@@ -1035,7 +1021,9 @@
       line-height: 1.2;
       margin: .667em 0; // account for different margins in the comp
       text-transform: lowercase;
-      @include header-top-border;
+      &.top-border {
+        @include header-top-border;
+      }
 
       span {
         font-family: $primary-sans-font;
@@ -1080,6 +1068,43 @@
       }
     }
   }
+
+  .topic-links {
+    @include comma-list;
+    @include mint-sans-links;
+  }
+
+  .view-flashcard-organizations-experts {
+    li {
+      @include clearfix;
+      margin-bottom: 1em;
+    }
+    .flashcard-organization-image {
+      float: left;
+      margin-right: 1em;
+    }
+  }
+  .flashcard-node-label,
+  .flashcard-organization-label {
+    font: normal normal .857142857em/1.166666667 $primary-sans-font;
+    text-transform: uppercase;
+    margin: 1.166666667em 0 0.5em;
+  }
+  .flashcard-organization-name {
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1.285714286;
+    a:after {
+      content: "";
+      display: inline-block;
+      vertical-align: baseline;
+      width: 15px;
+      height: 11px;
+      padding-left: 6px;
+      background: transparent inline-image("icon-link-offsite.png") scroll no-repeat bottom right;
+    }
+  }
+
 }
 
 .author-bio{

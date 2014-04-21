@@ -148,3 +148,31 @@
     left: 0;
   }
 }
+
+@mixin comma-list {
+  li {
+    padding: 0;
+    &:after {
+      content: ',\0020';
+      display: inline;
+    }
+    &:last-child:after {
+      content: '';
+    }
+  }
+}
+
+@mixin mint-sans-links {
+  a {
+    font-family: $primary-sans-font;
+    font-weight: 100;
+    color: $mint;
+    text-decoration: none;
+    text-transform: capitalize;
+    &:hover,
+    &:active {
+      color: $light-mint;
+      text-decoration: underline;
+    }
+  }
+}
