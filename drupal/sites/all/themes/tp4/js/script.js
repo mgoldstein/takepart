@@ -204,14 +204,16 @@ Drupal.behaviors.tpsocialShares = {
 };
 
     /**
- * Behaviors for Article Nodes
- */
+     * Sticky Bottom Ad Unit
+     */
     Drupal.behaviors.articleBehaviors = {
         attach: function() {
             var $body = $('body');
 
             if ($body.is('.page-node.node-type-openpublish-article')
-              || $body.is('.page-node.node-type-video')) {
+              || $body.is('.page-node.node-type-video')
+              || $body.is('.page-node.node-type-flashcard')
+            ) {
 
                 // make second ad sticky
                 // (sticky social buttons are done below)
@@ -220,6 +222,26 @@ Drupal.behaviors.tpsocialShares = {
             }
         }
     };
+
+    /**
+     * Add Content Type Labels to feature_secondary nodes
+     * in the main flashcard display.
+     */
+     Drupal.behaviors.insertNodeLabelsForFlashcards = {
+        attach: function() {
+            if (!$('body').is('.page-node.node-type-flashcard')) {
+                return;
+            }
+
+            $('.node.view-mode-feature-secondary').each(function() {
+                var $this = $(this);
+                $('<h4 class="flashcard-node-label">')
+                    .text($this.data('contenttype').replace(/_/g, ' ').replace(/openpublish/g, '').replace(/^\s+|\s+$/g, ''))
+                    .insertBefore($this.find('.node-title'))
+                ;
+            });
+        }
+     };
 
     /**
  * Social Events tracking

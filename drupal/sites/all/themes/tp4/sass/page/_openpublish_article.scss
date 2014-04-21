@@ -999,7 +999,10 @@
   }
   .node.view-mode-feature-secondary {
     .field-name-field-thumbnail {
-      margin-bottom: 1em;
+      margin-bottom: .5em;
+    }
+    .flashcard-node-label {
+      margin: 0;
     }
     .node-title {
       font-size: 1.142857143em;

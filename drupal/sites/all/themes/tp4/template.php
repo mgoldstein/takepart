@@ -168,6 +168,10 @@ function tp4_preprocess_node(&$variables, $hook) {
     $variables['url_local'] = url('node/' . $variables['nid'], array('absolute' => TRUE));
     $variables['url_production'] = 'http://www.takepart.com' . url('node/' . $variables['nid']);
 
+    // put the nodetype as a date type on the node object.
+    // I'm Matt Wrather and I Approve This Hack.
+    $variables['attributes_array']['data-contenttype'] = $variables['type'];
+
     // Run node-type-specific preprocess functions, like
     // tp4_preprocess_node__page() or tp4_preprocess_node__story().
     $function = __FUNCTION__ . '__' . $variables['node']->type;
