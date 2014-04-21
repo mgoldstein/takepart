@@ -47,6 +47,7 @@
     }
   }
   #block-tp-flashcards-flashcard-related-content,
+  #block-tp-flashcards-flashcard-get-more,
   #block-tp-flashcards-flashcard-comments {
       margin-left: 40px;
   }
@@ -764,7 +765,11 @@
     }
   } // inline content
 
-
+  .topic-links {
+    margin-bottom: 2em;
+    @include comma-list;
+    @include mint-sans-links;
+  } // .topic-links
 
   #article-footer,
   #article-comments {
@@ -797,31 +802,6 @@
         @include blue-square-bullets;
       }
     }
-    .topic-links {
-      margin-bottom: 2em;
-      li {
-        padding: 0;
-        &:after {
-          content: ',\0020';
-          display: inline;
-        }
-        &:last-child:after {
-          content: '';
-        }
-      }
-      a {
-        font-family: $primary-sans-font;
-        font-weight: 100;
-        color: $mint;
-        text-decoration: none;
-        text-transform: capitalize;
-        &:hover,
-        &:active {
-          color: $light-mint;
-          text-decoration: underline;
-        }
-      }
-    } // .topic-links
     .on-our-radar {
       h3 {
         text-transform: lowercase;
@@ -881,7 +861,7 @@
           margin-left: 25px;
           &:first-child {
             margin-left: 0;
-          }       
+          }
         }
       }
     }
@@ -1038,7 +1018,9 @@
       line-height: 1.2;
       margin: .667em 0; // account for different margins in the comp
       text-transform: lowercase;
-      @include header-top-border;
+      &.top-border {
+        @include header-top-border;
+      }
 
       span {
         font-family: $primary-sans-font;
@@ -1082,6 +1064,11 @@
         }
       }
     }
+  }
+
+  .topic-links {
+    @include comma-list;
+    @include mint-sans-links;
   }
 
   .view-flashcard-organizations-experts {
