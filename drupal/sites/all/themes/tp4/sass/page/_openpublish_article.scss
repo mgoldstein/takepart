@@ -991,7 +991,7 @@
 // 
 .page-node.node-type-flashcard {
   .flashcard-cta-link {
-    display: block;
+    display: inline-block;
     padding: .5em 1.5em;
     background-color: $light-mint;
     color: white;
@@ -1009,6 +1009,9 @@
     &:hover {
       text-decoration: none;
       background-color: black;
+    }
+    @include breakpoint($breakpoint-tablet) {
+      display: block;
     }
   }
   .flashcard-branding {
@@ -1080,6 +1083,38 @@
       }
     }
   }
+
+  .view-flashcard-organizations-experts {
+    li {
+      @include clearfix;
+      margin-bottom: 1em;
+    }
+    .flashcard-organization-image {
+      float: left;
+      margin-right: 1em;
+    }
+  }
+  .flashcard-node-label,
+  .flashcard-organization-label {
+    font: normal normal .857142857em/1.166666667 $primary-sans-font;
+    text-transform: uppercase;
+    margin: 1.166666667em 0 0.5em;
+  }
+  .flashcard-organization-name {
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1.285714286;
+    a:after {
+      content: "";
+      display: inline-block;
+      vertical-align: baseline;
+      width: 15px;
+      height: 11px;
+      padding-left: 6px;
+      background: transparent inline-image("icon-link-offsite.png") scroll no-repeat bottom right;
+    }
+  }
+
 }
 
 .author-bio{
