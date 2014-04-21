@@ -288,6 +288,10 @@ function tp4_preprocess_node__flashcard(&$variables) {
     $variables['content']['flashcard_related_content_primary'][] = $variables['content']['field_flashcard_related_primary'];
     $variables['content']['flashcard_related_content_primary'][] = array_merge($variables['flashcard_cta_link'], array('#weight' => 10));
     unset($variables['content']['field_flashcard_related_primary']);
+
+    if ($variables['view_mode'] === 'full') {
+        $variables['content']['body'][0]['#markup'] .= '<p><strong>What Flashcards would you like to see?</strong> <a href="mailto:editorial@takepart.com?subject=New%20Flashcard%20Request">Email us</a> or let us know in the comments below.</p>';
+    }
 }
 
 /**

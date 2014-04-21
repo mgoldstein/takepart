@@ -29,7 +29,7 @@
   --><h3 class="tp-social-headline share-headline">Share</h3>
   <div class="tp-social" id="article-share"></div>
     <p id="article-comments-link" class="comments-link">
-    <a href="#article-comments"><?php print t('Comments'); ?><span class="count"></span></a>
+    <a href="#block-tp-flashcards-flashcard-comments"><?php print t('Comments'); ?><span class="count"></span></a>
   </p>
   <div id="article-social-more">
     <h4 class="trigger"><a href="#article-more-shares">More</a></h4>
