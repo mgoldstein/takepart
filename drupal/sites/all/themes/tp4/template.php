@@ -210,8 +210,8 @@ function tp4_campaign_megamenu($nid){
         $output .= '</a>'; //end .sub-category
 
       }
-      $output .= '</div>'; //end .categories
-      //return more link
+      $output .= '</div>'; // end .categories
+      // return more link
       if(isset($link['link']['options']['attributes']['name'])){
         $output .= l($link['link']['options']['attributes']['name'], $path, array('attributes' => array('class' => array('more'))));
       }
@@ -1320,10 +1320,14 @@ function _tp4_on_our_radar_block(&$variables) {
 function _tp4_topic_box(&$variables) {
     if (!empty($variables['field_topic_box'])) {
         $topic = taxonomy_term_load($variables['field_topic_box']['und'][0]['tid']);
+        
         if (!empty($topic->field_topic_box_image['und'][0]['uri'])) {
-            $image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));
-            $url = !empty($topic->field_topic_box_link) ? url($topic->field_topic_box_link['und'][0]['url'], array('absolute' => TRUE)) : '';
-            $variables['field_topic_box_top'] = empty($url) ? $image : l($image, $url, array('html' => true));
+            $image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));         
+            if (!empty($topic->field_topic_box_link)) {
+              $drupal_url = ( substr($topic->field_topic_box_link['und'][0]['url'], 0, 1) === "/") ? substr($topic->field_topic_box_link['und'][0]['url'], 1) : $topic->field_topic_box_link['und'][0]['url'];
+             
+            }
+          $variables['field_topic_box_top'] = empty($drupal_url) ? $image : l($image, $drupal_url, array('html' => TRUE));
         }
     }
 }
@@ -1335,6 +1339,8 @@ function _tp4_series_nav(&$variables) {
     if (!empty($variables['field_series'])) {
         $series = taxonomy_term_load($variables['field_series']['und'][0]['tid']);
         $series_image = theme('image', array('path' => $series->field_series_graphic_header['und'][0]['uri']));
+        $termpath = taxonomy_term_uri($series);
+        $series_header = l($series_image, $termpath['path'], array('html' => TRUE) );
         $created = $variables['created'];
 
         // find the next article, if any
@@ -1373,7 +1379,7 @@ function _tp4_series_nav(&$variables) {
 
         // build up the series nav div
         $series_nav = '';
-        $series_nav .= $series_image;
+        $series_nav .= $series_header; // $series_image;
 
         // weird ternary operators will hide nav elements if they don't exist
         $series_nav .= empty($previous) ? '' : '<div class="more-prev">' . l("previous", $previous_url) . '</div>';

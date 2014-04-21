@@ -13,8 +13,9 @@
 	// We hide the comments and links now so that we can render them later.
 	hide($content['comments']);
 	hide($content['links']);
-	print render($content); ?>
-  <?php if (!$page && $title): ?>
+	print render($content); 
+        ?>
+  <?php if (!$page && $title && $type != "poll"): ?>
     <h2 class="inline-title"><?php print $title; ?></h2>
   <?php endif; ?>
 
