@@ -1686,11 +1686,17 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'region' => 'sidebar',
           'weight' => '-10',
         ),
+        'views-92f8036c910f2ff5c341b7002d220886' => array(
+          'module' => 'views',
+          'delta' => '92f8036c910f2ff5c341b7002d220886',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
         'boxes-bg_skin_sponsor' => array(
           'module' => 'boxes',
