@@ -1668,11 +1668,17 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'region' => 'content',
           'weight' => '-10',
         ),
+        'tp_flashcards-flashcard_get_more' => array(
+          'module' => 'tp_flashcards',
+          'delta' => 'flashcard_get_more',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
         'tp_flashcards-flashcard_comments' => array(
           'module' => 'tp_flashcards',
           'delta' => 'flashcard_comments',
           'region' => 'content',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
         'system-main' => array(
           'module' => 'system',

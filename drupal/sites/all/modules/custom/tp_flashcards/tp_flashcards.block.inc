@@ -15,6 +15,11 @@ function tp_flashcards_block_info() {
     'cache' => DRUPAL_CACHE_PER_PAGE,
   );
 
+  $blocks['flashcard_get_more'] = array(
+    'info' => t('Flashcard Get More'),
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+
   $blocks['flashcard_comments'] = array(
     'info' => t('Flashcard Comments'),
     'cache' => DRUPAL_CACHE_PER_PAGE,
@@ -33,11 +38,14 @@ function tp_flashcards_block_view($delta = '') {
     case 'flashcard_related_content':
       $block['content'] = _tp_flashcards_related_content_block();
       break;
-    
+
+    case 'flashcard_get_more':
+      $block['subject'] = 'Get More';
+      $block['content'] = _tp_flashcards_get_more_block();
+      break;
+
     case 'flashcard_comments':
-      $block['content'] = array(
-        '#markup' => '<h2 class="section-header">Comments <span>(<fb:comments-count href="<?php print $url_production; ?>">0</fb:comments-count>)</span></h2><fb:comments numposts="15"></fb:comments>',
-      );
+      $block['content'] = _tp_flashcards_comments_block();
       break;
   }
 
@@ -100,7 +108,7 @@ function _tp_flashcards_related_content_block($nodes_to_show = 8) {
       $contents = node_view_multiple(node_load_multiple($all_related_nodes), 'feature_secondary');
 
       if (!empty($all_related_nodes)) {
-        $contents['nodes']['#prefix'] = '<h2 class="section-header">Go Deeper on the Issue</h2><div class="flashcard-related-content-wrapper">';
+        $contents['nodes']['#prefix'] = '<h2 class="section-header top-border">Go Deeper on the Issue</h2><div class="flashcard-related-content-wrapper">';
         $contents['nodes']['#suffix'] = '</div>';
         $contents['cta_link'] = $cta_link;
       }
@@ -108,6 +116,43 @@ function _tp_flashcards_related_content_block($nodes_to_show = 8) {
 
   }
   return $contents;
+}
+
+/**
+ * Return a render array for the Flashcards tag block;
+ */
+function _tp_flashcards_get_more_block() {
+  $node = menu_get_object();
+  $topics = field_get_items('node', $node, 'field_topic');
+  $tags = field_get_items('node', $node, 'field_free_tag');
+
+  $links = array();
+  foreach ($topics as $topic) {
+    $links[] = drupal_render(field_view_value('node', $node, 'field_topic', $topic));
+  }
+  foreach ($tags as $tag) {
+    $links[] = drupal_render(field_view_value('node', $node, 'field_free_tag', $tag));
+  }
+
+  return array(
+    '#theme' => 'item_list',
+    '#items' => $links,
+    '#type' => 'ul',
+    '#attributes' => array(
+      'class' => array('topic-links', 'links', 'inline')
+    ),
+  );
+}
+
+function _tp_flashcards_comments_block() {
+  $url = url(current_path(), array('absolute' => TRUE));
+
+  return array(
+    '#markup' => '<h2 class="section-header top-border">Comments '
+      . '<span>(<fb:comments-count href="' . $url.  '">0'
+      . '</fb:comments-count>)</span></h2>'
+      . '<fb:comments numposts="15" href="' . $url.  '"></fb:comments>',
+  );
 }
 
 /**
