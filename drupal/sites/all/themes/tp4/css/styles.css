@@ -11125,16 +11125,17 @@ header .search .form-submit {
   left: 0;
   right: 0;
   top: 0;
+  display: none;
 }
-/* line 23, ../sass/modules/_left_drawer.scss */
+/* line 24, ../sass/modules/_left_drawer.scss */
 .snap-drawers#tp-drawers {
   top: 5px;
 }
-/* line 28, ../sass/modules/_left_drawer.scss */
+/* line 29, ../sass/modules/_left_drawer.scss */
 .snap-drawers#campaign-drawers .snap-drawer {
   right: 0;
 }
-/* line 32, ../sass/modules/_left_drawer.scss */
+/* line 33, ../sass/modules/_left_drawer.scss */
 .snap-drawers .snap-drawer {
   background: #000;
   position: fixed;
@@ -11151,11 +11152,11 @@ header .search .form-submit {
   -o-transition: width 0.3s ease;
   transition: width 0.3s ease;
 }
-/* line 48, ../sass/modules/_left_drawer.scss */
+/* line 49, ../sass/modules/_left_drawer.scss */
 .snap-drawers .block-menu ul {
   border-bottom: 5px solid #646464;
 }
-/* line 50, ../sass/modules/_left_drawer.scss */
+/* line 51, ../sass/modules/_left_drawer.scss */
 .snap-drawers .block-menu ul li {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
@@ -11167,7 +11168,7 @@ header .search .form-submit {
   line-height: 48px;
   text-transform: none;
 }
-/* line 63, ../sass/modules/_left_drawer.scss */
+/* line 64, ../sass/modules/_left_drawer.scss */
 .snap-drawers .block-menu > ul > li {
   font-family: "tradegothicbold", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-size: 20px;
@@ -11175,7 +11176,7 @@ header .search .form-submit {
   border-bottom: none;
   font-weight: 100;
 }
-/* line 70, ../sass/modules/_left_drawer.scss */
+/* line 71, ../sass/modules/_left_drawer.scss */
 .snap-drawers .block-menu > ul > li:nth-child(4) > a {
   width: 100%;
   display: block;
@@ -11186,7 +11187,7 @@ header .search .form-submit {
   background: url('../images/takeaction-logo-mobile.png?1389035865') no-repeat 10px center;
   margin: 0;
 }
-/* line 82, ../sass/modules/_left_drawer.scss */
+/* line 83, ../sass/modules/_left_drawer.scss */
 .snap-drawers .block-menu > ul > li:nth-child(5) > a {
   width: 100%;
   display: block;
@@ -11197,19 +11198,19 @@ header .search .form-submit {
   background: url('../images/tpl-logo-mobile.png?1389035865') no-repeat 10px center;
   margin: 0;
 }
-/* line 94, ../sass/modules/_left_drawer.scss */
+/* line 95, ../sass/modules/_left_drawer.scss */
 .snap-drawers .block-menu a {
   color: #fff;
   border-bottom: 1px solid #646464;
   display: block;
   width: 100%;
 }
-/* line 99, ../sass/modules/_left_drawer.scss */
+/* line 100, ../sass/modules/_left_drawer.scss */
 .snap-drawers .block-menu a:hover {
   text-decoration: none;
   background-color: #333;
 }
-/* line 105, ../sass/modules/_left_drawer.scss */
+/* line 106, ../sass/modules/_left_drawer.scss */
 .snap-drawers.scrollable {
   overflow: auto;
   -webkit-transition-property: top, bottom;
