@@ -755,7 +755,7 @@ body.node-type-campaign-page, #main.card-page{
     overflow: hidden;
   }
 
-  .card.iframe-fixed{
+  .card.iframe-fixed, .card.embed-field{
     .center-column{
       @include breakpoint($breakpoint-mobile) {
         @include zen-grid-item(12, 1);
@@ -1222,11 +1222,11 @@ body.node-type-campaign-page, #main.card-page{
       height: auto;
       overflow: hidden;
       margin-left: 5px;
-    }
-    @media all and (max-width: 767px) {
-      .campaign-logo-div {
-        float: left;
-        width: 80%;
+      @include breakpoint($breakpoint-tablet){
+          float: none;
+          width: 65%;
+          margin-left: 17.5%;
+          margin-right: 17.5%;
       }
     }
     a.big-link{

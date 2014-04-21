@@ -406,7 +406,7 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 		$campaign_tray = node_load($variables['field_campaign_tray'][$i]['target_id']);
 
 		if(!empty($campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'])){
-			$campaign_tray->field_campaign_tray_title['und'][0]['value'] = '<font color="'.$campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'].'">'.$campaign_tray->field_campaign_tray_title['und'][0]['value'].'</font>';
+			$campaign_tray->field_campaign_tray_title['und'][0]['value'] = '<span style ="color:'.$campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'].'">'.$campaign_tray->field_campaign_tray_title['und'][0]['value'].'</font>';
 		}
 		
 		$campaign_card = node_load($campaign_tray->field_campaign_card_reference['und'][0]['target_id']);
@@ -869,7 +869,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $file = file_load($node->field_article_main_image['und'][0]['fid']);
       $image = file_create_url($file->uri);	  
       $image = image_style_url('campaign_news_3x2', $file->uri);
-	  $alt = $node->title;
+      $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
       $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
@@ -917,9 +917,9 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
         $node_path = drupal_get_path_alias('node/'. $node->nid);
         $file = file_load($node->field_thumbnail['und'][0]['fid']);
+        $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
         $image = file_create_url($file->uri);
         $image = image_style_url('campaign_news_3x2', $file->uri);
-		$alt = $node->title;
         $media = '<img src="'. $image. '" alt="'.$alt.'">';
         $headline = $node->field_promo_headline['und'][0]['value'];
         $news_column = $media;
@@ -1007,6 +1007,7 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
 
   }
   else{
+    $variables['classes_array'][] = 'embed-field';
     $center .= '<div class="embed">'. $variables['body'][0]['value']. '</div>';
   }
   

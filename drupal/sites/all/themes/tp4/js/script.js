@@ -69,6 +69,10 @@
               $('#tp-drawers').show();
               Drupal.behaviors.snapper.open('left');
             }
+            else {
+              Drupal.behaviors.snapper.close();
+              jQuery('.snap-drawers').hide();
+            }
           });
         }
       },
@@ -80,7 +84,7 @@
         }
       },
 
-      // Campaign Page 
+      // Campaign Page
       campaignsnapperSettings: {
         attach: function(context, settings) {
           Drupal.behaviors.campaignsnapper = new Snap({
@@ -309,11 +313,11 @@
       socialEventsTracking: {
           attach: function() {
 
-              $(window).bind('tp-social-share', function(e, args) {
+              $(window).unbind('tp-social-share').bind('tp-social-share', function(e, args) {
                   takepart.analytics.track('tp-social-share', args);
               });
 
-              $(window).bind('tp-social-click', function(e, args) {
+              $(window).unbind('tp-social-click').bind('tp-social-click', function(e, args) {
                   takepart.analytics.track('tp-social-click', args);
               });
 
