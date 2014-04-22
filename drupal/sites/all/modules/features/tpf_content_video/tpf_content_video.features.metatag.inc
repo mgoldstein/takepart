@@ -42,6 +42,9 @@ function tpf_content_video_metatag_export_default() {
       'og:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
+      'og:url' => array(
+        'value' => '[current-page:url]',
+      ),
       'twitter:title' => array(
         'value' => '[node:title]',
       ),

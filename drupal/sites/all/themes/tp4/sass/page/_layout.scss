@@ -37,6 +37,9 @@ body {
       width: auto;
     }
   }
+  &.page-entity-iframe {
+    border: none;
+  }
 }
 #page-wrap{
   position: relative;
@@ -147,7 +150,7 @@ body {
 
   // the default style establishes mobile first parameters
   // and covers the unusual case where #skinny is by itself
-  #skinny { 
+  #skinny {
     @include zen-grid-item(12, 1);
     @include zen-clear();
     @include breakpoint($breakpoint-tablet){
