@@ -11167,8 +11167,20 @@ header .search .form-submit {
   border-bottom: none;
   font-weight: 100;
 }
-/* line 70, ../sass/modules/_left_drawer.scss */
-.snap-drawers .block-menu > ul > li:nth-child(4) > a {
+/* line 71, ../sass/modules/_left_drawer.scss */
+.snap-drawers .block-menu a {
+  color: #fff;
+  border-bottom: 1px solid #646464;
+  display: block;
+  width: 100%;
+}
+/* line 76, ../sass/modules/_left_drawer.scss */
+.snap-drawers .block-menu a:hover {
+  text-decoration: none;
+  background-color: #333;
+}
+/* line 85, ../sass/modules/_left_drawer.scss */
+.snap-drawers .snap-drawer:not(.snap-drawer-right) .block-menu > ul > li:nth-child(4) > a {
   width: 100%;
   display: block;
   text-indent: 100%;
@@ -11178,8 +11190,8 @@ header .search .form-submit {
   background: url('../images/takeaction-logo-mobile.png?1389823777') no-repeat 10px center;
   margin: 0;
 }
-/* line 82, ../sass/modules/_left_drawer.scss */
-.snap-drawers .block-menu > ul > li:nth-child(5) > a {
+/* line 97, ../sass/modules/_left_drawer.scss */
+.snap-drawers .snap-drawer:not(.snap-drawer-right) .block-menu > ul > li:nth-child(5) > a {
   width: 100%;
   display: block;
   text-indent: 100%;
@@ -11189,19 +11201,7 @@ header .search .form-submit {
   background: url('../images/tpl-logo-mobile.png?1389823777') no-repeat 10px center;
   margin: 0;
 }
-/* line 94, ../sass/modules/_left_drawer.scss */
-.snap-drawers .block-menu a {
-  color: #fff;
-  border-bottom: 1px solid #646464;
-  display: block;
-  width: 100%;
-}
-/* line 99, ../sass/modules/_left_drawer.scss */
-.snap-drawers .block-menu a:hover {
-  text-decoration: none;
-  background-color: #333;
-}
-/* line 105, ../sass/modules/_left_drawer.scss */
+/* line 110, ../sass/modules/_left_drawer.scss */
 .snap-drawers.scrollable {
   overflow: auto;
   -webkit-transition-property: top, bottom;
