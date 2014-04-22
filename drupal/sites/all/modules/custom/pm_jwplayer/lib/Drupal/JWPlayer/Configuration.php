@@ -42,7 +42,8 @@ class JWPlayerConfiguration {
       'sharing' => array(
         'enabled' => t('Enabled'),
         'link' => t('Link'),
-        'code' => t('Code'),
+        'embeddable' => t('Embeddable'),
+        'code' => t('iFrame Embed Code'),
         'heading' => t('Heading'),
       ),
       'related' => array(
@@ -225,8 +226,10 @@ class JWPlayerConfiguration {
       if (!empty($settings['link'])) {
         $values['link'] = $settings['link'];
       }
-      if (!empty($settings['code'])) {
-        $values['code'] = rawurlencode($settings['code']);
+      if (self::booleanValue($settings['embeddable'])) {
+        if (!empty($settings['code'])) {
+          $values['code'] = rawurlencode($settings['code']);
+        }
       }
       if (!empty($settings['heading'])) {
         $values['heading'] = $settings['heading'];
