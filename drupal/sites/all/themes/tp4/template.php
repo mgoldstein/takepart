@@ -778,20 +778,23 @@ function tp4_preprocess_entity(&$variables, $hook) {
                     if ($node->status == 1) {
                         $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
 
-                        if ($node->type == 'openpublish_article' || $node->type == 'feature_article' || $node->type == 'video') {
+                        if (
+                            $node->type == 'openpublish_article'
+                            || $node->type == 'feature_article'
+                            || $node->type == 'video'
+                            || $node->type == 'flashcard'
+                            || $node->type == 'openpublish_video'
+                        ) {
                             $main_image = field_get_items('node', $node, 'field_thumbnail');
                         }
-                        if ($node->type == 'action') {
+                        else if ($node->type == 'action') {
                             $main_image = field_get_items('node', $node, 'field_action_main_image');
                         }
-                        if ($node->type == 'openpublish_photo_gallery') {
+                        else if ($node->type == 'openpublish_photo_gallery') {
                             $main_image = field_get_items('node', $node, 'field_thumbnail');
                             if ($main_image == NULL) {
                                 $main_image = field_get_items('node', $node, 'field_gallery_images');
                             }
-                        }
-                        if ($node->type == 'openpublish_video') {
-                            $main_image = field_get_items('node', $node, 'field_thumbnail');
                         }
                         if (isset($main_image[0]['fid'])) {
                             $img_url = file_load($main_image[0]['fid']);
