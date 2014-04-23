@@ -1898,7 +1898,7 @@ print $value;
   $handler->display->display_options['fields']['field_organization_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_organization_image']['type'] = 'image';
   $handler->display->display_options['fields']['field_organization_image']['settings'] = array(
-    'image_style' => 'thumbnail',
+    'image_style' => 'tp_100_wide',
     'image_link' => '',
   );
   /* Field: Field collection item: Label */
