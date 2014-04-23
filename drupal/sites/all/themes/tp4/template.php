@@ -829,5 +829,8 @@ function tp4_preprocess_panels_pane(&$variables) {
             $variables['title_attributes_array']['class'][] = 'no-overlap';
             $variables['title_link'] = url('node/' . $variables['content']['#node']->nid);
         }
+        else if ($variables['content']['#bundle'] == 'flashcard') {
+            $variables['title'] = l($variables['content']['#node']->title, 'node/' . $variables['content']['#node']->nid);
+        }
     }
 }
