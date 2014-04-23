@@ -13,6 +13,7 @@ dependencies[] = inline_content
 dependencies[] = inline_entity_form
 dependencies[] = link
 dependencies[] = media
+dependencies[] = media_image_formatter
 dependencies[] = mediafield
 dependencies[] = options
 dependencies[] = strongarm
