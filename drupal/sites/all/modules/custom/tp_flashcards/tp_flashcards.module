@@ -55,7 +55,8 @@ function tp_flashcards_preprocess_page(&$variables) {
  * Implements template_preprocess_node().
  *
  * For the full view of certain nodes, filter the node body
- * per flashcard. For flashcards, set up template variables.
+ * per flashcard. For flashcards, set up template variables and
+ * replace the title with the page_title field.
  *
  * @todo This probably should use hook_node_view().
  */
@@ -67,7 +68,7 @@ function tp_flashcards_preprocess_node(&$variables) {
     'video',
   );
 
-  // replace flashcards on 
+  // replace flashcards on editorial content types
   if (in_array($variables['type'], $types_to_flashcard) && $variables['view_mode'] === 'full') {
     foreach(_tp_flashcards_get_all() as $nid => $flashcard) {
       $synonyms = array_map('preg_quote', _tp_flashcards_get_synonyms($flashcard));
@@ -76,20 +77,40 @@ function tp_flashcards_preprocess_node(&$variables) {
     }
   }
 
-  if ($variables['type'] === 'flashcard' && $variables['view_mode'] === 'full') {
-    // set up CTA link
-    $items = field_get_items('node', $variables['node'], 'field_flashcard_related_category');
-    $path = url('taxonomy/term/' . $items[0]['entity']->tid);
-    $items = field_get_items('node', $variables['node'], 'field_flashcard_related_cta_text');
-    $text = drupal_render(field_view_value('node', $variables['node'], 'field_flashcard_related_cta_text', $items[0]));
-    $variables['flashcard_cta_link'] = array(
-      '#theme' => 'link',
-      '#text' => $text,
-      '#path' => substr($path, 1),
-      '#options' => array('attributes' => array('class' => array('flashcard-cta-link'))),
-    );
+  if ($variables['type'] === 'flashcard') {
+    foreach (field_get_items('node', $variables['node'], 'field_flashcard_page_headline') as $item) {
+      $variables['title'] = drupal_render(field_view_value('node', $variables['node'], 'field_flashcard_page_headline', $item));
+    }
+
+    if ($variables['view_mode'] === 'full') {
+      // set up CTA link
+      $items = field_get_items('node', $variables['node'], 'field_flashcard_related_category');
+      $path = url('taxonomy/term/' . $items[0]['entity']->tid);
+      $items = field_get_items('node', $variables['node'], 'field_flashcard_related_cta_text');
+      $text = drupal_render(field_view_value('node', $variables['node'], 'field_flashcard_related_cta_text', $items[0]));
+      $variables['flashcard_cta_link'] = array(
+        '#theme' => 'link',
+        '#text' => $text,
+        '#path' => substr($path, 1),
+        '#options' => array('attributes' => array('class' => array('flashcard-cta-link'))),
+      );
+    }
   }
 }
+
+/**
+ * Implements hook_node_view().
+ *
+ * Alter the title of flashcards when loaded.
+ */
+function tp_flashcards_node_view($node) {
+  if ($node->type == 'flashcard') {
+    foreach (field_get_items('node', $node, 'field_flashcard_page_headline') as $item) {
+      $node->title = drupal_render(field_view_value('node', $node, 'field_flashcard_page_headline', $item));
+    }
+  }
+}
+
 
 /**
  * Implements hook_node_presave().
