@@ -96,6 +96,75 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_color_scheme-field_color_scheme_font_color'
+  $field_instances['field_collection_item-field_color_scheme-field_color_scheme_font_color'] = array(
+    'bundle' => 'field_color_scheme',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'color_field',
+        'settings' => array(),
+        'type' => 'color_field_default_formatter',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_color_scheme_font_color',
+    'label' => 'Font Color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'color_field',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'color_field_spectrum_widget',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'field_collection_item-field_color_scheme-field_color_scheme_name'
+  $field_instances['field_collection_item-field_color_scheme-field_color_scheme_name'] = array(
+    'bundle' => 'field_color_scheme',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_color_scheme_name',
+    'label' => 'Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign-field_article_subhead'
   $field_instances['node-campaign-field_article_subhead'] = array(
     'bundle' => 'campaign',
@@ -11603,6 +11672,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Column Count');
   t('Embed');
   t('Filter');
+  t('Font Color');
   t('Fonts for CSS');
   t('Height in pixels.  Do not include \'px\'');
   t('How many news articles do you want to display?
@@ -11633,6 +11703,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Minimum height for the content in pixels.  Leave blank if you would like the height to fit to the size of the content.');
   t('More Link');
   t('Multi News Reference');
+  t('Name');
   t('Name of the card that gets displayed.  If a tray title exists, this title will get overwritten.');
   t('News Count');
   t('Page Title for SEO.');
