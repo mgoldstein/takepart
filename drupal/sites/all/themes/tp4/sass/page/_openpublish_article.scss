@@ -689,9 +689,6 @@
 
   // INLINE CONTENT
   // related nodes
-  a:hover .inline-content-nodes h2{
-    text-decoration: underline;
-  }
   .inline-content-nodes {
     margin: 1.5em 0; // articles have horizontal padding
     &.vertical {
@@ -723,6 +720,13 @@
     }
 
     .node {
+      a:hover {
+        color: black;
+        h2 {
+          text-decoration: underline;
+        }
+      }
+
       text-align: center;
       > header {
 	h2 {
