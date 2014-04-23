@@ -1,12 +1,13 @@
 a.flashcard {
   white-space: nowrap;
-  border-bottom: 1px dotted $mint;
+  color: $flashcard-link !important;
+  font-weight: bold;
+  border-bottom: 2px dotted $flashcard-active;
 
   &.hover,
   &:hover,
   &:active {
-    color: black !important;
-    border-bottom-color: black;
+    color: $flashcard-active !important;
     text-decoration: none !important;
   }
 }
@@ -21,7 +22,7 @@ a.flashcard {
     font-size: 14px;
     line-height: 22px;
     padding: 3em 1.25em 2em;
-    border-top: 4px solid $blue;
+    border-top: 4px solid $flashcard-active;
     overflow: hidden;
     position: relative;
     @include box-shadow(0 0 4em rgba(0,0,0,.3));
@@ -51,6 +52,7 @@ a.flashcard {
 
     .flashcard-article-link {
       @include blue-arrow-bullets;
+      font-family: $primary-serif-font;
       display: block;
       &:before {
         color: $mint;
@@ -69,7 +71,7 @@ a.flashcard {
       right: 24px;
       padding: 0 1em;
       font: bold 12px/2 $main-brand-font;
-      background-color: $blue;
+      background-color: $flashcard-active;
       color: white;
     }
 
@@ -80,7 +82,7 @@ a.flashcard {
       width: 24px;
       height: 28px;
       overflow: hidden;
-      background-color: $blue;
+      background-color: $flashcard-active;
       color: white;
       font-size: 36px;
       line-height: .5em;
