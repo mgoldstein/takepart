@@ -27,7 +27,7 @@ function tp4_support_graveyard() {
     /* Query the latest article for the Topic */
     $articleQuery = new EntityFieldQuery();
     $articleQuery->entityCondition('entity_type', 'node')
-            ->propertyCondition('type', array('openpublish_article', 'feature_article'))
+            ->propertyCondition('type', array('openpublish_article', 'feature_article', 'flashcard'))
             ->propertyOrderBy('created', 'DESC')
             ->fieldCondition('field_topic', 'tid', $topic_id)
             ->range(0,1);
@@ -35,10 +35,13 @@ function tp4_support_graveyard() {
     $article_id = current($article['node'])->nid;
     $article = node_load($article_id);
 
-    $article_promo = $article->field_promo_headline['und'][0]['value'];
-    $article_promo = $article->title;
+    foreach(field_get_items('node', $article, 'field_promo_headline') as $item) {
+      $article_promo = drupal_render(field_view_value('node', $article, 'field_promo_headline', $item));
+    }
+
+    $article_promo = $article_promo ? $article_promo : $article->title;
     $article_ids[] = $article->nid;
-    $output .= '<div class="article-title">'. l($article_promo, 'node/'. $article->nid). '</div>';
+    $output .= '<div class="article-title">'. l($article_promo, 'node/'. $article->nid, array('html' => TRUE)) . '</div>';
     $output .= '</div>';
   }
 
