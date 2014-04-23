@@ -9147,103 +9147,6 @@ header .search .form-submit {
   text-transform: lowercase;
 }
 /* line 47, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .views-row {
-  overflow: hidden;
-  margin: 1em 0;
-  min-height: 80px;
-}
-/* line 53, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .views-row .views-field-field-thumbnail {
-  float: left;
-}
-/* line 57, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .views-row .views-field-type,
-.vocabulary-topic .view-topic-listing .views-row .views-field-title {
-  margin-left: 117px;
-}
-/* line 61, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .views-row .views-field-type {
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: 100;
-  font-size: .857142857em;
-  text-transform: uppercase;
-}
-/* line 68, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .views-row .views-field-title {
-  font-size: 1.142857143em;
-  line-height: 1.25;
-}
-/* line 109, ../sass/helpers/_mixins.scss */
-.vocabulary-topic .view-topic-listing .views-row .views-field-title .node-type-openpublish_photo_gallery:after {
-  display: inline;
-  font-family: "SSGizmo";
-  font-size: 1.25em;
-  line-height: 0.8;
-  vertical-align: text-bottom;
-  content: " \1F4F7";
-}
-/* line 116, ../sass/helpers/_mixins.scss */
-.vocabulary-topic .view-topic-listing .views-row .views-field-title .node-type-video:after {
-  font-family: "SSGizmo";
-  font-size: 1.25em;
-  line-height: 0.8;
-  vertical-align: text-bottom;
-  content: " \1F4F9";
-}
-/* line 91, ../sass/helpers/_mixins.scss */
-.vocabulary-topic .view-topic-listing .views-row .views-field-title:after {
-  content: '';
-  display: block;
-  height: 0;
-  width: 76px;
-  margin: .5em 0;
-  border-bottom: 1px dashed black;
-}
-/* line 86, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .pager .pager-item,
-.vocabulary-topic .view-topic-listing .pager .pager-current {
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: 100;
-  font-size: .857142857em;
-  padding: 0 .1em;
-}
-/* line 92, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .pager .pager-current {
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: normal;
-}
-/* line 101, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .pager .pager-first:before, .vocabulary-topic .view-topic-listing .pager .pager-first:after,
-.vocabulary-topic .view-topic-listing .pager .pager-previous:before,
-.vocabulary-topic .view-topic-listing .pager .pager-previous:after,
-.vocabulary-topic .view-topic-listing .pager .pager-next:before,
-.vocabulary-topic .view-topic-listing .pager .pager-next:after,
-.vocabulary-topic .view-topic-listing .pager .pager-last:before,
-.vocabulary-topic .view-topic-listing .pager .pager-last:after {
-  display: inline;
-  color: #018b73;
-  font-family: "SSGizmo";
-  font-size: 18px;
-  line-height: 1;
-  vertical-align: top;
-}
-/* line 110, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .pager .pager-first:before {
-  content: '\25C5 ';
-}
-/* line 113, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .pager .pager-previous:before {
-  content: "\23EA ";
-}
-/* line 116, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .pager .pager-next:after {
-  content: '\25BB';
-}
-/* line 119, ../sass/modules/_topic_features.scss */
-.vocabulary-topic .view-topic-listing .pager .pager-last:after {
-  content: '\23E9';
-}
-/* line 126, ../sass/modules/_topic_features.scss */
 .vocabulary-topic .block-menu-block .block__title {
   -webkit-box-shadow: 0 -4px 0 black;
   -moz-box-shadow: 0 -4px 0 black;
@@ -9253,18 +9156,18 @@ header .search .form-submit {
   padding-top: 5px;
   text-transform: lowercase;
 }
-/* line 129, ../sass/modules/_topic_features.scss */
+/* line 50, ../sass/modules/_topic_features.scss */
 .vocabulary-topic .block-menu-block .block__title:before {
   content: 'inside ';
 }
-/* line 133, ../sass/modules/_topic_features.scss */
+/* line 54, ../sass/modules/_topic_features.scss */
 .vocabulary-topic .block-menu-block .menu__item {
   line-height: 24px;
   font-size: 14px;
   position: relative;
   padding-left: 15px;
 }
-/* line 138, ../sass/modules/_topic_features.scss */
+/* line 59, ../sass/modules/_topic_features.scss */
 .vocabulary-topic .block-menu-block .menu__item:before {
   content: '';
   height: 6px;
@@ -9273,6 +9176,109 @@ header .search .form-submit {
   position: absolute;
   top: 7px;
   left: 0;
+}
+
+/* line 73, ../sass/modules/_topic_features.scss */
+.view-topic-listing .views-row {
+  overflow: hidden;
+  margin: 1em 0;
+  min-height: 80px;
+}
+/* line 79, ../sass/modules/_topic_features.scss */
+.view-topic-listing .views-row .views-field-field-thumbnail {
+  float: left;
+}
+/* line 84, ../sass/modules/_topic_features.scss */
+.view-topic-listing .views-row .views-field-type,
+.view-topic-listing .views-row .views-field-title,
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline {
+  margin-left: 117px;
+}
+/* line 88, ../sass/modules/_topic_features.scss */
+.view-topic-listing .views-row .views-field-type {
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-weight: 100;
+  font-size: .857142857em;
+  text-transform: uppercase;
+}
+/* line 96, ../sass/modules/_topic_features.scss */
+.view-topic-listing .views-row .views-field-title,
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline {
+  font-size: 1.142857143em;
+  line-height: 1.25;
+}
+/* line 109, ../sass/helpers/_mixins.scss */
+.view-topic-listing .views-row .views-field-title .node-type-openpublish_photo_gallery:after,
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline .node-type-openpublish_photo_gallery:after {
+  display: inline;
+  font-family: "SSGizmo";
+  font-size: 1.25em;
+  line-height: 0.8;
+  vertical-align: text-bottom;
+  content: " \1F4F7";
+}
+/* line 116, ../sass/helpers/_mixins.scss */
+.view-topic-listing .views-row .views-field-title .node-type-video:after,
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline .node-type-video:after {
+  font-family: "SSGizmo";
+  font-size: 1.25em;
+  line-height: 0.8;
+  vertical-align: text-bottom;
+  content: " \1F4F9";
+}
+/* line 91, ../sass/helpers/_mixins.scss */
+.view-topic-listing .views-row .views-field-title:after,
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline:after {
+  content: '';
+  display: block;
+  height: 0;
+  width: 76px;
+  margin: .5em 0;
+  border-bottom: 1px dashed black;
+}
+/* line 114, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-item,
+.view-topic-listing .pager .pager-current {
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-weight: 100;
+  font-size: .857142857em;
+  padding: 0 .1em;
+}
+/* line 120, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-current {
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-weight: normal;
+}
+/* line 129, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-first:before, .view-topic-listing .pager .pager-first:after,
+.view-topic-listing .pager .pager-previous:before,
+.view-topic-listing .pager .pager-previous:after,
+.view-topic-listing .pager .pager-next:before,
+.view-topic-listing .pager .pager-next:after,
+.view-topic-listing .pager .pager-last:before,
+.view-topic-listing .pager .pager-last:after {
+  display: inline;
+  color: #018b73;
+  font-family: "SSGizmo";
+  font-size: 18px;
+  line-height: 1;
+  vertical-align: top;
+}
+/* line 138, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-first:before {
+  content: '\25C5 ';
+}
+/* line 141, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-previous:before {
+  content: "\23EA ";
+}
+/* line 144, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-next:after {
+  content: '\25BB';
+}
+/* line 147, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-last:after {
+  content: '\23E9';
 }
 
 /* Show "Left" drawer for the "Right" drawer in the demo */
