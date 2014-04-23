@@ -4026,6 +4026,7 @@ function tpf_content_field_bases_field_default_field_bases() {
         'target_bundles' => array(
           'action' => 'action',
           'feature_article' => 'feature_article',
+          'flashcard' => 'flashcard',
           'openpublish_article' => 'openpublish_article',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
           'openpublish_video' => 'openpublish_video',
