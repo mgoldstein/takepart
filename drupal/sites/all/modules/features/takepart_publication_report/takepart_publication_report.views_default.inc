@@ -110,7 +110,6 @@ Instead, select two dates to search for all content published between those date
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
-    'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
     'takepart_campaign' => 'takepart_campaign',
     'takepart_page' => 'takepart_page',
