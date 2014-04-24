@@ -1,0 +1,20 @@
+<?php
+
+function takepart_sitemap_xmlsitemap_index_links($limit) {
+// Replace with your own query.
+// @see xmlsitemap_node_xmlsitemap_index_links().
+
+    $nids = db_query_range("SELECT n.nid FROM {node} n LEFT JOIN {xmlsitemap} x ON x.type = 'node' AND x.subtype = 'action' AND n.nid = x.id WHERE x.id IS NULL AND n.type = 'action' ORDER BY n.nid DESC", 0, $limit)->fetchCol();
+   
+    $nodes = node_load_multiple($nids);
+    foreach ($nodes as $node) {
+        $link = xmlsitemap_node_create_link($node);
+        $link['status'] = 1;
+        $link['status_override'] = 1;
+        xmlsitemap_link_save($link);
+    }
+}
+
+function takepart_sitemap_cron() {
+  takepart_sitemap_xmlsitemap_index_links(xmlsitemap_var('batch_limit'));
+}
