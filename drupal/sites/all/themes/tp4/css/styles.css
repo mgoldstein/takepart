@@ -6829,15 +6829,14 @@ a.column-header:hover {
 }
 
 @media all and (min-width: 980px) {
-  /* line 1297, ../sass/page/_openpublish_article.scss */
-  .page-node.node-type-openpublish-article .block-boxes-ga_ad-bottom.sticky,
-  .page-node.node-type-video .block-boxes-ga_ad-bottom.sticky {
+  /* line 1295, ../sass/page/_openpublish_article.scss */
+  .block-boxes-ga_ad-bottom.sticky {
     position: fixed;
     top: 0;
   }
 }
 
-/* line 1306, ../sass/page/_openpublish_article.scss */
+/* line 1303, ../sass/page/_openpublish_article.scss */
 .leaderboard div {
   margin: 0 auto;
 }
