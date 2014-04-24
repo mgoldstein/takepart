@@ -978,6 +978,26 @@
 // Flashcard pages non-node content
 // 
 .page-node.node-type-flashcard {
+  .flashcard-branding {
+    font: bold normal 1.428571429em/1.2 $main-brand-font;
+    background: transparent inline-image("flashcards-brand-icon.png") no-repeat scroll left center;
+    padding-left: 1.65em;
+    margin: 1em 0 .5em;
+    a {
+      color: $flashcard-active;
+      &:hover {
+        color: $flashcard-active;
+        text-decoration: none;
+      }
+      &:before {
+        content: '\FB02';
+        display: inline;
+      }
+      span {
+        display: none;
+      }
+    }
+  }
   .flashcard-cta-link {
     display: inline-block;
     padding: .25em 1.5em;
@@ -1001,9 +1021,6 @@
     @include breakpoint($breakpoint-tablet) {
       display: block;
     }
-  }
-  .flashcard-branding {
-    margin-bottom: 1em;
   }
   .node.view-mode-feature-secondary {
     .field-name-field-thumbnail {
