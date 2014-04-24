@@ -689,9 +689,6 @@
 
   // INLINE CONTENT
   // related nodes
-  a:hover .inline-content-nodes h2{
-    text-decoration: underline;
-  }
   .inline-content-nodes {
     margin: 1.5em 0; // articles have horizontal padding
     &.vertical {
@@ -723,6 +720,13 @@
     }
 
     .node {
+      a:hover {
+        color: black;
+        h2 {
+          text-decoration: underline;
+        }
+      }
+
       text-align: center;
       > header {
 	h2 {
@@ -906,8 +910,8 @@
   .flashcard-definition {
     @include box-sizing(border-box);
     @include box-shadow(0 0 0 1px #e0e0e0);
-    padding: .5em 1em 1em;
-    border-top: 4px solid $blue;
+    padding: .5em 1em 2em;
+    border-top: 4px solid $flashcard-active;
 
     &:before {
       content: 'definition';
@@ -915,7 +919,7 @@
       position: absolute;
       top: 0;
       right: 0;
-      background-color: $blue;
+      background-color: $flashcard-active;
       color: white;
       font: normal 1em/1 $main-brand-font;
       padding: .25em 1.5em;
@@ -934,8 +938,12 @@
     }
     .field-name-field-flashcard-pronunciation {
       display: inline-block;
-      margin-left: 1em;
-      vertical-align: middle;
+      vertical-align: top;
+      margin: .5em 0 0 1em;
+    }
+
+    p {
+      margin: .75em 0;
     }
   }
   .flashcard-realted-content-primary {
@@ -972,7 +980,7 @@
 .page-node.node-type-flashcard {
   .flashcard-cta-link {
     display: inline-block;
-    padding: .5em 1.5em;
+    padding: .25em 1.5em;
     background-color: $light-mint;
     color: white;
     font-family: $primary-sans-font;
@@ -999,7 +1007,10 @@
   }
   .node.view-mode-feature-secondary {
     .field-name-field-thumbnail {
-      margin-bottom: .5em;
+      margin-bottom: .625em;
+    }
+    img {
+      display: block;
     }
     .flashcard-node-label {
       margin: 0;
@@ -1007,7 +1018,7 @@
     .node-title {
       font-size: 1.142857143em;
       line-height: 1.25;
-      margin: .5em 0;
+      margin: .375em 0;
     }    
   }
 
@@ -1286,14 +1297,11 @@
 //
 // Sticky Ad Unit for Sidebar
 //
-.page-node.node-type-openpublish-article,
-.page-node.node-type-video {
-  .block-boxes-ga_ad-bottom {
-    @include breakpoint($breakpoint-desktop) {
-      &.sticky {
-        position: fixed;
-        top: 0;
-      }
+.block-boxes-ga_ad-bottom {
+  @include breakpoint($breakpoint-desktop) {
+    &.sticky {
+      position: fixed;
+      top: 0;
     }
   }
 }

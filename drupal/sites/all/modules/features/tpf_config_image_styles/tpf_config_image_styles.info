@@ -28,6 +28,7 @@ features[image][] = takepart_rotator_slide
 features[image][] = thumbnail_v2
 features[image][] = topic_feature
 features[image][] = topic_thumbnail
+features[image][] = tp_100_wide
 features[image][] = tp_250_wide
 features[image][] = tp_272
 features[image][] = tp_actions_impact_thumbnail
