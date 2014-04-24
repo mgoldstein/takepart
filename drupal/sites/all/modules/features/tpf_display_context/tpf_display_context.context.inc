@@ -1160,6 +1160,12 @@ s.eVar11 = Logged_In',
   $context->description = 'Omniture Settings for the every page';
   $context->tag = 'Omniture';
   $context->conditions = array(
+    'context_all' => array(
+      'values' => array(
+        '~tp4_campaign_cards' => '~tp4_campaign_cards',
+        '~tp4_campaign_pages' => '~tp4_campaign_pages',
+      ),
+    ),
     'path' => array(
       'values' => array(
         '~<front>' => '~<front>',
@@ -1637,6 +1643,134 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   // Included for use with string extractors like potx.
   t('TP4');
   $export['tp4_article'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_campaign_cards';
+  $context->description = '';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'campaign_card_branding' => 'campaign_card_branding',
+        'campaign_card_empty' => 'campaign_card_empty',
+        'campaign_card_iframe' => 'campaign_card_iframe',
+        'campaign_card_media' => 'campaign_card_media',
+        'campaign_card_news' => 'campaign_card_news',
+        'campaign_card_social' => 'campaign_card_social',
+        'campaign_card_text' => 'campaign_card_text',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'disable_context' => array(
+      'disabled' => array(
+        'tp4_global' => 'tp4_global',
+        'tp4_global_not_front' => 'tp4_global_not_front',
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
+  $export['tp4_campaign_cards'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_campaign_pages';
+  $context->description = '';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'campaign_page' => 'campaign_page',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-ga_campaign_header' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_campaign_header',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'tp4_support-tp4_slim_nav' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_slim_nav',
+          'region' => 'header',
+          'weight' => '-8',
+        ),
+        'tp_campaigns-tp_campaigns_hero' => array(
+          'module' => 'tp_campaigns',
+          'delta' => 'tp_campaigns_hero',
+          'region' => 'header',
+          'weight' => '-7',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'tp4_support-tp4_footer' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_footer',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+        'menu-menu-megamenu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-megamenu',
+          'region' => 'left_drawer',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+    'disable_context' => array(
+      'disabled' => array(
+        'tp4_global' => 'tp4_global',
+        'tp4_global_not_front' => 'tp4_global_not_front',
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
+  $export['tp4_campaign_pages'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

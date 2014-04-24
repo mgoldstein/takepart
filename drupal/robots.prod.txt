@@ -12,6 +12,9 @@ Disallow: /blog/2009/
 Disallow: /blog/2010/
 Disallow: /blog/bloggers/
 Disallow: /blog/tag/
+Disallow: /campaign-card/
+Disallow: /campaign-parent/
+Disallow: /campaign-tray/
 Disallow: /categories/
 Disallow: /comment/
 Disallow: /comment/reply/

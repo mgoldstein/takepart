@@ -51,7 +51,7 @@
     <h3>School</h3>
     <p>
       <% if (school.external_id && parseInt(school.external_id) > 0) { %>
-      <a id="school-name" href="#school/<%= school.state %>/<%=school.external_id%>"><%=school.name%></a>
+      <a id="school-name" href="/teach/stories/school/<%= school.state %>/<%=school.external_id%>"><%=school.name%></a>
       <% } else { %>
       <%=school.name%>
       <% } %>
