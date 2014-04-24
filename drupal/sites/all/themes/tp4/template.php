@@ -1662,8 +1662,8 @@ function tp4_preprocess_panels_pane(&$variables) {
         $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
         if ($variables['content']['#bundle'] == 'video') {
             $variables['title_attributes_array']['class'][] = 'no-overlap';
-            $variables['title_link'] = url('node/' . $variables['content']['#node']->nid);
         }
+        $variables['title_link'] = url('node/' . $variables['content']['#node']->nid);
     }
 }
 

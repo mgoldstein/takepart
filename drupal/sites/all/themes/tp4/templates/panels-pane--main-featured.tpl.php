@@ -37,6 +37,7 @@ $headline = !empty($content['#node']->field_promo_headline) ? $content['#node']-
       <?php if ($headline) {
         if (!empty($title_link)) {
           $title_heading = '<a href="' . $title_link . '">' . $headline . '</a>';
+          
         }
         else {
           $title_heading = $headline;
