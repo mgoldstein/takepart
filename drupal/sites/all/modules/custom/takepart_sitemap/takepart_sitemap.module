@@ -8,6 +8,7 @@ function takepart_sitemap_xmlsitemap_index_links($limit) {
    
     $nodes = node_load_multiple($nids);
     foreach ($nodes as $node) {
+        drupal_debug($node);
         $link = xmlsitemap_node_create_link($node);
         $link['status'] = 1;
         $link['status_override'] = 1;
