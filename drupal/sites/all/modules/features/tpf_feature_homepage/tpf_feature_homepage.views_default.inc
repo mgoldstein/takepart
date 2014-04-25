@@ -255,6 +255,7 @@ function tpf_feature_homepage_views_default_views() {
     'campaign' => 'campaign',
     'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_video' => 'openpublish_video',
     'openpublish_photo' => 'openpublish_photo',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',

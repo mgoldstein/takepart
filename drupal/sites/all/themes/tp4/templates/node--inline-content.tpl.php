@@ -9,14 +9,9 @@
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
     <header>
-      <?php
-	// We hide the comments and links now so that we can render them later.
-	hide($content['comments']);
-	hide($content['links']);
-	print render($content); ?>
-  <?php if (!$page && $title): ?>
-    <h2 class="inline-title"><?php print $title; ?></h2>
-  <?php endif; ?>
-
+      <a class="inline-content-link" href="<?php print $url_local; ?>">
+      <?php print render($content); ?>
+      <h2 class="inline-title"><?php print $title; ?></h2>
+      </a>
     </header>
 </article>

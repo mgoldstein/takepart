@@ -1775,6 +1775,88 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'tp4_flashcard';
+  $context->description = '';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'flashcard' => 'flashcard',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'tp_flashcards-flashcard_related_content' => array(
+          'module' => 'tp_flashcards',
+          'delta' => 'flashcard_related_content',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'tp_flashcards-flashcard_get_more' => array(
+          'module' => 'tp_flashcards',
+          'delta' => 'flashcard_get_more',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'tp_flashcards-flashcard_comments' => array(
+          'module' => 'tp_flashcards',
+          'delta' => 'flashcard_comments',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
+        'newsletter_campaign-51' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '51',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'views-92f8036c910f2ff5c341b7002d220886' => array(
+          'module' => 'views',
+          'delta' => '92f8036c910f2ff5c341b7002d220886',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar',
+          'weight' => '-8',
+        ),
+        'boxes-bg_skin_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'bg_skin_sponsor',
+          'region' => 'suffix',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
+  $export['tp4_flashcard'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tp4_global';
   $context->description = '';
   $context->tag = 'TP4';
@@ -1834,6 +1916,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
         '~<front>' => '~<front>',
         '~feature/*' => '~feature/*',
         '~video/*' => '~video/*',
+        '~flashcards/*' => '~flashcards/*',
       ),
     ),
     'theme' => array(
