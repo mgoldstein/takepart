@@ -705,6 +705,191 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
 
 }
 
+function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
+	
+	if($variables['type'] == "campaign_card_twitter"){
+	
+	// Please change the settings based on TakePart application (removed this comment if already changed)
+    $consumer_key = "V6nDFFxPrPCK1JnjLERqVJJLQ";
+    $consumer_secret = "tzaVbCYVIPvZjEw2eikoWa1EODuTgqAvciksBP88gL2CQLwpjH";
+	// Get username, number of tweets, timeline type, and access tokens from content type
+	$username = $variables['field_twitter_username'][0]['value'];
+	$number_of_tweets = $variables['field_number_of_tweets'][0]['value'];
+	$type = $variables['field_twitter_type'][0]['value'];
+	$oauth_access_token = $variables['field_oauth_token'][0]['value'];
+	$oauth_access_token_secret = $variables['field_oauth_token_secret'][0]['value'];
+	
+	if ( ! class_exists('TwitterOAuth')){
+	require('./sites/all/modules/custom/tp_twitter/twitteroauth/twitteroauth.php');	
+	}
+	
+	$connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_access_token, $oauth_access_token_secret);
+	
+	switch($type){
+		case "user_timeline":
+		case "mentions_timeline":
+		case "home_timeline":
+		case "retweets_of_me":
+			$twitter_api_url = 'statuses/'.$type;
+			$parameters = array('screen_name' => $username, 'count' => $number_of_tweets);
+			break;
+		case "favorites_list":
+			$twitter_api_url = 'favorites/list';
+			$parameters = array('screen_name' => $username, 'count' => $number_of_tweets);
+			break;
+		case "hashtag":
+			$twitter_api_url = 'search/tweets';
+			$parameters = array('q' => $username, 'count' => $number_of_tweets); //hashtag is in Username field
+			break;
+		case "list":
+			$twitter_api_url = 'lists/statuses';
+			$parameters = array('owner_screen_name' => $username,  'slug' => $variables['field_twitter_list_slug'][0]['value'], 'count' => $number_of_tweets);
+		break;
+	}
+	
+	$twitter_data = $connection->get($twitter_api_url, $parameters);
+	if($type == 'hashtag'){
+		
+		foreach($twitter_data->statuses as $tweets){
+			
+				$variables['tweet'][] = $tweets->text;
+			    $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'">'.$tweets->user->screen_name."</a>";
+				$variables['profile_pic'][] = $tweets->user->profile_image_url;
+				$variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
+				$variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
+			
+		}
+
+		
+	}
+	else{
+		
+		foreach($twitter_data as $tweets){
+				$variables['tweet'][] = $tweets->text;
+			    $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'">'.$tweets->user->screen_name."</a>";
+				$variables['profile_pic'][] = $tweets->user->profile_image_url;
+				$variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
+				$variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
+		}
+	
+	}
+	// Get entities count
+    $entities_count = count($variables['entities']);
+	for($x=0; $x<$entities_count; $x++){
+		
+		// Check if there is URLs in tweet
+		if(!empty($variables['entities'][$x]->urls)){
+			
+			// Check number of URLs
+			$url_count = count($variables['entities'][$x]->urls);
+			
+			for($y=0; $y<$url_count; $y++){
+				
+				// Check if URL exists in a tweet, if yes, add link tag
+				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->urls[$y]->url) !== false) {
+   					$variables['tweet'][$x] = str_replace($variables['entities'][$x]->urls[$y]->url, '<a href="'.$variables['entities'][$x]->urls[$y]->url.'">'.$variables['entities'][$x]->urls[$y]->display_url.'</a>', $variables['tweet'][$x]);				
+				}
+
+			}
+
+		} // End URL
+		
+		// Check if there is user mention in tweet
+		if(!empty($variables['entities'][$x]->user_mentions)){
+			
+			// Check number of URLs
+			$user_mention_count = count($variables['entities'][$x]->user_mentions);
+			
+			for($y=0; $y<$user_mention_count; $y++){
+				
+				// Check if user mention exists in a tweet, if yes, add link tag
+				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->user_mentions[$y]->screen_name) !== false) {
+   					$variables['tweet'][$x] = str_replace('@'.$variables['entities'][$x]->user_mentions[$y]->screen_name, '<a href="http://twitter.com/'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'">@'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'</a>', $variables['tweet'][$x]);				
+				}
+
+			}
+			
+		} // End user mention
+		
+		// Check if there is hashtag
+		if(!empty($variables['entities'][$x]->hashtags)){
+			
+			// Check number of URLs
+			$hashtags_count = count($variables['entities'][$x]->hashtags);
+			
+			for($z=0; $z<$hashtags_count; $z++){
+				
+				// Check if hashtag exist in a tweet, if yes, add link tag
+				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->hashtags[$z]->text) !== false) {
+   					$variables['tweet'][$x] = str_replace('#'.$variables['entities'][$x]->hashtags[$z]->text, '<a href="https://twitter.com/search?q=%23'.$variables['entities'][$x]->hashtags[$z]->text.'&src=hash">#'.$variables['entities'][$x]->hashtags[$z]->text.'</a>'." ", $variables['tweet'][$x]);				
+				}
+
+			}
+			
+		} // End user mention
+		
+	
+	} 
+
+  //Width and height variables
+  $variables['styles'] = array();
+  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color'][0]['rgb']. ';';
+  
+  if($variables['field_campaign_bgw'][0]['value'] == 0){
+    $variables['classes_array'][] = 'card-width-full';
+  }
+  else{
+    $variables['classes_array'][] = 'card-width-980';
+  }
+  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
+    $variables['styles'][] = 'background-size: 100%;';
+  }
+  else{
+    $variables['styles'][] = 'background-size: 1000px;';
+  }
+  
+  $variables['card_background'] = file_create_url($variables['field_campaign_background'][0]['uri']);
+	
+	
+ }
+
+}
+
+//Convert Twitter timestamp
+function tp4_convert_twitter_time( $t ) {
+	
+	// Set time zone
+	date_default_timezone_set('America/Los_Angeles');
+	
+	// Get Current Server Time
+	$server_time = $_SERVER['REQUEST_TIME'];
+	
+	// Convert Twitter Time to UNIX
+	$new_tweet_time = strtotime($t);
+	
+	// Set Up Output for the Timestamp if over 24 hours
+	$this_tweet_day =  date('D. M j, Y', strtotime($t));
+	
+	// Subtract Twitter time from current server time
+	$time = $server_time - $new_tweet_time;			
+	
+	// less than an hour, output 'minutes' messaging
+	if( $time < 3599) {
+		$time = round($time / 60) . ' minutes ago';
+	}
+	// less than a day but over an hour, output 'hours' messaging 
+	else if ($time >= 3600 && $time <= 86400) {
+		$time = round($time / 3600) . ' hours ago';
+	}
+	// over a day, output the $tweet_day formatting
+	else if ( $time > 86400)  {
+		$time = $this_tweet_day;
+	}
+	
+	return $time;
+	
+}
+
 /**
  * Implementation of hook_query_TAG_alter
  */
