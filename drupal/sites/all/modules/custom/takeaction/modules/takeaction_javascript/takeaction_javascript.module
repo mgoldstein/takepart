@@ -33,7 +33,7 @@ function takeaction_javascript_init() {
           var tabScript = document.createElement('script');
           tabScript.type = 'text/javascript';
           tabScript.async = true;
-          var scriptLocation = TP.tabHost || 'http://takeaction.takepart.com');
+          var scriptLocation = TP.tabHost || 'https://takeaction.takepart.com';
           tabScript.src = scriptLocation + '{$publisher_js}';
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(tabScript, s);
