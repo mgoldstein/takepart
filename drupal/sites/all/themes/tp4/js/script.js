@@ -244,19 +244,23 @@ Drupal.behaviors.tpsocialShares = {
      };
 
     /**
- * Social Events tracking
- */
-    Drupal.behaviors.socialEventsTracking = {
+     * Monitor the global object and fire off analytics callbacks.
+     */
+    Drupal.behaviors.analytics = {
         attach: function() {
-
-            $(window).bind('tp-social-share', function(e, args) {
+            $(window)
+            .on('tp-social-share', function(e, args) {
                 takepart.analytics.track('tp-social-share', args);
-            });
-
-            $(window).bind('tp-social-click', function(e, args) {
+            })
+            .on('tp-social-click', function(e, args) {
                 takepart.analytics.track('tp-social-click', args);
+            })
+            .on('flashcard-tooltip', function(e, args) {
+                takepart.analytics.track('flashcard-tooltip', args);
+            })
+            .on('flashcard-click', function(e, args) {
+                takepart.analytics.track('flashcard-click', args);
             });
-
         }
     };
 

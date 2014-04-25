@@ -424,6 +424,28 @@
             s.events = null;
             s.prop36 = options.name;
             s.tl(options.target, 'o', options.name, null, 'navigate');
+        },
+        // -----------------------------------
+        // Flashcards ------------------------
+        // -----------------------------------
+        
+        'flashcard-tooltip': function(options) {
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars='eVar26,eVar30,events';
+            s.linkTrackEvents='event89';
+            s.events='event89';
+            s.eVar26=options.term;
+            s.eVar30=s.pageName;
+            s.tl(true, 'o', 'Flashcard Tooltip Popup');
+        },
+        'flashcard-click': function(options) {
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars='eVar26,eVar30,events';
+            s.linkTrackEvents='event90';
+            s.events='event90';
+            s.eVar26=options.term;
+            s.eVar30=s.pageName;
+            s.tl(true, 'o', 'Flashcard Tooltip Popup');
         }
         
     });
