@@ -1264,6 +1264,94 @@ body.node-type-campaign-page, #main.card-page{
 
 }
 
+/* Twitter Card */
+
+#tweet-card{
+  margin-left: 40px;
+}
+.twitter-descriptive-text{
+    @include breakpoint($breakpoint-mobile){
+    margin-left: 10px;
+    margin-right: 10px;
+    }
+    @include breakpoint($breakpoint-tablet)
+    {
+      
+    margin-right: 18%;
+    margin-left: 18%;
+    
+    }
+}
+
+.tweet{
+  
+    @include breakpoint($breakpoint-mobile){
+    width: 100%;
+    }
+    @include breakpoint($breakpoint-tablet){
+    width: 44.5%;
+    min-height: 210px;
+    }
+    @include breakpoint($breakpoint-desktop){
+    width: 44.5%;
+    min-height: 160px;
+    }
+    float: left;
+    margin-left: 2.25%;
+    margin-right: 2.25%;
+    margin-bottom: 30px;
+
+  .tweet-left{  
+    float: left;
+    width: 25%;
+    
+    img.profile-pic{
+      @include breakpoint($breakpoint-mobile){
+      width: 75px;
+      height: 75px;
+      border-radius: 75px;
+      -webkit-border-radius: 75px;
+      -moz-border-radius: 75px;
+      }
+      @include breakpoint($breakpoint-tablet){
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      -webkit-border-radius: 100px;
+      -moz-border-radius: 100px;
+      }
+      @include breakpoint($breakpoint-desktop){
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+      -webkit-border-radius: 100px;
+      -moz-border-radius: 100px;
+      }
+    }
+    
+  }
+  
+  .tweet-right{
+    @include breakpoint($breakpoint-mobile){
+    float: left;
+    }
+    @include breakpoint($breakpoint-tablet){
+    float: right;
+    margin-left: 5%;
+    }
+    width: 70%;
+    h6{
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+    p{
+      margin-top: 5px;
+    }
+
+  }
+
+  
+}
 @media only screen and (max-width: 700px)
 {
     

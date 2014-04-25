@@ -1,0 +1,7 @@
+name = Campaign Twitter Card
+description = twitter authentication module for twitter card
+core = 7.x
+version = 7.x
+
+
+files[] = tp_twitter.module
