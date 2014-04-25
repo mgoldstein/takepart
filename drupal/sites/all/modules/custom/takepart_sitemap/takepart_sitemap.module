@@ -7,9 +7,12 @@ function takepart_sitemap_xmlsitemap_index_links($limit) {
   /*
    * Query to pull all actions
    */
-  $nids = db_query_range("SELECT n.nid FROM {node} n LEFT JOIN {xmlsitemap} x ON x.type = 'node' AND x.subtype = 'action' AND n.nid = x.id WHERE x.id IS NULL AND n.type = 'action' ORDER BY n.nid DESC", 0, $limit)->fetchCol();
+  // $nids = db_query_range("SELECT n.nid FROM {node} n LEFT JOIN {xmlsitemap} x ON x.type = 'node' AND x.subtype = 'action' AND n.nid = x.id WHERE x.id IS NULL AND n.type = 'action' ORDER BY n.nid DESC", 0, $limit)->fetchCol();
+   $nids = db_query_range("SELECT n.nid FROM {node} n LEFT JOIN {xmlsitemap} x ON x.type = 'node' AND x.subtype = 'action' AND n.nid = x.id WHERE n.type = 'action' ORDER BY n.nid DESC", 0, $limit)->fetchCol();
    
   $nodes = node_load_multiple($nids);
+  drupal_debug($nodes);
+  $i = 0;
   foreach ($nodes as $node) {
   $tid = NULL;
   foreach(field_get_items('node', $node, 'field_action_type') as $delta => $item) {
@@ -23,8 +26,10 @@ function takepart_sitemap_xmlsitemap_index_links($limit) {
       $link['status'] = 1;
       $link['status_override'] = 1;
       xmlsitemap_link_save($link);
+      $i++;
     }
   }
+  drupal_debug($i);
 }
 /*
  * Cron hook to process actions
