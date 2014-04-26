@@ -210,8 +210,8 @@ function tp4_campaign_megamenu($nid){
         $output .= '</a>'; //end .sub-category
 
       }
-      $output .= '</div>'; //end .categories
-      //return more link
+      $output .= '</div>'; // end .categories
+      // return more link
       if(isset($link['link']['options']['attributes']['name'])){
         $output .= l($link['link']['options']['attributes']['name'], $path, array('attributes' => array('class' => array('more'))));
       }
