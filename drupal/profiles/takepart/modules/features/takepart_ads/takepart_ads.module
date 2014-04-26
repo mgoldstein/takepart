@@ -6,7 +6,6 @@ function _custom_targeting_overrides($stringwithkeyvalue) {
 }
 
 function takepart_ads_preprocess_page(&$vars) {
- 
     if (function_exists('wordlet_active_page')) {
         $wordlet_page = wordlet_active_page();
         if ($wordlet_page !== FALSE) {
@@ -57,22 +56,34 @@ function takepart_ads_preprocess_page(&$vars) {
         $topic .= 'GA_googleAddAttr("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
         $gpt_topic .= 'googletag.pubads().setTargeting("Topic", ["' . implode('", "', $tterms) . '"]);' . "\n";
     }
-    elseif ( isset($vars['page']['content']['system_main']['#term']) ) {
-        $field_topic = $vars['page']['content']['system_main']['#term'];
-        $topic .= 'GA_googleAddAttr("Topic", "' . $field_topic->name . '");' . "\n";
-        $gpt_topic .= 'googletag.pubads().setTargeting("Topic", "' . $field_topic->name . '");' . "\n";
+    elseif ( isset($vars['page']['content']['system_main']['#term']->name) && ($vars['page']['content']['system_main']['#bundle'] === 'topic') ) {
+        $field_topic = strtolower(str_replace(" & ", "-", $vars['page']['content']['system_main']['#term']->name));
+        $topic .= 'GA_googleAddAttr("Topic", "' . $field_topic . '");' . "\n";
+        $gpt_topic .= 'googletag.pubads().setTargeting("Topic", "' . $field_topic . '");' . "\n";
     }
 
     $gptad_html .= 'googletag.pubads().collapseEmptyDivs();';
-    $contentType = isset($vars['node']->type) ? 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n" : "";
-    $gpt_contentType = isset($vars['node']->type) ? 'googletag.pubads().setTargeting("Type", "' . $vars['node']->type . '");' . "\n" : "";
+
+
     $field_free_tag = isset($vars['node']->field_free_tag['und']) ? $vars['node']->field_free_tag['und'] : array();
     $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
     $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
     $field_series = isset($vars['node']->field_series['und']) ? $vars['node']->field_series['und'] : array();
 
     $terms = array();
-
+    if (isset($vars['node']->type)) {
+        $contentType = 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n";
+        $gpt_contentType = 'googletag.pubads().setTargeting("Type", "' . $vars['node']->type . '");' . "\n";
+    }
+    elseif ($vars['page']['content']['system_main']['#bundle'] === 'topic') {
+        $contentType = 'GA_googleAddAttr("Type", "topic_hub");' . "\n";
+        $gpt_contentType = 'googletag.pubads().setTargeting("Type", "topic_hub");' . "\n";
+    }
+    else {
+        $contentType = "";
+        $gpt_contentType = "";
+    }
+    
     $override = filter_input(INPUT_GET, 'dfpKeyval');
     if ($override) {
         $pairs = explode(",", $override);
@@ -169,7 +180,7 @@ GS_googleEnableAllServices();';
     $header3 = 'GA_googleFetchAds();';
 
     if (!empty($ad_html)) {
-        drupal_add_js('http://partner.googleadservices.com/gampad/google_service.js', 'external');
+        drupal_add_js('//partner.googleadservices.com/gampad/google_service.js', 'external');
         drupal_add_js($header1, 'inline');
         drupal_add_js($header2, 'inline');
         drupal_add_js($header3, 'inline');

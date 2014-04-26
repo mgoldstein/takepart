@@ -1,0 +1,33 @@
+/**
+ * @file
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+
+
+// Add Compass' IE and vendor prefix support variables.
+@import "compass/support";
+@import "compass/utilities/general/clearfix";
+@import "compass/utilities/sprites";
+@import "compass/css3";
+@import "compass/typography/vertical_rhythm";
+@import "zen";
+
+/* Base */
+@import "base/fonts";
+@import "base/icons";
+
+/* Helpers */
+@import "helpers/mixins";
+@import "helpers/variables";
+
+/* Elements */
+@import "elements/pie";
+@import "elements/typography";
+@import "elements/normalize";
+@import "elements/misc";
+
+/* Modules */
+@import "modules/wysiwyg";

@@ -33,7 +33,6 @@ function wordlet_patt_snap_page_alter($page) {
                     'content' => $w->img_src,
                 ),
             );
-
             drupal_add_html_head($metatag, 'facebook_image');
         }
     }
@@ -156,8 +155,7 @@ function takepart3_preprocess_html(&$vars) {
     }
 
     // Remove tracking from place at the table iframed header
-    // TODO: Fucking fix this.
-    // Potty mouth
+    // TODO: fix this.
     if (preg_match('/^\/iframes\/place-at-the-table\/header/', $_SERVER['REQUEST_URI'])
       || preg_match('/^\/interstitials/', $_SERVER['REQUEST_URI'])
         ) {

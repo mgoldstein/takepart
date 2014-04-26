@@ -332,7 +332,7 @@ function _fbregistration_getfbreg(&$form = null) {
 
   if(variable_get('fbregistration_type', 0) == 1)  {
     $fbregtag = variable_get('fbregistration_tag_iframe', '<iframe scrolling="auto" frameborder="no" style="border:none" allowTransparency="true" width="100%" height="530"></iframe>');
-    $fbregtag = str_replace('<iframe','<iframe src="http://www.facebook.com/plugins/registration.php?fb_register=true&fb_only=false&client_id='.$app_id.'&redirect_uri=' . 'http://' . $_SERVER['HTTP_HOST'] . $dest . '&fields=' .$json . '"', $fbregtag);
+    $fbregtag = str_replace('<iframe','<iframe src="//www.facebook.com/plugins/registration.php?fb_register=true&fb_only=false&client_id='.$app_id.'&redirect_uri=' . 'http://' . $_SERVER['HTTP_HOST'] . $dest . '&fields=' .$json . '"', $fbregtag);
   } else {
     $fbregtag = variable_get('fbregistration_tag_b', '<fb:registration fb_register="true" fb_only="false" width="530"></fb:registration>');
     $fbregtag = str_replace('<fb:registration','<fb:registration onvalidate="fbregistration_validate" fields="'.$json.'" client_id="'.$app_id.'" redirect-uri="http://' . $_SERVER['HTTP_HOST'] . $dest . '"', $fbregtag);

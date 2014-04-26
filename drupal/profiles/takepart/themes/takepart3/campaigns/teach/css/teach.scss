@@ -671,7 +671,7 @@ a {
 }
 
 .teach-video-page,
-.page-wordlet-teach-alliances .content,
+.teach-alliances-content,
 .teach-news-content,
 .teach-story-content,
 .teach-film-content,
@@ -1331,55 +1331,53 @@ a {
 
 /* # Alliances Page
 ================================================== */
-.page-wordlet-teach-alliances {
-  .content {
-    .main-image-wrapper {
-      margin: 0.5em 20px;
-      text-align: center;
-      img {
-        max-width: 100% !important;
-        height: auto !important;
-      }
+.teach-alliances-content {
+  .main-image-wrapper {
+    margin: 0.5em 20px;
+    text-align: center;
+    img {
+      max-width: 100% !important;
+      height: auto !important;
     }
-    .content-main,
-    .alliances {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      padding: 0 20px;
-      width: 100%;
-      float: left;
+  }
+  .content-main,
+  .alliances {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 100%;
+    float: left;
+  }
+  .alliance {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: white none;
+    @include box-shadow(0 0 6px rgba(0,0,0,0.6));
+    text-align: center;
+    overflow: hidden;
+    padding: 10px;
+    margin-bottom: 20px;
+    @media (min-width: 321px) {
+    	float: left;
+    	width: 45%;
+    	margin-right: 5%;
+    	&.alliance-even {
+    	  margin-right: 0;
+    	}
     }
-    .alliance {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      background: white none;
-      @include box-shadow(0 0 6px rgba(0,0,0,0.6));
-      text-align: center;
-      overflow: hidden;
-      padding: 10px;
-      margin-bottom: 20px;
-      @media (min-width: 321px) {
-      	float: left;
-      	width: 45%;
-      	margin-right: 5%;
-      	&.alliance-even {
-      	  margin-right: 0;
-      	}
-      }
-      @media (min-width: 769px) {
-      	width: 22%;
-      	margin-right: 4%;
-      	&.alliance-nth-child-4n {
-      	  margin-right: 0;
-      	}
-      }
-      img {
-      	max-width: 100% !important;
-      	height: auto !important;
-      	vertical-align: middle;
-      }
+    @media (min-width: 769px) {
+    	width: 22%;
+    	margin-right: 4%;
+    	&.alliance-nth-child-4n {
+    	  margin-right: 0;
+    	}
+    }
+    img {
+    	max-width: 100% !important;
+    	height: auto !important;
+    	vertical-align: middle;
     }
   }
 }
@@ -1536,12 +1534,35 @@ a {
   color: $body-copy-black;
   strong { color: $dark-grey; }
 
+  .preface {
+    font-size: 14px;
+    line-height: 24px;
+
+    .teach-fund-button {
+      text-align: center;
+      a {
+        display: inline-block;
+        padding: .5em 1em;
+        font-family: $secondary-font;
+        text-transform: uppercase;
+        color: white;
+        background-color: black;
+      }
+    }
+  }
+
   .sys-intro-body {
+    p,
+    ul {
+      font-size: 14px;
+      line-height: 24px;
+    }
+
     @media (min-width: 768px) {
       width: 60%;
     }
     @media (min-width: 1000px) {
-      min-height: 9em;
+      min-height: 10em;
     }
   }
 }
@@ -1678,20 +1699,8 @@ a {
     clear: both;
   }
 
-  .teach-fund-button {
-    text-align: center;
-    a {
-      display: inline-block;
-      padding: .5em 1em;
-      font-family: $secondary-font;
-      text-transform: uppercase;
-      color: white;
-      background-color: black;
-    }
-  }
-
   .most-stories-headline {
-    font-size: 2.5em;
+    font-size: 2.2em;
     letter-spacing: -1px;
   }
 
@@ -1888,16 +1897,16 @@ a {
 h1.sys-headline {
   background: transparent image-url("sys-headline-bg.png") scroll no-repeat top left;
   font-size: 1.4em;
-  padding: 1.8em 0 1em .5em;
+  padding: 1.3em 0 1em .5em;
 
   @media (min-width: 400px) {
-    font-size: 1.642857143em;
-    padding: 1.3em 0 1em .5em;
+    font-size: 1.4em;
+    padding: 1.7em 0 1em .5em;
   }
 
-  @media (min-width:850px) {
-    font-size: 34px;
-    padding: .67em 0 .75em .5em;  
+  @media (min-width:930px) {
+    font-size: 1.8em;
+    padding: 1.1em 0 .75em .5em;
   }
 
   .teach-sys-thanks-content & {
@@ -1952,10 +1961,20 @@ h1.sys-headline {
 }
 
 .sys-intro-body {
+    line-height: 1.2em;
   p,
   ul {
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.2em
+  } 
+  h4 {
+    font-size: 17px;
+  }
+  span.bullet {
+      font-size: 12px;
+  }
+  span.bullet :after {
+      content:' >>';
   }
 }
 
@@ -2238,6 +2257,17 @@ h1.sys-headline {
     }
   }
 
+  .school-name-instructions {
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 0;
+    .sys-stats-content & {
+      max-width: 20em;
+      margin: 0 auto;
+    }
+  }
+
   .sys-image {
     img {
       max-width: 100%;
@@ -2349,11 +2379,19 @@ h1.sys-headline {
   padding-right: 30px;
   text-indent: 0;
 
+  font-size: 1.3em;
+  line-height: 2em;
+
   &:before {
     display: inline;
     content: "\00d7\0020";
     font-size: 1.5em;
     line-height: .667;
+  }
+
+  &:hover {
+    text-decoration: none;
+    color: $primary-color;
   }
 }
 
@@ -2496,7 +2534,7 @@ h1.sys-headline {
       background-image: image-url("stupid-tape-2.png");
     }
     &:after {
-      bottom: 40px;
+      bottom: 92px;
       left: -24px;
       width: 61px;
       height: 129px;
@@ -2578,14 +2616,10 @@ h1.sys-headline {
   .story-comments {
     max-width: 638px;
     margin: 0 auto;
+    clear: both;
     h3 {
       display: inline-block;
       font-size: 2.166666667em;
-    }
-    .story-fb-like {
-      display: inline-block;
-      vertical-align: baseline;
-      float: right;
     }
   }
 }
@@ -2791,7 +2825,7 @@ h1.sys-headline {
   .sys_modal_content {
     padding: 75px 0;
     @media (min-width: 768px) {
-      padding: 20px 60px;
+      padding: 30px 60px 20px;
     }
     .story-nav {
       display: block;

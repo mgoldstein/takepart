@@ -71,41 +71,53 @@
     },
 
     render: function() {
+
+      // render the element
+      this.$el.html(this.template(this.model.toJSON()));
+      this.$('img').cloudinary();
+
       // set up social options
-      var title = "Teacher Stories: " + [this.model.get('teacher').first_name, this.model.get('teacher').last_name].join(' ');
+      var title =  [
+        "Teacher Stories:",
+        this.model.get('teacher').first_name,
+        this.model.get('teacher').last_name,
+        '-',
+        this.model.get('school').name
+      ].join(' ');
       var description = "Here’s an inspiring teacher story that is helping TEACH to donate up to $50,000 to public schools.";
+      var url = window.location.origin + '/teach/stories/story/' + this.model.get('id');
       var socialOptions = $.extend({}, TEACH.social.options, {
         services: [
           {
             name: 'facebook',
             title: title,
             description: description,
+            url: url,
             image: this.model.get('teacher').image_link
           },
           {
             name: 'twitter',
             text: description,
+            url: url,
             via: 'TeachMovie'
           },
           {
-            name: 'googleplus'
+            name: 'googleplus',
+            url: url
           }
         ]
       });
 
-      // render the element
-      this.$el.html(this.template(this.model.toJSON()));
-      this.$el.find('img').cloudinary();
-      this.$el.find('#story-social-share').tpsocial(socialOptions);
+      _.defer(_.bind(function(){this.$('#story-social-share').tpsocial(socialOptions);}, this));
       window.FB && FB.XFBML.parse(this.el);
 
       // bind social share event to contact TAP
-      this.$el.find('#story-social-share a').on('click', _.bind(function(){
+      this.$('#story-social-share a').on('click', _.bind(function(){
         $.post(TEACH.TAP.postURL + '/' + this.model.get('id') + '/share?publisher_key=' + TEACH.TAP.partner_code);
       }, this));
 
       // When we click on a tag, remove the view
-      this.$el.find('#story-tags').on('click', 'a', _.bind(function(e){
+      this.$('#story-tags').on('click', 'a', _.bind(function(e){
         this.remove();
       }, this));
 
@@ -296,8 +308,6 @@
 
   TEACH.Views.StoriesModalView = Backbone.View.extend({
 
-    currentStory: null,
-
     events: {
       'click #previous-story': 'showPreviousStory',
       'click #next-story': 'showNextStory'
@@ -314,14 +324,11 @@
     render: function() {
       // clean up
       this.$('.sys-story-modal').remove();
-      if (this.currentStory) {
-        this.currentStory.remove();
-      }
-      // put the story in
-      this.currentStory = new TEACH.Views.StoryFullView({
+
+      var currentStory = new TEACH.Views.StoryFullView({
         model: this.collection.models[0] // there's only one model
       });
-      this.currentStory.render().$el.appendTo(this.$el);
+      currentStory.render().$el.appendTo(this.$el);
 
       // show the links we want
       this.$('.story-nav').hide();
@@ -394,7 +401,14 @@
       this.$el.html(_.template($('#app_view').html(), {}));
 
       // cache jQuery objects for convenience
-      this.$nav = this.$('.app-nav');
+      this.$nav = this.$('#app-nav');
+
+      // setup navigation behavior
+      this.$nav.on('click', 'a', function(e) {
+        e.preventDefault();
+        // app links must have the id nav-<route>
+        window.teachRouter.navigate($(this).attr('id').split('-')[1], {trigger: true});
+      });
 
       this.views.featured = new TEACH.Views.StoriesView({
         id: 'pane-featured',
@@ -485,7 +499,7 @@
           this.views.extra = new TEACH.Views.StoryFullView({
             model: new TEACH.Models.Story()
           });
-          this.views.extra.model.url = '/proxy?request=' + TEACH.TAP.postURL + '/' + params[0] + encodeURIComponent('?action_id = ' + TEACH.TAP.action_id + '&publisher_key=' + TEACH.TAP.partner_code);
+          this.views.extra.model.url = '/proxy?request=' + TEACH.TAP.postURL + '/' + params[0] + encodeURIComponent('?action_id=' + TEACH.TAP.action_id + '&publisher_key=' + TEACH.TAP.partner_code);
           this.views.extra.model.fetch({
             success: _.bind(function() {
               $.tpmodal.show({
@@ -512,7 +526,10 @@
   $(document).ready(function() {
     window.teachRouter = new TEACH.AppRouter(); // @todo remove global?
     var app = new TEACH.Views.AppView();
-    Backbone.history.start();
+    Backbone.history.start({
+      pushState: true,
+      root: "/teach/stories"
+    });
     window.app = app; // @todo delete me
   });
 })(jQuery, TEACH, this, this.document)

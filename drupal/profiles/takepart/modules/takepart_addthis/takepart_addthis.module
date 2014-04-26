@@ -43,7 +43,7 @@ function takepart_addthis_menu() {
 function takepart_addthis_preprocess(&$variables, $hook) {
   $ADD_THIS_PUB_ID = variable_get('takepart_addthis_pub_id','ra-4e48103302adc2d8');
   drupal_add_js(drupal_get_path('module','takepart_addthis') . '/js/exaddthis.js', 'file');
-  drupal_add_js('http://s7.addthis.com/js/250/addthis_widget.js#pubid=' . $ADD_THIS_PUB_ID, 'external');
+  drupal_add_js('//s7.addthis.com/js/250/addthis_widget.js#pubid=' . $ADD_THIS_PUB_ID, 'external');
 
   //<a class="addthis_button_digg">Digg this</a>
 
