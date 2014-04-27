@@ -1223,6 +1223,7 @@ body.node-type-campaign-page, #main.card-page{
       height: auto;
       overflow: hidden;
       margin-left: 5px;
+      margin-right: 5px;
       @include breakpoint($breakpoint-tablet){
           float: none;
           width: 65%;
