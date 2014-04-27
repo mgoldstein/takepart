@@ -1,5 +1,11 @@
-.poll {
+.node-openpublish-article.view-mode-full .inline-content-nodes.vertical.inline-node-poll {
+  float: left;
+  &:before {
+    display: none;
+  }
+}
 
+.poll {
   border: 1px solid $gray-line;
   @include header-top-border();
   @include box-sizing(box-content);
