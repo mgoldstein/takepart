@@ -43,26 +43,5 @@
         })
       }
     });
-
-    // populate the featured stories in polaroids
-    $('.featured-stories').find('.featured-story').each(function() {
-      var $this = $(this);
-      var storyId = $this.data('storyid');
-      $.ajax('/proxy?request=' + encodeURIComponent(TEACH.TAP.postURL + '/' + storyId + '?action_id=' + TEACH.TAP.action_id + '&publisher_key=' + TEACH.TAP.partner_code), {
-        success: function(data) {
-
-          // replace empty teacher image with defaults
-          if (data.teacher.image_uid == "") {
-            data.teacher.image_uid = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
-          }
-
-          $this
-            .html(TEACH.tmpl('featured_story_template', data))
-            .on('click', 'a', function(e) { e.stopPropagation(); })
-            .find('img').cloudinary()
-          ;
-        }
-      });
-    });
   });
 })(jQuery, TEACH, this, this.document)
