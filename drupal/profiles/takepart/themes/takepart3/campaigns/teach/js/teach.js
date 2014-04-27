@@ -207,6 +207,33 @@ if (!String.prototype.trim) {
         }
     };
 
+
+    // populate the featured stories in polaroids
+    Drupal.behaviors.featuredStories = {
+        attach: function() {
+            $('.featured-story').filter('[data-storyid]').each(function() {
+              var $this = $(this);
+              var storyId = $this.data('storyid');
+              $.ajax('/proxy?request=' + encodeURIComponent(TEACH.TAP.postURL + '/' + storyId + '?action_id=' + TEACH.TAP.action_id + '&publisher_key=' + TEACH.TAP.partner_code), {
+                success: function(data) {
+
+                  // replace empty teacher image with defaults
+                  if (data.teacher.image_uid == "") {
+                    data.teacher.image_uid = 'sys-defaults/sys-default-' + Math.ceil(Math.random() * 17);
+                  }
+
+                  $this
+                    .html(TEACH.tmpl('featured_story_template', data))
+                    .on('click', 'a', function(e) { e.stopPropagation(); })
+                    .find('img').cloudinary()
+                  ;
+                }
+              });
+            });
+        }
+    };
+
+
     // attach window-level events to their various handlers
     Drupal.behaviors.trackSocialClicks = {
         attach: function() {

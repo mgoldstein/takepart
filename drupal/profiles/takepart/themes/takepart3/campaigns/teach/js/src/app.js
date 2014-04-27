@@ -501,20 +501,12 @@
           });
           this.views.extra.model.url = TEACH.TAP.postURL + '/' + params[0] + '?action_id=' + TEACH.TAP.action_id + '&publisher_key=' + TEACH.TAP.partner_code;
           this.views.extra.model.fetch({
-            success: _.bind(function() {
+            success: _.delay(_.bind(function() {
               $.tpmodal.show({
                 id: 'sys_modal_',
-                node: this.views.extra.el,
-                afterClose: _.bind(function() {
-                  // @todo this isn't firing
-                  this.views.extra.remove();
-                  delete this.views['extra'];
-                  window.teachRouter.navigate('', {
-                    replace: true
-                  });
-                }, this)
+                node: this.views.extra.el
               });
-            }, this)
+            }, this), 500)
           });
           this.$nav.find('#nav-featured').addClass('active');
           this.views.featured.$el.show();
