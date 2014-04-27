@@ -370,8 +370,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 		}
 	
 	}
-	
-	
+
+  // Check whether facebook comments should be enabled
+  foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
+    $variables['show_facebook_comments'] = $item['value'];
+  }
 }
 
 /**
