@@ -1,0 +1,50 @@
+diff --git a/color_field.module b/color_field.module
+index 1a468a9..9c363bc 100644
+--- a/color_field.module
++++ b/color_field.module
+@@ -582,13 +582,11 @@ function color_field_field_widget_form(&$form, &$form_state, $field, $instance,
+       break;
+ 
+     case 'color_field_spectrum_widget':
+-      // Add library.
+-      drupal_add_library('color_field', 'bgrins-spectrum');
+       $field_id = $field['field_name'] . '-' . $langcode . '-' . $delta;
+       // Support field collection module.
+       (isset($element['#field_parents']) && !empty($element['#field_parents'])) ? $bundle_id = '-' . implode('-', $element['#field_parents']) : $bundle_id = '';
+-      $id = str_replace("_", "-", 'edit' . $bundle_id . '-' . $field_id . '-rgb');
+-      $settings['id'] = $id;
++      $class = str_replace("_", "-", 'edit' . $bundle_id . '-' . $field_id . '-rgb');
++      $settings['class'] = $class;
+       $settings['show_input'] = (isset($field['settings']['show_input']) && $field['settings']['show_input'] == 1) ? TRUE : FALSE;
+       $settings['show_palette'] = (isset($field['settings']['show_palette']) && $field['settings']['show_palette'] == 1) ? TRUE : FALSE;
+       $settings['show_palette_only'] = (isset($field['settings']['show_palette_only']) && $field['settings']['show_palette_only'] == 1) ? TRUE : FALSE;
+@@ -606,13 +604,14 @@ function color_field_field_widget_form(&$form, &$form_state, $field, $instance,
+         '#default_value' => $value,
+         '#size' => 7,
+         '#maxlength' => 7,
++        '#attributes' => array('class' => array($class)),
+         '#attached' => array(
+           // Add Spectrum color picker.
+-          'library' => array(array('color_field', 'spectrum')),
++          'library' => array(array('color_field', 'bgrins-spectrum')),
+           'js' => array(
+             drupal_get_path('module', 'color_field') . '/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js',
+             array(
+-              'data' => array('color_field_spectrum' => array('#' . $id => $settings)),
++              'data' => array('color_field_spectrum' => array($class => $settings)),
+               'type' => 'setting',
+             ),
+           ),
+diff --git a/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js b/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js
+index 77163c8..002da4b 100755
+--- a/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js
++++ b/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js
+@@ -6,7 +6,7 @@
+   Drupal.behaviors.color_field_spectrum = {
+     attach: function (context) {
+       $.each(Drupal.settings.color_field_spectrum, function (selector) {
+-        $('#' + this.id).spectrum({
++        $('.' + this.class).spectrum({
+           preferredFormat: "hex",
+           showInput: this.show_input,
+           showAlpha: false,

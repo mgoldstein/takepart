@@ -715,12 +715,12 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Promo',
     'weight' => '5',
     'children' => array(
-      0 => 'field_promo_headline',
-      1 => 'field_promo_short_headline',
-      2 => 'field_article_subhead',
+      0 => 'field_article_subhead',
+      1 => 'field_promo_headline',
+      2 => 'field_promo_short_headline',
       3 => 'field_promo_text',
-      4 => 'field_thumbnail',
-      5 => 'field_tab_action_override',
+      4 => 'field_tab_action_override',
+      5 => 'field_thumbnail',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -779,8 +779,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'SEO',
     'weight' => '4',
     'children' => array(
-      0 => 'xmlsitemap',
-      1 => 'field_campaign_seo_title',
+      0 => 'field_campaign_seo_title',
+      1 => 'xmlsitemap',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

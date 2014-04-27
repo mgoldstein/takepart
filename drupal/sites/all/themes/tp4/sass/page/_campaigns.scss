@@ -1223,6 +1223,7 @@ body.node-type-campaign-page, #main.card-page{
       height: auto;
       overflow: hidden;
       margin-left: 5px;
+      margin-right: 5px;
       @include breakpoint($breakpoint-tablet){
           float: none;
           width: 65%;
@@ -1262,6 +1263,21 @@ body.node-type-campaign-page, #main.card-page{
 
 
 
+}
+
+.campaign-page-comments {
+  max-width: 550px;
+  margin: 0 auto;
+  h1 {
+    font-family: $secondary-sans-font;
+    text-transform: uppercase;
+    margin-bottom: .25em;
+    .count {
+      font: normal 100 .65em/1.25 $primary-sans-font;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
 }
 
 /* Twitter Card */
