@@ -112,7 +112,10 @@ class SimpleOptInSignupEndpoint extends SignupEndpoint {
   }
 
   public function getCheckedByDefault() {
-    return empty($this->configuration['checked_by_default']) ? 0 : 1;
+    if (isset($this->configuration['checked_by_default'])) {
+      return empty($this->configuration['checked_by_default']) ? 0 : 1;
+    }
+    return 1;
   }
 
   public function setCheckedByDefault($checkedByDefault) {
