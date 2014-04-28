@@ -10012,11 +10012,11 @@ Note: If you manually reference more items than selected here, the number refere
     'description' => 'You can put anything in here like links, text, and images using WYSIWYG. ',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10055,12 +10055,9 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'vidpop_map' => array(
@@ -10081,30 +10078,30 @@ Note: If you manually reference more items than selected here, the number refere
           'full_html' => 'full_html',
           'limited_html' => 'limited_html',
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
-          'php_code' => 'php_code',
+          'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 1,
         'default_order_wrapper' => array(
           'formats' => array(
             'campaign_full_html' => array(
-              'weight' => 0,
+              'weight' => -50,
             ),
             'full_html' => array(
-              'weight' => 1,
+              'weight' => -48,
             ),
             'limited_html' => array(
-              'weight' => 2,
+              'weight' => -47,
             ),
             'no_wysiwg_full_html' => array(
-              'weight' => 3,
+              'weight' => -49,
             ),
             'php_code' => array(
-              'weight' => -10,
+              'weight' => -45,
             ),
             'plain_text' => array(
-              'weight' => 10,
+              'weight' => -46,
             ),
           ),
         ),
