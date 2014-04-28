@@ -40,9 +40,11 @@
 	<?php	
 	}	
 	?>
+	
+		<div class="twitter-descriptive-text"><?php print $variables['body'][0]['value'];	?></div>
+
 	</div>
 	
-	<div class="twitter-descriptive-text"><?php print $variables['body'][0]['value'];	?></div>
 
 </article>
 
