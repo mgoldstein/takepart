@@ -16,7 +16,7 @@
     <?php endif; ?>
     
     
-	<div id="tweet-card">
+	<div class="tweet-card">
 	<?php 
 			
 	$tweet_count = count($variables['tweet']);

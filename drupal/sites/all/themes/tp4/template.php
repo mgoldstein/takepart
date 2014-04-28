@@ -266,7 +266,7 @@ function tp4_preprocess_block(&$variables) {
  *   The name of the template being rendered ("node" in this case.)
  */
 function tp4_preprocess_node(&$variables, $hook) {
-
+	
 	// Add template suggestions for view modes and
     // node types per view view mode.
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
@@ -812,7 +812,7 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 				
 				// Check if URL exists in a tweet, if yes, add link tag
 				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->urls[$y]->url) !== false) {
-   					$variables['tweet'][$x] = str_replace($variables['entities'][$x]->urls[$y]->url, '<a href="'.$variables['entities'][$x]->urls[$y]->url.'">'.$variables['entities'][$x]->urls[$y]->display_url.'</a>', $variables['tweet'][$x]);				
+   					$variables['tweet'][$x] = str_replace($variables['entities'][$x]->urls[$y]->url, '<a href="'.$variables['entities'][$x]->urls[$y]->url.'" target="_blank">'.$variables['entities'][$x]->urls[$y]->display_url.'</a>', $variables['tweet'][$x]);				
 				}
 
 			}
@@ -829,7 +829,7 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 				
 				// Check if user mention exists in a tweet, if yes, add link tag
 				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->user_mentions[$y]->screen_name) !== false) {
-   					$variables['tweet'][$x] = str_replace('@'.$variables['entities'][$x]->user_mentions[$y]->screen_name, '<a href="http://twitter.com/'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'">@'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'</a>', $variables['tweet'][$x]);				
+   					$variables['tweet'][$x] = str_replace('@'.$variables['entities'][$x]->user_mentions[$y]->screen_name, '<a href="http://twitter.com/'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'" target="_blank">@'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'</a>', $variables['tweet'][$x]);				
 				}
 
 			}
@@ -846,12 +846,12 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 				
 				// Check if hashtag exist in a tweet, if yes, add link tag
 				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->hashtags[$z]->text) !== false) {
-   					$variables['tweet'][$x] = str_replace('#'.$variables['entities'][$x]->hashtags[$z]->text, '<a href="https://twitter.com/search?q=%23'.$variables['entities'][$x]->hashtags[$z]->text.'&src=hash">#'.$variables['entities'][$x]->hashtags[$z]->text.'</a>'." ", $variables['tweet'][$x]);				
+   					$variables['tweet'][$x] = str_replace('#'.$variables['entities'][$x]->hashtags[$z]->text, '<a href="https://twitter.com/search?q=%23'.$variables['entities'][$x]->hashtags[$z]->text.'&src=hash" target="_blank">#'.$variables['entities'][$x]->hashtags[$z]->text.'</a>'." ", $variables['tweet'][$x]);				
 				}
 
 			}
 			
-		} // End user mention
+		} // End hashtag
 		
 	
 	} 
