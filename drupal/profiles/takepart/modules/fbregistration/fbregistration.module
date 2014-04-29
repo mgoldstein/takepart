@@ -96,7 +96,7 @@ function _tfbregistration_auth() {
     $destination = fboauth_action_invoke('connect', $app_id, $response['oauth_token']);
     $_SESSION['facebook_register_trigger'] = $response['oauth_token'];
 
-    
+
     if (empty($destination)) {
       $destination = isset($_REQUEST['destination']) ? $_REQUEST['destination'] : '<front>';
     }
@@ -105,7 +105,7 @@ function _tfbregistration_auth() {
     $drupalid = fboauth_uid_load($response['user_id']);
 
     $account = user_load(array('uid' => $drupalid));
-    
+
     foreach ($account as $key => $val) {
       $fbval = _fbregistration_get_reg_value($response['registration'], $key);
       if(!empty($fbval)) {
@@ -116,18 +116,18 @@ function _tfbregistration_auth() {
             $account->{$key}['und'][0]['value'] = '';
           }
           _fbregistration_set_userval($account->{$key}, $fbval);
-        } 
+        }
        }
      }
-     
+
      //special:
      if(isset($response['registration']['email'])) {
         $account->mail = $response['registration']['email'];
      }
-     
+
       $existingusers = db_query("SELECT count(uid) FROM {fbregistration_facebook_id_map} where {uid} = $drupalid")->fetchField();
-      
-      
+
+
       if($existingusers > 0) {
           $result = db_update('fbregistration_facebook_id_map')->fields(array(
 		  'fbid' => $response['user_id'],
@@ -138,10 +138,10 @@ function _tfbregistration_auth() {
 		  'fbid' => $response['user_id'],
 		))->execute();
       }
-      
-      
+
+
     user_save($account);
-  
+
     drupal_goto($destination);
 
   } else {
@@ -209,13 +209,13 @@ function fbregistration_form_alter(&$form, $form_state, $form_id) {
 
    }
 
-   
-   
+
+
    $fbsetfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
    $fbregreloadfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 9);
    $callcount = 10;
    $ziplabel = variable_get('fbregistration_foreign_zip', 'Postal Code');
-   
+
    drupal_add_js('function fbregistration_validate(form) {' .
         '  var errors = {};' . "\n" .
            variable_get('fbregistration_validation', _fbregistration_default_validation())  . "\n" .
@@ -250,7 +250,6 @@ function _fbregistration_getfbreg(&$form = null) {
   $jsondata = array();
 
   _fbregistration_admin_form_load($form, $fieldmappings);
-  _fbregistration_bsd_form_load($form, $bsdmappings);
 
 
   foreach ($fieldmappings as $name => $field) {

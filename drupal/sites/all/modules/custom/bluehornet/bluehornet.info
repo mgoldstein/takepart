@@ -3,5 +3,4 @@ description = BlueHornet API functionality for Drupal 7
 core = 7.x
 package = Customization
 version = 7.x-1.0
-configure = admin/participant-media/bluestatedigital/api
 
