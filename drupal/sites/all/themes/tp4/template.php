@@ -751,13 +751,15 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 	}
 	
 	$twitter_data = $connection->get($twitter_api_url, $parameters);
+	
 	if($type == 'hashtag'){
 		
 		foreach($twitter_data->statuses as $tweets){
 			
 				$variables['tweet'][] = $tweets->text;
 			    $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'">'.$tweets->user->screen_name."</a>";
-				$variables['profile_pic'][] = $tweets->user->profile_image_url;
+				$image = str_replace("_normal","",$tweets->user->profile_image_url);
+				$variables['profile_pic'][] = $image;
 				$variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
 				$variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
 			
@@ -769,8 +771,9 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 		
 		foreach($twitter_data as $tweets){
 				$variables['tweet'][] = $tweets->text;
-			    $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'">'.$tweets->user->screen_name."</a>";
-				$variables['profile_pic'][] = $tweets->user->profile_image_url;
+			    $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'" target="_blank">'.$tweets->user->screen_name."</a>";
+				$image = str_replace("_normal","",$tweets->user->profile_image_url);
+				$variables['profile_pic'][] = $image;
 				$variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
 				$variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
 		}

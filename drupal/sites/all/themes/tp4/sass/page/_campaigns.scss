@@ -1281,7 +1281,23 @@ body.node-type-campaign-page, #main.card-page{
 }
 
 /* Twitter Card */
-
+body.node-type-campaign-card-twitter{
+#main.card-page #primary{
+  width: 100%;
+  margin-left: 0%;
+  margin-right: -100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  }
+p.campaign-content-meta{
+  text-align: center;
+}
+}
 .tweet-card{  
   
         @include breakpoint($breakpoint-mobile) {
@@ -1401,7 +1417,7 @@ body.node-type-campaign-page, #main.card-page{
 .twitter-descriptive-text{
     @include breakpoint($breakpoint-mobile){
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 20px;
     }
     @include breakpoint($breakpoint-tablet)
     {
