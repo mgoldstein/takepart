@@ -138,29 +138,25 @@ function tp4_campaign_megamenu($nid){
  *   The name of the template being rendered ("page" in this case.)
  */
 function tp4_preprocess_page(&$variables) {
-
   $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
-	$variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
+  $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
+  $variables['skinny'] = render($variables['page']['skinny']);
+  $variables['sidebar'] = render($variables['page']['sidebar']);
 
+  // build up a string of classes for the main content div
+  $variables['content_classes'] = 'content';
+  $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
+  $variables['content_classes'] .= ($variables['sidebar'] ? ' with-sidebar' : '');
 
+  // Add Node-specific page templates
+  if (!empty($variables['node'])) {
+    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
+  }
 
-    $variables['skinny'] = render($variables['page']['skinny']);
-    $variables['sidebar'] = render($variables['page']['sidebar']);
-
-    // build up a string of classes for the main content div
-    $variables['content_classes'] = 'content';
-    $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
-    $variables['content_classes'] .= ($variables['sidebar'] ? ' with-sidebar' : '');
-
-    // Add Node-specific page templates
-    if (!empty($variables['node'])) {
-        $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
-    }
-
-    // override page titles on certain node templates
-    if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
-        $variables['title'] = '';
-    }
+  // override page titles on certain node templates
+  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
+    $variables['title'] = '';
+  }
 
   // add Taboola JS if we're on an article, feature or photo gallery page
   // but only if we're on the production site: variable_get('environment', 'dev') == 'prod' &&
@@ -218,18 +214,13 @@ function tp4_preprocess_page(&$variables) {
       }
     }
 
-    if(isset($campaign_ref->field_promo_headline['und'][0]['value']) == true){
+    if (isset($campaign_ref->field_promo_headline['und'][0]['value']) == true) {
       $variables['promo_title'] = $campaign_ref->field_promo_headline['und'][0]['value'];
-    }else{
+    } else {
       $variables['promo_title'] = '';
     }
-
-
     $variables['anchor_tags'] = $anchor_tags;
   }
-
-
-
 }
 
 /**
@@ -265,15 +256,16 @@ function tp4_preprocess_block(&$variables) {
  * @param $hook
  *   The name of the template being rendered ("node" in this case.)
  */
+
 function tp4_preprocess_node(&$variables, $hook) {
 	
-	// Add template suggestions for view modes and
-    // node types per view view mode.
-    $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
-    $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
-    if (in_array($variables['type'], array('openpublish_video', 'video')) && $variables['view_mode'] == 'full') {
-        $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
-    }
+  // Add template suggestions for view modes and
+  // node types per view view mode.
+  $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
+  $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
+  if (in_array($variables['type'], array('openpublish_video', 'video')) && $variables['view_mode'] == 'full') {
+    $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
+  }
 
   // Add template variables for the local node url
   // (for compatability in dev/qa environments)
@@ -289,7 +281,6 @@ function tp4_preprocess_node(&$variables, $hook) {
     $function($variables, $hook);
   }
 }
-
 
 function tp4_preprocess_node__campaign(&$variables, $hook) {
   if(isset($variables['field_campaign_hp'][0]['url']) == true){
