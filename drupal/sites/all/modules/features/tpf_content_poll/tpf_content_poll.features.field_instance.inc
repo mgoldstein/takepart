@@ -51,10 +51,9 @@ function tpf_content_poll_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 6,
       ),
       'feature_main' => array(
@@ -86,6 +85,12 @@ function tpf_content_poll_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -133,10 +138,9 @@ function tpf_content_poll_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 5,
       ),
       'feature_main' => array(
@@ -168,6 +172,12 @@ function tpf_content_poll_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -216,12 +226,9 @@ function tpf_content_poll_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'media',
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'feature_main' => array(
@@ -250,6 +257,12 @@ function tpf_content_poll_field_default_field_instances() {
       ),
       'feature_video' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -321,10 +334,9 @@ function tpf_content_poll_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'text',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 1,
       ),
       'feature_main' => array(
@@ -356,6 +368,12 @@ function tpf_content_poll_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -405,10 +423,9 @@ function tpf_content_poll_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'text',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'feature_main' => array(
@@ -440,6 +457,12 @@ function tpf_content_poll_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -490,12 +513,9 @@ function tpf_content_poll_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'default',
-        ),
-        'type' => 'media',
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'feature_main' => array(
@@ -527,6 +547,12 @@ function tpf_content_poll_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -595,10 +621,9 @@ function tpf_content_poll_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 4,
       ),
       'feature_main' => array(
@@ -630,6 +655,12 @@ function tpf_content_poll_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
       ),
       'inline_content' => array(
         'label' => 'above',
