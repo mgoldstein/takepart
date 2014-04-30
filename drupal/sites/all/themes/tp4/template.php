@@ -726,8 +726,8 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 	if($variables['type'] == "campaign_card_twitter"){
 	
 	// Please change the settings based on TakePart application (removed this comment if already changed)
-    $consumer_key = "V6nDFFxPrPCK1JnjLERqVJJLQ";
-    $consumer_secret = "tzaVbCYVIPvZjEw2eikoWa1EODuTgqAvciksBP88gL2CQLwpjH";
+    $consumer_key = "5TGmga1wMRDfMD0gCUIAtI0YG";
+    $consumer_secret = "l2ZOmrQlOmnMeTnw7YYvhKrLSzeaaGNn6SPtet4cI2Of2rRyKd";
 	// Get username, number of tweets, timeline type, and access tokens from content type
 	$username = $variables['field_twitter_username'][0]['value'];
 	$number_of_tweets = $variables['field_number_of_tweets'][0]['value'];

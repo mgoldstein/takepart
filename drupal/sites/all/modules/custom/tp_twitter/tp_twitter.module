@@ -10,8 +10,8 @@ function tp_twitter_node_presave($node) {
 	if($node->type == "campaign_card_twitter"){
 
 		// Change this one to your twitter application info
-		$consumer_key = "V6nDFFxPrPCK1JnjLERqVJJLQ";
-		$consumer_secret = "tzaVbCYVIPvZjEw2eikoWa1EODuTgqAvciksBP88gL2CQLwpjH";
+		$consumer_key = "5TGmga1wMRDfMD0gCUIAtI0YG";
+		$consumer_secret = "l2ZOmrQlOmnMeTnw7YYvhKrLSzeaaGNn6SPtet4cI2Of2rRyKd";
 		
 		
 		// Newly created twitter content type if Authentication link is empty		
