@@ -96,7 +96,7 @@ function tpf_content_campaigns_node_info() {
       'base' => 'node_content',
       'description' => t('A campaign card that contains twitter feed'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Admin Card Title'),
       'help' => '',
     ),
     'campaign_page' => array(
