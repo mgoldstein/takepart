@@ -7,6 +7,7 @@
   $uri                = $campaign_variables->field_campaign_background['und'][0]['uri'];
   $image_url          = file_create_url($uri);
   $min_height         = $campaign_variables->field_campaign_min_height['und'][0]['value'] - 20;
+  $mobile_min_height  = $campaign_variables->field_campaign_mobile_min_height['und'][0]['value'] - 20;
   $bg_color           = $campaign_variables->field_campaign_bg_color['und'][0]['rgb'];
   $bg_width           = $campaign_variables->field_campaign_bgw['und'][0]['value'];
   $bg_width_image     = $campaign_variables->field_campaign_bgw_image['und'][0]['value'];
@@ -185,7 +186,7 @@
     }
     ?>
 
-  <div class="header-inner" style="min-height: <?php print $min_height; ?>px">
+  <div class="header-inner" style="min-height: <?php print $min_height; ?>px" data-mheight="<?php print $mobile_min_height; ?>px">
     <?php // social links ?>
     <aside id="campaign-page-social" class="social" data-title="<?php print $share_headline; ?>" data-description="<?php print $share_description; ?>" data-imagesrc="<?php print $share_imagesrc; ?>">
       <div class="inner">
