@@ -856,6 +856,36 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
   
   $variables['card_background'] = file_create_url($variables['field_campaign_background'][0]['uri']);
 	
+
+  // If color scheme is enabled add font color to major html tag inside the card
+  if(!empty($variables['field_card_color_scheme'])){
+    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
+  	$campaign_style['style'] = 
+  	'.color_scheme_'.$variables['nid'].', 
+  	.color_scheme_'.$variables['nid'].' h1, 
+  	.color_scheme_'.$variables['nid'].' h2, 
+  	.color_scheme_'.$variables['nid'].' h3, 
+  	.color_scheme_'.$variables['nid'].' h4, 
+  	.color_scheme_'.$variables['nid'].' h5, 
+  	.color_scheme_'.$variables['nid'].' h6, 
+  	.color_scheme_'.$variables['nid'].' a,
+  	.color_scheme_'.$variables['nid'].' p, 
+  	.color_scheme_'.$variables['nid'].' label, 
+  	.color_scheme_'.$variables['nid'].' ul, 
+  	.color_scheme_'.$variables['nid'].' li,
+  	.color_scheme_'.$variables['nid'].' th,
+  	.color_scheme_'.$variables['nid'].' td
+  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
+    
+    drupal_add_css($campaign_style['style'], 
+				  array(
+				        'group' => CSS_THEME,
+				        'type' => 'inline',
+				        'media' => 'screen',
+				        'preprocess' => FALSE,
+				        'weight' => '9999',
+				  ));
+  } 
 	
  }
 
