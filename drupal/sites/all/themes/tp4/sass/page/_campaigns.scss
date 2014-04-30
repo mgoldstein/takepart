@@ -1280,6 +1280,23 @@ body.node-type-campaign-page, #main.card-page{
   }
 }
 
+
+body.node-type-campaign-page .slim-text{
+  
+  padding-bottom: 10px;
+  
+  .slim-text-card-inner
+  {
+    padding-top: 10px;
+  }
+  
+ .center-column
+ {
+    text-align: center; 
+ }
+
+}
+
 /* Twitter Card */
 body.node-type-campaign-card-twitter{
 #main.card-page #primary{
