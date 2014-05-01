@@ -55,7 +55,7 @@ class boxes_ga_ad extends boxes_box {
       }
     }
 
-    if( ($slot = $this->options['ga_ad_slot']) &&
+    if ( ($slot = $this->options['ga_ad_slot']) &&
        ($dpf = variable_get('takepart_ads_dfp_property_code', ''))
       ) {
 
@@ -71,9 +71,7 @@ class boxes_ga_ad extends boxes_box {
      if ($gptid) {
        $adsize = '';
        preg_match('/[0-9]+x[0-9]+/', $slot, $adsize);
-
        $lr = explode("x", $adsize[0]);
-
        $gptfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
 
 

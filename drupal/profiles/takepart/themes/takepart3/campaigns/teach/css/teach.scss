@@ -1750,6 +1750,7 @@ a {
 
 .featured-stories {
   // extra padding to clear the post-it
+  font-size: 12px;
   @media (min-width: 1000px) {
     margin-top: 2em;
   }
@@ -1961,10 +1962,20 @@ h1.sys-headline {
 }
 
 .sys-intro-body {
+    line-height: 1.2em;
   p,
   ul {
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.2em
+  } 
+  h4 {
+    font-size: 17px;
+  }
+  span.bullet {
+      font-size: 12px;
+  }
+  span.bullet :after {
+      content:' >>';
   }
 }
 
@@ -2013,11 +2024,13 @@ h1.sys-headline {
 }
 
 .sys-tips {
-  h2 {
+  h2.sys-headline {
     background: transparent image-url("sys-subhead-bg.png") scroll no-repeat top left;
     padding: 2.5em 0 2em .5em;
     font-size: 1em;
     line-height: 1;
+    position: relative;
+    z-index: 1;
 
     @media (min-width:480px) {
       padding: 1.4em 0 1em .5em;

@@ -5,5 +5,4 @@ version = 7.x-2.0
 package = TakePart
 
 dependencies[] = entity
-dependencies[] = bluestatedigital_forms
 dependencies[] = pm_signup

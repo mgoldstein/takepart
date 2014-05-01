@@ -4,13 +4,16 @@
  * Returns the HTML for the secondary featured nodes
  * on the TP4 Homepage.
  */
+
+$headline = !empty($node->field_promo_headline) ? $node->field_promo_headline['und'][0]['safe_value'] : $title;
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-  <?php print render($content['field_thumbnail']); ?>
-  <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
+  
+    <?php print render($content['field_thumbnail']); ?>
+  <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $headline): ?>
     <?php print render($title_prefix); ?>
-    <?php if (!$page && $title): ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+    <?php if (!$page && $headline): ?>
+      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $headline; ?></a></h2>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
     <?php if ($unpublished): ?>

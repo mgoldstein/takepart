@@ -18,9 +18,7 @@
  * @ingroup themeable
  */
 ?>
-<div class="poll">
-  <h3>what do you think?</h3>
-  <div class="question"><?php print $title ?></div>
+
   <ul class="meters">
     <?php print $results; ?>
   </ul>
@@ -30,4 +28,3 @@
   <?php if (!empty($cancel_form)): ?>
     <?php print $cancel_form; ?>
   <?php endif; ?>
-</div>

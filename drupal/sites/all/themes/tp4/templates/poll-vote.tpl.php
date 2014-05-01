@@ -21,9 +21,9 @@
   <div class="question"><?php print $title ?></div>
   <div class="vote-form">
     <div class="choices">
-      <?php if ($block): ?>
-        <div class="title"><?php print $title; ?></div>
-      <?php endif; ?>
+      <?php // if ($block): ?>
+        <!-- <div class="title"><?php // print $title; ?></div> -->
+      <?php // endif; ?>
       <?php print $choice; ?>
     </div>
     <?php print $vote; ?>

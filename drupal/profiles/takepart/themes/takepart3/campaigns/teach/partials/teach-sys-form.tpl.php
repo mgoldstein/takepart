@@ -1,4 +1,11 @@
 <form id="sys-form" class="sys-form" action="/">
+    
+  <fieldset>
+    <legend>Your Teacher</legend>
+    <div class="field-wrapper left"><label for="teacher_first_name">First Name</label><input type="text" name="teacher_first_name" id="teacher_first_name" placeholder="First Name*" required></div>
+    <div class="field-wrapper right"><label for="teacher_last_name">Last Name</label><input type="text" name="teacher_last_name" id="teacher_last_name" placeholder="Last Name*" required></div>
+  </fieldset>
+    
   <fieldset>
     <legend>Your Story</legend>
     <div class="field-wrapper field-wrapper-story-year clearfix">
@@ -13,7 +20,22 @@
     </div>
     <div class="field-wrapper"><label for="story_body">Your Story</label><textarea name="story_body" id="story_body" cols="30" rows="8" placeholder="Tell Us Your Story" maxlength="2500" required></textarea></div>
   </fieldset>
-    
+
+  <fieldset>
+    <legend>Your School</legend>
+    <input type="hidden" name="school_id" id="school_id" value="0">
+    <input type="hidden" name="school_city" id="school_city" value="">
+    <div class="field-wrapper">
+      <label for="school_state">State</label>
+      <select name="school_state" id="school_state" required>
+	<option value="">State*</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
+      </select>
+      <label for="school_name">School Name</label>
+      <input type="text" name="school_name" id="school_name" class="input-school-name" placeholder="Name Of School Where You Had This Teacher*" disabled="disabled" required>
+    </div>
+    <p class="school-name-instructions">Type at least one full word from the name of your school and then select it from the list.</p>
+  </fieldset>
+
   <fieldset>
     <legend>About You</legend>
     <div class="field-wrapper left"><label for="first_name">First Name</label><input type="text" name="first_name" id="first_name" placeholder="First Name*" required></div>
@@ -40,26 +62,6 @@
         <?php endforeach; ?>
       </select>
     </div>
-  </fieldset>
-    
-  <fieldset>
-    <legend>Your Teacher</legend>
-    <div class="field-wrapper left"><label for="teacher_first_name">First Name</label><input type="text" name="teacher_first_name" id="teacher_first_name" placeholder="First Name*" required></div>
-    <div class="field-wrapper right"><label for="teacher_last_name">Last Name</label><input type="text" name="teacher_last_name" id="teacher_last_name" placeholder="Last Name*" required></div>
-  </fieldset>
-  <fieldset>
-    <legend>Your School</legend>
-    <input type="hidden" name="school_id" id="school_id" value="0">
-    <input type="hidden" name="school_city" id="school_city" value="">
-    <div class="field-wrapper">
-      <label for="school_state">State</label>
-      <select name="school_state" id="school_state" required>
-	<option value="">State*</option><option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option><option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option><option value="DC">DC</option><option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option><option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option><option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option><option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option><option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option><option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option><option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option><option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option><option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option><option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option><option value="WI">WI</option><option value="WY">WY</option>
-      </select>
-      <label for="school_name">School Name</label>
-      <input type="text" name="school_name" id="school_name" class="input-school-name" placeholder="Name Of School Where You Had This Teacher*" disabled="disabled" required>
-    </div>
-    <p class="school-name-instructions">Type at least one full word from the name of your school and then select it from the list.</p>
   </fieldset>
 
   <fieldset>

@@ -1,0 +1,48 @@
+
+.panel-campaign-2col { 
+/*  overflow: hidden;  */
+}
+/*.panel-campaign-2col .panel-instructional { 
+  float: left; 
+  width: 100%; 
+}
+* html .panel-campaign-2col .panel-instructional {
+  width: 49.9%;
+}
+
+.panel-campaign-2col .panel-instructional .inside { 
+  margin: 0 .5em 1em 0;
+}
+
+.panel-campaign-2col .panel-col-left { 
+  float: left; 
+  width: 50%; 
+}
+* html .panel-campaign-2col .panel-col-left {
+  width: 49.9%;
+}
+
+.panel-campaign-2col .panel-col-left .inside { 
+  margin: 0 .5em 1em 0;
+}
+
+.panel-campaign-2col .panel-col-right { 
+  float: left; 
+  width: 50%; 
+}
+* html .panel-campaign-2col .panel-col-right {
+  width: 49.9%;
+}
+
+.panel-campaign-2col .panel-col-right .inside { 
+  margin: 0 0 1em .5em;
+}
+
+#panels-edit-display .panel-pane,
+#panels-edit-display .helperclass {
+  margin: .5em;
+}
+
+.panel-campaign-2col .panel-separator {
+  margin: 0 0 1em 0;
+}*/

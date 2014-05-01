@@ -704,6 +704,10 @@
       @include breakpoint($breakpoint-desktop) {
 	width: 25%;
       }
+      &.inline-node-poll {
+          width: 50%;
+          max-width: none;
+      }
     }
 
     &.horizontal {

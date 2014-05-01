@@ -1,0 +1,410 @@
+<?php
+/**
+ * @file
+ * TakePart Campaign Redesign
+ */
+
+/**
+ * Implements hook_help().
+ */
+function tp_campaigns_help($path, $arg) {
+	switch ($path) {
+		case 'admin/help#tp_campaigns':
+			return '<p>' . t('Module for the Campaign Redesign, April 2014') . '</p>';		
+	}
+}
+/**
+ * Implements hook_menu().
+ */
+function tp_campaigns_menu(){
+  $items['admin/config/campaigns'] = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_campaigns_settings_form'),
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function tp_campaigns_block_info(){
+  $blocks = array();
+  $blocks['tp_campaigns_hero'] = array(
+    'info' => t('Campaign Hero')
+   );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tp_campaigns_block_view($delta = ''){
+  $block = array();
+  switch ($delta) {
+    case 'tp_campaigns_hero':
+      $block['content'] = tp_campaigns_hero();
+      break;
+  }
+  return $block;
+}
+
+/**
+ * Implements hook_theme
+ */
+function tp_campaigns_theme() {
+  return array(
+    'tp_card_tray' => array(
+      'template' => 'field-formatter--card-tray',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+      )
+    ),
+    'tp_card_reference' => array(
+      'template' => 'field-formatter--card-reference',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+      )
+    ),
+    'tp_campaigns_hero' => array(
+      'template' => 'campaign-hero',
+      'variables' => array(
+        'items' => array(),
+        'entity' => '',
+        'campaign_node' => '',
+        'share_headline' => '',
+        'share_description' => '',
+        'share_imagesrc' => '',
+      )
+    )
+  );
+}
+
+/*
+ * Implements hook_field_formatter_info()
+ */
+function tp_campaigns_field_formatter_info(){
+  return array(
+    'tp_card_tray' => array(
+      'label' => t('Card Tray'),
+      'field types' => array('entityreference'),
+    ),
+    'tp_card_reference' => array(
+      'label' => t('Card Reference'),
+      'field types' => array('entityreference'),
+    ),
+  );
+}
+
+/*
+ * Implements hook_field_formatter_view()
+ */
+function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display){
+  $element = array();
+  $settings = $display['settings'];
+  switch($display['type']){
+    case 'tp_card_tray':
+      $element = array(
+        '#theme' => 'tp_card_tray',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
+    break;
+    case 'tp_card_reference':
+      $element = array(
+        '#theme' => 'tp_card_reference',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
+    break;
+  }
+  return $element;
+}
+
+/*
+ * Implements hook_init
+ */
+function tp_campaigns_init(){
+  $card_types = array(
+    'campaign_card_media',
+    'campaign_card_iframe',
+    'campaign_card_social',
+    'campaign_card_news',
+    'campaign_card_text',
+    'campaign_card_branding',
+    'campaign_card_tap',
+    'campaign_card_twitter',
+    'campaign_card_empty',
+    );
+  variable_set('card_types', $card_types);
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function tp_campaigns_token_info() {
+
+  $info['tokens']['node']['seo-title'] = array(
+    'name' => t('SEO Title'),
+    'description' => t("Uses SEO Title field or Title if SEO Title field is not present"),
+    'type' => 'format',
+  );
+  $info['tokens']['node']['campaign-base-url'] = array(
+    'name' => t('Campaign Base URL'),
+    'description' => t("The Base URL for Campaign Pages"),
+    'type' => 'format',
+  );
+  $info['tokens']['node']['campaign-name'] = array(
+    'name' => t('Campaign Name'),
+    'description' => t("The Name for Campaign Pages"),
+    'type' => 'format',
+  );
+  $info['tokens']['node']['campaign-topic'] = array(
+    'name' => t('Campaign Topic'),
+    'description' => t("The Primary Topic for Campaign Pages"),
+    'type' => 'format',
+  );
+  $info['tokens']['node']['campaign-series'] = array(
+    'name' => t('Campaign Series'),
+    'description' => t("The Series for Campaign Pages"),
+    'type' => 'format',
+  );
+
+  return $info;
+}
+
+/*
+ * Implements hook_tokens().
+ */
+function tp_campaigns_tokens($type, $tokens, array $data = array(), array $options = array()) {
+ $replacements = array();
+
+  if ($type == 'node' && !empty($data['node'])) {
+    $node = $data['node'];
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'seo-title':
+          if (isset($node->field_campaign_seo_title['und'][0]['value']) == true) {
+            $replacements[$original] = $node->field_campaign_seo_title['und'][0]['value'];
+          }
+          else{
+            $replacements[$original] = $node->title;
+          }
+        break;
+        case 'campaign-base-url':
+          if ($items = field_get_items('node', $node, 'field_campaign_reference')) {
+            $node = node_load($items[0]['target_id']);
+            $replacements[$original] = $node->field_campaign_base_url['und'][0]['value'];
+          }
+        break;
+        case 'campaign-name':
+          if ($items = field_get_items('node', $node, 'field_campaign_reference')) {
+            $node = node_load($items[0]['target_id']);
+            $replacements[$original] = $node->title;
+          }
+        break;
+        case 'campaign-topic':
+          $references = field_get_items('node', $node, 'field_campaign_reference');
+          if (!empty($references)) {
+            $reference = reset($references);
+            if (!empty($reference)) {
+              $node = node_load($reference['target_id']);
+              if (!empty($node)) {
+                $items = field_get_items('node', $node, 'field_topic');
+                if (!empty($items)) {
+                  $first = reset($items);
+                  if (!empty($first)) {
+                    $term = taxonomy_term_load($first['tid']);
+                    if (!empty($term)) {
+                      $replacements[$original] = $term->name;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        break;
+        case 'campaign-series':
+          $references = field_get_items('node', $node, 'field_campaign_reference');
+          if (!empty($references)) {
+            $reference = reset($references);
+            if (!empty($reference)) {
+              $node = node_load($reference['target_id']);
+              if (!empty($node)) {
+                $items = field_get_items('node', $node, 'field_series');
+                if (!empty($items)) {
+                  $first = reset($items);
+                  if (!empty($first)) {
+                    $term = taxonomy_term_load($first['tid']);
+                    if (!empty($term)) {
+                      $replacements[$original] = $term->name;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        break;
+      }
+    }
+  }
+  return $replacements;
+}
+
+
+
+//hook form alter
+function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
+  // There is a bug with jQuery Update and Drupal Core that makes the code below poop on everything
+  // $form['field_campaign_content_side']['#states'] = array(
+  //   'visible' => array(   // action to take.
+  //     ':input[name=field_campaign_media_col\[und\]]' => array(
+  //       array('value' => 1 ),
+  //       array('value' => 2 ),
+  //       array('value' => 3 ),
+  //     ),
+  //   ),
+  // );
+  
+  //Campaign Media Card
+  $form['field_campaign_media_photo']['#states'] = array(
+    'visible' => array(
+      ':input[name=field_campaign_media_type\[und\]]' => array('value' => 0),
+    ),
+  );
+  $form['field_campaign_media_image_link']['#states'] = array(
+    'visible' => array(
+      ':input[name=field_campaign_media_type\[und\]]' => array('value' => 0),
+    ),
+  );
+  $form['field_campaign_media_video']['#states'] = array(
+    'visible' => array(
+      ':input[name=field_campaign_media_type\[und\]]' => array('value' => 1),
+    ),
+  );
+  
+  //Campaign News Card
+  $form['field_campaign_single_news_ref']['#states'] = array(
+    'visible' => array(
+      ':input[name=field_campaign_news_type\[und\]]' => array('value' => 0),
+    ),
+  );
+  $form['field_campaign_multi_news_ref']['#states'] = array(
+    'visible' => array(
+      ':input[name=field_campaign_news_type\[und\]]' => array('value' => 1),
+    ),
+  );
+  $form['field_campaign_news_filter_tag']['#states'] = array(
+    'visible' => array(
+      ':input[name=field_campaign_news_type\[und\]]' => array('value' => 1),
+    ),
+  );
+  $form['field_campaign_news_count']['#states'] = array(
+    'visible' => array(
+      ':input[name=field_campaign_news_type\[und\]]' => array('value' => 1),
+    ),
+  );
+
+}
+
+function tp_campaigns_form_campaign_node_form_alter(&$form, &$form_state){
+
+  //if the menu has a value, disable it
+  if(isset($form_state['node']->field_campaign_menu['und'][0]['value']) == TRUE){
+    global $user;
+    if (in_array('administrator', $user->roles) != true) {
+      $form['field_campaign_menu']['#disabled'] = TRUE;
+      $form['field_campaign_menu']['#attributes']['class'][] = 'disabled';
+    }
+  }
+}
+
+/*
+ * Create us some menus.
+ */
+function tp_campaigns_node_presave($node) {
+  if($node->type == 'campaign' && isset($node->field_campaign_menu['und'][0]['value']) == true){
+  
+    //check to see if menu exists, if it doesn't, create it.  
+    $menu_name = $node->field_campaign_menu['und'][0]['value'];
+    if(menu_tree_all_data($menu_name) == NULL){
+      $menu = array(
+       'menu_name' => 'menu-'. $menu_name,
+       'title' => $node->title,
+       'description' => 'Campaign Menu For '. $node->title,
+      );
+    }
+    menu_save($menu); //uncomment this line when ready and no longer testing
+  }
+}
+
+
+function tp_campaigns_hero(){
+  // code for the tp campaigns block
+  $node = 'node';
+  $node = node_load(arg(1));
+  if(isset($node->field_campaign_reference['und'][0]['target_id']) == true){
+    $page_node = $node;
+    $node = $node->field_campaign_reference['und'][0]['target_id'];
+    $campaign_node = node_load($node);
+
+    $superfish_path = libraries_get_path('superfish');
+    drupal_add_js($superfish_path. '/src/js/hoverintent.js');
+    drupal_add_js($superfish_path. '/src/js/superfish.js');
+    // drupal_add_js($superfish_path. '/src/js/supersubs.js');
+    drupal_add_css($superfish_path. '/src/css/superfish.css');
+    drupal_add_css($superfish_path. '/src/css/superfish-navbar.css');
+
+    if ($items = field_get_items('node', $page_node, 'field_promo_headline')) {
+      $share_headline = field_view_value('node', $page_node, 'field_promo_headline', $items[0]);
+    } else {
+      $items = field_get_items('node', $campaign_node, 'field_promo_headline');
+      $share_headline = field_view_value('node', $campaign_node, 'field_promo_headline', $items[0]);
+    }
+    if ($items = field_get_items('node', $page_node, 'field_promo_text')) {
+      $share_description = field_view_value('node', $page_node, 'field_promo_text', $items[0]);
+    } else {
+      $items = field_get_items('node', $campaign_node, 'field_promo_text');
+      $share_description = field_view_value('node', $campaign_node, 'field_promo_text', $items[0]);
+    }
+    if ($items = field_get_items('node', $page_node, 'field_thumbnail')) {
+      $share_imagesrc = field_view_value('node', $page_node, 'field_thumbnail', $items[0]);
+    } else {
+      $items = field_get_items('node', $campaign_node, 'field_thumbnail');
+      $share_imagesrc = field_view_value('node', $campaign_node, 'field_thumbnail', $items[0]);
+    }
+
+    return theme('tp_campaigns_hero', array(
+      'campaign_node' => $campaign_node,
+      'share_headline' => render($share_headline),
+      'share_description' => render($share_description),
+      'share_imagesrc' => file_create_url($share_imagesrc['#file']->uri),
+    ));
+  }
+  else{
+    return;
+  }
+}
+
+function tp_campaigns_settings_form($form, &$form_state){
+  $form['legal_copy'] = array(
+    '#type' => 'text_format',
+    '#title' => t('SMS Legal Copy'),
+    '#description' => t('Global legal copy for the SMS field'),
+    '#default_value' => variable_get('sms_legal', ''),
+  );
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit Settings'),
+  );
+  return $form;
+}
+function tp_campaigns_settings_form_validate($form, &$form_state){
+  variable_set('sms_legal', $form_state['input']['legal_copy']['value']);
+}
+
+

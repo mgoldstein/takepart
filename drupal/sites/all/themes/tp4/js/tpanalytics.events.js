@@ -61,11 +61,11 @@
 
     var social_click = function(options) {
         var title = normalize_share_title(options.name);
-        var evar1, evar4, evar17, evar19, evar20, evar21, linkTrackVars;
+        var evar1, evar4, evar17, evar19, evar20, evar21, evar43, linkTrackVars;
         var $body = $('body');
         if (
             $body.is('.node-type-article')
-            || $body.is('.node-type-openpublish-photo-gallery') 
+            || $body.is('.node-type-openpublish-photo-gallery')
             || $body.is('.node-type-feature-article')
             || $body.is('.node-type-video')
             || $body.is('.node-type-flashcard')
@@ -77,9 +77,16 @@
                 authors.push($(this).text());
             });
             evar17 = authors.join(',');
-	    evar19 = $('.node.view-mode-full').data('series');
+    	    evar19 = $('.node.view-mode-full').data('series');
             evar20 = s.eVar20;
             evar21 = s.eVar21;
+        }
+        else if (
+            $body.is('.node-type-campaign-page')
+        ) {
+            takepart.analytics.parameters.social_share_platform = title;
+            _satellite.track('social_share');
+            return;
         }
 
         if ( title ) {
@@ -118,6 +125,10 @@
             if ( evar21 ) {
                 s2.eVar21 = evar21;
                 linkTrackVars.push('eVar21');
+            }
+            if ( evar43 ) {
+                s2.eVar43 = evar43;
+                linkTrackVars.push('eVar43');
             }
             linkTrackVars.push('eVar30,eVar27,prop26,events');
 
@@ -305,17 +316,25 @@
         // Newsletter Signups ----------------
         // -----------------------------------
         'newsletter_signup': function(options) {
-            var s=s_gi(Drupal.settings.omniture.s_account);
-            s.linkTrackVars='eVar23,eVar30,events';
-            s.linkTrackEvents='event39';
-            s.events = 'event39';
-            s.eVar23 = options.name;
-            if ('source' in options && options.source && options.source !== '') {
-                s.eVar22 = options.source;
-                s.linkTrackVars = 'eVar22,' + s.linkTrackVars;
+            var $body = $('body');
+            if ($body.is('.node-type-campaign-page')) {
+                takepart.analytics.parameters.newsletter_name = options.name;
+                takepart.analytics.parameters.newsletter_signup_method = 'Campaign Email Signup + Social Card';
+                _satellite.track('newsletter_signup');
             }
-            s.eVar30 = s.pageName;
-            s.tl(true, 'o', 'Newsletter Signup');
+            else {
+                var s=s_gi(Drupal.settings.omniture.s_account);
+                s.linkTrackVars='eVar23,eVar30,events';
+                s.linkTrackEvents='event39';
+                s.events = 'event39';
+                s.eVar23 = options.name;
+                if ('source' in options && options.source && options.source !== '') {
+                    s.eVar22 = options.source;
+                    s.linkTrackVars = 'eVar22,' + s.linkTrackVars;
+                }
+                s.eVar30 = s.pageName;
+                s.tl(true, 'o', 'Newsletter Signup');
+            }
         },
         // -----------------------------------
         // Place at the Table ----------------
@@ -416,7 +435,7 @@
         // -----------------------------------
         // Article ---------------------------
         // -----------------------------------
-        
+
         'article_more_on_takepart': function(options) {
             var s=s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'prop36';
@@ -447,7 +466,7 @@
             s.eVar30=s.pageName;
             s.tl(true, 'o', 'Flashcard Tooltip Popup');
         }
-        
+
     });
 
     // Document Ready
@@ -461,7 +480,7 @@
         .delegate('a.addthis_button_pinterest_pinit', 'click', function() {
             takepart.analytics.track('generic_addthis', 'pinterest');
         })
-        
+
         .delegate('.node-type-openpublish-article #block-bean-of-the-day a[href]', 'click', function(event) {
             takepart.analytics.track('article_more_on_takepart', {name: 'Article - right rail - more on tp', target: this});
             // return false;

@@ -1,8 +1,12 @@
 //Side Menu CSS
 /* Show "Left" drawer for the "Right" drawer in the demo */
 .snap-drawers {
-  display: none;
+  display: block;
+  @media only screen and (min-width: 767px) {
+    display: none;
+  }
 }
+
 .snapjs-left .snap-drawers{
   display: block;
 }
@@ -10,10 +14,22 @@
   background: #000;
   color: #fff;
   height: auto;
-  overflow: auto;
   position: absolute;
   bottom: 0;
   left: 0;
+  right: 0;
+  top: 0;
+  display: none;
+
+  &#tp-drawers {
+    top: 5px;
+  }
+
+  &#campaign-drawers {
+    .snap-drawer {
+      right: 0;
+    }
+  }
   .snap-drawer {
     background: #000;
     position: fixed;
@@ -25,13 +41,11 @@
     height: auto;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    -webkit-transition: width 0.3s ease;
-    -moz-transition: width 0.3s ease;
-    -ms-transition: width 0.3s ease;
-    -o-transition: width 0.3s ease;
-    transition: width 0.3s ease;
+    @include transition(width 0.3s ease);
   }
-  #block-menu-menu-megamenu{
+
+  
+  .block-menu {
     ul{
       border-bottom: 5px solid #646464;
       li{
@@ -53,16 +67,31 @@
       text-transform: uppercase;
       border-bottom: none;
       font-weight: 100;
+
+    }
+    a{
+      color: #fff;
+      border-bottom: 1px solid #646464;
+      display: block;
+      width: 100%;
+      &:hover{
+        text-decoration: none;
+        background-color: #333;
+      }
+    }
+  }
+  .snap-drawer:not(.snap-drawer-right){
+    .block-menu > ul > li {
       &:nth-child(4){
-        > a{
-          width: 100%;
-          display: block;
-          text-indent: 100%;
-          white-space: nowrap;
-          overflow: hidden;
-          float: left;
-          background: image-url('takeaction-logo-mobile.png') no-repeat 10px center;
-          margin: 0;
+        > a {
+            width: 100%;
+            display: block;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            float: left;
+            background: image-url('takeaction-logo-mobile.png') no-repeat 10px center;
+            margin: 0;
         }
       }
       &:nth-child(5){
@@ -78,18 +107,8 @@
         }
       }
     }
-    a{
-      color: #fff;
-      border-bottom: 1px solid #646464;
-      display: block;
-      width: 100%;
-      &:hover{
-        text-decoration: none;
-        background-color: #333;
-      }
-    }
   }
-  .scrollable{
+  &.scrollable{
     overflow: auto;
     -webkit-transition-property: top, bottom;
     transition-property: top, bottom;

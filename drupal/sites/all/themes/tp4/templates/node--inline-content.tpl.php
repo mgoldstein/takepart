@@ -8,10 +8,16 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-    <header>
-      <a class="inline-content-link" href="<?php print $url_local; ?>">
-      <?php print render($content); ?>
-      <h2 class="inline-title"><?php print $title; ?></h2>
-      </a>
-    </header>
+  <header>
+    <a class="inline-content-link" href="<?php print $url_local; ?>">
+    <?php
+    	hide($content['comments']);
+    	hide($content['links']);
+    	print render($content); 
+    ?>
+    <?php if (!$page && $title && $type != "poll") : ?>
+    <h2 class="inline-title"><?php print $title; ?></h2>
+    <?php endif; ?>
+    </a>
+  </header>
 </article>

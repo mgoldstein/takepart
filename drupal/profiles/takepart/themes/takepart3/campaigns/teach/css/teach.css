@@ -1653,7 +1653,7 @@ a {
   text-shadow: 1px 1px #ea5f11;
 }
 .sys-stats .sys-stats-content {
-  background: transparent url('../img/notebook_paper_middle.png?1396292427') scroll repeat-y top center;
+  background: transparent url('../img/notebook_paper_middle.png?1396652920') scroll repeat-y top center;
   background-size: contain;
   padding: 0 5% 0 14%;
 }
@@ -1668,14 +1668,14 @@ a {
 .sys-stats:before, .sys-stats:after {
   content: ' ';
   display: block;
-  background: transparent url('../img/notebook_paper_top.png?1396292427') scroll no-repeat top center;
+  background: transparent url('../img/notebook_paper_top.png?1396652920') scroll no-repeat top center;
   background-size: contain;
   width: 100%;
   height: 0;
   padding-top: 23.7250554%;
 }
 .sys-stats:after {
-  background-image: url('../img/notebook_paper_bottom.png?1396292427');
+  background-image: url('../img/notebook_paper_bottom.png?1396652920');
   padding-top: 21.0643016%;
 }
 .sys-stats h2 {
@@ -1727,7 +1727,7 @@ a {
   position: absolute;
   right: 22px;
   bottom: 10px;
-  background: transparent url('../img/school-search-submit.png?1396292427') scroll no-repeat top left;
+  background: transparent url('../img/school-search-submit.png?1396652920') scroll no-repeat top left;
   background-size: 24px auto;
   width: 24px;
   height: 24px;
@@ -1852,6 +1852,9 @@ a {
   font-size: 2.25em;
 }
 
+.featured-stories {
+  font-size: 12px;
+}
 @media (min-width: 1000px) {
   .featured-stories {
     margin-top: 2em;
@@ -1870,7 +1873,7 @@ a {
   height: 0;
   padding-top: 92.6121372%;
   margin-bottom: 1em;
-  background: transparent url('../img/polaroid_blue_pin.png?1396292427') scroll no-repeat top center;
+  background: transparent url('../img/polaroid_blue_pin.png?1396652920') scroll no-repeat top center;
   background-size: contain;
   overflow: hidden;
   position: relative;
@@ -2068,10 +2071,22 @@ h1.sys-headline span {
   text-transform: lowercase;
 }
 
+.sys-intro-body {
+  line-height: 1.2em;
+}
 .sys-intro-body p,
 .sys-intro-body ul {
-  font-size: 13px;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.2em;
+}
+.sys-intro-body h4 {
+  font-size: 17px;
+}
+.sys-intro-body span.bullet {
+  font-size: 12px;
+}
+.sys-intro-body span.bullet :after {
+  content: ' >>';
 }
 
 .sys-cta {
@@ -2081,7 +2096,7 @@ h1.sys-headline span {
   width: 293px;
   height: 294px;
   overflow: hidden;
-  background: transparent url('../img/post_it_paperclip_293x294.png?1396292427') scroll no-repeat top left;
+  background: transparent url('../img/post_it_paperclip_293x294.png?1396652920') scroll no-repeat top left;
   font-size: 1.33333em;
   line-height: 1.25;
   color: black;
@@ -2117,38 +2132,40 @@ h1.sys-headline span {
     top: -12px;
     right: -5px;
     margin: 0;
-    background-image: url('../img/post_it_paperclip_315x241.png?1396292427');
+    background-image: url('../img/post_it_paperclip_315x241.png?1396652920');
     max-width: 315px;
     max-height: 241px;
   }
 }
 
-.sys-tips h2 {
+.sys-tips h2.sys-headline {
   background: transparent url('../img/sys-subhead-bg.png?1393893502') scroll no-repeat top left;
   padding: 2.5em 0 2em .5em;
   font-size: 1em;
   line-height: 1;
+  position: relative;
+  z-index: 1;
 }
 @media (min-width: 480px) {
-  .sys-tips h2 {
+  .sys-tips h2.sys-headline {
     padding: 1.4em 0 1em .5em;
     font-size: 1.142857143em;
     line-height: 2.1875;
   }
 }
 @media (min-width: 768px) {
-  .sys-tips h2 {
+  .sys-tips h2.sys-headline {
     font-size: 1.285714286em;
     line-height: 1.666666667;
   }
 }
 @media (min-width: 1000px) {
-  .sys-tips h2 {
+  .sys-tips h2.sys-headline {
     font-size: 1.428571429em;
     line-height: 1.25;
   }
 }
-.sys-tips h2 span {
+.sys-tips h2.sys-headline span {
   display: block;
   -webkit-transform: rotate(-1.5deg);
   -moz-transform: rotate(-1.5deg);
@@ -2737,7 +2754,7 @@ h1.sys-headline span {
   display: block;
   width: 100%;
   padding: .6em 4px 0;
-  background: transparent url('../img/story-modal-social-share-bg.png?1396292427') scroll no-repeat center top;
+  background: transparent url('../img/story-modal-social-share-bg.png?1396652920') scroll no-repeat center top;
   background-size: contain;
   min-height: 4.1em;
   text-align: center;
@@ -2933,7 +2950,7 @@ h1.sys-headline span {
   width: 100%;
   height: 0;
   padding-top: 4.379562%;
-  background: transparent url('../img/browse-story-shadow.png?1396292427') scroll no-repeat top center;
+  background: transparent url('../img/browse-story-shadow.png?1396652920') scroll no-repeat top center;
   background-size: contain;
 }
 .teach-app .stories-view .story img {
@@ -2973,7 +2990,7 @@ h1.sys-headline span {
   width: 100%;
   height: 0;
   padding: 2.8571429% 0;
-  background: transparent url('../img/app-search-box-shadow.png?1396292427') scroll no-repeat center top;
+  background: transparent url('../img/app-search-box-shadow.png?1396652920') scroll no-repeat center top;
   background-size: contain;
 }
 .teach-app .sys-form input[type=text].input-school-name {
@@ -2983,7 +3000,7 @@ h1.sys-headline span {
   position: absolute;
   right: 22px;
   bottom: 10px;
-  background: transparent url('../img/school-search-submit.png?1396292427') scroll no-repeat top left;
+  background: transparent url('../img/school-search-submit.png?1396652920') scroll no-repeat top left;
   background-size: 24px auto;
   width: 24px;
   height: 24px;

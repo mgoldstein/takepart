@@ -218,6 +218,14 @@ class SignupEndpointEditForm {
     );
   }
 
+  public function checkedByDefaultField() {
+    return array(
+      '#title' => t('Checked By Default'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->workingEndpoint()->getCheckedByDefault(),
+    );
+  }
+
   public function handlerClasses() {
     $classes = array();
     $plugins = ctools_get_plugins('pm_signup', 'handler');
@@ -295,6 +303,7 @@ class SignupEndpointEditForm {
     $form['label'] = $this->labelField();
     $form['name'] = $this->nameField();
     $form['prompt'] = $this->promptField();
+    $form['checked_by_default'] = $this->checkedByDefaultField();
     $this->addHandlerFieldsets($form);
     $form['submit'] = $this->submitButton();
     return $form;
@@ -355,6 +364,7 @@ class SignupEndpointEditForm {
     $values = $form_state['values'];
     $this->_endpoint->labelForExport($values['label'], $values['name']);
     $this->_endpoint->setUserPrompt($values['prompt']);
+    $this->_endpoint->setCheckedByDefault($values['checked_by_default']);
     foreach (array_keys($this->handlerClasses()) as $id) {
       $this->_prepareHandler($id, $values);
     }

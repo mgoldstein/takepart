@@ -37,12 +37,18 @@ body {
       width: auto;
     }
   }
+  &.page-entity-iframe {
+    border: none;
+  }
 }
 #page-wrap{
   position: relative;
-  background-color: transparent;
+  background-color: white;
   height: auto;
   overflow: hidden;
+  @include breakpoint($breakpoint-tablet) {
+    background-color: transparent;
+  }
 }
 .header-wrapper,
 .preface-wrapper,
@@ -84,6 +90,7 @@ body {
   min-height: 1em; // TODO figure out a better way to do this
 }
 #main {
+  background-color: white;
   #primary { // mobile first and pages with no sidebar
       @include zen-grid-item(12, 1);
   }
@@ -143,7 +150,7 @@ body {
 
   // the default style establishes mobile first parameters
   // and covers the unusual case where #skinny is by itself
-  #skinny { 
+  #skinny {
     @include zen-grid-item(12, 1);
     @include zen-clear();
     @include breakpoint($breakpoint-tablet){

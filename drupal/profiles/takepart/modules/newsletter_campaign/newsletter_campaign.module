@@ -4,7 +4,10 @@
  * Implements hook_custom_theme().
  */
 function newsletter_campaign_custom_theme() {
-  if (isset($_POST['form_id']) && $_POST['form_id'] == 'newsletter_campaign_social_form') {
+  if (isset($_POST['form_id']) && in_array($_POST['form_id'], array(
+    'newsletter_campaign_social_form',
+    'newsletter_campaign_signup_form',
+  ))) {
     return $_POST['ajax_page_state']['theme'];
   }
   return NULL;
@@ -605,8 +608,8 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign) {
     '#maxlength' => 128,
   );
 
-  $submit_src = drupal_get_path('theme', 'takepart3') . '/images/submit_off.png';
-  $hover_src = drupal_get_path('theme', 'takepart3') . '/images/submit_on.png';
+  $submit_src = drupal_get_path('theme', 'tp4') . '/images/newsletter_submit.png';
+  $hover_src = drupal_get_path('theme', 'tp4') . '/images/newsletter_submit_over.png';
   $form['newsletter_campaign_signup'] = array(
     '#type' => 'image_button',
     '#src' => $submit_src,
