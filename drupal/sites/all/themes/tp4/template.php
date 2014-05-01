@@ -154,8 +154,15 @@ function tp4_preprocess_page(&$variables) {
   }
 
   // override page titles on certain node templates
-  if (!empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
-    $variables['title'] = '';
+  $override_page_title_types = array(
+      'openpublish_article',
+      'feature_article',
+      'openpublish_photo_gallery',
+      'video',
+      'flashcard',
+  );
+  if (!empty($variables['node']) && in_array($variables['node']->type, $override_page_title_types)) {
+      $variables['title'] = '';
   }
 
   // add Taboola JS if we're on an article, feature or photo gallery page
@@ -258,7 +265,6 @@ function tp4_preprocess_block(&$variables) {
  */
 
 function tp4_preprocess_node(&$variables, $hook) {
-	
   // Add template suggestions for view modes and
   // node types per view view mode.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
@@ -273,6 +279,10 @@ function tp4_preprocess_node(&$variables, $hook) {
   // (for facebook plugins and whatnot)
   $variables['url_local'] = url('node/' . $variables['nid'], array('absolute' => TRUE));
   $variables['url_production'] = 'http://www.takepart.com' . url('node/' . $variables['nid']);
+
+  // put the nodetype as a date type on the node object.
+  // I'm Matt Wrather and I Approve This Hack.
+  $variables['attributes_array']['data-contenttype'] = $variables['type'];
 
   // Run node-type-specific preprocess functions, like
   // tp4_preprocess_node__page() or tp4_preprocess_node__story().
@@ -1423,6 +1433,22 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
     }
 }
 
+function tp4_preprocess_node__flashcard(&$variables) {
+ 
+    $variables['content']['flashcard_related_content_primary'] = array(
+        '#weight'=> 10,
+        '#prefix' => '<aside class="flashcard-realted-content-primary">',
+        '#suffix' => '</aside>',
+    );
+    $variables['content']['flashcard_related_content_primary'][] = $variables['content']['field_flashcard_related_primary'];
+    $variables['content']['flashcard_related_content_primary'][] = array_merge($variables['flashcard_cta_link'], array('#weight' => 10));
+    unset($variables['content']['field_flashcard_related_primary']);
+
+    if ($variables['view_mode'] === 'full') {
+        $variables['content']['body'][0]['#markup'] .= '<p><strong>What Flashcards would you like to see?</strong> <a href="mailto:editorial@takepart.com?subject=New%20Flashcard%20Request">Email us</a> or let us know in the <a href="#block-tp-flashcards-flashcard-comments">comments</a> below.</p>';
+    }
+}
+
 /**
  * Utility function to provide "On Our Radar" block to node templates
  */
@@ -1714,6 +1740,22 @@ function tp4_field__field_author__video($variables) {
     return tp4_field__field_author__openpublish_article($variables);
 }
 
+function tp4_field__field_flashcard_page_headline__flashcard($variables) {
+    $output = '<h1 class="node-title ' . $variables['classes'] . '"' . $variables['attributes'] . '>';
+
+    // Render the items.
+    $output .= '<span class="field-items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+        $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+        $output .= '<span class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</span>';
+    }
+    $output .= '</span>';
+
+    $output .= '</h1>';
+
+    return $output;
+}
+
 function tp4_field__field_article_subhead__openpublish_article($variables) {
     $output = '';
 
@@ -1741,6 +1783,10 @@ function tp4_field__field_article_subhead__feature_article($variables) {
 }
 
 function tp4_field__field_article_subhead__video($variables) {
+    return tp4_field__field_article_subhead__openpublish_article($variables);
+}
+
+function tp4_field__field_article_subhead__flashcard($variables) {
     return tp4_field__field_article_subhead__openpublish_article($variables);
 }
 
@@ -1825,6 +1871,37 @@ function tp4_field__field_video__video($variables) {
     return $output;
 }
 
+function tp4_field__field_flashcard_display_name__flashcard($variables) {
+    $output = '<h2 class="' . $variables['classes'] . '"' . $variables['attributes'] . '><dfn>';
+
+    // Render the items.
+    $output .= '<span class="field-items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+        $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+        $output .= '<span class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</span>';
+    }
+    $output .= '</span>';
+
+    $output .= '</dfn></h2>';
+
+    return $output;
+}
+
+function tp4_field__field_flashcard_pronunciation__flashcard($variables) {
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>[';
+
+    // Render the items.
+    $output .= '<span class="field-items"' . $variables['content_attributes'] . '>';
+    foreach ($variables['items'] as $delta => $item) {
+        $classes = 'field-item ' . ($delta % 2 ? 'odd' : 'even');
+        $output .= '<span class="' . $classes . '"' . $variables['item_attributes'][$delta] . '>' . drupal_render($item) . '</span>';
+    }
+    $output .= '</span>';
+
+    $output .= ']</div>';
+
+    return $output;
+}
 
 /**
  * Implements template_preprocess_entity().
@@ -1850,20 +1927,23 @@ function tp4_preprocess_entity(&$variables, $hook) {
                     if ($node->status == 1) {
                         $variables['custom_render'][$key]['typename'] = $collectiondata['field_type_label']['#items'][0]['value'];
 
-                        if ($node->type == 'openpublish_article' || $node->type == 'feature_article' || $node->type == 'video' || $node->type == 'campaign' || $node->type == 'campaign_page') {
+                        if (
+                            $node->type == 'openpublish_article'
+                            || $node->type == 'feature_article'
+                            || $node->type == 'video'
+                            || $node->type == 'flashcard'
+                            || $node->type == 'openpublish_video'
+                        ) {
                             $main_image = field_get_items('node', $node, 'field_thumbnail');
                         }
-                        if ($node->type == 'action') {
+                        else if ($node->type == 'action') {
                             $main_image = field_get_items('node', $node, 'field_action_main_image');
                         }
-                        if ($node->type == 'openpublish_photo_gallery') {
+                        else if ($node->type == 'openpublish_photo_gallery') {
                             $main_image = field_get_items('node', $node, 'field_thumbnail');
                             if ($main_image == NULL) {
                                 $main_image = field_get_items('node', $node, 'field_gallery_images');
                             }
-                        }
-                        if ($node->type == 'openpublish_video') {
-                            $main_image = field_get_items('node', $node, 'field_thumbnail');
                         }
                         if (isset($main_image[0]['fid'])) {
                             $img_url = file_load($main_image[0]['fid']);
@@ -1892,13 +1972,16 @@ function tp4_preprocess_entity(&$variables, $hook) {
 }
 
 function tp4_preprocess_panels_pane(&$variables) {
-    if ($variables['pane']->panel == 'main_featured') {
-        $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
-        if ($variables['content']['#bundle'] == 'video') {
-            $variables['title_attributes_array']['class'][] = 'no-overlap';
-        }
-        $variables['title_link'] = url('node/' . $variables['content']['#node']->nid);
+  if ($variables['pane']->panel == 'main_featured') {
+    $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
+    $variables['title_link'] = url('node/' . $variables['content']['#node']->nid);
+    if ($variables['content']['#bundle'] == 'video') {
+      $variables['title_attributes_array']['class'][] = 'no-overlap';
     }
+    else if ($variables['content']['#bundle'] == 'flashcard') {
+      $variables['title'] = l($variables['content']['#node']->title, 'node/' . $variables['content']['#node']->nid);
+    }
+  }
 }
 
 /*
@@ -1922,11 +2005,3 @@ function tp4_field_campaign_iframe($variables){
   $output .= '<iframe src="'. $variables['items'][0]['#markup']. '" width="'. $width. '" height="'. $height. '"></iframe>';
   return $output;
 }
-
-
-
-
-
-
-
-

@@ -79,6 +79,7 @@ features[context][] = topic_general
 features[context][] = tp4_article
 features[context][] = tp4_campaign_cards
 features[context][] = tp4_campaign_pages
+features[context][] = tp4_flashcard
 features[context][] = tp4_global
 features[context][] = tp4_global_not_front
 features[context][] = tp4_photo_gallery

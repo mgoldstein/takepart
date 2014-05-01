@@ -24,7 +24,10 @@ function takepart_publication_report_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Publication Report';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    7 => '7',
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -111,6 +114,7 @@ Instead, select two dates to search for all content published between those date
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'takepart_campaign' => 'takepart_campaign',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',

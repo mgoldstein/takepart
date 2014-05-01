@@ -819,6 +819,7 @@ function tpf_display_views_views_default_views() {
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
   );
@@ -847,7 +848,9 @@ function tpf_display_views_views_default_views() {
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'video' => 'video',
   );
   $handler->display->display_options['path'] = 'content/%/feed_old.xml';
 
@@ -947,6 +950,7 @@ function tpf_display_views_views_default_views() {
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
   );
@@ -1094,6 +1098,7 @@ echo $separator;
     'campaign' => 'campaign',
     'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
   );
   /* Filter criterion: Content: Syndication (field_syndication) */
   $handler->display->display_options['filters']['field_syndication_value']['id'] = 'field_syndication_value';
@@ -1375,6 +1380,7 @@ echo $separator;
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
   );
@@ -1878,6 +1884,187 @@ print $value;
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['block_description'] = 'Secondary features';
   $export['featured_items'] = $view;
+
+  $view = new view();
+  $view->name = 'flashcard_organizations_experts';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'field_collection_item';
+  $view->human_name = 'Flashcard Organizations & Experts';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Organizations & Experts';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['wrapper_class'] = '';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Flashcard */
+  $handler->display->display_options['relationships']['field_flashcard_organizations_node']['id'] = 'field_flashcard_organizations_node';
+  $handler->display->display_options['relationships']['field_flashcard_organizations_node']['table'] = 'field_collection_item';
+  $handler->display->display_options['relationships']['field_flashcard_organizations_node']['field'] = 'field_flashcard_organizations_node';
+  $handler->display->display_options['relationships']['field_flashcard_organizations_node']['ui_name'] = 'Flashcard';
+  $handler->display->display_options['relationships']['field_flashcard_organizations_node']['label'] = 'flashcard';
+  $handler->display->display_options['relationships']['field_flashcard_organizations_node']['required'] = TRUE;
+  /* Field: Field collection item: Link */
+  $handler->display->display_options['fields']['field_organizaiton_link']['id'] = 'field_organizaiton_link';
+  $handler->display->display_options['fields']['field_organizaiton_link']['table'] = 'field_data_field_organizaiton_link';
+  $handler->display->display_options['fields']['field_organizaiton_link']['field'] = 'field_organizaiton_link';
+  $handler->display->display_options['fields']['field_organizaiton_link']['label'] = '';
+  $handler->display->display_options['fields']['field_organizaiton_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_organizaiton_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_organizaiton_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_organizaiton_link']['type'] = 'link_absolute';
+  /* Field: Field collection item: Name */
+  $handler->display->display_options['fields']['field_organization_name']['id'] = 'field_organization_name';
+  $handler->display->display_options['fields']['field_organization_name']['table'] = 'field_data_field_organization_name';
+  $handler->display->display_options['fields']['field_organization_name']['field'] = 'field_organization_name';
+  $handler->display->display_options['fields']['field_organization_name']['label'] = '';
+  $handler->display->display_options['fields']['field_organization_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_organization_name']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Image */
+  $handler->display->display_options['fields']['field_organization_image']['id'] = 'field_organization_image';
+  $handler->display->display_options['fields']['field_organization_image']['table'] = 'field_data_field_organization_image';
+  $handler->display->display_options['fields']['field_organization_image']['field'] = 'field_organization_image';
+  $handler->display->display_options['fields']['field_organization_image']['label'] = '';
+  $handler->display->display_options['fields']['field_organization_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_organization_image']['alter']['path'] = '[field_organizaiton_link]';
+  $handler->display->display_options['fields']['field_organization_image']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_organization_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_organization_image']['element_wrapper_class'] = 'flashcard-organization-image';
+  $handler->display->display_options['fields']['field_organization_image']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_organization_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_organization_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_organization_image']['settings'] = array(
+    'image_style' => 'tp_100_wide',
+    'image_link' => '',
+  );
+  /* Field: Field collection item: Label */
+  $handler->display->display_options['fields']['field_organization_label']['id'] = 'field_organization_label';
+  $handler->display->display_options['fields']['field_organization_label']['table'] = 'field_data_field_organization_label';
+  $handler->display->display_options['fields']['field_organization_label']['field'] = 'field_organization_label';
+  $handler->display->display_options['fields']['field_organization_label']['label'] = '';
+  $handler->display->display_options['fields']['field_organization_label']['element_type'] = '0';
+  $handler->display->display_options['fields']['field_organization_label']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_organization_label']['element_wrapper_type'] = 'h4';
+  $handler->display->display_options['fields']['field_organization_label']['element_wrapper_class'] = 'flashcard-organization-label';
+  $handler->display->display_options['fields']['field_organization_label']['element_default_classes'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_organization_name]';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = '[field_organizaiton_link]';
+  $handler->display->display_options['fields']['nothing']['alter']['alt'] = '[field_organization_label]: [field_organization_name]';
+  $handler->display->display_options['fields']['nothing']['alter']['target'] = '_blank';
+  $handler->display->display_options['fields']['nothing']['element_type'] = '0';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'h3';
+  $handler->display->display_options['fields']['nothing']['element_wrapper_class'] = 'flashcard-organization-name';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['relationship'] = 'field_flashcard_organizations_node';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+  $export['flashcard_organizations_experts'] = $view;
+
+  $view = new view();
+  $view->name = 'flashcards';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Flashcards';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Flashcards on TakePart';
+  $handler->display->display_options['css_class'] = 'view-topic-listing';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Thumbnail Image */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
+    'image_style' => 'topic_thumbnail',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Page Headline */
+  $handler->display->display_options['fields']['field_flashcard_page_headline']['id'] = 'field_flashcard_page_headline';
+  $handler->display->display_options['fields']['field_flashcard_page_headline']['table'] = 'field_data_field_flashcard_page_headline';
+  $handler->display->display_options['fields']['field_flashcard_page_headline']['field'] = 'field_flashcard_page_headline';
+  $handler->display->display_options['fields']['field_flashcard_page_headline']['label'] = '';
+  $handler->display->display_options['fields']['field_flashcard_page_headline']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_flashcard_page_headline']['alter']['path'] = 'node/[nid]';
+  $handler->display->display_options['fields']['field_flashcard_page_headline']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'flashcard' => 'flashcard',
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'flashcards';
+  $export['flashcards'] = $view;
 
   $view = new view();
   $view->name = 'groups';
@@ -4144,6 +4331,7 @@ return TRUE;';
     'openpublish_article' => 'openpublish_article',
     'openpublish_blog_post' => 'openpublish_blog_post',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -4324,6 +4512,7 @@ return TRUE;';
     'openpublish_article' => 'openpublish_article',
     'openpublish_blog_post' => 'openpublish_blog_post',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -4378,6 +4567,7 @@ return TRUE;';
     'openpublish_blog_post' => 'openpublish_blog_post',
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -4463,6 +4653,7 @@ return TRUE;';
     'openpublish_article' => 'openpublish_article',
     'openpublish_blog_post' => 'openpublish_blog_post',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -4567,6 +4758,7 @@ return TRUE;';
     'openpublish_article' => 'openpublish_article',
     'openpublish_blog_post' => 'openpublish_blog_post',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -5350,6 +5542,7 @@ return TRUE;';
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
   );
@@ -5684,7 +5877,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'venue_pagination_sorter:page_1';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
-  /* Contextual filter: Field: Listing (field_associated_content) */
+  /* Contextual filter: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['arguments']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['arguments']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['arguments']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5717,7 +5910,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5755,7 +5948,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5785,7 +5978,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5815,7 +6008,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5845,7 +6038,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5875,7 +6068,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5905,7 +6098,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5935,7 +6128,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5965,7 +6158,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -5995,7 +6188,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6012,7 +6205,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
   $handler = $view->new_display('freepager', 'Contextual', 'freepager_12');
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field: Listing (field_associated_content) */
+  /* Contextual filter: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['arguments']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['arguments']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['arguments']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6058,7 +6251,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6088,7 +6281,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6118,7 +6311,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6148,7 +6341,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6178,7 +6371,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6208,7 +6401,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6238,7 +6431,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6268,7 +6461,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6298,7 +6491,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6328,7 +6521,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
     'venue' => 'venue',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Field: Listing (field_associated_content) */
+  /* Filter criterion: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['filters']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['filters']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['filters']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
@@ -6424,7 +6617,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
-  /* Contextual filter: Field: Listing (field_associated_content) */
+  /* Contextual filter: Field: Associated Content (field_associated_content) */
   $handler->display->display_options['arguments']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['arguments']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
   $handler->display->display_options['arguments']['field_associated_content_nid']['field'] = 'field_associated_content_nid';
