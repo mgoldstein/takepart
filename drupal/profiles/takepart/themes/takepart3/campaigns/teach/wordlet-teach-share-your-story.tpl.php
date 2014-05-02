@@ -3,7 +3,7 @@
         <div class="col-1-2">
             <div class="sys-intro">
                 <h1 class="sys-headline"><span><?php print w('page_headline'); ?></span></h1>
-                <div><?php print w('intro_body'); ?></div>div>
+                <div><?php print w('intro_body'); ?></div>
             </div>
             <?php include('partials/teach-sys-form.tpl.php'); ?>
         </div>
