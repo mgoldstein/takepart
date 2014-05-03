@@ -1708,87 +1708,6 @@ function tpf_content_flashcard_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-flashcard-field_series'
-  $field_instances['node-flashcard-field_series'] = array(
-    'bundle' => 'flashcard',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_series',
-    'label' => 'Series',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'content_taxonomy_opt_groups' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_select',
-      'weight' => 12,
-    ),
-  );
-
   // Exported field_instance: 'node-flashcard-field_significance'
   $field_instances['node-flashcard-field_significance'] = array(
     'bundle' => 'flashcard',
@@ -2085,7 +2004,6 @@ function tpf_content_flashcard_field_default_field_instances() {
   t('Pronunciation');
   t('Related Content');
   t('Related Content Category');
-  t('Series');
   t('Short Definition');
   t('Significance');
   t('Subhead');
