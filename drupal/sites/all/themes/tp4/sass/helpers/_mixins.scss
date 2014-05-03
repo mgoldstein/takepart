@@ -80,8 +80,8 @@
   }
 }
 
-@mixin header-top-border {
-  @include box-shadow(0 -4px 0 black);
+@mixin header-top-border($color: #000) {
+  @include box-shadow(0 -4px 0 $color);
   border-top: none;
   margin-top: 4px;
   padding-top: 5px;

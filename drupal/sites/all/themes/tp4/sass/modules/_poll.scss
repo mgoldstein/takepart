@@ -1,13 +1,27 @@
-.node-openpublish-article.view-mode-full .inline-content-nodes.vertical.inline-node-poll {
-  float: left;
-  &:before {
-    display: none;
+.node-openpublish-article.view-mode-full {
+  .inline-content-nodes.vertical.inline-node-poll {
+    float: left;
+    border-top: none;
+    &:before {
+      display: none;
+    }
+  }
+  .field-name-body ul {
+    list-style: none;
+    text-align: left;
+    padding-left: 0;
+    li:before {
+      background-color: transparent;
+      width: auto;
+      height: auto;
+      top: auto;
+    }
   }
 }
 
 .poll {
   border: 1px solid $gray-line;
-  @include header-top-border();
+  @include header-top-border($light-blue);
   @include box-sizing(box-content);
   padding: $zen-gutter-width;
 
@@ -32,6 +46,7 @@
       margin-left: -5px;
       position: absolute;
       left: -9%;
+      color: black;
     }
   }
 
@@ -39,29 +54,30 @@
     label {
       width: 100%;
       display: block;
+      margin-bottom: -10px;
       font-weight: normal;
     }
-
     margin: 20px 0;
   }
 
   .meter {
-    background-color: $gray-background;
     width: 87%;
     height: 14px;
     padding: 0;
     @include inline-block;
-    span {
+    .foreground {
       @include inline-block;
       height: 14px;
-      background-color: $light-mint;
+      min-width: 2px;
+      background-color: $light-blue;
     }
   }
 
   .percent {
     @include inline-block;
+    vertical-align: -webkit-baseline-middle;
     width: 9%;
-    margin-right: 10px;
+    margin-right: .5%;
     text-align: left;
     font: normal 12px $primary-sans-font;
     white-space: nowrap;
@@ -100,4 +116,8 @@
       margin-left: .5ex;
     }
   }
+}
+
+.hidden {
+  display: none;
 }

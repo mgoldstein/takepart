@@ -17,7 +17,6 @@
  */
 ?>
 <div class="poll">
-  <h3>what do you think?</h3>
   <div class="question"><?php print $title ?></div>
   <div class="vote-form">
     <div class="choices">
