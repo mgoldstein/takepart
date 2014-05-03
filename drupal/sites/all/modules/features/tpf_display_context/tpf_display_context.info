@@ -36,6 +36,7 @@ dependencies[] = tpf_content_blog_front
 dependencies[] = tpf_content_blog_post
 dependencies[] = tpf_content_campaign
 dependencies[] = tpf_content_campaigns
+dependencies[] = tpf_content_flashcard
 dependencies[] = tpf_content_group
 dependencies[] = tpf_content_page
 dependencies[] = tpf_content_photo

@@ -1796,6 +1796,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'tp_flashcards-flashcard_related_content' => array(
           'module' => 'tp_flashcards',
           'delta' => 'flashcard_related_content',
