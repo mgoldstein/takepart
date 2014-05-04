@@ -988,7 +988,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
       $node = node_load($variables['field_campaign_single_news_ref'][0]['target_id']);
 
-      $file = file_load($node->field_article_main_image['und'][0]['fid']);
+      $file = file_load($node->field_thumbnail['und'][0]['fid']);
       $image = file_create_url($file->uri);
       $image = image_style_url('campaign_news_3x2', $file->uri);
       $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
@@ -1019,7 +1019,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
-          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video'))
+          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard'))
           ->fieldCondition('field_thumbnail', 'fid', 0, '>')
           ->propertyCondition('status', 1)
           ->propertyOrderBy('created', 'DESC')
