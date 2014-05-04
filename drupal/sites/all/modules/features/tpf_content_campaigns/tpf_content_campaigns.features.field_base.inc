@@ -243,6 +243,7 @@ function tpf_content_campaigns_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'feature_article' => 'feature_article',
+          'flashcard' => 'flashcard',
           'openpublish_article' => 'openpublish_article',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
           'video' => 'video',
@@ -315,6 +316,7 @@ function tpf_content_campaigns_field_default_field_bases() {
         ),
         'target_bundles' => array(
           'feature_article' => 'feature_article',
+          'flashcard' => 'flashcard',
           'openpublish_article' => 'openpublish_article',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
           'video' => 'video',

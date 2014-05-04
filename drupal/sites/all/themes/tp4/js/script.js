@@ -329,10 +329,14 @@
           takepart.analytics.track('tp-social-click', args);
         })
         .on('flashcard-tooltip', function(e, args) {
-          takepart.analytics.track('flashcard-tooltip', args);
+          try {
+            takepart.analytics.track('flashcard-tooltip', args);            
+          }
         })
         .on('flashcard-click', function(e, args) {
-          takepart.analytics.track('flashcard-click', args);
+          try {
+            takepart.analytics.track('flashcard-click', args);
+          }
         })
       ;
     }
