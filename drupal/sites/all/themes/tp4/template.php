@@ -413,7 +413,6 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
 
   $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
-  $instructional = $variables['field_campaign_instructional'][0]['value'];
   $media_title = '';
   if(isset($variables['field_campaign_media_title'][0]['value']) == true){
     $media_title = '<h4 class="media-title">'. $variables['field_campaign_media_title'][0]['value']. '</h4>';
@@ -503,7 +502,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   $variables['left'] = $left;
   $variables['right'] = $right;
   $variables['center'] = $center;
-  $variables['instructional'] =  $instructional;
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
 
   // If color scheme is enabled add font color to major html tag inside the card
   if(!empty($variables['field_card_color_scheme'])){
@@ -544,8 +543,6 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 
   $column_count = $variables['field_campaign_media_col'][0]['value'];
-
-  $instructional = $variables['field_campaign_instructional'][0]['value'];
 
   //Set Layout
   if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
@@ -593,7 +590,7 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   $variables['left'] = $left;
   $variables['right'] = $right;
   $variables['center'] = $center;
-  $variables['instructional'] =  $instructional;
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
 
   // If color scheme is enabled add font color to major html tag inside the card
   if(!empty($variables['field_card_color_scheme'])){
@@ -634,7 +631,6 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   // social!
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $instructional = $variables['field_campaign_instructional']['und'][0]['value'];
 
   $collections = array();
   foreach($variables['field_campaign_social_follow']['und'] as $key => $collection){
@@ -696,7 +692,7 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['center'] = $center;
-  $variables['instructional'] =  $instructional;
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
 
   // If color scheme is enabled add font color to major html tag inside the card
   if(!empty($variables['field_card_color_scheme'])){
@@ -983,7 +979,6 @@ function tp4_query_filter_alter(QueryAlterableInterface $query) {
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
     // Count the number of values
-    $instructional = $variables['field_campaign_instructional'][0]['value'];
     $more = ''; //Add this to news and media
     $more = '<div class="more-link">'. $variables['field_campaign_more_link'][0]['value']. '</div>';
 
@@ -1078,7 +1073,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
   }
 
     $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-    $variables['instructional'] = $instructional;
+    $variables['instructional'] = isset($variables['field_campaign_instructional']);
     $variables['center'] = $center;
 
   // If color scheme is enabled add font color to major html tag inside the card
@@ -1114,7 +1109,6 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
 }
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
-  $instructional = $variables['field_campaign_instructional'][0]['value'];
   $center = '';
   $height = $variables['field_campaign_iframe_height'][0]['value'];
   $width = $variables['field_campaign_iframe_width'][0]['value'];
@@ -1158,7 +1152,7 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
     $variables['styles'][] = 'background-size: 1000px;';
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $variables['instructional'] = $instructional;
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
   $variables['center'] = $center;
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 
@@ -1235,7 +1229,6 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
     $variables['styles'][] = 'background-size: 1000px;';
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $variables['instructional'] = $instructional;
   $variables['center'] = $center;
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 
@@ -1295,7 +1288,7 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
     $variables['styles'][] = 'background-size: 1000px;';
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $variables['instructional'] = $instructional;
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
   $variables['center'] = $center;
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 
@@ -1620,6 +1613,13 @@ function tp4_preprocess_field(&$variables, $hook) {
             $first = reset($variables['items']);
             $variables['items'] = array($first);
         }
+    }
+
+    if ('field_campaign_instructional' === $variables['element']['#field_name']) {
+      // @todo this belongs in the featurized node display settings
+      $variables['element']['#label_display'] = 'none';
+      $variables['label_hidden'] = TRUE;
+      $variables['classes_array'][] = 'instructional';
     }
 
     // allow us to add attributes to a field from hook_preprocess_node.
