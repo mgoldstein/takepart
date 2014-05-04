@@ -1,7 +1,7 @@
 name = TakePart Display Menus
 description = TakePart Menus
 core = 7.x
-package = Display
+package = Content Display
 version = 7.x-1.2
 project = tpf_display_menus
 dependencies[] = features

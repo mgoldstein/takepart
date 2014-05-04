@@ -1067,6 +1067,40 @@ s.prop2 = [current-page:url-arg:1]',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'omniture_flashcard';
+  $context->description = 'Variables to set on flashcard pages';
+  $context->tag = 'Omniture';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'flashcard' => 'flashcard',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'omniture_reaction' => array(
+      'variables' => 's.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
+s.prop6 = [node:nid]
+s.prop17 = [tp_omniture:str_decode:{node:title}]
+s.prop19 = [tp_omniture:date:{node:created:raw}]
+s.prop20 = [tp_omniture:primary_topic:{node:nid}]
+',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Omniture');
+  t('Variables to set on flashcard pages');
+  $export['omniture_flashcard'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'omniture_gallery';
   $context->description = 'Variables to set on gallery pages.';
   $context->tag = 'Omniture';
@@ -1796,6 +1830,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
         'tp_flashcards-flashcard_related_content' => array(
           'module' => 'tp_flashcards',
           'delta' => 'flashcard_related_content',

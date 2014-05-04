@@ -914,7 +914,7 @@
   .flashcard-definition {
     @include box-sizing(border-box);
     @include box-shadow(0 0 0 1px #e0e0e0);
-    padding: .5em 1em 2em;
+    padding: 1.5em 1em 2em;
     border-top: 4px solid $flashcard-active;
 
     &:before {
@@ -963,16 +963,21 @@
     @include breakpoint($breakpoint-tablet) {
       float: right;
       clear: right;
-      margin: 0 0 1.5em 1.5em;
+      margin: 7px 0 2em 1.5em;
     }
   }
 
+  .field-name-field-article-subhead {
+    margin-top: .625em;
+  }
+
   .field-name-body {
+    margin-bottom: 2.5em;
     & > .field-items > .field-item > p:first-of-type {
       &::first-letter {
         float: none;
         margin: 0;
-        font: normal 1em/1.5 $primary-sans-font;
+        font: normal normal 100 1em/1.5 $primary-sans-font;
       }
     }
   }
@@ -982,6 +987,10 @@
 // Flashcard pages non-node content
 // 
 .page-node.node-type-flashcard {
+  #main { // need the ID for specificity
+    background-color: transparent;
+  }
+
   .flashcard-branding {
     font: bold normal 1.428571429em/1.2 $main-brand-font;
     background: transparent inline-image("flashcards-brand-icon.png") no-repeat scroll left center;
@@ -1109,7 +1118,7 @@
   .view-flashcard-organizations-experts {
     li {
       @include clearfix;
-      margin-bottom: 1em;
+      margin: 1em 0;
     }
     .flashcard-organization-image {
       float: left;
