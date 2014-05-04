@@ -65,6 +65,7 @@ features[context][] = multi_page_campaign_default_context
 features[context][] = omniture_all_content_types
 features[context][] = omniture_article_v2
 features[context][] = omniture_blog
+features[context][] = omniture_flashcard
 features[context][] = omniture_gallery
 features[context][] = omniture_homepage
 features[context][] = omniture_registration
