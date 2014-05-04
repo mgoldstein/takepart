@@ -950,7 +950,7 @@ function tpf_content_flashcard_field_default_field_instances() {
     'bundle' => 'flashcard',
     'default_value' => array(
       0 => array(
-        'value' => 'See Everything On This Issue',
+        'value' => 'see everything on this issue',
       ),
     ),
     'deleted' => 0,
@@ -1016,6 +1016,40 @@ function tpf_content_flashcard_field_default_field_instances() {
     'label' => 'Call To Action Text',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
