@@ -456,6 +456,11 @@
             s.eVar26=options.term;
             s.eVar30=s.pageName;
             s.tl(true, 'o', 'Flashcard Tooltip Popup');
+            delete s.linkTrackVars;
+            delete s.linkTrackEvents;
+            delete s.events;
+            delete s.eVar26;
+            delete s.eVar30;            
         },
         'flashcard-click': function(options) {
             var s=s_gi(Drupal.settings.omniture.s_account);
@@ -465,6 +470,11 @@
             s.eVar26=options.term;
             s.eVar30=s.pageName;
             s.tl(true, 'o', 'Flashcard Tooltip Popup');
+            delete s.linkTrackVars;
+            delete s.linkTrackEvents;
+            delete s.events;
+            delete s.eVar26;
+            delete s.eVar30;            
         }
 
     });
