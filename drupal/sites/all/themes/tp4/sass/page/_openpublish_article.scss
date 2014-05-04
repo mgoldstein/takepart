@@ -987,6 +987,10 @@
 // Flashcard pages non-node content
 // 
 .page-node.node-type-flashcard {
+  #main { // need the ID for specificity
+    background-color: transparent;
+  }
+
   .flashcard-branding {
     font: bold normal 1.428571429em/1.2 $main-brand-font;
     background: transparent inline-image("flashcards-brand-icon.png") no-repeat scroll left center;
