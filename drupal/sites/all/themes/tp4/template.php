@@ -544,6 +544,11 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 
   $column_count = $variables['field_campaign_media_col'][0]['value'];
 
+  $instructional = $variables['field_campaign_instructional'][0]['value'];
+
+  $slim_text = $variables['field_slim_card_text'][0]['value'];
+  
+  
   //Set Layout
   if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
 
@@ -585,6 +590,13 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   else{
     $variables['styles'][] = 'background-size: 1000px;';
   }
+  
+  // Slim Text card
+  if($slim_text == 1){
+    $variables['classes_array'][] = 'slim-text';
+	$variables['slim_text'] =  'slim-text-card-inner';
+  }
+
 
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['left'] = $left;
