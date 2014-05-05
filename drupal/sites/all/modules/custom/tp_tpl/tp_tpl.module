@@ -1,0 +1,83 @@
+<?php
+/*
+ * @file
+ * Documentation goes here
+ */
+
+
+/*
+ *Implements hook_block_info
+ */
+function tp_tpl_block_info(){
+  $blocks = array();
+  $blocks['tpl_short'] = array(
+    'info' => t('TPL Short Block'),
+  );
+
+  return $blocks;
+}
+
+/*
+ *Implements Hook Block View
+ */
+function tp_tpl_block_view($delta = ''){
+  $block = array();
+  switch($delta){
+    case 'tpl_short':
+      $block['content'] = tp_tpl_short();
+    break;
+  }
+
+  return $block;
+}
+
+/*
+ *Implements hook_menu
+ */
+function tp_tpl_menu(){
+  $items = array();
+  $items['config/tpl'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_tpl_long_config_form'),
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/*
+ *View for the TPL long Config page
+ */
+function tp_tpl_long_config_form($form, &$form_state){
+  $form = array();
+  $form['tpl_long_bid'] = array(
+    '#type'         => 'textfield',
+    '#title'        => t('BID to use'),
+    '#description'  => t('Example: 7'),
+    '#default_value' => variable_get('tpl_long_bid', '1'),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'submit now',
+  );
+  return $form;
+}
+function tp_tpl_long_config_form_validate($form, &$form_state){
+  // dpm($form_state, 'form state');
+  if(!is_numeric($form_state['values']['tpl_long_bid'])){
+    return form_set_error('tpl_long_bid', 'Value needs to be an integer.');
+  }
+}
+
+function tp_tpl_long_config_form_submit($form, &$form_state){
+  $tpl_long_bid = $form_state['values']['tpl_long_bid'];
+  variable_set('tpl_long_bid', $tpl_long_bid);
+  drupal_set_message('You successfully updated the BID to '. $tpl_long_bid. '.');
+}
+
+function tp_tpl_short(){
+  //bean id can change between environments. grab bid from admin config form
+  $bid = variable_get('tpl_long_bid', 1);
+  bean_load($bid);
+  return 'coming soon';
+}
