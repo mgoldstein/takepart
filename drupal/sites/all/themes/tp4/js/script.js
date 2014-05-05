@@ -331,12 +331,12 @@
         .on('flashcard-tooltip', function(e, args) {
           try {
             takepart.analytics.track('flashcard-tooltip', args);            
-          }
+          } catch (e) {}
         })
         .on('flashcard-click', function(e, args) {
           try {
             takepart.analytics.track('flashcard-click', args);
-          }
+          } catch (e) {}
         })
       ;
     }
