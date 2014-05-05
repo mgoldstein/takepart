@@ -1656,17 +1656,17 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'region' => 'header',
           'weight' => '-100',
         ),
-        'bean--of-the-day' => array(
+        'bean-tpl-live-long' => array(
           'module' => 'bean',
-          'delta' => '-of-the-day',
+          'delta' => 'tpl-live-long',
           'region' => 'sidebar',
-          'weight' => '-2',
+          'weight' => '-9',
         ),
         'boxes-right_rail_video_promo_articles' => array(
           'module' => 'boxes',
           'delta' => 'right_rail_video_promo_articles',
           'region' => 'sidebar',
-          'weight' => '0',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -2068,15 +2068,15 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'region' => 'sidebar',
           'weight' => '-10',
         ),
-        'newsletter_campaign-48' => array(
-          'module' => 'newsletter_campaign',
-          'delta' => '48',
+        'bean-tpl-live-long' => array(
+          'module' => 'bean',
+          'delta' => 'tpl-live-long',
           'region' => 'sidebar',
           'weight' => '-9',
         ),
-        'bean--of-the-day' => array(
-          'module' => 'bean',
-          'delta' => '-of-the-day',
+        'newsletter_campaign-48' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '48',
           'region' => 'sidebar',
           'weight' => '-8',
         ),
@@ -2084,7 +2084,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
-          'weight' => '-7',
+          'weight' => '-6',
         ),
         'pm_interstitial-interstitials' => array(
           'module' => 'pm_interstitial',
