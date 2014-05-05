@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Content Flashcard feature.
+ */
+
+include_once 'tpf_content_flashcard.features.inc';

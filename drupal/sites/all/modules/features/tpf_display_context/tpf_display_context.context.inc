@@ -1067,6 +1067,40 @@ s.prop2 = [current-page:url-arg:1]',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'omniture_flashcard';
+  $context->description = 'Variables to set on flashcard pages';
+  $context->tag = 'Omniture';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'flashcard' => 'flashcard',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'omniture_reaction' => array(
+      'variables' => 's.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
+s.prop6 = [node:nid]
+s.prop17 = [tp_omniture:str_decode:{node:title}]
+s.prop19 = [tp_omniture:date:{node:created:raw}]
+s.prop20 = [tp_omniture:primary_topic:{node:nid}]
+',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Omniture');
+  t('Variables to set on flashcard pages');
+  $export['omniture_flashcard'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'omniture_gallery';
   $context->description = 'Variables to set on gallery pages.';
   $context->tag = 'Omniture';
@@ -1775,6 +1809,94 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'tp4_flashcard';
+  $context->description = '';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'flashcard' => 'flashcard',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'tp_flashcards-flashcard_related_content' => array(
+          'module' => 'tp_flashcards',
+          'delta' => 'flashcard_related_content',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+        'tp_flashcards-flashcard_get_more' => array(
+          'module' => 'tp_flashcards',
+          'delta' => 'flashcard_get_more',
+          'region' => 'content',
+          'weight' => '-9',
+        ),
+        'tp_flashcards-flashcard_comments' => array(
+          'module' => 'tp_flashcards',
+          'delta' => 'flashcard_comments',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+        'system-main' => array(
+          'module' => 'system',
+          'delta' => 'main',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
+        'newsletter_campaign-51' => array(
+          'module' => 'newsletter_campaign',
+          'delta' => '51',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'views-92f8036c910f2ff5c341b7002d220886' => array(
+          'module' => 'views',
+          'delta' => '92f8036c910f2ff5c341b7002d220886',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
+        'boxes-box-1104adce' => array(
+          'module' => 'boxes',
+          'delta' => 'box-1104adce',
+          'region' => 'sidebar',
+          'weight' => '-8',
+        ),
+        'boxes-bg_skin_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'bg_skin_sponsor',
+          'region' => 'suffix',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
+  $export['tp4_flashcard'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tp4_global';
   $context->description = '';
   $context->tag = 'TP4';
@@ -1834,6 +1956,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
         '~<front>' => '~<front>',
         '~feature/*' => '~feature/*',
         '~video/*' => '~video/*',
+        '~flashcards/*' => '~flashcards/*',
       ),
     ),
     'theme' => array(
