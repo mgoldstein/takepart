@@ -11476,31 +11476,21 @@ header .search .form-submit {
 
 /* line 22, ../sass/modules/_poll.scss */
 .poll {
-  border: 1px solid #cccccc;
-  -webkit-box-shadow: 0 -4px 0 #00b5cc;
-  -moz-box-shadow: 0 -4px 0 #00b5cc;
-  box-shadow: 0 -4px 0 #00b5cc;
-  border-top: none;
-  margin-top: 4px;
-  padding-top: 5px;
-  -webkit-box-sizing: box-content;
-  -moz-box-sizing: box-content;
-  box-sizing: box-content;
-  padding: 3%;
+  padding: 0 5px;
 }
-/* line 28, ../sass/modules/_poll.scss */
+/* line 29, ../sass/modules/_poll.scss */
 .poll h3 {
   font: bold 20px "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: lowercase;
 }
-/* line 38, ../sass/modules/_poll.scss */
+/* line 39, ../sass/modules/_poll.scss */
 .poll .question {
   font: 100 14px/130% "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   margin-left: 9%;
   padding-left: 10px;
   position: relative;
 }
-/* line 43, ../sass/modules/_poll.scss */
+/* line 44, ../sass/modules/_poll.scss */
 .poll .question:before {
   content: 'Q.';
   font: bold 34px/90% "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
@@ -11509,18 +11499,18 @@ header .search .form-submit {
   left: -9%;
   color: black;
 }
-/* line 53, ../sass/modules/_poll.scss */
+/* line 54, ../sass/modules/_poll.scss */
 .poll .meterContainer {
   margin: 20px 0;
 }
-/* line 54, ../sass/modules/_poll.scss */
+/* line 55, ../sass/modules/_poll.scss */
 .poll .meterContainer label {
   width: 100%;
   display: block;
   margin-bottom: -10px;
   font-weight: normal;
 }
-/* line 63, ../sass/modules/_poll.scss */
+/* line 64, ../sass/modules/_poll.scss */
 .poll .meter {
   width: 87%;
   height: 14px;
@@ -11532,7 +11522,7 @@ header .search .form-submit {
   zoom: 1;
   *display: inline;
 }
-/* line 68, ../sass/modules/_poll.scss */
+/* line 69, ../sass/modules/_poll.scss */
 .poll .meter .foreground {
   display: -moz-inline-stack;
   display: inline-block;
@@ -11544,7 +11534,7 @@ header .search .form-submit {
   min-width: 2px;
   background-color: #00b5cc;
 }
-/* line 76, ../sass/modules/_poll.scss */
+/* line 77, ../sass/modules/_poll.scss */
 .poll .percent {
   display: -moz-inline-stack;
   display: inline-block;
@@ -11559,7 +11549,7 @@ header .search .form-submit {
   font: normal 12px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   white-space: nowrap;
 }
-/* line 86, ../sass/modules/_poll.scss */
+/* line 87, ../sass/modules/_poll.scss */
 .poll .total {
   text-align: left;
   display: -moz-inline-stack;
@@ -11573,33 +11563,33 @@ header .search .form-submit {
   font: normal 12px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: uppercase;
 }
-/* line 94, ../sass/modules/_poll.scss */
+/* line 95, ../sass/modules/_poll.scss */
 .poll .value {
   font: normal 30px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
 }
-/* line 102, ../sass/modules/_poll.scss */
+/* line 103, ../sass/modules/_poll.scss */
 .poll .vote-form {
   text-align: left;
   margin-left: 9%;
   padding-left: 10px;
 }
-/* line 106, ../sass/modules/_poll.scss */
+/* line 107, ../sass/modules/_poll.scss */
 .poll .vote-form .choices {
   margin: 10px 0;
 }
-/* line 110, ../sass/modules/_poll.scss */
+/* line 111, ../sass/modules/_poll.scss */
 .poll .form-item {
   margin: 10px 0;
   text-indent: -18px;
   left: 10px;
   position: relative;
 }
-/* line 115, ../sass/modules/_poll.scss */
+/* line 116, ../sass/modules/_poll.scss */
 .poll .form-item label.option {
   margin-left: .5ex;
 }
 
-/* line 121, ../sass/modules/_poll.scss */
+/* line 122, ../sass/modules/_poll.scss */
 .hidden {
   display: none;
 }
@@ -11621,7 +11611,7 @@ header .search .form-submit {
 .tpl-block h2.block__title {
   white-space: nowrap;
   text-indent: 1000px;
-  background: url('../images/tpl_logo.png?1399326576') no-repeat top center;
+  background: url('../images/tpl_logo.png?1399330193') no-repeat top center;
   height: 30px;
   margin-bottom: 2px;
 }
@@ -11633,7 +11623,7 @@ header .search .form-submit {
 }
 /* line 23, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1399326576') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1399330193') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;

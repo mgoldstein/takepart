@@ -20,10 +20,11 @@
 }
 
 .poll {
-  border: 1px solid $gray-line;
-  @include header-top-border($light-blue);
-  @include box-sizing(box-content);
-  padding: $zen-gutter-width;
+  // border: 1px solid $gray-line;
+  // @include header-top-border($light-blue);
+  // @include box-sizing(box-content);
+  // padding: $zen-gutter-width;
+  padding: 0 5px;
 
   h3 {
     font: bold 20px $main-brand-font;
