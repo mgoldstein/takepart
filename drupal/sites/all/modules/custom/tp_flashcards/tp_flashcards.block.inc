@@ -71,21 +71,35 @@ function _tp_flashcards_related_content_block($nodes_to_show = 8) {
       $tids = array_map('_tp_flashcards_get_target_id', field_get_items('node', $node, 'field_flashcard_related_category'));
 
       if (!empty($tids)) {
-        $query = db_select('node', 'n');
-        $query->join('field_data_field_free_tag', 't', 't.entity_id=n.nid');
-        $query
-          ->fields('n', array('nid'))
-          ->condition('n.status', 1)
-          ->condition('n.type', array('flashcard', 'openpublish_article', 'feature_article', 'openpublish_photo_galery', 'video'))
-          ->condition('t.field_free_tag_tid', $tids)
-          ->orderBy('n.created', 'DESC')
-          ->range(0, $nodes_to_show - count($overrides));
-        if (!empty($overrides)) {
-          $query->condition('n.nid', $overrides, 'NOT IN');
+        // @todo this is inefficient
+        $category_nodes = array();
+        foreach (array('field_topic', 'field_free_tag') as $field) {
+          $query = new EntityFieldQuery();
+          $query->entityCondition('entity_type', 'node')
+            ->entityCondition('bundle', array('flashcard', 'openpublish_article', 'feature_article', 'openpublish_photo_galery', 'video'))
+            ->propertyCondition('status', 1)
+            ->fieldCondition($field, 'tid', $tids, 'IN')
+            ->propertyOrderBy('created', 'DESC')
+            ->range(0,$nodes_to_show - count($overrides));
+
+          if (!empty($overrides)) {
+            $query->propertyCondition('nid', $overrides, 'NOT IN');
+          }
+
+          $result = $query->execute();
+          if ($result['node']) {
+            $category_nodes = $category_nodes + $result['node'];
+          }
         }
 
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'node')
+          ->propertyOrderBy('created', 'DESC')
+          ->entityCondition('entity_id', array_keys($category_nodes))
+          ->range(0,$nodes_to_show - count($overrides));
+
         $result = $query->execute();
-        $category_nodes = array_keys($result->fetchAllKeyed());
+        $category_nodes = array_keys($result['node']);
 
         // build the call to action link based on the first
         // taxonomy term in the related category list
@@ -113,7 +127,6 @@ function _tp_flashcards_related_content_block($nodes_to_show = 8) {
         $contents['cta_link'] = $cta_link;
       }
     }
-
   }
   return $contents;
 }
