@@ -87,32 +87,7 @@ p:first-child{
   margin: 0;
 }
 .secondary-button{
-  border: none;
-  padding: 8px;
-  display: inline-block;
-  font-family: $primary-serif-font;
-  font-weight: 100;
-  font-size: 18px;
-  line-height: 22px;
-  background-color: transparent;
-  a {
-    position: relative;
-    padding-left: 20px;
-    color: #000;
-    &:before{
-      font-family: "SSGizmo";
-      color: $light-mint;
-      content: '\23E9';
-      position: absolute;
-      top: -1px;
-      left: 0;
-    }
-  }
-  &:hover{
-    a{
-      text-decoration: underline;
-    }
-  }
+  @include secondary-button;
 }
 ul:not(.tabs){
   li{
