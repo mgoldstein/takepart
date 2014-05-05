@@ -11451,21 +11451,35 @@ header .search .form-submit {
   -webkit-overflow-scrolling: touch;
 }
 
-/* line 1, ../sass/modules/_poll.scss */
+/* line 2, ../sass/modules/_poll.scss */
 .node-openpublish-article.view-mode-full .inline-content-nodes.vertical.inline-node-poll {
   float: left;
+  border-top: none;
 }
-/* line 3, ../sass/modules/_poll.scss */
+/* line 5, ../sass/modules/_poll.scss */
 .node-openpublish-article.view-mode-full .inline-content-nodes.vertical.inline-node-poll:before {
   display: none;
 }
+/* line 9, ../sass/modules/_poll.scss */
+.node-openpublish-article.view-mode-full .field-name-body ul {
+  list-style: none;
+  text-align: left;
+  padding-left: 0;
+}
+/* line 13, ../sass/modules/_poll.scss */
+.node-openpublish-article.view-mode-full .field-name-body ul li:before {
+  background-color: transparent;
+  width: auto;
+  height: auto;
+  top: auto;
+}
 
-/* line 8, ../sass/modules/_poll.scss */
+/* line 22, ../sass/modules/_poll.scss */
 .poll {
   border: 1px solid #cccccc;
-  -webkit-box-shadow: 0 -4px 0 black;
-  -moz-box-shadow: 0 -4px 0 black;
-  box-shadow: 0 -4px 0 black;
+  -webkit-box-shadow: 0 -4px 0 #00b5cc;
+  -moz-box-shadow: 0 -4px 0 #00b5cc;
+  box-shadow: 0 -4px 0 #00b5cc;
   border-top: none;
   margin-top: 4px;
   padding-top: 5px;
@@ -11474,39 +11488,40 @@ header .search .form-submit {
   box-sizing: box-content;
   padding: 3%;
 }
-/* line 14, ../sass/modules/_poll.scss */
+/* line 28, ../sass/modules/_poll.scss */
 .poll h3 {
   font: bold 20px "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: lowercase;
 }
-/* line 24, ../sass/modules/_poll.scss */
+/* line 38, ../sass/modules/_poll.scss */
 .poll .question {
   font: 100 14px/130% "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   margin-left: 9%;
   padding-left: 10px;
   position: relative;
 }
-/* line 29, ../sass/modules/_poll.scss */
+/* line 43, ../sass/modules/_poll.scss */
 .poll .question:before {
   content: 'Q.';
   font: bold 34px/90% "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   margin-left: -5px;
   position: absolute;
   left: -9%;
+  color: black;
 }
-/* line 38, ../sass/modules/_poll.scss */
+/* line 53, ../sass/modules/_poll.scss */
 .poll .meterContainer {
   margin: 20px 0;
 }
-/* line 39, ../sass/modules/_poll.scss */
+/* line 54, ../sass/modules/_poll.scss */
 .poll .meterContainer label {
   width: 100%;
   display: block;
+  margin-bottom: -10px;
   font-weight: normal;
 }
-/* line 48, ../sass/modules/_poll.scss */
+/* line 63, ../sass/modules/_poll.scss */
 .poll .meter {
-  background-color: #eeeeee;
   width: 87%;
   height: 14px;
   padding: 0;
@@ -11517,8 +11532,8 @@ header .search .form-submit {
   zoom: 1;
   *display: inline;
 }
-/* line 54, ../sass/modules/_poll.scss */
-.poll .meter span {
+/* line 68, ../sass/modules/_poll.scss */
+.poll .meter .foreground {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
@@ -11526,9 +11541,10 @@ header .search .form-submit {
   zoom: 1;
   *display: inline;
   height: 14px;
-  background-color: #01bf9e;
+  min-width: 2px;
+  background-color: #00b5cc;
 }
-/* line 61, ../sass/modules/_poll.scss */
+/* line 76, ../sass/modules/_poll.scss */
 .poll .percent {
   display: -moz-inline-stack;
   display: inline-block;
@@ -11536,13 +11552,14 @@ header .search .form-submit {
   *vertical-align: auto;
   zoom: 1;
   *display: inline;
+  vertical-align: -webkit-baseline-middle;
   width: 9%;
-  margin-right: 10px;
+  margin-right: .5%;
   text-align: left;
   font: normal 12px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   white-space: nowrap;
 }
-/* line 70, ../sass/modules/_poll.scss */
+/* line 86, ../sass/modules/_poll.scss */
 .poll .total {
   text-align: left;
   display: -moz-inline-stack;
@@ -11556,30 +11573,35 @@ header .search .form-submit {
   font: normal 12px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: uppercase;
 }
-/* line 78, ../sass/modules/_poll.scss */
+/* line 94, ../sass/modules/_poll.scss */
 .poll .value {
   font: normal 30px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
 }
-/* line 86, ../sass/modules/_poll.scss */
+/* line 102, ../sass/modules/_poll.scss */
 .poll .vote-form {
   text-align: left;
   margin-left: 9%;
   padding-left: 10px;
 }
-/* line 90, ../sass/modules/_poll.scss */
+/* line 106, ../sass/modules/_poll.scss */
 .poll .vote-form .choices {
   margin: 10px 0;
 }
-/* line 94, ../sass/modules/_poll.scss */
+/* line 110, ../sass/modules/_poll.scss */
 .poll .form-item {
   margin: 10px 0;
   text-indent: -18px;
   left: 10px;
   position: relative;
 }
-/* line 99, ../sass/modules/_poll.scss */
+/* line 115, ../sass/modules/_poll.scss */
 .poll .form-item label.option {
   margin-left: .5ex;
+}
+
+/* line 121, ../sass/modules/_poll.scss */
+.hidden {
+  display: none;
 }
 
 /* line 1, ../sass/modules/_tpl-block.scss */
@@ -11599,7 +11621,7 @@ header .search .form-submit {
 .tpl-block h2.block__title {
   white-space: nowrap;
   text-indent: 1000px;
-  background: url('../images/tpl_logo.png?1399069700') no-repeat top center;
+  background: url('../images/tpl_logo.png?1399326576') no-repeat top center;
   height: 30px;
   margin-bottom: 2px;
 }
@@ -11611,7 +11633,7 @@ header .search .form-submit {
 }
 /* line 23, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1399314300') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1399326576') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;

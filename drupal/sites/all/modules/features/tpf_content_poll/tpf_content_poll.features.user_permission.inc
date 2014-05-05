@@ -10,6 +10,17 @@
 function tpf_content_poll_user_default_permissions() {
   $permissions = array();
 
+  // Exported permission: 'access iframe version'.
+  $permissions['access iframe version'] = array(
+    'name' => 'access iframe version',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
+    ),
+    'module' => 'entity_iframe',
+  );
+
   // Exported permission: 'cancel own vote'.
   $permissions['cancel own vote'] = array(
     'name' => 'cancel own vote',
@@ -97,6 +108,15 @@ function tpf_content_poll_user_default_permissions() {
       'layout editor' => 'layout editor',
     ),
     'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view iframe embed code'.
+  $permissions['view iframe embed code'] = array(
+    'name' => 'view iframe embed code',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'entity_iframe',
   );
 
   // Exported permission: 'vote on polls'.
