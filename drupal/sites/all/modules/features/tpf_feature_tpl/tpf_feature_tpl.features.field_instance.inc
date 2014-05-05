@@ -121,40 +121,75 @@ function tpf_feature_tpl_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-tpl_long-field_poll_reference'
-  $field_instances['bean-tpl_long-field_poll_reference'] = array(
+  // Exported field_instance: 'bean-tpl_long-field_iframe_embed'
+  $field_instances['bean-tpl_long-field_iframe_embed'] = array(
     'bundle' => 'tpl_long',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Embed the poll iframe here.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 0,
-          'view_mode' => 'teaser',
-        ),
-        'type' => 'entityreference_entity_view',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 5,
       ),
     ),
     'entity_type' => 'bean',
-    'field_name' => 'field_poll_reference',
-    'label' => 'Poll Reference',
+    'field_name' => 'field_iframe_embed',
+    'label' => 'iFrame Embed',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 0,
+          'full_html' => 0,
+          'limited_html' => 0,
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 0,
+          'plain_text' => 0,
+        ),
+        'allowed_formats_toggle' => 1,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => 11,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'options',
+      'module' => 'text',
       'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
       ),
-      'type' => 'options_select',
-      'weight' => 6,
+      'type' => 'text_textarea',
+      'weight' => 7,
     ),
   );
 
@@ -204,7 +239,7 @@ function tpf_feature_tpl_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -345,11 +380,12 @@ function tpf_feature_tpl_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Call to Action');
   t('Description');
+  t('Embed the poll iframe here.');
   t('Media Video');
-  t('Poll Reference');
   t('Tune In');
   t('Video Caption');
   t('When TPL will be airing on Pivot.');
+  t('iFrame Embed');
 
   return $field_instances;
 }
