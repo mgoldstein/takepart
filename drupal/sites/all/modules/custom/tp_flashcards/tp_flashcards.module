@@ -120,6 +120,26 @@ function tp_flashcards_node_view($node) {
 }
 
 /**
+ * Implements template_preprocess_views_view_fields().
+ *
+ * Alter the node title of flashcards when they appear in views. 
+ *
+ * @param array $variables theme variables
+ */
+function tp_flashcards_preprocess_views_view_fields(&$variables) {
+  if ($variables['row']->node_type === "flashcard" && isset($variables['fields']['title'])) {
+    $type = $variables['row']->_field_data['nid']['entity_type'];
+    $node = $variables['row']->_field_data['nid']['entity'];
+    $field = $variables['fields']['title'];
+
+    foreach (field_get_items($type, $node, 'field_flashcard_page_headline') as $item) {
+      $page_headline = drupal_render(field_view_value($type, $node, 'field_flashcard_page_headline', $item));
+    }
+    $variables['fields']['title']->content = preg_replace("/{$field->raw}/", $page_headline, $field->content);
+  }
+}
+
+/**
  * Implements hook_node_presave().
  *
  * Clear out flashcards cache on node create/update.
