@@ -914,7 +914,7 @@
   .flashcard-definition {
     @include box-sizing(border-box);
     @include box-shadow(0 0 0 1px #e0e0e0);
-    padding: 1.5em 1em 2em;
+    padding: 2em 1em;
     border-top: 4px solid $flashcard-active;
 
     &:before {

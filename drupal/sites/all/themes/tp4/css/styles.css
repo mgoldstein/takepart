@@ -6390,7 +6390,7 @@ a.column-header:hover {
   -webkit-box-shadow: 0 0 0 1px #e0e0e0;
   -moz-box-shadow: 0 0 0 1px #e0e0e0;
   box-shadow: 0 0 0 1px #e0e0e0;
-  padding: 1.5em 1em 2em;
+  padding: 2em 1em;
   border-top: 4px solid #c40066;
 }
 /* line 920, ../sass/page/_openpublish_article.scss */
