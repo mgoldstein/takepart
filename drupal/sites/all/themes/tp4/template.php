@@ -959,8 +959,9 @@ function tp4_convert_twitter_time( $t ) {
 
 /**
  * Implementation of hook_query_TAG_alter
+ * Needed for the OR condition for terms
  */
-function tp4_query_filter_alter(QueryAlterableInterface $query) {
+function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
   $node = node_load();
   $tags = $query->alterMetaData['entity_field_query']->tags;
   $nid = array_slice($tags, 1, 1);
@@ -984,6 +985,28 @@ function tp4_query_filter_alter(QueryAlterableInterface $query) {
 
 }
 
+/**
+ * Implementation of hook_query_TAG_alter
+ * Needed for the OR condition for promo content since Actions don't use promos
+ */
+function tp4_query_promofilter_alter(QueryAlterableInterface $query) {
+  $node = node_load();
+  $tags = $query->alterMetaData['entity_field_query']->tags;
+  $nid = array_slice($tags, 1, 1);
+  $node = node_load($nid[0]);
+
+  $query
+    ->leftJoin('field_data_field_thumbnail', 'a', 'node.nid = a.entity_id');
+  $query
+    ->leftJoin('field_data_field_action_main_image', 'b', 'node.nid = b.entity_id');
+  $or = db_or()
+    ->condition('a.field_thumbnail_fid', 0, '>')
+    ->condition('b.field_action_main_image_fid', 0, '>');
+  $query
+    ->condition($or);
+
+}
+
 
 /**
  * Override or insert variables into the campaign card news
@@ -994,22 +1017,28 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     $more = ''; //Add this to news and media
     $more = '<div class="more-link">'. $variables['field_campaign_more_link'][0]['value']. '</div>';
 
-
-
     if($variables['field_campaign_news_type'][0]['value'] == 0){  //single value
 
       $node = node_load($variables['field_campaign_single_news_ref'][0]['target_id']);
 
-      $file = file_load($node->field_thumbnail['und'][0]['fid']);
+      if($node->type == 'action'){
+        $file = file_load($node->field_action_main_image['und'][0]['fid']);
+        $short_headline = $node->field_tab_call_to_action[LANGUAGE_NONE][0]['value'];
+      }
+      else{
+        $file = file_load($node->field_thumbnail['und'][0]['fid']);
+        $short_headline = $node->field_article_subhead['und'][0]['value'];
+      }
+
       $image = file_create_url($file->uri);
       $image = image_style_url('campaign_news_3x2', $file->uri);
       $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
+      $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
-      $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
       $center .= l($image, $path, array('html' => true));
       $center .= '<h3 class="headline">'. l($node->field_promo_headline['und'][0]['value'], $path). '</h3>';  //headline
-      $center .= '<p class="short-headline">'. $node->field_article_subhead['und'][0]['value']. '</p>';  //short headline
+      $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
       $center .= $more;
 
       $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
@@ -1032,11 +1061,11 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
           ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard', 'action'))
-          ->fieldCondition('field_thumbnail', 'fid', 0, '>')
           ->propertyCondition('status', 1)
           ->propertyOrderBy('created', 'DESC')
-          ->addTag('filter')
+          ->addTag('termfilter')
           ->addTag($variables['nid'])
+          ->addTag('promofilter')
           ->range(0, $max_count - $count);
         $articles = $campaignNewsArticles->execute();
       }
@@ -1049,13 +1078,21 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center .= '<div class="news-column-wrapper">';
       foreach($nodes as $key => $node){
 
+        if($node->type == 'action'){
+          $file = file_load($node->field_action_main_image['und'][0]['fid']);
+          $headline = $node->field_tab_call_to_action[LANGUAGE_NONE][0]['value'];
+        }
+        else{
+          $file = file_load($node->field_thumbnail['und'][0]['fid']);
+          $headline = $node->field_promo_headline['und'][0]['value'];
+        }
+
+
         $node_path = drupal_get_path_alias('node/'. $node->nid);
-        $file = file_load($node->field_thumbnail['und'][0]['fid']);
         $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
         $image = file_create_url($file->uri);
         $image = image_style_url('campaign_news_3x2', $file->uri);
         $media = '<img src="'. $image. '" alt="'.$alt.'">';
-        $headline = $node->field_promo_headline['und'][0]['value'];
         $news_column = $media;
         $news_column .= '<h5>'. $headline. '</h5>';
         $center .= l($news_column, $node_path, array('html' => true, 'attributes' => array('class' => array('news-column'))));
