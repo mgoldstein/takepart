@@ -67,10 +67,11 @@ function _tp_flashcards_related_content_block($nodes_to_show = 8) {
     // first get the related content overrides
     $overrides = array_map('_tp_flashcards_get_target_id', field_get_items('node', $node, 'field_flashcard_related'));
 
-    if (count($overrides) < $nodes_to_show) {
-      $tids = array_map('_tp_flashcards_get_target_id', field_get_items('node', $node, 'field_flashcard_related_category'));
-
-      if (!empty($tids)) {
+    // then fill out the list of related content based on the provided taxonomy terms
+    // and then setting the CTA link
+    $tids = array_map('_tp_flashcards_get_target_id', field_get_items('node', $node, 'field_flashcard_related_category'));
+    if (!empty($tids)) {
+      if (count($overrides) < $nodes_to_show) {
         // @todo this is inefficient
         $category_nodes = array();
         foreach (array('field_topic', 'field_free_tag') as $field) {
@@ -100,32 +101,41 @@ function _tp_flashcards_related_content_block($nodes_to_show = 8) {
 
         $result = $query->execute();
         $category_nodes = array_keys($result['node']);
-
-        // build the call to action link based on the first
-        // taxonomy term in the related category list
-        $path = url('taxonomy/term/' . $tids[0]);
-        $items = field_get_items('node', $node, 'field_flashcard_related_cta_text');
-        $text = drupal_render(field_view_value('node', $node, 'field_flashcard_related_cta_text', $items[0]));
-        $cta_link = array(
-          '#weight' => 10,
-          '#prefix' => '<div class="flashcard-related-content-cta-wrapper">',
-          '#suffix' => '</div>',
-          '#theme' => 'link',
-          '#text' => $text,
-          '#path' => substr($path, 1),
-          '#options' => array('attributes' => array('class' => array('flashcard-cta-link'))),
-        );
       }
 
-      $all_related_nodes = empty($overrides) ? array() : $overrides;
-      $all_related_nodes = empty($category_nodes) ? $all_related_nodes : array_merge($all_related_nodes, $category_nodes);
-      $contents = node_view_multiple(node_load_multiple($all_related_nodes), 'feature_secondary');
+      // build the call to action link based on the first
+      // taxonomy term in the related category list
+      $path = url('taxonomy/term/' . $tids[0]);
+    } else {
+      // if $tids is empty, we don't have a taxonomy term and will fall back
+      // to searching for the first synonym
+      $items = field_get_items('node', $node, 'field_flashcard_synonyms');
+      $term = drupal_render(field_view_value('node', $node, 'field_flashcard_synonyms', $items[0]));
+      $path = url('search/' . rawurlencode($term));
+    }
 
-      if (!empty($all_related_nodes)) {
-        $contents['nodes']['#prefix'] = '<h2 class="section-header top-border">Go Deeper on the Issue</h2><div class="flashcard-related-content-wrapper">';
-        $contents['nodes']['#suffix'] = '</div>';
-        $contents['cta_link'] = $cta_link;
-      }
+    // build the CTA link
+    foreach (field_get_items('node', $node, 'field_flashcard_related_cta_text') as $item) {
+      $text = drupal_render(field_view_value('node', $node, 'field_flashcard_related_cta_text', $item));
+    }
+    $cta_link = array(
+      '#weight' => 10,
+      '#prefix' => '<div class="flashcard-related-content-cta-wrapper">',
+      '#suffix' => '</div>',
+      '#theme' => 'link',
+      '#text' => $text,
+      '#path' => substr($path, 1),
+      '#options' => array('attributes' => array('class' => array('flashcard-cta-link'))),
+    );
+
+    $all_related_nodes = empty($overrides) ? array() : $overrides;
+    $all_related_nodes = empty($category_nodes) ? $all_related_nodes : array_merge($all_related_nodes, $category_nodes);
+    $contents = node_view_multiple(node_load_multiple($all_related_nodes), 'feature_secondary');
+
+    if (!empty($all_related_nodes)) {
+      $contents['nodes']['#prefix'] = '<h2 class="section-header top-border">Go Deeper on the Issue</h2><div class="flashcard-related-content-wrapper">';
+      $contents['nodes']['#suffix'] = '</div>';
+      $contents['cta_link'] = $cta_link;
     }
   }
   return $contents;
