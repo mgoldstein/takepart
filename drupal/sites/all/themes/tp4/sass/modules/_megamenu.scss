@@ -84,7 +84,7 @@
             text-indent: 100%;
             white-space: nowrap;
             overflow: hidden;
-            background: image-url('takeaction-logo.png') no-repeat center center;
+            background: image-url('takeaction-logo.jpg') no-repeat center center;
             margin: 0;
           }
         }
@@ -227,10 +227,10 @@
         }
       }
       .title a.takepart-logo{
-        background-image: image-url('tpl-logo-hover.jpg');
+        background-image: image-url('tpl-logo-mobile.png');
       }
       .title a.takeaction-logo{
-        background-image: image-url('takeaction-logo-hover.jpg');
+        background-image: image-url('takeaction-logo-mobile.png');
       }
     }
   }
