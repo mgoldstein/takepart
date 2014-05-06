@@ -190,7 +190,7 @@ body.front{
     margin: 0 0 1em;
     padding: 0;
     height: 60px;
-    @include breakpoint($breakpoint-tablet) {
+    @include breakpoint($breakpoint-desktop) {
       height: 30px;
     }
 
@@ -200,19 +200,25 @@ body.front{
       height: 30px;
       margin: 0 auto;
       background: transparent none scroll no-repeat top left;
-      @include breakpoint($breakpoint-tablet) {
+      @include breakpoint($breakpoint-desktop) {
         display: inline-block;
         float: none;
-        margin: 0 .5em 0 0;
+        margin: 0 0 0 0;
       }
     }
     .tpl-title {
       width: 167px;
       background-image: image-url("tpl-title.jpg");
+      margin-top: 5px;
+      margin-bottom: -5px;
+      @include breakpoint($breakpoint-desktop) {
+        margin-bottom: 0px;
+      }
     }
     .tpl-time {
-      width: 252px;
+      width: 312px;
       background-image: image-url("tpl-time.jpg");
+      margin-top: 5px;
     }
   }
 } // .panel-takepart-homepage

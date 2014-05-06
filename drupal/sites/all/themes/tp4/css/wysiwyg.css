@@ -3923,3 +3923,11 @@ ol > li:before {
   line-height: 22px;
   color: #000;
 }
+
+/* line 145, ../sass/modules/_wysiwyg.scss */
+.primary-headline {
+  color: #000;
+  font-size: 20px;
+  font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-weight: bold;
+}
