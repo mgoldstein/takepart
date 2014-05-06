@@ -5,3 +5,8 @@
  */
 
 include_once 'tpf_content_poll.features.inc';
+
+function tpf_content_poll_admin_paths_alter(&$paths) {
+  $paths['entity_iframe'] = FALSE;
+}
+
