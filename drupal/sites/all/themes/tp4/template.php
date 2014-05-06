@@ -1923,10 +1923,6 @@ function tp4_field_campaign_iframe($variables){
   return $output;
 }
 
-
-
-
-
-
-
-
+function tp4_preprocess_poll_results(&$variables) {
+   dd($variables);
+}
