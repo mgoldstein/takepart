@@ -2035,3 +2035,11 @@ function tp4_preprocess_poll_results(&$variables) {
       $variables['cta'] = '';
   }
 }
+
+/*
+ * Change text of poll submit button
+ */
+function tp4_preprocess_poll_vote(&$variables) {
+    $variables['form']['vote']['#value'] = 'Submit';
+    $variables['vote'] = drupal_render($variables['form']['vote']);
+}
