@@ -63,7 +63,6 @@ function tp_tpl_long_config_form($form, &$form_state){
   return $form;
 }
 function tp_tpl_long_config_form_validate($form, &$form_state){
-  // dpm($form_state, 'form state');
   if(!is_numeric($form_state['values']['tpl_long_bid'])){
     return form_set_error('tpl_long_bid', 'Value needs to be an integer.');
   }
