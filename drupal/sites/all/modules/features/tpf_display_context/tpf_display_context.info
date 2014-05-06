@@ -1,7 +1,8 @@
 name = TakePart Display Context
+description = Context configuration - added free tags to analytics
 core = 7.x
 package = Content Display
-version = 7.x-1.6
+version = 7.x-1.7
 project = tpf_display_context
 dependencies[] = bean
 dependencies[] = boxes
@@ -20,6 +21,7 @@ dependencies[] = list
 dependencies[] = menu
 dependencies[] = menu_block
 dependencies[] = newsletter_campaign
+dependencies[] = node_reference
 dependencies[] = options
 dependencies[] = pm_interstitial
 dependencies[] = strongarm
