@@ -2017,3 +2017,21 @@ function tp4_field_campaign_iframe($variables){
   $output .= '<iframe src="'. $variables['items'][0]['#markup']. '" width="'. $width. '" height="'. $height. '"></iframe>';
   return $output;
 }
+
+/*
+ * Add post-vote call to action value to returned poll results.
+ */
+function tp4_preprocess_poll_results(&$variables) {
+  $nid = $variables['nid'];
+  $poll = node_load($nid);
+  $cta = NULL;
+  foreach(field_get_items('node', $poll, 'field_post_vote_message') as $delta => $item) {
+    $cta = $item['safe_value'];
+  }
+  if (!is_null($cta)) {
+      $variables['cta'] = $cta;
+  }
+  else {
+      $variables['cta'] = '';
+  }
+}
