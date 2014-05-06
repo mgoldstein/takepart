@@ -9992,7 +9992,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.png?1389823777') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1399337600') no-repeat center center;
     margin: 0;
   }
 }
@@ -10318,11 +10318,11 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 }
 /* line 229, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-hover.jpg?1389823777');
+  background-image: url('../images/tpl-logo-mobile.png?1399337827');
 }
 /* line 232, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-hover.jpg?1389823777');
+  background-image: url('../images/takeaction-logo-mobile.png?1399337802');
 }
 
 /**
