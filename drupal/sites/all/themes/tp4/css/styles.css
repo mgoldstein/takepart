@@ -3781,11 +3781,16 @@ body.snapjs-left #page-wrap {
   width: auto;
 }
 /* line 40, ../sass/page/_layout.scss */
+body.toolbar-drawer.page-entity-iframe {
+  padding-top: 1em;
+}
+/* line 43, ../sass/page/_layout.scss */
 body.page-entity-iframe {
   border: none;
+  padding-top: 1em;
 }
 
-/* line 44, ../sass/page/_layout.scss */
+/* line 49, ../sass/page/_layout.scss */
 #page-wrap {
   position: relative;
   background-color: white;
@@ -3793,13 +3798,13 @@ body.page-entity-iframe {
   overflow: hidden;
 }
 @media all and (min-width: 768px) {
-  /* line 44, ../sass/page/_layout.scss */
+  /* line 49, ../sass/page/_layout.scss */
   #page-wrap {
     background-color: transparent;
   }
 }
 
-/* line 57, ../sass/page/_layout.scss */
+/* line 62, ../sass/page/_layout.scss */
 .header-wrapper,
 .preface-wrapper,
 .main-wrapper,
@@ -3810,27 +3815,27 @@ body.page-entity-iframe {
   padding: 0;
 }
 
-/* line 62, ../sass/page/_layout.scss */
+/* line 67, ../sass/page/_layout.scss */
 .header-wrapper, .suffix-wrapper, .preface-wrapper {
   padding: 0 10px;
 }
 
-/* line 65, ../sass/page/_layout.scss */
+/* line 70, ../sass/page/_layout.scss */
 .header-wrapper {
   padding-top: 1em;
 }
 
-/* line 68, ../sass/page/_layout.scss */
+/* line 73, ../sass/page/_layout.scss */
 .preface-wrapper {
   min-height: 25px;
 }
 
-/* line 71, ../sass/page/_layout.scss */
+/* line 76, ../sass/page/_layout.scss */
 .footer-wrapper {
   padding-bottom: 1em;
 }
 
-/* line 78, ../sass/page/_layout.scss */
+/* line 83, ../sass/page/_layout.scss */
 #header,
 #preface,
 #main,
@@ -3864,21 +3869,21 @@ body.page-entity-iframe {
   clear: both;
 }
 
-/* line 86, ../sass/page/_layout.scss */
+/* line 91, ../sass/page/_layout.scss */
 #header {
   z-index: 3;
 }
 
-/* line 89, ../sass/page/_layout.scss */
+/* line 94, ../sass/page/_layout.scss */
 #preface {
   min-height: 1em;
 }
 
-/* line 92, ../sass/page/_layout.scss */
+/* line 97, ../sass/page/_layout.scss */
 #main {
   background-color: white;
 }
-/* line 94, ../sass/page/_layout.scss */
+/* line 99, ../sass/page/_layout.scss */
 #main #primary {
   float: left;
   width: 100%;
@@ -3893,7 +3898,7 @@ body.page-entity-iframe {
   word-wrap: break-word;
 }
 @media all and (min-width: 768px) {
-  /* line 98, ../sass/page/_layout.scss */
+  /* line 103, ../sass/page/_layout.scss */
   #main.with-sidebar #primary {
     float: left;
     width: 58.33333%;
@@ -3909,7 +3914,7 @@ body.page-entity-iframe {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 98, ../sass/page/_layout.scss */
+  /* line 103, ../sass/page/_layout.scss */
   #main.with-sidebar #primary {
     float: left;
     width: 66.66667%;
@@ -3924,7 +3929,7 @@ body.page-entity-iframe {
     word-wrap: break-word;
   }
 }
-/* line 105, ../sass/page/_layout.scss */
+/* line 110, ../sass/page/_layout.scss */
 body.page-node.node-type-feature-article #main.with-sidebar #primary {
   float: left;
   width: 100%;
@@ -3939,7 +3944,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   word-wrap: break-word;
 }
 @media all and (min-width: 980px) {
-  /* line 111, ../sass/page/_layout.scss */
+  /* line 116, ../sass/page/_layout.scss */
   #main.with-skinny #primary {
     float: left;
     width: 83.33333%;
@@ -3955,7 +3960,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 118, ../sass/page/_layout.scss */
+  /* line 123, ../sass/page/_layout.scss */
   #main.with-sidebar.with-skinny #primary {
     float: left;
     width: 50%;
@@ -3976,7 +3981,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     padding-right: 8px;
   }
 }
-/* line 131, ../sass/page/_layout.scss */
+/* line 136, ../sass/page/_layout.scss */
 #main #sidebar {
   float: left;
   width: 100%;
@@ -3992,7 +3997,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   clear: left;
 }
 @media all and (min-width: 768px) {
-  /* line 131, ../sass/page/_layout.scss */
+  /* line 136, ../sass/page/_layout.scss */
   #main #sidebar {
     float: left;
     width: 41.66667%;
@@ -4009,7 +4014,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 131, ../sass/page/_layout.scss */
+  /* line 136, ../sass/page/_layout.scss */
   #main #sidebar {
     width: 300px;
     float: right;
@@ -4021,7 +4026,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     box-sizing: content-box;
   }
 }
-/* line 153, ../sass/page/_layout.scss */
+/* line 158, ../sass/page/_layout.scss */
 #main #skinny {
   float: left;
   width: 100%;
@@ -4037,7 +4042,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   clear: left;
 }
 @media all and (min-width: 768px) {
-  /* line 153, ../sass/page/_layout.scss */
+  /* line 158, ../sass/page/_layout.scss */
   #main #skinny {
     float: left;
     width: 41.66667%;
@@ -4053,7 +4058,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 153, ../sass/page/_layout.scss */
+  /* line 158, ../sass/page/_layout.scss */
   #main #skinny {
     float: left;
     width: 16.66667%;
@@ -4070,7 +4075,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 165, ../sass/page/_layout.scss */
+  /* line 170, ../sass/page/_layout.scss */
   #main.with-sidebar #skinny {
     float: left;
     width: 100%;
@@ -4086,7 +4091,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 165, ../sass/page/_layout.scss */
+  /* line 170, ../sass/page/_layout.scss */
   #main.with-sidebar #skinny {
     float: left;
     width: 16.66667%;
@@ -4104,13 +4109,13 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 
-/* line 179, ../sass/page/_layout.scss */
+/* line 184, ../sass/page/_layout.scss */
 #tp_ad_takeover {
   display: none;
   visibility: hidden;
 }
 @media all and (min-width: 980px) {
-  /* line 179, ../sass/page/_layout.scss */
+  /* line 184, ../sass/page/_layout.scss */
   #tp_ad_takeover {
     display: block;
     visibility: visible;
@@ -4310,7 +4315,7 @@ body.front #sidebar .block-title {
 /* line 209, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1399420358');
+  background-image: url('../images/tpl-title.jpg?1399420468');
   margin-top: 5px;
   margin-bottom: -5px;
 }
@@ -4323,7 +4328,7 @@ body.front #sidebar .block-title {
 /* line 218, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 312px;
-  background-image: url('../images/tpl-time.jpg?1399420358');
+  background-image: url('../images/tpl-time.jpg?1399420468');
   margin-top: 5px;
 }
 
@@ -9998,7 +10003,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1399415302') no-repeat center 9px;
+    background: url('../images/tpl-logo.jpg?1399420468') no-repeat center 9px;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -10008,7 +10013,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.jpg?1399415302') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1399420468') no-repeat center center;
     margin: 0;
   }
 }
@@ -10334,11 +10339,11 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 }
 /* line 229, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-mobile.png?1399415302');
+  background-image: url('../images/tpl-logo-mobile.png?1399420468');
 }
 /* line 232, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-mobile.png?1399415302');
+  background-image: url('../images/takeaction-logo-mobile.png?1399420468');
 }
 
 /**
@@ -11898,7 +11903,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1399415302') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1399420468') no-repeat 10px center;
   margin: 0;
 }
 /* line 98, ../sass/modules/_left_drawer.scss */
@@ -11909,7 +11914,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/tpl-logo-mobile.png?1399415302') no-repeat 10px center;
+  background: url('../images/tpl-logo-mobile.png?1399420468') no-repeat 10px center;
   margin: 0;
 }
 /* line 111, ../sass/modules/_left_drawer.scss */
@@ -11960,7 +11965,7 @@ header .search .form-submit {
 .poll .question {
   font: 100 14px/130% "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   margin-left: 9%;
-  padding-left: 10px;
+  padding-left: 2em;
   position: relative;
 }
 /* line 44, ../sass/modules/_poll.scss */
@@ -12061,13 +12066,18 @@ header .search .form-submit {
 .poll .form-item label.option {
   margin-left: .5ex;
 }
+/* line 120, ../sass/modules/_poll.scss */
+.poll #edit-vote {
+  width: 123px;
+  height: 26px;
+}
 
-/* line 122, ../sass/modules/_poll.scss */
+/* line 126, ../sass/modules/_poll.scss */
 .hidden {
   display: none;
 }
 
-/* line 126, ../sass/modules/_poll.scss */
+/* line 130, ../sass/modules/_poll.scss */
 .entity_iframe_container div.messages.status, .entity_iframe_container div.status.messages--status, .entity_iframe_container div.status.messages--warning, .entity_iframe_container div.status.messages--error {
   display: none;
 }
@@ -12201,7 +12211,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 .tpl-block h2.block__title {
   white-space: nowrap;
   text-indent: 1000px;
-  background: url('../images/tpl_logo.png?1399330193') no-repeat top center;
+  background: url('../images/tpl_logo.png?1399420468') no-repeat top center;
   height: 30px;
   margin-bottom: 2px;
 }
@@ -12213,7 +12223,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 }
 /* line 23, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1399330193') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1399420468') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;

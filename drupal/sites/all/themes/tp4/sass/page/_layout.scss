@@ -37,9 +37,14 @@ body {
       width: auto;
     }
   }
+  &.toolbar-drawer.page-entity-iframe {
+      padding-top: 1em;
+  }
   &.page-entity-iframe {
     border: none;
+    padding-top: 1em;
   }
+
 }
 #page-wrap{
   position: relative;
