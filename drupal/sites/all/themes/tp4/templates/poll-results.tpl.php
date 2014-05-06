@@ -30,3 +30,7 @@
   <?php if (!empty($cancel_form)): ?>
     <?php print $cancel_form; ?>
   <?php endif; ?>
+
+<?php if (!empty($cta)): ?>
+    <?php print $cta; ?>
+  <?php endif; ?>
