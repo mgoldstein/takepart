@@ -46,6 +46,13 @@
   }
   .field-name-field-tpl-block-cta{
     @include secondary-button;
-    font-size: 16px;
+    font-size: 14px;
+    font-family: $primary-sans-font;
+  }
+  .primary-headline{
+    color: #000;
+    font-size: 20px;
+    font-family: $main-brand-font;
+    font-weight: bold;
   }
 }

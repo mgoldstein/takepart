@@ -3843,13 +3843,13 @@ p:first-child {
   line-height: 22px;
   background-color: transparent;
 }
-/* line 160, ../sass/helpers/_mixins.scss */
+/* line 188, ../sass/helpers/_mixins.scss */
 .secondary-button a {
   position: relative;
   padding-left: 20px;
   color: #000;
 }
-/* line 164, ../sass/helpers/_mixins.scss */
+/* line 192, ../sass/helpers/_mixins.scss */
 .secondary-button a:before {
   font-family: "SSGizmo";
   color: #01bf9e;
@@ -3858,7 +3858,7 @@ p:first-child {
   top: -1px;
   left: 0;
 }
-/* line 174, ../sass/helpers/_mixins.scss */
+/* line 202, ../sass/helpers/_mixins.scss */
 .secondary-button:hover a {
   text-decoration: underline;
 }
@@ -3921,4 +3921,12 @@ ol > li:before {
   font-size: 14px;
   line-height: 22px;
   color: #000;
+}
+
+/* line 145, ../sass/modules/_wysiwyg.scss */
+.primary-headline {
+  color: #000;
+  font-size: 20px;
+  font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-weight: bold;
 }
