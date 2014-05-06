@@ -1031,7 +1031,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
-          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard'))
+          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard', 'action'))
           ->fieldCondition('field_thumbnail', 'fid', 0, '>')
           ->propertyCondition('status', 1)
           ->propertyOrderBy('created', 'DESC')
