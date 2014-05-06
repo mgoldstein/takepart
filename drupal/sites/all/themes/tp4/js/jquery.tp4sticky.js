@@ -20,8 +20,14 @@
     return this.each(function(index) {
 
       var $stickyEl = $(this),
-          $wrap = $stickyEl.wrap('<div class="' + options.wrapperClass +  '" />').parent().css('position', 'static'),
+          $wrap = $stickyEl.wrap('<div class="' + options.wrapperClass +  '" />').parent(),
           $bottomEl = $(options.stopAt);
+
+      // set some initial values for the static wrapper div
+      $wrap.css({
+        'position': 'static',
+        'float': $stickyEl.css('float')
+      });
 
       $(window).on('scroll', function(e) {
         var isSticky = $stickyEl.hasClass(options.stickyClass),
@@ -30,6 +36,10 @@
         // add/remove the sticky class
         // TODO: Add height to the wrapping element so that it maintains the space of the sticky element.
         if (window.scrollY > ($wrap.offset().top - options.offset)) {
+          $wrap.css({
+            height: $stickyEl.outerHeight(true) + 'px',
+            width: $stickyEl.outerWidth(true) + 'px'
+          });
           isSticky || $stickyEl.addClass(options.stickyClass);
         } else {
           !isSticky || $stickyEl.removeClass(options.stickyClass);
