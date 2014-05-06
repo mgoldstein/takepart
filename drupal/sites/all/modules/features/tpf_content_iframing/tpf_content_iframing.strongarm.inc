@@ -110,6 +110,7 @@ function tpf_content_iframing_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_iframe_bundle_node';
   $strongarm->value = array(
+    'poll' => 'poll',
     'video' => 'video',
     'action' => 0,
     'openpublish_article' => 0,
@@ -124,6 +125,7 @@ function tpf_content_iframing_strongarm() {
     'campaign_card_news' => 0,
     'campaign_card_social' => 0,
     'campaign_card_text' => 0,
+    'campaign_card_twitter' => 0,
     'campaign_page' => 0,
     'campaign_tray' => 0,
     'feature_article' => 0,
@@ -184,7 +186,7 @@ function tpf_content_iframing_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_iframe_embed';
-  $strongarm->value = 0;
+  $strongarm->value = 1;
   $export['entity_iframe_embed'] = $strongarm;
 
   $strongarm = new stdClass();
