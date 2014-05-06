@@ -96,7 +96,7 @@ function pollanon_handle_vote_validate($form, &$form_state) {
   }
 
   if (!_pollanon_validate_request($form_state['values']['pollanonkey'])) {
-    _pollanon_cookiemessage(t('Cookie support required to anonymous voting'));
+    _pollanon_cookiemessage(t('Cookie support is required for anonymous voting'));
     drupal_goto($_GET['q']);
   }
   if (!_pollanon_ip_check($form['#node']->nid, ip_address())) {
