@@ -39,7 +39,7 @@
   .question {
     font: 100 14px/130% $primary-serif-font;
     margin-left: 9%;
-    padding-left: 10px;
+    padding-left: 2em;
     position: relative;
     &:before {
       content: 'Q.';
@@ -116,6 +116,10 @@
     label.option {
       margin-left: .5ex;
     }
+  }
+  #edit-vote {
+      width: 123px;
+      height: 26px;
   }
 }
 
