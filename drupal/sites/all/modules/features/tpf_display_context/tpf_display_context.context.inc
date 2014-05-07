@@ -2147,9 +2147,9 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'header',
           'weight' => '-9',
         ),
-        'tp4_support-tp4_slim_nav' => array(
+        'tp4_support-tp4_fat_header' => array(
           'module' => 'tp4_support',
-          'delta' => 'tp4_slim_nav',
+          'delta' => 'tp4_fat_header',
           'region' => 'header',
           'weight' => '-8',
         ),
