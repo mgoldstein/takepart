@@ -20,10 +20,6 @@
 }
 
 .poll {
-  border: 1px solid $gray-line;
-  @include header-top-border($light-blue);
-  @include box-sizing(box-content);
-  // padding: $zen-gutter-width;
   padding: 0 5px;
 
   h3 {
@@ -129,4 +125,11 @@
 
 .entity_iframe_container div.messages.status {
     display:none;
+}
+
+.node-type-campaign-page .entity_iframe {
+  border: 1px solid $gray-line;
+  @include header-top-border($light-blue);
+  @include box-sizing(box-content);
+  padding: $zen-gutter-width;
 }

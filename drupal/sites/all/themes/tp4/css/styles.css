@@ -4315,7 +4315,7 @@ body.front #sidebar .block-title {
 /* line 208, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1399496258');
+  background-image: url('../images/tpl-title.jpg?1399498639');
   margin-top: 5px;
   margin-bottom: -10px;
 }
@@ -4330,7 +4330,7 @@ body.front #sidebar .block-title {
   width: 100%;
   max-width: 312px;
   background-size: 100%;
-  background-image: url('../images/tpl-time.jpg?1399496258');
+  background-image: url('../images/tpl-time.jpg?1399498639');
   margin-top: 5px;
 }
 
@@ -10014,7 +10014,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1399496258') no-repeat center 9px;
+    background: url('../images/tpl-logo.jpg?1399498639') no-repeat center 9px;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -10024,7 +10024,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.jpg?1399496258') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1399498639') no-repeat center center;
     margin: 0;
   }
 }
@@ -10350,11 +10350,11 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 }
 /* line 229, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-mobile.png?1399496258');
+  background-image: url('../images/tpl-logo-mobile.png?1399498639');
 }
 /* line 232, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-mobile.png?1399496258');
+  background-image: url('../images/takeaction-logo-mobile.png?1399498639');
 }
 
 /**
@@ -11914,7 +11914,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1399496258') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1399498639') no-repeat 10px center;
   margin: 0;
 }
 /* line 98, ../sass/modules/_left_drawer.scss */
@@ -11925,7 +11925,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/tpl-logo-mobile.png?1399496258') no-repeat 10px center;
+  background: url('../images/tpl-logo-mobile.png?1399498639') no-repeat 10px center;
   margin: 0;
 }
 /* line 111, ../sass/modules/_left_drawer.scss */
@@ -11967,19 +11967,19 @@ header .search .form-submit {
 .poll {
   padding: 0 5px;
 }
-/* line 29, ../sass/modules/_poll.scss */
+/* line 25, ../sass/modules/_poll.scss */
 .poll h3 {
   font: bold 20px "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: lowercase;
 }
-/* line 39, ../sass/modules/_poll.scss */
+/* line 35, ../sass/modules/_poll.scss */
 .poll .question {
   font: 100 14px/130% "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   margin-left: 9%;
   padding-left: 2em;
   position: relative;
 }
-/* line 44, ../sass/modules/_poll.scss */
+/* line 40, ../sass/modules/_poll.scss */
 .poll .question:before {
   content: 'Q.';
   font: bold 34px/90% "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
@@ -11988,18 +11988,18 @@ header .search .form-submit {
   left: -9%;
   color: black;
 }
-/* line 54, ../sass/modules/_poll.scss */
+/* line 50, ../sass/modules/_poll.scss */
 .poll .meterContainer {
   margin: 20px 0;
 }
-/* line 55, ../sass/modules/_poll.scss */
+/* line 51, ../sass/modules/_poll.scss */
 .poll .meterContainer label {
   width: 100%;
   display: block;
   margin-bottom: 0;
   font-weight: normal;
 }
-/* line 64, ../sass/modules/_poll.scss */
+/* line 60, ../sass/modules/_poll.scss */
 .poll .meter {
   width: 87%;
   height: 14px;
@@ -12011,7 +12011,7 @@ header .search .form-submit {
   zoom: 1;
   *display: inline;
 }
-/* line 69, ../sass/modules/_poll.scss */
+/* line 65, ../sass/modules/_poll.scss */
 .poll .meter .foreground {
   display: -moz-inline-stack;
   display: inline-block;
@@ -12023,7 +12023,7 @@ header .search .form-submit {
   min-width: 2px;
   background-color: #00b5cc;
 }
-/* line 77, ../sass/modules/_poll.scss */
+/* line 73, ../sass/modules/_poll.scss */
 .poll .percent {
   display: -moz-inline-stack;
   display: inline-block;
@@ -12038,7 +12038,7 @@ header .search .form-submit {
   font: normal 12px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   white-space: nowrap;
 }
-/* line 87, ../sass/modules/_poll.scss */
+/* line 83, ../sass/modules/_poll.scss */
 .poll .total {
   text-align: left;
   display: -moz-inline-stack;
@@ -12052,45 +12052,60 @@ header .search .form-submit {
   font: normal 12px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: uppercase;
 }
-/* line 95, ../sass/modules/_poll.scss */
+/* line 91, ../sass/modules/_poll.scss */
 .poll .value {
   font: normal 30px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
 }
-/* line 103, ../sass/modules/_poll.scss */
+/* line 99, ../sass/modules/_poll.scss */
 .poll .vote-form {
   text-align: left;
   margin-left: 9%;
   padding-left: 10px;
 }
-/* line 107, ../sass/modules/_poll.scss */
+/* line 103, ../sass/modules/_poll.scss */
 .poll .vote-form .choices {
   margin: 10px 0;
 }
-/* line 111, ../sass/modules/_poll.scss */
+/* line 107, ../sass/modules/_poll.scss */
 .poll .form-item {
   margin: 10px 0;
   text-indent: -18px;
   left: 10px;
   position: relative;
 }
-/* line 116, ../sass/modules/_poll.scss */
+/* line 112, ../sass/modules/_poll.scss */
 .poll .form-item label.option {
   margin-left: .5ex;
 }
-/* line 120, ../sass/modules/_poll.scss */
+/* line 116, ../sass/modules/_poll.scss */
 .poll #edit-vote {
   width: 123px;
   height: 26px;
 }
 
-/* line 126, ../sass/modules/_poll.scss */
+/* line 122, ../sass/modules/_poll.scss */
 .hidden {
   display: none;
 }
 
-/* line 130, ../sass/modules/_poll.scss */
+/* line 126, ../sass/modules/_poll.scss */
 .entity_iframe_container div.messages.status, .entity_iframe_container div.status.messages--status, .entity_iframe_container div.status.messages--warning, .entity_iframe_container div.status.messages--error {
   display: none;
+}
+
+/* line 130, ../sass/modules/_poll.scss */
+.node-type-campaign-page .entity_iframe {
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: 0 -4px 0 #00b5cc;
+  -moz-box-shadow: 0 -4px 0 #00b5cc;
+  box-shadow: 0 -4px 0 #00b5cc;
+  border-top: none;
+  margin-top: 4px;
+  padding-top: 5px;
+  -webkit-box-sizing: box-content;
+  -moz-box-sizing: box-content;
+  box-sizing: box-content;
+  padding: 3%;
 }
 
 /* line 1, ../sass/modules/_flashcard.scss */
@@ -12222,7 +12237,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 .tpl-block h2.block__title {
   white-space: nowrap;
   text-indent: 1000px;
-  background: url('../images/tpl_logo.png?1399496258') no-repeat top center;
+  background: url('../images/tpl_logo.png?1399498639') no-repeat top center;
   height: 30px;
   margin-bottom: 2px;
 }
@@ -12234,7 +12249,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 }
 /* line 23, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1399496258') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1399498639') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;
