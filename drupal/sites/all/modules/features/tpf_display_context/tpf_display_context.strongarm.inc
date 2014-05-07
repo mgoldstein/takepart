@@ -129,5 +129,65 @@ function tpf_display_context_strongarm() {
   );
   $export['field_bundle_settings_node__poll'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_petition_action';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_petition_action'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_pledge_action';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_pledge_action'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_petition_action';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_petition_action'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_pledge_action';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_pledge_action'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_petition_action';
+  $strongarm->value = array();
+  $export['node_options_petition_action'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_pledge_action';
+  $strongarm->value = array();
+  $export['node_options_pledge_action'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_petition_action';
+  $strongarm->value = 1;
+  $export['node_submitted_petition_action'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_pledge_action';
+  $strongarm->value = 1;
+  $export['node_submitted_pledge_action'] = $strongarm;
+
   return $export;
 }
