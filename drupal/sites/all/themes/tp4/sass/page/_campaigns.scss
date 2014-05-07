@@ -752,6 +752,9 @@ body.node-type-campaign-page, #main.card-page{
       height: 100%;
     }
   }
+  iframe.entity_iframe{
+    max-width: 300px;
+  }
   .iframe-wrapper-fixed{
     overflow: hidden;
   }
