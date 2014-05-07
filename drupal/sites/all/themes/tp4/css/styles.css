@@ -12245,10 +12245,15 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
   margin-bottom: 5px;
 }
 /* line 43, ../sass/modules/_tpl-block.scss */
-.tpl-block .field-name-field-description .field-item p:first-of-type {
+.tpl-block .field-name-field-description p {
   margin-top: 0;
 }
-/* line 47, ../sass/modules/_tpl-block.scss */
+/* line 46, ../sass/modules/_tpl-block.scss */
+.tpl-block .field-name-field-description .field-item p:first-of-type {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+/* line 51, ../sass/modules/_tpl-block.scss */
 .tpl-block .field-name-field-tpl-block-cta {
   border: none;
   padding: 8px;
@@ -12280,7 +12285,17 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 .tpl-block .field-name-field-tpl-block-cta:hover a {
   text-decoration: underline;
 }
-/* line 52, ../sass/modules/_tpl-block.scss */
+/* line 55, ../sass/modules/_tpl-block.scss */
+.tpl-block .field-name-field-tpl-block-cta a {
+  color: #3bb5cb;
+}
+/* line 57, ../sass/modules/_tpl-block.scss */
+.tpl-block .field-name-field-tpl-block-cta a:before {
+  color: #3bb5cb;
+  top: 1px;
+  left: -3px;
+}
+/* line 64, ../sass/modules/_tpl-block.scss */
 .tpl-block .primary-headline {
   color: #000;
   font-size: 20px;
