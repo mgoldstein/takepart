@@ -23,6 +23,14 @@
       float: left;
     }
   }
+  .node-flashcard.view-mode-full {
+    #article-social {
+      margin-top: 7px;
+      &.sticky {
+        top: 0;
+      }
+    }
+  }
   .node-openpublish-article.view-mode-full,
   .node-video.view-mode-full {
     #article-content,
