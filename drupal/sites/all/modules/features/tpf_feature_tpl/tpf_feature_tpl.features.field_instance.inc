@@ -72,13 +72,13 @@ function tpf_feature_tpl_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'campaign_full_html' => 'campaign_full_html',
-          'full_html' => 'full_html',
-          'limited_html' => 'limited_html',
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
+          'full_html' => 0,
+          'limited_html' => 0,
+          'no_wysiwg_full_html' => 0,
+          'php_code' => 0,
+          'plain_text' => 0,
         ),
-        'allowed_formats_toggle' => 0,
+        'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
         'default_order_wrapper' => array(
           'formats' => array(
@@ -189,7 +189,7 @@ function tpf_feature_tpl_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -239,6 +239,66 @@ function tpf_feature_tpl_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'bean-tpl_long-field_tpl_block_homepage_cta'
+  $field_instances['bean-tpl_long-field_tpl_block_homepage_cta'] = array(
+    'bundle' => 'tpl_long',
+    'deleted' => 0,
+    'description' => 'This image is the image for the call to action button located in the TPL section on the homepage.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'bean',
+    'field_name' => 'field_tpl_block_homepage_cta',
+    'label' => 'Homepage CTA',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'filefield_paths' => array(
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '',
+        ),
+        'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 1,
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
       'weight' => 8,
     ),
   );
@@ -381,7 +441,9 @@ function tpf_feature_tpl_field_default_field_instances() {
   t('Call to Action');
   t('Description');
   t('Embed the poll iframe here.');
+  t('Homepage CTA');
   t('Media Video');
+  t('This image is the image for the call to action button located in the TPL section on the homepage.');
   t('Tune In');
   t('Video Caption');
   t('When TPL will be airing on Pivot.');
