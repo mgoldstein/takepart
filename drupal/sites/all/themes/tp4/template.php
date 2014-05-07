@@ -1024,10 +1024,12 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       if($node->type == 'action'){
         $file = file_load($node->field_action_main_image['und'][0]['fid']);
         $short_headline = $node->field_tab_call_to_action[LANGUAGE_NONE][0]['value'];
+        $headline = $node->title;
       }
       else{
         $file = file_load($node->field_thumbnail['und'][0]['fid']);
         $short_headline = $node->field_article_subhead['und'][0]['value'];
+        $headline = $node->field_promo_headline['und'][0]['value'];
       }
 
       $image = file_create_url($file->uri);
@@ -1037,7 +1039,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
       $center .= l($image, $path, array('html' => true));
-      $center .= '<h3 class="headline">'. l($node->field_promo_headline['und'][0]['value'], $path). '</h3>';  //headline
+      $center .= '<h3 class="headline">'. l($headline, $path). '</h3>';  //headline
       $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
       $center .= $more;
 
