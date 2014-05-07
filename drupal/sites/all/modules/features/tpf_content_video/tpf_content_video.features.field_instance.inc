@@ -2503,6 +2503,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2603,6 +2609,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2700,6 +2712,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2741,7 +2759,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 28,
+      'weight' => 29,
     ),
   );
 
@@ -2798,6 +2816,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2841,7 +2865,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 120,
       ),
       'type' => 'text_textfield',
-      'weight' => 29,
+      'weight' => 30,
     ),
   );
 
@@ -2894,6 +2918,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2937,7 +2967,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 30,
+      'weight' => 31,
     ),
   );
 
@@ -2989,6 +3019,12 @@ function tpf_content_video_field_default_field_instances() {
       ),
       'feature_video' => array(
         'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
@@ -3092,6 +3128,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3193,6 +3235,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3234,7 +3282,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 26,
+      'weight' => 27,
     ),
   );
 
@@ -3286,6 +3334,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -3383,6 +3437,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3477,6 +3537,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -3581,6 +3647,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3622,22 +3694,27 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 27,
+      'weight' => 28,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_player_embed_code'
-  $field_instances['node-video-field_player_embed_code'] = array(
+  // Exported field_instance: 'node-video-field_player_embeddable'
+  $field_instances['node-video-field_player_embeddable'] = array(
     'bundle' => 'video',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
+        'type' => 'list_default',
+        'weight' => 30,
       ),
       'embed' => array(
         'label' => 'above',
@@ -3675,6 +3752,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3689,11 +3772,9 @@ function tpf_content_video_field_default_field_instances() {
       ),
       'token' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_trimmed',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
         'weight' => 0,
       ),
       'vidpop_map' => array(
@@ -3704,22 +3785,20 @@ function tpf_content_video_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_player_embed_code',
-    'label' => 'Player Embed Code',
+    'field_name' => 'field_player_embeddable',
+    'label' => 'Enable Embed',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
+        'display_label' => 1,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
       ),
-      'type' => 'text_textfield',
+      'type' => 'options_onoff',
       'weight' => 25,
     ),
   );
@@ -3777,6 +3856,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3818,7 +3903,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 34,
+      'weight' => 35,
     ),
   );
 
@@ -3875,6 +3960,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3916,7 +4007,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 32,
+      'weight' => 33,
     ),
   );
 
@@ -3973,6 +4064,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4014,7 +4111,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 31,
+      'weight' => 32,
     ),
   );
 
@@ -4071,6 +4168,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4115,7 +4218,7 @@ function tpf_content_video_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 33,
+      'weight' => 34,
     ),
   );
 
@@ -4167,6 +4270,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 9,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -4263,6 +4372,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4357,6 +4472,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -4456,6 +4577,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4552,6 +4679,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4645,6 +4778,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -4746,6 +4885,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4840,6 +4985,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4933,6 +5084,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 8,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -5031,6 +5188,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
       ),
       'inline_content' => array(
         'label' => 'hidden',
@@ -5148,6 +5311,12 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5241,6 +5410,12 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
       ),
       'inline_content' => array(
         'label' => 'above',
@@ -5357,6 +5532,15 @@ function tpf_content_video_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'iframe' => array(
+        'label' => 'hidden',
+        'module' => 'pm_jwplayer',
+        'settings' => array(
+          'pm_jwplayer_preset' => 'iframed',
+        ),
+        'type' => 'pm_jwplayer',
+        'weight' => 1,
+      ),
       'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5440,6 +5624,7 @@ function tpf_content_video_field_default_field_instances() {
   t('Display video as a modal popup, embedded within the page, or as embedded on the permalinked page and modal everywhere else it is used.');
   t('Embedded Video');
   t('Embedded Video mode');
+  t('Enable Embed');
   t('Enable Sharing');
   t('Free Tag');
   t('Free Tags');
@@ -5448,7 +5633,6 @@ function tpf_content_video_field_default_field_instances() {
   t('Main Image');
   t('Multi Page Campaign');
   t('Mute Playback');
-  t('Player Embed Code');
   t('Player Skin');
   t('Playlist Layout');
   t('Playlist Position');

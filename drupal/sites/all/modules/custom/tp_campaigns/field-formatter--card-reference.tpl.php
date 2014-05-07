@@ -98,9 +98,17 @@
     </div>
   </nav>
 <?php elseif(isset($tray_title) == true): ?>
+	
+<?php $node = node_load($variables['entity']->field_campaign_card_reference['und'][0]['target_id']); ?>
+
+<?php if($node->field_slim_card_text['und'][0]['value'] == 1){} // Dont display card title if slim text
+else { ?>
   <div class="tray-header">
     <h1 class="card-title"><?php print $tray_title; ?></h1>
   </div>
+<?php } ?>
+  
+  
 <?php endif; ?>
 
 

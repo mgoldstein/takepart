@@ -21,7 +21,9 @@
   <div class="snap-drawer snap-drawer-right">
     <h3 class="campaign-sidebar-header"><?php print $variables['promo_title']; ?></h3>
     <div id="block-menu-menu" class="block block-menu first last odd" role="navigation">
-      <?php print render($variables['campaign_menu']); ?>
+      <ul>
+        <?php print render($variables['campaign_menu']); ?>
+      </ul>
     </div>
   </div>
 </div>

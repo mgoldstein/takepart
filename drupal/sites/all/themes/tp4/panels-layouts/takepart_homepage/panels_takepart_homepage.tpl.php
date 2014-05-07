@@ -34,4 +34,11 @@
     <div class="panel-tpl-secondary-featured panel-panel">
       <?php print $content['tpl_secondary_featured']; ?>
     </div>
+    <?php
+      $block = module_invoke('bean', 'block_view', 'tpl-live-long');
+      $image = $block['content']['bean']['tpl-live-long']['#entity']->field_tpl_block_homepage_cta;
+      $image = file_create_url($image[LANGUAGE_NONE][0]['uri']);
+      $image = '<div class="tpl-cta"><img src="'. $image. '"></div>';
+      print l($image, '//takepart.com/live', array('html' => true));
+    ?>
 </div>

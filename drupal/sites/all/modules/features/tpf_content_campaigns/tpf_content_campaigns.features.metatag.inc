@@ -20,6 +20,30 @@ function tpf_content_campaigns_metatag_export_default() {
       'description' => array(
         'value' => '[node:field_article_subhead]',
       ),
+      'tp:node_id' => array(
+        'value' => '[node:nid]',
+      ),
+      'tp:content_title' => array(
+        'value' => '[node:title]',
+      ),
+      'tp:content_type' => array(
+        'value' => 'campaign',
+      ),
+      'tp:content_authors' => array(
+        'value' => '[tp_omniture:get_author:{node:nid}]',
+      ),
+      'tp:published_date' => array(
+        'value' => '[node:published:custom:Y/m/d]',
+      ),
+      'tp:campaign' => array(
+        'value' => '[node:campaign-name]',
+      ),
+      'tp:series' => array(
+        'value' => '[node:campaign-series]',
+      ),
+      'tp:topic' => array(
+        'value' => '[node:campaign-topic]',
+      ),
     ),
   );
 

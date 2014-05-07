@@ -587,8 +587,8 @@ function color_field_field_widget_form(&$form, &$form_state, $field, $instance, 
       $field_id = $field['field_name'] . '-' . $langcode . '-' . $delta;
       // Support field collection module.
       (isset($element['#field_parents']) && !empty($element['#field_parents'])) ? $bundle_id = '-' . implode('-', $element['#field_parents']) : $bundle_id = '';
-      $id = str_replace("_", "-", 'edit' . $bundle_id . '-' . $field_id . '-rgb');
-      $settings['id'] = $id;
+      $class = str_replace("_", "-", 'edit' . $bundle_id . '-' . $field_id . '-rgb');
+      $settings['class'] = $class;
       $settings['show_input'] = (isset($field['settings']['show_input']) && $field['settings']['show_input'] == 1) ? TRUE : FALSE;
       $settings['show_palette'] = (isset($field['settings']['show_palette']) && $field['settings']['show_palette'] == 1) ? TRUE : FALSE;
       $settings['show_palette_only'] = (isset($field['settings']['show_palette_only']) && $field['settings']['show_palette_only'] == 1) ? TRUE : FALSE;
@@ -606,13 +606,14 @@ function color_field_field_widget_form(&$form, &$form_state, $field, $instance, 
         '#default_value' => $value,
         '#size' => 7,
         '#maxlength' => 30,
+        '#attributes' => array('class' => array($class)),
         '#attached' => array(
           // Add Spectrum color picker.
           'library' => array(array('color_field', 'spectrum')),
-          'js' => array(
-            drupal_get_path('module', 'color_field') . '/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js',
-            array(
-              'data' => array('color_field_spectrum' => array('#' . $id => $settings)),
+           'js' => array(
+             drupal_get_path('module', 'color_field') . '/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js',
+             array(
+              'data' => array('color_field_spectrum' => array('.' . $class => $settings)),
               'type' => 'setting',
             ),
           ),

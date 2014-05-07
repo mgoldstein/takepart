@@ -66,7 +66,7 @@ function fbregistration_form($form, &$form_state) {
       '#maxlength' => 255,
       '#required' => TRUE,
   );
-  
+
   $form['settings']['fbregistration_foreign_zip'] = array(
       '#type' => 'textfield',
       '#title' => t('Foriegn Label for ZIP:'),
@@ -92,9 +92,6 @@ function fbregistration_form($form, &$form_state) {
 
   _fbregistration_admin_form_load($regform, $form['fieldmappings']);
 
-  $form['bsdmappings'] = array('#type' => 'fieldset', '#title' => t('BSD Mappings'), '#tree' => TRUE);
-  _fbregistration_bsd_form_load($regform, $form['bsdmappings']);
-
   $form['submit'] = array(
       '#type' => 'submit',
       '#value' => t('Save settings'),
@@ -116,10 +113,6 @@ function fbregistration_form_submit($form, &$form_state) {
     variable_set('fbregistration_form_mapping_' . $key, $value);
   }
 
-  foreach ($form_state['values']['bsdmappings'] as $key => $value) {
-    variable_set('fbregistration_bsd_mapping_' . $key, $value);
-  }
-
   $fbregistration_tag = $form_state['values']['settings']['fbregistration_tag'];
   variable_set('fbregistration_tag_b', $fbregistration_tag);
 
@@ -131,7 +124,7 @@ function fbregistration_form_submit($form, &$form_state) {
 
   $path = $form_state['values']['settings']['fbregistration_path'];
   variable_set('fbregistration_path', $path);
-  
+
   $fbregistration_foreign_zip = $form_state['values']['settings']['fbregistration_foreign_zip'];
   variable_set('fbregistration_foreign_zip', $fbregistration_foreign_zip);
 

@@ -1,0 +1,87 @@
+<?php
+/**
+ * @file
+ * A module to authenticate twitter for campaign card
+ */
+ 
+
+function tp_twitter_node_presave($node) {
+	
+	if($node->type == "campaign_card_twitter"){
+
+		// Change this one to your twitter application info
+		$consumer_key = "5TGmga1wMRDfMD0gCUIAtI0YG";
+		$consumer_secret = "l2ZOmrQlOmnMeTnw7YYvhKrLSzeaaGNn6SPtet4cI2Of2rRyKd";
+		
+		
+		// Newly created twitter content type if Authentication link is empty		
+		if($node->field_authentication_link['und'][0]['url'] == ''){
+				
+			$connection = tp_twitter_get_connection($consumer_key, $consumer_secret);
+	
+			// Request Temporary token
+			$temporary_credentials = $connection->getRequestToken();
+				
+			$redirect_url = $connection->getAuthorizeURL($temporary_credentials); 
+				
+			// If authentication link is empty, add the URL
+			$node->field_authentication_link['und'][0]['url'] = $redirect_url;
+								
+			$node->field_oauth_token['und'][0]['value'] = $temporary_credentials['oauth_token'];
+			$node->field_oauth_token_secret['und'][0]['value'] = $temporary_credentials['oauth_token_secret'];
+			
+
+		}
+		if($node->field_authentication_link['und'][0]['url'] != "Authenticated"){
+							
+			if(isset($node->field_oauth_token['und'][0]['value']) && isset($node->field_oauth_token_secret['und'][0]['value'])){ 
+			
+				// PIN already exist
+				if($node->field_twitter_pin['und'][0]['value'] != ''){
+					
+					$connection = tp_twitter_get_connection($consumer_key, $consumer_secret, $node->field_oauth_token['und'][0]['value'], $node->field_oauth_token_secret['und'][0]['value']);
+					
+					$pin = $node->field_twitter_pin['und'][0]['value'];
+					
+					$request = $connection->getAccessToken($pin);
+					
+					$node->field_oauth_token['und'][0]['value'] = $request['oauth_token'];
+					$node->field_oauth_token_secret['und'][0]['value'] = $request['oauth_token_secret'];
+					$node->field_authentication_link['und'][0]['url'] = "Authenticated";
+	
+				}
+	
+	
+		
+			}
+			
+		}
+		
+
+
+
+
+
+		
+	}	
+	
+	
+	
+	
+
+}
+
+function tp_twitter_get_connection($consumer_key, $consumer_secret, $oauth_token = NULL, $oauth_token_secret = NULL) {
+	
+  require('twitteroauth/twitteroauth.php');	
+  
+  if($oauth_token != '' && $oauth_token_secret != ''){
+  	  $connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_token, $oauth_token_secret);
+  }
+  else{
+  	  $connection = new TwitterOAuth($consumer_key, $consumer_secret);
+  }
+  
+  return $connection;
+  
+}
