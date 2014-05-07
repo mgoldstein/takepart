@@ -9892,7 +9892,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   body.node-type-campaign-page header#header .campaign-menu-toggle {
     position: absolute;
     left: 78%;
-    bottom: 33%;
+    top: 50px;
     font-size: 2em;
     padding: 25px;
   }
