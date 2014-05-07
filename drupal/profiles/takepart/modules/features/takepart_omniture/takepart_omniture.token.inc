@@ -85,7 +85,7 @@ function takepart_omniture_tab_uid($param) {
 function takepart_omniture_value_or_empty($param) {
     // if param wrapped in brakets [], then token was not
     // found, just return empty string.
-    $param = html_entity_decode($param, ENT_QUOTES);
+    $param = strtolower(html_entity_decode($param, ENT_QUOTES));
     return preg_replace('/^\[[\w].*\]$/', '', $param);
 }
 
