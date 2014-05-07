@@ -20,9 +20,9 @@
 }
 
 .poll {
-  // border: 1px solid $gray-line;
-  // @include header-top-border($light-blue);
-  // @include box-sizing(box-content);
+  border: 1px solid $gray-line;
+  @include header-top-border($light-blue);
+  @include box-sizing(box-content);
   // padding: $zen-gutter-width;
   padding: 0 5px;
 
