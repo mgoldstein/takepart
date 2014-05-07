@@ -1630,7 +1630,6 @@ function tpf_display_context_field_default_field_instances() {
   t('Enable for TAB');
   t('Featured');
   t('Link Only');
-  t('Player Embed Code');
   t('Series');
   t('Short Introduction');
   t('Social Share');

@@ -952,23 +952,22 @@ function tpf_display_context_context_default_contexts() {
     'node' => array(
       'values' => array(
         'action' => 'action',
-        'audio' => 'audio',
         'blog_front' => 'blog_front',
+        'campaign' => 'campaign',
         'feature_article' => 'feature_article',
+        'flashcard' => 'flashcard',
+        'openpublish_article' => 'openpublish_article',
         'openpublish_blog_post' => 'openpublish_blog_post',
-        'openpublish_photo' => 'openpublish_photo',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
         'openpublish_video' => 'openpublish_video',
+        'poll' => 'poll',
         'profile' => 'profile',
         'section_front' => 'section_front',
         'takepart_campaign' => 'takepart_campaign',
         'takepart_group' => 'takepart_group',
         'takepart_page' => 'takepart_page',
-        'takepart_quick_study' => 'takepart_quick_study',
-        'takepart_slide' => 'takepart_slide',
         'venue' => 'venue',
         'video' => 'video',
-        'webform' => 'webform',
       ),
       'options' => array(
         'node_form' => '0',
@@ -978,6 +977,7 @@ function tpf_display_context_context_default_contexts() {
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop16 = [tp_omniture:get_author:{node:nid}]
