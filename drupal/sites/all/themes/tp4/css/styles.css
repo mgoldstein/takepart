@@ -4981,14 +4981,14 @@ a.column-header:hover {
 
   /* line 45, ../sass/page/_openpublish_article.scss */
   .node-flashcard.view-mode-full .field-name-body {
-    margin-left: 50px;
+    margin-left: 60px;
   }
 
   /* line 51, ../sass/page/_openpublish_article.scss */
   #block-tp-flashcards-flashcard-related-content,
   #block-tp-flashcards-flashcard-get-more,
   #block-tp-flashcards-flashcard-comments {
-    margin-left: 40px;
+    margin-left: 50px;
   }
 }
 @media all and (min-width: 768px) {
