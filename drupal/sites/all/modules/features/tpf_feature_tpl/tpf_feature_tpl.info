@@ -21,6 +21,7 @@ features[field_instance][] = bean-tpl_long-field_campaign_media_video
 features[field_instance][] = bean-tpl_long-field_description
 features[field_instance][] = bean-tpl_long-field_iframe_embed
 features[field_instance][] = bean-tpl_long-field_tpl_block_cta
+features[field_instance][] = bean-tpl_long-field_tpl_block_homepage_cta
 features[field_instance][] = bean-tpl_long-field_tpl_block_tune_in
 features[field_instance][] = bean-tpl_long-field_tpl_block_video_caption
 features[user_permission][] = create any tpl_long bean
