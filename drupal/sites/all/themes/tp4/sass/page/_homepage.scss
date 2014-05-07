@@ -186,12 +186,11 @@ body.front{
 
   .tpl-headline {
     border-top: 4px solid $light-blue;
-    border-bottom: 4px solid $light-blue;
     margin: 0 0 1em;
     padding: 0;
-    height: 60px;
+    height: 45px;
     @include breakpoint($breakpoint-desktop) {
-      height: 30px;
+      height: 18px;
     }
 
     .tpl-title,
@@ -210,13 +209,15 @@ body.front{
       width: 167px;
       background-image: image-url("tpl-title.jpg");
       margin-top: 5px;
-      margin-bottom: -5px;
+      margin-bottom: -10px;
       @include breakpoint($breakpoint-desktop) {
         margin-bottom: 0px;
       }
     }
     .tpl-time {
-      width: 312px;
+      width: 100%;
+      max-width: 312px;
+      background-size: 100%;
       background-image: image-url("tpl-time.jpg");
       margin-top: 5px;
     }
