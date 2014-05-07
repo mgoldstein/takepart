@@ -4,6 +4,7 @@ core = 7.x
 package = Features
 version = 7.x-1.0
 project = tpf_feature_homepage
+dependencies[] = bean
 dependencies[] = boxes
 dependencies[] = ccl
 dependencies[] = ccl_blocks
