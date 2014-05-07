@@ -99,7 +99,8 @@
         var HeaderMobileMinHeight = $('.header-inner').attr("data-mheight");
         if(HeaderMobileMinHeight != '-20px'){
           if($(window).width() < 768){
-          $('.header-inner').css( "min-height", HeaderMobileMinHeight);
+            $('.header-inner').css( "min-height", HeaderMobileMinHeight);
+            $('.branding-header').css( "min-height", HeaderMobileMinHeight);
           }
         }
 
