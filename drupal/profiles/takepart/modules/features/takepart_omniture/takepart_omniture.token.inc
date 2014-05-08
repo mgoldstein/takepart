@@ -108,6 +108,24 @@ function takepart_omniture_first_photo_title($nid) {
  * since entity field kills the system, find our own authors
  */
 function takepart_omniture_get_author($nid) {
+  if (!is_numeric($nid)) {
+    return 'Not-A-Number';
+  }
+  $node = node_load($nid);
+  $aid = array();
+  foreach(field_get_items('node', $node, 'field_author') as $delta => $item) {
+    $aid[] = $item['nid'];
+  }
+  if (!empty($aid)) {
+  $authors = array();
+    foreach($aid as $nid) {
+      $author = node_load($nid);
+      $authors[] = $author->title;   
+    }
+  }
+/*
+ * This query no longer works
+ 
     if (!is_numeric($nid))
         return 'Not-A-Number';
 
@@ -128,6 +146,7 @@ function takepart_omniture_get_author($nid) {
         //$authors[] = $record->last_name ."-". $record->first_name ."-". $record->field_author_nid;
         $authors[] = trim($record->first_name) . " " . trim($record->last_name);
     }
+    */
     return implode('; ', $authors);
 }
 
