@@ -1047,7 +1047,8 @@
     }
   }
   .node.view-mode-feature-secondary {
-    .field-name-field-thumbnail {
+    .field-name-field-thumbnail,
+    .field-name-field-action-main-image {
       margin-bottom: .625em;
     }
     img {

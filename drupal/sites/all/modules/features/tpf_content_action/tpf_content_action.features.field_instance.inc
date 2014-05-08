@@ -145,9 +145,13 @@ function tpf_content_action_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'media_image_formatter',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'homepage_featured_image',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'feature_topic' => array(
@@ -174,8 +178,12 @@ function tpf_content_action_field_default_field_instances() {
       ),
       'inline_content' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'media_image_formatter',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'inline_thumbnail',
+        ),
+        'type' => 'image',
         'weight' => 4,
       ),
       'medium_preview' => array(
