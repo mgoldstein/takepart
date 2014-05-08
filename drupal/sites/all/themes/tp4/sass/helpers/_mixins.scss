@@ -86,6 +86,21 @@
   margin-top: 4px;
   padding-top: 5px;
 }
+@mixin header-footer-border($color: #000, $padding: 5) {
+  $negative-padding: -1*$padding;
+  $negative-padding: $negative-padding + px;
+  $padding: $padding + px;
+  -moz-box-shadow:      0  $padding 0px 0px $color, 
+                        0  $negative-padding 0px 0px $color;
+  -webkit-box-shadow:   0  $padding 0px 0px $color, 
+                        0  $negative-padding 0px 0px $color;
+   box-shadow:          0  $padding 0px 0px $color, 
+                        0  $negative-padding 0px 0px $color;
+  border-top: none;
+  margin-top: $padding;
+  margin-bottom: $padding;
+  padding-top: $padding
+}
 
 @mixin dashed-separator-after {
   &:after {

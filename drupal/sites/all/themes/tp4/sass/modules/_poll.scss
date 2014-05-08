@@ -61,6 +61,7 @@
     width: 87%;
     height: 14px;
     padding: 0;
+    padding-top: 4px;
     @include inline-block;
     .foreground {
       @include inline-block;
@@ -98,8 +99,8 @@
 
   .vote-form {
     text-align: left;
-    margin-left: 9%;
-    padding-left: 10px;
+    margin-left: 11%;
+    padding-left: 2em;
     .choices {
       margin: 10px 0;
     }
@@ -129,7 +130,7 @@
 
 .node-type-campaign-page .entity_iframe {
   border: 1px solid $gray-line;
-  @include header-top-border($light-blue);
+  @include header-footer-border($light-blue, 5);
   @include box-sizing(box-content);
   padding: $zen-gutter-width;
 }
