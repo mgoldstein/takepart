@@ -72,6 +72,9 @@ body {
 }
 .preface-wrapper {
   min-height: 25px;
+  .page-node.node-type-openpublish-photo-gallery & {
+    margin-top: 25px;
+  }
 }
 .footer-wrapper {
   padding-bottom: 1em;
