@@ -102,30 +102,14 @@ function _tp_flashcards_related_content_block($nodes_to_show = 8) {
         $result = $query->execute();
         $category_nodes = array_keys($result['node']);
       }
-
-      // build the call to action link based on the first
-      // taxonomy term in the related category list
-      $path = url('taxonomy/term/' . $tids[0]);
-    } else {
-      // if $tids is empty, we don't have a taxonomy term and will fall back
-      // to searching for the first synonym
-      $items = field_get_items('node', $node, 'field_flashcard_synonyms');
-      $term = drupal_render(field_view_value('node', $node, 'field_flashcard_synonyms', $items[0]));
-      $path = url('search/' . rawurlencode($term));
     }
 
     // build the CTA link
-    foreach (field_get_items('node', $node, 'field_flashcard_related_cta_text') as $item) {
-      $text = drupal_render(field_view_value('node', $node, 'field_flashcard_related_cta_text', $item));
-    }
-    $cta_link = array(
+    $cta_link = _tp_flashcards_get_cta_link($node);
+    $cta_link += array(
       '#weight' => 10,
       '#prefix' => '<div class="flashcard-related-content-cta-wrapper">',
       '#suffix' => '</div>',
-      '#theme' => 'link',
-      '#text' => $text,
-      '#path' => substr($path, 1),
-      '#options' => array('attributes' => array('class' => array('flashcard-cta-link'))),
     );
 
     $all_related_nodes = empty($overrides) ? array() : $overrides;

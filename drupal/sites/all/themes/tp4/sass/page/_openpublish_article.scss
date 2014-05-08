@@ -131,13 +131,16 @@
       float: left;
     }
     #article-share {
-      width: 150px;
+      width: 165px;
     }
   }
   @media (max-width: 767px) {
     .comments-link,
     #article-social-more {
       display: none;
+    }
+    #article-share {
+      width: 150px;
     }
   }
 
@@ -1047,7 +1050,8 @@
     }
   }
   .node.view-mode-feature-secondary {
-    .field-name-field-thumbnail {
+    .field-name-field-thumbnail,
+    .field-name-field-action-main-image {
       margin-bottom: .625em;
     }
     img {

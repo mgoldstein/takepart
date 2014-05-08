@@ -91,17 +91,7 @@ function tp_flashcards_preprocess_node(&$variables) {
     }
 
     if ($variables['view_mode'] === 'full') {
-      // set up CTA link
-      $items = field_get_items('node', $variables['node'], 'field_flashcard_related_category');
-      $path = url('taxonomy/term/' . $items[0]['entity']->tid);
-      $items = field_get_items('node', $variables['node'], 'field_flashcard_related_cta_text');
-      $text = drupal_render(field_view_value('node', $variables['node'], 'field_flashcard_related_cta_text', $items[0]));
-      $variables['flashcard_cta_link'] = array(
-        '#theme' => 'link',
-        '#text' => $text,
-        '#path' => substr($path, 1),
-        '#options' => array('attributes' => array('class' => array('flashcard-cta-link'))),
-      );
+      $variables['flashcard_cta_link'] = _tp_flashcards_get_cta_link($variables['node']);
     }
   }
 }
@@ -225,4 +215,33 @@ function _tp_flashcards_get_synonyms($flashcard) {
  */
 function _tp_flashcards_get_replacement_pattern($synonyms) {
   return '#\b(' . implode('|', $synonyms) . ')\b(?!(?:[^<]*(?:<([^\s]+)[^<]+</\2)|(?:</[^\s]+>))*[^<]*</a)#i';
+}
+
+/**
+ * Get a render array for the flashcard Call to Action link
+ *
+ * @param  StdClass $node The node object whose cta link we're building
+ * @return array          A render array
+ */
+function _tp_flashcards_get_cta_link($node) {
+  if ($items = field_get_items('node', $node, 'field_flashcard_related_category')) {
+    $path = url('taxonomy/term/' . $items[0]['target_id']);
+  } else {
+    // we don't have a taxonomy term and will fall back
+    // to searching for the first synonym
+    $items = field_get_items('node', $node, 'field_flashcard_synonyms');
+    $term = drupal_render(field_view_value('node', $node, 'field_flashcard_synonyms', $items[0]));
+    $path = url('search/' . rawurlencode($term));
+  }
+
+  foreach (field_get_items('node', $node, 'field_flashcard_related_cta_text') as $item) {
+    $text = drupal_render(field_view_value('node', $node, 'field_flashcard_related_cta_text', $item));
+  }
+
+  return array(
+    '#theme' => 'link',
+    '#text' => $text,
+    '#path' => substr($path, 1),
+    '#options' => array('attributes' => array('class' => array('flashcard-cta-link'))),
+  );
 }
