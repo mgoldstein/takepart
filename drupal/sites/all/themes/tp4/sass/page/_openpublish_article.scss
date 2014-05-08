@@ -131,13 +131,16 @@
       float: left;
     }
     #article-share {
-      width: 150px;
+      width: 165px;
     }
   }
   @media (max-width: 767px) {
     .comments-link,
     #article-social-more {
       display: none;
+    }
+    #article-share {
+      width: 150px;
     }
   }
 
