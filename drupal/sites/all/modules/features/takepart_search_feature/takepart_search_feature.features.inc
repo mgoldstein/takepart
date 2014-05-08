@@ -103,7 +103,7 @@ function takepart_search_feature_default_search_api_index() {
               "openpublish_article" : "openpublish_article",
               "campaign" : "campaign",
               "feature_article" : "feature_article",
-              "takepart_campaign" : "takepart_campaign",
+              "flashcard" : "flashcard",
               "takepart_page" : "takepart_page",
               "openpublish_photo_gallery" : "openpublish_photo_gallery",
               "video" : "video"
