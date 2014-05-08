@@ -976,7 +976,7 @@ function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
     $query
       ->leftJoin('field_data_field_free_tag', 'c', 'node.nid = c.entity_id');
     $query
-      ->leftJoin('field_data_field_admin_tag', 'd', 'node.nid = c.entity_id');
+      ->leftJoin('field_data_field_admin_tag', 'd', 'node.nid = d.entity_id');
       
     $or = db_or()
       ->condition('a.field_topic_tid', array($term_id), 'IN')
@@ -994,18 +994,14 @@ function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
  * Needed for the OR condition for promo content since Actions don't use promos
  */
 function tp4_query_promofilter_alter(QueryAlterableInterface $query) {
-  $node = node_load();
-  $tags = $query->alterMetaData['entity_field_query']->tags;
-  $nid = array_slice($tags, 1, 1);
-  $node = node_load($nid[0]);
 
   $query
-    ->leftJoin('field_data_field_thumbnail', 'a', 'node.nid = a.entity_id');
+    ->leftJoin('field_data_field_thumbnail', 'e', 'node.nid = e.entity_id');
   $query
-    ->leftJoin('field_data_field_action_main_image', 'b', 'node.nid = b.entity_id');
+    ->leftJoin('field_data_field_action_main_image', 'f', 'node.nid = f.entity_id');
   $or = db_or()
-    ->condition('a.field_thumbnail_fid', 0, '>')
-    ->condition('b.field_action_main_image_fid', 0, '>');
+    ->condition('e.field_thumbnail_fid', 0, '>')
+    ->condition('f.field_action_main_image_fid', 0, '>');
   $query
     ->condition($or);
 
