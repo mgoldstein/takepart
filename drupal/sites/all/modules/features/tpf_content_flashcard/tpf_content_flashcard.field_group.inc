@@ -53,10 +53,8 @@ function tpf_content_flashcard_field_group_info() {
     'children' => array(
       0 => 'body',
       1 => 'field_article_subhead',
-      2 => 'field_flashcard_organizations',
-      3 => 'field_flashcard_page_headline',
-      4 => 'group_inline_replacements',
-      5 => 'group_related',
+      2 => 'group_inline_replacements',
+      3 => 'group_related',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -82,11 +80,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->data = array(
     'label' => 'Flashcard Popup',
     'weight' => '2',
-    'children' => array(
-      0 => 'field_flashcard_display_name',
-      1 => 'field_flashcard_pronunciation',
-      2 => 'field_flashcard_short_definition',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
@@ -169,12 +163,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->data = array(
     'label' => 'Related Content',
     'weight' => '12',
-    'children' => array(
-      0 => 'field_flashcard_related',
-      1 => 'field_flashcard_related_category',
-      2 => 'field_flashcard_related_cta_text',
-      3 => 'field_flashcard_related_primary',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',
