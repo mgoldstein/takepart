@@ -2115,6 +2115,7 @@ function tpf_content_field_bases_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'admin_tag' => 'admin_tag',
           'free_tags' => 'free_tags',
           'series' => 'series',
           'topic' => 'topic',

@@ -975,10 +975,14 @@ function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
       ->leftJoin('field_data_field_series', 'b', 'node.nid = b.entity_id');
     $query
       ->leftJoin('field_data_field_free_tag', 'c', 'node.nid = c.entity_id');
+    $query
+      ->leftJoin('field_data_field_admin_tag', 'd', 'node.nid = c.entity_id');
+      
     $or = db_or()
       ->condition('a.field_topic_tid', array($term_id), 'IN')
       ->condition('b.field_series_tid', array($term_id), 'IN')
-      ->condition('c.field_free_tag_tid', array($term_id), 'IN');
+      ->condition('c.field_free_tag_tid', array($term_id), 'IN')
+      ->condition('d.field_admin_tag_tid', array($term_id), 'IN');
     $query
       ->condition($or);
   }
