@@ -36,9 +36,8 @@
     </div>
     <?php
       $block = module_invoke('bean', 'block_view', 'tpl-live-long');
-      $image = $block['content']['bean']['tpl-live-long']['#entity']->field_tpl_block_homepage_cta;
-      $image = file_create_url($image[LANGUAGE_NONE][0]['uri']);
-      $image = '<div class="tpl-cta"><img src="'. $image. '"></div>';
-      print l($image, '//takepart.com/live', array('html' => true));
+      $cta = $block['content']['bean']['tpl-live-long']['#entity']->field_tpl_block_hp_cta;
+      $cta = '<span>'. $cta[LANGUAGE_NONE][0]['value']. '</span>';
+      print l($cta, '//takepart.com/live', array('html' => true, 'attributes' => array('class' => array('cta'))));
     ?>
 </div>

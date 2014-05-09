@@ -560,3 +560,32 @@ a.column-header:hover{
 #div-gpt-ad-1376947900543-0 {
   margin: 0 auto;
 }
+a.cta {
+  display: block;
+  width: 100%;
+  background-color: $light-blue;
+  font-size: 14px;
+  font-family: $primary-sans-font;
+  font-weight: 500;
+  padding: 3px 0;
+  text-align: center;
+  position: relative;
+  color: #fff;
+  span{
+    position: relative;
+    padding-left: 20px;
+    &:before{
+      font-family: "SSGizmo";
+      color: #fff;
+      content: '\23E9';
+      position: absolute;
+      top: 3px;
+      left: 0;
+    }
+  }
+  margin-bottom: 10px;
+  @include breakpoint($breakpoint-tablet) {
+    margin-bottom: 0;
+  }
+
+}

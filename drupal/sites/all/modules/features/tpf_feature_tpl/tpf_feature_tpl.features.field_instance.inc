@@ -243,63 +243,73 @@ function tpf_feature_tpl_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'bean-tpl_long-field_tpl_block_homepage_cta'
-  $field_instances['bean-tpl_long-field_tpl_block_homepage_cta'] = array(
+  // Exported field_instance: 'bean-tpl_long-field_tpl_block_hp_cta'
+  $field_instances['bean-tpl_long-field_tpl_block_hp_cta'] = array(
     'bundle' => 'tpl_long',
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This image is the image for the call to action button located in the TPL section on the homepage.',
+    'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
+        'type' => 'text_default',
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'bean',
-    'field_name' => 'field_tpl_block_homepage_cta',
+    'field_name' => 'field_tpl_block_hp_cta',
     'label' => 'Homepage CTA',
     'required' => 0,
     'settings' => array(
-      'alt_field' => 0,
-      'default_image' => 0,
-      'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
-      'filefield_paths' => array(
-        'active_updating' => 0,
-        'file_name' => array(
-          'options' => array(
-            'pathauto' => 0,
-            'transliterate' => 0,
-          ),
-          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
         ),
-        'file_path' => array(
-          'options' => array(
-            'pathauto' => 0,
-            'transliterate' => 0,
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => 11,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
           ),
-          'value' => '',
         ),
-        'retroactive_update' => 0,
       ),
-      'filefield_paths_enabled' => 1,
-      'max_filesize' => '',
-      'max_resolution' => '',
-      'min_resolution' => '',
-      'title_field' => 0,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'image',
+      'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'preview_image_style' => 'thumbnail',
-        'progress_indicator' => 'throbber',
+        'size' => 60,
       ),
-      'type' => 'image_image',
-      'weight' => 8,
+      'type' => 'text_textfield',
+      'weight' => 9,
     ),
   );
 
@@ -443,7 +453,6 @@ function tpf_feature_tpl_field_default_field_instances() {
   t('Embed the poll iframe here.');
   t('Homepage CTA');
   t('Media Video');
-  t('This image is the image for the call to action button located in the TPL section on the homepage.');
   t('Tune In');
   t('Video Caption');
   t('When TPL will be airing on Pivot.');
