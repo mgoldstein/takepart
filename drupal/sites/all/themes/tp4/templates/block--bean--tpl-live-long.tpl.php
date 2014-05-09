@@ -16,5 +16,8 @@
   print $output;
   print $content;
   ?>
+  <div class="find-pivot">
+    <?php print l('', '//find.pivot.tv'); ?>
+  </div>
 
 </div>
