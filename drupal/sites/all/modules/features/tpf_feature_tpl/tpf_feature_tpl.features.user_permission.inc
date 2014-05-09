@@ -24,6 +24,9 @@ function tpf_feature_tpl_user_default_permissions() {
     'name' => 'delete any tpl_long bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'bean',
   );
@@ -33,6 +36,9 @@ function tpf_feature_tpl_user_default_permissions() {
     'name' => 'edit any tpl_long bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'bean',
   );
@@ -42,6 +48,9 @@ function tpf_feature_tpl_user_default_permissions() {
     'name' => 'view any tpl_long bean',
     'roles' => array(
       'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'bean',
   );

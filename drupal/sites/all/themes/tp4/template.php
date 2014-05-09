@@ -1023,7 +1023,12 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
       if($node->type == 'action'){
         $file = file_load($node->field_action_main_image['und'][0]['fid']);
-        $short_headline = $node->field_tab_call_to_action[LANGUAGE_NONE][0]['value'];
+        if(isset($node->field_action_url[LANGUAGE_NONE][0]['url'])){
+          $link_path = $node->field_action_url[LANGUAGE_NONE][0]['url'];
+          $link_title = $node->field_action_url[LANGUAGE_NONE][0]['title'];
+          $link = l($link_title, $link_path, array('attributes' => array('class' => array('cta'))) );
+        }
+        $short_headline = (isset($link) ? $link : '');
         $headline = $node->title;
       }
       else{
