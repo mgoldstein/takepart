@@ -1024,6 +1024,9 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
     'omniture_reaction' => array(
       'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
 s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop16 = [tp_omniture:get_author:{node:nid}]
@@ -1062,11 +1065,15 @@ s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = [current-page:url-arg:0]:[tp_omniture:date:{node:published}]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
 s.events = event6
 s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
-s.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
+s.prop16 = [tp_omniture:get_author:{node:nid}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
@@ -1103,6 +1110,10 @@ s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
   $context->reactions = array(
     'omniture_reaction' => array(
       'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
 s.prop2 = [current-page:url-arg:1]
 s.prop3 = [current-page:url-arg:0]:[tp_omniture:date:{node:created:raw}]:[tp_omniture:str_decode:{node:title}]
 s.eVar19 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]
@@ -1137,7 +1148,12 @@ s.list2 = [tp_omniture:value_or_empty:{node:field_free_tag}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
+s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
@@ -1171,10 +1187,15 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.prop16 = [tp_omniture:value_or_empty:{node:field_author}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
+s.prop16 = [tp_omniture:get_author:{node:nid}]
 s.prop20 = [tp_omniture:primary_topic:{node:nid}]
 s.prop22 = [tp_omniture:value_or_empty:{node:field_free_tag}]
-s.list2  = [tp_omniture:value_or_empty:{node:field_free_tag}]',
+s.list2 = [tp_omniture:value_or_empty:{node:field_free_tag}]',
     ),
   );
   $context->condition_mode = 0;
@@ -1231,7 +1252,12 @@ s.eVar30 = takepart:home:TakePart Home',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.events = event23,event33,event21
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
+s.events = event23,event33,event21
 s.eVar11 = Logged_In',
     ),
   );
@@ -1262,7 +1288,12 @@ s.eVar11 = Logged_In',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.prop18 = [tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
+s.prop18 = [tp_omniture:str_decode:{current-page:title}]
 s.eVar19 = [tp_omniture:str_decode:{current-page:title}]',
     ),
   );
@@ -1414,7 +1445,12 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.prop4 = topic front
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
+s.prop4 = topic front
 s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
 ',
     ),
@@ -1444,6 +1480,10 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
     'omniture_reaction' => array(
       'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
+s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
+s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
+s.prop7 =[current-user:uid]
 s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
     ),
   );
