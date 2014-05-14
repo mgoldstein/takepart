@@ -482,6 +482,10 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   //background properties
   tp4_campaign_background_rules($variables);
 
+  //content
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  $variables['center'] = $center;
+
 }
 
 
@@ -526,6 +530,10 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   }
   //background properties
   tp4_campaign_background_rules($variables);
+
+  //content
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  $variables['center'] = $center;
 }
 
 
@@ -533,8 +541,6 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
  * Override or insert variables into the campaign card social template
  */
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
-  // social!
-  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 
   $collections = array();
   foreach($variables['field_campaign_social_follow']['und'] as $key => $collection){
@@ -578,6 +584,11 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
 
   //background properties
   tp4_campaign_background_rules($variables);
+
+  //content
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  $variables['center'] = $center;
 
 }
 
@@ -860,7 +871,6 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
       $center .= $more;
 
-      $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
     else{ //multivalue
 
@@ -918,11 +928,15 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       }
       $center .= '</div>';
       $center .= $more;
-      $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
 
     //background properties
     tp4_campaign_background_rules($variables);
+
+  //content
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  $variables['center'] = $center;
 
 
 }
@@ -969,7 +983,6 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
 
 function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   $center = '';
-  //content of the page
 
   $tid = $variables['field_campaign_branding_category']['und'][0]['tid'];
   $campaign_category = taxonomy_term_load($tid);
@@ -992,7 +1005,10 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
 
   //background properties
   tp4_campaign_background_rules($variables);
+
+  //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $variables['center'] = $center;
 
 }
 function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
@@ -1001,7 +1017,10 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
 
   //background properties
   tp4_campaign_background_rules($variables);
+
+  //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $variables['center'] = $center;
 
 }
 
