@@ -926,33 +926,44 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
 
 }
+
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   $center = '';
-  $height = $variables['field_campaign_iframe_height'][0]['value'];
-  $width = $variables['field_campaign_iframe_width'][0]['value'];
-  if(isset($variables['field_campaign_iframe'][0]['value']) == true){
-    if($variables['field_campaign_iframe_type'][0]['value'] == 1){
+
+  $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
+  $width = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_width');
+  $iframe = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe');
+  if(!empty($iframe)){
+    $iframe_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_type');
+    //if the iframe is not fixed add a padding hack to make it responsive
+    if($iframe_type == 1){
       $ratio = $height/$width * 100;
       $center .= '<div class="iframe-wrapper" style="padding-bottom: '. $ratio. '%;">';
-      $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '"></iframe>';
+      $center .= '<iframe src="'. $iframe. '"></iframe>';
       $center .= '</div>';
     }
+    //if it is marked 'fixed' make the iframe unresponsive
     else{
       $variables['classes_array'][] = 'iframe-fixed';
       $center .= '<div class="iframe-wrapper-fixed">';
-      $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" height="'. $height. '" width="'. $width. '"></iframe>';
+      $center .= '<iframe src="'. $iframe. '" height="'. $height. '" width="'. $width. '"></iframe>';
       $center .= '</div>';
     }
-
   }
+  // if it's not an iframe, it is an embed field. used for items like the pivot channel finder
   else{
     $variables['classes_array'][] = 'embed-field';
-    $center .= '<div class="embed">'. $variables['body'][0]['value']. '</div>';
+    $body = tp4_render_field_value('node', $variables['node'], 'body');
+    $center .= '<div class="embed">'. $body. '</div>';
   }
 
   //background properties
   tp4_campaign_background_rules($variables);
+
+  //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  $variables['center'] = $center;
 
 }
 
@@ -994,6 +1005,21 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
 
 }
 
+/********************************
+ * Helper functions for Campaigns
+ ********************************/
+/*
+ * Helper function 1
+ * This function can be used in 90% of use cases in rendering a field's value
+ */
+function tp4_render_field_value($entity_type, $entity, $field_name){
+  $item = field_get_items($entity_type, $entity, $field_name);
+  return drupal_render(field_view_value($entity_type, $entity, $field_name, $item[0]));
+}
+/*
+ * Helper function 2
+ * Standard set of background rules that get repeated across every card type
+ */
 function tp4_campaign_background_rules(&$variables){
   //Width and height variables
   $variables['styles'] = array();
@@ -1014,10 +1040,8 @@ function tp4_campaign_background_rules(&$variables){
     $variables['styles'][] = 'background-size: 1000px;';
   }
   $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
-  $variables['center'] = $center;
-  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 }
+
 
 /**
  * Override or insert variables into the openpublish_article template.
