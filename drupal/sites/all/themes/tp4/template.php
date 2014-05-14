@@ -495,8 +495,6 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 
   $column_count = $variables['field_campaign_media_col'][0]['value'];
 
-  $instructional = $variables['field_campaign_instructional'][0]['value'];
-
   $slim_text = $variables['field_slim_card_text'][0]['value'];
   
   
@@ -534,6 +532,8 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   //content
   $variables['instructional'] = isset($variables['field_campaign_instructional']);
   $variables['center'] = $center;
+  $variables['left'] = $left;
+  $variables['right'] = $right;
 }
 
 
@@ -984,6 +984,9 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   $center = '';
 
+  $something = field_get_items('node', $variables['node'], 'field_campaign_branding_category');
+  dpm($something, 'something');
+
   $tid = $variables['field_campaign_branding_category']['und'][0]['tid'];
   $campaign_category = taxonomy_term_load($tid);
   if(isset($campaign_category->field_campaign_category_image['und'][0]['uri']) == true){
@@ -1041,12 +1044,18 @@ function tp4_render_field_value($entity_type, $entity, $field_name){
  */
 function tp4_campaign_background_rules(&$variables){
   //Width and height variables
+  $background_color = field_get_items('node', $variables['node'], 'field_campaign_bg_color');
+  $min_height = tp4_render_field_value('node', $variables['node'], 'field_campaign_min_height');
+
   $variables['styles'] = array();
-  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
+  if(!empty($background_color)){
+    $variables['styles'][] = 'background-color: '. $background_color[0]['rgb']. ';';
   }
-  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
+  if(!empty($min_height)){
+    $variables['styles'][] = 'min-height: '. $min_height. 'px;';
+  }
+  $background_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw');
+  if($background_width == 0){
     $variables['classes_array'][] = 'card-width-full';
   }
   else{
@@ -1058,7 +1067,10 @@ function tp4_campaign_background_rules(&$variables){
   else{
     $variables['styles'][] = 'background-size: 1000px;';
   }
-  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
+
+  $background = field_get_items('node', $variables['node'], 'field_campaign_background');
+  $variables['card_background'] = (!empty($background) ? file_create_url($background[0]['uri']) : '');
+
 }
 
 
