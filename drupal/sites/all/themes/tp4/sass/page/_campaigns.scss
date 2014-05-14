@@ -324,10 +324,12 @@ body.node-type-campaign-page, #main.card-page{
         text-align:center;
         background: transparent;
         a{
-          color: #000;
           font-family: $primary-sans-font;
           font-weight: bold;
           font-size: 14px;
+          &:not(.active){
+            color: #000;
+          }
         }
         ul {
           @include box-shadow(0 0 4px rgba(0,0,0,0.5));
@@ -376,8 +378,8 @@ body.node-type-campaign-page, #main.card-page{
           color: #000;
         }
       }
-      a.active{
-        color: #000;
+      a.active:not(.anchored-child){
+        color: $mint;
       }
     }
 

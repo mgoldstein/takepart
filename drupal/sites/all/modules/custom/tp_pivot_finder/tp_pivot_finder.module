@@ -8,11 +8,13 @@
  *Implements hook_init
  */
 function tp_pivot_finder_init(){
-  $path = drupal_get_path('module', 'tp_pivot_finder');
-  drupal_add_js($path. '/js/channelfinder-domain.js', array(
-      'scope' => 'header',
-      'group' => JS_THEME,
-      'weight' => 999999999
-    ));
-  drupal_add_js($path. '/js/channelfinder-resize.js', array('scope' => 'footer'));
+  if(path_is_admin(current_path()) == false){
+    $path = drupal_get_path('module', 'tp_pivot_finder');
+    drupal_add_js($path. '/js/channelfinder-domain.js', array(
+        'scope' => 'header',
+        'group' => JS_THEME,
+        'weight' => 999999999
+      ));
+    drupal_add_js($path. '/js/channelfinder-resize.js', array('scope' => 'footer'));
+  }
 }
