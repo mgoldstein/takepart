@@ -1,17 +1,9 @@
 @charset "UTF-8";
-/**
- * @file
- * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
- *
- * When you turn on CSS aggregation at admin/config/development/performance, all
- * of these @include files will be combined into a single file.
- */
-/* Base */
 @font-face {
   font-family: 'Brown';
   font-weight: normal;
   font-style: normal;
-  src: url('../fonts/brown/lineto-brown-regular.eot');
+  src: url('../../fonts/brown/lineto-brown-regular.eot');
 }
 
 @font-face {
@@ -25,7 +17,7 @@
   font-family: 'Brown';
   font-weight: bold;
   font-style: normal;
-  src: url('../fonts/brown/lineto-brown-bold.eot');
+  src: url('../../fonts/brown/lineto-brown-bold.eot');
 }
 
 @font-face {
@@ -39,7 +31,7 @@
   font-family: 'Brown';
   font-weight: 100;
   font-style: normal;
-  src: url('../fonts/brown/lineto-brown-light.eot');
+  src: url('../../fonts/brown/lineto-brown-light.eot');
 }
 
 @font-face {
@@ -51,7 +43,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans_italic-webfont.eot');
+  src: url('../../fonts/adellesans/adellesans_italic-webfont.eot');
   font-weight: normal;
   font-style: italic;
 }
@@ -65,7 +57,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans_lightitalic-webfont.eot');
+  src: url('../../fonts/adellesans/adellesans_lightitalic-webfont.eot');
   font-weight: 100;
   font-style: italic;
 }
@@ -79,7 +71,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans_light-webfont.eot');
+  src: url('../../fonts/adellesans/adellesans_light-webfont.eot');
   font-weight: 100;
   font-style: normal;
 }
@@ -93,7 +85,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans_regular-webfont.eot');
+  src: url('../../fonts/adellesans/adellesans_regular-webfont.eot');
   font-weight: normal;
   font-style: normal;
 }
@@ -107,7 +99,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans-bold-webfont.eot');
+  src: url('../../fonts/adellesans/adellesans-bold-webfont.eot');
   font-weight: bold;
   font-style: normal;
 }
@@ -123,7 +115,7 @@
   font-family: 'Ashbury';
   font-weight: bold;
   font-style: normal;
-  src: url('../fonts/ashbury/ashbury-bold/28B0B7_0_0.eot');
+  src: url('../../fonts/ashbury/ashbury-bold/28B0B7_0_0.eot');
 }
 
 @font-face {
@@ -137,7 +129,7 @@
   font-family: 'Ashbury';
   font-weight: 100;
   font-style: normal;
-  src: url('../fonts/ashbury/ashbury-light/289667_0_0.eot');
+  src: url('../../fonts/ashbury/ashbury-light/289667_0_0.eot');
 }
 
 @font-face {
@@ -151,7 +143,7 @@
   font-family: 'Ashbury';
   font-weight: 100;
   font-style: italic;
-  src: url('../fonts/ashbury/ashbury-light-italic/289664_0_0.eot');
+  src: url('../../fonts/ashbury/ashbury-light-italic/289664_0_0.eot');
 }
 
 @font-face {
@@ -165,7 +157,7 @@
   font-family: 'Ashbury';
   font-weight: normal;
   font-style: normal;
-  src: url('../fonts/ashbury/ashbury-regular/289666_0_0.eot');
+  src: url('../../fonts/ashbury/ashbury-regular/289666_0_0.eot');
 }
 
 @font-face {
@@ -177,7 +169,7 @@
 
 @font-face {
   font-family: 'tradegothicbold';
-  src: url('../fonts/tradegothic/trade_gothic_bold_condensed_no._20-webfont.eot');
+  src: url('../../fonts/tradegothic/trade_gothic_bold_condensed_no._20-webfont.eot');
   font-weight: normal;
   font-style: normal;
 }
@@ -191,7 +183,7 @@
 
 @font-face {
   font-family: 'takepart';
-  src: url('../fonts/takepart/takepart.eot');
+  src: url('../../fonts/takepart/takepart.eot');
 }
 
 @font-face {
@@ -203,7 +195,7 @@
 
 @font-face {
   font-family: "SSGizmo";
-  src: url('../fonts/ss-gizmo/ss-gizmo.eot');
+  src: url('../../fonts/ss-gizmo/ss-gizmo.eot');
   font-weight: normal;
   font-style: normal;
 }
@@ -215,7 +207,7 @@
   font-style: normal;
 }
 
-/* line 18, ../sass/base/_gizmo.scss */
+/* line 18, ../../sass/base/_gizmo.scss */
 .ss-icon, .ss-icon.ss-gizmo,
 [class^="ss-"]:before, [class*=" ss-"]:before,
 [class^="ss-"].ss-gizmo:before, [class*=" ss-"].ss-gizmo:before,
@@ -234,7 +226,7 @@
   font-feature-settings: "liga";
 }
 
-/* line 34, ../sass/base/_gizmo.scss */
+/* line 34, ../../sass/base/_gizmo.scss */
 [class^="ss-"].right:before,
 [class*=" ss-"].right:before,
 [class*=" ss-"].ss-gizmo.right:before {
@@ -242,3692 +234,1547 @@
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cursor:before, .ss-cursor.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-crosshair:before, .ss-crosshair.right:after {
   content: '⌖';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-search:before, .ss-search.right:after {
   content: '🔎';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-zoomin:before, .ss-zoomin.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-zoomout:before, .ss-zoomout.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-view:before, .ss-view.right:after {
   content: '👀';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-attach:before, .ss-attach.right:after {
   content: '📎';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-link:before, .ss-link.right:after {
   content: '🔗';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-unlink:before, .ss-unlink.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-move:before, .ss-move.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-write:before, .ss-write.right:after {
   content: '✎';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-writingdisabled:before, .ss-writingdisabled.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-erase:before, .ss-erase.right:after {
   content: '✐';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-compose:before, .ss-compose.right:after {
   content: '📝';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-lock:before, .ss-lock.right:after {
   content: '🔒';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-unlock:before, .ss-unlock.right:after {
   content: '🔓';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-key:before, .ss-key.right:after {
   content: '🔑';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-backspace:before, .ss-backspace.right:after {
   content: '⌫';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-ban:before, .ss-ban.right:after {
   content: '🚫';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-smoking:before, .ss-smoking.right:after {
   content: '🚬';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-nosmoking:before, .ss-nosmoking.right:after {
   content: '🚭';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-trash:before, .ss-trash.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-target:before, .ss-target.right:after {
   content: '◎';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-tag:before, .ss-tag.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-bookmark:before, .ss-bookmark.right:after {
   content: '🔖';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-flag:before, .ss-flag.right:after {
   content: '⚑';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-like:before, .ss-like.right:after {
   content: '👍';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-dislike:before, .ss-dislike.right:after {
   content: '👎';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-heart:before, .ss-heart.right:after {
   content: '♥';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-star:before, .ss-star.right:after {
   content: '⋆';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-sample:before, .ss-sample.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-crop:before, .ss-crop.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-layers:before, .ss-layers.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-layergroup:before, .ss-layergroup.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pen:before, .ss-pen.right:after {
   content: '✒';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-bezier:before, .ss-bezier.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pixels:before, .ss-pixels.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-phone:before, .ss-phone.right:after {
   content: '📞';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-phonedisabled:before, .ss-phonedisabled.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-touchtonephone:before, .ss-touchtonephone.right:after {
   content: '☏';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-mail:before, .ss-mail.right:after {
   content: '✉';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-inbox:before, .ss-inbox.right:after {
   content: '📥';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-outbox:before, .ss-outbox.right:after {
   content: '📤';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-chat:before, .ss-chat.right:after {
   content: '💬';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-user:before, .ss-user.right:after {
   content: '👤';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-users:before, .ss-users.right:after {
   content: '👥';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-usergroup:before, .ss-usergroup.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-businessuser:before, .ss-businessuser.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-man:before, .ss-man.right:after {
   content: '👨';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-male:before, .ss-male.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-woman:before, .ss-woman.right:after {
   content: '👩';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-female:before, .ss-female.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-raisedhand:before, .ss-raisedhand.right:after {
   content: '✋';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-hand:before, .ss-hand.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pointup:before, .ss-pointup.right:after {
   content: '👆';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pointupright:before, .ss-pointupright.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pointright:before, .ss-pointright.right:after {
   content: '👉';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pointdownright:before, .ss-pointdownright.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pointdown:before, .ss-pointdown.right:after {
   content: '👇';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pointdownleft:before, .ss-pointdownleft.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pointleft:before, .ss-pointleft.right:after {
   content: '👈';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pointupleft:before, .ss-pointupleft.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cart:before, .ss-cart.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-creditcard:before, .ss-creditcard.right:after {
   content: '💳';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-calculator:before, .ss-calculator.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-barchart:before, .ss-barchart.right:after {
   content: '📊';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-piechart:before, .ss-piechart.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-box:before, .ss-box.right:after {
   content: '📦';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-home:before, .ss-home.right:after {
   content: '⌂';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-globe:before, .ss-globe.right:after {
   content: '🌎';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-navigate:before, .ss-navigate.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-compass:before, .ss-compass.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-signpost:before, .ss-signpost.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-location:before, .ss-location.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-floppydisk:before, .ss-floppydisk.right:after {
   content: '💾';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-database:before, .ss-database.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-hdd:before, .ss-hdd.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-microchip:before, .ss-microchip.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-music:before, .ss-music.right:after {
   content: '♫';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-headphones:before, .ss-headphones.right:after {
   content: '🎧';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-discdrive:before, .ss-discdrive.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-volume:before, .ss-volume.right:after {
   content: '🔈';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-lowvolume:before, .ss-lowvolume.right:after {
   content: '🔉';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-mediumvolume:before, .ss-mediumvolume.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-highvolume:before, .ss-highvolume.right:after {
   content: '🔊';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-airplay:before, .ss-airplay.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-camera:before, .ss-camera.right:after {
   content: '📷';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-picture:before, .ss-picture.right:after {
   content: '🌄';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-video:before, .ss-video.right:after {
   content: '📹';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-webcam:before, .ss-webcam.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-film:before, .ss-film.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-playvideo:before, .ss-playvideo.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-videogame:before, .ss-videogame.right:after {
   content: '🎮';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-play:before, .ss-play.right:after {
   content: '▶';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pause:before, .ss-pause.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-stop:before, .ss-stop.right:after {
   content: '■';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-record:before, .ss-record.right:after {
   content: '●';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-rewind:before, .ss-rewind.right:after {
   content: '⏪';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-fastforward:before, .ss-fastforward.right:after {
   content: '⏩';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-skipback:before, .ss-skipback.right:after {
   content: '⏮';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-skipforward:before, .ss-skipforward.right:after {
   content: '⏭';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-eject:before, .ss-eject.right:after {
   content: '⏏';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-repeat:before, .ss-repeat.right:after {
   content: '🔁';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-replay:before, .ss-replay.right:after {
   content: '↺';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-shuffle:before, .ss-shuffle.right:after {
   content: '🔀';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-index:before, .ss-index.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-storagebox:before, .ss-storagebox.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-book:before, .ss-book.right:after {
   content: '📕';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-notebook:before, .ss-notebook.right:after {
   content: '📓';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-newspaper:before, .ss-newspaper.right:after {
   content: '📰';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-gridlines:before, .ss-gridlines.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-rows:before, .ss-rows.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-columns:before, .ss-columns.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-thumbnails:before, .ss-thumbnails.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-mouse:before, .ss-mouse.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-usb:before, .ss-usb.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-desktop:before, .ss-desktop.right:after {
   content: '💻';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-laptop:before, .ss-laptop.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-tablet:before, .ss-tablet.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-smartphone:before, .ss-smartphone.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cell:before, .ss-cell.right:after {
   content: '📱';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-battery:before, .ss-battery.right:after {
   content: '🔋';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-highbattery:before, .ss-highbattery.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-mediumbattery:before, .ss-mediumbattery.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-lowbattery:before, .ss-lowbattery.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-chargingbattery:before, .ss-chargingbattery.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-lightbulb:before, .ss-lightbulb.right:after {
   content: '💡';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-washer:before, .ss-washer.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-downloadcloud:before, .ss-downloadcloud.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-download:before, .ss-download.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-downloadbox:before, .ss-downloadbox.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-uploadcloud:before, .ss-uploadcloud.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-upload:before, .ss-upload.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-uploadbox:before, .ss-uploadbox.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-fork:before, .ss-fork.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-merge:before, .ss-merge.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-refresh:before, .ss-refresh.right:after {
   content: '↻';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-sync:before, .ss-sync.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-loading:before, .ss-loading.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-file:before, .ss-file.right:after {
   content: '📄';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-files:before, .ss-files.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-addfile:before, .ss-addfile.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-removefile:before, .ss-removefile.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-checkfile:before, .ss-checkfile.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-deletefile:before, .ss-deletefile.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-exe:before, .ss-exe.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-zip:before, .ss-zip.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-doc:before, .ss-doc.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pdf:before, .ss-pdf.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-jpg:before, .ss-jpg.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-png:before, .ss-png.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-mp3:before, .ss-mp3.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-rar:before, .ss-rar.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-gif:before, .ss-gif.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-folder:before, .ss-folder.right:after {
   content: '📁';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-openfolder:before, .ss-openfolder.right:after {
   content: '📂';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-downloadfolder:before, .ss-downloadfolder.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-uploadfolder:before, .ss-uploadfolder.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-quote:before, .ss-quote.right:after {
   content: '“';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-unquote:before, .ss-unquote.right:after {
   content: '”';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-print:before, .ss-print.right:after {
   content: '⎙';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-copier:before, .ss-copier.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-fax:before, .ss-fax.right:after {
   content: '📠';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-scanner:before, .ss-scanner.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-printregistration:before, .ss-printregistration.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-shredder:before, .ss-shredder.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-expand:before, .ss-expand.right:after {
   content: '⤢';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-contract:before, .ss-contract.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-help:before, .ss-help.right:after {
   content: '❓';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-info:before, .ss-info.right:after {
   content: 'ℹ';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-alert:before, .ss-alert.right:after {
   content: '⚠';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-caution:before, .ss-caution.right:after {
   content: '⛔';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-logout:before, .ss-logout.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-login:before, .ss-login.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-scaleup:before, .ss-scaleup.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-scaledown:before, .ss-scaledown.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-plus:before, .ss-plus.right:after {
   content: '+';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-hyphen:before, .ss-hyphen.right:after {
   content: '-';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-check:before, .ss-check.right:after {
   content: '✓';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-delete:before, .ss-delete.right:after {
   content: '␡';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-notifications:before, .ss-notifications.right:after {
   content: '🔔';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-notificationsdisabled:before, .ss-notificationsdisabled.right:after {
   content: '🔕';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-clock:before, .ss-clock.right:after {
   content: '⏲';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-stopwatch:before, .ss-stopwatch.right:after {
   content: '⏱';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-alarmclock:before, .ss-alarmclock.right:after {
   content: '⏰';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-egg:before, .ss-egg.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-eggs:before, .ss-eggs.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cheese:before, .ss-cheese.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-chickenleg:before, .ss-chickenleg.right:after {
   content: '🍗';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pizzapie:before, .ss-pizzapie.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pizza:before, .ss-pizza.right:after {
   content: '🍕';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cheesepizza:before, .ss-cheesepizza.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-frenchfries:before, .ss-frenchfries.right:after {
   content: '🍟';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-apple:before, .ss-apple.right:after {
   content: '🍏';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-carrot:before, .ss-carrot.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-broccoli:before, .ss-broccoli.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cucumber:before, .ss-cucumber.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-orange:before, .ss-orange.right:after {
   content: '🍊';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-lemon:before, .ss-lemon.right:after {
   content: '🍋';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-onion:before, .ss-onion.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-bellpepper:before, .ss-bellpepper.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-peas:before, .ss-peas.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-grapes:before, .ss-grapes.right:after {
   content: '🍇';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-strawberry:before, .ss-strawberry.right:after {
   content: '🍓';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-bread:before, .ss-bread.right:after {
   content: '🍞';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-mug:before, .ss-mug.right:after {
   content: '☕';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-mugs:before, .ss-mugs.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-espresso:before, .ss-espresso.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-macchiato:before, .ss-macchiato.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cappucino:before, .ss-cappucino.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-latte:before, .ss-latte.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-icedcoffee:before, .ss-icedcoffee.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-coffeebean:before, .ss-coffeebean.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-coffeemilk:before, .ss-coffeemilk.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-coffeefoam:before, .ss-coffeefoam.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-coffeesugar:before, .ss-coffeesugar.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-sugarpackets:before, .ss-sugarpackets.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-capsule:before, .ss-capsule.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-capsulerecycling:before, .ss-capsulerecycling.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-insertcapsule:before, .ss-insertcapsule.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-tea:before, .ss-tea.right:after {
   content: '🍵';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-teabag:before, .ss-teabag.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-jug:before, .ss-jug.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pitcher:before, .ss-pitcher.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-kettle:before, .ss-kettle.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-wineglass:before, .ss-wineglass.right:after {
   content: '🍷';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-sugar:before, .ss-sugar.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-oven:before, .ss-oven.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-stove:before, .ss-stove.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-vent:before, .ss-vent.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-exhaust:before, .ss-exhaust.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-steam:before, .ss-steam.right:after {
   content: '♨';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-dishwasher:before, .ss-dishwasher.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-toaster:before, .ss-toaster.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-microwave:before, .ss-microwave.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-electrickettle:before, .ss-electrickettle.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-refrigerator:before, .ss-refrigerator.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-freezer:before, .ss-freezer.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-utensils:before, .ss-utensils.right:after {
   content: '🍴';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cookingutensils:before, .ss-cookingutensils.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-whisk:before, .ss-whisk.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pizzacutter:before, .ss-pizzacutter.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-measuringcup:before, .ss-measuringcup.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-colander:before, .ss-colander.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-eggtimer:before, .ss-eggtimer.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-platter:before, .ss-platter.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-plates:before, .ss-plates.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-steamplate:before, .ss-steamplate.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cups:before, .ss-cups.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-steamglass:before, .ss-steamglass.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-pot:before, .ss-pot.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-steampot:before, .ss-steampot.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-chef:before, .ss-chef.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-weathervane:before, .ss-weathervane.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-thermometer:before, .ss-thermometer.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-thermometerup:before, .ss-thermometerup.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-thermometerdown:before, .ss-thermometerdown.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-droplet:before, .ss-droplet.right:after {
   content: '💧';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-sunrise:before, .ss-sunrise.right:after {
   content: '🌅';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-sunset:before, .ss-sunset.right:after {
   content: '🌇';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-sun:before, .ss-sun.right:after {
   content: '☀';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-cloud:before, .ss-cloud.right:after {
   content: '☁';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-clouds:before, .ss-clouds.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-partlycloudy:before, .ss-partlycloudy.right:after {
   content: '⛅';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-rain:before, .ss-rain.right:after {
   content: '☔';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-rainheavy:before, .ss-rainheavy.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-lightning:before, .ss-lightning.right:after {
   content: '☇';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-thunderstorm:before, .ss-thunderstorm.right:after {
   content: '⛈';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-umbrella:before, .ss-umbrella.right:after {
   content: '☂';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-rainumbrella:before, .ss-rainumbrella.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-rainbow:before, .ss-rainbow.right:after {
   content: '🌈';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-rainbowclouds:before, .ss-rainbowclouds.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-fog:before, .ss-fog.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-wind:before, .ss-wind.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-tornado:before, .ss-tornado.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-snowflake:before, .ss-snowflake.right:after {
   content: '❄';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-snowcrystal:before, .ss-snowcrystal.right:after {
   content: '❆';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-lightsnow:before, .ss-lightsnow.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-snow:before, .ss-snow.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-heavysnow:before, .ss-heavysnow.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-hail:before, .ss-hail.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-crescentmoon:before, .ss-crescentmoon.right:after {
   content: '🌙';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-waxingcrescentmoon:before, .ss-waxingcrescentmoon.right:after {
   content: '🌒';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-firstquartermoon:before, .ss-firstquartermoon.right:after {
   content: '🌓';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-waxinggibbousmoon:before, .ss-waxinggibbousmoon.right:after {
   content: '🌔';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-waninggibbousmoon:before, .ss-waninggibbousmoon.right:after {
   content: '🌖';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-lastquartermoon:before, .ss-lastquartermoon.right:after {
   content: '🌗';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-waningcrescentmoon:before, .ss-waningcrescentmoon.right:after {
   content: '🌘';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-fan:before, .ss-fan.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-bike:before, .ss-bike.right:after {
   content: '🚲';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-wheelchair:before, .ss-wheelchair.right:after {
   content: '♿';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-briefcase:before, .ss-briefcase.right:after {
   content: '💼';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-hanger:before, .ss-hanger.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-comb:before, .ss-comb.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-medicalcross:before, .ss-medicalcross.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-up:before, .ss-up.right:after {
   content: '⬆';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-upright:before, .ss-upright.right:after {
   content: '⬈';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-right:before, .ss-right.right:after {
   content: '➡';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-downright:before, .ss-downright.right:after {
   content: '⬊';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-down:before, .ss-down.right:after {
   content: '⬇';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-downleft:before, .ss-downleft.right:after {
   content: '⬋';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-left:before, .ss-left.right:after {
   content: '⬅';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-upleft:before, .ss-upleft.right:after {
   content: '⬉';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-navigateup:before, .ss-navigateup.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-navigateright:before, .ss-navigateright.right:after {
   content: '▻';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-navigatedown:before, .ss-navigatedown.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-navigateleft:before, .ss-navigateleft.right:after {
   content: '◅';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-retweet:before, .ss-retweet.right:after {
   content: '';
 }
 
-/* line 36, ../sass/base/_gizmo.scss */
+/* line 36, ../../sass/base/_gizmo.scss */
 .ss-share:before, .ss-share.right:after {
   content: '';
-}
-
-/* line 1, ../sass/base/_icons.scss */
-.icon {
-  /* Enable Ligatures ================ */
-  -webkit-font-feature-settings: "liga";
-  -moz-font-feature-settings: "liga=1";
-  -moz-font-feature-settings: "liga";
-  -ms-font-feature-settings: "liga" 1;
-  -o-font-feature-settings: "liga";
-  font-feature-settings: "liga";
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-/* line 2, ../sass/base/_icons.scss */
-.icon:after {
-  font-family: takepart;
-}
-/* line 19, ../sass/base/_icons.scss */
-.icon.i-take-action:after {
-  content: '\e100';
-}
-/* line 20, ../sass/base/_icons.scss */
-.icon.i-pledge:after {
-  content: '\e101';
-}
-/* line 21, ../sass/base/_icons.scss */
-.icon.i-petition:after {
-  content: '\e102';
-}
-/* line 22, ../sass/base/_icons.scss */
-.icon.i-messages-of-support:after {
-  content: '\e103';
-}
-/* line 23, ../sass/base/_icons.scss */
-.icon.i-awareness:after {
-  content: '\e104';
-}
-/* line 24, ../sass/base/_icons.scss */
-.icon.i-donation:after {
-  content: '\e105';
-}
-/* line 25, ../sass/base/_icons.scss */
-.icon.i-story:after {
-  content: '\e106';
-}
-/* line 28, ../sass/base/_icons.scss */
-.icon.i-double-arrow-left:after {
-  content: '\e605\e605';
-  letter-spacing: -1px;
-}
-/* line 29, ../sass/base/_icons.scss */
-.icon.i-double-arrow-right:after {
-  content: '\e606\e606';
-  letter-spacing: -1px;
-}
-/* line 30, ../sass/base/_icons.scss */
-.icon.i-double-arrow-up:after {
-  content: '\e603';
-}
-/* line 31, ../sass/base/_icons.scss */
-.icon.i-double-arrow-down:after {
-  content: '\e604';
-}
-/* line 32, ../sass/base/_icons.scss */
-.icon.i-zoom-in:after {
-  content: "\e614";
-}
-/* line 33, ../sass/base/_icons.scss */
-.icon.i-zoom-out:after {
-  content: "\e615";
-}
-/* line 35, ../sass/base/_icons.scss */
-.icon.i-touch-menu:after {
-  content: "\e609";
-}
-/* line 36, ../sass/base/_icons.scss */
-.icon.i-remove:after {
-  content: "\e610";
-}
-/* line 37, ../sass/base/_icons.scss */
-.icon.i-minus:after {
-  content: "\e611";
-}
-/* line 38, ../sass/base/_icons.scss */
-.icon.i-plus:after, .icon.i-add:after {
-  content: "\e612";
-}
-/* line 39, ../sass/base/_icons.scss */
-.icon.i-ok:after {
-  content: "\e613";
-}
-/* line 42, ../sass/base/_icons.scss */
-.icon.i-arrow-left:after {
-  content: '\e605';
-}
-/* line 43, ../sass/base/_icons.scss */
-.icon.i-arrow-right:after {
-  content: '\e606';
-}
-/* line 44, ../sass/base/_icons.scss */
-.icon.i-arrow-up:after {
-  content: '\e607';
-}
-/* line 45, ../sass/base/_icons.scss */
-.icon.i-arrow-down:after {
-  content: '\e608';
-}
-/* line 48, ../sass/base/_icons.scss */
-.icon.i-facebook:after {
-  content: "\e301";
-}
-/* line 49, ../sass/base/_icons.scss */
-.icon.i-twitter:after {
-  content: '\e302';
-}
-/* line 50, ../sass/base/_icons.scss */
-.icon.i-google_plusone_share:after {
-  content: '\e303';
-}
-/* line 51, ../sass/base/_icons.scss */
-.icon.i-email:after {
-  content: '\e305';
-}
-
-/* line 54, ../sass/base/_icons.scss */
-.tp-social-link {
-  /* Enable Ligatures ================ */
-  -webkit-font-feature-settings: "liga";
-  -moz-font-feature-settings: "liga=1";
-  -moz-font-feature-settings: "liga";
-  -ms-font-feature-settings: "liga" 1;
-  -o-font-feature-settings: "liga";
-  font-feature-settings: "liga";
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-/* line 55, ../sass/base/_icons.scss */
-.tp-social-link:before {
-  font-family: takepart;
-}
-/* line 72, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-Pinterest:before {
-  content: '\e300';
-}
-/* line 73, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-Facebook:before {
-  content: "\e301";
-}
-/* line 74, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-Twitter:before {
-  content: '\e302';
-}
-/* line 75, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-GooglePlus:before {
-  content: '\e303';
-}
-/* line 76, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-Tumblr:before {
-  content: '\e304';
-}
-/* line 77, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-Email:before {
-  content: '\e305';
-}
-/* line 78, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-Linkedin:before {
-  content: '\e308';
-}
-/* line 79, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-Vine:before {
-  content: '\e309';
-}
-/* line 80, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-Instagram:before {
-  content: '\e306';
-}
-/* line 81, ../sass/base/_icons.scss */
-.tp-social-link.tp-social-Youtube:before {
-  content: '\e307';
-}
-
-/* Helpers */
-/*
- *Fonts
- */
-/*
- *Colors
- */
-/*
- *Misc
- */
-/* Elements */
-/* line 27, ../sass/elements/_pie.scss */
-.pie-element, .bordered, .gradient {
-  behavior: url("pie.htc");
-  position: relative;
-}
-
-/* line 33, ../sass/elements/_pie.scss */
-.bordered {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
-}
-
-/* line 38, ../sass/elements/_pie.scss */
-.gradient {
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #0000ff));
-  background: -webkit-linear-gradient(#ff0000, #0000ff);
-  background: -moz-linear-gradient(#ff0000, #0000ff);
-  background: -o-linear-gradient(#ff0000, #0000ff);
-  -pie-background: linear-gradient(#ff0000, #0000ff);
-  background: linear-gradient(#ff0000, #0000ff);
-}
-
-/* line 52, ../sass/elements/_pie.scss */
-.pie-container, .widget {
-  z-index: 0;
-  position: relative;
-}
-
-/* line 56, ../sass/elements/_pie.scss */
-.z-pie-element, .widget h3 {
-  behavior: url("pie.htc");
-  z-index: 0;
-}
-
-/* line 71, ../sass/elements/_pie.scss */
-.has-gradient {
-  behavior: url("pie.htc");
-  position: relative;
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #0000ff));
-  background: -webkit-linear-gradient(#ff0000, #0000ff);
-  background: -moz-linear-gradient(#ff0000, #0000ff);
-  background: -o-linear-gradient(#ff0000, #0000ff);
-  -pie-background: linear-gradient(#ff0000, #0000ff);
-  background: linear-gradient(#ff0000, #0000ff);
-}
-
-/* line 4, ../sass/elements/_typography.scss */
-body {
-  font: 100 14px/18px "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-}
-
-/* line 8, ../sass/elements/_typography.scss */
-h1, h2, h3, h4, h5 {
-  margin-top: 0px;
-  line-height: 1;
-  text-rendering: optimizeLegibility;
-}
-
-/* line 13, ../sass/elements/_typography.scss */
-h1 {
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-  font-size: 28px;
-  line-height: 32px;
-}
-
-/* line 19, ../sass/elements/_typography.scss */
-h2 {
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-  font-weight: 100;
-}
-
-/* line 34, ../sass/elements/_typography.scss */
-.author {
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-  font-style: italic;
-  font-weight: 100;
-}
-
-/* line 39, ../sass/elements/_typography.scss */
-.section-header {
-  font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  line-height: 27px;
-  font-weight: bold;
-  font-size: 20px;
-}
-
-/* line 49, ../sass/elements/_typography.scss */
-.column-title {
-  font-family: "tradegothicbold", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-size: 18px;
-  line-height: 20px;
-  color: #0080a3;
-  text-transform: uppercase;
-}
-
-/* line 57, ../sass/elements/_typography.scss */
-a {
-  text-decoration: none;
-  color: #000;
-}
-/* line 60, ../sass/elements/_typography.scss */
-a:hover {
-  text-decoration: underline;
-}
-/* line 63, ../sass/elements/_typography.scss */
-a.more {
-  font-size: 14px;
-  font-weight: 100;
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-  position: relative;
-  padding-left: 1.071428571em;
-  display: inline-block;
-}
-/* line 140, ../sass/helpers/_mixins.scss */
-a.more:before {
-  content: "\23E9 ";
-  font-family: "SSGizmo";
-  color: #018b73;
-  vertical-align: bottom;
-  position: absolute;
-  left: 0;
-  display: block;
-  width: 2.142857143em;
-  height: 1.428571429em;
-}
-
-/* line 75, ../sass/elements/_typography.scss */
-.footer-title {
-  font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  color: #000;
-}
-
-/* TODO break down most of this into separate elements
-
-
-/**
- * @file
- * Normalize.css is intended to be used as an alternative to CSS resets.
- *
- * This file is a slight fork of these original sources:
- * - normalize.css v2.1.2 | MIT License | git.io/normalize
- * - normalize.scss v2.1.2 | MIT/GPLv2 License | bit.ly/normalize-with-compass
- *
- * It's suggested that you read the normalize.scss file and customise it to meet
- * your needs, rather then including the file in your project and overriding the
- * defaults later in your CSS.
- * @see http://nicolasgallagher.com/about-normalize-css/
- *
- * Also: @see http://meiert.com/en/blog/20080419/reset-style-sheets-are-bad/
- *       @see http://snook.ca/archives/html_and_css/no_css_reset/
- */
-/**
- * HTML5 display definitions
- */
-/* Correct `block` display not defined in IE 8/9. */
-/* line 36, ../sass/elements/_normalize.scss */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-nav,
-section,
-summary {
-  display: block;
-}
-
-/* Correct `inline-block` display not defined in IE 8/9. */
-/* line 43, ../sass/elements/_normalize.scss */
-audio,
-canvas,
-video {
-  display: inline-block;
-}
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-/* line 55, ../sass/elements/_normalize.scss */
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-/* Address styling not present in IE 8/9. */
-/* line 61, ../sass/elements/_normalize.scss */
-[hidden] {
-  display: none;
-}
-
-/**
- * Base
- *
- * Instead of relying on the fonts that are available on a user's computer, you
- * can use web fonts which, like images, are resources downloaded to the user's
- * browser. Because of the bandwidth and rendering resources required, web fonts
- * should be used with care.
- *
- * Numerous resources for web fonts can be found on Google. Here are a few
- * websites where you can find Open Source fonts to download:
- * - http://www.fontsquirrel.com/fontface
- * - http://www.theleagueofmoveabletype.com
- *
- * In order to use these fonts, you will need to convert them into formats
- * suitable for web fonts. We recommend the free-to-use Font Squirrel's
- * Font-Face Generator:
- *   http://www.fontsquirrel.com/fontface/generator
- *
- * The following is an example @font-face declaration. This font can then be
- * used in any ruleset using a property like this:  font-family: Example, serif;
- *
- * Since we're using Sass, you'll need to declare your font faces here, then you
- * can add them to the font variables in the _base.scss partial.
- */
-/*
-@font-face {
-  font-family: 'Example';
-  src: url('../fonts/example.eot');
-  src: url('../fonts/example.eot?iefix') format('eot'),
-    url('../fonts/example.woff') format('woff'),
-    url('../fonts/example.ttf') format('truetype'),
-    url('../fonts/example.svg#webfontOkOndcij') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-*/
-/**
- * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
- * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
- *    `em` units.
- */
-/* line 109, ../sass/elements/_normalize.scss */
-html {
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-  /* 1 */
-  font-size: 100%;
-  /* 3 */
-  font-weight: 100;
-  -ms-text-size-adjust: 100%;
-  /* 2 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-  line-height: 1.5em;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Remove default margin. */
-/* line 134, ../sass/elements/_normalize.scss */
-body {
-  margin: 0;
-  padding: 0;
-}
-
-/**
- * Links
- *
- * The order of link states are based on Eric Meyer's article:
- * http://meyerweb.com/eric/thoughts/2007/06/11/who-ordered-the-link-states
- */
-/* Address `outline` inconsistency between Chrome and other browsers. */
-/* line 156, ../sass/elements/_normalize.scss */
-a:focus {
-  outline: none;
-}
-
-/* Improve readability when focused and also mouse hovered in all browsers. */
-/* line 162, ../sass/elements/_normalize.scss */
-a:active,
-a:hover {
-  outline: 0;
-}
-
-/**
- * Typography
- *
- * To achieve a pleasant vertical rhythm, we use Compass' Vertical Rhythm mixins
- * so that the line height of our base font becomes the basic unit of vertical
- * measurement. We use multiples of that unit to set the top and bottom margins
- * for our block level elements and to set the line heights of any fonts.
- * For more information, see http://24ways.org/2006/compose-to-a-vertical-rhythm
- */
-/* Set 1 unit of vertical rhythm on the top and bottom margin. */
-/* line 178, ../sass/elements/_normalize.scss */
-p,
-pre {
-  margin: 1.5em 0;
-}
-
-/* line 181, ../sass/elements/_normalize.scss */
-blockquote {
-  /* Also indent the quote on both sides. */
-  margin: 1.5em 30px;
-}
-
-/* Address styling not present in IE 8/9, Safari 5, and Chrome. */
-/* line 189, ../sass/elements/_normalize.scss */
-abbr[title] {
-  border-bottom: 1px dotted;
-}
-
-/* Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
-/* line 195, ../sass/elements/_normalize.scss */
-b,
-strong {
-  font-weight: bold;
-}
-
-/* Address styling not present in Safari 5 and Chrome. */
-/* line 200, ../sass/elements/_normalize.scss */
-dfn {
-  font-style: italic;
-}
-
-/* Address differences between Firefox and other browsers. */
-/* line 205, ../sass/elements/_normalize.scss */
-hr {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  height: 0;
-  border: 1px solid #666;
-  padding-bottom: -1px;
-  margin: 1.5em 0;
-}
-
-/* Address styling not present in IE 8/9. */
-/* line 214, ../sass/elements/_normalize.scss */
-mark {
-  background: #ff0;
-  color: #000;
-}
-
-/* Set consistent quote types. */
-/* line 221, ../sass/elements/_normalize.scss */
-q {
-  quotes: "\201C" "\201D" "\2018" "\2019";
-}
-
-/* Address inconsistent and variable font size in all browsers. */
-/* line 226, ../sass/elements/_normalize.scss */
-small {
-  font-size: 80%;
-}
-
-/* Prevent `sub` and `sup` affecting `line-height` in all browsers. */
-/* line 232, ../sass/elements/_normalize.scss */
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-/* line 238, ../sass/elements/_normalize.scss */
-sup {
-  top: -0.5em;
-}
-
-/* line 241, ../sass/elements/_normalize.scss */
-sub {
-  bottom: -0.25em;
-}
-
-/**
- * Lists
- */
-/* line 251, ../sass/elements/_normalize.scss */
-dl,
-menu,
-ol,
-ul {
-  /* Address margins set differently in IE 6/7. */
-  margin: 0;
-}
-
-/* line 258, ../sass/elements/_normalize.scss */
-ol ol,
-ol ul,
-ul ol,
-ul ul {
-  /* Turn off margins on nested lists. */
-  margin: 0;
-}
-
-/* line 263, ../sass/elements/_normalize.scss */
-dd {
-  margin: 0;
-  /* LTR */
-}
-
-/* line 266, ../sass/elements/_normalize.scss */
-li {
-  list-style-type: none;
-}
-
-/* Address paddings set differently in IE 6/7. */
-/* line 273, ../sass/elements/_normalize.scss */
-menu,
-ol,
-ul {
-  padding: 0;
-  /* LTR */
-}
-
-/**
- * Embedded content and figures
- *
- * @todo Look into adding responsive embedded video.
- */
-/* line 291, ../sass/elements/_normalize.scss */
-img {
-  /* Remove border when inside `a` element in IE 8/9. */
-  border: 0;
-  /* Suppress the space beneath the baseline */
-  /* vertical-align: bottom; */
-  /* Responsive images */
-  max-width: 100%;
-  height: auto;
-  /* Correct IE 8 not scaling image height when resized. */
-  width: auto;
-}
-
-/* Correct overflow displayed oddly in IE 9. */
-/* line 312, ../sass/elements/_normalize.scss */
-svg:not(:root) {
-  overflow: hidden;
-}
-
-/* Address margin not present in IE 8/9 and Safari 5. */
-/* line 317, ../sass/elements/_normalize.scss */
-figure {
-  margin: 0;
-}
-
-/**
- * Forms
- */
-/* Define consistent border, margin, and padding. */
-/* line 333, ../sass/elements/_normalize.scss */
-fieldset {
-  margin: 0 2px;
-  /* Apply borders and padding that keep the vertical rhythm. */
-  border-color: #c0c0c0;
-  border-top-style: solid;
-  border-top-width: 0.0625em;
-  padding-top: 0.4625em;
-  border-bottom-style: solid;
-  border-bottom-width: 0.0625em;
-  padding-bottom: 0.9125em;
-  border-left-style: solid;
-  border-left-width: 0.0625em;
-  padding-left: 0.9125em;
-  border-right-style: solid;
-  border-right-width: 0.0625em;
-  padding-right: 0.9125em;
-}
-
-/**
- * 1. Correct `color` not being inherited in IE 8/9.
- * 2. Remove padding so people aren't caught out if they zero out fieldsets.
- * 3. Correct alignment displayed oddly in IE 6/7.
- */
-/* line 348, ../sass/elements/_normalize.scss */
-legend {
-  border: 0;
-  /* 1 */
-  padding: 0;
-  /* 2 */
-}
-
-/**
- * 1. Correct font family not being inherited in all browsers.
- * 2. Correct font size not being inherited in all browsers.
- * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
- * 4. Improve appearance and consistency with IE 6/7.
- * 5. Keep form elements constrained in their containers.
- */
-/* line 366, ../sass/elements/_normalize.scss */
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 2 */
-  margin: 0;
-  /* 3 */
-  max-width: 100%;
-  /* 5 */
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  /* 5 */
-}
-
-/**
- * Address Firefox 4+ setting `line-height` on `input` using `!important` in
- * the UA stylesheet.
- */
-/* line 383, ../sass/elements/_normalize.scss */
-button,
-input {
-  line-height: normal;
-}
-
-/**
- * Address inconsistent `text-transform` inheritance for `button` and `select`.
- * All other form control elements do not inherit `text-transform` values.
- * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
- * Correct `select` style inheritance in Firefox 4+ and Opera.
- */
-/* line 394, ../sass/elements/_normalize.scss */
-button,
-select {
-  text-transform: none;
-}
-
-/**
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
- * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
- *    Known issue: inner spacing remains in IE 6.
- */
-/* line 410, ../sass/elements/_normalize.scss */
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  /* 2 */
-  cursor: pointer;
-  /* 3 */
-}
-
-/**
- * Re-set default cursor for disabled elements.
- */
-/* line 422, ../sass/elements/_normalize.scss */
-button[disabled],
-html input[disabled] {
-  cursor: default;
-}
-
-/**
- * 1. Address box sizing set to `content-box` in IE 8/9.
- * 2. Remove excess padding in IE 8/9.
- * 3. Remove excess padding in IE 7.
- *    Known issue: excess padding remains in IE 6.
- */
-/* line 433, ../sass/elements/_normalize.scss */
-input[type="checkbox"],
-input[type="radio"] {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  /* 1 */
-  padding: 0;
-  /* 2 */
-}
-
-/**
- * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
- *    (include `-moz` to future-proof).
- */
-/* line 447, ../sass/elements/_normalize.scss */
-input[type="search"] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  /* 2 */
-}
-
-/**
- * Remove inner padding and search cancel button in Safari 5 and Chrome
- * on OS X.
- */
-/* line 457, ../sass/elements/_normalize.scss */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-/* Remove inner padding and border in Firefox 4+. */
-/* line 463, ../sass/elements/_normalize.scss */
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-
-/**
- * 1. Remove default vertical scrollbar in IE 8/9.
- * 2. Improve readability and alignment in all browsers.
- */
-/* line 472, ../sass/elements/_normalize.scss */
-textarea {
-  overflow: auto;
-  /* 1 */
-  vertical-align: top;
-  /* 2 */
-}
-
-/* Drupal-style form labels. */
-/* line 478, ../sass/elements/_normalize.scss */
-label {
-  display: block;
-  font-weight: bold;
-}
-
-/**
- * Tables
- */
-/* line 486, ../sass/elements/_normalize.scss */
-table {
-  /* Remove most spacing between table cells. */
-  border-collapse: collapse;
-  border-spacing: 0;
-  /* Prevent cramped-looking tables */
-  /* width: 100%; */
-  /* Add vertical rhythm margins. */
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
-}
-
-/* line 497, ../sass/elements/_normalize.scss */
-a.edit-mini-panel-link {
-  display: none !important;
-}
-
-/**
- * @file
- * SMACSS Modules
- *
- * Adds modular sets of styles.
- *
- * Additional useful selectors can be found in Zen's online documentation.
- * https://drupal.org/node/1707736
- */
-/**
- * Global Sprites.
- */
-/* line 226, social/*.png */
-.social-sprite, .social-facebook-black, .social-facebook-gray, .social-googleplus-black, .social-googleplus-gray, .social-pinterest-black, .social-pinterest-gray, .social-tumblr-black, .social-tumblr-gray, .social-twitter-black, .social-twitter-gray, .social-youtube-black, .social-youtube-gray {
-  background: url('../images/social-sdb493615aa.png') no-repeat;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-facebook-black {
-  background-position: 0 -528px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-facebook-black:hover, .social-facebook-black.facebook-black_hover, .social-facebook-black.facebook-black-hover {
-  background-position: 0 -408px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-facebook-gray {
-  background-position: 0 -480px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-facebook-gray:hover, .social-facebook-gray.facebook-gray_hover, .social-facebook-gray.facebook-gray-hover {
-  background-position: 0 -432px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-googleplus-black {
-  background-position: 0 -168px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-googleplus-black:hover, .social-googleplus-black.googleplus-black_hover, .social-googleplus-black.googleplus-black-hover {
-  background-position: 0 -96px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-googleplus-gray {
-  background-position: 0 -144px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-googleplus-gray:hover, .social-googleplus-gray.googleplus-gray_hover, .social-googleplus-gray.googleplus-gray-hover {
-  background-position: 0 -120px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-pinterest-black {
-  background-position: 0 -384px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-pinterest-black:hover, .social-pinterest-black.pinterest-black_hover, .social-pinterest-black.pinterest-black-hover {
-  background-position: 0 -264px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-pinterest-gray {
-  background-position: 0 -192px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-pinterest-gray:hover, .social-pinterest-gray.pinterest-gray_hover, .social-pinterest-gray.pinterest-gray-hover {
-  background-position: 0 -288px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-black {
-  background-position: 0 -552px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-black:hover, .social-tumblr-black.tumblr-black_hover, .social-tumblr-black.tumblr-black-hover {
-  background-position: 0 -336px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-gray {
-  background-position: 0 -456px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-gray:hover, .social-tumblr-gray.tumblr-gray_hover, .social-tumblr-gray.tumblr-gray-hover {
-  background-position: 0 -360px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-twitter-black {
-  background-position: 0 -504px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-twitter-black:hover, .social-twitter-black.twitter-black_hover, .social-twitter-black.twitter-black-hover {
-  background-position: 0 -216px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-twitter-gray {
-  background-position: 0 -312px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-twitter-gray:hover, .social-twitter-gray.twitter-gray_hover, .social-twitter-gray.twitter-gray-hover {
-  background-position: 0 -240px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-youtube-black {
-  background-position: 0 -72px;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-youtube-black:hover, .social-youtube-black.youtube-black_hover, .social-youtube-black.youtube-black-hover {
-  background-position: 0 -24px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-youtube-gray {
-  background-position: 0 0;
-}
-/* line 43, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-youtube-gray:hover, .social-youtube-gray.youtube-gray_hover, .social-youtube-gray.youtube-gray-hover {
-  background-position: 0 -48px;
-}
-
-/* line 58, logos/*.png */
-.logos-sprite, .logos-participantmedia, .logos-pivot, .logos-takepart {
-  background: url('../images/logos-s21b94e0d34.png') no-repeat;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.logos-participantmedia {
-  background-position: 0 0;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.logos-pivot {
-  background-position: 0 -61px;
-}
-
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.logos-takepart {
-  background-position: 0 -31px;
-}
-
-/* line 20, ../sass/elements/_misc.scss */
-.follow-us ul {
-  clear: both;
-}
-/* line 23, ../sass/elements/_misc.scss */
-.follow-us ul li a {
-  height: 24px;
-  width: 24px;
-  display: block;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  float: left;
-  margin-left: 6px;
-}
-/* line 33, ../sass/elements/_misc.scss */
-.follow-us ul li:first-child a {
-  margin-left: 0;
-}
-
-/**
- * Wireframes.
- */
-/* line 52, ../sass/elements/_misc.scss */
-.with-wireframes #header,
-.with-wireframes #main,
-.with-wireframes #content,
-.with-wireframes #navigation,
-.with-wireframes .region-sidebar-first,
-.with-wireframes .region-sidebar-second,
-.with-wireframes #footer,
-.with-wireframes .region-bottom {
-  outline: 1px solid #ccc;
-}
-
-/**
- * Accessibility features.
- */
-/* element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
-/* line 70, ../sass/elements/_misc.scss */
-.element-invisible,
-.element-focusable,
-#navigation .block-menu .block__title,
-#navigation .block-menu-block .block__title {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
-}
-
-/* Turns off the element-invisible effect. */
-/* line 75, ../sass/elements/_misc.scss */
-.element-focusable:active, .element-focusable:focus {
-  position: static !important;
-  clip: auto;
-  height: auto;
-  width: auto;
-  overflow: auto;
-}
-
-/*
- * The skip-link link will be completely hidden until a user tabs to the link.
- */
-/* line 92, ../sass/elements/_misc.scss */
-#skip-link {
-  margin: 0;
-}
-/* line 96, ../sass/elements/_misc.scss */
-#skip-link a,
-#skip-link a:visited {
-  display: block;
-  width: 100%;
-  padding: 2px 0 3px 0;
-  text-align: center;
-  background-color: #666;
-  color: #fff;
-}
-
-/**
- * Branding header.
- */
-/* Wrapping link for logo. */
-/* line 111, ../sass/elements/_misc.scss */
-.header__logo {
-  float: left;
-  /* LTR */
-  margin: 0;
-  padding: 0;
-}
-
-/* Logo image. */
-/* line 118, ../sass/elements/_misc.scss */
-.header__logo-image {
-  vertical-align: bottom;
-}
-
-/* Wrapper for website name and slogan. */
-/* line 123, ../sass/elements/_misc.scss */
-.header__name-and-slogan {
-  float: left;
-}
-
-/* The name of the website. */
-/* line 128, ../sass/elements/_misc.scss */
-.header__site-name {
-  margin: 0;
-  font-size: 2em;
-  line-height: 1.5em;
-}
-
-/* The link around the name of the website. */
-/* line 136, ../sass/elements/_misc.scss */
-.header__site-link:link, .header__site-link:visited {
-  color: #000;
-  text-decoration: none;
-}
-/* line 142, ../sass/elements/_misc.scss */
-.header__site-link:hover, .header__site-link:focus {
-  text-decoration: underline;
-}
-
-/* The slogan (or tagline) of a website. */
-/* line 148, ../sass/elements/_misc.scss */
-.header__site-slogan {
-  margin: 0;
-}
-
-/* The secondary menu (login, etc.) */
-/* line 153, ../sass/elements/_misc.scss */
-.header__secondary-menu {
-  float: right;
-  /* LTR */
-}
-
-/* Wrapper for any blocks placed in the header region. */
-/* line 158, ../sass/elements/_misc.scss */
-.header__region {
-  /* Clear the logo. */
-  clear: both;
-}
-
-/**
- * Navigation bar.
- */
-/* line 166, ../sass/elements/_misc.scss */
-#navigation {
-  /* Sometimes you want to prevent overlapping with main div. */
-  /* overflow: hidden; */
-  /* Main menu and secondary menu links and menu block links. */
-}
-/* line 170, ../sass/elements/_misc.scss */
-#navigation .block {
-  margin-bottom: 0;
-}
-/* line 181, ../sass/elements/_misc.scss */
-#navigation .links,
-#navigation .menu {
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  /* LTR */
-}
-/* line 186, ../sass/elements/_misc.scss */
-#navigation .links li,
-#navigation .menu li {
-  /* A simple method to get navigation links to appear in one line. */
-  float: left;
-  /* LTR */
-  padding: 0 10px 0 0;
-  /* LTR */
-  list-style-type: none;
-  list-style-image: none;
-}
-
-/**
- * Breadcrumb navigation.
- */
-/* line 200, ../sass/elements/_misc.scss */
-.breadcrumb ol {
-  margin: 0;
-  padding: 0;
-}
-/* line 204, ../sass/elements/_misc.scss */
-.breadcrumb li {
-  display: inline;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-/**
- * Titles.
- */
-/* line 220, ../sass/elements/_misc.scss */
-.page__title,
-.node__title,
-.block__title,
-.comments__title,
-.comments__form-title,
-.comment__title {
-  /* Comment title. */
-  margin: 0;
-}
-
-/**
- * Messages.
- */
-/* line 227, ../sass/elements/_misc.scss */
-.messages, .messages--status, .messages--warning, .messages--error {
-  margin: 1.5em 0;
-  padding: 10px 10px 10px 50px;
-  /* LTR */
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAD6UlEQVR42s2WX0xbVRzH3YwmC4k+GF/0ZS/S267/bmnX9nL7bwstZlnbjTDYyoC5GCbB0ZW5pdJCe6swbLFA6bpWIGuRMWVjKGP+21QW3SZBSAjGh4XEaTZTH82Cm/3ztS2xs7mw4KLRk3xyzj33/H6fe5Pz7zEA/yr/vUDukj9FH6drqTaqT8EoPs/UV+nX6TD1BlUh9AqLHlmgPKLcRHmoCOWmElK/FOKTYpS8UwLJkASiUyLI3pKhlClN0g46qj+qL/pbArlbrlO1q25JeiSgR2iYJ8ywXLSg/qP6LNl2ro8+Q4MMkKCd9K2t3q3KdQnkXXIF5aISkgEJzONm1F2qW52pDJN1MI2bUBIuAdVOJWSMTPNQgX6/vkjVpvpREpag6oMqWCYta1IzbsHh9ga0RJtzY8URMdRO9U/KSuWmNQUqh2pY3CtG+fvlqJyofMAFNrZAE+7e/RWR4X4cD9tgOGsA2U2CdtMDqwqyMyIzQ5KKqAKmcyaYxkzYd3YvjGNGFtXRPRj58DT+LOemRrFnrBLyITmUDmUyO/NYgu2d26ukHVJo3tXAMGpAs+cQmh0NeClan30uwN7TgnQ6nRd4r3thOGOAJqYB2UVC79AfZAnKHGUxQa8A2tNaNLW/jKvXv8Dyb8s4yryKA4O10A3roIvpUB+swTdz1/LJZ27PQBvT5lBH1RD4BChzlQ2wBNtc22aE/ULQgzRCl4P5BPcT93GMOYz9wb2QhCRgAq35d8u/L2PXe7tADVGgBlcQ+AXQtmlvsP/gzbJZvp8PMkJCFBYh8m0knyiVSsHe0YIGZz1+/uVOvt8z7QGvnwf+ST5EIRHIUyR4fh50rbp5lsDcYR4ReAXgBrng9q/Qfa0bfy035r7Ot2dvz4IX4IEIEAXwvDzscOw4zxJUd1YfEXlE4Aa4BQHMlwzSSBeI7iXvoTxWDqKPYCFsFaKmr+YVliB0JfS89DVpiuhlB9k/tSOZTuYFvq98yI7L0/MAsVWcGp0bfW61hbahwltxSeARsIKyWKesSKQSWIwvYkvvllwfx88pgOvhwthu/AzAxlVX8vz385tLbaVxwpcLZtEw0QDjsBGctzksiE4CimZFfHp++oWHbnbuUfdB0komMgHsRN1r0MWBsEmYODF5onY92/UTwcvBxuzXcN1ccHycVSn2FaPYWwzCQUDWKIt7z3utAJ5c74Hz+OLSomynY+cVfiM/xW3JiDyZpB3FuZrj4oCwE+Ad4qWMjPHjpTtL0mzMoxyZz9yM39Q7Y85Ok930icqm+k59TL2wm9l90dZv8y/8sPAigGf/iUN/Q4anM2zOsdLe+L+4VfwBVVjDs2rTYx0AAAAASUVORK5CYII=');
-  background-position: 8px 8px;
-  /* LTR */
-  background-repeat: no-repeat;
-  border: 1px solid #be7;
-}
-
-/* line 242, ../sass/elements/_misc.scss */
-.messages--warning {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACuElEQVRIiWP4//8/Ay0xSYqntTpnT252zqeJBf0Njhsykrz/pyd6/e9vcNpGVQv6q2wlm0qc/r0+IPD/3UG+/61l9v9mdrjIUc2C7hqHUzc3S///eZwBjO9tF/vfWe1wjioWTKixVm8otPn38wQT3IKfxxn/t5Va/utpsNSg2ILWcttrNzdJgQ3+dpQRjEHs+9tE/zeXWt+gyILOamuTqlxrsOtPLub+7+emBsSq/88v5wL7oqHQ9H9nmbkF2RbUF1rev7lJEuziuU3i/90ddcB4UZsoJC62ifyvK7R4QJYFrcUGrmUZ5v9hYb9hosh/bzcDMN42VRgeF9W5hv8bi/XdSbagKtfs2c1NEvCIPbaQ/7+/pwkYn17Ki0hR24T/l2eZPCfJgsZ83dCiNOP/yCnn7iau/8G+5mD8aBsHSoqqyNL9X5erHUm0BcVpRm9ubhZHMoTh/4eDzP/DA23+RwTZ/P96hAlF7t5Wof8FyfpvibKgNk8noyDZ4D9quofg1Bjr/1kJlhjiIF+Upmn/r83RzCJoQXaC3qcbm8SwGMLwvybP/H8jMGlik7u7VeB/Zqz2J7wWVGdr1uTG62J1PQgfWST1/+hiCaxyIF8UJqv9r8hQrcVpQVqkzrcbG0WwGvB2H/P/lnx5MAaxsam5vYn3f2KY+jesFpSlqfZnxWjidP2OGWL/g/0swBjExu4Lhv958Ur/i5KU+lEsCA1lYI4JUv95bZ0gTo2Pt3P+z0myBmMQG5e6mxu4/kf4Kf8EmQm3oCRNebKrvSawIGPBqRG9sMOp5hjjfwdrlf/58bKT4RaUpWvtcLZV/39iscD/H0AFP46jYwYiMeP/44u4/9tbKQODSXUH3II9G7v18hI0n8YGKv+IDVT6joxj/BVx4mgcOCde/SnITPRUJAHEGlTCEkQV19TAAN8FC67hZdFXAAAAAElFTkSuQmCC');
-  border-color: #ed5;
-}
-
-/* line 251, ../sass/elements/_misc.scss */
-.messages--error {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACpElEQVR42rWWTUgbQRiGQ0Tx4MWDeFM8eBA9iKAoggiCoCiiIiL4L3oQV1CJB0UEf6iRYFpK7UniTw9VSqL2kvQsVDBpSZrtRo35czVNW3oprRf17exSl4yzu1ikAy9h59vvedhkMrMGAGoxknAk2w8MJ/WosXThiZkZt9jdLeglPjn5ATc3mhJNuNjbK0QbG3ExMICL/n6IfX0gcxB7ekDAELu6IHZ2IlJbi1hLS1BLogmPtbUhMTv7oMSamzUlqnByMxLT0/8STQkDj9TV4ZLj5OysrODl8jIu5Gs68dFR7JG6dWkJ0fFx+TpSX89IDMnwcHU1yKec12Yz3rlc4HkeLwjkXJpPip3U3+7vIx6P4ymph4eG5PlwTQ0lMdytlmBxMWKtrXLeT0zA5XTibvj9fjxfXETkb/3N/Dz2dneVuiTZtliU/rPSUsQ5ziuxZYG03IIlJdKKUPJjdRUAKMmzuTnskB/VYbdTtd9HR4g2NCi9Z2VliDY1BSnBaUEBzsrLqXyzWCiQ9HU5HA4afniIUFWV0hOqqMBpURErOM7NxWlhIZOvCwvA7S3Uxq+DA5AnZ3pO8vJYQSArC8c5Oeqx2Rj4udeLQH6+6v2B7GxW8DkjA0JmJpONwUHY7XZGIAgCzCYTeJUewmIFfqMRfEoKlQ2yJbza2oLWcLvdeDI2hk/3+iQWKzAYkJzNjg5srq9TwJ9OJ76YTNScx+ORJT66X1/grKyEbW2NgfPp6XKd/JMZySrHaQsSU1Oe+0/w3WpVgyu5HBlR6lc+H8gioevDwz6JrWwV5+3txyoSFk5DcOX1MnCyJ4Vwfb1zt1UY9SR8aioDpuppaVpwZbPTl+hHF04dOKzk8XBF8DgJC3/woU/W/EciOtELOWi8DDwp//215Q+p7kiKh2lQSAAAAABJRU5ErkJggg==');
-  border-color: #ed541d;
-}
-
-/* line 261, ../sass/elements/_misc.scss */
-.messages__list {
-  margin: 0;
-}
-
-/* line 264, ../sass/elements/_misc.scss */
-.messages__item {
-  list-style-image: none;
-}
-
-/* Core/module installation error messages. */
-/* line 269, ../sass/elements/_misc.scss */
-.messages--error p.error {
-  color: #333;
-}
-
-/* System status report. */
-/* line 275, ../sass/elements/_misc.scss */
-.ok,
-.messages--status {
-  background-color: #f8fff0;
-  color: #234600;
-}
-
-/* line 280, ../sass/elements/_misc.scss */
-.warning,
-.messages--warning {
-  background-color: #fffce5;
-  color: #840;
-}
-
-/* line 285, ../sass/elements/_misc.scss */
-.error,
-.messages--error {
-  background-color: #fef5f1;
-  color: #8c2e0b;
-}
-
-/**
- * Tabs.
- */
-/* Basic positioning styles shared by primary and secondary tabs. */
-/* line 295, ../sass/elements/_misc.scss */
-.tabs-primary, .tabs-secondary {
-  overflow: hidden;
-  /* IE 9 and earlier don't understand gradients. */
-  list-style: none;
-  border-bottom: 1px solid #bbbbbb \0/ie;
-  margin: 1.5em 0;
-  padding: 0 2px;
-  white-space: nowrap;
-}
-
-/* line 304, ../sass/elements/_misc.scss */
-.tabs-primary__tab, .tabs-primary__tab.is-active, .tabs-secondary__tab,
-.tabs-secondary__tab.is-active {
-  float: left;
-  /* LTR */
-  margin: 0 3px;
-}
-
-/* line 308, ../sass/elements/_misc.scss */
-a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
-  border: 1px solid #e9e9e9;
-  border-right: 0;
-  border-bottom: 0;
-  display: block;
-  line-height: 1.5em;
-  text-decoration: none;
-}
-
-/* Primary tabs. */
-/* line 321, ../sass/elements/_misc.scss */
-.tabs-primary__tab, .tabs-primary__tab.is-active {
-  -moz-border-radius-topleft: 4px;
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  text-shadow: 1px 1px 0 white;
-  border: 1px solid #bbbbbb;
-  border-bottom-color: transparent;
-  /* IE 9 and earlier don't understand gradients. */
-  border-bottom: 0 \0/ie;
-}
-
-/* line 330, ../sass/elements/_misc.scss */
-.is-active.tabs-primary__tab {
-  border-bottom-color: white;
-}
-
-/* line 336, ../sass/elements/_misc.scss */
-a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active {
-  -moz-border-radius-topleft: 4px;
-  -webkit-border-top-left-radius: 4px;
-  border-top-left-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  -webkit-border-top-right-radius: 4px;
-  border-top-right-radius: 4px;
-  -webkit-transition: background-color 0.3s;
-  -moz-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
-  transition: background-color 0.3s;
-  color: #333;
-  background-color: #dedede;
-  letter-spacing: 1px;
-  padding: 0 1em;
-  text-align: center;
-}
-
-/* line 346, ../sass/elements/_misc.scss */
-a.tabs-primary__tab-link:hover, a.tabs-primary__tab-link:focus {
-  background-color: #e9e9e9;
-  border-color: #f2f2f2;
-}
-
-/* line 350, ../sass/elements/_misc.scss */
-a.tabs-primary__tab-link:active, a.tabs-primary__tab-link.is-active {
-  background-color: transparent;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFE9E9E9', endColorstr='#00E9E9E9');
-  border-color: #fff;
-}
-
-/* Secondary tabs. */
-/* line 373, ../sass/elements/_misc.scss */
-.tabs-secondary {
-  font-size: .9em;
-  /* Collapse bottom margin of ul.primary. */
-  margin-top: -1.5em;
-}
-
-/* line 380, ../sass/elements/_misc.scss */
-.tabs-secondary__tab,
-.tabs-secondary__tab.is-active {
-  margin: 0.75em 3px;
-}
-
-/* line 386, ../sass/elements/_misc.scss */
-a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
-  -webkit-border-radius: 0.75em;
-  -moz-border-radius: 0.75em;
-  -ms-border-radius: 0.75em;
-  -o-border-radius: 0.75em;
-  border-radius: 0.75em;
-  -webkit-transition: background-color 0.3s;
-  -moz-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
-  transition: background-color 0.3s;
-  text-shadow: 1px 1px 0 white;
-  background-color: #f2f2f2;
-  color: #666;
-  padding: 0 .5em;
-}
-
-/* line 395, ../sass/elements/_misc.scss */
-a.tabs-secondary__tab-link:hover, a.tabs-secondary__tab-link:focus {
-  background-color: #dedede;
-  border-color: #999;
-  color: #333;
-}
-
-/* line 400, ../sass/elements/_misc.scss */
-a.tabs-secondary__tab-link:active, a.tabs-secondary__tab-link.is-active {
-  text-shadow: 1px 1px 0 #333333;
-  background-color: #666;
-  border-color: #000;
-  color: #fff;
-}
-
-/**
- * Inline styles.
- */
-/* List of links generated by theme_links(). */
-/* line 428, ../sass/elements/_misc.scss */
-.inline {
-  display: inline;
-  padding: 0;
-}
-/* line 432, ../sass/elements/_misc.scss */
-.inline li {
-  display: inline;
-  list-style-type: none;
-  padding: 0 1em 0 0;
-  /* LTR */
-}
-
-/* The inline field label used by the Fences module. */
-/* line 440, ../sass/elements/_misc.scss */
-span.field-label {
-  padding: 0 1em 0 0;
-  /* LTR */
-}
-
-/**
- * "More" links.
- */
-/* line 447, ../sass/elements/_misc.scss */
-.more-link {
-  text-align: right;
-  /* LTR */
-}
-
-/* line 450, ../sass/elements/_misc.scss */
-.more-help-link {
-  text-align: right;
-  /* LTR */
-}
-
-/* line 453, ../sass/elements/_misc.scss */
-.more-help-link a {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA7UlEQVR42qWTPQqDQBCFcwSPkCNITpAj5AjeIm1uYpkyR7Cy2Mot7OwsBAsRwUKwmOwLGRle3EIy8PyBfZ/z3J2TiPylz8VWWZZpUB40BonRKyizaxkA88MYYiqCEgv4MTvnZJom0VqWRbz3FlJZgLYtqmEY1Lg9r+sKsIXcLSC3AC019H0vqLquLeC5AfiHYSGkcdAJimKIBQiJ4+CO92OAtm0FNc8zOjkMwE5Q63FAtbeg6zpAYvG8BWR7i5qmQYwY4MIHqYhE2DOPQWcGJBQF2XU72ZzyUeZ5GCNt5/hybJgYdAXsq5sOEE/jG6dC5IOqCXTmAAAAAElFTkSuQmCC');
-  background-position: 0 50%;
-  /* LTR */
-  background-repeat: no-repeat;
-  padding: 1px 0 1px 20px;
-  /* LTR */
-}
-
-/**
- * Pager.
- */
-/* A list of page numbers when more than 1 page of content is available. */
-/* line 468, ../sass/elements/_misc.scss */
-.pager {
-  clear: both;
-  padding: 0;
-  text-align: center;
-}
-
-/* line 473, ../sass/elements/_misc.scss */
-.pager-item,
-.pager-first,
-.pager-previous,
-.pager-next,
-.pager-last,
-.pager-ellipsis, .pager-current {
-  display: inline;
-  padding: 0 0.5em;
-  list-style-type: none;
-  background-image: none;
-}
-
-/* line 485, ../sass/elements/_misc.scss */
-.pager-item,
-.pager-first,
-.pager-previous,
-.pager-next,
-.pager-last,
-.pager-ellipsis {
-  /* A concatenation of several list items using an ellipsis. */
-}
-
-/* The current page's list item. */
-/* line 490, ../sass/elements/_misc.scss */
-.pager-current {
-  font-weight: bold;
-}
-
-/**
- * Blocks.
- */
-/* Block wrapper. */
-/* line 500, ../sass/elements/_misc.scss */
-.block {
-  margin-bottom: 1.5em;
-}
-
-/* The active item in a Drupal menu. */
-/* line 506, ../sass/elements/_misc.scss */
-.menu a.active {
-  color: #000;
-}
-
-/**
- * Marker.
- */
-/* The "new" or "updated" marker. */
-/* line 516, ../sass/elements/_misc.scss */
-.new,
-.update {
-  color: #c00;
-  /* Remove background highlighting from <mark> in normalize. */
-  background-color: transparent;
-}
-
-/**
- * Unpublished note.
- */
-/* The word "Unpublished" displayed underneath the content. */
-/* line 527, ../sass/elements/_misc.scss */
-.unpublished {
-  height: 0;
-  overflow: visible;
-  /* Remove background highlighting from <mark> in normalize. */
-  background-color: transparent;
-  color: #d8d8d8;
-  font-size: 75px;
-  line-height: 1;
-  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-align: center;
-  /* A very nice CSS3 property. */
-  word-wrap: break-word;
-}
-
-/**
- * Comments.
- */
-/* Wrapper for the list of comments and its title. */
-/* line 555, ../sass/elements/_misc.scss */
-.comments {
-  margin: 1.5em 0;
-}
-
-/* Preview of the comment before submitting new or updated comment. */
-/* line 560, ../sass/elements/_misc.scss */
-.comment-preview {
-  /* Drupal core will use a #ffffea background. See #1110842. */
-  background-color: #ffffea;
-}
-
-/* Wrapper for a single comment. */
-/* line 566, ../sass/elements/_misc.scss */
-.comment {
-  /* Comment's permalink wrapper. */
-}
-/* line 569, ../sass/elements/_misc.scss */
-.comment .permalink {
-  text-transform: uppercase;
-  font-size: 75%;
-}
-
-/* Nested comments are indented. */
-/* line 576, ../sass/elements/_misc.scss */
-.indented {
-  /* Drupal core uses a 25px left margin. */
-  margin-left: 30px;
-  /* LTR */
-}
-
-/**
- * Forms.
- */
-/* Wrapper for a form element (or group of form elements) and its label. */
-/* line 586, ../sass/elements/_misc.scss */
-.form-item {
-  margin: 1.5em 0;
-  /* Pack groups of checkboxes and radio buttons closer together. */
-  /* Form items in a table. */
-  /* Highlight the form elements that caused a form submission error. */
-  /* The descriptive help text (separate from the label). */
-}
-/* line 591, ../sass/elements/_misc.scss */
-.form-checkboxes .form-item, .form-radios .form-item {
-  /* Drupal core uses "0.4em 0". */
-  margin: 0;
-}
-/* line 598, ../sass/elements/_misc.scss */
-tr.odd .form-item, tr.even .form-item {
-  margin: 0;
-}
-/* line 605, ../sass/elements/_misc.scss */
-.form-item input.error,
-.form-item textarea.error,
-.form-item select.error {
-  border: 1px solid #c00;
-}
-/* line 610, ../sass/elements/_misc.scss */
-.form-item .description {
-  font-size: 0.85em;
-}
-
-/* line 617, ../sass/elements/_misc.scss */
-.form-type-radio .description,
-.form-type-checkbox .description {
-  margin-left: 2.4em;
-}
-
-/* The part of the label that indicates a required field. */
-/* line 641, ../sass/elements/_misc.scss */
-.form-required {
-  color: #c00;
-}
-
-/* Labels for radios and checkboxes. */
-/* line 646, ../sass/elements/_misc.scss */
-label.option {
-  display: inline;
-  font-weight: normal;
-}
-
-/* Buttons used by contrib modules like Media. */
-/* line 652, ../sass/elements/_misc.scss */
-a.button {
-  -webkit-appearance: button;
-  -moz-appearance: button;
-  appearance: button;
-}
-
-/* Password confirmation. */
-/* line 658, ../sass/elements/_misc.scss */
-.password-parent,
-.confirm-parent {
-  margin: 0;
-}
-
-/* Drupal's default login form block. */
-/* line 663, ../sass/elements/_misc.scss */
-#user-login-form {
-  text-align: left;
-  /* LTR */
-}
-
-/**
- * OpenID
- *
- * The default styling for the OpenID login link seems to assume Garland's
- * styling of list items.
- */
-/* OpenID creates a new ul above the login form's links. */
-/* line 675, ../sass/elements/_misc.scss */
-.openid-links {
-  /* Position OpenID's ul next to the rest of the links. */
-  margin-bottom: 0;
-}
-
-/* The "Log in using OpenID" and "Cancel OpenID login" links. */
-/* line 682, ../sass/elements/_misc.scss */
-.openid-link,
-.user-link {
-  margin-top: 1.5em;
-}
-
-/* line 686, ../sass/elements/_misc.scss */
-html.js #user-login-form li.openid-link,
-#user-login-form li.openid-link {
-  /* Un-do some of the padding on the ul list. */
-  margin-left: -20px;
-  /* LTR */
-}
-
-/* line 690, ../sass/elements/_misc.scss */
-#user-login ul {
-  margin: 1.5em 0;
-}
-
-/**
- * Drupal admin tables.
- */
-/* line 698, ../sass/elements/_misc.scss */
-form th {
-  text-align: left;
-  /* LTR */
-  padding-right: 1em;
-  /* LTR */
-  border-bottom: 3px solid #ccc;
-}
-/* line 703, ../sass/elements/_misc.scss */
-form tbody {
-  border-top: 1px solid #ccc;
-}
-/* line 706, ../sass/elements/_misc.scss */
-form table ul {
-  margin: 0;
-}
-
-/* line 711, ../sass/elements/_misc.scss */
-tr.even,
-tr.odd {
-  background-color: #eee;
-  border-bottom: 1px solid #ccc;
-  padding: 0.1em 0.6em;
-}
-
-/* line 716, ../sass/elements/_misc.scss */
-tr.even {
-  background-color: #fff;
-}
-
-/* Markup generated by theme_tablesort_indicator(). */
-/* line 731, ../sass/elements/_misc.scss */
-td.active {
-  background-color: #ddd;
-}
-
-/* Center checkboxes inside table cell. */
-/* line 737, ../sass/elements/_misc.scss */
-td.checkbox,
-th.checkbox {
-  text-align: center;
-}
-
-/* Drupal core wrongly puts this in system.menus.css. Since we override that, add it back. */
-/* line 742, ../sass/elements/_misc.scss */
-td.menu-disabled {
-  background: #ccc;
-}
-
-/**
- * Autocomplete.
- *
- * @see autocomplete.js
- */
-/* Suggestion list. */
-/* line 753, ../sass/elements/_misc.scss */
-#autocomplete .selected {
-  background: #0072b9;
-  color: #fff;
-}
-
-/**
- * Collapsible fieldsets.
- *
- * @see collapse.js
- */
-/* line 764, ../sass/elements/_misc.scss */
-html.js .collapsible .fieldset-legend {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABJJREFUeJxj+MdQw2DBIMAABgAUsAHD3c3BpwAAAABJRU5ErkJggg==');
-  background-position: 5px 65%;
-  /* LTR */
-  background-repeat: no-repeat;
-  padding-left: 15px;
-  /* LTR */
-}
-/* line 773, ../sass/elements/_misc.scss */
-html.js .collapsed .fieldset-legend {
-  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAABlBMVEX///8AAABVwtN+AAAAAXRSTlMAQObYZgAAABFJREFUCB1jVmCGQClmEWYOAAZ8AMy3HPLXAAAAAElFTkSuQmCC');
-  /* LTR */
-  background-position: 5px 50%;
-  /* LTR */
-}
-/* line 780, ../sass/elements/_misc.scss */
-.fieldset-legend .summary {
-  color: #999;
-  font-size: 0.9em;
-  margin-left: 0.5em;
-}
-
-/**
- * TableDrag behavior.
- *
- * @see tabledrag.js
- */
-/* line 792, ../sass/elements/_misc.scss */
-tr.drag {
-  background-color: #fffff0;
-}
-
-/* line 795, ../sass/elements/_misc.scss */
-tr.drag-previous {
-  background-color: #ffd;
-}
-
-/* line 798, ../sass/elements/_misc.scss */
-.tabledrag-toggle-weight {
-  font-size: 0.9em;
-}
-
-/**
- * TableSelect behavior.
- *
- * @see tableselect.js
- */
-/* line 807, ../sass/elements/_misc.scss */
-tr.selected td {
-  background: #ffc;
-}
-
-/**
- * Progress bar.
- *
- * @see progress.js
- */
-/* line 816, ../sass/elements/_misc.scss */
-.progress {
-  font-weight: bold;
-}
-/* line 819, ../sass/elements/_misc.scss */
-.progress .bar {
-  background: #ccc;
-  border-color: #666;
-  margin: 0 0.2em;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px;
-}
-/* line 825, ../sass/elements/_misc.scss */
-.progress .filled {
-  background-color: #0072b9;
-  background-image: url('../images/progress.gif?1390331116');
-}
-
-/* TP Modal Library ---------------------- */
-/* -- copied from takepart_core ---------- */
-/* line 834, ../sass/elements/_misc.scss */
-.tpmodal_overlay {
-  background: #000;
-}
-
-/* line 838, ../sass/elements/_misc.scss */
-.tpmodal_modal {
-  background: #fff;
-  border-radius: 10px;
-  overflow: auto;
-  max-height: 100%;
-  max-width: 100%;
-  min-height: 40px;
-  min-width: 40px;
-}
-
-/* line 849, ../sass/elements/_misc.scss */
-.tpmodal_modal.tpmodal_position {
-  display: none !important;
-}
-
-/* line 853, ../sass/elements/_misc.scss */
-.tpmodal_loading {
-  background: white url(/profiles/takepart/themes/takepart3/images/spinner.gif) center center no-repeat;
-}
-
-/* line 857, ../sass/elements/_misc.scss */
-.tpmodal_content {
-  padding: 20px;
-  opacity: 1;
-}
-
-/* line 862, ../sass/elements/_misc.scss */
-.tpmodal_loading .tpmodal_content {
-  opacity: 0;
-}
-
-/* line 866, ../sass/elements/_misc.scss */
-.tpmodal_close {
-  height: 13px;
-  width: 13px;
-  margin: 5px 5px 0 0;
-  text-indent: 100%;
-  overflow: hidden;
-}
-
-/* Interstitials ------------------------- */
-/* Social */
-/* line 878, ../sass/elements/_misc.scss */
-.interstitial_modal_modal.tpmodal_modal {
-  background: transparent;
-  border-radius: 0;
-  max-width: 100% !important;
-}
-
-/* line 884, ../sass/elements/_misc.scss */
-.interstitial_modal_modal .tpmodal_content {
-  padding: 0;
-}
-
-/* line 888, ../sass/elements/_misc.scss */
-.interstitial_modal_modal .tpmodal_close {
-  width: 40px;
-  height: 40px;
-}
-/* line 891, ../sass/elements/_misc.scss */
-.interstitial_modal_modal .tpmodal_close:before, .interstitial_modal_modal .tpmodal_close::before {
-  content: '\2421';
-  font-size: 36px;
-  position: absolute;
-  right: 5px;
-  top: 10px;
-  color: white;
-  font-family: SSGizmo;
-  text-indent: 0;
-}
-
-/* line 903, ../sass/elements/_misc.scss */
-.interstitial_modal_modal iframe {
-  width: 400px;
-  height: 400px;
-  overflow: hidden;
-}
-
-/* line 909, ../sass/elements/_misc.scss */
-.interstitial_modal_overlay {
-  background: #000;
-}
-
-/* line 912, ../sass/elements/_misc.scss */
-.tpmodal_close {
-  margin: 5px 5px 0 0;
-  text-indent: 100%;
-  overflow: hidden;
-}
-
-/* Video Player ------------------------- */
-/* line 920, ../sass/elements/_misc.scss */
-.pm-jwplayer.loading {
-  width: 100%;
-  background: url('../images/video-loading.gif?1394761326');
-  background-size: cover;
-  height: 0;
-  padding-bottom: 56.25%;
-  /* 16:9 */
-}
-/* line 927, ../sass/elements/_misc.scss */
-.pm-jwplayer.blocked {
-  width: 100%;
-  background: url('../images/video-blocked.gif?1394761326') no-repeat center center;
-  background-size: cover;
-  height: 0;
-  padding-bottom: 56.25%;
-  /* 16:9 */
-}
-
-/* Modules */
-/* line 1, ../sass/modules/_wysiwyg.scss */
-h1 {
-  font-family: "tradegothicbold", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-size: 36px;
-  line-height: 38px;
-  color: #000;
-}
-
-/* line 9, ../sass/modules/_wysiwyg.scss */
-h2 {
-  font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 24px;
-  color: #000;
-  text-transform: lowercase;
-}
-
-/* line 17, ../sass/modules/_wysiwyg.scss */
-h3 {
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-  font-style: italic;
-  font-size: 24px;
-  line-height: 30px;
-  color: #000;
-  font-weight: normal;
-  margin-bottom: 5px;
-}
-
-/* line 26, ../sass/modules/_wysiwyg.scss */
-h4 {
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 18px;
-  line-height: 20px;
-  color: #000;
-}
-
-/* line 34, ../sass/modules/_wysiwyg.scss */
-h5 {
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: 100;
-  font-stretch: italic;
-  font-size: 14px;
-  line-height: 18px;
-  color: #000;
-}
-
-/* line 42, ../sass/modules/_wysiwyg.scss */
-h6 {
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-  font-size: 12px;
-  line-height: 14px;
-  color: #000;
-}
-
-/* line 51, ../sass/modules/_wysiwyg.scss */
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  color: #000;
-}
-
-/* line 56, ../sass/modules/_wysiwyg.scss */
-a:hover h1, a:hover h2, a:hover h3, a:hover h4, a:hover h5, a:hover h6 {
-  text-decoration: underline;
-}
-
-/* line 60, ../sass/modules/_wysiwyg.scss */
-p {
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: 100;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-/* line 66, ../sass/modules/_wysiwyg.scss */
-.primary-button {
-  border: none;
-  padding: 8px;
-  display: inline-block;
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-size: 18px;
-  background-color: #01bf9e;
-}
-/* line 73, ../sass/modules/_wysiwyg.scss */
-.primary-button a {
-  color: #fff;
-}
-/* line 76, ../sass/modules/_wysiwyg.scss */
-.primary-button:hover {
-  background-color: #000;
-}
-/* line 78, ../sass/modules/_wysiwyg.scss */
-.primary-button:hover a {
-  text-decoration: none;
-}
-
-/* line 83, ../sass/modules/_wysiwyg.scss */
-p {
-  margin-bottom: 0;
-}
-
-/* line 86, ../sass/modules/_wysiwyg.scss */
-p:first-child {
-  margin: 0;
-}
-
-/* line 89, ../sass/modules/_wysiwyg.scss */
-.secondary-button {
-  border: none;
-  padding: 8px;
-  display: inline-block;
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-  font-weight: 100;
-  font-size: 18px;
-  line-height: 22px;
-  background-color: transparent;
-}
-/* line 203, ../sass/helpers/_mixins.scss */
-.secondary-button a {
-  position: relative;
-  padding-left: 20px;
-  color: #000;
-}
-/* line 207, ../sass/helpers/_mixins.scss */
-.secondary-button a:before {
-  font-family: "SSGizmo";
-  color: #01bf9e;
-  content: '\23E9';
-  position: absolute;
-  top: -1px;
-  left: 0;
-}
-/* line 217, ../sass/helpers/_mixins.scss */
-.secondary-button:hover a {
-  text-decoration: underline;
-}
-
-/* line 93, ../sass/modules/_wysiwyg.scss */
-ul:not(.tabs) li {
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: 100;
-  font-size: 16px;
-  line-height: 24px;
-  position: relative;
-  padding-left: 15px;
-  list-style-type: none;
-}
-/* line 101, ../sass/modules/_wysiwyg.scss */
-ul:not(.tabs) li:before {
-  content: '';
-  height: 6px;
-  width: 6px;
-  background-color: #0080a3;
-  position: absolute;
-  top: 7px;
-  left: 0;
-}
-
-/* line 112, ../sass/modules/_wysiwyg.scss */
-ol {
-  counter-reset: li;
-  margin-left: 0;
-  padding-left: 0;
-}
-/* line 116, ../sass/modules/_wysiwyg.scss */
-ol > li {
-  position: relative;
-  list-style: none;
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: 100;
-  font-size: 16px;
-  line-height: 24px;
-  color: #000;
-  text-indent: 15px;
-  padding-bottom: 10px;
-}
-/* line 126, ../sass/modules/_wysiwyg.scss */
-ol > li:before {
-  content: counter(li);
-  counter-increment: li;
-  position: absolute;
-  font-weight: 500;
-  left: -22px;
-  color: #0080A3;
-  font-size: 30px;
-  text-align: center;
-}
-
-/* line 138, ../sass/modules/_wysiwyg.scss */
-.media-caption {
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-  font-weight: 100;
-  font-size: 14px;
-  line-height: 22px;
-  color: #000;
-}
-
-/* line 145, ../sass/modules/_wysiwyg.scss */
-.primary-headline {
-  color: #000;
-  font-size: 20px;
-  font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-weight: bold;
 }
