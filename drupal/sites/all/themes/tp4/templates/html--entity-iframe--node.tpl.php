@@ -53,7 +53,7 @@
   <?php endif; ?>
   <?php // print $page_top; ?>
   <?php print $page; ?>
-  <?php print $page_bottom; ?>
+  <?php // print $page_bottom; ?>
   <?php if ($use_production_dtm === TRUE || $use_development_dtm === TRUE): ?>
   <script type="text/javascript">_satellite.pageBottom();</script>
   <?php endif; ?>

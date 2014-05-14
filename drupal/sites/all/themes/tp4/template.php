@@ -58,6 +58,17 @@ function tp4_preprocess_html(&$variables, $hook) {
       $variables['use_production_dtm'] = FALSE;
       $variables['use_development_dtm'] = FALSE;
     }
+    
+    if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
+        unset($variables['page']['page_bottom']['omniture']);
+        unset($variables['page']['page_bottom']['quantcast']);
+    }
+}
+
+function tp4_js_alter(&$javascript) {
+  if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
+    unset($javascript['sites/all/modules/contrib/google_analytics/googleanalytics.js']);
+  }
 }
 
 /*
