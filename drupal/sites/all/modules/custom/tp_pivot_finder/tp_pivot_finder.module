@@ -5,10 +5,11 @@
  */
 
 /*
- *Implements hook_init
+ *Implements hook_page_build()
  */
-function tp_pivot_finder_init(){
-  if(path_is_admin(current_path()) == false){
+function tp_pivot_finder_page_build(&$page){
+  global $theme;
+  if($theme == 'tp4'){
     $path = drupal_get_path('module', 'tp_pivot_finder');
     drupal_add_js($path. '/js/channelfinder-domain.js', array(
         'scope' => 'header',
