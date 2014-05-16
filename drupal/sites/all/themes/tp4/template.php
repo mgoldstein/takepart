@@ -785,31 +785,40 @@ function tp4_convert_twitter_time( $t ) {
  * Needed for the OR condition for terms
  */
 function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
-  $node = node_load();
   $tags = $query->alterMetaData['entity_field_query']->tags;
   $nid = array_slice($tags, 1, 1);
   $node = node_load($nid[0]);
 
-  if(isset($node->field_campaign_news_filter_tag['und'][0]['target_id'])){
-    $term_id = $node->field_campaign_news_filter_tag['und'][0]['target_id'];
-    $query
-      ->leftJoin('field_data_field_topic', 'a', 'node.nid = a.entity_id');
-    $query
-      ->leftJoin('field_data_field_series', 'b', 'node.nid = b.entity_id');
-    $query
-      ->leftJoin('field_data_field_free_tag', 'c', 'node.nid = c.entity_id');
-    $query
-      ->leftJoin('field_data_field_admin_tag', 'd', 'node.nid = d.entity_id');
+  $filter_tags = array();
+  $or = db_or();
+  $filters = field_get_items('node', $node, 'field_campaign_news_filter_tag');
+  if(isset($filters) == true && $filters != NULL){
+    foreach($filters as $item) {
       
-    $or = db_or()
-      ->condition('a.field_topic_tid', array($term_id), 'IN')
-      ->condition('b.field_series_tid', array($term_id), 'IN')
-      ->condition('c.field_free_tag_tid', array($term_id), 'IN')
-      ->condition('d.field_admin_tag_tid', array($term_id), 'IN');
-    $query
-      ->condition($or);
+      //Filter can have only one value so this will work
+      if($item['entity']->vid == 5){
+        $query
+          ->leftJoin('field_data_field_topic', 'a', 'node.nid = a.entity_id');
+        $or->condition('a.field_topic_tid', array($item['target_id']), 'IN');
+      }
+      elseif($item['entity']->vid == 3){
+        $query
+          ->leftJoin('field_data_field_series', 'b', 'node.nid = b.entity_id');
+        $or->condition('b.field_series_tid', array($item['target_id']), 'IN');
+      }
+      elseif($item['entity']->vid == 4){
+        $query
+          ->leftJoin('field_data_field_free_tag', 'c', 'node.nid = c.entity_id');
+        $or->condition('c.field_free_tag_tid', array($item['target_id']), 'IN');
+      }
+      else{
+        $query
+          ->leftJoin('field_data_field_admin_tag', 'd', 'node.nid = d.entity_id');
+        $or->condition('d.field_admin_tag_tid', array($item['target_id']), 'IN');
+      }
+    }
   }
-
+  $query->condition($or);
 }
 
 /**
