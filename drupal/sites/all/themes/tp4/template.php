@@ -543,40 +543,47 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
 
   $collections = array();
-  foreach($variables['field_campaign_social_follow']['und'] as $key => $collection){
+  $social_follows = field_get_items('node', $variables['node'], 'field_campaign_social_follow');
+
+  //Each social network is a node reference to a field collection
+  foreach($social_follows as $key => $collection){
     $collections[] = $collection['value'];
   }
   $collections = entity_load('field_collection_item', $collections);
   $center = '';
   $center .= '<div class=social-follow>';
   foreach($collections as $key => $item){
-    $tid = $item->field_social_network['und'][0]['target_id'];
+    //Load the Socail Network Taxonomy Term to get the name
+    $tid = field_get_items('field_collection_item', $item, 'field_social_network');
+    $tid = $tid[0]['target_id'];
     $taxonomy = entity_load('taxonomy_term', array($tid));
     $taxonomy = current($taxonomy);
     $name = $taxonomy->name;
-    // $name = $item->field_social_network['und'][0]['entity']->name;
     $name = strtolower($name);
     $name = preg_replace("/[\s_]/", "-", $name);
-    $url = $item->field_social_link['und'][0]['url'];
+    $url = field_get_items('field_collection_item', $item,'field_social_link');
+    $url = $url[0]['url'];
 
     $center .= l('', $url, array('html' => true, 'attributes' => array('target' => '_blank', 'class' => array($name, 'social-icon', 'tp-social-link'))));
   }
   $center .= '</div>';
 
-  if(isset($variables['field_campaign_newsletter']['und'][0]['target_id']) == true){
+  // Get the Newsletter block if it exists.  Newsletter block is a custom entity that uses blocks for display
+  $newsletter = field_get_items('node', $variables['node'], 'field_campaign_newsletter');
+  if(!empty($newsletter)){
 
-    $block_id = $variables['field_campaign_newsletter']['und'][0]['target_id'];
+    $block_id = $newsletter[0]['target_id'];
     $block = block_load('newsletter_campaign',$block_id);
     $renderable_block =  _block_get_renderable_array(_block_render_blocks(array($block)));
     $center .= drupal_render($renderable_block);
   }
-  if(isset($variables['field_campaign_sms']['und'][0]['value']) == true){
-    $center .= '<div class="sms">'. $variables['field_campaign_sms']['und'][0]['value']. '</div>';
+  $sms = tp4_render_field_value('node', $variables['node'], 'field_campaign_sms');
+  if(!empty($sms)){
+    $center .= '<div class="sms">'. $sms. '</div>';
 
     //if legal override exists, print it, otherwise print the global copy
-    if(isset($variables['field_campaign_sms_legal']['und'][0]['value']) == true){
-      $sms_legal = $variables['field_campaign_sms_legal']['und'][0]['value'];
-    }else{
+    $sms_legal = tp4_render_field_value('node', $variables['node'], 'field_campaign_sms_legal');
+    if(empty($sms_legal)){
       $sms_legal = variable_get('sms_legal', '');
     }
     $center .= '<div class="sms-legal">'. $sms_legal. '</div>';
