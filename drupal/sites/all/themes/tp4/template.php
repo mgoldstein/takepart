@@ -405,66 +405,81 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
-  if($variables['field_campaign_media_photo'][0]['alt'] == ''){
-  	$variables['field_campaign_media_photo'][0]['alt'] = $variables['title'];
+  $media_photo = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
+  if(empty($media_photo[0]['alt'])){
+  	$alt = $variables['title'];
   }
 
-  $alt =   $variables['field_campaign_media_photo'][0]['alt'];
-
-
-  $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
-  $media_title = '';
-  if(isset($variables['field_campaign_media_title'][0]['value']) == true){
-    $media_title = '<h4 class="media-title">'. $variables['field_campaign_media_title'][0]['value']. '</h4>';
+  
+  $media_title = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_title');
+  if(!empty($media_title)){
+    $media_title = '<h4 class="media-title">'. $media_title. '</h4>';
   }
 
   //Prepare Media
-  if($variables['field_campaign_media_type'][0]['value'] == 1){  //Media is a video
-    $media = $variables['field_campaign_media_video'];
-    $media_node = node_load($variables['field_campaign_media_video'][0]['target_id']);
-    $media = drupal_render(node_view($media_node, 'embed'));
+  $media_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_type');
+  if($media_type == 'Video'){  //Media is a video
+    $media = drupal_render(field_view_field('node', $variables['node'], 'field_campaign_media_video', 'embed'));
   }
   else{ //Media is a photo
 
-    $image = file_create_url($variables['field_campaign_media_photo'][0]['uri']);
+    $image = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
+    if(!empty($image)){
+      $image = file_create_url($image[0]['uri']);
+    }
     //Check if photo has a link
-    if(isset($variables['field_campaign_media_image_link'][0]['url']) == true){
-      $link = $variables['field_campaign_media_image_link'][0];
-      $media = l('<img src="'. $image. '" alt="'.$alt.'">', $link['url'], array('html' => true, 'attributes' => array('target' => $link['attributes']['target'])));
+    $image_url = field_get_items('node', $variables['node'], 'field_campaign_media_image_link');
+    if(!empty($image_url) && !empty($image)){
+      $media = l('<img src="'. $image. '" alt="'.$alt.'">', $image_url[0]['url'], array('html' => true, 'attributes' => array('target' => $image_url[0]['attributes']['target'])));
     }
     else{
-      $media .= '<img src="'. $image. '" alt="'.$alt.'">';
+      $media = '<img src="'. $image. '" alt="'.$alt.'">';
     }
 
   }
   //Set Layout
-  if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
+  $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
+  if($column_count == 'Two Column (even width)' || $column_count == 'Two Column (left side wide)' || $column_count == 'Two Column (right side wide)'){  // two column
 
-    // 1:even, 2:left-large, 3:right-large
-    if($column_count == 2){
+    // Set the classes
+    if($column_count == 'Two Column (left side wide)'){
       $variables['classes_array'][] = 'left-large';
     }
-    elseif($column_count == 3){
+    elseif($column_count == 'Two Column (right side wide)'){
       $variables['classes_array'][] = 'right-large';
     }
 
-
-    if($variables['field_campaign_content_side'][0]['value'] == 0){ // Media goes on the left
+    // Set the location of the media element depending on the location set within the CMS
+    $content_side = tp4_render_field_value('node', $variables['node'], 'field_campaign_content_side');
+    if(!empty($content_side) && $content_side == 'Left Side'){
       //Prepare the left side content
       $left = '';
       $left .= $media_title;
       $left .= $media;
-      $left .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
-      $right = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+      $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
+      if(!empty($media_caption)){
+        $left .= '<div class="caption">'. $media_caption. '</div>';
+      }
+      $description = tp4_render_field_value('node', $variables['node'], 'body');
+      if(!empty($description)){
+        $right .= '<div class="description">'. $description. '</div>';
+      }
+
     }
     else{  //media goes on the right
       $right = '';
       $right .= $media_title;
       $right .= $media;
-      $right .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
-      $left = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+      if(!empty($description)){
+        $left .= '<div class="description">'. $description. '</div>';
+      }
+      $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
+      if(!empty($media_caption)){
+        $right .= '<div class="caption">'. $media_caption. '</div>';
+      }
+
     }
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
@@ -473,9 +488,15 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     $center = '';
     $center .= $media_title;
     $center .= $media;
-    $center .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
-    $center .= (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+    $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
+    if(!empty($media_caption)){
+      $center .= '<div class="caption">'. $media_caption. '</div>';
+    }
+    if(!empty($description)){
+      $center .= '<div class="description">'. $description. '</div>';
+    }
+
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   }
 
@@ -483,8 +504,20 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   tp4_campaign_background_rules($variables);
 
   //content
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+  }
   $variables['center'] = $center;
+  if(!empty($center)){
+    $variables['center'] = $center;
+  }
+  if(!empty($left)){
+    $variables['left'] = $left;
+  }
+  if(!empty($right)){
+    $variables['right'] = $right;
+  }
 
 }
 
@@ -608,7 +641,7 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
 
   //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  
+
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
   if(!empty($instructional)){
     $variables['instructional'] = $instructional;
