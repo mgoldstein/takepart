@@ -836,28 +836,34 @@ function tp4_query_promofilter_alter(QueryAlterableInterface $query) {
  */
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
-    // Count the number of values
-    $more = ''; //Add this to news and media
-    $more = '<div class="more-link">'. $variables['field_campaign_more_link'][0]['value']. '</div>';
+    // Is this card a single value news card or a multi-value news card?
+    $news_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_type');
+    if($news_type == 'Single Article'){  //single value
+      $news_ref = field_get_items('node', $variables['node'], 'field_campaign_single_news_ref');
+      $node = node_load($news_ref[0]['target_id']);
 
-    if($variables['field_campaign_news_type'][0]['value'] == 0){  //single value
-
-      $node = node_load($variables['field_campaign_single_news_ref'][0]['target_id']);
-
+      //Determine if the referenced content is an action or not
+      //Actions have different promotable material
       if($node->type == 'action'){
-        $file = file_load($node->field_action_main_image['und'][0]['fid']);
-        if(isset($node->field_action_url[LANGUAGE_NONE][0]['url'])){
-          $link_path = $node->field_action_url[LANGUAGE_NONE][0]['url'];
-          $link_title = $node->field_action_url[LANGUAGE_NONE][0]['title'];
-          $link = l($link_title, $link_path, array('attributes' => array('class' => array('cta'))) );
+        $file = field_get_items('node', $node, 'field_action_main_image');
+        $file = file_load($file[0]['fid']);
+
+        $action_link = field_get_items('node', $node, 'field_action_url');
+        if(!empty($action_link)){
+          $link = field_view_value('node', $node, 'field_action_url', $action_link, 'default');
+          $link_url = $link['#element'][0]['url'];
+          $link_title = $link['#element'][0]['title'];
+          $link = l($link_title, $link_url, array('attributes' => array('class' => array('cta'))) );
         }
-        $short_headline = (isset($link) ? $link : '');
+        $short_headline = (!empty($action_link) ? $link : '');
         $headline = $node->title;
       }
+      //Referenced node is not an Action so we use different fields
       else{
-        $file = file_load($node->field_thumbnail['und'][0]['fid']);
-        $short_headline = $node->field_article_subhead['und'][0]['value'];
-        $headline = $node->field_promo_headline['und'][0]['value'];
+        $file = field_get_items('node', $node, 'field_thumbnail');
+        $file = file_load($file[0]['fid']);
+        $short_headline = tp4_render_field_value('node', $node, 'field_article_subhead');
+        $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
       }
 
       $image = file_create_url($file->uri);
@@ -866,25 +872,25 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
+
       $center .= l($image, $path, array('html' => true));
-      $center .= '<h3 class="headline">'. l($headline, $path). '</h3>';  //headline
+      $center .= '<h3 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
       $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
-      $center .= $more;
 
     }
     else{ //multivalue
 
       $variables['classes_array'][] = 'multi-news';
-      $term_id = $variables['field_campaign_news_filter_tag'][0]['target_id'];
 
       $nids = array();
-      foreach($variables['field_campaign_multi_news_ref'] as $key => $item){
+      $news_ref = field_get_items('node', $variables['node'], 'field_campaign_multi_news_ref');
+      foreach($news_ref as $key => $item){
         $nids[] = $item['target_id'];
       }
 
       // Query non referenced content (max 5)
-      $max_count = $variables['field_campaign_news_count'][0]['value'] + 2;
-      $count = count($variables['field_campaign_multi_news_ref']);
+      $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count') + 2;
+      $count = count($news_ref);
 
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
@@ -906,14 +912,16 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center = '';
       $center .= '<div class="news-column-wrapper">';
       foreach($nodes as $key => $node){
-
+        //Render different news promo content if item is an Action
         if($node->type == 'action'){
-          $file = file_load($node->field_action_main_image['und'][0]['fid']);
-          $headline = $node->field_tab_call_to_action[LANGUAGE_NONE][0]['value'];
+          $file = field_get_items('node', $node, 'field_action_main_image');
+          $file = file_load($file[0]['fid']);
+          $headline = tp4_render_field_value('node', $node, 'field_tab_call_to_action');
         }
         else{
-          $file = file_load($node->field_thumbnail['und'][0]['fid']);
-          $headline = $node->field_promo_headline['und'][0]['value'];
+          $file = field_get_items('node', $node, 'field_thumbnail');
+          $file = file_load($file[0]['fid']);
+          $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
         }
 
 
@@ -927,8 +935,10 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $center .= l($news_column, $node_path, array('html' => true, 'attributes' => array('class' => array('news-column'))));
       }
       $center .= '</div>';
-      $center .= $more;
     }
+    $more = tp4_render_field_value('node', $variables['node'], 'field_campaign_more_link');
+    $more = '<div class="more-link">'. $more. '</div>';
+    $center .= $more;
 
     //background properties
     tp4_campaign_background_rules($variables);
