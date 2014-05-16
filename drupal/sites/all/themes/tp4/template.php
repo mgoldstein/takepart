@@ -493,30 +493,41 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
 function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 
-  $column_count = $variables['field_campaign_media_col'][0]['value'];
 
-  $slim_text = $variables['field_slim_card_text'][0]['value'];
+  $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
+  $slim_text = tp4_render_field_value('node', $variables['node'], 'field_slim_card_text');
   
   
   //Set Layout
-  if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
+  if($column_count == 'Two Column (even width)' || $column_count == 'Two Column (left side wide)' || $column_count == 'Two Column (right side wide)'){
 
-    // 1:even, 2:left-large, 3:right-large
-    if($column_count == 2){
+    // Set the styling layouts
+    if($column_count == 'Two Column (left side wide)'){
       $variables['classes_array'][] = 'left-large';
     }
-    elseif($column_count == 3){
+    elseif($column_count == 'Two Column (right side wide)'){
       $variables['classes_array'][] = 'right-large';
     }
 
-    $left = (isset($variables['field_campaign_text_left'][0]['value']) ? '<div class="text">'. $variables['field_campaign_text_left'][0]['value']. '</div>' : '');
-    $right = (isset($variables['field_campaign_text_right'][0]['value']) ? '<div class="text">'. $variables['field_campaign_text_right'][0]['value']. '</div>' : '');
+    // Return the left and right text columns if they exist
+    $left = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
+    if(!empty($left)){
+      $left = '<div class="text">'. $left. '</div>';
+    }
+    $right = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_right');
+    if(!empty($left)){
+      $left = '<div class="text">'. $right. '</div>';
+    }
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
   }
 
-  elseif($column_count == 0){ //single column
-    $center = (isset($variables['field_campaign_text_left'][0]['value']) ? '<div class="text">'. $variables['field_campaign_text_left'][0]['value']. '</div>' : '');
+  // Else, if it's a single column use the single column template and $center variable
+  elseif($column_count == 'Single Column'){
+    $center = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
+    if(!empty($left)){
+      $center = '<div class="text">'. $center. '</div>';
+    }
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   }
@@ -530,7 +541,10 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   tp4_campaign_background_rules($variables);
 
   //content
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+  }
   $variables['center'] = $center;
   $variables['left'] = $left;
   $variables['right'] = $right;
@@ -594,7 +608,11 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
 
   //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+  }
   $variables['center'] = $center;
 
 }
@@ -961,7 +979,10 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
   //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+  }
   $variables['center'] = $center;
 
 
@@ -1002,7 +1023,10 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
 
   //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+  }
   $variables['center'] = $center;
 
 }
