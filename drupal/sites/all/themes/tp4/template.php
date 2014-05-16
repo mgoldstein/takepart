@@ -984,20 +984,27 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   $center = '';
 
-  $something = field_get_items('node', $variables['node'], 'field_campaign_branding_category');
-  dpm($something, 'something');
-
-  $tid = $variables['field_campaign_branding_category']['und'][0]['tid'];
+  //Load the referenced taxonomy term (Campaign Categories)
+  $tid = field_get_items('node', $variables['node'], 'field_campaign_branding_category');
+  $tid = $tid[0]['tid'];
   $campaign_category = taxonomy_term_load($tid);
-  if(isset($campaign_category->field_campaign_category_image['und'][0]['uri']) == true){
-    $url = file_create_url($campaign_category->field_campaign_category_image['und'][0]['uri']);
-    $image .= '<img src="'. $url. '">';
+
+  $image = field_get_items('taxonomy_term', $campaign_category, 'field_campaign_category_image');
+
+  if(!empty($image)){
+    $image = file_create_url($image[0]['uri']);
+    $image = '<img src="'. $image. '">';
+    $branding_text = tp4_render_field_value('taxonomy_term', $campaign_category, 'field_campaign_category_text');
     $center .= '<div class="branding-content">';
-    $center .= '<div class="branding-text">'. $campaign_category->field_campaign_branding_text['und'][0]['value']. '</div>';
-    if(isset($campaign_category->field_campaign_branding_url['und'][0]['url']) == true){
-      $branding_url = $campaign_category->field_campaign_branding_url['und'][0]['url'];
-      $target = $campaign_category->field_campaign_branding_url['und'][0]['attributes']['target'];
-      $center .= l($image, $branding_url, array('html' => true, 'attributes' => array('target' => $target)));
+    if(!empty($branding_text)){
+      $center .= '<div class="branding-text">'. $branding_text. '</div>';
+    }
+    $branding_url = field_get_items('taxonomy_term', $campaign_category, 'field_campaign_branding_url');
+
+    if(!empty($branding_url)){
+      $url = $branding_url[0]['url'];
+      $target = $branding_url[0]['attributes']['target'];
+      $center .= l($image, $url, array('html' => true, 'attributes' => array('target' => $target)));
     }
     else{
       $center .= $image;
