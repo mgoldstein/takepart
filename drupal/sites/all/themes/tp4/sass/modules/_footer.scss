@@ -1,176 +1,116 @@
 /**
  * FOOTER
  */
-.footer-wrapper{
+.footer-wrapper {
   background-color: $gray-background;
   padding: 30px 0 15px 0;
   position: relative;
   z-index: 2;
-  footer{
-    @include zen-grid-container;
-    .footer-left {
-      @include breakpoint-grid-breakdown(1 3, $breakpoint-mobile $breakpoint-tablet, '.footer-menu');
-      ul{
-        width: 100%;
-        @include breakpoint-grid-breakdown(2 1, $breakpoint-mobile $breakpoint-tablet, 'li.menu__item');
-      }
-      @include breakpoint($breakpoint-mobile) {
-        @include zen-grid-item(12, 1);
-        @include zen-clear();
-      }
-      @include breakpoint($breakpoint-tablet) {
-        @include zen-grid-item(8, 1);
-        @include zen-clear(none);
-      }
+
+  .block-tp4-support {
+    padding: 0 10px;
+    font-family: $primary-sans-font;
+    a {
+      color: $mint;
     }
-    .footer-right{
-      @include breakpoint($breakpoint-mobile) {
-        @include zen-grid-item(12, 1);
-        @include zen-clear();
-      }
-      @include breakpoint($breakpoint-tablet) {
-        @include zen-grid-item(4, 9);
-        @include zen-clear(none);
-      }
-    }
-    .footer-bottom{
-      @include zen-clear();
-      @include zen-grid-item(12, 1);
+    @include breakpoint($breakpoint-desktop) {
+      padding: 0;
     }
   }
+}
 
+.footer-text {
+  max-width: 600px;
+  margin-bottom: 1em;
+  @include breakpoint($breakpoint-tablet) {
+    width: 61.2244898%;
+    float: left;
+  }
+}
 
-  footer{
-    .footer-left{
-      @include breakpoint($breakpoint-mobile) {
-        ul{
-          padding-top: 15px;
-          margin-bottom: 20px;
-          a{
-            font: 100 14px/24px $primary-sans-font;
-            color: #000;
-            &:hover{
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-      @include breakpoint($breakpoint-tablet) {
-        margin-bottom: 0px;
-        ul{
-          margin-bottom: 7px;
-        }
-      }
+.footer-social {
+  overflow: hidden;
+  margin-bottom: 1em;
+  .fotoer-title {
+    margin-bottom: 0;
+  }
+  @include breakpoint($breakpoint-tablet) {    
+    float: right;
+    text-align: right;
+    .footer-title {
+      float: right;
     }
-    .footer-right{
-      @include breakpoint($breakpoint-mobile) {
-        .footer-title.social{
-          float: left;
-          margin-bottom: 2px;
-        }
-        .follow-us{
-          width: 100%;
-          text-align: left;
-          clear: both;
-          ul{
-            text-align: left;
-          }
-        }
-        .text{
-          float: left;
-          margin-top: 40px;
-          width: 100%;
-          a{
-            color: $mint;
-          }
-        }
-      }
-      @include breakpoint($breakpoint-tablet) {
-        .footer-title.social{
-          float: right;
-        }
-        .follow-us{
-          text-align: right;
-          ul{
-            float: right;
-            text-align: left;
-            li{
-              float: left;
-            }
-          }
-        }
-        .text{
-          float: right;
-          margin-top: 50px;
-          clear: both;
-          width: 90%;
-          font: 100 11px/16px $primary-sans-font;
-        }
-      }
-      @include breakpoint($breakpoint-desktop) {
-
-      }
-    }
-    .footer-bottom{
-      text-align: center;
-      margin-top: 30px;
-      border-top: 1px solid $gray-line;
-      padding-top: 20px;
-      @include breakpoint($breakpoint-mobile) {
-        text-align: center;
-        .footer-bottom-inner{
-          text-align: left;
-          // display: inline-block;
-          li{
-            display: inline-block;
-            margin-left: 20px;
-            height: auto;
-            width: auto;
-            overflow: hidden;
-            &:first-child{
-              margin-left: 0px;
-            }
-            a{
-              display: block;
-              text-indent: 100%;
-              white-space: nowrap;
-              overflow: hidden;
-              &.logos-takepart{
-                height: logos-sprite-height(takepart);
-                width: logos-sprite-width(takepart);
-              }
-              &.logos-participantmedia{
-                height: logos-sprite-height(participantmedia);
-                width: logos-sprite-width(participantmedia);
-              }
-              &.logos-pivot{
-                height: logos-sprite-height(pivot);
-                width: logos-sprite-width(pivot);
-              }
-            }
-          }
-        }
-      }
-      @include breakpoint($breakpoint-tablet) {
-        .footer-bottom-inner{
-          display: inline-block;
-          .footer-title{
-            display: inline-block;
-            vertical-align: top;
-            margin-top: 8px;
-            margin-right: 10px;
-          }
-          ul{
-            display: inline-block;
-          }
-        }
+    ul {
+      float: right;
+      li {
+        float: left;
       }
     }
   }
 }
 
+.footer-menu {
+  clear: both;
+  overflow: hidden; // clearfix
 
+  li {
+    display: inline-block;
+    line-height: 1;
+    margin-bottom: 1em;
+    margin-right: .5em;
+    border-right: 1px solid black;
+    padding-right: .5em;
+    &.last {
+      border-right: none;
+      margin-right: 0;
+      padding-right: 0;
+    }
+    a {
+      white-space: nowrap;
+    }
+  }
+}
 
+.footer-bottom {
+  text-align: center;
+  clear: both;
+  overflow: hidden; // clearfix
 
+  .footer-bottom-inner {
+    margin-top: 30px;
+    border-top: 1px solid $gray-line;
+    padding-top: 20px;
 
+    width: 100%;
 
+    li {
+      display: inline-block;
+      margin-left: 20px;
+      height: auto;
+      width: auto;
+      overflow: hidden;
+      &:first-child {
+        margin-left: 0px;
+      }
+      a {
+        display: block;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &.logos-takepart{
+          height: logos-sprite-height(takepart);
+          width: logos-sprite-width(takepart);
+        }
+        &.logos-participantmedia{
+          height: logos-sprite-height(participantmedia);
+          width: logos-sprite-width(participantmedia);
+        }
+        &.logos-pivot{
+          height: logos-sprite-height(pivot);
+          width: logos-sprite-width(pivot);
+        }
+      }
+    }
+  }
+}
