@@ -96,75 +96,6 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_color_scheme-field_color_scheme_font_color'
-  $field_instances['field_collection_item-field_color_scheme-field_color_scheme_font_color'] = array(
-    'bundle' => 'field_color_scheme',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'color_field',
-        'settings' => array(),
-        'type' => 'color_field_default_formatter',
-        'weight' => 2,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_color_scheme_font_color',
-    'label' => 'Font Color',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'color_field',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'color_field_spectrum_widget',
-      'weight' => 3,
-    ),
-  );
-
-  // Exported field_instance: 'field_collection_item-field_color_scheme-field_color_scheme_name'
-  $field_instances['field_collection_item-field_color_scheme-field_color_scheme_name'] = array(
-    'bundle' => 'field_color_scheme',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'field_collection_item',
-    'field_name' => 'field_color_scheme_name',
-    'label' => 'Name',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
   // Exported field_instance: 'node-campaign-field_article_subhead'
   $field_instances['node-campaign-field_article_subhead'] = array(
     'bundle' => 'campaign',
@@ -1759,25 +1690,23 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-campaign-field_color_scheme'
-  $field_instances['node-campaign-field_color_scheme'] = array(
+  // Exported field_instance: 'node-campaign-field_campaign_style'
+  $field_instances['node-campaign-field_campaign_style'] = array(
     'bundle' => 'campaign',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
-        'weight' => 34,
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 36,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1829,20 +1758,21 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_color_scheme',
-    'label' => 'Color Scheme',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'field_collection',
+      'active' => 1,
+      'module' => 'options',
       'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
-      'type' => 'field_collection_embed',
-      'weight' => 46,
+      'type' => 'options_select',
+      'weight' => 13,
     ),
   );
 
@@ -1946,7 +1876,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 40,
+      'weight' => 10,
     ),
   );
 
@@ -2050,7 +1980,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 42,
+      'weight' => 12,
     ),
   );
 
@@ -2162,7 +2092,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 41,
+      'weight' => 11,
     ),
   );
 
@@ -3595,23 +3525,27 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-campaign_card_branding-field_card_color_scheme'
-  $field_instances['node-campaign_card_branding-field_card_color_scheme'] = array(
+  // Exported field_instance: 'node-campaign_card_branding-field_campaign_style'
+  $field_instances['node-campaign_card_branding-field_campaign_style'] = array(
     'bundle' => 'campaign_card_branding',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Select a custom style for the styling of the card.',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 8,
+        'type' => 'list_default',
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3663,23 +3597,21 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_card_color_scheme',
-    'label' => 'Card Color Scheme',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
+        'content_taxonomy_opt_groups' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 15,
+      'type' => 'options_select',
+      'weight' => 5,
     ),
   );
 
@@ -4138,18 +4070,22 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-campaign_card_empty-field_card_color_scheme'
-  $field_instances['node-campaign_card_empty-field_card_color_scheme'] = array(
+  // Exported field_instance: 'node-campaign_card_empty-field_campaign_style'
+  $field_instances['node-campaign_card_empty-field_campaign_style'] = array(
     'bundle' => 'campaign_card_empty',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'list_default',
         'weight' => 5,
       ),
       'feature_main' => array(
@@ -4202,23 +4138,21 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_card_color_scheme',
-    'label' => 'Card Color Scheme',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
+        'content_taxonomy_opt_groups' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 11,
+      'type' => 'options_select',
+      'weight' => 3,
     ),
   );
 
@@ -4340,7 +4274,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -4939,7 +4873,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -5021,7 +4955,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -5111,7 +5045,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -5315,23 +5249,27 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-campaign_card_iframe-field_card_color_scheme'
-  $field_instances['node-campaign_card_iframe-field_card_color_scheme'] = array(
+  // Exported field_instance: 'node-campaign_card_iframe-field_campaign_style'
+  $field_instances['node-campaign_card_iframe-field_campaign_style'] = array(
     'bundle' => 'campaign_card_iframe',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 11,
+        'type' => 'list_default',
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5383,23 +5321,21 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_card_color_scheme',
-    'label' => 'Card Color Scheme',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
+        'content_taxonomy_opt_groups' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 15,
+      'type' => 'options_select',
+      'weight' => 10,
     ),
   );
 
@@ -6881,18 +6817,22 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-campaign_card_media-field_card_color_scheme'
-  $field_instances['node-campaign_card_media-field_card_color_scheme'] = array(
+  // Exported field_instance: 'node-campaign_card_media-field_campaign_style'
+  $field_instances['node-campaign_card_media-field_campaign_style'] = array(
     'bundle' => 'campaign_card_media',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'list_default',
         'weight' => 16,
       ),
       'feature_main' => array(
@@ -6945,23 +6885,21 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_card_color_scheme',
-    'label' => 'Card Color Scheme',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
+        'content_taxonomy_opt_groups' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 14,
+      'type' => 'options_select',
+      'weight' => 9,
     ),
   );
 
@@ -8151,18 +8089,22 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
-  // Exported field_instance: 'node-campaign_card_news-field_card_color_scheme'
-  $field_instances['node-campaign_card_news-field_card_color_scheme'] = array(
+  // Exported field_instance: 'node-campaign_card_news-field_campaign_style'
+  $field_instances['node-campaign_card_news-field_campaign_style'] = array(
     'bundle' => 'campaign_card_news',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'list_default',
         'weight' => 13,
       ),
       'feature_main' => array(
@@ -8215,23 +8157,21 @@ Note: If you manually reference more items than selected here, the number refere
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_card_color_scheme',
-    'label' => 'Card Color Scheme',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
+        'content_taxonomy_opt_groups' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 16,
+      'type' => 'options_select',
+      'weight' => 11,
     ),
   );
 
@@ -9228,102 +9168,22 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
-  // Exported field_instance: 'node-campaign_card_social-field_card_color_scheme'
-  $field_instances['node-campaign_card_social-field_card_color_scheme'] = array(
+  // Exported field_instance: 'node-campaign_card_social-field_campaign_style'
+  $field_instances['node-campaign_card_social-field_campaign_style'] = array(
     'bundle' => 'campaign_card_social',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_card_color_scheme',
-    'label' => 'Card Color Scheme',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance: 'node-campaign_card_social-field_test'
-  $field_instances['node-campaign_card_social-field_test'] = array(
-    'bundle' => 'campaign_card_social',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'list_default',
         'weight' => 11,
       ),
       'feature_main' => array(
@@ -9376,23 +9236,21 @@ Note: If you manually reference more items than selected here, the number refere
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_test',
-    'label' => 'Test',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
+        'content_taxonomy_opt_groups' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 17,
+      'type' => 'options_select',
+      'weight' => 9,
     ),
   );
 
@@ -10103,6 +9961,92 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_card_text-field_campaign_style'
+  $field_instances['node-campaign_card_text-field_campaign_style'] = array(
+    'bundle' => 'campaign_card_text',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 12,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_select',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_card_text-field_campaign_text_left'
   $field_instances['node-campaign_card_text-field_campaign_text_left'] = array(
     'bundle' => 'campaign_card_text',
@@ -10340,90 +10284,6 @@ Note: If you manually reference more items than selected here, the number refere
       ),
       'type' => 'text_textarea',
       'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-campaign_card_text-field_card_color_scheme'
-  $field_instances['node-campaign_card_text-field_card_color_scheme'] = array(
-    'bundle' => 'campaign_card_text',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 10,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_card_color_scheme',
-    'label' => 'Card Color Scheme',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 13,
     ),
   );
 
@@ -11176,18 +11036,22 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
-  // Exported field_instance: 'node-campaign_card_twitter-field_card_color_scheme'
-  $field_instances['node-campaign_card_twitter-field_card_color_scheme'] = array(
+  // Exported field_instance: 'node-campaign_card_twitter-field_campaign_style'
+  $field_instances['node-campaign_card_twitter-field_campaign_style'] = array(
     'bundle' => 'campaign_card_twitter',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'list_default',
         'weight' => 16,
       ),
       'feature_main' => array(
@@ -11240,23 +11104,21 @@ Note: If you manually reference more items than selected here, the number refere
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_card_color_scheme',
-    'label' => 'Card Color Scheme',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
+        'content_taxonomy_opt_groups' => FALSE,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 19,
+      'type' => 'options_select',
+      'weight' => 16,
     ),
   );
 
@@ -11514,7 +11376,7 @@ Note: If you manually reference more items than selected here, the number refere
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -13419,6 +13281,92 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_tray-field_campaign_style'
+  $field_instances['node-campaign_tray-field_campaign_style'] = array(
+    'bundle' => 'campaign_tray',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 8,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_style',
+    'label' => 'Campaign Style',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_select',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_tray-field_campaign_tray_title'
   $field_instances['node-campaign_tray-field_campaign_tray_title'] = array(
     'bundle' => 'campaign_tray',
@@ -13602,18 +13550,16 @@ Note: If you manually reference more items than selected here, the number refere
   t('Campaign Menu Width');
   t('Campaign Newsletter');
   t('Campaign Reference');
+  t('Campaign Style');
   t('Campaign Tray Title');
   t('Campaign Tray Title Color');
-  t('Card Color Scheme');
   t('Card Title');
   t('Check if you are creating a slim card text');
-  t('Color Scheme');
   t('Column Count');
   t('Content');
   t('Embed');
   t('Enable Facebook Comments for this Campaign Page');
   t('Filter');
-  t('Font Color');
   t('Fonts for CSS');
   t('Height in pixels.  Do not include \'px\'');
   t('How many news articles do you want to display?
@@ -13646,7 +13592,6 @@ Note: If you manually reference more items than selected here, the number refere
   t('Minimum height for the content in pixels.  Leave blank if you would like the height to fit to the size of the content.');
   t('More Link');
   t('Multi News Reference');
-  t('Name');
   t('Name of the card that gets displayed.  If a tray title exists, this title will get overwritten.');
   t('News Count');
   t('Number of Tweets');
@@ -13663,6 +13608,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Right Text');
   t('SEO Title');
   t('SMS');
+  t('Select a custom style for the styling of the card.');
   t('Series');
   t('Single News Reference');
   t('Slim Card Text');
@@ -13671,7 +13617,6 @@ Note: If you manually reference more items than selected here, the number refere
   t('Social Network');
   t('Subhead');
   t('TAB Action Overrides');
-  t('Test');
   t('Text to override the global SMS copy.  The global legal copy will appear if this field is left blank.  Legal copy will only show if the SMS field has a value.');
   t('Text will appear on the left if two columns exist and in the center if only one exists.');
   t('The URL to the campaign homepage.');
