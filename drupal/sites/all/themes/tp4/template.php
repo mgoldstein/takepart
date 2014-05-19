@@ -416,66 +416,81 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
-  if($variables['field_campaign_media_photo'][0]['alt'] == ''){
-  	$variables['field_campaign_media_photo'][0]['alt'] = $variables['title'];
+  $media_photo = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
+  if(empty($media_photo[0]['alt'])){
+  	$alt = $variables['title'];
   }
 
-  $alt =   $variables['field_campaign_media_photo'][0]['alt'];
-
-
-  $column_count = $variables['field_campaign_media_col']['und'][0]['value'];
-  $media_title = '';
-  if(isset($variables['field_campaign_media_title'][0]['value']) == true){
-    $media_title = '<h4 class="media-title">'. $variables['field_campaign_media_title'][0]['value']. '</h4>';
+  
+  $media_title = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_title');
+  if(!empty($media_title)){
+    $media_title = '<h4 class="media-title">'. $media_title. '</h4>';
   }
 
   //Prepare Media
-  if($variables['field_campaign_media_type'][0]['value'] == 1){  //Media is a video
-    $media = $variables['field_campaign_media_video'];
-    $media_node = node_load($variables['field_campaign_media_video'][0]['target_id']);
-    $media = drupal_render(node_view($media_node, 'embed'));
+  $media_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_type');
+  if($media_type == 'Video'){  //Media is a video
+    $media = drupal_render(field_view_field('node', $variables['node'], 'field_campaign_media_video', 'embed'));
   }
   else{ //Media is a photo
 
-    $image = file_create_url($variables['field_campaign_media_photo'][0]['uri']);
+    $image = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
+    if(!empty($image)){
+      $image = file_create_url($image[0]['uri']);
+    }
     //Check if photo has a link
-    if(isset($variables['field_campaign_media_image_link'][0]['url']) == true){
-      $link = $variables['field_campaign_media_image_link'][0];
-      $media = l('<img src="'. $image. '" alt="'.$alt.'">', $link['url'], array('html' => true, 'attributes' => array('target' => $link['attributes']['target'])));
+    $image_url = field_get_items('node', $variables['node'], 'field_campaign_media_image_link');
+    if(!empty($image_url) && !empty($image)){
+      $media = l('<img src="'. $image. '" alt="'.$alt.'">', $image_url[0]['url'], array('html' => true, 'attributes' => array('target' => $image_url[0]['attributes']['target'])));
     }
     else{
-      $media .= '<img src="'. $image. '" alt="'.$alt.'">';
+      $media = '<img src="'. $image. '" alt="'.$alt.'">';
     }
 
   }
   //Set Layout
-  if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
+  $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
+  if($column_count == 'Two Column (even width)' || $column_count == 'Two Column (left side wide)' || $column_count == 'Two Column (right side wide)'){  // two column
 
-    // 1:even, 2:left-large, 3:right-large
-    if($column_count == 2){
+    // Set the classes
+    if($column_count == 'Two Column (left side wide)'){
       $variables['classes_array'][] = 'left-large';
     }
-    elseif($column_count == 3){
+    elseif($column_count == 'Two Column (right side wide)'){
       $variables['classes_array'][] = 'right-large';
     }
 
-
-    if($variables['field_campaign_content_side'][0]['value'] == 0){ // Media goes on the left
+    // Set the location of the media element depending on the location set within the CMS
+    $content_side = tp4_render_field_value('node', $variables['node'], 'field_campaign_content_side');
+    if(!empty($content_side) && $content_side == 'Left Side'){
       //Prepare the left side content
       $left = '';
       $left .= $media_title;
       $left .= $media;
-      $left .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
-      $right = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+      $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
+      if(!empty($media_caption)){
+        $left .= '<div class="caption">'. $media_caption. '</div>';
+      }
+      $description = tp4_render_field_value('node', $variables['node'], 'body');
+      if(!empty($description)){
+        $right .= '<div class="description">'. $description. '</div>';
+      }
+
     }
     else{  //media goes on the right
       $right = '';
       $right .= $media_title;
       $right .= $media;
-      $right .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
-      $left = (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+      if(!empty($description)){
+        $left .= '<div class="description">'. $description. '</div>';
+      }
+      $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
+      if(!empty($media_caption)){
+        $right .= '<div class="caption">'. $media_caption. '</div>';
+      }
+
     }
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
@@ -484,67 +499,36 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     $center = '';
     $center .= $media_title;
     $center .= $media;
-    $center .= (isset($variables['field_campaign_media_caption'][0]['value']) ? '<div class="caption">'. $variables['field_campaign_media_caption'][0]['value']. '</div>' : '');
 
-    $center .= (isset($variables['body']['und'][0]['value']) ? '<div class="description">'. $variables['body']['und'][0]['value']. '</div>' : '');
+    $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
+    if(!empty($media_caption)){
+      $center .= '<div class="caption">'. $media_caption. '</div>';
+    }
+    if(!empty($description)){
+      $center .= '<div class="description">'. $description. '</div>';
+    }
+
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   }
 
-  //Width and height variables
-  $variables['styles'] = array();
-  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
-  }
-  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
-    $variables['classes_array'][] = 'card-width-full';
-  }
-  else{
-    $variables['classes_array'][] = 'card-width-980';
-  }
-  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
-    $variables['styles'][] = 'background-size: 100%;';
-  }
-  else{
-    $variables['styles'][] = 'background-size: 1000px;';
-  }
+  //background properties
+  tp4_campaign_background_rules($variables);
 
-  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $variables['left'] = $left;
-  $variables['right'] = $right;
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+  }
   $variables['center'] = $center;
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
-
-  // If color scheme is enabled add font color to major html tag inside the card
-  if(!empty($variables['field_card_color_scheme'])){
-    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
-  	$campaign_style['style'] =
-  	'.color_scheme_'.$variables['nid'].',
-  	.color_scheme_'.$variables['nid'].' h1,
-  	.color_scheme_'.$variables['nid'].' h2,
-  	.color_scheme_'.$variables['nid'].' h3,
-  	.color_scheme_'.$variables['nid'].' h4,
-  	.color_scheme_'.$variables['nid'].' h5,
-  	.color_scheme_'.$variables['nid'].' h6,
-  	.color_scheme_'.$variables['nid'].' a,
-  	.color_scheme_'.$variables['nid'].' p,
-  	.color_scheme_'.$variables['nid'].' label,
-  	.color_scheme_'.$variables['nid'].' ul,
-  	.color_scheme_'.$variables['nid'].' li,
-  	.color_scheme_'.$variables['nid'].' th,
-  	.color_scheme_'.$variables['nid'].' td
-  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
-
-    drupal_add_css($campaign_style['style'],
-				  array(
-				        'group' => CSS_THEME,
-				        'type' => 'inline',
-				        'media' => 'screen',
-				        'preprocess' => FALSE,
-				        'weight' => '9999',
-				  ));
+  if(!empty($center)){
+    $variables['center'] = $center;
   }
-
+  if(!empty($left)){
+    $variables['left'] = $left;
+  }
+  if(!empty($right)){
+    $variables['right'] = $right;
+  }
 
 }
 
@@ -553,98 +537,61 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
 function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 
-  $column_count = $variables['field_campaign_media_col'][0]['value'];
 
-  $instructional = $variables['field_campaign_instructional'][0]['value'];
-
-  $slim_text = $variables['field_slim_card_text'][0]['value'];
+  $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
+  $slim_text = tp4_render_field_value('node', $variables['node'], 'field_slim_card_text');
   
   
   //Set Layout
-  if($column_count == 1 || $column_count == 2 || $column_count == 3){  // two column
+  if($column_count == 'Two Column (even width)' || $column_count == 'Two Column (left side wide)' || $column_count == 'Two Column (right side wide)'){
 
-    // 1:even, 2:left-large, 3:right-large
-    if($column_count == 2){
+    // Set the styling layouts
+    if($column_count == 'Two Column (left side wide)'){
       $variables['classes_array'][] = 'left-large';
     }
-    elseif($column_count == 3){
+    elseif($column_count == 'Two Column (right side wide)'){
       $variables['classes_array'][] = 'right-large';
     }
 
-    $left = (isset($variables['field_campaign_text_left'][0]['value']) ? '<div class="text">'. $variables['field_campaign_text_left'][0]['value']. '</div>' : '');
-    $right = (isset($variables['field_campaign_text_right'][0]['value']) ? '<div class="text">'. $variables['field_campaign_text_right'][0]['value']. '</div>' : '');
+    // Return the left and right text columns if they exist
+    $left = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
+    if(!empty($left)){
+      $left = '<div class="text">'. $left. '</div>';
+    }
+    $right = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_right');
+    if(!empty($left)){
+      $left = '<div class="text">'. $right. '</div>';
+    }
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
   }
 
-  elseif($column_count == 0){ //single column
-    $center = (isset($variables['field_campaign_text_left'][0]['value']) ? '<div class="text">'. $variables['field_campaign_text_left'][0]['value']. '</div>' : '');
+  // Else, if it's a single column use the single column template and $center variable
+  elseif($column_count == 'Single Column'){
+    $center = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
+    if(!empty($left)){
+      $center = '<div class="text">'. $center. '</div>';
+    }
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   }
 
-  //Width and height variables
-  $variables['styles'] = array();
-  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
-  }
-  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
-    $variables['classes_array'][] = 'card-width-full';
-  }
-  else{
-    $variables['classes_array'][] = 'card-width-980';
-  }
-  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
-    $variables['styles'][] = 'background-size: 100%;';
-  }
-  else{
-    $variables['styles'][] = 'background-size: 1000px;';
-  }
-  
   // Slim Text card
   if($slim_text == 1){
     $variables['classes_array'][] = 'slim-text';
-	$variables['slim_text'] =  'slim-text-card-inner';
+  $variables['slim_text'] =  'slim-text-card-inner';
   }
+  //background properties
+  tp4_campaign_background_rules($variables);
 
-
-  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+  }
+  $variables['center'] = $center;
   $variables['left'] = $left;
   $variables['right'] = $right;
-  $variables['center'] = $center;
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
-
-  // If color scheme is enabled add font color to major html tag inside the card
-  if(!empty($variables['field_card_color_scheme'])){
-    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
-  	$campaign_style['style'] =
-  	'.color_scheme_'.$variables['nid'].',
-  	.color_scheme_'.$variables['nid'].' h1,
-  	.color_scheme_'.$variables['nid'].' h2,
-  	.color_scheme_'.$variables['nid'].' h3,
-  	.color_scheme_'.$variables['nid'].' h4,
-  	.color_scheme_'.$variables['nid'].' h5,
-  	.color_scheme_'.$variables['nid'].' h6,
-  	.color_scheme_'.$variables['nid'].' a,
-  	.color_scheme_'.$variables['nid'].' p,
-  	.color_scheme_'.$variables['nid'].' label,
-  	.color_scheme_'.$variables['nid'].' ul,
-  	.color_scheme_'.$variables['nid'].' li,
-  	.color_scheme_'.$variables['nid'].' th,
-  	.color_scheme_'.$variables['nid'].' td
-  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
-
-    drupal_add_css($campaign_style['style'],
-				  array(
-				        'group' => CSS_THEME,
-				        'type' => 'inline',
-				        'media' => 'screen',
-				        'preprocess' => FALSE,
-				        'weight' => '9999',
-				  ));
-  }
-
 }
 
 
@@ -652,101 +599,65 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
  * Override or insert variables into the campaign card social template
  */
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
-  // social!
-  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 
   $collections = array();
-  foreach($variables['field_campaign_social_follow']['und'] as $key => $collection){
+  $social_follows = field_get_items('node', $variables['node'], 'field_campaign_social_follow');
+
+  //Each social network is a node reference to a field collection
+  foreach($social_follows as $key => $collection){
     $collections[] = $collection['value'];
   }
   $collections = entity_load('field_collection_item', $collections);
   $center = '';
   $center .= '<div class=social-follow>';
   foreach($collections as $key => $item){
-    $tid = $item->field_social_network['und'][0]['target_id'];
+    //Load the Socail Network Taxonomy Term to get the name
+    $tid = field_get_items('field_collection_item', $item, 'field_social_network');
+    $tid = $tid[0]['target_id'];
     $taxonomy = entity_load('taxonomy_term', array($tid));
     $taxonomy = current($taxonomy);
     $name = $taxonomy->name;
-    // $name = $item->field_social_network['und'][0]['entity']->name;
     $name = strtolower($name);
     $name = preg_replace("/[\s_]/", "-", $name);
-    $url = $item->field_social_link['und'][0]['url'];
+    $url = field_get_items('field_collection_item', $item,'field_social_link');
+    $url = $url[0]['url'];
 
     $center .= l('', $url, array('html' => true, 'attributes' => array('target' => '_blank', 'class' => array($name, 'social-icon', 'tp-social-link'))));
   }
   $center .= '</div>';
 
-  if(isset($variables['field_campaign_newsletter']['und'][0]['target_id']) == true){
+  // Get the Newsletter block if it exists.  Newsletter block is a custom entity that uses blocks for display
+  $newsletter = field_get_items('node', $variables['node'], 'field_campaign_newsletter');
+  if(!empty($newsletter)){
 
-    $block_id = $variables['field_campaign_newsletter']['und'][0]['target_id'];
+    $block_id = $newsletter[0]['target_id'];
     $block = block_load('newsletter_campaign',$block_id);
     $renderable_block =  _block_get_renderable_array(_block_render_blocks(array($block)));
     $center .= drupal_render($renderable_block);
   }
-  if(isset($variables['field_campaign_sms']['und'][0]['value']) == true){
-    $center .= '<div class="sms">'. $variables['field_campaign_sms']['und'][0]['value']. '</div>';
+  $sms = tp4_render_field_value('node', $variables['node'], 'field_campaign_sms');
+  if(!empty($sms)){
+    $center .= '<div class="sms">'. $sms. '</div>';
 
     //if legal override exists, print it, otherwise print the global copy
-    if(isset($variables['field_campaign_sms_legal']['und'][0]['value']) == true){
-      $sms_legal = $variables['field_campaign_sms_legal']['und'][0]['value'];
-    }else{
+    $sms_legal = tp4_render_field_value('node', $variables['node'], 'field_campaign_sms_legal');
+    if(empty($sms_legal)){
       $sms_legal = variable_get('sms_legal', '');
     }
     $center .= '<div class="sms-legal">'. $sms_legal. '</div>';
   }
 
-  //Width and height variables
-  $variables['styles'] = array();
-  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
+  //background properties
+  tp4_campaign_background_rules($variables);
+
+  //content
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
   }
-  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
-    $variables['classes_array'][] = 'card-width-full';
-  }
-  else{
-    $variables['classes_array'][] = 'card-width-980';
-  }
-  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
-    $variables['styles'][] = 'background-size: 100%;';
-  }
-  else{
-    $variables['styles'][] = 'background-size: 1000px;';
-  }
-  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $variables['center'] = $center;
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
-
-  // If color scheme is enabled add font color to major html tag inside the card
-  if(!empty($variables['field_card_color_scheme'])){
-    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
-  	$campaign_style['style'] =
-  	'.color_scheme_'.$variables['nid'].',
-  	.color_scheme_'.$variables['nid'].' h1,
-  	.color_scheme_'.$variables['nid'].' h2,
-  	.color_scheme_'.$variables['nid'].' h3,
-  	.color_scheme_'.$variables['nid'].' h4,
-  	.color_scheme_'.$variables['nid'].' h5,
-  	.color_scheme_'.$variables['nid'].' h6,
-  	.color_scheme_'.$variables['nid'].' a,
-  	.color_scheme_'.$variables['nid'].' p,
-  	.color_scheme_'.$variables['nid'].' label,
-  	.color_scheme_'.$variables['nid'].' ul,
-  	.color_scheme_'.$variables['nid'].' li,
-  	.color_scheme_'.$variables['nid'].' th,
-  	.color_scheme_'.$variables['nid'].' td
-  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
-
-    drupal_add_css($campaign_style['style'],
-				  array(
-				        'group' => CSS_THEME,
-				        'type' => 'inline',
-				        'media' => 'screen',
-				        'preprocess' => FALSE,
-				        'weight' => '9999',
-				  ));
-  }
-
 
 }
 
@@ -898,36 +809,6 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
   
   $variables['card_background'] = file_create_url($variables['field_campaign_background'][0]['uri']);
 	
-
-  // If color scheme is enabled add font color to major html tag inside the card
-  if(!empty($variables['field_card_color_scheme'])){
-    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
-  	$campaign_style['style'] = 
-  	'.color_scheme_'.$variables['nid'].', 
-  	.color_scheme_'.$variables['nid'].' h1, 
-  	.color_scheme_'.$variables['nid'].' h2, 
-  	.color_scheme_'.$variables['nid'].' h3, 
-  	.color_scheme_'.$variables['nid'].' h4, 
-  	.color_scheme_'.$variables['nid'].' h5, 
-  	.color_scheme_'.$variables['nid'].' h6, 
-  	.color_scheme_'.$variables['nid'].' a,
-  	.color_scheme_'.$variables['nid'].' p, 
-  	.color_scheme_'.$variables['nid'].' label, 
-  	.color_scheme_'.$variables['nid'].' ul, 
-  	.color_scheme_'.$variables['nid'].' li,
-  	.color_scheme_'.$variables['nid'].' th,
-  	.color_scheme_'.$variables['nid'].' td
-  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
-    
-    drupal_add_css($campaign_style['style'], 
-				  array(
-				        'group' => CSS_THEME,
-				        'type' => 'inline',
-				        'media' => 'screen',
-				        'preprocess' => FALSE,
-				        'weight' => '9999',
-				  ));
-  } 
 	
  }
 
@@ -1033,28 +914,34 @@ function tp4_query_promofilter_alter(QueryAlterableInterface $query) {
  */
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
-    // Count the number of values
-    $more = ''; //Add this to news and media
-    $more = '<div class="more-link">'. $variables['field_campaign_more_link'][0]['value']. '</div>';
+    // Is this card a single value news card or a multi-value news card?
+    $news_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_type');
+    if($news_type == 'Single Article'){  //single value
+      $news_ref = field_get_items('node', $variables['node'], 'field_campaign_single_news_ref');
+      $node = node_load($news_ref[0]['target_id']);
 
-    if($variables['field_campaign_news_type'][0]['value'] == 0){  //single value
-
-      $node = node_load($variables['field_campaign_single_news_ref'][0]['target_id']);
-
+      //Determine if the referenced content is an action or not
+      //Actions have different promotable material
       if($node->type == 'action'){
-        $file = file_load($node->field_action_main_image['und'][0]['fid']);
-        if(isset($node->field_action_url[LANGUAGE_NONE][0]['url'])){
-          $link_path = $node->field_action_url[LANGUAGE_NONE][0]['url'];
-          $link_title = $node->field_action_url[LANGUAGE_NONE][0]['title'];
-          $link = l($link_title, $link_path, array('attributes' => array('class' => array('cta'))) );
+        $file = field_get_items('node', $node, 'field_action_main_image');
+        $file = file_load($file[0]['fid']);
+
+        $action_link = field_get_items('node', $node, 'field_action_url');
+        if(!empty($action_link)){
+          $link = field_view_value('node', $node, 'field_action_url', $action_link, 'default');
+          $link_url = $link['#element'][0]['url'];
+          $link_title = $link['#element'][0]['title'];
+          $link = l($link_title, $link_url, array('attributes' => array('class' => array('cta'))) );
         }
-        $short_headline = (isset($link) ? $link : '');
+        $short_headline = (!empty($action_link) ? $link : '');
         $headline = $node->title;
       }
+      //Referenced node is not an Action so we use different fields
       else{
-        $file = file_load($node->field_thumbnail['und'][0]['fid']);
-        $short_headline = $node->field_article_subhead['und'][0]['value'];
-        $headline = $node->field_promo_headline['und'][0]['value'];
+        $file = field_get_items('node', $node, 'field_thumbnail');
+        $file = file_load($file[0]['fid']);
+        $short_headline = tp4_render_field_value('node', $node, 'field_article_subhead');
+        $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
       }
 
       $image = file_create_url($file->uri);
@@ -1063,26 +950,25 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
-      $center .= l($image, $path, array('html' => true));
-      $center .= '<h3 class="headline">'. l($headline, $path). '</h3>';  //headline
-      $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
-      $center .= $more;
 
-      $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+      $center .= l($image, $path, array('html' => true));
+      $center .= '<h3 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
+      $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
+
     }
     else{ //multivalue
 
       $variables['classes_array'][] = 'multi-news';
-      $term_id = $variables['field_campaign_news_filter_tag'][0]['target_id'];
 
       $nids = array();
-      foreach($variables['field_campaign_multi_news_ref'] as $key => $item){
+      $news_ref = field_get_items('node', $variables['node'], 'field_campaign_multi_news_ref');
+      foreach($news_ref as $key => $item){
         $nids[] = $item['target_id'];
       }
 
       // Query non referenced content (max 5)
-      $max_count = $variables['field_campaign_news_count'][0]['value'] + 2;
-      $count = count($variables['field_campaign_multi_news_ref']);
+      $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count') + 2;
+      $count = count($news_ref);
 
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
@@ -1103,14 +989,16 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center = '';
       $center .= '<div class="news-column-wrapper">';
       foreach($nodes as $key => $node){
-
+        //Render different news promo content if item is an Action
         if($node->type == 'action'){
-          $file = file_load($node->field_action_main_image['und'][0]['fid']);
-          $headline = $node->field_tab_call_to_action[LANGUAGE_NONE][0]['value'];
+          $file = field_get_items('node', $node, 'field_action_main_image');
+          $file = file_load($file[0]['fid']);
+          $headline = tp4_render_field_value('node', $node, 'field_tab_call_to_action');
         }
         else{
-          $file = file_load($node->field_thumbnail['und'][0]['fid']);
-          $headline = $node->field_promo_headline['und'][0]['value'];
+          $file = field_get_items('node', $node, 'field_thumbnail');
+          $file = file_load($file[0]['fid']);
+          $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
         }
 
 
@@ -1124,159 +1012,92 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $center .= l($news_column, $node_path, array('html' => true, 'attributes' => array('class' => array('news-column'))));
       }
       $center .= '</div>';
-      $center .= $more;
-      $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     }
+    $more = tp4_render_field_value('node', $variables['node'], 'field_campaign_more_link');
+    $more = '<div class="more-link">'. $more. '</div>';
+    $center .= $more;
 
-  //Width and height variables
-  $variables['styles'] = array();
-  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
-  }
-  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
-    $variables['classes_array'][] = 'card-width-full';
-  }
-  else{
-    $variables['classes_array'][] = 'card-width-980';
-  }
-  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
-    $variables['styles'][] = 'background-size: 100%;';
-  }
-  else{
-    $variables['styles'][] = 'background-size: 1000px;';
-  }
+    //background properties
+    tp4_campaign_background_rules($variables);
 
-    $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-    $variables['instructional'] = isset($variables['field_campaign_instructional']);
-    $variables['center'] = $center;
-
-  // If color scheme is enabled add font color to major html tag inside the card
-  if(!empty($variables['field_card_color_scheme'])){
-    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
-  	$campaign_style['style'] =
-  	'.color_scheme_'.$variables['nid'].',
-  	.color_scheme_'.$variables['nid'].' h1,
-  	.color_scheme_'.$variables['nid'].' h2,
-  	.color_scheme_'.$variables['nid'].' h3,
-  	.color_scheme_'.$variables['nid'].' h4,
-  	.color_scheme_'.$variables['nid'].' h5,
-  	.color_scheme_'.$variables['nid'].' h6,
-  	.color_scheme_'.$variables['nid'].' a,
-  	.color_scheme_'.$variables['nid'].' p,
-  	.color_scheme_'.$variables['nid'].' label,
-  	.color_scheme_'.$variables['nid'].' ul,
-  	.color_scheme_'.$variables['nid'].' li,
-  	.color_scheme_'.$variables['nid'].' th,
-  	.color_scheme_'.$variables['nid'].' td
-  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
-
-    drupal_add_css($campaign_style['style'],
-				  array(
-				        'group' => CSS_THEME,
-				        'type' => 'inline',
-				        'media' => 'screen',
-				        'preprocess' => FALSE,
-				        'weight' => '9999',
-				  ));
+  //content
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
   }
+  $variables['center'] = $center;
 
 
 }
+
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   $center = '';
-  $height = $variables['field_campaign_iframe_height'][0]['value'];
-  $width = $variables['field_campaign_iframe_width'][0]['value'];
-  if(isset($variables['field_campaign_iframe'][0]['value']) == true){
-    if($variables['field_campaign_iframe_type'][0]['value'] == 1){
+
+  $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
+  $width = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_width');
+  $iframe = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe');
+  if(!empty($iframe)){
+    $iframe_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_type');
+    //if the iframe is not fixed add a padding hack to make it responsive
+    if($iframe_type == 1){
       $ratio = $height/$width * 100;
       $center .= '<div class="iframe-wrapper" style="padding-bottom: '. $ratio. '%;">';
-      $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '"></iframe>';
+      $center .= '<iframe src="'. $iframe. '"></iframe>';
       $center .= '</div>';
     }
+    //if it is marked 'fixed' make the iframe unresponsive
     else{
       $variables['classes_array'][] = 'iframe-fixed';
       $center .= '<div class="iframe-wrapper-fixed">';
-      $center .= '<iframe src="'. $variables['field_campaign_iframe'][0]['value']. '" height="'. $height. '" width="'. $width. '"></iframe>';
+      $center .= '<iframe src="'. $iframe. '" height="'. $height. '" width="'. $width. '"></iframe>';
       $center .= '</div>';
     }
-
   }
+  // if it's not an iframe, it is an embed field. used for items like the pivot channel finder
   else{
     $variables['classes_array'][] = 'embed-field';
-    $center .= '<div class="embed">'. $variables['body'][0]['value']. '</div>';
+    $body = tp4_render_field_value('node', $variables['node'], 'body');
+    $center .= '<div class="embed">'. $body. '</div>';
   }
 
+  //background properties
+  tp4_campaign_background_rules($variables);
 
-  //Width and height variables
-  $variables['styles'] = array();
-  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
-  }
-  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
-    $variables['classes_array'][] = 'card-width-full';
-  }
-  else{
-    $variables['classes_array'][] = 'card-width-980';
-  }
-  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
-    $variables['styles'][] = 'background-size: 100%;';
-  }
-  else{
-    $variables['styles'][] = 'background-size: 1000px;';
-  }
-  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
-  $variables['center'] = $center;
+  //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-
-  // If color scheme is enabled add font color to major html tag inside the card
-  if(!empty($variables['field_card_color_scheme'])){
-    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
-  	$campaign_style['style'] =
-  	'.color_scheme_'.$variables['nid'].',
-  	.color_scheme_'.$variables['nid'].' h1,
-  	.color_scheme_'.$variables['nid'].' h2,
-  	.color_scheme_'.$variables['nid'].' h3,
-  	.color_scheme_'.$variables['nid'].' h4,
-  	.color_scheme_'.$variables['nid'].' h5,
-  	.color_scheme_'.$variables['nid'].' h6,
-  	.color_scheme_'.$variables['nid'].' a,
-  	.color_scheme_'.$variables['nid'].' p,
-  	.color_scheme_'.$variables['nid'].' label,
-  	.color_scheme_'.$variables['nid'].' ul,
-  	.color_scheme_'.$variables['nid'].' li,
-  	.color_scheme_'.$variables['nid'].' th,
-  	.color_scheme_'.$variables['nid'].' td
-  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
-
-    drupal_add_css($campaign_style['style'],
-				  array(
-				        'group' => CSS_THEME,
-				        'type' => 'inline',
-				        'media' => 'screen',
-				        'preprocess' => FALSE,
-				        'weight' => '9999',
-				  ));
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
   }
+  $variables['center'] = $center;
 
 }
+
 function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   $center = '';
-  //content of the page
 
-  $tid = $variables['field_campaign_branding_category']['und'][0]['tid'];
+  //Load the referenced taxonomy term (Campaign Categories)
+  $tid = field_get_items('node', $variables['node'], 'field_campaign_branding_category');
+  $tid = $tid[0]['tid'];
   $campaign_category = taxonomy_term_load($tid);
-  if(isset($campaign_category->field_campaign_category_image['und'][0]['uri']) == true){
-    $url = file_create_url($campaign_category->field_campaign_category_image['und'][0]['uri']);
-    $image .= '<img src="'. $url. '">';
+
+  $image = field_get_items('taxonomy_term', $campaign_category, 'field_campaign_category_image');
+
+  if(!empty($image)){
+    $image = file_create_url($image[0]['uri']);
+    $image = '<img src="'. $image. '">';
+    $branding_text = tp4_render_field_value('taxonomy_term', $campaign_category, 'field_campaign_category_text');
     $center .= '<div class="branding-content">';
-    $center .= '<div class="branding-text">'. $campaign_category->field_campaign_branding_text['und'][0]['value']. '</div>';
-    if(isset($campaign_category->field_campaign_branding_url['und'][0]['url']) == true){
-      $branding_url = $campaign_category->field_campaign_branding_url['und'][0]['url'];
-      $target = $campaign_category->field_campaign_branding_url['und'][0]['attributes']['target'];
-      $center .= l($image, $branding_url, array('html' => true, 'attributes' => array('target' => $target)));
+    if(!empty($branding_text)){
+      $center .= '<div class="branding-text">'. $branding_text. '</div>';
+    }
+    $branding_url = field_get_items('taxonomy_term', $campaign_category, 'field_campaign_branding_url');
+
+    if(!empty($branding_url)){
+      $url = $branding_url[0]['url'];
+      $target = $branding_url[0]['attributes']['target'];
+      $center .= l($image, $url, array('html' => true, 'attributes' => array('target' => $target)));
     }
     else{
       $center .= $image;
@@ -1285,119 +1106,76 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
 
   }
 
-  //Width and height variables
-  $variables['styles'] = array();
-  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
-  }
-  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
-    $variables['classes_array'][] = 'card-width-full';
-  }
-  else{
-    $variables['classes_array'][] = 'card-width-980';
-  }
-  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
-    $variables['styles'][] = 'background-size: 100%;';
-  }
-  else{
-    $variables['styles'][] = 'background-size: 1000px;';
-  }
-  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $variables['center'] = $center;
+  //background properties
+  tp4_campaign_background_rules($variables);
+
+  //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-
-  // If color scheme is enabled add font color to major html tag inside the card
-  if(!empty($variables['field_card_color_scheme'])){
-    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
-  	$campaign_style['style'] =
-  	'.color_scheme_'.$variables['nid'].',
-  	.color_scheme_'.$variables['nid'].' h1,
-  	.color_scheme_'.$variables['nid'].' h2,
-  	.color_scheme_'.$variables['nid'].' h3,
-  	.color_scheme_'.$variables['nid'].' h4,
-  	.color_scheme_'.$variables['nid'].' h5,
-  	.color_scheme_'.$variables['nid'].' h6,
-  	.color_scheme_'.$variables['nid'].' a,
-  	.color_scheme_'.$variables['nid'].' p,
-  	.color_scheme_'.$variables['nid'].' label,
-  	.color_scheme_'.$variables['nid'].' ul,
-  	.color_scheme_'.$variables['nid'].' li,
-  	.color_scheme_'.$variables['nid'].' th,
-  	.color_scheme_'.$variables['nid'].' td
-  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
-
-    drupal_add_css($campaign_style['style'],
-				  array(
-				        'group' => CSS_THEME,
-				        'type' => 'inline',
-				        'media' => 'screen',
-				        'preprocess' => FALSE,
-				        'weight' => '9999',
-				  ));
-  }
+  $variables['center'] = $center;
 
 }
 function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
   $image = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
   $center = '<img src="'. $image. '">';
+
+  //background properties
+  tp4_campaign_background_rules($variables);
+
+  //content
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $variables['center'] = $center;
+
+}
+
+/********************************
+ * Helper functions for Campaigns
+ ********************************/
+/*
+ * Helper function 1
+ * This function can be used in 90% of use cases in rendering a field's value
+ */
+function tp4_render_field_value($entity_type, $entity, $field_name){
+  $item = field_get_items($entity_type, $entity, $field_name);
+  return drupal_render(field_view_value($entity_type, $entity, $field_name, $item[0]));
+}
+/*
+ * Helper function 2
+ * Standard set of background rules that get repeated across every card type
+ */
+function tp4_campaign_background_rules(&$variables){
   //Width and height variables
+  $background_color = field_get_items('node', $variables['node'], 'field_campaign_bg_color');
+  $min_height = tp4_render_field_value('node', $variables['node'], 'field_campaign_min_height');
+
   $variables['styles'] = array();
-  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color']['und'][0]['rgb']. ';';
-  if(isset($variables['field_campaign_min_height']['und'][0]['value']) == true){
-    $variables['styles'][] = 'min-height: '. $variables['field_campaign_min_height']['und'][0]['value']. 'px;';
+  if(!empty($background_color)){
+    $variables['styles'][] = 'background-color: '. $background_color[0]['rgb']. ';';
   }
-  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
-    $variables['classes_array'][] = 'card-image-width-full';
+  if(!empty($min_height)){
+    $variables['styles'][] = 'min-height: '. $min_height. 'px;';
   }
-  if($variables['field_campaign_bgw']['und'][0]['value'] == 0){
+  $background_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw');
+  if($background_width == 'Full Width'){
     $variables['classes_array'][] = 'card-width-full';
   }
   else{
     $variables['classes_array'][] = 'card-width-980';
   }
-  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
+
+  //Set the size of the background image
+  $bg_image_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw_image');
+  if($bg_image_width == 'Full Width'){
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{
     $variables['styles'][] = 'background-size: 1000px;';
   }
-  $variables['card_background'] = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $variables['instructional'] = isset($variables['field_campaign_instructional']);
-  $variables['center'] = $center;
-  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 
-  // If color scheme is enabled add font color to major html tag inside the card
-  if(!empty($variables['field_card_color_scheme'])){
-    $variables['classes_array'][]  = 'color_scheme_'.$variables['nid'];
-  	$campaign_style['style'] =
-  	'.color_scheme_'.$variables['nid'].',
-  	.color_scheme_'.$variables['nid'].' h1,
-  	.color_scheme_'.$variables['nid'].' h2,
-  	.color_scheme_'.$variables['nid'].' h3,
-  	.color_scheme_'.$variables['nid'].' h4,
-  	.color_scheme_'.$variables['nid'].' h5,
-  	.color_scheme_'.$variables['nid'].' h6,
-  	.color_scheme_'.$variables['nid'].' a,
-  	.color_scheme_'.$variables['nid'].' p,
-  	.color_scheme_'.$variables['nid'].' label,
-  	.color_scheme_'.$variables['nid'].' ul,
-  	.color_scheme_'.$variables['nid'].' li,
-  	.color_scheme_'.$variables['nid'].' th,
-  	.color_scheme_'.$variables['nid'].' td
-  	{ color: '. $variables['field_card_color_scheme_font']. '!important; }';
-
-    drupal_add_css($campaign_style['style'],
-				  array(
-				        'group' => CSS_THEME,
-				        'type' => 'inline',
-				        'media' => 'screen',
-				        'preprocess' => FALSE,
-				        'weight' => '9999',
-				  ));
-  }
+  $background = field_get_items('node', $variables['node'], 'field_campaign_background');
+  $variables['card_background'] = (!empty($background) ? file_create_url($background[0]['uri']) : '');
 
 }
+
 
 /**
  * Override or insert variables into the openpublish_article template.

@@ -18,7 +18,7 @@ function tpf_taxonomy_campaigns_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -90,7 +90,7 @@ function tpf_taxonomy_campaigns_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
@@ -139,13 +139,12 @@ function tpf_taxonomy_campaigns_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'media_image_formatter',
+        'label' => 'hidden',
+        'module' => 'file_entity',
         'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
+          'file_view_mode' => 'default',
         ),
-        'type' => 'image',
+        'type' => 'file_rendered',
         'weight' => 0,
       ),
     ),
