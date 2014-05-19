@@ -1003,7 +1003,6 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
         'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
         'openpublish_video' => 'openpublish_video',
-        'poll' => 'poll',
         'profile' => 'profile',
         'section_front' => 'section_front',
         'section_front_wide' => 'section_front_wide',
