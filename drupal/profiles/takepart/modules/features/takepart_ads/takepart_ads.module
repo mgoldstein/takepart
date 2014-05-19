@@ -23,7 +23,6 @@ function takepart_ads_preprocess_page(&$vars) {
 
     foreach ($ad_slots as $ad) {
         $gptad = '';
-
         foreach ($gptad_slots as $gptads) {
             //GPT:
             if (isset($gptads[$ad])) {
@@ -31,14 +30,15 @@ function takepart_ads_preprocess_page(&$vars) {
                 break;
             }
         }
-
         if (!empty($gptad)) {
             //GPT:
             $adsize = '';
             preg_match('/[0-9]+x[0-9]+/', $ad, $adsize);
             $lr = explode("x", $adsize[0]);
-
+            $gptad_html .='if ('.$lr[0].' === 728 && window.innerWidth < 768) {' . "\n";
+            $gptad_html .= '} else {'."\n";
             $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
+            $gptad_html .= '}'."\n";
         } else {
             //GAM:
             $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad . '");';
@@ -63,8 +63,6 @@ function takepart_ads_preprocess_page(&$vars) {
     }
 
     $gptad_html .= 'googletag.pubads().collapseEmptyDivs();';
-
-
     $field_free_tag = isset($vars['node']->field_free_tag['und']) ? $vars['node']->field_free_tag['und'] : array();
     $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
     $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
@@ -207,7 +205,7 @@ GS_googleEnableAllServices();';
                 $gpt_targeting . // custom targeting
                 'googletag.enableServices();' . "\n" . '});' . "\n" .
                 'var gpt_ad_tags = new Array();', array('type' => 'inline', 'scope' => 'header'));
-    }
+        }
 }
 
 /*
