@@ -1147,6 +1147,36 @@ function tp4_campaign_background_rules(&$variables){
   $background_color = field_get_items('node', $variables['node'], 'field_campaign_bg_color');
   $min_height = tp4_render_field_value('node', $variables['node'], 'field_campaign_min_height');
 
+  $card_style = tp4_render_field_value('node', $variables['node'], 'field_campaign_style');
+  if(!empty($card_style)){
+    switch($card_style){
+      case 'TP4: Light Background':
+        $variables['classes_array'][] = 'light';
+        break;
+      case 'TP4: Dark Background':
+        $variables['classes_array'][] = 'dark';
+        break;
+      case 'Custom Style 1':
+        $variables['classes_array'][] = 'style-1';
+        break;
+      case 'Custom Style 2':
+        $variables['classes_array'][] = 'style-2';
+        break;
+      case 'Custom Style 3':
+        $variables['classes_array'][] = 'style-3';
+        break;
+      case 'Custom Style 4':
+        $variables['classes_array'][] = 'style-4';
+        break;
+      case 'Custom Style 5':
+        $variables['classes_array'][] = 'style-5';
+        break;
+      case 'Custom Style 6':
+        $variables['classes_array'][] = 'style-6';
+        break;
+    }
+  }
+  
   $variables['styles'] = array();
   if(!empty($background_color)){
     $variables['styles'][] = 'background-color: '. $background_color[0]['rgb']. ';';
