@@ -1145,13 +1145,16 @@ function tp4_campaign_background_rules(&$variables){
     $variables['styles'][] = 'min-height: '. $min_height. 'px;';
   }
   $background_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw');
-  if($background_width == 0){
+  if($background_width == 'Full Width'){
     $variables['classes_array'][] = 'card-width-full';
   }
   else{
     $variables['classes_array'][] = 'card-width-980';
   }
-  if($variables['field_campaign_bgw_image']['und'][0]['value'] == 0){
+
+  //Set the size of the background image
+  $bg_image_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw_image');
+  if($bg_image_width == 'Full Width'){
     $variables['styles'][] = 'background-size: 100%;';
   }
   else{

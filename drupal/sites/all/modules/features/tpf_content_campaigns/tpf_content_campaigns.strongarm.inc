@@ -899,6 +899,9 @@ function tpf_content_campaigns_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

@@ -25,6 +25,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_menu_bg_image_w',
+      2 => 'field_campaign_bgw_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
