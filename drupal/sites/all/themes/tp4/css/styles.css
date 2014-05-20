@@ -4318,7 +4318,7 @@ body.front #sidebar .block-title {
 /* line 208, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1399496970');
+  background-image: url('../images/tpl-title.jpg?1400014514');
   margin-top: 5px;
   margin-bottom: -10px;
 }
@@ -4333,7 +4333,7 @@ body.front #sidebar .block-title {
   width: 100%;
   max-width: 312px;
   background-size: 100%;
-  background-image: url('../images/tpl-time.jpg?1399496970');
+  background-image: url('../images/tpl-time.jpg?1400014514');
   margin-top: 5px;
 }
 
@@ -8805,7 +8805,7 @@ body.node-type-campaign-page .tray-header, #main.card-page .tray-header {
   width: 100%;
 }
 /* line 508, ../sass/page/_campaigns.scss */
-body.node-type-campaign-page .card-wrapper.has-tray-title h1.card-title, #main.card-page .card-wrapper.has-tray-title h1.card-title {
+body.node-type-campaign-page .swipe-wrap.has-tray-title .card .title-wrapper, #main.card-page .swipe-wrap.has-tray-title .card .title-wrapper {
   display: none;
 }
 /* line 512, ../sass/page/_campaigns.scss */
@@ -10065,7 +10065,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1399496970') no-repeat center 9px;
+    background: url('../images/tpl-logo.jpg?1400014514') no-repeat center 9px;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -10075,7 +10075,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.jpg?1399496970') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1400021586') no-repeat center center;
     margin: 0;
   }
 }
@@ -10401,11 +10401,11 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 }
 /* line 229, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-mobile.png?1399496970');
+  background-image: url('../images/tpl-logo-mobile.png?1400021586');
 }
 /* line 232, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-mobile.png?1399496970');
+  background-image: url('../images/takeaction-logo-mobile.png?1400021586');
 }
 
 /**
@@ -11965,7 +11965,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1399496970') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1400021586') no-repeat 10px center;
   margin: 0;
 }
 /* line 98, ../sass/modules/_left_drawer.scss */
@@ -11976,7 +11976,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/tpl-logo-mobile.png?1399496970') no-repeat 10px center;
+  background: url('../images/tpl-logo-mobile.png?1400021586') no-repeat 10px center;
   margin: 0;
 }
 /* line 111, ../sass/modules/_left_drawer.scss */
@@ -12290,7 +12290,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 .tpl-block h2.block__title {
   white-space: nowrap;
   text-indent: 1000px;
-  background: url('../images/tpl_logo.png?1399496970') no-repeat top center;
+  background: url('../images/tpl_logo.png?1400014514') no-repeat top center;
   height: 30px;
   margin-bottom: 2px;
 }
@@ -12302,7 +12302,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 }
 /* line 23, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1399496970') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1400014514') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;

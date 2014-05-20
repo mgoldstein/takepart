@@ -504,8 +504,8 @@ body.node-type-campaign-page, #main.card-page{
     padding-top: 50px;
     width: 100%;
   }
-  .card-wrapper.has-tray-title{
-    h1.card-title{
+  .swipe-wrap.has-tray-title{
+    .card .title-wrapper{
       display: none;
     }
   }
@@ -1495,3 +1495,5 @@ p.campaign-content-meta{
     }
   }
 }
+
+
