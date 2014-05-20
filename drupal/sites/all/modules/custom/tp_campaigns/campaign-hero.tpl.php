@@ -1,6 +1,5 @@
 <?php
-//some php stuff. duh.
-// move this to .module file
+
   $campaign_variables = $variables['campaign_node'];
 
   $logo_position      = $campaign_variables->field_campaign_logo_position['und'][0]['value']; // 0 => Center, 1 => Left, 2 => Right
