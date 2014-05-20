@@ -67,6 +67,7 @@ function tp_campaigns_theme() {
       'variables' => array(
         'items' => array(),
         'entity' => '',
+        'tray_vars' => '',
       )
     ),
     'tp_campaigns_hero' => array(
@@ -118,6 +119,7 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
         '#theme' => 'tp_card_reference',
         '#items' => $items,
         '#entity' => $entity,
+        '#tray_vars' => tp_campaigns_tray_vars($entity),
       );
     break;
   }
@@ -408,3 +410,45 @@ function tp_campaigns_settings_form_validate($form, &$form_state){
 }
 
 
+
+function tp_campaigns_tray_vars($entity){
+  
+  $tray_vars = array();
+  $tray_vars['tray_classes'] = array();
+
+  //Grab the tray title if it exists
+  if($items = field_get_items('node', $entity, 'field_campaign_tray_title')){
+    $tray_vars['tray_title'] = field_view_value('node', $entity, 'field_campaign_tray_title', $item[0]);
+    $tray_vars['tray_classes'][] = 'has-tray-title';
+  }
+  //Set the tray classes
+  if($items = field_get_items('node', $entity, 'field_campaign_background')){
+    $tray_vars['tray_classes'][] = 'has-tray-background';
+  }
+
+  //Return Cards
+  $tray_vars['cards'] = array();
+  if($items = field_get_items('node', $entity, 'field_campaign_card_reference')){
+    foreach($items as $key => $item){
+      $node = node_load($item['target_id']);
+      $output = '';
+      $output .= '<div class="card-wrapper '. $node->title. '">';
+      $output .= drupal_render(node_view($node, 'full', NULL));
+      $output .= '</div>';
+      $tray_vars['cards'][] = $output;
+    }
+  }
+
+  //Anchor Tag
+  if($items = field_get_items('node', $entity, 'field_campaign_anchor_tag')){
+    $title = drupal_render(field_view_value('node', $entity, 'field_campaign_anchor_tag', $items[0]));
+    $title = strtolower($title);
+    $title = preg_replace("/[^a-z0-9_\s-]/", "", $title);
+    $title = preg_replace("/[\s-]+/", " ", $title);
+    $title = preg_replace("/[\s_]/", "-", $title);
+    $tray_vars['anchor_tag'] = $title;
+  }
+
+
+  return $tray_vars;
+}
