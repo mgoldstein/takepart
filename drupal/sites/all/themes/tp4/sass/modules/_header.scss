@@ -289,6 +289,9 @@ header {
     padding-left: 0;
     padding-right: 0;
   }
+  .slim-nav-inner {
+    position: relative;
+  }
   .left {
     float: left;
     @include breakpoint($breakpoint-tablet) {
@@ -317,10 +320,22 @@ header {
       padding-right: 39px;
       padding-top: 7px;
     }
+    ul {
+      float: none;
+      display: inline-block;
+    }
+  }
+  .follow-headline {
+    font: normal 1.076923077em/1 $secondary-sans-font;
+    display: inline-block;
+    text-transform: uppercase;
+    color: $dark-gray;
+    margin: .285714286em .5em 0 0;
+    vertical-align: top;
   }
   .user-menu {
     @include breakpoint($breakpoint-tablet){
-      padding-top: 7px;
+      padding-top: 3px;
       padding-right: 7px;
       li {
         overflow: hidden;
@@ -334,20 +349,28 @@ header {
         &:last-child{
           padding-right: 10px;
           &:after{
-            content: '|';
+            content: '';
+            display: block;
             position: absolute;
             right: 0;
-            top: 0;
-            color: $light-gray;
+            bottom: 0;
+            height: 12px;
+            width: 0;
+            border-right: 1px solid $light-gray;
           }
         }
-        &.user{
-          position: relative;
-          padding-left: 0;
-          max-width: 50px;
+        &.first a {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          padding: 0;
+          text-indent: 30px;
           white-space: nowrap;
-          text-overflow: ellipsis;
-          padding-right: 5px;
+          overflow: hidden;
+          background: transparent inline-image("user-avatar.png") scroll no-repeat top left;
+        }
+        &.user a {
+          background-image: inline-image("user-avatar-active.png");
         }
       }
     }
