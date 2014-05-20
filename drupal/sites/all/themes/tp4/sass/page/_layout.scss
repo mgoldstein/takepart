@@ -69,6 +69,11 @@ body {
 }
 .header-wrapper {
   padding-top: 1em;
+
+  .snapjs-left & {
+    background-color: white;
+    border-top: 5px solid #01bf9e;
+  }
 }
 .preface-wrapper {
   min-height: 25px;
