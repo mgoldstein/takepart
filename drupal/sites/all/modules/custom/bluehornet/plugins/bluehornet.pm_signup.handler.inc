@@ -1,6 +1,6 @@
 <?php
 /**
- * Sigunup handler plugin for BlueStateDigital module.
+ * Sigunup handler plugin for BlueHornet module.
  */
 
 $plugin = array(

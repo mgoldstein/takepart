@@ -18,16 +18,19 @@
  * @ingroup themeable
  */
 ?>
-<div class="poll">
-  <h3>what do you think?</h3>
-  <div class="question"><?php print $title ?></div>
+
   <ul class="meters">
     <?php print $results; ?>
   </ul>
-  <label class="total">Total votes: </label>
-  <span class="value"><?php print t('@votes', array('@votes' => $votes)); ?></span>
-  
+  <div class="hidden">
+    <label class="total">Total votes: </label>
+    <span class="value"><?php print t('@votes', array('@votes' => $votes)); ?></span>
+  </div>
+    
   <?php if (!empty($cancel_form)): ?>
     <?php print $cancel_form; ?>
   <?php endif; ?>
-</div>
+
+<?php if (!empty($cta)): ?>
+    <?php print $cta; ?>
+  <?php endif; ?>

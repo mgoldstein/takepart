@@ -34,4 +34,10 @@
     <div class="panel-tpl-secondary-featured panel-panel">
       <?php print $content['tpl_secondary_featured']; ?>
     </div>
+    <?php
+      $block = module_invoke('bean', 'block_view', 'tpl-live-long');
+      $cta = $block['content']['bean']['tpl-live-long']['#entity']->field_tpl_block_hp_cta;
+      $cta = '<span>'. $cta[LANGUAGE_NONE][0]['value']. '</span>';
+      print l($cta, '//takepart.com/live', array('html' => true, 'attributes' => array('class' => array('cta'))));
+    ?>
 </div>

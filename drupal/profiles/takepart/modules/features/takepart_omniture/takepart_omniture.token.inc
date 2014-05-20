@@ -10,8 +10,8 @@ function takepart_omniture_primary_topic($nid) {
         return 'Not-A-Number';
     }
     $node = node_load($nid);
-    $primary_topic = $node->field_topic['und'][0]['taxonomy_term']->name;
-    return $primary_topic;
+    $primary_topic = taxonomy_term_load($node->field_topic['und'][0]['tid']);
+    return strtolower($primary_topic->name);
 }
 
 function takepart_omniture_tab_uid($param) {
@@ -85,7 +85,7 @@ function takepart_omniture_tab_uid($param) {
 function takepart_omniture_value_or_empty($param) {
     // if param wrapped in brakets [], then token was not
     // found, just return empty string.
-    $param = html_entity_decode($param, ENT_QUOTES);
+    $param = strtolower(html_entity_decode($param, ENT_QUOTES));
     return preg_replace('/^\[[\w].*\]$/', '', $param);
 }
 
@@ -108,6 +108,24 @@ function takepart_omniture_first_photo_title($nid) {
  * since entity field kills the system, find our own authors
  */
 function takepart_omniture_get_author($nid) {
+  if (!is_numeric($nid)) {
+    return 'Not-A-Number';
+  }
+  $node = node_load($nid);
+  $aid = array();
+  foreach(field_get_items('node', $node, 'field_author') as $delta => $item) {
+    $aid[] = $item['nid'];
+  }
+  if (!empty($aid)) {
+  $authors = array();
+    foreach($aid as $nid) {
+      $author = node_load($nid);
+      $authors[] = $author->title;   
+    }
+  }
+/*
+ * This query no longer works
+ 
     if (!is_numeric($nid))
         return 'Not-A-Number';
 
@@ -128,6 +146,7 @@ function takepart_omniture_get_author($nid) {
         //$authors[] = $record->last_name ."-". $record->first_name ."-". $record->field_author_nid;
         $authors[] = trim($record->first_name) . " " . trim($record->last_name);
     }
+    */
     return implode('; ', $authors);
 }
 

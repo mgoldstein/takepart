@@ -566,37 +566,8 @@ function foodinc_awards_entry_signup($values) {
   return $signup;
 }
 
-function foodinc_awards_enrty_endpoint() {
-
-  $endpoint = new FoodIncAwardsSignupEndpoint();
-
-  $endpoint->setPluginEnabled('bluestatedigital.pm_signup.handler', TRUE);
-  $endpoint->setPluginConfiguration('bluestatedigital.pm_signup.handler', array(
-    'form-id' => 490,
-    'field-ids' => array(
-      'name.first' => 10212,
-      'name.last' => 10214,
-      'email' => 10210,
-      'address.city' => 10218,
-      'address.state.code' => 10217,
-      'foodinc-awards.dob.month' => 10224,
-      'foodinc-awards.dob.year' => 10225,
-      'foodinc-awards.category' => 10226,
-      'foodinc-awards.video-link' => 10227,
-      'foodinc-awards.newsletter-opt-in' => 10228,
-      'foodinc-awards.contest-rules-opt-in' => 10229,
-    ),
-  ));
-  return $endpoint;
-}
-
 function foodinc_awards_entry_form_submit($form, &$form_state) {
   try {
-
-    // Send the entry to BSD
-    $signup = foodinc_awards_entry_signup($form_state['values']);
-    $endpoint = foodinc_awards_enrty_endpoint();
-    $endpoint->submit($signup);
 
     if (!empty($form_state['values']['newsletter_opt_in'])) {
       pm_signup_handle(array(

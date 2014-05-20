@@ -68,11 +68,9 @@
             || $body.is('.node-type-openpublish-photo-gallery')
             || $body.is('.node-type-feature-article')
             || $body.is('.node-type-video')
+            || $body.is('.node-type-flashcard')
         ) {
-            // this is hack, but this will record the first element
-            // of the URL path
-            var pathArray = document.location.pathname.split('/');
-            evar1 = pathArray[1]; // pathArray[0] will be empty
+
             evar4 = s.prop4;
             var authors = [];
             $('.byline-author').each(function() {
@@ -95,6 +93,10 @@
             var s2=s_gi(Drupal.settings.omniture.s_account);
             s2.events = 'event25';
             linkTrackVars = [];
+
+            // these were set on page load
+            linkTrackVars.push('eVar1');
+            linkTrackVars.push('eVar12');
 
             if ( evar4 ) {
                 s2.eVar4 = evar4;
@@ -441,6 +443,38 @@
             s.events = null;
             s.prop36 = options.name;
             s.tl(options.target, 'o', options.name, null, 'navigate');
+        },
+        // -----------------------------------
+        // Flashcards ------------------------
+        // -----------------------------------
+        
+        'flashcard-tooltip': function(options) {
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars='eVar26,eVar30,events';
+            s.linkTrackEvents='event89';
+            s.events='event89';
+            s.eVar26=options.term;
+            s.eVar30=s.pageName;
+            s.tl(true, 'o', 'Flashcard Tooltip Popup');
+            delete s.linkTrackVars;
+            delete s.linkTrackEvents;
+            delete s.events;
+            delete s.eVar26;
+            delete s.eVar30;            
+        },
+        'flashcard-click': function(options) {
+            var s=s_gi(Drupal.settings.omniture.s_account);
+            s.linkTrackVars='eVar26,eVar30,events';
+            s.linkTrackEvents='event90';
+            s.events='event90';
+            s.eVar26=options.term;
+            s.eVar30=s.pageName;
+            s.tl(true, 'o', 'Flashcard Tooltip Popup');
+            delete s.linkTrackVars;
+            delete s.linkTrackEvents;
+            delete s.events;
+            delete s.eVar26;
+            delete s.eVar30;            
         }
 
     });

@@ -110,7 +110,7 @@ function tpf_feature_homepage_fe_nodequeue_export_fields() {
     'name' => 'takeaction_promo',
     'title' => 'TakeAction Promo',
     'subqueue_title' => '',
-    'size' => 4,
+    'size' => 5,
     'link' => '',
     'link_remove' => '',
     'owner' => 'nodequeue',

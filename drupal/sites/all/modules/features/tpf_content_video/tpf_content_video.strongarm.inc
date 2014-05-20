@@ -234,6 +234,9 @@ function tpf_content_video_strongarm() {
       'feature_main_tpl' => array(
         'custom_settings' => TRUE,
       ),
+      'iframe' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

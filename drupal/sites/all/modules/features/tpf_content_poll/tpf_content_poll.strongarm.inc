@@ -42,7 +42,7 @@ function tpf_content_poll_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_poll';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_poll'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -58,41 +58,6 @@ function tpf_content_poll_strongarm() {
   $strongarm->name = 'comment_subject_field_poll';
   $strongarm->value = 1;
   $export['comment_subject_field_poll'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__poll';
-  $strongarm->value = array(
-    'view_modes' => array(),
-    'extra_fields' => array(
-      'form' => array(
-        'metatags' => array(
-          'weight' => '9',
-        ),
-        'title' => array(
-          'weight' => '0',
-        ),
-        'path' => array(
-          'weight' => '8',
-        ),
-        'choice_wrapper' => array(
-          'weight' => '1',
-        ),
-        'settings' => array(
-          'weight' => '2',
-        ),
-        'redirect' => array(
-          'weight' => '6',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '7',
-        ),
-      ),
-      'display' => array(),
-    ),
-  );
-  $export['field_bundle_settings_node__poll'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -130,6 +95,34 @@ function tpf_content_poll_strongarm() {
   $strongarm->name = 'node_submitted_poll';
   $strongarm->value = 1;
   $export['node_submitted_poll'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pollanon_threshold_count';
+  $strongarm->value = 10;
+  $export['pollanon_threshold_count'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pollanon_threshold_time';
+  $strongarm->value = 600;
+  $export['pollanon_threshold_time'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pollanon_use_ajah';
+  $strongarm->value = FALSE;
+  $export['pollanon_use_ajah'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pollanon_use_cookie_method';
+  $strongarm->value = TRUE;
+  $export['pollanon_use_cookie_method'] = $strongarm;
 
   return $export;
 }

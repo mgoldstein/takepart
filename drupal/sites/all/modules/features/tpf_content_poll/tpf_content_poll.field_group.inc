@@ -50,11 +50,11 @@ function tpf_content_poll_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
-      0 => 'field_topic',
+      0 => 'field_admin_tag',
       1 => 'field_free_tag',
-      2 => 'field_admin_tag',
+      2 => 'field_topic',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

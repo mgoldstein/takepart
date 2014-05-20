@@ -19,6 +19,7 @@
   left: 0;
   right: 0;
   top: 0;
+  display: none;
 
   &#tp-drawers {
     top: 5px;
@@ -66,16 +67,31 @@
       text-transform: uppercase;
       border-bottom: none;
       font-weight: 100;
+
+    }
+    a{
+      color: #fff;
+      border-bottom: 1px solid #646464;
+      display: block;
+      width: 100%;
+      &:hover{
+        text-decoration: none;
+        background-color: #333;
+      }
+    }
+  }
+  .snap-drawer:not(.snap-drawer-right){
+    .block-menu > ul > li {
       &:nth-child(4){
-        > a{
-          width: 100%;
-          display: block;
-          text-indent: 100%;
-          white-space: nowrap;
-          overflow: hidden;
-          float: left;
-          background: image-url('takeaction-logo-mobile.png') no-repeat 10px center;
-          margin: 0;
+        > a {
+            width: 100%;
+            display: block;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            float: left;
+            background: image-url('takeaction-logo-mobile.png') no-repeat 10px center;
+            margin: 0;
         }
       }
       &:nth-child(5){
@@ -89,16 +105,6 @@
           background: image-url('tpl-logo-mobile.png') no-repeat 10px center;
           margin: 0;
         }
-      }
-    }
-    a{
-      color: #fff;
-      border-bottom: 1px solid #646464;
-      display: block;
-      width: 100%;
-      &:hover{
-        text-decoration: none;
-        background-color: #333;
       }
     }
   }

@@ -80,11 +80,26 @@
   }
 }
 
-@mixin header-top-border {
-  @include box-shadow(0 -4px 0 black);
+@mixin header-top-border($color: #000) {
+  @include box-shadow(0 -4px 0 $color);
   border-top: none;
   margin-top: 4px;
   padding-top: 5px;
+}
+@mixin header-footer-border($color: #000, $padding: 5) {
+  $negative-padding: -1*$padding;
+  $negative-padding: $negative-padding + px;
+  $padding: $padding + px;
+  -moz-box-shadow:      0  $padding 0px 0px $color, 
+                        0  $negative-padding 0px 0px $color;
+  -webkit-box-shadow:   0  $padding 0px 0px $color, 
+                        0  $negative-padding 0px 0px $color;
+   box-shadow:          0  $padding 0px 0px $color, 
+                        0  $negative-padding 0px 0px $color;
+  border-top: none;
+  margin-top: $padding;
+  margin-bottom: $padding;
+  padding-top: $padding
 }
 
 @mixin dashed-separator-after {
@@ -148,3 +163,60 @@
     left: 0;
   }
 }
+
+@mixin comma-list {
+  li {
+    padding: 0;
+    &:after {
+      content: ',\0020';
+      display: inline;
+    }
+    &:last-child:after {
+      content: '';
+    }
+  }
+}
+
+@mixin mint-sans-links {
+  a {
+    font-family: $primary-sans-font;
+    font-weight: 100;
+    color: $mint;
+    text-decoration: none;
+    text-transform: capitalize;
+    &:hover,
+    &:active {
+      color: $light-mint;
+    }
+  }
+}
+
+@mixin secondary-button{
+  border: none;
+  padding: 8px;
+  display: inline-block;
+  font-family: $primary-serif-font;
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 22px;
+  background-color: transparent;
+  a {
+    position: relative;
+    padding-left: 20px;
+    color: #000;
+    &:before{
+      font-family: "SSGizmo";
+      color: $light-mint;
+      content: '\23E9';
+      position: absolute;
+      top: -1px;
+      left: 0;
+    }
+  }
+  &:hover{
+    a{
+      text-decoration: underline;
+    }
+  }
+}
+

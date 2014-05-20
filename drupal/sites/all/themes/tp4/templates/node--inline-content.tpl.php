@@ -8,15 +8,16 @@
  */
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-    <header>
-      <?php
-	// We hide the comments and links now so that we can render them later.
-	hide($content['comments']);
-	hide($content['links']);
-	print render($content); ?>
-  <?php if (!$page && $title): ?>
+  <header>
+    <a class="inline-content-link" href="<?php print $url_local; ?>">
+    <?php
+    	hide($content['comments']);
+    	hide($content['links']);
+    	print render($content); 
+    ?>
+    <?php if (!$page && $title && $type != "poll") : ?>
     <h2 class="inline-title"><?php print $title; ?></h2>
-  <?php endif; ?>
-
-    </header>
+    <?php endif; ?>
+    </a>
+  </header>
 </article>

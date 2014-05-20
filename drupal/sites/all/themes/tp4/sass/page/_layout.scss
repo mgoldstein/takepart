@@ -37,6 +37,14 @@ body {
       width: auto;
     }
   }
+  &.toolbar-drawer.page-entity-iframe {
+      padding-top: 1em;
+  }
+  &.page-entity-iframe {
+    border: none;
+    padding-top: 1em;
+  }
+
 }
 #page-wrap{
   position: relative;
@@ -64,6 +72,9 @@ body {
 }
 .preface-wrapper {
   min-height: 25px;
+  .page-node.node-type-openpublish-photo-gallery & {
+    margin-top: 25px;
+  }
 }
 .footer-wrapper {
   padding-bottom: 1em;
@@ -147,7 +158,7 @@ body {
 
   // the default style establishes mobile first parameters
   // and covers the unusual case where #skinny is by itself
-  #skinny { 
+  #skinny {
     @include zen-grid-item(12, 1);
     @include zen-clear();
     @include breakpoint($breakpoint-tablet){

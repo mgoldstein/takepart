@@ -1,0 +1,65 @@
+<?php
+/**
+ * @file Video content.
+ */
+
+/**
+ * Implements hook_token_info().
+ */
+function tp_videos_token_info() {
+  return array(
+    'tokens' => array(
+      'node' => array(
+        'iframe-embed-markup' => array(
+          'name' => 'iFrame Embed Markup',
+          'description' => t('Markup to embed the node in an iframe on another site.'),
+          'type' => 'format',
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function tp_videos_tokens($type, $tokens, array $data = array(),
+  array $options = array()) {
+  $replacements = array();
+  if ($type == 'node' && !empty($data['node'])) {
+    $node = $data['node'];
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'iframe-embed-markup':
+          $replacements[$original] = tp_videos_iframe_embed_markup($node);
+          break;
+      }
+    }
+  }
+  return $replacements;
+}
+
+/**
+ * Markup for embedding a node using an iframe.
+ */
+function tp_videos_iframe_embed_markup($node) {
+  global $base_url;
+  $properties = array(
+    'width' => variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH),
+    'height' => variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT),
+    'src' => $base_url . '/entity_iframe/node/' . $node->nid,
+    'frameborder' => '0',
+    'class' => 'entity_iframe entity_iframe_node',
+    'id' => 'entity_iframe_node_' . $node->nid,
+  );
+  return _entity_iframe_build_iframe($properties);
+}
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function tp_videos_entity_view_alter(&$build, $type) {
+  if ($type == 'node' && $build['#view_mode'] == 'iframe') {
+    unset($build['links']);
+  }
+}
