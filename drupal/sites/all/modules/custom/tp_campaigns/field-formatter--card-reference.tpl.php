@@ -1,4 +1,4 @@
-<div class="swipe-wrap  <?php $tray_vars['tray_classes']; ?>">
+<div class="swipe-wrap  <?php print implode(' ', $tray_vars['tray_classes']); ?>">
   <?php print implode('', $tray_vars['cards']); ?>
 </div>
 <a class="card-anchor" id="<?php print $tray_vars['anchor_tag']; ?>"></a>
@@ -21,8 +21,7 @@
       <?php endfor; ?>
       <div class="mobile-arrow arrow-right"></div>
     </nav>
-
-    <?php if(isset($tray_vars['tray_title'])): ?>
+    <?php if(isset($tray_vars['tray_title']) == true): ?>
       <h1 class="card-title"><?php print $tray_vars['tray_title']; ?></h1>
     <?php endif; ?>
   </div>
@@ -38,7 +37,8 @@
         ><div class="arrow-inner"></div></div>
     </div>
   </nav>
-<?php elseif(isset($tray_vars['tray_title']) == true): ?>
+  <?php endif; ?>
+<?php if(!empty($tray_vars['tray_title'])): ?>
   <div class="tray-header">
     <h1 class="card-title"><?php print $tray_vars['tray_title']; ?></h1>
   </div>

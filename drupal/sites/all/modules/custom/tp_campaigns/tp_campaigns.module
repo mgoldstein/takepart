@@ -418,7 +418,7 @@ function tp_campaigns_tray_vars($entity){
 
   //Grab the tray title if it exists
   if($items = field_get_items('node', $entity, 'field_campaign_tray_title')){
-    $tray_vars['tray_title'] = field_view_value('node', $entity, 'field_campaign_tray_title', $item[0]);
+    $tray_vars['tray_title'] = drupal_render(field_view_value('node', $entity, 'field_campaign_tray_title', $items[0]));
     $tray_vars['tray_classes'][] = 'has-tray-title';
   }
   //Set the tray classes
