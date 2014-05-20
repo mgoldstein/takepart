@@ -267,6 +267,19 @@ function tp4_preprocess_block(&$variables) {
 }
 
 /**
+ * Override or insert variables into the template for
+ * the "slim-nav" tempalte.
+ *
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ */
+
+function tp4_preprocess_tp4_support_slim_nav(&$variables) {
+  dpm($variables);
+  unset($variables['user_links']['#links']['logout']);
+}
+
+/**
  * Override or insert variables into the node templates.
  *
  * @param $variables
