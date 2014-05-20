@@ -5,7 +5,8 @@
   height: auto;
   overflow: hidden;
   background-color: #fff;
-  font-family: $adelle-regular;
+  font-family: $primary-sans-font;
+  font-weight: normal;
   color: $dark-gray;
   padding-top: 10px;
   padding-bottom: 1px;
@@ -116,15 +117,26 @@
     }
   }
   .user-menu{
+    ul.links {
+      position: static;
+      li {
+        width: auto;
+        margin-top: 0;
+        a {
+          padding-top: 0;
+        }
+      }
+    }
     @include breakpoint($breakpoint-mobile){
       display: none;
     }
     @include breakpoint($breakpoint-tablet){
       display: block;
       float: right;
-      padding-top: 7px;
+      padding-top: 4px;
       padding-right: 15px;
-      font-family: $adelle-regular;
+      font-family: $primary-sans-font;
+      font-weight: normal;
       font-size: 13px;
       a{
         color: $dark-gray;
@@ -166,7 +178,7 @@
         }
         &.user{
           position: relative;
-          width: 50px;
+          width: 50px !important;
           white-space: nowrap;
           text-overflow: ellipsis;
         }
@@ -303,7 +315,8 @@
     li{
       width: 20%;
       float: left;
-      font-family: $tradegothic-regular;
+      font-family: $secondary-sans-font;
+      font-weight: normal;
       font-size: 17px;
       text-transform: uppercase;
       white-space: nowrap;
@@ -368,7 +381,8 @@
   height: 47px;
   overflow: visible;
   background-color: #fff;
-  font-family: $adelle-regular;
+  font-family: $primary-sans-font;
+  font-weight: normal;
   color: $dark-gray;
   padding-top: 10px;
   padding-bottom: 1px;
@@ -472,7 +486,8 @@
       float: right;
       padding-top: 7px;
       padding-right: 15px;
-      font-family: $adelle-regular;
+      font-family: $primary-sans-font;
+      font-weight: normal;
       font-size: 13px;
       a{
         color: $dark-gray;
@@ -514,7 +529,7 @@
         }
         &.user{
           position: relative;
-          width: 50px;
+          width: 50px !important;
           white-space: nowrap;
           text-overflow: ellipsis;
         }
@@ -646,7 +661,8 @@
     li{
       width: 20%;
       float: left;
-      font-family: $tradegothic-regular;
+      font-family: $secondary-sans-font;
+      font-weight: normal;
       font-size: 16px;
       text-transform: uppercase;
       white-space: nowrap;
@@ -711,7 +727,8 @@
 .slimnav.non-responsive {
   height: 34px;
   background-color: #fff;
-  font-family: $adelle-regular;
+  font-family: $primary-sans-font;
+  font-weight: normal;
   color: $dark-gray;
   padding-top: 10px;
   padding-bottom: 1px;
@@ -772,12 +789,23 @@
   .user-menu{
     display: block;
     float: right;
-    padding-top: 7px;
+    padding-top: 4px;
     padding-right: 15px;
-    font-family: $adelle-regular;
+    font-family: $primary-sans-font;
+    font-weight: normal;
     font-size: 13px;
     a{
       color: $dark-gray;
+    }
+    ul.links {
+      position: static;
+      li {
+        width: auto;
+        margin-top: 0;
+        a {
+          padding-top: 0;
+        }
+      }
     }
     li{
       display: inline-block;
@@ -925,7 +953,8 @@
     li{
       width: 20%;
       float: left;
-      font-family: $tradegothic-regular;
+      font-family: $secondary-sans-font;
+      font-weight: normal;
       font-size: 17px;
       text-transform: uppercase;
       white-space: nowrap;
@@ -1024,7 +1053,8 @@
     ul{
       border-bottom: 5px solid #646464;
       li{
-        font-family: $adelle-light;
+        font-family: $primary-sans-font;
+        font-weight: 100;
         font-size: 13px;
         padding: 15px 10px;
         margin: 0;
@@ -1041,7 +1071,8 @@
       }
     }
     > ul > li {
-      font-family: $tradegothic-light;
+      font-family: $secondary-sans-font;
+      font-weight: normal;
       font-size: 20px;
       text-transform: uppercase;
       border-bottom: none;
