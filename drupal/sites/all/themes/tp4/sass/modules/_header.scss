@@ -31,7 +31,7 @@ header {
     float: left;
     margin-right: 10px;
     margin-top: 4px;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-desktop){
       display: none;
     }
   }
@@ -45,7 +45,7 @@ header {
   }
   .follow-us{
     display: none;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-desktop){
       display: block;
       text-align: right;
       float: right;
@@ -69,7 +69,7 @@ header {
   }
   .user-menu{
     display: none;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-desktop){
       display: block;
       float: right;
       font-size: .928571429em; // 13px;
@@ -280,23 +280,11 @@ header {
   color: $dark-gray;
   border-bottom: 2px solid #000;
 
-  padding-top: 10px 10px 1px;
-  @include breakpoint($breakpoint-tablet) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  @include breakpoint($breakpoint-desktop) {
-    padding-left: 0;
-    padding-right: 0;
-  }
   .slim-nav-inner {
     position: relative;
   }
   .left {
     float: left;
-    @include breakpoint($breakpoint-tablet) {
-      width: 50%;
-    }
     @include breakpoint($breakpoint-desktop) {
       padding-left: 10px;
       width: auto;
@@ -476,17 +464,10 @@ header {
   }
   #main-menu{
     display: none;
-    @include breakpoint($breakpoint-tablet) {
-      display: block;
-      width: 700px;
-      clear: left;
-      float: left;
-      padding: 3px 0 14px;
-      padding-top: 3px;
-    }
     @include breakpoint($breakpoint-desktop) {
+      display: block;
       width: auto;
-      clear: none;
+      float: left;
       padding: 0 0 0 20px;
       line-height: 26px;
     }
