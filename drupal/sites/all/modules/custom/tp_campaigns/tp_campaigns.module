@@ -79,6 +79,8 @@ function tp_campaigns_theme() {
         'share_headline' => '',
         'share_description' => '',
         'share_imagesrc' => '',
+        'bg_settings' => array(),
+        'logo' => '',
       )
     )
   );
@@ -349,15 +351,13 @@ function tp_campaigns_hero(){
   // code for the tp campaigns block
   $node = 'node';
   $node = node_load(arg(1));
-  if(isset($node->field_campaign_reference['und'][0]['target_id']) == true){
+  if($campaign_node = field_get_items('node', $node, 'field_campaign_reference')){
     $page_node = $node;
-    $node = $node->field_campaign_reference['und'][0]['target_id'];
-    $campaign_node = node_load($node);
+    $campaign_node = node_load($campaign_node[0]['target_id']);
 
     $superfish_path = libraries_get_path('superfish');
     drupal_add_js($superfish_path. '/src/js/hoverintent.js');
     drupal_add_js($superfish_path. '/src/js/superfish.js');
-    // drupal_add_js($superfish_path. '/src/js/supersubs.js');
     drupal_add_css($superfish_path. '/src/css/superfish.css');
     drupal_add_css($superfish_path. '/src/css/superfish-navbar.css');
 
@@ -380,11 +380,74 @@ function tp_campaigns_hero(){
       $share_imagesrc = field_view_value('node', $campaign_node, 'field_thumbnail', $items[0]);
     }
 
+    //Variables from the template
+    if ($items = field_get_items('node', $page_node, 'field_campaign_logo_position')) {
+      $logo_position = field_view_value('node', $page_node, 'field_campaign_logo_position', $items[0]);
+    }
+
+    //Background Settings
+    $bg_settings = array();
+    if ($items = field_get_items('node', $campaign_node, 'field_campaign_background')) {
+      $uri = $items[0]['uri'];
+      $bg_settings['image_url'] = file_create_url($uri);
+    }
+    if ($items = field_get_items('node', $campaign_node, 'field_campaign_min_height')) {
+      $min_height = field_view_value('node', $campaign_node, 'field_campaign_min_height', $items[0]);
+      $bg_settings['min_height'] = drupal_render($min_height) - 20;
+    }
+    if ($items = field_get_items('node', $campaign_node, 'field_campaign_mobile_min_height')) {
+      $mobile_min_height = field_view_value('node', $campaign_node, 'field_campaign_mobile_min_height', $items[0]);
+      $bg_settings['mobile_min_height'] = drupal_render($mobile_min_height) - 20;
+    }
+    if ($items = field_get_items('node', $campaign_node, 'field_campaign_bg_color')) {
+      $bg_settings['bg_color'] = $items[0]['rgb'];
+    }
+    if ($items = field_get_items('node', $campaign_node, 'field_campaign_bgw')) {
+      $bg_settings['bg_width'] = drupal_render(field_view_value('node', $campaign_node, 'field_campaign_bgw', $items[0]));
+    }
+    if ($items = field_get_items('node', $campaign_node, 'field_campaign_bgw_image')) {
+      $bg_settings['bg_width_image'] = drupal_render(field_view_value('node', $campaign_node, 'field_campaign_bgw_image', $items[0]));
+    }
+
+    //Logo and Logo settings
+    $output = '';
+    if ($items = field_get_items('node', $campaign_node, 'field_campaign_logo')) {
+      $logo_image = file_create_url($items[0]['uri']);
+      if ($position = field_get_items('node', $campaign_node, 'field_campaign_logo_position')) {
+        $logo_position = drupal_render(field_view_value('node', $campaign_node, 'field_campaign_logo_position', $position[0]));
+        switch ($logo_position){
+          case 'Center':
+            $logo_class = 'logo-center';
+            break;
+          case 'Left':
+            $logo_class = 'logo-left';
+            break;
+          case 'Right':
+            $logo_class = 'logo-right';
+            break;
+        }
+        $logo_image = '<div class="campaign-logo-div"><img src="'. $logo_image. '" class="campaign-logo '. $logo_class. '"></div>';
+      } else{
+        $logo_image = '<div class="campaign-logo-div"><img src="'. $logo_image. '" class="campaign-logo"></div>';
+      }
+      if ($homepage_link = field_get_items('node', $campaign_node, 'field_campaign_hp')) {
+        $output .= l(' ', $homepage_link[0]['url'], array('attributes' => array('class' => array('big-link'))));
+      }
+      $output .= $logo_image;
+
+      $logo = $output;
+
+
+    }
+
     return theme('tp_campaigns_hero', array(
       'campaign_node' => $campaign_node,
       'share_headline' => render($share_headline),
       'share_description' => render($share_description),
       'share_imagesrc' => file_create_url($share_imagesrc['#file']->uri),
+      'bg_settings' => $bg_settings,
+      'menu' => $menu,
+      'logo' => $logo,
     ));
   }
   else{

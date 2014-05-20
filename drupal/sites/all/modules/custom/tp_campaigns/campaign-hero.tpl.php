@@ -1,65 +1,36 @@
 <?php
 
   $campaign_variables = $variables['campaign_node'];
-
-  $logo_position      = $campaign_variables->field_campaign_logo_position['und'][0]['value']; // 0 => Center, 1 => Left, 2 => Right
-  $uri                = $campaign_variables->field_campaign_background['und'][0]['uri'];
-  $image_url          = file_create_url($uri);
-  $min_height         = $campaign_variables->field_campaign_min_height['und'][0]['value'] - 20;
-  $mobile_min_height  = $campaign_variables->field_campaign_mobile_min_height['und'][0]['value'] - 20;
-  $bg_color           = $campaign_variables->field_campaign_bg_color['und'][0]['rgb'];
-  $bg_width           = $campaign_variables->field_campaign_bgw['und'][0]['value'];
-  $bg_width_image     = $campaign_variables->field_campaign_bgw_image['und'][0]['value'];
   $styles             = array();
   $classes            = array();
 
-  //Header link
-  if(isset($campaign_variables->field_campaign_hp['und'][0]['url']) == true){
-    $homepage_link = $campaign_variables->field_campaign_hp['und'][0]['url'];
-  }
-
   //background
-  if(isset($campaign_variables->field_campaign_background['und'][0]['uri']) == true){
-    $uri = $campaign_variables->field_campaign_background['und'][0]['uri'];
-    $image_url  = file_create_url($uri);
-    $styles[]   = 'background-image: url(\''. $image_url. '\');';
-    if($bg_width_image == 0){
+  if(isset($bg_settings['image_url'])){
+    $styles[]   = 'background-image: url(\''. $bg_settings['image_url']. '\');';
+    if(isset($bg_settings['bg_width_image']) && $bg_settings['bg_width_image'] == 'Full Width'){
       $classes[] = 'header-bg-image-full';
     }
     else{
       $classes[] = 'header-bg-image-980';
     }
   }
-  if($bg_width = 0){
+  if(isset($bg_settings['bg_width']) &&  $bg_settings['bg_width']== 'Full Width'){
     $classes[] = 'header-full';
   }
   else{
     $classes[] = 'header-980';
   }
-  if(isset($campaign_variables->field_campaign_min_height['und'][0]['value']) == true){
+
+  //Branding Styles
+  if($min_height = $bg_settings['min_height']){
     $styles[] = 'min-height: '. $min_height. 'px;';
   }
-  if(isset($campaign_variables->field_campaign_bg_color['und'][0]['rgb']) == true){
+  if($bg_color = $bg_settings['bg_color']){
     $styles[] = 'background-color: '. $bg_color. ';';
   }
 
-  if(isset($campaign_variables->field_campaign_logo['und'][0]['uri']) == true){
-    $logo = $campaign_variables->field_campaign_logo['und'][0]['uri'];
-    $logo = file_create_url($campaign_variables->field_campaign_logo['und'][0]['uri']);
-
-    if($logo_position == 0){ // Center
-      $logo_class = 'logo-center';
-    }
-    elseif($logo_position == 1){ // Left
-      $logo_class = 'logo-left';
-    }
-    else{ //Right
-      $logo_class = 'logo-right';
-    }
-    $logo = '<div class="campaign-logo-div"><img src="'. $logo. '" class="campaign-logo '. $logo_class. '"></div>';
-  }
-
   //Menu Styling
+  //TODO: Move this to it's own template and call it in the .module file
   $menu_bar_color     = $campaign_variables->field_campaign_menu_bg_color['und'][0]['rgb'];
   $menu_color_parent  = $campaign_variables->field_menu_color_parent['und'][0]['rgb'];
   $menu_color_child   = $campaign_variables->field_campaign_menu_color_child['und'][0]['rgb'];
@@ -88,7 +59,7 @@
     $menu_styles[]    = 'background-color: '. $menu_bar_color. ';';
   }
 
-    //If menu exists, add additional padding to the hero unit
+  //If menu exists, add additional padding to the hero unit
   if(isset($campaign_variables->field_campaign_menu['und'][0]['value']) == true && $campaign_variables->field_campaign_menu['und'][0]['value'] != NULL){
     $classes[] = 'has-menu';
   }
@@ -96,7 +67,6 @@
 ?>
 
 <div class="branding-header <?php print implode(' ', $classes); ?>" style="<?php print implode(' ', $styles); ?>">
-
 
   <?php
     if(isset($campaign_variables->field_campaign_menu['und'][0]['value']) == true){
@@ -163,7 +133,6 @@
             if (!is_null($child_menu_anchor)) {
               $child_link_classes[] = 'anchored';
             }
-
             $child_menu_link = l($child_menu_title,
               $link['#below'][$link_child]['#href'], array(
                 'fragment' => $child_menu_anchor,
@@ -185,7 +154,7 @@
     }
     ?>
 
-  <div class="header-inner" style="min-height: <?php print $min_height; ?>px" data-mheight="<?php print $mobile_min_height; ?>px">
+  <div class="header-inner" style="min-height: <?php print $min_height; ?>px" data-mheight="<?php print $bg_settings['mobile_min_height']; ?>px">
     <?php // social links ?>
     <aside id="campaign-page-social" class="social" data-title="<?php print $share_headline; ?>" data-description="<?php print $share_description; ?>" data-imagesrc="<?php print $share_imagesrc; ?>">
       <div class="inner">
@@ -199,16 +168,7 @@
         </div>
       </div>
     </aside><!-- / #campaign-page-social -->
-
-    <?php print (isset($homepage_link) == true ? l(' ', $homepage_link, array('attributes' => array('class' => array('big-link')))) : ''); ?>
-    <?php print (isset($logo) == true ? $logo : ''); ?>
-
+    <?php print $logo; ?>
     <a href="#" class="campaign-menu-toggle icon i-touch-menu"></a>
-
   </div>
-
 </div>
-
-
-
-
