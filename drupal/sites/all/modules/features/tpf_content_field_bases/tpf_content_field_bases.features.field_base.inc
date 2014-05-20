@@ -2313,13 +2313,13 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_campaign_style'
-  $field_bases['field_campaign_style'] = array(
+  // Exported field_base: 'field_campaign_style_setting'
+  $field_bases['field_campaign_style_setting'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_campaign_style',
+    'field_name' => 'field_campaign_style_setting',
     'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
@@ -2330,19 +2330,19 @@ function tpf_content_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        1 => 'TP4: Light Background',
-        2 => 'TP4: Dark Background',
-        3 => 'Custom Style 1',
-        4 => 'Custom Style 2',
-        5 => 'Custom Style 3',
-        6 => 'Custom Style 4',
-        7 => 'Custom Style 5',
-        8 => 'Custom Style 6',
+        'light-background' => 'TP4: Light Background',
+        'dark-background' => 'TP4: Dark Background',
+        'style-1' => 'Custom Style 1',
+        'style-2' => 'Custom Style 2',
+        'style-3' => 'Custom Style 3',
+        'style-4' => 'Custom Style 4',
+        'style-5' => 'Custom Style 5',
+        'style-6' => 'Custom Style 6',
       ),
       'allowed_values_function' => '',
     ),
     'translatable' => 0,
-    'type' => 'list_integer',
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_campaign_text_left'
