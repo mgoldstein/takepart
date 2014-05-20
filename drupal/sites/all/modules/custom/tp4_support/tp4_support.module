@@ -268,9 +268,13 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
       'title' => $user->name,
       'href' => $base_url . '/user',
     );
+    $variables['user_links']['#links']['logout'] = array(
+      'title' => t('Sign out'),
+      'href' => $base_url . '/user/logout',
+    );
   }
   $variables['social_menu'] = menu_tree('menu-social-header-follow');
-  $variables['search'] = drupal_render(drupal_get_form('search_block_form'));
+  $variables['search'] = drupal_get_form('search_block_form');
 
   $slimnav = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 1);
   menu_tree_add_active_path($slimnav);

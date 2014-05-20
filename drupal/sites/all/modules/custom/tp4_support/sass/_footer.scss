@@ -2,46 +2,29 @@ footer{
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
-  .column-title{
-    font-family: $tradegothic-regular;
-    font-size: 18px;
-    line-height: 20px;
-    color: $blue;
-    text-transform: uppercase;
-  }
+
+  font-family: $primary-sans-font;
+  font-weight: 100;
 
   a {
     text-decoration: none;
-    color: #000;
-    &:hover{
+    color: $mint;
+    &:hover {
       text-decoration: underline;
     }
-    &.more{
-      font-size: 14px;
-      position: relative;
-      padding-left: 15px;
-      font-family: $ashbury-light;
-      &:before {
-        content: "\23E9 ";
-        font-family: "SSGizmo";
-        color: $mint;
-        vertical-align: bottom;
-        position: absolute;
-        left: 0;
-        display: block;
-        width: 30px;
-        height: 20px;
-      }
-    }
   }
-  li.leaf{
+  ul.menu {
+    text-align: inherit;
+  }
+  .footer-social li{
     list-style-image: none;
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
   .footer-title{
-    font-family: $brown-regular;
+    font-family: $main-brand-font;
+    font-weight: bold;
     font-size: 16px;
     color: #000;
   }
@@ -66,86 +49,22 @@ footer{
 }
 
 
-
-
-
-
-
 // The rest is for TP3, CHUNKPART, TAKEPART_CORE, and all Campaigns with different responsiveness
 /**
  * FOOTER MOBILE ONLY RESPONSIVE
  */
-.footer-wrapper.responsive.mobile-only{
+.footer-wrapper.responsive.mobile-only {
   background-color: $gray-background;
   padding: 30px 0 15px 0;
   position: relative;
   z-index: 2;
   width: 100%;
   footer{
-    @include breakpoint($breakpoint-mobile){
-      width: 100%;
-    }
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-desktop){
       width: 1000px;
       margin: 0 auto;
     }
-    @include zen-grid-container;
-    .footer-left {
-      @include breakpoint-grid-breakdown(1 3, $breakpoint-mobile $breakpoint-tablet, '.footer-menu');
-      ul{
-        width: 100%;
-        @include breakpoint-grid-breakdown(2 1, $breakpoint-mobile $breakpoint-tablet, 'li.menu__item');
-      }
-      @include breakpoint($breakpoint-mobile){
-        @include zen-grid-item(12, 1);
-        @include zen-clear();
-      }
-      @include breakpoint($breakpoint-tablet){
-        @include zen-grid-item(8, 1);
-        @include zen-clear(none);
-      }
-    }
-    .footer-right{
-      @include breakpoint($breakpoint-mobile){
-        @include zen-grid-item(12, 1);
-        @include zen-clear();
-      }
-      @include breakpoint($breakpoint-tablet){
-        @include zen-grid-item(4, 9);
-        @include zen-clear(none);
-      }
-    }
-    .footer-bottom{
-      @include zen-clear();
-      @include zen-grid-item(12, 1);
-    }
-  }
 
-
-  footer{
-    .footer-left{
-      @include breakpoint($breakpoint-mobile){
-        ul{
-          padding-top: 15px;
-          margin-bottom: 20px;
-          a{
-            font-family: $adelle-light;
-            font-size: 14px;
-            line-height: 24px;
-            color: #000;
-            &:hover{
-              text-decoration: underline;
-            }
-          }
-        }
-      }
-      @include breakpoint($breakpoint-tablet){
-        margin-bottom: 0px;
-        ul{
-          margin-bottom: 7px;
-        }
-      }
-    }
     .footer-right{
       @include breakpoint($breakpoint-mobile){
         .footer-title.social{
@@ -188,21 +107,18 @@ footer{
           margin-top: 50px;
           clear: both;
           width: 90%;
-          font-family: $adelle-light;
+          font-family: $primary-serif-font;
+          font-weight: 100;
           font-size: 11px;
           line-height: 16px;
         }
       }
     }
     .footer-bottom{
-      text-align: center;
-      margin-top: 30px;
-      border-top: 1px solid $gray-line;
-      padding-top: 20px;
       @include breakpoint($breakpoint-mobile){
         text-align: center;
         .footer-bottom-inner{
-          text-align: left;
+          text-align: center;
           // display: inline-block;
           li{
             display: inline-block;
@@ -243,7 +159,7 @@ footer{
             margin-top: 8px;
             margin-right: 10px;
           }
-          ul{
+          ul {
             display: inline-block;
           }
         }
@@ -268,37 +184,15 @@ footer{
   position: relative;
   z-index: 2;
   footer{
-    max-width: non-responsive;
     width: 1000px;
-    @include zen-grid-container;
-    .footer-left {
-      width: 100%;
-      @include breakpoint-grid-breakdown(3 3, $breakpoint-mobile $breakpoint-desktop, '.footer-menu');
-      ul{
-        width: 100%;
-      }
-      @include zen-grid-item(8, 1);
-      @include zen-clear(none);
-    }
-    .footer-right{
-      @include zen-grid-item(4, 9);
-      @include zen-clear(none);
-    }
-    .footer-bottom{
-      @include zen-clear();
-      @include zen-grid-item(12, 1);
-    }
-  }
-
-
-  footer{
     .footer-left{
       margin-bottom: 0px;
       ul{
         padding-top: 15px;
         margin-bottom: 7px;
         a{
-          font-family: $adelle-light;
+          font-family: $primary-serif-font;
+          font-weight: 100;
           font-size: 14px;
           line-height: 24px;
           color: #000;
@@ -330,7 +224,8 @@ footer{
         margin-top: 50px;
         clear: both;
         width: 90%;
-        font-family: $adelle-light;
+        font-family: $primary-serif-font;
+        font-weight: 100;
         font-size: 11px;
         line-height: 16px;
         a{
@@ -340,12 +235,8 @@ footer{
     }
     .footer-bottom{
       text-align: center;
-      margin-top: 30px;
-      border-top: 1px solid $gray-line;
-      padding-top: 20px;
-      text-align: center;
       .footer-bottom-inner{
-        text-align: left;
+        text-align: center;
         display: inline-block;
         li{
           display: inline-block;
