@@ -2641,27 +2641,45 @@ a.edit-mini-panel-link {
 /**
  * Global Sprites.
  */
-/* line 226, social/*.png */
-.social-sprite, .social-facebook-black, .social-facebook-gray, .social-googleplus-black, .social-googleplus-gray, .social-pinterest-black, .social-pinterest-gray, .social-tumblr-black, .social-tumblr-gray, .social-twitter-black, .social-twitter-gray, .social-youtube-black, .social-youtube-gray, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook, #main.card-page .block-newsletter-campaign .social-links li a.facebook, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter, #main.card-page .block-newsletter-campaign .social-links li a.twitter, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.google, #main.card-page .block-newsletter-campaign .social-links li a.google, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest, #main.card-page .block-newsletter-campaign .social-links li a.pinterest, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.youtube, #main.card-page .block-newsletter-campaign .social-links li a.youtube, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumblr, #main.card-page .block-newsletter-campaign .social-links li a.tumblr, .block-newsletter-campaign .social-links li a.facebook, .block-newsletter-campaign .social-links li a.twitter, .block-newsletter-campaign .social-links li a.google, .block-newsletter-campaign .social-links li a.pinterest, .block-newsletter-campaign .social-links li a.youtube, .block-newsletter-campaign .social-links li a.tumblr {
-  background: url('../images/social-sdb493615aa.png') no-repeat;
+/* line 258, social/*.png */
+.social-sprite, .social-email-black, .social-email-gray, .social-facebook-black, .social-facebook-gray, .social-googleplus-black, .social-googleplus-gray, .social-pinterest-black, .social-pinterest-gray, .social-tumblr-black, .social-tumblr-gray, .social-twitter-black, .social-twitter-gray, .social-youtube-black, .social-youtube-gray, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook, #main.card-page .block-newsletter-campaign .social-links li a.facebook, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter, #main.card-page .block-newsletter-campaign .social-links li a.twitter, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.google, #main.card-page .block-newsletter-campaign .social-links li a.google, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest, #main.card-page .block-newsletter-campaign .social-links li a.pinterest, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.youtube, #main.card-page .block-newsletter-campaign .social-links li a.youtube, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumblr, #main.card-page .block-newsletter-campaign .social-links li a.tumblr, .block-newsletter-campaign .social-links li a.facebook, .block-newsletter-campaign .social-links li a.twitter, .block-newsletter-campaign .social-links li a.google, .block-newsletter-campaign .social-links li a.pinterest, .block-newsletter-campaign .social-links li a.youtube, .block-newsletter-campaign .social-links li a.tumblr {
+  background: url('../images/social-s3eb5586d89.png') no-repeat;
+}
+
+/* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-black {
+  background-position: 0 -624px;
+}
+/* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-black:hover, .social-email-black.email-black_hover, .social-email-black.email-black-hover {
+  background-position: 0 -216px;
+}
+
+/* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-gray {
+  background-position: 0 -552px;
+}
+/* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-gray:hover, .social-email-gray.email-gray_hover, .social-email-gray.email-gray-hover {
+  background-position: 0 -192px;
 }
 
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-black {
-  background-position: 0 -528px;
+  background-position: 0 -600px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-black:hover, .social-facebook-black.facebook-black_hover, .social-facebook-black.facebook-black-hover {
-  background-position: 0 -408px;
+  background-position: 0 -456px;
 }
 
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-gray {
-  background-position: 0 -480px;
+  background-position: 0 -528px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-gray:hover, .social-facebook-gray.facebook-gray_hover, .social-facebook-gray.facebook-gray-hover {
-  background-position: 0 -432px;
+  background-position: 0 -480px;
 }
 
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -2684,56 +2702,56 @@ a.edit-mini-panel-link {
 
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-black {
-  background-position: 0 -384px;
+  background-position: 0 -432px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-black:hover, .social-pinterest-black.pinterest-black_hover, .social-pinterest-black.pinterest-black-hover {
-  background-position: 0 -264px;
+  background-position: 0 -312px;
 }
 
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-gray {
-  background-position: 0 -192px;
+  background-position: 0 -240px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-gray:hover, .social-pinterest-gray.pinterest-gray_hover, .social-pinterest-gray.pinterest-gray-hover {
-  background-position: 0 -288px;
-}
-
-/* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-black {
-  background-position: 0 -552px;
-}
-/* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-black:hover, .social-tumblr-black.tumblr-black_hover, .social-tumblr-black.tumblr-black-hover {
   background-position: 0 -336px;
 }
 
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-black {
+  background-position: 0 -648px;
+}
+/* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-black:hover, .social-tumblr-black.tumblr-black_hover, .social-tumblr-black.tumblr-black-hover {
+  background-position: 0 -384px;
+}
+
+/* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-gray {
-  background-position: 0 -456px;
+  background-position: 0 -504px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-gray:hover, .social-tumblr-gray.tumblr-gray_hover, .social-tumblr-gray.tumblr-gray-hover {
-  background-position: 0 -360px;
+  background-position: 0 -408px;
 }
 
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-black {
-  background-position: 0 -504px;
+  background-position: 0 -576px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-black:hover, .social-twitter-black.twitter-black_hover, .social-twitter-black.twitter-black-hover {
-  background-position: 0 -216px;
+  background-position: 0 -264px;
 }
 
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-gray {
-  background-position: 0 -312px;
+  background-position: 0 -360px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-gray:hover, .social-twitter-gray.twitter-gray_hover, .social-twitter-gray.twitter-gray-hover {
-  background-position: 0 -240px;
+  background-position: 0 -288px;
 }
 
 /* line 60, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -9538,19 +9556,19 @@ body.node-type-campaign-page .block-newsletter-campaign .social-links li a, #mai
 }
 /* line 1141, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook, #main.card-page .block-newsletter-campaign .social-links li a.facebook {
-  background-position: 0 -480px;
+  background-position: 0 -528px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook.facebook-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook.facebook-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.facebook:hover, #main.card-page .block-newsletter-campaign .social-links li a.facebook.facebook-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.facebook.facebook-gray-hover {
-  background-position: 0 -432px;
+  background-position: 0 -480px;
 }
 /* line 1142, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter, #main.card-page .block-newsletter-campaign .social-links li a.twitter {
-  background-position: 0 -312px;
+  background-position: 0 -360px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter.twitter-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter.twitter-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.twitter:hover, #main.card-page .block-newsletter-campaign .social-links li a.twitter.twitter-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.twitter.twitter-gray-hover {
-  background-position: 0 -240px;
+  background-position: 0 -288px;
 }
 /* line 1143, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.google, #main.card-page .block-newsletter-campaign .social-links li a.google {
@@ -9562,11 +9580,11 @@ body.node-type-campaign-page .block-newsletter-campaign .social-links li a.googl
 }
 /* line 1144, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest, #main.card-page .block-newsletter-campaign .social-links li a.pinterest {
-  background-position: 0 -192px;
+  background-position: 0 -240px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.pinterest:hover, #main.card-page .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray-hover {
-  background-position: 0 -288px;
+  background-position: 0 -336px;
 }
 /* line 1145, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.youtube, #main.card-page .block-newsletter-campaign .social-links li a.youtube {
@@ -9578,12 +9596,12 @@ body.node-type-campaign-page .block-newsletter-campaign .social-links li a.youtu
 }
 /* line 1146, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumblr, #main.card-page .block-newsletter-campaign .social-links li a.tumblr {
-  background-position: 0 -456px;
+  background-position: 0 -504px;
   margin-right: 0;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumblr:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.tumblr:hover, #main.card-page .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray-hover {
-  background-position: 0 -360px;
+  background-position: 0 -408px;
 }
 /* line 1151, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .block-newsletter-campaign .takepart-newsletter-wrapper img, #main.card-page .block-newsletter-campaign .takepart-newsletter-wrapper img {
@@ -11306,19 +11324,19 @@ header .search .form-submit {
 }
 /* line 95, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.facebook {
-  background-position: 0 -480px;
+  background-position: 0 -528px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.facebook:hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray_hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray-hover {
-  background-position: 0 -432px;
+  background-position: 0 -480px;
 }
 /* line 96, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.twitter {
-  background-position: 0 -312px;
+  background-position: 0 -360px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.twitter:hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray_hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray-hover {
-  background-position: 0 -240px;
+  background-position: 0 -288px;
 }
 /* line 97, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.google {
@@ -11330,11 +11348,11 @@ header .search .form-submit {
 }
 /* line 98, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.pinterest {
-  background-position: 0 -192px;
+  background-position: 0 -240px;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.pinterest:hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray_hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray-hover {
-  background-position: 0 -288px;
+  background-position: 0 -336px;
 }
 /* line 99, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.youtube {
@@ -11346,12 +11364,12 @@ header .search .form-submit {
 }
 /* line 100, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.tumblr {
-  background-position: 0 -456px;
+  background-position: 0 -504px;
   margin-right: 0;
 }
 /* line 43, ../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.tumblr:hover, .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray_hover, .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray-hover {
-  background-position: 0 -360px;
+  background-position: 0 -408px;
 }
 
 /* line 106, ../sass/modules/_sidebar.scss */
