@@ -4,31 +4,6 @@
   $styles             = array();
   $classes            = array();
 
-  //background
-  if(isset($bg_settings['image_url'])){
-    $styles[]   = 'background-image: url(\''. $bg_settings['image_url']. '\');';
-    if(isset($bg_settings['bg_width_image']) && $bg_settings['bg_width_image'] == 'Full Width'){
-      $classes[] = 'header-bg-image-full';
-    }
-    else{
-      $classes[] = 'header-bg-image-980';
-    }
-  }
-  if(isset($bg_settings['bg_width']) &&  $bg_settings['bg_width']== 'Full Width'){
-    $classes[] = 'header-full';
-  }
-  else{
-    $classes[] = 'header-980';
-  }
-
-  //Branding Styles
-  if($min_height = $bg_settings['min_height']){
-    $styles[] = 'min-height: '. $min_height. 'px;';
-  }
-  if($bg_color = $bg_settings['bg_color']){
-    $styles[] = 'background-color: '. $bg_color. ';';
-  }
-
   //Menu Styling
   //TODO: Move this to it's own template and call it in the .module file
   $menu_bar_color     = $campaign_variables->field_campaign_menu_bg_color['und'][0]['rgb'];
@@ -66,7 +41,7 @@
 
 ?>
 
-<div class="branding-header <?php print implode(' ', $classes); ?>" style="<?php print implode(' ', $styles); ?>">
+<div class="branding-header <?php print implode(' ', $bg_settings['classes']); ?>" style="<?php print implode(' ', $bg_settings['styles']); ?>">
 
   <?php
     if(isset($campaign_variables->field_campaign_menu['und'][0]['value']) == true){
@@ -79,7 +54,6 @@
       foreach($menu_elements as $key => $item){
         $improved[]   = $menu_tree[$item];
       }
-      // it's ok, "changing the menu color in the CMS is easy, right?"
 
       print '<div class=menu-wrapper>';
       print '<div class="menu sf-navbar" style="'. implode(' ', $menu_styles). '">';
@@ -154,7 +128,7 @@
     }
     ?>
 
-  <div class="header-inner" style="min-height: <?php print $min_height; ?>px" data-mheight="<?php print $bg_settings['mobile_min_height']; ?>px">
+  <div class="header-inner" style="min-height: <?php print $bg_settings['min_height']; ?>px" data-mheight="<?php print $bg_settings['mobile_min_height']; ?>px">
     <?php // social links ?>
     <aside id="campaign-page-social" class="social" data-title="<?php print $share_headline; ?>" data-description="<?php print $share_description; ?>" data-imagesrc="<?php print $share_imagesrc; ?>">
       <div class="inner">

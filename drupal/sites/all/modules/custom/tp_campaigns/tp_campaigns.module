@@ -380,11 +380,6 @@ function tp_campaigns_hero(){
       $share_imagesrc = field_view_value('node', $campaign_node, 'field_thumbnail', $items[0]);
     }
 
-    //Variables from the template
-    if ($items = field_get_items('node', $page_node, 'field_campaign_logo_position')) {
-      $logo_position = field_view_value('node', $page_node, 'field_campaign_logo_position', $items[0]);
-    }
-
     //Background Settings
     $bg_settings = array();
     if ($items = field_get_items('node', $campaign_node, 'field_campaign_background')) {
@@ -399,15 +394,47 @@ function tp_campaigns_hero(){
       $mobile_min_height = field_view_value('node', $campaign_node, 'field_campaign_mobile_min_height', $items[0]);
       $bg_settings['mobile_min_height'] = drupal_render($mobile_min_height) - 20;
     }
-    if ($items = field_get_items('node', $campaign_node, 'field_campaign_bg_color')) {
-      $bg_settings['bg_color'] = $items[0]['rgb'];
-    }
     if ($items = field_get_items('node', $campaign_node, 'field_campaign_bgw')) {
       $bg_settings['bg_width'] = drupal_render(field_view_value('node', $campaign_node, 'field_campaign_bgw', $items[0]));
     }
     if ($items = field_get_items('node', $campaign_node, 'field_campaign_bgw_image')) {
       $bg_settings['bg_width_image'] = drupal_render(field_view_value('node', $campaign_node, 'field_campaign_bgw_image', $items[0]));
     }
+
+    //Branding Classes and Styles
+    $bg_settings['styles'] = array();
+    $bg_settings['classes'] = array();
+    if(isset($bg_settings['image_url'])){
+      $bg_settings['styles'][]   = 'background-image: url(\''. $bg_settings['image_url']. '\');';
+      if(isset($bg_settings['bg_width_image']) && $bg_settings['bg_width_image'] == 'Full Width'){
+        $bg_settings['classes'][] = 'header-bg-image-full';
+      }
+      else{
+        $bg_settings['classes'][] = 'header-bg-image-980';
+      }
+    }
+    if ($style_setting = field_get_items('node', $campaign_node, 'field_campaign_style_setting')) {
+      $bg_settings['classes'][] = $style_setting[0]['value'];
+    }
+
+    if(isset($bg_settings['bg_width']) &&  $bg_settings['bg_width']== 'Full Width'){
+      $bg_settings['classes'][] = 'header-full';
+    }
+    else{
+      $bg_settings['classes'][] = 'header-980';
+    }
+
+    if($min_height = $bg_settings['min_height']){
+      $bg_settings['styles'][] = 'min-height: '. $min_height. 'px;';
+    }
+    if ($bg_color = field_get_items('node', $campaign_node, 'field_campaign_bg_color')) {
+      $bg_settings['styles'][] = 'background-color: '. $bg_color[0]['rgb']. ';';
+    }
+
+
+
+
+
 
     //Logo and Logo settings
     $output = '';
