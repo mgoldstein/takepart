@@ -3,12 +3,15 @@
  * The action content type must be set to excluded. This function processes all
  * actions, excluding awareness actions from the sitemap
  */
+/*
+function takepart_sitemap_xmlsitemap_link_alter($link) {
+    dd($link);
+}
+ */
+
+/*
 function takepart_sitemap_xmlsitemap_index_links($limit) {
-  /*
-   * Query to pull all actions
-   */
-  // $nids = db_query_range("SELECT n.nid FROM {node} n LEFT JOIN {xmlsitemap} x ON x.type = 'node' AND x.subtype = 'action' AND n.nid = x.id WHERE x.id IS NULL AND n.type = 'action' ORDER BY n.nid DESC", 0, $limit)->fetchCol();
-   $nids = db_query_range("SELECT n.nid FROM {node} n LEFT JOIN {xmlsitemap} x ON x.type = 'node' AND x.subtype = 'action' AND n.nid = x.id WHERE n.type = 'action' ORDER BY n.nid DESC", 0, $limit)->fetchCol();
+  $nids = db_query_range("SELECT n.nid FROM {node} n LEFT JOIN {xmlsitemap} x ON x.type = 'node' AND x.subtype = 'action' AND n.nid = x.id WHERE n.type = 'action' ORDER BY n.nid DESC", 0, $limit)->fetchCol();
    
   $nodes = node_load_multiple($nids);
   drupal_debug($nodes);
@@ -18,9 +21,7 @@ function takepart_sitemap_xmlsitemap_index_links($limit) {
   foreach(field_get_items('node', $node, 'field_action_type') as $delta => $item) {
     $tid = $item['tid'];
   }
-  /*
-   * Exclude those nasty awareness actions
-   */
+
   if (!is_null($tid) && $tid != 107717) {
       $link = xmlsitemap_node_create_link($node);
       $link['status'] = 1;
@@ -31,9 +32,9 @@ function takepart_sitemap_xmlsitemap_index_links($limit) {
   }
   drupal_debug($i);
 }
+*/
 /*
- * Cron hook to process actions
- */
 function takepart_sitemap_cron() {
   takepart_sitemap_xmlsitemap_index_links(xmlsitemap_var('batch_limit'));
 }
+*/

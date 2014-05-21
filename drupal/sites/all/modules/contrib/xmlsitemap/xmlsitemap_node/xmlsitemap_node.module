@@ -39,8 +39,14 @@ function xmlsitemap_node_xmlsitemap_index_links($limit) {
 function xmlsitemap_node_xmlsitemap_process_node_links(array $nids) {
   $nodes = node_load_multiple($nids);
   foreach ($nodes as $node) {
-    $link = xmlsitemap_node_create_link($node);
-    xmlsitemap_link_save($link);
+    if ($node->type == "action" && $node->field_action_type['und'][0]['tid'] == 107717) {
+        // do nothing
+        dd($node->nid);
+    }
+    else {
+      $link = xmlsitemap_node_create_link($node);
+      xmlsitemap_link_save($link);
+    } 
   }
 }
 
