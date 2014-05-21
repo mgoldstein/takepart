@@ -13465,11 +13465,10 @@ Note: If you manually reference more items than selected here, the number refere
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'list',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 8,
+        'type' => 'hidden',
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',

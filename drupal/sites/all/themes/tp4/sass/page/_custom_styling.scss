@@ -1,0 +1,66 @@
+/*
+ * Custom Styling for Campaigns
+ */
+
+body.campaign-display{
+  .card.dark-background{
+    $primary-color: #fff;
+    $bright-mint: #01bf9e;
+    h1, h2, h3, h4, h5, h6{
+      color: $primary-color;
+    }
+    p{
+      color: $primary-color;
+    }
+    a{
+      color: $bright-mint;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+    .secondary-button a{
+      color: $primary-color;
+    }
+    .media-caption{
+      color: $primary-color;
+    }
+    ul, ol{
+      li{
+        color: $primary-color;
+      }
+    }
+    //.menu
+    //.menu-item-parent
+    //.menu-item-child
+    //.social-share-label
+  }
+  .tray.dark-background{
+    $primary-color: #fff;
+    //pagination
+    //tray titles
+    //arrows (optional)
+    
+  }
+  .branding-header.dark-background {
+    $primary-color: #fff;
+    $secondary-color: #000;
+    $bright-mint: #01bf9e;
+    .share-headline{
+      color: $primary-color;
+    }
+    .menu{
+      li.parent-item{
+        &.active a{
+          color: $bright-mint;
+        }
+        > a{
+          color: $primary-color;
+        }
+        &.sfHover{
+          color: $secondary-color;
+          background-color: $primary-color;
+        }
+      }
+    }
+  }
+}

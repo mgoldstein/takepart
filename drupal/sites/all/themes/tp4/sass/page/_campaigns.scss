@@ -303,6 +303,8 @@ body.node-type-campaign-page, #main.card-page{
       z-index: 99;
       cursor: default;
     }
+  }
+  .branding-header{
     .menu{
       display: block;
       height: auto;
@@ -382,103 +384,102 @@ body.node-type-campaign-page, #main.card-page{
         color: $mint;
       }
     }
-
     .social {
       position: absolute;
       right: 10px;
       top: 15px;
       z-index: 100;
-
-      .tp-social-headline,
-      .tp-social,
-      #campaign-page-social-more {
-        float: left;
-        display: inline-block;
-        vertical-align: middle;
-        height: 30px;
-        margin-left: 8px;
-      }
-
-      .tp-social-headline {
-        font: normal 14px/1 $secondary-sans-font;
-        height: 14px;
-        color: $dark-gray;
-        text-transform: uppercase;
-        margin: 4px 0 0 0;
-      }
-
-      .tp-social-link,
-      .trigger a {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        line-height: 37px;
-        overflow: hidden;
-        text-indent: 30px;
-        margin-left: 8px;
-        &:first-of-type {
-          margin-left: 0;
-        }
-      }
-
-
-      #campaign-page-social-more {
-        width: 24px; // contain 8px margin
-        height: 24px;
-        margin-left: 8px;
-        overflow: hidden;
-        position: relative;
-        float: right;
-        h4.trigger {
-          margin: 0;
-        }
-        &.focus {
-          overflow: visible;
-          #campaign-page-more-shares {
-            top: 100%;
-          }
-        }
-      }
-
-
-      #campaign-page-more-shares {
-        position: absolute;
-        right: 0;
-        top: -75px; // accounts for margin, padding, and shadow
-        width: 120px;
-        p {
-          background-color: white;
-          height: 24px;
-          margin: 16px 0 0 0;
-          padding: 16px;
-          position: relative;
-          z-index: 10;
-          @include box-shadow(0 0 4px rgba(0,0,0,.5));
-          &:before,
-          &:after {
-            content: ' ';
-            display: block;
-            height: 0;
-            width: 0;
-            position: absolute;
-            bottom: 100%;
-            border: 8px solid transparent;
-          }
-          &:after {
-            right: 4px;
-            border-bottom-color: white;
-            border-bottom-width: 14px;
-          }
-          &:before {
-            right: 2px;
-            border-width: 10px;
-            border-bottom-width: 16px;
-            border-bottom-color: rgba(0,0,0,.15);
-          }
-        }
-      }
-
     }
+
+    .tp-social-headline,
+    .tp-social,
+    #campaign-page-social-more {
+      float: left;
+      display: inline-block;
+      vertical-align: middle;
+      height: 30px;
+      margin-left: 8px;
+    }
+
+    .share-headline {
+      font: normal 14px/1 $secondary-sans-font;
+      height: 14px;
+      color: $dark-gray;
+      text-transform: uppercase;
+      margin: 4px 0 0 0;
+    }
+
+    .tp-social-link,
+    .trigger a {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      line-height: 37px;
+      overflow: hidden;
+      text-indent: 30px;
+      margin-left: 8px;
+      &:first-of-type {
+        margin-left: 0;
+      }
+    }
+
+
+    #campaign-page-social-more {
+      width: 24px; // contain 8px margin
+      height: 24px;
+      margin-left: 8px;
+      overflow: hidden;
+      position: relative;
+      float: right;
+      h4.trigger {
+        margin: 0;
+      }
+      &.focus {
+        overflow: visible;
+        #campaign-page-more-shares {
+          top: 100%;
+        }
+      }
+    }
+
+
+    #campaign-page-more-shares {
+      position: absolute;
+      right: 0;
+      top: -75px; // accounts for margin, padding, and shadow
+      width: 120px;
+      p {
+        background-color: white;
+        height: 24px;
+        margin: 16px 0 0 0;
+        padding: 16px;
+        position: relative;
+        z-index: 10;
+        @include box-shadow(0 0 4px rgba(0,0,0,.5));
+        &:before,
+        &:after {
+          content: ' ';
+          display: block;
+          height: 0;
+          width: 0;
+          position: absolute;
+          bottom: 100%;
+          border: 8px solid transparent;
+        }
+        &:after {
+          right: 4px;
+          border-bottom-color: white;
+          border-bottom-width: 14px;
+        }
+        &:before {
+          right: 2px;
+          border-width: 10px;
+          border-bottom-width: 16px;
+          border-bottom-color: rgba(0,0,0,.15);
+        }
+      }
+    }
+
   }
   h1.card-title{
     text-align: center;
@@ -1497,5 +1498,13 @@ p.campaign-content-meta{
     }
   }
 }
+
+//Add Custom Styling for TP4 Campaigns
+@import "page/custom_styling";
+
+
+
+
+
 
 
