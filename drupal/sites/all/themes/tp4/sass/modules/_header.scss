@@ -35,6 +35,11 @@ header {
       display: none;
     }
   }
+  .tp4-fat-header .menu-toggle {
+    @include breakpoint($breakpoint-tablet) {
+      display: none;
+    }
+  }
   .logo{
     float: left;
     width: 121px;
