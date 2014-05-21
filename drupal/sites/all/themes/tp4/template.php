@@ -275,7 +275,7 @@ function tp4_preprocess_block(&$variables) {
  */
 
 function tp4_preprocess_tp4_support_slim_nav(&$variables) {
-  dpm($variables);
+  //dpm($variables);
   unset($variables['user_links']['#links']['logout']);
 }
 
