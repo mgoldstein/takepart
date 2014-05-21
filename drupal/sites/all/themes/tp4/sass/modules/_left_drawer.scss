@@ -10,6 +10,7 @@
 .snapjs-left .snap-drawers{
   display: block;
 }
+
 .snap-drawers {
   background: #000;
   color: #fff;
@@ -44,6 +45,56 @@
     @include transition(width 0.3s ease);
   }
 
+  .mobile-menu-header {
+    overflow: hidden;
+    margin: 0;
+    padding: 13px 11px;
+    border-bottom: 5px solid #646464;
+    color: white;
+    a {
+      color: white;
+    }
+    div, h2, ul, li {
+      display: inline-block;
+      vertical-align: top;
+    }
+    h2 {      
+      font: normal 1em/1 $secondary-sans-font;
+      text-transform: uppercase;
+      margin: 0.571428571em 1em 0 0;
+    }
+
+    .user-menu {
+      padding-right: 1em;
+      margin-right: 1em;
+      position: relative;
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 6px;
+        height: 12px;
+        width: 0;
+        border-right: 1px solid white;
+      }
+
+      .first a {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        text-indent: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        background: transparent inline-image("user-avatar.png") scroll no-repeat top left;
+      }
+      &.user a {
+        background-image: inline-image("user-avatar-active.png");
+      }
+    }
+  }
   
   .block-menu {
     ul{
