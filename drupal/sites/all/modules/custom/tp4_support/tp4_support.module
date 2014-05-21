@@ -63,6 +63,9 @@ function tp4_support_block_info(){
   $blocks['tp4_slim_nav'] = array(
     'info' => t('Slim Nav'),
   );
+  $blocks['tp4_mobile_menu_header'] = array(
+    'info' => t('Mobile Menu Header')
+  );
   return $blocks;
 }
 
@@ -87,6 +90,9 @@ function tp4_support_block_view($delta = ''){
     break;
     case 'tp4_slim_nav':
       $block['content'] = theme('tp4_support_slim_nav');
+    break;
+    case 'tp4_mobile_menu_header':
+      $block['content'] = theme('tp4_support_mobile_menu_header');
     break;
   }
   return $block;
@@ -209,7 +215,14 @@ function tp4_support_theme() {
         'items' => array(),
         'entity' => '',
       )
-    )
+    ),
+    'tp4_support_mobile_menu_header' => array(
+      'template' => 'tp4-support-mobile-menu-header',
+      'variables' => array(
+        'user_links' => array(),
+        'social_menu' => array(),
+      )
+    ),
   );
 }
 
@@ -297,6 +310,38 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
 
 }
 
+/**
+ * Implements template_preprocess_HOOK().
+ *
+ * Set up variables for tp4_support_mobile_menu_header
+ * theme hook.
+ * 
+ * @param  array $variables
+ */
+function template_preprocess_tp4_support_mobile_menu_header(&$variables) {
+  global $base_url;
+  global $user;
+
+  $variables['user_links'] = array(
+    '#theme' => 'links',
+    '#links' => array(),
+  );
+
+  if($user->uid == 0) {
+    $variables['user_links']['#links']['login'] = array(
+      'title' => t('Sign in'),
+      'href' => $base_url . '/user',
+    );
+  }
+  else {
+    $variables['user_links']['#links']['user'] = array(
+      'title' => $user->name,
+      'href' => $base_url . '/user',
+    );
+  }
+  $variables['social_menu'] = menu_tree('menu-social-header-follow');
+
+}
 
 function tp4_support_fat_header(){
   global $base_url;
@@ -388,6 +433,9 @@ function tp4_support_field_formatter_view($entity_type, $entity, $field, $instan
 function tp4_support_preprocess_block(&$variables) {
   if($variables['block_html_id'] == 'block-views-takeaction-homepage-block'){
     $variables['theme_hook_suggestions'][] = 'block__views__homepage_columns_block'; 
+  }
+  else if ($variables['block']->bid === 'tp4_support-tp4_mobile_menu_header') {
+    $variables['classes_array'][] = 'mobile-menu-header';
   }
 }
 
