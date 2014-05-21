@@ -2077,11 +2077,17 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'footer',
           'weight' => '-10',
         ),
+        'tp4_support-tp4_mobile_menu_header' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_mobile_menu_header',
+          'region' => 'left_drawer',
+          'weight' => '-10',
+        ),
         'menu-menu-megamenu' => array(
           'module' => 'menu',
           'delta' => 'menu-megamenu',
           'region' => 'left_drawer',
-          'weight' => '-10',
+          'weight' => '-9',
         ),
         'pm_interstitial-interstitials' => array(
           'module' => 'pm_interstitial',
