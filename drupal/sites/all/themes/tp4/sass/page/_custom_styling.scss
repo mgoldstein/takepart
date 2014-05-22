@@ -16,12 +16,12 @@ body.campaign-display{
     }
     a{
       color: $bright-mint;
-      &:hover {
-        color: $primary-color;
-      }
     }
     .secondary-button a{
       color: $primary-color;
+      &:hover{
+        color: $primary-color;
+      }
     }
     .primary-button a{
       color: $primary-color;
@@ -69,6 +69,12 @@ body.campaign-display{
           color: $secondary-color;
           background-color: $primary-color;
         }
+        &.sfHover > a, &:hover > a.active{
+          color: $secondary-color;
+        }
+      }
+      li.parent-item:not(.anchored):hover a.active{
+        color: $secondary-color;
       }
     }
   }
