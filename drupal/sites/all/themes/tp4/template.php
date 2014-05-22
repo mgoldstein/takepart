@@ -856,10 +856,9 @@ function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
   $nid = array_slice($tags, 1, 1);
   $node = node_load($nid[0]);
 
-  $filter_tags = array();
-  $or = db_or();
-  $filters = field_get_items('node', $node, 'field_campaign_news_filter_tag');
-  if(isset($filters) == true && $filters != NULL){
+  if($filters = field_get_items('node', $node, 'field_campaign_news_filter_tag')){
+    $or = db_or();
+    dpm($filters, 'filters 4');
     foreach($filters as $item) {
       
       //Filter can have only one value so this will work
@@ -884,8 +883,27 @@ function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
         $or->condition('d.field_admin_tag_tid', array($item['target_id']), 'IN');
       }
     }
+    $query->condition($or);
   }
-  $query->condition($or);
+
+}
+
+/**
+ * Implementation of hook_query_TAG_alter
+ * Needed for the OR condition for promo content since Actions don't use promos
+ */
+function tp4_query_promofilter_alter(QueryAlterableInterface $query) {
+
+  $query
+    ->leftJoin('field_data_field_thumbnail', 'e', 'node.nid = e.entity_id');
+  $query
+    ->leftJoin('field_data_field_action_main_image', 'f', 'node.nid = f.entity_id');
+  $or = db_or()
+    ->condition('e.field_thumbnail_fid', 0, '>')
+    ->condition('f.field_action_main_image_fid', 0, '>');
+  $query
+    ->condition($or);
+
 }
 
 
@@ -947,17 +965,18 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       }
 
       // Query non referenced content (max 5)
-      $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count') + 2;
+      $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count');
       $count = count($news_ref);
 
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
-          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard'))
+          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard', 'action'))
           ->propertyCondition('status', 1)
           ->propertyOrderBy('created', 'DESC')
           ->addTag('termfilter')
           ->addTag($variables['nid'])
+          ->addTag('promofilter')
           ->range(0, $max_count - $count);
         $articles = $campaignNewsArticles->execute();
       }
