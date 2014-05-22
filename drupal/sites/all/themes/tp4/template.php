@@ -888,24 +888,6 @@ function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
   $query->condition($or);
 }
 
-/**
- * Implementation of hook_query_TAG_alter
- * Needed for the OR condition for promo content since Actions don't use promos
- */
-function tp4_query_promofilter_alter(QueryAlterableInterface $query) {
-
-  $query
-    ->leftJoin('field_data_field_thumbnail', 'e', 'node.nid = e.entity_id');
-  $query
-    ->leftJoin('field_data_field_action_main_image', 'f', 'node.nid = f.entity_id');
-  $or = db_or()
-    ->condition('e.field_thumbnail_fid', 0, '>')
-    ->condition('f.field_action_main_image_fid', 0, '>');
-  $query
-    ->condition($or);
-
-}
-
 
 /**
  * Override or insert variables into the campaign card news
@@ -971,12 +953,11 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
-          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard', 'action'))
+          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard'))
           ->propertyCondition('status', 1)
           ->propertyOrderBy('created', 'DESC')
           ->addTag('termfilter')
           ->addTag($variables['nid'])
-          ->addTag('promofilter')
           ->range(0, $max_count - $count);
         $articles = $campaignNewsArticles->execute();
       }
