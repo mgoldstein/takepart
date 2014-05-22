@@ -193,8 +193,9 @@ function takepart_omniture_stringfixes($str) {
     return strtolower(str_replace('&amp;', '&', $str));
 }
 
-function takepart_omniture_removespaces($str) {
-    return strtolower(str_replace(', ', ',', $str));
+function takepart_omniture_removespaces($param) {
+    $param = strtolower(html_entity_decode($param, ENT_QUOTES));
+    return strtolower(str_replace(', ', ',', $param));
 }
 
 /**
