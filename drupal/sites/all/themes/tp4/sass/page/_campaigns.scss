@@ -315,11 +315,30 @@ body.node-type-campaign-page, #main.card-page{
       .sf-arrows .sf-with-ul{
         padding-right: 1em;
       }
-      li{
+      li.parent-item{
+        > a{
+          color: #000;
+        }
         &:hover > a, &.sfHover > a{
           color: #fff;
           text-decoration: none;
           background-color: #000;
+        }
+        &.anchored.active > a{
+          color: $mint;
+        }
+        &:not(.anchored) > a.active{
+          color: $mint;
+        }
+        &.anchored.active:hover > a, &.anchored.active.sfHover > a{
+          color: #fff;
+        }
+        &:not(.anchored):hover > a.active, &:not(.anchored).sfHover > a.active{
+          color: #fff;
+        }
+        li li a{
+          text-align: left;
+          color: #000;
         }
       }
       ul.sf-menu{
@@ -372,15 +391,6 @@ body.node-type-campaign-page, #main.card-page{
       }
       &.sf-navbar{
         margin-bottom: 0;
-      }
-      li.parent-item.active {
-        a{
-          color: $mint;
-        }
-        li a{
-          text-align: left;
-          color: #000;
-        }
       }
     }
     .social {
