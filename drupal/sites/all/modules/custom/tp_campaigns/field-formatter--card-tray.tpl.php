@@ -3,7 +3,7 @@
     $node = node_load($item['target_id']);
     //If a tray has a background we make the card transparent and set the background on the slider level.
     $slider_styles = array();
-    $slider_class = array('swipe', 'on-first-slide');
+    $slider_class = array('tray', 'swipe', 'on-first-slide');
     if($items = field_get_items('node', $node, 'field_campaign_style_setting')){
       $slider_class[] = $items[0]['value'];
     }

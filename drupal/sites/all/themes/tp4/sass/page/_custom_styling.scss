@@ -3,9 +3,11 @@
  */
 
 body.campaign-display{
+  $primary-color: #fff;
+  $secondary-color: #000;
+  $bright-mint: #01bf9e;
+  //Card
   .card.dark-background{
-    $primary-color: #fff;
-    $bright-mint: #01bf9e;
     h1, h2, h3, h4, h5, h6{
       color: $primary-color;
     }
@@ -21,6 +23,9 @@ body.campaign-display{
     .secondary-button a{
       color: $primary-color;
     }
+    .primary-button a{
+      color: $primary-color;
+    }
     .media-caption{
       color: $primary-color;
     }
@@ -29,26 +34,28 @@ body.campaign-display{
         color: $primary-color;
       }
     }
-    //.menu
-    //.menu-item-parent
-    //.menu-item-child
-    //.social-share-label
   }
+  //Tray
   .tray.dark-background{
-    $primary-color: #fff;
-    //pagination
-    //tray titles
-    //arrows (optional)
+    .arrow:hover{
+      color: $bright-mint;
+    }
+    .slider-pagination {
+      a{
+        background-color: $primary-color;
+      }
+      a.active{
+        background-color: $bright-mint;
+      }
+
+    }
     
   }
+  //Header
   .branding-header.dark-background {
-    $primary-color: #fff;
-    $secondary-color: #000;
-    $bright-mint: #01bf9e;
     .share-headline{
       color: $primary-color;
     }
-    // body.node-type-campaign-page .branding-header .menu ul.sf-menu > li.sfHover > a{}
     .menu{
       li{
         &.active > a{
@@ -62,6 +69,12 @@ body.campaign-display{
           background-color: $primary-color;
         }
       }
+    }
+  }
+  //Misc
+  .card-wrapper.has-tray-title{
+    .card.dark-background .card-inner{
+      border-top: none;
     }
   }
 }
