@@ -8610,9 +8610,9 @@ body.node-type-campaign-page .branding-header .menu ul.sf-menu a, #main.card-pag
 }
 /* line 340, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .branding-header .menu ul.sf-menu ul, #main.card-page .branding-header .menu ul.sf-menu ul {
-  -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
 }
 /* line 342, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .branding-header .menu ul.sf-menu ul a, #main.card-page .branding-header .menu ul.sf-menu ul a {
@@ -10013,24 +10013,28 @@ body.campaign-display .tray.dark-background .slider-pagination a {
 body.campaign-display .tray.dark-background .slider-pagination a.active {
   background-color: #01bf9e;
 }
-/* line 56, ../sass/page/_custom_styling.scss */
+/* line 52, ../sass/page/_custom_styling.scss */
+body.campaign-display .tray.dark-background .tray-header .card-title {
+  color: white;
+}
+/* line 58, ../sass/page/_custom_styling.scss */
 body.campaign-display .branding-header.dark-background .share-headline {
   color: white;
 }
-/* line 61, ../sass/page/_custom_styling.scss */
+/* line 63, ../sass/page/_custom_styling.scss */
 body.campaign-display .branding-header.dark-background .menu li.active > a {
   color: #01bf9e;
 }
-/* line 64, ../sass/page/_custom_styling.scss */
+/* line 66, ../sass/page/_custom_styling.scss */
 body.campaign-display .branding-header.dark-background .menu li > a {
   color: white;
 }
-/* line 67, ../sass/page/_custom_styling.scss */
+/* line 69, ../sass/page/_custom_styling.scss */
 body.campaign-display .branding-header.dark-background .menu li.sfHover > a, body.campaign-display .branding-header.dark-background .menu li:hover > a {
   color: black;
   background-color: white;
 }
-/* line 76, ../sass/page/_custom_styling.scss */
+/* line 78, ../sass/page/_custom_styling.scss */
 body.campaign-display .card-wrapper.has-tray-title .card.dark-background .card-inner {
   border-top: none;
 }

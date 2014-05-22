@@ -47,9 +47,10 @@ body.campaign-display{
       a.active{
         background-color: $bright-mint;
       }
-
     }
-    
+    .tray-header .card-title{
+      color: $primary-color;
+    }
   }
   //Header
   .branding-header.dark-background {
