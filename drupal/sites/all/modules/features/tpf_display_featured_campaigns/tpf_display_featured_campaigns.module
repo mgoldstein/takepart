@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Featured Campaigns Bean feature.
+ */
+
+include_once 'tpf_display_featured_campaigns.features.inc';

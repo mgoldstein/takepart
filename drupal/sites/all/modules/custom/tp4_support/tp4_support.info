@@ -3,3 +3,7 @@ description = Module for functions related to the Nov 2013 redesign of TakePart 
 core = 7.x
 package = TP4
 version = 7.x-1.0
+
+files[] = "plugins/bean/FeaturedCampaignsBean.class.php"
+dependencies[] = bean
+dependencies[] = tp_campaigns
