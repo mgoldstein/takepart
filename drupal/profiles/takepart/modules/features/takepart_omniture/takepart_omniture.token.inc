@@ -193,6 +193,10 @@ function takepart_omniture_stringfixes($str) {
     return strtolower(str_replace('&amp;', '&', $str));
 }
 
+function takepart_omniture_removespaces($str) {
+    return strtolower(str_replace(', ', ',', $str));
+}
+
 /**
  * built in date token with custom formatter was not working.
  */
