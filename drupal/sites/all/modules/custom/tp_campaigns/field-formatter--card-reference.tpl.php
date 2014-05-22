@@ -37,8 +37,7 @@
         ><div class="arrow-inner"></div></div>
     </div>
   </nav>
-  <?php endif; ?>
-<?php if(!empty($tray_vars['tray_title'])): ?>
+<?php elseif(!empty($tray_vars['tray_title'])): ?>
   <div class="tray-header">
     <h1 class="card-title"><?php print $tray_vars['tray_title']; ?></h1>
   </div>

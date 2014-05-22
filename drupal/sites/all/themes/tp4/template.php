@@ -656,8 +656,8 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
     $renderable_block =  _block_get_renderable_array(_block_render_blocks(array($block)));
     $center .= drupal_render($renderable_block);
   }
-  $sms = tp4_render_field_value('node', $variables['node'], 'field_campaign_sms');
-  if(!empty($sms)){
+  ;
+  if($sms = tp4_render_field_value('node', $variables['node'], 'field_campaign_sms')){
     $center .= '<div class="sms">'. $sms. '</div>';
 
     //if legal override exists, print it, otherwise print the global copy
@@ -881,7 +881,6 @@ function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
 
   if($filters = field_get_items('node', $node, 'field_campaign_news_filter_tag')){
     $or = db_or();
-    dpm($filters, 'filters 4');
     foreach($filters as $item) {
       
       //Filter can have only one value so this will work

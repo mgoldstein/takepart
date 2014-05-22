@@ -338,7 +338,7 @@ body.node-type-campaign-page, #main.card-page{
           font-size: 14px;
         }
         ul {
-          @include box-shadow(0 0 4px rgba(0,0,0,0.5));
+          @include box-shadow(0 4px 4px rgba(0,0,0,0.5));
           a{
             color: #000;
           }
