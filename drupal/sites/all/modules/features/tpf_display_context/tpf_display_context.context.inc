@@ -1937,6 +1937,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'module' => 'tp4_support',
           'delta' => 'tp4_footer',
           'region' => 'footer',
+          'weight' => '-9',
+        ),
+        'bean-campaigns-module' => array(
+          'module' => 'bean',
+          'delta' => 'campaigns-module',
+          'region' => 'footer',
           'weight' => '-10',
         ),
         'menu-menu-megamenu' => array(
