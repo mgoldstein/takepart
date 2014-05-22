@@ -5,12 +5,16 @@
  * actions, excluding awareness actions from the sitemap
  */
 
-function takepart_sitemap_xmlsitemap_link_alter($link) {
+function takepart_sitemap_xmlsitemap_link_alter(&$link) {
     if ($link['type'] === "node" && $link['subtype'] === "action") {
         $linkparts = parse_url($link['loc']);
         if (!stripos($linkparts['host'], 'takepart.com')) {
             $link['status'] = 0;
-            dd($link);
+            $link['status_default'] = 0;
+        }
+        if (stripos($linkparts['path'], 'user_actions')) {
+            $link['status'] = 0;
+            $link['status_default'] = 0;
         }
     }
     return $link;
