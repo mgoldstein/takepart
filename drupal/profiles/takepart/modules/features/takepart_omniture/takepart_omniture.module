@@ -95,7 +95,16 @@ function takepart_omniture_token_info() {
     ),
   );
 
-
+  $info['tokens']['tp_omniture']['remove_spaces'] = array(
+    'name' => t('Remove Spaces'),
+    'description' => t('Remove spaces from returned value.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_removespaces",
+    ),
+  );
+  
   $info['tokens']['tp_omniture']['first_word'] = array(
     'name' => t('Grab the first word'),
     'description' => t('Grab the first word with html_entity_decode function.'),
