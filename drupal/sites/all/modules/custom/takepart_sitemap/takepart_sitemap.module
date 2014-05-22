@@ -1,13 +1,20 @@
 <?php
+
 /*
  * The action content type must be set to excluded. This function processes all
  * actions, excluding awareness actions from the sitemap
  */
-/*
+
 function takepart_sitemap_xmlsitemap_link_alter($link) {
-    dd($link);
+    if ($link['type'] === "node" && $link['subtype'] === "action") {
+        $linkparts = parse_url($link['loc']);
+        if (!stripos($linkparts['host'], 'takepart.com')) {
+            $link['status'] = 0;
+            dd($link);
+        }
+    }
+    return $link;
 }
- */
 
 /*
 function takepart_sitemap_xmlsitemap_index_links($limit) {
