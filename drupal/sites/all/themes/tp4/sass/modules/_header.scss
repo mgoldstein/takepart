@@ -50,7 +50,7 @@ header {
   }
   .follow-us{
     display: none;
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-tablet){
       display: block;
       text-align: right;
       float: right;
@@ -74,7 +74,7 @@ header {
   }
   .user-menu{
     display: none;
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-tablet){
       display: block;
       float: right;
       font-size: .928571429em; // 13px;
@@ -310,6 +310,10 @@ header {
   }
   .follow-us {
     @include breakpoint($breakpoint-tablet) {
+      display: none;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      display: block;
       padding-right: 39px;
       padding-top: 7px;
     }
@@ -327,7 +331,11 @@ header {
     vertical-align: top;
   }
   .user-menu {
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
+      display: none;
+    }
+    @include breakpoint($breakpoint-desktop){
+      display: block;
       padding-top: 3px;
       padding-right: 7px;
       li {
