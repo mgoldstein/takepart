@@ -143,6 +143,7 @@ features[field_instance][] = node-campaign_card_empty-field_campaign_bg_color
 features[field_instance][] = node-campaign_card_empty-field_campaign_bgw
 features[field_instance][] = node-campaign_card_empty-field_campaign_bgw_image
 features[field_instance][] = node-campaign_card_empty-field_campaign_card_title
+features[field_instance][] = node-campaign_card_empty-field_campaign_min_height
 features[field_instance][] = node-campaign_card_empty-field_campaign_style_setting
 features[field_instance][] = node-campaign_card_iframe-body
 features[field_instance][] = node-campaign_card_iframe-field_campaign_background

@@ -34,7 +34,7 @@ body.node-type-campaign-card-empty,
   }
   header#header{
     max-width: 100%;
-    #block-tp4-support-tp4-slim-nav.block{
+    .slim-nav-inner {
       max-width: 1000px;
       margin: 0 auto;
       padding: 0 10px;
@@ -315,6 +315,13 @@ body.node-type-campaign-page, #main.card-page{
       .sf-arrows .sf-with-ul{
         padding-right: 1em;
       }
+      li{
+        &:hover > a, &.sfHover > a{
+          color: #fff;
+          text-decoration: none;
+          background-color: #000;
+        }
+      }
       ul.sf-menu{
         clear:left;
         float:left;
@@ -326,10 +333,12 @@ body.node-type-campaign-page, #main.card-page{
         text-align:center;
         background: transparent;
         a{
-          color: #000;
           font-family: $primary-sans-font;
           font-weight: bold;
           font-size: 14px;
+          &:not(.active){
+            color: #000;
+          }
         }
         ul {
           @include box-shadow(0 0 4px rgba(0,0,0,0.5));
@@ -344,11 +353,6 @@ body.node-type-campaign-page, #main.card-page{
           right: 50%;
           > a{
             text-transform: uppercase;
-          }
-          &:hover > a{
-            color: #fff;
-            text-decoration: none;
-            background-color: #000;
           }
           li{
             text-align: left;
@@ -378,8 +382,8 @@ body.node-type-campaign-page, #main.card-page{
           color: #000;
         }
       }
-      a.active{
-        color: #000;
+      a.active:not(.anchored-child){
+        color: $mint;
       }
     }
     .social {

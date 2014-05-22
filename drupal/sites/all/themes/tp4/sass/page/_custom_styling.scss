@@ -48,15 +48,16 @@ body.campaign-display{
     .share-headline{
       color: $primary-color;
     }
+    // body.node-type-campaign-page .branding-header .menu ul.sf-menu > li.sfHover > a{}
     .menu{
-      li.parent-item{
-        &.active a{
+      li{
+        &.active > a{
           color: $bright-mint;
         }
         > a{
           color: $primary-color;
         }
-        &.sfHover{
+        &.sfHover > a, &:hover > a{
           color: $secondary-color;
           background-color: $primary-color;
         }
