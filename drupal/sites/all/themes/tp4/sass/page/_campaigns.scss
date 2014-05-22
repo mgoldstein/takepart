@@ -315,6 +315,13 @@ body.node-type-campaign-page, #main.card-page{
       .sf-arrows .sf-with-ul{
         padding-right: 1em;
       }
+      li{
+        &:hover > a, &.sfHover > a{
+          color: #fff;
+          text-decoration: none;
+          background-color: #000;
+        }
+      }
       ul.sf-menu{
         clear:left;
         float:left;
@@ -346,11 +353,6 @@ body.node-type-campaign-page, #main.card-page{
           right: 50%;
           > a{
             text-transform: uppercase;
-          }
-          &:hover > a{
-            color: #fff;
-            text-decoration: none;
-            background-color: #000;
           }
           li{
             text-align: left;
