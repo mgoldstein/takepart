@@ -1,0 +1,80 @@
+/*
+ * Custom Styling for Campaigns
+ */
+/* line 11, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background h1, body.campaign-display .card.dark-background h2, body.campaign-display .card.dark-background h3, body.campaign-display .card.dark-background h4, body.campaign-display .card.dark-background h5, body.campaign-display .card.dark-background h6 {
+  color: white;
+}
+/* line 14, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background p {
+  color: white;
+}
+/* line 17, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background a {
+  color: #01bf9e;
+}
+/* line 20, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .secondary-button a {
+  color: white;
+}
+/* line 22, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .secondary-button a:hover {
+  color: white;
+}
+/* line 26, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .primary-button a {
+  color: white;
+}
+/* line 29, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .media-caption {
+  color: white;
+}
+/* line 33, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background ul li, body.campaign-display .card.dark-background ol li {
+  color: white;
+}
+/* line 40, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .arrow:hover {
+  color: #01bf9e;
+}
+/* line 44, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .slider-pagination a {
+  background-color: white;
+}
+/* line 47, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .slider-pagination a.active {
+  background-color: #01bf9e;
+}
+/* line 51, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .tray-header .card-title {
+  color: white;
+}
+/* line 57, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .share-headline {
+  color: white;
+}
+/* line 62, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.active > a {
+  color: #01bf9e;
+}
+/* line 65, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li > a {
+  color: white;
+}
+/* line 68, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.sfHover > a, body.campaign-display .branding-header.dark-background .menu li:hover > a {
+  color: black;
+  background-color: white;
+}
+/* line 72, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.sfHover > a, body.campaign-display .branding-header.dark-background .menu li:hover > a.active {
+  color: black;
+}
+/* line 76, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item:not(.anchored):hover a.active {
+  color: black;
+}
+/* line 83, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card-wrapper.has-tray-title .card.dark-background .card-inner {
+  border-top: none;
+}
