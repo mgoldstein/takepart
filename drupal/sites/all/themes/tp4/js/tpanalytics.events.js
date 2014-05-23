@@ -130,6 +130,10 @@
                 s2.eVar43 = evar43;
                 linkTrackVars.push('eVar43');
             }
+            if ( list2 ) {
+                s2.list2 = list2;
+                linkTrackVars.push('list2');
+            }
             linkTrackVars.push('eVar30,eVar27,prop26,events');
 
             s2.prop26 = title;
