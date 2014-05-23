@@ -351,6 +351,83 @@
     }
   };
 
+  /**
+   * Set up the featured campaigns module in the footer.
+   */
+  Drupal.behaviors.featuredCampaignsModule = {
+    attach: function() {
+      var $window = $(window);
+      var $campaignsModule = $('#block-bean-campaigns-module');
+      var $container = $campaignsModule.find('.field-collection-container')
+        .append('<a class="featured-campaigns-nav prev">')
+        .append('<a class="featured-campaigns-nav next">');
+      var $items = $container.find('.field-item');
+      var $nav = $container.find('.featured-campaigns-nav');
+      var scrollPoints = [], lastScrollPoint;
+
+      var setupWayouts = function() {
+        var maxScroll = $container.find('.field-name-field-featured-campaigns').width() - $container.width();
+        scrollPoints = [];
+        $items.each(function() {
+          var waypoint = $(this).offset().left - $container.offset().left;
+          if (waypoint <= maxScroll) {
+            scrollPoints.push(waypoint);
+            lastScrollPoint = waypoint;
+          }
+        });
+      };
+
+      var calculateNav = function() {
+        $nav.removeClass('hidden');
+        if ($container[0].scrollLeft === 0) {
+          $nav.filter('.prev').addClass('hidden');
+        }
+        if ($container[0].scrollLeft >= lastScrollPoint) {
+          $nav.filter('.next').addClass('hidden');
+        }
+      };
+
+      setupWayouts();
+      calculateNav();
+
+      var resizeTimeout;
+      $window.on('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+          setupWayouts();
+          calculateNav();
+        }, 200);
+      });
+
+      // prevent horizontal scroll on container
+      $container
+        .hover(function() {
+          $window.on('mousewheel.featuredCampaigns', function(e) {
+            if (e.originalEvent.deltaX != 0) {
+              e.preventDefault();
+            }
+          });
+        }, function() {
+          $window.off('.featuredCampaigns');
+        })
+      ;
+
+      $campaignsModule.on('click', '.featured-campaigns-nav', function(e){
+        e.preventDefault();
+        var currentIndex = scrollPoints.indexOf($container[0].scrollLeft);
+        var targetScroll;
+        if (e.currentTarget.classList.contains('next')) {
+          targetScroll = scrollPoints[currentIndex + 1] || lastScrollPoint;
+        } else {
+          targetScroll = scrollPoints[currentIndex - 1] || 0;
+        }
+        $container.animate({scrollLeft: targetScroll}, function() {
+          calculateNav();
+        });
+      });
+    }
+  };
+
   // Omniture position tracking
   // Parent/ancestor vars to track in reverse order of importance
   $.tpregions.add({
