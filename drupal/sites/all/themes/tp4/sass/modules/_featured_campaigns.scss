@@ -1,0 +1,172 @@
+#block-bean-campaigns-module {
+  max-width: 100% !important;
+  background-color: #F8F8F8;
+
+  .block-title {
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-transform: lowercase;
+    margin-bottom: 1em;
+    @include breakpoint($breakpoint-tablet) {
+      text-align: left;
+      padding: 0 10px;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      padding: 0;
+    }
+  }
+}
+
+.bean-featured-campaigns-module {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 233px;
+  @media (min-width: 536px) {
+    width: 466px;
+  }
+  @include breakpoint($breakpoint-tablet) {
+    width: 698px;
+  }
+  @include breakpoint($breakpoint-desktop) {
+    width: 930px;
+  }
+
+  .field-collection-container {
+    margin: 0 auto;
+    border-bottom: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  .featured-campaigns-nav {
+    display: block;
+    position: absolute;
+    top: 75px;
+    right: 100%;
+    font-size: 3.5em;
+    font-family: "SSGizmo";
+
+    &:after {
+      content: '\25C5';
+      display: inline;
+    }
+    &.next {
+      right: auto;
+      left: 100%;  
+      &:after {
+        content: '\25BB';
+      }
+    }
+
+    &:hover {
+      color: $mint;
+      text-decoration: none;
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+  .field-collection-view {
+    padding: 0;
+    margin: 0 11px 0 0;
+    border: 0;
+  }
+  p {
+    margin: 0;
+  }
+  .field-name-field-featured-campaigns {
+    display: table;
+
+    .field-items {
+      display: table-row;
+    }
+
+    .field-item {
+      display: table-cell;
+      vertical-align: top;
+      position: relative;
+
+      .field-collection-item-field-featured-campaigns {
+        width: 222px;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+      }
+
+      h4 {
+        font: normal normal .857142857em/1 $primary-sans-font;
+        text-transform: uppercase;
+        margin-top: 1.166666667em;
+        margin-bottom: .5em;
+      }
+
+      h2 {
+        font-size: 1.142857143em;
+        line-height: 1.25;
+      }
+
+      a:hover h2 {
+        text-decoration: underline;
+      }
+
+      .field-collection-view-links {
+        display: none;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        a {
+          display: block;
+          padding: 2px 4px;
+          background-color: white;
+          @include border-radius(4px);
+        }
+      }
+      &:hover .field-collection-view-links {
+        display: block;
+      }
+    }
+  }
+
+  .action-links-field-collection-add {
+    position: absolute;
+    top: 5px;
+    left: 100%;
+    margin-left: 0;
+    padding: 2px 4px;
+    background-color: white;
+    @include border-radius(4px);
+  }
+
+  .cta {
+    padding-left: 1.5em;
+    position: relative;
+    margin-left: 10px;
+
+    @include breakpoint($breakpoint-desktop) {
+      margin-left: 0;
+    }
+
+    &:before {
+      content: '\23e9';
+      font-family: 'SSGizmo';
+      color: $mint;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    p {
+      margin-bottom: 1em;
+    }
+  }
+}
