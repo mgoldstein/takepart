@@ -88,7 +88,9 @@ class NewsletterCampaignController extends EntityApiController {
       'header' => '',
       'promo_message' => '',
       'thankyou_message' => '',
-      'tos_link' => 'By clicking "Submit", I agree to be bound by TakePart\'s <a href="/terms-of-use" target="_blank">Terms of Use</a> and <a href="/privacy-policy" target="_blank">Privacy Policy</a>.',
+      'tos_link' => 'By submitting the form above, you agree to TakePart\'s <a href="/terms-of-use" target="_blank">Terms of Use</a> '
+        . 'and <a href="/privacy-policy" target="_blank">Privacy Policy</a>. You can unsubscribe at any time. '
+        . 'Contact us <a href="/contact-us" target="_blank">here</a>.',
       'campaign_id' => '',
       'follow_us_enabled' => FALSE,
       'follow_us_configuration' => $this->initializeFollowUs(),
