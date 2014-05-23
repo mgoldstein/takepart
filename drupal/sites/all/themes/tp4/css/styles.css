@@ -10476,6 +10476,8 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 .footer-text {
   max-width: 600px;
   margin-bottom: 1em;
+  font-size: .928571429em;
+  line-height: 1.384615385;
 }
 @media all and (min-width: 768px) {
   /* line 35, ../sass/modules/_footer.scss */
@@ -10485,41 +10487,41 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   }
 }
 
-/* line 44, ../sass/modules/_footer.scss */
+/* line 46, ../sass/modules/_footer.scss */
 .footer-social {
   overflow: hidden;
   margin-bottom: 1em;
 }
-/* line 47, ../sass/modules/_footer.scss */
+/* line 49, ../sass/modules/_footer.scss */
 .footer-social .fotoer-title {
   margin-bottom: 0;
 }
 @media all and (min-width: 768px) {
-  /* line 44, ../sass/modules/_footer.scss */
+  /* line 46, ../sass/modules/_footer.scss */
   .footer-social {
     float: right;
     text-align: right;
   }
-  /* line 53, ../sass/modules/_footer.scss */
+  /* line 55, ../sass/modules/_footer.scss */
   .footer-social .footer-title {
     float: right;
   }
-  /* line 56, ../sass/modules/_footer.scss */
+  /* line 58, ../sass/modules/_footer.scss */
   .footer-social ul {
     float: right;
   }
-  /* line 58, ../sass/modules/_footer.scss */
+  /* line 60, ../sass/modules/_footer.scss */
   .footer-social ul li {
     float: left;
   }
 }
 
-/* line 65, ../sass/modules/_footer.scss */
+/* line 67, ../sass/modules/_footer.scss */
 .footer-menu {
   clear: both;
   overflow: hidden;
 }
-/* line 69, ../sass/modules/_footer.scss */
+/* line 71, ../sass/modules/_footer.scss */
 .footer-menu li {
   display: inline-block;
   line-height: 1;
@@ -10528,31 +10530,31 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   border-right: 1px solid black;
   padding-right: .5em;
 }
-/* line 76, ../sass/modules/_footer.scss */
+/* line 78, ../sass/modules/_footer.scss */
 .footer-menu li.last {
   border-right: none;
   margin-right: 0;
   padding-right: 0;
 }
-/* line 81, ../sass/modules/_footer.scss */
+/* line 83, ../sass/modules/_footer.scss */
 .footer-menu li a {
   white-space: nowrap;
 }
 
-/* line 87, ../sass/modules/_footer.scss */
+/* line 89, ../sass/modules/_footer.scss */
 .footer-bottom {
   text-align: center;
   clear: both;
   overflow: hidden;
 }
-/* line 92, ../sass/modules/_footer.scss */
+/* line 94, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner {
   margin-top: 30px;
   border-top: 1px solid #cccccc;
   padding-top: 20px;
   width: 100%;
 }
-/* line 99, ../sass/modules/_footer.scss */
+/* line 101, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li {
   display: inline-block;
   margin-left: 20px;
@@ -10560,28 +10562,28 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   width: auto;
   overflow: hidden;
 }
-/* line 105, ../sass/modules/_footer.scss */
+/* line 107, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li:first-child {
   margin-left: 0px;
 }
-/* line 108, ../sass/modules/_footer.scss */
+/* line 110, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a {
   display: block;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 114, ../sass/modules/_footer.scss */
+/* line 116, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-takepart {
   height: 30px;
   width: 131px;
 }
-/* line 118, ../sass/modules/_footer.scss */
+/* line 120, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
   height: 31px;
   width: 144px;
 }
-/* line 122, ../sass/modules/_footer.scss */
+/* line 124, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-pivot {
   height: 28px;
   width: 77px;
