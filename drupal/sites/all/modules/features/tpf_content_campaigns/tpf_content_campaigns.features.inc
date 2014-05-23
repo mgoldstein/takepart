@@ -35,6 +35,14 @@ function tpf_content_campaigns_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'campaign_card_ad' => array(
+      'name' => t('Campaign Card Ad'),
+      'base' => 'node_content',
+      'description' => t('Ad card for TP4 Campaigns'),
+      'has_title' => '1',
+      'title_label' => t('Admin Title'),
+      'help' => '',
+    ),
     'campaign_card_branding' => array(
       'name' => t('Campaign Card Branding'),
       'base' => 'node_content',
