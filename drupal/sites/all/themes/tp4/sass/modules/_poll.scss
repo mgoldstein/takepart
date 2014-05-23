@@ -133,4 +133,5 @@
   @include header-footer-border($light-blue, 5);
   @include box-sizing(box-content);
   padding: $zen-gutter-width;
+  background-color: #FFF;
 }
