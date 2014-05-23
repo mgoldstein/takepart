@@ -90,13 +90,10 @@
             var s2 = s_gi(Drupal.settings.omniture.s_account);
             s2.events = 'event25';
             linkTrackVars = [];
-            
-            if (evar1) {
-                s2.eVar1 = evar1;
-                linkTrackVars.push('eVar1');
-                s2.prop1 = evar1;
-                linkTrackVars.push('prop1');
-            }
+
+            // these were set on page load
+            linkTrackVars.push('eVar1');
+            linkTrackVars.push('eVar12');
 
             if (evar4) {
                 s2.eVar4 = evar4;
@@ -125,6 +122,14 @@
             if (evar21) {
                 s2.eVar21 = evar21;
                 linkTrackVars.push('eVar21');
+            }
+            if ( evar43 ) {
+                s2.eVar43 = evar43;
+                linkTrackVars.push('eVar43');
+            }
+            if ( list2 ) {
+                s2.list2 = list2;
+                linkTrackVars.push('list2');
             }
             linkTrackVars.push('eVar30,eVar27,prop26,events');
 
