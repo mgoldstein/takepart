@@ -35,6 +35,8 @@
 .footer-text {
   max-width: 600px;
   margin-bottom: 1em;
+  font-size: .928571429em; // dumb comps have 13px text
+  line-height: 1.384615385; // but still have 18px leading
   @include breakpoint($breakpoint-tablet) {
     width: 61.2244898%;
     float: left;

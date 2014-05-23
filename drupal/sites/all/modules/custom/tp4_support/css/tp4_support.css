@@ -1797,7 +1797,7 @@
 /* line 4, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-wrapper {
   background-color: #eeeeee;
-  padding: 30px 0 15px 0;
+  padding: 0 0 15px 0;
   position: relative;
   z-index: 2;
 }
@@ -1818,53 +1818,68 @@
 }
 
 /* line 22, ../../../../themes/tp4/sass/modules/_footer.scss */
+#footer {
+  max-width: 100%;
+}
+/* line 25, ../../../../themes/tp4/sass/modules/_footer.scss */
+#footer .block {
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 29, ../../../../themes/tp4/sass/modules/_footer.scss */
+#footer .block:first-child {
+  padding-top: 30px;
+}
+
+/* line 35, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-text {
   max-width: 600px;
   margin-bottom: 1em;
 }
 @media all and (min-width: 768px) {
-  /* line 22, ../../../../themes/tp4/sass/modules/_footer.scss */
+  /* line 35, ../../../../themes/tp4/sass/modules/_footer.scss */
   .footer-text {
     width: 61.2244898%;
     float: left;
   }
 }
 
-/* line 31, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 44, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-social {
   overflow: hidden;
   margin-bottom: 1em;
 }
-/* line 34, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 47, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-social .fotoer-title {
   margin-bottom: 0;
 }
 @media all and (min-width: 768px) {
-  /* line 31, ../../../../themes/tp4/sass/modules/_footer.scss */
+  /* line 44, ../../../../themes/tp4/sass/modules/_footer.scss */
   .footer-social {
     float: right;
     text-align: right;
   }
-  /* line 40, ../../../../themes/tp4/sass/modules/_footer.scss */
+  /* line 53, ../../../../themes/tp4/sass/modules/_footer.scss */
   .footer-social .footer-title {
     float: right;
   }
-  /* line 43, ../../../../themes/tp4/sass/modules/_footer.scss */
+  /* line 56, ../../../../themes/tp4/sass/modules/_footer.scss */
   .footer-social ul {
     float: right;
   }
-  /* line 45, ../../../../themes/tp4/sass/modules/_footer.scss */
+  /* line 58, ../../../../themes/tp4/sass/modules/_footer.scss */
   .footer-social ul li {
     float: left;
   }
 }
 
-/* line 52, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 65, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-menu {
   clear: both;
   overflow: hidden;
 }
-/* line 56, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 69, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-menu li {
   display: inline-block;
   line-height: 1;
@@ -1873,31 +1888,31 @@
   border-right: 1px solid black;
   padding-right: .5em;
 }
-/* line 63, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 76, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-menu li.last {
   border-right: none;
   margin-right: 0;
   padding-right: 0;
 }
-/* line 68, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 81, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-menu li a {
   white-space: nowrap;
 }
 
-/* line 74, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 87, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-bottom {
   text-align: center;
   clear: both;
   overflow: hidden;
 }
-/* line 79, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 92, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner {
   margin-top: 30px;
   border-top: 1px solid #cccccc;
   padding-top: 20px;
   width: 100%;
 }
-/* line 86, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 99, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li {
   display: inline-block;
   margin-left: 20px;
@@ -1905,28 +1920,28 @@
   width: auto;
   overflow: hidden;
 }
-/* line 92, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 105, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li:first-child {
   margin-left: 0px;
 }
-/* line 95, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 108, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a {
   display: block;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 101, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 114, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-takepart {
   height: logos-sprite-height(takepart);
   width: logos-sprite-width(takepart);
 }
-/* line 105, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 118, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
   height: logos-sprite-height(participantmedia);
   width: logos-sprite-width(participantmedia);
 }
-/* line 109, ../../../../themes/tp4/sass/modules/_footer.scss */
+/* line 122, ../../../../themes/tp4/sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-pivot {
   height: logos-sprite-height(pivot);
   width: logos-sprite-width(pivot);
@@ -1935,27 +1950,45 @@
 /**
  * Header (fat and slim)
  */
-/* line 226, social/*.png */
-.social-sprite, .social-facebook-black, .social-facebook-gray, .social-googleplus-black, .social-googleplus-gray, .social-pinterest-black, .social-pinterest-gray, .social-tumblr-black, .social-tumblr-gray, .social-twitter-black, .social-twitter-gray, .social-youtube-black, .social-youtube-gray {
-  background: url('../../../../themes/tp4/images/social-sdb493615aa.png') no-repeat;
+/* line 258, social/*.png */
+.social-sprite, .social-email-black, .social-email-gray, .social-facebook-black, .social-facebook-gray, .social-googleplus-black, .social-googleplus-gray, .social-pinterest-black, .social-pinterest-gray, .social-tumblr-black, .social-tumblr-gray, .social-twitter-black, .social-twitter-gray, .social-youtube-black, .social-youtube-gray {
+  background: url('../../../../themes/tp4/images/social-s3eb5586d89.png') no-repeat;
+}
+
+/* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-black {
+  background-position: 0 -624px;
+}
+/* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-black:hover, .social-email-black.email-black_hover, .social-email-black.email-black-hover {
+  background-position: 0 -216px;
+}
+
+/* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-gray {
+  background-position: 0 -552px;
+}
+/* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-gray:hover, .social-email-gray.email-gray_hover, .social-email-gray.email-gray-hover {
+  background-position: 0 -192px;
 }
 
 /* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-black {
-  background-position: 0 -528px;
+  background-position: 0 -600px;
 }
 /* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-black:hover, .social-facebook-black.facebook-black_hover, .social-facebook-black.facebook-black-hover {
-  background-position: 0 -408px;
+  background-position: 0 -456px;
 }
 
 /* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-gray {
-  background-position: 0 -480px;
+  background-position: 0 -528px;
 }
 /* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-gray:hover, .social-facebook-gray.facebook-gray_hover, .social-facebook-gray.facebook-gray-hover {
-  background-position: 0 -432px;
+  background-position: 0 -480px;
 }
 
 /* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
@@ -1978,56 +2011,56 @@
 
 /* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-black {
-  background-position: 0 -384px;
+  background-position: 0 -432px;
 }
 /* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-black:hover, .social-pinterest-black.pinterest-black_hover, .social-pinterest-black.pinterest-black-hover {
-  background-position: 0 -264px;
+  background-position: 0 -312px;
 }
 
 /* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-gray {
-  background-position: 0 -192px;
+  background-position: 0 -240px;
 }
 /* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-gray:hover, .social-pinterest-gray.pinterest-gray_hover, .social-pinterest-gray.pinterest-gray-hover {
-  background-position: 0 -288px;
-}
-
-/* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-black {
-  background-position: 0 -552px;
-}
-/* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-black:hover, .social-tumblr-black.tumblr-black_hover, .social-tumblr-black.tumblr-black-hover {
   background-position: 0 -336px;
 }
 
 /* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-black {
+  background-position: 0 -648px;
+}
+/* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-black:hover, .social-tumblr-black.tumblr-black_hover, .social-tumblr-black.tumblr-black-hover {
+  background-position: 0 -384px;
+}
+
+/* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-gray {
-  background-position: 0 -456px;
+  background-position: 0 -504px;
 }
 /* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-gray:hover, .social-tumblr-gray.tumblr-gray_hover, .social-tumblr-gray.tumblr-gray-hover {
-  background-position: 0 -360px;
+  background-position: 0 -408px;
 }
 
 /* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-black {
-  background-position: 0 -504px;
+  background-position: 0 -576px;
 }
 /* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-black:hover, .social-twitter-black.twitter-black_hover, .social-twitter-black.twitter-black-hover {
-  background-position: 0 -216px;
+  background-position: 0 -264px;
 }
 
 /* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-gray {
-  background-position: 0 -312px;
+  background-position: 0 -360px;
 }
 /* line 43, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-gray:hover, .social-twitter-gray.twitter-gray_hover, .social-twitter-gray.twitter-gray-hover {
-  background-position: 0 -240px;
+  background-position: 0 -288px;
 }
 
 /* line 60, ../../../../../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */

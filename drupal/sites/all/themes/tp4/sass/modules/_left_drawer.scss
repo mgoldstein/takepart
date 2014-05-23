@@ -90,7 +90,7 @@
         overflow: hidden;
         background: transparent inline-image("user-avatar.png") scroll no-repeat top left;
       }
-      &.user a {
+      .user a {
         background-image: inline-image("user-avatar-active.png");
       }
     }
