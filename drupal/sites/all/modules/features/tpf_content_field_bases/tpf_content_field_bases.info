@@ -120,6 +120,7 @@ features[field_base][] = field_display_tab_banner
 features[field_base][] = field_display_tag
 features[field_base][] = field_feature_video
 features[field_base][] = field_featured
+features[field_base][] = field_featured_campaign_link
 features[field_base][] = field_featured_campaign_page
 features[field_base][] = field_featured_campaigns
 features[field_base][] = field_feed_item_description
