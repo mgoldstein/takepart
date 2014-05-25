@@ -284,7 +284,19 @@ function tp4_preprocess_block(&$variables) {
  */
 
 function tp4_preprocess_tp4_support_slim_nav(&$variables) {
-  unset($variables['user_links']['#links']['logout']);
+  if (isset($variables['user_links']['#links']['user'])){
+    $user_menu = $variables['user_links'];
+    $user_menu['#attributes'] = array(
+      'class' => array(
+        'popup'
+      ),
+    );
+    unset($variables['user_links']['#links']['logout']);
+    $variables['user_links']['#links']['popup'] = array(
+      'title' => render($user_menu),
+      'html' => TRUE,
+    );
+  }
 }
 
 /**

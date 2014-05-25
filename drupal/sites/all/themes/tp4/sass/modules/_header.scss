@@ -337,41 +337,100 @@ header {
     @include breakpoint($breakpoint-desktop){
       display: block;
       padding-top: 3px;
-      padding-right: 7px;
-      li {
-        overflow: hidden;
-        height: 20px;
-        margin: 0;
-        &:first-child{
-          &:before{
-            display: none;
+      padding-right: 10px;
+      margin-right: 10px;
+      position: relative;
+      &:after{
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 4px;
+        height: 12px;
+        width: 0;
+        border-right: 1px solid $light-gray;
+      }
+      &:hover:after {
+        display: none;
+      }
+      li,
+      li.user {
+        &:before {
+          display: none;
+        }
+      }
+      .links {
+        & > li {
+          padding: 0;
+          height: 20px;
+          margin: 0;
+          & > a {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            text-indent: 30px;
+            overflow: hidden;
+            white-space: nowrap;
+            background: transparent inline-image("user-avatar.png") scroll no-repeat top left;
+          }
+          &.user > a {
+            background-image: inline-image("user-avatar-active.png");
           }
         }
-        &:last-child{
-          padding-right: 10px;
-          &:after{
+        &:hover {
+          &:after {
             content: '';
             display: block;
             position: absolute;
-            right: 0;
-            bottom: 0;
-            height: 12px;
-            width: 0;
-            border-right: 1px solid $light-gray;
+            top: -9px;
+            right: -3px;
+            height: 46px;
+            width: 46px;
+            border: none;
+            background: black inline-image("user-avatar-hover.png") scroll no-repeat center 4px;
+            body.not-logged-in & {
+              display: none;
+            }
+          }
+          li.popup {
+            display: block;
           }
         }
-        &.first a {
-          display: inline-block;
-          width: 20px;
-          height: 20px;
-          padding: 0;
-          text-indent: 30px;
+      }
+      li.popup {
+        display: none;
+        position: absolute;
+        right: 0;
+        bottom: -32px;
+        padding-top: 32px;
+        span {
+          display: block;
           white-space: nowrap;
-          overflow: hidden;
-          background: transparent inline-image("user-avatar.png") scroll no-repeat top left;
+          background-color: white;
+          @include box-shadow(0 0 5px black);
         }
-        &.user a {
-          background-image: inline-image("user-avatar-active.png");
+        li {
+          margin: 0;
+          padding: 0;
+  
+          a {
+            display: block;
+            font-size: .928571429em;
+            line-height: 1;
+            margin: 1.5em 1em;
+          }
+          &:first-child a {
+            margin-right: 0;
+            position: relative;
+            &:after {
+              content: '\00b7';
+              display: block;
+              position: absolute;
+              right: -.75em;
+              top: 0;
+            }
+          }
         }
       }
     }
