@@ -388,7 +388,7 @@ header {
             height: 46px;
             width: 46px;
             border: none;
-            background: black inline-image("user-avatar-hover.png") scroll no-repeat center 4px;
+            background: black inline-image("user-avatar-hover.png") scroll no-repeat center 12px;
             body.not-logged-in & {
               display: none;
             }
@@ -401,7 +401,7 @@ header {
       li.popup {
         display: none;
         position: absolute;
-        right: 0;
+        right: -3px;
         bottom: -32px;
         padding-top: 32px;
         span {
