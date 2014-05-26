@@ -249,7 +249,6 @@ function tp4_support_theme() {
       )
     ),
     'tp4_support_featured_campaign' => array(
-      'template' => 'field-formatter--featured-campaign',
       'variables' => array(
         'items' => array(),
         'entity' => '',
@@ -376,24 +375,28 @@ function template_preprocess_tp4_support_mobile_menu_header(&$variables) {
 }
 
 /**
- * Implements template_preprocess_HOOK().
+ * Implements theme_HOOK().
  *
- * Set up variables for the tp4_support_featured_campaign
- * theme hook.
+ * Output HTML for the featured campaigns module.
+ *
+ * @return string HTML output for a featured campaign item.
  */
-function template_preprocess_tp4_support_featured_campaign(&$variables) {
+function theme_tp4_support_featured_campaign(&$variables) {
   foreach ($variables['items'] as $item) {
-    $variables['page_url'] = url('node/' . $item['target_id']);
+    $page_url = url('node/' . $item['target_id']);
     $page = node_load($item['target_id']);
   }
-  foreach(field_get_items('node', $page, 'field_campaign_reference') as $item) {
-    $campaign = node_load($item['target_id']);
+  if (isset($page)) {
+    foreach(field_get_items('node', $page, 'field_campaign_reference') as $item) {
+      $campaign = node_load($item['target_id']);
+    }    
   }
 
   $content = array(
     'image' => array(),
     'label' => array(),
     'headline' => array(),
+    'link' => array(),
   );
   // define what we want to check and the order
   // in which we want to check it
@@ -409,16 +412,12 @@ function template_preprocess_tp4_support_featured_campaign(&$variables) {
         'type' => 'node',
         'entity' => $page,
         'field' => 'field_thumbnail',
-        // 'display' => array('settings' => array('file_view_mode' => 'landscape')),
-        // 'display' => 'feature_secondary',
         'display' => array('type' => 'image', 'settings' => array('image_style' => 'homepage_featured_image', 'image_link' => '')),
       ),
       array(
         'type' => 'node',
         'entity' => $campaign,
         'field' => 'field_thumbnail',
-        // 'display' => array('settings' => array('file_view_mode' => 'landscape')),
-        // 'display' => 'feature_secondary',
         'display' => array('type' => 'image', 'settings' => array('image_style' => 'homepage_featured_image', 'image_link' => '')),
       ),
     ),
@@ -456,7 +455,25 @@ function template_preprocess_tp4_support_featured_campaign(&$variables) {
         'display' => array(),
       ),
     ),
+    'link' => array(
+      array(
+        'type' => 'field_collection_item',
+        'entity' => $variables['entity'],
+        'field' => 'field_featured_campaign_link',
+        'display' => array(),
+      ),
+    ),
   );
+
+  // if we don't have a $page, prevent errors
+  // by unsetting items in $iterator
+  if (!isset($page)) {
+    unset($iterator['image'][1]);
+    unset($iterator['image'][2]);
+    unset($iterator['label'][1]);
+    unset($iterator['headline'][1]);
+    unset($iterator['headline'][2]);
+  }
 
   // work your magic
   foreach($iterator as $field => $candidates) {
@@ -469,7 +486,27 @@ function template_preprocess_tp4_support_featured_campaign(&$variables) {
     }
   }
 
-  $variables['content'] = $content;
+  // add some html
+  $content['label']['#prefix'] = '<h4>';
+  $content['label']['#suffix'] = '</h4>';
+  $content['headline']['#prefix'] = '<h2>';
+  $content['headline']['#suffix'] = '</h2>';
+
+  // render the contents of the field collection item
+  $return = drupal_render($content['image']) . drupal_render($content['label']) . drupal_render($content['headline']);
+
+  // render the outer link; check the override first
+  if (!empty($content['link'])) {
+    $content['link']['#element']['html'] = TRUE;
+    $content['link']['#element']['title'] = $return;
+    $return = $content['link'];
+  }
+  else if (isset($page_url)) {
+    $return = l($return, $page_url, array('html' => TRUE));
+  }
+
+  // render() will just return a string if it's passed one
+  return render($return);
 }
 
 function tp4_support_fat_header(){

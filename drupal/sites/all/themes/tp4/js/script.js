@@ -382,7 +382,7 @@
         if ($container[0].scrollLeft === 0) {
           $nav.filter('.prev').addClass('hidden');
         }
-        if ($container[0].scrollLeft >= lastScrollPoint) {
+        if ($container[0].scrollLeft >= lastScrollPoint || $container.width() >= $container.find('.field-items').width()) {
           $nav.filter('.next').addClass('hidden');
         }
       };

@@ -49,6 +49,55 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_featured_campaigns-field_featured_campaign_link'
+  $field_instances['field_collection_item-field_featured_campaigns-field_featured_campaign_link'] = array(
+    'bundle' => 'field_featured_campaigns',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_featured_campaign_link',
+    'label' => 'Link Override',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'user',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 0,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'link_field',
+      'weight' => 32,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_featured_campaigns-field_featured_campaign_page'
   $field_instances['field_collection_item-field_featured_campaigns-field_featured_campaign_page'] = array(
     'bundle' => 'field_featured_campaigns',
@@ -152,7 +201,7 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 34,
+      'weight' => 35,
     ),
   );
 
@@ -221,7 +270,7 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 33,
+      'weight' => 34,
     ),
   );
 
@@ -274,7 +323,7 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 32,
+      'weight' => 33,
     ),
   );
 
@@ -284,6 +333,7 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
   t('Featured Campaigns');
   t('Headline Override');
   t('Label Override');
+  t('Link Override');
   t('Thumbnail Override');
 
   return $field_instances;
