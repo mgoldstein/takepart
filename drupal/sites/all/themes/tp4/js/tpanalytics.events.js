@@ -70,7 +70,6 @@
             || $body.is('.node-type-video')
             || $body.is('.node-type-flashcard')
         ) {
-
             evar4 = s.prop4;
             var authors = [];
             $('.byline-author').each(function() {
@@ -80,10 +79,10 @@
     	    evar19 = $('.node.view-mode-full').data('series');
             evar20 = s.eVar20;
             evar21 = s.eVar21;
+            evar43 = s.evar43;
+            list2 = s.list2;
         }
-        else if (
-            $body.is('.node-type-campaign-page')
-        ) {
+        else if ($body.is('.node-type-campaign-page')) {
             takepart.analytics.parameters.social_share_platform = title;
             _satellite.track('social_share');
             return;
