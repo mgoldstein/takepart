@@ -90,7 +90,6 @@ function takepart_omniture_value_or_empty($param) {
 }
 
 function takepart_omniture_first_photo_title($nid) {
-
     if (!is_numeric($nid)) {
         return 'Not-A-Number';
     }
@@ -191,6 +190,16 @@ function takepart_omniture_lowercase($str) {
 
 function takepart_omniture_stringfixes($str) {
     return strtolower(str_replace('&amp;', '&', $str));
+}
+
+function takepart_omniture_removespaces($param) {
+  if (empty($param)) {
+      return '';
+  }
+  else {
+    $param = strtolower(html_entity_decode($param, ENT_QUOTES));
+    return strtolower(str_replace(', ', ',', $param));
+  }
 }
 
 /**

@@ -64,7 +64,7 @@
     var social_click = function(options) {
         var $body = $('body');
         var title = normalize_share_title(options.name);
-        var evar1, evar4, evar17, evar19, evar20, evar21, linkTrackVars;
+        var evar1, evar4, evar17, evar19, evar20, evar21, list2, linkTrackVars;
 
         if ($body.is('.node-type-article')
                 || $body.is('.node-type-openpublish-photo-gallery')
