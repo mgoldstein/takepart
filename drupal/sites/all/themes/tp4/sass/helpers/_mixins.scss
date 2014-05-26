@@ -200,7 +200,7 @@
   font-size: 18px;
   line-height: 22px;
   background-color: transparent;
-  a {
+  a:not(.flashcard) {
     position: relative;
     padding-left: 20px;
     color: #000;

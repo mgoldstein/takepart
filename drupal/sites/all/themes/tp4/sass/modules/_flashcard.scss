@@ -10,6 +10,10 @@ a.flashcard {
     color: $flashcard-active !important;
     text-decoration: none !important;
   }
+
+  :hover > & {
+    text-decoration: none !important;
+  }
 }
 
 /* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
