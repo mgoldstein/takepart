@@ -472,6 +472,9 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
       }
       $description = tp4_render_field_value('node', $variables['node'], 'body');
       if(!empty($description)){
+        if (function_exists('tp_flashcards_parse_html')) {
+          $description = tp_flashcards_parse_html($description);
+        }
         $right .= '<div class="description">'. $description. '</div>';
       }
 
@@ -554,11 +557,17 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
     // Return the left and right text columns if they exist
     $left = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
     if(!empty($left)){
+      if (function_exists('tp_flashcards_parse_html')) {
+        $left = tp_flashcards_parse_html($left);
+      }
       $left = '<div class="text">'. $left. '</div>';
     }
     $right = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_right');
-    if(!empty($left)){
-      $left = '<div class="text">'. $right. '</div>';
+    if(!empty($right)){
+      if (function_exists('tp_flashcards_parse_html')) {
+        $right = tp_flashcards_parse_html($right);
+      }
+      $right = '<div class="text">'. $right. '</div>';
     }
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
@@ -567,7 +576,10 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   // Else, if it's a single column use the single column template and $center variable
   elseif($column_count == 'Single Column'){
     $center = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
-    if(!empty($left)){
+    if(!empty($center)){
+      if (function_exists('tp_flashcards_parse_html')) {
+        $center = tp_flashcards_parse_html($center);
+      }
       $center = '<div class="text">'. $center. '</div>';
     }
 
@@ -810,6 +822,11 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 	
  }
 
+  $descriptive_text = tp4_render_field_value('node', $variables['node'], 'body');
+    if (function_exists('tp_flashcards_parse_html')) {
+      $descriptive_text = tp_flashcards_parse_html($descriptive_text);
+    }
+  $variables['descriptive_text'] = $descriptive_text;
 }
 
 //Convert Twitter timestamp
@@ -1012,6 +1029,9 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center .= '</div>';
     }
     $more = tp4_render_field_value('node', $variables['node'], 'field_campaign_more_link');
+    if (function_exists('tp_flashcards_parse_html')) {
+      $more = tp_flashcards_parse_html($more);
+    }
     $more = '<div class="more-link">'. $more. '</div>';
     $center .= $more;
 

@@ -41,7 +41,7 @@
 	}	
 	?>
 	
-		<div class="twitter-descriptive-text"><?php print $variables['body'][0]['value'];	?></div>
+		<div class="twitter-descriptive-text"><?php print $descriptive_text; ?></div>
 
 	</div>
 	
