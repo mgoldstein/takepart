@@ -553,6 +553,64 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
 }
 
+/**
+ * Override or insert variables into the campaign card media template
+ */
+function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
+
+  //Set Layout
+  $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
+  if($column_count == 'Two Column (even width)' || $column_count == 'Two Column (left side wide)' || $column_count == 'Two Column (right side wide)'){  // two column
+
+    // Set the classes
+    if($column_count == 'Two Column (left side wide)'){
+      $variables['classes_array'][] = 'left-large';
+    }
+    elseif($column_count == 'Two Column (right side wide)'){
+      $variables['classes_array'][] = 'right-large';
+    }
+
+    // Set the location of the media element depending on the location set within the CMS
+    $content_side = tp4_render_field_value('node', $variables['node'], 'field_campaign_content_side');
+    if(!empty($content_side) && $content_side == 'Left Side'){
+      //Prepare the left side content
+      $left = 'LEFT SIDE';
+
+    }
+    else{  //media goes on the right
+      $right = 'RIGHT SIDE';
+
+    }
+
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
+  }
+  elseif($column_count == 0){ //single column
+    $center = 'CENTER';
+
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  }
+
+  //background properties
+  tp4_campaign_background_rules($variables);
+
+  //content
+  $variables['center'] = $center;
+  if(!empty($center)){
+    $variables['center'] = $center;
+  }
+  if(!empty($left)){
+    $variables['left'] = $left;
+  }
+  if(!empty($right)){
+    $variables['right'] = $right;
+  }
+
+}
+
+
+
+
+
 
 
 
