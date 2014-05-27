@@ -10520,8 +10520,10 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 .footer-menu {
   clear: both;
   overflow: hidden;
+  font-size: .928571429em;
+  line-height: 1.384615385;
 }
-/* line 71, ../sass/modules/_footer.scss */
+/* line 73, ../sass/modules/_footer.scss */
 .footer-menu li {
   display: inline-block;
   line-height: 1;
@@ -10530,31 +10532,31 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   border-right: 1px solid black;
   padding-right: .5em;
 }
-/* line 78, ../sass/modules/_footer.scss */
+/* line 80, ../sass/modules/_footer.scss */
 .footer-menu li.last {
   border-right: none;
   margin-right: 0;
   padding-right: 0;
 }
-/* line 83, ../sass/modules/_footer.scss */
+/* line 85, ../sass/modules/_footer.scss */
 .footer-menu li a {
   white-space: nowrap;
 }
 
-/* line 89, ../sass/modules/_footer.scss */
+/* line 91, ../sass/modules/_footer.scss */
 .footer-bottom {
   text-align: center;
   clear: both;
   overflow: hidden;
 }
-/* line 94, ../sass/modules/_footer.scss */
+/* line 96, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner {
   margin-top: 30px;
   border-top: 1px solid #cccccc;
   padding-top: 20px;
   width: 100%;
 }
-/* line 101, ../sass/modules/_footer.scss */
+/* line 103, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li {
   display: inline-block;
   margin-left: 20px;
@@ -10562,28 +10564,28 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   width: auto;
   overflow: hidden;
 }
-/* line 107, ../sass/modules/_footer.scss */
+/* line 109, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li:first-child {
   margin-left: 0px;
 }
-/* line 110, ../sass/modules/_footer.scss */
+/* line 112, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a {
   display: block;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 116, ../sass/modules/_footer.scss */
+/* line 118, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-takepart {
   height: 30px;
   width: 131px;
 }
-/* line 120, ../sass/modules/_footer.scss */
+/* line 122, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
   height: 31px;
   width: 144px;
 }
-/* line 124, ../sass/modules/_footer.scss */
+/* line 126, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-pivot {
   height: 28px;
   width: 77px;
