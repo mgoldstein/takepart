@@ -67,6 +67,8 @@
 .footer-menu {
   clear: both;
   overflow: hidden; // clearfix
+  font-size: .928571429em; // dumb 13px text
+  line-height: 1.384615385;
 
   li {
     display: inline-block;
