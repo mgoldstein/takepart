@@ -432,7 +432,8 @@
   // Parent/ancestor vars to track in reverse order of importance
   $.tpregions.add({
     'Header logo' : '.logo',
-    'Header social' : '.follow-us',
+    'Header social' : '#block-tp4-support-tp4-fat-header .follow-us',
+    'Left Flyout Nav - Social' : '#block-tp4-support-tp4-mobile-menu-header .follow-us',
     'Header user menu' : '.user-menu',
     'Slim Header' : '.slim-nav',
     'Mega Menu' : '#megamenu',
