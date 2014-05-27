@@ -1147,7 +1147,7 @@ s.list2 = [tp_omniture:remove_spaces:{node:field_free_tag}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
