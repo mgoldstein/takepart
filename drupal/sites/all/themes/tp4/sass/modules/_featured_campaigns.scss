@@ -149,6 +149,7 @@
     padding-left: 1.5em;
     position: relative;
     margin-left: 10px;
+    margin-bottom: 40px;
 
     @include breakpoint($breakpoint-desktop) {
       margin-left: 0;
@@ -166,6 +167,10 @@
 
     p {
       margin-bottom: 1em;
+    }
+
+    a {
+      color: $mint;
     }
   }
 }
