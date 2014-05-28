@@ -38,7 +38,7 @@ class FeaturedCampaignsBean extends BeanPlugin {
    * Displays the bean.
    */
   public function view($bean, $content, $view_mode = 'default', $langcode = NULL) {
-    $content['bean']['campaigns-module']['cta'] = array(
+    $content['bean']['featured-campaigns-module']['cta'] = array(
       '#markup' => check_markup($bean->campaigns_cta['value'], $bean->campaigns_cta['format']),
       '#weight' => 10,
       '#prefix'=> '<div class="cta">',

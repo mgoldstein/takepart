@@ -12311,12 +12311,12 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 }
 
 /* line 1, ../sass/modules/_featured_campaigns.scss */
-#block-bean-campaigns-module {
+#block-bean-featured-campaigns-module {
   max-width: 100% !important;
   background-color: #F8F8F8;
 }
 /* line 5, ../sass/modules/_featured_campaigns.scss */
-#block-bean-campaigns-module .block-title {
+#block-bean-featured-campaigns-module .block-title {
   max-width: 980px;
   margin-left: auto;
   margin-right: auto;
@@ -12326,14 +12326,14 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 }
 @media all and (min-width: 768px) {
   /* line 5, ../sass/modules/_featured_campaigns.scss */
-  #block-bean-campaigns-module .block-title {
+  #block-bean-featured-campaigns-module .block-title {
     text-align: left;
     padding: 0 10px;
   }
 }
 @media all and (min-width: 980px) {
   /* line 5, ../sass/modules/_featured_campaigns.scss */
-  #block-bean-campaigns-module .block-title {
+  #block-bean-featured-campaigns-module .block-title {
     padding: 0;
   }
 }
