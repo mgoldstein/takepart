@@ -628,10 +628,16 @@ function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
       $left = '';
       $left = $ad_block;
 
+      $right = '';
+      $right = tp4_render_field_value('node', $variables['node'], 'body');
+
     } else{
       //ad goes on the right
       $right = '';
       $right = $ad_block;
+
+      $left = '';
+      $left = tp4_render_field_value('node', $variables['node'], 'body');
 
     }
 
@@ -640,6 +646,7 @@ function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
   elseif($column_count == 0){ //single column
     $center = '';
     $center = $ad_block;
+    $center .= tp4_render_field_value('node', $variables['node'], 'body');
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   }
