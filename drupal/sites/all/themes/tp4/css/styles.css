@@ -9462,11 +9462,11 @@ body.node-type-campaign-page .node-campaign-card-social .social-follow a.social-
 }
 /* line 1010, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .node-campaign-card-social .social-follow a.social-icon.tp-social-link.pinterest:before, #main.card-page .node-campaign-card-social .social-follow a.social-icon.tp-social-link.pinterest:before {
-  background-color: #3d5b96;
+  background-color: #ca2026;
 }
 /* line 1014, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .node-campaign-card-social .social-follow a.social-icon.tp-social-link.pinterest:hover:before, #main.card-page .node-campaign-card-social .social-follow a.social-icon.tp-social-link.pinterest:hover:before {
-  background-color: #637fab;
+  background-color: #ca2026;
 }
 /* line 1017, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page .node-campaign-card-social .social-follow a.social-icon.tp-social-link.google-plus:before, #main.card-page .node-campaign-card-social .social-follow a.social-icon.tp-social-link.google-plus:before {

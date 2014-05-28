@@ -17,7 +17,7 @@
   print $content;
   ?>
   <div class="find-pivot">
-    <?php print l('', '//find.pivot.tv'); ?>
+    <?php print l('', '//find.pivot.tv', array('attributes' => array('target' => '_blank'))); ?>
   </div>
 
 </div>
