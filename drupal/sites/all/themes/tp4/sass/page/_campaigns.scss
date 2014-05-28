@@ -1064,6 +1064,31 @@ body.node-type-campaign-page, #main.card-page{
     }
   }
 
+  /*
+   * Card Ad
+   */
+  .node-campaign-card-ad{
+    div[id*='boxes-box-ga_campaign_728x90']{
+      display: none;
+      @include breakpoint($breakpoint-tablet){
+        display: block;
+      }
+    }
+    div[id*='block-boxes-ga-campaign']{
+      position: relative;
+      &:before{
+        content: 'Advertisement';
+        text-transform: uppercase;
+        font-family: "AdelleSans",Verdana,Tahoma,"DejaVu Sans",sans-serif;
+        font-size: 11px;
+        color: #5a5a5a;
+        width: 100%;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
+
   //
   // Newsletter Signup Block
   //
