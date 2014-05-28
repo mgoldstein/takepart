@@ -12,7 +12,6 @@
   <article class="card-inner<?php if(isset($variables['slim_text'])){ print " ".$variables['slim_text']; }?>">
   <?php print render($title_suffix);  // contextual links ?>
     <?php if(isset($node->field_campaign_card_title['und'][0]['value']) == true): ?>
-      <?php dpm($variables, 'variables'); ?>
       <div class="title-wrapper"><h1 class="card-title <?php print (isset($variables['instructional']) == true ? 'has-instructional' : ''); ?>"><?php print $node->field_campaign_card_title['und'][0]['value']; ?></h1></div>
     <?php endif; ?>
     <?php print render($content['field_campaign_instructional']); ?>
