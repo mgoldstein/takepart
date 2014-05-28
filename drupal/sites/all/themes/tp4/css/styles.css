@@ -12494,6 +12494,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
   padding-left: 1.5em;
   position: relative;
   margin-left: 10px;
+  margin-bottom: 40px;
 }
 @media all and (min-width: 980px) {
   /* line 148, ../sass/modules/_featured_campaigns.scss */
@@ -12501,7 +12502,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
     margin-left: 0;
   }
 }
-/* line 157, ../sass/modules/_featured_campaigns.scss */
+/* line 158, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .cta:before {
   content: '\23e9';
   font-family: 'SSGizmo';
@@ -12511,7 +12512,11 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
   top: 0;
   left: 0;
 }
-/* line 167, ../sass/modules/_featured_campaigns.scss */
+/* line 168, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .cta p {
   margin-bottom: 1em;
+}
+/* line 172, ../sass/modules/_featured_campaigns.scss */
+.bean-featured-campaigns-module .cta a {
+  color: #018b73;
 }
