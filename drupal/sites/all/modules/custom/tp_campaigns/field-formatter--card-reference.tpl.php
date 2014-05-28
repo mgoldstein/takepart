@@ -22,7 +22,7 @@
       <div class="mobile-arrow arrow-right"></div>
     </nav>
     <?php if(isset($tray_vars['tray_title']) == true): ?>
-      <h1 class="card-title"><?php print $tray_vars['tray_title']; ?></h1>
+      <h1 class="card-title has-instructional"><?php print $tray_vars['tray_title']; ?></h1>
     <?php endif; ?>
   </div>
   <nav class="slider-nav">
