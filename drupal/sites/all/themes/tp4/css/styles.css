@@ -8812,11 +8812,11 @@ body.node-type-campaign-page .branding-header #campaign-page-more-shares p:befor
 /* line 491, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page h1.card-title, #main.card-page h1.card-title {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
 }
 /* line 494, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page h1.card-title.has-instructional, #main.card-page h1.card-title.has-instructional {
-  margin-bottom: 27px;
+  margin-bottom: 26px;
 }
 /* line 498, ../sass/page/_campaigns.scss */
 body.node-type-campaign-page #main-wrap, #main.card-page #main-wrap {
