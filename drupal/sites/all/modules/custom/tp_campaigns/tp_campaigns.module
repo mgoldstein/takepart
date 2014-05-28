@@ -132,6 +132,8 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
  * Implements hook_init
  */
 function tp_campaigns_init(){
+  //TODO Move this from init.
+  //Instead trigger this from a form submit so it's not getting hit on EVERY page load
   $card_types = array(
     'campaign_card_media',
     'campaign_card_iframe',
@@ -142,6 +144,7 @@ function tp_campaigns_init(){
     'campaign_card_tap',
     'campaign_card_twitter',
     'campaign_card_empty',
+    'campaign_card_ad'
     );
   variable_set('card_types', $card_types);
 }
@@ -539,3 +542,4 @@ function tp_campaigns_tray_vars($entity){
 
   return $tray_vars;
 }
+

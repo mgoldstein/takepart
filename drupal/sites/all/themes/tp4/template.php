@@ -442,6 +442,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
   foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
     $variables['show_facebook_comments'] = $item['value'];
   }
+
+  // Clear the Campaign Ad number after page load.
+  cache_clear_all('tp_campaign_small_ad_number', 'cache');
+  cache_clear_all('tp_campaign_long_ad_number', 'cache');
+
 }
 
 /**
@@ -567,6 +572,113 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   }
 
 }
+
+function num_to_letter($num){
+  $num -= 1;
+  $letter =   chr(($num % 26) + 97);
+  $letter .=  (floor($num/26) > 0) ? str_repeat($letter, floor($num/26)) : '';
+  return $letter; 
+}
+
+
+function _tp4_campaign_ad_block($ad_type){
+  $ad_number = &drupal_static(__FUNCTION__);
+
+    $small_ad_number = '';
+    $long_ad_number = '';
+    if($ad_type == '300x250'){
+      if($cache = cache_get('tp_campaign_small_ad_number')){
+        $small_ad_number = $cache->data + 1;
+      }else{
+        $small_ad_number = 1;
+      }
+      $letter = num_to_letter($small_ad_number);
+      $block_name = 'ga_campaign_300x250_'. $letter;
+      cache_set('tp_campaign_small_ad_number', $small_ad_number, 'cache');
+    }else{
+      if($cache = cache_get('tp_campaign_long_ad_number')){
+        $long_ad_number = $cache->data + 1;
+      }else{
+        $long_ad_number = 1;
+      }
+      $letter = num_to_letter($long_ad_number + 1);
+      $block_name = 'ga_campaign_728x90_'. $letter;
+      cache_set('tp_campaign_long_ad_number', $long_ad_number, 'cache');
+    }
+
+    $ad_block = block_load('boxes', $block_name);
+    $ad_block = drupal_render(_block_get_renderable_array(_block_render_blocks(array($ad_block))));
+
+    
+  return $ad_block;
+ }
+
+
+
+
+/**
+ * Override or insert variables into the campaign card media template
+ */
+function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
+
+  $ad_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_ad_type');
+  $ad_block = _tp4_campaign_ad_block($ad_type);
+
+  //Set Layout
+  $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
+  if($column_count == 'Two Column (even width)' || $column_count == 'Two Column (left side wide)' || $column_count == 'Two Column (right side wide)'){  // two column
+
+    // Set the classes
+    if($column_count == 'Two Column (left side wide)'){
+      $variables['classes_array'][] = 'left-large';
+    }
+    elseif($column_count == 'Two Column (right side wide)'){
+      $variables['classes_array'][] = 'right-large';
+    }
+
+    // Set the location of the media element depending on the location set within the CMS
+    $content_side = tp4_render_field_value('node', $variables['node'], 'field_campaign_content_side');
+    if(!empty($content_side) && $content_side == 'Left Side'){
+      //ad goes on the left
+      $left = '';
+      $left = $ad_block;
+
+    } else{
+      //ad goes on the right
+      $right = '';
+      $right = $ad_block;
+
+    }
+
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
+  }
+  elseif($column_count == 0){ //single column
+    $center = '';
+    $center = $ad_block;
+
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  }
+
+  //background properties
+  tp4_campaign_background_rules($variables);
+
+  //content
+  $variables['center'] = $center;
+  if(!empty($center)){
+    $variables['center'] = $center;
+  }
+  if(!empty($left)){
+    $variables['left'] = $left;
+  }
+  if(!empty($right)){
+    $variables['right'] = $right;
+  }
+
+}
+
+
+
+
 
 
 
