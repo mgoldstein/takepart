@@ -1938,9 +1938,9 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'footer',
           'weight' => '-9',
         ),
-        'bean-campaigns-module' => array(
+        'bean-featured-campaigns-module' => array(
           'module' => 'bean',
-          'delta' => 'campaigns-module',
+          'delta' => 'featured-campaigns-module',
           'region' => 'footer',
           'weight' => '-10',
         ),
@@ -2082,9 +2082,9 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'footer',
           'weight' => '-9',
         ),
-        'bean-campaigns-module' => array(
+        'bean-featured-campaigns-module' => array(
           'module' => 'bean',
-          'delta' => 'campaigns-module',
+          'delta' => 'featured-campaigns-module',
           'region' => 'footer',
           'weight' => '-10',
         ),

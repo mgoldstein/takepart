@@ -356,7 +356,7 @@
    */
   Drupal.behaviors.featuredCampaignsModule = {
     attach: function() {
-      var $campaignsModule = $('#block-bean-campaigns-module');
+      var $campaignsModule = $('#block-bean-featured-campaigns-module');
 
       // bail early if we dont have a campaigns module
       if ($campaignsModule.length === 0) return;
