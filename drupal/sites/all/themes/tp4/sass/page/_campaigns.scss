@@ -249,11 +249,6 @@ body.node-type-campaign-page, #main.card-page{
     margin: 1.5em auto;
   }  
 
-  .card{
-    height: 100%;
-    overflow: hidden;
-    padding-bottom: 60px;
-  }
 
 
   /*
@@ -273,7 +268,10 @@ body.node-type-campaign-page, #main.card-page{
     margin-bottom: 0;
   }
 
-  .card{ 
+  .card {
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 60px;
     @import "modules/wysiwyg";
   }
   a.card-anchor {
