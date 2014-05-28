@@ -452,11 +452,11 @@
     attach: function() {
       if (!$('body').is('.node-type-openpublish-photo-gallery')) return;
 
-      // Listen for html5 history updates/back button
-      var firstPop = true;
+      // // Listen for html5 history updates/back button
+      // var firstPop = true;
       window.addEventListener('popstate', function(e) {
-        // don't track the first popstate event
-        if (firstPop) return firstPop = false;
+        // // don't track the first popstate event
+        // if (firstPop) return firstPop = false;
 
         var token = getCurrentToken();
         if (token) {
