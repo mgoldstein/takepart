@@ -2988,6 +2988,128 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign_card_ad-body'
+  $field_instances['node-campaign_card_ad-body'] = array(
+    'bundle' => 'campaign_card_ad',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 11,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'body',
+    'label' => 'Body',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'display_summary' => 0,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 20,
+        'summary_rows' => 5,
+      ),
+      'type' => 'text_textarea_with_summary',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_card_ad-field_campaign_ad_type'
   $field_instances['node-campaign_card_ad-field_campaign_ad_type'] = array(
     'bundle' => 'campaign_card_ad',
@@ -3637,7 +3759,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -3723,7 +3845,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -3813,7 +3935,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -3899,7 +4021,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 

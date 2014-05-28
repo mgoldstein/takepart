@@ -135,6 +135,7 @@ features[field_instance][] = node-campaign-field_series
 features[field_instance][] = node-campaign-field_tab_action_override
 features[field_instance][] = node-campaign-field_thumbnail
 features[field_instance][] = node-campaign-field_topic
+features[field_instance][] = node-campaign_card_ad-body
 features[field_instance][] = node-campaign_card_ad-field_campaign_ad_type
 features[field_instance][] = node-campaign_card_ad-field_campaign_background
 features[field_instance][] = node-campaign_card_ad-field_campaign_bg_color
