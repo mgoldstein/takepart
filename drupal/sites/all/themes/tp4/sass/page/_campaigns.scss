@@ -1009,10 +1009,10 @@ body.node-type-campaign-page, #main.card-page{
         }
         &.pinterest:before{
           @extend .tp-social-link.tp-social-Pinterest:before;
-          background-color: #3d5b96;
+          background-color: #ca2026;
         }
         &.pinterest:hover:before{
-          background-color: #637fab;
+          background-color: #ca2026;
         }
         &.google-plus:before{
           @extend .tp-social-link.tp-social-GooglePlus:before;
