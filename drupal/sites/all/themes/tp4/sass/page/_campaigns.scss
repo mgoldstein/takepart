@@ -244,6 +244,19 @@ body.node-type-campaign-page .card.node-campaign-card-media{
     }
   }
 }
+body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
+  .center-column{
+    @include breakpoint($breakpoint-mobile) {
+      @include zen-grid-item(12, 1);
+      padding-left: 10px;
+      padding-right: 10px;
+      @include zen-clear();
+    }
+    @include breakpoint($breakpoint-tablet) {
+      @include zen-grid-item(10, 2);
+    }
+  }
+}
 
 #main.card-page{
   width: 100%;
@@ -837,7 +850,7 @@ body.node-type-campaign-page, #main.card-page{
       overflow: hidden;
       .news-column{
         @include breakpoint($breakpoint-mobile) {
-          width: 31%;
+          width: 100%;
         }
         @include breakpoint($breakpoint-tablet) {
           width: 18%;
