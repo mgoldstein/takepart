@@ -155,7 +155,9 @@
       $facebookComments.html(facebookCommentsTemplate.replace(/href="[^"]+"/g, 'href="' + url + '"'));
     }
 
-    FB.XFBML.parse($facebookComments[0]);
+    if (window.FB) {
+      FB.XFBML.parse($facebookComments[0]);
+    }
   };
 
 
