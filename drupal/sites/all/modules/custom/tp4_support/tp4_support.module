@@ -502,7 +502,9 @@ function theme_tp4_support_featured_campaign(&$variables) {
     $return = $content['link'];
   }
   else if (isset($page_url)) {
-    $return = l($return, $page_url, array('html' => TRUE));
+    // $page_url was constructed with the "URL" function
+    // so we may need to strip an initial slash
+    $return = l($return, preg_replace('#^/#', '', $page_url), array('html' => TRUE));
   }
 
   // render() will just return a string if it's passed one
