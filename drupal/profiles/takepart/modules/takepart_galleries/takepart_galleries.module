@@ -13,33 +13,35 @@ function takepart_galleries_url_inbound_alter(&$path, $original_path, $path_lang
 
 /**
  * Implements hook_init().
+ *
+ * Commented out by Matt Wrather, 2014-05-28
  */
-function takepart_galleries_init() {
+// function takepart_galleries_init() {
   
-  $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
-  $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
-  if($first_folder == 'photos') {
-    $js_path = drupal_get_path('module', 'takepart_galleries') . '/js/takepart_galleries.js';
-    drupal_add_css(
-        '.addthis_button_facebook_like:hover{opacity:1 !important;}',
-        array(
-            'group' => CSS_THEME,
-            'type' => 'inline',
-        )
-    );
-    drupal_add_js($js_path);
-    if ( arg(0) == 'node' && is_numeric(arg(1)) ) {
-      $nid = arg(1);
-      _takepart_galleries_metatags($nid);
-      $jsonjs = "var takepart_galleries_json = " . drupal_json_encode(_takepart_galleries_mappings($nid)) . ";";
-      drupal_add_js($jsonjs, array('type' => 'inline', 'scope' => 'header', 'weight' => 0));
-    }
-    $settings['gallery'] = array(
-        'nid' => $nid,
-    );
-    drupal_add_js($settings, 'setting');
-  }
-}
+//   $first_folder = substr(substr($_SERVER["REQUEST_URI"],1), 0, strpos(substr($_SERVER["REQUEST_URI"],1), "/"));
+//   $last_folder = substr(substr($_SERVER["REQUEST_URI"],1), strrpos(substr($_SERVER["REQUEST_URI"],0), "/"), strlen($_SERVER["REQUEST_URI"]));
+//   if($first_folder == 'photos') {
+//     $js_path = drupal_get_path('module', 'takepart_galleries') . '/js/takepart_galleries.js';
+//     drupal_add_css(
+//         '.addthis_button_facebook_like:hover{opacity:1 !important;}',
+//         array(
+//             'group' => CSS_THEME,
+//             'type' => 'inline',
+//         )
+//     );
+//     drupal_add_js($js_path);
+//     if ( arg(0) == 'node' && is_numeric(arg(1)) ) {
+//       $nid = arg(1);
+//       _takepart_galleries_metatags($nid);
+//       $jsonjs = "var takepart_galleries_json = " . drupal_json_encode(_takepart_galleries_mappings($nid)) . ";";
+//       drupal_add_js($jsonjs, array('type' => 'inline', 'scope' => 'header', 'weight' => 0));
+//     }
+//     $settings['gallery'] = array(
+//         'nid' => $nid,
+//     );
+//     drupal_add_js($settings, 'setting');
+//   }
+// }
 
 /**
  * Implements hook_entity_update().
