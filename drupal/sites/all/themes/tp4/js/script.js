@@ -356,8 +356,12 @@
    */
   Drupal.behaviors.featuredCampaignsModule = {
     attach: function() {
-      var $window = $(window);
       var $campaignsModule = $('#block-bean-campaigns-module');
+
+      // bail early if we dont have a campaigns module
+      if ($campaignsModule.length === 0) return;
+
+      var $window = $(window);
       var $container = $campaignsModule.find('.field-collection-container')
         .append('<a class="featured-campaigns-nav prev">')
         .append('<a class="featured-campaigns-nav next">');
