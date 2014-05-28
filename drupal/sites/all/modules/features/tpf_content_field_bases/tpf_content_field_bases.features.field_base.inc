@@ -1445,6 +1445,7 @@ function tpf_content_field_bases_field_default_field_bases() {
           'type' => 'none',
         ),
         'target_bundles' => array(
+          'campaign_card_ad' => 'campaign_card_ad',
           'campaign_card_branding' => 'campaign_card_branding',
           'campaign_card_empty' => 'campaign_card_empty',
           'campaign_card_iframe' => 'campaign_card_iframe',
@@ -8114,7 +8115,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'translatable' => 1,
     'type' => 'text',
   );
-
 
   // Exported field_base: 'field_trailer_video'
   $field_bases['field_trailer_video'] = array(

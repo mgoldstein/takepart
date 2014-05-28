@@ -542,3 +542,4 @@ function tp_campaigns_tray_vars($entity){
 
   return $tray_vars;
 }
+

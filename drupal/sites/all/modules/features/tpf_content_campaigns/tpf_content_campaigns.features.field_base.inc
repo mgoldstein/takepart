@@ -40,6 +40,32 @@ function tpf_content_campaigns_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_campaign_ad_type'
+  $field_bases['field_campaign_ad_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_campaign_ad_type',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        1 => '300x250',
+        2 => '728x90',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_campaign_anchor_tag'
   $field_bases['field_campaign_anchor_tag'] = array(
     'active' => 1,
