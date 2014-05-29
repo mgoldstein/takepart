@@ -90,7 +90,13 @@ body.campaign-display{
     }
   }
   //Twitter Card Overrides
-  .node-campaign-card-twitter h3.tweet-username a{
+  .node-campaign-card-twitter{
+    .card.dark-background h3.tweet-username a{
+      color: $primary-color;
+    }
+  }
+  //E-mail
+  .card.dark-background .takepart-newsletter-promo-text{
     color: $primary-color;
   }
 

@@ -9984,8 +9984,12 @@ body.campaign-display .branding-header.dark-background .menu li.parent-item:not(
 body.campaign-display .swipe-wrap.has-title .card.dark-background .card-inner {
   border-top: none;
 }
-/* line 93, ../sass/tp4_dark_bg.scss */
-body.campaign-display .node-campaign-card-twitter h3.tweet-username a {
+/* line 94, ../sass/tp4_dark_bg.scss */
+body.campaign-display .node-campaign-card-twitter .card.dark-background h3.tweet-username a {
+  color: white;
+}
+/* line 99, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .takepart-newsletter-promo-text {
   color: white;
 }
 
