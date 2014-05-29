@@ -14,15 +14,7 @@
 /*
  * Layouts
  */
-body.node-type-campaign-page,
-body.node-type-campaign-card-media,
-body.node-type-campaign-card-news,
-body.node-type-campaign-card-iframe,
-body.node-type-campaign-card-social,
-body.node-type-campaign-card-text,
-body.node-type-campaign-card-branding,
-body.node-type-campaign-card-empty,
-body.node-type-campaign-card-ad
+body.campaign-display
 {
   $zen-column-count:  12;
   $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
@@ -262,7 +254,7 @@ body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
   width: 100%;
   max-width: 100%;
 }
-body.node-type-campaign-page, #main.card-page{
+body.campaign-display{
 
   #block-boxes-ga-campaign-header {
     display: none;
