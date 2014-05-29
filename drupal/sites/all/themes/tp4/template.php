@@ -643,19 +643,12 @@ function _tp4_campaign_ad_block($ad_type){
       $block_name = 'ga_campaign_728x90_'. $letter;
       cache_set('tp_campaign_long_ad_number', $long_ad_number, 'cache');
     }
-
-    dpm($ad_slot, 'ad slot');
     drupal_add_js('googletag.cmd.push(function() {
       '.  $ad_slot.'
       googletag.pubads().enableSingleRequest();
       googletag.enableServices();
       });',
     array('type' => 'inline'));
-
-
-
-
-
 
     cache_set('tp_campaign_ad_slots', $ad_slots, 'cache');
     $ad_block = block_load('boxes', $block_name);
