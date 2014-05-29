@@ -3643,7 +3643,7 @@ tr.selected td {
 /* line 825, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1389035865');
+  background-image: url('../images/progress.gif?1401390746');
 }
 
 /* TP Modal Library ---------------------- */
@@ -3748,7 +3748,7 @@ tr.selected td {
 /* line 920, ../sass/elements/_misc.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1394491404');
+  background: url('../images/video-loading.gif?1401390746');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3757,7 +3757,7 @@ tr.selected td {
 /* line 927, ../sass/elements/_misc.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1394491404') no-repeat center center;
+  background: url('../images/video-blocked.gif?1401390746') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -4350,7 +4350,7 @@ body.front #sidebar .block-title {
 /* line 218, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1400625527');
+  background-image: url('../images/tpl-title.jpg?1401390746');
   margin-top: 5px;
   margin-bottom: -10px;
 }
@@ -4365,7 +4365,7 @@ body.front #sidebar .block-title {
   width: 100%;
   max-width: 312px;
   background-size: 100%;
-  background-image: url('../images/tpl-time.jpg?1400625527');
+  background-image: url('../images/tpl-time.jpg?1401390746');
   margin-top: 5px;
 }
 
@@ -4949,7 +4949,7 @@ a.column-header:hover {
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1389035865') no-repeat;
+  background: url('../images/megaphone.jpg?1401390746') no-repeat;
   padding-bottom: 5px;
 }
 
@@ -10084,7 +10084,7 @@ body.campaign-display .node-campaign-card-twitter h3.tweet-username a {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1400625527') no-repeat center 9px;
+    background: url('../images/tpl-logo.jpg?1401390746') no-repeat center 9px;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -10094,7 +10094,7 @@ body.campaign-display .node-campaign-card-twitter h3.tweet-username a {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.jpg?1400625527') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1401390746') no-repeat center center;
     margin: 0;
   }
 }
@@ -10420,11 +10420,11 @@ body.campaign-display .node-campaign-card-twitter h3.tweet-username a {
 }
 /* line 229, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-mobile.png?1400625527');
+  background-image: url('../images/tpl-logo-mobile.png?1401390746');
 }
 /* line 232, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-mobile.png?1400625527');
+  background-image: url('../images/takeaction-logo-mobile.png?1401390746');
 }
 
 /**
@@ -10737,7 +10737,7 @@ header .user-menu {
   /* line 112, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1389035865') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1401390746') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -10799,7 +10799,7 @@ header .search .form-submit {
   padding-top: 48px;
   color: white;
   border: none;
-  background: url('../images/mobile-search-hover.jpg?1389035865') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1401390746') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -10868,7 +10868,7 @@ header .search .form-submit {
     padding-top: 24px;
     overflow: hidden;
     background-color: transparent;
-    background: url('../images/search-submit.png?1389035865') no-repeat center center;
+    background: url('../images/search-submit.png?1401390746') no-repeat center center;
   }
 }
 
@@ -10881,7 +10881,7 @@ header .search .form-submit {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1389035865') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1401390746') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
@@ -11247,7 +11247,7 @@ header .search .form-submit {
 }
 /* line 531, ../sass/modules/_header.scss */
 .slim-nav .search.active .form-submit {
-  background: url('../images/mobile-search-hover.jpg?1389035865') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1401390746') no-repeat center center;
   background-color: #000;
 }
 /* line 537, ../sass/modules/_header.scss */
@@ -11890,7 +11890,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1400625527') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1401390746') no-repeat 10px center;
   margin: 0;
 }
 /* line 149, ../sass/modules/_left_drawer.scss */
@@ -11901,7 +11901,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/tpl-logo-mobile.png?1400625527') no-repeat 10px center;
+  background: url('../images/tpl-logo-mobile.png?1401390746') no-repeat 10px center;
   margin: 0;
 }
 /* line 162, ../sass/modules/_left_drawer.scss */
@@ -12220,7 +12220,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 .tpl-block h2.block__title {
   white-space: nowrap;
   text-indent: 1000px;
-  background: url('../images/tpl_logo.png?1400625527') no-repeat top center;
+  background: url('../images/tpl_logo.png?1401390746') no-repeat top center;
   height: 30px;
   margin-bottom: 2px;
 }
@@ -12232,7 +12232,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 }
 /* line 23, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1400625527') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1401390746') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;
