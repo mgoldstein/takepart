@@ -447,6 +447,20 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
   cache_clear_all('tp_campaign_small_ad_number', 'cache');
   cache_clear_all('tp_campaign_long_ad_number', 'cache');
 
+  //post the ad slots to the head and then clear the cache
+  // if($cache = cache_get('tp_campaign_ad_slots')){
+  //   $cache_data = $cache->data;
+  //   dpm($cache_data, 'cache data');
+  //   drupal_add_js('googletag.cmd.push(function() {
+  //     '.  $cache_data[0].'
+  //     googletag.pubads().enableSingleRequest();
+  //     googletag.enableServices();
+  //     });',
+  //   array('type' => 'inline'));
+
+  //   cache_clear_all('tp_campaign_ad_slots', 'cache');
+  // }
+
 }
 
 /**
@@ -582,6 +596,7 @@ function _tp4_campaign_ad_block($ad_type){
 
     $small_ad_number = '';
     $long_ad_number = '';
+    $ad_slots = array();
     if($ad_type == '300x250'){
       if($cache = cache_get('tp_campaign_small_ad_number')){
         $small_ad_number = $cache->data + 1;
@@ -591,24 +606,63 @@ function _tp4_campaign_ad_block($ad_type){
       $letter = num_to_letter($small_ad_number);
       $block_name = 'ga_campaign_300x250_'. $letter;
       cache_set('tp_campaign_small_ad_number', $small_ad_number, 'cache');
+
+      //Set the Ad Slot
+      switch($small_ad_number){
+        case 1:
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_300x250_a', [300, 250], 'div-gpt-ad-1401393484136-0').addService(googletag.pubads());";
+        break;
+        case 2:
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_300x250_b', [300, 250], 'div-gpt-ad-1401393484136-1').addService(googletag.pubads());";
+        break;
+        case 3:
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_300x250_c', [300, 250], 'div-gpt-ad-1401393484136-2').addService(googletag.pubads());";
+        break;
+      }
     }else{
       if($cache = cache_get('tp_campaign_long_ad_number')){
         $long_ad_number = $cache->data + 1;
       }else{
         $long_ad_number = 1;
       }
+
+      //Set the Ad Slot
+      switch($long_ad_number){
+        case 1:
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_728x90_b', [728, 90], 'div-gpt-ad-1401393484136-4').addService(googletag.pubads());";
+        break;
+        case 2:
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_728x90_c', [728, 90], 'div-gpt-ad-1401393484136-5').addService(googletag.pubads());";
+        break;
+        case 3:
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_728x90_d', [728, 90], 'div-gpt-ad-1401393484136-6').addService(googletag.pubads());";
+        break;
+      }
+
       $letter = num_to_letter($long_ad_number + 1);
       $block_name = 'ga_campaign_728x90_'. $letter;
       cache_set('tp_campaign_long_ad_number', $long_ad_number, 'cache');
     }
 
+    dpm($ad_slot, 'ad slot');
+    drupal_add_js('googletag.cmd.push(function() {
+      '.  $ad_slot.'
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+      });',
+    array('type' => 'inline'));
+
+
+
+
+
+
+    cache_set('tp_campaign_ad_slots', $ad_slots, 'cache');
     $ad_block = block_load('boxes', $block_name);
     $ad_block = drupal_render(_block_get_renderable_array(_block_render_blocks(array($ad_block))));
 
-    
   return $ad_block;
  }
-
 
 
 
