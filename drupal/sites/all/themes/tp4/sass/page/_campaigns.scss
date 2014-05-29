@@ -1106,6 +1106,9 @@ body.campaign-display{
         display: block;
       }
     }
+    div[id*='div-gpt-ad']{
+      margin: 0 auto;
+    }
   }
 
   //
