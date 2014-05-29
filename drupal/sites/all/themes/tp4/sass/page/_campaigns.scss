@@ -51,11 +51,18 @@ body.campaign-display
     @include zen-clear();
     padding: 0;
     //Two column layout: equal width
-    .instructional {
-      &+.left-column, &+.right-column, &+.center-column {
+    .instructional + {
+      .left-column, .left-column + .right-column, .right-column, .center-column {
         margin-top: 0px;
       }
     }
+
+    .title-wrapper + {
+      .left-column, .left-column + .right-column, .right-column, .center-column {
+        margin-top: 5px;
+      }
+    }
+
     .left-column, .right-column, .center-column {
       margin-top: 25px;
     }
