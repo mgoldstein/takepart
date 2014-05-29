@@ -75,10 +75,16 @@ body.front{
       font-weight: normal;
     }
 
-    #mf-more-link-bullet {
-        color: $mint;
+    a#mf-more-link {
+        &:before {
+            content: "\23E9";
+            font-family: "SSGizmo";
+            color: #018b73;
+            position: relative;
+            top: 3px;
+        }
     }
-
+    
     .byline {
       margin: 0 2em 1em;
     }

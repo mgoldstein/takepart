@@ -60,7 +60,7 @@ $headline = !empty($content['#node']->field_promo_headline) ? $content['#node']-
       }
       
       if (!empty($title_link)) {
-        $variables['content']['field_article_subhead'][0]['#markup'] .= ' <span id="mf-more-link-bullet">>></span><a id="mf-more-link" href="' . $title_link . '">more</a>';
+        $variables['content']['field_article_subhead'][0]['#markup'] .= ' <a id="mf-more-link" href="' . $title_link . '">more</a>';
       }
       //dd($variables['content']['field_article_subhead']);
     ?>
