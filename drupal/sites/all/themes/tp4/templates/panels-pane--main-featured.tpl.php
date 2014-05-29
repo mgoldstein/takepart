@@ -34,16 +34,17 @@ $headline = !empty($content['#node']->field_promo_headline) ? $content['#node']-
         print render($variables['content']['field_thumbnail']);
       } ?>
       <?php print render($title_prefix); ?>
-      <?php if ($headline) {
-        if (!empty($title_link)) {
-          $title_heading = '<a href="' . $title_link . '">' . $headline . '</a>';
-          
-        }
-        else {
-          $title_heading = $headline;
-        }
+      <?php 
+        if ($headline) {
+          if (!empty($title_link)) {
+            $title_heading = '<a href="' . $title_link . '">' . $headline . '</a>';
+          }
+          else {
+            $title_heading = $headline;
+          }
         print '<h2' . $title_attributes . '>' . $title_heading . '</h2>';
-      } ?>
+        } 
+      ?>
       <?php print render($title_suffix); ?>
       <?php if ($unpublished): ?>
         <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
@@ -57,6 +58,11 @@ $headline = !empty($content['#node']->field_promo_headline) ? $content['#node']-
       if($tab_title_override != NULL){
         $variables['content']['field_tab_action_override'][0]['#title'] = $tab_title_override;
       }
+      
+      if (!empty($title_link)) {
+        $variables['content']['field_article_subhead'][0]['#markup'] .= ' <span id="mf-more-link-bullet">>></span><a id="mf-more-link" href="' . $title_link . '">more</a>';
+      }
+      //dd($variables['content']['field_article_subhead']);
     ?>
     <?php
       // We hide the comments and links now so that we can render them later.

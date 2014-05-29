@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * @file
  * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
@@ -2646,110 +2647,110 @@ a.edit-mini-panel-link {
   background: url('../images/social-sdb493615aa.png') no-repeat;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-black {
   background-position: 0 -528px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-black:hover, .social-facebook-black.facebook-black_hover, .social-facebook-black.facebook-black-hover {
   background-position: 0 -408px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-gray {
   background-position: 0 -480px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-facebook-gray:hover, .social-facebook-gray.facebook-gray_hover, .social-facebook-gray.facebook-gray-hover {
   background-position: 0 -432px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-googleplus-black {
   background-position: 0 -168px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-googleplus-black:hover, .social-googleplus-black.googleplus-black_hover, .social-googleplus-black.googleplus-black-hover {
   background-position: 0 -96px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-googleplus-gray {
   background-position: 0 -144px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-googleplus-gray:hover, .social-googleplus-gray.googleplus-gray_hover, .social-googleplus-gray.googleplus-gray-hover {
   background-position: 0 -120px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-black {
   background-position: 0 -384px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-black:hover, .social-pinterest-black.pinterest-black_hover, .social-pinterest-black.pinterest-black-hover {
   background-position: 0 -264px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-gray {
   background-position: 0 -192px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-pinterest-gray:hover, .social-pinterest-gray.pinterest-gray_hover, .social-pinterest-gray.pinterest-gray-hover {
   background-position: 0 -288px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-black {
   background-position: 0 -552px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-black:hover, .social-tumblr-black.tumblr-black_hover, .social-tumblr-black.tumblr-black-hover {
   background-position: 0 -336px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-gray {
   background-position: 0 -456px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-tumblr-gray:hover, .social-tumblr-gray.tumblr-gray_hover, .social-tumblr-gray.tumblr-gray-hover {
   background-position: 0 -360px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-black {
   background-position: 0 -504px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-black:hover, .social-twitter-black.twitter-black_hover, .social-twitter-black.twitter-black-hover {
   background-position: 0 -216px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-gray {
   background-position: 0 -312px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-twitter-gray:hover, .social-twitter-gray.twitter-gray_hover, .social-twitter-gray.twitter-gray-hover {
   background-position: 0 -240px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-youtube-black {
   background-position: 0 -72px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-youtube-black:hover, .social-youtube-black.youtube-black_hover, .social-youtube-black.youtube-black-hover {
   background-position: 0 -24px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-youtube-gray {
   background-position: 0 0;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-youtube-gray:hover, .social-youtube-gray.youtube-gray_hover, .social-youtube-gray.youtube-gray-hover {
   background-position: 0 -48px;
 }
@@ -2759,17 +2760,17 @@ a.edit-mini-panel-link {
   background: url('../images/logos-s21b94e0d34.png') no-repeat;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -61px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -31px;
 }
@@ -3624,7 +3625,7 @@ tr.selected td {
 /* line 825, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1389823777');
+  background-image: url('../images/progress.gif?1389035865');
 }
 
 /* TP Modal Library ---------------------- */
@@ -3729,7 +3730,7 @@ tr.selected td {
 /* line 920, ../sass/elements/_misc.scss */
 .pm-jwplayer.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1393277866');
+  background: url('../images/video-loading.gif?1394491404');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3738,7 +3739,7 @@ tr.selected td {
 /* line 927, ../sass/elements/_misc.scss */
 .pm-jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
+  background: url('../images/video-blocked.gif?1394491404') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -4188,25 +4189,29 @@ body.front #sidebar .block-title {
   font-weight: normal;
 }
 /* line 78, ../sass/page/_homepage.scss */
+.panel-takepart-homepage .panel-main-featured .pane-node #mf-more-link-bullet {
+  color: #018b73;
+}
+/* line 82, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .panel-main-featured .pane-node .byline {
   margin: 0 2em 1em;
 }
-/* line 82, ../sass/page/_homepage.scss */
+/* line 86, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .panel-main-featured .pane-node .entry-content {
   margin: 0 2em 1em;
   border-bottom: 1px solid #cccccc;
 }
-/* line 86, ../sass/page/_homepage.scss */
+/* line 90, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field {
   margin-bottom: .7em;
 }
-/* line 90, ../sass/page/_homepage.scss */
+/* line 94, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field-name-field-tab-action-override .field-item {
   position: relative;
   padding-left: 1.5em;
   margin-bottom: 1em;
 }
-/* line 95, ../sass/page/_homepage.scss */
+/* line 99, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field-name-field-tab-action-override .field-item:before {
   content: "\23E9";
   font-family: "SSGizmo";
@@ -4217,32 +4222,32 @@ body.front #sidebar .block-title {
   top: 0;
   left: 0;
 }
-/* line 106, ../sass/page/_homepage.scss */
+/* line 110, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field-name-field-tab-action-override .field-item a {
   color: black;
 }
-/* line 109, ../sass/page/_homepage.scss */
+/* line 113, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field-name-field-tab-action-override .field-item a:before {
   content: "take action:\0020";
   font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: normal;
 }
-/* line 115, ../sass/page/_homepage.scss */
+/* line 119, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field-name-field-tab-action-override .field-item a:hover, .panel-takepart-homepage .panel-main-featured .pane-node .entry-content .field-name-field-tab-action-override .field-item a:active {
   color: #01bf9e;
 }
-/* line 124, ../sass/page/_homepage.scss */
+/* line 128, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary {
   margin-bottom: 1em;
 }
-/* line 125, ../sass/page/_homepage.scss */
+/* line 129, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary .node-title {
   font-size: 1.142857143em;
   line-height: 1.25;
   margin-top: .5em;
   font-weight: normal;
 }
-/* line 133, ../sass/page/_homepage.scss */
+/* line 137, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary.node-openpublish-photo-gallery h2.node-title:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4250,7 +4255,7 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F7";
 }
-/* line 144, ../sass/page/_homepage.scss */
+/* line 148, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .node.view-mode-feature-secondary.node-video h2.node-title:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4258,18 +4263,18 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F9";
 }
-/* line 155, ../sass/page/_homepage.scss */
+/* line 159, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .view-mode-feature-main-tpl {
   margin-bottom: 1em;
 }
-/* line 156, ../sass/page/_homepage.scss */
+/* line 160, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .view-mode-feature-main-tpl .field-name-field-article-subhead {
   font-size: 1.142857143em;
   line-height: 1.25;
   margin-top: .5em;
   font-weight: normal;
 }
-/* line 164, ../sass/page/_homepage.scss */
+/* line 168, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .view-mode-feature-main-tpl.node-openpublish-photo-gallery h2.field-name-field-article-subhead:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4277,7 +4282,7 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F7";
 }
-/* line 175, ../sass/page/_homepage.scss */
+/* line 179, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .view-mode-feature-main-tpl.node-video h2.field-name-field-article-subhead:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4285,7 +4290,7 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F9";
 }
-/* line 187, ../sass/page/_homepage.scss */
+/* line 191, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline {
   border-top: 4px solid #00b5cc;
   margin: 0 0 1em;
@@ -4293,12 +4298,12 @@ body.front #sidebar .block-title {
   height: 45px;
 }
 @media all and (min-width: 980px) {
-  /* line 187, ../sass/page/_homepage.scss */
+  /* line 191, ../sass/page/_homepage.scss */
   .panel-takepart-homepage .tpl-headline {
     height: 18px;
   }
 }
-/* line 197, ../sass/page/_homepage.scss */
+/* line 201, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title,
 .panel-takepart-homepage .tpl-headline .tpl-time {
   display: block;
@@ -4307,7 +4312,7 @@ body.front #sidebar .block-title {
   background: transparent none scroll no-repeat top left;
 }
 @media all and (min-width: 980px) {
-  /* line 197, ../sass/page/_homepage.scss */
+  /* line 201, ../sass/page/_homepage.scss */
   .panel-takepart-homepage .tpl-headline .tpl-title,
   .panel-takepart-homepage .tpl-headline .tpl-time {
     display: inline-block;
@@ -4315,40 +4320,40 @@ body.front #sidebar .block-title {
     margin: 0 0 0 0;
   }
 }
-/* line 208, ../sass/page/_homepage.scss */
+/* line 212, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1399496970');
+  background-image: url('../images/tpl-title.jpg?1400625527');
   margin-top: 5px;
   margin-bottom: -10px;
 }
 @media all and (min-width: 980px) {
-  /* line 208, ../sass/page/_homepage.scss */
+  /* line 212, ../sass/page/_homepage.scss */
   .panel-takepart-homepage .tpl-headline .tpl-title {
     margin-bottom: 0px;
   }
 }
-/* line 217, ../sass/page/_homepage.scss */
+/* line 221, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-time {
   width: 100%;
   max-width: 312px;
   background-size: 100%;
-  background-image: url('../images/tpl-time.jpg?1399496970');
+  background-image: url('../images/tpl-time.jpg?1400625527');
   margin-top: 5px;
 }
 
-/* line 227, ../sass/page/_homepage.scss */
+/* line 231, ../sass/page/_homepage.scss */
 .date {
   margin-bottom: 2px;
 }
 @media all and (min-width: 320px) {
-  /* line 227, ../sass/page/_homepage.scss */
+  /* line 231, ../sass/page/_homepage.scss */
   .date {
     display: none;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 227, ../sass/page/_homepage.scss */
+  /* line 231, ../sass/page/_homepage.scss */
   .date {
     display: block;
     float: left;
@@ -4358,17 +4363,17 @@ body.front #sidebar .block-title {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 227, ../sass/page/_homepage.scss */
+  /* line 231, ../sass/page/_homepage.scss */
   .date {
     float: right;
   }
 }
-/* line 242, ../sass/page/_homepage.scss */
+/* line 246, ../sass/page/_homepage.scss */
 .date.extra-margin {
   margin-top: 1.5em;
 }
 
-/* line 250, ../sass/page/_homepage.scss */
+/* line 254, ../sass/page/_homepage.scss */
 .latest-headlines .views-row {
   line-height: 1.4em;
   font-size: 14px;
@@ -4386,7 +4391,7 @@ body.front #sidebar .block-title {
   top: 7px;
   left: 0;
 }
-/* line 255, ../sass/page/_homepage.scss */
+/* line 259, ../sass/page/_homepage.scss */
 .latest-headlines .views-row .openpublish_photo_gallery:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4394,7 +4399,7 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F7";
 }
-/* line 262, ../sass/page/_homepage.scss */
+/* line 266, ../sass/page/_homepage.scss */
 .latest-headlines .views-row .video:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -4402,12 +4407,12 @@ body.front #sidebar .block-title {
   vertical-align: text-bottom;
   content: " \1F4F9";
 }
-/* line 270, ../sass/page/_homepage.scss */
+/* line 274, ../sass/page/_homepage.scss */
 .latest-headlines a {
   height: 100%;
 }
 
-/* line 276, ../sass/page/_homepage.scss */
+/* line 280, ../sass/page/_homepage.scss */
 a.column-header:hover {
   text-decoration: none;
 }
@@ -4506,23 +4511,23 @@ a.column-header:hover {
   display: table;
   clear: both;
 }
-/* line 284, ../sass/page/_homepage.scss */
+/* line 288, ../sass/page/_homepage.scss */
 #skinny .columns {
   text-align: center;
 }
-/* line 286, ../sass/page/_homepage.scss */
+/* line 290, ../sass/page/_homepage.scss */
 #skinny .columns a:hover {
   text-decoration: none;
 }
-/* line 290, ../sass/page/_homepage.scss */
+/* line 294, ../sass/page/_homepage.scss */
 #skinny .columns a .field-content:hover {
   text-decoration: underline;
 }
-/* line 294, ../sass/page/_homepage.scss */
+/* line 298, ../sass/page/_homepage.scss */
 #skinny .columns .author {
   padding: 4px 0 1px;
 }
-/* line 299, ../sass/page/_homepage.scss */
+/* line 303, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:after {
   content: '';
   display: block;
@@ -4531,56 +4536,56 @@ a.column-header:hover {
   margin: 1em auto 1.5em;
   border-bottom: dotted 2px #949494;
 }
-/* line 309, ../sass/page/_homepage.scss */
+/* line 313, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:hover .column-title {
   text-decoration: none;
 }
-/* line 312, ../sass/page/_homepage.scss */
+/* line 316, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:hover .author {
   text-decoration: none;
 }
-/* line 315, ../sass/page/_homepage.scss */
+/* line 319, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:hover .views-field-field-promo-headline {
   text-decoration: underline;
 }
-/* line 319, ../sass/page/_homepage.scss */
+/* line 323, ../sass/page/_homepage.scss */
 #skinny .columns > .view-content > .views-row:last-child:after {
   border-bottom: none;
 }
 @media all and (min-width: 768px) {
-  /* line 298, ../sass/page/_homepage.scss */
+  /* line 302, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row {
     padding-left: 30px;
     padding-right: 30px;
   }
-  /* line 325, ../sass/page/_homepage.scss */
+  /* line 329, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row:after {
     display: none;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 330, ../sass/page/_homepage.scss */
+  /* line 334, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content > .views-row:after {
     display: block;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 336, ../sass/page/_homepage.scss */
+  /* line 340, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content .views-row {
     display: none;
   }
-  /* line 339, ../sass/page/_homepage.scss */
+  /* line 343, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content .views-row:nth-child(1), #skinny .columns > .view-content .views-row:nth-child(2), #skinny .columns > .view-content .views-row:nth-child(3) {
     display: block;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 344, ../sass/page/_homepage.scss */
+  /* line 348, ../sass/page/_homepage.scss */
   #skinny .columns > .view-content .views-row {
     display: block;
   }
 }
-/* line 352, ../sass/page/_homepage.scss */
+/* line 356, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .block-title, #skinny #block-views-takeaction-homepage-block .block-title {
   font-size: 12px;
   color: #fff;
@@ -4596,19 +4601,19 @@ a.column-header:hover {
   behavior: url("pie.htc");
 }
 @media all and (min-width: 320px) {
-  /* line 366, ../sass/page/_homepage.scss */
+  /* line 370, ../sass/page/_homepage.scss */
   #skinny #block-views-homepage-columns-block .line, #skinny #block-views-takeaction-homepage-block .line {
     border-bottom: 1px solid #0080a3;
     margin: 0;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 366, ../sass/page/_homepage.scss */
+  /* line 370, ../sass/page/_homepage.scss */
   #skinny #block-views-homepage-columns-block .line, #skinny #block-views-takeaction-homepage-block .line {
     margin: 0 13px;
   }
 }
-/* line 377, ../sass/page/_homepage.scss */
+/* line 381, ../sass/page/_homepage.scss */
 #skinny #block-views-homepage-columns-block .views-field-field-profile-photo .field-content, #skinny #block-views-takeaction-homepage-block .views-field-field-profile-photo .field-content {
   border: 1px solid #eee;
   -webkit-border-radius: 50px;
@@ -4618,7 +4623,7 @@ a.column-header:hover {
   overflow: hidden;
   margin: 0 auto 5px;
 }
-/* line 390, ../sass/page/_homepage.scss */
+/* line 394, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .block-title {
   background-color: #01bf9e;
   line-height: 100%;
@@ -4632,61 +4637,61 @@ a.column-header:hover {
   box-sizing: border-box;
   height: 38px;
 }
-/* line 401, ../sass/page/_homepage.scss */
+/* line 405, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .line {
   border-bottom: 1px solid #01bf9e;
 }
-/* line 404, ../sass/page/_homepage.scss */
+/* line 408, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .action-type {
   font: bold 14px/18px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: uppercase;
   padding-bottom: 2px;
 }
-/* line 409, ../sass/page/_homepage.scss */
+/* line 413, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .tab-call-to-action {
   margin-bottom: 10px;
 }
-/* line 412, ../sass/page/_homepage.scss */
+/* line 416, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .action-icon {
   display: inline-block;
 }
-/* line 415, ../sass/page/_homepage.scss */
+/* line 419, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .action-url {
   display: inline-block;
   margin-top: 2px;
   margin-left: 5px;
   vertical-align: top;
 }
-/* line 420, ../sass/page/_homepage.scss */
+/* line 424, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .action-url a {
   color: #018b73;
 }
-/* line 424, ../sass/page/_homepage.scss */
+/* line 428, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block a.more {
   text-align: left;
   display: block;
 }
 @media all and (min-width: 768px) {
-  /* line 424, ../sass/page/_homepage.scss */
+  /* line 428, ../sass/page/_homepage.scss */
   #skinny #block-views-takeaction-homepage-block a.more {
     margin-top: 25px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 424, ../sass/page/_homepage.scss */
+  /* line 428, ../sass/page/_homepage.scss */
   #skinny #block-views-takeaction-homepage-block a.more {
     margin-top: 0;
   }
 }
-/* line 435, ../sass/page/_homepage.scss */
+/* line 439, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block a.more:hover {
   text-decoration: underline;
 }
-/* line 440, ../sass/page/_homepage.scss */
+/* line 444, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .views-row:hover {
   text-decoration: none;
 }
-/* line 442, ../sass/page/_homepage.scss */
+/* line 446, ../sass/page/_homepage.scss */
 #skinny #block-views-takeaction-homepage-block .views-row:hover .action-url {
   text-decoration: underline;
 }
@@ -4694,11 +4699,11 @@ a.column-header:hover {
 /*
  *Photo Galleries
  */
-/* line 455, ../sass/page/_homepage.scss */
+/* line 459, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block {
   font: 100 1.14286em/1.25 "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
 }
-/* line 457, ../sass/page/_homepage.scss */
+/* line 461, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .views-row {
   margin-bottom: 20px;
 }
@@ -4711,12 +4716,12 @@ a.column-header:hover {
   vertical-align: text-bottom;
   content: " \1F4F7";
 }
-/* line 465, ../sass/page/_homepage.scss */
+/* line 469, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .view-footer {
   font-size: .875em;
   line-height: 1.5;
 }
-/* line 469, ../sass/page/_homepage.scss */
+/* line 473, ../sass/page/_homepage.scss */
 #block-views-photo-galleries-promo-block .block-title {
   margin-bottom: 8px;
 }
@@ -4724,20 +4729,20 @@ a.column-header:hover {
 /*
  *Promo "don't miss"
  */
-/* line 476, ../sass/page/_homepage.scss */
+/* line 480, ../sass/page/_homepage.scss */
 .promo {
   margin-top: 20px;
 }
 @media all and (min-width: 320px) {
-  /* line 476, ../sass/page/_homepage.scss */
+  /* line 480, ../sass/page/_homepage.scss */
   .promo {
     text-align: left;
   }
-  /* line 480, ../sass/page/_homepage.scss */
+  /* line 484, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: center;
   }
-  /* line 482, ../sass/page/_homepage.scss */
+  /* line 486, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: block;
     margin-right: 10px;
@@ -4745,16 +4750,16 @@ a.column-header:hover {
     line-height: 28px;
     font-weight: bold;
   }
-  /* line 489, ../sass/page/_homepage.scss */
+  /* line 493, ../sass/page/_homepage.scss */
   .promo .inner a.text:hover {
     text-decoration: underline;
   }
-  /* line 492, ../sass/page/_homepage.scss */
+  /* line 496, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: block;
     font: italic 20px "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   }
-  /* line 495, ../sass/page/_homepage.scss */
+  /* line 499, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: block;
     vertical-align: middle;
@@ -4763,20 +4768,20 @@ a.column-header:hover {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 505, ../sass/page/_homepage.scss */
+  /* line 509, ../sass/page/_homepage.scss */
   .promo .inner {
     text-align: left;
     display: inline-block;
   }
-  /* line 508, ../sass/page/_homepage.scss */
+  /* line 512, ../sass/page/_homepage.scss */
   .promo .inner label {
     display: inline-block;
   }
-  /* line 511, ../sass/page/_homepage.scss */
+  /* line 515, ../sass/page/_homepage.scss */
   .promo .inner .text {
     display: inline-block;
   }
-  /* line 513, ../sass/page/_homepage.scss */
+  /* line 517, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     display: inline-block;
     margin-bottom: 0;
@@ -4784,15 +4789,15 @@ a.column-header:hover {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 476, ../sass/page/_homepage.scss */
+  /* line 480, ../sass/page/_homepage.scss */
   .promo {
     text-align: center;
   }
-  /* line 524, ../sass/page/_homepage.scss */
+  /* line 528, ../sass/page/_homepage.scss */
   .promo .inner .text {
     vertical-align: middle;
   }
-  /* line 526, ../sass/page/_homepage.scss */
+  /* line 530, ../sass/page/_homepage.scss */
   .promo .inner .text img {
     vertical-align: middle;
     padding-bottom: 3px;
@@ -4802,7 +4807,7 @@ a.column-header:hover {
 /*
  *Graveyard
  */
-/* line 537, ../sass/page/_homepage.scss */
+/* line 541, ../sass/page/_homepage.scss */
 .graveyard {
   padding-top: 25px;
   border-top: 1px solid #cccccc;
@@ -4900,33 +4905,33 @@ a.column-header:hover {
   display: table;
   clear: both;
 }
-/* line 541, ../sass/page/_homepage.scss */
+/* line 545, ../sass/page/_homepage.scss */
 .graveyard .topic {
   margin-bottom: 25px;
 }
-/* line 543, ../sass/page/_homepage.scss */
+/* line 547, ../sass/page/_homepage.scss */
 .graveyard .topic .topic-title {
   font: bold 12px "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   margin-bottom: 5px;
   text-transform: uppercase;
 }
 
-/* line 551, ../sass/page/_homepage.scss */
+/* line 555, ../sass/page/_homepage.scss */
 .megaphone {
   display: block;
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1389823777') no-repeat;
+  background: url('../images/megaphone.jpg?1389035865') no-repeat;
   padding-bottom: 5px;
 }
 
-/* line 560, ../sass/page/_homepage.scss */
+/* line 564, ../sass/page/_homepage.scss */
 #div-gpt-ad-1376947900543-0 {
   margin: 0 auto;
 }
 
-/* line 563, ../sass/page/_homepage.scss */
+/* line 567, ../sass/page/_homepage.scss */
 a.cta {
   display: block;
   width: 100%;
@@ -4940,12 +4945,12 @@ a.cta {
   color: #fff;
   margin-bottom: 10px;
 }
-/* line 574, ../sass/page/_homepage.scss */
+/* line 578, ../sass/page/_homepage.scss */
 a.cta span {
   position: relative;
   padding-left: 20px;
 }
-/* line 577, ../sass/page/_homepage.scss */
+/* line 581, ../sass/page/_homepage.scss */
 a.cta span:before {
   font-family: "SSGizmo";
   color: #fff;
@@ -4955,7 +4960,7 @@ a.cta span:before {
   left: 0;
 }
 @media all and (min-width: 768px) {
-  /* line 563, ../sass/page/_homepage.scss */
+  /* line 567, ../sass/page/_homepage.scss */
   a.cta {
     margin-bottom: 0;
   }
@@ -5056,83 +5061,83 @@ a.cta span:before {
   }
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-comment {
   background-position: 0 -414px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-comment:hover, .social .tp-social-comment.comment_hover, .social .tp-social-comment.comment-hover {
   background-position: 0 -270px;
 }
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-email {
   background-position: 0 -342px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-email:hover, .social .tp-social-email.email_hover, .social .tp-social-email.email-hover {
   background-position: 0 -246px;
 }
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-facebook {
   background-position: 0 -318px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-facebook:hover, .social .tp-social-facebook.facebook_hover, .social .tp-social-facebook.facebook-hover {
   background-position: 0 -294px;
 }
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-googleplus {
   background-position: 0 -78px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-googleplus:hover, .social .tp-social-googleplus.googleplus_hover, .social .tp-social-googleplus.googleplus-hover {
   background-position: 0 -150px;
 }
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-more {
   background-position: 0 -438px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-more:hover, .social .tp-social-more.more_hover, .social .tp-social-more.more-hover {
   background-position: 0 -462px;
 }
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-pinterest {
   background-position: 0 -390px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-pinterest:hover, .social .tp-social-pinterest.pinterest_hover, .social .tp-social-pinterest.pinterest-hover {
   background-position: 0 -174px;
 }
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-reddit {
   background-position: 0 -102px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-reddit:hover, .social .tp-social-reddit.reddit_hover, .social .tp-social-reddit.reddit-hover {
   background-position: 0 -126px;
 }
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-takeaction {
   background-position: 0 0;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-takeaction:hover, .social .tp-social-takeaction.takeaction_hover, .social .tp-social-takeaction.takeaction-hover {
   background-position: 0 -39px;
 }
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-tumblr {
   background-position: 0 -486px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-tumblr:hover, .social .tp-social-tumblr.tumblr_hover, .social .tp-social-tumblr.tumblr-hover {
   background-position: 0 -366px;
 }
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-twitter {
   background-position: 0 -198px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .tp-social-twitter:hover, .social .tp-social-twitter.twitter_hover, .social .tp-social-twitter.twitter-hover {
   background-position: 0 -222px;
 }
@@ -5140,7 +5145,7 @@ a.cta span:before {
 .social .comments-link a {
   background-position: 0 -414px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .comments-link a:hover, .social .comments-link a.comment_hover, .social .comments-link a.comment-hover {
   background-position: 0 -270px;
 }
@@ -5148,7 +5153,7 @@ a.cta span:before {
 .social .trigger a {
   background-position: 0 -438px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social .trigger a:hover, .social .trigger a.more_hover, .social .trigger a.more-hover {
   background-position: 0 -462px;
 }
@@ -9535,7 +9540,7 @@ body.node-type-campaign-page .block-newsletter-campaign .social-links li a, #mai
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook, #main.card-page .block-newsletter-campaign .social-links li a.facebook {
   background-position: 0 -480px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook.facebook-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.facebook.facebook-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.facebook:hover, #main.card-page .block-newsletter-campaign .social-links li a.facebook.facebook-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.facebook.facebook-gray-hover {
   background-position: 0 -432px;
 }
@@ -9543,7 +9548,7 @@ body.node-type-campaign-page .block-newsletter-campaign .social-links li a.faceb
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter, #main.card-page .block-newsletter-campaign .social-links li a.twitter {
   background-position: 0 -312px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter.twitter-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitter.twitter-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.twitter:hover, #main.card-page .block-newsletter-campaign .social-links li a.twitter.twitter-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.twitter.twitter-gray-hover {
   background-position: 0 -240px;
 }
@@ -9551,7 +9556,7 @@ body.node-type-campaign-page .block-newsletter-campaign .social-links li a.twitt
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.google, #main.card-page .block-newsletter-campaign .social-links li a.google {
   background-position: 0 -144px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.google:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.google.googleplus-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.google.googleplus-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.google:hover, #main.card-page .block-newsletter-campaign .social-links li a.google.googleplus-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.google.googleplus-gray-hover {
   background-position: 0 -120px;
 }
@@ -9559,7 +9564,7 @@ body.node-type-campaign-page .block-newsletter-campaign .social-links li a.googl
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest, #main.card-page .block-newsletter-campaign .social-links li a.pinterest {
   background-position: 0 -192px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.pinterest:hover, #main.card-page .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray-hover {
   background-position: 0 -288px;
 }
@@ -9567,7 +9572,7 @@ body.node-type-campaign-page .block-newsletter-campaign .social-links li a.pinte
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.youtube, #main.card-page .block-newsletter-campaign .social-links li a.youtube {
   background-position: 0 0;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.youtube:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.youtube.youtube-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.youtube.youtube-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.youtube:hover, #main.card-page .block-newsletter-campaign .social-links li a.youtube.youtube-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.youtube.youtube-gray-hover {
   background-position: 0 -48px;
 }
@@ -9576,7 +9581,7 @@ body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumbl
   background-position: 0 -456px;
   margin-right: 0;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumblr:hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray_hover, body.node-type-campaign-page .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray-hover, #main.card-page .block-newsletter-campaign .social-links li a.tumblr:hover, #main.card-page .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray_hover, #main.card-page .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray-hover {
   background-position: 0 -360px;
 }
@@ -10065,7 +10070,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1399496970') no-repeat center 9px;
+    background: url('../images/tpl-logo.jpg?1400625527') no-repeat center 9px;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -10075,7 +10080,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.jpg?1399496970') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1400625527') no-repeat center center;
     margin: 0;
   }
 }
@@ -10401,11 +10406,11 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 }
 /* line 229, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-mobile.png?1399496970');
+  background-image: url('../images/tpl-logo-mobile.png?1400625527');
 }
 /* line 232, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-mobile.png?1399496970');
+  background-image: url('../images/takeaction-logo-mobile.png?1400625527');
 }
 
 /**
@@ -10942,7 +10947,7 @@ header .user-menu {
   /* line 107, ../sass/modules/_header.scss */
   header .user-menu li.user:before {
     content: '';
-    background: url('../images/avatar-icon.jpg?1389823777') no-repeat center center;
+    background: url('../images/avatar-icon.jpg?1389035865') no-repeat center center;
     height: 15px;
     width: 12px;
     display: block;
@@ -11004,7 +11009,7 @@ header .search .form-submit {
   padding-top: 48px;
   color: white;
   border: none;
-  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1389035865') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -11073,7 +11078,7 @@ header .search .form-submit {
     padding-top: 24px;
     overflow: hidden;
     background-color: transparent;
-    background: url('../images/search-submit.png?1389823777') no-repeat center center;
+    background: url('../images/search-submit.png?1389035865') no-repeat center center;
   }
 }
 
@@ -11086,7 +11091,7 @@ header .search .form-submit {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1389823777') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1389035865') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
@@ -11367,7 +11372,7 @@ header .search .form-submit {
 }
 /* line 448, ../sass/modules/_header.scss */
 .slim-nav .search.active .form-submit {
-  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1389035865') no-repeat center center;
   background-color: #000;
 }
 /* line 454, ../sass/modules/_header.scss */
@@ -11556,7 +11561,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.facebook {
   background-position: 0 -480px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.facebook:hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray_hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray-hover {
   background-position: 0 -432px;
 }
@@ -11564,7 +11569,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.twitter {
   background-position: 0 -312px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.twitter:hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray_hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray-hover {
   background-position: 0 -240px;
 }
@@ -11572,7 +11577,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.google {
   background-position: 0 -144px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.google:hover, .block-newsletter-campaign .social-links li a.google.googleplus-gray_hover, .block-newsletter-campaign .social-links li a.google.googleplus-gray-hover {
   background-position: 0 -120px;
 }
@@ -11580,7 +11585,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.pinterest {
   background-position: 0 -192px;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.pinterest:hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray_hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray-hover {
   background-position: 0 -288px;
 }
@@ -11588,7 +11593,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.youtube {
   background-position: 0 0;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.youtube:hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray_hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray-hover {
   background-position: 0 -48px;
 }
@@ -11597,7 +11602,7 @@ header .search .form-submit {
   background-position: 0 -456px;
   margin-right: 0;
 }
-/* line 43, ../../../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.tumblr:hover, .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray_hover, .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray-hover {
   background-position: 0 -360px;
 }
@@ -11965,7 +11970,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1399496970') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1400625527') no-repeat 10px center;
   margin: 0;
 }
 /* line 98, ../sass/modules/_left_drawer.scss */
@@ -11976,7 +11981,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/tpl-logo-mobile.png?1399496970') no-repeat 10px center;
+  background: url('../images/tpl-logo-mobile.png?1400625527') no-repeat 10px center;
   margin: 0;
 }
 /* line 111, ../sass/modules/_left_drawer.scss */
@@ -12290,7 +12295,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 .tpl-block h2.block__title {
   white-space: nowrap;
   text-indent: 1000px;
-  background: url('../images/tpl_logo.png?1399496970') no-repeat top center;
+  background: url('../images/tpl_logo.png?1400625527') no-repeat top center;
   height: 30px;
   margin-bottom: 2px;
 }
@@ -12302,7 +12307,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 }
 /* line 23, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1399496970') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1400625527') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;
