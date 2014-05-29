@@ -51,6 +51,15 @@ body.campaign-display
     @include zen-clear();
     padding: 0;
     //Two column layout: equal width
+    .instructional {
+      &+.left-column, &+.right-column, &+.center-column {
+        margin-top: 0px;
+      }
+    }
+    .left-column, .right-column, .center-column {
+      margin-top: 25px;
+    }
+
     &.campaign-2col{
       .instructional{
         @include breakpoint($breakpoint-mobile) {
@@ -167,7 +176,7 @@ body.campaign-display
       .instructional{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
-          padding-bottom: 15px;
+          padding-bottom: 5px;
           padding-left: 10px;
           padding-right: 10px;
         }
@@ -268,11 +277,6 @@ body.campaign-display{
     margin: 1.5em auto;
   }  
 
-  .card{
-    height: 100%;
-    overflow: hidden;
-    padding-bottom: 60px;
-  }
 
 
   /*
@@ -292,7 +296,10 @@ body.campaign-display{
     margin-bottom: 0;
   }
 
-  .card{ 
+  .card {
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 60px;
     @import "modules/wysiwyg";
   }
   a.card-anchor {
@@ -511,9 +518,9 @@ body.campaign-display{
   }
   h1.card-title{
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 26px;
     &.has-instructional{
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
   }
   #main-wrap {
