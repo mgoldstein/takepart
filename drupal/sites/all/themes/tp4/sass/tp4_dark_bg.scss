@@ -59,9 +59,14 @@ body.campaign-display{
     }
     .menu{
       li{
-        &.active > a{
+        &.active > a {
+          color: $bright-mint; //switch red with $bright-mint.
+        }
+        &.parent-item:not(.anchored) > a.active{
           color: $bright-mint;
         }
+
+
         > a{
           color: $primary-color;
         }
@@ -79,9 +84,14 @@ body.campaign-display{
     }
   }
   //Misc
-  .card-wrapper.has-tray-title{
+  .swipe-wrap.has-title{
     .card.dark-background .card-inner{
       border-top: none;
     }
   }
+  //Twitter Card Overrides
+  .node-campaign-card-twitter h3.tweet-username a{
+    color: $primary-color;
+  }
+
 }
