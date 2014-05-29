@@ -8103,7 +8103,7 @@ body.campaign-display .card {
 
 @media all and (min-width: 320px) {
   /* line 227, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.node-campaign-card-media .center-column {
+  body.campaign-display .card.node-campaign-card-media .center-column .description {
     float: left;
     width: 100%;
     margin-left: 0%;
@@ -8122,11 +8122,11 @@ body.campaign-display .card {
 }
 @media all and (min-width: 768px) {
   /* line 227, ../sass/page/_campaigns.scss */
-  body.node-type-campaign-page .card.node-campaign-card-media .center-column {
+  body.campaign-display .card.node-campaign-card-media .center-column .description {
     float: left;
-    width: 66.66667%;
-    margin-left: 16.66667%;
-    margin-right: -83.33333%;
+    width: 83.33333%;
+    margin-left: 8.33333%;
+    margin-right: -91.66667%;
     padding-left: 1.5%;
     padding-right: 1.5%;
     -moz-box-sizing: border-box;
