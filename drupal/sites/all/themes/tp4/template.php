@@ -486,6 +486,23 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     }
 
   }
+  //Grab Description
+  $description = tp4_render_field_value('node', $variables['node'], 'body');
+  if(!empty($description)){
+    if (function_exists('tp_flashcards_parse_html')) {
+      $description = tp_flashcards_parse_html($description);
+      $description = '<div class="description">'. $description. '</div>';
+    }else{
+      $description = '';
+    }
+  }
+  //Grab Media Caption
+  $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
+  if(!empty($media_caption)){
+    $media_caption = '<div class="caption">'. $media_caption. '</div>';
+  }else{
+    $media_caption = '';
+  }
   //Set Layout
   $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
   if($column_count == 'Two Column (even width)' || $column_count == 'Two Column (left side wide)' || $column_count == 'Two Column (right side wide)'){  // two column
@@ -505,33 +522,18 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
       $left = '';
       $left .= $media_title;
       $left .= $media;
+      $left .= $media_caption;
 
-      $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
-      if(!empty($media_caption)){
-        $left .= '<div class="caption">'. $media_caption. '</div>';
-      }
-      $description = tp4_render_field_value('node', $variables['node'], 'body');
-      if(!empty($description)){
-        if (function_exists('tp_flashcards_parse_html')) {
-          $description = tp_flashcards_parse_html($description);
-        }
-        $right .= '<div class="description">'. $description. '</div>';
-      }
+      $right = $description;
 
     }
     else{  //media goes on the right
       $right = '';
       $right .= $media_title;
       $right .= $media;
+      $right .= $media_caption;
 
-      if(!empty($description)){
-        $left .= '<div class="description">'. $description. '</div>';
-      }
-      $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
-      if(!empty($media_caption)){
-        $right .= '<div class="caption">'. $media_caption. '</div>';
-      }
-
+      $left = $description;
     }
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_2col';
@@ -540,14 +542,8 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     $center = '';
     $center .= $media_title;
     $center .= $media;
-
-    $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
-    if(!empty($media_caption)){
-      $center .= '<div class="caption">'. $media_caption. '</div>';
-    }
-    if(!empty($description)){
-      $center .= '<div class="description">'. $description. '</div>';
-    }
+    $center .= $media_caption;
+    $center .= $description;
 
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   }

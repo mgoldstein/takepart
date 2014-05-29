@@ -232,8 +232,8 @@ body.node-type-campaign-card-news .card.campaign-1col{
     }
   }
 }
-body.node-type-campaign-page .card.node-campaign-card-media{
-  .center-column{
+body.campaign-display .card.node-campaign-card-media{
+  .center-column .description{
     @include breakpoint($breakpoint-mobile) {
       @include zen-grid-item(12, 1);
       padding-left: 10px;
@@ -241,7 +241,7 @@ body.node-type-campaign-page .card.node-campaign-card-media{
       @include zen-clear();
     }
     @include breakpoint($breakpoint-tablet) {
-      @include zen-grid-item(8, 3);
+      @include zen-grid-item(10, 2);
     }
   }
 }
