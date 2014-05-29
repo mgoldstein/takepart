@@ -51,6 +51,15 @@ body.campaign-display
     @include zen-clear();
     padding: 0;
     //Two column layout: equal width
+    .instructional {
+      &+.left-column, &+.right-column, &+.center-column {
+        margin-top: 0px;
+      }
+    }
+    .left-column, .right-column, .center-column {
+      margin-top: 25px;
+    }
+
     &.campaign-2col{
       .instructional{
         @include breakpoint($breakpoint-mobile) {
@@ -167,7 +176,7 @@ body.campaign-display
       .instructional{
         @include breakpoint($breakpoint-mobile) {
           @include zen-grid-item(12, 1);
-          padding-bottom: 15px;
+          padding-bottom: 5px;
           padding-left: 10px;
           padding-right: 10px;
         }
