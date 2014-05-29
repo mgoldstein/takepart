@@ -447,20 +447,6 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
   cache_clear_all('tp_campaign_small_ad_number', 'cache');
   cache_clear_all('tp_campaign_long_ad_number', 'cache');
 
-  //post the ad slots to the head and then clear the cache
-  // if($cache = cache_get('tp_campaign_ad_slots')){
-  //   $cache_data = $cache->data;
-  //   dpm($cache_data, 'cache data');
-  //   drupal_add_js('googletag.cmd.push(function() {
-  //     '.  $cache_data[0].'
-  //     googletag.pubads().enableSingleRequest();
-  //     googletag.enableServices();
-  //     });',
-  //   array('type' => 'inline'));
-
-  //   cache_clear_all('tp_campaign_ad_slots', 'cache');
-  // }
-
 }
 
 /**
@@ -644,7 +630,6 @@ function _tp4_campaign_ad_block($ad_type){
       cache_set('tp_campaign_long_ad_number', $long_ad_number, 'cache');
     }
 
-    dpm($ad_slot, 'ad slot');
     drupal_add_js('googletag.cmd.push(function() {
       '.  $ad_slot.'
       googletag.pubads().enableSingleRequest();
