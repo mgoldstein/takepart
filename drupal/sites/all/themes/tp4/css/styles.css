@@ -7651,7 +7651,7 @@ body.campaign-display .card .instructional + .left-column, body.campaign-display
 }
 /* line 61, ../sass/page/_campaigns.scss */
 body.campaign-display .card .title-wrapper + .left-column, body.campaign-display .card .title-wrapper + .left-column + .right-column, body.campaign-display .card .title-wrapper + .right-column, body.campaign-display .card .title-wrapper + .center-column {
-  margin-top: 6px;
+  margin-top: 5px;
 }
 /* line 66, ../sass/page/_campaigns.scss */
 body.campaign-display .card .left-column, body.campaign-display .card .right-column, body.campaign-display .card .center-column {
