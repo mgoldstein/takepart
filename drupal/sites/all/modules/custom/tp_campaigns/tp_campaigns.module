@@ -132,6 +132,8 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
  * Implements hook_init
  */
 function tp_campaigns_init(){
+  //TODO Move this from init.
+  //Instead trigger this from a form submit so it's not getting hit on EVERY page load
   $card_types = array(
     'campaign_card_media',
     'campaign_card_iframe',
@@ -142,6 +144,7 @@ function tp_campaigns_init(){
     'campaign_card_tap',
     'campaign_card_twitter',
     'campaign_card_empty',
+    'campaign_card_ad'
     );
   variable_set('card_types', $card_types);
 }
@@ -505,11 +508,12 @@ function tp_campaigns_tray_vars($entity){
   
   $tray_vars = array();
   $tray_vars['tray_classes'] = array();
-
   //Grab the tray title if it exists
   if($items = field_get_items('node', $entity, 'field_campaign_tray_title')){
     $tray_vars['tray_title'] = drupal_render(field_view_value('node', $entity, 'field_campaign_tray_title', $items[0]));
     $tray_vars['tray_classes'][] = 'has-tray-title';
+    $title_exists = '';
+    $title_exists = true;
   }
   //Set the tray classes
   if($items = field_get_items('node', $entity, 'field_campaign_background')){
@@ -521,12 +525,19 @@ function tp_campaigns_tray_vars($entity){
   if($items = field_get_items('node', $entity, 'field_campaign_card_reference')){
     foreach($items as $key => $item){
       $node = node_load($item['target_id']);
+      if($card_title = field_get_items('node', $node, 'field_campaign_card_title')){
+        //If any card within a tray has a title we need to show a line above it
+        $title_exists = true;
+      }
       $output = '';
       $output .= '<div class="card-wrapper '. drupal_html_class($node->title). '">';
       $output .= drupal_render(node_view($node, 'full', NULL));
       $output .= '</div>';
       $tray_vars['cards'][] = $output;
     }
+  }
+  if($title_exists == true){
+    $tray_vars['tray_classes'][] = 'has-title';
   }
 
   //Anchor Tag
@@ -539,3 +550,4 @@ function tp_campaigns_tray_vars($entity){
 
   return $tray_vars;
 }
+

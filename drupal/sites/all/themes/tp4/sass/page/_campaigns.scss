@@ -14,14 +14,7 @@
 /*
  * Layouts
  */
-body.node-type-campaign-page,
-body.node-type-campaign-card-media,
-body.node-type-campaign-card-news,
-body.node-type-campaign-card-iframe,
-body.node-type-campaign-card-social,
-body.node-type-campaign-card-text,
-body.node-type-campaign-card-branding,
-body.node-type-campaign-card-empty,
+body.campaign-display
 {
   $zen-column-count:  12;
   $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
@@ -230,12 +223,38 @@ body.node-type-campaign-card-news .card.campaign-1col{
     }
   }
 }
+body.node-type-campaign-page .card.node-campaign-card-media{
+  .center-column{
+    @include breakpoint($breakpoint-mobile) {
+      @include zen-grid-item(12, 1);
+      padding-left: 10px;
+      padding-right: 10px;
+      @include zen-clear();
+    }
+    @include breakpoint($breakpoint-tablet) {
+      @include zen-grid-item(8, 3);
+    }
+  }
+}
+body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
+  .center-column{
+    @include breakpoint($breakpoint-mobile) {
+      @include zen-grid-item(12, 1);
+      padding-left: 10px;
+      padding-right: 10px;
+      @include zen-clear();
+    }
+    @include breakpoint($breakpoint-tablet) {
+      @include zen-grid-item(10, 2);
+    }
+  }
+}
 
 #main.card-page{
   width: 100%;
   max-width: 100%;
 }
-body.node-type-campaign-page, #main.card-page{
+body.campaign-display{
 
   #block-boxes-ga-campaign-header {
     display: none;
@@ -695,12 +714,6 @@ body.node-type-campaign-page, #main.card-page{
       background-size: 1000px;
     }
   }
-  .card-wrapper.has-card-title,
-  .card-wrapper.has-tray-title{
-    .card-inner{
-      border-top: 1px solid #dadada;
-    }
-  }
 
 
   /*
@@ -821,7 +834,7 @@ body.node-type-campaign-page, #main.card-page{
       overflow: hidden;
       .news-column{
         @include breakpoint($breakpoint-mobile) {
-          width: 31%;
+          width: 100%;
         }
         @include breakpoint($breakpoint-tablet) {
           width: 18%;
@@ -993,10 +1006,10 @@ body.node-type-campaign-page, #main.card-page{
         }
         &.pinterest:before{
           @extend .tp-social-link.tp-social-Pinterest:before;
-          background-color: #3d5b96;
+          background-color: #ca2026;
         }
         &.pinterest:hover:before{
-          background-color: #637fab;
+          background-color: #e63f52;
         }
         &.google-plus:before{
           @extend .tp-social-link.tp-social-GooglePlus:before;
@@ -1058,6 +1071,31 @@ body.node-type-campaign-page, #main.card-page{
     p {
       font-size: .875em;
       line-height: 1.5;
+    }
+  }
+
+  /*
+   * Card Ad
+   */
+  .node-campaign-card-ad{
+    div[id*='boxes-box-ga_campaign_728x90']{
+      display: none;
+      @include breakpoint($breakpoint-tablet){
+        display: block;
+      }
+    }
+    div[id*='block-boxes-ga-campaign']{
+      position: relative;
+      &:before{
+        content: 'Advertisement';
+        text-transform: uppercase;
+        font-family: "AdelleSans",Verdana,Tahoma,"DejaVu Sans",sans-serif;
+        font-size: 11px;
+        color: #5a5a5a;
+        width: 100%;
+        text-align: center;
+        display: block;
+      }
     }
   }
 
@@ -1506,10 +1544,14 @@ p.campaign-content-meta{
   }
 }
 
+body.campaign-display .swipe-wrap.has-title{
+  .card-inner{
+    border-top: 1px solid #dadada;
+  }
+}
+
 //Add Custom Styling for TP4 Campaigns
 @import "tp4_dark_bg";
-
-
 
 
 

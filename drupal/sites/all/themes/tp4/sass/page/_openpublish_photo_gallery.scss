@@ -236,10 +236,15 @@
       }
       .slide-caption {
         margin-left: 620px;
-        width: 360px;
+        width: 340px;
         height: 413px;
         overflow-y: scroll;
       }
+    }
+    @media (min-width: 1000px) {
+      .slide-caption {
+        width: 360px;
+      }      
     }
   }
   .gallery-slide-next-gallery {
