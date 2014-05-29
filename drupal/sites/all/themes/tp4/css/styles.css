@@ -4211,7 +4211,7 @@ body.front #sidebar .block-title {
   font-weight: normal;
 }
 /* line 79, ../sass/page/_homepage.scss */
-.panel-takepart-homepage .panel-main-featured .pane-node a#mf-more-link:before {
+.panel-takepart-homepage .panel-main-featured .pane-node #mf-more-link-bullet:before {
   content: "\23E9";
   font-family: "SSGizmo";
   color: #018b73;
