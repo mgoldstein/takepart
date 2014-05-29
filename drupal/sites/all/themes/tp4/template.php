@@ -954,25 +954,8 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 	
 	} 
 
-  //Width and height variables
-  $variables['styles'] = array();
-  $variables['styles'][] = 'background-color: '. $variables['field_campaign_bg_color'][0]['rgb']. ';';
-  
-  if($variables['field_campaign_bgw'][0]['value'] == 0){
-    $variables['classes_array'][] = 'card-width-full';
-  }
-  else{
-    $variables['classes_array'][] = 'card-width-980';
-  }
-  if($variables['field_campaign_bgw_image'][0]['value'] == 0){
-    $variables['styles'][] = 'background-size: 100%;';
-  }
-  else{
-    $variables['styles'][] = 'background-size: 1000px;';
-  }
-  
-  $variables['card_background'] = file_create_url($variables['field_campaign_background'][0]['uri']);
-	
+	//background properties
+    tp4_campaign_background_rules($variables);
 	
  }
 

@@ -724,12 +724,6 @@ body.node-type-campaign-page, #main.card-page{
       background-size: 1000px;
     }
   }
-  .card-wrapper.has-card-title,
-  .card-wrapper.has-tray-title{
-    .card-inner{
-      border-top: 1px solid #dadada;
-    }
-  }
 
 
   /*
@@ -1560,10 +1554,14 @@ p.campaign-content-meta{
   }
 }
 
+body.campaign-display .swipe-wrap.has-title{
+  .card-inner{
+    border-top: 1px solid #dadada;
+  }
+}
+
 //Add Custom Styling for TP4 Campaigns
 @import "tp4_dark_bg";
-
-
 
 
 
