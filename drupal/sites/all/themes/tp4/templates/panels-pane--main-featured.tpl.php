@@ -71,6 +71,5 @@ $headline = !empty($content['#node']->field_promo_headline) ? $content['#node']-
     hide($variables['content']['links']);
     print render($variables['content']['field_author']);
     print render($variables['content']);
-    dd($variables['content']);
     ?>
 </div>
