@@ -9,7 +9,7 @@
  */
 function tp_pivot_finder_page_build(&$page){
   /* AJAX check  */
-  if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+  if(isset($_GET['ajax']) && $_GET['ajax'] == TRUE) {
     /* special ajax here */
   }else{
     global $theme;
