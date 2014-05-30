@@ -1137,6 +1137,12 @@ body.page-iframes-header{
     padding-right: 0;
   }
 }
+body.page-iframes-slim-header {
+  border-bottom: none;
+  .slimnav.responsive .follow-us {
+    padding-right: 0;
+  }
+}
 body.page-iframes-footer{
   border-top: none;
 }
