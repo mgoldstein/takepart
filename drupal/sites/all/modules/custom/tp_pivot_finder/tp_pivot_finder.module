@@ -8,20 +8,23 @@
  *Implements hook_page_build()
  */
 function tp_pivot_finder_page_build(&$page){
-  /* AJAX check  */
-  if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
-    /* special ajax here */
-  }else{
-    global $theme;
-    if($theme == 'tp4'){
-      $path = drupal_get_path('module', 'tp_pivot_finder');
-      drupal_add_js($path. '/js/channelfinder-domain.js', array(
-          'scope' => 'header',
-          'group' => JS_THEME,
-          'weight' => 999999999
-        ));
-      drupal_add_js($path. '/js/channelfinder-resize.js', array('scope' => 'footer'));
-    }
+  global $theme;
+  if($theme == 'tp4'){
+    $path = drupal_get_path('module', 'tp_pivot_finder');
+    drupal_add_js("document.domain = 'www.takepart.com';", array(
+        'type' => 'inline',
+        'scope' => 'header',
+        'group' => JS_DEFAULT,
+        'every_page' => TRUE,
+        'weight' => -99999999
+
+    ));
+    drupal_add_js($path. '/js/channelfinder-domain.js', array(
+        'scope' => 'header',
+        'group' => JS_THEME,
+        'weight' => 999999999
+      ));
+    drupal_add_js($path. '/js/channelfinder-resize.js', array('scope' => 'footer'));
   }
 }
 
