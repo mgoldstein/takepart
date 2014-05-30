@@ -599,10 +599,10 @@ function _tp4_campaign_ad_block($ad_type){
           $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_300x250_a', [300, 250], 'div-gpt-ad-1401393484136-0').addService(googletag.pubads());";
         break;
         case 2:
-          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_300x250_b', [300, 250], 'div-gpt-ad-1401393484136-1').addService(googletag.pubads());";
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_300x250_b', [300, 250], 'div-gpt-ad-1401406506269-0').addService(googletag.pubads());";
         break;
         case 3:
-          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_300x250_c', [300, 250], 'div-gpt-ad-1401393484136-2').addService(googletag.pubads());";
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_300x250_c', [300, 250], 'div-gpt-ad-1401406531316-0').addService(googletag.pubads());";
         break;
       }
     }else{
@@ -615,13 +615,13 @@ function _tp4_campaign_ad_block($ad_type){
       //Set the Ad Slot
       switch($long_ad_number){
         case 1:
-          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_728x90_b', [728, 90], 'div-gpt-ad-1401393484136-4').addService(googletag.pubads());";
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_728x90_b', [728, 90], 'div-gpt-ad-1401406546626-0').addService(googletag.pubads());";
         break;
         case 2:
-          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_728x90_c', [728, 90], 'div-gpt-ad-1401393484136-5').addService(googletag.pubads());";
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_728x90_c', [728, 90], 'div-gpt-ad-1401406557634-0').addService(googletag.pubads());";
         break;
         case 3:
-          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_728x90_d', [728, 90], 'div-gpt-ad-1401393484136-6').addService(googletag.pubads());";
+          $ad_slot = "googletag.defineSlot('/4355895/TP_Campaign_728x90_d', [728, 90], 'div-gpt-ad-1401406568148-0').addService(googletag.pubads());";
         break;
       }
 
