@@ -9139,7 +9139,7 @@ body.campaign-display .card.node-campaign-card-empty {
   body.campaign-display .card.node-campaign-card-empty .card-inner {
     padding-top: 0px;
     width: 100%;
-    max-width: 1000px;
+    max-width: 100%;
   }
   /* line 926, ../sass/page/_campaigns.scss */
   body.campaign-display .card.node-campaign-card-empty img {
