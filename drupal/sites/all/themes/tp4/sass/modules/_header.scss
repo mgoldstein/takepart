@@ -350,7 +350,7 @@ header {
         width: 0;
         border-right: 1px solid $light-gray;
       }
-      &:hover:after {
+      body.logged-in &:hover:after {
         display: none;
       }
       li,
