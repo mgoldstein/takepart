@@ -1630,16 +1630,12 @@ function tpf_display_context_field_default_field_instances() {
   t('Enable for TAB');
   t('Featured');
   t('Link Only');
-  t('Main Image');
-  t('Promo Headline');
-  t('Promo Text');
   t('Series');
   t('Short Introduction');
   t('Social Share');
   t('The title to show in the browser\'s title bar. If this field is empty, the Page Title will be used instead.');
   t('This marks an Action as eligible to be included as a TAB modal recommendation.');
   t('This will be displayed as an Action\'s title within TAB modal.');
-  t('Thumbnail Image');
   t('Trailer Video');
 
   return $field_instances;
