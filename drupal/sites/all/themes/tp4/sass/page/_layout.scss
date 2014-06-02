@@ -200,22 +200,25 @@ body {
 
 // Mobile ad position
 #block-boxes-ga-mobile-320x50 {
-  display: block;
-  visibility: visible;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color: white;
-  @include breakpoint($breakpoint-mobile) {
-    display: none;
-    visibility: hidden;
-  }
-  #boxes-box-ga_mobile_320x50 {
+  @include breakpoint($breakpoint-mobile) {  
+    display: block;
+    visibility: visible;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: white;
+    #boxes-box-ga_mobile_320x50 {
       position: relative;
       width: 320px;
       margin: 0 auto;
   }
+    }
+    @include breakpoint($breakpoint-mobile) {
+    display: none;
+    visibility: hidden;
+  }
+  
 }
