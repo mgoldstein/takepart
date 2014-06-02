@@ -216,7 +216,7 @@ body {
       margin: 0 auto;
   }
     }
-    @include breakpoint($breakpoint-mobile) {
+    @include breakpoint($breakpoint-tablet) {
     display: none;
     visibility: hidden;
   }

@@ -4150,30 +4150,32 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 
-/* line 202, ../sass/page/_layout.scss */
-#block-boxes-ga-mobile-320x50 {
-  display: block;
-  visibility: visible;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color: white;
-}
 @media all and (min-width: 320px) {
+  /* line 202, ../sass/page/_layout.scss */
+  #block-boxes-ga-mobile-320x50 {
+    display: block;
+    visibility: visible;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: white;
+  }
+  /* line 213, ../sass/page/_layout.scss */
+  #block-boxes-ga-mobile-320x50 #boxes-box-ga_mobile_320x50 {
+    position: relative;
+    width: 320px;
+    margin: 0 auto;
+  }
+}
+@media all and (min-width: 768px) {
   /* line 202, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 {
     display: none;
     visibility: hidden;
   }
-}
-/* line 216, ../sass/page/_layout.scss */
-#block-boxes-ga-mobile-320x50 #boxes-box-ga_mobile_320x50 {
-  position: relative;
-  width: 320px;
-  margin: 0 auto;
 }
 
 /* line 6, ../sass/page/_homepage.scss */
