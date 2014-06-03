@@ -51,6 +51,7 @@ dependencies[] = tpf_content_venue
 dependencies[] = tpf_content_video
 dependencies[] = tpf_display_boxes
 dependencies[] = views
+features[box][] = ga_mobile_320x50
 features[context][] = ad_exclude_campaign
 features[context][] = addthis_blocks
 features[context][] = addthis_leftpanel_blocks
