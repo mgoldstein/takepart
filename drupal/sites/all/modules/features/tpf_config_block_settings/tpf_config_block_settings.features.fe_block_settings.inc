@@ -23,6 +23,12 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'stark' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'stark',
+        'weight' => -83,
+      ),
       'takepart3' => array(
         'region' => '',
         'status' => 0,
@@ -51,6 +57,12 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'stark' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'stark',
+        'weight' => -82,
+      ),
       'takepart3' => array(
         'region' => '',
         'status' => 0,
@@ -77,6 +89,12 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'stark' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'stark',
+        'weight' => 0,
+      ),
       'takepart3' => array(
         'region' => '',
         'status' => 0,
@@ -103,6 +121,12 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'stark' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'stark',
+        'weight' => -87,
+      ),
       'takepart3' => array(
         'region' => '',
         'status' => 0,
@@ -114,6 +138,38 @@ function tpf_config_block_settings_default_fe_block_settings() {
         'status' => 0,
         'theme' => 'tp4',
         'weight' => -87,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['boxes-ga_mobile_320x50'] = array(
+    'cache' => -2,
+    'custom' => 0,
+    'delta' => 'ga_mobile_320x50',
+    'module' => 'boxes',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'stark' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'stark',
+        'weight' => 0,
+      ),
+      'takepart3' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'takepart3',
+        'weight' => 0,
+      ),
+      'tp4' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'tp4',
+        'weight' => 0,
       ),
     ),
     'title' => '',

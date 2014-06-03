@@ -63,5 +63,4 @@ features[box][] = our_blogs_summary_1
 features[box][] = right_rail_video_promo_articles
 features[box][] = takepart
 features[ctools][] = boxes:box:1
-features[fe_block_settings][] = boxes-ga_mobile_320x50
 features[features_api][] = api:2
