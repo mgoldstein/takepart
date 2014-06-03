@@ -36,8 +36,8 @@ function takepart_ads_preprocess_page(&$vars) {
             preg_match('/[0-9]+x[0-9]+/', $ad, $adsize);
             $lr = explode("x", $adsize[0]);
             $gptad_html .='if ( ('.$lr[0].' === 728 && window.innerWidth < 768) || (' 
-                    . $lr[0] . ' === 1 && window.innerWidth < 768) || (' 
-                    . $lr[0] . ' === 320 && window.innerWidth > 320) ) {' . "\n";
+             . $lr[0] . ' === 1 && window.innerWidth < 768) || (' 
+             . $lr[0] . ' === 320 && window.innerWidth > 768) ) {' . "\n";
             $gptad_html .= '} else {'."\n";
             $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
             $gptad_html .= '}'."\n";

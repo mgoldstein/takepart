@@ -432,6 +432,20 @@
     }
   };
 
+  /**
+  * Mobile ad Behaviors
+  */
+  Drupal.behaviors.mobileAdBehaviors = {
+    attach: function(context, settings) {
+      //Toggle search on mobile
+      $('.close-mobile-ad').click(function(e) {
+          e.preventDefault();
+        $('#block-boxes-ga-mobile-320x50').addClass('hide');
+      });
+
+    }
+  };
+  
   // Omniture position tracking
   // Parent/ancestor vars to track in reverse order of importance
   $.tpregions.add({
