@@ -198,6 +198,11 @@ body {
   }
 }
 
+.close-ad {
+    display: none;
+    visibility: hidden;
+}
+
 // Mobile ad position
 #block-boxes-ga-mobile-320x50 {
   @include breakpoint($breakpoint-mobile) {  
@@ -210,15 +215,31 @@ body {
     padding: 0;
     width: 100%;
     background-color: white;
+    z-index: 1001;
     #boxes-box-ga_mobile_320x50 {
       position: relative;
       width: 320px;
       margin: 0 auto;
-  }
     }
+    .close-mobile-ad {
+      display: block;
+      visibility: visible;
+      content: '\2421';
+      font-size: 14px;
+      position: absolute;
+      right: 5px;
+      top: 0;
+      color: black;
+      font-family: SSGizmo;
+      text-decoration: none;
+    }
+  }
     @include breakpoint($breakpoint-tablet) {
     display: none;
     visibility: hidden;
   }
-  
+  &.hide {
+         display: none;
+    visibility: hidden; 
+  }
 }

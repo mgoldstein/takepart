@@ -4150,8 +4150,14 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 
+/* line 201, ../sass/page/_layout.scss */
+.close-ad {
+  display: none;
+  visibility: hidden;
+}
+
 @media all and (min-width: 320px) {
-  /* line 202, ../sass/page/_layout.scss */
+  /* line 207, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 {
     display: block;
     visibility: visible;
@@ -4162,20 +4168,39 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     padding: 0;
     width: 100%;
     background-color: white;
+    z-index: 1001;
   }
-  /* line 213, ../sass/page/_layout.scss */
+  /* line 219, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 #boxes-box-ga_mobile_320x50 {
     position: relative;
     width: 320px;
     margin: 0 auto;
   }
+  /* line 224, ../sass/page/_layout.scss */
+  #block-boxes-ga-mobile-320x50 .close-mobile-ad {
+    display: block;
+    visibility: visible;
+    content: '\2421';
+    font-size: 14px;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    color: black;
+    font-family: SSGizmo;
+    text-decoration: none;
+  }
 }
 @media all and (min-width: 768px) {
-  /* line 202, ../sass/page/_layout.scss */
+  /* line 207, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 {
     display: none;
     visibility: hidden;
   }
+}
+/* line 241, ../sass/page/_layout.scss */
+#block-boxes-ga-mobile-320x50.hide {
+  display: none;
+  visibility: hidden;
 }
 
 /* line 6, ../sass/page/_homepage.scss */

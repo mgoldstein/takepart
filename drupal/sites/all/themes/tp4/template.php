@@ -2042,28 +2042,11 @@ function tp4_field_campaign_iframe($variables){
   return $output;
 }
 
-/*
- * Add post-vote call to action value to returned poll results.
- */
-function tp4_preprocess_poll_results(&$variables) {
-  $nid = $variables['nid'];
-  $poll = node_load($nid);
-  $cta = NULL;
-  foreach(field_get_items('node', $poll, 'field_post_vote_message') as $delta => $item) {
-    $cta = $item['safe_value'];
-  }
-  if (!is_null($cta)) {
-      $variables['cta'] = $cta;
-  }
-  else {
-      $variables['cta'] = '';
-  }
-}
-
-/*
- * Change text of poll submit button
- */
-function tp4_preprocess_poll_vote(&$variables) {
-    $variables['form']['vote']['#value'] = 'Submit';
-    $variables['vote'] = drupal_render($variables['form']['vote']);
+function tp4_block_view_alter(&$data, $block) {
+    switch ($block->delta) {
+        case 'ga_mobile_320x50':
+            $button = '<a href="#" id="close-'.$block->delta.'" class="close-mobile-ad tplinkpos">Close</a>';
+            $data['content'] = $button . $data['content'];
+            break;
+    }
 }

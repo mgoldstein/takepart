@@ -81,7 +81,9 @@ class boxes_ga_ad extends boxes_box {
 <script type='text/javascript'>
   function $gptfunction() {
    if (typeof(googletag) !== 'undefined') {
-     if($lr[0] === 728 && window.innerWidth < 768) {
+     if( ($lr[0] === 728 && window.innerWidth < 768) || 
+       ($lr[0] === 1 && window.innerWidth < 768) || 
+       ($lr[0] === 320 && window.innerWidth > 768) ) {
        setTimeout("$gptfunction()",1000);
        jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
      }
