@@ -6,5 +6,50 @@
 function pm_jwplatform_schema() {
   return array(
     'cache_pm_jwplatform' => drupal_get_schema_unprocessed('system', 'cache'),
+
+    'pm_jwplatform_imports' => array(
+      'description' => 'The table for storing BotR video imports',
+      'fields' => array(
+        'id' => array(
+          'description' => 'Primary key',
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'video_key' => array(
+          'description' => 'JW Platform video key',
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ),
+        'created' => array(
+          'description' => 'Record created Unix timestamp',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'imported' => array(
+          'description' => 'Video imported Unix timestamp',
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => FALSE,
+        ),
+      ),
+      'primary key' => array('id'),
+      'unique keys' => array(
+        'unique_video_key' => array('video_key')
+      ),
+      'indexes' => array(
+        'index_pm_jwplatform_imports_on_video_key' => array('video_key'),
+      ),
+    ),
   );
+}
+
+/**
+ * Add the video import log table.
+ */
+function pm_jwplatform_update_7100() {
+  $schema = pm_jwplatform_schema();
+  db_create_table('pm_jwplatform_imports', $schema['pm_jwplatform_imports']);
 }
