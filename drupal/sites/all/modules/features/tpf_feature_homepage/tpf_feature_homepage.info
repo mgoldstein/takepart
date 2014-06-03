@@ -16,6 +16,7 @@ dependencies[] = field_group
 dependencies[] = image
 dependencies[] = newsletter_campaign
 dependencies[] = tp4_support
+dependencies[] = tpf_display_context
 dependencies[] = views
 features[box][] = ga_homepage_header
 features[box][] = ga_homepage_top_right

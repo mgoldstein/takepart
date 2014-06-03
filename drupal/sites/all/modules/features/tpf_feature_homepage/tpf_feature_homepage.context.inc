@@ -15,7 +15,7 @@ function tpf_feature_homepage_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'homepage';
   $context->description = 'homepage redesign';
-  $context->tag = '';
+  $context->tag = 'TP4';
   $context->conditions = array(
     'path' => array(
       'values' => array(
@@ -98,6 +98,12 @@ function tpf_feature_homepage_context_default_contexts() {
           'region' => 'suffix',
           'weight' => '-8',
         ),
+        'boxes-ga_mobile_320x50' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50',
+          'region' => 'suffix',
+          'weight' => '-7',
+        ),
       ),
     ),
   );
@@ -105,6 +111,7 @@ function tpf_feature_homepage_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('TP4');
   t('homepage redesign');
   $export['homepage'] = $context;
 
