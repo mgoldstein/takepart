@@ -350,3 +350,424 @@ function theme_pm_jwplatform_video($variables) {
   $wrapper = file_stream_wrapper_get_instance_by_uri($variables['element']["#uri"]);
   return '<script type="text/javascript" src="' . $wrapper->getJavaScriptUrl() . '"></script>';
 }
+
+
+/* Auto Import JW Platform Videos
+ *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
+class VideoNodeBuilder {
+
+  public function __construct($title) {
+    $this->_node = $this->createNode($title);
+  }
+
+  protected function createNode($title) {
+    $node = new StdClass();
+    $node->title = $title;
+    $node->type = 'video';
+    $node->language = LANGUAGE_NONE;
+    node_object_prepare($node);
+    return $node;
+  }
+
+  protected static function createTaxonomyTerm($vocabulary_name, $name) {
+    $vocabulary = taxonomy_vocabulary_machine_name_load($vocabulary_name);
+    $term = new StdClass();
+    $term->vid = $vocabulary->vid;
+    $term->name = $name;
+    $term->vocabulary_machine_name = $vocabulary_name;
+    taxonomy_term_save($term);
+    return $term;
+  }
+
+  protected static function loadTopicTerms($names) {
+    $terms = array();
+    foreach ($names as $name) {
+      $name = trim($name);
+      $list = taxonomy_get_term_by_name($name, 'topic');
+      if (!empty($list)) {
+        $terms[] = reset($list);
+      }
+    }
+    return $terms;
+  }
+
+  protected static function loadSeriesTerm($name) {
+    $term = NULL;
+    $list = taxonomy_get_term_by_name($name, 'series');
+    if (!empty($list)) {
+      $term = reset($list);
+    }
+    return $term;
+  }
+
+  protected static function loadTopicBoxTerm($name) {
+    $term = NULL;
+    $list = taxonomy_get_term_by_name($name, 'topic_box');
+    if (!empty($list)) {
+      $term = reset($list);
+    }
+    return $term;
+  }
+
+  protected static function loadFreeTagTerms($names) {
+    $terms = array();
+    foreach ($names as $name) {
+      $name = trim($name);
+      $list = taxonomy_get_term_by_name($name, 'free_tags');
+      if (!empty($list)) {
+        $terms[] = reset($list);
+      }
+      else {
+        $terms[] = self::createTaxonomyTerm('free_tags', $name);
+      }
+    }
+    return $terms;
+  }
+
+  protected static function loadAdminTagTerms($names) {
+    $terms = array();
+    foreach ($names as $name) {
+      $name = trim($name);
+      $list = taxonomy_get_term_by_name($name, 'admin_tag');
+      if (!empty($list)) {
+        $terms[] = reset($list);
+      }
+      else {
+        $terms[] = self::createTaxonomyTerm('admin_tag', $name);
+      }
+    }
+    return $terms;
+  }
+
+  protected static function taxonomyFieldValue($terms, $language) {
+    $value = array($language => array());
+    foreach ($terms as $term) {
+      $value[$language][] = array(
+        'tid' => $term->tid,
+      );
+    }
+    return $value;
+  }
+
+  protected static function textFieldValue($text, $language, $format = NULL) {
+    $value = array($language => array());
+    $value[$language][] = array(
+      'value' => $text,
+      'format' => $format,
+    );
+    return $value;
+  }
+
+  protected static function createMediaFile($url) {
+
+    // Break the URL into parts.
+    $url_parts = parse_url($url);
+    $path_parts = pathinfo($url_parts['path']);
+
+    // Prepare local storage
+    $local_path = 'public://jwplatform-import/images/' . $path_parts['basename'];
+
+    $dirname = drupal_dirname($local_path);
+    if (file_prepare_directory($dirname, FILE_CREATE_DIRECTORY)) {
+
+      // Copy down and save the image.
+      $response = drupal_http_request($url);
+      if (!isset($response->error) && !empty($response->data)) {
+        $normalized = file_stream_wrapper_uri_normalize($local_path);
+        $file = file_save_data($response->data, $normalized, FILE_EXISTS_RENAME);
+        return $file;
+      }
+    }
+    return FALSE;
+  }
+
+  protected static function mediaImageFieldValue($fid, $language) {
+    return array($language => array(array(
+      'fid' => $fid,
+      'title' => NULL,
+      'data' => NULL,
+    )));
+  }
+
+  protected static function mediaVideoFieldValue($fid, $language) {
+    return array($language => array(array(
+      'fid' => $fid,
+      'display' => 1,
+      'description' => NULL,
+    )));
+  }
+
+  public function setPublished($published) {
+    $this->_node->status = $published ? 1 : 0;
+  }
+
+  public function setVideoKey($video_key) {
+    try {
+      $provider = media_internet_get_provider($video_key);
+      $file = $provider->save();
+      $this->_node->field_video = self::mediaVideoFieldValue(
+        $file->fid, $this->_node->language);
+    } catch (Exception $e) {}
+  }
+
+  public function setPromoHeadline($headline) {
+    $this->_node->field_promo_headline = self::textFieldValue(
+      $headline, $this->_node->language);
+  }
+
+  public function setThumbnail($thumbnail_uri) {
+    $file = self::createMediaFile($thumbnail_uri);
+    if ($file !== FALSE) {
+      $this->_node->field_thumbnail = self::mediaImageFieldValue(
+        $file->fid, $this->_node->language);
+    }
+  }
+
+  public function setFreeTags($free_tags) {
+    $terms = self::loadFreeTagTerms($free_tags);
+    $this->_node->field_free_tag = self::taxonomyFieldValue($terms,
+      $this->_node->language);
+  }
+
+  public function setAdminTags($admin_tags) {
+    $terms = self::loadAdminTagTerms($admin_tags);
+    $this->_node->field_admin_tag = self::taxonomyFieldValue($terms,
+      $this->_node->language);
+  }
+
+  public function setSubhead($subhead) {
+    $this->_node->field_article_subhead = self::textFieldValue(
+      $subhead, $this->_node->language);
+  }
+
+  public function setShortHeadline($shorthead_line) {
+    $this->_node->field_promo_short_headline = self::textFieldValue(
+      $shorthead_line, $this->_node->language);
+  }
+
+  public function setTopics($topics) {
+    $terms = self::loadTopicTerms($topics);
+    $this->_node->field_topic = self::taxonomyFieldValue($terms,
+      $this->_node->language);
+  }
+
+  public function setSeries($series) {
+    $term = self::loadSeriesTerm($series);
+    if (!is_null($term)) {
+      $this->_node->field_series = self::taxonomyFieldValue(array($term),
+        $this->_node->language);
+    }
+  }
+
+  public function setTopicBox($topic_box) {
+    $term = self::loadTopicBoxTerm($topic_box);
+    if (!is_null($term)) {
+      $this->_node->field_topic_box = self::taxonomyFieldValue(array($term),
+        $this->_node->language);
+    }
+  }
+
+  public function save() {
+    if ($this->_node !== FALSE) {
+      //$this->_node->path = array('pathauto' => FALSE);
+      $this->_node->uid = 1;
+      $node = node_submit($this->_node);
+      node_save($node);
+      return $node->nid;
+    }
+    return FALSE;
+  }
+}
+
+function pm_jwplatform_botr_api() {
+  static $api = NULL;
+  if (is_null($api)) {
+    $api = pm_jwplatform_get_api();
+  }
+  return $api;
+}
+
+function pm_jwplatform_get_new_video_keys_from_botr() {
+
+  $this_fetch = time();
+  $last_fetch = variable_get('pm_jwplatform_last_fetch', 0);
+
+  $auto_create_tag = variable_get('pm_jwplatform_auto_create_tag', 'Admin: TP Auto');
+
+  $result =   pm_jwplatform_botr_api()->call('/videos/list', array(
+    'result_limit' => 500,
+    'tags' => $auto_create_tag,
+    'start_date' => $last_fetch,
+  ));
+
+  $video_keys = array();
+  if ($result['status'] == 'ok') {
+    foreach ($result['videos'] as $video) {
+      $video_keys[] = $video['key'];
+    }
+  }
+
+  variable_set('pm_jwplatform_last_fetch', $this_fetch);
+
+  return $video_keys;
+}
+
+function pm_jwplatform_create_import_requests() {
+
+  $new_keys = pm_jwplatform_get_new_video_keys_from_botr();
+
+  if (count($new_keys) > 0) {
+
+    $existing_keys = db_select('pm_jwplatform_imports', 'i')
+      ->fields('i', array('video_key'))
+      ->condition('video_key', $new_keys)
+      ->execute()
+      ->fetchCol();
+
+    $query = db_insert('pm_jwplatform_imports')->fields(array('video_key', 'created'));
+    foreach (array_diff($new_keys, $existing_keys) as $key) {
+      $query->values(array('video_key' => $key, 'created' => REQUEST_TIME));
+    }
+    $query->execute();
+  }
+}
+
+function pm_jwplatform_get_video_thumbnail_ready_from_botr($key) {
+
+  $result = pm_jwplatform_botr_api()->call('/videos/thumbnails/show', array(
+    'video_key' => $key,
+  ));
+
+  if ($result['status'] == 'ok') {
+    return $result['thumbnail']['status'] == 'ready';
+  }
+
+  return FALSE;
+}
+
+function pm_jwplatform_get_video_fields_from_botr($key) {
+
+  $result = pm_jwplatform_botr_api()->call('/videos/show', array(
+    'video_key' => $key,
+  ));
+
+  if ($result['status'] == 'ok') {
+
+    $video = $result['video'];
+
+    $tags = array_map('trim', explode(',', $video['tags']));
+
+    $free_tags = array();
+    $admin_tags = array();
+
+    foreach ($tags as $tag) {
+      $matches = array();
+      if (preg_match('/^Admin:(.*)/', $tag, $matches)) {
+        $admin_tags[] = trim($matches[1]);
+      }
+      else {
+        $free_tags[] = trim($tag);
+      }
+    }
+
+    $fields = array(
+      'key' => $video['key'],
+      'title' => $video['title'],
+      'thumbnail' => "http://assets-jp.jwpsrv.com/thumbs/{$key}-320.jpg",
+      'free_tags' => $free_tags,
+      'admin_tags' => $admin_tags,
+    );
+
+    foreach ($video['custom'] as $key => $value) {
+      $ci_key = strtolower($key);
+      if ($ci_key == 'topics') {
+        $fields[$ci_key] = array_map('trim', explode(',', $value));
+      }
+      else {
+        $fields[$ci_key] = $value;
+      }
+    }
+
+    return $fields;
+  }
+
+  return FALSE;
+}
+
+function pm_jwplatform_create_video_node($fields) {
+
+  $builder = new VideoNodeBuilder($fields['title']);
+
+  if (in_array('Publish', $fields['admin_tags'])) {
+    $builder->setPublished(TRUE);
+  }
+
+  $builder->setVideoKey($fields['key']);
+
+  $builder->setPromoHeadline($fields['title']);
+
+  $builder->setThumbnail($fields['thumbnail']);
+
+  $builder->setFreeTags($fields['free_tags']);
+
+  $builder->setAdminTags($fields['admin_tags']);
+
+  if (isset($fields['subhead'])) {
+    $builder->setSubhead($fields['subhead']);
+  }
+
+  if (isset($fields['shortheadline'])) {
+    $builder->setShortHeadline($fields['shortheadline']);
+  }
+
+  if (isset($fields['topics'])) {
+    $builder->setTopics($fields['topics']);
+  }
+
+  if (isset($fields['series'])) {
+    $builder->setSeries($fields['series']);
+  }
+  
+  if (isset($fields['topicbox'])) {
+    $builder->setTopicBox($fields['topicbox']);    
+  }
+
+  return $builder->save();
+}
+
+function pm_jwplatform_process_import_requests() {
+
+  // Get a list of pending video imports.
+  $requests = db_select('pm_jwplatform_imports', 'i')
+    ->fields('i', array('id', 'video_key'))
+    ->condition('imported', NULL)
+    ->execute()
+    ->fetchAllKeyed();
+
+  foreach ($requests as $id => $video_key) {
+
+    // Get the thumbnail first as it may take some time to generate.
+    if (pm_jwplatform_get_video_thumbnail_ready_from_botr($video_key)) {
+
+      // Get the additional field data for the video node.
+      $fields = pm_jwplatform_get_video_fields_from_botr($video_key);
+      if ($fields !== FALSE) {
+
+        // Create the video node.
+        if (pm_jwplatform_create_video_node($fields)) {
+
+          // Mark the video import as complete.
+          db_update('pm_jwplatform_imports')
+            ->fields(array('imported' => REQUEST_TIME))
+            ->condition('id', $id)
+            ->execute();
+        }
+      }
+    }
+  }
+}
+
+function pm_jwplatform_import_videos() {
+  pm_jwplatform_create_import_requests();
+  pm_jwplatform_process_import_requests();
+}

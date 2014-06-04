@@ -21,6 +21,13 @@ function pm_jwplatform_settings_form($form, &$form_state) {
       '#type' => 'textfield',
       '#default_value' => variable_get('pm_jwplatform_api_secret', ''),
     );
+
+    $form['pm_jwplatform_auto_create_tag'] = array(
+      '#title' => t('Auto Create Tag'),
+      '#description' => t('Tag marking videos that should be auto imported.'),
+      '#type' => 'textfield',
+      '#default_value' => variable_get('pm_jwplatform_auto_create_tag', 'Admin: TP Auto'),
+    );
   }
 
   $dns_mask_link = 'http://www.longtailvideo.com/support/bits-on-the-run/21627/dns-mask-our-content-servers';
