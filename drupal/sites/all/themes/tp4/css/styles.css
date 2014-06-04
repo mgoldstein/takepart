@@ -4168,7 +4168,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     padding: 0;
     width: 100%;
     background-color: white;
-    z-index: 1001;
+    z-index: 3;
   }
   /* line 219, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 #boxes-box-ga_mobile_320x50 {
@@ -4184,12 +4184,14 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     font-size: 14px;
     position: absolute;
     right: 5px;
-    top: 0;
-    color: black;
+    top: -10px;
+    color: white;
+    background-color: black;
     font-family: SSGizmo;
     text-decoration: none;
-    z-index: 1001;
-    padding: 0 0 30px 10px;
+    z-index: 4;
+    padding: 5px;
+    border-radius: 25px;
   }
 }
 @media all and (min-width: 768px) {
@@ -4199,7 +4201,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     visibility: hidden;
   }
 }
-/* line 243, ../sass/page/_layout.scss */
+/* line 245, ../sass/page/_layout.scss */
 #block-boxes-ga-mobile-320x50.hide {
   display: none;
   visibility: hidden;
@@ -10502,7 +10504,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
   background-color: #eeeeee;
   padding: 0 0 15px 0;
   position: relative;
-  z-index: 2;
+  z-index: 0;
 }
 /* line 10, ../sass/modules/_footer.scss */
 .footer-wrapper .block-tp4-support {

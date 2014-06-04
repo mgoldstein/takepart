@@ -215,7 +215,7 @@ body {
     padding: 0;
     width: 100%;
     background-color: white;
-    z-index: 1001;
+    z-index: 3;
     #boxes-box-ga_mobile_320x50 {
       position: relative;
       width: 320px;
@@ -228,12 +228,14 @@ body {
       font-size: 14px;
       position: absolute;
       right: 5px;
-      top: 0;
-      color: black;
+      top: -10px;
+      color: white;
+      background-color: black;
       font-family: SSGizmo;
       text-decoration: none;
-      z-index: 1001;
-      padding: 0 0 30px 10px;
+      z-index: 4;
+      padding: 5px;
+      border-radius: 25px;
     }
   }
     @include breakpoint($breakpoint-tablet) {

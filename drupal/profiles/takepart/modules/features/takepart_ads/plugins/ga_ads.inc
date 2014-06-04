@@ -79,11 +79,12 @@ class boxes_ga_ad extends boxes_box {
 <!-- $slot -->
 <div id='$gptid[$slot]' style='width:$lr[0]px; height:$lr[1]px;'>
 <script type='text/javascript'>
+               
   function $gptfunction() {
    if (typeof(googletag) !== 'undefined') {
      if( ($lr[0] === 728 && window.innerWidth < 768) || 
        ($lr[0] === 1 && window.innerWidth < 768) || 
-       ($lr[0] === 320 && window.innerWidth > 768) ) {
+       ($lr[0] === 320 && ( (window.innerWidth > 768) || (jQuery.cookie('close_mobile_ad') != null) ) ) ) {
        setTimeout("$gptfunction()",1000);
        jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
      }
