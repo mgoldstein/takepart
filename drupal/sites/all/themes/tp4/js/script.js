@@ -440,13 +440,14 @@
          $('body').once('mobile_ad', function() {
         mobile_ad();
       });
+      
       function mobile_ad() {
           sticky_mobile_cookie = $.cookie('close_mobile_ad');
           if (sticky_mobile_cookie === '1') {
               $('#block-boxes-ga-mobile-320x50').addClass('hide');
           }
       }
-      //Toggle search on mobile
+      
       $('.close-mobile-ad').click(function(e) {
           e.preventDefault();
           if (sticky_mobile_cookie === null) { 
