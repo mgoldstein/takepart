@@ -589,15 +589,12 @@ function pm_jwplatform_botr_api() {
 
 function pm_jwplatform_get_new_video_keys_from_botr() {
 
-  $this_fetch = time();
-  $last_fetch = variable_get('pm_jwplatform_last_fetch', 0);
-
   $auto_create_tag = variable_get('pm_jwplatform_auto_create_tag', 'Admin: TP Auto');
 
   $result =   pm_jwplatform_botr_api()->call('/videos/list', array(
-    'result_limit' => 500,
+    'result_limit' => 1000,
     'tags' => $auto_create_tag,
-    'start_date' => $last_fetch,
+    'order_by' => 'date:desc',
   ));
 
   $video_keys = array();
@@ -606,8 +603,6 @@ function pm_jwplatform_get_new_video_keys_from_botr() {
       $video_keys[] = $video['key'];
     }
   }
-
-  variable_set('pm_jwplatform_last_fetch', $this_fetch);
 
   return $video_keys;
 }
@@ -624,11 +619,14 @@ function pm_jwplatform_create_import_requests() {
       ->execute()
       ->fetchCol();
 
-    $query = db_insert('pm_jwplatform_imports')->fields(array('video_key', 'created'));
-    foreach (array_diff($new_keys, $existing_keys) as $key) {
-      $query->values(array('video_key' => $key, 'created' => REQUEST_TIME));
+    $keys_to_add = array_diff($new_keys, $existing_keys);
+    if (count($keys_to_add) > 0) {
+      $query = db_insert('pm_jwplatform_imports')->fields(array('video_key', 'created'));
+      foreach ($keys_to_add as $key) {
+        $query->values(array('video_key' => $key, 'created' => REQUEST_TIME));
+      }
+      $query->execute();
     }
-    $query->execute();
   }
 }
 
@@ -727,9 +725,9 @@ function pm_jwplatform_create_video_node($fields) {
   if (isset($fields['series'])) {
     $builder->setSeries($fields['series']);
   }
-  
+
   if (isset($fields['topicbox'])) {
-    $builder->setTopicBox($fields['topicbox']);    
+    $builder->setTopicBox($fields['topicbox']);
   }
 
   return $builder->save();
