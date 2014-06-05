@@ -15,6 +15,10 @@ function takepart_sitemap_xmlsitemap_link_alter(&$link) {
             $link['status'] = 0;
             $link['status_default'] = 0;
         }
+        if (stripos($linkparts['host'], 'takeaction.takepart.com') && stripos($linkparts['path'], 'local')) {
+            $link['status'] = 0;
+            $link['status_default'] = 0;
+        }
     }
     return $link;
 }
