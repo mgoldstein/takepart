@@ -4181,7 +4181,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     display: block;
     visibility: visible;
     content: '\2421';
-    font-size: 14px;
+    font-size: 24px;
     position: absolute;
     right: 5px;
     top: -10px;
@@ -4190,9 +4190,10 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     font-family: SSGizmo;
     text-decoration: none;
     z-index: 4;
-    padding: 8px;
-    width: 18px;
-    height: 18px;
+    padding: 6px;
+    width: 24px;
+    height: 24px;
+    line-height: 100%;
     text-align: center;
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -4206,7 +4207,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     visibility: hidden;
   }
 }
-/* line 250, ../sass/page/_layout.scss */
+/* line 251, ../sass/page/_layout.scss */
 #block-boxes-ga-mobile-320x50.hide {
   display: none;
   visibility: hidden;
