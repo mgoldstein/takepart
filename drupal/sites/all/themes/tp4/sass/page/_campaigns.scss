@@ -1428,11 +1428,11 @@ p.campaign-content-meta{
     }
     @include breakpoint($breakpoint-desktop){
     width: 47%;
-    min-height: 190px;
+    min-height: 150px;
     margin-right: 3%;
     }
     float: left;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
   .tweet-left{  
     @include breakpoint($breakpoint-mobile){

@@ -33,7 +33,7 @@
 		<div class="tweet-right">
 			<h3 class="tweet-username">@<?php print $variables['username'][$x]; ?></h3>
 			<h6><?php print $variables['created_at'][$x]; ?></h6>
-			<p><?php print $variables['tweet'][$x]; ?></p>
+			<h5><?php print $variables['tweet'][$x]; ?></h5>
 		</div>	
 	</div>	
 		
