@@ -9837,7 +9837,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   /* line 1417, ../sass/page/_campaigns.scss */
   .tweet {
     width: 47%;
-    min-height: 150px;
+    height: 150px;
     margin-right: 3%;
   }
 }

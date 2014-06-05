@@ -1426,7 +1426,7 @@ p.campaign-content-meta{
     }
     @include breakpoint($breakpoint-desktop){
     width: 47%;
-    min-height: 150px;
+    height: 150px;
     margin-right: 3%;
     }
     float: left;
