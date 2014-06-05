@@ -4184,7 +4184,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     font-size: 14px;
     position: absolute;
     right: 12px;
-    top: 12px;
+    top: -14px;
     color: white;
     background-color: black;
     font-family: SSGizmo;
