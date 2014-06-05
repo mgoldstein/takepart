@@ -4181,7 +4181,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     display: block;
     visibility: visible;
     position: absolute;
-    right: 0;
+    right: -4px;
     top: -24px;
     background-color: transparent;
     text-decoration: none;
