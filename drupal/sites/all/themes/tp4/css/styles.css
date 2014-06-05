@@ -9924,9 +9924,13 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   color: #018b73 !important;
   text-decoration: none;
 }
+/* line 1501, ../sass/page/_campaigns.scss */
+.tweet .tweet-right h5 a:hover {
+  text-decoration: underline;
+}
 
 @media all and (max-width: 767px) {
-  /* line 1505, ../sass/page/_campaigns.scss */
+  /* line 1508, ../sass/page/_campaigns.scss */
   .twitter-descriptive-text {
     width: 83.33333%;
     margin-left: 5%;
@@ -9941,7 +9945,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 1505, ../sass/page/_campaigns.scss */
+  /* line 1508, ../sass/page/_campaigns.scss */
   .twitter-descriptive-text {
     margin-right: 10%;
     margin-left: 10%;
@@ -9949,7 +9953,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 }
 
 @media only screen and (max-width: 700px) {
-  /* line 1531, ../sass/page/_campaigns.scss */
+  /* line 1534, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page header#header .campaign-menu-toggle {
     position: absolute;
     left: 78%;
@@ -9957,26 +9961,26 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     font-size: 2em;
     padding: 25px;
   }
-  /* line 1537, ../sass/page/_campaigns.scss */
+  /* line 1540, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page header#header .campaign-menu-toggle:hover {
     text-decoration: none;
   }
-  /* line 1545, ../sass/page/_campaigns.scss */
+  /* line 1548, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu-wrapper {
     display: none;
   }
-  /* line 1548, ../sass/page/_campaigns.scss */
+  /* line 1551, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .header-inner {
     padding-top: 50px;
   }
 }
 @media only screen and (min-width: 701px) {
-  /* line 1558, ../sass/page/_campaigns.scss */
+  /* line 1561, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page header#header .campaign-menu-toggle {
     display: none;
   }
 }
-/* line 1566, ../sass/page/_campaigns.scss */
+/* line 1569, ../sass/page/_campaigns.scss */
 body.campaign-display .swipe-wrap.has-title .card-inner {
   border-top: 1px solid #dadada;
 }

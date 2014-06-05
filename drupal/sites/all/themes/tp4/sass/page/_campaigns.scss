@@ -1498,6 +1498,9 @@ p.campaign-content-meta{
         color: $mint !important;
         text-decoration: none;
       }
+      a:hover {
+          text-decoration: underline;
+      }
     }
   }
 }
