@@ -19,7 +19,6 @@ body.campaign-display
   $zen-column-count:  12;
   $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
 
-
   //make header full width for menu/branding
   .header-wrapper{
   padding: 0;
@@ -1179,7 +1178,6 @@ body.campaign-display{
                   font-size: 12px;
       // font-family: $adelle-regular;
       a {
-        
         line-height: 1.2em;
         color: $mint;
       }
@@ -1495,12 +1493,14 @@ p.campaign-content-meta{
     p{
       margin-top: 5px;
     }
-
+    h5 {
+      a {
+        color: $mint !important;
+        text-decoration: none;
+      }
+    }
   }
-
-  
 }
-
 
 .twitter-descriptive-text{
     @media all and (max-width: 767px){
@@ -1521,7 +1521,6 @@ p.campaign-content-meta{
     margin-left: 10%;    
     }
 }
-
 
 @media only screen and (max-width: 700px)
 {
@@ -1571,8 +1570,3 @@ body.campaign-display .swipe-wrap.has-title{
 
 //Add Custom Styling for TP4 Campaigns
 @import "tp4_dark_bg";
-
-
-
-
-
