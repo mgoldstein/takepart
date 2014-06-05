@@ -224,24 +224,30 @@ body {
     .close-mobile-ad {
       display: block;
       visibility: visible;
-      content: '\2421';
-      font-size: 14px;
       position: absolute;
       right: 0;
       top: -14px;
-      color: white;
-      background-color: black;
-      font-family: SSGizmo;
+      background-color: transparent;
       text-decoration: none;
       z-index: 4;
-      padding: 8px;
+      padding: 12px 0 12px 12px;
       width: 18px;
       height: 18px;
       line-height: 100%;
       text-align: center;
-      border-radius: 50%;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
+      span {
+          content: '\2421';
+          background-color: black;
+          color: white;
+          font-size: 14px;
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          font-family: SSGizmo;
+          padding: 8px;
+          width: 18px;
+          height: 36px;
+      }
     }
   }
     @include breakpoint($breakpoint-tablet) {
