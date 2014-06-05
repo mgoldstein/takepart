@@ -2045,7 +2045,7 @@ function tp4_field_campaign_iframe($variables){
 function tp4_block_view_alter(&$data, $block) {
     switch ($block->delta) {
         case 'ga_mobile_320x50':
-            $button = '<a href="#" id="close-'.$block->delta.'" class="close-mobile-ad tplinkpos">X</a>';
+            $button = '<a href="#" id="close-'.$block->delta.'" class="close-mobile-ad tplinkpos"><span>X</span></a>';
             $data['content'] = $button . $data['content'];
             break;
     }
