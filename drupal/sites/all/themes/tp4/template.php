@@ -1312,6 +1312,26 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
 
 function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
 
+    $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
+    $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
+    if(empty($item_width)){
+        $item_width = 185;
+    }
+
+    $items = array();
+    foreach($multi_grid as $key=> $item){
+      $items[] = $item['value'];
+    }
+    $field_collections = entity_load('field_collection_item', $items);
+    $center = '';
+    foreach($field_collections as $key => $collection){
+      $collection_item = '';
+      $collection_item = entity_view('field_collection_item', array($key => $collection), 'full');
+        $center .= '<div class="item" style="max-width:'. $item_width. 'px;">';
+        $center .= drupal_render($collection_item);
+        $center .= '</div>';
+
+    }
     //background properties
     tp4_campaign_background_rules($variables);
 

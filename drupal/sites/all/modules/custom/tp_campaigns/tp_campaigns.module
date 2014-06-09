@@ -128,26 +128,6 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
   return $element;
 }
 
-/*
- * Implements hook_init
- */
-function tp_campaigns_init(){
-  //TODO Move this from init.
-  //Instead trigger this from a form submit so it's not getting hit on EVERY page load
-  $card_types = array(
-    'campaign_card_media',
-    'campaign_card_iframe',
-    'campaign_card_social',
-    'campaign_card_news',
-    'campaign_card_text',
-    'campaign_card_branding',
-    'campaign_card_tap',
-    'campaign_card_twitter',
-    'campaign_card_empty',
-    'campaign_card_ad'
-    );
-  variable_set('card_types', $card_types);
-}
 
 /**
  * Implements hook_token_info().
@@ -500,6 +480,22 @@ function tp_campaigns_settings_form($form, &$form_state){
 }
 function tp_campaigns_settings_form_validate($form, &$form_state){
   variable_set('sms_legal', $form_state['input']['legal_copy']['value']);
+
+    //update any new card types
+    $card_types = array(
+        'campaign_card_media',
+        'campaign_card_iframe',
+        'campaign_card_social',
+        'campaign_card_news',
+        'campaign_card_text',
+        'campaign_card_branding',
+        'campaign_card_tap',
+        'campaign_card_twitter',
+        'campaign_card_empty',
+        'campaign_card_ad',
+        'campaign_card_multi_column'
+    );
+    variable_set('card_types', $card_types);
 }
 
 
