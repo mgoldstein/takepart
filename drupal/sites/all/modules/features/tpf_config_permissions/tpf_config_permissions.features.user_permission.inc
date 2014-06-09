@@ -78,6 +78,15 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'omniture',
   );
 
+  // Exported permission: 'administer add another'.
+  $permissions['administer add another'] = array(
+    'name' => 'administer add another',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'addanother',
+  );
+
   // Exported permission: 'administer checked out documents'.
   $permissions['administer checked out documents'] = array(
     'name' => 'administer checked out documents',
@@ -264,6 +273,18 @@ function tpf_config_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'use add another'.
+  $permissions['use add another'] = array(
+    'name' => 'use add another',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'addanother',
   );
 
   // Exported permission: 'use advanced search'.
