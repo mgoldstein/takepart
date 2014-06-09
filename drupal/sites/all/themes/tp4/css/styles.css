@@ -12175,7 +12175,7 @@ header .search .form-submit {
   -webkit-box-sizing: box-content;
   -moz-box-sizing: box-content;
   box-sizing: box-content;
-  padding: 3%;
+  padding: 0 3%;
   background-color: #FFF;
 }
 
