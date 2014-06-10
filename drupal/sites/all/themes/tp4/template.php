@@ -1349,7 +1349,21 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
     }
     $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
     $variables['center'] = $center;
+}
 
+function tp4_preprocess_node__campaign_card_tap_widget(&$variables, $hook) {
+
+    $center = '';
+    //background properties
+    tp4_campaign_background_rules($variables);
+
+    //content
+    $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+    if(!empty($instructional)){
+        $variables['instructional'] = $instructional;
+    }
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+    $variables['center'] = $center;
 }
 
 /********************************
