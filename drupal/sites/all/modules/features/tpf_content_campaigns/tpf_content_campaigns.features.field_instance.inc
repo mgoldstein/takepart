@@ -12300,7 +12300,11 @@ Note: If you manually reference more items than selected here, the number refere
   // Exported field_instance: 'node-campaign_card_tap_widget-field_campaign_style_setting'
   $field_instances['node-campaign_card_tap_widget-field_campaign_style_setting'] = array(
     'bundle' => 'campaign_card_tap_widget',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 'light-background',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(

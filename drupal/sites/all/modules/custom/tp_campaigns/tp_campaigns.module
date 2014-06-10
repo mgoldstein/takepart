@@ -493,7 +493,8 @@ function tp_campaigns_settings_form_validate($form, &$form_state){
         'campaign_card_twitter',
         'campaign_card_empty',
         'campaign_card_ad',
-        'campaign_card_multi_column'
+        'campaign_card_multi_column',
+        'campaign_card_tap_widget'
     );
     variable_set('card_types', $card_types);
 }
