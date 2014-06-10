@@ -10583,7 +10583,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
   background-color: #eeeeee;
   padding: 0 0 15px 0;
   position: relative;
-  z-index: 0;
+  z-index: 2;
 }
 /* line 10, ../sass/modules/_footer.scss */
 .footer-wrapper .block-tp4-support {
@@ -12231,7 +12231,7 @@ header .search .form-submit {
   -webkit-box-sizing: box-content;
   -moz-box-sizing: box-content;
   box-sizing: box-content;
-  padding: 3%;
+  padding: 0 3%;
   background-color: #FFF;
 }
 

@@ -60,9 +60,9 @@ $headline = !empty($content['#node']->field_promo_headline) ? $content['#node']-
     }
 
     if (!empty($title_link) && !empty($variables['content']['field_article_subhead'][0]['#markup'])) {
-        $variables['content']['field_article_subhead'][0]['#markup'] .= ' <span id="mf-more-link-bullet"> </span><a id="mf-more-link" href="' . $title_link . '">more</a>';
+        $variables['content']['field_article_subhead'][0]['#markup'] .= ' <nobr><span id="mf-more-link-bullet"> </span><a id="mf-more-link" href="' . $title_link . '">more</a></nobr>';
     } elseif (!empty($title_link) && !empty($variables['content']['field_subhead'][0]['#markup'])) {
-        $variables['content']['field_subhead'][0]['#markup'] .= ' <span id="mf-more-link-bullet"> </span><a id="mf-more-link" href="' . $title_link . '">more</a>';
+        $variables['content']['field_subhead'][0]['#markup'] .= ' <nobr><span id="mf-more-link-bullet"> </span><a id="mf-more-link" href="' . $title_link . '">more</a></nobr>';
     }
     ?>
     <?php
