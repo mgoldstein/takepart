@@ -1315,7 +1315,7 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
     $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
     $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
     if(empty($item_width)){
-        $item_width = 185;
+        $item_width = 180;
     }
 
     $items = array();
@@ -1324,14 +1324,21 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
     }
     $field_collections = entity_load('field_collection_item', $items);
     $center = '';
+    $center .= '<div class="center-inner">';
     foreach($field_collections as $key => $collection){
-      $collection_item = '';
-      $collection_item = entity_view('field_collection_item', array($key => $collection), 'full');
-        $center .= '<div class="item" style="max-width:'. $item_width. 'px;">';
-        $center .= drupal_render($collection_item);
-        $center .= '</div>';
-
+      $image = tp4_render_field_value('field_collection_item', $collection, 'field_promo_thumbnail');
+      $text = tp4_render_field_value('field_collection_item', $collection, 'field_promo_text');
+      $link = field_get_items('field_collection_item', $collection, 'field_campaign_multigrid_link');
+      $target = (isset($link[0]['attributes']['target']) ? $link[0]['attributes']['target'] : '_self');
+      if(!empty($link)){
+          $image = l($image, $link[0]['url'], array('html' => true, 'attributes' => array('target' => $target)));
+      }
+      $center .= '<div class="item" style="max-width:'. $item_width. 'px;">';
+      $center .= $image;
+      $center .= (!empty($text) ? $text : '');
+      $center .= '</div>';
     }
+    $center .= '</div>';
     //background properties
     tp4_campaign_background_rules($variables);
 
