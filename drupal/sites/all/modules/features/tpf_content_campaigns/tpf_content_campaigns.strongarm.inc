@@ -328,6 +328,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_campaign_card_multi_column';
+  $strongarm->value = 0;
+  $export['comment_anonymous_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_campaign_card_news';
   $strongarm->value = 0;
   $export['comment_anonymous_campaign_card_news'] = $strongarm;
@@ -408,6 +415,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->name = 'comment_campaign_card_media';
   $strongarm->value = '1';
   $export['comment_campaign_card_media'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_campaign_card_multi_column';
+  $strongarm->value = '1';
+  $export['comment_campaign_card_multi_column'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -496,6 +510,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_campaign_card_multi_column';
+  $strongarm->value = 0;
+  $export['comment_default_mode_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_campaign_card_news';
   $strongarm->value = 0;
   $export['comment_default_mode_campaign_card_news'] = $strongarm;
@@ -576,6 +597,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->name = 'comment_default_per_page_campaign_card_media';
   $strongarm->value = '50';
   $export['comment_default_per_page_campaign_card_media'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_campaign_card_multi_column';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_campaign_card_multi_column'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -664,6 +692,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_campaign_card_multi_column';
+  $strongarm->value = 0;
+  $export['comment_form_location_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_campaign_card_news';
   $strongarm->value = 0;
   $export['comment_form_location_campaign_card_news'] = $strongarm;
@@ -748,6 +783,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_campaign_card_multi_column';
+  $strongarm->value = '0';
+  $export['comment_preview_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_campaign_card_news';
   $strongarm->value = '0';
   $export['comment_preview_campaign_card_news'] = $strongarm;
@@ -828,6 +870,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->name = 'comment_subject_field_campaign_card_media';
   $strongarm->value = 0;
   $export['comment_subject_field_campaign_card_media'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_campaign_card_multi_column';
+  $strongarm->value = 0;
+  $export['comment_subject_field_campaign_card_multi_column'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1255,6 +1304,35 @@ function tpf_content_campaigns_strongarm() {
     ),
   );
   $export['field_bundle_settings_node__campaign_card_media'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__campaign_card_multi_column';
+  $strongarm->value = array(
+    'view_modes' => array(),
+    'extra_fields' => array(
+      'form' => array(
+        'metatags' => array(
+          'weight' => '11',
+        ),
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '10',
+        ),
+        'redirect' => array(
+          'weight' => '9',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '8',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__campaign_card_multi_column'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1740,6 +1818,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_campaign_card_multi_column';
+  $strongarm->value = array();
+  $export['menu_options_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_campaign_card_news';
   $strongarm->value = array();
   $export['menu_options_campaign_card_news'] = $strongarm;
@@ -1824,6 +1909,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->name = 'menu_parent_campaign_card_media';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_campaign_card_media'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_campaign_card_multi_column';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_campaign_card_multi_column'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1924,6 +2016,15 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_campaign_card_multi_column';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_campaign_card_news';
   $strongarm->value = array(
     0 => 'status',
@@ -2018,6 +2119,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_campaign_card_multi_column';
+  $strongarm->value = '0';
+  $export['node_preview_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_campaign_card_news';
   $strongarm->value = '0';
   $export['node_preview_campaign_card_news'] = $strongarm;
@@ -2098,6 +2206,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->name = 'node_submitted_campaign_card_media';
   $strongarm->value = 0;
   $export['node_submitted_campaign_card_media'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_campaign_card_multi_column';
+  $strongarm->value = 0;
+  $export['node_submitted_campaign_card_multi_column'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

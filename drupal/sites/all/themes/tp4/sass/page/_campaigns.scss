@@ -4,12 +4,6 @@
  * Ordering: Layouts, Elements, Pages, Widgets
  */
 
- /*
-  * Giant List of TODOs:
-  * 1) Move this to it's own stylsheet so it doesn't affect the rest of the site.
-  * 2) Change zen-gutter width to what it should be.
-  */
-
 
 /*
  * Layouts
@@ -252,6 +246,19 @@ body.campaign-display .card.node-campaign-card-media{
   }
 }
 body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
+  .center-column{
+    @include breakpoint($breakpoint-mobile) {
+      @include zen-grid-item(12, 1);
+      padding-left: 10px;
+      padding-right: 10px;
+      @include zen-clear();
+    }
+    @include breakpoint($breakpoint-tablet) {
+      @include zen-grid-item(10, 2);
+    }
+  }
+}
+body.campaign-display .card.node-campaign-card-multi-column{
   .center-column{
     @include breakpoint($breakpoint-mobile) {
       @include zen-grid-item(12, 1);
@@ -1086,6 +1093,30 @@ body.campaign-display{
     p {
       font-size: .875em;
       line-height: 1.5;
+    }
+  }
+  /*
+   * Card Multi-Column
+   */
+  .node-campaign-card-multi-column{
+    .center-inner{
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+      padding-left: 10px;
+      > div{
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        margin-right: 20px;
+        margin-bottom: 40px;
+        img{
+          margin-bottom: 10px !important;
+        }
+        .field-name-field-promo-text{
+          text-align: left;
+        }
+      }
     }
   }
 
