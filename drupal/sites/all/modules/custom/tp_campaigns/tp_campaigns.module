@@ -435,6 +435,9 @@ function tp_campaigns_hero(){
     }
 
 
+    if ($items = field_get_items('node', $campaign_node, 'field_campaign_menu')) {
+      $bg_settings['classes'][] = 'has-menu';
+    }
 
 
 
