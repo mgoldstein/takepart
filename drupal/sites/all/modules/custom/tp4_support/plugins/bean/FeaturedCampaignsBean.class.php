@@ -38,12 +38,14 @@ class FeaturedCampaignsBean extends BeanPlugin {
    * Displays the bean.
    */
   public function view($bean, $content, $view_mode = 'default', $langcode = NULL) {
-    $content['bean']['featured-campaigns-module']['cta'] = array(
-      '#markup' => check_markup($bean->campaigns_cta['value'], $bean->campaigns_cta['format']),
-      '#weight' => 10,
-      '#prefix'=> '<div class="cta">',
-      '#suffix'=> '</div>',
-    );
+    if (!empty($bean->campaigns_cta['value'])) {
+      $content['bean']['featured-campaigns-module']['cta'] = array(
+        '#markup' => check_markup($bean->campaigns_cta['value'], $bean->campaigns_cta['format']),
+        '#weight' => 10,
+        '#prefix'=> '<div class="cta">',
+        '#suffix'=> '</div>',
+      );
+    }
     return $content;
   }
 }
