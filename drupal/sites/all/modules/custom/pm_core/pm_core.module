@@ -5,13 +5,30 @@
  */
 
 /**
+ * Implements hook_boot().
+ */
+function pm_core_boot() {
+  // Load the Composer autoloader.
+  require_once DRUPAL_ROOT . '/../vendor/autoload.php';
+  // Initialize the Doctrine Entity Manager.
+  \Participant\App::init(array(
+    'development_mode' => DEVELOPMENT_ENVIRONMENT,
+    'entity_path' => DRUPAL_ROOT . '/../app/src',
+    'db_user' => DATABASE_USER,
+    'db_pass' => DATABASE_PASS,
+    'db_name' => DATABASE_NAME,
+    'db_host' => DATABASE_HOST,
+  ));
+}
+
+/**
  * Implements hook_help().
  */
 function pm_core_help($path, $arg) {
   $output = '';
   if ($path == 'admin/help#pm_core') {
     $output .= '<h3>' . t('About') . '</h3>';
-    $output .= '<p>' . t("The Participant Media Core module provides common utilities and classes for other Participant Media custom modules.") . '</p>';
+    $output .= '<p>' . t("The Participant Media Core module provides common utilities and classes for other custom modules.") . '</p>';
   }
   return $output;
 }
@@ -21,9 +38,9 @@ function pm_core_help($path, $arg) {
  */
 function pm_core_menu() {
   return array(
-    'admin/config/participant-media' => array(
-      'title' => 'Participant Media',
-      'description' => 'Configuraion of Participant Media modules',
+    'admin/config/customization' => array(
+      'title' => 'Customization',
+      'description' => 'Configuration of custom modules',
       'position' => 'right',
       'weight' => 0,
       'page callback' => 'system_admin_menu_block_page',

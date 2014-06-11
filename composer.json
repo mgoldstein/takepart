@@ -1,0 +1,23 @@
+{
+  "name": "participant/takepart-com",
+  "description": "TakePart.com Site",
+  "license": "proprietary",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/jpedius/botr-api"
+    }
+  ],
+  "require": {
+    "doctrine/orm": "2.4.*",
+    "dukt/vimeo": "dev-master",
+    "madcoda/php-youtube-api": "dev-master",
+    "jpedius/botr-api": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Participant\\": "app/src/Participant",
+      "TakePart\\": "app/src/TakePart"
+    }
+  }
+}
