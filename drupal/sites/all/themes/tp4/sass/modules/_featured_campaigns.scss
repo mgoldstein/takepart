@@ -28,16 +28,17 @@
     width: 466px;
   }
   @include breakpoint($breakpoint-tablet) {
-    width: 698px;
+    width: 699px;
   }
   @include breakpoint($breakpoint-desktop) {
-    width: 930px;
+    width: 932px;
   }
 
   .field-collection-container {
     margin: 0 auto;
     border-bottom: none;
-    overflow: hidden;
+    overflow-x: scroll;
+    overflow-y: hidden;
   }
   .featured-campaigns-nav {
     display: block;
