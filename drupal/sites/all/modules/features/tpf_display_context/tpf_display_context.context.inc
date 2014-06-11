@@ -1847,13 +1847,16 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'campaign_card_ad' => 'campaign_card_ad',
         'campaign_card_branding' => 'campaign_card_branding',
         'campaign_card_empty' => 'campaign_card_empty',
         'campaign_card_iframe' => 'campaign_card_iframe',
         'campaign_card_media' => 'campaign_card_media',
+        'campaign_card_multi_column' => 'campaign_card_multi_column',
         'campaign_card_news' => 'campaign_card_news',
         'campaign_card_social' => 'campaign_card_social',
         'campaign_card_text' => 'campaign_card_text',
+        'campaign_card_twitter' => 'campaign_card_twitter',
       ),
       'options' => array(
         'node_form' => '1',

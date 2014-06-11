@@ -75,6 +75,14 @@ function tpf_content_campaigns_node_info() {
       'title_label' => t('Admin Card Title'),
       'help' => '',
     ),
+    'campaign_card_multi_column' => array(
+      'name' => t('Campaign Card Multi-Column'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Admin Title'),
+      'help' => '',
+    ),
     'campaign_card_news' => array(
       'name' => t('Campaign Card News'),
       'base' => 'node_content',
