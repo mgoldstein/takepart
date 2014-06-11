@@ -6,6 +6,7 @@ dependencies[] = ctools
 dependencies[] = field
 dependencies[] = file
 dependencies[] = token
+dependencies[] = tp_geolocation
 configure = admin/config/media/pm_jwplayer
 
 files[] = lib/Drupal/JWPlayer/Configuration.php

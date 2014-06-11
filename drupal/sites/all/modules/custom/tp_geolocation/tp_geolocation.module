@@ -1,0 +1,32 @@
+<?php
+/**
+ * @file
+ * Geolocation library and functions for TakePart.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function tp_geolocation_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#tp4_geolocation':
+      return '<p>' . t('Geolocation library and functions for TakePart.') . '</p>';    
+  }
+}
+
+/**
+ * Implements hook_init().
+ *
+ * - Include MaxMind JS library in page header.
+ * - Add custom Geolocation JS.
+ */
+function tp_geolocation_init() {
+  $module_directory = drupal_get_path('module', 'tp_geolocation');
+
+  drupal_add_js('//j.maxmind.com/js/apis/geoip2/v2.0/geoip2.js', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => 5,
+  ));
+  drupal_add_js($module_directory . '/js/geolocation.js');
+}
