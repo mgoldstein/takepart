@@ -369,18 +369,31 @@
       var $nav = $container.find('.featured-campaigns-nav');
       var scrollPoints = [], lastScrollPoint;
 
+      // calculate the horizontal scroll waypoints for the module
       var setupWayouts = function() {
-        var maxScroll = $container.find('.field-name-field-featured-campaigns').width() - $container.width();
+        lastScrollPoint = $container.find('.field-name-field-featured-campaigns').width() - $container.width();
         scrollPoints = [];
         $items.each(function() {
-          var waypoint = $(this).offset().left - $container.offset().left;
-          if (waypoint <= maxScroll) {
+          var waypoint = $(this).offset().left - $container.find('.field-items').offset().left;
+          if (waypoint < lastScrollPoint && waypoint % $container.width() === 0) {
             scrollPoints.push(waypoint);
-            lastScrollPoint = waypoint;
           }
         });
+        scrollPoints.push(lastScrollPoint);
+
+        // if we're not on a scrollPoint, move to the previous one
+        if (scrollPoints.indexOf($container[0].scrollLeft) === -1) {
+          var targetScroll = 0;
+          $.each(scrollPoints, function(i, point) {
+            if (point < $container[0].scrollLeft) {
+              targetScroll = point;
+            }
+          });
+          scrollTo(targetScroll);
+        }
       };
 
+      // determine which nav arrows to show
       var calculateNav = function() {
         $nav.removeClass('hidden');
         if ($container[0].scrollLeft === 0) {
@@ -391,9 +404,14 @@
         }
       };
 
-      setupWayouts();
-      calculateNav();
+      // perform a scroll
+      var scrollTo = function(targetScroll) {
+        $container.stop().animate({scrollLeft: targetScroll}, function() {
+          calculateNav();
+        });
+      };
 
+      // recalculate waypoints on resize
       var resizeTimeout;
       $window.on('resize', function() {
         clearTimeout(resizeTimeout);
@@ -403,8 +421,13 @@
         }, 200);
       });
 
-      // prevent horizontal scroll on container
+      // perform initial calculation
+      $window.trigger('resize');
+
+      // progressivley enhance to prevent
+      // horizontal scroll on container
       $container
+        .css('overflow', 'hidden')
         .hover(function() {
           $window.on('mousewheel.featuredCampaigns', function(e) {
             if (e.originalEvent.deltaX != 0) {
@@ -416,6 +439,7 @@
         })
       ;
 
+      // handle click events
       $campaignsModule.on('click', '.featured-campaigns-nav', function(e){
         e.preventDefault();
         var currentIndex = scrollPoints.indexOf($container[0].scrollLeft);
@@ -425,9 +449,7 @@
         } else {
           targetScroll = scrollPoints[currentIndex - 1] || 0;
         }
-        $container.animate({scrollLeft: targetScroll}, function() {
-          calculateNav();
-        });
+        scrollTo(targetScroll);
       });
     }
   };
