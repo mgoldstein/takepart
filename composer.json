@@ -5,14 +5,14 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/jpedius/botr-api"
+      "url": "https://github.com/takepart/botr-api"
     }
   ],
   "require": {
     "doctrine/orm": "2.4.*",
     "dukt/vimeo": "dev-master",
     "madcoda/php-youtube-api": "dev-master",
-    "jpedius/botr-api": "dev-master"
+    "takepart/botr-api": "dev-master"
   },
   "autoload": {
     "psr-4": {
