@@ -12402,6 +12402,10 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
   font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: bold;
 }
+/* line 70, ../sass/modules/_tpl-block.scss */
+.tpl-block a.more-tpl {
+  color: #0084A9 !important;
+}
 
 /* line 1, ../sass/modules/_featured_campaigns.scss */
 #block-bean-featured-campaigns-module {
