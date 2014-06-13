@@ -1,8 +1,8 @@
 <?php
 
 function _topic_search($array, $needle) {
-    foreach ($array as $field) {
-        if ($field === $needle) {
+    foreach ($array as $fields) {
+        if ($fields['field'] === $needle) {
             return true;
         }
     }
