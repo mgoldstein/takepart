@@ -1312,58 +1312,63 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
 
 function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
 
-    $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
-    $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
-    if(empty($item_width)){
-        $item_width = 180;
-    }
+  $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
+  $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
+  if(empty($item_width)){
+      $item_width = 180;
+  }
 
-    $items = array();
-    foreach($multi_grid as $key=> $item){
-      $items[] = $item['value'];
+  $items = array();
+  foreach($multi_grid as $key=> $item){
+    $items[] = $item['value'];
+  }
+  $field_collections = entity_load('field_collection_item', $items);
+  $center = '';
+  $center .= '<div class="center-inner">';
+  foreach($field_collections as $key => $collection){
+    $image = tp4_render_field_value('field_collection_item', $collection, 'field_promo_thumbnail');
+    $text = tp4_render_field_value('field_collection_item', $collection, 'field_promo_text');
+    $link = field_get_items('field_collection_item', $collection, 'field_campaign_multigrid_link');
+    $target = (isset($link[0]['attributes']['target']) ? $link[0]['attributes']['target'] : '_self');
+    if(!empty($link)){
+        $image = l($image, $link[0]['url'], array('html' => true, 'attributes' => array('target' => $target)));
     }
-    $field_collections = entity_load('field_collection_item', $items);
-    $center = '';
-    $center .= '<div class="center-inner">';
-    foreach($field_collections as $key => $collection){
-      $image = tp4_render_field_value('field_collection_item', $collection, 'field_promo_thumbnail');
-      $text = tp4_render_field_value('field_collection_item', $collection, 'field_promo_text');
-      $link = field_get_items('field_collection_item', $collection, 'field_campaign_multigrid_link');
-      $target = (isset($link[0]['attributes']['target']) ? $link[0]['attributes']['target'] : '_self');
-      if(!empty($link)){
-          $image = l($image, $link[0]['url'], array('html' => true, 'attributes' => array('target' => $target)));
-      }
-      $center .= '<div class="item" style="max-width:'. $item_width. 'px;">';
-      $center .= $image;
-      $center .= (!empty($text) ? $text : '');
-      $center .= '</div>';
-    }
+    $center .= '<div class="item" style="max-width:'. $item_width. 'px;">';
+    $center .= $image;
+    $center .= (!empty($text) ? $text : '');
     $center .= '</div>';
-    //background properties
-    tp4_campaign_background_rules($variables);
+  }
+  $center .= '</div>';
+  //background properties
+  tp4_campaign_background_rules($variables);
 
-    //content
-    $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-    if(!empty($instructional)){
-        $variables['instructional'] = $instructional;
-    }
-    $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-    $variables['center'] = $center;
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+      $variables['instructional'] = $instructional;
+  }
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $variables['center'] = $center;
 }
 
 function tp4_preprocess_node__campaign_card_tap_widget(&$variables, $hook) {
 
-    $center = '';
-    //background properties
-    tp4_campaign_background_rules($variables);
+	$center = '';
 
-    //content
-    $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-    if(!empty($instructional)){
-        $variables['instructional'] = $instructional;
-    }
-    $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-    $variables['center'] = $center;
+	if($tab_widget = field_get_items('node', $variables['node'], 'field_tab_action_override')){
+		$tab_widget = field_view_field('node', $variables['node'], 'field_tab_action_override', array('type' => 'tp_card_tab_widget_reference'));
+		$center = drupal_render($tab_widget);
+	}
+  //background properties
+  tp4_campaign_background_rules($variables);
+
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
+      $variables['instructional'] = $instructional;
+  }
+  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
+  $variables['center'] = $center;
 }
 
 /********************************
