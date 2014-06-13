@@ -367,31 +367,14 @@
         .append('<a class="featured-campaigns-nav next">');
       var $items = $container.find('.field-item');
       var $nav = $container.find('.featured-campaigns-nav');
-      var scrollPoints = [], lastScrollPoint;
+      var containerWidth, lastScrollPoint;
 
-      // calculate the horizontal scroll waypoints for the module
-      var setupWayouts = function() {
-        lastScrollPoint = $container.find('.field-name-field-featured-campaigns').width() - $container.width();
-        scrollPoints = [];
-        $items.each(function() {
-          var waypoint = $(this).offset().left - $container.find('.field-items').offset().left;
-          if (waypoint < lastScrollPoint && waypoint % $container.width() === 0) {
-            scrollPoints.push(waypoint);
-          }
-        });
-        scrollPoints.push(lastScrollPoint);
-
-        // if we're not on a scrollPoint, move to the previous one
-        if (scrollPoints.indexOf($container[0].scrollLeft) === -1) {
-          var targetScroll = 0;
-          $.each(scrollPoints, function(i, point) {
-            if (point < $container[0].scrollLeft) {
-              targetScroll = point;
-            }
-          });
-          scrollTo(targetScroll);
-        }
-      };
+      // set variables for size and 
+      var calculateWidth = function() {
+        containerWidth = $container.width();
+        lastScrollPoint = $container.find('.field-name-field-featured-campaigns').width() - containerWidth;
+        if ($container[0].scrollLeft > lastScrollPoint) scrollTo(lastScrollPoint);
+      }
 
       // determine which nav arrows to show
       var calculateNav = function() {
@@ -411,18 +394,16 @@
         });
       };
 
-      // recalculate waypoints on resize
+      // recalculate waypoints on resize and
+      // perform initial calculation
       var resizeTimeout;
       $window.on('resize', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(function() {
-          setupWayouts();
+          calculateWidth();
           calculateNav();
         }, 200);
-      });
-
-      // perform initial calculation
-      $window.trigger('resize');
+      }).trigger('resize');
 
       // progressivley enhance to prevent
       // horizontal scroll on container
@@ -439,17 +420,14 @@
         })
       ;
 
-      // handle click events
+      // handle click events:
       $campaignsModule.on('click', '.featured-campaigns-nav', function(e){
         e.preventDefault();
-        var currentIndex = scrollPoints.indexOf($container[0].scrollLeft);
-        var targetScroll;
         if (e.currentTarget.classList.contains('next')) {
-          targetScroll = scrollPoints[currentIndex + 1] || lastScrollPoint;
+          scrollTo(Math.min($container[0].scrollLeft + containerWidth, lastScrollPoint));
         } else {
-          targetScroll = scrollPoints[currentIndex - 1] || 0;
+          scrollTo(Math.max($container[0].scrollLeft - containerWidth, 0));
         }
-        scrollTo(targetScroll);
       });
     }
   };
