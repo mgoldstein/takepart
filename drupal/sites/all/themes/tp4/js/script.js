@@ -431,6 +431,40 @@
           scrollTo(Math.max($container[0].scrollLeft - containerWidth, 0));
         }
       });
+
+      // handle touch events
+      if (
+        'ontouchstart' in window
+        || window.DocumentTouch && document instanceof DocumentTouch
+      ) {
+        var hammerTime = new Hammer($container[0]);
+        var position, isDrag = false;
+
+        // handle drag events to reveal
+        hammerTime.on('dragleft dragright', function(e) {
+          position = isDrag ?  position : $container[0].scrollLeft;
+          isDrag = true;
+          if (e.gesture.direction === 'left') {
+            $container[0].scrollLeft = Math.min(position - e.gesture.deltaX / 2, lastScrollPoint);
+          } else {
+            $container[0].scrollLeft = Math.max(position - e.gesture.deltaX / 2, 0);
+          }
+        });
+        hammerTime.on('dragend', function(e) {
+          if (isDrag) {
+            scrollTo(position, true);
+            isDrag = false;
+          }
+        });
+        hammerTime.on('swiperight swipeleft', function(e) {
+          isDrag = false;
+          if (e.gesture.direction === 'left') {
+            scrollTo(Math.min(position + containerWidth, lastScrollPoint), true);
+          } else {
+            scrollTo(Math.max(position - containerWidth, 0), true);
+          }
+        });
+      }
     }
   };
 
