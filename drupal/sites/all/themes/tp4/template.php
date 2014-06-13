@@ -1355,8 +1355,9 @@ function tp4_preprocess_node__campaign_card_tap_widget(&$variables, $hook) {
 
 	$center = '';
 
-	if($tab_widget = field_get_items('node', $variables['node'], 'field_tab_action_override')){
-		$tab_widget = field_view_field('node', $variables['node'], 'field_tab_action_override', array('type' => 'tp_card_tab_widget_reference'));
+	$tab_widget = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_ref');
+	if($tab_widget = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_ref')){
+		$tab_widget = field_view_field('node', $variables['node'], 'field_campaign_tab_widget_ref', array('type' => 'tp_card_tab_widget_reference'));
 		$center = drupal_render($tab_widget);
 	}
   //background properties

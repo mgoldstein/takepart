@@ -18,7 +18,7 @@ function tp_campaigns_field_formatter_info(){
 		),
 		'tp_card_tab_widget_reference' => array(
 			'label' => t('TAB Widget Reference'),
-			'field types' => array('node_reference'),
+			'field types' => array('entityreference'),
 		),
 	);
 }
@@ -114,7 +114,7 @@ function tp_campaigns_tap_widget_id($items){
 //Grab Action ID
 	$tap_id = db_select('signature_node', 's')
 		->fields('s', array('tap_id'))
-		->condition('nid', $items[0]['nid'],'=')
+		->condition('nid', $items[0]['target_id'],'=')
 		->execute()
 		->fetchAssoc();
 	$tap_id = $tap_id['tap_id'];
@@ -125,6 +125,11 @@ function tp_campaigns_tap_widget_id($items){
  * Widget expose value for the TAP widget reference
  */
 function tp_campaigns_tap_widget_exposed($entity){
-	$something = 'something';
-	return $something;
+
+	if($widget_exposed = field_get_items('node', $entity, 'field_campaign_tab_widget_expose')){
+		$widget_exposed = 'expanded';
+	}else{
+		$widget_exposed = '';
+	}
+	return $widget_exposed;
 }
