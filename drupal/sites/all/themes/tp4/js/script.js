@@ -433,10 +433,10 @@
       });
 
       // handle touch events
-      if (
-        'ontouchstart' in window
-        || window.DocumentTouch && document instanceof DocumentTouch
-      ) {
+      // if (
+      //   'ontouchstart' in window
+      //   || window.DocumentTouch && document instanceof DocumentTouch
+      // ) {
         var hammerTime = new Hammer($container[0]);
         var position, isDrag = false;
 
@@ -452,8 +452,16 @@
         });
         hammerTime.on('dragend', function(e) {
           if (isDrag) {
-            scrollTo(position, true);
             isDrag = false;
+            if (Math.abs(e.gesture.deltaX) > containerWidth / 2) {
+              if (e.gesture.direction === 'left') {
+                scrollTo(Math.min(position + containerWidth, lastScrollPoint), true);
+              } else {
+                scrollTo(Math.max(position - containerWidth, 0), true);
+              }              
+            } else {
+              scrollTo(position, true);
+            }
           }
         });
         hammerTime.on('swiperight swipeleft', function(e) {
@@ -464,7 +472,7 @@
             scrollTo(Math.max(position - containerWidth, 0), true);
           }
         });
-      }
+      // }
     }
   };
 
