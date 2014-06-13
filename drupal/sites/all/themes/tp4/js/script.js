@@ -388,8 +388,10 @@
       };
 
       // perform a scroll
-      var scrollTo = function(targetScroll) {
-        $container.stop().animate({scrollLeft: targetScroll}, function() {
+      var scrollTo = function(targetScroll, animation) {
+        if (typeof targetScroll === 'undefined') return;
+        animation = !!animation ? (typeof animation === 'string' ? animation : 'easeOutBounce') : 'swing';
+        $container.stop().animate({scrollLeft: targetScroll}, 1000, animation, function() {
           calculateNav();
         });
       };
