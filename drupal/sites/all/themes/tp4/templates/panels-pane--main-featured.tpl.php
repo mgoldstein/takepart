@@ -26,7 +26,7 @@
         if ($items = field_get_items('node', $content['#node'], 'field_promo_headline')) {
             $title = render(field_view_value('node', $content['#node'], 'field_promo_headline', $items[0]));
             if ($pane->configuration['link_node_title']) {
-                $title = l($title, $title_link);
+                $title = l($title, substr($title_link, 1), array('html' => TRUE));
             }
         }
     }
