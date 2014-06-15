@@ -12600,53 +12600,62 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 /* line 80, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns {
   display: table;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  -webkit-transform: translate(0px);
+  -moz-transform: translate(0px);
+  -ms-transform: translate(0px);
+  -o-transform: translate(0px);
+  transform: translate(0px);
 }
-/* line 83, ../sass/modules/_featured_campaigns.scss */
+/* line 85, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-items {
   display: table-row;
 }
-/* line 87, ../sass/modules/_featured_campaigns.scss */
+/* line 89, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item {
   display: table-cell;
   vertical-align: top;
   position: relative;
 }
-/* line 92, ../sass/modules/_featured_campaigns.scss */
+/* line 94, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item .field-collection-item-field-featured-campaigns {
   width: 222px;
 }
-/* line 96, ../sass/modules/_featured_campaigns.scss */
+/* line 98, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item a:hover {
   text-decoration: none;
 }
-/* line 100, ../sass/modules/_featured_campaigns.scss */
+/* line 102, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item img {
   display: block;
 }
-/* line 104, ../sass/modules/_featured_campaigns.scss */
+/* line 106, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item h4 {
   font: normal normal 0.85714em/1 "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: uppercase;
   margin-top: 1.166666667em;
   margin-bottom: .5em;
 }
-/* line 111, ../sass/modules/_featured_campaigns.scss */
+/* line 113, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item h2 {
   font-size: 1.142857143em;
   line-height: 1.25;
 }
-/* line 116, ../sass/modules/_featured_campaigns.scss */
+/* line 118, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item a:hover h2 {
   text-decoration: underline;
 }
-/* line 120, ../sass/modules/_featured_campaigns.scss */
+/* line 122, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item .field-collection-view-links {
   display: none;
   position: absolute;
   top: 5px;
   right: 5px;
 }
-/* line 126, ../sass/modules/_featured_campaigns.scss */
+/* line 128, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item .field-collection-view-links a {
   display: block;
   padding: 2px 4px;
@@ -12657,11 +12666,11 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
   -o-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 133, ../sass/modules/_featured_campaigns.scss */
+/* line 135, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .field-name-field-featured-campaigns .field-item:hover .field-collection-view-links {
   display: block;
 }
-/* line 139, ../sass/modules/_featured_campaigns.scss */
+/* line 141, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .action-links-field-collection-add {
   position: absolute;
   top: 5px;
@@ -12675,7 +12684,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
   -o-border-radius: 4px;
   border-radius: 4px;
 }
-/* line 149, ../sass/modules/_featured_campaigns.scss */
+/* line 151, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .cta {
   padding-left: 1.5em;
   position: relative;
@@ -12683,12 +12692,12 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
   margin-bottom: 40px;
 }
 @media all and (min-width: 980px) {
-  /* line 149, ../sass/modules/_featured_campaigns.scss */
+  /* line 151, ../sass/modules/_featured_campaigns.scss */
   .bean-featured-campaigns-module .cta {
     margin-left: 0;
   }
 }
-/* line 159, ../sass/modules/_featured_campaigns.scss */
+/* line 161, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .cta:before {
   content: '\23e9';
   font-family: 'SSGizmo';
@@ -12698,11 +12707,11 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
   top: 0;
   left: 0;
 }
-/* line 169, ../sass/modules/_featured_campaigns.scss */
+/* line 171, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .cta p {
   margin-bottom: 1em;
 }
-/* line 173, ../sass/modules/_featured_campaigns.scss */
+/* line 175, ../sass/modules/_featured_campaigns.scss */
 .bean-featured-campaigns-module .cta a {
   color: #018b73;
 }
