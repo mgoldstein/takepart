@@ -1,5 +1,7 @@
 <?php
 
+use \Participant\App;
+
 /* Admin
  *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 /**
@@ -32,52 +34,11 @@ function pm_jwplatform_menu() {
   );
 }
 
-
-/* Libraries
- *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
-/**
- * Implements hook_libraries_info().
- */
-function pm_jwplatform_libraries_info() {
-  return array(
-    'jwplatform' => array(
-      'name' => 'JW Platform API',
-      'vendor url' => 'http://developer.longtailvideo.com/botr/',
-      'download url' => 'http://developer.longtailvideo.com/botr/',
-      'version arguments' => array(
-        'file' => 'botr/api.php',
-        'pattern' => '/Version:\s+(\d[.\d]*)/',
-        'lines' => 12,
-      ),
-      'files' => array(
-        'php' => array(
-          'botr/api.php',
-        ),
-      ),
-    ),
-  );
-}
-
-function pm_jwplatform_api_available() {
-  $library = libraries_detect('jwplatform');
-  if ($library && !empty($library['installed'])) {
-    $key = variable_get('pm_jwplatform_api_key', '');
-    $secret = variable_get('pm_jwplatform_api_secret', '');
-    if (!empty($key) && !empty($secret)) {
-      return TRUE;
-    }
-  }
-  return FALSE;
-}
-
 function pm_jwplatform_get_api() {
-  $library = libraries_load('jwplatform');
-  if ($library && !empty($library['loaded'])) {
-    $key = variable_get('pm_jwplatform_api_key', '');
-    $secret = variable_get('pm_jwplatform_api_secret', '');
-    if (!empty($key) && !empty($secret)) {
-      return new BotrAPI($key, $secret);
-    }
+  $key = variable_get('pm_jwplatform_api_key', '');
+  $secret = variable_get('pm_jwplatform_api_secret', '');
+  if (!empty($key) && !empty($secret)) {
+    return new \JPedius\BotrAPI($key, $secret);
   }
   return FALSE;
 }
@@ -613,19 +574,22 @@ function pm_jwplatform_create_import_requests() {
 
   if (count($new_keys) > 0) {
 
-    $existing_keys = db_select('pm_jwplatform_imports', 'i')
-      ->fields('i', array('video_key'))
-      ->condition('video_key', $new_keys)
-      ->execute()
-      ->fetchCol();
+    $repo = App::repo('Participant\Entities\Video\NodeImport');
+
+    $existing_keys = array();
+    foreach($repo->getExistingImports($new_keys) as $node_import) {
+      $existing_keys[] = $node_import->getVideoKey();
+    }
 
     $keys_to_add = array_diff($new_keys, $existing_keys);
     if (count($keys_to_add) > 0) {
-      $query = db_insert('pm_jwplatform_imports')->fields(array('video_key', 'created'));
       foreach ($keys_to_add as $key) {
-        $query->values(array('video_key' => $key, 'created' => REQUEST_TIME));
+        $import_request = new \Participant\Entities\Video\NodeImport();
+        $import_request->setVideoKey($key);
+        $import_request->setCreatedAt(REQUEST_TIME);
+        App::db()->persist($import_request);
       }
-      $query->execute();
+      App::db()->flush();
     }
   }
 }
@@ -736,13 +700,12 @@ function pm_jwplatform_create_video_node($fields) {
 function pm_jwplatform_process_import_requests() {
 
   // Get a list of pending video imports.
-  $requests = db_select('pm_jwplatform_imports', 'i')
-    ->fields('i', array('id', 'video_key'))
-    ->condition('imported', NULL)
-    ->execute()
-    ->fetchAllKeyed();
+  $repo = App::repo('Participant\Entities\Video\NodeImport');
+  $pending_imports = $repo->getPendingImports();
 
-  foreach ($requests as $id => $video_key) {
+  foreach ($pending_imports as $import) {
+
+    $video_key = $import->getVideoKey();
 
     // Get the thumbnail first as it may take some time to generate.
     if (pm_jwplatform_get_video_thumbnail_ready_from_botr($video_key)) {
@@ -753,12 +716,8 @@ function pm_jwplatform_process_import_requests() {
 
         // Create the video node.
         if (pm_jwplatform_create_video_node($fields)) {
-
-          // Mark the video import as complete.
-          db_update('pm_jwplatform_imports')
-            ->fields(array('imported' => REQUEST_TIME))
-            ->condition('id', $id)
-            ->execute();
+          $import->setImportedAt(REQUEST_TIME);
+          App::db()->flush();
         }
       }
     }
