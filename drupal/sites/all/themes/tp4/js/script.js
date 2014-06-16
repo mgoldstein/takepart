@@ -365,35 +365,58 @@
       var $container = $campaignsModule.find('.field-collection-container')
         .append('<a class="featured-campaigns-nav prev">')
         .append('<a class="featured-campaigns-nav next">');
+      var $wrapper = $container.find('.field-name-field-featured-campaigns');
       var $items = $container.find('.field-item');
       var $nav = $container.find('.featured-campaigns-nav');
       var containerWidth, lastScrollPoint;
+
+      var getTranslateX = function() {
+        var element = window.getComputedStyle($wrapper[0], null),
+            matrix = element.getPropertyValue("-webkit-transform")
+              || element.getPropertyValue("-ms-transform")
+              || element.getPropertyValue("transform")
+              || $wrapper.css('-webkit-transform')
+              || $wrapper.css('-ms-transform')
+              || $wrapper.css('transform'),
+            position = matrix.replace(/^[^(]*\(|\)$/g, '').split(',');
+        return Math.abs(position[4]);
+      };
 
       // set variables for size and 
       var calculateWidth = function() {
         containerWidth = $container.width();
         lastScrollPoint = $container.find('.field-name-field-featured-campaigns').width() - containerWidth;
-        if ($container[0].scrollLeft > lastScrollPoint) scrollTo(lastScrollPoint);
-      }
+        if (getTranslateX() > lastScrollPoint) scrollTo(lastScrollPoint);
+        calculateNav();
+      };
 
       // determine which nav arrows to show
+      var calculateNavTimeout = null;
       var calculateNav = function() {
-        $nav.removeClass('hidden');
-        if ($container[0].scrollLeft === 0) {
-          $nav.filter('.prev').addClass('hidden');
-        }
-        if ($container[0].scrollLeft >= lastScrollPoint || $container.width() >= $container.find('.field-items').width()) {
-          $nav.filter('.next').addClass('hidden');
-        }
+        clearTimeout(calculateNavTimeout);
+        calculateNavTimeout = setTimeout(function() {
+          var scrollLeft = getTranslateX();
+          $nav.removeClass('hidden');
+          if (scrollLeft === 0) {
+            $nav.filter('.prev').addClass('hidden');
+          }
+          if (scrollLeft >= lastScrollPoint || $container.width() >= $container.find('.field-items').width()) {
+            $nav.filter('.next').addClass('hidden');
+          }
+        }, 600);
       };
 
       // perform a scroll
-      var scrollTo = function(targetScroll, animation) {
+      var scrollTo = function(targetScroll) {
         if (typeof targetScroll === 'undefined') return;
-        animation = !!animation ? (typeof animation === 'string' ? animation : 'easeOutBounce') : 'swing';
-        $container.stop().animate({scrollLeft: targetScroll}, 1000, animation, function() {
-          calculateNav();
+        var translate = "translate(-" + targetScroll + "px)";
+        $wrapper.css({
+          '-webkit-transform': translate,
+          '-ms-transform': translate,
+          'transform': translate
         });
+        // when the css animation is done, recalcuate nav
+        calculateNav();
       };
 
       // recalculate waypoints on resize and
@@ -401,10 +424,7 @@
       var resizeTimeout;
       $window.on('resize', function() {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function() {
-          calculateWidth();
-          calculateNav();
-        }, 200);
+        resizeTimeout = setTimeout(calculateWidth, 200);
       }).trigger('resize');
 
       // progressivley enhance to prevent
@@ -425,54 +445,30 @@
       // handle click events:
       $campaignsModule.on('click', '.featured-campaigns-nav', function(e){
         e.preventDefault();
+        var scrollLeft = getTranslateX();
         if (e.currentTarget.classList.contains('next')) {
-          scrollTo(Math.min($container[0].scrollLeft + containerWidth, lastScrollPoint));
+          scrollTo(Math.min(scrollLeft + containerWidth, lastScrollPoint));
         } else {
-          scrollTo(Math.max($container[0].scrollLeft - containerWidth, 0));
+          scrollTo(Math.max(scrollLeft - containerWidth, 0));
         }
       });
 
       // handle touch events
-      // if (
-      //   'ontouchstart' in window
-      //   || window.DocumentTouch && document instanceof DocumentTouch
-      // ) {
+      if (
+        'ontouchstart' in window
+        || window.DocumentTouch && document instanceof DocumentTouch
+      ) {
         var hammerTime = new Hammer($container[0]);
-        var position, isDrag = false;
 
-        // handle drag events to reveal
-        hammerTime.on('dragleft dragright', function(e) {
-          position = isDrag ?  position : $container[0].scrollLeft;
-          isDrag = true;
-          if (e.gesture.direction === 'left') {
-            $container[0].scrollLeft = Math.min(position - e.gesture.deltaX / 2, lastScrollPoint);
-          } else {
-            $container[0].scrollLeft = Math.max(position - e.gesture.deltaX / 2, 0);
-          }
-        });
-        hammerTime.on('dragend', function(e) {
-          if (isDrag) {
-            isDrag = false;
-            if (Math.abs(e.gesture.deltaX) > containerWidth / 2) {
-              if (e.gesture.direction === 'left') {
-                scrollTo(Math.min(position + containerWidth, lastScrollPoint), true);
-              } else {
-                scrollTo(Math.max(position - containerWidth, 0), true);
-              }              
-            } else {
-              scrollTo(position, true);
-            }
-          }
-        });
         hammerTime.on('swiperight swipeleft', function(e) {
-          isDrag = false;
+          var position = getTranslateX();
           if (e.gesture.direction === 'left') {
-            scrollTo(Math.min(position + containerWidth, lastScrollPoint), true);
+            scrollTo(Math.min(position + containerWidth, lastScrollPoint));
           } else {
-            scrollTo(Math.max(position - containerWidth, 0), true);
+            scrollTo(Math.max(position - containerWidth, 0));
           }
         });
-      // }
+      }
     }
   };
 
