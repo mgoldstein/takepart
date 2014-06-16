@@ -55,6 +55,7 @@ features[field_instance][] = node-flashcard-field_inline_replacements
 features[field_instance][] = node-flashcard-field_promo_headline
 features[field_instance][] = node-flashcard-field_promo_short_headline
 features[field_instance][] = node-flashcard-field_promo_text
+features[field_instance][] = node-flashcard-field_series
 features[field_instance][] = node-flashcard-field_significance
 features[field_instance][] = node-flashcard-field_thumbnail
 features[field_instance][] = node-flashcard-field_topic
