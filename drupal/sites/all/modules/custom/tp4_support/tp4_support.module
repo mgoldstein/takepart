@@ -11,7 +11,7 @@
 function tp4_support_help($path, $arg) {
 	switch ($path) {
 		case 'admin/help#tp4_support':
-			return '<p>' . t('Support module for the TP4 theme and the Nov, 2013 redesign.') . '</p>';		
+			return '<p>' . t('Support module for the TP4 theme and the Nov, 2013 redesign.') . '</p>';
 	}
 }
 
@@ -272,7 +272,7 @@ function tp4_support_preprocess_page(&$variables) {
 function template_preprocess_tp4_support_footer(&$variables) {
   $variables['footer_menu_links'] = drupal_render($variables['footer_menu']);
   if (arg(0) === 'iframes') {
-    $variables['footer_menu_links'] = str_replace('https://', 'http://', $variables['footer_menu']);
+    $variables['footer_menu_links'] = str_replace('https://', 'http://', drupal_render($variables['footer_menu']));
   }
 
   if (empty($variables['footer_text'])){
@@ -335,7 +335,7 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
 
   // replace some things with https:// if we're using iframes
   if (arg(0) === 'iframes') {
-    $variables['slimnav'] = str_replace('https://', 'http://', $variables['slimnav']); 
+    $variables['slimnav'] = str_replace('https://', 'http://', $variables['slimnav']);
     $variables['search'] = array();
   }
 
@@ -346,7 +346,7 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
  *
  * Set up variables for tp4_support_mobile_menu_header
  * theme hook.
- * 
+ *
  * @param  array $variables
  */
 function template_preprocess_tp4_support_mobile_menu_header(&$variables) {
@@ -389,7 +389,7 @@ function theme_tp4_support_featured_campaign(&$variables) {
   if (isset($page)) {
     foreach(field_get_items('node', $page, 'field_campaign_reference') as $item) {
       $campaign = node_load($item['target_id']);
-    }    
+    }
   }
 
   $content = array(
@@ -611,7 +611,7 @@ function tp4_support_field_formatter_view($entity_type, $entity, $field, $instan
 
 function tp4_support_preprocess_block(&$variables) {
   if($variables['block_html_id'] == 'block-views-takeaction-homepage-block'){
-    $variables['theme_hook_suggestions'][] = 'block__views__homepage_columns_block'; 
+    $variables['theme_hook_suggestions'][] = 'block__views__homepage_columns_block';
   }
   else if ($variables['block']->bid === 'tp4_support-tp4_mobile_menu_header') {
     $variables['classes_array'][] = 'mobile-menu-header';

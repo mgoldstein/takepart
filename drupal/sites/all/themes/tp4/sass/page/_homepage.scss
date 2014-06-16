@@ -234,6 +234,23 @@ body.front{
   }
 } // .panel-takepart-homepage
 
+body.toolbar {
+  .panel-secondary-featured,
+  .panel-tpl-secondary-featured {
+    .panel-pane {
+      @include breakpoint($breakpoint-tablet) {
+        float: left;
+        width: 48%;
+        height:260px;
+        &:nth-child(2n+1) {
+          margin-right: 2%;
+          clear: none;
+        }
+      }
+    }
+  }
+}
+
 .date {
   margin-bottom: 2px;
   @include breakpoint($breakpoint-mobile) {

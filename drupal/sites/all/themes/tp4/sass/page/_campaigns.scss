@@ -1031,110 +1031,120 @@ body.campaign-display{
   }
 
   //Social
-  .node-campaign-card-social .social-follow{
-    margin-left: -5px;
-    a.social-icon {
-      font-size: 35px;
-    }
-    @include breakpoint($breakpoint-tablet) {
-      margin-left: 0;
+  .node-campaign-card-social {
+    .social-follow{
+      margin-left: -5px;
       a.social-icon {
-        font-size: 40px;
+        font-size: 35px;
       }
-    }
+      @include breakpoint($breakpoint-tablet) {
+        margin-left: 0;
+        a.social-icon {
+          font-size: 40px;
+        }
+      }
 
-    text-align: center;
-    line-height: 65px;
-    margin-right: -20px;
-    a.social-icon {
-      width: 100px;
-      height: 100px;
-      margin-right: 15px;
-      overflow: hidden;
-      text-indent: 1000px;
-      vertical-align: middle;
-      color: #fff;
-      &:before{
+      text-align: center;
+      line-height: 65px;
+      margin-right: -20px;
+      a.social-icon {
         width: 100px;
         height: 100px;
-        padding: 10px;
-        border-radius: 44px;
+        margin-right: 15px;
+        overflow: hidden;
+        text-indent: 1000px;
+        vertical-align: middle;
+        color: #fff;
+        &:before{
+          width: 100px;
+          height: 100px;
+          padding: 10px;
+          border-radius: 44px;
+        }
+        &.tp-social-link {
+          &:hover{
+            text-decoration: none;
+          }
+          &.facebook:before{
+            @extend .tp-social-link.tp-social-Facebook:before;
+            background-color: #3d5b96;
+          }
+          &.facebook:hover:before{
+            background-color: #637fab;
+          }
+          &.twitter:before{
+            @extend .tp-social-link.tp-social-Twitter:before;
+            background-color: #34aadf;
+          }
+          &.twitter:hover:before{
+            background-color: #70c5e7;
+          }
+          &.pinterest:before{
+            @extend .tp-social-link.tp-social-Pinterest:before;
+            background-color: #ca2026;
+          }
+          &.pinterest:hover:before{
+            background-color: #e63f52;
+          }
+          &.google-plus:before{
+            @extend .tp-social-link.tp-social-GooglePlus:before;
+            background-color: #d84a3b;
+          }
+          &.google-plus:hover:before{
+            background-color: #f35648;
+          }
+          &.tumblr:before{
+            @extend .tp-social-link.tp-social-Tumblr:before;
+            background-color: #385774;
+          }
+          &.tumblr:hover:before{
+            background-color: #529ecc;
+          }
+          &.email:before{
+            @extend .tp-social-link.tp-social-Email:before;
+            background-color: #fc5d45;
+          }
+          &.email:hover:before{
+            background-color: #fd8776;
+          }
+          &.linkedin:before{
+            @extend .tp-social-link.tp-social-Linkedin:before;
+            background-color: #0977b4;
+          }
+          &.linkedin:hover:before{
+            background-color: #0c9bea;
+          }
+          &.youtube:before{
+            @extend .tp-social-link.tp-social-Youtube:before;
+            background-color: #cc181e;
+          }
+          &.youtube:hover:before{
+            background-color: #ff1e26;
+          }
+          &.vine:before{
+            @extend .tp-social-link.tp-social-Vine:before;
+            background-color: #00b386;
+          }
+          &.vine:hover:before{
+            background-color: #00d9a2;
+          }
+          &.instagram:before{
+            @extend .tp-social-link.tp-social-Instagram:before;
+            background-color: #3f729b;
+          }
+          &.instagram:hover:before{
+            background-color: #5092c6;
+          }
+        }
       }
-      &.tp-social-link {
-        &:hover{
-          text-decoration: none;
-        }
-        &.facebook:before{
-          @extend .tp-social-link.tp-social-Facebook:before;
-          background-color: #3d5b96;
-        }
-        &.facebook:hover:before{
-          background-color: #637fab;
-        }
-        &.twitter:before{
-          @extend .tp-social-link.tp-social-Twitter:before;
-          background-color: #34aadf;
-        }
-        &.twitter:hover:before{
-          background-color: #70c5e7;
-        }
-        &.pinterest:before{
-          @extend .tp-social-link.tp-social-Pinterest:before;
-          background-color: #ca2026;
-        }
-        &.pinterest:hover:before{
-          background-color: #e63f52;
-        }
-        &.google-plus:before{
-          @extend .tp-social-link.tp-social-GooglePlus:before;
-          background-color: #d84a3b;
-        }
-        &.google-plus:hover:before{
-          background-color: #f35648;
-        }
-        &.tumblr:before{
-          @extend .tp-social-link.tp-social-Tumblr:before;
-          background-color: #385774;
-        }
-        &.tumblr:hover:before{
-          background-color: #529ecc;
-        }
-        &.email:before{
-          @extend .tp-social-link.tp-social-Email:before;
-          background-color: #fc5d45;
-        }
-        &.email:hover:before{
-          background-color: #fd8776;
-        }
-        &.linkedin:before{
-          @extend .tp-social-link.tp-social-Linkedin:before;
-          background-color: #0977b4;
-        }
-        &.linkedin:hover:before{
-          background-color: #0c9bea;
-        }
-        &.youtube:before{
-          @extend .tp-social-link.tp-social-Youtube:before;
-          background-color: #cc181e;
-        }
-        &.youtube:hover:before{
-          background-color: #ff1e26;
-        }
-        &.vine:before{
-          @extend .tp-social-link.tp-social-Vine:before;
-          background-color: #00b386;
-        }
-        &.vine:hover:before{
-          background-color: #00d9a2;
-        }
-        &.instagram:before{
-          @extend .tp-social-link.tp-social-Instagram:before;
-          background-color: #3f729b;
-        }
-        &.instagram:hover:before{
-          background-color: #5092c6;
-        }
+    }
+    @media (min-width: 480px) {
+      .takepart-newsletter-form {
+        margin: 0 20%;
       }
+    }
+    input[name=newsletter_campaign_signup] {
+      float: right;
     }
   }
   .sms{
@@ -1616,6 +1626,7 @@ p.campaign-content-meta{
     
     header#header{
       .campaign-menu-toggle {
+        display: block;
         position: absolute;
         left: 78%;
         top: 50px;

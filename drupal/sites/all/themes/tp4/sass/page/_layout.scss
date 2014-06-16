@@ -159,6 +159,9 @@ body {
       -ms-box-sizing: content-box;
       box-sizing: content-box;
     }
+    p {
+        margin-bottom: .5em;
+    }
   }
 
   // the default style establishes mobile first parameters

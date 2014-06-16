@@ -16,7 +16,20 @@
  * - $display: The complete panels display object containing all kinds of
  *   data including the contexts and all of the other panes being displayed.
  */
-$headline = !empty($content['#node']->field_promo_headline) ? $content['#node']->field_promo_headline['und'][0]['safe_value'] : $title;
+?>
+<?php
+    // @todo move all this logic out of the template
+
+    // if the pane does not set a title override
+    // check for a promo headline
+    if (!$pane->configuration['override_title']) {
+        if ($items = field_get_items('node', $content['#node'], 'field_promo_headline')) {
+            $title = render(field_view_value('node', $content['#node'], 'field_promo_headline', $items[0]));
+            if ($pane->configuration['link_node_title']) {
+                $title = l($title, substr($title_link, 1), array('html' => TRUE));
+            }
+        }
+    }
 ?>
 <?php if ($pane_prefix): ?>
     <?php print $pane_prefix; ?>
@@ -35,16 +48,7 @@ $headline = !empty($content['#node']->field_promo_headline) ? $content['#node']-
         }
         ?>
         <?php print render($title_prefix); ?>
-        <?php
-        if ($headline) {
-            if (!empty($title_link)) {
-                $title_heading = '<a href="' . $title_link . '">' . $headline . '</a>';
-            } else {
-                $title_heading = $headline;
-            }
-            print '<h2' . $title_attributes . '>' . $title_heading . '</h2>';
-        }
-        ?>
+        <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
         <?php print render($title_suffix); ?>
         <?php if ($unpublished): ?>
             <mark class="unpublished"><?php print t('Unpublished'); ?></mark>

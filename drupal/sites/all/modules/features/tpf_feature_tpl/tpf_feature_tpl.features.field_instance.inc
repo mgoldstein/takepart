@@ -214,7 +214,7 @@ function tpf_feature_tpl_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'attributes' => array(
-        'class' => '',
+        'class' => 'more-tpl',
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'user',

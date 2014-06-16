@@ -91,6 +91,7 @@ function tpf_display_menus_menu_default_menu_links() {
         'class' => array(
           0 => 'social-email-black',
         ),
+        'target' => '_blank',
       ),
     ),
     'module' => 'menu',
