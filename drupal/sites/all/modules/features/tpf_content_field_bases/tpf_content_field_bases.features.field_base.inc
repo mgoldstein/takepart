@@ -1453,6 +1453,7 @@ function tpf_content_field_bases_field_default_field_bases() {
           'campaign_card_multi_column' => 'campaign_card_multi_column',
           'campaign_card_news' => 'campaign_card_news',
           'campaign_card_social' => 'campaign_card_social',
+          'campaign_card_tap_widget' => 'campaign_card_tap_widget',
           'campaign_card_text' => 'campaign_card_text',
           'campaign_card_twitter' => 'campaign_card_twitter',
         ),

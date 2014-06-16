@@ -271,6 +271,19 @@ body.campaign-display .card.node-campaign-card-multi-column{
     }
   }
 }
+body.campaign-display .card.node-campaign-card-tap-widget{
+  .center-column{
+    @include breakpoint($breakpoint-mobile) {
+      @include zen-grid-item(12, 1);
+      padding-left: 10px;
+      padding-right: 10px;
+      @include zen-clear();
+    }
+    @include breakpoint($breakpoint-tablet) {
+      @include zen-grid-item(10, 2);
+    }
+  }
+}
 
 #main.card-page{
   width: 100%;
@@ -825,7 +838,46 @@ body.campaign-display{
       }
     }
   }
+  /* TAP Widget */
+  .node-campaign-card-tap-widget {
+    .left, .right{
+      @include zen-grid-item(12, 1);
+      @include zen-clear();
+      padding-bottom: 20px;
+    }
 
+    @include breakpoint($breakpoint-tablet) {
+      .left{
+        @include zen-grid-item(12, 1);
+      }
+      .left.column-even{
+        @include zen-grid-item(6, 1);
+      }
+      .left.column-wide{
+        @include zen-grid-item(7, 1);
+      }
+      .left.column-narrow{
+        @include zen-grid-item(5, 1);
+      }
+      .right{
+        clear: none;
+      }
+      .right.column-even{
+        @include zen-grid-item(6, 7);
+      }
+      .right.column-wide{
+        @include zen-grid-item(7, 6);
+      }
+      .right.column-narrow{
+        @include zen-grid-item(5, 8);
+      }
+    }
+    img{
+      display: block;
+      margin: 0 auto;
+      padding-bottom: 10px;
+    }
+  }
 
 
 

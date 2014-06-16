@@ -99,6 +99,14 @@ function tpf_content_campaigns_node_info() {
       'title_label' => t('Admin Card Title'),
       'help' => '',
     ),
+    'campaign_card_tap_widget' => array(
+      'name' => t('Campaign Card TAP Widget'),
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => t('Admin Title'),
+      'help' => '',
+    ),
     'campaign_card_text' => array(
       'name' => t('Campaign Card Text'),
       'base' => 'node_content',
