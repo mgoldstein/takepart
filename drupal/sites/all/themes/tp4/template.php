@@ -453,7 +453,7 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  * Campaign Theming from the tp_campaigns module
  */
 if(module_exists('tp_campaigns')){
-	module_load_include('inc', 'tp_campaigns', 'tp4_campaign_preprocesses');
+	module_load_include('inc', 'tp_campaigns', 'campaign_card_preprocesses');
 }
 
 
