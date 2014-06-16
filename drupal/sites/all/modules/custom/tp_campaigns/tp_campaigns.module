@@ -75,7 +75,7 @@ function tp_campaigns_theme() {
       )
     ),
 	  'tp_tap_widget' => array(
-		  'template' => 'field-formatter--tap-widget',
+		  'template' => 'field-formatters/field-formatter--tap-widget',
 		  'variables' => array(
 			  'tap_id' => '',
 			  'widget_exposed' => '',
@@ -93,7 +93,16 @@ function tp_campaigns_theme() {
         'bg_settings' => array(),
         'logo' => '',
       )
-    )
+    ),
+		'tp_card_tap_widget' => array(
+			'template' => 'card-templates/tp-card--tap-widget',
+			'variables' => array(
+				'left' => '',
+				'right' => '',
+				'left_classes' => array(),
+				'right_classes' => array(),
+			)
+		),
   );
 }
 

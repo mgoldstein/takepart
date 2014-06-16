@@ -449,6 +449,16 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 
 }
 
+/*
+ * Campaign Theming from the tp_campaigns module
+ */
+if(module_exists('tp_campaigns')){
+	module_load_include('inc', 'tp_campaigns', 'tp4_campaign_preprocesses');
+}
+
+
+
+
 /**
  * Override or insert variables into the campaign card media template
  */
@@ -1352,72 +1362,47 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
 }
 
 function tp4_preprocess_node__campaign_card_tap_widget(&$variables, $hook) {
-
-	$center = '';
-
-	$tab_widget = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_ref');
-	if($tab_widget = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_ref')){
-		$tab_widget = field_view_field('node', $variables['node'], 'field_campaign_tab_widget_ref', array('type' => 'tp_card_tab_widget_reference'));
-		$center = drupal_render($tab_widget);
+	if(module_exists('tp_campaigns')){
+		$card_title = tp_campaigns_card_title($variables);
+		$variables['instructional'] = tp_campaigns_card_instructional($variables);
+		$variables['card_content'] = tp_campaigns_card_content_tap_widget($variables);
+		tp_campaigns_card_background($variables);
+		$variables['theme_hook_suggestions'][] = 'node__campaign_card';
 	}
-  //background properties
-  tp4_campaign_background_rules($variables);
-
-  //content
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-      $variables['instructional'] = $instructional;
-  }
-  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $variables['center'] = $center;
 }
 
-/********************************
- * Helper functions for Campaigns
- ********************************/
-/*
- * Helper function 1
- * This function can be used in 90% of use cases in rendering a field's value
- */
-function tp4_render_field_value($entity_type, $entity, $field_name){
-  $item = field_get_items($entity_type, $entity, $field_name);
-  return drupal_render(field_view_value($entity_type, $entity, $field_name, $item[0]));
-}
-/*
- * Helper function 2
- * Standard set of background rules that get repeated across every card type
- */
+/* Remove this function when all other Card Types transition to it */
 function tp4_campaign_background_rules(&$variables){
 
-  $variables['styles'] = array();
-  if($card_style = field_get_items('node', $variables['node'], 'field_campaign_style_setting')){
-    $variables['classes_array'][] = $card_style[0]['value'];
-  }
-  if($background_color = field_get_items('node', $variables['node'], 'field_campaign_bg_color')){
-    $variables['styles'][] = 'background-color: '. $background_color[0]['rgb']. ';';
-  }
-  if($min_height = tp4_render_field_value('node', $variables['node'], 'field_campaign_min_height')){
-    $variables['styles'][] = 'min-height: '. $min_height. 'px;';
-  }
-  $background_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw');
-  if($background_width == 'Full Width'){
-    $variables['classes_array'][] = 'card-width-full';
-  }
-  else{
-    $variables['classes_array'][] = 'card-width-980';
-  }
+	$variables['styles'] = array();
+	if($card_style = field_get_items('node', $variables['node'], 'field_campaign_style_setting')){
+		$variables['classes_array'][] = $card_style[0]['value'];
+	}
+	if($background_color = field_get_items('node', $variables['node'], 'field_campaign_bg_color')){
+		$variables['styles'][] = 'background-color: '. $background_color[0]['rgb']. ';';
+	}
+	if($min_height = tp4_render_field_value('node', $variables['node'], 'field_campaign_min_height')){
+		$variables['styles'][] = 'min-height: '. $min_height. 'px;';
+	}
+	$background_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw');
+	if($background_width == 'Full Width'){
+		$variables['classes_array'][] = 'card-width-full';
+	}
+	else{
+		$variables['classes_array'][] = 'card-width-980';
+	}
 
-  //Set the size of the background image
-  $bg_image_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw_image');
-  if($bg_image_width == 'Full Width'){
-    $variables['styles'][] = 'background-size: 100%;';
-  }
-  else{
-    $variables['styles'][] = 'background-size: 1000px;';
-  }
+	//Set the size of the background image
+	$bg_image_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw_image');
+	if($bg_image_width == 'Full Width'){
+		$variables['styles'][] = 'background-size: 100%;';
+	}
+	else{
+		$variables['styles'][] = 'background-size: 1000px;';
+	}
 
-  $background = field_get_items('node', $variables['node'], 'field_campaign_background');
-  $variables['card_background'] = (!empty($background) ? file_create_url($background[0]['uri']) : '');
+	$background = field_get_items('node', $variables['node'], 'field_campaign_background');
+	$variables['card_background'] = (!empty($background) ? file_create_url($background[0]['uri']) : '');
 
 }
 
