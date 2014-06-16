@@ -116,23 +116,26 @@ function tpf_content_flashcard_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '18',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '15',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '16',
         ),
         'xmlsitemap' => array(
-          'weight' => '8',
+          'weight' => '17',
         ),
       ),
       'display' => array(),
