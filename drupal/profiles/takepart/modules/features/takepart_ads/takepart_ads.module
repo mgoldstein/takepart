@@ -38,10 +38,17 @@ function takepart_ads_preprocess_page(&$vars) {
             //GPT:
             $adsize = '';
             preg_match('/[0-9]+x[0-9]+/', $ad, $adsize);
+            //dd($ad);
             $lr = explode("x", $adsize[0]);
             $gptad_html .= 'if (ad_call_check('.$lr[0].')) { ';
+            if ($ad == "TP_Mobile_320x50") {
+                $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') 
+                      . '/' . $ad . '\', [[300, 50], [320, 50]], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
+            }
+            else {
             $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') 
                       . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
+            }
             $gptad_html .= '}'."\n";
         } else {
             //GAM:
