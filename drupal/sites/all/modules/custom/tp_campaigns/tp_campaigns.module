@@ -60,14 +60,14 @@ function tp_campaigns_block_view($delta = ''){
 function tp_campaigns_theme() {
   return array(
     'tp_card_tray' => array(
-      'template' => 'field-formatter--card-tray',
+      'template' => 'field-formatters/field-formatter--card-tray',
       'variables' => array(
         'items' => array(),
         'entity' => '',
       )
     ),
     'tp_card_reference' => array(
-      'template' => 'field-formatter--card-reference',
+      'template' => 'field-formatters/field-formatter--card-reference',
       'variables' => array(
         'items' => array(),
         'entity' => '',
