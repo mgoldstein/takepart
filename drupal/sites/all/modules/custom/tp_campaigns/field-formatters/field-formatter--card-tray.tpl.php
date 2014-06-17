@@ -27,7 +27,7 @@
       $slider_class[] = '';
     }
 	  if($background_image || $bg_color){
-			$slider_class[] = 'tray-has-bg';
+			$slider_class[] = 'has-tray-background';
 	  }
     $references = field_get_items('node', $node, 'field_campaign_card_reference');
 
