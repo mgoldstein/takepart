@@ -1223,7 +1223,7 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   if(!empty($iframe)){
     $iframe_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_type');
     //if the iframe is not fixed add a padding hack to make it responsive
-    if($iframe_type == 1){
+    if($iframe_type == 'Responsive (100%)'){
       $ratio = $height/$width * 100;
       $center .= '<div class="iframe-wrapper" style="padding-bottom: '. $ratio. '%;">';
       $center .= '<iframe src="'. $iframe. '"></iframe>';
