@@ -8883,7 +8883,7 @@ body.campaign-display .card-wrapper {
   height: auto;
 }
 /* line 580, ../sass/page/_campaigns.scss */
-body.campaign-display .slider.has-tray-background .card {
+body.campaign-display .swipe.has-tray-background .card {
   background-image: none !important;
   background-color: transparent !important;
 }

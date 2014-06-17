@@ -8,24 +8,6 @@
  * @see https://drupal.org/node/1728096
  */
 /**
- * Override or insert variables into the maintenance page template.
- *
- * @param $variables
- *   An array of variables to pass to the theme template.
- * @param $hook
- *   The name of the template being rendered ("maintenance_page" in this case.)
- */
-/* -- Delete this line if you want to use this function
-  function STARTERKIT_preprocess_maintenance_page(&$variables, $hook) {
-  // When a variable is manipulated or added in preprocess_html or
-  // preprocess_page, that same work is probably needed for the maintenance page
-  // as well, so we can just re-use those functions to do that work here.
-  STARTERKIT_preprocess_html($variables, $hook);
-  STARTERKIT_preprocess_page($variables, $hook);
-  }
-  // */
-
-/**
  * Override or insert variables into the html templates.
  *
  * @param $variables
@@ -57,16 +39,18 @@ function tp4_preprocess_html(&$variables, $hook) {
     drupal_add_library('system', 'jquery.cookie', true);
 
     $node = menu_get_object();
-    $campaign_types = variable_get('card_types');
-    $campaign_types[] = 'campaign_page';
-    if (isset($node) && in_array($node->type, $campaign_types)) {
-      $variables['use_production_dtm'] = variable_get('use_production_dtm', FALSE);
-      $variables['use_development_dtm'] = variable_get('use_production_dtm', FALSE) ? FALSE : TRUE;
-    }
-    else {
-      $variables['use_production_dtm'] = FALSE;
-      $variables['use_development_dtm'] = FALSE;
-    }
+		$campaign_types = unserialize(CARDTYPES);
+		if(!empty($campaign_types)){
+	    $campaign_types[] = 'campaign_page';
+	    if (isset($node) && in_array($node->type, $campaign_types)) {
+	      $variables['use_production_dtm'] = variable_get('use_production_dtm', FALSE);
+	      $variables['use_development_dtm'] = variable_get('use_production_dtm', FALSE) ? FALSE : TRUE;
+	    }
+	    else {
+	      $variables['use_production_dtm'] = FALSE;
+	      $variables['use_development_dtm'] = FALSE;
+	    }
+		}
     
     if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
         unset($variables['page']['page_bottom']['omniture']);
@@ -158,8 +142,27 @@ function tp4_campaign_megamenu($nid){
  *   The name of the template being rendered ("page" in this case.)
  */
 function tp4_preprocess_page(&$variables) {
-  $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
-  $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
+	/*Define Card Types for Campaign theming */
+	$card_types = array(
+		'campaign_card_media',
+		'campaign_card_iframe',
+		'campaign_card_social',
+		'campaign_card_news',
+		'campaign_card_text',
+		'campaign_card_branding',
+		'campaign_card_tap',
+		'campaign_card_twitter',
+		'campaign_card_empty',
+		'campaign_card_ad',
+		'campaign_card_multi_column',
+		'campaign_card_tap_widget'
+	);
+	define('CARDTYPES', serialize($card_types));
+
+	if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
+	  $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
+	  $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
+	}
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
 
@@ -191,8 +194,8 @@ function tp4_preprocess_page(&$variables) {
     drupal_add_js(drupal_get_path('theme', 'tp4') . '/js/taboola.js', 'file');
     drupal_add_js('window._taboola = window._taboola || []; _taboola.push({flush:true});', array('type' => 'inline', 'scope' => 'footer'));
   }
-  $card_types = variable_get('card_types');
-  if(in_array($variables['node']->type, $card_types) == true){
+  $card_types = unserialize(CARDTYPES);
+  if(isset($variables['node']) && in_array($variables['node']->type, $card_types) == true){
     $variables['theme_hook_suggestions'][] = 'page__campaign_page';
     $variables['classes_array'][] = 'card-page';
 
@@ -345,47 +348,6 @@ function tp4_preprocess_node__campaign(&$variables, $hook) {
 function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 
  	$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
-
-	$campaign_trays = count($variables['field_campaign_tray']);
-
-	for($i=0; $i < $campaign_trays; $i++){
-
-		$campaign_tray = node_load($variables['field_campaign_tray'][$i]['target_id']);
-
-		if(!empty($campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'])){
-			$campaign_tray->field_campaign_tray_title['und'][0]['value'] = '<span style ="color:'.$campaign_tray->field_campaign_tray_title_color['und'][0]['rgb'].'">'.$campaign_tray->field_campaign_tray_title['und'][0]['value'].'</font>';
-		}
-
-		$campaign_card = node_load($campaign_tray->field_campaign_card_reference['und'][0]['target_id']);
-		$card_color_scheme = $campaign_card->field_card_color_scheme['und'][0]['value']; // color 1
-
-		// Array of campaign color schemes
-		$color_schemes = $campaign_node->field_color_scheme['und'];
-
-		foreach ($color_schemes as $field_collection) {
-		  $color_scheme = field_collection_item_load($field_collection['value']);
-		  // If card color scheme exists in campaign color scheme then inherit the value
-		  if($color_scheme->field_color_scheme_name['und'][0]['value'] == $card_color_scheme)
-		  {
-			$card_new_font_color = $color_scheme->field_color_scheme_font_color['und'][0]['rgb'];
-
-			//$card_new_background = $color_scheme->field_color_scheme_background['und'][0]['rgb'];
-			//if(!empty($card_new_background)){
-				// Apply the background from color scheme
-				//$campaign_card->field_campaign_bg_color['und'][0]['rgb'] = $card_new_background;
-			//}
-
-			if(!empty($card_new_font_color)){
-				// Add font color to variables
-				$campaign_card->field_card_color_scheme_font = $card_new_font_color;
-			}
-		  }
-
-		}
-
-
-	}
-	//$campaign_card->field_campaign_bg_color['und'][0]['rgb'] = "#000000";
 
 	// Check if alt text is empty then add title as alt text for campaign logo
 	if($campaign_node->field_campaign_logo['und'][0]['alt'] == ''){
