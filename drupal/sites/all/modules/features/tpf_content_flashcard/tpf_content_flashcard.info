@@ -1,7 +1,7 @@
 name = TakePart Content Flashcard
 core = 7.x
 package = Content Types
-version = 7.x-1.0
+version = 7.x-1.1
 project = tpf_content_flashcard
 dependencies[] = context
 dependencies[] = ctools
@@ -59,6 +59,7 @@ features[field_instance][] = node-flashcard-field_series
 features[field_instance][] = node-flashcard-field_significance
 features[field_instance][] = node-flashcard-field_thumbnail
 features[field_instance][] = node-flashcard-field_topic
+features[metatag][] = node:flashcard
 features[node][] = flashcard
 features[variable][] = comment_anonymous_flashcard
 features[variable][] = comment_default_mode_flashcard
