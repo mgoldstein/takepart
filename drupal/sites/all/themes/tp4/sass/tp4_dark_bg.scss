@@ -58,9 +58,9 @@ body.campaign-display{
       color: $primary-color;
     }
     .menu{
-      li{
+      li.parent-item{
         &.active > a {
-          color: $bright-mint; //switch red with $bright-mint.
+          color: $bright-mint;
         }
         &.parent-item:not(.anchored) > a.active{
           color: $bright-mint;

@@ -10293,24 +10293,24 @@ body.campaign-display .branding-header.dark-background .share-headline {
   color: white;
 }
 /* line 62, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li.active > a {
+body.campaign-display .branding-header.dark-background .menu li.parent-item.active > a {
   color: #01bf9e;
 }
 /* line 65, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li.parent-item:not(.anchored) > a.active {
+body.campaign-display .branding-header.dark-background .menu li.parent-item.parent-item:not(.anchored) > a.active {
   color: #01bf9e;
 }
 /* line 70, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li > a {
+body.campaign-display .branding-header.dark-background .menu li.parent-item > a {
   color: white;
 }
 /* line 73, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li.sfHover > a, body.campaign-display .branding-header.dark-background .menu li:hover > a {
+body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a {
   color: black;
   background-color: white;
 }
 /* line 77, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li.sfHover > a, body.campaign-display .branding-header.dark-background .menu li:hover > a.active {
+body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a.active {
   color: black;
 }
 /* line 81, ../sass/tp4_dark_bg.scss */
