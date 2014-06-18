@@ -4177,10 +4177,11 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   /* line 222, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 #boxes-box-ga_mobile_320x50 {
     position: relative;
-    width: auto;
+    width: 300px;
     margin: 0 auto;
+    overflow-x: visible;
   }
-  /* line 227, ../sass/page/_layout.scss */
+  /* line 228, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 .close-mobile-ad {
     display: block;
     visibility: visible;
@@ -4195,7 +4196,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     height: 36px;
     text-align: center;
   }
-  /* line 240, ../sass/page/_layout.scss */
+  /* line 241, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 .close-mobile-ad span {
     display: block;
     content: '\2421';
@@ -4218,7 +4219,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     visibility: hidden;
   }
 }
-/* line 260, ../sass/page/_layout.scss */
+/* line 261, ../sass/page/_layout.scss */
 #block-boxes-ga-mobile-320x50.hide {
   display: none;
   visibility: hidden;
@@ -4424,7 +4425,7 @@ body.front #sidebar .block-title {
 /* line 218, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1401413790');
+  background-image: url('../images/tpl-title.jpg?1403113362');
   margin-top: 5px;
   margin-bottom: -10px;
 }
@@ -4439,7 +4440,7 @@ body.front #sidebar .block-title {
   width: 100%;
   max-width: 312px;
   background-size: 100%;
-  background-image: url('../images/tpl-time.jpg?1401413790');
+  background-image: url('../images/tpl-time.jpg?1403113362');
   margin-top: 5px;
 }
 
@@ -10429,7 +10430,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1401413790') no-repeat center 9px;
+    background: url('../images/tpl-logo.jpg?1403113362') no-repeat center 9px;
     margin: 0;
   }
   /* line 81, ../sass/modules/_megamenu.scss */
@@ -10439,7 +10440,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.jpg?1401413790') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1403113362') no-repeat center center;
     margin: 0;
   }
 }
@@ -10765,11 +10766,11 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
 }
 /* line 229, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-mobile.png?1401413790');
+  background-image: url('../images/tpl-logo-mobile.png?1403113362');
 }
 /* line 232, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-mobile.png?1401413790');
+  background-image: url('../images/takeaction-logo-mobile.png?1403113362');
 }
 
 /**
@@ -12235,7 +12236,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1401413790') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1403113362') no-repeat 10px center;
   margin: 0;
 }
 /* line 149, ../sass/modules/_left_drawer.scss */
@@ -12246,7 +12247,7 @@ header .search .form-submit {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/tpl-logo-mobile.png?1401413790') no-repeat 10px center;
+  background: url('../images/tpl-logo-mobile.png?1403113362') no-repeat 10px center;
   margin: 0;
 }
 /* line 162, ../sass/modules/_left_drawer.scss */
@@ -12565,7 +12566,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 .tpl-block h2.block__title {
   white-space: nowrap;
   text-indent: 1000px;
-  background: url('../images/tpl_logo.png?1401413790') no-repeat top center;
+  background: url('../images/tpl_logo.png?1403113362') no-repeat top center;
   height: 30px;
   margin-bottom: 2px;
 }
@@ -12577,7 +12578,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 }
 /* line 23, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1401413790') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1403113362') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;
