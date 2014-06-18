@@ -1033,8 +1033,8 @@ s.prop17 = [tp_omniture:str_decode:{node:title}]
 s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
 s.prop20 = [tp_omniture:primary_topic:{node:nid}]
-s.prop22 = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.list2 = [tp_omniture:remove_spaces:{node:field_free_tag}]
+s.prop22 = [tp_omniture:free_tags:{node:nid}]
+s.list2  = [tp_omniture:free_tags:{node:nid}]
 s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
   );
@@ -1055,6 +1055,7 @@ s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'feature_article' => 'feature_article',
         'openpublish_article' => 'openpublish_article',
       ),
       'options' => array(
@@ -1074,12 +1075,8 @@ s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop16 = [tp_omniture:get_author:{node:nid}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:primary_topic:{node:nid}]
-s.prop22 = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.list2  = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
+s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
     ),
   );
   $context->condition_mode = 0;
@@ -1174,27 +1171,10 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]
   $context->name = 'omniture_gallery';
   $context->description = 'Variables to set on gallery pages.';
   $context->tag = 'Omniture';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
+  $context->conditions = array();
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.prop16 = [tp_omniture:get_author:{node:nid}]
-s.prop20 = [tp_omniture:primary_topic:{node:nid}]
-s.prop22 = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.list2 = [tp_omniture:remove_spaces:{node:field_free_tag}]',
+      'variables' => '',
     ),
   );
   $context->condition_mode = 0;
