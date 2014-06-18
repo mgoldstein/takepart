@@ -10,9 +10,11 @@
   }
   h2.block__title{
     white-space: nowrap;
-    text-indent: 1000px;
-    background: image-url('tpl_logo.png') no-repeat top center;
-    height: 30px;
+    text-indent: 100%;
+    overflow: hidden;
+    background: transparent image-url('tpl_logo.png') no-repeat top center;
+    height: 0;
+    padding-top: 30px;
     margin-bottom: 2px;
   }
   .field-name-field-tpl-block-tune-in img{
