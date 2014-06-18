@@ -28,3 +28,4 @@ sftp-config.json
 /drupal/sites/all/modules/contrib/diff/
 
 /vendor
+/drupal/composer.phar

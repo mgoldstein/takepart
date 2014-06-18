@@ -14,6 +14,20 @@ function takepart_omniture_primary_topic($nid) {
     return strtolower($primary_topic->name);
 }
 
+function takepart_omniture_free_tags($nid) {
+    if (!is_numeric($nid)) {
+        return 'Not-A-Number';
+    }
+    $free_tag_array = array();
+    $node = node_load($nid);
+    foreach ($node->field_free_tag['und'] as $value) {
+           $free_tag_array[] = $value['taxonomy_term']->name; 
+    }
+    $free_tags = implode(",", $free_tag_array);
+    //return "test";
+    return strtolower($free_tags);
+}
+
 function takepart_omniture_tab_uid($param) {
     $guid = FALSE;
     $from_db = FALSE;
@@ -193,6 +207,7 @@ function takepart_omniture_stringfixes($str) {
 }
 
 function takepart_omniture_removespaces($param) {
+    dd($param);
   if (empty($param)) {
       return '';
   }
