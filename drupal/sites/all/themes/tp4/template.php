@@ -1087,7 +1087,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
           $link = field_view_value('node', $node, 'field_action_url', $action_link, 'default');
           $link_url = $link['#element'][0]['url'];
           $link_title = $link['#element'][0]['title'];
-          $link = l($link_title, $link_url, array('attributes' => array('class' => array('cta'))) );
+          $link = l($link_title, $link_url);
         }
         $short_headline = (!empty($action_link) ? $link : '');
         $headline = $node->title;
