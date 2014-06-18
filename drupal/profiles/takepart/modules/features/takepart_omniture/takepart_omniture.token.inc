@@ -24,8 +24,8 @@ function takepart_omniture_free_tags($nid) {
            $free_tag_array[] = $value['taxonomy_term']->name; 
     }
     $free_tags = implode(",", $free_tag_array);
-    return "test";
-    //return strtolower($free_tags);
+    //return "test";
+    return strtolower($free_tags);
 }
 
 function takepart_omniture_tab_uid($param) {
