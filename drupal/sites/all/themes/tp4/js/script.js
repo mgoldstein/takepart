@@ -391,8 +391,10 @@
       };
 
       // determine which nav arrows to show
+      // offload this function to the end of the
       var calculateNavTimeout = null;
-      var calculateNav = function() {
+      var calculateNav = function(duration) {
+        duration || (duration = 0);
         clearTimeout(calculateNavTimeout);
         calculateNavTimeout = setTimeout(function() {
           var scrollLeft = getTranslateX();
@@ -403,20 +405,28 @@
           if (scrollLeft >= lastScrollPoint || $container.width() >= $container.find('.field-items').width()) {
             $nav.filter('.next').addClass('hidden');
           }
-        }, 600);
+        }, duration + 50);
       };
 
       // perform a scroll
-      var scrollTo = function(targetScroll) {
+      var scrollTo = function(targetScroll, duration) {
         if (typeof targetScroll === 'undefined') return;
-        var translate = "translate(-" + targetScroll + "px)";
-        $wrapper.css({
-          '-webkit-transform': translate,
-          '-ms-transform': translate,
-          'transform': translate
-        });
+        duration || (duration = 500);
+        var translate = "translateX(-" + targetScroll + "px)";
+
+        $wrapper[0].style.webkitTransitionDuration =
+        $wrapper[0].style.MozTransitionDuration =
+        $wrapper[0].style.msTransitionDuration =
+        $wrapper[0].style.OTransitionDuration =
+        $wrapper[0].style.transitionDuration = duration + 'ms';
+
+        $wrapper[0].style.webkitTransform = translate + ' translateZ(0)';
+        $wrapper[0].style.msTransform =
+        $wrapper[0].style.MozTransform =
+        $wrapper[0].style.OTransform = translate;
+
         // when the css animation is done, recalcuate nav
-        calculateNav();
+        calculateNav(duration);
       };
 
       // recalculate waypoints on resize and
@@ -453,22 +463,51 @@
         }
       });
 
-      // handle touch events
-      if (
-        'ontouchstart' in window
-        || window.DocumentTouch && document instanceof DocumentTouch
-      ) {
+      // // handle touch events
+      // if (
+      //   'ontouchstart' in window
+      //   || window.DocumentTouch && document instanceof DocumentTouch
+      // ) {
         var hammerTime = new Hammer($container[0]);
+        var isDragging = false, isScroll = false;
+        var initialPosition, nextPosition, prevPosition;
 
-        hammerTime.on('swiperight swipeleft', function(e) {
-          var position = getTranslateX();
-          if (e.gesture.direction === 'left') {
-            scrollTo(Math.min(position + containerWidth, lastScrollPoint));
-          } else {
-            scrollTo(Math.max(position - containerWidth, 0));
+        hammerTime.on('dragstart', function(e) {
+          if (!isDragging) {
+            initialPosition = getTranslateX();
+            nextPosition = Math.min(initialPosition + containerWidth, lastScrollPoint);
+            prevPosition = Math.max(initialPosition - containerWidth, 0);
+            isDragging = true;
           }
         });
-      }
+
+        hammerTime.on('drag', function(e) {
+          if (['up', 'down'].indexOf(e.gesture.direction) > -1) return;
+          e.preventDefault();
+          delta = initialPosition - e.gesture.deltaX;
+          if (e.gesture.direction === 'left') {
+            scrollTo(Math.min(delta, lastScrollPoint), 0);
+          } else {
+            scrollTo(Math.max(delta, 0), 0);
+          }
+        });
+
+        hammerTime.on('dragend', function(e) {
+          if (isDragging) {
+            if (Math.abs(e.gesture.deltaX) > containerWidth / 2) {
+              scrollTo(e.gesture.direction === 'left' ? nextPosition : prevPosition);
+            } else {
+              scrollTo(initialPosition);
+            }
+            isDragging = false;
+          }
+        });
+
+        hammerTime.on('swiperight swipeleft', function(e) {
+          isDragging = false;
+          scrollTo(e.gesture.direction === 'left' ? nextPosition : prevPosition);
+        });
+      // }
     }
   };
 
