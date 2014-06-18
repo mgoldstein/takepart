@@ -197,6 +197,9 @@ function addanother_form_alter(&$form, $form_state, $form_id) {
 function addanother_node_form_submit($form, &$form_state) {
   if ($node = _addanother_get_node_from_form_state($form_state)) {
     _addanother_quelch_message($node);
+	  unset($_GET['destination']);
+	  drupal_static_reset('drupal_get_destination');
+	  drupal_get_destination();
     theme('addanother_button_message', array('nid' => $node->nid));
 
     $form_state['redirect'] = _addanother_node_add_path($node);
