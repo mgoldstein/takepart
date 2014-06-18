@@ -1124,7 +1124,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
       // Query non referenced content (max 5)
       $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count');
-      $count = count($news_ref);
+	    $count = (!empty($news_ref) ? count($news_ref) : 0);
 
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
