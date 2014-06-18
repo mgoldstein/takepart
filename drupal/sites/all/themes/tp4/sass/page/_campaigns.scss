@@ -1243,12 +1243,16 @@ body.campaign-display{
           float: left;
           width: 80%;
         }
-        @include breakpoint($breakpoint-tablet){
-          float: none;
-          width: 65%;
-          margin-left: 17.5%;
-          margin-right: 17.5%;
-        }
+        // // removed by matt 2014-06-18; can share same styling as rule below
+        // @media (min-width: 701px) {
+        //   float: none;
+        //   box-sizing: border-box;
+        //   width: 100%;
+        //   padding-right: 175px;
+        //   padding-left: 175px;
+        //   margin-left: auto;
+        //   margin-right: auto;
+        // }
       }
     }
     .branding-header:not(.has-menu){
@@ -1292,11 +1296,14 @@ body.campaign-display{
       overflow: hidden;
       margin-left: 5px;
       margin-right: 5px;
-      @include breakpoint($breakpoint-tablet){
-          float: none;
-          width: 65%;
-          margin-left: 17.5%;
-          margin-right: 17.5%;
+      @media (min-width: 701px) {
+        float: none;
+        box-sizing: border-box;
+        width: 100%;
+        padding-right: 175px;
+        padding-left: 175px;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
     a.big-link{
