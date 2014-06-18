@@ -857,7 +857,11 @@ tr.selected td {
 .tpmodal_content {
     padding: 20px;
     opacity: 1;
+    img {
+        max-width: 100%;    
+    }
 }
+
 
 .tpmodal_loading .tpmodal_content {
     opacity: 0;
