@@ -15,6 +15,35 @@
  * @param $hook
  *   The name of the template being rendered ("html" in this case.)
  */
+
+/*
+ * Campaign Stuff
+ */
+if(module_exists('tp_campaigns')){
+	module_load_include('inc', 'tp_campaigns', 'campaign_card_preprocesses');
+}
+$card_types = array(
+	'campaign_card_media',
+	'campaign_card_iframe',
+	'campaign_card_social',
+	'campaign_card_news',
+	'campaign_card_text',
+	'campaign_card_branding',
+	'campaign_card_tap',
+	'campaign_card_twitter',
+	'campaign_card_empty',
+	'campaign_card_ad',
+	'campaign_card_multi_column',
+	'campaign_card_tap_widget'
+);
+define('CARDTYPES', serialize($card_types));
+
+
+/**
+ * Invokes hook_preprocess_html()
+ * @param $variables
+ * @param $hook
+ */
 function tp4_preprocess_html(&$variables, $hook) {
 
   // If on an individual node page, add the node type to body classes.
@@ -142,22 +171,6 @@ function tp4_campaign_megamenu($nid){
  *   The name of the template being rendered ("page" in this case.)
  */
 function tp4_preprocess_page(&$variables) {
-	/*Define Card Types for Campaign theming */
-	$card_types = array(
-		'campaign_card_media',
-		'campaign_card_iframe',
-		'campaign_card_social',
-		'campaign_card_news',
-		'campaign_card_text',
-		'campaign_card_branding',
-		'campaign_card_tap',
-		'campaign_card_twitter',
-		'campaign_card_empty',
-		'campaign_card_ad',
-		'campaign_card_multi_column',
-		'campaign_card_tap_widget'
-	);
-	define('CARDTYPES', serialize($card_types));
 
 	if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
 	  $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
@@ -410,15 +423,6 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
   cache_clear_all('tp_campaign_long_ad_number', 'cache');
 
 }
-
-/*
- * Campaign Theming from the tp_campaigns module
- */
-if(module_exists('tp_campaigns')){
-	module_load_include('inc', 'tp_campaigns', 'campaign_card_preprocesses');
-}
-
-
 
 
 /**
