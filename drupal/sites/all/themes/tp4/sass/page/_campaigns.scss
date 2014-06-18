@@ -1590,9 +1590,12 @@ p.campaign-content-meta{
     p{
       margin-top: 5px;
     }
+    .tweet a{
+      color: $mint;
+    }
     h5 {
       a {
-        color: $mint !important;
+        color: $mint;
         text-decoration: none;
       }
       a:hover {

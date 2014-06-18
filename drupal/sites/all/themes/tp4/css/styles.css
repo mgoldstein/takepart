@@ -8414,63 +8414,57 @@ body.campaign-display .card h1 {
   text-transform: uppercase;
   font-size: 36px;
   line-height: 38px;
-  color: #000;
 }
-/* line 9, ../sass/modules/_wysiwyg.scss */
+/* line 8, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card h2 {
   font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
-  color: #000;
   text-transform: lowercase;
 }
-/* line 17, ../sass/modules/_wysiwyg.scss */
+/* line 15, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card h3 {
   font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   font-style: italic;
   font-size: 24px;
   line-height: 30px;
-  color: #000;
   font-weight: normal;
   margin-bottom: 5px;
 }
-/* line 26, ../sass/modules/_wysiwyg.scss */
+/* line 23, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card h4 {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 18px;
   line-height: 20px;
-  color: #000;
 }
-/* line 34, ../sass/modules/_wysiwyg.scss */
+/* line 30, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card h5 {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
   font-stretch: italic;
   font-size: 14px;
   line-height: 18px;
-  color: #000;
 }
-/* line 42, ../sass/modules/_wysiwyg.scss */
+/* line 37, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card h6 {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
   font-style: italic;
   font-size: 12px;
   line-height: 14px;
+}
+/* line 44, ../sass/modules/_wysiwyg.scss */
+body.campaign-display .card a {
   color: #000;
 }
-/* line 51, ../sass/modules/_wysiwyg.scss */
-body.campaign-display .card h1 a, body.campaign-display .card h2 a, body.campaign-display .card h3 a, body.campaign-display .card h4 a, body.campaign-display .card h5 a, body.campaign-display .card h6 a {
-  color: #000;
-}
-/* line 56, ../sass/modules/_wysiwyg.scss */
+/* line 49, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card a:hover h1, body.campaign-display .card a:hover h2, body.campaign-display .card a:hover h3, body.campaign-display .card a:hover h4, body.campaign-display .card a:hover h5, body.campaign-display .card a:hover h6 {
   text-decoration: underline;
 }
-/* line 60, ../sass/modules/_wysiwyg.scss */
+/* line 53, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card .primary-button {
   border: none;
   padding: 8px;
@@ -8479,19 +8473,19 @@ body.campaign-display .card .primary-button {
   font-size: 18px;
   background-color: #01bf9e;
 }
-/* line 67, ../sass/modules/_wysiwyg.scss */
+/* line 60, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card .primary-button a {
   color: #fff;
 }
-/* line 70, ../sass/modules/_wysiwyg.scss */
+/* line 63, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card .primary-button:hover {
   background-color: #000;
 }
-/* line 72, ../sass/modules/_wysiwyg.scss */
+/* line 65, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card .primary-button:hover a {
   text-decoration: none;
 }
-/* line 77, ../sass/modules/_wysiwyg.scss */
+/* line 70, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card p {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
@@ -8499,11 +8493,11 @@ body.campaign-display .card p {
   line-height: 24px;
   margin: 0 0 1.5em 0;
 }
-/* line 83, ../sass/modules/_wysiwyg.scss */
+/* line 76, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card p:first-child {
   margin: 0 0 10px 0;
 }
-/* line 88, ../sass/modules/_wysiwyg.scss */
+/* line 81, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card .secondary-button {
   border: none;
   padding: 8px;
@@ -8533,7 +8527,7 @@ body.campaign-display .card .secondary-button a:not(.flashcard):before {
 body.campaign-display .card .secondary-button:hover a {
   text-decoration: underline;
 }
-/* line 92, ../sass/modules/_wysiwyg.scss */
+/* line 85, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card ul:not(.tabs) li {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
@@ -8543,7 +8537,7 @@ body.campaign-display .card ul:not(.tabs) li {
   padding-left: 15px;
   list-style-type: none;
 }
-/* line 100, ../sass/modules/_wysiwyg.scss */
+/* line 93, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card ul:not(.tabs) li:before {
   content: '';
   height: 6px;
@@ -8553,13 +8547,13 @@ body.campaign-display .card ul:not(.tabs) li:before {
   top: 7px;
   left: 0;
 }
-/* line 111, ../sass/modules/_wysiwyg.scss */
+/* line 104, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card ol {
   counter-reset: li;
   margin-left: 0;
   padding-left: 0;
 }
-/* line 115, ../sass/modules/_wysiwyg.scss */
+/* line 108, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card ol > li {
   position: relative;
   list-style: none;
@@ -8571,7 +8565,7 @@ body.campaign-display .card ol > li {
   text-indent: 15px;
   padding-bottom: 10px;
 }
-/* line 125, ../sass/modules/_wysiwyg.scss */
+/* line 118, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card ol > li:before {
   content: counter(li);
   counter-increment: li;
@@ -8582,7 +8576,7 @@ body.campaign-display .card ol > li:before {
   font-size: 30px;
   text-align: center;
 }
-/* line 137, ../sass/modules/_wysiwyg.scss */
+/* line 130, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card .media-caption {
   font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   font-weight: 100;
@@ -8590,7 +8584,7 @@ body.campaign-display .card .media-caption {
   line-height: 22px;
   color: #000;
 }
-/* line 144, ../sass/modules/_wysiwyg.scss */
+/* line 137, ../sass/modules/_wysiwyg.scss */
 body.campaign-display .card .primary-headline {
   color: #000;
   font-size: 20px;
@@ -10172,18 +10166,22 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 .tweet .tweet-right p {
   margin-top: 5px;
 }
-/* line 1594, ../sass/page/_campaigns.scss */
+/* line 1593, ../sass/page/_campaigns.scss */
+.tweet .tweet-right .tweet a {
+  color: #018b73;
+}
+/* line 1597, ../sass/page/_campaigns.scss */
 .tweet .tweet-right h5 a {
-  color: #018b73 !important;
+  color: #018b73;
   text-decoration: none;
 }
-/* line 1598, ../sass/page/_campaigns.scss */
+/* line 1601, ../sass/page/_campaigns.scss */
 .tweet .tweet-right h5 a:hover {
   text-decoration: underline;
 }
 
 @media all and (max-width: 767px) {
-  /* line 1605, ../sass/page/_campaigns.scss */
+  /* line 1608, ../sass/page/_campaigns.scss */
   .twitter-descriptive-text {
     width: 83.33333%;
     margin-left: 5%;
@@ -10198,7 +10196,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 1605, ../sass/page/_campaigns.scss */
+  /* line 1608, ../sass/page/_campaigns.scss */
   .twitter-descriptive-text {
     margin-right: 10%;
     margin-left: 10%;
@@ -10206,7 +10204,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
 }
 
 @media only screen and (max-width: 700px) {
-  /* line 1631, ../sass/page/_campaigns.scss */
+  /* line 1634, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page header#header .campaign-menu-toggle {
     display: block;
     position: absolute;
@@ -10215,26 +10213,26 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
     font-size: 2em;
     padding: 25px;
   }
-  /* line 1638, ../sass/page/_campaigns.scss */
+  /* line 1641, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page header#header .campaign-menu-toggle:hover {
     text-decoration: none;
   }
-  /* line 1646, ../sass/page/_campaigns.scss */
+  /* line 1649, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .menu-wrapper {
     display: none;
   }
-  /* line 1649, ../sass/page/_campaigns.scss */
+  /* line 1652, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page #block-tp-campaigns-tp-campaigns-hero .header-inner {
     padding-top: 50px;
   }
 }
 @media only screen and (min-width: 701px) {
-  /* line 1659, ../sass/page/_campaigns.scss */
+  /* line 1662, ../sass/page/_campaigns.scss */
   body.node-type-campaign-page header#header .campaign-menu-toggle {
     display: none;
   }
 }
-/* line 1667, ../sass/page/_campaigns.scss */
+/* line 1670, ../sass/page/_campaigns.scss */
 body.campaign-display .swipe-wrap.has-title .card-inner {
   border-top: 1px solid #dadada;
 }
@@ -10295,24 +10293,24 @@ body.campaign-display .branding-header.dark-background .share-headline {
   color: white;
 }
 /* line 62, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li.active > a {
+body.campaign-display .branding-header.dark-background .menu li.parent-item.active > a {
   color: #01bf9e;
 }
 /* line 65, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li.parent-item:not(.anchored) > a.active {
+body.campaign-display .branding-header.dark-background .menu li.parent-item.parent-item:not(.anchored) > a.active {
   color: #01bf9e;
 }
 /* line 70, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li > a {
+body.campaign-display .branding-header.dark-background .menu li.parent-item > a {
   color: white;
 }
 /* line 73, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li.sfHover > a, body.campaign-display .branding-header.dark-background .menu li:hover > a {
+body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a {
   color: black;
   background-color: white;
 }
 /* line 77, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .menu li.sfHover > a, body.campaign-display .branding-header.dark-background .menu li:hover > a.active {
+body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a.active {
   color: black;
 }
 /* line 81, ../sass/tp4_dark_bg.scss */
