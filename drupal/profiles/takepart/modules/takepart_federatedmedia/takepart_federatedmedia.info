@@ -1,6 +1,0 @@
-name = Federated Media Tracking
-description = Adds Federated Media's tracking bug to TakePart
-package = Statistics
-core = 7.x
-files[] = takepart_federatedmedia.module
-files[] = takepart_federatedmedia.install
