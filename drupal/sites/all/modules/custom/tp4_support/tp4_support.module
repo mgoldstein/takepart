@@ -272,7 +272,7 @@ function tp4_support_preprocess_page(&$variables) {
 function template_preprocess_tp4_support_footer(&$variables) {
   $variables['footer_menu_links'] = drupal_render($variables['footer_menu']);
   if (arg(0) === 'iframes') {
-    $variables['footer_menu_links'] = str_replace('https://', 'http://', drupal_render($variables['footer_menu']));
+    $variables['footer_menu_links'] = str_replace('https://', 'http://', $variables['footer_menu_links']);
   }
 
   if (empty($variables['footer_text'])){
