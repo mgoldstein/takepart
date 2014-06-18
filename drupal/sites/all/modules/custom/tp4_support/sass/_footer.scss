@@ -50,7 +50,27 @@ footer{
 
 body.page-iframes-footer {
   footer {
-    padding-top: 30px;
+    padding-top: 21px;
+    font: 100 14px/18px "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+    p {
+        margin: 1.5em 0;
+        font-size: 13px;
+        line-height: 1.384615385;
+        font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+    }
+    .footer-menu {
+        font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+        font-size: 13px;
+        line-height: 1.384615385;
+    }
+    h2.footer-title {
+        margin-bottom: 0.83em;
+    }
+    ul.menu li {
+        margin-bottom: 1em;
+        margin-right: .5em;
+        margin-left: 0;
+    }
   }
 }
 

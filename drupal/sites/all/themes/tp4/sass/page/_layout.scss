@@ -221,8 +221,9 @@ body {
     z-index: 3;
     #boxes-box-ga_mobile_320x50 {
       position: relative;
-      width: auto;
+      width: 300px;
       margin: 0 auto;
+      overflow-x: visible;
     }
     .close-mobile-ad {
       display: block;
