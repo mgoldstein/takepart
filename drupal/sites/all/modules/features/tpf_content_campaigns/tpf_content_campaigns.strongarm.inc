@@ -48,6 +48,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'addanother_button_campaign_card_multi_column';
+  $strongarm->value = 1;
+  $export['addanother_button_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'addanother_button_campaign_card_news';
   $strongarm->value = 1;
   $export['addanother_button_campaign_card_news'] = $strongarm;
@@ -58,6 +65,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->name = 'addanother_button_campaign_card_social';
   $strongarm->value = 1;
   $export['addanother_button_campaign_card_social'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'addanother_button_campaign_card_tap_widget';
+  $strongarm->value = 1;
+  $export['addanother_button_campaign_card_tap_widget'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -111,6 +125,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'addanother_message_campaign_card_multi_column';
+  $strongarm->value = 1;
+  $export['addanother_message_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'addanother_message_campaign_card_news';
   $strongarm->value = 1;
   $export['addanother_message_campaign_card_news'] = $strongarm;
@@ -121,6 +142,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->name = 'addanother_message_campaign_card_social';
   $strongarm->value = 1;
   $export['addanother_message_campaign_card_social'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'addanother_message_campaign_card_tap_widget';
+  $strongarm->value = 1;
+  $export['addanother_message_campaign_card_tap_widget'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -174,6 +202,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'addanother_tab_campaign_card_multi_column';
+  $strongarm->value = 1;
+  $export['addanother_tab_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'addanother_tab_campaign_card_news';
   $strongarm->value = 1;
   $export['addanother_tab_campaign_card_news'] = $strongarm;
@@ -184,6 +219,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->name = 'addanother_tab_campaign_card_social';
   $strongarm->value = 1;
   $export['addanother_tab_campaign_card_social'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'addanother_tab_campaign_card_tap_widget';
+  $strongarm->value = 1;
+  $export['addanother_tab_campaign_card_tap_widget'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -237,6 +279,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'addanother_tab_edit_campaign_card_multi_column';
+  $strongarm->value = 1;
+  $export['addanother_tab_edit_campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'addanother_tab_edit_campaign_card_news';
   $strongarm->value = 1;
   $export['addanother_tab_edit_campaign_card_news'] = $strongarm;
@@ -247,6 +296,13 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->name = 'addanother_tab_edit_campaign_card_social';
   $strongarm->value = 1;
   $export['addanother_tab_edit_campaign_card_social'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'addanother_tab_edit_campaign_card_tap_widget';
+  $strongarm->value = 1;
+  $export['addanother_tab_edit_campaign_card_tap_widget'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
