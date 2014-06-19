@@ -1339,6 +1339,11 @@ body.campaign-display{
           float: left;
           width: 80%;
         }
+        // added by scott 6-19-2014 (because I'm American); matt, removing the width jacked up the display and lit my computer on fire
+        @include breakpoint($breakpoint-tablet){
+          width: 100%;
+        }
+
         // // removed by matt 2014-06-18; can share same styling as rule below
         // @media (min-width: 701px) {
         //   float: none;
