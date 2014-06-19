@@ -28,6 +28,18 @@ function takepart_omniture_free_tags($nid) {
     return strtolower($free_tags);
 }
 
+function takepart_omniture_series($nid) {
+    if (!is_numeric($nid)) {
+        return 'Not-A-Number';
+    }
+    $node = node_load($nid);
+    $term = "";
+    if ($node->field_series['und'][0]['tid']) {
+      $term = taxonomy_term_load($node->field_series['und'][0]['tid']);
+    }
+    return strtolower($term->name);
+}
+
 function takepart_omniture_tab_uid($param) {
     $guid = FALSE;
     $from_db = FALSE;
