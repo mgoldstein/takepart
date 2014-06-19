@@ -28,6 +28,18 @@ function takepart_omniture_free_tags($nid) {
     return strtolower($free_tags);
 }
 
+function takepart_omniture_series($nid) {
+    if (!is_numeric($nid)) {
+        return 'Not-A-Number';
+    }
+    $node = node_load($nid);
+    $term = "";
+    if ($node->field_series['und'][0]['tid']) {
+      $term = taxonomy_term_load($node->field_series['und'][0]['tid']);
+    }
+    return strtolower($term->name);
+}
+
 function takepart_omniture_tab_uid($param) {
     $guid = FALSE;
     $from_db = FALSE;
@@ -99,6 +111,7 @@ function takepart_omniture_tab_uid($param) {
 function takepart_omniture_value_or_empty($param) {
     // if param wrapped in brakets [], then token was not
     // found, just return empty string.
+    dd($param);
     $param = strtolower(html_entity_decode($param, ENT_QUOTES));
     return preg_replace('/^\[[\w].*\]$/', '', $param);
 }

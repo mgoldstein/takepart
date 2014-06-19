@@ -1030,7 +1030,7 @@ s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop16 = [tp_omniture:get_author:{node:nid}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
+s.prop18 = [tp_omniture:series:{node:nid}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
 s.prop20 = [tp_omniture:primary_topic:{node:nid}]
 s.prop22 = [tp_omniture:free_tags:{node:nid}]
@@ -1152,10 +1152,9 @@ s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercas
 s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
+s.prop18 = [tp_omniture:series:{node:nid}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:primary_topic:{node:nid}]
-',
+s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
     ),
   );
   $context->condition_mode = 0;
