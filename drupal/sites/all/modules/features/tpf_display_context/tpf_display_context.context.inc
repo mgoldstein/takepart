@@ -1152,6 +1152,7 @@ s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercas
 s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
+s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
 s.prop20 = [tp_omniture:primary_topic:{node:nid}]
 ',
@@ -2009,6 +2010,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'delta' => 'flashcard_comments',
           'region' => 'content',
           'weight' => '-8',
+        ),
+        'boxes-ga_mobile_320x50' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50',
+          'region' => 'footer',
+          'weight' => '-10',
         ),
         'system-main' => array(
           'module' => 'system',
