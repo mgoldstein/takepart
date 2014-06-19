@@ -21,10 +21,10 @@ function takepart_omniture_free_tags($nid) {
     $free_tag_array = array();
     $node = node_load($nid);
     foreach ($node->field_free_tag['und'] as $value) {
-           $free_tag_array[] = $value['taxonomy_term']->name; 
+       $term = taxonomy_term_load($value['tid']);
+       $free_tag_array[] = $term->name; 
     }
     $free_tags = implode(",", $free_tag_array);
-
     return strtolower($free_tags);
 }
 

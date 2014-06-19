@@ -3678,13 +3678,17 @@ tr.selected td {
   padding: 20px;
   opacity: 1;
 }
+/* line 860, ../sass/elements/_misc.scss */
+.tpmodal_content img {
+  max-width: 100%;
+}
 
-/* line 862, ../sass/elements/_misc.scss */
+/* line 866, ../sass/elements/_misc.scss */
 .tpmodal_loading .tpmodal_content {
   opacity: 0;
 }
 
-/* line 866, ../sass/elements/_misc.scss */
+/* line 870, ../sass/elements/_misc.scss */
 .tpmodal_close {
   height: 13px;
   width: 13px;
@@ -3695,24 +3699,24 @@ tr.selected td {
 
 /* Interstitials ------------------------- */
 /* Social */
-/* line 878, ../sass/elements/_misc.scss */
+/* line 882, ../sass/elements/_misc.scss */
 .interstitial_modal_modal.tpmodal_modal {
   background: transparent;
   border-radius: 0;
   max-width: 100% !important;
 }
 
-/* line 884, ../sass/elements/_misc.scss */
+/* line 888, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_content {
   padding: 0;
 }
 
-/* line 888, ../sass/elements/_misc.scss */
+/* line 892, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_close {
   width: 40px;
   height: 40px;
 }
-/* line 891, ../sass/elements/_misc.scss */
+/* line 895, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_close:before, .interstitial_modal_modal .tpmodal_close::before {
   content: '\2421';
   font-size: 36px;
@@ -3724,19 +3728,19 @@ tr.selected td {
   text-indent: 0;
 }
 
-/* line 903, ../sass/elements/_misc.scss */
+/* line 907, ../sass/elements/_misc.scss */
 .interstitial_modal_modal iframe {
   width: 400px;
   height: 400px;
   overflow: hidden;
 }
 
-/* line 909, ../sass/elements/_misc.scss */
+/* line 913, ../sass/elements/_misc.scss */
 .interstitial_modal_overlay {
   background: #000;
 }
 
-/* line 912, ../sass/elements/_misc.scss */
+/* line 916, ../sass/elements/_misc.scss */
 .tpmodal_close {
   margin: 5px 5px 0 0;
   text-indent: 100%;
@@ -3744,7 +3748,7 @@ tr.selected td {
 }
 
 /* Video Player ------------------------- */
-/* line 920, ../sass/elements/_misc.scss */
+/* line 924, ../sass/elements/_misc.scss */
 .pm-jwplayer.loading {
   width: 100%;
   background: url('../images/video-loading.gif?1393277866');
@@ -3753,7 +3757,7 @@ tr.selected td {
   padding-bottom: 56.25%;
   /* 16:9 */
 }
-/* line 927, ../sass/elements/_misc.scss */
+/* line 931, ../sass/elements/_misc.scss */
 .pm-jwplayer.blocked {
   width: 100%;
   background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
