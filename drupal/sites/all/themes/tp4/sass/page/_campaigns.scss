@@ -567,6 +567,10 @@ body.campaign-display{
     top: 0;
     padding-top: 50px;
     width: 100%;
+    max-width: 1000px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
   }
   .swipe-wrap.has-tray-title{
     .card .title-wrapper{
