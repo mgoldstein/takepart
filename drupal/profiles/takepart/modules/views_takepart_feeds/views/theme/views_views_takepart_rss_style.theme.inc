@@ -13,9 +13,7 @@
  * @see views_xml.views.inc
  */
 
-// Like the name says
 function _build_list_for_yahoo_rss_feed($content) {
-    
     $parts = explode(',,,', $content);
     $ret = '';
     foreach ( $parts as $part ) {
@@ -24,9 +22,10 @@ function _build_list_for_yahoo_rss_feed($content) {
             $ret .= '<p><strong>&bull; ' . $part . '</strong></p>';
         }
     }
-
-   if ( $ret ) return $ret;
-    return '';
+   if ($ret) {
+       return $ret;
+   }
+   return '';
 }
 
 /**

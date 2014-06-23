@@ -1982,6 +1982,7 @@ function tp4_preprocess_entity(&$variables, $hook) {
                             || $node->type == 'video'
                             || $node->type == 'flashcard'
                             || $node->type == 'openpublish_video'
+                            || $node->type == 'campaign_page'
                         ) {
                             $main_image = field_get_items('node', $node, 'field_thumbnail');
                         }
