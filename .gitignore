@@ -26,3 +26,6 @@ sftp-config.json
 /drupal/sites/all/modules/contrib/devel/
 /drupal/sites/all/modules/contrib/devel_themer/
 /drupal/sites/all/modules/contrib/diff/
+
+/vendor
+/drupal/composer.phar
