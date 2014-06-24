@@ -530,7 +530,7 @@
       $('.close-mobile-ad').click(function(e) {
           e.preventDefault();
           if (sticky_mobile_cookie === null) { 
-            $.cookie('close_mobile_ad', 1, { path:'/' });
+            $.cookie('close_mobile_ad', '1', { expires: 1, path:'/' });
           }
         $('#block-boxes-ga-mobile-320x50').addClass('hide');
       });
