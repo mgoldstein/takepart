@@ -48,7 +48,7 @@ function tp4_preprocess_html(&$variables, $hook) {
 
   // If on an individual node page, add the node type to body classes.
   if ($node = menu_get_object()) {
-    $card_types = variable_get('card_types', '');
+	  $card_types = unserialize(CARDTYPES);
     if(in_array($node->type, $card_types) == true || $node->type == 'campaign_page'){
       $variables['classes_array'][] = drupal_html_class('campaign-display');
     }
