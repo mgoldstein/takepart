@@ -1030,11 +1030,11 @@ s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop16 = [tp_omniture:get_author:{node:nid}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
+s.prop18 = [tp_omniture:series:{node:nid}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
 s.prop20 = [tp_omniture:primary_topic:{node:nid}]
-s.prop22 = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.list2 = [tp_omniture:remove_spaces:{node:field_free_tag}]
+s.prop22 = [tp_omniture:free_tags:{node:nid}]
+s.list2  = [tp_omniture:free_tags:{node:nid}]
 s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
   );
@@ -1055,6 +1055,7 @@ s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'feature_article' => 'feature_article',
         'openpublish_article' => 'openpublish_article',
       ),
       'options' => array(
@@ -1074,12 +1075,8 @@ s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop16 = [tp_omniture:get_author:{node:nid}]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.prop18 = [tp_omniture:value_or_empty:{node:field_series}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:primary_topic:{node:nid}]
-s.prop22 = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.list2  = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
+s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
     ),
   );
   $context->condition_mode = 0;
@@ -1155,9 +1152,9 @@ s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercas
 s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
 s.prop6 = [node:nid]
 s.prop17 = [tp_omniture:str_decode:{node:title}]
+s.prop18 = [tp_omniture:series:{node:nid}]
 s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:primary_topic:{node:nid}]
-',
+s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
     ),
   );
   $context->condition_mode = 0;
@@ -1174,27 +1171,10 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]
   $context->name = 'omniture_gallery';
   $context->description = 'Variables to set on gallery pages.';
   $context->tag = 'Omniture';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
+  $context->conditions = array();
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.prop16 = [tp_omniture:get_author:{node:nid}]
-s.prop20 = [tp_omniture:primary_topic:{node:nid}]
-s.prop22 = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.list2 = [tp_omniture:remove_spaces:{node:field_free_tag}]',
+      'variables' => '',
     ),
   );
   $context->condition_mode = 0;
@@ -1810,6 +1790,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'header',
           'weight' => '-100',
         ),
+        'boxes-ga_mobile_320x50' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
         'bean-tpl-live-long' => array(
           'module' => 'bean',
           'delta' => 'tpl-live-long',
@@ -1821,12 +1807,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'delta' => '-of-the-day',
           'region' => 'sidebar',
           'weight' => '-4',
-        ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'suffix',
-          'weight' => '-10',
         ),
       ),
     ),
@@ -1847,13 +1827,17 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'campaign_card_ad' => 'campaign_card_ad',
         'campaign_card_branding' => 'campaign_card_branding',
         'campaign_card_empty' => 'campaign_card_empty',
         'campaign_card_iframe' => 'campaign_card_iframe',
         'campaign_card_media' => 'campaign_card_media',
+        'campaign_card_multi_column' => 'campaign_card_multi_column',
         'campaign_card_news' => 'campaign_card_news',
         'campaign_card_social' => 'campaign_card_social',
+        'campaign_card_tap_widget' => 'campaign_card_tap_widget',
         'campaign_card_text' => 'campaign_card_text',
+        'campaign_card_twitter' => 'campaign_card_twitter',
       ),
       'options' => array(
         'node_form' => '1',
@@ -2025,6 +2009,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'delta' => 'flashcard_comments',
           'region' => 'content',
           'weight' => '-8',
+        ),
+        'boxes-ga_mobile_320x50' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50',
+          'region' => 'footer',
+          'weight' => '-10',
         ),
         'system-main' => array(
           'module' => 'system',
@@ -2228,6 +2218,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'footer',
           'weight' => '-10',
         ),
+        'boxes-ga_mobile_320x50' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50',
+          'region' => 'footer',
+          'weight' => '-9',
+        ),
         'menu-menu-megamenu' => array(
           'module' => 'menu',
           'delta' => 'menu-megamenu',
@@ -2282,12 +2278,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'suffix',
           'weight' => '-9',
         ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'suffix',
-          'weight' => '-8',
-        ),
       ),
     ),
     'disable_context' => array(
@@ -2329,6 +2319,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'header',
           'weight' => '-11',
         ),
+        'boxes-ga_mobile_320x50' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
         'boxes-box-66c05d6f' => array(
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
@@ -2358,12 +2354,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
           'weight' => '-5',
-        ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'suffix',
-          'weight' => '-10',
         ),
       ),
     ),

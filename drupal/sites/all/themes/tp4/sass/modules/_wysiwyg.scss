@@ -4,14 +4,12 @@ h1{
   text-transform: uppercase;
   font-size: 36px;
   line-height: 38px;
-  color: #000;
 }
 h2{
   font-family: $main-brand-font;
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
-  color: #000;
   text-transform: lowercase;
 }
 h3{
@@ -19,7 +17,6 @@ h3{
   font-style: italic;
   font-size: 24px;
   line-height: 30px;
-  color: #000;
   font-weight: normal;
   margin-bottom: 5px;
 }
@@ -29,7 +26,6 @@ h4{
   text-transform: uppercase;
   font-size: 18px;
   line-height: 20px;
-  color: #000;
 }
 h5{
   font-family: $primary-sans-font;
@@ -37,7 +33,6 @@ h5{
   font-stretch: italic;
   font-size: 14px;
   line-height: 18px;
-  color: #000;
 }
 h6{
   font-family: $primary-sans-font;
@@ -45,13 +40,11 @@ h6{
   font-style: italic;
   font-size: 12px;
   line-height: 14px;
+}
+a{
   color: #000;
 }
-h1, h2, h3, h4, h5, h6{
-  a{
-    color: #000;
-  }
-}
+
 a:hover {
   h1, h2, h3, h4, h5, h6{
     text-decoration: underline;

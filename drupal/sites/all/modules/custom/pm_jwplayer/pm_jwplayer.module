@@ -45,11 +45,6 @@ function pm_jwplayer_init() {
       'scope' => 'header',
       'weight' => 5,
     ));
-    drupal_add_js('//j.maxmind.com/js/apis/geoip2/v2.0/geoip2.js', array(
-      'type' => 'external',
-      'scope' => 'header',
-      'weight' => 5,
-    ));
   }
 }
 

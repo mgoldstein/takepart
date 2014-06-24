@@ -365,46 +365,82 @@
       var $container = $campaignsModule.find('.field-collection-container')
         .append('<a class="featured-campaigns-nav prev">')
         .append('<a class="featured-campaigns-nav next">');
+      var $wrapper = $container.find('.field-name-field-featured-campaigns');
       var $items = $container.find('.field-item');
       var $nav = $container.find('.featured-campaigns-nav');
-      var scrollPoints = [], lastScrollPoint;
+      var containerWidth, lastScrollPoint;
 
-      var setupWayouts = function() {
-        var maxScroll = $container.find('.field-name-field-featured-campaigns').width() - $container.width();
-        scrollPoints = [];
-        $items.each(function() {
-          var waypoint = $(this).offset().left - $container.offset().left;
-          if (waypoint <= maxScroll) {
-            scrollPoints.push(waypoint);
-            lastScrollPoint = waypoint;
+      var getTranslateX = function() {
+        var element = window.getComputedStyle($wrapper[0], null),
+            matrix = element.getPropertyValue("-webkit-transform")
+              || element.getPropertyValue("-ms-transform")
+              || element.getPropertyValue("transform")
+              || $wrapper.css('-webkit-transform')
+              || $wrapper.css('-ms-transform')
+              || $wrapper.css('transform'),
+            position = matrix.replace(/^[^(]*\(|\)$/g, '').split(',');
+        return Math.abs(position[4]);
+      };
+
+      // set variables for size and 
+      var calculateWidth = function() {
+        containerWidth = $container.width();
+        lastScrollPoint = $container.find('.field-name-field-featured-campaigns').width() - containerWidth;
+        if (getTranslateX() > lastScrollPoint) scrollTo(lastScrollPoint);
+        calculateNav();
+      };
+
+      // determine which nav arrows to show
+      // offload this function to the end of the
+      var calculateNavTimeout = null;
+      var calculateNav = function(duration) {
+        duration || (duration = 0);
+        clearTimeout(calculateNavTimeout);
+        calculateNavTimeout = setTimeout(function() {
+          var scrollLeft = getTranslateX();
+          $nav.removeClass('hidden');
+          if (scrollLeft === 0) {
+            $nav.filter('.prev').addClass('hidden');
           }
-        });
+          if (scrollLeft >= lastScrollPoint || $container.width() >= $container.find('.field-items').width()) {
+            $nav.filter('.next').addClass('hidden');
+          }
+        }, duration + 50);
       };
 
-      var calculateNav = function() {
-        $nav.removeClass('hidden');
-        if ($container[0].scrollLeft === 0) {
-          $nav.filter('.prev').addClass('hidden');
-        }
-        if ($container[0].scrollLeft >= lastScrollPoint || $container.width() >= $container.find('.field-items').width()) {
-          $nav.filter('.next').addClass('hidden');
-        }
+      // perform a scroll
+      var scrollTo = function(targetScroll, duration) {
+        if (typeof targetScroll === 'undefined') return;
+        duration || (duration = 500);
+        var translate = "translateX(-" + targetScroll + "px)";
+
+        $wrapper[0].style.webkitTransitionDuration =
+        $wrapper[0].style.MozTransitionDuration =
+        $wrapper[0].style.msTransitionDuration =
+        $wrapper[0].style.OTransitionDuration =
+        $wrapper[0].style.transitionDuration = duration + 'ms';
+
+        $wrapper[0].style.webkitTransform = translate + ' translateZ(0)';
+        $wrapper[0].style.msTransform =
+        $wrapper[0].style.MozTransform =
+        $wrapper[0].style.OTransform = translate;
+
+        // when the css animation is done, recalcuate nav
+        calculateNav(duration);
       };
 
-      setupWayouts();
-      calculateNav();
-
+      // recalculate waypoints on resize and
+      // perform initial calculation
       var resizeTimeout;
       $window.on('resize', function() {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(function() {
-          setupWayouts();
-          calculateNav();
-        }, 200);
-      });
+        resizeTimeout = setTimeout(calculateWidth, 200);
+      }).trigger('resize');
 
-      // prevent horizontal scroll on container
+      // progressivley enhance to prevent
+      // horizontal scroll on container
       $container
+        .css('overflow', 'hidden')
         .hover(function() {
           $window.on('mousewheel.featuredCampaigns', function(e) {
             if (e.originalEvent.deltaX != 0) {
@@ -416,19 +452,62 @@
         })
       ;
 
+      // handle click events:
       $campaignsModule.on('click', '.featured-campaigns-nav', function(e){
         e.preventDefault();
-        var currentIndex = scrollPoints.indexOf($container[0].scrollLeft);
-        var targetScroll;
+        var scrollLeft = getTranslateX();
         if (e.currentTarget.classList.contains('next')) {
-          targetScroll = scrollPoints[currentIndex + 1] || lastScrollPoint;
+          scrollTo(Math.min(scrollLeft + containerWidth, lastScrollPoint));
         } else {
-          targetScroll = scrollPoints[currentIndex - 1] || 0;
+          scrollTo(Math.max(scrollLeft - containerWidth, 0));
         }
-        $container.animate({scrollLeft: targetScroll}, function() {
-          calculateNav();
-        });
       });
+
+      // // handle touch events
+      // if (
+      //   'ontouchstart' in window
+      //   || window.DocumentTouch && document instanceof DocumentTouch
+      // ) {
+        var hammerTime = new Hammer($container[0]);
+        var isDragging = false, isScroll = false;
+        var initialPosition, nextPosition, prevPosition;
+
+        hammerTime.on('dragstart', function(e) {
+          if (!isDragging) {
+            initialPosition = getTranslateX();
+            nextPosition = Math.min(initialPosition + containerWidth, lastScrollPoint);
+            prevPosition = Math.max(initialPosition - containerWidth, 0);
+            isDragging = true;
+          }
+        });
+
+        hammerTime.on('drag', function(e) {
+          if (['up', 'down'].indexOf(e.gesture.direction) > -1) return;
+          e.preventDefault();
+          delta = initialPosition - e.gesture.deltaX;
+          if (e.gesture.direction === 'left') {
+            scrollTo(Math.min(delta, lastScrollPoint), 0);
+          } else {
+            scrollTo(Math.max(delta, 0), 0);
+          }
+        });
+
+        hammerTime.on('dragend', function(e) {
+          if (isDragging) {
+            if (Math.abs(e.gesture.deltaX) > containerWidth / 2) {
+              scrollTo(e.gesture.direction === 'left' ? nextPosition : prevPosition);
+            } else {
+              scrollTo(initialPosition);
+            }
+            isDragging = false;
+          }
+        });
+
+        hammerTime.on('swiperight swipeleft', function(e) {
+          isDragging = false;
+          scrollTo(e.gesture.direction === 'left' ? nextPosition : prevPosition);
+        });
+      // }
     }
   };
 

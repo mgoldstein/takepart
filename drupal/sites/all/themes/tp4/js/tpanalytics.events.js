@@ -76,7 +76,7 @@
                 authors.push($(this).text());
             });
             evar17 = authors.join(',');
-    	    evar19 = $('.node.view-mode-full').data('series');
+    	    evar19 = s.prop18; // $('.node.view-mode-full').data('series');
             evar20 = s.eVar20;
             evar21 = s.eVar21;
             evar43 = s.evar43;
@@ -133,7 +133,7 @@
                 s2.list2 = list2;
                 linkTrackVars.push('list2');
             }
-            linkTrackVars.push('eVar30,eVar27,prop26,events');
+            linkTrackVars.push('eVar30,eVar27,prop22,prop26,events');
 
             s2.prop26 = title;
             s2.eVar27 = title;

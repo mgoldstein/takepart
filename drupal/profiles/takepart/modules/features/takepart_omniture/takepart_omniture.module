@@ -164,5 +164,26 @@ function takepart_omniture_token_info() {
       'function' => "takepart_omniture_primary_topic",
     ),
   );
+    
+    $info['tokens']['tp_omniture']['free_tags'] = array(
+    'name' => t('Get Free Tags'),
+    'description' => t('Get free tags from node ID.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_free_tags",
+    ),
+  );
+    
+    $info['tokens']['tp_omniture']['series'] = array(
+    'name' => t('Get series name'),
+    'description' => t('Get series name from node ID.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_series",
+    ),
+  );
+    
     return $info;
 }

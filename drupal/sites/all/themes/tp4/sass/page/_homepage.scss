@@ -234,6 +234,23 @@ body.front{
   }
 } // .panel-takepart-homepage
 
+body.toolbar {
+  .panel-secondary-featured,
+  .panel-tpl-secondary-featured {
+    .panel-pane {
+      @include breakpoint($breakpoint-tablet) {
+        float: left;
+        width: 48%;
+        height:260px;
+        &:nth-child(2n+1) {
+          margin-right: 2%;
+          clear: none;
+        }
+      }
+    }
+  }
+}
+
 .date {
   margin-bottom: 2px;
   @include breakpoint($breakpoint-mobile) {
@@ -262,12 +279,16 @@ body.front{
     font-size: 14px;
     padding-top: 3px;
     @include blue-square-bullets;
+    .openpublish_photo_gallery a{
+      padding-right: 25px;
+    }
     .openpublish_photo_gallery:after{
       font-family: "SSGizmo";
       font-size: 1.25em;
       line-height: 0.8em;
       vertical-align: text-bottom;
       content: " \1F4F7";
+      margin-left: -25px;
     }
     .video:after{
       font-family: "SSGizmo";

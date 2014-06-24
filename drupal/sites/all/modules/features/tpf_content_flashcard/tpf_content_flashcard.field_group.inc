@@ -49,7 +49,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Flashcard Page',
-    'weight' => '3',
+    'weight' => '7',
     'children' => array(
       0 => 'body',
       1 => 'field_article_subhead',
@@ -79,7 +79,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Flashcard Popup',
-    'weight' => '2',
+    'weight' => '6',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -132,7 +132,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '4',
+    'weight' => '12',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -162,7 +162,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = 'group_flashcard_page';
   $field_group->data = array(
     'label' => 'Related Content',
-    'weight' => '12',
+    'weight' => '11',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -187,12 +187,13 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '5',
+    'weight' => '13',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',
       2 => 'field_significance',
       3 => 'field_topic',
+      4 => 'field_series',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

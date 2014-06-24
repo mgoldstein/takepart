@@ -3653,13 +3653,17 @@ tr.selected td {
   padding: 20px;
   opacity: 1;
 }
+/* line 860, ../sass/elements/_misc.scss */
+.tpmodal_content img {
+  max-width: 100%;
+}
 
-/* line 862, ../sass/elements/_misc.scss */
+/* line 866, ../sass/elements/_misc.scss */
 .tpmodal_loading .tpmodal_content {
   opacity: 0;
 }
 
-/* line 866, ../sass/elements/_misc.scss */
+/* line 870, ../sass/elements/_misc.scss */
 .tpmodal_close {
   height: 13px;
   width: 13px;
@@ -3670,24 +3674,24 @@ tr.selected td {
 
 /* Interstitials ------------------------- */
 /* Social */
-/* line 878, ../sass/elements/_misc.scss */
+/* line 882, ../sass/elements/_misc.scss */
 .interstitial_modal_modal.tpmodal_modal {
   background: transparent;
   border-radius: 0;
   max-width: 100% !important;
 }
 
-/* line 884, ../sass/elements/_misc.scss */
+/* line 888, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_content {
   padding: 0;
 }
 
-/* line 888, ../sass/elements/_misc.scss */
+/* line 892, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_close {
   width: 40px;
   height: 40px;
 }
-/* line 891, ../sass/elements/_misc.scss */
+/* line 895, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_close:before, .interstitial_modal_modal .tpmodal_close::before {
   content: '\2421';
   font-size: 36px;
@@ -3699,19 +3703,19 @@ tr.selected td {
   text-indent: 0;
 }
 
-/* line 903, ../sass/elements/_misc.scss */
+/* line 907, ../sass/elements/_misc.scss */
 .interstitial_modal_modal iframe {
   width: 400px;
   height: 400px;
   overflow: hidden;
 }
 
-/* line 909, ../sass/elements/_misc.scss */
+/* line 913, ../sass/elements/_misc.scss */
 .interstitial_modal_overlay {
   background: #000;
 }
 
-/* line 912, ../sass/elements/_misc.scss */
+/* line 916, ../sass/elements/_misc.scss */
 .tpmodal_close {
   margin: 5px 5px 0 0;
   text-indent: 100%;
@@ -3719,7 +3723,7 @@ tr.selected td {
 }
 
 /* Video Player ------------------------- */
-/* line 920, ../sass/elements/_misc.scss */
+/* line 924, ../sass/elements/_misc.scss */
 .pm-jwplayer.loading {
   width: 100%;
   background: url('../images/video-loading.gif?1393277866');
@@ -3728,7 +3732,7 @@ tr.selected td {
   padding-bottom: 56.25%;
   /* 16:9 */
 }
-/* line 927, ../sass/elements/_misc.scss */
+/* line 931, ../sass/elements/_misc.scss */
 .pm-jwplayer.blocked {
   width: 100%;
   background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
@@ -3746,71 +3750,65 @@ h1 {
   text-transform: uppercase;
   font-size: 36px;
   line-height: 38px;
-  color: #000;
 }
 
-/* line 9, ../sass/modules/_wysiwyg.scss */
+/* line 8, ../sass/modules/_wysiwyg.scss */
 h2 {
   font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: bold;
   font-size: 20px;
   line-height: 24px;
-  color: #000;
   text-transform: lowercase;
 }
 
-/* line 17, ../sass/modules/_wysiwyg.scss */
+/* line 15, ../sass/modules/_wysiwyg.scss */
 h3 {
   font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   font-style: italic;
   font-size: 24px;
   line-height: 30px;
-  color: #000;
   font-weight: normal;
   margin-bottom: 5px;
 }
 
-/* line 26, ../sass/modules/_wysiwyg.scss */
+/* line 23, ../sass/modules/_wysiwyg.scss */
 h4 {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 18px;
   line-height: 20px;
-  color: #000;
 }
 
-/* line 34, ../sass/modules/_wysiwyg.scss */
+/* line 30, ../sass/modules/_wysiwyg.scss */
 h5 {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
   font-stretch: italic;
   font-size: 14px;
   line-height: 18px;
-  color: #000;
 }
 
-/* line 42, ../sass/modules/_wysiwyg.scss */
+/* line 37, ../sass/modules/_wysiwyg.scss */
 h6 {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
   font-style: italic;
   font-size: 12px;
   line-height: 14px;
+}
+
+/* line 44, ../sass/modules/_wysiwyg.scss */
+a {
   color: #000;
 }
 
-/* line 51, ../sass/modules/_wysiwyg.scss */
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  color: #000;
-}
-
-/* line 56, ../sass/modules/_wysiwyg.scss */
+/* line 49, ../sass/modules/_wysiwyg.scss */
 a:hover h1, a:hover h2, a:hover h3, a:hover h4, a:hover h5, a:hover h6 {
   text-decoration: underline;
 }
 
-/* line 60, ../sass/modules/_wysiwyg.scss */
+/* line 53, ../sass/modules/_wysiwyg.scss */
 .primary-button {
   border: none;
   padding: 8px;
@@ -3819,20 +3817,20 @@ a:hover h1, a:hover h2, a:hover h3, a:hover h4, a:hover h5, a:hover h6 {
   font-size: 18px;
   background-color: #01bf9e;
 }
-/* line 67, ../sass/modules/_wysiwyg.scss */
+/* line 60, ../sass/modules/_wysiwyg.scss */
 .primary-button a {
   color: #fff;
 }
-/* line 70, ../sass/modules/_wysiwyg.scss */
+/* line 63, ../sass/modules/_wysiwyg.scss */
 .primary-button:hover {
   background-color: #000;
 }
-/* line 72, ../sass/modules/_wysiwyg.scss */
+/* line 65, ../sass/modules/_wysiwyg.scss */
 .primary-button:hover a {
   text-decoration: none;
 }
 
-/* line 77, ../sass/modules/_wysiwyg.scss */
+/* line 70, ../sass/modules/_wysiwyg.scss */
 p {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
@@ -3840,12 +3838,12 @@ p {
   line-height: 24px;
   margin: 0 0 1.5em 0;
 }
-/* line 83, ../sass/modules/_wysiwyg.scss */
+/* line 76, ../sass/modules/_wysiwyg.scss */
 p:first-child {
   margin: 0 0 10px 0;
 }
 
-/* line 88, ../sass/modules/_wysiwyg.scss */
+/* line 81, ../sass/modules/_wysiwyg.scss */
 .secondary-button {
   border: none;
   padding: 8px;
@@ -3876,7 +3874,7 @@ p:first-child {
   text-decoration: underline;
 }
 
-/* line 92, ../sass/modules/_wysiwyg.scss */
+/* line 85, ../sass/modules/_wysiwyg.scss */
 ul:not(.tabs) li {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
@@ -3886,7 +3884,7 @@ ul:not(.tabs) li {
   padding-left: 15px;
   list-style-type: none;
 }
-/* line 100, ../sass/modules/_wysiwyg.scss */
+/* line 93, ../sass/modules/_wysiwyg.scss */
 ul:not(.tabs) li:before {
   content: '';
   height: 6px;
@@ -3897,13 +3895,13 @@ ul:not(.tabs) li:before {
   left: 0;
 }
 
-/* line 111, ../sass/modules/_wysiwyg.scss */
+/* line 104, ../sass/modules/_wysiwyg.scss */
 ol {
   counter-reset: li;
   margin-left: 0;
   padding-left: 0;
 }
-/* line 115, ../sass/modules/_wysiwyg.scss */
+/* line 108, ../sass/modules/_wysiwyg.scss */
 ol > li {
   position: relative;
   list-style: none;
@@ -3915,7 +3913,7 @@ ol > li {
   text-indent: 15px;
   padding-bottom: 10px;
 }
-/* line 125, ../sass/modules/_wysiwyg.scss */
+/* line 118, ../sass/modules/_wysiwyg.scss */
 ol > li:before {
   content: counter(li);
   counter-increment: li;
@@ -3927,7 +3925,7 @@ ol > li:before {
   text-align: center;
 }
 
-/* line 137, ../sass/modules/_wysiwyg.scss */
+/* line 130, ../sass/modules/_wysiwyg.scss */
 .media-caption {
   font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   font-weight: 100;
@@ -3936,7 +3934,7 @@ ol > li:before {
   color: #000;
 }
 
-/* line 144, ../sass/modules/_wysiwyg.scss */
+/* line 137, ../sass/modules/_wysiwyg.scss */
 .primary-headline {
   color: #000;
   font-size: 20px;

@@ -19,15 +19,6 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'comscore_direct',
   );
 
-  // Exported permission: 'access all webform results'.
-  $permissions['access all webform results'] = array(
-    'name' => 'access all webform results',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'webform',
-  );
-
   // Exported permission: 'access comments'.
   $permissions['access comments'] = array(
     'name' => 'access comments',
@@ -38,24 +29,6 @@ function tpf_config_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'comment',
-  );
-
-  // Exported permission: 'access own webform results'.
-  $permissions['access own webform results'] = array(
-    'name' => 'access own webform results',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'webform',
-  );
-
-  // Exported permission: 'access own webform submissions'.
-  $permissions['access own webform submissions'] = array(
-    'name' => 'access own webform submissions',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'webform',
   );
 
   // Exported permission: 'access search_api_page'.
@@ -76,6 +49,15 @@ function tpf_config_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'omniture',
+  );
+
+  // Exported permission: 'administer add another'.
+  $permissions['administer add another'] = array(
+    'name' => 'administer add another',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'addanother',
   );
 
   // Exported permission: 'administer checked out documents'.
@@ -174,33 +156,6 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'panels_mini',
   );
 
-  // Exported permission: 'delete all webform submissions'.
-  $permissions['delete all webform submissions'] = array(
-    'name' => 'delete all webform submissions',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'webform',
-  );
-
-  // Exported permission: 'delete own webform submissions'.
-  $permissions['delete own webform submissions'] = array(
-    'name' => 'delete own webform submissions',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'webform',
-  );
-
-  // Exported permission: 'edit all webform submissions'.
-  $permissions['edit all webform submissions'] = array(
-    'name' => 'edit all webform submissions',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'webform',
-  );
-
   // Exported permission: 'edit own comments'.
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
@@ -210,15 +165,6 @@ function tpf_config_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'comment',
-  );
-
-  // Exported permission: 'edit own webform submissions'.
-  $permissions['edit own webform submissions'] = array(
-    'name' => 'edit own webform submissions',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'webform',
   );
 
   // Exported permission: 'import media'.
@@ -264,6 +210,18 @@ function tpf_config_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'use add another'.
+  $permissions['use add another'] = array(
+    'name' => 'use add another',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'addanother',
   );
 
   // Exported permission: 'use advanced search'.
