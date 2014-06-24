@@ -11,10 +11,7 @@
 ?>
 
 <ul>
-  <?php foreach ( $custom_render as $item ): 
-      dd($item);
-      ?>
-    
+  <?php foreach ( $custom_render as $item ): ?>
     <li class="of-the-day-item">
       <a href="<?=$item['url'] ?>">
 	<img src="<?=$item['thumbnail']; ?>" alt="<?=$item['thumbnail_alt']; ?> image" height="100" width="100" />
