@@ -1,7 +1,7 @@
 <div class="swipe-wrap  <?php print implode(' ', $tray_vars['tray_classes']); ?>">
   <?php print implode('', $tray_vars['cards']); ?>
 </div>
-<a class="card-anchor" id="<?php print $tray_vars['anchor_tag']; ?>"></a>
+<?php print $tray_vars['anchor_tag']; ?>
 
 
 <?php // Print arrows is multiple cards exist in the card ?>

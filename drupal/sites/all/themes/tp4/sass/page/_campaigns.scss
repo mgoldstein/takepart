@@ -1338,6 +1338,7 @@ body.campaign-display{
         @include breakpoint($breakpoint-mobile){
           float: left;
           width: 80%;
+          -moz-box-sizing: border-box;
         }
         // added by scott 6-19-2014 (because I'm American); matt, removing the width jacked up the display and lit my computer on fire
         @include breakpoint($breakpoint-tablet){
