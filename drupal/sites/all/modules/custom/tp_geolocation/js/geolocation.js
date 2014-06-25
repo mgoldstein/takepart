@@ -13,7 +13,7 @@
       if (document.cookie.indexOf(countryCookieName) > -1) return;
 
       geoip2.country(function(geoIPData) {
-        var expiresDate = new Date(Date.now() + 5*24*60*60*1000);
+        var expiresDate = new Date(Date.now() + 14*24*60*60*1000);
         document.cookie = countryCookieName
           + '=' + encodeURIComponent(geoIPData.country.iso_code)
           + ';path=/'

@@ -80,7 +80,7 @@ function tp4_preprocess_html(&$variables, $hook) {
 	      $variables['use_development_dtm'] = FALSE;
 	    }
 		}
-    
+
     if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
         unset($variables['page']['page_bottom']['omniture']);
         unset($variables['page']['page_bottom']['quantcast']);
@@ -435,7 +435,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   	$alt = $variables['title'];
   }
 
-  
+
   $media_title = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_title');
   if(!empty($media_title)){
     $media_title = '<h4 class="media-title">'. $media_title. '</h4>';
@@ -549,7 +549,7 @@ function num_to_letter($num){
   $num -= 1;
   $letter =   chr(($num % 26) + 97);
   $letter .=  (floor($num/26) > 0) ? str_repeat($letter, floor($num/26)) : '';
-  return $letter; 
+  return $letter;
 }
 
 
@@ -700,8 +700,8 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 
   $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
   $slim_text = tp4_render_field_value('node', $variables['node'], 'field_slim_card_text');
-  
-  
+
+
   //Set Layout
   if($column_count == 'Two Column (even width)' || $column_count == 'Two Column (left side wide)' || $column_count == 'Two Column (right side wide)'){
 
@@ -831,9 +831,9 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
 }
 
 function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
-	
+
 	if($variables['type'] == "campaign_card_twitter"){
-	
+
 	// Please change the settings based on TakePart application (removed this comment if already changed)
     $consumer_key = "5TGmga1wMRDfMD0gCUIAtI0YG";
     $consumer_secret = "l2ZOmrQlOmnMeTnw7YYvhKrLSzeaaGNn6SPtet4cI2Of2rRyKd";
@@ -843,13 +843,13 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 	$type = $variables['field_twitter_type'][0]['value'];
 	$oauth_access_token = $variables['field_oauth_token'][0]['value'];
 	$oauth_access_token_secret = $variables['field_oauth_token_secret'][0]['value'];
-	
+
 	if ( ! class_exists('TwitterOAuth')){
-	require('./sites/all/modules/custom/tp_twitter/twitteroauth/twitteroauth.php');	
+	require('./sites/all/modules/custom/tp_twitter/twitteroauth/twitteroauth.php');
 	}
-	
+
 	$connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_access_token, $oauth_access_token_secret);
-	
+
 	switch($type){
 		case "user_timeline":
 		case "mentions_timeline":
@@ -871,26 +871,26 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 			$parameters = array('owner_screen_name' => $username,  'slug' => $variables['field_twitter_list_slug'][0]['value'], 'count' => $number_of_tweets);
 		break;
 	}
-	
+
 	$twitter_data = $connection->get($twitter_api_url, $parameters);
-	
+
 	if($type == 'hashtag'){
-		
+
 		foreach($twitter_data->statuses as $tweets){
-			
+
 				$variables['tweet'][] = $tweets->text;
 			    $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'" target="_blank">'.$tweets->user->screen_name."</a>";
 				$image = str_replace("_normal","",$tweets->user->profile_image_url);
 				$variables['profile_pic'][] = $image;
 				$variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
 				$variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
-			
+
 		}
 
-		
+
 	}
 	else{
-		
+
 		foreach($twitter_data as $tweets){
 				$variables['tweet'][] = $tweets->text;
 			    $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'" target="_blank">'.$tweets->user->screen_name."</a>";
@@ -899,69 +899,69 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 				$variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
 				$variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
 		}
-	
+
 	}
 	// Get entities count
     $entities_count = count($variables['entities']);
 	for($x=0; $x<$entities_count; $x++){
-		
+
 		// Check if there is URLs in tweet
 		if(!empty($variables['entities'][$x]->urls)){
-			
+
 			// Check number of URLs
 			$url_count = count($variables['entities'][$x]->urls);
-			
+
 			for($y=0; $y<$url_count; $y++){
-				
+
 				// Check if URL exists in a tweet, if yes, add link tag
 				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->urls[$y]->url) !== false) {
-   					$variables['tweet'][$x] = str_replace($variables['entities'][$x]->urls[$y]->url, '<a href="'.$variables['entities'][$x]->urls[$y]->url.'" target="_blank">'.$variables['entities'][$x]->urls[$y]->display_url.'</a>', $variables['tweet'][$x]);				
+   					$variables['tweet'][$x] = str_replace($variables['entities'][$x]->urls[$y]->url, '<a href="'.$variables['entities'][$x]->urls[$y]->url.'" target="_blank">'.$variables['entities'][$x]->urls[$y]->display_url.'</a>', $variables['tweet'][$x]);
 				}
 
 			}
 
 		} // End URL
-		
+
 		// Check if there is user mention in tweet
 		if(!empty($variables['entities'][$x]->user_mentions)){
-			
+
 			// Check number of URLs
 			$user_mention_count = count($variables['entities'][$x]->user_mentions);
-			
+
 			for($y=0; $y<$user_mention_count; $y++){
-				
+
 				// Check if user mention exists in a tweet, if yes, add link tag
 				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->user_mentions[$y]->screen_name) !== false) {
-   					$variables['tweet'][$x] = str_replace('@'.$variables['entities'][$x]->user_mentions[$y]->screen_name, '<a href="http://twitter.com/'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'" target="_blank">@'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'</a>', $variables['tweet'][$x]);				
+   					$variables['tweet'][$x] = str_replace('@'.$variables['entities'][$x]->user_mentions[$y]->screen_name, '<a href="http://twitter.com/'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'" target="_blank">@'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'</a>', $variables['tweet'][$x]);
 				}
 
 			}
-			
+
 		} // End user mention
-		
+
 		// Check if there is hashtag
 		if(!empty($variables['entities'][$x]->hashtags)){
-			
+
 			// Check number of URLs
 			$hashtags_count = count($variables['entities'][$x]->hashtags);
-			
+
 			for($z=0; $z<$hashtags_count; $z++){
-				
+
 				// Check if hashtag exist in a tweet, if yes, add link tag
 				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->hashtags[$z]->text) !== false) {
-   					$variables['tweet'][$x] = str_replace('#'.$variables['entities'][$x]->hashtags[$z]->text, '<a href="https://twitter.com/search?q=%23'.$variables['entities'][$x]->hashtags[$z]->text.'&src=hash" target="_blank">#'.$variables['entities'][$x]->hashtags[$z]->text.'</a>'." ", $variables['tweet'][$x]);				
+   					$variables['tweet'][$x] = str_replace('#'.$variables['entities'][$x]->hashtags[$z]->text, '<a href="https://twitter.com/search?q=%23'.$variables['entities'][$x]->hashtags[$z]->text.'&src=hash" target="_blank">#'.$variables['entities'][$x]->hashtags[$z]->text.'</a>'." ", $variables['tweet'][$x]);
 				}
 
 			}
-			
+
 		} // End hashtag
-		
-	
-	} 
+
+
+	}
 
 	//background properties
     tp4_campaign_background_rules($variables);
-	
+
  }
 
   $descriptive_text = tp4_render_field_value('node', $variables['node'], 'body');
@@ -973,27 +973,27 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 
 //Convert Twitter timestamp
 function tp4_convert_twitter_time( $t ) {
-	
+
 	// Set time zone
 	date_default_timezone_set('America/Los_Angeles');
-	
+
 	// Get Current Server Time
 	$server_time = $_SERVER['REQUEST_TIME'];
-	
+
 	// Convert Twitter Time to UNIX
 	$new_tweet_time = strtotime($t);
-	
+
 	// Set Up Output for the Timestamp if over 24 hours
 	$this_tweet_day =  date('D. M j, Y', strtotime($t));
-	
+
 	// Subtract Twitter time from current server time
-	$time = $server_time - $new_tweet_time;			
-	
+	$time = $server_time - $new_tweet_time;
+
 	// less than an hour, output 'minutes' messaging
 	if( $time < 3599) {
 		$time = round($time / 60) . ' minutes ago';
 	}
-	// less than a day but over an hour, output 'hours' messaging 
+	// less than a day but over an hour, output 'hours' messaging
 	else if ($time >= 3600 && $time <= 86400) {
 		$time = round($time / 3600) . ' hours ago';
 	}
@@ -1001,9 +1001,9 @@ function tp4_convert_twitter_time( $t ) {
 	else if ( $time > 86400)  {
 		$time = $this_tweet_day;
 	}
-	
+
 	return $time;
-	
+
 }
 
 /**
@@ -1018,7 +1018,7 @@ function tp4_query_termfilter_alter(QueryAlterableInterface $query) {
   if($filters = field_get_items('node', $node, 'field_campaign_news_filter_tag')){
     $or = db_or();
     foreach($filters as $item) {
-      
+
       //Filter can have only one value so this will work
       if($item['entity']->vid == 5){
         $query
@@ -1157,15 +1157,22 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
           $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
         }
 
-
-        $node_path = drupal_get_path_alias('node/'. $node->nid);
         $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
         $image = file_create_url($file->uri);
         $image = image_style_url('campaign_news_3x2', $file->uri);
         $media = '<img src="'. $image. '" alt="'.$alt.'">';
         $news_column = $media;
         $news_column .= '<h5>'. $headline. '</h5>';
-        $center .= l($news_column, $node_path, array('html' => true, 'attributes' => array('class' => array('news-column'))));
+
+        $uri = entity_uri('node', $node);
+        $uri['options'] += array(
+          'html' => true,
+          'attributes' => array(
+            'class' => array('news-column')
+          ),
+        );
+
+        $center .= l($news_column, $uri['path'], $uri['options']);
       }
       $center .= '</div>';
     }
@@ -1476,7 +1483,7 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 }
 
 function tp4_preprocess_node__flashcard(&$variables) {
- 
+
     $variables['content']['flashcard_related_content_primary'] = array(
         '#weight'=> 10,
         '#prefix' => '<aside class="flashcard-realted-content-primary">',
