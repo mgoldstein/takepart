@@ -101,6 +101,7 @@ function tp_campaigns_tray_vars($entity){
 		$title = drupal_render(field_view_value('node', $entity, 'field_campaign_anchor_tag', $items[0]));
 		$title = drupal_html_id($title);
 		$tray_vars['anchor_tag'] = $title;
+		$tray_vars['anchor_tag'] = l(' ', ' ', array('attributes' => array('name' => $title, 'id' => $title, 'class' => array('card-anchor'))));
 	}
 
 
