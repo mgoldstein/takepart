@@ -294,7 +294,7 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
     'path' => drupal_get_path('theme', 'tp4') . '/images/takepart_logo.png',
     'alt' => variable_get('site_name', 'TakePart'),
   ));
-  $variables['logo'] = l($image, NULL, array('html' => TRUE));
+  $variables['logo'] = l($image, '<front>', array('html' => TRUE,'absolute' => TRUE, 'https' => FALSE));
 
   $variables['user_links'] = array(
     '#theme' => 'links',
@@ -514,14 +514,14 @@ function theme_tp4_support_featured_campaign(&$variables) {
 function tp4_support_fat_header(){
   global $base_url;
   global $user;
-  $logo = $base_url. '/'. drupal_get_path('theme', 'tp4'). '/images/takepart_logo.png';
+  $logo = $base_url . '/'. drupal_get_path('theme', 'tp4'). '/images/takepart_logo.png';
   if($user->uid == 0){
     $user_links = array();
     $user_links = array(
       '<li>'. l('Sign in', $base_url. '/user'). '</li>',
     );
   }
-  else{
+  else {
     $user_links = array(
       '<li class="user">'. l($user->name, $base_url. '/user'). '</li>',
       '<li>'. l('Sign out', $base_url. '/user/logout'). '</li>',
