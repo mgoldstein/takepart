@@ -294,8 +294,12 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
     'path' => drupal_get_path('theme', 'tp4') . '/images/takepart_logo.png',
     'alt' => variable_get('site_name', 'TakePart'),
   ));
-  $variables['logo'] = l($image, '<front>', array('html' => TRUE,'absolute' => TRUE, 'https' => FALSE));
-
+  if (arg(0) === "iframes") {
+    $variables['logo'] = l($image, '<front>', array('html' => TRUE,'absolute' => TRUE, 'https' => FALSE));
+  }
+  else {
+    $variables['logo'] = l($image, '<front>', array('html' => TRUE));  
+  }
   $variables['user_links'] = array(
     '#theme' => 'links',
     '#links' => array(),
