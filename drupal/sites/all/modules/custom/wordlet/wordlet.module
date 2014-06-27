@@ -1091,6 +1091,7 @@ function wordlet_omniture_variables() {
       );
     } else {
       $return = array(
+        's.channel' => $single,
         's.eVar43' => $single,
         's.prop43' => $single
       );
