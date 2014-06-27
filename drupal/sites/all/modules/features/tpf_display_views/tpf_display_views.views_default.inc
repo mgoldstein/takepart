@@ -93,7 +93,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -536,7 +536,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -924,7 +924,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -1015,7 +1015,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
   $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -1244,7 +1244,7 @@ echo $separator;
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -1335,7 +1335,7 @@ echo $separator;
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -1677,7 +1677,7 @@ print $value;
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -2743,7 +2743,7 @@ print $value;
   $handler->display->display_options['fields']['field_promo_headline']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -2835,7 +2835,7 @@ print $value;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['label'] = '';
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_tp_campaign_subheadline']['empty'] = '[field_promo_headline] ';
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -3040,7 +3040,7 @@ print $value;
   $handler->display->display_options['fields']['title']['ui_name'] = 'Author Name';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -3170,7 +3170,7 @@ print $value;
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -3394,7 +3394,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -3575,7 +3575,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -3666,7 +3666,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -4530,12 +4530,10 @@ return TRUE;';
 
   /* Display: Series */
   $handler = $view->new_display('block', 'Series', 'block_2');
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'tag_feeds';
   $handler->display->display_options['defaults']['cache'] = FALSE;
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '300';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '300';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -4547,17 +4545,9 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_series']['ui_name'] = 'Series [taxonomy_term]';
   $handler->display->display_options['arguments']['field_series']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_series']['default_argument_type'] = 'taxonomy_tid';
-  $handler->display->display_options['arguments']['field_series']['default_argument_options']['vocabularies'] = array(
-    'action_type' => 0,
-    'agency' => 0,
-    'blog' => 0,
-    'free_tags' => 0,
-    'group_type' => 0,
-    'photo_credit' => 0,
-    'series' => 0,
-    'topic' => 0,
-  );
   $handler->display->display_options['arguments']['field_series']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_series']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_series']['not'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Indexed Content: Content type */
@@ -4567,11 +4557,9 @@ return TRUE;';
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'openpublish_blog_post' => 'openpublish_blog_post',
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
-    'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -5252,7 +5240,7 @@ return TRUE;';
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -5429,7 +5417,7 @@ return TRUE;';
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_blogpost_main_image']['group_column'] = 'fid';
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -5463,8 +5451,13 @@ return TRUE;';
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Topic List';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -5490,20 +5483,16 @@ return TRUE;';
     'image_style' => 'topic_thumbnail',
     'image_link' => 'content',
   );
+  $handler->display->display_options['fields']['field_thumbnail']['group_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['group_columns'] = array(
+    'title' => 'title',
+  );
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  /* Field: Content: Type */
-  $handler->display->display_options['fields']['type_1']['id'] = 'type_1';
-  $handler->display->display_options['fields']['type_1']['table'] = 'node';
-  $handler->display->display_options['fields']['type_1']['field'] = 'type';
-  $handler->display->display_options['fields']['type_1']['label'] = '';
-  $handler->display->display_options['fields']['type_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['type_1']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['type_1']['machine_name'] = TRUE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -6729,7 +6718,7 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -6969,7 +6958,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -7041,7 +7030,7 @@ return TRUE;';
   $handler->display->display_options['fields']['view_node']['element_wrapper_class'] = 'full-video';
   $handler->display->display_options['fields']['view_node']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'Full Video';
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -7144,7 +7133,7 @@ return TRUE;';
   $handler->display->display_options['fields']['view_node_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node_2']['element_wrapper_class'] = 'views-field-field-promo-headline';
   $handler->display->display_options['fields']['view_node_2']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -7249,7 +7238,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_type'] = 'h3';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -7356,7 +7345,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Content: Promo Text */
+  /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
