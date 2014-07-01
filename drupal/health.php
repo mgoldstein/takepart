@@ -59,7 +59,7 @@ else {
 // Print all errors.
 if ($errors) {
   $errors[] = 'Errors on this server will cause it to be removed from the load balancer.';
-  header('HTTP/1.1 500 Internal Server Error');
+  header('HTTP/1.1 503 Service Unavailable');
   print implode("<br />\n", $errors);
 }
 else {
