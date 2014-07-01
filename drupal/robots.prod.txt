@@ -20,6 +20,7 @@ Disallow: /comment/
 Disallow: /comment/reply/
 Disallow: /downloads/
 Disallow: /flash/
+Disallow: /health.php
 Disallow: /includes/
 Disallow: /lists/
 Disallow: /misc/
