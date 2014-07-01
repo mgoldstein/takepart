@@ -1,0 +1,7 @@
+name = TakePart DTM
+description = Supply DTM what it needs to do it's thang
+package = TakePart
+core = 7.x
+version = 7.x-1.x
+dependencies[] = metatag
+files[] = tp_dtm.metatag.inc
