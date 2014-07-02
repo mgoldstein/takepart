@@ -51,6 +51,13 @@
   &.i-email:after { content: '\e305'; }
 }
 
+.i-checkmark:after  { content: '\2713'; }
+.i-close-x:after    { content: '\d7';   }
+.i-triangle-up:after   { content: '\25B2'; }
+.i-triangle-down:after { content: '\25BC'; }
+.i-triangle-left:after { content: '\25C0'; }
+.i-triangle-right:after{ content: '\25B6'; }
+
 .tp-social-link {
   &:before {
     font-family: takepart;

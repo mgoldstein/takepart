@@ -20,6 +20,7 @@
     <aside id="gallery-content-social" class="social">
       <h3 class="headline"><?=t('Share Photo') ?></h3>
       <div class="tp-social" id="gallery-cover-share"></div>
+      <div class="tap-influence-overlay"></div>
     </aside>
   </header>
 
