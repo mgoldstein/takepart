@@ -1407,6 +1407,7 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
         // @see tp4_field__field_article_main_image__openpublish_article()
         // @see field-formatter--author-full.tpl.php
     } // if ($variables['view_mode'] == 'full')
+    drupal_add_js(variable_get('takeaction_domain').'/assets/influence.js');
 }
 
 /**
