@@ -14,6 +14,10 @@ function takeaction_javascript_init() {
     if (!empty($button_js_url)) {
       $scheme = parse_url($button_js_url, PHP_URL_SCHEME);
       $host = parse_url($button_js_url, PHP_URL_HOST);
+      $port = parse_url($button_js_url, PHP_URL_PORT);
+      if ($port != 80) {
+        $host .= ":{$port}";
+      }
       $location = variable_get('takeaction_button_js_location', 'footer');
       $pub_id = variable_get('takeaction_button_pub_id', '');
       $publisher_js = parse_url($button_js_url, PHP_URL_PATH);
