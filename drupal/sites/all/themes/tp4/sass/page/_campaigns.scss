@@ -544,7 +544,7 @@ body.campaign-display{
   }
   h1.card-title{
     text-align: center;
-    margin: 26px 0;
+    margin-bottom: 26px;
     &.has-instructional{
       margin-bottom: 6px;
     }
@@ -1433,6 +1433,7 @@ body.campaign-display{
     overflow: hidden;
     max-width: 1000px;
     margin: 0 auto;
+    padding-top: 50px;
   }
   .card-width-980{
     float: none;
