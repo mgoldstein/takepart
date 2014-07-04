@@ -22,7 +22,6 @@
   <?php elseif ($use_development_dtm === TRUE): ?>
   <script src="//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-67f52c9fb4acac0165b6ab3557a90e9fc355338e-staging.js"></script>
   <?php endif; ?>
-  <script src="//qa-api.takepart.com/assets/login_widget.js">
   <?php print $head; ?>
   <?php if ($default_mobile_metatags): ?>
   <meta name="MobileOptimized" content="width">
@@ -45,6 +44,7 @@
     <script src="<?php print $base_path . $path_to_zen; ?>/js/respond.js"></script>
     <![endif]-->
   <?php endif; ?>
+  <script src="//qa-api.takepart.com/assets/login_widget.js"></script>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php if ($skip_link_text && $skip_link_anchor): ?>
