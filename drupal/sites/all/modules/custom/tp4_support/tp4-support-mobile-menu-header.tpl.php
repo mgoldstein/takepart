@@ -1,5 +1,5 @@
 <div class="user-menu">
-  <?php print render($user_links); ?>
+  <div class="tpsMobileLogin"></div>
 </div>
 <div class="follow-us">
   <h2><?php print t('Follow'); ?></h2>

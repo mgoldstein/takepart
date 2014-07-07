@@ -58,5 +58,6 @@
   <?php if ($use_production_dtm === TRUE || $use_development_dtm === TRUE): ?>
   <script type="text/javascript">_satellite.pageBottom();</script>
   <?php endif; ?>
+  <script src="//qa-api.takepart.com/assets/login_widget.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
     <?php print render($social_menu); ?>
   </div>
   <div class="user-menu">
-    <?php print render($user_links); ?>
+    <div class="tpsLogin"></div>
   </div>
   <?php print render($search); ?>
 </div>
