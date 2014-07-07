@@ -26,6 +26,17 @@
     else{
       $slider_class[] = '';
     }
+
+	  //Set the position of the background
+	  if($background_position = field_get_items('node', $node, 'field_campaign_bg_image_position')){
+		  if($background_position[0]['value'] == 2){
+			  $background_position = 'bottom';
+		  }else{
+			  $background_position = 'top';
+		  }
+		  $slider_styles[] = 'background-position: '. $background_position. ';';
+	  }
+
 	  if($background_image || $bg_color){
 			$slider_class[] = 'has-tray-background';
 	  }
