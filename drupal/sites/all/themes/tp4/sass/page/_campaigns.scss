@@ -55,9 +55,10 @@ body.campaign-display
         margin-top: 5px;
       }
     }
-
-    .left-column, .right-column, .center-column {
-      margin-top: 25px;
+    &:not(.has-instructional.has-title){
+      .left-column, .right-column, .center-column {
+        margin-top: 25px;
+      }
     }
 
     &.campaign-2col{

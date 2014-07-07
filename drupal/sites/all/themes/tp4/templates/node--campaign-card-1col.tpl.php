@@ -7,7 +7,7 @@
  * @see https://drupal.org/node/1728164
  */
 ?>
-<div class="card campaign-1col <?php print implode(' ', $variables['classes_array']); ?>" style="background-image: url('<?php print $variables['card_background']; ?>'); <?php print implode(' ', $variables['styles']); ?>">
+<div class="card campaign-1col <?php print implode(' ', $variables['classes_array']). ' '. (isset($variables['instructional']) == true ? 'has-instructional' : ''); ?>" style="background-image: url('<?php print $variables['card_background']; ?>'); <?php print implode(' ', $variables['styles']); ?>">
   <?php print render($title_prefix); ?>
   <article class="card-inner<?php if(isset($variables['slim_text'])){ print " ".$variables['slim_text']; }?>">
   <?php print render($title_suffix);  // contextual links ?>
