@@ -25,6 +25,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -53,6 +54,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -81,6 +83,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -107,8 +110,9 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background Image',
     'weight' => '18',
     'children' => array(
-      0 => 'field_campaign_bgw_image',
-      1 => 'field_campaign_background',
+      0 => 'field_campaign_background',
+      1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -137,6 +141,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -165,6 +170,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -191,8 +197,9 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background Image',
     'weight' => '6',
     'children' => array(
-      0 => 'field_campaign_bgw_image',
-      1 => 'field_campaign_background',
+      0 => 'field_campaign_background',
+      1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -219,8 +226,9 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background Image',
     'weight' => '13',
     'children' => array(
-      0 => 'field_campaign_bgw_image',
-      1 => 'field_campaign_background',
+      0 => 'field_campaign_background',
+      1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -249,6 +257,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -275,8 +284,9 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background Image',
     'weight' => '13',
     'children' => array(
-      0 => 'field_campaign_bgw_image',
-      1 => 'field_campaign_background',
+      0 => 'field_campaign_background',
+      1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -305,6 +315,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -333,6 +344,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
+      2 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -445,8 +457,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background',
     'weight' => '2',
     'children' => array(
-      0 => 'field_campaign_bgw',
-      1 => 'field_campaign_bg_color',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_bgw',
       2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
@@ -503,8 +515,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background',
     'weight' => '3',
     'children' => array(
-      0 => 'field_campaign_bgw',
-      1 => 'field_campaign_bg_color',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_bgw',
       2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
@@ -532,8 +544,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background',
     'weight' => '7',
     'children' => array(
-      0 => 'field_campaign_bgw',
-      1 => 'field_campaign_bg_color',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_bgw',
       2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
@@ -590,8 +602,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background',
     'weight' => '7',
     'children' => array(
-      0 => 'field_campaign_bgw',
-      1 => 'field_campaign_bg_color',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_bgw',
       2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
@@ -619,8 +631,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background',
     'weight' => '8',
     'children' => array(
-      0 => 'field_campaign_bgw',
-      1 => 'field_campaign_bg_color',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_bgw',
       2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
@@ -648,8 +660,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background',
     'weight' => '7',
     'children' => array(
-      0 => 'field_campaign_bgw',
-      1 => 'field_campaign_bg_color',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_bgw',
       2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
@@ -793,12 +805,12 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Media',
     'weight' => '5',
     'children' => array(
-      0 => 'field_campaign_media_photo',
-      1 => 'field_campaign_media_video',
-      2 => 'field_campaign_media_title',
-      3 => 'field_campaign_media_caption',
-      4 => 'field_campaign_media_type',
-      5 => 'field_campaign_media_image_link',
+      0 => 'field_campaign_media_type',
+      1 => 'field_campaign_media_caption',
+      2 => 'field_campaign_media_image_link',
+      3 => 'field_campaign_media_photo',
+      4 => 'field_campaign_media_title',
+      5 => 'field_campaign_media_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1007,8 +1019,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'field_campaign_style',
-      3 => 'group_background_image',
+      2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

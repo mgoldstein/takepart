@@ -1373,6 +1373,16 @@ function tp4_campaign_background_rules(&$variables){
 	else{
 		$variables['styles'][] = 'background-size: 1000px;';
 	}
+	
+	//Set the position of the background
+	if($background_position = field_get_items('node', $variables['node'], 'field_campaign_bg_image_position')){
+		if($background_position[0]['value'] == 2){
+			$background_position = 'bottom';
+		}else{
+			$background_position = 'top';
+		}
+		$slider_styles[] = 'background-position: '. $background_position. ';';
+	}
 
 	$background = field_get_items('node', $variables['node'], 'field_campaign_background');
 	$variables['card_background'] = (!empty($background) ? file_create_url($background[0]['uri']) : '');
