@@ -259,6 +259,7 @@ body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
   }
 }
 body.campaign-display .card.node-campaign-card-multi-column{
+  padding-bottom: 20px;
   .center-column{
     @include breakpoint($breakpoint-mobile) {
       @include zen-grid-item(12, 1);
