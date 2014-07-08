@@ -908,6 +908,14 @@ body.campaign-display{
       vertical-align: middle;
     }
   }
+  .card.node-campaign-card-branding,
+  .card.node-campaign-card-text.slim-text{
+    h1, h2, h3, h4, h5, p{
+      margin: 0;
+      padding: 0;
+      margin-bottom: -3px; /* b/c of the extra spacing with the font */
+    }
+  }
 
   //News
   .card.node-campaign-card-news{
