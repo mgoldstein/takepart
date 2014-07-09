@@ -83,6 +83,17 @@ function takeaction_node_view($node, $view_mode, $langcode) {
 }
 
 /**
+ * Implements hook_preprocess_hook().
+ */
+function takeaction_preprocess_node(&$variables) {
+  $node = $vars['node'];
+  if (in_array($node->type, array())) {
+    $influence_overlay_js = variable_get('takeaction_influence_overlay_js');
+    drupal_add_js($influence_overlay_js, 'external');
+  }
+}
+
+/**
  * Create a pre-initialize instance of the TakeAction API.
  *
  * This function creates and initializes an instance of a TakeAction API using
