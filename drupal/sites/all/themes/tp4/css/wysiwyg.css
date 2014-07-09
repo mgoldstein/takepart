@@ -191,7 +191,7 @@
 
 @font-face {
   font-family: 'takepart';
-  src: url('../fonts/takepart/takepart.eot');
+  src: url("takepart/takepart.eot");
 }
 
 @font-face {
@@ -1832,116 +1832,136 @@
 .icon.i-story:after {
   content: '\e106';
 }
+/* line 27, ../sass/base/_icons.scss */
+.icon.i-graph:after {
+  content: '\e107';
+}
 /* line 28, ../sass/base/_icons.scss */
+.icon.i-monitor:after {
+  content: '\e108';
+}
+/* line 29, ../sass/base/_icons.scss */
+.icon.i-update-circle:after {
+  content: '\e109';
+}
+/* line 30, ../sass/base/_icons.scss */
+.icon.i-personal:after {
+  content: '\e10A';
+}
+/* line 31, ../sass/base/_icons.scss */
+.icon.i-user-avatar:after {
+  content: '\e10C';
+}
+/* line 34, ../sass/base/_icons.scss */
 .icon.i-double-arrow-left:after {
   content: '\e605\e605';
   letter-spacing: -1px;
 }
-/* line 29, ../sass/base/_icons.scss */
+/* line 35, ../sass/base/_icons.scss */
 .icon.i-double-arrow-right:after {
   content: '\e606\e606';
   letter-spacing: -1px;
 }
-/* line 30, ../sass/base/_icons.scss */
+/* line 36, ../sass/base/_icons.scss */
 .icon.i-double-arrow-up:after {
   content: '\e603';
 }
-/* line 31, ../sass/base/_icons.scss */
+/* line 37, ../sass/base/_icons.scss */
 .icon.i-double-arrow-down:after {
   content: '\e604';
 }
-/* line 32, ../sass/base/_icons.scss */
+/* line 38, ../sass/base/_icons.scss */
 .icon.i-zoom-in:after {
   content: "\e614";
 }
-/* line 33, ../sass/base/_icons.scss */
+/* line 39, ../sass/base/_icons.scss */
 .icon.i-zoom-out:after {
   content: "\e615";
 }
-/* line 35, ../sass/base/_icons.scss */
+/* line 41, ../sass/base/_icons.scss */
 .icon.i-touch-menu:after {
   content: "\e609";
 }
-/* line 36, ../sass/base/_icons.scss */
+/* line 42, ../sass/base/_icons.scss */
 .icon.i-remove:after {
   content: "\e610";
 }
-/* line 37, ../sass/base/_icons.scss */
+/* line 43, ../sass/base/_icons.scss */
 .icon.i-minus:after {
   content: "\e611";
 }
-/* line 38, ../sass/base/_icons.scss */
+/* line 44, ../sass/base/_icons.scss */
 .icon.i-plus:after, .icon.i-add:after {
   content: "\e612";
 }
-/* line 39, ../sass/base/_icons.scss */
+/* line 45, ../sass/base/_icons.scss */
 .icon.i-ok:after {
   content: "\e613";
 }
-/* line 42, ../sass/base/_icons.scss */
+/* line 48, ../sass/base/_icons.scss */
 .icon.i-arrow-left:after {
   content: '\e605';
 }
-/* line 43, ../sass/base/_icons.scss */
+/* line 49, ../sass/base/_icons.scss */
 .icon.i-arrow-right:after {
   content: '\e606';
 }
-/* line 44, ../sass/base/_icons.scss */
+/* line 50, ../sass/base/_icons.scss */
 .icon.i-arrow-up:after {
   content: '\e607';
 }
-/* line 45, ../sass/base/_icons.scss */
+/* line 51, ../sass/base/_icons.scss */
 .icon.i-arrow-down:after {
   content: '\e608';
 }
-/* line 48, ../sass/base/_icons.scss */
+/* line 54, ../sass/base/_icons.scss */
 .icon.i-facebook:after {
   content: "\e301";
 }
-/* line 49, ../sass/base/_icons.scss */
+/* line 55, ../sass/base/_icons.scss */
 .icon.i-twitter:after {
   content: '\e302';
 }
-/* line 50, ../sass/base/_icons.scss */
+/* line 56, ../sass/base/_icons.scss */
 .icon.i-google_plusone_share:after {
   content: '\e303';
 }
-/* line 51, ../sass/base/_icons.scss */
+/* line 57, ../sass/base/_icons.scss */
 .icon.i-email:after {
   content: '\e305';
 }
 
-/* line 54, ../sass/base/_icons.scss */
+/* line 60, ../sass/base/_icons.scss */
 .i-checkmark:after {
   content: '\2713';
 }
 
-/* line 55, ../sass/base/_icons.scss */
+/* line 61, ../sass/base/_icons.scss */
 .i-close-x:after {
   content: '\d7';
 }
 
-/* line 56, ../sass/base/_icons.scss */
+/* line 62, ../sass/base/_icons.scss */
 .i-triangle-up:after {
   content: '\25B2';
 }
 
-/* line 57, ../sass/base/_icons.scss */
+/* line 63, ../sass/base/_icons.scss */
 .i-triangle-down:after {
   content: '\25BC';
 }
 
-/* line 58, ../sass/base/_icons.scss */
+/* line 64, ../sass/base/_icons.scss */
 .i-triangle-left:after {
   content: '\25C0';
 }
 
-/* line 59, ../sass/base/_icons.scss */
+/* line 65, ../sass/base/_icons.scss */
 .i-triangle-right:after {
   content: '\25B6';
 }
 
-/* line 61, ../sass/base/_icons.scss */
+/* line 67, ../sass/base/_icons.scss */
 .tp-social-link {
   /* Enable Ligatures ================ */
   -webkit-font-feature-settings: "liga";
@@ -1954,47 +1974,47 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* line 62, ../sass/base/_icons.scss */
+/* line 68, ../sass/base/_icons.scss */
 .tp-social-link:before {
   font-family: takepart;
 }
-/* line 79, ../sass/base/_icons.scss */
+/* line 85, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-Pinterest:before {
   content: '\e300';
 }
-/* line 80, ../sass/base/_icons.scss */
+/* line 86, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-Facebook:before {
   content: "\e301";
 }
-/* line 81, ../sass/base/_icons.scss */
+/* line 87, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-Twitter:before {
   content: '\e302';
 }
-/* line 82, ../sass/base/_icons.scss */
+/* line 88, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-GooglePlus:before {
   content: '\e303';
 }
-/* line 83, ../sass/base/_icons.scss */
+/* line 89, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-Tumblr:before {
   content: '\e304';
 }
-/* line 84, ../sass/base/_icons.scss */
+/* line 90, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-Email:before {
   content: '\e305';
 }
-/* line 85, ../sass/base/_icons.scss */
+/* line 91, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-Linkedin:before {
   content: '\e308';
 }
-/* line 86, ../sass/base/_icons.scss */
+/* line 92, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-Vine:before {
   content: '\e309';
 }
-/* line 87, ../sass/base/_icons.scss */
+/* line 93, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-Instagram:before {
   content: '\e306';
 }
-/* line 88, ../sass/base/_icons.scss */
+/* line 94, ../sass/base/_icons.scss */
 .tp-social-link.tp-social-Youtube:before {
   content: '\e307';
 }
