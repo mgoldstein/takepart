@@ -51,11 +51,6 @@ function takeaction_javascript_init() {
         'weight' => 0,
       ));
     }
-    drupal_add_js(array(
-      'takeaction' => array(
-        'guid' => takeaction_tracking_get_guid(),
-      ),
-    ), 'setting');
   }
 }
 
