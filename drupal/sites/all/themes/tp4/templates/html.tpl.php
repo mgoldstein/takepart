@@ -46,7 +46,7 @@ global $conf;
     <script src="<?php print $base_path . $path_to_zen; ?>/js/respond.js"></script>
     <![endif]-->
   <?php endif; ?>
-  <script src="<?php print $conf['services_domain']; ?>/assets/login_widget.js"></script>
+  <script src="<?php print variable_get('centralized_login_widget_js'); ?>"></script>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php if ($skip_link_text && $skip_link_anchor): ?>
