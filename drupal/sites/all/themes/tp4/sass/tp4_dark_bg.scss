@@ -57,6 +57,9 @@ body.campaign-display{
     .share-headline{
       color: $primary-color;
     }
+    .icon.i-touch-menu:after {
+      color: white;
+    }
     .menu{
       li.parent-item{
         &.active > a {
