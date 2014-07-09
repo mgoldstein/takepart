@@ -15,7 +15,7 @@ function takeaction_javascript_init() {
       $scheme = parse_url($button_js_url, PHP_URL_SCHEME);
       $host = parse_url($button_js_url, PHP_URL_HOST);
       $port = parse_url($button_js_url, PHP_URL_PORT);
-      if ($port != 80) {
+      if ($port != 80 && !empty($port)) {
         $host .= ":{$port}";
       }
       $location = variable_get('takeaction_button_js_location', 'footer');
@@ -51,11 +51,6 @@ function takeaction_javascript_init() {
         'weight' => 0,
       ));
     }
-    drupal_add_js(array(
-      'takeaction' => array(
-        'guid' => takeaction_tracking_get_guid(),
-      ),
-    ), 'setting');
   }
 }
 

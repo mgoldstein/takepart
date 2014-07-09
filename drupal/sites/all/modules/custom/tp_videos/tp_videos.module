@@ -63,3 +63,61 @@ function tp_videos_entity_view_alter(&$build, $type) {
     unset($build['links']);
   }
 }
+
+function tp_videos_access() {
+  return TRUE;
+}
+
+function tp_videos_menu() {
+  return array(
+    'api/video-test-jw5' => array(
+      'title' => 'JW Player 5 Video Test',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('tp_videos_test_version_5'),
+      'access callback' => 'tp_videos_access',
+    ),
+    'api/video-test-jw6' => array(
+      'title' => 'JW Player 6 Video Test',
+      'page callback' => 'tp_videos_test_version_6',
+      'access callback' => 'tp_videos_access',
+    ),
+  );
+}
+
+function tp_videos_test_version_5($form, &$form_state) {
+
+  $video_url = variable_get('tp_videos_test', 'http://video.takepart.com/videos/YWWSR44k-3Ap37bHw.mp4');
+
+  if (!empty($video_url)) {
+    $form['video'] = array(
+      '#markup' => '<embed flashvars="file='. rawurlencode($video_url) . '&autostart=true" allowfullscreen="true" allowscriptaccess="always" id="player1" name="player1" src="/sites/all/modules/custom/tp_videos/player.swf" width="480" height="270" />',
+      '#type' => 'markup',
+    );
+  }
+
+  $form['dump'] = array(
+    '#markup' => print_r($form_state, true),
+  );
+
+  $form['video_url'] = array(
+    '#type' => 'textfield',
+    '#title' => 'URL',
+    '#default_value' => $video_url,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Update',
+    '#submit' => array('tp_videos_test_version_5_submit'),
+  );
+
+  return $form;
+}
+
+function tp_videos_test_version_5_submit($form, $form_state) {
+  variable_set('tp_videos_test', $form_state['values']['video_url']);
+}
+
+function tp_videos_test_version_6() {
+
+}
