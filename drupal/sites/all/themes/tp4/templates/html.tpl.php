@@ -1,4 +1,6 @@
 <?php
+
+global $conf;
 /**
  * @file
  * Returns the HTML for the basic html structure of a single Drupal page.
@@ -44,6 +46,7 @@
     <script src="<?php print $base_path . $path_to_zen; ?>/js/respond.js"></script>
     <![endif]-->
   <?php endif; ?>
+  <script src="<?php print $conf['services_domain']; ?>/assets/login_widget.js"></script>
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php if ($skip_link_text && $skip_link_anchor): ?>
@@ -58,6 +61,5 @@
   <?php if ($use_production_dtm === TRUE || $use_development_dtm === TRUE): ?>
   <script type="text/javascript">_satellite.pageBottom();</script>
   <?php endif; ?>
-  <script src="//qa-api.takepart.com/assets/login_widget.js"></script>
 </body>
 </html>

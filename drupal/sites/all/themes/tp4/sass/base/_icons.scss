@@ -24,6 +24,12 @@
   &.i-donation:after { content: '\e105'; }
   &.i-story:after { content: '\e106'; }
 
+  &.i-graph:after { content: '\e107'; }
+  &.i-monitor:after { content: '\e108'; }
+  &.i-update-circle:after { content: '\e109'; }
+  &.i-personal:after { content: '\e10A'; }
+  &.i-user-avatar:after { content: '\e10C'; }
+
   // Generic UI
   &.i-double-arrow-left:after { content: '\e605\e605'; letter-spacing: -1px; }
   &.i-double-arrow-right:after { content: '\e606\e606'; letter-spacing: -1px; }
