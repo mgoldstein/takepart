@@ -3664,7 +3664,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_ad',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -3749,7 +3749,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_ad',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -4578,7 +4578,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_branding',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -4660,7 +4660,11 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign_card_branding-field_campaign_bgw_image'
   $field_instances['node-campaign_card_branding-field_campaign_bgw_image'] = array(
     'bundle' => 'campaign_card_branding',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -5392,7 +5396,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_empty',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -5476,7 +5480,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_empty',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -6254,7 +6258,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_iframe',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -6338,7 +6342,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_iframe',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -7541,7 +7545,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_media',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -7625,7 +7629,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_media',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -9124,7 +9128,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_multi_column',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -9209,7 +9213,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_multi_column',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -10163,7 +10167,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_news',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -10247,7 +10251,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_news',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -11540,7 +11544,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_social',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -11624,7 +11628,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_social',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -12851,7 +12855,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_tap_widget',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -12936,7 +12940,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_tap_widget',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -14167,7 +14171,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_text',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -14251,7 +14255,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_text',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
@@ -15618,7 +15622,11 @@ Note: If you manually reference more items than selected here, the number refere
   // Exported field_instance: 'node-campaign_card_twitter-field_campaign_bgw'
   $field_instances['node-campaign_card_twitter-field_campaign_bgw'] = array(
     'bundle' => 'campaign_card_twitter',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -15699,7 +15707,11 @@ Note: If you manually reference more items than selected here, the number refere
   // Exported field_instance: 'node-campaign_card_twitter-field_campaign_bgw_image'
   $field_instances['node-campaign_card_twitter-field_campaign_bgw_image'] = array(
     'bundle' => 'campaign_card_twitter',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
