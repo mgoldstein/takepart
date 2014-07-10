@@ -8193,10 +8193,6 @@ body.campaign-display .card:not(.has-instructional.has-title) .left-column, body
   body.campaign-display .card.campaign-1col .center-column img {
     margin: 0 auto;
   }
-  /* line 196, ../sass/page/_campaigns.scss */
-  body.campaign-display .card.campaign-1col .center-column .description {
-    text-align: center;
-  }
   /* line 199, ../sass/page/_campaigns.scss */
   body.campaign-display .card.campaign-1col .center-column .caption {
     text-align: center;
