@@ -10193,7 +10193,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   /* line 1566, ../sass/page/_campaigns.scss */
   .tweet .tweet-left {
     float: left;
-    width: 26.5%;
+    width: 29.5%;
     margin-right: 0px;
   }
 }
@@ -10239,7 +10239,7 @@ body.node-type-campaign-card-twitter p.campaign-content-meta {
   .tweet .tweet-right {
     float: right;
     margin-left: 3%;
-    width: 70.5%;
+    width: 65.5%;
   }
 }
 @media all and (min-width: 980px) {
