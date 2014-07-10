@@ -8137,10 +8137,6 @@ body.campaign-display .card .left-column, body.campaign-display .card .right-col
   body.campaign-display .card.campaign-1col .center-column img {
     margin: 0 auto;
   }
-  /* line 195, ../sass/page/_campaigns.scss */
-  body.campaign-display .card.campaign-1col .center-column .description {
-    text-align: center;
-  }
   /* line 198, ../sass/page/_campaigns.scss */
   body.campaign-display .card.campaign-1col .center-column .caption {
     text-align: center;
