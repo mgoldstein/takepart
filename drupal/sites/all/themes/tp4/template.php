@@ -1381,7 +1381,7 @@ function tp4_campaign_background_rules(&$variables){
 		}else{
 			$background_position = 'top';
 		}
-		$slider_styles[] = 'background-position: '. $background_position. ';';
+		$variables['styles'][] = 'background-position: '. $background_position. ';';
 	}
 
 	$background = field_get_items('node', $variables['node'], 'field_campaign_background');
