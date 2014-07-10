@@ -72,7 +72,11 @@
                 $iframe.bind('load', function() {
                     var $modal = $('#' + interstitial_modal_id + 'modal');
                     $modal.show();
-                    var w = $iframe.contents().find('#page').width();
+                    if(window.innerWidth <= 400) {
+                        var w = window.innerWidth;
+                    }else{
+                        var w = $iframe.contents().find('#page').width();
+                    }
                     var h = $iframe.contents().find('html').height();
                     $modal.hide();
                     $iframe.css({width: w, height: h});
