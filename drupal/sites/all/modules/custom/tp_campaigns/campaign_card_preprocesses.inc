@@ -149,7 +149,7 @@ function tp_campaigns_card_background(&$variables){
 		}else{
 			$background_position = 'top';
 		}
-		$slider_styles[] = 'background-position: '. $background_position. ';';
+		$variables['styles'][] = 'background-position: '. $background_position. ';';
 	}
 
 	$background = field_get_items('node', $variables['node'], 'field_campaign_background');
