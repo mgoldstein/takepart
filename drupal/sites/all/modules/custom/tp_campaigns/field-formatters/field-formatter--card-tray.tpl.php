@@ -23,9 +23,9 @@
       $slider_styles[] = 'background-image: url(\''. $background_image. '\');';
       $slider_class[] = 'has-tray-background';
     }
-    else{
-      $slider_class[] = '';
-    }
+	  if($background_crop = field_get_items('node', $node, 'field_campaign_bg_crop')){
+		  $slider_class[] = 'background-crop';
+	  }
 
 	  //Set the position of the background
 	  if($background_position = field_get_items('node', $node, 'field_campaign_bg_image_position')){
