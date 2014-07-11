@@ -1364,6 +1364,9 @@ function tp4_campaign_background_rules(&$variables){
 	else{
 		$variables['classes_array'][] = 'card-width-980';
 	}
+	if($background_crop = field_get_items('node', $variables['node'], 'field_campaign_bg_crop')){
+		$variables['classes_array'][] = 'background-crop';
+	}
 
 	//Set the size of the background image
 	$bg_image_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw_image');
