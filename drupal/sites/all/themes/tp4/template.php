@@ -47,8 +47,8 @@ define('CARDTYPES', serialize($card_types));
 function tp4_preprocess_html(&$variables, $hook) {
 
   // Pass the digital data to the HTML template.
-  $vars['tp_digital_data'] =  isset($vars['page']['tp_digital_data'])
-    ? $vars['page']['tp_digital_data'] : NULL;
+  $variables['tp_digital_data'] =  isset($variables['page']['tp_digital_data'])
+    ? $variables['page']['tp_digital_data'] : NULL;
 
   // If on an individual node page, add the node type to body classes.
   if ($node = menu_get_object()) {
