@@ -749,6 +749,9 @@ body.campaign-display{
       background-size: 100%;
     }
   }
+  .card.background-crop, .slider.background-crop{
+    background-size: auto !important;
+  }
   .slider.tray-img-width-1000{
     background-size: 768px;
     @include breakpoint($breakpoint-tablet){
