@@ -45,6 +45,11 @@
 
     <head profile="<?php print $grddl_profile; ?>">
         <title><?php print $head_title; ?></title>
+  <?php if (!empty($tp_digital_data)): ?>
+  <script type="text/javascript">
+    window.digitalData = <?php print $tp_digital_data ?>;
+  </script>
+  <?php endif; ?>
         <?php print $head; ?>
         <? if ( $is_iframed ): ?>
             <base href="<?php print '//' . $_SERVER['HTTP_HOST']; ?>" target="_parent" />
@@ -75,17 +80,17 @@
         if (isset($page_top)):
             echo $page_top;
         endif;
-        ?>        
+        ?>
         <?php
         if (isset($page)):
             echo $page;
         endif;
-        ?>      
+        ?>
         <?php
         if (isset($custom)):
             echo $custom;
         endif;
-        ?>        
+        ?>
         <?php
         if (isset($page_bottom)):
             echo $page_bottom;
