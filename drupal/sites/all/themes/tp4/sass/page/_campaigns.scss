@@ -1569,7 +1569,7 @@ p.campaign-content-meta{
   .tweet-left{  
     @include breakpoint($breakpoint-mobile){
     float: left;
-    width: 29.5%;
+    width: 30.5%;
     margin-right: 10px;
     }
     @include breakpoint($breakpoint-tablet){
@@ -1607,7 +1607,7 @@ p.campaign-content-meta{
   .tweet-right{
     @include breakpoint($breakpoint-mobile){
     float: left;
-    width: 65.5%;
+    width: 64.4%;
     }
     @include breakpoint($breakpoint-tablet){
     float: right;
