@@ -10,10 +10,15 @@ use TakePart\DigitalData\StrategyFactory;
  * Available data building strategies.
  *
  * Strategies should be listed decreasing order of precedence. The factory will
- * use the first strategy to claim the page.
+ * use the first strategy to claim the page, or the default strategy if the
+ * page is not claimed.
  */
 function tp_digital_data_strategies() {
-  return array();
+  return array(
+    'TakePart\DigitalData\Strategies\Campaign',
+    'TakePart\DigitalData\Strategies\Content',
+    'TakePart\DigitalData\Strategies\SiteFrontPage',
+  );
 }
 
 /**
