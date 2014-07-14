@@ -5,13 +5,13 @@ class Tp3Site {
 }
 
 function wordlet_teach_share_your_story_page_alter($page) {
-    drupal_add_library('system', 'ui.autocomplete');   
+    drupal_add_library('system', 'ui.autocomplete');
 }
 function wordlet_teach_teacher_stories_page_alter($page) {
-    drupal_add_library('system', 'ui.autocomplete');   
+    drupal_add_library('system', 'ui.autocomplete');
 }
 function wordlet_teach_browse_stories_page_alter($page) {
-    drupal_add_library('system', 'ui.autocomplete');   
+    drupal_add_library('system', 'ui.autocomplete');
 }
 
 function wordlet_patt_nav_page_alter($page) {
@@ -138,6 +138,11 @@ function takepart3_dolinks($links_field) {
 }
 
 function takepart3_preprocess_html(&$vars) {
+
+  // Pass the digital data to the HTML template.
+  $vars['tp_digital_data'] =  isset($vars['page']['tp_digital_data'])
+    ? $vars['page']['tp_digital_data'] : NULL;
+
     $uri = drupal_get_path_alias($_GET['q']);
     $vars['is_multipage'] = FALSE;
     $vars['is_iframed'] = FALSE;

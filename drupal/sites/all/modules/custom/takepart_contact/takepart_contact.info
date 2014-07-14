@@ -1,8 +1,0 @@
-name = TakePart Contact Form Enhancements
-description = Tracks referring URL of user
-package = TakePart
-version = 7.x-1.00
-core = 7.x
-dependencies[] = webform
-
-files[] = takepart_contact.module

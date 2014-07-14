@@ -1,0 +1,51 @@
+<?php
+/**
+ * @file
+ * Digital Data Module
+ */
+
+use TakePart\DigitalData\StrategyFactory;
+
+/**
+ * Available data building strategies.
+ *
+ * Strategies should be listed decreasing order of precedence. The factory will
+ * use the first strategy to claim the page, or the default strategy if the
+ * page is not claimed.
+ */
+function tp_digital_data_strategies() {
+  return array(
+    'TakePart\DigitalData\Strategies\Campaign',
+    'TakePart\DigitalData\Strategies\Content',
+    'TakePart\DigitalData\Strategies\SiteFrontPage',
+  );
+}
+
+/**
+ * Digital Data strategy factory singleton.
+ */
+function tp_digital_data_strategy_factory() {
+  static $factory = NULL;
+  if (is_null($factory)) {
+    $strategies = tp_digital_data_strategies();
+    $factory = new StrategyFactory($strategies);
+  }
+  return $factory;
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function tp_digital_data_page_build(&$page) {
+
+  $path = current_path();
+
+  // Skip if the page is part of the admin.
+  if (path_is_admin($path)) { return; }
+
+  $factory = tp_digital_data_strategy_factory();
+  if ($strategy = $factory->createForPage($path, $page)) {
+    $data = $strategy->build($page);
+    $page['tp_digital_data'] = json_encode($data);
+  }
+}
