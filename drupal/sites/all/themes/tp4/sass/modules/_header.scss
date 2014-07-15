@@ -594,17 +594,19 @@ header {
 //    width: 30px;
 //    height: 30px;
   display: block;
-  margin-right: 24px;
+  margin-right: 34px;
+  float: right;
   @include breakpoint($breakpoint-tablet){
-    float: right;
+    margin-right: 5px;
   }
   @include breakpoint($breakpoint-desktop){
-    margin-right: 5px;
+
   }
 }
 // different formatting for slim-nav
 .slim-nav .user-menu{
-  @include breakpoint($breakpoint-tablet){
+  margin-right: 24px;
+  @include breakpoint($breakpoint-desktop){
     margin-right: 5px;
   }
 }
