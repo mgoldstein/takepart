@@ -590,15 +590,21 @@ header {
 
 
 .user-menu{
-//  background: green;
+//    background: green;
+//    width: 30px;
+//    height: 30px;
   display: block;
   margin-right: 24px;
-//  width: 30px;
-//  height: 30px;
   @include breakpoint($breakpoint-tablet){
     float: right;
   }
   @include breakpoint($breakpoint-desktop){
+    margin-right: 5px;
+  }
+}
+// different formatting for slim-nav
+.slim-nav .user-menu{
+  @include breakpoint($breakpoint-tablet){
     margin-right: 5px;
   }
 }
