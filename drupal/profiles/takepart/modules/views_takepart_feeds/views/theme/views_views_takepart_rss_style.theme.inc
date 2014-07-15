@@ -63,8 +63,6 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
     $xml .= "\t<channel>\n";
     $table_queue = ($vars['view']->query->table_queue);
     // Titles will change depending on the type of content selected:
-    // print "----------------";
-    // print_r($table_queue);
     foreach ($table_queue as $titles) {
         if ($titles['alias'] == 'node') {
             // @todo: what should the title / desc be if the view is being joined to a node?
@@ -101,26 +99,26 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         $content = '';
         $related_content = '';
         foreach ($row as $id => $object) {
-            /* if ($id == 'created') {
-                $xml .= "\t\t\t<pubDate><![CDATA[" . $object->content . "]]></pubDate>\n";
-            } */
-            if ($id == 'published_at') {
+            if ($id === 'published_at') {
                 $xml .= "\t\t\t<pubDate><![CDATA[" . $object->content . "]]></pubDate>\n";
             } 
-            elseif ($id == 'title') {
-              $xml .= "\t\t\t<title><![CDATA[" . $object->raw . "]]></title>\n";
+            elseif ($id === 'title') {              
+                $headline = (array_key_exists('field_flashcard_page_headline', $row) ? 
+                        $row['field_flashcard_page_headline']->content : 
+                    $object->raw);
+              $xml .= "\t\t\t<title><![CDATA[" . $headline . "]]></title>\n";
               $poslink = _takepart_rss_parseHref($object->content);
               if ($poslink) {
                 $xml .= "\t\t\t<link><![CDATA[" . $poslink . "]]></link>\n";
               }
             } 
-            elseif ($id == 'field_author') {
+            elseif ($id === 'field_author') {
               $xml .= "\t\t\t<author><![CDATA[" . $object->content . "]]></author>\n";
             } 
-            elseif ($id == 'field_display_tag' && $object->content != '') {
+            elseif ($id === 'field_display_tag' && $object->content != '') {
               $xml .= "\t\t\t<category><![CDATA[" . $object->content . "]]></category>\n";
             } 
-            elseif ($id == 'field_article_subhead' && $object->content != '' || 
+            elseif ($id === 'field_article_subhead' && $object->content != '' || 
                 $id == 'field_subhead' && $object->content != '') {
               $xml .= "\t\t\t<description><![CDATA[" . $object->content . "]]></description>\n";
             }
@@ -147,7 +145,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
         $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
         $urlprefix = $protocol."://".$_SERVER['SERVER_NAME'].$port;
-        $content=preg_replace('#(href|src)="([^:"]*)(?:")#', '$1="'.$urlprefix.'$2"', $content);
+        $content = preg_replace('#(href|src)="([^:"]*)(?:")#', '$1="'.$urlprefix.'$2"', $content);
         $xml .= "\t\t\t<content:encoded><![CDATA[" . str_replace('<hr>', '', $content) . "]]></content:encoded>\n";
         $xml .= "\t\t</item>\n";
     }
