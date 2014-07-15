@@ -1369,7 +1369,6 @@ function tp4_campaign_background_rules(&$variables){
 		$variables['classes_array'][] = 'card-width-980';
 	}
 	if($background_crop = field_get_items('node', $variables['node'], 'field_campaign_bg_crop')){
-		dpm($background_crop, 'background crop');
 		if($background_crop[0]['value'] == 1){
 			$variables['classes_array'][] = 'background-crop';
 		}
