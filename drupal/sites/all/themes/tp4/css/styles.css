@@ -11577,23 +11577,22 @@ header .search .form-submit {
 /* line 592, ../sass/modules/_header.scss */
 .user-menu {
   display: block;
-  margin-right: 24px;
+  margin-right: 34px;
+  float: right;
 }
 @media all and (min-width: 768px) {
-  /* line 592, ../sass/modules/_header.scss */
-  .user-menu {
-    float: right;
-  }
-}
-@media all and (min-width: 980px) {
   /* line 592, ../sass/modules/_header.scss */
   .user-menu {
     margin-right: 5px;
   }
 }
 
-@media all and (min-width: 768px) {
-  /* line 606, ../sass/modules/_header.scss */
+/* line 607, ../sass/modules/_header.scss */
+.slim-nav .user-menu {
+  margin-right: 24px;
+}
+@media all and (min-width: 980px) {
+  /* line 607, ../sass/modules/_header.scss */
   .slim-nav .user-menu {
     margin-right: 5px;
   }
