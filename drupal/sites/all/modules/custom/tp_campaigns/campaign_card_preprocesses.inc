@@ -134,7 +134,7 @@ function tp_campaigns_card_background(&$variables){
 	}
 	if($background_crop = field_get_items('node', $variables['node'], 'field_campaign_bg_crop')){
 		if($background_crop[0]['value'] == 1){
-			$slider_class[] = 'background-crop';
+			$variables['classes_array'][] = 'background-crop';
 		}
 	}
 

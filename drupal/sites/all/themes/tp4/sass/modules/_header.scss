@@ -232,6 +232,14 @@ header {
 }
 
 @include breakpoint($breakpoint-mobile){
+  .user-menu-mobile{
+    position: absolute;
+    bottom: 0;
+    right: 34px;
+    height: 34px;
+    width: 40px;
+  }
+;
   .search-toggle{
     position: absolute;
     bottom: 0;
@@ -260,6 +268,9 @@ header {
   }
 }
 @include breakpoint($breakpoint-tablet){
+  .user-menu-mobile{
+    display: none;
+  }
   .search-toggle{
     display: none;
   }
