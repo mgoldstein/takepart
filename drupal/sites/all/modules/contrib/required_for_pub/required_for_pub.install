@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implementation of hook_install().
+ */
+function required_for_pub_install() {
+  // Set to a higher weight to allow values to be set by other modules before validation
+  db_query("UPDATE {system} SET weight = 1 WHERE name = 'required_for_pub'");
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function required_for_pub_update_6100() {
+  // Set to a higher weight to allow values to be set by other modules before validation
+  db_query("UPDATE {system} SET weight = 1 WHERE name = 'required_for_pub'");
+}
