@@ -11,7 +11,6 @@
 <div class="user-menu">
   <div class="tpsLogin"></div>
 </div>
-<div class="user-menu-mobile"><div class="tpsLogin"></div></div>
 <div class="search">
   <div class="search-toggle"></div>
   <?php print drupal_render(module_invoke('search_api_page', 'block_view', '2')); ?>
