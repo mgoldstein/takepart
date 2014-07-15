@@ -22,6 +22,12 @@
         $(this).addClass('active');
       });
 
+    $('.search-toggle').parent().hover(function(){
+        $(this).addClass('active');
+    }, function(){
+        $(this).removeClass('active');
+    });
+
       function makeTall(){$(this).find('.mega-content').fadeIn(100);}
       function makeShort(){$(this).find('.mega-content').fadeOut(100);}
 
