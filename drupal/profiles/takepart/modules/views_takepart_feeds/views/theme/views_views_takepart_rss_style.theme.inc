@@ -133,8 +133,8 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } elseif ($id == 'inline_content_embedded' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
-            } else {
-                $content .= ($object->content);
+            } elseif ($id = 'body') {
+                $content = $object->content;
             }
         }
 
@@ -142,9 +142,9 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
             $content .= "\n\n<nav><h2><strong>Related stories on TakePart:</strong></h2><br/>\n\n" . $related_content . '</nav>';
         }
 
-        $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/").$s;
+        $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/") . $s;
         $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":".$_SERVER["SERVER_PORT"]);
-        $urlprefix = $protocol."://".$_SERVER['SERVER_NAME'].$port;
+        $urlprefix = $protocol . "://" . $_SERVER['SERVER_NAME'] . $port;
         $content = preg_replace('#(href|src)="([^:"]*)(?:")#', '$1="'.$urlprefix.'$2"', $content);
         $xml .= "\t\t\t<content:encoded><![CDATA[" . str_replace('<hr>', '', $content) . "]]></content:encoded>\n";
         $xml .= "\t\t</item>\n";
