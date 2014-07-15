@@ -54,15 +54,15 @@
       foreach($menu_elements as $key => $item){
         $improved[]   = $menu_tree[$item];
       }
-
-      print '<div class=menu-wrapper>';
+// dd($improved);
+      print '<div class="menu-wrapper">';
       print '<div class="menu sf-navbar" style="'. implode(' ', $menu_styles). '">';
       print '<ul class="sf-menu" style="background-color: transparent;">';
       foreach($improved as $key => $link){
         $anchor = $link['#localized_options']['attributes']['rel'];
+        $target = $link['#localized_options']['attributes']['target'];
 
         $parent_menu_title        = $link['#title'];
-
         $parent_menu_classes      = array('parent-item');
         $parent_link_classes      = array();
         if (!is_null($anchor)) {
@@ -77,12 +77,16 @@
           ),
         ));
 
-        $parent_menu_link = l($parent_menu_title, $link['#href'], array(
-          'fragment' => $anchor,
-          'attributes' => array(
+        $plattr = array(
             'data-path' => $parent_menu_title,
             'class' => $parent_link_classes,
-          ),
+          );
+        if (!empty($target)) {
+            $plattr['target'] = $target;
+        }
+        $parent_menu_link = l($parent_menu_title, $link['#href'], array(
+          'fragment' => $anchor,
+          'attributes' => $plattr,
         ));
 
         print '<li' . $parent_menu_attrs . '>' . $parent_menu_link;
@@ -107,13 +111,18 @@
             if (!is_null($child_menu_anchor)) {
               $child_link_classes[] = 'anchored';
             }
+            $clattr = array(
+            'data-path' => $parent_menu_title,
+            'class' => $parent_link_classes,
+            );
+            if (!empty($target)) {
+              $clattr['target'] = $target;
+            }
+            
             $child_menu_link = l($child_menu_title,
               $link['#below'][$link_child]['#href'], array(
                 'fragment' => $child_menu_anchor,
-                'attributes' => array(
-                  'class' => $child_link_classes,
-                  'data-path' => $parent_menu_title . ': ' . $child_menu_title,
-                ),
+                'attributes' => $clattr,
               ));
 
             print '<li' . $child_menu_attrs . '>' . $child_menu_link . '</li>';
