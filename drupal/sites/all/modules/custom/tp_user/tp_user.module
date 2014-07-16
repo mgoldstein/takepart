@@ -8,34 +8,4 @@
  * Implements hook_user_insert().
  */
 function tp_user_user_insert(&$edit, $account, $category) {
-
-  // TODO: The Facebook registration needs to be fixed to actually set
-  // this information on the user entity.
-  $postal_code = '';
-  $newsletter_opt_in = FALSE;
-  $email = $account->mail;
-
-  //Get the zip code from FB reg:
-  if (($_REQUEST) && isset($_REQUEST['signed_request'])) {
-    if (function_exists('_takepart_facebookapis_parse_signed_request' )) {
-       $app_id = variable_get('fboauth_id', '');
-       $app_secret = variable_get('fboauth_secret', '');
-       $response = _takepart_facebookapis_parse_signed_request($_REQUEST['signed_request'],$app_secret);
-       $postal_code = $response['registration']['field_userzipcode'];
-       $email = $response['registration']['email'];
-       $newsletter_opt_in = (bool) $response['registration']['bsd_5_field_usernewslettersubscibe'];
-    }
-  }
-
-  $endpoint_name = $newsletter_opt_in ? 'user_registration_opt_in_yes'
-    : 'user_registration_opt_in_no';
-
-  pm_signup_handle(array(
-    'type' => 'user',
-    'endpoint' => $endpoint_name,
-    'payload' => array(
-      'email' => $email,
-      'address.postal-code' => $postal_code,
-    ),
-  ));
 }
