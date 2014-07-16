@@ -204,6 +204,7 @@ header {
   }
   .search.active {
     border-bottom: none;
+    top: -2px;
     form{
       display: block;
     }
