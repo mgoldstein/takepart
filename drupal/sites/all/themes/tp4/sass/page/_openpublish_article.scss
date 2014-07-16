@@ -15,6 +15,7 @@
       float: left;
       width: 40px;
       &.sticky {
+        z-index: 1;
         position: fixed;
         top: 7px; // this corresponds to the offset value in tp4sticky.js's options
       }
