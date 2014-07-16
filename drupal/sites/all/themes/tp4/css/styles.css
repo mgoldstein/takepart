@@ -11599,8 +11599,8 @@ header .search .form-submit {
 }
 
 /* line 455, ../sass/modules/_header.scss */
-.tp_login .user_image {
-  padding: 10px;
+.tp_login a.user_image {
+  padding: 13px 8px;
 }
 
 /**
