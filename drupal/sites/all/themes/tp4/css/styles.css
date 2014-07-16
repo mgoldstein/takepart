@@ -11598,6 +11598,11 @@ header .search .form-submit {
   }
 }
 
+/* line 455, ../sass/modules/_header.scss */
+.tp_login .user_image {
+  padding: 10px;
+}
+
 /**
  * Styles for TP4 Sidebar Blocks
  */
