@@ -46,6 +46,9 @@ function tp_digital_data_page_build(&$page) {
   $factory = tp_digital_data_strategy_factory();
   if ($strategy = $factory->createForPage($path, $page)) {
     $data = $strategy->build($page);
-    $page['tp_digital_data'] = json_encode($data);
+    $json = json_encode($data);
+    $json = str_replace('"%document.location.href"', 'document.location.href', $json);
+    $json = str_replace('"%document.referrer"', 'document.referrer', $json);
+    $page['tp_digital_data'] = $json;
   }
 }

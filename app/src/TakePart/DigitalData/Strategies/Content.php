@@ -31,7 +31,6 @@ class Content extends DefaultPage {
         'pageInfo' => array(
           'pageID' => $pageID,
           'pageName' => $node->title,
-          'destinationURL' => url($pageID, array('absolute' => TRUE)),
         ),
         'category' => array(
           'primaryCategory' => $this->categoryForContentType($node->type),

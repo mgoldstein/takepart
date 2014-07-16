@@ -25,7 +25,6 @@ class SiteFrontPage extends DefaultPage {
         'pageInfo' => array(
           'pageID' => $pageID,
           'pageName' => '',
-          'destinationURL' => url('<front>', array('absolute' => TRUE)),
         ),
       ),
     );
