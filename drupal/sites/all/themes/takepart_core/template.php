@@ -35,34 +35,22 @@ function takepart_core_preprocess_page(&$variables) {
  * Helper to output the custom HTML for out main menu.
  */
 function _render_tp3_user_menu($variables) {
-    // dpm($vars);
-    $menu_data = menu_tree_page_data('user-menu');
+  $menu_data = menu_tree_page_data('user-menu');
 
-    foreach ( $menu_data as &$menu_item ) {
-        if ( $menu_item['link']['href'] == 'user' ) {
-            if ( user_is_logged_in() ) {
-                global $user;
-                if ( function_exists('_takepart_facebookapis_get_user_session') ) {
-                    $fbsession = _takepart_facebookapis_get_user_session();
-                    $username = $fbsession->name;
-                    if ( $username == '' ) {
-                        $username = $user->name;
-                    }
-                } else {
-                    $username = $user->name;
-                }
-
-                $menu_item['link']['title'] = $username;
-                $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
-            } else {
-                $menu_item['link']['localized_options']['query'] = drupal_get_destination();
-                $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
-                $menu_item['link']['hidden'] = 0;
-            }
-        }
+  foreach ( $menu_data as &$menu_item ) {
+    if ( $menu_item['link']['href'] == 'user' ) {
+      if ( user_is_logged_in() ) {
+        global $user;
+        $menu_item['link']['title'] = $user->name;
+        $menu_item['link']['href'] = variable_get('takeaction_dashboard_url', '');
+      } else {
+        $menu_item['link']['localized_options']['query'] = drupal_get_destination();
+        $menu_item['link']['title'] = variable_get("takepart_user_login_link_name", "Login");
+        $menu_item['link']['hidden'] = 0;
+      }
     }
-
-    return _smenu(menu_tree_output($menu_data));
+  }
+  return _smenu(menu_tree_output($menu_data));
 }
 
 function takepart_core_preprocess_html(&$variables) {
