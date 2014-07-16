@@ -2,7 +2,6 @@
 namespace TakePart\DigitalData\Strategies;
 
 use TakePart\DigitalData\BuildStrategy;
-use TakePart\DigitalData\DigitalData;
 
 class DefaultPage implements BuildStrategy {
 

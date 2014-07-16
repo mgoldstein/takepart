@@ -16,7 +16,8 @@ window.digitalData = {
                                 // internal Drupal path.
 
       pageName: "",             // The title of the page, this value should remain the same for the life of the page.
-                                // Values that are adjusted for marketing or SEO reasons should NOT be used.
+                                // Values that are adjusted for marketing or SEO reasons should NOT be used. One
+                                // possible value is the title of the first revision of the page.
 
       destinationURL: "",       // The absolute URL of the page. This can be be set client side using document.location.
 
@@ -36,11 +37,13 @@ window.digitalData = {
 
       primaryTopic: "",         // The primary topic of the page.
 
-      secondaryTopics: [""],    // The secondary topics of the page in order of relevance.
+      topics: [""],             // All topics of the page in order of relevance.
 
       series: "",               // The content series of the page.
 
-      campaign: ""              // The film or digital campaign to which the page belongs.
+      campaign: "",             // The film or digital campaign to which the page belongs.
+
+      freeTags: [""]            // The free tags of the page.
 
     }
 
