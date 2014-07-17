@@ -219,7 +219,6 @@ function takepart_omniture_stringfixes($str) {
 }
 
 function takepart_omniture_removespaces($param) {
-    dd($param);
   if (empty($param)) {
       return '';
   }
