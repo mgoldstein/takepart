@@ -65,6 +65,7 @@ function tpf_taxonomy_field_default_field_instances() {
         'views' => 0,
       ),
       'default_context' => 'free_tags_default_context',
+      'required_for_pub' => FALSE,
       'use_default' => 1,
       'user_register_form' => FALSE,
     ),
@@ -109,6 +110,7 @@ function tpf_taxonomy_field_default_field_instances() {
     'label' => 'Badge',
     'required' => 0,
     'settings' => array(
+      'required_for_pub' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -152,6 +154,7 @@ function tpf_taxonomy_field_default_field_instances() {
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
+      'required_for_pub' => FALSE,
       'title_field' => 0,
       'user_register_form' => FALSE,
     ),
@@ -199,6 +202,7 @@ function tpf_taxonomy_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'rel_remove' => 'default',
+      'required_for_pub' => FALSE,
       'title' => 'none',
       'title_maxlength' => 128,
       'title_value' => '',
@@ -241,6 +245,7 @@ function tpf_taxonomy_field_default_field_instances() {
     'label' => 'Feature Video',
     'required' => 0,
     'settings' => array(
+      'required_for_pub' => FALSE,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -282,6 +287,7 @@ function tpf_taxonomy_field_default_field_instances() {
     'label' => 'HTML title tag',
     'required' => 0,
     'settings' => array(
+      'required_for_pub' => FALSE,
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -357,6 +363,7 @@ function tpf_taxonomy_field_default_field_instances() {
         'views' => 0,
       ),
       'default_context' => 'blocks_video_series',
+      'required_for_pub' => FALSE,
       'use_default' => 1,
       'user_register_form' => FALSE,
     ),

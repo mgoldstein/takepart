@@ -1,9 +1,6 @@
 <?php
 namespace TakePart\DigitalData\Strategies;
 
-use TakePart\DigitalData\BuildStrategy;
-use TakePart\DigitalData\DigitalData;
-
 class SiteFrontPage extends DefaultPage {
 
   public static function claim($path, $page) {

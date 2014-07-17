@@ -4,8 +4,6 @@ package = Authentication
 version = VERSION
 core = 7.x
 
-dependencies[] = takepart_facebookapis
 dependencies[] = fboauth
 dependencies[] = newsletter_campaign
 files[] = fbregistration.module
-files[] = tests/fbregistration.test
