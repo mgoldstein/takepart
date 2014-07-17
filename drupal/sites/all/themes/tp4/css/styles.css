@@ -11581,11 +11581,22 @@ header .search .form-submit {
   display: block;
   margin-right: 34px;
   float: right;
-  padding-top: 3px;
+}
+@media all and (min-width: 768px) {
+  /* line 435, ../sass/modules/_header.scss */
+  .user-menu {
+    margin-right: 5px;
+  }
+}
+
+/* line 447, ../sass/modules/_header.scss */
+.slim-nav .user-menu {
+  margin-right: 24px;
+  padding-top: 4px;
   position: relative;
 }
-/* line 441, ../sass/modules/_header.scss */
-.user-menu:after {
+/* line 451, ../sass/modules/_header.scss */
+.slim-nav .user-menu:after {
   content: '';
   display: block;
   position: absolute;
@@ -11593,21 +11604,11 @@ header .search .form-submit {
   height: 12px;
   width: 0;
   border-right: 1px solid #949494;
-  top: 10px;
-}
-@media all and (min-width: 768px) {
-  /* line 441, ../sass/modules/_header.scss */
-  .user-menu:after {
-    margin-right: 5px;
-  }
-}
-/* line 458, ../sass/modules/_header.scss */
-.user-menu .slim-nav .user-menu {
-  margin-right: 24px;
+  top: 11px;
 }
 @media all and (min-width: 980px) {
-  /* line 435, ../sass/modules/_header.scss */
-  .user-menu {
+  /* line 447, ../sass/modules/_header.scss */
+  .slim-nav .user-menu {
     margin-right: 10px;
   }
 }
