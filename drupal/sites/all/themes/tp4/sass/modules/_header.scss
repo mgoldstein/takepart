@@ -446,7 +446,8 @@ header {
 // different formatting for slim-nav
 .slim-nav .user-menu{
   margin-right: 24px;
-  padding-top: 4px;
+  padding-top: 3px;
+  padding-right: 2px;
   position: relative;
   &:after{
     content: '';
