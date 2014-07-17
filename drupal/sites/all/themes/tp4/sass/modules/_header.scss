@@ -436,6 +436,17 @@ header {
   display: block;
   margin-right: 34px;
   float: right;
+  padding-top: 3px;
+  position: relative;
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    height: 12px;
+    width: 0;
+    border-right: 1px solid #949494;
+    top: 10px;
   @include breakpoint($breakpoint-tablet){
     margin-right: 5px;
   }
@@ -446,8 +457,9 @@ header {
 // different formatting for slim-nav
 .slim-nav .user-menu{
   margin-right: 24px;
+  }
   @include breakpoint($breakpoint-desktop){
-    margin-right: 5px;
+    margin-right: 10px;
   }
 }
 .search-toggle{
