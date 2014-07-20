@@ -2,47 +2,73 @@
 # Apache/PHP/Drupal settings:
 #
 
-
 # Send a "X-Robots-Tag" header when site is NOT accessed via Akamai, to
 # prevent Google from indexing URLs other than those it finds at
 # www.takepart.com via Akamai (keeps origin out of Akamai):
-<ifModule mod_headers.c>
-SetEnvIfNoCase Via akamai RequestFromAkamai
-Header set X-Robots-Tag "noindex, nofollow" env=!RequestFromAkamai
-</ifModule>
+<IfModule mod_headers.c>
+  SetEnvIfNoCase Via akamai RequestFromAkamai
+  Header set X-Robots-Tag "noindex, nofollow" env=!RequestFromAkamai
+</IfModule>
 
-
-
-# If you don't visit as www.takepart.com or takepart.com, return "go-away" robots.txt to Google, etc.
 <IfModule mod_rewrite.c>
-RewriteEngine on
-RewriteCond %{HTTP_HOST} =www.takepart.com [OR]
-RewriteCond %{HTTP_HOST} =takepart.com
-RewriteRule robots.txt robots.prod.txt [L]
-# ..else..
-RewriteRule robots.txt robots.dev.txt [L]
 
-# If we're running on one of the production webheads...
-# ..AND the request is not for origin.prod.takepart.com, origin.takepart.com,
-# www.takepart.com, nor for any of the internal IP's of the webheads
-# (that's how the ELB health check forms it's requests),
-# then redirect the client to "www.takepart.com":
-# web1:		10.169.5.88	web2:	10.169.18.45	web3:	10.159.65.54
-# web4:		10.170.34.57	web5:	10.169.7.73	web6:	10.170.14.16
-# web7:		10.158.92.165	web8:	10.157.31.198	web9:	10.169.0.201
-# web10:	10.169.14.46	web11:	10.171.15.199	web12:	10.169.5.122
-RewriteCond /takepart/takepart.prod -f
-RewriteCond %{HTTP_HOST} !^(10\.\d{1,3}\.\d{1,3}\.\d{1,3})$
-RewriteCond %{HTTP_HOST} !^web(1|2|3|4|5|6|7|8|9|10|11|12).prod.takepart.com$
-RewriteCond %{HTTP_HOST} !=www.takepart.com
-RewriteCond %{HTTP_HOST} !=origin.takepart.com
-RewriteCond %{HTTP_HOST} !=tp-submit.takepart.com
-RewriteCond %{HTTP_HOST} !=betacf.takepart.com
-RewriteCond %{HTTP_HOST} !=foodinc.takepart.com
-RewriteCond %{HTTP_HOST} !=stage.takepart.com
-RewriteCond %{HTTP_HOST} !=ssl.takepart.com
-RewriteCond %{HTTP_HOST} !=origin.prod.takepart.com
-RewriteRule (.*) http://www.takepart.com/$1 [R=301,L,NC]
+  RewriteEngine on
+
+  # If you don't visit as www.takepart.com or takepart.com, return "go-away"
+  # robots.txt to Google, etc.
+  RewriteCond %{HTTP_HOST} =www.takepart.com [OR]
+  RewriteCond %{HTTP_HOST} =takepart.com
+  RewriteRule robots.txt robots.prod.txt [L]
+  # ..else..
+  RewriteRule robots.txt robots.dev.txt [L]
+
+  # If we're running on one of the production webheads...
+  # ..AND the request is not for origin.prod.takepart.com, origin.takepart.com,
+  # www.takepart.com, nor for any of the internal IP's of the webheads
+  # (that's how the ELB health check forms it's requests),
+  # then redirect the client to "www.takepart.com":
+  RewriteCond /takepart/takepart.prod -f
+  RewriteCond %{HTTP_HOST} !^(10\.\d{1,3}\.\d{1,3}\.\d{1,3})$
+  RewriteCond %{HTTP_HOST} !^web(1|2|3|4|5|6|7|8|9|10|11|12).prod.takepart.com$
+  RewriteCond %{HTTP_HOST} !=www.takepart.com
+  RewriteCond %{HTTP_HOST} !=origin.takepart.com
+  RewriteCond %{HTTP_HOST} !=tp-submit.takepart.com
+  RewriteCond %{HTTP_HOST} !=betacf.takepart.com
+  RewriteCond %{HTTP_HOST} !=foodinc.takepart.com
+  RewriteCond %{HTTP_HOST} !=stage.takepart.com
+  RewriteCond %{HTTP_HOST} !=ssl.takepart.com
+  RewriteCond %{HTTP_HOST} !=origin.prod.takepart.com
+  RewriteRule (.*) http://www.takepart.com/$1 [R=301,L,NC]
+
+  # We don't have /issues anymore (2011-09-19):
+  RewriteRule ^/issues(.+)$ / [NC,R=301,L]
+
+  # Food.inc farmbill
+  RewriteRule ^/emails/foodinc/2011-11-14-farm-bill(.+) /emails/foodinc/2011-11-14-farm-bill [NC,R=301,L]
+
+  # Newletter redirect
+  # TakePart 3.4.4.1
+  # Redirects for old pluris to new.
+  RewriteCond %{QUERY_STRING} campaign=(\w+)$
+  RewriteRule ^/newsletter-unsubscribe http://action.takepart.com/page/unsubscribe/%1? [R=301,L]
+
+  # This list has gone away (2012-02-15):
+  RewriteRule ^/lists/hungry-for-change-get-involved/17056$ /foodinc [R=301,L]
+
+  # FBZ #23222 - Last Call at the Oasis
+  #RewriteRule ^/lastcallattheoasis /lastcall [R=301,L]
+
+  # FBZ #23207 - Marigold
+  RewriteRule ^/marigold(.*)$ /thebestexoticmarigoldhotel$1 [R=301,L]
+
+  # FBZ #24110 - Wrong quote used in URL
+  RewriteRule ^/article/2012/05/16/madonna’s-healthy-eating-secret(.*)$ /article/2012/05/16/madonna's-healthy-eating-secret$1 [R=301,L]
+
+  # For missspellings (2012-04-30)
+  RewriteRule ^/fooodinc.$ /foodinc [R=301,L]
+
+  # For uppercase... (2012-04-30)
+  RewriteRule ^/Marigold.$ /thebestexoticmarigoldhotel [R=301,L]
 
   # Redirect actions to TAB platform
   RewriteCond %{REQUEST_URI} ^/actions/
