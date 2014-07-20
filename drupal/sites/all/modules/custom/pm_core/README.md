@@ -19,7 +19,8 @@ Doctrine ORM are:
   - Data that can benefit from STI (Single Table Inheritence)
 
 [Doctrine Entities](http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/basic-mapping.html)
-should be written in PHP and placed in the the `/app/entities` directory. These
-entities **are not** Drupal Entities, they are regular PHP objects.
+should be written in PHP and placed in the the `app/entities` directory in the
+`pm_core` module directory. These entities **are not** Drupal Entities, they are
+regular PHP objects.
 
 Modules that use the Doctrine ORM should add this module as a dependency.

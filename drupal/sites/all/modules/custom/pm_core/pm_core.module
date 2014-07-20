@@ -9,11 +9,11 @@
  */
 function pm_core_boot() {
   // Load the Composer autoloader.
-  require_once DRUPAL_ROOT . '/../vendor/autoload.php';
+  require_once __DIR__ . '/vendor/autoload.php';
   // Initialize the Doctrine Entity Manager.
   \Participant\App::init(array(
-    'development_mode' => DEVELOPMENT_ENVIRONMENT,
-    'entity_path' => DRUPAL_ROOT . '/../app/src',
+    'development_mode' => ENVIRONMENT == 'development' || ENVIRONMENT == 'test',
+    'entity_path' => __DIR__ . '/app/src',
     'db_user' => DATABASE_USER,
     'db_pass' => DATABASE_PASS,
     'db_name' => DATABASE_NAME,
