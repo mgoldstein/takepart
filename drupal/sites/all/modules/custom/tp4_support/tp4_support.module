@@ -298,7 +298,7 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
     $variables['logo'] = l($image, '<front>', array('html' => TRUE,'absolute' => TRUE, 'https' => FALSE));
   }
   else {
-    $variables['logo'] = l($image, '<front>', array('html' => TRUE));  
+    $variables['logo'] = l($image, '<front>', array('html' => TRUE));
   }
   $variables['user_links'] = array(
     '#theme' => 'links',
@@ -670,4 +670,16 @@ function tp4_support_page_alter(&$page) {
   if (isset($node) && in_array($node->type, $campaign_types)) {
     unset($page['page_bottom']['omniture']);
   }
+}
+
+/**
+ * Implements hook_menu_attribute_info_alter().
+ */
+function tp4_support_menu_attribute_info_alter(&$info) {
+  $info['title']['label'] = t('Description');
+  $info['id']['description'] = t("Specifies a unique ID for the link (example: 'series')");
+  $info['name']['label'] = t('More Label');
+  $info['name']['description'] = t('Text for the more link on MegaMenus');
+  $info['rel']['label'] = t('Anchor Tag');
+  $info['rel']['description'] = t('Add an anchor tag to the link above here.');
 }

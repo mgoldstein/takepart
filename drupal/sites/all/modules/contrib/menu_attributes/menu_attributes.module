@@ -42,7 +42,7 @@ function menu_attributes_menu_link_alter(&$item, $menu) {
  */
 function menu_attributes_menu_attribute_info() {
   $info['title'] = array(
-    'label' => t('Description'),
+    'label' => t('Title'),
     'description' => t('The description displayed when hovering over the link.'),
     'form' => array(
       '#type' => 'textarea',
@@ -51,15 +51,14 @@ function menu_attributes_menu_attribute_info() {
   );
   $info['id'] = array(
     'label' => t('ID'),
-    'description' => t('Specifies a unique ID for the link (example: \'series\')'),
+    'description' => t('Specifies a unique ID for the link.'),
   );
   $info['name'] = array(
-    'label' => t('More Label'),
-    'description' => t('Text for the more link on MegaMenus'),
+    'label' => t('Name'),
   );
   $info['rel'] = array(
-    'label' => t('Anchor Tag'),
-    'description' => t("Add an achor tag to the link above here."),
+    'label' => t('Relationship'),
+    'description' => t("Specifies the relationship between the current page and the link. Enter 'nofollow' here to nofollow this link."),
   );
   $info['class'] = array(
     'label' => t('Classes'),
