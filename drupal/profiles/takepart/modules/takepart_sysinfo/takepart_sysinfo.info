@@ -1,6 +1,0 @@
-name = TakePart System Info Module
-description = A simple module for reporting system info in the content.
-package = Development
-core = 7.x
-files[] = takepart_sysinfo.module
-files[] = takepart_sysinfo.install
