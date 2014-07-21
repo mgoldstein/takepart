@@ -22,6 +22,7 @@ sftp-config.json
 
 # Debug modules
 /drupal/debug.php
+/drupal/sites/all/modules/contrib/blazemeter/
 /drupal/sites/all/modules/contrib/devel/
 /drupal/sites/all/modules/contrib/devel_themer/
 /drupal/sites/all/modules/contrib/diff/
