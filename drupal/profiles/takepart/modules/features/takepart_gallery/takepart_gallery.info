@@ -3,4 +3,3 @@ description = Custom changes to the OpenPublish gallery node for TakePart
 core = 7.x
 package = Legacy Feature Module
 version = 7.x-2.0
-project = takepart_gallery

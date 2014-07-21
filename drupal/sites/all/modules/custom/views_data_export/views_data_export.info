@@ -24,6 +24,5 @@ files[] = "tests/xml_export.test"
 ; Information added by Drupal.org packaging script on 2013-12-12
 version = "7.x-3.0-beta7"
 core = "7.x"
-project = "views_data_export"
 datestamp = "1386882544"
 
