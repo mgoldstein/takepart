@@ -1,5 +1,0 @@
-name = OpenPublish Boxes
-description = "Provides additional Promo box types."
-core = 7.x
-dependencies[] = "boxes"
-dependencies[] = "views_boxes"
