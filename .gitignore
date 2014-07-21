@@ -27,6 +27,7 @@ sftp-config.json
 /drupal/sites/all/modules/contrib/devel/
 /drupal/sites/all/modules/contrib/devel_themer/
 /drupal/sites/all/modules/contrib/diff/
+/drupal/sites/all/modules/contrib/features_plumber/
 /drupal/sites/all/libraries/FirePHPCore/
 
 # Composer and vendor library directory
