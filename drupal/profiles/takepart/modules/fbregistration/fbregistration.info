@@ -1,9 +1,0 @@
-name = Fbregistration
-description = Allows users to register with Facebook registration plugin.
-package = Authentication
-version = VERSION
-core = 7.x
-
-dependencies[] = fboauth
-dependencies[] = newsletter_campaign
-files[] = fbregistration.module
