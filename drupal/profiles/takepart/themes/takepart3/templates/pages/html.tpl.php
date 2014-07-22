@@ -50,6 +50,7 @@
     window.digitalData = <?php print $tp_digital_data ?>;
   </script>
   <?php endif; ?>
+  <script src="//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-67f52c9fb4acac0165b6ab3557a90e9fc355338e-staging.js"></script>
         <?php print $head; ?>
         <? if ( $is_iframed ): ?>
             <base href="<?php print '//' . $_SERVER['HTTP_HOST']; ?>" target="_parent" />

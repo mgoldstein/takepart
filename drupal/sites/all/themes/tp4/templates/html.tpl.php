@@ -22,11 +22,7 @@
     window.digitalData = <?php print $tp_digital_data ?>;
   </script>
   <?php endif; ?>
-  <?php if ($use_production_dtm === TRUE): ?>
-  <script src="//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-67f52c9fb4acac0165b6ab3557a90e9fc355338e.js"></script>
-  <?php elseif ($use_development_dtm === TRUE): ?>
   <script src="//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-67f52c9fb4acac0165b6ab3557a90e9fc355338e-staging.js"></script>
-  <?php endif; ?>
   <?php print $head; ?>
   <?php if ($default_mobile_metatags): ?>
   <meta name="MobileOptimized" content="width">
