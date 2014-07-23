@@ -76,12 +76,7 @@ function tp4_preprocess_html(&$variables, $hook) {
 		if(!empty($campaign_types)){
 	    $campaign_types[] = 'campaign_page';
 	    if (isset($node) && in_array($node->type, $campaign_types)) {
-	      $variables['use_production_dtm'] = variable_get('use_production_dtm', FALSE);
-	      $variables['use_development_dtm'] = variable_get('use_production_dtm', FALSE) ? FALSE : TRUE;
-	    }
-	    else {
-	      $variables['use_production_dtm'] = FALSE;
-	      $variables['use_development_dtm'] = FALSE;
+        $variables['dtm_script_src'] = variable_get('dtm_script_src');
 	    }
 		}
 
@@ -166,6 +161,19 @@ function tp4_campaign_megamenu($nid){
 
   return $output;
 }
+
+function tp4_should_show_taboola_widget($variables) {
+  // add Taboola JS if we're on an article, feature, photo gallery, or video page
+  if (!empty($variables['node'])) {
+    $node = $variables['node'];
+    if (in_array($node->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
+      // but only if we're on the production site
+      return ENVIRONMENT === 'production';
+    }
+  }
+  return FALSE;
+}
+
 /**
  * Override or insert variables into the page templates.
  *
@@ -205,12 +213,11 @@ function tp4_preprocess_page(&$variables) {
       $variables['title'] = '';
   }
 
-  // add Taboola JS if we're on an article, feature or photo gallery page
-  // but only if we're on the production site: variable_get('environment', 'dev') == 'prod' &&
-  if (variable_get('environment', 'dev') === 'prod' && !empty($variables['node']) && in_array($variables['node']->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
+  if (tp4_should_show_taboola_widget($variables)) {
     drupal_add_js(drupal_get_path('theme', 'tp4') . '/js/taboola.js', 'file');
     drupal_add_js('window._taboola = window._taboola || []; _taboola.push({flush:true});', array('type' => 'inline', 'scope' => 'footer'));
   }
+
   $card_types = unserialize(CARDTYPES);
   if(isset($variables['node']) && in_array($variables['node']->type, $card_types) == true){
     $variables['theme_hook_suggestions'][] = 'page__campaign_page';

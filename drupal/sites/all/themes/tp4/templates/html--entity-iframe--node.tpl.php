@@ -17,10 +17,8 @@
 <!--<![endif]-->
 <head>
   <title><?php print $head_title; ?></title>
-  <?php if ($use_production_dtm === TRUE): ?>
-  <script src="//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-67f52c9fb4acac0165b6ab3557a90e9fc355338e.js"></script>
-  <?php elseif ($use_development_dtm === TRUE): ?>
-  <script src="//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-67f52c9fb4acac0165b6ab3557a90e9fc355338e-staging.js"></script>
+  <?php if (!empty($dtm_script_src)): ?>
+  <script src="<?php print $dtm_script_src ?>"></script>
   <?php endif; ?>
   <?php print $head; ?>
   <?php if ($default_mobile_metatags): ?>
@@ -54,7 +52,7 @@
   <?php // print $page_top; ?>
   <?php print $page; ?>
   <?php // print $page_bottom; ?>
-  <?php if ($use_production_dtm === TRUE || $use_development_dtm === TRUE): ?>
+  <?php if (!empty($dtm_script_src)): ?>
   <script type="text/javascript">_satellite.pageBottom();</script>
   <?php endif; ?>
 </body>
