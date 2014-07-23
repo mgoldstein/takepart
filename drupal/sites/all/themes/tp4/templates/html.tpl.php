@@ -21,6 +21,7 @@
   <script type="text/javascript">
     window.digitalData = <?php print $tp_digital_data ?>;
   </script>
+  <?php endif; ?>
   <?php if (!empty($dtm_script_src)): ?>
   <script src="<?php print $dtm_script_src ?>"></script>
   <?php endif; ?>
