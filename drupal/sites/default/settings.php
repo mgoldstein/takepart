@@ -453,10 +453,8 @@ ini_set('session.cookie_lifetime', 2000000);
 #  'host' => $_SERVER['DBHOST'],
 #  'collation' => 'utf8_general_ci',
 #);
-if (file_exists(dirname(__FILE__) .'/settings.env.inc')) {
-  include_once dirname(__FILE__) .'/settings.env.inc';
+
+// Include the application specific settings
+if (file_exists(dirname(__FILE__) . '/application.settings.php')) {
+  include_once dirname(__FILE__) . '/application.settings.php';
 }
-if (file_exists(dirname(__FILE__) .'/settings.local.inc')) {
-  include_once dirname(__FILE__) .'/settings.local.inc';
-}
- 

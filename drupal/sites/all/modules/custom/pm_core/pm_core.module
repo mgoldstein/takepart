@@ -8,16 +8,18 @@
  * Implements hook_boot().
  */
 function pm_core_boot() {
+  global $databases;
+  $db = $databases['default']['default'];
   // Load the Composer autoloader.
   require_once __DIR__ . '/vendor/autoload.php';
   // Initialize the Doctrine Entity Manager.
   \Participant\App::init(array(
     'development_mode' => ENVIRONMENT == 'development' || ENVIRONMENT == 'test',
     'entity_path' => __DIR__ . '/app/src',
-    'db_user' => DATABASE_USER,
-    'db_pass' => DATABASE_PASS,
-    'db_name' => DATABASE_NAME,
-    'db_host' => DATABASE_HOST,
+    'db_user' => $db['username'],
+    'db_pass' => $db['password'],
+    'db_name' => $db['database'],
+    'db_host' => $db['host'],
   ));
 }
 

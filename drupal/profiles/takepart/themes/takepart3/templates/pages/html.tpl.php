@@ -50,7 +50,9 @@
     window.digitalData = <?php print $tp_digital_data ?>;
   </script>
   <?php endif; ?>
-  <script src="//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-67f52c9fb4acac0165b6ab3557a90e9fc355338e-staging.js"></script>
+  <?php if (!empty($dtm_script_src)): ?>
+  <script src="<?php print $dtm_script_src ?>"></script>
+  <?php endif; ?>
         <?php print $head; ?>
         <? if ( $is_iframed ): ?>
             <base href="<?php print '//' . $_SERVER['HTTP_HOST']; ?>" target="_parent" />
@@ -102,5 +104,8 @@
             echo $tp_sysinfo_comment_tags;
         endif;
         ?>
+      <?php if (!empty($dtm_script_src)): ?>
+      <script type="text/javascript">_satellite.pageBottom();</script>
+      <?php endif; ?>
     </body>
 </html>
