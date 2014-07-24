@@ -16,24 +16,29 @@ if (file_exists($environment_settings_filename)) {
 // +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 
 // Memcache
-include_once('./includes/cache.inc');
-include_once('./sites/all/modules/contrib/memcache/memcache.inc');
-$conf += array(
-  'cache_default_class' => 'MemCacheDrupal',
-  'session_inc' => './sites/all/modules/contrib/memcache/memcache-session.inc',
-  'memcache_bins' => array(
-    'cache' => 'default',
-    'cache_filter' => 'default',
-    'cache_menu' => 'default',
-    'cache_page' => 'default',
-    'session' => 'default',
-    'users' => 'default',
-  ),
-  'memcache_servers' => array(
-    'localhost:11211' => 'default',
-  ),
-  'memcache_key_prefix' => 'local',
-);
+if (isset($conf['memcache_servers']) && $conf['memcache_servers'] === FALSE) {
+  unset($conf['memcache_servers']);
+}
+else {
+  include_once('./includes/cache.inc');
+  include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+  $conf += array(
+    'cache_default_class' => 'MemCacheDrupal',
+    'session_inc' => './sites/all/modules/contrib/memcache/memcache-session.inc',
+    'memcache_bins' => array(
+      'cache' => 'default',
+      'cache_filter' => 'default',
+      'cache_menu' => 'default',
+      'cache_page' => 'default',
+      'session' => 'default',
+      'users' => 'default',
+    ),
+    'memcache_servers' => array(
+      'localhost:11211' => 'default',
+    ),
+    'memcache_key_prefix' => 'local',
+  );
+}
 
 
 // HTTPS
