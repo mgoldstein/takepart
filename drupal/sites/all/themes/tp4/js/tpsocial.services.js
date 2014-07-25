@@ -25,7 +25,7 @@
 
     var get_share_url = function(url, callback, _shorten) {
         var shorten = (typeof _shorten != 'undefined') ? _shorten : false;
-        if($('body').hasClass('tploggedin') && window.TP.tabHost){
+        if(window.TP.tabHost){
             $.ajax({
                 url: window.TP.tabHost+"/share.json",
                 dataType: 'json',
