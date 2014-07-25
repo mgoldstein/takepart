@@ -133,7 +133,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } elseif ($id == 'inline_content_embedded' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
-            } elseif ($id = 'body') {
+            } elseif ($id = 'body' && $object->content != '') {
                 $content = $object->content;
             }
         }
