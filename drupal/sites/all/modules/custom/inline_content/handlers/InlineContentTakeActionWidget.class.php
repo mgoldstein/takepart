@@ -99,6 +99,15 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
       $attributes['class'][] = 'align-center';
     }
 
+    // Set the widget's type, defaulting to actions_widget.
+    $type = field_get_items('inline_content', $replacement, 'field_ic_tap_widget_type');
+    if ($type !== FALSE && count($type) > 0) {
+      $data = reset($type);
+      $attributes['data-widget-type'] = $data['value'];
+    } else {
+      $attributes['data-widget-type'] = 'actions_widget';
+    }
+
     $content['#replacements'][] = array(
       '#type' => 'markup',
       '#markup' => '<div' . drupal_attributes($attributes) . '></div>',
