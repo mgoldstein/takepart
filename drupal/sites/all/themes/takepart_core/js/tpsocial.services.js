@@ -68,7 +68,7 @@
                     //Post was not published
                     }
                 });
-            }
+            });
         }
     });
 
