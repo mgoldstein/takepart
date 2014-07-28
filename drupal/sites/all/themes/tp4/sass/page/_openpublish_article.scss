@@ -7,343 +7,348 @@
 // Basic Layout: Widths and floats for articles
 //
 @include breakpoint($breakpoint-desktop) {
-  .node-openpublish-article.view-mode-full,
-  .node-video.view-mode-full,
-  .node-flashcard.view-mode-full,
-  .node-feature-article.view-mode-full {
-    #article-social {
-      float: left;
-      width: 40px;
-      &.sticky {
-        z-index: 1;
-        position: fixed;
-        top: 7px; // this corresponds to the offset value in tp4sticky.js's options
-      }
+    .node-openpublish-article.view-mode-full,
+    .node-video.view-mode-full,
+    .node-flashcard.view-mode-full,
+    .node-feature-article.view-mode-full {
+        #article-social {
+            float: left;
+            width: 40px;
+            &.sticky {
+                z-index: 1;
+                position: fixed;
+                top: 7px; // this corresponds to the offset value in tp4sticky.js's options
+            }
+        }
+        .social-sticky-wrapper {
+            float: left;
+        }
     }
-    .social-sticky-wrapper {
-      float: left;
+    .node-flashcard.view-mode-full {
+        #article-social {
+            margin-top: 7px;
+            &.sticky {
+                top: 0;
+            }
+        }
     }
-  }
-  .node-flashcard.view-mode-full {
-    #article-social {
-      margin-top: 7px;
-      &.sticky {
-        top: 0;
-      }
+    .node-openpublish-article.view-mode-full,
+    .node-video.view-mode-full {
+        #article-content,
+        #series-navigation,
+        #article-footer,
+        #article-comments {
+            margin-left: 53px;
+        }
     }
-  }
-  .node-openpublish-article.view-mode-full,
-  .node-video.view-mode-full {
-    #article-content,
-    #series-navigation,
-    #article-footer,
-    #article-comments {
-      margin-left: 53px;
+    .node-feature-article.view-mode-full {
+        //40 social +28 gutter +66 offett + 780 column + 66offset
+        #article-content,
+        #series-navigation {
+            margin-left: 134px;
+            width: 780px;
+            @include box-sizing(border-box);
+        }
     }
-  }
-  .node-feature-article.view-mode-full {
-    //40 social +28 gutter +66 offett + 780 column + 66offset
-    #article-content,
-    #series-navigation {
-      margin-left: 134px;
-      width: 780px;
-      @include box-sizing(border-box);
+    .node-flashcard.view-mode-full {
+        .field-name-body {
+            margin-left: 60px;
+        }
     }
-  }
-  .node-flashcard.view-mode-full {
-    .field-name-body {
-      margin-left: 60px;
+    #block-tp-flashcards-flashcard-related-content,
+    #block-tp-flashcards-flashcard-get-more,
+    #block-tp-flashcards-flashcard-comments {
+        margin-left: 50px;
     }
-  }
-  #block-tp-flashcards-flashcard-related-content,
-  #block-tp-flashcards-flashcard-get-more,
-  #block-tp-flashcards-flashcard-comments {
-      margin-left: 50px;
-  }
+}
+
+@media (max-width: 767px) {	
+    #article-content {
+        margin-bottom: 0;
+        border-bottom: 1px solid #CCC;
+    }
 }
 
 .node-feature-article.view-mode-full {
-  #article-footer,
-  #article-comments {
-    @include breakpoint($breakpoint-tablet) {
-      width: 580px;
-      margin-left: auto;
-      margin-right: auto;
+    #article-footer,
+    #article-comments {
+        @include breakpoint($breakpoint-tablet) {
+            width: 580px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @include breakpoint($breakpoint-desktop) {
+            margin-left: 234px;
+        }
     }
-    @include breakpoint($breakpoint-desktop) {
-      margin-left: 234px;
-    }
-  }
 }
 
 //
 // Social Links
 //
 .social {
-  // Sprite Setup
-  @include all-tp-social-sprites;
-  .comments-link a { @include tp-social-sprite(comment); }
-  .trigger a { @include tp-social-sprite(more); }
+    // Sprite Setup
+    @include all-tp-social-sprites;
+    .comments-link a { @include tp-social-sprite(comment); }
+    .trigger a { @include tp-social-sprite(more); }
 }
 #article-social {
 
-  @media (max-width:979px) {
-    border-top: 1px solid $gray-line;
-    border-bottom: 1px solid $gray-line;
-    margin-bottom: 1.5em;
-    height: 50px;
-    max-width: 427px;
-    // social embeds needs a clearfix
-    // this is a modified "micro clearfix"
-    // @see http://nicolasgallagher.com/micro-clearfix-hack/
-    &:after {
-      content: " ";
-      display: table;
-      clear: both;
-    }
-  }
-
-  @media (max-width: 767px) {
-    margin-bottom: 1em;
-  }
-
-  #article-more-shares {
-    .tp-social-link {
-      padding-left: 20px;
-      height: 16px;
-      @each $service in pinterest tumblr_link gmail hotmail yahoomail aolmail linkedin digg stumbleupon {
-        &.tp-social-#{$service} {
-          @include tp-social-more-sprite(#{$service});
+    @media (max-width:979px) {
+        border-top: 1px solid $gray-line;
+        border-bottom: 1px solid $gray-line;
+        margin-bottom: 1.5em;
+        height: 50px;
+        max-width: 427px;
+        // social embeds needs a clearfix
+        // this is a modified "micro clearfix"
+        // @see http://nicolasgallagher.com/micro-clearfix-hack/
+        &:after {
+            content: " ";
+            display: table;
+            clear: both;
         }
-      }
     }
-  }
 
-  // Override tp-sticky styles on sizes below $breakpoint-desktop
-  // "mobile last" design
-  @media (max-width: 979px) {      
-    .takepart-take-action,
+    @media (max-width: 767px) {
+        margin-bottom: 1em;
+    }
+
+    #article-more-shares {
+        .tp-social-link {
+            padding-left: 20px;
+            height: 16px;
+            @each $service in pinterest tumblr_link gmail hotmail yahoomail aolmail linkedin digg stumbleupon {
+                &.tp-social-#{$service} {
+                    @include tp-social-more-sprite(#{$service});
+                }
+            }
+        }
+    }
+
+    // Override tp-sticky styles on sizes below $breakpoint-desktop
+    // "mobile last" design
+    @media (max-width: 979px) {
+        .takepart-take-action,
+        .comments-link,
+        #article-share,
+        #article-share .tp-social-link,
+        .comments-link a,
+        .trigger a {
+            float: left;
+        }
+        #article-share {
+            width: 165px;
+        }
+    }
+    @media (max-width: 767px) {
+        .comments-link,
+        #article-social-more {
+            display: none;
+        }
+        #article-share {
+            width: 150px;
+        }
+    }
+
+    .tp-social-headline {
+        font: normal 14px/100% $secondary-sans-font;
+        color: $dark-gray;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: -1px;
+        margin: 12px 7px 0 0;
+        float: left;
+        width: 38px;
+        &.share-headline {
+            margin: 18px 0 0 19px;
+        }
+        @include breakpoint($breakpoint-tablet) {
+            width: auto;
+            margin-top: 18px;
+            &.share-headline {
+                margin: 18px 0 0 30px;
+            }
+        }
+        @include breakpoint($breakpoint-desktop) {
+            width: 38px;
+            margin: 0 0 .1em;
+            width: auto;
+            float: none;
+            &.share-headline {
+                margin: 0 0 .1em;
+            }
+        }
+    }
+    .takepart-take-action {
+        height: 40px;
+        width: 40px;
+        margin: 2px 0 0;
+        @include breakpoint($breakpoint-desktop) {
+            margin: 0 0 1em;
+        }
+    }
     .comments-link,
-    #article-share,
+    .tp-social {
+        margin-top: 12px;
+        @include breakpoint($breakpoint-desktop) {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
     #article-share .tp-social-link,
     .comments-link a,
     .trigger a {
-      float: left;
+        display: block;
+        overflow: hidden;
+        width: 0;
+        height: 0;
+        padding: 12px;
+        text-indent: 24px;
+        background-color: transparent;
+        margin: 0 0 7px 6px;
+        @include breakpoint($breakpoint-tablet) {
+            margin-left: 9px;
+        }
+        @include breakpoint($breakpoint-desktop) {
+            margin: 0 auto 5px;
+        }
     }
-    #article-share {
-      width: 165px;
-    }
-  }
-  @media (max-width: 767px) {
-    .comments-link,
-    #article-social-more {
-      display: none;
-    }
-    #article-share {
-      width: 150px;
-    }
-  }
-
-  .tp-social-headline {
-    font: normal 14px/100% $secondary-sans-font;
-    color: $dark-gray;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: -1px;
-    margin: 12px 7px 0 0;
-    float: left;
-    width: 38px;
-  	&.share-headline {
-  	  margin: 18px 0 0 19px;
-  	}
-    @include breakpoint($breakpoint-tablet) {
-      width: auto;
-      margin-top: 18px;
-      &.share-headline {
-        margin: 18px 0 0 30px;
-      }
-    }
-    @include breakpoint($breakpoint-desktop) {
-      width: 38px;
-      margin: 0 0 .1em;
-      width: auto;
-      float: none;
-      &.share-headline {
-        margin: 0 0 .1em;
-      }
-    }
-  }
-  .takepart-take-action {
-    height: 40px;
-    width: 40px;
-    margin: 2px 0 0;
-    @include breakpoint($breakpoint-desktop) {
-      margin: 0 0 1em;
-    }
-  }
-  .comments-link,
-  .tp-social {
-    margin-top: 12px;
-    @include breakpoint($breakpoint-desktop) {
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-  }
-  #article-share .tp-social-link,
-  .comments-link a,
-  .trigger a {
-    display: block;
-    overflow: hidden;
-    width: 0;
-    height: 0;
-    padding: 12px;
-    text-indent: 24px;
-    background-color: transparent;
-    margin: 0 0 7px 6px;
-    @include breakpoint($breakpoint-tablet) {
-      margin-left: 9px;
-    }
-    @include breakpoint($breakpoint-desktop) {
-      margin: 0 auto 5px;
-    }
-  }
 } // #article-social
 
 #article-social-more {
-  position: relative;
-  overflow: hidden;
-  width: 40px;
-  float: left;
-  margin-top: 12px;
-
-  @include breakpoint($breakpoint-desktop) {
-    margin-top: 0;
-    margin-left: 0;
-  }
-  #article-more-shares { // positioning
-    position: absolute;
-    bottom: 100%;
-    z-index: 9999;
-  }
-  &.focusin {
-    overflow: visible;
-    #article-more-shares {
-      top: 100%;
-      bottom: auto;
-    }
-  }
-  .tp-social-link {
-    display: block;
-    @include box-sizing(border-box);
     position: relative;
-    width: 50%;
+    overflow: hidden;
+    width: 40px;
     float: left;
-  }
+    margin-top: 12px;
+
+    @include breakpoint($breakpoint-desktop) {
+        margin-top: 0;
+        margin-left: 0;
+    }
+    #article-more-shares { // positioning
+                           position: absolute;
+                           bottom: 100%;
+                           z-index: 9999;
+    }
+    &.focusin {
+        overflow: visible;
+        #article-more-shares {
+            top: 100%;
+            bottom: auto;
+        }
+    }
+    .tp-social-link {
+        display: block;
+        @include box-sizing(border-box);
+        position: relative;
+        width: 50%;
+        float: left;
+    }
 }
 #article-more-shares { // styling
-  background: #fff;
-  border-radius: 5px;
-  border: 5px solid rgba(0,0,0,.5);
-  @include background-clip(padding-box);
-  min-width: 250px;
-  display: inline-block;
-  .header, p {
-    padding: .5em;
-    margin: 0;
-  }
-  .header {
-    font-family: $main-brand-font;
-    font-weight: bold;
-    font-size: 1.142857143em;
-    background-color: $light-gray;
-  }
-  .tp-social-link {
-    font-size: 16px;
-    line-height: 1;
-    margin-bottom: .25em;
-    background-color: white;
-  }
+                       background: #fff;
+                       border-radius: 5px;
+                       border: 5px solid rgba(0,0,0,.5);
+                       @include background-clip(padding-box);
+                       min-width: 250px;
+                       display: inline-block;
+                       .header, p {
+                           padding: .5em;
+                           margin: 0;
+                       }
+                       .header {
+                           font-family: $main-brand-font;
+                           font-weight: bold;
+                           font-size: 1.142857143em;
+                           background-color: $light-gray;
+                       }
+                       .tp-social-link {
+                           font-size: 16px;
+                           line-height: 1;
+                           margin-bottom: .25em;
+                           background-color: white;
+                       }
 }
 
-#article-social-mobile-bottom {
+aside#article-social-mobile-bottom {
+    display:none;
 
-  @media (max-width:979px) {
-    display:none; 
-  }
-
-  @media (max-width: 767px) {
-    display:table;
-    margin-bottom: 1em;
-    .takepart-take-action,
-    #article-share-mobile-bottom,
-    #article-share-mobile-bottom .tp-social-link {
-      float: left;
+    @media (max-width: 767px) {
+        display:table;
+        margin: 4px 0 0 0;
+        .takepart-take-action,
+        #article-share-mobile-bottom,
+        #article-share-mobile-bottom .tp-social-link {
+            float: left;
+        }
+        #article-share-mobile-bottom {
+            width: auto;
+            padding-top: 12px
+        }
     }
-    #article-share-mobile-bottom {
-      width: 150px;
-    }
-  }
 
-  // Override tp-sticky styles on sizes below $breakpoint-desktop
+    // Override tp-sticky styles on sizes below $breakpoint-desktop
     #article-tab-mobile-bottom {
         float: left;
     }
-  .tp-social-headline {
-    font: normal 14px/100% $secondary-sans-font;
-    color: $dark-gray;
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: -1px;
-    margin: 0;
-    float: left;
-    width: 38px;
-  	&.share-headline {
-  	  margin: 8px 0 0 1em;
-  	}
-    @include breakpoint($breakpoint-tablet) {
-      width: auto;
-      margin-top: 18px;
-      &.share-headline {
-        margin: 18px 0 0 30px;
-      }
+    .tp-social-headline {
+        font: normal 14px/100% $secondary-sans-font;
+        color: $dark-gray;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: -1px;
+        margin: 10px 5px 0 0;
+        float: left;
+        width: 38px;
+        &.share-headline {
+            margin: 18px 0 0 1.2em;
+        }
+        @include breakpoint($breakpoint-tablet) {
+            width: auto;
+            margin-top: 18px;
+            &.share-headline {
+                margin: 18px 0 0 30px;
+            }
+        }
+        @include breakpoint($breakpoint-desktop) {
+            width: 38px;
+            margin: 0 0 .1em;
+            width: auto;
+            float: none;
+            &.share-headline {
+                margin: 0 0 .1em;
+            }
+        }
     }
-    @include breakpoint($breakpoint-desktop) {
-      width: 38px;
-      margin: 0 0 .1em;
-      width: auto;
-      float: none;
-      &.share-headline {
-        margin: 0 0 .1em;
-      }
+    .takepart-take-action {
+        height: 40px;
+        width: 40px;
+        margin: 2px 0 0;
+        @include breakpoint($breakpoint-desktop) {
+            margin: 0 0 1em;
+        }
     }
-  }
-  .takepart-take-action {
-    height: 40px;
-    width: 40px;
-    margin: 2px 0 0;
-    @include breakpoint($breakpoint-desktop) {
-      margin: 0 0 1em;
+
+    #article-share-mobile-bottom .tp-social-link,
+    .comments-link a,
+    .trigger a {
+        display: block;
+        overflow: hidden;
+        width: 0;
+        height: 0;
+        padding: 12px;
+        text-indent: 24px;
+        background-color: transparent;
+        margin: 0 0 7px 6px;
+        @include breakpoint($breakpoint-tablet) {
+            margin-left: 9px;
+        }
+        @include breakpoint($breakpoint-desktop) {
+            margin: 0 auto 5px;
+        }
     }
-  }
- 
-  #article-share-mobile-bottom .tp-social-link,
-  .comments-link a,
-  .trigger a {
-    display: block;
-    overflow: hidden;
-    width: 0;
-    height: 0;
-    padding: 12px;
-    text-indent: 24px;
-    background-color: transparent;
-    margin: 0 0 7px 6px;
-    @include breakpoint($breakpoint-tablet) {
-      margin-left: 9px;
-    }
-    @include breakpoint($breakpoint-desktop) {
-      margin: 0 auto 5px;
-    }
-  }
 } // #article-social-mobile-bottom
 //
 // HEADER STYLES
@@ -353,57 +358,57 @@
 .node-feature-article.view-mode-full,
 .node-video.view-mode-full,
 .node-flashcard.view-mode-full {
-  .article-header {
-    .node-title {
-      // these values are extremely stupid.
-      font: normal 2.428571429em/1.088235294 $primary-serif-font;
-      margin-bottom: .411764706em; // 14px / 34px
-      color: black;
+    .article-header {
+        .node-title {
+            // these values are extremely stupid.
+            font: normal 2.428571429em/1.088235294 $primary-serif-font;
+            margin-bottom: .411764706em; // 14px / 34px
+            color: black;
+        }
     }
-  }
-  .field-name-field-article-main-image {
-    figcaption {
-      font-family: $primary-serif-font;
-      font-weight: 100;
-      font-style: italic;
-      p, h5 {
+    .field-name-field-article-main-image {
+        figcaption {
+            font-family: $primary-serif-font;
+            font-weight: 100;
+            font-style: italic;
+            p, h5 {
+                color: black;
+                font-size: 1em;
+                line-height: 1.285714286;
+                margin-top: 0;
+                font-family: $primary-serif-font;
+                font-weight: 100;
+                font-style: italic;
+            }
+        }
+    }
+    .topic-box {
+        margin-bottom: 1em;
+    }
+    .field-name-field-article-subhead {
+        font: 100 1.142857143em/1.125 $primary-serif-font;
+        margin-bottom: 1em;
         color: black;
-        font-size: 1em;
-        line-height: 1.285714286;
-        margin-top: 0;
-        font-family: $primary-serif-font;
-        font-weight: 100;
-        font-style: italic;
-      }
     }
-  }
-  .topic-box {
-    margin-bottom: 1em;
-  }
-  .field-name-field-article-subhead {
-    font: 100 1.142857143em/1.125 $primary-serif-font;
-    margin-bottom: 1em;
-    color: black;
-  }
 }
 
 //
 // HEADER STYLES
 // openpublish_article specific
-// 
+//
 .node-openpublish-article.view-mode-full {
-  //
-  // Article Styling
-  //
+    //
+    // Article Styling
+    //
     @include breakpoint($breakpoint-desktop) {
-      figure {
-  margin-bottom: 30px;
-        &.portrait {
-          float: left;
-          width: 400px;
-          margin-right: 1em;
+        figure {
+            margin-bottom: 30px;
+            &.portrait {
+                float: left;
+                width: 400px;
+                margin-right: 1em;
+            }
         }
-      }
     }
 }
 
@@ -412,97 +417,97 @@
 // feature specific
 //
 .node-feature-article.view-mode-full {
-  // mobile first. finally.
-  .article-header {
-    margin: 0 -10px;
-    figure {
-      margin: 0 0 1em;
-    }
-    figcaption {
-      text-align: right;
-      margin: 0 10px;
-      p, h5 {
-        @media (max-width: 767px) {
-          font-size: .857142857em;
-        }
-      }
-    }
-    .title-block {
-      margin: 0 10px;
-    }
-    .node-title {
-      font: bold 1.571428571em/1.090909091 $primary-serif-font;
-      color: black;
-    }
-    .takepart-features-branding {
-      display: block;
-      color: black;
-      font: normal .928571429em/1.076923077 $primary-sans-font;
-      text-transform: uppercase;
-      margin-bottom: .25em;
-    }
-  }
-  .field-name-field-article-subhead {
-    color: black;
-    font: normal 1.142857143em/1.125 $primary-serif-font;
-    margin-bottom: .5em;
-  }
-  @include breakpoint($breakpoint-tablet) {
+    // mobile first. finally.
     .article-header {
-      margin-bottom: 2.642857143em;
-      position: relative;
-      figure {
-        margin: 0;
-      }
-      figcaption {
-        position: absolute;
-        margin: 0;
-        top: 100%;
-        right: 10px;
-      }
-      .title-block {
-        position: absolute;
-        margin: 0;
-        bottom: 14px;
-        left: 2.5%;
-        width: 95%;
-        .white {
-          color: white;
+        margin: 0 -10px;
+        figure {
+            margin: 0 0 1em;
         }
-        .black {
-          color: black;
+        figcaption {
+            text-align: right;
+            margin: 0 10px;
+            p, h5 {
+                @media (max-width: 767px) {
+                    font-size: .857142857em;
+                }
+            }
         }
-      }
-      .takepart-features-branding {
-        font-size: 1.142857143em;
-      }
-      .node-title {
-        font-size: 2.428571429em;
-      }
+        .title-block {
+            margin: 0 10px;
+        }
+        .node-title {
+            font: bold 1.571428571em/1.090909091 $primary-serif-font;
+            color: black;
+        }
+        .takepart-features-branding {
+            display: block;
+            color: black;
+            font: normal .928571429em/1.076923077 $primary-sans-font;
+            text-transform: uppercase;
+            margin-bottom: .25em;
+        }
     }
     .field-name-field-article-subhead {
-      font-size: 1.571428571em; // 22px -- same
-      margin-bottom: .863636364em;
+        color: black;
+        font: normal 1.142857143em/1.125 $primary-serif-font;
+        margin-bottom: .5em;
     }
-  } // tablet
-  @include breakpoint($breakpoint-desktop) {
-    .article-header {
-      figcaption {
-        right: 0;
-      }
-      .takepart-features-branding {
-        font-size: 1.285714286em;
-      }
-      .node-title {
-        font-size: 2.857142857em;
-      }
+    @include breakpoint($breakpoint-tablet) {
+        .article-header {
+            margin-bottom: 2.642857143em;
+            position: relative;
+            figure {
+                margin: 0;
+            }
+            figcaption {
+                position: absolute;
+                margin: 0;
+                top: 100%;
+                right: 10px;
+            }
+            .title-block {
+                position: absolute;
+                margin: 0;
+                bottom: 14px;
+                left: 2.5%;
+                width: 95%;
+                .white {
+                    color: white;
+                }
+                .black {
+                    color: black;
+                }
+            }
+            .takepart-features-branding {
+                font-size: 1.142857143em;
+            }
+            .node-title {
+                font-size: 2.428571429em;
+            }
+        }
+        .field-name-field-article-subhead {
+            font-size: 1.571428571em; // 22px -- same
+            margin-bottom: .863636364em;
+        }
+    } // tablet
+    @include breakpoint($breakpoint-desktop) {
+        .article-header {
+            figcaption {
+                right: 0;
+            }
+            .takepart-features-branding {
+                font-size: 1.285714286em;
+            }
+            .node-title {
+                font-size: 2.857142857em;
+            }
+        }
+        .field-name-field-article-subhead {
+            font-size: 1.714285714em;
+            line-height: 1.25;
+            margin-bottom: .5em;
+        }
     }
-    .field-name-field-article-subhead {
-      font-size: 1.714285714em;
-      line-height: 1.25;
-      margin-bottom: .5em;
-    }
-  }
 }
 
 //
@@ -510,930 +515,930 @@
 // flashcard specific
 //
 .node-flashcard.view-mode-full {
-  .article-header {
-    .node-title {
-      margin-bottom: 0;
+    .article-header {
+        .node-title {
+            margin-bottom: 0;
+        }
     }
-  }
 }
 
 .node-feature-article.view-mode-full,
 .node-openpublish-article.view-mode-full,
 .node-video.view-mode-full,
 .node-flashcard.view-mode-full {
-  .field-name-body {
-    font-family: $primary-sans-font;
-    font-weight: 100;
-    line-height: 1.5;
-    position: relative;
-
-    // base link styles
-    a { color: $mint; text-decoration: none; }
-    a:hover, a:active { color: $light-mint; text-decoration: underline; }
-
-    h2,
-    h3,
-    h4,
-    h5 {
-      font-family: $primary-serif-font;
-    }
-    h2,
-    h3 {
-      font-size: 1.5em; // 21px
-      margin-top: 1.333em; // 28px
-    }
-    h4 {
-      font-size: 1.285714286em; // 18px
-      margin-top: 1.555555556em; // 28px
-    }
-    h5 {
-      font-size: 1.142857143em; // 16px
-      margin-top: 1.75em; // 28px
-    }
-
-    // lock down iframes to 100%
-    iframe {
-      max-width: 100% !important;
-    }
-
-    ul {
-      margin: 1.5em 0;
-      padding-left: 2em;
-      li {
-        @include blue-square-bullets();
-        padding: 0;
-        &:before { // override mixin
-          left: -12px;
-        }
-      }
-    }
-
-    ol {
-      margin: 1.5em 0;
-      padding-left: 2em;
-      li {
-        list-style-type: decimal;
-      }
-    }
-
-    // drop cap
-    > .field-items > .field-item > p:first-of-type {
-      margin-top: 0;
-
-      &::first-letter {
-        float: left;
-        font-size: 4em;
-        line-height: 1;
-        margin-right: .25em;
-        margin-bottom: -.25em;
-        // TODO unfuck fonts
-        font-family: $primary-serif-font;
-        font-weight: bold;
-      }
-    }
-
-    // pullquote styling
-    q.pull-quote {
-      display: block;
-      float: left;
-      width: 45%;
-      margin: 0 5% .875em 0;
-      border-top: 1px solid $gray-line;
-      border-bottom: 1px solid $gray-line;
-      font: 100 italic 1.714285714em/1.5 $primary-serif-font;
-      padding: .875em 0;
-      quotes: "" "" "" "";
-    }
-
-    // blockquote styling
-    blockquote {
-      font-family: $primary-serif-font;
-      font-weight: 100;
-      font-style: italic;
-      margin: 2.5em 1em;
-      position: relative;
-      &:before,
-      &:after {
-        content: '';
-        display: block;
-        height: 3em;
-        width: 3em;
-        position: absolute;
-      }
-      &:before {
-        border-top: 1px solid $gray-line;
-        border-left: 1px solid $gray-line;
-        top: -1em;
-        left: -1em;
-      }
-      &:after {
-        border-bottom: 1px solid $gray-line;
-        border-right: 1px solid $gray-line;
-        bottom: -1em;
-        right: -1em;
-      }
-      // override some of this stuff on smaller screens
-      // this is that "mobile last" strategy you've heard so much about
-      @media (max-width: 979px) {
-	padding: 0 1em;
-	&:before { left: 0; }
-	&:after { right: 0; }
-      }
-    }
-
-    // override <blockquote> styles for inline_content
-    // pull quotes
-    .pull-quote-alt {
-      margin-top: 0;
-      margin-bottom: 1em;
-      padding: 1.125em 0;
-      border-top: 6px solid black;
-      border-bottom: 6px solid black;
-
-      &:before,
-      &:after {
-        display: none;
-      }
-
-      @include breakpoint($breakpoint-tablet) {
-        width: 285px;
-        &.align-left {
-          margin-right: 2em;
-        }
-        &.align-right {
-          margin-left: 2em;
-        }
-        &.align-center {
-          width: 500px;
-          margin-left: auto;
-          margin-right: auto;
-        }
-      }
-
-      .quotation {
-        font-size: 1.714285714em;
-        line-height: 1.333333333;
-        margin: 0;
-        padding-left: 1em;
-        padding-top: .166666667em;
-        position: relative;
-
-        &:before {
-          display: block;
-          content: '\201c';
-          font-size: 2em;
-          position: absolute;
-          top: 0;
-          left: 0;
-        }
-        &:after {
-          display: inline;
-          content: '\201d';
-          font-size: 2em;
-          line-height: .15;
-          vertical-align: text-bottom;
-          padding-left: .125em;
-          white-space: nowrap;
-        }
-      }
-
-      cite {
-        display: block;
-        font: 100 .875em/1.285714286 $primary-serif-font; // 14px over 18px
-        margin-top: 1.285714286em;
-        margin-left: 2.714285714em;
-        text-indent: -1em;
-      }
-    } // .pull-quote-alt
-
-  } // body field
-
-  figure.inline-content-image {
-
-    img {
-      vertical-align: bottom;
-      margin-bottom: .8125em; // 13px per sasoon / 16px surrounding context      
-    }
-    // set width of portrait and landscape photos
-    // for tablet sizes and above
-    // These use "portrait" so they will override the width
-    // set in the style attribute
-    // when they are 
-    @include breakpoint($breakpoint-tablet) {
-      &.image-portrait {
-        width: 400px !important;
-      }
-      &.image-landscape {
-        width: 480px !important;
-      }
-    }
-    figcaption {
-      p, h5 {
-        font: 100 .875em/1.5 $primary-serif-font;
-        margin: 0;
-      }
-      h5 {
-        font-family: $primary-serif-font;
-        font-weight: 100;
-        font-style: italic;
-      }
-    }
-  }
-
-  // utility classes for offsets
-  .align-right {
-    @include breakpoint($breakpoint-tablet) {      
-      float: right;
-      margin-left: 1em;
-      margin-bottom: 1em;
-    }
-  }
-  .align-left {
-    @include breakpoint($breakpoint-tablet) {      
-      float: left;
-      margin-right: 1em;
-      margin-bottom: 1em;
-    }
-  }
-  .align-center {
-    display: block;
-    margin: 1em auto;
-    max-width: 100% !important; // override style attribute for large images
-  }
-  .align-full {
-    width: 100%;
-  }
-
-  // INLINE CONTENT
-  // google ad slot
-  .block-boxes-ga_ad {
-    @include breakpoint($breakpoint-tablet) {
-      float: right;
-      margin-left: 1em;
-    }
-  }
-
-  // with hard-coded style attribute values for the take action widget,
-  // we need to make sure that the widget doesn't overflow the viewport
-  // when it's less than 500px wide (te max width of the TAP widget)
-  .takepart-take-action-widget {
-    @media (max-width: 499px) {
-      max-width: 100% !important;      
-    }
-  }
-
-  // INLINE CONTENT
-  // related nodes
-  .inline-content-nodes {
-    margin: 1.5em 0; // articles have horizontal padding
-    &.vertical {
-      @media (max-width: 767px) {
-	@include clearfix;
-      }
-      @include breakpoint($breakpoint-tablet) {
-	float: right;
-	margin: .25em .5em;
-	width: 33%;
-  max-width: 150px; // this is the max width of the thumbnail image style we're using
-      }
-      @include breakpoint($breakpoint-desktop) {
-	width: 25%;
-      }
-      &.inline-node-poll {
-          width: 50%;
-          max-width: none;
-      }
-    }
-
-    &.horizontal {
-      @include clearfix;
-
-      @include breakpoint($breakpoint-tablet) {
-	.node {
-	  width: 30%;
-	  float: left;
-	  margin-right: 2.4%;
-	  &:first-child { margin-left: 2.4%; }
-        }
-      }
-    }
-
-    .node {
-      a:hover {
-        color: black;
-        h2 {
-          text-decoration: underline;
-        }
-      }
-
-      text-align: center;
-      > header {
-	h2 {
-	  font-size: 14px;
-	  line-height: 1.285714286;
-    margin-top: 0;
-	  color: black;
-	}
-      }
-
-      @include dashed-separator-after();
-      &:after { // override the mixin
-	margin: 1em auto;
-	visibility: visible; // override clearfix settings on node.article
-      }
-      &:last-child:after {
-	margin-bottom: 0; // the <aside> container has the outermost margin
-      }
-    }
-
-
-    // style the damn thing
-    border-top: 1px solid $blue;
-    &:before {
-      content: 'related';
-      display: block;
-      font-size: 12px;
-      line-height: 1;
-      text-align: center;
-      font-family: $main-brand-font;
-      font-weight: bold;
-      height: 12px;
-      padding: 9px 0 15px;
-      width: 75px;
-      color: white;
-      background-color: $blue;
-      margin: 0 auto 14px;
-      @include border-corner-radius(bottom, left, 36px);
-      @include border-corner-radius(bottom, right, 36px);
-    }
-  } // inline content
-
-  .topic-links {
-    margin-bottom: 2em;
-    @include comma-list;
-    @include mint-sans-links;
-  } // .topic-links
-
-  #article-footer,
-  #article-comments {
-    h2.block-title, h3 {
-      font-family: $main-brand-font;
-      font-weight: bold;
-      font-size: 1.5em;
-      line-height: 1.2;
-      margin: .667em 0; // account for different margins in the comp
-      text-transform: lowercase;
-
-      &.top-border {
-        @include header-top-border;
-      }
-      span {
+    .field-name-body {
         font-family: $primary-sans-font;
         font-weight: 100;
-        font-size: 14px;
-      }
+        line-height: 1.5;
+        position: relative;
+
+        // base link styles
+        a { color: $mint; text-decoration: none; }
+        a:hover, a:active { color: $light-mint; text-decoration: underline; }
+
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: $primary-serif-font;
+        }
+        h2,
+        h3 {
+            font-size: 1.5em; // 21px
+            margin-top: 1.333em; // 28px
+        }
+        h4 {
+            font-size: 1.285714286em; // 18px
+            margin-top: 1.555555556em; // 28px
+        }
+        h5 {
+            font-size: 1.142857143em; // 16px
+            margin-top: 1.75em; // 28px
+        }
+
+        // lock down iframes to 100%
+        iframe {
+            max-width: 100% !important;
+        }
+
+        ul {
+            margin: 1.5em 0;
+            padding-left: 2em;
+            li {
+                @include blue-square-bullets();
+                padding: 0;
+                &:before { // override mixin
+                           left: -12px;
+                }
+            }
+        }
+
+        ol {
+            margin: 1.5em 0;
+            padding-left: 2em;
+            li {
+                list-style-type: decimal;
+            }
+        }
+
+        // drop cap
+        > .field-items > .field-item > p:first-of-type {
+            margin-top: 0;
+
+            &::first-letter {
+                float: left;
+                font-size: 4em;
+                line-height: 1;
+                margin-right: .25em;
+                margin-bottom: -.25em;
+                // TODO unfuck fonts
+                font-family: $primary-serif-font;
+                font-weight: bold;
+            }
+        }
+
+        // pullquote styling
+        q.pull-quote {
+            display: block;
+            float: left;
+            width: 45%;
+            margin: 0 5% .875em 0;
+            border-top: 1px solid $gray-line;
+            border-bottom: 1px solid $gray-line;
+            font: 100 italic 1.714285714em/1.5 $primary-serif-font;
+            padding: .875em 0;
+            quotes: "" "" "" "";
+        }
+
+        // blockquote styling
+        blockquote {
+            font-family: $primary-serif-font;
+            font-weight: 100;
+            font-style: italic;
+            margin: 2.5em 1em;
+            position: relative;
+            &:before,
+                &:after {
+                content: '';
+                display: block;
+                height: 3em;
+                width: 3em;
+                position: absolute;
+            }
+            &:before {
+                border-top: 1px solid $gray-line;
+                border-left: 1px solid $gray-line;
+                top: -1em;
+                left: -1em;
+            }
+            &:after {
+                border-bottom: 1px solid $gray-line;
+                border-right: 1px solid $gray-line;
+                bottom: -1em;
+                right: -1em;
+            }
+            // override some of this stuff on smaller screens
+            // this is that "mobile last" strategy you've heard so much about
+            @media (max-width: 979px) {
+                padding: 0 1em;
+                &:before { left: 0; }
+                &:after { right: 0; }
+            }
+        }
+
+        // override <blockquote> styles for inline_content
+        // pull quotes
+        .pull-quote-alt {
+            margin-top: 0;
+            margin-bottom: 1em;
+            padding: 1.125em 0;
+            border-top: 6px solid black;
+            border-bottom: 6px solid black;
+
+            &:before,
+                &:after {
+                display: none;
+            }
+
+            @include breakpoint($breakpoint-tablet) {
+                width: 285px;
+                &.align-left {
+                    margin-right: 2em;
+                }
+                &.align-right {
+                    margin-left: 2em;
+                }
+                &.align-center {
+                    width: 500px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+
+            .quotation {
+                font-size: 1.714285714em;
+                line-height: 1.333333333;
+                margin: 0;
+                padding-left: 1em;
+                padding-top: .166666667em;
+                position: relative;
+
+                &:before {
+                    display: block;
+                    content: '\201c';
+                    font-size: 2em;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+                &:after {
+                    display: inline;
+                    content: '\201d';
+                    font-size: 2em;
+                    line-height: .15;
+                    vertical-align: text-bottom;
+                    padding-left: .125em;
+                    white-space: nowrap;
+                }
+            }
+
+            cite {
+                display: block;
+                font: 100 .875em/1.285714286 $primary-serif-font; // 14px over 18px
+                margin-top: 1.285714286em;
+                margin-left: 2.714285714em;
+                text-indent: -1em;
+            }
+        } // .pull-quote-alt
+
+    } // body field
+
+    figure.inline-content-image {
+
+        img {
+            vertical-align: bottom;
+            margin-bottom: .8125em; // 13px per sasoon / 16px surrounding context
+        }
+        // set width of portrait and landscape photos
+        // for tablet sizes and above
+        // These use "portrait" so they will override the width
+        // set in the style attribute
+        // when they are
+        @include breakpoint($breakpoint-tablet) {
+            &.image-portrait {
+                width: 400px !important;
+            }
+            &.image-landscape {
+                width: 480px !important;
+            }
+        }
+        figcaption {
+            p, h5 {
+                font: 100 .875em/1.5 $primary-serif-font;
+                margin: 0;
+            }
+            h5 {
+                font-family: $primary-serif-font;
+                font-weight: 100;
+                font-style: italic;
+            }
+        }
     }
-  }
 
-  #article-footer {
-    border-top: 1px solid $gray-line;
-    line-height: 1.5;
-    clear: both;
+    // utility classes for offsets
+    .align-right {
+        @include breakpoint($breakpoint-tablet) {
+            float: right;
+            margin-left: 1em;
+            margin-bottom: 1em;
+        }
+    }
+    .align-left {
+        @include breakpoint($breakpoint-tablet) {
+            float: left;
+            margin-right: 1em;
+            margin-bottom: 1em;
+        }
+    }
+    .align-center {
+        display: block;
+        margin: 1em auto;
+        max-width: 100% !important; // override style attribute for large images
+    }
+    .align-full {
+        width: 100%;
+    }
 
-    .field-name-field-related-stories {
+    // INLINE CONTENT
+    // google ad slot
+    .block-boxes-ga_ad {
+        @include breakpoint($breakpoint-tablet) {
+            float: right;
+            margin-left: 1em;
+        }
+    }
+
+    // with hard-coded style attribute values for the take action widget,
+    // we need to make sure that the widget doesn't overflow the viewport
+    // when it's less than 500px wide (te max width of the TAP widget)
+    .takepart-take-action-widget {
+        @media (max-width: 499px) {
+            max-width: 100% !important;
+        }
+    }
+
+    // INLINE CONTENT
+    // related nodes
+    .inline-content-nodes {
+        margin: 1.5em 0; // articles have horizontal padding
+        &.vertical {
+            @media (max-width: 767px) {
+                @include clearfix;
+            }
+            @include breakpoint($breakpoint-tablet) {
+                float: right;
+                margin: .25em .5em;
+                width: 33%;
+                max-width: 150px; // this is the max width of the thumbnail image style we're using
+            }
+            @include breakpoint($breakpoint-desktop) {
+                width: 25%;
+            }
+            &.inline-node-poll {
+                width: 50%;
+                max-width: none;
+            }
+        }
+
+        &.horizontal {
+            @include clearfix;
+
+            @include breakpoint($breakpoint-tablet) {
+                .node {
+                    width: 30%;
+                    float: left;
+                    margin-right: 2.4%;
+                    &:first-child { margin-left: 2.4%; }
+                }
+            }
+        }
+
+        .node {
+            a:hover {
+                color: black;
+                h2 {
+                    text-decoration: underline;
+                }
+            }
+
+            text-align: center;
+            > header {
+                h2 {
+                    font-size: 14px;
+                    line-height: 1.285714286;
+                    margin-top: 0;
+                    color: black;
+                }
+            }
+
+            @include dashed-separator-after();
+            &:after { // override the mixin
+                      margin: 1em auto;
+                      visibility: visible; // override clearfix settings on node.article
+            }
+            &:last-child:after {
+                margin-bottom: 0; // the <aside> container has the outermost margin
+            }
+        }
+
+
+        // style the damn thing
+        border-top: 1px solid $blue;
+        &:before {
+            content: 'related';
+            display: block;
+            font-size: 12px;
+            line-height: 1;
+            text-align: center;
+            font-family: $main-brand-font;
+            font-weight: bold;
+            height: 12px;
+            padding: 9px 0 15px;
+            width: 75px;
+            color: white;
+            background-color: $blue;
+            margin: 0 auto 14px;
+            @include border-corner-radius(bottom, left, 36px);
+            @include border-corner-radius(bottom, right, 36px);
+        }
+    } // inline content
+
+    .topic-links {
         margin-bottom: 2em;
-      .field-item {
-        @include blue-square-bullets;
-      }
+        @include comma-list;
+        @include mint-sans-links;
+    } // .topic-links
+
+    #article-footer,
+    #article-comments {
+        h2.block-title, h3 {
+            font-family: $main-brand-font;
+            font-weight: bold;
+            font-size: 1.5em;
+            line-height: 1.2;
+            margin: .667em 0; // account for different margins in the comp
+            text-transform: lowercase;
+
+            &.top-border {
+                @include header-top-border;
+            }
+            span {
+                font-family: $primary-sans-font;
+                font-weight: 100;
+                font-size: 14px;
+            }
+        }
     }
-    .on-our-radar {
-      h3 {
-        text-transform: lowercase;
-      }
-      ol {
-	li {
-	  @include blue-square-bullets;
-	  a {
-	    font-family: $primary-sans-font;
-	    font-weight: normal;
-	    span {
-	      font-size: .857142857em;
-	      line-height: 1.5;
-	      font-family: $primary-sans-font;
-        font-weight: 100;
-	      text-transform: uppercase;
-	    }
-	  }
-	}
-      }
-    } // .on-our-radar
-  } // #article-footer
+
+    #article-footer {
+        border-top: 1px solid $gray-line;
+        line-height: 1.5;
+        clear: both;
+
+        .field-name-field-related-stories {
+            margin-bottom: 2em;
+            .field-item {
+                @include blue-square-bullets;
+            }
+        }
+        .on-our-radar {
+            h3 {
+                text-transform: lowercase;
+            }
+            ol {
+                li {
+                    @include blue-square-bullets;
+                    a {
+                        font-family: $primary-sans-font;
+                        font-weight: normal;
+                        span {
+                            font-size: .857142857em;
+                            line-height: 1.5;
+                            font-family: $primary-sans-font;
+                            font-weight: 100;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+        } // .on-our-radar
+    } // #article-footer
 }
 
 //
 // Feature Article Overrides
 //
 .node-feature-article.view-mode-full {
-  .author-bio {
-    max-width: 550px;
-  }
-
-  .field-name-body {
-    font-size: 1.142857143em;
-  }
-
-  // INLINE CONTENT
-  // google ad slot
-  // extra styling for breaking the grid
-  .block-boxes-ga_ad {
-    @include breakpoint($breakpoint-desktop) {
-      margin-right: -66px;
+    .author-bio {
+        max-width: 550px;
     }
-  }
 
-  // break the grid for horizontal inline content
-  .inline-content-nodes {
-    &.horizontal {
-      @include breakpoint($breakpoint-desktop) {
-        width: 500px;
-        float: right;
-        margin: 0 -66px 0 1em;
+    .field-name-body {
+        font-size: 1.142857143em;
+    }
 
-        .node {
-          max-width: 150px;
-          margin-right: 0;
-          margin-left: 25px;
-          &:first-child {
-            margin-left: 0;
-          }
+    // INLINE CONTENT
+    // google ad slot
+    // extra styling for breaking the grid
+    .block-boxes-ga_ad {
+        @include breakpoint($breakpoint-desktop) {
+            margin-right: -66px;
         }
-      }
     }
-  }
 
-  // utility classes for offsets (not just <figure>s)
-  // get extra styling for breaking the grid
-  .align-right {
-    @include breakpoint($breakpoint-tablet) {
-      margin-left: 2em;
+    // break the grid for horizontal inline content
+    .inline-content-nodes {
+        &.horizontal {
+            @include breakpoint($breakpoint-desktop) {
+                width: 500px;
+                float: right;
+                margin: 0 -66px 0 1em;
+
+                .node {
+                    max-width: 150px;
+                    margin-right: 0;
+                    margin-left: 25px;
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
     }
-    @include breakpoint($breakpoint-desktop) {
-      margin-right: -66px !important;
+
+    // utility classes for offsets (not just <figure>s)
+    // get extra styling for breaking the grid
+    .align-right {
+        @include breakpoint($breakpoint-tablet) {
+            margin-left: 2em;
+        }
+        @include breakpoint($breakpoint-desktop) {
+            margin-right: -66px !important;
+        }
     }
-  }
-  .align-left {
-    @include breakpoint($breakpoint-tablet) {
-      margin-right: 2em;
+    .align-left {
+        @include breakpoint($breakpoint-tablet) {
+            margin-right: 2em;
+        }
+        @include breakpoint($breakpoint-desktop) {
+            margin-left: -66px !important;
+        }
     }
-    @include breakpoint($breakpoint-desktop) {
-      margin-left: -66px !important;
+    .align-center {
+        display: block;
+        margin: 1em auto !important;
+        max-width: 100% !important; // override style attribute for large images
     }
-  }
-  .align-center {
-    display: block;
-    margin: 1em auto !important;
-    max-width: 100% !important; // override style attribute for large images
-  }
-  .align-full {
-    @include breakpoint($breakpoint-desktop) {
-      width: 912px;
-      margin-left: -66px !important;
-      margin-right: -66px !important;
+    .align-full {
+        @include breakpoint($breakpoint-desktop) {
+            width: 912px;
+            margin-left: -66px !important;
+            margin-right: -66px !important;
+        }
     }
-  }
 } // .node-feature-article
 
 //
 // Flashcard Overrides
 //
 .node-flashcard.view-mode-full {
-  .flashcard-definition {
-    @include box-sizing(border-box);
-    @include box-shadow(0 0 0 1px #e0e0e0);
-    padding: 2em 1em;
-    border-top: 4px solid $flashcard-active;
+    .flashcard-definition {
+        @include box-sizing(border-box);
+        @include box-shadow(0 0 0 1px #e0e0e0);
+        padding: 2em 1em;
+        border-top: 4px solid $flashcard-active;
 
-    &:before {
-      content: 'definition';
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      background-color: $flashcard-active;
-      color: white;
-      font: normal 1em/1 $main-brand-font;
-      padding: .25em 1.5em;
+        &:before {
+            content: 'definition';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: $flashcard-active;
+            color: white;
+            font: normal 1em/1 $main-brand-font;
+            padding: .25em 1.5em;
+        }
+        @include breakpoint($breakpoint-tablet) {
+            width: 410px;
+        }
+
+        .field-name-field-flashcard-display-name {
+            display: inline-block;
+            font-size: 2.142857143em;
+            margin: 0;
+            dfn {
+                font-style: normal;
+            }
+        }
+        .field-name-field-flashcard-pronunciation {
+            display: inline-block;
+            vertical-align: top;
+            margin: .5em 0 0 1em;
+        }
+
+        p {
+            margin: .75em 0;
+        }
     }
-    @include breakpoint($breakpoint-tablet) {
-      width: 410px;
+    .flashcard-realted-content-primary {
+        @include breakpoint($breakpoint-tablet) {
+            width: 237px;
+        }
+    }
+    .flashcard-definition,
+    .flashcard-realted-content-primary {
+        margin-bottom: 1.5em;
+        position: relative;
+        z-index: 1;
+        @include breakpoint($breakpoint-tablet) {
+            float: right;
+            clear: right;
+            margin: 7px 0 2em 1.5em;
+        }
     }
 
-    .field-name-field-flashcard-display-name {
-      display: inline-block;
-      font-size: 2.142857143em;
-      margin: 0;
-      dfn {
-        font-style: normal;
-      }
-    }
-    .field-name-field-flashcard-pronunciation {
-      display: inline-block;
-      vertical-align: top;
-      margin: .5em 0 0 1em;
+    .field-name-field-article-subhead {
+        margin-top: .625em;
     }
 
-    p {
-      margin: .75em 0;
+    .field-name-body {
+        margin-bottom: 2.5em;
+        & > .field-items > .field-item > p:first-of-type {
+            &::first-letter {
+                float: none;
+                margin: 0;
+                font: normal normal 100 1em/1.5 $primary-sans-font;
+            }
+        }
     }
-  }
-  .flashcard-realted-content-primary {
-    @include breakpoint($breakpoint-tablet) {
-      width: 237px;
-    }
-  }
-  .flashcard-definition,
-  .flashcard-realted-content-primary {
-    margin-bottom: 1.5em;
-    position: relative;
-    z-index: 1;
-    @include breakpoint($breakpoint-tablet) {
-      float: right;
-      clear: right;
-      margin: 7px 0 2em 1.5em;
-    }
-  }
-
-  .field-name-field-article-subhead {
-    margin-top: .625em;
-  }
-
-  .field-name-body {
-    margin-bottom: 2.5em;
-    & > .field-items > .field-item > p:first-of-type {
-      &::first-letter {
-        float: none;
-        margin: 0;
-        font: normal normal 100 1em/1.5 $primary-sans-font;
-      }
-    }
-  }
 }
 
 //
 // Flashcard pages non-node content
-// 
+//
 .page-node.node-type-flashcard {
-  #main { // need the ID for specificity
-    background-color: transparent;
-  }
-
-  .flashcard-branding {
-    font: bold normal 1.428571429em/1.2 $main-brand-font;
-    background: transparent inline-image("flashcards-brand-icon.png") no-repeat scroll left center;
-    padding-left: 1.65em;
-    margin: 1em 0 .5em;
-    a {
-      color: $flashcard-active;
-      &:hover {
-        color: $flashcard-active;
-        text-decoration: none;
-      }
-      &:before {
-        content: '\FB02';
-        display: inline;
-      }
-      span {
-        display: none;
-      }
-    }
-  }
-  .flashcard-cta-link {
-    display: inline-block;
-    padding: .25em 1.5em;
-    background-color: $light-mint;
-    color: white;
-    font-family: $primary-sans-font;
-    line-height: 1.5em;
-    @include blue-arrow-bullets;
-    &:before {
-      display: inline-block;
-      position: static;
-      color: white;
-      width: auto;
-      padding-right: 0.45em;
-      vertical-align: sub;
-    }
-    &:hover {
-      text-decoration: none;
-      background-color: black;
-    }
-    @include breakpoint($breakpoint-tablet) {
-      display: block;
-    }
-  }
-  .node.view-mode-feature-secondary {
-    .field-name-field-thumbnail,
-    .field-name-field-action-main-image {
-      margin-bottom: .625em;
-    }
-    img {
-      display: block;
-    }
-    .flashcard-node-label {
-      margin: 0;
-    }
-    .node-title {
-      font-size: 1.142857143em;
-      line-height: 1.25;
-      margin: .375em 0;
-    }    
-  }
-
-  .block-tp-flashcards {
-    margin-bottom: 3em;
-
-    h2.section-header {
-      font-family: $main-brand-font;
-      font-weight: bold;
-      font-size: 1.5em;
-      line-height: 1.2;
-      margin: .667em 0; // account for different margins in the comp
-      text-transform: lowercase;
-      &.top-border {
-        @include header-top-border;
-      }
-
-      span {
-        font-family: $primary-sans-font;
-        font-weight: 100;
-        font-size: 14px;
-      }
+    #main { // need the ID for specificity
+            background-color: transparent;
     }
 
+    .flashcard-branding {
+        font: bold normal 1.428571429em/1.2 $main-brand-font;
+        background: transparent inline-image("flashcards-brand-icon.png") no-repeat scroll left center;
+        padding-left: 1.65em;
+        margin: 1em 0 .5em;
+        a {
+            color: $flashcard-active;
+            &:hover {
+                color: $flashcard-active;
+                text-decoration: none;
+            }
+            &:before {
+                content: '\FB02';
+                display: inline;
+            }
+            span {
+                display: none;
+            }
+        }
+    }
     .flashcard-cta-link {
-      display: inline-block;
+        display: inline-block;
+        padding: .25em 1.5em;
+        background-color: $light-mint;
+        color: white;
+        font-family: $primary-sans-font;
+        line-height: 1.5em;
+        @include blue-arrow-bullets;
+        &:before {
+            display: inline-block;
+            position: static;
+            color: white;
+            width: auto;
+            padding-right: 0.45em;
+            vertical-align: sub;
+        }
+        &:hover {
+            text-decoration: none;
+            background-color: black;
+        }
+        @include breakpoint($breakpoint-tablet) {
+            display: block;
+        }
     }
-  }
+    .node.view-mode-feature-secondary {
+        .field-name-field-thumbnail,
+        .field-name-field-action-main-image {
+            margin-bottom: .625em;
+        }
+        img {
+            display: block;
+        }
+        .flashcard-node-label {
+            margin: 0;
+        }
+        .node-title {
+            font-size: 1.142857143em;
+            line-height: 1.25;
+            margin: .375em 0;
+        }
+    }
 
-  .flashcard-related-content-wrapper {
-    @include clearfix;
-    .node {
-      margin-bottom: 1em;
-      .node-title {
+    .block-tp-flashcards {
+        margin-bottom: 3em;
+
+        h2.section-header {
+            font-family: $main-brand-font;
+            font-weight: bold;
+            font-size: 1.5em;
+            line-height: 1.2;
+            margin: .667em 0; // account for different margins in the comp
+            text-transform: lowercase;
+            &.top-border {
+                @include header-top-border;
+            }
+
+            span {
+                font-family: $primary-sans-font;
+                font-weight: 100;
+                font-size: 14px;
+            }
+        }
+
+        .flashcard-cta-link {
+            display: inline-block;
+        }
+    }
+
+    .flashcard-related-content-wrapper {
+        @include clearfix;
+        .node {
+            margin-bottom: 1em;
+            .node-title {
+                font-size: 1em;
+                line-height: 1.285714286;
+            }
+            @include breakpoint($breakpoint-tablet) {
+                float: left;
+                width: 47.4%;
+                margin-left: 5%;
+                &:nth-child(2n+1) {
+                    clear: left;
+                    margin-left: 0;
+                }
+            }
+            @include breakpoint($breakpoint-desktop) {
+                width: 23.1%;
+                margin-left: 2.5%;
+                &:nth-child(2n+1) { // override tablet styling
+                                    clear: none;
+                                    margin-left: 2.5%;
+                }
+                &:nth-child(4n+1) {
+                    clear: left;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    .topic-links {
+        @include comma-list;
+        @include mint-sans-links;
+    }
+
+    .view-flashcard-organizations-experts {
+        li {
+            @include clearfix;
+            margin: 1em 0;
+        }
+        .flashcard-organization-image {
+            float: left;
+            margin-right: 1em;
+        }
+    }
+    .flashcard-node-label,
+    .flashcard-organization-label {
+        font: normal normal .857142857em/1.166666667 $primary-sans-font;
+        text-transform: uppercase;
+        margin: 1.166666667em 0 0.5em;
+    }
+    .flashcard-organization-name {
+        font-weight: normal;
         font-size: 1em;
         line-height: 1.285714286;
-      }
-      @include breakpoint($breakpoint-tablet) {
-        float: left;
-        width: 47.4%;
-        margin-left: 5%;
-        &:nth-child(2n+1) {
-          clear: left;
-          margin-left: 0;
+        a:after {
+            content: "";
+            display: inline-block;
+            vertical-align: baseline;
+            width: 15px;
+            height: 11px;
+            padding-left: 6px;
+            background: transparent inline-image("icon-link-offsite.png") scroll no-repeat bottom right;
         }
-      }
-      @include breakpoint($breakpoint-desktop) {
-        width: 23.1%;
-        margin-left: 2.5%;
-        &:nth-child(2n+1) { // override tablet styling
-          clear: none;
-          margin-left: 2.5%;
-        }
-        &:nth-child(4n+1) {
-          clear: left;
-          margin-left: 0;
-        }
-      }
     }
-  }
-
-  .topic-links {
-    @include comma-list;
-    @include mint-sans-links;
-  }
-
-  .view-flashcard-organizations-experts {
-    li {
-      @include clearfix;
-      margin: 1em 0;
-    }
-    .flashcard-organization-image {
-      float: left;
-      margin-right: 1em;
-    }
-  }
-  .flashcard-node-label,
-  .flashcard-organization-label {
-    font: normal normal .857142857em/1.166666667 $primary-sans-font;
-    text-transform: uppercase;
-    margin: 1.166666667em 0 0.5em;
-  }
-  .flashcard-organization-name {
-    font-weight: normal;
-    font-size: 1em;
-    line-height: 1.285714286;
-    a:after {
-      content: "";
-      display: inline-block;
-      vertical-align: baseline;
-      width: 15px;
-      height: 11px;
-      padding-left: 6px;
-      background: transparent inline-image("icon-link-offsite.png") scroll no-repeat bottom right;
-    }
-  }
 
 }
 
 .author-bio{
-  width: auto;
-  padding: 10px;
-  position: relative;
-  margin: 1.5em 0;
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 48px;
-    width: 48px;
-    border-top: 1px solid $gray-line;
-    border-left: 1px solid $gray-line;
-  }
-
-  .bio-inner{
-    padding-top: 5px;
-  }
-  .author{
-    font-family: $primary-serif-font;
-    font-weight: 100;
-    font-style: italic;
-  }
-  .date{
-    font-family: $primary-sans-font;
-    font-weight: 100;
+    width: auto;
+    padding: 10px;
     position: relative;
-    margin-right: 10px;
-    padding-right: 10px;
-    // override stuff from the global .date style
-    float: none;
-    display: inline;
-    &:after{
-      content: '';
-      display: block;
-      height: 12px;
-      border-right: 1px solid #000;
-      position: absolute;
-      right: 0;
-      top: -1px;
+    margin: 1.5em 0;
+    &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 48px;
+        width: 48px;
+        border-top: 1px solid $gray-line;
+        border-left: 1px solid $gray-line;
     }
-  }
-  .profile-photo{
-    float: left;
-    margin-right: 10px;
-    border: 1px solid #eee;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    filter: grayscale(100%);
-  }
-  .bio{
-    padding-top: 5px;
-    margin-left: 62px;
-    p{
-      margin: 0;
+
+    .bio-inner{
+        padding-top: 5px;
     }
-  }
-  .more-links{
-    @include clearfix;
-    .more{
-      margin-top: 5px;
-      float: left;
-      margin-right: 5px;
-      line-height: 24px;
-      display: inline-block;
-      @include blue-arrow-bullets;
-      span {
-        height: 24px;
-        width: 24px;
-        display: inline-block;
-        vertical-align: middle;
-        margin-left: 5px;
-	     @include transform(scale(.791666667));
-       -webkit-backface-visibility: hidden;
-      }
+    .author{
+        font-family: $primary-serif-font;
+        font-weight: 100;
+        font-style: italic;
     }
-  }
+    .date{
+        font-family: $primary-sans-font;
+        font-weight: 100;
+        position: relative;
+        margin-right: 10px;
+        padding-right: 10px;
+        // override stuff from the global .date style
+        float: none;
+        display: inline;
+        &:after{
+            content: '';
+            display: block;
+            height: 12px;
+            border-right: 1px solid #000;
+            position: absolute;
+            right: 0;
+            top: -1px;
+        }
+    }
+    .profile-photo{
+        float: left;
+        margin-right: 10px;
+        border: 1px solid #eee;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        filter: grayscale(100%);
+    }
+    .bio{
+        padding-top: 5px;
+        margin-left: 62px;
+        p{
+            margin: 0;
+        }
+    }
+    .more-links{
+        @include clearfix;
+        .more{
+            margin-top: 5px;
+            float: left;
+            margin-right: 5px;
+            line-height: 24px;
+            display: inline-block;
+            @include blue-arrow-bullets;
+            span {
+                height: 24px;
+                width: 24px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-left: 5px;
+                @include transform(scale(.791666667));
+                -webkit-backface-visibility: hidden;
+            }
+        }
+    }
 }
 .topic-box img{
-  max-height: 30px;
-  overflow: hidden;
+    max-height: 30px;
+    overflow: hidden;
 }
 #series-navigation{
-  position: relative;
-  display: block;
-  width: auto;
-  overflow: hidden;
-  padding: 1em;
-  margin-bottom: 3em;
-  margin-top: 2em;
-  .left-border{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 45px;
-    height: 95px;
-    border-left: 1px solid $gray-line;
-    border-top: 1px solid $gray-line;
-    z-index: 0;
-  }
-  .right-border{
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 45px;
-    height: 95px;
-    border-right: 1px solid $gray-line;
-    border-top: 1px solid $gray-line;
-    z-index: 0;
-  }
-  img{
+    position: relative;
     display: block;
-    margin: 0 auto 1em;
-  }
-  .more-prev,
-  .more-next {
-    font-family: $primary-serif-font;
-    font-weight: bold;
-    position: relative;
-    a {
-      &:hover {
-        text-decoration: none;
-      }
-      &:before,
-      &:after {
-        font-family: "SSGizmo";
-        color: $mint;
-        vertical-align: bottom;
-        display: inline-block;
-      }
+    width: auto;
+    overflow: hidden;
+    padding: 1em;
+    margin-bottom: 3em;
+    margin-top: 2em;
+    .left-border{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 45px;
+        height: 95px;
+        border-left: 1px solid $gray-line;
+        border-top: 1px solid $gray-line;
+        z-index: 0;
     }
-  }
-  .more-prev{
-    float: left;
-      a:before {
-      content: "\23EA  ";
+    .right-border{
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 45px;
+        height: 95px;
+        border-right: 1px solid $gray-line;
+        border-top: 1px solid $gray-line;
+        z-index: 0;
     }
-  }
-  .more-next{
-    float: right;
-    a:after {
-      content: "  \23E9";
+    img{
+        display: block;
+        margin: 0 auto 1em;
     }
-  }
-  > a:hover {
-    .previous,
+    .more-prev,
+    .more-next {
+        font-family: $primary-serif-font;
+        font-weight: bold;
+        position: relative;
+        a {
+            &:hover {
+                text-decoration: none;
+            }
+            &:before,
+                &:after {
+                font-family: "SSGizmo";
+                color: $mint;
+                vertical-align: bottom;
+                display: inline-block;
+            }
+        }
+    }
+    .more-prev{
+        float: left;
+        a:before {
+            content: "\23EA  ";
+        }
+    }
+    .more-next{
+        float: right;
+        a:after {
+            content: "  \23E9";
+        }
+    }
+    > a:hover {
+        .previous,
+        .next {
+            text-decoration: underline;
+        }
+    }
+    .previous{
+        float: left;
+        clear: left;
+        width: 41%;
+        margin-top: 5px;
+        position: relative;
+        z-index: 2;
+    }
     .next {
-      text-decoration: underline;
+        float: right;
+        clear: right;
+        width: 41%;
+        text-align: right;
+        margin-top: 5px;
+        position: relative;
+        z-index: 2;
     }
-  }
-  .previous{
-    float: left;
-    clear: left;
-    width: 41%;
-    margin-top: 5px;
-    position: relative;
-    z-index: 2;
-  }
-  .next {
-    float: right;
-    clear: right;
-    width: 41%;
-    text-align: right;
-    margin-top: 5px;
-    position: relative;
-    z-index: 2;
-  }
 }
 
 //
 // Sticky Ad Unit for Sidebar
 //
 .block-boxes-ga_ad-bottom {
-  @include breakpoint($breakpoint-desktop) {
-    &.sticky {
-      position: fixed;
-      top: 0;
+    @include breakpoint($breakpoint-desktop) {
+        &.sticky {
+            position: fixed;
+            top: 0;
+        }
     }
-  }
 }
 
 
 .leaderboard div {
-  margin: 0 auto;
+    margin: 0 auto;
 }
