@@ -1,7 +1,7 @@
 name = TakePart Inline Content
 core = 7.x
 package = Content Types
-version = 7.x-1.0
+version = 7.x-1.1
 project = tpf_content_inline_content
 dependencies[] = context
 dependencies[] = ctools
@@ -17,6 +17,8 @@ dependencies[] = options
 dependencies[] = text
 dependencies[] = tpf_content_field_bases
 features[features_api][] = api:2
+features[field_base][] = field_ic_tap_widget_sponsor_name
+features[field_base][] = field_ic_tap_widget_sponsor_url
 features[field_instance][] = inline_content-image-field_ic_alignment
 features[field_instance][] = inline_content-image-field_ic_image
 features[field_instance][] = inline_content-image-field_ic_image_format

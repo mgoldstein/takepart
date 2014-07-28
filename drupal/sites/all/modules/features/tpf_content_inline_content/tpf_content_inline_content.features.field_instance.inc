@@ -643,7 +643,7 @@ function tpf_content_inline_content_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 5,
+      'weight' => 8,
     ),
   );
 
@@ -680,7 +680,7 @@ function tpf_content_inline_content_field_default_field_instances() {
         'maxlength_js_label' => '',
       ),
       'type' => 'options_buttons',
-      'weight' => 6,
+      'weight' => 9,
     ),
   );
 
@@ -726,7 +726,7 @@ function tpf_content_inline_content_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
