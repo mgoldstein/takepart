@@ -112,13 +112,11 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
 	  if ($sponsor_name = field_get_items('inline_content', $replacement, 'field_ic_tap_widget_sponsor_name')) {
 		  $data = reset($sponsor_name);
 		  $attributes['data-sponsor-name'] = $data['value'];
-		  dpm($data, 'data sponsor name');
 	  }
 
 	  // Set the widget's sponsor url.
 	  if ($sponsor_url = field_get_items('inline_content', $replacement, 'field_ic_tap_widget_sponsor_url')) {
 		  $data = reset($sponsor_url);
-		  dpm($data, 'data sponsor url');
 		  $attributes['data-sponsor-url'] = $data['url'];
 	  }
 
