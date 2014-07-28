@@ -48,41 +48,10 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
     $xml .= "  xmlns:admin=\"http://webns.net/mvcb/\"";
     $xml .= "  xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n";
     $xml .= "\t<channel>\n";
-
-    // Titles will change depending on the type of content selected:
-    /* foreach ($table_queue as $titles) {
-      if ($titles['alias'] == 'node') {
-      // @todo: what should the title / desc be if the view is being joined to a node?
-      // $node = node_load($termid);
-      // $title .= $node->title;
-      }
-
-      if (substr($titles['alias'], 0, 16) == 'field_data_field') {
-      // if we're joining against taxonomy, pull the title out:
-      $fieldname = substr($titles['alias'], 17, strlen($titles['alias']));
-      // @todo: null check this:
-      $termid = $vars['view']->args[0];
-      // find titles based on the parent field and id argument when the arg is taxonomy:
-      $terms = _takepart_rss_get_taxonomy_title($fieldname, $termid);
-
-      foreach ($terms as $term) {
-      $title .= $term->name;
-      $description .= $term->description;
-      }
-      }
-      } */
-
-    // @todo: add check for $options['escape_as_CDATA'] == 'yes')
     $xml .= "\t<title><![CDATA[" . $options['title'] . $title . "]]></title>\n";
     $xml .= "\t<link>" . _takepart_rss_selfURL() . "</link>\n";
-    // $xml .= "\t<description><![CDATA[" . $description . "]]></description>\n";
-    dd($vars['view']->current_display);
-    /*
-      $view = $vars['view'];
-      foreach ($view as $key => $value) {
-      dd($key . ":" . $value . "\n");
-      }
-     */
+    $xml .= "\t<description><![CDATA[TakePart - Stories That Matter, Action That Counts]]></description>\n";
+
     foreach ($rows as $row) {
         $xml .= "\t\t<item>\n";
         $content = '';
@@ -119,11 +88,9 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 $content = $object->content;
             }
         }
-
         if ($related_content) {
             $content .= "\n\n<nav><h2><strong>Related stories on TakePart:</strong></h2><br/>\n\n" . $related_content . '</nav>';
         }
-
         $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/") . $s;
         $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":" . $_SERVER["SERVER_PORT"]);
         $urlprefix = $protocol . "://" . $_SERVER['SERVER_NAME'] . $port;
