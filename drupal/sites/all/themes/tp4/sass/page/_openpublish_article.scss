@@ -120,8 +120,7 @@
   }
 
   // Override tp-sticky styles on sizes below $breakpoint-desktop
-  // This is a shining example of that "mobile last" design
-  // that you hear so much about. </sarcasm>
+  // "mobile last" design
   @media (max-width: 979px) {      
     .takepart-take-action,
     .comments-link,
@@ -209,6 +208,7 @@
     }
   }
 } // #article-social
+
 #article-social-more {
   position: relative;
   overflow: hidden;
@@ -265,6 +265,86 @@
   }
 }
 
+#article-social-mobile-bottom {
+
+  @media (max-width:979px) {
+    display:none; 
+  }
+
+  @media (max-width: 767px) {
+    display:table;
+    margin-bottom: 1em;
+    .takepart-take-action,
+    #article-share-mobile-bottom,
+    #article-share-mobile-bottom .tp-social-link {
+      float: left;
+    }
+    #article-share-mobile-bottom {
+      width: 150px;
+    }
+  }
+
+  // Override tp-sticky styles on sizes below $breakpoint-desktop
+    #article-tab-mobile-bottom {
+        float: left;
+    }
+  .tp-social-headline {
+    font: normal 14px/100% $secondary-sans-font;
+    color: $dark-gray;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -1px;
+    margin: 0;
+    float: left;
+    width: 38px;
+  	&.share-headline {
+  	  margin: 8px 0 0 1em;
+  	}
+    @include breakpoint($breakpoint-tablet) {
+      width: auto;
+      margin-top: 18px;
+      &.share-headline {
+        margin: 18px 0 0 30px;
+      }
+    }
+    @include breakpoint($breakpoint-desktop) {
+      width: 38px;
+      margin: 0 0 .1em;
+      width: auto;
+      float: none;
+      &.share-headline {
+        margin: 0 0 .1em;
+      }
+    }
+  }
+  .takepart-take-action {
+    height: 40px;
+    width: 40px;
+    margin: 2px 0 0;
+    @include breakpoint($breakpoint-desktop) {
+      margin: 0 0 1em;
+    }
+  }
+ 
+  #article-share-mobile-bottom .tp-social-link,
+  .comments-link a,
+  .trigger a {
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    padding: 12px;
+    text-indent: 24px;
+    background-color: transparent;
+    margin: 0 0 7px 6px;
+    @include breakpoint($breakpoint-tablet) {
+      margin-left: 9px;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      margin: 0 auto 5px;
+    }
+  }
+} // #article-social-mobile-bottom
 //
 // HEADER STYLES
 // common styles
