@@ -5169,11 +5169,7 @@ return TRUE;';
   $handler->display->display_options['title'] = 'TakePart Blogs Feed';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '3600';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '3600';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['slave'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -5395,28 +5391,6 @@ return TRUE;';
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_blogpost_main_image']['group_column'] = 'fid';
-  /* Field: File: Photo Credit */
-  $handler->display->display_options['fields']['field_media_credit']['id'] = 'field_media_credit';
-  $handler->display->display_options['fields']['field_media_credit']['table'] = 'field_data_field_media_credit';
-  $handler->display->display_options['fields']['field_media_credit']['field'] = 'field_media_credit';
-  $handler->display->display_options['fields']['field_media_credit']['relationship'] = 'field_main_image_fid';
-  $handler->display->display_options['fields']['field_media_credit']['label'] = '';
-  $handler->display->display_options['fields']['field_media_credit']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_media_credit']['alter']['text'] = '<br/>Photo Credit: [field_media_credit]';
-  $handler->display->display_options['fields']['field_media_credit']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_media_credit']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_media_credit']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: File: Caption */
-  $handler->display->display_options['fields']['field_media_caption']['id'] = 'field_media_caption';
-  $handler->display->display_options['fields']['field_media_caption']['table'] = 'field_data_field_media_caption';
-  $handler->display->display_options['fields']['field_media_caption']['field'] = 'field_media_caption';
-  $handler->display->display_options['fields']['field_media_caption']['relationship'] = 'field_main_image_fid';
-  $handler->display->display_options['fields']['field_media_caption']['label'] = '';
-  $handler->display->display_options['fields']['field_media_caption']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['text'] = '<br/>[field_media_caption] ';
-  $handler->display->display_options['fields']['field_media_caption']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_media_caption']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_media_caption']['type'] = 'text_plain';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Video Series (field_video_series) */
   $handler->display->display_options['arguments']['field_video_series_tid']['id'] = 'field_video_series_tid';
@@ -5559,29 +5533,6 @@ return TRUE;';
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  /* Field: File: Photo Credit */
-  $handler->display->display_options['fields']['field_media_credit']['id'] = 'field_media_credit';
-  $handler->display->display_options['fields']['field_media_credit']['table'] = 'field_data_field_media_credit';
-  $handler->display->display_options['fields']['field_media_credit']['field'] = 'field_media_credit';
-  $handler->display->display_options['fields']['field_media_credit']['relationship'] = 'field_blogpost_main_image_fid';
-  $handler->display->display_options['fields']['field_media_credit']['label'] = '';
-  $handler->display->display_options['fields']['field_media_credit']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_media_credit']['alter']['text'] = '<br/>Photo Credit: [field_media_credit]';
-  $handler->display->display_options['fields']['field_media_credit']['element_type'] = 'p';
-  $handler->display->display_options['fields']['field_media_credit']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_media_credit']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_media_credit']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: File: Caption */
-  $handler->display->display_options['fields']['field_media_caption']['id'] = 'field_media_caption';
-  $handler->display->display_options['fields']['field_media_caption']['table'] = 'field_data_field_media_caption';
-  $handler->display->display_options['fields']['field_media_caption']['field'] = 'field_media_caption';
-  $handler->display->display_options['fields']['field_media_caption']['relationship'] = 'field_blogpost_main_image_fid';
-  $handler->display->display_options['fields']['field_media_caption']['label'] = '';
-  $handler->display->display_options['fields']['field_media_caption']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_media_caption']['alter']['text'] = '<br/>[field_media_caption] ';
-  $handler->display->display_options['fields']['field_media_caption']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_media_caption']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_media_caption']['type'] = 'text_plain';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Blog (field_blogpost_blog) */
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['id'] = 'field_blogpost_blog_tid';
