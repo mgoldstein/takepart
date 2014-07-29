@@ -23,13 +23,13 @@
         return text;
     };
 
-    var get_share_url = function(url, callback, _shorten) {
+    var get_share_url = function(url, title, callback, _shorten) {
         var shorten = (typeof _shorten != 'undefined') ? _shorten : false;
         if(window.TP.tabHost){
             $.ajax({
                 url: window.TP.tabHost+"/share.json",
                 dataType: 'json',
-                data: {url: url, shorten: shorten},
+                data: {url: url, title: title, shorten: shorten},
                 type: 'POST',
                 xhrFields: { withCredentials: true },
                 success: function(data) { 
@@ -50,7 +50,7 @@
         caption: null,
         description: null,
         share: function(args) {
-            get_share_url(args.url, function(url) {
+            get_share_url(args.url, args.title, function(url) {
                 FB.ui({
                     method: 'feed',
                     name: args.title,
@@ -105,7 +105,7 @@
 
             if (text) url_obj.text = text;
 
-            get_share_url(args.url, function(new_url) {
+            get_share_url(args.url, args.title, function(new_url) {
                 var url_parts = [];
                 url_obj.url = new_url;
                 for ( var i in url_obj ) {
@@ -246,7 +246,7 @@
         width: 850,
         height: 600,
         share: function(args) {
-            get_share_url(args.url, function(_new_url){ 
+            get_share_url(args.url, args.title, function(_new_url){ 
                 var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(_new_url) + '&title=' + encodeURIComponent(args.title);
                 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
                 window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
@@ -384,7 +384,7 @@
                 .addClass('addthis_button_email addthis_button_compact')
                 .wrapInner('<span></span>');
 
-                get_share_url(args.url, function(_new_url) {
+                get_share_url(args.url, args.title, function(_new_url) {
                     $.tpsocial.load_script(window[email_var], email_script, this, function() {
                         var note = template_value('note', args);
 
