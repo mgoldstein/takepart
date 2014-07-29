@@ -34,6 +34,9 @@
                 xhrFields: { withCredentials: true },
                 success: function(data) { 
                     callback(data.share_url); 
+                },
+                error: function() {
+                    callback(url);
                 }
             });
         } else {
