@@ -70,13 +70,6 @@
   ?>
   </div>
 
-  <?php if (isset($series_nav)) : ?>
-  <nav id="series-navigation">
-  <div class="left-border"></div><div class="right-border"></div>
-    <?php print $series_nav; ?>
-  </nav>
-  <?php endif; ?>
-
   <aside id="article-social-mobile-bottom" class="social">
     <div class="inner">
       <div id="article-tab-mobile-bottom">
@@ -87,6 +80,13 @@
       <div class="tp-social" id="article-share-mobile-bottom"></div>
     </div>
   </aside><!-- / #article-social-mobile-bottom -->
+
+  <?php if (isset($series_nav)) : ?>
+  <nav id="series-navigation">
+  <div class="left-border"></div><div class="right-border"></div>
+    <?php print $series_nav; ?>
+  </nav>
+  <?php endif; ?>
   
   <footer id="article-footer">
     <h3>Related Stories on TakePart</h3>
