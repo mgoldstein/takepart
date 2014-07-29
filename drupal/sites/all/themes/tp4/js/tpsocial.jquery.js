@@ -36,7 +36,6 @@
                 .addClass(cpre + args.name)
                 .addClass(cpre + 'link')
                 .html(args.display);
-
         return $link;
     };
 
