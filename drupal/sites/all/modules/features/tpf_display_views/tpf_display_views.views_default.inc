@@ -760,11 +760,7 @@ function tpf_display_views_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '300';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '300';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -788,11 +784,11 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_actionheaderimg']['id'] = 'field_actionheaderimg';
   $handler->display->display_options['fields']['field_actionheaderimg']['table'] = 'field_data_field_actionheaderimg';
   $handler->display->display_options['fields']['field_actionheaderimg']['field'] = 'field_actionheaderimg';
-  /* Sort criterion: Node: Published at */
-  $handler->display->display_options['sorts']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['sorts']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['sorts']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['sorts']['published_at']['order'] = 'DESC';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   /* Contextual filter: Content: Type */
   $handler->display->display_options['arguments']['type']['id'] = 'type';
   $handler->display->display_options['arguments']['type']['table'] = 'node';
@@ -865,21 +861,16 @@ function tpf_display_views_views_default_views() {
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_thumbnail']['group_column'] = 'fid';
-  /* Field: Node: Published at */
-  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['label'] = '';
-  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['published_at']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['published_at']['custom_date_format'] = 'D, d M Y H:i:s T';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Content: Author(s) */
   $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
   $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
@@ -964,21 +955,16 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Node: Published at */
-  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['label'] = '';
-  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['published_at']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['published_at']['custom_date_format'] = 'D, d M Y H:i:s T';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Content: Author(s) */
   $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
   $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
@@ -1018,7 +1004,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '40';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '12';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'views_takepart_rss_style';
@@ -1043,14 +1029,6 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_flashcard_page_headline']['field'] = 'field_flashcard_page_headline';
   $handler->display->display_options['fields']['field_flashcard_page_headline']['label'] = '';
   $handler->display->display_options['fields']['field_flashcard_page_headline']['element_label_colon'] = FALSE;
-  /* Field: Node: Published at */
-  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['label'] = '';
-  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['published_at']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['published_at']['custom_date_format'] = 'D, d M Y H:i:s T';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -1060,6 +1038,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Content: Author(s) */
   $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
   $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
@@ -1068,13 +1047,6 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
   $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
-  /* Field: Field: Promo Text */
-  $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_promo_text']['hide_alter_empty'] = FALSE;
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -1180,9 +1152,12 @@ echo $separator;
   $handler->display->display_options['fields']['field_display_tag']['id'] = 'field_display_tag';
   $handler->display->display_options['fields']['field_display_tag']['table'] = 'field_data_field_display_tag';
   $handler->display->display_options['fields']['field_display_tag']['field'] = 'field_display_tag';
+  $handler->display->display_options['fields']['field_display_tag']['label'] = '';
   $handler->display->display_options['fields']['field_display_tag']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_display_tag']['alter']['text'] = '<br> [field_display_tag]';
+  $handler->display->display_options['fields']['field_display_tag']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_display_tag']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_display_tag']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Field: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
@@ -1204,21 +1179,16 @@ echo $separator;
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Node: Published at */
-  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['label'] = '';
-  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['published_at']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['published_at']['custom_date_format'] = 'D, d M Y H:i:s T';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Field: Promo Text */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
@@ -1295,29 +1265,16 @@ echo $separator;
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Node: Published at */
-  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['label'] = '';
-  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['published_at']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['published_at']['custom_date_format'] = 'D, d M Y H:i:s T';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
   $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  /* Field: Field: Promo Text */
-  $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_text']['alter']['text'] = '<br/>[field_promo_text]';
-  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_promo_text']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Admin Tag (field_admin_tag) */
   $handler->display->display_options['arguments']['field_admin_tag_tid']['id'] = 'field_admin_tag_tid';

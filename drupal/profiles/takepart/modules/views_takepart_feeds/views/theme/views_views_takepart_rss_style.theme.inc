@@ -56,8 +56,9 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
         $xml .= "\t\t<item>\n";
         $content = '';
         $related_content = '';
+        
         foreach ($row as $id => $object) {
-            if ($id === 'published_at') {
+            if ($id === 'created') {
                 $xml .= "\t\t\t<pubDate><![CDATA[" . $object->content . "]]></pubDate>\n";
             } elseif ($id === 'title') {
                 $headline = (array_key_exists('field_flashcard_page_headline', $row) ?
