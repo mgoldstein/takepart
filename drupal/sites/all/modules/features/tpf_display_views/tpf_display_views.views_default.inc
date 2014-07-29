@@ -1406,14 +1406,15 @@ echo $separator;
   $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
   $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
-  /* Field: Node: Published at */
-  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['label'] = '';
-  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['published_at']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['published_at']['custom_date_format'] = 'D, d M Y H:i:s T';
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -1482,13 +1483,14 @@ echo $separator;
   );
   $handler->display->display_options['filters']['field_admin_tag_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_admin_tag_tid']['vocabulary'] = 'admin_tag';
-  /* Filter criterion: Node: Published at */
-  $handler->display->display_options['filters']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['filters']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['filters']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['filters']['published_at']['operator'] = '>=';
-  $handler->display->display_options['filters']['published_at']['value']['value'] = '-7 days';
-  $handler->display->display_options['filters']['published_at']['value']['type'] = 'offset';
+  /* Filter criterion: Content: Post date */
+  $handler->display->display_options['filters']['created']['id'] = 'created';
+  $handler->display->display_options['filters']['created']['table'] = 'node';
+  $handler->display->display_options['filters']['created']['field'] = 'created';
+  $handler->display->display_options['filters']['created']['operator'] = '>=';
+  $handler->display->display_options['filters']['created']['value']['value'] = '-7 days';
+  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
+  $handler->display->display_options['filters']['created']['group'] = 1;
   $handler->display->display_options['path'] = 'content/%/mashable_feed.xml';
 
   /* Display: Mashable Short Feed */
@@ -1550,14 +1552,15 @@ echo $separator;
   $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
   $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
-  /* Field: Node: Published at */
-  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['label'] = '';
-  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['published_at']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['published_at']['custom_date_format'] = 'D, d M Y H:i:s T';
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -1601,13 +1604,13 @@ echo $separator;
   $handler->display->display_options['filters']['field_admin_tag_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_admin_tag_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_admin_tag_tid']['vocabulary'] = 'admin_tag';
-  /* Filter criterion: Node: Published at */
-  $handler->display->display_options['filters']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['filters']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['filters']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['filters']['published_at']['operator'] = '>=';
-  $handler->display->display_options['filters']['published_at']['value']['value'] = '-7 days';
-  $handler->display->display_options['filters']['published_at']['value']['type'] = 'offset';
+  /* Filter criterion: Content: Post date */
+  $handler->display->display_options['filters']['created']['id'] = 'created';
+  $handler->display->display_options['filters']['created']['table'] = 'node';
+  $handler->display->display_options['filters']['created']['field'] = 'created';
+  $handler->display->display_options['filters']['created']['operator'] = '>=';
+  $handler->display->display_options['filters']['created']['value']['value'] = '-7 days';
+  $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   $handler->display->display_options['path'] = 'content/%/mashable_feed_short.xml';
   $export['content_types_posts_feed'] = $view;
 
