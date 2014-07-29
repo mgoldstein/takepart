@@ -277,7 +277,7 @@ aside#article-social-mobile-bottom {
 
     @media (max-width: 767px) {
         display:table;
-        margin: 4px 0 0 0;
+        margin: 4px 0;
         .takepart-take-action,
         #article-share-mobile-bottom,
         #article-share-mobile-bottom .tp-social-link {
@@ -285,7 +285,7 @@ aside#article-social-mobile-bottom {
         }
         #article-share-mobile-bottom {
             width: auto;
-            padding-top: 12px
+            padding-top: 12px;
         }
     }
 

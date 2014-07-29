@@ -5631,7 +5631,7 @@ aside#article-social-mobile-bottom {
   /* line 275, ../sass/page/_openpublish_article.scss */
   aside#article-social-mobile-bottom {
     display: table;
-    margin: 4px 0 0 0;
+    margin: 4px 0;
   }
   /* line 283, ../sass/page/_openpublish_article.scss */
   aside#article-social-mobile-bottom .takepart-take-action,
