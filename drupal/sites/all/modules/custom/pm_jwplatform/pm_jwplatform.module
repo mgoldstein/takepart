@@ -38,7 +38,7 @@ function pm_jwplatform_get_api() {
   $key = variable_get('pm_jwplatform_api_key', '');
   $secret = variable_get('pm_jwplatform_api_secret', '');
   if (!empty($key) && !empty($secret)) {
-    return new \JPedius\BotrAPI($key, $secret);
+    return new \TakePart\BotrAPI($key, $secret);
   }
   return FALSE;
 }
