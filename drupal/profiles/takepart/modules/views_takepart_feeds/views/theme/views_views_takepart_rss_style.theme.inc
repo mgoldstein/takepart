@@ -67,7 +67,6 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                     $xml .= "\t\t\t<link><![CDATA[" . $poslink . "]]></link>\n";
                 }
             } elseif ($id === 'nid') { 
-                dd($object);
                 $xml .= "\t\t\t<guid isPermaLink=\"false\">" . $object->content . "</author>\n";
             } elseif ($id === 'field_author') {
                 $xml .= "\t\t\t<author><![CDATA[" . $object->content . "]]></author>\n";
