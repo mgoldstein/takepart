@@ -1,9 +1,6 @@
 <?php
-namespace TakePart\DigitalData\Strategies;
 
-use TakePart\DigitalData\BuildStrategy;
-
-class DefaultPage implements BuildStrategy {
+class ddDefaultPage implements ddBuildStrategy {
 
   public static function claim($path, $page) {
     // Claim all pages.
@@ -20,6 +17,7 @@ class DefaultPage implements BuildStrategy {
           'referringURL' => '%document.referrer',
         ),
       ),
+	    'damnson' => 'awwww snap',
       'event' => array(),
     );
   }

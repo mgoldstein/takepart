@@ -4,8 +4,6 @@
  * Digital Data Module
  */
 
-use TakePart\DigitalData\StrategyFactory;
-
 /**
  * Available data building strategies.
  *
@@ -15,9 +13,9 @@ use TakePart\DigitalData\StrategyFactory;
  */
 function tp_digital_data_strategies() {
   return array(
-    'TakePart\DigitalData\Strategies\Campaign',
-    'TakePart\DigitalData\Strategies\Content',
-    'TakePart\DigitalData\Strategies\SiteFrontPage',
+    'DDCampaign',
+    'DDContent',
+    'DDSiteFrontPage',
   );
 }
 
@@ -28,7 +26,7 @@ function tp_digital_data_strategy_factory() {
   static $factory = NULL;
   if (is_null($factory)) {
     $strategies = tp_digital_data_strategies();
-    $factory = new StrategyFactory($strategies);
+    $factory = new ddStrategyFactory($strategies);
   }
   return $factory;
 }

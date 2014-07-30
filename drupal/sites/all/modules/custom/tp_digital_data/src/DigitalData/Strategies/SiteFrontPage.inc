@@ -1,7 +1,6 @@
 <?php
-namespace TakePart\DigitalData\Strategies;
 
-class SiteFrontPage extends DefaultPage {
+class ddSiteFrontPage extends ddDefaultPage {
 
   public static function claim($path, $page) {
     // Claim the front page.
@@ -11,12 +10,10 @@ class SiteFrontPage extends DefaultPage {
 
   public function build($page) {
 
-    $data = parent::build($page);
-
     $pageID = 'Front Page';
     $environment = ENVIRONMENT;
 
-    $data += array(
+    $data = array(
       'pageInstanceID' => "{$pageID} - {$environment}",
       'page' => array(
         'pageInfo' => array(
@@ -25,6 +22,8 @@ class SiteFrontPage extends DefaultPage {
         ),
       ),
     );
+
+	  $data += parent::build($page);
 
     return $data;
   }

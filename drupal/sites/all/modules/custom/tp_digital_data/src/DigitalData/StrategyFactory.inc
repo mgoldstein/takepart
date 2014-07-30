@@ -1,9 +1,7 @@
 <?php
-namespace TakePart\DigitalData;
 
-use TakePart\DigitalData\Strategies\DefaultPage;
 
-class StrategyFactory {
+class ddStrategyFactory {
 
   protected static $strategies = array();
 
@@ -25,6 +23,6 @@ class StrategyFactory {
     if (!is_null($strategy_class)) {
       return new $strategy_class;
     }
-    return new DefaultPage($page);
+    return new ddDefaultPage($page);
   }
 }
