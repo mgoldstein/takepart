@@ -170,7 +170,8 @@ $(function() {
           var code = response.country.iso_code.toLowerCase();
           var regions = $(player).attr('data-allowed-regions').split(',');
           if ($.inArray(code, regions) < 0) { showBlocked(); return false; }
-          var url = "http://video.takepart.com/players/"
+          var url = window.location.protocol
+            + "//content.jwplatform.com/players/"
             + $(player).attr('data-botr-id') + ".js";
           $.getScript(url).fail(showBlocked);
         };
