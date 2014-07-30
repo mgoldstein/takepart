@@ -1,4 +1,4 @@
-<?php namespace Participant\OpenGraph\Video;
+<?php namespace Participant\MetaData\Video;
 
 class JWPlatformVideo implements SharedVideo
 {
@@ -34,11 +34,9 @@ class JWPlatformVideo implements SharedVideo
     return NULL;
   }
 
-  public function url($https = FALSE)
+  public function openGraphURL($https = FALSE)
   {
-    $video_url  = $https ? 'https://' : 'http://';
-    $video_url .= 'video.takepart.com';
-    $video_url .= '/videos/' . $this->key . '-' . $this->preferred_width .'.mp4';
+    $video_url = $this->url($https);
 
     $player_path = drupal_get_path('module', 'pm_core') . '/assets/player.swf';
 
@@ -55,6 +53,14 @@ class JWPlatformVideo implements SharedVideo
     list(, $resource) = explode('://', $absolute_url, 2);
     $scheme = $https ? 'https://' : 'http://';
     return $scheme . $resource;
+  }
+
+  public function url($https = FALSE)
+  {
+    $video_url  = $https ? 'https://' : 'http://';
+    $video_url .= variable_get('pm_jwplatform_content_domain');
+    $video_url .= '/videos/' . $this->key . '-' . $this->preferred_width .'.mp4';
+    return $video_url;
   }
 
   public function width()

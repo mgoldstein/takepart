@@ -74,6 +74,7 @@ $conf += array('bluehornet_default_account' => 'takepart');
 $conf += array(
   'pm_jwplatform_api_key' => 'NnnOqH8r',
   'pm_jwplatform_api_secret' => 'fJoeVtVS5YriI0Bnh8v6lo1i',
+  'pm_jwplatform_content_domain' => 'content.jwplatform.com',
 );
 
 
