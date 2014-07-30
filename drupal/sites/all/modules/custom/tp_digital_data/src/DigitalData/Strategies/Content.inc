@@ -1,7 +1,6 @@
 <?php
-namespace TakePart\DigitalData\Strategies;
 
-class Content extends DefaultPage {
+class ddContent extends ddDefaultPage {
 
   public static function claim($path, $page) {
     // Claim node pages.
@@ -21,11 +20,9 @@ class Content extends DefaultPage {
 
     $node = menu_get_object();
 
-    $data = parent::build($page);
-
     $pageID = "node/{$node->nid}";
 
-    $data += array(
+    $data = array(
       'pageInstanceID' => ENVIRONMENT . ': ' . $pageID,
       'page' => array(
         'pageInfo' => array(
@@ -37,6 +34,8 @@ class Content extends DefaultPage {
         ),
       ),
     );
+		/* This needs to come last to override default */
+	  $data += parent::build($page);
 
     return $data;
   }

@@ -1,7 +1,8 @@
 name = TakePart Display Views
+description = Configure Views for TakePart
 core = 7.x
 package = Content Display
-version = 7.x-1.2
+version = 7.x-1.3
 project = tpf_display_views
 dependencies[] = bean
 dependencies[] = context

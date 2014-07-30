@@ -8,6 +8,7 @@
   <aside id="gallery-cover-social" class="social">
     <h3 class="headline"><?=t('Share Gallery') ?></h3>
     <div class="tp-social" id="gallery-cover-share"></div>
+    <div class="tap-influence-overlay"></div>
   </aside>
   <div id="gallery-cover">
     <a id="gallery-enter-link" href="#enter-gallery">

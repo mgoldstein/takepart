@@ -29,6 +29,11 @@
   &.i-update-circle:after { content: '\e109'; }
   &.i-personal:after { content: '\e10A'; }
   &.i-user-avatar:after { content: '\e10C'; }
+  &.i-buzz:after { content: '\e10D'; }
+  &.i-concentric-circles:after { content: '\e10E'; }
+  &.i-thumbs-up:after { content: '\e10f'; }
+  &.i-badge:after { content: '\e110' }
+  &.i-influence:after { content: '\e111' }
 
   // Generic UI
   &.i-double-arrow-left:after { content: '\e605\e605'; letter-spacing: -1px; }

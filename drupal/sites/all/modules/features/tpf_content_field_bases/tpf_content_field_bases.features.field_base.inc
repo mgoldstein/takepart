@@ -4255,6 +4255,32 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_ic_tap_widget_type'
+  $field_bases['field_ic_tap_widget_type'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ic_tap_widget_type',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'actions_widget' => 'Action',
+        'influence_widget' => 'Influence',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_ic_tap_widget_width'
   $field_bases['field_ic_tap_widget_width'] = array(
     'active' => 1,

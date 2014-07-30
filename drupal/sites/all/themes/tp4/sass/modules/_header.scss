@@ -11,13 +11,13 @@ header {
   color: $dark-gray;
   .block{
     margin-bottom: 0em;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       margin-bottom: 1.5em;
     }
   }
   .leaderboard{
     display: none;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       display: block;
     }
   }
@@ -31,7 +31,7 @@ header {
     float: left;
     margin-right: 10px;
     margin-top: 4px;
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       display: none;
     }
   }
@@ -44,13 +44,13 @@ header {
     float: left;
     width: 121px;
     margin-bottom: 4px;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       width: auto;
     }
   }
   .follow-us{
     display: none;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       display: block;
       text-align: right;
       float: right;
@@ -123,7 +123,7 @@ header {
       overflow: hidden;
       width: 34px;
     }
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       display: block;
       float: right;
       clear: right;
@@ -181,7 +181,7 @@ header {
   }
 }
 
-@include breakpoint($breakpoint-mobile){
+@include breakpoint($breakpoint-mobile) {
   .search-toggle{
     position: absolute;
     bottom: 0;
@@ -210,7 +210,7 @@ header {
     }
   }
 }
-@include breakpoint($breakpoint-tablet){
+@include breakpoint($breakpoint-tablet) {
   .search-toggle{
     display: none;
   }
@@ -349,7 +349,7 @@ header {
           opacity: 1;
         }
       }
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         background: #FFF;
         width: 420px;
         [type=text] {
@@ -436,10 +436,10 @@ header {
   display: block;
   margin-right: 34px;
   float: right;
-  @include breakpoint($breakpoint-tablet){
+  @include breakpoint($breakpoint-tablet) {
     margin-right: 5px;
   }
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
 
   }
 }
@@ -459,7 +459,7 @@ header {
     border-right: 1px solid #949494;
     top: 11px;
   }
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
     margin-right: 10px;
   }
 }

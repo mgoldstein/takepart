@@ -4,4 +4,9 @@ core = 7.x
 version = 7.x-1.0
 package = TakePart
 
-dependencies[] = pm_core
+files[] = src/DigitalData/StrategyFactory.inc
+files[] = src/DigitalData/BuildStrategy.inc
+files[] = src/DigitalData/Strategies/Campaign.inc
+files[] = src/DigitalData/Strategies/Content.inc
+files[] = src/DigitalData/Strategies/DefaultPage.inc
+files[] = src/DigitalData/Strategies/SiteFront.inc
