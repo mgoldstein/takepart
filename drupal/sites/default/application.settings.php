@@ -15,30 +15,30 @@ if (file_exists($environment_settings_filename)) {
 // Define the global application settings.
 // +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 
-//// Memcache
-//if (isset($conf['memcache_servers']) && $conf['memcache_servers'] === FALSE) {
-//  unset($conf['memcache_servers']);
-//}
-//else {
-//  include_once('./includes/cache.inc');
-//  include_once('./sites/all/modules/contrib/memcache/memcache.inc');
-//  $conf += array(
-//    'cache_default_class' => 'MemCacheDrupal',
-//    'session_inc' => './sites/all/modules/contrib/memcache/memcache-session.inc',
-//    'memcache_bins' => array(
-//      'cache' => 'default',
-//      'cache_filter' => 'default',
-//      'cache_menu' => 'default',
-//      'cache_page' => 'default',
-//      'session' => 'default',
-//      'users' => 'default',
-//    ),
-//    'memcache_servers' => array(
-//      'localhost:11211' => 'default',
-//    ),
-//    'memcache_key_prefix' => 'local',
-//  );
-//}
+// Memcache
+if (isset($conf['memcache_servers']) && $conf['memcache_servers'] === FALSE) {
+  unset($conf['memcache_servers']);
+}
+else {
+ include_once('./includes/cache.inc');
+ include_once('./sites/all/modules/contrib/memcache/memcache.inc');
+ $conf += array(
+   'cache_default_class' => 'MemCacheDrupal',
+   'session_inc' => './sites/all/modules/contrib/memcache/memcache-session.inc',
+   'memcache_bins' => array(
+     'cache' => 'default',
+     'cache_filter' => 'default',
+     'cache_menu' => 'default',
+     'cache_page' => 'default',
+     'session' => 'default',
+     'users' => 'default',
+   ),
+   'memcache_servers' => array(
+     'localhost:11211' => 'default',
+   ),
+   'memcache_key_prefix' => 'local',
+ );
+}
 
 
 // HTTPS
@@ -68,6 +68,13 @@ $conf['bluehornet_api_accounts'] += array(
   ),
 );
 $conf += array('bluehornet_default_account' => 'takepart');
+
+
+// JWPlatform API account
+$conf += array(
+  'pm_jwplatform_api_key' => 'NnnOqH8r',
+  'pm_jwplatform_api_secret' => 'fJoeVtVS5YriI0Bnh8v6lo1i',
+);
 
 
 // TAP Integration
