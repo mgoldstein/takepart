@@ -36,12 +36,12 @@ abstract class JWPlatformMediaInternetContentProvider extends MediaInternetBaseH
       '@dashboard.bitsontherun.com/' . $this->content_type . 's/([A-Za-z0-9]+)@',
       '@dashboard.jwplatform.com/' . $this->content_type . 's/([A-Za-z0-9]+)@',
       '@content.bitsontherun.com/players/' . $embed_pattern . '@',
+      '@content.jwplatform.com/players/' . $embed_pattern . '@',
     );
 
     // Embed code using DNS mask (if one is provided)
-    $dns_mask = variable_get('pm_jwplatform_content_dns_mask',
-      'content.bitsontherun.com');
-    if ($dns_mask !== 'content.bitsontherun.com') {
+    $dns_mask = variable_get('pm_jwplatform_content_dns_mask', 'content.jwplatform.com');
+    if ($dns_mask !== 'content.bitsontherun.com' && $dns_mask !== 'content.jwplatform.com') {
         $patterns[] = '@' . $dns_mask . '/players/' . $embed_pattern . '@';
     }
 
