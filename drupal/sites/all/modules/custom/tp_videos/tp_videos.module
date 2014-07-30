@@ -4,8 +4,8 @@
  * Video content.
  */
 
-use \Participant\OpenGraph\Video\YoutubeVideo;
-use \Participant\OpenGraph\Video\JWPlatformVideo;
+use \Participant\MetaData\Video\YoutubeVideo;
+use \Participant\MetaData\Video\JWPlatformVideo;
 
 /**
  * Implements hook_entity_view_alter().
@@ -41,6 +41,11 @@ function tp_videos_token_info() {
         'iframe-embed-height' => array(
           'name' => 'iFrame Embed Height',
           'description' => t('Height for a node embed iframe.'),
+          'type' => 'format',
+        ),
+        'attached-video-file-secure-url' => array(
+          'name' => 'Video file URL',
+          'description' => t("The URL to the video file referenced in a node's video field."),
           'type' => 'format',
         ),
         'attached-video-width' => array(
@@ -95,16 +100,19 @@ function tp_videos_tokens($type, $tokens, array $data = array(),
           $replacements[$original] = tp_videos_iframe_embed_source($node, TRUE);
           break;
         case 'iframe-embed-width':
-          $replacements[$original] = variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH);
+          $replacements[$original] = variable_get('twitter_player_card_iframe_width', 640);
           break;
         case 'iframe-embed-height':
-          $replacements[$original] = variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT);
+          $replacements[$original] = variable_get('twitter_player_card_iframe_height', 480);
+          break;
+        case 'attached-video-file-secure-url':
+          $replacements[$original] = tp_videos_attached_video_file_url($node, TRUE);
           break;
         case 'attached-video-url':
-          $replacements[$original] = tp_videos_attached_video_url($node);
+          $replacements[$original] = tp_videos_attached_video_opengraph_url($node);
           break;
         case 'attached-video-secure-url':
-          $replacements[$original] = tp_videos_attached_video_url($node, TRUE);
+          $replacements[$original] = tp_videos_attached_video_opengraph_url($node, TRUE);
           break;
         case 'attached-video-width':
           $replacements[$original] = tp_videos_attached_video_width($node);
@@ -198,9 +206,14 @@ function tp_videos_attached_video_object($node) {
   return NULL;
 }
 
-function tp_videos_attached_video_url($node, $https = FALSE) {
+function tp_videos_attached_video_file_url($node, $https = FALSE) {
   $video = tp_videos_attached_video_object($node);
   return is_null($video) ? NULL : $video->url($https);
+}
+
+function tp_videos_attached_video_opengraph_url($node, $https = FALSE) {
+  $video = tp_videos_attached_video_object($node);
+  return is_null($video) ? NULL : $video->openGraphURL($https);
 }
 
 function tp_videos_attached_video_image($node, $https = FALSE) {
