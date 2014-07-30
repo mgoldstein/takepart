@@ -417,10 +417,12 @@
     var mailto_once = function() {
 
     };
+    /*
     var mailto_callback = function(addthis_event) {
         if ( addthis_event.data.service == mailto_args.name ) {
         }
     };
+    */
     if ("https:" == document.location.protocol) {
         var mailto_script = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
     } else {
@@ -431,20 +433,23 @@
     $.tpsocial.add_service({
         name: 'mailto',
         display: 'Email App',
-        share: function(args) {
-            mailto_args = args;
-        },
+        
+        share: null, 
+         //function() {
+           // mailto_args = args;
+        //},
+        
         prepare: function(el, args) {
             $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
                 }, mailto_once);
         },
         hoverfocus: function(args) {
-            if(!$(args.element).hasClass('addthis_button_mailto')) {
+            if (!$(args.element).hasClass('addthis_button_mailto')) {
                 $(args.element)
                 .addClass('addthis_button_mailto addthis_button_compact')
                 .wrapInner('<span></span>');
 
-                get_share_url(args.url, function(_new_url) {
+               get_share_url(args.url, args.title, function(_new_url) {
                     $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
                         var note = template_value('note', args);
 
@@ -463,7 +468,7 @@
                             addthis_config
                             );
                     }, mailto_once);
-                }, true);     
+                }, true);
             }
         }
     });

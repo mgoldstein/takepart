@@ -207,14 +207,36 @@
         text-indent: 24px;
         background-color: transparent;
         margin: 0 0 7px 6px;
+        @include breakpoint($breakpoint-mobile) {
+            &.tp-social-email {
+                display: none;
+            }
+            &.tp-social-mailto {
+                display: block;
+            }
+        }
         @include breakpoint($breakpoint-tablet) {
             margin-left: 9px;
+            &.tp-social-email {
+                display: none;
+            }
+            &.tp-social-mailto {
+                display: block;
+            }
         }
         @include breakpoint($breakpoint-desktop) {
             margin: 0 auto 5px;
+            &.tp-social-email {
+                display: block;
+            }
+            &.tp-social-mailto {
+                display: none;
+            }
         }
     }
 } // #article-social
+
+
 
 #article-social-more {
     position: relative;
@@ -342,6 +364,9 @@ aside#article-social-mobile-bottom {
         text-indent: 24px;
         background-color: transparent;
         margin: 0 0 7px 6px;
+        &.tp-social-email {
+            display: none;
+        }
         @include breakpoint($breakpoint-tablet) {
             margin-left: 9px;
         }

@@ -102,7 +102,8 @@
                     data.prepare($link[0], data);
                 }
 
-                // Bind an event to the link
+                // Bind an event to the link 
+                if (name != "mailto") {
                 $link
                         .bind('click', (function(srvc, $parent, $lnk) {
                             return function(e) {
@@ -129,6 +130,7 @@
                             }
                         })(srvc, $this, $link)
                                 );
+                    }
                 if (typeof data.hoverfocus == 'function') {
                     $link
                             .bind('mouseover focus', (function(srvc, $parent, $lnk) {
