@@ -365,9 +365,9 @@
         }
     };
     if ("https:" == document.location.protocol) {
-        var email_script = 'https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+        var email_script = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
     } else {
-        var email_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+        var email_script = 'http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
     }
     var email_var = 'addthis';
 
@@ -410,7 +410,8 @@
             }
         }
     });
-/*
+
+
     // Mailto
     var mailto_args;
     var mailto_once = function() {
@@ -429,7 +430,7 @@
 
     $.tpsocial.add_service({
         name: 'mailto',
-        display: 'Email',
+        display: 'Email App',
         share: function(args) {
             mailto_args = args;
         },
@@ -467,7 +468,7 @@
         }
     });
     // mailto
- */
+ 
     // More
     var more_args;
     var more_once = function() {

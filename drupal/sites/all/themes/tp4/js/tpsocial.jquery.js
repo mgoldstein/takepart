@@ -1,9 +1,4 @@
 (function(window, $, undefined) {
-
-    /*
-     data- attributes:
-     */
-
     // Plugin
 
     var dpre = 'tps';
@@ -69,9 +64,11 @@
             for (var s in services) {
                 var service = services[s];
                 var name = service.name;
+
                 // See if the requested service has been added
-                if (!(name in valid_services))
+                if (!(name in valid_services)) {
                     continue;
+                }
                 var srvc = $.extend({}, valid_services[name], service);
 
                 // Find the link for the requested service in the node
