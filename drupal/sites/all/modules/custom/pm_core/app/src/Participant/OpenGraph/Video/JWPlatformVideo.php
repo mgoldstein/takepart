@@ -37,7 +37,7 @@ class JWPlatformVideo implements SharedVideo
   public function url($https = FALSE)
   {
     $video_url  = $https ? 'https://' : 'http://';
-    $video_url .= 'videos.takepart.com';
+    $video_url .= 'video.takepart.com';
     $video_url .= '/videos/' . $this->key . '-' . $this->preferred_width .'.mp4';
 
     $player_path = drupal_get_path('module', 'pm_core') . '/assets/player.swf';
