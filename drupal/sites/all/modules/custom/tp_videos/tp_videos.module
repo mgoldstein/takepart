@@ -28,6 +28,21 @@ function tp_videos_token_info() {
           'description' => t('Markup to embed the node in an iframe on another site.'),
           'type' => 'format',
         ),
+        'iframe-embed-src' => array(
+          'name' => 'iFrame Embed Source',
+          'description' => t('Source for a node embed iframe.'),
+          'type' => 'format',
+        ),
+        'iframe-embed-width' => array(
+          'name' => 'iFrame Embed Width',
+          'description' => t('Width for a node embed iframe.'),
+          'type' => 'format',
+        ),
+        'iframe-embed-height' => array(
+          'name' => 'iFrame Embed Height',
+          'description' => t('Height for a node embed iframe.'),
+          'type' => 'format',
+        ),
         'attached-video-width' => array(
           'name' => 'Video width',
           'description' => "The width of the video in the node's video field",
@@ -76,6 +91,15 @@ function tp_videos_tokens($type, $tokens, array $data = array(),
         case 'iframe-embed-markup':
           $replacements[$original] = tp_videos_iframe_embed_markup($node);
           break;
+        case 'iframe-embed-src':
+          $replacements[$original] = tp_videos_iframe_embed_source($node, TRUE);
+          break;
+        case 'iframe-embed-width':
+          $replacements[$original] = variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH);
+          break;
+        case 'iframe-embed-height':
+          $replacements[$original] = variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT);
+          break;
         case 'attached-video-url':
           $replacements[$original] = tp_videos_attached_video_url($node);
           break;
@@ -114,6 +138,17 @@ function tp_videos_iframe_embed_markup($node) {
     'id' => 'entity_iframe_node_' . $node->nid,
   );
   return _entity_iframe_build_iframe($properties, 'video-embed');
+}
+
+/**
+ * Source URL for embedding a node using an iframe.
+ */
+function tp_videos_iframe_embed_source($node, $https = FALSE) {
+  global $base_url;
+  $src_url = $base_url . '/entity_iframe/node/' . $node->nid;
+  list(, $resource) = explode('://', $src_url, 2);
+  $scheme = $https ? 'https://' : 'http://';
+  return $scheme . $resource;
 }
 
 /**
