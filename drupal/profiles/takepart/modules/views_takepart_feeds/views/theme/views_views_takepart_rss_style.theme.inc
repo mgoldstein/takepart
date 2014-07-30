@@ -43,15 +43,12 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
     $options = $vars["options"];
     $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?" . ">\n";
     $xml .= "<rss version=\"2.0\"";
-    $xml .= "  xmlns:dc=\"http://purl.org/dc/elements/1.1/\"";
-    $xml .= "  xmlns:content=\"http://purl.org/rss/1.0/modules/content/\"";
-    $xml .= "  xmlns:admin=\"http://webns.net/mvcb/\"";
-    $xml .= "  xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\">\n";
+    $xml .= " xmlns:content=\"http://purl.org/rss/1.0/modules/content/\">\n";
     $xml .= "\t<channel>\n";
-    $xml .= "\t<title><![CDATA[" . $options['title'] . $title . "]]></title>\n";
+    $xml .= "\t<title>TakePart</title>\n";
     $xml .= "\t<link>" . _takepart_rss_selfURL() . "</link>\n";
-    $xml .= "\t<description><![CDATA[TakePart - Stories That Matter, Action That Counts]]></description>\n";
-
+    $xml .= "\t<description>Stories That Matter, Action That Counts</description>\n";
+    $xml .= "\t<language>en-us</language>\n";
     foreach ($rows as $row) {
         $xml .= "\t\t<item>\n";
         $content = '';
@@ -69,6 +66,9 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 if ($poslink) {
                     $xml .= "\t\t\t<link><![CDATA[" . $poslink . "]]></link>\n";
                 }
+            } elseif ($id === 'nid') { 
+                dd($object);
+                $xml .= "\t\t\t<guid isPermaLink=\"false\">" . $object->content . "</author>\n";
             } elseif ($id === 'field_author') {
                 $xml .= "\t\t\t<author><![CDATA[" . $object->content . "]]></author>\n";
             } elseif ($id === 'field_display_tag' && $object->content != '') {

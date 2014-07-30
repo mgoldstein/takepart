@@ -1341,6 +1341,12 @@ echo $separator;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1355,14 +1361,6 @@ echo $separator;
   $handler->display->display_options['fields']['field_article_subhead']['field'] = 'field_article_subhead';
   $handler->display->display_options['fields']['field_article_subhead']['label'] = '';
   $handler->display->display_options['fields']['field_article_subhead']['element_label_colon'] = FALSE;
-  /* Field: Content: Author(s) */
-  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
-  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
-  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
-  $handler->display->display_options['fields']['field_author']['label'] = '';
-  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
-  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -1384,14 +1382,6 @@ echo $separator;
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '1200',
   );
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count_distinct';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1459,6 +1449,12 @@ echo $separator;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1473,14 +1469,6 @@ echo $separator;
   $handler->display->display_options['fields']['field_article_subhead']['field'] = 'field_article_subhead';
   $handler->display->display_options['fields']['field_article_subhead']['label'] = '';
   $handler->display->display_options['fields']['field_article_subhead']['element_label_colon'] = FALSE;
-  /* Field: Content: Author(s) */
-  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
-  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
-  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
-  $handler->display->display_options['fields']['field_author']['label'] = '';
-  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
-  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -1490,14 +1478,6 @@ echo $separator;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  /* Field: Content: Nid */
-  $handler->display->display_options['fields']['nid']['id'] = 'nid';
-  $handler->display->display_options['fields']['nid']['table'] = 'node';
-  $handler->display->display_options['fields']['nid']['field'] = 'nid';
-  $handler->display->display_options['fields']['nid']['group_type'] = 'count_distinct';
-  $handler->display->display_options['fields']['nid']['label'] = '';
-  $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
