@@ -65,9 +65,8 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 $poslink = _takepart_rss_parseHref($object->content);
                 if ($poslink) {
                     $xml .= "\t\t\t<link><![CDATA[" . $poslink . "]]></link>\n";
+                    $xml .= "\t\t\t<guid isPermaLink=\"true\">" . $poslink . "</guid>\n";
                 }
-            } elseif ($id === 'nid') { 
-                $xml .= "\t\t\t<guid isPermaLink=\"false\">" . $object->content . "</guid>\n";
             } elseif ($id === 'field_author') {
                 $xml .= "\t\t\t<author><![CDATA[" . $object->content . "]]></author>\n";
             } elseif ($id === 'field_display_tag' && $object->content != '') {
