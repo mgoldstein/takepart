@@ -1392,20 +1392,6 @@ echo $separator;
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
-  /* Field: Field: Thumbnail Image */
-  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
-  $handler->display->display_options['fields']['field_thumbnail']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_thumbnail']['alter']['text'] = '[field_thumbnail-fid]';
-  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
-  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => 'large',
-    'image_link' => '',
-  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1473,20 +1459,6 @@ echo $separator;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Field: Thumbnail Image */
-  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
-  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
-  $handler->display->display_options['fields']['field_thumbnail']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_thumbnail']['alter']['text'] = '[field_thumbnail-fid]';
-  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
-  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => 'large',
-    'image_link' => '',
-  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
