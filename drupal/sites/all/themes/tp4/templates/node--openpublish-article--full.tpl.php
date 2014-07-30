@@ -28,7 +28,8 @@
     </header>
   <?php endif; ?>
 
-    <aside id="article-social" class="social"><div class="inner">
+    <aside id="article-social" class="social">
+        <div class="inner">
       <div id="article-tab">
       	<h3 class="tp-social-headline take-action-headline">Take Action</h3>
       	<p class="takepart-take-action"></p>
@@ -46,7 +47,8 @@
         </div>
       </div>
       <div class="tap-influence-overlay"></div>
-    </div></aside><!-- / #article-social -->
+    </div>
+    </aside><!-- / #article-social -->
 
 
   <div id="article-content">

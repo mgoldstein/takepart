@@ -922,7 +922,7 @@ function theme_takepart_addthis_full_page_button_bar($variables) {
       ),
       'email' => array(
         '#type' => 'markup',
-        '#markup' => '<a class="addthis_button_email"></a>',
+        '#markup' => '<a class="addthis_button_mailto"></a>',
       ),
     ),
   );

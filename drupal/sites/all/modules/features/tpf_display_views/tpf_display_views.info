@@ -1,5 +1,5 @@
 name = TakePart Display Views
-description = Configure Views for TakePart
+description = Configure Views for TakePart - added Mashable
 core = 7.x
 package = Content Display
 version = 7.x-1.3

@@ -1,9 +1,4 @@
 (function(window, $, undefined) {
-
-    /*
-     data- attributes:
-     */
-
     // Plugin
 
     var dpre = 'tps';
@@ -36,7 +31,6 @@
                 .addClass(cpre + args.name)
                 .addClass(cpre + 'link')
                 .html(args.display);
-
         return $link;
     };
 
@@ -70,9 +64,11 @@
             for (var s in services) {
                 var service = services[s];
                 var name = service.name;
+
                 // See if the requested service has been added
-                if (!(name in valid_services))
+                if (!(name in valid_services)) {
                     continue;
+                }
                 var srvc = $.extend({}, valid_services[name], service);
 
                 // Find the link for the requested service in the node
@@ -106,7 +102,8 @@
                     data.prepare($link[0], data);
                 }
 
-                // Bind an event to the link
+                // Bind an event to the link 
+                if (name != "mailto") {
                 $link
                         .bind('click', (function(srvc, $parent, $lnk) {
                             return function(e) {
@@ -133,6 +130,7 @@
                             }
                         })(srvc, $this, $link)
                                 );
+                    }
                 if (typeof data.hoverfocus == 'function') {
                     $link
                             .bind('mouseover focus', (function(srvc, $parent, $lnk) {

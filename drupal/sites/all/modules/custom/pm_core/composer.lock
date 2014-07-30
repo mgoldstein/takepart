@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1ca32f8c1ddb17de79d20ab61ec3f6f3",
+    "hash": "d58f29c5a45ff08150abab31bc5e9341",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -557,30 +557,26 @@
             "time": "2014-07-11 03:05:53"
         },
         {
-            "name": "dukt/vimeo",
-            "version": "dev-master",
+            "name": "embed/embed",
+            "version": "v1.5.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/dukt/vimeo.git",
-                "reference": "c693b88120a3c9f8824677a7c5f9a751d75bf722"
+                "url": "https://github.com/oscarotero/Embed.git",
+                "reference": "414183ce1c0c3a99e79d1ef18915ef8580c350b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dukt/vimeo/zipball/c693b88120a3c9f8824677a7c5f9a751d75bf722",
-                "reference": "c693b88120a3c9f8824677a7c5f9a751d75bf722",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/414183ce1c0c3a99e79d1ef18915ef8580c350b9",
+                "reference": "414183ce1c0c3a99e79d1ef18915ef8580c350b9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~3.7.16",
-                "squizlabs/php_codesniffer": "~1.4.4"
+                "php": ">=5.3.0"
             },
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "Dukt\\Vimeo": "src/"
+                    "Embed": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -589,64 +585,22 @@
             ],
             "authors": [
                 {
-                    "name": "Benjamin David",
-                    "email": "ben@dukt.net"
+                    "name": "Oscar Otero",
+                    "email": "oom@oscarotero.com",
+                    "homepage": "http://oscarotero.com",
+                    "role": "Developer"
                 }
             ],
-            "description": "Composer wrapper for Vimeo PHP library",
-            "homepage": "https://github.com/dukt/vimeo",
+            "description": "PHP library to retrieve page info using oembed, opengraph, etc",
+            "homepage": "https://github.com/oscarotero/Embed",
             "keywords": [
-                "video",
-                "videos",
-                "vimeo",
-                "youtube"
+                "embed",
+                "embedly",
+                "oembed",
+                "opengraph",
+                "twitter cards"
             ],
-            "time": "2014-04-17 19:20:11"
-        },
-        {
-            "name": "madcoda/php-youtube-api",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/madcoda/php-youtube-api.git",
-                "reference": "b4d888316974012c5d98d85bf4bca1c6fe06b8be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/madcoda/php-youtube-api/zipball/b4d888316974012c5d98d85bf4bca1c6fe06b8be",
-                "reference": "b4d888316974012c5d98d85bf4bca1c6fe06b8be",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">5.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "3.7.*@stable"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Madcoda": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Madcoda",
-                    "email": "jason@madcoda.com"
-                }
-            ],
-            "description": "PHP wrapper for the Youtube Data API v3",
-            "keywords": [
-                "api",
-                "madcoda",
-                "video",
-                "youtube"
-            ],
-            "time": "2014-07-07 04:59:39"
+            "time": "2014-07-29 11:55:03"
         },
         {
             "name": "symfony/console",
@@ -764,8 +718,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "dukt/vimeo": 20,
-        "madcoda/php-youtube-api": 20,
         "takepart/botr-api": 20
     },
     "platform": [],

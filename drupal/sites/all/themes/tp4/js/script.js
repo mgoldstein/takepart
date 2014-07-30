@@ -200,6 +200,10 @@
 
             {
               name: 'email'
+            },
+            
+            {
+              name: 'mailto'
             }
           ]
         };
