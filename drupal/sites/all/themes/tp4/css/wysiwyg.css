@@ -3938,7 +3938,7 @@ p:first-child {
 /* line 207, ../sass/helpers/_mixins.scss */
 .secondary-button a:not(.flashcard):before {
   font-family: "SSGizmo";
-  color: #01bf9e;
+  color: #0080a3;
   content: '\23E9';
   position: absolute;
   top: -1px;

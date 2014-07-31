@@ -44,6 +44,10 @@
     }
     p{
       margin-top: 0;
+      font-family: "AdelleSans", Verdana, sans-serif;
+      font-size: 14px;
+      line-height: 18px;
+      font-weight: 100;
     }
     .field-item p:first-of-type{
       margin-top: 0;
@@ -70,6 +74,15 @@
     font-weight: bold;
   }
   a.more-tpl {
-      color: #0084A9 !important;
+      color: $blue !important;
+      font-family: "AdelleSans", Verdana, sans-serif;
+      font-weight: 100;
+      font-size: 14px;
+      line-height: 22px;
+  }
+  .tpl-highlight {
+      font-family: "Brown", Verdana, sans-serif;
+      font-size: 20px;
+      font-weight: bold;
   }
 }
