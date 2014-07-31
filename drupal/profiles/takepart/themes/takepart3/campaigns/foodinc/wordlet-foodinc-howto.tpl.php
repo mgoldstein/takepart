@@ -17,9 +17,9 @@
             <iframe width="635" height="360" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
           <?php else: ?>
             <?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
-              <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('foodinc_howto_intro')->video; ?>.js"></script>
+              <script type="text/javascript" src="https://content.jwplatform.com/players/<?php print w('foodinc_howto_intro')->video; ?>.js"></script>
             <?php else: ?>
-              <script type="text/javascript" src="//video.takepart.com/players/<?php print w('foodinc_howto_intro')->video; ?>.js"></script>
+              <script type="text/javascript" src="//content.jwplatform.com/players/<?php print w('foodinc_howto_intro')->video; ?>.js"></script>
             <?php endif; ?>
           <?php endif; ?>
         </div>
@@ -53,9 +53,9 @@
                 <iframe width="635" height="360" src="//www.youtube.com/embed/<?php print $youtube_id; ?>" frameborder="0" allowfullscreen></iframe>
               <?php else: ?>
                 <?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
-                  <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('foodinc_howto_additional_info')->video; ?>.js"></script>
+                  <script type="text/javascript" src="https://content.jwplatform.com/players/<?php print w('foodinc_howto_additional_info')->video; ?>.js"></script>
                 <?php else: ?>
-                  <script type="text/javascript" src="//video.takepart.com/players/<?php print w('foodinc_howto_additional_info')->video; ?>.js"></script>
+                  <script type="text/javascript" src="//content.jwplatform.com/players/<?php print w('foodinc_howto_additional_info')->video; ?>.js"></script>
                 <?php endif; ?>
               <?php endif; ?>
             </div>

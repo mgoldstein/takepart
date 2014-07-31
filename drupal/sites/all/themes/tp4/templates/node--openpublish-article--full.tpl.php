@@ -28,7 +28,8 @@
     </header>
   <?php endif; ?>
 
-    <aside id="article-social" class="social"><div class="inner">
+    <aside id="article-social" class="social">
+        <div class="inner">
       <div id="article-tab">
       	<h3 class="tp-social-headline take-action-headline">Take Action</h3>
       	<p class="takepart-take-action"></p>
@@ -48,7 +49,8 @@
         </div>
       </div>
       <div class="tap-influence-overlay"></div>
-    </div></aside><!-- / #article-social -->
+    </div>
+    </aside><!-- / #article-social -->
 
 
   <div id="article-content">
@@ -72,13 +74,24 @@
   ?>
   </div>
 
+  <aside id="article-social-mobile-bottom" class="social">
+    <div class="inner">
+      <div id="article-tab-mobile-bottom">
+        <h3 class="tp-social-headline take-action-headline">Take Action</h3>
+        <p class="takepart-take-action"></p>
+      </div>
+    <h3 class="tp-social-headline share-headline">Share</h3>
+      <div class="tp-social" id="article-share-mobile-bottom"></div>
+    </div>
+  </aside><!-- / #article-social-mobile-bottom -->
+
   <?php if (isset($series_nav)) : ?>
   <nav id="series-navigation">
   <div class="left-border"></div><div class="right-border"></div>
     <?php print $series_nav; ?>
   </nav>
   <?php endif; ?>
-
+  
   <footer id="article-footer">
     <h3>Related Stories on TakePart</h3>
     <?php print render($content['field_related_stories']); ?>

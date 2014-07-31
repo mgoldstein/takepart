@@ -10,8 +10,7 @@
   ],
   "require": {
     "doctrine/orm": "2.4.*",
-    "dukt/vimeo": "dev-master",
-    "madcoda/php-youtube-api": "dev-master",
+    "embed/embed": "1.5.9",
     "takepart/botr-api": "dev-master"
   },
   "autoload": {

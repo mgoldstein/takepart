@@ -5,9 +5,10 @@ abstract class JWPlatformContentStreamWrapper extends MediaReadOnlyStreamWrapper
   protected $dns_mask;
 
   public function __construct() {
-    $dns_mask = variable_get('pm_jwplatform_content_dns_mask',
-      'content.bitsontherun.com');
-    $this->base_url = 'http://' . $dns_mask . '/';
+    global $is_https;
+    $dns_mask = variable_get('pm_jwplatform_content_domain', 'content.jwplatform.com');
+    $scheme = $is_https ? 'https' : 'http';
+    $this->base_url = "{$scheme}://{$dns_mask}/";
   }
 
   public function getJavaScriptUrl() {
@@ -22,7 +23,7 @@ abstract class JWPlatformContentStreamWrapper extends MediaReadOnlyStreamWrapper
 
   public function getOriginalThumbnailPath() {
     $parameters = $this->get_parameters();
-    return 'http://content.bitsontherun.com/thumbs/'
+    return 'http://content.jwplatform.com/thumbs/'
       . check_plain($parameters['key']) . '-120.jpg';
   }
 

@@ -23,6 +23,28 @@
         return text;
     };
 
+    var get_share_url = function(url, title, callback, _shorten) {
+        var shorten = (typeof _shorten != 'undefined') ? _shorten : false;
+        if(window.TP.tabHost){
+            $.ajax({
+                url: window.TP.tabHost+"/share.json",
+                dataType: 'json',
+                data: {url: url, title: title, shorten: shorten},
+                type: 'POST',
+                async: false,
+                xhrFields: { withCredentials: true },
+                success: function(data) { 
+                    callback(data.share_url); 
+                },
+                error: function() {
+                    callback(url);
+                }
+            });
+        } else {
+            callback(url);
+        }
+    }
+
     // Add services
 
     $.tpsocial.add_service({
@@ -32,22 +54,24 @@
         caption: null,
         description: null,
         share: function(args) {
-            FB.ui({
-                method: 'feed',
-                name: args.title,
-                link: args.url + '',
-                picture: args.image,
-                caption: args.caption,
-                description: args.description //,
-            // message: 'Facebook Dialogs are easy!' ???
-            },
-            function(response) {
-                if (response && response.post_id) {
-                    // Post was published
-                    $window.trigger('tp-social-share', args);
-                } else {
-                //Post was not published
-                }
+            get_share_url(args.url, args.title, function(url) {
+                FB.ui({
+                    method: 'feed',
+                    name: args.title,
+                    link: url + '',
+                    picture: args.image,
+                    caption: args.caption,
+                    description: args.description //,
+                // message: 'Facebook Dialogs are easy!' ???
+                },
+                function(response) {
+                    if (response && response.post_id) {
+                        // Post was published
+                        $window.trigger('tp-social-share', args);
+                    } else {
+                    //Post was not published
+                    }
+                });
             });
         }
     });
@@ -85,21 +109,23 @@
 
             if (text) url_obj.text = text;
 
-            // Create twitter URL
-            var url_parts = [];
-            for ( var i in url_obj ) {
-                var val = url_obj[i];
-                if ( val != undefined && val ) url_parts.push(i + '=' + encodeURIComponent(val));
-            }
-            var url = 'https://twitter.com/intent/tweet?' + url_parts.join('&');
+            get_share_url(args.url, args.title, function(new_url) {
+                var url_parts = [];
+                url_obj.url = new_url;
+                for ( var i in url_obj ) {
+                    var val = url_obj[i];
+                    if ( val != undefined && val ) url_parts.push(i + '=' + encodeURIComponent(val));
+                }
+                var url = 'https://twitter.com/intent/tweet?' + url_parts.join('&');
 
-            // Open twitter share
-            var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes';
-            var left = 0;
-            var tops = Number((screen.height/2)-(args.height/2));
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
+                // Open twitter share
+                var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes';
+                var left = 0;
+                var tops = Number((screen.height/2)-(args.height/2));
+                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
+            }, true)
 
-        //$window.trigger('tp-social-share', args);
+            //$window.trigger('tp-social-share', args);
         }
     });
 
@@ -224,9 +250,11 @@
         width: 850,
         height: 600,
         share: function(args) {
-            var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
-            var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            get_share_url(args.url, args.title, function(_new_url){ 
+                var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(_new_url) + '&title=' + encodeURIComponent(args.title);
+                var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            });
         }
     });
 
@@ -338,9 +366,9 @@
         }
     };
     if ("https:" == document.location.protocol) {
-        var email_script = 'https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+        var email_script = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
     } else {
-        var email_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+        var email_script = 'http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
     }
     var email_var = 'addthis';
 
@@ -355,31 +383,98 @@
                 }, email_once);
         },
         hoverfocus: function(args) {
-            $(args.element)
-            .addClass('addthis_button_email addthis_button_compact')
-            .wrapInner('<span></span>');
+            if(!$(args.element).hasClass('addthis_button_email')) {
+                $(args.element)
+                .addClass('addthis_button_email addthis_button_compact')
+                .wrapInner('<span></span>');
 
-            $.tpsocial.load_script(window[email_var], email_script, this, function() {
-                var note = template_value('note', args);
+                get_share_url(args.url, args.title, function(_new_url) {
+                    $.tpsocial.load_script(window[email_var], email_script, this, function() {
+                        var note = template_value('note', args);
 
-                var email_config = {
-                    ui_email_note: note
-                };
+                        var email_config = {
+                            ui_email_note: note
+                        };
 
-                var addthis_config = {
-                    url: args.url,
-                    title: args.title
-                };
+                        var addthis_config = {
+                            url: _new_url,
+                            title: args.title
+                        };
 
-                addthis.toolbox(
-                    $(args.element).parent()[0],
-                    email_config,
-                    addthis_config
-                    );
-            }, email_once);
+                        addthis.toolbox(
+                            $(args.element).parent()[0],
+                            email_config,
+                            addthis_config
+                            );
+                    }, email_once);
+                }, true);     
+            }
         }
     });
 
+
+    // Mailto
+    var mailto_args;
+    var mailto_once = function() {
+
+    };
+    /*
+    var mailto_callback = function(addthis_event) {
+        if ( addthis_event.data.service == mailto_args.name ) {
+        }
+    };
+    */
+    if ("https:" == document.location.protocol) {
+        var mailto_script = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+    } else {
+        var mailto_script = 'http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+    }
+    var mailto_var = 'addthis';
+
+    $.tpsocial.add_service({
+        name: 'mailto',
+        display: 'Email App',
+        
+        share: null, 
+         //function() {
+           // mailto_args = args;
+        //},
+        
+        prepare: function(el, args) {
+            $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
+                }, mailto_once);
+        },
+        hoverfocus: function(args) {
+            if (!$(args.element).hasClass('addthis_button_mailto')) {
+                $(args.element)
+                .addClass('addthis_button_mailto addthis_button_compact')
+                .wrapInner('<span></span>');
+
+               get_share_url(args.url, args.title, function(_new_url) {
+                    $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
+                        var note = template_value('note', args);
+
+                        var mailto_config = {
+                            ui_mailto_note: note
+                        };
+
+                        var addthis_config = {
+                            url: _new_url,
+                            title: args.title
+                        };
+
+                        addthis.toolbox(
+                            $(args.element).parent()[0],
+                            mailto_config,
+                            addthis_config
+                            );
+                    }, mailto_once);
+                }, true);
+            }
+        }
+    });
+    // mailto
+ 
     // More
     var more_args;
     var more_once = function() {

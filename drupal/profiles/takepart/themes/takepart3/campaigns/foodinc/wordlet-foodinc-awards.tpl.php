@@ -24,9 +24,9 @@
           <?php else: ?>
             <div class="botr">
               <?php if($base_url == 'https://foodinc.takepart.com' || $is_https != NULL): ?>
-                <script type="text/javascript" src="https://content.bitsontherun.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
+                <script type="text/javascript" src="https://content.jwplatform.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
               <?php else: ?>
-                <script type="text/javascript" src="//video.takepart.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
+                <script type="text/javascript" src="//content.jwplatform.com/players/<?php print w('hero_content')->video; ?>.js"></script></div>
               <?php endif; ?>
           <?php endif; ?>
         </div>
