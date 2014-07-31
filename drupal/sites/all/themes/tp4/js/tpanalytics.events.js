@@ -43,9 +43,14 @@
             case ("email"):
                 title = "Email";
                 break;
+            case ("email app"):
+                title = "Email";
+                break;
             case ("reddit"):
                 title = "Reddit";
                 break;
+            default:
+                title = "Social Share";
         }
 
         return title;
