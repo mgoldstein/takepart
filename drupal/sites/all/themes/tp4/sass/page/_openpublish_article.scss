@@ -1380,7 +1380,7 @@ aside#article-social-mobile-bottom {
         height: 95px;
         border-left: 1px solid $gray-line;
         border-top: 1px solid $gray-line;
-        z-index: 0;
+        /* z-index: 0; */
     }
     .right-border{
         position: absolute;
@@ -1390,7 +1390,7 @@ aside#article-social-mobile-bottom {
         height: 95px;
         border-right: 1px solid $gray-line;
         border-top: 1px solid $gray-line;
-        z-index: 0;
+        /* z-index: 0; */
     }
     img{
         display: block;
@@ -1438,7 +1438,7 @@ aside#article-social-mobile-bottom {
         width: 41%;
         margin-top: 5px;
         position: relative;
-        z-index: 2;
+        /* z-index: 2; */
     }
     .next {
         float: right;
@@ -1447,7 +1447,7 @@ aside#article-social-mobile-bottom {
         text-align: right;
         margin-top: 5px;
         position: relative;
-        z-index: 2;
+        /* z-index: 2; */
     }
 }
 

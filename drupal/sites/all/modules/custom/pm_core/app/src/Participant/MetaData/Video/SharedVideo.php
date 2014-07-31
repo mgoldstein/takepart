@@ -1,7 +1,9 @@
-<?php namespace Participant\OpenGraph\Video;
+<?php namespace Participant\MetaData\Video;
 
 interface SharedVideo
 {
+  public function openGraphURL($https = FALSE);
+
   public function url($https = FALSE);
 
   public function width();

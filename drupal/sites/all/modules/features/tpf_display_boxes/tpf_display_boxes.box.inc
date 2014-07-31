@@ -1730,7 +1730,7 @@ z-index:5000;
   $box->description = 'Right Rail -- TPL Playlist';
   $box->options = array(
     'body' => '<br />
-<script type="text/javascript" src="http://video.takepart.com/players/Y0y8DVG4-TPXPTQu4.js"></script>',
+<script type="text/javascript" src="//content.jwplatform.com/players/Y0y8DVG4-TPXPTQu4.js"></script>',
     'additional_classes' => '',
   );
   $export['box-bedd1fbb'] = $box;

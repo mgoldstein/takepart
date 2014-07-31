@@ -74,6 +74,10 @@ $conf += array('bluehornet_default_account' => 'takepart');
 $conf += array(
   'pm_jwplatform_api_key' => 'NnnOqH8r',
   'pm_jwplatform_api_secret' => 'fJoeVtVS5YriI0Bnh8v6lo1i',
+  'pm_jwplatform_content_domain' => 'content.jwplatform.com',
+  'pm_jwplatform_content_dns_mask' => 'video.takepart.com',
+  'pm_jwplayer_account_token' => 'esP2FhWwEeODmBIxOUCPzg',
+  'pm_jwplayer_player_key' => 'xlvA/gqv5vAkINGetf3aFsus8xjtNRWt+WzQqA==',
 );
 
 
@@ -88,6 +92,7 @@ $conf += array(
   'signature_import_feed' => "http://{$conf['takeaction_domain']}/api/actions",
   'takeaction_publisher_id' => 'd84909c52edcceb20c7bba62052b1b01',
   'takeaction_widget_script' => '/assets/publisher.js?v=3.7',
+  'takeaction_awareness_script' => "//{$conf['takeaction_domain']}/assets/awareness.js",
 );
 
 

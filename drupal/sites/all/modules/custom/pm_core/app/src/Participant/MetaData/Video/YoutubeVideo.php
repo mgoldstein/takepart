@@ -1,4 +1,4 @@
-<?php namespace Participant\OpenGraph\Video;
+<?php namespace Participant\MetaData\Video;
 
 class YoutubeVideo implements SharedVideo
 {
@@ -23,13 +23,19 @@ class YoutubeVideo implements SharedVideo
     return $openGraph;
   }
 
-  public function url($https = FALSE)
+  public function openGraphURL($https = FALSE)
   {
     $openGraph = $this->getOpenGraphProperties();
     $url = $openGraph->get('video');
     list(, $resource) = explode('://', $url, 2);
     $scheme = $https ? 'https://' : 'http://';
     return $scheme . $resource;
+  }
+
+  public function url($https = FALSE)
+  {
+    $scheme = $https ? 'https' : 'http';
+    return "{$scheme}://www.youtube.com/embed/{$this->key}";
   }
 
   public function width()
