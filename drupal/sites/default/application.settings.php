@@ -92,6 +92,7 @@ $conf += array(
   'signature_import_feed' => "http://{$conf['takeaction_domain']}/api/actions",
   'takeaction_publisher_id' => 'd84909c52edcceb20c7bba62052b1b01',
   'takeaction_widget_script' => '/assets/publisher.js?v=3.7',
+  'takeaction_awareness_script' => "//{$conf['takeaction_domain']}/assets/awareness.js",
 );
 
 
