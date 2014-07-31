@@ -8775,7 +8775,7 @@ body.campaign-display .card .secondary-button a:not(.flashcard) {
 /* line 207, ../sass/helpers/_mixins.scss */
 body.campaign-display .card .secondary-button a:not(.flashcard):before {
   font-family: "SSGizmo";
-  color: #01bf9e;
+  color: #0080a3;
   content: '\23E9';
   position: absolute;
   top: -1px;
@@ -12597,13 +12597,17 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 /* line 45, ../sass/modules/_tpl-block.scss */
 .tpl-block .field-name-field-description p {
   margin-top: 0;
+  font-family: "AdelleSans", Verdana, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 100;
 }
-/* line 48, ../sass/modules/_tpl-block.scss */
+/* line 52, ../sass/modules/_tpl-block.scss */
 .tpl-block .field-name-field-description .field-item p:first-of-type {
   margin-top: 0;
   margin-bottom: 5px;
 }
-/* line 53, ../sass/modules/_tpl-block.scss */
+/* line 57, ../sass/modules/_tpl-block.scss */
 .tpl-block .field-name-field-tpl-block-cta {
   border: none;
   padding: 8px;
@@ -12625,7 +12629,7 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 /* line 207, ../sass/helpers/_mixins.scss */
 .tpl-block .field-name-field-tpl-block-cta a:not(.flashcard):before {
   font-family: "SSGizmo";
-  color: #01bf9e;
+  color: #0080a3;
   content: '\23E9';
   position: absolute;
   top: -1px;
@@ -12635,26 +12639,36 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
 .tpl-block .field-name-field-tpl-block-cta:hover a {
   text-decoration: underline;
 }
-/* line 57, ../sass/modules/_tpl-block.scss */
+/* line 61, ../sass/modules/_tpl-block.scss */
 .tpl-block .field-name-field-tpl-block-cta a {
   color: #3bb5cb;
 }
-/* line 59, ../sass/modules/_tpl-block.scss */
+/* line 63, ../sass/modules/_tpl-block.scss */
 .tpl-block .field-name-field-tpl-block-cta a:before {
   color: #3bb5cb;
   top: 1px;
   left: -3px;
 }
-/* line 66, ../sass/modules/_tpl-block.scss */
+/* line 70, ../sass/modules/_tpl-block.scss */
 .tpl-block .primary-headline {
   color: #000;
   font-size: 20px;
   font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: bold;
 }
-/* line 72, ../sass/modules/_tpl-block.scss */
+/* line 76, ../sass/modules/_tpl-block.scss */
 .tpl-block a.more-tpl {
-  color: #0084A9 !important;
+  color: #0080a3 !important;
+  font-family: "AdelleSans", Verdana, sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 22px;
+}
+/* line 83, ../sass/modules/_tpl-block.scss */
+.tpl-block .tpl-highlight {
+  font-family: "Brown", Verdana, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* line 1, ../sass/modules/_featured_campaigns.scss */
