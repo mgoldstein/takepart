@@ -65,7 +65,7 @@ function takeaction_add_awareness_notification() {
       'scope' => 'footer',
       'weight' => 1,
     ));
-    drupal_add_js('if (TP && TP.Awareness) { window.setTimeout(TP.Awareness.notify, 20000); console.log("Awareness notified"); }', array(
+    drupal_add_js('if (TP && TP.Awareness) { window.setTimeout(TP.Awareness.notify, 20000); }', array(
       'type' => 'inline',
       'group' => JS_LIBRARY,
       'scope' => 'footer',
