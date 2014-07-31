@@ -647,6 +647,126 @@ function tpf_content_inline_content_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'inline_content-take_action_widget-field_ic_tap_widget_sponsor_name'
+  $field_instances['inline_content-take_action_widget-field_ic_tap_widget_sponsor_name'] = array(
+    'bundle' => 'take_action_widget',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
+    ),
+    'entity_type' => 'inline_content',
+    'field_name' => 'field_ic_tap_widget_sponsor_name',
+    'label' => 'Sponsor Name',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'inline_content-take_action_widget-field_ic_tap_widget_sponsor_url'
+  $field_instances['inline_content-take_action_widget-field_ic_tap_widget_sponsor_url'] = array(
+    'bundle' => 'take_action_widget',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 8,
+      ),
+    ),
+    'entity_type' => 'inline_content',
+    'field_name' => 'field_ic_tap_widget_sponsor_url',
+    'label' => 'Sponsor URL',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 0,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'link_field',
+      'weight' => 5,
+    ),
+  );
+
   // Exported field_instance: 'inline_content-take_action_widget-field_ic_tap_widget_type'
   $field_instances['inline_content-take_action_widget-field_ic_tap_widget_type'] = array(
     'bundle' => 'take_action_widget',
@@ -751,6 +871,8 @@ function tpf_content_inline_content_field_default_field_instances() {
   t('Newsletter');
   t('Orientation');
   t('Quotation');
+  t('Sponsor Name');
+  t('Sponsor URL');
   t('Title Override');
   t('Widget Alignment');
   t('Widget Type');

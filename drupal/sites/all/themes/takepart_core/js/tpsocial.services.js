@@ -54,12 +54,14 @@
         description: null,
         share: function(args) {
             get_share_url(args.url, args.title, function(url) {
+                var parser = document.createElement("a");
+                parser.href = args.url;
                 FB.ui({
                     method: 'feed',
                     name: args.title,
                     link: url + '',
                     picture: args.image,
-                    caption: args.caption,
+                    caption: args.caption || parser.hostname,
                     display: 'popup',
                     description: args.description //,
                 // message: 'Facebook Dialogs are easy!' ???
