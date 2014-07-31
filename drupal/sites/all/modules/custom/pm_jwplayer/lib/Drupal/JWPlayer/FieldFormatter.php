@@ -87,8 +87,10 @@ class JWPlayerFieldFormatter {
     $elements = array();
     if ($this->_preset !== FALSE) {
       foreach ($items as $delta => $item) {
+        drupal_set_message(print_r($this->_preset->settings, TRUE));
         $settings = JWPlayerConfiguration::replaceTokens($entity_type, $entity,
           $langcode, $this->_preset->settings);
+        drupal_set_message(print_r($settings, TRUE));
         $configuration = new JWPlayerConfiguration($settings);
         $elements[$delta] = $this->viewItem($item, $delta, $configuration);
       }
