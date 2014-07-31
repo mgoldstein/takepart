@@ -198,8 +198,10 @@ function tp_videos_attached_video_object($node) {
         return new YoutubeVideo($params['v'], 640);
       }
       elseif ($file->filemime == 'video/jwplatform') {
-        $api = pm_jwplatform_get_api();
-        return new JWPlatformVideo($api, $params['key'], 640);
+        if (substr($file->uri, 0, 16) === 'jwplatform-video') {
+          $api = pm_jwplatform_get_api();
+          return new JWPlatformVideo($api, $params['key'], 640);
+        }
       }
     }
   }
