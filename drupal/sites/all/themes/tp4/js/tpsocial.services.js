@@ -207,7 +207,6 @@
         source: null,
         share: function(args) {
             var url = 'http://www.tumblr.com/share/photo?source=' + encodeURIComponent(args.source) + '&caption=' + encodeURIComponent(args.caption) + '&click_thru=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -227,7 +226,6 @@
                 args.description = args.description.substring(0, 496) + '...';
             }
             var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(args.url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -240,7 +238,6 @@
         height: 600,
         share: function(args) {
             var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
         }
@@ -416,16 +413,18 @@
 
 
     // Mailto
-    var mailto_args;
-    var mailto_once = function() {
-
+    var mailto_args = { 
+        name: "Mail To",
+        url: "mail to"
     };
-    /*
+    var mailto_once = function() {
+        addthis.addEventListener('addthis.menu.share', mailto_callback);
+    };
     var mailto_callback = function(addthis_event) {
         if ( addthis_event.data.service == mailto_args.name ) {
+        $window.trigger('tp-social-share', mailto_args);
         }
     };
-    */
     if ("https:" == document.location.protocol) {
         var mailto_script = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
     } else {
@@ -437,11 +436,8 @@
         name: 'mailto',
         display: 'Email App',
         
-        share: null, 
-         //function() {
-           // mailto_args = args;
-        //},
-        
+        share: function(args) {
+        },
         prepare: function(el, args) {
             $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
                 }, mailto_once);
@@ -484,7 +480,7 @@
     };
     var more_callback = function(addthis_event) {
         if ( addthis_event.data.service == more_args.name ) {
-        //$window.trigger('tp-social-share', more_args);
+        $window.trigger('tp-social-share', more_args);
         }
     };
     var more_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';

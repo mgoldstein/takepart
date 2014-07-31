@@ -43,8 +43,8 @@
             case ("email"):
                 title = "Email";
                 break;
-            case ("email app"):
-                title = "Email";
+            case ("mailto"):
+                title = "Mail To";
                 break;
             case ("reddit"):
                 title = "Reddit";
