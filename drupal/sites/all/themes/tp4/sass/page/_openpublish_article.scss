@@ -1463,7 +1463,19 @@ aside#article-social-mobile-bottom {
     }
 }
 
-
 .leaderboard div {
     margin: 0 auto;
+}
+
+.mashable-image { 
+    padding: 0px; margin: 0px; border: none; 
+}
+.mashable-image p { 
+    padding: 0px; margin: 0px; 
+}
+.mashable-image-caption, .mashable-image-credit { 
+    margin-top: 10px; padding: 0px; font-family: 'Ashbury Light', Ashbury, 'Times New Roman', Times, Georgia, 'DejaVu Serif', serif; font-size: 14px; line-height: 18px; 
+}
+.mashable-image-credit { 
+    font-style: italic; margin: 9px 0px 30px 0px; 
 }

@@ -87,6 +87,7 @@ class JWPlayerFieldFormatter {
     $elements = array();
     if ($this->_preset !== FALSE) {
       foreach ($items as $delta => $item) {
+        watchdog('video-configuration', print_r($entity, TRUE));
         $settings = JWPlayerConfiguration::replaceTokens($entity_type, $entity,
           $langcode, $this->_preset->settings);
         $configuration = new JWPlayerConfiguration($settings);
