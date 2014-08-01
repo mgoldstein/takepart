@@ -362,8 +362,7 @@
         .on('mouseover', 'img', function() { gallery.$nextSlide.addClass('hover'); })
         .on('mouseout', 'img', function () { gallery.$nextSlide.removeClass('hover'); })
       .not(gallery.$nextGallery)
-        .on(click, 'img', function() { gallery.$nextSlide.trigger(click); })
-      ;
+        .on(click, 'img', function() { gallery.$nextSlide.trigger(click); });
 
       // deal with touch events
       $('body').on('touchmove', function() {

@@ -411,7 +411,6 @@
         }
     });
 
-
     // Mailto
     var mailto_args = { 
         name: "Mail To",
