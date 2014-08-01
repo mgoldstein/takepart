@@ -87,8 +87,7 @@ class JWPlayerFieldFormatter {
     $elements = array();
     if ($this->_preset !== FALSE) {
       foreach ($items as $delta => $item) {
-        drupal_set_message(print_r($entity_type, TRUE));
-        drupal_set_message(print_r($entity, TRUE));
+        watchdog('video-configuration', print_r($entity, TRUE));
         $settings = JWPlayerConfiguration::replaceTokens($entity_type, $entity,
           $langcode, $this->_preset->settings);
         $configuration = new JWPlayerConfiguration($settings);
