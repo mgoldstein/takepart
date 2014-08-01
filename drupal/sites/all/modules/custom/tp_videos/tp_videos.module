@@ -138,14 +138,19 @@ function tp_videos_tokens($type, $tokens, array $data = array(),
 function tp_videos_iframe_embed_markup($node) {
   global $base_url;
   $properties = array(
-    'width' => variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH),
-    'height' => variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT),
+	  'width' => '100%',
+		'height' => '100%',
     'src' => $base_url . '/entity_iframe/node/' . $node->nid,
     'frameborder' => '0',
     'class' => 'entity_iframe entity_iframe_node',
     'id' => 'entity_iframe_node_' . $node->nid,
+	  'style' => 'position: absolute; top: 0; left: 0;',
   );
-  return _entity_iframe_build_iframe($properties, 'video-embed');
+	$width = variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH);
+  $height = variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT);
+	$ratio = $height/$width*100;
+	$ratio = 60;
+  return '<div class="embed-container" style="position: relative; height: 0; padding-bottom:'. $ratio. '%">'. _entity_iframe_build_iframe($properties, 'video-embed'). '</div>';
 }
 
 /**
