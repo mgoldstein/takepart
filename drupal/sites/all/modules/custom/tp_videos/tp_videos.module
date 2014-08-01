@@ -146,9 +146,9 @@ function tp_videos_iframe_embed_markup($node) {
     'id' => 'entity_iframe_node_' . $node->nid,
 	  'style' => 'position: absolute; top: 0; left: 0;',
   );
-	$width = variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH);
-  $height = variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT);
-	$ratio = $height/$width*100;
+//	$width = variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH);
+//  $height = variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT);
+//	$ratio = $height/$width*100;
 	$ratio = 60;
   return '<div class="embed-container" style="position: relative; height: 0; padding-bottom:'. $ratio. '%">'. _entity_iframe_build_iframe($properties, 'video-embed'). '</div>';
 }
