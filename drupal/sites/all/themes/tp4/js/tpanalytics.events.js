@@ -51,6 +51,10 @@
         return title;
     };
 
+    var is_logged_in = function() {
+        !!document.cookie.match(/takepart=/gi);
+    }
+
     // c = prop
     // v = evar
 
@@ -140,6 +144,10 @@
             s2.eVar30 = s2.pageName;
             s2.linkTrackVars = linkTrackVars.join(',');
             s2.linkTrackEvents = 'event25';
+            if (!!document.cookie.match(/takepart=/gi)) {
+                s.events += ',event66';
+                s.linkTrackEvents += ',event66';
+            }
             s2.tl(options.url, 'o', 'Content Share');
             s2.linkTrackVars = null;
             s2.linkTrackEvents = null;
