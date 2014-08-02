@@ -438,8 +438,32 @@
         share: function(args) {
         },
         prepare: function(el, args) {
-            $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
-                }, mailto_once);
+            if (!$(args.element).hasClass('addthis_button_mailto')) {
+                $(args.element)
+                .addClass('addthis_button_mailto addthis_button_compact')
+                .wrapInner('<span></span>');
+
+               get_share_url(args.url, args.title, function(_new_url) {
+                    $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
+                        var note = template_value('note', args);
+
+                        var mailto_config = {
+                            ui_mailto_note: note
+                        };
+
+                        var addthis_config = {
+                            url: _new_url,
+                            title: args.title
+                        };
+
+                        addthis.toolbox(
+                            $(args.element).parent()[0],
+                            mailto_config,
+                            addthis_config
+                            );
+                    }, mailto_once);
+                }, true);
+            }
         },
         hoverfocus: function(args) {
             if (!$(args.element).hasClass('addthis_button_mailto')) {
