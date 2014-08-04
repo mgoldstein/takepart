@@ -84,7 +84,6 @@
                         $this.append($link);
                     }
                 }
-
                 // Add service specific arguments to the links'd data object
                 for (var i in service) {
                     if (typeof service[i] == 'function')
@@ -100,85 +99,62 @@
                 var data = $.extend({}, defaults, srvc, get_data($this, dpre + srvc.name, dpre), get_data($link, dpre + srvc.name, dpre));
                 if (typeof data.prepare == 'function') {
                     data.prepare($link[0], data);
-                }
 
-                // Bind an event to the link 
-                if (name != "mailto") {
-                $link
-                        .bind('click', (function(srvc, $parent, $lnk) {
-                            return function(e) {
-                                // TODO: reduce the code duplication
-                                var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
-                                data.element = this;
+                    // Bind an event to the link 
+                    $link.bind('click', (function(srvc, $parent, $lnk) {
+                        return function(e) {
+                            // TODO: reduce the code duplication
+                            var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
+                            data.element = this;
+                            if (data.url == '{current}')
+                                data.url = document.location.href;
+                            if (data.url_append != undefined) {
+                                // TODO: more than just {{name}} replacement
+                                data.url_append = data.url_append.replace('{{name}}', data.name);
 
-                                if (data.url == '{current}')
-                                    data.url = document.location.href;
-                                if (data.url_append != undefined) {
-                                    // TODO: more than just {{name}} replacement
-                                    data.url_append = data.url_append.replace('{{name}}', data.name);
-
-                                    if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
-                                        data.url_append = data.url_append.replace('?', '&');
-                                    }
-                                    data.url += data.url_append;
+                                if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
+                                    data.url_append = data.url_append.replace('?', '&');
                                 }
+                                data.url += data.url_append;
+                            }
 
-                                srvc.share(data);
-                                $window.trigger(cpre + 'click', data);
+                            srvc.share(data);
+                            $window.trigger(cpre + 'click', data);
+                            if (name != "mailto") {
                                 e.preventDefault();
-                                return false;
                             }
-                        })(srvc, $this, $link)
-                                );
-                    }
-                    else {
-                        $link.bind('click', (function(srvc, $parent, $lnk) {
-                            return function(e) {
-                                // TODO: reduce the code duplication
-                                var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
-                                data.element = this;
-                                if (data.url == '{current}')
-                                    data.url = document.location.href;
-                                if (data.url_append != undefined) {
-                                    // TODO: more than just {{name}} replacement
-                                    data.url_append = data.url_append.replace('{{name}}', data.name);
-
-                                    if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
-                                        data.url_append = data.url_append.replace('?', '&');
-                                    }
-                                    data.url += data.url_append;
-                                }
-                                $window.trigger(cpre + 'click', data);
-                                return true;
+                            else {
+                                $window.trigger(cpre + 'mouseover focus', data);
                             }
-                        })(srvc, $this, $link)
-                                );
-                    }
+                            return true;
+                        }
+                    })(srvc, $this, $link)
+                            );
+                }
                 if (typeof data.hoverfocus == 'function') {
-                    $link
-                            .bind('mouseover focus', (function(srvc, $parent, $lnk) {
-                                return function(e) {
-                                    var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
+                    $link.bind('mouseover focus', (function(srvc, $parent, $lnk) {
+                        return function(e) {
+                            var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
 
-                                    if (data.url == '{current}')
-                                        data.url = document.location.href;
-                                    if (data.url_append != undefined) {
-                                        // TODO: more than just {{name}} replacement
-                                        data.url_append = data.url_append.replace('{{name}}', data.name);
+                            if (data.url == '{current}')
+                                data.url = document.location.href;
+                            if (data.url_append != undefined) {
+                                // TODO: more than just {{name}} replacement
+                                data.url_append = data.url_append.replace('{{name}}', data.name);
 
-                                        if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
-                                            data.url_append = data.url_append.replace('?', '&');
-                                        }
-                                        data.url += data.url_append;
-                                    }
-
-                                    data.element = this;
-
-                                    srvc.hoverfocus(data);
-                                    //e.preventDefault();
+                                if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
+                                    data.url_append = data.url_append.replace('?', '&');
                                 }
-                            })(srvc, $this, $link)
-                                    );
+                                data.url += data.url_append;
+                            }
+
+                            data.element = this;
+
+                            srvc.hoverfocus(data);
+                            //e.preventDefault();
+                        }
+                    })(srvc, $this, $link)
+                            );
                 }
             }
 
