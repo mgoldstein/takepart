@@ -74,7 +74,7 @@
         <p class="takepart-take-action"></p>
       </div>
     <h3 class="tp-social-headline share-headline">Share</h3>
-      <div class="tp-social" id="article-share"></div>
+      <div class="tp-social" id="article-share-mobile-bottom"></div>
     </div>
   </aside><!-- / #article-social-mobile-bottom -->
 
