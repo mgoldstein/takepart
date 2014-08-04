@@ -18,11 +18,38 @@ class ddContent extends ddDefaultPage {
 
   public function build($page) {
 
+	  $data = array();
     $node = menu_get_object();
 
     $pageID = "node/{$node->nid}";
 
-    $data = array(
+	  //authors
+	  $ids = array();
+	  if($authors = field_get_items('node', $node, 'field_author')){
+		  foreach($authors as $id){
+			  $ids[] = $id['nid'];
+		  }
+
+		  /* page: pageInfo: authors */
+		  $author_entities = entity_load('node', $ids);
+		  $author_names = array();
+		  foreach($author_entities as $author){
+			  $author_names[] = $author->title;
+		  }
+		  $author_names = implode(', ', $author_names);
+		  $data['page']['pageInfo']['authors'] = $author_names;
+
+		  /* page: pageInfo: author */
+		  $author = reset($author_entities);
+		  $author = $author->title;
+		  $data['page']['pageInfo']['author'] = $author;
+	  }
+
+	  /*page: pageInfo: issueDate */
+	  $publish_date = $node->published_at;
+	  $data['page']['pageInfo']['issueDate'] = $publish_date;
+
+    $data += array(
       'pageInstanceID' => ENVIRONMENT . ': ' . $pageID,
       'page' => array(
         'pageInfo' => array(
