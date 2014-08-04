@@ -25,17 +25,11 @@ class Content extends DefaultPage {
 
     $pageID = "node/{$node->nid}";
 
-    $data += array(
-      'pageInstanceID' => ENVIRONMENT . ': ' . $pageID,
-      'page' => array(
-        'pageInfo' => array(
-          'pageID' => $pageID,
-          'pageName' => $node->title,
-        ),
-        'category' => array(
-          'primaryCategory' => $this->categoryForContentType($node->type),
-        ),
-      ),
+    $data['pageInstanceID'] = ENVIRONMENT . ': ' . $pageID;
+    $data['page']['pageInfo']['pageID'] = $pageID;
+    $data['page']['pageInfo']['pageName'] = $node->title;
+    $data['page']['category'] = array(
+      'primaryCategory' => $this->categoryForContentType($node->type),
     );
 
     return $data;
