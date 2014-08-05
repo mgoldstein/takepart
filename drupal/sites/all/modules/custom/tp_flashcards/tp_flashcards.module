@@ -157,7 +157,7 @@ function tp_flashcards_parse_html($html) {
   foreach(_tp_flashcards_get_all() as $nid => $flashcard) {
     $synonyms = array_map('preg_quote', _tp_flashcards_get_synonyms($flashcard));
     $pattern = _tp_flashcards_get_replacement_pattern($synonyms);
-    $html = preg_replace($pattern, '<a data-flashcard="' . $nid . '" href="' . url('node/' . $nid). '" class="flashcard">$0</a>', $html, 1);
+    $html = preg_replace($pattern, '<a data-flashcard="' . $nid . '" href="' . url('node/' . $nid). '" class="flashcard">$0</a>', strip_tags($html), 1);
   }
   return $html;
 }
