@@ -47,6 +47,7 @@ class ddContent extends ddDefaultPage {
 
 	  /*page: pageInfo: issueDate */
 	  $publish_date = $node->published_at;
+	  $publish_date = date('Y/m/d', $publish_date);
 	  $data['page']['pageInfo']['issueDate'] = $publish_date;
 
     $data += array(
