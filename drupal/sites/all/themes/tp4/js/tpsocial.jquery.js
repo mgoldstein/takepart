@@ -132,26 +132,9 @@
                                 );
                     }
                     else {
-                        $link.bind('click', (function(srvc, $parent, $lnk) {
-                            return function(e) {
-                                // TODO: reduce the code duplication
-                                var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
-                                data.element = this;
-                                if (data.url == '{current}')
-                                    data.url = document.location.href;
-                                if (data.url_append != undefined) {
-                                    // TODO: more than just {{name}} replacement
-                                    data.url_append = data.url_append.replace('{{name}}', data.name);
-
-                                    if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
-                                        data.url_append = data.url_append.replace('?', '&');
-                                    }
-                                    data.url += data.url_append;
-                                }
-                                $window.trigger(cpre + 'click', data);
-                                return true;
-                            }
-                        })(srvc, $this, $link)
+                        $link.bind('click', (function() {
+                           window.location = $(".tp-social-mailto").attr('href');
+                        })
                                 );
                     }
                 if (typeof data.hoverfocus == 'function') {
