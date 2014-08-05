@@ -220,14 +220,17 @@
         media: '',
         description: '',
         share: function(args) {
-            if ( !args.description ) args.description = args.title;
-            args.description = args.description + '';
-            if ( args.description.length > 499 ) {
-                args.description = args.description.substring(0, 496) + '...';
-            }
-            var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(args.url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
-            var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            get_share_url(args.url, args.title, function(_new_url){ 
+                if ( !args.description ) args.description = args.title;
+                args.description = args.description + '';
+                if ( args.description.length > 499 ) {
+                    args.description = args.description.substring(0, 496) + '...';
+                }
+                var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(_new_url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
+
+                var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            });
         }
     });
 
@@ -237,9 +240,11 @@
         width: 600,
         height: 600,
         share: function(args) {
-            var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url);
-            var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            get_share_url(args.url, args.title, function(_new_url){ 
+                var url = 'https://plus.google.com/share?url=' + encodeURIComponent(_new_url);
+                var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            });
         }
     });
 

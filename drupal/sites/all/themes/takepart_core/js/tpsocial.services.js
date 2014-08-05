@@ -222,15 +222,17 @@
         media: '',
         description: '',
         share: function(args) {
-            if ( !args.description ) args.description = args.title;
-            args.description = args.description + '';
-            if ( args.description.length > 499 ) {
-                args.description = args.description.substring(0, 496) + '...';
-            }
-            var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(args.url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
+            get_share_url(args.url, args.title, function(_new_url){ 
+                if ( !args.description ) args.description = args.title;
+                args.description = args.description + '';
+                if ( args.description.length > 499 ) {
+                    args.description = args.description.substring(0, 496) + '...';
+                }
+                var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(_new_url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
 
-            var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+                var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            });
         }
     });
 
@@ -240,10 +242,12 @@
         width: 600,
         height: 600,
         share: function(args) {
-            var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url);
+            get_share_url(args.url, args.title, function(_new_url){ 
+                var url = 'https://plus.google.com/share?url=' + encodeURIComponent(_new_url);
 
-            var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+                var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            });
         }
     });
 
@@ -254,7 +258,7 @@
         height: 600,
         share: function(args) {
             get_share_url(args.url, args.title, function(_new_url){ 
-                var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
+                var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(_new_url) + '&title=' + encodeURIComponent(args.title);
 
                 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
                 window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
