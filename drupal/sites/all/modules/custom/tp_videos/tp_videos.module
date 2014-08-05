@@ -196,6 +196,17 @@ function tp_videos_parse_wrapper_uri($uri) {
   return $params;
 }
 
+function tp_video_allowed_regions($node) {
+  $regions = array();
+  $items = field_get_items('node', $node, 'field_allowed_regions');
+  if ($items !== FALSE && count($items) > 0) {
+    $data = reset($items);
+    $list = trim($data['value']);
+    if (!empty($list)) { $regions[] = $list; }
+  }
+  return $regions;
+}
+
 function tp_videos_attached_video_object($node) {
   if ($file = tp_videos_attached_file($node, 'field_video')) {
     if ($params = tp_videos_parse_wrapper_uri($file->uri)) {
@@ -204,8 +215,11 @@ function tp_videos_attached_video_object($node) {
       }
       elseif ($file->filemime == 'video/jwplatform') {
         if (substr($file->uri, 0, 16) === 'jwplatform-video') {
-          $api = pm_jwplatform_get_api();
-          return new JWPlatformVideo($api, $params['key'], 640);
+          $regions = tp_video_allowed_regions($node);
+          if (empty($regions)) {
+            $api = pm_jwplatform_get_api();
+            return new JWPlatformVideo($api, $params['key'], 640);
+          }
         }
       }
     }
