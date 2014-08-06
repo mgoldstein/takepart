@@ -5,15 +5,15 @@
     var template_tplvar_clean_reg = /({{)|(}})/g;
 
     var template_value = function(tpl_name, args) {
-	// Replace variables in twitter template
+        // Replace variables in twitter template
         var text = args[tpl_name] || '';
         var matches = text.match(twitter_tpl_reg);
 
-        for ( var i in matches ) {
+        for (var i in matches) {
             var match = matches[i];
             var prop = match.replace(template_tplvar_clean_reg, '');
 
-            if ( match != tpl_name && args[prop] != undefined && args[prop] ) {
+            if (match != tpl_name && args[prop] != undefined && args[prop]) {
                 text = text.replace(match, args[prop]);
             } else {
                 text = text.replace(match, '');
@@ -23,17 +23,21 @@
         return text;
     };
 
-    var get_share_url = function(url, callback, _shorten) {
+    var get_share_url = function(url, title, callback, _shorten) {
         var shorten = (typeof _shorten != 'undefined') ? _shorten : false;
-        if(window.TP.tabHost){
+        if (window.TP.tabHost) {
             $.ajax({
-                url: window.TP.tabHost+"/share.json",
+                url: window.TP.tabHost + "/share.json",
                 dataType: 'json',
-                data: {url: url, shorten: shorten},
+                data: {url: url, title: title, shorten: shorten},
                 type: 'POST',
-                xhrFields: { withCredentials: true },
-                success: function(data) { 
-                    callback(data.share_url); 
+                async: false,
+                xhrFields: {withCredentials: true},
+                success: function(data) {
+                    callback(data.share_url);
+                },
+                error: function() {
+                    callback(url);
                 }
             });
         } else {
@@ -50,22 +54,24 @@
         caption: null,
         description: null,
         share: function(args) {
-            get_share_url(args.url, function(url) {
+            get_share_url(args.url, args.title, function(url) {
+                var parser = document.createElement("a");
+                parser.href = args.url;
                 FB.ui({
                     method: 'feed',
                     name: args.title,
                     link: url + '',
                     picture: args.image,
-                    caption: args.caption,
+                    caption: args.caption || parser.hostname,
                     description: args.description //,
-                // message: 'Facebook Dialogs are easy!' ???
+                            // message: 'Facebook Dialogs are easy!' ???
                 },
                 function(response) {
                     if (response && response.post_id) {
                         // Post was published
                         $window.trigger('tp-social-share', args);
                     } else {
-                    //Post was not published
+                        //Post was not published
                     }
                 });
             });
@@ -92,33 +98,35 @@
                 related: args.related
             };
 
-            for ( var i in matches ) {
+            for (var i in matches) {
                 var match = matches[i];
                 var prop = match.replace(template_tplvar_clean_reg, '');
 
-                if ( match != 'text' && args[prop] != undefined && args[prop] ) {
+                if (match != 'text' && args[prop] != undefined && args[prop]) {
                     text = text.replace(match, args[prop]);
                 } else {
                     text = text.replace(match, '');
                 }
             }
 
-            if (text) url_obj.text = text;
+            if (text)
+                url_obj.text = text;
 
-            get_share_url(args.url, function(new_url) {
+            get_share_url(args.url, args.title, function(new_url) {
                 var url_parts = [];
                 url_obj.url = new_url;
-                for ( var i in url_obj ) {
+                for (var i in url_obj) {
                     var val = url_obj[i];
-                    if ( val != undefined && val ) url_parts.push(i + '=' + encodeURIComponent(val));
+                    if (val != undefined && val)
+                        url_parts.push(i + '=' + encodeURIComponent(val));
                 }
                 var url = 'https://twitter.com/intent/tweet?' + url_parts.join('&');
 
                 // Open twitter share
                 var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes';
                 var left = 0;
-                var tops = Number((screen.height/2)-(args.height/2));
-                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height,"left="+left,"top="+tops].join(", "));
+                var tops = Number((screen.height / 2) - (args.height / 2));
+                window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height, "left=" + left, "top=" + tops].join(", "));
             }, true)
 
             //$window.trigger('tp-social-share', args);
@@ -134,7 +142,7 @@
             var url = 'http://mail.aol.com/compose-message.aspx?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
 
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -147,7 +155,7 @@
             var url = 'http://compose.mail.yahoo.com/?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
 
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -160,7 +168,7 @@
             var url = 'https://mail.live.com/default.aspx?rru=compose&subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
 
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -173,7 +181,7 @@
             var url = 'https://mail.google.com/mail/?view=cm&ui=1&tf=0&fs=1&su=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
 
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -187,7 +195,7 @@
             var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent(args.description) + '&url=' + encodeURIComponent(args.url);
 
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -201,9 +209,8 @@
         source: null,
         share: function(args) {
             var url = 'http://www.tumblr.com/share/photo?source=' + encodeURIComponent(args.source) + '&caption=' + encodeURIComponent(args.caption) + '&click_thru=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -215,15 +222,17 @@
         media: '',
         description: '',
         share: function(args) {
-            if ( !args.description ) args.description = args.title;
-            args.description = args.description + '';
-            if ( args.description.length > 499 ) {
-                args.description = args.description.substring(0, 496) + '...';
-            }
-            var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(args.url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
+            get_share_url(args.url, args.title, function(_new_url){ 
+                if ( !args.description ) args.description = args.title;
+                args.description = args.description + '';
+                if ( args.description.length > 499 ) {
+                    args.description = args.description.substring(0, 496) + '...';
+                }
+                var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(_new_url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
 
-            var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+                var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            });
         }
     });
 
@@ -233,10 +242,11 @@
         width: 600,
         height: 600,
         share: function(args) {
-            var url = 'https://plus.google.com/share?url=' + encodeURIComponent(args.url);
-
-            var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            get_share_url(args.url, args.title, function(_new_url){ 
+                var url = 'https://plus.google.com/share?url=' + encodeURIComponent(_new_url);
+                var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            });
         }
     });
 
@@ -246,10 +256,10 @@
         width: 850,
         height: 600,
         share: function(args) {
-            get_share_url(args.url, function(_new_url){ 
+            get_share_url(args.url, args.title, function(_new_url) {
                 var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(_new_url) + '&title=' + encodeURIComponent(args.title);
                 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+                window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
             });
         }
     });
@@ -262,7 +272,7 @@
         share: function(args) {
             var url = 'http://www.myspace.com/Modules/PostTo/Pages/?u=' + encodeURIComponent(args.url) + '&t=' + encodeURIComponent(args.title);
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -274,7 +284,7 @@
         share: function(args) {
             var url = 'https://delicious.com/post?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&notes=';
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -286,7 +296,7 @@
         share: function(args) {
             var url = 'http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&ro=false&summary=&source=';
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -298,7 +308,7 @@
         share: function(args) {
             var url = 'http://favorites.my.aol.com/ffclient/AddBookmark?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&description=';
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -310,7 +320,7 @@
         share: function(args) {
             var url = 'https://profile.live.com/P.mvc#!/badge?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -322,7 +332,7 @@
         share: function(args) {
             var url = 'http://digg.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&bodytext=';
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -334,7 +344,7 @@
         share: function(args) {
             var url = 'http://www.stumbleupon.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
@@ -346,25 +356,25 @@
         share: function(args) {
             var url = 'http://www.hyves.nl/profilemanage/add/tips/?name=' + encodeURIComponent(args.title) + '&text=' + encodeURIComponent(args.url) + '&type=12#';
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
     });
 
     // Email
     var email_args;
     var email_once = function() {
-    // Don't need to do this because of global tracking in analytics.js
-    //addthis.addEventListener('addthis.menu.share', email_callback);
+        // Don't need to do this because of global tracking in analytics.js
+        //addthis.addEventListener('addthis.menu.share', email_callback);
     };
     var email_callback = function(addthis_event) {
-        if ( addthis_event.data.service == email_args.name ) {
-        //$window.trigger('tp-social-share', email_args);
+        if (addthis_event.data.service == email_args.name) {
+            //$window.trigger('tp-social-share', email_args);
         }
     };
     if ("https:" == document.location.protocol) {
-        var email_script = 'https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+        var email_script = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
     } else {
-        var email_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+        var email_script = 'http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
     }
     var email_var = 'addthis';
 
@@ -376,15 +386,15 @@
         },
         prepare: function(el, args) {
             $.tpsocial.load_script(window[email_var], email_script, this, function() {
-                }, email_once);
+            }, email_once);
         },
         hoverfocus: function(args) {
-            if(!$(args.element).hasClass('addthis_button_email')) {
+            if (!$(args.element).hasClass('addthis_button_email')) {
                 $(args.element)
-                .addClass('addthis_button_email addthis_button_compact')
-                .wrapInner('<span></span>');
+                        .addClass('addthis_button_email addthis_button_compact')
+                        .wrapInner('<span></span>');
 
-                get_share_url(args.url, function(_new_url) {
+                get_share_url(args.url, args.title, function(_new_url) {
                     $.tpsocial.load_script(window[email_var], email_script, this, function() {
                         var note = template_value('note', args);
 
@@ -398,15 +408,106 @@
                         };
 
                         addthis.toolbox(
-                            $(args.element).parent()[0],
-                            email_config,
-                            addthis_config
-                            );
+                                $(args.element).parent()[0],
+                                email_config,
+                                addthis_config
+                                );
                     }, email_once);
-                }, true);     
+                }, true);
             }
         }
     });
+
+    // Mailto
+    var mailto_args;
+    var mailto_once = function() {
+        addthis.addEventListener('addthis.menu.share', mailto_callback);
+    };
+    var mailto_callback = function(addthis_event) {
+        if (addthis_event.data.service == mailto_args.name) {
+            $window.trigger('tp-social-share', mailto_args);
+        }
+    };
+    if ("https:" == document.location.protocol) {
+        var mailto_script = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+    } else {
+        var mailto_script = 'http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
+    }
+    var mailto_var = 'addthis';
+
+    $.tpsocial.add_service({
+        name: 'mailto',
+        display: 'Email App',
+        share: function(args) {
+            mailto_args = args;
+        },
+        prepare: function(el, args) {
+            if (!$(el).hasClass('addthis_button_mailto')) {
+                $(el).addClass('addthis_button_mailto addthis_button_compact')
+                        .wrapInner('<span></span>');
+
+                get_share_url(args.url, args.title, function(_new_url) {
+                    $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
+                        var note = template_value('note', args);
+
+                        var mailto_config = {
+                            ui_mailto_note: note
+                        };
+
+                        var addthis_config = {
+                            url: _new_url,
+                            title: args.title
+                        };
+
+                        addthis.toolbox(
+                                $(el).parent()[0],
+                                mailto_config,
+                                addthis_config
+                                );
+                    }, mailto_once);
+                }, true);
+            }
+
+            /*$.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
+             
+             $(".tp-social-mailto").attr('href', function(i, href) {
+             return encodeURI("mailto:?body=" + $(location).attr('href')) + 
+             encodeURI("&cmpid=organic-share-mailto") +
+             encodeURI("&subject=" + $("h1.node-title").html());
+             });
+             
+             }, mailto_once); */
+        },
+        hoverfocus: function(args) {
+            if (!$(args.element).hasClass('addthis_button_mailto')) {
+                $(args.element)
+                        .addClass('addthis_button_mailto addthis_button_compact')
+                        .wrapInner('<span></span>');
+
+                get_share_url(args.url, args.title, function(_new_url) {
+                    $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
+                        var note = template_value('note', args);
+
+                        var mailto_config = {
+                            ui_mailto_note: note
+                        };
+
+                        var addthis_config = {
+                            url: _new_url,
+                            title: args.title
+                        };
+
+                        addthis.toolbox(
+                                $(args.element).parent()[0],
+                                mailto_config,
+                                addthis_config
+                                );
+                    }, mailto_once);
+                }, true);
+            }
+        }
+    });
+    // mailto
 
     // More
     var more_args;
@@ -414,8 +515,8 @@
         addthis.addEventListener('addthis.menu.share', more_callback);
     };
     var more_callback = function(addthis_event) {
-        if ( addthis_event.data.service == more_args.name ) {
-        //$window.trigger('tp-social-share', more_args);
+        if (addthis_event.data.service == more_args.name) {
+            $window.trigger('tp-social-share', more_args);
         }
     };
     var more_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
@@ -440,8 +541,8 @@
         },
         hoverfocus: function(args) {
             $(args.element)
-            .addClass('addthis_button_more addthis_button_compact')
-            .wrapInner('<span></span>');
+                    .addClass('addthis_button_more addthis_button_compact')
+                    .wrapInner('<span></span>');
 
             $.tpsocial.load_script(window[more_var], more_script, this, function() {
                 var note = template_value('note', args);
@@ -453,10 +554,10 @@
                     title: args.title
                 };
                 addthis.toolbox(
-                    $(args.element).parent()[0],
-                    more_config,
-                    addthis_config
-                    );
+                        $(args.element).parent()[0],
+                        more_config,
+                        addthis_config
+                        );
             }, more_once);
         }
     });

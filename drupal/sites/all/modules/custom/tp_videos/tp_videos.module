@@ -1,7 +1,20 @@
 <?php
 /**
- * @file Video content.
+ * @file
+ * Video content.
  */
+
+use \Participant\MetaData\Video\YoutubeVideo;
+use \Participant\MetaData\Video\JWPlatformVideo;
+
+/**
+ * Implements hook_entity_view_alter().
+ */
+function tp_videos_entity_view_alter(&$build, $type) {
+  if ($type == 'node' && $build['#view_mode'] == 'iframe') {
+    unset($build['links']);
+  }
+}
 
 /**
  * Implements hook_token_info().
@@ -14,6 +27,56 @@ function tp_videos_token_info() {
           'name' => 'iFrame Embed Markup',
           'description' => t('Markup to embed the node in an iframe on another site.'),
           'type' => 'format',
+        ),
+        'iframe-embed-src' => array(
+          'name' => 'iFrame Embed Source',
+          'description' => t('Source for a node embed iframe.'),
+          'type' => 'format',
+        ),
+        'iframe-embed-width' => array(
+          'name' => 'iFrame Embed Width',
+          'description' => t('Width for a node embed iframe.'),
+          'type' => 'format',
+        ),
+        'iframe-embed-height' => array(
+          'name' => 'iFrame Embed Height',
+          'description' => t('Height for a node embed iframe.'),
+          'type' => 'format',
+        ),
+        'attached-video-file-secure-url' => array(
+          'name' => 'Video file URL',
+          'description' => t("The URL to the video file referenced in a node's video field."),
+          'type' => 'format',
+        ),
+        'attached-video-width' => array(
+          'name' => 'Video width',
+          'description' => "The width of the video in the node's video field",
+          'type' => 'node',
+        ),
+        'attached-video-height' => array(
+          'name' => 'Video height',
+          'description' => "The height of the video in the node's video field",
+          'type' => 'node',
+        ),
+        'attached-video-url' => array(
+          'name' => 'Video URL',
+          'description' => "Full URL of the video in the node's video field",
+          'type' => 'node',
+        ),
+        'attached-video-secure-url' => array(
+          'name' => 'Video URL',
+          'description' => "Full secure URL of the video in the node's video field",
+          'type' => 'node',
+        ),
+        'attached-video-image' => array(
+          'name' => 'Video URL',
+          'description' => "Full URL of the thumbnail for the video in the node's video field",
+          'type' => 'node',
+        ),
+        'attached-video-secure-image' => array(
+          'name' => 'Video URL',
+          'description' => "Full secure URL of the thumbnail for the video in the node's video field",
+          'type' => 'node',
         ),
       ),
     ),
@@ -33,6 +96,36 @@ function tp_videos_tokens($type, $tokens, array $data = array(),
         case 'iframe-embed-markup':
           $replacements[$original] = tp_videos_iframe_embed_markup($node);
           break;
+        case 'iframe-embed-src':
+          $replacements[$original] = tp_videos_iframe_embed_source($node, TRUE);
+          break;
+        case 'iframe-embed-width':
+          $replacements[$original] = variable_get('twitter_player_card_iframe_width', 640);
+          break;
+        case 'iframe-embed-height':
+          $replacements[$original] = variable_get('twitter_player_card_iframe_height', 480);
+          break;
+        case 'attached-video-file-secure-url':
+          $replacements[$original] = tp_videos_attached_video_file_url($node, TRUE);
+          break;
+        case 'attached-video-url':
+          $replacements[$original] = tp_videos_attached_video_opengraph_url($node);
+          break;
+        case 'attached-video-secure-url':
+          $replacements[$original] = tp_videos_attached_video_opengraph_url($node, TRUE);
+          break;
+        case 'attached-video-width':
+          $replacements[$original] = tp_videos_attached_video_width($node);
+          break;
+        case 'attached-video-height':
+          $replacements[$original] = tp_videos_attached_video_height($node);
+          break;
+        case 'attached-video-image':
+          $replacements[$original] = tp_videos_attached_video_image($node);
+          break;
+        case 'attached-video-secure-image':
+          $replacements[$original] = tp_videos_attached_video_image($node, TRUE);
+          break;
       }
     }
   }
@@ -45,79 +138,123 @@ function tp_videos_tokens($type, $tokens, array $data = array(),
 function tp_videos_iframe_embed_markup($node) {
   global $base_url;
   $properties = array(
-    'width' => variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH),
-    'height' => variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT),
+	  'width' => '100%',
+		'height' => '100%',
     'src' => $base_url . '/entity_iframe/node/' . $node->nid,
     'frameborder' => '0',
     'class' => 'entity_iframe entity_iframe_node',
     'id' => 'entity_iframe_node_' . $node->nid,
+	  'style' => 'position: absolute; top: 0; left: 0;',
   );
-  return _entity_iframe_build_iframe($properties);
+//	$width = variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH);
+//  $height = variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT);
+//	$ratio = $height/$width*100;
+	$ratio = 60;
+  return '<div class="embed-container" style="position: relative; height: 0; padding-bottom:'. $ratio. '%">'. _entity_iframe_build_iframe($properties, 'video-embed'). '</div>';
 }
 
 /**
- * Implements hook_entity_view_alter().
+ * Source URL for embedding a node using an iframe.
  */
-function tp_videos_entity_view_alter(&$build, $type) {
-  if ($type == 'node' && $build['#view_mode'] == 'iframe') {
-    unset($build['links']);
+function tp_videos_iframe_embed_source($node, $https = FALSE) {
+  global $base_url;
+  $src_url = $base_url . '/entity_iframe/node/' . $node->nid;
+  list(, $resource) = explode('://', $src_url, 2);
+  $scheme = $https ? 'https://' : 'http://';
+  return $scheme . $resource;
+}
+
+/**
+ * Get the file referenced in a file field on a node.
+ */
+function tp_videos_attached_file($node, $field_name) {
+  $file = field_get_items('node', $node, $field_name);
+  if ($file !== FALSE && count($file) > 0) {
+    $data = reset($file);
+    return file_load($data['fid']);
   }
+  return FALSE;
 }
 
-function tp_videos_access() {
-  return TRUE;
-}
-
-function tp_videos_menu() {
-  return array(
-    'api/video-test-jw5' => array(
-      'title' => 'JW Player 5 Video Test',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('tp_videos_test_version_5'),
-      'access callback' => 'tp_videos_access',
-    ),
-    'api/video-test-jw6' => array(
-      'title' => 'JW Player 6 Video Test',
-      'page callback' => 'tp_videos_test_version_6',
-      'access callback' => 'tp_videos_access',
-    ),
-  );
-}
-
-function tp_videos_test_version_5($form, &$form_state) {
-
-  $video_url = variable_get('tp_videos_test', 'http://video.takepart.com/videos/YWWSR44k-3Ap37bHw.mp4');
-
-  if (!empty($video_url)) {
-    $form['video'] = array(
-      '#markup' => '<embed flashvars="file='. rawurlencode($video_url) . '&autostart=true" allowfullscreen="true" allowscriptaccess="always" id="player1" name="player1" src="/sites/all/modules/custom/tp_videos/player.swf" width="480" height="270" />',
-      '#type' => 'markup',
-    );
+/**
+ * Parse a media stream wapper URI
+ */
+function tp_videos_parse_wrapper_uri($uri) {
+  $path = explode('://', $uri);
+  $parts = explode('/', $path[1]);
+  $params = array();
+  $count = 0;
+  $total = count($parts);
+  if (!$total || ($total % 2)) {
+    // If we have no parts, or an odd number of parts, it's malformed.
+    return FALSE;
   }
-
-  $form['dump'] = array(
-    '#markup' => print_r($form_state, true),
-  );
-
-  $form['video_url'] = array(
-    '#type' => 'textfield',
-    '#title' => 'URL',
-    '#default_value' => $video_url,
-  );
-
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => 'Update',
-    '#submit' => array('tp_videos_test_version_5_submit'),
-  );
-
-  return $form;
+  while ($count < $total) {
+    // We iterate count for each step of the assignment to keep us honest.
+    $params[$parts[$count++]] = $parts[$count++];
+  }
+  return $params;
 }
 
-function tp_videos_test_version_5_submit($form, $form_state) {
-  variable_set('tp_videos_test', $form_state['values']['video_url']);
+function tp_video_allowed_regions($node) {
+  $regions = array();
+  $items = field_get_items('node', $node, 'field_allowed_regions');
+  if ($items !== FALSE && count($items) > 0) {
+    $data = reset($items);
+    $list = trim($data['value']);
+    if (!empty($list)) { $regions[] = $list; }
+  }
+  return $regions;
 }
 
-function tp_videos_test_version_6() {
+function tp_videos_attached_video_object($node) {
+  if ($file = tp_videos_attached_file($node, 'field_video')) {
+    if ($params = tp_videos_parse_wrapper_uri($file->uri)) {
+      if ($file->filemime == 'video/youtube') {
+        return new YoutubeVideo($params['v'], 640);
+      }
+      elseif ($file->filemime == 'video/jwplatform') {
+        if (substr($file->uri, 0, 16) === 'jwplatform-video') {
+          $regions = tp_video_allowed_regions($node);
+          if (empty($regions)) {
+            $api = pm_jwplatform_get_api();
+            return new JWPlatformVideo($api, $params['key'], 640);
+          }
+        }
+      }
+    }
+  }
+  return NULL;
+}
 
+function tp_videos_attached_video_file_url($node, $https = FALSE) {
+  $video = tp_videos_attached_video_object($node);
+  return is_null($video) ? NULL : $video->url($https);
+}
+
+function tp_videos_attached_video_opengraph_url($node, $https = FALSE) {
+  $video = tp_videos_attached_video_object($node);
+  return is_null($video) ? NULL : $video->openGraphURL($https);
+}
+
+function tp_videos_attached_video_image($node, $https = FALSE) {
+  $file = tp_videos_attached_file($node, 'field_thumbnail');
+  if ($file !== FALSE) {
+    $image_url = file_create_url($file->uri);
+    $absolute_url = url($image_url, array('absolute' => TRUE));
+    list(, $resource) = explode('://', $absolute_url, 2);
+    $scheme = $https ? 'https://' : 'http://';
+    return $scheme . $resource;
+  }
+  return NULL;
+}
+
+function tp_videos_attached_video_width($node) {
+  $video = tp_videos_attached_video_object($node);
+  return is_null($video) ? NULL : $video->width();
+}
+
+function tp_videos_attached_video_height($node) {
+  $video = tp_videos_attached_video_object($node);
+  return is_null($video) ? NULL : $video->height();
 }

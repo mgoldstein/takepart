@@ -14,6 +14,6 @@
 	}
 </style>
 
-<script type="text/javascript" src="http://video.takepart.com/players/<?=$_GET['id']?>.js"></script>
+<script type="text/javascript" src="//content.jwplatform.com/players/<?=$_GET['id']?>.js"></script>
 
 </html>

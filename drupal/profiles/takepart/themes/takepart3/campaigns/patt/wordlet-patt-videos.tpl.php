@@ -7,7 +7,7 @@
 		</div>
 
 		<div class="video">
-			<script type="text/javascript" src="http://video.takepart.com/players/UugUnaI9-sihICoZE.js"></script>
+			<script type="text/javascript" src="//content.jwplatform.com/players/UugUnaI9-sihICoZE.js"></script>
 		</div>
 	</div><!-- /.inner -->
 </div>
