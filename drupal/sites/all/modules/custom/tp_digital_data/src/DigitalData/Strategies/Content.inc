@@ -22,7 +22,6 @@ class ddContent extends ddDefaultPage {
 
     $pageID = "node/{$node->nid}";
 
-<<<<<<< HEAD:drupal/sites/all/modules/custom/tp_digital_data/src/DigitalData/Strategies/Content.inc
     $data = array(
       'pageInstanceID' => ENVIRONMENT . ': ' . $pageID,
       'page' => array(
@@ -34,13 +33,6 @@ class ddContent extends ddDefaultPage {
           'primaryCategory' => $this->categoryForContentType($node->type),
         ),
       ),
-=======
-    $data['pageInstanceID'] = ENVIRONMENT . ': ' . $pageID;
-    $data['page']['pageInfo']['pageID'] = $pageID;
-    $data['page']['pageInfo']['pageName'] = $node->title;
-    $data['page']['category'] = array(
-      'primaryCategory' => $this->categoryForContentType($node->type),
->>>>>>> maintenance:drupal/sites/all/modules/custom/pm_core/app/src/TakePart/DigitalData/Strategies/Content.php
     );
 		/* This needs to come last to override default */
 	  $data += parent::build($page);
