@@ -422,7 +422,6 @@
     var mailto_args;
     var mailto_once = function() {
         addthis.addEventListener('addthis.menu.share', mailto_callback);
-        // $(".tp-social-mailto").trigger("mouseover focus");
     };
     var mailto_callback = function(addthis_event) {
         if (addthis_event.data.service == mailto_args.name) {
@@ -443,9 +442,8 @@
             mailto_args = args;
         },
         prepare: function(el, args) {
-                        if (!$(el).hasClass('addthis_button_mailto')) {
-                $(el)
-                        .addClass('addthis_button_mailto addthis_button_compact')
+            if (!$(el).hasClass('addthis_button_mailto')) {
+                $(el).addClass('addthis_button_mailto addthis_button_compact')
                         .wrapInner('<span></span>');
 
                 get_share_url(args.url, args.title, function(_new_url) {
@@ -469,16 +467,16 @@
                     }, mailto_once);
                 }, true);
             }
-            
-            /*$.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
-                
-               $(".tp-social-mailto").attr('href', function(i, href) {
-                    return encodeURI("mailto:?body=" + $(location).attr('href')) + 
-                            encodeURI("&cmpid=organic-share-mailto") +
-                            encodeURI("&subject=" + $("h1.node-title").html());
-                });
 
-            }, mailto_once); */
+            /*$.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
+             
+             $(".tp-social-mailto").attr('href', function(i, href) {
+             return encodeURI("mailto:?body=" + $(location).attr('href')) + 
+             encodeURI("&cmpid=organic-share-mailto") +
+             encodeURI("&subject=" + $("h1.node-title").html());
+             });
+             
+             }, mailto_once); */
         },
         hoverfocus: function(args) {
             if (!$(args.element).hasClass('addthis_button_mailto')) {
