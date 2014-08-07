@@ -2097,3 +2097,16 @@ function tp4_block_view_alter(&$data, $block) {
             break;
     }
 }
+
+function tp4_preprocess_entity_iframe(&$variables){
+	if(arg(1) == 'node'){
+		$nid = arg(2);
+		$nodes = entity_load('node', array($nid));
+		$node = reset($nodes);
+		$type = $node->type;
+		if($type == 'video'){
+			/* This is so dirty I need a bath */
+			drupal_add_css('html{overflow: hidden;}', array('type' => 'inline'));
+		}
+	}
+}
