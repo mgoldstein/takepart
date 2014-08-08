@@ -6,8 +6,8 @@
  * One will find most of the meat in the form and menu includes
  */
 
-/*
- * implements of hook_menu()
+/**
+ * Implements hook_menu().
  */
 function nodeconnect_menu() {
   return array(
@@ -34,8 +34,8 @@ function nodeconnect_menu() {
 
 }
 
-/*
- * implements of hook_field_attache_form()
+/**
+ * Implements hook_field_attache_form().
  */
 function nodeconnect_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
   foreach (_nodeconnect_get_ref_fields() as $field_name => $field) {
@@ -46,32 +46,31 @@ function nodeconnect_field_attach_form($entity_type, $entity, &$form, &$form_sta
   }
 }
 
-/*
- * nodeconnect_include_form() includes the form inc file
+/**
+ * Includes the form inc file
  *
- * This can be used in #submit array before the sumbit functions which are located in the
- * inc file
+ * This can be used in #submit array before the sumbit functions which are
+ * located in the inc file
  */
 function nodeconnect_include_form() {
   module_load_include("inc", "nodeconnect", "nodeconnect.form");
 }
-/*
- * implements of hook_form_node_form_alter()
+/**
+ * Implements hook_form_node_form_alter()
  *
- * if we are adding a new node we pass of to nodeconnect_add_node_form_allter
- * if we are returning to the parent node we hand off to nodequeue_return_node_form_alter
+ * If we are adding a new node we pass of to nodeconnect_add_node_form_alter().
+ * If we are returning to the parent node we hand off to nodequeue_return_node_form_alter
  * TODO: need to move this at somepoint so it can be with any entity
- *
  */
 function nodeconnect_form_node_form_alter(&$form, &$form_state, $form_id) {
   $child = isset($_REQUEST['child']);
 
   // We can get the cid two different ways
-  // first we try the $_REQUEST param.  if we do not getting it from there we try
+  // First we try the $_REQUEST param.  if we do not getting it from there we try
   // the arg(3) if we are on a add form.  Also if we are on an add form we know that
   // we are a child page.
   if (
-       (isset($_REQUEST['build_cache_id']) && ($cid = $_REQUEST['build_cache_id']) ) ||
+       (isset($_REQUEST['build_cache_id']) && ($cid = $_REQUEST['build_cache_id'])) ||
        ((arg(1) == 'add') && ($cid = arg(3)) && $child = TRUE)
       ) {
     $cache = cache_get($cid);
@@ -94,7 +93,7 @@ function nodeconnect_form_node_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
-/*
+/**
  * _nodeconnect_get_ref_fields is a helper function to retieve all node_reference_fields
  */
 function _nodeconnect_get_ref_fields() {
