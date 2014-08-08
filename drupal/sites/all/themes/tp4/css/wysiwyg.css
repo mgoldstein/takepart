@@ -3773,7 +3773,7 @@ tr.selected td {
   position: absolute;
   right: 5px;
   top: 10px;
-  color: black;
+  color: gray;
   font-family: SSGizmo;
   text-indent: 0;
 }
