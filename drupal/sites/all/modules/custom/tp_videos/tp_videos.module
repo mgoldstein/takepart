@@ -149,7 +149,15 @@ function tp_videos_iframe_embed_markup($node) {
 //	$width = variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH);
 //  $height = variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT);
 //	$ratio = $height/$width*100;
-	$ratio = 60;
+	if($playlist = field_get_items('node', $node, 'field_playlist_position')){
+		if($playlist[0]['value'] == 'bottom'){
+			$ratio = 95;
+		}elseif($playlist[0]['value'] == 'right'){
+			$ratio = 60; //change this
+		}else{
+			$ratio = 60;
+		}
+	}
   return '<div class="embed-container" style="position: relative; height: 0; padding-bottom:'. $ratio. '%">'. _entity_iframe_build_iframe($properties, 'video-embed'). '</div>';
 }
 
