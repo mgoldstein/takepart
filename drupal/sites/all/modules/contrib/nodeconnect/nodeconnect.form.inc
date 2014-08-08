@@ -4,8 +4,8 @@
  * handles all form alters and submit functions for nodeconnect
  */
 
-/*
- * Implements of hook_field_attach_form()
+/**
+ * Implements of hook_field_attach_form().
  *
  * here we attach a submit button for each node ref field
  */
@@ -19,7 +19,7 @@ function _nodeconnect_field_attach_form($entity_type, $entity, &$form, &$form_st
       $form[$field_name][$language][$key]["add_nodeconnect__{$field_name}_$key"] = array(
         '#type' => 'submit',
         '#limit_validation_errors' => array(array($field_name)),
-        '#value' => "New Content",
+        '#value' => t('Add New @field_title content', array('@field_title' => $form[$field_name][$language]['#title'])),
         '#name' => "add_nodeconnect__{$field_name}_$key",
         '#prefix' => "<div class = 'nodeconnect-add $extra'>",
         '#suffix' => '</div>',
@@ -41,7 +41,7 @@ function _nodeconnect_field_attach_form($entity_type, $entity, &$form, &$form_st
       $form[$field_name][$language][$key]["edit_nodeconnect__{$field_name}_$key"] = array(
         '#type' => 'submit',
         '#limit_validation_errors' => array(array($field_name)),
-        '#value' => "Edit Content",
+        '#value' => t('Edit referenced @field_title', array('@field_title' => $form[$field_name][$language]['#title'])),
         '#name' => "edit_nodeconnect__{$field_name}_$key",
         '#prefix' => "<div class = 'nodeconnect-edit $extra'>",
         '#suffix' => '</div>',
@@ -56,11 +56,11 @@ function _nodeconnect_field_attach_form($entity_type, $entity, &$form, &$form_st
   }
 }
 
-/*
- * nodeconnect_add_edit_button_submit() is called when a new node is to be added
+/**
+ * Called when a new node is to be added.
  *
- * we cache the current state and form
- * and redirect to the nodeconnect_add page with an append build_cached_id
+ * we cache the current state and form and redirect to the nodeconnect_add page
+ * with an append build_cached_id
  *
  * TODO: we should capture the current destination so that we can add that back
  * when we return
@@ -71,7 +71,7 @@ function nodeconnect_add_edit_button_submit(&$form, &$form_state) {
   $key   = $form_state['clicked_button']['#key'];
   $language = $form[$field]['#language'];
   $data = array(
-    'form'       => $form, 
+    'form'       => $form,
     'form_state' => $form_state,
     'dest'       => $_GET['q'],
     'field'      => $field,
@@ -92,9 +92,10 @@ function nodeconnect_add_edit_button_submit(&$form, &$form_state) {
   }
 }
 
-/*
- * nodeconnect_child_node_form_alter() alters are child create form
- *   we add a value field to hold the parent build_cache_id
+/**
+ * Alters are child create form.
+ *
+ * We add a value field to hold the parent build_cache_id
  * and then we add a cancel button that run nodeconnect_child_form_cancel
  * and we add a new submit nodeconect_child_form_submit
  */
@@ -115,11 +116,11 @@ function nodeconnect_child_node_form_alter(&$form, &$form_state, $form_id, $cach
   $form['actions']['submit']['#submit'][] = 'nodeconnect_child_form_submit';
 }
 
-/*
- * nodeconnect_child_form_submit() is for submiting of are child create form
- * on submiting of a child form we set 
- * set the nid in the cache entry
- * the rediect to our redirect page
+/**
+ * Submiting of are child create form.
+ *
+ * On submiting of a child form we set set the nid in the cache entry the
+ * rediect to our redirect page
  */
 function nodeconnect_child_form_submit(&$form, &$form_state) {
   $cache_id =  $form_state['values']['parent_build_cache_id'];
@@ -131,23 +132,23 @@ function nodeconnect_child_form_submit(&$form, &$form_state) {
   }
 }
 
-/*
- * nodeconnect_child_form_cancel() simple 
- * sets the redirect to a admin/nodeconnect/redirect page
+/**
+ * Ssets the redirect to a admin/nodeconnect/redirect page
  */
 function nodeconnect_child_form_cancel(&$form, &$form_state) {
   $cache_id = $form_state['clicked_button']['#parent_build_cache_id'];
   if ($cache_id && ($cache = cache_get($cache_id))) {
     $form_state['redirect']  = "admin/nodeconnect/return/$cache_id";
   }
-  
+
 }
 
-/* this is for when we return to the parent page
- * we find the cached form and form_state clean up the form_state a bit
- * and mark it to be rebuilt
+/**
+ * Logic for when we return to the parent page
  *
- * if the cache as an nid we set that in the input 
+ * we find the cached form and form_state clean up the form_state a bit
+ * and mark it to be rebuilt.
+ * If the cache as an nid we set that in the input
  */
 function nodeconnect_return_node_form_alter(&$form, &$form_state, $form_id, $cache_id, $cache) {
   if (!isset($form_state['#nodeconnect_processed'])) {
@@ -167,19 +168,16 @@ function nodeconnect_return_node_form_alter(&$form, &$form_state, $form_id, $cac
       $value =  node_reference_autocomplete_value($element, FALSE, $form_state);
       $form_state['input'][$data['field']][$language][$data['key']]['nid'] = $value;
     }
-      
+
     $form_state['#nodeconnect_processed'] = TRUE;
     $form = drupal_rebuild_form($form_id, $form_state, $form);
   }
 
 }
 
-/*
- * nodeconnect_cache_set wraps cache set so we can 
- * set the expire easily
+/**
+ * Wraps cache set so we can set the expire easily.
  */
 function nodeconnect_cache_set($cid, $data) {
   return cache_set($cid, $data, 'cache', CACHE_PERMANENT);
 }
-
-

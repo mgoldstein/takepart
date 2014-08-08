@@ -34,10 +34,10 @@
         ));
     $social_links = '';
     if(!empty($author_node->field_follow_twitter['und'][0]['url'])){
-      $social_links .= l('<span class="social-twitter-black"></span>', $author_node->field_follow_twitter['und'][0]['url'], array('html' => true, 'attributes' => array('target' => '_blank', 'title' => $author_node->field_follow_twitter['und'][0]['title'] )));
+      $social_links .= l('<span class="social-twitter-black"></span>', $author_node->field_follow_twitter['und'][0]['url'], array('html' => TRUE, 'absolute' => TRUE, 'external' => TRUE,'attributes' => array('target' => '_blank', 'title' => $author_node->field_follow_twitter['und'][0]['title'] )));
     }
     if(!empty($author_node->field_follow_google['und'][0]['url'])){
-      $social_links .= l('<span class="social-googleplus-black"></span>', $author_node->field_follow_google['und'][0]['url'], array('html' => true, 'attributes' => array('target' => '_blank', 'title' => $author_node->field_follow_google['und'][0]['title'] )));
+      $social_links .= l('<span class="social-googleplus-black"></span>', $author_node->field_follow_google['und'][0]['url'], array('html' => TRUE, 'absolute' => TRUE, 'external' => TRUE, 'attributes' => array('target' => '_blank', 'title' => $author_node->field_follow_google['und'][0]['title'] )));
     }
   }
 ?>
