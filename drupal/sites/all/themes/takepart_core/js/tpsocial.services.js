@@ -31,7 +31,9 @@
                 data: {url: url, title: title, shorten: shorten},
                 type: 'POST',
                 async: false,
-                xhrFields: { withCredentials: true },
+                beforeSend: function(xhr){
+                   xhr.withCredentials = true;
+                },
                 success: function(data) { 
                     callback(data.share_url); 
                 },
