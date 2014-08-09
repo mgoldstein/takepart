@@ -22,13 +22,20 @@
         return text;
     };
 
+    var logged_in = function() {
+        if ( document.cookie.match(/takepart=/gi) )
+            return true;
+        else
+            return false;
+    };
+
     var get_share_url = function(url, title, callback, _shorten) {
         var shorten = (typeof _shorten != 'undefined') ? _shorten : false;
         if(window.TP.tabHost){
             $.ajax({
                 url: window.TP.tabHost+"/share.json",
                 dataType: 'json',
-                data: {url: url, title: title, shorten: shorten},
+                data: {url: url, title: title, shorten: shorten, loggedIn: logged_in()},
                 type: 'POST',
                 async: false,
                 beforeSend: function(xhr){
