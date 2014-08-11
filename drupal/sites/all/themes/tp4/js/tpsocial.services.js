@@ -23,16 +23,27 @@
         return text;
     };
 
+    var logged_in = function() {
+        if ( document.cookie.match(/takepart=/gi) )
+            return true;
+        else
+            return false;
+    };
+
+    var get_login_cookie = function() {
+        return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent('takepart').replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || '';
+    };
+
     var get_share_url = function(url, title, callback, _shorten) {
         var shorten = (typeof _shorten != 'undefined') ? _shorten : false;
         if (window.TP.tabHost) {
             $.ajax({
                 url: window.TP.tabHost + "/share.json",
                 dataType: 'json',
-                data: {url: url, title: title, shorten: shorten},
+                data: {url: url, title: title, shorten: shorten, login_info: get_login_cookie()},
                 type: 'POST',
                 async: false,
-                xhrFields: {withCredentials: true},
+                withCredentials: true,
                 success: function(data) {
                     callback(data.share_url);
                 },
