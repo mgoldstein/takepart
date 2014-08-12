@@ -197,6 +197,11 @@
               name: 'email',
               title: title,
               note: description
+            },
+            {
+              name: 'mailto',
+              title: title,
+              note: description
             }
           ]
       };

@@ -54,7 +54,7 @@
       foreach($menu_elements as $key => $item){
         $improved[]   = $menu_tree[$item];
       }
-// dd($improved);
+
       print '<div class="menu-wrapper">';
       print '<div class="menu sf-navbar" style="'. implode(' ', $menu_styles). '">';
       print '<ul class="sf-menu" style="background-color: transparent;">';
