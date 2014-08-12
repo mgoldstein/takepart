@@ -50,12 +50,53 @@ class ddContent extends ddDefaultPage {
 	  $publish_date = date('Y/m/d', $publish_date);
 	  $data['page']['pageInfo']['issueDate'] = $publish_date;
 
+		/* Category Section */
+
+	  //Field Topic
+	  $topic_instance = field_info_instance('node', 'field_topic', $node->type);
+	  if($topic_instance != NULL){
+		  $topics = field_get_items('node', $node, 'field_topic');
+		  $primary_topic = $topics[0]['taxonomy_term']->name;
+		  $topic_names = array();
+		  foreach($topics as $key => $topic){
+				$topic_names[] = $topic['taxonomy_term']->name;
+		  }
+		  $topic_names = implode(', ', $topic_names);
+		  $data['category']['primaryTopic'] = $primary_topic;
+		  $data['category']['topics'] = $topic_names;
+	  }
+
+	  //Field Series
+	  $series_instance = field_info_instance('node', 'field_series', $node->type);
+	  if($series_instance != NULL){
+		  $seriess = field_get_items('node', $node, 'field_series');
+		  $series_names = array();
+		  foreach($seriess as $key => $series){
+			  $series_names[] = $series['taxonomy_term']->name;
+		  }
+		  $series_names = implode(', ', $series_names);
+		  $data['category']['series'] = $series_names;
+	  }
+
+	  //Field Free Tags
+	  $free_tags_instance = field_info_instance('node', 'field_free_tag', $node->type);
+	  if($free_tags_instance != NULL){
+		  $free_tags = field_get_items('node', $node, 'field_free_tag');
+		  $free_tag_names = array();
+		  foreach($free_tags as $key => $free_tag){
+			  $free_tag_names[] = $free_tag['taxonomy_term']->name;
+		  }
+		  $free_tag_names = implode(', ', $free_tag_names);
+		  $data['category']['series'] = $free_tag_names;
+	  }
+
     $data += array(
       'pageInstanceID' => ENVIRONMENT . ': ' . $pageID,
       'page' => array(
         'pageInfo' => array(
           'pageID' => $pageID,
           'pageName' => $node->title,
+	        'template' => $node->type,
         ),
         'category' => array(
           'primaryCategory' => $this->categoryForContentType($node->type),
