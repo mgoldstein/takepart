@@ -42,7 +42,7 @@
                 data: {url: url, title: title, shorten: shorten, login_info: get_login_cookie()},
                 type: 'POST',
                 async: false,
-                withCredentials: true,
+                xhrFields: {withCredentials: true},
                 success: function(data) { 
                     callback(data.share_url); 
                 },
