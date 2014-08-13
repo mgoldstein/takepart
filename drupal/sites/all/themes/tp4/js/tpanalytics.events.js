@@ -15,6 +15,7 @@
     };
 
     var normalize_share_title = function(title) {
+        alert(title);
         switch (title) {
             case ("Like this content on Facebook."):
             case ("facebook_like"):
@@ -52,7 +53,6 @@
             default:
                 title = "Social Share";
         }
-
         return title;
     };
 
@@ -505,6 +505,10 @@
         $('body')
         .delegate('a.addthis_button_pinterest_pinit', 'click', function() {
             takepart.analytics.track('generic_addthis', 'pinterest');
+        })
+        
+        .delegate('a.addthis_button_mailto', 'click', function() {
+            takepart.analytics.track('generic_addthis', {name: 'mailto', url: this.href});
         })
 
         .delegate('.node-type-openpublish-article #block-bean-of-the-day a[href]', 'click', function(event) {
