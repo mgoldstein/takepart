@@ -48,8 +48,9 @@
   RewriteCond %{HTTP_HOST} !=origin.prod.takepart.com
   RewriteRule (.*) http://www.takepart.com/$1 [R=301,L,NC]
 
-  # We don't have /issues anymore (2011-09-19):
-  RewriteRule ^/issues(.+)$ / [NC,R=301,L]
+  RewriteCond %{HTTP:X-Forwarded-Proto} =https
+  RewriteCond %{REQUEST_URI} ^/(article|feature|flashcards|photos|video)
+  RewriteRule (.*) http://%{HTTP_HOST}/$1 [R=301,L,NC]
 
   # Food.inc farmbill
   RewriteRule ^/emails/foodinc/2011-11-14-farm-bill(.+) /emails/foodinc/2011-11-14-farm-bill [NC,R=301,L]
@@ -60,20 +61,8 @@
   RewriteCond %{QUERY_STRING} campaign=(\w+)$
   RewriteRule ^/newsletter-unsubscribe http://action.takepart.com/page/unsubscribe/%1? [R=301,L]
 
-  # This list has gone away (2012-02-15):
-  RewriteRule ^/lists/hungry-for-change-get-involved/17056$ /foodinc [R=301,L]
-
-  # FBZ #23222 - Last Call at the Oasis
-  #RewriteRule ^/lastcallattheoasis /lastcall [R=301,L]
-
   # FBZ #23207 - Marigold
   RewriteRule ^/marigold(.*)$ /thebestexoticmarigoldhotel$1 [R=301,L]
-
-  # FBZ #24110 - Wrong quote used in URL
-  RewriteRule ^/article/2012/05/16/madonna’s-healthy-eating-secret(.*)$ /article/2012/05/16/madonna's-healthy-eating-secret$1 [R=301,L]
-
-  # For missspellings (2012-04-30)
-  RewriteRule ^/fooodinc.$ /foodinc [R=301,L]
 
   # For uppercase... (2012-04-30)
   RewriteRule ^/Marigold.$ /thebestexoticmarigoldhotel [R=301,L]
