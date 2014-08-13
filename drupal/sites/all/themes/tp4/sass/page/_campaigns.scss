@@ -493,7 +493,6 @@ body.campaign-display{
                 }
             }
             @include breakpoint($breakpoint-tablet) {
-                margin-left: 9px;
                 &.tp-social-email {
                     display: none;
                 }
@@ -502,7 +501,6 @@ body.campaign-display{
                 }
             }
             @include breakpoint($breakpoint-desktop) {
-                margin: 0 auto 5px;
                 &.tp-social-email {
                     display: inline-block;
                 }
