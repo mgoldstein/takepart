@@ -15,7 +15,6 @@
     };
 
     var normalize_share_title = function(title) {
-        alert(title);
         switch (title) {
             case ("Like this content on Facebook."):
             case ("facebook_like"):
