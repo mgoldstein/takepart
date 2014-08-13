@@ -504,7 +504,7 @@
         // Pinterest doesn't work when it's just a link
         $('body')
         .delegate('a.addthis_button_pinterest_pinit', 'click', function() {
-            takepart.analytics.track('generic_addthis', 'pinterest');
+            takepart.analytics.track('generic_addthis', {name: 'pinterest', url: this.href});
         })
         
         .delegate('a.addthis_button_mailto', 'click', function() {
