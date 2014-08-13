@@ -204,6 +204,15 @@ function tp_videos_parse_wrapper_uri($uri) {
   return $params;
 }
 
+function tp_video_play_inline_share($node) {
+  $items = field_get_items('node', $node, 'field_sharing_inline');
+  if ($items !== FALSE && count($items) > 0) {
+    $first = reset($items);
+    return strtolower(trim($first['value'])) == 1 ? TRUE : FALSE;
+  }
+  return FALSE;
+}
+
 function tp_video_allowed_regions($node) {
   $regions = array();
   $items = field_get_items('node', $node, 'field_allowed_regions');
@@ -216,19 +225,29 @@ function tp_video_allowed_regions($node) {
 }
 
 function tp_videos_attached_video_object($node) {
+
+  // Make sure the video node has play inline sharing enabled
+  if (!tp_video_play_inline_share($node)) {
+    return NULL;
+  }
+
+  // Region limited video should not play inline when sharing
+  $regions = tp_video_allowed_regions($node);
+  if (!empty($regions)) {
+    return NULL;
+  }
+
   if ($file = tp_videos_attached_file($node, 'field_video')) {
     if ($params = tp_videos_parse_wrapper_uri($file->uri)) {
+      // Youtube Videos
       if ($file->filemime == 'video/youtube') {
         return new YoutubeVideo($params['v'], 640);
       }
-      elseif ($file->filemime == 'video/jwplatform') {
-        if (substr($file->uri, 0, 16) === 'jwplatform-video') {
-          $regions = tp_video_allowed_regions($node);
-          if (empty($regions)) {
-            $api = pm_jwplatform_get_api();
-            return new JWPlatformVideo($api, $params['key'], 640);
-          }
-        }
+      // JWPlatform Videos (no playlists)
+      elseif ($file->filemime == 'video/jwplatform'
+        && substr($file->uri, 0, 16) === 'jwplatform-video') {
+        $api = pm_jwplatform_get_api();
+        return new JWPlatformVideo($api, $params['key'], 640);
       }
     }
   }
