@@ -20,6 +20,9 @@ sftp-config.json
 /drupal/nbproject/
 /drupal/nbproject/private/
 
+# Drush
+/drush/
+
 # Debug modules
 /drupal/debug.php
 /drupal/sites/all/modules/contrib/blazemeter/

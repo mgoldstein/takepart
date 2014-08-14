@@ -39,6 +39,10 @@
       email: {
         name: 'email',
         url: '{current}'
+      },
+      mailto: {
+        name: 'mailto',
+        url: '{current}'
       }
     }
   };
@@ -193,7 +197,7 @@
     $currentSlide: null,
 
     showCover: function() {
-      // upate tpsocial values if we ahven't done them already
+      // update tpsocial values if we haven't already
       if (!this.$galleryCoverSlide.find('.tp-social:not(.tp-social-skip)').is('tp-social-processed')) {
         updateTpSocialMedia(this.$galleryCoverSlide.find('img').attr('src'), this.$galleryCoverSlide.find('.gallery-cover-title').text());
         this.$galleryCoverSlide.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
