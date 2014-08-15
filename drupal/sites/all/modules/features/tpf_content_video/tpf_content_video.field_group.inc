@@ -34,8 +34,8 @@ function tpf_content_video_field_group_info() {
       8 => 'field_playlist_size',
       9 => 'field_sharing_enabled',
       10 => 'field_share_url',
-      11 => 'field_player_embed_code',
-      12 => 'field_player_embeddable',
+      11 => 'field_player_embeddable',
+      12 => 'field_sharing_inline',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
