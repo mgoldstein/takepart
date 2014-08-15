@@ -255,6 +255,9 @@ function tpf_content_video_strongarm() {
         'xmlsitemap' => array(
           'weight' => '13',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

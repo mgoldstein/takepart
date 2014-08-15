@@ -2305,7 +2305,11 @@ function tpf_content_field_bases_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_campaign_social_follow',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
@@ -2855,7 +2859,11 @@ function tpf_content_field_bases_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_featured_campaigns',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
@@ -2930,7 +2938,11 @@ function tpf_content_field_bases_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_flashcard_organizations',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
@@ -4429,7 +4441,11 @@ function tpf_content_field_bases_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_listing_collection',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
@@ -5584,7 +5600,11 @@ function tpf_content_field_bases_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_promo_content_collection',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
@@ -6246,6 +6266,32 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_sharing_enabled',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'false',
+        1 => 'true',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_sharing_inline'
+  $field_bases['field_sharing_inline'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_sharing_inline',
     'foreign keys' => array(),
     'indexes' => array(
       'value' => array(
