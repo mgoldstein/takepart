@@ -24,8 +24,6 @@ window.digitalData = {
       referringURL: "",         // The absolute URL of the referring page. This can be set client side using
                                 // document.referrer.
 
-      author: "",               // The primary author of the page.
-
       authors: [""],            // All authors of the page, including the primary author.
 
       issueDate: "",            // The published date of the page. This can be a string or a Date() object.
@@ -34,8 +32,6 @@ window.digitalData = {
     category: {
 
       primaryCategory: "",      // The primary category of the page, for TakePart this is the content type.
-
-      primaryTopic: "",         // The primary topic of the page.
 
       topics: [""],             // All topics of the page in order of relevance.
 

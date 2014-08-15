@@ -1,7 +1,6 @@
 <?php
-namespace TakePart\DigitalData\Strategies;
 
-class Campaign extends Content {
+class ddCampaign extends ddContent {
 
   public static function claim($path, $page) {
     // Claim campaign content pages
