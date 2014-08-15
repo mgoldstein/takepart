@@ -42,6 +42,15 @@
         }
     };
 
+    var refreshMailto = function() {
+        var currentcaption = (gallery.currentCaption != null) ? $("h1.gallery-headline").html() + " -- " + gallery.currentCaption : $("h1.gallery-headline").html();
+        $(".tp-social-mailto").attr('href', function() {
+            var sharelink = "mailto:?body=" + window.location +
+                    "?cmpid=organic-share-mailto&subject=" + currentcaption;
+            return encodeURI(sharelink);
+        });
+    };
+
     // utility functionto update social share variables 
     var updateTpSocialMedia = function(imageSrc, shareDescription) {
         imageSrc = imageSrc.split('?')[0].split('#')[0];
@@ -50,6 +59,9 @@
         tp_social_config.services.pinterest.description = shareDescription;
         tp_social_config.services.tumblr.caption = shareDescription;
         tp_social_config.services.facebook.description = shareDescription;
+        setTimeout(function() {
+            refreshMailto();
+        }, 500);
     };
 
     // prevent 2 email calls from firing
@@ -133,15 +145,6 @@
         }
     };
 
-    var refreshMailto = function() {
-        var currentcaption = (gallery.currentCaption != null) ? gallery.currentCaption : $("h1.gallery-headline").html();
-        $(".tp-social-mailto").attr('href', function(i, href) {
-            return encodeURI("mailto:?body=" + window.location) +
-                    encodeURI("&cmpid=organic-share-mailto") +
-                    encodeURI("&subject=" + currentcaption);
-        });
-    };
-
     // utility funcitions to show/hide and replace facebook comments
     var $facebookComments = null;
     var facebookCommentsTemplate = null;
@@ -178,7 +181,7 @@
         $galleryCoverSlide: null,
         $galleryDescription: null,
         $galleryContent: null,
-        currentCaption: null, 
+        currentCaption: null,
         // gallery nav properties
         $nav: null,
         $previousSlide: null,
@@ -206,7 +209,11 @@
             this.$galleryContent.addClass('hidden');
             this.isShowing = false;
             $('body').removeClass('gallery-showing');
+            gallery.currentCaption = null;
 
+            setTimeout(function() {
+                refreshMailto();
+            }, 2000);
         },
         showGallery: function(replace) {
             if (this.isShowing) {
@@ -229,6 +236,10 @@
             var token = getCurrentToken();
             this.hpushCurrentSlide(replace);
             showFacebookComments(token);
+            setTimeout(function() {
+                refreshMailto();
+            }, 1000);
+
         },
         adjustSlideshowHeight: function() {
             this.$slides.height(this.$currentSlide.height());
