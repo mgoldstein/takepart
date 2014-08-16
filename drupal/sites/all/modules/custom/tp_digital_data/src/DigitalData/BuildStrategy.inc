@@ -1,7 +1,6 @@
 <?php
-namespace TakePart\DigitalData;
 
-interface BuildStrategy {
+interface ddBuildStrategy {
 
   public static function claim($path, $page);
 
