@@ -11923,12 +11923,34 @@ header .search .form-submit {
   padding-top: 5px;
   text-transform: lowercase;
 }
+/* line 10, ../sass/modules/_sidebar.scss */
+#sidebar .block-boxes-ga_ad {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+/* line 14, ../sass/modules/_sidebar.scss */
+#sidebar .block-boxes-ga_ad:before {
+  content: 'Advertisement';
+  text-transform: uppercase;
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-size: 11px;
+  color: #5a5a5a;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+/* line 23, ../sass/modules/_sidebar.scss */
+#sidebar .block-boxes-ga_ad:before .boxes-box-content {
+  margin: 0 auto;
+  display: block;
+}
 
-/* line 17, ../sass/modules/_sidebar.scss */
+/* line 36, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .message {
   margin: .75em 0;
 }
-/* line 20, ../sass/modules/_sidebar.scss */
+/* line 39, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email {
   margin: 0;
   display: inline-block;
@@ -11936,7 +11958,7 @@ header .search .form-submit {
   width: 65%;
   position: relative;
 }
-/* line 26, ../sass/modules/_sidebar.scss */
+/* line 45, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email label {
   display: none;
   font: normal 12px/1 "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
@@ -11944,11 +11966,11 @@ header .search .form-submit {
   left: 0;
   bottom: 100%;
 }
-/* line 32, ../sass/modules/_sidebar.scss */
+/* line 51, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email label.error {
   display: inline;
 }
-/* line 36, ../sass/modules/_sidebar.scss */
+/* line 55, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .form-item-email input {
   width: 100%;
   border: 1px solid #CCC;
@@ -11962,12 +11984,12 @@ header .search .form-submit {
   font-size: 12px;
   line-height: 1.5;
 }
-/* line 46, ../sass/modules/_sidebar.scss */
+/* line 65, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign input[type="submit"] {
   width: 33%;
   float: right;
 }
-/* line 61, ../sass/modules/_sidebar.scss */
+/* line 80, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service {
   clear: both;
   margin: 1em 0;
@@ -11975,12 +11997,12 @@ header .search .form-submit {
   border-bottom: 1px solid #cccccc;
   font-size: 12px;
 }
-/* line 68, ../sass/modules/_sidebar.scss */
+/* line 87, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .terms-of-service a {
   line-height: 1.2em;
   color: #018b73;
 }
-/* line 74, ../sass/modules/_sidebar.scss */
+/* line 93, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .follow-us {
   font: bold 20px/1 "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   text-transform: lowercase;
@@ -11988,16 +12010,16 @@ header .search .form-submit {
   vertical-align: top;
   margin: 2px 8px 0 0;
 }
-/* line 81, ../sass/modules/_sidebar.scss */
+/* line 100, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links {
   display: inline-block;
 }
-/* line 83, ../sass/modules/_sidebar.scss */
+/* line 102, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li {
   display: inline-block;
   line-height: 1;
 }
-/* line 86, ../sass/modules/_sidebar.scss */
+/* line 105, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a {
   display: inline-block;
   height: 0;
@@ -12006,7 +12028,7 @@ header .search .form-submit {
   padding-top: 24px;
   overflow: hidden;
 }
-/* line 95, ../sass/modules/_sidebar.scss */
+/* line 114, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.facebook {
   background-position: 0 -528px;
 }
@@ -12014,7 +12036,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.facebook:hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray_hover, .block-newsletter-campaign .social-links li a.facebook.facebook-gray-hover {
   background-position: 0 -480px;
 }
-/* line 96, ../sass/modules/_sidebar.scss */
+/* line 115, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.twitter {
   background-position: 0 -360px;
 }
@@ -12022,7 +12044,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.twitter:hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray_hover, .block-newsletter-campaign .social-links li a.twitter.twitter-gray-hover {
   background-position: 0 -288px;
 }
-/* line 97, ../sass/modules/_sidebar.scss */
+/* line 116, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.google {
   background-position: 0 -144px;
 }
@@ -12030,7 +12052,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.google:hover, .block-newsletter-campaign .social-links li a.google.googleplus-gray_hover, .block-newsletter-campaign .social-links li a.google.googleplus-gray-hover {
   background-position: 0 -120px;
 }
-/* line 98, ../sass/modules/_sidebar.scss */
+/* line 117, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.pinterest {
   background-position: 0 -240px;
 }
@@ -12038,7 +12060,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.pinterest:hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray_hover, .block-newsletter-campaign .social-links li a.pinterest.pinterest-gray-hover {
   background-position: 0 -336px;
 }
-/* line 99, ../sass/modules/_sidebar.scss */
+/* line 118, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.youtube {
   background-position: 0 0;
 }
@@ -12046,7 +12068,7 @@ header .search .form-submit {
 .block-newsletter-campaign .social-links li a.youtube:hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray_hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray-hover {
   background-position: 0 -48px;
 }
-/* line 100, ../sass/modules/_sidebar.scss */
+/* line 119, ../sass/modules/_sidebar.scss */
 .block-newsletter-campaign .social-links li a.tumblr {
   background-position: 0 -504px;
   margin-right: 0;
@@ -12056,35 +12078,12 @@ header .search .form-submit {
   background-position: 0 -408px;
 }
 
-/* line 106, ../sass/modules/_sidebar.scss */
-.block-boxes-ga_ad {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
-/* line 110, ../sass/modules/_sidebar.scss */
-.block-boxes-ga_ad:before {
-  content: 'Advertisement';
-  text-transform: uppercase;
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
-  font-size: 11px;
-  color: #5a5a5a;
-  width: 100%;
-  text-align: center;
-  display: block;
-}
-/* line 119, ../sass/modules/_sidebar.scss */
-.block-boxes-ga_ad:before .boxes-box-content {
-  margin: 0 auto;
-  display: block;
-}
-
-/* line 127, ../sass/modules/_sidebar.scss */
+/* line 128, ../sass/modules/_sidebar.scss */
 #block-boxes-bg-skin-sponsor:before {
   content: none;
 }
 
-/* line 133, ../sass/modules/_sidebar.scss */
+/* line 134, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .block-title {
   -webkit-box-shadow: 0 -4px 0 black;
   -moz-box-shadow: 0 -4px 0 black;
@@ -12093,32 +12092,32 @@ header .search .form-submit {
   margin-top: 4px;
   padding-top: 5px;
 }
-/* line 136, ../sass/modules/_sidebar.scss */
+/* line 137, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item {
   overflow: hidden;
   margin-bottom: 1em;
 }
-/* line 140, ../sass/modules/_sidebar.scss */
+/* line 141, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item a:hover {
   text-decoration: none;
 }
-/* line 142, ../sass/modules/_sidebar.scss */
+/* line 143, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item a:hover .node-title {
   text-decoration: underline;
 }
-/* line 147, ../sass/modules/_sidebar.scss */
+/* line 148, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item img {
   float: left;
   margin-right: 1em;
 }
-/* line 151, ../sass/modules/_sidebar.scss */
+/* line 152, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item .subhead {
   font: 100 0.85714em/1.5 "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   line-height: 1.5;
   margin: 1em 0 0;
   text-transform: uppercase;
 }
-/* line 157, ../sass/modules/_sidebar.scss */
+/* line 158, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item .node-title {
   font-size: 1em;
   line-height: 1.285714286;
@@ -12134,7 +12133,7 @@ header .search .form-submit {
   margin: .5em 0;
   border-bottom: 1px dashed black;
 }
-/* line 163, ../sass/modules/_sidebar.scss */
+/* line 164, ../sass/modules/_sidebar.scss */
 #block-bean-of-the-day .of-the-day-item .node-title:after {
   margin-left: 114px;
 }

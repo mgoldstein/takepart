@@ -7,6 +7,25 @@
         @include header-top-border();
         text-transform: lowercase;
     }
+    .block-boxes-ga_ad {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        &:before{
+            content: 'Advertisement';
+            text-transform: uppercase;
+            font-family: $primary-sans-font;
+            font-size: 11px;
+            color: $dark-gray;
+            width: 100%;
+            text-align: center;
+            display: block;
+            .boxes-box-content{
+                margin: 0 auto;
+                display: block;
+            }
+        }
+    }
 }
 
 //
@@ -103,25 +122,7 @@
     }
 }
 
-.block-boxes-ga_ad {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    &:before{
-        content: 'Advertisement';
-        text-transform: uppercase;
-        font-family: $primary-sans-font;
-        font-size: 11px;
-        color: $dark-gray;
-        width: 100%;
-        text-align: center;
-        display: block;
-        .boxes-box-content{
-            margin: 0 auto;
-            display: block;
-        }
-    }
-}
+
 
 #block-boxes-bg-skin-sponsor {
     &:before{ 
