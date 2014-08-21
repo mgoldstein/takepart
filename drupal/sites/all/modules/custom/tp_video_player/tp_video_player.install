@@ -1,0 +1,286 @@
+<?php
+/**
+ * @file
+ * Sets up the base tables for video player configurations and video player
+ * ad schedule items.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function tp_video_player_schema() {
+  $schema = array();
+
+  $schema['tp_video_player_configuration'] = array(
+    'description' => 'The base table for video player configurations.',
+    'fields' => array(
+
+      'id' => array(
+        'description' => 'Primary key identifier for the configuration.',
+        'type' => 'serial',
+        'unsigned' => FALSE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'Export name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Promo */
+      'promo_image' => array(
+        'description' => 'Promo image.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'promo_title' => array(
+        'description' => 'Promo title.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'show_promo_title' => array(
+        'description' => 'Display promo title.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Layout */
+      'show_controls' => array(
+        'description' => 'Show the player controls.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'responsive' => array(
+        'description' => 'Responsive sizing.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'width' => array(
+        'description' => 'Width of player in pixels for non-responsive players, width part of aspect ratio for responsive players.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'height' => array(
+        'description' => 'Height of player in pixels for non-responsive players, height part of aspect ratio for responsive players.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'skin' => array(
+        'description' => 'Player skin.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'stretching' => array(
+        'description' => 'How to resize images and video to fit the display.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Playback */
+      'auto_start' => array(
+        'description' => 'Enable automatic automatic start of video playback.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'fallback' => array(
+        'description' => 'Fallback to download link.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'mute_playback' => array(
+        'description' => 'Enable muting of video playback.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'primary_player' => array(
+        'description' => 'Which rendering mode to use for rendering the player if both are available.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'repeat_playback' => array(
+        'description' => 'Enable looping of video playback.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Listbar */
+      'playlist_position' => array(
+        'description' => 'Position of the built in playlist control.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'playlist_layout' => array(
+        'description' => 'Layout of the built in playlist control.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'playlist_size' => array(
+        'description' => 'Size of the built in playlist control.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Sharing */
+      'enable_share' => array(
+        'description' => 'Enable social sharing.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'share_heading' => array(
+        'description' => 'Heading to use when sharing from the player.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'share_url' => array(
+        'description' => 'URL to use when sharing from the player.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'embed_code' => array(
+        'description' => 'Embed code for adding the player to an external site.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Advertising */
+      'ad_frequency' => array(
+        'description' => 'Frequency at which pre-roll ads should be played in playlists.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'ad_client' => array(
+        'description' => 'Player level ad client.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'ad_tag' => array(
+        'description' => 'Player level ad tag.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'ad_message' => array(
+        'description' => 'Player level ad message.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Analytics */
+      'enable_jwplayer_analytics' => array(
+        'description' => 'Enable JWPlayer analytics.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'google_analytics_title' => array(
+        'description' => 'Playlist item property to use for GA tracking.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'google_analytics_object' => array(
+        'description' => 'Name of the GA tracking object.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'site_catalyst_media_name' => array(
+        'description' => 'Site catalyst media name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'site_catalyst_player_name' => array(
+        'description' => 'Site catalyst player name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Change tracking timestamps */
+      'created_at' => array(
+        'description' => 'The Unix timestamp when the configuration was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated_at' => array(
+        'description' => 'The Unix timestamp when the configuration was last changed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+  );
+
+  return $schema;
+}

@@ -1,0 +1,88 @@
+<?php
+/**
+ * @file
+ * TakePart custom video player module.
+ */
+
+function tp_video_player_menu() {
+  return array(
+    'admin/config/media/tp-video-player' => array(
+      'title' => 'Default Video Players Configurations',
+      'description' => 'Default TakePart video player configurations',
+      'position' => 'right',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/media/tp-video-player/defaults/full-page' => array(
+      'title' => 'Full Page',
+      'description' => 'Full page video and playlist nodes.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('full_page'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
+    'admin/config/media/tp-video-player/defaults/inline-replacement' => array(
+      'title' => 'Inline Replacement',
+      'description' => 'Videos and playlists embedded in other content as an inline replacement.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('inline_replacement'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
+    'admin/config/media/tp-video-player/defaults/iframe-embed' => array(
+      'title' => 'iFrame Embed',
+      'description' => 'Videos and playlists embedded on other sites using an iframe.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('iframe_embed'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
+    'admin/config/media/tp-video-player/defaults/front-page-promo' => array(
+      'title' => 'Front Page Promo',
+      'description' => 'Videos and playlists featured on the front page.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('front_page_promo'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
+  );
+}
+
+function tp_video_player_load_configuration($id) {
+  return db_select('tp_video_player_configuration', 'c')
+    ->fields('c')
+    ->condition('id', $id, '=')
+    ->range(0, 1)
+    ->execute()
+    ->fetchObject();
+}
+
+function tp_video_player_load_configuration_by_name($name) {
+  return db_select('tp_video_player_configuration', 'c')
+    ->fields('c')
+    ->condition('name', $name, '=')
+    ->range(0, 1)
+    ->execute()
+    ->fetchObject();
+}
+
+function tp_video_player_insert_configuration($configuration) {
+  $fields = (array) $configuration;
+  return db_insert('tp_video_player_configuration')
+    ->fields($fields)
+    ->execute();
+}
+
+function tp_video_player_update_configuration($configuration) {
+  return db_update('tp_video_player_configuration')
+    ->fields((array) $configuration)
+    ->condition('id', $configuration->id, '=')
+    ->execute();
+}
