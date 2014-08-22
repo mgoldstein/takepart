@@ -545,6 +545,7 @@ aside#article-social-mobile-bottom {
     }
 }
 
+.node-takepart-page.view-mode-full,
 .node-feature-article.view-mode-full,
 .node-openpublish-article.view-mode-full,
 .node-video.view-mode-full,
@@ -601,22 +602,6 @@ aside#article-social-mobile-bottom {
             padding-left: 2em;
             li {
                 list-style-type: decimal;
-            }
-        }
-
-        // drop cap
-        > .field-items > .field-item > p:first-of-type {
-            margin-top: 0;
-
-            &::first-letter {
-                float: left;
-                font-size: 4em;
-                line-height: 1;
-                margin-right: .25em;
-                margin-bottom: -.25em;
-                // TODO unfuck fonts
-                font-family: $primary-serif-font;
-                font-weight: bold;
             }
         }
 
@@ -956,6 +941,29 @@ aside#article-social-mobile-bottom {
             }
         } // .on-our-radar
     } // #article-footer
+}
+
+// Drop caps
+.node-feature-article.view-mode-full,
+.node-openpublish-article.view-mode-full,
+.node-video.view-mode-full,
+.node-flashcard.view-mode-full {
+    .field-name-body {
+        // drop cap
+        > .field-items > .field-item > p:first-of-type {
+            margin-top: 0;
+
+            &::first-letter {
+                float: left;
+                font-size: 4em;
+                line-height: 1;
+                margin-right: .25em;
+                margin-bottom: -.25em;
+                font-family: $primary-serif-font;
+                font-weight: bold;
+            }
+        }
+    }
 }
 
 //
