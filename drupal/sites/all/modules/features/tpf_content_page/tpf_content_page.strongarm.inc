@@ -116,6 +116,9 @@ function tpf_content_page_strongarm() {
       'iframe' => array(
         'custom_settings' => FALSE,
       ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
