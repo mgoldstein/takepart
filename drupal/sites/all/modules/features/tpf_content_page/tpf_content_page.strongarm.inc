@@ -89,6 +89,33 @@ function tpf_content_page_strongarm() {
       'inline_content' => array(
         'custom_settings' => FALSE,
       ),
+      'vidpop_map' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_main' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_main_tpl' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_secondary' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_topic' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_video' => array(
+        'custom_settings' => TRUE,
+      ),
+      'embedaction' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedaction_expanded' => array(
+        'custom_settings' => FALSE,
+      ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
