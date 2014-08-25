@@ -1087,7 +1087,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 8,
+      'weight' => 13,
     ),
   );
 
@@ -2349,7 +2349,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 14,
+      'weight' => 11,
     ),
   );
 

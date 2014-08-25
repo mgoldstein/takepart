@@ -111,16 +111,16 @@ function tpf_content_photo_gallery_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '7',
         ),
         'xmlsitemap' => array(
-          'weight' => '9',
+          'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '12',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
       ),
       'display' => array(),
