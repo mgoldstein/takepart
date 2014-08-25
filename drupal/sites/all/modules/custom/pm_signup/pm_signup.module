@@ -529,8 +529,10 @@ function pm_signup_api_endpoints($type = NULL) {
 
   $query = db_select('pm_signup_endpoint', 'ep');
   $query->addField('ep', 'name', 'value');
+  $query->addField('ep', 'type', 'type');
   $query->addField('ep', 'label', 'label');
   $query->addField('ep', 'configuration', 'configuration');
+  $query->addField('ep', 'plugins', 'plugins');
   $query->condition('name', '', '!=');
   if (!is_null($type)) {
     $query->condition('type', $type);
@@ -539,6 +541,7 @@ function pm_signup_api_endpoints($type = NULL) {
   $payload = $query->execute()->fetchAll();
 
   foreach ($payload as $endpoint) {
+
     $configuration = unserialize($endpoint->configuration);
     if (!isset($configuration['user_prompt'])) {
       $configuration['user_prompt'] = '';
@@ -547,6 +550,14 @@ function pm_signup_api_endpoints($type = NULL) {
       $configuration['checked_by_default'] = 1;
     }
     $endpoint->configuration = $configuration;
+
+    // Drop the .pm_signup.handler from the plugin names
+    $plugins = unserialize($endpoint->plugins);
+    $endpoint->plugins = array();
+    foreach ($plugins as $name => $data) {
+      list($short_name,) = explode('.', $name, 2);
+      $endpoint->plugins[$short_name] = $data;
+    }
   }
 
   return array(
