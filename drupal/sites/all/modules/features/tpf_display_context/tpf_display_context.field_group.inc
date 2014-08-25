@@ -220,6 +220,7 @@ function tpf_display_context_field_group_info() {
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
+        'id' => 'node_action_medium_preview_group_summary',
       ),
       'formatter' => 'open',
     ),

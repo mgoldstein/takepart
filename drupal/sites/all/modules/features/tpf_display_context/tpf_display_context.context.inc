@@ -1037,6 +1037,13 @@ s.prop22 = [tp_omniture:free_tags:{node:nid}]
 s.list2  = [tp_omniture:free_tags:{node:nid}]
 s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
     ),
+    'theme' => array(
+      'title' => '',
+      'subtitle' => '',
+    ),
+    'theme_html' => array(
+      'class' => '',
+    ),
   );
   $context->condition_mode = 0;
 
@@ -2343,17 +2350,17 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'sidebar',
           'weight' => '-8',
         ),
-        'boxes-right_rail_video_promo_articles' => array(
-          'module' => 'boxes',
-          'delta' => 'right_rail_video_promo_articles',
+        'bean--of-the-day' => array(
+          'module' => 'bean',
+          'delta' => '-of-the-day',
           'region' => 'sidebar',
-          'weight' => '-6',
+          'weight' => '-7',
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
-          'weight' => '-5',
+          'weight' => '-6',
         ),
       ),
     ),
