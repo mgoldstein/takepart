@@ -198,7 +198,7 @@ GS_googleEnableAllServices();';
 
     //GPT:
     if (!empty($gptad_html)) {
-        drupal_add_js("var googletag = googletag || {};
+        drupal_add_js("<!-- \n var googletag = googletag || {};
                   googletag.cmd = googletag.cmd || [];
                   (function() {
                   var gads = document.createElement('script');
@@ -209,13 +209,13 @@ GS_googleEnableAllServices();';
                   '//www.googletagservices.com/tag/js/gpt.js';
                   var node = document.getElementsByTagName('script')[0];
                   node.parentNode.insertBefore(gads, node);
-                  })();", array('type' => 'inline', 'scope' => 'header'));
-        drupal_add_js('googletag.cmd.push(function() {' . "\n" .
+                  })(); \n // -->", array('type' => 'inline', 'scope' => 'header'));
+        drupal_add_js("<!-- \n" . 'googletag.cmd.push(function() {' . "\n" .
                 $gptad_html . "\n" .
                 'googletag.pubads().enableSingleRequest();' . "\n" .
                 $gpt_targeting . // custom targeting
                 'googletag.enableServices();' . "\n" . '});' . "\n" .
-                'var gpt_ad_tags = new Array();', array('type' => 'inline', 'scope' => 'header'));
+                'var gpt_ad_tags = new Array();' . "\n // -->", array('type' => 'inline', 'scope' => 'header'));
         }
 }
 
