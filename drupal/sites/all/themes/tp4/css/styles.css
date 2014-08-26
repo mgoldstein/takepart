@@ -7503,6 +7503,36 @@ aside#article-social-mobile-bottom .trigger a.tp-social-email {
   color: #666666;
 }
 
+/* line 1493, ../sass/page/_openpublish_article.scss */
+body.node-type-takepart-page #main h1 {
+  font-family: "Ashbury", "Times New Roman", serif;
+  font-size: 34px;
+  text-transform: capitalize;
+}
+/* line 1498, ../sass/page/_openpublish_article.scss */
+body.node-type-takepart-page #main h2 {
+  font-family: "Brown", Verdana, sans-serif;
+  font-size: 20px;
+  text-transform: lowercase;
+}
+/* line 1503, ../sass/page/_openpublish_article.scss */
+body.node-type-takepart-page #main h3 {
+  font-family: "Ashbury Light", "Times New Roman", serif;
+  font-size: 18px;
+}
+/* line 1507, ../sass/page/_openpublish_article.scss */
+body.node-type-takepart-page #main h4 {
+  font-family: "AdelleSans", Verdana, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+/* line 1512, ../sass/page/_openpublish_article.scss */
+body.node-type-takepart-page #main h5 {
+  font-family: "Ashbury Light", "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 18px;
+}
+
 /* line 2, ../sass/page/_openpublish_photo_gallery.scss */
 .takepart-gallery-cover-slide,
 .takepart-gallery-content {
