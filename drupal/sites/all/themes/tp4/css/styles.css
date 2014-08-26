@@ -7514,23 +7514,27 @@ body.node-type-takepart-page #main h2 {
   font-family: "Brown", Verdana, sans-serif;
   font-size: 20px;
   text-transform: lowercase;
+  font-weight: bold;
 }
-/* line 1503, ../sass/page/_openpublish_article.scss */
+/* line 1504, ../sass/page/_openpublish_article.scss */
 body.node-type-takepart-page #main h3 {
-  font-family: "Ashbury Light", "Times New Roman", serif;
+  font-family: "Ashbury", "Times New Roman", serif;
   font-size: 18px;
+  font-weight: lighter;
 }
-/* line 1507, ../sass/page/_openpublish_article.scss */
+/* line 1509, ../sass/page/_openpublish_article.scss */
 body.node-type-takepart-page #main h4 {
   font-family: "AdelleSans", Verdana, sans-serif;
   font-size: 12px;
   text-transform: uppercase;
+  font-weight: normal;
 }
-/* line 1512, ../sass/page/_openpublish_article.scss */
+/* line 1515, ../sass/page/_openpublish_article.scss */
 body.node-type-takepart-page #main h5 {
-  font-family: "Ashbury Light", "Times New Roman", serif;
+  font-family: "Ashbury", "Times New Roman", serif;
   font-size: 14px;
   line-height: 18px;
+  font-weight: lighter;
 }
 
 /* line 2, ../sass/page/_openpublish_photo_gallery.scss */

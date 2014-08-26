@@ -1499,19 +1499,23 @@ body.node-type-takepart-page #main {
         font-family: "Brown", Verdana, sans-serif;
         font-size: 20px;
         text-transform: lowercase;
+        font-weight: bold;
     }
     h3 {
-        font-family: "Ashbury Light", "Times New Roman", serif;
+        font-family: "Ashbury", "Times New Roman", serif;
         font-size: 18px;
+        font-weight: lighter;
     }
     h4 {
         font-family: "AdelleSans", Verdana, sans-serif;
         font-size: 12px;
         text-transform: uppercase;
+        font-weight: normal;
     }
     h5 {
-        font-family: "Ashbury Light", "Times New Roman", serif;
+        font-family: "Ashbury", "Times New Roman", serif;
         font-size: 14px;
         line-height: 18px;
+        font-weight: lighter;
     }
 }
