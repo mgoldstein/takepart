@@ -29,7 +29,7 @@ function takeaction_javascript_init() {
       if (!empty($anchor)) {
         $publisher_js .= '#' . $anchor;
       }
-      $button_js = "
+      $button_js = "<!-- \n" ."
         window.TP = window.TP || {};
         TP.tabHost = '{$scheme}://{$host}';
         TP.publisherId = '{$pub_id}';
@@ -41,8 +41,7 @@ function takeaction_javascript_init() {
           tabScript.src = scriptLocation + '{$publisher_js}';
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(tabScript, s);
-        })();
-      ";
+        })();" . "\n // -->";
       drupal_add_js($button_js, array(
         'type' => 'inline',
         'group' => JS_LIBRARY,
