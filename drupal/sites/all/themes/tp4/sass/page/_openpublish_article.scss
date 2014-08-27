@@ -112,6 +112,14 @@
 
     @media (max-width: 767px) {
         margin-bottom: 1em;
+        .tp-social {
+            #article-comments-link {
+                display: none;
+            }
+            #article-social-more {
+                display: none;
+            }
+        }
     }
 
     #article-more-shares {
@@ -1511,6 +1519,7 @@ body.node-type-takepart-page #main {
         font-size: 12px;
         text-transform: uppercase;
         font-weight: normal;
+        margin: 1em 0;
     }
     h5 {
         font-family: "Ashbury", "Times New Roman", serif;
