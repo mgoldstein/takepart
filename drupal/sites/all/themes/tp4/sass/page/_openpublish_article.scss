@@ -112,6 +112,14 @@
 
     @media (max-width: 767px) {
         margin-bottom: 1em;
+        .tp-social {
+            #article-comments-link {
+                display: none;
+            }
+            #article-social-more {
+                display: none;
+            }
+        }
     }
 
     #article-more-shares {
