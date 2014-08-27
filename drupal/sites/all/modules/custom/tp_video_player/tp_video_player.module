@@ -4,6 +4,9 @@
  * TakePart custom video player module.
  */
 
+/**
+ * Implements hook_menu().
+ */
 function tp_video_player_menu() {
   return array(
     'admin/config/media/tp-video-player' => array(
@@ -34,6 +37,15 @@ function tp_video_player_menu() {
       'type' => MENU_NORMAL_ITEM,
       'file' => 'tp_video_player.admin.inc',
     ),
+    'admin/config/media/tp-video-player/defaults/block' => array(
+      'title' => 'Right Rail',
+      'description' => 'Videos and playlists featured in a block.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('block'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
     'admin/config/media/tp-video-player/defaults/iframe-embed' => array(
       'title' => 'iFrame Embed',
       'description' => 'Videos and playlists embedded on other sites using an iframe.',
@@ -55,34 +67,140 @@ function tp_video_player_menu() {
   );
 }
 
-function tp_video_player_load_configuration($id) {
-  return db_select('tp_video_player_configuration', 'c')
-    ->fields('c')
-    ->condition('id', $id, '=')
-    ->range(0, 1)
-    ->execute()
-    ->fetchObject();
+/**
+ * Implements hook_form_HOOK_alter().
+ */
+
+function tp_video_player_form_node_form_alter(&$form, &$form_state) {
+
+  $node = $form['#node'];
+
+  if ($node->type === 'video' || $node->type === 'video_playlist') {
+
+    $controller = new TakePartVideoPlayerNodeOverrideController();
+
+    // Get the configuration for the node.
+    $override = $controller->loadOverrideForNode($node->nid, 'full_page');
+    if (is_null($override)) {
+      $override = $controller->create();
+    }
+
+    // Get the global defaults for nodes.
+    $global_defaults = $controller->loadByName('full_page');
+    if (is_null($global_defaults)) {
+      $global_defaults = $controller->createGlobalDefaults('full_page');
+    }
+
+    $form_controller = new TakePartVideoPlayerOverrideFormController($override);
+    $form['tp_video_player'] = $form_controller->form(array(
+      '#type' => 'fieldset',
+      '#title' => t('Player Configuration'),
+      '#weight' => -100,
+      '#group' => 'additional_settings',
+      '#tree' => TRUE,
+    ), $form_state, $global_defaults);
+  }
 }
 
-function tp_video_player_load_configuration_by_name($name) {
-  return db_select('tp_video_player_configuration', 'c')
-    ->fields('c')
-    ->condition('name', $name, '=')
-    ->range(0, 1)
-    ->execute()
-    ->fetchObject();
+/**
+ * Implements hook_node_insert().
+ */
+function tp_video_player_node_insert($node) {
+  tp_video_player_node_update($node);
 }
 
-function tp_video_player_insert_configuration($configuration) {
-  $fields = (array) $configuration;
-  return db_insert('tp_video_player_configuration')
-    ->fields($fields)
-    ->execute();
+/**
+ * Implements hook_node_update().
+ */
+function tp_video_player_node_update($node) {
+
+  if ($node->type === 'video' || $node->type === 'video_playlist') {
+
+    $controller = new TakePartVideoPlayerNodeOverrideController();
+
+    // Get the configuration for the node.
+    $override = $controller->loadOverrideForNode($node->nid, 'full_page');
+    if (is_null($override)) {
+      $override = $controller->create();
+    }
+
+    $form_controller = new TakePartVideoPlayerOverrideFormController($override);
+    $updated_override = $form_controller->update($node->tp_video_player);
+
+    $controller->save($updated_override);
+    $controller->attachOverrideToNode($updated_override, $node->nid, 'full_page');
+  }
 }
 
-function tp_video_player_update_configuration($configuration) {
-  return db_update('tp_video_player_configuration')
-    ->fields((array) $configuration)
-    ->condition('id', $configuration->id, '=')
-    ->execute();
+/**
+ * Implements hook_node_delete().
+ */
+function tp_video_player_node_delete($node) {
+  $controller = new TakePartVideoPlayerNodeOverrideController();
+  $controller->deleteOverridesForNode($node->nid);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tp_video_player_theme() {
+  return array(
+    'tp_video_player_override_form' => array(
+      'render element' => 'form',
+    ),
+  );
+}
+
+/**
+ * Convert an override form field group to a table.
+ */
+function tp_video_player_override_table($title, $fields) {
+
+  // Render the form fields as table rows.
+  $rows = array();
+  foreach ($fields as $name => $container) {
+    $rows[] = array(
+      array(
+        'data' => render($container["{$name}_title"]),
+        'style' => 'width:120px;',
+      ),
+      render($container[$name]) . render($container["{$name}_default"]),
+      array(
+        'data' => render($container["{$name}_override"]),
+        'style' => 'width:35px;align:right',
+      ),
+    );
+  }
+
+  return array(
+    '#theme' => 'table',
+    '#header' => array(
+      array(
+        'data' => '<strong>' . $title . '</strong>',
+        'colspan' => 2,
+      ),
+      array(
+        'data' => t('Override'),
+        'style' => 'width:35px;align:right',
+      ),
+    ),
+    '#rows' => $rows,
+  );
+}
+
+/**
+ * Theme hook for tp_video_player_override_form.
+ */
+function theme_tp_video_player_override_form($variables) {
+  $form = $variables['form'];
+  $tables = array();
+  foreach (element_children($form) as $section_name) {
+    $section = $form[$section_name];
+    $fields = array();
+    foreach (element_children($section) as $field_name) {
+      $fields[$field_name] = $section[$field_name];
+    }
+    $tables[] = tp_video_player_override_table($section['#title'], $fields);
+  }
+  return render($tables);
 }
