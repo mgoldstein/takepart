@@ -7536,8 +7536,9 @@ body.node-type-takepart-page #main h4 {
   font-size: 12px;
   text-transform: uppercase;
   font-weight: normal;
+  margin: 1em 0;
 }
-/* line 1523, ../sass/page/_openpublish_article.scss */
+/* line 1524, ../sass/page/_openpublish_article.scss */
 body.node-type-takepart-page #main h5 {
   font-family: "Ashbury", "Times New Roman", serif;
   font-size: 14px;
