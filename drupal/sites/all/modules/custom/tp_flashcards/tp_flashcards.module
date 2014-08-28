@@ -225,7 +225,7 @@ function _tp_flashcards_get_synonyms($flashcard) {
  * @return string           The flashcard display pattern
  */
 function _tp_flashcards_get_replacement_pattern($synonyms) {
-	return '#\b(?![^<>]*>)(?![^>]*(\/a))(' . implode('|', $synonyms) . ')\b(?!(?:[^<]*(?:<([^\s]+)[^<]+</\2)|(?:</[^\s]+>))*[^<]*</a)#i';
+	return '#\b(?![^<>]*>)(?![^>]*(\/h2))(' . implode('|', $synonyms) . ')\b(?!(?:[^<]*(?:<([^\s]+)[^<]+</\2)|(?:</[^\s]+>))*[^<]*</a)#i';
 }
 
 /**
