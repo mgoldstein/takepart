@@ -739,7 +739,7 @@ function _wordlet_configuration() {
     // Every 3 Seconds Home
     'every3seconds_home' => array(
       'title' => 'Every 3 Seconds - Home',
-      'path' => 'every-3-seconds',
+      'path' => 'ets',
       'published' => FALSE,
       'wrappers' => array('every3seconds', 'campaign', 'html'),
       'css' => array(
@@ -756,7 +756,7 @@ function _wordlet_configuration() {
     // Every Three Seconds Videos
     'every3seconds_video' => array(
       'title' => 'Every 3 Seconds - Videos',
-      'path' => 'every-3-seconds/action',
+      'path' => 'ets/action',
       'published' => FALSE,
       'wrappers' => array('every3seconds', 'campaign', 'html'),
       'css' => array(
