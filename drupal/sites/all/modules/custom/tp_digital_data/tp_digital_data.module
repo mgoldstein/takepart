@@ -50,3 +50,144 @@ function tp_digital_data_page_build(&$page) {
     $page['tp_digital_data'] = $json;
   }
 }
+
+/**
+ * Implements hook form alter
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function tp_digital_data_form_alter(&$form, &$form_state, $form_id){
+	if(isset($form_state['build_info']['base_form_id']) && $form_state['build_info']['base_form_id'] == 'node_form'){
+		global $user;
+		$roles = $user->roles;
+		if(!in_array('administrator', $roles)){
+			$form['field_permanent_title']['#disabled'] = true;
+//			$form['field_permanent_title']['#access'] = false;
+		}
+		array_unshift($form['#submit'], 'tp_digital_data_perm_headline');
+	}
+}
+
+/**
+ * Submit handler for node forms in tp_digital_data_form_alter()
+ * @param $form
+ * @param $form_state
+ */
+function tp_digital_data_perm_headline(&$form, &$form_state){
+	$perm_title = $form_state['values']['field_permanent_title']['und'][0]['value'];
+	if($form_state['values']['status'] == 1 && empty($perm_title)){
+		$title = $form_state['values']['title'];
+		$form_state['values']['field_permanent_title']['und'][0]['value'] = $title;
+	}
+}
+
+/**
+ * Implements hook_token_info()
+ * @return array
+ */
+function tp_digital_data_token_info(){
+
+	$info = array();
+	$info['types']['digital_data'] = array(
+		'name' => t('Digital Data Layer'),
+		'description' => t('Digital data layer tokens'),
+	);
+	$info['tokens']['digital_data']['perm_title'] = array(
+		'name' => t('Permanent Titles'),
+		'description' => t('Permanent title for analytics.'),
+	);
+	return $info;
+
+}
+
+/**
+ * Implements hook_tokens()
+ */
+function tp_digital_data_tokens($type, $tokens, array $data = array(), array $options = array()){
+	$replacements = array();
+
+	if ($type == 'digital_data') {
+		foreach ($tokens as $name => $original) {
+			switch ($name) {
+				case 'perm_title':
+					$node = menu_get_object();
+					$value = tp_digital_data_get_perm_headline($node);
+					$replacements[$original] = $value;
+					break;
+			}
+		}
+	}
+	return $replacements;
+}
+
+/**
+ * Helper function for getting the permanent headline
+ * @param $node
+ * @return bool
+ */
+function tp_digital_data_get_perm_headline($node){
+	if($perm_title = field_get_items('node', $node, 'field_permanent_title')){
+		$perm_title = $perm_title[0]['value'];
+	}else{
+		$perm_title = $node->title;
+	}
+	return $perm_title;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Implements hook_enable().
+ *
+ * Create a field. Fields can be created without any needs to attach them to
+ * entities.
+ */
+function tp_digital_data_enable() {
+
+	$field = array(
+		'field_name' => 'field_permanent_title',
+		'type' => 'text',
+	);
+	field_create_field($field);
+
+
+	/**
+	 * Bind field to a entity bundle.
+	 */
+	$bundles = node_type_get_types();
+	foreach($bundles as $bundle){
+		$instance = array(
+			'field_name' => $field['field_permanent_title'],
+			'entity_type' => 'node',
+			'bundle' => $bundle->type,
+		);
+		field_create_instance($instance);
+	}
+
+}
+/**
+ * Implements hook_disable().
+ *
+ * Remove field from node bundle (content type) and then delete the field.
+ */
+function tp_digital_data_disable() {
+	$instance = array(
+		'field_name' => 'field_permanent_title',
+		'entity_type' => 'node',
+		'bundle' => 'article',
+	);
+	field_delete_instance($instance);
+	field_delete_field($instance['field_name']);
+	print 'Removed ' . $instance['field_name'] . "\n";
+}
