@@ -33,22 +33,6 @@ function pm_jwplayer_menu() {
 }
 
 
-/* JavaScript libraries
- *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
-/**
- * Implements hook_init().
- */
-function pm_jwplayer_init() {
-  if ($token = variable_get('pm_jwplayer_account_token', NULL)) {
-    drupal_add_js('//jwpsrv.com/library/' . $token . '.js', array(
-      'type' => 'external',
-      'scope' => 'header',
-      'weight' => 5,
-    ));
-  }
-}
-
-
 /* Exportable presets
  *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 /**

@@ -5,12 +5,26 @@
  */
 
 /**
+ * Implements hook_init().
+ */
+function tp_video_player_init() {
+  // Add the CDN hosted JW Player to all pages.
+  if ($token = variable_get('tp_video_player_account_token', NULL)) {
+    drupal_add_js('//jwpsrv.com/library/' . $token . '.js', array(
+      'type' => 'external',
+      'scope' => 'header',
+      'weight' => 5,
+    ));
+  }
+}
+
+/**
  * Implements hook_menu().
  */
 function tp_video_player_menu() {
   return array(
     'admin/config/media/tp-video-player' => array(
-      'title' => 'Default Video Players Configurations',
+      'title' => 'Default Video Player Configurations',
       'description' => 'Default TakePart video player configurations',
       'position' => 'right',
       'weight' => 0,
