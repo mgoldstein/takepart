@@ -314,9 +314,8 @@ function tp_video_player_schema() {
   return $schema;
 }
 
-function tp_video_player_transfer_from_fields() {
-
-$overrides_sql = <<<EOSQL
+function tp_video_player_transfer_from_fields_sql() {
+return <<<EOSQL
   SELECT
     n.nid,
     f1.field_sharing_enabled_value,
@@ -413,6 +412,9 @@ $overrides_sql = <<<EOSQL
     OR f11.field_player_skin_value IS NOT NULL
   )
 EOSQL;
+}
+
+function tp_video_player_transfer_from_fields() {
 
   $controller = new TakePartVideoPlayerNodeOverrideController();
 
@@ -431,8 +433,7 @@ EOSQL;
   }
 
   // Get the field bases overrides
-  $result = db_query($overrides_sql);
-
+  $result = db_query(tp_video_player_transfer_from_fields_sql());
   while ($row = $result->fetchAssoc()) {
 
     $override = $controller->loadOverrideForNode($row['nid'], 'full_page');
@@ -459,18 +460,20 @@ EOSQL;
  * Implements hook_install().
  */
 function tp_video_player_install() {
-  $global_defaults = array(
-    'full_page',
-    'inline_replacement',
-    'block',
-    'iframe_embed',
-    'front_page_promo',
-  );
   $controller = new TakePartVideoPlayerConfigurationController();
-  foreach ($global_defaults as $name) {
-    $configuration = $controller->createGlobalDefaults($name);
+  foreach (TakePartVideoPlayerConfiguration::globalDefaultNames() as $name => $label) {
+    $configuration = $controller->createGlobalDefault($name);
+    $configuration->promo_image = '';
+    $configuration->promo_title = '[node:title]';
+    $configuration->auto_start = 1;
+    $configuration->share_heading = 'Share This Video';
+    $configuration->share_url = '[f:bool:{node:field_share_url}:{node:field_share_url}:{node:url:absolute}]?cmpid=longtailshare';
+    $configuration->embed_code = '[node:iframe-embed-markup]';
+    $configuration->site_catalyst_media_name = '[node:title]';
+    $configuration->site_catalyst_player_name = $label;
+    $configuration->ad_tag = 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_640x360&ciu_szs&impl=s&gdfp_req=1&ev=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]';
+    $configuration->ad_message = 'Your video will play after this brief advertisement';
     $controller->save($configuration);
   }
-
   tp_video_player_transfer_from_fields();
 }

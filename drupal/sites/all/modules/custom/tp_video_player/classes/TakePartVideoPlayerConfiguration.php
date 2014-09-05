@@ -49,6 +49,72 @@ class TakePartVideoPlayerConfiguration {
   public $ad_tag = NULL;
   public $ad_message = NULL;
 
+  public static function globalDefaultNames() {
+    return array(
+      'full_page' => t('Full Page'),
+      'block' => t('Block (Right Rail)'),
+      'teaser' => t('Teaser'),
+      'iframe' => t('iFrame Embed'),
+      'inline_content' => t('Inline Content'),
+      'embed' => t('Embedded'),
+      'feature_main' => t('Front Page Feature'),
+      'feature_main_tpl' => t('Front Page Feature (TPL)'),
+      'feature_topic' => t('Topic Page Feature'),
+    );
+  }
+
+  public static function createGlobalDefault($name = NULL) {
+    return new TakePartVideoPlayerConfiguration(array(
+
+      /* Allow access by name */
+      'name' => $name,
+
+      /* Promo */
+      'show_promo_title' => 1,
+      'promo_image' => NULL,
+      'promo_title' => NULL,
+
+      /* Layout */
+      'show_controls' => 1,
+      'responsive' => 1,
+      'width' => 16,
+      'height' => 9,
+      'skin' => 'glow',
+      'stretching' => 'uniform',
+
+      /* Playback */
+      'auto_start' => 0,
+      'fallback' => 0,
+      'mute_playback' => 0,
+      'repeat_playback' => 0,
+      'primary_player' => 'html5',
+
+      /* Playlist */
+      'playlist_position' => 'none',
+      'playlist_size' => 270,
+      'playlist_layout' => 'extended',
+
+      /* Sharing */
+      'enable_share' => 1,
+      'share_heading' => NULL,
+      'share_url' => NULL,
+      'embed_code' => NULL,
+
+      /* Analytics */
+      'enable_jwplayer_analytics' => 1,
+      'google_analytics_object' => '_gaq',
+      'google_analytics_title' => 'title',
+      'site_catalyst_media_name' => NULL,
+      'site_catalyst_player_name' => NULL,
+
+      /* Advertising */
+      'ad_frequency' => 1,
+      'ad_client' => 'googima',
+      'ad_tag' => NULL,
+      'ad_message' => NULL,
+    ));
+  }
+
   public function __construct($values) {
     $this->applyOverrides($values);
     $this->id = $values['id'];

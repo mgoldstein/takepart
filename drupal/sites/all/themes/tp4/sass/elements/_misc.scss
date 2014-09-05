@@ -858,7 +858,7 @@ tr.selected td {
     padding: 20px;
     opacity: 1;
     img {
-        max-width: 100%;    
+        max-width: 100%;
     }
 }
 
@@ -920,7 +920,7 @@ tr.selected td {
 }
 
 /* Video Player ------------------------- */
-.pm-jwplayer{
+.tp-video-player{
   &.loading{
     width: 100%;
     background: image-url('video-loading.gif');
