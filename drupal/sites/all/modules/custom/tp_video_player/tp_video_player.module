@@ -42,15 +42,6 @@ function tp_video_player_menu() {
       'type' => MENU_NORMAL_ITEM,
       'file' => 'tp_video_player.admin.inc',
     ),
-    'admin/config/media/tp-video-player/defaults/inline-replacement' => array(
-      'title' => 'Inline Replacement',
-      'description' => 'Videos and playlists embedded in other content as an inline replacement.',
-      'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('inline_replacement'),
-      'access arguments' => array('access administration pages'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'tp_video_player.admin.inc',
-    ),
     'admin/config/media/tp-video-player/defaults/block' => array(
       'title' => 'Right Rail',
       'description' => 'Videos and playlists featured in a block.',
@@ -60,20 +51,65 @@ function tp_video_player_menu() {
       'type' => MENU_NORMAL_ITEM,
       'file' => 'tp_video_player.admin.inc',
     ),
-    'admin/config/media/tp-video-player/defaults/iframe-embed' => array(
-      'title' => 'iFrame Embed',
-      'description' => 'Videos and playlists embedded on other sites using an iframe.',
+    'admin/config/media/tp-video-player/defaults/teaser' => array(
+      'title' => 'Teaser View Mode',
+      'description' => 'Videos and playlists featured in a block.',
       'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('iframe_embed'),
+      'page arguments' => array('teaser'),
       'access arguments' => array('access administration pages'),
       'type' => MENU_NORMAL_ITEM,
       'file' => 'tp_video_player.admin.inc',
     ),
-    'admin/config/media/tp-video-player/defaults/front-page-promo' => array(
-      'title' => 'Front Page Promo',
+    'admin/config/media/tp-video-player/defaults/iframe' => array(
+      'title' => 'iFrame Embed',
+      'description' => 'Videos and playlists embedded on other sites using an iframe.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('iframe'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
+    'admin/config/media/tp-video-player/defaults/inline-content' => array(
+      'title' => 'Inline Replacement',
+      'description' => 'Videos and playlists embedded in other content as an inline replacement.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('inline_content'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
+    'admin/config/media/tp-video-player/defaults/embed' => array(
+      'title' => 'Embedded View Mode',
+      'description' => 'Videos and playlists featured in a block.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('teaser'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
+    'admin/config/media/tp-video-player/defaults/feature-main' => array(
+      'title' => 'Front Page Feature',
       'description' => 'Videos and playlists featured on the front page.',
       'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('front_page_promo'),
+      'page arguments' => array('feature_main'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
+    'admin/config/media/tp-video-player/defaults/feature-main-tpl' => array(
+      'title' => 'Front Page Feature (TPL)',
+      'description' => 'Videos and playlists featured on the front page.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('feature_main_tpl'),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    ),
+    'admin/config/media/tp-video-player/defaults/feature-topic' => array(
+      'title' => 'Topic Page Feature',
+      'description' => 'Videos and playlists featured on the front page.',
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array('feature_topic'),
       'access arguments' => array('access administration pages'),
       'type' => MENU_NORMAL_ITEM,
       'file' => 'tp_video_player.admin.inc',
@@ -101,9 +137,6 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
 
     // Get the global defaults for nodes.
     $global_defaults = $controller->loadByName('full_page');
-    if (is_null($global_defaults)) {
-      $global_defaults = $controller->createGlobalDefaults('full_page');
-    }
 
     $form_controller = new TakePartVideoPlayerOverrideFormController($override);
     $form['tp_video_player'] = $form_controller->form(array(
@@ -150,6 +183,7 @@ function tp_video_player_node_update($node) {
  * Implements hook_node_delete().
  */
 function tp_video_player_node_delete($node) {
+
   $controller = new TakePartVideoPlayerNodeOverrideController();
   $controller->deleteOverridesForNode($node->nid);
 }
@@ -161,60 +195,55 @@ function tp_video_player_theme() {
   return array(
     'tp_video_player_override_form' => array(
       'render element' => 'form',
+      'file' => 'tp_video_player.theme.inc',
+    ),
+    'tp_video_player' => array(
+      'render element' => 'player',
+      'file' => 'tp_video_player.theme.inc',
     ),
   );
 }
 
 /**
- * Convert an override form field group to a table.
+ * Implements hook_field_formatter_info().
  */
-function tp_video_player_override_table($title, $fields) {
-
-  // Render the form fields as table rows.
-  $rows = array();
-  foreach ($fields as $name => $container) {
-    $rows[] = array(
-      array(
-        'data' => render($container["{$name}_title"]),
-        'style' => 'width:120px;',
-      ),
-      render($container[$name]) . render($container["{$name}_default"]),
-      array(
-        'data' => render($container["{$name}_override"]),
-        'style' => 'width:35px;align:right',
-      ),
-    );
-  }
-
+function tp_video_player_field_formatter_info() {
   return array(
-    '#theme' => 'table',
-    '#header' => array(
-      array(
-        'data' => '<strong>' . $title . '</strong>',
-        'colspan' => 2,
-      ),
-      array(
-        'data' => t('Override'),
-        'style' => 'width:35px;align:right',
-      ),
-    ),
-    '#rows' => $rows,
+    'tp_video_player_file' => TakePartVideoPlayerFileFieldFormatter::info(),
   );
 }
 
 /**
- * Theme hook for tp_video_player_override_form.
+ * Implements hook_field_formatter_settings_form().
  */
-function theme_tp_video_player_override_form($variables) {
-  $form = $variables['form'];
-  $tables = array();
-  foreach (element_children($form) as $section_name) {
-    $section = $form[$section_name];
-    $fields = array();
-    foreach (element_children($section) as $field_name) {
-      $fields[$field_name] = $section[$field_name];
-    }
-    $tables[] = tp_video_player_override_table($section['#title'], $fields);
+function tp_video_player_field_formatter_settings_form($field, $instance,
+  $view_mode, $form, &$form_state) {
+  $display = $instance['display'][$view_mode];
+  if ($display['type'] === 'tp_video_player_file') {
+    $formatter = new TakePartVideoPlayerFileFieldFormatter($field, $instance, $display);
+    return $formatter->settingsForm($form, $form_state);
   }
-  return render($tables);
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function tp_video_player_field_formatter_settings_summary($field, $instance,
+  $view_mode) {
+  $display = $instance['display'][$view_mode];
+  if ($display['type'] === 'tp_video_player_file') {
+    $formatter = new TakePartVideoPlayerFileFieldFormatter($field, $instance, $display);
+    return $formatter->settingsSummary();
+  }
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function tp_video_player_field_formatter_view($entity_type, $entity, $field,
+  $instance, $langcode, $items, $display) {
+  if ($display['type'] === 'tp_video_player_file') {
+    $formatter = new TakePartVideoPlayerFileFieldFormatter($field, $instance, $display);
+    return $formatter->viewItems($entity_type, $entity, $langcode, $items);
+  }
 }

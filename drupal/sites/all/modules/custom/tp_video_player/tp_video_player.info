@@ -4,8 +4,11 @@ core = 7.x
 package = TakePart
 version = 7.x-1.0
 
+files[] = classes/TakePartTokenizedObject.php
 files[] = classes/TakePartVideoPlayerConfiguration.php
 files[] = classes/TakePartVideoPlayerConfigurationController.php
 files[] = classes/TakePartVideoPlayerConfigurationFormController.php
-files[] = classes/TakePartVideoPlayerOverrideFormController.php
+files[] = classes/TakePartVideoPlayerFileFieldFormatter.php
 files[] = classes/TakePartVideoPlayerNodeOverrideController.php
+files[] = classes/TakePartVideoPlayerOverrideFormController.php
+files[] = classes/TakePartVideoPlayerVideoNodeSettingsBuilder.php

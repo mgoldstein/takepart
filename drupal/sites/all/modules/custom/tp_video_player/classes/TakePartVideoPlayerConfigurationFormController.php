@@ -12,6 +12,15 @@ class TakePartVideoPlayerConfigurationFormController {
     return $form_state[get_class()];
   }
 
+  private function wrapInFieldset($title, $fields) {
+    $fields += array(
+      '#type' => 'fieldset',
+      '#title' => $title,
+      '#collapsible' => TRUE,
+    );
+    return $fields;
+  }
+
   public function form($form, &$form_state) {
 
     $form['promo'] = $this->wrapInFieldset(
@@ -88,16 +97,6 @@ class TakePartVideoPlayerConfigurationFormController {
     }
 
     return $this->configuration;
-  }
-
-  private function wrapInFieldset($title, $fields) {
-    $fields += array(
-      '#type' => 'fieldset',
-      '#title' => $title,
-      '#collapsible' => TRUE,
-      '#tree' => FALSE,
-    );
-    return $fields;
   }
 
   protected static function promoFields($configuration) {
@@ -397,6 +396,7 @@ class TakePartVideoPlayerConfigurationFormController {
       '#title' => t('Tag'),
       '#description' => t('URL of the VAST or IMA ad tag to play.'),
       '#default_value' => $configuration->ad_tag,
+      '#maxlength' => 255,
     );
 
     $fields['ad_message'] = array(
