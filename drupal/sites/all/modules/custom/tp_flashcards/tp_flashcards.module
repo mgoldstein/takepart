@@ -242,9 +242,7 @@ function _tp_flashcards_get_cta_link($node) {
     // to searching for the first synonym
     $items = field_get_items('node', $node, 'field_flashcard_synonyms');
     $term = drupal_render(field_view_value('node', $node, 'field_flashcard_synonyms', $items[0]));
-    //$searchLink = rawurlencode($term);
     $path = urldecode(url('search/' . $term));
-    // dd(urldecode($path));
   }
 
   foreach (field_get_items('node', $node, 'field_flashcard_related_cta_text') as $item) {
