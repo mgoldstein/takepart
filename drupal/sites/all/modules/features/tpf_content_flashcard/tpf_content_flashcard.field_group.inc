@@ -33,6 +33,7 @@ function tpf_content_flashcard_field_group_info() {
       'instance_settings' => array(
         'classes' => 'flashcard-definition',
         'wrapper' => 'aside',
+        'id' => 'node_flashcard_full_group_definition',
       ),
     ),
   );

@@ -117,6 +117,7 @@ function tpf_content_campaign_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
         'classes' => '',
+        'id' => 'node_takepart_campaign_full_group_tp_campaign_header',
       ),
     ),
   );

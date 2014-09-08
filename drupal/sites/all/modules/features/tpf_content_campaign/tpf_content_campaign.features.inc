@@ -30,5 +30,6 @@ function tpf_content_campaign_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
