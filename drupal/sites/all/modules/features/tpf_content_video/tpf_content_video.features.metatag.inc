@@ -53,11 +53,11 @@ function tpf_content_video_metatag_export_default() {
           'notranslate' => 0,
         ),
       ),
-      'og:description' => array(
-        'value' => '[node:field_article_subhead]',
-      ),
       'og:type' => array(
         'value' => 'movie',
+      ),
+      'og:description' => array(
+        'value' => '[node:field_article_subhead]',
       ),
       'og:image' => array(
         'value' => '[node:attached-video-image]',
@@ -89,6 +89,9 @@ function tpf_content_video_metatag_export_default() {
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
+      'twitter:image:src' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
+      ),
       'twitter:player' => array(
         'value' => '[node:iframe-embed-src]',
       ),
@@ -101,8 +104,8 @@ function tpf_content_video_metatag_export_default() {
       'twitter:player:stream' => array(
         'value' => '[node:attached-video-file-secure-url]',
       ),
-      'twitter:image:src' => array(
-        'value' => '[tp_og_image:thumbnail:{node:nid}]',
+      'twitter:player:stream:content_type' => array(
+        'value' => 'video/mp4',
       ),
     ),
   );

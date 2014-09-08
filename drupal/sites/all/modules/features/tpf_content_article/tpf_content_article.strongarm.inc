@@ -129,7 +129,7 @@ function tpf_content_article_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '0',
         ),
         'path' => array(
           'weight' => '12',
@@ -138,10 +138,13 @@ function tpf_content_article_strongarm() {
           'weight' => '14',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '17',
         ),
         'redirect' => array(
           'weight' => '13',
+        ),
+        'locations' => array(
+          'weight' => '16',
         ),
       ),
       'display' => array(),

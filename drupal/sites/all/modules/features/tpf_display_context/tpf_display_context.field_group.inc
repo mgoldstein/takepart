@@ -110,7 +110,7 @@ function tpf_display_context_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Deprecated Fields',
-    'weight' => '17',
+    'weight' => '13',
     'children' => array(
       0 => 'body',
       1 => 'field_multi_page_campaign',

@@ -96,10 +96,19 @@ function tpf_content_blog_front_strongarm() {
           'weight' => '0',
         ),
         'xmlsitemap' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '8',
+        ),
+        'locations' => array(
+          'weight' => '10',
+        ),
+        'metatags' => array(
+          'weight' => '11',
+        ),
+        'redirect' => array(
+          'weight' => '9',
         ),
       ),
       'display' => array(),

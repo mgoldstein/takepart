@@ -116,6 +116,9 @@ function tp_feature_feature_article_strongarm() {
       'feature_main_tpl' => array(
         'custom_settings' => TRUE,
       ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -123,16 +126,19 @@ function tp_feature_feature_article_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
-        ),
-        'redirect' => array(
           'weight' => '12',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '13',
         ),
-        'metatags' => array(
+        'xmlsitemap' => array(
           'weight' => '14',
+        ),
+        'metatags' => array(
+          'weight' => '15',
+        ),
+        'locations' => array(
+          'weight' => '18',
         ),
       ),
       'display' => array(),

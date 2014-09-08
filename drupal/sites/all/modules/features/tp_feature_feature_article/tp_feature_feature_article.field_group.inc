@@ -21,7 +21,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Replacements',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_inline_replacements',
     ),
@@ -48,7 +48,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -78,7 +78,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',

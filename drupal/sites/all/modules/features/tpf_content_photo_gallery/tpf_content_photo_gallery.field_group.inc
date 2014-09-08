@@ -21,7 +21,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Deprecated',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_html_title',
     ),
@@ -48,7 +48,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'body',
       1 => 'field_author',
@@ -80,7 +80,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Photos',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_gallery_images',
     ),
@@ -106,7 +106,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_text',
@@ -135,7 +135,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_related_content',
       1 => 'field_suggest_actions',
@@ -165,7 +165,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_series',
       1 => 'field_free_tag',
