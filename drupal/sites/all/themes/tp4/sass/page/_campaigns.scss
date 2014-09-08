@@ -775,6 +775,9 @@ body.campaign-display{
     }
     .card.background-crop, .slider.background-crop{
         background-size: auto !important;
+        @include breakpoint(1600px) {
+          background-size: 100% !important;
+        }
     }
     .slider.tray-img-width-1000{
         background-size: 768px;
