@@ -1,6 +1,6 @@
 <?php
 
-class TakePartVideoPlayerFileFieldFormatter {
+class TakePartVideoPlayerFieldFormatter {
 
   protected $_field;
   protected $_instance;
@@ -9,10 +9,11 @@ class TakePartVideoPlayerFileFieldFormatter {
 
   public static function info() {
     return array(
-      'label' => t('TakePart Video Player (File Field)'),
-      'field types' => array('file'),
+      'label' => t('TakePart Video Player'),
+      'field types' => array('file', 'node_reference'),
       'settings' => array(
         'global_default' => 'full_page',
+        'one_to_one' => FALSE,
       ),
     );
   }
@@ -25,14 +26,22 @@ class TakePartVideoPlayerFileFieldFormatter {
   }
 
   public function settingsForm($form, &$form_state) {
-    $element = array();
-    $element['global_default'] = array(
+    $elements = array();
+
+    $elements['global_default'] = array(
       '#type' => 'select',
       '#title' => t('Global Default'),
       '#default_value' => $this->_settings['global_default'],
       '#options' => TakePartVideoPlayerConfiguration::globalDefaultNames(),
     );
-    return $element;
+
+    $elements['one_to_one'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Use separate player for each video'),
+      '#default_value' => $this->_settings['one_to_one'],
+    );
+
+    return $elements;
   }
 
   public function settingsSummary() {
@@ -63,47 +72,60 @@ class TakePartVideoPlayerFileFieldFormatter {
 
     $elements = array();
 
+    $allowed_regions = array();
+    $settings_builder = NULL;
+
+    if ($entity_type === 'node') {
+      // The field is attached to the video or playlist is
+      $node = $entity;
+    }
+    elseif ($entity_type === 'inline_content') {
+
+    }
+
+
+    // Select the appropriate settings builder
     if ($entity_type === 'node') {
 
-      $controller = new TakePartVideoPlayerNodeOverrideController();
+      $node = $entity;
 
-      // Get the allowed regions for the video/playlist.
-      // TODO: Move the allowed regions field to the media entity.
-      $allowed_regions = $this->allowedRegions($entity);
+      if ($node->type === 'video') {
 
-      // Load the global defaults for the entity view mode.
-      $configuration = $controller->loadByName($this->_settings['global_default']);
+      }
+      elseif ($node->type === 'video_playlist') {
 
-      // Get the configuration overrides for full page nodes.
-      if ($this->_settings['global_default'] === 'full_page') {
-        $override = $controller->loadOverrideForNode($entity->nid, 'full_page');
-        if (!is_null($override)) {
-          // Merge the defaults with the overrides.
-          $configuration = $controller->merge(array($configuration, $override));
-        }
       }
 
-      // The configuration can contain tokens, wrap it in a token resolver
-      // object.
-      $resolved_configuration =  new TakePartTokenizedObject($configuration,
-        array('node' => $entity), array('language' => $langcode));
+      // Get the allowed regions for the video/playlist.
+      $allowed_regions = $this->allowedRegions($node);
+    }
+    elseif ($entity_type === 'inline_content') {
 
-      // Build all items in the field
-      foreach ($items as $delta => $item) {
-        $elements[$delta] = $this->viewItem($item, $delta,
-          $resolved_configuration, $allowed_regions);
+      $allowed_regions =
+    }
+
+    if (!is_null($settings_builder)) {
+
+      // Build the player render arrays.
+      if ($this->_settings['one_to_one']) {
+        foreach ($items as $delta => $item) {
+          $settings = $settings_builder->build($item);
+          $elements[$delta] = $this->viewItem($delta, $settings, $allowed_regions);
+        }
+      }
+      else {
+        $settings = $settings_builder->buildPlaylist($items)
+        $elements[] = $this->viewItem(0, $settings, $allowed_regions);
       }
     }
 
     return $elements;
   }
 
-  public function viewItem($item, $delta, $configuration, $allowed_regions) {
-    $builder = new TakePartVideoPlayerVideoNodeSettingsBuilder($configuration);
-    $settings = $builder->build($item);
+  public function viewItem($delta, $settings, $allowed_regions) {
     return array(
       '#theme' => 'tp_video_player',
-      '#item' => $item,
+      '#delta' => $delta,
       '#settings' => $settings,
       '#allowed_regions' => $allowed_regions,
       '#id' => drupal_html_id('tp_video_player'),

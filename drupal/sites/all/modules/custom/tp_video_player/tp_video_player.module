@@ -209,7 +209,7 @@ function tp_video_player_theme() {
  */
 function tp_video_player_field_formatter_info() {
   return array(
-    'tp_video_player_file' => TakePartVideoPlayerFileFieldFormatter::info(),
+    'tp_video_player_file' => TakePartVideoPlayerFieldFormatter::info(),
   );
 }
 
@@ -220,7 +220,7 @@ function tp_video_player_field_formatter_settings_form($field, $instance,
   $view_mode, $form, &$form_state) {
   $display = $instance['display'][$view_mode];
   if ($display['type'] === 'tp_video_player_file') {
-    $formatter = new TakePartVideoPlayerFileFieldFormatter($field, $instance, $display);
+    $formatter = new TakePartVideoPlayerFieldFormatter($field, $instance, $display);
     return $formatter->settingsForm($form, $form_state);
   }
 }
@@ -232,7 +232,7 @@ function tp_video_player_field_formatter_settings_summary($field, $instance,
   $view_mode) {
   $display = $instance['display'][$view_mode];
   if ($display['type'] === 'tp_video_player_file') {
-    $formatter = new TakePartVideoPlayerFileFieldFormatter($field, $instance, $display);
+    $formatter = new TakePartVideoPlayerFieldFormatter($field, $instance, $display);
     return $formatter->settingsSummary();
   }
 }
@@ -243,7 +243,7 @@ function tp_video_player_field_formatter_settings_summary($field, $instance,
 function tp_video_player_field_formatter_view($entity_type, $entity, $field,
   $instance, $langcode, $items, $display) {
   if ($display['type'] === 'tp_video_player_file') {
-    $formatter = new TakePartVideoPlayerFileFieldFormatter($field, $instance, $display);
+    $formatter = new TakePartVideoPlayerFieldFormatter($field, $instance, $display);
     return $formatter->viewItems($entity_type, $entity, $langcode, $items);
   }
 }
