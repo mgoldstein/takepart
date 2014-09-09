@@ -90,20 +90,12 @@ class ddContent extends ddDefaultPage {
 		  $data['category']['series'] = $free_tag_names;
 	  }
 
-    $data += array(
-      'pageInstanceID' => ENVIRONMENT . ': ' . $pageID,
-      'page' => array(
-        'pageInfo' => array(
-          'pageID' => $pageID,
-          'pageName' => $node->title,
-	        'template' => $node->type,
-        ),
-        'category' => array(
-          'primaryCategory' => $this->categoryForContentType($node->type),
-        ),
-      ),
-    );
-		/* This needs to come last to override default */
+	  $data['page']['pageInfo']['pageId'] = $pageID;
+	  $data['page']['pageInfo']['pageId'] = $pageID;
+	  $data['page']['pageInfo']['pageName'] = $node->title;
+	  $data['page']['pageInfo']['template'] = $node->type;
+	  $data['page']['category']['primaryCategory'] = $this->categoryForContentType($node->type);
+	  
 	  $data += parent::build($page);
 
     return $data;
