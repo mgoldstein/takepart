@@ -1021,7 +1021,7 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -1072,7 +1072,7 @@ s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -1112,7 +1112,7 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -1151,7 +1151,7 @@ s.list2 = [tp_omniture:remove_spaces:{node:field_free_tag}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{node:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -1274,7 +1274,7 @@ s.eVar11 = Logged_In',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
