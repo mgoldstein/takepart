@@ -1,0 +1,23 @@
+diff --git a/drupal/sites/all/modules/contrib/color_field/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js b/drupal/sites/all/modules/contrib/color_field/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js
+index 92ae989..8e09594 100755
+--- a/drupal/sites/all/modules/contrib/color_field/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js
++++ b/drupal/sites/all/modules/contrib/color_field/color_field_spectrum_color_picker/color_field_spectrum_color_picker.jquery.js
+@@ -6,8 +6,8 @@
+   Drupal.behaviors.color_field_spectrum = {
+     attach: function (context) {
+       $.each(Drupal.settings.color_field_spectrum, function (selector) {
+-   		$('.' + this.class).spectrum({
+-   		  preferredFormat: "rgb",
++       $('.' + this.class).spectrum({
++         preferredFormat: "rgb",
+           showInput: this.show_input,
+           showAlpha: true,
+           showInitial: true,
+@@ -15,6 +15,7 @@
+           showPaletteOnly: this.show_palette_only,
+           palette:[this.palette],
+           showButtons: this.show_buttons,
++          allowEmpty: true,
+         });
+       });
+     }
