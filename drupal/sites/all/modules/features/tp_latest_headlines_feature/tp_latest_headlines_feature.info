@@ -1,0 +1,14 @@
+name = tp_latest_headlines_feature
+core = 7.x
+package = Features
+version = 7.x-1.0-alpha0
+project = tp_latest_headlines_feature
+dependencies[] = context
+dependencies[] = field_group
+dependencies[] = views
+features[context][] = tp_latest_headline
+features[ctools][] = context:context:3
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = latest_headline_nodes
+features_exclude[dependencies][ctools] = ctools

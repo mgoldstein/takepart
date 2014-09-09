@@ -1,0 +1,15 @@
+body.page-admin-structure-nodequeue-2 .region-content {
+  width: 100%;
+  display: block;
+}
+
+body.page-admin-structure-nodequeue-2 .region-content #block-system-main {
+  width: 70%;
+  float: left;
+}
+
+body.page-admin-structure-nodequeue-2 .region-content #block-views-87e72108321fe9d9def8074a8c3817ec {
+  width: 29%;
+  float: left;
+  margin-left: 7px;
+}
