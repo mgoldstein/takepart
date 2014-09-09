@@ -76,6 +76,7 @@
             || $body.is('.node-type-openpublish-photo-gallery')
             || $body.is('.node-type-feature-article')
             || $body.is('.node-type-video')
+            || $body.is('.node-type-video-playlist')
             || $body.is('.node-type-flashcard')
         ) {
             evar4 = s.prop4;

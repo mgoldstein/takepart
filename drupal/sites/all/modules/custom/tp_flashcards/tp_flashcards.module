@@ -66,6 +66,7 @@ function tp_flashcards_preprocess_node(&$variables) {
     'feature_article',
     'openpublish_photo_gallery',
     'video',
+    'video_playlist',
   );
 
   // Replace flashcards on editorial content types

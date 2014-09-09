@@ -168,12 +168,14 @@
       isOpenpublishArticle = $body.is('.page-node.node-type-openpublish-article'),
       isFeatureArticle = $body.is('.page-node.node-type-feature-article'),
       isVideoArticle = $body.is('.page-node.node-type-video'),
+      isVideoPlaylist = $body.is('.page-node.node-type-video-playlist'),
       isFlashcard = $body.is('.page-node.node-type-flashcard');
 
       if (
         isOpenpublishArticle
         || isFeatureArticle
         || isVideoArticle
+        || isVideoPlaylist
         || isFlashcard
       ) {
         // Setup Social Share Buttons
@@ -302,6 +304,7 @@
 
       if ($body.is('.page-node.node-type-openpublish-article')
         || $body.is('.page-node.node-type-video')
+        || $body.is('.page-node.node-type-video-playlist')
         || $body.is('.page-node.node-type-flashcard')
       ) {
           $('.block-boxes-ga_ad-bottom').tp4Sticky();

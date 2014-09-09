@@ -166,7 +166,7 @@ function tp4_should_show_taboola_widget($variables) {
   // add Taboola JS if we're on an article, feature, photo gallery, or video page
   if (!empty($variables['node'])) {
     $node = $variables['node'];
-    if (in_array($node->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
+    if (in_array($node->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video', 'video_playlist'))) {
       // but only if we're on the production site
       return ENVIRONMENT === 'production';
     }
@@ -207,6 +207,7 @@ function tp4_preprocess_page(&$variables) {
       'feature_article',
       'openpublish_photo_gallery',
       'video',
+      'video_playlist',
       'flashcard',
   );
   if (!empty($variables['node']) && in_array($variables['node']->type, $override_page_title_types)) {
@@ -340,7 +341,7 @@ function tp4_preprocess_node(&$variables, $hook) {
   // node types per view view mode.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
-  if (in_array($variables['type'], array('openpublish_video', 'video')) && $variables['view_mode'] == 'full') {
+  if (in_array($variables['type'], array('openpublish_video', 'video', 'video_playlist')) && $variables['view_mode'] == 'full') {
     $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
   }
 
@@ -1140,7 +1141,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
-          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard', 'action'))
+          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'video_playlist', 'flashcard', 'action'))
           ->propertyCondition('status', 1)
           ->propertyOrderBy('created', 'DESC')
           ->addTag('termfilter')
@@ -1480,6 +1481,13 @@ function tp4_preprocess_node__video(&$variables, $hook) {
     }
 }
 
+function tp4_preprocess_node__video_playlist(&$variables, $hook) {
+    tp4_preprocess_node__openpublish_article($variables, $hook);
+    if ($variables['view_mode'] == 'embed') {
+        $variables['title'] = '';
+    }
+}
+
 /**
  * Override or insert variables into the openpublish_photo_gallery template.
  */
@@ -1565,7 +1573,7 @@ function _tp4_series_nav(&$variables) {
         // (if it doesn't exist, $next will be an empty array)
         $seriesQueryNext = new EntityFieldQuery();
         $seriesQueryNext->entityCondition('entity_type', 'node')
-                ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video'))
+                ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video', 'video_playlist'))
                 ->propertyCondition('status', 1)
                 ->propertyCondition('created', $created, '>')
                 ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -1582,7 +1590,7 @@ function _tp4_series_nav(&$variables) {
         // (if it doesn't exist, $previous will be an empty array)
         $seriesQueryPrev = new EntityFieldQuery();
         $seriesQueryPrev->entityCondition('entity_type', 'node')
-                ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video'))
+                ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video', 'video_playlist'))
                 ->propertyCondition('status', 1)
                 ->propertyCondition('created', $created, '<')
                 ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -1780,6 +1788,20 @@ function tp4_field__field_free_tag__video($variables) {
     return tp4_field__field_topic__openpublish_article($variables);
 }
 
+/**
+ * Outputs Topic Taxonomy links for gallery nodes.
+ */
+function tp4_field__field_topic__video_playlist($variables) {
+    return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs free tag taxonomy links for gallery nodes.
+ */
+function tp4_field__field_free_tag__video_playlist($variables) {
+    return tp4_field__field_topic__openpublish_article($variables);
+}
+
 function tp4_menu_link(array $variables) {
     if ($variables['element']['#theme'] == 'menu_link__menu_megamenu') {
         $variables['element']['#attributes']['data-mlid'][] = $variables['element']['#original_link']['mlid'];
@@ -1819,6 +1841,10 @@ function tp4_field__field_author__openpublish_photo_gallery($variables) {
 }
 
 function tp4_field__field_author__video($variables) {
+    return tp4_field__field_author__openpublish_article($variables);
+}
+
+function tp4_field__field_author__video_playlist($variables) {
     return tp4_field__field_author__openpublish_article($variables);
 }
 
@@ -1865,6 +1891,10 @@ function tp4_field__field_article_subhead__feature_article($variables) {
 }
 
 function tp4_field__field_article_subhead__video($variables) {
+    return tp4_field__field_article_subhead__openpublish_article($variables);
+}
+
+function tp4_field__field_article_subhead__video_playlist($variables) {
     return tp4_field__field_article_subhead__openpublish_article($variables);
 }
 
@@ -2013,6 +2043,7 @@ function tp4_preprocess_entity(&$variables, $hook) {
                             $node->type == 'openpublish_article'
                             || $node->type == 'feature_article'
                             || $node->type == 'video'
+                            || $node->type == 'video_playlist'
                             || $node->type == 'flashcard'
                             || $node->type == 'openpublish_video'
                             || $node->type == 'campaign_page'
@@ -2058,7 +2089,7 @@ function tp4_preprocess_panels_pane(&$variables) {
   if ($variables['pane']->panel == 'main_featured') {
     $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
     $variables['title_link'] = url('node/' . $variables['content']['#node']->nid);
-    if ($variables['content']['#bundle'] == 'video') {
+    if ($variables['content']['#bundle'] == 'video' || $variables['content']['#bundle'] == 'video_playlist') {
       $variables['title_attributes_array']['class'][] = 'no-overlap';
     }
     else if ($variables['content']['#bundle'] == 'flashcard') {
@@ -2104,7 +2135,7 @@ function tp4_preprocess_entity_iframe(&$variables){
 		$nodes = entity_load('node', array($nid));
 		$node = reset($nodes);
 		$type = $node->type;
-		if($type == 'video'){
+		if($type == 'video' || $type == 'video_playlist'){
 			/* This is so dirty I need a bath */
 			drupal_add_css('html{overflow: hidden;}', array('type' => 'inline'));
 		}

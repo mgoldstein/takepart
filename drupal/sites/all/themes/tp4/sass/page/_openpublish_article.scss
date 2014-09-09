@@ -9,6 +9,7 @@
 @include breakpoint($breakpoint-desktop) {
     .node-openpublish-article.view-mode-full,
     .node-video.view-mode-full,
+    .node-video-playlist.view-mode-full,
     .node-flashcard.view-mode-full,
     .node-feature-article.view-mode-full {
         #article-social {
@@ -33,7 +34,8 @@
         }
     }
     .node-openpublish-article.view-mode-full,
-    .node-video.view-mode-full {
+    .node-video.view-mode-full,
+    .node-video-playlist.view-mode-full {
         #article-content,
         #series-navigation,
         #article-footer,
@@ -421,6 +423,7 @@ aside#article-social-mobile-bottom {
 .node-openpublish-article.view-mode-full,
 .node-feature-article.view-mode-full,
 .node-video.view-mode-full,
+.node-video-playlist.view-mode-full,
 .node-flashcard.view-mode-full {
     .article-header {
         .node-title {
@@ -590,6 +593,7 @@ aside#article-social-mobile-bottom {
 .node-feature-article.view-mode-full,
 .node-openpublish-article.view-mode-full,
 .node-video.view-mode-full,
+.node-video-playlist.view-mode-full,
 .node-flashcard.view-mode-full {
     .field-name-body {
         font-family: $primary-sans-font;
@@ -988,6 +992,7 @@ aside#article-social-mobile-bottom {
 .node-feature-article.view-mode-full,
 .node-openpublish-article.view-mode-full,
 .node-video.view-mode-full,
+.node-video-playlist.view-mode-full,
 .node-flashcard.view-mode-full {
     .field-name-body {
         // drop cap
