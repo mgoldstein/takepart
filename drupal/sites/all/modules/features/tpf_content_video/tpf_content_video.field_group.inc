@@ -21,10 +21,10 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Player Configuration',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
-      0 => 'field_sharing_inline',
-      1 => 'field_allowed_regions',
+      0 => 'field_allowed_regions',
+      1 => 'field_sharing_inline',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -49,7 +49,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Player Configuration',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_ads_client',
       1 => 'field_ads_tag',
@@ -88,11 +88,11 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
-      0 => 'field_promo_text',
-      1 => 'field_promo_headline',
-      2 => 'field_promo_short_headline',
+      0 => 'field_promo_headline',
+      1 => 'field_promo_short_headline',
+      2 => 'field_promo_text',
       3 => 'field_thumbnail',
     ),
     'format_type' => 'fieldset',
@@ -118,7 +118,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -148,14 +148,14 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
-      0 => 'field_topic',
-      1 => 'field_topic_box',
+      0 => 'field_admin_tag',
+      1 => 'field_free_tag',
       2 => 'field_series',
-      3 => 'field_free_tag',
-      4 => 'field_significance',
-      5 => 'field_admin_tag',
+      3 => 'field_significance',
+      4 => 'field_topic',
+      5 => 'field_topic_box',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -180,7 +180,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',
