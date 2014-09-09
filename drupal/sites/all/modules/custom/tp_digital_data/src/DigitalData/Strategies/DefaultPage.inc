@@ -17,7 +17,6 @@ class ddDefaultPage implements ddBuildStrategy {
           'referringURL' => '%document.referrer',
         ),
       ),
-	    'damnson' => 'awwww snap',
       'event' => array(),
     );
   }
