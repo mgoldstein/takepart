@@ -125,6 +125,9 @@ function tpf_content_article_strongarm() {
       'feature_main_tpl' => array(
         'custom_settings' => TRUE,
       ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

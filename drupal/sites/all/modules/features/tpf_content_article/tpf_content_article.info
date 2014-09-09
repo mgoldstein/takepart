@@ -1,7 +1,7 @@
 name = TakePart Content Article
 core = 7.x
 package = Content Types
-version = 7.x-1.0
+version = 7.x-1.0-alpha1
 project = tpf_content_article
 dependencies[] = context
 dependencies[] = context_field

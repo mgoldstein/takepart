@@ -960,8 +960,26 @@ aside#article-social-mobile-bottom {
 
         .field-name-field-related-stories {
             margin-bottom: 2em;
-            .field-item {
-                @include blue-square-bullets;
+            
+            .field-name-field-thumbnail {
+                float: left;
+                margin-right: 15px;
+                margin-bottom: 15px;
+                
+                img {
+                    max-width: 100px;
+                    height: auto;
+                }
+            }
+            
+            a {
+                h2 {
+                    font-size: 15px;
+                    line-height: 1.5;
+                    font-family: $primary-sans-font;
+                    font-weight: 100;
+                    text-transform: normal;
+                }
             }
         }
         .on-our-radar {
