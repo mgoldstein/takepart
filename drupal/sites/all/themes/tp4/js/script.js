@@ -220,6 +220,9 @@
           main_image = $('.field-name-field-article-main-image').find('img').attr('src');
         }
         var more_services = {
+          reddit: {
+            name: 'reddit'
+          },
           pinterest: {
             name: 'pinterest',
             media: main_image
@@ -255,9 +258,9 @@
           },
           //{name: 'hyves'}
         };
-
+        
         if ( !main_image ) delete more_services.pinterest;
-
+        
         $('#article-more-shares p').tpsocial({
           services: more_services
         });

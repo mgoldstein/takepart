@@ -126,9 +126,30 @@
         .tp-social-link {
             padding-left: 20px;
             height: 16px;
-            @each $service in pinterest tumblr_link gmail hotmail yahoomail aolmail linkedin digg stumbleupon {
+            @each $service in pinterest tumblr_link gmail hotmail yahoomail aolmail linkedin digg stumbleupon reddit {
                 &.tp-social-#{$service} {
                     @include tp-social-more-sprite(#{$service});
+                }
+            }
+            
+            @include breakpoint($breakpoint-mobile) {
+                &.tp-social-pinterest,
+                &.tp-social-reddit {
+                    display: block;
+                }
+            }
+
+            @include breakpoint($breakpoint-tablet) {
+                &.tp-social-pinterest,
+                &.tp-social-reddit {
+                    display: none;
+                }
+            }
+
+            @include breakpoint($breakpoint-desktop) {
+                &.tp-social-pinterest,
+                &.tp-social-reddit {
+                    display: none;
                 }
             }
         }
@@ -150,12 +171,15 @@
         }
     }
     @media (max-width: 767px) {
-        .comments-link,
-        #article-social-more {
+        .comments-link {
             display: none;
         }
+        
+        #article-more-shares {
+            left: -120px;   
+        }
         #article-share {
-            width: 150px;
+            width: 120px;
         }
     }
 
@@ -222,6 +246,9 @@
             &.tp-social-mailto {
                 display: block;
             }
+            &.tp-social-reddit {
+                display: none;
+            }
         }
         @include breakpoint($breakpoint-tablet) {
             margin-left: 9px;
@@ -229,6 +256,9 @@
                 display: none;
             }
             &.tp-social-mailto {
+                display: block;
+            }
+            &.tp-social-reddit {
                 display: block;
             }
         }
@@ -239,6 +269,9 @@
             }
             &.tp-social-mailto {
                 display: none;
+            }
+            &.tp-social-reddit {
+                display: block;
             }
         }
     }
