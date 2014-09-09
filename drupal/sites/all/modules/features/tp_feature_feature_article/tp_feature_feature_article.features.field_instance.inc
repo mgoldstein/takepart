@@ -1120,8 +1120,10 @@ function tp_feature_feature_article_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'node_reference',
-        'settings' => array(),
-        'type' => 'node_reference_default',
+        'settings' => array(
+          'node_reference_view_mode' => 'inline_content',
+        ),
+        'type' => 'node_reference_node',
         'weight' => 4,
       ),
       'feature_main' => array(
