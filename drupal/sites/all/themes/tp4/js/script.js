@@ -289,6 +289,19 @@
             e.preventDefault();
           })
         ;
+        
+        //additional code to handle the mousedown and touch for mobile
+        $("body").bind('touchstart mousedown', function(event) {
+          if (!$(event.target).hasClass('tplinkpos')) {
+            //checks that class has focus
+            if ($('#article-social-more').hasClass('focusin')) {
+              //mimics the social more close
+              $('#article-social-more').removeClass('focusin');
+              $body.unbind('click', social_more_close);
+            }
+          }
+        });
+        
       }
     }
   };
