@@ -45,78 +45,48 @@ class TakePartVideoPlayerFieldFormatter {
   }
 
   public function settingsSummary() {
+    $summary = array();
+    if (!empty($this->_settings['one_to_one'])) {
+      $summary[] = t('Individual video players');
+    }
+    else {
+      $summary[] = t('Single player with playlist');
+    }
     if (!empty($this->_settings['global_default'])) {
-      return t('Default settings: @name', array(
+      $summary[] = t('Default settings: @name', array(
         '@name' => $this->_settings['global_default']));
     }
-    return t('No default settings selected');
-  }
-
-  private function allowedRegions($node) {
-
-    $regions = array();
-    $items = field_get_items('node', $node, 'field_allowed_regions');
-    if ($items !== FALSE && count($items) > 0) {
-      foreach ($items as $item) {
-        $value = str_replace(array(','), ' ', $item['value']);
-        $chunks = explode(' ', $value);
-        $trimmed = array_map('trim', $chunks);
-        $list = array_filter($trimmed, 'strlen');
-        $regions += array_map('strtolower', $list);
-      }
+    else {
+      $summary[] = t('No default settings selected');
     }
-    return $regions;
+    return implode('<br />', $summary);
   }
 
   public function viewItems($entity_type, $entity, $langcode, $items) {
 
     $elements = array();
 
-    $allowed_regions = array();
-    $settings_builder = NULL;
-
-    if ($entity_type === 'node') {
-      // The field is attached to the video or playlist is
-      $node = $entity;
+    if ($this->_field->type === 'file') {
+      $builder = new TakePartVideoPlayerFileFieldBuilder(
+        $entity_type, $entity, $langcode);
     }
-    elseif ($entity_type === 'inline_content') {
-
+    elseif ($this->_field->type === 'node_reference') {
+      $builder = new TakePartVideoPlayerNodeReferenceFieldBuilder(
+        $entity_type, $entity, $langcode);
     }
 
-
-    // Select the appropriate settings builder
-    if ($entity_type === 'node') {
-
-      $node = $entity;
-
-      if ($node->type === 'video') {
-
+    // Build the player render arrays.
+    if ($this->_settings['one_to_one']) {
+      foreach ($items as $delta => $item) {
+        $elements[$delta] = $this->viewItem($delta,
+          $builder->buildForOne($item),
+          $builder->allowedRegions());
       }
-      elseif ($node->type === 'video_playlist') {
-
-      }
-
-      // Get the allowed regions for the video/playlist.
-      $allowed_regions = $this->allowedRegions($node);
     }
-    elseif ($entity_type === 'inline_content') {
-
-      $allowed_regions =
-    }
-
-    if (!is_null($settings_builder)) {
-
-      // Build the player render arrays.
-      if ($this->_settings['one_to_one']) {
-        foreach ($items as $delta => $item) {
-          $settings = $settings_builder->build($item);
-          $elements[$delta] = $this->viewItem($delta, $settings, $allowed_regions);
-        }
-      }
-      else {
-        $settings = $settings_builder->buildPlaylist($items)
-        $elements[] = $this->viewItem(0, $settings, $allowed_regions);
-      }
+    else {
+      $elements[] = $this->viewItem(0,
+        $builder->buildForMany($items),
+        $builder->allowedRegions());
     }
 
     return $elements;

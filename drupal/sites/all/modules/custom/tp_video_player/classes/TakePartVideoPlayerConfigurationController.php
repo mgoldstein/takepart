@@ -7,13 +7,15 @@ class TakePartVideoPlayerConfigurationController {
   }
 
   public function createGlobalDefault($name = NULL) {
-    return TakePartVideoPlayerConfiguration::createGlobalDefault($name);
+    return self::create(
+      TakePartVideoPlayerConfiguration::globalDefaultValues($name));
   }
 
   public function loadByName($name) {
     $values = db_select('tp_video_player_configuration', 'c')
       ->fields('c')
       ->condition('name', $name, '=')
+      ->isNotNull('name')
       ->range(0, 1)
       ->execute()
       ->fetchAssoc();

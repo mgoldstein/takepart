@@ -127,10 +127,10 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
 
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
-    $controller = new TakePartVideoPlayerNodeOverrideController();
+    $controller = new TakePartVideoPlayerOverrideController();
 
     // Get the configuration for the node.
-    $override = $controller->loadOverrideForNode($node->nid, 'full_page');
+    $override = $controller->loadOverrideForEntity('node', $node->nid, 'full_page');
     if (is_null($override)) {
       $override = $controller->create();
     }
@@ -163,10 +163,10 @@ function tp_video_player_node_update($node) {
 
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
-    $controller = new TakePartVideoPlayerNodeOverrideController();
+    $controller = new TakePartVideoPlayerOverrideController();
 
     // Get the configuration for the node.
-    $override = $controller->loadOverrideForNode($node->nid, 'full_page');
+    $override = $controller->loadOverrideForEntity('node', $node->nid, 'full_page');
     if (is_null($override)) {
       $override = $controller->create();
     }
@@ -175,7 +175,7 @@ function tp_video_player_node_update($node) {
     $updated_override = $form_controller->update($node->tp_video_player);
 
     $controller->save($updated_override);
-    $controller->attachOverrideToNode($updated_override, $node->nid, 'full_page');
+    $controller->attachOverrideToEntity($updated_override, 'node', $node->nid, 'full_page');
   }
 }
 
@@ -184,8 +184,8 @@ function tp_video_player_node_update($node) {
  */
 function tp_video_player_node_delete($node) {
 
-  $controller = new TakePartVideoPlayerNodeOverrideController();
-  $controller->deleteOverridesForNode($node->nid);
+  $controller = new TakePartVideoPlayerOverrideController();
+  $controller->deleteOverridesForEntity('node', $node->nid);
 }
 
 /**
@@ -209,7 +209,7 @@ function tp_video_player_theme() {
  */
 function tp_video_player_field_formatter_info() {
   return array(
-    'tp_video_player_file' => TakePartVideoPlayerFieldFormatter::info(),
+    'tp_video_player' => TakePartVideoPlayerFieldFormatter::info(),
   );
 }
 
@@ -219,7 +219,7 @@ function tp_video_player_field_formatter_info() {
 function tp_video_player_field_formatter_settings_form($field, $instance,
   $view_mode, $form, &$form_state) {
   $display = $instance['display'][$view_mode];
-  if ($display['type'] === 'tp_video_player_file') {
+  if ($display['type'] === 'tp_video_player') {
     $formatter = new TakePartVideoPlayerFieldFormatter($field, $instance, $display);
     return $formatter->settingsForm($form, $form_state);
   }
@@ -231,7 +231,7 @@ function tp_video_player_field_formatter_settings_form($field, $instance,
 function tp_video_player_field_formatter_settings_summary($field, $instance,
   $view_mode) {
   $display = $instance['display'][$view_mode];
-  if ($display['type'] === 'tp_video_player_file') {
+  if ($display['type'] === 'tp_video_player') {
     $formatter = new TakePartVideoPlayerFieldFormatter($field, $instance, $display);
     return $formatter->settingsSummary();
   }
@@ -242,7 +242,7 @@ function tp_video_player_field_formatter_settings_summary($field, $instance,
  */
 function tp_video_player_field_formatter_view($entity_type, $entity, $field,
   $instance, $langcode, $items, $display) {
-  if ($display['type'] === 'tp_video_player_file') {
+  if ($display['type'] === 'tp_video_player') {
     $formatter = new TakePartVideoPlayerFieldFormatter($field, $instance, $display);
     return $formatter->viewItems($entity_type, $entity, $langcode, $items);
   }
