@@ -135,21 +135,18 @@
             }
             
             @include breakpoint($breakpoint-mobile) {
-                &.tp-social-pinterest,
                 &.tp-social-reddit {
                     display: block;
                 }
             }
 
             @include breakpoint($breakpoint-tablet) {
-                &.tp-social-pinterest,
                 &.tp-social-reddit {
                     display: none;
                 }
             }
 
             @include breakpoint($breakpoint-desktop) {
-                &.tp-social-pinterest,
                 &.tp-social-reddit {
                     display: none;
                 }

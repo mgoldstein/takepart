@@ -215,9 +215,9 @@
           .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
 
         // Set up secondary social share buttons
-        var main_image;
+        var main_image = '';
         if (isOpenpublishArticle) {
-          main_image = $('figure.article-main-image').find('img').attr('src');
+          main_image = $('.field-name-field-article-main-image').find('img').attr('src');
         } else if (isFeatureArticle) {
           main_image = $('.field-name-field-article-main-image').find('img').attr('src');
         }
@@ -260,8 +260,8 @@
           },
           //{name: 'hyves'}
         };
-        
-        if ( !main_image ) delete more_services.pinterest;
+      
+        if ( main_image == '' ) delete more_services.pinterest;
         
         $('#article-more-shares p').tpsocial({
           services: more_services
