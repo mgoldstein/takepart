@@ -1129,6 +1129,24 @@ aside#article-social-mobile-bottom {
 // Flashcard Overrides
 //
 .node-flashcard.view-mode-full {
+    .field-name-field-flashcard-main-image {
+        display: none;
+        max-width: 920px;
+        
+        img {
+            width: 100%;
+        }
+        
+        @include breakpoint($breakpoint-tablet) {
+            margin-left: 0;
+            display: block;
+        }
+        
+        @include breakpoint($breakpoint-desktop) {
+            margin-left: 60px;
+        }
+    }
+    
     .flashcard-definition {
         @include box-sizing(border-box);
         @include box-shadow(0 0 0 1px #e0e0e0);
