@@ -47,14 +47,40 @@ function tp_megamenu_theme(){
       'arguments' => array(),
       'template' => 'tp-slimnav'
     ),
+	  'tp_megamenu_inner_left' => array(
+		  'arguments' => array(),
+		  'template' => 'templates/mega-inner-left-menu',
+		  'variables' => array(
+				'left_menu' => '',
+			  'left_menu_text' => ''
+			)
+	  ),
   );
 }
 
 function tp_megamenu_megamenu(){
-  /* render parent menu (In the News, Lifestyle, Featured & Columns, etc) */
-  $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 1);
-  menu_tree_add_active_path($mega_tree);
-  $parent_menu = drupal_render(menu_tree_output($mega_tree));
+	/*
+	 * DONE
+	 * Variables for Left Menu.
+	 * Return Themed menu = $left_menu
+	 */
+
+	/*
+	 * Variables for Middle Columns
+	 * Theme each column with teaser display
+	 */
+
+	/*
+	 * Different variable for 'See all'
+	 */
+
+	/*
+	 * Send all the above variables to a 'mega-display' template that renders the drop down
+	 */
+
+	/*
+	 * Send all the above 'mega-displays' to the mega menu template (the menu)
+	 */
 
   /* render child block) */
   $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 2);
@@ -65,17 +91,16 @@ function tp_megamenu_megamenu(){
     $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
     $output .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path, array('attributes' => array('class' => array($link['link']['options']['attributes']['class'][0])))). '</div>';
     $output .= '<div class="mega-content">';
+
     //left menu curation
     $menu = render(menu_tree_output($mega_tree[$key]['below']));
-    $output .= '<div class="side-menu">';
-    if($link['link']['options']['attributes']['title']){
-      $output .= '<div class="text">'. $link['link']['options']['attributes']['title']. '</div>';
-    }
-    $output .= $menu;
-    $output .= '</div>';
+	  $menu_text = ($link['link']['options']['attributes']['title'] ? $link['link']['options']['attributes']['title'] : '');
+	  $left_menu = theme('tp_megamenu_inner_left', array('left_menu' => $menu, 'left_menu_text' => $menu_text));
+	  $output .= $left_menu; //temp for output for now
 
 
     //middle content curation
+	  $type = '';
     $url = current(explode("/", $link['link']['href']));
     if($url != 'taxonomy' && $url != 'node'){
       $url = drupal_lookup_path("source", $link['link']['href']);
@@ -83,104 +108,23 @@ function tp_megamenu_megamenu(){
     }
     if($url == 'taxonomy'){
       $entities = menu_get_object('taxonomy_term', 2, $link['link']['href']);
+	    $type = 'taxonomy_term';
     }
     elseif($url == 'node'){
       $entities = menu_get_object('node', 1, $link['link']['href']);
-    }
-    else{
-      // url is not a node or taxonomy
+	    $type = 'node';
     }
 
-
-
-
-
-    $output .= '<div class="categories">';;
-    if(isset($entities->field_promo_content_collection['und']) && isset($url)){
-      foreach($entities->field_promo_content_collection['und'] as $key => $entity){
-        $field_collection = entity_load('field_collection_item', array($entity['value']));
-        $field_collection = current($field_collection);
-        $nid = $field_collection->field_promo_content['und'][0]['target_id']; //TODO Change promo content to a single value
-        $node = node_load($nid);
-
-        global $base_url;
-        if (!empty($node) && $node->type == 'action') {
-          $uri = entity_uri('node', $node);
-          $node_path = url($uri['path'], $uri['options']);
-        }
-        else {
-          $node_path = $base_url. '/'. drupal_get_path_alias('node/'. $node->nid);
-        }
-
-        //Subcategory content menu item is linked to a taxonomy term
-        if($url == 'taxonomy'){
-          $term = $node->field_topic['und'][0]['tid'];
-          $term = taxonomy_term_load($term);
-          //Subcategory content for menu items with the ID of 'series' (example: Features & Columns)
-          if(isset($link['link']['options']['attributes']['id']) && $link['link']['options']['attributes']['id'] == 'series'){
-            $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
-            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
-            $author_node = node_load($node->field_author['und'][0]['nid']);
-            $series_term = taxonomy_term_load($node->field_series['und'][0]['tid']);
-            $text = '<div class="author">'. $author_node->title. '</div>'. $node->field_promo_headline['und'][0]['value'];  //author and promo_headline
-            $label = $series_term->name;
-            $label_path = drupal_get_path_alias('taxonomy/term/'. $series_term->tid);
-          }
-          else{
-            $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
-            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
-            $text = $node->field_promo_headline['und'][0]['value'];
-            $label = $term->name;
-            $label_path = drupal_get_path_alias('taxonomy/term/'. $term->tid);
-          }
-        }
-        //Subcategory content menu item is linked to a node
-        else{
-          if(isset($link['link']['options']['attributes']['id']) && $link['link']['options']['attributes']['id'] == 'action'){
-            $thumb = file_load($node->field_action_main_image['und'][0]['fid']);
-            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
-            $label = taxonomy_term_load($node->field_action_type['und'][0]['tid']);
-            $label = $label->name;
-            if($node->type == 'petition_action' || $node->type == 'pledge_action'){
-              $text = $node->title;
-            }
-            else{
-              $text = $node->field_tab_call_to_action['und'][0]['value'];
-            }
-          }
-          else{
-            $thumb = file_load($node->field_thumbnail['und'][0]['fid']);
-            $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
-            $label = $node->title;
-            $text = $node->field_promo_headline['und'][0]['value'];
-          }
-        }
-
-        //Check for overrides
-        $label = (isset($field_collection->field_promo_label['und'][0]['value']) ? $field_collection->field_promo_label['und'][0]['value'] : $label);
-        $text = (isset($field_collection->field_promo_headline['und'][0]['value']) ? $field_collection->field_promo_headline['und'][0]['value'] : $text);
-        if(isset($field_collection->field_promo_thumbnail['und'][0]['fid'])){
-          $thumb = file_load($field_collection->field_promo_thumbnail['und'][0]['fid']);
-          $thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
-        }
-
-        //Output subcategories based on input from menu link ID field
-        $output .= '<a href="'. $node_path. '" class="sub-category">';
-        $output .= '<div class="thumb">'. $thumb. '</div>';
-        $output .= '<div class="label">'. $label. '</div>';
-        $output .= '<div class="text">'. $text. '</div>';
-        $output .= '</a>'; //end .sub-category
-
-      }
-      $output .= '</div>'; //end .categories
-      //return more link
-      if(isset($link['link']['options']['attributes']['name'])){
-        $output .= l($link['link']['options']['attributes']['name'], $path, array('attributes' => array('class' => array('more'))));
-      }
-      else{
-        $output .= l('See More '. $link['link']['link_title'], $path, array('attributes' => array('class' => array('more'))));
-      }
-    }
+    $output .= '<div class="categories">';
+	  $output .= tp_megamenu_content_menu($entities, $type, $url);
+	  $output .= '</div>'; //end .categories
+	  //return more link
+	  if(isset($link['link']['options']['attributes']['name'])){
+		  $output .= l($link['link']['options']['attributes']['name'], $path, array('attributes' => array('class' => array('more'))));
+	  }
+	  else{
+		  $output .= l('See More '. $link['link']['link_title'], $path, array('attributes' => array('class' => array('more'))));
+	  }
     $output .= '</div>'; //end .mega-content
     $output .= '</li>'; //end .mega-item
   }
@@ -189,3 +133,94 @@ function tp_megamenu_megamenu(){
   return $output;
 }
 
+/**
+ * Returns a rendered middle menu
+ */
+function tp_megamenu_content_menu($entities, $type, $url){
+	$output = '';
+	global $base_url;
+	$mega_items = field_get_items($type, $entities, 'field_promo_content_collection');
+	if(!empty($mega_item) || !isset($url)){
+		return;
+	}
+
+	foreach($mega_items as $entity){
+		/*
+		 * Load the
+		 */
+		$field_collection = entity_load('field_collection_item', array($entity['value']));
+		$field_collection = current($field_collection);
+		$node = field_get_items('field_collection_item', $field_collection, 'field_promo_content');
+		if(empty($node)){
+			return;
+		}
+		$nid = $node[0]['target_id'];
+		$node = node_load($nid);
+		if ($node->type == 'action') {
+			$uri = entity_uri('node', $node);
+			$node_path = url($uri['path'], $uri['options']);
+		}else {
+			$node_path = $base_url. '/'. drupal_get_path_alias('node/'. $nid);
+		}
+
+		//Subcategory content menu item is linked to a taxonomy term
+		if($url == 'taxonomy'){
+			$term = $node->field_topic['und'][0]['tid'];
+			$term = taxonomy_term_load($term);
+			//Subcategory content for menu items with the ID of 'series' (example: Features & Columns)
+			if(isset($link['link']['options']['attributes']['id']) && $link['link']['options']['attributes']['id'] == 'series'){
+				$thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+				$thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+				$author_node = node_load($node->field_author['und'][0]['nid']);
+				$series_term = taxonomy_term_load($node->field_series['und'][0]['tid']);
+				$text = '<div class="author">'. $author_node->title. '</div>'. $node->field_promo_headline['und'][0]['value'];  //author and promo_headline
+				$label = $series_term->name;
+			}
+			else{
+				$thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+				$thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+				$text = $node->field_promo_headline['und'][0]['value'];
+				$label = $term->name;
+			}
+		}
+		//Subcategory content menu item is linked to a node
+		else{
+			if(isset($link['link']['options']['attributes']['id']) && $link['link']['options']['attributes']['id'] == 'action'){
+				$thumb = file_load($node->field_action_main_image['und'][0]['fid']);
+				$thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+				$label = taxonomy_term_load($node->field_action_type['und'][0]['tid']);
+				$label = $label->name;
+				if($node->type == 'petition_action' || $node->type == 'pledge_action'){
+					$text = $node->title;
+				}
+				else{
+					$text = $node->field_tab_call_to_action['und'][0]['value'];
+				}
+			}
+			else{
+				$thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+				$thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+				$label = $node->title;
+				$text = $node->field_promo_headline['und'][0]['value'];
+			}
+		}
+
+		//Check for overrides
+		$label = (isset($field_collection->field_promo_label['und'][0]['value']) ? $field_collection->field_promo_label['und'][0]['value'] : $label);
+		$text = (isset($field_collection->field_promo_headline['und'][0]['value']) ? $field_collection->field_promo_headline['und'][0]['value'] : $text);
+		if(isset($field_collection->field_promo_thumbnail['und'][0]['fid'])){
+			$thumb = file_load($field_collection->field_promo_thumbnail['und'][0]['fid']);
+			$thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
+		}
+
+		//Output subcategories based on input from menu link ID field
+		$output .= '<a href="'. $node_path. '" class="sub-category">';
+		$output .= '<div class="thumb">'. $thumb. '</div>';
+		$output .= '<div class="label">'. $label. '</div>';
+		$output .= '<div class="text">'. $text. '</div>';
+		$output .= '</a>'; //end .sub-category
+
+	}
+	return $output;
+
+}
