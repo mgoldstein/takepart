@@ -27,5 +27,6 @@ function tpf_content_section_front_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

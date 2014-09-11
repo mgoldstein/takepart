@@ -27,5 +27,6 @@ function tpf_content_profile_node_info() {
       'help' => t('This is the name used as the title of this content. This may be comprised of the First and Last names, or of the Organization name, or any other name that you choose.'),
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
