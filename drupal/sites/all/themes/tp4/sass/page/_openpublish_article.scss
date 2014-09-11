@@ -85,6 +85,31 @@
     }
 }
 
+.node-openpublish-article.view-mode-full,
+.node-feature-article.view-mode-full {
+    #article-footer {
+        border: none !important;
+        
+        h3:first-child {
+            padding: 16px 16px 9px 16px;
+            background-color: #f8f8f8;
+            margin-bottom: 0;
+        }
+    }
+    
+    .field-name-field-related-stories {
+        padding: 0 16px 3px 16px;
+        background-color: #f8f8f8;
+        article {
+            a {
+                h2.inline-title {
+                    font-family: 'Ashbury Light', Ashbury, "Times New Roman", serif !important;
+                }
+            }
+        }
+    }
+}
+
 //
 // Social Links
 //
@@ -135,21 +160,18 @@
             }
             
             @include breakpoint($breakpoint-mobile) {
-                &.tp-social-pinterest,
                 &.tp-social-reddit {
                     display: block;
                 }
             }
 
             @include breakpoint($breakpoint-tablet) {
-                &.tp-social-pinterest,
                 &.tp-social-reddit {
                     display: none;
                 }
             }
 
             @include breakpoint($breakpoint-desktop) {
-                &.tp-social-pinterest,
                 &.tp-social-reddit {
                     display: none;
                 }
@@ -964,7 +986,7 @@ aside#article-social-mobile-bottom {
             .field-name-field-thumbnail {
                 float: left;
                 margin-right: 15px;
-                margin-bottom: 15px;
+                margin-bottom: 8px;
                 
                 img {
                     max-width: 100px;
