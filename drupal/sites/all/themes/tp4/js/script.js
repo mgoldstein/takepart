@@ -294,7 +294,7 @@
         
         //additional code to handle the mousedown and touch for mobile
         $("body").bind('touchstart mousedown', function(event) {
-          if (!$(event.target).hasClass('tplinkpos')) {
+          if (!$(event.target).hasClass('tplinkpos') && !$(event.target).hasClass('tp-social-link')) {
             //checks that class has focus
             if ($('#article-social-more').hasClass('focusin')) {
               //mimics the social more close
