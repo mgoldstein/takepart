@@ -13,7 +13,6 @@ class TakePartVideoPlayerFieldFormatter {
       'field types' => array('file', 'node_reference'),
       'settings' => array(
         'global_default' => 'full_page',
-        'one_to_one' => FALSE,
       ),
     );
   }
@@ -27,31 +26,17 @@ class TakePartVideoPlayerFieldFormatter {
 
   public function settingsForm($form, &$form_state) {
     $elements = array();
-
     $elements['global_default'] = array(
       '#type' => 'select',
       '#title' => t('Global Default'),
       '#default_value' => $this->_settings['global_default'],
       '#options' => TakePartVideoPlayerConfiguration::globalDefaultNames(),
     );
-
-    $elements['one_to_one'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Use separate player for each video'),
-      '#default_value' => $this->_settings['one_to_one'],
-    );
-
     return $elements;
   }
 
   public function settingsSummary() {
     $summary = array();
-    if (!empty($this->_settings['one_to_one'])) {
-      $summary[] = t('Individual video players');
-    }
-    else {
-      $summary[] = t('Single player with playlist');
-    }
     if (!empty($this->_settings['global_default'])) {
       $summary[] = t('Default settings: @name', array(
         '@name' => $this->_settings['global_default']));
@@ -66,26 +51,23 @@ class TakePartVideoPlayerFieldFormatter {
 
     $elements = array();
 
-    if ($this->_field->type === 'file') {
-      $builder = new TakePartVideoPlayerFileFieldBuilder(
-        $entity_type, $entity, $langcode);
-    }
-    elseif ($this->_field->type === 'node_reference') {
-      $builder = new TakePartVideoPlayerNodeReferenceFieldBuilder(
-        $entity_type, $entity, $langcode);
-    }
+    if (count($items) > 0) {
 
-    // Build the player render arrays.
-    if ($this->_settings['one_to_one']) {
-      foreach ($items as $delta => $item) {
-        $elements[$delta] = $this->viewItem($delta,
-          $builder->buildForOne($item),
-          $builder->allowedRegions());
+      // Pick the appropriate field builder.
+      if ($this->_field['type'] === 'file') {
+        // Direct reference to a Youtube video, JWPlatform video,
+        // or JWPlatform playlist.
+        $builder = new TakePartVideoPlayerFileFieldBuilder(
+          $entity_type, $entity, $langcode, $items);
       }
-    }
-    else {
+      elseif ($this->_field['type'] === 'node_reference') {
+        // Reference(s) to video or playlist node(s)
+        $builder = new TakePartVideoPlayerNodeReferenceFieldBuilder(
+          $entity_type, $entity, $langcode, $items);
+      }
+
       $elements[] = $this->viewItem(0,
-        $builder->buildForMany($items),
+        $builder->settings($this->_settings['global_default']),
         $builder->allowedRegions());
     }
 

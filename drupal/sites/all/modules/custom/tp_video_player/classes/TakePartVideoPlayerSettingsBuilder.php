@@ -136,7 +136,6 @@ class TakePartVideoPlayerSettingsBuilder {
       $this->promoSettings(),
       $this->layoutSettings(),
       $this->playbackSettings(),
-      //$this->listbarSettings($scheme === 'jwplatform-channel'),
       $this->sharingSettings(),
       $this->advertisingSettings(),
       $this->jwplayerAnalyticsSettings(),
