@@ -85,6 +85,23 @@
     }
 }
 
+.node-openpublish-article.view-mode-full,
+.node-feature-article.view-mode-full {
+    #article-footer {
+        h3:first-child {
+            padding: 16px 16px 9px 16px;
+            background-color: #f8f8f8;
+            margin-bottom: 0;
+            font-family: 'Ashbury Light', Ashbury, "Times New Roman", serif;
+        }
+    }
+    
+    .field-name-field-related-stories {
+        padding: 0 16px 8px 16px;
+        background-color: #f8f8f8;
+    }
+}
+
 //
 // Social Links
 //
@@ -961,7 +978,7 @@ aside#article-social-mobile-bottom {
             .field-name-field-thumbnail {
                 float: left;
                 margin-right: 15px;
-                margin-bottom: 15px;
+                margin-bottom: 8px;
                 
                 img {
                     max-width: 100px;
