@@ -498,16 +498,16 @@ function tp_video_player_update_7100() {
   $node_configurations = db_select('tp_video_player_node_configuration', 'nc')
     ->fields('nc', array('configuration_id', 'nid', 'view_mode'))
     ->execute()
-    ->fetchAllAssoc();
+    ->fetchAllAssoc('configuration_id');
 
   // Add the node configurations to the entity based table
   foreach ($node_configurations as $configuration) {
     db_insert('tp_video_player_entity_configuration')
       ->fields(array(
-        'configuration_id' => $configuration_id['configuration_id'],
+        'configuration_id' => $configuration->configuration_id,
         'entity_type' => 'node',
-        'entity_id' => $configuration['nid'],
-        'view_mode' => $configuration['view_mode'],
+        'entity_id' => $configuration->nid,
+        'view_mode' => $configuration->view_mode,
       ))
       ->execute();
   }
@@ -516,6 +516,6 @@ function tp_video_player_update_7100() {
 /**
  * Drop the node base configuration table.
  */
-// function tp_video_player_update_7101() {
-//   db_drop_table('tp_video_player_node_configuration');
-// }
+function tp_video_player_update_7101() {
+  db_drop_table('tp_video_player_node_configuration');
+}
