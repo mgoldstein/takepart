@@ -282,8 +282,8 @@ function tp_video_player_schema() {
     ),
   );
 
-  $schema['tp_video_player_node_configuration'] = array(
-    'description' => 'The table for attaching video player configurations to nodes.',
+  $schema['tp_video_player_entity_configuration'] = array(
+    'description' => 'The table for attaching video player configurations to entities.',
     'fields' => array(
 
       'configuration_id' => array(
@@ -292,8 +292,14 @@ function tp_video_player_schema() {
         'unsigned' => FALSE,
         'not null' => TRUE,
       ),
-      'nid' => array(
-        'description' => 'Primary key identifer for the node.',
+      'entity_type' => array(
+        'description' => 'The type of entity.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'entity_id' => array(
+        'description' => 'Primary key identifer for the entity.',
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
@@ -307,7 +313,7 @@ function tp_video_player_schema() {
     ),
     'unique keys' => array(
       'configuration_id' => array('configuration_id'),
-      'nid_view_mode' => array('nid', 'view_mode'),
+      'entity_type_and_id_view_mode' => array('entity_type', 'entity_id', 'view_mode'),
     ),
   );
 
@@ -416,7 +422,7 @@ EOSQL;
 
 function tp_video_player_transfer_from_fields() {
 
-  $controller = new TakePartVideoPlayerNodeOverrideController();
+  $controller = new TakePartVideoPlayerOverrideController();
 
   // Get a list of all the existing video nodes.
   $nids = db_select('node', 'n')
@@ -429,14 +435,14 @@ function tp_video_player_transfer_from_fields() {
   foreach ($nids as $nid) {
     $override = $controller->create();
     $controller->save($override);
-    $controller->attachOverrideToNode($override, $nid, 'full_page');
+    $controller->attachOverrideToEntity($override, 'node', $nid, 'full_page');
   }
 
   // Get the field bases overrides
   $result = db_query(tp_video_player_transfer_from_fields_sql());
   while ($row = $result->fetchAssoc()) {
 
-    $override = $controller->loadOverrideForNode($row['nid'], 'full_page');
+    $override = $controller->loadOverrideForEntity('node', $row['nid'], 'full_page');
 
     $override->enable_share = $row['field_sharing_enabled_value'];
     $override->share_url = $row['field_share_url_value'];
@@ -476,4 +482,40 @@ function tp_video_player_install() {
     $controller->save($configuration);
   }
   tp_video_player_transfer_from_fields();
+}
+
+/**
+ * Move node configurations to the entity configuration table.
+ */
+function tp_video_player_update_7100() {
+
+  // Create the entity based configuration table
+  $schema = tp_video_player_schema();
+  db_create_table('tp_video_player_entity_configuration',
+    $schema['tp_video_player_entity_configuration']);
+
+  // Get all of the existing node configurations
+  $node_configurations = db_select('tp_video_player_node_configuration', 'nc')
+    ->fields('nc', array('configuration_id', 'nid', 'view_mode'))
+    ->execute()
+    ->fetchAllAssoc('configuration_id');
+
+  // Add the node configurations to the entity based table
+  foreach ($node_configurations as $configuration) {
+    db_insert('tp_video_player_entity_configuration')
+      ->fields(array(
+        'configuration_id' => $configuration->configuration_id,
+        'entity_type' => 'node',
+        'entity_id' => $configuration->nid,
+        'view_mode' => $configuration->view_mode,
+      ))
+      ->execute();
+  }
+}
+
+/**
+ * Drop the node base configuration table.
+ */
+function tp_video_player_update_7101() {
+  db_drop_table('tp_video_player_node_configuration');
 }

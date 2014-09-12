@@ -5720,7 +5720,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'full_page',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 1,
       ),
       'embed' => array(
@@ -5729,7 +5729,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'embed',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 0,
       ),
       'feature_main' => array(
@@ -5738,7 +5738,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'feature_main',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 0,
       ),
       'feature_main_tpl' => array(
@@ -5747,7 +5747,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'feature_main_tpl',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 0,
       ),
       'feature_secondary' => array(
@@ -5762,7 +5762,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'feature_topic',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 0,
       ),
       'feature_video' => array(
@@ -5777,7 +5777,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'iframe',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 1,
       ),
       'inline_content' => array(
@@ -5792,7 +5792,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'teaser',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 2,
       ),
       'token' => array(
