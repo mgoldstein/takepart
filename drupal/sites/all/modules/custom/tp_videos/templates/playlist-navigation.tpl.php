@@ -5,7 +5,7 @@
  */
 ?>
 <?php foreach($variables['videos'] as $video): ?>
-	<div class="item">
+	<div class="video-item">
 		<?php print drupal_render($video); ?>
 	</div>
 <?php endforeach; ?>

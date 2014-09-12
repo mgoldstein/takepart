@@ -378,7 +378,8 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
 			$playlist = theme('tp_videos_basic', array('videos' => $videos, 'navigation' => $navigation));
 			break;
 		case 'detailed':
-			$playlist = theme('tp_videos_detailed', array('videos' => $videos));
+			$navigation = theme('tp_videos_navigation', array('videos' => $videos));
+			$playlist = theme('tp_videos_detailed', array('videos' => $videos, 'navigation' => $navigation));
 			break;
 		case 'hidelist':
 			$playlist = theme('tp_videos_hidelist', array('videos' => $videos));
@@ -413,14 +414,15 @@ function tp_videos_theme(){
 			'access' => array(),
 			'template' => 'templates/playlist-detailed',
 			'variables' => array(
-				'title' => '',
+				'videos' => array(),
+				'navigation' => '',
 			),
-			'tp_videos_hidelist' => array(
-				'access' => array(),
-				'template' => 'templates/playlist-hidelist',
-				'variables' => array(
-					'title' => '',
-				),
+		),
+		'tp_videos_hidelist' => array(
+			'access' => array(),
+			'template' => 'templates/playlist-hidelist',
+			'variables' => array(
+				'videos' => array(),
 			),
 		),
 	);
