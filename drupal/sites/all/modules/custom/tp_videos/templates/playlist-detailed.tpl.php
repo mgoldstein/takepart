@@ -6,6 +6,8 @@
 DETAILED VIEW MODE
 <div class="video">
 	<div class="video-placeholder"></div>
-	<div class="this is where the description will go.  This is static for now"></div>
+	<div class="description"><p>This is where the description will go.  This is static for now</p></div>
 </div>
-<?php print $variables['navigation']; ?>
+<nav>
+	<?php print $variables['navigation']; ?>
+</nav>
