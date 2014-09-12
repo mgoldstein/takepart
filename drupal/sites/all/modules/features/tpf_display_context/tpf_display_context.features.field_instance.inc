@@ -94,6 +94,12 @@ function tpf_display_context_field_default_field_instances() {
         'type' => 'text_summary_or_trimmed',
         'weight' => 3,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -200,6 +206,12 @@ function tpf_display_context_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 25,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -317,6 +329,12 @@ function tpf_display_context_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 1,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -417,6 +435,12 @@ function tpf_display_context_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -527,6 +551,12 @@ function tpf_display_context_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 37,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -622,6 +652,12 @@ function tpf_display_context_field_default_field_instances() {
         'weight' => 44,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -732,6 +768,12 @@ function tpf_display_context_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 13,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -836,6 +878,12 @@ function tpf_display_context_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 34,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -967,6 +1015,12 @@ function tpf_display_context_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 14,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1062,6 +1116,12 @@ function tpf_display_context_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1184,6 +1244,12 @@ function tpf_display_context_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 19,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1291,6 +1357,12 @@ function tpf_display_context_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 10,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1395,6 +1467,12 @@ function tpf_display_context_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 7,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -1506,6 +1584,12 @@ function tpf_display_context_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 20,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1590,6 +1674,12 @@ function tpf_display_context_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1669,6 +1759,12 @@ function tpf_display_context_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
