@@ -63,8 +63,8 @@ class TakePartVideoPlayerConfiguration {
     );
   }
 
-  public static function createGlobalDefault($name = NULL) {
-    return new TakePartVideoPlayerConfiguration(array(
+  public static function globalDefaultValues($name = NULL) {
+    return array(
 
       /* Allow access by name */
       'name' => $name,
@@ -112,7 +112,7 @@ class TakePartVideoPlayerConfiguration {
       'ad_client' => 'googima',
       'ad_tag' => NULL,
       'ad_message' => NULL,
-    ));
+    );
   }
 
   public function __construct($values) {
