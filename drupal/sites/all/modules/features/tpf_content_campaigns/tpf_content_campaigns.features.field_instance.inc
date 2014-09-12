@@ -338,6 +338,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -458,6 +464,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -563,6 +575,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -686,6 +704,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -766,6 +790,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 14,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -856,6 +886,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -932,6 +968,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1032,6 +1074,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 12,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1151,6 +1199,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1228,6 +1282,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 19,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1321,6 +1381,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1399,6 +1465,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 16,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1499,6 +1571,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1579,6 +1657,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 2,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1669,6 +1753,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1750,6 +1840,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 11,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1845,6 +1941,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1929,6 +2031,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2020,6 +2128,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2096,6 +2210,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2205,6 +2325,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2307,6 +2433,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2426,6 +2558,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2502,6 +2640,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2625,6 +2769,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2743,6 +2893,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2856,6 +3012,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 7,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2981,6 +3143,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3059,6 +3227,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3156,6 +3330,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3264,6 +3444,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3341,6 +3527,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3472,6 +3664,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3551,6 +3749,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3666,6 +3870,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3746,6 +3956,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3837,6 +4053,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3918,6 +4140,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4008,6 +4236,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4084,6 +4318,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4211,6 +4451,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4292,6 +4538,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4379,6 +4631,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4473,6 +4731,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4550,6 +4814,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4671,6 +4941,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4784,6 +5060,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -4864,6 +5146,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -4955,6 +5243,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5035,6 +5329,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -5125,6 +5425,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5201,6 +5507,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -5288,6 +5600,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -5410,6 +5728,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5499,6 +5823,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5576,6 +5906,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -5697,6 +6033,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5806,6 +6148,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -5886,6 +6234,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -5977,6 +6331,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6057,6 +6417,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6146,6 +6512,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6222,6 +6594,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6350,6 +6728,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6439,6 +6823,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6515,6 +6905,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6633,6 +7029,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -6758,6 +7160,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6871,6 +7279,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -6951,6 +7365,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7042,6 +7462,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7122,6 +7548,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7211,6 +7643,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7287,6 +7725,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7371,6 +7815,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7465,6 +7915,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7545,6 +8001,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7637,6 +8099,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7717,6 +8185,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -7841,6 +8315,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -7930,6 +8410,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8006,6 +8492,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8123,6 +8615,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8248,6 +8746,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8361,6 +8865,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8441,6 +8951,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8532,6 +9048,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8612,6 +9134,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8701,6 +9229,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8777,6 +9311,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -8870,6 +9410,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -8947,6 +9493,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9067,6 +9619,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9195,6 +9753,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9272,6 +9836,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9376,6 +9946,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9491,6 +10067,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9574,6 +10156,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9664,6 +10252,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9742,6 +10336,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -9836,6 +10436,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -9913,6 +10519,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10042,6 +10654,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10152,6 +10770,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10232,6 +10856,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10323,6 +10953,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10404,6 +11040,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10494,6 +11136,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10570,6 +11218,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10688,6 +11342,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10818,6 +11478,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -10903,6 +11569,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -10999,6 +11671,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11084,6 +11762,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11160,6 +11844,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11281,6 +11971,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11394,6 +12090,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11474,6 +12176,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11565,6 +12273,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11645,6 +12359,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11734,6 +12454,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -11810,6 +12536,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -11894,6 +12626,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12018,6 +12756,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12098,6 +12842,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12225,6 +12975,12 @@ function tpf_content_campaigns_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12314,6 +13070,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12393,6 +13155,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12493,6 +13261,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12571,6 +13345,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12664,6 +13444,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12740,6 +13526,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -12861,6 +13653,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -12974,6 +13772,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13054,6 +13858,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -13145,6 +13955,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13225,6 +14041,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -13314,6 +14136,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13390,6 +14218,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -13473,6 +14307,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -13597,6 +14437,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13681,6 +14527,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13757,6 +14609,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -13881,6 +14739,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -13961,6 +14825,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14051,6 +14921,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14127,6 +15003,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14245,6 +15127,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14378,6 +15266,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14488,6 +15382,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14568,6 +15468,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14659,6 +15565,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14740,6 +15652,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -14830,6 +15748,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -14906,6 +15830,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -15033,6 +15963,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -15110,6 +16046,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -15239,6 +16181,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -15322,6 +16270,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -15442,6 +16396,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -15526,6 +16486,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -15617,6 +16583,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -15694,6 +16666,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -15777,6 +16755,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -15898,6 +16882,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -16007,6 +16997,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -16087,6 +17083,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -16178,6 +17180,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -16258,6 +17266,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -16347,6 +17361,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -16423,6 +17443,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -16507,6 +17533,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -16632,6 +17664,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -16708,6 +17746,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -16802,6 +17846,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -16879,6 +17929,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -17004,6 +18060,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -17118,6 +18180,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -17245,6 +18313,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -17322,6 +18396,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -17449,6 +18529,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -17544,6 +18630,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -17663,6 +18755,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -17743,6 +18841,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -17834,6 +18938,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -17915,6 +19025,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -18005,6 +19121,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -18081,6 +19203,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -18175,6 +19303,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -18259,6 +19393,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -18351,6 +19491,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -18431,6 +19577,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -18520,6 +19672,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -18599,6 +19757,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -18722,6 +19886,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -18801,6 +19971,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -18894,6 +20070,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -18970,6 +20152,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -19053,6 +20241,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 2,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -19179,6 +20373,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -19260,6 +20460,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -19336,6 +20542,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -19458,6 +20670,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -19542,6 +20760,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -19659,6 +20883,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 5,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -19782,6 +21012,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -19894,6 +21130,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 1,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -20019,6 +21261,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -20108,6 +21356,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -20215,6 +21469,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -20292,6 +21552,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -20407,6 +21673,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -20486,6 +21758,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -20576,6 +21854,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -20656,6 +21940,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -20745,6 +22035,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -20821,6 +22117,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -20913,6 +22215,12 @@ Note: If you manually reference more items than selected here, the number refere
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -20989,6 +22297,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -21072,6 +22386,12 @@ Note: If you manually reference more items than selected here, the number refere
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
