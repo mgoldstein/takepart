@@ -1,7 +1,7 @@
 name = TakePart Config Image Styles
 core = 7.x
 package = Config
-version = 7.x-1.3
+version = 7.x-1.4
 project = tpf_config_image_styles
 dependencies[] = context
 dependencies[] = ctools
@@ -46,3 +46,4 @@ features[image][] = tp_quick_study_wide
 features[image][] = tp_secondary_feature_thumbnail
 features[image][] = tp_sponsored_by_wide
 features[image][] = venue_main
+features[image][] = video_navigation_thumb_155x87
