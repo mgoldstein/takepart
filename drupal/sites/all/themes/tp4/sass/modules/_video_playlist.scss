@@ -7,3 +7,9 @@
   padding-bottom: 56.25%;
   background: black;
 }
+.description-item{
+  display: none;
+  &.active{
+    display: block;
+  }
+}

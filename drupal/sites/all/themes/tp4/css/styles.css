@@ -13388,3 +13388,12 @@ a.flashcard.hover, a.flashcard:hover, a.flashcard:active {
   padding-bottom: 56.25%;
   background: black;
 }
+
+/* line 10, ../sass/modules/_video_playlist.scss */
+.description-item {
+  display: none;
+}
+/* line 12, ../sass/modules/_video_playlist.scss */
+.description-item.active {
+  display: block;
+}
