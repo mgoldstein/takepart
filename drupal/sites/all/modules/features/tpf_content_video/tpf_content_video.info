@@ -24,6 +24,7 @@ dependencies[] = taxonomy_term_reference_sortable_widget
 dependencies[] = term_reference_tree
 dependencies[] = text
 dependencies[] = tp_video_player
+dependencies[] = tp_videos
 dependencies[] = tpf_content_field_bases
 features[ctools][] = field_group:field_group:1
 features[ctools][] = pm_jwplayer:pm_jwplayer_presets:1

@@ -8640,11 +8640,11 @@ function tpf_content_video_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'node_reference',
+        'module' => 'tp_videos',
         'settings' => array(
-          'node_reference_view_mode' => 'video_playlist_teaser',
+          'playlist_view_mode' => 'basic',
         ),
-        'type' => 'node_reference_node',
+        'type' => 'video_playlist',
         'weight' => 1,
       ),
       'embed' => array(
