@@ -365,27 +365,34 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
 	$playlist = '';
 
 	//Load the video nodes for the playlist
-	$videos = array();
-	$nodes = node_load_multiple($items);
-	foreach($nodes as $node){
-		$videos[] = node_view($node, 'video_playlist_teaser', $langcode = NULL);
-	}
+	$videos = node_load_multiple($items);
+	$videos = 	array_values($videos);
 
 	//Theme the Playlist
 	switch($view_mode){
 		case 'basic':
-			$navigation = theme('tp_videos_navigation', array('videos' => $videos));
-			$playlist = theme('tp_videos_basic', array('videos' => $videos, 'navigation' => $navigation));
+			$video_displays = array();
+			foreach($videos as $video){
+				$video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
+			}
+			$navigation = theme('tp_videos_navigation', array('video_displays' => $video_displays));
+			$playlist = theme('tp_videos_basic', array('videos' => $videos, 'navigation' => $navigation, 'videos' => $videos));
 			break;
 		case 'detailed':
-			$navigation = theme('tp_videos_navigation', array('videos' => $videos));
-			$playlist = theme('tp_videos_detailed', array('videos' => $videos, 'navigation' => $navigation));
+			$video_displays = array();
+			foreach($videos as $video){
+				$video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
+			}
+			$navigation = theme('tp_videos_navigation', array('video_displays' => $video_displays));
+			$playlist = theme('tp_videos_detailed', array('video_displays' => $video_displays, 'navigation' => $navigation, 'videos' => $videos));
 			break;
 		case 'hidelist':
 			$playlist = theme('tp_videos_hidelist', array('videos' => $videos));
 	}
 
 	//Return the element with the markup
+	$title = $entity->title;
+	$playlist = theme('tp_videos_wrapper', array('title' => $title, 'playlist' => $playlist));
 	$element[0]['#markup'] = $playlist;
 	return $element;
 }
@@ -395,11 +402,19 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
  */
 function tp_videos_theme(){
 	return array(
+		'tp_videos_wrapper' => array(
+			'access' => array(),
+			'template' => 'templates/playlist-wrapper',
+			'variables' => array(
+				'title' => '',
+				'playlist' => '',
+			),
+		),
 		'tp_videos_navigation' => array(
 			'access' => array(),
 			'template' => 'templates/playlist-navigation',
 			'variables' => array(
-				'videos' => array(),
+				'video_displays' => array(),
 			),
 		),
 		'tp_videos_basic' => array(
@@ -407,6 +422,7 @@ function tp_videos_theme(){
 			'template' => 'templates/playlist-basic',
 			'variables' => array(
 				'videos' => array(),
+				'video_displays' => array(),
 				'navigation' => '',
 			),
 		),
@@ -415,6 +431,7 @@ function tp_videos_theme(){
 			'template' => 'templates/playlist-detailed',
 			'variables' => array(
 				'videos' => array(),
+				'video_displays' => array(),
 				'navigation' => '',
 			),
 		),

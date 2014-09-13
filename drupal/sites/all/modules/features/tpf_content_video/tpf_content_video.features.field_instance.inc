@@ -4684,9 +4684,9 @@ function tpf_content_video_field_default_field_instances() {
       ),
       'video_playlist_teaser' => array(
         'label' => 'hidden',
-        'module' => 'formatter_field',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'from_field',
+        'type' => 'text_default',
         'weight' => 1,
       ),
       'vidpop_map' => array(
@@ -6055,7 +6055,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'full_page',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 1,
       ),
       'embed' => array(
@@ -6064,7 +6064,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'embed',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 0,
       ),
       'feature_main' => array(
@@ -6073,7 +6073,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'feature_main',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 0,
       ),
       'feature_main_tpl' => array(
@@ -6082,7 +6082,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'feature_main_tpl',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 0,
       ),
       'feature_secondary' => array(
@@ -6097,7 +6097,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'feature_topic',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 0,
       ),
       'feature_video' => array(
@@ -6112,7 +6112,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'iframe',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 1,
       ),
       'inline_content' => array(
@@ -6127,7 +6127,7 @@ function tpf_content_video_field_default_field_instances() {
         'settings' => array(
           'global_default' => 'teaser',
         ),
-        'type' => 'tp_video_player_file',
+        'type' => 'tp_video_player',
         'weight' => 2,
       ),
       'token' => array(
@@ -8642,7 +8642,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'tp_videos',
         'settings' => array(
-          'playlist_view_mode' => 'basic',
+          'playlist_view_mode' => 'detailed',
         ),
         'type' => 'video_playlist',
         'weight' => 1,

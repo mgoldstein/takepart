@@ -3,3 +3,5 @@ description = Module for video content.
 core = 7.x
 package = TakePart
 version = 7.x-1.0
+
+scripts[] = js/video-playlist.js
