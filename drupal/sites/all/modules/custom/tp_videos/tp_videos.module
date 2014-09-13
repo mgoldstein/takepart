@@ -391,6 +391,8 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
 	}
 
 	//Return the element with the markup
+	$title = $entity->title;
+	$playlist = theme('tp_videos_wrapper', array('title' => $title, 'playlist' => $playlist));
 	$element[0]['#markup'] = $playlist;
 	return $element;
 }
@@ -400,6 +402,14 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
  */
 function tp_videos_theme(){
 	return array(
+		'tp_videos_wrapper' => array(
+			'access' => array(),
+			'template' => 'templates/playlist-wrapper',
+			'variables' => array(
+				'title' => '',
+				'playlist' => '',
+			),
+		),
 		'tp_videos_navigation' => array(
 			'access' => array(),
 			'template' => 'templates/playlist-navigation',

@@ -10,4 +10,5 @@
 			<?php print drupal_render($video_display); ?>
 		</div>
 	<?php endforeach; ?>
-	</nav>
+</nav>
+<div class="clearfix"></div>

@@ -9,9 +9,9 @@
 		<div class="video-description">
 			<?php foreach($variables['videos'] as $key => $video): ?>
 				<div class="description-item" data-video-description="<?php print $key; ?>">
-					<h2 class="title"><?php print $video->title; ?></h2>
+					<h3 class="video-title"><?php print $video->title; ?></h3>
 					<?php $subhead = field_get_items('node', $video, 'field_article_subhead'); ?>
-					<?php print drupal_render(field_view_field('node', $video, 'field_article_subhead', $subhead)); ?>
+						<div class="video-description"><?php print $subhead[0]['value']; ?></div>
 				</div>
 			<?php endforeach; ?>
 		</div>
