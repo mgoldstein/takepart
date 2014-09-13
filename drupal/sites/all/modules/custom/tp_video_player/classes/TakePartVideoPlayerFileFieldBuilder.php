@@ -24,7 +24,7 @@ class TakePartVideoPlayerFileFieldBuilder {
     // Get the configuration overrides for full page nodes.
     if ($global_default === 'full_page') {
       $override = $controller->loadOverrideForEntity($this->entity_type,
-        $this->entity, 'full_page');
+        entity_id($this->entity_type, $this->entity), 'full_page');
       if (!is_null($override)) {
         // Merge the defaults with the overrides.
         $configuration = $controller->merge(array($configuration, $override));
