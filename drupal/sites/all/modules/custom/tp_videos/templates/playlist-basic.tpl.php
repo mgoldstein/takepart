@@ -3,9 +3,10 @@
  * Template for the Playlist BASIC View Mode
  */
 ?>
-BASIC VIEW MODE
-<div class="video">
-	<div class="video-placeholder"></div>
-</div>
-<?php print $variables['navigation']; ?>
+<div class="playlist" data-playlist-type="basic">
+	<div class="video">
+		<div class="video-placeholder"></div>
+	</div>
+	<?php print $variables['navigation']; ?>
+	</div>
 

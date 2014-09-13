@@ -4,8 +4,11 @@
  * TODO: We will need to configure this to the sliders specs
  */
 ?>
-<?php foreach($variables['videos'] as $video): ?>
-	<div class="video-item">
-		<?php print drupal_render($video); ?>
-	</div>
-<?php endforeach; ?>
+<nav class="video-playlist">
+	<?php foreach($variables['video_displays'] as $key => $video_display): ?>
+		<div class="video-item" data-video-number="<?php print $key; ?>">
+			<?php print drupal_render($video_display); ?>
+		</div>
+	<?php endforeach; ?>
+</nav>
+<div class="clearfix"></div>

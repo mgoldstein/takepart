@@ -4684,9 +4684,9 @@ function tpf_content_video_field_default_field_instances() {
       ),
       'video_playlist_teaser' => array(
         'label' => 'hidden',
-        'module' => 'formatter_field',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'from_field',
+        'type' => 'text_default',
         'weight' => 1,
       ),
       'vidpop_map' => array(
@@ -8642,7 +8642,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'tp_videos',
         'settings' => array(
-          'playlist_view_mode' => 'basic',
+          'playlist_view_mode' => 'detailed',
         ),
         'type' => 'video_playlist',
         'weight' => 1,
