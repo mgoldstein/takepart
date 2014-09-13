@@ -1,6 +1,6 @@
 <?php
 
-class TakePartVideoPlayerVideoNodeSettingsBuilder {
+class TakePartVideoPlayerSettingsBuilder {
 
   private $configuration;
 
@@ -61,10 +61,9 @@ class TakePartVideoPlayerVideoNodeSettingsBuilder {
     );
   }
 
-  protected function listbarSettings($uri) {
+  protected function listbarSettings($show_listbar) {
     $values = array();
-    $scheme = file_uri_scheme($uri);
-    if ($scheme === 'jwplatform-channel') {
+    if ($show_listbar) {
       $values['position'] = $this->configuration->playlist_position;
       $values['size'] = $this->configuration->playlist_size;
       $values['layout'] = $this->configuration->playlist_layout;
@@ -131,12 +130,12 @@ class TakePartVideoPlayerVideoNodeSettingsBuilder {
   }
 
   public function build($video) {
+    $scheme = file_uri_scheme($video['uri']);
     return array_merge(
       $this->contentSettings($video['uri']),
       $this->promoSettings(),
       $this->layoutSettings(),
       $this->playbackSettings(),
-      $this->listbarSettings($video['uri']),
       $this->sharingSettings(),
       $this->advertisingSettings(),
       $this->jwplayerAnalyticsSettings(),
