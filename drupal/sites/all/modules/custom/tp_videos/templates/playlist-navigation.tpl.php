@@ -5,12 +5,12 @@
  */
 ?>
 <!--<div id="effect-6" class="effects clearfix">-->
-<nav class="video-playlist">
+<ul class="video-playlist bxslider">
 	<?php foreach($variables['video_displays'] as $key => $video_display): ?>
-		<div class="video-item" data-video-number="<?php print $key; ?>">
+		<li class="video-item" data-video-number="<?php print $key; ?>">
 			<?php print drupal_render($video_display); ?>
-		</div>
+		</li>
 	<?php endforeach; ?>
-</nav>
+</ul>
 <!--	</div>-->
 <div class="clearfix"></div>
