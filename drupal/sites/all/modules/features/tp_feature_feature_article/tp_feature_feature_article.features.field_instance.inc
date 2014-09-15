@@ -107,7 +107,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 7,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
@@ -123,7 +123,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -195,6 +195,109 @@ function tp_feature_feature_article_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-feature_article-field_article_featured_link'
+  $field_instances['node-feature_article-field_article_featured_link'] = array(
+    'bundle' => 'feature_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_article_featured_link',
+    'label' => 'Featured Link',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 'optional',
+      'user_register_form' => FALSE,
+      'validate_url' => 0,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'link_field',
+      'weight' => 2,
     ),
   );
 
@@ -312,7 +415,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -505,7 +608,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -520,7 +623,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -599,7 +702,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -708,7 +811,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -797,7 +900,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -905,7 +1008,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -920,7 +1023,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1013,7 +1116,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1100,7 +1203,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1269,7 +1372,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1284,7 +1387,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1376,7 +1479,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1462,7 +1565,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1533,7 +1636,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -1548,7 +1651,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -1628,7 +1731,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1642,7 +1745,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -1766,7 +1869,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1837,7 +1940,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1946,7 +2049,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2035,6 +2138,7 @@ function tp_feature_feature_article_field_default_field_instances() {
   t('Author(s)');
   t('Body');
   t('Display Tag');
+  t('Featured Link');
   t('Free Tag');
   t('Inline Replacements');
   t('Main Image');

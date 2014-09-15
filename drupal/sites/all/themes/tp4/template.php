@@ -1456,16 +1456,30 @@ function tp4_preprocess_node__feature_article(&$variables, $hook) {
         // put the title color as a class on the title.
         $variables['title_attributes_array']['class'][] = $variables['field_title_color'][LANGUAGE_NONE][0]['value'];
 
-        // ad "TakePart Features" branding
-        $variables['title_prefix'][] = array(
-            '#theme' => 'link',
-            '#text' => 'TakePart Features',
-            '#path' => 'taxonomy/term/114900',
-            '#options' => array(
-                'attributes' => array('class' => array('takepart-features-branding', $variables['field_title_color'][LANGUAGE_NONE][0]['value'])),
-                'html' => FALSE,
-            ),
-        );
+				//grabs featured link from node
+				$featured_link = field_get_items('node', $variables['node'], 'field_article_featured_link');
+				$featured_link_array = field_view_value('node', $variables['node'], 'field_article_featured_link', $featured_link[0]);
+
+				//ensures that the title is set
+				if (isset($featured_link_array['#element']['url'])) {
+					//variables for featured link
+					$feature_title = $featured_link_array['#element']['title'];
+					$feature_link = $featured_link_array['#element']['url'];
+					
+					//ensures that the link is not empty
+					if (!empty($feature_link)) {
+						// ad "TakePart Features" branding
+						$variables['title_prefix'][] = array(
+								'#theme' => 'link',
+								'#text' => $feature_title,
+								'#path' => $feature_link,
+								'#options' => array(
+										'attributes' => array('class' => array('takepart-features-branding', $variables['field_title_color'][LANGUAGE_NONE][0]['value'])),
+										'html' => FALSE,
+								),
+						);
+					}
+				}
 
         // orphan protection for headlines
         $title = trim($variables['title']);
