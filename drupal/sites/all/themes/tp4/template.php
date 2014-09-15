@@ -1940,6 +1940,39 @@ function tp4_field__field_article_main_image__openpublish_article($variables) {
     return $output;
 }
 
+/**
+ *	Copying code from above to allow flashcard to have captions
+ */
+function tp4_field__field_flashcard_main_image__flashcard($variables) {
+    $output = '';
+
+    foreach ($variables['items'] as $delta => $item) {
+        // set up some variables we're going to need.
+        $image = array();
+        $image['path'] = $item['#item']['uri'];
+
+        // pick out the image style, defaulting to landscape
+        $image['style_name'] = 'landscape_main_image';
+        if ($item['#view_mode'] == 'portrait')
+            $image['style_name'] = 'portrait_main_image';
+
+        // schema.org article microdata
+        $image['attributes'] = array();
+        $image['attributes']['itemprop'] = 'image';
+
+        // TODO: do this through drupal APIs
+        $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
+
+        $output .= '<figure class="' . $item['#view_mode'] . '"' . $variables['item_attributes'][$delta] . '>';
+        $output .= theme('image_style', $image);
+        $output .= '<figcaption>';
+        $output .= (isset($item['#item']['field_media_caption']['und'])) ? $item['#item']['field_media_caption']['und'][0]['safe_value'] : '';
+        $output .= '</figcaption></figure>';
+    }
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+    return $output;
+}
+
 function tp4_field__field_article_main_image__feature_article($variables) {
     $output = '';
 
