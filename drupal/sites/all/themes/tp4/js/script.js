@@ -565,6 +565,28 @@
       });
     }
   };
+
+  /**
+   * Playlist BxSlider
+   * @type {{attach: attach}}
+   */
+  Drupal.behaviors.playlistBxSlider = {
+    attach: function() {
+
+      $(document).ready(function(){
+
+        $('.bxslider').bxSlider({
+          minSlides: 3,
+          maxSlides: 3,
+          slideWidth: 155,
+          slideMargin: 10,
+          infiniteLoop: false,
+          hideControlOnEnd: true
+        });
+
+      });
+    }
+  };
   
   // Omniture position tracking
   // Parent/ancestor vars to track in reverse order of importance
