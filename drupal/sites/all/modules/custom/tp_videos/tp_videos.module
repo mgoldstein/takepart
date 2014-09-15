@@ -301,8 +301,17 @@ function tp_videos_entity_info_alter(&$entity_info) {
  * Implements hook_preprocess_node().
  */
 function tp_videos_preprocess_node(&$variables) {
-	if($variables['view_mode'] == 'video_playlist_teaser') {
+	if($variables['view_mode'] == 'video_playlist_teaser' && $variables['type'] == 'video') {
 		$variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__video_playlist_teaser';
+		$thumbnail = field_get_items('node', $variables['node'], 'field_thumbnail');
+		$thumbnail = $thumbnail[0]['file']->uri;
+		$thumbnail = image_style_url('video_navigation_thumb_155x87', $thumbnail);
+		$promo_headline = field_get_items('node', $variables['node'], 'field_promo_headline');
+		$promo_headline = $promo_headline[0]['value'];
+
+		$variables['thumbnail'] = $thumbnail;
+		$variables['promo_headline'] = $promo_headline;
+
 	}
 }
 

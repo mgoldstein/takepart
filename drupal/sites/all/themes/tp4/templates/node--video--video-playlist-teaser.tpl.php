@@ -2,16 +2,18 @@
 /**
  * @file
  * Returns the HTML for Playlist Navigation
+ * We need to update the display of the image field.  Rather than altering a field formatter or using the hook_theme_field
+ * function we will render out the two fields individually.  hook_theme_field is not possible for this field as it is widly
+ * used throughout TP and altering the field formatter will result in slow the site down.
  */
 ?>
-<?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
-	<header>
-		<?php print render($title_prefix); ?>
-		<?php print render($title_suffix); ?>
-	</header>
-<?php endif; ?>
-<?php
-	hide($content['comments']);
-	hide($content['links']);
-	print render($content);
-?>
+<div class="image-wrapper">
+	<img src="<?php print $variables['thumbnail']; ?>">
+	<div class="overlay">
+		<div class="now-playing"><?php print t('now playing'); ?></div>
+		<div class="play-me">play me</div>
+	</div>
+</div>
+<div class="promo-headline">
+	<?php print $variables['promo_headline']; ?>
+</div>
