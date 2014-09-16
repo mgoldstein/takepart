@@ -77,15 +77,6 @@ h3.video-title{
     margin-bottom: 5px;
     width: 100%;
     overflow: hidden;
-    &:nth-child(n) {
-      margin-right: 5px;
-    }
-    &:first-child {
-      margin-left: -15px;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
     img {
       display: block;
       margin: 0;
