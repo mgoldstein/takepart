@@ -247,3 +247,12 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
     return $formatter->viewItems($entity_type, $entity, $langcode, $items);
   }
 }
+
+function tp_video_player_settings_for_node($node, $field_name, $langcode = NULL) {
+  $items = field_get_items('node', $node, $field_name, $langcode);
+  if ($items !== FALSE) {
+    $builder = new TakePartVideoPlayerFileFieldBuilder('node', $node, $langcode, $items);
+    return $builder->settings('full_page');
+  }
+  return NULL;
+}
