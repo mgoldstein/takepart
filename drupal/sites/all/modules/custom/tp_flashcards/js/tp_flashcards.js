@@ -21,7 +21,7 @@
         $(data.definition).appendTo($popup);
         $('<a>').addClass('flashcard-article-link')
           .attr('href', $this.attr('href'))
-          .text('read more on “' + data.page_title + '”')
+          .text('learn more about ' + data.title.toLowerCase())
           .on('click', function() {
             $window.trigger('flashcard-click', {term: $this.text().toLowerCase()});
           })
