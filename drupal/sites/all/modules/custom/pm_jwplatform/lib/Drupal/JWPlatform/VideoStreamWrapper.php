@@ -5,7 +5,7 @@ class JWPlatformVideoStreamWrapper extends JWPlatformContentStreamWrapper {
   public function interpolateUrl() {
     if ($parameters = $this->get_parameters()) {
       $filename = $parameters['key'];
-      return $this->base_url . 'jw6/' . $filename . '.xml';
+      return $this->base_url . 'videos/' . $filename . '.mp4';
     }
   }
 
