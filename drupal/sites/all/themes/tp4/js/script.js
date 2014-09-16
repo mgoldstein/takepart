@@ -578,10 +578,13 @@
         $('.bxslider').bxSlider({
           minSlides: 3,
           maxSlides: 3,
-          slideWidth: 155,
-          slideMargin: 10,
+          slideWidth: 152,
+          slideMargin: 5,
           infiniteLoop: false,
-          hideControlOnEnd: true
+          hideControlOnEnd: true,
+          pager: false,
+          nextText: '',
+          prevText: ''
         });
 
       });

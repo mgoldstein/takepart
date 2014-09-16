@@ -17,7 +17,7 @@
 .bx-wrapper {
   position: relative;
   margin: 0 auto 60px;
-  padding: 0;
+  padding: 0 45px;
   *zoom: 1;
 }
 
@@ -30,7 +30,6 @@
 ===================================*/
 
 .bx-wrapper .bx-viewport {
-  left: -5px;
   background: #fff;
 
   /*fix other elements on the page moving (on Chrome)*/
@@ -101,13 +100,31 @@
 /* DIRECTION CONTROLS (NEXT / PREV) */
 
 .bx-wrapper .bx-prev {
-  left: 10px;
-  background: image-url("controls.png") no-repeat 0 -32px;
+  left: 0;
+  font-size: 3em;
+  font-family: "SSGizmo";
+  &:after{
+    content: '\25C5';
+    display: inline;
+  }
+  &:hover{
+    text-decoration: none;
+    color: $light-mint;
+  }
 }
 
 .bx-wrapper .bx-next {
   right: 10px;
-  background: image-url("controls.png") no-repeat -43px -32px;
+  font-size: 3em;
+  font-family: "SSGizmo";
+  &:after{
+    content: '\25BB';
+    display: inline;
+  }
+  &:hover{
+    text-decoration: none;
+    color: $light-mint;
+  }
 }
 
 .bx-wrapper .bx-prev:hover {
@@ -125,8 +142,6 @@
   outline: 0;
   width: 32px;
   height: 32px;
-  text-indent: -9999px;
-  z-index: 9999;
 }
 
 .bx-wrapper .bx-controls-direction a.disabled {
