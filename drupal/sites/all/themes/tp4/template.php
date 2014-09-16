@@ -362,6 +362,11 @@ function tp4_preprocess_node(&$variables, $hook) {
   if (function_exists($function)) {
     $function($variables, $hook);
   }
+	
+	//address issue with title for photo gallery not showing the titles
+	if ($variables['view_mode'] == 'inline_content' && !$variables['title'] && $variables['referencing_field'] == 'field_related_stories') {
+		$variables['title'] = $variables['node']->title;
+	}
 }
 
 function tp4_preprocess_node__campaign(&$variables, $hook) {
@@ -1506,6 +1511,7 @@ function tp4_preprocess_node__video_playlist(&$variables, $hook) {
  * Override or insert variables into the openpublish_photo_gallery template.
  */
 function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
+	
     if ($variables['view_mode'] == 'full') {
 
         // expose series tid in a data attribute
