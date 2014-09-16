@@ -362,6 +362,11 @@ function tp4_preprocess_node(&$variables, $hook) {
   if (function_exists($function)) {
     $function($variables, $hook);
   }
+	
+	//address issue with title for photo gallery not showing the titles
+	if ($variables['view_mode'] == 'inline_content' && !$variables['title'] && $variables['referencing_field'] == 'field_related_stories') {
+		$variables['title'] = $variables['node']->title;
+	}
 }
 
 function tp4_preprocess_node__campaign(&$variables, $hook) {
@@ -1456,16 +1461,30 @@ function tp4_preprocess_node__feature_article(&$variables, $hook) {
         // put the title color as a class on the title.
         $variables['title_attributes_array']['class'][] = $variables['field_title_color'][LANGUAGE_NONE][0]['value'];
 
-        // ad "TakePart Features" branding
-        $variables['title_prefix'][] = array(
-            '#theme' => 'link',
-            '#text' => 'TakePart Features',
-            '#path' => 'taxonomy/term/114900',
-            '#options' => array(
-                'attributes' => array('class' => array('takepart-features-branding', $variables['field_title_color'][LANGUAGE_NONE][0]['value'])),
-                'html' => FALSE,
-            ),
-        );
+				//grabs featured link from node
+				$featured_link = field_get_items('node', $variables['node'], 'field_article_featured_link');
+				$featured_link_array = field_view_value('node', $variables['node'], 'field_article_featured_link', $featured_link[0]);
+
+				//ensures that the title is set
+				if (isset($featured_link_array['#element']['url'])) {
+					//variables for featured link
+					$feature_title = $featured_link_array['#element']['title'];
+					$feature_link = $featured_link_array['#element']['url'];
+					
+					//ensures that the link is not empty
+					if (!empty($feature_link)) {
+						// ad "TakePart Features" branding
+						$variables['title_prefix'][] = array(
+								'#theme' => 'link',
+								'#text' => $feature_title,
+								'#path' => $feature_link,
+								'#options' => array(
+										'attributes' => array('class' => array('takepart-features-branding', $variables['field_title_color'][LANGUAGE_NONE][0]['value'])),
+										'html' => FALSE,
+								),
+						);
+					}
+				}
 
         // orphan protection for headlines
         $title = trim($variables['title']);
@@ -1492,6 +1511,7 @@ function tp4_preprocess_node__video_playlist(&$variables, $hook) {
  * Override or insert variables into the openpublish_photo_gallery template.
  */
 function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
+	
     if ($variables['view_mode'] == 'full') {
 
         // expose series tid in a data attribute
@@ -1934,6 +1954,39 @@ function tp4_field__field_article_main_image__openpublish_article($variables) {
         $output .= theme('image_style', $image);
         $output .= '<figcaption>';
         $output .= drupal_render($item['field_media_caption']);
+        $output .= '</figcaption></figure>';
+    }
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+    return $output;
+}
+
+/**
+ *	Copying code from above to allow flashcard to have captions
+ */
+function tp4_field__field_flashcard_main_image__flashcard($variables) {
+    $output = '';
+
+    foreach ($variables['items'] as $delta => $item) {
+        // set up some variables we're going to need.
+        $image = array();
+        $image['path'] = $item['#item']['uri'];
+
+        // pick out the image style, defaulting to landscape
+        $image['style_name'] = 'landscape_main_image';
+        if ($item['#view_mode'] == 'portrait')
+            $image['style_name'] = 'portrait_main_image';
+
+        // schema.org article microdata
+        $image['attributes'] = array();
+        $image['attributes']['itemprop'] = 'image';
+
+        // TODO: do this through drupal APIs
+        $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
+
+        $output .= '<figure class="' . $item['#view_mode'] . '"' . $variables['item_attributes'][$delta] . '>';
+        $output .= theme('image_style', $image);
+        $output .= '<figcaption>';
+        $output .= (isset($item['#item']['field_media_caption']['und'])) ? $item['#item']['field_media_caption']['und'][0]['safe_value'] : '';
         $output .= '</figcaption></figure>';
     }
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';

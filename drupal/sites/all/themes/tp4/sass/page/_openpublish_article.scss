@@ -85,11 +85,16 @@
     }
 }
 
+.node-openpublish-photo-gallery.view-mode-full,
+.node-video.view-mode-full,
 .node-openpublish-article.view-mode-full,
 .node-feature-article.view-mode-full {
+    #gallery-footer,
     #article-footer {
+        padding-top: 4px;
         border: none !important;
         
+        #related-stories,
         h3:first-child {
             padding: 16px 16px 9px 16px;
             background-color: #f8f8f8;
@@ -103,8 +108,22 @@
         article {
             a {
                 h2.inline-title {
+                    font-size: 16px !important;
                     font-family: 'Ashbury Light', Ashbury, "Times New Roman", serif !important;
+                    line-height: 20px !important;
+                    margin-left: 115px;
                 }
+            }
+        }
+    
+        .field-name-field-thumbnail {
+            float: left;
+            margin-right: 15px;
+            margin-bottom: 8px;
+            
+            img {
+                max-width: 100px;
+                height: auto;
             }
         }
     }
