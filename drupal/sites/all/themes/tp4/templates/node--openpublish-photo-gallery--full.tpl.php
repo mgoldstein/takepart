@@ -20,7 +20,7 @@
     <?php print render($gallery_tap_banner); ?>
 
     <?php if($content['field_related_stories']) : ?>
-    <h3><?php print t('Related Stories on TakePart'); ?></h3>
+    <h3 id="related-stories"><?php print t('Related Stories on TakePart'); ?></h3>
     <?php print render($content['field_related_stories']); ?>
     <?php endif; ?>
 
