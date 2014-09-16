@@ -1,0 +1,126 @@
+<?php
+/**
+ * @file
+ * Sets up the base tables for hosted videos.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function tp_videos_schema() {
+  $schema = array();
+
+  $schema['tp_video'] = array(
+    'description' => 'The base table for videos.',
+    'fields' => array(
+
+      'id' => array(
+        'description' => 'Primary key identifier for the video.',
+        'type' => 'serial',
+        'unsigned' => FALSE,
+        'not null' => TRUE,
+      ),
+
+      'type' => array(
+        'description' => 'Type class name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+
+      'external_key' => array(
+        'description' => 'Key identifier for the video in the hosting system.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'external_type' => array(
+        'description' => 'Optional type of the video in the hosting system.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      'title' => array(
+        'description' => 'Admin video title.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'width' => array(
+        'description' => 'Width of video in pixels.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'height' => array(
+        'description' => 'Height of video in pixels.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'length' => array(
+        'description' => 'Length of video in seconds.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'thumbnail_image' => array(
+        'description' => 'URL of video thumbnail image.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+
+      'allowed_regions' => array(
+        'description' => 'Optional list of regions playback should be limited to.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      'embed_code' => array(
+        'description' => 'Embed code provided by the video hosting service.',
+        'type' => 'text',
+        'size' => 'normal',
+      ),
+
+      /* Change tracking timestamps */
+      'created_at' => array(
+        'description' => 'The Unix timestamp when the video was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated_at' => array(
+        'description' => 'The Unix timestamp when the video was last changed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'type_external_key' => array('type', 'external_key'),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Add TakePart video table for storing meta information about videos.
+ */
+function tp_videos_update_7101(&$sandbox) {
+  $schema = tp_videos_schema();
+  db_create_table('tp_video', $schema['tp_video']);
+}
