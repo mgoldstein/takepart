@@ -2,6 +2,18 @@ name = TakePart Videos
 description = Module for video content.
 core = 7.x
 package = TakePart
-version = 7.x-1.0
+version = 7.x-1.1
 
 scripts[] = js/video-playlist.js
+
+files[] = classes/BitsOnTheRun/api.php
+files[] = classes/JWPlatformImporter.php
+files[] = classes/JWPlatformVideo.php
+files[] = classes/Video.php
+files[] = classes/VideoController.php
+files[] = classes/VideoImportController.php
+files[] = classes/VideoImporter.php
+files[] = classes/VimeoImporter.php
+files[] = classes/VimeoVideo.php
+files[] = classes/YoutubeImporter.php
+files[] = classes/YoutubeVideo.php
