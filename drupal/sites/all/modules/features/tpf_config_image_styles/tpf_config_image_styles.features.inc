@@ -916,8 +916,8 @@ function tpf_config_image_styles_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 155,
-          'height' => 87,
+          'width' => 160,
+          'height' => 90,
         ),
         'weight' => 1,
       ),
