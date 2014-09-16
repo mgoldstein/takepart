@@ -286,6 +286,9 @@ function tpf_content_video_strongarm() {
       'iframe' => array(
         'custom_settings' => TRUE,
       ),
+      'video_playlist_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
