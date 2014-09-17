@@ -48,14 +48,16 @@ h3.video-title{
   display: block;
   position: absolute;
   z-index: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: transparent;
   overflow: hidden;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
-
+.video-item.active .overlay{
+  background: rgba(0, 0, 0, 0.6);
+}
 .now-playing, .play-me {
   display: block;
   position: absolute;
@@ -121,5 +123,28 @@ h3.video-title{
     .image-wrapper:hover .overlay {
       opacity: 1;
     }
+  }
+}
+
+.playlist.small{
+  .video-playlist{
+    padding: 0;
+  }
+  .video-item{
+    clear: both;
+    width: 100%;
+    margin: 0;
+    height: auto;
+    padding-bottom: 10px;
+  }
+  .image-wrapper{
+    width: 40%;
+  }
+  .promo-headline{
+    width: 55%;
+    float: right;
+  }
+  .video-playlist .image-wrapper img{
+    width: 100%;
   }
 }
