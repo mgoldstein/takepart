@@ -363,7 +363,6 @@ function tp_videos_preprocess_node(&$variables) {
 		$thumbnail = image_style_url('video_navigation_thumb_155x87', $thumbnail);
 		$promo_headline = field_get_items('node', $variables['node'], 'field_promo_headline');
 		$promo_headline = $promo_headline[0]['value'];
-		dpm(strlen($promo_headline), 'promo length');
 		$promo_headline = strlen($promo_headline) > 50 ? substr($promo_headline,0,50)."..." : $promo_headline;
 
 		$variables['thumbnail'] = $thumbnail;
