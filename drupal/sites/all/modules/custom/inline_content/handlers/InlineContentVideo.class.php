@@ -10,14 +10,34 @@ class InlineContentVideo extends InlineContentReplacementController {
    * Update the replacement content's display label.
    */
   public function updateLabel($replacement) {
-    return t('Some Label');
+
+    // Grab the content list.
+    $content = field_get_items('inline_content', $replacement, 'field_ic_video');
+    if ($content !== FALSE && count($content) > 0) {
+      $item = reset($content);
+      $node = node_load($item['nid']);
+      $title = $node->title;
+    }
+    else {
+      $title = t('[No Content]');
+    }
+
+    // Format the label.
+    $replacement->label = t('Embedded Video: !title', array(
+      '!title' => $title,
+    ));
   }
 
   /**
    * Render the replacement content.
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
-    return array();
+    $content = field_get_items('inline_content', $replacement, 'field_ic_video');
+    if ($content !== FALSE && count($content) > 0) {
+      $item = reset($content);
+      $node = node_load($item['nid']);
+      return node_view($node, 'embed');
+    }
   }
 
   public function form($form, &$form_state, $replacement) {
