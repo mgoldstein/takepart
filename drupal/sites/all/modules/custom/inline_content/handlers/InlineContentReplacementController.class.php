@@ -22,4 +22,17 @@ abstract class InlineContentReplacementController {
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
     return $content;
   }
+
+  public function form($form, &$form_state, $replacement) {
+    return $form;
+  }
+
+  public function validate($form, &$form_state, $replacement) {
+  }
+
+  public function submit($form, &$form_state, $replacement) {
+  }
+
+  public function save($replacement) {
+  }
 }
