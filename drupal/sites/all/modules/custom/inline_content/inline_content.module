@@ -71,6 +71,11 @@ class InlineContentFormController extends EntityInlineEntityFormController {
     field_attach_form('inline_content', $replacement, $entity_form, $form_state,
       $langcode);
 
+    $controller = inline_content_get_replacement_controller($replacement->type);
+    if ($controller !== FALSE) {
+      $entity_form = $controller->form($entity_form, $form_state, $replacement);
+    }
+
     if ($replacement->type == 'horizontal_rule') {
       $entity_form['label'] = array(
         '#type' => 'markup',
@@ -105,6 +110,11 @@ class InlineContentFormController extends EntityInlineEntityFormController {
     }
     field_attach_form_validate('inline_content', $replacement, $entity_form,
       $form_state, $langcode);
+
+    $controller = inline_content_get_replacement_controller($replacement->type);
+    if ($controller !== FALSE) {
+      $controller->validate($entity_form, $form_state, $replacement);
+    }
   }
 
   /**
@@ -120,6 +130,7 @@ class InlineContentFormController extends EntityInlineEntityFormController {
     // entity form control.
     $controller = inline_content_get_replacement_controller($replacement->type);
     if ($controller !== FALSE) {
+      $controller->submit($entity_form, $form_state, $replacement);
       $controller->updateLabel($replacement);
     }
   }
@@ -129,6 +140,11 @@ class InlineContentFormController extends EntityInlineEntityFormController {
    */
   public function save($entity, $context) {
     $entity->save();
+
+    $controller = inline_content_get_replacement_controller($entity->type);
+    if ($controller !== FALSE) {
+      $controller->save($entity);
+    }
   }
 }
 
@@ -402,6 +418,12 @@ function inline_content_replacement_types() {
     'label' => t('Pull Quote'),
     'description' => t('Pull Quote With Optional Citation'),
     'controller' => 'InlineContentPullQuote',
+  );
+
+  $types['video'] = array(
+    'label' => t('Video'),
+    'description' => t('Video with player and display options'),
+    'controller' => 'InlineContentVideo',
   );
 
   return $types;
