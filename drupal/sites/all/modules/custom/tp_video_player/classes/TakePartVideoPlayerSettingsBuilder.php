@@ -12,10 +12,18 @@ class TakePartVideoPlayerSettingsBuilder {
     $scheme = file_uri_scheme($uri);
     $wrapper = file_stream_wrapper_get_instance_by_uri($uri);
     $url = $wrapper->getExternalUrl();
-    if ($scheme === 'jwplatform-channel' || $scheme === 'jwplatform-video') {
+    if ($scheme === 'jwplatform-channel') {
       return array('playlist' => $url);
     }
-    return array('file' => $url);
+    return array(
+      'playlist' => array(
+        array(
+          'sources' => array(
+            array('file' => $url),
+          ),
+        ),
+      )
+    );
   }
 
   protected function promoSettings() {
