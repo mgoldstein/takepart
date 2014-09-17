@@ -8,6 +8,64 @@ use \Participant\MetaData\Video\YoutubeVideo;
 use \Participant\MetaData\Video\JWPlatformVideo;
 
 /**
+ * Implements hook_entity_insert().
+ */
+function tp_videos_entity_insert($entity, $entity_type) {
+  tp_videos_entity_update($entity, $entity_type);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function tp_videos_entity_update($entity, $entity_type) {
+
+  // Only concerned with (media) files.
+  if ($entity_type !== 'file') { return; }
+
+  // Create the appropriate importer.
+  $importer = NULL;
+  if ($entity->filemime === 'video/youtube') {
+    $importer = new TakePart_YoutubeImporter();
+    $params = tp_videos_parse_wrapper_uri($entity->uri);
+    $url = "TakePart_YoutubeVideo:{$params['v']}";
+  }
+  elseif ($entity->filemime === 'video/vimeo') {
+    $importer = new TakePart_VimeoImporter();
+    $params = tp_videos_parse_wrapper_uri($entity->uri);
+    $url = "TakePart_VimeoVideo:{$params['v']}";
+  }
+  elseif ($entity->filemime === 'video/jwplatform') {
+    $importer = new TakePart_JWPlatformImporter();
+    $params = tp_videos_parse_wrapper_uri($entity->uri);
+    $url = "TakePart_JWPlatformVideo:{$params['v']}";
+  }
+
+  if (!empty($importer)) {
+
+    $imported_video = $importer->import($url, TRUE);
+
+    $video_controller = new TakePart_VideoController();
+    $existing_video = $video_controller->loadByExternalKey($imported_video->type,
+      $imported_video->external_key);
+
+    if (is_null($existing_video)) {
+      $video_controller->save($imported_video);
+    }
+    else {
+      // Refresh the existing video data.
+      $values = $imported_video->values();
+      unset($values['created_at']);
+      unset($values['updated_at']);
+      unset($values['allowed_regions']);
+      foreach ($values as $name => $value) {
+        $existing_video->{$name} = $value;
+      }
+      $video_controller->save($existing_video);
+    }
+  }
+}
+
+/**
  * Implements hook_entity_view_alter().
  */
 function tp_videos_entity_view_alter(&$build, $type) {
@@ -146,9 +204,6 @@ function tp_videos_iframe_embed_markup($node) {
     'id' => 'entity_iframe_node_' . $node->nid,
 	  'style' => 'position: absolute; top: 0; left: 0;',
   );
-//	$width = variable_get('entity_iframe_width', ENTITY_IFRAME_WIDTH);
-//  $height = variable_get('entity_iframe_height', ENTITY_IFRAME_HEIGHT);
-//	$ratio = $height/$width*100;
 	if($playlist = field_get_items('node', $node, 'field_playlist_position')){
 		if($playlist[0]['value'] == 'bottom'){
 			$ratio = 95;
