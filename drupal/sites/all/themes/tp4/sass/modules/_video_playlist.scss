@@ -40,6 +40,7 @@ h3.video-title{
 }
 .video-description{
   font-family: $primary-sans-font;
+  font-weight: 500;
   margin-bottom: 15px;
 }
 
@@ -123,12 +124,29 @@ h3.video-title{
     .image-wrapper:hover .overlay {
       opacity: 1;
     }
+    .now-playing, .promo-headline{
+      font-family: $primary-sans-font;
+      font-weight: 500;
+    }
+  }
+  .icon.i-triangle-right:after{
+    content: '\25B6';
+    background: #333;
+    opacity: .7;
+    width: 50px;
+    margin: 0 auto;
+    height: 20px;
+    vertical-align: middle;
+    line-height: 60px;
+    padding: 3px 10px;
   }
 }
 
 .playlist.small{
   .video-playlist{
     padding: 0;
+    overflow-y: auto;
+    height: 290px;
   }
   .video-item{
     clear: both;

@@ -572,15 +572,62 @@
    */
   Drupal.behaviors.playlistBxSlider = {
     attach: function() {
+      window.tp_initslider = function() {
+        var small = 401;
+        var large = 701;
+        var all_slides = $('.bxslider');
 
-      $(document).ready(function(){
+        //does for each slider
+        all_slides.each(function(index) {
+          var playlist = $(this).parents('.playlist');
+          var viewMode;
+          var slider;
+          var $this = this;
 
-        var sliders = $('.bxslider');
+          //mobile
+          if (playlist.width() <= small) {
+            viewMode = 'small';
+            playlist.addClass(viewMode);
+            if (window['slider_' + index]) {
 
-        sliders.each(function(){
-          var slider = $(this).bxSlider({
-            minSlides: 3,
-            maxSlides: 3,
+              window['slider_' + index].destroySlider();
+            }
+          }
+          //tablet
+          else if (playlist.width() < large) {
+            viewMode = 'medium';
+            slides = 3;
+          }
+          //desktop
+          else {
+            viewMode = 'large';
+            slides = 4;
+          }
+
+          //changes class by viewmode
+          if (window['slider_' + index + '_view_mode'] == undefined) {
+            window['slider_' + index + '_view_mode'] = viewMode;
+          }
+          else if (window['slider_' + index + '_view_mode'] != viewMode) {
+            playlist.removeClass(window['slider_' + index + '_view_mode']);
+            playlist.addClass(viewMode);
+            window['slider_' + index + '_view_mode'] = viewMode;
+          }
+
+          //return if small
+          if (viewMode == 'small') {
+            return;
+          }
+
+          //destroy all slider
+          if (window['slider_' + index]) {
+            window['slider_' + index].destroySlider();
+          }
+
+          //init slider
+          window['slider_' + index] = $(this).bxSlider({
+            minSlides: slides,
+            maxSlides: slides,
             slideWidth: 152,
             slideMargin: 5,
             infiniteLoop: false,
@@ -589,39 +636,18 @@
             nextText: '',
             prevText: ''
           });
-
-          var playlist = $(this).parents('.playlist');
-          if(playlist.width() < 450){
-            slider.destroySlider();
-            playlist.addClass('small');
-          }else{
-            playlist.addClass('large');
-          }
-
-          $(window).resize(function(){
-            var sliders = $('.bxslider');
-
-            sliders.each(function(){
-
-              var playlist = $(this).parents('.playlist');
-              console.log(playlist.width());
-              if(playlist.width() < 450){
-                slider.destroySlider();
-                playlist.removeClass('large');
-                playlist.addClass('small');
-              }else{
-                playlist.removeClass('small');
-                playlist.addClass('large');
-                slider.reloadSlider();
-              }
-            });
-          });
-
-
         });
+      }
 
+      //fires on init
+      $(document).ready(function() {
+        window.tp_initslider();
+
+        //fires on all resize
+        $(window).smartresize(function() {
+          window.tp_initslider();
+        });
       });
-
     }
   };
   

@@ -11,7 +11,7 @@
 	<img src="<?php print $variables['thumbnail']; ?>">
 	<div class="overlay">
 		<div class="now-playing"><?php print t('now playing'); ?></div>
-		<div class="play-me icon i-play"></div>
+		<div class="play-me icon i-triangle-right"></div>
 	</div>
 </div>
 <div class="promo-headline">
