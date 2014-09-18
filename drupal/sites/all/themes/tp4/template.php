@@ -362,7 +362,7 @@ function tp4_preprocess_node(&$variables, $hook) {
   if (function_exists($function)) {
     $function($variables, $hook);
   }
-	
+
 	//address issue with title for photo gallery not showing the titles
 	if ($variables['view_mode'] == 'inline_content' && !$variables['title'] && $variables['referencing_field'] == 'field_related_stories') {
 		$variables['title'] = $variables['node']->title;
@@ -1470,7 +1470,7 @@ function tp4_preprocess_node__feature_article(&$variables, $hook) {
 					//variables for featured link
 					$feature_title = $featured_link_array['#element']['title'];
 					$feature_link = $featured_link_array['#element']['url'];
-					
+
 					//ensures that the link is not empty
 					if (!empty($feature_link)) {
 						// ad "TakePart Features" branding
@@ -1511,7 +1511,7 @@ function tp4_preprocess_node__video_playlist(&$variables, $hook) {
  * Override or insert variables into the openpublish_photo_gallery template.
  */
 function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
-	
+
     if ($variables['view_mode'] == 'full') {
 
         // expose series tid in a data attribute
@@ -1550,7 +1550,7 @@ function tp4_preprocess_node__flashcard(&$variables) {
     if ($variables['view_mode'] === 'full') {
         $variables['content']['body'][0]['#markup'] .= '<p><strong>What flashcards would you like to see?</strong> <a href="mailto:editorial@takepart.com?subject=New%20Flashcard%20Request">Email us</a> or let us know in the <a href="#block-tp-flashcards-flashcard-comments">comments</a> below.</p>';
     }
-		
+
 		//unsets the flashcard related if reference is empty
 		if (empty($variables['content']['flashcard_related_content_primary'][0])) {
 			unset($variables['content']['flashcard_related_content_primary']);
@@ -2033,8 +2033,9 @@ function tp4_field__field_video__video($variables) {
         $output .= render($item);
         //$caption = $item['#item']['field_media_caption']['und'][0]['value'];
         if (!empty($caption)) {
-            $output .= '<figcaption>' . $caption . '</figure>';
+            $output .= '<figcaption>' . $caption . '</figcaption>';
         }
+        $output .= '</figure>';
     }
 
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
