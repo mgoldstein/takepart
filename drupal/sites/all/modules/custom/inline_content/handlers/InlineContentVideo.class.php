@@ -32,12 +32,32 @@ class InlineContentVideo extends InlineContentReplacementController {
    * Render the replacement content.
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
-    $content = field_get_items('inline_content', $replacement, 'field_ic_video');
-    if ($content !== FALSE && count($content) > 0) {
-      $item = reset($content);
-      $node = node_load($item['nid']);
-      return node_view($node, 'embed');
-    }
+
+    $display = array(
+      'label' => 'hidden',
+      'type' => 'tp_video_player',
+      'settings' => array(
+        'global_default' => 'inline_content',
+      ),
+    );
+    $video = field_view_field('inline_content', $replacement,
+      'field_ic_video', $display, $langcode);
+
+    $alignment = field_get_items('inline_content', $replacement, 'field_ic_alignment');
+    $alignment = $alignment[0]['value'];
+
+    $attributes = array();
+
+    $attributes['class'][] = 'inline-content-video';
+    $attributes['class'][] = 'align-' . $alignment;
+
+    $content['#replacements'][] = array(
+      '#prefix' => '<div' . drupal_attributes($attributes) . '>',
+      '#suffix' => '</div>',
+      '0' => $video,
+    );
+
+    return $content;
   }
 
   public function form($form, &$form_state, $replacement) {
