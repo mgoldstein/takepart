@@ -104,20 +104,50 @@ function tpf_content_profile_strongarm() {
       'inline_content' => array(
         'custom_settings' => FALSE,
       ),
+      'feature_main' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_main_tpl' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_secondary' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_topic' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_video' => array(
+        'custom_settings' => TRUE,
+      ),
+      'video_playlist_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '2',
         ),
         'path' => array(
-          'weight' => '13',
-        ),
-        'xmlsitemap' => array(
           'weight' => '14',
         ),
+        'xmlsitemap' => array(
+          'weight' => '15',
+        ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '16',
+        ),
+        'locations' => array(
+          'weight' => '17',
+        ),
+        'metatags' => array(
+          'weight' => '20',
         ),
       ),
       'display' => array(),
