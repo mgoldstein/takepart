@@ -138,14 +138,17 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
     // Get the global defaults for nodes.
     $global_defaults = $controller->loadByName('full_page');
 
-    $form_controller = new TakePartVideoPlayerOverrideFormController($override);
+    // Merge to two configurations into the active configuration.
+    $active = $controller->merge(array($global_defaults, $override));
+
+    $form_controller = new TakePartVideoPlayerOverrideFormController($active);
     $form['tp_video_player'] = $form_controller->form(array(
       '#type' => 'fieldset',
       '#title' => t('Player Configuration'),
       '#weight' => -100,
       '#group' => 'additional_settings',
       '#tree' => TRUE,
-    ), $form_state, $global_defaults);
+    ), $form_state);
   }
 }
 
@@ -165,14 +168,18 @@ function tp_video_player_node_update($node) {
 
     $controller = new TakePartVideoPlayerOverrideController();
 
-    // Get the configuration for the node.
+    // Get the global defaults for nodes.
+    $global_defaults = $controller->loadByName('full_page');
+
+    // Get the existing overrides for the node.
     $override = $controller->loadOverrideForEntity('node', $node->nid, 'full_page');
     if (is_null($override)) {
       $override = $controller->create();
     }
 
+    // Update the existing overrides.
     $form_controller = new TakePartVideoPlayerOverrideFormController($override);
-    $updated_override = $form_controller->update($node->tp_video_player);
+    $updated_override = $form_controller->update($node->tp_video_player, $global_defaults);
 
     $controller->save($updated_override);
     $controller->attachOverrideToEntity($updated_override, 'node', $node->nid, 'full_page');
@@ -183,7 +190,6 @@ function tp_video_player_node_update($node) {
  * Implements hook_node_delete().
  */
 function tp_video_player_node_delete($node) {
-
   $controller = new TakePartVideoPlayerOverrideController();
   $controller->deleteOverridesForEntity('node', $node->nid);
 }

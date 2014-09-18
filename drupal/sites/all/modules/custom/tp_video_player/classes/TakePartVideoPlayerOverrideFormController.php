@@ -2,7 +2,7 @@
 
 class TakePartVideoPlayerOverrideFormController extends TakePartVideoPlayerConfigurationFormController {
 
-  public function form($form, &$form_state, $defaults) {
+  public function form($form, &$form_state) {
 
     $form = parent::form($form, $form_state);
 
@@ -23,70 +23,35 @@ class TakePartVideoPlayerOverrideFormController extends TakePartVideoPlayerConfi
     unset($form['analytics']);
     unset($form['advertising']['ad_client']);
 
-    // $form['promo'] = $this->addOverride(
-    //   'promo', $form['promo'], self::promoFields($defaults));
-    $form['layout'] = $this->addOverride(
-      'layout', $form['layout'], self::layoutFields($defaults));
-    $form['playback'] = $this->addOverride(
-      'playback', $form['playback'], self::playbackFields($defaults));
-    // $form['playlist'] = $this->addOverride(
-    //   'playlist', $form['playlist'], self::playlistFields($defaults));
-    $form['sharing'] = $this->addOverride(
-      'sharing', $form['sharing'], self::sharingFields($defaults));
-    // $form['analytics'] = $this->addOverride(
-    //   'analytics', $form['analytics'], self::analyticsFields($defaults));
-    $form['advertising'] = $this->addOverride(
-      'advertising', $form['advertising'], self::advertisingFields($defaults));
+    // $form['promo'] = $this->addOverride('promo', $form['promo']);
+    $form['layout'] = $this->addOverride('layout', $form['layout']);
+    $form['playback'] = $this->addOverride('playback', $form['playback']);
+    // $form['playlist'] = $this->addOverride('playlist', $form['playlist']);
+    $form['sharing'] = $this->addOverride('sharing', $form['sharing']);
+    // $form['analytics'] = $this->addOverride('analytics', $form['analytics']);
+    $form['advertising'] = $this->addOverride('advertising', $form['advertising']);
 
     return $form;
   }
 
-  private function addOverride($group, $overrides, $defaults) {
+  private function addOverride($group, $overrides) {
 
     $overrides['#tree'] = TRUE;
 
     foreach (element_children($overrides) as $name) {
 
       $override_field = $overrides[$name];
-      $default_field = $defaults[$name];
-
-      $overridden = is_null($this->configuration->{$name}) ? 0 : 1;
-      if (!$overridden) {
-        $override_field['#default_value'] = $default_field['#default_value'];
-      }
-
-      $override_checkbox_name = "tp_video_player[{$group}][{$name}][{$name}_override]";
-      $override_checkbox = array(
-        '#type' => 'checkbox',
-        '#default_value' => $overridden,
-      );
 
       // Extract the title for display in the first column
       $override_title = array(
         '#type' => 'markup',
         '#markup' => $override_field['#title'],
       );
-
       unset($override_field['#title']);
-      $override_field['#states'] = array(
-        'visible' => array(
-          ':input[name="' . $override_checkbox_name . '"]' => array('checked' => TRUE),
-        ),
-      );
-
-      unset($default_field['#title']);
-      $default_field['#disabled'] = TRUE;
-      $default_field['#states'] = array(
-        'visible' => array(
-          ':input[name="' . $override_checkbox_name . '"]' => array('checked' => FALSE),
-        ),
-      );
 
       $overrides[$name] = array(
         "{$name}_title" => $override_title,
         $name => $override_field,
-        "{$name}_default" => $default_field,
-        "{$name}_override" => $override_checkbox,
       );
     }
 
@@ -98,7 +63,7 @@ class TakePartVideoPlayerOverrideFormController extends TakePartVideoPlayerConfi
     return NULL;
   }
 
-  public function update($values) {
+  public function update($values, $defaults) {
 
     $boolean_fields = array(
       // 'promo' => array(
@@ -123,11 +88,13 @@ class TakePartVideoPlayerOverrideFormController extends TakePartVideoPlayerConfi
     );
     foreach ($boolean_fields as $group => $fields) {
       foreach ($fields as $name) {
-        if (!empty($values[$group][$name]["{$name}_override"])) {
-          $this->configuration->{$name} = !empty($values[$group][$name][$name]) ? 1 : 0;
+        if (empty($defaults->$name) == empty($values[$group][$name][$name])) {
+          // Value matches the default, so it is not overridden.
+          $this->configuration->{$name} = NULL;
         }
         else {
-          $this->configuration->{$name} = NULL;
+          // Value does not match the default, store the override.
+          $this->configuration->{$name} = !empty($values[$group][$name][$name]) ? 1 : 0;
         }
       }
     }
@@ -171,12 +138,14 @@ class TakePartVideoPlayerOverrideFormController extends TakePartVideoPlayerConfi
     );
     foreach ($scalar_fields as $group => $fields) {
       foreach ($fields as $name) {
-        if (!empty($values[$group][$name]["{$name}_override"])) {
-          $value = $values[$group][$name][$name];
-          $this->configuration->{$name} = empty($value) ? NULL : $value;
+        $value = $values[$group][$name][$name];
+        if ($defaults->{$name} == $value) {
+          // Value matches the default, so it is not overridden.
+          $this->configuration->{$name} = NULL;
         }
         else {
-          $this->configuration->{$name} = NULL;
+          // Value does not match the default, store the override.
+          $this->configuration->{$name} = $value;
         }
       }
     }
