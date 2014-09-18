@@ -13,11 +13,7 @@ function tp_video_player_override_table($title, $fields) {
         'data' => render($container["{$name}_title"]),
         'style' => 'width:120px;',
       ),
-      render($container[$name]) . render($container["{$name}_default"]),
-      array(
-        'data' => render($container["{$name}_override"]),
-        'style' => 'width:35px;align:right',
-      ),
+      render($container[$name]),
     );
   }
 
@@ -27,10 +23,6 @@ function tp_video_player_override_table($title, $fields) {
       array(
         'data' => '<strong>' . $title . '</strong>',
         'colspan' => 2,
-      ),
-      array(
-        'data' => t('Override'),
-        'style' => 'width:35px;align:right',
       ),
     ),
     '#rows' => $rows,

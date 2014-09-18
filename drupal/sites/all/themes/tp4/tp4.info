@@ -80,6 +80,7 @@ scripts[] = js/tp_ad_takeover.jquery.js
 scripts[] = js/tpsocial.jquery.js
 scripts[] = js/tpsocial.services.js
 scripts[] = js/hoverintent.js
+scripts[] = js/smartresize.js
 scripts[] = js/jquery.tp4sticky.js
 scripts[] = js/jquery.tpinfographic.js
 scripts[] = js/tpmodal.jquery.js
