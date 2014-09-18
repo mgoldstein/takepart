@@ -2136,6 +2136,16 @@ function tp4_preprocess_entity(&$variables, $hook) {
                         if ((isset($node->{'title'})) && (!isset($variables['custom_render'][$key]['title']))) {
                             $variables['custom_render'][$key]['title'] = $node->{'title'};
                         }
+
+                        //adding fix to address issue with title not displaying
+                        if (!$variables['custom_render'][$key]['title']) {
+                          //creates new title var at 0
+                          $variables['custom_render'][$key]['title'][0] = array(
+                            'value' => $node->title,
+                            'safe_value' => $node->title
+                          );
+                        }
+
                         $variables['custom_render'][$key]['url'] = url('node/' . $node->nid);
                     }
                 }
