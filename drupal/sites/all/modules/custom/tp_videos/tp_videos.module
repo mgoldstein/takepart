@@ -7,6 +7,9 @@
 use \Participant\MetaData\Video\YoutubeVideo;
 use \Participant\MetaData\Video\JWPlatformVideo;
 
+//module load inc file for obj
+module_load_include('inc', 'tp_videos', 'classes/tp_videos_playlist.class');
+
 /**
  * Implements hook_entity_insert().
  */
@@ -430,10 +433,19 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
 	$view_mode = $settings['playlist_view_mode'];
 	$playlist = '';
 
+  //overrides the items if neccesary
+  _tp_videos_playlist_filter_list_parser($items, $entity);
+  
 	//Load the video nodes for the playlist
 	$videos = node_load_multiple($items);
-	$videos = 	array_values($videos);
 
+  //processes the video to match sort order from query
+  $videos_processed = array();
+  foreach ($items as $key => $values) {
+    $videos_processed[] = $videos[$values['nid']];
+  }
+  $videos = $videos_processed;
+  
 	//Theme the Playlist
 	switch($view_mode){
 		case 'basic':
@@ -509,4 +521,82 @@ function tp_videos_theme(){
 			),
 		),
 	);
+}
+
+/**
+ *  Implements hook_form_alter().
+ */
+function tp_videos_form_alter(&$form, &$form_state, $form_id) {
+  //switch based on form id
+  switch ($form_id) {
+    //adds state and validate function for video playlists content type
+    case 'video_playlist_node_form':
+      $form['field_playlist_items_count']['#states'] = array(
+        'required' => array(
+          ':input[name=field_playlist_filter\[und\]]' => array('filled' => TRUE)
+        )
+      );
+      
+      //adds a new validate function
+      $form['#validate'][] = '_tp_videos_playlist_form_validate';
+      break;
+  }
+}
+
+/**
+ *  @function:
+ *    Custom Validate function for field
+ */
+function _tp_videos_playlist_form_validate(&$form, &$form_state) {
+  $item_count = $form_state['values']['field_playlist_items_count']['und'][0]['value'];
+  $filter = $form_state['values']['field_playlist_filter']['und'][0]['target_id'];
+
+  //set error message and stop form
+  if (!empty($filter) && empty($item_count)) {
+    form_set_error('field_playlist_items_count', 'Playlist Items Count needs to be filled out');
+  }
+}
+
+/**
+ *  @function:
+ *    This function is used to parse the list to create an automated playlist
+ */
+function _tp_videos_playlist_filter_list_parser(&$items, $entity) {
+  if (is_object($entity)) {
+    //variables from the entity video
+    $filter = field_get_items('node', $entity, 'field_playlist_filter');
+    $video_list_max = field_get_items('node', $entity, 'field_playlist_items_count');
+    $video_list_sort = field_get_items('node', $entity, 'field_playlist_filter_sorting');
+
+    //checks if the filter and video playlist max is set
+    if (!empty($video_list_max)) {
+      $video_list_max_processed = field_view_value('node', $entity, 'field_playlist_items_count', $video_list_max[0]);
+      $video_list_auto_sort = field_view_value('node', $entity, 'field_playlist_filter_sorting', $video_list_sort[0]);
+      $video_list = new tp_playlist_filter((int)$video_list_max_processed['#markup'], $video_list_auto_sort['#markup']);
+
+      if (!empty($filter)) {
+        if (isset($filter[0]['target_id'])) {
+          $tax_obj = taxonomy_term_load($filter[0]['target_id']);
+          $vid = $tax_obj->vid;
+          $vocab = taxonomy_vocabulary_load($vid);
+
+          //adds filter into the obj
+          $video_list->add_filter(
+            array(
+              'target_id' => $filter[0]['target_id'],
+              'vocab' => $vocab
+            )
+          );
+        }
+      }
+    
+      //adds the items into the obj
+      foreach ($items as $key => $value) {
+        $video_list->add_video_nid($value['nid']);
+      }
+      
+      //returns the new items list
+      $items = $video_list->get_results();
+    }
+  }
 }

@@ -276,7 +276,7 @@ function takepart_omniture_perm_title($title) {
   $node = menu_get_object();
   
   //ensures this is an object
-  if (is_object($node)) {
+  if (is_object($node) && isset($node->field_permanent_title)) {
     //gets field perm title
     $perm_title = field_get_items('node', $node, 'field_permanent_title');
     $perm_title_arr = field_view_value('node', $node, 'field_permanent_title', $perm_title[0]);

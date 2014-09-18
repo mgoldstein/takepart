@@ -147,9 +147,13 @@ function _takepart_custom_video_nodes(&$context) {
   //ensures that the results are still valid before continuing
   if (!empty($db_result)) {
     foreach ($db_result as $key => $values) {
+      //resets values
+      $player_loc = $video_loc = $video_img = $node_url = '';
+      
       $node = node_load($values->nid);
       if (is_object($node)) {
         $context['message'] = check_plain($node->title);
+        $node_url = url('node/' . $values->nid);
         
         //gets value for article subhead
         $subhead = field_get_items('node', $node, 'field_article_subhead');
@@ -178,10 +182,10 @@ function _takepart_custom_video_nodes(&$context) {
             }
           }
         }
-        
+
         //formatted to obj
         $item = array(
-          'loc' => $base_url . url('node/' . $values->nid),
+          'loc' => $base_url . $node_url,
           'keys' => array(
             'thumbnail_loc' => $video_img,
             'title' => truncate_utf8($node->title, 100, FALSE, TRUE), //limits to 100 as spec from google
@@ -193,7 +197,16 @@ function _takepart_custom_video_nodes(&$context) {
         );
       }
       
-      $xml->add_video_item($item);
+      /**
+       *  @logic:
+       *    Will check to ensure that player and video loc are not empty.
+       *
+       *    1. Doesnt allow for player loc and video loc to be empty
+       *    2. Checks to ensure that the url is not a ^live/ url
+       */
+      if ((!empty($player_loc) && !empty($video_loc)) && (!preg_match('/\/live\//', $node_url))) {
+        $xml->add_video_item($item);
+      }
     }
   }
   
