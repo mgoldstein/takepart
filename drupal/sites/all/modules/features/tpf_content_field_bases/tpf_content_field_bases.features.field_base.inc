@@ -2094,7 +2094,9 @@ function tpf_content_field_bases_field_default_field_bases() {
           ),
         ),
         'sort' => array(
-          'type' => 'none',
+          'direction' => 'ASC',
+          'property' => 'title',
+          'type' => 'property',
         ),
         'target_bundles' => array(
           'campaign' => 'campaign',
