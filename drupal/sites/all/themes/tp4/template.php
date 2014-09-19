@@ -1139,7 +1139,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $nids[] = $item['target_id'];
       }
 
-      // Query non referenced content (max 5)
+      // Query non referenced content (max 15)
       $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count');
 	    $count = (!empty($news_ref) ? count($news_ref) : 0);
 
