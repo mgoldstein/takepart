@@ -1,55 +1,6 @@
 <?php
 
 /**
- * Convert an override form field group to a table.
- */
-function tp_video_player_override_table($title, $fields) {
-
-  // Render the form fields as table rows.
-  $rows = array();
-  foreach ($fields as $name => $container) {
-    $rows[] = array(
-      array(
-        'data' => render($container["{$name}_title"]),
-        'style' => 'width:120px;',
-      ),
-      render($container[$name]),
-    );
-  }
-
-  return array(
-    '#theme' => 'table',
-    '#header' => array(
-      array(
-        'data' => '<strong>' . $title . '</strong>',
-        'colspan' => 2,
-      ),
-    ),
-    '#rows' => $rows,
-  );
-}
-
-/**
- * Theme hook for tp_video_player_override_form.
- */
-function theme_tp_video_player_override_form($variables) {
-
-  $form = $variables['form'];
-  $tables = array();
-
-  foreach (element_children($form) as $group_name) {
-    $group = $form[$group_name];
-    $fields = array();
-    foreach (element_children($group) as $field_name) {
-      $fields[$field_name] = $group[$field_name];
-    }
-    $tables[] = tp_video_player_override_table($group['#title'], $fields);
-  }
-
-  return render($tables);
-}
-
-/**
  * Helper function for adding client side player configurations.
  */
 function tp_video_player_add_player($id, $settings) {

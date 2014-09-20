@@ -301,10 +301,6 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field, $in
  */
 function tp_video_player_theme() {
   return array(
-    'tp_video_player_override_form' => array(
-      'render element' => 'form',
-      'file' => 'tp_video_player.theme.inc',
-    ),
     'tp_video_player' => array(
       'render element' => 'player',
       'file' => 'tp_video_player.theme.inc',
