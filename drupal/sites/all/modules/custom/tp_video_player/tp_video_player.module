@@ -62,33 +62,39 @@ function tp_video_player_menu() {
 /**
  * Implements hook_form_HOOK_alter().
  */
-
 function tp_video_player_form_node_form_alter(&$form, &$form_state) {
 
   $node = $form['#node'];
 
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
+    $configurations = array();
+
     // Load the full page defaults.
     $defaults = tp_video_player_load_default_configuration('full_page');
+    if (!is_null($defaults)) {
+      $configurations[] = $defaults;
+    }
 
     // Load any available node specific configuration.
     $override = tp_video_player_load_entity_configuration('node', $node->nid);
     if (is_null($override)) {
       $override = tp_video_player_create_configuration();
     }
+    $configurations[] = $override;
 
     // Merge to two configurations into the active configuration.
-    $active = $controller->merge(array($defaults, $override));
+    $active = tp_video_player_merge_configurations($configurations);
 
-    $form_controller = new TakePartVideoPlayerOverrideFormController($active);
-    $form['tp_video_player'] = $form_controller->form(array(
+    // Pull in the configuration form from the admin.
+    module_load_include('inc', 'tp_video_player', 'tp_video_player.admin');
+    $form['tp_video_player'] = tp_video_player_defaults_form(array(
       '#type' => 'fieldset',
       '#title' => t('Player Configuration'),
       '#weight' => -100,
       '#group' => 'additional_settings',
       '#tree' => TRUE,
-    ), $form_state);
+    ), $form_state, $active);
   }
 }
 
@@ -108,6 +114,9 @@ function tp_video_player_node_update($node) {
 
     // Load the full page defaults.
     $defaults = tp_video_player_load_default_configuration('full_page');
+    if (is_null($defaults)) {
+      $defaults = tp_video_player_create_configuration();
+    }
 
     // Load any available node specific configuration.
     $override = tp_video_player_load_entity_configuration('node', $node->nid);
@@ -115,12 +124,74 @@ function tp_video_player_node_update($node) {
       $override = tp_video_player_create_configuration();
     }
 
-    // Update the existing overrides.
-    $form_controller = new TakePartVideoPlayerOverrideFormController($override);
-    $updated_override = $form_controller->update($node->tp_video_player, $defaults);
+    // Update, save and attach the override.
+    tp_video_player_update_override($defaults, $override, $node->tp_video_player);
+    tp_video_player_save_configuration($override);
+    tp_video_player_attach_entity_configuration('node', $node->nid, $override);
+  }
+}
 
-    $controller->save($updated_override);
-    $controller->attachOverrideToEntity($updated_override, 'node', $node->nid, 'full_page');
+/**
+ * Updates an override configuration to have only those values that differ
+ * from the defaults.
+ */
+function tp_video_player_update_override($defaults, $override, $values) {
+
+  $boolean_fields = array(
+    'layout' => array(
+      'responsive',
+    ),
+    'playback' => array(
+      'auto_start',
+      'mute_playback',
+      'repeat_playback',
+    ),
+    'sharing' => array(
+      'enable_share',
+    ),
+  );
+  foreach ($boolean_fields as $group => $fields) {
+    foreach ($fields as $name) {
+      if (empty($defaults->$name) == empty($values[$group][$name])) {
+        // Value matches the default, so it is not overridden.
+        $override->{$name} = NULL;
+      }
+      else {
+        // Value does not match the default, store the override.
+        $override->{$name} = !empty($values[$group][$name]) ? 1 : 0;
+      }
+    }
+  }
+
+  $scalar_fields = array(
+    'layout' => array(
+      'width',
+      'height',
+      'skin',
+    ),
+    'sharing' => array(
+      'share_heading',
+      'share_url',
+      'embed_code',
+    ),
+    'advertising' => array(
+      'ad_frequency',
+      'ad_tag',
+      'ad_message',
+    ),
+  );
+  foreach ($scalar_fields as $group => $fields) {
+    foreach ($fields as $name) {
+      $value = $values[$group][$name];
+      if ($defaults->{$name} == $value) {
+        // Value matches the default, so it is not overridden.
+        $override->{$name} = NULL;
+      }
+      else {
+        // Value does not match the default, store the override.
+        $override->{$name} = $value;
+      }
+    }
   }
 }
 
