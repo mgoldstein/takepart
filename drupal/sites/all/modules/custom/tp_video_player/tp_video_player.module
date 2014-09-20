@@ -83,7 +83,7 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
     }
     $configurations[] = $override;
 
-    // Merge to two configurations into the active configuration.
+    // Merge the two configurations into the active configuration.
     $active = tp_video_player_merge_configurations($configurations);
 
     // Pull in the configuration form from the admin.
