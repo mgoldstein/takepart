@@ -228,8 +228,9 @@ function tp_video_player_merge_configurations($configurations) {
   foreach ($configurations as $configuration) {
     // Update all attributes for which a non-null value is provided.
     foreach ((array) $configuration as $name => $value) {
-      // Skip the id attribute as the merged configuration is a separate instance.
-      if ($name !== 'id' && !is_null($value)) {
+      // Skip the id and name attributes as the merged configuration is a
+      // separate instance.
+      if ($name !== 'id' && $name !== 'name' && !is_null($value)) {
         $merged->{$name} = $value;
       }
     }
