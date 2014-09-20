@@ -1142,7 +1142,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       // Query non referenced content (max 15)
       $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count');
 	    $count = (!empty($news_ref) ? count($news_ref) : 0);
-
+      
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
@@ -1152,12 +1152,14 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
           ->addTag('termfilter')
           ->addTag($variables['nid'])
           ->addTag('promofilter')
+          ->entityCondition('entity_id', $nids, 'NOT IN')
           ->range(0, $max_count - $count);
         $articles = $campaignNewsArticles->execute();
       }
       foreach($articles['node'] as $key => $item){
         $nids[] = $item->nid;
       }
+  
       $nodes = node_load_multiple($nids);
       $center = '';
       $center .= '<div class="news-column-wrapper">';
