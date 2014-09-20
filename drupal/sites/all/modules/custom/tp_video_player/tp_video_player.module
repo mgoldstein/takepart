@@ -203,6 +203,100 @@ function tp_video_player_node_delete($node) {
 }
 
 /**
+ * Implements hook_field_formatter_info().
+ */
+function tp_video_player_field_formatter_info() {
+  return array(
+    'tp_video_player' => array(
+      'label' => t('TakePart Video Player'),
+      'field types' => array('file', 'node_reference'),
+      'settings' => array(
+        'global_default' => 'full_page',
+      ),
+    )
+  );
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function tp_video_player_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+
+  $elements = array();
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+
+  if ($display['type'] === 'tp_video_player') {
+    $options = array();
+    foreach (tp_video_player_defaults_info() as $name => $info) {
+      $options[$name] = t($info['title']);
+    }
+    $elements['global_default'] = array(
+      '#type' => 'select',
+      '#title' => t('Global Default'),
+      '#default_value' => $settings['global_default'],
+      '#options' => $options,
+    );
+  }
+
+  return $elements;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function tp_video_player_field_formatter_settings_summary($field, $instance, $view_mode) {
+
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $default = $settings['global_default'];
+
+  if (!empty($default)) {
+    $defaults = tp_video_player_defaults_info();
+    return t('Default settings: @title', array(
+      '@title' => isset($defaults[$default]) ? t($defaults[$default]['title']) : $default
+    ));
+  }
+
+  return t('No default settings selected');
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function tp_video_player_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+
+  $elements = array();
+  $settings = $display['settings'];
+
+  if ($display['type'] === 'tp_video_player' && count($items) > 0) {
+
+    // Pick the appropriate field builder.
+    if ($field['type'] === 'file') {
+      // Direct reference to a Youtube video, JWPlatform video,
+      // or JWPlatform playlist.
+      $builder = new TakePartVideoPlayerFileFieldBuilder(
+        $entity_type, $entity, $langcode, $items);
+    }
+    elseif ($field['type'] === 'node_reference') {
+      // Reference(s) to video or playlist node(s)
+      $builder = new TakePartVideoPlayerNodeReferenceFieldBuilder(
+        $entity_type, $entity, $langcode, $items);
+    }
+
+    // The formatter only ever returns one player.
+    $elements[] = array(
+      '#theme' => 'tp_video_player',
+      '#settings' => $builder->settings($settings['global_default']),
+      '#allowed_regions' => $builder->allowedRegions(),
+      '#id' => drupal_html_id('tp_video_player'),
+    );
+  }
+
+  return $elements;
+}
+
+/**
  * Implements hook_theme().
  */
 function tp_video_player_theme() {
@@ -216,50 +310,6 @@ function tp_video_player_theme() {
       'file' => 'tp_video_player.theme.inc',
     ),
   );
-}
-
-/**
- * Implements hook_field_formatter_info().
- */
-function tp_video_player_field_formatter_info() {
-  return array(
-    'tp_video_player' => TakePartVideoPlayerFieldFormatter::info(),
-  );
-}
-
-/**
- * Implements hook_field_formatter_settings_form().
- */
-function tp_video_player_field_formatter_settings_form($field, $instance,
-  $view_mode, $form, &$form_state) {
-  $display = $instance['display'][$view_mode];
-  if ($display['type'] === 'tp_video_player') {
-    $formatter = new TakePartVideoPlayerFieldFormatter($field, $instance, $display);
-    return $formatter->settingsForm($form, $form_state);
-  }
-}
-
-/**
- * Implements hook_field_formatter_settings_summary().
- */
-function tp_video_player_field_formatter_settings_summary($field, $instance,
-  $view_mode) {
-  $display = $instance['display'][$view_mode];
-  if ($display['type'] === 'tp_video_player') {
-    $formatter = new TakePartVideoPlayerFieldFormatter($field, $instance, $display);
-    return $formatter->settingsSummary();
-  }
-}
-
-/**
- * Implements hook_field_formatter_view().
- */
-function tp_video_player_field_formatter_view($entity_type, $entity, $field,
-  $instance, $langcode, $items, $display) {
-  if ($display['type'] === 'tp_video_player') {
-    $formatter = new TakePartVideoPlayerFieldFormatter($field, $instance, $display);
-    return $formatter->viewItems($entity_type, $entity, $langcode, $items);
-  }
 }
 
 function tp_video_player_settings_for_node($node, $field_name, $langcode = NULL) {

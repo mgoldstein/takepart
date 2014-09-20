@@ -6,7 +6,6 @@ version = 7.x-1.0
 
 files[] = classes/TakePartTokenizedObject.php
 files[] = classes/TakePartVideoPlayerConfigurationFormController.php
-files[] = classes/TakePartVideoPlayerFieldFormatter.php
 files[] = classes/TakePartVideoPlayerFileFieldBuilder.php
 files[] = classes/TakePartVideoPlayerNodeReferenceFieldBuilder.php
 files[] = classes/TakePartVideoPlayerOverrideFormController.php
