@@ -342,7 +342,7 @@ function tp_video_player_form_advertising_fields($values, $is_default = FALSE) {
 
 function tp_video_player_defaults_form($form, &$form_state, $configuration) {
 
-  $form_state['storage']['tp_video_player_default'] = $configuration;
+  $form_state['storage']['tp_video_player_configuration'] = $configuration;
 
   $is_default = isset($configuration->name);
 
@@ -391,7 +391,6 @@ function tp_video_player_defaults_form($form, &$form_state, $configuration) {
     '#type' => 'fieldset',
     '#title' => t('Advertising'),
     '#collapsible' => TRUE,
-    '#access' => $is_default,
   ) + tp_video_player_form_advertising_fields($values, $is_default);
 
   $form['actions'] = array(
@@ -407,7 +406,7 @@ function tp_video_player_defaults_form($form, &$form_state, $configuration) {
 
 function tp_video_player_defaults_form_submit($form, $form_state) {
 
-  $configuration = $form_state['storage']['tp_video_player_default'];
+  $configuration = $form_state['storage']['tp_video_player_configuration'];
 
   $values = $form_state['values'];
 
