@@ -222,3 +222,17 @@ function tp_video_player_save_configuration($configuration) {
     $configuration->id = Database::getConnection()->lastInsertId();
   }
 }
+
+function tp_video_player_merge_configurations($configurations) {
+  $merged = tp_video_player_create_configuration();
+  foreach ($configurations as $configuration) {
+    // Update all attributes for which a non-null value is provided.
+    foreach ((array) $configuration as $name => $value) {
+      // Skip the id attribute as the merged configuration is a separate instance.
+      if ($name !== 'id' && !is_null($value)) {
+        $merged->{$name} = $value;
+      }
+    }
+  }
+  return $merged;
+}

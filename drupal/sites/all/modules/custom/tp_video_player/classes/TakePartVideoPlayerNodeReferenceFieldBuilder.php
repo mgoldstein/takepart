@@ -25,34 +25,28 @@ class TakePartVideoPlayerNodeReferenceFieldBuilder {
 
   public function settings($global_default) {
 
-    $controller = new TakePartVideoPlayerOverrideController();
+    $configurations = array();
 
-    // Load the global defaults for the entity view mode.
-    $defaults = $controller->loadByName($global_default);
-
-    $configurations = array($defaults);
+    // Start with the default configuration.
+    $defaults = tp_video_player_load_default_configuration($global_default);
+    if (!is_null($defaults)) {
+      $configurations[] = $defaults;
+    }
 
     $node = $this->getVideoNode();
     if (!is_null($node)) {
-      $node_configuration = $controller->loadOverrideForEntity('node',
-        $node->nid, 'full_page');
-      if (!is_null($node_configuration)) {
-        $configurations[] = $node_configuration;
+      // Add any specific entity overrides.
+      $override = tp_video_player_load_entity_configuration('node', $node->nid);
+      if (!is_null($override)) {
+        $configurations[] = $override;
       }
     }
 
-    // Get the configuration overrides for full page nodes.
-    $override = $controller->loadOverrideForEntity($this->entity_type,
-      entity_id($this->entity_type, $this->entity), 'inline_content');
-    if (!is_null($override)) {
-      $configurations[] = $override;
-    }
-
-    // Merge the defaults with the overrides.
-    $configuration = $controller->merge($configurations);
+    // Merge the configurations into a single active configuration.
+    $active = tp_video_player_merge_configurations($configurations);
 
     // The configuration can contain tokens, wrap it in a token resolver object.
-    $resolved_configuration =  new TakePartTokenizedObject($configuration,
+    $resolved_configuration =  new TakePartTokenizedObject($active,
       array($this->entity_type => $this->entity),
       array('language' => $this->langcode));
 

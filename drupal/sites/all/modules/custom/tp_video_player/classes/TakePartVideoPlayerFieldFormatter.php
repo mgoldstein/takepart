@@ -26,11 +26,15 @@ class TakePartVideoPlayerFieldFormatter {
 
   public function settingsForm($form, &$form_state) {
     $elements = array();
+    $options = array();
+    foreach (tp_video_player_defaults_info() as $name => $info) {
+      $options[$name] = t($info['title']);
+    }
     $elements['global_default'] = array(
       '#type' => 'select',
       '#title' => t('Global Default'),
       '#default_value' => $this->_settings['global_default'],
-      '#options' => TakePartVideoPlayerConfiguration::globalDefaultNames(),
+      '#options' => $options,
     );
     return $elements;
   }
