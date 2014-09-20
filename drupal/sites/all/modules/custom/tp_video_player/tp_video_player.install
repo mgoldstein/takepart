@@ -304,12 +304,6 @@ function tp_video_player_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
-      'view_mode' => array(
-        'description' => 'View mode for the node.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-      ),
     ),
     'unique keys' => array(
       'configuration_id' => array('configuration_id'),
@@ -422,8 +416,6 @@ EOSQL;
 
 function tp_video_player_transfer_from_fields() {
 
-  $controller = new TakePartVideoPlayerOverrideController();
-
   // Get a list of all the existing video nodes.
   $nids = db_select('node', 'n')
     ->fields('n', array('nid'))
@@ -433,16 +425,16 @@ function tp_video_player_transfer_from_fields() {
 
   // Create an override for each video node.
   foreach ($nids as $nid) {
-    $override = $controller->create();
-    $controller->save($override);
-    $controller->attachOverrideToEntity($override, 'node', $nid, 'full_page');
+    $override = tp_video_player_create_configuration();
+    tp_video_player_save_configuration($override);
+    tp_video_player_attach_entity_configuration('node', $nid, $override);
   }
 
   // Get the field bases overrides
   $result = db_query(tp_video_player_transfer_from_fields_sql());
   while ($row = $result->fetchAssoc()) {
 
-    $override = $controller->loadOverrideForEntity('node', $row['nid'], 'full_page');
+    $override = tp_video_player_load_entity_configuration('node', $row['nid']);
 
     $override->enable_share = $row['field_sharing_enabled_value'];
     $override->share_url = $row['field_share_url_value'];
@@ -458,7 +450,7 @@ function tp_video_player_transfer_from_fields() {
     $override->playlist_size = $row['field_playlist_size_value'];
     $override->skin = $row['field_player_skin_value'];
 
-    $controller->save($override);
+    tp_video_player_save_configuration($override);
   }
 }
 
@@ -466,20 +458,11 @@ function tp_video_player_transfer_from_fields() {
  * Implements hook_install().
  */
 function tp_video_player_install() {
-  $controller = new TakePartVideoPlayerConfigurationController();
-  foreach (TakePartVideoPlayerConfiguration::globalDefaultNames() as $name => $label) {
-    $configuration = $controller->createGlobalDefault($name);
-    $configuration->promo_image = '';
-    $configuration->promo_title = '[node:title]';
-    $configuration->auto_start = 1;
-    $configuration->share_heading = 'Share This Video';
-    $configuration->share_url = '[f:bool:{node:field_share_url}:{node:field_share_url}:{node:url:absolute}]?cmpid=longtailshare';
-    $configuration->embed_code = '[node:iframe-embed-markup]';
-    $configuration->site_catalyst_media_name = '[node:title]';
-    $configuration->site_catalyst_player_name = $label;
-    $configuration->ad_tag = 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_640x360&ciu_szs&impl=s&gdfp_req=1&ev=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]';
-    $configuration->ad_message = 'Your video will play after this brief advertisement';
-    $controller->save($configuration);
+  foreach (tp_video_player_defaults_info() as $name => $info) {
+    $configuration = tp_video_player_create_default_configuration(array(
+      'site_catalyst_player_name' => $info['title'],
+    ));
+    tp_video_player_save_configuration($configuration);
   }
   tp_video_player_transfer_from_fields();
 }
@@ -496,7 +479,7 @@ function tp_video_player_update_7100() {
 
   // Get all of the existing node configurations
   $node_configurations = db_select('tp_video_player_node_configuration', 'nc')
-    ->fields('nc', array('configuration_id', 'nid', 'view_mode'))
+    ->fields('nc', array('configuration_id', 'nid'))
     ->execute()
     ->fetchAllAssoc('configuration_id');
 
@@ -507,7 +490,6 @@ function tp_video_player_update_7100() {
         'configuration_id' => $configuration->configuration_id,
         'entity_type' => 'node',
         'entity_id' => $configuration->nid,
-        'view_mode' => $configuration->view_mode,
       ))
       ->execute();
   }
@@ -518,4 +500,15 @@ function tp_video_player_update_7100() {
  */
 function tp_video_player_update_7101() {
   db_drop_table('tp_video_player_node_configuration');
+}
+
+/**
+ * Drop the entity configuration view mode.
+ */
+function tp_video_player_update_7102() {
+  db_drop_unique_key('tp_video_player_entity_configuration',
+    'entity_type_and_id_view_mode');
+  db_drop_field('tp_video_player_entity_configuration', 'view_mode');
+  db_add_unique_key('tp_video_player_entity_configuration',
+    'entity_type_and_id', array('entity_type', 'entity_id'));
 }

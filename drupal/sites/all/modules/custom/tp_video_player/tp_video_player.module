@@ -5,6 +5,11 @@
  */
 
 /**
+ * Include the configuration object functions.
+ */
+require_once __DIR__ . '/tp_video_player.configuration.inc';
+
+/**
  * Implements hook_init().
  */
 function tp_video_player_init() {
@@ -22,7 +27,9 @@ function tp_video_player_init() {
  * Implements hook_menu().
  */
 function tp_video_player_menu() {
-  return array(
+
+  // Top level admin item.
+  $items = array(
     'admin/config/media/tp-video-player' => array(
       'title' => 'Default Video Player Configurations',
       'description' => 'Default TakePart video player configurations',
@@ -33,70 +40,23 @@ function tp_video_player_menu() {
       'file' => 'system.admin.inc',
       'file path' => drupal_get_path('module', 'system'),
     ),
-    'admin/config/media/tp-video-player/defaults/full-page' => array(
-      'title' => 'Full Page',
-      'description' => 'Full page video and playlist nodes.',
-      'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('full_page'),
-      'access arguments' => array('access administration pages'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'tp_video_player.admin.inc',
-    ),
-    'admin/config/media/tp-video-player/defaults/block' => array(
-      'title' => 'Right Rail',
-      'description' => 'Videos and playlists featured in a block.',
-      'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('block'),
-      'access arguments' => array('access administration pages'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'tp_video_player.admin.inc',
-    ),
-    'admin/config/media/tp-video-player/defaults/iframe' => array(
-      'title' => 'iFrame Embed',
-      'description' => 'Videos and playlists embedded on other sites using an iframe.',
-      'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('iframe'),
-      'access arguments' => array('access administration pages'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'tp_video_player.admin.inc',
-    ),
-    'admin/config/media/tp-video-player/defaults/inline-content' => array(
-      'title' => 'Inline Replacement',
-      'description' => 'Videos and playlists embedded in other content as an inline replacement.',
-      'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('inline_content'),
-      'access arguments' => array('access administration pages'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'tp_video_player.admin.inc',
-    ),
-    'admin/config/media/tp-video-player/defaults/feature-main' => array(
-      'title' => 'Front Page Feature',
-      'description' => 'Videos and playlists featured on the front page.',
-      'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('feature_main'),
-      'access arguments' => array('access administration pages'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'tp_video_player.admin.inc',
-    ),
-    'admin/config/media/tp-video-player/defaults/feature-main-tpl' => array(
-      'title' => 'Front Page Feature (TPL)',
-      'description' => 'Videos and playlists featured on the front page.',
-      'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('feature_main_tpl'),
-      'access arguments' => array('access administration pages'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'tp_video_player.admin.inc',
-    ),
-    'admin/config/media/tp-video-player/defaults/feature-topic' => array(
-      'title' => 'Topic Page Feature',
-      'description' => 'Videos and playlists featured on the front page.',
-      'page callback' => 'tp_video_player_defaults_page',
-      'page arguments' => array('feature_topic'),
-      'access arguments' => array('access administration pages'),
-      'type' => MENU_NORMAL_ITEM,
-      'file' => 'tp_video_player.admin.inc',
-    ),
   );
+
+  // Page for each default.
+  foreach (tp_video_player_defaults_info() as $name => $info) {
+    $menu_name = str_replace('_', '-', $name);
+    $items["admin/config/media/tp-video-player/defaults/{$menu_name}"] = array(
+      'title' => $info['title'],
+      'description' => $info['description'],
+      'page callback' => 'tp_video_player_defaults_page',
+      'page arguments' => array($name),
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_NORMAL_ITEM,
+      'file' => 'tp_video_player.admin.inc',
+    );
+  }
+
+  return $items;
 }
 
 /**
@@ -109,19 +69,17 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
 
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
-    $controller = new TakePartVideoPlayerOverrideController();
+    // Load the full page defaults.
+    $defaults = tp_video_player_load_default_configuration('full_page');
 
-    // Get the configuration for the node.
-    $override = $controller->loadOverrideForEntity('node', $node->nid, 'full_page');
+    // Load any available node specific configuration.
+    $override = tp_video_player_load_entity_configuration('node', $node->nid);
     if (is_null($override)) {
-      $override = $controller->create();
+      $override = tp_video_player_create_configuration();
     }
 
-    // Get the global defaults for nodes.
-    $global_defaults = $controller->loadByName('full_page');
-
     // Merge to two configurations into the active configuration.
-    $active = $controller->merge(array($global_defaults, $override));
+    $active = $controller->merge(array($defaults, $override));
 
     $form_controller = new TakePartVideoPlayerOverrideFormController($active);
     $form['tp_video_player'] = $form_controller->form(array(
@@ -148,20 +106,18 @@ function tp_video_player_node_update($node) {
 
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
-    $controller = new TakePartVideoPlayerOverrideController();
+    // Load the full page defaults.
+    $defaults = tp_video_player_load_default_configuration('full_page');
 
-    // Get the global defaults for nodes.
-    $global_defaults = $controller->loadByName('full_page');
-
-    // Get the existing overrides for the node.
-    $override = $controller->loadOverrideForEntity('node', $node->nid, 'full_page');
+    // Load any available node specific configuration.
+    $override = tp_video_player_load_entity_configuration('node', $node->nid);
     if (is_null($override)) {
-      $override = $controller->create();
+      $override = tp_video_player_create_configuration();
     }
 
     // Update the existing overrides.
     $form_controller = new TakePartVideoPlayerOverrideFormController($override);
-    $updated_override = $form_controller->update($node->tp_video_player, $global_defaults);
+    $updated_override = $form_controller->update($node->tp_video_player, $defaults);
 
     $controller->save($updated_override);
     $controller->attachOverrideToEntity($updated_override, 'node', $node->nid, 'full_page');
@@ -172,8 +128,7 @@ function tp_video_player_node_update($node) {
  * Implements hook_node_delete().
  */
 function tp_video_player_node_delete($node) {
-  $controller = new TakePartVideoPlayerOverrideController();
-  $controller->deleteOverridesForEntity('node', $node->nid);
+  tp_video_player_delete_entity_configuration('node', $node->nid);
 }
 
 /**
