@@ -16,23 +16,26 @@ class TakePartVideoPlayerFileFieldBuilder {
 
   public function settings($global_default) {
 
-    $controller = new TakePartVideoPlayerOverrideController();
+    $configurations = array();
 
-    // Load the global defaults for the entity view mode.
-    $configuration = $controller->loadByName($global_default);
-
-    // Get the configuration overrides for full page nodes.
-    if ($global_default === 'full_page') {
-      $override = $controller->loadOverrideForEntity($this->entity_type,
-        entity_id($this->entity_type, $this->entity), 'full_page');
-      if (!is_null($override)) {
-        // Merge the defaults with the overrides.
-        $configuration = $controller->merge(array($configuration, $override));
-      }
+    // Start with the default configuration.
+    $defaults = tp_video_player_load_default_configuration($global_default);
+    if (!is_null($defaults)) {
+      $configurations[] = $defaults;
     }
 
+    // Add any specific entity overrides.
+    $override = tp_video_player_load_entity_configuration($this->entity_type,
+      entity_id($this->entity_type, $this->entity));
+    if (!is_null($override)) {
+      $configurations[] = $override;
+    }
+
+    // Merge the configurations into a single active configuration.
+    $active = tp_video_player_merge_configurations($configurations);
+
     // The configuration can contain tokens, wrap it in a token resolver object.
-    $resolved_configuration =  new TakePartTokenizedObject($configuration,
+    $resolved_configuration =  new TakePartTokenizedObject($active,
       array($this->entity_type => $this->entity),
       array('language' => $this->langcode));
 

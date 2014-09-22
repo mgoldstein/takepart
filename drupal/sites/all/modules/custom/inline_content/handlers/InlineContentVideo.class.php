@@ -62,32 +62,38 @@ class InlineContentVideo extends InlineContentReplacementController {
 
   public function form($form, &$form_state, $replacement) {
 
-    $controller = new TakePartVideoPlayerOverrideController();
+    $configurations = array();
 
-    // Get the configuration for the inline content.
-    $override = $controller->loadOverrideForEntity('inline_content', $replacement->id, 'inline_content');
-    if (is_null($override)) {
-      $override = $controller->create();
+    // Load the full page defaults.
+    $defaults = tp_video_player_load_default_configuration('inline_content');
+    if (!is_null($defaults)) {
+      $configurations[] = $defaults;
     }
 
-    // Get the global defaults for inline content.
-    $global_defaults = $controller->loadByName('inline_content');
+    // Load any available node specific configuration.
+    $override = tp_video_player_load_entity_configuration('inline_content',
+      $replacement->id);
+    if (is_null($override)) {
+      $override = tp_video_player_create_configuration();
+    }
+    $configurations[] = $override;
 
     $storage_key = implode(":", $form['#parents']);
     if (isset($form_state['storage'][$storage_key])) {
       $active = $form_state['storage'][$storage_key];
     }
     else {
-      // Merge to two configurations into the active configuration.
-      $active = $controller->merge(array($global_defaults, $override));
+      // Merge the two configurations into the active configuration.
+      $active = tp_video_player_merge_configurations($configurations);
       $form_state['storage'][$storage_key] = $active;
     }
 
-    $form_controller = new TakePartVideoPlayerOverrideFormController($active);
-    $form['tp_video_player'] = $form_controller->form(array(
+    // Pull in the configuration form from the admin.
+    module_load_include('inc', 'tp_video_player', 'tp_video_player.admin');
+    $form['tp_video_player'] = tp_video_player_defaults_form(array(
       '#title' => t('Player Configuration'),
       '#tree' => TRUE,
-    ), $form_state);
+    ), $form_state, $active);
 
     return $form;
   }
@@ -97,34 +103,31 @@ class InlineContentVideo extends InlineContentReplacementController {
     $parents = $form['tp_video_player']['#parents'];
     $values = drupal_array_get_nested_value($form_state['values'], $parents);
 
-    $controller = new TakePartVideoPlayerOverrideController();
-
-    // Get the global defaults for inline content.
-    $global_defaults = $controller->loadByName('inline_content');
-
-    // Get the existing overrides for the inline content.
-    $override = $controller->loadOverrideForEntity('inline_content',
-      $replacement->id, 'inline_content');
-    if (is_null($override)) {
-      $override = $controller->create();
+    // Load the full page defaults.
+    $defaults = tp_video_player_load_default_configuration('inline_content');
+    if (is_null($defaults)) {
+      $defaults = tp_video_player_create_configuration();
     }
 
-    // Update the existing overrides.
-    $form_controller = new TakePartVideoPlayerOverrideFormController($override);
-    $updated_override = $form_controller->update($values, $global_defaults);
+    // Load any available inline content specific configuration.
+    $override = tp_video_player_load_entity_configuration('inline_content',
+      $replacement->id);
+    if (is_null($override)) {
+      $override = tp_video_player_create_configuration();
+    }
 
     // Update the active configuration.
     $storage_key = implode(":", $form['#parents']);
-    $active = $controller->merge(array($global_defaults, $updated_override));
+    tp_video_player_update_override($defaults, $override, $values);
+    $active = tp_video_player_merge_configurations(array($defaults, $override));
     $form_state['storage'][$storage_key] = $active;
 
-    $replacement->tp_video_player = $updated_override;
+    $replacement->tp_video_player = $override;
   }
 
   public function save($replacement) {
-    $controller = new TakePartVideoPlayerOverrideController();
-    $controller->save($replacement->tp_video_player);
-    $controller->attachOverrideToEntity($replacement->tp_video_player,
-      'inline_content', $replacement->id, 'inline_content');
+    tp_video_player_save_configuration($replacement->tp_video_player);
+    tp_video_player_attach_entity_configuration('inline_content',
+      $replacement->id, $replacement->tp_video_player);
   }
 }
