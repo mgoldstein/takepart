@@ -1116,6 +1116,18 @@ aside#article-social-mobile-bottom {
             }
         }
     }
+    
+    .inline-content-video {
+        width: 100%;
+        
+        @include breakpoint($breakpoint-tablet) {
+            width: 100%;
+        }
+        
+        @include breakpoint($breakpoint-tablet) {
+            width: 480px;
+        }
+    }
 
     // utility classes for offsets (not just <figure>s)
     // get extra styling for breaking the grid
