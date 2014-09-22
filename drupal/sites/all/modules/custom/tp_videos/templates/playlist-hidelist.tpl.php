@@ -5,6 +5,6 @@
 ?>
 <div class="playlist" data-playlist-type="hidelist">
 	<div class="video">
-		<div class="video-placeholder"></div>
+    <?php print render($playlist_player); ?>
 	</div>
 </div>

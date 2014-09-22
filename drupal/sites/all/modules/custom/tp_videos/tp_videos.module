@@ -428,51 +428,108 @@ function tp_videos_field_formatter_settings_summary($field, $instance, $view_mod
  * Implements hook_field_formatter_view().
  */
 function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-	$element = array();
+
+	$playlist = array();
+  $files = array();
 	$settings = $display['settings'];
 	$view_mode = $settings['playlist_view_mode'];
-	$playlist = '';
 
-  //overrides the items if neccesary
+  // Override the items list if necessary.
   _tp_videos_playlist_filter_list_parser($items, $entity);
-  
-	//Load the video nodes for the playlist
+
+	// Load the video nodes for the playlist
 	$videos = node_load_multiple($items);
 
-  //processes the video to match sort order from query
+  // Processes the video to match sort order from query
   $videos_processed = array();
   foreach ($items as $key => $values) {
     $videos_processed[] = $videos[$values['nid']];
   }
   $videos = $videos_processed;
-  
-	//Theme the Playlist
-	switch($view_mode){
-		case 'basic':
-			$video_displays = array();
-			foreach($videos as $video){
-				$video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
-			}
-			$navigation = theme('tp_videos_navigation', array('video_displays' => $video_displays));
-			$playlist = theme('tp_videos_basic', array('videos' => $videos, 'navigation' => $navigation, 'videos' => $videos));
-			break;
-		case 'detailed':
-			$video_displays = array();
-			foreach($videos as $video){
-				$video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
-			}
-			$navigation = theme('tp_videos_navigation', array('video_displays' => $video_displays));
-			$playlist = theme('tp_videos_detailed', array('video_displays' => $video_displays, 'navigation' => $navigation, 'videos' => $videos));
-			break;
-		case 'hidelist':
-			$playlist = theme('tp_videos_hidelist', array('videos' => $videos));
-	}
 
-	//Return the element with the markup
-	$title = $entity->title;
-	$playlist = theme('tp_videos_wrapper', array('title' => $title, 'playlist' => $playlist));
-	$element[0]['#markup'] = $playlist;
-	return $element;
+  // Build the playlist
+  switch ($view_mode) {
+    case 'basic':
+      $video_displays = array();
+      $video_elements = array();
+      foreach($videos as $video){
+        $video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
+
+        // Get the video node's active configuration.
+        // $video_configuration = tp_video_player_video_override_configuration(
+        //   'node', $video, $langcode, 'full_page');
+
+        // Add the allowed regions to each file referenced by the video node.
+        $items = field_get_items('node', $video, 'field_video');
+        $allowed_regions = tp_video_player_video_allowed_regions('node', $video);
+        foreach ($items as $item) {
+          $files[] = $item + array('allowed_regions' => $allowed_regions);
+        }
+
+        // 'View' the video player to get it's settings added to the page.
+        //$video_elements[] = tp_video_player_player_view($video_configuration, $items);
+      }
+      $playlist = array(
+        '#theme' => 'tp_videos_basic',
+        '#navigation' => array(
+          '#theme' => 'tp_videos_navigation',
+          '#video_displays' => $video_displays,
+        ),
+      );
+      break;
+
+    case 'detailed':
+      $video_displays = array();
+      $video_elements = array();
+      foreach($videos as $video){
+        $video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
+
+        // $video_configuration = tp_video_player_video_override_configuration(
+        //   'node', $video, $langcode, 'full_page');
+
+        $items = field_get_items('node', $video, 'field_video');
+        $allowed_regions = tp_video_player_video_allowed_regions('node', $video);
+        foreach ($items as $item) {
+          $files[] = $item + array('allowed_regions' => $allowed_regions);
+        }
+
+        // 'View' the video player to get it's settings added to the page.
+        //$video_elements[] = tp_video_player_player_view($video_configuration, $items);
+      }
+      $playlist = array(
+        '#theme' => 'tp_videos_detailed',
+        '#video_displays' => $video_displays,
+        '#navigation' => array(
+          '#theme' => 'tp_videos_navigation',
+          '#video_displays' => $video_displays,
+        ),
+      );
+      break;
+
+    case 'hidelist':
+      $playlist = array(
+        '#theme' => 'tp_videos_hidelist',
+      );
+      break;
+  }
+
+  // Get the effective configuration for the playlist (global default + entity override)
+  $playlist_configuration = tp_video_player_video_override_configuration(
+    $entity_type, $entity, $langcode, 'full_page');
+
+  $playlist_player = tp_video_player_player_view($playlist_configuration, $files);
+
+  $element = array(
+    '#theme' => 'tp_videos_wrapper',
+    '#title' => $entity->title,
+    '#playlist' => $playlist + array(
+      '#playlist_player' => $playlist_player,
+      '#videos' => $videos,
+    ),
+  );
+
+  // All items are included in the playlist element.
+  return array($element);
 }
 
 /**
@@ -485,7 +542,7 @@ function tp_videos_theme(){
 			'template' => 'templates/playlist-wrapper',
 			'variables' => array(
 				'title' => '',
-				'playlist' => '',
+        'playlist' => NULL,
 			),
 		),
 		'tp_videos_navigation' => array(
@@ -502,6 +559,7 @@ function tp_videos_theme(){
 				'videos' => array(),
 				'video_displays' => array(),
 				'navigation' => '',
+        'playlist_player' => NULL,
 			),
 		),
 		'tp_videos_detailed' => array(
@@ -511,6 +569,7 @@ function tp_videos_theme(){
 				'videos' => array(),
 				'video_displays' => array(),
 				'navigation' => '',
+        'playlist_player' => NULL,
 			),
 		),
 		'tp_videos_hidelist' => array(
@@ -518,6 +577,7 @@ function tp_videos_theme(){
 			'template' => 'templates/playlist-hidelist',
 			'variables' => array(
 				'videos' => array(),
+        'playlist_player' => NULL,
 			),
 		),
 	);
@@ -536,7 +596,7 @@ function tp_videos_form_alter(&$form, &$form_state, $form_id) {
           ':input[name=field_playlist_filter\[und\]]' => array('filled' => TRUE)
         )
       );
-      
+
       //adds a new validate function
       $form['#validate'][] = '_tp_videos_playlist_form_validate';
       break;
@@ -589,12 +649,12 @@ function _tp_videos_playlist_filter_list_parser(&$items, $entity) {
           );
         }
       }
-    
+
       //adds the items into the obj
       foreach ($items as $key => $value) {
         $video_list->add_video_nid($value['nid']);
       }
-      
+
       //returns the new items list
       $items = $video_list->get_results();
     }
