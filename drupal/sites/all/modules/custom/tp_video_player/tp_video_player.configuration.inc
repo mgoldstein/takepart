@@ -176,6 +176,14 @@ function tp_video_player_load_entity_configuration($entity_type, $entity_id) {
   return $object !== FALSE ? $object : NULL;
 }
 
+function tp_video_player_resolve_entity_configuration($entity_type, $entity, $langcode, $configuration) {
+  foreach ((array) $configuration as $name => $value) {
+    $configuration->{$name} = token_replace($value,
+      array($entity_type => $entity), array('language' => $langcode));
+  }
+  return $configuration;
+}
+
 function tp_video_player_attach_entity_configuration($entity_type, $entity_id, $configuration) {
   $fields = array(
     'configuration_id' => $configuration->id,
