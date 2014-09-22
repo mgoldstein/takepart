@@ -1161,6 +1161,12 @@ aside#article-social-mobile-bottom {
             width: 100%;
         }
         
+        figcaption {
+            p:first-child {
+                margin-top: 0;
+            }
+        }
+        
         @include breakpoint($breakpoint-tablet) {
             margin-left: 0;
             display: block;
