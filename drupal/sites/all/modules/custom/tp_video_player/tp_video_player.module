@@ -10,6 +10,11 @@
 require_once __DIR__ . '/tp_video_player.configuration.inc';
 
 /**
+ * Include the settings build functions.
+ */
+require_once __DIR__ . '/tp_video_player.player_settings.inc';
+
+/**
  * Implements hook_init().
  */
 function tp_video_player_init() {

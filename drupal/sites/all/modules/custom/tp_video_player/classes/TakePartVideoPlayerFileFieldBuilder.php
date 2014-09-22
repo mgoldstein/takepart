@@ -39,8 +39,7 @@ class TakePartVideoPlayerFileFieldBuilder {
       array($this->entity_type => $this->entity),
       array('language' => $this->langcode));
 
-    $settings_builder = new TakePartVideoPlayerSettingsBuilder($resolved_configuration);
-    return $settings_builder->build(reset($this->items));
+    return tp_video_player_build_settings($resolved_configuration, $this->items);
   }
 
   public function allowedRegions() {
