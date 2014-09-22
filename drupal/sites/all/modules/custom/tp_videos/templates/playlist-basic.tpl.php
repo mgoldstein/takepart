@@ -4,9 +4,8 @@
  */
 ?>
 <div class="playlist" data-playlist-type="basic">
-	<div class="video">
-		<div class="video-placeholder"></div>
-	</div>
-	<?php print $variables['navigation']; ?>
-	</div>
-
+  <div class="video">
+    <?php print render($playlist_player); ?>
+  </div>
+  <?php print render($navigation); ?>
+</div>
