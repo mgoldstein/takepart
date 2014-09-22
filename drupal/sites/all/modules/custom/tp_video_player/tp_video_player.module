@@ -10,6 +10,11 @@
 require_once __DIR__ . '/tp_video_player.configuration.inc';
 
 /**
+ * Include the settings build functions.
+ */
+require_once __DIR__ . '/tp_video_player.player_settings.inc';
+
+/**
  * Implements hook_init().
  */
 function tp_video_player_init() {
@@ -209,7 +214,7 @@ function tp_video_player_field_formatter_info() {
   return array(
     'tp_video_player' => array(
       'label' => t('TakePart Video Player'),
-      'field types' => array('file', 'node_reference'),
+      'field types' => array('file'),
       'settings' => array(
         'global_default' => 'full_page',
       ),
@@ -271,41 +276,82 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field, $in
 
   if ($display['type'] === 'tp_video_player' && count($items) > 0) {
 
-    // Pick the appropriate field builder.
-    if ($field['type'] === 'file') {
-      // Direct reference to a Youtube video, JWPlatform video,
-      // or JWPlatform playlist.
-      $builder = new TakePartVideoPlayerFileFieldBuilder(
-        $entity_type, $entity, $langcode, $items);
-    }
-    elseif ($field['type'] === 'node_reference') {
-      // Reference(s) to video or playlist node(s)
-      $builder = new TakePartVideoPlayerNodeReferenceFieldBuilder(
-        $entity_type, $entity, $langcode, $items);
+    // Get the effective configuration (global default + entity override)
+    $configuration = tp_video_player_video_override_configuration(
+      $entity_type, $entity, $langcode, $settings['global_default']);
+
+    // The allowed regions list attached to the same entity.
+    $allowed_regions = tp_video_player_video_allowed_regions(
+      $entity_type, $entity);
+    foreach ($items as $delta => $item) {
+      $items[$delta]['allowed_regions'] = $allowed_regions;
     }
 
     // The formatter only ever returns one player.
-    $elements[] = tp_video_player_player_view(
-      $builder->settings($settings['global_default']),
-      $builder->allowedRegions());
+    $elements[] = tp_video_player_player_view($configuration, $items);
   }
 
   return $elements;
 }
 
 /**
+ * Gets the active configuration for a video node.
+ */
+function tp_video_player_video_override_configuration($entity_type, $entity, $langcode, $global_default) {
+
+  $configurations = array();
+
+  // Start with the default configuration.
+  $defaults = tp_video_player_load_default_configuration($global_default);
+  if (!is_null($defaults)) {
+    $configurations[] = $defaults;
+  }
+
+  // Add any specific entity overrides.
+  $override = tp_video_player_load_entity_configuration($entity_type,
+    entity_id($entity_type, $entity));
+  if (!is_null($override)) {
+    $configurations[] = $override;
+  }
+
+  // Merge the configurations into a single active configuration.
+  $active = tp_video_player_merge_configurations($configurations);
+
+  // The configuration can contain tokens, resolve them now.
+  return tp_video_player_resolve_entity_configuration($entity_type, $entity, $langcode, $active);
+}
+
+/**
+ * Get the list of allowed regions for a video node.
+ */
+function tp_video_player_video_allowed_regions($entity_type, $entity) {
+  $regions = array();
+  $items = field_get_items($entity_type, $entity,
+    'field_allowed_regions');
+  if ($items !== FALSE && count($items) > 0) {
+    foreach ($items as $item) {
+      $value = str_replace(array(','), ' ', $item['value']);
+      $chunks = explode(' ', $value);
+      $trimmed = array_map('trim', $chunks);
+      $list = array_filter($trimmed, 'strlen');
+      $regions += array_map('strtolower', $list);
+    }
+  }
+  return $regions;
+}
+
+/**
  * Build a render array for a video player.
  */
-function tp_video_player_player_view($settings, $allowed_regions = array()) {
+function tp_video_player_player_view($configuration, $files) {
 
   $id = drupal_html_id('tp_video_player');
-
+  $settings = tp_video_player_build_settings($configuration, $files);
   tp_video_player_add_player($id, $settings);
 
   $elements = array(
     '#theme' => 'tp_video_player',
     '#id' => $id,
-    '#allowed_regions' => $allowed_regions,
   );
 
   return $elements;
@@ -343,7 +389,6 @@ function tp_video_player_theme() {
     'tp_video_player' => array(
       'variables' => array(
         'id' => NULL,
-        'allowed_regions' => NULL,
       ),
     ),
   );
@@ -353,28 +398,10 @@ function tp_video_player_theme() {
  * Theme hook for tp_video_player.
  */
 function theme_tp_video_player($variables) {
-
   $id = $variables['id'];
-  $allowed_regions = $variables['allowed_regions'];
-
   $attributes = array(
     'id' => $id,
     'class' => array('tp-video-player'),
   );
-
-  if (count($allowed_regions) > 0) {
-    $attributes['class'][] = 'loading';
-    $attributes['data-allowed-regions'] = implode(',', $allowed_regions);
-  }
-
   return '<div' . drupal_attributes($attributes) . '></div>';
-}
-
-function tp_video_player_settings_for_node($node, $field_name, $langcode = NULL) {
-  $items = field_get_items('node', $node, $field_name, $langcode);
-  if ($items !== FALSE) {
-    $builder = new TakePartVideoPlayerFileFieldBuilder('node', $node, $langcode, $items);
-    return $builder->settings('full_page');
-  }
-  return NULL;
 }

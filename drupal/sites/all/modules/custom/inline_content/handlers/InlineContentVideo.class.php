@@ -40,8 +40,38 @@ class InlineContentVideo extends InlineContentReplacementController {
         'global_default' => 'inline_content',
       ),
     );
-    $video = field_view_field('inline_content', $replacement,
-      'field_ic_video', $display, $langcode);
+
+    $items = field_get_items('inline_content', $replacement, 'field_ic_video');
+    if ($items !== FALSE && count($items) > 0) {
+
+      // Limit to one reference for now.
+      $item = reset($items);
+
+      // Load the video node's active configuration
+      $node = $item['node'];
+      $configuration = tp_video_player_video_override_configuration(
+        'node', $node, $langcode, 'inline_content');
+
+      // Add any specific inline content overrides.
+      $override = tp_video_player_load_entity_configuration('inline_content',
+        $replacement->id);
+      if (!is_null($override)) {
+        $resolved = tp_video_player_resolve_entity_configuration('inline_content',
+          $replacement, $langcode, $override);
+        $configuration = tp_video_player_merge_configurations(
+          array($configuration, $resolved));
+      }
+
+      $files = field_get_items('node', $node, 'field_video');
+
+      // Get the allowed regions from the video node.
+      $allowed_regions = tp_video_player_video_allowed_regions('node', $node);
+      foreach ($files as $delta => $file) {
+        $files[$delta]['allowed_regions'] = $allowed_regions;
+      }
+
+      $video = tp_video_player_player_view($configuration, $files);
+    }
 
     $alignment = field_get_items('inline_content', $replacement, 'field_ic_alignment');
     $alignment = $alignment[0]['value'];
@@ -52,8 +82,8 @@ class InlineContentVideo extends InlineContentReplacementController {
     $attributes['class'][] = 'align-' . $alignment;
 
     $content['#replacements'][] = array(
-      '#prefix' => '<div' . drupal_attributes($attributes) . '>',
-      '#suffix' => '</div>',
+      '#prefix' => '<figure' . drupal_attributes($attributes) . '>',
+      '#suffix' => '</figure>',
       '0' => $video,
     );
 
