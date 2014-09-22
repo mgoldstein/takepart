@@ -285,15 +285,54 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field, $in
     }
 
     // The formatter only ever returns one player.
-    $elements[] = array(
-      '#theme' => 'tp_video_player',
-      '#settings' => $builder->settings($settings['global_default']),
-      '#allowed_regions' => $builder->allowedRegions(),
-      '#id' => drupal_html_id('tp_video_player'),
-    );
+    $elements[] = tp_video_player_player_view(
+      $builder->settings($settings['global_default']),
+      $builder->allowedRegions());
   }
 
   return $elements;
+}
+
+/**
+ * Build a render array for a video player.
+ */
+function tp_video_player_player_view($settings, $allowed_regions = array()) {
+
+  $id = drupal_html_id('tp_video_player');
+
+  tp_video_player_add_player($id, $settings);
+
+  $elements = array(
+    '#theme' => 'tp_video_player',
+    '#id' => $id,
+    '#allowed_regions' => $allowed_regions,
+  );
+
+  return $elements;
+}
+
+/**
+ * Helper function for adding client side player configurations.
+ */
+function tp_video_player_add_player($id, $settings) {
+  static $setup_function_added = FALSE;
+
+  if (!$setup_function_added) {
+    $js_path = drupal_get_path('module', 'tp_video_player') . '/js/player.js';
+    drupal_add_js($js_path, array(
+      'type' => 'file',
+      'scope' => 'header',
+      'weight' => 6,
+    ));
+    drupal_add_js(array('tp_video_player' => array(
+      'key' => variable_get('tp_video_player_key', ''),
+    )), 'setting');
+    $setup_function_added = TRUE;
+  }
+
+  drupal_add_js(array('tp_video_player' => array(
+    'settings' => array($id => $settings),
+  )), 'setting');
 }
 
 /**
@@ -302,10 +341,33 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field, $in
 function tp_video_player_theme() {
   return array(
     'tp_video_player' => array(
-      'render element' => 'player',
-      'file' => 'tp_video_player.theme.inc',
+      'variables' => array(
+        'id' => NULL,
+        'allowed_regions' => NULL,
+      ),
     ),
   );
+}
+
+/**
+ * Theme hook for tp_video_player.
+ */
+function theme_tp_video_player($variables) {
+
+  $id = $variables['id'];
+  $allowed_regions = $variables['allowed_regions'];
+
+  $attributes = array(
+    'id' => $id,
+    'class' => array('tp-video-player'),
+  );
+
+  if (count($allowed_regions) > 0) {
+    $attributes['class'][] = 'loading';
+    $attributes['data-allowed-regions'] = implode(',', $allowed_regions);
+  }
+
+  return '<div' . drupal_attributes($attributes) . '></div>';
 }
 
 function tp_video_player_settings_for_node($node, $field_name, $langcode = NULL) {
