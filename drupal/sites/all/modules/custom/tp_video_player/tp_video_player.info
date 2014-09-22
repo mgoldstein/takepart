@@ -3,7 +3,3 @@ description = Module for video player configurations.
 core = 7.x
 package = TakePart
 version = 7.x-1.0
-
-files[] = classes/TakePartTokenizedObject.php
-files[] = classes/TakePartVideoPlayerFileFieldBuilder.php
-files[] = classes/TakePartVideoPlayerNodeReferenceFieldBuilder.php

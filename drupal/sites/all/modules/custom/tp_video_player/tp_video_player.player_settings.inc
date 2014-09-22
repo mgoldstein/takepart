@@ -21,21 +21,29 @@ function tp_video_player_build_settings($configuration, $files) {
 function tp_video_player_build_content_settings($files) {
 
   $sources = array();
+  $regions = array();
 
   foreach ($files as $file) {
     $wrapper = file_stream_wrapper_get_instance_by_uri($file['uri']);
     $url = $wrapper->getExternalUrl();
-    $sources[] = array('file' => $url);
+    $sources[] = array(
+      'file' => $url,
+    );
+    $regions[] = $file['allowed_regions'];
 
     // JWPlatform channels are not supported in playlists. If a channel is
     // found it must be the only source.
     $scheme = file_uri_scheme($file['uri']);
     if ($scheme === 'jwplatform-channel') {
-      return array('playlist' => $url);
+      return array(
+        'allowed_regions' => array($file['allowed_regions']),
+        'playlist' => $url,
+      );
     }
   }
 
   return array(
+    'allowed_regions' => $regions,
     'playlist' => array(
       array(
         'sources' => $sources,
