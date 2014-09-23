@@ -812,6 +812,27 @@ aside#article-social-mobile-bottom {
 
     } // body field
 
+    
+    .inline-content-video {
+        width: 100%;
+        
+        @include breakpoint($breakpoint-tablet) {
+            width: 100%;
+        }
+        
+        @include breakpoint($breakpoint-desktop) {
+            width: 480px;
+            
+            &.align-full {
+                width: 912px;
+            }
+            
+            &.align-center {
+                width: 100%;
+            }
+        }
+    }
+    
     figure.inline-content-image {
 
         img {
@@ -1114,18 +1135,6 @@ aside#article-social-mobile-bottom {
                     }
                 }
             }
-        }
-    }
-    
-    .inline-content-video {
-        width: 100%;
-        
-        @include breakpoint($breakpoint-tablet) {
-            width: 100%;
-        }
-        
-        @include breakpoint($breakpoint-tablet) {
-            width: 480px;
         }
     }
 
