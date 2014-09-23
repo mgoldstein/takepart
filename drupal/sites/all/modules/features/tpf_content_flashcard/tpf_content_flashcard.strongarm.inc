@@ -119,6 +119,9 @@ function tpf_content_flashcard_strongarm() {
       'iframe' => array(
         'custom_settings' => FALSE,
       ),
+      'video_playlist_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
