@@ -202,6 +202,33 @@ function tpf_content_video_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_playlist_view_mode'
+  $field_bases['field_playlist_view_mode'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_playlist_view_mode',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        1 => 'Basic',
+        2 => 'Detailed',
+        3 => 'Hide List',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_share_url'
   $field_bases['field_share_url'] = array(
     'active' => 1,
