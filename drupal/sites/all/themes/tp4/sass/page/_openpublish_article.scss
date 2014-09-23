@@ -635,6 +635,16 @@ aside#article-social-mobile-bottom {
     }
 }
 
+.node-openpublish-article.view-mode-full {
+    .field-name-body {
+        .inline-content-video {
+            &.align-full {
+                width: 100%;
+            }
+        }
+    }
+}
+
 .node-takepart-page.view-mode-full,
 .node-feature-article.view-mode-full,
 .node-openpublish-article.view-mode-full,
