@@ -25,6 +25,7 @@ function tpf_content_video_field_group_info() {
     'children' => array(
       0 => 'field_allowed_regions',
       1 => 'field_sharing_inline',
+      2 => 'field_playlist_view_mode',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -91,9 +92,9 @@ function tpf_content_video_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_video_list',
-      1 => 'field_playlist_items_count',
-      2 => 'field_playlist_filter',
-      3 => 'field_playlist_filter_sorting',
+      1 => 'field_playlist_filter',
+      2 => 'field_playlist_filter_sorting',
+      3 => 'field_playlist_items_count',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
