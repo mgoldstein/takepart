@@ -610,9 +610,20 @@ function inline_content_field_formatter_view($entity_type, $entity, $field,
 
     // Interlace the inline content with the body content.
     while (count($chunks) > 0 && count($replacements) > 0) {
+      $node_status = TRUE;
       $rebuild[] = array_shift($chunks);
       $replacement = array_shift($replacements);
-      $content = entity_view('inline_content', array($replacement));
+
+      //addresses issue with video inline replacement for unpublished nodes
+      if (isset($replacement->field_ic_video)) {
+        if (isset($replacement->field_ic_video[$replacement->language][0]['nid'])) {
+          $node_obj = node_load($replacement->field_ic_video[$replacement->language][0]['nid']);
+          $node_status = $node_obj->status;
+        }
+      }
+
+      //fallbacks to append empty
+      $content = ($node_status) ? entity_view('inline_content', array($replacement)) : '';
       $rebuild[] = render($content);
     }
 
