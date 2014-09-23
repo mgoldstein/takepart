@@ -9064,7 +9064,7 @@ function tpf_content_video_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_video_list',
     'label' => 'Video List',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),

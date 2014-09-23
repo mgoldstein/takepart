@@ -534,6 +534,13 @@ function tpf_content_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_video_playlist_pattern';
+  $strongarm->value = 'video/[node:created:custom:Y]/[node:created:custom:m]/[node:created:custom:d]/[node:title]';
+  $export['pathauto_node_video_playlist_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'pm_jwplatform_api_key';
   $strongarm->value = 'NnnOqH8r';
   $export['pm_jwplatform_api_key'] = $strongarm;
