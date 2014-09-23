@@ -21,7 +21,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Definition',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_flashcard_display_name',
       1 => 'field_flashcard_pronunciation',

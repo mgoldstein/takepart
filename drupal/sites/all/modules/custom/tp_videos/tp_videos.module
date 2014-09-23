@@ -7,8 +7,10 @@
 use \Participant\MetaData\Video\YoutubeVideo;
 use \Participant\MetaData\Video\JWPlatformVideo;
 
-//module load inc file for obj
-module_load_include('inc', 'tp_videos', 'classes/tp_videos_playlist.class');
+/**
+ * Include the playlist filter functions.
+ */
+require_once __DIR__ . '/classes/tp_videos_playlist.class.inc';
 
 /**
  * Implements hook_entity_insert().
@@ -40,7 +42,7 @@ function tp_videos_entity_update($entity, $entity_type) {
   elseif ($entity->filemime === 'video/jwplatform') {
     $importer = new TakePart_JWPlatformImporter();
     $params = tp_videos_parse_wrapper_uri($entity->uri);
-    $url = "TakePart_JWPlatformVideo:{$params['v']}";
+    $url = "TakePart_JWPlatformVideo:{$params['key']}";
   }
 
   if (!empty($importer)) {
@@ -490,6 +492,11 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
     $videos_processed[] = $videos[$values['nid']];
   }
   $videos = $videos_processed;
+
+  //return empty array if no videos exist
+  if (empty($videos)) {
+    return array();
+  }
 
   // Build the playlist
   switch ($view_mode) {

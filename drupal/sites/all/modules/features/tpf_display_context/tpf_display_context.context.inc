@@ -2311,6 +2311,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
     'node' => array(
       'values' => array(
         'video' => 'video',
+        'video_playlist' => 'video_playlist',
       ),
       'options' => array(
         'node_form' => '1',
