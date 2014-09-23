@@ -202,7 +202,7 @@ function tpf_content_flashcard_field_default_field_instances() {
           'source' => 'field_inline_replacements',
         ),
         'type' => 'text_with_inline_content',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -672,7 +672,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -938,7 +938,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1027,7 +1027,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1125,7 +1125,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1252,7 +1252,7 @@ function tpf_content_flashcard_field_default_field_instances() {
           'view_mode' => 'feature_secondary',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1433,7 +1433,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1522,7 +1522,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1610,7 +1610,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1918,7 +1918,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2007,7 +2007,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2096,7 +2096,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2360,7 +2360,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2480,7 +2480,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
