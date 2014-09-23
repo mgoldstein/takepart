@@ -963,7 +963,7 @@ body.campaign-display{
                 vertical-align: top;
                 white-space: normal;
                 margin-right: 2%;
-                &:last-child{
+                &:last-child, &:nth-child(5n) {
                     margin-right: 0;
                 }
                 img{

@@ -627,7 +627,7 @@
             minSlides: slides,
             maxSlides: slides,
             slideWidth: 152,
-            slideMargin: 5,
+            slideMargin: 15,
             infiniteLoop: false,
             hideControlOnEnd: true,
             pager: false,

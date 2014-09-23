@@ -1139,10 +1139,10 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $nids[] = $item['target_id'];
       }
 
-      // Query non referenced content (max 5)
+      // Query non referenced content (max 15)
       $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count');
 	    $count = (!empty($news_ref) ? count($news_ref) : 0);
-
+      
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
@@ -1152,12 +1152,14 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
           ->addTag('termfilter')
           ->addTag($variables['nid'])
           ->addTag('promofilter')
+          ->entityCondition('entity_id', $nids, 'NOT IN')
           ->range(0, $max_count - $count);
         $articles = $campaignNewsArticles->execute();
       }
       foreach($articles['node'] as $key => $item){
         $nids[] = $item->nid;
       }
+  
       $nodes = node_load_multiple($nids);
       $center = '';
       $center .= '<div class="news-column-wrapper">';
@@ -2136,6 +2138,16 @@ function tp4_preprocess_entity(&$variables, $hook) {
                         if ((isset($node->{'title'})) && (!isset($variables['custom_render'][$key]['title']))) {
                             $variables['custom_render'][$key]['title'] = $node->{'title'};
                         }
+
+                        //adding fix to address issue with title not displaying
+                        if (!$variables['custom_render'][$key]['title']) {
+                          //creates new title var at 0
+                          $variables['custom_render'][$key]['title'][0] = array(
+                            'value' => $node->title,
+                            'safe_value' => $node->title
+                          );
+                        }
+
                         $variables['custom_render'][$key]['url'] = url('node/' . $node->nid);
                     }
                 }
