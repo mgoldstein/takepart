@@ -470,6 +470,11 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   }
   $videos = $videos_processed;
 
+  //return empty array if no videos exist
+  if (empty($videos)) {
+    return array();
+  }
+
   // Build the playlist
   switch ($view_mode) {
     case 'basic':
