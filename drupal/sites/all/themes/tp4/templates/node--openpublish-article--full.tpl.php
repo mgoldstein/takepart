@@ -62,8 +62,13 @@
             print render($content['field_article_main_image']);
         }
         ?>
-        <?php print render($content['field_author']); ?>
+				
+				<?php if (isset($content['field_video_list'])): ?>
+					<?php print render($content['field_video_list']); ?>
+				<?php endif; ?>
 
+				<?php print render($content['field_author']); ?>
+				
         <?php
         // We hide the comments and links now so that we can render them later.
         hide($content['comments']);
@@ -73,6 +78,7 @@
         hide($content['field_free_tag']);
         print render($content);
         ?>
+
     </div>
 
     <aside id="article-social-mobile-bottom" class="social">
