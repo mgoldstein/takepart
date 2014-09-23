@@ -65,8 +65,8 @@
       playlist.find('.video-description .description-item[data-video-description="' + current_video + '"]').addClass('active');
       playlist.find('ul.video-playlist .video-item[data-video-number="' + current_video + '"]').addClass('active');
     }
-    else if(playlist.hasClass('basic')){
-      $('ul.video-playlist .video-item[data-video-number="' + current_video + '"]').addClass('active');
+    else if(playlistType == 'basic'){
+      playlist.find('ul.video-playlist .video-item[data-video-number="' + current_video + '"]').addClass('active');
     }
   }
 
