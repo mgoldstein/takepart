@@ -581,8 +581,6 @@
         all_slides.each(function(index) {
           var playlist = $(this).parents('.playlist');
           var viewMode;
-          var slider;
-          var $this = this;
 
           //mobile
           if (playlist.width() <= small) {
