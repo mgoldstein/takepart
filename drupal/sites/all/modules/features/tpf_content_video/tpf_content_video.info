@@ -180,6 +180,7 @@ features[variable][] = node_submitted_video
 features[variable][] = node_submitted_video_playlist
 features[variable][] = pathauto_node_openpublish_video_pattern
 features[variable][] = pathauto_node_video_pattern
+features[variable][] = pathauto_node_video_playlist_pattern
 features[variable][] = pm_jwplatform_api_key
 features[variable][] = pm_jwplatform_api_secret
 features[variable][] = pm_jwplatform_content_dns_mask
