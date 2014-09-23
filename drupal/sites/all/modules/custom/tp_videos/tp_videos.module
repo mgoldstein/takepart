@@ -359,7 +359,25 @@ function tp_videos_entity_info_alter(&$entity_info) {
  * Implements hook_preprocess_node().
  */
 function tp_videos_preprocess_node(&$variables) {
+	if($variables['type'] == 'video_playlist'){
+		$view_mode = field_get_items('node', $variables['node'], 'field_playlist_view_mode');
+		$view_mode = ($view_mode[0]['value'] != null ? $view_mode[0]['value'] : 'basic');
+
+		$video_list = field_view_field('node', $variables['node'], 'field_video_list', array(
+			'type' => 'video_playlist',
+			'label' => 'hidden',
+			'settings' => array(
+				'playlist_view_mode' => $view_mode
+			)
+		));
+		$variables['content']['field_video_list'] = $video_list;
+
+	}
+
+
+
 	if($variables['view_mode'] == 'video_playlist_teaser' && $variables['type'] == 'video') {
+
 		$variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__video_playlist_teaser';
 		$thumbnail = field_get_items('node', $variables['node'], 'field_thumbnail');
 		$thumbnail = $thumbnail[0]['file']->uri;
@@ -427,8 +445,13 @@ function tp_videos_field_formatter_settings_summary($field, $instance, $view_mod
  *  Implements hook_field_formatter_prepare_view().
  */
 function tp_videos_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
-  //checks to ensure the field 
+  //checks to ensure the field
+
   if ($field['field_name'] == 'field_video_list' && $field['type'] == 'node_reference') {
+
+		$display = current($displays);
+	  $display['settings']['playlist_view_mode'] = 'basic';
+
     //ensures there is at least the nid
     foreach ($items as $key => $value) {
       //only create if filter is set
@@ -472,13 +495,8 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   switch ($view_mode) {
     case 'basic':
       $video_displays = array();
-      $video_elements = array();
       foreach($videos as $video){
         $video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
-
-        // Get the video node's active configuration.
-        // $video_configuration = tp_video_player_video_override_configuration(
-        //   'node', $video, $langcode, 'full_page');
 
         // Add the allowed regions to each file referenced by the video node.
         $items = field_get_items('node', $video, 'field_video');
@@ -487,8 +505,6 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
           $files[] = $item + array('allowed_regions' => $allowed_regions);
         }
 
-        // 'View' the video player to get it's settings added to the page.
-        //$video_elements[] = tp_video_player_player_view($video_configuration, $items);
       }
       $playlist = array(
         '#theme' => 'tp_videos_basic',
@@ -501,12 +517,8 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
 
     case 'detailed':
       $video_displays = array();
-      $video_elements = array();
       foreach($videos as $video){
         $video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
-
-        // $video_configuration = tp_video_player_video_override_configuration(
-        //   'node', $video, $langcode, 'full_page');
 
         $items = field_get_items('node', $video, 'field_video');
         $allowed_regions = tp_video_player_video_allowed_regions('node', $video);
@@ -514,12 +526,9 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
           $files[] = $item + array('allowed_regions' => $allowed_regions);
         }
 
-        // 'View' the video player to get it's settings added to the page.
-        //$video_elements[] = tp_video_player_player_view($video_configuration, $items);
       }
       $playlist = array(
         '#theme' => 'tp_videos_detailed',
-        '#video_displays' => $video_displays,
         '#navigation' => array(
           '#theme' => 'tp_videos_navigation',
           '#video_displays' => $video_displays,
@@ -528,8 +537,17 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
       break;
 
     case 'hidelist':
+	    foreach($videos as $video){
+		    $items = field_get_items('node', $video, 'field_video');
+		    $allowed_regions = tp_video_player_video_allowed_regions('node', $video);
+		    foreach ($items as $item) {
+			    $files[] = $item + array('allowed_regions' => $allowed_regions);
+		    }
+
+	    }
       $playlist = array(
         '#theme' => 'tp_videos_hidelist',
+
       );
       break;
   }

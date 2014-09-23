@@ -219,9 +219,9 @@ function tpf_content_video_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        1 => 'Basic',
-        2 => 'Detailed',
-        3 => 'Hide List',
+        'basic' => 'Basic',
+        'detailed' => 'Detailed',
+        'hidelist' => 'Hide List',
       ),
       'allowed_values_function' => '',
     ),
