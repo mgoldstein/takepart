@@ -1154,6 +1154,12 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
           ->addTag('promofilter')
           ->entityCondition('entity_id', $nids, 'NOT IN')
           ->range(0, $max_count - $count);
+        
+        //only add condition if nids is not empty
+        if (!empty($nids)) {
+          $campaignNewsArticles->entityCondition('entity_id', $nids, 'NOT IN');
+        }
+        
         $articles = $campaignNewsArticles->execute();
       }
       foreach($articles['node'] as $key => $item){
