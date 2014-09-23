@@ -423,12 +423,33 @@ function tp_videos_field_formatter_settings_summary($field, $instance, $view_mod
 	return $summary;
 }
 
+/**
+ *  Implements hook_field_formatter_prepare_view().
+ */
+function tp_videos_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  //checks to ensure the field 
+  if ($field['field_name'] == 'field_video_list' && $field['type'] == 'node_reference') {
+    //ensures there is at least the nid
+    foreach ($items as $key => $value) {
+      //only create if filter is set
+      $filter = (isset($entities[$key]->field_playlist_filter) && isset($entities[$key]->field_playlist_filter['und'][0])) ? TRUE : FALSE;
+      //if empty create a video to hide
+      if (empty($value) && $filter) {
+        $items[$key][0] = array(
+          'nid' => $key,
+          'access' => FALSE,
+          'hide' => TRUE
+        );
+        
+      }
+    }
+  }
+}
 
 /**
  * Implements hook_field_formatter_view().
  */
 function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-
 	$playlist = array();
   $files = array();
 	$settings = $display['settings'];
@@ -652,7 +673,9 @@ function _tp_videos_playlist_filter_list_parser(&$items, $entity) {
 
       //adds the items into the obj
       foreach ($items as $key => $value) {
-        $video_list->add_video_nid($value['nid']);
+        if (!$value['hide']) {
+          $video_list->add_video_nid($value['nid']);
+        }
       }
 
       //returns the new items list
