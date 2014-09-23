@@ -626,7 +626,7 @@
           window['slider_' + index] = $(this).bxSlider({
             minSlides: slides,
             maxSlides: slides,
-            slideWidth: 152,
+            slideWidth: 200,
             slideMargin: 15,
             infiniteLoop: false,
             hideControlOnEnd: true,
