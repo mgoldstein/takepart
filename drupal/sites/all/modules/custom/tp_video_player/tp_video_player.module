@@ -85,6 +85,11 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
     $override = tp_video_player_load_entity_configuration('node', $node->nid);
     if (is_null($override)) {
       $override = tp_video_player_create_configuration();
+      
+      //overrides the auto start to turn off by default for video playlist
+      if ($node->type == 'video_playlist') {
+        $override->auto_start = 0;
+      }
     }
     $configurations[] = $override;
 
@@ -317,6 +322,12 @@ function tp_video_player_video_override_configuration($entity_type, $entity, $la
   // Merge the configurations into a single active configuration.
   $active = tp_video_player_merge_configurations($configurations);
 
+  //overrides to make video_playlist always auto-start regardless of option
+  $menu_obj = menu_get_object();
+  if (is_object($menu_obj) && $menu_obj->type == 'video_playlist') {
+    $active->auto_start = 1;
+  }
+  
   // The configuration can contain tokens, resolve them now.
   return tp_video_player_resolve_entity_configuration($entity_type, $entity, $langcode, $active);
 }
