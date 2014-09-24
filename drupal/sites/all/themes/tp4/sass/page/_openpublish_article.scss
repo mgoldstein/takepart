@@ -93,7 +93,7 @@
     #article-footer {
         padding-top: 4px;
         border: none !important;
-        
+
         #related-stories,
         h3:first-child {
             padding: 16px 16px 9px 16px;
@@ -101,7 +101,7 @@
             margin-bottom: 0;
         }
     }
-    
+
     .field-name-field-related-stories {
         padding: 0 16px 3px 16px;
         background-color: #f8f8f8;
@@ -112,7 +112,7 @@
                     font-family: 'Ashbury Light', Ashbury, "Times New Roman", serif !important;
                     line-height: 18px !important;
                     margin-left: 115px;
-                    
+
                     @include breakpoint($breakpoint-tablet) {
                         font-size: 16px !important;
                         line-height: 20px !important;
@@ -120,12 +120,12 @@
                 }
             }
         }
-    
+
         .field-name-field-thumbnail {
             float: left;
             margin-right: 15px;
             margin-bottom: 8px;
-            
+
             img {
                 max-width: 100px;
                 height: auto;
@@ -182,7 +182,7 @@
                     @include tp-social-more-sprite(#{$service});
                 }
             }
-            
+
             @include breakpoint($breakpoint-mobile) {
                 &.tp-social-reddit {
                     display: block;
@@ -222,7 +222,7 @@
         .comments-link {
             display: none;
         }
-        
+
         #article-more-shares {
             left: -120px;   
         }
@@ -822,27 +822,27 @@ aside#article-social-mobile-bottom {
 
     } // body field
 
-    
+
     .inline-content-video {
         width: 100%;
-        
+
         @include breakpoint($breakpoint-tablet) {
             width: 100%;
         }
-        
+
         @include breakpoint($breakpoint-desktop) {
             width: 480px;
-            
+
             &.align-full {
                 width: 912px;
             }
-            
+
             &.align-center {
                 width: 100%;
             }
         }
     }
-    
+
     figure.inline-content-image {
 
         img {
@@ -980,8 +980,6 @@ aside#article-social-mobile-bottom {
                 margin-bottom: 0; // the <aside> container has the outermost margin
             }
         }
-
-
         // style the damn thing
         border-top: 1px solid $blue;
         &:before {
@@ -1002,6 +1000,75 @@ aside#article-social-mobile-bottom {
             @include border-corner-radius(bottom, right, 36px);
         }
     } // inline content
+
+    .block-newsletter-campaign {
+        width: 65%;
+
+        float: left;
+        display: block;
+        margin: 0 1em 1em 0;
+
+        h2 {
+            font-family: "Brown",Verdana,Tahoma,"DejaVu Sans",sans-serif;
+            line-height: 27px;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: lowercase;
+        }
+
+        .takepart-newsletter-promo-text {
+            font: 100 14px/18px "Ashbury","Times New Roman",Times,Georgia,"DejaVu Serif",serif;
+        }
+        .message {
+            margin: .75em 0;
+        }
+        .form-item-email {
+            margin: 0 .5em 0 0;
+            display: inline-block;
+            font-family: $primary-sans-font;
+            max-width: 80%;
+            position: relative;
+            label {
+                display: none;
+                font: normal 12px/1 $primary-sans-font;
+                position: absolute;
+                left: 0;
+                bottom: 100%;
+                &.error {
+                    display: inline;
+                }
+            }
+            input#edit-email {
+                width: 100%;
+                border: 1px solid #CCC;
+                @include border-radius(0);
+                padding: 2px;
+                font-size: 12px;
+                line-height: 1.5em;
+                background-color: #FFF;
+            }
+        }
+        .rollover-image-on {
+            display: none;
+        }
+        .takepart-newsletter-form .form-submit {
+            margin-top: 2px;
+        }
+
+        .terms-of-service {
+            clear: both;
+            margin: 1em 0;
+            padding-bottom: 1em;
+            border-bottom: 1px solid $gray-line;
+            font-size: 12px;
+            // font-family: $primary-sans-font;
+            a {
+
+                line-height: 1.2em;
+                color: $mint;
+            }
+        }
+    }
 
     .topic-links {
         margin-bottom: 2em;
@@ -1037,18 +1104,18 @@ aside#article-social-mobile-bottom {
 
         .field-name-field-related-stories {
             margin-bottom: 2em;
-            
+
             .field-name-field-thumbnail {
                 float: left;
                 margin-right: 15px;
                 margin-bottom: 8px;
-                
+
                 img {
                     max-width: 100px;
                     height: auto;
                 }
             }
-            
+
             a {
                 h2 {
                     font-size: 15px;
@@ -1187,27 +1254,27 @@ aside#article-social-mobile-bottom {
     .field-name-field-flashcard-main-image {
         display: none;
         max-width: 920px;
-        
+
         img {
             width: 100%;
         }
-        
+
         figcaption {
             p:first-child {
                 margin-top: 0;
             }
         }
-        
+
         @include breakpoint($breakpoint-tablet) {
             margin-left: 0;
             display: block;
         }
-        
+
         @include breakpoint($breakpoint-desktop) {
             margin-left: 60px;
         }
     }
-    
+
     .flashcard-definition {
         @include box-sizing(border-box);
         @include box-shadow(0 0 0 1px #e0e0e0);
