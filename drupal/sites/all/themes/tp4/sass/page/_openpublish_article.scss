@@ -1002,8 +1002,8 @@ aside#article-social-mobile-bottom {
     } // inline content
 
     .block-newsletter-campaign {
-        width: 65%;
-
+        width: 50%;
+        min-width: 356px;
         float: left;
         display: block;
         margin: 0 1em 1em 0;
