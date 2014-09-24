@@ -562,9 +562,16 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
 
   $playlist_player = tp_video_player_player_view($playlist_configuration, $files);
 
+	/* Show Title */
+	$title = '';
+	if($entity->field_show_title){
+		$show_title = field_get_items($entity_type, $entity, 'field_show_title');
+		$title = ($show_title[0]['value'] == 1 ? $entity->title : '');
+	}
+
   $element = array(
     '#theme' => 'tp_videos_wrapper',
-    '#title' => $entity->title,
+    '#title' => $title,
     '#playlist' => $playlist + array(
       '#playlist_player' => $playlist_player,
       '#videos' => $videos,
