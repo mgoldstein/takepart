@@ -1,7 +1,8 @@
 .video-item{
   float: left;
   width: 155px;
-  height: 170px;
+  height: auto;
+  overflow: hidden;
 }
 .video-placeholder{
   width: 100%;
@@ -45,6 +46,7 @@ h3.video-title{
   font-family: $primary-sans-font;
   font-weight: 500;
   margin-bottom: 15px;
+  padding-top: 6px;
 }
 
 .bx-wrapper {
@@ -163,6 +165,7 @@ h3.video-title{
   }
 }
 
+/* Playlist responsive variations based on 'breakpoints' */
 .playlist.small{
   .video-playlist{
     padding: 0;
@@ -186,4 +189,18 @@ h3.video-title{
   .video-playlist .image-wrapper img{
     width: 100%;
   }
+}
+
+/* Playlist View Mode Overrides */
+.playlist[data-playlist-type="basic"]{
+  .bx-wrapper{
+    padding-top: 10px;
+  }
+}
+
+
+.playlist .jwplayer{
+  display: block !important;
+  height: auto;
+  overflow: hidden;
 }
