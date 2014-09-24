@@ -491,8 +491,17 @@
             delete s.events;
             delete s.eVar26;
             delete s.eVar30;            
+        },
+        // -----------------------------------
+        // Playlists ------------------------
+        // -----------------------------------
+        'playlist-play': function(options) {
+          var s=s_gi(Drupal.settings.omniture.s_account);
+          s.linkTrackVars='eVar25,eVar32,eVar69';
+          s.eVar25=options.playerName;
+          s.eVar32=options.listName;
+          s.eVar69=options.playConfig;
         }
-
     });
 
     // Document Ready

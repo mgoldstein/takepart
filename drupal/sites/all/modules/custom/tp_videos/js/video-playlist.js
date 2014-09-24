@@ -35,6 +35,19 @@
           });
           jwplayer(index).onPlay(function(event){
             delete window.videoTransition;
+
+            /* Analytics */
+            var autoplay = jwplayer(index).config.autostart;
+            if(autoplay == true){
+              autoplay = 'Auto-play';
+            }else{
+              autoplay = 'Manual';
+            }
+            takepart.analytics.track('playlist-play', {
+              playerName: jwplayer(index).config.primary,
+              listName: jwplayer(index).config.title,
+              playConfig: autoplay
+            });
           });
 
         });
