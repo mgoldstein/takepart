@@ -383,22 +383,22 @@ function tpf_content_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'locations' => array(
-          'weight' => '21',
+          'weight' => '18',
         ),
         'metatags' => array(
-          'weight' => '19',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '16',
+          'weight' => '13',
         ),
         'redirect' => array(
-          'weight' => '17',
+          'weight' => '14',
         ),
         'xmlsitemap' => array(
-          'weight' => '18',
+          'weight' => '15',
         ),
       ),
       'display' => array(),
