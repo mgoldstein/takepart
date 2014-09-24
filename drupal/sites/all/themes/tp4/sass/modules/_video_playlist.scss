@@ -16,8 +16,12 @@
 }
 .field-name-field-video-list{
   background: #555;
-  padding: 15px;
+  padding: 15px 7px;
   margin-bottom: 30px;
+  
+  @include breakpoint($breakpoint-tablet) {
+    padding: 15px;
+  }
 }
 .playlist{
   background: #EFEFEF;
@@ -164,6 +168,8 @@ h3.video-title{
 }
 
 .playlist.small{
+  padding: 10px 6px;
+  
   .video-playlist{
     padding: 0;
     overflow-y: auto;
