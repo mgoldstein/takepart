@@ -21,11 +21,12 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Player Configuration',
-    'weight' => '15',
+    'weight' => '12',
     'children' => array(
       0 => 'field_allowed_regions',
       1 => 'field_sharing_inline',
       2 => 'field_playlist_view_mode',
+      3 => 'field_show_title',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -119,7 +120,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '13',
+    'weight' => '10',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -179,7 +180,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '14',
+    'weight' => '11',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',

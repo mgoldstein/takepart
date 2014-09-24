@@ -6342,7 +6342,7 @@ function tpf_content_video_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 9,
+      'weight' => 6,
     ),
   );
 
@@ -6735,7 +6735,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -6846,7 +6846,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -6953,7 +6953,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 20,
+      'weight' => 17,
     ),
   );
 
@@ -7172,7 +7172,7 @@ function tpf_content_video_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 10,
+      'weight' => 7,
     ),
   );
 
@@ -7313,7 +7313,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -8281,7 +8281,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 11,
+      'weight' => 8,
     ),
   );
 
@@ -8501,6 +8501,116 @@ function tpf_content_video_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-video_playlist-field_show_title'
+  $field_instances['node-video_playlist-field_show_title'] = array(
+    'bundle' => 'video_playlist',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Do you want to show the title of this playlist?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 25,
+      ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'iframe' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'token' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_show_title',
+    'label' => 'Show Title',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_onoff',
+      'weight' => 27,
+    ),
+  );
+
   // Exported field_instance: 'node-video_playlist-field_significance'
   $field_instances['node-video_playlist-field_significance'] = array(
     'bundle' => 'video_playlist',
@@ -8710,7 +8820,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -9199,6 +9309,7 @@ function tpf_content_video_field_default_field_instances() {
   t('Body');
   t('Display Tag');
   t('Display video as a modal popup, embedded within the page, or as embedded on the permalinked page and modal everywhere else it is used.');
+  t('Do you want to show the title of this playlist?');
   t('Embedded Video');
   t('Embedded Video mode');
   t('Enable Embed');
@@ -9230,6 +9341,7 @@ function tpf_content_video_field_default_field_instances() {
   t('Remove Headline from Display');
   t('Series');
   t('Share URL Override');
+  t('Show Title');
   t('Significance');
   t('Subhead');
   t('Suggest Related Actions?');
