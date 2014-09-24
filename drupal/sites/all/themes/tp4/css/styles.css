@@ -13838,8 +13838,13 @@ h3.video-title {
   margin-bottom: 5px;
   width: 100%;
   overflow: hidden;
+  cursor: pointer;
 }
+<<<<<<< HEAD
 /* line 110, ../sass/modules/_video_playlist.scss */
+=======
+/* line 107, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .video-playlist .image-wrapper img {
   display: block;
   margin: 0;
@@ -13848,7 +13853,11 @@ h3.video-title {
   height: auto;
   cursor: pointer;
 }
+<<<<<<< HEAD
 /* line 119, ../sass/modules/_video_playlist.scss */
+=======
+/* line 116, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .video-playlist .overlay {
   top: 0;
   bottom: 0;
@@ -13856,7 +13865,11 @@ h3.video-title {
   right: 0;
   opacity: 0;
 }
+<<<<<<< HEAD
 /* line 126, ../sass/modules/_video_playlist.scss */
+=======
+/* line 123, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .video-playlist .overlay .play-me,
 .video-playlist .overlay .now-playing {
   left: 0;
@@ -13869,16 +13882,25 @@ h3.video-title {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
+<<<<<<< HEAD
 /* line 139, ../sass/modules/_video_playlist.scss */
 .video-playlist .video-item.active .image-wrapper .overlay {
   opacity: 1;
 }
 /* line 143, ../sass/modules/_video_playlist.scss */
+=======
+/* line 136, ../sass/modules/_video_playlist.scss */
+.video-playlist .video-item.active .image-wrapper .overlay {
+  opacity: 1;
+}
+/* line 140, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .video-playlist .video-item .image-wrapper .overlay .play-me, .video-playlist .video-item.active .image-wrapper .overlay .now-playing {
   top: 50%;
   margin-top: -30px;
   opacity: 1;
 }
+<<<<<<< HEAD
 /* line 148, ../sass/modules/_video_playlist.scss */
 .video-playlist .video-item.active .image-wrapper .overlay .play-me {
   opacity: 0;
@@ -13888,11 +13910,26 @@ h3.video-title {
   opacity: 1;
 }
 /* line 154, ../sass/modules/_video_playlist.scss */
+=======
+/* line 145, ../sass/modules/_video_playlist.scss */
+.video-playlist .video-item.active .image-wrapper .overlay .play-me {
+  opacity: 0;
+}
+/* line 148, ../sass/modules/_video_playlist.scss */
+.video-playlist .video-item .image-wrapper:hover .overlay {
+  opacity: 1;
+}
+/* line 151, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .video-playlist .video-item .now-playing, .video-playlist .video-item .promo-headline {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 500;
 }
+<<<<<<< HEAD
 /* line 159, ../sass/modules/_video_playlist.scss */
+=======
+/* line 156, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .video-playlist .icon.i-triangle-right:after {
   content: '\25B6';
   background: #333;
@@ -13906,17 +13943,25 @@ h3.video-title {
 }
 
 /* Playlist responsive variations based on 'breakpoints' */
+<<<<<<< HEAD
 /* line 173, ../sass/modules/_video_playlist.scss */
 .playlist.small {
   padding: 10px 6px;
 }
 /* line 176, ../sass/modules/_video_playlist.scss */
+=======
+/* line 171, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .playlist.small .video-playlist {
   padding: 0;
   overflow-y: auto;
   height: 225px;
 }
+<<<<<<< HEAD
 /* line 181, ../sass/modules/_video_playlist.scss */
+=======
+/* line 176, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .playlist.small .video-item {
   clear: both;
   width: 100%;
@@ -13924,27 +13969,47 @@ h3.video-title {
   height: auto;
   padding-bottom: 10px;
 }
+<<<<<<< HEAD
 /* line 188, ../sass/modules/_video_playlist.scss */
 .playlist.small .image-wrapper {
   width: 40%;
 }
 /* line 191, ../sass/modules/_video_playlist.scss */
+=======
+/* line 183, ../sass/modules/_video_playlist.scss */
+.playlist.small .image-wrapper {
+  width: 40%;
+}
+/* line 186, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .playlist.small .promo-headline {
   width: 55%;
   float: right;
 }
+<<<<<<< HEAD
 /* line 195, ../sass/modules/_video_playlist.scss */
+=======
+/* line 190, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .playlist.small .video-playlist .image-wrapper img {
   width: 100%;
 }
 
 /* Playlist View Mode Overrides */
+<<<<<<< HEAD
 /* line 202, ../sass/modules/_video_playlist.scss */
+=======
+/* line 197, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .playlist[data-playlist-type="basic"] .bx-wrapper {
   padding-top: 10px;
 }
 
+<<<<<<< HEAD
 /* line 208, ../sass/modules/_video_playlist.scss */
+=======
+/* line 203, ../sass/modules/_video_playlist.scss */
+>>>>>>> epic/tp-1975-video-updates-phase-3
 .playlist .jwplayer {
   display: block !important;
   height: auto;
