@@ -123,7 +123,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 22,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -210,7 +210,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -612,7 +612,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -707,7 +707,7 @@ function tpf_content_article_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 7,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -801,7 +801,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -893,7 +893,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -987,7 +987,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1071,7 +1071,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1187,10 +1187,9 @@ function tpf_content_article_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 24,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1313,7 +1312,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1406,7 +1405,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 23,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1493,7 +1492,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1586,7 +1585,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1772,7 +1771,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1864,7 +1863,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1950,7 +1949,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2036,7 +2035,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2130,7 +2129,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2247,7 +2246,7 @@ function tpf_content_article_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 8,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2340,7 +2339,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',

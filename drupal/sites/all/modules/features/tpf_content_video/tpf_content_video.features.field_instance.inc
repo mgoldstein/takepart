@@ -9235,9 +9235,11 @@ function tpf_content_video_field_default_field_instances() {
       ),
       'iframe' => array(
         'label' => 'hidden',
-        'module' => 'node_reference',
-        'settings' => array(),
-        'type' => 'node_reference_default',
+        'module' => 'tp_videos',
+        'settings' => array(
+          'playlist_view_mode' => 'Basic',
+        ),
+        'type' => 'video_playlist',
         'weight' => 0,
       ),
       'inline_content' => array(
