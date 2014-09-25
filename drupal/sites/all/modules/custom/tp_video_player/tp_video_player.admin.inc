@@ -340,7 +340,7 @@ function tp_video_player_form_advertising_fields($values, $is_default = FALSE) {
   return $fields;
 }
 
-function tp_video_player_defaults_form($form, &$form_state, $configuration) {
+function tp_video_player_defaults_form($form, &$form_state, $configuration, $type = 'video_playlist') {
 
   $form_state['storage']['tp_video_player_configuration'] = $configuration;
 

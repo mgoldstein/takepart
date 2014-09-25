@@ -59,7 +59,7 @@ function tp_video_player_create_configuration($values = array()) {
     'stretching' => NULL,
 
     /* Playback */
-    'auto_start' => NULL,
+    'auto_start' => 0,
     'fallback' => NULL,
     'mute_playback' => NULL,
     'repeat_playback' => NULL,
@@ -119,7 +119,7 @@ function tp_video_player_create_default_configuration($name) {
     'stretching' => 'uniform',
 
     /* Playback */
-    'auto_start' => 1,
+    'auto_start' => 0,
     'fallback' => 0,
     'mute_playback' => 0,
     'repeat_playback' => 0,
