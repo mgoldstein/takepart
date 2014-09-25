@@ -7,8 +7,12 @@
 function tp_video_player_defaults_info() {
   return array(
     'full_page' => array(
-      'title' => 'Full Page',
-      'description' => 'Full page video and playlist nodes.',
+      'title' => 'Video Full Page',
+      'description' => 'Full page video nodes.',
+    ),
+    'playlist_full_page' => array(
+      'title' => 'Playlist Full Page',
+      'description' => 'Full page playlist nodes.',
     ),
     'block' => array(
       'title' => 'Block (Right Rail)',

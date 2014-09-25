@@ -76,7 +76,8 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
     $configurations = array();
 
     // Load the full page defaults.
-    $defaults = tp_video_player_load_default_configuration('full_page');
+    $global_default = $node->type == 'video_playlist' ? 'playlist_full_page' : 'full_page';
+    $defaults = tp_video_player_load_default_configuration($global_default);
     if (!is_null($defaults)) {
       $configurations[] = $defaults;
     }
@@ -123,7 +124,8 @@ function tp_video_player_node_update($node) {
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
     // Load the full page defaults.
-    $defaults = tp_video_player_load_default_configuration('full_page');
+    $global_default = $node->type == 'video_playlist' ? 'playlist_full_page' : 'full_page';
+    $defaults = tp_video_player_load_default_configuration($global_default);
     if (is_null($defaults)) {
       $defaults = tp_video_player_create_configuration();
     }
