@@ -2,6 +2,7 @@ name = TakePart Ads
 description = Ad placement for TakePart
 core = 7.x
 package = Legacy Feature Module
-version = 7.x-2.0
+version = 7.x-2.1
 dependencies[] = boxes
+
 files[] = plugins/ga_ads.inc

@@ -1,0 +1,76 @@
+<?php
+/**
+ * @file
+ * Sets up the base tables for ad tags.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function takepart_ads_schema() {
+  $schema = array();
+
+  $schema['takepart_ads_tag'] = array(
+    'description' => 'The base table for ad tags.',
+    'fields' => array(
+
+      'id' => array(
+        'description' => 'Primary key identifier for the tag.',
+        'type' => 'serial',
+        'unsigned' => FALSE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'Export name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'title' => array(
+        'description' => 'Human readable title.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'url' => array(
+        'description' => 'The tag url.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Change tracking timestamps */
+      'created_at' => array(
+        'description' => 'The Unix timestamp when the tag was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated_at' => array(
+        'description' => 'The Unix timestamp when the tag was last changed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+  );
+
+  return $schema;
+}
+
+/**
+ * Add ad tag table.
+ */
+function takepart_ads_update_7200() {
+
+  // Create the entity based configuration table
+  $schema = takepart_ads_schema();
+  db_create_table('takepart_ads_tag', $schema['takepart_ads_tag']);
+}
