@@ -154,13 +154,13 @@ function tp_flashcards_node_delete($node) {
  *
  * @return string       HTML with flashcard terms wrapped in links.
  */
-function tp_flashcards_parse_html($html) {
+function tp_flashcards_parse_html($html, $bypass = FALSE) {
   foreach(_tp_flashcards_get_all() as $nid => $flashcard) {
     //check to see if the flashcard is already used on the page
     $exist = _tp_flashcards_parse_static_var($flashcard->nid);
    
     //if its doesnt exist then do the following
-    if (!$exist) {
+    if (!$exist || $bypass) {
       $synonyms = array_map('preg_quote', _tp_flashcards_get_synonyms($flashcard));
       $pattern = _tp_flashcards_get_replacement_pattern($synonyms);
       $html_new = preg_replace($pattern, '<a data-flashcard="' . $nid . '" href="' . url('node/' . $nid). '" class="flashcard">$0</a>', $html, 1);

@@ -734,14 +734,14 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
     $left = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
     if(!empty($left)){
       if (function_exists('tp_flashcards_parse_html')) {
-        $left = tp_flashcards_parse_html($left);
+        $left = tp_flashcards_parse_html($left, TRUE);
       }
       $left = '<div class="text">'. $left. '</div>';
     }
     $right = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_right');
     if(!empty($right)){
       if (function_exists('tp_flashcards_parse_html')) {
-        $right = tp_flashcards_parse_html($right);
+        $right = tp_flashcards_parse_html($right, TRUE);
       }
       $right = '<div class="text">'. $right. '</div>';
     }
