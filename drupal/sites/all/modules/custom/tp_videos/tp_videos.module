@@ -55,6 +55,7 @@ function tp_videos_entity_update($entity, $entity_type) {
 
     if (is_null($existing_video)) {
       $video_controller->save($imported_video);
+      $entity->tp_videos_metadata = $imported_video;
     }
     else {
       // Refresh the existing video data.
@@ -66,6 +67,43 @@ function tp_videos_entity_update($entity, $entity_type) {
         $existing_video->{$name} = $value;
       }
       $video_controller->save($existing_video);
+      $entity->tp_videos_metadata = $existing_video;
+    }
+
+  }
+}
+
+/**
+ * Implements hook_entity_load().
+ */
+function tp_videos_entity_load($entities, $type) {
+  if ($type === 'file') {
+    $controller = new TakePart_VideoController();
+    foreach ($entities as $file) {
+      if ($file->filemime === 'video/youtube') {
+        $params = tp_videos_parse_wrapper_uri($file->uri);
+        $file->tp_videos_metadata = $controller->loadByExternalKey(
+          'TakePart_YoutubeVideo', $params['v']);
+        if (!isset($file->tp_videos_metadata)) {
+          tp_videos_entity_update($file, 'file');
+        }
+      }
+      elseif ($file->filemime === 'video/vimeo') {
+        $params = tp_videos_parse_wrapper_uri($file->uri);
+        $file->tp_videos_metadata = $controller->loadByExternalKey(
+          'TakePart_VimeoVideo', $params['v']);
+        if (!isset($file->tp_videos_metadata)) {
+          tp_videos_entity_update($file, 'file');
+        }
+      }
+      elseif ($file->filemime === 'video/jwplatform') {
+        $params = tp_videos_parse_wrapper_uri($file->uri);
+        $file->tp_videos_metadata = $controller->loadByExternalKey(
+          'TakePart_JWPlatformVideo', $params['key']);
+        if (!isset($file->tp_videos_metadata)) {
+          tp_videos_entity_update($file, 'file');
+        }
+      }
     }
   }
 }
@@ -479,7 +517,7 @@ function tp_videos_field_formatter_prepare_view($entity_type, $entities, $field,
           'access' => FALSE,
           'hide' => TRUE
         );
-        
+
       }
     }
   }
@@ -583,7 +621,7 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
 
   // Get the effective configuration for the playlist (global default + entity override)
   $playlist_configuration = tp_video_player_video_override_configuration(
-    $entity_type, $entity, $langcode, 'full_page');
+    $entity_type, $entity, $langcode, 'playlist_full_page');
 
   $playlist_player = tp_video_player_player_view($playlist_configuration, $files);
 
