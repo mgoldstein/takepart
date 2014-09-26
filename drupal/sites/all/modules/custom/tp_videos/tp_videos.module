@@ -243,7 +243,7 @@ function tp_videos_iframe_embed_markup($node) {
 		'height' => '100%',
     'src' => $base_url . '/entity_iframe/node/' . $node->nid,
     'frameborder' => '0',
-    'class' => 'entity_iframe entity_iframe_node',
+    'class' => 'entity_iframe entity_iframe_node '. $node->type,
     'id' => 'entity_iframe_node_' . $node->nid,
 	  'style' => 'position: absolute; top: 0; left: 0;',
   );
