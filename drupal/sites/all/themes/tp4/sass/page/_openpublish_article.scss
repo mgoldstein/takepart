@@ -1007,6 +1007,8 @@ aside#article-social-mobile-bottom {
         float: left;
         display: block;
         margin: 0 1em 1em 0;
+        border-top: 4px solid #000;
+        border-bottom: 4px solid #000;
 
         h2 {
             font-family: "Brown",Verdana,Tahoma,"DejaVu Sans",sans-serif;
@@ -1014,6 +1016,7 @@ aside#article-social-mobile-bottom {
             font-weight: bold;
             font-size: 20px;
             text-transform: lowercase;
+            margin: 10px 0;
         }
 
         .takepart-newsletter-promo-text {
@@ -1054,7 +1057,13 @@ aside#article-social-mobile-bottom {
         .takepart-newsletter-form .form-submit {
             margin-top: 2px;
         }
-
+        .takepart-newsletter-message {
+            font: 100 14px/18px "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+            margin-bottom: 10px;
+        }
+        .takepart-newsletter-terms {
+            margin-bottom: 10px;
+        }
         .terms-of-service {
             clear: both;
             margin: 1em 0;
