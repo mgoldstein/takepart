@@ -447,6 +447,13 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
+
   $media_photo = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
   if(empty($media_photo[0]['alt'])){
   	$alt = $variables['title'];
@@ -544,11 +551,6 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   //background properties
   tp4_campaign_background_rules($variables);
 
-  //content
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
   if(!empty($center)){
     $variables['center'] = $center;
@@ -713,8 +715,13 @@ function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
 
 
 function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
-
-
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
+  
   $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
   $slim_text = tp4_render_field_value('node', $variables['node'], 'field_slim_card_text');
 
@@ -770,11 +777,6 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   //background properties
   tp4_campaign_background_rules($variables);
 
-  //content
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
   $variables['left'] = $left;
   $variables['right'] = $right;
@@ -785,6 +787,13 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
  * Override or insert variables into the campaign card social template
  */
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
+
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
 
   $collections = array();
   $social_follows = field_get_items('node', $variables['node'], 'field_campaign_social_follow');
@@ -839,10 +848,6 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
 
 }
@@ -1087,6 +1092,13 @@ function tp4_query_promofilter_alter(QueryAlterableInterface $query) {
  */
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
+    //content
+    $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+    
+    if(!empty($instructional)){
+      $variables['instructional'] = tp_flashcards_parse_html($instructional);
+    }
+
     // Is this card a single value news card or a multi-value news card?
     $news_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_type');
     if($news_type == 'Single Article'){  //single value
@@ -1210,18 +1222,19 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     //background properties
     tp4_campaign_background_rules($variables);
 
-  //content
-  $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
 
 
 }
 
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
+
   $center = '';
 
   $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
@@ -1256,10 +1269,6 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
 
   //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
 
 }
@@ -1318,6 +1327,12 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
 }
 
 function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
 
   $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
   $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
@@ -1350,10 +1365,6 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
   tp4_campaign_background_rules($variables);
 
   //content
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-      $variables['instructional'] = $instructional;
-  }
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   $variables['center'] = $center;
 }
