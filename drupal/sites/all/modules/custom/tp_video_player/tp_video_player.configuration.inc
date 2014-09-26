@@ -7,8 +7,12 @@
 function tp_video_player_defaults_info() {
   return array(
     'full_page' => array(
-      'title' => 'Full Page',
-      'description' => 'Full page video and playlist nodes.',
+      'title' => 'Video Full Page',
+      'description' => 'Full page video nodes.',
+    ),
+    'playlist_full_page' => array(
+      'title' => 'Playlist Full Page',
+      'description' => 'Full page playlist nodes.',
     ),
     'block' => array(
       'title' => 'Block (Right Rail)',
@@ -59,7 +63,7 @@ function tp_video_player_create_configuration($values = array()) {
     'stretching' => NULL,
 
     /* Playback */
-    'auto_start' => NULL,
+    'auto_start' => 0,
     'fallback' => NULL,
     'mute_playback' => NULL,
     'repeat_playback' => NULL,
@@ -119,7 +123,7 @@ function tp_video_player_create_default_configuration($name) {
     'stretching' => 'uniform',
 
     /* Playback */
-    'auto_start' => 1,
+    'auto_start' => 0,
     'fallback' => 0,
     'mute_playback' => 0,
     'repeat_playback' => 0,

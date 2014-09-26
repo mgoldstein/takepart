@@ -76,7 +76,8 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
     $configurations = array();
 
     // Load the full page defaults.
-    $defaults = tp_video_player_load_default_configuration('full_page');
+    $global_default = $node->type == 'video_playlist' ? 'playlist_full_page' : 'full_page';
+    $defaults = tp_video_player_load_default_configuration($global_default);
     if (!is_null($defaults)) {
       $configurations[] = $defaults;
     }
@@ -100,11 +101,11 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
     module_load_include('inc', 'tp_video_player', 'tp_video_player.admin');
     $form['tp_video_player'] = tp_video_player_defaults_form(array(
       '#type' => 'fieldset',
-      '#title' => t('Player Configuration'),
+      '#title' => t('Player Configuration - Primary'),
       '#weight' => -100,
       '#group' => 'additional_settings',
       '#tree' => TRUE,
-    ), $form_state, $active);
+    ), $form_state, $active, $node->type);
   }
 }
 
@@ -123,7 +124,8 @@ function tp_video_player_node_update($node) {
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
     // Load the full page defaults.
-    $defaults = tp_video_player_load_default_configuration('full_page');
+    $global_default = $node->type == 'video_playlist' ? 'playlist_full_page' : 'full_page';
+    $defaults = tp_video_player_load_default_configuration($global_default);
     if (is_null($defaults)) {
       $defaults = tp_video_player_create_configuration();
     }

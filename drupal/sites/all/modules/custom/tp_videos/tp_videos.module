@@ -55,6 +55,7 @@ function tp_videos_entity_update($entity, $entity_type) {
 
     if (is_null($existing_video)) {
       $video_controller->save($imported_video);
+      $entity->tp_videos_metadata = $imported_video;
     }
     else {
       // Refresh the existing video data.
@@ -66,6 +67,43 @@ function tp_videos_entity_update($entity, $entity_type) {
         $existing_video->{$name} = $value;
       }
       $video_controller->save($existing_video);
+      $entity->tp_videos_metadata = $existing_video;
+    }
+
+  }
+}
+
+/**
+ * Implements hook_entity_load().
+ */
+function tp_videos_entity_load($entities, $type) {
+  if ($type === 'file') {
+    $controller = new TakePart_VideoController();
+    foreach ($entities as $file) {
+      if ($file->filemime === 'video/youtube') {
+        $params = tp_videos_parse_wrapper_uri($file->uri);
+        $file->tp_videos_metadata = $controller->loadByExternalKey(
+          'TakePart_YoutubeVideo', $params['v']);
+        if (!isset($file->tp_videos_metadata)) {
+          tp_videos_entity_update($file, 'file');
+        }
+      }
+      elseif ($file->filemime === 'video/vimeo') {
+        $params = tp_videos_parse_wrapper_uri($file->uri);
+        $file->tp_videos_metadata = $controller->loadByExternalKey(
+          'TakePart_VimeoVideo', $params['v']);
+        if (!isset($file->tp_videos_metadata)) {
+          tp_videos_entity_update($file, 'file');
+        }
+      }
+      elseif ($file->filemime === 'video/jwplatform') {
+        $params = tp_videos_parse_wrapper_uri($file->uri);
+        $file->tp_videos_metadata = $controller->loadByExternalKey(
+          'TakePart_JWPlatformVideo', $params['key']);
+        if (!isset($file->tp_videos_metadata)) {
+          tp_videos_entity_update($file, 'file');
+        }
+      }
     }
   }
 }
@@ -205,7 +243,7 @@ function tp_videos_iframe_embed_markup($node) {
 		'height' => '100%',
     'src' => $base_url . '/entity_iframe/node/' . $node->nid,
     'frameborder' => '0',
-    'class' => 'entity_iframe entity_iframe_node',
+    'class' => 'entity_iframe entity_iframe_node '. $node->type,
     'id' => 'entity_iframe_node_' . $node->nid,
 	  'style' => 'position: absolute; top: 0; left: 0;',
   );
@@ -217,6 +255,24 @@ function tp_videos_iframe_embed_markup($node) {
 		}else{
 			$ratio = 60;
 		}
+	}
+
+	if($node->type == 'video_playlist' && $node->field_playlist_view_mode != null){
+		$view_mode = field_view_field('node', $node, 'field_playlist_view_mode');
+		$view_mode = strtolower($view_mode['#items'][0]['value']);
+		$style = '';
+		switch ($view_mode){
+			case 'basic':
+				 $style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 300px;"';
+				break;
+			case 'detailed':
+				$style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 400px;"';
+				break;
+			case 'hidelist':
+				$style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 40px;"';
+				break;
+		}
+		return '<div class="embed-container" '. $style. '>'. _entity_iframe_build_iframe($properties, 'video-embed'). '</div>';
 	}
   return '<div class="embed-container" style="position: relative; height: 0; padding-bottom:'. $ratio. '%">'. _entity_iframe_build_iframe($properties, 'video-embed'). '</div>';
 }
@@ -362,7 +418,6 @@ function tp_videos_entity_info_alter(&$entity_info) {
  */
 function tp_videos_preprocess_node(&$variables) {
 	if($variables['type'] == 'video_playlist'){
-
 		/* Use the selected view mode for playlists on the node view*/
 		$view_mode = field_get_items('node', $variables['node'], 'field_playlist_view_mode');
 		$view_mode = ($view_mode[0]['value'] != null ? $view_mode[0]['value'] : 'basic');
@@ -381,7 +436,15 @@ function tp_videos_preprocess_node(&$variables) {
 		$variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__video_playlist_teaser';
 		$thumbnail = field_get_items('node', $variables['node'], 'field_thumbnail');
 		$thumbnail = $thumbnail[0]['file']->uri;
-		$thumbnail = image_style_url('video_navigation_thumb_155x87', $thumbnail);
+
+    //conditional checks to ensure there's a placeholder for now
+    if (empty($thumbnail)) {
+      $thumbnail = '/' . drupal_get_path('theme', 'tp4') . '/images/ph_black.png';
+    }
+    else {
+      $thumbnail = image_style_url('video_navigation_thumb_155x87', $thumbnail);
+    }
+
 		$promo_headline = field_get_items('node', $variables['node'], 'field_promo_headline');
 		$promo_headline = $promo_headline[0]['value'];
 
@@ -462,7 +525,7 @@ function tp_videos_field_formatter_prepare_view($entity_type, $entities, $field,
           'access' => FALSE,
           'hide' => TRUE
         );
-        
+
       }
     }
   }
@@ -475,7 +538,7 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
 	$playlist = array();
   $files = array();
 	$settings = $display['settings'];
-	$view_mode = $settings['playlist_view_mode'];
+	$view_mode = strtolower($settings['playlist_view_mode']);
 
   // Override the items list if necessary.
   _tp_videos_playlist_filter_list_parser($items, $entity);
@@ -496,6 +559,14 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   }
 
   // Build the playlist
+
+	/* Override the View Mode if the view mode exists on the entity */
+	if($entity->field_playlist_view_mode){
+		$field_playlist_view_mode = field_get_items($entity_type, $entity, 'field_playlist_view_mode');
+		$view_mode = strtolower($field_playlist_view_mode[0]['value']);
+	}
+
+
   switch ($view_mode) {
     case 'basic':
       $video_displays = array();
@@ -558,7 +629,7 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
 
   // Get the effective configuration for the playlist (global default + entity override)
   $playlist_configuration = tp_video_player_video_override_configuration(
-    $entity_type, $entity, $langcode, 'full_page');
+    $entity_type, $entity, $langcode, 'playlist_full_page');
 
   $playlist_player = tp_video_player_player_view($playlist_configuration, $files);
 
