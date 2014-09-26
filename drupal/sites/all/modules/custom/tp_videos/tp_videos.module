@@ -436,7 +436,15 @@ function tp_videos_preprocess_node(&$variables) {
 		$variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__video_playlist_teaser';
 		$thumbnail = field_get_items('node', $variables['node'], 'field_thumbnail');
 		$thumbnail = $thumbnail[0]['file']->uri;
-		$thumbnail = image_style_url('video_navigation_thumb_155x87', $thumbnail);
+
+    //conditional checks to ensure there's a placeholder for now
+    if (empty($thumbnail)) {
+      $thumbnail = '/' . drupal_get_path('theme', 'tp4') . '/images/ph_black.png';
+    }
+    else {
+      $thumbnail = image_style_url('video_navigation_thumb_155x87', $thumbnail);
+    }
+
 		$promo_headline = field_get_items('node', $variables['node'], 'field_promo_headline');
 		$promo_headline = $promo_headline[0]['value'];
 
