@@ -28,13 +28,17 @@ function tp_flashcards_preprocess_page(&$variables) {
   foreach (_tp_flashcards_get_all() as $nid => $flashcard) {
     $card = array();
     $items = field_get_items('node', $flashcard, 'field_flashcard_display_name');
-    $card['title'] = drupal_render(field_view_value('node', $flashcard, 'field_flashcard_display_name', $items[0]));
+    $content = field_view_value('node', $flashcard, 'field_flashcard_display_name', $items[0]);
+    $card['title'] = drupal_render($content);
     $items = field_get_items('node', $flashcard, 'field_flashcard_pronunciation');
-    $card['pronunciation'] = drupal_render(field_view_value('node', $flashcard, 'field_flashcard_pronunciation', $items[0]));
+    $content = field_view_value('node', $flashcard, 'field_flashcard_pronunciation', $items[0]);
+    $card['pronunciation'] = drupal_render($content);
     $items = field_get_items('node', $flashcard, 'field_flashcard_short_definition');
-    $card['definition'] = drupal_render(field_view_value('node', $flashcard, 'field_flashcard_short_definition', $items[0]));
+    $content = field_view_value('node', $flashcard, 'field_flashcard_short_definition', $items[0]);
+    $card['definition'] = drupal_render($content);
     $items = field_get_items('node', $flashcard, 'field_flashcard_page_headline');
-    $card['page_title'] = drupal_render(field_view_value('node', $flashcard, 'field_flashcard_page_headline', $items[0]));
+    $content = field_view_value('node', $flashcard, 'field_flashcard_page_headline', $items[0]);
+    $card['page_title'] = drupal_render($content);
     $data[$nid] = $card;
   }
 
@@ -80,7 +84,7 @@ function tp_flashcards_preprocess_node(&$variables) {
     $variables['content']['field_campaign_instructional'][0]['#markup'] = tp_flashcards_parse_html($variables['content']['field_campaign_instructional'][0]['#markup']);
   }
 
-  // setup 
+  // setup
   if ($variables['type'] === 'flashcard') {
     foreach (field_get_items('node', $variables['node'], 'field_flashcard_page_headline') as $item) {
       $variables['title'] = drupal_render(field_view_value('node', $variables['node'], 'field_flashcard_page_headline', $item));
@@ -108,7 +112,7 @@ function tp_flashcards_node_view($node) {
 /**
  * Implements template_preprocess_views_view_fields().
  *
- * Alter the node title of flashcards when they appear in views. 
+ * Alter the node title of flashcards when they appear in views.
  *
  * @param array $variables theme variables
  */
@@ -158,13 +162,13 @@ function tp_flashcards_parse_html($html, $bypass = FALSE) {
   foreach(_tp_flashcards_get_all() as $nid => $flashcard) {
     //check to see if the flashcard is already used on the page
     $exist = _tp_flashcards_parse_static_var($flashcard->nid);
-   
+
     //if its doesnt exist then do the following
     if (!$exist || $bypass) {
       $synonyms = array_map('preg_quote', _tp_flashcards_get_synonyms($flashcard));
       $pattern = _tp_flashcards_get_replacement_pattern($synonyms);
       $html_new = preg_replace($pattern, '<a data-flashcard="' . $nid . '" href="' . url('node/' . $nid). '" class="flashcard">$0</a>', $html, 1);
-      
+
       //if the markup has changed then update the html and static array
       if ($html_new != $html) {
         _tp_flashcards_parse_static_var($flashcard->nid, 'set');
