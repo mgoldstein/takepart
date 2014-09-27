@@ -33,14 +33,6 @@ class InlineContentVideo extends InlineContentReplacementController {
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
-    $display = array(
-      'label' => 'hidden',
-      'type' => 'tp_video_player',
-      'settings' => array(
-        'global_default' => 'inline_content',
-      ),
-    );
-
     $items = field_get_items('inline_content', $replacement, 'field_ic_video');
     if ($items !== FALSE && count($items) > 0) {
 
