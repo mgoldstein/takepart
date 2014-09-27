@@ -43,45 +43,6 @@ function tpf_content_video_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
-  $field_group->identifier = 'group_player_config|node|video|form';
-  $field_group->group_name = 'group_player_config';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'video';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Player Configuration',
-    'weight' => '11',
-    'children' => array(
-      0 => 'field_ads_client',
-      1 => 'field_ads_tag',
-      2 => 'field_allowed_regions',
-      3 => 'field_auto_play',
-      4 => 'field_mute_playback',
-      5 => 'field_player_skin',
-      6 => 'field_playlist_layout',
-      7 => 'field_playlist_position',
-      8 => 'field_playlist_size',
-      9 => 'field_sharing_enabled',
-      10 => 'field_share_url',
-      11 => 'field_player_embeddable',
-      12 => 'field_sharing_inline',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-player-config field-group-tab',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_player_config|node|video|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
   $field_group->identifier = 'group_playlist_settings|node|video_playlist|form';
   $field_group->group_name = 'group_playlist_settings';
   $field_group->entity_type = 'node';
@@ -150,7 +111,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -212,7 +173,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '10',
+    'weight' => '12',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',
