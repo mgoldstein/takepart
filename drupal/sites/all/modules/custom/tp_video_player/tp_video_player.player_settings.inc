@@ -14,7 +14,7 @@ function tp_video_player_build_settings($configuration, $files) {
 
   // JWPlatform channels are not supported in multi-cardinality fields. If a
   // channel is found it must be the only source.
-  $scheme = file_uri_scheme($file['uri']);
+  $scheme = file_uri_scheme($first['uri']);
   if ($scheme === 'jwplatform-channel') {
     $content_settings = array(
       'allowed_regions' => array($first['allowed_regions']),
