@@ -514,12 +514,12 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
         'node', $node, $langcode, $video_configuration);
 
       // The node must actually reference a video.
-      $items = field_get_items('node', $video, 'field_video');
+      $items = field_get_items('node', $node, 'field_video');
       if ($items !== FALSE && count($items) > 0) {
 
         // Use only the first referenced file as there will
         // only be one navigation element per node.
-        $file = reset($item);
+        $file = reset($items);
 
         // JWPlayer channels are not allowed in playlists.
         $scheme = file_uri_scheme($file['uri']);
@@ -531,7 +531,7 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
         }
 
         // Get the allowed regions for all files association with the node.
-        $allowed_regions = tp_video_player_video_allowed_regions('node', $video);
+        $allowed_regions = tp_video_player_video_allowed_regions('node', $node);
 
         $files[] = $file + array(
           'allowed_regions' => $allowed_regions,
@@ -542,7 +542,10 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
   }
 
   // Build the video player content.
-  $player = tp_video_player_player_view($playlist_configuration, $files);
+  $player = array();
+  if (count($files) > 0) {
+    $player = tp_video_player_player_view($playlist_configuration, $files);
+  }
 
   $content = array(
     '#theme' => "tp_videos_{$view_mode}",
