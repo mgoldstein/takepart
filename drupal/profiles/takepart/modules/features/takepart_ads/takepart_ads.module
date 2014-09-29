@@ -85,6 +85,15 @@ function takepart_ads_tag_load($name) {
   return takepart_ads_load_tag($name);
 }
 
+function takepart_ads_tag_url($name) {
+  $urls = &drupal_static(__FUNCTION__, array());
+  if (!isset($urls[$name])) {
+    $tag = takepart_ads_load_tag($name);
+    $urls[$name] = is_null($tag) ? NULL : $tag->url;
+  }
+  return $urls[$name];
+}
+
 function _custom_targeting_overrides($stringwithkeyvalue) {
     foreach ($pairs_array as $key => $value) {
     }

@@ -293,22 +293,22 @@ function tpf_content_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '17',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '12',
-        ),
-        'redirect' => array(
-          'weight' => '13',
-        ),
-        'xmlsitemap' => array(
           'weight' => '14',
         ),
+        'redirect' => array(
+          'weight' => '15',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '16',
+        ),
         'locations' => array(
-          'weight' => '17',
+          'weight' => '19',
         ),
       ),
       'display' => array(),

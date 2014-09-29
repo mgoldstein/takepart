@@ -48,7 +48,7 @@ function tp_video_player_menu() {
   );
 
   // Page for each default.
-  foreach (tp_video_player_defaults_info() as $name => $info) {
+  foreach (tp_video_player_defaults() as $name => $info) {
     $menu_name = str_replace('_', '-', $name);
     $items["admin/config/media/tp-video-player/defaults/{$menu_name}"] = array(
       'title' => $info['title'],
@@ -73,39 +73,24 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
 
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
-    $configurations = array();
-
-    // Load the full page defaults.
-    $global_default = $node->type == 'video_playlist' ? 'playlist_full_page' : 'full_page';
-    $defaults = tp_video_player_load_default_configuration($global_default);
-    if (!is_null($defaults)) {
-      $configurations[] = $defaults;
-    }
+    $type = $node->type === 'video_playlist' ? 'playlist' : 'video';
+    $default = "{$type}_full_page";
 
     // Load any available node specific configuration.
-    $override = tp_video_player_load_entity_configuration('node', $node->nid);
-    if (is_null($override)) {
-      $override = tp_video_player_create_configuration();
-      
-      //overrides the auto start to turn off by default for video playlist
-      if ($node->type == 'video_playlist') {
-        $override->auto_start = 0;
-      }
+    $configuration = tp_video_player_load_entity_configuration('node', $node->nid, $default);
+    if (is_null($configuration)) {
+      $configuration = tp_video_player_clone_default_configuration($default);
     }
-    $configurations[] = $override;
-
-    // Merge the two configurations into the active configuration.
-    $active = tp_video_player_merge_configurations($configurations);
 
     // Pull in the configuration form from the admin.
     module_load_include('inc', 'tp_video_player', 'tp_video_player.admin');
-    $form['tp_video_player'] = tp_video_player_defaults_form(array(
+    $form['tp_video_player'] = tp_video_player_configuration_form(array(
       '#type' => 'fieldset',
-      '#title' => t('Player Configuration - Primary'),
+      '#title' => t('Player Configuration'),
       '#weight' => -100,
       '#group' => 'additional_settings',
       '#tree' => TRUE,
-    ), $form_state, $active, $node->type);
+    ), $form_state, $configuration, $type);
   }
 }
 
@@ -123,87 +108,22 @@ function tp_video_player_node_update($node) {
 
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
-    // Load the full page defaults.
-    $global_default = $node->type == 'video_playlist' ? 'playlist_full_page' : 'full_page';
-    $defaults = tp_video_player_load_default_configuration($global_default);
-    if (is_null($defaults)) {
-      $defaults = tp_video_player_create_configuration();
-    }
+    $type = $node->type === 'video_playlist' ? 'playlist' : 'video';
+    $default = "{$type}_full_page";
 
     // Load any available node specific configuration.
-    $override = tp_video_player_load_entity_configuration('node', $node->nid);
-    if (is_null($override)) {
-      $override = tp_video_player_create_configuration();
+    $configuration = tp_video_player_load_entity_configuration('node', $node->nid, $default);
+    if (is_null($configuration)) {
+      $configuration = tp_video_player_clone_default_configuration($default);
     }
 
-    // Update, save and attach the override.
-    tp_video_player_update_override($defaults, $override, $node->tp_video_player);
-    tp_video_player_save_configuration($override);
-    tp_video_player_attach_entity_configuration('node', $node->nid, $override);
-  }
-}
+    // Pull in the configuration form from the admin.
+    module_load_include('inc', 'tp_video_player', 'tp_video_player.admin');
 
-/**
- * Updates an override configuration to have only those values that differ
- * from the defaults.
- */
-function tp_video_player_update_override($defaults, $override, $values) {
-
-  $boolean_fields = array(
-    'layout' => array(
-      'responsive',
-    ),
-    'playback' => array(
-      'auto_start',
-      'mute_playback',
-      'repeat_playback',
-    ),
-    'sharing' => array(
-      'enable_share',
-    ),
-  );
-  foreach ($boolean_fields as $group => $fields) {
-    foreach ($fields as $name) {
-      if (empty($defaults->$name) == empty($values[$group][$name])) {
-        // Value matches the default, so it is not overridden.
-        $override->{$name} = NULL;
-      }
-      else {
-        // Value does not match the default, store the override.
-        $override->{$name} = !empty($values[$group][$name]) ? 1 : 0;
-      }
-    }
-  }
-
-  $scalar_fields = array(
-    'layout' => array(
-      'width',
-      'height',
-      'skin',
-    ),
-    'sharing' => array(
-      'share_heading',
-      'share_url',
-      'embed_code',
-    ),
-    'advertising' => array(
-      'ad_frequency',
-      'ad_tag',
-      'ad_message',
-    ),
-  );
-  foreach ($scalar_fields as $group => $fields) {
-    foreach ($fields as $name) {
-      $value = $values[$group][$name];
-      if ($defaults->{$name} == $value) {
-        // Value matches the default, so it is not overridden.
-        $override->{$name} = NULL;
-      }
-      else {
-        // Value does not match the default, store the override.
-        $override->{$name} = $value;
-      }
-    }
+    // Update, save and attach the node specific configuration.
+    tp_video_player_update_configuration($configuration, $node->tp_video_player);
+    tp_video_player_save_configuration($configuration);
+    tp_video_player_attach_entity_configuration('node', $node->nid, $default, $configuration);
   }
 }
 
@@ -223,7 +143,7 @@ function tp_video_player_field_formatter_info() {
       'label' => t('TakePart Video Player'),
       'field types' => array('file'),
       'settings' => array(
-        'global_default' => 'full_page',
+        'global_default' => '',
       ),
     )
   );
@@ -240,7 +160,7 @@ function tp_video_player_field_formatter_settings_form($field, $instance, $view_
 
   if ($display['type'] === 'tp_video_player') {
     $options = array();
-    foreach (tp_video_player_defaults_info() as $name => $info) {
+    foreach (tp_video_player_defaults() as $name => $info) {
       $options[$name] = t($info['title']);
     }
     $elements['global_default'] = array(
@@ -264,9 +184,9 @@ function tp_video_player_field_formatter_settings_summary($field, $instance, $vi
   $default = $settings['global_default'];
 
   if (!empty($default)) {
-    $defaults = tp_video_player_defaults_info();
+    $info = tp_video_player_defaults($default);
     return t('Default settings: @title', array(
-      '@title' => isset($defaults[$default]) ? t($defaults[$default]['title']) : $default
+      '@title' => is_null($info) ? $default : t($info['title'])
     ));
   }
 
@@ -276,62 +196,37 @@ function tp_video_player_field_formatter_settings_summary($field, $instance, $vi
 /**
  * Implements hook_field_formatter_view().
  */
-function tp_video_player_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+function tp_video_player_field_formatter_view($entity_type, $entity, $field,
+  $instance, $langcode, $items, $display) {
 
   $elements = array();
   $settings = $display['settings'];
 
   if ($display['type'] === 'tp_video_player' && count($items) > 0) {
 
-    // Get the effective configuration (global default + entity override)
-    $configuration = tp_video_player_video_override_configuration(
-      $entity_type, $entity, $langcode, $settings['global_default']);
+    // Load any available node specific configuration.
+    $configuration = tp_video_player_load_entity_configuration($entity_type,
+      entity_id($entity_type, $entity), $settings['global_default']);
+    if (!is_null($configuration)) {
 
-    // The allowed regions list attached to the same entity.
-    $allowed_regions = tp_video_player_video_allowed_regions(
-      $entity_type, $entity);
-    foreach ($items as $delta => $item) {
-      $items[$delta]['allowed_regions'] = $allowed_regions;
+      // The allowed regions list attached to the same entity.
+      $allowed_regions = tp_video_player_video_allowed_regions(
+        $entity_type, $entity);
+      foreach ($items as $delta => $item) {
+        $items[$delta]['allowed_regions'] = $allowed_regions;
+        $items[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
+      }
+
+      // The configuration can contain tokens, resolve them now.
+      $configuration = tp_video_player_resolve_entity_configuration(
+        $entity_type, $entity, $langcode, $configuration);
+
+      // The formatter only ever returns one player.
+      $elements[] = tp_video_player_player_view($configuration, $items);
     }
-
-    // The formatter only ever returns one player.
-    $elements[] = tp_video_player_player_view($configuration, $items);
   }
 
   return $elements;
-}
-
-/**
- * Gets the active configuration for a video node.
- */
-function tp_video_player_video_override_configuration($entity_type, $entity, $langcode, $global_default) {
-
-  $configurations = array();
-
-  // Start with the default configuration.
-  $defaults = tp_video_player_load_default_configuration($global_default);
-  if (!is_null($defaults)) {
-    $configurations[] = $defaults;
-  }
-
-  // Add any specific entity overrides.
-  $override = tp_video_player_load_entity_configuration($entity_type,
-    entity_id($entity_type, $entity));
-  if (!is_null($override)) {
-    $configurations[] = $override;
-  }
-
-  // Merge the configurations into a single active configuration.
-  $active = tp_video_player_merge_configurations($configurations);
-
-  //overrides to make video_playlist always auto-start regardless of option
-  $menu_obj = menu_get_object();
-  if (is_object($menu_obj) && $menu_obj->type == 'video_playlist') {
-    $active->auto_start = 1;
-  }
-  
-  // The configuration can contain tokens, resolve them now.
-  return tp_video_player_resolve_entity_configuration($entity_type, $entity, $langcode, $active);
 }
 
 /**
@@ -339,8 +234,7 @@ function tp_video_player_video_override_configuration($entity_type, $entity, $la
  */
 function tp_video_player_video_allowed_regions($entity_type, $entity) {
   $regions = array();
-  $items = field_get_items($entity_type, $entity,
-    'field_allowed_regions');
+  $items = field_get_items($entity_type, $entity, 'field_allowed_regions');
   if ($items !== FALSE && count($items) > 0) {
     foreach ($items as $item) {
       $value = str_replace(array(','), ' ', $item['value']);

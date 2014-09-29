@@ -74,41 +74,6 @@ function tp_videos_entity_update($entity, $entity_type) {
 }
 
 /**
- * Implements hook_entity_load().
- */
-function tp_videos_entity_load($entities, $type) {
-  if ($type === 'file') {
-    $controller = new TakePart_VideoController();
-    foreach ($entities as $file) {
-      if ($file->filemime === 'video/youtube') {
-        $params = tp_videos_parse_wrapper_uri($file->uri);
-        $file->tp_videos_metadata = $controller->loadByExternalKey(
-          'TakePart_YoutubeVideo', $params['v']);
-        if (!isset($file->tp_videos_metadata)) {
-          tp_videos_entity_update($file, 'file');
-        }
-      }
-      elseif ($file->filemime === 'video/vimeo') {
-        $params = tp_videos_parse_wrapper_uri($file->uri);
-        $file->tp_videos_metadata = $controller->loadByExternalKey(
-          'TakePart_VimeoVideo', $params['v']);
-        if (!isset($file->tp_videos_metadata)) {
-          tp_videos_entity_update($file, 'file');
-        }
-      }
-      elseif ($file->filemime === 'video/jwplatform') {
-        $params = tp_videos_parse_wrapper_uri($file->uri);
-        $file->tp_videos_metadata = $controller->loadByExternalKey(
-          'TakePart_JWPlatformVideo', $params['key']);
-        if (!isset($file->tp_videos_metadata)) {
-          tp_videos_entity_update($file, 'file');
-        }
-      }
-    }
-  }
-}
-
-/**
  * Implements hook_entity_view_alter().
  */
 function tp_videos_entity_view_alter(&$build, $type) {
@@ -531,20 +496,102 @@ function tp_videos_field_formatter_prepare_view($entity_type, $entities, $field,
   }
 }
 
+function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, $langcode) {
+
+  $files = array();
+  $displays = arrays();
+
+  foreach ($videos as $node) {
+
+    // The node must have a video player configuration.
+    $video_configuration = tp_video_player_load_entity_configuration(
+      'node', $node->nid, 'video_full_page');
+
+    if (!is_null($video_configuration)) {
+
+      // The configuration can contain tokens, resolve them now.
+      $video_configuration = tp_video_player_resolve_entity_configuration(
+        'node', $node, $langcode, $video_configuration);
+
+      // The node must actually reference a video.
+      $items = field_get_items('node', $video, 'field_video');
+      if ($items !== FALSE && count($items) > 0) {
+
+        // Use only the first referenced file as there will
+        // only be one navigation element per node.
+        $file = reset($item);
+
+        // JWPlayer channels are not allowed in playlists.
+        $scheme = file_uri_scheme($file['uri']);
+        if ($scheme === 'jwplatform-channel') { continue; }
+
+        // Add the video to the navigation strip (if there is one).
+        if ($view_mode !== 'hidelist') {
+          $displays[] = node_view($node, 'video_playlist_teaser', $langcode);
+        }
+
+        // Get the allowed regions for all files association with the node.
+        $allowed_regions = tp_video_player_video_allowed_regions('node', $video);
+
+        $files[] = $file + array(
+          'allowed_regions' => $allowed_regions,
+          'pre_roll_ad_tag' => $video_configuration->ad_tag,
+        );
+      }
+    }
+  }
+
+  // Build the video player content.
+  $player = tp_video_player_player_view($playlist_configuration, $files);
+
+  $content = array(
+    '#theme' => "tp_videos_{$view_mode}",
+    '#videos' => $videos,
+    '#playlist_player' => $player,
+  );
+
+  // Add the navigation strip if it is not hidden.
+  if ($view_mode !== 'hidelist') {
+    $content['#navigation'] = array(
+      '#theme' => 'tp_videos_navigation',
+      '#video_displays' => $displays,
+    );
+  }
+
+  return $content;
+}
+
 /**
  * Implements hook_field_formatter_view().
  */
 function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-	$playlist = array();
-  $files = array();
-	$settings = $display['settings'];
-	$view_mode = strtolower($settings['playlist_view_mode']);
+
+  $settings = $display['settings'];
+  $view_mode = strtolower($settings['playlist_view_mode']);
 
   // Override the items list if necessary.
   _tp_videos_playlist_filter_list_parser($items, $entity);
 
-	// Load the video nodes for the playlist
+	// Load the video nodes for the playlist.
 	$videos = node_load_multiple($items);
+
+  // Return no content if there are no videos.
+  if (empty($videos)) {
+    return array();
+  }
+
+  // Load the playlist's player configuration
+  $player_configuration = tp_video_player_load_entity_configuration($entity_type,
+    entity_id($entity_type, $entity), 'playlist_full_page');
+
+  // Return no content if the playlist does not have a plaver configuration.
+  if (is_null($player_configuration)) {
+    return array();
+  }
+
+  // The configuration can contain tokens, resolve them now.
+  $player_configuration = tp_video_player_resolve_entity_configuration(
+    $entity_type, $entity, $langcode, $player_configuration);
 
   // Processes the video to match sort order from query
   $videos_processed = array();
@@ -553,100 +600,28 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   }
   $videos = $videos_processed;
 
-  //return empty array if no videos exist
-  if (empty($videos)) {
-    return array();
+  // Allow the view mode to be overridden.
+  $items = field_get_items($entity_type, $entity, 'field_playlist_view_mode');
+  if ($items !== FALSE && count($items) > 0) {
+    $item = reset($items);
+    $view_mode = $item['value'];
   }
 
-  // Build the playlist
-
-	/* Override the View Mode if the view mode exists on the entity */
-	if($entity->field_playlist_view_mode){
-		$field_playlist_view_mode = field_get_items($entity_type, $entity, 'field_playlist_view_mode');
-		$view_mode = strtolower($field_playlist_view_mode[0]['value']);
-	}
-
-
-  switch ($view_mode) {
-    case 'basic':
-      $video_displays = array();
-      foreach($videos as $video){
-        $video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
-
-        // Add the allowed regions to each file referenced by the video node.
-        $items = field_get_items('node', $video, 'field_video');
-        $allowed_regions = tp_video_player_video_allowed_regions('node', $video);
-        foreach ($items as $item) {
-          $files[] = $item + array('allowed_regions' => $allowed_regions);
-        }
-
-      }
-      $playlist = array(
-        '#theme' => 'tp_videos_basic',
-        '#navigation' => array(
-          '#theme' => 'tp_videos_navigation',
-          '#video_displays' => $video_displays,
-        ),
-      );
-      break;
-
-    case 'detailed':
-      $video_displays = array();
-      foreach($videos as $video){
-        $video_displays[] = node_view($video, 'video_playlist_teaser', $langcode = NULL);
-
-        $items = field_get_items('node', $video, 'field_video');
-        $allowed_regions = tp_video_player_video_allowed_regions('node', $video);
-        foreach ($items as $item) {
-          $files[] = $item + array('allowed_regions' => $allowed_regions);
-        }
-
-      }
-      $playlist = array(
-        '#theme' => 'tp_videos_detailed',
-        '#navigation' => array(
-          '#theme' => 'tp_videos_navigation',
-          '#video_displays' => $video_displays,
-        ),
-      );
-      break;
-
-    case 'hidelist':
-	    foreach($videos as $video){
-		    $items = field_get_items('node', $video, 'field_video');
-		    $allowed_regions = tp_video_player_video_allowed_regions('node', $video);
-		    foreach ($items as $item) {
-			    $files[] = $item + array('allowed_regions' => $allowed_regions);
-		    }
-
-	    }
-      $playlist = array(
-        '#theme' => 'tp_videos_hidelist',
-
-      );
-      break;
+  // Set the title, then check if the entity allows it to be hidden.
+  $title = entity_label($entity_type, $entity);
+  $items = field_get_items($entity_type, $entity, 'field_show_title');
+  if ($items !== FALSE && count($items) > 0) {
+    $item = reset($items);
+    if ($item['value'] === 0) { $title = ''; }
   }
 
-  // Get the effective configuration for the playlist (global default + entity override)
-  $playlist_configuration = tp_video_player_video_override_configuration(
-    $entity_type, $entity, $langcode, 'playlist_full_page');
-
-  $playlist_player = tp_video_player_player_view($playlist_configuration, $files);
-
-	/* Show Title */
-	$title = '';
-	if($entity->field_show_title){
-		$show_title = field_get_items($entity_type, $entity, 'field_show_title');
-		$title = ($show_title[0]['value'] == 1 ? $entity->title : '');
-	}
+  // Build the playlist content.
+  $playlist = tp_videos_build_playlist($player_configuration, $videos, $view_mode, $langcode);
 
   $element = array(
     '#theme' => 'tp_videos_wrapper',
     '#title' => $title,
-    '#playlist' => $playlist + array(
-      '#playlist_player' => $playlist_player,
-      '#videos' => $videos,
-    ),
+    '#playlist' => $playlist,
   );
 
   // All items are included in the playlist element.
