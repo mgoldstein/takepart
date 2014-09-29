@@ -189,7 +189,7 @@
 
             {
               name: 'twitter',
-              text: '{{title}}' + (isFeatureArticle ? ' #longform' : ''),
+              text: '{{title}}',
               via: 'TakePart'
             },
             {
