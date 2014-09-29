@@ -24,9 +24,7 @@
             window.videoTransition; //hack for jwplayer firing twice onPlay and onComplete
             if(null == window.videoTransition){
               window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
-              var file = Drupal.settings.tp_video_player.settings['tp-video-player'].playlist[0].sources[window['currentVideo_' + index]].file;
-              jwplayer(element).load([{file: file}]);
-              jwplayer(element).play();
+              jwplayer(element).playlistItem(window['currentVideo_' + index]);
 
               playlist.find('.video-description .description-item').removeClass('active');
               playlist.find('ul.video-playlist .video-item').removeClass('active');
@@ -63,11 +61,7 @@
           window['currentVideo_' + index] = $(this).data('video-number');
           playlist.find('.video-description .description-item').removeClass('active');
           playlist.find('ul.video-playlist .video-item').removeClass('active');
-          var file = Drupal.settings.tp_video_player.settings['tp-video-player'].playlist[index].sources[window['currentVideo_' + index]].file;
-
-          jwplayer(element).load([{file: file}]);
-          jwplayer(element).play();
-
+          jwplayer(element).playlistItem(window['currentVideo_' + index]);
           updateVideo(window['currentVideo_' + index], playlist);
 
         });
