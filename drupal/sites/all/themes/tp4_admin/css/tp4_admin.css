@@ -13,3 +13,7 @@ body.page-admin-structure-nodequeue-2 .region-content #block-views-87e72108321fe
   float: left;
   margin-left: 7px;
 }
+
+#video-playlist-node-form #edit-field-video-list .form-item table {
+  float: left;
+}
