@@ -519,7 +519,7 @@ function tp_video_player_install() {
       'ad_schedule' => $info['type'] === 'video'
         ? TP_VIDEO_PLAYER_VIDEO_SCHEDULE : TP_VIDEO_PLAYER_PLAYLIST_SCHEDULE,
       'ad_frequency' => 1,
-      'ad_client' => 'googima',
+      'ad_client' => 'vast',
       'ad_tag' => NULL,
       'ad_message' => 'Your video will play after this brief advertisement',
     ));
