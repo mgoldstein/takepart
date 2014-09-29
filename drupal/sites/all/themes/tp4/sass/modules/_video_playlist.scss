@@ -185,6 +185,9 @@ h3.video-title{
     overflow-y: auto;
     height: 225px;
   }
+  &[data-playlist-type="basic"] .video-playlist{
+    padding-top: 15px;
+  }
   .video-item{
     clear: both;
     width: 100%;
