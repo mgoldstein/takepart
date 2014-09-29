@@ -22,7 +22,7 @@ function tp_video_player_schema() {
         'not null' => TRUE,
       ),
       'name' => array(
-        'description' => 'Export name.',
+        'description' => 'Default name.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => FALSE,
@@ -195,6 +195,13 @@ function tp_video_player_schema() {
       ),
 
       /* Advertising */
+      'ad_schedule' => array(
+        'description' => 'The strategy to use for playing ads.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
       'ad_frequency' => array(
         'description' => 'Frequency at which pre-roll ads should be played in playlists.',
         'type' => 'int',
@@ -304,10 +311,16 @@ function tp_video_player_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
+      'view_mode' => array(
+        'description' => 'The specific view mode of the configuration.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
     ),
     'unique keys' => array(
       'configuration_id' => array('configuration_id'),
-      'entity_type_and_id_view_mode' => array('entity_type', 'entity_id', 'view_mode'),
+      'entity_type_entity_id_view_mode' => array('entity_type', 'entity_id', 'view_mode'),
     ),
   );
 
@@ -318,84 +331,73 @@ function tp_video_player_transfer_from_fields_sql() {
 return <<<EOSQL
   SELECT
     n.nid,
-    f1.field_sharing_enabled_value,
-    f2.field_share_url_value,
-    f3.field_player_embeddable_value,
-    f4.field_auto_play_value,
-    f5.field_mute_playback_value,
-    f6.field_ads_client_value,
-    f7.field_ads_tag_value,
-    f8.field_playlist_position_value,
-    f9.field_playlist_layout_value,
-    f10.field_playlist_size_value,
-    f11.field_player_skin_value
+    f1.field_sharing_enabled_value AS enable_share,
+    f2.field_share_url_value AS share_url,
+    f3.field_player_embeddable_value AS enable_embed,
+    f4.field_auto_play_value AS auto_start,
+    f5.field_mute_playback_value AS mute_playback,
+    f6.field_ads_client_value AS ad_client,
+    f7.field_ads_tag_value AS ad_tag,
+    f8.field_playlist_position_value AS playlist_position,
+    f9.field_playlist_layout_value AS playlist_layout,
+    f10.field_playlist_size_value AS playlist_size,
+    f11.field_player_skin_value AS skin
   FROM node n
 
   LEFT JOIN field_data_field_sharing_enabled f1
     ON  f1.entity_type = 'node'
     AND f1.entity_id = n.nid
     AND f1.bundle = n.type
-    AND f1.field_sharing_enabled_value <= 0
 
   LEFT JOIN field_data_field_share_url f2
     ON  f2.entity_type = 'node'
     AND f2.entity_id = n.nid
     AND f2.bundle = n.type
-    AND LENGTH(f2.field_share_url_value) > 0
 
   LEFT JOIN field_data_field_player_embeddable f3
     ON  f3.entity_type = 'node'
     AND f3.entity_id = n.nid
     AND f3.bundle = n.type
-    AND f3.field_player_embeddable_value != 1
 
   LEFT JOIN field_data_field_auto_play f4
     ON  f4.entity_type = 'node'
     AND f4.entity_id = n.nid
     AND f4.bundle = n.type
-    AND f4.field_auto_play_value != 0
 
   LEFT JOIN field_data_field_mute_playback f5
     ON  f5.entity_type = 'node'
     AND f5.entity_id = n.nid
     AND f5.bundle = n.type
-    AND f5.field_mute_playback_value != 0
 
   LEFT JOIN field_data_field_ads_client f6
     ON  f6.entity_type = 'node'
     AND f6.entity_id = n.nid
     AND f6.bundle = n.type
-    AND f6.field_ads_client_value != 'googima'
 
   LEFT JOIN field_data_field_ads_tag f7
     ON  f7.entity_type = 'node'
     AND f7.entity_id = n.nid
     AND f7.bundle = n.type
-    AND f7.field_ads_tag_value != 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]'
 
   LEFT JOIN field_data_field_playlist_position f8
     ON  f8.entity_type = 'node'
     AND f8.entity_id = n.nid
     AND f8.bundle = n.type
-    AND f8.field_playlist_position_value != 'none'
 
   LEFT JOIN field_data_field_playlist_layout f9
     ON  f9.entity_type = 'node'
     AND f9.entity_id = n.nid
     AND f9.bundle = n.type
-    AND f9.field_playlist_layout_value != 'full'
 
   LEFT JOIN field_data_field_playlist_size f10
     ON  f10.entity_type = 'node'
     AND f10.entity_id = n.nid
     AND f10.bundle = n.type
-    AND f10.field_playlist_size_value != 270
 
   LEFT JOIN field_data_field_player_skin f11
     ON  f11.entity_type = 'node'
     AND f11.entity_id = n.nid
     AND f11.bundle = n.type
-    AND f11.field_player_skin_value != 'glow'
 
   WHERE n.type = 'video'
   AND (
@@ -423,34 +425,45 @@ function tp_video_player_transfer_from_fields() {
     ->execute()
     ->fetchCol();
 
-  // Create an override for each video node.
+  // Create a configuration for each video node.
   foreach ($nids as $nid) {
-    $override = tp_video_player_create_configuration();
-    tp_video_player_save_configuration($override);
-    tp_video_player_attach_entity_configuration('node', $nid, $override);
+    $configuration = tp_video_player_create_configuration();
+    tp_video_player_save_configuration($configuration);
+    tp_video_player_attach_entity_configuration('node', $nid, 'video_full_page', $configuration);
   }
 
-  // Get the field bases overrides
+  // Ad tag translations
+  $ad_tags = array(
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_Siderail_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]' => 'tp3_video_siderail_640x360',
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_HP_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]' => 'tp3_video_hp_640x360',
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]' => 'tp3_video_640x360',
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_Siderail_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' => 'tp3_video_siderail_640x360',
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_po' => 'tp3_video_640x360',
+  );
+
+  // Get the field based configurations
   $result = db_query(tp_video_player_transfer_from_fields_sql());
   while ($row = $result->fetchAssoc()) {
 
-    $override = tp_video_player_load_entity_configuration('node', $row['nid']);
+    $configuration = tp_video_player_load_entity_configuration('node', $row['nid'], 'video_full_page');
 
-    $override->enable_share = $row['field_sharing_enabled_value'];
-    $override->share_url = $row['field_share_url_value'];
-    if ($row['field_player_embeddable_value'] == 0) {
-      $override->embed_code = '';
+    foreach ($row as $name => $value) {
+      if ($name === 'enable_embed') {
+        if ($value) {
+          $configuration->embed_code = '[node:iframe-embed-markup]';
+        }
+      }
+      elseif ($name === 'ad_tag') {
+        if (isset($ad_tags[$value])) {
+          $configuration->{$name} = $ad_tags[$value];
+        }
+      }
+      elseif ($name !== 'nid') {
+        $configuration->{$name} = $value;
+      }
     }
-    $override->auto_start = $row['field_auto_play_value'];
-    $override->mute_playback = $row['field_mute_playback_value'];
-    $override->ad_client = $row['field_ads_client_value'];
-    $override->ad_tag = $row['field_ads_tag_value'];
-    $override->playlist_position = $row['field_playlist_position_value'];
-    $override->playlist_layout = $row['field_playlist_layout_value'];
-    $override->playlist_size = $row['field_playlist_size_value'];
-    $override->skin = $row['field_player_skin_value'];
 
-    tp_video_player_save_configuration($override);
+    tp_video_player_save_configuration($configuration);
   }
 }
 
@@ -458,57 +471,59 @@ function tp_video_player_transfer_from_fields() {
  * Implements hook_install().
  */
 function tp_video_player_install() {
-  foreach (tp_video_player_defaults_info() as $name => $info) {
-    $configuration = tp_video_player_create_default_configuration(array(
+  foreach (tp_video_player_defaults() as $name => $info) {
+    $configuration = tp_video_player_create_configuration(array(
+
+      /* Allow access by name */
+      'name' => $name,
+
+      /* Promo */
+      'show_promo_title' => 0,
+      'promo_image' => NULL,
+      'promo_title' => '[node:title]',
+
+      /* Layout */
+      'show_controls' => 1,
+      'responsive' => 1,
+      'width' => 16,
+      'height' => 9,
+      'skin' => 'glow',
+      'stretching' => 'uniform',
+
+      /* Playback */
+      'auto_start' => 0,
+      'fallback' => 0,
+      'mute_playback' => 0,
+      'repeat_playback' => 0,
+      'primary_player' => 'html5',
+
+      /* Playlist */
+      'playlist_position' => 'none',
+      'playlist_size' => 270,
+      'playlist_layout' => 'extended',
+
+      /* Sharing */
+      'enable_share' => 1,
+      'share_heading' => 'Share This Video',
+      'share_url' => '[f:bool:{node:field_share_url}:{node:field_share_url}:{node:url:absolute}]?cmpid=longtailshare',
+      'embed_code' => '[node:iframe-embed-markup]',
+
+      /* Analytics */
+      'enable_jwplayer_analytics' => 1,
+      'google_analytics_object' => '_gaq',
+      'google_analytics_title' => 'title',
+      'site_catalyst_media_name' => '[node:title]',
       'site_catalyst_player_name' => $info['title'],
+
+      /* Advertising */
+      'ad_schedule' => $info['type'] === 'video'
+        ? TP_VIDEO_PLAYER_VIDEO_SCHEDULE : TP_VIDEO_PLAYER_PLAYLIST_SCHEDULE,
+      'ad_frequency' => 1,
+      'ad_client' => 'googima',
+      'ad_tag' => NULL,
+      'ad_message' => 'Your video will play after this brief advertisement',
     ));
     tp_video_player_save_configuration($configuration);
   }
-  tp_video_player_transfer_from_fields();
-}
-
-/**
- * Move node configurations to the entity configuration table.
- */
-function tp_video_player_update_7100() {
-
-  // Create the entity based configuration table
-  $schema = tp_video_player_schema();
-  db_create_table('tp_video_player_entity_configuration',
-    $schema['tp_video_player_entity_configuration']);
-
-  // Get all of the existing node configurations
-  $node_configurations = db_select('tp_video_player_node_configuration', 'nc')
-    ->fields('nc', array('configuration_id', 'nid'))
-    ->execute()
-    ->fetchAllAssoc('configuration_id');
-
-  // Add the node configurations to the entity based table
-  foreach ($node_configurations as $configuration) {
-    db_insert('tp_video_player_entity_configuration')
-      ->fields(array(
-        'configuration_id' => $configuration->configuration_id,
-        'entity_type' => 'node',
-        'entity_id' => $configuration->nid,
-      ))
-      ->execute();
-  }
-}
-
-/**
- * Drop the node base configuration table.
- */
-function tp_video_player_update_7101() {
-  db_drop_table('tp_video_player_node_configuration');
-}
-
-/**
- * Drop the entity configuration view mode.
- */
-function tp_video_player_update_7102() {
-  db_drop_unique_key('tp_video_player_entity_configuration',
-    'entity_type_and_id_view_mode');
-  db_drop_field('tp_video_player_entity_configuration', 'view_mode');
-  db_add_unique_key('tp_video_player_entity_configuration',
-    'entity_type_and_id', array('entity_type', 'entity_id'));
+  //tp_video_player_transfer_from_fields();
 }

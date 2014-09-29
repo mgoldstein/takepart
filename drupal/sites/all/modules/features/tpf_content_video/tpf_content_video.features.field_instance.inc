@@ -4735,25 +4735,22 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'tp_video_player',
         'settings' => array(
-          'global_default' => 'full_page',
+          'global_default' => 'video_full_page',
         ),
         'type' => 'tp_video_player',
         'weight' => 1,
       ),
       'embed' => array(
         'label' => 'hidden',
-        'module' => 'tp_video_player',
-        'settings' => array(
-          'global_default' => 'embed',
-        ),
-        'type' => 'tp_video_player',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'feature_main' => array(
         'label' => 'hidden',
         'module' => 'tp_video_player',
         'settings' => array(
-          'global_default' => 'feature_main',
+          'global_default' => 'video_feature_main',
         ),
         'type' => 'tp_video_player',
         'weight' => 0,
@@ -4762,7 +4759,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'above',
         'module' => 'tp_video_player',
         'settings' => array(
-          'global_default' => 'feature_main_tpl',
+          'global_default' => 'video_feature_main_tpl',
         ),
         'type' => 'tp_video_player',
         'weight' => 0,
@@ -4777,7 +4774,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'tp_video_player',
         'settings' => array(
-          'global_default' => 'feature_topic',
+          'global_default' => 'video_feature_topic',
         ),
         'type' => 'tp_video_player',
         'weight' => 0,
@@ -4792,7 +4789,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'tp_video_player',
         'settings' => array(
-          'global_default' => 'iframe',
+          'global_default' => 'video_iframe',
         ),
         'type' => 'tp_video_player',
         'weight' => 1,
@@ -4804,12 +4801,9 @@ function tpf_content_video_field_default_field_instances() {
         'weight' => 6,
       ),
       'teaser' => array(
-        'label' => 'hidden',
-        'module' => 'tp_video_player',
-        'settings' => array(
-          'global_default' => 'teaser',
-        ),
-        'type' => 'tp_video_player',
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 2,
       ),
       'token' => array(

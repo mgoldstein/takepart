@@ -5,39 +5,59 @@
  */
 
 function tp_video_player_defaults_page($name) {
+
   $configuration = tp_video_player_load_default_configuration($name);
   if (is_null($configuration)) {
-    $configuration = tp_video_player_create_default_configuration($name);
+    $configuration = tp_video_player_create_configuration(array('name' => $name));
   }
-  return drupal_get_form('tp_video_player_defaults_form', $configuration);
+
+  $info = tp_video_player_defaults($name);
+  return drupal_get_form('tp_video_player_configuration_form', $configuration, $info['type']);
 }
 
 function tp_video_player_form_promo_fields($values, $is_default = FALSE) {
 
   $fields = array();
 
-  $fields['show_promo_title'] = array(
-    '#type' => 'checkbox',
-    '#title' => 'Show Title',
-    '#description' => t('Display the title of the video file inside the play icon in the middle of the display'),
-    '#default_value' => $values['show_promo_title'],
-    '#access' => $is_default,
-  );
+  if ($is_default) {
 
-  $fields['promo_title'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Title'),
-    '#default_value' => $values['promo_title'],
-    '#access' => $is_default,
-  );
+    $fields['show_promo_title'] = array(
+      '#type' => 'checkbox',
+      '#title' => 'Show Title',
+      '#description' => t('Display the title of the video file inside the play icon in the middle of the display'),
+      '#default_value' => $values['show_promo_title'],
+    );
 
-  $fields['promo_image'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Image'),
-    '#description' => t('URL to a poster image to display before playback starts'),
-    '#default_value' => $values['promo_image'],
-    '#access' => $is_default,
-  );
+    $fields['promo_title'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Title'),
+      '#default_value' => $values['promo_title'],
+    );
+
+    $fields['promo_image'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Image'),
+      '#description' => t('URL to a poster image to display before playback starts'),
+      '#default_value' => $values['promo_image'],
+    );
+  }
+  else {
+
+    $fields['show_promo_title'] = array(
+      '#type' => 'value',
+      '#value' => $values['show_promo_title'],
+    );
+
+    $fields['promo_title'] = array(
+      '#type' => 'value',
+      '#value' => $values['promo_title'],
+    );
+
+    $fields['promo_image'] = array(
+      '#type' => 'value',
+      '#value' => $values['promo_image'],
+    );
+  }
 
   return $fields;
 }
@@ -46,13 +66,20 @@ function tp_video_player_form_layout_fields($values, $is_default = FALSE) {
 
   $fields = array();
 
-  $fields['show_controls'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Show Controls'),
-    '#description' => t('Display the video controls (controlbar, display icons and dock buttons)'),
-    '#default_value' => $values['show_controls'],
-    '#access' => $is_default,
-  );
+  if ($is_default) {
+    $fields['show_controls'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Show Controls'),
+      '#description' => t('Display the video controls (controlbar, display icons and dock buttons)'),
+      '#default_value' => $values['show_controls'],
+    );
+  }
+  else {
+    $fields['show_controls'] = array(
+      '#type' => 'value',
+      '#value' => $values['show_controls'],
+    );
+  }
 
   $fields['responsive'] = array(
     '#type' => 'checkbox',
@@ -97,20 +124,27 @@ function tp_video_player_form_layout_fields($values, $is_default = FALSE) {
     '#default_value' => $values['skin'],
   );
 
-  $fields['stretching'] = array(
-    '#type' => 'select',
-    '#title' => t('Strecthing'),
-    '#description' => t('How to resize images and video to fit the display'),
-    '#options' => array(
-      'uniform' => t('Uniform'),
-      'exactfit' => t('Exact Fit'),
-      'fill' => t('Fill'),
-      'none' => t('None'),
-    ),
-    '#required' => TRUE,
-    '#default_value' => $values['stretching'],
-    '#access' => $is_default,
-  );
+  if ($is_default) {
+    $fields['stretching'] = array(
+      '#type' => 'select',
+      '#title' => t('Strecthing'),
+      '#description' => t('How to resize images and video to fit the display'),
+      '#options' => array(
+        'uniform' => t('Uniform'),
+        'exactfit' => t('Exact Fit'),
+        'fill' => t('Fill'),
+        'none' => t('None'),
+      ),
+      '#required' => TRUE,
+      '#default_value' => $values['stretching'],
+    );
+  }
+  else {
+    $fields['stretching'] = array(
+      '#type' => 'value',
+      '#value' => $values['stretching'],
+    );
+  }
 
   return $fields;
 }
@@ -126,13 +160,20 @@ function tp_video_player_form_playback_fields($values, $is_default = FALSE) {
     '#default_value' => $values['auto_start'],
   );
 
-  $fields['fallback'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Fallback'),
-    '#description' => t('Render a nice download link to the video if HTML5/Flash are not supported'),
-    '#default_value' => $values['fallback'],
-    '#access' => $is_default,
-  );
+  if ($is_default) {
+    $fields['fallback'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Fallback'),
+      '#description' => t('Render a nice download link to the video if HTML5/Flash are not supported'),
+      '#default_value' => $values['fallback'],
+    );
+  }
+  else {
+    $fields['fallback'] = array(
+      '#type' => 'value',
+      '#value' => $values['fallback'],
+    );
+  }
 
   $fields['mute_playback'] = array(
     '#type' => 'checkbox',
@@ -148,18 +189,25 @@ function tp_video_player_form_playback_fields($values, $is_default = FALSE) {
     '#default_value' => $values['repeat_playback'],
   );
 
-  $fields['primary_player'] = array(
-    '#type' => 'select',
-    '#title' => t('Primary Player'),
-    '#description' => t('Which rendering mode to use for rendering the player if both are available'),
-    '#options' => array(
-      'html5' => t('HTML5'),
-      'flash' => t('Flash'),
-    ),
-    '#required' => TRUE,
-    '#default_value' => $values['primary_player'],
-    '#access' => $is_default,
-  );
+  if ($is_default) {
+    $fields['primary_player'] = array(
+      '#type' => 'select',
+      '#title' => t('Primary Player'),
+      '#description' => t('Which rendering mode to use for rendering the player if both are available'),
+      '#options' => array(
+        'html5' => t('HTML5'),
+        'flash' => t('Flash'),
+      ),
+      '#required' => TRUE,
+      '#default_value' => $values['primary_player'],
+    );
+  }
+  else {
+    $fields['primary_player'] = array(
+      '#type' => 'value',
+      '#value' => $values['primary_player'],
+    );
+  }
 
   return $fields;
 }
@@ -168,42 +216,59 @@ function tp_video_player_form_playlist_fields($values, $is_default = FALSE) {
 
   $fields = array();
 
-  $fields['playlist_position'] = array(
-    '#type' => 'select',
-    '#title' => t('Position'),
-    '#description' => t('Position of the listbar relative to the video display'),
-    '#options' => array(
-      'bottom' => t('Bottom'),
-      'none' => t('None'),
-      'right' => t('Right'),
-    ),
-    '#required' => TRUE,
-    '#default_value' => $values['playlist_position'],
-    '#access' => $is_default,
-  );
+  if ($is_default) {
 
-  $fields['playlist_size'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Size'),
-    '#description' => t('Width (if position is right) or height (if position is bottom) of the listbar. This is basically the amount of pixels the bar "steals" from the video window.'),
-    '#default_value' => $values['playlist_size'],
-    '#required' => TRUE,
-    '#element_validate' => array('element_validate_integer_positive'),
-    '#access' => $is_default,
-  );
+    $fields['playlist_position'] = array(
+      '#type' => 'select',
+      '#title' => t('Position'),
+      '#description' => t('Position of the listbar relative to the video display'),
+      '#options' => array(
+        'bottom' => t('Bottom'),
+        'none' => t('None'),
+        'right' => t('Right'),
+      ),
+      '#required' => TRUE,
+      '#default_value' => $values['playlist_position'],
+    );
 
-  $fields['playlist_layout'] = array(
-    '#type' => 'select',
-    '#title' => t('Layout'),
-    '#description' => t('Layout of the playlist items in the listbar. Can be basic (only title) or extended (image, title and description)'),
-    '#options' => array(
-      'basic' => t('Basic'),
-      'extended' => t('Extended'),
-    ),
-    '#required' => TRUE,
-    '#default_value' => $values['playlist_layout'],
-    '#access' => $is_default,
-  );
+    $fields['playlist_size'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Size'),
+      '#description' => t('Width (if position is right) or height (if position is bottom) of the listbar. This is basically the amount of pixels the bar "steals" from the video window.'),
+      '#default_value' => $values['playlist_size'],
+      '#required' => TRUE,
+      '#element_validate' => array('element_validate_integer_positive'),
+    );
+
+    $fields['playlist_layout'] = array(
+      '#type' => 'select',
+      '#title' => t('Layout'),
+      '#description' => t('Layout of the playlist items in the listbar. Can be basic (only title) or extended (image, title and description)'),
+      '#options' => array(
+        'basic' => t('Basic'),
+        'extended' => t('Extended'),
+      ),
+      '#required' => TRUE,
+      '#default_value' => $values['playlist_layout'],
+    );
+  }
+  else {
+
+    $fields['playlist_position'] = array(
+      '#type' => 'value',
+      '#value' => $values['playlist_position'],
+    );
+
+    $fields['playlist_size'] = array(
+      '#type' => 'value',
+      '#value' => $values['playlist_size'],
+    );
+
+    $fields['playlist_layout'] = array(
+      '#type' => 'value',
+      '#value' => $values['playlist_layout'],
+    );
+  }
 
   return $fields;
 }
@@ -247,66 +312,112 @@ function tp_video_player_form_analytics_fields($values, $is_default = FALSE) {
 
   $fields = array();
 
-  $fields['enable_jwplayer_analytics'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Enable JWPlayer Analytics'),
-    '#description' => t('Whether to enable JWPlayer analytics or not.'),
-    '#default_value' => $values['enable_jwplayer_analytics'],
-    '#access' => $is_default,
-  );
+  if ($is_default) {
 
-  $fields['google_analytics_title'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Google Analytics Title'),
-    '#default_value' => $values['google_analytics_title'],
-    '#access' => $is_default,
-  );
+    $fields['enable_jwplayer_analytics'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Enable JWPlayer Analytics'),
+      '#description' => t('Whether to enable JWPlayer analytics or not.'),
+      '#default_value' => $values['enable_jwplayer_analytics'],
+    );
 
-  $fields['google_analytics_object'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Google Analytics Object'),
-    '#default_value' => $values['google_analytics_object'],
-    '#access' => $is_default,
-  );
+    $fields['google_analytics_title'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Google Analytics Title'),
+      '#default_value' => $values['google_analytics_title'],
+    );
 
-  $fields['site_catalyst_media_name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('SiteCatalyst Media Name'),
-    '#default_value' => $values['site_catalyst_media_name'],
-    '#access' => $is_default,
-  );
+    $fields['google_analytics_object'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Google Analytics Object'),
+      '#default_value' => $values['google_analytics_object'],
+    );
 
-  $fields['site_catalyst_player_name'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Site Catalyst Player Name'),
-    '#default_value' => $values['site_catalyst_player_name'],
-    '#access' => $is_default,
-  );
+    $fields['site_catalyst_media_name'] = array(
+      '#type' => 'textfield',
+      '#title' => t('SiteCatalyst Media Name'),
+      '#default_value' => $values['site_catalyst_media_name'],
+    );
+
+    $fields['site_catalyst_player_name'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Site Catalyst Player Name'),
+      '#default_value' => $values['site_catalyst_player_name'],
+    );
+  }
+  else {
+
+    $fields['enable_jwplayer_analytics'] = array(
+      '#type' => 'value',
+      '#value' => $values['enable_jwplayer_analytics'],
+    );
+
+    $fields['google_analytics_title'] = array(
+      '#type' => 'value',
+      '#value' => $values['google_analytics_title'],
+    );
+
+    $fields['google_analytics_object'] = array(
+      '#type' => 'value',
+      '#value' => $values['google_analytics_object'],
+    );
+
+    $fields['site_catalyst_media_name'] = array(
+      '#type' => 'value',
+      '#value' => $values['site_catalyst_media_name'],
+    );
+
+    $fields['site_catalyst_player_name'] = array(
+      '#type' => 'value',
+      '#value' => $values['site_catalyst_player_name'],
+    );
+  }
 
   return $fields;
 }
 
-function tp_video_player_form_advertising_fields($values, $is_default = FALSE) {
+function tp_video_player_form_playlist_advertising_fields($values, $is_default = FALSE) {
 
   $fields = array();
 
-  $fields['ad_client'] = array(
+  if ($is_default) {
+    $fields['ad_client'] = array(
+      '#type' => 'select',
+      '#title' => t('Client'),
+      '#description' => t('Which advertising system you are using.'),
+      '#options' => array(
+        'googima' => t('IMA'),
+        'vast' => t('VAST'),
+      ),
+      '#default_value' => $values['ad_client'],
+      '#required' => TRUE,
+      '#access' => $is_default,
+    );
+  }
+  else {
+    $fields['ad_client'] = array(
+      '#type' => 'value',
+      '#value' => $values['ad_client'],
+    );
+  }
+
+  $fields['ad_schedule'] = array(
     '#type' => 'select',
-    '#title' => t('Client'),
-    '#description' => t('Which advertising system you are using.'),
+    '#title' => t('Schedule'),
+    '#description' => t('Which type of ad schedule to use.'),
     '#options' => array(
-      'none' => t('None'),
-      'googima' => t('IMA'),
-      'vast' => t('VAST'),
+      TP_VIDEO_PLAYER_NO_SCHEDULE => t('No Ads'),
+      TP_VIDEO_PLAYER_VIDEO_SCHEDULE => t('Videos'),
+      TP_VIDEO_PLAYER_PLAYLIST_SCHEDULE => t('Playlist'),
     ),
-    '#default_value' => $values['ad_client'],
-    '#access' => $is_default,
+    '#default_value' => $values['ad_schedule'],
+    '#required' => TRUE,
   );
 
   $fields['ad_frequency'] = array(
     '#type' => 'select',
-    '#title' => t('Frequency'),
-    '#description' => t('Frequency at which ads should be played when playing through a playlist.'),
+    '#title' => t('Playlist Frequency'),
+    '#description' => t('Frequency at which ads should be played when using the playlist ad schedule.'),
     '#options' => array(
       1 => '1',
       2 => '2',
@@ -320,14 +431,22 @@ function tp_video_player_form_advertising_fields($values, $is_default = FALSE) {
       10 => '10',
     ),
     '#default_value' => $values['ad_frequency'],
+    '#required' => TRUE,
   );
 
+  $ad_tags = array();
+  foreach (takepart_ads_load_tag_list() as $name => $tag) {
+    $ad_tags[$name] = $tag->title;
+  }
+  $default_ad_tag_title = t('Tag [!link]', array(
+    '!link' => '<a href="/admin/config/system/ads/tags" target="_blank">Manage Tags Here</a>',
+  ));
   $fields['ad_tag'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Tag'),
-    '#description' => t('URL of the VAST or IMA ad tag to play.'),
-    '#default_value' => $configuration->ad_tag,
-    '#maxlength' => 255,
+    '#type' => 'select',
+    '#title' => $is_default ? $default_ad_tag_title : t('Tag'),
+    '#description' => t('The ad tag to use'),
+    '#options' => $ad_tags,
+    '#default_value' => $values['ad_tag'],
   );
 
   $fields['ad_message'] = array(
@@ -340,20 +459,83 @@ function tp_video_player_form_advertising_fields($values, $is_default = FALSE) {
   return $fields;
 }
 
-function tp_video_player_defaults_form($form, &$form_state, $configuration, $type = 'video_playlist') {
+function tp_video_player_form_video_advertising_fields($values, $is_default = FALSE) {
+
+  $fields = array();
+
+  if ($is_default) {
+    $fields['ad_client'] = array(
+      '#type' => 'select',
+      '#title' => t('Client'),
+      '#description' => t('Which advertising system you are using.'),
+      '#options' => array(
+        'googima' => t('IMA'),
+        'vast' => t('VAST'),
+      ),
+      '#default_value' => $values['ad_client'],
+      '#required' => TRUE,
+    );
+  }
+  else {
+    $fields['ad_client'] = array(
+      '#type' => 'value',
+      '#value' => $values['ad_client'],
+    );
+  }
+
+  $fields['ad_schedule'] = array(
+    '#type' => 'value',
+    '#value' => TP_VIDEO_PLAYER_VIDEO_SCHEDULE,
+  );
+
+  $fields['ad_frequency'] = array(
+    '#type' => 'value',
+    '#value' => 1,
+  );
+
+  $ad_tags = array('' => t('No Ads'));
+  foreach (takepart_ads_load_tag_list() as $name => $tag) {
+    $ad_tags[$name] = $tag->title;
+  }
+  $default_ad_tag_title = t('Tag [!link]', array(
+    '!link' => '<a href="/admin/config/system/ads/tags" target="_blank">Manage Tags Here</a>',
+  ));
+  $fields['ad_tag'] = array(
+    '#type' => 'select',
+    '#title' => $is_default ? $default_ad_tag_title : t('Tag'),
+    '#description' => t('The ad tag to use'),
+    '#options' => $ad_tags,
+    '#default_value' => $values['ad_tag'],
+  );
+
+  $fields['ad_message'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Message'),
+    '#description' => t('Message to show during linear ad playback. <em>The value <strong>XX</strong> will be replaced with the number of seconds remaining for the ad.</em>'),
+    '#default_value' => $values['ad_message'],
+  );
+
+  return $fields;
+}
+
+function tp_video_player_configuration_form($form, &$form_state, $configuration, $type) {
 
   $form_state['storage']['tp_video_player_configuration'] = $configuration;
+
+  $form['#tree'] = TRUE;
 
   $is_default = isset($configuration->name);
 
   $values = (array) $configuration;
 
-  $form['promo'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Promo'),
-    '#collapsible' => TRUE,
-    '#access' => $is_default,
-  ) + tp_video_player_form_promo_fields($values, $is_default);
+  $form['promo'] = tp_video_player_form_promo_fields($values, $is_default);
+  if ($is_default) {
+    $form['promo'] += array(
+      '#type' => 'fieldset',
+      '#title' => t('Promo'),
+      '#collapsible' => TRUE,
+    );
+  }
 
   $form['layout'] = array(
     '#type' => 'fieldset',
@@ -367,12 +549,15 @@ function tp_video_player_defaults_form($form, &$form_state, $configuration, $typ
     '#collapsible' => TRUE,
   ) + tp_video_player_form_playback_fields($values, $is_default);
 
-  $form['playlist'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Playlist'),
-    '#collapsible' => TRUE,
-    '#access' => $is_default,
-  ) + tp_video_player_form_playlist_fields($values, $is_default);
+
+  $form['playlist'] = tp_video_player_form_playlist_fields($values, $is_default);
+  if ($is_default) {
+    $form['playlist'] += array(
+      '#type' => 'fieldset',
+      '#title' => t('Playlist'),
+      '#collapsible' => TRUE,
+    );
+  }
 
   $form['sharing'] = array(
     '#type' => 'fieldset',
@@ -380,79 +565,126 @@ function tp_video_player_defaults_form($form, &$form_state, $configuration, $typ
     '#collapsible' => TRUE,
   ) + tp_video_player_form_sharing_fields($values, $is_default);
 
-  $form['analytics'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Analytics'),
-    '#collapsible' => TRUE,
-    '#access' => $is_default,
-  ) + tp_video_player_form_analytics_fields($values, $is_default);
 
-  $form['advertising'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Advertising'),
-    '#collapsible' => TRUE,
-  ) + tp_video_player_form_advertising_fields($values, $is_default);
+  $form['analytics'] = tp_video_player_form_analytics_fields($values, $is_default);
+  if ($is_default) {
+    $form['analytics'] += array(
+      '#type' => 'fieldset',
+      '#title' => t('Analytics'),
+      '#collapsible' => TRUE,
+    );
+  }
 
-  $form['actions'] = array(
-    'submit' => array(
-      '#type' => 'submit',
-      '#value' => t('Save defaults'),
-    ),
-    '#access' => $is_default,
-  );
+  if ($type === 'playlist') {
+    $form['advertising'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Advertising'),
+      '#collapsible' => TRUE,
+    ) + tp_video_player_form_playlist_advertising_fields($values, $is_default);
+  }
+  else {
+    $form['advertising'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Advertising'),
+      '#collapsible' => TRUE,
+    ) + tp_video_player_form_video_advertising_fields($values, $is_default);
+  }
+
+  if ($is_default) {
+    $form['actions'] = array(
+      'submit' => array(
+        '#type' => 'submit',
+        '#value' => t('Save defaults'),
+      ),
+    );
+  }
 
   return $form;
 }
 
-function tp_video_player_defaults_form_submit($form, $form_state) {
+function tp_video_player_configuration_form_submit($form, $form_state) {
 
   $configuration = $form_state['storage']['tp_video_player_configuration'];
-
-  $values = $form_state['values'];
-
-  $boolean_fields = array(
-    'show_promo_title',
-    'show_controls',
-    'responsive',
-    'auto_start',
-    'fallback',
-    'mute_playback',
-    'repeat_playback',
-    'enable_share',
-    'enable_jwplayer_analytics',
-  );
-  foreach ($boolean_fields as $name) {
-    $configuration->{$name} = !empty($values[$name]) ? 1 : 0;
-  }
-
-  $scalar_fields = array(
-    'promo_image',
-    'promo_title',
-    'width',
-    'height',
-    'skin',
-    'stretching',
-    'primary_player',
-    'playlist_position',
-    'playlist_size',
-    'playlist_layout',
-    'share_heading',
-    'share_url',
-    'embed_code',
-    'google_analytics_object',
-    'google_analytics_title',
-    'site_catalyst_media_name',
-    'site_catalyst_player_name',
-    'ad_frequency',
-    'ad_client',
-    'ad_tag',
-    'ad_message',
-  );
-  foreach ($scalar_fields as $name) {
-    $configuration->{$name} = empty($values[$name]) ? NULL : $values[$name];
-  }
-
+  tp_video_player_update_configuration($configuration, $form_state['values']);
   tp_video_player_save_configuration($configuration);
 
   drupal_set_message('Defaults saved.');
+}
+
+/**
+ * Updates an override configuration to have only those values that differ
+ * from the defaults.
+ */
+function tp_video_player_update_configuration($configuration, $values) {
+
+  $boolean_fields = array(
+    'promo' => array(
+      'show_promo_title',
+    ),
+    'layout' => array(
+      'show_controls',
+      'responsive',
+    ),
+    'playback' => array(
+      'auto_start',
+      'fallback',
+      'mute_playback',
+      'repeat_playback',
+    ),
+    'sharing' => array(
+      'enable_share',
+    ),
+    'analytics' => array(
+      'enable_jwplayer_analytics',
+    ),
+  );
+  foreach ($boolean_fields as $group => $fields) {
+    foreach ($fields as $name) {
+      $configuration->{$name} = !empty($values[$group][$name]) ? 1 : 0;
+    }
+  }
+
+  $scalar_fields = array(
+    'promo' => array(
+      'promo_image',
+      'promo_title',
+    ),
+    'layout' => array(
+      'width',
+      'height',
+      'skin',
+      'stretching',
+    ),
+    'playback' => array(
+      'primary_player',
+    ),
+    'playlist' => array(
+      'playlist_position',
+      'playlist_size',
+      'playlist_layout',
+    ),
+    'sharing' => array(
+      'share_heading',
+      'share_url',
+      'embed_code',
+    ),
+    'analytics' => array(
+      'google_analytics_object',
+      'google_analytics_title',
+      'site_catalyst_media_name',
+      'site_catalyst_player_name',
+    ),
+    'advertising' => array(
+      'ad_schedule',
+      'ad_frequency',
+      'ad_client',
+      'ad_tag',
+      'ad_message',
+    ),
+  );
+  foreach ($scalar_fields as $group => $fields) {
+    foreach ($fields as $name) {
+      $configuration->{$name} = $values[$group][$name];
+    }
+  }
 }

@@ -4,41 +4,87 @@
  * TakePart custom video player configuration object.
  */
 
-function tp_video_player_defaults_info() {
-  return array(
-    'full_page' => array(
+define ('TP_VIDEO_PLAYER_NO_SCHEDULE', 0);
+define ('TP_VIDEO_PLAYER_VIDEO_SCHEDULE', 1);
+define ('TP_VIDEO_PLAYER_PLAYLIST_SCHEDULE', 2);
+
+function tp_video_player_defaults($name = NULL) {
+  $info = array(
+    'video_full_page' => array(
+      'type' => 'video',
       'title' => 'Video Full Page',
       'description' => 'Full page video nodes.',
     ),
+    'video_block' => array(
+      'type' => 'video',
+      'title' => 'Video Block (Right Rail)',
+      'description' => 'Videos featured in a block.',
+    ),
+    'video_iframe' => array(
+      'type' => 'video',
+      'title' => 'Video iFrame Embed',
+      'description' => 'Videos embedded on other sites using an iframe.',
+    ),
+    'video_inline_content' => array(
+      'type' => 'video',
+      'title' => 'Video Inline Content',
+      'description' => 'Videos embedded in other content as an inline replacement.',
+    ),
+    'video_feature_main' => array(
+      'type' => 'video',
+      'title' => 'Video Front Page Feature',
+      'description' => 'Videos featured on the front page.',
+    ),
+    'video_feature_main_tpl' => array(
+      'type' => 'video',
+      'title' => 'Video Front Page Feature (TPL)',
+      'description' => 'Videos featured in the TPL section of the front page.',
+    ),
+    'video_feature_topic' => array(
+      'type' => 'video',
+      'title' => 'Video Topic Page Feature',
+      'description' => 'Videos featured on topic pages.',
+    ),
     'playlist_full_page' => array(
+      'type' => 'playlist',
       'title' => 'Playlist Full Page',
       'description' => 'Full page playlist nodes.',
     ),
-    'block' => array(
-      'title' => 'Block (Right Rail)',
-      'description' => 'Videos and playlists featured in a block.',
+    'playlist_block' => array(
+      'type' => 'playlist',
+      'title' => 'Playlist Block (Right Rail)',
+      'description' => 'Playlists featured in a block.',
     ),
-    'iframe' => array(
-      'title' => 'iFrame Embed',
-      'description' => 'Videos and playlists embedded on other sites using an iframe.',
+    'playlist_iframe' => array(
+      'type' => 'playlist',
+      'title' => 'Playlist iFrame Embed',
+      'description' => 'Playlists embedded on other sites using an iframe.',
     ),
-    'inline_content' => array(
-      'title' => 'Inline Content',
-      'description' => 'Videos and playlists embedded in other content as an inline replacement.',
+    'playlist_inline_content' => array(
+      'type' => 'playlist',
+      'title' => 'Playlist Inline Content',
+      'description' => 'Playlists embedded in other content as an inline replacement.',
     ),
-    'feature_main' => array(
-      'title' => 'Front Page Feature',
-      'description' => 'Videos and playlists featured on the front page.',
+    'playlist_feature_main' => array(
+      'type' => 'playlist',
+      'title' => 'Playlist Front Page Feature',
+      'description' => 'Playlists featured on the front page.',
     ),
-    'feature_main_tpl' => array(
-      'title' => 'Front Page Feature (TPL)',
-      'description' => 'Videos and playlists featured in the TPL section of the front page.',
+    'playlist_feature_main_tpl' => array(
+      'type' => 'playlist',
+      'title' => 'Playlist Front Page Feature (TPL)',
+      'description' => 'Playlists featured in the TPL section of the front page.',
     ),
-    'feature_topic' => array(
-      'title' => 'Topic Page Feature',
-      'description' => 'Videos and playlists featured on topic pages.',
+    'playlist_feature_topic' => array(
+      'type' => 'playlist',
+      'title' => 'Playlist Topic Page Feature',
+      'description' => 'Playlists featured on topic pages.',
     ),
   );
+
+  if (is_null($name)) { return $info; }
+  if (isset($info[$name])) { return $info[$name]; }
+  return NULL;
 }
 
 function tp_video_player_create_configuration($values = array()) {
@@ -63,7 +109,7 @@ function tp_video_player_create_configuration($values = array()) {
     'stretching' => NULL,
 
     /* Playback */
-    'auto_start' => 0,
+    'auto_start' => NULL,
     'fallback' => NULL,
     'mute_playback' => NULL,
     'repeat_playback' => NULL,
@@ -88,6 +134,7 @@ function tp_video_player_create_configuration($values = array()) {
     'site_catalyst_player_name' => NULL,
 
     /* Advertising */
+    'ad_schedule' => NULL,
     'ad_frequency' => NULL,
     'ad_client' => NULL,
     'ad_tag' => NULL,
@@ -103,58 +150,6 @@ function tp_video_player_create_configuration($values = array()) {
   return $object;
 }
 
-function tp_video_player_create_default_configuration($name) {
-  return tp_video_player_create_configuration(array(
-
-    /* Allow access by name */
-    'name' => $name,
-
-    /* Promo */
-    'show_promo_title' => 1,
-    'promo_image' => NULL,
-    'promo_title' => '[node:title]',
-
-    /* Layout */
-    'show_controls' => 1,
-    'responsive' => 1,
-    'width' => 16,
-    'height' => 9,
-    'skin' => 'glow',
-    'stretching' => 'uniform',
-
-    /* Playback */
-    'auto_start' => 0,
-    'fallback' => 0,
-    'mute_playback' => 0,
-    'repeat_playback' => 0,
-    'primary_player' => 'html5',
-
-    /* Playlist */
-    'playlist_position' => 'none',
-    'playlist_size' => 270,
-    'playlist_layout' => 'extended',
-
-    /* Sharing */
-    'enable_share' => 1,
-    'share_heading' => 'Share This Video',
-    'share_url' => '[f:bool:{node:field_share_url}:{node:field_share_url}:{node:url:absolute}]?cmpid=longtailshare',
-    'embed_code' => '[node:iframe-embed-markup]',
-
-    /* Analytics */
-    'enable_jwplayer_analytics' => 1,
-    'google_analytics_object' => '_gaq',
-    'google_analytics_title' => 'title',
-    'site_catalyst_media_name' => '[node:title]',
-    'site_catalyst_player_name' => NULL,
-
-    /* Advertising */
-    'ad_frequency' => 1,
-    'ad_client' => 'googima',
-    'ad_tag' => 'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_640x360&ciu_szs&impl=s&gdfp_req=1&ev=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]',
-    'ad_message' => 'Your video will play after this brief advertisement',
-  ));
-}
-
 function tp_video_player_load_default_configuration($name) {
   $object = db_select('tp_video_player_configuration', 'c')
     ->fields('c')
@@ -167,12 +162,23 @@ function tp_video_player_load_default_configuration($name) {
   return $object !== FALSE ? $object : NULL;
 }
 
-function tp_video_player_load_entity_configuration($entity_type, $entity_id) {
+function tp_video_player_clone_default_configuration($name) {
+  $configuration = tp_video_player_load_default_configuration($name);
+  $values = is_null($configuration) ? array() : (array) $configuration;
+  unset($values['name']);
+  unset($values['id']);
+  unset($values['created_at']);
+  unset($values['updated_at']);
+  return tp_video_player_create_configuration($values);
+}
+
+function tp_video_player_load_entity_configuration($entity_type, $entity_id, $view_mode) {
   $query = db_select('tp_video_player_configuration', 'c')
     ->fields('c');
   $query->join('tp_video_player_entity_configuration', 'e', 'e.configuration_id = c.id');
   $object = $query->condition('e.entity_type', $entity_type, '=')
     ->condition('e.entity_id', $entity_id, '=')
+    ->condition('e.view_mode', $view_mode, '=')
     ->range(0, 1)
     ->execute()
     ->fetchObject();
@@ -188,11 +194,12 @@ function tp_video_player_resolve_entity_configuration($entity_type, $entity, $la
   return $configuration;
 }
 
-function tp_video_player_attach_entity_configuration($entity_type, $entity_id, $configuration) {
+function tp_video_player_attach_entity_configuration($entity_type, $entity_id, $view_mode, $configuration) {
   $fields = array(
     'configuration_id' => $configuration->id,
     'entity_type' => $entity_type,
     'entity_id' => $entity_id,
+    'view_mode' => $view_mode,
   );
   db_merge('tp_video_player_entity_configuration')
     ->key(array('configuration_id' => $configuration->id))
@@ -233,19 +240,4 @@ function tp_video_player_save_configuration($configuration) {
       ->execute();
     $configuration->id = Database::getConnection()->lastInsertId();
   }
-}
-
-function tp_video_player_merge_configurations($configurations) {
-  $merged = tp_video_player_create_configuration();
-  foreach ($configurations as $configuration) {
-    // Update all attributes for which a non-null value is provided.
-    foreach ((array) $configuration as $name => $value) {
-      // Skip the id and name attributes as the merged configuration is a
-      // separate instance.
-      if ($name !== 'id' && $name !== 'name' && !is_null($value)) {
-        $merged->{$name} = $value;
-      }
-    }
-  }
-  return $merged;
 }
