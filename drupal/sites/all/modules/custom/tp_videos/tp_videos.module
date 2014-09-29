@@ -503,6 +503,12 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
 
   foreach ($videos as $node) {
 
+    // Unpubished nodes must be skipped when rendering the page for anonymous
+    // users.
+    if (!$node->status && !user_is_logged_in()) {
+      continue;
+    }
+
     // The node must have a video player configuration.
     $video_configuration = tp_video_player_load_entity_configuration(
       'node', $node->nid, 'video_full_page');
