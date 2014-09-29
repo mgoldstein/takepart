@@ -525,5 +525,5 @@ function tp_video_player_install() {
     ));
     tp_video_player_save_configuration($configuration);
   }
-  // tp_video_player_transfer_from_fields();
+  tp_video_player_transfer_from_fields();
 }
