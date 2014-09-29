@@ -500,6 +500,7 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
 
   $files = array();
   $displays = array();
+  $videos_used = array();
 
   foreach ($videos as $node) {
 
@@ -531,6 +532,9 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
         $scheme = file_uri_scheme($file['uri']);
         if ($scheme === 'jwplatform-channel') { continue; }
 
+        // Add the video to the list of video that were actually used.
+        $videos_used[] = $node;
+
         // Add the video to the navigation strip (if there is one).
         if ($view_mode !== 'hidelist') {
           $displays[] = node_view($node, 'video_playlist_teaser', $langcode);
@@ -555,7 +559,7 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
 
   $content = array(
     '#theme' => "tp_videos_{$view_mode}",
-    '#videos' => $videos,
+    '#videos' => $videos_used,
     '#playlist_player' => $player,
   );
 
