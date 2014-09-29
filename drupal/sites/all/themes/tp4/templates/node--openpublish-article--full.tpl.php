@@ -62,13 +62,13 @@
             print render($content['field_article_main_image']);
         }
         ?>
-				
-				<?php if (isset($content['field_video_list'])): ?>
-					<?php print render($content['field_video_list']); ?>
-				<?php endif; ?>
 
-				<?php print render($content['field_author']); ?>
-				
+        <?php if (isset($content['field_video_list'])): ?>
+            <?php print render($content['field_video_list']); ?>
+        <?php endif; ?>
+
+        <?php print render($content['field_author']); ?>
+
         <?php
         // We hide the comments and links now so that we can render them later.
         hide($content['comments']);
@@ -112,7 +112,7 @@
         <script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
 
 
-        <h3 class="top-border">Takepart&#8217;s Most Popular</h3>
+        <h3 class="top-border"><?php print t('Takepart&#8217;s Most Popular'); ?></h3>
 
         <div id="taboola-below-article-thumbnails"></div>
         <script type="text/javascript">
@@ -130,7 +130,7 @@
         </script>
         -->
 
-        <h3>From The Web</h3>
+        <h3><?php print t('From The Web'); ?></h3>
         <div id="taboola-below-article-thumbnails-2nd"></div>
         <script type="text/javascript">
             window._taboola = window._taboola || [];

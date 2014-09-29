@@ -34,18 +34,22 @@
     <script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
 
     <h3 class="top-border"><?php print t('Takepart&#8217;s Most Popular'); ?></h3>
-    <div id='taboola-bottom-main-column-mix'></div>
-    <script type="text/javascript">
-      window._taboola = window._taboola || [];
-      _taboola.push({mode:'thumbs-1r-organic', container:'taboola-bottom-main-column-mix', placement:'bottom-main-column', target_type:'mix'});
-    </script>
+    <div id="taboola-below-article-thumbnails"></div>
+        <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push(
+                    {mode: 'organic-thumbnails-a', container: 'taboola-below-article-thumbnails', placement: 'Below Article Thumbnails', target_type: 'mix'}
+            );
+        </script>
 
-    <h3>From The Web</h3>
-    <div id='taboola-below-main-column'></div>
-    <script type="text/javascript">
-    window._taboola = window._taboola || [];
-    _taboola.push({mode:'thumbs-1r', container:'taboola-below-main-column', placement:'below-main-column'});
-    </script>
+    <h3><?php print t('From The Web'); ?></h3>
+    <div id="taboola-below-article-thumbnails-2nd"></div>
+        <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push(
+                    {mode: 'thumbnails-a', container: 'taboola-below-article-thumbnails-2nd', placement: 'Below Article Thumbnails 2nd', target_type: 'mix'}
+            );
+        </script>
 
     <?php print render($on_our_radar); ?>
 
