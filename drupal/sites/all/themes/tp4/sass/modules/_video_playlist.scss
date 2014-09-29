@@ -21,7 +21,8 @@
   margin-bottom: 30px;
   
   @include breakpoint($breakpoint-tablet) {
-    padding: 15px;
+    padding: 10px;
+    padding-bottom: 15px; /* per Sasoon's comments */
   }
 }
 .playlist{
@@ -44,7 +45,11 @@ h3.video-title{
   margin-bottom: 10px;
   font-family: $primary-sans-font;
   font-size: 14px;
+  line-height: 1.25em; /* Per Sasoon's request */
   line-spacing: 20px;
+  @include breakpoint($breakpoint-tablet) {
+    line-height: 1em;
+  }
 }
 .video-description{
   font-family: $primary-sans-font;
@@ -55,6 +60,7 @@ h3.video-title{
 
 .bx-wrapper {
   padding: 0 25px;
+  padding-bottom: 5px; /* per Sasoon's comment */
   
   .bx-viewport {
     background: transparent;
@@ -104,7 +110,7 @@ h3.video-title{
   .image-wrapper {
     position: relative;
     float: left;
-    margin-bottom: 5px;
+    margin-bottom: 14px; /* per Sasoon's request */
     width: 100%;
     overflow: hidden;
     cursor: pointer;
@@ -172,7 +178,7 @@ h3.video-title{
 
 /* Playlist responsive variations based on 'breakpoints' */
 .playlist.small{
-  padding: 10px 6px;
+  padding: 5px 6px 10px 6px;
   
   .video-playlist{
     padding: 0;
