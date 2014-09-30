@@ -574,19 +574,53 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
   return $content;
 }
 
+function tp_videos_playlist_view_mode($entity_type, $entity, $default) {
+  $view_mode = $default;
+  $items = field_get_items($entity_type, $entity, 'field_playlist_view_mode');
+  if ($items !== FALSE && count($items) > 0) {
+    $item = reset($items);
+    $view_mode = $item['value'];
+  }
+  return $view_mode;
+}
+
+function tp_videos_playlist_title($entity_type, $entity, $default) {
+  $title = $default;
+  $items = field_get_items($entity_type, $entity, 'field_show_title');
+  if ($items !== FALSE && count($items) > 0) {
+    $item = reset($items);
+    if ($item['value'] === 0) { $title = ''; }
+  }
+  return $title;
+}
+
+function tp_videos_playlist_ordered_videos($entity, $items) {
+  // Override the items list if necessary.
+  _tp_videos_playlist_filter_list_parser($items, $entity);
+  // Load the video nodes for the playlist.
+  $videos = node_load_multiple($items);
+  // Processes the video to match sort order from query
+  $ordered = array();
+  foreach ($items as $key => $value) {
+    $ordered[] = $videos[$value['nid']];
+  }
+  return $ordered;
+}
+
 /**
  * Implements hook_field_formatter_view().
  */
 function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
 
   $settings = $display['settings'];
-  $view_mode = strtolower($settings['playlist_view_mode']);
 
-  // Override the items list if necessary.
-  _tp_videos_playlist_filter_list_parser($items, $entity);
+  $view_mode = tp_videos_playlist_view_mode($entity_type, $entity,
+    strtolower($settings['playlist_view_mode']));
 
-	// Load the video nodes for the playlist.
-	$videos = node_load_multiple($items);
+  $title = tp_videos_playlist_title($entity_type, $entity,
+    entity_label($entity_type, $entity));
+
+  $videos = tp_videos_playlist_ordered_videos($entity, $items);
 
   // Return no content if there are no videos.
   if (empty($videos)) {
@@ -605,28 +639,6 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   // The configuration can contain tokens, resolve them now.
   $player_configuration = tp_video_player_resolve_entity_configuration(
     $entity_type, $entity, $langcode, $player_configuration);
-
-  // Processes the video to match sort order from query
-  $videos_processed = array();
-  foreach ($items as $key => $values) {
-    $videos_processed[] = $videos[$values['nid']];
-  }
-  $videos = $videos_processed;
-
-  // Allow the view mode to be overridden.
-  $items = field_get_items($entity_type, $entity, 'field_playlist_view_mode');
-  if ($items !== FALSE && count($items) > 0) {
-    $item = reset($items);
-    $view_mode = $item['value'];
-  }
-
-  // Set the title, then check if the entity allows it to be hidden.
-  $title = entity_label($entity_type, $entity);
-  $items = field_get_items($entity_type, $entity, 'field_show_title');
-  if ($items !== FALSE && count($items) > 0) {
-    $item = reset($items);
-    if ($item['value'] === 0) { $title = ''; }
-  }
 
   // Build the playlist content.
   $playlist = tp_videos_build_playlist($player_configuration, $videos, $view_mode, $langcode);

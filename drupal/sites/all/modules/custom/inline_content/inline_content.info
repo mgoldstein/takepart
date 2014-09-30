@@ -16,6 +16,7 @@ files[] = handlers/InlineContentImage.class.php
 files[] = handlers/InlineContentAdBlock.class.php
 files[] = handlers/InlineContentPullQuote.class.php
 files[] = handlers/InlineContentVideo.class.php
+files[] = handlers/InlineContentVideoPlaylist.class.php
 
 dependencies[] = inline_entity_form
 dependencies[] = entity

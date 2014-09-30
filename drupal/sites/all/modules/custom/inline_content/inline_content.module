@@ -426,6 +426,12 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentVideo',
   );
 
+  $types['video_playlist'] = array(
+    'label' => t('Video Playlist'),
+    'description' => t('Video Playlist with player and display options'),
+    'controller' => 'InlineContentVideoPlaylist',
+  );
+
   return $types;
 }
 
