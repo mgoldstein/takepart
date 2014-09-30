@@ -143,7 +143,8 @@
           $(this).attr('src', $(this).parent().find('img.rollover-image-on').attr('src'));
         },
         function() {
-          $(this).attr('src', $(this).attr('old-src'));
+          // $(this).attr('src', $(this).attr('old-src'));
+          $(this).attr('src','/sites/all/themes/tp4/images/newsletter_submit.png');
         }
       );
     }

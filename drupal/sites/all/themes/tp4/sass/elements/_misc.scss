@@ -934,5 +934,22 @@ tr.selected td {
     background-size: cover;
     height: 0;
     padding-bottom: 56.25%; /* 16:9 */
+    
+    .jwmain {
+      display: none;
+    }
+  }
+}
+
+.jwplayer {
+  &.blocked {
+    width: 100%;
+    background: image-url('video-blocked.gif') no-repeat center center;
+    background-size: cover;
+    height: 0;
+    
+    .jwmain {
+      display: none;
+    }
   }
 }

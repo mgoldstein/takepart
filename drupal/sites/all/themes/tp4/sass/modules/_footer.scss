@@ -113,9 +113,13 @@
       height: auto;
       width: auto;
       overflow: hidden;
+      position: relative;
+      top: -5px;
       &:first-child {
+          top: 0;
         margin-left: 0px;
       }
+      
       a {
         display: block;
         text-indent: 100%;
@@ -127,8 +131,9 @@
           width: logos-sprite-width(takepart);
         }
         &.logos-participantmedia{
-          height: logos-sprite-height(participantmedia);
-          width: logos-sprite-width(participantmedia);
+          height: 40px;
+          width: 144px;
+          background: url('../images/logos/PM_Logo.png') no-repeat;
         }
         &.logos-pivot{
           height: logos-sprite-height(pivot);
