@@ -33,6 +33,8 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
+//	  krumo(debug_backtrace());
+//	  die();
     $content = array();
     $items = field_get_items('inline_content', $replacement, 'field_ic_playlist');
     if ($items !== FALSE && count($items) > 0) {
@@ -63,32 +65,43 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
           'node', $node, $langcode, $player_configuration);
 
         // Build the playlist content.
-        $playlist = tp_videos_build_playlist($player_configuration,
-          $videos, $view_mode, $langcode);
+	      $display = array(
+		      'label' => 'hidden',
+		      'type' => 'video_playlist',
+		      'settings' => array(
+						'playlist_view_mode' => $view_mode
+		      ),
+	      );
+	      $playlist = field_view_field('node', $node, 'field_video_list', $display);
 
-        $content = array(
-          '#theme' => 'tp_videos_wrapper',
-          '#title' => $title,
-          '#playlist' => $playlist,
-        );
+
+	      /* Let's not rebuild Drupal */
+//        $playlist = tp_videos_build_playlist($player_configuration,
+//          $videos, $view_mode, $langcode);
+
+//        $content = array(
+//          '#theme' => 'tp_videos_wrapper',
+//          '#title' => $title,
+//          '#playlist' => $playlist,
+//        );
       }
     }
 
-    $alignment = field_get_items('inline_content', $replacement, 'field_ic_alignment');
-    $alignment = $alignment[0]['value'];
+//    $alignment = field_get_items('inline_content', $replacement, 'field_ic_alignment');
+//    $alignment = $alignment[0]['value'];
+//
+//    $attributes = array();
+//
+//    $attributes['class'][] = 'inline-content-playlist';
+//    $attributes['class'][] = 'align-' . $alignment;
+//
+//    $content['#replacements'][] = array(
+//      '#prefix' => '<figure' . drupal_attributes($attributes) . '>',
+//      '#suffix' => '</figure>',
+//      '0' => $content,
+//    );
 
-    $attributes = array();
-
-    $attributes['class'][] = 'inline-content-playlist';
-    $attributes['class'][] = 'align-' . $alignment;
-
-    $content['#replacements'][] = array(
-      '#prefix' => '<figure' . drupal_attributes($attributes) . '>',
-      '#suffix' => '</figure>',
-      '0' => $content,
-    );
-
-    return $content;
+    return $playlist;
   }
 
   public function form($form, &$form_state, $replacement) {
