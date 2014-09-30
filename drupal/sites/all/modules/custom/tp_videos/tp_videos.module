@@ -513,41 +513,42 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
     // The node must have a video player configuration.
     $video_configuration = tp_video_player_load_entity_configuration(
       'node', $node->nid, 'video_full_page');
+    if (is_null($video_configuration)) {
+      $video_configuration = tp_video_player_clone_default_configuration(
+        'video_full_page');
+    }
 
-    if (!is_null($video_configuration)) {
+    // The configuration can contain tokens, resolve them now.
+    $video_configuration = tp_video_player_resolve_entity_configuration(
+      'node', $node, $langcode, $video_configuration);
 
-      // The configuration can contain tokens, resolve them now.
-      $video_configuration = tp_video_player_resolve_entity_configuration(
-        'node', $node, $langcode, $video_configuration);
+    // The node must actually reference a video.
+    $items = field_get_items('node', $node, 'field_video');
+    if ($items !== FALSE && count($items) > 0) {
 
-      // The node must actually reference a video.
-      $items = field_get_items('node', $node, 'field_video');
-      if ($items !== FALSE && count($items) > 0) {
+      // Use only the first referenced file as there will
+      // only be one navigation element per node.
+      $file = reset($items);
 
-        // Use only the first referenced file as there will
-        // only be one navigation element per node.
-        $file = reset($items);
+      // JWPlayer channels are not allowed in playlists.
+      $scheme = file_uri_scheme($file['uri']);
+      if ($scheme === 'jwplatform-channel') { continue; }
 
-        // JWPlayer channels are not allowed in playlists.
-        $scheme = file_uri_scheme($file['uri']);
-        if ($scheme === 'jwplatform-channel') { continue; }
+      // Add the video to the list of video that were actually used.
+      $videos_used[] = $node;
 
-        // Add the video to the list of video that were actually used.
-        $videos_used[] = $node;
-
-        // Add the video to the navigation strip (if there is one).
-        if ($view_mode !== 'hidelist') {
-          $displays[] = node_view($node, 'video_playlist_teaser', $langcode);
-        }
-
-        // Get the allowed regions for all files association with the node.
-        $allowed_regions = tp_video_player_video_allowed_regions('node', $node);
-
-        $files[] = $file + array(
-          'allowed_regions' => $allowed_regions,
-          'pre_roll_ad_tag' => $video_configuration->ad_tag,
-        );
+      // Add the video to the navigation strip (if there is one).
+      if ($view_mode !== 'hidelist') {
+        $displays[] = node_view($node, 'video_playlist_teaser', $langcode);
       }
+
+      // Get the allowed regions for all files association with the node.
+      $allowed_regions = tp_video_player_video_allowed_regions('node', $node);
+
+      $files[] = $file + array(
+        'allowed_regions' => $allowed_regions,
+        'pre_roll_ad_tag' => $video_configuration->ad_tag,
+      );
     }
   }
 
@@ -630,10 +631,9 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   // Load the playlist's player configuration
   $player_configuration = tp_video_player_load_entity_configuration($entity_type,
     entity_id($entity_type, $entity), 'playlist_full_page');
-
-  // Return no content if the playlist does not have a plaver configuration.
   if (is_null($player_configuration)) {
-    return array();
+    $player_configuration = tp_video_player_clone_default_configuration(
+      'playlist_full_page');
   }
 
   // The configuration can contain tokens, resolve them now.

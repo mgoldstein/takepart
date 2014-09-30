@@ -48,11 +48,15 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
       $items = field_get_items('node', $node, 'field_video_list');
       $videos = tp_videos_playlist_ordered_videos($node, $items);
 
-      // Load the playlist's player configuration
-      $player_configuration = tp_video_player_load_entity_configuration(
-        'inline_content', $replacement->id, 'playlist_inline_content');
+      if (!empty($videos)) {
 
-      if (!empty($videos) && !empty($player_configuration)) {
+        // Load the playlist's player configuration
+        $player_configuration = tp_video_player_load_entity_configuration(
+          'inline_content', $replacement->id, 'playlist_inline_content');
+        if (is_null($player_configuration)) {
+          $player_configuration = tp_video_player_clone_default_configuration(
+            'playlist_inline_content');
+        }
 
         // The configuration can contain tokens, resolve them now.
         $player_configuration = tp_video_player_resolve_entity_configuration(
@@ -98,7 +102,8 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
       $configuration = tp_video_player_load_entity_configuration(
         'inline_content', $replacement->id, 'playlist_inline_content');
       if (is_null($configuration)) {
-        $configuration = tp_video_player_clone_default_configuration('playlist_inline_content');
+        $configuration = tp_video_player_clone_default_configuration(
+          'playlist_inline_content');
       }
       $form_state['storage'][$storage_key] = $configuration;
     }

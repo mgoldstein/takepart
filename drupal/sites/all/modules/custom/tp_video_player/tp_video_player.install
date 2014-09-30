@@ -445,7 +445,8 @@ function tp_video_player_transfer_from_fields() {
   $result = db_query(tp_video_player_transfer_from_fields_sql());
   while ($row = $result->fetchAssoc()) {
 
-    $configuration = tp_video_player_load_entity_configuration('node', $row['nid'], 'video_full_page');
+    $configuration = tp_video_player_load_entity_configuration(
+      'node', $row['nid'], 'video_full_page');
 
     foreach ($row as $name => $value) {
       if ($name === 'enable_embed') {

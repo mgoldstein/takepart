@@ -207,23 +207,25 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
     // Load any available node specific configuration.
     $configuration = tp_video_player_load_entity_configuration($entity_type,
       entity_id($entity_type, $entity), $settings['global_default']);
-    if (!is_null($configuration)) {
-
-      // The allowed regions list attached to the same entity.
-      $allowed_regions = tp_video_player_video_allowed_regions(
-        $entity_type, $entity);
-      foreach ($items as $delta => $item) {
-        $items[$delta]['allowed_regions'] = $allowed_regions;
-        $items[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
-      }
-
-      // The configuration can contain tokens, resolve them now.
-      $configuration = tp_video_player_resolve_entity_configuration(
-        $entity_type, $entity, $langcode, $configuration);
-
-      // The formatter only ever returns one player.
-      $elements[] = tp_video_player_player_view($configuration, $items);
+    if (is_null($configuration)) {
+      $configuration = tp_video_player_clone_default_configuration(
+        $settings['global_default']);
     }
+
+    // The allowed regions list attached to the same entity.
+    $allowed_regions = tp_video_player_video_allowed_regions(
+      $entity_type, $entity);
+    foreach ($items as $delta => $item) {
+      $items[$delta]['allowed_regions'] = $allowed_regions;
+      $items[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
+    }
+
+    // The configuration can contain tokens, resolve them now.
+    $configuration = tp_video_player_resolve_entity_configuration(
+      $entity_type, $entity, $langcode, $configuration);
+
+    // The formatter only ever returns one player.
+    $elements[] = tp_video_player_player_view($configuration, $items);
   }
 
   return $elements;

@@ -46,22 +46,24 @@ class InlineContentVideo extends InlineContentReplacementController {
       // Load any available replacement specific configuration.
       $configuration = tp_video_player_load_entity_configuration(
         'inline_content', $replacement->id, 'video_inline_content');
-      if (!is_null($configuration)) {
-
-        $files = field_get_items('node', $node, 'field_video');
-
-        // Get the allowed regions from the video node.
-        $allowed_regions = tp_video_player_video_allowed_regions('node', $node);
-        foreach ($files as $delta => $file) {
-          $files[$delta]['allowed_regions'] = $allowed_regions;
-          $items[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
-        }
-
-        $configuration = tp_video_player_resolve_entity_configuration('inline_content',
-          $replacement, $langcode, $configuration);
-
-        $video = tp_video_player_player_view($configuration, $files);
+      if (is_null($configuration)) {
+        $configuration = tp_video_player_clone_default_configuration(
+          'video_inline_content');
       }
+
+      $files = field_get_items('node', $node, 'field_video');
+
+      // Get the allowed regions from the video node.
+      $allowed_regions = tp_video_player_video_allowed_regions('node', $node);
+      foreach ($files as $delta => $file) {
+        $files[$delta]['allowed_regions'] = $allowed_regions;
+        $items[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
+      }
+
+      $configuration = tp_video_player_resolve_entity_configuration('inline_content',
+        $replacement, $langcode, $configuration);
+
+      $video = tp_video_player_player_view($configuration, $files);
     }
 
     $alignment = field_get_items('inline_content', $replacement, 'field_ic_alignment');
@@ -92,7 +94,8 @@ class InlineContentVideo extends InlineContentReplacementController {
       $configuration = tp_video_player_load_entity_configuration(
         'inline_content', $replacement->id, 'video_inline_content');
       if (is_null($configuration)) {
-        $configuration = tp_video_player_clone_default_configuration('video_inline_content');
+        $configuration = tp_video_player_clone_default_configuration(
+          'video_inline_content');
       }
       $form_state['storage'][$storage_key] = $configuration;
     }
