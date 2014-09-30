@@ -11418,7 +11418,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
 /* line 52, ../sass/modules/_bxslider.scss */
 .bx-wrapper .bx-loading {
   min-height: 50px;
-  background: url('../images/bx_loader.gif?1410912896') center center no-repeat white;
+  background: url('../images/bx_loader.gif?1412107564') center center no-repeat white;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -11539,7 +11539,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
   width: 10px;
   height: 11px;
   outline: 0;
-  background: url('../images/controls.png?1410912896') -86px -11px no-repeat;
+  background: url('../images/controls.png?1412107564') -86px -11px no-repeat;
   margin: 0 3px;
 }
 
@@ -11556,7 +11556,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
   width: 9px;
   height: 11px;
   outline: 0;
-  background: url('../images/controls.png?1410912896') -86px -44px no-repeat;
+  background: url('../images/controls.png?1412107564') -86px -44px no-repeat;
   margin: 0 3px;
 }
 
@@ -12179,30 +12179,33 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
   height: auto;
   width: auto;
   overflow: hidden;
+  position: relative;
+  top: -5px;
 }
-/* line 116, ../sass/modules/_footer.scss */
+/* line 118, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li:first-child {
+  top: 0;
   margin-left: 0px;
 }
-/* line 119, ../sass/modules/_footer.scss */
+/* line 123, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a {
   display: block;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 125, ../sass/modules/_footer.scss */
+/* line 129, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-takepart {
   height: 30px;
   width: 131px;
 }
-/* line 129, ../sass/modules/_footer.scss */
+/* line 133, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
   height: 40px;
   width: 144px;
   background: url("../images/logos/PM_Logo.png") no-repeat;
 }
-/* line 134, ../sass/modules/_footer.scss */
+/* line 138, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-pivot {
   height: 28px;
   width: 77px;
