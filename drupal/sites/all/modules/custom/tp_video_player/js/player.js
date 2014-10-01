@@ -110,6 +110,19 @@
         }
         else {
           jwplayer.key = Drupal.settings.tp_video_player.key;
+          var allowed = Drupal.settings.tp_video_player.settings[element_id]['allowed_regions'][0];
+    
+          //calls the country to get the code
+          geoip2.country(function(response) {
+            window['tp_client_location'] = response.country.iso_code;
+            tp_video_blocked(element_id, 0);
+            
+            //unsets first ad if blocked
+            if ($('#' + element_id).hasClass('blocked')) {
+              delete settings.playlist[0]['adschedule'];
+            }
+          });
+
           jwplayer(element).setup(settings);
           
           //this is used for the playlist to hide the items

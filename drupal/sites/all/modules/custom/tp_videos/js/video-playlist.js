@@ -136,6 +136,11 @@
     if (player_id != '') {
       index_item = window['currentVideo_0'];
     }
+
+    //addressed issue with undefined
+    if (index_item == undefined) {
+      index_item = 0;
+    }
     
     //allowed regions
     var allowed = Drupal.settings.tp_video_player.settings[id]['allowed_regions'][index_item];
