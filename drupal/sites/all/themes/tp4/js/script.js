@@ -622,6 +622,12 @@
             window['slider_' + index].destroySlider();
           }
 
+          if(null == window['slider_' + index + '_current']){
+            window['slider_' + index + '_current'] = 0;
+          }else{
+            window['slider_' + index + '_current'] = window['slider_' + index].getCurrentSlide();
+          }
+
           //init slider
           window['slider_' + index] = $(this).bxSlider({
             minSlides: slides,
@@ -632,7 +638,8 @@
             hideControlOnEnd: true,
             pager: false,
             nextText: '',
-            prevText: ''
+            prevText: '',
+            startSlide: window['slider_' + index + '_current']
           });
         });
       }
