@@ -1092,6 +1092,7 @@ function tp4_query_promofilter_alter(QueryAlterableInterface $query) {
  */
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
+		dpm($variables, 'variables');
     //content
     $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
     
@@ -1222,6 +1223,8 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
     //background properties
     tp4_campaign_background_rules($variables);
 
+	//content
+	$variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   $variables['center'] = $center;
 
 
