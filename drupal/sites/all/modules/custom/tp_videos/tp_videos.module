@@ -225,7 +225,6 @@ function tp_videos_iframe_embed_markup($node) {
 	if($node->type == 'video_playlist' && $node->field_playlist_view_mode != null){
 		$view_mode = field_view_field('node', $node, 'field_playlist_view_mode');
 		$view_mode = strtolower($view_mode['#items'][0]['value']);
-		$style = '';
 		switch ($view_mode){
 			case 'basic':
 				 $style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 300px;"';
