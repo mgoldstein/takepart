@@ -99,7 +99,9 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
       '#suffix' => '</figure>',
       '0' => $content,
     );
-
+//
+//	  krumo(debug_backtrace());
+//	  die();
     return $content;
   }
 

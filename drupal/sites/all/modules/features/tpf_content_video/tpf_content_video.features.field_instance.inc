@@ -2615,7 +2615,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2727,7 +2727,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 24,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2836,7 +2836,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 26,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2946,7 +2946,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 27,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3054,7 +3054,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 28,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3163,7 +3163,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -3275,7 +3275,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -3389,7 +3389,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3495,7 +3495,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3603,7 +3603,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3710,7 +3710,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3825,7 +3825,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3932,7 +3932,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4077,7 +4077,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4187,7 +4187,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4297,7 +4297,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 30,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4407,7 +4407,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 29,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4517,7 +4517,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 31,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4626,7 +4626,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4734,7 +4734,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4841,7 +4841,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -4953,7 +4953,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5061,7 +5061,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 22,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5167,7 +5167,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5279,7 +5279,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 25,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5389,7 +5389,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5495,7 +5495,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 23,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5600,7 +5600,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -5707,7 +5707,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -5843,7 +5843,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -5949,7 +5949,7 @@ function tpf_content_video_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -6062,8 +6062,11 @@ function tpf_content_video_field_default_field_instances() {
       ),
       'embed' => array(
         'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'tp_video_player',
+        'settings' => array(
+          'global_default' => 'video_block',
+        ),
+        'type' => 'tp_video_player',
         'weight' => 0,
       ),
       'feature_main' => array(
