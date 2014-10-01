@@ -77,7 +77,7 @@ function tp_video_player_build_content_settings($configuration, $files) {
       }
       elseif($configuration->ad_schedule == TP_VIDEO_PLAYER_PLAYLIST_SCHEDULE) {
         $tag_url = takepart_ads_tag_url($configuration->ad_tag . '');
-        if (!empty($tag_url) && $delta % $configuration->ad_frequency === 0) {
+        if (!empty($tag_url) && ($delta % $configuration->ad_frequency) == 0) {
           $item['adschedule'] = array(
             "prerollad{$delta}" => array(
               'offset' => 'pre',
