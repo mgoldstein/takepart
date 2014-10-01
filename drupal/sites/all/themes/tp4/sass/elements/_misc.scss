@@ -941,6 +941,19 @@ tr.selected td {
   }
 }
 
+.current-video {
+  .blocked {
+    width: 100%;
+    background: image-url('video-blocked.gif') no-repeat center center;
+    background-size: cover;
+    height: 0;
+    
+    object {
+      display: none;
+    }
+  }
+}
+
 .jwplayer {
   &.blocked {
     width: 100%;
