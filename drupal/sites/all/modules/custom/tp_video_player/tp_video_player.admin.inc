@@ -81,6 +81,13 @@ function tp_video_player_form_layout_fields($values, $is_default = FALSE) {
     );
   }
 
+  //override for legacy videos
+  if (empty($values['responsive']) && empty($values['width']) && empty($values['height'])) {
+    $values['responsive'] = 1;
+    $values['width'] = 16;
+    $values['height'] = 9;
+  }
+  
   $fields['responsive'] = array(
     '#type' => 'checkbox',
     '#title' => t('Responsive'),
