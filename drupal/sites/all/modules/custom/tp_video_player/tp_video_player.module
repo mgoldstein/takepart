@@ -228,6 +228,13 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
     $menu_obj = menu_get_object();
     if (is_object($menu_obj) && $menu_obj->type == 'video') {
       $configuration->auto_start = 1;
+      
+      //overrides for the legacy videos to have a responsive
+      if (empty($configuration->responsive) && empty($configuration->width) && empty($configuration->height)) {
+        $configuration->responsive = 1;
+        $configuration->width = 16;
+        $configuration->height = 9;
+      }
     }
     
     // The formatter only ever returns one player.
