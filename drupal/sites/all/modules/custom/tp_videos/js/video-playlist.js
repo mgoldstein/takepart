@@ -17,7 +17,6 @@
           var element = playlist.find('.jwplayer').attr('id');
 
           
-          
           jwplayer(element).onComplete(function(event) {
           
           
@@ -30,6 +29,24 @@
               updateVideo(window['currentVideo_' + index], playlist);
               window.videoTransition = 'not null';
             }
+
+            /* Move slider over if it needs to be */
+            var slides;
+            if(window['slider_' + index + '_view_mode'] == 'large'){
+              slides = 4;
+            }else{
+              slides = 3;
+            }
+            var ratio = (window['currentVideo_' + index])/slides;
+
+            if(ratio % 1 === 0){
+              window['slider_' + index].goToNextSlide();
+            }
+
+
+
+
+
 
           });
 
