@@ -74,8 +74,6 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
 	      );
 	      $playlist = field_view_field('node', $node, 'field_video_list', $display);
 
-
-	      /* Let's not rebuild Drupal */
 //        $playlist = tp_videos_build_playlist($player_configuration,
 //          $videos, $view_mode, $langcode);
 
