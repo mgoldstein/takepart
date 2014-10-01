@@ -10,12 +10,9 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
    * Update the replacement content's display label.
    */
   public function updateLabel($replacement) {
-
     // Grab the content list.
-    $content = field_get_items('inline_content', $replacement, 'field_ic_playlist');
-    if ($content !== FALSE && count($content) > 0) {
-      $item = reset($content);
-      $node = node_load($item['nid']);
+    if ($content = field_get_items('inline_content', $replacement, 'field_ic_playlist')) {
+      $node = node_load($content[0]['target_id']);
       $title = $node->title;
     }
     else {
@@ -33,8 +30,6 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
-//	  krumo(debug_backtrace());
-//	  die();
     $content = array();
     $items = field_get_items('inline_content', $replacement, 'field_ic_playlist');
     if ($items !== FALSE && count($items) > 0) {
