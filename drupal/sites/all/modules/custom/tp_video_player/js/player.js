@@ -115,8 +115,14 @@
           //this is used for the playlist to hide the items
           jwplayer(element_id).onReady(function() {
             var playlist_index = jwplayer(element_id).getPlaylistIndex();
-            var allowed_regions = Drupal.settings.tp_video_player.settings[element_id]['allowed_regions'][playlist_index];
-            tp_video_blocked(allowed_regions, element_id);
+            tp_video_blocked(element_id, playlist_index);
+          });
+          
+          //stops the player if it has blocked class
+          jwplayer(element_id).onPlay(function() {
+            if ($('#' + element_id).hasClass('blocked')) {
+              jwplayer(element_id).stop();
+            }
           });
         }
       });

@@ -3832,13 +3832,25 @@ tr.selected td {
 }
 
 /* line 945, ../sass/elements/_misc.scss */
-.jwplayer.blocked {
+.current-video .blocked {
   width: 100%;
   background: url('../images/video-blocked.gif?1410196520') no-repeat center center;
   background-size: cover;
   height: 0;
 }
 /* line 951, ../sass/elements/_misc.scss */
+.current-video .blocked object {
+  display: none;
+}
+
+/* line 958, ../sass/elements/_misc.scss */
+.jwplayer.blocked {
+  width: 100%;
+  background: url('../images/video-blocked.gif?1410196520') no-repeat center center;
+  background-size: cover;
+  height: 0;
+}
+/* line 964, ../sass/elements/_misc.scss */
 .jwplayer.blocked .jwmain {
   display: none;
 }

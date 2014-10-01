@@ -12,6 +12,58 @@
           window['currentVideo_' + index] = 0;
           updateVideo(window['currentVideo_' + index], $(this));
 
+          var playlist = $(this);
+          var element = playlist.find('.jwplayer').attr('id');
+
+          jwplayer(element).onComplete(function(event) {
+          
+          
+            window.videoTransition; //hack for jwplayer firing twice onPlay and onComplete
+            if(null == window.videoTransition){
+              window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
+              jwplayer(element).playlistItem(window['currentVideo_' + index]);
+              playlist.find('.video-description .description-item').removeClass('active');
+              playlist.find('ul.video-playlist .video-item').removeClass('active');
+              updateVideo(window['currentVideo_' + index], playlist);
+              window.videoTransition = 'not null';
+            }
+
+            /* Move slider over if it needs to be */
+            var slides;
+            if(window['slider_' + index + '_view_mode'] == 'large'){
+              slides = 4;
+            }else{
+              slides = 3;
+            }
+            var ratio = (window['currentVideo_' + index])/slides;
+
+            if(ratio % 1 === 0){
+              window['slider_' + index].goToNextSlide();
+            }
+
+            //stops video 
+            if ($('#' + element_id).hasClass('blocked')) {
+              jwplayer(element_id).stop();
+            }
+          });
+
+          jwplayer(element).onPlay(function(event){
+            delete window.videoTransition;
+
+            /* Analytics */
+            var autoplay = jwplayer(element).config.autostart;
+            if(autoplay == true){
+              autoplay = 'Auto-play';
+            }else{
+              autoplay = 'Manual';
+            }
+            takepart.analytics.track('playlist-play', {
+              playerName: jwplayer(element).config.primary,
+              listName: jwplayer(element).config.title,
+              playConfig: autoplay
+            });
+          });
+
         });
 
         /* Navigation */
@@ -21,19 +73,23 @@
           var index = playlist.attr('playlist-id');
           var item_index = $(this).data('video-number');
           
-          var allowed_regions = Drupal.settings.tp_video_player.settings[element]['allowed_regions'][item_index];
-          tp_video_blocked(allowed_regions, element);
+          var player_id = element;
+          if (player_id == undefined) {
+            var player_id = $('object', playlist).attr('id');
+          }
           
           window['currentVideo_' + index] = $(this).data('video-number');
           playlist.find('.video-description .description-item').removeClass('active');
           playlist.find('ul.video-playlist .video-item').removeClass('active');
           
+          tp_video_blocked(player_id, window['currentVideo_' + index], index);
+          
           //stops video 
-          if (!$('#' + element).hasClass('blocked')) {
-            jwplayer(element).playlistItem(window['currentVideo_' + index]);
+          if (!$('#' + player_id).hasClass('blocked')) {
+            jwplayer(player_id).playlistItem(window['currentVideo_' + index]);
           }
           else {
-            jwplayer(element).stop();
+            jwplayer(player_id).stop();
           }
           
           updateVideo(window['currentVideo_' + index], playlist);
@@ -75,7 +131,20 @@
    *  @function:
    *    This function is used to update the video player to block videos
    */
-  window.tp_video_blocked = function(allowed, id) {
+  window.tp_video_blocked = function(id, index_item, player_id) {
+    //if player id is empty then use window
+    if (player_id != '') {
+      index_item = window['currentVideo_0'];
+    }
+    
+    //allowed regions
+    var allowed = Drupal.settings.tp_video_player.settings[id]['allowed_regions'][index_item];
+    
+    //overrides for flash to make the id the wrapper for blocking
+    if ($('#' + id).is('object')) {
+      id = id + '_wrapper';
+    }
+    
     //conditional check to see if the video is valid to play
     if (allowed == '') {
       //built in case of other
