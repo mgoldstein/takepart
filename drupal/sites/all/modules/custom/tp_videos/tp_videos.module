@@ -640,6 +640,12 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   $player_configuration = tp_video_player_resolve_entity_configuration(
     $entity_type, $entity, $langcode, $player_configuration);
 
+  //ensures all video auto plays on video content display
+  $menu_obj = menu_get_object();
+  if (is_object($menu_obj) && $menu_obj->type == 'video_playlist') {
+    $player_configuration->auto_start = 1;
+  }
+    
   // Build the playlist content.
   $playlist = tp_videos_build_playlist($player_configuration, $videos, $view_mode, $langcode);
 
