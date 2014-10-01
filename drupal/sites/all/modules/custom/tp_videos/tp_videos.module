@@ -236,6 +236,9 @@ function tp_videos_iframe_embed_markup($node) {
 			case 'hidelist':
 				$style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 40px;"';
 				break;
+			default:
+				$style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 300px;"';
+				break;
 		}
 		return '<div class="embed-container" '. $style. '>'. _entity_iframe_build_iframe($properties, 'video-embed'). '</div>';
 	}
