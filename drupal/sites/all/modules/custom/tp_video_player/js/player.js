@@ -101,6 +101,8 @@
           
           //fires the init for bxslider on ready
           $(document).ready(function() {
+            window.tp_initslider();
+            
             $(window).smartresize(function() {
               window.tp_initslider();
             });
