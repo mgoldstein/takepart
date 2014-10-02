@@ -35,6 +35,10 @@
   @include breakpoint($breakpoint-desktop) {
     padding: 5px;
   }
+  
+  .bxslider {
+    display: none;
+  }
 }
 
 h2.playlist-title{

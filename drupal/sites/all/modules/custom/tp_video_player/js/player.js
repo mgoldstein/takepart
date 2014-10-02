@@ -3,21 +3,6 @@
   Drupal.behaviors.tp_video_player = {
     attach: function() {
       $('.tp-video-player').once('initialized', function(index, element) {
-        //make calls to maxmind and sets variables
-        var tp_country_cookie = getCookie('tp_countryISOCode');
-        
-        //set window variable for blocking
-        if (window['tp_client_location'] == undefined) {
-          if (tp_country_cookie != '') {
-            window['tp_client_location'] = tp_country_cookie;
-          }
-          else {
-            geoip2.country(function(response) {
-              window['tp_client_location'] = response.country.iso_code;
-            });
-          }
-        }
-        
         var element_id = $(element).attr('id');
         var settings = Drupal.settings.tp_video_player.settings[element_id];
         if (!window.s || !window.s.Media) {
@@ -110,35 +95,162 @@
         }
         else {
           jwplayer.key = Drupal.settings.tp_video_player.key;
-          var allowed = Drupal.settings.tp_video_player.settings[element_id]['allowed_regions'][0];
-    
-          //calls the country to get the code
-          geoip2.country(function(response) {
-            window['tp_client_location'] = response.country.iso_code;
-            tp_video_blocked(element_id, 0);
-            
-            //unsets first ad if blocked
-            if ($('#' + element_id).hasClass('blocked')) {
-              delete settings.playlist[0]['adschedule'];
-            }
-          });
 
-          jwplayer(element).setup(settings);
+          //init the playlist after processing          
+          tp_video_playlist_init(element, settings);
           
-          //this is used for the playlist to hide the items
-          jwplayer(element_id).onReady(function() {
-            var playlist_index = jwplayer(element_id).getPlaylistIndex();
-            tp_video_blocked(element_id, playlist_index);
-          });
-          
-          //stops the player if it has blocked class
-          jwplayer(element_id).onPlay(function() {
-            if ($('#' + element_id).hasClass('blocked')) {
-              jwplayer(element_id).stop();
-            }
+          //fires the init for bxslider on ready
+          $(document).ready(function() {
+            $(window).smartresize(function() {
+              window.tp_initslider();
+            });
           });
         }
       });
     }
   };
+  
+  /**
+   *  @function:
+   *    This function is used to process the settings 
+   */
+  window.tp_video_playlist_init = function(element, settings) {
+    var playlist = $(element).parent().parent();
+    
+    //initialize player only after geoip2 call
+    geoip2.country(function(response) {
+      //sets window var for location
+      window['tp_client_location'] = response.country.iso_code.toLowerCase();
+      
+      //only process the settings if allowed region is set
+      if (settings.allowed_regions != undefined) {
+        var allowed_regions = settings.allowed_regions;
+        
+        //goes thro each allowed region on the items
+        $(allowed_regions).each(function(index, value) {
+          //goes thro each video if not empty then check if the clients location is allowed within the array
+          if (value != '' && $.inArray(tp_client_location, value) === -1) {
+            //delete and remove the slider item
+            delete settings.allowed_regions[index];
+            delete settings.playlist[index];
+            $('.description-item[data-video-description="' + index + '"]', playlist).remove();
+            $('.video-item[data-video-number="' + index + '"]', playlist).remove();
+          }
+        });
+        
+        //resets the key within the settings
+        settings.playlist = settings.playlist.filter(function(){return true;});
+        settings.allowed_regions = settings.allowed_regions.filter(function(){return true;});
+        
+        //reset the data-video-description
+        $('.description-item', playlist).each(function(index, value) {
+          $(this).attr('data-video-description', index);
+          
+          //ensures that the first element is active
+          if (index === 0) {
+            $(this).addClass('active');
+          }
+        });
+        
+        //reset the data-video-numbers
+        $('.video-item', playlist).each(function(index, value) {
+          $(this).attr('data-video-number', index);
+          
+          //ensures that the first element is active
+          if (index === 0) {
+            $(this).addClass('active');
+          }
+        });
+      }
+      
+      //removes the playlist slider as there are no elements
+      if (settings.playlist == '') {
+        //removes class
+        $('.tp-video-player', playlist).addClass('blocked');
+        $('.bxslider', playlist).removeClass('bxslider').addClass('empty');
+        $(playlist).addClass('blocked');
+        return;
+      }
+      
+      //if it has passed all conditions then render a jwplayer
+      jwplayer(element).setup(settings);
+    });
+  }
+  
+  /**
+   *  @function:
+   *    This function is used to init the bxslider for video playlist
+   */
+  window.tp_initslider = function() {
+    var small = 401;
+    var large = 701;
+    var all_slides = $('.bxslider');
+  
+    //does for each slider
+    all_slides.each(function(index) {
+      var playlist = $(this).parents('.playlist');
+      var viewMode;
+  
+      //mobile
+      if (playlist.width() <= small) {
+        viewMode = 'small';
+        playlist.addClass(viewMode);
+        if (window['slider_' + index]) {
+  
+          window['slider_' + index].destroySlider();
+        }
+      }
+      //tablet
+      else if (playlist.width() < large) {
+        viewMode = 'medium';
+        slides = 3;
+      }
+      //desktop
+      else {
+        viewMode = 'large';
+        slides = 4;
+      }
+  
+      //changes class by viewmode
+      if (window['slider_' + index + '_view_mode'] == undefined) {
+        window['slider_' + index + '_view_mode'] = viewMode;
+      }
+      else if (window['slider_' + index + '_view_mode'] != viewMode) {
+        playlist.removeClass(window['slider_' + index + '_view_mode']);
+        playlist.addClass(viewMode);
+        window['slider_' + index + '_view_mode'] = viewMode;
+      }
+  
+      //return if small
+      if (viewMode == 'small') {
+        return;
+      }
+  
+      //destroy all slider
+      if (window['slider_' + index]) {
+        window['slider_' + index].destroySlider();
+      }
+  
+      if(null == window['slider_' + index + '_current']){
+        window['slider_' + index + '_current'] = 0;
+      }else{
+        window['slider_' + index + '_current'] = window['slider_' + index].getCurrentSlide();
+      }
+  
+      //init slider
+      $(this).show();
+      window['slider_' + index] = $(this).bxSlider({
+        minSlides: slides,
+        maxSlides: slides,
+        slideWidth: 200,
+        slideMargin: 15,
+        infiniteLoop: false,
+        hideControlOnEnd: true,
+        pager: false,
+        nextText: '',
+        prevText: '',
+        startSlide: window['slider_' + index + '_current']
+      });
+    });
+  }
 })(jQuery, Drupal, this, this.document);
