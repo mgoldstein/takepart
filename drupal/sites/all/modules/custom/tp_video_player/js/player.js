@@ -36,7 +36,7 @@
           window.videoTransition; //hack for jwplayer firing twice onPlay and onComplete
           if(null == window.videoTransition){
             window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
-            jwplayer(element_id).playlistItem(window['currentVideo_' + index]);
+            jwplayer(element).playlistItem(window['currentVideo_' + index]);
             playlist.find('.video-description .description-item').removeClass('active');
             playlist.find('ul.video-playlist .video-item').removeClass('active');
             updateVideo(window['currentVideo_' + index], playlist);
@@ -57,19 +57,19 @@
           }
         });
 
-        jwplayer(element_id).onPlay(function(event){
+        jwplayer(element).onPlay(function(event){
           delete window.videoTransition;
 
           /* Analytics */
-          var autoplay = jwplayer(element_id).config.autostart;
+          var autoplay = jwplayer(element).config.autostart;
           if(autoplay == true){
             autoplay = 'Auto-play';
           }else{
             autoplay = 'Manual';
           }
           takepart.analytics.track('playlist-play', {
-            playerName: jwplayer(element_id).config.primary,
-            listName: jwplayer(element_id).config.title,
+            playerName: jwplayer(element).config.primary,
+            listName: jwplayer(element).config.title,
             playConfig: autoplay
           });
         });
