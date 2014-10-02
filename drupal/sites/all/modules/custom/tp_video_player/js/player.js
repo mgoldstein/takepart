@@ -197,8 +197,9 @@
       if (playlist.width() <= small) {
         viewMode = 'small';
         playlist.addClass(viewMode);
+        
+        //destroy on small display
         if (window['slider_' + index]) {
-  
           window['slider_' + index].destroySlider();
         }
       }
@@ -229,10 +230,10 @@
       }
   
       //destroy all slider
-      if (window['slider_' + index]) {
+      if (window['slider_' + index] != undefined) {
         window['slider_' + index].destroySlider();
       }
-  
+
       if(null == window['slider_' + index + '_current']){
         window['slider_' + index + '_current'] = 0;
       }else{
