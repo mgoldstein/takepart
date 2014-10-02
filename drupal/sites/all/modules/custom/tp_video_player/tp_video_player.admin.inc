@@ -414,8 +414,8 @@ function tp_video_player_form_playlist_advertising_fields($values, $is_default =
     '#description' => t('Which type of ad schedule to use.'),
     '#options' => array(
       TP_VIDEO_PLAYER_NO_SCHEDULE => t('No Ads'),
-      TP_VIDEO_PLAYER_VIDEO_SCHEDULE => t('Videos'),
-      TP_VIDEO_PLAYER_PLAYLIST_SCHEDULE => t('Playlist'),
+      TP_VIDEO_PLAYER_VIDEO_SCHEDULE => t('Videos play their own ads'),
+      TP_VIDEO_PLAYER_PLAYLIST_SCHEDULE => t('Use playlist frequency'),
     ),
     '#default_value' => $values['ad_schedule'],
     '#required' => TRUE,

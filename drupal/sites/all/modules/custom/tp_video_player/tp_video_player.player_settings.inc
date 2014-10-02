@@ -23,10 +23,12 @@ function tp_video_player_build_settings($configuration, $files) {
     // Reset the files array so only the channel file is considered in the
     // remaining configuration.
     $files = array($first);
+    $listbar_settings = tp_video_player_build_listbar_settings($configuration);
   }
   else {
     $content_settings = tp_video_player_build_content_settings(
       $configuration, $files);
+    $listbar_settings = array();
   }
 
   return array_merge(
@@ -34,6 +36,7 @@ function tp_video_player_build_settings($configuration, $files) {
     tp_video_player_build_promo_settings($configuration),
     tp_video_player_build_layout_settings($configuration),
     tp_video_player_build_playback_settings($configuration),
+    $listbar_settings,
     tp_video_player_build_sharing_settings($configuration),
     tp_video_player_build_advertising_settings($configuration, $files),
     tp_video_player_build_jwplayer_analytics_settings($configuration),
@@ -144,6 +147,22 @@ function tp_video_player_build_playback_settings($configuration) {
     'primary' => $configuration->primary_player,
     'repeat' => $configuration->repeat_playback != 0,
   );
+}
+
+function tp_video_player_build_listbar_settings($configuration) {
+  $values = array();
+  if (!empty($configuration->playlist_position)) {
+    $values['position'] = $configuration->playlist_position;
+  }
+  if (!empty($configuration->playlist_size) ||
+    $configuration->playlist_size == '0') {
+    $values['size'] = (int) $configuration->playlist_size;
+  }
+  if (!empty($configuration->playlist_layout)
+    && $configuration->playlist_layout == 'basic') {
+    $values['layout'] = $configuration->playlist_layout;
+  }
+  return count($values) > 0 ? array('listbar' => $values) : $values;
 }
 
 function tp_video_player_build_sharing_settings($configuration) {
