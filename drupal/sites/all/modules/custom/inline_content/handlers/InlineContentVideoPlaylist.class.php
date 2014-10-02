@@ -30,7 +30,7 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
-    $content = array();
+//    $content = array();
     $items = field_get_items('inline_content', $replacement, 'field_ic_playlist');
     if ($items !== FALSE && count($items) > 0) {
 
@@ -73,7 +73,7 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
         $playlist = tp_videos_build_playlist($player_configuration,
           $videos, $view_mode, $langcode);
 
-        $content = array(
+        $playlist_content = array(
           '#theme' => 'tp_videos_wrapper',
           '#title' => $title,
           '#playlist' => $playlist,
@@ -92,11 +92,9 @@ class InlineContentVideoPlaylist extends InlineContentReplacementController {
     $content['#replacements'][] = array(
       '#prefix' => '<figure' . drupal_attributes($attributes) . '>',
       '#suffix' => '</figure>',
-      '0' => $content,
+      '0' => $playlist_content,
     );
-//
-//	  krumo(debug_backtrace());
-//	  die();
+
     return $content;
   }
 
