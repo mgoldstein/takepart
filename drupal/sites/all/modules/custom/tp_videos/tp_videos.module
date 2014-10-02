@@ -588,11 +588,11 @@ function tp_videos_playlist_view_mode($entity_type, $entity, $default) {
 }
 
 function tp_videos_playlist_title($entity_type, $entity, $default) {
-  $title = $default;
-  $items = field_get_items($entity_type, $entity, 'field_show_title');
-  if ($items !== FALSE && count($items) > 0) {
-    $item = reset($items);
-    if ($item['value'] === 0) { $title = ''; }
+  $show_title = field_get_items($entity_type, $entity, 'field_show_title');
+  if ($show_title[0]['value'] == 1) {
+	  $title = $default;
+  }else{
+	  $title = '';
   }
   return $title;
 }
