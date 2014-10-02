@@ -64,6 +64,12 @@ function tp_video_player_build_content_settings($configuration, $files) {
 
     $item = array('sources' => array(array('file' => $url)));
 
+    if ($file['filemime'] === 'video/jwplatform') {
+      $image_url = str_replace('videos', 'thumbs', $url);
+      $image_url = str_replace('.mp4', '-720.jpg', $image_url);
+      $item += array('image' => $image_url);
+    }
+
     // Ads should not be added to Youtube videos.
     if ($file['filemime'] !== 'video/youtube') {
 
