@@ -15,61 +15,6 @@
           settings['primary'] = 'flash';
         }
 
-        var playlist = $(this);
-        jwplayer(element_id).onComplete(function(event) {
-
-          window.videoTransition; //hack for jwplayer firing twice onPlay and onComplete
-          if(null == window.videoTransition){
-            window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
-            jwplayer(element).playlistItem(window['currentVideo_' + index]);
-            playlist.find('.video-description .description-item').removeClass('active');
-            playlist.find('ul.video-playlist .video-item').removeClass('active');
-            updateVideo(window['currentVideo_' + index], playlist);
-            window.videoTransition = 'not null';
-          }
-
-          /* Move slider over if it needs to be */
-          var slides;
-          if(window['slider_' + index + '_view_mode'] == 'large'){
-            slides = 4;
-          }else{
-            slides = 3;
-          }
-          var ratio = (window['currentVideo_' + index])/slides;
-
-          if(ratio % 1 === 0){
-            window['slider_' + index].goToNextSlide();
-          }
-        });
-
-        jwplayer(element).onPlay(function(event){
-          delete window.videoTransition;
-
-          /* Analytics */
-          var autoplay = jwplayer(element).config.autostart;
-          if(autoplay == true){
-            autoplay = 'Auto-play';
-          }else{
-            autoplay = 'Manual';
-          }
-          takepart.analytics.track('playlist-play', {
-            playerName: jwplayer(element).config.primary,
-            listName: jwplayer(element).config.title,
-            playConfig: autoplay
-          });
-        });
-
-        function updateVideo(current_video, playlist){
-          var playlistType = playlist.data('playlist-type');
-          if(playlistType == 'detailed'){
-            playlist.find('.video-description .description-item[data-video-description="' + current_video + '"]').addClass('active');
-            playlist.find('ul.video-playlist .video-item[data-video-number="' + current_video + '"]').addClass('active');
-          }
-          else if(playlistType == 'basic'){
-            playlist.find('ul.video-playlist .video-item[data-video-number="' + current_video + '"]').addClass('active');
-          }
-        }
-
         //moved code from pm-jwplayer over to new player.js
         var regions = Drupal.settings.tp_video_player.settings[element_id].allowed_regions[0];
         if (regions.length > 0 && !$('body').hasClass('node-type-video-playlist')) {
@@ -97,7 +42,7 @@
           jwplayer.key = Drupal.settings.tp_video_player.key;
 
           //init the playlist after processing          
-          tp_video_playlist_init(element, settings);
+          tp_video_playlist_init(element, settings, index);
           
           //fires the init for bxslider on ready
           $(document).ready(function() {
@@ -116,7 +61,7 @@
    *  @function:
    *    This function is used to process the settings 
    */
-  window.tp_video_playlist_init = function(element, settings) {
+  window.tp_video_playlist_init = function(element, settings, index) {
     var playlist = $(element).parent().parent();
     
     //initialize player only after geoip2 call
@@ -176,9 +121,76 @@
       
       //if it has passed all conditions then render a jwplayer
       jwplayer(element).setup(settings);
+      tp_init_jwplayer_callbacks(element, index);
     });
   }
-  
+
+  /**
+   *  @function:
+   *    This function is used to init the jwplayer callbacks
+   */
+  function tp_init_jwplayer_callbacks(element, index){
+
+    var element_id = $(element).attr('id');
+    var playlist = $('#' + element_id).parent().parent();
+
+    window['currentVideo_' + index] = 0;
+    updateVideo(window['currentVideo_' + index], playlist);
+
+    jwplayer(element_id).onComplete(function(event) {
+      window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
+      jwplayer(element_id).playlistItem(window['currentVideo_' + index]);
+
+      $(playlist).find('.video-description .description-item').removeClass('active');
+      playlist.find('ul.video-playlist .video-item').removeClass('active');
+      updateVideo(window['currentVideo_' + index], playlist);
+
+      /* Move slider over if it needs to be */
+      var slides;
+      if(window['slider_' + index + '_view_mode'] == 'large'){
+        slides = 4;
+      }else{
+        slides = 3;
+      }
+      var ratio = (window['currentVideo_' + index])/slides;
+
+      if(ratio % 1 === 0){
+        window['slider_' + index].goToNextSlide();
+      }
+    });
+
+    jwplayer(element_id).onPlay(function(event){
+      delete window.videoTransition;
+
+      /* Analytics */
+      var autoplay = jwplayer(element_id).config.autostart;
+      if(autoplay == true){
+        autoplay = 'Auto-play';
+      }else{
+        autoplay = 'Manual';
+      }
+      takepart.analytics.track('playlist-play', {
+        playerName: jwplayer(element_id).config.primary,
+        listName: jwplayer(element_id).config.title,
+        playConfig: autoplay
+      });
+    });
+  }
+  /**
+   *  @function:
+   *    This function is used to update the Video
+   */
+  function updateVideo(current_video, playlist){
+    var playlistType = playlist.data('playlist-type');
+    if(playlistType == 'detailed'){
+      playlist.find('.video-description .description-item[data-video-description="' + current_video + '"]').addClass('active');
+      playlist.find('ul.video-playlist .video-item[data-video-number="' + current_video + '"]').addClass('active');
+    }
+    else if(playlistType == 'basic'){
+      playlist.find('ul.video-playlist .video-item[data-video-number="' + current_video + '"]').addClass('active');
+    }
+  }
+
   /**
    *  @function:
    *    This function is used to init the bxslider for video playlist

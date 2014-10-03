@@ -9,8 +9,7 @@
         $('.playlist').each(function(index){
 
           $(this).attr('playlist-id', index );
-          window['currentVideo_' + index] = 0;
-          updateVideo(window['currentVideo_' + index], $(this));
+
 
         });
 
