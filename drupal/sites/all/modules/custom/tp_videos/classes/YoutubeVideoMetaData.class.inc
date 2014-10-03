@@ -1,6 +1,6 @@
-<?php namespace Participant\MetaData\Video;
+<?php
 
-class YoutubeVideo implements SharedVideo
+class YoutubeVideoMetaData
 {
   protected $key;
   protected $preferred_width;

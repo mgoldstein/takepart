@@ -4,9 +4,6 @@
  * Video content.
  */
 
-use \Participant\MetaData\Video\YoutubeVideo;
-use \Participant\MetaData\Video\JWPlatformVideo;
-
 /**
  * Include the playlist filter functions.
  */
@@ -324,13 +321,13 @@ function tp_videos_attached_video_object($node) {
     if ($params = tp_videos_parse_wrapper_uri($file->uri)) {
       // Youtube Videos
       if ($file->filemime == 'video/youtube') {
-        return new YoutubeVideo($params['v'], 640);
+        return new YoutubeVideoMetaData($params['v'], 640);
       }
       // JWPlatform Videos (no playlists)
       elseif ($file->filemime == 'video/jwplatform'
         && substr($file->uri, 0, 16) === 'jwplatform-video') {
         $api = pm_jwplatform_get_api();
-        return new JWPlatformVideo($api, $params['key'], 640);
+        return new JWPlatformVideoMetaData($api, $params['key'], 640);
       }
     }
   }
@@ -647,7 +644,7 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   if (is_object($menu_obj) && $menu_obj->type == 'video_playlist') {
     $player_configuration->auto_start = 1;
   }
-    
+
   // Build the playlist content.
   $playlist = tp_videos_build_playlist($player_configuration, $videos, $view_mode, $langcode);
 

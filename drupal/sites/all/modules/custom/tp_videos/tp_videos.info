@@ -8,6 +8,7 @@ scripts[] = js/video-playlist.js
 
 files[] = classes/JWPlatformImporter.php
 files[] = classes/JWPlatformVideo.php
+files[] = classes/JWPlatformVideoMetaData.class.inc
 files[] = classes/Video.php
 files[] = classes/VideoController.php
 files[] = classes/VideoImportController.php
@@ -16,3 +17,4 @@ files[] = classes/VimeoImporter.php
 files[] = classes/VimeoVideo.php
 files[] = classes/YoutubeImporter.php
 files[] = classes/YoutubeVideo.php
+files[] = classes/YoutubeVideoMetaData.class.inc

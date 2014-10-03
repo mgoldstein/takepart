@@ -1,6 +1,6 @@
-<?php namespace Participant\MetaData\Video;
+<?php
 
-class JWPlatformVideo implements SharedVideo
+class JWPlatformVideoMetaData
 {
   protected $api;
   protected $key;
@@ -38,7 +38,7 @@ class JWPlatformVideo implements SharedVideo
   {
     $video_url = $this->url($https);
 
-    $player_path = drupal_get_path('module', 'pm_core') . '/assets/player.swf';
+    $player_path = drupal_get_path('module', 'tp_videos') . '/player.swf';
 
     $absolute_url = url($player_path, array(
       'absolute' => TRUE,

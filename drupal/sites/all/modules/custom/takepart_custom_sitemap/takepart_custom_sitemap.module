@@ -3,10 +3,6 @@
 //variables
 DEFINE('VIDEOSITEMAP', 'public://videositemap.xml');
 
-//loading files from tp_videos.module
-use \Participant\MetaData\Video\YoutubeVideo;
-use \Participant\MetaData\Video\JWPlatformVideo;
-
 //module load inc file for obj
 module_load_include('inc', 'takepart_custom_sitemap', 'classes/takepart_custom_sitemap.class');
 
@@ -19,29 +15,29 @@ module_load_include('inc', 'takepart_custom_sitemap', 'classes/takepart_custom_s
 function takepart_custom_sitemap_cron() {
   //default variables
   $schedule_hour = variable_get('tp_video_sitemap_regen_hour', 0);
-  
+
   //only run on cron if scheduler is turned on
   if ($schedule_hour != 'Off') {
     $time = time();
     $time_hour_now = date("H", $time);
-    
+
     //schedules next execution variable
     $schedule_next_execution = variable_get('tp_video_sitemap_next_exec', 0);
     if (empty($schedule_next_execution)) {
       $schedule_next_execution = 0;
     }
-    
+
     //checks if the time is the scheduled time and then sets the next execution time
     if ($time >= strtotime($schedule_next_execution) && $time_hour_now == $schedule_hour) {
       //sets next execution time based on hour
       $days = variable_get('tp_video_sitemap_regen_day', 1);
       variable_set('tp_video_sitemap_next_exec', date("Y-m-d H:00:00", $time + (60 * 60 * 24 * $days)));
-    
+
       //this allows cron to run the batch
       takepart_custom_video_sitemap_batch();
       $batch = &batch_get();
       $batch['progressive'] = FALSE; //this is needed to turn off the progressive
-      batch_process('');    
+      batch_process('');
     }
   }
 }
@@ -51,7 +47,7 @@ function takepart_custom_sitemap_cron() {
  */
 function takepart_custom_sitemap_menu() {
   $items = array();
-  
+
   //adds takepart-videos sitemap into xmlsitemap
   $items['admin/config/search/xmlsitemap/takepart-videos'] = array(
     'title' => t('Takepart - Video Sitemap'),
@@ -62,7 +58,7 @@ function takepart_custom_sitemap_menu() {
     'access arguments' => array('administer site configuration'),
     'type' => MENU_IS_LOCAL_TASK
   );
-  
+
   $video_sitemap = variable_get('tp_video_sitemap_location', 'videositemap.xml');
   //creates page callback if sitemap is set
   if (!empty($video_sitemap)) {
@@ -71,7 +67,7 @@ function takepart_custom_sitemap_menu() {
       'access callback' => TRUE
     );
   }
-  
+
   return $items;
 }
 
@@ -87,7 +83,7 @@ function _tp_video_sitemap_xml_callback() {
     print($content);
     drupal_exit();
   }
-  
+
   //default goto 404 page
   drupal_goto('404');
 }
@@ -105,7 +101,7 @@ function takepart_custom_video_sitemap_batch() {
     'title' => t('Takepart - Video Sitemap Generation'),
     )
   );
-  
+
   batch_set($batch);
 }
 
@@ -118,7 +114,7 @@ function takepart_custom_video_sitemap_batch() {
 function _takepart_custom_video_nodes(&$context) {
   //variables
   global $base_url;
-  
+
   //initial setup
   if (!isset($context['sandbox']['counter'])) {
     $count = $context['sandbox']['counter'] = 0;
@@ -134,7 +130,7 @@ function _takepart_custom_video_nodes(&$context) {
     $count = $context['sandbox']['counter'];
     $xml = $context['sandbox']['sitemap'];
   }
-  
+
   //selects the node from the system that are related to the videos
   $db_result = db_select('node', 'n')
     ->fields('n', array('nid'))
@@ -143,26 +139,26 @@ function _takepart_custom_video_nodes(&$context) {
     ->range($count, 100)
     ->execute()
     ->fetchAll();
-  
+
   //ensures that the results are still valid before continuing
   if (!empty($db_result)) {
     foreach ($db_result as $key => $values) {
       //resets values
       $player_loc = $video_loc = $video_img = $node_url = '';
-      
+
       $node = node_load($values->nid);
       if (is_object($node)) {
         $context['message'] = check_plain($node->title);
         $node_url = url('node/' . $values->nid);
-        
+
         //gets value for article subhead
         $subhead = field_get_items('node', $node, 'field_article_subhead');
         $subhead_markup = field_view_value('node', $node, 'field_article_subhead', $subhead[0]);
-        
+
         //mapping to metatag
         $video_loc = token_replace('[node:attached-video-file-secure-url]', array('node' => $node));
         $video_img = token_replace('[node:attached-video-image]', array('node' => $node));
-        
+
         /**
          *  copied from tp_videos.module.
          *  issue with youtube portion.
@@ -177,7 +173,7 @@ function _takepart_custom_video_nodes(&$context) {
             // JWPlatform Videos (no playlists)
             elseif ($file->filemime == 'video/jwplatform' && substr($file->uri, 0, 16) === 'jwplatform-video') {
               $api = pm_jwplatform_get_api();
-              $video = new JWPlatformVideo($api, $params['key'], 640);
+              $video = new JWPlatformVideoMetaData($api, $params['key'], 640);
               $player_loc = is_null($video) ? NULL : $video->openGraphURL($https);
             }
           }
@@ -196,7 +192,7 @@ function _takepart_custom_video_nodes(&$context) {
           )
         );
       }
-      
+
       /**
        *  @logic:
        *    Will check to ensure that player and video loc are not empty.
@@ -209,10 +205,10 @@ function _takepart_custom_video_nodes(&$context) {
       }
     }
   }
-  
+
   //increment the counter
   $context['sandbox']['counter'] += 100;
-  
+
   //continue only if its finish
   if ($context['sandbox']['counter'] > $context['sandbox']['total_counter']) {
     $context['finished'] = 1;
@@ -233,10 +229,10 @@ function _takepart_custom_video_xml(&$context) {
   //default variables
   $xml = $context['results']['sitemap'];
   $xml_final = $xml->generate_xml();
-  
+
   //saves information onto the server
   file_unmanaged_save_data($xml_final, VIDEOSITEMAP, FILE_EXISTS_REPLACE);
-  
+
   //marks this batch op as finish
   $context['finished'] = 1;
 }
