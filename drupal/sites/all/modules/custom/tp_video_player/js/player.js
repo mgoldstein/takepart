@@ -238,6 +238,7 @@
   
       //return if small
       if (viewMode == 'small') {
+        $(this).show();
         return;
       }
   
