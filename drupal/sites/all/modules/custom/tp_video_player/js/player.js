@@ -139,24 +139,25 @@
 
     jwplayer(element_id).onComplete(function(event) {
       window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
-      jwplayer(element_id).playlistItem(window['currentVideo_' + index]);
+      jwplayer(element_id).playlistItem(window['currentVideo_' + index]);  // Generates console log error "There was an error calling back an event handler "
 
       $(playlist).find('.video-description .description-item').removeClass('active');
       playlist.find('ul.video-playlist .video-item').removeClass('active');
       updateVideo(window['currentVideo_' + index], playlist);
 
-      /* Move slider over if it needs to be */
+      /* Move Slider to slide containing the current video */
       var slides;
       if(window['slider_' + index + '_view_mode'] == 'large'){
         slides = 4;
       }else{
         slides = 3;
       }
-      var ratio = (window['currentVideo_' + index])/slides;
-
-      if(ratio % 1 === 0){
-        window['slider_' + index].goToNextSlide();
+      var newValCurrentSlide = Math.floor(window['currentVideo_' + index]/slides);
+      var current_slide = window['slider_' + index].getCurrentSlide();
+      if( newValCurrentSlide != current_slide){
+        window['slider_' + index].goToSlide(newValCurrentSlide);
       }
+
     });
 
     jwplayer(element_id).onPlay(function(event){
