@@ -487,7 +487,16 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   }
   //Grab Description
-  $description = tp4_render_field_value('node', $variables['node'], 'body');
+//  $description = tp4_render_field_value('node', $variables['node'], 'body');
+	$description_display = array(
+		'label' => 'hidden',
+		'type'  => 'text_with_inline_content',
+		'settings' => array(
+			'source' => 'field_inline_replacements'
+		)
+	);
+	$description = field_view_field('node', $variables['node'], 'body', $description_display);
+	$description = drupal_render($description);
   if(!empty($description)){
     if (function_exists('tp_flashcards_parse_html')) {
       $description = tp_flashcards_parse_html($description);
