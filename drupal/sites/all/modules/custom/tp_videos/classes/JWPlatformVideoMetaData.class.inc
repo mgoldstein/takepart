@@ -38,7 +38,7 @@ class JWPlatformVideoMetaData
   {
     $video_url = $this->url($https);
 
-    $player_path = drupal_get_path('module', 'tp_videos') . '/player.swf';
+    $player_path = drupal_get_path('module', 'tp_videos') . '/assets/player.swf';
 
     $absolute_url = url($player_path, array(
       'absolute' => TRUE,
