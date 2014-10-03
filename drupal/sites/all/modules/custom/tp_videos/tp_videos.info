@@ -6,7 +6,6 @@ version = 7.x-1.1
 
 scripts[] = js/video-playlist.js
 
-files[] = classes/BitsOnTheRun/api.php
 files[] = classes/JWPlatformImporter.php
 files[] = classes/JWPlatformVideo.php
 files[] = classes/Video.php

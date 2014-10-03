@@ -7,6 +7,7 @@ dependencies[] = media_internet
 dependencies[] = libraries (2.x)
 configure = admin/config/media/pm_jwplatform
 
+files[] = classes/botr/api.php
 files[] = classes/ContentStreamWrapper.class.inc
 files[] = classes/ChannelStreamWrapper.class.inc
 files[] = classes/VideoStreamWrapper.class.inc

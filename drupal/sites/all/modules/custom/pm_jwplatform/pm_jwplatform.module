@@ -36,7 +36,7 @@ function pm_jwplatform_get_api() {
     $key = variable_get('pm_jwplatform_api_key', '');
     $secret = variable_get('pm_jwplatform_api_secret', '');
     if (!empty($key) && !empty($secret)) {
-      $api = new \TakePart\BotrAPI($key, $secret);
+      $api = new BotrAPI($key, $secret);
     }
   }
   return $api;
