@@ -139,7 +139,6 @@
 
     jwplayer(element_id).onComplete(function(event) {
       window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
-      jwplayer(element_id).playlistItem(window['currentVideo_' + index]);  // Generates console log error "There was an error calling back an event handler "
 
       $(playlist).find('.video-description .description-item').removeClass('active');
       playlist.find('ul.video-playlist .video-item').removeClass('active');
