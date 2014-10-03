@@ -169,10 +169,12 @@
       }else{
         autoplay = 'Manual';
       }
+      var videoTitle = $('li[data-video-number="' + window['currentVideo_' + index] + '"] .promo-headline').text();
       takepart.analytics.track('playlist-play', {
         playerName: jwplayer(element_id).config.primary,
         listName: jwplayer(element_id).config.title,
-        playConfig: autoplay
+        playConfig: autoplay,
+        videoTitle: videoTitle
       });
     });
   }
