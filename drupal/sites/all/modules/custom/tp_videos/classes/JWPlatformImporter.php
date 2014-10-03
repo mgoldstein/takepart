@@ -33,15 +33,7 @@ class TakePart_JWPlatformImporter extends TakePart_VideoImporter {
   }
 
   private function api() {
-    static $api = NULL;
-    if (is_null($api)) {
-      $key = variable_get('pm_jwplatform_api_key', '');
-      $secret = variable_get('pm_jwplatform_api_secret', '');
-      if (!empty($key) && !empty($secret)) {
-        $api = new BotrAPI($key, $secret);
-      }
-    }
-    return $api;
+    return pm_jwplatform_get_api();
   }
 
   private function callShowAPI($token) {
