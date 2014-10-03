@@ -146,15 +146,15 @@
 
       /* Move Slider to slide containing the current video */
       var slides;
-      if(window['slider_' + index + '_view_mode'] == 'large'){
+      if(window['bxslider_' + index + '_view_mode'] == 'large'){
         slides = 4;
       }else{
         slides = 3;
       }
       var newValCurrentSlide = Math.floor(window['currentVideo_' + index]/slides);
-      var current_slide = window['slider_' + index].getCurrentSlide();
+      var current_slide = window['bxslider_' + index].getCurrentSlide();
       if( newValCurrentSlide != current_slide){
-        window['slider_' + index].goToSlide(newValCurrentSlide);
+        window['bxslider_' + index].goToSlide(newValCurrentSlide);
       }
 
     });
@@ -211,8 +211,8 @@
         playlist.addClass(viewMode);
         
         //destroy on small display
-        if (window['slider_' + index]) {
-          window['slider_' + index].destroySlider();
+        if (window['bxslider_' + index]) {
+          window['bxslider_' + index].destroySlider();
         }
       }
       //tablet
@@ -227,13 +227,13 @@
       }
   
       //changes class by viewmode
-      if (window['slider_' + index + '_view_mode'] == undefined) {
-        window['slider_' + index + '_view_mode'] = viewMode;
+      if (window['bxslider_' + index + '_view_mode'] == undefined) {
+        window['bxslider_' + index + '_view_mode'] = viewMode;
       }
-      else if (window['slider_' + index + '_view_mode'] != viewMode) {
-        playlist.removeClass(window['slider_' + index + '_view_mode']);
+      else if (window['bxslider_' + index + '_view_mode'] != viewMode) {
+        playlist.removeClass(window['bxslider_' + index + '_view_mode']);
         playlist.addClass(viewMode);
-        window['slider_' + index + '_view_mode'] = viewMode;
+        window['bxslider_' + index + '_view_mode'] = viewMode;
       }
   
       //return if small
@@ -243,19 +243,19 @@
       }
   
       //destroy all slider
-      if (window['slider_' + index] != undefined) {
-        window['slider_' + index].destroySlider();
+      if (window['bxslider_' + index] != undefined) {
+        window['bxslider_' + index].destroySlider();
       }
 
-      if(null == window['slider_' + index + '_current']){
-        window['slider_' + index + '_current'] = 0;
+      if(null == window['bxslider_' + index + '_current']){
+        window['bxslider_' + index + '_current'] = 0;
       }else{
-        window['slider_' + index + '_current'] = window['slider_' + index].getCurrentSlide();
+        window['bxslider_' + index + '_current'] = window['bxslider_' + index].getCurrentSlide();
       }
   
       //init slider
       $(this).show();
-      window['slider_' + index] = $(this).bxSlider({
+      window['bxslider_' + index] = $(this).bxSlider({
         minSlides: slides,
         maxSlides: slides,
         slideWidth: 200,
@@ -265,7 +265,7 @@
         pager: false,
         nextText: '',
         prevText: '',
-        startSlide: window['slider_' + index + '_current']
+        startSlide: window['bxslider_' + index + '_current']
       });
     });
   }
