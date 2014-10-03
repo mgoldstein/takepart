@@ -11,10 +11,17 @@
         // Use the flash player in Firefox on Macs.
         var FF = !(window.mozInnerScreenX == null);
         var MAC = (navigator.platform.indexOf('Mac')>=0);
-        if (MAC && FF) {
+        var win = (navigator.platform.indexOf('Win') >= 0);
+        
+        var user_agent = window.navigator.userAgent;
+        var old_ie = user_agent.indexOf('MSIE '); //ie10 and lower
+        var new_ie = user_agent.indexOf('Trident/'); //ie11
+        
+        //force to use flash. this will address issue with ie and youtube
+        if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
           settings['primary'] = 'flash';
         }
-
+        
         //moved code from pm-jwplayer over to new player.js
         var regions = Drupal.settings.tp_video_player.settings[element_id].allowed_regions[0];
         if (regions.length > 0 && !$('body').hasClass('node-type-video-playlist')) {
