@@ -7,9 +7,9 @@ dependencies[] = media_internet
 dependencies[] = libraries (2.x)
 configure = admin/config/media/pm_jwplatform
 
-files[] = lib/Drupal/JWPlatform/ContentStreamWrapper.php
-files[] = lib/Drupal/JWPlatform/ChannelStreamWrapper.php
-files[] = lib/Drupal/JWPlatform/VideoStreamWrapper.php
-files[] = lib/Drupal/JWPlatform/MediaInternet/ContentProvider.php
-files[] = lib/Drupal/JWPlatform/MediaInternet/ChannelProvider.php
-files[] = lib/Drupal/JWPlatform/MediaInternet/VideoProvider.php
+files[] = classes/ContentStreamWrapper.class.inc
+files[] = classes/ChannelStreamWrapper.class.inc
+files[] = classes/VideoStreamWrapper.class.inc
+files[] = classes/ContentProvider.class.inc
+files[] = classes/ChannelProvider.class.inc
+files[] = classes/VideoProvider.class.inc
