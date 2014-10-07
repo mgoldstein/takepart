@@ -18,3 +18,4 @@ files[] = classes/VimeoVideo.php
 files[] = classes/YoutubeImporter.php
 files[] = classes/YoutubeVideo.php
 files[] = classes/YoutubeVideoMetaData.class.inc
+files[] = classes/tp_videos_playlist.class.inc
