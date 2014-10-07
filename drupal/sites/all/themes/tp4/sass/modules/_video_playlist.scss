@@ -227,10 +227,11 @@ h3.video-title{
     padding-top: 10px;
   }
 }
-
-
 .playlist .jwplayer{
   display: block !important;
   height: auto;
   overflow: hidden;
+}
+.inline-content-playlist{
+  max-width: 500px;
 }

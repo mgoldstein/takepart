@@ -14189,9 +14189,14 @@ h3.video-title {
   padding-top: 10px;
 }
 
-/* line 232, ../sass/modules/_video_playlist.scss */
+/* line 230, ../sass/modules/_video_playlist.scss */
 .playlist .jwplayer {
   display: block !important;
   height: auto;
   overflow: hidden;
+}
+
+/* line 235, ../sass/modules/_video_playlist.scss */
+.inline-content-playlist {
+  max-width: 500px;
 }
