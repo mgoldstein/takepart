@@ -218,9 +218,12 @@ function tp_video_player_delete_entity_configuration($entity_type, $entity_id) {
     ->condition('entity_type', $entity_type, '=')
     ->condition('entity_id', $entity_id, '=')
     ->execute();
-  db_delete('tp_video_player_configuration')
-    ->condition('id', $ids, 'IN')
-    ->execute();
+
+  if (!empty($ids)) {
+    db_delete('tp_video_player_configuration')
+      ->condition('id', $ids, 'IN')
+      ->execute();
+  }
 }
 
 function tp_video_player_save_configuration($configuration) {

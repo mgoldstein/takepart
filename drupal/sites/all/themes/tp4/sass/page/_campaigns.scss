@@ -1732,5 +1732,9 @@ body.campaign-display .swipe-wrap.has-title{
     }
 }
 
+body.campaign-display .card .playlist ul:not(.tabs) li:before{
+  background-color: transparent;
+}
+
 //Add Custom Styling for TP4 Campaigns
 @import "tp4_dark_bg";

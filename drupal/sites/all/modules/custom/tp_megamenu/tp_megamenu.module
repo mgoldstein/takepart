@@ -199,6 +199,12 @@ function tp_megamenu_content_menu($entities, $type, $url){
 			}
 			else{
 				$thumb = file_load($node->field_thumbnail['und'][0]['fid']);
+				
+				//ensures that it fallsback to action main image
+				if (empty($thumb)) {
+					$thumb = file_load($node->field_action_main_image['und'][0]['fid']);
+				}
+				
 				$thumb = '<img src="'. image_style_url('homepage_featured_image', $thumb->uri). '">';
 				$label = $node->title;
 				$text = $node->field_promo_headline['und'][0]['value'];

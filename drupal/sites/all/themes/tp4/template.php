@@ -487,7 +487,16 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   }
   //Grab Description
-  $description = tp4_render_field_value('node', $variables['node'], 'body');
+//  $description = tp4_render_field_value('node', $variables['node'], 'body');
+	$description_display = array(
+		'label' => 'hidden',
+		'type'  => 'text_with_inline_content',
+		'settings' => array(
+			'source' => 'field_inline_replacements'
+		)
+	);
+	$description = field_view_field('node', $variables['node'], 'body', $description_display);
+	$description = drupal_render($description);
   if(!empty($description)){
     if (function_exists('tp_flashcards_parse_html')) {
       $description = tp_flashcards_parse_html($description);
@@ -1358,7 +1367,11 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
         $image = l($image, $link[0]['url'], array('html' => true, 'attributes' => array('target' => $target)));
     }
     $center .= '<div class="item" style="max-width:'. $item_width. 'px;">';
-    $center .= $image;
+    
+    //conditional check to ensure there's an image before appending
+    if (!empty($collection->field_promo_thumbnail)) {
+      $center .= $image;
+    }
     $center .= (!empty($text) ? $text : '');
     $center .= '</div>';
   }

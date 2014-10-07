@@ -1407,26 +1407,29 @@ function tpf_content_campaigns_strongarm() {
       'iframe' => array(
         'custom_settings' => FALSE,
       ),
+      'video_playlist_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'redirect' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'xmlsitemap' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'locations' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
       ),
       'display' => array(),
