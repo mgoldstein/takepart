@@ -50,16 +50,16 @@
 
           //init the playlist after processing          
           tp_video_playlist_init(element, settings, index);
-          
-          //fires the init for bxslider on ready
-          $(document).ready(function() {
-            window.tp_initslider();
-            
-            $(window).smartresize(function() {
-              window.tp_initslider();
-            });
-          });
         }
+      });
+      
+      //fires the init for bxslider on ready
+      $(document).ready(function() {
+        window.tp_initslider();
+        
+        $(window).smartresize(function() {
+          window.tp_initslider();
+        });
       });
     }
   };

@@ -72,6 +72,14 @@ h3.video-title{
   padding-bottom: 5px; /* per Sasoon's comment */
   .bx-viewport {
     background: transparent;
+    
+    .bx-wrapper {
+      padding: 0 !important;
+      
+      .bx-controls {
+        display: none;
+      }
+    }
   }
   
   .bx-next {
