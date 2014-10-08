@@ -10,47 +10,17 @@
 function tp_videos_schema() {
   $schema = array();
 
-  $schema['tp_video'] = array(
+  $schema['tp_videos_metadata'] = array(
     'description' => 'The base table for videos.',
     'fields' => array(
 
-      'id' => array(
-        'description' => 'Primary key identifier for the video.',
-        'type' => 'serial',
-        'unsigned' => FALSE,
+      'fid' => array(
+        'description' => 'Primary key identifier of the file object for the video.',
+        'type' => 'int',
+        'unsigned' => TRUE,
         'not null' => TRUE,
       ),
 
-      'type' => array(
-        'description' => 'Type class name.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-
-      'external_key' => array(
-        'description' => 'Key identifier for the video in the hosting system.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
-      'external_type' => array(
-        'description' => 'Optional type of the video in the hosting system.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => FALSE,
-        'default' => NULL,
-      ),
-
-      'title' => array(
-        'description' => 'Admin video title.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => TRUE,
-        'default' => '',
-      ),
       'width' => array(
         'description' => 'Width of video in pixels.',
         'type' => 'int',
@@ -79,15 +49,6 @@ function tp_videos_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
-
-      'allowed_regions' => array(
-        'description' => 'Optional list of regions playback should be limited to.',
-        'type' => 'varchar',
-        'length' => 255,
-        'not null' => FALSE,
-        'default' => NULL,
-      ),
-
       'embed_code' => array(
         'description' => 'Embed code provided by the video hosting service.',
         'type' => 'text',
@@ -96,31 +57,43 @@ function tp_videos_schema() {
 
       /* Change tracking timestamps */
       'created_at' => array(
-        'description' => 'The Unix timestamp when the video was created.',
+        'description' => 'The Unix timestamp when the video metadata was created.',
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,
       ),
       'updated_at' => array(
-        'description' => 'The Unix timestamp when the video was last changed.',
+        'description' => 'The Unix timestamp when the video metadata was last changed.',
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,
       ),
     ),
-    'primary key' => array('id'),
-    'unique keys' => array(
-      'type_external_key' => array('type', 'external_key'),
-    ),
+    'primary key' => array('fid'),
   );
 
   return $schema;
 }
 
 /**
- * Add TakePart video table for storing meta information about videos.
+ * Add TakePart video table for storing metadata about videos.
  */
 function tp_videos_update_7101(&$sandbox) {
   $schema = tp_videos_schema();
   db_create_table('tp_video', $schema['tp_video']);
+}
+
+/**
+ * Drop the old video metadata table.
+ */
+function tp_videos_update_7102(&$sandbox) {
+  db_drop_table('tp_video');
+}
+
+/**
+ * Add video metadata table that links directly to file records.
+ */
+function tp_videos_update_7103(&$sandbox) {
+  $schema = tp_videos_schema();
+  db_create_table('tp_videos_metadata', $schema['tp_videos_metadata']);
 }

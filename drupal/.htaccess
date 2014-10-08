@@ -78,6 +78,10 @@
   RewriteCond %{REQUEST_URI} ^/backdoor
   RewriteRule ^(.*)$ /user [R=301,L]
 
+  # Redirect the pm_core player swf to the tp_videos swf
+  RewriteCond %{REQUEST_URI} ^/sites/all/modules/custom/pm_core/assets/player.swf$
+  RewriteRule ^(.*)$ /sites/all/modules/custom/tp_videos/assets/player.swf [R=301,L]
+
 </IfModule>
 
 ### STANDARD DRUPAL HTACCESS FOLLOWS ###

@@ -5,25 +5,6 @@
  */
 
 /**
- * Implements hook_boot().
- */
-function pm_core_boot() {
-  global $databases;
-  $db = $databases['default']['default'];
-  // Load the Composer autoloader.
-  require_once __DIR__ . '/vendor/autoload.php';
-  // Initialize the Doctrine Entity Manager.
-  \Participant\App::init(array(
-    'development_mode' => ENVIRONMENT == 'development' || ENVIRONMENT == 'test',
-    'entity_path' => __DIR__ . '/app/src',
-    'db_user' => $db['username'],
-    'db_pass' => $db['password'],
-    'db_name' => $db['database'],
-    'db_host' => $db['host'],
-  ));
-}
-
-/**
  * Implements hook_help().
  */
 function pm_core_help($path, $arg) {
@@ -33,24 +14,6 @@ function pm_core_help($path, $arg) {
     $output .= '<p>' . t("The Participant Media Core module provides common utilities and classes for other custom modules.") . '</p>';
   }
   return $output;
-}
-
-/**
- * Implements hook_menu().
- */
-function pm_core_menu() {
-  return array(
-    'admin/config/customization' => array(
-      'title' => 'Customization',
-      'description' => 'Configuration of custom modules',
-      'position' => 'right',
-      'weight' => 0,
-      'page callback' => 'system_admin_menu_block_page',
-      'access arguments' => array('access administration pages'),
-      'file' => 'system.admin.inc',
-      'file path' => drupal_get_path('module', 'system'),
-    ),
-  );
 }
 
 /* Helper and utility functions
