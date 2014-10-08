@@ -158,26 +158,7 @@ function _takepart_custom_video_nodes(&$context) {
         //mapping to metatag
         $video_loc = token_replace('[node:attached-video-file-secure-url]', array('node' => $node));
         $video_img = token_replace('[node:attached-video-image]', array('node' => $node));
-
-        /**
-         *  copied from tp_videos.module.
-         *  issue with youtube portion.
-         *  key was incorrect
-         */
-        if ($file = tp_videos_attached_file($node, 'field_video')) {
-          if ($params = tp_videos_parse_wrapper_uri($file->uri)) {
-            // Youtube Videos
-            if ($file->filemime == 'video/youtube') {
-              $player_loc = 'https://www.youtube.com/v/' . $params['v'] . '?version=3&amp;autohide=1';
-            }
-            // JWPlatform Videos (no playlists)
-            elseif ($file->filemime == 'video/jwplatform' && substr($file->uri, 0, 16) === 'jwplatform-video') {
-              $api = pm_jwplatform_get_api();
-              $video = new JWPlatformVideoMetaData($api, $params['key'], 640);
-              $player_loc = is_null($video) ? NULL : $video->openGraphURL($https);
-            }
-          }
-        }
+        $player_loc = token_replace('[node:attached-video-player-secure-url]', array('node' => $node));
 
         //formatted to obj
         $item = array(

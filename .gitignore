@@ -32,7 +32,3 @@ sftp-config.json
 /drupal/sites/all/modules/contrib/diff/
 /drupal/sites/all/modules/contrib/features_plumber/
 /drupal/sites/all/libraries/FirePHPCore/
-
-# Composer and vendor library directory
-/drupal/sites/all/modules/custom/pm_core/vendor
-/drupal/sites/all/modules/custom/pm_core/composer.phar
