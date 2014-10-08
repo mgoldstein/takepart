@@ -227,25 +227,22 @@ class TPVideoOembed {
     
     //ensures that the node is an object and only serve up video content types
     if (is_object($node) && $node->type == 'video') {
-      $file = tp_videos_attached_file($node, 'field_video');
+      $items = field_get_items('node', $node, 'field_video');
+      $file = reset($items);
       
       //only continue if the file is found
       if (!empty($file)) {
-        if ($params = tp_videos_parse_wrapper_uri($file->uri)) {
-          // Youtube Videos
-          if ($file->filemime == 'video/youtube') {
-            $video = new YoutubeVideo($params['v'], 640);
-          }
-          // JWPlatform Videos (no playlists)
-          elseif ($file->filemime == 'video/jwplatform' && substr($file->uri, 0, 16) === 'jwplatform-video') {
-            $api = pm_jwplatform_get_api();
-            $video = new JWPlatformVideo($api, $params['key'], 640);
-          }
+        $file = file_load(array($file['fid']));
+
+        //ensures that there is a file
+        if (empty($file)) {
+          $this->_cached('set', array());
+          return;
         }
         
         //gets the video's spec
-        $height = $video->height();
-        $width = $video->width();
+        $height = $file->tp_videos_metadata->height;
+        $width = $file->tp_videos_metadata->width;
         
         //allows for override to width ratio
         if (is_numeric($_GET['width'])) {
@@ -282,7 +279,7 @@ class TPVideoOembed {
             '#attributes' => array(
               'class' => 'takepart-oembed-wrapper',
         ))));
-        
+
         //creates the video array
         $video = array(
           'title' => $file->filename,
