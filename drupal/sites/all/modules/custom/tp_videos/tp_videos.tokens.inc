@@ -36,11 +36,6 @@ function tp_videos_token_info() {
           'description' => t("The URL to the video file referenced in a node's video field."),
           'type' => 'format',
         ),
-        'attached-video-player-secure-url' => array(
-          'name' => 'Video player URL',
-          'description' => t("The URL to the video player and file referenced in a node's video field."),
-          'type' => 'format',
-        ),
         'attached-video-width' => array(
           'name' => 'Video width',
           'description' => "The width of the video in the node's video field",
@@ -105,9 +100,6 @@ function tp_videos_tokens($type, $tokens, array $data = array(),
           break;
         case 'attached-video-file-secure-url':
           $replacements[$original] = tp_videos_token_attached_video_file_url($node, TRUE);
-          break;
-        case 'attached-video-player-secure-url':
-          $replacements[$original] = tp_videos_token_attached_video_player_url($node, TRUE);
           break;
         case 'attached-video-url':
           $replacements[$original] = tp_videos_token_attached_video_url($node);
@@ -203,7 +195,9 @@ function tp_videos_token_iframe_embed_src($node, $secure = FALSE) {
 function tp_videos_token_iframe_embed_width($node) {
   $replacement = NULL;
   if ($file = tp_videos_token_attached_file($node, 'field_video')) {
-
+    if (isset($file->tp_videos_metadata)) {
+      return variable_get('tp_videos_iframe_embed_width', 480);
+    }
   }
   return $replacement;
 }
@@ -211,7 +205,12 @@ function tp_videos_token_iframe_embed_width($node) {
 function tp_videos_token_iframe_embed_height($node) {
   $replacement = NULL;
   if ($file = tp_videos_token_attached_file($node, 'field_video')) {
-
+    if (isset($file->tp_videos_metadata)) {
+      $width = variable_get('tp_videos_iframe_embed_width', 480);
+      $height = ($file->tp_videos_metadata->height * $width)
+        / $file->tp_videos_metadata->width;
+      $replacement = intval($height);
+    }
   }
   return $replacement;
 }
@@ -219,15 +218,19 @@ function tp_videos_token_iframe_embed_height($node) {
 function tp_videos_token_attached_video_file_url($node, $secure = FALSE) {
   $replacement = NULL;
   if ($file = tp_videos_token_attached_file($node, 'field_video')) {
-
-  }
-  return $replacement;
-}
-
-function tp_videos_token_attached_video_player_url($node, $secure = FALSE) {
-  $replacement = NULL;
-  if ($file = tp_videos_token_attached_file($node, 'field_video')) {
-
+    if ($file->filemime === 'video/youtube') {
+      $params = tp_videos_parse_wrapper_uri($file->uri);
+      $token = $params['v'];
+      $scheme = $secure ? 'https' : 'http';
+      $replacement = "{$scheme}://www.youtube.com/embed/{$token}";
+    }
+    elseif ($file->filemime === 'video/jwplatform') {
+      $params = tp_videos_parse_wrapper_uri($file->uri);
+      $token = $params['key'];
+      $scheme = $secure ? 'https' : 'http';
+      $width = variable_get('tp_videos_iframe_embed_width', 480);
+      $replacement = "{$scheme}://content.jwplatform.com/videos/{$token}-{$width}.mp4";
+    }
   }
   return $replacement;
 }
@@ -235,7 +238,28 @@ function tp_videos_token_attached_video_player_url($node, $secure = FALSE) {
 function tp_videos_token_attached_video_url($node, $secure = FALSE) {
   $replacement = NULL;
   if ($file = tp_videos_token_attached_file($node, 'field_video')) {
-
+    if ($file->filemime === 'video/youtube') {
+      $params = tp_videos_parse_wrapper_uri($file->uri);
+      $token = $params['v'];
+      $scheme = $secure ? 'https' : 'http';
+      $replacement = "{$scheme}://www.youtube.com/v/{$token}?autohide=1&version=3";
+    }
+    elseif ($file->filemime === 'video/jwplatform') {
+      $params = tp_videos_parse_wrapper_uri($file->uri);
+      $token = $params['key'];
+      $scheme = $secure ? 'https' : 'http';
+      $video_url = tp_videos_token_attached_video_file_url($node, $secure);
+      $player_path = drupal_get_path('module', 'tp_videos') . '/assets/player.swf';
+      $replacement = url($player_path, array(
+        'absolute' => TRUE,
+        'https' => $secure,
+        'query' => array(
+          'file' => $video_url,
+          'autostart' => 'true',
+        ),
+        'alias' => TRUE,
+      ));
+    }
   }
   return $replacement;
 }
