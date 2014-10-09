@@ -14025,7 +14025,7 @@ h3.video-title {
 /* line 85, ../sass/modules/_video_playlist.scss */
 .bx-wrapper .bx-next {
   right: 0;
-  top: 32% !important;
+  top: 26%;
 }
 /* line 88, ../sass/modules/_video_playlist.scss */
 .bx-wrapper .bx-next:hover {
@@ -14034,7 +14034,7 @@ h3.video-title {
 /* line 93, ../sass/modules/_video_playlist.scss */
 .bx-wrapper .bx-prev {
   left: -10px;
-  top: 32% !important;
+  top: 26%;
 }
 /* line 96, ../sass/modules/_video_playlist.scss */
 .bx-wrapper .bx-prev:hover {
