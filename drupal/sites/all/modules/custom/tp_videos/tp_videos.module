@@ -4,13 +4,15 @@
  * Video content.
  */
 
-use \Participant\MetaData\Video\YoutubeVideo;
-use \Participant\MetaData\Video\JWPlatformVideo;
+/**
+ * Include the token functions.
+ */
+require_once __DIR__ . '/tp_videos.tokens.inc';
 
 /**
- * Include the playlist filter functions.
+ * Include the video metadata functions.
  */
-require_once __DIR__ . '/classes/tp_videos_playlist.class.inc';
+require_once __DIR__ . '/tp_videos.metadata.inc';
 
 /**
  * Implements hook_entity_insert().
@@ -27,49 +29,42 @@ function tp_videos_entity_update($entity, $entity_type) {
   // Only concerned with (media) files.
   if ($entity_type !== 'file') { return; }
 
-  // Create the appropriate importer.
-  $importer = NULL;
+  // Create or update the appropriate metadata.
+  $metadata = NULL;
   if ($entity->filemime === 'video/youtube') {
-    $importer = new TakePart_YoutubeImporter();
-    $params = tp_videos_parse_wrapper_uri($entity->uri);
-    $url = "TakePart_YoutubeVideo:{$params['v']}";
+    $metadata = tp_videos_fetch_youtube_metadata($entity);
   }
   elseif ($entity->filemime === 'video/vimeo') {
-    $importer = new TakePart_VimeoImporter();
-    $params = tp_videos_parse_wrapper_uri($entity->uri);
-    $url = "TakePart_VimeoVideo:{$params['v']}";
+    $metadata = tp_videos_fetch_vimeo_metadata($entity);
   }
   elseif ($entity->filemime === 'video/jwplatform') {
-    $importer = new TakePart_JWPlatformImporter();
-    $params = tp_videos_parse_wrapper_uri($entity->uri);
-    $url = "TakePart_JWPlatformVideo:{$params['key']}";
+    $metadata = tp_videos_fetch_jwplatform_metadata($entity);
   }
 
-  if (!empty($importer)) {
+  if (!is_null($metadata)) {
+    tp_videos_save_metadata($metadata);
+  }
+}
 
-    $imported_video = $importer->import($url, TRUE);
+/**
+ * Implements hook_entity_delete().
+ */
+function tp_videos_entity_delete($entity, $entity_type) {
+  if ($entity_type === 'file') {
+    tp_videos_delete_metadata($entity->fid);
+  }
+}
 
-    $video_controller = new TakePart_VideoController();
-    $existing_video = $video_controller->loadByExternalKey($imported_video->type,
-      $imported_video->external_key);
-
-    if (is_null($existing_video)) {
-      $video_controller->save($imported_video);
-      $entity->tp_videos_metadata = $imported_video;
+/**
+ * Implements hook_entity_load().
+ */
+function tp_videos_entity_load($entities, $entity_type) {
+  if ($entity_type === 'file') {
+    $fids = array_keys($entities);
+    $metadatas = tp_videos_load_multiple_metadata($fids);
+    foreach ($metadatas as $fid => $metadata) {
+      $entities[$fid]->tp_videos_metadata = $metadata;
     }
-    else {
-      // Refresh the existing video data.
-      $values = $imported_video->values();
-      unset($values['created_at']);
-      unset($values['updated_at']);
-      unset($values['allowed_regions']);
-      foreach ($values as $name => $value) {
-        $existing_video->{$name} = $value;
-      }
-      $video_controller->save($existing_video);
-      $entity->tp_videos_metadata = $existing_video;
-    }
-
   }
 }
 
@@ -81,294 +76,6 @@ function tp_videos_entity_view_alter(&$build, $type) {
     unset($build['links']);
   }
 }
-
-/**
- * Implements hook_token_info().
- */
-function tp_videos_token_info() {
-  return array(
-    'tokens' => array(
-      'node' => array(
-        'iframe-embed-markup' => array(
-          'name' => 'iFrame Embed Markup',
-          'description' => t('Markup to embed the node in an iframe on another site.'),
-          'type' => 'format',
-        ),
-        'iframe-embed-src' => array(
-          'name' => 'iFrame Embed Source',
-          'description' => t('Source for a node embed iframe.'),
-          'type' => 'format',
-        ),
-        'iframe-embed-width' => array(
-          'name' => 'iFrame Embed Width',
-          'description' => t('Width for a node embed iframe.'),
-          'type' => 'format',
-        ),
-        'iframe-embed-height' => array(
-          'name' => 'iFrame Embed Height',
-          'description' => t('Height for a node embed iframe.'),
-          'type' => 'format',
-        ),
-        'attached-video-file-secure-url' => array(
-          'name' => 'Video file URL',
-          'description' => t("The URL to the video file referenced in a node's video field."),
-          'type' => 'format',
-        ),
-        'attached-video-width' => array(
-          'name' => 'Video width',
-          'description' => "The width of the video in the node's video field",
-          'type' => 'node',
-        ),
-        'attached-video-height' => array(
-          'name' => 'Video height',
-          'description' => "The height of the video in the node's video field",
-          'type' => 'node',
-        ),
-        'attached-video-url' => array(
-          'name' => 'Video URL',
-          'description' => "Full URL of the video in the node's video field",
-          'type' => 'node',
-        ),
-        'attached-video-secure-url' => array(
-          'name' => 'Video URL',
-          'description' => "Full secure URL of the video in the node's video field",
-          'type' => 'node',
-        ),
-        'attached-video-image' => array(
-          'name' => 'Video URL',
-          'description' => "Full URL of the thumbnail for the video in the node's video field",
-          'type' => 'node',
-        ),
-        'attached-video-secure-image' => array(
-          'name' => 'Video URL',
-          'description' => "Full secure URL of the thumbnail for the video in the node's video field",
-          'type' => 'node',
-        ),
-      ),
-    ),
-  );
-}
-
-/**
- * Implements hook_tokens().
- */
-function tp_videos_tokens($type, $tokens, array $data = array(),
-  array $options = array()) {
-  $replacements = array();
-  if ($type == 'node' && !empty($data['node'])) {
-    $node = $data['node'];
-    foreach ($tokens as $name => $original) {
-      switch ($name) {
-        case 'iframe-embed-markup':
-          $replacements[$original] = tp_videos_iframe_embed_markup($node);
-          break;
-        case 'iframe-embed-src':
-          $replacements[$original] = tp_videos_iframe_embed_source($node, TRUE);
-          break;
-        case 'iframe-embed-width':
-          $replacements[$original] = variable_get('twitter_player_card_iframe_width', 640);
-          break;
-        case 'iframe-embed-height':
-          $replacements[$original] = variable_get('twitter_player_card_iframe_height', 480);
-          break;
-        case 'attached-video-file-secure-url':
-          $replacements[$original] = tp_videos_attached_video_file_url($node, TRUE);
-          break;
-        case 'attached-video-url':
-          $replacements[$original] = tp_videos_attached_video_opengraph_url($node);
-          break;
-        case 'attached-video-secure-url':
-          $replacements[$original] = tp_videos_attached_video_opengraph_url($node, TRUE);
-          break;
-        case 'attached-video-width':
-          $replacements[$original] = tp_videos_attached_video_width($node);
-          break;
-        case 'attached-video-height':
-          $replacements[$original] = tp_videos_attached_video_height($node);
-          break;
-        case 'attached-video-image':
-          $replacements[$original] = tp_videos_attached_video_image($node);
-          break;
-        case 'attached-video-secure-image':
-          $replacements[$original] = tp_videos_attached_video_image($node, TRUE);
-          break;
-      }
-    }
-  }
-  return $replacements;
-}
-
-/**
- * Markup for embedding a node using an iframe.
- */
-function tp_videos_iframe_embed_markup($node) {
-  global $base_url;
-  $properties = array(
-	  'width' => '100%',
-		'height' => '100%',
-    'src' => $base_url . '/entity_iframe/node/' . $node->nid,
-    'frameborder' => '0',
-    'class' => 'entity_iframe entity_iframe_node '. $node->type,
-    'id' => 'entity_iframe_node_' . $node->nid,
-	  'style' => 'position: absolute; top: 0; left: 0;',
-  );
-	if($playlist = field_get_items('node', $node, 'field_playlist_position')){
-		if($playlist[0]['value'] == 'bottom'){
-			$ratio = 95;
-		}elseif($playlist[0]['value'] == 'right'){
-			$ratio = 60; //change this
-		}else{
-			$ratio = 60;
-		}
-	}
-
-	if($node->type == 'video_playlist' && $node->field_playlist_view_mode != null){
-		$view_mode = field_view_field('node', $node, 'field_playlist_view_mode');
-		$view_mode = strtolower($view_mode['#items'][0]['value']);
-		switch ($view_mode){
-			case 'basic':
-				 $style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 300px;"';
-				break;
-			case 'detailed':
-				$style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 400px;"';
-				break;
-			case 'hidelist':
-				$style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 40px;"';
-				break;
-			default:
-				$style = 'style="position: relative; height 0; padding-bottom: 60%; padding-top: 300px;"';
-				break;
-		}
-		return '<div class="embed-container" '. $style. '>'. _entity_iframe_build_iframe($properties, 'video-embed'). '</div>';
-	}
-  return '<div class="embed-container" style="position: relative; height: 0; padding-bottom:'. $ratio. '%">'. _entity_iframe_build_iframe($properties, 'video-embed'). '</div>';
-}
-
-/**
- * Source URL for embedding a node using an iframe.
- */
-function tp_videos_iframe_embed_source($node, $https = FALSE) {
-  global $base_url;
-  $src_url = $base_url . '/entity_iframe/node/' . $node->nid;
-  list(, $resource) = explode('://', $src_url, 2);
-  $scheme = $https ? 'https://' : 'http://';
-  return $scheme . $resource;
-}
-
-/**
- * Get the file referenced in a file field on a node.
- */
-function tp_videos_attached_file($node, $field_name) {
-  $file = field_get_items('node', $node, $field_name);
-  if ($file !== FALSE && count($file) > 0) {
-    $data = reset($file);
-    return file_load($data['fid']);
-  }
-  return FALSE;
-}
-
-/**
- * Parse a media stream wapper URI
- */
-function tp_videos_parse_wrapper_uri($uri) {
-  $path = explode('://', $uri);
-  $parts = explode('/', $path[1]);
-  $params = array();
-  $count = 0;
-  $total = count($parts);
-  if (!$total || ($total % 2)) {
-    // If we have no parts, or an odd number of parts, it's malformed.
-    return FALSE;
-  }
-  while ($count < $total) {
-    // We iterate count for each step of the assignment to keep us honest.
-    $params[$parts[$count++]] = $parts[$count++];
-  }
-  return $params;
-}
-
-function tp_video_play_inline_share($node) {
-  $items = field_get_items('node', $node, 'field_sharing_inline');
-  if ($items !== FALSE && count($items) > 0) {
-    $first = reset($items);
-    return strtolower(trim($first['value'])) == 1 ? TRUE : FALSE;
-  }
-  return FALSE;
-}
-
-function tp_video_allowed_regions($node) {
-  $regions = array();
-  $items = field_get_items('node', $node, 'field_allowed_regions');
-  if ($items !== FALSE && count($items) > 0) {
-    $data = reset($items);
-    $list = trim($data['value']);
-    if (!empty($list)) { $regions[] = $list; }
-  }
-  return $regions;
-}
-
-function tp_videos_attached_video_object($node) {
-
-  // Make sure the video node has play inline sharing enabled
-  if (!tp_video_play_inline_share($node)) {
-    return NULL;
-  }
-
-  // Region limited video should not play inline when sharing
-  $regions = tp_video_allowed_regions($node);
-  if (!empty($regions)) {
-    return NULL;
-  }
-
-  if ($file = tp_videos_attached_file($node, 'field_video')) {
-    if ($params = tp_videos_parse_wrapper_uri($file->uri)) {
-      // Youtube Videos
-      if ($file->filemime == 'video/youtube') {
-        return new YoutubeVideo($params['v'], 640);
-      }
-      // JWPlatform Videos (no playlists)
-      elseif ($file->filemime == 'video/jwplatform'
-        && substr($file->uri, 0, 16) === 'jwplatform-video') {
-        $api = pm_jwplatform_get_api();
-        return new JWPlatformVideo($api, $params['key'], 640);
-      }
-    }
-  }
-  return NULL;
-}
-
-function tp_videos_attached_video_file_url($node, $https = FALSE) {
-  $video = tp_videos_attached_video_object($node);
-  return is_null($video) ? NULL : $video->url($https);
-}
-
-function tp_videos_attached_video_opengraph_url($node, $https = FALSE) {
-  $video = tp_videos_attached_video_object($node);
-  return is_null($video) ? NULL : $video->openGraphURL($https);
-}
-
-function tp_videos_attached_video_image($node, $https = FALSE) {
-  $file = tp_videos_attached_file($node, 'field_thumbnail');
-  if ($file !== FALSE) {
-    $image_url = file_create_url($file->uri);
-    $absolute_url = url($image_url, array('absolute' => TRUE));
-    list(, $resource) = explode('://', $absolute_url, 2);
-    $scheme = $https ? 'https://' : 'http://';
-    return $scheme . $resource;
-  }
-  return NULL;
-}
-
-function tp_videos_attached_video_width($node) {
-  $video = tp_videos_attached_video_object($node);
-  return is_null($video) ? NULL : $video->width();
-}
-
-function tp_videos_attached_video_height($node) {
-  $video = tp_videos_attached_video_object($node);
-  return is_null($video) ? NULL : $video->height();
-}
-
 
 /**
  * Implements hook_entity_info_alter().
@@ -384,10 +91,19 @@ function tp_videos_entity_info_alter(&$entity_info) {
  * Implements hook_preprocess_node().
  */
 function tp_videos_preprocess_node(&$variables) {
-	if($variables['type'] == 'video_playlist'){
-		/* Use the selected view mode for playlists on the node view*/
-		$view_mode = field_get_items('node', $variables['node'], 'field_playlist_view_mode');
-		$view_mode = ($view_mode[0]['value'] != null ? $view_mode[0]['value'] : 'basic');
+
+	if ($variables['type'] == 'video_playlist') {
+
+		// Use the selected view mode for playlists on the node view.
+    $view_mode = 'basic';
+    $items = field_get_items('node', $variables['node'], 'field_playlist_view_mode');
+    if ($items !== FALSE && count($items) > 0) {
+      $item = reset($items);
+      if (!empty($item['value'])) {
+        $view_mode = $item['value'];
+      }
+    }
+
 		$video_list = field_view_field('node', $variables['node'], 'field_video_list', array(
 			'type' => 'video_playlist',
 			'label' => 'hidden',
@@ -395,30 +111,32 @@ function tp_videos_preprocess_node(&$variables) {
 				'playlist_view_mode' => $view_mode
 			)
 		));
+
 		$variables['content']['field_video_list'] = $video_list;
 	}
 
-	if($variables['view_mode'] == 'video_playlist_teaser' && $variables['type'] == 'video') {
+	if ($variables['view_mode'] == 'video_playlist_teaser' && $variables['type'] == 'video') {
 
 		$variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__video_playlist_teaser';
-		$thumbnail = field_get_items('node', $variables['node'], 'field_thumbnail');
-		$thumbnail = $thumbnail[0]['file']->uri;
 
-    //conditional checks to ensure there's a placeholder for now
-    if (empty($thumbnail)) {
-      $thumbnail = '/' . drupal_get_path('theme', 'tp4') . '/images/ph_black.png';
+    $variables['thumbnail'] = '/' . drupal_get_path('theme', 'tp4') . '/images/ph_black.png';
+    $items = field_get_items('node', $variables['node'], 'field_thumbnail');
+    if ($items !== FALSE && count($items) > 0) {
+      $item = reset($items);
+      if (!empty($item['uri'])) {
+        $thumbnail = image_style_url('video_navigation_thumb_155x87', $thumbnail);
+        if (!empty($thumbnail)) {
+          $variables['thumbnail'] = $thumbnail;
+        }
+      }
     }
-    else {
-      $thumbnail = image_style_url('video_navigation_thumb_155x87', $thumbnail);
+
+    $variables['promo_headline'] = '';
+    $items = field_get_items('node', $variables['node'], 'field_promo_headline');
+    if ($items !== FALSE && count($items) > 0) {
+      $item = reset($items);
+      $variables['promo_headline'] = $item['value'];
     }
-
-		$promo_headline = field_get_items('node', $variables['node'], 'field_promo_headline');
-		$promo_headline = $promo_headline[0]['value'];
-
-		$variables['thumbnail'] = $thumbnail;
-		$variables['promo_headline'] = $promo_headline;
-		$variables['promo_headline'] = $promo_headline;
-
 	}
 }
 
@@ -474,25 +192,24 @@ function tp_videos_field_formatter_settings_summary($field, $instance, $view_mod
  *  Implements hook_field_formatter_prepare_view().
  */
 function tp_videos_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
-  //checks to ensure the field
 
   if ($field['field_name'] == 'field_video_list' && $field['type'] == 'node_reference') {
 
-		$display = current($displays);
-	  $display['settings']['playlist_view_mode'] = 'basic';
+    foreach ($entities as $id => $entity) {
 
-    //ensures there is at least the nid
-    foreach ($items as $key => $value) {
-      //only create if filter is set
-      $filter = (isset($entities[$key]->field_playlist_filter) && isset($entities[$key]->field_playlist_filter['und'][0])) ? TRUE : FALSE;
-      //if empty create a video to hide
-      if (empty($value) && $filter) {
-        $items[$key][0] = array(
-          'nid' => $key,
+      $filter = FALSE;
+      $filter_items = field_get_items($entity_type, $entity, 'field_playlist_filter');
+      if ($filter_items !== FALSE && count($filter_items) > 0) {
+        $filter_item = reset($filter_items);
+        $filter = !empty($filter_item['value']);
+      }
+
+      if (empty($items[$id]) && $filter) {
+        $items[$id][0] = array(
+          'nid' => $id,
           'access' => FALSE,
-          'hide' => TRUE
+          'hide' => TRUE,
         );
-
       }
     }
   }
@@ -588,11 +305,13 @@ function tp_videos_playlist_view_mode($entity_type, $entity, $default) {
 }
 
 function tp_videos_playlist_title($entity_type, $entity, $default) {
-  $show_title = field_get_items($entity_type, $entity, 'field_show_title');
-  if ($show_title[0]['value'] == 1) {
-	  $title = $default;
-  }else{
-	  $title = '';
+  $title = '';
+  $items = field_get_items($entity_type, $entity, 'field_show_title');
+  if ($items !== FALSE && count($items) > 0) {
+    $items = reset($items);
+    if ($item['value'] == 1) {
+      $title = $default;
+    }
   }
   return $title;
 }
@@ -647,7 +366,7 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   if (is_object($menu_obj) && $menu_obj->type == 'video_playlist') {
     $player_configuration->auto_start = 1;
   }
-    
+
   // Build the playlist content.
   $playlist = tp_videos_build_playlist($player_configuration, $videos, $view_mode, $langcode);
 
@@ -713,23 +432,17 @@ function tp_videos_theme(){
 }
 
 /**
- *  Implements hook_form_alter().
+ *  Implements hook_form_FORM_ID_alter().
  */
-function tp_videos_form_alter(&$form, &$form_state, $form_id) {
-  //switch based on form id
-  switch ($form_id) {
-    //adds state and validate function for video playlists content type
-    case 'video_playlist_node_form':
-      $form['field_playlist_items_count']['#states'] = array(
-        'required' => array(
-          ':input[name=field_playlist_filter\[und\]]' => array('filled' => TRUE)
-        )
-      );
+function tp_videos_form_video_playlist_node_form_alter(&$form, &$form_state, $form_id) {
 
-      //adds a new validate function
-      $form['#validate'][] = '_tp_videos_playlist_form_validate';
-      break;
-  }
+  // Add state and validate function for video playlists content type.
+  $form['field_playlist_items_count']['#states'] = array(
+    'required' => array(
+      ':input[name=field_playlist_filter\[und\]]' => array('filled' => TRUE)
+    )
+  );
+  $form['#validate'][] = '_tp_videos_playlist_form_validate';
 }
 
 /**

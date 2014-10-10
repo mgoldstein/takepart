@@ -50,16 +50,16 @@
 
           //init the playlist after processing          
           tp_video_playlist_init(element, settings, index);
-          
-          //fires the init for bxslider on ready
-          $(document).ready(function() {
-            window.tp_initslider();
-            
-            $(window).smartresize(function() {
-              window.tp_initslider();
-            });
-          });
         }
+      });
+      
+      //fires the init for bxslider on ready
+      $(document).ready(function() {
+        window.tp_initslider();
+        
+        $(window).smartresize(function() {
+          window.tp_initslider();
+        });
       });
     }
   };
@@ -276,6 +276,12 @@
         prevText: '',
         startSlide: window['bxslider_' + index + '_current']
       });
+      
+      //adjustment to auto correct location of slider control
+      var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
+      var img = $('.video-item[data-video-number="0"]', bxslider_wrapper).height();
+      var height = (img - 32) / 2;
+      $('.bx-controls a', bxslider_wrapper).css('top', height);
     });
   }
 })(jQuery, Drupal, this, this.document);

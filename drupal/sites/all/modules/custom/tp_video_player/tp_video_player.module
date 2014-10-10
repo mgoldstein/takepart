@@ -98,7 +98,25 @@ function tp_video_player_form_node_form_alter(&$form, &$form_state) {
  * Implements hook_node_insert().
  */
 function tp_video_player_node_insert($node) {
-  tp_video_player_node_update($node);
+
+  if ($node->type === 'video' || $node->type === 'video_playlist') {
+
+    $type = $node->type === 'video_playlist' ? 'playlist' : 'video';
+    $default = "{$type}_full_page";
+
+    // Load the default configuration.
+    $configuration = tp_video_player_clone_default_configuration($default);
+
+    // Pull in the configuration form from the admin.
+    module_load_include('inc', 'tp_video_player', 'tp_video_player.admin');
+
+    // Update, save and attach the node specific configuration.
+    if (isset($node->tp_video_player)) {
+      tp_video_player_update_configuration($configuration, $node->tp_video_player);
+    }
+    tp_video_player_save_configuration($configuration);
+    tp_video_player_attach_entity_configuration('node', $node->nid, $default, $configuration);
+  }
 }
 
 /**
@@ -108,22 +126,26 @@ function tp_video_player_node_update($node) {
 
   if ($node->type === 'video' || $node->type === 'video_playlist') {
 
-    $type = $node->type === 'video_playlist' ? 'playlist' : 'video';
-    $default = "{$type}_full_page";
+    // Have to have updated data.
+    if (isset($node->tp_video_player)) {
 
-    // Load any available node specific configuration.
-    $configuration = tp_video_player_load_entity_configuration('node', $node->nid, $default);
-    if (is_null($configuration)) {
-      $configuration = tp_video_player_clone_default_configuration($default);
+      $type = $node->type === 'video_playlist' ? 'playlist' : 'video';
+      $default = "{$type}_full_page";
+
+      // Load any available node specific configuration.
+      $configuration = tp_video_player_load_entity_configuration('node', $node->nid, $default);
+      if (is_null($configuration)) {
+        $configuration = tp_video_player_clone_default_configuration($default);
+      }
+
+      // Pull in the configuration form from the admin.
+      module_load_include('inc', 'tp_video_player', 'tp_video_player.admin');
+
+      // Update, save and attach the node specific configuration.
+      tp_video_player_update_configuration($configuration, $node->tp_video_player);
+      tp_video_player_save_configuration($configuration);
+      tp_video_player_attach_entity_configuration('node', $node->nid, $default, $configuration);
     }
-
-    // Pull in the configuration form from the admin.
-    module_load_include('inc', 'tp_video_player', 'tp_video_player.admin');
-
-    // Update, save and attach the node specific configuration.
-    tp_video_player_update_configuration($configuration, $node->tp_video_player);
-    tp_video_player_save_configuration($configuration);
-    tp_video_player_attach_entity_configuration('node', $node->nid, $default, $configuration);
   }
 }
 

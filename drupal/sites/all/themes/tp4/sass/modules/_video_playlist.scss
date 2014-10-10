@@ -72,11 +72,19 @@ h3.video-title{
   padding-bottom: 5px; /* per Sasoon's comment */
   .bx-viewport {
     background: transparent;
+    
+    .bx-wrapper {
+      padding: 0 !important;
+      
+      .bx-controls {
+        display: none;
+      }
+    }
   }
   
   .bx-next {
     right: 0;
-    top: 32% !important;
+    top: 26%;
     &:hover{
       text-decoration: none;
     }
@@ -84,7 +92,7 @@ h3.video-title{
 
   .bx-prev {
     left: -10px;
-    top: 32% !important;
+    top: 26%;
     &:hover{
       text-decoration: none;
     }
