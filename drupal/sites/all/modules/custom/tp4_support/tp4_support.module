@@ -683,3 +683,25 @@ function tp4_support_menu_attribute_info_alter(&$info) {
   $info['rel']['label'] = t('Anchor Tag');
   $info['rel']['description'] = t('Add an anchor tag to the link above here.');
 }
+
+/**
+ * Alter homepage callback to function that checks for content length.
+ */
+function tp4_support_page_delivery_callback_alter(&$callback) {
+  if ($callback == 'drupal_deliver_html_page' && current_path() == 'tp4_homepage') {
+    $callback = 'tp4_support_deliver_homepage';
+  }
+}
+
+/**
+ * If homepage content is empty, return a 500 status code to prevent CDN caching.
+ */
+function tp4_support_deliver_homepage($page_callback_result) {
+  if (empty($page_callback_result['content'])) {
+    drupal_add_http_header('Content-Type', 'text/plain');
+    drupal_add_http_header('Status', '500 Internal Server Error');
+  }
+  else {
+    drupal_deliver_html_page($page_callback_result);
+  }
+}

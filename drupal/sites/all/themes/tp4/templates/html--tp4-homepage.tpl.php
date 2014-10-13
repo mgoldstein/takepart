@@ -25,7 +25,9 @@
   <?php if (!empty($dtm_script_src)): ?>
   <script src="<?php print $dtm_script_src ?>"></script>
   <?php endif; ?>
+  <?php if (user_is_anonymous()): ?>
   <meta http-equiv="refresh" content="600">
+  <?php endif; ?>
   <?php print $head; ?>
   <?php if ($default_mobile_metatags): ?>
   <meta name="MobileOptimized" content="width">
