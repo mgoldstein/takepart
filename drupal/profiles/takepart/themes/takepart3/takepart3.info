@@ -57,3 +57,4 @@ regions[page_bottom] = Page bottom
 regions[content_top]  = Content top
 regions[content_bottom]  = Content bottom
 regions[content_footer]  = Content footer
+regions[leaderboard] = Leaderboard

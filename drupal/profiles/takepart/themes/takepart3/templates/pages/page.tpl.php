@@ -1,5 +1,11 @@
+<div class="leaderboard">
+<?php if ($page['leaderboard']): ?>
+  <?php print render($page['leaderboard']); ?>
+<?php endif; ?>
+</div>
+
 <div class="snap-drawers scrollable">
-    <div class="snap-drawer snap-drawer-left">
+  <div class="snap-drawer snap-drawer-left">
     <?php print render($page['left_drawer']); ?>
   </div>
 </div>
