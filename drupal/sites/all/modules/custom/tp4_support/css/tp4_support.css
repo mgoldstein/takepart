@@ -3687,7 +3687,7 @@ body.page-iframes-footer footer ul.menu li {
   }
   /* line 167, ../sass/_footer.scss */
   .footer-wrapper.responsive.mobile-only footer .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
-    height: 31px;
+    height: 40px;
     width: 144px;
   }
   /* line 171, ../sass/_footer.scss */
@@ -3717,7 +3717,7 @@ body.page-iframes-footer footer ul.menu li {
 /**
  * FOOTER NON-RESPONSIVE
  */
-/* line 206, ../sass/_footer.scss */
+/* line 200, ../sass/_footer.scss */
 .footer-wrapper.non-responsive {
   background-color: #eeeeee;
   padding: 30px 0 15px 0;
@@ -3725,20 +3725,20 @@ body.page-iframes-footer footer ul.menu li {
   position: relative;
   z-index: 2;
 }
-/* line 212, ../sass/_footer.scss */
+/* line 206, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer {
   width: 1000px;
 }
-/* line 214, ../sass/_footer.scss */
+/* line 208, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left {
   margin-bottom: 0px;
 }
-/* line 216, ../sass/_footer.scss */
+/* line 210, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left ul {
   padding-top: 15px;
   margin-bottom: 7px;
 }
-/* line 219, ../sass/_footer.scss */
+/* line 213, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left ul a {
   font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   font-weight: 100;
@@ -3746,31 +3746,31 @@ body.page-iframes-footer footer ul.menu li {
   line-height: 24px;
   color: #000;
 }
-/* line 225, ../sass/_footer.scss */
+/* line 219, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-left ul a:hover {
   text-decoration: underline;
 }
-/* line 232, ../sass/_footer.scss */
+/* line 226, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .footer-title.social {
   float: right;
   margin-bottom: 2px;
 }
-/* line 236, ../sass/_footer.scss */
+/* line 230, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .follow-us {
   width: 100%;
   clear: both;
   text-align: right;
 }
-/* line 240, ../sass/_footer.scss */
+/* line 234, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .follow-us ul {
   float: right;
   text-align: left;
 }
-/* line 243, ../sass/_footer.scss */
+/* line 237, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .follow-us ul li {
   float: left;
 }
-/* line 248, ../sass/_footer.scss */
+/* line 242, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .text {
   float: right;
   margin-top: 50px;
@@ -3781,20 +3781,20 @@ body.page-iframes-footer footer ul.menu li {
   font-size: 11px;
   line-height: 16px;
 }
-/* line 257, ../sass/_footer.scss */
+/* line 251, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-right .text a {
   color: #018b73;
 }
-/* line 262, ../sass/_footer.scss */
+/* line 256, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom {
   text-align: center;
 }
-/* line 264, ../sass/_footer.scss */
+/* line 258, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner {
   text-align: center;
   display: inline-block;
 }
-/* line 267, ../sass/_footer.scss */
+/* line 261, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li {
   display: inline-block;
   margin-left: 20px;
@@ -3802,40 +3802,40 @@ body.page-iframes-footer footer ul.menu li {
   width: auto;
   overflow: hidden;
 }
-/* line 273, ../sass/_footer.scss */
+/* line 267, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li:first-child {
   margin-left: 0px;
 }
-/* line 276, ../sass/_footer.scss */
+/* line 270, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li a {
   display: block;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 281, ../sass/_footer.scss */
+/* line 275, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li a.logos-takepart {
   height: 30px;
   width: 131px;
 }
-/* line 285, ../sass/_footer.scss */
+/* line 279, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
   height: 31px;
   width: 144px;
 }
-/* line 289, ../sass/_footer.scss */
+/* line 283, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner li a.logos-pivot {
   height: 28px;
   width: 77px;
 }
-/* line 295, ../sass/_footer.scss */
+/* line 289, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner .footer-title {
   display: inline-block;
   vertical-align: top;
   margin-top: 8px;
   margin-right: 10px;
 }
-/* line 301, ../sass/_footer.scss */
+/* line 295, ../sass/_footer.scss */
 .footer-wrapper.non-responsive footer .footer-bottom .footer-bottom-inner ul {
   display: inline-block;
 }
