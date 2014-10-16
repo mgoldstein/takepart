@@ -150,10 +150,10 @@ function tp_content_feeds_content() {
 
   $nids = db_select('node', 'n')
     ->fields('n', array('nid'))
-    ->condition('created', $from, '>=')
+    ->condition('changed', $from, '>=')
     ->condition('status', 0, '!=')
     ->condition('type', $content_types, 'IN')
-    ->orderBy('created', 'ASC')
+    ->orderBy('changed', 'ASC')
     ->range($start, $count)
     ->execute()
     ->fetchCol();
