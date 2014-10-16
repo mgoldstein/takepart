@@ -228,7 +228,7 @@ function tp_videos_token_attached_video_file_url($node, $secure = FALSE) {
       $params = tp_videos_parse_wrapper_uri($file->uri);
       $token = $params['key'];
       $scheme = $secure ? 'https' : 'http';
-      $width = variable_get('tp_videos_iframe_embed_width', 480);
+      $width = variable_get('tp_videos_jwplatform_width', 640);
       $replacement = "{$scheme}://content.jwplatform.com/videos/{$token}-{$width}.mp4";
     }
   }
@@ -268,7 +268,7 @@ function tp_videos_token_attached_video_width($node) {
   $replacement = NULL;
   if ($file = tp_videos_token_attached_file($node, 'field_video')) {
     if (isset($file->tp_videos_metadata)) {
-      $replacement = $file->tp_videos_metadata->width;
+      $replacement = variable_get('tp_videos_jwplatform_width', 640);
     }
   }
   return $replacement;
@@ -278,7 +278,10 @@ function tp_videos_token_attached_video_height($node) {
   $replacement = NULL;
   if ($file = tp_videos_token_attached_file($node, 'field_video')) {
     if (isset($file->tp_videos_metadata)) {
-      $replacement = $file->tp_videos_metadata->height;
+      $width = variable_get('tp_videos_jwplatform_width', 640);
+      $height = ($file->tp_videos_metadata->height * $width)
+        / $file->tp_videos_metadata->width;
+      $replacement = intval($height);
     }
   }
   return $replacement;
