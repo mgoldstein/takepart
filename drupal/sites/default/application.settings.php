@@ -104,3 +104,14 @@ $conf += array(
   'centralized_login_widget_js' => "https://{$conf['services_domain']}/assets/login_widget.js",
   'digital_data_wrapper_js' => "https://{$conf['services_domain']}/assets/dtm_data.js",
 );
+
+// Email Personalization Integration
+$conf += array(
+  'tp_content_feeds_tag_vocabularies' => array('topic'),
+  'tp_content_feeds_content_types' => array(
+    'feature_article',
+    'openpublish_article',
+    'openpublish_photo_gallery',
+    'video',
+  ),
+);
