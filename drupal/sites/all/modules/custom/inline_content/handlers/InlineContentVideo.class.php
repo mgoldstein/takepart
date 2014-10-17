@@ -53,11 +53,17 @@ class InlineContentVideo extends InlineContentReplacementController {
 
       $files = field_get_items('node', $node, 'field_video');
 
+      // The path to the video node is stored in the MEDIAID to allow
+      // the social share to change with each video.
+      $uri = entity_uri('node', $node);
+      $media_id = url($uri['path'], $uri['options']);
+
       // Get the allowed regions from the video node.
       $allowed_regions = tp_video_player_video_allowed_regions('node', $node);
       foreach ($files as $delta => $file) {
         $files[$delta]['allowed_regions'] = $allowed_regions;
-        $items[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
+        $files[$delta]['media_id'] = $media_id;
+        $files[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
       }
 
       $configuration = tp_video_player_resolve_entity_configuration('inline_content',
