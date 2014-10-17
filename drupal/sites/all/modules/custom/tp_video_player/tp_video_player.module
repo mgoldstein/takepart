@@ -234,11 +234,17 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
         $settings['global_default']);
     }
 
+    // The path to the video node is stored in the MEDIAID to allow
+    // the social share to change with each video.
+    $uri = entity_uri($entity_type, $entity);
+    $media_id = url($uri['path'], $uri['options']);
+
     // The allowed regions list attached to the same entity.
     $allowed_regions = tp_video_player_video_allowed_regions(
       $entity_type, $entity);
     foreach ($items as $delta => $item) {
       $items[$delta]['allowed_regions'] = $allowed_regions;
+      $items[$delta]['media_id'] = $media_id;
       $items[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
     }
 

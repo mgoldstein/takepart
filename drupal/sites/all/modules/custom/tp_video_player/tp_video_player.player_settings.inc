@@ -62,7 +62,15 @@ function tp_video_player_build_content_settings($configuration, $files) {
 
     $regions[] = $file['allowed_regions'];
 
-    $item = array('sources' => array(array('file' => $url)));
+    $media_id = $file['media_id'];
+    if (!empty($media_id) && strpos($media_id, '/') === 0) {
+      $media_id = substr($media_id, 1);
+    }
+
+    $item = array(
+      'mediaid' => $media_id,
+      'sources' => array(array('file' => $url)),
+    );
 
     if ($file['filemime'] === 'video/jwplatform') {
       $image_url = str_replace('videos', 'thumbs', $url);

@@ -66,19 +66,19 @@ function tpf_content_video_metatag_export_default() {
         'value' => '[node:attached-video-secure-image]',
       ),
       'og:video' => array(
-        'value' => '[node:attached-video-url]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-url}]',
       ),
       'og:video:secure_url' => array(
-        'value' => '[node:attached-video-secure-url]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-secure-url}]',
       ),
       'og:video:width' => array(
-        'value' => '[node:attached-video-width]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-width}]',
       ),
       'og:video:height' => array(
-        'value' => '[node:attached-video-height]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-height}]',
       ),
       'og:video:type' => array(
-        'value' => 'application/x-shockwave-flash',
+        'value' => '[f:bool:{node:field_sharing_inline}:application/x-shockwave-flash]',
       ),
       'twitter:card' => array(
         'value' => 'player',
@@ -93,16 +93,16 @@ function tpf_content_video_metatag_export_default() {
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
       ),
       'twitter:player' => array(
-        'value' => '[node:iframe-embed-src]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-src}]',
       ),
       'twitter:player:width' => array(
-        'value' => '[node:iframe-embed-width]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-width}]',
       ),
       'twitter:player:height' => array(
-        'value' => '[node:iframe-embed-height]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-height}]',
       ),
       'twitter:player:stream' => array(
-        'value' => '[node:attached-video-file-secure-url]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-file-secure-url}]',
       ),
       'twitter:player:stream:content_type' => array(
         'value' => 'video/mp4',

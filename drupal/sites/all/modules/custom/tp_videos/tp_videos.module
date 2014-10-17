@@ -241,6 +241,11 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
     $video_configuration = tp_video_player_resolve_entity_configuration(
       'node', $node, $langcode, $video_configuration);
 
+    // The path to the video node is stored in the MEDIAID to allow
+    // the social share to change with each video.
+    $uri = entity_uri('node', $node);
+    $media_id = url($uri['path'], $uri['options']);
+
     // The node must actually reference a video.
     $items = field_get_items('node', $node, 'field_video');
     if ($items !== FALSE && count($items) > 0) {
@@ -266,6 +271,7 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
 
       $files[] = $file + array(
         'allowed_regions' => $allowed_regions,
+        'media_id' => $media_id,
         'pre_roll_ad_tag' => $video_configuration->ad_tag,
       );
     }
