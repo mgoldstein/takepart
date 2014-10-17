@@ -10,7 +10,7 @@ $conf += array(
 // QA by default or update settings.local.inc to point to local instances.
 $conf += array(
   'takeaction_domain' => 'qa-tab.dev.takepart.com',
-  'services_domain' => 'qa-api.dev.takepart.com',
+  'services_domain' => 'qa-api.takepart.com',
 );
 
 // Development & Staging Facebook App ID
