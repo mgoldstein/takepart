@@ -376,14 +376,17 @@ function _tp_custom_nav_menu_handler($menu = NULL) {
   //does each tree
   foreach ($mega_tree as $key => $link) {
     //default variables
-    $link_data = $see_more = $categories = $left_menu = '';
+    $attributes = $link_data = $see_more = $categories = $left_menu = '';
     
     //gets the path
     $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
-    $title = '<div class="title first-level">'. l($mega_tree[$key]['link']['link_title'], $path, array('attributes' => array('class' => array($link['link']['options']['attributes']['class'][0])))). '</div>';
+    $attributes = $link['link']['options']['attributes'];
+    $attributes['class'] = array($link['link']['options']['attributes']['class'][0]);
+    $title = '<div class="title first-level">'. l($mega_tree[$key]['link']['link_title'], $path, array('attributes' => $attributes)). '</div>';
 
-    //limits down the menu to 10 items
-    $bottom_menu = array_slice($mega_tree[$key]['below'], 0, 10);
+    //limits down the menu to 10 items. @dev: this is disabled for now
+    //$bottom_menu = array_slice($mega_tree[$key]['below'], 0, 10);
+    $bottom_menu = $mega_tree[$key]['below'];
 
     //left menu curation
     $menu = render(menu_tree_output($bottom_menu));    
