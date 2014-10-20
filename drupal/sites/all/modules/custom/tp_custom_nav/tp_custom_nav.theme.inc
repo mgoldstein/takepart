@@ -24,6 +24,10 @@ function theme_tp_slim_nav_colors($vars) {
   //dynamic css based on custom tax
   drupal_add_css(
     '
+    html body {
+      border-top: none;
+    }
+    
     body #tp-drawers .snap-drawer {
       background-color: #' . $mobile_bg_color . ';
     }
