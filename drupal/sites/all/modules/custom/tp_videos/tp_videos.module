@@ -259,11 +259,24 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
       if ($scheme === 'jwplatform-channel') { continue; }
 
       // Add the video to the list of video that were actually used.
+      $node->video_duration = (!empty($items[0]['tp_videos_metadata']->length)) ? ltrim(gmdate("i:s", $items[0]['tp_videos_metadata']->length), '0') : '--:--';
       $videos_used[] = $node;
 
       // Add the video to the navigation strip (if there is one).
       if ($view_mode !== 'hidelist') {
-        $displays[] = node_view($node, 'video_playlist_teaser', $langcode);
+        $node_view = node_view($node, 'video_playlist_teaser', $langcode);
+        
+        //adds video duration at the end
+        $node_view['#suffix'] = theme('html_tag', array(
+          'element' => array(
+            '#tag' => 'div',
+            '#value' => $node->video_duration,
+            '#attributes' => array(
+              'class' => 'video-duration',
+              'id' => 'id',
+        ))));
+        
+        $displays[] = $node_view;
       }
 
       // Get the allowed regions for all files association with the node.
