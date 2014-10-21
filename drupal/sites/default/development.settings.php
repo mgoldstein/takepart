@@ -26,5 +26,10 @@ $conf += array(
 // Log signups for debugging
 $conf += array('pm_signup_log' => TRUE);
 
+// JWPlatform video import tag
+$conf += array(
+  'pm_jwplatform_auto_create_tag' => 'Admin: TP Auto Dev',
+);
+
 // Scream at the dev, maybe they'll fix something
 ini_set('error_reporting', E_ALL & ~E_NOTICE);
