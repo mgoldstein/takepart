@@ -10,7 +10,6 @@ function tp_video_player_build_settings($configuration, $files) {
 
   // Load the media wrapper for the first file.
   $wrapper = file_stream_wrapper_get_instance_by_uri($first['uri']);
-  $url = $wrapper->getExternalUrl();
 
   // JWPlatform channels are not supported in multi-cardinality fields. If a
   // channel is found it must be the only source.
@@ -18,12 +17,20 @@ function tp_video_player_build_settings($configuration, $files) {
   if ($scheme === 'jwplatform-channel') {
     $content_settings = array(
       'allowed_regions' => array($first['allowed_regions']),
-      'playlist' => $url,
+      'playlist' => $wrapper->getExternalUrl(),
     );
     // Reset the files array so only the channel file is considered in the
     // remaining configuration.
     $files = array($first);
     $listbar_settings = tp_video_player_build_listbar_settings($configuration);
+  }
+  // JWPlatform videos with a single file can use the JWPlatform XML manifest
+  elseif ($scheme === 'jwplatform-video' && count($files) === 1) {
+    $content_settings = array(
+      'allowed_regions' => array($first['allowed_regions']),
+      'playlist' => $wrapper->getXMLManifestURL(),
+    );
+    $listbar_settings = array();
   }
   else {
     $content_settings = tp_video_player_build_content_settings(

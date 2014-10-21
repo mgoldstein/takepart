@@ -21,6 +21,13 @@ abstract class JWPlatformContentStreamWrapper extends MediaReadOnlyStreamWrapper
     }
   }
 
+  public function getXMLManifestURL() {
+    if ($parameters = $this->get_parameters()) {
+      $filename = $parameters['key'];
+      return $this->base_url . 'jw6/' . $filename . '.xml';
+    }
+  }
+
   public function getOriginalThumbnailPath() {
     $parameters = $this->get_parameters();
     return 'http://content.jwplatform.com/thumbs/'

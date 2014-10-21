@@ -12,16 +12,16 @@
         var FF = !(window.mozInnerScreenX == null);
         var MAC = (navigator.platform.indexOf('Mac')>=0);
         var win = (navigator.platform.indexOf('Win') >= 0);
-        
+
         var user_agent = window.navigator.userAgent;
         var old_ie = user_agent.indexOf('MSIE '); //ie10 and lower
         var new_ie = user_agent.indexOf('Trident/'); //ie11
-        
+
         //force to use flash. this will address issue with ie and youtube
         if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
           settings['primary'] = 'flash';
         }
-        
+
         //moved code from pm-jwplayer over to new player.js
         var regions = Drupal.settings.tp_video_player.settings[element_id].allowed_regions[0];
         if (regions.length > 0 && !$('body').hasClass('node-type-video-playlist')) {
@@ -47,39 +47,43 @@
         }
         else {
           jwplayer.key = Drupal.settings.tp_video_player.key;
-
-          //init the playlist after processing          
-          tp_video_playlist_init(element, settings, index);
+          if ($('body').hasClass('node-type-video-playlist')) {
+            //init the playlist after processing
+            tp_video_playlist_init(element, settings, index);
+          }
+          else {
+            jwplayer(element).setup(settings);
+          }
         }
       });
-      
+
       //fires the init for bxslider on ready
       $(document).ready(function() {
         window.tp_initslider();
-        
+
         $(window).smartresize(function() {
           window.tp_initslider();
         });
       });
     }
   };
-  
+
   /**
    *  @function:
-   *    This function is used to process the settings 
+   *    This function is used to process the settings
    */
   window.tp_video_playlist_init = function(element, settings, index) {
     var playlist = $(element).parent().parent();
-    
+
     //initialize player only after geoip2 call
     geoip2.country(function(response) {
       //sets window var for location
       window['tp_client_location'] = response.country.iso_code.toLowerCase();
-      
+
       //only process the settings if allowed region is set
       if (settings.allowed_regions != undefined) {
         var allowed_regions = settings.allowed_regions;
-        
+
         //goes thro each allowed region on the items
         $(allowed_regions).each(function(index, value) {
           //goes thro each video if not empty then check if the clients location is allowed within the array
@@ -91,32 +95,32 @@
             $('.video-item[data-video-number="' + index + '"]', playlist).remove();
           }
         });
-        
+
         //resets the key within the settings
         settings.playlist = settings.playlist.filter(function(){return true;});
         settings.allowed_regions = settings.allowed_regions.filter(function(){return true;});
-        
+
         //reset the data-video-description
         $('.description-item', playlist).each(function(index, value) {
           $(this).attr('data-video-description', index);
-          
+
           //ensures that the first element is active
           if (index === 0) {
             $(this).addClass('active');
           }
         });
-        
+
         //reset the data-video-numbers
         $('.video-item', playlist).each(function(index, value) {
           $(this).attr('data-video-number', index);
-          
+
           //ensures that the first element is active
           if (index === 0) {
             $(this).addClass('active');
           }
         });
       }
-      
+
       //removes the playlist slider as there are no elements
       if (settings.playlist == '') {
         //removes class
@@ -125,7 +129,7 @@
         $(playlist).addClass('blocked');
         return;
       }
-      
+
       //if it has passed all conditions then render a jwplayer
       jwplayer(element).setup(settings);
       tp_init_jwplayer_callbacks(element, index);
@@ -208,17 +212,17 @@
     var small = 401;
     var large = 701;
     var all_slides = $('.bxslider');
-  
+
     //does for each slider
     all_slides.each(function(index) {
       var playlist = $(this).parents('.playlist');
       var viewMode;
-  
+
       //mobile
       if (playlist.width() <= small) {
         viewMode = 'small';
         playlist.addClass(viewMode);
-        
+
         //destroy on small display
         if (window['bxslider_' + index]) {
           window['bxslider_' + index].destroySlider();
@@ -234,7 +238,7 @@
         viewMode = 'large';
         slides = 4;
       }
-  
+
       //changes class by viewmode
       if (window['bxslider_' + index + '_view_mode'] == undefined) {
         window['bxslider_' + index + '_view_mode'] = viewMode;
@@ -244,13 +248,13 @@
         playlist.addClass(viewMode);
         window['bxslider_' + index + '_view_mode'] = viewMode;
       }
-  
+
       //return if small
       if (viewMode == 'small') {
         $(this).show();
         return;
       }
-  
+
       //destroy all slider
       if (window['bxslider_' + index] != undefined) {
         window['bxslider_' + index].destroySlider();
@@ -261,7 +265,7 @@
       }else{
         window['bxslider_' + index + '_current'] = window['bxslider_' + index].getCurrentSlide();
       }
-  
+
       //init slider
       $(this).show();
       window['bxslider_' + index] = $(this).bxSlider({
@@ -276,7 +280,7 @@
         prevText: '',
         startSlide: window['bxslider_' + index + '_current']
       });
-      
+
       //adjustment to auto correct location of slider control
       var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
       var img = $('.video-item[data-video-number="0"]', bxslider_wrapper).height();
