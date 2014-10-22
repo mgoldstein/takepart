@@ -47,13 +47,9 @@
         }
         else {
           jwplayer.key = Drupal.settings.tp_video_player.key;
-          if ($('body').hasClass('node-type-video-playlist')) {
-            //init the playlist after processing
-            tp_video_playlist_init(element, settings, index);
-          }
-          else {
-            jwplayer(element).setup(settings);
-          }
+
+          //init the playlist after processing
+          tp_video_playlist_init(element, settings, index);
         }
       });
 
