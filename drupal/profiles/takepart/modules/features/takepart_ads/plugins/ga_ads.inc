@@ -81,7 +81,10 @@ class boxes_ga_ad extends boxes_box {
   function $gptfunction() {
    if (typeof(googletag) !== 'undefined') {
      if (ad_call_check($lr[0])) {
-               googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); }); 
+       googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
+       if ($lr[0] === 320) {
+         setInterval(function(){googletag.pubads().refresh([mobile1]);}, 5000);
+        }
      }
      else {
        setTimeout("$gptfunction()",1000);
