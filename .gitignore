@@ -32,3 +32,6 @@ sftp-config.json
 /drupal/sites/all/modules/contrib/diff/
 /drupal/sites/all/modules/contrib/features_plumber/
 /drupal/sites/all/libraries/FirePHPCore/
+
+# Local Environment Modules
+/drupal/sites/all/modules/contrib/stage_file_proxy
