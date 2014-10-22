@@ -94,7 +94,7 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 3,
+      'weight' => 32,
     ),
   );
 
@@ -130,7 +130,7 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 1,
+      'weight' => 31,
     ),
   );
 
@@ -201,7 +201,7 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
         'rows' => 2,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 35,
     ),
   );
 
@@ -270,7 +270,7 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 34,
     ),
   );
 
@@ -323,7 +323,7 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 33,
     ),
   );
 

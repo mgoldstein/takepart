@@ -504,13 +504,12 @@ function tpf_content_campaigns_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Background',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => 'group-background field-group-fieldset',
-        'description' => '',
-      ),
       'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background field-group-fieldset',
+        'required_fields' => 1,
+      ),
     ),
   );
   $export['group_background|node|campaign_card_multi_column|form'] = $field_group;
@@ -776,35 +775,6 @@ function tpf_content_campaigns_field_group_info() {
     ),
   );
   $export['group_header_branding|node|campaign|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_item_fieldset|field_collection_item|field_campaign_multigrid_item|form';
-  $field_group->group_name = 'group_item_fieldset';
-  $field_group->entity_type = 'field_collection_item';
-  $field_group->bundle = 'field_campaign_multigrid_item';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Item Fieldset',
-    'weight' => '1',
-    'children' => array(
-      0 => 'field_campaign_multigrid_link',
-      1 => 'field_promo_text',
-    ),
-    'format_type' => 'fieldset',
-    'format_settings' => array(
-      'label' => 'Item Fieldset',
-      'instance_settings' => array(
-        'required_fields' => 1,
-        'classes' => 'group-item-fieldset field-group-fieldset',
-        'description' => '',
-      ),
-      'formatter' => 'collapsed',
-    ),
-  );
-  $export['group_item_fieldset|field_collection_item|field_campaign_multigrid_item|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
