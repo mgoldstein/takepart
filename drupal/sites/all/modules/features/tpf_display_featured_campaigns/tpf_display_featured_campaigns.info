@@ -17,7 +17,6 @@ dependencies[] = strongarm
 dependencies[] = text
 dependencies[] = tp4_support
 dependencies[] = tpf_content_field_bases
-features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_group][] = group_featured_group|field_collection_item|field_featured_campaigns|form
