@@ -323,6 +323,7 @@ features[field_instance][] = node-campaign_card_twitter-field_twitter_pin
 features[field_instance][] = node-campaign_card_twitter-field_twitter_type
 features[field_instance][] = node-campaign_card_twitter-field_twitter_username
 features[field_instance][] = node-campaign_page-field_article_subhead
+features[field_instance][] = node-campaign_page-field_brand_category
 features[field_instance][] = node-campaign_page-field_campaign_facebook_comments
 features[field_instance][] = node-campaign_page-field_campaign_reference
 features[field_instance][] = node-campaign_page-field_campaign_seo_title
