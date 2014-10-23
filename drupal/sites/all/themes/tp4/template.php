@@ -337,6 +337,9 @@ function tp4_preprocess_tp4_support_slim_nav(&$variables) {
  */
 
 function tp4_preprocess_node(&$variables, $hook) {
+  //only show facebook comments if node is published
+  $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
+  
   // Add template suggestions for view modes and
   // node types per view view mode.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];

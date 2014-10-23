@@ -53,13 +53,15 @@
 
     <?php print render($on_our_radar); ?>
 
-    <div id="gallery-comments">
-      <h3 class="top-border"><?php print t('Comments'); ?> <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
-      <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
-    </div>
-    <script id="facebook-comments-template" type="text/x-javascript-template">
-      <h3 class="top-border"><?php print t('Comments'); ?> <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
-      <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
-    </script>
+    <?php if ($show_fb_comments): ?>
+      <div id="gallery-comments">
+        <h3 class="top-border"><?php print t('Comments'); ?> <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
+        <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
+      </div>
+      <script id="facebook-comments-template" type="text/x-javascript-template">
+        <h3 class="top-border"><?php print t('Comments'); ?> <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
+        <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
+      </script>
+    <?php endif; ?>
   </aside>
 </div>
