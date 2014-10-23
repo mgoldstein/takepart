@@ -150,8 +150,10 @@
         <?php print render($on_our_radar); ?>
     </footer>
 
-    <div id="article-comments">
-        <h3 class="top-border">Comments <span>(<fb:comments-count href="<?php print $url_local; ?>"></fb:comments-count>)</span></h3>
-        <fb:comments href="<?php print $url_local; ?>" numposts="15"></fb:comments>
-    </div>
+		<?php if ($show_fb_comments): ?>
+			<div id="article-comments">
+					<h3 class="top-border">Comments <span>(<fb:comments-count href="<?php print $url_local; ?>"></fb:comments-count>)</span></h3>
+					<fb:comments href="<?php print $url_local; ?>" numposts="15"></fb:comments>
+			</div>
+		<?php endif; ?>
 </article>
