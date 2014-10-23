@@ -1,7 +1,0 @@
-name = Media Views Widget Plupload Connector
-description = Plupload integration for Media Views Widget
-core = 7.x
-package = Media
-dependencies[] = media
-dependencies[] = media_views_widget
-dependencies[] = plupload
