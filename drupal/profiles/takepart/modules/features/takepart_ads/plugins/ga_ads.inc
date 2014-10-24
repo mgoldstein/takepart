@@ -87,7 +87,7 @@ class boxes_ga_ad extends boxes_box {
                             googletag.display('$gptid[$slot]');
                             setInterval(function(){
                             googletag.pubads().refresh([slot1]);
-                            }, 5000);
+                            }, 30000);
                         });
                     } else {
                         setTimeout("$gptfunction()",1000);
