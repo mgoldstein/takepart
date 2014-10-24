@@ -192,18 +192,20 @@ function tp_videos_field_formatter_settings_summary($field, $instance, $view_mod
  *  Implements hook_field_formatter_prepare_view().
  */
 function tp_videos_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
-
+  //ensures that we only parse one of the fields
   if ($field['field_name'] == 'field_video_list' && $field['type'] == 'node_reference') {
-
+    //does for each of the entities
     foreach ($entities as $id => $entity) {
-
+      //values
       $filter = FALSE;
       $filter_items = field_get_items($entity_type, $entity, 'field_playlist_filter');
+      //conditional checks
       if ($filter_items !== FALSE && count($filter_items) > 0) {
         $filter_item = reset($filter_items);
-        $filter = !empty($filter_item['value']);
+        $filter = (!empty($filter_item['target_id'])) ? TRUE : FALSE;
       }
 
+      //adds an empty item to the list
       if (empty($items[$id]) && $filter) {
         $items[$id][0] = array(
           'nid' => $id,
