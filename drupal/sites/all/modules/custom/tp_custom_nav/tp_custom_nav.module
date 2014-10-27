@@ -61,6 +61,9 @@ function tp_custom_nav_preprocess_page(&$variables) {
     $slim_nav = field_get_items('node', $node, 'field_brand_category');
     $header = $variables['page']['header'];
     
+    //overrides for campaign level
+    _tp_custom_nav_campaign_level_handler($node, $slim_nav);
+    
     if (!empty($slim_nav)) {
       $slim_nav_tid = $slim_nav[0]['target_id'];
       $slim_nav_tax = taxonomy_term_load($slim_nav_tid);
@@ -179,6 +182,28 @@ function tp_custom_nav_block_view($delta = '') {
 
 /**
  *  @function:
+ *    This function is used to override the node level with campaign level
+ */
+function _tp_custom_nav_campaign_level_handler(&$node, &$slim_nav = array()) {
+  if ($campaign_ref = field_get_items('node', $node, 'field_campaign_reference')) {
+    $campaign_ref_nid = $campaign_ref[0]['target_id'];
+    
+    //checks to ensure that the campaign ref is set
+    if (!empty($campaign_ref_nid)) {
+      $campaign_node = node_load($campaign_ref_nid);
+      $campaign_slim_nav = field_get_items('node', $campaign_node, 'field_brand_category');
+      
+      //overrides the slim nav if required
+      if (!empty($campaign_slim_nav)) {
+        $slim_nav = $campaign_slim_nav;
+        $node = $campaign_node;
+      }
+    }
+  }
+}
+
+/**
+ *  @function:
  *    This function is used to generate the custom collab block
  *
  *    @param:
@@ -238,6 +263,8 @@ function _tp_custom_nav_slim_block_gen() {
   $node = menu_get_object();
   $output = '';
   
+  _tp_custom_nav_campaign_level_handler($node);
+
   //checks if the field is set
   if (isset($node->field_brand_category)) {
     $slim_nav = field_get_items('node', $node, 'field_brand_category');
