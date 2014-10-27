@@ -25,13 +25,13 @@ function tp_video_player_build_settings($configuration, $files) {
     $listbar_settings = tp_video_player_build_listbar_settings($configuration);
   }
   // JWPlatform videos with a single file can use the JWPlatform XML manifest
-  // elseif ($scheme === 'jwplatform-video' && count($files) === 1) {
-  //   $content_settings = array(
-  //     'allowed_regions' => array($first['allowed_regions']),
-  //     'playlist' => $wrapper->getXMLManifestURL(),
-  //   );
-  //   $listbar_settings = array();
-  // }
+  elseif ($scheme === 'jwplatform-video' && count($files) === 1) {
+    $content_settings = array(
+      'allowed_regions' => array($first['allowed_regions']),
+      'playlist' => $wrapper->getXMLManifestURL(),
+    );
+    $listbar_settings = array();
+  }
   else {
     $content_settings = tp_video_player_build_content_settings(
       $configuration, $files);

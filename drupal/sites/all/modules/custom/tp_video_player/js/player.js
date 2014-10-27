@@ -77,7 +77,7 @@
       window['tp_client_location'] = response.country.iso_code.toLowerCase();
 
       //only process the settings if allowed region is set
-      if (settings.allowed_regions != undefined) {
+      if (settings.allowed_regions != undefined && typeof settings.playlist !== 'string') {
         var allowed_regions = settings.allowed_regions;
 
         //goes thro each allowed region on the items
