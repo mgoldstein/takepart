@@ -121,10 +121,11 @@ function tp_videos_preprocess_node(&$variables) {
 
     $variables['thumbnail'] = '/' . drupal_get_path('theme', 'tp4') . '/images/ph_black.png';
     $items = field_get_items('node', $variables['node'], 'field_thumbnail');
+    
     if ($items !== FALSE && count($items) > 0) {
       $item = reset($items);
-      if (!empty($item['uri'])) {
-        $thumbnail = image_style_url('video_navigation_thumb_155x87', $thumbnail);
+      if (!empty($item['file']->uri)) {
+        $thumbnail = image_style_url('video_navigation_thumb_155x87', $item['file']->uri);
         if (!empty($thumbnail)) {
           $variables['thumbnail'] = $thumbnail;
         }
