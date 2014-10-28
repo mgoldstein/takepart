@@ -66,8 +66,8 @@ class InlineContentVideo extends InlineContentReplacementController {
         $files[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
       }
 
-      $configuration = tp_video_player_resolve_entity_configuration('inline_content',
-        $replacement, $langcode, $configuration);
+      $configuration = tp_video_player_resolve_entity_configuration('node',
+        $node, $langcode, $configuration);
 
       $video = tp_video_player_player_view($configuration, $files);
     }
