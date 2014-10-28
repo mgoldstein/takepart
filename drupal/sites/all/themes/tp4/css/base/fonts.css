@@ -1778,3 +1778,7 @@
 .ss-share:before, .ss-share.right:after {
   content: '';
 }
+
+/*
+ @import 'glyphal';
+*/
