@@ -134,16 +134,18 @@ function takepart_ads_preprocess_page(&$vars) {
             preg_match('/[0-9]+x[0-9]+/', $ad, $adsize);
             $lr = explode("x", $adsize[0]);
             $gptad_html .= 'if (ad_call_check('.$lr[0].')) { ';
-            if ($ad == "TP_Mobile_Interstitial_1x1")  {
-                 $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
-                      . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
-                 $gptad_html .= 'googletag.defineOutOfPageSlot(\'/4355895/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '-oop\').addService(googletag.pubads());' . "\n";
-            }                
-            else if ($ad == "TP_Mobile_320x50") {
-            /*
+            //dd($ad);
+            if ($ad === "TP_Mobile_Interstitial_1x1") {
                 $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
+                      . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
+                $gptad_html .= 'googletag.defineOutOfPageSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
+                      . '/' . $ad . '\', \'' . $gptad . '-oop\').addService(googletag.pubads());' . "\n";
+            }
+            else if ($ad === "TP_Mobile_320x50") {
+              /*
+              $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
                       . '/' . $ad . '\', [[300, 50], [320, 50]], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
-            */
+              */
             } else {
             $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
                       . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
