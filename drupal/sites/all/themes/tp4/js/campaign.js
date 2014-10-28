@@ -128,9 +128,25 @@
           $('.campaign-menu-toggle').hide();
         }
       }
-
-      if ( Drupal.settings.tp_campaigns )
-        setTimeout( bindStickupToMenus );
+      
+      //only bind when document is ready to bind
+      $(document).ready(function() {
+        //addresses issue with race condition
+        if ( Drupal.settings.tp_campaigns )
+          setTimeout( bindStickupToMenus, 2000 );
+          
+        //ensures that this only runs on campaign displays
+        if ($('body').hasClass('campaign-display')) {
+          $(window).scroll(function() {
+            if ($('#block-tp-campaigns-tp-campaigns-hero').hasClass('isStuck')) {
+              $('#main-wrap').css('margin-top', parseInt($('#block-tp-campaigns-tp-campaigns-hero').height()) + 'px');
+            }
+            else {
+              $('#main-wrap').css('margin-top', '');
+            }
+          });
+        }
+      });
     }
   };
 
