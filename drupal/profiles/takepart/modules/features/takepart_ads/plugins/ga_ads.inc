@@ -128,10 +128,22 @@ HTM;
 <!-- TP_Mobile_Interstitial_1x1 out-of-page -->
 <div id='div-gpt-ad-1413399742891-0-oop'>
   <script type='text/javascript'>
-  googletag.cmd.push(function () {
-    googletag.display('div-gpt-ad-1413399742891-0-oop');
-  });
-</script>
+    function mobile_interstitial_oop() {
+      if (typeof(googletag) !== 'undefined') {
+        if (window.innerWidth < 768) {
+          googletag.cmd.push(function () { 
+              googletag.display('div-gpt-ad-1413399742891-0-oop');
+          });
+        } else {
+          setTimeout("mobile_interstitial_oop()",1000);
+          jQuery('#div-gpt-ad-1413399742891-0-oop').css({'width': '0', height: '0'});
+        }
+      } else {
+        setTimeout("mobile_interstitial_oop()",1000);
+      }
+    }
+  mobile_interstitial_oop();
+  </script>
 </div>
 HTM;
             }
