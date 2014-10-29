@@ -101,7 +101,53 @@ class boxes_ga_ad extends boxes_box {
             </script>
             </div>
 HTM;
-            } else {
+            } 
+            
+            else if ($slot === 'TP_Mobile_Interstitial_1x1') {
+                $content = <<<HTM
+<!-- $slot -->
+<div id='$gptid[$slot]' style='width:$lr[0]px; height:$lr[1]px;'>
+<script type='text/javascript'>
+  function $gptfunction() {
+   if (typeof(googletag) !== 'undefined') {
+     if (window.innerWidth < 768) {
+       googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
+     }
+     else {
+       setTimeout("$gptfunction()",1000);
+       jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
+     }
+   } else {
+    setTimeout("$gptfunction()",1000);
+   }
+  }
+  $gptfunction();
+</script>
+</div>
+
+<!-- TP_Mobile_Interstitial_1x1 out-of-page -->
+<div id='div-gpt-ad-1413399742891-0-oop'>
+  <script type='text/javascript'>
+    function mobile_interstitial_oop() {
+      if (typeof(googletag) !== 'undefined') {
+        if (window.innerWidth < 768) {
+          googletag.cmd.push(function () { 
+              googletag.display('div-gpt-ad-1413399742891-0-oop');
+          });
+        } else {
+          setTimeout("mobile_interstitial_oop()",1000);
+          jQuery('#div-gpt-ad-1413399742891-0-oop').css({'width': '0', height: '0'});
+        }
+      } else {
+        setTimeout("mobile_interstitial_oop()",1000);
+      }
+    }
+  mobile_interstitial_oop();
+  </script>
+</div>
+HTM;
+            }
+            else {
                     $content = <<<HTM
 <!-- $slot -->
 <div id='$gptid[$slot]' style='width:$lr[0]px; height:$lr[1]px;'>
