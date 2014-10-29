@@ -608,6 +608,10 @@ header {
 				@include breakpoint($breakpoint-desktop) {
 					display: block;
 				}
+				
+				.title {
+					margin-top: -4px;
+				}
 			}	
 		}
 	}
@@ -622,8 +626,9 @@ header {
 				a {
 					padding: 10px 10px 0;
 					text-transform: none;
-					font-size: 20px;
-					letter-spacing: 1px;
+					font-size: 16px;
+					font-family: 'Apercu Regular';
+					font-weight: bold;
 				}
 			}
 		}
@@ -642,7 +647,20 @@ header {
 				li { //second level menu li
 					a { //each title on the second level
 						text-transform: none;
-						margin-bottom: 5px;
+						font-weight: bold;
+						font-family: 'Apercu Regular';
+						font-size: 14px;
+						line-height: 30px;
+						
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+				
+				a {
+					&:hover {
+						text-decoration: underline;
 					}
 				}
 			}
@@ -736,23 +754,52 @@ header {
 	.follow-us,
 	&.follow-us {
 		margin-right: 25px !important;
+		margin-top: 6px;
 		
 		.title {
 			margin-left: 10px;
+			text-transform: uppercase;
+			font-family: 'Apercu Regular';
+			font-size: 12px;
+			line-height: 14px;
+			letter-spacing: 0px;
+			margin-right: 8px;
+			float: left;
+			color: #CCC;
 		}
 		
 		li {
 			a {
+				margin-left: 7px;
+				overflow: hidden;
+				vertical-align: middle;
+				text-indent: 0;
+				font-size: 0;
+				border-radius: 30px;
 				height: 30px;
 				width: 30px;
-				margin-left: 7px;
+				
+				&:before {
+					overflow: visible;
+					padding: 7px;
+					font-size: 15px;
+					background-color: #0084aa;
+					color: #fff;
+					display: block;
+				}
+				
+				&:hover:before {
+					text-decoration: none;
+					color: #000;
+					background-color: #FFF;
+				}				
 			}
 		}
 	}
 	
 	//mobile menu
 	#block-tp4-support-tp4-mobile-menu-header {
-		border-color: #828685;
+		border-color: #9c9c9c;
 	}
 	
 	//login
@@ -774,7 +821,38 @@ header {
 			}
 			
 			.dropdown-menu {
-				margin-top: 14px;
+				margin-top: 10px;
+				box-shadow: 2px 2px 2px;
+			}
+		}
+	}
+}
+
+body {
+	.snap-drawer-left {
+		#block-menu-menu-megamenu {
+			li {
+				a {
+					border-color: #9c9c9c;
+					font-family: 'Apercu Regular';
+					font-size: 16px;
+				}
+				
+				&.level-0 {
+					font-size: 24px;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
+
+body.tploggedin {
+	.pivot-nav-theme {
+		.tpsLogin {
+			.user_image,
+			.user_image:hover {
+				color: #01bf9e;
 			}
 		}
 	}

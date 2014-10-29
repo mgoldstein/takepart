@@ -42,7 +42,7 @@ function tp_custom_nav_theme($existing, $type, $theme, $path) {
  */
 function tp_custom_nav_preprocess_html(&$variables) {
   //adds new font
-  drupal_add_js("WebFontConfig = { fontdeck: { id: '35228' } };", array('type' => 'inline', 'scope'=> 'footer', 'weight' => 10));
+  drupal_add_js("WebFontConfig = { fontdeck: { id: '50294' } };", array('type' => 'inline', 'scope'=> 'footer', 'weight' => 10));
   drupal_add_js('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 11));
 }
 
@@ -484,7 +484,12 @@ function _tp_custom_nav_menu_handler($menu = NULL) {
  *  @function:
  *    This function is used to parse the mobile menu as it was not pulling in the secondary levels
  */
-function _tp_custom_nav_menu_parser($mobile_menu) {
+function _tp_custom_nav_menu_parser($mobile_menu, $level = 0) {
+  //only allow level 1 to show in the menu
+  if ($level > 1) {
+    return NULL;
+  }
+  
   $mobile_menu_processed = array();
   //does for each item
   foreach ($mobile_menu as $menu => $value) {
@@ -497,12 +502,12 @@ function _tp_custom_nav_menu_parser($mobile_menu) {
         'class' => $value['link']['options']['#attributes'],
       ),
       '#original_link' => $value['link'],
-      '#below' => (!empty($value['below'])) ? _tp_custom_nav_menu_parser($value['below']) : '',
+      '#below' => (!empty($value['below'])) ? _tp_custom_nav_menu_parser($value['below'], $level + 1) : '',
       '#localized_options' => $value['link']['localized_options']
     );
     
     //ensures we add an extra class to be normal
-    $mobile_menu_processed[$value['link']['mlid']]['#attributes']['class'][] = 'normal';
+    $mobile_menu_processed[$value['link']['mlid']]['#attributes']['class'][] = 'normal level-' . $level;
   }
   
   return $mobile_menu_processed;
@@ -530,7 +535,7 @@ function tp_custom_nav_tp_preprocess_slim_nav_alter(&$data) {
  *  Implements hook_tp_collab_alter().
  */
 function tp_custom_nav_tp_collab_alter(&$normal_state, &$focus_state, &$classes) {
-  $normal_state = '<span class="small">in collaboration with</span><br/><img src="/sites/all/themes/tp4/images/takepart_logo_white.png" style="vertical-align: middle;"/><span class="small">&nbsp;&nbsp;[?]</span>';
-  $focus_state = '<a class="focus-state-link" href="http://www.takepart.com/">TakePart is the social<br/>action platform for<br/>Pivot TV. <span style="color: #018b73;">About Takepart</span></a>';
+  $normal_state = '<span class="small">in collaboration with</span><br/><img src="/sites/all/themes/tp4/images/takepart_logo_white.png" style="vertical-align: middle; margin-right: 6px;"/><span class="small">&nbsp;&nbsp;[?]</span>';
+  $focus_state = '<a class="focus-state-link" href="http://www.takepart.com/">TakePart is the social<br/>action platform for<br/>Pivot TV. <span style="color: #01bf9e;">About Takepart</span></a>';
   $classes = array('takepart');
 }
