@@ -10,13 +10,15 @@
     ->orderBy('f.timestamp', 'DESC')
     ->execute()
     ->fetchCol();
-
+  $count = count($fids);
+  print "{$count}\n";
+  $i = 0;
+  
   foreach ($fids as $fid) {
     $file = file_load($fid);
-
     tp_videos_entity_update($file, 'file');
-
+    $i++;
+    print "{$i} ";
     print "{$file->filemime}\n";
-
-    sleep(5);
+    sleep(2);
   }

@@ -2144,17 +2144,23 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'header',
           'weight' => '-9',
         ),
+        'bean-featured-campaigns-module' => array(
+          'module' => 'bean',
+          'delta' => 'featured-campaigns-module',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
         'tp4_support-tp4_footer' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_footer',
           'region' => 'footer',
           'weight' => '-9',
         ),
-        'bean-featured-campaigns-module' => array(
-          'module' => 'bean',
-          'delta' => 'featured-campaigns-module',
+        'boxes-ga_interstitial' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_interstitial',
           'region' => 'footer',
-          'weight' => '-10',
+          'weight' => '-8',
         ),
         'tp4_support-tp4_mobile_menu_header' => array(
           'module' => 'tp4_support',
