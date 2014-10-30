@@ -579,7 +579,11 @@ header {
  *	Overrides for the new custom slim nav
  */
 #block-tp-custom-nav-tp-custom-nav-slim {
-	margin-bottom: 0px;
+	margin-bottom: 15px;
+	
+	@include breakpoint($breakpoint-tablet) {
+		margin-bottom: 0px;
+	}
 	
 	.tp-slim-nav {
 		border: none;
@@ -649,7 +653,7 @@ header {
 						text-transform: none;
 						font-weight: bold;
 						font-family: 'Apercu Regular';
-						font-size: 14px;
+						font-size: 15px;
 						line-height: 30px;
 						
 						&:hover {
@@ -691,13 +695,12 @@ header {
 	.right-more {
 		position: relative;
     &:after {
-      content: "\25BB";
-      font-family: "SSGizmo";
-      font-weight: bold;
+			content: ' ';
+      background: image-url('slim-nav-arrow.png') 2px 2px no-repeat;
       display: inline-block;
 			font-size: 14px;
-      width: 2.142857143em; // 30px/14px
-      height: 1.428571429em; // 20px/14px
+      width: 12px; // 30px/14px
+      height: 18px; // 20px/14px
     }
 	}
 }
@@ -836,11 +839,30 @@ body {
 					border-color: #9c9c9c;
 					font-family: 'Apercu Regular';
 					font-size: 16px;
+					
+					&.active,
+					&:hover {
+						background-color: #8d8d8d;
+					}
 				}
 				
 				&.level-0 {
 					font-size: 24px;
 					font-weight: bold;
+				}
+			}
+		}
+		
+		.pivot-nav-theme {
+			.follow-us {
+				margin-right: 0px !important;
+				
+				.title {
+					margin-left: 0px;
+				}
+				
+				li {
+					margin-right: 8px;	
 				}
 			}
 		}

@@ -28,6 +28,10 @@ function theme_tp_slim_nav_colors($vars) {
       border-top: none;
     }
     
+    body.campaign-display .header-wrapper {
+      border-top: none;
+    }
+    
     body #tp-drawers .snap-drawer {
       background-color: #' . $mobile_bg_color . ';
     }
