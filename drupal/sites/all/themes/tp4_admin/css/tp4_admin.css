@@ -17,3 +17,7 @@ body.page-admin-structure-nodequeue-2 .region-content #block-views-87e72108321fe
 #video-playlist-node-form #edit-field-video-list .form-item table {
   float: left;
 }
+
+body.page-block-featured-campaigns-module #field-featured-campaigns-add-more-wrapper .sticky-header {
+  z-index: 100;
+}
