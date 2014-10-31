@@ -13051,61 +13051,64 @@ header .search .form-submit {
   padding: 10px 10px 0;
   text-transform: none;
   font-size: 16px;
-  font-family: 'Apercu Regular';
-  font-weight: bold;
+  font-family: 'Apercu Medium', sans-serif;
 }
-/* line 641, ../sass/modules/_header.scss */
+/* line 640, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level {
   border-top: none;
   min-width: 250px;
   box-shadow: 2px 2px 2px #666;
 }
-/* line 648, ../sass/modules/_header.scss */
+/* line 647, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level .mega-content-wrapper {
   padding: 20px !important;
 }
-/* line 652, ../sass/modules/_header.scss */
+/* line 651, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level .mega-content-wrapper li a {
   text-transform: none;
   font-weight: bold;
-  font-family: 'Apercu Regular';
+  font-family: 'Apercu Regular', sans-serif;
   font-size: 15px;
   line-height: 30px;
 }
-/* line 659, ../sass/modules/_header.scss */
+/* line 658, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level .mega-content-wrapper li a:hover {
   text-decoration: underline;
 }
-/* line 666, ../sass/modules/_header.scss */
+/* line 665, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level .mega-content-wrapper a:hover {
   text-decoration: underline;
 }
-/* line 674, ../sass/modules/_header.scss */
+/* line 673, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .menu-toggle {
   margin-left: 10px;
   margin-top: 10px;
 }
-/* line 679, ../sass/modules/_header.scss */
+/* line 678, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .left {
   float: none;
 }
-/* line 682, ../sass/modules/_header.scss */
+/* line 681, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .left > div {
   float: left;
 }
-/* line 687, ../sass/modules/_header.scss */
+/* line 686, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right > div {
   float: left;
 }
-/* line 690, ../sass/modules/_header.scss */
+/* line 689, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right > div:not(.block-tp-custom-nav) {
   margin-right: 10px;
 }
-/* line 695, ../sass/modules/_header.scss */
+/* line 694, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right-more {
   position: relative;
+  font-size: 15px !important;
+  text-transform: uppercase !important;
+  font-family: 'Apercu Medium', sans-serif !important;
+  line-height: 30px;
 }
-/* line 697, ../sass/modules/_header.scss */
+/* line 701, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right-more:after {
   content: ' ';
   background: url('../images/slim-nav-arrow.png?1414706201') 2px 2px no-repeat;
@@ -13115,12 +13118,12 @@ header .search .form-submit {
   height: 18px;
 }
 
-/* line 710, ../sass/modules/_header.scss */
+/* line 714, ../sass/modules/_header.scss */
 .tp_slim_nav_wrapper #block-tp4-support-tp4-mobile-menu-header .title {
   margin-right: 10px;
 }
 
-/* line 716, ../sass/modules/_header.scss */
+/* line 720, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-takepart-collab {
   margin-bottom: 0;
   width: 140px;
@@ -13130,16 +13133,16 @@ header .search .form-submit {
   margin-top: -7px;
   margin-right: 0 !important;
 }
-/* line 725, ../sass/modules/_header.scss */
+/* line 729, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-takepart-collab .focus-state {
   line-height: 15px;
 }
-/* line 729, ../sass/modules/_header.scss */
+/* line 733, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-takepart-collab a {
   text-decoration: none;
 }
 @media all and (min-width: 768px) {
-  /* line 734, ../sass/modules/_header.scss */
+  /* line 738, ../sass/modules/_header.scss */
   #block-tp-custom-nav-tp-custom-nav-takepart-collab:before {
     content: '|';
     padding-right: 10px;
@@ -13149,16 +13152,16 @@ header .search .form-submit {
   }
 }
 
-/* line 758, ../sass/modules/_header.scss */
+/* line 762, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us, .pivot-nav-theme.follow-us {
   margin-right: 25px !important;
   margin-top: 6px;
 }
-/* line 762, ../sass/modules/_header.scss */
+/* line 766, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us .title, .pivot-nav-theme.follow-us .title {
   margin-left: 10px;
   text-transform: uppercase;
-  font-family: 'Apercu Regular';
+  font-family: 'Apercu Regular', sans-serif;
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0px;
@@ -13166,7 +13169,7 @@ header .search .form-submit {
   float: left;
   color: #CCC;
 }
-/* line 775, ../sass/modules/_header.scss */
+/* line 779, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us li a, .pivot-nav-theme.follow-us li a {
   margin-left: 7px;
   overflow: hidden;
@@ -13177,7 +13180,7 @@ header .search .form-submit {
   height: 30px;
   width: 30px;
 }
-/* line 785, ../sass/modules/_header.scss */
+/* line 789, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us li a:before, .pivot-nav-theme.follow-us li a:before {
   overflow: visible;
   padding: 7px;
@@ -13186,70 +13189,70 @@ header .search .form-submit {
   color: #fff;
   display: block;
 }
-/* line 794, ../sass/modules/_header.scss */
+/* line 798, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us li a:hover:before, .pivot-nav-theme.follow-us li a:hover:before {
   text-decoration: none;
   color: #000;
   background-color: #FFF;
 }
-/* line 804, ../sass/modules/_header.scss */
+/* line 808, ../sass/modules/_header.scss */
 .pivot-nav-theme #block-tp4-support-tp4-mobile-menu-header {
   border-color: #9c9c9c;
 }
-/* line 809, ../sass/modules/_header.scss */
+/* line 813, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin {
   margin-top: 7px;
 }
-/* line 812, ../sass/modules/_header.scss */
+/* line 816, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin .tp_login {
   background: transparent;
   padding: 10px 0;
   margin-top: -10px;
 }
-/* line 817, ../sass/modules/_header.scss */
+/* line 821, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin .tp_login a {
   background-color: transparent;
 }
-/* line 822, ../sass/modules/_header.scss */
+/* line 826, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin .tp_login .user_image,
 .pivot-nav-theme .tpsLogin .tp_login .user_image:hover {
   color: #999999;
 }
-/* line 826, ../sass/modules/_header.scss */
+/* line 830, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin .tp_login .dropdown-menu {
   margin-top: 10px;
   box-shadow: 2px 2px 2px;
 }
 
-/* line 838, ../sass/modules/_header.scss */
+/* line 842, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li a {
   border-color: #9c9c9c;
-  font-family: 'Apercu Regular';
+  font-family: 'Apercu Medium', sans-serif;
   font-size: 16px;
 }
-/* line 844, ../sass/modules/_header.scss */
+/* line 848, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li a.active, body .snap-drawer-left #block-menu-menu-megamenu li a:hover {
   background-color: #8d8d8d;
 }
-/* line 849, ../sass/modules/_header.scss */
+/* line 853, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li.level-0 {
   font-size: 24px;
-  font-weight: bold;
+  font-family: 'Apercu Bold', sans-serif;
 }
-/* line 857, ../sass/modules/_header.scss */
+/* line 861, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us {
   margin-right: 0px !important;
 }
-/* line 860, ../sass/modules/_header.scss */
+/* line 864, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us .title {
   margin-left: 0px;
 }
-/* line 864, ../sass/modules/_header.scss */
+/* line 868, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us li {
   margin-right: 8px;
 }
 
-/* line 876, ../sass/modules/_header.scss */
+/* line 880, ../sass/modules/_header.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image,
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   color: #01bf9e;
