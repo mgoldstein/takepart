@@ -7,8 +7,10 @@
 
 .video-duration {
   color: #555555;
-  font-size: 14px;
+  font-size: 12px;
   margin-top: 5px;
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  display: inline-block;
 }
 
 .video-placeholder{
@@ -190,6 +192,12 @@ h3.video-title{
     .now-playing, .promo-headline{
       font-family: $primary-sans-font;
       font-weight: 500;
+      display: inline-block;
+    }
+    
+    .promo-headline:after {
+      content: '\00a0 ';
+      display: inline-block;
     }
   }
   .icon.i-triangle-right:after{

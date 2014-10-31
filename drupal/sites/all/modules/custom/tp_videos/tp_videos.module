@@ -272,13 +272,14 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
         //adds video duration at the end
         $node_view['#suffix'] = theme('html_tag', array(
           'element' => array(
-            '#tag' => 'div',
+            '#tag' => 'span',
             '#value' => $node->video_duration,
             '#attributes' => array(
               'class' => 'video-duration',
-              'id' => 'id',
         ))));
-        
+    
+        $node_view['field_promo_headline'][0]['#markup'] = $node_view['field_promo_headline'][0]['#markup'] . ' '; 
+    
         $displays[] = $node_view;
       }
 
