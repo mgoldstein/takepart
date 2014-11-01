@@ -851,8 +851,10 @@ body {
 				}
 				
 				&.level-0 {
-					font-size: 24px;
-					font-family: 'Apercu Bold', sans-serif;
+					a {
+						font-size: 24px;
+						font-family: 'Apercu Bold', sans-serif;
+					}
 				}
 			}
 		}
