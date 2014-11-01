@@ -13234,25 +13234,25 @@ body .snap-drawer-left #block-menu-menu-megamenu li a {
 body .snap-drawer-left #block-menu-menu-megamenu li a.active, body .snap-drawer-left #block-menu-menu-megamenu li a:hover {
   background-color: #8d8d8d;
 }
-/* line 853, ../sass/modules/_header.scss */
-body .snap-drawer-left #block-menu-menu-megamenu li.level-0 {
+/* line 854, ../sass/modules/_header.scss */
+body .snap-drawer-left #block-menu-menu-megamenu li.level-0 a {
   font-size: 24px;
   font-family: 'Apercu Bold', sans-serif;
 }
-/* line 861, ../sass/modules/_header.scss */
+/* line 863, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us {
   margin-right: 0px !important;
 }
-/* line 864, ../sass/modules/_header.scss */
+/* line 866, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us .title {
   margin-left: 0px;
 }
-/* line 868, ../sass/modules/_header.scss */
+/* line 870, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us li {
   margin-right: 8px;
 }
 
-/* line 880, ../sass/modules/_header.scss */
+/* line 882, ../sass/modules/_header.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image,
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   color: #01bf9e;
