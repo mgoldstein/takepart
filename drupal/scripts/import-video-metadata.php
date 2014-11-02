@@ -19,6 +19,7 @@
     tp_videos_entity_update($file, 'file');
     $i++;
     print "{$i} ";
+    print "{$fid} "
     print "{$file->filemime}\n";
-    sleep(2);
+    sleep(1);
   }
