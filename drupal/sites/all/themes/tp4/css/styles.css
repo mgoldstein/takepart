@@ -13239,21 +13239,22 @@ body .snap-drawer-left #block-menu-menu-megamenu li a.active, body .snap-drawer-
 body .snap-drawer-left #block-menu-menu-megamenu li.level-0 a {
   font-size: 24px;
   font-family: 'Apercu Bold', sans-serif;
+  text-transform: uppercase;
 }
-/* line 864, ../sass/modules/_header.scss */
+/* line 865, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us {
   margin-right: 0px !important;
 }
-/* line 867, ../sass/modules/_header.scss */
+/* line 868, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us .title {
   margin-left: 0px;
 }
-/* line 871, ../sass/modules/_header.scss */
+/* line 872, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us li {
   margin-right: 8px;
 }
 
-/* line 883, ../sass/modules/_header.scss */
+/* line 884, ../sass/modules/_header.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image,
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   color: #01bf9e;
