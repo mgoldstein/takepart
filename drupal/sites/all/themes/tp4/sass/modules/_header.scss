@@ -630,7 +630,7 @@ header {
 				a {
 					padding: 10px 10px 0;
 					text-transform: none;
-					font-size: 16px;
+					font-size: 18px;
 					font-family: 'Apercu Medium', sans-serif;
 				}
 			}
@@ -651,7 +651,7 @@ header {
 					a { //each title on the second level
 						text-transform: none;
 						font-weight: bold;
-						font-family: 'Apercu Regular', sans-serif;
+						font-family: 'Apercu Medium', sans-serif;
 						font-size: 15px;
 						line-height: 30px;
 						
@@ -719,8 +719,8 @@ header {
 
 #block-tp-custom-nav-tp-custom-nav-takepart-collab {
 	margin-bottom: 0;
-	width: 140px;
-	font-size: 	11px;
+	width: 126px;
+	font-size: 11px;
 	line-height: 21px;
 	font-weight: bold;
 	margin-top: -7px;
@@ -843,6 +843,7 @@ body {
 					border-color: #9c9c9c;
 					font-family: 'Apercu Medium', sans-serif;
 					font-size: 16px;
+                                        text-transform: none;
 					
 					&.active,
 					&:hover {
