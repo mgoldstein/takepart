@@ -609,6 +609,7 @@ header {
 			
 			.follow-us {
 				display: none;
+                                margin-right: 32px;
 				@include breakpoint($breakpoint-desktop) {
 					display: block;
 				}
@@ -719,7 +720,7 @@ header {
 
 #block-tp-custom-nav-tp-custom-nav-takepart-collab {
 	margin-bottom: 0;
-	width: 132px;
+	width: 140px;
 	font-size: 11px;
 	line-height: 21px;
 	font-weight: bold;
