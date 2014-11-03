@@ -225,13 +225,30 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
   $settings = $display['settings'];
 
   if ($display['type'] === 'tp_video_player' && count($items) > 0) {
-
     // Load any available node specific configuration.
     $configuration = tp_video_player_load_entity_configuration($entity_type,
       entity_id($entity_type, $entity), $settings['global_default']);
+    
+    //by default load the global settings if no settings has been loaded
     if (is_null($configuration)) {
       $configuration = tp_video_player_clone_default_configuration(
         $settings['global_default']);
+      
+      //overrides the ads setting based on node so that all the other settings for video blocks
+      //are the same
+      if ($settings['global_default'] == 'video_block') {
+        $full_page_conf = tp_video_player_load_entity_configuration(
+          $entity_type,
+          entity_id($entity_type, $entity),
+          'video_full_page'
+        );
+  
+        //only adds the tags if one exist
+        if (isset($full_page_conf->ad_tag)) {
+          //pulls the settings for ads from the node into video block
+          $configuration->ad_tag = $full_page_conf->ad_tag;
+        }
+      }
     }
 
     // The path to the video node is stored in the MEDIAID to allow
