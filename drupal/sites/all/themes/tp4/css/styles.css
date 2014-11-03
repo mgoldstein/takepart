@@ -14583,12 +14583,12 @@ h3.video-title {
 .video-playlist .video-item .now-playing, .video-playlist .video-item .promo-headline {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 500;
-  display: inline-block;
+  display: inline;
 }
 /* line 198, ../sass/modules/_video_playlist.scss */
 .video-playlist .video-item .promo-headline:after {
   content: '\00a0 ';
-  display: inline-block;
+  display: inline;
 }
 /* line 203, ../sass/modules/_video_playlist.scss */
 .video-playlist .icon.i-triangle-right:after {
