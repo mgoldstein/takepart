@@ -139,48 +139,63 @@ function tp_videos_token_attached_file($node, $field_name) {
 
 function tp_videos_token_iframe_embed_markup($node) {
   $replacement = NULL;
-  if ($file = tp_videos_token_attached_file($node, 'field_video')) {
 
-    $iframe_attributes = array(
-      'id' => 'entity_iframe_node_' . $node->nid,
-      'src' => tp_videos_token_iframe_embed_src($node, FALSE),
-      'class' => 'entity_iframe entity_iframe_node '. $node->type,
-      // Style the iframe to fill a responsive container div.
-      'style' => 'position:absolute;top:0;left:0;',
-      'width' => '100%',
-      'height' => '100%',
-      'frameborder' => '0',
-    );
-    $iframe_markup = _entity_iframe_build_iframe($iframe_attributes, 'video-embed');
+  /* Set the embeddable iframe attributes */
+  $iframe_attributes = array(
+    'id' => 'entity_iframe_node_' . $node->nid,
+    'src' => tp_videos_token_iframe_embed_src($node, FALSE),
+    'class' => 'entity_iframe entity_iframe_node '. $node->type,
+    // Style the iframe to fill a responsive container div.
+    'style' => 'position:absolute;top:0;left:0;',
+    'width' => '100%',
+    'height' => '100%',
+    'frameborder' => '0',
+  );
+  $iframe_markup = _entity_iframe_build_iframe($iframe_attributes, 'video-embed');
+
+
+  /* Set aspect ratio and fixed size.  This differs from videos to playlists */
+  if($node->type == 'video_playlist'){
+
+    // Assume 16:9 aspect ratio.
+    $aspect_ratio = 56.25;
+    // With no additional chrome on the player.
+    $fixed_size = 0;
+  }
+  elseif($node->type === 'video' && $file = tp_videos_token_attached_file($node, 'field_video')) {
 
     // Assume 16:9 aspect ratio.
     $aspect_ratio = 56.25;
     // With no additional chrome on the player.
     $fixed_size = 0;
 
-    if ($node->type === 'video') {
-      // Set the aspect ratio based on the video dimensions.
-      if (isset($file->tp_videos_metadata)) {
-        $aspect_ratio = ($file->tp_videos_metadata->height
-          / $file->tp_videos_metadata->width) * 100.0;
-      }
+    // Set the aspect ratio based on the video dimensions.
+    if (isset($file->tp_videos_metadata)) {
+      $aspect_ratio = ($file->tp_videos_metadata->height
+        / $file->tp_videos_metadata->width) * 100.0;
     }
-
-    $container_attributes = array(
-      'class' => array(
-        'embed-container',
-      ),
-      'style' => array(
-        'position:relative;',
-        'height:0;',
-        "padding-bottom:{$aspect_ratio}%;",
-        "padding-top:{$fixed_size}px;",
-      ),
-    );
-
-    $replacement = '<div' . drupal_attributes($container_attributes)
-      . '>' . $iframe_markup . '</div>';
+  }else{
+    // Assume 16:9 aspect ratio.
+    $aspect_ratio = 56.25;
+    // With no additional chrome on the player.
+    $fixed_size = 0;
   }
+
+  /* Theme the container with the given aspect ratio etc */
+  $container_attributes = array(
+    'class' => array(
+      'embed-container',
+    ),
+    'style' => array(
+      'position:relative;',
+      'height:0;',
+      "padding-bottom:{$aspect_ratio}%;",
+      "padding-top:{$fixed_size}px;",
+    ),
+  );
+
+  $replacement = '<div' . drupal_attributes($container_attributes)
+    . '>' . $iframe_markup . '</div>';
   return $replacement;
 }
 
@@ -188,7 +203,7 @@ function tp_videos_token_iframe_embed_src($node, $secure = FALSE) {
   global $base_url;
   $src_url = $base_url . '/entity_iframe/node/' . $node->nid;
   list(, $resource) = explode('://', $src_url, 2);
-  $scheme = $https ? 'https://' : 'http://';
+  $scheme = $secure ? 'https://' : 'http://';
   return $scheme . $resource;
 }
 

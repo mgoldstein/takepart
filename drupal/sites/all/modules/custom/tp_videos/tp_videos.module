@@ -219,7 +219,6 @@ function tp_videos_field_formatter_prepare_view($entity_type, $entities, $field,
 }
 
 function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, $langcode) {
-
   $files = array();
   $displays = array();
   $videos_used = array();
