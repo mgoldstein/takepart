@@ -192,12 +192,12 @@ h3.video-title{
     .now-playing, .promo-headline{
       font-family: $primary-sans-font;
       font-weight: 500;
-      display: inline-block;
+      display: inline;
     }
     
     .promo-headline:after {
       content: '\00a0 ';
-      display: inline-block;
+      display: inline;
     }
   }
   .icon.i-triangle-right:after{
