@@ -167,7 +167,7 @@ function tp_videos_token_iframe_embed_markup($node) {
     // Assume 16:9 aspect ratio.
     $aspect_ratio = 56.25;
     // With no additional chrome on the player.
-    $fixed_size = 0;
+    $fixed_size = 270;
 
     // Set the aspect ratio based on the video dimensions.
     if (isset($file->tp_videos_metadata)) {
