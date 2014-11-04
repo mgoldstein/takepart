@@ -885,6 +885,29 @@ body.tploggedin {
 			.user_image:hover {
 				color: #01bf9e;
 			}
+			
+			ul.dropdown-menu {
+				display: none;
+			}
+		}
+	}
+}
+
+/**
+ *	Optimizing the login to limit the jump when TAP occurs
+ */
+body {
+	.pivot-nav-theme {
+		.tpsLogin {
+			ul.dropdown-menu {
+				display: none;
+			}
+			
+			.open {
+				ul.dropdown-menu {
+					display: block;
+				}
+			}
 		}
 	}
 }

@@ -13260,6 +13260,22 @@ body.tploggedin .pivot-nav-theme .tpsLogin .user_image,
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   color: #01bf9e;
 }
+/* line 889, ../sass/modules/_header.scss */
+body.tploggedin .pivot-nav-theme .tpsLogin ul.dropdown-menu {
+  display: none;
+}
+
+/**
+ *	Optimizing the login to limit the jump when TAP occurs
+ */
+/* line 902, ../sass/modules/_header.scss */
+body .pivot-nav-theme .tpsLogin ul.dropdown-menu {
+  display: none;
+}
+/* line 907, ../sass/modules/_header.scss */
+body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
+  display: block;
+}
 
 /**
  * Styles for TP4 Sidebar Blocks
