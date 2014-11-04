@@ -49,6 +49,50 @@ function tpf_display_featured_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'bean-featured_campaigns_module-field_featured_campaigns'
+  $field_instances['bean-featured_campaigns_module-field_featured_campaigns'] = array(
+    'bundle' => 'featured_campaigns_module',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'add' => 'Add',
+          'delete' => 'Delete',
+          'description' => TRUE,
+          'edit' => 'Edit',
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_view',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'bean',
+    'field_name' => 'field_featured_campaigns',
+    'label' => 'Featured Campaigns',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'field_collection_fieldset',
+      'settings' => array(
+        'collapsed' => 1,
+        'field_as_label' => 'field_promo_label',
+        'last_item_collapsed' => 1,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'new_item_open' => 1,
+        'replace_label' => 0,
+      ),
+      'type' => 'field_collection_fieldset',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_featured_campaigns-field_featured_campaign_link'
   $field_instances['field_collection_item-field_featured_campaigns-field_featured_campaign_link'] = array(
     'bundle' => 'field_featured_campaigns',

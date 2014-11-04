@@ -18,6 +18,6 @@ body.page-admin-structure-nodequeue-2 .region-content #block-views-87e72108321fe
   float: left;
 }
 
-body.page-block-featured-campaigns-module #field-featured-campaigns-add-more-wrapper .sticky-header {
+body.page-block-featured-campaigns-module .field-widget-field-collection-fieldset .sticky-header {
   z-index: 100;
 }
