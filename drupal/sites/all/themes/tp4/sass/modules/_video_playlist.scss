@@ -91,9 +91,17 @@ h3.video-title{
     }
   }
   
+  .bx-controls {
+    .bx-controls-direction {
+      a {
+        margin-top: 0;
+        top: 47px;
+      }
+    }
+  }
+  
   .bx-next {
     right: 0;
-    top: 26%;
     &:hover{
       text-decoration: none;
     }
@@ -101,9 +109,32 @@ h3.video-title{
 
   .bx-prev {
     left: -10px;
-    top: 26%;
     &:hover{
       text-decoration: none;
+    }
+  }
+}
+
+.playlist {
+  &.medium {
+    .bx-wrapper {
+      a {
+        &.bx-prev,
+        &.bx-next {
+          top: 47px;
+        }
+      }
+    }
+  }
+  
+  &.large {
+    .bx-wrapper {
+      a {
+        &.bx-prev,
+        &.bx-next {
+          top: 58px;
+        }
+      }
     }
   }
 }

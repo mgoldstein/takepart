@@ -280,8 +280,8 @@
       //adjustment to auto correct location of slider control
       setTimeout(function() {
         var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
-        var img = $('.video-item[data-video-number="0"]', bxslider_wrapper).height();
-        var height = (img - 32) / 2;
+        var img = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
+        var height = (img / 2) + 3;
         
         $('.bx-controls a', bxslider_wrapper).css('top', height);
       }, 500);
