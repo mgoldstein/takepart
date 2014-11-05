@@ -14657,11 +14657,11 @@ h3.video-title {
 /* line 266, ../sass/modules/_video_playlist.scss */
 .playlist.small .image-wrapper {
   width: 40%;
+  margin-right: 20px;
 }
-/* line 269, ../sass/modules/_video_playlist.scss */
+/* line 270, ../sass/modules/_video_playlist.scss */
 .playlist.small .promo-headline {
   width: 55%;
-  float: right;
 }
 /* line 273, ../sass/modules/_video_playlist.scss */
 .playlist.small .video-playlist .image-wrapper img {
