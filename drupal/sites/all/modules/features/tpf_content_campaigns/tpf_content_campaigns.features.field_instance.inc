@@ -11891,7 +11891,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'module' => 'field_collection_fieldset',
       'settings' => array(
         'collapsed' => 1,
-        'field_as_label' => 'field_promo_thumbnail',
+        'field_as_label' => 'field_promo_text',
         'last_item_collapsed' => 1,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'new_item_open' => 1,
