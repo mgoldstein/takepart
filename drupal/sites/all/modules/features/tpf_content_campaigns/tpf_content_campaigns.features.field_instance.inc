@@ -60,6 +60,75 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_campaign_multigrid_item-field_promo_admin_title'
+  $field_instances['field_collection_item-field_campaign_multigrid_item-field_promo_admin_title'] = array(
+    'bundle' => 'field_campaign_multigrid_item',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_promo_admin_title',
+    'label' => 'Admin Title',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 0,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_campaign_multigrid_item-field_promo_text'
   $field_instances['field_collection_item-field_campaign_multigrid_item-field_promo_text'] = array(
     'bundle' => 'field_campaign_multigrid_item',
@@ -191,7 +260,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 0,
+      'weight' => 1,
     ),
   );
 
@@ -11891,7 +11960,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'module' => 'field_collection_fieldset',
       'settings' => array(
         'collapsed' => 1,
-        'field_as_label' => 'field_promo_text',
+        'field_as_label' => 'field_promo_admin_title',
         'last_item_collapsed' => 1,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'new_item_open' => 1,
@@ -22758,6 +22827,7 @@ Note: If you manually reference more items than selected here, the number refere
   t(' This is required. Minimum is 1. Usual is 2 to 6.');
   t('Ad Side');
   t('Ad Type');
+  t('Admin Title');
   t('Anchor Tag');
   t('Authentication Link');
   t('Background Image Position');
