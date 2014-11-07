@@ -11304,6 +11304,22 @@ body.campaign-display .card .playlist ul:not(.tabs) li:before {
   background-color: transparent;
 }
 
+/**
+ *  Perm fix from TP-2522 with ads
+ */
+/* line 1741, ../sass/page/_campaigns.scss */
+body.campaign-display .card.campaign-1col.node-campaign-card-ad .center-column {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* line 1747, ../sass/page/_campaigns.scss */
+body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
+  width: 300px;
+  margin: 0 auto;
+}
+
 /*
  * Custom Styling for Campaigns
  */
