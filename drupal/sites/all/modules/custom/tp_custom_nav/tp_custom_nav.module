@@ -509,6 +509,6 @@ function tp_custom_nav_tp_preprocess_slim_nav_alter(&$data) {
  */
 function tp_custom_nav_tp_collab_alter(&$normal_state, &$focus_state, &$classes) {
   $normal_state = '<span class="small">in collaboration with</span><br/><img src="/sites/all/themes/tp4/images/takepart_logo_white.png" style="vertical-align: middle; margin-right: 6px;"/><span class="small">&nbsp;&nbsp;[?]</span>';
-  $focus_state = '<a class="focus-state-link" href="http://www.takepart.com/">TakePart is the social<br/>action platform for<br/>Pivot TV. <span style="color: #01bf9e;">About Takepart</span></a>';
+  $focus_state = '<a class="focus-state-link" href="http://www.takepart.com/">TakePart is the social<br/>action platform for<br/>Pivot TV. <span style="color: #01bf9e;">About TakePart</span></a>';
   $classes = array('takepart');
 }
