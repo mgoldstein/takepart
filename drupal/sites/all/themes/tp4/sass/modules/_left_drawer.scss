@@ -29,6 +29,16 @@
   &#campaign-drawers {
     .snap-drawer {
       right: 0;
+      
+      .block-menu {
+        li {
+          a {
+            &.active {
+              color: #01bf9e;
+            }
+          }
+        }
+      }
     }
   }
   .snap-drawer {
