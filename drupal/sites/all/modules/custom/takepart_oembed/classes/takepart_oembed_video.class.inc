@@ -55,8 +55,9 @@ class TPVideoOembed {
       'version' => '1.0',
       'provider_name' => variable_get('site_name', ''),
       'provider_url' => $base_url,
-      'secure_request' => $secure
     );
+    
+    $this->secure_request = $secure;
     
     //auto set to fail
     $this->set_status();
@@ -267,7 +268,7 @@ class TPVideoOembed {
         $src_url = $base_url . '/entity_iframe/node/' . $node->nid;
         list(, $resource) = explode('://', $src_url, 2);
         
-        $scheme = $this->secure_request ? 'http://' : 'https://';
+        $scheme = $this->secure_request ? 'https://' : 'http://';
         
         $html = theme('html_tag', array(
           'element' => array(
