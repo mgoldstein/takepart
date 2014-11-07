@@ -25,6 +25,7 @@ class TPVideoOembed {
   public $video;
   public $data;
   public $status;
+  public $secure_request;
   
   /**
    *  @method:
@@ -44,6 +45,8 @@ class TPVideoOembed {
     //global variable
     global $base_url;
     
+    $secure = (strpos($this->url, 'https') === FALSE) ? 0 : 1;
+    
     //declares the standard information for all videos
     $this->standard_info = array(
       'url' => $this->url,
@@ -52,6 +55,7 @@ class TPVideoOembed {
       'version' => '1.0',
       'provider_name' => variable_get('site_name', ''),
       'provider_url' => $base_url,
+      'secure_request' => $secure
     );
     
     //auto set to fail
@@ -141,9 +145,11 @@ class TPVideoOembed {
   public function get_nid($node_requested = FALSE) {
     //load global base url
     global $base_url;
+    global $base_root;
         
     //check if url exist
-    $requested_url = str_replace($base_url . '/', '', $this->url);
+    list(, $requested_url) = explode('://', $this->url, 2);
+    $requested_url = str_replace($_SERVER['SERVER_NAME'] . '/', '', $requested_url);
     $url = drupal_lookup_path('source', $requested_url);
 
     //ensures that the system url is returned
@@ -258,6 +264,11 @@ class TPVideoOembed {
         }
         
         //creates the iframe markup for the video
+        $src_url = $base_url . '/entity_iframe/node/' . $node->nid;
+        list(, $resource) = explode('://', $src_url, 2);
+        
+        $scheme = $this->secure_request ? 'http://' : 'https://';
+        
         $html = theme('html_tag', array(
           'element' => array(
             '#tag' => 'iframe',
@@ -265,7 +276,7 @@ class TPVideoOembed {
             '#attributes' => array(
               'width' => $width,
               'height' => $height,
-              'src' => $base_url . '/entity_iframe/node/' . $node->nid,
+              'src' => $scheme . $resource,
               'frameborder' => '0',
               'class' => 'entity_iframe entity_iframe_node',
               'id' => 'entity_iframe_node_' . $node->nid
