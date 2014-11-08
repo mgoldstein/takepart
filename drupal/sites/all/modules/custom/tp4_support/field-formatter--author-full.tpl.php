@@ -57,7 +57,7 @@
 	<span class="more">follow me
 	  <?php print $social_links; ?>
 	</span>
-	<? endif; ?>
+	<?php endif; ?>
        </div>
     </div>
   </div>

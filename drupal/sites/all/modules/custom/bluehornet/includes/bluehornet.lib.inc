@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 API call example
 
