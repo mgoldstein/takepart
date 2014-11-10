@@ -748,12 +748,13 @@ body.campaign-display{
         }
         &.on-first-slide .left-arrow,
         &.on-first-slide .arrow-left{
-            display: none;
+            cursor: default;
+            color: #898b8a;
         }
         &.on-last-slide .right-arrow,
         &.on-last-slide .arrow-right{
-            display: none;
-
+            cursor: default;
+            color: #898b8a;
         }
     }
 
