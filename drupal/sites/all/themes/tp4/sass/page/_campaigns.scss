@@ -725,17 +725,27 @@ body.campaign-display{
             @include breakpoint($breakpoint-mobile) {
                 .mobile-arrow{
                     display: inline-block;
-                    &.arrow-left{
+                    position: absolute;
+                    bottom: 7px;
+                    cursor: pointer;
+                    color: #000;
+                    
+                    &.left-arrow {
+                        margin-right: 20px;
+                        left: 10px;
                         &:after{
-                            font-family: "SSGizmo";
-                            content: '\25C5';
+                            font-family: "takepart";
+                            content: '\e601';
+                            font-size: 35px;
                         }
                     }
-                    &.arrow-right{
-                        margin-left: .3em;
+                    &.right-arrow {
+                        margin-left: 20px;
+                        right: 10px;
                         &:after{
-                            font-family: "SSGizmo";
-                            content: '\25BB';
+                            font-family: "takepart";
+                            content: '\e600';
+                            font-size: 35px;
                         }
                     }
                 }

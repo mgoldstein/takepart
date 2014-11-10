@@ -51,6 +51,12 @@ body.campaign-display{
     .tray-header .card-title{
       color: $primary-color;
     }
+    
+    @include breakpoint($breakpoint-mobile) {
+      .mobile-arrow{
+        color: #FFF;
+      }
+    }
   }
   //Header
   .branding-header.dark-background {
