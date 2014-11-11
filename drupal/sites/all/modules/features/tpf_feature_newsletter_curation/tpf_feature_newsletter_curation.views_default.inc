@@ -60,6 +60,12 @@ function tpf_feature_newsletter_curation_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
@@ -116,7 +122,7 @@ function tpf_feature_newsletter_curation_views_default_views() {
     'core' => array(
       'views_rss_core' => array(
         'title' => 'title',
-        'link' => '',
+        'link' => 'view_node',
         'description' => 'nid',
         'author' => '',
         'category' => '',
@@ -166,7 +172,7 @@ function tpf_feature_newsletter_curation_views_default_views() {
         'category' => '',
         'comments' => '',
         'enclosure' => '',
-        'guid' => 'nid',
+        'guid' => '',
         'pubDate' => '',
       ),
     ),
@@ -243,7 +249,7 @@ function tpf_feature_newsletter_curation_views_default_views() {
     'core' => array(
       'views_rss_core' => array(
         'title' => 'title',
-        'link' => '',
+        'link' => 'view_node',
         'description' => 'nid',
         'author' => '',
         'category' => '',
