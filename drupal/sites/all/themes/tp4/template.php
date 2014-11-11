@@ -1558,10 +1558,14 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 
         // Decide whether to display a TAP banner
         if ($variables['field_display_tab_banner']['und'][0]['value']) {
-            $variables['gallery_tap_banner'] = array(
-                '#type' => 'markup',
-                '#markup' => '<div class="takepart-take-action-widget"></div>',
-            );
+						$description_display = array(
+							'label' => 'hidden',
+							'type'  => 'text_with_inline_content',
+							'settings' => array(
+								'source' => 'field_inline_replacements'
+							)
+						);
+						$variables['gallery_tap_banner'] = field_view_field('node', $variables['node'], 'body', $description_display);
         }
 
         // provide "on our radar" block
