@@ -81,7 +81,7 @@ class TPVideoOembed {
       $cache_cid = 'tp_oembed_no_node';
     }
     else {
-      $cache_cid = 'tp_oembed_' . $nid . $width;
+      $cache_cid = 'tp_oembed_' . $nid . $width . $this->standard_info['secure_request'];
     }
 
     $cache_time = variable_get('takepart_oembed_cache_time', 10);
