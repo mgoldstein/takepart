@@ -299,16 +299,16 @@ function tpf_content_video_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '13',
         ),
         'redirect' => array(
-          'weight' => '15',
+          'weight' => '14',
         ),
         'xmlsitemap' => array(
           'weight' => '16',
         ),
         'locations' => array(
-          'weight' => '19',
+          'weight' => '18',
         ),
       ),
       'display' => array(),
