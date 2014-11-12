@@ -702,6 +702,7 @@ body.campaign-display{
         .slider-pagination{
             text-align: center;
             margin-bottom: 1em;
+            position: relative;
 
             a {
                 margin-bottom: 2px;
@@ -726,7 +727,7 @@ body.campaign-display{
                 .mobile-arrow{
                     display: inline-block;
                     position: absolute;
-                    bottom: 7px;
+                    bottom: -7px;
                     cursor: pointer;
                     color: #000;
                     
