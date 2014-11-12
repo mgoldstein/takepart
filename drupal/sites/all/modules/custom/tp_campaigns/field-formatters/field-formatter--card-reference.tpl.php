@@ -10,7 +10,10 @@
   <div class="tray-header">
 
     <nav class="slider-pagination">
-    <div class="mobile-arrow arrow-left"></div>
+      <div<?php print drupal_attributes(array(
+        'class' => array('mobile-arrow','left-arrow'),
+        'data-for-tray' => $variables['entity']->title)); ?>
+        ><div class="arrow-inner"></div></div>
       <?php for($i = 0; $i < count($items); $i++) : ?>
         <a<?php print drupal_attributes(array(
             'href' => 'javascript:void(0);',
@@ -19,7 +22,10 @@
           ));
           ?>><?php print $i; ?></a>
       <?php endfor; ?>
-      <div class="mobile-arrow arrow-right"></div>
+        <div<?php print drupal_attributes(array(
+        'class' => array('mobile-arrow','right-arrow'),
+        'data-for-tray' => $variables['entity']->title)); ?>
+        ><div class="arrow-inner"></div></div>
     </nav>
     <?php if(isset($tray_vars['tray_title']) == true): ?>
       <h1 class="card-title has-instructional"><?php print $tray_vars['tray_title']; ?></h1>

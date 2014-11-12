@@ -1,8 +1,5 @@
 <?php
 
-use \Participant\MetaData\Video\YoutubeVideo;
-use \Participant\MetaData\Video\JWPlatformVideo;
-
 /**
  *  @class:
  *    This class provides a custom obj for oembed for takepart.
@@ -32,7 +29,7 @@ class TPVideoOembed {
    *    Public constructor
    */
   public function __construct($url, $format = 'json') {
-    $this->url = $url;
+    $this->url = str_replace('www.', '', $url);
     $this->format = $format;
     $this->_init();
   }
@@ -55,9 +52,9 @@ class TPVideoOembed {
       'version' => '1.0',
       'provider_name' => variable_get('site_name', ''),
       'provider_url' => $base_url,
+      'html' => '',
+      'secure_request' => $secure
     );
-    
-    $this->secure_request = $secure;
     
     //auto set to fail
     $this->set_status();
@@ -144,13 +141,28 @@ class TPVideoOembed {
    *      node_requested = TRUE will return the node obj if found
    */
   public function get_nid($node_requested = FALSE) {
+    //default variable
+    $requested_url = '';
+    
     //load global base url
     global $base_url;
     global $base_root;
         
     //check if url exist
-    list(, $requested_url) = explode('://', $this->url, 2);
-    $requested_url = str_replace($_SERVER['SERVER_NAME'] . '/', '', $requested_url);
+    $original_url = $this->url;
+    $url_params = parse_url($original_url);
+  
+    //converts scheme to http to test if secure is on
+    if ($this->standard_info['secure_request'] && stripos($base_url, 'http') === 0) {
+      $original_url = str_replace('https:', 'http:' , $original_url);
+    }
+
+    //ensures that the requested url has the base url
+    if (stripos($original_url, $base_url) === 0) {
+      $requested_url = ltrim($url_params['path'], '/');
+    }
+    
+    //lookups the path
     $url = drupal_lookup_path('source', $requested_url);
 
     //ensures that the system url is returned
@@ -268,7 +280,8 @@ class TPVideoOembed {
         $src_url = $base_url . '/entity_iframe/node/' . $node->nid;
         list(, $resource) = explode('://', $src_url, 2);
         
-        $scheme = $this->secure_request ? 'https://' : 'http://';
+        //sets schema type based on request
+        $scheme = $this->standard_info['secure_request'] ? 'https://' : 'http://';
         
         $html = theme('html_tag', array(
           'element' => array(
