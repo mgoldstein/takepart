@@ -138,19 +138,19 @@ function tpf_content_article_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '12',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '14',
-        ),
-        'metatags' => array(
-          'weight' => '17',
-        ),
-        'redirect' => array(
           'weight' => '13',
         ),
+        'xmlsitemap' => array(
+          'weight' => '15',
+        ),
+        'metatags' => array(
+          'weight' => '18',
+        ),
+        'redirect' => array(
+          'weight' => '14',
+        ),
         'locations' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
       ),
       'display' => array(),
