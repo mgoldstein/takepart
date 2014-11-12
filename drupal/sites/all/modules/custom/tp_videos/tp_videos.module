@@ -454,6 +454,41 @@ function tp_videos_theme(){
 }
 
 /**
+ *  Implements hook_form_FORM_ID_form_alter().
+ */
+function tp_videos_form_video_node_form_alter(&$form, &$form_state, $form_id) {
+  //adds an additional submit handler to video node form
+  $form['#submit'][] = '_tp_videos_video_form_submit';
+}
+
+/**
+ *  @function:
+ *    This function is an additional submit handler for the video node form.
+ *    This is currently being used to unset the field sharing inline if a youtube video is ref.
+ */
+function _tp_videos_video_form_submit(&$form, &$form_state) {
+  //default variables
+  $lang = $form_state['values']['language'];
+  
+  //only continue if a video exist
+  if (isset($form_state['values']['field_video'][$lang][0])) {
+    //loads the video
+    $file_id = $form_state['values']['field_video'][$lang][0]['fid'];
+    $file = file_load($file_id);
+    
+    //checks to see if the file is from youtube if so uncheck the value
+    if ($file->filemime == 'video/youtube') {
+      //only change the value if field sharing is checked
+      if ($form_state['values']['field_sharing_inline'][$lang][0]['value'] == 1) {
+        //uncheck the field and send a message to user
+        $form_state['values']['field_sharing_inline'][$lang][0]['value'] = 0;
+        drupal_set_message('YouTube video is being used. Field Sharing Inline has been unchecked.');
+      }
+    }
+  }
+}
+
+/**
  *  Implements hook_form_FORM_ID_alter().
  */
 function tp_videos_form_video_playlist_node_form_alter(&$form, &$form_state, $form_id) {
