@@ -790,3 +790,45 @@ function _tp4_support_token_campaign_thumbnail($data = array()) {
   //default return 0
   return 0;
 }
+
+/**
+ *  Implements hook_menu_alter().
+ */
+function tp4_support_menu_alter(&$items) {
+  //alters the page callback for the node reference. ensure that this module is after node_reference.
+  $items['node_reference/autocomplete/%/%/%']['page callback'] = 'tp4_support_node_reference_autocomplete';
+}
+
+/**
+ *  @function:
+ *    This function is used to override the autocomplete provided by node_reference.
+ *    This code was taken from the node_reference.module.
+ *    Autocomplete now comes back with published vs unpublished.
+ */
+function tp4_support_node_reference_autocomplete($entity_type, $bundle, $field_name, $string = '') {
+  $field = field_info_field($field_name);
+  $instance = field_info_instance($entity_type, $field_name, $bundle);
+
+  $options = array(
+    'string' => $string,
+    'match' => $instance['widget']['settings']['autocomplete_match'],
+    'limit' => 10,
+  );
+  $references = node_reference_potential_references($field, $options);
+
+  $matches = array();
+  foreach ($references as $id => $row) {
+    // Markup is fine in autocompletion results (might happen when rendered
+    // through Views) but we want to remove hyperlinks.
+    $suggestion = preg_replace('/<a href="([^<]*)">([^<]*)<\/a>/', '$2', $row['rendered']);
+    
+    //adds in additional status
+    $node = node_load($id);
+    $status = ($node->status) ? '[Published]' : '[Unpublished]';
+    
+    // Add a class wrapper for a few required CSS overrides.
+    $matches[$row['title'] . " [nid:$id]"] = '<div class="reference-autocomplete">' . $suggestion . ' ' . $status .  '</div>';
+  }
+
+  drupal_json_output($matches);
+}
