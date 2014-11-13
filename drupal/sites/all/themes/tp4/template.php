@@ -293,14 +293,24 @@ function tp4_css_alter(&$css) {
  *   An array of variables to pass to the theme template.
  */
 function tp4_preprocess_block(&$variables) {
-    $variables['title_attributes_array']['class'][] = 'section-header';
-    // add slim nav class to slim nav block
-    if ($variables['block']->delta == "tp4_fat_header") {
-        $variables['classes_array'][] = "tp4-fat-header";
-    }
-    if ($variables['block']->delta == "tp4_slim_nav") {
-        $variables['classes_array'][] = "slim-nav";
-    }
+	
+	$variables['title_attributes_array']['class'][] = 'section-header';
+
+	// add slim nav class to slim nav block
+	if ($variables['block']->delta == "tp4_fat_header") {
+			$variables['classes_array'][] = "tp4-fat-header";
+	}
+
+	if ($variables['block']->delta == "tp4_slim_nav") {
+			$variables['classes_array'][] = "slim-nav";
+	}
+
+	//ensures that the bean block has a wrapper at the block level
+	if ($variables['block']->module == 'bean') {
+		$wrapper_label = $variables['elements']['bean'][$variables['block']->delta]['#bundle'];
+		$wrapper_label = str_replace('_', '-', $wrapper_label);
+		$variables['classes_array'][] = $wrapper_label . '-wrapper';
+	}
 }
 
 /**

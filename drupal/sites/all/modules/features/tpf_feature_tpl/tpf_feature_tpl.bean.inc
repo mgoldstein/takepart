@@ -19,5 +19,14 @@ function tpf_feature_tpl_bean_admin_ui_types() {
   $bean_type->description = 'Long Promo Block for TPL.';
   $export['tpl_long'] = $bean_type;
 
+  $bean_type = new stdClass();
+  $bean_type->disabled = FALSE; /* Edit this to true to make a default bean_type disabled initially */
+  $bean_type->api_version = 5;
+  $bean_type->name = 'tpl_media_block';
+  $bean_type->label = 'TPL Media Block';
+  $bean_type->options = '';
+  $bean_type->description = '';
+  $export['tpl_media_block'] = $bean_type;
+
   return $export;
 }

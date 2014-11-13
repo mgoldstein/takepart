@@ -155,5 +155,32 @@ function tpf_feature_tpl_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_tpl_video_caption'
+  $field_bases['field_tpl_video_caption'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_tpl_video_caption',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   return $field_bases;
 }
