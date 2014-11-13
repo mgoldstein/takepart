@@ -1601,8 +1601,24 @@ function tp4_preprocess_node__flashcard(&$variables) {
  * Utility function to provide "On Our Radar" block to node templates
  */
 function _tp4_on_our_radar_block(&$variables) {
-    $on_our_radar_block = block_load('bean', 'on-our-radar-block');
-    $variables['on_our_radar'] = _block_get_renderable_array(_block_render_blocks(array($on_our_radar_block)));
+    
+    $variables['on_our_radar'] = theme('html_tag', array(
+			'element' => array(
+				'#tag' => 'div',
+				'#value' => '',
+				'#attributes' => array(
+					'id' => 'pubexchange_related_links',
+		))));
+		
+	drupal_add_js('<script>(function(d, s, id)
+								{ var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
+								(document, "script", "pubexchange-jssdk"));</script>',
+		array(
+			'type' => 'inline',
+			'scope' => 'footer',
+			'weight' => 10
+		)
+	);
 }
 
 /**
