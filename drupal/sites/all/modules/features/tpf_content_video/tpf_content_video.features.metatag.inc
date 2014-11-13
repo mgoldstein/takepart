@@ -39,22 +39,8 @@ function tpf_content_video_metatag_export_default() {
       'abstract' => array(
         'value' => '[node:field_article_subhead]',
       ),
-      'robots' => array(
-        'value' => array(
-          'index' => 0,
-          'follow' => 0,
-          'noindex' => 0,
-          'nofollow' => 0,
-          'noarchive' => 0,
-          'nosnippet' => 0,
-          'noodp' => 0,
-          'noydir' => 0,
-          'noimageindex' => 0,
-          'notranslate' => 0,
-        ),
-      ),
       'og:type' => array(
-        'value' => 'movie',
+        'value' => '',
       ),
       'og:description' => array(
         'value' => '[node:field_article_subhead]',
@@ -66,19 +52,19 @@ function tpf_content_video_metatag_export_default() {
         'value' => '[node:attached-video-secure-image]',
       ),
       'og:video' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-url}]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-url}:]',
       ),
       'og:video:secure_url' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-secure-url}]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-secure-url}:]',
       ),
       'og:video:width' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-width}]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-width}:]',
       ),
       'og:video:height' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-height}]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-height}:]',
       ),
       'og:video:type' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:application/x-shockwave-flash]',
+        'value' => '[f:bool:{node:field_sharing_inline}:application/x-shockwave-flash:]',
       ),
       'twitter:card' => array(
         'value' => 'player',
@@ -93,16 +79,16 @@ function tpf_content_video_metatag_export_default() {
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
       ),
       'twitter:player' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-src}]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-src}:]',
       ),
       'twitter:player:width' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-width}]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-width}:]',
       ),
       'twitter:player:height' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-height}]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-height}:]',
       ),
       'twitter:player:stream' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-file-secure-url}]',
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-file-secure-url}:]',
       ),
       'twitter:player:stream:content_type' => array(
         'value' => 'video/mp4',

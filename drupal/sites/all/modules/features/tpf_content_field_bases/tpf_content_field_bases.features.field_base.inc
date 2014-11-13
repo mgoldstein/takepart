@@ -4595,6 +4595,31 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_newsletter_feed_exclude'
+  $field_bases['field_newsletter_feed_exclude'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_newsletter_feed_exclude',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        1 => 'Exclude from Newsletters',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_integer',
+  );
+
   // Exported field_base: 'field_organizaiton_link'
   $field_bases['field_organizaiton_link'] = array(
     'active' => 1,
@@ -5825,14 +5850,26 @@ function tpf_content_field_bases_field_default_field_bases() {
     'module' => 'node_reference',
     'settings' => array(
       'referenceable_types' => array(
-        'action' => 'action',
-        'article' => 0,
-        'audio' => 0,
+        'action' => 0,
         'blog_front' => 0,
+        'campaign' => 0,
+        'campaign_card_ad' => 0,
+        'campaign_card_branding' => 0,
+        'campaign_card_empty' => 0,
+        'campaign_card_iframe' => 0,
+        'campaign_card_media' => 0,
+        'campaign_card_multi_column' => 0,
+        'campaign_card_news' => 0,
+        'campaign_card_social' => 0,
+        'campaign_card_tap_widget' => 0,
+        'campaign_card_text' => 0,
+        'campaign_card_twitter' => 0,
+        'campaign_page' => 0,
+        'campaign_tray' => 0,
         'feature_article' => 'feature_article',
         'feed' => 0,
         'feed_item' => 0,
-        'mos_action' => 0,
+        'flashcard' => 0,
         'openpublish_article' => 'openpublish_article',
         'openpublish_blog_post' => 0,
         'openpublish_photo' => 0,
@@ -5843,14 +5880,11 @@ function tpf_content_field_bases_field_default_field_bases() {
         'section_front_wide' => 0,
         'takepart_campaign' => 0,
         'takepart_group' => 0,
-        'takepart_list' => 0,
         'takepart_page' => 0,
-        'takepart_quick_study' => 0,
-        'takepart_slide' => 0,
         'topic_front' => 0,
         'venue' => 0,
         'video' => 'video',
-        'webform' => 0,
+        'video_playlist' => 0,
       ),
       'view' => array(
         'args' => array(),
