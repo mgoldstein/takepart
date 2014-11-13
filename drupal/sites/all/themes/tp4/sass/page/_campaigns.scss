@@ -736,8 +736,11 @@ body.campaign-display{
                         left: 10px;
                         &:after{
                             font-family: "takepart";
-                            content: '\e601';
+                            content: '\e600';
                             font-size: 35px;
+                        }
+                        &:hover {
+                            color: #018b73;
                         }
                     }
                     &.right-arrow {
@@ -745,8 +748,11 @@ body.campaign-display{
                         right: 10px;
                         &:after{
                             font-family: "takepart";
-                            content: '\e600';
+                            content: '\e601';
                             font-size: 35px;
+                        }
+                        &:hover {
+                            color: #018b73;
                         }
                     }
                 }
@@ -760,12 +766,18 @@ body.campaign-display{
         &.on-first-slide .left-arrow,
         &.on-first-slide .arrow-left{
             cursor: default;
-            color: #898b8a;
+            color: #898b8a !important;
+            &:hover {
+                color: #898b8a !important;
+            }
         }
         &.on-last-slide .right-arrow,
         &.on-last-slide .arrow-right{
             cursor: default;
-            color: #898b8a;
+            color: #898b8a !important;
+            &:hover {
+                color: #898b8a !important;    
+            }
         }
     }
 
