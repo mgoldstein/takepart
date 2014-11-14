@@ -14777,4 +14777,5 @@ h3.video-title {
 /* line 288, ../sass/modules/_video_playlist.scss */
 .inline-content-playlist {
   max-width: 500px;
+  width: 100%;
 }
