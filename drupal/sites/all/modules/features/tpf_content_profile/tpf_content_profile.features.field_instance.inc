@@ -173,6 +173,7 @@ function tpf_content_profile_field_default_field_instances() {
     'label' => 'Author_links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'rel' => '',
@@ -183,6 +184,7 @@ function tpf_content_profile_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -270,6 +272,7 @@ function tpf_content_profile_field_default_field_instances() {
     'label' => 'Follow Me on Google Plus',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -283,6 +286,7 @@ function tpf_content_profile_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 'optional',
@@ -370,6 +374,7 @@ function tpf_content_profile_field_default_field_instances() {
     'label' => 'Follow Me on Twitter',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -383,6 +388,7 @@ function tpf_content_profile_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 'optional',

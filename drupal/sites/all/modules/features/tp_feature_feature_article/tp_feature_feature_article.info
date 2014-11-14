@@ -76,3 +76,4 @@ features[variable][] = node_submitted_feature_article
 features[variable][] = pathauto_node_feature_article_pattern
 features[variable][] = xmlsitemap_settings_node_feature_article
 features_exclude[field_base][field_syndication] = field_syndication
+mtime = 1415992950
