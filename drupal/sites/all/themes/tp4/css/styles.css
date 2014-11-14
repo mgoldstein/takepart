@@ -10060,7 +10060,7 @@ body.campaign-display .swipe .slider-pagination a:hover, body.campaign-display .
     font-size: 35px;
   }
   /* line 742, ../sass/page/_campaigns.scss */
-  body.campaign-display .swipe .slider-pagination .mobile-arrow.left-arrow:hover {
+  body.campaign-display .swipe .slider-pagination .mobile-arrow.left-arrow.hover-class {
     color: #018b73;
   }
   /* line 746, ../sass/page/_campaigns.scss */
@@ -10075,7 +10075,7 @@ body.campaign-display .swipe .slider-pagination a:hover, body.campaign-display .
     font-size: 35px;
   }
   /* line 754, ../sass/page/_campaigns.scss */
-  body.campaign-display .swipe .slider-pagination .mobile-arrow.right-arrow:hover {
+  body.campaign-display .swipe .slider-pagination .mobile-arrow.right-arrow.hover-class {
     color: #018b73;
   }
 }

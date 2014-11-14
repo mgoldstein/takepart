@@ -739,7 +739,7 @@ body.campaign-display{
                             content: '\e600';
                             font-size: 35px;
                         }
-                        &:hover {
+                        &.hover-class {
                             color: #018b73;
                         }
                     }
@@ -751,7 +751,7 @@ body.campaign-display{
                             content: '\e601';
                             font-size: 35px;
                         }
-                        &:hover {
+                        &.hover-class {
                             color: #018b73;
                         }
                     }
