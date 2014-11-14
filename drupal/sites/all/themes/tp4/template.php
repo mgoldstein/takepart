@@ -50,6 +50,9 @@ function tp4_preprocess_html(&$variables, $hook) {
   $variables['tp_digital_data'] =  isset($variables['page']['tp_digital_data'])
     ? $variables['page']['tp_digital_data'] : NULL;
 
+  $variables['dtm_script_src'] = variable_get('dtm_script_src');
+
+
   // If on an individual node page, add the node type to body classes.
   if ($node = menu_get_object()) {
 	  $card_types = unserialize(CARDTYPES);
@@ -73,12 +76,6 @@ function tp4_preprocess_html(&$variables, $hook) {
 
     $node = menu_get_object();
 		$campaign_types = unserialize(CARDTYPES);
-		if(!empty($campaign_types)){
-	    $campaign_types[] = 'campaign_page';
-	    if (isset($node) && in_array($node->type, $campaign_types)) {
-        $variables['dtm_script_src'] = variable_get('dtm_script_src');
-	    }
-		}
 
     if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
         unset($variables['page']['page_bottom']['omniture']);
