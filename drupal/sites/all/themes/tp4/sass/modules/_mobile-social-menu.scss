@@ -1,10 +1,17 @@
 .mobile-social-wrapper{
   position: fixed;
-  bottom: 0;
+  bottom: -43px;
   left: 0;
   right: 0;
   height: 43px;
   z-index: 9;
+  transition: .25s;
+  @include breakpoint($breakpoint-tablet){
+    display: none;
+  }
+}
+.mobile-social-wrapper.nav-show{
+  bottom: 0;
 }
 .mobile-social-wrapper ul.parent-social-menu{
   width: 100%;

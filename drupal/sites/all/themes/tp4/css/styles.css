@@ -14729,20 +14729,32 @@ h3.video-title {
 /* line 1, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper {
   position: fixed;
-  bottom: 0;
+  bottom: -43px;
   left: 0;
   right: 0;
   height: 43px;
   z-index: 9;
+  transition: .25s;
+}
+@media all and (min-width: 768px) {
+  /* line 1, ../sass/modules/_mobile-social-menu.scss */
+  .mobile-social-wrapper {
+    display: none;
+  }
 }
 
-/* line 9, ../sass/modules/_mobile-social-menu.scss */
+/* line 13, ../sass/modules/_mobile-social-menu.scss */
+.mobile-social-wrapper.nav-show {
+  bottom: 0;
+}
+
+/* line 16, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper ul.parent-social-menu {
   width: 100%;
   position: relative;
 }
 
-/* line 13, ../sass/modules/_mobile-social-menu.scss */
+/* line 20, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper ul.parent-social-menu > li {
   float: left;
   width: 25%;
@@ -14756,27 +14768,27 @@ h3.video-title {
   cursor: pointer;
 }
 
-/* line 28, ../sass/modules/_mobile-social-menu.scss */
+/* line 35, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper ul.parent-social-menu li.share {
   background: #01bf9e;
 }
 
-/* line 31, ../sass/modules/_mobile-social-menu.scss */
+/* line 38, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper ul.parent-social-menu li.subscribe {
   background: #000;
 }
 
-/* line 34, ../sass/modules/_mobile-social-menu.scss */
+/* line 41, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper ul.parent-social-menu li.takeaction {
   background: #db713b;
 }
 
-/* line 37, ../sass/modules/_mobile-social-menu.scss */
+/* line 44, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper ul.parent-social-menu li.facebook {
   background: #3c5a98;
 }
 
-/* line 41, ../sass/modules/_mobile-social-menu.scss */
+/* line 48, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper .share-submenu-wrapper {
   position: absolute;
   right: -100%;
@@ -14788,20 +14800,20 @@ h3.video-title {
   transition: 1s;
 }
 
-/* line 51, ../sass/modules/_mobile-social-menu.scss */
+/* line 58, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper li.share.active .share-submenu-wrapper {
   width: 75%;
   right: 0;
 }
 
-/* line 55, ../sass/modules/_mobile-social-menu.scss */
+/* line 62, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper .tp-social {
   white-space: nowrap;
   list-style-type: none;
   overflow: auto;
 }
 
-/* line 60, ../sass/modules/_mobile-social-menu.scss */
+/* line 67, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper .tp-social a.tp-social-link {
   display: inline-block;
   width: 80px;
@@ -14813,11 +14825,11 @@ h3.video-title {
   color: white;
   background: none;
 }
-/* line 70, ../sass/modules/_mobile-social-menu.scss */
+/* line 77, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper .tp-social a.tp-social-link:hover {
   text-decoration: none;
 }
-/* line 73, ../sass/modules/_mobile-social-menu.scss */
+/* line 80, ../sass/modules/_mobile-social-menu.scss */
 .mobile-social-wrapper .tp-social a.tp-social-link:before {
   text-indent: 0;
   display: block;
@@ -14826,62 +14838,62 @@ h3.video-title {
 /**
  * The below should be separated out into it's own tpsocial helper
  */
-/* line 83, ../sass/modules/_mobile-social-menu.scss */
+/* line 90, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-pinterest:before {
   background-color: #ca2026;
 }
 
-/* line 87, ../sass/modules/_mobile-social-menu.scss */
+/* line 94, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-facebook:before {
   background-color: #3d5b96;
 }
 
-/* line 91, ../sass/modules/_mobile-social-menu.scss */
+/* line 98, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-twitter:before {
   background-color: #34aadf;
 }
 
-/* line 95, ../sass/modules/_mobile-social-menu.scss */
+/* line 102, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-googleplus:before {
   background-color: #cc181e;
 }
 
-/* line 99, ../sass/modules/_mobile-social-menu.scss */
+/* line 106, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-tumblr:before {
   background-color: #385774;
 }
 
-/* line 103, ../sass/modules/_mobile-social-menu.scss */
+/* line 110, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-email:before {
   background-color: #fc5d45;
 }
 
-/* line 107, ../sass/modules/_mobile-social-menu.scss */
+/* line 114, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-mailto:before {
   background-color: #3f729b;
 }
 
-/* line 111, ../sass/modules/_mobile-social-menu.scss */
+/* line 118, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-linkedin:before {
   background-color: #0977b4;
 }
 
-/* line 115, ../sass/modules/_mobile-social-menu.scss */
+/* line 122, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-vine:before {
   background-color: #00b386;
 }
 
-/* line 119, ../sass/modules/_mobile-social-menu.scss */
+/* line 126, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-instagram:before {
   background-color: #3f729b;
 }
 
-/* line 123, ../sass/modules/_mobile-social-menu.scss */
+/* line 130, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-youtube:before {
   background-color: #cc181e;
 }
 
-/* line 127, ../sass/modules/_mobile-social-menu.scss */
+/* line 134, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-reddit:before {
   background-color: #00b386;
 }
