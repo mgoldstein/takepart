@@ -8,7 +8,9 @@
         </div>
       </div>
     </li>
-    <li class="subscribe"><span>SUBSCRIBE</span></li>
+    <li class="subscribe">
+      <?php print l(t('SUBSCRIBE'), 'http://go.takepart.com/clients/takepart/survey.htm'); ?>
+    </li>
     <li class="takeaction">
       <span>TAKE ACTION</span>
       <p class="takepart-take-action"></p>
