@@ -10,15 +10,20 @@ class ddSiteFrontPage extends ddDefaultPage {
 
   public function build($page) {
 
+    $pageID = 'Front Page';
     $environment = ENVIRONMENT;
 
-    $data = parent::build($page);
+    $data = array(
+      'pageInstanceID' => "{$pageID} - {$environment}",
+      'page' => array(
+        'pageInfo' => array(
+          'pageID' => $pageID,
+          'pageName' => '',
+        ),
+      ),
+    );
 
-    $pageID = '<front>';
-
-    $data['pageInstanceID'] = "{$environment}: {$pageID}";
-    $data['page']['pageInfo']['pageID'] = $pageID;
-    $data['page']['pageInfo']['title'] = "TakePart Home";
+	  $data += parent::build($page);
 
     return $data;
   }

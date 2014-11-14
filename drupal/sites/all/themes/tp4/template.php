@@ -50,6 +50,9 @@ function tp4_preprocess_html(&$variables, $hook) {
   $variables['tp_digital_data'] =  isset($variables['page']['tp_digital_data'])
     ? $variables['page']['tp_digital_data'] : NULL;
 
+  $variables['dtm_script_src'] = variable_get('dtm_script_src');
+
+
   // If on an individual node page, add the node type to body classes.
   if ($node = menu_get_object()) {
 	  $card_types = unserialize(CARDTYPES);
@@ -73,12 +76,6 @@ function tp4_preprocess_html(&$variables, $hook) {
 
     $node = menu_get_object();
 		$campaign_types = unserialize(CARDTYPES);
-		if(!empty($campaign_types)){
-	    $campaign_types[] = 'campaign_page';
-	    if (isset($node) && in_array($node->type, $campaign_types)) {
-        $variables['dtm_script_src'] = variable_get('dtm_script_src');
-	    }
-		}
 
     if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
         unset($variables['page']['page_bottom']['omniture']);
@@ -293,14 +290,24 @@ function tp4_css_alter(&$css) {
  *   An array of variables to pass to the theme template.
  */
 function tp4_preprocess_block(&$variables) {
-    $variables['title_attributes_array']['class'][] = 'section-header';
-    // add slim nav class to slim nav block
-    if ($variables['block']->delta == "tp4_fat_header") {
-        $variables['classes_array'][] = "tp4-fat-header";
-    }
-    if ($variables['block']->delta == "tp4_slim_nav") {
-        $variables['classes_array'][] = "slim-nav";
-    }
+	
+	$variables['title_attributes_array']['class'][] = 'section-header';
+
+	// add slim nav class to slim nav block
+	if ($variables['block']->delta == "tp4_fat_header") {
+			$variables['classes_array'][] = "tp4-fat-header";
+	}
+
+	if ($variables['block']->delta == "tp4_slim_nav") {
+			$variables['classes_array'][] = "slim-nav";
+	}
+
+	//ensures that the bean block has a wrapper at the block level
+	if ($variables['block']->module == 'bean') {
+		$wrapper_label = $variables['elements']['bean'][$variables['block']->delta]['#bundle'];
+		$wrapper_label = str_replace('_', '-', $wrapper_label);
+		$variables['classes_array'][] = $wrapper_label . '-wrapper';
+	}
 }
 
 /**
@@ -1601,8 +1608,24 @@ function tp4_preprocess_node__flashcard(&$variables) {
  * Utility function to provide "On Our Radar" block to node templates
  */
 function _tp4_on_our_radar_block(&$variables) {
-    $on_our_radar_block = block_load('bean', 'on-our-radar-block');
-    $variables['on_our_radar'] = _block_get_renderable_array(_block_render_blocks(array($on_our_radar_block)));
+    
+    $variables['on_our_radar'] = theme('html_tag', array(
+			'element' => array(
+				'#tag' => 'div',
+				'#value' => '',
+				'#attributes' => array(
+					'id' => 'pubexchange_related_links',
+		))));
+		
+	drupal_add_js('<script>(function(d, s, id)
+								{ var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
+								(document, "script", "pubexchange-jssdk"));</script>',
+		array(
+			'type' => 'inline',
+			'scope' => 'footer',
+			'weight' => 10
+		)
+	);
 }
 
 /**

@@ -326,7 +326,7 @@ function _wordlet_configuration() {
     'teach_campaign' => array(
       'title' => 'TEACH Campaign',
     ),
-
+/*
     // teach Home
     'teach_home' => array(
       'title' => 'TEACH - Home',
@@ -431,7 +431,7 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'teach_campaign'),
     ),
-
+*/
     // teach Share Your Story
     'teach_share_your_story' => array(
       'title' => 'TEACH - Share Your Story',
@@ -449,7 +449,7 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'teach_campaign'),
     ),
-
+/*
     // teach Teach Fund More Information
     'teach_fund_about' => array(
       'title' => 'TEACH - About the Teach Fund',
@@ -484,7 +484,7 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'teach_campaign'),
     ),
-
+*/
     // teach Teacher Stories Page
     'teach_teacher_stories' => array(
       'title' => 'TEACH - Teacher Stories',

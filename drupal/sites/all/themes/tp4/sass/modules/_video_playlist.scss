@@ -285,6 +285,19 @@ h3.video-title{
   height: auto;
   overflow: hidden;
 }
-.inline-content-playlist{
-  max-width: 500px;
+
+body {
+  #article-content {
+    .inline-content-playlist {
+      max-width: 500px;
+      width: 100%;
+      
+      &.align-full {
+        max-width: none;
+        @include breakpoint($breakpoint-desktop) {
+          width: 912px !important;
+        }
+      }
+    }
+  }
 }

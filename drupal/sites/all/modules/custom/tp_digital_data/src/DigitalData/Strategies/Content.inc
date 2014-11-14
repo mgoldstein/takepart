@@ -41,57 +41,97 @@ class ddContent extends ddDefaultPage {
     }
     return $authors;
   }
+  protected function categoryForContentType($type) {
+    $categories = array(
+      'openpublish_article' => 'Article',
+      'campaign_page' => 'Campaign',
+      'page' => 'Page',
+    );
+    return array_key_exists($type, $categories) ? $categories[$type] : $type;
+  }
 
   public function build($page) {
 
-    $environment = ENVIRONMENT;
-
-	  $data = parent::build($page);
-
+	  $data = array();
     $node = menu_get_object();
 
     $pageID = "node/{$node->nid}";
 
-    // Page
-    $data['pageInstanceID'] = "{$environment}: {$pageID}";
-    $data['page']['pageInfo']['pageID'] = $pageID;
-    $data['page']['pageInfo']['title'] = $node->title;
-    $data['page']['pageInfo']['template'] = $node->type;
 
-	  // Authors
-    $authors = $this->authorList($node, 'field_author');
-    if (!empty($authors)) {
-      $data['page']['pageInfo']['authors'] = $authors;
-    }
+	  //authors
+	  $ids = array();
+	  if($authors = field_get_items('node', $node, 'field_author')){
+		  foreach($authors as $id){
+			  $ids[] = $id['nid'];
+		  }
 
-    // Published date
-    $publish_date = date('Y-m-d', $node->published_at);
-    if (!is_null($publish_date)) {
-      $data['page']['pageInfo']['issueDate'] = $publish_date;
-    }
+		  /* page: pageInfo: authors */
+		  $author_entities = entity_load('node', $ids);
+		  $author_names = array();
+		  foreach($author_entities as $author){
+			  $author_names[] = $author->title;
+		  }
+		  $author_names = implode(', ', $author_names);
+		  $data['page']['pageInfo']['authors'] = $author_names;
 
-    // Categorization
-    $data['page']['category'] = array(
-      'primaryCategory' => $this->contentTypeName($node->type),
-    );
+		  /* page: pageInfo: author */
+		  $author = reset($author_entities);
+		  $author = $author->title;
+		  $data['page']['pageInfo']['author'] = $author;
+	  }
 
-	  // Topics
-    $topics = $this->termList($node, 'field_topic');
-    if (!empty($topics)) {
-      $data['page']['category']['topics'] = $topics;
-    }
+	  /*page: pageInfo: issueDate */
+	  $publish_date = $node->published_at;
+	  $publish_date = date('Y/m/d', $publish_date);
+	  $data['page']['pageInfo']['issueDate'] = $publish_date;
 
-	  // Series
-    $series = $this->termList($node, 'field_series');
-    if (!empty($series)) {
-      $data['page']['category']['series'] = $series;
-    }
+		/* Category Section */
 
-	  // Free Tags
-    $free_tags = $this->termList($node, 'field_free_tag');
-    if (!empty($free_tags)) {
-      $data['page']['category']['freeTags'] = $free_tags;
-    }
+	  //Field Topic
+	  $topic_instance = field_info_instance('node', 'field_topic', $node->type);
+	  if($topic_instance != NULL){
+		  $topics = field_get_items('node', $node, 'field_topic');
+		  $primary_topic = $topics[0]['taxonomy_term']->name;
+		  $topic_names = array();
+		  foreach($topics as $key => $topic){
+				$topic_names[] = $topic['taxonomy_term']->name;
+		  }
+		  $topic_names = implode(', ', $topic_names);
+		  $data['category']['primaryTopic'] = $primary_topic;
+		  $data['category']['topics'] = $topic_names;
+	  }
+
+	  //Field Series
+	  $series_instance = field_info_instance('node', 'field_series', $node->type);
+	  if($series_instance != NULL){
+		  $seriess = field_get_items('node', $node, 'field_series');
+		  $series_names = array();
+		  foreach($seriess as $key => $series){
+			  $series_names[] = $series['taxonomy_term']->name;
+		  }
+		  $series_names = implode(', ', $series_names);
+		  $data['category']['series'] = $series_names;
+	  }
+
+	  //Field Free Tags
+	  $free_tags_instance = field_info_instance('node', 'field_free_tag', $node->type);
+	  if($free_tags_instance != NULL){
+		  $free_tags = field_get_items('node', $node, 'field_free_tag');
+		  $free_tag_names = array();
+		  foreach($free_tags as $key => $free_tag){
+			  $free_tag_names[] = $free_tag['taxonomy_term']->name;
+		  }
+		  $free_tag_names = implode(', ', $free_tag_names);
+		  $data['category']['series'] = $free_tag_names;
+	  }
+
+	  $data['page']['pageInfo']['pageId'] = $pageID;
+	  $data['page']['pageInfo']['pageId'] = $pageID;
+	  $data['page']['pageInfo']['pageName'] = $node->title;
+	  $data['page']['pageInfo']['template'] = $node->type;
+	  $data['page']['category']['primaryCategory'] = $this->categoryForContentType($node->type);
+	  
+	  $data += parent::build($page);
 
     return $data;
   }

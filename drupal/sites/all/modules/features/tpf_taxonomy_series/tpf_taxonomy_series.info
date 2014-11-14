@@ -22,3 +22,4 @@ features[field_instance][] = taxonomy_term-series-field_series_context
 features[field_instance][] = taxonomy_term-series-field_series_graphic_header
 features[field_instance][] = taxonomy_term-series-field_series_graphic_header_link
 features[taxonomy][] = series
+mtime = 1410473094

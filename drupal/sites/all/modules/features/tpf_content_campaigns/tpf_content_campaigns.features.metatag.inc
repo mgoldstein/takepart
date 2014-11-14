@@ -20,6 +20,9 @@ function tpf_content_campaigns_metatag_export_default() {
       'description' => array(
         'value' => '[node:field_article_subhead]',
       ),
+      'og:image' => array(
+        'value' => '[tp_og_image:thumbnail:{tp4_support_tokens:campaign_thumbnail}]',
+      ),
       'tp:node_id' => array(
         'value' => '[node:nid]',
       ),

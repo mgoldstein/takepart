@@ -143,6 +143,8 @@ function takepart3_preprocess_html(&$vars) {
   $vars['tp_digital_data'] =  isset($vars['page']['tp_digital_data'])
     ? $vars['page']['tp_digital_data'] : NULL;
 
+$variables['dtm_script_src'] = variable_get('dtm_script_src');
+
     $uri = drupal_get_path_alias($_GET['q']);
     $vars['is_multipage'] = FALSE;
     $vars['is_iframed'] = FALSE;

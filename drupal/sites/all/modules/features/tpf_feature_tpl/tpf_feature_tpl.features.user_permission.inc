@@ -19,9 +19,30 @@ function tpf_feature_tpl_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'create any tpl_media_block bean'.
+  $permissions['create any tpl_media_block bean'] = array(
+    'name' => 'create any tpl_media_block bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'bean',
+  );
+
   // Exported permission: 'delete any tpl_long bean'.
   $permissions['delete any tpl_long bean'] = array(
     'name' => 'delete any tpl_long bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'delete any tpl_media_block bean'.
+  $permissions['delete any tpl_media_block bean'] = array(
+    'name' => 'delete any tpl_media_block bean',
     'roles' => array(
       'administrator' => 'administrator',
       'contributor' => 'contributor',
@@ -43,6 +64,18 @@ function tpf_feature_tpl_user_default_permissions() {
     'module' => 'bean',
   );
 
+  // Exported permission: 'edit any tpl_media_block bean'.
+  $permissions['edit any tpl_media_block bean'] = array(
+    'name' => 'edit any tpl_media_block bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'bean',
+  );
+
   // Exported permission: 'view any tpl_long bean'.
   $permissions['view any tpl_long bean'] = array(
     'name' => 'view any tpl_long bean',
@@ -53,6 +86,17 @@ function tpf_feature_tpl_user_default_permissions() {
       'contributor' => 'contributor',
       'editor' => 'editor',
       'layout editor' => 'layout editor',
+    ),
+    'module' => 'bean',
+  );
+
+  // Exported permission: 'view any tpl_media_block bean'.
+  $permissions['view any tpl_media_block bean'] = array(
+    'name' => 'view any tpl_media_block bean',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'anonymous user' => 'anonymous user',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'bean',
   );

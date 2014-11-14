@@ -155,13 +155,16 @@ function pm_interstitial_context_plugins() {
  * Activates the interstitial data attribute reaction.
  */
 function pm_interstitial_preprocess_html(&$vars) {
-  // Fire the provider url reaction with the current activation state.
-  if ($plugin = context_get_plugin('reaction', 'pm_interstitial_referer')) {
-    $cmpid = isset($_GET['cmpid']) ? $_GET['cmpid'] : '';
-    $plugin->execute($vars, $cmpid);
-  }
+  // global $user;
+  // // Don't bother signed in users.
+  // if ($user->uid === 0) {
+  //   // Fire the provider url reaction with the current activation state.
+  //   if ($plugin = context_get_plugin('reaction', 'pm_interstitial_referer')) {
+  //     $cmpid = isset($_GET['cmpid']) ? $_GET['cmpid'] : '';
+  //     $plugin->execute($vars, $cmpid);
+  //   }
+  // }
 }
-
 
 /**
  * Implements hook_block_info().
