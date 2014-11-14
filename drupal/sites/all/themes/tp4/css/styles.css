@@ -14782,5 +14782,10 @@ body #article-content .inline-content-playlist {
 /* line 295, ../sass/modules/_video_playlist.scss */
 body #article-content .inline-content-playlist.align-full {
   max-width: none;
-  width: 912px !important;
+}
+@media all and (min-width: 980px) {
+  /* line 295, ../sass/modules/_video_playlist.scss */
+  body #article-content .inline-content-playlist.align-full {
+    width: 912px !important;
+  }
 }
