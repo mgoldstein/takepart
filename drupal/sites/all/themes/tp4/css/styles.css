@@ -14774,8 +14774,13 @@ h3.video-title {
   overflow: hidden;
 }
 
-/* line 288, ../sass/modules/_video_playlist.scss */
-.inline-content-playlist {
+/* line 291, ../sass/modules/_video_playlist.scss */
+body #article-content .inline-content-playlist {
   max-width: 500px;
   width: 100%;
+}
+/* line 295, ../sass/modules/_video_playlist.scss */
+body #article-content .inline-content-playlist.align-full {
+  max-width: none;
+  width: 912px !important;
 }
