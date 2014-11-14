@@ -294,7 +294,9 @@ body {
       
       &.align-full {
         max-width: none;
-        width: 912px !important;
+        @include breakpoint($breakpoint-desktop) {
+          width: 912px !important;
+        }
       }
     }
   }
