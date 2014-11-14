@@ -54,15 +54,4 @@
     print render($content['body']);
     ?>
 
-    <aside id="article-social-mobile-bottom" class="social">
-        <div class="inner">
-            <div id="article-tab-mobile-bottom">
-                <h3 class="tp-social-headline take-action-headline">Take Action</h3>
-                <p class="takepart-take-action"></p>
-            </div>
-            <h3 class="tp-social-headline share-headline">Share</h3>
-            <div class="tp-social" id="article-share-mobile-bottom"></div>
-        </div>
-    </aside><!-- / #article-social-mobile-bottom -->
-
 </article>
