@@ -1,0 +1,147 @@
+.mobile-social-wrapper{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 43px;
+  z-index: 9;
+}
+.mobile-social-wrapper ul.parent-social-menu{
+  width: 100%;
+  position: relative;
+}
+.mobile-social-wrapper ul.parent-social-menu > li{
+  float: left;
+  width: 25%;
+  text-align: center;
+  color: white;
+  height: 43px;
+  display: block;
+  line-height: 43px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+.mobile-social-wrapper ul.parent-social-menu li.share{
+
+}
+.mobile-social-wrapper ul.parent-social-menu li.share{
+  background: #01bf9e;
+}
+.mobile-social-wrapper ul.parent-social-menu li.subscribe{
+  background: #000;
+}
+.mobile-social-wrapper ul.parent-social-menu li.takeaction{
+  background: #db713b;
+}
+.mobile-social-wrapper ul.parent-social-menu li.facebook{
+  background: #3c5a98;
+}
+
+.mobile-social-wrapper .share-submenu-wrapper{
+  position: absolute;
+  right: -100%;
+  bottom: -43px;
+  width: 100%;
+  display: block;
+  background: white;
+  height: 43px;
+  transition: 1s;
+}
+.mobile-social-wrapper li.share.active .share-submenu-wrapper{
+  width: 75%;
+  right: 0;
+}
+.mobile-social-wrapper .tp-social{
+  white-space: nowrap;
+  list-style-type: none;
+  overflow: auto;
+}
+.mobile-social-wrapper .tp-social a.tp-social-link{
+  display: inline-block;
+  width: 80px;
+  line-height: 43px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-indent: 1000px;
+  font-size: 20px;
+  color: white;
+  background: none;
+  &:hover{
+    text-decoration: none;
+  }
+  &:before{
+    text-indent: 0;
+    display: block;
+  }
+}
+
+
+/**
+ * The below should be separated out into it's own tpsocial helper
+ */
+.social .tp-social-pinterest:before{
+  @extend .tp-social-Pinterest:before;
+  background-color: #ca2026;
+}
+.social .tp-social-facebook:before{
+  @extend .tp-social-Facebook:before;
+  background-color: #3d5b96;
+}
+.social .tp-social-twitter:before{
+  @extend .tp-social-Twitter:before;
+  background-color: #34aadf;
+}
+.social .tp-social-googleplus:before{
+  @extend .tp-social-GooglePlus:before;
+  background-color: #cc181e;
+}
+.social .tp-social-tumblr:before{
+  @extend .tp-social-Tumblr:before;
+  background-color: #385774;
+}
+.social .tp-social-email:before{
+  @extend .tp-social-Email:before;
+  background-color: #fc5d45;
+}
+.social .tp-social-mailto:before{
+  @extend .tp-social-Mailto:before;
+  background-color: #3f729b; //change
+}
+.social .tp-social-linkedin:before{
+  @extend .tp-social-Linkedin:before;
+  background-color: #0977b4;
+}
+.social .tp-social-vine:before{
+  @extend .tp-social-Vine:before;
+  background-color: #00b386;
+}
+.social .tp-social-instagram:before{
+  @extend .tp-social-Instagram:before;
+  background-color: #3f729b;
+}
+.social .tp-social-youtube:before{
+  @extend .tp-social-Youtube:before;
+  background-color: #cc181e;
+}
+.social .tp-social-reddit:before{
+  @extend .tp-social-Instagram:before;  //this obviously needs to change
+  background-color: #00b386; //this also obviously needs to change
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

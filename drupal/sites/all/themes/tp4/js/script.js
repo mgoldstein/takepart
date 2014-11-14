@@ -185,13 +185,7 @@
       isVideoPlaylist = $body.is('.page-node.node-type-video-playlist'),
       isFlashcard = $body.is('.page-node.node-type-flashcard');
 
-      if (
-        isOpenpublishArticle
-        || isFeatureArticle
-        || isVideoArticle
-        || isVideoPlaylist
-        || isFlashcard
-      ) {
+
         // Setup Social Share Buttons
         var tp_social_config = {
           url_append: '?cmpid=organic-share-{{name}}',
@@ -318,7 +312,7 @@
           }
         });
         
-      }
+
     }
   };
 
