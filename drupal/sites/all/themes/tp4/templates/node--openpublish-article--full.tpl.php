@@ -40,13 +40,6 @@
                 <p id="article-comments-link" class="comments-link">
                     <a href="#article-comments"><?php print t('Comments'); ?><span class="count"></span></a>
                 </p>
-                <div id="article-social-more">
-                    <h4 class="trigger"><a href="#article-more-shares">More</a></h4>
-                    <div id="article-more-shares">
-                        <h5 class="header"><?php print t('Share with your friends'); ?></h5>
-                        <p></p>
-                    </div>
-                </div>
             </div>
             <div class="tap-influence-overlay"></div>
         </div>

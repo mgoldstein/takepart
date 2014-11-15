@@ -276,7 +276,6 @@ function tpf_content_section_front_wide_field_default_field_instances() {
         'search_api_sorts' => 0,
         'shortcut' => 0,
         'system' => 0,
-        'takepart_addthis' => 0,
         'takepart_custom' => 0,
         'twitter_pull' => 0,
         'user' => 0,

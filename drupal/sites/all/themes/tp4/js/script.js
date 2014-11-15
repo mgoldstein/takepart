@@ -270,49 +270,6 @@
         };
       
         if ( main_image == '' ) delete more_services.pinterest;
-        
-//        $('#article-more-shares p').tpsocial({
-//          services: more_services
-//        });
-//
-//        // set up behavior of "more" social links
-//        // this is untouched code from gerald burns and chunkpart
-//        var social_more_close = function() {
-//          $article_social_more.removeClass('focusin');
-//          $body.unbind('click', social_more_close);
-//        };
-//
-//        var $article_social_more = $('#article-social-more')
-//          .bind('focusin', function() {
-//            $article_social_more.addClass('focusin');
-//          })
-//          .bind('focusout', function() {
-//            $article_social_more.removeClass('focusin');
-//          })
-//          .bind('click', function(e) {
-//            if ( !$article_social_more.is('.focusin') ) {
-//              $article_social_more.addClass('focusin');
-//              setTimeout(function() {
-//                $body.bind('click', social_more_close);
-//              }, 100);
-//            }
-//            e.preventDefault();
-//          })
-//        ;
-//
-//        //additional code to handle the mousedown and touch for mobile
-//        $("body").bind('touchstart mousedown', function(event) {
-//          if (!$(event.target).hasClass('tplinkpos') && !$(event.target).hasClass('tp-social-link')) {
-//            //checks that class has focus
-//            if ($('#article-social-more').hasClass('focusin')) {
-//              //mimics the social more close
-//              $('#article-social-more').removeClass('focusin');
-//              $body.unbind('click', social_more_close);
-//            }
-//          }
-//        });
-        
-
     }
   };
 

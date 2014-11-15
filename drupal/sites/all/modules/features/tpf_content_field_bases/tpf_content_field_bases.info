@@ -24,7 +24,6 @@ dependencies[] = media
 dependencies[] = mediafield
 dependencies[] = node_reference
 dependencies[] = number
-dependencies[] = takepart_addthis
 dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = tpf_taxonomy_action_type
