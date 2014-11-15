@@ -94,18 +94,7 @@ function tpf_display_context_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'takepart_addthis-addthis_footer' => array(
-          'module' => 'takepart_addthis',
-          'delta' => 'addthis_footer',
-          'region' => 'content_bottom',
-          'weight' => 3,
-        ),
-      ),
-    ),
-  );
+  $context->reactions = '';
   $context->condition_mode = 0;
 
   // Translatables
@@ -140,12 +129,6 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'box-72e1be3c',
           'region' => 'sidebar_first',
           'weight' => 0,
-        ),
-        'takepart_addthis-addthis_full' => array(
-          'module' => 'takepart_addthis',
-          'delta' => 'addthis_full',
-          'region' => 'sidebar_first',
-          'weight' => 1,
         ),
       ),
     ),

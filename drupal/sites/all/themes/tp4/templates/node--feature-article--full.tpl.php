@@ -38,13 +38,6 @@
                 <p id="article-comments-link" class="comments-link">
                     <a href="#article-comments"><?php print t('Comments'); ?><span class="count"></span></a>
                 </p>
-                <div id="article-social-more">
-                    <h4 class="trigger"><a href="#article-more-shares">More</a></h4>
-                    <div id="article-more-shares">
-                        <h5 class="header"><?php print t('Share with your friends'); ?></h5>
-                        <p></p>
-                    </div>
-                </div>
             </div>
             <div class="tap-influence-overlay"></div>
         </div>
@@ -72,17 +65,6 @@
         print render($content);
         ?>
     </div>
-
-    <aside id="article-social-mobile-bottom" class="social">
-        <div class="inner">
-            <div id="article-tab-mobile-bottom">
-                <h3 class="tp-social-headline take-action-headline">Take Action</h3>
-                <p class="takepart-take-action"></p>
-            </div>
-            <h3 class="tp-social-headline share-headline">Share</h3>
-            <div class="tp-social" id="article-share-mobile-bottom"></div>
-        </div>
-    </aside><!-- / #article-social-mobile-bottom -->
 
     <?php if (isset($series_nav)) : ?>
         <nav id="series-navigation">
