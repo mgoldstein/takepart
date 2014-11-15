@@ -478,10 +478,6 @@
     }
   }
   .user-menu{
-    @include breakpoint($breakpoint-mobile){
-      // removed display:none;
-      background: green;
-    }
     @include breakpoint($breakpoint-desktop){
       display: block;
       float: right;
