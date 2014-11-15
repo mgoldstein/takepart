@@ -87,6 +87,16 @@
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout($.proxy(adjustCardHeightsAndPadding, this), 250);
       });
+      
+      //addresses issue with hover state
+      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('touchstart mouseover', function() {
+        $(this).addClass('hover-class'); 
+      });
+      
+      //addresses issue with hover state
+      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('touchend mouseout', function() {
+        $(this).removeClass('hover-class');
+      });
     }
   };
 
