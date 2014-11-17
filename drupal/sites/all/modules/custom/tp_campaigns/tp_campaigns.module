@@ -6,16 +6,16 @@
 /*
  * Load Include Files
  */
-	module_load_include('inc', 'tp_campaigns', 'tp_campaigns_field_formatters');
+  module_load_include('inc', 'tp_campaigns', 'tp_campaigns_field_formatters');
 
 /**
  * Implements hook_help().
  */
 function tp_campaigns_help($path, $arg) {
-	switch ($path) {
-		case 'admin/help#tp_campaigns':
-			return '<p>' . t('Module for the Campaign Redesign, April 2014') . '</p>';
-	}
+  switch ($path) {
+    case 'admin/help#tp_campaigns':
+      return '<p>' . t('Module for the Campaign Redesign, April 2014') . '</p>';
+  }
 }
 /**
  * Implements hook_menu().
@@ -74,13 +74,13 @@ function tp_campaigns_theme() {
         'tray_vars' => '',
       )
     ),
-	  'tp_tap_widget' => array(
-		  'template' => 'field-formatters/field-formatter--tap-widget',
-		  'variables' => array(
-			  'tap_id' => '',
-			  'widget_exposed' => '',
-		  )
-	  ),
+    'tp_tap_widget' => array(
+      'template' => 'field-formatters/field-formatter--tap-widget',
+      'variables' => array(
+        'tap_id' => '',
+        'widget_exposed' => '',
+      )
+    ),
     'tp_campaigns_hero' => array(
       'template' => 'campaign-hero',
       'variables' => array(
@@ -94,15 +94,15 @@ function tp_campaigns_theme() {
         'logo' => '',
       )
     ),
-		'tp_card_tap_widget' => array(
-			'template' => 'card-templates/tp-card--tap-widget',
-			'variables' => array(
-				'left' => '',
-				'right' => '',
-				'left_classes' => array(),
-				'right_classes' => array(),
-			)
-		),
+    'tp_card_tap_widget' => array(
+      'template' => 'card-templates/tp-card--tap-widget',
+      'variables' => array(
+        'left' => '',
+        'right' => '',
+        'left_classes' => array(),
+        'right_classes' => array(),
+      )
+    ),
   );
 }
 
@@ -407,23 +407,30 @@ function tp_campaigns_hero(){
         $logo_position = drupal_render(field_view_value('node', $campaign_node, 'field_campaign_logo_position', $position[0]));
         switch ($logo_position){
           case 'Center':
-            $logo_class = 'logo-center';
+            $logo_class = ' logo-center';
             break;
           case 'Left':
-            $logo_class = 'logo-left';
+            $logo_class = ' logo-left';
             break;
           case 'Right':
-            $logo_class = 'logo-right';
+            $logo_class = ' logo-right';
             break;
         }
-        $logo_image = '<div class="campaign-logo-div"><img src="'. $logo_image. '" class="campaign-logo '. $logo_class. '"></div>';
-      } else{
-        $logo_image = '<div class="campaign-logo-div"><img src="'. $logo_image. '" class="campaign-logo"></div>';
       }
+      
+      $logo_image = '<img src="'. $logo_image. '" class="campaign-logo '. $logo_class. '">';
+        
       if ($homepage_link = field_get_items('node', $campaign_node, 'field_campaign_hp')) {
-        $output .= l(' ', $homepage_link[0]['url'], array('attributes' => array('class' => array('big-link'))));
+        $logo_image = l($logo_image, $homepage_link[0]['url'], array('html' => TRUE, 'attributes' => array('class' => array('big-link'))));
       }
-      $output .= $logo_image;
+      
+      $output .= theme('html_tag', array(
+        'element' => array(
+          '#tag' => 'div',
+          '#value' => $logo_image,
+          '#attributes' => array(
+            'class' => 'campaign-logo-div',
+      ))));
 
       $logo = $output;
 
