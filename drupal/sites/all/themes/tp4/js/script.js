@@ -202,7 +202,7 @@
               via: 'TakePart'
             },
             {
-              name: 'email'
+              name: 'mailto'
             },
             {
               name: 'googleplus'

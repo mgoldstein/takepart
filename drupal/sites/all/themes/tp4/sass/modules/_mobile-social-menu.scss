@@ -126,11 +126,11 @@
 }
 .social .tp-social-email:before{
   @extend .tp-social-Email:before;
-  background-color: #fc5d45;
+  background-color: #000;
 }
 .social .tp-social-mailto:before{
   @extend .tp-social-Mailto:before;
-  background-color: #3f729b; //change
+  background-color: #000;
 }
 .social .tp-social-linkedin:before{
   @extend .tp-social-Linkedin:before;
@@ -152,20 +152,3 @@
   @extend .tp-social-Instagram:before;  //this obviously needs to change
   background-color: #00b386; //this also obviously needs to change
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
