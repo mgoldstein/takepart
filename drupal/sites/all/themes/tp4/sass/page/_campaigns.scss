@@ -244,6 +244,16 @@ body.campaign-display .card.node-campaign-card-media{
             @include zen-grid-item(10, 2);
         }
     }
+    
+    .playlist-wrapper-wrapper {
+        .bx-wrapper {
+            ul {
+                li {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
 }
 body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
     .center-column{

@@ -824,6 +824,7 @@ function tpf_content_campaigns_field_group_info() {
       3 => 'field_campaign_media_photo',
       4 => 'field_campaign_media_title',
       5 => 'field_campaign_media_video',
+      6 => 'field_media_video_playlist',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

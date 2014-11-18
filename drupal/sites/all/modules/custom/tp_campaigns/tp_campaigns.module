@@ -250,6 +250,13 @@ function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
       ':input[name=field_campaign_media_type\[und\]]' => array('value' => 1),
     ),
   );
+
+	//shows the video playlist field only if the type is video playlist
+  $form['field_media_video_playlist']['#states'] = array(
+    'visible' => array(
+      ':input[name=field_campaign_media_type\[und\]]' => array('value' => 2),
+    ),
+  );
   
   //Campaign News Card
   $form['field_campaign_single_news_ref']['#states'] = array(
