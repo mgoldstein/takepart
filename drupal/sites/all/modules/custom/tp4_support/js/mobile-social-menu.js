@@ -23,7 +23,7 @@
 
       setInterval(function() {
         if (didScroll && $(window).width() < 768) {
-          var delta = 5;
+          var delta = 30;
           hasScrolled(delta);
           didScroll = false;
         }
@@ -44,9 +44,22 @@
       $('.mobile-social-wrapper').removeClass('nav-hide').addClass('nav-show');
     } else {
       // Scroll Up
-        $('.mobile-social-wrapper').removeClass('nav-show').addClass('nav-hide');
+      $('.mobile-social-wrapper').removeClass('nav-show').addClass('nav-hide');
     }
 
+    /*Stick Slimnav */
+    var navbarHeight = $('.header-wrapper').outerHeight();
+    if (st > lastScrollTop && st > navbarHeight){
+      // Scroll Down
+      $('.header-wrapper').removeClass('nav-show').addClass('nav-hide');
+      $('#page-wrap').css('padding-top', '0');
+    } else {
+      // Scroll Up
+      if(st + $(window).height() < $(document).height()) {
+        $('.header-wrapper').removeClass('nav-hide').addClass('nav-show');
+        $('#page-wrap').css('padding-top', navbarHeight);
+      }
+    }
     lastScrollTop = st;
   }
 

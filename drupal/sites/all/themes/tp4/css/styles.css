@@ -14874,76 +14874,103 @@ body #article-content .inline-content-playlist.align-full {
   display: block;
 }
 
-/* line 97, ../sass/modules/_mobile-social-menu.scss */
+/* Styling for social sharing outside of social menu */
+/* line 98, ../sass/modules/_mobile-social-menu.scss */
 #article-social {
   display: none;
 }
 @media all and (min-width: 768px) {
-  /* line 97, ../sass/modules/_mobile-social-menu.scss */
+  /* line 98, ../sass/modules/_mobile-social-menu.scss */
   #article-social {
     display: block;
+  }
+}
+
+/* Styling for the slimnav */
+/* line 109, ../sass/modules/_mobile-social-menu.scss */
+.header-wrapper {
+  transition: 0.2s;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 99;
+  top: 0;
+}
+/* line 117, ../sass/modules/_mobile-social-menu.scss */
+.header-wrapper.nav-hide {
+  top: -53px;
+}
+/* line 120, ../sass/modules/_mobile-social-menu.scss */
+.header-wrapper.nav-show {
+  top: 0;
+}
+@media all and (min-width: 768px) {
+  /* line 109, ../sass/modules/_mobile-social-menu.scss */
+  .header-wrapper {
+    position: static;
   }
 }
 
 /**
  * The below should be separated out into it's own tpsocial helper
  */
-/* line 107, ../sass/modules/_mobile-social-menu.scss */
+/* line 132, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-pinterest:before {
   background-color: #ca2026;
 }
 
-/* line 111, ../sass/modules/_mobile-social-menu.scss */
+/* line 136, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-facebook:before {
   background-color: #3d5b96;
 }
 
-/* line 115, ../sass/modules/_mobile-social-menu.scss */
+/* line 140, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-twitter:before {
   background-color: #34aadf;
 }
 
-/* line 119, ../sass/modules/_mobile-social-menu.scss */
+/* line 144, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-googleplus:before {
   background-color: #cc181e;
 }
 
-/* line 123, ../sass/modules/_mobile-social-menu.scss */
+/* line 148, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-tumblr:before {
   background-color: #385774;
 }
 
-/* line 127, ../sass/modules/_mobile-social-menu.scss */
+/* line 152, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-email:before {
   background-color: #000;
 }
 
-/* line 131, ../sass/modules/_mobile-social-menu.scss */
+/* line 156, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-mailto:before {
   background-color: #000;
 }
 
-/* line 135, ../sass/modules/_mobile-social-menu.scss */
+/* line 160, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-linkedin:before {
   background-color: #0977b4;
 }
 
-/* line 139, ../sass/modules/_mobile-social-menu.scss */
+/* line 164, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-vine:before {
   background-color: #00b386;
 }
 
-/* line 143, ../sass/modules/_mobile-social-menu.scss */
+/* line 168, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-instagram:before {
   background-color: #3f729b;
 }
 
-/* line 147, ../sass/modules/_mobile-social-menu.scss */
+/* line 172, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-youtube:before {
   background-color: #cc181e;
 }
 
-/* line 151, ../sass/modules/_mobile-social-menu.scss */
+/* line 176, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-reddit:before {
   background-color: #00b386;
 }

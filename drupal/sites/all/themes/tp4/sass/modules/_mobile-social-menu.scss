@@ -94,12 +94,37 @@
   }
 }
 
+/* Styling for social sharing outside of social menu */
 #article-social{
   display: none;
   @include breakpoint($breakpoint-tablet){
     display: block;
   }
 }
+
+/* Styling for the slimnav */
+@include breakpoint($breakpoint-tablet){
+
+}
+.header-wrapper{
+  transition: 0.2s;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 99;
+  top: 0;
+  &.nav-hide{
+    top: -53px;
+  }
+  &.nav-show{
+    top: 0;
+  }
+  @include breakpoint($breakpoint-tablet){
+    position: static;
+  }
+}
+
 
 /**
  * The below should be separated out into it's own tpsocial helper
