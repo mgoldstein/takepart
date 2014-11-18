@@ -4,7 +4,7 @@
       <span>SHARE</span>
       <div class="share-submenu-wrapper">
         <div class="social">
-          <div class="tp-social"></div>
+          <div class="tp-social-mobile"></div>
         </div>
       </div>
     </li>

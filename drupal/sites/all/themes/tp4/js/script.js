@@ -183,7 +183,8 @@
       isFeatureArticle = $body.is('.page-node.node-type-feature-article'),
       isVideoArticle = $body.is('.page-node.node-type-video'),
       isVideoPlaylist = $body.is('.page-node.node-type-video-playlist'),
-      isFlashcard = $body.is('.page-node.node-type-flashcard');
+      isFlashcard = $body.is('.page-node.node-type-flashcard'),
+      isGallery = $body.is('.node-type-openpublish-photo-gallery');
 
 
         // Setup Social Share Buttons
@@ -201,75 +202,37 @@
               via: 'TakePart'
             },
             {
+              name: 'email'
+            },
+            {
               name: 'googleplus'
             },
-
             {
               name: 'reddit'
             },
-
             {
-              name: 'email'
-            },
-            
-            {
-              name: 'mailto'
+              name: 'tumblr'
             }
           ]
         };
 
-        // initialize tpsocial and make it sticky.
-        $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-          .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
-
-        // Set up secondary social share buttons
-        var main_image = '';
-        if (isOpenpublishArticle) {
+        /* If page is a gallery, article or featured article, add Pinterest */
+        if(isGallery || isFeatureArticle || isOpenpublishArticle){
           main_image = $('.field-name-field-article-main-image').find('img').attr('src');
-        } else if (isFeatureArticle) {
-          main_image = $('.field-name-field-article-main-image').find('img').attr('src');
+          tp_social_config.services.push({"name":"pinterest", "media": main_image});
         }
-        var more_services = {
-          reddit: {
-            name: 'reddit'
-          },
-          pinterest: {
-            name: 'pinterest',
-            media: main_image
-          },
-          tumblr_link: {
-            name: 'tumblr_link'
-          },
-          gmail: {
-            name: 'gmail'
-          },
-          hotmail: {
-            name: 'hotmail'
-          },
-          yahoomail: {
-            name: 'yahoomail'
-          },
-          aolmail: {
-            name: 'aolmail'
-          },
 
-          //{name: 'myspace'},
-          //{name: 'delicious'},
-          linkedin: {
-            name: 'linkedin'
-          },
-          //{name: 'myaol'},
-          //{name: 'live'},
-          digg: {
-            name: 'digg'
-          },
-          stumbleupon: {
-            name: 'stumbleupon'
-          }
-          //{name: 'hyves'}
-        };
-      
-        if ( main_image == '' ) delete more_services.pinterest;
+        // initialize tpsocial and make it sticky.
+//        $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
+//          .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
+
+        /*if screen size is less than 480 targer tp-social-mobile, else target tp-social.  Adjust CSS to display none otherwise */
+        if($(window).width() < 768){
+          $('.tp-social-mobile:not(.tp-social-skip)').tpsocial(tp_social_config);
+        }else{
+          $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
+            .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
+        }
     }
   };
 
@@ -324,7 +287,7 @@
         })
         .on('flashcard-tooltip', function(e, args) {
           try {
-            takepart.analytics.track('flashcard-tooltip', args);            
+            takepart.analytics.track('flashcard-tooltip', args);
           } catch (e) {}
         })
         .on('flashcard-click', function(e, args) {
