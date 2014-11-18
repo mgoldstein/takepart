@@ -480,6 +480,16 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   if($media_type == 'Video'){  //Media is a video
     $media = drupal_render(field_view_field('node', $variables['node'], 'field_campaign_media_video', 'embed'));
   }
+	elseif ($media_type == 'Video Playlist') {
+		//gets the video playlist value
+		$video_playlist = field_get_items('node', $variables['node'], 'field_media_video_playlist');
+		
+		//checks if its not empty
+		if (!empty($video_playlist[0]['target_id'])) {
+			//this function lives in tp_video_player.module.
+			$media = drupal_render(tp_video_player_list_from_nid($video_playlist[0]['target_id']));
+		}
+	}
   else{ //Media is a photo
 
     $image = field_get_items('node', $variables['node'], 'field_campaign_media_photo');

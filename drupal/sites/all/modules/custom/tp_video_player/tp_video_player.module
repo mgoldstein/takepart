@@ -359,3 +359,99 @@ function theme_tp_video_player($variables) {
   );
   return '<div' . drupal_attributes($attributes) . '></div>';
 }
+
+/**
+ *  @function:
+ *    This function is used to return a renderable array from a video_playlist content type.
+ *
+ *  @param:
+ *    nid = Node ID
+ *    node = Node Object. If passed in this will not do a node load.
+ *    view_mode = basic, detailed, hidelist, default. Default will pull in the node's setting. Fallback is basic.
+ *    langcode = NULL by default.
+ *
+ *  @logic:
+ *    This will load the default from the node. Otherwise the settings will pull from the global.
+ *    View mode is defaulted to the node if nothing is passed in. Fallback is basic for view_mode.
+ *
+ *  @example:
+ *    tp_video_player_list_from_nid(123, array(), 'detailed') => returns detailed view of playlist 123
+ *    tp_video_player_list_from_nid(123) => returns basic view of playlist 123
+ *
+ *  @return:
+ *    This will return a renderable array of the video playlist. Use drupal_render to render out the markup.
+ */
+function tp_video_player_list_from_nid($nid, $node = array(), $view_mode = 'default', $langcode = NULL) {
+  $output = '';
+  
+  //loads just the entity if 
+  if (empty($node)) {
+    $node = node_load($nid);
+  }
+  
+  //ensures that this is an object and the type is video playlist because of referencing
+  if (is_object($node) && $node->type == 'video_playlist') {
+    $items = field_get_items('node', $node, 'field_video_list');
+    $videos = tp_videos_playlist_ordered_videos($node, $items);
+    
+    if (!empty($videos)) {
+      /**
+       *  Loads the first level which is node level.
+       *  Followed by creating an empty one.
+       */
+      $player_configuration = tp_video_player_load_entity_configuration(
+        'node',
+        $nid,
+        'playlist_full_page'
+      );
+      
+      //if the playlist configuration is empty then load from the global default
+      if (is_null($player_configuration)) {
+        $player_configuration = tp_video_player_clone_default_configuration(
+          'playlist_inline_content'
+        );
+      }
+      
+      // The configuration can contain tokens, resolve them now.
+      $player_configuration = tp_video_player_resolve_entity_configuration(
+        'node',
+        $node,
+        $langcode,
+        $player_configuration
+      );
+      
+      //pulls the defualt view mode from the node if neccessary otherwise fallback to basic
+      if ($view_mode == 'default') {
+        $view_mode_value = field_get_items('node', $node, 'field_playlist_view_mode');
+        
+        //assign view mode based on node otherwise fallback to basic
+        if (!empty($view_mode_value[0]['value'])) {
+          $view_mode = $view_mode_value[0]['value'];
+        }
+        else {
+          $view_mode = 'basic';
+        }
+      }
+      
+      //builds the playlist
+      $playlist = tp_videos_build_playlist(
+        $player_configuration,
+        $videos,
+        $view_mode,
+        $langcode
+      );
+
+      //renderable array
+      $playlist_content = array(
+        '#theme' => 'tp_videos_wrapper',
+        '#title' => $node->title,
+        '#playlist' => $playlist,
+      );
+      
+      //returns the renderable array
+      $output = $playlist_content;
+    }
+  }
+  
+  return $output;
+}

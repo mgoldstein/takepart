@@ -244,6 +244,16 @@ body.campaign-display .card.node-campaign-card-media{
             @include zen-grid-item(10, 2);
         }
     }
+    
+    .playlist-wrapper-wrapper {
+        .bx-wrapper {
+            ul {
+                li {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
 }
 body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
     .center-column{
@@ -1417,6 +1427,10 @@ body.campaign-display{
                 @include breakpoint($breakpoint-tablet){
                     width: 100%;
                 }
+                
+                @include breakpoint($breakpoint-desktop) {
+                    float: none;
+                }
 
                 // // removed by matt 2014-06-18; can share same styling as rule below
                 // @media (min-width: 701px) {
@@ -1462,11 +1476,11 @@ body.campaign-display{
             }
         }
         .logo-center{
-            display: block;
-            margin: 0 auto;
+            display: inline;
             float: none;
         }
         .campaign-logo-div {
+            text-align: center;
             height: auto;
             overflow: hidden;
             margin-left: 5px;
@@ -1475,18 +1489,12 @@ body.campaign-display{
                 float: none;
                 box-sizing: border-box;
                 width: 100%;
-                padding-right: 175px;
-                padding-left: 175px;
                 margin-left: auto;
                 margin-right: auto;
             }
         }
         a.big-link{
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            display: inline;
             z-index: 0;
         }
         .isStuck{

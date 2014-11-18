@@ -252,6 +252,7 @@ function tpf_content_campaigns_field_default_field_bases() {
       'allowed_values' => array(
         0 => 'Photo',
         1 => 'Video',
+        2 => 'Video Playlist',
       ),
       'allowed_values_function' => '',
     ),
