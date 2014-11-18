@@ -81,10 +81,10 @@ function tp_videos_entity_view_alter(&$build, $type) {
  * Implements hook_entity_info_alter().
  */
 function tp_videos_entity_info_alter(&$entity_info) {
-	$entity_info['node']['view modes']['video_playlist_teaser'] = array(
-		'label' => t('Video Playlist Teaser'),
-		'custom settings' => TRUE,
-	);
+  $entity_info['node']['view modes']['video_playlist_teaser'] = array(
+    'label' => t('Video Playlist Teaser'),
+    'custom settings' => TRUE,
+  );
 }
 
 /**
@@ -92,9 +92,8 @@ function tp_videos_entity_info_alter(&$entity_info) {
  */
 function tp_videos_preprocess_node(&$variables) {
 
-	if ($variables['type'] == 'video_playlist') {
-
-		// Use the selected view mode for playlists on the node view.
+  if ($variables['type'] == 'video_playlist') {
+    // Use the selected view mode for playlists on the node view.
     $view_mode = 'basic';
     $items = field_get_items('node', $variables['node'], 'field_playlist_view_mode');
     if ($items !== FALSE && count($items) > 0) {
@@ -104,20 +103,26 @@ function tp_videos_preprocess_node(&$variables) {
       }
     }
 
-		$video_list = field_view_field('node', $variables['node'], 'field_video_list', array(
-			'type' => 'video_playlist',
-			'label' => 'hidden',
-			'settings' => array(
-				'playlist_view_mode' => $view_mode
-			)
-		));
+    $video_list = field_view_field('node', $variables['node'], 'field_video_list', array(
+      'type' => 'video_playlist',
+      'label' => 'hidden',
+      'settings' => array(
+        'playlist_view_mode' => $view_mode
+      )
+    ));
 
-		$variables['content']['field_video_list'] = $video_list;
-	}
+    //addressing only featured secondary. the field in the display is not visible as the conditional creates the playlist into the content.
+    $show = ($variables['view_mode'] == 'feature_secondary') ? FALSE : TRUE;
+    
+    if ($show) {
+      //@dev: noting that the original code is injecting the playlist into the content so it does not depend on the display
+      $variables['content']['field_video_list'] = $video_list;
+    }
+  }
 
-	if ($variables['view_mode'] == 'video_playlist_teaser' && $variables['type'] == 'video') {
+  if ($variables['view_mode'] == 'video_playlist_teaser' && $variables['type'] == 'video') {
 
-		$variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__video_playlist_teaser';
+    $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__video_playlist_teaser';
 
     $variables['thumbnail'] = '/' . drupal_get_path('theme', 'tp4') . '/images/ph_black.png';
     $items = field_get_items('node', $variables['node'], 'field_thumbnail');
@@ -138,55 +143,55 @@ function tp_videos_preprocess_node(&$variables) {
       $item = reset($items);
       $variables['promo_headline'] = $item['value'];
     }
-	}
+  }
 }
 
 /**
  * Implements hook_field_formatter_info()
  */
 function tp_videos_field_formatter_info(){
-	return array(
-		'video_playlist' => array(
-			'label' => t('Video Playlist'),
-			'field types' => array('node_reference'),
-			'settings'  => array(
-				'playlist_view_mode' => 'Basic',
-			),
-		),
-	);
+  return array(
+    'video_playlist' => array(
+      'label' => t('Video Playlist'),
+      'field types' => array('node_reference'),
+      'settings'  => array(
+        'playlist_view_mode' => 'Basic',
+      ),
+    ),
+  );
 }
 
 /**
  * Implements hook_field_formatter_settings_form().
  */
 function tp_videos_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
-	$display = $instance['display'][$view_mode];
-	$settings = $display['settings'];
-	$element = array();
-	$element['playlist_view_mode'] = array(
-		'#type'           => 'select',
-		'#title'          => t('Playlist View Mode'),
-		'#description'    => t('Select which view mode you would like to use'),
-		'#default_value'  => $settings['playlist_view_mode'],
-		'#options'        => array(
-			'basic'  => 'Basic',
-			'detailed' => 'Detailed',
-			'hidelist'  => 'HideList',
-		),
-	);
-	return $element;
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $element = array();
+  $element['playlist_view_mode'] = array(
+    '#type'           => 'select',
+    '#title'          => t('Playlist View Mode'),
+    '#description'    => t('Select which view mode you would like to use'),
+    '#default_value'  => $settings['playlist_view_mode'],
+    '#options'        => array(
+      'basic'  => 'Basic',
+      'detailed' => 'Detailed',
+      'hidelist'  => 'HideList',
+    ),
+  );
+  return $element;
 }
 
 /**
  * Implements hook_field_formatter_settings_summary().
  */
 function tp_videos_field_formatter_settings_summary($field, $instance, $view_mode) {
-	$display = $instance['display'][$view_mode];
-	$settings = $display['settings'];
-	$summary = t('Using a view mode of @view_mode ', array(
-		'@view_mode'     => $settings['playlist_view_mode'],
-	));
-	return $summary;
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $summary = t('Using a view mode of @view_mode ', array(
+    '@view_mode'     => $settings['playlist_view_mode'],
+  ));
+  return $summary;
 }
 
 /**
@@ -406,51 +411,51 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
  * Implements hook_theme()
  */
 function tp_videos_theme(){
-	return array(
-		'tp_videos_wrapper' => array(
-			'access' => array(),
-			'template' => 'templates/playlist-wrapper',
-			'variables' => array(
-				'title' => '',
+  return array(
+    'tp_videos_wrapper' => array(
+      'access' => array(),
+      'template' => 'templates/playlist-wrapper',
+      'variables' => array(
+        'title' => '',
         'playlist' => NULL,
-			),
-		),
-		'tp_videos_navigation' => array(
-			'access' => array(),
-			'template' => 'templates/playlist-navigation',
-			'variables' => array(
-				'video_displays' => array(),
-			),
-		),
-		'tp_videos_basic' => array(
-			'access' => array(),
-			'template' => 'templates/playlist-basic',
-			'variables' => array(
-				'videos' => array(),
-				'video_displays' => array(),
-				'navigation' => '',
+      ),
+    ),
+    'tp_videos_navigation' => array(
+      'access' => array(),
+      'template' => 'templates/playlist-navigation',
+      'variables' => array(
+        'video_displays' => array(),
+      ),
+    ),
+    'tp_videos_basic' => array(
+      'access' => array(),
+      'template' => 'templates/playlist-basic',
+      'variables' => array(
+        'videos' => array(),
+        'video_displays' => array(),
+        'navigation' => '',
         'playlist_player' => NULL,
-			),
-		),
-		'tp_videos_detailed' => array(
-			'access' => array(),
-			'template' => 'templates/playlist-detailed',
-			'variables' => array(
-				'videos' => array(),
-				'video_displays' => array(),
-				'navigation' => '',
+      ),
+    ),
+    'tp_videos_detailed' => array(
+      'access' => array(),
+      'template' => 'templates/playlist-detailed',
+      'variables' => array(
+        'videos' => array(),
+        'video_displays' => array(),
+        'navigation' => '',
         'playlist_player' => NULL,
-			),
-		),
-		'tp_videos_hidelist' => array(
-			'access' => array(),
-			'template' => 'templates/playlist-hidelist',
-			'variables' => array(
-				'videos' => array(),
+      ),
+    ),
+    'tp_videos_hidelist' => array(
+      'access' => array(),
+      'template' => 'templates/playlist-hidelist',
+      'variables' => array(
+        'videos' => array(),
         'playlist_player' => NULL,
-			),
-		),
-	);
+      ),
+    ),
+  );
 }
 
 /**
