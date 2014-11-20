@@ -7,6 +7,12 @@
 /*
  *Social
 */
+.tp_ad_takeover {
+  .header-wrapper {
+    padding-top: 0;
+  }
+}
+
 header {
   font-family: $primary-sans-font;
   color: $dark-gray;
@@ -18,6 +24,34 @@ header {
   }
   .leaderboard{
     display: none;
+		
+		&.ad-large-center {
+			margin-right: 0;
+			width: 100%;
+			
+			.contextual-links-wrapper {
+				z-index: 99999;
+			}
+			
+			.boxes-box {
+				.boxes-box-content {
+					text-align: center;
+					
+					div:nth-child(1) {
+						position: relative;
+						z-index: 1000;
+						width: 100% !important;
+						display: inline-block;
+					}
+				}
+			}
+			
+			@include breakpoint($breakpoint-desktop) {
+				width: 1020px;
+				margin-left: -20px;
+			}
+		}
+		
     @include breakpoint($breakpoint-tablet) {
       display: block;
     }
