@@ -98,11 +98,15 @@ function tpf_feature_newsletter_curation_views_default_views() {
   /* Display: Feed: Weekly Featured Video */
   $handler = $view->new_display('feed', 'Feed: Weekly Featured Video', 'feed_1');
   $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
   $handler->display->display_options['path'] = 'feed/newsletter/video.rss';
 
   /* Display: Feed: Weekly Photo Gallery */
   $handler = $view->new_display('feed', 'Feed: Weekly Photo Gallery', 'feed_2');
   $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
@@ -147,6 +151,8 @@ function tpf_feature_newsletter_curation_views_default_views() {
   $handler = $view->new_display('feed', 'Feed: Weekly Newsletter Stories', 'feed_3');
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';

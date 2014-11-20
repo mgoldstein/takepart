@@ -19,10 +19,9 @@ function tpf_feature_newsletter_curation_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 29,
+        'type' => 'hidden',
+        'weight' => 22,
       ),
       'embed' => array(
         'label' => 'above',
@@ -118,10 +117,9 @@ function tpf_feature_newsletter_curation_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 32,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'embed' => array(
         'label' => 'above',
@@ -223,10 +221,9 @@ function tpf_feature_newsletter_curation_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 26,
+        'type' => 'hidden',
+        'weight' => 7,
       ),
       'embed' => array(
         'label' => 'above',

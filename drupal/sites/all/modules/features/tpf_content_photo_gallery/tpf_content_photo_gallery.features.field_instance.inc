@@ -737,7 +737,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 28,
       ),
       'embed' => array(
         'label' => 'above',
@@ -856,7 +856,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 27,
       ),
       'embed' => array(
         'label' => 'above',
@@ -1292,7 +1292,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 23,
       ),
       'embed' => array(
         'label' => 'above',
@@ -1532,7 +1532,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 25,
       ),
       'embed' => array(
         'label' => 'hidden',
@@ -1732,7 +1732,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 26,
       ),
       'embed' => array(
         'label' => 'hidden',
@@ -1933,7 +1933,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 29,
       ),
       'embed' => array(
         'label' => 'above',
@@ -2646,7 +2646,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'embed' => array(
         'label' => 'above',
