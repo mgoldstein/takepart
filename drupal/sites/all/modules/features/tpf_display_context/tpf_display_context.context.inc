@@ -2139,6 +2139,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'left_drawer',
           'weight' => '-9',
         ),
+        'boxes-ga_mobile_320x50_relative' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50_relative',
+          'region' => 'preface',
+          'weight' => '-10',
+        ),
         'pm_interstitial-interstitials' => array(
           'module' => 'pm_interstitial',
           'delta' => 'interstitials',
