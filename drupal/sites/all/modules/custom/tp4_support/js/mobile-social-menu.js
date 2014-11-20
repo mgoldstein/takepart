@@ -15,6 +15,9 @@
         $(this).removeClass('active');
       });
 
+      var navbarHeight = $('.header-wrapper').outerHeight();
+      $('#page-wrap').css('padding-top', navbarHeight);
+
       // Show the mobile social nav bar when window scrolls down
       var didScroll;
       $(window).scroll(function(event){
@@ -57,7 +60,6 @@
       // Scroll Up
       if(st + $(window).height() < $(document).height()) {
         $('.header-wrapper').removeClass('nav-hide').addClass('nav-show');
-        $('#page-wrap').css('padding-top', navbarHeight);
       }
     }
     lastScrollTop = st;
