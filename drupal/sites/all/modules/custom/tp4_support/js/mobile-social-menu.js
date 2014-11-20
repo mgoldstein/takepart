@@ -23,7 +23,7 @@
 
       setInterval(function() {
         if (didScroll && $(window).width() < 768) {
-          var delta = 30;
+          var delta = 5;
           hasScrolled(delta);
           didScroll = false;
         }
