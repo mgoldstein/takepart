@@ -15,8 +15,10 @@
         $(this).removeClass('active');
       });
 
-      var navbarHeight = $('.header-wrapper').outerHeight();
-      $('#page-wrap').css('padding-top', navbarHeight);
+      if ($(window).width() < 768){
+        var navbarHeight = $('.header-wrapper').outerHeight();
+        $('#page-wrap').css('padding-top', navbarHeight);
+      }
 
       // Show the mobile social nav bar when window scrolls down
       var didScroll;

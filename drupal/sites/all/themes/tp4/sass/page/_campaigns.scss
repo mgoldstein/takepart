@@ -501,20 +501,12 @@ body.campaign-display{
                     display: inline-block;
                 }
             }
-            @include breakpoint($breakpoint-tablet) {
-                &.tp-social-email {
-                    display: none;
-                }
-                &.tp-social-mailto {
-                    display: inline-block;
-                }
-            }
             @include breakpoint($breakpoint-desktop) {
                 &.tp-social-email {
                     display: inline-block;
                 }
                 &.tp-social-mailto {
-                    display: none;
+                    display: inline-block;
                 }
             }
         }

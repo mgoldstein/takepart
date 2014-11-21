@@ -184,6 +184,7 @@
       isVideoArticle = $body.is('.page-node.node-type-video'),
       isVideoPlaylist = $body.is('.page-node.node-type-video-playlist'),
       isFlashcard = $body.is('.page-node.node-type-flashcard'),
+      isCampaignPage = $body.is('.node-type-campaign-page'),
       isGallery = $body.is('.node-type-openpublish-photo-gallery');
 
 
@@ -221,10 +222,12 @@
           main_image = $('.field-name-field-article-main-image').find('img').attr('src');
           tp_social_config.services.push({"name":"pinterest", "media": main_image});
         }
-
-        // initialize tpsocial and make it sticky.
-//        $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-//          .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
+        /* If page is a gallery, article or featured article, add Pinterest */
+        if(isCampaignPage){
+          delete tp_social_config.services[2]; //mailto
+          delete tp_social_config.services[4]; //reddit
+          delete tp_social_config.services[5]; //tumblr
+        }
 
         /*if screen size is less than 480 targer tp-social-mobile, else target tp-social.  Adjust CSS to display none otherwise */
         if($(window).width() < 768){
