@@ -206,7 +206,7 @@ body {
     visibility: hidden;
 }
 
-// Mobile ad position
+// Mobile ad position top
 #block-boxes-ga-mobile-320x50-relative {
   @include breakpoint($breakpoint-mobile) {  
     display: block;
@@ -221,6 +221,65 @@ body {
       width: 320px;
       margin: 10px auto;
       overflow-x: visible;
+    }
+  }
+    @include breakpoint($breakpoint-tablet) {
+    display: none;
+    visibility: hidden;
+  }
+  &.hide {
+    display: none;
+    visibility: hidden; 
+  }
+}
+
+
+// Mobile ad position bottom sticky
+#block-boxes-ga-mobile-320x50 {
+  @include breakpoint($breakpoint-mobile) {  
+    display: block;
+    visibility: visible;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: black;
+    z-index: 3;
+    #boxes-box-ga_mobile_320x50 {
+      position: relative;
+      width: 320px;
+      margin: 0 auto;
+      overflow-x: visible;
+    }
+    .close-mobile-ad {
+      display: block;
+      visibility: visible;
+      position: absolute;
+      right: -4px;
+      top: -24px;
+      background-color: transparent;
+      text-decoration: none;
+      z-index: 4;
+      padding: 12px 0 12px 12px;
+      width: 36px;
+      height: 36px;
+      text-align: center;
+      span {
+          display: block;
+          content: '\2421';
+          background-color: black;
+          color: white;
+          font-size: 12px;
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          font-family: SSGizmo;
+          padding: 4px;
+          width: 18px;
+          height: 18px;
+      }
     }
   }
     @include breakpoint($breakpoint-tablet) {
