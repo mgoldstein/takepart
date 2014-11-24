@@ -227,7 +227,7 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
   $files = array();
   $displays = array();
   $videos_used = array();
-
+  
   foreach ($videos as $node) {
 
     // Unpubished nodes must be skipped when rendering the page for anonymous
@@ -301,7 +301,7 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
   // Build the video player content.
   $player = array();
   if (count($files) > 0) {
-    $player = tp_video_player_player_view($playlist_configuration, $files);
+    $player = tp_video_player_player_view($playlist_configuration, $files, 'playlist_display');
   }
 
   $content = array(
@@ -387,12 +387,6 @@ function tp_videos_field_formatter_view($entity_type, $entity, $field, $instance
   // The configuration can contain tokens, resolve them now.
   $player_configuration = tp_video_player_resolve_entity_configuration(
     $entity_type, $entity, $langcode, $player_configuration);
-
-  //ensures all video auto plays on video content display
-  $menu_obj = menu_get_object();
-  if (is_object($menu_obj) && $menu_obj->type == 'video_playlist') {
-    $player_configuration->auto_start = 1;
-  }
 
   // Build the playlist content.
   $playlist = tp_videos_build_playlist($player_configuration, $videos, $view_mode, $langcode);
