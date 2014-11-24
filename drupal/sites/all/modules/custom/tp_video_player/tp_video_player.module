@@ -270,7 +270,7 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
       $entity_type, $entity, $langcode, $configuration);
 
     // The formatter only ever returns one player.
-    $elements[] = tp_video_player_player_view($configuration, $items);
+    $elements[] = tp_video_player_player_view($configuration, $items, $display['settings']['global_default']);
   }
 
   return $elements;
@@ -297,10 +297,10 @@ function tp_video_player_video_allowed_regions($entity_type, $entity) {
 /**
  * Build a render array for a video player.
  */
-function tp_video_player_player_view($configuration, $files) {
+function tp_video_player_player_view($configuration, $files, $display = NULL) {
 
   $id = drupal_html_id('tp_video_player');
-  $settings = tp_video_player_build_settings($configuration, $files);
+  $settings = tp_video_player_build_settings($configuration, $files, $display);
   tp_video_player_add_player($id, $settings);
 
   $elements = array(
@@ -447,6 +447,9 @@ function tp_video_player_list_from_nid($nid, $node = array(), $view_mode = 'defa
         '#title' => $node->title,
         '#playlist' => $playlist,
       );
+      
+      //after pulling in information allow hook to alter the playlist
+      drupal_alter('tp_video_player_get', $playlist_content);
       
       //returns the renderable array
       $output = $playlist_content;
