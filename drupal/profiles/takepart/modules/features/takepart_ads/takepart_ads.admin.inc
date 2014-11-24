@@ -22,6 +22,12 @@ function takepart_ads_settings_form($form, &$form_state) {
     '#default_value' => variable_get('takepart_ads_dfp_property_code_gpt', '4355895'),
     '#required' => TRUE
   );
+  $form['takepart_ads_dfp_refresh'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Refresh'),
+    '#description' => t('In seconds, how often would you like ads to refresh? (Example: 31)'),
+    '#default_value' => variable_get('takepart_ads_dfp_refresh', '30'),
+  );
 
   return system_settings_form($form, $form_state);
 }

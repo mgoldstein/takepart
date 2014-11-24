@@ -41,6 +41,8 @@ class boxes_ga_ad extends boxes_box {
 
     public function render() {
 
+        $refresh = variable_get('takepart_ads_dfp_refresh', '31');
+        $refresh = $refresh * 1000; //convert seconds to millisecons
         if (function_exists('wordlet_active_page')) {
             $wordlet_page = wordlet_active_page();
             if ($wordlet_page !== FALSE) {
@@ -85,17 +87,15 @@ class boxes_ga_ad extends boxes_box {
                             googletag.pubads().enableSingleRequest();
                             googletag.enableServices();
                             googletag.display('$gptid[$slot]');
-                            setInterval(function(){
-                            googletag.pubads().refresh([slot1]);
-                            }, 30000);
                         });
                     } else {
-                        setTimeout("$gptfunction()",1000);
                         jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
                     }
                 } else {
-                    setTimeout("$gptfunction()",1000);
                 }
+                setInterval(function(){
+                  googletag.pubads().refresh();
+                }, $refresh);
             }
             $gptfunction();
             </script>
@@ -114,11 +114,8 @@ HTM;
        googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
      }
      else {
-       setTimeout("$gptfunction()",1000);
        jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
      }
-   } else {
-    setTimeout("$gptfunction()",1000);
    }
   }
   $gptfunction();
@@ -135,11 +132,8 @@ HTM;
               googletag.display('div-gpt-ad-1413399742891-0-oop');
           });
         } else {
-          setTimeout("mobile_interstitial_oop()",1000);
           jQuery('#div-gpt-ad-1413399742891-0-oop').css({'width': '0', height: '0'});
         }
-      } else {
-        setTimeout("mobile_interstitial_oop()",1000);
       }
     }
   mobile_interstitial_oop();
@@ -156,16 +150,10 @@ HTM;
    if (typeof(googletag) !== 'undefined') {
      if (ad_call_check($lr[0])) {
        googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
-       if ($lr[0] === 320) {
-         setInterval(function(){googletag.pubads().refresh([mobile1]);}, 5000);
-        }
      }
      else {
-       setTimeout("$gptfunction()",1000);
        jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
      }
-   } else {
-    setTimeout("$gptfunction()",1000);
    }
   }
   $gptfunction();
