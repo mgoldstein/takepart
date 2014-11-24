@@ -1,0 +1,7 @@
+name = TakePart Video Player Logic
+description = Logic Portion for the Video Player
+core = 7.x
+package = TakePart
+version = 7.x-1.0-alpha0
+dependencies[] = tp_video_player
+dependencies[] = tp_videos

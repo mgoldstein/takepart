@@ -69,7 +69,7 @@ class InlineContentVideo extends InlineContentReplacementController {
       $configuration = tp_video_player_resolve_entity_configuration('node',
         $node, $langcode, $configuration);
 
-      $video = tp_video_player_player_view($configuration, $files);
+      $video = tp_video_player_player_view($configuration, $files, 'inline');
     }
 
     $alignment = field_get_items('inline_content', $replacement, 'field_ic_alignment');
