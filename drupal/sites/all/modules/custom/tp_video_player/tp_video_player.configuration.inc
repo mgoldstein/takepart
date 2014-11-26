@@ -228,7 +228,7 @@ function tp_video_player_delete_entity_configuration($entity_type, $entity_id) {
 
 function tp_video_player_save_configuration($configuration) {
   $values = (array) $configuration;
-  error_log(print_r($values, 1));
+  
   if (isset($values['id'])) {
     $configuration->updated_at = $values['updated_at'] = REQUEST_TIME;
     db_update('tp_video_player_configuration')

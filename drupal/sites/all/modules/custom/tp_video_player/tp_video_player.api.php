@@ -15,6 +15,19 @@
 function hook_tp_video_player_config_alter(&$config, &$display, &$file) {
   //example to add auto start to everything
   $config['autostart'] = FALSE;
+
+  //example to pull the global configuration and convert it to the tag url  
+  $default_config = tp_video_player_load_default_configuration('video_block');
+  $tag_url = takepart_ads_tag_url($default_config->ad_tag . '');
+  
+  //adjusts the config to override the ads
+  if (!empty($tag_url)) {
+    $config['advertising'] = array(
+      'admessage' => $default_config->ad_message,
+      'client' => $default_config->ad_client,
+      'tag' => $tag_url,
+    );
+  }
 }
 
 /**

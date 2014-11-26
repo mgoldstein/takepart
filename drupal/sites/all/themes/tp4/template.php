@@ -1159,7 +1159,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         if (isset($node->field_article_subhead)) {
           $short_headline = tp4_render_field_value('node', $node, 'field_article_subhead');
         }
-        elseif (isset($node->field_article_subhead)) {
+        elseif (isset($node->field_subhead)) {
           $short_headline = tp4_render_field_value('node', $node, 'field_subhead');
         }
         
