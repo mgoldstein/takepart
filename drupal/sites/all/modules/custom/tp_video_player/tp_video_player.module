@@ -223,6 +223,7 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
 
   $elements = array();
   $settings = $display['settings'];
+  $menu_obj = menu_get_object();
 
   if ($display['type'] === 'tp_video_player' && count($items) > 0) {
     // Load any available node specific configuration.
@@ -233,10 +234,10 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
     if (is_null($configuration)) {
       $configuration = tp_video_player_clone_default_configuration(
         $settings['global_default']);
-      
+  
       //overrides the ads setting based on node so that all the other settings for video blocks
       //are the same
-      if ($settings['global_default'] == 'video_block') {
+      if ($settings['global_default'] == 'video_block' && is_object($menu_obj) && stripos($menu_obj->type, 'campaign') !== FALSE) {
         $full_page_conf = tp_video_player_load_entity_configuration(
           $entity_type,
           entity_id($entity_type, $entity),
