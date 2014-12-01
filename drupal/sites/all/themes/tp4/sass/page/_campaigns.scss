@@ -345,7 +345,7 @@ body.campaign-display{
         top: 0px;
         visibility: hidden;
     }
-    .card-inner a{
+    .card-inner a:not(.bx-prev):not(.bx-next){
         color: $mint;
     }
     .takepart-take-action-widget{
