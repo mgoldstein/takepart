@@ -6,8 +6,8 @@
   Drupal.behaviors.color_field_spectrum = {
     attach: function (context) {
       $.each(Drupal.settings.color_field_spectrum, function (selector) {
-   		$('.' + this.class).spectrum({
-   		  preferredFormat: "rgb",
+       $('.' + this.class).spectrum({
+         preferredFormat: "rgb",
           showInput: this.show_input,
           showAlpha: true,
           showInitial: true,
@@ -15,6 +15,7 @@
           showPaletteOnly: this.show_palette_only,
           palette:[this.palette],
           showButtons: this.show_buttons,
+          allowEmpty: true,
         });
       });
     }

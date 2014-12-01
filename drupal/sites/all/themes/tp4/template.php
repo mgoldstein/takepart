@@ -20,21 +20,21 @@
  * Campaign Stuff
  */
 if(module_exists('tp_campaigns')){
-	module_load_include('inc', 'tp_campaigns', 'campaign_card_preprocesses');
+  module_load_include('inc', 'tp_campaigns', 'campaign_card_preprocesses');
 }
 $card_types = array(
-	'campaign_card_media',
-	'campaign_card_iframe',
-	'campaign_card_social',
-	'campaign_card_news',
-	'campaign_card_text',
-	'campaign_card_branding',
-	'campaign_card_tap',
-	'campaign_card_twitter',
-	'campaign_card_empty',
-	'campaign_card_ad',
-	'campaign_card_multi_column',
-	'campaign_card_tap_widget'
+  'campaign_card_media',
+  'campaign_card_iframe',
+  'campaign_card_social',
+  'campaign_card_news',
+  'campaign_card_text',
+  'campaign_card_branding',
+  'campaign_card_tap',
+  'campaign_card_twitter',
+  'campaign_card_empty',
+  'campaign_card_ad',
+  'campaign_card_multi_column',
+  'campaign_card_tap_widget'
 );
 define('CARDTYPES', serialize($card_types));
 
@@ -55,7 +55,7 @@ function tp4_preprocess_html(&$variables, $hook) {
 
   // If on an individual node page, add the node type to body classes.
   if ($node = menu_get_object()) {
-	  $card_types = unserialize(CARDTYPES);
+    $card_types = unserialize(CARDTYPES);
     if(in_array($node->type, $card_types) == true || $node->type == 'campaign_page'){
       $variables['classes_array'][] = drupal_html_class('campaign-display');
     }
@@ -75,7 +75,7 @@ function tp4_preprocess_html(&$variables, $hook) {
     drupal_add_library('system', 'jquery.cookie', true);
 
     $node = menu_get_object();
-		$campaign_types = unserialize(CARDTYPES);
+    $campaign_types = unserialize(CARDTYPES);
 
     if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
         unset($variables['page']['page_bottom']['omniture']);
@@ -163,7 +163,7 @@ function tp4_should_show_taboola_widget($variables) {
   // add Taboola JS if we're on an article, feature, photo gallery, or video page
   if (!empty($variables['node'])) {
     $node = $variables['node'];
-    if (in_array($node->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video'))) {
+    if (in_array($node->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video', 'video_playlist'))) {
       // but only if we're on the production site
       return ENVIRONMENT === 'production';
     }
@@ -181,10 +181,10 @@ function tp4_should_show_taboola_widget($variables) {
  */
 function tp4_preprocess_page(&$variables) {
 
-	if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
-	  $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
-	  $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
-	}
+  if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
+    $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
+    $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
+  }
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
 
@@ -204,6 +204,7 @@ function tp4_preprocess_page(&$variables) {
       'feature_article',
       'openpublish_photo_gallery',
       'video',
+      'video_playlist',
       'flashcard',
   );
   if (!empty($variables['node']) && in_array($variables['node']->type, $override_page_title_types)) {
@@ -289,14 +290,24 @@ function tp4_css_alter(&$css) {
  *   An array of variables to pass to the theme template.
  */
 function tp4_preprocess_block(&$variables) {
-    $variables['title_attributes_array']['class'][] = 'section-header';
-    // add slim nav class to slim nav block
-    if ($variables['block']->delta == "tp4_fat_header") {
-        $variables['classes_array'][] = "tp4-fat-header";
-    }
-    if ($variables['block']->delta == "tp4_slim_nav") {
-        $variables['classes_array'][] = "slim-nav";
-    }
+  
+  $variables['title_attributes_array']['class'][] = 'section-header';
+
+  // add slim nav class to slim nav block
+  if ($variables['block']->delta == "tp4_fat_header") {
+      $variables['classes_array'][] = "tp4-fat-header";
+  }
+
+  if ($variables['block']->delta == "tp4_slim_nav") {
+      $variables['classes_array'][] = "slim-nav";
+  }
+
+  //ensures that the bean block has a wrapper at the block level
+  if ($variables['block']->module == 'bean') {
+    $wrapper_label = $variables['elements']['bean'][$variables['block']->delta]['#bundle'];
+    $wrapper_label = str_replace('_', '-', $wrapper_label);
+    $variables['classes_array'][] = $wrapper_label . '-wrapper';
+  }
 }
 
 /**
@@ -333,11 +344,14 @@ function tp4_preprocess_tp4_support_slim_nav(&$variables) {
  */
 
 function tp4_preprocess_node(&$variables, $hook) {
+  //only show facebook comments if node is published
+  $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
+  
   // Add template suggestions for view modes and
   // node types per view view mode.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
-  if (in_array($variables['type'], array('openpublish_video', 'video')) && $variables['view_mode'] == 'full') {
+  if (in_array($variables['type'], array('openpublish_video', 'video', 'video_playlist')) && $variables['view_mode'] == 'full') {
     $variables['theme_hook_suggestions'][] = 'node__openpublish_article__full';
   }
 
@@ -358,6 +372,11 @@ function tp4_preprocess_node(&$variables, $hook) {
   if (function_exists($function)) {
     $function($variables, $hook);
   }
+
+  //address issue with title for photo gallery not showing the titles
+  if ($variables['view_mode'] == 'inline_content' && !$variables['title'] && $variables['referencing_field'] == 'field_related_stories') {
+    $variables['title'] = $variables['node']->title;
+  }
 }
 
 function tp4_preprocess_node__campaign(&$variables, $hook) {
@@ -368,58 +387,58 @@ function tp4_preprocess_node__campaign(&$variables, $hook) {
 
 function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 
- 	$campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
+   $campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
 
-	// Check if alt text is empty then add title as alt text for campaign logo
-	if($campaign_node->field_campaign_logo['und'][0]['alt'] == ''){
-		$campaign_node->field_campaign_logo['und'][0]['alt'] = $campaign_node->title;
-	}
+  // Check if alt text is empty then add title as alt text for campaign logo
+  if($campaign_node->field_campaign_logo['und'][0]['alt'] == ''){
+    $campaign_node->field_campaign_logo['und'][0]['alt'] = $campaign_node->title;
+  }
 
-	// Check if added images for css alt is empty then add image name as alt text
-	$campaign_custom_styling_images = count($campaign_node->field_images_for_css['und']);
-	if($campaign_custom_styling_images != 0){
+  // Check if added images for css alt is empty then add image name as alt text
+  $campaign_custom_styling_images = count($campaign_node->field_images_for_css['und']);
+  if($campaign_custom_styling_images != 0){
 
-		for($y = 0; $y < $campaign_custom_styling_images; $y++){
+    for($y = 0; $y < $campaign_custom_styling_images; $y++){
 
-			if($campaign_node->field_images_for_css['und'][$y]['alt'] == ''){
-				$campaign_node->field_images_for_css['und'][$y]['alt'] = $campaign_node->field_images_for_css['und'][$y]['filename'];
-			}
+      if($campaign_node->field_images_for_css['und'][$y]['alt'] == ''){
+        $campaign_node->field_images_for_css['und'][$y]['alt'] = $campaign_node->field_images_for_css['und'][$y]['filename'];
+      }
 
-		}
-	}
+    }
+  }
 
-	// Check if subheadline is empty, if yes get meta description from campaign reference
-	if($variables['field_article_subhead']['und'][0]['value'] == ''){
+  // Check if subheadline is empty, if yes get meta description from campaign reference
+  if($variables['field_article_subhead']['und'][0]['value'] == ''){
 
-		if($variables['metatags']['und']['description']['value'] == ''){
+    if($variables['metatags']['und']['description']['value'] == ''){
 
-		 $meta_description = array(
+     $meta_description = array(
             '#type' => 'html_tag',
             '#tag' => 'meta',
             '#attributes' => array(
                 'name' => 'description',
                 'content' => $campaign_node->field_article_subhead['und'][0]['value']
             )
-   		 );
+        );
 
-		 drupal_add_html_head( $meta_description, 'meta_description' );
+     drupal_add_html_head( $meta_description, 'meta_description' );
 
-		}
+    }
 
-	}
+  }
 
-	// Check if campaign reference is not empty
-	if($variables['field_campaign_reference']['und'][0]['target_id'] != ''){
+  // Check if campaign reference is not empty
+  if($variables['field_campaign_reference']['und'][0]['target_id'] != ''){
 
-		//Get field css
-		$uri = $campaign_node->field_css['und'][0]['uri'];
+    //Get field css
+    $uri = $campaign_node->field_css['und'][0]['uri'];
 
-		// If file exist, add the css file to the campaign page
-		if (file_exists($uri)){
-			  drupal_add_css($uri, array('group' => CSS_THEME, 'weight' => 999));
-		}
+    // If file exist, add the css file to the campaign page
+    if (file_exists($uri)){
+        drupal_add_css($uri, array('group' => CSS_THEME, 'weight' => 999));
+    }
 
-	}
+  }
 
   // Check whether facebook comments should be enabled
   foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
@@ -438,9 +457,16 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
+
   $media_photo = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
   if(empty($media_photo[0]['alt'])){
-  	$alt = $variables['title'];
+    $alt = $variables['title'];
   }
 
 
@@ -454,6 +480,16 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   if($media_type == 'Video'){  //Media is a video
     $media = drupal_render(field_view_field('node', $variables['node'], 'field_campaign_media_video', 'embed'));
   }
+	elseif ($media_type == 'Video Playlist') {
+		//gets the video playlist value
+		$video_playlist = field_get_items('node', $variables['node'], 'field_media_video_playlist');
+		
+		//checks if its not empty
+		if (!empty($video_playlist[0]['target_id'])) {
+			//this function lives in tp_video_player.module.
+			$media = drupal_render(tp_video_player_list_from_nid($video_playlist[0]['target_id']));
+		}
+	}
   else{ //Media is a photo
 
     $image = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
@@ -471,7 +507,16 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   }
   //Grab Description
-  $description = tp4_render_field_value('node', $variables['node'], 'body');
+//  $description = tp4_render_field_value('node', $variables['node'], 'body');
+  $description_display = array(
+    'label' => 'hidden',
+    'type'  => 'text_with_inline_content',
+    'settings' => array(
+      'source' => 'field_inline_replacements'
+    )
+  );
+  $description = field_view_field('node', $variables['node'], 'body', $description_display);
+  $description = drupal_render($description);
   if(!empty($description)){
     if (function_exists('tp_flashcards_parse_html')) {
       $description = tp_flashcards_parse_html($description);
@@ -535,11 +580,6 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   //background properties
   tp4_campaign_background_rules($variables);
 
-  //content
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
   if(!empty($center)){
     $variables['center'] = $center;
@@ -704,8 +744,13 @@ function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
 
 
 function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
-
-
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
+  
   $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
   $slim_text = tp4_render_field_value('node', $variables['node'], 'field_slim_card_text');
 
@@ -725,14 +770,14 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
     $left = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
     if(!empty($left)){
       if (function_exists('tp_flashcards_parse_html')) {
-        $left = tp_flashcards_parse_html($left);
+        $left = tp_flashcards_parse_html($left, TRUE);
       }
       $left = '<div class="text">'. $left. '</div>';
     }
     $right = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_right');
     if(!empty($right)){
       if (function_exists('tp_flashcards_parse_html')) {
-        $right = tp_flashcards_parse_html($right);
+        $right = tp_flashcards_parse_html($right, TRUE);
       }
       $right = '<div class="text">'. $right. '</div>';
     }
@@ -761,11 +806,6 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   //background properties
   tp4_campaign_background_rules($variables);
 
-  //content
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
   $variables['left'] = $left;
   $variables['right'] = $right;
@@ -776,6 +816,13 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
  * Override or insert variables into the campaign card social template
  */
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
+
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
 
   $collections = array();
   $social_follows = field_get_items('node', $variables['node'], 'field_campaign_social_follow');
@@ -830,144 +877,140 @@ function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
 
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
 
 }
 
 function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 
-	if($variables['type'] == "campaign_card_twitter"){
+  if($variables['type'] == "campaign_card_twitter"){
 
-	// Please change the settings based on TakePart application (removed this comment if already changed)
+  // Please change the settings based on TakePart application (removed this comment if already changed)
     $consumer_key = "5TGmga1wMRDfMD0gCUIAtI0YG";
     $consumer_secret = "l2ZOmrQlOmnMeTnw7YYvhKrLSzeaaGNn6SPtet4cI2Of2rRyKd";
-	// Get username, number of tweets, timeline type, and access tokens from content type
-	$username = $variables['field_twitter_username'][0]['value'];
-	$number_of_tweets = $variables['field_number_of_tweets'][0]['value'];
-	$type = $variables['field_twitter_type'][0]['value'];
-	$oauth_access_token = $variables['field_oauth_token'][0]['value'];
-	$oauth_access_token_secret = $variables['field_oauth_token_secret'][0]['value'];
+  // Get username, number of tweets, timeline type, and access tokens from content type
+  $username = $variables['field_twitter_username'][0]['value'];
+  $number_of_tweets = $variables['field_number_of_tweets'][0]['value'];
+  $type = $variables['field_twitter_type'][0]['value'];
+  $oauth_access_token = $variables['field_oauth_token'][0]['value'];
+  $oauth_access_token_secret = $variables['field_oauth_token_secret'][0]['value'];
 
-	if ( ! class_exists('TwitterOAuth')){
-	require('./sites/all/modules/custom/tp_twitter/twitteroauth/twitteroauth.php');
-	}
+  if ( ! class_exists('TwitterOAuth')){
+  require('./sites/all/modules/custom/tp_twitter/twitteroauth/twitteroauth.php');
+  }
 
-	$connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_access_token, $oauth_access_token_secret);
+  $connection = new TwitterOAuth($consumer_key, $consumer_secret, $oauth_access_token, $oauth_access_token_secret);
 
-	switch($type){
-		case "user_timeline":
-		case "mentions_timeline":
-		case "home_timeline":
-		case "retweets_of_me":
-			$twitter_api_url = 'statuses/'.$type;
-			$parameters = array('screen_name' => $username, 'count' => $number_of_tweets);
-			break;
-		case "favorites_list":
-			$twitter_api_url = 'favorites/list';
-			$parameters = array('screen_name' => $username, 'count' => $number_of_tweets);
-			break;
-		case "hashtag":
-			$twitter_api_url = 'search/tweets';
-			$parameters = array('q' => $username, 'count' => $number_of_tweets); //hashtag is in Username field
-			break;
-		case "list":
-			$twitter_api_url = 'lists/statuses';
-			$parameters = array('owner_screen_name' => $username,  'slug' => $variables['field_twitter_list_slug'][0]['value'], 'count' => $number_of_tweets);
-		break;
-	}
+  switch($type){
+    case "user_timeline":
+    case "mentions_timeline":
+    case "home_timeline":
+    case "retweets_of_me":
+      $twitter_api_url = 'statuses/'.$type;
+      $parameters = array('screen_name' => $username, 'count' => $number_of_tweets);
+      break;
+    case "favorites_list":
+      $twitter_api_url = 'favorites/list';
+      $parameters = array('screen_name' => $username, 'count' => $number_of_tweets);
+      break;
+    case "hashtag":
+      $twitter_api_url = 'search/tweets';
+      $parameters = array('q' => $username, 'count' => $number_of_tweets); //hashtag is in Username field
+      break;
+    case "list":
+      $twitter_api_url = 'lists/statuses';
+      $parameters = array('owner_screen_name' => $username,  'slug' => $variables['field_twitter_list_slug'][0]['value'], 'count' => $number_of_tweets);
+    break;
+  }
 
-	$twitter_data = $connection->get($twitter_api_url, $parameters);
+  $twitter_data = $connection->get($twitter_api_url, $parameters);
 
-	if($type == 'hashtag'){
+  if($type == 'hashtag'){
 
-		foreach($twitter_data->statuses as $tweets){
+    foreach($twitter_data->statuses as $tweets){
 
-				$variables['tweet'][] = $tweets->text;
-			    $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'" target="_blank">'.$tweets->user->screen_name."</a>";
-				$image = str_replace("_normal","",$tweets->user->profile_image_url);
-				$variables['profile_pic'][] = $image;
-				$variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
-				$variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
+        $variables['tweet'][] = $tweets->text;
+          $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'" target="_blank">'.$tweets->user->screen_name."</a>";
+        $image = str_replace("_normal","",$tweets->user->profile_image_url);
+        $variables['profile_pic'][] = $image;
+        $variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
+        $variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
 
-		}
+    }
 
 
-	}
-	else{
+  }
+  else{
 
-		foreach($twitter_data as $tweets){
-				$variables['tweet'][] = $tweets->text;
-			    $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'" target="_blank">'.$tweets->user->screen_name."</a>";
-				$image = str_replace("_normal","",$tweets->user->profile_image_url);
-				$variables['profile_pic'][] = $image;
-				$variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
-				$variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
-		}
+    foreach($twitter_data as $tweets){
+        $variables['tweet'][] = $tweets->text;
+          $variables['username'][] = '<a href="http://www.twitter.com/'.$tweets->user->screen_name.'" target="_blank">'.$tweets->user->screen_name."</a>";
+        $image = str_replace("_normal","",$tweets->user->profile_image_url);
+        $variables['profile_pic'][] = $image;
+        $variables['entities'][] = $tweets->entities; // Entites contains URL, Hashtag, User, Media
+        $variables['created_at'][] = tp4_convert_twitter_time($tweets->created_at);
+    }
 
-	}
-	// Get entities count
+  }
+  // Get entities count
     $entities_count = count($variables['entities']);
-	for($x=0; $x<$entities_count; $x++){
+  for($x=0; $x<$entities_count; $x++){
 
-		// Check if there is URLs in tweet
-		if(!empty($variables['entities'][$x]->urls)){
+    // Check if there is URLs in tweet
+    if(!empty($variables['entities'][$x]->urls)){
 
-			// Check number of URLs
-			$url_count = count($variables['entities'][$x]->urls);
+      // Check number of URLs
+      $url_count = count($variables['entities'][$x]->urls);
 
-			for($y=0; $y<$url_count; $y++){
+      for($y=0; $y<$url_count; $y++){
 
-				// Check if URL exists in a tweet, if yes, add link tag
-				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->urls[$y]->url) !== false) {
-   					$variables['tweet'][$x] = str_replace($variables['entities'][$x]->urls[$y]->url, '<a href="'.$variables['entities'][$x]->urls[$y]->url.'" target="_blank">'.$variables['entities'][$x]->urls[$y]->display_url.'</a>', $variables['tweet'][$x]);
-				}
+        // Check if URL exists in a tweet, if yes, add link tag
+        if (strpos($variables['tweet'][$x],$variables['entities'][$x]->urls[$y]->url) !== false) {
+             $variables['tweet'][$x] = str_replace($variables['entities'][$x]->urls[$y]->url, '<a href="'.$variables['entities'][$x]->urls[$y]->url.'" target="_blank">'.$variables['entities'][$x]->urls[$y]->display_url.'</a>', $variables['tweet'][$x]);
+        }
 
-			}
+      }
 
-		} // End URL
+    } // End URL
 
-		// Check if there is user mention in tweet
-		if(!empty($variables['entities'][$x]->user_mentions)){
+    // Check if there is user mention in tweet
+    if(!empty($variables['entities'][$x]->user_mentions)){
 
-			// Check number of URLs
-			$user_mention_count = count($variables['entities'][$x]->user_mentions);
+      // Check number of URLs
+      $user_mention_count = count($variables['entities'][$x]->user_mentions);
 
-			for($y=0; $y<$user_mention_count; $y++){
+      for($y=0; $y<$user_mention_count; $y++){
 
-				// Check if user mention exists in a tweet, if yes, add link tag
-				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->user_mentions[$y]->screen_name) !== false) {
-   					$variables['tweet'][$x] = str_replace('@'.$variables['entities'][$x]->user_mentions[$y]->screen_name, '<a href="http://twitter.com/'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'" target="_blank">@'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'</a>', $variables['tweet'][$x]);
-				}
+        // Check if user mention exists in a tweet, if yes, add link tag
+        if (strpos($variables['tweet'][$x],$variables['entities'][$x]->user_mentions[$y]->screen_name) !== false) {
+             $variables['tweet'][$x] = str_replace('@'.$variables['entities'][$x]->user_mentions[$y]->screen_name, '<a href="http://twitter.com/'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'" target="_blank">@'.$variables['entities'][$x]->user_mentions[$y]->screen_name.'</a>', $variables['tweet'][$x]);
+        }
 
-			}
+      }
 
-		} // End user mention
+    } // End user mention
 
-		// Check if there is hashtag
-		if(!empty($variables['entities'][$x]->hashtags)){
+    // Check if there is hashtag
+    if(!empty($variables['entities'][$x]->hashtags)){
 
-			// Check number of URLs
-			$hashtags_count = count($variables['entities'][$x]->hashtags);
+      // Check number of URLs
+      $hashtags_count = count($variables['entities'][$x]->hashtags);
 
-			for($z=0; $z<$hashtags_count; $z++){
+      for($z=0; $z<$hashtags_count; $z++){
 
-				// Check if hashtag exist in a tweet, if yes, add link tag
-				if (strpos($variables['tweet'][$x],$variables['entities'][$x]->hashtags[$z]->text) !== false) {
-   					$variables['tweet'][$x] = str_replace('#'.$variables['entities'][$x]->hashtags[$z]->text, '<a href="https://twitter.com/search?q=%23'.$variables['entities'][$x]->hashtags[$z]->text.'&src=hash" target="_blank">#'.$variables['entities'][$x]->hashtags[$z]->text.'</a>'." ", $variables['tweet'][$x]);
-				}
+        // Check if hashtag exist in a tweet, if yes, add link tag
+        if (strpos($variables['tweet'][$x],$variables['entities'][$x]->hashtags[$z]->text) !== false) {
+             $variables['tweet'][$x] = str_replace('#'.$variables['entities'][$x]->hashtags[$z]->text, '<a href="https://twitter.com/search?q=%23'.$variables['entities'][$x]->hashtags[$z]->text.'&src=hash" target="_blank">#'.$variables['entities'][$x]->hashtags[$z]->text.'</a>'." ", $variables['tweet'][$x]);
+        }
 
-			}
+      }
 
-		} // End hashtag
+    } // End hashtag
 
 
-	}
+  }
 
-	//background properties
+  //background properties
     tp4_campaign_background_rules($variables);
 
  }
@@ -982,35 +1025,35 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
 //Convert Twitter timestamp
 function tp4_convert_twitter_time( $t ) {
 
-	// Set time zone
-	date_default_timezone_set('America/Los_Angeles');
+  // Set time zone
+  date_default_timezone_set('America/Los_Angeles');
 
-	// Get Current Server Time
-	$server_time = $_SERVER['REQUEST_TIME'];
+  // Get Current Server Time
+  $server_time = $_SERVER['REQUEST_TIME'];
 
-	// Convert Twitter Time to UNIX
-	$new_tweet_time = strtotime($t);
+  // Convert Twitter Time to UNIX
+  $new_tweet_time = strtotime($t);
 
-	// Set Up Output for the Timestamp if over 24 hours
-	$this_tweet_day =  date('D. M j, Y', strtotime($t));
+  // Set Up Output for the Timestamp if over 24 hours
+  $this_tweet_day =  date('D. M j, Y', strtotime($t));
 
-	// Subtract Twitter time from current server time
-	$time = $server_time - $new_tweet_time;
+  // Subtract Twitter time from current server time
+  $time = $server_time - $new_tweet_time;
 
-	// less than an hour, output 'minutes' messaging
-	if( $time < 3599) {
-		$time = round($time / 60) . ' minutes ago';
-	}
-	// less than a day but over an hour, output 'hours' messaging
-	else if ($time >= 3600 && $time <= 86400) {
-		$time = round($time / 3600) . ' hours ago';
-	}
-	// over a day, output the $tweet_day formatting
-	else if ( $time > 86400)  {
-		$time = $this_tweet_day;
-	}
+  // less than an hour, output 'minutes' messaging
+  if( $time < 3599) {
+    $time = round($time / 60) . ' minutes ago';
+  }
+  // less than a day but over an hour, output 'hours' messaging
+  else if ($time >= 3600 && $time <= 86400) {
+    $time = round($time / 3600) . ' hours ago';
+  }
+  // over a day, output the $tweet_day formatting
+  else if ( $time > 86400)  {
+    $time = $this_tweet_day;
+  }
 
-	return $time;
+  return $time;
 
 }
 
@@ -1078,6 +1121,13 @@ function tp4_query_promofilter_alter(QueryAlterableInterface $query) {
  */
 function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
+    //content
+    $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+    
+    if(!empty($instructional)){
+      $variables['instructional'] = tp_flashcards_parse_html($instructional);
+    }
+
     // Is this card a single value news card or a multi-value news card?
     $news_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_type');
     if($news_type == 'Single Article'){  //single value
@@ -1104,7 +1154,15 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       else{
         $file = field_get_items('node', $node, 'field_thumbnail');
         $file = file_load($file[0]['fid']);
-        $short_headline = tp4_render_field_value('node', $node, 'field_article_subhead');
+        
+        //ensures that this field is set
+        if (isset($node->field_article_subhead)) {
+          $short_headline = tp4_render_field_value('node', $node, 'field_article_subhead');
+        }
+        elseif (isset($node->field_subhead)) {
+          $short_headline = tp4_render_field_value('node', $node, 'field_subhead');
+        }
+        
         $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
       }
 
@@ -1130,25 +1188,32 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $nids[] = $item['target_id'];
       }
 
-      // Query non referenced content (max 5)
+      // Query non referenced content (max 15)
       $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count');
-	    $count = (!empty($news_ref) ? count($news_ref) : 0);
-
+      $count = (!empty($news_ref) ? count($news_ref) : 0);
+      
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
-          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'flashcard', 'action'))
+          ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'article', 'openpublish_photo_gallery', 'video', 'video_playlist', 'flashcard', 'action'))
           ->propertyCondition('status', 1)
           ->propertyOrderBy('created', 'DESC')
           ->addTag('termfilter')
           ->addTag($variables['nid'])
           ->addTag('promofilter')
           ->range(0, $max_count - $count);
+        
+        //only add condition if nids is not empty
+        if (!empty($nids)) {
+          $campaignNewsArticles->entityCondition('entity_id', $nids, 'NOT IN');
+        }
+        
         $articles = $campaignNewsArticles->execute();
       }
       foreach($articles['node'] as $key => $item){
         $nids[] = $item->nid;
       }
+  
       $nodes = node_load_multiple($nids);
       $center = '';
       $center .= '<div class="news-column-wrapper">';
@@ -1196,16 +1261,19 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
   //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
 
 
 }
 
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
+
   $center = '';
 
   $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
@@ -1240,10 +1308,6 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
 
   //content
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-    $variables['instructional'] = $instructional;
-  }
   $variables['center'] = $center;
 
 }
@@ -1302,6 +1366,12 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
 }
 
 function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
+  //content
+  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  
+  if(!empty($instructional)){
+    $variables['instructional'] = tp_flashcards_parse_html($instructional);
+  }
 
   $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
   $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
@@ -1325,7 +1395,11 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
         $image = l($image, $link[0]['url'], array('html' => true, 'attributes' => array('target' => $target)));
     }
     $center .= '<div class="item" style="max-width:'. $item_width. 'px;">';
-    $center .= $image;
+    
+    //conditional check to ensure there's an image before appending
+    if (!empty($collection->field_promo_thumbnail)) {
+      $center .= $image;
+    }
     $center .= (!empty($text) ? $text : '');
     $center .= '</div>';
   }
@@ -1334,71 +1408,67 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
   tp4_campaign_background_rules($variables);
 
   //content
-  $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  if(!empty($instructional)){
-      $variables['instructional'] = $instructional;
-  }
   $variables['theme_hook_suggestions'][] = 'node__campaign_card_1col';
   $variables['center'] = $center;
 }
 
 function tp4_preprocess_node__campaign_card_tap_widget(&$variables, $hook) {
-	if(module_exists('tp_campaigns')){
-		$card_title = tp_campaigns_card_title($variables);
-		$variables['instructional'] = tp_campaigns_card_instructional($variables);
-		$variables['card_content'] = tp_campaigns_card_content_tap_widget($variables);
-		tp_campaigns_card_background($variables);
-		$variables['theme_hook_suggestions'][] = 'node__campaign_card';
-	}
+  if(module_exists('tp_campaigns')){
+    $card_title = tp_campaigns_card_title($variables);
+    $variables['instructional'] = tp_campaigns_card_instructional($variables);
+    $variables['card_content'] = tp_campaigns_card_content_tap_widget($variables);
+    tp_campaigns_card_background($variables);
+    $variables['theme_hook_suggestions'][] = 'node__campaign_card';
+  }
 }
 
 /* Remove this function when all other Card Types transition to it */
 function tp4_campaign_background_rules(&$variables){
 
-	$variables['styles'] = array();
-	if($card_style = field_get_items('node', $variables['node'], 'field_campaign_style_setting')){
-		$variables['classes_array'][] = $card_style[0]['value'];
-	}
-	if($background_color = field_get_items('node', $variables['node'], 'field_campaign_bg_color')){
-		$variables['styles'][] = 'background-color: '. $background_color[0]['rgb']. ';';
-	}
-	if($min_height = tp4_render_field_value('node', $variables['node'], 'field_campaign_min_height')){
-		$variables['styles'][] = 'min-height: '. $min_height. 'px;';
-	}
-	$background_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw');
-	if($background_width == 'Full Width'){
-		$variables['classes_array'][] = 'card-width-full';
-	}
-	else{
-		$variables['classes_array'][] = 'card-width-980';
-	}
-	if($background_crop = field_get_items('node', $variables['node'], 'field_campaign_bg_crop')){
-		if($background_crop[0]['value'] == 1){
-			$variables['classes_array'][] = 'background-crop';
-		}
-	}
+  $variables['styles'] = array();
+  if($card_style = field_get_items('node', $variables['node'], 'field_campaign_style_setting')){
+    $variables['classes_array'][] = $card_style[0]['value'];
+  }
+  if($background_color = field_get_items('node', $variables['node'], 'field_campaign_bg_color')){
+    $variables['styles'][] = 'background-color: '. $background_color[0]['rgb']. ';';
+  }
+  if($min_height = tp4_render_field_value('node', $variables['node'], 'field_campaign_min_height')){
+    $variables['styles'][] = 'min-height: '. $min_height. 'px;';
+  }
+  $background_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw');
+  if($background_width == 'Full Width'){
+    $variables['classes_array'][] = 'card-width-full';
+  }
+  else{
+    $variables['classes_array'][] = 'card-width-980';
+  }
+  if($background_crop = field_get_items('node', $variables['node'], 'field_campaign_bg_crop')){
+    if($background_crop[0]['value'] == 1){
+      $variables['classes_array'][] = 'background-crop';
+    }
+  }
 
-	//Set the size of the background image
-	$bg_image_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw_image');
-	if($bg_image_width == 'Full Width'){
-		$variables['styles'][] = 'background-size: 100%;';
-	}
-	else{
-		$variables['styles'][] = 'background-size: 1000px;';
-	}
+  //Set the size of the background image
+  $bg_image_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw_image');
+  if($bg_image_width == 'Full Width'){
+    $variables['styles'][] = 'background-size: 100%;';
+  }
+  else{
+    $variables['styles'][] = 'background-size: 1000px;';
+  }
 
-	//Set the position of the background
-	if($background_position = field_get_items('node', $variables['node'], 'field_campaign_bg_image_position')){
-		if($background_position[0]['value'] == 2){
-			$background_position = 'bottom';
-		}else{
-			$background_position = 'top';
-		}
-		$variables['styles'][] = 'background-position: '. $background_position. ';';
-	}
+  //Set the position of the background
+  if($background_position = field_get_items('node', $variables['node'], 'field_campaign_bg_image_position')){
+    if($background_position[0]['value'] == 2){
+      $background_position = 'bottom';
+    }else{
+      $background_position = 'top';
+    }
+    $variables['styles'][] = 'background-position: '. $background_position. ';';
+  }
 
-	$background = field_get_items('node', $variables['node'], 'field_campaign_background');
-	$variables['card_background'] = (!empty($background) ? file_create_url($background[0]['uri']) : '');
+  $background = field_get_items('node', $variables['node'], 'field_campaign_background');
+  $variables['card_background'] = (!empty($background) ? file_create_url($background[0]['uri']) : '');
 
 }
 
@@ -1452,16 +1522,30 @@ function tp4_preprocess_node__feature_article(&$variables, $hook) {
         // put the title color as a class on the title.
         $variables['title_attributes_array']['class'][] = $variables['field_title_color'][LANGUAGE_NONE][0]['value'];
 
-        // ad "TakePart Features" branding
-        $variables['title_prefix'][] = array(
-            '#theme' => 'link',
-            '#text' => 'TakePart Features',
-            '#path' => 'taxonomy/term/114900',
-            '#options' => array(
-                'attributes' => array('class' => array('takepart-features-branding', $variables['field_title_color'][LANGUAGE_NONE][0]['value'])),
-                'html' => FALSE,
-            ),
-        );
+        //grabs featured link from node
+        $featured_link = field_get_items('node', $variables['node'], 'field_article_featured_link');
+        $featured_link_array = field_view_value('node', $variables['node'], 'field_article_featured_link', $featured_link[0]);
+
+        //ensures that the title is set
+        if (isset($featured_link_array['#element']['url'])) {
+          //variables for featured link
+          $feature_title = $featured_link_array['#element']['title'];
+          $feature_link = $featured_link_array['#element']['url'];
+
+          //ensures that the link is not empty
+          if (!empty($feature_link)) {
+            // ad "TakePart Features" branding
+            $variables['title_prefix'][] = array(
+                '#theme' => 'link',
+                '#text' => $feature_title,
+                '#path' => $feature_link,
+                '#options' => array(
+                    'attributes' => array('class' => array('takepart-features-branding', $variables['field_title_color'][LANGUAGE_NONE][0]['value'])),
+                    'html' => FALSE,
+                ),
+            );
+          }
+        }
 
         // orphan protection for headlines
         $title = trim($variables['title']);
@@ -1477,10 +1561,18 @@ function tp4_preprocess_node__video(&$variables, $hook) {
     }
 }
 
+function tp4_preprocess_node__video_playlist(&$variables, $hook) {
+    tp4_preprocess_node__openpublish_article($variables, $hook);
+    if ($variables['view_mode'] == 'embed') {
+        $variables['title'] = '';
+    }
+}
+
 /**
  * Override or insert variables into the openpublish_photo_gallery template.
  */
 function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
+
     if ($variables['view_mode'] == 'full') {
 
         // expose series tid in a data attribute
@@ -1491,10 +1583,14 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 
         // Decide whether to display a TAP banner
         if ($variables['field_display_tab_banner']['und'][0]['value']) {
-            $variables['gallery_tap_banner'] = array(
-                '#type' => 'markup',
-                '#markup' => '<div class="takepart-take-action-widget"></div>',
+            $description_display = array(
+              'label' => 'hidden',
+              'type'  => 'text_with_inline_content',
+              'settings' => array(
+                'source' => 'field_inline_replacements'
+              )
             );
+            $variables['gallery_tap_banner'] = field_view_field('node', $variables['node'], 'body', $description_display);
         }
 
         // provide "on our radar" block
@@ -1519,14 +1615,35 @@ function tp4_preprocess_node__flashcard(&$variables) {
     if ($variables['view_mode'] === 'full') {
         $variables['content']['body'][0]['#markup'] .= '<p><strong>What flashcards would you like to see?</strong> <a href="mailto:editorial@takepart.com?subject=New%20Flashcard%20Request">Email us</a> or let us know in the <a href="#block-tp-flashcards-flashcard-comments">comments</a> below.</p>';
     }
+
+    //unsets the flashcard related if reference is empty
+    if (empty($variables['content']['flashcard_related_content_primary'][0])) {
+      unset($variables['content']['flashcard_related_content_primary']);
+    }
 }
 
 /**
  * Utility function to provide "On Our Radar" block to node templates
  */
 function _tp4_on_our_radar_block(&$variables) {
-    $on_our_radar_block = block_load('bean', 'on-our-radar-block');
-    $variables['on_our_radar'] = _block_get_renderable_array(_block_render_blocks(array($on_our_radar_block)));
+    
+    $variables['on_our_radar'] = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => '',
+        '#attributes' => array(
+          'id' => 'pubexchange_related_links',
+    ))));
+    
+  drupal_add_js('<script>(function(d, s, id)
+                { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
+                (document, "script", "pubexchange-jssdk"));</script>',
+    array(
+      'type' => 'inline',
+      'scope' => 'footer',
+      'weight' => 10
+    )
+  );
 }
 
 /**
@@ -1562,7 +1679,7 @@ function _tp4_series_nav(&$variables) {
         // (if it doesn't exist, $next will be an empty array)
         $seriesQueryNext = new EntityFieldQuery();
         $seriesQueryNext->entityCondition('entity_type', 'node')
-                ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video'))
+                ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video', 'video_playlist'))
                 ->propertyCondition('status', 1)
                 ->propertyCondition('created', $created, '>')
                 ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -1579,7 +1696,7 @@ function _tp4_series_nav(&$variables) {
         // (if it doesn't exist, $previous will be an empty array)
         $seriesQueryPrev = new EntityFieldQuery();
         $seriesQueryPrev->entityCondition('entity_type', 'node')
-                ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video'))
+                ->entityCondition('bundle', array('openpublish_article', 'feature_article', 'video', 'video_playlist'))
                 ->propertyCondition('status', 1)
                 ->propertyCondition('created', $created, '<')
                 ->fieldCondition('field_series', 'tid', $series->tid, '=')
@@ -1777,6 +1894,20 @@ function tp4_field__field_free_tag__video($variables) {
     return tp4_field__field_topic__openpublish_article($variables);
 }
 
+/**
+ * Outputs Topic Taxonomy links for gallery nodes.
+ */
+function tp4_field__field_topic__video_playlist($variables) {
+    return tp4_field__field_topic__openpublish_article($variables);
+}
+
+/**
+ * Outputs free tag taxonomy links for gallery nodes.
+ */
+function tp4_field__field_free_tag__video_playlist($variables) {
+    return tp4_field__field_topic__openpublish_article($variables);
+}
+
 function tp4_menu_link(array $variables) {
     if ($variables['element']['#theme'] == 'menu_link__menu_megamenu') {
         $variables['element']['#attributes']['data-mlid'][] = $variables['element']['#original_link']['mlid'];
@@ -1816,6 +1947,10 @@ function tp4_field__field_author__openpublish_photo_gallery($variables) {
 }
 
 function tp4_field__field_author__video($variables) {
+    return tp4_field__field_author__openpublish_article($variables);
+}
+
+function tp4_field__field_author__video_playlist($variables) {
     return tp4_field__field_author__openpublish_article($variables);
 }
 
@@ -1865,6 +2000,10 @@ function tp4_field__field_article_subhead__video($variables) {
     return tp4_field__field_article_subhead__openpublish_article($variables);
 }
 
+function tp4_field__field_article_subhead__video_playlist($variables) {
+    return tp4_field__field_article_subhead__openpublish_article($variables);
+}
+
 function tp4_field__field_article_subhead__flashcard($variables) {
     return tp4_field__field_article_subhead__openpublish_article($variables);
 }
@@ -1896,6 +2035,39 @@ function tp4_field__field_article_main_image__openpublish_article($variables) {
         $output .= theme('image_style', $image);
         $output .= '<figcaption>';
         $output .= drupal_render($item['field_media_caption']);
+        $output .= '</figcaption></figure>';
+    }
+    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
+    return $output;
+}
+
+/**
+ *  Copying code from above to allow flashcard to have captions
+ */
+function tp4_field__field_flashcard_main_image__flashcard($variables) {
+    $output = '';
+
+    foreach ($variables['items'] as $delta => $item) {
+        // set up some variables we're going to need.
+        $image = array();
+        $image['path'] = $item['#item']['uri'];
+
+        // pick out the image style, defaulting to landscape
+        $image['style_name'] = 'landscape_main_image';
+        if ($item['#view_mode'] == 'portrait')
+            $image['style_name'] = 'portrait_main_image';
+
+        // schema.org article microdata
+        $image['attributes'] = array();
+        $image['attributes']['itemprop'] = 'image';
+
+        // TODO: do this through drupal APIs
+        $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
+
+        $output .= '<figure class="' . $item['#view_mode'] . '"' . $variables['item_attributes'][$delta] . '>';
+        $output .= theme('image_style', $image);
+        $output .= '<figcaption>';
+        $output .= (isset($item['#item']['field_media_caption']['und'])) ? $item['#item']['field_media_caption']['und'][0]['safe_value'] : '';
         $output .= '</figcaption></figure>';
     }
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
@@ -1942,8 +2114,9 @@ function tp4_field__field_video__video($variables) {
         $output .= render($item);
         //$caption = $item['#item']['field_media_caption']['und'][0]['value'];
         if (!empty($caption)) {
-            $output .= '<figcaption>' . $caption . '</figure>';
+            $output .= '<figcaption>' . $caption . '</figcaption>';
         }
+        $output .= '</figure>';
     }
 
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
@@ -2010,6 +2183,7 @@ function tp4_preprocess_entity(&$variables, $hook) {
                             $node->type == 'openpublish_article'
                             || $node->type == 'feature_article'
                             || $node->type == 'video'
+                            || $node->type == 'video_playlist'
                             || $node->type == 'flashcard'
                             || $node->type == 'openpublish_video'
                             || $node->type == 'campaign_page'
@@ -2043,6 +2217,16 @@ function tp4_preprocess_entity(&$variables, $hook) {
                         if ((isset($node->{'title'})) && (!isset($variables['custom_render'][$key]['title']))) {
                             $variables['custom_render'][$key]['title'] = $node->{'title'};
                         }
+
+                        //adding fix to address issue with title not displaying
+                        if (!$variables['custom_render'][$key]['title']) {
+                          //creates new title var at 0
+                          $variables['custom_render'][$key]['title'][0] = array(
+                            'value' => $node->title,
+                            'safe_value' => $node->title
+                          );
+                        }
+
                         $variables['custom_render'][$key]['url'] = url('node/' . $node->nid);
                     }
                 }
@@ -2055,7 +2239,7 @@ function tp4_preprocess_panels_pane(&$variables) {
   if ($variables['pane']->panel == 'main_featured') {
     $variables['theme_hook_suggestions'][] = 'panels_pane__main_featured';
     $variables['title_link'] = url('node/' . $variables['content']['#node']->nid);
-    if ($variables['content']['#bundle'] == 'video') {
+    if ($variables['content']['#bundle'] == 'video' || $variables['content']['#bundle'] == 'video_playlist') {
       $variables['title_attributes_array']['class'][] = 'no-overlap';
     }
     else if ($variables['content']['#bundle'] == 'flashcard') {
@@ -2093,4 +2277,17 @@ function tp4_block_view_alter(&$data, $block) {
             $data['content'] = $button . $data['content'];
             break;
     }
+}
+
+function tp4_preprocess_entity_iframe(&$variables){
+  if(arg(1) == 'node'){
+    $nid = arg(2);
+    $nodes = entity_load('node', array($nid));
+    $node = reset($nodes);
+    $type = $node->type;
+    if($type == 'video' || $type == 'video_playlist'){
+      /* This is so dirty I need a bath */
+      drupal_add_css('html{overflow: hidden;}', array('type' => 'inline'));
+    }
+  }
 }

@@ -67,7 +67,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     'advertising' => array(
       'client' => '[node:field_ads_client]',
       'tag' => '[node:field_ads_tag]',
-      'admessage' => 'Your video will start in XX seconds',
+      'admessage' => 'Your video will play after this brief advertisement',
     ),
     'jwplayer_analytics' => array(
       'enabled' => 'true',
@@ -109,7 +109,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
       'stretching' => 'uniform',
     ),
     'playback' => array(
-      'autostart' => '[node:field_auto_play]',
+      'autostart' => 'true',
       'fallback' => 'true',
       'mute' => '[node:field_mute_playback]',
       'primary' => 'html5',
@@ -140,7 +140,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     'advertising' => array(
       'client' => '[node:field_ads_client]',
       'tag' => '[node:field_ads_tag]',
-      'admessage' => 'Your video will start in XX seconds',
+      'admessage' => 'Your video will play after this brief advertisement',
     ),
     'jwplayer_analytics' => array(
       'enabled' => 'true',
@@ -213,7 +213,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     'advertising' => array(
       'client' => '[node:field_ads_client]',
       'tag' => '[node:field_ads_tag]',
-      'admessage' => 'Your video will start in XX seconds',
+      'admessage' => 'Your video will play after this brief advertisement',
     ),
     'jwplayer_analytics' => array(
       'enabled' => 'true',
@@ -286,7 +286,7 @@ function tpf_content_video_default_pm_jwplayer_presets() {
     'advertising' => array(
       'client' => '[node:field_ads_client]',
       'tag' => '[node:field_ads_tag]',
-      'admessage' => 'Your video will start in XX seconds',
+      'admessage' => 'Your video will play after this brief advertisement',
     ),
     'jwplayer_analytics' => array(
       'enabled' => 'true',

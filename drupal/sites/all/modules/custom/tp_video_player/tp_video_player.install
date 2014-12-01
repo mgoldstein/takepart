@@ -1,0 +1,530 @@
+<?php
+/**
+ * @file
+ * Sets up the base tables for video player configurations and video player
+ * ad schedule items.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function tp_video_player_schema() {
+  $schema = array();
+
+  $schema['tp_video_player_configuration'] = array(
+    'description' => 'The base table for video player configurations.',
+    'fields' => array(
+
+      'id' => array(
+        'description' => 'Primary key identifier for the configuration.',
+        'type' => 'serial',
+        'unsigned' => FALSE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'Default name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Promo */
+      'promo_image' => array(
+        'description' => 'Promo image.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'promo_title' => array(
+        'description' => 'Promo title.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'show_promo_title' => array(
+        'description' => 'Display promo title.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Layout */
+      'show_controls' => array(
+        'description' => 'Show the player controls.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'responsive' => array(
+        'description' => 'Responsive sizing.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'width' => array(
+        'description' => 'Width of player in pixels for non-responsive players, width part of aspect ratio for responsive players.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'height' => array(
+        'description' => 'Height of player in pixels for non-responsive players, height part of aspect ratio for responsive players.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'skin' => array(
+        'description' => 'Player skin.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'stretching' => array(
+        'description' => 'How to resize images and video to fit the display.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Playback */
+      'auto_start' => array(
+        'description' => 'Enable automatic automatic start of video playback.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'fallback' => array(
+        'description' => 'Fallback to download link.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'mute_playback' => array(
+        'description' => 'Enable muting of video playback.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'primary_player' => array(
+        'description' => 'Which rendering mode to use for rendering the player if both are available.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'repeat_playback' => array(
+        'description' => 'Enable looping of video playback.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Listbar */
+      'playlist_position' => array(
+        'description' => 'Position of the built in playlist control.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'playlist_layout' => array(
+        'description' => 'Layout of the built in playlist control.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'playlist_size' => array(
+        'description' => 'Size of the built in playlist control.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Sharing */
+      'enable_share' => array(
+        'description' => 'Enable social sharing.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'share_heading' => array(
+        'description' => 'Heading to use when sharing from the player.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'share_url' => array(
+        'description' => 'URL to use when sharing from the player.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'embed_code' => array(
+        'description' => 'Embed code for adding the player to an external site.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Advertising */
+      'ad_schedule' => array(
+        'description' => 'The strategy to use for playing ads.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'ad_frequency' => array(
+        'description' => 'Frequency at which pre-roll ads should be played in playlists.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'ad_client' => array(
+        'description' => 'Player level ad client.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'ad_tag' => array(
+        'description' => 'Player level ad tag.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'ad_message' => array(
+        'description' => 'Player level ad message.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Analytics */
+      'enable_jwplayer_analytics' => array(
+        'description' => 'Enable JWPlayer analytics.',
+        'type' => 'int',
+        'size' => 'tiny',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'google_analytics_title' => array(
+        'description' => 'Playlist item property to use for GA tracking.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'google_analytics_object' => array(
+        'description' => 'Name of the GA tracking object.',
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'site_catalyst_media_name' => array(
+        'description' => 'Site catalyst media name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+      'site_catalyst_player_name' => array(
+        'description' => 'Site catalyst player name.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => FALSE,
+        'default' => NULL,
+      ),
+
+      /* Change tracking timestamps */
+      'created_at' => array(
+        'description' => 'The Unix timestamp when the configuration was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated_at' => array(
+        'description' => 'The Unix timestamp when the configuration was last changed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+    'unique keys' => array(
+      'name' => array('name'),
+    ),
+  );
+
+  $schema['tp_video_player_entity_configuration'] = array(
+    'description' => 'The table for attaching video player configurations to entities.',
+    'fields' => array(
+
+      'configuration_id' => array(
+        'description' => 'Primary key identifier for the configuration.',
+        'type' => 'int',
+        'unsigned' => FALSE,
+        'not null' => TRUE,
+      ),
+      'entity_type' => array(
+        'description' => 'The type of entity.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'entity_id' => array(
+        'description' => 'Primary key identifer for the entity.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'view_mode' => array(
+        'description' => 'The specific view mode of the configuration.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    ),
+    'unique keys' => array(
+      'configuration_id' => array('configuration_id'),
+      'entity_type_entity_id_view_mode' => array('entity_type', 'entity_id', 'view_mode'),
+    ),
+  );
+
+  return $schema;
+}
+
+function tp_video_player_transfer_from_fields_sql() {
+return <<<EOSQL
+  SELECT
+    n.nid,
+    f1.field_sharing_enabled_value AS enable_share,
+    f2.field_share_url_value AS share_url,
+    f3.field_player_embeddable_value AS enable_embed,
+    f4.field_auto_play_value AS auto_start,
+    f5.field_mute_playback_value AS mute_playback,
+    f6.field_ads_client_value AS ad_client,
+    f7.field_ads_tag_value AS ad_tag,
+    f8.field_playlist_position_value AS playlist_position,
+    f9.field_playlist_layout_value AS playlist_layout,
+    f10.field_playlist_size_value AS playlist_size,
+    f11.field_player_skin_value AS skin
+  FROM node n
+
+  LEFT JOIN field_data_field_sharing_enabled f1
+    ON  f1.entity_type = 'node'
+    AND f1.entity_id = n.nid
+    AND f1.bundle = n.type
+
+  LEFT JOIN field_data_field_share_url f2
+    ON  f2.entity_type = 'node'
+    AND f2.entity_id = n.nid
+    AND f2.bundle = n.type
+
+  LEFT JOIN field_data_field_player_embeddable f3
+    ON  f3.entity_type = 'node'
+    AND f3.entity_id = n.nid
+    AND f3.bundle = n.type
+
+  LEFT JOIN field_data_field_auto_play f4
+    ON  f4.entity_type = 'node'
+    AND f4.entity_id = n.nid
+    AND f4.bundle = n.type
+
+  LEFT JOIN field_data_field_mute_playback f5
+    ON  f5.entity_type = 'node'
+    AND f5.entity_id = n.nid
+    AND f5.bundle = n.type
+
+  LEFT JOIN field_data_field_ads_client f6
+    ON  f6.entity_type = 'node'
+    AND f6.entity_id = n.nid
+    AND f6.bundle = n.type
+
+  LEFT JOIN field_data_field_ads_tag f7
+    ON  f7.entity_type = 'node'
+    AND f7.entity_id = n.nid
+    AND f7.bundle = n.type
+
+  LEFT JOIN field_data_field_playlist_position f8
+    ON  f8.entity_type = 'node'
+    AND f8.entity_id = n.nid
+    AND f8.bundle = n.type
+
+  LEFT JOIN field_data_field_playlist_layout f9
+    ON  f9.entity_type = 'node'
+    AND f9.entity_id = n.nid
+    AND f9.bundle = n.type
+
+  LEFT JOIN field_data_field_playlist_size f10
+    ON  f10.entity_type = 'node'
+    AND f10.entity_id = n.nid
+    AND f10.bundle = n.type
+
+  LEFT JOIN field_data_field_player_skin f11
+    ON  f11.entity_type = 'node'
+    AND f11.entity_id = n.nid
+    AND f11.bundle = n.type
+
+  WHERE n.type = 'video'
+  AND (
+       f1.field_sharing_enabled_value IS NOT NULL
+    OR f2.field_share_url_value IS NOT NULL
+    OR f3.field_player_embeddable_value IS NOT NULL
+    OR f4.field_auto_play_value IS NOT NULL
+    OR f5.field_mute_playback_value IS NOT NULL
+    OR f6.field_ads_client_value IS NOT NULL
+    OR f7.field_ads_tag_value IS NOT NULL
+    OR f8.field_playlist_position_value IS NOT NULL
+    OR f9.field_playlist_layout_value IS NOT NULL
+    OR f10.field_playlist_size_value IS NOT NULL
+    OR f11.field_player_skin_value IS NOT NULL
+  )
+EOSQL;
+}
+
+function tp_video_player_transfer_from_fields() {
+
+  // Get a list of all the existing video nodes.
+  $nids = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('n.type', 'video', '=')
+    ->execute()
+    ->fetchCol();
+
+  // Create a configuration for each video node.
+  foreach ($nids as $nid) {
+    $configuration = tp_video_player_create_configuration();
+    tp_video_player_save_configuration($configuration);
+    tp_video_player_attach_entity_configuration('node', $nid, 'video_full_page', $configuration);
+  }
+
+  // Ad tag translations
+  $ad_tags = array(
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_Siderail_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]' => 'tp3_video_siderail_640x360',
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_HP_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]' => 'tp3_video_hp_640x360',
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&correlator=[timestamp]' => 'tp3_video_640x360',
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_Siderail_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]' => 'tp3_video_siderail_640x360',
+    'http://pubads.g.doubleclick.net/gampad/ads?sz=640x360&iu=/4355895/TP3_Video_640x360&ciu_szs&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_po' => 'tp3_video_640x360',
+  );
+
+  // Get the field based configurations
+  $result = db_query(tp_video_player_transfer_from_fields_sql());
+  while ($row = $result->fetchAssoc()) {
+
+    $configuration = tp_video_player_load_entity_configuration(
+      'node', $row['nid'], 'video_full_page');
+
+    foreach ($row as $name => $value) {
+      if ($name === 'enable_embed') {
+        if ($value) {
+          $configuration->embed_code = '[node:iframe-embed-markup]';
+        }
+      }
+      elseif ($name === 'ad_tag') {
+        if (isset($ad_tags[$value])) {
+          $configuration->{$name} = $ad_tags[$value];
+        }
+      }
+      elseif ($name !== 'nid') {
+        $configuration->{$name} = $value;
+      }
+    }
+
+    tp_video_player_save_configuration($configuration);
+  }
+}
+
+/**
+ * Implements hook_install().
+ */
+function tp_video_player_install() {
+  foreach (tp_video_player_defaults() as $name => $info) {
+    $configuration = tp_video_player_create_configuration(array(
+
+      /* Allow access by name */
+      'name' => $name,
+
+      /* Promo */
+      'show_promo_title' => 0,
+      'promo_image' => NULL,
+      'promo_title' => '[node:title]',
+
+      /* Layout */
+      'show_controls' => 1,
+      'responsive' => 1,
+      'width' => 16,
+      'height' => 9,
+      'skin' => 'glow',
+      'stretching' => 'uniform',
+
+      /* Playback */
+      'auto_start' => 0,
+      'fallback' => 0,
+      'mute_playback' => 0,
+      'repeat_playback' => 0,
+      'primary_player' => 'html5',
+
+      /* Playlist */
+      'playlist_position' => 'none',
+      'playlist_size' => 270,
+      'playlist_layout' => 'extended',
+
+      /* Sharing */
+      'enable_share' => 1,
+      'share_heading' => 'Share This Video',
+      'share_url' => '[f:bool:{node:field_share_url}:{node:field_share_url}:{node:url:absolute}]?cmpid=longtailshare',
+      'embed_code' => '[node:iframe-embed-markup]',
+
+      /* Analytics */
+      'enable_jwplayer_analytics' => 1,
+      'google_analytics_object' => '_gaq',
+      'google_analytics_title' => 'title',
+      'site_catalyst_media_name' => '[node:title]',
+      'site_catalyst_player_name' => $info['title'],
+
+      /* Advertising */
+      'ad_schedule' => $info['type'] === 'video'
+        ? TP_VIDEO_PLAYER_VIDEO_SCHEDULE : TP_VIDEO_PLAYER_PLAYLIST_SCHEDULE,
+      'ad_frequency' => 1,
+      'ad_client' => 'vast',
+      'ad_tag' => NULL,
+      'ad_message' => 'Your video will play after this brief advertisement',
+    ));
+    tp_video_player_save_configuration($configuration);
+  }
+  tp_video_player_transfer_from_fields();
+}

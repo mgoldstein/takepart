@@ -20,6 +20,9 @@ sftp-config.json
 /drupal/nbproject/
 /drupal/nbproject/private/
 
+# Drush
+/drush/
+
 # Debug modules
 /drupal/debug.php
 /drupal/sites/all/modules/contrib/blazemeter/
@@ -30,6 +33,5 @@ sftp-config.json
 /drupal/sites/all/modules/contrib/features_plumber/
 /drupal/sites/all/libraries/FirePHPCore/
 
-# Composer and vendor library directory
-/drupal/sites/all/modules/custom/pm_core/vendor
-/drupal/sites/all/modules/custom/pm_core/composer.phar
+# Local Environment Modules
+/drupal/sites/all/modules/contrib/stage_file_proxy

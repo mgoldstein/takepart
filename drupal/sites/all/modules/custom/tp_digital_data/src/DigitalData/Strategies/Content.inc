@@ -7,6 +7,40 @@ class ddContent extends ddDefaultPage {
     return preg_match('/^node\/[0-9]+/', $path);
   }
 
+  protected function contentTypeName($type) {
+    $types = node_type_get_types();
+    if (array_key_exists($type, $types)) {
+      return $types[$type]->name;
+    }
+    return $type;
+  }
+
+  protected function termList($node, $field_name) {
+    $items = field_get_items('node', $node, $field_name);
+    $terms = array();
+    if ($items !== FALSE && count($items) > 0) {
+      foreach ($items as $item) {
+        if (isset($item['taxonomy_term'])) {
+          $terms[] = $item['taxonomy_term']->name;
+        }
+      }
+    }
+    return $terms;
+  }
+
+  protected function authorList($node, $field_name) {
+    $items = field_get_items('node', $node, $field_name);
+    $authors = array();
+    if ($items !== FALSE && count($items) > 0) {
+      $nids = array();
+      foreach ($items as $item) { $nids[] = $item['nid']; }
+      $author_nodes = entity_load('node', $nids);
+      foreach($author_nodes as $node){
+        $authors[] = $node->title;
+      }
+    }
+    return $authors;
+  }
   protected function categoryForContentType($type) {
     $categories = array(
       'openpublish_article' => 'Article',
@@ -21,7 +55,8 @@ class ddContent extends ddDefaultPage {
 	  $data = array();
     $node = menu_get_object();
 
-    $pageID = "node/{$node->nid}";
+    $pageID = $node->nid;
+
 
 	  //authors
 	  $ids = array();
@@ -86,13 +121,30 @@ class ddContent extends ddDefaultPage {
 		  foreach($free_tags as $key => $free_tag){
 			  $free_tag_names[] = $free_tag['taxonomy_term']->name;
 		  }
-		  $free_tag_names = implode(', ', $free_tag_names);
-		  $data['category']['series'] = $free_tag_names;
+		  $free_tag_names = implode(',', $free_tag_names);
+		  $data['category']['freeTags'] = $free_tag_names;
 	  }
+
+    //URL (pageURL, pageUrlAlias, siteSection)
+    global $base_url;
+    $request_path = request_path();
+    $url = $base_url. '/'. $request_path;
+    $site_section = explode('/', $request_path);
+    $site_section = $site_section[0];
+
+    //Permanent Title
+    if($permanent_title = field_get_items('node', $node, 'field_permanent_title')){
+      $data['page']['pageInfo']['permanentTitle'] = $permanent_title[0]['value'];
+    }else{
+      $data['page']['pageInfo']['permanentTitle'] = $node->title;
+    }
 
 	  $data['page']['pageInfo']['pageId'] = $pageID;
 	  $data['page']['pageInfo']['pageId'] = $pageID;
-	  $data['page']['pageInfo']['pageName'] = $node->title;
+	  $data['page']['pageInfo']['pageTitle'] = $node->title;
+    $data['page']['pageInfo']['pageUrl'] = $url;
+    $data['page']['pageInfo']['pageUrlAlias'] = $request_path;  //first part of the URL
+    $data['page']['pageInfo']['siteSection'] = $site_section;
 	  $data['page']['pageInfo']['template'] = $node->type;
 	  $data['page']['category']['primaryCategory'] = $this->categoryForContentType($node->type);
 	  

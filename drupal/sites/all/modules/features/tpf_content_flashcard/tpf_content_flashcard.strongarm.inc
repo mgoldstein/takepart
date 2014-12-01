@@ -119,23 +119,29 @@ function tpf_content_flashcard_strongarm() {
       'iframe' => array(
         'custom_settings' => FALSE,
       ),
+      'video_playlist_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '18',
+          'weight' => '19',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '15',
-        ),
-        'redirect' => array(
           'weight' => '16',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '17',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '18',
+        ),
+        'locations' => array(
+          'weight' => '20',
         ),
       ),
       'display' => array(),

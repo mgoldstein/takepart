@@ -186,6 +186,25 @@ Instead, select two dates to search for all content published between those date
   );
   $handler->display->display_options['filters']['field_topic_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_topic_tid']['vocabulary'] = 'topic';
+  /* Filter criterion: Content: Author(s) (field_author) */
+  $handler->display->display_options['filters']['field_author_nid']['id'] = 'field_author_nid';
+  $handler->display->display_options['filters']['field_author_nid']['table'] = 'field_data_field_author';
+  $handler->display->display_options['filters']['field_author_nid']['field'] = 'field_author_nid';
+  $handler->display->display_options['filters']['field_author_nid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_author_nid']['expose']['operator_id'] = 'field_author_nid_op';
+  $handler->display->display_options['filters']['field_author_nid']['expose']['label'] = 'Author(s)';
+  $handler->display->display_options['filters']['field_author_nid']['expose']['operator'] = 'field_author_nid_op';
+  $handler->display->display_options['filters']['field_author_nid']['expose']['identifier'] = 'field_author_nid';
+  $handler->display->display_options['filters']['field_author_nid']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['field_author_nid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_author_nid']['expose']['remember_roles'] = array(
+    2 => 0,
+    6 => '6',
+    7 => '7',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

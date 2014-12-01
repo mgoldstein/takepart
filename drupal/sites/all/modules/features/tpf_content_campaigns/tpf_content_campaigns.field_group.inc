@@ -21,12 +21,12 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background Image',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -55,8 +55,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -85,8 +85,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -115,8 +115,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -145,8 +145,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -175,8 +175,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -205,8 +205,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -235,8 +235,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -265,8 +265,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -295,8 +295,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -325,8 +325,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -355,8 +355,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
-      3 => 'field_campaign_bg_crop',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -410,7 +410,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -438,7 +438,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -467,7 +467,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -496,7 +496,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -504,12 +504,13 @@ function tpf_content_campaigns_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Background',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-background field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-background field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_background|node|campaign_card_multi_column|form'] = $field_group;
@@ -525,7 +526,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -554,7 +555,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -583,7 +584,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -612,7 +613,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -641,7 +642,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -670,7 +671,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '7',
+    'weight' => '9',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -699,7 +700,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '14',
+    'weight' => '15',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -755,10 +756,10 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Header/Branding',
-    'weight' => '3',
+    'weight' => '5',
     'children' => array(
-      0 => 'field_campaign_min_height',
-      1 => 'field_campaign_bg_color',
+      0 => 'field_campaign_bg_color',
+      1 => 'field_campaign_min_height',
       2 => 'field_campaign_mobile_min_height',
       3 => 'group_background_image',
       4 => 'group_logo',
@@ -815,7 +816,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Media',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_campaign_media_type',
       1 => 'field_campaign_media_caption',
@@ -823,6 +824,7 @@ function tpf_content_campaigns_field_group_info() {
       3 => 'field_campaign_media_photo',
       4 => 'field_campaign_media_title',
       5 => 'field_campaign_media_video',
+      6 => 'field_media_video_playlist',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -878,9 +880,9 @@ function tpf_content_campaigns_field_group_info() {
     'weight' => '25',
     'children' => array(
       0 => 'field_campaign_menu',
-      1 => 'field_campaign_menu_width',
-      2 => 'field_campaign_menu_bg_color',
-      3 => 'field_campaign_menu_color_child',
+      1 => 'field_campaign_menu_bg_color',
+      2 => 'field_campaign_menu_color_child',
+      3 => 'field_campaign_menu_width',
       4 => 'field_menu_color_parent',
       5 => 'group_menu_background_image',
     ),
@@ -907,7 +909,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_article_subhead',
       1 => 'field_promo_headline',
@@ -939,14 +941,14 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '4',
+    'weight' => '6',
     'children' => array(
-      0 => 'field_promo_headline',
-      1 => 'field_promo_short_headline',
-      2 => 'field_article_subhead',
+      0 => 'field_article_subhead',
+      1 => 'field_promo_headline',
+      2 => 'field_promo_short_headline',
       3 => 'field_promo_text',
-      4 => 'field_thumbnail',
-      5 => 'field_tab_action_override',
+      4 => 'field_tab_action_override',
+      5 => 'field_thumbnail',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -999,10 +1001,10 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(
-      0 => 'field_topic',
-      1 => 'field_series',
+      0 => 'field_series',
+      1 => 'field_topic',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1027,7 +1029,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',

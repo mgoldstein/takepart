@@ -21,13 +21,18 @@
         $(data.definition).appendTo($popup);
         $('<a>').addClass('flashcard-article-link')
           .attr('href', $this.attr('href'))
-          .text('read more on “' + data.page_title + '”')
+          .text('learn more about ' + data.title.toLowerCase())
           .on('click', function() {
             $window.trigger('flashcard-click', {term: $this.text().toLowerCase()});
           })
           .wrap('<p>').parent().appendTo($popup)
         ;
 
+        //adds a trigger for event90
+        $(this).on('click', function() {
+          $window.trigger('flashcard-click', {term: $this.text().toLowerCase()});
+        });     
+        
         $('<div class="flashcard-close">')
           .html('&times;')
           .on('click', function() {

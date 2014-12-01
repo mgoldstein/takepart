@@ -252,6 +252,7 @@ function tpf_content_campaigns_field_default_field_bases() {
       'allowed_values' => array(
         0 => 'Photo',
         1 => 'Video',
+        2 => 'Video Playlist',
       ),
       'allowed_values_function' => '',
     ),
@@ -374,7 +375,11 @@ function tpf_content_campaigns_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_campaign_multigrid_item',
     'foreign keys' => array(),
-    'indexes' => array(),
+    'indexes' => array(
+      'revision_id' => array(
+        0 => 'revision_id',
+      ),
+    ),
     'locked' => 0,
     'module' => 'field_collection',
     'settings' => array(
@@ -764,6 +769,35 @@ function tpf_content_campaigns_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_oauth_token_secret',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_promo_admin_title'
+  $field_bases['field_promo_admin_title'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_promo_admin_title',
     'foreign keys' => array(
       'format' => array(
         'columns' => array(

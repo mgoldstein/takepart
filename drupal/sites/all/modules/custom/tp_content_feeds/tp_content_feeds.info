@@ -1,0 +1,5 @@
+name = TakePart Content Feeds
+description = JSON feeds for exporting content and tag data to the email personalization system.
+core = 7.x
+package = TakePart
+version = 7.x-1.0

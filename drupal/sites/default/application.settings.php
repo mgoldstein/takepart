@@ -76,8 +76,8 @@ $conf += array(
   'pm_jwplatform_api_secret' => 'fJoeVtVS5YriI0Bnh8v6lo1i',
   'pm_jwplatform_content_domain' => 'content.jwplatform.com',
   'pm_jwplatform_content_dns_mask' => 'video.takepart.com',
-  'pm_jwplayer_account_token' => 'esP2FhWwEeODmBIxOUCPzg',
-  'pm_jwplayer_player_key' => 'xlvA/gqv5vAkINGetf3aFsus8xjtNRWt+WzQqA==',
+  'tp_video_player_account_token' => 'esP2FhWwEeODmBIxOUCPzg',
+  'tp_video_player_key' => 'xlvA/gqv5vAkINGetf3aFsus8xjtNRWt+WzQqA==',
 );
 
 
@@ -103,4 +103,15 @@ if (!array_key_exists('services_domain', $conf)) {
 $conf += array(
   'centralized_login_widget_js' => "https://{$conf['services_domain']}/assets/login_widget.js",
   'digital_data_wrapper_js' => "https://{$conf['services_domain']}/assets/dtm_data.js",
+);
+
+// Email Personalization Integration
+$conf += array(
+  'tp_content_feeds_tag_vocabularies' => array('topic'),
+  'tp_content_feeds_content_types' => array(
+    'feature_article',
+    'openpublish_article',
+    'openpublish_photo_gallery',
+    'video',
+  ),
 );

@@ -58,4 +58,3 @@ function takepart_og_image_article_main($nid) {
         return null;
     }
 }
-?>

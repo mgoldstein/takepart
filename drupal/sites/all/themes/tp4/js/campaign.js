@@ -87,6 +87,16 @@
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout($.proxy(adjustCardHeightsAndPadding, this), 250);
       });
+      
+      //addresses issue with hover state
+      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('touchstart mouseover', function() {
+        $(this).addClass('hover-class'); 
+      });
+      
+      //addresses issue with hover state
+      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('touchend mouseout', function() {
+        $(this).removeClass('hover-class');
+      });
     }
   };
 
@@ -128,9 +138,25 @@
           $('.campaign-menu-toggle').hide();
         }
       }
-
-      if ( Drupal.settings.tp_campaigns )
-        setTimeout( bindStickupToMenus );
+      
+      //only bind when document is ready to bind
+      $(document).ready(function() {
+        //addresses issue with race condition
+        if ( Drupal.settings.tp_campaigns )
+          setTimeout( bindStickupToMenus, 2000 );
+          
+        //ensures that this only runs on campaign displays
+        if ($('body').hasClass('campaign-display')) {
+          $(window).scroll(function() {
+            if ($('#block-tp-campaigns-tp-campaigns-hero').hasClass('isStuck')) {
+              $('#main-wrap').css('margin-top', parseInt($('#block-tp-campaigns-tp-campaigns-hero').height()) + 'px');
+            }
+            else {
+              $('#main-wrap').css('margin-top', '');
+            }
+          });
+        }
+      });
     }
   };
 
@@ -143,7 +169,8 @@
           $(this).attr('src', $(this).parent().find('img.rollover-image-on').attr('src'));
         },
         function() {
-          $(this).attr('src', $(this).attr('old-src'));
+          // $(this).attr('src', $(this).attr('old-src'));
+          $(this).attr('src','/sites/all/themes/tp4/images/newsletter_submit.png');
         }
       );
     }
@@ -195,6 +222,11 @@
             },
             {
               name: 'email',
+              title: title,
+              note: description
+            },
+            {
+              name: 'mailto',
               title: title,
               note: description
             }

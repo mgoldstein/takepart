@@ -111,16 +111,19 @@ function tpf_content_action_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
+          'weight' => '10',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '11',
         ),
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '12',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '9',
+        ),
+        'locations' => array(
+          'weight' => '14',
         ),
       ),
       'display' => array(

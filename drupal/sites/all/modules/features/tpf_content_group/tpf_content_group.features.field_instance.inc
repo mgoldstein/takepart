@@ -73,6 +73,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 1,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -166,6 +172,12 @@ function tpf_content_group_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 4,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -287,6 +299,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 8,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -380,6 +398,12 @@ function tpf_content_group_field_default_field_instances() {
           'image_style' => 'right-sidebar-thumbnails',
         ),
         'type' => 'image',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 0,
       ),
       'vidpop_map' => array(
@@ -483,6 +507,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 7,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -582,6 +612,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 6,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -670,6 +706,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 5,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -756,6 +798,12 @@ function tpf_content_group_field_default_field_instances() {
         'settings' => array(),
         'type' => 'hidden',
         'weight' => 2,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
       'vidpop_map' => array(
         'label' => 'above',
@@ -848,6 +896,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'link_default',
         'weight' => 3,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -860,6 +914,7 @@ function tpf_content_group_field_default_field_instances() {
     'label' => 'Group Site URL',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'rel' => '',
@@ -870,6 +925,7 @@ function tpf_content_group_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -942,6 +998,12 @@ function tpf_content_group_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1034,6 +1096,12 @@ function tpf_content_group_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'vidpop_map' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1071,7 +1139,6 @@ function tpf_content_group_field_default_field_instances() {
         'search_api_sorts' => 0,
         'shortcut' => 0,
         'system' => 0,
-        'takepart_addthis' => 0,
         'takepart_custom' => 0,
         'twitter_pull' => 0,
         'user' => 0,
@@ -1153,6 +1220,12 @@ function tpf_content_group_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -1245,6 +1318,12 @@ function tpf_content_group_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',

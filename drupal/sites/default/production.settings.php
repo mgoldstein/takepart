@@ -18,5 +18,10 @@ $conf += array(
 // Do not log signups in production
 $conf += array('pm_signup_log' => FALSE);
 
+// JWPlatform video import tag
+$conf += array(
+  'pm_jwplatform_auto_create_tag' => 'Admin: TP Auto',
+);
+
 // Tone down the logging
 ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED);

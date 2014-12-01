@@ -9,6 +9,10 @@ form div.nodeconnect-add input{
   box-shadow:none;
   margin: 0;
   padding: 0;
+  /* IE 7 Hacks */
+  *display: block;
+  *font-size: 0;
+  *line-height: 0;
 }
 form div.nodeconnect-edit input {
   background: url(pencil.png) no-repeat;

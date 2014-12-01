@@ -723,13 +723,13 @@ function newsletter_campaign_signup_form_callback($form, $form_state) {
     }
     else {
       // Inform the user that email signup failed.
-      $message = t('We were unable to process your subscription at this time,'
-        . ' please try again later.');
+      $message = '<div class="error">' . t('We were unable to process your subscription at this time,'
+        . ' please try again later.' . '</div>');
     }
   }
   else {
     // Inform the user that the email address is invalid.
-    $message = t('Email address is invalid.');
+    $message = '<div class="error">' . t('Email address is invalid.') . '</div>';
   }
 
   // Always send back a response message.

@@ -9,10 +9,10 @@
  * Implements hook_help().
  */
 function tp4_support_help($path, $arg) {
-	switch ($path) {
-		case 'admin/help#tp4_support':
-			return '<p>' . t('Support module for the TP4 theme and the Nov, 2013 redesign.') . '</p>';
-	}
+  switch ($path) {
+    case 'admin/help#tp4_support':
+      return '<p>' . t('Support module for the TP4 theme and the Nov, 2013 redesign.') . '</p>';
+  }
 }
 
 /**
@@ -66,6 +66,9 @@ function tp4_support_block_info(){
   $blocks['tp4_mobile_menu_header'] = array(
     'info' => t('Mobile Menu Header')
   );
+  $blocks['tp4_mobile_social_menu'] = array(
+    'info' => t('Mobile Social Menu')
+  );
   return $blocks;
 }
 
@@ -94,6 +97,10 @@ function tp4_support_block_view($delta = ''){
     case 'tp4_mobile_menu_header':
       $block['content'] = theme('tp4_support_mobile_menu_header');
     break;
+    case 'tp4_mobile_social_menu':
+      drupal_add_js(drupal_get_path('module', 'tp4_support'). '/js/mobile-social-menu.js', 'file'); //TODO: move this to tp4 theme script.js file
+      $block['content'] = theme('tp4_support_mobile_social_menu');
+      break;
   }
   return $block;
 }
@@ -247,6 +254,9 @@ function tp4_support_theme() {
         'user_links' => array(),
         'social_menu' => array(),
       )
+    ),
+    'tp4_support_mobile_social_menu' => array(
+      'template' => 'tp4-support-mobile-social-menu',
     ),
     'tp4_support_featured_campaign' => array(
       'variables' => array(
@@ -682,4 +692,153 @@ function tp4_support_menu_attribute_info_alter(&$info) {
   $info['name']['description'] = t('Text for the more link on MegaMenus');
   $info['rel']['label'] = t('Anchor Tag');
   $info['rel']['description'] = t('Add an anchor tag to the link above here.');
+}
+
+/**
+ * Alter homepage callback to function that checks for content length.
+ */
+function tp4_support_page_delivery_callback_alter(&$callback) {
+  if ($callback == 'drupal_deliver_html_page' && current_path() == 'tp4_homepage') {
+    $callback = 'tp4_support_deliver_homepage';
+  }
+}
+
+/**
+ * If homepage content is empty, return a 500 status code to prevent CDN caching.
+ */
+function tp4_support_deliver_homepage($page_callback_result) {
+  if (empty($page_callback_result['content'])) {
+    drupal_add_http_header('Content-Type', 'text/plain');
+    drupal_add_http_header('Status', '500 Internal Server Error');
+  }
+  else {
+    drupal_deliver_html_page($page_callback_result);
+  }
+}
+
+/**
+ *  Implements hook_token_info().
+ */
+function tp4_support_token_info() {
+  $info = array();
+  
+  //new type of token
+  $info['types']['tp4_support_tokens'] = array(
+    'name' => t('TP4 Support Tokens'),
+    'description' => t('Custom tokens for TP4')
+  );
+  
+  //token area
+  $info['tokens']['tp4_support_tokens']['campaign_thumbnail'] = array(
+    'name' => t('Campaign Thumbnail'),
+    'description' => t('If a campaign thumbnail exist and a reference is set then it will pull that thumbnail, otherwise fallback to the node\'s thumbnail'),
+    'needs-data' => 'node'
+  );
+  
+  //return the new defined token
+  return $info;
+}
+
+/**
+ *  Implements hook_tokens().
+ */
+function tp4_support_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+  
+  //token for tp4 support
+  if ($type == 'tp4_support_tokens') {
+    //does it for each token available
+    foreach ($tokens as $name => $value) {
+      //switch based on token name
+      switch ($name) {
+        case 'campaign_thumbnail':
+          $replacements[$value] = _tp4_support_token_campaign_thumbnail($data);
+          break;
+      }
+    }
+  }
+  
+  //return the replacement
+  return $replacements;
+}
+
+/**
+ *  @function:
+ *    Token function that is used to grab the correct thumbnail for campaign pages
+ *
+ *    @precedence:
+ *      1. Node Level Thumbnail
+ *      2. Parent Campaign Level Thumbnail
+ *      3. No Thumbnail
+ */
+function _tp4_support_token_campaign_thumbnail($data = array()) {
+  $node = $data['node'];
+  
+  //only does this if the field_thumbnail is not set
+  if (isset($node->field_thumbnail) && empty($node->field_thumbnail)) {
+    //checks to ensure that the node is passed and only do this for campaign that has the field set.
+    if (is_object($node) && isset($node->field_campaign_reference)) {
+      //grabs the target id
+      $campaign_item = field_get_items('node', $node, 'field_campaign_reference');
+      
+      //checks to ensure that the target id is numeric
+      if (is_numeric($campaign_item[0]['target_id'])) {
+        //return campaign nid
+        return $campaign_item[0]['target_id'];
+      }
+      else {
+        //fallback to return node nid
+        return $node->nid;
+      }
+    }
+  }
+  //return the node nid if the field is not empty
+  elseif (isset($node->field_thumbnail) && !empty($node->field_thumbnail)) {
+    return $node->nid;
+  }
+  
+  //default return 0
+  return 0;
+}
+
+/**
+ *  Implements hook_menu_alter().
+ */
+function tp4_support_menu_alter(&$items) {
+  //alters the page callback for the node reference. ensure that this module is after node_reference.
+  $items['node_reference/autocomplete/%/%/%']['page callback'] = 'tp4_support_node_reference_autocomplete';
+}
+
+/**
+ *  @function:
+ *    This function is used to override the autocomplete provided by node_reference.
+ *    This code was taken from the node_reference.module.
+ *    Autocomplete now comes back with published vs unpublished.
+ */
+function tp4_support_node_reference_autocomplete($entity_type, $bundle, $field_name, $string = '') {
+  $field = field_info_field($field_name);
+  $instance = field_info_instance($entity_type, $field_name, $bundle);
+
+  $options = array(
+    'string' => $string,
+    'match' => $instance['widget']['settings']['autocomplete_match'],
+    'limit' => 10,
+  );
+  $references = node_reference_potential_references($field, $options);
+
+  $matches = array();
+  foreach ($references as $id => $row) {
+    // Markup is fine in autocompletion results (might happen when rendered
+    // through Views) but we want to remove hyperlinks.
+    $suggestion = preg_replace('/<a href="([^<]*)">([^<]*)<\/a>/', '$2', $row['rendered']);
+    
+    //adds in additional status
+    $node = node_load($id);
+    $status = ($node->status) ? '[Published]' : '[Unpublished]';
+    
+    // Add a class wrapper for a few required CSS overrides.
+    $matches[$row['title'] . " [nid:$id]"] = '<div class="reference-autocomplete">' . $suggestion . ' ' . $status .  '</div>';
+  }
+
+  drupal_json_output($matches);
 }

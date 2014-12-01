@@ -58,7 +58,7 @@ function tpf_content_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Deprecated',
-    'weight' => '15',
+    'weight' => '16',
     'children' => array(
       0 => 'field_article_action',
       1 => 'field_display_tag',

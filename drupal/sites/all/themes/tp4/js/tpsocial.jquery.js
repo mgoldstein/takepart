@@ -131,12 +131,14 @@
                         })(srvc, $this, $link)
                                 );
                     }
-                    else {
+                    /* else { 
                         $link.bind('click', (function() {
                            window.location = $(".tp-social-mailto").attr('href');
-                        })
-                                );
-                    }
+                           e.preventDefault();
+                           return false;
+                        }));
+                       
+                    }  */
                 if (typeof data.hoverfocus == 'function') {
                     $link
                             .bind('mouseover focus', (function(srvc, $parent, $lnk) {

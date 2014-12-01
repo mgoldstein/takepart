@@ -54,7 +54,7 @@
       foreach($menu_elements as $key => $item){
         $improved[]   = $menu_tree[$item];
       }
-// dd($improved);
+
       print '<div class="menu-wrapper">';
       print '<div class="menu sf-navbar" style="'. implode(' ', $menu_styles). '">';
       print '<ul class="sf-menu" style="background-color: transparent;">';
@@ -97,7 +97,7 @@
           $child_elements = element_children($link['#below']);
           foreach ($child_elements as $key_child => $link_child){
 
-            $child_menu_anchor = $link_child['#localized_options']['attributes']['rel'];
+            $child_menu_anchor = $link['#below'][$link_child]['#localized_options']['attributes']['rel'];
 
             $child_menu_title = $link['#below'][$link_child]['#title'];
 
@@ -118,11 +118,12 @@
             if (!empty($target)) {
               $clattr['target'] = $target;
             }
-            
+
             $child_menu_link = l($child_menu_title,
               $link['#below'][$link_child]['#href'], array(
                 'fragment' => $child_menu_anchor,
                 'attributes' => $clattr,
+                'html' => TRUE
               ));
 
             print '<li' . $child_menu_attrs . '>' . $child_menu_link . '</li>';

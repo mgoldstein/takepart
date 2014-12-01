@@ -1,0 +1,204 @@
+.mobile-social-wrapper{
+  position: fixed;
+  bottom: -43px;
+  left: 0;
+  right: 0;
+  height: 43px;
+  z-index: 9;
+  transition: .25s;
+  @include breakpoint($breakpoint-tablet){
+    display: none;
+  }
+}
+.mobile-social-wrapper.nav-show{
+  bottom: 0;
+}
+.mobile-social-wrapper ul.parent-social-menu{
+  width: 100%;
+  position: relative;
+}
+.mobile-social-wrapper ul.parent-social-menu > li{
+  float: left;
+  width: 25%;
+  text-align: center;
+  padding-top: 5px;
+  color: white;
+  height: 43px;
+  display: block;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  .social-inner:after{
+    font-family: takepart;
+    display: block;
+    font-size: 10px;
+    margin-top: -2px;
+  }
+}
+.mobile-social-wrapper ul.parent-social-menu li.share{
+  background: #00b5cc;
+  .social-inner:after{
+    content: '\e310';
+  }
+}
+.mobile-social-wrapper ul.parent-social-menu li.subscribe{
+  background: #018b73;
+  position: relative;
+  z-index: 0;
+  .social-inner:after{
+    content: '\e305';
+    position: absolute;
+    top: 22px;
+    left: 0;
+    right: 0;
+  }
+  a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5px;
+    bottom: 0;
+    color: white;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
+.mobile-social-wrapper ul.parent-social-menu li.takeaction{
+  background: #01bf9e;
+  .social-inner:after{
+    content: '\e100';
+  }
+}
+.mobile-social-wrapper ul.parent-social-menu li.facebook{
+  background: #3c5a98;
+  .social-inner{
+    font-size: 10px;
+    margin-top: -4px;
+  }
+}
+
+.mobile-social-wrapper .share-submenu-wrapper{
+  position: absolute;
+  z-index: 1;
+  right: -100%;
+  bottom: -43px;
+  width: 100%;
+  display: block;
+  background: white;
+  height: 43px;
+  transition: .5s;
+}
+.mobile-social-wrapper li.share.active .share-submenu-wrapper{
+  width: 75%;
+  right: 0;
+}
+.mobile-social-wrapper .tp-social-mobile{
+  white-space: nowrap;
+  list-style-type: none;
+  overflow: auto;
+  text-align: left;
+}
+.mobile-social-wrapper .tp-social-mobile a.tp-social-link{
+  display: inline-block;
+  line-height: 43px;
+  width: 50px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-indent: 1000px;
+  font-size: 20px;
+  color: white;
+  background: none;
+  text-align: center;
+  &:hover{
+    text-decoration: none;
+  }
+  &:before{
+    text-indent: 0;
+    display: block;
+  }
+}
+
+/* Styling for social sharing outside of social menu */
+#article-social{
+  display: none;
+  @include breakpoint($breakpoint-tablet){
+    display: block;
+  }
+}
+
+/* Styling for the slimnav */
+@include breakpoint($breakpoint-tablet){
+
+}
+.header-wrapper{
+  transition: 0.2s;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: white;
+  z-index: 99;
+  top: 0;
+  &.nav-hide{
+    top: -53px;
+  }
+  &.nav-show{
+    top: 0;
+  }
+  @include breakpoint($breakpoint-tablet){
+    position: static;
+  }
+}
+
+
+/**
+ * The below should be separated out into it's own tpsocial helper
+ */
+.social .tp-social-pinterest:before{
+  @extend .tp-social-Pinterest:before;
+  background-color: #ca2026;
+}
+.social .tp-social-facebook:before{
+  @extend .tp-social-Facebook:before;
+  background-color: #3d5b96;
+}
+.social .tp-social-twitter:before{
+  @extend .tp-social-Twitter:before;
+  background-color: #34aadf;
+}
+.social .tp-social-googleplus:before{
+  @extend .tp-social-GooglePlus:before;
+  background-color: #cc181e;
+}
+.social .tp-social-tumblr:before{
+  @extend .tp-social-Tumblr:before;
+  background-color: #385774;
+}
+.social .tp-social-email:before{
+  @extend .tp-social-Email:before;
+  background-color: #000;
+}
+.social .tp-social-mailto:before{
+  @extend .tp-social-Mailto:before;
+  background-color: #000;
+}
+.social .tp-social-linkedin:before{
+  @extend .tp-social-Linkedin:before;
+  background-color: #0977b4;
+}
+.social .tp-social-vine:before{
+  @extend .tp-social-Vine:before;
+  background-color: #00b386;
+}
+.social .tp-social-instagram:before{
+  @extend .tp-social-Instagram:before;
+  background-color: #3f729b;
+}
+.social .tp-social-youtube:before{
+  @extend .tp-social-Youtube:before;
+  background-color: #cc181e;
+}
+.social .tp-social-reddit:before{
+  @extend .tp-social-Instagram:before;  //this obviously needs to change
+  background-color: #00b386; //this also obviously needs to change
+}

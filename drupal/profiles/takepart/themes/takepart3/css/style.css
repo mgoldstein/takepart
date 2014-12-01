@@ -3224,3 +3224,10 @@ fieldset.captcha {
   width: 480px;
   height: 270px;
 }
+
+.leaderboard {
+    margin: 1em 0;
+}
+.leaderboard div {
+    margin: 0 auto;
+}

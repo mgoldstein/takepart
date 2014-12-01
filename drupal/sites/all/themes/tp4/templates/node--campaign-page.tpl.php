@@ -13,10 +13,12 @@
     hide($content['links']);
     print render($content);
   ?>
-  <?php if ($show_facebook_comments) : ?>
-  <div id="campaign-page-comments" class="campaign-page-comments">
-    <h1>Comments <span class="count">(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h1>
-    <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
-  </div>
+  <?php if ($show_fb_comments): ?>
+    <?php if ($show_facebook_comments) : ?>
+    <div id="campaign-page-comments" class="campaign-page-comments">
+      <h1>Comments <span class="count">(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h1>
+      <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
+    </div>
+    <?php endif; ?>
   <?php endif; ?>
 </article>

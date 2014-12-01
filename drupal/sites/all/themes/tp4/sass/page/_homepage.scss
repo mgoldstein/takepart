@@ -160,6 +160,17 @@ body.front{
         }
       }
     }
+    &.node-video-playlist{
+      h2.node-title{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F9";
+        }
+      }
+    }
     margin-bottom: 1em;
   }
   .view-mode-feature-main-tpl {
@@ -181,6 +192,17 @@ body.front{
       }
     }
     &.node-video{
+      h2.field-name-field-article-subhead{
+        &:after{
+          font-family: "SSGizmo";
+          font-size: 1.25em;
+          line-height: 0.8;
+          vertical-align: text-bottom;
+          content: " \1F4F9";
+        }
+      }
+    }
+    &.node-video-playlist{
       h2.field-name-field-article-subhead{
         &:after{
           font-family: "SSGizmo";
@@ -294,6 +316,17 @@ body.toolbar {
       padding-right: 25px;
     }
     .video:after{
+      font-family: "SSGizmo";
+      font-size: 1.25em;
+      line-height: 0.8;
+      vertical-align: text-bottom;
+      content: " \1F4F9";
+      margin-left: -25px;
+    }
+    .video-playlist a{
+      padding-right: 25px;
+    }
+    .video-playlist:after{
       font-family: "SSGizmo";
       font-size: 1.25em;
       line-height: 0.8;

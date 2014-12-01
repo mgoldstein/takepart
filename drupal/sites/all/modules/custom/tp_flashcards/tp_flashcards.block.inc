@@ -77,7 +77,7 @@ function _tp_flashcards_related_content_block($nodes_to_show = 8) {
         foreach (array('field_topic', 'field_free_tag') as $field) {
           $query = new EntityFieldQuery();
           $query->entityCondition('entity_type', 'node')
-            ->entityCondition('bundle', array('flashcard', 'openpublish_article', 'feature_article', 'openpublish_photo_galery', 'video'))
+            ->entityCondition('bundle', array('flashcard', 'openpublish_article', 'feature_article', 'openpublish_photo_galery', 'video', 'video_playlist'))
             ->propertyCondition('status', 1)
             ->fieldCondition($field, 'tid', $tids, 'IN')
             ->propertyOrderBy('created', 'DESC')

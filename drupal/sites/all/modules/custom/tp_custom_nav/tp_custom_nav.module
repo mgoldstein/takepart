@@ -1,0 +1,514 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Custom Nav feature.
+ */
+
+include_once 'tp_custom_nav.features.inc';
+
+/**
+ *  Implements hook_theme().
+ */
+function tp_custom_nav_theme($existing, $type, $theme, $path) {
+  //adds a new theme
+  return array(
+    'tp_custom_nav_slim' => array(
+      'variables' => array(
+        'logo' => NULL,
+        'slimnav' => NULL,
+        'social_menu' => NULL,
+        'search' => NULL,
+        'right_info' => NULL,
+        'left_info' => NULL
+      ),
+      'template' => 'tp_custom_nav_slim',
+      'path' => drupal_get_path('module', 'tp_custom_nav') . '/templates'
+    ),
+    'tp_slim_nav_colors' => array(
+      'variables' => array(),
+      'file' => 'tp_custom_nav.theme.inc'
+    ),
+    'tp_slim_nav_wrapper' => array(
+      'variables' => array(
+        'elements' => NULL
+      ),
+      'file' => 'tp_custom_nav.theme.inc'
+    )
+  );
+}
+
+/**
+ *  Implements hook_preprocess_html().
+ */
+function tp_custom_nav_preprocess_html(&$variables) {
+  //adds new font
+  drupal_add_js("WebFontConfig = { fontdeck: { id: '50294' } };", array('type' => 'inline', 'scope'=> 'footer', 'weight' => 10));
+  drupal_add_js('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 11));
+}
+
+/**
+ *  Implements hook_preprocess_page().
+ */
+function tp_custom_nav_preprocess_page(&$variables) {
+  $node = $variables['node'];
+  global $theme;
+  
+  $tp_slim_nav_status = variable_get('tp_slim_nav_status', 1);
+  
+  //only override the menu if this content has the new field
+  if ($tp_slim_nav_status && isset($node->field_brand_category) && $theme == 'tp4') {
+    $social_markup = '';
+    $slim_nav = field_get_items('node', $node, 'field_brand_category');
+    $header = $variables['page']['header'];
+    
+    //overrides for campaign level
+    _tp_custom_nav_campaign_level_handler($node, $slim_nav);
+    
+    if (!empty($slim_nav)) {
+      $slim_nav_tid = $slim_nav[0]['target_id'];
+      $slim_nav_tax = taxonomy_term_load($slim_nav_tid);
+    
+      //social menu
+      $slim_nav_social_menu = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_social_menu');
+      if (!empty($slim_nav_social_menu)) {
+        $social_menu = $slim_nav_social_menu[0]['value'];
+        $brand_class = str_replace(' ', '-', strtolower($slim_nav_tax->name)) . '-nav-theme';
+        
+        $social_markup = theme('html_tag', array(
+          'element' => array(
+            '#tag' => 'div',
+            '#value' => '<div class="title">Follow<br/>Pivot</div>' . render(menu_tree($social_menu)),
+            '#attributes' => array(
+              'class' => 'follow-us ',
+        ))));
+      }
+      
+      $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#markup'] = $social_markup;
+      $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#prefix'] = '<div class="tp_slim_nav_wrapper ' . $brand_class . '">';
+      $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#suffix'] = '</div>';
+      
+      //slim nav menu
+      $slim_nav_menu = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_menu');
+      if (!empty($slim_nav_menu)) {
+        $menu = $slim_nav_menu[0]['value'];
+      }
+      
+      //calls the slim nav menu to process into the left draw
+      $mobile_menu = menu_tree_all_data($menu);
+      $mobile_menu_processed = _tp_custom_nav_menu_parser($mobile_menu);
+      
+      //unsets all item in the original menu
+      foreach ($variables['page']['left_drawer']['menu_menu-megamenu'] as $key => $value) {
+        if (is_numeric($key)) {
+          unset($variables['page']['left_drawer']['menu_menu-megamenu'][$key]);
+        }
+      }
+      
+      //combines the new menu with current settings
+      $variables['page']['left_drawer']['menu_menu-megamenu'] = $mobile_menu_processed + $variables['page']['left_drawer']['menu_menu-megamenu'];
+
+      //unsets the slim nav if one exist
+      unset($variables['page']['header']['tp4_support_tp4_slim_nav']);
+      unset($variables['page']['header']['tp4_support_tp4_fat_header']);
+      
+      //block load and render
+      $block = block_load('tp_custom_nav', 'tp_custom_nav_slim');
+      $block_content = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+      
+      //creates the custom slim nav
+      $custom_block['tp_custom_nav_slim'] = array(
+        '#markup' => $block_content,
+        '#block' => $block,
+        '#theme_wrappers' => array(
+        ),
+        '#weight' => -10
+      );
+      
+      //pushes the new array to the top of the stack
+      array_unshift($variables['page']['header'], $custom_block);
+      
+      //ensures that the ga is on top of the stack otherwise theme will place margin-bottom somewhere else
+      if (isset($variables['page']['header']['boxes_ga_campaign_header'])) {
+        $ga = $variables['page']['header']['boxes_ga_campaign_header'];
+        unset($variables['page']['header']['boxes_ga_campaign_header']);
+        array_unshift($variables['page']['header'], $ga);
+      }
+      
+      //allows other modules using hook_tp_nav_process_alter() to alter the output before its final render
+      drupal_alter('tp_nav_process', $variables);
+    }
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function tp_custom_nav_block_info() {
+	$blocks = array();
+	
+  $blocks['tp_custom_nav_slim'] = array(
+		'info' => t('TP Dynamic Slim Nav'),
+	);
+ 
+  $blocks['tp_custom_nav_takepart_collab'] = array(
+    'info' => t('TP Custom Takepart Collab Block')
+  );
+ 
+	return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function tp_custom_nav_block_view($delta = '') {
+  $block = array();
+ 
+  //switch based on the delta
+  switch($delta) {
+    //dynamic block that is used to create the custom slim
+    case 'tp_custom_nav_slim':
+			$block['subject'] = NULL;
+      $block['content'] = _tp_custom_nav_slim_block_gen();
+      break;
+    //custom collab block for pivot. this can be reused on builds
+    case 'tp_custom_nav_takepart_collab':
+			$block['subject'] = NULL;
+      $block['content'] = _tp_custom_nav_slim_collab_gen();
+      break;
+  }
+ 
+  return $block;
+}
+
+/**
+ *  @function:
+ *    This function is used to override the node level with campaign level
+ */
+function _tp_custom_nav_campaign_level_handler(&$node, &$slim_nav = array()) {
+  if ($campaign_ref = field_get_items('node', $node, 'field_campaign_reference')) {
+    $campaign_ref_nid = $campaign_ref[0]['target_id'];
+    
+    //checks to ensure that the campaign ref is set
+    if (!empty($campaign_ref_nid)) {
+      $campaign_node = node_load($campaign_ref_nid);
+      $campaign_slim_nav = field_get_items('node', $campaign_node, 'field_brand_category');
+      
+      //overrides the slim nav if required
+      if (!empty($campaign_slim_nav)) {
+        $slim_nav = $campaign_slim_nav;
+        $node = $campaign_node;
+      }
+    }
+  }
+}
+
+/**
+ *  @function:
+ *    This function is used to generate the custom collab block
+ *
+ *    @param:
+ *      normal_state = markup for the normal state
+ *      focus_state = markup for the focus/hover state
+ */
+function _tp_custom_nav_slim_collab_gen($normal_state = NULL, $focus_state = NULL, $classes = array()) {
+  $output = '';
+  
+  //allows other modules to hook in and alter the output
+  drupal_alter('tp_collab', $normal_state, $focus_state, $classes);
+  
+  //only return something if title is set
+  if (!empty($normal_state)) {
+    //appends the custom js to handle the block on desktop and mobile
+    drupal_add_js(drupal_get_path('module', 'tp_custom_nav') . '/js/tp_custom_nav.js', 'file');
+    
+    //normal state
+    $normal_state_wrapper = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => $normal_state,
+        '#attributes' => array(
+          'class' => 'normal-state',
+    ))));
+
+    //focus state
+    $focus_state_wrapper = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => $focus_state,
+        '#attributes' => array(
+          'class' => 'focus-state',
+          'style' => 'display: none;'
+    ))));
+    
+    //main wrapper for both states
+    $output = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => $normal_state_wrapper . $focus_state_wrapper,
+        '#attributes' => array(
+          'class' => 'tp-custom-collab-block ' . implode(' ', $classes),
+    ))));
+  }
+  
+  return $output;
+}
+
+/**
+ *  @function:
+ *    This function is used to generate the slim nav.
+ *    This function will only run when the node field brand category is set.
+ */
+function _tp_custom_nav_slim_block_gen() {
+  //default variables
+  $node = menu_get_object();
+  $output = '';
+  
+  _tp_custom_nav_campaign_level_handler($node);
+
+  //checks if the field is set
+  if (isset($node->field_brand_category)) {
+    $slim_nav = field_get_items('node', $node, 'field_brand_category');
+    
+    //checks if the field has a value
+    if (!empty($slim_nav)) {
+      $slim_nav_tid = $slim_nav[0]['target_id'];
+      $slim_nav_tax = taxonomy_term_load($slim_nav_tid);
+      
+      //this is the logo that handles the logo portion
+      $slim_nav_logo = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_logo');
+      if (!empty($slim_nav_logo)) {
+        $logo_uri = $slim_nav_logo[0]['uri'];
+        $logo = theme(
+          'image_style',
+          array(
+            'path' => $logo_uri,
+            'style_name' => 'thumbnail',
+            'attributes' => array(
+              'class' => 'tp-slim-nav-logo'
+            )
+          )
+        );
+      }
+      
+      //this is for the slim nav logo url
+      $slim_nav_url = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_logo_url');
+      if (!empty($slim_nav_url)) {
+        $logo = l($logo, $slim_nav_url[0]['url'], array(
+          'html' => TRUE,
+          'attributes' => array(
+            'target' => '_blank'
+          )
+        ));
+      }
+      
+      //slim nav menu
+      $slim_nav_menu = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_menu');
+      if (!empty($slim_nav_menu)) {
+        $menu = $slim_nav_menu[0]['value'];
+      }
+      
+      //background color
+      $slim_nav_bg_color = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_bg_color');
+      if (!empty($slim_nav_bg_color)) {
+        $bg_color = $slim_nav_bg_color[0]['jquery_colorpicker'];
+      }
+      else {
+        $bg_color = '000000'; //set to black by default
+      }
+
+      //background color
+      $slim_mobile_nav_bg_color = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_mobile_bg');
+      if (!empty($slim_mobile_nav_bg_color)) {
+        $mobile_bg_color = $slim_mobile_nav_bg_color[0]['jquery_colorpicker'];
+      }
+      else {
+        $mobile_bg_color = '000000'; //set to black by default
+      }
+      
+      //color for font
+      $slim_nav_font_color = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_font_color');
+      if (!empty($slim_nav_font_color)) {
+        $font_color = $slim_nav_font_color[0]['jquery_colorpicker'];
+      }
+      else {
+        $font_color = 'FFFFFF'; //set to black by default
+      }
+
+      //social menu
+      $slim_nav_social_menu = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_social_menu');
+      if (!empty($slim_nav_social_menu)) {
+        $social_menu = $slim_nav_social_menu[0]['value'];
+      }
+    }
+  }
+  
+  //prepped array before alter
+  $pre_slim_array = array(
+    'logo' => $logo,
+    'slimnav' => _tp_custom_nav_menu_handler($menu),
+    'search' => $search,
+    'social_menu' => menu_tree($social_menu),
+    'right_info' => array(),
+    'left_info' => array(),
+    'taxonomy' => $slim_nav_tax
+  );
+  
+  //allow other modules to preprocess the slim nav array
+  drupal_alter('tp_preprocess_slim_nav', $pre_slim_array);
+  
+  //calls theme function to theme the output
+  $slim_nav_output = theme('tp_custom_nav_slim', $pre_slim_array);
+  $brand_class = str_replace(' ', '-', strtolower($slim_nav_tax->name))  . '-nav-theme';
+  
+  //wraps the output for easier theming
+  $output = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => $slim_nav_output,
+      '#attributes' => array(
+        'class' => 'tp-slim-nav ' . $brand_class,
+  ))));
+  
+  $colors = array(
+    'mobile_bg_color' => $mobile_bg_color,
+    'font_color' => $font_color,
+    'bg_color' => $bg_color
+  );
+  
+  //attach the custom colors
+  theme('tp_slim_nav_colors', $colors);
+  
+  return $output;
+}
+
+/**
+ *  @function:
+ *    THis function is a modified clone of the megamenu and slim nav
+ *
+ *    @param:
+ *      $menu = the menu to pull in and process
+ */
+function _tp_custom_nav_menu_handler($menu = NULL) {
+  $output = '';
+  $items = array();
+  
+  //return empty if menu is not set
+  if (empty($menu)) {
+    return '';
+  }
+  
+  //grabs the mega tree
+  $mega_tree = menu_tree_all_data($menu, $link = NULL, $max_depth = 2);
+  
+  //does each tree
+  foreach ($mega_tree as $key => $link) {
+    //default variables
+    $attributes = $link_data = $see_more = $categories = $left_menu = '';
+    
+    //gets the path
+    $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
+    $attributes = $link['link']['options']['attributes'];
+    $attributes['class'] = array($link['link']['options']['attributes']['class'][0]);
+    $title = '<div class="title first-level">'. l($mega_tree[$key]['link']['link_title'], $path, array('attributes' => $attributes)). '</div>';
+
+    //limits down the menu to 10 items. @dev: this is disabled for now
+    //$bottom_menu = array_slice($mega_tree[$key]['below'], 0, 10);
+    $bottom_menu = $mega_tree[$key]['below'];
+
+    //left menu curation
+    $menu = render(menu_tree_output($bottom_menu));    
+	  $menu_text = ($link['link']['options']['attributes']['title'] ? $link['link']['options']['attributes']['title'] : '');
+	  $left_menu = theme('tp_megamenu_inner_left', array('left_menu' => $menu, 'left_menu_text' => $menu_text));
+    
+    $mega_content_wrapper = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => $left_menu,
+        '#attributes' => array(
+          'class' => 'mega-content-wrapper',
+    ))));
+        
+    $link_mega_wrapper = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => $mega_content_wrapper,
+        '#attributes' => array(
+          'class' => 'mega-content second-level',
+    ))));
+    
+    //adds into array for items
+    $items[] = array(
+      'data' => $title . (!empty($bottom_menu) ? $link_mega_wrapper : ''),
+      'class' => array("mega-item ". $link['link']['mlid'])
+    );
+  }
+
+  //outputs the menu using item_list
+  $output = theme('item_list', array(
+    'items' => $items,
+    'title' => NULL,
+    'type' => 'ul'
+  ));
+
+  return $output;
+}
+
+/**
+ *  @function:
+ *    This function is used to parse the mobile menu as it was not pulling in the secondary levels
+ */
+function _tp_custom_nav_menu_parser($mobile_menu, $level = 0) {
+  //only allow level 1 to show in the menu
+  if ($level > 1) {
+    return NULL;
+  }
+  
+  $mobile_menu_processed = array();
+  //does for each item
+  foreach ($mobile_menu as $menu => $value) {
+    //creates the menu
+    $mobile_menu_processed[$value['link']['mlid']] = array(
+      '#title' => $value['link']['link_title'],
+      '#href' => $value['link']['link_path'],
+      '#theme' => 'menu_link__' . str_replace('-', '_', (strtolower($value['link']['menu_name']))),
+      '#attributes' => array(
+        'class' => $value['link']['options']['#attributes'],
+      ),
+      '#original_link' => $value['link'],
+      '#below' => (!empty($value['below'])) ? _tp_custom_nav_menu_parser($value['below'], $level + 1) : '',
+      '#localized_options' => $value['link']['localized_options']
+    );
+    
+    //ensures we add an extra class to be normal
+    $mobile_menu_processed[$value['link']['mlid']]['#attributes']['class'][] = 'normal level-' . $level;
+  }
+  
+  return $mobile_menu_processed;
+}
+
+/**
+ *  Implements hook_tp_process_slim_nav_alter().
+ */
+function tp_custom_nav_tp_preprocess_slim_nav_alter(&$data) {
+  //Alters the pivot taxonomy's output for the slim nav
+  if ($data['taxonomy']->name == 'Pivot') {
+    //custom block for the collab
+    $block = block_load('tp_custom_nav', 'tp_custom_nav_takepart_collab');
+    $block_content = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
+    
+    //adds tap login
+    $tap_login = '<div class="tpsLogin"></div>';
+    
+    //add it to the right_info
+    $data['right_info'] = $block_content . $tap_login;
+  }
+}
+
+/**
+ *  Implements hook_tp_collab_alter().
+ */
+function tp_custom_nav_tp_collab_alter(&$normal_state, &$focus_state, &$classes) {
+  $normal_state = '<span class="small">in collaboration with</span><br/><img src="/sites/all/themes/tp4/images/takepart_logo_white.png" style="vertical-align: middle; margin-right: 6px;"/><span class="small">&nbsp;&nbsp;[?]</span>';
+  $focus_state = '<a class="focus-state-link" href="http://www.takepart.com/">TakePart is the social<br/>action platform for<br/>Pivot TV. <span style="color: #01bf9e;">About TakePart</span></a>';
+  $classes = array('takepart');
+}

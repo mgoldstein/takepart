@@ -1,0 +1,93 @@
+<?php
+
+/**
+ *  Implements hook_menu().
+ */
+function takepart_oembed_menu() {
+  $items = array();
+  
+  $handler = array(
+    'type' => MENU_CALLBACK,
+    'page callback' => '_takepart_oembed_url_handler',
+    'page arguments' => array(2),
+    'access arguments' => array('access content'),
+  );
+  
+  //add admin config form
+  $items['admin/config/media/takepart-oembed'] = array(
+    'title' => t('Takepart - Oembed Config'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('takepart_oembed_admin_form'),
+    'file' => 'takepart_oembed.admin.inc',
+    'file path' => drupal_get_path('module', 'takepart_oembed') . '/inc',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM
+  );
+
+  $oembed_path = variable_get('takepart_oembed_service_url', 'service/oembed');  
+  //only add path if oembed path is set
+  if (!empty($oembed_path)) {
+    $items[$oembed_path] = $items[$oembed_path . '/%'] = $handler;
+  }
+
+  return $items;
+}
+
+/**
+ *  @function:
+ *    This function is a custom handler for oembed requests
+ */
+function _takepart_oembed_url_handler($format = '') {
+  $requested_url = $_GET['url'];
+  
+  //module load inc file for obj
+  module_load_include('inc', 'takepart_oembed', 'classes/takepart_oembed_video.class');
+  
+  //defaults which formart to use if none is provided
+  if (empty($format)) {
+    $format = empty($_GET['format']) ? 'json' : $_GET['format'];
+  }
+  
+  //declares new object
+  $oembed = new TPVideoOembed($requested_url, $format);
+  $output = $oembed->get_output();
+  echo $output;
+  drupal_exit();
+}
+
+/**
+* Implements hook_preprocess_node()
+*/
+function takepart_oembed_preprocess_node(&$variables){
+  if($variables['type'] == 'video'){
+    global $base_url;
+    $path = $oembed_path = variable_get('takepart_oembed_service_url', 'service/oembed');
+    $current_path = current_path();
+    $current_path = drupal_get_path_alias($current_path);
+
+    $href = $base_url. '/'. $path. '?url='. $base_url. '/'. $current_path;
+
+    $title = $variables['title'];
+    $data_xml = array(
+      '#tag' => 'link',
+      '#attributes' => array(
+        'href' => $href,
+        'rel' => 'alternate',
+        'type' => 'application/json+oembed',
+        'title' => $title
+      )
+    );
+    $data_json = array(
+      '#tag' => 'link',
+      '#attributes' => array(
+        'href' => $href,
+        'rel' => 'alternate',
+        'type' => 'application/xml+oembed',
+        'title' => $title
+      )
+    );
+    /* Add xml */
+    drupal_add_html_head($data_xml, 'takepart_oembed_json');
+    drupal_add_html_head($data_json, 'takepart_oembed_xml');
+  }
+}

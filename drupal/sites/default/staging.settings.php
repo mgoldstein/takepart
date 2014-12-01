@@ -20,3 +20,8 @@ $conf += array('pm_signup_log' => TRUE);
 
 // General logging level
 ini_set('error_reporting', E_ALL & ~E_NOTICE);
+
+// JWPlatform video import tag
+$conf += array(
+  'pm_jwplatform_auto_create_tag' => 'Admin: TP Auto QA',
+);

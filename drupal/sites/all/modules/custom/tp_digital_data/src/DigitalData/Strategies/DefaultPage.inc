@@ -8,6 +8,7 @@ class ddDefaultPage implements ddBuildStrategy {
   }
 
   public function build($page) {
+
     // Every page needs at least the event array.
     return array(
       'version' => '1.0',

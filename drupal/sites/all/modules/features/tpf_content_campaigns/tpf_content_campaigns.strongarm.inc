@@ -1034,19 +1034,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '6',
+          'weight' => '8',
+        ),
+        'locations' => array(
+          'weight' => '17',
         ),
       ),
       'display' => array(),
@@ -1063,19 +1066,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'redirect' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'xmlsitemap' => array(
-          'weight' => '10',
+          'weight' => '11',
+        ),
+        'locations' => array(
+          'weight' => '15',
         ),
       ),
       'display' => array(),
@@ -1158,6 +1164,9 @@ function tpf_content_campaigns_strongarm() {
         'xmlsitemap' => array(
           'weight' => '7',
         ),
+        'locations' => array(
+          'weight' => '11',
+        ),
       ),
       'display' => array(),
     ),
@@ -1221,23 +1230,29 @@ function tpf_content_campaigns_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'xmlsitemap' => array(
-          'weight' => '5',
+          'weight' => '6',
+        ),
+        'locations' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(),
@@ -1302,6 +1317,9 @@ function tpf_content_campaigns_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -1320,6 +1338,9 @@ function tpf_content_campaigns_strongarm() {
         'xmlsitemap' => array(
           'weight' => '12',
         ),
+        'locations' => array(
+          'weight' => '16',
+        ),
       ),
       'display' => array(),
     ),
@@ -1330,6 +1351,270 @@ function tpf_content_campaigns_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__campaign_card_media';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'vidpop_map' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_main' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_main_tpl' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_secondary' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_topic' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_video' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedaction' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedaction_expanded' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embed' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
+      'video_playlist_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'metatags' => array(
+          'weight' => '15',
+        ),
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '14',
+        ),
+        'redirect' => array(
+          'weight' => '13',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '12',
+        ),
+        'locations' => array(
+          'weight' => '16',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__campaign_card_media'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__campaign_card_multi_column';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'vidpop_map' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_main' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_main_tpl' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_secondary' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_topic' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_video' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedaction' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedaction_expanded' => array(
+        'custom_settings' => FALSE,
+      ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embed' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'metatags' => array(
+          'weight' => '12',
+        ),
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '11',
+        ),
+        'redirect' => array(
+          'weight' => '10',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '9',
+        ),
+        'locations' => array(
+          'weight' => '13',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__campaign_card_multi_column'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__campaign_card_news';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'inline_content' => array(
+        'custom_settings' => TRUE,
+      ),
+      'vidpop_map' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_main' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_main_tpl' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_secondary' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_topic' => array(
+        'custom_settings' => TRUE,
+      ),
+      'feature_video' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedaction' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embedaction_expanded' => array(
+        'custom_settings' => FALSE,
+      ),
+      'embed' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'metatags' => array(
+          'weight' => '16',
+        ),
+        'title' => array(
+          'weight' => '0',
+        ),
+        'path' => array(
+          'weight' => '15',
+        ),
+        'redirect' => array(
+          'weight' => '14',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '13',
+        ),
+        'locations' => array(
+          'weight' => '17',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__campaign_card_news'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__campaign_card_social';
   $strongarm->value = array(
     'view_modes' => array(
       'teaser' => array(
@@ -1404,196 +1689,8 @@ function tpf_content_campaigns_strongarm() {
         'xmlsitemap' => array(
           'weight' => '11',
         ),
-      ),
-      'display' => array(),
-    ),
-  );
-  $export['field_bundle_settings_node__campaign_card_media'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__campaign_card_multi_column';
-  $strongarm->value = array(
-    'view_modes' => array(),
-    'extra_fields' => array(
-      'form' => array(
-        'metatags' => array(
-          'weight' => '11',
-        ),
-        'title' => array(
-          'weight' => '0',
-        ),
-        'path' => array(
-          'weight' => '10',
-        ),
-        'redirect' => array(
-          'weight' => '9',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '8',
-        ),
-      ),
-      'display' => array(),
-    ),
-  );
-  $export['field_bundle_settings_node__campaign_card_multi_column'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__campaign_card_news';
-  $strongarm->value = array(
-    'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
-      ),
-      'inline_content' => array(
-        'custom_settings' => TRUE,
-      ),
-      'vidpop_map' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_main' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_main_tpl' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_secondary' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_topic' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_video' => array(
-        'custom_settings' => TRUE,
-      ),
-      'full' => array(
-        'custom_settings' => FALSE,
-      ),
-      'rss' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_index' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_result' => array(
-        'custom_settings' => FALSE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
-      'embedaction' => array(
-        'custom_settings' => FALSE,
-      ),
-      'embedaction_expanded' => array(
-        'custom_settings' => FALSE,
-      ),
-      'embed' => array(
-        'custom_settings' => FALSE,
-      ),
-      'token' => array(
-        'custom_settings' => FALSE,
-      ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'metatags' => array(
-          'weight' => '16',
-        ),
-        'title' => array(
-          'weight' => '0',
-        ),
-        'path' => array(
+        'locations' => array(
           'weight' => '15',
-        ),
-        'redirect' => array(
-          'weight' => '14',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '13',
-        ),
-      ),
-      'display' => array(),
-    ),
-  );
-  $export['field_bundle_settings_node__campaign_card_news'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_node__campaign_card_social';
-  $strongarm->value = array(
-    'view_modes' => array(
-      'teaser' => array(
-        'custom_settings' => TRUE,
-      ),
-      'inline_content' => array(
-        'custom_settings' => TRUE,
-      ),
-      'vidpop_map' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_main' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_main_tpl' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_secondary' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_topic' => array(
-        'custom_settings' => TRUE,
-      ),
-      'feature_video' => array(
-        'custom_settings' => TRUE,
-      ),
-      'full' => array(
-        'custom_settings' => FALSE,
-      ),
-      'rss' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_index' => array(
-        'custom_settings' => FALSE,
-      ),
-      'search_result' => array(
-        'custom_settings' => FALSE,
-      ),
-      'diff_standard' => array(
-        'custom_settings' => FALSE,
-      ),
-      'embedaction' => array(
-        'custom_settings' => FALSE,
-      ),
-      'embedaction_expanded' => array(
-        'custom_settings' => FALSE,
-      ),
-      'embed' => array(
-        'custom_settings' => FALSE,
-      ),
-      'token' => array(
-        'custom_settings' => FALSE,
-      ),
-    ),
-    'extra_fields' => array(
-      'form' => array(
-        'metatags' => array(
-          'weight' => '14',
-        ),
-        'title' => array(
-          'weight' => '0',
-        ),
-        'path' => array(
-          'weight' => '13',
-        ),
-        'redirect' => array(
-          'weight' => '12',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '11',
         ),
       ),
       'display' => array(),
@@ -1665,19 +1762,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '13',
+        ),
+        'locations' => array(
+          'weight' => '17',
         ),
       ),
       'display' => array(),
@@ -1742,23 +1842,29 @@ function tpf_content_campaigns_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'redirect' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'xmlsitemap' => array(
-          'weight' => '11',
+          'weight' => '12',
+        ),
+        'locations' => array(
+          'weight' => '16',
         ),
       ),
       'display' => array(),
@@ -1775,19 +1881,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'xmlsitemap' => array(
-          'weight' => '8',
+          'weight' => '9',
+        ),
+        'locations' => array(
+          'weight' => '19',
         ),
       ),
       'display' => array(),
@@ -1852,23 +1961,32 @@ function tpf_content_campaigns_strongarm() {
       'token' => array(
         'custom_settings' => FALSE,
       ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
+      'video_playlist_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'xmlsitemap' => array(
           'weight' => '4',
+        ),
+        'locations' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(),
@@ -1940,19 +2058,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'xmlsitemap' => array(
-          'weight' => '6',
+          'weight' => '7',
+        ),
+        'locations' => array(
+          'weight' => '11',
         ),
       ),
       'display' => array(),
@@ -4338,14 +4459,6 @@ function tpf_content_campaigns_strongarm() {
     'block-system-management' => 0,
     'block-system-user-menu' => 0,
     'block-system-main-menu' => 0,
-    'block-takepart_addthis-addthis_footer' => 0,
-    'block-takepart_addthis-addthis_full' => 0,
-    'block-takepart_addthis-addthis_full_noemail' => 0,
-    'block-takepart_addthis-addthis_rightrail' => 0,
-    'block-takepart_addthis-addthis_simple' => 0,
-    'block-takepart_addthis-addthis_petition' => 0,
-    'block-takepart_addthis-addthis_vidpop' => 0,
-    'block-takepart_addthis-addthis_ajax_form' => 0,
     'block-takepart_custom-page_title_h1' => 0,
     'block-takepart_custom-slideshow_controls' => 0,
     'block-takepart_custom-gallery_embed' => 0,
@@ -6120,14 +6233,6 @@ function tpf_content_campaigns_strongarm() {
     'block-system-management' => 0,
     'block-system-user-menu' => 0,
     'block-system-main-menu' => 0,
-    'block-takepart_addthis-addthis_footer' => 0,
-    'block-takepart_addthis-addthis_full' => 0,
-    'block-takepart_addthis-addthis_full_noemail' => 0,
-    'block-takepart_addthis-addthis_rightrail' => 0,
-    'block-takepart_addthis-addthis_simple' => 0,
-    'block-takepart_addthis-addthis_petition' => 0,
-    'block-takepart_addthis-addthis_vidpop' => 0,
-    'block-takepart_addthis-addthis_ajax_form' => 0,
     'block-takepart_custom-page_title_h1' => 0,
     'block-takepart_custom-slideshow_controls' => 0,
     'block-takepart_custom-gallery_embed' => 0,
@@ -7902,14 +8007,6 @@ function tpf_content_campaigns_strongarm() {
     'block-system-management' => 0,
     'block-system-user-menu' => 0,
     'block-system-main-menu' => 0,
-    'block-takepart_addthis-addthis_footer' => 0,
-    'block-takepart_addthis-addthis_full' => 0,
-    'block-takepart_addthis-addthis_full_noemail' => 0,
-    'block-takepart_addthis-addthis_rightrail' => 0,
-    'block-takepart_addthis-addthis_simple' => 0,
-    'block-takepart_addthis-addthis_petition' => 0,
-    'block-takepart_addthis-addthis_vidpop' => 0,
-    'block-takepart_addthis-addthis_ajax_form' => 0,
     'block-takepart_custom-page_title_h1' => 0,
     'block-takepart_custom-slideshow_controls' => 0,
     'block-takepart_custom-gallery_embed' => 0,

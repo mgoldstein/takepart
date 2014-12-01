@@ -4,28 +4,22 @@
  * Handles all nodeconnect menu item page callbacks
  */
 
-/*
- * node_connect_return is a hook_menu callback
- * redirects to the form page with the build_cache_id as a get param
+/**
+ * Redirects to the form page with the build_cache_id as a get param.
  */
 function nodeconnect_return($cache_id) {
   $cache = cache_get($cache_id);
   $css_id = "edit-" . str_replace('_', '-', $cache->data['field']);
   drupal_goto($cache->data['dest'], array('query' => array("build_cache_id" => $cache_id, "return" => TRUE), 'fragment' => $css_id));
-
-
   return $cache_id;
 }
 
-/*
- * nodeconnect_add is hook_menu callback 
+/**
+ * Load cached form info and display links to each of the referenceable types
  *
- * This page will load the cached form info, and display links to each of the referenceable types
- * If there is only one it will redirect to that page
- *
- * This is mostly a copy and hack up of the node add page
- *
- * This page is directed to from the nodeconnect_add_button_submit
+ * If there is only one it will redirect to that page. This is mostly a copy
+ * and hack up of the node add page.This page is directed to
+ * @see nodeconnect_add_button_submit
  */
 function nodeconnect_add($cache_id) {
   $content = array();
@@ -48,15 +42,11 @@ function nodeconnect_add($cache_id) {
   return $output;
 }
 
-/*
- * nodeconnect_edit is a hook_menu callback
- *
- * we use this to redirect to a edit form but pass the build_cache_id
+/**
+ * Redirect to a edit form but pass the build_cache_id.
  */
 function nodeconnect_edit($cache_id) {
   $cache = cache_get($cache_id);
   drupal_goto("node/" . $cache->data['nid'] . "/edit", array('query' => array("build_cache_id" => $cache_id, "child" => TRUE)));
   return $cache_id;
 }
-
-

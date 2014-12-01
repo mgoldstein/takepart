@@ -3,7 +3,7 @@
 
 class ddStrategyFactory {
 
-  protected static $strategies = array();
+  protected $strategies = array();
 
   public function __construct($strategies) {
     $this->strategies = $strategies;

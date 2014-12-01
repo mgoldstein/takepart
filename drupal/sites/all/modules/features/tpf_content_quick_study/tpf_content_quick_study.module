@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Content Quick Study feature.
- */
-
-include_once 'tpf_content_quick_study.features.inc';

@@ -32,7 +32,7 @@ function tpf_display_featured_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'label' => array(
-          'weight' => '2',
+          'weight' => '1',
         ),
         'title' => array(
           'weight' => '0',

@@ -262,3 +262,36 @@ function takepart_omniture_campaign($nid) {
     }
     return $campaign_name;
 }
+
+/**
+ *  Callback function for permanent title
+ *
+ *  Order
+ *     1. Permanent title exist - Return sanitized value
+ *     2. Fallsback to node title
+ *     3. Return sanitized page title
+ */
+function takepart_omniture_perm_title($title) {
+  $output = $title;
+  $node = menu_get_object();
+  
+  //ensures this is an object
+  if (is_object($node) && isset($node->field_permanent_title)) {
+    //gets field perm title
+    $perm_title = field_get_items('node', $node, 'field_permanent_title');
+    $perm_title_arr = field_view_value('node', $node, 'field_permanent_title', $perm_title[0]);
+    
+    //sets output to be value if one exist
+    if (!empty($perm_title_arr['#markup'])) {
+      $output = $perm_title_arr['#markup'];
+    }
+    //else fallback to node title
+    else {
+      $output = $node->title;
+    }
+  }
+
+  //sanitizes the output based on original decode
+  $output = takepart_omniture_str_decode($output);
+  return $output;
+}

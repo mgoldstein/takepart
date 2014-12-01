@@ -185,5 +185,16 @@ function takepart_omniture_token_info() {
     ),
   );
     
+  //custom token for node perm title
+  $info['tokens']['tp_omniture']['perm_title'] = array(
+    'name' => t('Permanent Title'),
+    'description' => t('If permanent title exist then this will be used, otherwise it will use provided title'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => 'takepart_omniture_perm_title',
+    ),
+  );
+    
     return $info;
 }

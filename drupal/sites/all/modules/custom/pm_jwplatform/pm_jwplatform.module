@@ -1,9 +1,5 @@
 <?php
 
-use \Participant\App;
-
-/* Admin
- *=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-*/
 /**
  * Implements hook_permission().
  */
@@ -35,12 +31,15 @@ function pm_jwplatform_menu() {
 }
 
 function pm_jwplatform_get_api() {
-  $key = variable_get('pm_jwplatform_api_key', '');
-  $secret = variable_get('pm_jwplatform_api_secret', '');
-  if (!empty($key) && !empty($secret)) {
-    return new \TakePart\BotrAPI($key, $secret);
+  static $api = NULL;
+  if (is_null($api)) {
+    $key = variable_get('pm_jwplatform_api_key', '');
+    $secret = variable_get('pm_jwplatform_api_secret', '');
+    if (!empty($key) && !empty($secret)) {
+      $api = new BotrAPI($key, $secret);
+    }
   }
-  return FALSE;
+  return $api;
 }
 
 
@@ -540,19 +539,11 @@ class VideoNodeBuilder {
   }
 }
 
-function pm_jwplatform_botr_api() {
-  static $api = NULL;
-  if (is_null($api)) {
-    $api = pm_jwplatform_get_api();
-  }
-  return $api;
-}
-
 function pm_jwplatform_get_new_video_keys_from_botr() {
 
   $auto_create_tag = variable_get('pm_jwplatform_auto_create_tag', 'Admin: TP Auto');
 
-  $result =   pm_jwplatform_botr_api()->call('/videos/list', array(
+  $result =   pm_jwplatform_get_api()->call('/videos/list', array(
     'result_limit' => 1000,
     'tags' => $auto_create_tag,
     'order_by' => 'date:desc',
@@ -574,29 +565,29 @@ function pm_jwplatform_create_import_requests() {
 
   if (count($new_keys) > 0) {
 
-    $repo = App::repo('Participant\Entities\Video\NodeImport');
-
-    $existing_keys = array();
-    foreach($repo->getExistingImports($new_keys) as $node_import) {
-      $existing_keys[] = $node_import->getVideoKey();
-    }
+    $existing_keys = db_select('pm_jwplatform_imports', 'i')
+      ->fields('i', array('video_key'))
+      ->condition('video_key', $new_keys, 'IN')
+      ->execute()
+      ->fetchCol();
 
     $keys_to_add = array_diff($new_keys, $existing_keys);
     if (count($keys_to_add) > 0) {
       foreach ($keys_to_add as $key) {
-        $import_request = new \Participant\Entities\Video\NodeImport();
-        $import_request->setVideoKey($key);
-        $import_request->setCreatedAt(REQUEST_TIME);
-        App::db()->persist($import_request);
+        db_insert('pm_jwplatform_imports')
+          ->fields(array(
+            'video_key' => $key,
+            'created' => REQUEST_TIME,
+          ))
+          ->execute();
       }
-      App::db()->flush();
     }
   }
 }
 
 function pm_jwplatform_get_video_thumbnail_ready_from_botr($key) {
 
-  $result = pm_jwplatform_botr_api()->call('/videos/thumbnails/show', array(
+  $result = pm_jwplatform_get_api()->call('/videos/thumbnails/show', array(
     'video_key' => $key,
   ));
 
@@ -609,7 +600,7 @@ function pm_jwplatform_get_video_thumbnail_ready_from_botr($key) {
 
 function pm_jwplatform_get_video_fields_from_botr($key) {
 
-  $result = pm_jwplatform_botr_api()->call('/videos/show', array(
+  $result = pm_jwplatform_get_api()->call('/videos/show', array(
     'video_key' => $key,
   ));
 
@@ -699,13 +690,15 @@ function pm_jwplatform_create_video_node($fields) {
 
 function pm_jwplatform_process_import_requests() {
 
-  // Get a list of pending video imports.
-  $repo = App::repo('Participant\Entities\Video\NodeImport');
-  $pending_imports = $repo->getPendingImports();
+  $pending_imports = db_select('pm_jwplatform_imports', 'i')
+    ->fields('i')
+    ->isNull('i.imported')
+    ->execute()
+    ->fetchAllAssoc('id');
 
   foreach ($pending_imports as $import) {
 
-    $video_key = $import->getVideoKey();
+    $video_key = $import->video_key;
 
     // Get the thumbnail first as it may take some time to generate.
     if (pm_jwplatform_get_video_thumbnail_ready_from_botr($video_key)) {
@@ -716,8 +709,12 @@ function pm_jwplatform_process_import_requests() {
 
         // Create the video node.
         if (pm_jwplatform_create_video_node($fields)) {
-          $import->setImportedAt(REQUEST_TIME);
-          App::db()->flush();
+          db_update('pm_jwplatform_imports')
+            ->fields(array(
+              'imported' => REQUEST_TIME,
+            ))
+            ->condition('id', $import->id, '=')
+            ->execute();
         }
       }
     }

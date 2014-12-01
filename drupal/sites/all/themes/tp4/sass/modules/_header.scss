@@ -1,11 +1,18 @@
 /**
  * Header (fat and slim)
  */
-
+@import "blue-social/*.png";
+@include all-blue-social-sprites;
 
 /*
  *Social
 */
+.tp_ad_takeover {
+  .header-wrapper {
+    padding-top: 0;
+  }
+}
+
 header {
   font-family: $primary-sans-font;
   color: $dark-gray;
@@ -17,6 +24,34 @@ header {
   }
   .leaderboard{
     display: none;
+		
+		&.ad-large-center {
+			margin-right: 0;
+			width: 100%;
+			
+			.contextual-links-wrapper {
+				z-index: 99999;
+			}
+			
+			.boxes-box {
+				.boxes-box-content {
+					text-align: center;
+					
+					div:nth-child(1) {
+						position: relative;
+						z-index: 1000;
+						width: 100% !important;
+						display: inline-block;
+					}
+				}
+			}
+			
+			@include breakpoint($breakpoint-desktop) {
+				width: 1020px;
+				margin-left: -20px;
+			}
+		}
+		
     @include breakpoint($breakpoint-tablet) {
       display: block;
     }
@@ -468,4 +503,445 @@ header {
 }
 .tp_login a.user_image{
   padding: 13px 8px;
+}
+
+.tp-slim-nav {
+  height: auto;
+  position: relative;
+  overflow: visible;
+  z-index: 101;
+	margin: 0 auto;
+	max-width: 1000px;
+  font-family: $primary-sans-font;
+  color: $dark-gray;
+  border-bottom: 2px solid #000;
+
+  .left {
+    @include breakpoint($breakpoint-desktop) {
+      padding-left: 10px;
+      width: auto;
+    }
+		
+		.logo {
+			/*display: inline-block;*/
+			float: left;
+		}
+		
+		.megamenu-wrapper {
+			float: left;
+		}
+  }
+  .right {
+    float: right;
+    @include breakpoint($breakpoint-tablet) {
+      width: 40%;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      width: auto;
+    }
+		
+		.title {
+			display: inline-block;
+			text-align: left;
+			margin-right: 5px;
+			letter-spacing: 1px;
+		}
+		
+		.menu {
+			display: inline-block;
+			float: none;
+		}
+  }
+
+  #megamenu{
+    display: none;
+    @include breakpoint($breakpoint-desktop) {
+      display: block;
+      width: auto;
+      padding: 0 0 0 20px;
+      line-height: 26px;
+    }
+    li{
+      float: left;
+      font-family: $secondary-sans-font;
+      font-size: 17px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      position: relative;
+      margin: 0;
+      padding: 0;
+      list-style-image: none;
+      list-style-type: none;
+
+      &:last-child {
+        padding-right: 0;
+        &:after {
+          display: none;
+        }
+				
+      }
+      a{
+        position: relative;
+        display: block;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+			
+			.mega-content {
+				display: none;
+				position: absolute;
+				top: 53px; //this is the same as the min-height for the mega-item
+				z-index: 10;
+
+				.mega-content-wrapper {
+					padding: 10px;
+					
+					.menu {
+						li {
+							float: none;
+							width: 100%;
+						}
+					}
+				}
+			}
+    }
+  }
+}
+
+/**
+ *	Overrides for the new custom slim nav
+ */
+#block-tp-custom-nav-tp-custom-nav-slim {
+	margin-bottom: 15px;
+	
+	@include breakpoint($breakpoint-tablet) {
+		margin-bottom: 0px;
+	}
+	
+	.tp-slim-nav {
+		border: none;
+		
+		#megamenu {
+			padding-left: 10px;
+		}
+		
+		.left {
+			.logo {
+				max-width: 75px;
+				margin-top: 5px;
+				
+				@include breakpoint($breakpoint-tablet) {
+					max-width: none;
+					margin-top: 0px;
+				}
+			}
+		}
+		
+		.right {
+			width: auto;
+			
+			.follow-us {
+				display: none;
+                                margin-right: 32px;
+				@include breakpoint($breakpoint-desktop) {
+					display: block;
+				}
+				
+				.title {
+					margin-top: -4px;
+				}
+			}	
+		}
+	}
+	
+	.megamenu-wrapper {
+		margin-top: -5px;
+		
+		.mega-item {
+			min-height: 53px; //add the margin-top
+			
+			.title {
+				a {
+					padding: 10px 10px 0;
+					text-transform: none;
+					font-size: 18px;
+					font-family: 'Apercu Medium', sans-serif;
+				}
+			}
+		}
+		
+		//second level menu
+		.second-level {
+			//border: 1px solid #000;
+			border-top: none;
+			min-width: 250px;
+			box-shadow: 2px 2px 2px #666;
+			
+			//wrapper for the mega-content
+			.mega-content-wrapper {
+				padding: 20px !important;
+				
+				li { //second level menu li
+					a { //each title on the second level
+						text-transform: none;
+						font-weight: bold;
+						font-family: 'Apercu Medium', sans-serif;
+						font-size: 15px;
+						line-height: 30px;
+						
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+				
+				a {
+					&:hover {
+						text-decoration: underline;
+					}
+				}
+			}
+		}
+	}
+	
+	.menu-toggle {
+		margin-left: 10px;
+		margin-top: 10px;
+	}
+	
+	.left {
+		float: none;
+		
+		> div {
+			float: left;
+		}
+	}
+	
+	.right > div{
+		float: left;
+		
+		&:not(.block-tp-custom-nav) {
+			margin-right: 10px;
+		}
+	}
+	
+	.right-more {
+		position: relative;
+		font-size: 15px !important;
+		text-transform: uppercase !important;
+		font-family: 'Apercu Medium', sans-serif !important;
+		line-height: 30px;
+		
+    &:after {
+			content: ' ';
+      background: image-url('slim-nav-arrow.png') 2px 2px no-repeat;
+      display: inline-block;
+			font-size: 14px;
+      width: 12px; // 30px/14px
+      height: 18px; // 20px/14px
+    }
+	}
+}
+
+.tp_slim_nav_wrapper {
+	#block-tp4-support-tp4-mobile-menu-header {
+		.title {
+			margin-right: 10px;
+		}
+	}
+}
+
+#block-tp-custom-nav-tp-custom-nav-takepart-collab {
+	margin-bottom: 0;
+	width: 140px;
+	font-size: 11px;
+	line-height: 21px;
+	font-weight: bold;
+	margin-top: -7px;
+	margin-right: 0 !important;
+	
+	.focus-state {
+		line-height: 15px;
+	}
+	
+	a {
+		text-decoration: none;
+	}
+	
+	@include breakpoint($breakpoint-tablet) {	
+		&:before {
+			content: '|';
+			padding-right: 10px;
+			float: left;
+			margin-top: 12px;
+			color: $dark-gray;
+		}
+	}
+}
+
+//overrides the follow for pivot
+.pivot-nav-theme {
+	.tp-slim-nav-wrapper {
+		#megamenu {
+			li {
+				a {
+					//font-family: "Apercu Medium", sans-serif;
+				}
+			}
+		}
+	}
+	
+	//follow
+	.follow-us,
+	&.follow-us {
+		margin-right: 25px !important;
+		margin-top: 6px;
+		
+		.title {
+			margin-left: 10px;
+			text-transform: uppercase;
+			font-family: 'Apercu Regular', sans-serif;
+			font-size: 12px;
+			line-height: 14px;
+			letter-spacing: 0px;
+			margin-right: 8px;
+			float: left;
+			color: #CCC;
+		}
+		
+		li {
+			a {
+				margin-left: 7px;
+				overflow: hidden;
+				vertical-align: middle;
+				text-indent: 0;
+				font-size: 0;
+				border-radius: 30px;
+				height: 30px;
+				width: 30px;
+				
+				&:before {
+					overflow: visible;
+					padding: 7px;
+					font-size: 15px;
+					background-color: #0084aa;
+					color: #fff;
+					display: block;
+				}
+				
+				&:hover:before {
+					text-decoration: none;
+					color: #000;
+					background-color: #FFF;
+				}				
+			}
+		}
+	}
+	
+	//mobile menu
+	#block-tp4-support-tp4-mobile-menu-header {
+		border-color: #9c9c9c;
+	}
+	
+	//login
+	.tpsLogin {
+		margin-top: 7px;
+		
+		.tp_login {
+			background: transparent;
+			padding: 10px 0;
+			margin-top: -10px;
+			
+			a {
+				background-color: transparent;
+			}
+			
+			.user_image,
+			.user_image:hover {
+				color: #999999;
+			}
+			
+			.dropdown-menu {
+				margin-top: 10px;
+				box-shadow: 2px 2px 2px;
+			}
+		}
+	}
+}
+
+body {
+	.snap-drawer-left {
+		#block-menu-menu-megamenu {
+			li {
+				a {
+					border-color: #9c9c9c;
+					font-family: 'Apercu Medium', sans-serif;
+					font-size: 16px;
+                                        text-transform: none;
+					
+					&.active,
+					&:hover {
+						background-color: #8d8d8d;
+					}
+				}
+				
+				&.level-0 {
+					a {
+						font-size: 24px;
+						font-family: 'Apercu Bold', sans-serif;
+                                                text-transform: uppercase;
+					}
+				}
+			}
+		}
+		
+		.pivot-nav-theme {
+			.follow-us {
+				margin-right: 0px !important;
+				
+				.title {
+					margin-left: 0px;
+				}
+				
+				li {
+					margin-right: 8px;	
+				}
+			}
+		}
+	}
+}
+
+body.tploggedin {
+	.pivot-nav-theme {
+		.tpsLogin {
+			.user_image,
+			.user_image:hover {
+				color: #01bf9e;
+			}
+			
+			ul.dropdown-menu {
+				display: none;
+			}
+		}
+	}
+}
+
+/**
+ *	Optimizing the login to limit the jump when TAP occurs
+ */
+body {
+	.pivot-nav-theme {
+		.tpsLogin {
+			ul.dropdown-menu {
+				display: none;
+			}
+			
+			.open {
+				ul.dropdown-menu {
+					display: block;
+				}
+			}
+		}
+	}
 }

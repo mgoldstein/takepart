@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the tp_latest_headlines_feature feature.
+ */
+
+include_once 'tp_latest_headlines_feature.features.inc';

@@ -52,7 +52,6 @@
             default:
                 title = "Social Share";
         }
-
         return title;
     };
 
@@ -77,6 +76,7 @@
             || $body.is('.node-type-openpublish-photo-gallery')
             || $body.is('.node-type-feature-article')
             || $body.is('.node-type-video')
+            || $body.is('.node-type-video-playlist')
             || $body.is('.node-type-flashcard')
         ) {
             evar4 = s.prop4;
@@ -491,8 +491,19 @@
             delete s.events;
             delete s.eVar26;
             delete s.eVar30;            
+        },
+        // -----------------------------------
+        // Playlists ------------------------
+        // -----------------------------------
+        'playlist-play': function(options) {
+          var s=s_gi(Drupal.settings.omniture.s_account);
+          s.linkTrackVars='eVar25,eVar32,eVar65,eVar69';
+          s.eVar25=options.playerName;
+          s.eVar32=options.listName;
+          s.eVar65=options.videoTitle;
+          s.eVar69=options.playConfig;
+          s.t(true, 'o', 'Playlist Play');
         }
-
     });
 
     // Document Ready
@@ -504,7 +515,11 @@
         // Pinterest doesn't work when it's just a link
         $('body')
         .delegate('a.addthis_button_pinterest_pinit', 'click', function() {
-            takepart.analytics.track('generic_addthis', 'pinterest');
+            takepart.analytics.track('generic_addthis', {name: 'pinterest', url: this.href});
+        })
+        
+        .delegate('a.addthis_button_mailto', 'click', function() {
+            takepart.analytics.track('generic_addthis', {name: 'mailto', url: this.href});
         })
 
         .delegate('.node-type-openpublish-article #block-bean-of-the-day a[href]', 'click', function(event) {

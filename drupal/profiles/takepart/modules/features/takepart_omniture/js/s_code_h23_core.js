@@ -157,7 +157,7 @@ s.doPlugins=s_doPlugins;
 s.loadModule("Media");
 s.Media.autoTrack=false; //For compatible players only.
 s.Media.trackWhilePlaying=true;
-s.Media.trackVars="events,eVar65,eVar66,eVar67,eVar4,eVar1,eVar30"; //Enter the variables to be sent withOmniture image requests
+s.Media.trackVars="events,eVar1,eVar4,eVar19,eVar30,eVar65,eVar66,eVar67,list2"; //Enter the variables to be sent withOmniture image requests
 s.Media.trackEvents="event91,event92,event93,event94"; //Enter the events to be sent withOmniture image requests
 s.Media.trackMilestones="10,20,30,40,60,80,90"; //could also use s.Media.trackSeconds, if desired
 s.Media.trackUsingContextData = true;

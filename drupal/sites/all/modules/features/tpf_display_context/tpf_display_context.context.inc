@@ -94,18 +94,7 @@ function tpf_display_context_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'takepart_addthis-addthis_footer' => array(
-          'module' => 'takepart_addthis',
-          'delta' => 'addthis_footer',
-          'region' => 'content_bottom',
-          'weight' => 3,
-        ),
-      ),
-    ),
-  );
+  $context->reactions = '';
   $context->condition_mode = 0;
 
   // Translatables
@@ -140,12 +129,6 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'box-72e1be3c',
           'region' => 'sidebar_first',
           'weight' => 0,
-        ),
-        'takepart_addthis-addthis_full' => array(
-          'module' => 'takepart_addthis',
-          'delta' => 'addthis_full',
-          'region' => 'sidebar_first',
-          'weight' => 1,
         ),
       ),
     ),
@@ -190,6 +173,18 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'StCw4MzrvpsV2LTHu4LZiKV1hGHJpKsU',
           'region' => 'sidebar_second',
           'weight' => '-8',
+        ),
+        'boxes-ga_mobile_320x50' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'leaderboard',
+          'weight' => '-10',
         ),
       ),
     ),
@@ -1021,7 +1016,7 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -1036,6 +1031,13 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]
 s.prop22 = [tp_omniture:free_tags:{node:nid}]
 s.list2  = [tp_omniture:free_tags:{node:nid}]
 s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
+    ),
+    'theme' => array(
+      'title' => '',
+      'subtitle' => '',
+    ),
+    'theme_html' => array(
+      'class' => '',
     ),
   );
   $context->condition_mode = 0;
@@ -1065,7 +1067,7 @@ s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -1105,7 +1107,7 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -1144,7 +1146,7 @@ s.list2 = [tp_omniture:remove_spaces:{node:field_free_tag}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{node:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -1267,7 +1269,7 @@ s.eVar11 = Logged_In',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -1790,12 +1792,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'header',
           'weight' => '-100',
         ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
         'bean-tpl-live-long' => array(
           'module' => 'bean',
           'delta' => 'tpl-live-long',
@@ -1965,6 +1961,47 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'tp4_feature';
+  $context->description = 'Ad positions for Feature Articles';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'feature_article' => 'feature_article',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Ad positions for Feature Articles');
+  t('TP4');
+  $export['tp4_feature'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tp4_flashcard';
   $context->description = '';
   $context->tag = 'TP4';
@@ -2009,12 +2046,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'delta' => 'flashcard_comments',
           'region' => 'content',
           'weight' => '-8',
-        ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-10',
         ),
         'system-main' => array(
           'module' => 'system',
@@ -2078,17 +2109,29 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'header',
           'weight' => '-9',
         ),
+        'bean-featured-campaigns-module' => array(
+          'module' => 'bean',
+          'delta' => 'featured-campaigns-module',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
         'tp4_support-tp4_footer' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_footer',
           'region' => 'footer',
           'weight' => '-9',
         ),
-        'bean-featured-campaigns-module' => array(
-          'module' => 'bean',
-          'delta' => 'featured-campaigns-module',
+        'boxes-ga_interstitial' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_interstitial',
           'region' => 'footer',
-          'weight' => '-10',
+          'weight' => '-8',
+        ),
+        'boxes-ga_mobile_320x50' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50',
+          'region' => 'footer',
+          'weight' => '-7',
         ),
         'tp4_support-tp4_mobile_menu_header' => array(
           'module' => 'tp4_support',
@@ -2218,12 +2261,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'footer',
           'weight' => '-10',
         ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-9',
-        ),
         'menu-menu-megamenu' => array(
           'module' => 'menu',
           'delta' => 'menu-megamenu',
@@ -2297,6 +2334,49 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'tp4_topic';
+  $context->description = 'Ad positions for Topic Fronts';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'taxonomy_term' => array(
+      'values' => array(
+        'free_tags' => 'free_tags',
+        'series' => 'series',
+        'topic' => 'topic',
+      ),
+      'options' => array(
+        'term_form' => '1',
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-takepart' => array(
+          'module' => 'boxes',
+          'delta' => 'takepart',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Ad positions for Topic Fronts');
+  t('TP4');
+  $export['tp4_topic'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tp4_video';
   $context->description = 'Right rail content for TP4 videos (plus leaderboard)';
   $context->tag = 'TP4';
@@ -2304,6 +2384,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
     'node' => array(
       'values' => array(
         'video' => 'video',
+        'video_playlist' => 'video_playlist',
       ),
       'options' => array(
         'node_form' => '1',
@@ -2343,17 +2424,17 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'sidebar',
           'weight' => '-8',
         ),
-        'boxes-right_rail_video_promo_articles' => array(
-          'module' => 'boxes',
-          'delta' => 'right_rail_video_promo_articles',
+        'bean--of-the-day' => array(
+          'module' => 'bean',
+          'delta' => '-of-the-day',
           'region' => 'sidebar',
-          'weight' => '-6',
+          'weight' => '-7',
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
-          'weight' => '-5',
+          'weight' => '-6',
         ),
       ),
     ),

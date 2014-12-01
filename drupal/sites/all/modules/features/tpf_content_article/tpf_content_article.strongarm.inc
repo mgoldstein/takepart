@@ -125,23 +125,32 @@ function tpf_content_article_strongarm() {
       'feature_main_tpl' => array(
         'custom_settings' => TRUE,
       ),
+      'iframe' => array(
+        'custom_settings' => FALSE,
+      ),
+      'video_playlist_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '1',
+          'weight' => '0',
         ),
         'path' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'xmlsitemap' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'metatags' => array(
-          'weight' => '40',
+          'weight' => '18',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '14',
+        ),
+        'locations' => array(
+          'weight' => '17',
         ),
       ),
       'display' => array(),

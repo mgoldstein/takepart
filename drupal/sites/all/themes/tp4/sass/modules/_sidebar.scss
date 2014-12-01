@@ -3,10 +3,29 @@
  */
 
 #sidebar {
-	.block-title {
-		@include header-top-border();
-		text-transform: lowercase;
-	}
+    .block-title {
+        @include header-top-border();
+        text-transform: lowercase;
+    }
+    .block-boxes-ga_ad {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        &:before{
+            content: 'Advertisement';
+            text-transform: uppercase;
+            font-family: $primary-sans-font;
+            font-size: 11px;
+            color: $dark-gray;
+            width: 100%;
+            text-align: center;
+            display: block;
+            .boxes-box-content{
+                margin: 0 auto;
+                display: block;
+            }
+        }
+    }
 }
 
 //
@@ -14,151 +33,139 @@
 //
 .block-newsletter-campaign {
 
-	.message {
-		margin: .75em 0;
-	}
-	.form-item-email {
-		margin: 0;
-		display: inline-block;
-		font-family: $primary-sans-font;
-		width: 65%;
-		position: relative;
-		label {
-			display: none;
-			font: normal 12px/1 $primary-sans-font;
-			position: absolute;
-			left: 0;
-			bottom: 100%;
-			&.error {
-				display: inline;
-			}
-		}
-		input {
-			width: 100%;
-			border: 1px solid #CCC;
-			@include border-radius(0);
-			-webkit-appearance: none;
-			padding: 2px;
-			font-size: 12px;
-			line-height: 1.5;
-		}
-	}
-	input[type="submit"] {
-		width: 33%;
-		float: right;
-		@extend %button;
-	}
+    .message {
+        margin: .75em 0;
+    }
+    .form-item-email {
+        margin: 0;
+        display: inline-block;
+        font-family: $primary-sans-font;
+        width: 65%;
+        position: relative;
+        label {
+            display: none;
+            font: normal 12px/1 $primary-sans-font;
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            &.error {
+                display: inline;
+            }
+        }
+        input {
+            width: 100%;
+            border: 1px solid #CCC;
+            @include border-radius(0);
+            -webkit-appearance: none;
+            padding: 2px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+    }
+    input[type="submit"] {
+        width: 33%;
+        float: right;
+        @extend %button;
+    }
 
-	// doesn't work
-	// See http://css-tricks.com/snippets/css/style-placeholder-text/
-	// ::-webkit-input-placeholder,
-	// :-moz-placeholder,  /* Firefox 18- */
-	// ::-moz-placeholder, /* Firefox 19+ */
-	// :-ms-input-placeholder {
-	//    color: red;
-	// }
+    // doesn't work
+    // See http://css-tricks.com/snippets/css/style-placeholder-text/
+    // ::-webkit-input-placeholder,
+    // :-moz-placeholder,  /* Firefox 18- */
+    // ::-moz-placeholder, /* Firefox 19+ */
+    // :-ms-input-placeholder {
+    //    color: red;
+    // }
 
-	.terms-of-service {
-		clear: both;
-		margin: 1em 0;
-		padding-bottom: 1em;
-		border-bottom: 1px solid $gray-line;
-                font-size: 12px;
-		// font-family: $primary-sans-font;
-		a {
-			
-			line-height: 1.2em;
-			color: $mint;
-		}
-	}
-	.follow-us {
-		font: bold 20px/1 $main-brand-font;
-		text-transform: lowercase;
-		display: inline-block;
-		vertical-align: top;
-		margin: 2px 8px 0 0;
-	}
-	.social-links {
-		display: inline-block;
-		li {
-			display: inline-block;
-			line-height: 1;
-			a {
-				display: inline-block;
-				// they're the same width;
-				height: 0;
-				width: social-sprite-width(twitter-gray);
-				margin-right: social-sprite-width(twitter-gray) / 4; // reasonable margin
-				// image replacement technique
-				padding-top: social-sprite-height(twitter-gray);
-				overflow: hidden;
-				&.facebook { @include social-sprite(facebook-gray);}
-				&.twitter { @include social-sprite(twitter-gray);}
-				&.google { @include social-sprite(googleplus-gray);}
-				&.pinterest { @include social-sprite(pinterest-gray);}
-				&.youtube { @include social-sprite(youtube-gray);}
-				&.tumblr { @include social-sprite(tumblr-gray); margin-right: 0; } // no margin on last link
-			}
-		}
-	}
+    .terms-of-service {
+        clear: both;
+        margin: 1em 0;
+        padding-bottom: 1em;
+        border-bottom: 1px solid $gray-line;
+        font-size: 12px;
+        // font-family: $primary-sans-font;
+        a {
+
+            line-height: 1.2em;
+            color: $mint;
+        }
+    }
+    .follow-us {
+        font: bold 20px/1 $main-brand-font;
+        text-transform: lowercase;
+        display: inline-block;
+        vertical-align: top;
+        margin: 2px 8px 0 0;
+    }
+    .social-links {
+        display: inline-block;
+        li {
+            display: inline-block;
+            line-height: 1;
+            a {
+                display: inline-block;
+                // they're the same width;
+                height: 0;
+                width: social-sprite-width(twitter-gray);
+                margin-right: social-sprite-width(twitter-gray) / 4; // reasonable margin
+                // image replacement technique
+                padding-top: social-sprite-height(twitter-gray);
+                overflow: hidden;
+                &.facebook { @include social-sprite(facebook-gray);}
+                &.twitter { @include social-sprite(twitter-gray);}
+                &.google { @include social-sprite(googleplus-gray);}
+                &.pinterest { @include social-sprite(pinterest-gray);}
+                &.youtube { @include social-sprite(youtube-gray);}
+                &.tumblr { @include social-sprite(tumblr-gray); margin-right: 0; } // no margin on last link
+            }
+        }
+    }
 }
 
-.block-boxes-ga_ad {
-	display: block;
-	margin: 0 auto;
-	margin-bottom: 20px;
-	&:before{
-		content: 'Advertisement';
-		text-transform: uppercase;
-		font-family: $primary-sans-font;
-		font-size: 11px;
-		color: $dark-gray;
-		width: 100%;
-		text-align: center;
-		display: block;
-		.boxes-box-content{
-			margin: 0 auto;
-			display: block;
-		}
-	}
+
+
+#block-boxes-bg-skin-sponsor {
+    &:before{ 
+        content: none; 
+    }
 }
 
 #block-bean-of-the-day {
-	.block-title {
-		@include header-top-border();
-	}
-	.of-the-day-item {
-		@include clearfix;
-		margin-bottom: 1em;
-		a {
-			&:hover {
-				text-decoration: none;
-				.node-title {
-					text-decoration: underline;
-				}
-			}
-		}
-		img {
-			float: left;
-			margin-right: 1em;
-		}
-		.subhead {
-			font: 100 .857142857em/1.5 $primary-sans-font;
-			line-height: 1.5;
-			margin: 1em 0 0;
-			text-transform: uppercase;
-		}
-		.node-title {
-			font-size: 1em;
-			line-height: 1.285714286;
-			font-weight: normal;
-			margin: 0;
-			@include dashed-separator-after;
-			&:after {
-				// TODO Debug why the dashed separator doesn't obey the float
-				margin-left: 114px;
-			}
-		}
-	}
+    .block-title {
+        @include header-top-border();
+    }
+    .of-the-day-item {
+        @include clearfix;
+        margin-bottom: 1em;
+        a {
+            &:hover {
+                text-decoration: none;
+                .node-title {
+                    text-decoration: underline;
+                }
+            }
+        }
+        img {
+            float: left;
+            margin-right: 1em;
+        }
+        .subhead {
+            font: 100 .857142857em/1.5 $primary-sans-font;
+            line-height: 1.5;
+            margin: 1em 0 0;
+            text-transform: uppercase;
+        }
+        .node-title {
+            font-size: 1em;
+            line-height: 1.285714286;
+            font-weight: normal;
+            margin: 0;
+            @include dashed-separator-after;
+            &:after {
+                // TODO Debug why the dashed separator doesn't obey the float
+                margin-left: 114px;
+            }
+        }
+    }
 }
 

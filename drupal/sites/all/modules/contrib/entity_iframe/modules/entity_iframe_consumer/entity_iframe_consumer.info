@@ -3,9 +3,9 @@ description = "Securely consume entity iframe implementations on provider based 
 package = "Iframe"
 core = 7.x
 configure = admin/config/system/entity_iframe_consumer
-; Information added by Drupal.org packaging script on 2014-02-22
-version = "7.x-1.0"
+; Information added by Drupal.org packaging script on 2014-06-09
+version = "7.x-1.1"
 core = "7.x"
 project = "entity_iframe"
-datestamp = "1393075406"
+datestamp = "1402321131"
 

@@ -30,8 +30,7 @@ function takeaction_init() {
     $tabPublisherId = variable_get('takeaction_publisher_id');
     $tabScript = variable_get('takeaction_widget_script');
 
-    $button_js = "
-      window.TP = window.TP || {};
+    $button_js = "<!-- \n" . "window.TP = window.TP || {};
       TP.tabHost = '{$tabHost}';
       TP.publisherId = '{$tabPublisherId}';
       (function() {
@@ -42,8 +41,7 @@ function takeaction_init() {
         tabScript.src = scriptLocation + '{$tabScript}';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(tabScript, s);
-      })();
-    ";
+      })();" . "\n // -->";
     drupal_add_js($button_js, array(
       'type' => 'inline',
       'group' => JS_LIBRARY,
@@ -119,7 +117,8 @@ function takeaction_node_view($node, $view_mode, $langcode) {
  */
 function takeaction_preprocess_node(&$variables) {
   $node = $variables['node'];
-  if (in_array($node->type, array('openpublish_article', 'video'))) {
+  // Limit influence.js to specific content types
+  if (in_array($node->type, array('openpublish_article', 'video', 'feature_article', 'openpublish_photo_gallery'))) {
     $influence_overlay_js = variable_get('takeaction_influence_overlay_js');
     drupal_add_js($influence_overlay_js, 'external');
   }

@@ -858,7 +858,7 @@ tr.selected td {
     padding: 20px;
     opacity: 1;
     img {
-        max-width: 100%;    
+        max-width: 100%;
     }
 }
 
@@ -898,7 +898,7 @@ tr.selected td {
     position: absolute;
     right: 5px;
     top: 10px;
-    color: black;
+    color: gray;
     font-family: SSGizmo;
     text-indent: 0;
   }
@@ -920,7 +920,7 @@ tr.selected td {
 }
 
 /* Video Player ------------------------- */
-.pm-jwplayer{
+.tp-video-player{
   &.loading{
     width: 100%;
     background: image-url('video-loading.gif');
@@ -934,5 +934,35 @@ tr.selected td {
     background-size: cover;
     height: 0;
     padding-bottom: 56.25%; /* 16:9 */
+    
+    .jwmain {
+      display: none;
+    }
+  }
+}
+
+.current-video {
+  .blocked {
+    width: 100%;
+    background: image-url('video-blocked.gif') no-repeat center center;
+    background-size: cover;
+    height: 0;
+    
+    object {
+      display: none;
+    }
+  }
+}
+
+.jwplayer {
+  &.blocked {
+    width: 100%;
+    background: image-url('video-blocked.gif') no-repeat center center;
+    background-size: cover;
+    height: 0;
+    
+    .jwmain {
+      display: none;
+    }
   }
 }

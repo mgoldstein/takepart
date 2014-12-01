@@ -1,6 +1,7 @@
 #block-bean-featured-campaigns-module {
   max-width: 100% !important;
   background-color: #F8F8F8;
+  padding-top: 1em;
 
   .block-title {
     max-width: 980px;
@@ -9,6 +10,7 @@
     text-align: center;
     text-transform: lowercase;
     margin-bottom: 1em;
+    
     @include breakpoint($breakpoint-tablet) {
       text-align: left;
       padding: 0 10px;

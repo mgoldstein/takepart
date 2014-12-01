@@ -6,7 +6,7 @@
     display:none;
 }
 
-.node-type-campaign-page .entity_iframe {
+.node-type-campaign-page .entity_iframe:not('.video_playlist') {
   border: 1px solid $gray-line;
   @include header-footer-border($light-blue, 5);
   @include box-sizing(box-content);

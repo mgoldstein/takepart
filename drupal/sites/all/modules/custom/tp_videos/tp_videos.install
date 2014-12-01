@@ -1,0 +1,99 @@
+<?php
+/**
+ * @file
+ * Sets up the base tables for hosted videos.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function tp_videos_schema() {
+  $schema = array();
+
+  $schema['tp_videos_metadata'] = array(
+    'description' => 'The base table for videos.',
+    'fields' => array(
+
+      'fid' => array(
+        'description' => 'Primary key identifier of the file object for the video.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+
+      'width' => array(
+        'description' => 'Width of video in pixels.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'height' => array(
+        'description' => 'Height of video in pixels.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'length' => array(
+        'description' => 'Length of video in seconds.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'thumbnail_image' => array(
+        'description' => 'URL of video thumbnail image.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'embed_code' => array(
+        'description' => 'Embed code provided by the video hosting service.',
+        'type' => 'text',
+        'size' => 'normal',
+      ),
+
+      /* Change tracking timestamps */
+      'created_at' => array(
+        'description' => 'The Unix timestamp when the video metadata was created.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'updated_at' => array(
+        'description' => 'The Unix timestamp when the video metadata was last changed.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('fid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Add TakePart video table for storing metadata about videos.
+ */
+function tp_videos_update_7101(&$sandbox) {
+  $schema = tp_videos_schema();
+  db_create_table('tp_video', $schema['tp_video']);
+}
+
+/**
+ * Drop the old video metadata table.
+ */
+function tp_videos_update_7102(&$sandbox) {
+  db_drop_table('tp_video');
+}
+
+/**
+ * Add video metadata table that links directly to file records.
+ */
+function tp_videos_update_7103(&$sandbox) {
+  $schema = tp_videos_schema();
+  db_create_table('tp_videos_metadata', $schema['tp_videos_metadata']);
+}

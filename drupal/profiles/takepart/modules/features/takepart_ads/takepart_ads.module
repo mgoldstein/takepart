@@ -1,4 +1,98 @@
 <?php
+/**
+ * @file
+ * TakePart ads module.
+ */
+
+/**
+ * Include the tag object functions.
+ */
+require_once __DIR__ . '/takepart_ads.tag.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function takepart_ads_menu() {
+
+  // Top level admin item.
+  return array(
+    'admin/config/system/ads' => array(
+      'title' => 'Doubleclick Ad Support',
+      'description' => 'Manage ad settings and tags',
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    ),
+    'admin/config/system/ads/settings' => array(
+      'title' => 'Settings',
+      'description' => 'Manage ad settings',
+      'weight' => -10,
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('takepart_ads_settings_form'),
+      'access arguments' => array('access administration pages'),
+      'file' => 'takepart_ads.admin.inc',
+    ),
+    'admin/config/system/ads/tags' => array(
+      'title' => 'Tags',
+      'description' => 'Manage ad tags',
+      'page callback' => 'takepart_ads_tag_listing_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'takepart_ads.admin.inc',
+    ),
+    'admin/config/system/ads/tags/list' => array(
+      'title' => 'List',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => -10,
+    ),
+    'admin/config/system/ads/tags/add' => array(
+      'title' => 'Add tag',
+      'description' => 'Add a new tag',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('takepart_ads_tag_form', NULL),
+      'type' => MENU_LOCAL_ACTION,
+      'access arguments' => array('access administration pages'),
+      'file' => 'takepart_ads.admin.inc',
+    ),
+    'admin/config/system/ads/tags/manage/%takepart_ads_tag' => array(
+      'title callback' => 'takepart_ads_tag_page_title',
+      'title arguments' => array(6),
+      'description' => 'Edit a tag',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('takepart_ads_tag_form', 6),
+      'access arguments' => array('access administration pages'),
+      'file' => 'takepart_ads.admin.inc',
+    ),
+    'admin/config/system/ads/tags/manage/%takepart_ads_tag/edit' => array(
+      'title' => 'Edit',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => -10,
+      'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
+    ),
+    'admin/config/system/ads/tags/manage/%takepart_ads_tag/delete' => array(
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('takepart_ads_tag_delete_form', 6),
+      'access arguments' => array('access administration pages'),
+      'file' => 'takepart_ads.admin.inc',
+    ),
+  );
+}
+
+/**
+ * Ad tag placeholder loader.
+ */
+function takepart_ads_tag_load($name) {
+  return takepart_ads_load_tag($name);
+}
+
+function takepart_ads_tag_url($name) {
+  $urls = &drupal_static(__FUNCTION__, array());
+  if (!isset($urls[$name])) {
+    $tag = takepart_ads_load_tag($name);
+    $urls[$name] = is_null($tag) ? NULL : $tag->url;
+  }
+  return $urls[$name];
+}
 
 function _custom_targeting_overrides($stringwithkeyvalue) {
     foreach ($pairs_array as $key => $value) {
@@ -31,22 +125,30 @@ function takepart_ads_preprocess_page(&$vars) {
             }
         }
         if (!empty($gptad)) {
-            
+
             $path = drupal_get_path('module', 'takepart_ads');
             drupal_add_js($path . '/js/check_ad_calls.js');
-      
+
             //GPT:
             $adsize = '';
             preg_match('/[0-9]+x[0-9]+/', $ad, $adsize);
-            //dd($ad);
             $lr = explode("x", $adsize[0]);
             $gptad_html .= 'if (ad_call_check('.$lr[0].')) { ';
-            if ($ad == "TP_Mobile_320x50") {
-                $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') 
-                      . '/' . $ad . '\', [[300, 50], [320, 50]], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
+            
+            if ($ad === "TP_Mobile_Interstitial_1x1") {
+                $gptad_html .= 'if (window.innerWidth < 768) { ';
+                $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
+                      . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
+                $gptad_html .= 'googletag.defineOutOfPageSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
+                      . '/' . $ad . '\', \'' . $gptad . '-oop\').addService(googletag.pubads());' . "\n}\n";
             }
-            else {
-            $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') 
+            else if ($ad === "TP_Mobile_320x50") {
+              /*
+              $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
+                      . '/' . $ad . '\', [[300, 50], [320, 50]], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
+              */
+            } else {
+            $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
                       . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
             }
             $gptad_html .= '}'."\n";
@@ -92,7 +194,7 @@ function takepart_ads_preprocess_page(&$vars) {
         $contentType = "";
         $gpt_contentType = "";
     }
-    
+
     $override = filter_input(INPUT_GET, 'dfpKeyval');
     if ($override) {
         $pairs = explode(",", $override);
@@ -198,7 +300,7 @@ GS_googleEnableAllServices();';
 
     //GPT:
     if (!empty($gptad_html)) {
-        drupal_add_js("var googletag = googletag || {};
+        drupal_add_js("<!-- \n var googletag = googletag || {};
                   googletag.cmd = googletag.cmd || [];
                   (function() {
                   var gads = document.createElement('script');
@@ -209,13 +311,13 @@ GS_googleEnableAllServices();';
                   '//www.googletagservices.com/tag/js/gpt.js';
                   var node = document.getElementsByTagName('script')[0];
                   node.parentNode.insertBefore(gads, node);
-                  })();", array('type' => 'inline', 'scope' => 'header'));
-        drupal_add_js('googletag.cmd.push(function() {' . "\n" .
+                  })(); \n // -->", array('type' => 'inline', 'scope' => 'header'));
+        drupal_add_js("<!-- \n" . 'googletag.cmd.push(function() {' . "\n" .
                 $gptad_html . "\n" .
                 'googletag.pubads().enableSingleRequest();' . "\n" .
                 $gpt_targeting . // custom targeting
                 'googletag.enableServices();' . "\n" . '});' . "\n" .
-                'var gpt_ad_tags = new Array();', array('type' => 'inline', 'scope' => 'header'));
+                'var gpt_ad_tags = new Array();' . "\n // -->", array('type' => 'inline', 'scope' => 'header'));
         }
 }
 
@@ -243,22 +345,6 @@ function takepart_gpt_ads($slot = FALSE) {
         $slots[] = $slot;
     }
     return $slots;
-}
-
-/**
- * Implements hook_menu().
- */
-function takepart_ads_menu() {
-    $items['admin/config/system/ads'] = array(
-        'title' => 'Doubleclick Ad Settings',
-        'description' => 'Manage ads settings.',
-        'page callback' => 'drupal_get_form',
-        'page arguments' => array('takepart_ads_configure_ads'),
-        'access arguments' => array('administer site configuration'),
-        'weight' => -10,
-        'file' => 'takepart_ads.admin.inc',
-    );
-    return $items;
 }
 
 /**

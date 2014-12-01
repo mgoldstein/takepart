@@ -326,7 +326,7 @@ function _wordlet_configuration() {
     'teach_campaign' => array(
       'title' => 'TEACH Campaign',
     ),
-
+/*
     // teach Home
     'teach_home' => array(
       'title' => 'TEACH - Home',
@@ -431,7 +431,7 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'teach_campaign'),
     ),
-
+*/
     // teach Share Your Story
     'teach_share_your_story' => array(
       'title' => 'TEACH - Share Your Story',
@@ -449,7 +449,7 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'teach_campaign'),
     ),
-
+/*
     // teach Teach Fund More Information
     'teach_fund_about' => array(
       'title' => 'TEACH - About the Teach Fund',
@@ -484,7 +484,7 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'teach_campaign'),
     ),
-
+*/
     // teach Teacher Stories Page
     'teach_teacher_stories' => array(
       'title' => 'TEACH - Teacher Stories',
@@ -739,7 +739,7 @@ function _wordlet_configuration() {
     // Every 3 Seconds Home
     'every3seconds_home' => array(
       'title' => 'Every 3 Seconds - Home',
-      'path' => 'every-3-seconds',
+      'path' => 'ets',
       'published' => FALSE,
       'wrappers' => array('every3seconds', 'campaign', 'html'),
       'css' => array(
@@ -756,7 +756,7 @@ function _wordlet_configuration() {
     // Every Three Seconds Videos
     'every3seconds_video' => array(
       'title' => 'Every 3 Seconds - Videos',
-      'path' => 'every-3-seconds/action',
+      'path' => 'ets/action',
       'published' => FALSE,
       'wrappers' => array('every3seconds', 'campaign', 'html'),
       'css' => array(
