@@ -103,7 +103,6 @@
                 }
 
                 // Bind an event to the link 
-                if (name != "mailto") {
                 $link
                         .bind('click', (function(srvc, $parent, $lnk) {
                             return function(e) {
@@ -129,16 +128,8 @@
                                 return false;
                             }
                         })(srvc, $this, $link)
-                                );
-                    }
-                    /* else { 
-                        $link.bind('click', (function() {
-                           window.location = $(".tp-social-mailto").attr('href');
-                           e.preventDefault();
-                           return false;
-                        }));
-                       
-                    }  */
+                      );
+                    
                 if (typeof data.hoverfocus == 'function') {
                     $link
                             .bind('mouseover focus', (function(srvc, $parent, $lnk) {
