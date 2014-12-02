@@ -374,7 +374,8 @@
         name: 'mailto',
         display: 'Email App',
         share: function(args) {
-            mailto_args = args;
-        }
+            var url = 'mailto:?body=' + encodeURIComponent(args.url) + '&subject=' + encodeURIComponent(args.title);
+            location.href = url;
+      }
     });
 })(window, jQuery);
