@@ -220,11 +220,11 @@
               source: imageSrc,
               caption: title + " - " + description
             },
-            {
+            /* {
               name: 'email',
               title: title,
               note: description
-            },
+            }, */
             {
               name: 'mailto',
               title: title,
