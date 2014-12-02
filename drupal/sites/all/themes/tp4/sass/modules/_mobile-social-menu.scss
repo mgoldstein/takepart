@@ -128,25 +128,24 @@
 //}
 
 /* Styling for the slimnav */
-@include breakpoint($breakpoint-tablet){
-
-}
-.header-wrapper{
-  transition: 0.2s;
-  position: fixed;
-  left: 0;
-  right: 0;
-  background: white;
-  z-index: 99;
-  top: 0;
-  &.nav-hide{
-    top: -58px;
-  }
-  &.nav-show{
+body:not(.node-type-campaign-page){
+  .header-wrapper{
+    transition: 0.2s;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background: white;
+    z-index: 99;
     top: 0;
-  }
-  @include breakpoint($breakpoint-tablet){
-    position: static;
+    &.nav-hide{
+      top: -58px;
+    }
+    &.nav-show{
+      top: 0;
+    }
+    @include breakpoint($breakpoint-tablet){
+      position: static;
+    }
   }
 }
 
