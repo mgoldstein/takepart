@@ -120,12 +120,12 @@
 }
 
 /* Styling for social sharing outside of social menu */
-#article-social{
-  display: none;
-  @include breakpoint($breakpoint-tablet){
-    display: block;
-  }
-}
+//#article-social{
+//  display: none;
+//  @include breakpoint($breakpoint-tablet){
+//    display: block;
+//  }
+//}
 
 /* Styling for the slimnav */
 @include breakpoint($breakpoint-tablet){

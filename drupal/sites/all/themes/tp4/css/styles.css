@@ -5700,7 +5700,7 @@ a.cta span:before {
   }
   /* line 226, ../sass/page/_openpublish_article.scss */
   #article-social #article-share {
-    width: 120px;
+    width: 150px;
   }
 }
 /* line 231, ../sass/page/_openpublish_article.scss */
@@ -15007,17 +15007,6 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* Styling for social sharing outside of social menu */
-/* line 123, ../sass/modules/_mobile-social-menu.scss */
-#article-social {
-  display: none;
-}
-@media all and (min-width: 768px) {
-  /* line 123, ../sass/modules/_mobile-social-menu.scss */
-  #article-social {
-    display: block;
-  }
-}
-
 /* Styling for the slimnav */
 /* line 134, ../sass/modules/_mobile-social-menu.scss */
 .header-wrapper {

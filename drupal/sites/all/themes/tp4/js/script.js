@@ -209,9 +209,6 @@
               name: 'googleplus'
             },
             {
-              name: 'reddit'
-            },
-            {
               name: 'tumblr'
             }
           ]
@@ -220,9 +217,9 @@
         /* If page is a gallery, article or featured article, add Pinterest */
         if(isGallery || isFeatureArticle || isOpenpublishArticle){
           main_image = $('.field-name-field-article-main-image').find('img').attr('src');
-          tp_social_config.services.push({"name":"pinterest", "media": main_image});
+//          tp_social_config.services.push({"name":"pinterest", "media": main_image});
         }
-        /* If page is a gallery, article or featured article, add Pinterest */
+        /* If page is a campaign page, remove mailto, reddit and tumblr */
         if(isCampaignPage){
           delete tp_social_config.services[2]; //mailto
           delete tp_social_config.services[4]; //reddit
@@ -230,12 +227,13 @@
         }
 
         /*if screen size is less than 480 targer tp-social-mobile, else target tp-social.  Adjust CSS to display none otherwise */
-        if($(window).width() < 768){
-          $('.tp-social-mobile:not(.tp-social-skip)').tpsocial(tp_social_config);
-        }else{
-          $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-            .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
-        }
+//        if($(window).width() < 768){
+//          $('.tp-social-mobile:not(.tp-social-skip)').tpsocial(tp_social_config);
+//        }else{
+//
+//        }
+      $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
+        .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
     }
   };
 
