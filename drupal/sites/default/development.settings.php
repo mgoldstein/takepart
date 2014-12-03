@@ -17,6 +17,7 @@ $conf += array(
 $conf += array('facebook_app_id' => '804910456185646');
 
 // Turn off page compression and CSS and JS preprocessing
+
 $conf += array(
   'page_compression' => FALSE,
   'preprocess_css' => FALSE,

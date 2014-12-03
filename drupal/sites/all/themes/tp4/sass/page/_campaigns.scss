@@ -28,9 +28,11 @@ body.campaign-display
             max-width: 1000px;
             margin: 0 auto;
             position: relative;
+            /*
             #campaign-page-share .tp-social-mailto {
                 display: none;
             }
+            */
         }
         #div-gpt-ad-1394222082576-0 {
             margin: 0 auto;
@@ -1777,5 +1779,5 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
 }
 
 //Add Custom Styling for TP4 Campaigns
-@import "tp4_dark_bg";
+//@import "tp4_dark_bg";
 
