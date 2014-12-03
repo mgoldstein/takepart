@@ -725,7 +725,7 @@ function tp4_support_token_info() {
   //new type of token
   $info['types']['tp4_support_tokens'] = array(
     'name' => t('TP4 Support Tokens'),
-    'description' => t('Custom tokens for TP4')
+    'description' => t('Custom tokens for TP4'),
   );
   
   //token area
@@ -733,6 +733,12 @@ function tp4_support_token_info() {
     'name' => t('Campaign Thumbnail'),
     'description' => t('If a campaign thumbnail exist and a reference is set then it will pull that thumbnail, otherwise fallback to the node\'s thumbnail'),
     'needs-data' => 'node'
+  );
+  
+  $info['tokens']['tp4_support_tokens']['campaign'] = array(
+    'name' => t('Campaign Description'),
+    'description' => t('If a campaign field exist and a reference is set then it will pull that field, otherwise fallback to the node\'s field'),
+    'dynamic' => TRUE,
   );
   
   //return the new defined token
@@ -755,11 +761,73 @@ function tp4_support_tokens($type, $tokens, array $data = array(), array $option
           $replacements[$value] = _tp4_support_token_campaign_thumbnail($data);
           break;
       }
+      
+      //does for dynamic
+      if (stripos($name, 'campaign:') !== FALSE) {
+        $replacements[$value] = _tp4_support_token_campaign_info($data, $tokens[$name]);
+      }
     }
   }
   
   //return the replacement
   return $replacements;
+}
+function _tp4_support_token_campaign_info($data = array(), $token) {
+  //variables
+  $node = $data['node'];
+  $output = NULL;
+  
+  //sanitizes the token to get field
+  $field = str_replace('[', '', $token);
+  $field = str_replace(']', '', $field);
+  $field_array = explode(':', $field);
+  $count_field = count($field_array);
+  $field_name = $field_array[$count_field - 1];
+  
+  //first level: node level return
+  $output = _tp4_support_get_field_value($node, $field_name, 'node');
+  
+  //second level: only if output is empty return parent level
+  if (empty($output) && is_object($node) && isset($node->field_campaign_reference)) {
+    $campaign_item = field_get_items('node', $node, 'field_campaign_reference');
+    
+    //checks to ensure that the target id is numeric
+    if (is_numeric($campaign_item[0]['target_id'])) {
+      //loads the parent
+      $parent_node = node_load($campaign_item[0]['target_id']);
+      
+      //calls the same function as first level but uses parent node
+      $output = _tp4_support_get_field_value($parent_node, $field_name, 'parent');  
+    }
+  }
+  
+  //third level: return value or NULL if nothing has been found
+  return $output;
+}
+
+/**
+ *  @function:
+ *    This function is used to return the markup of fields
+ */
+function _tp4_support_get_field_value($node, $field_name = '', $level) {
+  $output = NULL;
+  
+  //check if the field exist in the node level  
+  if (is_object($node) && isset($node->$field_name) && !empty($node->$field_name)) {
+    //return only if a value is set
+    $field_item = field_get_items('node', $node, $field_name);
+    $field_value = field_view_value('node', $node, $field_name, $field_item[0]);
+  
+    //return the output only if the value is set
+    if (isset($field_value['#markup']) && !empty($field_value['#markup'])) {
+      $output = $field_value['#markup'];
+    }
+  }
+ 
+  //allows other to alter the token using hook_tp4_token_campaign_alter().
+  drupal_alter('tp4_token_campaign', $node, $field_name, $output, $level);
+ 
+  return $output;
 }
 
 /**
