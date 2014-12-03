@@ -15,7 +15,7 @@
         $(this).removeClass('active');
       });
 
-      if ($(window).width() < 768){
+      if ($(window).width() < 768 && !$('body').hasClass('.node-type-campaign-page')){
         var navbarHeight = $('.header-wrapper').outerHeight();
         $('#page-wrap').css('padding-top', navbarHeight);
       }
