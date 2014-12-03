@@ -18,9 +18,24 @@ function tpf_content_campaigns_metatag_export_default() {
         'value' => '[node:seo-title] | [site:name]',
       ),
       'description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[tp4_support_tokens:campaign:field_article_subhead]',
+      ),
+      'og:title' => array(
+        'value' => '[tp4_support_tokens:campaign:field_promo_headline]',
+      ),
+      'og:description' => array(
+        'value' => '[tp4_support_tokens:campaign:field_article_subhead]',
       ),
       'og:image' => array(
+        'value' => '[tp_og_image:thumbnail:{tp4_support_tokens:campaign_thumbnail}]',
+      ),
+      'twitter:title' => array(
+        'value' => '[tp4_support_tokens:campaign:field_promo_headline]',
+      ),
+      'twitter:description' => array(
+        'value' => '[tp4_support_tokens:campaign:field_article_subhead]',
+      ),
+      'twitter:image:src' => array(
         'value' => '[tp_og_image:thumbnail:{tp4_support_tokens:campaign_thumbnail}]',
       ),
       'tp:node_id' => array(
