@@ -1565,7 +1565,14 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 								'source' => 'field_inline_replacements'
 							)
 						);
-						$variables['gallery_tap_banner'] = field_view_field('node', $variables['node'], 'body', $description_display);
+						
+						//removes all body info and just has it do a replacement to add at the end
+						$node_clone = $variables['node'];
+						$lang = $node_clone->language;
+						$node_clone->body[$lang][0]['value'] = '';
+						$node_clone->body[$lang][0]['safe_value'] = '';
+						
+						$variables['gallery_tap_banner'] = field_view_field('node', $node_clone, 'body', $description_display);
         }
 
         // provide "on our radar" block
