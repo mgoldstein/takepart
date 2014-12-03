@@ -2041,7 +2041,7 @@ z-index:5000;
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_Leaderboard_728x90',
     'ga_ad_gpt_id' => 'div-gpt-ad-1391020952974-1',
-    'additional_classes' => 'leaderboard',
+    'additional_classes' => 'leaderboard ad-large-center',
   );
   $export['takepart'] = $box;
 
