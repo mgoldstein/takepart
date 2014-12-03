@@ -5686,7 +5686,7 @@ a.cta span:before {
   }
   /* line 214, ../sass/page/_openpublish_article.scss */
   #article-social #article-share {
-    width: 200px;
+    width: auto;
   }
 }
 @media (max-width: 767px) {
