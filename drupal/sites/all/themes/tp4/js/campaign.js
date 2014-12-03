@@ -220,11 +220,6 @@
               source: imageSrc,
               caption: title + " - " + description
             },
-            /* {
-              name: 'email',
-              title: title,
-              note: description
-            }, */
             {
               name: 'mailto',
               title: title,
@@ -235,7 +230,6 @@
 
       $('#campaign-page-share').tpsocial(mainShares);
       $('#campaign-page-more-shares').find('p').tpsocial(moreShares);
-
       $moreShares = $('#campaign-page-social-more');
 
       var moreSharesClose = function() {

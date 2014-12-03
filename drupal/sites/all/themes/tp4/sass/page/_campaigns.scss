@@ -28,6 +28,9 @@ body.campaign-display
             max-width: 1000px;
             margin: 0 auto;
             position: relative;
+            #campaign-page-share .tp-social-mailto {
+                display: none;
+            }
         }
         #div-gpt-ad-1394222082576-0 {
             margin: 0 auto;
@@ -244,7 +247,7 @@ body.campaign-display .card.node-campaign-card-media{
             @include zen-grid-item(10, 2);
         }
     }
-    
+
     .playlist-wrapper-wrapper {
         .bx-wrapper {
             ul {
@@ -732,7 +735,7 @@ body.campaign-display{
                     bottom: -7px;
                     cursor: pointer;
                     color: #000;
-                    
+
                     &.left-arrow {
                         margin-right: 20px;
                         left: 10px;
@@ -801,7 +804,7 @@ body.campaign-display{
     .card.background-crop, .slider.background-crop{
         background-size: auto !important;
         @include breakpoint(1600px) {
-          background-size: 100% !important;
+            background-size: 100% !important;
         }
     }
     .slider.tray-img-width-1000{
@@ -1419,7 +1422,7 @@ body.campaign-display{
                 @include breakpoint($breakpoint-tablet){
                     width: 100%;
                 }
-                
+
                 @include breakpoint($breakpoint-desktop) {
                     float: none;
                 }
@@ -1756,7 +1759,7 @@ body.campaign-display .swipe-wrap.has-title{
 }
 
 body.campaign-display .card .playlist ul:not(.tabs) li:before{
-  background-color: transparent;
+    background-color: transparent;
 }
 
 /**
@@ -1775,3 +1778,4 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
 
 //Add Custom Styling for TP4 Campaigns
 @import "tp4_dark_bg";
+
