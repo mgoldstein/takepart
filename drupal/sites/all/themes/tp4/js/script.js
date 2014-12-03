@@ -4,9 +4,9 @@
  */
 (function ($, Drupal, window, document, undefined) {
 
-  /**
-  * Megamenu Behaviors
-  */
+  /*
+   * Megamenu Behaviors
+   */
   Drupal.behaviors.megaMenuBehaviors = {
     attach: function(context, settings) {
       //prevent parent links on megamenu from linking on touch (link on double touch)
@@ -102,7 +102,6 @@
       });
     }
   };
-
 
   Drupal.behaviors.campaignSnapper = {
     attach: function(context, settings) {
@@ -226,12 +225,15 @@
           delete tp_social_config.services[5]; //tumblr
         }
 
-        /*if screen size is less than 480 targer tp-social-mobile, else target tp-social.  Adjust CSS to display none otherwise */
-//        if($(window).width() < 768){
-//          $('.tp-social-mobile:not(.tp-social-skip)').tpsocial(tp_social_config);
-//        }else{
-//
-//        }
+        /* 
+         * if screen size is less than 480 targer tp-social-mobile, else target tp-social.  Adjust CSS to display none otherwise 
+         */
+        
+        /*
+          if($(window).width() < 768){
+            $('.tp-social-mobile:not(.tp-social-skip)').tpsocial(tp_social_config);
+          } else { } 
+         */
       $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
         .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
     }
