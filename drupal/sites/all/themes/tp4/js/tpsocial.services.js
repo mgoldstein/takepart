@@ -150,7 +150,6 @@
         height: 650,
         share: function(args) {
             var url = 'http://mail.aol.com/compose-message.aspx?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -163,7 +162,6 @@
         height: 650,
         share: function(args) {
             var url = 'http://compose.mail.yahoo.com/?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -176,7 +174,6 @@
         height: 600,
         share: function(args) {
             var url = 'https://mail.live.com/default.aspx?rru=compose&subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -189,7 +186,6 @@
         height: 500,
         share: function(args) {
             var url = 'https://mail.google.com/mail/?view=cm&ui=1&tf=0&fs=1&su=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -203,7 +199,6 @@
         description: '',
         share: function(args) {
             var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent(args.description) + '&url=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -374,7 +369,7 @@
         name: 'mailto',
         display: 'Email App',
         share: function(args) {
-            var url = 'mailto:?body=' + encodeURIComponent(args.url) + '&subject=' + encodeURIComponent(args.title);
+            var url = 'mailto:?body=' + encodeURIComponent(window.location) + '?cmpid=organic-share-mailto' + '&subject=' + encodeURIComponent(args.title);
             location.href = url;
       }
     });
