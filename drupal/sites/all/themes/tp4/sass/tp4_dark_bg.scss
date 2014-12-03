@@ -2,6 +2,10 @@
  * Custom Styling for Campaigns
  */
 
+/* Helpers */
+@import "helpers/mixins";
+@import "helpers/variables";
+
 body.campaign-display{
   $primary-color: #fff;
   $secondary-color: #000;
