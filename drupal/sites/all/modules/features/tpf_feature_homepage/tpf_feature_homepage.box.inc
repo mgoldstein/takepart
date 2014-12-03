@@ -20,7 +20,7 @@ function tpf_feature_homepage_default_box() {
   $box->options = array(
     'ga_ad_slot' => 'TP3_Homepage_Leaderboard_728x90',
     'ga_ad_gpt_id' => 'div-gpt-ad-1376947900543-0',
-    'additional_classes' => 'leaderboard',
+    'additional_classes' => 'leaderboard ad-large-center',
   );
   $export['ga_homepage_header'] = $box;
 
