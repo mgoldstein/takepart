@@ -57,7 +57,6 @@
     if (st > lastScrollTop && st > navbarHeight){
       // Scroll Down
       $('.header-wrapper').removeClass('nav-show').addClass('nav-hide');
-      $('#page-wrap').css('padding-top', '0');
     } else {
       // Scroll Up
       if(st + $(window).height() < $(document).height()) {

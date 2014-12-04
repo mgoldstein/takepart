@@ -81,12 +81,12 @@ body {
 }
 .preface-wrapper {
   min-height: 25px;
-  margin-top: 53px;
-  @include breakpoint($breakpoint-tablet) {
-    margin-top: 0;
-  }
+  margin-top: 0;
   .page-node.node-type-openpublish-photo-gallery & {
-    margin-top: 25px;
+    margin-top: 0;
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 25px;
+    }
   }
 }
 .footer-wrapper {

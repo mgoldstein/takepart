@@ -3982,17 +3982,17 @@ body.page-entity-iframe {
 /* line 82, ../sass/page/_layout.scss */
 .preface-wrapper {
   min-height: 25px;
-  margin-top: 53px;
+  margin-top: 0;
+}
+/* line 85, ../sass/page/_layout.scss */
+.page-node.node-type-openpublish-photo-gallery .preface-wrapper {
+  margin-top: 0;
 }
 @media all and (min-width: 768px) {
-  /* line 82, ../sass/page/_layout.scss */
-  .preface-wrapper {
-    margin-top: 0;
+  /* line 85, ../sass/page/_layout.scss */
+  .page-node.node-type-openpublish-photo-gallery .preface-wrapper {
+    margin-top: 25px;
   }
-}
-/* line 88, ../sass/page/_layout.scss */
-.page-node.node-type-openpublish-photo-gallery .preface-wrapper {
-  margin-top: 25px;
 }
 
 /* line 92, ../sass/page/_layout.scss */
