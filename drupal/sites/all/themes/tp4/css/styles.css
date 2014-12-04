@@ -4406,6 +4406,11 @@ body.page-overlay-ad {
   border-top: none;
   border-bottom: none;
 }
+/* line 310, ../sass/page/_layout.scss */
+body.page-overlay-ad #page-wrap {
+  padding-top: 0;
+  width: 300px;
+}
 
 /* line 6, ../sass/page/_homepage.scss */
 body.front img {

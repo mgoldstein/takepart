@@ -123,9 +123,13 @@
                     var $modal = $('#' + interstitial_modal_id + 'modal');
                     $modal.show();
                     if(window.innerWidth <= 400) {
+                      if($("#page").length === 0) {
+                        var w = $iframe.contents().find('#page-width').width();
+                      }else{
                         var w = window.innerWidth;
+                      }
                     }else{
-                      if($("#page").length === 'undefined') {
+                      if($("#page").length === 0) {
                         var w = $iframe.contents().find('#page-width').width();
                       }else{
                         var w = $iframe.contents().find('#page').width();
