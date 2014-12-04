@@ -88,8 +88,8 @@
         resizeTimeout = setTimeout($.proxy(adjustCardHeightsAndPadding, this), 250);
       });
       
-      //addresses issue with hover state
-      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('touchstart mouseover', function() {
+      //addresses issue with hover state - removed touchstart
+      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('mouseover', function() {
         $(this).addClass('hover-class'); 
       });
       
