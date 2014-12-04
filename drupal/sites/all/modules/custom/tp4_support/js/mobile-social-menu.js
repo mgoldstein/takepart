@@ -17,7 +17,7 @@
 
       if ($(window).width() < 768 && !$('body').hasClass('.node-type-campaign-page')){
         var navbarHeight = $('.header-wrapper').outerHeight();
-        $('#page-wrap').css('padding-top', navbarHeight);
+//        $('#page-wrap').css('padding-top', navbarHeight);
       }
 
       // Show the mobile social nav bar when window scrolls down

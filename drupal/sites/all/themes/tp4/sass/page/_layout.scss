@@ -20,9 +20,11 @@ html {}
 body {
   width: 100%;
   margin: 0;
-  border-top: 5px solid $light-mint;
   border-bottom: 5px solid $light-mint;
   position: relative;
+  @include breakpoint($breakpoint-tablet) {
+    border-top: 5px solid $light-mint; //breakpoint b/c of sticky header on mobile
+  }
   &.snapjs-left{
     overflow: hidden;
     border-bottom: none;
@@ -51,8 +53,10 @@ body {
   background-color: white;
   height: auto;
   overflow: hidden;
+  padding-top: 58px;
   @include breakpoint($breakpoint-tablet) {
     background-color: transparent;
+    padding-top: 0;
   }
 }
 .header-wrapper,
