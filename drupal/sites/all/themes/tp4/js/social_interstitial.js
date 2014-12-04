@@ -125,7 +125,7 @@
                     if(window.innerWidth <= 400) {
                         var w = window.innerWidth;
                     }else{
-                      if($("#page").length == 0) {
+                      if($("#page").length === 'undefined') {
                         var w = $iframe.contents().find('#page-width').width();
                       }else{
                         var w = $iframe.contents().find('#page').width();

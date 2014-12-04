@@ -7,3 +7,5 @@ version = 7.x-1.0
 files[] = "plugins/bean/FeaturedCampaignsBean.class.php"
 dependencies[] = bean
 dependencies[] = tp_campaigns
+
+scripts[] = js/mobile-social-menu.js
