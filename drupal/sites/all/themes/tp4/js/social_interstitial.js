@@ -120,12 +120,13 @@
                     'mobileAd': 'Mobile Ad'
                 };
                 $iframe.bind('load', function() {
+                    alert('test');
                     var $modal = $('#' + interstitial_modal_id + 'modal');
                     $modal.show();
                     if(window.innerWidth <= 400) {
                         var w = window.innerWidth;
                     }else{
-                      if($("#page").length == 0) {
+                      if($("#page").length === 'undefined') {
                         var w = $iframe.contents().find('#page-width').width();
                       }else{
                         var w = $iframe.contents().find('#page').width();
