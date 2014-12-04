@@ -94,7 +94,7 @@
       });
       
       //addresses issue with hover state remove touchend
-      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('mouseout', function() {
+      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('mouseout touchend', function() {
         $(this).removeClass('hover-class');
       });
     }
