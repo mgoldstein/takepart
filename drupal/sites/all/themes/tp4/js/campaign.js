@@ -93,8 +93,8 @@
         $(this).addClass('hover-class'); 
       });
       
-      //addresses issue with hover state
-      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('touchend mouseout', function() {
+      //addresses issue with hover state remove touchend
+      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('mouseout', function() {
         $(this).removeClass('hover-class');
       });
     }
