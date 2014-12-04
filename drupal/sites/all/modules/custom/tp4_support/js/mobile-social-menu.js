@@ -17,7 +17,7 @@
 
       if ($(window).width() < 768 && !$('body').hasClass('.node-type-campaign-page')){
         var navbarHeight = $('.header-wrapper').outerHeight();
-        $('#page-wrap').css('padding-top', navbarHeight);
+//        $('#page-wrap').css('padding-top', navbarHeight);
       }
 
       // Show the mobile social nav bar when window scrolls down
@@ -57,7 +57,6 @@
     if (st > lastScrollTop && st > navbarHeight){
       // Scroll Down
       $('.header-wrapper').removeClass('nav-show').addClass('nav-hide');
-      $('#page-wrap').css('padding-top', '0');
     } else {
       // Scroll Up
       if(st + $(window).height() < $(document).height()) {
