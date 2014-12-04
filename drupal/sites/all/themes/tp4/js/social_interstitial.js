@@ -120,7 +120,6 @@
                     'mobileAd': 'Mobile Ad'
                 };
                 $iframe.bind('load', function() {
-                    alert('test');
                     var $modal = $('#' + interstitial_modal_id + 'modal');
                     $modal.show();
                     if(window.innerWidth <= 400) {
