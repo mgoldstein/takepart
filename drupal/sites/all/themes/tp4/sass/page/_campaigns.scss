@@ -13,9 +13,9 @@ body.campaign-display
     $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
 
     //make header full width for menu/branding
-  #page-wrap{
-    padding-top: 0;
-  }
+    #page-wrap{
+        padding-top: 0;
+    }
     .header-wrapper{
         padding: 0;
         padding-top: 1em !important;
@@ -692,10 +692,11 @@ body.campaign-display{
                             content: '\25BB';
                         }
                     }
+                    &:hover{
+                        color: $light-mint;
+                    }
                 }
-                &:hover{
-                    color: $light-mint;
-                }
+
             }
         }
         nav.slider-nav{
