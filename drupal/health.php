@@ -1,4 +1,5 @@
 <?php
+// TakePart 3.45
 // Register our shutdown function so that no other shutdown functions run before this one.
 // This shutdown function calls exit(), immediately short-circuiting any other shutdown functions,
 // such as those registered by the devel.module for statistics.
@@ -65,8 +66,8 @@ if ($errors) {
 else {
   // Split up this message, to prevent the remote chance of monitoring software
   // reading the source code if mod_php fails and then matching the string.
-  print 'CONGRATULATIONS' . ' 200';
+  print 'CONGRATULATIONS' . ' 200' . "\n";
 }
-
+print_r('<!-- TakePart 3.45 -->');
 // Exit immediately, note the shutdown function registered at the top of the file.
 exit();
