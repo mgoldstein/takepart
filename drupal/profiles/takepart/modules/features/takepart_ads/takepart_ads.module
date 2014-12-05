@@ -180,7 +180,9 @@ function takepart_ads_preprocess_page(&$vars) {
     $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
     $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
     $field_series = isset($vars['node']->field_series['und']) ? $vars['node']->field_series['und'] : array();
-
+    
+    //dd($vars['page']['content']['system_main']['form']['#title']);
+    
     $terms = array();
     if (isset($vars['node']->type)) {
         $contentType = 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n";
@@ -189,6 +191,10 @@ function takepart_ads_preprocess_page(&$vars) {
     elseif ($vars['page']['content']['system_main']['#bundle'] === 'topic') {
         $contentType = 'GA_googleAddAttr("Type", "topic_hub");' . "\n";
         $gpt_contentType = 'googletag.pubads().setTargeting("Type", "topic_hub");' . "\n";
+    }
+    elseif ($vars['page']['content']['system_main']['form']['#title'] === 'Site Search') {
+        $contentType = 'GA_googleAddAttr("Type", "search");' . "\n";
+        $gpt_contentType = 'googletag.pubads().setTargeting("Type", "search");' . "\n";
     }
     else {
         $contentType = "";
@@ -255,6 +261,10 @@ function takepart_ads_preprocess_page(&$vars) {
         $pageTitle = 'GA_googleAddAttr("PageTitle", "' . htmlspecialchars(trim($vars['page']['content']['system_main']['#term']->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
         $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "' . htmlspecialchars(trim($vars['page']['content']['system_main']['#term']->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
     }
+    elseif ($vars['page']['content']['system_main']['form']['#title'] === 'Site Search') {
+        $pageTitle = 'GA_googleAddAttr("PageTitle", "Site Search");' . "\n";
+        $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "Site Search");' . "\n";
+    }
     elseif ($vars['is_front']) {
         $pageTitle = 'GA_googleAddAttr("PageTitle", "homepage");' . "\n";
         $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "homepage");' . "\n";
@@ -286,7 +296,7 @@ function takepart_ads_preprocess_page(&$vars) {
 
     //GAM:
     $header1 = 'GS_googleAddAdSenseService("' . variable_get('takepart_ads_dfp_property_code', '') . '");
-GS_googleEnableAllServices();';
+    GS_googleEnableAllServices();';
     $header2 = $ad_html;
     $header3 = 'GA_googleFetchAds();';
 
