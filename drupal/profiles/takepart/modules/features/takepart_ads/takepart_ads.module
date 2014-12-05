@@ -181,8 +181,6 @@ function takepart_ads_preprocess_page(&$vars) {
     $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
     $field_series = isset($vars['node']->field_series['und']) ? $vars['node']->field_series['und'] : array();
     
-    //dd($vars['page']['content']['system_main']['form']['#title']);
-    
     $terms = array();
     if (isset($vars['node']->type)) {
         $contentType = 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n";
