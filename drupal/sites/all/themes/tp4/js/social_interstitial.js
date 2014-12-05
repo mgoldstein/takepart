@@ -54,7 +54,9 @@
               }else if(ad_cookie == 0 && path != '/overlay/ad'){
                 show_takeover_ad();
                 var link = $('<a href="/overlay/ad" data-interstitial-type="mobileAd"></a>');
-                show_interstitial(link);
+                if(!$('body').hasClass('campaign-display')){
+                  show_interstitial(link);
+                }
               }
 
             }
@@ -122,18 +124,10 @@
                 $iframe.bind('load', function() {
                     var $modal = $('#' + interstitial_modal_id + 'modal');
                     $modal.show();
-                    if(window.innerWidth <= 400) {
-                      if($("#page").length === 0) {
-                        var w = $iframe.contents().find('#page-width').width();
-                      }else{
-                        var w = window.innerWidth;
-                      }
+                    if(window.innerWidth <= 480) {
+                      var w = 300;
                     }else{
-                      if($("#page").length === 0) {
-                        var w = $iframe.contents().find('#page-width').width();
-                      }else{
-                        var w = $iframe.contents().find('#page').width();
-                      }
+                      var w = 400;
                     }
                     var h = $iframe.contents().find('html').height();
                     $modal.hide();
