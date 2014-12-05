@@ -3887,6 +3887,12 @@ tr.selected td {
   display: none;
 }
 
+/** Samsung leaderboard **/
+/* line 970, ../sass/elements/_misc.scss */
+.leaderboard .leaderboard-ad {
+  height: auto !important;
+}
+
 /* Page */
 /**
  * @file
@@ -3943,7 +3949,6 @@ body.page-entity-iframe {
   background-color: white;
   height: auto;
   overflow: hidden;
-  padding-top: 58px;
 }
 @media all and (min-width: 768px) {
   /* line 51, ../sass/page/_layout.scss */
@@ -3953,7 +3958,7 @@ body.page-entity-iframe {
   }
 }
 
-/* line 66, ../sass/page/_layout.scss */
+/* line 65, ../sass/page/_layout.scss */
 .header-wrapper,
 .preface-wrapper,
 .main-wrapper,
@@ -3964,50 +3969,50 @@ body.page-entity-iframe {
   padding: 0;
 }
 
-/* line 71, ../sass/page/_layout.scss */
+/* line 70, ../sass/page/_layout.scss */
 .header-wrapper, .suffix-wrapper, .preface-wrapper {
   padding: 0 10px;
 }
 
-/* line 74, ../sass/page/_layout.scss */
+/* line 73, ../sass/page/_layout.scss */
 .header-wrapper {
   padding-top: 1em;
   border-top: 5px solid #01bf9e;
 }
 @media all and (min-width: 768px) {
-  /* line 74, ../sass/page/_layout.scss */
+  /* line 73, ../sass/page/_layout.scss */
   .header-wrapper {
     border-top: none;
   }
 }
-/* line 81, ../sass/page/_layout.scss */
+/* line 80, ../sass/page/_layout.scss */
 .snapjs-left .header-wrapper {
   background-color: white;
   border-top: 5px solid #01bf9e;
 }
 
-/* line 86, ../sass/page/_layout.scss */
+/* line 85, ../sass/page/_layout.scss */
 .preface-wrapper {
   min-height: 25px;
   margin-top: 0;
 }
-/* line 89, ../sass/page/_layout.scss */
+/* line 88, ../sass/page/_layout.scss */
 .page-node.node-type-openpublish-photo-gallery .preface-wrapper {
   margin-top: 0;
 }
 @media all and (min-width: 768px) {
-  /* line 89, ../sass/page/_layout.scss */
+  /* line 88, ../sass/page/_layout.scss */
   .page-node.node-type-openpublish-photo-gallery .preface-wrapper {
     margin-top: 25px;
   }
 }
 
-/* line 96, ../sass/page/_layout.scss */
+/* line 95, ../sass/page/_layout.scss */
 .footer-wrapper {
   padding-bottom: 1em;
 }
 
-/* line 103, ../sass/page/_layout.scss */
+/* line 102, ../sass/page/_layout.scss */
 #header,
 #preface,
 #main,
@@ -4041,21 +4046,21 @@ body.page-entity-iframe {
   clear: both;
 }
 
-/* line 111, ../sass/page/_layout.scss */
+/* line 110, ../sass/page/_layout.scss */
 #header {
   z-index: 3;
 }
 
-/* line 114, ../sass/page/_layout.scss */
+/* line 113, ../sass/page/_layout.scss */
 #preface {
   min-height: 1em;
 }
 
-/* line 117, ../sass/page/_layout.scss */
+/* line 116, ../sass/page/_layout.scss */
 #main {
   background-color: white;
 }
-/* line 119, ../sass/page/_layout.scss */
+/* line 118, ../sass/page/_layout.scss */
 #main #primary {
   float: left;
   width: 100%;
@@ -4070,7 +4075,7 @@ body.page-entity-iframe {
   word-wrap: break-word;
 }
 @media all and (min-width: 768px) {
-  /* line 123, ../sass/page/_layout.scss */
+  /* line 122, ../sass/page/_layout.scss */
   #main.with-sidebar #primary {
     float: left;
     width: 58.33333%;
@@ -4086,7 +4091,7 @@ body.page-entity-iframe {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 123, ../sass/page/_layout.scss */
+  /* line 122, ../sass/page/_layout.scss */
   #main.with-sidebar #primary {
     float: left;
     width: 66.66667%;
@@ -4101,7 +4106,7 @@ body.page-entity-iframe {
     word-wrap: break-word;
   }
 }
-/* line 130, ../sass/page/_layout.scss */
+/* line 129, ../sass/page/_layout.scss */
 body.page-node.node-type-feature-article #main.with-sidebar #primary {
   float: left;
   width: 100%;
@@ -4116,7 +4121,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   word-wrap: break-word;
 }
 @media all and (min-width: 980px) {
-  /* line 136, ../sass/page/_layout.scss */
+  /* line 135, ../sass/page/_layout.scss */
   #main.with-skinny #primary {
     float: left;
     width: 83.33333%;
@@ -4132,7 +4137,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 143, ../sass/page/_layout.scss */
+  /* line 142, ../sass/page/_layout.scss */
   #main.with-sidebar.with-skinny #primary {
     float: left;
     width: 50%;
@@ -4153,7 +4158,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     padding-right: 8px;
   }
 }
-/* line 156, ../sass/page/_layout.scss */
+/* line 155, ../sass/page/_layout.scss */
 #main #sidebar {
   float: left;
   width: 100%;
@@ -4169,7 +4174,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   clear: left;
 }
 @media all and (min-width: 768px) {
-  /* line 156, ../sass/page/_layout.scss */
+  /* line 155, ../sass/page/_layout.scss */
   #main #sidebar {
     float: left;
     width: 41.66667%;
@@ -4186,7 +4191,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 156, ../sass/page/_layout.scss */
+  /* line 155, ../sass/page/_layout.scss */
   #main #sidebar {
     width: 300px;
     float: right;
@@ -4198,11 +4203,11 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     box-sizing: content-box;
   }
 }
-/* line 174, ../sass/page/_layout.scss */
+/* line 173, ../sass/page/_layout.scss */
 #main #sidebar p {
   margin-bottom: .5em;
 }
-/* line 181, ../sass/page/_layout.scss */
+/* line 180, ../sass/page/_layout.scss */
 #main #skinny {
   float: left;
   width: 100%;
@@ -4218,7 +4223,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   clear: left;
 }
 @media all and (min-width: 768px) {
-  /* line 181, ../sass/page/_layout.scss */
+  /* line 180, ../sass/page/_layout.scss */
   #main #skinny {
     float: left;
     width: 41.66667%;
@@ -4234,7 +4239,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 181, ../sass/page/_layout.scss */
+  /* line 180, ../sass/page/_layout.scss */
   #main #skinny {
     float: left;
     width: 16.66667%;
@@ -4251,7 +4256,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 193, ../sass/page/_layout.scss */
+  /* line 192, ../sass/page/_layout.scss */
   #main.with-sidebar #skinny {
     float: left;
     width: 100%;
@@ -4267,7 +4272,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 193, ../sass/page/_layout.scss */
+  /* line 192, ../sass/page/_layout.scss */
   #main.with-sidebar #skinny {
     float: left;
     width: 16.66667%;
@@ -4285,27 +4290,27 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 
-/* line 207, ../sass/page/_layout.scss */
+/* line 206, ../sass/page/_layout.scss */
 #tp_ad_takeover {
   display: none;
   visibility: hidden;
 }
 @media all and (min-width: 980px) {
-  /* line 207, ../sass/page/_layout.scss */
+  /* line 206, ../sass/page/_layout.scss */
   #tp_ad_takeover {
     display: block;
     visibility: visible;
   }
 }
 
-/* line 216, ../sass/page/_layout.scss */
+/* line 215, ../sass/page/_layout.scss */
 .close-ad {
   display: none;
   visibility: hidden;
 }
 
 @media all and (min-width: 320px) {
-  /* line 222, ../sass/page/_layout.scss */
+  /* line 221, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50-relative {
     display: block;
     visibility: visible;
@@ -4314,7 +4319,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     width: 100%;
     background-color: transparent;
   }
-  /* line 231, ../sass/page/_layout.scss */
+  /* line 230, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50-relative #boxes-box-ga_mobile_320x50_relative {
     position: relative;
     width: 320px;
@@ -4323,20 +4328,20 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 222, ../sass/page/_layout.scss */
+  /* line 221, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50-relative {
     display: none;
     visibility: hidden;
   }
 }
-/* line 242, ../sass/page/_layout.scss */
+/* line 241, ../sass/page/_layout.scss */
 #block-boxes-ga-mobile-320x50-relative.hide {
   display: none;
   visibility: hidden;
 }
 
 @media all and (min-width: 320px) {
-  /* line 250, ../sass/page/_layout.scss */
+  /* line 249, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 {
     display: block;
     visibility: visible;
@@ -4349,14 +4354,14 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     background-color: black;
     z-index: 3;
   }
-  /* line 262, ../sass/page/_layout.scss */
+  /* line 261, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 #boxes-box-ga_mobile_320x50 {
     position: relative;
     width: 320px;
     margin: 0 auto;
     overflow-x: visible;
   }
-  /* line 268, ../sass/page/_layout.scss */
+  /* line 267, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 .close-mobile-ad {
     display: block;
     visibility: visible;
@@ -4371,7 +4376,7 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
     height: 36px;
     text-align: center;
   }
-  /* line 281, ../sass/page/_layout.scss */
+  /* line 280, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 .close-mobile-ad span {
     display: block;
     content: '\2421';
@@ -4388,13 +4393,13 @@ body.page-node.node-type-feature-article #main.with-sidebar #primary {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 250, ../sass/page/_layout.scss */
+  /* line 249, ../sass/page/_layout.scss */
   #block-boxes-ga-mobile-320x50 {
     display: none;
     visibility: hidden;
   }
 }
-/* line 301, ../sass/page/_layout.scss */
+/* line 300, ../sass/page/_layout.scss */
 #block-boxes-ga-mobile-320x50.hide {
   display: none;
   visibility: hidden;
@@ -11287,6 +11292,119 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
   margin: 0 auto;
 }
 
+/*
+ * Custom Styling for Campaigns
+ */
+/* Helpers */
+/*
+ *Fonts
+ */
+/*
+ *Colors
+ */
+/*
+ *Misc
+ */
+/* line 15, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background h1, body.campaign-display .card.dark-background h2, body.campaign-display .card.dark-background h3, body.campaign-display .card.dark-background h4, body.campaign-display .card.dark-background h5, body.campaign-display .card.dark-background h6 {
+  color: white;
+}
+/* line 18, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background p {
+  color: white;
+}
+/* line 21, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background a {
+  color: #01bf9e;
+}
+/* line 24, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .secondary-button a {
+  color: white;
+}
+/* line 26, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .secondary-button a:hover {
+  color: white;
+}
+/* line 30, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .primary-button a {
+  color: white;
+}
+/* line 33, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .media-caption {
+  color: white;
+}
+/* line 37, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background ul li, body.campaign-display .card.dark-background ol li {
+  color: white;
+}
+/* line 44, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .arrow:hover {
+  color: #01bf9e;
+}
+/* line 48, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .slider-pagination a {
+  background-color: white;
+}
+/* line 51, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .slider-pagination a.active {
+  background-color: #01bf9e;
+}
+/* line 55, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .tray-header .card-title {
+  color: white;
+}
+@media all and (min-width: 320px) {
+  /* line 60, ../sass/tp4_dark_bg.scss */
+  body.campaign-display .tray.dark-background .mobile-arrow {
+    color: #FFF;
+  }
+}
+/* line 67, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .share-headline {
+  color: white;
+}
+/* line 70, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .icon.i-touch-menu:after {
+  color: white;
+}
+/* line 75, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item.active > a {
+  color: #01bf9e;
+}
+/* line 78, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item.parent-item:not(.anchored) > a.active {
+  color: #01bf9e;
+}
+/* line 83, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item > a {
+  color: white;
+}
+/* line 86, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a {
+  color: black;
+  background-color: white;
+}
+/* line 90, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a.active {
+  color: black;
+}
+/* line 94, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item:not(.anchored):hover a.active {
+  color: black;
+}
+/* line 101, ../sass/tp4_dark_bg.scss */
+body.campaign-display .swipe-wrap.has-title .card.dark-background .card-inner {
+  border-top: none;
+}
+/* line 107, ../sass/tp4_dark_bg.scss */
+body.campaign-display .node-campaign-card-twitter .card.dark-background h3.tweet-username a {
+  color: white;
+}
+/* line 112, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .block-newsletter-campaign {
+  color: white;
+}
+
 /* Modules */
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider
@@ -11722,8 +11840,8 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
     width: 100%;
     margin-left: 0%;
     margin-right: -100%;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -11740,8 +11858,8 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
     width: 33.33333%;
     margin-left: 0%;
     margin-right: -33.33333%;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -11756,8 +11874,8 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
     width: 33.33333%;
     margin-left: 33.33333%;
     margin-right: -66.66667%;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -11773,8 +11891,8 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
     width: 33.33333%;
     margin-left: 66.66667%;
     margin-right: -100%;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -11792,8 +11910,8 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
     width: 25%;
     margin-left: 0%;
     margin-right: -25%;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -11808,8 +11926,8 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
     width: 25%;
     margin-left: 25%;
     margin-right: -50%;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -11825,8 +11943,8 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
     width: 25%;
     margin-left: 50%;
     margin-right: -75%;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -11842,8 +11960,8 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
     width: 25%;
     margin-left: 75%;
     margin-right: -100%;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -ms-box-sizing: border-box;
@@ -13849,7 +13967,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   -webkit-box-sizing: box-content;
   -moz-box-sizing: box-content;
   box-sizing: box-content;
-  padding: 0 3%;
+  padding: 0 20px;
   background-color: #FFF;
 }
 
@@ -14874,91 +14992,65 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* Styling for social sharing outside of social menu */
-/* Styling for the slimnav */
-/* line 132, ../sass/modules/_mobile-social-menu.scss */
-body:not(.node-type-campaign-page) .header-wrapper {
-  transition: 0.2s;
-  position: fixed;
-  left: 0;
-  right: 0;
-  background: white;
-  z-index: 99;
-  top: 0;
-}
-/* line 140, ../sass/modules/_mobile-social-menu.scss */
-body:not(.node-type-campaign-page) .header-wrapper.nav-hide {
-  top: -58px;
-}
-/* line 143, ../sass/modules/_mobile-social-menu.scss */
-body:not(.node-type-campaign-page) .header-wrapper.nav-show {
-  top: 0;
-}
-@media all and (min-width: 768px) {
-  /* line 132, ../sass/modules/_mobile-social-menu.scss */
-  body:not(.node-type-campaign-page) .header-wrapper {
-    position: static;
-  }
-}
-
 /**
  * The below should be separated out into it's own tpsocial helper
  */
-/* line 156, ../sass/modules/_mobile-social-menu.scss */
+/* line 134, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-pinterest:before {
   background-color: #ca2026;
 }
 
-/* line 160, ../sass/modules/_mobile-social-menu.scss */
+/* line 138, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-facebook:before {
   background-color: #3d5b96;
 }
 
-/* line 164, ../sass/modules/_mobile-social-menu.scss */
+/* line 142, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-twitter:before {
   background-color: #34aadf;
 }
 
-/* line 168, ../sass/modules/_mobile-social-menu.scss */
+/* line 146, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-googleplus:before {
   background-color: #cc181e;
 }
 
-/* line 172, ../sass/modules/_mobile-social-menu.scss */
+/* line 150, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-tumblr:before {
   background-color: #385774;
 }
 
-/* line 176, ../sass/modules/_mobile-social-menu.scss */
+/* line 154, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-email:before {
   background-color: #000;
 }
 
-/* line 180, ../sass/modules/_mobile-social-menu.scss */
+/* line 158, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-mailto:before {
   background-color: #000;
 }
 
-/* line 184, ../sass/modules/_mobile-social-menu.scss */
+/* line 162, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-linkedin:before {
   background-color: #0977b4;
 }
 
-/* line 188, ../sass/modules/_mobile-social-menu.scss */
+/* line 166, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-vine:before {
   background-color: #00b386;
 }
 
-/* line 192, ../sass/modules/_mobile-social-menu.scss */
+/* line 170, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-instagram:before {
   background-color: #3f729b;
 }
 
-/* line 196, ../sass/modules/_mobile-social-menu.scss */
+/* line 174, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-youtube:before {
   background-color: #cc181e;
 }
 
-/* line 200, ../sass/modules/_mobile-social-menu.scss */
+/* line 178, ../sass/modules/_mobile-social-menu.scss */
 .social .tp-social-reddit:before {
   background-color: #00b386;
 }

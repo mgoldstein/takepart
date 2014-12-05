@@ -165,7 +165,7 @@ HTM;
         }else {
           $content = <<<HTM
             <!-- $slot -->
-            <div id='$gptid[$slot]' style='width:$lr[0]px; height:$lr[1]px;'>
+            <div id='$gptid[$slot]' class="leaderboard-ad"style='width:$lr[0]px; height:$lr[1]px;'>
             <script type='text/javascript'>
               function $gptfunction() {
                if (typeof(googletag) !== 'undefined') {
