@@ -345,7 +345,7 @@ body.campaign-display{
         height: 100%;
         overflow: hidden;
         padding-bottom: 60px;
-        @import "modules/wysiwyg";
+        @import "../modules/wysiwyg";
     }
     a.card-anchor {
         display: block;
@@ -353,7 +353,7 @@ body.campaign-display{
         top: 0px;
         visibility: hidden;
     }
-    .card-inner a:not(.bx-prev):not(.bx-next){
+    .card-inner a{
         color: $mint;
     }
     .takepart-take-action-widget{

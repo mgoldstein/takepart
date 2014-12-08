@@ -4001,7 +4001,7 @@ p:first-child {
 }
 
 /* line 85, ../sass/modules/_wysiwyg.scss */
-ul:not(.tabs .video-item) li {
+ul:not(.tabs):not(.video-item) li {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
   font-size: 16px;
@@ -4011,7 +4011,7 @@ ul:not(.tabs .video-item) li {
   list-style-type: none;
 }
 /* line 93, ../sass/modules/_wysiwyg.scss */
-ul:not(.tabs .video-item) li:before {
+ul:not(.tabs):not(.video-item) li:before {
   content: '';
   height: 6px;
   width: 6px;

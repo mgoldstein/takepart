@@ -9473,7 +9473,7 @@ body.campaign-display .card .secondary-button:hover a {
   text-decoration: underline;
 }
 /* line 85, ../sass/modules/_wysiwyg.scss */
-body.campaign-display .card ul:not(.tabs .video-item) li {
+body.campaign-display .card ul:not(.tabs):not(.video-item) li {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
   font-size: 16px;
@@ -9483,7 +9483,7 @@ body.campaign-display .card ul:not(.tabs .video-item) li {
   list-style-type: none;
 }
 /* line 93, ../sass/modules/_wysiwyg.scss */
-body.campaign-display .card ul:not(.tabs .video-item) li:before {
+body.campaign-display .card ul:not(.tabs):not(.video-item) li:before {
   content: '';
   height: 6px;
   width: 6px;
@@ -9544,7 +9544,7 @@ body.campaign-display a.card-anchor {
   visibility: hidden;
 }
 /* line 356, ../sass/page/_campaigns.scss */
-body.campaign-display .card-inner a:not(.bx-prev):not(.bx-next) {
+body.campaign-display .card-inner a {
   color: #018b73;
 }
 /* line 359, ../sass/page/_campaigns.scss */
