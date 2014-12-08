@@ -49,12 +49,13 @@ function tp4_preprocess_html(&$variables, $hook) {
   // Pass the digital data to the HTML template.
   $variables['tp_digital_data'] =  isset($variables['page']['tp_digital_data'])
     ? $variables['page']['tp_digital_data'] : NULL;
-
-  $variables['dtm_script_src'] = variable_get('dtm_script_src');
-
+  $node = menu_get_object();
+  if($node->type == 'campaign_page'){
+    $variables['dtm_script_src'] = variable_get('dtm_script_src');
+  }
 
   // If on an individual node page, add the node type to body classes.
-  if ($node = menu_get_object()) {
+  if ($node) {
     $card_types = unserialize(CARDTYPES);
     if(in_array($node->type, $card_types) == true || $node->type == 'campaign_page'){
       $variables['classes_array'][] = drupal_html_class('campaign-display');
@@ -73,9 +74,6 @@ function tp4_preprocess_html(&$variables, $hook) {
     ));
     // add jquery cookie library to tp4 pages
     drupal_add_library('system', 'jquery.cookie', true);
-
-    $node = menu_get_object();
-    $campaign_types = unserialize(CARDTYPES);
 
     if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
         unset($variables['page']['page_bottom']['omniture']);
