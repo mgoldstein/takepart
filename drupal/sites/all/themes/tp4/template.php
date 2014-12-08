@@ -75,9 +75,6 @@ function tp4_preprocess_html(&$variables, $hook) {
     // add jquery cookie library to tp4 pages
     drupal_add_library('system', 'jquery.cookie', true);
 
-    $node = menu_get_object();
-    $campaign_types = unserialize(CARDTYPES);
-
     if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
         unset($variables['page']['page_bottom']['omniture']);
         unset($variables['page']['page_bottom']['quantcast']);
