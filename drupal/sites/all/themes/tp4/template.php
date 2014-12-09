@@ -1640,9 +1640,9 @@ function _tp4_on_our_radar_block(&$variables) {
           'id' => 'pubexchange_related_links',
     ))));
     
-  drupal_add_js('<script>(function(d, s, id)
+  drupal_add_js('(function(d, s, id)
                 { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
-                (document, "script", "pubexchange-jssdk"));</script>',
+                (document, "script", "pubexchange-jssdk"));',
     array(
       'type' => 'inline',
       'scope' => 'footer',
