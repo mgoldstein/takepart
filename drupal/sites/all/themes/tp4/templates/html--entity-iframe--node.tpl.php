@@ -23,7 +23,7 @@
   </script>
   <?php endif; ?>
   <?php if (!empty($dtm_script_src)): ?>
-  <script src="<?php print $dtm_script_src ?>"></script>
+  <!-- <script src="<?php print $dtm_script_src ?>"></script> -->
   <?php endif; ?>
   <?php print $head; ?>
   <?php if ($default_mobile_metatags): ?>
@@ -58,7 +58,7 @@
   <?php print $page; ?>
   <?php // print $page_bottom; ?>
   <?php if (!empty($dtm_script_src)): ?>
-  <script type="text/javascript">_satellite.pageBottom();</script>
+  <!-- <script type="text/javascript">_satellite.pageBottom();</script> -->
   <?php endif; ?>
 </body>
 </html>

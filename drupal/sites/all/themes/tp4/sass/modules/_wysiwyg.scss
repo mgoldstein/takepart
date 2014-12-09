@@ -81,7 +81,7 @@ p {
 .secondary-button{
   @include secondary-button;
 }
-ul:not(.tabs){
+ul:not(.tabs):not(.video-item){
   li{
     font-family: $primary-sans-font;
     font-weight: 100;

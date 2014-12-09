@@ -8751,7 +8751,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'source' => 'field_inline_replacements',
         ),
         'type' => 'text_with_inline_content',
-        'weight' => 12,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8877,7 +8877,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8996,7 +8996,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9087,7 +9087,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 19,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9179,7 +9179,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 18,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9270,7 +9270,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9360,7 +9360,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9884,7 +9884,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10471,7 +10471,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10566,7 +10566,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 17,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10655,7 +10655,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 21,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10746,13 +10746,9 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'links' => 1,
-          'view_mode' => 'video_playlist_teaser',
-        ),
-        'type' => 'entityreference_entity_view',
-        'weight' => 22,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10841,7 +10837,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',

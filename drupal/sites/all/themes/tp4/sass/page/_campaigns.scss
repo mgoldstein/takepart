@@ -13,6 +13,9 @@ body.campaign-display
     $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
 
     //make header full width for menu/branding
+    #page-wrap{
+        padding-top: 0;
+    }
     .header-wrapper{
         padding: 0;
         padding-top: 1em !important;
@@ -28,6 +31,11 @@ body.campaign-display
             max-width: 1000px;
             margin: 0 auto;
             position: relative;
+            /*
+            #campaign-page-share .tp-social-mailto {
+                display: none;
+            }
+            */
         }
         #div-gpt-ad-1394222082576-0 {
             margin: 0 auto;
@@ -244,7 +252,7 @@ body.campaign-display .card.node-campaign-card-media{
             @include zen-grid-item(10, 2);
         }
     }
-    
+
     .playlist-wrapper-wrapper {
         .bx-wrapper {
             ul {
@@ -337,7 +345,7 @@ body.campaign-display{
         height: 100%;
         overflow: hidden;
         padding-bottom: 60px;
-        @import "modules/wysiwyg";
+        @import "../modules/wysiwyg";
     }
     a.card-anchor {
         display: block;
@@ -684,10 +692,11 @@ body.campaign-display{
                             content: '\25BB';
                         }
                     }
+                    &:hover{
+                        color: $light-mint;
+                    }
                 }
-                &:hover{
-                    color: $light-mint;
-                }
+
             }
         }
         nav.slider-nav{
@@ -732,7 +741,7 @@ body.campaign-display{
                     bottom: -7px;
                     cursor: pointer;
                     color: #000;
-                    
+
                     &.left-arrow {
                         margin-right: 20px;
                         left: 10px;
@@ -741,9 +750,11 @@ body.campaign-display{
                             content: '\e601';
                             font-size: 35px;
                         }
+                        /*
                         &.hover-class {
                             color: #018b73;
                         }
+                        */
                     }
                     &.right-arrow {
                         margin-left: 20px;
@@ -753,9 +764,11 @@ body.campaign-display{
                             content: '\e602';
                             font-size: 35px;
                         }
+                        /*
                         &.hover-class {
                             color: #018b73;
                         }
+                        */
                     }
                 }
             }
@@ -801,7 +814,7 @@ body.campaign-display{
     .card.background-crop, .slider.background-crop{
         background-size: auto !important;
         @include breakpoint(1600px) {
-          background-size: 100% !important;
+            background-size: 100% !important;
         }
     }
     .slider.tray-img-width-1000{
@@ -1419,7 +1432,7 @@ body.campaign-display{
                 @include breakpoint($breakpoint-tablet){
                     width: 100%;
                 }
-                
+
                 @include breakpoint($breakpoint-desktop) {
                     float: none;
                 }
@@ -1756,7 +1769,7 @@ body.campaign-display .swipe-wrap.has-title{
 }
 
 body.campaign-display .card .playlist ul:not(.tabs) li:before{
-  background-color: transparent;
+    background-color: transparent;
 }
 
 /**
@@ -1775,3 +1788,4 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
 
 //Add Custom Styling for TP4 Campaigns
 @import "tp4_dark_bg";
+

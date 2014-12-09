@@ -88,13 +88,13 @@
         resizeTimeout = setTimeout($.proxy(adjustCardHeightsAndPadding, this), 250);
       });
       
-      //addresses issue with hover state
-      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('touchstart mouseover', function() {
+      //addresses issue with hover state - removed touchstart
+      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('mouseover', function() {
         $(this).addClass('hover-class'); 
       });
       
-      //addresses issue with hover state
-      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('touchend mouseout', function() {
+      //addresses issue with hover state remove touchend
+      $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('mouseout touchend', function() {
         $(this).removeClass('hover-class');
       });
     }
@@ -221,11 +221,6 @@
               caption: title + " - " + description
             },
             {
-              name: 'email',
-              title: title,
-              note: description
-            },
-            {
               name: 'mailto',
               title: title,
               note: description
@@ -235,7 +230,6 @@
 
       $('#campaign-page-share').tpsocial(mainShares);
       $('#campaign-page-more-shares').find('p').tpsocial(moreShares);
-
       $moreShares = $('#campaign-page-social-more');
 
       var moreSharesClose = function() {

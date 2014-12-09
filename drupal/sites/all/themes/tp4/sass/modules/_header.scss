@@ -9,7 +9,11 @@
 */
 .tp_ad_takeover {
   .header-wrapper {
-    padding-top: 0;
+    @include breakpoint($breakpoint-desktop) {
+			padding-top: 0;
+			max-width: 980px;
+			margin: 0 auto;
+    }
   }
 }
 
@@ -47,7 +51,7 @@ header {
 			}
 			
 			@include breakpoint($breakpoint-desktop) {
-				width: 1020px;
+				width: 1022px;
 				margin-left: -20px;
 			}
 		}

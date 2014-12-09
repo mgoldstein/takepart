@@ -128,11 +128,15 @@
       text-transform: uppercase;
       border-bottom: none;
       font-weight: 100;
-
+    }
+    ul li ul li{
+      padding: 10px;
+      border-bottom: 1px solid #646464;
+      line-height: 20px;
+      text-indent: 0;
     }
     a{
       color: #fff;
-      border-bottom: 1px solid #646464;
       display: block;
       width: 100%;
       &:hover{

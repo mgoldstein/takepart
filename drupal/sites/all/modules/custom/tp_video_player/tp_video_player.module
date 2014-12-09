@@ -245,9 +245,9 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
         );
   
         //only adds the tags if one exist
-        if (isset($full_page_conf->ad_tag)) {
+        if (isset($full_page_conf)) {
           //pulls the settings for ads from the node into video block
-          $configuration->ad_tag = $full_page_conf->ad_tag;
+          $configuration = $full_page_conf;
         }
       }
     }

@@ -49,12 +49,13 @@ function tp4_preprocess_html(&$variables, $hook) {
   // Pass the digital data to the HTML template.
   $variables['tp_digital_data'] =  isset($variables['page']['tp_digital_data'])
     ? $variables['page']['tp_digital_data'] : NULL;
-
-  $variables['dtm_script_src'] = variable_get('dtm_script_src');
-
+  $node = menu_get_object();
+  if($node->type == 'campaign_page'){
+    $variables['dtm_script_src'] = variable_get('dtm_script_src');
+  }
 
   // If on an individual node page, add the node type to body classes.
-  if ($node = menu_get_object()) {
+  if ($node) {
     $card_types = unserialize(CARDTYPES);
     if(in_array($node->type, $card_types) == true || $node->type == 'campaign_page'){
       $variables['classes_array'][] = drupal_html_class('campaign-display');
@@ -73,9 +74,6 @@ function tp4_preprocess_html(&$variables, $hook) {
     ));
     // add jquery cookie library to tp4 pages
     drupal_add_library('system', 'jquery.cookie', true);
-
-    $node = menu_get_object();
-    $campaign_types = unserialize(CARDTYPES);
 
     if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
         unset($variables['page']['page_bottom']['omniture']);
@@ -1583,14 +1581,21 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 
         // Decide whether to display a TAP banner
         if ($variables['field_display_tab_banner']['und'][0]['value']) {
-            $description_display = array(
-              'label' => 'hidden',
-              'type'  => 'text_with_inline_content',
-              'settings' => array(
-                'source' => 'field_inline_replacements'
-              )
-            );
-            $variables['gallery_tap_banner'] = field_view_field('node', $variables['node'], 'body', $description_display);
+						$description_display = array(
+							'label' => 'hidden',
+							'type'  => 'text_with_inline_content',
+							'settings' => array(
+								'source' => 'field_inline_replacements'
+							)
+						);
+						
+						//removes all body info and just has it do a replacement to add at the end
+						$node_clone = $variables['node'];
+						$lang = $node_clone->language;
+						$node_clone->body[$lang][0]['value'] = '';
+						$node_clone->body[$lang][0]['safe_value'] = '';
+						
+						$variables['gallery_tap_banner'] = field_view_field('node', $node_clone, 'body', $description_display);
         }
 
         // provide "on our radar" block
@@ -1635,9 +1640,9 @@ function _tp4_on_our_radar_block(&$variables) {
           'id' => 'pubexchange_related_links',
     ))));
     
-  drupal_add_js('<script>(function(d, s, id)
+  drupal_add_js('(function(d, s, id)
                 { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
-                (document, "script", "pubexchange-jssdk"));</script>',
+                (document, "script", "pubexchange-jssdk"));',
     array(
       'type' => 'inline',
       'scope' => 'footer',

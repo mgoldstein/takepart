@@ -10,6 +10,7 @@
   font-size: 12px;
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   display: inline-block;
+  line-height: 100%;
 }
 
 .video-placeholder{
@@ -95,6 +96,10 @@ h3.video-title{
       a {
         margin-top: 0;
         top: 47px;
+        color: #000;
+        &:hover {
+            color: $light-mint;
+        }
       }
     }
   }
@@ -223,10 +228,12 @@ h3.video-title{
       font-family: $primary-sans-font;
       font-weight: 500;
       display: inline;
+      font-size: 14px;
+      line-height: 18px;
     }
     
     .promo-headline:after {
-      content: '\00a0 ';
+      content: '\00a0 \00a0';
       display: inline;
     }
   }

@@ -1,0 +1,15 @@
+body.page-overlay-ad{
+  margin-top: 35px;
+  border-top: none;
+  border-bottom: none;
+  #page-wrap{
+    padding-top: 0;
+    width: 300px;
+  }
+}
+.interstitial_modal_modal .tpmodal_close:before{
+  color: white;
+  @include breakpoint($breakpoint-tablet){
+    color: gray;
+  }
+}
