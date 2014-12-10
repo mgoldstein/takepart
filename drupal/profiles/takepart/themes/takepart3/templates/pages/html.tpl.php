@@ -53,7 +53,7 @@ $dtm_script_src = variable_get('dtm_script_src');
   </script>
   <?php endif; ?>
   <?php if (!empty($dtm_script_src)): ?>
-  <script src="<?php print $dtm_script_src ?>"></script>
+  <!-- <script src="<?php print $dtm_script_src ?>"></script> -->
   <?php endif; ?>
 
         <?php print $head; ?>
