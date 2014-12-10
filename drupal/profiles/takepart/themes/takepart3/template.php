@@ -143,12 +143,18 @@ function takepart3_preprocess_html(&$vars) {
   $vars['tp_digital_data'] =  isset($vars['page']['tp_digital_data'])
     ? $vars['page']['tp_digital_data'] : NULL;
 
-
+/*
   $current_path = current_path();
-  if($current_path != 'wordlet/interstitial_newsletter' && $current_path != 'wordlet/interstitial_social_follows'){
+  if ($current_path != 'wordlet/interstitial_newsletter' && 
+          $current_path != 'wordlet/interstitial_social_follows' &&
+          $current_path != 'iframes/slim-header' && 
+          $current_path != 'iframes/footer' && 
+          $current_path != 'iframes/place-at-the-table/header' &&
+          $current_path != 'iframes/header' ) {
     $variables['dtm_script_src'] = variable_get('dtm_script_src');
   }
-
+*/
+    
     $uri = drupal_get_path_alias($_GET['q']);
     $vars['is_multipage'] = FALSE;
     $vars['is_iframed'] = FALSE;
