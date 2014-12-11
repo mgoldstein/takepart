@@ -140,7 +140,6 @@ class ddContent extends ddDefaultPage {
     }
 
 	  $data['page']['pageInfo']['pageId'] = $pageID;
-	  $data['page']['pageInfo']['pageId'] = $pageID;
 	  $data['page']['pageInfo']['pageTitle'] = $node->title;
     $data['page']['pageInfo']['pageUrl'] = $url;
     $data['page']['pageInfo']['pageUrlAlias'] = $request_path;  //first part of the URL

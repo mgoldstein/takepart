@@ -7,6 +7,7 @@ package = TakePart
 files[] = src/DigitalData/StrategyFactory.inc
 files[] = src/DigitalData/BuildStrategy.inc
 files[] = src/DigitalData/Strategies/Campaign.inc
+files[] = src/DigitalData/Strategies/Topic.inc
 files[] = src/DigitalData/Strategies/Content.inc
 files[] = src/DigitalData/Strategies/DefaultPage.inc
 files[] = src/DigitalData/Strategies/SiteFrontPage.inc
