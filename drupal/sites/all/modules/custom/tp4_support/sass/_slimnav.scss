@@ -692,21 +692,22 @@
         }
       }
       &:nth-child(1){
-        width: 17%;
+        width: 8%;
         text-align: left;
       }
       &:nth-child(2){
-        width: 15%;
+        width: 20%;
       }
       &:nth-child(3){
-        width: 30%;
+        width: 16%;
       }
       &:nth-child(4){
-        width: 19%;
+        width: 10%;
       }
       &:nth-child(5){
-        width: 19%;
-        text-align: right;
+        width: 12%;
+      }
+      &:nth-child(6){
         a:after{
           border-right: none;
         }
