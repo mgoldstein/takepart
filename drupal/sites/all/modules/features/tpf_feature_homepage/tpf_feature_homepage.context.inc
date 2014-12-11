@@ -74,29 +74,23 @@ function tpf_feature_homepage_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-9',
         ),
-        'bean-tpl-media-block' => array(
+        'bean-takepart-video-media-block' => array(
           'module' => 'bean',
-          'delta' => 'tpl-media-block',
+          'delta' => 'takepart-video-media-block',
           'region' => 'sidebar',
           'weight' => '-8',
-        ),
-        'bean-tpl-live-long' => array(
-          'module' => 'bean',
-          'delta' => 'tpl-live-long',
-          'region' => 'sidebar',
-          'weight' => '-7',
         ),
         'newsletter_campaign-51' => array(
           'module' => 'newsletter_campaign',
           'delta' => '51',
           'region' => 'sidebar',
-          'weight' => '-6',
+          'weight' => '-7',
         ),
         'views-photo_galleries_promo-block' => array(
           'module' => 'views',
           'delta' => 'photo_galleries_promo-block',
           'region' => 'sidebar',
-          'weight' => '-5',
+          'weight' => '-6',
         ),
         'tp4_support-tp4_graveyard' => array(
           'module' => 'tp4_support',
