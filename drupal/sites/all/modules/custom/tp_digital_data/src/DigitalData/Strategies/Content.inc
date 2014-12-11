@@ -52,78 +52,77 @@ class ddContent extends ddDefaultPage {
 
   public function build($page) {
 
-	  $data = array();
+    $data = array();
     $node = menu_get_object();
 
     $pageID = $node->nid;
 
 
-	  //authors
-	  $ids = array();
-	  if($authors = field_get_items('node', $node, 'field_author')){
-		  foreach($authors as $id){
-			  $ids[] = $id['nid'];
-		  }
+    //authors
+    $ids = array();
+    if($authors = field_get_items('node', $node, 'field_author')){
+      foreach($authors as $id){
+        $ids[] = $id['nid'];
+      }
 
-		  /* page: pageInfo: authors */
-		  $author_entities = entity_load('node', $ids);
-		  $author_names = array();
-		  foreach($author_entities as $author){
-			  $author_names[] = $author->title;
-		  }
-		  $author_names = implode(', ', $author_names);
-		  $data['page']['pageInfo']['authors'] = $author_names;
+      /* page: pageInfo: authors */
+      $author_entities = entity_load('node', $ids);
+      $author_names = array();
+      foreach($author_entities as $author){
+        $author_names[] = $author->title;
+      }
+      $author_names = implode(', ', $author_names);
+      $data['page']['pageInfo']['authors'] = $author_names;
 
-		  /* page: pageInfo: author */
-		  $author = reset($author_entities);
-		  $author = $author->title;
-		  $data['page']['pageInfo']['author'] = $author;
-	  }
+      /* page: pageInfo: author */
+      $author = reset($author_entities);
+      $author = $author->title;
+      $data['page']['pageInfo']['author'] = $author;
+    }
 
-	  /*page: pageInfo: issueDate */
-	  $publish_date = $node->published_at;
-	  $publish_date = date('Y/m/d', $publish_date);
-	  $data['page']['pageInfo']['issueDate'] = $publish_date;
+    /*page: pageInfo: issueDate */
+    $publish_date = $node->published_at;
+    $publish_date = date('Y/m/d', $publish_date);
+    $data['page']['pageInfo']['issueDate'] = $publish_date;
 
-		/* Category Section */
+    /* Category Section */
 
-	  //Field Topic
-	  $topic_instance = field_info_instance('node', 'field_topic', $node->type);
-	  if($topic_instance != NULL){
-		  $topics = field_get_items('node', $node, 'field_topic');
-		  $primary_topic = $topics[0]['taxonomy_term']->name;
-		  $topic_names = array();
-		  foreach($topics as $key => $topic){
-				$topic_names[] = $topic['taxonomy_term']->name;
-		  }
-		  $topic_names = implode(', ', $topic_names);
-		  $data['category']['primaryTopic'] = $primary_topic;
-		  $data['category']['topics'] = $topic_names;
-	  }
+    //Field Topic
+    $topic_instance = field_info_instance('node', 'field_topic', $node->type);
+    if($topic_instance != NULL && $topics = field_get_items('node', $node, 'field_topic')){
+      $primary_topic = $topics[0]['taxonomy_term']->name;
+      $topic_names = array();
+      foreach($topics as $topic){
+        $topic_names[] = $topic['taxonomy_term']->name;
+      }
+      $topic_names = implode(', ', $topic_names);
+      $data['category']['primaryTopic'] = $primary_topic;
+      $data['category']['topics'] = $topic_names;
+    }
 
-	  //Field Series
-	  $series_instance = field_info_instance('node', 'field_series', $node->type);
-	  if($series_instance != NULL){
-		  $seriess = field_get_items('node', $node, 'field_series');
-		  $series_names = array();
-		  foreach($seriess as $key => $series){
-			  $series_names[] = $series['taxonomy_term']->name;
-		  }
-		  $series_names = implode(', ', $series_names);
-		  $data['category']['series'] = $series_names;
-	  }
+    //Field Series
+    $series_instance = field_info_instance('node', 'field_series', $node->type);
+    if($series_instance != NULL){
+      $seriess = field_get_items('node', $node, 'field_series');
+      $series_names = array();
+      foreach($seriess as $series){
+        $series_names[] = $series['taxonomy_term']->name;
+      }
+      $series_names = implode(', ', $series_names);
+      $data['category']['series'] = $series_names;
+    }
 
-	  //Field Free Tags
-	  $free_tags_instance = field_info_instance('node', 'field_free_tag', $node->type);
-	  if($free_tags_instance != NULL){
-		  $free_tags = field_get_items('node', $node, 'field_free_tag');
-		  $free_tag_names = array();
-		  foreach($free_tags as $key => $free_tag){
-			  $free_tag_names[] = $free_tag['taxonomy_term']->name;
-		  }
-		  $free_tag_names = implode(',', $free_tag_names);
-		  $data['category']['freeTags'] = $free_tag_names;
-	  }
+    //Field Free Tags
+    $free_tags_instance = field_info_instance('node', 'field_free_tag', $node->type);
+    if($free_tags_instance != NULL){
+      $free_tags = field_get_items('node', $node, 'field_free_tag');
+      $free_tag_names = array();
+      foreach($free_tags as $free_tag){
+        $free_tag_names[] = $free_tag['taxonomy_term']->name;
+      }
+      $free_tag_names = implode(',', $free_tag_names);
+      $data['category']['freeTags'] = $free_tag_names;
+    }
 
     //URL (pageURL, pageUrlAlias, siteSection)
     global $base_url;
@@ -139,15 +138,14 @@ class ddContent extends ddDefaultPage {
       $data['page']['pageInfo']['permanentTitle'] = $node->title;
     }
 
-	  $data['page']['pageInfo']['pageId'] = $pageID;
-	  $data['page']['pageInfo']['pageTitle'] = $node->title;
+    $data['page']['pageInfo']['pageId'] = $pageID;
+    $data['page']['pageInfo']['pageTitle'] = $node->title;
     $data['page']['pageInfo']['pageUrl'] = $url;
     $data['page']['pageInfo']['pageUrlAlias'] = $request_path;  //first part of the URL
     $data['page']['pageInfo']['siteSection'] = $site_section;
-	  $data['page']['pageInfo']['template'] = $node->type;
-	  $data['page']['category']['primaryCategory'] = $this->categoryForContentType($node->type);
-	  
-	  $data += parent::build($page);
+    $data['page']['pageInfo']['template'] = $node->type;
+    $data['page']['category']['primaryCategory'] = $this->categoryForContentType($node->type);
+    $data += parent::build($page);
 
     return $data;
   }

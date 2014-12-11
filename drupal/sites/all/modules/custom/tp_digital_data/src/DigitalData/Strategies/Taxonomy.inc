@@ -6,16 +6,12 @@
  *
  * Topic ID (
  */
-class ddTopic extends ddDefaultPage {
+class ddTaxonomy extends ddDefaultPage {
 
   public static function claim($path, $page) {
-    // Claim node taxonomy topic pages.
-    if(preg_match('/^taxonomy\/term\/[0-9]+/', $path)){
-      $bundle = $page['content']['system_main']['#bundle'];
-      if($bundle == 'topic'){
-        return TRUE;
-      }
-    }
+
+    /* Claim taxonomy pages */
+    return preg_match('/^taxonomy\/term\/[0-9]+/', $path);
   }
 
   public function build($page) {
@@ -27,15 +23,22 @@ class ddTopic extends ddDefaultPage {
     global $base_url;
     $request_path = request_path();
     $url = $base_url. '/'. $request_path;
+    $site_section = explode('/', $request_path);
+    $site_section = $site_section[0];
 
+    /* Set the data to be returned */
 	  $data = array();
-
     $data['page']['pageInfo']['pageName'] = $term->name;
     $data['page']['pageInfo']['primaryCategory'] = $term->vocabulary_machine_name;
     $data['page']['pageInfo']['primaryTopic'] = $term->name;
-    $data['page']['pageInfo']['siteSection'] = 'topic';
+    $data['page']['pageInfo']['siteSection'] = $site_section;
     $data['page']['pageInfo']['pageUrl'] = $url;
     $data['page']['pageInfo']['pageUrlAlias'] = $request_path;
+
+    /* Taxonomy specific data */
+    $data['page']['pageInfo']['taxonomy']['termName'] = $term->name;
+    $data['page']['pageInfo']['taxonomy']['termID'] = $term->tid;
+    $data['page']['pageInfo']['taxonomy']['termVocab'] = $term->vocabulary_machine_name;
 	  
 	  $data += parent::build($page);
 
