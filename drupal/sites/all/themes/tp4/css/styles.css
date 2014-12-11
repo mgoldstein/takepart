@@ -13908,7 +13908,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   background-color: #333;
 }
 /* line 151, ../sass/modules/_left_drawer.scss */
-.snap-drawers .snap-drawer:not(.snap-drawer-right) .block-menu > ul > li:not(.normal):nth-child(4) > a {
+.snap-drawers .snap-drawer:not(.snap-drawer-right) .block-menu > ul > li:not(.normal):nth-child(6) > a {
   width: 100%;
   display: block;
   text-indent: 100%;
@@ -13918,18 +13918,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   background: url('../images/takeaction-logo-mobile.png?1403113362') no-repeat 10px center;
   margin: 0;
 }
-/* line 163, ../sass/modules/_left_drawer.scss */
-.snap-drawers .snap-drawer:not(.snap-drawer-right) .block-menu > ul > li:not(.normal):nth-child(5) > a {
-  width: 100%;
-  display: block;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  float: left;
-  background: url('../images/tpl-logo-mobile.png?1403113362') no-repeat 10px center;
-  margin: 0;
-}
-/* line 176, ../sass/modules/_left_drawer.scss */
+/* line 164, ../sass/modules/_left_drawer.scss */
 .snap-drawers.scrollable {
   overflow: auto;
   -webkit-transition-property: top, bottom;
