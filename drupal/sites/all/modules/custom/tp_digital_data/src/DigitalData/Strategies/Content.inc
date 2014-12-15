@@ -103,10 +103,11 @@ class ddContent extends ddDefaultPage {
     //Field Series
     $series_instance = field_info_instance('node', 'field_series', $node->type);
     if($series_instance != NULL){
-      $seriess = field_get_items('node', $node, 'field_series');
+      $series_terms = field_get_items('node', $node, 'field_series');
       $series_names = array();
-      foreach($seriess as $series){
-        $series_names[] = $series['taxonomy_term']->name;
+      foreach($series_terms as $series){
+        $series = taxonomy_term_load($series['tid']);
+        $series_names[] = $series->name;
       }
       $series_names = implode(', ', $series_names);
       $data['category']['series'] = $series_names;
