@@ -128,6 +128,8 @@ class ddContent extends ddDefaultPage {
     //URL (pageURL, pageUrlAlias, siteSection)
     global $base_url;
     $request_path = request_path();
+    $request_path = drupal_parse_url($request_path);
+    $request_path = $request_path['path'];
     $url = $base_url. '/'. $request_path;
     $site_section = explode('/', $request_path);
     $site_section = $site_section[0];
