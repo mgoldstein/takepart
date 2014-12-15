@@ -63,7 +63,7 @@ function tp_custom_nav_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -48,
+    'weight' => -47,
     'customized' => 1,
   );
   // Exported menu link: menu-megamenu_education:taxonomy/term/7
@@ -213,7 +213,7 @@ function tp_custom_nav_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 0,
-    'weight' => -47,
+    'weight' => -48,
     'customized' => 1,
   );
   // Exported menu link: menu-megamenu_global-development:taxonomy/term/99767
@@ -507,7 +507,7 @@ function tp_custom_nav_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 1,
     'expanded' => 1,
-    'weight' => -44,
+    'weight' => -45,
     'customized' => 1,
   );
   // Exported menu link: menu-megamenu_track-your-impact:http://takeaction.takepart.com/dashboard
