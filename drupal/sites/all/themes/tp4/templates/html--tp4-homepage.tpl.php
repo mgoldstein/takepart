@@ -22,9 +22,6 @@
     window.digitalData = <?php print $tp_digital_data ?>;
   </script>
   <?php endif; ?>
-  <?php if (!empty($dtm_script_src)): ?>
-  <script src="<?php print $dtm_script_src ?>"></script>
-  <?php endif; ?>
   <?php if (user_is_anonymous()): ?>
   <meta http-equiv="refresh" content="600">
   <?php endif; ?>
@@ -62,9 +59,5 @@
   <?php print $page_top; ?>
   <?php print $page; ?>
   <?php print $page_bottom; ?>
-
-  <?php if (!empty($dtm_script_src)): ?>
-  <script type="text/javascript">_satellite.pageBottom();</script>
-  <?php endif; ?>
 </body>
 </html>

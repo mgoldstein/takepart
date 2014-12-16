@@ -52,9 +52,6 @@ $dtm_script_src = variable_get('dtm_script_src');
     window.digitalData = <?php print $tp_digital_data ?>;
   </script>
   <?php endif; ?>
-  <?php if (!empty($dtm_script_src)): ?>
-  <script src="<?php print $dtm_script_src ?>"></script>
-  <?php endif; ?>
 
         <?php print $head; ?>
         <? if ( $is_iframed ): ?>
@@ -107,8 +104,5 @@ $dtm_script_src = variable_get('dtm_script_src');
             echo $tp_sysinfo_comment_tags;
         endif;
         ?>
-      <?php if (!empty($dtm_script_src)): ?>
-      <script type="text/javascript">_satellite.pageBottom();</script>
-      <?php endif; ?>
     </body>
 </html>

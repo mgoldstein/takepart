@@ -172,7 +172,7 @@ function pm_interstitial_context_registry() {
   return array(
     'reactions' => array(
       'pm_interstitial_referer' => array(
-        'title' => t('Interstitial Referer'),
+        'title' => t('Interstitial Referer 6'),
         'description' => t('Adds the marketing interstitial referer type to the page.'),
         'plugin' => 'pm_interstitial_referer',
       ),
