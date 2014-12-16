@@ -1155,6 +1155,126 @@ function tpf_display_context_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-action-field_social_share_bar'
+  $field_instances['node-action-field_social_share_bar'] = array(
+    'bundle' => 'action',
+    'default_value' => array(
+      0 => array(
+        'alternate_url' => '',
+        'twitter_message' => '',
+        'email_message' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'action_summary' => array(
+        'label' => 'above',
+        'module' => 'takepart_addthis',
+        'settings' => array(
+          'orientation' => 'horizontal',
+        ),
+        'type' => 'full_button_bar',
+        'weight' => 29,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'takepart_addthis',
+        'settings' => array(
+          'orientation' => 'horizontal',
+        ),
+        'type' => 'full_button_bar',
+        'weight' => 29,
+      ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 10,
+      ),
+      'inline_content' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 29,
+      ),
+      'medium_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_social_share_bar',
+    'label' => 'Social Share',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'takepart_addthis',
+      'settings' => array(),
+      'type' => 'addthis_config',
+      'weight' => 39,
+    ),
+  );
+
   // Exported field_instance: 'node-action-field_tab_action'
   $field_instances['node-action-field_tab_action'] = array(
     'bundle' => 'action',
@@ -1696,6 +1816,7 @@ function tpf_display_context_field_default_field_instances() {
   t('Link Only');
   t('Series');
   t('Short Introduction');
+  t('Social Share');
   t('The title to show in the browser\'s title bar. If this field is empty, the Page Title will be used instead.');
   t('This marks an Action as eligible to be included as a TAB modal recommendation.');
   t('This will be displayed as an Action\'s title within TAB modal.');

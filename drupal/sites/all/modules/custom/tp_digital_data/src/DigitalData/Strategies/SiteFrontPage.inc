@@ -12,13 +12,17 @@ class ddSiteFrontPage extends ddDefaultPage {
 
     $pageID = 'Front Page';
     $environment = ENVIRONMENT;
+    global $base_url;
 
     $data = array(
       'pageInstanceID' => "{$pageID} - {$environment}",
       'page' => array(
         'pageInfo' => array(
           'pageID' => $pageID,
-          'pageName' => '',
+          'primaryCateogry' => 'home',
+          'siteSection' => 'home',
+          'pageUrl' => $base_url,
+          'pageUrlAlias' => 'home'
         ),
       ),
     );

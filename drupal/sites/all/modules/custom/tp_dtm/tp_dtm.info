@@ -1,0 +1,5 @@
+name = TakePart DTM
+description = Enable DTM and configure settings
+core = 7.x
+
+dependencies[] = context
