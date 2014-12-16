@@ -1,0 +1,53 @@
+<?php
+
+function tp_dtm_preprocess_html(&$variables){
+  $variables['dtm_script_src'] = variable_get('dtm_script_src');
+}
+
+/**
+ * Implements hook_context_registry()
+ * Tells context about our plugins
+ */
+function tp_dtm_context_registry(){
+  return array(
+    'reactions' => array(
+      'tp_dtm_expose_dtm' => array(
+        'title' => t('Expose DTM'),
+        'description' => t('not sure if this is needed'),
+        'plugin' => 'tp_dtm_expose_dtm'
+      )
+    )
+  );
+}
+
+/**
+ * Implements hook_context_plugins()
+ * Defines our plugin for context
+ */
+function tp_dtm_context_plugins(){
+  $plugins['tp_dtm_expose_dtm'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'tp_dtm') . '/plugins',
+      'file' => 'context.reactions.inc',
+      'class' => 'tpShowDtm',
+      'parent' => 'context_reaction',
+    ),
+  );
+
+  return $plugins;
+}
+
+/**
+ * Implements hook_context_page_reaction()
+ */
+function tp_dtm_page_build(&$page) {
+  $contexts = context_active_contexts();
+
+  if (array_key_exists('tp4_dtm', $contexts)){
+    if ($plugin = context_get_plugin('reaction', 'tp_dtm_expose_dtm')) {
+      $plugin->executePageTop();
+      $plugin->executePageBottom($page);
+    }
+  }
+
+}

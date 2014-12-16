@@ -79,70 +79,6 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'addthis_blocks';
-  $context->description = 'AddThis share list';
-  $context->tag = 'Blocks: AddThis';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'openpublish_blog_post' => 'openpublish_blog_post',
-        'openpublish_video' => 'openpublish_video',
-        'takepart_group' => 'takepart_group',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = '';
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('AddThis share list');
-  t('Blocks: AddThis');
-  $export['addthis_blocks'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'addthis_leftpanel_blocks';
-  $context->description = '';
-  $context->tag = 'Blocks: AddThis';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'openpublish_article' => 'openpublish_article',
-        'openpublish_blog_post' => 'openpublish_blog_post',
-        'takepart_group' => 'takepart_group',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-box-72e1be3c' => array(
-          'module' => 'boxes',
-          'delta' => 'box-72e1be3c',
-          'region' => 'sidebar_first',
-          'weight' => 0,
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Blocks: AddThis');
-  $export['addthis_leftpanel_blocks'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'block_search';
   $context->description = 'Search';
   $context->tag = 'Block: Search';
@@ -1957,6 +1893,31 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
   // Included for use with string extractors like potx.
   t('TP4');
   $export['tp4_campaign_pages'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_dtm';
+  $context->description = 'Expose DTM';
+  $context->tag = 'DTM';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'campaign_page' => 'campaign_page',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array();
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('DTM');
+  t('Expose DTM');
+  $export['tp4_dtm'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

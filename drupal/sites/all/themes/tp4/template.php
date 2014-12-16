@@ -46,13 +46,12 @@ define('CARDTYPES', serialize($card_types));
  */
 function tp4_preprocess_html(&$variables, $hook) {
 
+  /* Grab node object if it exists */
+  $node = menu_get_object();
+
   // Pass the digital data to the HTML template.
   $variables['tp_digital_data'] =  isset($variables['page']['tp_digital_data'])
     ? $variables['page']['tp_digital_data'] : NULL;
-  $node = menu_get_object();
-  if($node->type == 'campaign_page'){
-    $variables['dtm_script_src'] = variable_get('dtm_script_src');
-  }
 
   // If on an individual node page, add the node type to body classes.
   if ($node) {
