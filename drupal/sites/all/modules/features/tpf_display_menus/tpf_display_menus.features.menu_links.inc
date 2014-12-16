@@ -132,7 +132,7 @@ function tpf_display_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -45,
+    'weight' => -44,
     'customized' => 1,
     'parent_identifier' => 'menu-megamenu_environment:taxonomy/term/8',
   );
@@ -683,7 +683,7 @@ function tpf_display_menus_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -46,
     'customized' => 1,
     'parent_identifier' => 'menu-megamenu_environment:taxonomy/term/8',
   );
@@ -759,7 +759,7 @@ function tpf_display_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => -46,
+    'weight' => -45,
     'customized' => 1,
     'parent_identifier' => 'menu-megamenu_environment:taxonomy/term/8',
   );
