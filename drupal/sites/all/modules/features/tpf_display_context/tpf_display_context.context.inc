@@ -1909,16 +1909,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
         'node_form' => '0',
       ),
     ),
-    'path' => array(
-      'values' => array(
-        '~wordlet/interstitial_newsletter' => '~wordlet/interstitial_newsletter',
-        '~wordlet/interstitial_social_follows' => '~wordlet/interstitial_social_follows',
-        '~iframes/slim-header' => '~iframes/slim-header',
-        '~iframes/footer' => '~iframes/footer',
-        '~iframes/place-at-the-table/header' => '~iframes/place-at-the-table/header',
-        '~iframes/header' => '~iframes/header',
-      ),
-    ),
   );
   $context->reactions = array();
   $context->condition_mode = 1;

@@ -40,8 +40,6 @@
  * @see template_process()
  */
 
-$dtm_script_src = variable_get('dtm_script_src');
-
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
     "//www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="//www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" version="XHTML+RDFa 1.0" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?> >

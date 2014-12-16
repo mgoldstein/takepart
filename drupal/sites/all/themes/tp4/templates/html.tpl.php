@@ -22,9 +22,6 @@
     window.digitalData = <?php print $tp_digital_data ?>;
   </script>
   <?php endif; ?>
-  <?php if (!empty($dtm_script_src)): ?>
-  <script src="<?php print $dtm_script_src ?>"></script>
-  <?php endif; ?>
   <?php print $head; ?>
   <?php if ($default_mobile_metatags): ?>
   <meta name="MobileOptimized" content="width">
@@ -60,8 +57,5 @@
   <?php print $page; ?>
   <?php print $page_bottom; ?>
 
-  <?php if (!empty($dtm_script_src)): ?>
-  <script type="text/javascript">_satellite.pageBottom();</script>
-  <?php endif; ?>
 </body>
 </html>
