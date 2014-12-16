@@ -95,7 +95,7 @@ class ddContent extends ddDefaultPage {
       foreach($topics as $topic){
         $topic_names[] = $topic['taxonomy_term']->name;
       }
-      $topic_names = implode(', ', $topic_names);
+      $topic_names = implode(',', $topic_names);
       $data['category']['primaryTopic'] = $primary_topic;
       $data['category']['topics'] = $topic_names;
     }
@@ -109,7 +109,7 @@ class ddContent extends ddDefaultPage {
         $series = taxonomy_term_load($series['tid']);
         $series_names[] = $series->name;
       }
-      $series_names = implode(', ', $series_names);
+      $series_names = implode(',', $series_names);
       $data['category']['series'] = $series_names;
     }
 
