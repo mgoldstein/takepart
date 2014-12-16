@@ -68,6 +68,6 @@ else {
   // reading the source code if mod_php fails and then matching the string.
   print 'CONGRATULATIONS' . ' 200' . "\n";
 }
-print_r('<!-- TakePart 3.45 -->');
+print_r('<!-- TakePart 3.45.1 -->');
 // Exit immediately, note the shutdown function registered at the top of the file.
 exit();

@@ -40,18 +40,14 @@ function tp_dtm_context_plugins(){
 /**
  * Implements hook_context_page_reaction()
  */
-function tp_dtm_context_page_reaction(){
-  if ($plugin = context_get_plugin('reaction', 'tp_dtm_expose_dtm')) {
-    $plugin->executePageTop();
-  }
-}
-
-/**
- * Implements hook_context_page_reaction()
- */
 function tp_dtm_page_build(&$page) {
-  if ($plugin = context_get_plugin('reaction', 'tp_dtm_expose_dtm')) {
-    $plugin->executePageBottom($page);
+  $contexts = context_active_contexts();
+
+  if (array_key_exists('tp4_dtm', $contexts)){
+    if ($plugin = context_get_plugin('reaction', 'tp_dtm_expose_dtm')) {
+      $plugin->executePageTop();
+      $plugin->executePageBottom($page);
+    }
   }
 
 }

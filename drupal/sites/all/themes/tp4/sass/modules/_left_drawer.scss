@@ -147,7 +147,7 @@
   }
   .snap-drawer:not(.snap-drawer-right){
     .block-menu > ul > li:not(.normal) {
-      &:nth-child(4){
+      &:nth-child(6){
         > a {
             width: 100%;
             display: block;
@@ -157,18 +157,6 @@
             float: left;
             background: image-url('takeaction-logo-mobile.png') no-repeat 10px center;
             margin: 0;
-        }
-      }
-      &:nth-child(5){
-        > a{
-          width: 100%;
-          display: block;
-          text-indent: 100%;
-          white-space: nowrap;
-          overflow: hidden;
-          float: left;
-          background: image-url('tpl-logo-mobile.png') no-repeat 10px center;
-          margin: 0;
         }
       }
     }
