@@ -1901,9 +1901,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
   $context->description = 'Expose DTM';
   $context->tag = 'DTM';
   $context->conditions = array(
-    'sitewide' => array(
+    'node' => array(
       'values' => array(
-        1 => 1,
+        'campaign_page' => 'campaign_page',
+      ),
+      'options' => array(
+        'node_form' => '0',
       ),
     ),
   );
