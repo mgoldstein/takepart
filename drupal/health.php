@@ -18,7 +18,7 @@ drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
 $errors = array();
 
 // Check that the main database is active.
-$result = db_query('SELECT * FROM {users} WHERE uid = 1')->fetch();
+$result = db_query('SELECT * FROM {users} WHERE uid = 1 LIMIT 1')->fetch();
 if (!$result->uid == 1) {
   $errors[] = 'Master database not responding.';
 }
