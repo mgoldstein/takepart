@@ -23,55 +23,63 @@ function takeaction_help($path, $arg) {
  * Implements hook_init().
  */
 function takeaction_init() {
-  $uri = drupal_get_path_alias($_GET['q']);
-  if (($uri != 'iframes/header') && ($uri != 'iframes/footer') && ($uri != 'iframes/slim-header')) {
 
-    $tabHost = variable_get('takeaction_widget_host');
-    $tabPublisherId = variable_get('takeaction_publisher_id');
-    $tabScript = variable_get('takeaction_widget_script');
+  $tabHost = variable_get('takeaction_widget_host');
+  $tabPublisherId = variable_get('takeaction_publisher_id');
+  $tabScript = variable_get('takeaction_widget_script');
 
-    $button_js = "<!-- \n" . "window.TP = window.TP || {};
-      TP.tabHost = '{$tabHost}';
-      TP.publisherId = '{$tabPublisherId}';
-      (function() {
-        var tabScript = document.createElement('script');
-        tabScript.type = 'text/javascript';
-        tabScript.async = true;
-        var scriptLocation = TP.tabHost || 'https://takeaction.takepart.com';
-        tabScript.src = scriptLocation + '{$tabScript}';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(tabScript, s);
-      })();" . "\n // -->";
-    drupal_add_js($button_js, array(
-      'type' => 'inline',
-      'group' => JS_LIBRARY,
-      'every_page' => TRUE,
-      'scope' => 'footer',
-      'weight' => 0,
-    ));
+  $button_js = "<!-- \n" . "window.TP = window.TP || {};
+    TP.tabHost = '{$tabHost}';
+    TP.publisherId = '{$tabPublisherId}';
+    (function() {
+      var tabScript = document.createElement('script');
+      tabScript.type = 'text/javascript';
+      tabScript.async = true;
+      var scriptLocation = TP.tabHost || 'https://takeaction.takepart.com';
+      tabScript.src = scriptLocation + '{$tabScript}';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(tabScript, s);
+    })();" . "\n // -->";
+  drupal_add_js($button_js, array(
+    'type' => 'inline',
+    'group' => JS_LIBRARY,
+    'every_page' => TRUE,
+    'scope' => 'footer',
+    'weight' => 0,
+  ));
+  $awareness_script = variable_get('takeaction_awareness_script');
+  drupal_add_js($awareness_script, array(
+    'type' => 'file',
+    'group' => JS_LIBRARY,
+    'scope' => 'footer',
+    'weight' => 1
+  ));
+  drupal_add_js('if($("body").hasClass(".feature_article") ||
+    $("body").hasClass(".node-type-flashcard") ||
+    $("body").hasClass(".node-type-openpublish-article") ||
+    $("body").hasClass(".node-type-openpublish-photo-gallery") ||
+    $("body").hasClass(".node-type-video")) {
+      if (TP && TP.Awareness) {
+        window.setTimeout(TP.Awareness.notify, 20000);
+      }}',array(
+    'type' => 'inline',
+    'group' => JS_LIBRARY,
+    'scope' => 'footer',
+    'weight' => 2,
+    'every_page' => TRUE
+  ));
 
-  }
+
 }
 
 function takeaction_add_awareness_notification() {
   static $added = FALSE;
   if ($added === FALSE) {
-    $awareness_script = variable_get('takeaction_awareness_script');
-    drupal_add_js($awareness_script, array(
-      'type' => 'file',
-      'group' => JS_LIBRARY,
-      'scope' => 'footer',
-      'weight' => 1,
-    ));
-    drupal_add_js('if (TP && TP.Awareness) { window.setTimeout(TP.Awareness.notify, 20000); }', array(
-      'type' => 'inline',
-      'group' => JS_LIBRARY,
-      'scope' => 'footer',
-      'weight' => 2,
-    ));
+
     $added = TRUE;
   }
 }
+
 
 /**
  * Implements hook_node_view().
@@ -99,6 +107,7 @@ function takeaction_node_view($node, $view_mode, $langcode) {
     ));
   }
 
+  /* Remove this from server side*/
   $awareness_content_types = array(
     'campaign_page',
     'feature_article',
