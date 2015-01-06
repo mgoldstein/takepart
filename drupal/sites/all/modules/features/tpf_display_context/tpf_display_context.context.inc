@@ -1028,45 +1028,6 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'omniture_blog';
-  $context->description = 'Variables to set on blog pages.';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'openpublish_blog_post' => 'openpublish_blog_post',
-      ),
-      'options' => array(
-        'node_form' => '0',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.prop2 = [current-page:url-arg:1]
-s.prop3 = [current-page:url-arg:0]:[tp_omniture:date:{node:created:raw}]:[tp_omniture:str_decode:{node:title}]
-s.eVar19 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]
-s.prop18 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]
-s.prop22 = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.list2 = [tp_omniture:remove_spaces:{node:field_free_tag}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables to set on blog pages.');
-  $export['omniture_blog'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'omniture_flashcard';
   $context->description = 'Variables to set on flashcard pages';
   $context->tag = 'Omniture';
