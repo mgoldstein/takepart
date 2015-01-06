@@ -1098,38 +1098,6 @@ s.eVar30 = takepart:home:TakePart Home',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'omniture_registration';
-  $context->description = 'Omniture registration page load variables';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'node/19528' => 'node/19528',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.events = event23,event33,event21
-s.eVar11 = Logged_In',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Omniture registration page load variables');
-  $export['omniture_registration'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'omniture_seriesfront';
   $context->description = 'Variables set on series landing pages';
   $context->tag = 'Omniture';
