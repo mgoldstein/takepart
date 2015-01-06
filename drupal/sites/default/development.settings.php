@@ -18,11 +18,12 @@ $conf += array('facebook_app_id' => '804910456185646');
 
 // Turn off page compression and CSS and JS preprocessing
 
-$conf += array(
-  'page_compression' => FALSE,
-  'preprocess_css' => FALSE,
-  'preprocess_js' => FALSE,
-);
+/* THE BELOW SHOULD NOT BE APART OF SETTINGS.PHP */
+// $conf += array(
+//   'page_compression' => FALSE,
+//   'preprocess_css' => FALSE,
+//   'preprocess_js' => FALSE,
+// );
 
 // Log signups for debugging
 $conf += array('pm_signup_log' => TRUE);
