@@ -72,7 +72,6 @@ features[context][] = omniture_action
 features[context][] = omniture_all_content_types
 features[context][] = omniture_article_v2
 features[context][] = omniture_flashcard
-features[context][] = omniture_gallery
 features[context][] = omniture_homepage
 features[context][] = omniture_registration
 features[context][] = omniture_seriesfront

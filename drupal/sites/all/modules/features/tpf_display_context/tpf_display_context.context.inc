@@ -1067,26 +1067,6 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'omniture_gallery';
-  $context->description = 'Variables to set on gallery pages.';
-  $context->tag = 'Omniture';
-  $context->conditions = array();
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => '',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables to set on gallery pages.');
-  $export['omniture_gallery'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'omniture_homepage';
   $context->description = 'Homepage SiteCatalyst settings';
   $context->tag = 'Omniture';
