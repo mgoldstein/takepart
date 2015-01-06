@@ -1,8 +1,8 @@
 name = TakePart Display Context
-description = Context configuration
+description = Context configuration - remove obsolete omniture contexts
 core = 7.x
 package = Content Display
-version = 7.x-1.18
+version = 7.x-1.19
 project = tpf_display_context
 dependencies[] = bean
 dependencies[] = boxes
@@ -170,4 +170,4 @@ features_exclude[variable][node_submitted_takepart_list] = node_submitted_takepa
 features_exclude[variable][node_submitted_takepart_quick_study] = node_submitted_takepart_quick_study
 features_exclude[variable][node_submitted_takepart_slide] = node_submitted_takepart_slide
 features_exclude[variable][node_submitted_webform] = node_submitted_webform
-mtime = 1418692419
+mtime = 1420588120
