@@ -74,7 +74,6 @@ features[context][] = omniture_flashcard
 features[context][] = omniture_homepage
 features[context][] = omniture_seriesfront
 features[context][] = omniture_site_wide
-features[context][] = omniture_teach_campaign
 features[context][] = omniture_topicfront
 features[context][] = series_default_context
 features[context][] = takepart_campaign_default
