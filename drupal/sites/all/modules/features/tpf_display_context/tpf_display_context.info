@@ -68,7 +68,6 @@ features[context][] = blocks_video_series
 features[context][] = free_tags_default_context
 features[context][] = general_ad
 features[context][] = multi_page_campaign_default_context
-features[context][] = omniture_action
 features[context][] = omniture_all_content_types
 features[context][] = omniture_article_v2
 features[context][] = omniture_flashcard
