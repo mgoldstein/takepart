@@ -1114,7 +1114,7 @@ s.eVar19 = [tp_omniture:str_decode:{current-page:title}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = [current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
