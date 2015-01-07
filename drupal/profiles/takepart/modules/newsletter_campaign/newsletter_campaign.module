@@ -1,4 +1,11 @@
 <?php
+/**
+ * Implements hook_init();
+ */
+function newsletter_campaign_init(){
+  $path = drupal_get_path('module', 'newsletter_campaign');
+  drupal_add_js($path . '/js/newsletter_campaign_block.js', array('every_page' => TRUE));
+}
 
 /**
  * Implements hook_custom_theme().
@@ -518,23 +525,6 @@ function newsletter_campaign_block_view($delta) {
       // The header and body and response message are filtered HTML.
       $allowed_tags = array('a', 'i', 'strong', 'u', 'em', 'b', 'ul', 'ol',
         'li', 'dl', 'dt', 'dd', 'p', 'br', 'div', 'span');
-
-      // Both blocks have a terms of service link.
-      /*
-      $tos_link = array(
-        '#theme' => 'link',
-        '#text' => t("Terms & Conditions"),
-        '#path' => 'terms-of-use',
-        '#options' => array(
-          'attributes' => array(
-            'target' => '_blank',
-          ),
-          'html' => FALSE,
-        ),
-      );
-      */
-      $path = drupal_get_path('module', 'newsletter_campaign');
-      drupal_add_js($path . '/js/newsletter_campaign_block.js');
 
       if ($newsletter->follow_us_enabled && isset($newsletter->follow_us_configuration)) {
 
