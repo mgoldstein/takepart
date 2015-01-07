@@ -4518,7 +4518,7 @@ return TRUE;';
   $handler->display->display_options['row_plugin'] = 'node_rss';
   $handler->display->display_options['row_options']['item_length'] = 'title';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Broken/missing handler */
+  /* Contextual filter: : field_blogpost_blog (field_blogpost_blog) */
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['id'] = 'field_blogpost_blog_tid';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['table'] = 'field_data_field_blogpost_blog';
   $handler->display->display_options['arguments']['field_blogpost_blog_tid']['field'] = 'field_blogpost_blog_tid';
@@ -4668,74 +4668,6 @@ return TRUE;';
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
   );
-
-  /* Display: Blog Feed Page */
-  $handler = $view->new_display('page', 'Blog Feed Page', 'blog_feeds');
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_takepart_rss_style';
-  $handler->display->display_options['style_options']['schema'] = 'rssimages';
-  $handler->display->display_options['style_options']['title'] = 'TakePart: ';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_blogpost_main_image']['id'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['table'] = 'field_data_field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['field'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['settings'] = array(
-    'image_style' => 'large',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_blogpost_main_image']['group_column'] = 'fid';
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Broken/missing handler */
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['id'] = 'field_blogpost_blog_tid';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['table'] = 'field_data_field_blogpost_blog';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['field'] = 'field_blogpost_blog_tid';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'openpublish_blog_post' => 'openpublish_blog_post',
-  );
-  $handler->display->display_options['path'] = 'blog/%/feed.xml';
 
   /* Display: Series Feed Page */
   $handler = $view->new_display('page', 'Series Feed Page', 'series_feeds');
@@ -4960,71 +4892,6 @@ return TRUE;';
     'video' => 'video',
   );
   $handler->display->display_options['path'] = 'topic/%/feed.xml';
-
-  /* Display: Blog Series Feed Page */
-  $handler = $view->new_display('page', 'Blog Series Feed Page', 'page_1');
-  $handler->display->display_options['display_description'] = 'Same as blog feed but with different path';
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'views_takepart_rss_style';
-  $handler->display->display_options['style_options']['schema'] = 'rssimages';
-  $handler->display->display_options['style_options']['title'] = 'TakePart: ';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_blogpost_main_image']['id'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['table'] = 'field_data_field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['field'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['label'] = 'Blogs Main Image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['settings'] = array(
-    'image_style' => 'large',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_blogpost_main_image']['group_column'] = 'fid';
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Broken/missing handler */
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['id'] = 'field_blogpost_blog_tid';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['table'] = 'field_data_field_blogpost_blog';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['field'] = 'field_blogpost_blog_tid';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_blogpost_blog_tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'openpublish_blog_post' => 'openpublish_blog_post',
-  );
-  $handler->display->display_options['path'] = 'blog-series/%/feed.xml';
 
   /* Display: Free Tag Feed */
   $handler = $view->new_display('page', 'Free Tag Feed', 'free_tag_feed');
