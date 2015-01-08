@@ -794,6 +794,7 @@ function tpf_content_page_field_default_field_instances() {
         'signature' => 0,
         'system' => 0,
         'takeaction_thankyou' => 0,
+        'takepart_addthis' => 0,
         'takepart_contests' => 0,
         'takepart_custom' => 0,
         'twitter_pull' => 0,
