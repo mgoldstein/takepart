@@ -1,5 +1,0 @@
-name = TakePart Live
-description = Everything for the TPL promotions
-core = 7.x
-package = TP4
-version = 7.x-1.0
