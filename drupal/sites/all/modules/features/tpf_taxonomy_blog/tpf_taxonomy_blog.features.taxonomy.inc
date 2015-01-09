@@ -7,6 +7,7 @@
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
+/*
 function tpf_taxonomy_blog_taxonomy_default_vocabularies() {
   return array(
     'blog' => array(
@@ -19,3 +20,4 @@ function tpf_taxonomy_blog_taxonomy_default_vocabularies() {
     ),
   );
 }
+*/
