@@ -11412,14 +11412,8 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
 }
 
 /* line 6, ../sass/page/_profile.scss */
-article {
-  margin-bottom: 20px;
-  border-bottom: 1px dotted silver;
-}
-
-/* line 11, ../sass/page/_profile.scss */
 h2.section-header {
-  text-transform: uppercase;
+  text-transform: lowercase;
 }
 
 /* Modules */
