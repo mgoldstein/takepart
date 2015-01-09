@@ -154,12 +154,12 @@
         anchorTarget = '#' + path.split('#')[1];
       });
 
-      snapper.on('animated', function() {
-        if (anchorTarget !== null) {
-          $.scrollTo(anchorTarget, 250);
-          anchorTarget = null;
-        }
-      });
+//      snapper.on('animated', function() {
+//        if (anchorTarget !== null) {
+//          $.scrollTo(anchorTarget, 250);
+//          anchorTarget = null;
+//        }
+//      });
 
       setTimeout(function() {
         var $header = $('.header-wrapper'),

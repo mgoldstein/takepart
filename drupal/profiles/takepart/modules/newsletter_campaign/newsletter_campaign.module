@@ -4,7 +4,8 @@
  */
 function newsletter_campaign_init(){
   $path = drupal_get_path('module', 'newsletter_campaign');
-  drupal_add_js($path . '/js/newsletter_campaign_block.js', array('every_page' => TRUE));
+//  drupal_add_js($path . '/js/newsletter_campaign_block.js', array('every_page' => TRUE));
+//  dpm($path, 'path');
 }
 
 /**
