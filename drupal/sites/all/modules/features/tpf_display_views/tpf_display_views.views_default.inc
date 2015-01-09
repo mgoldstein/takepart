@@ -3734,8 +3734,15 @@ return TRUE;';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '20';
   $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['tags']['first'] = 'First';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = 'Previous';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'Next';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'Last';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Content: Node ID */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
