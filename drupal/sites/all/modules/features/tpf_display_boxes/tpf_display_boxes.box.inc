@@ -149,7 +149,6 @@ function tpf_display_boxes_default_box() {
     'bundle' => '0',
     'field' => array(
       'field_action_type' => 'field_action_type',
-      'field_social_share_bar' => 'field_social_share_bar',
       'body' => 0,
       'field_author' => 0,
       'field_article_main_image' => 0,
