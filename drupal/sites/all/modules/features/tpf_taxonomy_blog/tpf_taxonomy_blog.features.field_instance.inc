@@ -8,7 +8,6 @@
  * Implements hook_field_default_field_instances().
  */
 
-/*
 function tpf_taxonomy_blog_field_default_field_instances() {
   $field_instances = array();
 
@@ -221,4 +220,3 @@ function tpf_taxonomy_blog_field_default_field_instances() {
 
   return $field_instances;
 }
-*/
