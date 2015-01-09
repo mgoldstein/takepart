@@ -79,6 +79,42 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'author_contributions';
+  $context->description = 'Contributions from this author';
+  $context->tag = 'Profiles';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'profile' => 'profile',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-author_contributions-block' => array(
+          'module' => 'views',
+          'delta' => 'author_contributions-block',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Contributions from this author');
+  t('Profiles');
+  $export['author_contributions'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'block_search';
   $context->description = 'Search';
   $context->tag = 'Block: Search';
