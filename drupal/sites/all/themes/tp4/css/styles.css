@@ -3734,7 +3734,7 @@ tr.selected td {
 /* line 825, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1389823777');
+  background-image: url('../images/progress.gif?1420487591');
 }
 
 /* TP Modal Library ---------------------- */
@@ -3843,7 +3843,7 @@ tr.selected td {
 /* line 924, ../sass/elements/_misc.scss */
 .tp-video-player.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1393277866');
+  background: url('../images/video-loading.gif?1420487591');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3852,7 +3852,7 @@ tr.selected td {
 /* line 931, ../sass/elements/_misc.scss */
 .tp-video-player.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
+  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3866,7 +3866,7 @@ tr.selected td {
 /* line 945, ../sass/elements/_misc.scss */
 .current-video .blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
+  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
   background-size: cover;
   height: 0;
 }
@@ -3878,7 +3878,7 @@ tr.selected td {
 /* line 958, ../sass/elements/_misc.scss */
 .jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
+  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
   background-size: cover;
   height: 0;
 }
@@ -4621,7 +4621,7 @@ body.front #sidebar .block-title {
 /* line 240, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1400014514');
+  background-image: url('../images/tpl-title.jpg?1420487591');
   margin-top: 5px;
   margin-bottom: -10px;
 }
@@ -4636,7 +4636,7 @@ body.front #sidebar .block-title {
   width: 100%;
   max-width: 312px;
   background-size: 100%;
-  background-image: url('../images/tpl-time.jpg?1400014514');
+  background-image: url('../images/tpl-time.jpg?1420487591');
   margin-top: 5px;
 }
 
@@ -5259,7 +5259,7 @@ a.column-header:hover {
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1389823777') no-repeat;
+  background: url('../images/megaphone.jpg?1420487591') no-repeat;
   padding-bottom: 5px;
 }
 
@@ -11405,6 +11405,23 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
   color: white;
 }
 
+/* line 1, ../sass/page/_profile.scss */
+.field-name-field-profile-photo img {
+  float: left;
+  margin: 0 16px 16px 0;
+}
+
+/* line 6, ../sass/page/_profile.scss */
+article {
+  margin-bottom: 20px;
+  border-bottom: 1px dotted silver;
+}
+
+/* line 11, ../sass/page/_profile.scss */
+h2.section-header {
+  text-transform: uppercase;
+}
+
 /* Modules */
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider
@@ -11458,7 +11475,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
 /* line 52, ../sass/modules/_bxslider.scss */
 .bx-wrapper .bx-loading {
   min-height: 50px;
-  background: url('../images/bx_loader.gif?1417454788') center center no-repeat white;
+  background: url('../images/bx_loader.gif?1420487591') center center no-repeat white;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -11579,7 +11596,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
   width: 10px;
   height: 11px;
   outline: 0;
-  background: url('../images/controls.png?1417454788') -86px -11px no-repeat;
+  background: url('../images/controls.png?1420487591') -86px -11px no-repeat;
   margin: 0 3px;
 }
 
@@ -11596,7 +11613,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
   width: 9px;
   height: 11px;
   outline: 0;
-  background: url('../images/controls.png?1417454788') -86px -44px no-repeat;
+  background: url('../images/controls.png?1420487591') -86px -44px no-repeat;
   margin: 0 3px;
 }
 
@@ -11733,7 +11750,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1400014514') no-repeat center 9px;
+    background: url('../images/tpl-logo.jpg?1420487591') no-repeat center 9px;
     margin: 0;
   }
   /* line 83, ../sass/modules/_megamenu.scss */
@@ -11743,7 +11760,7 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.jpg?1400021586') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1420487591') no-repeat center center;
     margin: 0;
   }
 }
@@ -12069,11 +12086,11 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
 }
 /* line 231, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-mobile.png?1400021586');
+  background-image: url('../images/tpl-logo-mobile.png?1420487591');
 }
 /* line 234, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-mobile.png?1400021586');
+  background-image: url('../images/takeaction-logo-mobile.png?1420487591');
 }
 
 /* line 1, ../sass/modules/_interstitials.scss */
@@ -12501,7 +12518,7 @@ header .search .form-submit {
   padding-top: 48px;
   color: white;
   border: none;
-  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -12570,7 +12587,7 @@ header .search .form-submit {
     padding-top: 24px;
     overflow: hidden;
     background-color: transparent;
-    background: url('../images/search-submit.png?1389823777') no-repeat center center;
+    background: url('../images/search-submit.png?1420487591') no-repeat center center;
   }
 }
 
@@ -12583,7 +12600,7 @@ header .search .form-submit {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1389823777') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1420487591') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
@@ -12825,7 +12842,7 @@ header .search .form-submit {
 }
 /* line 416, ../sass/modules/_header.scss */
 .slim-nav .search.active .form-submit {
-  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
   background-color: #000;
 }
 /* line 422, ../sass/modules/_header.scss */
@@ -13173,7 +13190,7 @@ header .search .form-submit {
 /* line 738, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right-more:after {
   content: ' ';
-  background: url('../images/slim-nav-arrow.png?1417454788') 2px 2px no-repeat;
+  background: url('../images/slim-nav-arrow.png?1420487591') 2px 2px no-repeat;
   display: inline-block;
   font-size: 14px;
   width: 12px;
@@ -13650,38 +13667,54 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   left: 0;
 }
 
-/* line 73, ../sass/modules/_topic_features.scss */
-.view-topic-listing .views-row {
+/* line 74, ../sass/modules/_topic_features.scss */
+.view-topic-listing .views-row,
+.view-author-contributions .views-row {
   overflow: hidden;
   margin: 1em 0;
   min-height: 80px;
 }
-/* line 79, ../sass/modules/_topic_features.scss */
-.view-topic-listing .views-row .views-field-field-thumbnail {
+/* line 80, ../sass/modules/_topic_features.scss */
+.view-topic-listing .views-row .views-field-field-thumbnail,
+.view-author-contributions .views-row .views-field-field-thumbnail {
   float: left;
 }
-/* line 84, ../sass/modules/_topic_features.scss */
+/* line 86, ../sass/modules/_topic_features.scss */
 .view-topic-listing .views-row .views-field-type,
 .view-topic-listing .views-row .views-field-title,
-.view-topic-listing .views-row .views-field-field-flashcard-page-headline {
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline,
+.view-topic-listing .views-row .views-field-field-promo-headline,
+.view-author-contributions .views-row .views-field-type,
+.view-author-contributions .views-row .views-field-title,
+.view-author-contributions .views-row .views-field-field-flashcard-page-headline,
+.view-author-contributions .views-row .views-field-field-promo-headline {
   margin-left: 117px;
 }
-/* line 88, ../sass/modules/_topic_features.scss */
-.view-topic-listing .views-row .views-field-type {
+/* line 90, ../sass/modules/_topic_features.scss */
+.view-topic-listing .views-row .views-field-type,
+.view-author-contributions .views-row .views-field-type {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
   font-size: .857142857em;
   text-transform: uppercase;
 }
-/* line 96, ../sass/modules/_topic_features.scss */
+/* line 99, ../sass/modules/_topic_features.scss */
 .view-topic-listing .views-row .views-field-title,
-.view-topic-listing .views-row .views-field-field-flashcard-page-headline {
+.view-topic-listing .views-row .views-field-field-promo-headline,
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline,
+.view-author-contributions .views-row .views-field-title,
+.view-author-contributions .views-row .views-field-field-promo-headline,
+.view-author-contributions .views-row .views-field-field-flashcard-page-headline {
   font-size: 1.142857143em;
   line-height: 1.25;
 }
 /* line 124, ../sass/helpers/_mixins.scss */
 .view-topic-listing .views-row .views-field-title .node-type-openpublish_photo_gallery:after,
-.view-topic-listing .views-row .views-field-field-flashcard-page-headline .node-type-openpublish_photo_gallery:after {
+.view-topic-listing .views-row .views-field-field-promo-headline .node-type-openpublish_photo_gallery:after,
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline .node-type-openpublish_photo_gallery:after,
+.view-author-contributions .views-row .views-field-title .node-type-openpublish_photo_gallery:after,
+.view-author-contributions .views-row .views-field-field-promo-headline .node-type-openpublish_photo_gallery:after,
+.view-author-contributions .views-row .views-field-field-flashcard-page-headline .node-type-openpublish_photo_gallery:after {
   display: inline;
   font-family: "SSGizmo";
   font-size: 1.25em;
@@ -13691,7 +13724,11 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
 }
 /* line 131, ../sass/helpers/_mixins.scss */
 .view-topic-listing .views-row .views-field-title .node-type-video:after,
-.view-topic-listing .views-row .views-field-field-flashcard-page-headline .node-type-video:after {
+.view-topic-listing .views-row .views-field-field-promo-headline .node-type-video:after,
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline .node-type-video:after,
+.view-author-contributions .views-row .views-field-title .node-type-video:after,
+.view-author-contributions .views-row .views-field-field-promo-headline .node-type-video:after,
+.view-author-contributions .views-row .views-field-field-flashcard-page-headline .node-type-video:after {
   font-family: "SSGizmo";
   font-size: 1.25em;
   line-height: 0.8;
@@ -13700,7 +13737,11 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
 }
 /* line 106, ../sass/helpers/_mixins.scss */
 .view-topic-listing .views-row .views-field-title:after,
-.view-topic-listing .views-row .views-field-field-flashcard-page-headline:after {
+.view-topic-listing .views-row .views-field-field-promo-headline:after,
+.view-topic-listing .views-row .views-field-field-flashcard-page-headline:after,
+.view-author-contributions .views-row .views-field-title:after,
+.view-author-contributions .views-row .views-field-field-promo-headline:after,
+.view-author-contributions .views-row .views-field-field-flashcard-page-headline:after {
   content: '';
   display: block;
   height: 0;
@@ -13708,27 +13749,38 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   margin: .5em 0;
   border-bottom: 1px dashed black;
 }
-/* line 114, ../sass/modules/_topic_features.scss */
+/* line 117, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-item,
-.view-topic-listing .pager .pager-current {
+.view-topic-listing .pager .pager-current,
+.view-author-contributions .pager .pager-item,
+.view-author-contributions .pager .pager-current {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: 100;
   font-size: .857142857em;
   padding: 0 .1em;
 }
-/* line 120, ../sass/modules/_topic_features.scss */
-.view-topic-listing .pager .pager-current {
+/* line 123, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-current,
+.view-author-contributions .pager .pager-current {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: normal;
 }
-/* line 129, ../sass/modules/_topic_features.scss */
+/* line 132, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-first:before, .view-topic-listing .pager .pager-first:after,
 .view-topic-listing .pager .pager-previous:before,
 .view-topic-listing .pager .pager-previous:after,
 .view-topic-listing .pager .pager-next:before,
 .view-topic-listing .pager .pager-next:after,
 .view-topic-listing .pager .pager-last:before,
-.view-topic-listing .pager .pager-last:after {
+.view-topic-listing .pager .pager-last:after,
+.view-author-contributions .pager .pager-first:before,
+.view-author-contributions .pager .pager-first:after,
+.view-author-contributions .pager .pager-previous:before,
+.view-author-contributions .pager .pager-previous:after,
+.view-author-contributions .pager .pager-next:before,
+.view-author-contributions .pager .pager-next:after,
+.view-author-contributions .pager .pager-last:before,
+.view-author-contributions .pager .pager-last:after {
   display: inline;
   color: #018b73;
   font-family: "SSGizmo";
@@ -13736,20 +13788,24 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   line-height: 1;
   vertical-align: top;
 }
-/* line 138, ../sass/modules/_topic_features.scss */
-.view-topic-listing .pager .pager-first:before {
+/* line 141, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-first:before,
+.view-author-contributions .pager .pager-first:before {
   content: '\25C5 ';
 }
-/* line 141, ../sass/modules/_topic_features.scss */
-.view-topic-listing .pager .pager-previous:before {
+/* line 144, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-previous:before,
+.view-author-contributions .pager .pager-previous:before {
   content: "\23EA ";
 }
-/* line 144, ../sass/modules/_topic_features.scss */
-.view-topic-listing .pager .pager-next:after {
+/* line 147, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-next:after,
+.view-author-contributions .pager .pager-next:after {
   content: '\25BB';
 }
-/* line 147, ../sass/modules/_topic_features.scss */
-.view-topic-listing .pager .pager-last:after {
+/* line 150, ../sass/modules/_topic_features.scss */
+.view-topic-listing .pager .pager-last:after,
+.view-author-contributions .pager .pager-last:after {
   content: '\23E9';
 }
 
@@ -13916,7 +13972,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1400021586') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1420487591') no-repeat 10px center;
   margin: 0;
 }
 /* line 164, ../sass/modules/_left_drawer.scss */
@@ -14151,7 +14207,7 @@ body #sidebar .tpl-media-block-wrapper .tpl-highlight {
   white-space: nowrap;
   text-indent: 100%;
   overflow: hidden;
-  background: transparent url('../images/tpl_logo.png?1400014514') no-repeat top center;
+  background: transparent url('../images/tpl_logo.png?1420487591') no-repeat top center;
   height: 0;
   padding-top: 30px;
   margin-bottom: 2px;
@@ -14164,7 +14220,7 @@ body #sidebar .tpl-media-block-wrapper .tpl-highlight {
 }
 /* line 88, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1400014514') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1420487591') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;

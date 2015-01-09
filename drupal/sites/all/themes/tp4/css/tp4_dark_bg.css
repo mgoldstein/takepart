@@ -11,102 +11,54 @@
 /*
  *Misc
  */
-/* line 15, ../sass/tp4_dark_bg.scss */
 body.campaign-display .card.dark-background h1, body.campaign-display .card.dark-background h2, body.campaign-display .card.dark-background h3, body.campaign-display .card.dark-background h4, body.campaign-display .card.dark-background h5, body.campaign-display .card.dark-background h6 {
-  color: white;
-}
-/* line 18, ../sass/tp4_dark_bg.scss */
+  color: #fff; }
 body.campaign-display .card.dark-background p {
-  color: white;
-}
-/* line 21, ../sass/tp4_dark_bg.scss */
+  color: #fff; }
 body.campaign-display .card.dark-background a {
-  color: #01bf9e;
-}
-/* line 24, ../sass/tp4_dark_bg.scss */
+  color: #01bf9e; }
 body.campaign-display .card.dark-background .secondary-button a {
-  color: white;
-}
-/* line 26, ../sass/tp4_dark_bg.scss */
-body.campaign-display .card.dark-background .secondary-button a:hover {
-  color: white;
-}
-/* line 30, ../sass/tp4_dark_bg.scss */
+  color: #fff; }
+  body.campaign-display .card.dark-background .secondary-button a:hover {
+    color: #fff; }
 body.campaign-display .card.dark-background .primary-button a {
-  color: white;
-}
-/* line 33, ../sass/tp4_dark_bg.scss */
+  color: #fff; }
 body.campaign-display .card.dark-background .media-caption {
-  color: white;
-}
-/* line 37, ../sass/tp4_dark_bg.scss */
+  color: #fff; }
 body.campaign-display .card.dark-background ul li, body.campaign-display .card.dark-background ol li {
-  color: white;
-}
-/* line 44, ../sass/tp4_dark_bg.scss */
+  color: #fff; }
 body.campaign-display .tray.dark-background .arrow:hover {
-  color: #01bf9e;
-}
-/* line 48, ../sass/tp4_dark_bg.scss */
+  color: #01bf9e; }
 body.campaign-display .tray.dark-background .slider-pagination a {
-  background-color: white;
-}
-/* line 51, ../sass/tp4_dark_bg.scss */
+  background-color: #fff; }
 body.campaign-display .tray.dark-background .slider-pagination a.active {
-  background-color: #01bf9e;
-}
-/* line 55, ../sass/tp4_dark_bg.scss */
+  background-color: #01bf9e; }
 body.campaign-display .tray.dark-background .tray-header .card-title {
-  color: white;
-}
+  color: #fff; }
 @media all and (min-width: 320px) {
-  /* line 60, ../sass/tp4_dark_bg.scss */
   body.campaign-display .tray.dark-background .mobile-arrow {
-    color: #FFF;
-  }
-}
-/* line 67, ../sass/tp4_dark_bg.scss */
+    color: #FFF; }
+ }
 body.campaign-display .branding-header.dark-background .share-headline {
-  color: white;
-}
-/* line 70, ../sass/tp4_dark_bg.scss */
+  color: #fff; }
 body.campaign-display .branding-header.dark-background .icon.i-touch-menu:after {
-  color: white;
-}
-/* line 75, ../sass/tp4_dark_bg.scss */
+  color: white; }
 body.campaign-display .branding-header.dark-background .menu li.parent-item.active > a {
-  color: #01bf9e;
-}
-/* line 78, ../sass/tp4_dark_bg.scss */
+  color: #01bf9e; }
 body.campaign-display .branding-header.dark-background .menu li.parent-item.parent-item:not(.anchored) > a.active {
-  color: #01bf9e;
-}
-/* line 83, ../sass/tp4_dark_bg.scss */
+  color: #01bf9e; }
 body.campaign-display .branding-header.dark-background .menu li.parent-item > a {
-  color: white;
-}
-/* line 86, ../sass/tp4_dark_bg.scss */
+  color: #fff; }
 body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a {
-  color: black;
-  background-color: white;
-}
-/* line 90, ../sass/tp4_dark_bg.scss */
+  color: #000;
+  background-color: #fff; }
 body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a.active {
-  color: black;
-}
-/* line 94, ../sass/tp4_dark_bg.scss */
+  color: #000; }
 body.campaign-display .branding-header.dark-background .menu li.parent-item:not(.anchored):hover a.active {
-  color: black;
-}
-/* line 101, ../sass/tp4_dark_bg.scss */
+  color: #000; }
 body.campaign-display .swipe-wrap.has-title .card.dark-background .card-inner {
-  border-top: none;
-}
-/* line 107, ../sass/tp4_dark_bg.scss */
+  border-top: none; }
 body.campaign-display .node-campaign-card-twitter .card.dark-background h3.tweet-username a {
-  color: white;
-}
-/* line 112, ../sass/tp4_dark_bg.scss */
+  color: #fff; }
 body.campaign-display .card.dark-background .block-newsletter-campaign {
-  color: white;
-}
+  color: #fff; }
