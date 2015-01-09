@@ -13673,18 +13673,20 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
 .view-author-contributions .views-row .views-field-field-thumbnail {
   float: left;
 }
-/* line 86, ../sass/modules/_topic_features.scss */
+/* line 87, ../sass/modules/_topic_features.scss */
 .view-topic-listing .views-row .views-field-type,
 .view-topic-listing .views-row .views-field-title,
+.view-topic-listing .views-row .views-field-url,
 .view-topic-listing .views-row .views-field-field-flashcard-page-headline,
 .view-topic-listing .views-row .views-field-field-promo-headline,
 .view-author-contributions .views-row .views-field-type,
 .view-author-contributions .views-row .views-field-title,
+.view-author-contributions .views-row .views-field-url,
 .view-author-contributions .views-row .views-field-field-flashcard-page-headline,
 .view-author-contributions .views-row .views-field-field-promo-headline {
   margin-left: 117px;
 }
-/* line 90, ../sass/modules/_topic_features.scss */
+/* line 91, ../sass/modules/_topic_features.scss */
 .view-topic-listing .views-row .views-field-type,
 .view-author-contributions .views-row .views-field-type {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
@@ -13692,11 +13694,13 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   font-size: .857142857em;
   text-transform: uppercase;
 }
-/* line 99, ../sass/modules/_topic_features.scss */
+/* line 101, ../sass/modules/_topic_features.scss */
 .view-topic-listing .views-row .views-field-title,
+.view-topic-listing .views-row .views-field-url,
 .view-topic-listing .views-row .views-field-field-promo-headline,
 .view-topic-listing .views-row .views-field-field-flashcard-page-headline,
 .view-author-contributions .views-row .views-field-title,
+.view-author-contributions .views-row .views-field-url,
 .view-author-contributions .views-row .views-field-field-promo-headline,
 .view-author-contributions .views-row .views-field-field-flashcard-page-headline {
   font-size: 1.142857143em;
@@ -13704,9 +13708,11 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
 }
 /* line 124, ../sass/helpers/_mixins.scss */
 .view-topic-listing .views-row .views-field-title .node-type-openpublish_photo_gallery:after,
+.view-topic-listing .views-row .views-field-url .node-type-openpublish_photo_gallery:after,
 .view-topic-listing .views-row .views-field-field-promo-headline .node-type-openpublish_photo_gallery:after,
 .view-topic-listing .views-row .views-field-field-flashcard-page-headline .node-type-openpublish_photo_gallery:after,
 .view-author-contributions .views-row .views-field-title .node-type-openpublish_photo_gallery:after,
+.view-author-contributions .views-row .views-field-url .node-type-openpublish_photo_gallery:after,
 .view-author-contributions .views-row .views-field-field-promo-headline .node-type-openpublish_photo_gallery:after,
 .view-author-contributions .views-row .views-field-field-flashcard-page-headline .node-type-openpublish_photo_gallery:after {
   display: inline;
@@ -13718,9 +13724,11 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
 }
 /* line 131, ../sass/helpers/_mixins.scss */
 .view-topic-listing .views-row .views-field-title .node-type-video:after,
+.view-topic-listing .views-row .views-field-url .node-type-video:after,
 .view-topic-listing .views-row .views-field-field-promo-headline .node-type-video:after,
 .view-topic-listing .views-row .views-field-field-flashcard-page-headline .node-type-video:after,
 .view-author-contributions .views-row .views-field-title .node-type-video:after,
+.view-author-contributions .views-row .views-field-url .node-type-video:after,
 .view-author-contributions .views-row .views-field-field-promo-headline .node-type-video:after,
 .view-author-contributions .views-row .views-field-field-flashcard-page-headline .node-type-video:after {
   font-family: "SSGizmo";
@@ -13731,9 +13739,11 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
 }
 /* line 106, ../sass/helpers/_mixins.scss */
 .view-topic-listing .views-row .views-field-title:after,
+.view-topic-listing .views-row .views-field-url:after,
 .view-topic-listing .views-row .views-field-field-promo-headline:after,
 .view-topic-listing .views-row .views-field-field-flashcard-page-headline:after,
 .view-author-contributions .views-row .views-field-title:after,
+.view-author-contributions .views-row .views-field-url:after,
 .view-author-contributions .views-row .views-field-field-promo-headline:after,
 .view-author-contributions .views-row .views-field-field-flashcard-page-headline:after {
   content: '';
@@ -13743,7 +13753,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   margin: .5em 0;
   border-bottom: 1px dashed black;
 }
-/* line 117, ../sass/modules/_topic_features.scss */
+/* line 119, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-item,
 .view-topic-listing .pager .pager-current,
 .view-author-contributions .pager .pager-item,
@@ -13753,13 +13763,13 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   font-size: .857142857em;
   padding: 0 .1em;
 }
-/* line 123, ../sass/modules/_topic_features.scss */
+/* line 125, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-current,
 .view-author-contributions .pager .pager-current {
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: normal;
 }
-/* line 132, ../sass/modules/_topic_features.scss */
+/* line 134, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-first:before, .view-topic-listing .pager .pager-first:after,
 .view-topic-listing .pager .pager-previous:before,
 .view-topic-listing .pager .pager-previous:after,
@@ -13782,22 +13792,22 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   line-height: 1;
   vertical-align: top;
 }
-/* line 141, ../sass/modules/_topic_features.scss */
+/* line 143, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-first:before,
 .view-author-contributions .pager .pager-first:before {
   content: '\25C5 ';
 }
-/* line 144, ../sass/modules/_topic_features.scss */
+/* line 146, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-previous:before,
 .view-author-contributions .pager .pager-previous:before {
   content: "\23EA ";
 }
-/* line 147, ../sass/modules/_topic_features.scss */
+/* line 149, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-next:after,
 .view-author-contributions .pager .pager-next:after {
   content: '\25BB';
 }
-/* line 150, ../sass/modules/_topic_features.scss */
+/* line 152, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-last:after,
 .view-author-contributions .pager .pager-last:after {
   content: '\23E9';
