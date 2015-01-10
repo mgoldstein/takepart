@@ -1,7 +1,7 @@
 name = TakePart Taxonomy Series
 core = 7.x
 package = Taxonomy
-version = 7.x-1.0
+version = 7.x-1.1
 project = tpf_taxonomy_series
 dependencies[] = context
 dependencies[] = context_field
@@ -22,4 +22,3 @@ features[field_instance][] = taxonomy_term-series-field_series_context
 features[field_instance][] = taxonomy_term-series-field_series_graphic_header
 features[field_instance][] = taxonomy_term-series-field_series_graphic_header_link
 features[taxonomy][] = series
-mtime = 1410473094
