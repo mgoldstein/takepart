@@ -7,14 +7,6 @@ class ddContent extends ddDefaultPage {
     return preg_match('/^node\/[0-9]+/', $path);
   }
 
-  protected function contentTypeName($type) {
-    $types = node_type_get_types();
-    if (array_key_exists($type, $types)) {
-      return $types[$type]->name;
-    }
-    return $type;
-  }
-
   protected function termList($node, $field_name) {
     $items = field_get_items('node', $node, $field_name);
     $terms = array();
@@ -137,8 +129,6 @@ class ddContent extends ddDefaultPage {
     //Permanent Title
     if($permanent_title = field_get_items('node', $node, 'field_permanent_title')){
       $data['page']['pageInfo']['permanentTitle'] = $permanent_title[0]['value'];
-    }else{
-      $data['page']['pageInfo']['permanentTitle'] = $node->title;
     }
 
     $data['page']['pageInfo']['pageId'] = $pageID;
@@ -146,7 +136,7 @@ class ddContent extends ddDefaultPage {
     $data['page']['pageInfo']['pageUrl'] = $url;
     $data['page']['pageInfo']['pageUrlAlias'] = $request_path;  //first part of the URL
     $data['page']['pageInfo']['siteSection'] = $site_section;
-    $data['page']['pageInfo']['template'] = $node->type;
+    $data['page']['pageInfo']['template'] = node_type_get_name($node);
     $data['page']['category']['primaryCategory'] = $this->categoryForContentType($node->type);
     $data += parent::build($page);
 
