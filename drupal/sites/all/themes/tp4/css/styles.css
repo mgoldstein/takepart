@@ -10410,7 +10410,7 @@ body.campaign-display .card.node-campaign-card-news .center-column .more-link p 
   margin: 0;
 }
 /* line 1030, ../sass/page/_campaigns.scss */
-body.campaign-display .card.node-campaign-card-news a {
+body.campaign-display .card.node-campaign-card-news a.news-column {
   color: #000;
 }
 /* line 1033, ../sass/page/_campaigns.scss */
