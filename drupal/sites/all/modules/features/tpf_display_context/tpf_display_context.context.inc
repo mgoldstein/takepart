@@ -932,6 +932,42 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'series_landing_page';
+  $context->description = 'Series Taxonomy Search List';
+  $context->tag = 'Series';
+  $context->conditions = array(
+    'taxonomy_term' => array(
+      'values' => array(
+        'series' => 'series',
+      ),
+      'options' => array(
+        'term_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-taxonomy_search_list-block_2' => array(
+          'module' => 'views',
+          'delta' => 'taxonomy_search_list-block_2',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Series');
+  t('Series Taxonomy Search List');
+  $export['series_landing_page'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'takepart_campaign_default';
   $context->description = 'TakePart Campaign Default';
   $context->tag = 'Context Field Default';
