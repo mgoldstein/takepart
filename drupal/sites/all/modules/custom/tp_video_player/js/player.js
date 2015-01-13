@@ -5,9 +5,9 @@
       $('.tp-video-player').once('initialized', function(index, element) {
         var element_id = $(element).attr('id');
         var settings = Drupal.settings.tp_video_player.settings[element_id];
-        if (!window.s || !window.s.Media) {
-          delete settings['sitecatalyst'];
-        }
+//        if (!window.s || !window.s.Media) {
+//          delete settings['sitecatalyst'];
+//        }
         // Use the flash player in Firefox on Macs.
         var FF = !(window.mozInnerScreenX == null);
         var MAC = (navigator.platform.indexOf('Mac')>=0);
