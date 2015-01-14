@@ -1,20 +1,20 @@
 <?php
 
-function check_node($nid) { 
-    $record = db_select('node', 'n')
-            ->fields('n')
-            ->condition('nid', $nid)
+function check_taxonomy($tid) { 
+    $record = db_select('taxonomy_term_data', 't')
+            ->fields('t')
+            ->condition('tid', $tid)
             ->execute()
             ->fetchObject();
     if ($record === FALSE) {
-        echo 'node ' . $nid . ' not found' . "\r\n";
-        delete_context($nid);
+        echo 'term ' . $tid . ' not found' . "\r\n";
+        delete_taxonomy($nid);
     } else {
-        echo 'node ' . $nid . ' successfully found' . "\r\n";
+        echo 'term ' . $tid . ' successfully found as ' . $record-name . "\r\n";
     }
 }
 
-function delete_context($nid) {
+function delete_taxonomy($nid) {
     $context = 'context_field-node-' . $nid;
     sleep(1);
     $result = db_query("DELETE FROM {context} WHERE name = :name", array(':name' => $context));
@@ -29,13 +29,13 @@ function delete_context($nid) {
 function context_names() {
     $nodes = db_select('context', 'c')
             ->fields('c', array('name'))
-            ->condition('name', 'context_field-node-%', 'LIKE')
+            ->condition('name', 'context_field-taxonomy_term-%', 'LIKE')
             ->execute()
             ->fetchAll();
     
     foreach ($nodes as $title) {
-        $nid = substr($title->name, 19);
-        check_node($nid);
+        $tid = substr($title->name, 28);
+        check_taxonomy($tid);
     }
 }
 
