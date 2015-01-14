@@ -11412,6 +11412,11 @@ body.campaign-display .card.dark-background .block-newsletter-campaign {
 }
 
 /* line 6, ../sass/page/_profile.scss */
+article.node-profile a {
+  color: #018b73;
+}
+
+/* line 10, ../sass/page/_profile.scss */
 h2.section-header {
   text-transform: lowercase;
 }
