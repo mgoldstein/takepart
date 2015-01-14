@@ -3618,6 +3618,8 @@ return TRUE;';
 
   /* Display: Free Tag */
   $handler = $view->new_display('block', 'Free Tag', 'block_1');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'view-free-tags';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -3626,6 +3628,10 @@ return TRUE;';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['pager']['options']['tags']['first'] = 'First';
+  $handler->display->display_options['pager']['options']['tags']['previous'] = 'Previous';
+  $handler->display->display_options['pager']['options']['tags']['next'] = 'Next';
+  $handler->display->display_options['pager']['options']['tags']['last'] = 'Last';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Indexed Content: Node ID */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -3643,6 +3649,18 @@ return TRUE;';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Indexed Content: Thumbnail Image */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => 'content',
+  );
   /* Field: Indexed Content: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
