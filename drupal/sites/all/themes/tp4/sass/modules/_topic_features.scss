@@ -70,7 +70,8 @@
 }
 
 .view-topic-listing,
-.view-author-contributions {
+.view-author-contributions,
+.view-free-tags {
   .views-row {
     @include clearfix();
     margin: 1em 0;
