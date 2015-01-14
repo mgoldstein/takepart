@@ -303,15 +303,6 @@
   };
 
   /**
-   * Handle TP Infographics
-   */
-  Drupal.behaviors.infographics = {
-    attach: function() {
-      $('.tpinfographic').tpInfographic();
-    }
-  };
-
-  /**
    * Set up the featured campaigns module in the footer.
    */
   Drupal.behaviors.featuredCampaignsModule = {

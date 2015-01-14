@@ -13,6 +13,39 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = '404_feed';
+  $context->description = 'The 10 most recent items from the /all/feed.xml on the 404 page.';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'error' => array(
+      'values' => array(
+        404 => '404',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-1ddb00ad04439c02e7ade3e99c6f2213' => array(
+          'module' => 'views',
+          'delta' => '1ddb00ad04439c02e7ade3e99c6f2213',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
+  t('The 10 most recent items from the /all/feed.xml on the 404 page.');
+  $export['404_feed'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'ad_exclude_campaign';
   $context->description = 'Context used by general_ad to exclude ads from pages/sections';
   $context->tag = 'Ads';

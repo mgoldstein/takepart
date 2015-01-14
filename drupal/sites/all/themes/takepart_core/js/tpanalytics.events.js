@@ -309,27 +309,6 @@
             s.prop46 = options.interstitial_type + " Interstitial: Popup View";
             s.tl(true, 'o', options.interstitial_type + ' Interstitial Popup View');
         },
-        // -------------------------------
-        // TP Infographic ----------------
-        // -------------------------------
-        'tpinfographic_show': function(options) {
-            var s = s_gi(Drupal.settings.omniture.s_account);
-            s.linkTrackVars = 'eVar45,eVar30,events';
-            s.linkTrackEvents = 'event45';
-            s.events = 'event45';
-            s.eVar45 = options.name;
-            s.eVar30 = s.pageName;
-            s.tl(true, 'o', 'Click on Infographic');
-        },
-        'tpinfographic_embed_show': function(options) {
-            var s = s_gi(Drupal.settings.omniture.s_account);
-            s.linkTrackVars = 'eVar45,eVar30,events';
-            s.linkTrackEvents = 'event46';
-            s.events = 'event46';
-            s.eVar45 = options.name;
-            s.eVar30 = s.pageName;
-            s.tl(true, 'o', 'Click on Embed Infographic Link');
-        },
         // -----------------------------------
         // Newsletter Signups ----------------
         // -----------------------------------
