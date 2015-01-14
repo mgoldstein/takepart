@@ -1,5 +1,12 @@
 <?php
 
+// define static var
+define('DRUPAL_ROOT', getcwd());
+// include bootstrap
+include_once('./includes/bootstrap.inc');
+// initialize stuff
+drupal_bootstrap(DRUPAL_BOOTSTRAP_FULL);
+
 function check_taxonomy($tid) { 
     $record = db_select('taxonomy_term_data', 't')
             ->fields('t')
@@ -9,9 +16,12 @@ function check_taxonomy($tid) {
     if ($record === FALSE) {
         echo 'term ' . $tid . ' not found' . "\r\n";
         taxonomy_term_delete($tid);
+        $increment = TRUE;
     } else {
-        echo 'term ' . $tid . ' successfully found as ' . $record-name . "\r\n";
+        echo 'term ' . $tid . ' successfully found as ' . $record->name . "\r\n";
+        $increment = FALSE;
     }
+    return $increment;
 }
 
 function get_context_names() {
@@ -20,11 +30,15 @@ function get_context_names() {
             ->condition('name', 'context_field-taxonomy_term-%', 'LIKE')
             ->execute()
             ->fetchAll();
-    
+    $i = 0;
     foreach ($nodes as $title) {
-        sleep(1);
+        // sleep(1);
         $tid = substr($title->name, 28);
-        check_taxonomy($tid);
+        $result = check_taxonomy($tid);
+        if ($result) {
+            $i++;
+            echo 'Total terms removed = ' . $i . "\r\n";
+        }
     }
 }
 
