@@ -743,20 +743,6 @@ function tpf_display_boxes_default_box() {
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'box-34ee1b08';
-  $box->plugin_key = 'simple';
-  $box->title = '';
-  $box->description = 'Outbrain Recommendation Content Widget';
-  $box->options = array(
-    'body' => '<script type="text/javascript" src="http://w.takepart.com/links/scripts/links.js"></script>',
-    'additional_classes' => '',
-    'selected_style' => '0',
-  );
-  $export['box-34ee1b08'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
   $box->delta = 'box-3981ef30';
   $box->plugin_key = 'simple';
   $box->title = '';

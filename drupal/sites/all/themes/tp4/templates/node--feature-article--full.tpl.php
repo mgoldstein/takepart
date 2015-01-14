@@ -82,8 +82,6 @@
             <?php print render($content['field_free_tag']); ?>
         </ul>
 
-        <div class="OUTBRAIN" data-src="<?php print $url_production; ?>" data-widget-id="TR_1" data-ob-template="TakePart" ></div>
-        <script type="text/javascript" async="async" src="http://widgets.outbrain.com/outbrain.js"></script>
 
         <h3 class="top-border"><?php print t('Takepart&#8217;s Most Popular'); ?></h3>
 
