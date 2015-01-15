@@ -1142,7 +1142,6 @@ function tpf_content_article_field_default_field_instances() {
     'settings' => array(
       'allowed_blocks' => array(
         'Boxes for Box' => 0,
-        'Boxes for Screaming Headline' => 0,
         'Boxes for View Box' => 0,
         'addthis' => 0,
         'boxes' => 0,
