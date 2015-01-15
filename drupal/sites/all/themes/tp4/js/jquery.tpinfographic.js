@@ -38,8 +38,8 @@
                         e.preventDefault();
                         if (!$embed.is(':visible')) {
                             takepart.analytics.track('tpinfographic_embed_show', {name: infographicAlt});
-                            $embed.slideDown();
                         }
+						$embed.slideToggle();
                     })
                     .prependTo($container);
             ;
