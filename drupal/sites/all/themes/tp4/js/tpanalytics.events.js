@@ -495,6 +495,7 @@
         // -----------------------------------
         // Playlists ------------------------
         // -----------------------------------
+        
         'playlist-play': function(options) {
           var s=s_gi(Drupal.settings.omniture.s_account);
           s.linkTrackVars='eVar25,eVar32,eVar65,eVar69';
@@ -502,7 +503,7 @@
           s.eVar32=options.listName;
           s.eVar65=options.videoTitle;
           s.eVar69=options.playConfig;
-          s.t(true, 'o', 'Playlist Play');
+          s.tl(true, 'o', 'Playlist Play');
         }
     });
 
