@@ -22,6 +22,11 @@ function tpf_display_context_context_default_contexts() {
         404 => '404',
       ),
     ),
+    'path' => array(
+      'values' => array(
+        'node/236' => 'node/236',
+      ),
+    ),
   );
   $context->reactions = array(
     'block' => array(
