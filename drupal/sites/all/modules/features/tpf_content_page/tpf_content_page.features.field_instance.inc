@@ -573,7 +573,6 @@ function tpf_content_page_field_default_field_instances() {
     'settings' => array(
       'allowed_blocks' => array(
         'Boxes for Box' => 0,
-        'Boxes for Screaming Headline' => 0,
         'Boxes for View Box' => 0,
         'addthis' => 0,
         'boxes' => 0,
@@ -770,7 +769,6 @@ function tpf_content_page_field_default_field_instances() {
         'Boxes for Field Box' => 0,
         'Boxes for GA Ad' => 0,
         'Boxes for Image Box' => 0,
-        'Boxes for Screaming Headline' => 0,
         'Boxes for View Box' => 0,
         'akamai' => 0,
         'badge_image' => 0,
