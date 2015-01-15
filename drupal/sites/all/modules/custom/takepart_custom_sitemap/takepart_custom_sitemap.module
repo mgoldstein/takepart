@@ -225,3 +225,23 @@ function _takepart_custom_video_xml(&$context) {
 function _takepart_custom_video_sitemap_finished($success, $results, $operations) {
   drupal_set_message('Batch Operation for regenating the sitemap is complete');
 }
+
+
+
+/*
+ * Exclude all awareness actions from sitemap
+ */
+function takepart_custom_sitemap_xmlsitemap_link_alter(&$link) {
+  if ($link['type'] === "node" && $link['subtype'] === "action") {
+    $linkparts = parse_url($link['loc']);
+    if (!stripos($linkparts['host'], 'takepart.com')) {
+      $link['status'] = 0;
+      $link['status_default'] = 0;
+    }
+    elseif (stripos($linkparts['path'], 'user_actions')) {
+      $link['status'] = 0;
+      $link['status_default'] = 0;
+    }
+  }
+  return $link;
+}
