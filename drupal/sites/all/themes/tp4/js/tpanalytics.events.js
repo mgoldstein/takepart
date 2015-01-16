@@ -503,7 +503,7 @@
           s.eVar32=options.listName;
           s.eVar65=options.videoTitle;
           s.eVar69=options.playConfig;
-          s.tl(true, 'o', 'Playlist Play');
+          // s.tl(true, 'o', 'Playlist Play');
         }
     });
 
