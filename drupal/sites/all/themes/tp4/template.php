@@ -273,14 +273,6 @@ function tp4_preprocess_page(&$variables) {
 }
 
 /**
- * Implements hook_css_alter().
- */
-function tp4_css_alter(&$css) {
-    // Take out tp4_support's slimnav CSS file to avoid duplication of code
-    unset($css[drupal_get_path('module', 'tp4_support') . '/css/tp4_support.css']);
-}
-
-/**
  * Override or insert variables into block templates.
  *
  * @param $variables
@@ -1513,7 +1505,7 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
  * from the openpublish_article template.
  */
 function tp4_preprocess_node__feature_article(&$variables, $hook) {
-    tp4_preprocess_node__openpublish_article($variables);
+    tp4_preprocess_node__openpublish_article($variables, $hook);
 
     if ($variables['view_mode'] == 'full') {
         // put the title color as a class on the title.

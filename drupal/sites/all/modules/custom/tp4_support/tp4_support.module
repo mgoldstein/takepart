@@ -271,7 +271,10 @@ function tp4_support_theme() {
  * Implements hook_preprocess_page().
  */
 function tp4_support_preprocess_page(&$variables) {
-  drupal_add_css(drupal_get_path('module', 'tp4_support'). '/css/tp4_support.css', array());
+	// If this is an iframe, use the iframe template
+	if (arg(0) === 'iframes') {
+		$variables['theme_hook_suggestions'][] = 'page__entity_iframe__node';
+	}
 }
 
 /**
@@ -910,3 +913,29 @@ function tp4_support_node_reference_autocomplete($entity_type, $bundle, $field_n
 
   drupal_json_output($matches);
 }
+
+function tp4_support_menu() {
+	$items['iframes/%'] = array(
+		'type' => MENU_NORMAL_ITEM,
+		'page callback' => 'tp4_support_iframes',
+		'page arguments' => array(1),
+		'access callback' => TRUE,
+	);
+	return $items;
+}
+
+function tp4_support_iframes($arg) {
+
+	switch($arg) {
+		case 'header':
+			$block = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav');
+			return '<div id="page-wrapper"><div class="slimnav responsive">'.render($block['content']).'</div></div>';
+			break;
+		case 'footer':
+			$block = module_invoke('tp4_support', 'block_view', 'tp4_footer');
+			return '<div class="footer-wrapper"><footer id="footer" class="region region-footer"><div class="block">'.render($block['content']).'</div><footer></div>';
+			break;
+	}
+}
+
+
