@@ -1264,12 +1264,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'region' => 'header',
           'weight' => '-100',
         ),
-        'bean-tpl-live-long' => array(
-          'module' => 'bean',
-          'delta' => 'tpl-live-long',
-          'region' => 'sidebar',
-          'weight' => '-9',
-        ),
         'bean--of-the-day' => array(
           'module' => 'bean',
           'delta' => '-of-the-day',
@@ -1782,12 +1776,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'region' => 'sidebar',
           'weight' => '-10',
         ),
-        'bean-tpl-live-long' => array(
-          'module' => 'bean',
-          'delta' => 'tpl-live-long',
-          'region' => 'sidebar',
-          'weight' => '-9',
-        ),
         'newsletter_campaign-48' => array(
           'module' => 'newsletter_campaign',
           'delta' => '48',
@@ -1908,12 +1896,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar',
           'weight' => '-10',
-        ),
-        'bean-tpl-live-long' => array(
-          'module' => 'bean',
-          'delta' => 'tpl-live-long',
-          'region' => 'sidebar',
-          'weight' => '-9',
         ),
         'newsletter_campaign-51' => array(
           'module' => 'newsletter_campaign',

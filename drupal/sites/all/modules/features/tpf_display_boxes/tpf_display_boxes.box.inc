@@ -1670,20 +1670,6 @@ z-index:5000;
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'box-bedd1fbb';
-  $box->plugin_key = 'simple';
-  $box->title = 'TakePart Video';
-  $box->description = 'Right Rail -- TPL Playlist';
-  $box->options = array(
-    'body' => '<br />
-<script type="text/javascript" src="//content.jwplatform.com/players/Y0y8DVG4-TPXPTQu4.js"></script>',
-    'additional_classes' => '',
-  );
-  $export['box-bedd1fbb'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
   $box->delta = 'box-c49bfd54';
   $box->plugin_key = 'simple';
   $box->title = '';
