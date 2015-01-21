@@ -1072,6 +1072,9 @@ body.page-iframes-slim-header {
 body.page-iframes-footer{
     border-top: none;
 }
+.page-iframes {
+    overflow: visible !important;
+}
 .page-iframes #page-wrapper{
     width: 100%;
     max-width: 1000px;

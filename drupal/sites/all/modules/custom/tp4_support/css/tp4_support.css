@@ -3413,9 +3413,10 @@ body.page-iframes-footer {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
+  overflow: visible;
 }
 
-/* line 1080, ../sass/_slimnav.scss */
+/* line 1081, ../sass/_slimnav.scss */
 .slimnav .clearfix {
   clear: both;
 }

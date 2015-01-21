@@ -1,4 +1,3 @@
-<div class="slim-nav-inner clearfix">
 <div class="menu-toggle"></div>
 <div class="left">
   <div class="logo">
@@ -10,7 +9,6 @@
 </div>
 <div class="right">
   <div class="follow-us">
-    <h2 class="follow-headline"><?php print t("Follow"); ?></h2>
     <?php print render($social_menu); ?>
   </div>
   <div class="user-menu">
@@ -18,4 +16,4 @@
   </div>
   <?php print render($search); ?>
 </div>
-</div>
+<div class="clearfix"></div>
