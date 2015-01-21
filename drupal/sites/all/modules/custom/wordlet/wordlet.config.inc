@@ -32,45 +32,6 @@ function _wordlet_configuration() {
       ),
     ),
 
-    // Longtail video
-    'longtail_video' => array(
-      'title' => 'Video',
-      'path' => 'video/players',
-      'published' => TRUE,
-      'wrappers' => array(),
-      'css' => array(),
-      'js' => array(),
-      'load' => array(),
-    ),
-
-    // --------------------------------------------
-    // Contagion LOL ------------------------------
-    // --------------------------------------------
-    'contagion_campaign' => array(
-      'title' => 'Contagion - Campaign',
-    ),
-
-    // Contagion - Home
-    'contagion_home' => array(
-      'title' => 'Contagion - Home',
-      'path' => 'contagion',
-      'published' => TRUE,
-      'wrappers' => array('contagion', 'campaign', 'html'),
-      'css' => array(
-        'css/slim-header.css',
-        'css/normalize_cms.css',
-        'campaigns/contagion/styles/main.css',
-        'campaigns/contagion/styles/plugins.css',
-      ),
-      'js' => array(
-        'campaigns/contagion/script/jquery.movingboxes.min.js',
-        'campaigns/contagion/script/jquery.tools.min.js',
-        'campaigns/contagion/script/jquery.zrssfeed.min.js',
-        'campaigns/contagion/script/global.js',
-      ),
-      'load' => array('site', 'contagion_campaign'),
-    ),
-
     // --------------------------------------------
     // Interstitials ------------------------------
     // --------------------------------------------
@@ -326,113 +287,8 @@ function _wordlet_configuration() {
     'teach_campaign' => array(
       'title' => 'TEACH Campaign',
     ),
-/*
-    // teach Home
-    'teach_home' => array(
-      'title' => 'TEACH - Home',
-      'path' => 'teach',
-      'published' => TRUE,
-      'wrappers' => array('teach', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/teach/css/teach.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/teach/js/teach.js',
-      ),
-      'load' => array('site', 'teach_campaign'),
-    ),
 
-    // teach Students
-    'teach_students' => array(
-      'title' => 'TEACH - Students',
-      'path' => 'teach/students',
-      'published' => TRUE,
-      'wrappers' => array('teach', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/teach/css/teach.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/teach/js/teach.js',
-        'campaigns/teach/js/film.js'
-      ),
-      'load' => array('site', 'teach_campaign'),
-    ),
-
-    // teach Parents
-    'teach_parents' => array(
-      'title' => 'TEACH - Parents',
-      'path' => 'teach/parents',
-      'published' => TRUE,
-      'wrappers' => array('teach', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/teach/css/teach.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/teach/js/teach.js',
-        'campaigns/teach/js/film.js'
-      ),
-      'load' => array('site', 'teach_campaign'),
-    ),
-
-    // teach Teachers
-    'teach_teachers' => array(
-      'title' => 'TEACH - Teachers',
-      'path' => 'teach/teachers',
-      'published' => TRUE,
-      'wrappers' => array('teach', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/teach/css/teach.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/teach/js/teach.js',
-        'campaigns/teach/js/film.js'
-      ),
-      'load' => array('site', 'teach_campaign'),
-    ),
-
-    // teach Alliances
-    'teach_alliances' => array(
-      'title' => 'TEACH - Alliances',
-      'path' => 'teach/alliances',
-      'published' => TRUE,
-      'wrappers' => array('teach', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/teach/css/teach.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/teach/js/teach.js',
-      ),
-      'load' => array('site', 'teach_campaign'),
-    ),
-
-    // teach News
-    'teach_news' => array(
-      'title' => 'TEACH - News',
-      'path' => 'teach/news',
-      'published' => TRUE,
-      'wrappers' => array('teach', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/teach/css/teach.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/teach/js/teach.js',
-      ),
-      'load' => array('site', 'teach_campaign'),
-    ),
-*/
-    // teach Share Your Story
+      // teach Share Your Story
     'teach_share_your_story' => array(
       'title' => 'TEACH - Share Your Story',
       'path' => 'teach/share-your-story',
@@ -449,42 +305,7 @@ function _wordlet_configuration() {
       ),
       'load' => array('site', 'teach_campaign'),
     ),
-/*
-    // teach Teach Fund More Information
-    'teach_fund_about' => array(
-      'title' => 'TEACH - About the Teach Fund',
-      'path' => 'teach/about-teach-fund',
-      'published' => TRUE,
-      'wrappers' => array('teach', 'campaign', 'html'),
-      'css' => array(
-	'css/normalize_cms.css',
-	'campaigns/teach/css/teach.css',
-      ),
-      'js' => array(
-	'campaigns/campaign.js',
-	'campaigns/teach/js/teach.js',
-      ),
-      'load' => array('site', 'teach_campaign'),
-    ),
 
-    // teach Film Page
-    'teach_film' => array(
-      'title' => 'TEACH - The Film',
-      'path' => 'teach/film',
-      'published' => TRUE,
-      'wrappers' => array('teach', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/teach/css/teach.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/teach/js/teach.js',
-        'campaigns/teach/js/film.js'
-      ),
-      'load' => array('site', 'teach_campaign'),
-    ),
-*/
     // teach Teacher Stories Page
     'teach_teacher_stories' => array(
       'title' => 'TEACH - Teacher Stories',
@@ -601,8 +422,6 @@ function _wordlet_configuration() {
       'load' => array('site', 'foodinc_campaign'),
       'suppress_ad_block' => TRUE,
     ),
-
-
 
 
     // -----------------------------
@@ -729,45 +548,5 @@ function _wordlet_configuration() {
     ),
 
 
-    // -----------------------------------
-    // Every 3 Seconds Campaign ----------
-    // -----------------------------------
-    'every3seconds_campaign' => array(
-      'title' => 'Every 3 Seconds Campaign',
-    ),
-
-    // Every 3 Seconds Home
-    'every3seconds_home' => array(
-      'title' => 'Every 3 Seconds - Home',
-      'path' => 'ets',
-      'published' => FALSE,
-      'wrappers' => array('every3seconds', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/every3seconds/every3seconds.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/every3seconds/education.js',
-      ),
-      'load' => array('site', 'every3seconds_campaign'),
-    ),
-
-    // Every Three Seconds Videos
-    'every3seconds_video' => array(
-      'title' => 'Every 3 Seconds - Videos',
-      'path' => 'ets/action',
-      'published' => FALSE,
-      'wrappers' => array('every3seconds', 'campaign', 'html'),
-      'css' => array(
-        'css/normalize_cms.css',
-        'campaigns/every3seconds/every3seconds.css',
-      ),
-      'js' => array(
-        'campaigns/campaign.js',
-        'campaigns/every3seconds/every3seconds.js',
-      ),
-      'load' => array('site', 'every3seconds_campaign'),
-    ),
   );
 }
