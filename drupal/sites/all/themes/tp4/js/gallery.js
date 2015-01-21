@@ -38,7 +38,7 @@
         }
     };
 
-    // utility functionto update social share variables 
+    // utility function to update social share variables 
     var updateTpSocialMedia = function(imageSrc, shareDescription, shareHeadline) {
         imageSrc = imageSrc.split('?')[0].split('#')[0];
         tp_social_config.services.pinterest.media = imageSrc;
