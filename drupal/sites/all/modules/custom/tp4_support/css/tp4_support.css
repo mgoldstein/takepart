@@ -3505,7 +3505,7 @@ body.page-iframes-footer footer h2.footer-title {
 body.page-iframes-footer footer ul.menu li {
   margin-bottom: 1em;
   margin-right: .5em;
-  margin-left: 0;
+  margin-left: 20px;
 }
 
 /**
