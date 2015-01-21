@@ -3421,7 +3421,7 @@ body.page-iframes-footer {
 }
 
 /* line 1, ../sass/_footer.scss */
-footer {
+footer#footer {
   max-width: 1000px;
   width: 100%;
   margin: 0 auto;
@@ -3429,52 +3429,52 @@ footer {
   font-weight: 100;
 }
 /* line 9, ../sass/_footer.scss */
-footer a {
+footer#footer a {
   text-decoration: none;
   color: #018b73;
 }
 /* line 12, ../sass/_footer.scss */
-footer a:hover {
+footer#footer a:hover {
   text-decoration: underline;
 }
 /* line 16, ../sass/_footer.scss */
-footer ul.menu {
+footer#footer ul.menu {
   text-align: inherit;
 }
 /* line 19, ../sass/_footer.scss */
-footer .footer-social li {
+footer#footer .footer-social li {
   list-style-image: none;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 /* line 25, ../sass/_footer.scss */
-footer .footer-title {
+footer#footer .footer-title {
   font-family: "Brown", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-weight: bold;
   font-size: 16px;
   color: #000;
 }
 /* line 31, ../sass/_footer.scss */
-footer .footer-bottom a {
+footer#footer .footer-bottom a {
   display: block;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
 /* line 36, ../sass/_footer.scss */
-footer .footer-bottom a.logos-takepart {
+footer#footer .footer-bottom a.logos-takepart {
   height: 30px;
   width: 131px;
 }
 /* line 40, ../sass/_footer.scss */
-footer .footer-bottom a.logos-participantmedia {
+footer#footer .footer-bottom a.logos-participantmedia {
   height: 40px;
   width: 144px;
   background: url("/sites/all/themes/tp4/images/logos/PM_Logo.png") no-repeat;
 }
 /* line 45, ../sass/_footer.scss */
-footer .footer-bottom a.logos-pivot {
+footer#footer .footer-bottom a.logos-pivot {
   height: 28px;
   width: 77px;
 }
