@@ -930,7 +930,7 @@ function tp4_support_iframes($arg) {
 		case 'header':
 		case 'slim-header':
 			$block = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav');
-			return '<div id="page-wrapper"><div class="slimnav responsive">'.render($block['content']).'</div></div>';
+			return '<div id="page-wrapper"><div class="slimnav slim-nav responsive">'.render($block['content']).'</div></div>';
 			break;
 		case 'footer':
 			$block = module_invoke('tp4_support', 'block_view', 'tp4_footer');
