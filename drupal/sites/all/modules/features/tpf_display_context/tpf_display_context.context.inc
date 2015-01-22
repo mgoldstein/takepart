@@ -646,7 +646,6 @@ function tpf_display_context_context_default_contexts() {
         'takepart_page' => 'takepart_page',
         'topic_front' => 'topic_front',
         'venue' => 'venue',
-        'video' => 'video',
       ),
       'options' => array(
         'node_form' => '0',
@@ -655,7 +654,7 @@ function tpf_display_context_context_default_contexts() {
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = [current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -706,7 +705,7 @@ s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = [current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -746,7 +745,7 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = [current-page:url-arg:0]:[tp_omniture:perm_title:{node:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{node:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -782,11 +781,10 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = TakePart Home
+      'variables' => 's.pageName =  takepart:home:TakePart Home
 s.channel = home
 s.prop1 = home
 s.prop4 = home
-s.prop7 =[current-user:uid]
 s.eVar30 = home:TakePart Home',
     ),
   );
@@ -817,7 +815,7 @@ s.eVar30 = home:TakePart Home',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = [current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -861,7 +859,7 @@ s.eVar19 = [tp_omniture:str_decode:{current-page:title}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = [current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
@@ -894,7 +892,7 @@ s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercas
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = [current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
+      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
 s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
 s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
