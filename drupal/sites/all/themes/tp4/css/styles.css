@@ -12752,29 +12752,28 @@ header .search .form-submit {
   /* line 244, ../sass/modules/_header.scss */
   .search.active {
     border-bottom: none;
-    top: -2px;
   }
-  /* line 247, ../sass/modules/_header.scss */
+  /* line 246, ../sass/modules/_header.scss */
   .search.active form {
     display: block;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 253, ../sass/modules/_header.scss */
+  /* line 252, ../sass/modules/_header.scss */
   .search-toggle {
     display: none;
   }
 
-  /* line 256, ../sass/modules/_header.scss */
+  /* line 255, ../sass/modules/_header.scss */
   .search {
     border-bottom: none;
   }
-  /* line 258, ../sass/modules/_header.scss */
+  /* line 257, ../sass/modules/_header.scss */
   .search form {
     display: block;
   }
 }
-/* line 267, ../sass/modules/_header.scss */
+/* line 266, ../sass/modules/_header.scss */
 .slim-nav {
   height: auto;
   position: relative;
@@ -12785,61 +12784,61 @@ header .search .form-submit {
   color: #5a5a5a;
   border-bottom: 2px solid #000;
 }
-/* line 278, ../sass/modules/_header.scss */
+/* line 277, ../sass/modules/_header.scss */
 .slim-nav .slim-nav-inner {
   position: relative;
 }
-/* line 281, ../sass/modules/_header.scss */
+/* line 280, ../sass/modules/_header.scss */
 .slim-nav .left {
   float: left;
 }
 @media all and (min-width: 980px) {
-  /* line 281, ../sass/modules/_header.scss */
+  /* line 280, ../sass/modules/_header.scss */
   .slim-nav .left {
     padding-left: 10px;
     width: auto;
   }
 }
-/* line 288, ../sass/modules/_header.scss */
+/* line 287, ../sass/modules/_header.scss */
 .slim-nav .right {
   float: right;
 }
 @media all and (min-width: 768px) {
-  /* line 288, ../sass/modules/_header.scss */
+  /* line 287, ../sass/modules/_header.scss */
   .slim-nav .right {
     width: 40%;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 288, ../sass/modules/_header.scss */
+  /* line 287, ../sass/modules/_header.scss */
   .slim-nav .right {
     width: auto;
   }
 }
-/* line 298, ../sass/modules/_header.scss */
+/* line 297, ../sass/modules/_header.scss */
 .slim-nav .logo {
   width: 121px;
 }
 @media all and (min-width: 768px) {
-  /* line 301, ../sass/modules/_header.scss */
+  /* line 300, ../sass/modules/_header.scss */
   .slim-nav .follow-us {
     display: none;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 301, ../sass/modules/_header.scss */
+  /* line 300, ../sass/modules/_header.scss */
   .slim-nav .follow-us {
     display: block;
     padding-right: 39px;
     padding-top: 7px;
   }
 }
-/* line 310, ../sass/modules/_header.scss */
+/* line 309, ../sass/modules/_header.scss */
 .slim-nav .follow-us ul {
   float: none;
   display: inline-block;
 }
-/* line 315, ../sass/modules/_header.scss */
+/* line 314, ../sass/modules/_header.scss */
 .slim-nav .follow-headline {
   font: normal 1.07692em/1 "tradegothicbold", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   display: inline-block;
@@ -12848,7 +12847,7 @@ header .search .form-submit {
   margin: .285714286em .5em 0 0;
   vertical-align: top;
 }
-/* line 323, ../sass/modules/_header.scss */
+/* line 322, ../sass/modules/_header.scss */
 .slim-nav .search {
   float: none;
   margin-top: 0px;
@@ -12857,12 +12856,12 @@ header .search .form-submit {
   right: 0;
 }
 @media all and (min-width: 980px) {
-  /* line 323, ../sass/modules/_header.scss */
+  /* line 322, ../sass/modules/_header.scss */
   .slim-nav .search {
     right: 0;
   }
 }
-/* line 335, ../sass/modules/_header.scss */
+/* line 334, ../sass/modules/_header.scss */
 .slim-nav .search .search-toggle {
   display: block;
   z-index: 9;
@@ -12871,7 +12870,7 @@ header .search .form-submit {
   height: 37px;
   cursor: pointer;
 }
-/* line 342, ../sass/modules/_header.scss */
+/* line 341, ../sass/modules/_header.scss */
 .slim-nav .search .search-toggle:before {
   display: block;
   width: 34px;
@@ -12895,16 +12894,16 @@ header .search .form-submit {
   -ms-filter: "FlipH";
 }
 @media all and (min-width: 768px) {
-  /* line 335, ../sass/modules/_header.scss */
+  /* line 334, ../sass/modules/_header.scss */
   .slim-nav .search .search-toggle {
     height: 30px;
   }
-  /* line 362, ../sass/modules/_header.scss */
+  /* line 361, ../sass/modules/_header.scss */
   .slim-nav .search .search-toggle:before {
     height: 30px;
   }
 }
-/* line 367, ../sass/modules/_header.scss */
+/* line 366, ../sass/modules/_header.scss */
 .slim-nav .search .form-item-keys-2 {
   display: none;
   position: absolute;
@@ -12921,36 +12920,36 @@ header .search .form-submit {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 378, ../sass/modules/_header.scss */
+/* line 377, ../sass/modules/_header.scss */
 .slim-nav .search .form-item-keys-2 [type=text] {
   padding-top: .25em;
 }
-/* line 380, ../sass/modules/_header.scss */
+/* line 379, ../sass/modules/_header.scss */
 .slim-nav .search .form-item-keys-2 [type=text]::-webkit-input-placeholder {
   opacity: 1;
 }
-/* line 384, ../sass/modules/_header.scss */
+/* line 383, ../sass/modules/_header.scss */
 .slim-nav .search .form-item-keys-2 [type=text]:-moz-placeholder {
   /* Firefox 18- */
   opacity: 1;
 }
-/* line 387, ../sass/modules/_header.scss */
+/* line 386, ../sass/modules/_header.scss */
 .slim-nav .search .form-item-keys-2 [type=text]::-moz-placeholder {
   /* Firefox 19+ */
   opacity: 1;
 }
 @media all and (min-width: 768px) {
-  /* line 367, ../sass/modules/_header.scss */
+  /* line 366, ../sass/modules/_header.scss */
   .slim-nav .search .form-item-keys-2 {
     background: #FFF;
     width: 420px;
   }
-  /* line 394, ../sass/modules/_header.scss */
+  /* line 393, ../sass/modules/_header.scss */
   .slim-nav .search .form-item-keys-2 [type=text] {
     width: 400px;
   }
 }
-/* line 399, ../sass/modules/_header.scss */
+/* line 398, ../sass/modules/_header.scss */
 .slim-nav .search .form-submit {
   top: 0;
   bottom: auto;
@@ -12959,30 +12958,30 @@ header .search .form-submit {
   background: transparent none;
 }
 @media all and (min-width: 768px) {
-  /* line 399, ../sass/modules/_header.scss */
+  /* line 398, ../sass/modules/_header.scss */
   .slim-nav .search .form-submit {
     padding: 19px 15px;
   }
 }
-/* line 410, ../sass/modules/_header.scss */
+/* line 409, ../sass/modules/_header.scss */
 .slim-nav .search.active .form-item-keys-2 {
   display: block;
 }
-/* line 413, ../sass/modules/_header.scss */
+/* line 412, ../sass/modules/_header.scss */
 .slim-nav .search.active .search-toggle {
   display: none;
 }
-/* line 416, ../sass/modules/_header.scss */
+/* line 415, ../sass/modules/_header.scss */
 .slim-nav .search.active .form-submit {
   background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
   background-color: #000;
 }
-/* line 422, ../sass/modules/_header.scss */
+/* line 421, ../sass/modules/_header.scss */
 .slim-nav #main-menu {
   display: none;
 }
 @media all and (min-width: 980px) {
-  /* line 422, ../sass/modules/_header.scss */
+  /* line 421, ../sass/modules/_header.scss */
   .slim-nav #main-menu {
     display: block;
     width: auto;
@@ -12991,7 +12990,7 @@ header .search .form-submit {
     line-height: 26px;
   }
 }
-/* line 431, ../sass/modules/_header.scss */
+/* line 430, ../sass/modules/_header.scss */
 .slim-nav #main-menu li {
   float: left;
   font-family: "tradegothicbold", Verdana, Tahoma, "DejaVu Sans", sans-serif;
@@ -13005,7 +13004,7 @@ header .search .form-submit {
   list-style-image: none;
   list-style-type: none;
 }
-/* line 443, ../sass/modules/_header.scss */
+/* line 442, ../sass/modules/_header.scss */
 .slim-nav #main-menu li:after {
   content: '';
   display: inline-block;
@@ -13016,49 +13015,49 @@ header .search .form-submit {
   right: .9em;
   top: 0;
 }
-/* line 453, ../sass/modules/_header.scss */
+/* line 452, ../sass/modules/_header.scss */
 .slim-nav #main-menu li:last-child {
   width: auto;
   text-align: right;
   padding-right: 0;
 }
-/* line 457, ../sass/modules/_header.scss */
+/* line 456, ../sass/modules/_header.scss */
 .slim-nav #main-menu li:last-child:after {
   border-right: none;
 }
-/* line 461, ../sass/modules/_header.scss */
+/* line 460, ../sass/modules/_header.scss */
 .slim-nav #main-menu li a {
   color: #000;
   position: relative;
   width: 100%;
   display: block;
 }
-/* line 466, ../sass/modules/_header.scss */
+/* line 465, ../sass/modules/_header.scss */
 .slim-nav #main-menu li a:hover {
   text-decoration: none;
 }
 
-/* line 475, ../sass/modules/_header.scss */
+/* line 474, ../sass/modules/_header.scss */
 .user-menu {
   display: block;
   margin-right: 34px;
   float: right;
 }
 @media all and (min-width: 768px) {
-  /* line 475, ../sass/modules/_header.scss */
+  /* line 474, ../sass/modules/_header.scss */
   .user-menu {
     margin-right: 5px;
   }
 }
 
-/* line 487, ../sass/modules/_header.scss */
+/* line 486, ../sass/modules/_header.scss */
 .slim-nav .user-menu {
   margin-right: 24px;
   padding-top: 3px;
   padding-right: 2px;
   position: relative;
 }
-/* line 492, ../sass/modules/_header.scss */
+/* line 491, ../sass/modules/_header.scss */
 .slim-nav .user-menu:after {
   content: '';
   display: block;
@@ -13070,18 +13069,18 @@ header .search .form-submit {
   top: 11px;
 }
 @media all and (min-width: 980px) {
-  /* line 487, ../sass/modules/_header.scss */
+  /* line 486, ../sass/modules/_header.scss */
   .slim-nav .user-menu {
     margin-right: 10px;
   }
 }
 
-/* line 509, ../sass/modules/_header.scss */
+/* line 508, ../sass/modules/_header.scss */
 .tp_login a.user_image {
   padding: 13px 8px;
 }
 
-/* line 513, ../sass/modules/_header.scss */
+/* line 512, ../sass/modules/_header.scss */
 .tp-slim-nav {
   height: auto;
   position: relative;
@@ -13094,55 +13093,55 @@ header .search .form-submit {
   border-bottom: 2px solid #000;
 }
 @media all and (min-width: 980px) {
-  /* line 524, ../sass/modules/_header.scss */
+  /* line 523, ../sass/modules/_header.scss */
   .tp-slim-nav .left {
     padding-left: 10px;
     width: auto;
   }
 }
-/* line 530, ../sass/modules/_header.scss */
+/* line 529, ../sass/modules/_header.scss */
 .tp-slim-nav .left .logo {
   /*display: inline-block;*/
   float: left;
 }
-/* line 535, ../sass/modules/_header.scss */
+/* line 534, ../sass/modules/_header.scss */
 .tp-slim-nav .left .megamenu-wrapper {
   float: left;
 }
-/* line 539, ../sass/modules/_header.scss */
+/* line 538, ../sass/modules/_header.scss */
 .tp-slim-nav .right {
   float: right;
 }
 @media all and (min-width: 768px) {
-  /* line 539, ../sass/modules/_header.scss */
+  /* line 538, ../sass/modules/_header.scss */
   .tp-slim-nav .right {
     width: 40%;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 539, ../sass/modules/_header.scss */
+  /* line 538, ../sass/modules/_header.scss */
   .tp-slim-nav .right {
     width: auto;
   }
 }
-/* line 548, ../sass/modules/_header.scss */
+/* line 547, ../sass/modules/_header.scss */
 .tp-slim-nav .right .title {
   display: inline-block;
   text-align: left;
   margin-right: 5px;
   letter-spacing: 1px;
 }
-/* line 555, ../sass/modules/_header.scss */
+/* line 554, ../sass/modules/_header.scss */
 .tp-slim-nav .right .menu {
   display: inline-block;
   float: none;
 }
-/* line 561, ../sass/modules/_header.scss */
+/* line 560, ../sass/modules/_header.scss */
 .tp-slim-nav #megamenu {
   display: none;
 }
 @media all and (min-width: 980px) {
-  /* line 561, ../sass/modules/_header.scss */
+  /* line 560, ../sass/modules/_header.scss */
   .tp-slim-nav #megamenu {
     display: block;
     width: auto;
@@ -13150,7 +13149,7 @@ header .search .form-submit {
     line-height: 26px;
   }
 }
-/* line 569, ../sass/modules/_header.scss */
+/* line 568, ../sass/modules/_header.scss */
 .tp-slim-nav #megamenu li {
   float: left;
   font-family: "tradegothicbold", Verdana, Tahoma, "DejaVu Sans", sans-serif;
@@ -13163,35 +13162,35 @@ header .search .form-submit {
   list-style-image: none;
   list-style-type: none;
 }
-/* line 580, ../sass/modules/_header.scss */
+/* line 579, ../sass/modules/_header.scss */
 .tp-slim-nav #megamenu li:last-child {
   padding-right: 0;
 }
-/* line 582, ../sass/modules/_header.scss */
+/* line 581, ../sass/modules/_header.scss */
 .tp-slim-nav #megamenu li:last-child:after {
   display: none;
 }
-/* line 586, ../sass/modules/_header.scss */
+/* line 585, ../sass/modules/_header.scss */
 .tp-slim-nav #megamenu li a {
   position: relative;
   display: block;
 }
-/* line 589, ../sass/modules/_header.scss */
+/* line 588, ../sass/modules/_header.scss */
 .tp-slim-nav #megamenu li a:hover {
   text-decoration: none;
 }
-/* line 593, ../sass/modules/_header.scss */
+/* line 592, ../sass/modules/_header.scss */
 .tp-slim-nav #megamenu li .mega-content {
   display: none;
   position: absolute;
   top: 53px;
   z-index: 10;
 }
-/* line 599, ../sass/modules/_header.scss */
+/* line 598, ../sass/modules/_header.scss */
 .tp-slim-nav #megamenu li .mega-content .mega-content-wrapper {
   padding: 10px;
 }
-/* line 603, ../sass/modules/_header.scss */
+/* line 602, ../sass/modules/_header.scss */
 .tp-slim-nav #megamenu li .mega-content .mega-content-wrapper .menu li {
   float: none;
   width: 100%;
@@ -13200,81 +13199,81 @@ header .search .form-submit {
 /**
  *	Overrides for the new custom slim nav
  */
-/* line 617, ../sass/modules/_header.scss */
+/* line 616, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim {
   margin-bottom: 15px;
 }
 @media all and (min-width: 768px) {
-  /* line 617, ../sass/modules/_header.scss */
+  /* line 616, ../sass/modules/_header.scss */
   #block-tp-custom-nav-tp-custom-nav-slim {
     margin-bottom: 0px;
   }
 }
-/* line 624, ../sass/modules/_header.scss */
+/* line 623, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .tp-slim-nav {
   border: none;
 }
-/* line 627, ../sass/modules/_header.scss */
+/* line 626, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .tp-slim-nav #megamenu {
   padding-left: 10px;
 }
-/* line 632, ../sass/modules/_header.scss */
+/* line 631, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .tp-slim-nav .left .logo {
   max-width: 75px;
   margin-top: 5px;
 }
 @media all and (min-width: 768px) {
-  /* line 632, ../sass/modules/_header.scss */
+  /* line 631, ../sass/modules/_header.scss */
   #block-tp-custom-nav-tp-custom-nav-slim .tp-slim-nav .left .logo {
     max-width: none;
     margin-top: 0px;
   }
 }
-/* line 643, ../sass/modules/_header.scss */
+/* line 642, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .tp-slim-nav .right {
   width: auto;
 }
-/* line 646, ../sass/modules/_header.scss */
+/* line 645, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .tp-slim-nav .right .follow-us {
   display: none;
   margin-right: 32px;
 }
 @media all and (min-width: 980px) {
-  /* line 646, ../sass/modules/_header.scss */
+  /* line 645, ../sass/modules/_header.scss */
   #block-tp-custom-nav-tp-custom-nav-slim .tp-slim-nav .right .follow-us {
     display: block;
   }
 }
-/* line 653, ../sass/modules/_header.scss */
+/* line 652, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .tp-slim-nav .right .follow-us .title {
   margin-top: -4px;
 }
-/* line 660, ../sass/modules/_header.scss */
+/* line 659, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper {
   margin-top: -5px;
 }
-/* line 663, ../sass/modules/_header.scss */
+/* line 662, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .mega-item {
   min-height: 53px;
 }
-/* line 667, ../sass/modules/_header.scss */
+/* line 666, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .mega-item .title a {
   padding: 10px 10px 0;
   text-transform: none;
   font-size: 18px;
   font-family: 'Apercu Medium', sans-serif;
 }
-/* line 677, ../sass/modules/_header.scss */
+/* line 676, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level {
   border-top: none;
   min-width: 250px;
   box-shadow: 2px 2px 2px #666;
 }
-/* line 684, ../sass/modules/_header.scss */
+/* line 683, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level .mega-content-wrapper {
   padding: 20px !important;
 }
-/* line 688, ../sass/modules/_header.scss */
+/* line 687, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level .mega-content-wrapper li a {
   text-transform: none;
   font-weight: bold;
@@ -13282,36 +13281,36 @@ header .search .form-submit {
   font-size: 15px;
   line-height: 30px;
 }
-/* line 695, ../sass/modules/_header.scss */
+/* line 694, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level .mega-content-wrapper li a:hover {
   text-decoration: underline;
 }
-/* line 702, ../sass/modules/_header.scss */
+/* line 701, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .megamenu-wrapper .second-level .mega-content-wrapper a:hover {
   text-decoration: underline;
 }
-/* line 710, ../sass/modules/_header.scss */
+/* line 709, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .menu-toggle {
   margin-left: 10px;
   margin-top: 10px;
 }
-/* line 715, ../sass/modules/_header.scss */
+/* line 714, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .left {
   float: none;
 }
-/* line 718, ../sass/modules/_header.scss */
+/* line 717, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .left > div {
   float: left;
 }
-/* line 723, ../sass/modules/_header.scss */
+/* line 722, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right > div {
   float: left;
 }
-/* line 726, ../sass/modules/_header.scss */
+/* line 725, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right > div:not(.block-tp-custom-nav) {
   margin-right: 10px;
 }
-/* line 731, ../sass/modules/_header.scss */
+/* line 730, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right-more {
   position: relative;
   font-size: 15px !important;
@@ -13319,7 +13318,7 @@ header .search .form-submit {
   font-family: 'Apercu Medium', sans-serif !important;
   line-height: 30px;
 }
-/* line 738, ../sass/modules/_header.scss */
+/* line 737, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right-more:after {
   content: ' ';
   background: url('../images/slim-nav-arrow.png?1420487591') 2px 2px no-repeat;
@@ -13329,12 +13328,12 @@ header .search .form-submit {
   height: 18px;
 }
 
-/* line 751, ../sass/modules/_header.scss */
+/* line 750, ../sass/modules/_header.scss */
 .tp_slim_nav_wrapper #block-tp4-support-tp4-mobile-menu-header .title {
   margin-right: 10px;
 }
 
-/* line 757, ../sass/modules/_header.scss */
+/* line 756, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-takepart-collab {
   margin-bottom: 0;
   width: 140px;
@@ -13344,16 +13343,16 @@ header .search .form-submit {
   margin-top: -7px;
   margin-right: 0 !important;
 }
-/* line 766, ../sass/modules/_header.scss */
+/* line 765, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-takepart-collab .focus-state {
   line-height: 15px;
 }
-/* line 770, ../sass/modules/_header.scss */
+/* line 769, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-takepart-collab a {
   text-decoration: none;
 }
 @media all and (min-width: 768px) {
-  /* line 775, ../sass/modules/_header.scss */
+  /* line 774, ../sass/modules/_header.scss */
   #block-tp-custom-nav-tp-custom-nav-takepart-collab:before {
     content: '|';
     padding-right: 10px;
@@ -13363,12 +13362,12 @@ header .search .form-submit {
   }
 }
 
-/* line 799, ../sass/modules/_header.scss */
+/* line 798, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us, .pivot-nav-theme.follow-us {
   margin-right: 25px !important;
   margin-top: 6px;
 }
-/* line 803, ../sass/modules/_header.scss */
+/* line 802, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us .title, .pivot-nav-theme.follow-us .title {
   margin-left: 10px;
   text-transform: uppercase;
@@ -13380,7 +13379,7 @@ header .search .form-submit {
   float: left;
   color: #CCC;
 }
-/* line 816, ../sass/modules/_header.scss */
+/* line 815, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us li a, .pivot-nav-theme.follow-us li a {
   margin-left: 7px;
   overflow: hidden;
@@ -13391,7 +13390,7 @@ header .search .form-submit {
   height: 30px;
   width: 30px;
 }
-/* line 826, ../sass/modules/_header.scss */
+/* line 825, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us li a:before, .pivot-nav-theme.follow-us li a:before {
   overflow: visible;
   padding: 7px;
@@ -13400,77 +13399,77 @@ header .search .form-submit {
   color: #fff;
   display: block;
 }
-/* line 835, ../sass/modules/_header.scss */
+/* line 834, ../sass/modules/_header.scss */
 .pivot-nav-theme .follow-us li a:hover:before, .pivot-nav-theme.follow-us li a:hover:before {
   text-decoration: none;
   color: #000;
   background-color: #FFF;
 }
-/* line 845, ../sass/modules/_header.scss */
+/* line 844, ../sass/modules/_header.scss */
 .pivot-nav-theme #block-tp4-support-tp4-mobile-menu-header {
   border-color: #9c9c9c;
 }
-/* line 850, ../sass/modules/_header.scss */
+/* line 849, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin {
   margin-top: 7px;
 }
-/* line 853, ../sass/modules/_header.scss */
+/* line 852, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin .tp_login {
   background: transparent;
   padding: 10px 0;
   margin-top: -10px;
 }
-/* line 858, ../sass/modules/_header.scss */
+/* line 857, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin .tp_login a {
   background-color: transparent;
 }
-/* line 863, ../sass/modules/_header.scss */
+/* line 862, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin .tp_login .user_image,
 .pivot-nav-theme .tpsLogin .tp_login .user_image:hover {
   color: #999999;
 }
-/* line 867, ../sass/modules/_header.scss */
+/* line 866, ../sass/modules/_header.scss */
 .pivot-nav-theme .tpsLogin .tp_login .dropdown-menu {
   margin-top: 10px;
   box-shadow: 2px 2px 2px;
 }
 
-/* line 879, ../sass/modules/_header.scss */
+/* line 878, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li a {
   border-color: #9c9c9c;
   font-family: 'Apercu Medium', sans-serif;
   font-size: 16px;
   text-transform: none;
 }
-/* line 886, ../sass/modules/_header.scss */
+/* line 885, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li a.active, body .snap-drawer-left #block-menu-menu-megamenu li a:hover {
   background-color: #8d8d8d;
 }
-/* line 892, ../sass/modules/_header.scss */
+/* line 891, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li.level-0 a {
   font-size: 24px;
   font-family: 'Apercu Bold', sans-serif;
   text-transform: uppercase;
 }
-/* line 902, ../sass/modules/_header.scss */
+/* line 901, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us {
   margin-right: 0px !important;
 }
-/* line 905, ../sass/modules/_header.scss */
+/* line 904, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us .title {
   margin-left: 0px;
 }
-/* line 909, ../sass/modules/_header.scss */
+/* line 908, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us li {
   margin-right: 8px;
 }
 
-/* line 921, ../sass/modules/_header.scss */
+/* line 920, ../sass/modules/_header.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image,
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   color: #01bf9e;
 }
-/* line 925, ../sass/modules/_header.scss */
+/* line 924, ../sass/modules/_header.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin ul.dropdown-menu {
   display: none;
 }
@@ -13478,11 +13477,11 @@ body.tploggedin .pivot-nav-theme .tpsLogin ul.dropdown-menu {
 /**
  *	Optimizing the login to limit the jump when TAP occurs
  */
-/* line 938, ../sass/modules/_header.scss */
+/* line 937, ../sass/modules/_header.scss */
 body .pivot-nav-theme .tpsLogin ul.dropdown-menu {
   display: none;
 }
-/* line 943, ../sass/modules/_header.scss */
+/* line 942, ../sass/modules/_header.scss */
 body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   display: block;
 }
