@@ -1400,12 +1400,19 @@ body.campaign-display{
             }
         }
         .takepart-newsletter-wrapper{
+			.takepart-newsletter-promo-text,
+			.takepart-newsletter-form,
+			.takepart-newsletter-terms {
+		        padding-top: 10px;
+	        }
+	        .takepart-newsletter-terms {
+				font-size: 11px;
+	        }
             img{
                 display: none;  //this is horrible.
             }
             .form-submit{
                 @include breakpoint($breakpoint-tablet){
-                    margin-left: -50px;
                 }
             }
         }
