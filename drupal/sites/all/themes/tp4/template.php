@@ -74,15 +74,17 @@ function tp4_preprocess_html(&$variables, $hook) {
     // add jquery cookie library to tp4 pages
     drupal_add_library('system', 'jquery.cookie', true);
 
-    if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) 
-            ||  preg_match('/^\/iframes/', $_SERVER['REQUEST_URI'])) {
+    $uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
+    if (preg_match('/^\/entity_iframe/', $uri) 
+            ||  preg_match('/^\/iframes/', $uri)) {
         unset($variables['page']['page_bottom']['omniture']);
         unset($variables['page']['page_bottom']['quantcast']);
     }
 }
 
 function tp4_js_alter(&$javascript) {
-  if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
+  $uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
+  if (preg_match('/^\/entity_iframe/', $uri) ) {
     unset($javascript['sites/all/modules/contrib/google_analytics/googleanalytics.js']);
   }
 }
