@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Content Blog Front feature.
- */
-
-include_once 'tpf_content_blog_front.features.inc';

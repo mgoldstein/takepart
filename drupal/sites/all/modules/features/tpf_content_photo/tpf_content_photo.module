@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Content Photo feature.
- */
-
-include_once 'tpf_content_photo.features.inc';
