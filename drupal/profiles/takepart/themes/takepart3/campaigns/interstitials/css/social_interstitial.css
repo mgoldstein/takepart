@@ -106,3 +106,9 @@ a {
   -moz-transform-origin: top left;
   -webkit-transform-origin: top left;
 }
+
+/* line 93, ../sass/social_interstitial.scss */
+body.page-wordlet-interstitial-newsletter,
+body.page-wordlet-interstitial-social-follows {
+  overflow: hidden;
+}
