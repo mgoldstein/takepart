@@ -646,6 +646,8 @@ function tpf_display_context_context_default_contexts() {
         'takepart_page' => 'takepart_page',
         'topic_front' => 'topic_front',
         'venue' => 'venue',
+        'video' => 'video',
+        'video_playlist' => 'video_playlist',
       ),
       'options' => array(
         'node_form' => '0',
