@@ -1,0 +1,15 @@
+<?php
+/**
+ * TakePart Master Slave
+ * Configurations for our master-slave database setup
+ */
+
+/**
+ * Implements hook_query_alter().
+ */
+function tp_master_slave_query_alter(QueryAlterableInterface $query) {
+  /* Have ALL select queries, that haven't already been tagged to use the slave database */
+  if (is_a($query, 'SelectQuery') && !$query->hasTag('tpSlave')) {
+    $query->extend('tpSlave');
+  }
+}

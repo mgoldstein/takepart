@@ -1,0 +1,6 @@
+name = Master Slave
+description = Configuration for TakePart's master-slave database setup
+core = 7.x
+package = TakePart
+
+files[] = master_slave.inc
