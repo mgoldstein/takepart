@@ -249,25 +249,6 @@ function tpf_display_menus_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-megamenu_culture:taxonomy/term/108747',
   );
-  // Exported menu link: menu-megamenu_environment:taxonomy/term/116
-  $menu_links['menu-megamenu_environment:taxonomy/term/116'] = array(
-    'menu_name' => 'menu-megamenu',
-    'link_path' => 'taxonomy/term/116',
-    'router_path' => 'taxonomy/term/%',
-    'link_title' => 'Environment',
-    'options' => array(
-      'attributes' => array(),
-      'identifier' => 'menu-megamenu_environment:taxonomy/term/116',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -48,
-    'customized' => 1,
-    'parent_identifier' => 'menu-megamenu_world:taxonomy/term/24',
-  );
   // Exported menu link: menu-megamenu_environment:taxonomy/term/8
   $menu_links['menu-megamenu_environment:taxonomy/term/8'] = array(
     'menu_name' => 'menu-megamenu',
