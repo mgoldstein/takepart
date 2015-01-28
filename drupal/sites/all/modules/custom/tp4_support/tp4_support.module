@@ -277,6 +277,18 @@ function tp4_support_preprocess_page(&$variables) {
 	}
 }
 
+function tp4_menu_link__menu_takepart_links(array $variables) {
+	$element = $variables['element'];
+	$sub_menu = '';
+
+	if ($element['#below']) {
+		$sub_menu = drupal_render($element['#below']);
+	}
+	$output = l($element['#title'], url($element['#href'], array_merge($element['#localized_options'], array('absolute' => true, 'https' => true))));
+
+	return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
 /**
  * Implements template_preprocess_HOOK().
  * Set up variables for the tp4_support_footer
