@@ -180,7 +180,7 @@ function template_preprocess_gallery_content(&$variables) {
       $slide['attributes']['class'][] = 'gallery-slide';
       $slide['attributes']['class'][] = 'slide' . $delta;      
       if($slide['title']) {
-        $slide['attributes']['data-token'] = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", htmlspecialchars_decode($slide['title'], ENT_QUOTES))));
+        $slide['attributes']['data-token'] = strtolower(preg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", htmlspecialchars_decode($slide['title'], ENT_QUOTES))));
       } else {
         $slide['attributes']['data-token'] = strtolower(strtok(htmlspecialchars_decode($file->filename, ENT_QUOTES), "."));
       }
