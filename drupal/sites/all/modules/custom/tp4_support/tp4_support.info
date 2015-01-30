@@ -5,6 +5,5 @@ package = TP4
 version = 7.x-1.0
 
 files[] = "plugins/bean/FeaturedCampaignsBean.class.php"
-stylesheets[screen][] = css/tp4_support.css
 dependencies[] = bean
 dependencies[] = tp_campaigns
