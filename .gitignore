@@ -35,3 +35,4 @@ sftp-config.json
 
 # Local Environment Modules
 /drupal/sites/all/modules/contrib/stage_file_proxy
+/drupal/info.php
