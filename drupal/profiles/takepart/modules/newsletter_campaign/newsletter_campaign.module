@@ -597,19 +597,14 @@ function newsletter_campaign_signup_form($form, &$form_state, $campaign) {
   $form['email'] = array(
     '#type' => 'textfield',
     '#title' => t('Email'),
-    '#default_value' => 'Your Email',
     '#maxlength' => 128,
+    '#attributes' => array(
+		'placeholder' => 'Your Email',
+    ),
   );
 
-  $submit_src = drupal_get_path('theme', 'tp4') . '/images/newsletter_submit.png';
-  $hover_src = drupal_get_path('theme', 'tp4') . '/images/newsletter_submit_over.png';
   $form['newsletter_campaign_signup'] = array(
-    '#type' => 'image_button',
-    '#src' => $submit_src,
-    '#attributes' => array(
-      'class' => array('rollover-image-off'),
-    ),
-    '#prefix' => '<img src="/'. $hover_src . '" class="rollover-image-on" />',
+    '#type' => 'submit',
     '#value' => t('Submit'),
     '#submit' => array('newsletter_campaign_signup_form_submit'),
     '#validate' => array('newsletter_campaign_signup_form_validate'),
