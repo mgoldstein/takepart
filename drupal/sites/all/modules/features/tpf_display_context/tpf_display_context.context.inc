@@ -166,24 +166,6 @@ function tpf_display_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'facetapi-VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1' => array(
-          'module' => 'facetapi',
-          'delta' => 'VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'facetapi-p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY' => array(
-          'module' => 'facetapi',
-          'delta' => 'p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
-        ),
-        'facetapi-StCw4MzrvpsV2LTHu4LZiKV1hGHJpKsU' => array(
-          'module' => 'facetapi',
-          'delta' => 'StCw4MzrvpsV2LTHu4LZiKV1hGHJpKsU',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
-        ),
         'boxes-ga_mobile_320x50' => array(
           'module' => 'boxes',
           'delta' => 'ga_mobile_320x50',
@@ -195,6 +177,24 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'takepart',
           'region' => 'leaderboard',
           'weight' => '-10',
+        ),
+        'facetapi-VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1' => array(
+          'module' => 'facetapi',
+          'delta' => 'VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'facetapi-p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY' => array(
+          'module' => 'facetapi',
+          'delta' => 'p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY',
+          'region' => 'sidebar',
+          'weight' => '-9',
+        ),
+        'facetapi-jRFxoKf1ESPpk4Z9WOlWyZeObbMDdiy5' => array(
+          'module' => 'facetapi',
+          'delta' => 'jRFxoKf1ESPpk4Z9WOlWyZeObbMDdiy5',
+          'region' => 'sidebar',
+          'weight' => '-8',
         ),
       ),
     ),
@@ -646,6 +646,8 @@ function tpf_display_context_context_default_contexts() {
         'takepart_page' => 'takepart_page',
         'topic_front' => 'topic_front',
         'venue' => 'venue',
+        'video' => 'video',
+        'video_playlist' => 'video_playlist',
       ),
       'options' => array(
         'node_form' => '0',

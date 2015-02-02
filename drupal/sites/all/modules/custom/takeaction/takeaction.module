@@ -54,11 +54,11 @@ function takeaction_init() {
     'scope' => 'footer',
     'weight' => 1
   ));
-  drupal_add_js("if($('body').hasClass('feature_article') ||
-    $('body').hasClass('node-type-flashcard') ||
-    $('body').hasClass('node-type-openpublish-article') ||
-    $('body').hasClass('node-type-openpublish-photo-gallery') ||
-    $('body').hasClass('node-type-video')) {
+  drupal_add_js("if(jQuery('body').hasClass('feature_article') ||
+    jQuery('body').hasClass('node-type-flashcard') ||
+    jQuery('body').hasClass('node-type-openpublish-article') ||
+    jQuery('body').hasClass('node-type-openpublish-photo-gallery') ||
+    jQuery('body').hasClass('node-type-video')) {
       if (TP && TP.Awareness) {
         window.setTimeout(TP.Awareness.notify, 20000);
       }

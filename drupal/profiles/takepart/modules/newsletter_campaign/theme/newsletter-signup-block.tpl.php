@@ -6,7 +6,7 @@
 ?>
 <div class="takepart-newsletter-wrapper">
   <div id="<?= $body_wrapper_id ?>">
-    <div class="takepart-newsletter-promo-text">
+    <div class="message">
       <?php echo $variables['body'] ?>
     </div>
     <div class="takepart-newsletter-form">
@@ -14,10 +14,12 @@
         <?php echo drupal_render($variables['form']); ?>
       </div>
     </div>
-    <div class="takepart-newsletter-terms">
+    <div class="terms-of-service">
       <?php echo $variables['tos_link']; ?>
     </div>
   </div>
   <div id="<?= $result_wrapper_id ?>" class="takepart-newsletter-message">
   </div>
 </div>
+
+

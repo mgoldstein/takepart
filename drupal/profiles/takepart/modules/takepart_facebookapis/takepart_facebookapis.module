@@ -23,24 +23,27 @@ function takepart_facebookapis_page_alter(&$page) {
 }
 
 function takepart_facebookapis_init_code($app_id) {
-$code = <<<EOC
+  drupal_add_js('//connect.facebook.com/en_US/sdk.js', 'external');
+  $code = <<<EOC
   <div id="fb-root"></div>
   <script type="text/javascript">
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '{$app_id}',
-        channelUrl : '//' + document.location.hostname + '/channel.php',
+        version    : 'v2.1',
         status     : true,
         cookie     : true,
         xfbml      : true
       });
     };
-    (function(d) {
-      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-      js = d.createElement('script'); js.id = id; js.async = true;
-      js.src = '//connect.facebook.net/en_US/all.js';
-      d.getElementsByTagName('head')[0].appendChild(js);
-    }(document));
+
+    (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
   </script>
 EOC;
 return $code;

@@ -122,10 +122,9 @@ function tpf_display_context_field_group_info() {
       7 => 'field_tab_action',
       8 => 'field_tab_internal_title',
       9 => 'field_tab_link_only',
-      10 => 'field_social_share_bar',
-      11 => 'field_short_introduction',
-      12 => 'field_featured',
-      13 => 'field_admin_tag',
+      10 => 'field_short_introduction',
+      11 => 'field_featured',
+      12 => 'field_admin_tag',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -139,33 +138,6 @@ function tpf_display_context_field_group_info() {
     ),
   );
   $export['group_deprecated_fields|node|action|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_page_share|node|action|form';
-  $field_group->group_name = 'group_page_share';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'action';
-  $field_group->mode = 'form';
-  $field_group->parent_name = '';
-  $field_group->data = array(
-    'label' => 'Social Sharing',
-    'weight' => '7',
-    'children' => array(
-      0 => 'field_social_share_bar',
-    ),
-    'format_type' => 'tab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_page_share|node|action|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

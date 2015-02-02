@@ -74,14 +74,17 @@ function tp4_preprocess_html(&$variables, $hook) {
     // add jquery cookie library to tp4 pages
     drupal_add_library('system', 'jquery.cookie', true);
 
-    if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
+    $uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
+    if (preg_match('/^\/entity_iframe/', $uri) 
+            ||  preg_match('/^\/iframes/', $uri)) {
         unset($variables['page']['page_bottom']['omniture']);
         unset($variables['page']['page_bottom']['quantcast']);
     }
 }
 
 function tp4_js_alter(&$javascript) {
-  if (preg_match('/^\/entity_iframe/', $_SERVER['REQUEST_URI']) ) {
+  $uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
+  if (preg_match('/^\/entity_iframe/', $uri) ) {
     unset($javascript['sites/all/modules/contrib/google_analytics/googleanalytics.js']);
   }
 }
@@ -301,7 +304,7 @@ function tp4_preprocess_block(&$variables) {
 
 /**
  * Override or insert variables into the template for
- * the "slim-nav" tempalte.
+ * the "slim-nav" template.
  *
  * @param $variables
  *   An array of variables to pass to the theme template.
@@ -2285,5 +2288,97 @@ function tp4_preprocess_entity_iframe(&$variables){
       /* This is so dirty I need a bath */
       drupal_add_css('html{overflow: hidden;}', array('type' => 'inline'));
     }
+  }
+}
+
+/**
+ * Theme function for displaying search results.
+ */
+function tp4_search_api_page_results(array &$variables) {
+#    drupal_add_css(drupal_get_path('module', 'search_api_page') . '/search_api_page.css');
+
+	// Get the human-readable node types
+	$types = node_type_get_types();
+
+    $index = $variables['index'];
+    $results = $variables['results'];
+    $entities = $variables['items'];
+    $keys = $variables['keys'];
+    $output = '<p class="search-performance">' .
+            format_plural($results['result count'], 'Current search found 1 result for ' .
+            check_plain($keys), 'Current search found @count results for ' .
+            check_plain($keys), array('@sec' => round($results['performance']['complete'], 3))) . '</p>';
+    if (!$results['result count']) {
+        $output .= "\n<h2>" . t('Your search yielded no results') . "</h2>\n";
+        return $output;
+    } else {
+        $block = module_invoke('search_api_sorts', 'block_view', 'search-sorts');
+        $output .= '<div id="block-search-api-sorts-search-sorts"><h2>Sort by:</h2><div class="content">' . render($block['content']) . '</div></div>';
+    }
+
+	// Borrowing styling from Views for consistency
+	$output .= '<div class="view view-taxonomy-search-list view-id-taxonomy_search_list view-display-id-block_2 view-topic-listing">
+    <div class="view-content">
+
+';
+
+    if ($variables['view_mode'] == 'search_api_page_result') {
+        entity_prepare_view($index->entity_type, $entities);
+	// dpm($results);
+
+        foreach ($results['results'] as $item) {
+
+	        $result = $entities[$item['id']];
+
+			$field_permanent_title = field_get_items('node',$result,'field_permanent_title');
+			$field_permanent_title = $field_permanent_title[0]['value'];
+
+			$field_thumbnail = field_get_items('node',$result,'field_thumbnail');
+			$field_thumbnail = file_load($field_thumbnail[0]['fid']);
+
+			$field_promo_text = field_get_items('node',$result,'field_promo_text');
+			$text = $result->excerpt ? $result->excerpt : $field_promo_text[0]['value'];
+
+	        $output .= theme('search_result', array(
+	        	'result' => array(
+		        	'title' => $field_permanent_title,
+		        	'url' => entity_uri($index->item_type, $result),
+		        	'snippet' => $text,
+					'type' => $types[$result->type]->name,
+					'thumbnail' => theme('image_style', array(
+						'style_name' => 'topic_thumbnail',
+						'path' => $field_thumbnail->uri,
+						'alt' => $field_permanent_title,
+						'title' => $field_permanent_title,
+					)),
+	        	),
+	        ));
+		}
+    } else {
+        $output .= render(entity_view($index->entity_type, $entities, $variables['view_mode']));
+    }
+
+	// Customize the pager links
+    $entities['tags'] = array(
+    	0 => t('First'),
+    	1 => t('Previous'),
+    	2 => t(''),
+    	3 => t('Next'),
+    	4 => t('Last'),
+    );
+
+	$output .= theme('pager', $entities);
+	$output .= '</div></div>';
+
+	$variables['search_results'] = $output;
+
+	return $output;
+}
+
+
+function tp4_page_alter(&$page) {
+  // unset the search-results $pager. It's being created in the TP4 template.
+  if($page['content']['system_main']['pager']) {
+	unset($page['content']['system_main']['pager']);
   }
 }
