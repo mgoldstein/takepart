@@ -1,7 +1,0 @@
-name = TakePart User
-description = User customizations for TakePart
-core = 7.x
-package = Customization
-version = 7.x-1.0
-
-dependencies[] = pm_signup

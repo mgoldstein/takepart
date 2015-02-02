@@ -13,6 +13,9 @@ body.campaign-display
     $zen-gutter-width:  3%; //TODO: change this to respond to the width of the containing element.
 
     //make header full width for menu/branding
+    #page-wrap{
+        padding-top: 0;
+    }
     .header-wrapper{
         padding: 0;
         padding-top: 1em !important;
@@ -28,6 +31,11 @@ body.campaign-display
             max-width: 1000px;
             margin: 0 auto;
             position: relative;
+            /*
+            #campaign-page-share .tp-social-mailto {
+                display: none;
+            }
+            */
         }
         #div-gpt-ad-1394222082576-0 {
             margin: 0 auto;
@@ -244,6 +252,16 @@ body.campaign-display .card.node-campaign-card-media{
             @include zen-grid-item(10, 2);
         }
     }
+
+    .playlist-wrapper-wrapper {
+        .bx-wrapper {
+            ul {
+                li {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
 }
 body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
     .center-column{
@@ -327,7 +345,7 @@ body.campaign-display{
         height: 100%;
         overflow: hidden;
         padding-bottom: 60px;
-        @import "modules/wysiwyg";
+        @import "../modules/wysiwyg";
     }
     a.card-anchor {
         display: block;
@@ -491,20 +509,12 @@ body.campaign-display{
                     display: inline-block;
                 }
             }
-            @include breakpoint($breakpoint-tablet) {
-                &.tp-social-email {
-                    display: none;
-                }
-                &.tp-social-mailto {
-                    display: inline-block;
-                }
-            }
             @include breakpoint($breakpoint-desktop) {
                 &.tp-social-email {
                     display: inline-block;
                 }
                 &.tp-social-mailto {
-                    display: none;
+                    display: inline-block;
                 }
             }
         }
@@ -682,10 +692,11 @@ body.campaign-display{
                             content: '\25BB';
                         }
                     }
+                    &:hover{
+                        color: $light-mint;
+                    }
                 }
-                &:hover{
-                    color: $light-mint;
-                }
+
             }
         }
         nav.slider-nav{
@@ -702,6 +713,7 @@ body.campaign-display{
         .slider-pagination{
             text-align: center;
             margin-bottom: 1em;
+            position: relative;
 
             a {
                 margin-bottom: 2px;
@@ -725,18 +737,38 @@ body.campaign-display{
             @include breakpoint($breakpoint-mobile) {
                 .mobile-arrow{
                     display: inline-block;
-                    &.arrow-left{
+                    position: absolute;
+                    bottom: -7px;
+                    cursor: pointer;
+                    color: #000;
+
+                    &.left-arrow {
+                        margin-right: 20px;
+                        left: 10px;
                         &:after{
-                            font-family: "SSGizmo";
-                            content: '\25C5';
+                            font-family: "takepart";
+                            content: '\e601';
+                            font-size: 35px;
                         }
+                        /*
+                        &.hover-class {
+                            color: #018b73;
+                        }
+                        */
                     }
-                    &.arrow-right{
-                        margin-left: .3em;
+                    &.right-arrow {
+                        margin-left: 20px;
+                        right: 10px;
                         &:after{
-                            font-family: "SSGizmo";
-                            content: '\25BB';
+                            font-family: "takepart";
+                            content: '\e602';
+                            font-size: 35px;
                         }
+                        /*
+                        &.hover-class {
+                            color: #018b73;
+                        }
+                        */
                     }
                 }
             }
@@ -748,12 +780,19 @@ body.campaign-display{
         }
         &.on-first-slide .left-arrow,
         &.on-first-slide .arrow-left{
-            display: none;
+            cursor: default;
+            color: #898b8a !important;
+            &:hover {
+                color: #898b8a !important;
+            }
         }
         &.on-last-slide .right-arrow,
         &.on-last-slide .arrow-right{
-            display: none;
-
+            cursor: default;
+            color: #898b8a !important;
+            &:hover {
+                color: #898b8a !important;    
+            }
         }
     }
 
@@ -775,7 +814,7 @@ body.campaign-display{
     .card.background-crop, .slider.background-crop{
         background-size: auto !important;
         @include breakpoint(1600px) {
-          background-size: 100% !important;
+            background-size: 100% !important;
         }
     }
     .slider.tray-img-width-1000{
@@ -988,7 +1027,7 @@ body.campaign-display{
                 margin: 0;
             }
         }
-        a{
+        a.news-column{
             color: #000;
         }
         .headline, .short-headline, .more-link{
@@ -1394,6 +1433,10 @@ body.campaign-display{
                     width: 100%;
                 }
 
+                @include breakpoint($breakpoint-desktop) {
+                    float: none;
+                }
+
                 // // removed by matt 2014-06-18; can share same styling as rule below
                 // @media (min-width: 701px) {
                 //   float: none;
@@ -1438,11 +1481,11 @@ body.campaign-display{
             }
         }
         .logo-center{
-            display: block;
-            margin: 0 auto;
+            display: inline;
             float: none;
         }
         .campaign-logo-div {
+            text-align: center;
             height: auto;
             overflow: hidden;
             margin-left: 5px;
@@ -1451,18 +1494,12 @@ body.campaign-display{
                 float: none;
                 box-sizing: border-box;
                 width: 100%;
-                padding-right: 175px;
-                padding-left: 175px;
                 margin-left: auto;
                 margin-right: auto;
             }
         }
         a.big-link{
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            display: inline;
             z-index: 0;
         }
         .isStuck{
@@ -1732,8 +1769,23 @@ body.campaign-display .swipe-wrap.has-title{
 }
 
 body.campaign-display .card .playlist ul:not(.tabs) li:before{
-  background-color: transparent;
+    background-color: transparent;
+}
+
+/**
+ *  Perm fix from TP-2522 with ads
+ */
+body.campaign-display .card.campaign-1col.node-campaign-card-ad .center-column {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
+    width: 300px;
+    margin: 0 auto;
 }
 
 //Add Custom Styling for TP4 Campaigns
 @import "tp4_dark_bg";
+

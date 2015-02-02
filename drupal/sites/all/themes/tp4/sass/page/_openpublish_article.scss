@@ -167,9 +167,6 @@
             #article-comments-link {
                 display: none;
             }
-            #article-social-more {
-                display: none;
-            }
         }
     }
 
@@ -215,7 +212,7 @@
             float: left;
         }
         #article-share {
-            width: 165px;
+            width: auto;
         }
     }
     @media (max-width: 767px) {
@@ -227,7 +224,7 @@
             left: -120px;   
         }
         #article-share {
-            width: 120px;
+            width: 150px;
         }
     }
 
@@ -288,97 +285,41 @@
         background-color: transparent;
         margin: 0 0 7px 6px;
         @include breakpoint($breakpoint-mobile) {
-            &.tp-social-email {
-                display: none;
-            }
-            &.tp-social-mailto {
-                display: block;
-            }
             &.tp-social-reddit {
                 display: none;
             }
         }
         @include breakpoint($breakpoint-tablet) {
             margin-left: 9px;
-            &.tp-social-email {
-                display: none;
-            }
-            &.tp-social-mailto {
-                display: block;
-            }
-            &.tp-social-reddit {
-                display: block;
-            }
         }
         @include breakpoint($breakpoint-desktop) {
             margin: 0 auto 5px;
-            &.tp-social-email {
-                display: block;
-            }
-            &.tp-social-mailto {
-                display: none;
-            }
-            &.tp-social-reddit {
-                display: block;
-            }
         }
-    }
-} // #article-social
-
-#article-social-more {
-    position: relative;
-    overflow: hidden;
-    width: 40px;
-    float: left;
-    margin-top: 12px;
-
-    @include breakpoint($breakpoint-desktop) {
-        margin-top: 0;
-        margin-left: 0;
-    }
-    #article-more-shares { // positioning
-                           position: absolute;
-                           bottom: 100%;
-                           z-index: 9999;
-    }
-    &.focusin {
-        overflow: visible;
-        #article-more-shares {
-            top: 100%;
-            bottom: auto;
-        }
-    }
-    .tp-social-link {
-        display: block;
-        @include box-sizing(border-box);
-        position: relative;
-        width: 50%;
-        float: left;
     }
 }
 #article-more-shares { // styling
-                       background: #fff;
-                       border-radius: 5px;
-                       border: 5px solid rgba(0,0,0,.5);
-                       @include background-clip(padding-box);
-                       min-width: 250px;
-                       display: inline-block;
-                       .header, p {
-                           padding: .5em;
-                           margin: 0;
-                       }
-                       .header {
-                           font-family: $main-brand-font;
-                           font-weight: bold;
-                           font-size: 1.142857143em;
-                           background-color: $light-gray;
-                       }
-                       .tp-social-link {
-                           font-size: 16px;
-                           line-height: 1;
-                           margin-bottom: .25em;
-                           background-color: white;
-                       }
+  background: #fff;
+  border-radius: 5px;
+  border: 5px solid rgba(0,0,0,.5);
+  @include background-clip(padding-box);
+  min-width: 250px;
+  display: inline-block;
+  .header, p {
+     padding: .5em;
+     margin: 0;
+  }
+  .header {
+     font-family: $main-brand-font;
+     font-weight: bold;
+     font-size: 1.142857143em;
+     background-color: $light-gray;
+  }
+  .tp-social-link {
+     font-size: 16px;
+     line-height: 1;
+     margin-bottom: .25em;
+     background-color: white;
+  }
 }
 
 aside#article-social-mobile-bottom {

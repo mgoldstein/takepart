@@ -31,37 +31,22 @@
                 name: 'tumblr',
                 url: '{current}'
             },
-            email: {
-                name: 'email',
-                url: '{current}'
-            },
             mailto: {
                 name: 'mailto',
-                url: window.location + '?cmpid=organic-share-mailto'
+                url: '{current}'
             }
         }
     };
 
-    var refreshMailto = function() {
-        var currentcaption = (gallery.currentCaption != null) ? $("h1.gallery-headline").html() + " -- " + gallery.currentCaption : $("h1.gallery-headline").html();
-        $(".tp-social-mailto").attr('href', function() {
-            var sharelink = "mailto:?body=" + window.location +
-                    "?cmpid=organic-share-mailto&subject=" + currentcaption;
-            return encodeURI(sharelink);
-        });
-    };
-
-    // utility functionto update social share variables 
-    var updateTpSocialMedia = function(imageSrc, shareDescription) {
+    // utility function to update social share variables 
+    var updateTpSocialMedia = function(imageSrc, shareDescription, shareHeadline) {
         imageSrc = imageSrc.split('?')[0].split('#')[0];
         tp_social_config.services.pinterest.media = imageSrc;
         tp_social_config.services.tumblr.source = imageSrc;
         tp_social_config.services.pinterest.description = shareDescription;
         tp_social_config.services.tumblr.caption = shareDescription;
         tp_social_config.services.facebook.description = shareDescription;
-        setTimeout(function() {
-            refreshMailto();
-        }, 500);
+        tp_social_config.services.mailto.title = shareHeadline;
     };
 
     // prevent 2 email calls from firing
@@ -134,7 +119,6 @@
         updateTo = setTimeout(function() {
             showFacebookComments(token);
             refreshDfpAds();
-            refreshMailto();
         }, 500);
     };
 
@@ -200,7 +184,7 @@
         showCover: function() {
             // update tpsocial values if we haven't already
             if (!this.$galleryCoverSlide.find('.tp-social:not(.tp-social-skip)').is('tp-social-processed')) {
-                updateTpSocialMedia(this.$galleryCoverSlide.find('img').attr('src'), this.$galleryCoverSlide.find('.gallery-cover-title').text());
+                updateTpSocialMedia(this.$galleryCoverSlide.find('img').attr('src'), this.$galleryCoverSlide.find('.gallery-cover-title').text(), this.$galleryCoverSlide.find('.gallery-cover-title').text());
                 this.$galleryCoverSlide.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
             }
             // show the cover
@@ -211,9 +195,10 @@
             $('body').removeClass('gallery-showing');
             gallery.currentCaption = null;
 
-            setTimeout(function() {
+            /* setTimeout(function() {
                 refreshMailto();
             }, 2000);
+            */
         },
         showGallery: function(replace) {
             if (this.isShowing) {
@@ -236,10 +221,10 @@
             var token = getCurrentToken();
             this.hpushCurrentSlide(replace);
             showFacebookComments(token);
-            setTimeout(function() {
+            /* setTimeout(function() {
                 refreshMailto();
             }, 1000);
-
+*/
         },
         adjustSlideshowHeight: function() {
             this.$slides.height(this.$currentSlide.height());
@@ -287,6 +272,7 @@
             this.$currentSlide = this.$slides.find('[data-index=' + this.currentSlideIndex + ']');
             var onFirstSlide = this.currentSlideIndex == 0;
             var onLastSlide = this.currentSlideIndex == (this.slideshow.getNumSlides() - 1);
+            var galleryTitle = $("h1.gallery-headline").html() ? $("h1.gallery-headline").html() + ' - ' : ''
 
             if (this.isShowing) {
                 this.adjustSlideshowHeight();
@@ -295,7 +281,7 @@
             var slideHeadline = this.$currentSlide.find('.slide-caption-headline').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
             gallery.currentCaption = slideHeadline;
             var slideContent = this.$currentSlide.find('.slide-caption-content').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
-            updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), (slideHeadline ? slideHeadline + ': ' : '') + slideContent);
+            updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), (slideHeadline ? slideHeadline + ': ' : '') + slideContent, galleryTitle + (slideHeadline ? slideHeadline : ''));
             this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
             // hide social buttons on the "next gallery slide"

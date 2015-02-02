@@ -4,9 +4,9 @@
  */
 (function ($, Drupal, window, document, undefined) {
 
-  /**
-  * Megamenu Behaviors
-  */
+  /*
+   * Megamenu Behaviors
+   */
   Drupal.behaviors.megaMenuBehaviors = {
     attach: function(context, settings) {
       //prevent parent links on megamenu from linking on touch (link on double touch)
@@ -103,7 +103,6 @@
     }
   };
 
-
   Drupal.behaviors.campaignSnapper = {
     attach: function(context, settings) {
       var snapper = new Snap({
@@ -155,12 +154,12 @@
         anchorTarget = '#' + path.split('#')[1];
       });
 
-      snapper.on('animated', function() {
-        if (anchorTarget !== null) {
-          $.scrollTo(anchorTarget, 250);
-          anchorTarget = null;
-        }
-      });
+//      snapper.on('animated', function() {
+//        if (anchorTarget !== null) {
+//          $.scrollTo(anchorTarget, 250);
+//          anchorTarget = null;
+//        }
+//      });
 
       setTimeout(function() {
         var $header = $('.header-wrapper'),
@@ -183,15 +182,11 @@
       isFeatureArticle = $body.is('.page-node.node-type-feature-article'),
       isVideoArticle = $body.is('.page-node.node-type-video'),
       isVideoPlaylist = $body.is('.page-node.node-type-video-playlist'),
-      isFlashcard = $body.is('.page-node.node-type-flashcard');
+      isFlashcard = $body.is('.page-node.node-type-flashcard'),
+      isCampaignPage = $body.is('.node-type-campaign-page'),
+      isGallery = $body.is('.node-type-openpublish-photo-gallery');
 
-      if (
-        isOpenpublishArticle
-        || isFeatureArticle
-        || isVideoArticle
-        || isVideoPlaylist
-        || isFlashcard
-      ) {
+
         // Setup Social Share Buttons
         var tp_social_config = {
           url_append: '?cmpid=organic-share-{{name}}',
@@ -207,118 +202,40 @@
               via: 'TakePart'
             },
             {
+              name: 'mailto'
+            },
+            {
               name: 'googleplus'
             },
-
             {
-              name: 'reddit'
-            },
-
-            {
-              name: 'email'
-            },
-            
-            {
-              name: 'mailto'
+              name: 'tumblr'
             }
           ]
         };
 
-        // initialize tpsocial and make it sticky.
-        $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-          .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
-
-        // Set up secondary social share buttons
-        var main_image = '';
-        if (isOpenpublishArticle) {
+        /* If page is a gallery, article or featured article, add Pinterest */
+        if(isGallery || isFeatureArticle || isOpenpublishArticle){
           main_image = $('.field-name-field-article-main-image').find('img').attr('src');
-        } else if (isFeatureArticle) {
-          main_image = $('.field-name-field-article-main-image').find('img').attr('src');
+//          tp_social_config.services.push({"name":"pinterest", "media": main_image});
         }
-        var more_services = {
-          reddit: {
-            name: 'reddit'
-          },
-          pinterest: {
-            name: 'pinterest',
-            media: main_image
-          },
-          tumblr_link: {
-            name: 'tumblr_link'
-          },
-          gmail: {
-            name: 'gmail'
-          },
-          hotmail: {
-            name: 'hotmail'
-          },
-          yahoomail: {
-            name: 'yahoomail'
-          },
-          aolmail: {
-            name: 'aolmail'
-          },
+        /* If page is a campaign page, remove mailto, reddit and tumblr */
+        if(isCampaignPage){
+          delete tp_social_config.services[2]; //mailto
+          delete tp_social_config.services[4]; //reddit
+          delete tp_social_config.services[5]; //tumblr
+        }
 
-          //{name: 'myspace'},
-          //{name: 'delicious'},
-          linkedin: {
-            name: 'linkedin'
-          },
-          //{name: 'myaol'},
-          //{name: 'live'},
-          digg: {
-            name: 'digg'
-          },
-          stumbleupon: {
-            name: 'stumbleupon'
-          },
-          //{name: 'hyves'}
-        };
-      
-        if ( main_image == '' ) delete more_services.pinterest;
+        /* 
+         * if screen size is less than 480 targer tp-social-mobile, else target tp-social.  Adjust CSS to display none otherwise 
+         */
         
-        $('#article-more-shares p').tpsocial({
-          services: more_services
-        });
-
-        // set up behavior of "more" social links
-        // this is untouched code from gerald burns and chunkpart
-        var social_more_close = function() {
-          $article_social_more.removeClass('focusin');
-          $body.unbind('click', social_more_close);
-        };
-
-        var $article_social_more = $('#article-social-more')
-          .bind('focusin', function() {
-            $article_social_more.addClass('focusin');
-          })
-          .bind('focusout', function() {
-            $article_social_more.removeClass('focusin');
-          })
-          .bind('click', function(e) {
-            if ( !$article_social_more.is('.focusin') ) {
-              $article_social_more.addClass('focusin');
-              setTimeout(function() {
-                $body.bind('click', social_more_close);
-              }, 100);
-            }
-            e.preventDefault();
-          })
-        ;
-        
-        //additional code to handle the mousedown and touch for mobile
-        $("body").bind('touchstart mousedown', function(event) {
-          if (!$(event.target).hasClass('tplinkpos') && !$(event.target).hasClass('tp-social-link')) {
-            //checks that class has focus
-            if ($('#article-social-more').hasClass('focusin')) {
-              //mimics the social more close
-              $('#article-social-more').removeClass('focusin');
-              $body.unbind('click', social_more_close);
-            }
-          }
-        });
-        
-      }
+        /*
+          if($(window).width() < 768){
+            $('.tp-social-mobile:not(.tp-social-skip)').tpsocial(tp_social_config);
+          } else { } 
+         */
+      $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
+        .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
     }
   };
 
@@ -373,7 +290,7 @@
         })
         .on('flashcard-tooltip', function(e, args) {
           try {
-            takepart.analytics.track('flashcard-tooltip', args);            
+            takepart.analytics.track('flashcard-tooltip', args);
           } catch (e) {}
         })
         .on('flashcard-click', function(e, args) {

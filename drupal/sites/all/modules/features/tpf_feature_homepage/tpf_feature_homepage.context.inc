@@ -74,9 +74,9 @@ function tpf_feature_homepage_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-9',
         ),
-        'bean-tpl-live-long' => array(
+        'bean-takepart-video-media-block' => array(
           'module' => 'bean',
-          'delta' => 'tpl-live-long',
+          'delta' => 'takepart-video-media-block',
           'region' => 'sidebar',
           'weight' => '-8',
         ),

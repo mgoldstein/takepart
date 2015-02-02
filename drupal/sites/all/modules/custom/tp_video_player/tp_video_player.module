@@ -26,6 +26,20 @@ function tp_video_player_init() {
       'weight' => 5,
     ));
   }
+
+  $js_path = drupal_get_path('module', 'tp_video_player') . '/js/player.js';
+  drupal_add_js($js_path, array(
+    'type' => 'file',
+    'scope' => 'header',
+    'weight' => 6,
+    'every_page' => TRUE
+  ));
+  drupal_add_js(array('tp_video_player' => array(
+    'key' => variable_get('tp_video_player_key', ''),
+  )), array(
+    'type' =>'setting',
+    'every_page' => TRUE
+  ));
 }
 
 /**
@@ -223,6 +237,7 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
 
   $elements = array();
   $settings = $display['settings'];
+  $menu_obj = menu_get_object();
 
   if ($display['type'] === 'tp_video_player' && count($items) > 0) {
     // Load any available node specific configuration.
@@ -233,10 +248,10 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
     if (is_null($configuration)) {
       $configuration = tp_video_player_clone_default_configuration(
         $settings['global_default']);
-      
+  
       //overrides the ads setting based on node so that all the other settings for video blocks
       //are the same
-      if ($settings['global_default'] == 'video_block') {
+      if ($settings['global_default'] == 'video_block' && is_object($menu_obj) && stripos($menu_obj->type, 'campaign') !== FALSE) {
         $full_page_conf = tp_video_player_load_entity_configuration(
           $entity_type,
           entity_id($entity_type, $entity),
@@ -244,9 +259,9 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
         );
   
         //only adds the tags if one exist
-        if (isset($full_page_conf->ad_tag)) {
+        if (isset($full_page_conf)) {
           //pulls the settings for ads from the node into video block
-          $configuration->ad_tag = $full_page_conf->ad_tag;
+          $configuration = $full_page_conf;
         }
       }
     }
@@ -270,7 +285,7 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
       $entity_type, $entity, $langcode, $configuration);
 
     // The formatter only ever returns one player.
-    $elements[] = tp_video_player_player_view($configuration, $items);
+    $elements[] = tp_video_player_player_view($configuration, $items, $display['settings']['global_default']);
   }
 
   return $elements;
@@ -297,10 +312,10 @@ function tp_video_player_video_allowed_regions($entity_type, $entity) {
 /**
  * Build a render array for a video player.
  */
-function tp_video_player_player_view($configuration, $files) {
+function tp_video_player_player_view($configuration, $files, $display = NULL) {
 
   $id = drupal_html_id('tp_video_player');
-  $settings = tp_video_player_build_settings($configuration, $files);
+  $settings = tp_video_player_build_settings($configuration, $files, $display);
   tp_video_player_add_player($id, $settings);
 
   $elements = array(
@@ -315,20 +330,6 @@ function tp_video_player_player_view($configuration, $files) {
  * Helper function for adding client side player configurations.
  */
 function tp_video_player_add_player($id, $settings) {
-  static $setup_function_added = FALSE;
-
-  if (!$setup_function_added) {
-    $js_path = drupal_get_path('module', 'tp_video_player') . '/js/player.js';
-    drupal_add_js($js_path, array(
-      'type' => 'file',
-      'scope' => 'header',
-      'weight' => 6,
-    ));
-    drupal_add_js(array('tp_video_player' => array(
-      'key' => variable_get('tp_video_player_key', ''),
-    )), 'setting');
-    $setup_function_added = TRUE;
-  }
 
   drupal_add_js(array('tp_video_player' => array(
     'settings' => array($id => $settings),
@@ -358,4 +359,103 @@ function theme_tp_video_player($variables) {
     'class' => array('tp-video-player'),
   );
   return '<div' . drupal_attributes($attributes) . '></div>';
+}
+
+/**
+ *  @function:
+ *    This function is used to return a renderable array from a video_playlist content type.
+ *
+ *  @param:
+ *    nid = Node ID
+ *    node = Node Object. If passed in this will not do a node load.
+ *    view_mode = basic, detailed, hidelist, default. Default will pull in the node's setting. Fallback is basic.
+ *    langcode = NULL by default.
+ *
+ *  @logic:
+ *    This will load the default from the node. Otherwise the settings will pull from the global.
+ *    View mode is defaulted to the node if nothing is passed in. Fallback is basic for view_mode.
+ *
+ *  @example:
+ *    tp_video_player_list_from_nid(123, array(), 'detailed') => returns detailed view of playlist 123
+ *    tp_video_player_list_from_nid(123) => returns basic view of playlist 123
+ *
+ *  @return:
+ *    This will return a renderable array of the video playlist. Use drupal_render to render out the markup.
+ */
+function tp_video_player_list_from_nid($nid, $node = array(), $view_mode = 'default', $langcode = NULL) {
+  $output = '';
+  
+  //loads just the entity if 
+  if (empty($node)) {
+    $node = node_load($nid);
+  }
+  
+  //ensures that this is an object and the type is video playlist because of referencing
+  if (is_object($node) && $node->type == 'video_playlist') {
+    $items = field_get_items('node', $node, 'field_video_list');
+    $videos = tp_videos_playlist_ordered_videos($node, $items);
+    
+    if (!empty($videos)) {
+      /**
+       *  Loads the first level which is node level.
+       *  Followed by creating an empty one.
+       */
+      $player_configuration = tp_video_player_load_entity_configuration(
+        'node',
+        $nid,
+        'playlist_full_page'
+      );
+      
+      //if the playlist configuration is empty then load from the global default
+      if (is_null($player_configuration)) {
+        $player_configuration = tp_video_player_clone_default_configuration(
+          'playlist_inline_content'
+        );
+      }
+      
+      // The configuration can contain tokens, resolve them now.
+      $player_configuration = tp_video_player_resolve_entity_configuration(
+        'node',
+        $node,
+        $langcode,
+        $player_configuration
+      );
+      
+      //pulls the defualt view mode from the node if neccessary otherwise fallback to basic
+      if ($view_mode == 'default') {
+        $view_mode_value = field_get_items('node', $node, 'field_playlist_view_mode');
+        
+        //assign view mode based on node otherwise fallback to basic
+        if (!empty($view_mode_value[0]['value'])) {
+          $view_mode = $view_mode_value[0]['value'];
+        }
+        else {
+          $view_mode = 'basic';
+        }
+      }
+      
+      //builds the playlist
+      $playlist = tp_videos_build_playlist(
+        $player_configuration,
+        $videos,
+        $view_mode,
+        $langcode
+      );
+
+      //renderable array
+      $playlist_content = array(
+        '#theme' => 'tp_videos_wrapper',
+        '#title' => $node->title,
+        '#playlist' => $playlist,
+      );
+      
+      //after pulling in information allow hook to alter the playlist
+      drupal_alter('tp_video_player_get', $playlist_content);
+      
+      //returns the renderable array
+      $output = $playlist_content;
+    }
+  }
+  
+  return $output;
 }

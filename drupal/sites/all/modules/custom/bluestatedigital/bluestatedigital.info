@@ -1,6 +1,0 @@
-name = Blue State Digital API Support
-description = Blue State Digtal API functionality for Drupal 7
-core = 7.x
-package = Blue State Digital
-version = 7.x-1.0
-configure = admin/config/bluestatedigital/api

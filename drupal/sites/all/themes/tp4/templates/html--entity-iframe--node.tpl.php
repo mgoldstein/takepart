@@ -17,8 +17,10 @@
 <!--<![endif]-->
 <head>
   <title><?php print $head_title; ?></title>
-  <?php if (!empty($dtm_script_src)): ?>
-  <script src="<?php print $dtm_script_src ?>"></script>
+  <?php if (!empty($tp_digital_data)): ?>
+  <script type="text/javascript">
+    window.digitalData = <?php print $tp_digital_data ?>;
+  </script>
   <?php endif; ?>
   <?php print $head; ?>
   <?php if ($default_mobile_metatags): ?>
@@ -52,8 +54,5 @@
   <?php // print $page_top; ?>
   <?php print $page; ?>
   <?php // print $page_bottom; ?>
-  <?php if (!empty($dtm_script_src)): ?>
-  <script type="text/javascript">_satellite.pageBottom();</script>
-  <?php endif; ?>
 </body>
 </html>

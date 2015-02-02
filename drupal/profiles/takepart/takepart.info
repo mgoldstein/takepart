@@ -96,7 +96,5 @@ dependencies[] = takepart_topic_front
 dependencies[] = takepart_video
 
 ; TakePart Modules
-
-dependencies[] = takepart_screaming_boxes
 dependencies[] = newsletter_campaign
 

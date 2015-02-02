@@ -39,7 +39,6 @@ function tpf_taxonomy_field_default_field_instances() {
         'Boxes for Features Box' => 0,
         'Boxes for Field Box' => 0,
         'Boxes for Image Box' => 0,
-        'Boxes for Screaming Headline' => 0,
         'Boxes for View Box' => 0,
         'addthis' => 0,
         'akamai' => 0,
@@ -190,6 +189,7 @@ function tpf_taxonomy_field_default_field_instances() {
     'label' => 'Topic Box Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -204,6 +204,7 @@ function tpf_taxonomy_field_default_field_instances() {
       'rel_remove' => 'default',
       'required_for_pub' => FALSE,
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -337,7 +338,6 @@ function tpf_taxonomy_field_default_field_instances() {
         'Boxes for Features Box' => 0,
         'Boxes for Field Box' => 0,
         'Boxes for Image Box' => 0,
-        'Boxes for Screaming Headline' => 0,
         'Boxes for View Box' => 0,
         'addthis' => 0,
         'akamai' => 0,

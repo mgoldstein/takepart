@@ -134,7 +134,7 @@ function tp_video_player_form_layout_fields($values, $is_default = FALSE) {
   if ($is_default) {
     $fields['stretching'] = array(
       '#type' => 'select',
-      '#title' => t('Strecthing'),
+      '#title' => t('Stretching'),
       '#description' => t('How to resize images and video to fit the display'),
       '#options' => array(
         'uniform' => t('Uniform'),

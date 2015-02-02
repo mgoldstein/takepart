@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart TPL feature.
- */
-
-include_once 'tpf_feature_tpl.features.inc';

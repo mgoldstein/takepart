@@ -54,3 +54,40 @@ function _takepart_oembed_url_handler($format = '') {
   echo $output;
   drupal_exit();
 }
+
+/**
+* Implements hook_preprocess_node()
+*/
+function takepart_oembed_preprocess_node(&$variables){
+  if($variables['type'] == 'video'){
+    global $base_url;
+    $path = $oembed_path = variable_get('takepart_oembed_service_url', 'service/oembed');
+    $current_path = current_path();
+    $current_path = drupal_get_path_alias($current_path);
+
+    $href = $base_url. '/'. $path. '?url='. $base_url. '/'. $current_path;
+
+    $title = $variables['title'];
+    $data_xml = array(
+      '#tag' => 'link',
+      '#attributes' => array(
+        'href' => $href,
+        'rel' => 'alternate',
+        'type' => 'application/json+oembed',
+        'title' => $title
+      )
+    );
+    $data_json = array(
+      '#tag' => 'link',
+      '#attributes' => array(
+        'href' => $href,
+        'rel' => 'alternate',
+        'type' => 'application/xml+oembed',
+        'title' => $title
+      )
+    );
+    /* Add xml */
+    drupal_add_html_head($data_xml, 'takepart_oembed_json');
+    drupal_add_html_head($data_json, 'takepart_oembed_xml');
+  }
+}

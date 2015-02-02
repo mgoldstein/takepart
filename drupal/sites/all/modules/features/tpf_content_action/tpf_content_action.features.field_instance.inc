@@ -465,6 +465,7 @@ function tpf_content_action_field_default_field_instances() {
     'label' => 'Action URL',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => 'take_action_button external-action-link',
         'configurable_title' => 0,
@@ -478,6 +479,7 @@ function tpf_content_action_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'required',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 255,
       'title_value' => 'Take Action',
       'url' => 'optional',

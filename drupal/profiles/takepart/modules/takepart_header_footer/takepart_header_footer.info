@@ -1,6 +1,0 @@
-name = TakePart Header / Footer
-description = Registers menu hooks (paths) for header and footer feeds.
-package = Fields
-core = 7.x
-files[] = takepart_header_footer.module
-files[] = takepart_header_footer.install

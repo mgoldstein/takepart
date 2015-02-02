@@ -116,30 +116,6 @@
         overflow: hidden;
         background-color: transparent;
         margin-left: 6px;
-        @include breakpoint($breakpoint-mobile) {
-            &.tp-social-email {
-                display: none;
-            }
-            &.tp-social-mailto {
-                display: inline-block;
-            }
-        }
-        @include breakpoint($breakpoint-tablet) {
-            &.tp-social-email {
-                display: none;
-            }
-            &.tp-social-mailto {
-                display: inline-block;
-            }
-        }
-        @include breakpoint($breakpoint-desktop) {
-            &.tp-social-email {
-                display: inline-block;
-            }
-            &.tp-social-mailto {
-                display: none;
-            }
-        }
     }
 }
 

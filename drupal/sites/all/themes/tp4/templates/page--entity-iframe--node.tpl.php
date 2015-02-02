@@ -7,6 +7,6 @@
  * @see https://drupal.org/node/1728148
  */
 ?>
-<div id="page-wrap">
+<div id="page-wrap" class="page-iframes">
   <?php print render($page['content']); ?>
 </div>

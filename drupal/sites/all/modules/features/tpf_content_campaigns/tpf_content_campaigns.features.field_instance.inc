@@ -30,6 +30,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'label' => 'Item Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -43,6 +44,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -284,6 +286,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'label' => 'Social Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -297,6 +300,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -1157,6 +1161,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'label' => 'Campaign Homepage',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1170,6 +1175,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -8745,7 +8751,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'source' => 'field_inline_replacements',
         ),
         'type' => 'text_with_inline_content',
-        'weight' => 12,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8871,7 +8877,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8990,7 +8996,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9081,7 +9087,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 19,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9173,7 +9179,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 18,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9264,7 +9270,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9354,7 +9360,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9859,7 +9865,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -9878,7 +9884,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10028,6 +10034,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'label' => 'Image Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -10041,6 +10048,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -10266,7 +10274,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -10353,10 +10361,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'content_taxonomy_opt_groups' => FALSE,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 6,
     ),
@@ -10466,7 +10471,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10561,7 +10566,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 17,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10650,7 +10655,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 21,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -10732,6 +10737,94 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign_card_media-field_media_video_playlist'
+  $field_instances['node-campaign_card_media-field_media_video_playlist'] = array(
+    'bundle' => 'campaign_card_media',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_media_video_playlist',
+    'label' => 'Media Video Playlist',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 10,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_card_media-field_permanent_title'
   $field_instances['node-campaign_card_media-field_permanent_title'] = array(
     'bundle' => 'campaign_card_media',
@@ -10744,7 +10837,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -18816,6 +18909,7 @@ Note: If you manually reference more items than selected here, the number refere
     'label' => 'Authentication Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -18829,6 +18923,7 @@ Note: If you manually reference more items than selected here, the number refere
       'enable_tokens' => 1,
       'rel_remove' => 'rel_remove_external',
       'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -22885,6 +22980,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Media Title');
   t('Media Type');
   t('Media Video');
+  t('Media Video Playlist');
   t('Menu');
   t('Menu Background Image');
   t('Menu Background Image Width');

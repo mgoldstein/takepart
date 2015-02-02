@@ -38,8 +38,7 @@ class InterstitialReaction extends context_reaction {
 
     // Randomly select one of the available interstitials.
     if (count($interstitials) > 0) {
-      $selection = rand(0, count($available) - 1);
-      return $interstitials[$selection];
+      return $interstitials[0];
     }
 
     // No interstitial to show.

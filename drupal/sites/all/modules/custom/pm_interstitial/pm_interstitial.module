@@ -31,16 +31,65 @@ function pm_interstitial_help($path, $arg) {
  * Implements hook_menu().
  */
 function pm_interstitial_menu() {
-  return array(
-    'admin/config/participant-media/interstitials' => array(
-      'title' => 'Interstitial Settings',
-      'description' => 'Global settings for marketing interstitials',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('pm_interstitial_admin_form'),
-      'access callback' => 'user_access',
-      'access arguments' => array('pm_interstitial configure settings'),
-    ),
+  $items = array();
+
+  $items['admin/config/participant-media/interstitials'] = array(
+    'title' => 'Interstitial Settings',
+    'description' => 'Global settings for marketing interstitials',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pm_interstitial_admin_form'),
+    'access callback' => 'user_access',
+    'access arguments' => array('pm_interstitial configure settings'),
   );
+  $items['overlay/ad'] = array(
+    'title' => 'Interstitial Mobile Ad',
+    'description' => t('Mobile ad iframe'),
+    'page callback' => 'pm_interstitial_ad_page',
+    'access callback' => TRUE,
+  );
+
+  return $items;
+}
+
+/**
+ * Page callback for /interstitials/ad
+ * This page renders out an ad for interstitials to use on mobile devices
+ */
+function pm_interstitial_ad_page(){
+  drupal_add_js("var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') +
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();", 'inline');
+  drupal_add_js("googletag.cmd.push(function() {
+googletag.defineSlot('/4355895/TP_Mobile_Overlay_300x250', [300, 250], 'div-gpt-ad-1416603070373-0').addService(googletag.pubads());
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});", 'inline');
+  $content = "<!-- TP_Mobile_Overlay_300x250 -->
+              <div id='div-gpt-ad-1416603070373-0' style='width:300px; height:250px;'>
+              <script type='text/javascript'>
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1416603070373-0'); });
+              </script>
+              </div>";
+  return $content;
+}
+
+/**
+ * Implements hook_preprocess_page()
+ */
+function pm_interstitial_preprocess_page(&$variables){
+  $current_path = current_path();
+  if($current_path == 'overlay/ad'){
+    $variables['theme_hook_suggestions'][] = 'page__entity_iframe__node';
+  }
 }
 
 /**
@@ -155,13 +204,22 @@ function pm_interstitial_context_plugins() {
  * Activates the interstitial data attribute reaction.
  */
 function pm_interstitial_preprocess_html(&$vars) {
-  // Fire the provider url reaction with the current activation state.
-  if ($plugin = context_get_plugin('reaction', 'pm_interstitial_referer')) {
-    $cmpid = isset($_GET['cmpid']) ? $_GET['cmpid'] : '';
-    $plugin->execute($vars, $cmpid);
+
+   global $user;
+   // Don't bother signed in users.
+   if ($user->uid === 0) {
+     // Fire the provider url reaction with the current activation state.
+     if ($plugin = context_get_plugin('reaction', 'pm_interstitial_referer')) {
+       $cmpid = isset($_GET['cmpid']) ? $_GET['cmpid'] : '';
+       $plugin->execute($vars, $cmpid);
+     }
+   }
+
+  $current_path = current_path();
+  if($current_path == 'overlay/ad'){
+    $vars['theme_hook_suggestions'][] = 'html__entity_iframe__node';
   }
 }
-
 
 /**
  * Implements hook_block_info().

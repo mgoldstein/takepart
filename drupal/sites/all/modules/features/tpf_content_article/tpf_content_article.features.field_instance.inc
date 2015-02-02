@@ -123,7 +123,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 23,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -210,7 +210,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -612,7 +612,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -801,7 +801,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -893,7 +893,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -987,7 +987,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 22,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1071,7 +1071,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1142,7 +1142,6 @@ function tpf_content_article_field_default_field_instances() {
     'settings' => array(
       'allowed_blocks' => array(
         'Boxes for Box' => 0,
-        'Boxes for Screaming Headline' => 0,
         'Boxes for View Box' => 0,
         'addthis' => 0,
         'boxes' => 0,
@@ -1178,6 +1177,92 @@ function tpf_content_article_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-openpublish_article-field_newsletter_feed_exclude'
+  $field_instances['node-openpublish_article-field_newsletter_feed_exclude'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 7,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_newsletter_feed_exclude',
+    'label' => 'Newsletters',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_buttons',
+      'weight' => 20,
+    ),
+  );
+
   // Exported field_instance: 'node-openpublish_article-field_permanent_title'
   $field_instances['node-openpublish_article-field_permanent_title'] = array(
     'bundle' => 'openpublish_article',
@@ -1189,7 +1274,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1312,7 +1397,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1405,7 +1490,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1492,7 +1577,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1585,7 +1670,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1771,7 +1856,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1863,7 +1948,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1949,7 +2034,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 25,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2020,7 +2105,7 @@ function tpf_content_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -2035,7 +2120,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2129,7 +2214,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2339,7 +2424,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2435,6 +2520,7 @@ function tpf_content_article_field_default_field_instances() {
   t('Main Image');
   t('Main Image Format');
   t('Multi Page Campaign');
+  t('Newsletters');
   t('Permanent Title');
   t('Promo Headline');
   t('Promo Short Headline');

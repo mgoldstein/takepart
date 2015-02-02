@@ -3,7 +3,6 @@ description = Mechanism to display rich video popups
 package = TakePart
 version = 7.x-1.00
 core = 7.x
-dependencies[] = takepart_addthis
 dependencies[] = takepart_browsercaps
 
 files[] = takepart_vidpop.module

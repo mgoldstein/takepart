@@ -150,7 +150,6 @@
         height: 650,
         share: function(args) {
             var url = 'http://mail.aol.com/compose-message.aspx?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -163,7 +162,6 @@
         height: 650,
         share: function(args) {
             var url = 'http://compose.mail.yahoo.com/?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -176,7 +174,6 @@
         height: 600,
         share: function(args) {
             var url = 'https://mail.live.com/default.aspx?rru=compose&subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -189,7 +186,6 @@
         height: 500,
         share: function(args) {
             var url = 'https://mail.google.com/mail/?view=cm&ui=1&tf=0&fs=1&su=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -203,7 +199,6 @@
         description: '',
         share: function(args) {
             var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent(args.description) + '&url=' + encodeURIComponent(args.url);
-
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
@@ -370,205 +365,12 @@
         }
     });
 
-    // Email
-    var email_args;
-    var email_once = function() {
-        // Don't need to do this because of global tracking in analytics.js
-        //addthis.addEventListener('addthis.menu.share', email_callback);
-    };
-    var email_callback = function(addthis_event) {
-        if (addthis_event.data.service == email_args.name) {
-            //$window.trigger('tp-social-share', email_args);
-        }
-    };
-    if ("https:" == document.location.protocol) {
-        var email_script = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
-    } else {
-        var email_script = 'http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
-    }
-    var email_var = 'addthis';
-
-    $.tpsocial.add_service({
-        name: 'email',
-        display: 'Email',
-        share: function(args) {
-            email_args = args;
-        },
-        prepare: function(el, args) {
-            $.tpsocial.load_script(window[email_var], email_script, this, function() {
-            }, email_once);
-        },
-        hoverfocus: function(args) {
-            if (!$(args.element).hasClass('addthis_button_email')) {
-                $(args.element)
-                        .addClass('addthis_button_email addthis_button_compact')
-                        .wrapInner('<span></span>');
-
-                get_share_url(args.url, args.title, function(_new_url) {
-                    $.tpsocial.load_script(window[email_var], email_script, this, function() {
-                        var note = template_value('note', args);
-
-                        var email_config = {
-                            ui_email_note: note
-                        };
-
-                        var addthis_config = {
-                            url: _new_url,
-                            title: args.title
-                        };
-
-                        addthis.toolbox(
-                                $(args.element).parent()[0],
-                                email_config,
-                                addthis_config
-                                );
-                    }, email_once);
-                }, true);
-            }
-        }
-    });
-
-    // Mailto
-    var mailto_args;
-    var mailto_once = function() {
-        addthis.addEventListener('addthis.menu.share', mailto_callback);
-    };
-    var mailto_callback = function(addthis_event) {
-        if (addthis_event.data.service == mailto_args.name) {
-            $window.trigger('tp-social-share', mailto_args);
-        }
-    };
-    if ("https:" == document.location.protocol) {
-        var mailto_script = 'https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
-    } else {
-        var mailto_script = 'http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4e48103302adc2d8';
-    }
-    var mailto_var = 'addthis';
-
     $.tpsocial.add_service({
         name: 'mailto',
         display: 'Email App',
         share: function(args) {
-            mailto_args = args;
-        },
-        prepare: function(el, args) {
-            if (!$(el).hasClass('addthis_button_mailto')) {
-                $(el).addClass('addthis_button_mailto addthis_button_compact')
-                        .wrapInner('<span></span>');
-
-                // get_share_url(args.url, args.title, function(_new_url) {
-                //     $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
-                //         var note = template_value('note', args);
-
-                //         var mailto_config = {
-                //             ui_mailto_note: note
-                //         };
-
-                //         var addthis_config = {
-                //             url: _new_url,
-                //             title: args.title
-                //         };
-
-                //         addthis.toolbox(
-                //                 $(el).parent()[0],
-                //                 mailto_config,
-                //                 addthis_config
-                //                 );
-                //     }, mailto_once);
-                // }, true);
-            }
-
-            /*$.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
-             
-             $(".tp-social-mailto").attr('href', function(i, href) {
-             return encodeURI("mailto:?body=" + $(location).attr('href')) + 
-             encodeURI("&cmpid=organic-share-mailto") +
-             encodeURI("&subject=" + $("h1.node-title").html());
-             });
-             
-             }, mailto_once); */
-        },
-        hoverfocus: function(args) {
-            if (!$(args.element).hasClass('addthis_button_mailto')) {
-                $(args.element)
-                        .addClass('addthis_button_mailto addthis_button_compact')
-                        .wrapInner('<span></span>');
-
-                get_share_url(args.url, args.title, function(_new_url) {
-                    $.tpsocial.load_script(window[mailto_var], mailto_script, this, function() {
-                        var note = template_value('note', args);
-
-                        var mailto_config = {
-                            ui_mailto_note: note
-                        };
-
-                        var addthis_config = {
-                            url: _new_url,
-                            title: args.title
-                        };
-
-                        addthis.toolbox(
-                                $(args.element).parent()[0],
-                                mailto_config,
-                                addthis_config
-                                );
-                    }, mailto_once);
-                }, true);
-            }
-        }
-    });
-    // mailto
-
-    // More
-    var more_args;
-    var more_once = function() {
-        addthis.addEventListener('addthis.menu.share', more_callback);
-    };
-    var more_callback = function(addthis_event) {
-        if (addthis_event.data.service == more_args.name) {
-            $window.trigger('tp-social-share', more_args);
-        }
-    };
-    var more_script = 'http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e48103302adc2d8';
-    var more_var = 'addthis';
-
-    $.tpsocial.add_service({
-        name: 'more',
-        display: 'More',
-        share: function(args) {
-        },
-        prepare: function(el, args) {
-            $.tpsocial.load_script(window[more_var], more_script, this, function() {
-                addthis.button(el, {
-                    services_compact: args.services_compact,
-                    services_expanded: args.services_expanded,
-                    services_exclude: args.services_exclude
-                }, {
-                    url: args.url,
-                    title: args.title
-                });
-            }, more_once);
-        },
-        hoverfocus: function(args) {
-            $(args.element)
-                    .addClass('addthis_button_more addthis_button_compact')
-                    .wrapInner('<span></span>');
-
-            $.tpsocial.load_script(window[more_var], more_script, this, function() {
-                var note = template_value('note', args);
-                var more_config = {
-                    ui_more_note: note
-                };
-                var addthis_config = {
-                    url: args.url,
-                    title: args.title
-                };
-                addthis.toolbox(
-                        $(args.element).parent()[0],
-                        more_config,
-                        addthis_config
-                        );
-            }, more_once);
-        }
+            var url = 'mailto:?body=' + encodeURIComponent(window.location) + '?cmpid=organic-share-mailto' + '&subject=' + encodeURIComponent(args.title);
+            location.href = url;
+      }
     });
 })(window, jQuery);

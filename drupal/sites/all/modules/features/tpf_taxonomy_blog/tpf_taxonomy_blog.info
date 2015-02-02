@@ -14,7 +14,3 @@ dependencies[] = taxonomy
 dependencies[] = tpf_content_field_bases
 dependencies[] = views_field
 features[features_api][] = api:2
-features[field_instance][] = taxonomy_term-blog-field_blog_branding_image
-features[field_instance][] = taxonomy_term-blog-field_blog_override
-features[field_instance][] = taxonomy_term-blog-field_blog_view
-features[taxonomy][] = blog

@@ -69,7 +69,10 @@
   }
 }
 
-.view-topic-listing {
+.view-topic-listing,
+.view-author-contributions,
+.view-free-tags,
+.view-all-feed {
   .views-row {
     @include clearfix();
     margin: 1em 0;
@@ -81,7 +84,9 @@
     }
     .views-field-type,
     .views-field-title,
-    .views-field-field-flashcard-page-headline {
+    .views-field-url,
+    .views-field-field-flashcard-page-headline,
+    .views-field-field-promo-headline {
       margin-left: 117px;
     }
 
@@ -93,6 +98,8 @@
     }
 
     .views-field-title,
+    .views-field-url,
+    .views-field-field-promo-headline,
     .views-field-field-flashcard-page-headline {
       font-size: 1.142857143em;
       line-height: 1.25;

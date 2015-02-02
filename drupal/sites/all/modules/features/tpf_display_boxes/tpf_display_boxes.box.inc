@@ -149,7 +149,6 @@ function tpf_display_boxes_default_box() {
     'bundle' => '0',
     'field' => array(
       'field_action_type' => 'field_action_type',
-      'field_social_share_bar' => 'field_social_share_bar',
       'body' => 0,
       'field_author' => 0,
       'field_article_main_image' => 0,
@@ -606,45 +605,6 @@ function tpf_display_boxes_default_box() {
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'box-1dae03d3';
-  $box->plugin_key = 'field';
-  $box->title = '';
-  $box->description = 'Blog Post Header';
-  $box->options = array(
-    'entity_type' => 'node',
-    'entity_id' => '',
-    'bundle' => 'openpublish_blog_post',
-    'field' => array(
-      'field_blogpost_subhead' => 'field_blogpost_subhead',
-      'field_author' => 'field_author',
-      'field_blogpost_main_image' => 'field_blogpost_main_image',
-      'body' => 0,
-      'field_blogpost_blog' => 0,
-      'field_free_tag' => 0,
-      'field_thumbnail' => 0,
-      'field_topic' => 0,
-      'field_display_tag' => 0,
-      'field_promo_headline' => 0,
-      'field_promo_text' => 0,
-      'field_series' => 0,
-      'field_blogpost_featured_action' => 0,
-      'field_related_content' => 0,
-      'field_related_actions' => 0,
-      'field_suggest_campaigns' => 0,
-      'field_suggest_content' => 0,
-      'field_suggest_actions' => 0,
-      'field_multi_page_campaign' => 0,
-      'field_related_campaign' => 0,
-    ),
-    'use_page' => 1,
-    'exclude_from_content' => 0,
-    'view_mode' => 'default',
-  );
-  $export['box-1dae03d3'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
   $box->delta = 'box-208c3905';
   $box->plugin_key = 'view';
   $box->title = 'Most Popular';
@@ -779,20 +739,6 @@ function tpf_display_boxes_default_box() {
     'additional_classes' => '',
   );
   $export['box-33756e58'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
-  $box->delta = 'box-34ee1b08';
-  $box->plugin_key = 'simple';
-  $box->title = '';
-  $box->description = 'Outbrain Recommendation Content Widget';
-  $box->options = array(
-    'body' => '<script type="text/javascript" src="http://w.takepart.com/links/scripts/links.js"></script>',
-    'additional_classes' => '',
-    'selected_style' => '0',
-  );
-  $export['box-34ee1b08'] = $box;
 
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
@@ -1724,20 +1670,6 @@ z-index:5000;
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'box-bedd1fbb';
-  $box->plugin_key = 'simple';
-  $box->title = 'TakePart Video';
-  $box->description = 'Right Rail -- TPL Playlist';
-  $box->options = array(
-    'body' => '<br />
-<script type="text/javascript" src="//content.jwplatform.com/players/Y0y8DVG4-TPXPTQu4.js"></script>',
-    'additional_classes' => '',
-  );
-  $export['box-bedd1fbb'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
   $box->delta = 'box-c49bfd54';
   $box->plugin_key = 'simple';
   $box->title = '';
@@ -1964,25 +1896,6 @@ z-index:5000;
   $box = new stdClass();
   $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
   $box->api_version = 1;
-  $box->delta = 'our_blogs_summary_1';
-  $box->plugin_key = 'view';
-  $box->title = 'Our Blogs';
-  $box->description = 'Our Blogs';
-  $box->options = array(
-    'view' => 'blogs--block_1',
-    'settings' => array(
-      'tid' => '25+26',
-    ),
-    'view_object' => NULL,
-    'view_more_text' => '',
-    'view_more_link' => '',
-    'additional_classes' => '',
-  );
-  $export['our_blogs_summary_1'] = $box;
-
-  $box = new stdClass();
-  $box->disabled = FALSE; /* Edit this to true to make a default box disabled initially */
-  $box->api_version = 1;
   $box->delta = 'right_rail_video_promo_articles';
   $box->plugin_key = 'field';
   $box->title = 'TakePart Video';
@@ -2041,7 +1954,7 @@ z-index:5000;
   $box->options = array(
     'ga_ad_slot' => 'TP3_ROS_Leaderboard_728x90',
     'ga_ad_gpt_id' => 'div-gpt-ad-1391020952974-1',
-    'additional_classes' => 'leaderboard',
+    'additional_classes' => 'leaderboard ad-large-center',
   );
   $export['takepart'] = $box;
 

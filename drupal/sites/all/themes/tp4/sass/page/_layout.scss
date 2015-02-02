@@ -20,9 +20,11 @@ html {}
 body {
   width: 100%;
   margin: 0;
-  border-top: 5px solid $light-mint;
   border-bottom: 5px solid $light-mint;
   position: relative;
+  @include breakpoint($breakpoint-tablet) {
+    border-top: 5px solid $light-mint; //breakpoint b/c of sticky header on mobile
+  }
   &.snapjs-left{
     overflow: hidden;
     border-bottom: none;
@@ -53,6 +55,7 @@ body {
   overflow: hidden;
   @include breakpoint($breakpoint-tablet) {
     background-color: transparent;
+    padding-top: 0;
   }
 }
 .header-wrapper,
@@ -69,6 +72,10 @@ body {
 }
 .header-wrapper {
   padding-top: 1em;
+  border-top: 5px solid $light-mint;
+  @include breakpoint($breakpoint-tablet) {
+    border-top: none;
+  }
 
   .snapjs-left & {
     background-color: white;
@@ -77,8 +84,12 @@ body {
 }
 .preface-wrapper {
   min-height: 25px;
+  margin-top: 0;
   .page-node.node-type-openpublish-photo-gallery & {
-    margin-top: 25px;
+    margin-top: 0;
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 25px;
+    }
   }
 }
 .footer-wrapper {
@@ -206,7 +217,35 @@ body {
     visibility: hidden;
 }
 
-// Mobile ad position
+// Mobile ad position top
+#block-boxes-ga-mobile-320x50-relative {
+  @include breakpoint($breakpoint-mobile) {  
+    display: block;
+    visibility: visible;
+    margin: 10px 0;
+    padding: 0;
+    width: 100%;
+    background-color: transparent;
+    
+    #boxes-box-ga_mobile_320x50_relative {
+      position: relative;
+      width: 320px;
+      margin: 10px auto;
+      overflow-x: visible;
+    }
+  }
+    @include breakpoint($breakpoint-tablet) {
+    display: none;
+    visibility: hidden;
+  }
+  &.hide {
+    display: none;
+    visibility: hidden; 
+  }
+}
+
+
+// Mobile ad position bottom sticky
 #block-boxes-ga-mobile-320x50 {
   @include breakpoint($breakpoint-mobile) {  
     display: block;

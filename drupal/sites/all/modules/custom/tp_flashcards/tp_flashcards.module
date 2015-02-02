@@ -17,6 +17,16 @@ function tp_flashcards_help($path, $arg) {
 }
 
 /**
+ * Implements hook_init()
+ */
+function tp_flashcards_init(){
+  /* Flashcards on every page */
+  drupal_add_css(drupal_get_path('module', 'tp_flashcards') . '/css/tooltipster.css', array('every_page' => TRUE));
+  drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/vendor/jquery.tooltipster.min.js', array('every_page' => TRUE));
+  drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/tp_flashcards.js', array('every_page' => TRUE));
+}
+
+/**
  * Implements template_preprocess_page().
  *
  * Include flashcards JS/CSS in every page, and disable
@@ -43,9 +53,6 @@ function tp_flashcards_preprocess_page(&$variables) {
   }
 
   drupal_add_js(array('flashcards' => $data), 'setting');
-  drupal_add_css(drupal_get_path('module', 'tp_flashcards') . '/css/tooltipster.css');
-  drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/vendor/jquery.tooltipster.min.js');
-  drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/tp_flashcards.js');
 
   // the tp4_flashcards context (in a feature required by this module)
   // renders the system_main block in the preface region.

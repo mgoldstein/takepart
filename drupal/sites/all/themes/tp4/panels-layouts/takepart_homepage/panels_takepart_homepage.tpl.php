@@ -17,8 +17,6 @@
  *   - $content['tpl_secondary_featured']: Secondary TPL Features
  */
 
-
-
 ?>
 <div class="panel-takepart-homepage clearfix panel-display" <?php if (!empty($css_id)) { print "id=\"$css_id\""; } ?>>
     <div class="panel-main-featured panel-panel">
@@ -27,17 +25,4 @@
     <div class="panel-secondary-featured panel-panel">
       <?php print $content['secondary_featured']; ?>
     </div>
-    <div class="panel-tpl-featured panel-panel">
-      <h2 class="tpl-headline"><span class="tpl-title"></span><span class="tpl-time"></span></h2>
-      <?php print $content['tpl_featured']; ?>
-    </div>
-    <div class="panel-tpl-secondary-featured panel-panel">
-      <?php print $content['tpl_secondary_featured']; ?>
-    </div>
-    <?php
-      $block = module_invoke('bean', 'block_view', 'tpl-live-long');
-      $cta = $block['content']['bean']['tpl-live-long']['#entity']->field_tpl_block_hp_cta;
-      $cta = '<span>'. $cta[LANGUAGE_NONE][0]['value']. '</span>';
-      print l($cta, '//takepart.com/live', array('html' => true, 'attributes' => array('class' => array('cta'))));
-    ?>
 </div>

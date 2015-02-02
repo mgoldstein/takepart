@@ -3,7 +3,33 @@
         attach: function(context, settings) {
             // INTERSTITIALS
             $('body').once('interstitial_init', function() {
+              //check if mobile
+              var isMobile = {
+                Android: function() {
+                  return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                  return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                  return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                  return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                  return navigator.userAgent.match(/IEMobile/i);
+                },
+                any: function() {
+                  return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+              };
+              if(isMobile.any()) {
+                takeover_ad_init();
+              }else{
                 interstitial_init();
+              }
+
             });
 
             function GetQueryStringParams(sParam) {
@@ -17,7 +43,32 @@
                     }
                 }
             }
+            function takeover_ad_init(){
+              var ad_cookie = $.cookie('tp_ad_overlay');
+              var path = window.location.pathname;
 
+              /* Don't show interstitial on first page view */
+              /* If cookie is undefined, queue it up to display the next time, else display it*/
+              if (ad_cookie === null) {
+                $.cookie('tp_ad_overlay', 0, {path: '/'});
+              }else if(ad_cookie == 0 && path != '/overlay/ad'){
+                show_takeover_ad();
+                var link = $('<a href="/overlay/ad" data-interstitial-type="mobileAd"></a>');
+                if(!$('body').hasClass('campaign-display')){
+                  show_interstitial(link);
+                }
+              }
+
+            }
+            function show_takeover_ad(){
+
+              /* Set expiration for takeover ad */
+              var date = new Date();
+              date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+              $.cookie('tp_ad_overlay', null);
+              $.cookie('tp_ad_overlay', 1, {expires: date, path: '/'});
+
+            }
             function interstitial_init() {
 
                 // FOR TESTING
@@ -67,15 +118,16 @@
                 var interstitial_type = interstitial_link.attr('data-interstitial-type');
                 var analytics_types = {
                     'email': 'Newsletter',
-                    'social': 'Social'
+                    'social': 'Social',
+                    'mobileAd': 'Mobile Ad'
                 };
                 $iframe.bind('load', function() {
                     var $modal = $('#' + interstitial_modal_id + 'modal');
                     $modal.show();
-                    if(window.innerWidth <= 400) {
-                        var w = window.innerWidth;
+                    if(window.innerWidth <= 480) {
+                      var w = 300;
                     }else{
-                        var w = $iframe.contents().find('#page').width();
+                      var w = 400;
                     }
                     var h = $iframe.contents().find('html').height();
                     $modal.hide();

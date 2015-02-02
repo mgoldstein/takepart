@@ -4,7 +4,7 @@
  * TakePart custom video player JavaScript settings converter.
  */
 
-function tp_video_player_build_settings($configuration, $files) {
+function tp_video_player_build_settings($configuration, $files, $display = NULL) {
 
   $first = reset($files);
 
@@ -38,7 +38,8 @@ function tp_video_player_build_settings($configuration, $files) {
     $listbar_settings = array();
   }
 
-  return array_merge(
+  //this is the combined list
+  $combined_config = array_merge(
     $content_settings,
     tp_video_player_build_promo_settings($configuration),
     tp_video_player_build_layout_settings($configuration),
@@ -50,6 +51,11 @@ function tp_video_player_build_settings($configuration, $files) {
     tp_video_player_build_google_analytics_settings($configuration),
     tp_video_player_build_site_catalyst_settings($configuration)
   );
+  
+  //allows other modules to adjust the configuration at the very end before it's returned
+  drupal_alter('tp_video_player_config', $combined_config, $display, $first);
+  
+  return $combined_config;
 }
 
 function tp_video_player_build_content_settings($configuration, $files) {

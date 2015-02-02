@@ -19,3 +19,4 @@ features[field_instance][] = taxonomy_term-campaign_categories-field_campaign_br
 features[field_instance][] = taxonomy_term-campaign_categories-field_campaign_category_image
 features[taxonomy][] = campaign_categories
 features[taxonomy][] = social_follow
+mtime = 1410472625

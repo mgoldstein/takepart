@@ -14,6 +14,7 @@
 function tp_digital_data_strategies() {
   return array(
     'DDCampaign',
+    'DDTaxonomy',
     'DDContent',
     'DDSiteFrontPage',
   );

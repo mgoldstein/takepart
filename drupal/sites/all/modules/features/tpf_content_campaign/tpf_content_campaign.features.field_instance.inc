@@ -103,91 +103,6 @@ function tpf_content_campaign_field_default_field_instances() {
     'widget_type' => 'text_textarea_with_summary',
   );
 
-  // Exported field_instance: 'node-takepart_campaign-field_google_map'
-  $field_instances['node-takepart_campaign-field_google_map'] = array(
-    'bundle' => 'takepart_campaign',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'gmapfield',
-        'settings' => array(),
-        'type' => 'gmapfield_formatter',
-        'weight' => 32,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_google_map',
-    'label' => 'Google Map',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'gmapfield',
-      'settings' => array(),
-      'type' => 'gmapfield_formatter',
-      'weight' => 20,
-    ),
-  );
-
   // Exported field_instance: 'node-takepart_campaign-field_html_title'
   $field_instances['node-takepart_campaign-field_html_title'] = array(
     'bundle' => 'takepart_campaign',
@@ -1108,6 +1023,7 @@ function tpf_content_campaign_field_default_field_instances() {
     'label' => '5 things Links',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1120,6 +1036,7 @@ function tpf_content_campaign_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -1701,6 +1618,7 @@ function tpf_content_campaign_field_default_field_instances() {
     'label' => 'More Info Link',
     'required' => 0,
     'settings' => array(
+      'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
         'configurable_title' => 0,
@@ -1713,6 +1631,7 @@ function tpf_content_campaign_field_default_field_instances() {
       ),
       'enable_tokens' => 1,
       'title' => 'optional',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -3657,7 +3576,6 @@ function tpf_content_campaign_field_default_field_instances() {
   t('Campaign Sponsors');
   t('Check this box to remove the headline from the campaign page.');
   t('Context');
-  t('Google Map');
   t('HTML title tag');
   t('Image');
   t('Intro HTML');

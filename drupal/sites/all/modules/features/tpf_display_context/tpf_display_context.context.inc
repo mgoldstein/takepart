@@ -13,6 +13,44 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = '404_feed';
+  $context->description = 'The 10 most recent items from the /all/feed.xml on the 404 page.';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'error' => array(
+      'values' => array(
+        404 => '404',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'node/236' => 'node/236',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-1ddb00ad04439c02e7ade3e99c6f2213' => array(
+          'module' => 'views',
+          'delta' => '1ddb00ad04439c02e7ade3e99c6f2213',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('TP4');
+  t('The 10 most recent items from the /all/feed.xml on the 404 page.');
+  $export['404_feed'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'ad_exclude_campaign';
   $context->description = 'Context used by general_ad to exclude ads from pages/sections';
   $context->tag = 'Ads';
@@ -79,15 +117,13 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'addthis_blocks';
-  $context->description = 'AddThis share list';
-  $context->tag = 'Blocks: AddThis';
+  $context->name = 'author_contributions';
+  $context->description = 'Contributions from this author';
+  $context->tag = 'Profiles';
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'openpublish_blog_post' => 'openpublish_blog_post',
-        'openpublish_video' => 'openpublish_video',
-        'takepart_group' => 'takepart_group',
+        'profile' => 'profile',
       ),
       'options' => array(
         'node_form' => '1',
@@ -97,65 +133,22 @@ function tpf_display_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'takepart_addthis-addthis_footer' => array(
-          'module' => 'takepart_addthis',
-          'delta' => 'addthis_footer',
-          'region' => 'content_bottom',
-          'weight' => 3,
+        'views-author_contributions-block' => array(
+          'module' => 'views',
+          'delta' => 'author_contributions-block',
+          'region' => 'content',
+          'weight' => '-10',
         ),
       ),
     ),
   );
-  $context->condition_mode = 0;
+  $context->condition_mode = 1;
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('AddThis share list');
-  t('Blocks: AddThis');
-  $export['addthis_blocks'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'addthis_leftpanel_blocks';
-  $context->description = '';
-  $context->tag = 'Blocks: AddThis';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'openpublish_article' => 'openpublish_article',
-        'openpublish_blog_post' => 'openpublish_blog_post',
-        'takepart_group' => 'takepart_group',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-box-72e1be3c' => array(
-          'module' => 'boxes',
-          'delta' => 'box-72e1be3c',
-          'region' => 'sidebar_first',
-          'weight' => 0,
-        ),
-        'takepart_addthis-addthis_full' => array(
-          'module' => 'takepart_addthis',
-          'delta' => 'addthis_full',
-          'region' => 'sidebar_first',
-          'weight' => 1,
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Blocks: AddThis');
-  $export['addthis_leftpanel_blocks'] = $context;
+  t('Contributions from this author');
+  t('Profiles');
+  $export['author_contributions'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -217,121 +210,6 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'blocks_action';
-  $context->description = 'Action Blocks';
-  $context->tag = 'Blocks: Content Type';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'action' => 'action',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-box-41040ece' => array(
-          'module' => 'boxes',
-          'delta' => 'box-41040ece',
-          'region' => 'highlighted',
-          'weight' => '0',
-        ),
-        'menu-menu-takeaction-button-menu' => array(
-          'module' => 'menu',
-          'delta' => 'menu-takeaction-button-menu',
-          'region' => 'highlighted',
-          'weight' => '1',
-        ),
-        'boxes-box-66c05d6f' => array(
-          'module' => 'boxes',
-          'delta' => 'box-66c05d6f',
-          'region' => 'sidebar_second',
-          'weight' => '0',
-        ),
-        'views-related_content-block' => array(
-          'module' => 'views',
-          'delta' => 'related_content-block',
-          'region' => 'sidebar_second',
-          'weight' => '1',
-        ),
-        'boxes-box-7fa6e22c' => array(
-          'module' => 'boxes',
-          'delta' => 'box-7fa6e22c',
-          'region' => 'sidebar_second',
-          'weight' => '2',
-        ),
-        'boxes-box-1104adce' => array(
-          'module' => 'boxes',
-          'delta' => 'box-1104adce',
-          'region' => 'sidebar_second',
-          'weight' => '3',
-        ),
-        'boxes-box-6c13820e' => array(
-          'module' => 'boxes',
-          'delta' => 'box-6c13820e',
-          'region' => 'content_top',
-          'weight' => '0',
-        ),
-        'boxes-action_header_image' => array(
-          'module' => 'boxes',
-          'delta' => 'action_header_image',
-          'region' => 'content_top',
-          'weight' => '1',
-        ),
-        'boxes-action_topic_and_share' => array(
-          'module' => 'boxes',
-          'delta' => 'action_topic_and_share',
-          'region' => 'content_top',
-          'weight' => '2',
-        ),
-        'takepart_custom-page_title_h1' => array(
-          'module' => 'takepart_custom',
-          'delta' => 'page_title_h1',
-          'region' => 'content_top',
-          'weight' => '3',
-        ),
-        'boxes-box-4eb62add' => array(
-          'module' => 'boxes',
-          'delta' => 'box-4eb62add',
-          'region' => 'content_bottom',
-          'weight' => '0',
-        ),
-        'views-content_updates-block' => array(
-          'module' => 'views',
-          'delta' => 'content_updates-block',
-          'region' => 'content_bottom',
-          'weight' => '1',
-        ),
-        'comment_block_simple-comment_block' => array(
-          'module' => 'comment_block_simple',
-          'delta' => 'comment_block',
-          'region' => 'content_bottom',
-          'weight' => '2',
-        ),
-      ),
-    ),
-    'theme_html' => array(
-      'class' => 'multipage-campaign',
-    ),
-    'title' => array(
-      'title_off' => 1,
-      'title_override' => '',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Action Blocks');
-  t('Blocks: Content Type');
-  $export['blocks_action'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'blocks_article';
   $context->description = 'Article Blocks';
   $context->tag = 'Blocks: Content Type';
@@ -357,182 +235,6 @@ function tpf_display_context_context_default_contexts() {
   t('Article Blocks');
   t('Blocks: Content Type');
   $export['blocks_article'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'blocks_blog_posts';
-  $context->description = 'Blog Post Blocks';
-  $context->tag = 'Blocks: Content Type';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'openpublish_blog_post' => 'openpublish_blog_post',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-box-bb0b625d' => array(
-          'module' => 'boxes',
-          'delta' => 'box-bb0b625d',
-          'region' => 'content_top',
-          'weight' => 0,
-        ),
-        'views-blogs-block_3' => array(
-          'module' => 'views',
-          'delta' => 'blogs-block_3',
-          'region' => 'content_top',
-          'weight' => 1,
-        ),
-        'takepart_custom-page_title_h1' => array(
-          'module' => 'takepart_custom',
-          'delta' => 'page_title_h1',
-          'region' => 'content_top',
-          'weight' => 2,
-        ),
-        'boxes-box-1dae03d3' => array(
-          'module' => 'boxes',
-          'delta' => 'box-1dae03d3',
-          'region' => 'content_top',
-          'weight' => 3,
-        ),
-        'boxes-box-4eb62add' => array(
-          'module' => 'boxes',
-          'delta' => 'box-4eb62add',
-          'region' => 'content_bottom',
-          'weight' => 1,
-        ),
-        'boxes-box-34ee1b08' => array(
-          'module' => 'boxes',
-          'delta' => 'box-34ee1b08',
-          'region' => 'content_bottom',
-          'weight' => 2,
-        ),
-        'comment_block_simple-comment_block' => array(
-          'module' => 'comment_block_simple',
-          'delta' => 'comment_block',
-          'region' => 'content_bottom',
-          'weight' => 3,
-        ),
-        'boxes-box-66c05d6f' => array(
-          'module' => 'boxes',
-          'delta' => 'box-66c05d6f',
-          'region' => 'sidebar_second',
-          'weight' => 0,
-        ),
-        'boxes-box-bedd1fbb' => array(
-          'module' => 'boxes',
-          'delta' => 'box-bedd1fbb',
-          'region' => 'sidebar_second',
-          'weight' => 1,
-        ),
-        'newsletter_campaign-10' => array(
-          'module' => 'newsletter_campaign',
-          'delta' => '10',
-          'region' => 'sidebar_second',
-          'weight' => 2,
-        ),
-        'views-related_content-block' => array(
-          'module' => 'views',
-          'delta' => 'related_content-block',
-          'region' => 'sidebar_second',
-          'weight' => 3,
-        ),
-        'boxes-box-7fa6e22c' => array(
-          'module' => 'boxes',
-          'delta' => 'box-7fa6e22c',
-          'region' => 'sidebar_second',
-          'weight' => 4,
-        ),
-        'views-related_actions-block' => array(
-          'module' => 'views',
-          'delta' => 'related_actions-block',
-          'region' => 'sidebar_second',
-          'weight' => 5,
-        ),
-        'boxes-box-1104adce' => array(
-          'module' => 'boxes',
-          'delta' => 'box-1104adce',
-          'region' => 'sidebar_second',
-          'weight' => 6,
-        ),
-      ),
-    ),
-    'title' => array(
-      'title_off' => 1,
-      'title_override' => '',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Blocks: Content Type');
-  t('Blog Post Blocks');
-  $export['blocks_blog_posts'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'blocks_group';
-  $context->description = 'Group Blocks';
-  $context->tag = 'Blocks: Content Type';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'takepart_group' => 'takepart_group',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'takepart_custom-page_title_h1' => array(
-          'module' => 'takepart_custom',
-          'delta' => 'page_title_h1',
-          'region' => 'highlighted',
-          'weight' => '0',
-        ),
-        'boxes-box-c5c30007' => array(
-          'module' => 'boxes',
-          'delta' => 'box-c5c30007',
-          'region' => 'highlighted',
-          'weight' => '1',
-        ),
-        'boxes-box-f070c115' => array(
-          'module' => 'boxes',
-          'delta' => 'box-f070c115',
-          'region' => 'sidebar_first',
-          'weight' => '0',
-        ),
-        'views-related_actions-block_2' => array(
-          'module' => 'views',
-          'delta' => 'related_actions-block_2',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
-        ),
-      ),
-    ),
-    'title' => array(
-      'title_off' => 1,
-      'title_override' => '',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Blocks: Content Type');
-  t('Group Blocks');
-  $export['blocks_group'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -597,42 +299,6 @@ function tpf_display_context_context_default_contexts() {
   t('Blocks: Content Type');
   t('Photo Gallery Blocks');
   $export['blocks_photo_gallery'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'blocks_quick_study';
-  $context->description = 'Quick Study Blocks';
-  $context->tag = 'Blocks: Content Type';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'takepart_quick_study' => 'takepart_quick_study',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-box-bb0b625d' => array(
-          'module' => 'boxes',
-          'delta' => 'box-bb0b625d',
-          'region' => 'content_top',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Blocks: Content Type');
-  t('Quick Study Blocks');
-  $export['blocks_quick_study'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -957,49 +623,6 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'omniture_action';
-  $context->description = 'Variables to set on action pages.';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'action' => 'action',
-        'petition_action' => 'petition_action',
-        'pledge_action' => 'pledge_action',
-      ),
-      'options' => array(
-        'node_form' => '0',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.events = event55
-s.prop53 = [tp_omniture:str_decode:{node:title}]
-s.eVar53 = [tp_omniture:str_decode:{node:title}]
-s.prop54 = [tp_omniture:str_decode:{node:url}]
-s.eVar54 = [tp_omniture:str_decode:{node:url}]
-s.prop55 = [tp_omniture:first_word:{node:content-type}]
-s.eVar55 = [tp_omniture:first_word:{node:content-type}]
-s.prop56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
-s.eVar56 = [tp_omniture:value_or_empty:{node:field_display_tag}]
-s.eVar58 = [tp_omniture:get_tab_uid:{current-user:uid}]
-s.prop58 = [tp_omniture:get_tab_uid:{current-user:uid}]
-s.prop66 = Action Page View
-s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables to set on action pages.');
-  $export['omniture_action'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'omniture_all_content_types';
   $context->description = 'Omniture: All content types';
   $context->tag = 'Omniture';
@@ -1020,11 +643,9 @@ s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title
         'section_front_wide' => 'section_front_wide',
         'takepart_campaign' => 'takepart_campaign',
         'takepart_group' => 'takepart_group',
-        'takepart_list' => 'takepart_list',
         'takepart_page' => 'takepart_page',
         'topic_front' => 'topic_front',
         'venue' => 'venue',
-        'video' => 'video',
       ),
       'options' => array(
         'node_form' => '0',
@@ -1109,45 +730,6 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'omniture_blog';
-  $context->description = 'Variables to set on blog pages.';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'openpublish_blog_post' => 'openpublish_blog_post',
-      ),
-      'options' => array(
-        'node_form' => '0',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.prop2 = [current-page:url-arg:1]
-s.prop3 = [current-page:url-arg:0]:[tp_omniture:date:{node:created:raw}]:[tp_omniture:str_decode:{node:title}]
-s.eVar19 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]
-s.prop18 = [tp_omniture:value_or_empty:{node:field-blogpost-blog:term:name}]
-s.prop22 = [tp_omniture:remove_spaces:{node:field_free_tag}]
-s.list2 = [tp_omniture:remove_spaces:{node:field_free_tag}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables to set on blog pages.');
-  $export['omniture_blog'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'omniture_flashcard';
   $context->description = 'Variables to set on flashcard pages';
   $context->tag = 'Omniture';
@@ -1187,26 +769,6 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'omniture_gallery';
-  $context->description = 'Variables to set on gallery pages.';
-  $context->tag = 'Omniture';
-  $context->conditions = array();
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => '',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables to set on gallery pages.');
-  $export['omniture_gallery'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'omniture_homepage';
   $context->description = 'Homepage SiteCatalyst settings';
   $context->tag = 'Omniture';
@@ -1219,12 +781,11 @@ s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
   );
   $context->reactions = array(
     'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:home:TakePart Home
+      'variables' => 's.pageName =  takepart:home:TakePart Home
 s.channel = home
 s.prop1 = home
 s.prop4 = home
-s.prop7 =[current-user:uid]
-s.eVar30 = takepart:home:TakePart Home',
+s.eVar30 = home:TakePart Home',
     ),
   );
   $context->condition_mode = 0;
@@ -1234,38 +795,6 @@ s.eVar30 = takepart:home:TakePart Home',
   t('Homepage SiteCatalyst settings');
   t('Omniture');
   $export['omniture_homepage'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_registration';
-  $context->description = 'Omniture registration page load variables';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'node/19528' => 'node/19528',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.events = event23,event33,event21
-s.eVar11 = Logged_In',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Omniture registration page load variables');
-  $export['omniture_registration'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -1319,6 +848,7 @@ s.eVar19 = [tp_omniture:str_decode:{current-page:title}]',
     'path' => array(
       'values' => array(
         '~<front>' => '~<front>',
+        '~user' => '~user',
       ),
     ),
     'sitewide' => array(
@@ -1343,87 +873,6 @@ s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercas
   t('Omniture');
   t('Omniture Settings for the every page');
   $export['omniture_site_wide'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_tab_landing_page';
-  $context->description = 'Omniture parameters for the TAB Landing Page';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'node/31701' => 'node/31701',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.prop66 = Action Landing Page
-s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Omniture parameters for the TAB Landing Page');
-  $export['omniture_tab_landing_page'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_tab_thank_you';
-  $context->description = 'Omniture parameters for TAB Thank You page';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'node/31703' => 'node/31703',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.events = event57
-s.prop66 = Thank You Page View
-s.prop67 = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{node:title}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Omniture parameters for TAB Thank You page');
-  $export['omniture_tab_thank_you'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_teach_campaign';
-  $context->description = 'Analytics configuration for Teach campaign pages';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'wordlet/teach_share_your_story' => 'wordlet/teach_share_your_story',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.events = event86',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Analytics configuration for Teach campaign pages');
-  t('Omniture');
-  $export['omniture_teach_campaign'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -1460,38 +909,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   t('Omniture');
   t('Variables set on topic front page load');
   $export['omniture_topicfront'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_user_profile';
-  $context->description = 'Variables set on user profile pages';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        'user' => 'user',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.prop7 =[current-user:uid]
-s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables set on user profile pages');
-  $export['omniture_user_profile'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -1547,6 +964,42 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
   t('Context Field Default');
   t('Default Context for series');
   $export['series_default_context'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'series_landing_page';
+  $context->description = 'Series Taxonomy Search List';
+  $context->tag = 'Series';
+  $context->conditions = array(
+    'taxonomy_term' => array(
+      'values' => array(
+        'series' => 'series',
+      ),
+      'options' => array(
+        'term_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'views-taxonomy_search_list-block_2' => array(
+          'module' => 'views',
+          'delta' => 'taxonomy_search_list-block_2',
+          'region' => 'content',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Series');
+  t('Series Taxonomy Search List');
+  $export['series_landing_page'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -1809,18 +1262,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'header',
           'weight' => '-100',
         ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
-        'bean-tpl-live-long' => array(
-          'module' => 'bean',
-          'delta' => 'tpl-live-long',
-          'region' => 'sidebar',
-          'weight' => '-9',
-        ),
         'bean--of-the-day' => array(
           'module' => 'bean',
           'delta' => '-of-the-day',
@@ -1984,6 +1425,31 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'tp4_dtm';
+  $context->description = 'Expose DTM';
+  $context->tag = 'DTM';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'campaign_page' => 'campaign_page',
+      ),
+      'options' => array(
+        'node_form' => '0',
+      ),
+    ),
+  );
+  $context->reactions = array();
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('DTM');
+  t('Expose DTM');
+  $export['tp4_dtm'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tp4_feature';
   $context->description = 'Ad positions for Feature Articles';
   $context->tag = 'TP4';
@@ -2009,12 +1475,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'module' => 'boxes',
           'delta' => 'takepart',
           'region' => 'header',
-          'weight' => '-10',
-        ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
           'weight' => '-10',
         ),
       ),
@@ -2075,12 +1535,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'delta' => 'flashcard_comments',
           'region' => 'content',
           'weight' => '-8',
-        ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-10',
         ),
         'system-main' => array(
           'module' => 'system',
@@ -2161,6 +1615,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'delta' => 'ga_interstitial',
           'region' => 'footer',
           'weight' => '-8',
+        ),
+        'boxes-ga_mobile_320x50' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50',
+          'region' => 'footer',
+          'weight' => '-7',
         ),
         'tp4_support-tp4_mobile_menu_header' => array(
           'module' => 'tp4_support',
@@ -2290,12 +1750,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'footer',
           'weight' => '-10',
         ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-9',
-        ),
         'menu-menu-megamenu' => array(
           'module' => 'menu',
           'delta' => 'menu-megamenu',
@@ -2319,12 +1773,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar',
           'weight' => '-10',
-        ),
-        'bean-tpl-live-long' => array(
-          'module' => 'bean',
-          'delta' => 'tpl-live-long',
-          'region' => 'sidebar',
-          'weight' => '-9',
         ),
         'newsletter_campaign-48' => array(
           'module' => 'newsletter_campaign',
@@ -2398,12 +1846,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'region' => 'header',
           'weight' => '-10',
         ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
       ),
     ),
   );
@@ -2452,12 +1894,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]',
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar',
           'weight' => '-10',
-        ),
-        'bean-tpl-live-long' => array(
-          'module' => 'bean',
-          'delta' => 'tpl-live-long',
-          'region' => 'sidebar',
-          'weight' => '-9',
         ),
         'newsletter_campaign-51' => array(
           'module' => 'newsletter_campaign',

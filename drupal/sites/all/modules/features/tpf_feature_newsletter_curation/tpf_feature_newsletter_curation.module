@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart Newsletter Content Curation feature.
+ */
+
+include_once 'tpf_feature_newsletter_curation.features.inc';
