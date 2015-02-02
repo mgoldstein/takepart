@@ -67,7 +67,7 @@ stylesheets[all][] = css/styles.css
 
 scripts[] = js/custom-lib/tpregions.jquery.js
 scripts[] = js/custom-lib/tpanalytics.js
-scripts[] = js/tpanalytics.events.js
+;scripts[] = js/tpanalytics.events.js
 scripts[] = js/doubletaptogo.js
 scripts[] = js/vendor/snap.js
 ; scripts[] = js/vendor/scrollTo/jquery.scrollTo.js
