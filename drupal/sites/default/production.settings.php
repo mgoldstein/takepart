@@ -25,7 +25,3 @@ $conf += array(
 
 // Tone down the logging
 ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED);
-
-// Always have set the drupal private key
-$drupal_hash_salt = '59e4eeebbe8724ee6725901b7095082b6584db81239939be778fa58cfe32777c';
-$conf['drupal_private_key'] = '2ouRrHH1wfSvtzOfDZ2hpBVX92Z_tXhvG-Yl3BGl8Ek';
