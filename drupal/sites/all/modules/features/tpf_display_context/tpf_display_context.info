@@ -141,7 +141,6 @@ features_exclude[field_base][field_blogpost_featured_action] = field_blogpost_fe
 features_exclude[field_base][field_blogpost_subhead] = field_blogpost_subhead
 features_exclude[field_base][field_blog_context] = field_blog_context
 features_exclude[field_base][field_google_map] = field_google_map
-features_exclude[field_base][field_social_share_bar] = field_social_share_bar
 features_exclude[field_group][group_blogpost_actions|node|openpublish_blog_post|form] = group_blogpost_actions|node|openpublish_blog_post|form
 features_exclude[field_group][group_blogpost_body|node|openpublish_blog_post|form] = group_blogpost_body|node|openpublish_blog_post|form
 features_exclude[field_group][group_blogpost_campaigns|node|openpublish_blog_post|form] = group_blogpost_campaigns|node|openpublish_blog_post|form

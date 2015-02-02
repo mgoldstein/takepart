@@ -122,10 +122,9 @@ function tpf_display_context_field_group_info() {
       7 => 'field_tab_action',
       8 => 'field_tab_internal_title',
       9 => 'field_tab_link_only',
-      10 => 'field_social_share_bar',
-      11 => 'field_short_introduction',
-      12 => 'field_featured',
-      13 => 'field_admin_tag',
+      10 => 'field_short_introduction',
+      11 => 'field_featured',
+      12 => 'field_admin_tag',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
