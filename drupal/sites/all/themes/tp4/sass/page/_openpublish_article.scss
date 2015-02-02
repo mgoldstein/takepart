@@ -942,15 +942,18 @@ aside#article-social-mobile-bottom {
         }
     } // inline content
 
-    .block-newsletter-campaign {
-        width: 50%;
-        min-width: 356px;
-        float: left;
-        display: block;
-        margin: 0 1em 1em 0;
-        border-top: 4px solid #000;
-        border-bottom: 4px solid #000;
-
+	//
+	// Newsletter Signup Block
+	//
+	.block-newsletter-campaign {
+		border-top: 4px solid #000;
+		border-bottom: 4px solid #000;
+		max-width: 50%;
+		min-width: 300px;
+		float: left;
+		display: block;
+		margin: 0.5em 1em 1em 0;
+		font: 100 14px/18px $primary-serif-font;
         h2 {
             font-family: "Brown",Verdana,Tahoma,"DejaVu Sans",sans-serif;
             line-height: 27px;
@@ -959,66 +962,14 @@ aside#article-social-mobile-bottom {
             text-transform: lowercase;
             margin: 10px 0;
         }
-
-        .takepart-newsletter-promo-text {
-            font: 100 14px/18px "Ashbury","Times New Roman",Times,Georgia,"DejaVu Serif",serif;
-        }
         .message {
-            margin: .75em 0;
+			margin-bottom: .75em;
         }
-        .form-item-email {
-            margin: 0 .5em 0 0;
-            display: inline-block;
-            font-family: $primary-sans-font;
-            max-width: 80%;
-            position: relative;
-            label {
-                display: none;
-                font: normal 12px/1 $primary-sans-font;
-                position: absolute;
-                left: 0;
-                bottom: 100%;
-                &.error {
-                    display: inline;
-                }
-            }
-            input#edit-email {
-                width: 100%;
-                border: 1px solid #CCC;
-                @include border-radius(0);
-                padding: 2px;
-                font-size: 12px;
-                line-height: 1.5em;
-                background-color: #FFF;
-            }
-        }
-        .rollover-image-on {
-            display: none;
-        }
-        .takepart-newsletter-form .form-submit {
-            margin-top: 2px;
-        }
-        .takepart-newsletter-message {
-            font: 100 14px/18px "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
-            margin-bottom: 10px;
-        }
-        .takepart-newsletter-terms {
-            margin-bottom: 10px;
-        }
-        .terms-of-service {
-            clear: both;
-            margin: 1em 0;
-            padding-bottom: 1em;
-            border-bottom: 1px solid $gray-line;
-            font-size: 12px;
-            // font-family: $primary-sans-font;
-            a {
-
-                line-height: 1.2em;
-                color: $mint;
-            }
-        }
-    }
+		.terms-of-service {
+			border: none;
+			padding-bottom: 0em;
+		}
+	}
 
     .topic-links {
         margin-bottom: 2em;
