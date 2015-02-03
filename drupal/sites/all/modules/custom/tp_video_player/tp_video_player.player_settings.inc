@@ -283,12 +283,12 @@ function tp_video_player_build_google_analytics_settings($configuration) {
 }
 
 function tp_video_player_build_site_catalyst_settings($configuration) {
-  $values = array();
-  if (!is_null($configuration->site_catalyst_media_name)) {
-    $values['mediaName'] = $configuration->site_catalyst_media_name;
-  }
-  if (!is_null($configuration->site_catalyst_player_name)) {
-    $values['playerName'] = $configuration->site_catalyst_player_name;
-  }
-  return count($values) > 0 ? array('sitecatalyst' => $values) : $values;
+//  $values = array();
+//  if (!is_null($configuration->site_catalyst_media_name)) {
+//    $values['mediaName'] = $configuration->site_catalyst_media_name;
+//  }
+//  if (!is_null($configuration->site_catalyst_player_name)) {
+//    $values['playerName'] = $configuration->site_catalyst_player_name;
+//  }
+//  return count($values) > 0 ? array('sitecatalyst' => $values) : $values;
 }
