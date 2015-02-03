@@ -383,7 +383,7 @@ function _tp_custom_nav_slim_block_gen() {
 
 /**
  *  @function:
- *    THis function is a modified clone of the megamenu and slim nav
+ *    This function is a modified clone of the megamenu and slim nav
  *
  *    @param:
  *      $menu = the menu to pull in and process

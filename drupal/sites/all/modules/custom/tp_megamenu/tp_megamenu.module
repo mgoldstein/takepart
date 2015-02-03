@@ -89,7 +89,7 @@ function tp_megamenu_megamenu(){
   foreach($mega_tree as $key => $link){
     $output .= '<li class="mega-item '. $link['link']['mlid']. '">';
     $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
-    $output .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path, array('attributes' => array('class' => array($link['link']['options']['attributes']['class'][0])))). '</div>';
+    $output .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path, array('absolute' => true, 'attributes' => array('class' => array($link['link']['options']['attributes']['class'][0])))). '</div>';
     $output .= '<div class="mega-content">';
 
     //left menu curation
@@ -120,10 +120,10 @@ function tp_megamenu_megamenu(){
 	  $output .= '</div>'; //end .categories
 	  //return more link
 	  if(isset($link['link']['options']['attributes']['name'])){
-		  $output .= l($link['link']['options']['attributes']['name'], $path, array('attributes' => array('class' => array('more'))));
+		  $output .= l($link['link']['options']['attributes']['name'], $path, array('absolute' => true, 'attributes' => array('class' => array('more'))));
 	  }
 	  else{
-		  $output .= l('See More '. $link['link']['link_title'], $path, array('attributes' => array('class' => array('more'))));
+		  $output .= l('See More '. $link['link']['link_title'], $path, array('absolute' => true, 'attributes' => array('class' => array('more'))));
 	  }
     $output .= '</div>'; //end .mega-content
     $output .= '</li>'; //end .mega-item
