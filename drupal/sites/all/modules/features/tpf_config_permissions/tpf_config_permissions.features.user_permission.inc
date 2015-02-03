@@ -42,15 +42,6 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'search_api_page',
   );
 
-  // Exported permission: 'administer SiteCatalyst configuration'.
-  $permissions['administer SiteCatalyst configuration'] = array(
-    'name' => 'administer SiteCatalyst configuration',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'omniture',
-  );
-
   // Exported permission: 'administer add another'.
   $permissions['administer add another'] = array(
     'name' => 'administer add another',
