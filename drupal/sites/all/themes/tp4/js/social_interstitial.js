@@ -1,35 +1,10 @@
 (function($, Drupal, window, document, undefined) {
     Drupal.behaviors.interstitialsBehaviors = {
         attach: function(context, settings) {
+
             // INTERSTITIALS
             $('body').once('interstitial_init', function() {
-              //check if mobile
-              var isMobile = {
-                Android: function() {
-                  return navigator.userAgent.match(/Android/i);
-                },
-                BlackBerry: function() {
-                  return navigator.userAgent.match(/BlackBerry/i);
-                },
-                iOS: function() {
-                  return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-                },
-                Opera: function() {
-                  return navigator.userAgent.match(/Opera Mini/i);
-                },
-                Windows: function() {
-                  return navigator.userAgent.match(/IEMobile/i);
-                },
-                any: function() {
-                  return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-                }
-              };
-              if(isMobile.any()) {
-                takeover_ad_init();
-              }else{
-                interstitial_init();
-              }
-
+              interstitial_init();
             });
 
             function GetQueryStringParams(sParam) {
@@ -58,15 +33,6 @@
                   show_interstitial(link);
                 }
               }
-
-            }
-            function show_takeover_ad(){
-
-              /* Set expiration for takeover ad */
-              var date = new Date();
-              date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
-              $.cookie('tp_ad_overlay', null);
-              $.cookie('tp_ad_overlay', 1, {expires: date, path: '/'});
 
             }
             function interstitial_init() {
