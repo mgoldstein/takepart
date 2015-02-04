@@ -337,7 +337,7 @@ function pm_interstitial_block_view($delta = '') {
           'attributes' => array(
             'data-interstitial-type' => $type,
             'rel' => 'nofollow',
-			'class' => 'interstitial',
+			'class' => array('interstitial'),
           ),
         ));
       }

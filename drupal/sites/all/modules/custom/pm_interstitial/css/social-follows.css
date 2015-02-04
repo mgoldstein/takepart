@@ -1,8 +1,8 @@
 #page .socials {
-  float: left; }
+  float: left;
+  margin-top: 0.5em; }
   #page .socials .social {
-    float: left;
-    margin-left: 14px; }
+    float: left; }
     #page .socials .social img {
       display: block; }
 
