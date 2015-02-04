@@ -1,0 +1,53 @@
+#page .form {
+  margin-bottom: 1em; }
+  #page .form .thank-you-message {
+    margin-top: 1em; }
+
+form {
+  color: #555;
+  font-family: AdelleSans-Light, sans-serif;
+  font-size: 12px; }
+
+.form-required {
+  display: none; }
+
+.form-type-textfield {
+  position: relative; }
+  .form-type-textfield label {
+    display: none; }
+  .form-type-textfield input {
+    max-width: 100%;
+    font-size: 12px;
+    font-family: AdelleSans-Light, sans-serif;
+    z-index: 1;
+    border: 1px solid #ccc;
+    box-shadow: inset 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+    background: #fff;
+    line-height: 32px;
+    min-height: 32px;
+    padding: 0 5px;
+    position: relative;
+    margin: 0;
+    width: 100%; }
+    .form-type-textfield input:focus::-webkit-input-placeholder {
+      color: transparent; }
+    .form-type-textfield input:focus:-moz-placeholder {
+      color: transparent; }
+    .form-type-textfield input:focus::-moz-placeholder {
+      color: transparent; }
+    .form-type-textfield input:focus {
+      max-width: 100%;
+      z-index: 3;
+      outline: none; }
+
+.form-actions input {
+  border: none;
+  color: #fff;
+  width: 100%;
+  padding: 0.25em;
+  cursor: pointer;
+  background: #01BF9E;
+  font-size: 24px;
+  font-family: AdelleSans-Regular, sans-serif; }
+  .form-actions input[type=submit]:hover {
+    background: #000; }

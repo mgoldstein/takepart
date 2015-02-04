@@ -1,0 +1,59 @@
+body {
+	background: #fff;
+	border-top: none !important;
+	border-bottom: none !important;
+	font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
+	font-size: 14px;
+}
+
+#site-footer,
+#site-header {
+	display: none;
+}
+
+header img {
+	width: 100%;
+	max-width: 400px;
+}
+
+#page-wrapper.campaign {
+	width: 400px;
+	height: 475px;
+}
+
+#page {
+	* {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.interstitial {
+		float: left;
+		vertical-align: top;
+		width: 100%;
+		max-width: 400px;
+	}
+	.content {
+		padding: 0 40px 20px;
+	}
+	.headline {
+		padding: 20px 40px 0;
+		margin-bottom: 5px;
+		font-size: 26px;
+		font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+	}
+	 .body p {
+		margin-bottom: 5px;
+	}
+	#dont {
+		font-family: AdelleSans-Light, sans-serif;
+		font-size: 12px;
+		clear:both;
+	}
+}
+
+#page.main {
+	.content a {
+		color: #019F84;
+	}
+}

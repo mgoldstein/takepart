@@ -7,15 +7,13 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 <div id="page-wrapper" class="campaign">
-  <?php print $header ?>
 
-  <!-- start -->
+	<!-- start -->
 
-  <main id="page" class="main">
-    <?=$content?>
-  </main>
-      
-  <!-- end -->
+	<main id="page" class="main interstitial" style="overflow:hidden;">
+		<?php print $variables['page']['content']['system_main']['content']; ?>
+	</main>
 
-  <?php print $footer ?>
+	<!-- end -->
+
 </div>
