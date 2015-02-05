@@ -166,6 +166,12 @@
 
     });
 
+    jwplayer(element_id).onPlaylistItem(function(event) {
+
+      this.config.sitecatalyst.mediaName = 'This should work but doesn\'t. :(';
+      console.log(this);
+    });
+
     jwplayer(element_id).onPlay(function(event){
       delete window.videoTransition;
 
@@ -183,7 +189,7 @@
 //        playConfig: autoplay,
 //        videoTitle: videoTitle
 //      });
-        _satellite.track('video_play');
+//        _satellite.track('video_play');
 
     });
   }
