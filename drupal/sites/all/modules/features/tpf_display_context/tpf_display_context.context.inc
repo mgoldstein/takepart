@@ -971,6 +971,12 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-4',
         ),
+        'bean-takepart-video-media-block' => array(
+          'module' => 'bean',
+          'delta' => 'takepart-video-media-block',
+          'region' => 'sidebar',
+          'weight' => '-3',
+        ),
       ),
     ),
   );
