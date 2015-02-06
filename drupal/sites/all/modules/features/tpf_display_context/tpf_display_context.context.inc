@@ -1313,12 +1313,6 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-9',
         ),
-        'boxes-ga_interstitial' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_interstitial',
-          'region' => 'footer',
-          'weight' => '-8',
-        ),
         'tp4_support-tp4_mobile_menu_header' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_mobile_menu_header',
