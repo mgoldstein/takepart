@@ -51,7 +51,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans_italic-webfont.eot');
+  src: url('../fonts/adelle_sans/adelle_sans/adelle_sans_italic_ot/AdelleSans_Italic.otf');
   font-weight: normal;
   font-style: italic;
 }
@@ -65,7 +65,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans_lightitalic-webfont.eot');
+  src: url('../fonts/adelle_sans/adelle_sans/adelle_sans_light_italic_ot/AdelleSans_LightItalic.otf');
   font-weight: 100;
   font-style: italic;
 }
@@ -79,7 +79,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans_light-webfont.eot');
+  src: url('../fonts/adelle_sans/adelle_sans/adelle_sans_light_ot/AdelleSans_Light.otf');
   font-weight: 100;
   font-style: normal;
 }
@@ -93,7 +93,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans_regular-webfont.eot');
+  src: url('../fonts/adelle_sans/adelle_sans/adelle_sans_regular_ot/AdelleSans_Regular.otf');
   font-weight: normal;
   font-style: normal;
 }
@@ -107,7 +107,7 @@
 
 @font-face {
   font-family: 'AdelleSans';
-  src: url('../fonts/adellesans/adellesans-bold-webfont.eot');
+  src: url('../fonts/adelle_sans/adelle_sans/adelle_sans_bold/AdelleSans_Bold.otf');
   font-weight: bold;
   font-style: normal;
 }
