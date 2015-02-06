@@ -208,7 +208,6 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_text']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_text']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['block_description'] = 'Contributions';
@@ -779,6 +778,18 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '1200',
   );
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_article_main_image']['id'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['table'] = 'field_data_field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['field'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_article_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_article_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_article_main_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   /* Field: Content: Inline Content: Embedded Content */
   $handler->display->display_options['fields']['inline_content_embedded']['id'] = 'inline_content_embedded';
   $handler->display->display_options['fields']['inline_content_embedded']['table'] = 'node';
@@ -840,10 +851,7 @@ echo $separator;
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
-    'campaign' => 'campaign',
-    'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
-    'flashcard' => 'flashcard',
   );
   /* Filter criterion: Content: Syndication (field_syndication) */
   $handler->display->display_options['filters']['field_syndication_value']['id'] = 'field_syndication_value';
@@ -1187,12 +1195,6 @@ echo $separator;
     'image_link' => 'content',
   );
   $handler->display->display_options['fields']['field_thumbnail']['group_column'] = 'entity_id';
-  /* Field: Content: Type */
-  $handler->display->display_options['fields']['type']['id'] = 'type';
-  $handler->display->display_options['fields']['type']['table'] = 'node';
-  $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = '';
-  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1200,6 +1202,12 @@ echo $separator;
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['block_description'] = 'Latest Stories';
   $export['content_types_posts_feed'] = $view;
 
@@ -4901,12 +4909,10 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
 ?>';
   $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
   $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
-  /* Sort criterion: Draggableviews: Weight */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'venue_pagination_sorter:page_1';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Contextual filter: Field: Listing (field_associated_content) */
   $handler->display->display_options['arguments']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['arguments']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';
@@ -5633,20 +5639,17 @@ print "<div id=\\"venue_pagination_count\\"> $page / $count </div>";
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Draggableviews: Content */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
   $handler->display->display_options['fields']['draggableviews']['field'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['label'] = 'Content to Sort';
   $handler->display->display_options['fields']['draggableviews']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['draggableviews']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['draggableviews']['draggableviews']['ajax'] = 0;
-  /* Sort criterion: Draggableviews: Weight */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Contextual filter: Field: Listing (field_associated_content) */
   $handler->display->display_options['arguments']['field_associated_content_nid']['id'] = 'field_associated_content_nid';
   $handler->display->display_options['arguments']['field_associated_content_nid']['table'] = 'field_data_field_associated_content';

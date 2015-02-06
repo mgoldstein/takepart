@@ -79,6 +79,12 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                 $xml .= "\t\t\t" . '<enclosure url="' . image_style_url("large", $thumb->uri) .
                         '" length="' . $thumb->filesize . '" type="' .
                         $thumb->filemime . '" />' . "\n";
+            } elseif ($id == 'field_article_main_image' && $object->content != '') {
+                preg_match('/(alt|title|src)="(?P<value>[^"]*)"/i', $object->content, $result);
+                $head = array_change_key_case(get_headers($result['value'], TRUE));
+                $xml .= "\t\t\t" . '<enclosure url="' . $result['value'] .
+                        '" length="' . $head['content-length'] . '" type="' .
+                        image_type_to_mime_type(exif_imagetype($result['value'])) . '" />' . "\n";
             } elseif ($id == 'field_related_stories' && $object->content != '') {
                 $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
             } elseif ($id == 'inline_content_embedded' && $object->content != '') {

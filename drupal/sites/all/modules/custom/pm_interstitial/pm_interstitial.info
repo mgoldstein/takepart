@@ -10,7 +10,7 @@ dependencies[] = newsletter_campaign
 
 scripts[] = js/interstitial.js
 scripts[] = js/newsletter.js
-scripts[] = js/social.js
+scripts[] = js/social-follows.js
 
 files[] = pm_interstitial.module
 files[] = pm_interstitial.forms.inc
