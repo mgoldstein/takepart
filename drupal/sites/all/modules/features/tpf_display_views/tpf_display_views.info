@@ -1,8 +1,8 @@
 name = TakePart Display Views
-description = Configure Views for TakePart - TP4 changes remove Feeds dependency
+description = Configure Views for TakePart - TP4 changes to feeds
 core = 7.x
 package = Content Display
-version = 7.x-1.10
+version = 7.x-1.11
 project = tpf_display_views
 dependencies[] = bean
 dependencies[] = context
