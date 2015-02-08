@@ -176,8 +176,7 @@ function takepart_search_feature_default_search_api_index() {
               "field_topic:name" : true,
               "field_series:name" : true,
               "field_video_series:name" : true,
-              "field_profile_photo:alt" : true,
-              "field_group_topic:name" : true
+              "field_profile_photo:alt" : true
             },
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
