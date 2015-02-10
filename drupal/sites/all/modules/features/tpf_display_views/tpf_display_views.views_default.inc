@@ -495,7 +495,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Action Header Image */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_actionheaderimg']['id'] = 'field_actionheaderimg';
   $handler->display->display_options['fields']['field_actionheaderimg']['table'] = 'field_data_field_actionheaderimg';
   $handler->display->display_options['fields']['field_actionheaderimg']['field'] = 'field_actionheaderimg';
@@ -1456,7 +1456,7 @@ echo $separator;
     'image_style' => 'tp_promo_feature_thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Main Image */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_blogpost_main_image']['id'] = 'field_blogpost_main_image';
   $handler->display->display_options['fields']['field_blogpost_main_image']['table'] = 'field_data_field_blogpost_main_image';
   $handler->display->display_options['fields']['field_blogpost_main_image']['field'] = 'field_blogpost_main_image';
@@ -1464,12 +1464,6 @@ echo $separator;
   $handler->display->display_options['fields']['field_blogpost_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_blogpost_main_image']['empty'] = '[field_page_main_image]';
   $handler->display->display_options['fields']['field_blogpost_main_image']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['settings'] = array(
-    'image_style' => 'tp_promo_feature_thumbnail',
-    'image_link' => 'content',
-  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -3583,17 +3577,9 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_topic_1']['ui_name'] = 'Topics [taxonomy_term]';
   $handler->display->display_options['arguments']['field_topic_1']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_topic_1']['default_argument_type'] = 'taxonomy_tid';
-  $handler->display->display_options['arguments']['field_topic_1']['default_argument_options']['vocabularies'] = array(
-    'action_type' => 0,
-    'agency' => 0,
-    'blog' => 0,
-    'free_tags' => 0,
-    'group_type' => 0,
-    'photo_credit' => 0,
-    'series' => 0,
-    'topic' => 0,
-  );
   $handler->display->display_options['arguments']['field_topic_1']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_topic_1']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_topic_1']['not'] = 0;
   /* Filter criterion: Indexed Content: Content type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_site_node_index';
@@ -3601,13 +3587,12 @@ return TRUE;';
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'openpublish_blog_post' => 'openpublish_blog_post',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
-    'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
   /* Filter criterion: Indexed Content: Status */
@@ -3774,17 +3759,9 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_free_tag']['ui_name'] = 'Free Tags [taxonomy_term]';
   $handler->display->display_options['arguments']['field_free_tag']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_free_tag']['default_argument_type'] = 'taxonomy_tid';
-  $handler->display->display_options['arguments']['field_free_tag']['default_argument_options']['vocabularies'] = array(
-    'action_type' => 0,
-    'agency' => 0,
-    'blog' => 0,
-    'free_tags' => 0,
-    'group_type' => 0,
-    'photo_credit' => 0,
-    'series' => 0,
-    'topic' => 0,
-  );
   $handler->display->display_options['arguments']['field_free_tag']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_free_tag']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['field_free_tag']['not'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Indexed Content: Content type */
@@ -3794,13 +3771,12 @@ return TRUE;';
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'openpublish_blog_post' => 'openpublish_blog_post',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
-    'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
   /* Filter criterion: Indexed Content: Status */
@@ -3922,14 +3898,12 @@ return TRUE;';
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'openpublish_blog_post' => 'openpublish_blog_post',
-    'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
-    'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
   /* Filter criterion: Indexed Content: Status */
@@ -3941,9 +3915,9 @@ return TRUE;';
   );
   $handler->display->display_options['filters']['status']['group'] = '0';
 
-  /* Display: Free Tag Feed */
-  $handler = $view->new_display('page', 'Free Tag Feed', 'tag_feeds');
-  $handler->display->display_options['display_description'] = 'Free Tag filter displayed as RSS';
+  /* Display: Topic Feed */
+  $handler = $view->new_display('page', 'Topic Feed', 'tag_feeds');
+  $handler->display->display_options['display_description'] = 'Topic filter displayed as RSS';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
@@ -4006,13 +3980,12 @@ return TRUE;';
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'openpublish_blog_post' => 'openpublish_blog_post',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
-    'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
   /* Filter criterion: Indexed Content: Status */
@@ -4112,13 +4085,12 @@ return TRUE;';
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'openpublish_blog_post' => 'openpublish_blog_post',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
-    'openpublish_video' => 'openpublish_video',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
   /* Filter criterion: Indexed Content: Status */
@@ -4169,7 +4141,7 @@ return TRUE;';
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  /* Field: Content: Main Image */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_blogpost_main_image']['id'] = 'field_blogpost_main_image';
   $handler->display->display_options['fields']['field_blogpost_main_image']['table'] = 'field_data_field_blogpost_main_image';
   $handler->display->display_options['fields']['field_blogpost_main_image']['field'] = 'field_blogpost_main_image';
@@ -4301,20 +4273,13 @@ return TRUE;';
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  /* Field: Content: Main Image */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_blogpost_main_image']['id'] = 'field_blogpost_main_image';
   $handler->display->display_options['fields']['field_blogpost_main_image']['table'] = 'field_data_field_blogpost_main_image';
   $handler->display->display_options['fields']['field_blogpost_main_image']['field'] = 'field_blogpost_main_image';
   $handler->display->display_options['fields']['field_blogpost_main_image']['label'] = '';
   $handler->display->display_options['fields']['field_blogpost_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_blogpost_main_image']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['settings'] = array(
-    'image_style' => 'large',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_blogpost_main_image']['group_column'] = 'fid';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Video Series (field_video_series) */
   $handler->display->display_options['arguments']['field_video_series_tid']['id'] = 'field_video_series_tid';
