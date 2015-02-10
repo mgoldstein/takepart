@@ -10,9 +10,9 @@
     attach: function(context, settings) {
 
       $('.mobile-social-wrapper .share').toggle(function(){
-        $(this).addClass('active');
+        $(this).parents('.mobile-social-wrapper').addClass('sharing');
       }, function(){
-        $(this).removeClass('active');
+        $(this).parents('.mobile-social-wrapper').removeClass('sharing');
       });
 
       if ($(window).width() < 768 && !$('body').hasClass('.node-type-campaign-page')){

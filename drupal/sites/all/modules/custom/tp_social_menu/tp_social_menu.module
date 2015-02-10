@@ -1,0 +1,58 @@
+<?php
+/**
+ * Social Menu
+ */
+
+function tp_social_menu_theme(){
+  return array(
+    'tp_social_menu' => array(
+      'variables' => array(
+        'elements' => array(),
+        'options' => array()
+      )
+    ),
+    'tp_social_menu_menu' => array(
+      'variables' => array(
+        'items' => array()
+      ),
+      'template' => 'templates/social-menu'
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme()
+ * List of possible items->
+ * action, social, reach, subscribe, facebook
+ */
+function theme_tp_social_menu($variables){
+  $elements = array();
+  foreach($variables['elements'] as $element){
+    switch($element){
+      case 'action':
+        $elements['action'] = '<h3 class="tp-social-headline take-action-headline">Take Action</h3><p class="takepart-take-action"></p>';
+        break;
+      case 'social':
+        $elements['social'] = '<h3 class="tp-social-headline share-headline">Share</h3><div class="tp-social" id="article-share"></div>';
+        if(isset($variables['options']['comments']) && $variables['options']['comments'] == TRUE){
+          $elements['social'] .= '
+                <p id="article-comments-link" class="comments-link">
+                    <a href="#article-comments">Comments<span class="count"></span></a>
+                </p>';
+        }
+        break;
+      case 'subscribe':
+        $elements['subscribe'] = '<h3 class="tp-social-headline subscribe">Subscribe</h3><div></div>';
+        break;
+      case 'facebook':
+        $elements['facebook'] = '<h3 class="tp-social-headline facebook">Facebook</h3><div></div>';
+        break;
+      case 'overlay':
+        $elements['overlay'] = '<div class="tap-influence-overlay"></div>';
+        break;
+    }
+  }
+
+  $menu = theme('tp_social_menu_menu', array('items' => $elements));
+  return $menu;
+}
