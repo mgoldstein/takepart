@@ -65,7 +65,27 @@ function takepart_search_feature_default_search_api_index() {
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_aggregation" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_aggregation" : {
+          "status" : 1,
+          "weight" : "0",
+          "settings" : { "fields" : { "search_api_aggregation_1" : {
+                "name" : "Terms",
+                "type" : "fulltext",
+                "fields" : [
+                  "field_free_tag",
+                  "field_topic",
+                  "field_series",
+                  "field_video_series",
+                  "field_free_tag:name",
+                  "field_topic:name",
+                  "field_series:name",
+                  "field_video_series:name"
+                ],
+                "description" : "A Fulltext aggregation of the following fields: Free Tag, Topic, Series, Video Series, Free Tag \\u00bb Name, Topic \\u00bb Name, Series \\u00bb Name, Video Series \\u00bb Name."
+              }
+            }
+          }
+        },
         "search_api_alter_bundle_filter" : {
           "status" : 1,
           "weight" : "0",
@@ -141,7 +161,6 @@ function takepart_search_feature_default_search_api_index() {
               "title" : true,
               "field_promo_headline" : true,
               "field_promo_text" : true,
-              "search_api_aggregation_1" : true,
               "body:value" : true,
               "field_free_tag:name" : true,
               "field_topic:name" : true,
