@@ -66,9 +66,6 @@ function tp4_support_block_info(){
   $blocks['tp4_mobile_menu_header'] = array(
     'info' => t('Mobile Menu Header')
   );
-  $blocks['tp4_mobile_social_menu'] = array(
-    'info' => t('Mobile Social Menu')
-  );
   return $blocks;
 }
 
@@ -97,10 +94,6 @@ function tp4_support_block_view($delta = ''){
     case 'tp4_mobile_menu_header':
       $block['content'] = theme('tp4_support_mobile_menu_header');
     break;
-    case 'tp4_mobile_social_menu':
-      drupal_add_js(drupal_get_path('module', 'tp4_support'). '/js/mobile-social-menu.js', 'file'); //TODO: move this to tp4 theme script.js file
-      $block['content'] = theme('tp4_support_mobile_social_menu');
-      break;
   }
   return $block;
 }

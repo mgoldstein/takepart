@@ -1408,46 +1408,6 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'tp4_mobile_social_share';
-  $context->description = '';
-  $context->tag = 'TakePart';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'feature_article' => 'feature_article',
-        'flashcard' => 'flashcard',
-        'openpublish_article' => 'openpublish_article',
-        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-        'video' => 'video',
-        'video_playlist' => 'video_playlist',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'tp4_support-tp4_mobile_social_menu' => array(
-          'module' => 'tp4_support',
-          'delta' => 'tp4_mobile_social_menu',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('TakePart');
-  $export['tp4_mobile_social_share'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'tp4_photo_gallery';
   $context->description = '';
   $context->tag = 'TP4';
