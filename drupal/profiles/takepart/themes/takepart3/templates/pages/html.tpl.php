@@ -52,16 +52,16 @@
   <?php endif; ?>
 
         <?php print $head; ?>
-        <? if ( $is_iframed ): ?>
+        <?php if ( $is_iframed ): ?>
             <base href="<?php print '//' . $_SERVER['HTTP_HOST']; ?>" target="_parent" />
-        <? endif ?>
+        <?php endif ?>
         <meta name="viewport" content="width=device-width">
         <?php print $styles; ?>
         <!--[if lt IE 9]>
             <script src="/sites/all/themes/takepart_core/js/html5shiv.js"></script>
         <![endif]-->
         <?php print $scripts; ?>
-        <? if ( $is_iframed ): ?>
+        <?php if ( $is_iframed ): ?>
             <script type="text/javascript">
                 jQuery( document ).ready(function() {
                     jQuery('a.join-login').attr('href', function(i, val) {
@@ -69,14 +69,14 @@
                     });
                 });
             </script>
-        <? endif ?>
+        <?php endif ?>
     </head>
     <body class="<?php print $classes; ?>" <?php print $attributes; ?>>
-        <? if ( !$is_iframed ): ?>
+        <?php if ( !$is_iframed ): ?>
             <div id="skip-link">
                 <a href="#page" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
             </div>
-        <? endif ?>
+        <?php endif ?>
         <?php
         if (isset($page_top)):
             echo $page_top;

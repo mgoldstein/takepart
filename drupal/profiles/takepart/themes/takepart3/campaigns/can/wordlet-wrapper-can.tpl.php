@@ -9,17 +9,17 @@
 	<div class="page-wrap">
 		<div class="main">
 			<div class="header">
-				<? if ( $w = w('header_image') ): ?>
+				<?php if ( $w = w('header_image') ): ?>
 					<h1 <?=wa('header_image')?>>
 						<span><?=$w->single?></span>
 						<img src="<?=$w->img_src?>" alt="can logo" />
 					</h1>
-				<? endif ?>
+				<?php endif ?>
 				<div class="menu">
 					<ul <?=wa('menu')?>>
-						<? foreach( wl('menu') as $w ): ?>
+						<?php foreach( wl('menu') as $w ): ?>
 							<li><a href="<?=$w->href?>" class="<?=ws($w->href)?>"><?=$w->single(false)?></a></li>
-						<? endforeach ?>
+						<?php endforeach ?>
 					</ul>
 				</div>
 			</div>

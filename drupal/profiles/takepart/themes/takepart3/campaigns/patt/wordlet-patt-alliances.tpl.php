@@ -8,11 +8,11 @@
 
 		<div class="primary_alliances">
 			<ul <?=wa('primary_alliances')?>>
-				<? foreach ( wl('primary_alliances') as $w ): ?>
+				<?php foreach ( wl('primary_alliances') as $w ): ?>
 					<li><a href="<?=$w->href?>">
 						<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" width="275" height="86" />
 					</a></li>
-				<? endforeach ?>
+				<?php endforeach ?>
 			</ul>
 		</div>
 
@@ -22,11 +22,11 @@
 			</div>
 
 			<ul <?=wa('secondary_alliances')?>>
-				<? foreach ( wl('secondary_alliances') as $w ): ?>
+				<?php foreach ( wl('secondary_alliances') as $w ): ?>
 					<li><a href="<?=$w->href?>">
 						<?=$w->single(false)?>
 					</a></li>
-				<? endforeach ?>
+				<?php endforeach ?>
 			</ul>
 		</div>
 	</div><!-- /.inner -->

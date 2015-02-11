@@ -5,9 +5,9 @@
 			<div class="header">
 				<div class="logo">
 					<a href="<?=wu('patt_home')?>">
-						<? if ( $w = w('logo') ): ?>
+						<?php if ( $w = w('logo') ): ?>
 							<img src="<?=$w->img_src?>" width="357" height="206" alt="<?=$w->single(false)?>" <?=wa('logo')?> />
-						<? endif ?>
+						<?php endif ?>
 					</a>
 				</div>
 				<p class="mobile" id="mobile_back">
@@ -17,12 +17,12 @@
 			
 			<div class="nav">
 				<ul <?=wa('top_nav')?>>
-					<? foreach ( wl('top_nav') as $w ): ?>
+					<?php foreach ( wl('top_nav') as $w ): ?>
 						<li class="<?=wc($w->href_raw)?> <?=($w->token == 'patt_action')?'active':''?>"><a href="<?=$w->href?>">
 							<img src="<?=$w->img_src?>" alt="<?=$w->single(false)?>" />
 							<span><?=$w->single(false)?></span>
 						</a></li>
-					<? endforeach ?>
+					<?php endforeach ?>
 				</ul>
 			</div>
 		</div><!-- /.table -->

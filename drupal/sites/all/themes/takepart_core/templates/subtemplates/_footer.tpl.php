@@ -1,13 +1,13 @@
 <footer id="site-footer">
   <div class="inner">
-    <? if ( ($nav = _smenu('menu-takepart-topics')) ): ?>
+    <?php if ( ($nav = _smenu('menu-takepart-topics')) ): ?>
       <section id="site-topics">
         <h4><?=t('Topics') ?></h4>
         <?=$nav ?>
       </section>
-    <? endif ?>
+    <?php endif ?>
 
-    <? if ( ($nav = _smenu('menu-takepart-film-campaigns')) ): ?>
+    <?php if ( ($nav = _smenu('menu-takepart-film-campaigns')) ): ?>
       <section id="site-campaigns">
         <h4><?=t('Film Campaigns') ?></h4>
         <?=$nav ?>
@@ -15,14 +15,14 @@
           <a href="/film-campaigns"><?=t('More Film Campaigns') ?></a>
         </p>
       </section>
-    <? endif ?>
+    <?php endif ?>
 
-    <? if ( ($nav = _smenu('menu-takepart-links')) ): ?>
+    <?php if ( ($nav = _smenu('menu-takepart-links')) ): ?>
       <section id="site-takepart-links">
         <h4><?=t('About TakePart') ?></h4>
         <?=$nav ?>
       </section>
-    <? endif ?>
+    <?php endif ?>
 
     <section id="site-connect">
       <h4><?=t('Connect') ?></h4>

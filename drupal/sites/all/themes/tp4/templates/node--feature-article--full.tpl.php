@@ -35,7 +35,7 @@
     <!-- / #article-social -->
 
     <div id="article-content">
-        <? print render($content['field_article_subhead']); ?>
+        <?php print render($content['field_article_subhead']); ?>
 
         <?php if (isset($field_topic_box_top)) : ?>
             <div class="topic-box">
