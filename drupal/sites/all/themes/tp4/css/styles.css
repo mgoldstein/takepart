@@ -16373,13 +16373,13 @@ body #article-content .inline-content-playlist.align-full {
   font-size: 25px;
   margin: 0 auto;
   display: block;
-  height: 40px;
-  width: 40px;
+  height: 37px;
+  width: 37px;
   margin-bottom: 5px;
 }
 /* line 13, ../sass/modules/_social-menu.scss */
 .takepart-custom-take-action-button i {
-  line-height: 40px;
+  line-height: 37px;
   text-align: center;
   display: text;
   width: 100%;
@@ -16564,65 +16564,103 @@ body #article-content .inline-content-playlist.align-full {
   display: none;
 }
 
+/*
+ *Influence overrides
+ */
+@media all and (min-width: 480px) {
+  /* line 161, ../sass/modules/_social-menu.scss */
+  li.takeaction {
+    position: absolute;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 161, ../sass/modules/_social-menu.scss */
+  li.takeaction {
+    position: relative;
+  }
+}
+
+@media all and (min-width: 480px) {
+  /* line 169, ../sass/modules/_social-menu.scss */
+  .social-wrapper li.social {
+    width: 160px;
+    margin: 5px auto 0;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 169, ../sass/modules/_social-menu.scss */
+  .social-wrapper li.social {
+    width: 240px;
+    margin: 5px auto 0;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 169, ../sass/modules/_social-menu.scss */
+  .social-wrapper li.social {
+    width: auto;
+    margin: 5px auto 0;
+  }
+}
+
 /**
  * The below should be separated out into it's own tpsocial helper
  */
-/* line 161, ../sass/modules/_social-menu.scss */
+/* line 188, ../sass/modules/_social-menu.scss */
 .social .tp-social-pinterest:before {
   background-color: #ca2026;
 }
 
-/* line 165, ../sass/modules/_social-menu.scss */
+/* line 192, ../sass/modules/_social-menu.scss */
 .social .tp-social-facebook:before {
   background-color: #3d5b96;
 }
 
-/* line 169, ../sass/modules/_social-menu.scss */
+/* line 196, ../sass/modules/_social-menu.scss */
 .social .tp-social-twitter:before {
   background-color: #34aadf;
 }
 
-/* line 173, ../sass/modules/_social-menu.scss */
+/* line 200, ../sass/modules/_social-menu.scss */
 .social .tp-social-googleplus:before {
   background-color: #cc181e;
 }
 
-/* line 177, ../sass/modules/_social-menu.scss */
+/* line 204, ../sass/modules/_social-menu.scss */
 .social .tp-social-tumblr:before {
   background-color: #385774;
 }
 
-/* line 181, ../sass/modules/_social-menu.scss */
+/* line 208, ../sass/modules/_social-menu.scss */
 .social .tp-social-email:before {
   background-color: #000;
 }
 
-/* line 185, ../sass/modules/_social-menu.scss */
+/* line 212, ../sass/modules/_social-menu.scss */
 .social .tp-social-mailto:before {
   background-color: #000;
 }
 
-/* line 189, ../sass/modules/_social-menu.scss */
+/* line 216, ../sass/modules/_social-menu.scss */
 .social .tp-social-linkedin:before {
   background-color: #0977b4;
 }
 
-/* line 193, ../sass/modules/_social-menu.scss */
+/* line 220, ../sass/modules/_social-menu.scss */
 .social .tp-social-vine:before {
   background-color: #00b386;
 }
 
-/* line 197, ../sass/modules/_social-menu.scss */
+/* line 224, ../sass/modules/_social-menu.scss */
 .social .tp-social-instagram:before {
   background-color: #3f729b;
 }
 
-/* line 201, ../sass/modules/_social-menu.scss */
+/* line 228, ../sass/modules/_social-menu.scss */
 .social .tp-social-youtube:before {
   background-color: #cc181e;
 }
 
-/* line 205, ../sass/modules/_social-menu.scss */
+/* line 232, ../sass/modules/_social-menu.scss */
 .social .tp-social-reddit:before {
   background-color: #00b386;
 }
@@ -16630,7 +16668,7 @@ body #article-content .inline-content-playlist.align-full {
 /**
  *Overrides
  */
-/* line 214, ../sass/modules/_social-menu.scss */
+/* line 241, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile #article-share .tp-social-link {
   display: inline-block;
   width: 50px;
@@ -16639,25 +16677,25 @@ body #article-content .inline-content-playlist.align-full {
   margin: 0;
 }
 
-/* line 221, ../sass/modules/_social-menu.scss */
+/* line 248, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile #article-share {
   margin: 0;
   width: 100%;
 }
 
-/* line 225, ../sass/modules/_social-menu.scss */
+/* line 252, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile .tp-social-headline {
   color: white;
   font-size: 15px;
 }
 
-/* line 229, ../sass/modules/_social-menu.scss */
+/* line 256, ../sass/modules/_social-menu.scss */
 #article-social {
   /* needed to override CSS provided by TAP in influence .css */
   height: 0 !important;
 }
-@media all and (min-width: 768px) {
-  /* line 229, ../sass/modules/_social-menu.scss */
+@media all and (min-width: 480px) {
+  /* line 256, ../sass/modules/_social-menu.scss */
   #article-social {
     height: 57px !important;
     border-top: 1px solid #cccccc;
@@ -16665,13 +16703,13 @@ body #article-content .inline-content-playlist.align-full {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 229, ../sass/modules/_social-menu.scss */
+  /* line 256, ../sass/modules/_social-menu.scss */
   #article-social {
     border: none;
   }
 }
 
-/* line 241, ../sass/modules/_social-menu.scss */
+/* line 268, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile .takepart-take-action {
   margin: -7px auto 0;
 }

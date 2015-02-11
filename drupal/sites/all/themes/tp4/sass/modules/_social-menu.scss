@@ -7,11 +7,11 @@
   font-size: 25px;
   margin: 0 auto;
   display: block;
-  height: 40px;
-  width: 40px;
+  height: 37px;
+  width: 37px;
   margin-bottom: 5px;
   i{
-    line-height: 40px;
+    line-height: 37px;
     text-align: center;
     display: text;
     width: 100%;
@@ -155,6 +155,33 @@
 }
 
 
+/*
+ *Influence overrides
+ */
+li.takeaction{
+  @include breakpoint(480px){
+    position: absolute;
+  }
+  @include breakpoint($breakpoint-desktop){
+    position: relative;
+  }
+}
+.social-wrapper li.social{
+  @include breakpoint(480px){
+    width: 160px;
+    margin: 5px auto 0;
+  }
+  @include breakpoint($breakpoint-tablet){
+    width: 240px;
+    margin: 5px auto 0;
+  }
+  @include breakpoint($breakpoint-desktop){
+    width: auto;
+    margin: 5px auto 0;
+  }
+}
+
+
 /**
  * The below should be separated out into it's own tpsocial helper
  */
@@ -229,7 +256,7 @@
 #article-social{
   /* needed to override CSS provided by TAP in influence .css */
   height: 0 !important;
-  @include breakpoint($breakpoint-tablet){
+  @include breakpoint(480px){
     height: 57px !important;
     border-top: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
