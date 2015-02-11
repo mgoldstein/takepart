@@ -36,13 +36,9 @@ function takepart_search_feature_default_search_api_index() {
         "field_admin_tag" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_author" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_author:title" : { "type" : "list\\u003Cstring\\u003E" },
-        "field_blogpost_blog" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_free_tag" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_free_tag:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_free_tag:url" : { "type" : "list\\u003Curi\\u003E" },
-        "field_group_topic" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_group_topic:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_group_topic:url" : { "type" : "list\\u003Curi\\u003E" },
         "field_profile_photo:alt" : { "type" : "text" },
         "field_profile_photo:file" : { "type" : "integer", "entity_type" : "file" },
         "field_promo_headline" : { "type" : "text" },
@@ -79,17 +75,14 @@ function takepart_search_feature_default_search_api_index() {
                 "fields" : [
                   "field_free_tag",
                   "field_topic",
-                  "field_display_tag",
                   "field_series",
                   "field_video_series",
-                  "field_group_topic",
                   "field_free_tag:name",
                   "field_topic:name",
                   "field_series:name",
-                  "field_video_series:name",
-                  "field_group_topic:name"
+                  "field_video_series:name"
                 ],
-                "description" : "A Fulltext aggregation of the following fields: Free Tag, Topic, Display Tag, Series, Video Series, Topic, Free Tag \\u00bb Name, Topic \\u00bb Name, Series \\u00bb Name, Video Series \\u00bb Name, Topic \\u00bb Name."
+                "description" : "A Fulltext aggregation of the following fields: Free Tag, Topic, Series, Video Series, Free Tag \\u00bb Name, Topic \\u00bb Name, Series \\u00bb Name, Video Series \\u00bb Name."
               }
             }
           }
@@ -129,8 +122,7 @@ function takepart_search_feature_default_search_api_index() {
               "field_free_tag:name" : true,
               "field_topic:name" : true,
               "field_series:name" : true,
-              "field_video_series:name" : true,
-              "field_group_topic:name" : true
+              "field_video_series:name" : true
             }
           }
         },
@@ -190,6 +182,7 @@ function takepart_search_feature_default_search_api_index() {
             "suffix" : "\\u003C\\/strong\\u003E",
             "excerpt" : 1,
             "excerpt_length" : "256",
+            "exclude_fields" : [],
             "highlight" : "always"
           }
         }

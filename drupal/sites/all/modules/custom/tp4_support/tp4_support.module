@@ -288,6 +288,11 @@ function tp4_menu_link__menu_takepart_links(array $variables) {
  * theme hook.
  */
 function template_preprocess_tp4_support_footer(&$variables) {
+  global $base_url;
+
+  // In the cases where the CSS isn't part of the theme
+  drupal_add_css($base_url.base_path().drupal_get_path('theme', 'tp4').'/css/styles.css');
+
   $variables['footer_menu_links'] = drupal_render($variables['footer_menu']);
   if (arg(0) === 'iframes') {
     $variables['footer_menu_links'] = str_replace('https://', 'http://', $variables['footer_menu_links']);
@@ -307,6 +312,9 @@ function template_preprocess_tp4_support_footer(&$variables) {
 function template_preprocess_tp4_support_slim_nav(&$variables) {
   global $base_url;
   global $user;
+
+  // In the cases where the CSS isn't part of the theme
+  drupal_add_css($base_url.base_path().drupal_get_path('theme', 'tp4').'/css/styles.css');
 
   $image = theme('image', array(
     'path' => drupal_get_path('theme', 'tp4') . '/images/takepart_logo.png',

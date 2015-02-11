@@ -1138,12 +1138,9 @@ function tpf_display_context_context_default_contexts() {
   $context->description = 'Expose DTM';
   $context->tag = 'DTM';
   $context->conditions = array(
-    'node' => array(
+    'sitewide' => array(
       'values' => array(
-        'campaign_page' => 'campaign_page',
-      ),
-      'options' => array(
-        'node_form' => '0',
+        1 => 1,
       ),
     ),
   );
