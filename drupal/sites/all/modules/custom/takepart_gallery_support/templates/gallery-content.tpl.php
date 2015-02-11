@@ -18,11 +18,16 @@
       <span class="byline"><?php print $gallery_authors; ?></span>
     </div>
     <aside id="gallery-content-social" class="social">
-       <div class="tp-sharing-container">
-         <h3 class="headline"><?=t('Share Photo') ?></h3>
-         <div class="tp-social" id="gallery-cover-share"></div>
-        </div>
-      <div class="tap-influence-overlay"></div>
+<!--       <div class="tp-sharing-container">-->
+<!--         <h3 class="headline">--><?//=t('Share Photo') ?><!--</h3>-->
+<!--         <div class="tp-social" id="gallery-cover-share"></div>-->
+<!--        </div>-->
+<!--      <div class="tap-influence-overlay"></div>-->
+      <?php
+      $social_elements = array('action', 'social', 'subscribe', 'facebook', 'overlay');
+      $options = array();
+      print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
+      ?>
     </aside>
   </header>
 

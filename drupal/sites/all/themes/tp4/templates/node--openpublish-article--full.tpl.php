@@ -31,7 +31,7 @@
     <aside id="article-social" class="social">
       <?php
       $social_elements = array('action', 'social', 'subscribe', 'facebook', 'overlay');
-      $options = array();
+      $options = array('comments' => TRUE);
       print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
       ?>
     </aside><!-- / #article-social -->
