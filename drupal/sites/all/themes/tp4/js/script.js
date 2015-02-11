@@ -209,6 +209,12 @@
             },
             {
               name: 'tumblr'
+            },
+            {
+              name: 'pinterest'
+            },
+            {
+              name: 'reddit'
             }
           ]
         };

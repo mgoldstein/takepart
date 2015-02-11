@@ -16666,36 +16666,60 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /**
+ * Logic for what to hide on Desktop
+ */
+@media all and (min-width: 480px) {
+  /* line 242, ../sass/modules/_social-menu.scss */
+  #article-social #article-share .tp-social-pinterest {
+    display: none;
+  }
+  /* line 245, ../sass/modules/_social-menu.scss */
+  #article-social #article-share .tp-social-reddit {
+    display: none;
+  }
+}
+/**
  *Overrides
  */
-/* line 241, ../sass/modules/_social-menu.scss */
+/* line 255, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile #article-share .tp-social-link {
   display: inline-block;
-  width: 50px;
+  width: 52px;
   height: auto;
   padding: 0;
   margin: 0;
 }
 
-/* line 248, ../sass/modules/_social-menu.scss */
+/* line 262, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile #article-share {
   margin: 0;
-  width: 100%;
+  width: auto;
+  float: none;
 }
 
-/* line 252, ../sass/modules/_social-menu.scss */
+/* line 273, ../sass/modules/_social-menu.scss */
+#article-social .social-wrapper.mobile .takepart-take-action,
+#article-social .social-wrapper.mobile .comments-link,
+#article-social .social-wrapper.mobile #article-share,
+#article-social .social-wrapper.mobile #article-share .tp-social-link,
+#article-social .social-wrapper.mobile .comments-link a,
+#article-social .social-wrapper.mobile .trigger a {
+  float: none;
+}
+
+/* line 280, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile .tp-social-headline {
   color: white;
   font-size: 15px;
 }
 
-/* line 256, ../sass/modules/_social-menu.scss */
+/* line 284, ../sass/modules/_social-menu.scss */
 #article-social {
   /* needed to override CSS provided by TAP in influence .css */
   height: 0 !important;
 }
 @media all and (min-width: 480px) {
-  /* line 256, ../sass/modules/_social-menu.scss */
+  /* line 284, ../sass/modules/_social-menu.scss */
   #article-social {
     height: 57px !important;
     border-top: 1px solid #cccccc;
@@ -16703,13 +16727,13 @@ body #article-content .inline-content-playlist.align-full {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 256, ../sass/modules/_social-menu.scss */
+  /* line 284, ../sass/modules/_social-menu.scss */
   #article-social {
     border: none;
   }
 }
 
-/* line 268, ../sass/modules/_social-menu.scss */
+/* line 296, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile .takepart-take-action {
   margin: -7px auto 0;
 }

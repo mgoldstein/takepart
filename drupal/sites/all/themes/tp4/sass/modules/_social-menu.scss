@@ -234,21 +234,49 @@ li.takeaction{
   background-color: #00b386; //this also obviously needs to change
 }
 
+/**
+ * Logic for what to hide on Desktop
+ */
+@include breakpoint(480px){
+  #article-social #article-share{
+    .tp-social-pinterest{
+      display: none;
+    }
+    .tp-social-reddit{
+      display: none;
+    }
+  }
+}
+
 
 /**
  *Overrides
  */
 #article-social .social-wrapper.mobile #article-share  .tp-social-link{
   display: inline-block;
-  width: 50px;
+  width: 52px;
   height: auto;
   padding: 0;
   margin: 0;
 }
 #article-social .social-wrapper.mobile #article-share{
   margin: 0;
-  width: 100%;
+  width: auto;
+  float: none;
 }
+#article-social .social-wrapper.mobile{
+  .takepart-take-action,
+  .comments-link,
+  #article-share,
+  #article-share .tp-social-link,
+  .comments-link a,
+  .trigger a{
+    float: none;
+  }
+}
+
+
+
 #article-social .social-wrapper.mobile .tp-social-headline{
   color: white;
   font-size: 15px;
