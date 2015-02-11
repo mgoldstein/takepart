@@ -11,45 +11,45 @@
     </div>
 
     <div class="columns-wrapper">
-    <? foreach ( wl('columns') as $i => $w ): ?>
-        <? $column_number = $i + 1; // the array is zero indexed ?>
-        <? $zebra = ($column_number % 2 == 0) ? 'even' : 'odd'; ?>
+    <?php foreach ( wl('columns') as $i => $w ): ?>
+        <?php $column_number = $i + 1; // the array is zero indexed ?>
+        <?php $zebra = ($column_number % 2 == 0) ? 'even' : 'odd'; ?>
         <section class="content-column column-<?=$column_number?> column-<?=$zebra?>">
             <!-- <h1 class='col-headline'><?=$w->single?></h1> -->
             <div class="col-content cms">
                 <?=$w->multi?>
             </div>
         </section>
-    <? endforeach ?>
+    <?php endforeach ?>
     </div>
-    <? if (w('social_footer_label')) : ?>
+    <?php if (w('social_footer_label')) : ?>
     <div class="social-footer">
         <span><?=w('social_footer_label')?></span>
             <span <?=wa('social_facebook')?>>
-            <? if(w('social_facebook')->img_src) : ?>
+            <?php if(w('social_facebook')->img_src) : ?>
             <a href="<?=w('social_facebook')->href?>" target="_blank">
     	       <img src="<?=w('social_facebook')->img_src?>" alt="<?=w('social_facebook')->single_no_markup?>">
             </a>
-            <? endif ?>
+            <?php endif ?>
             </span>
             <span <?=wa('social_twitter')?>>
-            <? if(w('social_twitter')->img_src) : ?>
+            <?php if(w('social_twitter')->img_src) : ?>
             <a href="<?=w('social_twitter')->href?>" target="_blank">
     	       <img src="<?=w('social_twitter')->img_src?>" alt="<?=w('social_twitter')->single_no_markup?>">
             </a>
-            <? endif ?>
+            <?php endif ?>
             </span>
             <span <?=wa('social_gplus')?>>
-            <? if(w('social_gplus')->img_src) : ?>
+            <?php if(w('social_gplus')->img_src) : ?>
             <a href="<?=w('social_gplus')->href?>" target="_blank">
     	       <img src="<?=w('social_gplus')->img_src?>" alt="<?=w('social_gplus')->single_no_markup?>">
             </a>
             </span>
-            <? endif ?>
+            <?php endif ?>
     </div>
-    <? endif ?>
+    <?php endif ?>
     <section class="social-menu">
-        <? include('teach-social-block.tpl.php') ?>
+        <?php include('teach-social-block.tpl.php') ?>
     </section>
-    <? include('teach-watch-promo.tpl.php') ?>
+    <?php include('teach-watch-promo.tpl.php') ?>
 </div>

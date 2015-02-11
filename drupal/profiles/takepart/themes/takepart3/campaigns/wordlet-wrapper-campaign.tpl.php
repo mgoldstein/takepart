@@ -1,4 +1,4 @@
-<? if ( wordlet_edit_mode() ): ?>
+<?php if ( wordlet_edit_mode() ): ?>
 	<div class="wordlet_edit_mode">
 		<p>
 			Page Title: <span><?=w('title')?></span>
@@ -6,15 +6,15 @@
 		<p>
 			Campaign Name: <span><?=w('campaign_name')?></span>
 		</p>
-		<? if ( ($wlinks = wordlet_configure_links()) ): ?>
+		<?php if ( ($wlinks = wordlet_configure_links()) ): ?>
 			<p>Configure:
-				<? foreach ( $wlinks as $wlink ): ?>
+				<?php foreach ( $wlinks as $wlink ): ?>
 					<span>
 						<?=$wlink?>
 					</span>
-				<? endforeach ?>
+				<?php endforeach ?>
 			</p>
-		<? endif ?>
+		<?php endif ?>
 		<p>
 			Google Ad Slots: <span><?=w('google_ad_slots')?></span>
 		</p>
@@ -28,6 +28,6 @@
 			Meta Description: <span><?=w('meta_description')?></span>
 		</p>
 	</div>
-<? endif ?>
+<?php endif ?>
 
 <?=$content?>

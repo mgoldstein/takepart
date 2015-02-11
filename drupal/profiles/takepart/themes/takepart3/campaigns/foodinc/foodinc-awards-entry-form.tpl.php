@@ -55,9 +55,9 @@
     <label for="edit-which-award-pioneer"><?= render($form['pioneer_award_label']); ?></label>
     <?= render($form['pioneer_award_description']); ?>
 
-    <? if ( isset($form['which_award']['#inline_error']) ): ?>
+    <?php if ( isset($form['which_award']['#inline_error']) ): ?>
       <label class="error"><?= $form['which_award']['#inline_error'] ?></label>
-    <? endif ?>
+    <?php endif ?>
   </fieldset>
 
 </section>

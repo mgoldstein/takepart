@@ -96,7 +96,7 @@ while ($row = $res->fetchAssoc()) {
  		<td><?=$row['page']?>:<?=$row['name']?></td>
  		<td class="old"><pre><?=htmlspecialchars(print_r($keys_data, true)) ?></pre></td>
  		<td class="old"><pre><?=htmlspecialchars(print_r($items_data, true)) ?></pre></td>
- 		<?/* <!-- td><textarea><? var_dump($wordlet) ?></textarea></td -->*/ ?>
+ 		<?php /* <!-- td><textarea><?php var_dump($wordlet) ?></textarea></td -->*/ ?>
  		<td class="new"><pre><?=htmlspecialchars(print_r($configs, true)) ?></pre></td>
  		<td class="new"><pre><?=htmlspecialchars(print_r($values, true)) ?></pre></td>
  	</tr>

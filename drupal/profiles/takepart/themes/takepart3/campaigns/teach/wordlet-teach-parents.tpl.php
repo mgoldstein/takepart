@@ -1,3 +1,3 @@
 <div class="content">
-    <? include('partials/teach-video-page.tpl.php') ?>
+    <?php include('partials/teach-video-page.tpl.php') ?>
 </div>

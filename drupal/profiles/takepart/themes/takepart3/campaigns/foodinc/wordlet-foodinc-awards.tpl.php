@@ -64,7 +64,7 @@
           </div>
         </div>
       <?php endif; ?>
-      <? endforeach ?>
+      <?php endforeach ?>
     </div> <!-- end categories -->
     <div class="judges" id="judges">
       <h2>THE JUDGES</h2>
@@ -76,7 +76,7 @@
             <div class="bio show-more-height"><?php print $w->multi; ?></div>
           </div>
         </div>
-      <? endforeach ?>
+      <?php endforeach ?>
     </div>
   </section>
   <section class="right-rail">

@@ -24,7 +24,7 @@
     <?php print render($content['field_related_stories']); ?>
     <?php endif; ?>
 
-    <h3><? print t('Get More'); ?></h3>
+    <h3><?php print t('Get More'); ?></h3>
     <ul class="topic-links links inline">
       <?php print render($content['field_topic']); ?>
       <?php print render($content['field_free_tag']); ?>

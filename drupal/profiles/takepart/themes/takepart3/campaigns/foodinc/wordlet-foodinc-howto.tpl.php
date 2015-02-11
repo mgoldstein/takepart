@@ -35,7 +35,7 @@
           <div class="title"><?php print $w->single; ?></div>
           <div class="description"><?php print $w->multi; ?></div>
         </div>
-      <? endforeach ?>
+      <?php endforeach ?>
     </div>
 
     <!-- ADDITIONAL INFO  -->
@@ -63,7 +63,7 @@
             <img src="<?php print $w->img_src; ?>" alt="<?php print $w->single; ?>">
           <?php endif; ?>
         </div>
-      <? endforeach ?>
+      <?php endforeach ?>
     </div>
   </section>
     <section class="right-rail">

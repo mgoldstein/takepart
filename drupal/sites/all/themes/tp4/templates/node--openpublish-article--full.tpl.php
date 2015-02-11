@@ -20,7 +20,7 @@
             <?php endif; ?>
             <?php print render($title_suffix); ?>
 
-            <? print render($content['field_article_subhead']); ?>
+            <?php print render($content['field_article_subhead']); ?>
 
             <?php if ($unpublished): ?>
                 <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
