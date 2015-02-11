@@ -2050,6 +2050,15 @@
   content: '\e307';
 }
 
+/* line 104, ../sass/base/_icons.scss */
+.tpi {
+  display: inline-block;
+  font: normal normal normal 20px/1 takepart;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
 /* Helpers */
 /*
  *Fonts
@@ -3709,7 +3718,7 @@ tr.selected td {
 /* line 825, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1420487591');
+  background-image: url('../images/progress.gif?1389823777');
 }
 
 /* TP Modal Library ---------------------- */
@@ -3818,7 +3827,7 @@ tr.selected td {
 /* line 924, ../sass/elements/_misc.scss */
 .tp-video-player.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1420487591');
+  background: url('../images/video-loading.gif?1393277866');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3827,7 +3836,7 @@ tr.selected td {
 /* line 931, ../sass/elements/_misc.scss */
 .tp-video-player.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
+  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3841,7 +3850,7 @@ tr.selected td {
 /* line 945, ../sass/elements/_misc.scss */
 .current-video .blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
+  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
   background-size: cover;
   height: 0;
 }
@@ -3853,7 +3862,7 @@ tr.selected td {
 /* line 958, ../sass/elements/_misc.scss */
 .jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
+  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
   background-size: cover;
   height: 0;
 }

@@ -1,6 +1,25 @@
 /* TODO: Move non-mobile social scss here */
-
-
+.takepart-custom-take-action-button{
+  cursor: pointer;
+  color: white;
+  background-color: $light-mint;
+  border-radius: 100%;
+  font-size: 25px;
+  margin: 0 auto;
+  display: block;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 5px;
+  i{
+    line-height: 40px;
+    text-align: center;
+    display: text;
+    width: 100%;
+  }
+}
+.social-wrapper.mobile .takepart-custom-take-action-button{
+  margin-top: -10px;
+}
 
 .social-wrapper.mobile{
   position: fixed;
@@ -74,9 +93,6 @@
 }
 .social-wrapper.mobile ul.parent-social-menu li.takeaction{
   background: #01bf9e;
-  h3:after{
-    content: '\e100';
-  }
 }
 .social-wrapper ul.parent-social-menu li.facebook{
   display: none;

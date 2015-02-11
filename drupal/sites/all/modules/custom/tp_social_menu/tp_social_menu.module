@@ -30,7 +30,9 @@ function theme_tp_social_menu($variables){
   foreach($variables['elements'] as $element){
     switch($element){
       case 'action':
-        $elements['takeaction'] = '<p class="takepart-take-action"></p>';
+//        $elements['takeaction'] = '<p class="takepart-take-action"></p>';
+        $elements['takeaction'] = '<h3 class="tp-social-headline takeaction-headline">Take Action</h3><a class="takepart-custom-take-action-button"><i class="tpi icon i-take-action"></i></a>';
+
         break;
       case 'social':
         $elements['social'] = '<h3 class="tp-social-headline share-headline">Share</h3><div class="share-submenu-wrapper"><div class="social"></div><div class="tp-social" id="article-share"></div><div></div></div>';
