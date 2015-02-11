@@ -88,6 +88,8 @@ body.page-wordlet-patt-game{
 
 .table .item a {display:block;}
 
+.table .item img { max-width: intrinsic;}
+
 .footer {
 	position: relative;
 	top: 25px;
