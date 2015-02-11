@@ -1577,12 +1577,6 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-11',
         ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
         'boxes-box-66c05d6f' => array(
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
