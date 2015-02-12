@@ -6,11 +6,11 @@
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1395504993999657";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<div id="page-wrapper" class="campaign">
+<div id="page-wrapper" class="campaign" style="overflow:hidden;">
 
 	<!-- start -->
 
-	<main id="page" class="main interstitial" style="overflow:hidden;">
+	<main id="page" class="main interstitial">
 		<?php print $variables['page']['content']['system_main']['content']; ?>
 	</main>
 

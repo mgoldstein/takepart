@@ -27,8 +27,8 @@ header img {
   max-width: 400px; }
 #page .content {
   padding: 0 40px 20px; }
-#page .headline {
-  padding: 20px 40px 0;
+#page.interstitial .headline {
+  padding: 10px 40px 0;
   margin-bottom: 5px;
   font-size: 26px;
   font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif; }
