@@ -28,7 +28,7 @@
   Drupal.behaviors.mobileSocialNav = {
     attach: function(context, settings) {
 
-      $('li.social h3').toggle(function(){
+      $('li.share h3').toggle(function(){
         $(this).parents('.social-wrapper').addClass('sharing');
       }, function(){
         $(this).parents('.social-wrapper').removeClass('sharing');

@@ -28,9 +28,9 @@
         </header>
     <?php endif; ?>
 
-    <aside id="article-social" class="social">
+    <aside class="social social-vertical">
       <?php
-      $social_elements = array('action', 'social', 'subscribe', 'facebook', 'overlay');
+      $social_elements = array('action', 'share', 'subscribe', 'facebook', 'overlay');
       $options = array('comments' => TRUE);
       print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
       ?>
