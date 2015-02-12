@@ -28,7 +28,7 @@
   Drupal.behaviors.mobileSocialNav = {
     attach: function(context, settings) {
 
-      $('li.social').toggle(function(){
+      $('li.social h3').toggle(function(){
         $(this).parents('.social-wrapper').addClass('sharing');
       }, function(){
         $(this).parents('.social-wrapper').removeClass('sharing');
@@ -62,9 +62,10 @@
     if (st > lastScrollTop){
       // Scroll Down
       $('.social-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');
+//      $('.social-wrapper.mobile').removeClass('nav-hide').addClass('nav-show'); // Nav Bar (reverse)
     } else {
       // Scroll Up
-      $('.social-wrapper.mobile').removeClass('nav-show').addClass('nav-hide');
+//      $('.social-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');  // Nav Bar (reverse)
     }
 
     lastScrollTop = st;

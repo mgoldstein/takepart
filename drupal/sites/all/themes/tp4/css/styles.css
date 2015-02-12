@@ -16707,19 +16707,19 @@ body #article-content .inline-content-playlist.align-full {
   float: none;
 }
 
-/* line 280, ../sass/modules/_social-menu.scss */
+/* line 278, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile .tp-social-headline {
   color: white;
   font-size: 15px;
 }
 
-/* line 284, ../sass/modules/_social-menu.scss */
+/* line 282, ../sass/modules/_social-menu.scss */
 #article-social {
   /* needed to override CSS provided by TAP in influence .css */
   height: 0 !important;
 }
 @media all and (min-width: 480px) {
-  /* line 284, ../sass/modules/_social-menu.scss */
+  /* line 282, ../sass/modules/_social-menu.scss */
   #article-social {
     height: 57px !important;
     border-top: 1px solid #cccccc;
@@ -16727,13 +16727,13 @@ body #article-content .inline-content-playlist.align-full {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 284, ../sass/modules/_social-menu.scss */
+  /* line 282, ../sass/modules/_social-menu.scss */
   #article-social {
     border: none;
   }
 }
 
-/* line 296, ../sass/modules/_social-menu.scss */
+/* line 294, ../sass/modules/_social-menu.scss */
 #article-social .social-wrapper.mobile .takepart-take-action {
   margin: -7px auto 0;
 }
