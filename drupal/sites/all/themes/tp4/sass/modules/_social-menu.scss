@@ -187,23 +187,28 @@ li.takeaction{
  */
 .social .tp-social-pinterest:before{
   @extend .tp-social-Pinterest:before;
-  background-color: #ca2026;
+//  background-color: #ca2026;
+  background-color: #cc2127;
 }
 .social .tp-social-facebook:before{
   @extend .tp-social-Facebook:before;
-  background-color: #3d5b96;
+//  background-color: #3d5b96;
+  background-color: #3b5998;
 }
 .social .tp-social-twitter:before{
   @extend .tp-social-Twitter:before;
-  background-color: #34aadf;
+//  background-color: #34aadf;
+  background-color: #55acee;
 }
 .social .tp-social-googleplus:before{
   @extend .tp-social-GooglePlus:before;
-  background-color: #cc181e;
+//  background-color: #cc181e;
+  background-color: #dd4b39;
 }
 .social .tp-social-tumblr:before{
   @extend .tp-social-Tumblr:before;
-  background-color: #385774;
+//  background-color: #385774;
+  background-color: #35465c;
 }
 .social .tp-social-email:before{
   @extend .tp-social-Email:before;
@@ -215,23 +220,27 @@ li.takeaction{
 }
 .social .tp-social-linkedin:before{
   @extend .tp-social-Linkedin:before;
-  background-color: #0977b4;
+//  background-color: #0977b4;
+  background-color: #00b488;
 }
 .social .tp-social-vine:before{
   @extend .tp-social-Vine:before;
-  background-color: #00b386;
+//  background-color: #00b386;
+  background-color: #00b488;
 }
 .social .tp-social-instagram:before{
   @extend .tp-social-Instagram:before;
+//  background-color: #3f729b;
   background-color: #3f729b;
 }
 .social .tp-social-youtube:before{
-  @extend .tp-social-Youtube:before;
-  background-color: #cc181e;
+//  @extend .tp-social-Youtube:before;
+//  background-color: #cc181e;
+  background-color: #e52d27;
 }
 .social .tp-social-reddit:before{
-  @extend .tp-social-Instagram:before;  //this obviously needs to change
-  background-color: #00b386; //this also obviously needs to change
+  @extend .tp-social-Reddit:before;
+  background-color: #5f99cf;
 }
 
 /**
