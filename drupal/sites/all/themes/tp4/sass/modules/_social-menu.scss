@@ -294,3 +294,18 @@ li.takeaction{
 #article-social .social-wrapper.mobile .takepart-take-action{
   margin: -7px auto 0;
 }
+
+/**
+ * Something
+ */
+.header-wrapper.mobile.nav-show{
+    position: fixed;
+    top: 0;
+    z-index: 999999999;
+    background: white;
+    width: 100%;
+    height: 39px;
+  & + div{
+    padding-top: 53px;
+  }
+}

@@ -62,10 +62,10 @@
     if (st > lastScrollTop){
       // Scroll Down
       $('.social-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');
-//      $('.social-wrapper.mobile').removeClass('nav-hide').addClass('nav-show'); // Nav Bar (reverse)
+      $('.header-wrapper.mobile').removeClass('nav-show').addClass('nav-hide'); // Nav Bar (reverse)
     } else {
       // Scroll Up
-//      $('.social-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');  // Nav Bar (reverse)
+      $('.header-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');  // Nav Bar (reverse)
     }
 
     lastScrollTop = st;
@@ -74,12 +74,15 @@
   window.tp_initSocialMenu = function() {
     var mobile = 480;
     var social_menu = $('.social-wrapper');
+    var main_menu = $('.header-wrapper');
 
     //mobile
     if ($(window).width() <= mobile) {
       $(social_menu).addClass('mobile');
+      $(main_menu).addClass('mobile');
     }else{
       $(social_menu).removeClass('mobile');
+      $(main_menu).removeClass('mobile');
     }
 
   }

@@ -16738,6 +16738,23 @@ body #article-content .inline-content-playlist.align-full {
   margin: -7px auto 0;
 }
 
+/**
+ * Something
+ */
+/* line 301, ../sass/modules/_social-menu.scss */
+.header-wrapper.mobile.nav-show {
+  position: fixed;
+  top: 0;
+  z-index: 999999999;
+  background: white;
+  width: 100%;
+  height: 39px;
+}
+/* line 308, ../sass/modules/_social-menu.scss */
+.header-wrapper.mobile.nav-show + div {
+  padding-top: 53px;
+}
+
 /* line 2, ../sass/modules/_newsletter_campaign.scss */
 .block-newsletter-campaign .message {
   margin: .75em 0;
