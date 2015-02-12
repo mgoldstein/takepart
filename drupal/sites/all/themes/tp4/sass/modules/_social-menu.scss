@@ -19,6 +19,8 @@
 }
 .social-wrapper.mobile .takepart-custom-take-action-button{
   margin-top: -10px;
+  line-height: 36px;
+  font-size: 21px;
 }
 
 .social-wrapper.mobile{
@@ -44,7 +46,7 @@
   float: left;
   width: 25%;
   text-align: center;
-  padding-top: 5px;
+  padding-top: 8px;
   color: white;
   height: 43px;
   display: block;
@@ -83,7 +85,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 5px;
+    top: 8px;
     bottom: 0;
     color: white;
     &:hover{

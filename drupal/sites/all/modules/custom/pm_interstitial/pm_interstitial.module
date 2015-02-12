@@ -37,8 +37,6 @@ function pm_interstitial_menu() {
 
     $items['admin/config/participant-media'] = array(
 		'title' => 'Participant Media',
-		'position' => 'left',
-		'type' => MENU_NORMAL_ITEM,
 		'page callback' => 'system_admin_menu_block_page',
 		'access arguments' => array('access administration pages'),
 		'file' => 'system.admin.inc',
@@ -46,16 +44,15 @@ function pm_interstitial_menu() {
 		'weight' => -16,
     );
 
-	$items['admin/config/participant-media/interstitials'] = array(
+    $items['admin/config/participant-media/interstitials'] = array(
 		'title' => 'Interstitial Settings',
 		'description' => 'Global settings for marketing interstitials',
-		'type' => MENU_NORMAL_ITEM,
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array('pm_interstitial_admin_form'),
 		'access callback' => 'user_access',
 		'access arguments' => array('pm_interstitial configure settings'),
 		'weight' => 0,
-	);
+    );
 
 	$items['admin/config/participant-media/interstitials/settings'] = array(
 		'title' => 'Global Settings',
