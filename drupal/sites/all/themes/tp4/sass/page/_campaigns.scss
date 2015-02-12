@@ -922,6 +922,9 @@ body.campaign-display{
             @include zen-clear();
             padding-bottom: 20px;
         }
+        .right {
+	        margin-top:21px;
+        }
 
         @include breakpoint($breakpoint-tablet) {
             .left{
