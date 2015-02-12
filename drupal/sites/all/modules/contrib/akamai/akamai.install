@@ -22,3 +22,23 @@ function akamai_update_7001() {
   variable_del('akamai_wsdl');
   variable_del('akamai_restapi_default');
 }
+
+/**
+ * Remove the email variable not supported in latest API.
+ */
+function akamai_update_7002() {
+  variable_del('akamai_email');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function akamai_uninstall() {
+  variable_del('akamai_action');
+  variable_del('akamai_basepath');
+  variable_del('akamai_domain');
+  variable_del('akamai_password');
+  variable_del('akamai_restapi');
+  variable_del('akamai_timeout');
+  variable_del('akamai_username');
+}
