@@ -3,13 +3,13 @@
         <img src="/profiles/takepart/themes/takepart3/campaigns/patt/images/snap/tile-static-snap-logo.jpg" alt="Image">
     </div>
 
-    <? foreach ( wl('snap_slides_iframe') as $s ): ?>
+    <?php foreach ( wl('snap_slides_iframe') as $s ): ?>
         <div class="tile <?=$s->href?'link':''?> <?=$s->img_src?'person':''?> <?=(!$s->href && !$s->img_src)?'fact':''?>" data-token="<?=$s->token?>">
-            <? if ( $s->href ): // Outside link ?>
+            <?php if ( $s->href ): // Outside link ?>
                 <a href="<?=$s->href?>">
                     <img src="<?=$s->thumb_src?>"/>
                 </a>
-            <? elseif ( !$s->href && !$s->img_src ): // Fact ?>
+            <?php elseif ( !$s->href && !$s->img_src ): // Fact ?>
                 <a href="?slide=<?=$s->token?>">
                     <h1 class="tile-header"><?=w('myth')?></h1>
                     <p><?=$s->single?></p>
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-            <? elseif( !$s->single(false) ): // Take your place graphic ?>
+            <?php elseif( !$s->single(false) ): // Take your place graphic ?>
                 <a href="?slide=<?=$s->token?>">
                     <img src="<?=$s->thumb_src?>"/>
                 </a>
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-            <? elseif ( $n = explode('|', $s->single(false)) ): // Person ?>
+            <?php elseif ( $n = explode('|', $s->single(false)) ): // Person ?>
                 <a href="?slide=<?=$s->token?>">
                     <img src="<?=$s->thumb_src?>"/>
                     <div class="veil">
@@ -73,9 +73,9 @@
                         </div>
                     </div>
                 </div>
-            <? endif ?>
+            <?php endif ?>
         </div>
-    <? endforeach ?>
+    <?php endforeach ?>
 
 </div>
 

@@ -87,6 +87,7 @@ scripts[] = js/tpmodal.jquery.js
 scripts[] = js/script.js
 scripts[] = js/gallery.js
 scripts[] = js/campaign.js
+scripts[] = js/social-menu.js
 
 
 

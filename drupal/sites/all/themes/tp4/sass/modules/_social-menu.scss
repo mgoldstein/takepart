@@ -1,0 +1,298 @@
+/* TODO: Move non-mobile social scss here */
+.takepart-custom-take-action-button{
+  cursor: pointer;
+  color: white;
+  background-color: $light-mint;
+  border-radius: 100%;
+  font-size: 25px;
+  margin: 0 auto;
+  display: block;
+  height: 37px;
+  width: 37px;
+  margin-bottom: 5px;
+  i{
+    line-height: 37px;
+    text-align: center;
+    display: text;
+    width: 100%;
+  }
+}
+.social-wrapper.mobile .takepart-custom-take-action-button{
+  margin-top: -10px;
+}
+
+.social-wrapper.mobile{
+  position: fixed;
+  bottom: -43px;
+  left: 0;
+  right: 0;
+  height: 43px;
+  z-index: 9;
+  transition: .25s;
+  @include breakpoint($breakpoint-tablet){
+    display: none;
+  }
+}
+.social-wrapper.mobile.nav-show{
+  bottom: 0;
+}
+.social-wrapper.mobile ul.parent-social-menu{
+  width: 100%;
+  position: relative;
+}
+.social-wrapper.mobile ul.parent-social-menu > li{
+  float: left;
+  width: 25%;
+  text-align: center;
+  padding-top: 5px;
+  color: white;
+  height: 43px;
+  display: block;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  h3:after{
+    font-family: takepart;
+    display: block;
+    font-size: 15px;
+    margin-top: 0;
+  }
+}
+.social-wrapper.mobile ul.parent-social-menu li.social{
+  background: #00b5cc;
+  h3:after{
+    content: '\e310';
+  }
+}
+.social-wrapper ul.parent-social-menu li.subscribe{
+  display: none;
+}
+.social-wrapper.mobile ul.parent-social-menu li.subscribe{
+  display: block;
+  background: #018b73;
+  position: relative;
+  z-index: 0;
+  h3:after{
+    content: '\e305';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+  }
+  a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 5px;
+    bottom: 0;
+    color: white;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
+.social-wrapper.mobile ul.parent-social-menu li.takeaction{
+  background: #01bf9e;
+}
+.social-wrapper ul.parent-social-menu li.facebook{
+  display: none;
+}
+.social-wrapper.mobile ul.parent-social-menu li.facebook{
+  display: block;
+  background: #3c5a98;
+  h3{
+    font-size: 10px;
+    margin-top: -4px;
+  }
+}
+
+.social-wrapper.mobile .share-submenu-wrapper{
+  position: absolute;
+  z-index: 1;
+  right: -100%;
+  bottom: -43px;
+  width: 100%;
+  display: block;
+  background: white;
+  height: 43px;
+  transition: .5s;
+}
+.social-wrapper.mobile.sharing .share-submenu-wrapper{
+  width: 75%;
+  right: 0;
+}
+.social-wrapper.mobile .tp-social{
+  white-space: nowrap;
+  list-style-type: none;
+  overflow: auto;
+  text-align: left;
+}
+.social-wrapper.mobile .tp-social a.tp-social-link{
+  display: inline-block;
+  line-height: 43px;
+  width: 50px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-indent: 1000px;
+  font-size: 20px;
+  color: white;
+  background: none;
+  text-align: center;
+  &:hover{
+    text-decoration: none;
+  }
+  &:before{
+    text-indent: 0;
+    display: block;
+  }
+}
+.social-wrapper.mobile.sharing li.takeaction{
+  margin-left: -25%;
+  transition: .5s;
+}
+.social-wrapper.mobile ul.parent-social-menu > li.overlay{
+  display: none;
+}
+
+
+/*
+ *Influence overrides
+ */
+li.takeaction{
+  @include breakpoint(480px){
+    position: absolute;
+  }
+  @include breakpoint($breakpoint-desktop){
+    position: relative;
+  }
+}
+.social-wrapper li.social{
+  @include breakpoint(480px){
+    width: 160px;
+    margin: 5px auto 0;
+  }
+  @include breakpoint($breakpoint-tablet){
+    width: 240px;
+    margin: 5px auto 0;
+  }
+  @include breakpoint($breakpoint-desktop){
+    width: auto;
+    margin: 5px auto 0;
+  }
+}
+
+
+/**
+ * The below should be separated out into it's own tpsocial helper
+ */
+.social .tp-social-pinterest:before{
+  @extend .tp-social-Pinterest:before;
+  background-color: #ca2026;
+}
+.social .tp-social-facebook:before{
+  @extend .tp-social-Facebook:before;
+  background-color: #3d5b96;
+}
+.social .tp-social-twitter:before{
+  @extend .tp-social-Twitter:before;
+  background-color: #34aadf;
+}
+.social .tp-social-googleplus:before{
+  @extend .tp-social-GooglePlus:before;
+  background-color: #cc181e;
+}
+.social .tp-social-tumblr:before{
+  @extend .tp-social-Tumblr:before;
+  background-color: #385774;
+}
+.social .tp-social-email:before{
+  @extend .tp-social-Email:before;
+  background-color: #000;
+}
+.social .tp-social-mailto:before{
+  @extend .tp-social-Mailto:before;
+  background-color: #000;
+}
+.social .tp-social-linkedin:before{
+  @extend .tp-social-Linkedin:before;
+  background-color: #0977b4;
+}
+.social .tp-social-vine:before{
+  @extend .tp-social-Vine:before;
+  background-color: #00b386;
+}
+.social .tp-social-instagram:before{
+  @extend .tp-social-Instagram:before;
+  background-color: #3f729b;
+}
+.social .tp-social-youtube:before{
+  @extend .tp-social-Youtube:before;
+  background-color: #cc181e;
+}
+.social .tp-social-reddit:before{
+  @extend .tp-social-Instagram:before;  //this obviously needs to change
+  background-color: #00b386; //this also obviously needs to change
+}
+
+/**
+ * Logic for what to hide on Desktop
+ */
+@include breakpoint(480px){
+  #article-social #article-share{
+    .tp-social-pinterest{
+      display: none;
+    }
+    .tp-social-reddit{
+      display: none;
+    }
+  }
+}
+
+
+/**
+ *Overrides
+ */
+#article-social .social-wrapper.mobile #article-share  .tp-social-link{
+  display: inline-block;
+  width: 52px;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+#article-social .social-wrapper.mobile #article-share{
+  margin: 0;
+  width: auto;
+  float: none;
+}
+#article-social .social-wrapper.mobile{
+  .takepart-take-action,
+  .comments-link,
+  #article-share,
+  #article-share .tp-social-link,
+  .comments-link a,
+  .trigger a{
+    float: none;
+  }
+}
+
+
+
+#article-social .social-wrapper.mobile .tp-social-headline{
+  color: white;
+  font-size: 15px;
+}
+#article-social{
+  /* needed to override CSS provided by TAP in influence .css */
+  height: 0 !important;
+  @include breakpoint(480px){
+    height: 57px !important;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+  }
+  @include breakpoint($breakpoint-desktop){
+    border: none;
+  }
+}
+#article-social .social-wrapper.mobile .takepart-take-action{
+  margin: -7px auto 0;
+}

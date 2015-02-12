@@ -10,5 +10,5 @@
         <?=w('body')?>
     </div>
 	<h2 class='nav-headline'><?=w('headline')?></h2>
-    <? include_once('subtemplates/eyelevel-artists-nav.tpl.php') ?>
+    <?php include_once('subtemplates/eyelevel-artists-nav.tpl.php') ?>
 </div>

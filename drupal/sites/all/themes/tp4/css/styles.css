@@ -2050,6 +2050,15 @@
   content: '\e307';
 }
 
+/* line 104, ../sass/base/_icons.scss */
+.tpi {
+  display: inline-block;
+  font: normal normal normal 20px/1 takepart;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
 /* Helpers */
 /*
  *Fonts
@@ -3734,7 +3743,7 @@ tr.selected td {
 /* line 825, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1420487591');
+  background-image: url('../images/progress.gif?1389823777');
 }
 
 /* TP Modal Library ---------------------- */
@@ -3843,7 +3852,7 @@ tr.selected td {
 /* line 924, ../sass/elements/_misc.scss */
 .tp-video-player.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1420487591');
+  background: url('../images/video-loading.gif?1393277866');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3852,7 +3861,7 @@ tr.selected td {
 /* line 931, ../sass/elements/_misc.scss */
 .tp-video-player.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
+  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3866,7 +3875,7 @@ tr.selected td {
 /* line 945, ../sass/elements/_misc.scss */
 .current-video .blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
+  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
   background-size: cover;
   height: 0;
 }
@@ -3878,7 +3887,7 @@ tr.selected td {
 /* line 958, ../sass/elements/_misc.scss */
 .jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
+  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
   background-size: cover;
   height: 0;
 }
@@ -4621,7 +4630,7 @@ body.front #sidebar .block-title {
 /* line 240, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1420487591');
+  background-image: url('../images/tpl-title.jpg?1400014514');
   margin-top: 5px;
   margin-bottom: -10px;
 }
@@ -4636,7 +4645,7 @@ body.front #sidebar .block-title {
   width: 100%;
   max-width: 312px;
   background-size: 100%;
-  background-image: url('../images/tpl-time.jpg?1420487591');
+  background-image: url('../images/tpl-time.jpg?1400014514');
   margin-top: 5px;
 }
 
@@ -5259,7 +5268,7 @@ a.column-header:hover {
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1420487591') no-repeat;
+  background: url('../images/megaphone.jpg?1389823777') no-repeat;
   padding-bottom: 5px;
 }
 
@@ -11339,7 +11348,7 @@ p.search-performance {
 /* line 52, ../sass/modules/_bxslider.scss */
 .bx-wrapper .bx-loading {
   min-height: 50px;
-  background: url('../images/bx_loader.gif?1420487591') center center no-repeat white;
+  background: url('../images/bx_loader.gif?1417454788') center center no-repeat white;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -11460,7 +11469,7 @@ p.search-performance {
   width: 10px;
   height: 11px;
   outline: 0;
-  background: url('../images/controls.png?1420487591') -86px -11px no-repeat;
+  background: url('../images/controls.png?1417454788') -86px -11px no-repeat;
   margin: 0 3px;
 }
 
@@ -11477,7 +11486,7 @@ p.search-performance {
   width: 9px;
   height: 11px;
   outline: 0;
-  background: url('../images/controls.png?1420487591') -86px -44px no-repeat;
+  background: url('../images/controls.png?1417454788') -86px -44px no-repeat;
   margin: 0 3px;
 }
 
@@ -11614,7 +11623,7 @@ p.search-performance {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1420487591') no-repeat center 9px;
+    background: url('../images/tpl-logo.jpg?1400014514') no-repeat center 9px;
     margin: 0;
   }
   /* line 83, ../sass/modules/_megamenu.scss */
@@ -11624,7 +11633,7 @@ p.search-performance {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.jpg?1420487591') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1400021586') no-repeat center center;
     margin: 0;
   }
 }
@@ -11950,11 +11959,11 @@ p.search-performance {
 }
 /* line 231, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-mobile.png?1420487591');
+  background-image: url('../images/tpl-logo-mobile.png?1400021586');
 }
 /* line 234, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-mobile.png?1420487591');
+  background-image: url('../images/takeaction-logo-mobile.png?1400021586');
 }
 
 /* line 1, ../sass/modules/_interstitials.scss */
@@ -12735,7 +12744,7 @@ header .search .form-submit {
   padding-top: 48px;
   color: white;
   border: none;
-  background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -12804,7 +12813,7 @@ header .search .form-submit {
     padding-top: 24px;
     overflow: hidden;
     background-color: transparent;
-    background: url('../images/search-submit.png?1420487591') no-repeat center center;
+    background: url('../images/search-submit.png?1389823777') no-repeat center center;
   }
 }
 
@@ -12817,7 +12826,7 @@ header .search .form-submit {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1420487591') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1389823777') no-repeat center center;
     background-color: #fff;
     border-radius: 0;
     text-indent: 200%;
@@ -13058,7 +13067,7 @@ header .search .form-submit {
 }
 /* line 415, ../sass/modules/_header.scss */
 .slim-nav .search.active .form-submit {
-  background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
   background-color: #000;
 }
 /* line 421, ../sass/modules/_header.scss */
@@ -13406,7 +13415,7 @@ header .search .form-submit {
 /* line 737, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right-more:after {
   content: ' ';
-  background: url('../images/slim-nav-arrow.png?1420487591') 2px 2px no-repeat;
+  background: url('../images/slim-nav-arrow.png?1417454788') 2px 2px no-repeat;
   display: inline-block;
   font-size: 14px;
   width: 12px;
@@ -13892,7 +13901,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -14279,7 +14288,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -14606,7 +14615,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   height: 48px;
   color: white;
   border: none;
-  background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -14798,7 +14807,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1420487591') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1400021586') no-repeat 10px center;
   margin: 0;
 }
 /* line 1064, ../sass/modules/_slimnav.scss */
@@ -15447,7 +15456,7 @@ body.page-iframes-footer {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1420487591') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1400021586') no-repeat 10px center;
   margin: 0;
 }
 /* line 164, ../sass/modules/_left_drawer.scss */
@@ -15682,7 +15691,7 @@ body #sidebar .tpl-media-block-wrapper .tpl-highlight {
   white-space: nowrap;
   text-indent: 100%;
   overflow: hidden;
-  background: transparent url('../images/tpl_logo.png?1420487591') no-repeat top center;
+  background: transparent url('../images/tpl_logo.png?1400014514') no-repeat top center;
   height: 0;
   padding-top: 30px;
   margin-bottom: 2px;
@@ -15695,7 +15704,7 @@ body #sidebar .tpl-media-block-wrapper .tpl-highlight {
 }
 /* line 88, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1420487591') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1400014514') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;
@@ -16354,8 +16363,35 @@ body #article-content .inline-content-playlist.align-full {
   }
 }
 
-/* line 1, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper {
+/* TODO: Move non-mobile social scss here */
+/* line 2, ../sass/modules/_social-menu.scss */
+.takepart-custom-take-action-button {
+  cursor: pointer;
+  color: white;
+  background-color: #01bf9e;
+  border-radius: 100%;
+  font-size: 25px;
+  margin: 0 auto;
+  display: block;
+  height: 37px;
+  width: 37px;
+  margin-bottom: 5px;
+}
+/* line 13, ../sass/modules/_social-menu.scss */
+.takepart-custom-take-action-button i {
+  line-height: 37px;
+  text-align: center;
+  display: text;
+  width: 100%;
+}
+
+/* line 20, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile .takepart-custom-take-action-button {
+  margin-top: -10px;
+}
+
+/* line 24, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile {
   position: fixed;
   bottom: -43px;
   left: 0;
@@ -16365,25 +16401,25 @@ body #article-content .inline-content-playlist.align-full {
   transition: .25s;
 }
 @media all and (min-width: 768px) {
-  /* line 1, ../sass/modules/_mobile-social-menu.scss */
-  .mobile-social-wrapper {
+  /* line 24, ../sass/modules/_social-menu.scss */
+  .social-wrapper.mobile {
     display: none;
   }
 }
 
-/* line 13, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper.nav-show {
+/* line 36, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile.nav-show {
   bottom: 0;
 }
 
-/* line 16, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu {
+/* line 39, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu {
   width: 100%;
   position: relative;
 }
 
-/* line 20, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu > li {
+/* line 43, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu > li {
   float: left;
   width: 25%;
   text-align: center;
@@ -16395,39 +16431,45 @@ body #article-content .inline-content-playlist.align-full {
   font-size: 13px;
   cursor: pointer;
 }
-/* line 31, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu > li .social-inner:after {
+/* line 54, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu > li h3:after {
   font-family: takepart;
   display: block;
-  font-size: 10px;
-  margin-top: -2px;
+  font-size: 15px;
+  margin-top: 0;
 }
 
-/* line 38, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.share {
+/* line 61, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.social {
   background: #00b5cc;
 }
-/* line 40, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.share .social-inner:after {
+/* line 63, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.social h3:after {
   content: '\e310';
 }
 
-/* line 44, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.subscribe {
+/* line 67, ../sass/modules/_social-menu.scss */
+.social-wrapper ul.parent-social-menu li.subscribe {
+  display: none;
+}
+
+/* line 70, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.subscribe {
+  display: block;
   background: #018b73;
   position: relative;
   z-index: 0;
 }
-/* line 48, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.subscribe .social-inner:after {
+/* line 75, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.subscribe h3:after {
   content: '\e305';
   position: absolute;
-  top: 22px;
+  top: 15px;
   left: 0;
   right: 0;
 }
-/* line 55, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.subscribe a {
+/* line 82, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.subscribe a {
   position: absolute;
   left: 0;
   right: 0;
@@ -16435,32 +16477,34 @@ body #article-content .inline-content-playlist.align-full {
   bottom: 0;
   color: white;
 }
-/* line 62, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.subscribe a:hover {
+/* line 89, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.subscribe a:hover {
   text-decoration: none;
 }
 
-/* line 67, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.takeaction {
+/* line 94, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.takeaction {
   background: #01bf9e;
 }
-/* line 69, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.takeaction .social-inner:after {
-  content: '\e100';
+
+/* line 97, ../sass/modules/_social-menu.scss */
+.social-wrapper ul.parent-social-menu li.facebook {
+  display: none;
 }
 
-/* line 73, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.facebook {
+/* line 100, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.facebook {
+  display: block;
   background: #3c5a98;
 }
-/* line 75, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper ul.parent-social-menu li.facebook .social-inner {
+/* line 103, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.facebook h3 {
   font-size: 10px;
   margin-top: -4px;
 }
 
-/* line 81, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper .share-submenu-wrapper {
+/* line 109, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile .share-submenu-wrapper {
   position: absolute;
   z-index: 1;
   right: -100%;
@@ -16472,22 +16516,22 @@ body #article-content .inline-content-playlist.align-full {
   transition: .5s;
 }
 
-/* line 92, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper li.share.active .share-submenu-wrapper {
+/* line 120, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile.sharing .share-submenu-wrapper {
   width: 75%;
   right: 0;
 }
 
-/* line 96, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper .tp-social-mobile {
+/* line 124, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile .tp-social {
   white-space: nowrap;
   list-style-type: none;
   overflow: auto;
   text-align: left;
 }
 
-/* line 102, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper .tp-social-mobile a.tp-social-link {
+/* line 130, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile .tp-social a.tp-social-link {
   display: inline-block;
   line-height: 43px;
   width: 50px;
@@ -16499,78 +16543,199 @@ body #article-content .inline-content-playlist.align-full {
   background: none;
   text-align: center;
 }
-/* line 113, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper .tp-social-mobile a.tp-social-link:hover {
+/* line 141, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile .tp-social a.tp-social-link:hover {
   text-decoration: none;
 }
-/* line 116, ../sass/modules/_mobile-social-menu.scss */
-.mobile-social-wrapper .tp-social-mobile a.tp-social-link:before {
+/* line 144, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile .tp-social a.tp-social-link:before {
   text-indent: 0;
   display: block;
 }
 
-/* Styling for social sharing outside of social menu */
+/* line 149, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile.sharing li.takeaction {
+  margin-left: -25%;
+  transition: .5s;
+}
+
+/* line 153, ../sass/modules/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu > li.overlay {
+  display: none;
+}
+
+/*
+ *Influence overrides
+ */
+@media all and (min-width: 480px) {
+  /* line 161, ../sass/modules/_social-menu.scss */
+  li.takeaction {
+    position: absolute;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 161, ../sass/modules/_social-menu.scss */
+  li.takeaction {
+    position: relative;
+  }
+}
+
+@media all and (min-width: 480px) {
+  /* line 169, ../sass/modules/_social-menu.scss */
+  .social-wrapper li.social {
+    width: 160px;
+    margin: 5px auto 0;
+  }
+}
+@media all and (min-width: 768px) {
+  /* line 169, ../sass/modules/_social-menu.scss */
+  .social-wrapper li.social {
+    width: 240px;
+    margin: 5px auto 0;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 169, ../sass/modules/_social-menu.scss */
+  .social-wrapper li.social {
+    width: auto;
+    margin: 5px auto 0;
+  }
+}
+
 /**
  * The below should be separated out into it's own tpsocial helper
  */
-/* line 134, ../sass/modules/_mobile-social-menu.scss */
+/* line 188, ../sass/modules/_social-menu.scss */
 .social .tp-social-pinterest:before {
   background-color: #ca2026;
 }
 
-/* line 138, ../sass/modules/_mobile-social-menu.scss */
+/* line 192, ../sass/modules/_social-menu.scss */
 .social .tp-social-facebook:before {
   background-color: #3d5b96;
 }
 
-/* line 142, ../sass/modules/_mobile-social-menu.scss */
+/* line 196, ../sass/modules/_social-menu.scss */
 .social .tp-social-twitter:before {
   background-color: #34aadf;
 }
 
-/* line 146, ../sass/modules/_mobile-social-menu.scss */
+/* line 200, ../sass/modules/_social-menu.scss */
 .social .tp-social-googleplus:before {
   background-color: #cc181e;
 }
 
-/* line 150, ../sass/modules/_mobile-social-menu.scss */
+/* line 204, ../sass/modules/_social-menu.scss */
 .social .tp-social-tumblr:before {
   background-color: #385774;
 }
 
-/* line 154, ../sass/modules/_mobile-social-menu.scss */
+/* line 208, ../sass/modules/_social-menu.scss */
 .social .tp-social-email:before {
   background-color: #000;
 }
 
-/* line 158, ../sass/modules/_mobile-social-menu.scss */
+/* line 212, ../sass/modules/_social-menu.scss */
 .social .tp-social-mailto:before {
   background-color: #000;
 }
 
-/* line 162, ../sass/modules/_mobile-social-menu.scss */
+/* line 216, ../sass/modules/_social-menu.scss */
 .social .tp-social-linkedin:before {
   background-color: #0977b4;
 }
 
-/* line 166, ../sass/modules/_mobile-social-menu.scss */
+/* line 220, ../sass/modules/_social-menu.scss */
 .social .tp-social-vine:before {
   background-color: #00b386;
 }
 
-/* line 170, ../sass/modules/_mobile-social-menu.scss */
+/* line 224, ../sass/modules/_social-menu.scss */
 .social .tp-social-instagram:before {
   background-color: #3f729b;
 }
 
-/* line 174, ../sass/modules/_mobile-social-menu.scss */
+/* line 228, ../sass/modules/_social-menu.scss */
 .social .tp-social-youtube:before {
   background-color: #cc181e;
 }
 
-/* line 178, ../sass/modules/_mobile-social-menu.scss */
+/* line 232, ../sass/modules/_social-menu.scss */
 .social .tp-social-reddit:before {
   background-color: #00b386;
+}
+
+/**
+ * Logic for what to hide on Desktop
+ */
+@media all and (min-width: 480px) {
+  /* line 242, ../sass/modules/_social-menu.scss */
+  #article-social #article-share .tp-social-pinterest {
+    display: none;
+  }
+  /* line 245, ../sass/modules/_social-menu.scss */
+  #article-social #article-share .tp-social-reddit {
+    display: none;
+  }
+}
+/**
+ *Overrides
+ */
+/* line 255, ../sass/modules/_social-menu.scss */
+#article-social .social-wrapper.mobile #article-share .tp-social-link {
+  display: inline-block;
+  width: 52px;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 262, ../sass/modules/_social-menu.scss */
+#article-social .social-wrapper.mobile #article-share {
+  margin: 0;
+  width: auto;
+  float: none;
+}
+
+/* line 273, ../sass/modules/_social-menu.scss */
+#article-social .social-wrapper.mobile .takepart-take-action,
+#article-social .social-wrapper.mobile .comments-link,
+#article-social .social-wrapper.mobile #article-share,
+#article-social .social-wrapper.mobile #article-share .tp-social-link,
+#article-social .social-wrapper.mobile .comments-link a,
+#article-social .social-wrapper.mobile .trigger a {
+  float: none;
+}
+
+/* line 280, ../sass/modules/_social-menu.scss */
+#article-social .social-wrapper.mobile .tp-social-headline {
+  color: white;
+  font-size: 15px;
+}
+
+/* line 284, ../sass/modules/_social-menu.scss */
+#article-social {
+  /* needed to override CSS provided by TAP in influence .css */
+  height: 0 !important;
+}
+@media all and (min-width: 480px) {
+  /* line 284, ../sass/modules/_social-menu.scss */
+  #article-social {
+    height: 57px !important;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 284, ../sass/modules/_social-menu.scss */
+  #article-social {
+    border: none;
+  }
+}
+
+/* line 296, ../sass/modules/_social-menu.scss */
+#article-social .social-wrapper.mobile .takepart-take-action {
+  margin: -7px auto 0;
 }
 
 /* line 2, ../sass/modules/_newsletter_campaign.scss */

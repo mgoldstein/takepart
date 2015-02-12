@@ -100,3 +100,12 @@
   &.tp-social-Instagram:before { content: '\e306'; }
   &.tp-social-Youtube:before { content: '\e307'; }
 }
+
+.tpi{
+  display: inline-block;
+  font: normal normal normal 20px/1 takepart;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+
+}

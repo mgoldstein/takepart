@@ -26,26 +26,16 @@
     <?php endif; ?>
 
     <aside id="article-social" class="social">
-        <div class="inner">
-            <div id="article-tab">
-                <h3 class="tp-social-headline take-action-headline">Take Action</h3>
-                <p class="takepart-take-action"></p>
-            </div>
-
-            <div class="tp-sharing-container">
-                <h3 class="tp-social-headline share-headline">Share</h3>
-                <div class="tp-social" id="article-share"></div>
-                <p id="article-comments-link" class="comments-link">
-                    <a href="#article-comments"><?php print t('Comments'); ?><span class="count"></span></a>
-                </p>
-            </div>
-            <div class="tap-influence-overlay"></div>
-        </div>
+      <?php
+      $social_elements = array('action', 'social', 'subscribe', 'facebook', 'overlay');
+      $options = array('comments' => TRUE);
+      print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
+      ?>
     </aside>
     <!-- / #article-social -->
 
     <div id="article-content">
-        <? print render($content['field_article_subhead']); ?>
+        <?php print render($content['field_article_subhead']); ?>
 
         <?php if (isset($field_topic_box_top)) : ?>
             <div class="topic-box">

@@ -8,5 +8,5 @@
 			</div>
 		</div><!-- /.inner -->
 	</div><!-- /.column-2 -->
-	<? include_once('subtemplates/patt-right.tpl.php') ?>
+	<?php include_once('subtemplates/patt-right.tpl.php') ?>
 </div>

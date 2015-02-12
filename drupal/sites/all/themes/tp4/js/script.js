@@ -209,6 +209,12 @@
             },
             {
               name: 'tumblr'
+            },
+            {
+              name: 'pinterest'
+            },
+            {
+              name: 'reddit'
             }
           ]
         };
@@ -225,15 +231,8 @@
           delete tp_social_config.services[5]; //tumblr
         }
 
-        /* 
-         * if screen size is less than 768 targer tp-social-mobile, else target tp-social.  Adjust CSS to display none otherwise
-         */
-          if($(window).width() < 768){
-            $('.tp-social-mobile:not(.tp-social-skip)').tpsocial(tp_social_config);
-          } else {
-            $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-              .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
-          }
+        $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
+          .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
     }
   };
 

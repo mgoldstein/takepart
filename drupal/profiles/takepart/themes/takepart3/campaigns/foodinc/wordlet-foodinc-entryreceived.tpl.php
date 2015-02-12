@@ -48,7 +48,7 @@
           <div class="title"><?php print $w->single; ?></div>
           <div class="description"><?php print $w->multi; ?></div>
         </div>
-      <? endforeach ?>
+      <?php endforeach ?>
                   <?php wa('foodinc_social_title'); ?>
             <?php wa('foodinc_social_image'); ?>
             <?php wa('foodinc_social_text'); ?>
