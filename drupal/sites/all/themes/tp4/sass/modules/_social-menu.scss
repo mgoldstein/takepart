@@ -20,30 +20,6 @@
 
 
 
- /* Influence overrides */
-li.takeaction{
-  @include breakpoint(480px){
-    position: absolute;
-  }
-  @include breakpoint($breakpoint-desktop){
-    position: relative;
-  }
-}
-.social-wrapper li.share{
-  @include breakpoint(480px){
-    width: 160px;
-    margin: 5px auto 0;
-  }
-  @include breakpoint($breakpoint-tablet){
-    width: 240px;
-    margin: 5px auto 0;
-  }
-  @include breakpoint($breakpoint-desktop){
-    width: auto;
-    margin: 5px auto 0;
-  }
-}
-
 
 /* Icons */
 .social .tp-social-pinterest:before{
@@ -120,6 +96,31 @@ li.takeaction{
 
 /* Social Global */
 .social{
+  /* Influence overrides */
+  li.takeaction{
+    @include breakpoint(480px){
+      position: absolute;
+    }
+    @include breakpoint($breakpoint-desktop){
+      position: relative;
+    }
+  }
+  .social-wrapper li.share{
+    @include breakpoint($breakpoint-phablet){
+      width: 160px;
+      margin: 5px auto 0;
+    }
+    @include breakpoint($breakpoint-tablet){
+      width: 240px;
+      margin: 5px auto 0;
+    }
+    @include breakpoint($breakpoint-desktop){
+      width: auto;
+      margin: 5px auto 0;
+    }
+  }
+
+
   .tp-social-headline{
     text-align: center;
     float: none;
@@ -151,26 +152,14 @@ li.takeaction{
   &.social-vertical{
     float: left;
     width: 40px;
-    height: 0 !important;
+    height: 0;
     @include breakpoint(480px){
-      height: 57px !important;
+      height: 57px;
       border-top: 1px solid #cccccc;
       border-bottom: 1px solid #cccccc;
     }
     @include breakpoint($breakpoint-desktop){
       border: none;
-    }
-  }
-
-  /** Horizontal **/
-  &.social-horizontal{
-    float: none;
-    max-width: 620px;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: right;
-    @include breakpoint($breakpoint-desktop) {
-      float: right;
     }
   }
 
@@ -367,13 +356,16 @@ li.takeaction{
 aside.social{
   @include breakpoint($breakpoint-phablet){
     max-width: 420px;
-    height: 57px !important;
+    height: 57px;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     margin-bottom: 1em;
   }
   @include breakpoint($breakpoint-tablet){
     border: none;
+  }
+  @include breakpoint($breakpoint-desktop){
+    height: auto;
   }
   li.share{
     @include breakpoint($breakpoint-phablet){
@@ -383,14 +375,14 @@ aside.social{
     @include breakpoint($breakpoint-tablet){
       width: 240px;
     }
-    .tp-social-link,
-    .trigger a {
-      @include breakpoint($breakpoint-phablet){
-        margin: 0 0 7px 6px;
-      }
-      @include breakpoint($breakpoint-desktop){
-        margin: 0 auto 5px;
-      }
+  }
+  .tp-social-link,
+  .trigger a {
+    @include breakpoint($breakpoint-phablet){
+      margin: 0 0 7px 6px;
+    }
+    @include breakpoint($breakpoint-desktop){
+      margin: 0 auto 5px;
     }
   }
   li.takeaction{
@@ -431,18 +423,43 @@ aside.social.social-vertical{
   }
 }
 
+
 /* Social Horizontal */
 aside.social.social-horizontal{
+  float: none;
+  max-width: 620px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: right;
   @include breakpoint($breakpoint-phablet){
 
   }
   @include breakpoint($breakpoint-desktop){
-
+    float: right;
   }
   li.share{
     @include breakpoint($breakpoint-desktop){
 
     }
+  }
+  .share-submenu-wrapper{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .tp-social-headline{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .tp-social-link{
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 0;
+    padding: 12px;
+    text-indent: 24px;
+    overflow: hidden;
+    background-color: transparent;
+    margin-left: 6px;
   }
 }
 
@@ -464,5 +481,28 @@ body.node-type-video{
     }
   }
 }
-
-
+body.node-type-openpublish-photo-gallery{
+  aside.social{
+    border: none;
+    height: auto;
+    .tp-social-reddit{
+      display: none;
+    }
+    li.share{
+      @include breakpoint($breakpoint-phablet){
+        width: auto;
+      }
+      @include breakpoint($breakpoint-tablet){
+        width: auto;
+      }
+      @include breakpoint($breakpoint-desktop){
+        width: 350px;
+      }
+    }
+    li.takeaction{
+      @include breakpoint($breakpoint-phablet){
+        display: none;
+      }
+    }
+  }
+}

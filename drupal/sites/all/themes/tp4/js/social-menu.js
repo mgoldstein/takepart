@@ -16,7 +16,6 @@
         window.tp_initSocialMenu();
 
         $(window).smartresize(function() {
-          console.log('test');
           window.tp_initSocialMenu();
         });
       });
