@@ -1,23 +1,23 @@
 <header class="header">
 	<div>
-		<?php $image ?>
+		<?php echo $image ?>
 	</div>
 
 	<h1 class="headline">
-		<?php t($header) ?>
+		<?php echo t($header) ?>
 	</h1>
 </header>
 
 <div class="content">
 	<div class="body">
-		<?php t($body) ?>
+		<?php echo t($body) ?>
 	</div>
 
 	<div class="socials">
-	<?php $facebook."\n".$twitter; ?>
+	<?php echo $facebook."\n".$twitter; ?>
 	</div>
 
 	<p id="dont">
-		<a href="#"><?php t($do_not_show) ?></a>
+		<a href="#"><?php echo t($do_not_show) ?></a>
 	</p>
 </div>
