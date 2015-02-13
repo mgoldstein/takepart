@@ -104,18 +104,6 @@ li.takeaction{
   background-color: #5f99cf;
 }
 
-/* Logic for what to hide on Desktop */
-@include breakpoint(480px){
-  .social #article-share{
-    .tp-social-pinterest{
-      display: none;
-    }
-    .tp-social-reddit{
-      display: none;
-    }
-  }
-}
-
 
 /* Sticky Header */
 .header-wrapper.mobile.nav-show{
@@ -200,23 +188,16 @@ li.takeaction{
     }
     .takepart-take-action,
     .comments-link,
-    #article-share,
-    #article-share .tp-social-link,
     .comments-link a,
     .trigger a{
       float: none;
     }
-    #article-share .tp-social-link{
+    .tp-social-link{
       display: inline-block;
       width: 52px;
       height: auto;
       padding: 0;
       margin: 0;
-    }
-    #article-share{
-      margin: 0;
-      width: auto;
-      float: none;
     }
     .tp-social-headline{
       color: white;
@@ -230,6 +211,22 @@ li.takeaction{
 
 
 /** More Mobile */
+@include breakpoint($breakpoint-phablet){
+  .tp-social-link{
+    margin-left: 5px;
+    float: left;
+  }
+}
+@include breakpoint($breakpoint-tablet){
+
+}
+@include breakpoint($breakpoint-desktop){
+  .tp-social-link{
+    float: none;
+    margin-left: 0;
+  }
+}
+
 .social-wrapper.mobile .takepart-custom-take-action-button{
   margin-top: -10px;
   line-height: 36px;
@@ -357,3 +354,115 @@ li.takeaction{
 .social-wrapper.mobile ul.parent-social-menu > li.overlay{
   display: none;
 }
+
+
+
+
+
+
+
+
+
+/* Social Global */
+aside.social{
+  @include breakpoint($breakpoint-phablet){
+    max-width: 420px;
+    height: 57px !important;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 1em;
+  }
+  @include breakpoint($breakpoint-tablet){
+    border: none;
+  }
+  li.share{
+    @include breakpoint($breakpoint-phablet){
+      width: 160px;
+      margin: 5px auto 0;
+    }
+    @include breakpoint($breakpoint-tablet){
+      width: 240px;
+    }
+    .tp-social-link,
+    .trigger a {
+      @include breakpoint($breakpoint-phablet){
+        margin: 0 0 7px 6px;
+      }
+      @include breakpoint($breakpoint-desktop){
+        margin: 0 auto 5px;
+      }
+    }
+  }
+  li.takeaction{
+    @include breakpoint($breakpoint-phablet){
+      position: absolute;
+    }
+    @include breakpoint($breakpoint-desktop){
+      position: relative;
+    }
+  }
+  .comments-link{
+    @include breakpoint($breakpoint-phablet){
+      margin: 0;
+      margin-left: 5px;
+      display: block;
+      float: left;
+    }
+    @include breakpoint($breakpoint-desktop){
+      float: none;
+      margin-left: 0px;
+    }
+  }
+}
+
+/* Social Vertical */
+aside.social.social-vertical{
+  width: 40px;
+  @include breakpoint($breakpoint-phablet){
+    width: 100%;
+  }
+  @include breakpoint($breakpoint-desktop){
+    width: 40px;
+  }
+  li.share{
+    @include breakpoint($breakpoint-desktop){
+      width: 40px;
+    }
+  }
+}
+
+/* Social Horizontal */
+aside.social.social-horizontal{
+  @include breakpoint($breakpoint-phablet){
+
+  }
+  @include breakpoint($breakpoint-desktop){
+
+  }
+  li.share{
+    @include breakpoint($breakpoint-desktop){
+
+    }
+  }
+}
+
+/* Content Specific Rules */
+body.node-type-article,
+body.node-type-video{
+  aside.social{
+    @include breakpoint($breakpoint-phablet){
+      .tp-social-reddit,
+      .tp-social-pinterest,
+      .comments-link{
+        display: none;
+      }
+    }
+    @include breakpoint($breakpoint-tablet){
+      .comments-link{
+        display: block;
+      }
+    }
+  }
+}
+
+
