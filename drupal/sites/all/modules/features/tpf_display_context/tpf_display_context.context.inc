@@ -1304,6 +1304,12 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-9',
         ),
+        'boxes-ga_mobile_320x50_relative' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50_relative',
+          'region' => 'header',
+          'weight' => '-8',
+        ),
         'bean-featured-campaigns-module' => array(
           'module' => 'bean',
           'delta' => 'featured-campaigns-module',
