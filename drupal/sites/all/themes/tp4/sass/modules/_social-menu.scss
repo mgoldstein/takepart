@@ -81,19 +81,6 @@
 }
 
 
-/* Sticky Header */
-.header-wrapper.mobile.nav-show{
-  position: fixed;
-  top: 0;
-  z-index: 999999999;
-  background: white;
-  width: 100%;
-  height: 39px;
-  & + div{
-    padding-top: 53px;
-  }
-}
-
 /* Social Global */
 .social{
   /* Influence overrides */
@@ -495,4 +482,28 @@ body.node-type-openpublish-photo-gallery{
       }
     }
   }
+}
+
+
+/****** TEMP FOR STICKY HEADER **********/
+
+.header-wrapper{
+  padding: 0;
+  margin: 0;
+}
+.tp4-fat-header{
+  padding: 10px;
+  padding-bottom: 0;
+}
+/* Sticky Header */
+.header-wrapper.mobile.nav-show .tp4-fat-header{
+  position: fixed;
+  top: 0;
+  z-index: 999999999;
+  background: white;
+  width: 100%;
+  height: 39px;
+}
+.header-wrapper.mobile.nav-show{
+  padding-top: 49px;
 }
