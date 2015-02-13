@@ -12345,11 +12345,11 @@ header .search {
 /* line 118, ../sass/modules/_header.scss */
 header .search .form-item-keys-2 {
   display: inline-block;
+  background-color: white;
   float: left;
   height: auto;
   overflow: hidden;
   width: 100%;
-  margin-right: 10px;
   vertical-align: bottom;
   line-height: 23px;
   font-weight: normal;
@@ -16622,10 +16622,11 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   z-index: 999999999;
   background: white;
   width: 100%;
-  height: 39px;
+  box-sizing: border-box;
+  height: 49px;
 }
 
-/* line 507, ../sass/modules/_social-menu.scss */
+/* line 508, ../sass/modules/_social-menu.scss */
 .header-wrapper.mobile.nav-show {
   padding-top: 49px;
 }
