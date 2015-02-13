@@ -148,20 +148,7 @@
     background-color: transparent;
   }
 
-  /** Vertical **/
-  &.social-vertical{
-    float: left;
-    width: 40px;
-    height: 0;
-    @include breakpoint(480px){
-      height: 57px;
-      border-top: 1px solid #cccccc;
-      border-bottom: 1px solid #cccccc;
-    }
-    @include breakpoint($breakpoint-desktop){
-      border: none;
-    }
-  }
+
 
   /** Mobile **/
   .social-wrapper.mobile{
@@ -215,14 +202,11 @@
     margin-left: 0;
   }
 }
-
 .social-wrapper.mobile .takepart-custom-take-action-button{
   margin-top: -10px;
   line-height: 36px;
   font-size: 21px;
 }
-
-
 .social-wrapper.mobile.nav-show{
   bottom: 0;
 }
@@ -357,9 +341,6 @@ aside.social{
   @include breakpoint($breakpoint-phablet){
     max-width: 420px;
     height: 57px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 1em;
   }
   @include breakpoint($breakpoint-tablet){
     border: none;
@@ -468,6 +449,9 @@ body.node-type-article,
 body.node-type-video{
   aside.social{
     @include breakpoint($breakpoint-phablet){
+      height: 57px;
+      border-top: 1px solid #cccccc;
+      border-bottom: 1px solid #cccccc;
       .tp-social-reddit,
       .tp-social-pinterest,
       .comments-link{
@@ -478,6 +462,9 @@ body.node-type-video{
       .comments-link{
         display: block;
       }
+    }
+    @include breakpoint($breakpoint-desktop){
+      border: none;
     }
   }
 }
