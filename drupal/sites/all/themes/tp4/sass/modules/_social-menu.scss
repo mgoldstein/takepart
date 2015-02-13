@@ -390,12 +390,12 @@ aside.social{
 
 /* Social Vertical */
 aside.social.social-vertical{
-  width: 40px;
   @include breakpoint($breakpoint-phablet){
     width: 100%;
   }
   @include breakpoint($breakpoint-desktop){
     width: 40px;
+    float: left;
   }
   li.share{
     @include breakpoint($breakpoint-desktop){
@@ -446,7 +446,10 @@ aside.social.social-horizontal{
 
 /* Content Specific Rules */
 body.node-type-article,
-body.node-type-video{
+body.node-type-video,
+body.node-type-flashcard,
+body.node-type-video-playlist,
+body.node-type-feature-article{
   aside.social{
     @include breakpoint($breakpoint-phablet){
       height: 57px;
