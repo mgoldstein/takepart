@@ -20,7 +20,7 @@
         <?php endif; ?>
     </header>
 
-    <aside class="social social-vertical">
+    <aside class="social social-vertical stick">
       <?php
         $social_elements = array('action', 'share', 'subscribe', 'facebook', 'overlay');
         $options = array();

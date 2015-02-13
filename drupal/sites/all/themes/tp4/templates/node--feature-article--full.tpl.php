@@ -25,7 +25,7 @@
         </header>
     <?php endif; ?>
 
-    <aside class="social social-vertical">
+    <aside class="social social-vertical stick">
       <?php
       $social_elements = array('action', 'share', 'subscribe', 'facebook', 'overlay');
       $options = array('comments' => TRUE);

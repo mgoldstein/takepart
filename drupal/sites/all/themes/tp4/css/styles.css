@@ -16640,22 +16640,6 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 }
 
 /* Sticky Header */
-/* line 520, ../sass/modules/_social-menu.scss */
-.header-wrapper.mobile.nav-show .tp4-fat-header {
-  position: fixed;
-  top: 0;
-  z-index: 999999999;
-  background: white;
-  width: 100%;
-  box-sizing: border-box;
-  height: 49px;
-}
-
-/* line 529, ../sass/modules/_social-menu.scss */
-.header-wrapper.mobile.nav-show {
-  padding-top: 49px;
-}
-
 /* line 2, ../sass/modules/_newsletter_campaign.scss */
 .block-newsletter-campaign .message {
   margin: .75em 0;
