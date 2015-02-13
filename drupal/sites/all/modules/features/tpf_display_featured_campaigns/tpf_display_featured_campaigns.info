@@ -37,4 +37,3 @@ features[user_permission][] = edit any featured_campaigns_module bean
 features[user_permission][] = view any featured_campaigns_module bean
 features[variable][] = field_bundle_settings_bean__featured_campaigns_module
 features_exclude[field_group][group_featured_group|field_collection_item|field_featured_campaigns|form] = group_featured_group|field_collection_item|field_featured_campaigns|form
-mtime = 1415992950
