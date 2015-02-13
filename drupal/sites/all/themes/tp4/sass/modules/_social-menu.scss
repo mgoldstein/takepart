@@ -377,6 +377,7 @@ aside.social{
 
 /* Social Vertical */
 aside.social.social-vertical{
+  height: auto;
   @include breakpoint($breakpoint-phablet){
     width: 100%;
   }
@@ -455,6 +456,7 @@ body.node-type-feature-article{
     }
     @include breakpoint($breakpoint-desktop){
       border: none;
+      height: auto;
     }
   }
 }
@@ -482,6 +484,13 @@ body.node-type-openpublish-photo-gallery{
       }
     }
   }
+}
+
+/****** Override for sticky **********/
+.social.sticky{
+  z-index: 1;
+  position: fixed;
+  top: 7px;
 }
 
 

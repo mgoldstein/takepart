@@ -234,7 +234,7 @@
         }
 
         $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-          .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
+          .then($('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7}));
     }
   };
 

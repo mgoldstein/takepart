@@ -28,13 +28,13 @@
         </header>
     <?php endif; ?>
 
-    <aside class="social social-vertical">
-      <?php
-      $social_elements = array('action', 'share', 'subscribe', 'facebook', 'overlay');
-      $options = array('comments' => TRUE);
-      print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
-      ?>
-    </aside><!-- / #article-social -->
+      <aside class="social social-vertical stick">
+        <?php
+        $social_elements = array('action', 'share', 'subscribe', 'facebook', 'overlay');
+        $options = array('comments' => TRUE);
+        print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
+        ?>
+      </aside><!-- / #article-social -->
 
 
     <div id="article-content">
