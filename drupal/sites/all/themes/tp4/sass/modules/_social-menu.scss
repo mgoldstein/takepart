@@ -218,6 +218,9 @@
     font-size: 15px;
     margin-top: 0;
   }
+  &.facebook{
+    padding-top: 4px;
+  }
 }
 .social-wrapper.mobile ul.parent-social-menu li.share{
   background: #00b5cc;
@@ -252,6 +255,15 @@
     }
   }
 }
+.social-wrapper.mobile ul.parent-social-menu li.facebook{
+  iframe{
+    height: 20px !important;
+    display: block;
+    width: 48px;
+    margin: 0 auto;
+  }
+
+}
 .social-wrapper.mobile ul.parent-social-menu li.takeaction{
   background: #01bf9e;
 }
@@ -262,8 +274,8 @@
   display: block;
   background: #3c5a98;
   h3{
-    font-size: 10px;
-    margin-top: -4px;
+    font-size: 15px;
+    margin-top: -1px;
   }
 }
 
