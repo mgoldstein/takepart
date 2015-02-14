@@ -27,3 +27,22 @@ $conf += array(
 
 // Tone down the logging
 ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED);
+
+// BlueHornet accounts
+if (!array_key_exists('bluehornet_api_accounts', $conf)) {
+  $conf['bluehornet_api_accounts'] = array();
+}
+$conf['bluehornet_api_accounts'] += array(
+  'takepart' => array(
+    'domain' => 'echo.bluehornet.com',
+    'key' => '40465d9afd847a0e862b857e8e7387b8',
+    'secret' => 'a00072e1755a2d2f797971742c97df45',
+  ),
+  'pivot' => array(
+    'domain' => 'echo.bluehornet.com',
+    'key' => 'c0cf51a9f440562b91727bab1293ff29',
+    'secret' => '28606de9e00dabcbf5049f7b734ff724',
+  ),
+);
+$conf += array('bluehornet_default_account' => 'takepart');
+

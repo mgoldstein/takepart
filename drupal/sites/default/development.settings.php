@@ -35,3 +35,22 @@ $conf += array(
 
 // Scream at the dev, maybe they'll fix something
 ini_set('error_reporting', E_ALL & ~E_NOTICE);
+
+
+// BlueHornet accounts
+if (!array_key_exists('bluehornet_api_accounts', $conf)) {
+  $conf['bluehornet_api_accounts'] = array();
+}
+$conf['bluehornet_api_accounts'] += array(
+  'takepart' => array(
+    'domain' => 'bluehornet-proxy.dev.takepart.com:8180',
+    'key' => '40465d9afd847a0e862b857e8e7387b8',
+    'secret' => 'a00072e1755a2d2f797971742c97df45',
+  ),
+  'pivot' => array(
+    'domain' => 'bluehornet-proxy.dev.takepart.com:8180',
+    'key' => 'c0cf51a9f440562b91727bab1293ff29',
+    'secret' => '28606de9e00dabcbf5049f7b734ff724',
+  ),
+);
+$conf += array('bluehornet_default_account' => 'takepart');
