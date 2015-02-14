@@ -60,7 +60,7 @@
 
     if (st > lastScrollTop){
       // Scroll Down
-      $('.social-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');
+//      $('.social-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');
       $('.header-wrapper.mobile').removeClass('nav-show').addClass('nav-hide'); // Nav Bar (reverse)
     } else {
       // Scroll Up

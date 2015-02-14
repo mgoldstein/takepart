@@ -37,10 +37,10 @@ function theme_tp_social_menu($variables){
       case 'share':
         $elements['share'] = '<h3 class="tp-social-headline share-headline">Share</h3><div class="share-submenu-wrapper"><div class="share"></div><div class="tp-social"></div><div></div></div>';
         if(isset($variables['options']['comments']) && $variables['options']['comments'] == TRUE){
-          $elements['share'] .= '
-                <p id="article-comments-link" class="comments-link">
-                    <a href="#article-comments">Comments<span class="count"></span></a>
-                </p>';
+//          $elements['share'] .= '
+//                <p id="article-comments-link" class="comments-link">
+//                    <a href="#article-comments">Comments<span class="count"></span></a>
+//                </p>';
         }
         break;
       case 'subscribe':

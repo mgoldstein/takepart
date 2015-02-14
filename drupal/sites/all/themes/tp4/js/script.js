@@ -233,8 +233,13 @@
           delete tp_social_config.services[5]; //pinterest
         }
 
-        $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-          .then($('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7}));
+        /* Make sticky when screensize is greater than 768px */
+          $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function() {
+            if($(window).width() > 980){
+              $('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
+            }
+            });
+
     }
   };
 

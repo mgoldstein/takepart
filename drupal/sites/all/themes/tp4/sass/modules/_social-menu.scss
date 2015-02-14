@@ -140,10 +140,10 @@
   /** Mobile **/
   .social-wrapper.mobile{
     position: fixed;
-    bottom: -43px;
+    bottom: 0px;
     left: 0;
     right: 0;
-    height: 43px;
+    height: 51px;
     z-index: 9;
     transition: .25s;
     @include breakpoint($breakpoint-tablet){
@@ -218,9 +218,9 @@
     font-size: 15px;
     margin-top: 0;
   }
-  &.facebook{
-    padding-top: 4px;
-  }
+//  &.facebook{
+//    padding-top: 4px;
+//  }
 }
 .social-wrapper.mobile ul.parent-social-menu li.share{
   background: #00b5cc;
@@ -302,7 +302,7 @@
 }
 .social-wrapper.mobile .tp-social a.tp-social-link{
   display: inline-block;
-  line-height: 43px;
+  line-height: 51px;
   width: 50px;
   vertical-align: middle;
   overflow: hidden;

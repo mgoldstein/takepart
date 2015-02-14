@@ -16163,10 +16163,10 @@ body #article-content .inline-content-playlist.align-full {
 /* line 141, ../sass/modules/_social-menu.scss */
 .social .social-wrapper.mobile {
   position: fixed;
-  bottom: -43px;
+  bottom: 0px;
   left: 0;
   right: 0;
-  height: 43px;
+  height: 51px;
   z-index: 9;
   transition: .25s;
 }
@@ -16253,10 +16253,6 @@ body #article-content .inline-content-playlist.align-full {
   display: block;
   font-size: 15px;
   margin-top: 0;
-}
-/* line 221, ../sass/modules/_social-menu.scss */
-.social-wrapper.mobile ul.parent-social-menu > li.facebook {
-  padding-top: 4px;
 }
 
 /* line 225, ../sass/modules/_social-menu.scss */
@@ -16361,7 +16357,7 @@ body #article-content .inline-content-playlist.align-full {
 /* line 303, ../sass/modules/_social-menu.scss */
 .social-wrapper.mobile .tp-social a.tp-social-link {
   display: inline-block;
-  line-height: 43px;
+  line-height: 51px;
   width: 50px;
   vertical-align: middle;
   overflow: hidden;
