@@ -1,14 +1,5 @@
 <?php
 /**
- * Implements hook_init();
- */
-function newsletter_campaign_init(){
-  $path = drupal_get_path('module', 'newsletter_campaign');
-//  drupal_add_js($path . '/js/newsletter_campaign_block.js', array('every_page' => TRUE));
-//  dpm($path, 'path');
-}
-
-/**
  * Implements hook_custom_theme().
  */
 function newsletter_campaign_custom_theme() {
@@ -96,9 +87,7 @@ class NewsletterCampaignController extends EntityApiController {
       'header' => '',
       'promo_message' => '',
       'thankyou_message' => '',
-      'tos_link' => 'By submitting the form above, you agree to TakePart\'s <a href="/terms-of-use" target="_blank">Terms of Use</a> '
-        . 'and <a href="/privacy-policy" target="_blank">Privacy Policy</a>. You can unsubscribe at any time. '
-        . 'Contact us <a href="/contact-us" target="_blank">here</a>.',
+      'tos_link' => 'By submitting the form above, you agree to TakePart\'s <a href="/terms-of-use" target="_blank">Terms of Use</a> and <a href="/privacy-policy" target="_blank">Privacy Policy</a>. You can unsubscribe at any time. Contact us <a href="/contact-us" target="_blank">here</a>.',
       'campaign_id' => '',
       'follow_us_enabled' => FALSE,
       'follow_us_configuration' => $this->initializeFollowUs(),
