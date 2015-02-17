@@ -1,43 +1,70 @@
+/* line 1, ../sass/interstitial.scss */
 body {
   background: #fff;
   border-top: none !important;
   border-bottom: none !important;
   font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
-  font-size: 14px; }
+  font-size: 14px;
+}
 
-#site-footer, #site-header {
-  display: none; }
+/* line 10, ../sass/interstitial.scss */
+#site-footer,
+#site-header {
+  display: none;
+}
 
+/* line 15, ../sass/interstitial.scss */
 header img {
   width: 100%;
-  max-width: 400px; }
+  max-width: 400px;
+}
 
+/* line 21, ../sass/interstitial.scss */
 #page-wrapper.campaign {
   width: 400px;
-  height: 475px; }
+  height: 475px;
+}
 
+/* line 26, ../sass/interstitial.scss */
+#page {
+  color: #000;
+}
+/* line 28, ../sass/interstitial.scss */
 #page * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
+/* line 33, ../sass/interstitial.scss */
 #page .interstitial {
   float: left;
   vertical-align: top;
   width: 100%;
-  max-width: 400px; }
+  max-width: 400px;
+}
+/* line 39, ../sass/interstitial.scss */
 #page .content {
-  padding: 0 40px 20px; }
-#page.interstitial .headline {
-  padding: 10px 40px 0;
+  padding: 0 40px 20px;
+}
+/* line 42, ../sass/interstitial.scss */
+#page .headline {
+  padding: 20px 40px 0;
   margin-bottom: 5px;
   font-size: 26px;
-  font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif; }
+  font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+}
+/* line 48, ../sass/interstitial.scss */
 #page .body p {
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+}
+/* line 51, ../sass/interstitial.scss */
 #page #dont {
-  font-family: AdelleSans-Light, sans-serif;
+  font-family: Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;
-  clear: both; }
+  clear: both;
+}
 
+/* line 59, ../sass/interstitial.scss */
 #page.main .content a {
-  color: #019F84; }
+  color: #019F84;
+}

@@ -51,7 +51,6 @@ function pm_interstitial_menu() {
 		'page arguments' => array('pm_interstitial_admin_form'),
 		'access callback' => 'user_access',
 		'access arguments' => array('pm_interstitial configure settings'),
-		'weight' => 0,
     );
 
 	$items['admin/config/participant-media/interstitials/settings'] = array(
