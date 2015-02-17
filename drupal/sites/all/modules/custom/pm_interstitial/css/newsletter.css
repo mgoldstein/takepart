@@ -1,37 +1,47 @@
-/* line 2, ../sass/newsletter.scss */
+/* Helpers */
+/*
+ *Fonts
+ */
+/*
+ *Colors
+ */
+/*
+ *Misc
+ */
+/* line 5, ../sass/newsletter.scss */
 #page .form {
-  margin-bottom: .5em;
+  margin-bottom: 0em;
 }
-/* line 4, ../sass/newsletter.scss */
+/* line 7, ../sass/newsletter.scss */
 #page .form .thank-you-message {
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
-/* line 10, ../sass/newsletter.scss */
+/* line 13, ../sass/newsletter.scss */
 form {
   color: #555;
-  font-family: AdelleSans-Light, sans-serif;
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   font-size: 12px;
 }
 
-/* line 16, ../sass/newsletter.scss */
+/* line 19, ../sass/newsletter.scss */
 .form-required {
   display: none;
 }
 
-/* line 20, ../sass/newsletter.scss */
+/* line 23, ../sass/newsletter.scss */
 .form-type-textfield {
   position: relative;
 }
-/* line 22, ../sass/newsletter.scss */
+/* line 25, ../sass/newsletter.scss */
 .form-type-textfield label {
   display: none;
 }
-/* line 25, ../sass/newsletter.scss */
+/* line 28, ../sass/newsletter.scss */
 .form-type-textfield input {
   max-width: 100%;
   font-size: 12px;
-  font-family: AdelleSans-Light, sans-serif;
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
   z-index: 1;
   border: 1px solid #ccc;
   box-shadow: inset 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
@@ -43,26 +53,26 @@ form {
   margin: 0;
   width: 100%;
 }
-/* line 39, ../sass/newsletter.scss */
+/* line 42, ../sass/newsletter.scss */
 .form-type-textfield input:focus::-webkit-input-placeholder {
   color: transparent;
 }
-/* line 40, ../sass/newsletter.scss */
+/* line 43, ../sass/newsletter.scss */
 .form-type-textfield input:focus:-moz-placeholder {
   color: transparent;
 }
-/* line 41, ../sass/newsletter.scss */
+/* line 44, ../sass/newsletter.scss */
 .form-type-textfield input:focus::-moz-placeholder {
   color: transparent;
 }
-/* line 42, ../sass/newsletter.scss */
+/* line 45, ../sass/newsletter.scss */
 .form-type-textfield input:focus {
   max-width: 100%;
   z-index: 3;
   outline: none;
 }
 
-/* line 51, ../sass/newsletter.scss */
+/* line 54, ../sass/newsletter.scss */
 .form-actions input {
   border: none;
   color: #fff;
@@ -72,9 +82,9 @@ form {
   cursor: pointer;
   background: #01BF9E;
   font-size: 24px;
-  font-family: AdelleSans-Regular, sans-serif;
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
 }
-/* line 61, ../sass/newsletter.scss */
+/* line 64, ../sass/newsletter.scss */
 .form-actions input[type=submit]:hover {
   background: #000;
 }

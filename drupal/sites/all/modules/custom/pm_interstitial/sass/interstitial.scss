@@ -1,8 +1,10 @@
+/* Helpers */
+@import "../../../../themes/tp4/sass/helpers/variables";
+
 body {
 	background: #fff;
 	border-top: none !important;
 	border-bottom: none !important;
-	font-family: "Ashbury-Light", "Times New Roman", Georgia, "DejaVu Serif", serif;
 	font-size: 14px;
 }
 
@@ -43,13 +45,13 @@ header {
 		padding: 20px 40px 0;
 		margin-bottom: 5px;
 		font-size: 26px;
-		font-family: "Ashbury-Regular", "Times New Roman", Georgia, "DejaVu Serif", serif;
+		font-family: $primary-serif-font;
 	}
 	 .body p {
 		margin-bottom: 5px;
 	}
 	#dont {
-		font-family: Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+		font-family: $times;
 		font-size: 12px;
 		clear:both;
 	}
@@ -57,6 +59,6 @@ header {
 
 #page.main {
 	.content a {
-		color: #019F84;
+		color: $mint;
 	}
 }
