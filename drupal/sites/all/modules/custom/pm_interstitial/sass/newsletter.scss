@@ -1,15 +1,18 @@
+/* Helpers */
+@import "../../../../themes/tp4/sass/helpers/variables";
+
 #page {
 	.form {
-		margin-bottom: 1em;
+		margin-bottom: 0em;
 		.thank-you-message {
-			margin-top: 1em;
+			margin-top: 0.5em;
 		}
 	}
 }
 
 form{
 	color: #555;
-	font-family: AdelleSans-Light, sans-serif;
+	font-family: $primary-sans-font;
 	font-size: 12px;
 }
 
@@ -25,7 +28,7 @@ form{
 	input {
 		max-width: 100%;
 		font-size: 12px;
-		font-family: AdelleSans-Light, sans-serif;
+		font-family: $primary-sans-font;
 		z-index: 1;
 		border: 1px solid #ccc;
 		box-shadow: inset 5px 5px 10px 0 rgba(0, 0, 0, .1);
@@ -57,7 +60,7 @@ form{
 		cursor: pointer;
 		background: #01BF9E;
 		font-size: 24px;
-		font-family: AdelleSans-Regular, sans-serif;
+		font-family: $primary-sans-font;
 		&[type=submit]:hover {
 			background: #000;
 		}

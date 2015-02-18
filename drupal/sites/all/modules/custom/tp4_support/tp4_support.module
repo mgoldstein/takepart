@@ -274,7 +274,7 @@ function tp4_menu_link__menu_takepart_links(array $variables) {
 	if ($element['#below']) {
 		$sub_menu = drupal_render($element['#below']);
 	}
-	$output = l($element['#title'], url($element['#href'], array_merge($element['#localized_options'], array('absolute' => true, 'https' => true))));
+	$output = l($element['#title'], $element['#href'], array_merge($element['#localized_options'], array('absolute' => true, 'https' => true)));
 
 	return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }

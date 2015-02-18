@@ -89,7 +89,10 @@ function tp_megamenu_megamenu(){
   foreach($mega_tree as $key => $link){
     $output .= '<li class="mega-item '. $link['link']['mlid']. '">';
     $path = drupal_get_path_alias($mega_tree[$key]['link']['link_path']);
-    $output .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path, array('absolute' => true, 'attributes' => array('class' => array($link['link']['options']['attributes']['class'][0])))). '</div>';
+    $output .= '<div class="title">'. l($mega_tree[$key]['link']['link_title'], $path, array('absolute' => true, 	'attributes' => array(
+		'class' => array($link['link']['options']['attributes']['class'][0]),
+		'target' => $link['link']['options']['attributes']['target']
+	))). '</div>';
     $output .= '<div class="mega-content">';
 
     //left menu curation

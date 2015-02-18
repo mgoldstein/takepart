@@ -1,0 +1,72 @@
+<?php
+/**
+ * @file
+ * Code for the TakePart - Custom XML Importer feature.
+ */
+
+include_once 'tp_wordpress_import.features.inc';
+
+DEFINE('TP_IMPORT_MENU', 'admin/config/tp-import-config');
+
+/**
+ *  Implements hook_menu().
+ */
+function tp_wordpress_import_menu() {
+  $items = array();
+  
+  //main group menu
+  $items[TP_IMPORT_MENU] = array(
+    'title' => t('TakePart - Custom XML Config'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_wordpress_import_admin_form'),
+    'file' => 'tp_wordpress_import.admin_form.inc',
+    'file path' => drupal_get_path('module', 'tp_wordpress_import') . '/forms',
+    'access arguments' => array('administer site configuration'),
+  );
+  
+  $items[TP_IMPORT_MENU . '/config'] = $items[TP_IMPORT_MENU];
+  $items[TP_IMPORT_MENU . '/config']['type'] = MENU_DEFAULT_LOCAL_TASK;
+  
+  return $items;
+}
+
+/**
+ *  Implements hook_feeds_plugins().
+ */
+function tp_wordpress_import_feeds_plugins() {
+  $info = array();
+  
+  //custom parser for takepart
+  $info['tp_wordpress_import_xml_parser'] = array(
+    'name' => 'TakePart - Wordpress XML Parser', 
+    'description' => 'TP - Wordpress XML Parser', 
+    'handler' => array(
+      'parent' => 'FeedsParser', 
+      'class' => 'tp_wordpress_import_parser', 
+      'file' => 'tp_wordpress_import.parser.php', 
+      'path' => drupal_get_path('module', 'tp_wordpress_import') . '/classes/feeds',
+    ),
+  );
+
+  return $info;
+}
+
+
+/**
+ *  Implements hook_feeds_after_save().
+ */
+function tp_wordpress_import_feeds_after_save(FeedsSource $source, $entity, $item, $entity_id) {
+  $data = $source->importer();
+  
+  //only do this for this feeds
+  if (isset($data->id) && $data->id == 'takepart_wordpress_xml') {
+    //loads the node
+    $node = node_load($entity->nid);
+    
+    //changes the format to full html to render
+    $node->body[$node->language][0]['format'] = 'full_html';
+    
+    //saves the node
+    node_save($node);
+  }
+}
