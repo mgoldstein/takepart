@@ -62,10 +62,29 @@ function tp_wordpress_import_feeds_after_save(FeedsSource $source, $entity, $ite
   if (isset($data->id) && $data->id == 'takepart_wordpress_xml') {
     //loads the node
     $node = node_load($entity->nid);
+    $widget_status = variable_get('tp_wordpress_import_default_action_widget', 1);
     
     //changes the format to full html to render
     $node->body[$node->language][0]['format'] = 'full_html';
     
+    //creates inline content
+    if ($widget_status) {
+      $db_result = db_insert('inline_content')
+        ->fields(array(
+          'type' => 'take_action_widget',
+          'label' => t('Take Action Widget: [No Action] (Collapsed)'),
+          'language' => LANGUAGE_NONE,
+          'created' => REQUEST_TIME,
+          'changed' => REQUEST_TIME,
+        ))
+        ->execute();
+  
+      //only add if db result is a numeric number
+      if (is_numeric($db_result)) {
+        $node->field_inline_replacements[$node->language][0]['target_id'] = $db_result;
+      }
+    }
+      
     //saves the node
     node_save($node);
   }

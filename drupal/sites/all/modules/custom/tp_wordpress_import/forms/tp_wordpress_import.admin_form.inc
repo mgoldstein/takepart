@@ -39,6 +39,14 @@ function tp_wordpress_import_admin_form() {
     '#description' => t('Tagging Taxonomy Name'),
     '#default_value' => variable_get('tp_wordpress_import_tagging', 'Social Justice'),
   );
+
+  //tap action widget
+  $form['tp_wordpress_import_default_action_widget'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Default TAP Action Widget'),
+    '#description' => t('Check if you want to have TAP action widget'),
+    '#default_value' => variable_get('tp_wordpress_import_default_action_widget', 1),
+  );
   
   return system_settings_form($form);
 }
