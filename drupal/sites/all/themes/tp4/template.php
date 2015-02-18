@@ -124,8 +124,7 @@ function tp4_html_head_alter(&$head_elements) {
  */
 function _tp4_campaign_megamenu_attach_fragments(&$link) {
   if (isset($link['#localized_options']['attributes']['rel'])) {
-    $link['#localized_options']['fragment']
-      = $link['#localized_options']['attributes']['rel'];
+    $link['#localized_options']['fragment'] = $link['#localized_options']['attributes']['rel'];
     unset($link['#localized_options']['attributes']['rel']);
   }
 }
