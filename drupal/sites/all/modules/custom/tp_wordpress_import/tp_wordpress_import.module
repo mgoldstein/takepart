@@ -6,7 +6,7 @@
 
 include_once 'tp_wordpress_import.features.inc';
 
-DEFINE('TP_IMPORT_MENU', 'admin/config/getty-biblio');
+DEFINE('TP_IMPORT_MENU', 'admin/config/tp-import-config');
 
 /**
  *  Implements hook_menu().
