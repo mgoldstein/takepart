@@ -35,12 +35,16 @@ function theme_tp_social_menu($variables){
 
         break;
       case 'share':
-        $elements['share'] = '<h3 class="tp-social-headline share-headline">Share</h3><div class="share-submenu-wrapper"><div class="share"></div><div class="tp-social"></div><div></div></div>';
+        $elements['share'] = '<h3 class="tp-social-headline share-headline">Share</h3><div class="share-submenu-wrapper"><div class="tp-social"></div><div></div></div>';
         if(isset($variables['options']['comments']) && $variables['options']['comments'] == TRUE){
-//          $elements['share'] .= '
-//                <p id="article-comments-link" class="comments-link">
-//                    <a href="#article-comments">Comments<span class="count"></span></a>
-//                </p>';
+          $elements['share'] .= '
+                <p id="article-comments-link" class="comments-link">
+                    <a href="#article-comments">Comments<span class="count"></span></a>
+                </p>';
+        }
+        if(isset($variables['options']['comments']) && $variables['options']['comments'] == TRUE){
+          $elements['share'] .= '<div class="tap-influence-overlay"></div>';
+          $elements['share'] .= '<span class="tap-influence-icon icon i-influence"><h3 class="tp-social-headline reach">Your Reach</h3></span>';
         }
         break;
       case 'subscribe':
@@ -50,12 +54,12 @@ function theme_tp_social_menu($variables){
       case 'facebook':
         global $base_url;
         $elements['facebook'] = '<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.takepart.com&amp;width&amp;layout=button&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:35px;" allowTransparency="true"></iframe>';
-//        $elements['facebook'] = '<div class="fb-like" data-href="'. $base_url. '" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>';
         $elements['facebook'] .= '<h3 class="tp-social-headline subscribe">Us</h3>';
         break;
-      case 'overlay':
-        $elements['overlay'] = '<div class="tap-influence-overlay"></div>';
-        break;
+//      case 'overlay':
+//        $elements['reach-overlay'] = '<div class="tap-influence-overlay"></div>';
+//        $elements['reach-overlay'] .= '<span class="tap-influence-icon icon i-influence"><h3 class="tp-social-headline reach">Your Reach</h3></span>';
+//        break;
     }
   }
 

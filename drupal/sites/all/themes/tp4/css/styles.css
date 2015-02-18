@@ -16636,6 +16636,56 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 }
 
 /* Sticky Header */
+/****** Influence **********/
+/* line 539, ../sass/modules/_social-menu.scss */
+.social-wrapper {
+  position: relative;
+}
+
+/* line 542, ../sass/modules/_social-menu.scss */
+.social-wrapper .tap-influence-overlay .popover {
+  display: none;
+  top: 0;
+  left: 0;
+  margin-left: 58px;
+  position: absolute;
+  transition: top 0.2s ease-out;
+}
+@media all and (min-width: 480px) {
+  /* line 542, ../sass/modules/_social-menu.scss */
+  .social-wrapper .tap-influence-overlay .popover {
+    display: block;
+  }
+}
+
+@media all and (min-width: 980px) {
+  /* line 554, ../sass/modules/_social-menu.scss */
+  .social-wrapper .tap-influence-icon.icon:after {
+    margin-left: 0;
+  }
+}
+
+@media all and (min-width: 480px) {
+  /* line 560, ../sass/modules/_social-menu.scss */
+  .social-wrapper .tap-influence-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    text-align: center;
+    margin: 5px 0 0 0;
+    width: 60px;
+  }
+}
+@media all and (min-width: 980px) {
+  /* line 560, ../sass/modules/_social-menu.scss */
+  .social-wrapper .tap-influence-icon {
+    text-align: right;
+    position: relative;
+    width: 40px;
+  }
+}
+
 /* line 2, ../sass/modules/_newsletter_campaign.scss */
 .block-newsletter-campaign .message {
   margin: .75em 0;
