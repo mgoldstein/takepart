@@ -68,10 +68,12 @@ function($) {
 		}
 		$(document).on('scroll', function() {
 			varscroll = parseInt($(document).scrollTop());
-			if(menuSize != null){
+			if(menuSize != null && content.length != 0) {
 				for(var i=0;i < menuSize;i++)
 				{
-					contentTop[i] = $('#'+content[i]+'').offset().top;
+					if($("#" + content[i]).length) {
+						contentTop[i] = $('#'+content[i]).offset().top;
+					}
 					function bottomView(i) {
 						contentView = $('#'+content[i]+'').height()*.4;
 						testView = contentTop[i] - contentView;
