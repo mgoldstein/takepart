@@ -103,9 +103,14 @@ body.campaign-display{
     }
   }
   //Twitter Card Overrides
-  .node-campaign-card-twitter{
-    .card.dark-background h3.tweet-username a{
+  .node-campaign-card-twitter.card.dark-background {
+     h3.tweet-username a {
       color: $primary-color;
+    }
+  }
+  .node-campaign-card-twitter.card.light-background {
+     h3.tweet-username a {
+      color: $secondary-color;
     }
   }
   //E-mail

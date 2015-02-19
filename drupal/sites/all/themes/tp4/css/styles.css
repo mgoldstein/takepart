@@ -10788,10 +10788,14 @@ body.campaign-display .swipe-wrap.has-title .card.dark-background .card-inner {
   border-top: none;
 }
 /* line 107, ../sass/tp4_dark_bg.scss */
-body.campaign-display .node-campaign-card-twitter .card.dark-background h3.tweet-username a {
+body.campaign-display .node-campaign-card-twitter.card.dark-background h3.tweet-username a {
   color: white;
 }
 /* line 112, ../sass/tp4_dark_bg.scss */
+body.campaign-display .node-campaign-card-twitter.card.light-background h3.tweet-username a {
+  color: black;
+}
+/* line 117, ../sass/tp4_dark_bg.scss */
 body.campaign-display .card.dark-background .block-newsletter-campaign {
   color: white;
 }
