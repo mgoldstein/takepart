@@ -3747,7 +3747,7 @@ tr.selected td {
 /* line 825, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1389823777');
+  background-image: url('../images/progress.gif?1420487591');
 }
 
 /* TP Modal Library ---------------------- */
@@ -3856,7 +3856,7 @@ tr.selected td {
 /* line 924, ../sass/elements/_misc.scss */
 .tp-video-player.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1393277866');
+  background: url('../images/video-loading.gif?1420487591');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3865,7 +3865,7 @@ tr.selected td {
 /* line 931, ../sass/elements/_misc.scss */
 .tp-video-player.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
+  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -3879,7 +3879,7 @@ tr.selected td {
 /* line 945, ../sass/elements/_misc.scss */
 .current-video .blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
+  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
   background-size: cover;
   height: 0;
 }
@@ -3891,7 +3891,7 @@ tr.selected td {
 /* line 958, ../sass/elements/_misc.scss */
 .jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1393277866') no-repeat center center;
+  background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
   background-size: cover;
   height: 0;
 }
@@ -4649,7 +4649,7 @@ body.front #sidebar .block-title {
 /* line 240, ../sass/page/_homepage.scss */
 .panel-takepart-homepage .tpl-headline .tpl-title {
   width: 167px;
-  background-image: url('../images/tpl-title.jpg?1400014514');
+  background-image: url('../images/tpl-title.jpg?1420487591');
   margin-top: 5px;
   margin-bottom: -10px;
 }
@@ -4664,7 +4664,7 @@ body.front #sidebar .block-title {
   width: 100%;
   max-width: 312px;
   background-size: 100%;
-  background-image: url('../images/tpl-time.jpg?1400014514');
+  background-image: url('../images/tpl-time.jpg?1420487591');
   margin-top: 5px;
 }
 
@@ -5287,7 +5287,7 @@ a.column-header:hover {
   margin: 0 auto;
   width: 33px;
   height: 23px;
-  background: url('../images/megaphone.jpg?1389823777') no-repeat;
+  background: url('../images/megaphone.jpg?1420487591') no-repeat;
   padding-bottom: 5px;
 }
 
@@ -10206,7 +10206,7 @@ body.campaign-display .sms-legal p {
 /* line 1258, ../sass/page/_campaigns.scss */
 body.campaign-display .node-campaign-card-multi-column .center-inner {
   width: 100%;
-  text-align: center;
+  text-align: left;
   overflow: hidden;
   padding-left: 10px;
 }
@@ -10994,7 +10994,7 @@ p.search-performance {
 /* line 52, ../sass/modules/_bxslider.scss */
 .bx-wrapper .bx-loading {
   min-height: 50px;
-  background: url('../images/bx_loader.gif?1417454788') center center no-repeat white;
+  background: url('../images/bx_loader.gif?1420487591') center center no-repeat white;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -11115,7 +11115,7 @@ p.search-performance {
   width: 10px;
   height: 11px;
   outline: 0;
-  background: url('../images/controls.png?1417454788') -86px -11px no-repeat;
+  background: url('../images/controls.png?1420487591') -86px -11px no-repeat;
   margin: 0 3px;
 }
 
@@ -11132,7 +11132,7 @@ p.search-performance {
   width: 9px;
   height: 11px;
   outline: 0;
-  background: url('../images/controls.png?1417454788') -86px -44px no-repeat;
+  background: url('../images/controls.png?1420487591') -86px -44px no-repeat;
   margin: 0 3px;
 }
 
@@ -11269,7 +11269,7 @@ p.search-performance {
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    background: url('../images/tpl-logo.jpg?1400014514') no-repeat center 9px;
+    background: url('../images/tpl-logo.jpg?1420487591') no-repeat center 9px;
     margin: 0;
   }
   /* line 83, ../sass/modules/_megamenu.scss */
@@ -11279,7 +11279,7 @@ p.search-performance {
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
-    background: url('../images/takeaction-logo.jpg?1400021586') no-repeat center center;
+    background: url('../images/takeaction-logo.jpg?1420487591') no-repeat center center;
     margin: 0;
   }
 }
@@ -11605,11 +11605,11 @@ p.search-performance {
 }
 /* line 231, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
-  background-image: url('../images/tpl-logo-mobile.png?1400021586');
+  background-image: url('../images/tpl-logo-mobile.png?1420487591');
 }
 /* line 234, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
-  background-image: url('../images/takeaction-logo-mobile.png?1400021586');
+  background-image: url('../images/takeaction-logo-mobile.png?1420487591');
 }
 
 /* line 1, ../sass/modules/_interstitials.scss */
@@ -12390,7 +12390,7 @@ header .search .form-submit {
   padding-top: 48px;
   color: white;
   border: none;
-  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -12459,7 +12459,7 @@ header .search .form-submit {
     padding-top: 24px;
     overflow: hidden;
     background-color: transparent;
-    background: url('../images/search-submit.png?1389823777') no-repeat center center;
+    background: url('../images/search-submit.png?1420487591') no-repeat center center;
   }
 }
 
@@ -12472,7 +12472,7 @@ header .search .form-submit {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search.jpg?1389823777') no-repeat center center;
+    background: url('../images/mobile-search.jpg?1420487591') no-repeat center center;
     background-color: transparent;
     border-radius: 0;
     text-indent: 200%;
@@ -12713,7 +12713,7 @@ header .search .form-submit {
 }
 /* line 415, ../sass/modules/_header.scss */
 .slim-nav .search.active .form-submit {
-  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
   background-color: #000;
 }
 /* line 421, ../sass/modules/_header.scss */
@@ -13061,7 +13061,7 @@ header .search .form-submit {
 /* line 737, ../sass/modules/_header.scss */
 #block-tp-custom-nav-tp-custom-nav-slim .right-more:after {
   content: ' ';
-  background: url('../images/slim-nav-arrow.png?1417454788') 2px 2px no-repeat;
+  background: url('../images/slim-nav-arrow.png?1420487591') 2px 2px no-repeat;
   display: inline-block;
   font-size: 14px;
   width: 12px;
@@ -13547,7 +13547,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -13934,7 +13934,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
     height: 48px;
     color: white;
     border: none;
-    background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
+    background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
     background-color: #000;
     border-radius: 0;
     text-indent: 200%;
@@ -14261,7 +14261,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   height: 48px;
   color: white;
   border: none;
-  background: url('../images/mobile-search-hover.jpg?1389823777') no-repeat center center;
+  background: url('../images/mobile-search-hover.jpg?1420487591') no-repeat center center;
   background-color: #000;
   border-radius: 0;
   text-indent: 200%;
@@ -14453,7 +14453,7 @@ body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1400021586') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1420487591') no-repeat 10px center;
   margin: 0;
 }
 /* line 1064, ../sass/modules/_slimnav.scss */
@@ -15102,7 +15102,7 @@ body.page-iframes-footer {
   white-space: nowrap;
   overflow: hidden;
   float: left;
-  background: url('../images/takeaction-logo-mobile.png?1400021586') no-repeat 10px center;
+  background: url('../images/takeaction-logo-mobile.png?1420487591') no-repeat 10px center;
   margin: 0;
 }
 /* line 164, ../sass/modules/_left_drawer.scss */
@@ -15337,7 +15337,7 @@ body #sidebar .tpl-media-block-wrapper .tpl-highlight {
   white-space: nowrap;
   text-indent: 100%;
   overflow: hidden;
-  background: transparent url('../images/tpl_logo.png?1400014514') no-repeat top center;
+  background: transparent url('../images/tpl_logo.png?1420487591') no-repeat top center;
   height: 0;
   padding-top: 30px;
   margin-bottom: 2px;
@@ -15350,7 +15350,7 @@ body #sidebar .tpl-media-block-wrapper .tpl-highlight {
 }
 /* line 88, ../sass/modules/_tpl-block.scss */
 .tpl-block .find-pivot a {
-  background: url('../images/find-pivot-button.png?1400014514') no-repeat top center;
+  background: url('../images/find-pivot-button.png?1420487591') no-repeat top center;
   display: block;
   height: 28px;
   width: 100%;
