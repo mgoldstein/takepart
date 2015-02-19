@@ -212,10 +212,14 @@ h3.video-title{
     &.active .image-wrapper .overlay {
       opacity: 1;
     }
-    .image-wrapper .overlay .play-me,
-    &.active .image-wrapper .overlay .now-playing{
+    .image-wrapper .overlay .play-me{
       top: 50%;
       margin-top: -30px;
+      opacity: 1;
+    }
+    &.active .image-wrapper .overlay .now-playing{
+      top: 50%;
+      margin-top: -12px;
       opacity: 1;
     }
     &.active .image-wrapper .overlay .play-me{
