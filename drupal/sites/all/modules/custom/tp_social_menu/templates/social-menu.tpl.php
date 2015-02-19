@@ -9,5 +9,4 @@
       <li class="<?php print $key; ?>"><?php print $item; ?></li>
     <?php endforeach; ?>
   </ul>
-<!--  <div class="tap-influence-overlay"></div>-->
 </div>

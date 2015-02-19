@@ -16,14 +16,14 @@ function takepart_facebookapis_page_alter(&$page) {
   // Skip if the page is part of the admin.
   if (path_is_admin(current_path())) { return; }
   $app_id = variable_get('facebook_app_id');
-  $page['page_bottom']['fb-init-code'] = array(
+  $page['page_top']['fb-init-code'] = array(
     '#type' => 'markup',
     '#markup' => takepart_facebookapis_init_code($app_id),
   );
 }
 
 function takepart_facebookapis_init_code($app_id) {
-  drupal_add_js('//connect.facebook.com/en_US/sdk.js', 'external');
+//  drupal_add_js('//connect.facebook.com/en_US/sdk.js', 'external');
   $code = <<<EOC
   <div id="fb-root"></div>
   <script type="text/javascript">
