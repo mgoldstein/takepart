@@ -16826,3 +16826,8 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 .block-newsletter-campaign .social-links li a.tumblr:hover, .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray_hover, .block-newsletter-campaign .social-links li a.tumblr.tumblr-gray-hover {
   background-position: 0 -408px;
 }
+
+/* line 93, ../sass/modules/_newsletter_campaign.scss */
+.card .block-newsletter-campaign .terms-of-service {
+  border-bottom: none;
+}
