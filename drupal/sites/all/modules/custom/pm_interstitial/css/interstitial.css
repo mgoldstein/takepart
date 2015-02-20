@@ -30,7 +30,7 @@ header img {
 
 /* line 23, ../sass/interstitial.scss */
 #page-wrapper.campaign {
-  width: 400px;
+  max-width: 400px;
   height: 475px;
 }
 

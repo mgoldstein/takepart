@@ -6,7 +6,7 @@
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1395504993999657";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-<div id="page-wrapper" class="campaign" style="overflow:hidden;">
+<div id="page-wrapper" class="campaign" style="overflow:hidden;width:auto;">
 
 	<!-- start -->
 
