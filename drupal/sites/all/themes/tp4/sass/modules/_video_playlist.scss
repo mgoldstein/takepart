@@ -58,6 +58,12 @@ h2.playlist-title{
   margin-top: 0 !important;
   text-transform: lowercase;
 }
+
+body .bx-wrapper .bx-viewport ul.video-playlist {
+  margin-top: 0;
+}
+
+.playlist-wrapper .playlist .current-video .video-description .description-item.active h3.video-title,
 h3.video-title{
   margin-top: 12px;
   margin-bottom: 10px;
