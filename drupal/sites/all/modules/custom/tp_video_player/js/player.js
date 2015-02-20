@@ -43,7 +43,7 @@
             else {
               $(element).removeClass('loading');
               jwplayer.key = Drupal.settings.tp_video_player.key;
-              jwplayer(element).setup(settings);
+              tp_video_playlist_init(element, settings, index);
             }
           };
           geoip2.country(handleResponse, blockVideo);

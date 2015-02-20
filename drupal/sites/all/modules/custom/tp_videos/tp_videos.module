@@ -335,7 +335,7 @@ function tp_videos_playlist_title($entity_type, $entity, $default) {
   $title = '';
   $items = field_get_items($entity_type, $entity, 'field_show_title');
   if ($items !== FALSE && count($items) > 0) {
-    $items = reset($items);
+    $item = reset($items);
     if ($item['value'] == 1) {
       $title = $default;
     }
