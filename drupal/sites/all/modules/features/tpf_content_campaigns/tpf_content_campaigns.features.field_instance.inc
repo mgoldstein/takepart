@@ -16697,6 +16697,111 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_card_tap_widget-field_campaign_media_photo_url'
+  $field_instances['node-campaign_card_tap_widget-field_campaign_media_photo_url'] = array(
+    'bundle' => 'campaign_card_tap_widget',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Clicking on the photo will take the user to this url.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_plain',
+        'weight' => 17,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_media_photo_url',
+    'label' => 'Widget Photo Link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'user',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_card_tap_widget-field_campaign_min_height'
   $field_instances['node-campaign_card_tap_widget-field_campaign_min_height'] = array(
     'bundle' => 'campaign_card_tap_widget',
@@ -22947,6 +23052,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Campaign Tray Title');
   t('Card Title');
   t('Check if you are creating a slim card text');
+  t('Clicking on the photo will take the user to this url.');
   t('Column Count');
   t('Content');
   t('Create list items to go in the multi-grid.');
@@ -23040,6 +23146,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('What campaign does this page belong to?');
   t('Which side should the media content appear on (photo/video)?');
   t('Widget Photo');
+  t('Widget Photo Link');
   t('Widget Side');
   t('Would you like to have the widget initially expanded or hidden (small)?');
   t('You can put anything in here like links, text, and images using WYSIWYG. ');
