@@ -94,6 +94,9 @@
                     'social': 'Social',
                 };
                 $iframe.bind('load', function() {
+					// prevent scrolling, you sick bastard
+					$('body').css('overflow','hidden');
+
                     var $modal = $('#' + interstitial_modal_id + 'modal');
                     $modal.show();
                     if(window.innerWidth <= 480) {
@@ -144,6 +147,8 @@
                     id: interstitial_modal_id,
                     node: $iframe,
                     afterClose: function() {
+						// return scrolling to the body
+						$('body').css('overflow','scroll');
                         extend_pm_interstitial_cookie(7);
                         takepart.analytics.track('tpinterstitial_dismiss', {interstitial_type: analytics_types[interstitial_type]});
                     }
