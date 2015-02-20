@@ -73,7 +73,11 @@ form {
 }
 
 /* line 54, ../sass/newsletter.scss */
-.form-actions input {
+form.newsletter-signup .form-actions {
+  margin-bottom: 0;
+}
+/* line 56, ../sass/newsletter.scss */
+form.newsletter-signup .form-actions input {
   border: none;
   color: #fff;
   width: 100%;
@@ -84,7 +88,7 @@ form {
   font-size: 24px;
   font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
 }
-/* line 64, ../sass/newsletter.scss */
-.form-actions input[type=submit]:hover {
+/* line 66, ../sass/newsletter.scss */
+form.newsletter-signup .form-actions input[type=submit]:hover {
   background: #000;
 }

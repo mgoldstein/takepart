@@ -30,7 +30,7 @@ header img {
 
 /* line 23, ../sass/interstitial.scss */
 #page-wrapper.campaign {
-  width: 400px;
+  max-width: 400px;
   height: 475px;
 }
 
@@ -72,8 +72,12 @@ header img {
   font-size: 12px;
   clear: both;
 }
+/* line 57, ../sass/interstitial.scss */
+#page #dont p {
+  margin: 0.5em 0;
+}
 
-/* line 61, ../sass/interstitial.scss */
+/* line 64, ../sass/interstitial.scss */
 #page.main .content a {
   color: #018b73;
 }
