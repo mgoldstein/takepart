@@ -8,8 +8,5 @@ body.page-overlay-ad{
   }
 }
 .interstitial_modal_modal .tpmodal_close:before{
-  color: white;
-  @include breakpoint($breakpoint-tablet){
-    color: gray;
-  }
+  color: gray;
 }

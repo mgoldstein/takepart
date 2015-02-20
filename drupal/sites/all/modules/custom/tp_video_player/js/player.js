@@ -22,6 +22,9 @@
           settings['primary'] = 'flash';
         }
 
+        //adjusts the playlist quality on load to handle caching
+        settings = window.playlist_quality(settings);
+        
         //moved code from pm-jwplayer over to new player.js
         var regions = Drupal.settings.tp_video_player.settings[element_id].allowed_regions[0];
         if (regions.length > 0 && !$('body').hasClass('node-type-video-playlist')) {
@@ -40,7 +43,7 @@
             else {
               $(element).removeClass('loading');
               jwplayer.key = Drupal.settings.tp_video_player.key;
-              jwplayer(element).setup(settings);
+              tp_video_playlist_init(element, settings, index);
             }
           };
           geoip2.country(handleResponse, blockVideo);
@@ -63,6 +66,46 @@
       });
     }
   };
+  
+  /**
+   *  @function:
+   *    function is used to adjust the playlist quality in the front end
+   *    to allow higher quality within the playlist
+   */
+  window.playlist_quality = function(settings) {
+    //default variables
+    var playlist = settings.playlist;
+    var window_width = $(window).width();
+    var file_width = '.mp4';
+    
+    //by default return settings only if width is less then 480
+    if (window_width < 480) {
+      return settings;
+    }
+    //960 and lower
+    else if (window_width < 960) {
+      file_width = '-960.mp4';
+    }
+    //anything abover 960
+    else {
+      file_width = '-1080.mp4';
+    }
+    
+    //does for each of the playlist items to set quality
+    $(playlist).each(function(i, v) {
+      //only does if v.source is set
+      if (v.sources != undefined) {
+        //replace the correct width requested
+        file_url = v.sources[0]['file'];
+        file_url = file_url.replace('.mp4', file_width);
+        playlist[i].sources[0]['file'] = file_url;
+      }
+    });
+    
+    //assigns it back to the playlist
+    settings.playlist = playlist;
+    return settings;
+  }
 
   /**
    *  @function:

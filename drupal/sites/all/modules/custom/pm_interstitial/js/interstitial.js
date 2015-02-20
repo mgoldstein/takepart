@@ -25,7 +25,7 @@
                 }
               };
               if(isMobile.any()) {
-                takeover_ad_init();
+                interstitial_init();
               }else{
                 interstitial_init();
               }
@@ -42,32 +42,6 @@
                         return sParameterName[1];
                     }
                 }
-            }
-            function takeover_ad_init(){
-              var ad_cookie = $.cookie('tp_ad_overlay');
-              var path = window.location.pathname;
-
-              /* Don't show interstitial on first page view */
-              /* If cookie is undefined, queue it up to display the next time, else display it*/
-              if (ad_cookie === null) {
-                $.cookie('tp_ad_overlay', 0, {path: '/'});
-              }else if(ad_cookie == 0 && path != '/overlay/ad'){
-                show_takeover_ad();
-                var link = $('<a href="/overlay/ad" data-interstitial-type="mobileAd"></a>');
-                if(!$('body').hasClass('campaign-display')){
-                  show_interstitial(link);
-                }
-              }
-
-            }
-            function show_takeover_ad(){
-
-              /* Set expiration for takeover ad */
-              var date = new Date();
-              date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
-              $.cookie('tp_ad_overlay', null);
-              $.cookie('tp_ad_overlay', 1, {expires: date, path: '/'});
-
             }
             function interstitial_init() {
 
@@ -118,9 +92,11 @@
                 var analytics_types = {
                     'email': 'Newsletter',
                     'social': 'Social',
-                    'mobileAd': 'Mobile Ad'
                 };
                 $iframe.bind('load', function() {
+					// prevent scrolling, you sick bastard
+					$('body').css('overflow','hidden');
+
                     var $modal = $('#' + interstitial_modal_id + 'modal');
                     $modal.show();
                     if(window.innerWidth <= 480) {
@@ -171,6 +147,8 @@
                     id: interstitial_modal_id,
                     node: $iframe,
                     afterClose: function() {
+						// return scrolling to the body
+						$('body').css('overflow','scroll');
                         extend_pm_interstitial_cookie(7);
                         takepart.analytics.track('tpinterstitial_dismiss', {interstitial_type: analytics_types[interstitial_type]});
                     }
