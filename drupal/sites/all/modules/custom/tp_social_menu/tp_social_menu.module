@@ -42,7 +42,7 @@ function theme_tp_social_menu($variables){
                     <a href="#article-comments">Comments<span class="count"></span></a>
                 </p>';
         }
-        if(isset($variables['options']['comments']) && $variables['options']['comments'] == TRUE){
+        if(isset($variables['options']['overlay']) && $variables['options']['overlay'] == TRUE){
           $elements['share'] .= '<div class="tap-influence-overlay"></div>';
           $elements['share'] .= '<span class="tap-influence-icon icon i-influence"><h3 class="tp-social-headline reach">Your Reach</h3></span>';
         }

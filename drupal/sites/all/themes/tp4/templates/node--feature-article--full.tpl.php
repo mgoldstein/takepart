@@ -28,7 +28,7 @@
     <aside class="social social-vertical stick">
       <?php
       $social_elements = array('action', 'share', 'subscribe', 'facebook', 'overlay');
-      $options = array('comments' => TRUE);
+      $options = array('comments' => TRUE, 'overlay' => TRUE);
       print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
       ?>
     </aside>
