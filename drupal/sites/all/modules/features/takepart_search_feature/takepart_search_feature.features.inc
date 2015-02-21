@@ -208,6 +208,11 @@ function takepart_search_feature_default_search_api_server() {
     "description" : "Used for SOLR on TakePart.com",
     "class" : "search_api_solr_service",
     "options" : {
+      "clean_ids_form" : [],
+      "clean_ids" : false,
+      "site_hash_form" : [],
+      "site_hash" : false,
+      "scheme" : "http",
       "host" : "solr.prod.takepart.com",
       "port" : "8080",
       "path" : "\\/solr",
@@ -215,7 +220,10 @@ function takepart_search_feature_default_search_api_server() {
       "http_pass" : "",
       "excerpt" : 0,
       "retrieve_data" : 0,
-      "highlight_data" : 0
+      "highlight_data" : 0,
+      "skip_schema_check" : 0,
+      "solr_version" : "",
+      "http_method" : "AUTO"
     },
     "enabled" : "1"
   }');

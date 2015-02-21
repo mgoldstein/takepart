@@ -125,6 +125,8 @@ function takepart_search_feature_facetapi_default_facet_settings() {
       'format' => 'full_html',
     ),
     'submit_realm' => 'Save and go back to realm settings',
+    'facet_more_text' => 'Show more',
+    'facet_fewer_text' => 'Show fewer',
   );
   $export['search_api@site_node_index:block:field_topic'] = $facet;
 
