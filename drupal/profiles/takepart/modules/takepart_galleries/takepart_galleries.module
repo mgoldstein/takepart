@@ -243,7 +243,7 @@ function takepart_galleries_html_head_alter(&$head_elements) {
   }
   
 	// Update the og:image value if you're on a sub-page
-	if($dirs[3]) {
+	if($dirs[3] && arg(0) == 'node') {
 		$node = node_load(arg(1));
 
 		// Ripped off from takepart_gallery_support.module -
