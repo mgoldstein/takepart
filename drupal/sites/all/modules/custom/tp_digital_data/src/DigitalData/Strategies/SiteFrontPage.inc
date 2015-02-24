@@ -22,7 +22,8 @@ class ddSiteFrontPage extends ddDefaultPage {
           'primaryCateogry' => 'home',
           'siteSection' => 'home',
           'pageUrl' => $base_url,
-          'pageUrlAlias' => 'home'
+          'pageUrlAlias' => 'home',
+          'template' => 'home',
         ),
       ),
     );

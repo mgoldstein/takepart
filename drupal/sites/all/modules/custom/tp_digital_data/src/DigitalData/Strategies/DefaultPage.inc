@@ -16,6 +16,7 @@ class ddDefaultPage implements ddBuildStrategy {
         'pageInfo' => array(
           'destinationURL' => '%document.location.href',
           'referringURL' => '%document.referrer',
+          'template' => 'other',
         ),
       ),
       'event' => array(),
