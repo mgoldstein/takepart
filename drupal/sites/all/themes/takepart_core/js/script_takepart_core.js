@@ -134,9 +134,7 @@ $(function() {
 		'Author Byline Link': '.authors',
 		'Badge': '.badge',
 		'Topic Box': '#topic_box',
-		'Taboola Widget - Gallery Page': '#taboola-bottom-main-column-mix',
-    'Mobile Sticky Strip Share': '.social-wrapper.mobile',
-    'Mobile Sticky Strip': '.social-wrapper.mobile'
+		'Taboola Widget - Gallery Page': '#taboola-bottom-main-column-mix'
 		// no need to track articles, since those are already in tp4
 	});
 
