@@ -4,7 +4,7 @@
 	<?php if ( $w = wf('top_nav', 'token', 'patt_news') ): ?>
 		<div class="item salad">
 			<img class="item full" src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-salad.png" width="214" height="206" alt="salad bowl with salad" usemap="#salad">
-			<a class="tag" href="http://www.takepart.com<?= $w->href?>">
+			<a class="tag" href="<?=$w->href?>">
 				<img
 				 src="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-news.png"
 				 data-onsrc="/profiles/takepart/themes/takepart3/campaigns/patt/images/table-tag-news-hover.png"
