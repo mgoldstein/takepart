@@ -245,7 +245,6 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 	// Update the og:image value if you're on a sub-page
   $node = menu_get_object();
 	if(!empty($node)  && $dirs[3]) {
-		$node = node_load(arg(1));
 
 		// Ripped off from takepart_gallery_support.module -
 		// Get the slideshow, get the slide title, convert it to a url-style string, and check it against arg(2)
