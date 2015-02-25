@@ -67,17 +67,14 @@ header img {
   margin-bottom: 5px;
 }
 /* line 53, ../sass/interstitial.scss */
-#page #dont {
+#page p#dont {
   font-family: Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
   font-size: 12px;
   clear: both;
-}
-/* line 57, ../sass/interstitial.scss */
-#page #dont p {
   margin: 0.5em 0;
 }
 
-/* line 64, ../sass/interstitial.scss */
+/* line 62, ../sass/interstitial.scss */
 #page.main .content a {
   color: #018b73;
 }

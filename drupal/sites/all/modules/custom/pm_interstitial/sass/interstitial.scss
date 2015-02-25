@@ -50,13 +50,11 @@ header {
 	 .body p {
 		margin-bottom: 5px;
 	}
-	#dont {
+	p#dont {
 		font-family: $times;
 		font-size: 12px;
 		clear:both;
-		p {
-			margin: 0.5em 0;
-		}
+		margin: 0.5em 0;
 	}
 }
 
