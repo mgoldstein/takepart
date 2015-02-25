@@ -542,10 +542,10 @@
     'Home - right rail galleries' : 'body.page-tp4-homepage #block-views-photo-galleries-promo-block',
     'Home - graveyard' : '#block-tp4-support-tp4-graveyard',
     'Home - stories under lead' : 'body.page-tp4-homepage .panel-secondary-featured',
-    'Home - top horizontal promo' : '#block-tp4-support-tp4-dont-miss',
+    'Home - top horizontal promo' : '#block-tp4-support-tp4-dont-miss'
 
-    'Mobile Sticky Strip': '.social-wrapper.mobile',
-    'Mobile Sticky Strip Share': '.social-wrapper.mobile li.share'
+//    'Mobile Sticky Strip': '.social-wrapper.mobile',
+//    'Mobile Sticky Strip Share': '.social-wrapper.mobile li.share'
 
   });
 
