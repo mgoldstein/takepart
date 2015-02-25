@@ -102,14 +102,14 @@ if (!array_key_exists('bluehornet_api_accounts', $conf)) {
 }
 $conf['bluehornet_api_accounts'] += array(
   'takepart' => array(
-    'domain' => 'bluehornet-proxy.dev.takepart.com:8180',
-    // 'domain' => 'echo.bluehornet.com',
+    // 'domain' => 'bluehornet-proxy.dev.takepart.com:8180',
+    'domain' => 'echo.bluehornet.com',
     'key' => '40465d9afd847a0e862b857e8e7387b8',
     'secret' => 'a00072e1755a2d2f797971742c97df45',
   ),
   'pivot' => array(
-    'domain' => 'bluehornet-proxy.dev.takepart.com:8180',
-    // 'domain' => 'echo.bluehornet.com',
+    // 'domain' => 'bluehornet-proxy.dev.takepart.com:8180',
+    'domain' => 'echo.bluehornet.com',
     'key' => 'c0cf51a9f440562b91727bab1293ff29',
     'secret' => '28606de9e00dabcbf5049f7b734ff724',
   ),
