@@ -66,7 +66,7 @@
         name: 'facebook',
         display: 'Facebook',
         image: $("meta[property='og:image']").attr("content"),
-        caption: $("meta[property='og:description']").attr("content"),
+//        caption: $("meta[property='og:description']").attr("content"),
         description: $("meta[property='og:description']").attr("content"),
         share: function(args) {
             get_share_url(args.url, args.title, function(url) {
@@ -77,7 +77,7 @@
                     name: args.title,
                     link: url + '',
                     picture: $("meta[property='og:image']").attr("content"),
-                    caption: args.caption || parser.hostname,
+//                    caption: args.caption || parser.hostname,
                     description: $("meta[property='og:description']").attr("content")
                 },
                 function(response) {
