@@ -1496,11 +1496,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign-field_campaign_menu_bg_color'
   $field_instances['node-campaign-field_campaign_menu_bg_color'] = array(
     'bundle' => 'campaign',
-    'default_value' => array(
-      0 => array(
-        'rgb' => 'rgba(0, 0, 0, 0)',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'The color of the Menu Bar.',
     'display' => array(
@@ -5176,11 +5172,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign_card_branding-field_campaign_bg_color'
   $field_instances['node-campaign_card_branding-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_branding',
-    'default_value' => array(
-      0 => array(
-        'rgb' => 'rgb(255, 255, 255)',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -7395,11 +7387,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign_card_iframe-field_campaign_bg_color'
   $field_instances['node-campaign_card_iframe-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_iframe',
-    'default_value' => array(
-      0 => array(
-        'rgb' => '#ffffff',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -8984,11 +8972,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign_card_media-field_campaign_bg_color'
   $field_instances['node-campaign_card_media-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_media',
-    'default_value' => array(
-      0 => array(
-        'rgb' => '#ffffff',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -12396,11 +12380,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign_card_news-field_campaign_bg_color'
   $field_instances['node-campaign_card_news-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_news',
-    'default_value' => array(
-      0 => array(
-        'rgb' => '#ffffff',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -14078,11 +14058,7 @@ Note: If you manually reference more items than selected here, the number refere
   // Exported field_instance: 'node-campaign_card_social-field_campaign_bg_color'
   $field_instances['node-campaign_card_social-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_social',
-    'default_value' => array(
-      0 => array(
-        'rgb' => '#ffffff',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -19167,11 +19143,7 @@ Note: If you manually reference more items than selected here, the number refere
   // Exported field_instance: 'node-campaign_card_twitter-field_campaign_bg_color'
   $field_instances['node-campaign_card_twitter-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_twitter',
-    'default_value' => array(
-      0 => array(
-        'rgb' => 'rgb(255, 255, 255)',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
