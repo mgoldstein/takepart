@@ -67,6 +67,11 @@ body {
   height: auto;
   padding: 0;
   position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.footer-wrapper{
+  max-width: 100%;
 }
 .footer-wrapper, .suffix-wrapper {
   z-index: 1;
