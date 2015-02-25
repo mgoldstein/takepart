@@ -16440,16 +16440,20 @@ aside.social.social-vertical {
     width: 40px;
     float: left;
   }
+  /* line 404, ../sass/modules/_social-menu.scss */
+  aside.social.social-vertical h3.tp-social-headline {
+    display: block;
+  }
 }
 @media all and (min-width: 980px) {
-  /* line 405, ../sass/modules/_social-menu.scss */
+  /* line 408, ../sass/modules/_social-menu.scss */
   aside.social.social-vertical li.share {
     width: 40px;
   }
 }
 
 /* Social Horizontal */
-/* line 414, ../sass/modules/_social-menu.scss */
+/* line 417, ../sass/modules/_social-menu.scss */
 aside.social.social-horizontal {
   float: none;
   max-width: 620px;
@@ -16459,43 +16463,43 @@ aside.social.social-horizontal {
   text-align: right;
 }
 @media all and (min-width: 480px) {
-  /* line 414, ../sass/modules/_social-menu.scss */
+  /* line 417, ../sass/modules/_social-menu.scss */
   aside.social.social-horizontal {
     width: 100%;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 414, ../sass/modules/_social-menu.scss */
+  /* line 417, ../sass/modules/_social-menu.scss */
   aside.social.social-horizontal {
     float: right;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 427, ../sass/modules/_social-menu.scss */
+  /* line 430, ../sass/modules/_social-menu.scss */
   aside.social.social-horizontal li.share {
     float: right;
   }
 }
-/* line 432, ../sass/modules/_social-menu.scss */
+/* line 435, ../sass/modules/_social-menu.scss */
 aside.social.social-horizontal .share-submenu-wrapper {
   display: inline-block;
   vertical-align: middle;
 }
-/* line 436, ../sass/modules/_social-menu.scss */
+/* line 439, ../sass/modules/_social-menu.scss */
 aside.social.social-horizontal .tp-social-headline {
   display: inline;
   vertical-align: middle;
   margin-left: 5px;
 }
 @media all and (min-width: 980px) {
-  /* line 436, ../sass/modules/_social-menu.scss */
+  /* line 439, ../sass/modules/_social-menu.scss */
   aside.social.social-horizontal .tp-social-headline {
     float: none;
     margin-right: 5px;
     letter-spacing: 0px;
   }
 }
-/* line 446, ../sass/modules/_social-menu.scss */
+/* line 449, ../sass/modules/_social-menu.scss */
 aside.social.social-horizontal .tp-social-link {
   display: inline-block;
   vertical-align: middle;
@@ -16510,7 +16514,7 @@ aside.social.social-horizontal .tp-social-link {
 
 /* Content Specific Rules */
 @media all and (min-width: 480px) {
-  /* line 465, ../sass/modules/_social-menu.scss */
+  /* line 468, ../sass/modules/_social-menu.scss */
   body.node-type-article aside.social,
   body.node-type-video aside.social,
   body.node-type-flashcard aside.social,
@@ -16520,7 +16524,7 @@ aside.social.social-horizontal .tp-social-link {
     border-top: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
   }
-  /* line 472, ../sass/modules/_social-menu.scss */
+  /* line 475, ../sass/modules/_social-menu.scss */
   body.node-type-article aside.social .tp-social-reddit,
   body.node-type-article aside.social .tp-social-pinterest,
   body.node-type-article aside.social .comments-link,
@@ -16540,7 +16544,7 @@ aside.social.social-horizontal .tp-social-link {
   }
 }
 @media all and (min-width: 768px) {
-  /* line 477, ../sass/modules/_social-menu.scss */
+  /* line 480, ../sass/modules/_social-menu.scss */
   body.node-type-article aside.social .comments-link,
   body.node-type-video aside.social .comments-link,
   body.node-type-flashcard aside.social .comments-link,
@@ -16550,7 +16554,7 @@ aside.social.social-horizontal .tp-social-link {
   }
 }
 @media all and (min-width: 980px) {
-  /* line 465, ../sass/modules/_social-menu.scss */
+  /* line 468, ../sass/modules/_social-menu.scss */
   body.node-type-article aside.social,
   body.node-type-video aside.social,
   body.node-type-flashcard aside.social,
@@ -16561,42 +16565,42 @@ aside.social.social-horizontal .tp-social-link {
   }
 }
 
-/* line 488, ../sass/modules/_social-menu.scss */
+/* line 491, ../sass/modules/_social-menu.scss */
 body.node-type-openpublish-photo-gallery aside.social {
   border: none;
   height: auto;
 }
-/* line 491, ../sass/modules/_social-menu.scss */
+/* line 494, ../sass/modules/_social-menu.scss */
 body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   display: none;
 }
 @media all and (min-width: 480px) {
-  /* line 494, ../sass/modules/_social-menu.scss */
+  /* line 497, ../sass/modules/_social-menu.scss */
   body.node-type-openpublish-photo-gallery aside.social li.share {
     width: auto;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 494, ../sass/modules/_social-menu.scss */
+  /* line 497, ../sass/modules/_social-menu.scss */
   body.node-type-openpublish-photo-gallery aside.social li.share {
     width: auto;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 494, ../sass/modules/_social-menu.scss */
+  /* line 497, ../sass/modules/_social-menu.scss */
   body.node-type-openpublish-photo-gallery aside.social li.share {
     width: auto;
   }
 }
 @media all and (min-width: 480px) {
-  /* line 505, ../sass/modules/_social-menu.scss */
+  /* line 508, ../sass/modules/_social-menu.scss */
   body.node-type-openpublish-photo-gallery aside.social li.takeaction {
     display: none;
   }
 }
 
 /****** Override for sticky **********/
-/* line 514, ../sass/modules/_social-menu.scss */
+/* line 517, ../sass/modules/_social-menu.scss */
 .social.sticky {
   z-index: 1;
   position: fixed;
@@ -16604,12 +16608,12 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 }
 
 /****** TEMP FOR STICKY HEADER **********/
-/* line 523, ../sass/modules/_social-menu.scss */
+/* line 526, ../sass/modules/_social-menu.scss */
 .header-wrapper {
   padding: 0;
 }
 
-/* line 527, ../sass/modules/_social-menu.scss */
+/* line 530, ../sass/modules/_social-menu.scss */
 .tp4-fat-header {
   padding: 10px;
   padding-bottom: 0;
@@ -16617,12 +16621,12 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 
 /* Sticky Header */
 /****** Influence **********/
-/* line 551, ../sass/modules/_social-menu.scss */
+/* line 554, ../sass/modules/_social-menu.scss */
 .social-wrapper {
   position: relative;
 }
 
-/* line 554, ../sass/modules/_social-menu.scss */
+/* line 557, ../sass/modules/_social-menu.scss */
 .social-wrapper .tap-influence-overlay .popover {
   display: none;
   top: 0;
@@ -16632,33 +16636,33 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   transition: top 0.2s ease-out;
 }
 @media all and (min-width: 480px) {
-  /* line 554, ../sass/modules/_social-menu.scss */
+  /* line 557, ../sass/modules/_social-menu.scss */
   .social-wrapper .tap-influence-overlay .popover {
     display: block;
   }
 }
 
 @media all and (min-width: 980px) {
-  /* line 565, ../sass/modules/_social-menu.scss */
+  /* line 568, ../sass/modules/_social-menu.scss */
   .social-wrapper .tap-influence-icon.icon:after {
     margin-left: 0;
   }
 }
 
-/* line 571, ../sass/modules/_social-menu.scss */
+/* line 574, ../sass/modules/_social-menu.scss */
 .social-wrapper .tap-influence-icon {
   margin-top: 16px;
   display: block;
 }
 @media all and (min-width: 480px) {
-  /* line 571, ../sass/modules/_social-menu.scss */
+  /* line 574, ../sass/modules/_social-menu.scss */
   .social-wrapper .tap-influence-icon {
     text-align: center;
     width: 60px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 571, ../sass/modules/_social-menu.scss */
+  /* line 574, ../sass/modules/_social-menu.scss */
   .social-wrapper .tap-influence-icon {
     text-align: right;
     position: relative;
@@ -16667,12 +16671,12 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   }
 }
 
-/* line 585, ../sass/modules/_social-menu.scss */
+/* line 588, ../sass/modules/_social-menu.scss */
 .social-horizontal .social-wrapper .tap-influence-icon {
   width: 35px;
 }
 @media all and (min-width: 480px) {
-  /* line 585, ../sass/modules/_social-menu.scss */
+  /* line 588, ../sass/modules/_social-menu.scss */
   .social-horizontal .social-wrapper .tap-influence-icon {
     display: block;
     width: 95px;
@@ -16680,7 +16684,7 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
     margin-top: 0px;
   }
 }
-/* line 593, ../sass/modules/_social-menu.scss */
+/* line 596, ../sass/modules/_social-menu.scss */
 .social-horizontal .social-wrapper .tap-influence-icon h3 {
   float: left;
   text-align: center;
@@ -16688,7 +16692,7 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   display: inline-block;
   letter-spacing: 0px;
 }
-/* line 600, ../sass/modules/_social-menu.scss */
+/* line 603, ../sass/modules/_social-menu.scss */
 .social-horizontal .social-wrapper .tap-influence-icon:after {
   margin-top: 0px;
 }

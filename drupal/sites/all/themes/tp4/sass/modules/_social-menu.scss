@@ -401,6 +401,9 @@ aside.social.social-vertical{
   @include breakpoint($breakpoint-desktop){
     width: 40px;
     float: left;
+    h3.tp-social-headline {
+	    display: block;
+    }
   }
   li.share{
     @include breakpoint($breakpoint-desktop){
@@ -601,7 +604,3 @@ body.node-type-openpublish-photo-gallery{
     margin-top: 0px;
   }
 }
-
-
-
-
