@@ -10145,7 +10145,7 @@ body.campaign-display .sms-legal p {
 /* line 1258, ../sass/page/_campaigns.scss */
 body.campaign-display .node-campaign-card-multi-column .center-inner {
   width: 100%;
-  text-align: left;
+  text-align: center;
   overflow: hidden;
   padding-left: 10px;
 }
