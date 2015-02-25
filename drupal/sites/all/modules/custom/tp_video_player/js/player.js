@@ -12,7 +12,6 @@
         var FF = !(window.mozInnerScreenX == null);
         var MAC = (navigator.platform.indexOf('Mac')>=0);
         var win = (navigator.platform.indexOf('Win') >= 0);
-
         var user_agent = window.navigator.userAgent;
         var old_ie = user_agent.indexOf('MSIE '); //ie10 and lower
         var new_ie = user_agent.indexOf('Trident/'); //ie11
@@ -24,7 +23,7 @@
 
         //adjusts the playlist quality on load to handle caching
         settings = window.playlist_quality(settings);
-        
+
         //moved code from pm-jwplayer over to new player.js
         var regions = Drupal.settings.tp_video_player.settings[element_id].allowed_regions[0];
         if (regions.length > 0 && !$('body').hasClass('node-type-video-playlist')) {
@@ -58,15 +57,19 @@
 
       //fires the init for bxslider on ready
       $(document).ready(function() {
+
         window.tp_initslider();
 
-        $(window).smartresize(function() {
-          window.tp_initslider();
-        });
+        if(typeof smartresize == 'function'){
+          $(window).smartresize(function() {
+            window.tp_initslider();
+          });
+        }
+
       });
     }
   };
-  
+
   /**
    *  @function:
    *    function is used to adjust the playlist quality in the front end
@@ -77,7 +80,7 @@
     var playlist = settings.playlist;
     var window_width = $(window).width();
     var file_width = '.mp4';
-    
+
     //by default return settings only if width is less then 480
     if (window_width < 480) {
       return settings;
@@ -90,7 +93,7 @@
     else {
       file_width = '-1080.mp4';
     }
-    
+
     //does for each of the playlist items to set quality
     $(playlist).each(function(i, v) {
       //only does if v.source is set
@@ -101,7 +104,7 @@
         playlist[i].sources[0]['file'] = file_url;
       }
     });
-    
+
     //assigns it back to the playlist
     settings.playlist = playlist;
     return settings;
@@ -333,7 +336,7 @@
         var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
         var img = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
         var height = (img / 2) + 3;
-        
+
         $('.bx-controls a', bxslider_wrapper).css('top', height);
       }, 500);
     });
