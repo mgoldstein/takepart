@@ -770,6 +770,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'locked' => 0,
     'module' => 'color_field',
     'settings' => array(
+      'allow_empty' => 1,
       'default_colors' => '#AC725E,#D06B64,#F83A22,#FA573C,#FF7537,#FFAD46
 #42D692,#16A765,#7BD148,#B3DC6C,#FBE983
 #92E1C0,#9FE1E7,#9FC6E7,#4986E7,#9A9CFF

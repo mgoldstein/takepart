@@ -111,6 +111,7 @@
   .tp-social-headline{
     text-align: center;
     float: none;
+    display: inline;
     margin: 0;
     width: auto;
     font: normal 14px/100% "tradegothicbold", Verdana, Tahoma, "DejaVu Sans", sans-serif;
@@ -166,6 +167,7 @@
       color: white;
       font-size: 15px;
       line-height: 18px;
+      display: block;
     }
     .takepart-take-action{
       margin: -7px auto 0;
@@ -399,6 +401,9 @@ aside.social.social-vertical{
   @include breakpoint($breakpoint-desktop){
     width: 40px;
     float: left;
+    h3.tp-social-headline {
+	    display: block;
+    }
   }
   li.share{
     @include breakpoint($breakpoint-desktop){
@@ -432,11 +437,11 @@ aside.social.social-horizontal{
     vertical-align: middle;
   }
   .tp-social-headline{
-    display: block;
+    display: inline;
     vertical-align: middle;
     margin-left: 5px;
     @include breakpoint($breakpoint-desktop){
-      float: left;
+      float: none;
       margin-right: 5px;
       letter-spacing: 0px;
     }
@@ -584,8 +589,9 @@ body.node-type-openpublish-photo-gallery{
   width: 35px;
   @include breakpoint($breakpoint-phablet){
     display: block;
-    width: 85px;
+    width: 95px;
     display: inline-block;
+    margin-top: 0px;
   }
   h3 {
 	  float:left;
@@ -598,7 +604,3 @@ body.node-type-openpublish-photo-gallery{
     margin-top: 0px;
   }
 }
-
-
-
-
