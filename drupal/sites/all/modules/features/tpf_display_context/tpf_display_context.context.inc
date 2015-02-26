@@ -51,65 +51,6 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'ad_exclude_campaign';
-  $context->description = 'Context used by general_ad to exclude ads from pages/sections';
-  $context->tag = 'Ads';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'action' => 'action',
-        'openpublish_article' => 'openpublish_article',
-        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        'home' => 'home',
-        'free-tag*' => 'free-tag*',
-        'topic*' => 'topic*',
-        'afinefrenzy' => 'afinefrenzy',
-        'thepeoplespeak' => 'thepeoplespeak',
-        'wavesofaction' => 'wavesofaction',
-        'congowomen' => 'congowomen',
-        'crisisinegypt' => 'crisisinegypt',
-        'journeyofaction' => 'journeyofaction',
-        'skollworldforum' => 'skollworldforum',
-        'thejohnalexanderproject' => 'thejohnalexanderproject',
-        'casinojack/followthemoney' => 'casinojack/followthemoney',
-        'thecove/gotmercury' => 'thecove/gotmercury',
-        'searchforcommonground' => 'searchforcommonground',
-        'underourskin' => 'underourskin',
-        'eradicatewaterborneillnesses' => 'eradicatewaterborneillnesses',
-        'teachinggarden' => 'teachinggarden',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-box-4f9af2b4' => array(
-          'module' => 'boxes',
-          'delta' => 'box-4f9af2b4',
-          'region' => 'header',
-          'weight' => '0',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Ads');
-  t('Context used by general_ad to exclude ads from pages/sections');
-  $export['ad_exclude_campaign'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'author_contributions';
   $context->description = 'Contributions from this author';
   $context->tag = 'Profiles';
@@ -523,99 +464,6 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'general_ad';
-  $context->description = 'Place basic ad on most pages';
-  $context->tag = 'Ads';
-  $context->conditions = array(
-    'context' => array(
-      'values' => array(
-        '~ad_exclude_campaign' => '~ad_exclude_campaign',
-      ),
-    ),
-    'node' => array(
-      'values' => array(
-        'action' => 'action',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        '~user*' => '~user*',
-        'series*' => 'series*',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-box-66c05d6f' => array(
-          'module' => 'boxes',
-          'delta' => 'box-66c05d6f',
-          'region' => 'sidebar_second',
-          'weight' => '0',
-        ),
-        'boxes-box-1104adce' => array(
-          'module' => 'boxes',
-          'delta' => 'box-1104adce',
-          'region' => 'sidebar_second',
-          'weight' => '3',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 1;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Ads');
-  t('Place basic ad on most pages');
-  $export['general_ad'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'multi_page_campaign_default_context';
-  $context->description = 'Default Context for Multi-Page Campaigns';
-  $context->tag = 'Multipage Campaign';
-  $context->conditions = array(
-    'context_field' => array(
-      'values' => array(
-        1 => 1,
-        2 => 2,
-      ),
-      'options' => array(
-        'context_field_category' => '',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'context_related_menu-context_related_menu' => array(
-          'module' => 'context_related_menu',
-          'delta' => 'multi_page_campaign_default_cont',
-          'region' => 'highlighted',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-    'theme_html' => array(
-      'class' => 'campaign-page',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Default Context for Multi-Page Campaigns');
-  t('Multipage Campaign');
-  $export['multi_page_campaign_default_context'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'series_default_context';
   $context->description = 'Default Context for series';
   $context->tag = 'Context Field Default';
@@ -897,8 +745,8 @@ function tpf_display_context_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'topic_general';
-  $context->description = '';
-  $context->tag = '';
+  $context->description = 'For Topic taxonomy term pages in TP4';
+  $context->tag = 'TP4';
   $context->conditions = array(
     'taxonomy_term' => array(
       'values' => array(
@@ -933,6 +781,11 @@ function tpf_display_context_context_default_contexts() {
     ),
   );
   $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('For Topic taxonomy term pages in TP4');
+  t('TP4');
   $export['topic_general'] = $context;
 
   $context = new stdClass();
@@ -978,6 +831,9 @@ function tpf_display_context_context_default_contexts() {
           'weight' => '-3',
         ),
       ),
+    ),
+    'theme_html' => array(
+      'class' => 'node-type-article',
     ),
   );
   $context->condition_mode = 1;
@@ -1606,6 +1462,12 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
           'weight' => '-6',
+        ),
+        'boxes-bg_skin_sponsor' => array(
+          'module' => 'boxes',
+          'delta' => 'bg_skin_sponsor',
+          'region' => 'suffix',
+          'weight' => '-10',
         ),
       ),
     ),
