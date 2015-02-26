@@ -1,5 +1,5 @@
 name = TakePart Omniture
-description = TakePart Omniture Intergration
+description = TakePart Omniture Integration
 core = 7.x
 package = Legacy Feature Module
 version = 7.x-2.0

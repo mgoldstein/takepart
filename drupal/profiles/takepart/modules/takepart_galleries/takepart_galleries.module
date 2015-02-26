@@ -219,23 +219,65 @@ function takepart_galleries_omniture_variables() {
   }
 }
 
-
+/*
+ * Unset duplicate header values and set og:image to match the current slide
+ */
 function takepart_galleries_html_head_alter(&$head_elements) {
-  
+
   $path = $_SERVER["REQUEST_URI"];
   $path = preg_replace('/\?.*/', '', $path);
   $dirs = explode('/', $path);
   if(($dirs[1] == 'photos') && (count($dirs) > 3) && $dirs[3] ) {
     foreach ($head_elements as $key => $element) {
       if (isset($element['#id']) &&
-          (($element['#id'] == 'metatag_og:url') ||
+          (
+		  	  ($element['#id'] == 'metatag_og:url') ||
               ($element['#id'] == 'metatag_og:image') ||
               ($element['#id'] == 'metatag_og:description') ||
-              ($element['#id'] == 'metatag_og:title'))) {
+              ($element['#id'] == 'metatag_og:title')
+          )
+       ) {
         unset($head_elements[$key]);
       }
     }
   }
+  
+	// Update the og:image value if you're on a sub-page
+  $node = menu_get_object();
+  
+	if(!empty($node)  && is_object($node) && isset($node->field_gallery_images)) {
+
+		// Ripped off from takepart_gallery_support.module -
+		// Get the slideshow, get the slide title, convert it to a url-style string, and check it against arg(2)
+		// Then return the updated value to the og:image key in $head_elements
+		$slides = field_get_items('node', $node, 'field_gallery_images');
+    
+		if ($slides) {
+			foreach ($slides as $delta => $item) {
+        //ensures that the fid isset
+        if (isset($item['fid'])) {
+          //load the file
+          $file = file_load($item['fid']);
+          $slide = array();
+          
+          $items = field_get_items('file', $file, 'field_image_title');
+          
+          $slide['title'] = $items[0]['safe_value'];
+  
+          if($slide['title']) {
+            $slide['data-token'] = strtolower(preg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", htmlspecialchars_decode($slide['title'], ENT_QUOTES))));
+          } else {
+            $slide['data-token'] = strtolower(strtok(htmlspecialchars_decode($file->filename, ENT_QUOTES), "."));
+          }
+  
+          if($slide['data-token'] == $dirs[3]) {
+            $head_elements['metatag_og:image_0']['#value'] = file_create_url($file->uri);
+            break;
+          }
+        }
+			}
+		}
+	}
 }
 
 

@@ -137,21 +137,17 @@ function takepart_ads_preprocess_page(&$vars) {
             
             if ($ad === "TP_Mobile_Interstitial_1x1") {
                 $gptad_html .= 'if (window.innerWidth < 768) { ';
-                $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
-                      . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
-                $gptad_html .= 'googletag.defineOutOfPageSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
-                      . '/' . $ad . '\', \'' . $gptad . '-oop\').addService(googletag.pubads());' . "\n}\n";
+                $gptad_html .= "googletag.defineSlot('/" . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', [" . $lr[0] . ', ' . $lr[1] . "], '" . $gptad . "').addService(googletag.pubads());\n";
+                $gptad_html .= "googletag.defineOutOfPageSlot('/" . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', '" . $gptad . "-oop').addService(googletag.pubads());\n}\n";
             }
             else if ($ad === "TP_Mobile_320x50") {
               /*
-              $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
-                      . '/' . $ad . '\', [[300, 50], [320, 50]], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
+              $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', [[300, 50], [320, 50]], '" . $gptad . "').addService(googletag.pubads());\n";
               */
             } else {
-            $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
-                      . '/' . $ad . '\', [' . $lr[0] . ', ' . $lr[1] . '], \'' . $gptad . '\').addService(googletag.pubads());' . "\n";
+	            $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', [" . $lr[0] . ', ' . $lr[1] . "], '" . $gptad . "').addService(googletag.pubads());\n";
             }
-            $gptad_html .= '}'."\n";
+            $gptad_html .= "}\n";
         } else {
             //GAM:
             $ad_html .= 'GA_googleAddSlot("' . variable_get('takepart_ads_dfp_property_code', '') . '", "' . $ad . '");';
@@ -326,11 +322,11 @@ function takepart_ads_preprocess_page(&$vars) {
                 $gpt_targeting . // custom targeting
                 'googletag.enableServices();' . "\n" . '});' . "\n" .
                 'var gpt_ad_tags = new Array();' . "\n // -->", array('type' => 'inline', 'scope' => 'header'));
-        }
+	}
 }
 
 /*
- * keep a static list of all adds
+ * keep a static list of all ads
  */
 
 function takepart_ads($slot = FALSE) {
@@ -343,7 +339,7 @@ function takepart_ads($slot = FALSE) {
 }
 
 /*
- * keep a static list of all adds
+ * keep a static list of all ads
  */
 
 function takepart_gpt_ads($slot = FALSE) {

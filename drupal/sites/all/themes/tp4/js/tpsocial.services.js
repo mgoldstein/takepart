@@ -40,7 +40,12 @@
             $.ajax({
                 url: window.TP.tabHost + "/share.json",
                 dataType: 'json',
-                data: {url: url, title: title, shorten: shorten, login_info: get_login_cookie()},
+                data: {
+	                	url: url, 
+	                	title: title, 
+	                	shorten: shorten, 
+	                	login_info: get_login_cookie()
+	                },
                 type: 'POST',
                 async: false,
                 success: function(data) {
@@ -60,9 +65,9 @@
     $.tpsocial.add_service({
         name: 'facebook',
         display: 'Facebook',
-        image: null,
-        caption: null,
-        description: null,
+        image: $("meta[property='og:image']").attr("content"),
+//        caption: $("meta[property='og:description']").attr("content"),
+        description: $("meta[property='og:description']").attr("content"),
         share: function(args) {
             get_share_url(args.url, args.title, function(url) {
                 var parser = document.createElement("a");
@@ -71,10 +76,9 @@
                     method: 'feed',
                     name: args.title,
                     link: url + '',
-                    picture: args.image,
-                    caption: args.caption || parser.hostname,
-                    description: args.description //,
-                            // message: 'Facebook Dialogs are easy!' ???
+                    picture: $("meta[property='og:image']").attr("content"),
+//                    caption: args.caption || parser.hostname,
+                    description: $("meta[property='og:description']").attr("content")
                 },
                 function(response) {
                     if (response && response.post_id) {

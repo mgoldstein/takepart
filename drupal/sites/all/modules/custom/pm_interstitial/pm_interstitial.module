@@ -4,6 +4,8 @@
  * Marketing interstitials.
  */
 
+require_once('pm_interstitial.forms.inc');
+
 /**
  * Implements hook_help().
  */
@@ -33,62 +35,201 @@ function pm_interstitial_help($path, $arg) {
 function pm_interstitial_menu() {
   $items = array();
 
-  $items['admin/config/participant-media/interstitials'] = array(
-    'title' => 'Interstitial Settings',
-    'description' => 'Global settings for marketing interstitials',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('pm_interstitial_admin_form'),
-    'access callback' => 'user_access',
-    'access arguments' => array('pm_interstitial configure settings'),
-  );
-  $items['overlay/ad'] = array(
-    'title' => 'Interstitial Mobile Ad',
-    'description' => t('Mobile ad iframe'),
-    'page callback' => 'pm_interstitial_ad_page',
-    'access callback' => TRUE,
-  );
+    $items['admin/config/participant-media'] = array(
+		'title' => 'Participant Media',
+		'page callback' => 'system_admin_menu_block_page',
+		'access arguments' => array('access administration pages'),
+		'file' => 'system.admin.inc',
+		'file path' => drupal_get_path('module', 'system'),
+		'weight' => -16,
+    );
 
-  return $items;
+    $items['admin/config/participant-media/interstitials'] = array(
+		'title' => 'Interstitial Settings',
+		'description' => 'Global settings for marketing interstitials',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('pm_interstitial_admin_form'),
+		'access callback' => 'user_access',
+		'access arguments' => array('pm_interstitial configure settings'),
+    );
+
+	$items['admin/config/participant-media/interstitials/settings'] = array(
+		'title' => 'Global Settings',
+		'description' => 'Global settings for marketing interstitials',
+		'type' => MENU_DEFAULT_LOCAL_TASK,
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('pm_interstitial_admin_form'),
+		'access callback' => 'user_access',
+		'access arguments' => array('pm_interstitial configure settings'),
+		'weight' => 1,
+	);
+
+	$items['admin/config/participant-media/interstitials/newsletter'] = array(
+		'title' => 'Newsletter',
+		'description' => 'Newsletter interstitial settings',
+		'type' => MENU_LOCAL_TASK,
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('pm_interstitial_newsletter_form'),
+		'access callback' => 'user_access',
+		'access arguments' => array('pm_interstitial configure settings'),
+		'weight' => 2,
+	);
+
+	$items['admin/config/participant-media/interstitials/social'] = array(
+		'title' => 'Social Follow',
+		'description' => 'Social Follow interstitial settings',
+		'type' => MENU_LOCAL_TASK,
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('pm_interstitial_social_form'),
+		'access callback' => 'user_access',
+		'access arguments' => array('pm_interstitial configure settings'),
+		'weight' => 3,
+	);
+
+	$items['interstitials/%'] = array(
+		'description' => t('interstitial iframe'),
+		'page callback' => 'pm_interstitial_page',
+		'page arguments' => array(1),
+		'access callback' => TRUE,
+	);
+
+	return $items;
 }
 
-/**
- * Page callback for /interstitials/ad
- * This page renders out an ad for interstitials to use on mobile devices
- */
-function pm_interstitial_ad_page(){
-  drupal_add_js("var googletag = googletag || {};
-googletag.cmd = googletag.cmd || [];
-(function() {
-var gads = document.createElement('script');
-gads.async = true;
-gads.type = 'text/javascript';
-var useSSL = 'https:' == document.location.protocol;
-gads.src = (useSSL ? 'https:' : 'http:') +
-'//www.googletagservices.com/tag/js/gpt.js';
-var node = document.getElementsByTagName('script')[0];
-node.parentNode.insertBefore(gads, node);
-})();", 'inline');
-  drupal_add_js("googletag.cmd.push(function() {
-googletag.defineSlot('/4355895/TP_Mobile_Overlay_300x250', [300, 250], 'div-gpt-ad-1416603070373-0').addService(googletag.pubads());
-googletag.pubads().enableSingleRequest();
-googletag.enableServices();
-});", 'inline');
-  $content = "<!-- TP_Mobile_Overlay_300x250 -->
-              <div id='div-gpt-ad-1416603070373-0' style='width:300px; height:250px;'>
-              <script type='text/javascript'>
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1416603070373-0'); });
-              </script>
-              </div>";
-  return $content;
+
+function pm_interstitial_page($type) {
+
+	global $base_url;
+	$path = $base_url.base_path().drupal_get_path('module', 'pm_interstitial');
+
+	// Include CSS & JS
+	drupal_add_css($path.'/css/interstitial.css');
+	drupal_add_css($path.'/css/'.$type.'.css');
+	drupal_add_js($path.'/js/'.$type.'.js');
+
+
+	switch($type) {
+	case 'newsletter':
+
+		drupal_set_title(variable_get('pm_interstitial_newsletter_page_title'));
+
+		$config = array(
+			'email_label' => variable_get('pm_interstitial_newsletter_email_label', ''),
+			'name' => variable_get('pm_interstitial_newsletter_name',''),
+			'source' => variable_get('pm_interstitial_newsletter_signup_source',''),
+			'header' => variable_get('pm_interstitial_newsletter_form_header',''),
+			'email_placeholder' => variable_get('pm_interstitial_newsletter_email_placeholder',''),
+			'submit_caption' => variable_get('pm_interstitial_newsletter_submit_caption',''),
+			'footer' => variable_get('pm_interstitial_newsletter_footer',''),
+			'thank_you_message' => variable_get('pm_interstitial_newsletter_thank_you', ''),
+		);
+
+		$vars = array(
+			'image' => theme('image', array(
+				'path' => variable_get('pm_interstitial_newsletter_header_image', ''),
+				'alt' => variable_get('pm_interstitial_newsletter_header_alt', ''),
+			)),
+			'header' => variable_get('pm_interstitial_newsletter_header', ''),
+			'body' => variable_get('pm_interstitial_newsletter_body', ''),
+			// This could probably be merged into $content or something
+			'newsletter_form' => drupal_render(drupal_get_form('newsletter_campaign_email_only_signup_form', $config)),
+			'do_not_show' => variable_get('pm_interstitial_newsletter_dont_show_text', ''),
+		);
+
+		return array('content' => theme('pm_interstitial_newsletter', $vars));
+		break;
+
+	case 'social-follows':
+
+		drupal_set_title(variable_get('pm_interstitial_social_page_title'));
+
+		$vars = array(
+			'image' => theme('image', array(
+				'path' => variable_get('pm_interstitial_social_header_image', ''),
+				'alt' => variable_get('pm_interstitial_social_header_alt', ''),
+			)),
+			'header' => variable_get('pm_interstitial_social_header', ''),
+			'body' => variable_get('pm_interstitial_social_body', ''),
+			// This could probably be merged into $content or something
+			'facebook' => l(theme('image', array(
+					'path' => variable_get('pm_interstitial_social_fb_image', ''),
+					'alt' => variable_get('pm_interstitial_social_fb_alt', ''),
+				)), variable_get('pm_interstitial_social_fb_url',''), array(
+					'target' => '_blank',
+					'html' => true,
+					'attributes' => array(
+						'data-service' => variable_get('pm_interstitial_social_fb_token', 'facebook'),
+						'class' => array('social-link', 'tplinkpos'), 
+					),
+				)
+			),
+			'twitter' => l(theme('image', array(
+					'path' => variable_get('pm_interstitial_social_twitter_image', ''),
+					'alt' => variable_get('pm_interstitial_social_twitter_alt', ''),
+				)), 'https://www.twitter.com/'.str_replace('@','',variable_get('pm_interstitial_social_twitter_url','')), array(
+					'target' => '_blank',
+					'html' => true,
+					'attributes' => array(
+						'data-service' => variable_get('pm_interstitial_social_twiter_token', 'twitter'),
+						'class' => array('social-link', 'tplinkpos'), 
+					),
+				)
+			),
+			'thank_you' => variable_get('pm_interstitial_social_thank_you', ''),
+			'footer' => variable_get('pm_interstitial_social_footer', ''),
+			'do_not_show' => variable_get('pm_interstitial_social_dont_show_text', ''),
+		);
+
+		return array('content' => theme('pm_interstitial_social_follows', $vars));
+		break;
+	}
 }
+
+
+function pm_interstitial_theme() {
+
+	return array(
+		'pm_interstitials' => array(
+			'variables' => array(
+				'header' => '',
+				'content' => '',
+				'footer' => '',
+			),
+			'arguments' => array(),
+			'render element' => 'page',
+			'template' => 'theme/pm_interstitials',
+		),
+		'pm_interstitial_newsletter' => array(
+			'variables' => array(
+				'header' => variable_get('pm_interstitial_newsletter_header', ''),
+				'body' => variable_get('pm_interstitial_newsletter_body',''),
+				'thank_you' => variable_get('pm_interstitial_newsletter_thank_you',''),
+				'footer' => variable_get('pm_interstitial_newsletter_footer',''),
+				'do_not_show' => variable_get('pm_interstitial_newsletter_dont_show_text',''),
+			),
+			'template' => 'theme/pm_interstitial_newsletter'
+		),
+		'pm_interstitial_social_follows' => array(
+			'variables' => array(
+				'header' => variable_get('pm_interstitial_social_header', ''),
+				'body' => variable_get('pm_interstitial_social_body',''),
+				'thank_you' => variable_get('pm_interstitial_social_thank_you',''),
+				'footer' => variable_get('pm_interstitial_social_footer',''),
+				'do_not_show' => variable_get('pm_interstitial_social_dont_show_text',''),
+			),
+			'template' => 'theme/pm_interstitial_social_follows'
+		),
+	);
+
+}
+
 
 /**
  * Implements hook_preprocess_page()
  */
 function pm_interstitial_preprocess_page(&$variables){
-  $current_path = current_path();
-  if($current_path == 'overlay/ad'){
-    $variables['theme_hook_suggestions'][] = 'page__entity_iframe__node';
+  if (arg(0) === 'interstitials') {
+	$variables['theme_hook_suggestions'][] = 'pm_interstitials';
   }
 }
 
@@ -103,64 +244,6 @@ function pm_interstitial_permission() {
       'restrict access' => TRUE,
     ),
   );
-}
-
-/**
- * Admin form callback.
- */
-function pm_interstitial_admin_form($form, &$form_state) {
-
-  $form['email'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Email Interstitials'),
-    '#description' => t('Settings for the email interstitial.'),
-    '#tree' => FALSE,
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-  );
-
-  $form['email']['pm_interstitial_email_interstitials'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Interstitial Paths'),
-    '#description' => t('List of email interstitial paths. Paths should be listed one per line.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('pm_interstitial_email_interstitials', ''),
-  );
-
-  $form['email']['pm_interstitial_email_cmpids'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Campaign ID Prefixes'),
-    '#description' => t('List of campaign id (cmpid) prefixes that should be treated as email referrers. Prefixes should be listed one per line.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('pm_interstitial_email_cmpids', ''),
-  );
-
-  $form['social'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Social Interstitials'),
-    '#description' => t('Settings for the social interstitial.'),
-    '#tree' => FALSE,
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
-  );
-
-  $form['social']['pm_interstitial_social_interstitials'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Interstitial Paths'),
-    '#description' => t('List of social interstitial paths. Paths should be listed one per line.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('pm_interstitial_social_interstitials', ''),
-  );
-
-  $form['social']['pm_interstitial_social_cmpids'] = array(
-    '#type' => 'textarea',
-    '#title' => t('Campaign ID Prefixes'),
-    '#description' => t('List of campaign id (cmpid) prefixes that should be treated as social site referrers. Prefixes should be listed one per line.'),
-    '#required' => FALSE,
-    '#default_value' => variable_get('pm_interstitial_social_cmpids', ''),
-  );
-
-  return system_settings_form($form);
 }
 
 /**
@@ -216,7 +299,7 @@ function pm_interstitial_preprocess_html(&$vars) {
    }
 
   $current_path = current_path();
-  if($current_path == 'overlay/ad'){
+  if (arg(0) === 'interstitials') {
     $vars['theme_hook_suggestions'][] = 'html__entity_iframe__node';
   }
 }
@@ -238,7 +321,7 @@ function pm_interstitial_block_info() {
  */
 function pm_interstitial_block_view($delta = '') {
   $interstitials = array(
-    'email' => 'Newsletter Interstitial',
+    'newsletter' => 'Newsletter Interstitial',
     'social' => 'Social Interstitial',
   );
   $links = array();
@@ -250,6 +333,7 @@ function pm_interstitial_block_view($delta = '') {
           'attributes' => array(
             'data-interstitial-type' => $type,
             'rel' => 'nofollow',
+			'class' => array('interstitial'),
           ),
         ));
       }

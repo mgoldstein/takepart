@@ -1,0 +1,67 @@
+<?php
+/**
+ * Social Menu
+ */
+
+function tp_social_menu_theme(){
+  return array(
+    'tp_social_menu' => array(
+      'variables' => array(
+        'elements' => array(),
+        'options' => array()
+      )
+    ),
+    'tp_social_menu_menu' => array(
+      'variables' => array(
+        'items' => array()
+      ),
+      'template' => 'templates/social-menu'
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme()
+ * List of possible items->
+ * action, social, reach, subscribe, facebook
+ */
+function theme_tp_social_menu($variables){
+  $elements = array();
+  foreach($variables['elements'] as $element){
+    switch($element){
+      case 'action':
+//        $elements['takeaction'] = '<p class="takepart-take-action"></p>';
+        $elements['takeaction'] = '<h3 class="tp-social-headline takeaction-headline">Take Action</h3><a class="takepart-custom-take-action-button"><i class="tpi icon i-take-action"></i></a>';
+
+        break;
+      case 'share':
+        $elements['share'] = '<h3 class="tp-social-headline share-headline">Share</h3><div class="share-submenu-wrapper"><div class="tp-social"></div><div></div></div>';
+        if(isset($variables['options']['comments']) && $variables['options']['comments'] == TRUE){
+          $elements['share'] .= '
+                <p id="article-comments-link" class="comments-link">
+                    <a href="#article-comments">Comments<span class="count"></span></a>
+                </p>';
+        }
+        if(isset($variables['options']['overlay']) && $variables['options']['overlay'] == TRUE){
+          $elements['share'] .= '<div class="tap-influence-overlay"></div>';
+          $elements['share'] .= '<span class="tap-influence-icon icon i-influence"><h3 class="tp-social-headline reach">Your Reach</h3></span>';
+        }
+        break;
+      case 'subscribe':
+        $subscribe = '<h3 class="tp-social-headline subscribe">Subscribe</h3><div></div>';
+        $elements['subscribe'] = l($subscribe, '//go.takepart.com/clients/takepart/survey.htm', array('html' => TRUE, 'attributes' => array('target' => '_blank')));
+        break;
+      case 'facebook':
+        $elements['facebook'] .= '<div class="fb-like" data-href="https://www.facebook.com/takepart" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>';
+        $elements['facebook'] .= '<h3 class="tp-social-headline subscribe">Us</h3>';
+        break;
+//      case 'overlay':
+//        $elements['reach-overlay'] = '<div class="tap-influence-overlay"></div>';
+//        $elements['reach-overlay'] .= '<span class="tap-influence-icon icon i-influence"><h3 class="tp-social-headline reach">Your Reach</h3></span>';
+//        break;
+    }
+  }
+
+  $menu = theme('tp_social_menu_menu', array('items' => $elements));
+  return $menu;
+}

@@ -15,28 +15,53 @@ function akamai_settings() {
   $form['akamai_restapi'] = array(
     '#type'          => 'textfield',
     '#title'         => t('REST API URL'),
-    '#default_value' => variable_get('akamai_restapi', 'https://api.ccu.akamai.com/ques/default'),
-    '#description'   => t('The URL of the Akamai REST API call e.g. "https://api.ccu.akamai.com/ccu/v2/queues/default"')
+    '#default_value' => variable_get('akamai_restapi', 'https://api.ccu.akamai.com/ccu/v2/queues/default'),
+    '#description'   => t('The URL of the Akamai REST API call e.g. "https://api.ccu.akamai.com/ccu/v2/queues/default"'),
+    '#required'      => TRUE,
   );
 
   $form['akamai_basepath'] = array(
     '#type'          => 'textfield',
     '#title'         => t('Base Path'),
     '#default_value' => variable_get('akamai_basepath', ''),
-    '#description'   => t('The URL of the base path (fully qualified domain name) of the site.  This will be used as a prefix for all cache clears (Akamai indexs on the full URI). e.g. "http://www.example.com"')
+    '#description'   => t('The URL of the base path (fully qualified domain name) of the site.  This will be used as a prefix for all cache clears (Akamai indexs on the full URI). e.g. "http://www.example.com"'),
+    '#required'      => TRUE,
+  );
+
+  $form['akamai_timeout'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Timeout Length'),
+    '#description'   => t("The timeout used by when sending the cache clear request to Akamai's servers. Most users will not need to change this value."),
+    '#size'          => 5,
+    '#maxlength'     => 3,
+    '#default_value' => variable_get('akamai_timeout', '5'),
+    '#required'      => TRUE,
   );
 
   $form['akamai_username'] = array(
     '#type'          => 'textfield',
     '#title'         => t('Cache clearing user'),
     '#default_value' => variable_get('akamai_username', ''),
-    '#description'   => t('The user name of the account being used for cache clearing (most likely an email)')
+    '#description'   => t('The user name of the account being used for cache clearing (most likely an email)'),
+    '#required'      => TRUE,
   );
 
-  $form['akamai_password'] = array(
-    '#type'          => 'textfield',
+  if (variable_get('akamai_password', '')) {
+    $password_status_text = t('Akamai CCU Password is set.  Use the fields below to change or leave blank to use the existing password.');
+  }
+  else {
+    $password_status_text = t('Your Akamai CCU Password is not set.  Please set it using the fields below.');
+  }
+
+  $form['password_fieldset'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Akamai CCU Password',
+    '#description' => $password_status_text,
+  );
+
+  $form['password_fieldset']['akamai_password'] = array(
+    '#type'          => 'password_confirm',
     '#title'         => t('Cache clearing password'),
-    '#default_value' => variable_get('akamai_password', ''),
     '#description'   => t('The password of the cache clearing user')
   );
 
@@ -48,7 +73,8 @@ function akamai_settings() {
       'staging'    => t('Staging'),
       'production' => t('Production'),
     ),
-    '#description'   => t('The Akamai domain to use for cache clearing')
+    '#description'   => t('The Akamai domain to use for cache clearing'),
+    '#required'      => TRUE,
   );
 
   $form['akamai_action'] = array(
@@ -59,18 +85,41 @@ function akamai_settings() {
       'remove'     => t('Remove'),
       'invalidate' => t('Invalidate'),
     ),
-    '#description'   => t('The default clearing action.  The options are <em>remove</em> (which removes the item from the Akamai cache) and <em>invalidate</em> (which leaves the item in the cache, but invalidates it so that the origin will be hit on the next request)')
+    '#description'   => t('The default clearing action.  The options are <em>remove</em> (which removes the item from the Akamai cache) and <em>invalidate</em> (which leaves the item in the cache, but invalidates it so that the origin will be hit on the next request)'),
+    '#required'      => TRUE,
   );
 
-  $form['akamai_email'] = array(
-    '#type'          => 'textfield',
-    '#title'         => t('Email Notification Override'),
-    '#default_value' => variable_get('akamai_email', ''),
-    '#description'   => t('If this email address is specified all cache clearing requests will send notifications to this address.  If this address is not specified, the email address of the user executing the request will be used.')
-  );
   return system_settings_form($form);
-
 }
+
+/**
+ * Validate the akamai_settings form.
+ *
+ */
+function akamai_settings_validate($form, &$form_state) {
+  // verify restapi and basepath are valid absolute URLs
+  foreach (array('akamai_basepath' => 'Base Path', 'akamai_restapi' => 'REST API URL') as $field => $field_title) {
+    if (!valid_url($form_state['values'][$field], TRUE)) {
+      form_set_error($field, t("The %field_title value must be a valid, absolute URL", array('%field_title' => $field_title)));
+    }
+  }
+
+  // If the password field is not set, remove it from the values array.
+  // This prevents the value from being overwritten with an empty string.
+  if (!$form_state['values']['akamai_password']) {
+    unset($form_state['values']['akamai_password']);
+  }
+
+  // check if timeout value is an integer
+  $filtered_akamai_timeout = filter_var(
+    $form_state['values']['akamai_timeout'],
+    FILTER_VALIDATE_INT,
+    array('options' => array('min_range' => 1)));
+  if (!$filtered_akamai_timeout) {
+    form_set_error('akamai_timeout', 'The Timeout Length must be an integer greater than 0.');
+  }
+}
+
 /**
  * General cache clearing page.
  */
@@ -105,13 +154,6 @@ function akamai_cache_control() {
     '#description' => t('<b>Remove:</b> Purge the content from Akamai edge server caches. The next time the edge server receives a request for the content, it will retrieve the current version from the origin server. If it cannot retrieve a current version, it will follow instructions in your edge server configuration.<br/><br/><b>Invalidate:</b> Mark the cached content as invalid. The next time the Akamai edge server receives a request for the content, it will send an HTTP conditional get (If-Modified-Since) request to the origin. If the content has changed, the origin server will return a full fresh copy; otherwise, the origin normally will respond that the content has not changed, and Akamai can serve the already-cached content.<br/><br/><b>Note that <em>Remove</em> can increase the load on the origin more than <em>Invalidate</em>.</b> With <em>Invalidate</em>, objects are not removed from cache and full objects are not retrieved from the origin unless they are newer than the cached versions.'),
   );
 
-  $default_email = akamai_get_notification_email();
-  $form['email'] = array(
-    '#type'          => 'textfield',
-    '#title'         => t('Email Notification'),
-    '#default_value' => $default_email,
-    '#description'   => t('Email address to be used for cache clear notifications. Note that it can take up to 10 minutes or more to receive a notification.')
-  );
   $form['submit'] = array(
     '#type'  => 'submit',
     '#value' => t('Start Refreshing Content'),
@@ -132,17 +174,39 @@ function akamai_cache_control_submit($form, &$form_state) {
 
   $overrides = array(
     'action' => $form_state['values']['refresh'],
-    'domain' => $form_state['values']['domain_override'],
-    'email'  => $form_state['values']['email'],
+    'domain' => $form_state['values']['domain_override']
   );
 
-  $did_clear = akamai_clear_url($paths, $overrides);
-  if ($did_clear) {
-    $message = t("Akamai Cache Request has been made successfully, please allow 10 minutes for changes to take effect.") . theme("item_list", $paths);
-    drupal_set_message($message);
+  if ($result = akamai_clear_url($paths, $overrides)) {
+    $message = t("Akamai Cache Request has been made successfully.") . theme("item_list", $paths);
+    $status = 'status';
+
+    if (is_object($result) && !empty($result->data)) {
+      if ($akamai_response_data = json_decode($result->data)) {
+        if (isset($akamai_response_data->httpStatus) && $akamai_response_data->httpStatus > 300) {
+          $message = t("There was a problem with your cache clearing request.  The error message returned was '@msg'",
+            array('@msg' => $akamai_response_data->details));
+          $status = 'error';
+        }
+        else {
+          $message = t("Akamai Cache Request has been made successfully.  Akamai reports an estimated time to completion of @time",
+            array('@time' => format_interval($akamai_response_data->estimatedSeconds))) . theme("item_list", $paths);
+        }
+      }
+      else {
+        $message = t('There was a problem with your cache clearing request. Please check the watchdog logs for details.');
+        $status = 'error';
+
+        watchdog('akamai', 'Unable to parse Akamai API response data: @json_data',
+          array('@json_data' => '<pre>' . print_r($result->data, TRUE) . '</pre>'), WATCHDOG_ERROR);
+      }
+    }
   }
   else {
-    drupal_set_message(t("There was a problem with your cache control request. Check your log messages for more information."), 'error');
+    $message = t('There was a problem with your cache clearing request. Please check the watchdog logs for details.');
+    $status = 'error';
   }
+
+  drupal_set_message($message, $status);
 }
 

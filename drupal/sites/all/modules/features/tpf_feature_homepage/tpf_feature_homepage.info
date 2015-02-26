@@ -46,4 +46,3 @@ features[views_view][] = homepage_columns
 features[views_view][] = latest_article_in_a_series
 features[views_view][] = latest_headlines
 features[views_view][] = takeaction_homepage
-mtime = 1418159208

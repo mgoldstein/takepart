@@ -1,0 +1,97 @@
+.block-newsletter-campaign {
+    .message {
+        margin: .75em 0;
+    }
+    .form-item-email {
+        margin: 0;
+        display: inline-block;
+        font-family: $primary-sans-font;
+        width: 65%;
+        position: relative;
+        label {
+            display: none;
+            font: normal 12px/1 $primary-sans-font;
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            &.error {
+                display: inline;
+            }
+        }
+        input {
+            width: 100%;
+            border: 1px solid #CCC;
+            @include border-radius(0);
+            -webkit-appearance: none;
+            padding: 2px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+    }
+    input[type="submit"] {
+        width: 33%;
+        float: right;
+        @extend %button;
+    }
+
+    // doesn't work
+    // See http://css-tricks.com/snippets/css/style-placeholder-text/
+    // ::-webkit-input-placeholder,
+    // :-moz-placeholder,  /* Firefox 18- */
+    // ::-moz-placeholder, /* Firefox 19+ */
+    // :-ms-input-placeholder {
+    //    color: red;
+    // }
+
+    .terms-of-service {
+        clear: both;
+        margin: 1em 0;
+        padding-bottom: 1em;
+        border-bottom: 1px solid $gray-line;
+        font-size: 12px;
+        // font-family: $primary-sans-font;
+        a {
+
+            line-height: 1.2em;
+            color: $mint;
+        }
+    }
+    .follow-us {
+        font: bold 20px/1 $main-brand-font;
+        text-transform: lowercase;
+        display: inline-block;
+        vertical-align: top;
+        margin: 2px 8px 0 0;
+    }
+    .social-links {
+        display: inline-block;
+        li {
+            display: inline-block;
+            line-height: 1;
+            a {
+                display: inline-block;
+                // they're the same width;
+                height: 0;
+                width: social-sprite-width(twitter-gray);
+                margin-right: social-sprite-width(twitter-gray) / 4; // reasonable margin
+                // image replacement technique
+                padding-top: social-sprite-height(twitter-gray);
+                overflow: hidden;
+                &.facebook { @include social-sprite(facebook-gray);}
+                &.twitter { @include social-sprite(twitter-gray);}
+                &.google { @include social-sprite(googleplus-gray);}
+                &.pinterest { @include social-sprite(pinterest-gray);}
+                &.youtube { @include social-sprite(youtube-gray);}
+                &.tumblr { @include social-sprite(tumblr-gray); margin-right: 0; } // no margin on last link
+            }
+        }
+    }
+}
+
+.card {
+	.block-newsletter-campaign {
+	    .terms-of-service {
+	        border-bottom: none;
+		}
+	}
+}

@@ -10,15 +10,6 @@
 function tpf_config_permissions_user_default_permissions() {
   $permissions = array();
 
-  // Exported permission: 'Administer comScore direct'.
-  $permissions['Administer comScore direct'] = array(
-    'name' => 'Administer comScore direct',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'comscore_direct',
-  );
-
   // Exported permission: 'access comments'.
   $permissions['access comments'] = array(
     'name' => 'access comments',
@@ -40,15 +31,6 @@ function tpf_config_permissions_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'search_api_page',
-  );
-
-  // Exported permission: 'administer SiteCatalyst configuration'.
-  $permissions['administer SiteCatalyst configuration'] = array(
-    'name' => 'administer SiteCatalyst configuration',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
-    'module' => 'omniture',
   );
 
   // Exported permission: 'administer add another'.

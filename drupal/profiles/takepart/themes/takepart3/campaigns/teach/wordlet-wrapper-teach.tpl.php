@@ -1,5 +1,5 @@
-<?
-	$w = w('header_image')
+<?php
+	$w = w('header_image');
 ?>
 
 <div class="snap-drawers scrollable">
@@ -44,9 +44,9 @@
         ><span>Share</span></div>
 				<div class="menu-wrapper">
 					<ul class='menu' <?=wa('menu') ?>>
-						<? foreach( wl('menu') as $w ): ?>
+						<?php foreach( wl('menu') as $w ): ?>
 							<li class="item <?=ws($w->href)?>"><a href="<?=$w->href?>"><?=$w->single(false)?></a></li>
-						<? endforeach ?>
+						<?php endforeach ?>
 					</ul>
 				</div>
 			</header>

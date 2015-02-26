@@ -5,7 +5,7 @@
   $classes            = array();
 
   //Menu Styling
-  //TODO: Move this to it's own template and call it in the .module file
+  //TODO: Move this to its own template and call it in the .module file
   $menu_bar_color     = $campaign_variables->field_campaign_menu_bg_color['und'][0]['rgb'];
   $menu_color_parent  = $campaign_variables->field_menu_color_parent['und'][0]['rgb'];
   $menu_color_child   = $campaign_variables->field_campaign_menu_color_child['und'][0]['rgb'];
@@ -115,9 +115,8 @@
             'data-path' => $parent_menu_title,
             'class' => $parent_link_classes,
             );
-            if (!empty($target)) {
-              $clattr['target'] = $target;
-            }
+
+            $clattr['target'] = $link['#below'][$link_child]['#localized_options']['attributes']['target'];
 
             $child_menu_link = l($child_menu_title,
               $link['#below'][$link_child]['#href'], array(

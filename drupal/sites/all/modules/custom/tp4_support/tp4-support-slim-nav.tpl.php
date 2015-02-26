@@ -5,7 +5,7 @@
 	    <?php print $logo; ?>
 	  </div>
 	  <nav id="main-menu">
-	    <?php print $slimnav; ?>
+	    <?php print str_replace('//campaigns', '//www', $slimnav); ?>
 	  </nav>
 	</div>
 	<div class="right">

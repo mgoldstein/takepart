@@ -9,7 +9,7 @@
 </div>
 
 <div class="footer-menu">
-  <?php print $footer_menu_links; ?>
+  <?php print str_replace('//campaigns', '//www', $footer_menu_links); ?>
 </div>
 
 <div class="footer-bottom">

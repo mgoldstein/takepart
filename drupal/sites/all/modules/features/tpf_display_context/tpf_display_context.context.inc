@@ -59,14 +59,7 @@ function tpf_display_context_context_default_contexts() {
       'values' => array(
         'action' => 'action',
         'openpublish_article' => 'openpublish_article',
-        'openpublish_blog_post' => 'openpublish_blog_post',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-        'takepart_campaign' => 'takepart_campaign',
-        'takepart_group' => 'takepart_group',
-        'takepart_list' => 'takepart_list',
-        'takepart_quick_study' => 'takepart_quick_study',
-        'takepart_slide' => 'takepart_slide',
-        'webform' => 'webform',
       ),
       'options' => array(
         'node_form' => '1',
@@ -101,7 +94,7 @@ function tpf_display_context_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'box-4f9af2b4',
           'region' => 'header',
-          'weight' => 0,
+          'weight' => '0',
         ),
       ),
     ),
@@ -166,24 +159,6 @@ function tpf_display_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'facetapi-VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1' => array(
-          'module' => 'facetapi',
-          'delta' => 'VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1',
-          'region' => 'sidebar_second',
-          'weight' => '-10',
-        ),
-        'facetapi-p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY' => array(
-          'module' => 'facetapi',
-          'delta' => 'p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY',
-          'region' => 'sidebar_second',
-          'weight' => '-9',
-        ),
-        'facetapi-StCw4MzrvpsV2LTHu4LZiKV1hGHJpKsU' => array(
-          'module' => 'facetapi',
-          'delta' => 'StCw4MzrvpsV2LTHu4LZiKV1hGHJpKsU',
-          'region' => 'sidebar_second',
-          'weight' => '-8',
-        ),
         'boxes-ga_mobile_320x50' => array(
           'module' => 'boxes',
           'delta' => 'ga_mobile_320x50',
@@ -195,6 +170,24 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'takepart',
           'region' => 'leaderboard',
           'weight' => '-10',
+        ),
+        'facetapi-VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1' => array(
+          'module' => 'facetapi',
+          'delta' => 'VJwGNQ46y4iuJeqIzALpDmDGkirFA0o1',
+          'region' => 'sidebar',
+          'weight' => '-11',
+        ),
+        'facetapi-p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY' => array(
+          'module' => 'facetapi',
+          'delta' => 'p6j6uydvqzGOZ3pcNbwjsR5fzChT15JY',
+          'region' => 'sidebar',
+          'weight' => '-10',
+        ),
+        'facetapi-jRFxoKf1ESPpk4Z9WOlWyZeObbMDdiy5' => array(
+          'module' => 'facetapi',
+          'delta' => 'jRFxoKf1ESPpk4Z9WOlWyZeObbMDdiy5',
+          'region' => 'sidebar',
+          'weight' => '-9',
         ),
       ),
     ),
@@ -623,296 +616,6 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
-  $context->name = 'omniture_all_content_types';
-  $context->description = 'Omniture: All content types';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'action' => 'action',
-        'blog_front' => 'blog_front',
-        'campaign' => 'campaign',
-        'feature_article' => 'feature_article',
-        'flashcard' => 'flashcard',
-        'openpublish_article' => 'openpublish_article',
-        'openpublish_blog_post' => 'openpublish_blog_post',
-        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-        'openpublish_video' => 'openpublish_video',
-        'profile' => 'profile',
-        'section_front' => 'section_front',
-        'section_front_wide' => 'section_front_wide',
-        'takepart_campaign' => 'takepart_campaign',
-        'takepart_group' => 'takepart_group',
-        'takepart_page' => 'takepart_page',
-        'topic_front' => 'topic_front',
-        'venue' => 'venue',
-      ),
-      'options' => array(
-        'node_form' => '0',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
-s.prop6 = [node:nid]
-s.prop16 = [tp_omniture:get_author:{node:nid}]
-s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.prop18 = [tp_omniture:series:{node:nid}]
-s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:primary_topic:{node:nid}]
-s.prop22 = [tp_omniture:free_tags:{node:nid}]
-s.list2  = [tp_omniture:free_tags:{node:nid}]
-s.prop43 = [tp_omniture:campaign_context:{node:nid}]',
-    ),
-    'theme' => array(
-      'title' => '',
-      'subtitle' => '',
-    ),
-    'theme_html' => array(
-      'class' => '',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Omniture: All content types');
-  $export['omniture_all_content_types'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_article_v2';
-  $context->description = 'Variables to set on second generation article pages.';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'feature_article' => 'feature_article',
-        'openpublish_article' => 'openpublish_article',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.events = event6
-s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
-s.prop6 = [node:nid]
-s.prop16 = [tp_omniture:get_author:{node:nid}]
-s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables to set on second generation article pages.');
-  $export['omniture_article_v2'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_flashcard';
-  $context->description = 'Variables to set on flashcard pages';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'flashcard' => 'flashcard',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{node:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.prop4 = [tp_omniture:value_or_empty:{node:content-type}]
-s.prop6 = [node:nid]
-s.prop17 = [tp_omniture:str_decode:{node:title}]
-s.prop18 = [tp_omniture:series:{node:nid}]
-s.prop19 = [tp_omniture:date:{node:created:raw}]
-s.prop20 = [tp_omniture:primary_topic:{node:nid}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables to set on flashcard pages');
-  $export['omniture_flashcard'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_homepage';
-  $context->description = 'Homepage SiteCatalyst settings';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'path' => array(
-      'values' => array(
-        '<front>' => '<front>',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName =  takepart:home:TakePart Home
-s.channel = home
-s.prop1 = home
-s.prop4 = home
-s.eVar30 = home:TakePart Home',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Homepage SiteCatalyst settings');
-  t('Omniture');
-  $export['omniture_homepage'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_seriesfront';
-  $context->description = 'Variables set on series landing pages';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'taxonomy_term' => array(
-      'values' => array(
-        'series' => 'series',
-        'video_series' => 'video_series',
-      ),
-      'options' => array(
-        'term_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:perm_title:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.prop18 = [tp_omniture:str_decode:{current-page:title}]
-s.eVar19 = [tp_omniture:str_decode:{current-page:title}]',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables set on series landing pages');
-  $export['omniture_seriesfront'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_site_wide';
-  $context->description = 'Omniture Settings for the every page';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'context_all' => array(
-      'values' => array(
-        '~tp4_campaign_cards' => '~tp4_campaign_cards',
-        '~tp4_campaign_pages' => '~tp4_campaign_pages',
-      ),
-    ),
-    'path' => array(
-      'values' => array(
-        '~<front>' => '~<front>',
-        '~user' => '~user',
-      ),
-    ),
-    'sitewide' => array(
-      'values' => array(
-        1 => 1,
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]',
-    ),
-  );
-  $context->condition_mode = 1;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Omniture Settings for the every page');
-  $export['omniture_site_wide'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'omniture_topicfront';
-  $context->description = 'Variables set on topic front page load';
-  $context->tag = 'Omniture';
-  $context->conditions = array(
-    'taxonomy_term' => array(
-      'values' => array(
-        'topic' => 'topic',
-      ),
-      'options' => array(
-        'term_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'omniture_reaction' => array(
-      'variables' => 's.pageName = takepart:[current-page:url-arg:0]:[tp_omniture:str_decode:{current-page:title}]
-s.channel = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop1 = [tp_omniture:lowercase:{current-page:url-arg:0}]
-s.prop2 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]
-s.prop3 = [tp_omniture:lowercase:{current-page:url-arg:0}]:[tp_omniture:lowercase:{current-page:url-arg:1}]:[tp_omniture:lowercase:{current-page:url-arg:2}]
-s.prop4 = topic front
-s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
-',
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Omniture');
-  t('Variables set on topic front page load');
-  $export['omniture_topicfront'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
   $context->name = 'series_default_context';
   $context->description = 'Default Context for series';
   $context->tag = 'Context Field Default';
@@ -1268,6 +971,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'region' => 'sidebar',
           'weight' => '-4',
         ),
+        'bean-takepart-video-media-block' => array(
+          'module' => 'bean',
+          'delta' => 'takepart-video-media-block',
+          'region' => 'sidebar',
+          'weight' => '-3',
+        ),
       ),
     ),
   );
@@ -1429,12 +1138,9 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
   $context->description = 'Expose DTM';
   $context->tag = 'DTM';
   $context->conditions = array(
-    'node' => array(
+    'sitewide' => array(
       'values' => array(
-        'campaign_page' => 'campaign_page',
-      ),
-      'options' => array(
-        'node_form' => '0',
+        1 => 1,
       ),
     ),
   );
@@ -1598,6 +1304,12 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'region' => 'header',
           'weight' => '-9',
         ),
+        'boxes-ga_mobile_320x50_relative' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50_relative',
+          'region' => 'header',
+          'weight' => '-8',
+        ),
         'bean-featured-campaigns-module' => array(
           'module' => 'bean',
           'delta' => 'featured-campaigns-module',
@@ -1609,18 +1321,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'delta' => 'tp4_footer',
           'region' => 'footer',
           'weight' => '-9',
-        ),
-        'boxes-ga_interstitial' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_interstitial',
-          'region' => 'footer',
-          'weight' => '-8',
-        ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-7',
         ),
         'tp4_support-tp4_mobile_menu_header' => array(
           'module' => 'tp4_support',
@@ -1678,7 +1378,7 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'module' => 'boxes',
           'delta' => 'box-66c05d6f',
           'region' => 'sidebar',
-          'weight' => '-10',
+          'weight' => '-12',
         ),
         'newsletter_campaign-51' => array(
           'module' => 'newsletter_campaign',
@@ -1882,12 +1582,6 @@ s.prop20 = [tp_omniture:stringfixes:{current-page:title}]
           'delta' => 'takepart',
           'region' => 'header',
           'weight' => '-11',
-        ),
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-10',
         ),
         'boxes-box-66c05d6f' => array(
           'module' => 'boxes',

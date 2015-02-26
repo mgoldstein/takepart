@@ -39,6 +39,7 @@
   RewriteCond %{HTTP_HOST} !^(10\.\d{1,3}\.\d{1,3}\.\d{1,3})$
   RewriteCond %{HTTP_HOST} !^web(1|2|3|4|5|6|7|8|9|10|11|12).prod.takepart.com$
   RewriteCond %{HTTP_HOST} !=www.takepart.com
+  RewriteCond %{HTTP_HOST} !=editors.takepart.com
   RewriteCond %{HTTP_HOST} !=origin.takepart.com
   RewriteCond %{HTTP_HOST} !=tp-submit.takepart.com
   RewriteCond %{HTTP_HOST} !=betacf.takepart.com

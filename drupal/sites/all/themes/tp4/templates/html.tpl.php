@@ -24,9 +24,10 @@
   <?php endif; ?>
   <?php print $head; ?>
   <?php if ($default_mobile_metatags): ?>
-  <meta name="MobileOptimized" content="width">
+  <meta name="MobileOptimized" content="320">
   <meta name="HandheldFriendly" content="true">
-  <meta name="viewport" content="width=device-width">
+<!--  <meta name="viewport" content="width=device-width">-->
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
   <?php endif; ?>
   <meta http-equiv="cleartype" content="on">
   <?php print $styles; ?>

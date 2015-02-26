@@ -66,9 +66,6 @@ function tp4_support_block_info(){
   $blocks['tp4_mobile_menu_header'] = array(
     'info' => t('Mobile Menu Header')
   );
-  $blocks['tp4_mobile_social_menu'] = array(
-    'info' => t('Mobile Social Menu')
-  );
   return $blocks;
 }
 
@@ -97,10 +94,6 @@ function tp4_support_block_view($delta = ''){
     case 'tp4_mobile_menu_header':
       $block['content'] = theme('tp4_support_mobile_menu_header');
     break;
-    case 'tp4_mobile_social_menu':
-      drupal_add_js(drupal_get_path('module', 'tp4_support'). '/js/mobile-social-menu.js', 'file'); //TODO: move this to tp4 theme script.js file
-      $block['content'] = theme('tp4_support_mobile_social_menu');
-      break;
   }
   return $block;
 }
@@ -255,9 +248,6 @@ function tp4_support_theme() {
         'social_menu' => array(),
       )
     ),
-    'tp4_support_mobile_social_menu' => array(
-      'template' => 'tp4-support-mobile-social-menu',
-    ),
     'tp4_support_featured_campaign' => array(
       'variables' => array(
         'items' => array(),
@@ -277,12 +267,29 @@ function tp4_support_preprocess_page(&$variables) {
 	}
 }
 
+function tp4_menu_link__menu_takepart_links(array $variables) {
+	$element = $variables['element'];
+	$sub_menu = '';
+
+	if ($element['#below']) {
+		$sub_menu = drupal_render($element['#below']);
+	}
+	$output = l($element['#title'], $element['#href'], array_merge($element['#localized_options'], array('absolute' => true, 'https' => true)));
+
+	return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
 /**
  * Implements template_preprocess_HOOK().
  * Set up variables for the tp4_support_footer
  * theme hook.
  */
 function template_preprocess_tp4_support_footer(&$variables) {
+  global $base_url;
+
+  // In the cases where the CSS isn't part of the theme
+  drupal_add_css($base_url.base_path().drupal_get_path('theme', 'tp4').'/css/styles.css');
+
   $variables['footer_menu_links'] = drupal_render($variables['footer_menu']);
   if (arg(0) === 'iframes') {
     $variables['footer_menu_links'] = str_replace('https://', 'http://', $variables['footer_menu_links']);
@@ -302,6 +309,9 @@ function template_preprocess_tp4_support_footer(&$variables) {
 function template_preprocess_tp4_support_slim_nav(&$variables) {
   global $base_url;
   global $user;
+
+  // In the cases where the CSS isn't part of the theme
+  drupal_add_css($base_url.base_path().drupal_get_path('theme', 'tp4').'/css/styles.css');
 
   $image = theme('image', array(
     'path' => drupal_get_path('theme', 'tp4') . '/images/takepart_logo.png',

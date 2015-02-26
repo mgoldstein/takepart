@@ -25,13 +25,11 @@ sftp-config.json
 
 # Debug modules
 /drupal/debug.php
-/drupal/sites/all/modules/contrib/blazemeter/
 /drupal/sites/all/modules/contrib/cron_debug/
-/drupal/sites/all/modules/contrib/devel/
 /drupal/sites/all/modules/contrib/devel_themer/
-/drupal/sites/all/modules/contrib/diff/
 /drupal/sites/all/modules/contrib/features_plumber/
 /drupal/sites/all/libraries/FirePHPCore/
 
 # Local Environment Modules
 /drupal/sites/all/modules/contrib/stage_file_proxy
+/drupal/info.php

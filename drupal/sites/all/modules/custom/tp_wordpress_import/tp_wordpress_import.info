@@ -1,0 +1,10 @@
+name = TakePart - Custom XML Importer
+description = Custom Wordpress XML Importer
+core = 7.x
+package = TakePart
+version = 7.x-1.0-alpha0
+dependencies[] = ctools
+dependencies[] = feeds
+features[ctools][] = feeds:feeds_importer_default:1
+features[features_api][] = api:2
+features[feeds_importer][] = takepart_wordpress_xml

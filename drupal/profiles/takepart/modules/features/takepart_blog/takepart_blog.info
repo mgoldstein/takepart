@@ -1,5 +1,0 @@
-name = TakePart Blog
-description = TakePart Extention of Blog Post
-core = 7.x
-package = Legacy Feature Module
-version = 7.x-2.0

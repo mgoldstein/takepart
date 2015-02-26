@@ -1,22 +1,23 @@
-(function($, window, undefined) {
+/*
+(function ($, window, undefined) {
 
     takepart.analytics.skip_addthis = false;
 
-    takepart.analytics.addThis_shareEventHandler = function(evt) {
+    takepart.analytics.addThis_shareEventHandler = function (evt) {
         if (takepart.analytics.skip_addthis)
             return;
         if (evt.type === 'addthis.menu.share') {
-            //takepart.analytics.track('generic_addthis', {name: evt.data.service, url: this.href});
+            // takepart.analytics.track('generic_addthis', {name: evt.data.service, url: this.href});
         }
     };
 
-    takepart.analytics.addThis_ready = function(evt) {
+    takepart.analytics.addThis_ready = function (evt) {
         if (takepart.analytics.skip_addthis)
             return;
         addthis.addEventListener('addthis.menu.share', takepart.analytics.addThis_shareEventHandler);
     };
 
-    var normalize_share_title = function(title) {
+    var normalize_share_title = function (title) {
         switch (title) {
             case ("Like this content on Facebook."):
             case ("facebook_like"):
@@ -49,23 +50,19 @@
                 title = "Reddit";
                 break;
         }
-
         return title;
     };
 
-    var is_logged_in = function() {
+    var is_logged_in = function () {
         !!document.cookie.match(/takepart=/);
-    }
-
-    // c = prop
-    // v = evar
+    };
 
     var special_share_event = "event74";
     var _gaq = window._gaq || [];
     var ga_category = 'Social';
     var ga_action = 'Share';
 
-    var social_click = function(options) {
+    var social_click = function (options) {
         var $body = $('body');
         var title = normalize_share_title(options.name);
         var evar1, evar4, evar17, evar19, evar20, evar21, list2, linkTrackVars;
@@ -78,7 +75,7 @@
                 ) {
             evar4 = s.prop4;
             var authors = [];
-            $('.article-header .authors a').each(function() {
+            $('.article-header .authors a').each(function () {
                 authors.push($(this).text());
             });
             evar17 = authors.join(',');
@@ -128,11 +125,11 @@
                 s2.eVar21 = evar21;
                 linkTrackVars.push('eVar21');
             }
-            if ( evar43 ) {
+            if (evar43) {
                 s2.eVar43 = evar43;
                 linkTrackVars.push('eVar43');
             }
-            if ( list2 ) {
+            if (list2) {
                 s2.list2 = list2;
                 linkTrackVars.push('list2');
             }
@@ -143,7 +140,7 @@
             s2.eVar30 = s2.pageName;
             s2.linkTrackVars = linkTrackVars.join(',');
             s2.linkTrackEvents = 'event25';
-            if(!!document.cookie.match(/takepart=/gi)) {
+            if (!!document.cookie.match(/takepart=/gi)) {
                 s2.linkTrackEvents += ',event66'
                 s2.events += ',event66';
             }
@@ -157,7 +154,7 @@
 
     takepart.analytics.add({
         // Putting off til we can get exit tracking figured out
-        'on-our-radar-click': function(options) {
+        'on-our-radar-click': function (options) {
             var domain = options.element.hostname.replace('www.', '');
 
             // Google
@@ -181,7 +178,7 @@
             s.linkTrackVars = linkTrackVars;
             s.linkTrackEvents = linkTrackEvents;
         },
-        'tp-social-share': function(options) {
+        'tp-social-share': function (options) {
             var title = normalize_share_title(options.name);
 
             var s = s_gi(Drupal.settings.omniture.s_account);
@@ -201,7 +198,7 @@
         // -------------------------------
         // TP Gallery --------------------
         // -------------------------------
-        'gallery-next-gallery-click': function(options) {
+        'gallery-next-gallery-click': function (options) {
             var s2 = s_gi(Drupal.settings.omniture.s_account);
             s2.linkTrackVars = 'prop16,prop20,eVar21,eVar30,eVar17,eVar14,prop12,eVar34,eVar33,events';
             s2.linkTrackEvents = 'event17';
@@ -213,14 +210,14 @@
             s2.eVar21 = s.eVar21;
             s2.prop20 = s2.eVar21;
             var authors = [];
-            $('.article-header .authors a').each(function() {
+            $('.article-header .authors a').each(function () {
                 authors.push($(this).text());
             });
             s2.eVar17 = authors.join(',');
             s2.prop16 = s2.eVar17;
             s2.tl(options.a, 'o', 'Click on Up Next Promo Gallery');
         },
-        'gallery-track-slide': function(options) {
+        'gallery-track-slide': function (options) {
             var token = options.token;
             omniture = s.prop15.split(':');
             s.prop15 = omniture[0] + ':' + omniture[1] + ((token) ? ':' + token : '');
@@ -258,7 +255,7 @@
         // -------------------------------
         // TP Interstitial----------------
         // -------------------------------
-        'tpinterstitial_twitter': function(options) {
+        'tpinterstitial_twitter': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'prop46';
             s.linkTrackEvents = null;
@@ -266,7 +263,7 @@
             s.prop46 = "Social Interstitial: Twitter Click";
             s.tl(true, 'o', 'Social Interstitial Click');
         },
-        'tpinterstitial_facebook': function(options) {
+        'tpinterstitial_facebook': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'prop46';
             s.linkTrackEvents = null;
@@ -274,7 +271,7 @@
             s.prop46 = "Social Interstitial: Facebook Click";
             s.tl(true, 'o', 'Social Interstitial Click');
         },
-        'tpinterstitial_dontshow': function(options) {
+        'tpinterstitial_dontshow': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'prop46';
             s.linkTrackEvents = null;
@@ -282,7 +279,7 @@
             s.prop46 = options.interstitial_type + " Interstitial: Don't Show Me This Again";
             s.tl(true, 'o', options.interstitial_type + ' Interstitial Click');
         },
-        'tpinterstitial_dismiss': function(options) {
+        'tpinterstitial_dismiss': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'prop46';
             s.linkTrackEvents = null;
@@ -290,7 +287,7 @@
             s.prop46 = options.interstitial_type + " Interstitial: Click on X to Dismiss";
             s.tl(true, 'o', options.interstitial_type + ' Interstitial Click');
         },
-        'tpinterstitial_newsletter_signup': function(options) {
+        'tpinterstitial_newsletter_signup': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = "prop46,eVar22,eVar23,eVar30,events";
             s.linkTrackEvents = "event39";
@@ -301,7 +298,7 @@
             s.events = 'event39';
             s.tl(true, 'o', 'Newsletter Interstitial Signup');
         },
-        'tpinterstitial_show_modal': function(options) {
+        'tpinterstitial_show_modal': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'prop46';
             s.linkTrackEvents = null;
@@ -312,7 +309,7 @@
         // -------------------------------
         // TP Infographic ----------------
         // -------------------------------
-        'tpinfographic_show': function(options) {
+        'tpinfographic_show': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar45,eVar30,events';
             s.linkTrackEvents = 'event45';
@@ -321,7 +318,7 @@
             s.eVar30 = s.pageName;
             s.tl(true, 'o', 'Click on Infographic');
         },
-        'tpinfographic_embed_show': function(options) {
+        'tpinfographic_embed_show': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar45,eVar30,events';
             s.linkTrackEvents = 'event46';
@@ -333,7 +330,7 @@
         // -----------------------------------
         // Newsletter Signups ----------------
         // -----------------------------------
-        'newsletter_signup': function(options) {
+        'newsletter_signup': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar23,eVar30,events';
             s.linkTrackEvents = 'event39';
@@ -349,7 +346,7 @@
         // -----------------------------------
         // Teach Share your Story Events -----
         // -----------------------------------
-        'teach_story_entry': function(options) {
+        'teach_story_entry': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar30,eVar42,prop42,events';
             s.linkTrackEvents = 'event87';
@@ -359,7 +356,7 @@
             s.eVar42 = 'Teach';
             s.tl(true, 'o', 'Teach Share Your Story Submission');
         },
-        'teach-story-view' : function(options) {
+        'teach-story-view': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar30,events';
             s.linkTrackEvents = 'event88';
@@ -370,7 +367,7 @@
         // -----------------------------------
         // Place at the Table ----------------
         // -----------------------------------
-        'patt_show_modal': function(options) {
+        'patt_show_modal': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar73,prop73,eVar30,events';
             s.linkTrackEvents = 'event73';
@@ -380,7 +377,7 @@
             s.prop73 = options.name;
             s.tl(true, 'o', 'APATT - SNAP Gallery Modal View');
         },
-        'patt_email_modal': function(options) {
+        'patt_email_modal': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar27,prop27,eVar30,eVar73,prop73,events';
             s.linkTrackEvents = special_share_event;
@@ -392,7 +389,7 @@
             s.prop73 = options.name;
             s.tl(true, 'o', 'SNAP Gallery share');
         },
-        'patt_twitter_modal': function(options) {
+        'patt_twitter_modal': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.events = special_share_event;
             s.eVar27 = "Twitter";
@@ -404,7 +401,7 @@
             s.linkTrackEvents = special_share_event;
             s.tl(true, 'o', 'SNAP Gallery share');
         },
-        'patt_facebook_modal': function(options) {
+        'patt_facebook_modal': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar27,prop27,eVar30,eVar73,prop73,events';
             s.linkTrackEvents = special_share_event;
@@ -416,7 +413,7 @@
             s.prop73 = options.name;
             s.tl(true, 'o', 'SNAP Gallery share');
         },
-        'patt_email_gallery': function(options) {
+        'patt_email_gallery': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar27,prop27,eVar30,eVar73,prop73,events';
             s.linkTrackEvents = special_share_event;
@@ -428,7 +425,7 @@
             s.prop73 = "SNAP Alumni Gallery";
             s.tl(true, 'o', 'SNAP Gallery share');
         },
-        'patt_twitter_gallery': function(options) {
+        'patt_twitter_gallery': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar27,prop27,eVar30,eVar73,prop73,events';
             s.linkTrackEvents = special_share_event;
@@ -440,7 +437,7 @@
             s.prop73 = "SNAP Alumni Gallery";
             s.tl(true, 'o', 'SNAP Gallery share');
         },
-        'patt_facebook_gallery': function(options) {
+        'patt_facebook_gallery': function (options) {
             var s = s_gi(Drupal.settings.omniture.s_account);
             s.linkTrackVars = 'eVar27,prop27,eVar30,eVar73,prop73,events';
             s.linkTrackEvents = special_share_event;
@@ -455,54 +452,15 @@
     });
 
     // Document Ready
-    $(function() {
+    $(function () {
         if (typeof addthis !== "undefined" && addthis) {
             addthis.addEventListener('addthis.ready', takepart.analytics.addThis_ready);
         }
 
         // Pinterest doesn't work when it's just a link
-        $('body')
-                .delegate('a.addthis_button_pinterest_pinit', 'click', function() {
-                    takepart.analytics.track('generic_addthis', 'pinterest');
-                });
-
-        /* // Track clicks to addthis iframes
-         var hoverframe = null;
-         var tracked = [];
-         window.optimizely = window.optimizely || [];
-         
-         var trackshare = function(target) {
-         var $target = $(target);
-         var title;
-         if ( target.tagName != 'A' ) {
-         $target = $target.closest('a');
-         }
-         
-         title = $target.attr('title');
-         
-         if ( typeof tracked[title] != 'undefined' ) return true;
-         
-         tracked[title] = true;
-         
-         takepart.analytics.track('generic_addthis', title);
-         };
-         
-         $('body')
-         .delegate('.addthis_toolbox iframe, .addThis iframe', 'mouseover', function() {
-         hoverframe = this;
-         })
-         .delegate('.addthis_toolbox iframe, .addThis iframe', 'mouseout', function() {
-         hoverframe = null;
-         })
-         //.delegate('.takepart_addthis_leftpanel a', 'click', function() {
-         //    trackshare(this);
-         //})
-         ;
-         
-         $(window).bind('blur', function() {
-         if ( hoverframe ) trackshare(hoverframe);
-         });*/
-
+        $('body').delegate('a.addthis_button_pinterest_pinit', 'click', function () {
+            takepart.analytics.track('generic_addthis', 'pinterest');
+        });
     });
-
 })(jQuery, window);
+*/

@@ -99,4 +99,14 @@
   &.tp-social-Vine:before { content: '\e309'; }
   &.tp-social-Instagram:before { content: '\e306'; }
   &.tp-social-Youtube:before { content: '\e307'; }
+  &.tp-social-Reddit:before { content: '\e312'; }
+}
+
+.tpi{
+  display: inline-block;
+  font: normal normal normal 20px/1 takepart;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+
 }

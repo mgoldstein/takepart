@@ -1,7 +1,7 @@
 <div class="artists-list">
 	<ul <?=wa('artists')?>>
-		<? foreach( wl('artists') as $w ): ?>
-			<? if ( $w->active ): ?>
+		<?php foreach( wl('artists') as $w ): ?>
+			<?php if ( $w->active ): ?>
 				<li><a href="<?=wu('every3seconds_video')?>#<?=$w->token?>">
 					<div class="portrait">
 						<img src="<?=$w->img_src?>" alt="Portrait"/>
@@ -10,7 +10,7 @@
 						<?=$w->single(false)?>
 					</span>
 				</a></li>
-			<? else: ?>
+			<?php else: ?>
 				<li class='inactive'>
 					<div class="portrait">
 						<img src="<?=$w->img_src?>" alt="Portrait"/>
@@ -19,7 +19,7 @@
 						<?=$w->single(false)?>
 					</span>
 				</li>
-			<? endif ?>
-		<? endforeach ?>
+			<?php endif ?>
+		<?php endforeach ?>
 	</ul>
 </div>

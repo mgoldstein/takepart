@@ -209,6 +209,12 @@
             },
             {
               name: 'tumblr'
+            },
+            {
+              name: 'pinterest'
+            },
+            {
+              name: 'reddit'
             }
           ]
         };
@@ -220,22 +226,20 @@
         }
         /* If page is a campaign page, remove mailto, reddit and tumblr */
         if(isCampaignPage){
+          console.log(tp_social_config.services);
           delete tp_social_config.services[2]; //mailto
-          delete tp_social_config.services[4]; //reddit
-          delete tp_social_config.services[5]; //tumblr
+          delete tp_social_config.services[6]; //reddit
+          delete tp_social_config.services[4]; //tumblr
+          delete tp_social_config.services[5]; //pinterest
         }
 
-        /* 
-         * if screen size is less than 480 targer tp-social-mobile, else target tp-social.  Adjust CSS to display none otherwise 
-         */
-        
-        /*
-          if($(window).width() < 768){
-            $('.tp-social-mobile:not(.tp-social-skip)').tpsocial(tp_social_config);
-          } else { } 
-         */
-      $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-        .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
+        /* Make sticky when screensize is greater than 768px */
+          $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function() {
+            if($(window).width() > 980){
+              $('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
+            }
+            });
+
     }
   };
 
@@ -539,6 +543,10 @@
     'Home - graveyard' : '#block-tp4-support-tp4-graveyard',
     'Home - stories under lead' : 'body.page-tp4-homepage .panel-secondary-featured',
     'Home - top horizontal promo' : '#block-tp4-support-tp4-dont-miss'
+
+//    'Mobile Sticky Strip': '.social-wrapper.mobile',
+//    'Mobile Sticky Strip Share': '.social-wrapper.mobile li.share'
+
   });
 
 })(jQuery, Drupal, this, this.document);

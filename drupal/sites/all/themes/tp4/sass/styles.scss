@@ -39,13 +39,16 @@
 @import "page/campaigns";
 @import "page/profile";
 @import "page/series_taxonomy";
+@import "page/search";
 
 /* Modules */
 @import "modules/bxslider";
 @import "modules/megamenu";
 @import "modules/interstitials";
 @import "modules/footer";
+@import "modules/_tp4_support_footer";
 @import "modules/header";
+@import "modules/slimnav";
 @import "modules/sidebar";
 @import "modules/topic_features";
 @import "modules/left_drawer";
@@ -54,4 +57,5 @@
 @import "modules/tpl-block";
 @import "modules/featured_campaigns";
 @import "modules/video_playlist";
-@import "modules/mobile-social-menu";
+@import "modules/social-menu";
+@import "modules/newsletter_campaign";

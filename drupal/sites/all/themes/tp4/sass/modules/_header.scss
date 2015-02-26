@@ -117,11 +117,11 @@ header {
         position: relative;
         .form-item-keys-2{
             display: inline-block;
+            background-color: white;
             float: left;
             height: auto;
             overflow: hidden;
             width: 100%;
-            margin-right: 10px;
             vertical-align: bottom;
             line-height: 23px;
             font-weight: normal;
@@ -229,7 +229,7 @@ header {
         color: white;
         border: none;
         background: image-url('mobile-search.jpg') no-repeat center center;
-        background-color: #fff;
+        background-color: transparent;
         border-radius: 0;
         text-indent: 200%;
         overflow: hidden;
@@ -243,7 +243,6 @@ header {
     }
     .search.active {
         border-bottom: none;
-        top: -2px;
         form{
             display: block;
         }
