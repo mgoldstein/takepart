@@ -11,6 +11,8 @@
         services: {
             facebook: {
                 name: 'facebook',
+                description: '{current}',
+                image: '{current}',
                 url: '{current}'
             },
             twitter: {
@@ -46,6 +48,7 @@
         tp_social_config.services.pinterest.description = shareDescription;
         tp_social_config.services.tumblr.caption = shareDescription;
         tp_social_config.services.facebook.description = shareDescription;
+        tp_social_config.services.facebook.image = imageSrc;
         tp_social_config.services.mailto.title = shareHeadline;
     };
 
