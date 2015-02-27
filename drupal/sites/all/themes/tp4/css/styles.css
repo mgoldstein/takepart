@@ -11223,6 +11223,8 @@ p.search-performance {
   /* line 83, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .title a.takeaction-logo {
     width: 100%;
+    min-width: 134px;
+    color: transparent;
     display: block;
     text-indent: 100%;
     white-space: nowrap;
@@ -11236,12 +11238,12 @@ p.search-performance {
   #megamenu > ul > li .title {
     font-size: 22px;
   }
-  /* line 95, ../sass/modules/_megamenu.scss */
+  /* line 97, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .title a.takepart-logo {
     background-size: 100%;
   }
 }
-/* line 100, ../sass/modules/_megamenu.scss */
+/* line 102, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content {
   position: absolute;
   display: none;
@@ -11260,56 +11262,56 @@ p.search-performance {
   /* Firefox, other Gecko */
   box-sizing: border-box;
 }
-/* line 114, ../sass/modules/_megamenu.scss */
+/* line 116, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .side-menu {
   float: left;
   height: auto;
   overflow: hidden;
 }
 @media all and (min-width: 768px) {
-  /* line 114, ../sass/modules/_megamenu.scss */
+  /* line 116, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .side-menu {
     width: 25%;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 114, ../sass/modules/_megamenu.scss */
+  /* line 116, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .side-menu {
     width: 15%;
   }
 }
-/* line 125, ../sass/modules/_megamenu.scss */
+/* line 127, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .side-menu ul.menu {
   font: 100 14px/120% "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
 }
-/* line 127, ../sass/modules/_megamenu.scss */
+/* line 129, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .side-menu ul.menu li {
   float: left;
   clear: left;
   margin-bottom: 14px;
   color: #231f20;
 }
-/* line 134, ../sass/modules/_megamenu.scss */
+/* line 136, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .side-menu .text {
   padding-right: 10px;
   padding-bottom: 10px;
   font: 100 italic 14px "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   color: #000;
 }
-/* line 141, ../sass/modules/_megamenu.scss */
+/* line 143, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .categories {
   float: right;
   height: auto;
   overflow: hidden;
 }
 @media all and (min-width: 768px) {
-  /* line 141, ../sass/modules/_megamenu.scss */
+  /* line 143, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories {
     width: 75%;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 141, ../sass/modules/_megamenu.scss */
+  /* line 143, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories {
     width: 85%;
   }
@@ -11460,18 +11462,18 @@ p.search-performance {
   clear: both;
 }
 @media all and (min-width: 768px) {
-  /* line 152, ../sass/modules/_megamenu.scss */
+  /* line 154, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category {
     width: 75%;
     padding: 0 15px;
     color: #000;
     position: relative;
   }
-  /* line 155, ../sass/modules/_megamenu.scss */
+  /* line 157, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category:nth-child(1n+1), #megamenu > ul > li .mega-content .categories .sub-category:nth-child(2n+1), #megamenu > ul > li .mega-content .categories .sub-category:nth-child(3n+1) {
     padding: 0 15px;
   }
-  /* line 161, ../sass/modules/_megamenu.scss */
+  /* line 163, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category:before {
     content: '';
     height: 220px;
@@ -11480,82 +11482,82 @@ p.search-performance {
     left: 0;
     top: 0;
   }
-  /* line 169, ../sass/modules/_megamenu.scss */
+  /* line 171, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category:first-child {
     padding: 0 15px;
   }
-  /* line 172, ../sass/modules/_megamenu.scss */
+  /* line 174, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category:last-child {
     display: none;
   }
-  /* line 175, ../sass/modules/_megamenu.scss */
+  /* line 177, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category .thumb {
     margin-bottom: 7px;
     overflow: hidden;
   }
-  /* line 179, ../sass/modules/_megamenu.scss */
+  /* line 181, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category .label {
     font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 4px;
   }
-  /* line 185, ../sass/modules/_megamenu.scss */
+  /* line 187, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category .text {
     font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
   }
-  /* line 188, ../sass/modules/_megamenu.scss */
+  /* line 190, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category:hover {
     text-decoration: none;
   }
-  /* line 190, ../sass/modules/_megamenu.scss */
+  /* line 192, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category:hover .text {
     text-decoration: underline;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 196, ../sass/modules/_megamenu.scss */
+  /* line 198, ../sass/modules/_megamenu.scss */
   #megamenu > ul > li .mega-content .categories .sub-category:last-child {
     display: block;
   }
 }
-/* line 202, ../sass/modules/_megamenu.scss */
+/* line 204, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li .mega-content .more {
   position: absolute;
   bottom: 35px;
   left: 35px;
 }
-/* line 210, ../sass/modules/_megamenu.scss */
+/* line 212, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:last-child .title a:after {
   border-right: none;
 }
-/* line 214, ../sass/modules/_megamenu.scss */
+/* line 216, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover {
   display: block;
   background-color: #000;
 }
-/* line 217, ../sass/modules/_megamenu.scss */
+/* line 219, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .mega-content {
   left: 0;
   top: 43px;
   clear: both;
   height: 320px;
 }
-/* line 223, ../sass/modules/_megamenu.scss */
+/* line 225, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a {
   background-color: #000;
   color: #fff;
   text-decoration: none;
 }
-/* line 227, ../sass/modules/_megamenu.scss */
+/* line 229, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a:after {
   border-right: none;
 }
-/* line 231, ../sass/modules/_megamenu.scss */
+/* line 233, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takepart-logo {
   background-image: url('../images/tpl-logo-mobile.png?1420487591');
 }
-/* line 234, ../sass/modules/_megamenu.scss */
+/* line 236, ../sass/modules/_megamenu.scss */
 #megamenu > ul > li:hover .title a.takeaction-logo {
   background-image: url('../images/takeaction-logo-mobile.png?1420487591');
 }
