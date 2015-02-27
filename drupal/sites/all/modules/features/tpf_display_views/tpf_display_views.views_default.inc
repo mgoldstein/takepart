@@ -495,7 +495,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Broken/missing handler */
+  /* Field: Content: Action Header Image */
   $handler->display->display_options['fields']['field_actionheaderimg']['id'] = 'field_actionheaderimg';
   $handler->display->display_options['fields']['field_actionheaderimg']['table'] = 'field_data_field_actionheaderimg';
   $handler->display->display_options['fields']['field_actionheaderimg']['field'] = 'field_actionheaderimg';
@@ -3513,7 +3513,7 @@ return TRUE;';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['label'] = 'Empty';
   $handler->display->display_options['empty']['area']['content'] = 'There is no associated content';
-  /* Field: Indexed Content: Node ID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -3521,15 +3521,14 @@ return TRUE;';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Promo Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -3540,13 +3539,13 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = TRUE;
-  /* Field: Indexed Content: Content type */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  /* Field: Linked Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
@@ -3558,19 +3557,18 @@ return TRUE;';
   $handler->display->display_options['fields']['url']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Promo Text */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['label'] = '';
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
-  /* Sort criterion: Indexed Content: Date created */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Topics [taxonomy_term] */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_topic_1']['id'] = 'field_topic_1';
   $handler->display->display_options['arguments']['field_topic_1']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['arguments']['field_topic_1']['field'] = 'field_topic';
@@ -3578,9 +3576,7 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_topic_1']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_topic_1']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['field_topic_1']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_topic_1']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['field_topic_1']['not'] = 0;
-  /* Filter criterion: Indexed Content: Content type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -3595,7 +3591,7 @@ return TRUE;';
     'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
-  /* Filter criterion: Indexed Content: Status */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -3609,7 +3605,7 @@ return TRUE;';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Indexed Content: Node ID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -3617,8 +3613,7 @@ return TRUE;';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
@@ -3626,8 +3621,7 @@ return TRUE;';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Promo Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -3639,13 +3633,13 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_promo_headline']['hide_alter_empty'] = FALSE;
-  /* Field: Indexed Content: Content type */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  /* Field: Linked Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
@@ -3658,8 +3652,7 @@ return TRUE;';
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['empty'] = '[title]';
   $handler->display->display_options['fields']['url']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Promo Text */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -3684,7 +3677,7 @@ return TRUE;';
   $handler->display->display_options['pager']['options']['tags']['next'] = 'Next';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'Last';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Indexed Content: Node ID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -3692,27 +3685,20 @@ return TRUE;';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Thumbnail Image */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
   $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
-  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => 'thumbnail',
-    'image_link' => 'content',
-  );
-  /* Field: Indexed Content: Promo Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -3723,15 +3709,13 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = TRUE;
-  /* Field: Indexed Content: Content type */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['type']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['type']['format_name'] = 1;
-  /* Field: Linked Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
@@ -3743,8 +3727,7 @@ return TRUE;';
   $handler->display->display_options['fields']['url']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Promo Text */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -3752,7 +3735,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_text']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Free Tags [taxonomy_term] */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_free_tag']['id'] = 'field_free_tag';
   $handler->display->display_options['arguments']['field_free_tag']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['arguments']['field_free_tag']['field'] = 'field_free_tag';
@@ -3760,11 +3743,9 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_free_tag']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_free_tag']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['field_free_tag']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_free_tag']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['field_free_tag']['not'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Indexed Content: Content type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -3779,7 +3760,7 @@ return TRUE;';
     'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
-  /* Filter criterion: Indexed Content: Status */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -3805,7 +3786,7 @@ return TRUE;';
   $handler->display->display_options['pager']['options']['tags']['next'] = 'Next';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'Last';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Indexed Content: Node ID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -3813,27 +3794,20 @@ return TRUE;';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Thumbnail Image */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
   $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
-  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => 'topic_thumbnail',
-    'image_link' => 'content',
-  );
-  /* Field: Indexed Content: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Promo Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -3844,13 +3818,13 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = TRUE;
-  /* Field: Indexed Content: Content type */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  /* Field: Linked Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
@@ -3862,8 +3836,7 @@ return TRUE;';
   $handler->display->display_options['fields']['url']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Promo Text */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -3871,7 +3844,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_text']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Series [taxonomy_term] */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_series']['id'] = 'field_series';
   $handler->display->display_options['arguments']['field_series']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['arguments']['field_series']['field'] = 'field_series';
@@ -3891,7 +3864,7 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_series']['summary']['format'] = 'default_summary';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Indexed Content: Content type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -3906,7 +3879,7 @@ return TRUE;';
     'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
-  /* Filter criterion: Indexed Content: Status */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -3927,14 +3900,14 @@ return TRUE;';
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Indexed Content: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Promo Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -3945,13 +3918,13 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = TRUE;
-  /* Field: Indexed Content: Content type */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  /* Field: Linked Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
@@ -3963,8 +3936,7 @@ return TRUE;';
   $handler->display->display_options['fields']['url']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Promo Text */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -3973,7 +3945,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Indexed Content: Content type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -3988,7 +3960,7 @@ return TRUE;';
     'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
-  /* Filter criterion: Indexed Content: Status */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -4010,7 +3982,7 @@ return TRUE;';
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Indexed Content: Node ID */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['nid']['field'] = 'nid';
@@ -4018,15 +3990,14 @@ return TRUE;';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['nid']['link_to_entity'] = 0;
-  /* Field: Indexed Content: Title */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Promo Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
@@ -4037,15 +4008,13 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_promo_headline']['empty'] = '[title]';
   $handler->display->display_options['fields']['field_promo_headline']['empty_zero'] = TRUE;
-  /* Field: Indexed Content: Content type */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['type']['link_to_entity'] = 0;
-  $handler->display->display_options['fields']['type']['format_name'] = 1;
-  /* Field: Linked Headline */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['url']['id'] = 'url';
   $handler->display->display_options['fields']['url']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['url']['field'] = 'url';
@@ -4057,8 +4026,7 @@ return TRUE;';
   $handler->display->display_options['fields']['url']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 1;
-  /* Field: Indexed Content: Promo Text */
+  /* Field: Broken/missing handler */
   $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
@@ -4066,7 +4034,7 @@ return TRUE;';
   $handler->display->display_options['fields']['field_promo_text']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Admin Tag [taxonomy_term] */
+  /* Contextual filter: Broken/missing handler */
   $handler->display->display_options['arguments']['field_admin_tag']['id'] = 'field_admin_tag';
   $handler->display->display_options['arguments']['field_admin_tag']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['arguments']['field_admin_tag']['field'] = 'field_admin_tag';
@@ -4074,11 +4042,9 @@ return TRUE;';
   $handler->display->display_options['arguments']['field_admin_tag']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_admin_tag']['default_argument_type'] = 'taxonomy_tid';
   $handler->display->display_options['arguments']['field_admin_tag']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_admin_tag']['break_phrase'] = 0;
-  $handler->display->display_options['arguments']['field_admin_tag']['not'] = 0;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Indexed Content: Content type */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -4093,7 +4059,7 @@ return TRUE;';
     'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = '0';
-  /* Filter criterion: Indexed Content: Status */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['filters']['status']['field'] = 'status';
