@@ -753,6 +753,17 @@ header {
     }
 }
 
+#block-tp4-support-tp4-mobile-menu-header > div > ul > li {
+	width: 24px;
+	margin-left: 3px;
+	a {
+		margin-left: 0;
+		&:hover {
+			background-color: #000;
+		}
+	}
+}
+
 #block-tp-custom-nav-tp-custom-nav-takepart-collab {
     margin-bottom: 0;
     width: 140px;
@@ -871,6 +882,10 @@ header {
     }
 }
 
+#block-menu-menu-megamenu > ul > li.menu__item.is-expanded.first.expanded > a {
+    border-bottom: 1px solid #646464;
+}
+
 body {
     .snap-drawer-left {
         #block-menu-menu-megamenu {
@@ -880,13 +895,9 @@ body {
                     font-family: 'Apercu Medium', sans-serif;
                     font-size: 16px;
                     text-transform: none;
+                    border-bottom: none;
 
-                    &.active,
-                    &:hover {
-                        background-color: #8d8d8d;
-                    }
                 }
-
                 &.level-0 {
                     a {
                         font-size: 24px;
