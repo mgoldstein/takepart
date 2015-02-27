@@ -7,8 +7,8 @@
   # Send a "X-Robots-Tag" header when site is NOT accessed via Akamai, to
   # prevent Google from indexing URLs other than those it finds at
   # www.takepart.com via Akamai (keeps origin out of Akamai):
-  SetEnvIfNoCase Via akamai RequestFromAkamai
-  Header set X-Robots-Tag "noindex, nofollow" env=!RequestFromAkamai
+  # SetEnvIfNoCase Via akamai RequestFromAkamai
+  # Header set X-Robots-Tag "noindex, nofollow" env=!RequestFromAkamai
 
   # Setup CORS for font files
   <FilesMatch "\.(eot|otf|woff|ttf)$">
