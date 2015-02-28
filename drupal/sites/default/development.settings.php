@@ -9,7 +9,7 @@ $conf += array(
 // TAP and Services don't have an integration environment, point at
 // QA by default or update settings.local.inc to point to local instances.
 $conf += array(
-    'takeaction_domain' => 'qa-tab.dev.takepart.com',
+    'takeaction_domain' => 'qa-tab.takepart.com',
     'services_domain' => 'qa-api.takepart.com',
 );
 
