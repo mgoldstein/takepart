@@ -112,9 +112,11 @@ function takepart_galleries_menu() {
  * Fixes URLs
  */
 function _takepart_galleries_fix_urls(&$item, $key) {
+  module_load_include('inc','pathauto');
+
   if(isset($item['title'])) {
     if(!isset($item['url'])) {
-      $item['url'] = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $item['title'])));
+      $item['url'] = pathauto_cleanstring($item['title']);
     }
   }
   if(!isset($item['url'])) {
@@ -131,11 +133,14 @@ function _takepart_galleries_fix_urls(&$item, $key) {
  * Similar to above, helper function to get slide's token
  */
 function _takepart_galleries_get_token($title, $filename) {
+
+  module_load_include('inc','pathauto');
+
   $token = '';
 
   if ( $title ) {
     $title = htmlspecialchars_decode($title, ENT_QUOTES);
-    $token = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $title)));
+    $token = pathauto_cleanstring($title);
   }
 
   if ( $token == '' && $filename ) {
