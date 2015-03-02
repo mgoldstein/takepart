@@ -91,7 +91,7 @@
     }
     //anything abover 960
     else {
-      file_width = '-1080.mp4';
+      file_width = '-1280.mp4';
     }
 
     //does for each of the playlist items to set quality
