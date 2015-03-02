@@ -263,12 +263,14 @@ function takepart_galleries_html_head_alter(&$head_elements) {
           $items = field_get_items('file', $file, 'field_image_title');
           
           $slide['title'] = $items[0]['safe_value'];
+
+		  module_load_include('inc','pathauto');
   
-          if($slide['title']) {
-            $slide['data-token'] = strtolower(preg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", htmlspecialchars_decode($slide['title'], ENT_QUOTES))));
-          } else {
-            $slide['data-token'] = strtolower(strtok(htmlspecialchars_decode($file->filename, ENT_QUOTES), "."));
-          }
+	      if($slide['title']) {
+	        $slide['data-token'] = pathauto_cleanstring($slide['title']);
+	      } else {
+	        $slide['data-token'] = pathauto_cleanstring($file->filename);
+	      }
   
           if($slide['data-token'] == $dirs[3]) {
             $head_elements['metatag_og:image_0']['#value'] = file_create_url($file->uri);
