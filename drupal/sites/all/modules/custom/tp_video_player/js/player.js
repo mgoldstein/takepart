@@ -212,31 +212,11 @@
 
     });
 
-    jwplayer(element_id).onPlaylistItem(function(event) {
-
-      this.config.sitecatalyst.mediaName = 'This should work but doesn\'t. :(';
-      console.log(this);
-    });
-
     jwplayer(element_id).onPlay(function(event){
       delete window.videoTransition;
 
-      /* Analytics */
-//      var autoplay = jwplayer(element_id).config.autostart;
-//      if(autoplay == true){
-//        autoplay = 'Auto-play';
-//      }else{
-//        autoplay = 'Manual';
-//      }
-//      var videoTitle = $('li[data-video-number="' + window['currentVideo_' + index] + '"] .promo-headline').text();
-//      takepart.analytics.track('playlist-play', {
-//        playerName: jwplayer(element_id).config.primary,
-//        listName: jwplayer(element_id).config.title,
-//        playConfig: autoplay,
-//        videoTitle: videoTitle
-//      });
-//        _satellite.track('video_play');
-
+      /** Fire a direct call rule for DTM **/
+      _satellite.track('video_play');
     });
   }
   /**
