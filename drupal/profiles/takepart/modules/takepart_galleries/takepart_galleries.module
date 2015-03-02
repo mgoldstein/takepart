@@ -112,9 +112,11 @@ function takepart_galleries_menu() {
  * Fixes URLs
  */
 function _takepart_galleries_fix_urls(&$item, $key) {
+  module_load_include('inc','pathauto');
+
   if(isset($item['title'])) {
     if(!isset($item['url'])) {
-      $item['url'] = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $item['title'])));
+      $item['url'] = pathauto_cleanstring($item['title']);
     }
   }
   if(!isset($item['url'])) {
@@ -131,11 +133,14 @@ function _takepart_galleries_fix_urls(&$item, $key) {
  * Similar to above, helper function to get slide's token
  */
 function _takepart_galleries_get_token($title, $filename) {
+
+  module_load_include('inc','pathauto');
+
   $token = '';
 
   if ( $title ) {
     $title = htmlspecialchars_decode($title, ENT_QUOTES);
-    $token = strtolower(ereg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", $title)));
+    $token = pathauto_cleanstring($title);
   }
 
   if ( $token == '' && $filename ) {
@@ -263,12 +268,14 @@ function takepart_galleries_html_head_alter(&$head_elements) {
           $items = field_get_items('file', $file, 'field_image_title');
           
           $slide['title'] = $items[0]['safe_value'];
+
+		  module_load_include('inc','pathauto');
   
-          if($slide['title']) {
-            $slide['data-token'] = strtolower(preg_replace("[^a-zA-Z0-9\s\-]", "", preg_replace("/\s/", "-", htmlspecialchars_decode($slide['title'], ENT_QUOTES))));
-          } else {
-            $slide['data-token'] = strtolower(strtok(htmlspecialchars_decode($file->filename, ENT_QUOTES), "."));
-          }
+	      if($slide['title']) {
+	        $slide['data-token'] = pathauto_cleanstring($slide['title']);
+	      } else {
+	        $slide['data-token'] = pathauto_cleanstring($file->filename);
+	      }
   
           if($slide['data-token'] == $dirs[3]) {
             $head_elements['metatag_og:image_0']['#value'] = file_create_url($file->uri);

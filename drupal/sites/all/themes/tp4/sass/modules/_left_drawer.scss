@@ -126,14 +126,23 @@
       font-family: $secondary-sans-font;
       font-size: 20px;
       text-transform: uppercase;
-      border-bottom: none;
+	  border-bottom: 1px solid #646464;
       font-weight: 100;
     }
     ul li ul li{
       padding: 10px;
+      margin-left: 20px;
       border-bottom: 1px solid #646464;
       line-height: 20px;
       text-indent: 0;
+      &.active,
+      &:hover {
+	      background-color: #8c8c8c;
+	  }
+	  a:hover {
+  	      background-color: #8c8c8c;
+  	  }
+
     }
     a{
       color: #fff;
@@ -141,7 +150,6 @@
       width: 100%;
       &:hover{
         text-decoration: none;
-        background-color: #333;
       }
     }
   }
