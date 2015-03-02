@@ -77,8 +77,8 @@ body.front{
 
     #mf-more-link-bullet {
         &:before {
-            content: "\23E9";
-            font-family: "SSGizmo";
+            content: "\e606";
+            font-family: "takepart";
             color: #018b73;
             position: relative;
             top: 3px;
@@ -103,8 +103,8 @@ body.front{
           margin-bottom: 1em;
 
           &:before {
-            content: "\23E9";
-            font-family: "SSGizmo";
+            content: "\e606";
+            font-family: "takepart";
             line-height: 1.75;
             color: $mint;
             display: block;
@@ -141,33 +141,33 @@ body.front{
     &.node-openpublish-photo-gallery{
       h2.node-title{
         &:after{
-          font-family: "SSGizmo";
-          font-size: 1.25em;
-          line-height: 0.8;
+          font-family: "takepart";
+          font-size: 1.1em;
+          line-height: 1.1em;
           vertical-align: text-bottom;
-          content: " \1F4F7";
+          content: " \e601";
         }
       }
     }
     &.node-video{
       h2.node-title{
         &:after{
-          font-family: "SSGizmo";
-          font-size: 1.25em;
-          line-height: 0.8;
+          font-family: "takepart";
+          font-size: 1.1em;
+          line-height: 1.1em;
           vertical-align: text-bottom;
-          content: " \1F4F9";
+          content: " \e602";
         }
       }
     }
     &.node-video-playlist{
       h2.node-title{
         &:after{
-          font-family: "SSGizmo";
-          font-size: 1.25em;
-          line-height: 0.8;
+          font-family: "takepart";
+          font-size: 1.1em;
+          line-height: 1.1em;
           vertical-align: text-bottom;
-          content: " \1F4F9";
+          content: " \e602";
         }
       }
     }
@@ -183,33 +183,33 @@ body.front{
     &.node-openpublish-photo-gallery{
       h2.field-name-field-article-subhead{
         &:after{
-          font-family: "SSGizmo";
-          font-size: 1.25em;
-          line-height: 0.8;
+          font-family: "takepart";
+          font-size: 1.1em;
+          line-height: 1.1em;
           vertical-align: text-bottom;
-          content: " \1F4F7";
+          content: " \e601";
         }
       }
     }
     &.node-video{
       h2.field-name-field-article-subhead{
         &:after{
-          font-family: "SSGizmo";
-          font-size: 1.25em;
-          line-height: 0.8;
+          font-family: "takepart";
+          font-size: 1.1em;
+          line-height: 1.1em;
           vertical-align: text-bottom;
-          content: " \1F4F9";
+          content: " \e602";
         }
       }
     }
     &.node-video-playlist{
       h2.field-name-field-article-subhead{
         &:after{
-          font-family: "SSGizmo";
-          font-size: 1.25em;
-          line-height: 0.8;
+          font-family: "takepart";
+          font-size: 1.1em;
+          line-height: 1.1em;
           vertical-align: text-bottom;
-          content: " \1F4F9";
+          content: " \e602";
         }
       }
     }
@@ -305,33 +305,33 @@ body.toolbar {
       padding-right: 25px;
     }
     .openpublish_photo_gallery:after{
-      font-family: "SSGizmo";
-      font-size: 1.25em;
-      line-height: 0.8em;
+      font-family: "takepart";
+      font-size: 1.1em;
+      line-height: 1.1em;
       vertical-align: text-bottom;
-      content: " \1F4F7";
+      content: " \e601";
       margin-left: -25px;
     }
     .video a{
       padding-right: 25px;
     }
     .video:after{
-      font-family: "SSGizmo";
-      font-size: 1.25em;
-      line-height: 0.8;
+      font-family: "takepart";
+      font-size: 1.1em;
+      line-height: 1.1em;
       vertical-align: text-bottom;
-      content: " \1F4F9";
+      content: " \e602";
       margin-left: -25px;
     }
     .video-playlist a{
       padding-right: 25px;
     }
     .video-playlist:after{
-      font-family: "SSGizmo";
-      font-size: 1.25em;
-      line-height: 0.8;
+      font-family: "takepart";
+      font-size: 1.1em;
+      line-height: 1.1em;
       vertical-align: text-bottom;
-      content: " \1F4F9";
+      content: " \e602";
       margin-left: -25px;
     }
   }
@@ -643,9 +643,9 @@ a.cta {
     position: relative;
     padding-left: 20px;
     &:before{
-      font-family: "SSGizmo";
+      font-family: "takepart";
       color: #fff;
-      content: '\23E9';
+      content: '\e606\e606';
       position: absolute;
       top: 3px;
       left: 0;

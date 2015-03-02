@@ -681,8 +681,8 @@ body.campaign-display{
                 .arrow-inner{
                     &:after{
                         display: block;
-                        font-family: "SSGizmo";
-                        content: '\25C5';
+                        font-family: "takepart";
+                        content: '\e605';
                         background-color: rgba(255,255,255,0.2);
                         height: 1em;
                         line-height: 1.2;
@@ -694,7 +694,7 @@ body.campaign-display{
                     right: 0;
                     .arrow-inner{
                         &:after{
-                            content: '\25BB';
+                            content: '\e606';
                         }
                     }
                     &:hover{
