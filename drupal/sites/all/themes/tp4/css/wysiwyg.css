@@ -577,7 +577,7 @@ a.more:before {
   font-family: "takepart";
   letter-spacing: -.9ex;
   font-size: .7em;
-  margin-top: 2px;
+  margin-top: -1px;
   color: #018b73;
   vertical-align: bottom;
   position: absolute;

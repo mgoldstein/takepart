@@ -76,6 +76,8 @@
             line-height: .9;
             letter-spacing: -8px;
             vertical-align: bottom;
+            font-size: .8em;
+            margin-left: .6ex;
         }
         position: absolute;
         @include box-sizing(border-box);
@@ -285,6 +287,9 @@
             display: inline;
             font-family: "takepart";
             line-height: 1;
+            letter-spacing: -.9ex;
+            font-size: .7em;
+            margin-right: 1ex;
             vertical-align: text-bottom;
         }
     }
