@@ -70,11 +70,14 @@
             background-color: black;
         }
         &:after {
-            content: '\0020\23e9';
+            content: '\0020\e606\e606';
             display: inline;
-            font-family: "SSGizmo";
+            font-family: "takepart";
             line-height: .9;
+            letter-spacing: -8px;
             vertical-align: bottom;
+            font-size: .8em;
+            margin-left: .6ex;
         }
         position: absolute;
         @include box-sizing(border-box);
@@ -233,9 +236,10 @@
             display: inline-block;
             vertical-align: top;
 
-            font-size: 2.5em; // 35px / 14px
+            font-size: 2em; // 35px / 14px
             line-height: 1;
             overflow: hidden;
+            width: 40px;
 
             &.hidden {
                 display: none;
@@ -258,11 +262,6 @@
             }
             &:after {
                 display: inline;
-                font-family: 'SSGizmo';
-                content: '\25BB';
-            }
-            &.previous:after {
-                content: '\25C5';
             }
         }
     }
@@ -284,10 +283,13 @@
         font: normal 1em/1.5 $primary-serif-font;
         color: $mint;
         &:before {
-            content: '\23e9\0020';
+            content: '\e606\e606';
             display: inline;
-            font-family: "SSGizmo";
+            font-family: "takepart";
             line-height: 1;
+            letter-spacing: -.9ex;
+            font-size: .7em;
+            margin-right: 1ex;
             vertical-align: text-bottom;
         }
     }

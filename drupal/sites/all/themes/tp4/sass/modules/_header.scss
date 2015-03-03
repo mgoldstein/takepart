@@ -346,10 +346,10 @@ header {
                 top: 0;
                 right: 0;
                 color: $mint;
-                font-size: 20px;
+                font-size: 16px;
                 line-height: 30px;
-                content: "\1F50E";
-                font-family: "SSGizmo";
+                content: "\e616";
+                font-family: "takepart";
                 display: block;
                 z-index: 9;
                 @include transform2d(scaleX(-1));

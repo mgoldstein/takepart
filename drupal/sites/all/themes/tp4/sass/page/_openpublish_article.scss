@@ -1464,7 +1464,7 @@
             }
             &:before,
                 &:after {
-                font-family: "SSGizmo";
+                font-family: "takepart";
                 color: $mint;
                 vertical-align: bottom;
                 display: inline-block;
@@ -1474,13 +1474,15 @@
     .more-prev{
         float: left;
         a:before {
-            content: "\23EA  ";
+            content: "\e605\e605  ";
+            letter-spacing: -8px;
         }
     }
     .more-next{
         float: right;
         a:after {
-            content: "  \23E9";
+            content: "  \e606\e606";
+            letter-spacing: -8px;
         }
     }
     > a:hover {

@@ -327,8 +327,8 @@
 
       var $window = $(window);
       var $container = $campaignsModule.find('.field-collection-container')
-        .append('<a class="featured-campaigns-nav prev">')
-        .append('<a class="featured-campaigns-nav next">');
+        .append('<a class="featured-campaigns-nav prev icon i-arrow-left">')
+        .append('<a class="featured-campaigns-nav next icon i-arrow-right">');
       var $wrapper = $container.find('.field-name-field-featured-campaigns');
       var $items = $container.find('.field-item');
       var $nav = $container.find('.featured-campaigns-nav');

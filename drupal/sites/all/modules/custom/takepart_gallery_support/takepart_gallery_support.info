@@ -1,5 +1,7 @@
 name = TakePart Gallery Support
-description = Module for functions related to the January 2014 redesign of TakePart photogalleries
+description = Module for functions related to the January 2014 redesign of TakePart photo galleries
 core = 7.x
 package = TP4
 version = 7.x-1.0
+
+dependencies[] = pathauto
