@@ -646,6 +646,48 @@ function tp4_support_preprocess_block(&$variables) {
 }
 
 function tp4_support_form_alter(&$form, &$form_state, $form_id){
+  /**
+   *  addresses issues from bg_color.
+   *  issue related to module being updated as it wiped the changes away.
+   *  code will alter the saved values from the db to the front end for rgb as there are only a few rgba values
+   */
+  if (isset($form['field_campaign_bg_color'])) {
+    $language = $form['language']['#value'];
+    
+    //does this only if it exist
+    if (isset($form['field_campaign_bg_color'][$language])) {
+      //grabs the max delta from the values
+      $max_delta = $form['field_campaign_bg_color'][$language]['#max_delta'];
+      
+      //ensures that this does it for the max delta allowed
+      for ($i = 0; $i < $max_delta + 1; $i++) {
+        //only continue if rgb is set
+        if (isset($form['field_campaign_bg_color'][$language][$i]['rgb'])) {
+          $default_value = $form['field_campaign_bg_color'][$language][$i]['rgb']['#default_value'];
+          
+          //changes the rgb to hex
+          if (stripos($default_value, 'rgb(') !== FALSE || stripos($default_value, 'rgba(') !== FALSE) {
+            //sanitizes the rgb to hex
+            $rgb = str_replace('rgb(', '', $default_value); //address rgb
+            $rgb = str_replace('rgba(', '', $default_value); //addresses rgba
+            $rgb = str_replace(')', '', $rgb);
+            $rgb = explode(',', $rgb);
+            $hex = _tp4_support_rgb_to_hex((int)$rgb[0], (int)$rgb[1], (int)$rgb[2]);
+            
+            //this address rgba as rgb[4] has a value. this is not used currently so setting it to no color
+            if (isset($rgb[4])) {
+              $form['field_campaign_bg_color'][$language][$i]['rgb']['#default_value'] = '';
+            }
+            //else set the hex value from rgb
+            elseif (!empty($hex)) {
+              $form['field_campaign_bg_color'][$language][$i]['rgb']['#default_value'] = $hex;
+            }
+          }
+        }
+      }
+    }
+  }
+  
   if($form['#form_id'] == 'search_api_page_search_form_site_search'){
     $form['keys_2']['#attributes']['placeholder'] = t('Search');
     $form['#action'] = '/';
@@ -666,6 +708,20 @@ function tp4_support_form_alter(&$form, &$form_state, $form_id){
     );
     $form['#submit'][] = 'tp4_support_panel_main_feature';
   }
+}
+
+/**
+ *  @function:
+ *    Function is used to convert rgb to hex
+ */
+function _tp4_support_rgb_to_hex($r, $g, $b) {
+  //convert to hex
+  $hex = "#";
+  $hex.= str_pad(dechex($r), 2, "0", STR_PAD_LEFT);
+  $hex.= str_pad(dechex($g), 2, "0", STR_PAD_LEFT);
+  $hex.= str_pad(dechex($b), 2, "0", STR_PAD_LEFT);
+
+  return $hex;
 }
 
 
@@ -948,5 +1004,3 @@ function tp4_support_iframes($arg) {
 			break;
 	}
 }
-
-
