@@ -100,12 +100,6 @@ function tpf_display_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-ga_mobile_320x50' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50',
-          'region' => 'footer',
-          'weight' => '-10',
-        ),
         'boxes-takepart' => array(
           'module' => 'boxes',
           'delta' => 'takepart',
