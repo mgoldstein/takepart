@@ -233,8 +233,7 @@
       }else{
         videoName = this.config.title;
       }
-      var data = [];
-      data[0] = {
+      var data= {
         "videoName": videoName,
         "playlistName": playlistName,
         "autoplay": videoAutoplay,
