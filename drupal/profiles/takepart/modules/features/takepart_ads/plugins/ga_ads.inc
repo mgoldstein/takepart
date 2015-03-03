@@ -137,31 +137,6 @@ HTM;
               </script>
             </div>
 HTM;
-        }else if ($slot === 'TP_Mobile_Overlay_300x250') {
-          $content = <<<HTM
-            <!-- $slot -->
-            <div id='$gptid[$slot]' style='width:300px; height:250px;'>
-            <script type='text/javascript'>
-            function $gptfunction() {
-              if (typeof(googletag) !== 'undefined') {
-                if (ad_call_check($lr[0])) {
-                  googletag.cmd.push(function() {
-                    var slot1 = googletag.defineSlot('/4355895/$slot', [300, 250], '$gptid[$slot]').addService(googletag.pubads());
-                    googletag.pubads().enableSingleRequest();
-                    googletag.enableServices();
-                  });
-                } else {
-                  jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
-                }
-              }
-              setInterval(function(){
-                googletag.pubads().refresh();
-              }, $refresh);
-            }
-            $gptfunction();
-            </script>
-            </div>
-HTM;
         }else {
           $content = <<<HTM
             <!-- $slot -->
