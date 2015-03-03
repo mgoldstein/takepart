@@ -216,7 +216,28 @@
       delete window.videoTransition;
 
       /** Fire a direct call rule for DTM **/
+      var playlistItem = this.getPlaylistItem();
+      var videoFile = playlistItem.sources[0].file;
+      var videoSource = (videoFile.indexOf('youtube') !== -1 ? 'YouTube' : 'JW Player');
+      var videoAutoplay = this.config.autostart;
+      var playlistName = this.config.title;
+      var videoName;
+      if(!!this.config.playlist[1]){
+        videoName = playlistItem.title; // TODO: This needs to get set in the config
+      }else{
+        videoName = this.config.title;
+      }
+      var data = [];
+      data[0] = {
+        "videoName": videoName,
+        "playlistName": playlistName,
+        "autoplay": videoAutoplay,
+        "videoSource": videoSource
+      };
+
+      digitalData.event.push(data);
       _satellite.track('video_play');
+      //  digitalData.event.pop();  //move this to DTM
     });
   }
   /**
