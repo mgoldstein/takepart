@@ -42,6 +42,23 @@
 
     // utility function to update social share variables 
     var updateTpSocialMedia = function(imageSrc, shareDescription, shareHeadline) {
+
+		// Truncate description
+		var len = 300;
+		var shortDesc = shareDescription;
+		if (shortDesc.length > len) {
+
+			/* Truncate the content of the P, then go back to the end of the
+			   previous word to ensure that we don't truncate in the middle of
+			   a word */
+			shortDesc = shortDesc.substring(0, len);
+			shortDesc = shortDesc.replace(/\w\s+$/, '');
+
+			shortDesc += '…';
+
+			shareDescription = shortDesc;
+		}
+
         imageSrc = imageSrc.split('?')[0].split('#')[0];
         tp_social_config.services.pinterest.media = imageSrc;
         tp_social_config.services.tumblr.source = imageSrc;
@@ -50,6 +67,7 @@
         tp_social_config.services.facebook.description = shareDescription;
         tp_social_config.services.facebook.image = imageSrc;
         $("meta[property='og:image']").attr("content", imageSrc);
+        $("meta[property='og:description']").attr("content", shareDescription);
         tp_social_config.services.mailto.title = shareHeadline;
     };
 
