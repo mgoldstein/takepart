@@ -12,6 +12,29 @@
       //prevent parent links on megamenu from linking on touch (link on double touch)
       $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
 
+      //adding code that handles the submit for the search. code matches pivot
+			$('#search-api-page-search-form-site-search .form-submit').click(function() {
+				if ($('#search-api-page-search-form-site-search').hasClass('active')) {
+					$('#search-api-page-search-form-site-search').removeClass('active');
+					var search_input = $('#search-api-page-search-form-site-search #edit-keys-2').val();
+					
+					if (search_input == 'Search' || search_input == '') {
+						return false;
+					}
+					return true;
+				}
+				else {
+					$('#search-api-page-search-form-site-search').addClass('active');
+					$('#search-api-page-search-form-site-search #edit-keys-2').val('Search');
+					return false;
+				}
+			});
+      
+			//makes the search go away on focus			
+			$('#search-api-page-search-form-site-search #edit-keys-2').focus(function() {
+				$(this).val('');
+			});
+      
       //Toggle search on mobile
       $('html').click(function() {
         $('.search-toggle').parent().removeClass('active');
