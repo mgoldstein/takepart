@@ -47,7 +47,6 @@ features[views_view][] = photo_gallery
 features[views_view][] = taxonomy_search_list
 features[views_view][] = terms_posts_feed_rss
 features[views_view][] = topic_listing
-features[views_view][] = venue_pagination
 features_exclude[dependencies][features] = features
 features_exclude[dependencies][list] = list
 features_exclude[dependencies][options] = options
