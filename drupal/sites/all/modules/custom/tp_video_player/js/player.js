@@ -227,19 +227,13 @@
       var videoSource = (videoFile.indexOf('youtube') !== -1 ? 'YouTube' : 'JW Player');
       var videoAutoplay = this.config.autostart;
       var playlistName = this.config.title;
-      var videoName;
-      if(!!this.config.playlist[1]){
-        videoName = playlistItem.title; // TODO: This needs to get set in the config
-      }else{
-        videoName = this.config.title;
-      }
+      var videoName = playlistItem.title;
       var data= {
         "videoName": videoName,
         "playlistName": playlistName,
         "autoplay": videoAutoplay,
         "videoSource": videoSource
       };
-
       digitalData.event.push(data);
       _satellite.track('video_play');
       //  digitalData.event.pop();  //move this to DTM
