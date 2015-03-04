@@ -52,7 +52,7 @@
 			   previous word to ensure that we don't truncate in the middle of
 			   a word */
 			shortDesc = shortDesc.substring(0, len);
-			shortDesc = shortDesc.replace(/\w\s+$/, '');
+			shortDesc = shortDesc.replace(/\w+$/, '');
 
 			shortDesc += '…';
 
@@ -67,6 +67,7 @@
         tp_social_config.services.facebook.description = shareDescription;
         tp_social_config.services.facebook.image = imageSrc;
         $("meta[property='og:image']").attr("content", imageSrc);
+        $("meta[property='og:title']").attr("content", shareHeadline);
         $("meta[property='og:description']").attr("content", shareDescription);
         tp_social_config.services.mailto.title = shareHeadline;
     };
@@ -303,7 +304,7 @@
             var slideHeadline = this.$currentSlide.find('.slide-caption-headline').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
             gallery.currentCaption = slideHeadline;
             var slideContent = this.$currentSlide.find('.slide-caption-content').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
-            updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), (slideHeadline ? slideHeadline + ': ' : '') + slideContent, galleryTitle + (slideHeadline ? slideHeadline : ''));
+            updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), slideContent, slideHeadline);
             this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
             // hide social buttons on the "next gallery slide"
