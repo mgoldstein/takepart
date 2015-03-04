@@ -9,37 +9,41 @@
    */
   Drupal.behaviors.megaMenuBehaviors = {
     attach: function(context, settings) {
-      //prevent parent links on megamenu from linking on touch (link on double touch)
-      $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
+      //prevent ONLY parent links on megamenu from linking on touch, using doubletapgo.js
+      $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').doubleTapToGo();
 
-      //adding code that handles the submit for the search. code matches pivot
-			$('#search-api-page-search-form-site-search .form-submit').click(function() {
-				if ($('#search-api-page-search-form-site-search').hasClass('active')) {
-					$('#search-api-page-search-form-site-search').removeClass('active');
-					var search_input = $('#search-api-page-search-form-site-search #edit-keys-2').val();
-					
-					if (search_input == 'Search' || search_input == '') {
-						return false;
-					}
-					return true;
-				}
-				else {
-					$('#search-api-page-search-form-site-search').addClass('active');
-					$('#search-api-page-search-form-site-search #edit-keys-2').val('Search');
+		//adding code that handles the submit for the search. code matches pivot
+		$('#search-api-page-search-form-site-search .form-submit').click(function() {
+			if ($('#search-api-page-search-form-site-search').hasClass('active')) {
+				$('#search-api-page-search-form-site-search').removeClass('active');
+				var search_input = $('#search-api-page-search-form-site-search #edit-keys-2').val();
+				
+				if (search_input == 'Search' || search_input == '') {
 					return false;
 				}
-			});
-      
-			//makes the search go away on focus			
-			$('#search-api-page-search-form-site-search #edit-keys-2').focus(function() {
-				$(this).val('');
-			});
-      
+				return true;
+			}
+			else {
+				$('#search-api-page-search-form-site-search').addClass('active');
+				$('#search-api-page-search-form-site-search #edit-keys-2').val('Search');
+				return false;
+			}
+		});
+  
+		//makes the search go away on focus			
+		$('#search-api-page-search-form-site-search #edit-keys-2').focus(function() {
+			$(this).val('');
+		});
+
       //Toggle search on mobile
       $('html').click(function() {
         $('.search-toggle').parent().removeClass('active');
       });
 
+      $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').click(function(event){
+        $(this).parent().children().not('li.expanded a').slideToggle('fast');
+      });
+      
       $('.search-toggle').parent().click(function(event){
         event.stopPropagation();
         $(this).addClass('active');
@@ -104,21 +108,22 @@
         minDragDistance: 5
       });
 
-      snapper.on('animated', function() {
-        if (snapper.state().state == "closed") {
-          snapper.close();
-          $('.snap-drawers').hide();
-        }
-      });
-
       $('.menu-toggle').on('click', function(e){
         e.preventDefault();
         if ( snapper.state().state == "closed" ) {
           $('#campaign-drawers').hide();
           $('#tp-drawers').show();
+		  $('#block-menu-menu-megamenu ul li ul').hide();
           snapper.open('left');
         }
         else {
+          snapper.close();
+          $('.snap-drawers').hide();
+        }
+      });
+
+      snapper.on('animated', function() {
+        if (snapper.state().state == "closed") {
           snapper.close();
           $('.snap-drawers').hide();
         }
@@ -150,7 +155,7 @@
         minDragDistance: 5
       });
 
-      $('.snap-drawer a').on('click', function() {
+      $('#block-menu-menu-megamenu ul li ul li a').on('click', function() {
         snapper.close();
         $('.snap-drawers').hide();
       });
