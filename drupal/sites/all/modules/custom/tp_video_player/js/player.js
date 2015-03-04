@@ -219,7 +219,7 @@
       var playlistItem = this.getPlaylistItem();
       var videoFile = playlistItem.sources[0].file;
       var videoSource = (videoFile.indexOf('youtube') !== -1 ? 'YouTube' : 'JW Player');
-      var videoAutoplay = this.config.autostart;
+      var videoAutoplay = (this.config.autostart ? 'Autostart' : 'Manual');
       var playlistName = this.config.title;
       var videoName = playlistItem.title;
       var data= {
@@ -230,7 +230,6 @@
       };
       digitalData.event.push(data);
       _satellite.track('video_play');
-      //  digitalData.event.pop();  //move this to DTM
     });
   }
   /**
