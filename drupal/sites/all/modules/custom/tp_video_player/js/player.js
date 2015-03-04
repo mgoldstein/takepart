@@ -222,7 +222,8 @@
       var videoAutoplay = (this.config.autostart ? 'Autostart' : 'Manual');
       var playlistName = this.config.title;
       var videoName = playlistItem.title;
-      var data= {
+      var data = {};
+      data['videoPlaying']= {
         "videoName": videoName,
         "playlistName": playlistName,
         "autoplay": videoAutoplay,
