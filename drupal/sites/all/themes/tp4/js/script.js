@@ -9,8 +9,8 @@
    */
   Drupal.behaviors.megaMenuBehaviors = {
     attach: function(context, settings) {
-      //prevent parent links on megamenu from linking on touch (link on double touch)
-      $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
+      //prevent ONLY parent links on megamenu from linking on touch, using doubletapgo.js
+      $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').doubleTapToGo();
 
       //ensures this is for mobile only
       if ($(window).width() < 768) {
@@ -43,6 +43,10 @@
         $('.search-toggle').parent().removeClass('active');
       });
 
+      $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').click(function(event){
+        $(this).parent().children().not('li.expanded a').slideToggle('fast');
+      });
+      
       $('.search-toggle').parent().click(function(event){
         event.stopPropagation();
         $(this).addClass('active');
@@ -107,21 +111,22 @@
         minDragDistance: 5
       });
 
-      snapper.on('animated', function() {
-        if (snapper.state().state == "closed") {
-          snapper.close();
-          $('.snap-drawers').hide();
-        }
-      });
-
       $('.menu-toggle').on('click', function(e){
         e.preventDefault();
         if ( snapper.state().state == "closed" ) {
           $('#campaign-drawers').hide();
           $('#tp-drawers').show();
+		  $('#block-menu-menu-megamenu ul li ul').hide();
           snapper.open('left');
         }
         else {
+          snapper.close();
+          $('.snap-drawers').hide();
+        }
+      });
+
+      snapper.on('animated', function() {
+        if (snapper.state().state == "closed") {
           snapper.close();
           $('.snap-drawers').hide();
         }
@@ -153,7 +158,7 @@
         minDragDistance: 5
       });
 
-      $('.snap-drawer a').on('click', function() {
+      $('#block-menu-menu-megamenu ul li ul li a').on('click', function() {
         snapper.close();
         $('.snap-drawers').hide();
       });
