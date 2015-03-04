@@ -80,8 +80,12 @@ function tp_video_player_build_content_settings($configuration, $files) {
       $media_id = substr($media_id, 1);
     }
 
+    //grabs the node title for item title
+    $node_title = (!empty($file['node_title'])) ? $file['node_title'] : '';
+    
     $item = array(
       'mediaid' => $media_id,
+      'title' => $node_title,
       'sources' => array(array('file' => $url)),
     );
 
