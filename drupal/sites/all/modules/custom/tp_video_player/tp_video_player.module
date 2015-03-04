@@ -277,6 +277,7 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
     foreach ($items as $delta => $item) {
       $items[$delta]['allowed_regions'] = $allowed_regions;
       $items[$delta]['media_id'] = $media_id;
+      $items[$delta]['node_title'] = $entity->title;
       $items[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
     }
 
