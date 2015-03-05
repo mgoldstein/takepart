@@ -210,10 +210,10 @@
     &:before{
       content: "\e606\e606 ";
       font-family: "takepart";
+      letter-spacing: -.9ex;
+      font-size: .6em;
+      margin-right: 1em;
       color: $blue;
-      position: absolute;
-      top: -1px;
-      left: 0;
     }
   }
   &:hover{
