@@ -117,11 +117,13 @@
 
 .bx-wrapper .bx-next {
   right: 10px;
-  font-size: 3em;
+  font-size: 2.2em;
+  line-height: 40%;
   font-family: "takepart";
   &:after{
     content: '\e606';
     display: inline;
+    margin-left: 6px;
   }
   &:hover{
     text-decoration: none !important;
