@@ -7,7 +7,7 @@ $conf += array(
 );
 
 // Development & Staging Facebook App ID
-$conf += array('facebook_app_id' => '804910456185646');
+$conf += array('facebook_app_id' => '247137505296280');
 
 // QA TAP and Services Integration
 $conf += array(
