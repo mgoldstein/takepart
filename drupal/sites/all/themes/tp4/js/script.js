@@ -24,18 +24,6 @@
 			}
 		});
 
-      $( document ).on( 'touchstart MSPointerDown', function( e )
-      {
-        var resetItem = true,
-          parents   = $( e.target ).parents();
-        for( var i = 0; i < parents.length; i++ )
-          if( parents[ i ] == curItem[ 0 ] )
-            resetItem = false;
-
-        if( resetItem )
-          curItem = false;
-      });
-
       //ensures this is for mobile only
       if ($(window).width() < 768) {
         //adding code that handles the submit for the search. code matches pivot
