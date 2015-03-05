@@ -2,15 +2,39 @@
  * @file
  * Scripts for the theme.
  */
-(function ($, Drupal, window, document, undefined) {
 
+(function ($, Drupal, window, document, undefined) {
   /*
    * Megamenu Behaviors
    */
   Drupal.behaviors.megaMenuBehaviors = {
     attach: function(context, settings) {
-      //prevent ONLY parent links on megamenu from linking on touch, using doubletapgo.js
-      $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').doubleTapToGo();
+		//prevent ONLY parent links on megamenu from linking on touch, using doubletaptogo.js
+// 		$('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').doubleTapToGo();
+
+		var curItem = false;
+
+		$('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').on( 'click', function( e )
+		{
+			var item = $( this );
+			if( item[ 0 ] != curItem[ 0 ] )
+			{
+				e.preventDefault();
+				curItem = item;
+			}
+		});
+
+      $( document ).on( 'touchstart MSPointerDown', function( e )
+      {
+        var resetItem = true,
+          parents   = $( e.target ).parents();
+        for( var i = 0; i < parents.length; i++ )
+          if( parents[ i ] == curItem[ 0 ] )
+            resetItem = false;
+
+        if( resetItem )
+          curItem = false;
+      });
 
       //ensures this is for mobile only
       if ($(window).width() < 768) {
