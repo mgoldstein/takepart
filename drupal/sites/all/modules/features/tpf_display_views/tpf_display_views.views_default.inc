@@ -2279,6 +2279,12 @@ print $value;
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
   $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => 'content',
+  );
   /* Field: Indexed Content: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
@@ -2381,6 +2387,12 @@ print $value;
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
   $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => 'content',
+  );
   /* Field: Indexed Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'search_api_index_site_node_index';
