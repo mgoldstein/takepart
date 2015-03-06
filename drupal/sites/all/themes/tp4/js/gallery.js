@@ -343,7 +343,7 @@
             gallery.slideshow = new Swipe(document.getElementById('slides'), {
                 continuous: false,
                 callback: $.proxy(gallery.slideCallback, gallery),
-                transitionEnd: function(index, elem) {}
+                transitionEnd: function(index, elem) {_satellite.track('gallery_view');}
             });
 
             // populate gallery properties
