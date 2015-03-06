@@ -34,7 +34,6 @@ dependencies[] = tp4_support
 dependencies[] = tp_feature_feature_article
 dependencies[] = tpf_content_action
 dependencies[] = tpf_content_article
-dependencies[] = tpf_content_campaign
 dependencies[] = tpf_content_campaigns
 dependencies[] = tpf_content_field_bases
 dependencies[] = tpf_content_flashcard
