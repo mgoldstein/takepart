@@ -256,7 +256,7 @@
             return this.$slides.find("[data-token='" + token + "']").data('index');
         },
         next: function() {
-          _satellite.track('gallery_view');
+
             // if we're on the last slide (currentSlideIndex is zero-indexed)
             // go to the next gallery if there is one; in any case, return
             if (this.currentSlideIndex == (this.slideshow.getNumSlides() - 1)) {
@@ -270,7 +270,7 @@
             this.slideTo(this.currentSlideIndex + 1);
         },
         previous: function() {
-          _satellite.track('gallery_view');
+
             // if we're on the first slide go back to the cover
             // if there is one; in any case, return
             if (this.currentSlideIndex == 0) {
