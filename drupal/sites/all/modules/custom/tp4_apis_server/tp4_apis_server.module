@@ -1,0 +1,338 @@
+<?php
+
+/**
+ *  Implements hook_menu().
+ */
+DEFINE('TP4_API_MENU', 'admin/config/takepart-api-server');
+
+/**
+ *  Implements hook_menu().
+ */
+function tp4_apis_server_menu() {
+  $items = array();
+  
+  //main group menu
+  $items[TP4_API_MENU] = array(
+    'title' => t('TakePart - API Server'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp4_apis_server_admin_form'),
+    'file' => 'tp4_apis_server.admin_form.inc',
+    'file path' => drupal_get_path('module', 'tp4_apis_server') . '/forms',
+    'access arguments' => array('administer site configuration'),
+  );
+  
+  $items[TP4_API_MENU . '/config'] = $items[TP4_API_MENU];
+  $items[TP4_API_MENU . '/config']['type'] = MENU_DEFAULT_LOCAL_TASK;
+  
+  //gets the menu
+  $menu_items = _tp4_apis_get_variable('menu');
+  
+  //esnures that its not empty
+  if (!empty($menu_items)) {
+    //does for each item
+    foreach ($menu_items as $key => $value) {
+      //creates new items
+      $items[$value['url']] = array(
+      'title' => t('TakePart - API Server'),
+      'page callback' => '_tp4_apis_server_page_callback',
+      'page arguments' => array($key, $value['type']),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK
+      );
+    }
+  }
+  
+  return $items;
+}
+
+/**
+ *  @function:
+ *    Function is used to return the variables 
+ */
+function _tp4_apis_get_variable($action = 'default', $key = NULL) {
+  $output = '';
+  $parent_url = variable_get('tp4_api_parent_url', 'api/takepart');
+  $tp4_api_services = variable_get('tp4_api_services');
+  
+  //does based on action
+  switch ($action) {
+    //returns the url with parent url
+    case 'url':
+      if (!empty($key)) {
+        $api_raw = $tp4_api_services[$key];
+        
+        //only return a url if its set
+        if (isset($api_raw['url']) && !empty($api_raw['url'])) {
+          $output = $parent_url . $api_raw['url'];
+        }
+      }
+      break;
+    //returns the menu array for building the menu in hook_menu().
+    case 'menu':
+      $output = array();
+      foreach ($tp4_api_services as $key => $value) {
+        $output[$key] = array(
+          'function' => $value['function'],
+          'url' => _tp4_apis_get_variable('url', $key),
+          'type' => $value['type']
+        );
+      }
+      break;
+    //default returns the variable from the db
+    default:
+      $output = $tp4_api_services;
+      break;
+  }
+  
+  return $output;
+}
+
+/**
+ *  @function:
+ *    This function is used to dynamically create a feed service
+ */
+function _tp4_apis_server_page_callback($function, $type = NULL) {
+  //adds the correct header
+  _tp4_apis_server_header_handler($type);
+
+  $output = _tp4_apis_server_available_api('output', $function);
+  print $output;
+  
+  drupal_exit();
+}
+
+/**
+ *  @function:
+ *    Function is used to return a list of available apis that have implemented a hook
+ */
+function _tp4_apis_server_available_api($action = 'default', $function = NULL) {
+  $apis = array();
+  
+  //allows other modules to declare apis
+  drupal_alter('tp4_apis_server_declare', $apis);
+  
+  switch ($action) {
+    //returns the api function
+    case 'get':
+      if (isset($apis[$function])) {
+        return $apis[$function];
+      }
+      break;
+    //returns the output
+    case 'output':
+      $request = request_uri();
+      $prefix = 'tp4_api_';
+      $cache_key = $prefix . preg_replace("/[^a-zA-Z0-9]/", "_", $request);
+      
+      //gets cached version
+      $cache = cache_get($cache_key, 'cache');
+      
+      //allows breaking cache
+      if (isset($_GET['new']) && $_GET['new'] == TRUE) {
+        $new = TRUE;
+      }
+      else {
+        $new = FALSE;
+      }
+      
+      //only continue if no cache is present
+      if ((empty($cache) || $new) && function_exists($apis[$function])) {
+        $output = call_user_func($apis[$function]);
+        $cache_time = variable_get('tp4_api_cache_time', 5);
+        
+        //cache data for allowed mins
+        cache_set($cache_key, $output, 'cache', $cache_time * 60);
+        return $output;
+      }
+      else {
+        //return cache data
+        return $cache->data;
+      }
+      break;
+    //by default return all apis
+    default:
+      return $apis;
+      break;
+  }
+  
+  //default action
+  return FALSE;
+}
+
+/**
+ *  @function:
+ *    Function is used to add the type of header to the callback pages
+ */
+function _tp4_apis_server_header_handler($type = 'json') {
+  switch ($type) {
+    case 'plain':
+      break;
+    case 'xml':
+      drupal_add_http_header('Content-Type', 'application/xml');
+      break;
+    default:
+      drupal_add_http_header('Content-Type', 'application/json');
+      break;
+  }
+}
+
+/**
+ *  Implements tp4_apis_server_declare_alter().
+ *
+ *    @function:
+ *      This is used to declare new api calls to this module. Functions are required to return a value.
+ */
+function tp4_apis_server_tp4_apis_server_declare_alter(&$apis) {
+  //declares a node api ens
+  $apis['email_nodes'] = '_tp4_apis_server_node_feed';
+  $apis['email_taxonomy'] = '_tp4_apis_server_taxonomy_feed';
+}
+
+/**
+ *  @function:
+ *    Function is used for the node
+ */
+function _tp4_apis_server_node_feed() {
+  //defines the new query. each data is a single value and not multiple value
+  $db_result = db_select('node', 'n')
+    ->fields('n', array('nid', 'type', 'status', 'title', 'created'));
+  //adds the join for the field_data_field_thumbnail
+  $db_result->leftJoin('field_data_field_thumbnail', 'thumbnail', 'n.nid = thumbnail.entity_id');
+  $db_result->fields('thumbnail', array('field_thumbnail_fid'));
+  
+  //adds the join for field_data_field_html_title
+  $db_result->leftJoin('field_data_field_html_title', 'html_title', 'n.nid = html_title.entity_id');
+  $db_result->fields('html_title', array('field_html_title_value'));
+  
+  //adds the join for the field_data_field_article_main_image
+  $db_result->leftJoin('field_data_field_article_main_image', 'article', 'n.nid = article.entity_id');
+  $db_result->fields('article', array('field_article_main_image_fid'));
+  
+  //adds the join for the field_data_field_gallery_images
+  $db_result->leftJoin('field_data_field_gallery_images', 'gallery', 'n.nid = gallery.entity_id');
+  $db_result->fields('gallery', array('field_gallery_images_fid'));
+  
+  //adds the join for the field_gallery_main_image
+  $db_result->leftJoin('field_data_field_gallery_main_image', 'gallery_main', 'n.nid = gallery_main.entity_id');
+  $db_result->fields('gallery_main', array('field_gallery_main_image_fid'));
+
+  //adds the join for the publication_date
+  $db_result->leftJoin('publication_date', 'pd', 'n.nid = pd.nid');
+  $db_result->fields('pd', array('published_at'));
+
+  //conditions
+  $db_result->condition('n.type', array('openpublish_article', 'openpublish_photo_gallery', 'feature_article', 'video'), 'IN');
+  $db_result->condition('status', 1, '=');
+  
+  //add queries if exist
+  if (isset($_GET['days']) && !empty($_GET['days'])) {
+    $now = REQUEST_TIME;
+    $request = $now - $_GET['days'] * 86400;
+    $db_result->condition('published_at', $request, '>=');
+  }
+  
+  //execute
+  $result = $db_result->execute()->fetchAll();
+  
+  //parse the data to format it correctly
+  $json = _tp4_apis_server_node_feed_parser($result);
+
+  return $json;
+}
+
+/**
+ *  @function:
+ *    Function that is used to parse the data from the db_query
+ */
+function _tp4_apis_server_node_feed_parser($list = array()) {
+  $output = array();
+  
+  //does for each item's value
+  foreach ($list as $key => $value) {
+    //cast it over to an array
+    $value = (array)$value;
+    
+    //variables since this is being reused.
+    $nid = $value['nid'];
+
+    //checks to ensure that the nid is set and numeric
+    if (isset($nid) && is_numeric($nid)) {
+      $main_image = '';
+      $thumbnail = NULL;
+      
+      //pulled from export.php
+      if ($value['type'] == 'openpublish_article') {
+        $main_image = $value['field_thumbnail_fid'];
+      }
+      
+      //changes main image based on type
+      if ($value['type'] == 'feature_article') {
+        $main_image = $value['field_article_main_image_fid'];
+      }
+      
+      //changes main image based on type
+      if ($value['type'] == 'video') {
+        $main_image = $value['field_thumbnail_fid'];
+      }
+      
+      //changes main image based on type
+      if ($value['type'] == 'openpublish_photo_gallery') {
+        $main_image = $value['field_gallery_main_image_fid'];
+        if (!$main_image) {
+          $main_image = $value['field_gallery_images_fid'];
+        }
+      }
+      
+      //loads image if set
+      if (!empty($main_image)) {
+        $img_url = file_load($main_image);
+        if (isset($img_url->uri)) {
+          $thumbnail = image_style_url('email_promo', $img_url->uri);
+        }
+      }
+      
+      //fetches all field_topic
+      $field_topic = db_select('field_data_field_topic', 'topic');
+      $field_topic->addField('topic', 'field_topic_tid', 'tid');
+      $field_topic->condition('entity_id', $nid, '=');
+      $field_topic_result = $field_topic->execute()->fetchAll();
+      
+      //item level
+      $output[$nid] = array(
+        'nid' => $nid,
+        'type' => $value['type'],
+        'title' => $value['title'],
+        'status' => $value['status'],
+        'published_at' => $value['published_at'],
+        '_thumb' => $thumbnail,
+        '_short_title' => $value['field_html_title_value'],
+        '_created' => date('Y-m-d H:i:s', $value['created']),
+        '_url' => url('node/' . $nid, array('absolute' => TRUE)),
+        '_field_topic' => (empty($field_topic_result)) ? NULL : $field_topic_result
+      );
+    }
+  }
+
+  //returns json
+  return json_encode($output);
+}
+
+/**
+ *  @function:
+ *    Provides the server with a taxonomy feed that returns a json
+ */
+function _tp4_apis_server_taxonomy_feed() {
+  $tid = array();
+  
+  //add tid if exist
+  if (isset($_GET['tid']) && !empty($_GET['tid'])) {
+    $tid[] = $_GET['tid'];
+  }
+  
+  //loads the topic taxonomy vocab
+  $vocabulary = taxonomy_vocabulary_machine_name_load('Topic');
+  $terms = entity_load('taxonomy_term', $tid, array('vid' => $vocabulary->vid));
+  
+  //returns json
+  return json_encode($terms);
+}

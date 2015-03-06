@@ -42,3 +42,5 @@ Disallow: /cron.php
 Disallow: /install.php
 Disallow: /update.php
 Disallow: /xmlrpc.php
+Disallow: /api/*
+Disallow: /api/
