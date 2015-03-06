@@ -127,12 +127,13 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
-    'openpublish_blog_post' => 'openpublish_blog_post',
+    'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
-    'openpublish_video' => 'openpublish_video',
+    'flashcard' => 'flashcard',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
 
   /* Display: Page */
@@ -2273,7 +2274,7 @@ print $value;
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Thumbnail */
+  /* Field: Indexed Content: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -2381,7 +2382,7 @@ print $value;
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
-  /* Field: Indexed Content: Thumbnail */
+  /* Field: Indexed Content: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -2429,6 +2430,13 @@ print $value;
   $handler->display->display_options['fields']['url']['alter']['path'] = 'node/[nid]';
   $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['url']['hide_alter_empty'] = FALSE;
+  /* Field: Indexed Content: Promo Text */
+  $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
+  $handler->display->display_options['fields']['field_promo_text']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
+  $handler->display->display_options['fields']['field_promo_text']['label'] = '';
+  $handler->display->display_options['fields']['field_promo_text']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Series [taxonomy_term] */
   $handler->display->display_options['arguments']['field_series']['id'] = 'field_series';
