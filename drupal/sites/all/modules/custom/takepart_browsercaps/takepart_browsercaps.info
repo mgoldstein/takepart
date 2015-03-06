@@ -1,9 +1,0 @@
-name = TakePart Browser Capabilities Support
-description = Mechanism to detect user agents, used by other modules
-package = TakePart
-version = 7.x-1.00
-core = 7.x
-dependencies[] = browscap
-
-files[] = takepart_browsercaps.module
-files[] = takepart_browsercaps.install

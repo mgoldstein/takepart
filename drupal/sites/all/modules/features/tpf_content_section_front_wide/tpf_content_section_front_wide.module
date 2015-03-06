@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Content Section Front Wide feature.
- */
-
-include_once 'tpf_content_section_front_wide.features.inc';
