@@ -343,7 +343,12 @@
             gallery.slideshow = new Swipe(document.getElementById('slides'), {
                 continuous: false,
                 callback: $.proxy(gallery.slideCallback, gallery),
-                transitionEnd: function(index, elem) {_satellite.track('gallery_view');}
+                transitionEnd: function(index, elem) {
+                  if(window.suppressTrack == false){
+                    _satellite.track('gallery_view');
+                  }
+                  window.suppressTrack = false;
+                }
             });
 
             // populate gallery properties
@@ -463,9 +468,10 @@
 
             // Initialize page based on URL
             var token = getCurrentToken();
-
+            window.suppressTrack = true;
             if (token && token != 'first-slide') {
-                gallery.slideTo(gallery.getIndex(token));
+              window.suppressTrack = true;
+                setTimeout(function(){gallery.slideTo(gallery.getIndex(token))}, 100);
                 skipNextPageview = true;
                 gallery.showGallery();
             } else if (token == 'first-slide') {
