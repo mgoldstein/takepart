@@ -14621,7 +14621,7 @@ body #article-content .inline-content-playlist.align-full {
   .social .social-wrapper li.share h3.share-headline {
     display: inline-block;
     float: left;
-    margin-top: 4px;
+    margin-top: 7px;
   }
 }
 @media all and (min-width: 980px) {
