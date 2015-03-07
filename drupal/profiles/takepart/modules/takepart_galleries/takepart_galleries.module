@@ -256,7 +256,9 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 		// Get the slideshow, get the slide title, convert it to a url-style string, and check it against arg(2)
 		// Then return the updated value to the og:image key in $head_elements
 		$slides = field_get_items('node', $node, 'field_gallery_images');
-    
+
+		$desc_length = 300;
+
 		if ($slides) {
 			foreach ($slides as $delta => $item) {
         //ensures that the fid isset
@@ -266,8 +268,16 @@ function takepart_galleries_html_head_alter(&$head_elements) {
           $slide = array();
           
           $items = field_get_items('file', $file, 'field_image_title');
-          
-          $slide['title'] = $items[0]['safe_value'];
+          $desc = field_get_items('file', $file, 'field_media_caption');
+
+          $slide['title'] = trim($items[0]['safe_value']);
+          $slide['desc'] = strip_tags($desc[0]['safe_value']);
+
+          // Truncate the desc to <300 chars
+          if( strlen($slide['desc']) > $desc_length ) {
+	          $slide['desc'] = substr($slide['desc'], 0, $desc_length);
+	          $slide['desc'] = preg_replace('/\w+$/', '', $slide['desc']).'…';
+          }
 
 		  module_load_include('inc','pathauto');
   
@@ -276,11 +286,18 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 	      } else {
 	        $slide['data-token'] = pathauto_cleanstring($file->filename);
 	      }
-  
+
           if($slide['data-token'] == $dirs[3]) {
-            $head_elements['metatag_og:image_0']['#value'] = file_create_url($file->uri);
-            $head_elements['metatag_og:title_0']['#value'] = $slide['title'];
-            break;
+	        // Facebook
+			$head_elements['metatag_og:image_0']['#value'] = file_create_url($file->uri);
+			$head_elements['metatag_og:title_0']['#value'] = $slide['title'];
+			$head_elements['metatag_og:description_0']['#value'] = $slide['desc'];
+			$head_elements['metatag_og:url_0']['#value'] .= '/'.$slide['data-token'];
+
+			// Twitter
+			$head_elements['metatag_twitter:title_0']['#value'] = $slide['title'];
+			$head_elements['metatag_twitter:url_0']['#value'] .= '/'.$slide['data-token'];
+			break;
           }
         }
 			}

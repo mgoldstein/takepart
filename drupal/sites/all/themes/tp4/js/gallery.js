@@ -447,6 +447,7 @@
 
     Drupal.behaviors.coverBehavior = {
         attach: function() {
+          window.suppressTrack = true;
             if (!$('body').is('.node-type-openpublish-photo-gallery'))
                 return;
 
@@ -454,6 +455,7 @@
                 if (isTouchmove)
                     return isTouchmove = false;
                 e.preventDefault();
+                window.suppressTrack = false;
                 gallery.showGallery();
             });
 
@@ -468,12 +470,12 @@
 
             // Initialize page based on URL
             var token = getCurrentToken();
-            window.suppressTrack = true;
+
             if (token && token != 'first-slide') {
-              window.suppressTrack = true;
-                setTimeout(function(){gallery.slideTo(gallery.getIndex(token))}, 100);
-                skipNextPageview = true;
-                gallery.showGallery();
+
+              setTimeout(function(){gallery.slideTo(gallery.getIndex(token))}, 100);
+              skipNextPageview = true;
+              gallery.showGallery();
             } else if (token == 'first-slide') {
                 skipNextPageview = true;
                 gallery.showGallery(true);
