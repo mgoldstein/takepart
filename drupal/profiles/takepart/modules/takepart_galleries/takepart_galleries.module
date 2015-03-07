@@ -271,8 +271,8 @@ function takepart_galleries_html_head_alter(&$head_elements) {
           $desc = field_get_items('file', $file, 'field_media_caption');
 
           $slide['title'] = trim($items[0]['safe_value']);
-          $slide['desc'] = $desc[0]['safe_value'];
-          
+          $slide['desc'] = strip_tags($desc[0]['safe_value']);
+
           // Truncate the desc to <300 chars
           if( strlen($slide['desc']) > $desc_length ) {
 	          $slide['desc'] = substr($slide['desc'], 0, $desc_length);
@@ -291,11 +291,11 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 	        // Facebook
 			$head_elements['metatag_og:image_0']['#value'] = file_create_url($file->uri);
 			$head_elements['metatag_og:title_0']['#value'] = $slide['title'];
-			$head_elements['metatag_og:description_0']['#value'] .= $slide['desc'];
+			$head_elements['metatag_og:description_0']['#value'] = $slide['desc'];
 			$head_elements['metatag_og:url_0']['#value'] .= '/'.$slide['data-token'];
 
 			// Twitter
-			$head_elements['metatag_twitter:title_0']['#value'] .= '/'.$slide['data-token'];
+			$head_elements['metatag_twitter:title_0']['#value'] = $slide['title'];
 			$head_elements['metatag_twitter:url_0']['#value'] .= '/'.$slide['data-token'];
 			break;
           }
