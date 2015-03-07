@@ -454,6 +454,8 @@ ini_set('session.cookie_lifetime', 2000000);
 #  'collation' => 'utf8_general_ci',
 #);
 
+date_default_timezone_set('America/Los_Angeles');
+ 
 // Include the application specific settings
 if (file_exists(dirname(__FILE__) . '/application.settings.php')) {
   include_once dirname(__FILE__) . '/application.settings.php';
