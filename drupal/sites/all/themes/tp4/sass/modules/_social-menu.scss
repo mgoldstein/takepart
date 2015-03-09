@@ -597,17 +597,18 @@ body.node-type-openpublish-photo-gallery{
 }
 
 .social-wrapper .tap-influence-icon{
+  margin-top: 0;
   display: block;
+  @include breakpoint($breakpoint-mobile){
+	margin-top: 16px;
+  }
   @include breakpoint($breakpoint-phablet){
     text-align: center;
     display: inline-block;
-    margin-top: 0;
   }
   @include breakpoint($breakpoint-desktop){
-	margin-top: 16px;
     text-align: right;
     position: relative;
-    margin-top:0px;
     width: 40px;
   }
 }
