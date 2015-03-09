@@ -316,6 +316,9 @@
   right: 0;
 }
 .social-wrapper.mobile .tp-social{
+  @include breakpoint($breakpoint-mobile){
+	white-space: nowrap;
+  }
   list-style-type: none;
   overflow: auto;
   text-align: left;
