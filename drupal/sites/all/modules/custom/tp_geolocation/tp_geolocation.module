@@ -23,7 +23,7 @@ function tp_geolocation_help($path, $arg) {
 function tp_geolocation_init() {
   $module_directory = drupal_get_path('module', 'tp_geolocation');
 
-  drupal_add_js('//js.maxmind.com/js/apis/geoip2/v2.0/geoip2.js', array(
+  drupal_add_js('//js.maxmind.com/js/apis/geoip2/v2.1/geoip2.js', array(
     'type' => 'external',
     'scope' => 'header',
     'weight' => 5,
