@@ -297,6 +297,7 @@
         || $body.is('.page-node.node-type-video')
         || $body.is('.page-node.node-type-video-playlist')
         || $body.is('.page-node.node-type-flashcard')
+        || $body.is('.page-node.node-type-openpublish-photo-gallery')
       ) {
           $('.block-boxes-ga_ad-bottom').tp4Sticky();
       }
