@@ -1443,6 +1443,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'locked' => 0,
     'module' => 'color_field',
     'settings' => array(
+      'allow_empty' => 1,
       'palette' => '',
       'show_buttons' => 1,
       'show_input' => 1,
@@ -1525,6 +1526,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'locked' => 0,
     'module' => 'color_field',
     'settings' => array(
+      'allow_empty' => 1,
       'palette' => '',
       'show_buttons' => 1,
       'show_input' => 1,
@@ -3807,6 +3809,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'locked' => 0,
     'module' => 'color_field',
     'settings' => array(
+      'allow_empty' => 1,
       'palette' => '',
       'show_buttons' => 1,
       'show_input' => 1,
