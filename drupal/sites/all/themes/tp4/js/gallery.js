@@ -78,7 +78,7 @@
 
     var isTouch = 'ontouchstart' in window || 'msmaxtouchpoints' in window.navigator;
     var isTouchmove = false;
-    var click = isTouch ? "touchend" : "click";
+    var click = isTouch ? "touchend" : "mouseup";
 
     // establish base values for URL/token functions
     var base_url = document.location.href.split(/\/|#/).slice(0, 5).join('/');
@@ -381,9 +381,9 @@
             if (!$('body').is('.node-type-openpublish-photo-gallery'))
                 return;
 
-            // hovering on all slides lights lights up "next" nav
+            // hovering on all slides lights up "next" nav
             // clicking images (on all slides by the last) advances slideshow
-            // (or touchend, on touch-enabled devices)
+            // (or 'touchend', on touch-enabled devices)
             gallery.$slides.find('.gallery-slide')
                     .on('mouseover', 'img', function() {
                         gallery.$nextSlide.addClass('hover');

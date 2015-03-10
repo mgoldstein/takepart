@@ -112,7 +112,7 @@
       @include breakpoint($breakpoint-phablet){
 	      display: inline-block;
 		  float: left;
-		  margin-top: 4px;
+		  margin-top: 7px;
 	  }
       @include breakpoint($breakpoint-desktop){
 	      display: inline;
@@ -316,6 +316,9 @@
   right: 0;
 }
 .social-wrapper.mobile .tp-social{
+  @include breakpoint($breakpoint-mobile){
+	white-space: nowrap;
+  }
   list-style-type: none;
   overflow: auto;
   text-align: left;
@@ -597,17 +600,18 @@ body.node-type-openpublish-photo-gallery{
 }
 
 .social-wrapper .tap-influence-icon{
+  margin-top: 0;
   display: block;
+  @include breakpoint($breakpoint-mobile){
+	margin-top: 16px;
+  }
   @include breakpoint($breakpoint-phablet){
     text-align: center;
     display: inline-block;
-    margin-top: 0;
   }
   @include breakpoint($breakpoint-desktop){
-	margin-top: 16px;
     text-align: right;
     position: relative;
-    margin-top:0px;
     width: 40px;
   }
 }

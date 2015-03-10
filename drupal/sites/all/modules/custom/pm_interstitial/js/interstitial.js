@@ -45,6 +45,13 @@
             }
             function interstitial_init() {
 
+				// disallow scrolling on iOS when the modal is up
+				$(document).on('touchmove', function(e) {
+					if ($('.scrollable').has($(e.target)).length) {
+						e.preventDefault();
+					}
+				});
+
                 // FOR TESTING
                 /*
                  var interstitial_links = $('#block-pm-interstitial-interstitials .content a');
@@ -96,6 +103,7 @@
                 $iframe.bind('load', function() {
 					// prevent scrolling, you sick bastard
 					$('body').css('overflow','hidden');
+					$('body').addClass('scrollable');
 
                     var $modal = $('#' + interstitial_modal_id + 'modal');
                     $modal.show();
@@ -149,6 +157,7 @@
                     afterClose: function() {
 						// return scrolling to the body
 						$('body').css('overflow','scroll');
+						$('body').removeClass('scrollable');
                         extend_pm_interstitial_cookie(7);
                         takepart.analytics.track('tpinterstitial_dismiss', {interstitial_type: analytics_types[interstitial_type]});
                     }
