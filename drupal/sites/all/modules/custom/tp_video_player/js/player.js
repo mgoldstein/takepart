@@ -212,26 +212,6 @@
 
     });
 
-    jwplayer(element_id).onPlay(function(event){
-      delete window.videoTransition;
-
-      /** Fire a direct call rule for DTM **/
-      var playlistItem = this.getPlaylistItem();
-      var videoFile = playlistItem.sources[0].file;
-      var videoSource = (videoFile.indexOf('youtube') !== -1 ? 'YouTube' : 'JW Player');
-      var videoAutoplay = (this.config.autostart ? 'Autostart' : 'Manual');
-      var playlistName = this.config.title;
-      var videoName = playlistItem.title;
-      var data = {};
-      data['videoPlaying']= {
-        "videoName": videoName,
-        "playlistName": playlistName,
-        "autoplay": videoAutoplay,
-        "videoSource": videoSource
-      };
-      digitalData.event.push(data);
-      _satellite.track('video_play');
-    });
   }
   /**
    *  @function:
