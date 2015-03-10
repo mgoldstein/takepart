@@ -78,7 +78,7 @@
 
     var isTouch = 'ontouchstart' in window || 'msmaxtouchpoints' in window.navigator;
     var isTouchmove = false;
-    var click = isTouch ? "touchend" : "mouseup";
+    var click = isTouch ? "touchend" : "click";
 
     // establish base values for URL/token functions
     var base_url = document.location.href.split(/\/|#/).slice(0, 5).join('/');
