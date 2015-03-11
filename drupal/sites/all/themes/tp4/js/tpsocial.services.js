@@ -74,7 +74,7 @@
                 parser.href = args.url;
                 FB.ui({
                     method: 'feed',
-                    name: args.title,
+                    name: $("meta[property='og:title']").attr("content"),
                     link: url + '',
                     picture: $("meta[property='og:image']").attr("content"),
 //                    caption: args.caption || parser.hostname,
