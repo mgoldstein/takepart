@@ -9,6 +9,8 @@
 */
 .tp_ad_takeover {
     .header-wrapper {
+        background-color: #FFF;
+        
         @include breakpoint($breakpoint-desktop) {
             padding-top: 0;
             max-width: 980px;

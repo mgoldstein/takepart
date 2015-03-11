@@ -14,7 +14,7 @@ $conf += array(
 );
 
 // Development & Staging Facebook App ID
-$conf += array('facebook_app_id' => '804910456185646');
+$conf += array('facebook_app_id' => '247137505296280');
 
 // Turn off page compression and CSS and JS preprocessing
 
