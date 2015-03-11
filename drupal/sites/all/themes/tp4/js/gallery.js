@@ -459,6 +459,7 @@
                     return isTouchmove = false;
                 e.preventDefault();
                 window.suppressTrack = false;
+              _satellite.track('gallery_enter');
                 gallery.showGallery();
             });
 
