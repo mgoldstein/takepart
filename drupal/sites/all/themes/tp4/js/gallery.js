@@ -481,6 +481,7 @@
               skipNextPageview = true;
               gallery.showGallery();
             } else if (token == 'first-slide') {
+                window.suppressTrack = false;
                 skipNextPageview = true;
                 gallery.showGallery(true);
             } else if (gallery.hasCover) {
