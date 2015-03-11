@@ -68,7 +68,10 @@
         tp_social_config.services.facebook.image = imageSrc;
         $("meta[property='og:image']").attr("content", imageSrc);
         $("meta[property='og:title']").attr("content", shareHeadline);
-        $("meta[property='og:description']").attr("content", shareDescription);
+        // Write the og:description if the tag doesn't exist
+		var og_desc = $("meta[property='og:description']");
+		og_desc = og_desc.length ? og_desc : $('<meta property="og:description" />').appendTo('head');
+		og_desc.attr('content', shareDescription);
         tp_social_config.services.mailto.title = shareHeadline;
     };
 
