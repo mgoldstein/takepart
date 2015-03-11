@@ -174,29 +174,28 @@ function takepart_galleries_omniture_variables() {
  */
 function takepart_galleries_html_head_alter(&$head_elements) {
 
-  $path = $_SERVER["REQUEST_URI"];
-  $path = preg_replace('/\?.*/', '', $path);
-  $dirs = explode('/', $path);
-  if(($dirs[1] == 'photos') && (count($dirs) > 3) && $dirs[3] ) {
-    foreach ($head_elements as $key => $element) {
-      if (isset($element['#id']) &&
-          (
-		  	  ($element['#id'] == 'metatag_og:url') ||
-              ($element['#id'] == 'metatag_og:image') ||
-              ($element['#id'] == 'metatag_og:description') ||
-              ($element['#id'] == 'metatag_og:title')
-          )
-       ) {
-        unset($head_elements[$key]);
-      }
-    }
-  }
-  
-	// Update the og:image value if you're on a sub-page
-  $node = menu_get_object();
-  
-	if(!empty($node)  && is_object($node) && isset($node->field_gallery_images)) {
+	// Update the og: meta values if you're on a sub-page
+	$node = menu_get_object();
 
+	$path = $_SERVER["REQUEST_URI"];
+	$path = preg_replace('/\?.*/', '', $path);
+	$dirs = explode('/', $path);
+	if(($dirs[1] == 'photos') && (count($dirs) > 3) && $dirs[3] ) {
+		foreach ($head_elements as $key => $element) {
+			if (isset($element['#id']) &&
+				(
+					($element['#id'] == 'metatag_og:url') ||
+					($element['#id'] == 'metatag_og:image') ||
+					($element['#id'] == 'metatag_og:description') ||
+					($element['#id'] == 'metatag_og:title')
+				)
+			) {
+				unset($head_elements[$key]);
+			}
+		}
+	}
+
+	if(!empty($node)  && is_object($node) && isset($node->field_gallery_images)) {
 		// Ripped off from takepart_gallery_support.module -
 		// Get the slideshow, get the slide title, convert it to a url-style string, and check it against arg(2)
 		// Then return the updated value to the og:image key in $head_elements
@@ -206,46 +205,61 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 
 		if ($slides) {
 			foreach ($slides as $delta => $item) {
-        //ensures that the fid isset
-        if (isset($item['fid'])) {
-          //load the file
-          $file = file_load($item['fid']);
-          $slide = array();
-          
-          $items = field_get_items('file', $file, 'field_image_title');
-          $desc = field_get_items('file', $file, 'field_media_caption');
+		        //ensures that the fid is set
+		        if (isset($item['fid'])) {
+					//load the file
+					$file = file_load($item['fid']);
+					$slide = array();
 
-          $slide['title'] = trim($items[0]['safe_value']);
-          $slide['desc'] = strip_tags($desc[0]['safe_value']);
+					$items = field_get_items('file', $file, 'field_image_title');
 
-          // Truncate the desc to <300 chars
-          if( strlen($slide['desc']) > $desc_length ) {
-	          $slide['desc'] = substr($slide['desc'], 0, $desc_length);
-	          $slide['desc'] = preg_replace('/\w+$/', '', $slide['desc']).'…';
-          }
+					$slide['title'] = trim($items[0]['safe_value']);
 
-		  module_load_include('inc','pathauto');
-  
-	      if($slide['title']) {
-	        $slide['data-token'] = pathauto_cleanstring($slide['title']);
-	      } else {
-	        $slide['data-token'] = pathauto_cleanstring($file->filename);
-	      }
+					module_load_include('inc','pathauto');
 
-          if($slide['data-token'] == $dirs[3]) {
-	        // Facebook
-			$head_elements['metatag_og:image_0']['#value'] = file_create_url($file->uri);
-			$head_elements['metatag_og:title_0']['#value'] = $slide['title'];
-			$head_elements['metatag_og:description_0']['#value'] = $slide['desc'];
-			$head_elements['metatag_og:url_0']['#value'] .= '/'.$slide['data-token'];
+					if($slide['title']) {
+						$slide['data-token'] = pathauto_cleanstring($slide['title']);
+					} else {
+						$slide['data-token'] = pathauto_cleanstring($file->filename);
+					}
 
-			// Twitter
-			$head_elements['metatag_twitter:title_0']['#value'] = $slide['title'];
-			$head_elements['metatag_twitter:url_0']['#value'] .= '/'.$slide['data-token'];
-			break;
-          }
-        }
+					if($slide['data-token'] == $dirs[3]) {
+
+						$desc = field_get_items('file', $file, 'field_media_caption');
+						$slide['desc'] = strip_tags($desc[0]['safe_value']);
+
+						// Truncate the desc to <300 chars
+						if( strlen($slide['desc']) > $desc_length ) {
+							$slide['desc'] = substr($slide['desc'], 0, $desc_length);
+							$slide['desc'] = preg_replace('/\w+$/', '', $slide['desc']).'…';
+						}
+
+				        // Facebook
+						$head_elements['metatag_og:image_0']['#value'] = file_create_url($file->uri);
+						$head_elements['metatag_og:title_0']['#value'] = $slide['title'];
+						$head_elements['metatag_og:description_0']['#value'] = $slide['desc'];
+						$head_elements['metatag_og:url_0']['#value'] .= '/'.$slide['data-token'];
+
+						// Twitter
+						$head_elements['metatag_twitter:title_0']['#value'] = $slide['title'];
+						$head_elements['metatag_twitter:url_0']['#value'] .= '/'.$slide['data-token'];
+						break;
+					}
+		        }
 			}
 		}
+	}
+
+	// Generate an empty og:description if there is no field_subhead value
+	// This happens in galleries with no subhead and no cover slide
+	if( !$head_elements['metatag_og:description_0']['#id'] ) {
+		$head_elements['metatag_og:description_0'] = array(
+			'#theme' => 'metatag_property',
+			'#tag' => 'meta',
+			'#id' => 'metatag_og:description_0',
+			'#name' => 'og:description',
+			'#value' => $slide['desc'],
+			'#type' => 'html_tag',
+		);
 	}
 }
