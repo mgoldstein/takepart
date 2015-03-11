@@ -97,9 +97,9 @@ function takepart_custom_video_sitemap_batch() {
     'operations' => array(
       array('_takepart_custom_video_nodes', array()),
       array('_takepart_custom_video_xml', array()),
+    ),
     'finished' => '_takepart_custom_video_sitemap_finished',
     'title' => t('Takepart - Video Sitemap Generation'),
-    )
   );
 
   batch_set($batch);
