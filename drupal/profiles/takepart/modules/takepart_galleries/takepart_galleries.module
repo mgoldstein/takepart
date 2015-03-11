@@ -90,37 +90,13 @@ function _takepart_galleries_fix_urls(&$item, $key) {
   }
   if(!isset($item['url'])) {
     if(isset($item['filename'])) {
+	  $item['filename'] = htmlspecialchars_decode($item['filename'], ENT_QUOTES);
       $filename = strtok($item['filename'], ".");
       if($filename) {
         $item['url'] = strtolower($filename);
       }
     }
   }
-}
-
-/**
- * Similar to above, helper function to get slide's token
- */
-function _takepart_galleries_get_token($title, $filename) {
-
-  module_load_include('inc','pathauto');
-
-  $token = '';
-
-  if ( $title ) {
-    $title = htmlspecialchars_decode($title, ENT_QUOTES);
-    $token = pathauto_cleanstring($title);
-  }
-
-  if ( $token == '' && $filename ) {
-    $filename = htmlspecialchars_decode($filename, ENT_QUOTES);
-    $filename = strtok($filename, ".");
-    if($filename) {
-      $token = strtolower($filename);
-    }
-  }
-
-  return $token;
 }
 
 /**
