@@ -12,6 +12,7 @@ if (file_exists($environment_settings_filename)) {
   include_once $environment_settings_filename;
 }
 
+
 // Define the global application settings.
 // +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 

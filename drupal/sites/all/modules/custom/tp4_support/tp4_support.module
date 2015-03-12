@@ -15,6 +15,7 @@ function tp4_support_help($path, $arg) {
   }
 }
 
+
 /**
 * Implements hook_entity_info_alter().
 *

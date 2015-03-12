@@ -25,3 +25,7 @@ ini_set('error_reporting', E_ALL & ~E_NOTICE);
 $conf += array(
   'pm_jwplatform_auto_create_tag' => 'Admin: TP Auto QA',
 );
+
+// Shared Assets
+$conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_stage/font.css';
+

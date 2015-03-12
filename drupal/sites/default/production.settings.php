@@ -27,3 +27,7 @@ $conf += array(
 
 // Tone down the logging
 ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED);
+
+// Shared Assets
+$conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets/font.css';
+
