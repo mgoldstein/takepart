@@ -1,4 +1,8 @@
 <?php
+
+//defines a general menu for takepart
+DEFINE('TP_GENERAL_MENU', 'admin/config/takepart');
+
 /**
  * @file
  * TakePart dule for functions related to the Nov 2013 redesign
@@ -66,9 +70,6 @@ function tp4_support_block_info(){
   $blocks['tp4_mobile_menu_header'] = array(
     'info' => t('Mobile Menu Header')
   );
-  $blocks['tp4_mobile_social_menu'] = array(
-    'info' => t('Mobile Social Menu')
-  );
   return $blocks;
 }
 
@@ -97,10 +98,6 @@ function tp4_support_block_view($delta = ''){
     case 'tp4_mobile_menu_header':
       $block['content'] = theme('tp4_support_mobile_menu_header');
     break;
-    case 'tp4_mobile_social_menu':
-      drupal_add_js(drupal_get_path('module', 'tp4_support'). '/js/mobile-social-menu.js', 'file'); //TODO: move this to tp4 theme script.js file
-      $block['content'] = theme('tp4_support_mobile_social_menu');
-      break;
   }
   return $block;
 }
@@ -255,9 +252,6 @@ function tp4_support_theme() {
         'social_menu' => array(),
       )
     ),
-    'tp4_support_mobile_social_menu' => array(
-      'template' => 'tp4-support-mobile-social-menu',
-    ),
     'tp4_support_featured_campaign' => array(
       'variables' => array(
         'items' => array(),
@@ -284,7 +278,7 @@ function tp4_menu_link__menu_takepart_links(array $variables) {
 	if ($element['#below']) {
 		$sub_menu = drupal_render($element['#below']);
 	}
-	$output = l($element['#title'], url($element['#href'], array_merge($element['#localized_options'], array('absolute' => true, 'https' => true))));
+	$output = l($element['#title'], $element['#href'], array_merge($element['#localized_options'], array('absolute' => true, 'https' => true)));
 
 	return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
@@ -295,6 +289,11 @@ function tp4_menu_link__menu_takepart_links(array $variables) {
  * theme hook.
  */
 function template_preprocess_tp4_support_footer(&$variables) {
+  global $base_url;
+
+  // In the cases where the CSS isn't part of the theme
+  drupal_add_css($base_url.base_path().drupal_get_path('theme', 'tp4').'/css/styles.css');
+
   $variables['footer_menu_links'] = drupal_render($variables['footer_menu']);
   if (arg(0) === 'iframes') {
     $variables['footer_menu_links'] = str_replace('https://', 'http://', $variables['footer_menu_links']);
@@ -314,6 +313,9 @@ function template_preprocess_tp4_support_footer(&$variables) {
 function template_preprocess_tp4_support_slim_nav(&$variables) {
   global $base_url;
   global $user;
+
+  // In the cases where the CSS isn't part of the theme
+  drupal_add_css($base_url.base_path().drupal_get_path('theme', 'tp4').'/css/styles.css');
 
   $image = theme('image', array(
     'path' => drupal_get_path('theme', 'tp4') . '/images/takepart_logo.png',
@@ -647,6 +649,35 @@ function tp4_support_preprocess_block(&$variables) {
   }
 }
 
+/**
+ *  Implements hook_field_widget_form_alter().
+ */
+function tp4_support_field_widget_form_alter(&$element, &$form_state, $context) {
+  //does this for all color_field_rgb type
+  if ($context['field']['type'] == 'color_field_rgb') {
+    $default_value = $element['rgb']['#default_value'];
+
+    //changes the rgb to hex
+    if (stripos($default_value, 'rgb(') !== FALSE || stripos($default_value, 'rgba(') !== FALSE) {
+      //sanitizes the rgb to hex
+      $rgb = str_replace('rgb(', '', $default_value); //address rgb
+      $rgb = str_replace('rgba(', '', $default_value); //addresses rgba
+      $rgb = str_replace(')', '', $rgb);
+      $rgb = explode(',', $rgb);
+      $hex = _tp4_support_rgb_to_hex((int)$rgb[0], (int)$rgb[1], (int)$rgb[2]);
+  
+      //this address rgba as rgb[3] has a value. this is not used currently so setting it to no color
+      if (isset($rgb[3])) {      
+        $element['rgb']['#default_value'] = '';
+      }
+      //else set the hex value from rgb
+      elseif (!empty($hex)) {
+        $element['rgb']['#default_value'] = $hex;
+      }
+    }
+  }
+}
+
 function tp4_support_form_alter(&$form, &$form_state, $form_id){
   if($form['#form_id'] == 'search_api_page_search_form_site_search'){
     $form['keys_2']['#attributes']['placeholder'] = t('Search');
@@ -668,6 +699,20 @@ function tp4_support_form_alter(&$form, &$form_state, $form_id){
     );
     $form['#submit'][] = 'tp4_support_panel_main_feature';
   }
+}
+
+/**
+ *  @function:
+ *    Function is used to convert rgb to hex
+ */
+function _tp4_support_rgb_to_hex($r, $g, $b) {
+  //convert to hex
+  $hex = "#";
+  $hex.= str_pad(dechex($r), 2, "0", STR_PAD_LEFT);
+  $hex.= str_pad(dechex($g), 2, "0", STR_PAD_LEFT);
+  $hex.= str_pad(dechex($b), 2, "0", STR_PAD_LEFT);
+
+  return $hex;
 }
 
 
@@ -926,6 +971,9 @@ function tp4_support_node_reference_autocomplete($entity_type, $bundle, $field_n
   drupal_json_output($matches);
 }
 
+/**
+ *  Implements hook_menu().
+ */
 function tp4_support_menu() {
 	$items['iframes/%'] = array(
 		'type' => MENU_NORMAL_ITEM,
@@ -933,6 +981,19 @@ function tp4_support_menu() {
 		'page arguments' => array(1),
 		'access callback' => TRUE,
 	);
+
+  $items[TP_GENERAL_MENU] = array(
+    'title' => t('Takepart Settings'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp4_support_admin_form'),
+    'file' => 'tp4_support.admin.inc',
+    'file path' => drupal_get_path('module', 'tp4_support') . '/forms',
+    'access arguments' => array('administer site configuration'),
+  );
+  
+  $items[TP_GENERAL_MENU . '/config'] = $items[TP_GENERAL_MENU];
+  $items[TP_GENERAL_MENU . '/config']['type'] = MENU_DEFAULT_LOCAL_TASK;  
+  
 	return $items;
 }
 
@@ -951,4 +1012,60 @@ function tp4_support_iframes($arg) {
 	}
 }
 
+/**
+ * Implements hook_cron().
+ *
+ * @function:
+ *  This function is used to schedule cron for a specific time
+ */
+function tp4_support_cron() {
+  //default variables
+  $schedule_hour = variable_get('tp4_support_action_regen_hour', 'Off');
+  
+  //only run on cron if scheduler is turned on
+  if ($schedule_hour != 'Off') {
+    $time = time();
+    $time_hour_now = date("H", $time);
 
+    //schedules next execution variable
+    $schedule_next_execution = variable_get('tp4_support_action_next_exec', 0);
+    if (empty($schedule_next_execution)) {
+      $schedule_next_execution = 0;
+    }
+
+    //checks if the time is the scheduled time and then sets the next execution time
+    if ($time >= strtotime($schedule_next_execution) && $time_hour_now == $schedule_hour) {
+      //sets next execution time based on hour
+      $days = variable_get('tp4_support_action_regen_day', 1);
+      variable_set('tp4_support_action_next_exec', date("Y-m-d H:00:00", $time + (60 * 60 * 24 * $days)));
+
+      //this allows cron to run the batch
+      _tp4_support_action_batch();
+      $batch = &batch_get();
+      $batch['progressive'] = FALSE; //this is needed to turn off the progressive
+      batch_process('');
+    }
+  }
+}
+
+/**
+ *  @function:
+ *    Defines a new batch operation.
+ *    Batch operation is used to compare API to database.
+ *    Unpublish the action nid
+ */
+function _tp4_support_action_batch() {
+  //defines a new batch op
+  $batch = array(
+    'operations' => array(
+      array('_tp4_support_retrieve_file', array()),
+      array('_tp4_support_action_processor', array()),
+      array('_tp4_support_db_unpublisher', array()),
+    ),
+    'finished' => '_tp4_support_action_finished',
+    'title' => t('Takepart - Unpublish Action Nodes'),
+    'file' => drupal_get_path('module', 'tp4_support') . '/batch/tp4_support_action.batch.inc',
+  );
+
+  batch_set($batch);
+}

@@ -1,8 +1,17 @@
 name = Interstitials
-description = Marketing interstitials.
+description = Participant Media marketing interstitials.
 core = 7.x
 version = 7.x-1.0
 package = Customization
 
 dependencies[] = pm_core
 dependencies[] = context
+dependencies[] = newsletter_campaign
+
+scripts[] = js/interstitial.js
+scripts[] = js/social-follows.js
+
+files[] = pm_interstitial.module
+files[] = pm_interstitial.forms.inc
+files[] = pm_interstitial_newsletter.tpl.php
+files[] = pm_interstitial_social_follows.tpl.php

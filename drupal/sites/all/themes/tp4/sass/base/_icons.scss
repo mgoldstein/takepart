@@ -23,7 +23,7 @@
   &.i-awareness:after { content: '\e104'; }
   &.i-donation:after { content: '\e105'; }
   &.i-story:after { content: '\e106'; }
-  &.i-share:after { content: '\e310'; }
+  &.i-letter:after { content: '\e115'; }
 
   &.i-graph:after { content: '\e107'; }
   &.i-monitor:after { content: '\e108'; }
@@ -33,8 +33,11 @@
   &.i-buzz:after { content: '\e10D'; }
   &.i-concentric-circles:after { content: '\e10E'; }
   &.i-thumbs-up:after { content: '\e10f'; }
-  &.i-badge:after { content: '\e110' }
-  &.i-influence:after { content: '\e111' }
+  &.i-badge:after { content: '\e110'; }
+  &.i-influence:after { content: '\e111'; }
+  &.i-like-heart:after {content: '\e112'; }
+  &.i-share:after { content: '\e113'; }
+  &.i-organization:after { content: '\e114'; }
 
   // Generic UI
   &.i-double-arrow-left:after { content: '\e605\e605'; letter-spacing: -1px; }
@@ -43,11 +46,13 @@
   &.i-double-arrow-down:after { content: '\e604'; }
   &.i-zoom-in:after { content: "\e614"; }
   &.i-zoom-out:after { content: "\e615"; }
-  
+  &.i-search:after {content: '\e616'; }
+
   &.i-touch-menu:after { content: "\e609"; }
   &.i-remove:after { content: "\e610"; }
   &.i-minus:after { content: "\e611"; }
   &.i-plus:after, &.i-add:after { content: "\e612"; }
+  &.i-close-x:after { content: '\e617';   }
   &.i-ok:after { content: "\e613"; }
 
 
@@ -61,6 +66,10 @@
   &.i-twitter:after { content: '\e302'; }
   &.i-google_plusone_share:after { content: '\e303'; }
   &.i-email:after { content: '\e305'; }
+
+  // From Gizmo
+  &.i-poto-camera:after  { content: '\e301'; }
+  &.i-video-camera:after { content: '\e302'; }
 }
 
 .i-checkmark:after  { content: '\2713'; }
@@ -70,7 +79,7 @@
 .i-triangle-left:after { content: '\25C0'; }
 .i-triangle-right:after{ content: '\25B6'; }
 
-.tp-social-link {
+.tp-social-link, .tp-follow-link {
   &:before {
     font-family: takepart;
   }
@@ -87,7 +96,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  // Social Sharing
+ // Social Sharing
   &.tp-social-Pinterest:before { content: '\e300'; }
   &.tp-social-Facebook:before { content: '\e301' }
   &.tp-social-Twitter:before { content: '\e302'; }
@@ -99,4 +108,13 @@
   &.tp-social-Vine:before { content: '\e309'; }
   &.tp-social-Instagram:before { content: '\e306'; }
   &.tp-social-Youtube:before { content: '\e307'; }
+  &.tp-social-Reddit:before { content: '\e312'; }
+}
+
+.tpi {
+  display: inline-block;
+  font: normal normal normal 20px/1 takepart;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }

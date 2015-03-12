@@ -34,6 +34,7 @@ class ddTaxonomy extends ddDefaultPage {
     $data['page']['pageInfo']['siteSection'] = $site_section;
     $data['page']['pageInfo']['pageUrl'] = $url;
     $data['page']['pageInfo']['pageUrlAlias'] = $request_path;
+    $data['page']['pageInfo']['template'] = 'topic landing page';
 
     /* Taxonomy specific data */
     $data['page']['pageInfo']['taxonomy']['termName'] = $term->name;

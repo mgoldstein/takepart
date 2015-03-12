@@ -136,23 +136,29 @@
       &:after {
         display: inline;
         color: $mint;
-        font-family: "SSGizmo";
-        font-size: 18px;
+        font-family: "takepart";
+        font-size: 13px;
         line-height: 1;
-        vertical-align: top;
+        vertical-align: middle;
       }
     }
     .pager-first:before {
-        content: '\25C5 ';
+      letter-spacing: -.9ex;
+      margin-right: 1ex;
+      content: '\e605\e605';
     }
     .pager-previous:before {
-      content: "\23EA ";
+      margin-right: 1ex;
+      content: "\e605 ";
     }
     .pager-next:after {
-        content: '\25BB';
+      margin-left: 1ex;
+      content: '\e606';
     }
     .pager-last:after {
-      content: '\23E9';
+      margin-left: 1ex;
+      letter-spacing: -.9ex;
+      content: '\e606\e606';
     }
   }
 } // .view-topic-listing

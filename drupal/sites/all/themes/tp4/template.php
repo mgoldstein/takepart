@@ -124,8 +124,7 @@ function tp4_html_head_alter(&$head_elements) {
  */
 function _tp4_campaign_megamenu_attach_fragments(&$link) {
   if (isset($link['#localized_options']['attributes']['rel'])) {
-    $link['#localized_options']['fragment']
-      = $link['#localized_options']['attributes']['rel'];
+    $link['#localized_options']['fragment'] = $link['#localized_options']['attributes']['rel'];
     unset($link['#localized_options']['attributes']['rel']);
   }
 }
@@ -1911,6 +1910,10 @@ function tp4_menu_link(array $variables) {
     if ($variables['element']['#theme'] == 'menu_link__menu_megamenu') {
         $variables['element']['#attributes']['data-mlid'][] = $variables['element']['#original_link']['mlid'];
     }
+
+	// Make urls absolute
+	$variables['element']['#localized_options']['absolute'] = true;
+	
     return theme_menu_link($variables);
 }
 

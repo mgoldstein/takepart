@@ -17,12 +17,12 @@
       <date class="publish-date" datetime="<?php print date('c', $node->created); ?>"><?php print date('F d, Y',$node->created) ?></date>
       <span class="byline"><?php print $gallery_authors; ?></span>
     </div>
-    <aside id="gallery-content-social" class="social">
-       <div class="tp-sharing-container">
-         <h3 class="headline"><?=t('Share Photo') ?></h3>
-         <div class="tp-social" id="gallery-cover-share"></div>
-        </div>
-      <div class="tap-influence-overlay"></div>
+    <aside class="social social-horizontal">
+      <?php
+      $social_elements = array('action', 'share', 'subscribe', 'facebook', 'overlay');
+      $options = array('overlay' => TRUE);
+      print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
+      ?>
     </aside>
   </header>
 
@@ -65,9 +65,9 @@
       </div>
     </div>
     <nav id="gallery-nav" class="gallery-nav">
-      <span id="previous-slide" class="gallery-nav-link previous" title="Previous Slide"></span>
+      <span id="previous-slide" class="gallery-nav-link previous icon i-arrow-left" title="Previous Slide"></span>
       <span class="pagination"><span id="current-slide">0</span> of <span id="total-slides">0</span></span>
-      <span id="next-slide" class="gallery-nav-link next" title="Next Slide"></span>
+      <span id="next-slide" class="gallery-nav-link next icon i-arrow-right" title="Next Slide"></span>
       <?php if($next_gallery) : ?><a href="<?php print $next_gallery['href']; ?>" id="next-gallery-nav-link" class="gallery-nav-link next-gallery hidden" title="Next Slide"></a><?php endif; ?>
     </nav>
   </div>

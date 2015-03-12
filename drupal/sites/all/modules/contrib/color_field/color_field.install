@@ -14,7 +14,7 @@
  */
 function color_field_field_schema($field) {
   $columns = array(
-    'rgb' => array('type' => 'varchar', 'length' => 30, 'not null' => FALSE),
+    'rgb' => array('type' => 'varchar', 'length' => 7, 'not null' => FALSE),
   );
   $indexes = array(
     'rgb' => array('rgb'),

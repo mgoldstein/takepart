@@ -1,8 +1,0 @@
-name = TakePart Sitemap Customization
-description = Custom configuration for TakePart's XML sitemap implementation
-package = TakePart
-version = 7.x-1.00
-core = 7.x
-dependencies[] = xmlsitemap
-
-files[] = takepart_sitemap.module

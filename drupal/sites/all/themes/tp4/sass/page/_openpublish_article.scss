@@ -143,160 +143,160 @@
     .comments-link a { @include tp-social-sprite(comment); }
     .trigger a { @include tp-social-sprite(more); }
 }
-#article-social {
-
-    @media (max-width:979px) {
-        border-top: 1px solid $gray-line;
-        border-bottom: 1px solid $gray-line;
-        margin-bottom: 1.5em;
-        height: 50px;
-        max-width: 427px;
-        // social embeds needs a clearfix
-        // this is a modified "micro clearfix"
-        // @see http://nicolasgallagher.com/micro-clearfix-hack/
-        &:after {
-            content: " ";
-            display: table;
-            clear: both;
-        }
-    }
-
-    @media (max-width: 767px) {
-        margin-bottom: 1em;
-        .tp-social {
-            #article-comments-link {
-                display: none;
-            }
-        }
-    }
-
-    #article-more-shares {
-        .tp-social-link {
-            padding-left: 20px;
-            height: 16px;
-            @each $service in pinterest tumblr_link gmail hotmail yahoomail aolmail linkedin digg stumbleupon reddit {
-                &.tp-social-#{$service} {
-                    @include tp-social-more-sprite(#{$service});
-                }
-            }
-
-            @include breakpoint($breakpoint-mobile) {
-                &.tp-social-reddit {
-                    display: block;
-                }
-            }
-
-            @include breakpoint($breakpoint-tablet) {
-                &.tp-social-reddit {
-                    display: none;
-                }
-            }
-
-            @include breakpoint($breakpoint-desktop) {
-                &.tp-social-reddit {
-                    display: none;
-                }
-            }
-        }
-    }
-
-    // Override tp-sticky styles on sizes below $breakpoint-desktop
-    // "mobile last" design
-    @media (max-width: 979px) {
-        .takepart-take-action,
-        .comments-link,
-        #article-share,
-        #article-share .tp-social-link,
-        .comments-link a,
-        .trigger a {
-            float: left;
-        }
-        #article-share {
-            width: auto;
-        }
-    }
-    @media (max-width: 767px) {
-        .comments-link {
-            display: none;
-        }
-
-        #article-more-shares {
-            left: -120px;   
-        }
-        #article-share {
-            width: 150px;
-        }
-    }
-
-    .tp-social-headline {
-        font: normal 14px/100% $secondary-sans-font;
-        color: $dark-gray;
-        text-transform: uppercase;
-        text-align: center;
-        letter-spacing: -1px;
-        margin: 12px 7px 0 0;
-        float: left;
-        width: 38px;
-        &.share-headline {
-            margin: 18px 0 0 19px;
-        }
-        @include breakpoint($breakpoint-tablet) {
-            width: auto;
-            margin-top: 18px;
-            &.share-headline {
-                margin: 18px 0 0 30px;
-            }
-        }
-        @include breakpoint($breakpoint-desktop) {
-            width: 38px;
-            margin: 0 0 .1em;
-            width: auto;
-            float: none;
-            &.share-headline {
-                margin: 0 0 .1em;
-            }
-        }
-    }
-    .takepart-take-action {
-        height: 40px;
-        width: 40px;
-        margin: 2px 0 0;
-        @include breakpoint($breakpoint-desktop) {
-            margin: 0 0 1em;
-        }
-    }
-    .comments-link,
-    .tp-social {
-        margin-top: 12px;
-        @include breakpoint($breakpoint-desktop) {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-    }
-    #article-share .tp-social-link,
-    .comments-link a,
-    .trigger a {
-        display: block;
-        overflow: hidden;
-        width: 0;
-        height: 0;
-        padding: 12px;
-        text-indent: 24px;
-        background-color: transparent;
-        margin: 0 0 7px 6px;
-        @include breakpoint($breakpoint-mobile) {
-            &.tp-social-reddit {
-                display: none;
-            }
-        }
-        @include breakpoint($breakpoint-tablet) {
-            margin-left: 9px;
-        }
-        @include breakpoint($breakpoint-desktop) {
-            margin: 0 auto 5px;
-        }
-    }
-}
+//#article-social {
+//
+//    @media (max-width:979px) {
+//        border-top: 1px solid $gray-line;
+//        border-bottom: 1px solid $gray-line;
+//        margin-bottom: 1.5em;
+//        height: 50px;
+//        max-width: 427px;
+//        // social embeds needs a clearfix
+//        // this is a modified "micro clearfix"
+//        // @see http://nicolasgallagher.com/micro-clearfix-hack/
+//        &:after {
+//            content: " ";
+//            display: table;
+//            clear: both;
+//        }
+//    }
+//
+//    @media (max-width: 767px) {
+//        margin-bottom: 1em;
+//        .tp-social {
+//            #article-comments-link {
+//                display: none;
+//            }
+//        }
+//    }
+//
+//    #article-more-shares {
+//        .tp-social-link {
+//            padding-left: 20px;
+//            height: 16px;
+//            @each $service in pinterest tumblr_link gmail hotmail yahoomail aolmail linkedin digg stumbleupon reddit {
+//                &.tp-social-#{$service} {
+//                    @include tp-social-more-sprite(#{$service});
+//                }
+//            }
+//
+//            @include breakpoint($breakpoint-mobile) {
+//                &.tp-social-reddit {
+//                    display: block;
+//                }
+//            }
+//
+//            @include breakpoint($breakpoint-tablet) {
+//                &.tp-social-reddit {
+//                    display: none;
+//                }
+//            }
+//
+//            @include breakpoint($breakpoint-desktop) {
+//                &.tp-social-reddit {
+//                    display: none;
+//                }
+//            }
+//        }
+//    }
+//
+//    // Override tp-sticky styles on sizes below $breakpoint-desktop
+//    // "mobile last" design
+//    @media (max-width: 979px) {
+//        .takepart-take-action,
+//        .comments-link,
+//        #article-share,
+//        #article-share .tp-social-link,
+//        .comments-link a,
+//        .trigger a {
+//            float: left;
+//        }
+//        #article-share {
+//            width: auto;
+//        }
+//    }
+//    @media (max-width: 767px) {
+//        .comments-link {
+//            display: none;
+//        }
+//
+//        #article-more-shares {
+//            left: -120px;
+//        }
+//        #article-share {
+//            width: 150px;
+//        }
+//    }
+//
+//    .tp-social-headline {
+//        font: normal 14px/100% $secondary-sans-font;
+//        color: $dark-gray;
+//        text-transform: uppercase;
+//        text-align: center;
+//        letter-spacing: -1px;
+//        margin: 12px 7px 0 0;
+//        float: left;
+//        width: 38px;
+//        &.share-headline {
+//            margin: 18px 0 0 19px;
+//        }
+//        @include breakpoint($breakpoint-tablet) {
+//            width: auto;
+//            margin-top: 18px;
+//            &.share-headline {
+//                margin: 18px 0 0 30px;
+//            }
+//        }
+//        @include breakpoint($breakpoint-desktop) {
+//            width: 38px;
+//            margin: 0 0 .1em;
+//            width: auto;
+//            float: none;
+//            &.share-headline {
+//                margin: 0 0 .1em;
+//            }
+//        }
+//    }
+//    .takepart-take-action {
+//        height: 40px;
+//        width: 40px;
+//        margin: 2px 0 0;
+//        @include breakpoint($breakpoint-desktop) {
+//            margin: 0 0 1em;
+//        }
+//    }
+//    .comments-link,
+//    .tp-social {
+//        margin-top: 12px;
+//        @include breakpoint($breakpoint-desktop) {
+//            margin-top: 0;
+//            margin-bottom: 0;
+//        }
+//    }
+//    #article-share .tp-social-link,
+//    .comments-link a,
+//    .trigger a {
+//        display: block;
+//        overflow: hidden;
+//        width: 0;
+//        height: 0;
+//        padding: 12px;
+//        text-indent: 24px;
+//        background-color: transparent;
+//        margin: 0 0 7px 6px;
+//        @include breakpoint($breakpoint-mobile) {
+//            &.tp-social-reddit {
+//                display: none;
+//            }
+//        }
+//        @include breakpoint($breakpoint-tablet) {
+//            margin-left: 9px;
+//        }
+//        @include breakpoint($breakpoint-desktop) {
+//            margin: 0 auto 5px;
+//        }
+//    }
+//}
 #article-more-shares { // styling
   background: #fff;
   border-radius: 5px;
@@ -321,88 +321,6 @@
      background-color: white;
   }
 }
-
-aside#article-social-mobile-bottom {
-    display:none;
-
-    @media (max-width: 767px) {
-        display:table;
-        margin: 4px 0 8px 0;
-        .takepart-take-action,
-        #article-share-mobile-bottom,
-        #article-share-mobile-bottom .tp-social-link {
-            float: left;
-        }
-        #article-share-mobile-bottom {
-            width: auto;
-            padding-top: 12px;
-        }
-    }
-
-    // Override tp-sticky styles on sizes below $breakpoint-desktop
-    #article-tab-mobile-bottom {
-        float: left;
-    }
-    .tp-social-headline {
-        font: normal 14px/100% $secondary-sans-font;
-        color: $dark-gray;
-        text-transform: uppercase;
-        text-align: center;
-        letter-spacing: -1px;
-        margin: 10px 5px 0 0;
-        float: left;
-        width: 38px;
-        &.share-headline {
-            margin: 18px 0 0 1.2em;
-        }
-        @include breakpoint($breakpoint-tablet) {
-            width: auto;
-            margin-top: 18px;
-            &.share-headline {
-                margin: 18px 0 0 30px;
-            }
-        }
-        @include breakpoint($breakpoint-desktop) {
-            width: 38px;
-            margin: 0 0 .1em;
-            width: auto;
-            float: none;
-            &.share-headline {
-                margin: 0 0 .1em;
-            }
-        }
-    }
-    .takepart-take-action {
-        height: 40px;
-        width: 40px;
-        margin: 2px 0 0;
-        @include breakpoint($breakpoint-desktop) {
-            margin: 0 0 1em;
-        }
-    }
-
-    #article-share-mobile-bottom .tp-social-link,
-    .comments-link a,
-    .trigger a {
-        display: block;
-        overflow: hidden;
-        width: 0;
-        height: 0;
-        padding: 12px;
-        text-indent: 24px;
-        background-color: transparent;
-        margin: 0 0 7px 6px;
-        &.tp-social-email {
-            display: none;
-        }
-        @include breakpoint($breakpoint-tablet) {
-            margin-left: 9px;
-        }
-        @include breakpoint($breakpoint-desktop) {
-            margin: 0 auto 5px;
-        }
-    }
-} // #article-social-mobile-bottom
 //
 // HEADER STYLES
 // common styles
@@ -1546,7 +1464,7 @@ aside#article-social-mobile-bottom {
             }
             &:before,
                 &:after {
-                font-family: "SSGizmo";
+                font-family: "takepart";
                 color: $mint;
                 vertical-align: bottom;
                 display: inline-block;
@@ -1556,13 +1474,15 @@ aside#article-social-mobile-bottom {
     .more-prev{
         float: left;
         a:before {
-            content: "\23EA  ";
+            content: "\e605\e605  ";
+            letter-spacing: -8px;
         }
     }
     .more-next{
         float: right;
         a:after {
-            content: "  \23E9";
+            content: "  \e606\e606";
+            letter-spacing: -8px;
         }
     }
     > a:hover {

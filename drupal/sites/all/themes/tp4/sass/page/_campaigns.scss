@@ -19,6 +19,8 @@ body.campaign-display
     .header-wrapper{
         padding: 0;
         padding-top: 1em !important;
+        max-width: 100%;
+        z-index: 99;
     }
     header#header{
         max-width: 100%;
@@ -501,6 +503,7 @@ body.campaign-display{
             overflow: hidden;
             text-indent: 30px;
             margin-left: 8px;
+            padding: 0;
             &:first-of-type {
                 margin-left: 0;
             }
@@ -669,7 +672,7 @@ body.campaign-display{
                 position: absolute;
                 left: 0; // right side overrides below
                 top: 100px;
-                z-index: 10;
+                z-index: 3;
                 text-align: center;
                 display: block;
                 color: #000;
@@ -679,8 +682,10 @@ body.campaign-display{
                 .arrow-inner{
                     &:after{
                         display: block;
-                        font-family: "SSGizmo";
-                        content: '\25C5';
+                        font-family: "takepart";
+                        content: '\e605';
+                        font-size: .7em;
+                        width: 72px;
                         background-color: rgba(255,255,255,0.2);
                         height: 1em;
                         line-height: 1.2;
@@ -692,7 +697,7 @@ body.campaign-display{
                     right: 0;
                     .arrow-inner{
                         &:after{
-                            content: '\25BB';
+                            content: '\e606';
                         }
                     }
                     &:hover{
@@ -921,6 +926,9 @@ body.campaign-display{
             @include zen-grid-item(12, 1);
             @include zen-clear();
             padding-bottom: 20px;
+        }
+        .right {
+	        margin-top:21px;
         }
 
         @include breakpoint($breakpoint-tablet) {
@@ -1273,6 +1281,9 @@ body.campaign-display{
         p{
             margin-bottom: -5px;
             line-height: normal;
+        }
+        *{
+	        text-align: left;
         }
     }
 

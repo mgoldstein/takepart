@@ -5,12 +5,12 @@
  */
 ?>
 <div class="gallery-cover-slide">
-  <aside id="gallery-cover-social" class="social">
-    <div class="tp-sharing-container">
-       <h3 class="headline"><?=t('Share Gallery') ?></h3>
-       <div class="tp-social" id="gallery-cover-share"></div>
-    </div>
-    <div class="tap-influence-overlay"></div>
+  <aside class="social social-horizontal">
+    <?php
+    $social_elements = array('action', 'share', 'subscribe', 'facebook', 'overlay');
+    $options = array('overlay' => TRUE);
+    print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
+    ?>
   </aside>
   <div id="gallery-cover">
     <a id="gallery-enter-link" href="#enter-gallery">

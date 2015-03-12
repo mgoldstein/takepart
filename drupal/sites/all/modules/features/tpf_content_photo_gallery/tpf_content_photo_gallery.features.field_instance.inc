@@ -954,106 +954,6 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_html_title'
-  $field_instances['node-openpublish_photo_gallery-field_html_title'] = array(
-    'bundle' => 'openpublish_photo_gallery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_html_title',
-    'label' => 'HTML title Tag',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
   // Exported field_instance: 'node-openpublish_photo_gallery-field_inline_replacements'
   $field_instances['node-openpublish_photo_gallery-field_inline_replacements'] = array(
     'bundle' => 'openpublish_photo_gallery',
@@ -1245,6 +1145,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'settings' => array(
       'allowed_blocks' => array(
         'Boxes for Box' => 0,
+        'Boxes for Screaming Headline' => 0,
         'Boxes for View Box' => 0,
         'addthis' => 0,
         'boxes' => 0,
@@ -3085,7 +2986,6 @@ function tpf_content_photo_gallery_field_default_field_instances() {
   t('Display Tag');
   t('Free Tags');
   t('Gallery Images');
-  t('HTML title Tag');
   t('Inline Replacements');
   t('Main Image');
   t('Multi Page Campaign');

@@ -1,0 +1,65 @@
+/* Helpers */
+@import "../../../../themes/tp4/sass/helpers/variables";
+
+body {
+	background: #fff;
+	border-top: none !important;
+	border-bottom: none !important;
+	font-size: 14px;
+}
+
+#site-footer,
+#site-header {
+	display: none;
+}
+
+header {
+	img {
+		width: 100%;
+		max-width: 400px;
+	}
+}
+
+#page-wrapper.campaign {
+	max-width: 400px;
+	height: 475px;
+}
+
+#page {
+	color: #000;
+	* {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.interstitial {
+		float: left;
+		vertical-align: top;
+		width: 100%;
+		max-width: 400px;
+	}
+	.content {
+		padding: 0 40px 20px;
+	}
+	.headline {
+		padding: 20px 40px 0;
+		margin-bottom: 5px;
+		font-size: 26px;
+		font-family: $primary-serif-font;
+	}
+	 .body p {
+		margin-bottom: 5px;
+	}
+	p#dont {
+		font-family: $times;
+		font-size: 12px;
+		clear:both;
+		margin: 0.5em 0;
+	}
+}
+
+#page.main {
+	.content a {
+		color: $mint;
+	}
+}

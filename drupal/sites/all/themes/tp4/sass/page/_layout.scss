@@ -66,6 +66,24 @@ body {
   width: auto;
   height: auto;
   padding: 0;
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.footer-wrapper{
+  max-width: 100%;
+}
+.footer-wrapper, .suffix-wrapper {
+  z-index: 1;
+}
+.main-wrapper {
+  z-index: 2;
+}
+.preface-wrapper{
+  z-index: 3;
+}
+.header-wrapper{
+  z-index: 4;
 }
 .header-wrapper, .suffix-wrapper, .preface-wrapper{
   padding: 0 10px;
@@ -105,10 +123,6 @@ body {
   margin: 0 auto;
   padding: 0;
   position: relative;
-  z-index: 2;
-}
-#header{
-  z-index: 3;
 }
 #preface {
   min-height: 1em; // TODO figure out a better way to do this
@@ -279,14 +293,14 @@ body {
       text-align: center;
       span {
           display: block;
-          content: '\2421';
+          content: '\e617';
           background-color: black;
           color: white;
-          font-size: 12px;
+          font-size: 9px;
           border-radius: 50%;
           -webkit-border-radius: 50%;
           -moz-border-radius: 50%;
-          font-family: SSGizmo;
+          font-family: "takepart";
           padding: 4px;
           width: 18px;
           height: 18px;

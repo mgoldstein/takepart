@@ -54,13 +54,13 @@ function tp_custom_nav_preprocess_page(&$variables) {
   global $theme;
   
   $tp_slim_nav_status = variable_get('tp_slim_nav_status', 1);
-  
+
   //only override the menu if this content has the new field
   if ($tp_slim_nav_status && isset($node->field_brand_category) && $theme == 'tp4') {
     $social_markup = '';
     $slim_nav = field_get_items('node', $node, 'field_brand_category');
     $header = $variables['page']['header'];
-    
+
     //overrides for campaign level
     _tp_custom_nav_campaign_level_handler($node, $slim_nav);
     
@@ -93,10 +93,10 @@ function tp_custom_nav_preprocess_page(&$variables) {
         $menu = $slim_nav_menu[0]['value'];
       }
       
-      //calls the slim nav menu to process into the left draw
+      //calls the slim nav menu to process into the left drawer
       $mobile_menu = menu_tree_all_data($menu);
       $mobile_menu_processed = _tp_custom_nav_menu_parser($mobile_menu);
-      
+
       //unsets all item in the original menu
       foreach ($variables['page']['left_drawer']['menu_menu-megamenu'] as $key => $value) {
         if (is_numeric($key)) {
@@ -107,11 +107,11 @@ function tp_custom_nav_preprocess_page(&$variables) {
       //combines the new menu with current settings
       $variables['page']['left_drawer']['menu_menu-megamenu'] = $mobile_menu_processed + $variables['page']['left_drawer']['menu_menu-megamenu'];
 
-      //unsets the slim nav if one exist
+      //unsets the slim nav if one exists
       unset($variables['page']['header']['tp4_support_tp4_slim_nav']);
       unset($variables['page']['header']['tp4_support_tp4_fat_header']);
       
-      //block load and render
+      //load and render block
       $block = block_load('tp_custom_nav', 'tp_custom_nav_slim');
       $block_content = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
       
@@ -123,7 +123,7 @@ function tp_custom_nav_preprocess_page(&$variables) {
         ),
         '#weight' => -10
       );
-      
+
       //pushes the new array to the top of the stack
       array_unshift($variables['page']['header'], $custom_block);
       
@@ -383,7 +383,7 @@ function _tp_custom_nav_slim_block_gen() {
 
 /**
  *  @function:
- *    THis function is a modified clone of the megamenu and slim nav
+ *    This function is a modified clone of the megamenu and slim nav
  *
  *    @param:
  *      $menu = the menu to pull in and process

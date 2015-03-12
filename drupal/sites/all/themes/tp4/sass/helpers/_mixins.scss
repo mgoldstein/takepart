@@ -114,9 +114,9 @@
 }
 
 @mixin tp-icon {
-  font-family: "SSGizmo";
-  font-size: 1.25em;
-  line-height: 0.8;
+  font-family: "takepart";
+  font-size: 1.1em;
+  line-height: 1.1em;
   vertical-align: text-bottom;
 }
 
@@ -124,13 +124,13 @@
   &:after {
     display: inline;
     @include tp-icon();
-    content: " \1F4F7";
+    content: " \e601";
   }
 }
 @mixin icon-video {
   &:after {
     @include tp-icon();
-    content: " \1F4F9";
+    content: " \e602";
   }
 }
 
@@ -138,8 +138,11 @@
     position: relative;
     padding-left: 1.071428571em; // 15px/14px
     &:before {
-      content: "\23E9 ";
-      font-family: "SSGizmo";
+      content: "\e606\e606 ";
+      font-family: "takepart";
+      letter-spacing: -.9ex;
+      font-size: .7em;
+      margin-top: -1px;
       color: $mint;
       vertical-align: bottom;
       position: absolute;
@@ -205,12 +208,15 @@
     padding-left: 20px;
     color: #000;
     &:before{
-      font-family: "SSGizmo";
+      content: "\e606\e606 ";
+      font-family: "takepart";
+      letter-spacing: -.9ex;
+      font-size: .6em;
+      margin-right: 1em;
       color: $blue;
-      content: '\23E9';
-      position: absolute;
+      @include inline-block;
+      position: relative;
       top: -1px;
-      left: 0;
     }
   }
   &:hover{

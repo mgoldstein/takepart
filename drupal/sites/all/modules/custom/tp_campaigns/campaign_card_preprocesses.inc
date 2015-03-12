@@ -40,6 +40,11 @@ function tp_campaigns_card_content_tap_widget($variables){
 	if($image = field_get_items('node', $variables['node'], 'field_campaign_media_photo')){
 		$image = field_view_field('node', $variables['node'], 'field_campaign_media_photo', array('type' => 'full', 'label' => 'hidden'));
 		$image = drupal_render($image);
+
+		/* Wrap Image Field in link */
+		if($link = field_get_items('node', $variables['node'], 'field_campaign_media_photo_url')){
+			$image = l($image, $link[0]['url'], array_merge( $link[0], array('html' => true)) );
+		}
 	}
 
 	/* Render Body Field */

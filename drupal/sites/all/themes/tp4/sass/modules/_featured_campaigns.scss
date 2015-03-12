@@ -45,21 +45,16 @@
   .featured-campaigns-nav {
     display: block;
     position: absolute;
-    top: 75px;
+    top: 60px;
     right: 100%;
-    font-size: 3.5em;
-    font-family: "SSGizmo";
+    font-size: 2.5em;
 
     &:after {
-      content: '\25C5';
       display: inline;
     }
     &.next {
       right: auto;
       left: 100%;  
-      &:after {
-        content: '\25BB';
-      }
     }
 
     &:hover {
@@ -161,9 +156,11 @@
     }
 
     &:before {
-      content: '\23e9';
-      font-family: 'SSGizmo';
+      content: '\e606\e606';
+      font-family: 'takepart';
       color: $mint;
+      letter-spacing: -.9ex;
+      font-size: .7em;
       display: block;
       position: absolute;
       top: 0;

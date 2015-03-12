@@ -1496,11 +1496,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign-field_campaign_menu_bg_color'
   $field_instances['node-campaign-field_campaign_menu_bg_color'] = array(
     'bundle' => 'campaign',
-    'default_value' => array(
-      0 => array(
-        'rgb' => 'rgba(0, 0, 0, 0)',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'The color of the Menu Bar.',
     'display' => array(
@@ -5176,11 +5172,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign_card_branding-field_campaign_bg_color'
   $field_instances['node-campaign_card_branding-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_branding',
-    'default_value' => array(
-      0 => array(
-        'rgb' => 'rgb(255, 255, 255)',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -7395,11 +7387,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign_card_iframe-field_campaign_bg_color'
   $field_instances['node-campaign_card_iframe-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_iframe',
-    'default_value' => array(
-      0 => array(
-        'rgb' => '#ffffff',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -8984,11 +8972,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign_card_media-field_campaign_bg_color'
   $field_instances['node-campaign_card_media-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_media',
-    'default_value' => array(
-      0 => array(
-        'rgb' => '#ffffff',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -12396,11 +12380,7 @@ function tpf_content_campaigns_field_default_field_instances() {
   // Exported field_instance: 'node-campaign_card_news-field_campaign_bg_color'
   $field_instances['node-campaign_card_news-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_news',
-    'default_value' => array(
-      0 => array(
-        'rgb' => '#ffffff',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -14078,11 +14058,7 @@ Note: If you manually reference more items than selected here, the number refere
   // Exported field_instance: 'node-campaign_card_social-field_campaign_bg_color'
   $field_instances['node-campaign_card_social-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_social',
-    'default_value' => array(
-      0 => array(
-        'rgb' => '#ffffff',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -15562,7 +15538,7 @@ Note: If you manually reference more items than selected here, the number refere
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -15684,7 +15660,7 @@ Note: If you manually reference more items than selected here, the number refere
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 11,
+      'weight' => 15,
     ),
   );
 
@@ -15771,7 +15747,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'color_field_spectrum_widget',
-      'weight' => 8,
+      'weight' => 12,
     ),
   );
 
@@ -15863,7 +15839,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 14,
+      'weight' => 18,
     ),
   );
 
@@ -15955,7 +15931,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 17,
     ),
   );
 
@@ -16046,7 +16022,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 9,
+      'weight' => 13,
     ),
   );
 
@@ -16137,7 +16113,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 12,
+      'weight' => 16,
     ),
   );
 
@@ -16697,6 +16673,111 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_card_tap_widget-field_campaign_media_photo_url'
+  $field_instances['node-campaign_card_tap_widget-field_campaign_media_photo_url'] = array(
+    'bundle' => 'campaign_card_tap_widget',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Clicking on the photo will take the user to this url.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_plain',
+        'weight' => 17,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'vidpop_map' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_media_photo_url',
+    'label' => 'Widget Photo Link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'user',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_card_tap_widget-field_campaign_min_height'
   $field_instances['node-campaign_card_tap_widget-field_campaign_min_height'] = array(
     'bundle' => 'campaign_card_tap_widget',
@@ -16789,7 +16870,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 11,
+      'weight' => 19,
     ),
   );
 
@@ -16881,7 +16962,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 20,
     ),
   );
 
@@ -19062,11 +19143,7 @@ Note: If you manually reference more items than selected here, the number refere
   // Exported field_instance: 'node-campaign_card_twitter-field_campaign_bg_color'
   $field_instances['node-campaign_card_twitter-field_campaign_bg_color'] = array(
     'bundle' => 'campaign_card_twitter',
-    'default_value' => array(
-      0 => array(
-        'rgb' => 'rgb(255, 255, 255)',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -22947,6 +23024,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Campaign Tray Title');
   t('Card Title');
   t('Check if you are creating a slim card text');
+  t('Clicking on the photo will take the user to this url.');
   t('Column Count');
   t('Content');
   t('Create list items to go in the multi-grid.');
@@ -23040,6 +23118,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('What campaign does this page belong to?');
   t('Which side should the media content appear on (photo/video)?');
   t('Widget Photo');
+  t('Widget Photo Link');
   t('Widget Side');
   t('Would you like to have the widget initially expanded or hidden (small)?');
   t('You can put anything in here like links, text, and images using WYSIWYG. ');

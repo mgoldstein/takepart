@@ -1,3 +1,4 @@
+/*
 (function($, window, undefined) {
 
     takepart.analytics.skip_addthis = false;
@@ -495,7 +496,6 @@
         // -----------------------------------
         // Playlists ------------------------
         // -----------------------------------
-        
         'playlist-play': function(options) {
           var s=s_gi(Drupal.settings.omniture.s_account);
           s.linkTrackVars='eVar25,eVar32,eVar65,eVar69';
@@ -525,50 +525,10 @@
 
         .delegate('.node-type-openpublish-article #block-bean-of-the-day a[href]', 'click', function(event) {
             takepart.analytics.track('article_more_on_takepart', {name: 'Article - right rail - more on tp', target: this});
-            // return false;
         })
         .delegate('.panel-takepart-homepage .panel-tpl-secondary-featured a[href]', 'click', function(event) {
             takepart.analytics.track('homepage_secondary_featured', {name: 'Home - tpl featured stories', target: this});
-            // return false;
         });
-
-    /* // Track clicks to addthis iframes
-    var hoverframe = null;
-    var tracked = [];
-    window.optimizely = window.optimizely || [];
-
-    var trackshare = function(target) {
-        var $target = $(target);
-        var title;
-        if ( target.tagName != 'A' ) {
-            $target = $target.closest('a');
-        }
-
-        title = $target.attr('title');
-
-        if ( typeof tracked[title] != 'undefined' ) return true;
-
-        tracked[title] = true;
-
-        takepart.analytics.track('generic_addthis', title);
-    };
-
-    $('body')
-        .delegate('.addthis_toolbox iframe, .addThis iframe', 'mouseover', function() {
-            hoverframe = this;
-        })
-        .delegate('.addthis_toolbox iframe, .addThis iframe', 'mouseout', function() {
-            hoverframe = null;
-        })
-        //.delegate('.takepart_addthis_leftpanel a', 'click', function() {
-        //    trackshare(this);
-        //})
-        ;
-
-    $(window).bind('blur', function() {
-        if ( hoverframe ) trackshare(hoverframe);
-    });*/
-
     });
-
 })(jQuery, window);
+*/

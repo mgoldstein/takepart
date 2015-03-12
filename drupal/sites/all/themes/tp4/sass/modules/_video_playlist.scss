@@ -58,11 +58,19 @@ h2.playlist-title{
   margin-top: 0 !important;
   text-transform: lowercase;
 }
+
+body .bx-wrapper .bx-viewport ul.video-playlist {
+  margin-top: 0;
+}
+
+.playlist-wrapper .playlist .current-video .video-description .description-item.active h3.video-title,
 h3.video-title{
   margin-top: 12px;
   margin-bottom: 10px;
   font-family: $primary-sans-font;
   font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
   line-height: 1.25em; /* Per Sasoon's request */
   line-spacing: 20px;
   @include breakpoint($breakpoint-tablet) {
@@ -212,10 +220,14 @@ h3.video-title{
     &.active .image-wrapper .overlay {
       opacity: 1;
     }
-    .image-wrapper .overlay .play-me,
-    &.active .image-wrapper .overlay .now-playing{
+    .image-wrapper .overlay .play-me{
       top: 50%;
       margin-top: -30px;
+      opacity: 1;
+    }
+    &.active .image-wrapper .overlay .now-playing{
+      top: 50%;
+      margin-top: -12px;
       opacity: 1;
     }
     &.active .image-wrapper .overlay .play-me{

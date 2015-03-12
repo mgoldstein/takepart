@@ -12,7 +12,6 @@
         var FF = !(window.mozInnerScreenX == null);
         var MAC = (navigator.platform.indexOf('Mac')>=0);
         var win = (navigator.platform.indexOf('Win') >= 0);
-
         var user_agent = window.navigator.userAgent;
         var old_ie = user_agent.indexOf('MSIE '); //ie10 and lower
         var new_ie = user_agent.indexOf('Trident/'); //ie11
@@ -21,6 +20,9 @@
         if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
           settings['primary'] = 'flash';
         }
+
+        //adjusts the playlist quality on load to handle caching
+        settings = window.playlist_quality(settings);
 
         //moved code from pm-jwplayer over to new player.js
         var regions = Drupal.settings.tp_video_player.settings[element_id].allowed_regions[0];
@@ -40,7 +42,7 @@
             else {
               $(element).removeClass('loading');
               jwplayer.key = Drupal.settings.tp_video_player.key;
-              jwplayer(element).setup(settings);
+              tp_video_playlist_init(element, settings, index);
             }
           };
           geoip2.country(handleResponse, blockVideo);
@@ -55,14 +57,58 @@
 
       //fires the init for bxslider on ready
       $(document).ready(function() {
+
         window.tp_initslider();
 
-        $(window).smartresize(function() {
-          window.tp_initslider();
-        });
+        if(typeof smartresize == 'function'){
+          $(window).smartresize(function() {
+            window.tp_initslider();
+          });
+        }
+
       });
     }
   };
+
+  /**
+   *  @function:
+   *    function is used to adjust the playlist quality in the front end
+   *    to allow higher quality within the playlist
+   */
+  window.playlist_quality = function(settings) {
+    //default variables
+    var playlist = settings.playlist;
+    var window_width = $(window).width();
+    var file_width = '.mp4';
+
+    //by default return settings only if width is less then 480
+    if (window_width < 480) {
+      return settings;
+    }
+    //960 and lower
+    else if (window_width < 960) {
+      file_width = '-960.mp4';
+    }
+    //anything abover 960
+    else {
+      file_width = '-1280.mp4';
+    }
+
+    //does for each of the playlist items to set quality
+    $(playlist).each(function(i, v) {
+      //only does if v.source is set
+      if (v.sources != undefined) {
+        //replace the correct width requested
+        file_url = v.sources[0]['file'];
+        file_url = file_url.replace('.mp4', file_width);
+        playlist[i].sources[0]['file'] = file_url;
+      }
+    });
+
+    //assigns it back to the playlist
+    settings.playlist = playlist;
+    return settings;
+  }
 
   /**
    *  @function:
@@ -166,24 +212,6 @@
 
     });
 
-    jwplayer(element_id).onPlay(function(event){
-      delete window.videoTransition;
-
-      /* Analytics */
-      var autoplay = jwplayer(element_id).config.autostart;
-      if(autoplay == true){
-        autoplay = 'Auto-play';
-      }else{
-        autoplay = 'Manual';
-      }
-      var videoTitle = $('li[data-video-number="' + window['currentVideo_' + index] + '"] .promo-headline').text();
-      takepart.analytics.track('playlist-play', {
-        playerName: jwplayer(element_id).config.primary,
-        listName: jwplayer(element_id).config.title,
-        playConfig: autoplay,
-        videoTitle: videoTitle
-      });
-    });
   }
   /**
    *  @function:
@@ -282,7 +310,7 @@
         var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
         var img = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
         var height = (img / 2) + 3;
-        
+
         $('.bx-controls a', bxslider_wrapper).css('top', height);
       }, 500);
     });

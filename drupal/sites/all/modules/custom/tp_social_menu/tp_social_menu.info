@@ -1,0 +1,4 @@
+name = TakePart Social Menu
+description = social sharing and tap
+core = 7.x
+package = TakePart

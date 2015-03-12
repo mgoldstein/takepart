@@ -1,0 +1,80 @@
+/* Helpers */
+/*
+ *Fonts
+ */
+/*
+ *Colors
+ */
+/*
+ *Misc
+ */
+/* line 4, ../sass/interstitial.scss */
+body {
+  background: #fff;
+  border-top: none !important;
+  border-bottom: none !important;
+  font-size: 14px;
+}
+
+/* line 12, ../sass/interstitial.scss */
+#site-footer,
+#site-header {
+  display: none;
+}
+
+/* line 17, ../sass/interstitial.scss */
+header img {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* line 23, ../sass/interstitial.scss */
+#page-wrapper.campaign {
+  max-width: 400px;
+  height: 475px;
+}
+
+/* line 28, ../sass/interstitial.scss */
+#page {
+  color: #000;
+}
+/* line 30, ../sass/interstitial.scss */
+#page * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 35, ../sass/interstitial.scss */
+#page .interstitial {
+  float: left;
+  vertical-align: top;
+  width: 100%;
+  max-width: 400px;
+}
+/* line 41, ../sass/interstitial.scss */
+#page .content {
+  padding: 0 40px 20px;
+}
+/* line 44, ../sass/interstitial.scss */
+#page .headline {
+  padding: 20px 40px 0;
+  margin-bottom: 5px;
+  font-size: 26px;
+  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+}
+/* line 50, ../sass/interstitial.scss */
+#page .body p {
+  margin-bottom: 5px;
+}
+/* line 53, ../sass/interstitial.scss */
+#page p#dont {
+  font-family: Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+  font-size: 12px;
+  clear: both;
+  margin: 0.5em 0;
+}
+
+/* line 62, ../sass/interstitial.scss */
+#page.main .content a {
+  color: #018b73;
+}

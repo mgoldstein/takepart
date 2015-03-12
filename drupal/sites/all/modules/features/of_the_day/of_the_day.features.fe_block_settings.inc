@@ -23,12 +23,6 @@ function of_the_day_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'takepart3' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'takepart3',
-        'weight' => 0,
-      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,

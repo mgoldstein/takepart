@@ -2,21 +2,63 @@
  * @file
  * Scripts for the theme.
  */
-(function ($, Drupal, window, document, undefined) {
 
+(function ($, Drupal, window, document, undefined) {
   /*
    * Megamenu Behaviors
    */
   Drupal.behaviors.megaMenuBehaviors = {
     attach: function(context, settings) {
-      //prevent parent links on megamenu from linking on touch (link on double touch)
-      $('#megamenu li.mega-item:has(.mega-content)').doubleTapToGo();
+		//prevent ONLY parent links on megamenu from linking on touch, using doubletaptogo.js
+// 		$('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').doubleTapToGo();
 
+		var curItem = false;
+
+		$('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').on( 'click', function( e )
+		{
+			var item = $( this );
+			if( item[ 0 ] != curItem[ 0 ] )
+			{
+				e.preventDefault();
+				curItem = item;
+			}
+		});
+
+      //ensures this is for mobile only
+      if ($(window).width() < 768) {
+        //adding code that handles the submit for the search. code matches pivot
+        $('#search-api-page-search-form-site-search .form-submit').click(function() {
+          if ($('.search-toggle').parent().hasClass('active')) {
+            $('.search-toggle').parent().removeClass('active');
+            var search_input = $('#search-api-page-search-form-site-search #edit-keys-2').val();
+            
+            if (search_input == 'Search' || search_input == '') {
+              return false;
+            }
+            return true;
+          }
+          else {
+            $('.search-toggle').parent().addClass('active');
+            $('#search-api-page-search-form-site-search #edit-keys-2').val('Search');
+            return false;
+          }
+        });
+        
+        //makes the search go away on focus			
+        $('#search-api-page-search-form-site-search #edit-keys-2').focus(function() {
+          $(this).val('');
+        });
+      }
+      
       //Toggle search on mobile
       $('html').click(function() {
         $('.search-toggle').parent().removeClass('active');
       });
 
+      $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').click(function(event){
+        $(this).parent().children().not('li.expanded a').slideToggle('fast');
+      });
+      
       $('.search-toggle').parent().click(function(event){
         event.stopPropagation();
         $(this).addClass('active');
@@ -81,21 +123,22 @@
         minDragDistance: 5
       });
 
-      snapper.on('animated', function() {
-        if (snapper.state().state == "closed") {
-          snapper.close();
-          $('.snap-drawers').hide();
-        }
-      });
-
       $('.menu-toggle').on('click', function(e){
         e.preventDefault();
         if ( snapper.state().state == "closed" ) {
           $('#campaign-drawers').hide();
           $('#tp-drawers').show();
+		  $('#block-menu-menu-megamenu ul li ul').hide();
           snapper.open('left');
         }
         else {
+          snapper.close();
+          $('.snap-drawers').hide();
+        }
+      });
+
+      snapper.on('animated', function() {
+        if (snapper.state().state == "closed") {
           snapper.close();
           $('.snap-drawers').hide();
         }
@@ -127,7 +170,7 @@
         minDragDistance: 5
       });
 
-      $('.snap-drawer a').on('click', function() {
+      $('#block-menu-menu-megamenu ul li ul li a').on('click', function() {
         snapper.close();
         $('.snap-drawers').hide();
       });
@@ -209,6 +252,12 @@
             },
             {
               name: 'tumblr'
+            },
+            {
+              name: 'pinterest'
+            },
+            {
+              name: 'reddit'
             }
           ]
         };
@@ -220,22 +269,20 @@
         }
         /* If page is a campaign page, remove mailto, reddit and tumblr */
         if(isCampaignPage){
+          console.log(tp_social_config.services);
           delete tp_social_config.services[2]; //mailto
-          delete tp_social_config.services[4]; //reddit
-          delete tp_social_config.services[5]; //tumblr
+          delete tp_social_config.services[6]; //reddit
+          delete tp_social_config.services[4]; //tumblr
+          delete tp_social_config.services[5]; //pinterest
         }
 
-        /* 
-         * if screen size is less than 480 targer tp-social-mobile, else target tp-social.  Adjust CSS to display none otherwise 
-         */
-        
-        /*
-          if($(window).width() < 768){
-            $('.tp-social-mobile:not(.tp-social-skip)').tpsocial(tp_social_config);
-          } else { } 
-         */
-      $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config))
-        .then($('#article-social').tp4Sticky({offset: isFlashcard ? 0 : 7}));
+        /* Make sticky when screensize is greater than 768px */
+          $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function() {
+            if($(window).width() > 980){
+              $('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
+            }
+            });
+
     }
   };
 
@@ -250,6 +297,7 @@
         || $body.is('.page-node.node-type-video')
         || $body.is('.page-node.node-type-video-playlist')
         || $body.is('.page-node.node-type-flashcard')
+        || $body.is('.page-node.node-type-openpublish-photo-gallery')
       ) {
           $('.block-boxes-ga_ad-bottom').tp4Sticky();
       }
@@ -323,8 +371,8 @@
 
       var $window = $(window);
       var $container = $campaignsModule.find('.field-collection-container')
-        .append('<a class="featured-campaigns-nav prev">')
-        .append('<a class="featured-campaigns-nav next">');
+        .append('<a class="featured-campaigns-nav prev icon i-arrow-left">')
+        .append('<a class="featured-campaigns-nav next icon i-arrow-right">');
       var $wrapper = $container.find('.field-name-field-featured-campaigns');
       var $items = $container.find('.field-item');
       var $nav = $container.find('.featured-campaigns-nav');
@@ -539,6 +587,10 @@
     'Home - graveyard' : '#block-tp4-support-tp4-graveyard',
     'Home - stories under lead' : 'body.page-tp4-homepage .panel-secondary-featured',
     'Home - top horizontal promo' : '#block-tp4-support-tp4-dont-miss'
+
+//    'Mobile Sticky Strip': '.social-wrapper.mobile',
+//    'Mobile Sticky Strip Share': '.social-wrapper.mobile li.share'
+
   });
 
 })(jQuery, Drupal, this, this.document);

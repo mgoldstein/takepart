@@ -23,12 +23,6 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'takepart3' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'takepart3',
-        'weight' => -83,
-      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,
@@ -51,12 +45,6 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'takepart3' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'takepart3',
-        'weight' => -82,
-      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,
@@ -77,12 +65,6 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'takepart3' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'takepart3',
-        'weight' => 0,
-      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,
@@ -103,12 +85,6 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'takepart3' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'takepart3',
-        'weight' => -87,
-      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,
@@ -129,12 +105,6 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'takepart3' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'takepart3',
-        'weight' => 0,
-      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,

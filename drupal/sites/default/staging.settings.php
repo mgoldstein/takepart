@@ -3,11 +3,11 @@
 // Development & Staging Adobe Analytics Suite
 $conf += array(
   'omniture_account_name' => 'takeparttakepartdev2',
-  'dtm_script_src' => '//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-67f52c9fb4acac0165b6ab3557a90e9fc355338e-staging.js',
+  'dtm_script_src' => '//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-e72f040081d6d4caa0027d0ba1c74cd46d514484-staging.js',
 );
 
 // Development & Staging Facebook App ID
-$conf += array('facebook_app_id' => '804910456185646');
+$conf += array('facebook_app_id' => '247137505296280');
 
 // QA TAP and Services Integration
 $conf += array(

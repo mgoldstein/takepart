@@ -9,6 +9,8 @@
 */
 .tp_ad_takeover {
     .header-wrapper {
+        background-color: #FFF;
+        
         @include breakpoint($breakpoint-desktop) {
             padding-top: 0;
             max-width: 980px;
@@ -117,11 +119,11 @@ header {
         position: relative;
         .form-item-keys-2{
             display: inline-block;
+            background-color: white;
             float: left;
             height: auto;
             overflow: hidden;
             width: 100%;
-            margin-right: 10px;
             vertical-align: bottom;
             line-height: 23px;
             font-weight: normal;
@@ -152,6 +154,7 @@ header {
             bottom: 0;
             right: 0;
             height: 0;
+            top: -51px;
             padding-top: 48px;
             color: white;
             border: none;
@@ -211,6 +214,7 @@ header {
                 float: left;
                 width: 20px;
                 height: 0;
+                top: auto;
                 padding-top: 24px;
                 overflow: hidden;
                 background-color: transparent;
@@ -229,7 +233,7 @@ header {
         color: white;
         border: none;
         background: image-url('mobile-search.jpg') no-repeat center center;
-        background-color: #fff;
+        background-color: transparent;
         border-radius: 0;
         text-indent: 200%;
         overflow: hidden;
@@ -239,6 +243,10 @@ header {
         border-bottom: 2px solid #000;
         form{
             display: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            z-index: 100;
         }
     }
     .search.active {
@@ -256,6 +264,10 @@ header {
         border-bottom: none;
         form {
             display: block;
+            position: initial;
+            left: auto;
+            right: auto;
+            z-index: auto;
         }
     }
 }
@@ -346,10 +358,10 @@ header {
                 top: 0;
                 right: 0;
                 color: $mint;
-                font-size: 20px;
+                font-size: 16px;
                 line-height: 30px;
-                content: "\1F50E";
-                font-family: "SSGizmo";
+                content: "\e616";
+                font-family: "takepart";
                 display: block;
                 z-index: 9;
                 @include transform2d(scaleX(-1));
@@ -753,6 +765,17 @@ header {
     }
 }
 
+#block-tp4-support-tp4-mobile-menu-header > div > ul > li {
+	width: 24px;
+	margin-left: 3px;
+	a {
+		margin-left: 0;
+		&:hover {
+			background-color: #000;
+		}
+	}
+}
+
 #block-tp-custom-nav-tp-custom-nav-takepart-collab {
     margin-bottom: 0;
     width: 140px;
@@ -871,6 +894,10 @@ header {
     }
 }
 
+#block-menu-menu-megamenu > ul > li.menu__item.is-expanded.first.expanded > a {
+    border-bottom: 1px solid #646464;
+}
+
 body {
     .snap-drawer-left {
         #block-menu-menu-megamenu {
@@ -880,13 +907,9 @@ body {
                     font-family: 'Apercu Medium', sans-serif;
                     font-size: 16px;
                     text-transform: none;
+                    border-bottom: none;
 
-                    &.active,
-                    &:hover {
-                        background-color: #8d8d8d;
-                    }
                 }
-
                 &.level-0 {
                     a {
                         font-size: 24px;

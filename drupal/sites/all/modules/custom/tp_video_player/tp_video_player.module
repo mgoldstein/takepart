@@ -277,6 +277,7 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
     foreach ($items as $delta => $item) {
       $items[$delta]['allowed_regions'] = $allowed_regions;
       $items[$delta]['media_id'] = $media_id;
+      $items[$delta]['node_title'] = $entity->title;
       $items[$delta]['pre_roll_ad_tag'] = $configuration->ad_tag;
     }
 
@@ -442,10 +443,13 @@ function tp_video_player_list_from_nid($nid, $node = array(), $view_mode = 'defa
         $langcode
       );
 
+      //ensures that the title is pulled from the node level
+      $playlist_title = tp_videos_playlist_title('node', $node, entity_label('node', $node));
+      
       //renderable array
       $playlist_content = array(
         '#theme' => 'tp_videos_wrapper',
-        '#title' => $node->title,
+        '#title' => $playlist_title,
         '#playlist' => $playlist,
       );
       
