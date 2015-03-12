@@ -220,6 +220,9 @@ function tpf_content_video_strongarm() {
         'redirect' => array(
           'weight' => '10',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

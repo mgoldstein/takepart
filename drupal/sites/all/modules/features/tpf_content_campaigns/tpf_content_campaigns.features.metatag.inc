@@ -47,9 +47,6 @@ function tpf_content_campaigns_metatag_export_default() {
       'tp:content_type' => array(
         'value' => 'campaign',
       ),
-      'tp:content_authors' => array(
-        'value' => '[tp_omniture:get_author:{node:nid}]',
-      ),
       'tp:published_date' => array(
         'value' => '[node:published:custom:Y/m/d]',
       ),
