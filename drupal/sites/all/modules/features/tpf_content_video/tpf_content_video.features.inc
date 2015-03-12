@@ -24,14 +24,6 @@ function tpf_content_video_ctools_plugin_api($module = NULL, $api = NULL) {
  */
 function tpf_content_video_node_info() {
   $items = array(
-    'openpublish_video' => array(
-      'name' => t('Legacy Video'),
-      'base' => 'node_content',
-      'description' => t('Create content items with embedded video media assets.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
     'video' => array(
       'name' => t('Video'),
       'base' => 'node_content',
