@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Content Campaign feature.
- */
-
-include_once 'tpf_content_campaign.features.inc';

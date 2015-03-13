@@ -121,7 +121,7 @@ function tpf_content_video_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -334,7 +334,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 25,
     ),
   );
 
@@ -664,7 +664,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 15,
+      'weight' => 14,
     ),
   );
 
@@ -883,7 +883,7 @@ function tpf_content_video_field_default_field_instances() {
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -1459,7 +1459,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -1888,7 +1888,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 

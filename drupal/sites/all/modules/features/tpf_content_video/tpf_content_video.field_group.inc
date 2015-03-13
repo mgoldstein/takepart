@@ -111,7 +111,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -173,7 +173,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '12',
+    'weight' => '11',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',
@@ -250,6 +250,38 @@ function tpf_content_video_field_group_info() {
     ),
   );
   $export['group_video_media|node|openpublish_video|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_video_player_config|node|video|form';
+  $field_group->group_name = 'group_video_player_config';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'video';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Player Config Options',
+    'weight' => '19',
+    'children' => array(
+      0 => 'field_allowed_regions',
+      1 => 'field_auto_play',
+      2 => 'field_mute_playback',
+      3 => 'field_player_embeddable',
+      4 => 'field_player_skin',
+      5 => 'field_share_url',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-video-player-config field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_video_player_config|node|video|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */

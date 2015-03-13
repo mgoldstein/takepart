@@ -175,22 +175,22 @@ function tpf_content_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '17',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '13',
+          'weight' => '12',
         ),
         'redirect' => array(
-          'weight' => '14',
+          'weight' => '13',
         ),
         'xmlsitemap' => array(
-          'weight' => '16',
+          'weight' => '15',
         ),
         'locations' => array(
-          'weight' => '18',
+          'weight' => '17',
         ),
       ),
       'display' => array(),

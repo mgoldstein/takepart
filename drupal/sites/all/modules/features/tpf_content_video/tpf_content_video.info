@@ -44,6 +44,7 @@ features[field_group][] = group_tagging|node|video_playlist|form
 features[field_group][] = group_tagging|node|video|form
 features[field_group][] = group_video_main|node|openpublish_video|form
 features[field_group][] = group_video_media|node|openpublish_video|form
+features[field_group][] = group_video_player_config|node|video|form
 features[field_group][] = group_video_promo|node|openpublish_video|form
 features[field_group][] = group_video_related|node|openpublish_video|form
 features[field_group][] = group_video_tags|node|openpublish_video|form
