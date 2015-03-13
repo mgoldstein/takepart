@@ -21,3 +21,21 @@ function tpf_display_context_ctools_plugin_api($module = NULL, $api = NULL) {
     return array("version" => "1");
   }
 }
+
+/**
+ * Implements hook_node_info().
+ */
+function tpf_display_context_node_info() {
+  $items = array(
+    'openpublish_video' => array(
+      'name' => t('Legacy Video'),
+      'base' => 'node_content',
+      'description' => t('Create content items with embedded video media assets.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
+  );
+  drupal_alter('node_info', $items);
+  return $items;
+}

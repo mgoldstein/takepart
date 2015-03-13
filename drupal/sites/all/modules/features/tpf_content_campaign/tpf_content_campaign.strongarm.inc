@@ -137,6 +137,9 @@ function tpf_content_campaign_strongarm() {
         'redirect' => array(
           'weight' => '19',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

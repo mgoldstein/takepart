@@ -115,7 +115,6 @@ Instead, select two dates to search for all content published between those date
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
-    'takepart_campaign' => 'takepart_campaign',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
