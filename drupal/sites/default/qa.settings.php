@@ -32,11 +32,8 @@ $conf += array(
     'pm_jwplatform_auto_create_tag' => 'Admin: TP Auto Dev',
 );
 
-<<<<<<< HEAD
-=======
 // Shared Assets
 $conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_qa/font.css';
 
->>>>>>> feature/TAP-1433-font-reduction
 // Scream at the dev, maybe they'll fix something
 ini_set('error_reporting', E_ALL & ~E_NOTICE);
