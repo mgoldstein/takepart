@@ -16,14 +16,6 @@ $conf += array(
 // Development & Staging Facebook App ID
 $conf += array('facebook_app_id' => '247137505296280');
 
-// Turn off page compression and CSS and JS preprocessing
-
-/* THE BELOW SHOULD NOT BE APART OF SETTINGS.PHP */
-// $conf += array(
-//   'page_compression' => FALSE,
-//   'preprocess_css' => FALSE,
-//   'preprocess_js' => FALSE,
-// );
 // Log signups for debugging
 $conf += array('pm_signup_log' => TRUE);
 
@@ -32,11 +24,8 @@ $conf += array(
     'pm_jwplatform_auto_create_tag' => 'Admin: TP Auto Dev',
 );
 
-<<<<<<< HEAD
-=======
 // Shared Assets
 $conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_qa/font.css';
 
->>>>>>> feature/TAP-1433-font-reduction
 // Scream at the dev, maybe they'll fix something
 ini_set('error_reporting', E_ALL & ~E_NOTICE);
