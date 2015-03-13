@@ -18,4 +18,3 @@ features[user_role][] = administrator
 features[user_role][] = editor
 features[user_role][] = layout editor
 features[views_view][] = publication_report
-mtime = 1420669216
