@@ -227,10 +227,6 @@
 .messages {
   margin: rhythm(1) 0;
   padding: 10px 10px 10px 50px; /* LTR */
-  background-image: inline-image("message-24-ok.png");
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    *background-image: image-url("message-24-ok.png");
-  }
   background-position: 8px 8px; /* LTR */
   background-repeat: no-repeat;
   border: 1px solid #be7;
@@ -242,19 +238,11 @@
 .messages--warning {
   @extend .messages;
   @extend %warning;
-  background-image: inline-image("message-24-warning.png");
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    *background-image: image-url("message-24-warning.png");
-  }
   border-color: #ed5;
 }
 .messages--error {
   @extend .messages;
   @extend %error;
-  background-image: inline-image("message-24-error.png");
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    *background-image: image-url("message-24-error.png");
-  }
   border-color: #ed541d;
 
 }
@@ -452,10 +440,6 @@ span.field-label {
   text-align: right; /* LTR */
 }
 .more-help-link a {
-  background-image: inline-image("help.png");
-  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-    *background-image: image-url("help.png");
-  }
   background-position: 0 50%; /* LTR */
   background-repeat: no-repeat;
   padding: 1px 0 1px 20px; /* LTR */
@@ -763,19 +747,11 @@ td.menu-disabled {
  */
 .fieldset-legend {
   html.js .collapsible & {
-    background-image: inline-image("menu-expanded.png");
-    @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-      *background-image: image-url("menu-expanded.png");
-    }
     background-position: 5px 65%; /* LTR */
     background-repeat: no-repeat;
     padding-left: 15px; /* LTR */
   }
   html.js .collapsed & {
-    background-image: inline-image("menu-collapsed.png"); /* LTR */
-    @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
-      *background-image: image-url("menu-collapsed.png"); /* LTR */
-    }
     background-position: 5px 50%; /* LTR */
   }
   .summary {

@@ -39,12 +39,19 @@ $card_types = array(
 define('CARDTYPES', serialize($card_types));
 
 
+
 /**
  * Invokes hook_preprocess_html()
  * @param $variables
  * @param $hook
  */
+/**
+ * Implements hook_preprocess_html();
+ */
 function tp4_preprocess_html(&$variables, $hook) {
+
+  /* Add shared assets to all tp4 pages */
+  drupal_add_css(variable_get('shared_assets_path'), array('type' => 'external'));
 
   /* Grab node object if it exists */
   $node = menu_get_object();
