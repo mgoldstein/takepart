@@ -486,6 +486,13 @@ body.campaign-display{
             margin-left: 8px;
         }
 
+		#campaign-page-share a.tp-social-facebook,
+		#campaign-page-share a.tp-social-twitter,
+		#campaign-page-more-shares a.tp-social-pinterest,
+		#campaign-page-more-shares a.tp-social-tumblr {
+			float:left;
+		}
+
         .share-headline {
             font: normal 14px/1 $secondary-sans-font;
             height: 14px;
@@ -1160,6 +1167,7 @@ body.campaign-display{
                     border-radius: 44px;
                 }
                 &.tp-social-link {
+	                float: none;
                     &:hover{
                         text-decoration: none;
                     }
