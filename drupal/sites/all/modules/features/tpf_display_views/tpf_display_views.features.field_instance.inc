@@ -1615,115 +1615,6 @@ function tpf_display_views_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_video-field_suggest_video'
-  $field_instances['node-openpublish_video-field_suggest_video'] = array(
-    'bundle' => 'openpublish_video',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 10,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'of_the_day' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_suggest_video',
-    'label' => 'Suggest Related Videos?',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 34,
-    ),
-  );
-
   // Exported field_instance: 'node-openpublish_video-field_tab_action_override'
   $field_instances['node-openpublish_video-field_tab_action_override'] = array(
     'bundle' => 'openpublish_video',
@@ -2161,439 +2052,6 @@ function tpf_display_views_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_video-field_video_display_mode'
-  $field_instances['node-openpublish_video-field_video_display_mode'] = array(
-    'bundle' => 'openpublish_video',
-    'default_value' => array(
-      0 => array(
-        'value' => 2,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Display video as a modal popup, embedded within the page, or as embedded on the permalinked page and modal everywhere else it is used.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 20,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_video_display_mode',
-    'label' => 'Embedded Video mode',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'node-openpublish_video-field_video_embedded'
-  $field_instances['node-openpublish_video-field_video_embedded'] = array(
-    'bundle' => 'openpublish_video',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'media_large',
-        ),
-        'type' => 'media',
-        'weight' => 3,
-      ),
-      'embed' => array(
-        'label' => 'hidden',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'media_small',
-        ),
-        'type' => 'media',
-        'weight' => 0,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'media_large',
-        ),
-        'type' => 'media',
-        'weight' => 2,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'hidden',
-        'module' => 'mediafield',
-        'settings' => array(
-          'file_view_mode' => 'media_large',
-        ),
-        'type' => 'media',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_video_embedded',
-    'label' => 'Embedded Video',
-    'required' => 0,
-    'settings' => array(
-      'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'media',
-      'settings' => array(
-        'allowed_schemes' => array(
-          'public' => 'public',
-        ),
-        'allowed_types' => array(
-          'audio' => 0,
-          'default' => 0,
-          'image' => 0,
-          'video' => 'video',
-        ),
-        'browser_plugins' => array(),
-        'progress_indicator' => 'throbber',
-      ),
-      'type' => 'media_generic',
-      'weight' => 5,
-    ),
-  );
-
-  // Exported field_instance: 'node-openpublish_video-field_video_related'
-  $field_instances['node-openpublish_video-field_video_related'] = array(
-    'bundle' => 'openpublish_video',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-      'of_the_day' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_video_related',
-    'label' => 'Related Video',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'node_reference',
-      'settings' => array(
-        'autocomplete_match' => 'contains',
-        'autocomplete_path' => 'node_reference/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'node_reference_autocomplete',
-      'weight' => 35,
-    ),
-  );
-
-  // Exported field_instance: 'node-openpublish_video-field_video_series'
-  $field_instances['node-openpublish_video-field_video_series'] = array(
-    'bundle' => 'openpublish_video',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'of_the_day' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_video_series',
-    'label' => 'Video Series',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'allow',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 13,
-    ),
-  );
-
   // Exported field_instance: 'node-venue-body'
   $field_instances['node-venue-body'] = array(
     'bundle' => 'venue',
@@ -2633,6 +2091,12 @@ function tpf_display_views_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2723,6 +2187,12 @@ function tpf_display_views_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2801,6 +2271,12 @@ function tpf_display_views_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -2888,6 +2364,12 @@ function tpf_display_views_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -2965,6 +2447,12 @@ function tpf_display_views_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3053,6 +2541,12 @@ function tpf_display_views_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3134,6 +2628,12 @@ function tpf_display_views_field_default_field_instances() {
         'type' => 'hidden',
         'weight' => 0,
       ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -3185,256 +2685,6 @@ function tpf_display_views_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-venue-field_name'
-  $field_instances['node-venue-field_name'] = array(
-    'bundle' => 'venue',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The name as different from the title.',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_name',
-    'label' => 'Venue Name',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
-    ),
-  );
-
-  // Exported field_instance: 'node-venue-field_storedescription'
-  $field_instances['node-venue-field_storedescription'] = array(
-    'bundle' => 'venue',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 5,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_storedescription',
-    'label' => 'About',
-    'required' => 0,
-    'settings' => array(
-      'display_summary' => 0,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 10,
-    ),
-  );
-
-  // Exported field_instance: 'node-venue-field_storeinfo'
-  $field_instances['node-venue-field_storeinfo'] = array(
-    'bundle' => 'venue',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_storeinfo',
-    'label' => 'Info',
-    'required' => 0,
-    'settings' => array(
-      'display_summary' => 0,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 10,
-    ),
-  );
-
   // Exported field_instance: 'node-venue-field_tab_action_override'
   $field_instances['node-venue-field_tab_action_override'] = array(
     'bundle' => 'venue',
@@ -3473,6 +2723,12 @@ function tpf_display_views_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3554,6 +2810,12 @@ function tpf_display_views_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3649,6 +2911,12 @@ function tpf_display_views_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
@@ -3797,7 +3065,7 @@ function tpf_display_views_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -3907,7 +3175,7 @@ function tpf_display_views_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -4017,7 +3285,7 @@ function tpf_display_views_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -4127,7 +3395,7 @@ function tpf_display_views_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -4235,13 +3503,12 @@ function tpf_display_views_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('About');
   t('Admin Tag');
   t('Associated Content');
   t('Author(s)');
@@ -4250,15 +3517,11 @@ function tpf_display_views_field_default_field_instances() {
   t('Body');
   t('Byline');
   t('Display Tag');
-  t('Display video as a modal popup, embedded within the page, or as embedded on the permalinked page and modal everywhere else it is used.');
-  t('Embedded Video');
-  t('Embedded Video mode');
   t('Enable Embed');
   t('Free Tag');
   t('Free Tags');
   t('Google Map');
   t('HTML title Tag');
-  t('Info');
   t('Main Image');
   t('Multi Page Campaign');
   t('Mute Playback');
@@ -4267,23 +3530,18 @@ function tpf_display_views_field_default_field_instances() {
   t('Promo Short Headline');
   t('Promo Text');
   t('Related Actions');
-  t('Related Video');
   t('Remove Headline from Display');
   t('Series');
   t('Share URL Override');
   t('Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.');
   t('Subhead');
   t('Suggest Related Actions?');
-  t('Suggest Related Videos?');
   t('TAB Action Overrides');
   t('The byline provides the name, and position of the writer of the article.');
-  t('The name as different from the title.');
   t('This can be used to organize content as it relates to another node in the system.  For example, a venue representing a store could be assigned to a node representing the city in which that store resides.');
   t('Thumbnail');
   t('Topic');
   t('Topic Tags');
-  t('Venue Name');
-  t('Video Series');
 
   return $field_instances;
 }
