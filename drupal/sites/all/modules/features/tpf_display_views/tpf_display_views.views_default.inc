@@ -2728,12 +2728,11 @@ print $value;
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'openpublish_blog_post' => 'openpublish_blog_post',
-    'openpublish_video' => 'openpublish_video',
+    'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
 
   /* Display: Series Feed Page */
@@ -2833,22 +2832,7 @@ print $value;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_blogpost_main_image']['id'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['table'] = 'field_data_field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['field'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Video Series (field_video_series) */
-  $handler->display->display_options['arguments']['field_video_series_tid']['id'] = 'field_video_series_tid';
-  $handler->display->display_options['arguments']['field_video_series_tid']['table'] = 'field_data_field_video_series';
-  $handler->display->display_options['arguments']['field_video_series_tid']['field'] = 'field_video_series_tid';
-  $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_video_series_tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_video_series_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_video_series_tid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -2863,8 +2847,8 @@ print $value;
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'openpublish_video' => 'openpublish_video',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['path'] = 'video-series/%/feed.xml';
 
@@ -2944,12 +2928,11 @@ print $value;
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'action' => 'action',
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
-    'openpublish_video' => 'openpublish_video',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['path'] = 'topic/%/feed.xml';
 
