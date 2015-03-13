@@ -36,22 +36,6 @@ function tpf_display_views_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_google_map'
-  $field_bases['field_google_map'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_google_map',
-    'foreign keys' => array(),
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'gmapfield',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'gmapfield',
-  );
-
   // Exported field_base: 'field_mute_playback'
   $field_bases['field_mute_playback'] = array(
     'active' => 1,
