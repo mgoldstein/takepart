@@ -715,9 +715,9 @@ echo $separator;
   );
   $handler->display->display_options['path'] = 'content/%/admin_feed.xml';
 
-  /* Display: Mashable Full Feed */
-  $handler = $view->new_display('page', 'Mashable Full Feed', 'mashable_full');
-  $handler->display->display_options['display_description'] = 'Full content RSS feed formatted for Mashable';
+  /* Display: Synd Full Feed */
+  $handler = $view->new_display('page', 'Synd Full Feed', 'mashable_full');
+  $handler->display->display_options['display_description'] = 'Full content RSS feed formatted for syndicates';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
@@ -773,6 +773,18 @@ echo $separator;
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '1200',
   );
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_article_main_image']['id'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['table'] = 'field_data_field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['field'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_article_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_article_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_article_main_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -815,11 +827,11 @@ echo $separator;
   $handler->display->display_options['filters']['created']['value']['value'] = '-7 days';
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   $handler->display->display_options['filters']['created']['group'] = 1;
-  $handler->display->display_options['path'] = 'content/%/mashable_feed.xml';
+  $handler->display->display_options['path'] = 'content/%/synd_feed.xml';
 
-  /* Display: Mashable Short Feed */
-  $handler = $view->new_display('page', 'Mashable Short Feed', 'mashable_short');
-  $handler->display->display_options['display_description'] = 'Brief content RSS feed formatted for Mashable';
+  /* Display: Synd Short Feed */
+  $handler = $view->new_display('page', 'Synd Short Feed', 'mashable_short');
+  $handler->display->display_options['display_description'] = 'Brief content RSS feed formatted for syndicates';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
@@ -863,6 +875,18 @@ echo $separator;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_article_main_image']['id'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['table'] = 'field_data_field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['field'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_article_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_article_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_article_main_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -905,7 +929,7 @@ echo $separator;
   $handler->display->display_options['filters']['created']['operator'] = '>=';
   $handler->display->display_options['filters']['created']['value']['value'] = '-7 days';
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'content/%/mashable_feed_short.xml';
+  $handler->display->display_options['path'] = 'content/%/synd_feed_short.xml';
 
   /* Display: Feed Block */
   $handler = $view->new_display('block', 'Feed Block', 'block_1');
@@ -2274,7 +2298,7 @@ print $value;
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Thumbnail Image */
+  /* Field: Indexed Content: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -2382,7 +2406,7 @@ print $value;
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
-  /* Field: Indexed Content: Thumbnail Image */
+  /* Field: Indexed Content: Thumbnail */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
