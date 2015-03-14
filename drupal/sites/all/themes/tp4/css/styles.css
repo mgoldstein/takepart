@@ -5128,12 +5128,12 @@ a.cta span:before {
 }
 /* line 1205, ../sass/page/_openpublish_article.scss */
 .page-node.node-type-flashcard .flashcard-cta-link:before {
-  display: inline-block;
+  display: inline;
   position: static;
   color: white;
   width: auto;
-  padding-right: 0.45em;
-  vertical-align: sub;
+  padding-right: 1em;
+  vertical-align: baseline;
 }
 /* line 1213, ../sass/page/_openpublish_article.scss */
 .page-node.node-type-flashcard .flashcard-cta-link:hover {
@@ -7501,7 +7501,7 @@ body.campaign-display .swipe .slider-pagination a:hover, body.campaign-display .
   /* line 754, ../sass/page/_campaigns.scss */
   body.campaign-display .swipe .slider-pagination .mobile-arrow.left-arrow:after {
     font-family: "takepart";
-    content: '\e601';
+    content: '\e605';
     font-size: 35px;
   }
   /* line 765, ../sass/page/_campaigns.scss */
@@ -7517,7 +7517,7 @@ body.campaign-display .swipe .slider-pagination a:hover, body.campaign-display .
   /* line 768, ../sass/page/_campaigns.scss */
   body.campaign-display .swipe .slider-pagination .mobile-arrow.right-arrow:after {
     font-family: "takepart";
-    content: '\e602';
+    content: '\e606';
     font-size: 35px;
   }
 }
@@ -13516,7 +13516,7 @@ body #sidebar .tpl-media-block-wrapper .tpl-highlight {
 .bean-featured-campaigns-module .featured-campaigns-nav {
   display: block;
   position: absolute;
-  top: 60px;
+  top: 70px;
   right: 100%;
   font-size: 2.5em;
 }
