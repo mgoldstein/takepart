@@ -5487,22 +5487,23 @@ a.cta span:before {
 #series-navigation .more-prev a:before {
   content: "\e605\e605  ";
   letter-spacing: -8px;
+  margin-right: 1ex;
 }
-/* line 1481, ../sass/page/_openpublish_article.scss */
+/* line 1482, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-next {
   float: right;
 }
-/* line 1483, ../sass/page/_openpublish_article.scss */
+/* line 1484, ../sass/page/_openpublish_article.scss */
 #series-navigation .more-next a:after {
   content: "  \e606\e606";
   letter-spacing: -8px;
 }
-/* line 1490, ../sass/page/_openpublish_article.scss */
+/* line 1491, ../sass/page/_openpublish_article.scss */
 #series-navigation > a:hover .previous,
 #series-navigation > a:hover .next {
   text-decoration: underline;
 }
-/* line 1494, ../sass/page/_openpublish_article.scss */
+/* line 1495, ../sass/page/_openpublish_article.scss */
 #series-navigation .previous {
   float: left;
   clear: left;
@@ -5511,7 +5512,7 @@ a.cta span:before {
   position: relative;
   /* z-index: 2; */
 }
-/* line 1502, ../sass/page/_openpublish_article.scss */
+/* line 1503, ../sass/page/_openpublish_article.scss */
 #series-navigation .next {
   float: right;
   clear: right;
@@ -5523,32 +5524,32 @@ a.cta span:before {
 }
 
 @media all and (min-width: 980px) {
-  /* line 1518, ../sass/page/_openpublish_article.scss */
+  /* line 1519, ../sass/page/_openpublish_article.scss */
   .block-boxes-ga_ad-bottom.sticky {
     position: fixed;
     top: 0;
   }
 }
 
-/* line 1525, ../sass/page/_openpublish_article.scss */
+/* line 1526, ../sass/page/_openpublish_article.scss */
 .leaderboard div {
   margin: 0 auto;
 }
 
-/* line 1529, ../sass/page/_openpublish_article.scss */
+/* line 1530, ../sass/page/_openpublish_article.scss */
 .mashable-image {
   padding: 0px;
   margin: 0px;
   border: none;
 }
 
-/* line 1532, ../sass/page/_openpublish_article.scss */
+/* line 1533, ../sass/page/_openpublish_article.scss */
 .mashable-image p {
   padding: 0px;
   margin: 0px;
 }
 
-/* line 1535, ../sass/page/_openpublish_article.scss */
+/* line 1536, ../sass/page/_openpublish_article.scss */
 .mashable-image-caption, .mashable-image-credit {
   margin-top: 10px;
   padding: 0px;
@@ -5557,38 +5558,38 @@ a.cta span:before {
   line-height: 18px;
 }
 
-/* line 1538, ../sass/page/_openpublish_article.scss */
+/* line 1539, ../sass/page/_openpublish_article.scss */
 .mashable-image-credit {
   font-style: italic;
   margin: 9px 0px 30px 0px;
 }
 
-/* line 1541, ../sass/page/_openpublish_article.scss */
+/* line 1542, ../sass/page/_openpublish_article.scss */
 .mashable-see-more {
   font-weight: bold;
   color: #666666;
 }
 
-/* line 1546, ../sass/page/_openpublish_article.scss */
+/* line 1547, ../sass/page/_openpublish_article.scss */
 body.node-type-takepart-page #main h1 {
   font-family: "Ashbury", "Times New Roman", serif;
   font-size: 34px;
   text-transform: capitalize;
 }
-/* line 1551, ../sass/page/_openpublish_article.scss */
+/* line 1552, ../sass/page/_openpublish_article.scss */
 body.node-type-takepart-page #main h2 {
   font-family: "Brown", Verdana, sans-serif;
   font-size: 20px;
   text-transform: lowercase;
   font-weight: bold;
 }
-/* line 1557, ../sass/page/_openpublish_article.scss */
+/* line 1558, ../sass/page/_openpublish_article.scss */
 body.node-type-takepart-page #main h3 {
   font-family: "Ashbury", "Times New Roman", serif;
   font-size: 18px;
   font-weight: lighter;
 }
-/* line 1562, ../sass/page/_openpublish_article.scss */
+/* line 1563, ../sass/page/_openpublish_article.scss */
 body.node-type-takepart-page #main h4 {
   font-family: "AdelleSans", Verdana, sans-serif;
   font-size: 12px;
@@ -5596,7 +5597,7 @@ body.node-type-takepart-page #main h4 {
   font-weight: normal;
   margin: 1em 0;
 }
-/* line 1569, ../sass/page/_openpublish_article.scss */
+/* line 1570, ../sass/page/_openpublish_article.scss */
 body.node-type-takepart-page #main h5 {
   font-family: "Ashbury", "Times New Roman", serif;
   font-size: 14px;
@@ -7419,7 +7420,7 @@ body.campaign-display .swipe {
     content: '\e605';
     background-color: rgba(255, 255, 255, 0.2);
     height: 1em;
-    line-height: 1.2;
+    line-height: 1;
     padding: 10px 0;
   }
   /* line 693, ../sass/page/_campaigns.scss */
@@ -12894,8 +12895,8 @@ body.page-iframes-footer {
   color: #018b73;
   font-family: "takepart";
   font-size: 13px;
-  line-height: 1;
-  vertical-align: middle;
+  position: relative;
+  top: 1px;
 }
 /* line 145, ../sass/modules/_topic_features.scss */
 .view-topic-listing .pager .pager-first:before,
@@ -12919,7 +12920,7 @@ body.page-iframes-footer {
 .view-author-contributions .pager .pager-next:after,
 .view-free-tags .pager .pager-next:after,
 .view-all-feed .pager .pager-next:after {
-  margin-left: 1ex;
+  margin-left: .5ex;
   content: '\e606';
 }
 /* line 158, ../sass/modules/_topic_features.scss */
