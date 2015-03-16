@@ -40,6 +40,14 @@ function tp_wordpress_import_admin_form() {
     '#default_value' => variable_get('tp_wordpress_import_tagging', 'Social Justice'),
   );
 
+  //tagging
+  $form['tp_wordpress_import_allow_tags'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Feeds - Takepart Wordpress Import - Allowed Tags'),
+    '#description' => t('Tagging Taxonomy Name'),
+    '#default_value' => variable_get('tp_wordpress_import_allow_tags', '<iframe><a><h1><h2><h3><h4><h5>'),
+  );  
+  
   //tap action widget
   $form['tp_wordpress_import_default_action_widget'] = array(
     '#type' => 'checkbox',

@@ -47,7 +47,9 @@ class tp_wordpress_import_parser extends FeedsParser {
               '#value' => t($content_prefix_var, array('@author' => $creator)),
               '#attributes' => array(
                 'class' => 'importer-author',
-          ))));;
+          ))));
+          
+          $allowed_tags = variable_get('tp_wordpress_import_allow_tags', '<iframe><a><h1><h2><h3><h4><h5>');
         
           //creates the item and adds it into the list
           //@dev: this area is where the items will be set to allow users to MAP items to the correct node.
@@ -59,7 +61,7 @@ class tp_wordpress_import_parser extends FeedsParser {
             'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
             'pubDate' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
             'description' => $node->getElementsByTagName('description')->item(0)->nodeValue,
-            'content' => $content_prefix . nl2br($node->getElementsByTagName('encoded')->item(0)->nodeValue),
+            'content' => $content_prefix . strip_tags(nl2br($node->getElementsByTagName('encoded')->item(0)->nodeValue), $allowed_tags),
             'admin_tag' => variable_get('tp_wordpress_import_admin_tag', 'Dowser'),
             'tagging' => variable_get('tp_wordpress_import_tagging', 'Social Justice')
           );
