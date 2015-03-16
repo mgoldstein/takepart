@@ -65,20 +65,13 @@
     $.tpsocial.add_service({
         name: 'facebook',
         display: 'Facebook',
-        image: $("meta[property='og:image']").attr("content"),
-//        caption: $("meta[property='og:description']").attr("content"),
-        description: $("meta[property='og:description']").attr("content"),
         share: function(args) {
             get_share_url(args.url, args.title, function(url) {
                 var parser = document.createElement("a");
                 parser.href = args.url;
                 FB.ui({
-                    method: 'feed',
-                    name: $("meta[property='og:title']").attr("content"),
-                    link: url + '',
-                    picture: $("meta[property='og:image']").attr("content"),
-//                    caption: args.caption || parser.hostname,
-                    description: $("meta[property='og:description']").attr("content")
+                    method: 'share',
+					href: url,
                 },
                 function(response) {
                     if (response && response.post_id) {
