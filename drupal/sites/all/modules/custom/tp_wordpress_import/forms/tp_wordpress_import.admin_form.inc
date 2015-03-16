@@ -21,7 +21,15 @@ function tp_wordpress_import_admin_form() {
     '#type' => 'textarea',
     '#title' => t('Feeds - Takepart Wordpress Import - Content Prefix Message'),
     '#description' => t('This is the content prefix message that will display. Available token: @author'),
-    '#default_value' => variable_get('tp_wordpress_import_content_prefix', 'This article was written by @author and it originally appeared on Dowser.org; a website focused on the practical and human elements of social innovation.'),
+    '#default_value' => variable_get('tp_wordpress_import_content_prefix', '<i>This article was written by @author and it originally appeared on Dowser.org; a website focused on the practical and human elements of social innovation.<i>'),
+  );
+
+  //admin prefix
+  $form['tp_wordpress_import_content_admin_prefix'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Feeds - Takepart Wordpress Import - Content Prefix Message for Admin'),
+    '#description' => t('This is the content prefix message that will display for if user is admin. Available token: @author'),
+    '#default_value' => variable_get('tp_wordpress_import_content_admin_prefix', "<i>This article originally appeared on Dowser.org; a website focused on the practical and human elements of social innovation.<i>"),
   );
   
   //admin_tag
@@ -40,6 +48,14 @@ function tp_wordpress_import_admin_form() {
     '#default_value' => variable_get('tp_wordpress_import_tagging', 'Social Justice'),
   );
 
+  //tags
+  $form['tp_wordpress_import_allow_tags'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Feeds - Takepart Wordpress Import - Allowed Tags'),
+    '#description' => t('Allowable tags for strip_tags'),
+    '#default_value' => variable_get('tp_wordpress_import_allow_tags', '<iframe><a><h1><h2><h3><h4><h5>'),
+  );  
+  
   //tap action widget
   $form['tp_wordpress_import_default_action_widget'] = array(
     '#type' => 'checkbox',
