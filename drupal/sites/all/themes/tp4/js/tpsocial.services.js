@@ -213,9 +213,9 @@
         display: 'Tumblr',
         width: 460,
         height: 500,
-        media: null,
-        caption: null,
-        source: null,
+        media: $("meta[property='og:image']").attr("content"),
+        caption: $("meta[property='og:description']").attr("content"),
+        source: $("meta[property='og:image']").attr("content"),
         share: function(args) {
             var url = 'http://www.tumblr.com/share/photo?source=' + encodeURIComponent(args.source) + '&caption=' + encodeURIComponent(args.caption) + '&click_thru=' + encodeURIComponent(args.url);
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';

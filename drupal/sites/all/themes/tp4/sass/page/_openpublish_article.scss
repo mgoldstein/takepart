@@ -1203,12 +1203,12 @@
         line-height: 1.5em;
         @include blue-arrow-bullets;
         &:before {
-            display: inline-block;
+            display: inline;
             position: static;
             color: white;
             width: auto;
-            padding-right: 0.45em;
-            vertical-align: sub;
+            padding-right: 1em;
+            vertical-align: baseline;
         }
         &:hover {
             text-decoration: none;
