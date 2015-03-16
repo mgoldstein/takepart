@@ -37,15 +37,15 @@
   # then redirect the client to "www.takepart.com":
   RewriteCond /takepart/takepart.prod -f
   RewriteCond %{HTTP_HOST} !^(10\.\d{1,3}\.\d{1,3}\.\d{1,3})$
-  RewriteCond %{HTTP_HOST} !^web(1|2|3|4|5|6|7|8|9|10|11|12).prod.takepart.com$
+  RewriteCond %{HTTP_HOST} !^web(1|2|3|4).prod.takepart.com$
   RewriteCond %{HTTP_HOST} !=www.takepart.com
   RewriteCond %{HTTP_HOST} !=editors.takepart.com
   RewriteCond %{HTTP_HOST} !=origin.takepart.com
-  RewriteCond %{HTTP_HOST} !=tp-submit.takepart.com
-  RewriteCond %{HTTP_HOST} !=betacf.takepart.com
+  #RewriteCond %{HTTP_HOST} !=tp-submit.takepart.com
+  #RewriteCond %{HTTP_HOST} !=betacf.takepart.com
   RewriteCond %{HTTP_HOST} !=foodinc.takepart.com
   RewriteCond %{HTTP_HOST} !=stage.takepart.com
-  RewriteCond %{HTTP_HOST} !=ssl.takepart.com
+  #RewriteCond %{HTTP_HOST} !=ssl.takepart.com
   RewriteCond %{HTTP_HOST} !=origin.prod.takepart.com
   RewriteRule (.*) http://www.takepart.com/$1 [R=301,L,NC]
 
@@ -54,7 +54,7 @@
   RewriteRule (.*) http://%{HTTP_HOST}/$1 [R=301,L,NC]
 
   # Food.inc farmbill
-  RewriteRule ^/emails/foodinc/2011-11-14-farm-bill(.+) /emails/foodinc/2011-11-14-farm-bill [NC,R=301,L]
+  #RewriteRule ^/emails/foodinc/2011-11-14-farm-bill(.+) /emails/foodinc/2011-11-14-farm-bill [NC,R=301,L]
 
   # Newletter redirect
   # TakePart 3.4.4.1
