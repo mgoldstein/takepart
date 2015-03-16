@@ -43,7 +43,7 @@
   RewriteCond %{HTTP_HOST} !=origin.takepart.com
   #RewriteCond %{HTTP_HOST} !=tp-submit.takepart.com
   #RewriteCond %{HTTP_HOST} !=betacf.takepart.com
-  RewriteCond %{HTTP_HOST} !=foodinc.takepart.com
+  #RewriteCond %{HTTP_HOST} !=foodinc.takepart.com
   RewriteCond %{HTTP_HOST} !=stage.takepart.com
   #RewriteCond %{HTTP_HOST} !=ssl.takepart.com
   RewriteCond %{HTTP_HOST} !=origin.prod.takepart.com
