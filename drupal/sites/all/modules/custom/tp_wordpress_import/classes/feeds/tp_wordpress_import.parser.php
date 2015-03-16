@@ -38,7 +38,7 @@ class tp_wordpress_import_parser extends FeedsParser {
           
           //ensures that the message is different if user is admin
           if ($creator == 'admin') {
-            $content_prefix_var = "This article originally appeared on Dowser.org; a website focused on the practical and human elements of social innovation." ;
+            $content_prefix_var = variable_get('tp_wordpress_import_content_admin_prefix', "<i>This article originally appeared on Dowser.org; a website focused on the practical and human elements of social innovation.<i>");
           }
           
           $content_prefix = theme('html_tag', array(
