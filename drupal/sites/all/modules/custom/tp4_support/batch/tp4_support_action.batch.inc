@@ -52,11 +52,12 @@ function _tp4_support_action_processor(&$context) {
     }
     
     //grabs all nodes
-    $db_result = db_select('node', 'n')
-      ->fields('n', array('nid'))
-      ->condition('n.type', 'action', '=')
-      ->condition('n.status', 1, '=')
-      ->execute()->fetchAll();
+    $db_result = db_select('node_revision', 'nr')
+      ->fields('nr', array('nid'));
+    $db_result->leftJoin('node', 'n', 'n.nid = nr.nid');
+    $db_result->condition('n.type', 'action', '=')
+      ->condition('nr.status', 1, '=');
+    $db_result = $db_result->execute()->fetchAll();
       
     //preps data
     $action_nid = array();
