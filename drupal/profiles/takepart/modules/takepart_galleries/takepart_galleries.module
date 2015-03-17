@@ -201,8 +201,6 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 		// Then return the updated value to the og:image key in $head_elements
 		$slides = field_get_items('node', $node, 'field_gallery_images');
 
-		$desc_length = 300;
-
 		if ($slides) {
 			foreach ($slides as $delta => $item) {
 		        //ensures that the fid is set
@@ -227,12 +225,6 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 
 						$desc = field_get_items('file', $file, 'field_media_caption');
 						$slide['desc'] = strip_tags($desc[0]['safe_value']);
-
-						// Truncate the desc to <300 chars
-						if( strlen($slide['desc']) > $desc_length ) {
-							$slide['desc'] = substr($slide['desc'], 0, $desc_length);
-							$slide['desc'] = preg_replace('/\w+$/', '', $slide['desc']).'…';
-						}
 
 				        // Facebook
 						$head_elements['metatag_og:image_0']['#value'] = file_create_url($file->uri);
