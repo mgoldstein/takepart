@@ -160,22 +160,6 @@
     }
   };
 
-  //needed to override TakePart3 theming of the Newsletter block.
-  Drupal.behaviors.newsletterSubmit = {
-    attach: function() {
-      $('.takepart-newsletter-form input.rollover-image-off').hover(
-        function() {
-          $(this).attr('old-src', $(this).attr('src'));
-          $(this).attr('src', $(this).parent().find('img.rollover-image-on').attr('src'));
-        },
-        function() {
-          // $(this).attr('src', $(this).attr('old-src'));
-          $(this).attr('src','/sites/all/themes/tp4/images/newsletter_submit.png');
-        }
-      );
-    }
-  };
-
   Drupal.behaviors.campaignPageSocialShare = {
     attach: function() {
       var $body = $('body');
