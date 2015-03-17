@@ -33,7 +33,9 @@ require 'zen-grids'
 # included with a module by uncommenting and modifying one of the lines below:
 #add_import_path "../../../default/modules/FOO"
 #add_import_path "../../../all/modules/FOO"
-#add_import_path "../../../../modules/FOO"
+add_import_path "../base/sass/helpers"
+add_import_path "../base/sass/icons"
+add_import_path "../base/sass/normalize"
 
 
 ##

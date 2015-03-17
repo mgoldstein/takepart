@@ -6,7 +6,6 @@
  * of these @include files will be combined into a single file.
  */
 
-
 // Add Compass' IE and vendor prefix support variables.
 @import "compass/support";
 @import "compass/utilities/general/clearfix";
@@ -17,11 +16,12 @@
 
 /* Base */
 @import "base/fonts";
-@import "base/icons";
+@import "icons";
 
 /* Helpers */
-@import "helpers/mixins";
-@import "helpers/variables";
+@import "variables";
+@import "mixins";
+@import "normalize";
 
 /* Elements */
 @import "elements/typography";
