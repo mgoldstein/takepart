@@ -123,6 +123,13 @@ function tp4_html_head_alter(&$head_elements) {
     $head_elements['metatag_og:type']['#weight'] = -740;
     $head_elements['metatag_og:image']['#weight'] = -730;
 
+	// Truncate descriptions that are too long for FB
+	$desc_length = 300;
+	$desc = $head_elements['metatag_og:description_0']['#value'];
+	if( strlen($desc) > $desc_length ) {
+		$desc = substr($desc, 0, $desc_length);
+		$head_elements['metatag_og:description_0']['#value'] = preg_replace('/\w+$/', '', $desc).'…';
+	}
 }
 
 /**
