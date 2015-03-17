@@ -92,6 +92,14 @@ function _tp4_support_db_unpublisher(&$context) {
       ->condition('type', 'action', '=')
       ->condition('nid', $disable, 'IN')
       ->execute();
+      
+    //disables the revision
+    $db_revision_update = db_update('node_revision')
+      ->fields(array(
+        'status' => 0, //changes status to 0
+      ))
+      ->condition('nid', $disable, 'IN')
+      ->execute();
   }
   //gives a default message for disabled
   elseif (empty($disable)) {
