@@ -1,4 +1,16 @@
 
+Publication Date 7.x-2.2, 2015-03-06
+------------------------------------------
+#2414509 by jstoller: Remove mention of Scheduler integration from README.txt.
+#2414645 by jstoller: Fix published on field doesn't display for non-admin users.
+#2390939 by jstoller: Fix validation error introduced in #2210853.
+#2387551 by jstoller: Add permission to modify any published on date.
+#2210853 by jstoller: Add support for jQuery date picker when Date Popup module
+  is enabled.
+#2379503 by jstoller: Reset the publication date when a node is cloned using the
+  Node Clone module.
+#2378797 by ramsalt: Add views argument handlers.
+
 Publication Date 7.x-2.1, 2014-11-11
 ------------------------------------------
 #2332253 by jgalletta, finne: Add Entity API entity wrapper support.

@@ -3,10 +3,11 @@ description = "Add a field containing the publication date."
 core = 7.x
 
 files[] = tests/publication_date.test
+configure = admin/config/content/publication-date
 
-; Information added by Drupal.org packaging script on 2014-11-11
-version = "7.x-2.1"
+; Information added by Drupal.org packaging script on 2015-03-06
+version = "7.x-2.2"
 core = "7.x"
 project = "publication_date"
-datestamp = "1415728695"
+datestamp = "1425671493"
 
