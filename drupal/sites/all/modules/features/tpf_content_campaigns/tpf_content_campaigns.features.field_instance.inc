@@ -675,7 +675,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 1,
-      'max_filesize' => '20 MB',
+      'max_filesize' => '200 KB',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
@@ -685,7 +685,6 @@ function tpf_content_campaigns_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -1292,7 +1291,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 0,
-      'max_filesize' => '',
+      'max_filesize' => '200 KB',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
@@ -1302,7 +1301,6 @@ function tpf_content_campaigns_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -1660,7 +1658,26 @@ function tpf_content_campaigns_field_default_field_instances() {
       'default_image' => 0,
       'file_directory' => '',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
+      'filefield_paths' => array(
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '',
+        ),
+        'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 1,
+      'max_filesize' => '200 KB',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
@@ -1670,7 +1687,6 @@ function tpf_content_campaigns_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -2423,14 +2439,13 @@ function tpf_content_campaigns_field_default_field_instances() {
         'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 1,
-      'max_filesize' => '',
+      'max_filesize' => '50 KB',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'file',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
@@ -2647,7 +2662,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 1,
-      'max_filesize' => '',
+      'max_filesize' => '200 KB',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
@@ -2657,7 +2672,6 @@ function tpf_content_campaigns_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -10153,7 +10167,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'retroactive_update' => 0,
       ),
       'filefield_paths_enabled' => 0,
-      'max_filesize' => '',
+      'max_filesize' => '200 KB',
       'max_resolution' => '',
       'min_resolution' => '',
       'title_field' => 0,
@@ -10163,7 +10177,6 @@ function tpf_content_campaigns_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
@@ -14133,6 +14146,7 @@ Note: If you manually reference more items than selected here, the number refere
     'widget' => array(
       'active' => 0,
       'module' => 'color_field',
+      'settings' => array(),
       'type' => 'color_field_spectrum_widget',
       'weight' => 11,
     ),
