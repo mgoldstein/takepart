@@ -263,19 +263,7 @@ function _takepart_calendar_init() {
                           s.linkTrackVars='eVar28,events';
                           s.linkTrackEvents='event19';
                           s.tl(this.href, 'o', pg_title);					
-						});						
-						//Refresh Google Share and addthis:
-						(function() {
-						    if((typeof gapi != 'undefined') && (gapi)) {
-        						gapi.plusone.go();
-        						var script = '//s7.addthis.com/js/250/addthis_widget.js#domready=1';
-    							if (window.addthis){
-        							window.addthis = null;
-    							}
-    							jQuery.getScript( script );
-    						}
-  						})();
-					});
+						});
         			jQuery('.fc-header-right').click(shareattach);
         			jQuery('.fc-header-left').click(shareattach);
         			shareattach();
