@@ -61,7 +61,7 @@ class tp_wordpress_import_parser extends FeedsParser {
             'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
             'pubDate' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
             'description' => $node->getElementsByTagName('description')->item(0)->nodeValue,
-            'content' => $content_prefix . strip_tags(nl2br($node->getElementsByTagName('encoded')->item(0)->nodeValue), $allowed_tags),
+            'content' => $content_prefix . nl2br(strip_tags($node->getElementsByTagName('encoded')->item(0)->nodeValue, $allowed_tags)),
             'admin_tag' => variable_get('tp_wordpress_import_admin_tag', 'Dowser'),
             'tagging' => variable_get('tp_wordpress_import_tagging', 'Social Justice')
           );
