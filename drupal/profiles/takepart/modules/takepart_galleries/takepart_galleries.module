@@ -221,6 +221,7 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 						$slide['data-token'] = pathauto_cleanstring($file->filename);
 					}
 
+					// Update the meta tags to match only the current slide
 					if($slide['data-token'] == $dirs[3]) {
 
 						$desc = field_get_items('file', $file, 'field_media_caption');
@@ -235,8 +236,19 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 						// Twitter
 						$head_elements['metatag_twitter:title_0']['#value'] = $slide['title'];
 						$head_elements['metatag_twitter:url_0']['#value'] .= '/'.$slide['data-token'];
-						break;
+
 					}
+
+					// Append meta tags for each image in the gallery to the Twitter card
+					$head_elements['metatag_twitter:image'.$delta.':src'] = array(
+						'#theme' => 'metatag_property',
+						'#tag' => 'meta',
+						'#id' => 'metatag_twitter:image'.$delta.':src',
+						'#name' => 'twitter:image'.$delta.':src',
+						'#value' => file_create_url($file->uri),
+						'#type' => 'html_tag',
+						'#weight' => (700 + $delta),
+					);
 		        }
 			}
 		}
@@ -254,4 +266,8 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 			'#type' => 'html_tag',
 		);
 	}
+
+	// Change the Twitter card type
+	$head_elements['metatag_twitter:card_0']['#value'] = 'gallery';
+
 }
