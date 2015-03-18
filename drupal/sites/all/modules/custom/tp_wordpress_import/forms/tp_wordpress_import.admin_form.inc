@@ -53,7 +53,7 @@ function tp_wordpress_import_admin_form() {
     '#type' => 'textfield',
     '#title' => t('Feeds - Takepart Wordpress Import - Allowed Tags'),
     '#description' => t('Allowable tags for strip_tags'),
-    '#default_value' => variable_get('tp_wordpress_import_allow_tags', '<iframe><a><h1><h2><h3><h4><h5>'),
+    '#default_value' => variable_get('tp_wordpress_import_allow_tags', '<iframe><a><h1><h2><h3><h4><h5><p><br><br/>'),
   );  
   
   //tap action widget
