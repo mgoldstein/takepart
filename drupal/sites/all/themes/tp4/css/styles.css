@@ -1281,11 +1281,11 @@ a.edit-mini-panel-link {
   background-position: 0 -529px;
 }
 
-/* line 21, ../sass/elements/_misc.scss */
+/* line 20, ../sass/elements/_misc.scss */
 .follow-us ul {
   clear: both;
 }
-/* line 24, ../sass/elements/_misc.scss */
+/* line 23, ../sass/elements/_misc.scss */
 .follow-us ul li a {
   height: 24px;
   width: 24px;
@@ -1296,7 +1296,7 @@ a.edit-mini-panel-link {
   float: left;
   margin-left: 6px;
 }
-/* line 34, ../sass/elements/_misc.scss */
+/* line 33, ../sass/elements/_misc.scss */
 .follow-us ul li:first-child a {
   margin-left: 0;
 }
@@ -1304,7 +1304,7 @@ a.edit-mini-panel-link {
 /**
  * Wireframes.
  */
-/* line 53, ../sass/elements/_misc.scss */
+/* line 52, ../sass/elements/_misc.scss */
 .with-wireframes #header,
 .with-wireframes #main,
 .with-wireframes #content,
@@ -1320,7 +1320,7 @@ a.edit-mini-panel-link {
  * Accessibility features.
  */
 /* element-invisible as defined by http://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
-/* line 71, ../sass/elements/_misc.scss */
+/* line 70, ../sass/elements/_misc.scss */
 .element-invisible,
 .element-focusable,
 #navigation .block-menu .block__title,
@@ -1333,7 +1333,7 @@ a.edit-mini-panel-link {
 }
 
 /* Turns off the element-invisible effect. */
-/* line 76, ../sass/elements/_misc.scss */
+/* line 75, ../sass/elements/_misc.scss */
 .element-focusable:active, .element-focusable:focus {
   position: static !important;
   clip: auto;
@@ -1345,11 +1345,11 @@ a.edit-mini-panel-link {
 /*
  * The skip-link link will be completely hidden until a user tabs to the link.
  */
-/* line 93, ../sass/elements/_misc.scss */
+/* line 92, ../sass/elements/_misc.scss */
 #skip-link {
   margin: 0;
 }
-/* line 97, ../sass/elements/_misc.scss */
+/* line 96, ../sass/elements/_misc.scss */
 #skip-link a,
 #skip-link a:visited {
   display: block;
@@ -1364,7 +1364,7 @@ a.edit-mini-panel-link {
  * Branding header.
  */
 /* Wrapping link for logo. */
-/* line 112, ../sass/elements/_misc.scss */
+/* line 111, ../sass/elements/_misc.scss */
 .header__logo {
   float: left;
   /* LTR */
@@ -1373,19 +1373,19 @@ a.edit-mini-panel-link {
 }
 
 /* Logo image. */
-/* line 119, ../sass/elements/_misc.scss */
+/* line 118, ../sass/elements/_misc.scss */
 .header__logo-image {
   vertical-align: bottom;
 }
 
 /* Wrapper for website name and slogan. */
-/* line 124, ../sass/elements/_misc.scss */
+/* line 123, ../sass/elements/_misc.scss */
 .header__name-and-slogan {
   float: left;
 }
 
 /* The name of the website. */
-/* line 129, ../sass/elements/_misc.scss */
+/* line 128, ../sass/elements/_misc.scss */
 .header__site-name {
   margin: 0;
   font-size: 2em;
@@ -1393,31 +1393,31 @@ a.edit-mini-panel-link {
 }
 
 /* The link around the name of the website. */
-/* line 137, ../sass/elements/_misc.scss */
+/* line 136, ../sass/elements/_misc.scss */
 .header__site-link:link, .header__site-link:visited {
   color: #000;
   text-decoration: none;
 }
-/* line 143, ../sass/elements/_misc.scss */
+/* line 142, ../sass/elements/_misc.scss */
 .header__site-link:hover, .header__site-link:focus {
   text-decoration: underline;
 }
 
 /* The slogan (or tagline) of a website. */
-/* line 149, ../sass/elements/_misc.scss */
+/* line 148, ../sass/elements/_misc.scss */
 .header__site-slogan {
   margin: 0;
 }
 
 /* The secondary menu (login, etc.) */
-/* line 154, ../sass/elements/_misc.scss */
+/* line 153, ../sass/elements/_misc.scss */
 .header__secondary-menu {
   float: right;
   /* LTR */
 }
 
 /* Wrapper for any blocks placed in the header region. */
-/* line 159, ../sass/elements/_misc.scss */
+/* line 158, ../sass/elements/_misc.scss */
 .header__region {
   /* Clear the logo. */
   clear: both;
@@ -1426,17 +1426,17 @@ a.edit-mini-panel-link {
 /**
  * Navigation bar.
  */
-/* line 167, ../sass/elements/_misc.scss */
+/* line 166, ../sass/elements/_misc.scss */
 #navigation {
   /* Sometimes you want to prevent overlapping with main div. */
   /* overflow: hidden; */
   /* Main menu and secondary menu links and menu block links. */
 }
-/* line 171, ../sass/elements/_misc.scss */
+/* line 170, ../sass/elements/_misc.scss */
 #navigation .block {
   margin-bottom: 0;
 }
-/* line 182, ../sass/elements/_misc.scss */
+/* line 181, ../sass/elements/_misc.scss */
 #navigation .links,
 #navigation .menu {
   margin: 0;
@@ -1444,7 +1444,7 @@ a.edit-mini-panel-link {
   text-align: left;
   /* LTR */
 }
-/* line 187, ../sass/elements/_misc.scss */
+/* line 186, ../sass/elements/_misc.scss */
 #navigation .links li,
 #navigation .menu li {
   /* A simple method to get navigation links to appear in one line. */
@@ -1459,12 +1459,12 @@ a.edit-mini-panel-link {
 /**
  * Breadcrumb navigation.
  */
-/* line 201, ../sass/elements/_misc.scss */
+/* line 200, ../sass/elements/_misc.scss */
 .breadcrumb ol {
   margin: 0;
   padding: 0;
 }
-/* line 205, ../sass/elements/_misc.scss */
+/* line 204, ../sass/elements/_misc.scss */
 .breadcrumb li {
   display: inline;
   list-style-type: none;
@@ -1475,7 +1475,7 @@ a.edit-mini-panel-link {
 /**
  * Titles.
  */
-/* line 221, ../sass/elements/_misc.scss */
+/* line 220, ../sass/elements/_misc.scss */
 .page__title,
 .node__title,
 .block__title,
@@ -1489,7 +1489,7 @@ a.edit-mini-panel-link {
 /**
  * Messages.
  */
-/* line 228, ../sass/elements/_misc.scss */
+/* line 227, ../sass/elements/_misc.scss */
 .messages, .messages--status, .messages--warning, .messages--error {
   margin: 1.5em 0;
   padding: 10px 10px 10px 50px;
@@ -1500,48 +1500,48 @@ a.edit-mini-panel-link {
   border: 1px solid #be7;
 }
 
-/* line 239, ../sass/elements/_misc.scss */
+/* line 238, ../sass/elements/_misc.scss */
 .messages--warning {
   border-color: #ed5;
 }
 
-/* line 244, ../sass/elements/_misc.scss */
+/* line 243, ../sass/elements/_misc.scss */
 .messages--error {
   border-color: #ed541d;
 }
 
-/* line 251, ../sass/elements/_misc.scss */
+/* line 250, ../sass/elements/_misc.scss */
 .messages__list {
   margin: 0;
 }
 
-/* line 254, ../sass/elements/_misc.scss */
+/* line 253, ../sass/elements/_misc.scss */
 .messages__item {
   list-style-image: none;
 }
 
 /* Core/module installation error messages. */
-/* line 259, ../sass/elements/_misc.scss */
+/* line 258, ../sass/elements/_misc.scss */
 .messages--error p.error {
   color: #333;
 }
 
 /* System status report. */
-/* line 265, ../sass/elements/_misc.scss */
+/* line 264, ../sass/elements/_misc.scss */
 .ok,
 .messages--status {
   background-color: #f8fff0;
   color: #234600;
 }
 
-/* line 270, ../sass/elements/_misc.scss */
+/* line 269, ../sass/elements/_misc.scss */
 .warning,
 .messages--warning {
   background-color: #fffce5;
   color: #840;
 }
 
-/* line 275, ../sass/elements/_misc.scss */
+/* line 274, ../sass/elements/_misc.scss */
 .error,
 .messages--error {
   background-color: #fef5f1;
@@ -1552,7 +1552,7 @@ a.edit-mini-panel-link {
  * Tabs.
  */
 /* Basic positioning styles shared by primary and secondary tabs. */
-/* line 285, ../sass/elements/_misc.scss */
+/* line 284, ../sass/elements/_misc.scss */
 .tabs-primary, .tabs-secondary {
   overflow: hidden;
   /* IE 9 and earlier don't understand gradients. */
@@ -1563,7 +1563,7 @@ a.edit-mini-panel-link {
   white-space: nowrap;
 }
 
-/* line 294, ../sass/elements/_misc.scss */
+/* line 293, ../sass/elements/_misc.scss */
 .tabs-primary__tab, .tabs-primary__tab.is-active, .tabs-secondary__tab,
 .tabs-secondary__tab.is-active {
   float: left;
@@ -1571,7 +1571,7 @@ a.edit-mini-panel-link {
   margin: 0 3px;
 }
 
-/* line 298, ../sass/elements/_misc.scss */
+/* line 297, ../sass/elements/_misc.scss */
 a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   border: 1px solid #e9e9e9;
   border-right: 0;
@@ -1582,7 +1582,7 @@ a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__
 }
 
 /* Primary tabs. */
-/* line 311, ../sass/elements/_misc.scss */
+/* line 310, ../sass/elements/_misc.scss */
 .tabs-primary__tab, .tabs-primary__tab.is-active {
   -moz-border-radius-topleft: 4px;
   -webkit-border-top-left-radius: 4px;
@@ -1597,12 +1597,12 @@ a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active, a.tabs-secondary__
   border-bottom: 0 \0/ie;
 }
 
-/* line 320, ../sass/elements/_misc.scss */
+/* line 319, ../sass/elements/_misc.scss */
 .is-active.tabs-primary__tab {
   border-bottom-color: white;
 }
 
-/* line 326, ../sass/elements/_misc.scss */
+/* line 325, ../sass/elements/_misc.scss */
 a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active {
   -moz-border-radius-topleft: 4px;
   -webkit-border-top-left-radius: 4px;
@@ -1621,13 +1621,13 @@ a.tabs-primary__tab-link, a.tabs-primary__tab-link.is-active {
   text-align: center;
 }
 
-/* line 336, ../sass/elements/_misc.scss */
+/* line 335, ../sass/elements/_misc.scss */
 a.tabs-primary__tab-link:hover, a.tabs-primary__tab-link:focus {
   background-color: #e9e9e9;
   border-color: #f2f2f2;
 }
 
-/* line 340, ../sass/elements/_misc.scss */
+/* line 339, ../sass/elements/_misc.scss */
 a.tabs-primary__tab-link:active, a.tabs-primary__tab-link.is-active {
   background-color: transparent;
   filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFE9E9E9', endColorstr='#00E9E9E9');
@@ -1635,20 +1635,20 @@ a.tabs-primary__tab-link:active, a.tabs-primary__tab-link.is-active {
 }
 
 /* Secondary tabs. */
-/* line 363, ../sass/elements/_misc.scss */
+/* line 362, ../sass/elements/_misc.scss */
 .tabs-secondary {
   font-size: .9em;
   /* Collapse bottom margin of ul.primary. */
   margin-top: -1.5em;
 }
 
-/* line 370, ../sass/elements/_misc.scss */
+/* line 369, ../sass/elements/_misc.scss */
 .tabs-secondary__tab,
 .tabs-secondary__tab.is-active {
   margin: 0.75em 3px;
 }
 
-/* line 376, ../sass/elements/_misc.scss */
+/* line 375, ../sass/elements/_misc.scss */
 a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   -webkit-border-radius: 0.75em;
   -moz-border-radius: 0.75em;
@@ -1665,14 +1665,14 @@ a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   padding: 0 .5em;
 }
 
-/* line 385, ../sass/elements/_misc.scss */
+/* line 384, ../sass/elements/_misc.scss */
 a.tabs-secondary__tab-link:hover, a.tabs-secondary__tab-link:focus {
   background-color: #dedede;
   border-color: #999;
   color: #333;
 }
 
-/* line 390, ../sass/elements/_misc.scss */
+/* line 389, ../sass/elements/_misc.scss */
 a.tabs-secondary__tab-link:active, a.tabs-secondary__tab-link.is-active {
   text-shadow: 1px 1px 0 #333333;
   background-color: #666;
@@ -1684,12 +1684,12 @@ a.tabs-secondary__tab-link:active, a.tabs-secondary__tab-link.is-active {
  * Inline styles.
  */
 /* List of links generated by theme_links(). */
-/* line 418, ../sass/elements/_misc.scss */
+/* line 417, ../sass/elements/_misc.scss */
 .inline {
   display: inline;
   padding: 0;
 }
-/* line 422, ../sass/elements/_misc.scss */
+/* line 421, ../sass/elements/_misc.scss */
 .inline li {
   display: inline;
   list-style-type: none;
@@ -1698,7 +1698,7 @@ a.tabs-secondary__tab-link:active, a.tabs-secondary__tab-link.is-active {
 }
 
 /* The inline field label used by the Fences module. */
-/* line 430, ../sass/elements/_misc.scss */
+/* line 429, ../sass/elements/_misc.scss */
 span.field-label {
   padding: 0 1em 0 0;
   /* LTR */
@@ -1707,19 +1707,19 @@ span.field-label {
 /**
  * "More" links.
  */
-/* line 437, ../sass/elements/_misc.scss */
+/* line 436, ../sass/elements/_misc.scss */
 .more-link {
   text-align: right;
   /* LTR */
 }
 
-/* line 440, ../sass/elements/_misc.scss */
+/* line 439, ../sass/elements/_misc.scss */
 .more-help-link {
   text-align: right;
   /* LTR */
 }
 
-/* line 443, ../sass/elements/_misc.scss */
+/* line 442, ../sass/elements/_misc.scss */
 .more-help-link a {
   background-position: 0 50%;
   /* LTR */
@@ -1732,14 +1732,14 @@ span.field-label {
  * Pager.
  */
 /* A list of page numbers when more than 1 page of content is available. */
-/* line 454, ../sass/elements/_misc.scss */
+/* line 453, ../sass/elements/_misc.scss */
 .pager {
   clear: both;
   padding: 0;
   text-align: center;
 }
 
-/* line 459, ../sass/elements/_misc.scss */
+/* line 458, ../sass/elements/_misc.scss */
 .pager-item,
 .pager-first,
 .pager-previous,
@@ -1752,7 +1752,7 @@ span.field-label {
   background-image: none;
 }
 
-/* line 471, ../sass/elements/_misc.scss */
+/* line 470, ../sass/elements/_misc.scss */
 .pager-item,
 .pager-first,
 .pager-previous,
@@ -1763,7 +1763,7 @@ span.field-label {
 }
 
 /* The current page's list item. */
-/* line 476, ../sass/elements/_misc.scss */
+/* line 475, ../sass/elements/_misc.scss */
 .pager-current {
   font-weight: bold;
 }
@@ -1772,13 +1772,13 @@ span.field-label {
  * Blocks.
  */
 /* Block wrapper. */
-/* line 486, ../sass/elements/_misc.scss */
+/* line 485, ../sass/elements/_misc.scss */
 .block {
   margin-bottom: 1.5em;
 }
 
 /* The active item in a Drupal menu. */
-/* line 492, ../sass/elements/_misc.scss */
+/* line 491, ../sass/elements/_misc.scss */
 .menu a.active {
   color: #000;
 }
@@ -1787,7 +1787,7 @@ span.field-label {
  * Marker.
  */
 /* The "new" or "updated" marker. */
-/* line 502, ../sass/elements/_misc.scss */
+/* line 501, ../sass/elements/_misc.scss */
 .new,
 .update {
   color: #c00;
@@ -1799,7 +1799,7 @@ span.field-label {
  * Unpublished note.
  */
 /* The word "Unpublished" displayed underneath the content. */
-/* line 513, ../sass/elements/_misc.scss */
+/* line 512, ../sass/elements/_misc.scss */
 .unpublished {
   height: 0;
   overflow: visible;
@@ -1820,31 +1820,31 @@ span.field-label {
  * Comments.
  */
 /* Wrapper for the list of comments and its title. */
-/* line 541, ../sass/elements/_misc.scss */
+/* line 540, ../sass/elements/_misc.scss */
 .comments {
   margin: 1.5em 0;
 }
 
 /* Preview of the comment before submitting new or updated comment. */
-/* line 546, ../sass/elements/_misc.scss */
+/* line 545, ../sass/elements/_misc.scss */
 .comment-preview {
   /* Drupal core will use a #ffffea background. See #1110842. */
   background-color: #ffffea;
 }
 
 /* Wrapper for a single comment. */
-/* line 552, ../sass/elements/_misc.scss */
+/* line 551, ../sass/elements/_misc.scss */
 .comment {
   /* Comment's permalink wrapper. */
 }
-/* line 555, ../sass/elements/_misc.scss */
+/* line 554, ../sass/elements/_misc.scss */
 .comment .permalink {
   text-transform: uppercase;
   font-size: 75%;
 }
 
 /* Nested comments are indented. */
-/* line 562, ../sass/elements/_misc.scss */
+/* line 561, ../sass/elements/_misc.scss */
 .indented {
   /* Drupal core uses a 25px left margin. */
   margin-left: 30px;
@@ -1855,7 +1855,7 @@ span.field-label {
  * Forms.
  */
 /* Wrapper for a form element (or group of form elements) and its label. */
-/* line 572, ../sass/elements/_misc.scss */
+/* line 571, ../sass/elements/_misc.scss */
 .form-item {
   margin: 1.5em 0;
   /* Pack groups of checkboxes and radio buttons closer together. */
@@ -1863,33 +1863,33 @@ span.field-label {
   /* Highlight the form elements that caused a form submission error. */
   /* The descriptive help text (separate from the label). */
 }
-/* line 577, ../sass/elements/_misc.scss */
+/* line 576, ../sass/elements/_misc.scss */
 .form-checkboxes .form-item, .form-radios .form-item {
   /* Drupal core uses "0.4em 0". */
   margin: 0;
 }
-/* line 584, ../sass/elements/_misc.scss */
+/* line 583, ../sass/elements/_misc.scss */
 tr.odd .form-item, tr.even .form-item {
   margin: 0;
 }
-/* line 591, ../sass/elements/_misc.scss */
+/* line 590, ../sass/elements/_misc.scss */
 .form-item input.error,
 .form-item textarea.error,
 .form-item select.error {
   border: 1px solid #c00;
 }
-/* line 596, ../sass/elements/_misc.scss */
+/* line 595, ../sass/elements/_misc.scss */
 .form-item .description {
   font-size: 0.85em;
 }
 
-/* line 603, ../sass/elements/_misc.scss */
+/* line 602, ../sass/elements/_misc.scss */
 .form-type-radio .description,
 .form-type-checkbox .description {
   margin-left: 2.4em;
 }
 
-/* line 608, ../sass/elements/_misc.scss */
+/* line 607, ../sass/elements/_misc.scss */
 .block-newsletter-campaign input[type="submit"] {
   border: none;
   -webkit-border-radius: 0;
@@ -1909,26 +1909,26 @@ tr.odd .form-item, tr.even .form-item {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 621, ../sass/elements/_misc.scss */
+/* line 620, ../sass/elements/_misc.scss */
 .block-newsletter-campaign input[type="submit"]:hover {
   background-color: black;
 }
 
 /* The part of the label that indicates a required field. */
-/* line 627, ../sass/elements/_misc.scss */
+/* line 626, ../sass/elements/_misc.scss */
 .form-required {
   color: #c00;
 }
 
 /* Labels for radios and checkboxes. */
-/* line 632, ../sass/elements/_misc.scss */
+/* line 631, ../sass/elements/_misc.scss */
 label.option {
   display: inline;
   font-weight: normal;
 }
 
 /* Buttons used by contrib modules like Media. */
-/* line 638, ../sass/elements/_misc.scss */
+/* line 637, ../sass/elements/_misc.scss */
 a.button {
   -webkit-appearance: button;
   -moz-appearance: button;
@@ -1936,14 +1936,14 @@ a.button {
 }
 
 /* Password confirmation. */
-/* line 644, ../sass/elements/_misc.scss */
+/* line 643, ../sass/elements/_misc.scss */
 .password-parent,
 .confirm-parent {
   margin: 0;
 }
 
 /* Drupal's default login form block. */
-/* line 649, ../sass/elements/_misc.scss */
+/* line 648, ../sass/elements/_misc.scss */
 #user-login-form {
   text-align: left;
   /* LTR */
@@ -1956,20 +1956,20 @@ a.button {
  * styling of list items.
  */
 /* OpenID creates a new ul above the login form's links. */
-/* line 661, ../sass/elements/_misc.scss */
+/* line 660, ../sass/elements/_misc.scss */
 .openid-links {
   /* Position OpenID's ul next to the rest of the links. */
   margin-bottom: 0;
 }
 
 /* The "Log in using OpenID" and "Cancel OpenID login" links. */
-/* line 668, ../sass/elements/_misc.scss */
+/* line 667, ../sass/elements/_misc.scss */
 .openid-link,
 .user-link {
   margin-top: 1.5em;
 }
 
-/* line 672, ../sass/elements/_misc.scss */
+/* line 671, ../sass/elements/_misc.scss */
 html.js #user-login-form li.openid-link,
 #user-login-form li.openid-link {
   /* Un-do some of the padding on the ul list. */
@@ -1977,7 +1977,7 @@ html.js #user-login-form li.openid-link,
   /* LTR */
 }
 
-/* line 676, ../sass/elements/_misc.scss */
+/* line 675, ../sass/elements/_misc.scss */
 #user-login ul {
   margin: 1.5em 0;
 }
@@ -1985,7 +1985,7 @@ html.js #user-login-form li.openid-link,
 /**
  * Drupal admin tables.
  */
-/* line 684, ../sass/elements/_misc.scss */
+/* line 683, ../sass/elements/_misc.scss */
 form th {
   text-align: left;
   /* LTR */
@@ -1993,16 +1993,16 @@ form th {
   /* LTR */
   border-bottom: 3px solid #ccc;
 }
-/* line 689, ../sass/elements/_misc.scss */
+/* line 688, ../sass/elements/_misc.scss */
 form tbody {
   border-top: 1px solid #ccc;
 }
-/* line 692, ../sass/elements/_misc.scss */
+/* line 691, ../sass/elements/_misc.scss */
 form table ul {
   margin: 0;
 }
 
-/* line 697, ../sass/elements/_misc.scss */
+/* line 696, ../sass/elements/_misc.scss */
 tr.even,
 tr.odd {
   background-color: #eee;
@@ -2010,26 +2010,26 @@ tr.odd {
   padding: 0.1em 0.6em;
 }
 
-/* line 702, ../sass/elements/_misc.scss */
+/* line 701, ../sass/elements/_misc.scss */
 tr.even {
   background-color: #fff;
 }
 
 /* Markup generated by theme_tablesort_indicator(). */
-/* line 717, ../sass/elements/_misc.scss */
+/* line 716, ../sass/elements/_misc.scss */
 td.active {
   background-color: #ddd;
 }
 
 /* Center checkboxes inside table cell. */
-/* line 723, ../sass/elements/_misc.scss */
+/* line 722, ../sass/elements/_misc.scss */
 td.checkbox,
 th.checkbox {
   text-align: center;
 }
 
 /* Drupal core wrongly puts this in system.menus.css. Since we override that, add it back. */
-/* line 728, ../sass/elements/_misc.scss */
+/* line 727, ../sass/elements/_misc.scss */
 td.menu-disabled {
   background: #ccc;
 }
@@ -2040,7 +2040,7 @@ td.menu-disabled {
  * @see autocomplete.js
  */
 /* Suggestion list. */
-/* line 739, ../sass/elements/_misc.scss */
+/* line 738, ../sass/elements/_misc.scss */
 #autocomplete .selected {
   background: #0072b9;
   color: #fff;
@@ -2051,7 +2051,7 @@ td.menu-disabled {
  *
  * @see collapse.js
  */
-/* line 750, ../sass/elements/_misc.scss */
+/* line 749, ../sass/elements/_misc.scss */
 html.js .collapsible .fieldset-legend {
   background-position: 5px 65%;
   /* LTR */
@@ -2059,12 +2059,12 @@ html.js .collapsible .fieldset-legend {
   padding-left: 15px;
   /* LTR */
 }
-/* line 755, ../sass/elements/_misc.scss */
+/* line 754, ../sass/elements/_misc.scss */
 html.js .collapsed .fieldset-legend {
   background-position: 5px 50%;
   /* LTR */
 }
-/* line 758, ../sass/elements/_misc.scss */
+/* line 757, ../sass/elements/_misc.scss */
 .fieldset-legend .summary {
   color: #999;
   font-size: 0.9em;
@@ -2076,17 +2076,17 @@ html.js .collapsed .fieldset-legend {
  *
  * @see tabledrag.js
  */
-/* line 770, ../sass/elements/_misc.scss */
+/* line 769, ../sass/elements/_misc.scss */
 tr.drag {
   background-color: #fffff0;
 }
 
-/* line 773, ../sass/elements/_misc.scss */
+/* line 772, ../sass/elements/_misc.scss */
 tr.drag-previous {
   background-color: #ffd;
 }
 
-/* line 776, ../sass/elements/_misc.scss */
+/* line 775, ../sass/elements/_misc.scss */
 .tabledrag-toggle-weight {
   font-size: 0.9em;
 }
@@ -2096,7 +2096,7 @@ tr.drag-previous {
  *
  * @see tableselect.js
  */
-/* line 785, ../sass/elements/_misc.scss */
+/* line 784, ../sass/elements/_misc.scss */
 tr.selected td {
   background: #ffc;
 }
@@ -2106,11 +2106,11 @@ tr.selected td {
  *
  * @see progress.js
  */
-/* line 794, ../sass/elements/_misc.scss */
+/* line 793, ../sass/elements/_misc.scss */
 .progress {
   font-weight: bold;
 }
-/* line 797, ../sass/elements/_misc.scss */
+/* line 796, ../sass/elements/_misc.scss */
 .progress .bar {
   background: #ccc;
   border-color: #666;
@@ -2121,7 +2121,7 @@ tr.selected td {
   -o-border-radius: 3px;
   border-radius: 3px;
 }
-/* line 803, ../sass/elements/_misc.scss */
+/* line 802, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
   background-image: url('../images/progress.gif?1420487591');
@@ -2129,12 +2129,12 @@ tr.selected td {
 
 /* TP Modal Library ---------------------- */
 /* -- copied from takepart_core ---------- */
-/* line 812, ../sass/elements/_misc.scss */
+/* line 811, ../sass/elements/_misc.scss */
 .tpmodal_overlay {
   background: #000;
 }
 
-/* line 816, ../sass/elements/_misc.scss */
+/* line 815, ../sass/elements/_misc.scss */
 .tpmodal_modal {
   background: #fff;
   border-radius: 10px;
@@ -2145,32 +2145,32 @@ tr.selected td {
   min-width: 40px;
 }
 
-/* line 827, ../sass/elements/_misc.scss */
+/* line 826, ../sass/elements/_misc.scss */
 .tpmodal_modal.tpmodal_position {
   display: none !important;
 }
 
-/* line 831, ../sass/elements/_misc.scss */
+/* line 830, ../sass/elements/_misc.scss */
 .tpmodal_loading {
   background: white url(/profiles/takepart/themes/takepart3/images/spinner.gif) center center no-repeat;
 }
 
-/* line 835, ../sass/elements/_misc.scss */
+/* line 834, ../sass/elements/_misc.scss */
 .tpmodal_content {
   padding: 20px;
   opacity: 1;
 }
-/* line 838, ../sass/elements/_misc.scss */
+/* line 837, ../sass/elements/_misc.scss */
 .tpmodal_content img {
   max-width: 100%;
 }
 
-/* line 844, ../sass/elements/_misc.scss */
+/* line 843, ../sass/elements/_misc.scss */
 .tpmodal_loading .tpmodal_content {
   opacity: 0;
 }
 
-/* line 848, ../sass/elements/_misc.scss */
+/* line 847, ../sass/elements/_misc.scss */
 .tpmodal_close {
   height: 13px;
   width: 13px;
@@ -2181,24 +2181,24 @@ tr.selected td {
 
 /* Interstitials ------------------------- */
 /* Social */
-/* line 860, ../sass/elements/_misc.scss */
+/* line 859, ../sass/elements/_misc.scss */
 .interstitial_modal_modal.tpmodal_modal {
   background: transparent;
   border-radius: 0;
   max-width: 100% !important;
 }
 
-/* line 866, ../sass/elements/_misc.scss */
+/* line 865, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_content {
   padding: 0;
 }
 
-/* line 870, ../sass/elements/_misc.scss */
+/* line 869, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_close {
   width: 40px;
   height: 40px;
 }
-/* line 873, ../sass/elements/_misc.scss */
+/* line 872, ../sass/elements/_misc.scss */
 .interstitial_modal_modal .tpmodal_close:before, .interstitial_modal_modal .tpmodal_close::before {
   content: '\e617';
   font-size: 24px;
@@ -2210,19 +2210,19 @@ tr.selected td {
   text-indent: 0;
 }
 
-/* line 885, ../sass/elements/_misc.scss */
+/* line 884, ../sass/elements/_misc.scss */
 .interstitial_modal_modal iframe {
   width: 400px;
   height: 400px;
   overflow: hidden;
 }
 
-/* line 891, ../sass/elements/_misc.scss */
+/* line 890, ../sass/elements/_misc.scss */
 .interstitial_modal_overlay {
   background: #000;
 }
 
-/* line 894, ../sass/elements/_misc.scss */
+/* line 893, ../sass/elements/_misc.scss */
 .tpmodal_close {
   margin: 5px 5px 0 0;
   text-indent: 100%;
@@ -2230,7 +2230,7 @@ tr.selected td {
 }
 
 /* Video Player ------------------------- */
-/* line 902, ../sass/elements/_misc.scss */
+/* line 901, ../sass/elements/_misc.scss */
 .tp-video-player.loading {
   width: 100%;
   background: url('../images/video-loading.gif?1420487591');
@@ -2239,7 +2239,7 @@ tr.selected td {
   padding-bottom: 56.25%;
   /* 16:9 */
 }
-/* line 909, ../sass/elements/_misc.scss */
+/* line 908, ../sass/elements/_misc.scss */
 .tp-video-player.blocked {
   width: 100%;
   background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
@@ -2248,37 +2248,37 @@ tr.selected td {
   padding-bottom: 56.25%;
   /* 16:9 */
 }
-/* line 916, ../sass/elements/_misc.scss */
+/* line 915, ../sass/elements/_misc.scss */
 .tp-video-player.blocked .jwmain {
   display: none;
 }
 
-/* line 923, ../sass/elements/_misc.scss */
+/* line 922, ../sass/elements/_misc.scss */
 .current-video .blocked {
   width: 100%;
   background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
   background-size: cover;
   height: 0;
 }
-/* line 929, ../sass/elements/_misc.scss */
+/* line 928, ../sass/elements/_misc.scss */
 .current-video .blocked object {
   display: none;
 }
 
-/* line 936, ../sass/elements/_misc.scss */
+/* line 935, ../sass/elements/_misc.scss */
 .jwplayer.blocked {
   width: 100%;
   background: url('../images/video-blocked.gif?1420487591') no-repeat center center;
   background-size: cover;
   height: 0;
 }
-/* line 942, ../sass/elements/_misc.scss */
+/* line 941, ../sass/elements/_misc.scss */
 .jwplayer.blocked .jwmain {
   display: none;
 }
 
 /** Samsung leaderboard **/
-/* line 948, ../sass/elements/_misc.scss */
+/* line 947, ../sass/elements/_misc.scss */
 .leaderboard .leaderboard-ad {
   height: auto !important;
 }
