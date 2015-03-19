@@ -28,6 +28,7 @@ dependencies[] = inline_entity_form
 dependencies[] = link
 dependencies[] = list
 dependencies[] = media
+dependencies[] = media_2x_widget_plupload
 dependencies[] = media_image_formatter
 dependencies[] = mediafield
 dependencies[] = metatag
