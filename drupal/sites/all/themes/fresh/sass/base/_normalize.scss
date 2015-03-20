@@ -1,0 +1,116 @@
+/* Overrides to the base normalize.scss */
+
+body, p{
+  font-family: $Ashbury;
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: -.01em;
+}
+h1{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 38px;
+}
+h2{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 30px;
+}
+h3{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 28px;
+}
+h4, h5{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 20px;
+}
+blockquote{
+  font-family: $Ashbury;
+  font-weight: 100px;
+  font-size: 18px;
+  line-height: 27px;
+}
+.sponsor-label{
+  font-family: $Brown;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 20px;
+}
+.label{
+  font-family: $AdelleSans;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: .01em;
+}
+.caption{
+  font-family: $Ashbury;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 24px;
+}
+ul{
+
+}
+li{
+
+}
+hr{
+  border-bottom: 1px solid $light-gray;
+  &.special{
+    color: $blue;
+  }
+}
+a{
+  font-family: $Ashbury;
+  font-weight: 100;
+  color: $mint;
+}
+img{
+  max-width: 100%;
+}
+
+
+
+/*
+* Components
+*************************/
+.pullquote{
+  font-family: $Ashbury;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 36px;
+  span{
+
+  }
+}
+.author-block{
+  font-family: $Ashbury;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 24px;
+  span{
+    font-weight: bold;
+  }
+}
+.btn{
+
+}
+.btn-primary{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 14px;
+}
+.btn-secondary{
+  font-family: $AdelleSans;
+  font-weight: normal;
+  font-size: 14px;
+}

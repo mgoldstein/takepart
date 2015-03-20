@@ -1995,20 +1995,20 @@ ol > li:before {
 }
 =======
 /*
-Syntax error: File to import not found or unreadable: zen.
+Syntax error: File to import not found or unreadable: icons.
               Load paths:
                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass
                 /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/blueprint/stylesheets
                 /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets
-                /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass-extensions/zen-grids/stylesheets
+                /Library/Ruby/Gems/2.0.0/gems/zen-grids-1.4/stylesheets
                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/helpers
                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/icons
                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/normalize
                 Compass::SpriteImporter
-        on line 16 of /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/wysiwyg.scss
+        on line 20 of /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/wysiwyg.scss
 
 Backtrace:
-/Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/wysiwyg.scss:16
+/Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/wysiwyg.scss:20
 /Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/import_node.rb:67:in `rescue in import'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/import_node.rb:45:in `import'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/import_node.rb:28:in `imported_file'
@@ -2072,5 +2072,9 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
+<<<<<<< HEAD
   content: "Syntax error: File to import not found or unreadable: zen.\A               Load paths:\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass\A                 /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/blueprint/stylesheets\A                 /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass-extensions/zen-grids/stylesheets\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/helpers\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/icons\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/normalize\A                 Compass::SpriteImporter\A         on line 16 of /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/wysiwyg.scss"; }
 >>>>>>> TP-2994: added the theme setup
+=======
+  content: "Syntax error: File to import not found or unreadable: icons.\A               Load paths:\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass\A                 /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/blueprint/stylesheets\A                 /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets\A                 /Library/Ruby/Gems/2.0.0/gems/zen-grids-1.4/stylesheets\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/helpers\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/icons\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/normalize\A                 Compass::SpriteImporter\A         on line 20 of /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/wysiwyg.scss"; }
+>>>>>>> TP-2994: pages will now have their separate css file.  No more global style.css file
