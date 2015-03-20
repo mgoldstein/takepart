@@ -16,51 +16,6 @@
  *Misc
  */
 /* Elements */
-/* line 27, ../sass/elements/_pie.scss */
-.pie-element, .bordered, .gradient {
-  behavior: url("pie.htc");
-  position: relative;
-}
-
-/* line 33, ../sass/elements/_pie.scss */
-.bordered {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-
-/* line 38, ../sass/elements/_pie.scss */
-.gradient {
-  background: -webkit-linear-gradient(#ff0000, #0000ff);
-  background: -moz-linear-gradient(#ff0000, #0000ff);
-  background: -o-linear-gradient(#ff0000, #0000ff);
-  -pie-background: linear-gradient(#ff0000, #0000ff);
-  background: linear-gradient(#ff0000, #0000ff);
-}
-
-/* line 52, ../sass/elements/_pie.scss */
-.pie-container, .widget {
-  z-index: 0;
-  position: relative;
-}
-
-/* line 56, ../sass/elements/_pie.scss */
-.z-pie-element, .widget h3 {
-  behavior: url("pie.htc");
-  z-index: 0;
-}
-
-/* line 71, ../sass/elements/_pie.scss */
-.has-gradient {
-  behavior: url("pie.htc");
-  position: relative;
-  background: -webkit-linear-gradient(#ff0000, #0000ff);
-  background: -moz-linear-gradient(#ff0000, #0000ff);
-  background: -o-linear-gradient(#ff0000, #0000ff);
-  -pie-background: linear-gradient(#ff0000, #0000ff);
-  background: linear-gradient(#ff0000, #0000ff);
-}
-
 /* line 4, ../sass/elements/_typography.scss */
 body {
   font: 100 14px/18px "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
@@ -472,17 +427,17 @@ fieldset {
   margin: 0 2px;
   /* Apply borders and padding that keep the vertical rhythm. */
   border-color: #c0c0c0;
-  border-top-width: 0.0625em;
   border-top-style: solid;
+  border-top-width: 0.0625em;
   padding-top: 0.4625em;
-  border-bottom-width: 0.0625em;
   border-bottom-style: solid;
+  border-bottom-width: 0.0625em;
   padding-bottom: 0.9125em;
-  border-left-width: 0.0625em;
   border-left-style: solid;
+  border-left-width: 0.0625em;
   padding-left: 0.9125em;
-  border-right-width: 0.0625em;
   border-right-style: solid;
+  border-right-width: 0.0625em;
   padding-right: 0.9125em;
 }
 
@@ -677,167 +632,180 @@ a.edit-mini-panel-link {
 /**
  * Global Sprites.
  */
-/* line 263, social/*.png */
+/* line 258, social/*.png */
 .social-sprite, .social-email-black, .social-email-gray, .social-facebook-black, .social-facebook-gray, .social-googleplus-black, .social-googleplus-gray, .social-pinterest-black, .social-pinterest-gray, .social-tumblr-black, .social-tumblr-gray, .social-twitter-black, .social-twitter-gray, .social-youtube-black, .social-youtube-gray {
-  background-image: url('../images/social-sae54a4399a.png');
-  background-repeat: no-repeat;
+  background: url('../images/social-s3eb5586d89.png') no-repeat;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .social-email-black {
-  background-position: 0 0;
+  background-position: 0 -624px;
 }
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-email-black:hover, .social-email-black.email-black-hover {
-  background-position: 0 -24px;
-}
-
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-email-gray {
-  background-position: 0 -48px;
-}
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-email-gray:hover, .social-email-gray.email-gray-hover {
-  background-position: 0 -72px;
-}
-
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-facebook-black {
-  background-position: 0 -96px;
-}
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-facebook-black:hover, .social-facebook-black.facebook-black-hover {
-  background-position: 0 -120px;
-}
-
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-facebook-gray {
-  background-position: 0 -144px;
-}
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-facebook-gray:hover, .social-facebook-gray.facebook-gray-hover {
-  background-position: 0 -168px;
-}
-
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-googleplus-black {
-  background-position: 0 -192px;
-}
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-googleplus-black:hover, .social-googleplus-black.googleplus-black-hover {
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-black:hover, .social-email-black.email-black_hover, .social-email-black.email-black-hover {
   background-position: 0 -216px;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-googleplus-gray {
-  background-position: 0 -240px;
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-gray {
+  background-position: 0 -552px;
 }
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-googleplus-gray:hover, .social-googleplus-gray.googleplus-gray-hover {
-  background-position: 0 -264px;
-}
-
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-pinterest-black {
-  background-position: 0 -288px;
-}
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-pinterest-black:hover, .social-pinterest-black.pinterest-black-hover {
-  background-position: 0 -312px;
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-email-gray:hover, .social-email-gray.email-gray_hover, .social-email-gray.email-gray-hover {
+  background-position: 0 -192px;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-pinterest-gray {
-  background-position: 0 -336px;
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-facebook-black {
+  background-position: 0 -600px;
 }
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-pinterest-gray:hover, .social-pinterest-gray.pinterest-gray-hover {
-  background-position: 0 -360px;
-}
-
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-black {
-  background-position: 0 -384px;
-}
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-black:hover, .social-tumblr-black.tumblr-black-hover {
-  background-position: 0 -408px;
-}
-
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-gray {
-  background-position: 0 -432px;
-}
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-tumblr-gray:hover, .social-tumblr-gray.tumblr-gray-hover {
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-facebook-black:hover, .social-facebook-black.facebook-black_hover, .social-facebook-black.facebook-black-hover {
   background-position: 0 -456px;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-twitter-black {
-  background-position: 0 -480px;
-}
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-twitter-black:hover, .social-twitter-black.twitter-black-hover {
-  background-position: 0 -504px;
-}
-
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-twitter-gray {
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-facebook-gray {
   background-position: 0 -528px;
 }
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-twitter-gray:hover, .social-twitter-gray.twitter-gray-hover {
-  background-position: 0 -552px;
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-facebook-gray:hover, .social-facebook-gray.facebook-gray_hover, .social-facebook-gray.facebook-gray-hover {
+  background-position: 0 -480px;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-youtube-black {
-  background-position: 0 -576px;
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-googleplus-black {
+  background-position: 0 -168px;
 }
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-youtube-black:hover, .social-youtube-black.youtube-black-hover {
-  background-position: 0 -600px;
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-googleplus-black:hover, .social-googleplus-black.googleplus-black_hover, .social-googleplus-black.googleplus-black-hover {
+  background-position: 0 -96px;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-youtube-gray {
-  background-position: 0 -624px;
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-googleplus-gray {
+  background-position: 0 -144px;
 }
-/* line 52, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.social-youtube-gray:hover, .social-youtube-gray.youtube-gray-hover {
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-googleplus-gray:hover, .social-googleplus-gray.googleplus-gray_hover, .social-googleplus-gray.googleplus-gray-hover {
+  background-position: 0 -120px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-pinterest-black {
+  background-position: 0 -432px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-pinterest-black:hover, .social-pinterest-black.pinterest-black_hover, .social-pinterest-black.pinterest-black-hover {
+  background-position: 0 -312px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-pinterest-gray {
+  background-position: 0 -240px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-pinterest-gray:hover, .social-pinterest-gray.pinterest-gray_hover, .social-pinterest-gray.pinterest-gray-hover {
+  background-position: 0 -336px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-black {
   background-position: 0 -648px;
 }
-
-/* line 79, logos/*.png */
-.logos-sprite, .logos-PM_Logo, .logos-PM_Logo_RGB_Blue_Black, .logos-participantmedia, .logos-pivot, .logos-takepart {
-  background-image: url('../images/logos-sb693228f92.png');
-  background-repeat: no-repeat;
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-black:hover, .social-tumblr-black.tumblr-black_hover, .social-tumblr-black.tumblr-black-hover {
+  background-position: 0 -384px;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-gray {
+  background-position: 0 -504px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-tumblr-gray:hover, .social-tumblr-gray.tumblr-gray_hover, .social-tumblr-gray.tumblr-gray-hover {
+  background-position: 0 -408px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-twitter-black {
+  background-position: 0 -576px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-twitter-black:hover, .social-twitter-black.twitter-black_hover, .social-twitter-black.twitter-black-hover {
+  background-position: 0 -264px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-twitter-gray {
+  background-position: 0 -360px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-twitter-gray:hover, .social-twitter-gray.twitter-gray_hover, .social-twitter-gray.twitter-gray-hover {
+  background-position: 0 -288px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-youtube-black {
+  background-position: 0 -72px;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-youtube-black:hover, .social-youtube-black.youtube-black_hover, .social-youtube-black.youtube-black-hover {
+  background-position: 0 -24px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-youtube-gray {
+  background-position: 0 0;
+}
+/* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.social-youtube-gray:hover, .social-youtube-gray.youtube-gray_hover, .social-youtube-gray.youtube-gray-hover {
+  background-position: 0 -48px;
+}
+
+/* line 98, logos/*.png */
+.logos-sprite, .logos-PM_Logo, .logos-PM_Logo_RGB_Blue_Black, .logos-participantmedia, .logos-pivot, .logos-pivot_footer, .logos-pm_footer, .logos-takepart, .logos-takepart_footer {
+  background: url('../images/logos-s605f9ea8f1.png') no-repeat;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-PM_Logo {
+  background-position: 0 -458px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.logos-PM_Logo_RGB_Blue_Black {
   background-position: 0 0;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.logos-PM_Logo_RGB_Blue_Black {
-  background-position: 0 -40px;
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.logos-participantmedia {
+  background-position: 0 -543px;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.logos-participantmedia {
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.logos-pivot {
+  background-position: 0 -632px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.logos-pivot_footer {
+  background-position: 0 -660px;
+}
+
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.logos-pm_footer {
   background-position: 0 -498px;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.logos-pivot {
-  background-position: 0 -529px;
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.logos-takepart {
+  background-position: 0 -574px;
 }
 
-/* line 77, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
-.logos-takepart {
-  background-position: 0 -557px;
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+.logos-takepart_footer {
+  background-position: 0 -604px;
 }
 
 /* line 20, ../sass/elements/_misc.scss */
@@ -1211,6 +1179,8 @@ a.tabs-primary__tab-link:active, a.tabs-primary__tab-link.is-active {
 a.tabs-secondary__tab-link, a.tabs-secondary__tab-link.is-active {
   -webkit-border-radius: 0.75em;
   -moz-border-radius: 0.75em;
+  -ms-border-radius: 0.75em;
+  -o-border-radius: 0.75em;
   border-radius: 0.75em;
   -webkit-transition: background-color 0.3s;
   -moz-transition: background-color 0.3s;
@@ -1649,12 +1619,14 @@ tr.selected td {
   margin: 0 0.2em;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
   border-radius: 3px;
 }
 /* line 802, ../sass/elements/_misc.scss */
 .progress .filled {
   background-color: #0072b9;
-  background-image: url('../images/progress.gif?1401390746');
+  background-image: url('../images/progress.gif?1422914533');
 }
 
 /* TP Modal Library ---------------------- */
@@ -1763,7 +1735,7 @@ tr.selected td {
 /* line 901, ../sass/elements/_misc.scss */
 .tp-video-player.loading {
   width: 100%;
-  background: url('../images/video-loading.gif?1420486367');
+  background: url('../images/video-loading.gif?1422914534');
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -1772,7 +1744,7 @@ tr.selected td {
 /* line 908, ../sass/elements/_misc.scss */
 .tp-video-player.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1420486367') no-repeat center center;
+  background: url('../images/video-blocked.gif?1422914534') no-repeat center center;
   background-size: cover;
   height: 0;
   padding-bottom: 56.25%;
@@ -1786,7 +1758,7 @@ tr.selected td {
 /* line 922, ../sass/elements/_misc.scss */
 .current-video .blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1420486367') no-repeat center center;
+  background: url('../images/video-blocked.gif?1422914534') no-repeat center center;
   background-size: cover;
   height: 0;
 }
@@ -1798,7 +1770,7 @@ tr.selected td {
 /* line 935, ../sass/elements/_misc.scss */
 .jwplayer.blocked {
   width: 100%;
-  background: url('../images/video-blocked.gif?1420486367') no-repeat center center;
+  background: url('../images/video-blocked.gif?1422914534') no-repeat center center;
   background-size: cover;
   height: 0;
 }
@@ -1942,6 +1914,9 @@ p:first-child {
   display: -moz-inline-stack;
   display: inline-block;
   vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
   position: relative;
   top: -1px;
 }
