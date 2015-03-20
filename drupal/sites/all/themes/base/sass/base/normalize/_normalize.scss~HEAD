@@ -1,3 +1,14 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+a{
+  color: $mint;
+  text-decoration: none;
+  &:hover, &:visited, &:active {
+    color: $mint;
+  }
+}
 .pr-5{
   padding-right: 5px;
 }
