@@ -10135,7 +10135,7 @@ body.page-overlay-ad #page-wrap {
   margin-bottom: 1em;
 }
 /* line 56, ../sass/modules/_footer.scss */
-.footer-social .fotoer-title {
+.footer-social .footer-title {
   margin-bottom: 0;
 }
 @media all and (min-width: 768px) {
@@ -10198,54 +10198,60 @@ body.page-overlay-ad #page-wrap {
   padding-top: 20px;
   width: 100%;
 }
-/* line 110, ../sass/modules/_footer.scss */
-.footer-bottom .footer-bottom-inner li {
-  display: inline-block;
-  margin-left: 20px;
-  height: auto;
-  width: auto;
-  overflow: hidden;
-  position: relative;
-  top: -5px;
-}
-/* line 118, ../sass/modules/_footer.scss */
-.footer-bottom .footer-bottom-inner li:first-child {
-  top: 0;
-  margin-left: 0px;
-}
 @media all and (min-width: 320px) {
-  /* line 110, ../sass/modules/_footer.scss */
+  /* line 108, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li {
     display: block;
+    height: auto;
+    width: auto;
+    overflow: hidden;
+    position: relative;
     clear: both;
     margin-bottom: 1em;
     margin-left: 2em;
   }
-  /* line 127, ../sass/modules/_footer.scss */
+  /* line 118, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li:first-child {
     margin-left: 2em;
   }
 }
-/* line 131, ../sass/modules/_footer.scss */
+@media all and (min-width: 768px) {
+  /* line 108, ../sass/modules/_footer.scss */
+  .footer-bottom .footer-bottom-inner li {
+    display: inline-block;
+    margin-left: 20px;
+    height: auto;
+    width: auto;
+    overflow: hidden;
+    position: relative;
+    top: -5px;
+  }
+  /* line 130, ../sass/modules/_footer.scss */
+  .footer-bottom .footer-bottom-inner li:first-child {
+    top: 0;
+    margin-left: 0px;
+  }
+}
+/* line 135, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a {
   display: block;
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 137, ../sass/modules/_footer.scss */
+/* line 141, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
   height: 45px;
   width: 164px;
   background: url("/sites/all/themes/tp4/images/logos/pm_footer.png") no-repeat;
 }
-/* line 142, ../sass/modules/_footer.scss */
+/* line 146, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-pivot {
   height: 28px;
   width: 84px;
   background: url("/sites/all/themes/tp4/images/logos/pivot_footer.png") no-repeat;
 }
-/* line 147, ../sass/modules/_footer.scss */
+/* line 151, ../sass/modules/_footer.scss */
 .footer-bottom .footer-bottom-inner li a.logos-takepart {
   height: 28px;
   width: 120px;
