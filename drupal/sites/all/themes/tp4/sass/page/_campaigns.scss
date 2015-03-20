@@ -755,15 +755,21 @@ body.campaign-display{
                     position: absolute;
                     bottom: -7px;
                     cursor: pointer;
-                    color: #000;
+                    background-color: #000;
+                    color: white;
+                    width: 35px;
+                    height: 35px;
+                    @include border-radius(100px);
+
+                    &:after {
+                        font: normal 24px/150% "takepart";
+                    }
 
                     &.left-arrow {
                         margin-right: 20px;
                         left: 10px;
                         &:after{
-                            font-family: "takepart";
                             content: '\e605';
-                            font-size: 35px;
                         }
                         /*
                         &.hover-class {
@@ -775,9 +781,7 @@ body.campaign-display{
                         margin-left: 20px;
                         right: 10px;
                         &:after{
-                            font-family: "takepart";
                             content: '\e606';
-                            font-size: 35px;
                         }
                         /*
                         &.hover-class {
@@ -794,19 +798,25 @@ body.campaign-display{
             }
         }
         &.on-first-slide .left-arrow,
-        &.on-first-slide .arrow-left{
+        &.on-first-slide .arrow-left,
+        &.on-last-slide .right-arrow,
+        &.on-last-slide .arrow-right {
             cursor: default;
             color: #898b8a !important;
             &:hover {
                 color: #898b8a !important;
             }
         }
-        &.on-last-slide .right-arrow,
-        &.on-last-slide .arrow-right{
-            cursor: default;
-            color: #898b8a !important;
-            &:hover {
-                color: #898b8a !important;    
+        &.on-first-slide .mobile-arrow.left-arrow,
+        &.on-first-slide .mobile-arrow.arrow-left,
+        &.on-last-slide .mobile-arrow.right-arrow,
+        &.on-last-slide .mobile-arrow.arrow-right {
+            @include breakpoint($breakpoint-mobile) {
+                background-color: #898b8a;
+                color: white !important;
+                &:hover {
+                    color: white !important;
+                }
             }
         }
     }
