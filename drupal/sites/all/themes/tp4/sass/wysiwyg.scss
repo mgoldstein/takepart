@@ -15,22 +15,11 @@
 @import "compass/typography/vertical_rhythm";
 @import "zen";
 
-/* Base */
-<<<<<<< HEAD
-// @import "base/fonts";
-// @import "base/icons";
-
-// /* Helpers */
-@import "helpers/mixins";
-@import "helpers/variables";
-=======
-@import "base/fonts";
-@import "icons";
-
 /* Helpers */
-@import "mixins";
-@import "variables";
->>>>>>> TP-2994: added the theme setup
+@import "base/helpers/mixins";
+@import "base/helpers/variables";
+@import "base/icons/icons";
+
 
 /* Elements */
 @import "elements/typography";

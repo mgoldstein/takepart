@@ -16,12 +16,12 @@
 
 /* Base */
 @import "base/fonts";
-@import "icons";
+@import "base/icons/icons";
 
 /* Helpers */
-@import "variables";
-@import "mixins";
-@import "normalize";
+@import "base/helpers/variables";
+@import "base/helpers/mixins";
+@import "base/normalize/normalize";
 
 /* Elements */
 @import "elements/typography";
