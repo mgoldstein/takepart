@@ -34,18 +34,20 @@ footer {
         text-indent: 100%;
         white-space: nowrap;
         overflow: hidden;
-        &.logos-takepart{
-            height: logos-sprite-height(takepart);
-            width: logos-sprite-width(takepart);
-        }
         &.logos-participantmedia{
-            height: 40px;
-            width: 144px;
-            background: url("/sites/all/themes/tp4/images/logos/PM_Logo.png") no-repeat;
+            height: 45px;
+            width: 164px;
+            background: url("/sites/all/themes/tp4/images/logos/pm_footer.png") no-repeat;
         }
         &.logos-pivot{
-            height: logos-sprite-height(pivot);
-            width: logos-sprite-width(pivot);
+            height: 28px;
+            width: 84px;
+            background: url("/sites/all/themes/tp4/images/logos/pivot_footer.png") no-repeat;
+        }
+        &.logos-takepart{
+            height: 28px;
+            width: 120px;
+            background: url("/sites/all/themes/tp4/images/logos/takepart_footer.png") no-repeat;
         }
     }
 }
