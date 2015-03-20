@@ -2,9 +2,6 @@
 .node-unpublished {
   background-color: #fff4f4;
 }
-.node-unpublished.node-preview {
-	background-color: inherit;
-}
 .preview .node {
   background-color: #ffffea;
 }
