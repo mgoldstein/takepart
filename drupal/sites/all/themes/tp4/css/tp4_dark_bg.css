@@ -1,81 +1,116 @@
 /*
-Syntax error: File to import not found or unreadable: mixins.
-              Load paths:
-                /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass
-                /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/blueprint/stylesheets
-                /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets
-                /Library/Ruby/Gems/2.0.0/gems/zen-grids-1.4/stylesheets
-                /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/helpers
-                /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/icons
-                /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/normalize
-                Compass::SpriteImporter
-        on line 6 of /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/tp4_dark_bg.scss
-
-1: /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/tp4_dark_bg.scss
-
-Backtrace:
-/Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/tp4_dark_bg.scss:6
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/import_node.rb:67:in `rescue in import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/import_node.rb:45:in `import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/import_node.rb:28:in `imported_file'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/import_node.rb:37:in `css_import?'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:217:in `visit_import'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/root_node.rb:20:in `render'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/engine.rb:315:in `_render'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/engine.rb:262:in `render'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:139:in `block (2 levels) in compile'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:126:in `timed'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:138:in `block in compile'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/logger.rb:45:in `red'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:137:in `compile'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:118:in `compile_if_required'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:103:in `block (2 levels) in run'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:101:in `each'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:101:in `block in run'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:126:in `timed'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/compiler.rb:100:in `run'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/commands/watch_project.rb:147:in `recompile'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/commands/watch_project.rb:95:in `block (4 levels) in perform'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `call'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/path.rb:73:in `run_callback'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/path.rb:55:in `callback_action'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/path.rb:39:in `delete'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:32:in `block in deleted'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:31:in `each'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:31:in `deleted'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/state/directory.rb:16:in `refresh'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `block (2 levels) in run'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `each'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:17:in `block in run'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `loop'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/backends/polling.rb:15:in `run'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm/monitor.rb:26:in `run'
-/Library/Ruby/Gems/2.0.0/gems/fssm-0.2.10/lib/fssm.rb:70:in `monitor'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/commands/watch_project.rb:87:in `perform'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/commands/base.rb:18:in `execute'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/commands/project_base.rb:19:in `execute'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/bin/compass:30:in `block in <top (required)>'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/bin/compass:44:in `call'
-/Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/bin/compass:44:in `<top (required)>'
-/usr/bin/compass:23:in `load'
-/usr/bin/compass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: mixins.\A               Load paths:\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass\A                 /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/blueprint/stylesheets\A                 /Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets\A                 /Library/Ruby/Gems/2.0.0/gems/zen-grids-1.4/stylesheets\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/helpers\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/icons\A                 /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/base/sass/normalize\A                 Compass::SpriteImporter\A         on line 6 of /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/tp4_dark_bg.scss\A \A 1: /Applications/MAMP/htdocs/takepart-com/drupal/sites/all/themes/tp4/sass/tp4_dark_bg.scss"; }
+ * Custom Styling for Campaigns
+ */
+/* Helpers */
+/*
+ *Fonts
+ */
+/*
+ *Colors
+ */
+/*
+ *Misc
+ */
+/* line 15, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background h1, body.campaign-display .card.dark-background h2, body.campaign-display .card.dark-background h3, body.campaign-display .card.dark-background h4, body.campaign-display .card.dark-background h5, body.campaign-display .card.dark-background h6 {
+  color: white;
+}
+/* line 18, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background p {
+  color: white;
+}
+/* line 21, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background a {
+  color: #01bf9e;
+}
+/* line 24, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .secondary-button a {
+  color: white;
+}
+/* line 26, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .secondary-button a:hover {
+  color: white;
+}
+/* line 30, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .primary-button a {
+  color: white;
+}
+/* line 33, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .media-caption {
+  color: white;
+}
+/* line 37, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background ul li, body.campaign-display .card.dark-background ol li {
+  color: white;
+}
+/* line 44, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .arrow:hover {
+  color: #01bf9e;
+}
+/* line 48, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .slider-pagination a {
+  background-color: white;
+}
+/* line 51, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .slider-pagination a.active {
+  background-color: #01bf9e;
+}
+/* line 55, ../sass/tp4_dark_bg.scss */
+body.campaign-display .tray.dark-background .tray-header .card-title {
+  color: white;
+}
+@media all and (min-width: 320px) {
+  /* line 60, ../sass/tp4_dark_bg.scss */
+  body.campaign-display .tray.dark-background .mobile-arrow {
+    color: #FFF;
+  }
+}
+/* line 67, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .share-headline {
+  color: white;
+}
+/* line 70, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .icon.i-touch-menu:after {
+  color: white;
+}
+/* line 75, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item.active > a {
+  color: #01bf9e;
+}
+/* line 78, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item.parent-item:not(.anchored) > a.active {
+  color: #01bf9e;
+}
+/* line 83, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item > a {
+  color: white;
+}
+/* line 86, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a {
+  color: black;
+  background-color: white;
+}
+/* line 90, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item.sfHover > a, body.campaign-display .branding-header.dark-background .menu li.parent-item:hover > a.active {
+  color: black;
+}
+/* line 94, ../sass/tp4_dark_bg.scss */
+body.campaign-display .branding-header.dark-background .menu li.parent-item:not(.anchored):hover a.active {
+  color: black;
+}
+/* line 101, ../sass/tp4_dark_bg.scss */
+body.campaign-display .swipe-wrap.has-title .card.dark-background .card-inner {
+  border-top: none;
+}
+/* line 107, ../sass/tp4_dark_bg.scss */
+body.campaign-display .node-campaign-card-twitter.card.dark-background h3.tweet-username a {
+  color: white;
+}
+/* line 112, ../sass/tp4_dark_bg.scss */
+body.campaign-display .node-campaign-card-twitter.card.light-background h3.tweet-username a {
+  color: black;
+}
+/* line 117, ../sass/tp4_dark_bg.scss */
+body.campaign-display .card.dark-background .block-newsletter-campaign {
+  color: white;
+}
