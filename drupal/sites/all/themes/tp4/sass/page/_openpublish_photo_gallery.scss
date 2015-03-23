@@ -296,6 +296,9 @@
 
     .takepart-take-action-widget {
         margin: 0 auto;
+        @media (max-width: 499px) {
+            max-width: 100%;
+        }
     }
 
     h2.block-title, h3 {
