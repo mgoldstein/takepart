@@ -5,6 +5,12 @@
  */
 ?>
 
+<div id="tp-drawers" class="snap-drawers scrollable">
+  <div class="snap-drawer snap-drawer-left">
+    <?php print render($page['left_drawer']); ?>
+  </div>
+</div>
+
 <div id="page">
   <header class="header" id="header" role="banner">
     <?php print render($page['header']); ?>
