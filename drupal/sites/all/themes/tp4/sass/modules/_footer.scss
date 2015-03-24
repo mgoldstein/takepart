@@ -2,7 +2,7 @@
  * FOOTER
  */
 .footer-wrapper {
-    background-color: $gray-background;
+    background-color: #FFF;
     padding: 0 0 15px 0;
     position: relative;
     z-index: 2;
@@ -102,7 +102,7 @@
 
     .footer-bottom-inner {
         margin-top: 30px;
-        border-top: 1px solid $gray-line;
+        border-top: 3px solid $gray-line;
         padding-top: 20px;
         width: 100%;
         li {
@@ -111,47 +111,75 @@
                 height: auto;
                 width: auto;
                 overflow: hidden;
-                position: relative;
+                position: static;
                 clear: both;
                 margin-bottom: 1em;
                 margin-left: 2em;
                 &:first-child {
                     margin-left: 2em;
                 }
+
+                a {
+                    display: block;
+                    margin: 0 auto;
+                    text-indent: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    &.logos-participantmedia{
+                        height: 45px;
+                        width: 164px;
+                        background: url("/sites/all/themes/tp4/images/logos/pm_footer.png") no-repeat;
+                    }
+                    &.logos-pivot{
+                        height: 28px;
+                        width: 84px;
+                        background: url("/sites/all/themes/tp4/images/logos/pivot_footer.png") no-repeat;
+                    }
+                    &.logos-takepart{
+                        height: 28px;
+                        width: 120px;
+                        background: url("/sites/all/themes/tp4/images/logos/takepart_footer.png") no-repeat;
+                    }
+                }
             }
             @include breakpoint($breakpoint-tablet) {
                 display: inline-block;
-                margin-left: 20px;
+                margin-right: 3em;
                 height: auto;
                 width: auto;
                 overflow: hidden;
                 position: relative;
-                top: -5px;
+                top: 0;
                 &:first-child {
                     top: 0;
-                    margin-left: 0px;
+                    margin-left: 0;
                 }
-            }
-            a {
-                display: block;
-                text-indent: 100%;
-                white-space: nowrap;
-                overflow: hidden;
+                &:nth-child(2) {
+                    top: 6px;
+                }
 
-                &.logos-participantmedia{
-                    height: 45px;
-                    width: 164px;
-                    background: url("/sites/all/themes/tp4/images/logos/pm_footer.png") no-repeat;
-                }
-                &.logos-pivot{
-                    height: 28px;
-                    width: 84px;
-                    background: url("/sites/all/themes/tp4/images/logos/pivot_footer.png") no-repeat;
-                }
-                &.logos-takepart{
-                    height: 28px;
-                    width: 120px;
-                    background: url("/sites/all/themes/tp4/images/logos/takepart_footer.png") no-repeat;
+                a {
+                    display: block;
+                    text-indent: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+
+                    &.logos-participantmedia{
+                        height: 45px;
+                        width: 164px;
+                        background: url("/sites/all/themes/tp4/images/logos/pm_footer.png") no-repeat;
+                    }
+                    &.logos-pivot{
+                        height: 28px;
+                        width: 84px;
+                        background: url("/sites/all/themes/tp4/images/logos/pivot_footer.png") no-repeat;
+                    }
+                    &.logos-takepart{
+                        height: 28px;
+                        width: 120px;
+                        background: url("/sites/all/themes/tp4/images/logos/takepart_footer.png") no-repeat;
+                    }
                 }
             }
         }

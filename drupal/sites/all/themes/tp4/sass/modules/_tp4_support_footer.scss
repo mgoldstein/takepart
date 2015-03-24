@@ -82,7 +82,8 @@ body.page-iframes-footer {
  * FOOTER MOBILE ONLY RESPONSIVE
  */
 .footer-wrapper.responsive.mobile-only {
-    background-color: $gray-background;
+    /* background-color: $gray-background; */
+    background-color: #FFF;
     padding: 30px 0 15px 0;
     position: relative;
     z-index: 2;
