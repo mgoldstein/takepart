@@ -30,7 +30,7 @@ function tpf_display_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -49,
     'customized' => 1,
   );
   // Exported menu link: menu-corporate-footer_pivot:http://www.pivot.tv
@@ -53,7 +53,7 @@ function tpf_display_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -50,
     'customized' => 1,
   );
   // Exported menu link: menu-corporate-footer_takepart:http://www.takepart.com
@@ -76,7 +76,7 @@ function tpf_display_menus_menu_default_menu_links() {
     'external' => 1,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
+    'weight' => -48,
     'customized' => 1,
   );
   // Exported menu link: menu-megamenu_aid--development:taxonomy/term/115553
