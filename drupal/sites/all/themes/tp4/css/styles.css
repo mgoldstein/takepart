@@ -10210,7 +10210,15 @@ body.page-overlay-ad #page-wrap {
     margin-bottom: 1em;
     margin-left: 0;
   }
-  /* line 119, ../sass/modules/_footer.scss */
+  /* line 118, ../sass/modules/_footer.scss */
+  .footer-bottom .footer-bottom-inner li:first-child {
+    margin-bottom: 19px;
+  }
+  /* line 121, ../sass/modules/_footer.scss */
+  .footer-bottom .footer-bottom-inner li:nth-child(2) {
+    margin-bottom: 28px;
+  }
+  /* line 125, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a {
     display: block;
     margin: 0 auto;
@@ -10218,19 +10226,19 @@ body.page-overlay-ad #page-wrap {
     white-space: nowrap;
     overflow: hidden;
   }
-  /* line 126, ../sass/modules/_footer.scss */
+  /* line 132, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
     height: 45px;
     width: 164px;
     background: url("/sites/all/themes/tp4/images/logos/pm_footer.png") no-repeat;
   }
-  /* line 131, ../sass/modules/_footer.scss */
+  /* line 137, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a.logos-pivot {
     height: 28px;
     width: 84px;
     background: url("/sites/all/themes/tp4/images/logos/pivot_footer.png") no-repeat;
   }
-  /* line 136, ../sass/modules/_footer.scss */
+  /* line 142, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a.logos-takepart {
     height: 28px;
     width: 120px;
@@ -10247,36 +10255,36 @@ body.page-overlay-ad #page-wrap {
     position: relative;
     top: 0;
   }
-  /* line 150, ../sass/modules/_footer.scss */
+  /* line 156, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li:first-child {
     top: 0;
     margin-right: 64px;
   }
-  /* line 154, ../sass/modules/_footer.scss */
+  /* line 160, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li:nth-child(2) {
     top: 6px;
     margin-right: 47px;
   }
-  /* line 159, ../sass/modules/_footer.scss */
+  /* line 165, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a {
     display: block;
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
   }
-  /* line 165, ../sass/modules/_footer.scss */
+  /* line 171, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
     height: 45px;
     width: 164px;
     background: url("/sites/all/themes/tp4/images/logos/pm_footer.png") no-repeat;
   }
-  /* line 170, ../sass/modules/_footer.scss */
+  /* line 176, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a.logos-pivot {
     height: 28px;
     width: 84px;
     background: url("/sites/all/themes/tp4/images/logos/pivot_footer.png") no-repeat;
   }
-  /* line 175, ../sass/modules/_footer.scss */
+  /* line 181, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a.logos-takepart {
     height: 28px;
     width: 120px;

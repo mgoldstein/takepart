@@ -115,7 +115,13 @@
                 clear: both;
                 margin-bottom: 1em;
                 margin-left: 0;
-
+                &:first-child {
+                    margin-bottom: 19px;
+                }
+                &:nth-child(2) {
+                    margin-bottom: 28px;
+                }
+                
                 a {
                     display: block;
                     margin: 0 auto;
