@@ -14,13 +14,23 @@
 
 
 // To understand behaviors, see https://drupal.org/node/756722#behaviors
-Drupal.behaviors.my_custom_behavior = {
+Drupal.behaviors.mobileMenuToggle = {
   attach: function(context, settings) {
 
-    // Place your code here.
+    var $body = $('body'),
+      mask = document.createElement("div")
+      ;
+    mask.className = "mask";
+
+    $('.toggle-mobile-left').toggle(function(){
+      $body.addClass("mobile-menu-show" );
+      $body.appendChild(mask);
+    }, function(){
+      $body.removeClass("mobile-menu-show" );
+      document.body.removeChild(mask);
+    });
 
   }
 };
-
 
 })(jQuery, Drupal, this, this.document);
