@@ -135,7 +135,8 @@ function tp_campaigns_tap_widget_id($items){
  */
 function tp_campaigns_tap_widget_exposed($entity){
 
-	if($widget_exposed = field_get_items('node', $entity, 'field_campaign_tab_widget_expose')){
+  $widget_exposed = field_get_items('node', $entity, 'field_campaign_tab_widget_expose');
+	if($widget_exposed && $widget_exposed[0]['value'] == 1){
 		$widget_exposed = 'expanded';
 	}else{
 		$widget_exposed = '';
