@@ -2,34 +2,23 @@
  * @file
  * A JavaScript file for the theme.
  *
- * In order for this JavaScript to be loaded on pages, see the instructions in
- * the README.txt next to this file.
  */
 
-// JavaScript should be made compatible with libraries other than jQuery by
-// wrapping it with an "anonymous closure". See:
-// - https://drupal.org/node/1446420
-// - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
 (function ($, Drupal, window, document, undefined) {
 
 
-// To understand behaviors, see https://drupal.org/node/756722#behaviors
 Drupal.behaviors.mobileMenuToggle = {
   attach: function(context, settings) {
 
-    var $body = $('body'),
-      mask = document.createElement("div")
-      ;
-    mask.className = "mask";
+    var $body = $('body');
+    $('.toggle-mobile-left').click(function(){
 
-    $('.toggle-mobile-left').toggle(function(){
-      $body.addClass("mobile-menu-show" );
-      $body.appendChild(mask);
-    }, function(){
-      $body.removeClass("mobile-menu-show" );
-      document.body.removeChild(mask);
+      if ($body.hasClass('mobile-menu-show')) {
+        $body.removeClass("mobile-menu-show" );
+      } else {
+        $body.addClass("mobile-menu-show" );
+      }
     });
-
   }
 };
 
