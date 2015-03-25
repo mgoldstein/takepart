@@ -153,13 +153,16 @@
                 overflow: hidden;
                 position: relative;
                 top: 0;
+                margin-bottom: 1em;
                 &:first-child {
                     top: 0;
                     margin-right: 64px;
+                    margin-bottom: 1em;
                 }
                 &:nth-child(2) {
                     top: 6px;
                     margin-right: 47px;
+                    margin-bottom: 1em;
                 }
 
                 a {
