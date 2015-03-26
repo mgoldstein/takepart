@@ -1,7 +1,7 @@
 name = TakePart Content Profile
 core = 7.x
 package = Content Types
-version = 7.x-1.0
+version = 7.x-1.1
 project = tpf_content_profile
 dependencies[] = colorbox
 dependencies[] = context
@@ -46,4 +46,3 @@ features[variable][] = menu_parent_profile
 features[variable][] = node_options_profile
 features[variable][] = node_preview_profile
 features[variable][] = node_submitted_profile
-mtime = 1415992950

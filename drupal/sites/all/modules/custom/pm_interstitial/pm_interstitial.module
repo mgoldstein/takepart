@@ -155,11 +155,11 @@ function pm_interstitial_page($type) {
 					'path' => variable_get('pm_interstitial_social_fb_image', ''),
 					'alt' => variable_get('pm_interstitial_social_fb_alt', ''),
 				)), variable_get('pm_interstitial_social_fb_url',''), array(
-					'target' => '_blank',
 					'html' => true,
 					'attributes' => array(
 						'data-service' => variable_get('pm_interstitial_social_fb_token', 'facebook'),
 						'class' => array('social-link', 'tplinkpos'), 
+						'target' => '_blank',
 					),
 				)
 			),
@@ -167,11 +167,11 @@ function pm_interstitial_page($type) {
 					'path' => variable_get('pm_interstitial_social_twitter_image', ''),
 					'alt' => variable_get('pm_interstitial_social_twitter_alt', ''),
 				)), 'https://www.twitter.com/'.str_replace('@','',variable_get('pm_interstitial_social_twitter_url','')), array(
-					'target' => '_blank',
 					'html' => true,
 					'attributes' => array(
 						'data-service' => variable_get('pm_interstitial_social_twiter_token', 'twitter'),
 						'class' => array('social-link', 'tplinkpos'), 
+						'target' => '_blank',
 					),
 				)
 			),

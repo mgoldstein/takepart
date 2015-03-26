@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * User signups module.
@@ -169,6 +170,19 @@ function pm_signup_cron_queue_info() {
       'time' => 30,
     ),
   );
+}
+
+/**
+ * Implements hook_cron() to run signature action import
+ */
+function pm_signup_cron() {
+  $feed_url = variable_get('signature_import_feed', '');
+  $timeout = variable_get('signature_import_timeout', 600);
+  $count = 0;
+  if (!empty($feed_url)) {
+    $count = signature_process_import_feed($feed_url, $timeout);
+  }
+  watchdog("pm_signup", "Processed $count actions");
 }
 
 /**

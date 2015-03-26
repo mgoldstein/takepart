@@ -35,13 +35,21 @@ class tp_wordpress_import_parser extends FeedsParser {
           //variables
           $creator = $node->getElementsByTagName('creator')->item(0)->nodeValue;
           $content_prefix_var = variable_get('tp_wordpress_import_content_prefix', 'This article was written by @author and it originally appeared on Dowser.org; a website focused on the practical and human elements of social innovation.');
+          
+          //ensures that the message is different if user is admin
+          if ($creator == 'admin') {
+            $content_prefix_var = variable_get('tp_wordpress_import_content_admin_prefix', "<i>This article originally appeared on Dowser.org; a website focused on the practical and human elements of social innovation.<i>");
+          }
+          
           $content_prefix = theme('html_tag', array(
             'element' => array(
               '#tag' => 'p',
               '#value' => t($content_prefix_var, array('@author' => $creator)),
               '#attributes' => array(
                 'class' => 'importer-author',
-          ))));;
+          ))));
+          
+          $allowed_tags = variable_get('tp_wordpress_import_allow_tags', '<iframe><a><h1><h2><h3><h4><h5>');
         
           //creates the item and adds it into the list
           //@dev: this area is where the items will be set to allow users to MAP items to the correct node.
@@ -53,7 +61,7 @@ class tp_wordpress_import_parser extends FeedsParser {
             'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
             'pubDate' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
             'description' => $node->getElementsByTagName('description')->item(0)->nodeValue,
-            'content' => $content_prefix . $node->getElementsByTagName('encoded')->item(0)->nodeValue,
+            'content' => $content_prefix . nl2br(strip_tags($node->getElementsByTagName('encoded')->item(0)->nodeValue, $allowed_tags)),
             'admin_tag' => variable_get('tp_wordpress_import_admin_tag', 'Dowser'),
             'tagging' => variable_get('tp_wordpress_import_tagging', 'Social Justice')
           );

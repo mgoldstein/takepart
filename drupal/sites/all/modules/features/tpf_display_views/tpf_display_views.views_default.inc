@@ -127,10 +127,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
-    'campaign_page' => 'campaign_page',
     'feature_article' => 'feature_article',
-    'flashcard' => 'flashcard',
-    'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
     'video_playlist' => 'video_playlist',
@@ -715,9 +712,9 @@ echo $separator;
   );
   $handler->display->display_options['path'] = 'content/%/admin_feed.xml';
 
-  /* Display: Mashable Full Feed */
-  $handler = $view->new_display('page', 'Mashable Full Feed', 'mashable_full');
-  $handler->display->display_options['display_description'] = 'Full content RSS feed formatted for Mashable';
+  /* Display: Synd Full Feed */
+  $handler = $view->new_display('page', 'Synd Full Feed', 'mashable_full');
+  $handler->display->display_options['display_description'] = 'Full content RSS feed formatted for syndicates';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
@@ -773,6 +770,18 @@ echo $separator;
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '1200',
   );
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_article_main_image']['id'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['table'] = 'field_data_field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['field'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_article_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_article_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_article_main_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -815,11 +824,11 @@ echo $separator;
   $handler->display->display_options['filters']['created']['value']['value'] = '-7 days';
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
   $handler->display->display_options['filters']['created']['group'] = 1;
-  $handler->display->display_options['path'] = 'content/%/mashable_feed.xml';
+  $handler->display->display_options['path'] = 'content/%/synd_feed.xml';
 
-  /* Display: Mashable Short Feed */
-  $handler = $view->new_display('page', 'Mashable Short Feed', 'mashable_short');
-  $handler->display->display_options['display_description'] = 'Brief content RSS feed formatted for Mashable';
+  /* Display: Synd Short Feed */
+  $handler = $view->new_display('page', 'Synd Short Feed', 'mashable_short');
+  $handler->display->display_options['display_description'] = 'Brief content RSS feed formatted for syndicates';
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
@@ -863,6 +872,18 @@ echo $separator;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_article_main_image']['id'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['table'] = 'field_data_field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['field'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_article_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_article_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_article_main_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -905,7 +926,7 @@ echo $separator;
   $handler->display->display_options['filters']['created']['operator'] = '>=';
   $handler->display->display_options['filters']['created']['value']['value'] = '-7 days';
   $handler->display->display_options['filters']['created']['value']['type'] = 'offset';
-  $handler->display->display_options['path'] = 'content/%/mashable_feed_short.xml';
+  $handler->display->display_options['path'] = 'content/%/synd_feed_short.xml';
 
   /* Display: Feed Block */
   $handler = $view->new_display('block', 'Feed Block', 'block_1');
@@ -979,11 +1000,7 @@ echo $separator;
   $handler->display->display_options['title'] = 'Primary';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '1800';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '1800';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -1201,33 +1218,6 @@ print $value;
     'image_style' => 'tp_secondary_feature_thumbnail',
     'image_link' => 'content',
   );
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_page_main_image']['id'] = 'field_page_main_image';
-  $handler->display->display_options['fields']['field_page_main_image']['table'] = 'field_data_field_page_main_image';
-  $handler->display->display_options['fields']['field_page_main_image']['field'] = 'field_page_main_image';
-  $handler->display->display_options['fields']['field_page_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_page_main_image']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_page_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_page_main_image']['empty'] = '[field_thumbnail]';
-  $handler->display->display_options['fields']['field_page_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_page_main_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_page_main_image']['settings'] = array(
-    'image_style' => 'tp_secondary_feature_thumbnail',
-    'image_link' => 'content',
-  );
-  /* Field: Content: Main Image */
-  $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
-  $handler->display->display_options['fields']['field_action_main_image']['table'] = 'field_data_field_action_main_image';
-  $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
-  $handler->display->display_options['fields']['field_action_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_action_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_action_main_image']['empty'] = '[field_page_main_image]';
-  $handler->display->display_options['fields']['field_action_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_action_main_image']['type'] = 'image';
-  $handler->display->display_options['fields']['field_action_main_image']['settings'] = array(
-    'image_style' => 'tp_secondary_feature_thumbnail',
-    'image_link' => 'content',
-  );
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -1286,14 +1276,14 @@ print $value;
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'field_collection_item';
-  $view->human_name = 'Flashcard Organizations & Experts';
+  $view->human_name = 'Flashcard Organizations and Experts';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Organizations & Experts';
+  $handler->display->display_options['title'] = 'Organizations and Experts';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'none';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -1477,11 +1467,7 @@ print $value;
   $handler->display->display_options['title'] = 'Photo Gallery';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '300';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '300';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['slave'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -2728,12 +2714,11 @@ print $value;
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'openpublish_blog_post' => 'openpublish_blog_post',
-    'openpublish_video' => 'openpublish_video',
+    'feature_article' => 'feature_article',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
 
   /* Display: Series Feed Page */
@@ -2833,22 +2818,7 @@ print $value;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_blogpost_main_image']['id'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['table'] = 'field_data_field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['field'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['label'] = '';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_blogpost_main_image']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Video Series (field_video_series) */
-  $handler->display->display_options['arguments']['field_video_series_tid']['id'] = 'field_video_series_tid';
-  $handler->display->display_options['arguments']['field_video_series_tid']['table'] = 'field_data_field_video_series';
-  $handler->display->display_options['arguments']['field_video_series_tid']['field'] = 'field_video_series_tid';
-  $handler->display->display_options['arguments']['field_video_series_tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_video_series_tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_video_series_tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_video_series_tid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -2863,8 +2833,8 @@ print $value;
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'openpublish_video' => 'openpublish_video',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['path'] = 'video-series/%/feed.xml';
 
@@ -2944,12 +2914,11 @@ print $value;
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'action' => 'action',
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
-    'openpublish_video' => 'openpublish_video',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
+    'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['path'] = 'topic/%/feed.xml';
 
@@ -3024,11 +2993,7 @@ print $value;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['group_by'] = TRUE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '300';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '300';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
@@ -3114,6 +3079,226 @@ print $value;
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $export['topic_listing'] = $view;
+
+  $view = new view();
+  $view->name = 'user_search';
+  $view->description = 'This provides an exposed filtered search for users by admin staff.';
+  $view->tag = 'default';
+  $view->base_table = 'users';
+  $view->human_name = 'User Search';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'User Search';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'administer users';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'edit_node' => 'edit_node',
+    'name' => 'name',
+    'mail' => 'mail',
+    'created' => 'created',
+    'access' => 'access',
+    'status' => 'status',
+  );
+  $handler->display->display_options['style_options']['default'] = 'name';
+  $handler->display->display_options['style_options']['info'] = array(
+    'edit_node' => array(
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'mail' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'created' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'access' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => 'views-align-left',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'status' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => 'views-align-center',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['sticky'] = TRUE;
+  $handler->display->display_options['style_options']['empty_table'] = TRUE;
+  /* Field: User: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'users';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['hide_alter_empty'] = FALSE;
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['label'] = 'Username';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['hide_alter_empty'] = FALSE;
+  /* Field: User: Created date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'users';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = 'Created on';
+  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: User: Last access */
+  $handler->display->display_options['fields']['access']['id'] = 'access';
+  $handler->display->display_options['fields']['access']['table'] = 'users';
+  $handler->display->display_options['fields']['access']['field'] = 'access';
+  $handler->display->display_options['fields']['access']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['access']['date_format'] = 'time ago';
+  $handler->display->display_options['fields']['access']['second_date_format'] = 'long';
+  /* Field: User: Active */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'users';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['not'] = 0;
+  /* Sort criterion: User: Created date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'users';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: User: Roles */
+  $handler->display->display_options['filters']['rid']['id'] = 'rid';
+  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['filters']['rid']['field'] = 'rid';
+  $handler->display->display_options['filters']['rid']['value'] = array(
+    'all' => 'all',
+    3 => '3',
+    5 => '5',
+    6 => '6',
+    7 => '7',
+  );
+  $handler->display->display_options['filters']['rid']['group'] = 1;
+  $handler->display->display_options['filters']['rid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['rid']['expose']['operator_id'] = 'rid_op';
+  $handler->display->display_options['filters']['rid']['expose']['label'] = 'Roles';
+  $handler->display->display_options['filters']['rid']['expose']['operator'] = 'rid_op';
+  $handler->display->display_options['filters']['rid']['expose']['identifier'] = 'rid';
+  $handler->display->display_options['filters']['rid']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['rid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+  );
+  $handler->display->display_options['filters']['rid']['expose']['reduce'] = TRUE;
+  /* Filter criterion: User: Active */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'users';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Active';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['required'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+  );
+  /* Filter criterion: User: Name (raw) */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'users';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['name']['group'] = 1;
+  $handler->display->display_options['filters']['name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['name']['expose']['operator_id'] = 'name_op';
+  $handler->display->display_options['filters']['name']['expose']['label'] = 'Username';
+  $handler->display->display_options['filters']['name']['expose']['operator'] = 'name_op';
+  $handler->display->display_options['filters']['name']['expose']['identifier'] = 'name';
+  $handler->display->display_options['filters']['name']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['name']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+  );
+  /* Filter criterion: User: E-mail */
+  $handler->display->display_options['filters']['mail']['id'] = 'mail';
+  $handler->display->display_options['filters']['mail']['table'] = 'users';
+  $handler->display->display_options['filters']['mail']['field'] = 'mail';
+  $handler->display->display_options['filters']['mail']['operator'] = 'contains';
+  $handler->display->display_options['filters']['mail']['group'] = 1;
+  $handler->display->display_options['filters']['mail']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['mail']['expose']['operator_id'] = 'mail_op';
+  $handler->display->display_options['filters']['mail']['expose']['label'] = 'E-mail';
+  $handler->display->display_options['filters']['mail']['expose']['operator'] = 'mail_op';
+  $handler->display->display_options['filters']['mail']['expose']['identifier'] = 'mail';
+  $handler->display->display_options['filters']['mail']['expose']['remember'] = TRUE;
+  $handler->display->display_options['filters']['mail']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/people/search';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'User Search';
+  $handler->display->display_options['menu']['description'] = 'Advanced search allowing to filter by role, status, email, and username.';
+  $handler->display->display_options['menu']['weight'] = '-20';
+  $handler->display->display_options['menu']['name'] = 'management';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $export['user_search'] = $view;
 
   return $export;
 }

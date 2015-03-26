@@ -32,4 +32,3 @@ features[taxonomy][] = photo_credit
 features[taxonomy][] = significance
 features[taxonomy][] = topic_box
 features[taxonomy][] = video_series
-mtime = 1410473070

@@ -19,14 +19,11 @@ function tpf_display_views_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'feature_article' => 'feature_article',
         'openpublish_article' => 'openpublish_article',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-        'openpublish_video' => 'openpublish_video',
         'profile' => 'profile',
-        'section_front' => 'section_front',
-        'takepart_group' => 'takepart_group',
         'takepart_page' => 'takepart_page',
-        'venue' => 'venue',
         'video' => 'video',
         'video_playlist' => 'video_playlist',
       ),
@@ -35,18 +32,7 @@ function tpf_display_views_context_default_contexts() {
       ),
     ),
   );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-bg_skin_sponsor' => array(
-          'module' => 'boxes',
-          'delta' => 'bg_skin_sponsor',
-          'region' => 'content_bottom',
-          'weight' => '0',
-        ),
-      ),
-    ),
-  );
+  $context->reactions = array();
   $context->condition_mode = 1;
 
   // Translatables

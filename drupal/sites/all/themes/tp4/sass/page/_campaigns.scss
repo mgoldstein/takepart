@@ -486,6 +486,13 @@ body.campaign-display{
             margin-left: 8px;
         }
 
+		#campaign-page-share a.tp-social-facebook,
+		#campaign-page-share a.tp-social-twitter,
+		#campaign-page-more-shares a.tp-social-pinterest,
+		#campaign-page-more-shares a.tp-social-tumblr {
+			float:left;
+		}
+
         .share-headline {
             font: normal 14px/1 $secondary-sans-font;
             height: 14px;
@@ -688,7 +695,7 @@ body.campaign-display{
                         width: 72px;
                         background-color: rgba(255,255,255,0.2);
                         height: 1em;
-                        line-height: 1.2;
+                        line-height: 1;
                         padding: 10px 0;
                     }
                 }
@@ -748,15 +755,21 @@ body.campaign-display{
                     position: absolute;
                     bottom: -7px;
                     cursor: pointer;
-                    color: #000;
+                    background-color: #000;
+                    color: white;
+                    width: 35px;
+                    height: 35px;
+                    @include border-radius(100px);
+
+                    &:after {
+                        font: normal 24px/150% "takepart";
+                    }
 
                     &.left-arrow {
                         margin-right: 20px;
                         left: 10px;
                         &:after{
-                            font-family: "takepart";
-                            content: '\e601';
-                            font-size: 35px;
+                            content: '\e605';
                         }
                         /*
                         &.hover-class {
@@ -768,9 +781,7 @@ body.campaign-display{
                         margin-left: 20px;
                         right: 10px;
                         &:after{
-                            font-family: "takepart";
-                            content: '\e602';
-                            font-size: 35px;
+                            content: '\e606';
                         }
                         /*
                         &.hover-class {
@@ -787,19 +798,25 @@ body.campaign-display{
             }
         }
         &.on-first-slide .left-arrow,
-        &.on-first-slide .arrow-left{
+        &.on-first-slide .arrow-left,
+        &.on-last-slide .right-arrow,
+        &.on-last-slide .arrow-right {
             cursor: default;
             color: #898b8a !important;
             &:hover {
                 color: #898b8a !important;
             }
         }
-        &.on-last-slide .right-arrow,
-        &.on-last-slide .arrow-right{
-            cursor: default;
-            color: #898b8a !important;
-            &:hover {
-                color: #898b8a !important;    
+        &.on-first-slide .mobile-arrow.left-arrow,
+        &.on-first-slide .mobile-arrow.arrow-left,
+        &.on-last-slide .mobile-arrow.right-arrow,
+        &.on-last-slide .mobile-arrow.arrow-right {
+            @include breakpoint($breakpoint-mobile) {
+                background-color: #898b8a;
+                color: white !important;
+                &:hover {
+                    color: white !important;
+                }
             }
         }
     }
@@ -1160,6 +1177,7 @@ body.campaign-display{
                     border-radius: 44px;
                 }
                 &.tp-social-link {
+	                float: none;
                     &:hover{
                         text-decoration: none;
                     }

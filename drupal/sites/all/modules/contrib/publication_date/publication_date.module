@@ -107,24 +107,57 @@ function publication_date_views_api() {
  */
 function publication_date_form_node_form_alter(&$form, &$form_state, $form_id) {
   $node = $form["#node"];
-  $form['options']['pubdate'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Published on'),
-    '#maxlength' => 25,
-    '#description' => t('Format: %time. Leave blank to use the time of form submission.', array('%time' => format_date(REQUEST_TIME, 'custom', 'Y-m-d H:i:s O'))),
-    '#weight' => -1,
-  );
-  if ($form['nid'] !== NULL && isset($node->published_at) && $node->published_at) {
-    $form['options']['pubdate']['#default_value'] = format_date($node->published_at, 'custom', 'Y-m-d H:i:s O');
+
+  // If this is an existing node then get the currently set publication date.
+  $published_at = ($form['nid'] !== NULL && isset($node->published_at) && $node->published_at) ? $node->published_at : 0;
+
+  // Check if the user has permission to edit the publication date.
+  $pubdate_access = user_access('set any published on date') || user_access('set ' . $node->type . ' published on date');
+
+  // Set a date/time format to use in the "Published on" text field.
+  $date_format = 'Y-m-d H:i:s O';
+
+  // Use the popup date picker provided by the Date module, if it is enabled and
+  // the user has access to edit the publication date.
+  if ($pubdate_access && module_exists('date_popup') && variable_get('publication_date_popup_enable', 1)) {
+    // The date popup field requires a date format without the timezone.
+    $date_format = 'Y-m-d H:i:s';
+    $form['options']['pubdate'] = array(
+      '#type' => 'date_popup',
+      '#title' => t('Published on'),
+      '#description' => t('Leave blank to use the time of form submission.'),
+      '#date_type' => DATE_UNIX,
+      '#date_timezone' => date_default_timezone(),
+      '#date_format' => $date_format,
+      '#date_increment' => 1,
+      '#date_year_range' => '-' . variable_get('publication_date_popup_year_start', '6') . ':+' . variable_get('publication_date_popup_year_end', '1'),
+      '#weight' => -1,
+      '#access' => TRUE,
+    );
   }
-  // Check the user's permissions and set pubdate field access.
-  $pubdate_access = $form['options']['pubdate']['#access'] = user_access('set ' . $node->type . ' published on date');
+  // Falback to a standard text field.
+  else {
+    $form['options']['pubdate'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Published on'),
+      '#maxlength' => 25,
+      '#description' => t('Format: %time. Leave blank to use the time of form submission.', array('%time' => format_date(REQUEST_TIME, 'custom', $date_format))),
+      '#weight' => -1,
+      '#access' => $pubdate_access,
+    );
+  }
+
+  // If there is an existing publication date, set it as the default value.
+  if (!empty($published_at)) {
+    $form['options']['pubdate']['#default_value'] = format_date($published_at, 'custom', $date_format);
+  }
+
   // If the user can access pubdate, we need to make sure they also have access
   // to the options group.
   if ($pubdate_access && $form['options']['#access'] == FALSE) {
     $form['options']['#access'] = TRUE;
-    // Check all the fields in the options group and if access has not been set
-    // then set it to FALSE. We don't want to grant access to any extra fields.
+    // Check all fields in the options group and, if access has not been set,
+    // set it to FALSE. We don't want to grant access to any extra fields.
     $children = element_children($form['options']);
     foreach ($children as $key => $value) {
       if (!isset($form['options'][$value]['#access'])){
@@ -132,6 +165,8 @@ function publication_date_form_node_form_alter(&$form, &$form_state, $form_id) {
       }
     }
   }
+
+  // Add custom validation and submit handlers.
   $form['#validate'][] = 'publication_date_pubdate_validate';
   $form['#submit'][] = 'publication_date_pubdate_submit';
 }
@@ -144,17 +179,15 @@ function publication_date_form_node_form_alter(&$form, &$form_state, $form_id) {
 function publication_date_pubdate_validate($form, &$form_state) {
   // Validate the "Published on" field. As of PHP 5.1.0, strtotime returns FALSE
   // instead of -1 upon failure.
-  if (!empty($form_state['values']['pubdate'])) {
-    if (strtotime($form_state['values']['pubdate']) <= 0) {
-      form_set_error('pubdate', t('You have to specify a valid date for the published on field.'));
-    }
+  if (!empty($form_state['values']['pubdate']) && strtotime($form_state['values']['pubdate']) <= 0) {
+    form_set_error('pubdate', t('You have to specify a valid date for the published on field.'));
   }
 }
 
 /**
  * Node edit form submit handler.
  *
- * Update the published date to Epoch integer for other hook implementations to
+ * Convert the published date to Epoch time for other hook implementations to
  * deal with.
  */
 function publication_date_pubdate_submit($form, &$form_state) {
@@ -167,7 +200,16 @@ function publication_date_pubdate_submit($form, &$form_state) {
  * Implements hook_permisson().
  */
 function publication_date_permission() {
-  $permissions = array();
+  $permissions = array(
+    'administer publication date' => array(
+      'title' => t('Administer publication date'),
+      'description' => t('Administer Publication date settings'),
+    ),
+    'set any published on date' => array(
+      'title' => t('Modify any "Published On" date'),
+      'description' => t('Change the "Published On" date for any content type.'),
+    ),
+  );
 
   // Generate permissions to modify Published On date for all node types.
   foreach (node_permissions_get_configured_types() as $type) {
@@ -224,4 +266,31 @@ function publication_date_entity_property_info_alter(&$info) {
  */
 function _publication_date_entity_property_getter($entity) {
   return $entity->published_at;
+}
+
+/**
+ * Implements hook_clone_node_alter().
+ *
+ * Reset the publication date when a node is cloned using the Node Clone module.
+ *
+ * @see clone.api.php
+ */
+function publication_date_clone_node_alter(&$node, $context) {
+  $node->published_at = NULL;
+}
+
+/**
+ * Implements hook_menu().
+ */
+function publication_date_menu() {
+  $items['admin/config/content/publication-date'] = array(
+    'title' => 'Publication date',
+    'description' => 'Configure publication date settings when using the date popup module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('publication_date_admin_form'),
+    'access arguments' => array('administer publication date'),
+    'file' => 'includes/publication_date.admin.inc',
+  );
+
+  return $items;
 }

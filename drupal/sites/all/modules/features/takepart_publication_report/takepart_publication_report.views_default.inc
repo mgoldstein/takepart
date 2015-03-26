@@ -115,7 +115,6 @@ Instead, select two dates to search for all content published between those date
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
-    'takepart_campaign' => 'takepart_campaign',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -209,7 +208,14 @@ Instead, select two dates to search for all content published between those date
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'reports/publication-report';
+  $handler->display->display_options['path'] = 'admin/reports/publication-report';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Publication Report';
+  $handler->display->display_options['menu']['description'] = 'Filter published content by date, author, topic, and content type';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'management';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
@@ -254,7 +260,7 @@ Instead, select two dates to search for all content published between those date
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['path'] = 'reports/publication-report/export';
+  $handler->display->display_options['path'] = 'admin/reports/publication-report/export';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,

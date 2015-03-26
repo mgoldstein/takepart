@@ -246,5 +246,17 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'search_api_sorts',
   );
 
+  // Exported permission: 'view any unpublished content'.
+  $permissions['view any unpublished content'] = array(
+    'name' => 'view any unpublished content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+      'preview' => 'preview',
+    ),
+    'module' => 'view_unpublished',
+  );
+
   return $permissions;
 }

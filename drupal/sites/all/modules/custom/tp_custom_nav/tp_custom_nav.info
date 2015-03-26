@@ -37,4 +37,3 @@ features[field_instance][] = taxonomy_term-brand-field_slim_nav_menu
 features[field_instance][] = taxonomy_term-brand-field_slim_nav_mobile_bg
 features[field_instance][] = taxonomy_term-brand-field_slim_nav_social_menu
 features[taxonomy][] = brand
-mtime = 1418673984

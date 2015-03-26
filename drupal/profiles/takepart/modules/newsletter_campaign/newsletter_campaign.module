@@ -660,7 +660,7 @@ function newsletter_campaign_signup_form_validate($form, $form_state) {
 
 function newsletter_campaign_signup_form_submit($form, &$form_state) {
 
-  $email = $form_state['values']['email'];
+  $email = trim($form_state['values']['email']);
   if (valid_email_address($email)) {
     $form_state['newsletter_campaign_email_is_valid'] = TRUE;
     $campaign = $form_state['newsletter_campaign'];

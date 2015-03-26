@@ -65,20 +65,13 @@
     $.tpsocial.add_service({
         name: 'facebook',
         display: 'Facebook',
-        image: $("meta[property='og:image']").attr("content"),
-//        caption: $("meta[property='og:description']").attr("content"),
-        description: $("meta[property='og:description']").attr("content"),
         share: function(args) {
             get_share_url(args.url, args.title, function(url) {
                 var parser = document.createElement("a");
                 parser.href = args.url;
                 FB.ui({
-                    method: 'feed',
-                    name: args.title,
-                    link: url + '',
-                    picture: $("meta[property='og:image']").attr("content"),
-//                    caption: args.caption || parser.hostname,
-                    description: $("meta[property='og:description']").attr("content")
+                    method: 'share',
+					href: url,
                 },
                 function(response) {
                     if (response && response.post_id) {
@@ -196,28 +189,12 @@
     });
 
     $.tpsocial.add_service({
-        name: 'tumblr_link',
-        display: 'Tumblr',
-        width: 460,
-        height: 500,
-        description: '',
-        share: function(args) {
-            var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent(args.description) + '&url=' + encodeURIComponent(args.url);
-            var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
-        }
-    });
-
-    $.tpsocial.add_service({
         name: 'tumblr',
         display: 'Tumblr',
         width: 460,
         height: 500,
-        media: null,
-        caption: null,
-        source: null,
         share: function(args) {
-            var url = 'http://www.tumblr.com/share/photo?source=' + encodeURIComponent(args.source) + '&caption=' + encodeURIComponent(args.caption) + '&click_thru=' + encodeURIComponent(args.url);
+            var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent(args.description) + '&url=' + args.url;
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }

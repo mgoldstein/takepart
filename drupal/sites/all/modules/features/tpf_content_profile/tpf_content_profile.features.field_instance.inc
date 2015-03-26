@@ -213,9 +213,10 @@ function tpf_content_profile_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_label',
         'weight' => 9,
       ),
       'feature_main' => array(
@@ -315,9 +316,10 @@ function tpf_content_profile_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'link',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'link_label',
         'weight' => 8,
       ),
       'feature_main' => array(

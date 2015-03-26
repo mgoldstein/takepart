@@ -419,6 +419,15 @@
                 gallery.next.call(gallery);
             });
 
+			// Listen for left/right keys
+            $(document).keydown(function(e) {
+                if (e.keyCode == 37) {
+	                gallery.previous.call(gallery);
+                } else if(e.keyCode == 39) {
+	                gallery.next.call(gallery);
+                }
+            });
+
             var resizeTimeout = null;
             $(window).on('resize', function() {
                 clearTimeout(resizeTimeout);
@@ -481,6 +490,7 @@
               skipNextPageview = true;
               gallery.showGallery();
             } else if (token == 'first-slide') {
+                window.suppressTrack = false;
                 skipNextPageview = true;
                 gallery.showGallery(true);
             } else if (gallery.hasCover) {

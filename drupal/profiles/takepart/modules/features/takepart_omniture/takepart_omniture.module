@@ -1,0 +1,200 @@
+<?php
+
+function takepart_omniture_init() {
+  $node = menu_get_object();
+  $campaign_types = variable_get('card_types', array());
+  $campaign_types[] = 'campaign_page';
+  if (!isset($node) || !in_array($node->type, $campaign_types)) {
+    // expouse the omniture_account_name to js as omniture.s_account
+    $s_account = variable_get('omniture_account_name','takeparttakepartdev2');
+    drupal_add_js(array('omniture' => array('s_account' => $s_account)), 'setting');
+    drupal_add_js(drupal_get_path('module', 'takepart_omniture') . "/js/takepart_omniture.js");
+  }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function takepart_omniture_token_info() {
+
+  $token_file_path = drupal_get_path("module", "takepart_omniture")
+    . "/takepart_omniture.token.inc";
+
+  $info['types']['tp_omniture'] = array(
+    'name' => t('TakePart Omniture'),
+    'description' => t("Tokens used for setting omniture variables"),
+  );
+
+  $info['tokens']['tp_omniture']['value_or_empty'] = array(
+    'name' => t('Value or Empty'),
+    'description' => t("Returns the token or empty string"),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_value_or_empty",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['get_tab_uid'] = array(
+    'name' => t('Get TAB user ID'),
+    'description' => t('Retrieve the user\'s TAB ID, if set'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takeaction_tracking_get_guid",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['get_author'] = array(
+    'name' => t('Get Author'),
+    'description' => t('Retrieve the node referenced authors for this node item'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_get_author",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['url_after_arg'] = array(
+    'name' => t('Get URL after arg'),
+    'description' => t('Retrieve the current URL beyond the arg provided.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_url_after_arg",
+      ),
+  );
+
+  $info['tokens']['tp_omniture']['str_decode'] = array(
+    'name' => t('HTML entity decode'),
+    'description' => t('Process token with html_entity_decode function.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_str_decode",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['lowercase'] = array(
+    'name' => t('Lowercase'),
+    'description' => t('Set the value to all lowercase.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_lowercase",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['stringfixes'] = array(
+    'name' => t('Stringfixes'),
+    'description' => t('Cleanup common problems.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_stringfixes",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['remove_spaces'] = array(
+    'name' => t('Remove Spaces'),
+    'description' => t('Remove spaces from returned value.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_removespaces",
+    ),
+  );
+  
+  $info['tokens']['tp_omniture']['first_word'] = array(
+    'name' => t('Grab the first word'),
+    'description' => t('Grab the first word with html_entity_decode function.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_first_word",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['date'] = array(
+    'name' => t('date YYYY/MM/DD'),
+    'description' => t('Put date into YYYY/MM/DD format.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_date",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['urldecode'] = array(
+    'name' => t('urldecode'),
+    'description' => t('call urldecode() on param.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_urldecode",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['get_first_photo_title'] = array(
+    'name' => t('Get First Photo Title'),
+    'description' => t('Retrieve the title of the first photo in a gallery'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_first_photo_title",
+    ),
+  );
+
+  $info['tokens']['tp_omniture']['campaign_context'] = array(
+    'name' => t('Get campaign context'),
+    'description' => t('Get the name of the campaign this page belongs to'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_campaign",
+    ),
+  );
+
+    $info['tokens']['tp_omniture']['primary_topic'] = array(
+    'name' => t('Grab the primary topic'),
+    'description' => t('Grab the first term from the topic field.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_primary_topic",
+    ),
+  );
+    
+    $info['tokens']['tp_omniture']['free_tags'] = array(
+    'name' => t('Get Free Tags'),
+    'description' => t('Get free tags from node ID.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_free_tags",
+    ),
+  );
+    
+    $info['tokens']['tp_omniture']['series'] = array(
+    'name' => t('Get series name'),
+    'description' => t('Get series name from node ID.'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "takepart_omniture_series",
+    ),
+  );
+    
+  //custom token for node perm title
+  $info['tokens']['tp_omniture']['perm_title'] = array(
+    'name' => t('Permanent Title'),
+    'description' => t('If permanent title exist then this will be used, otherwise it will use provided title'),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => 'takepart_omniture_perm_title',
+    ),
+  );
+    
+    return $info;
+}

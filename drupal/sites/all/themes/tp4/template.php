@@ -39,12 +39,19 @@ $card_types = array(
 define('CARDTYPES', serialize($card_types));
 
 
+
 /**
  * Invokes hook_preprocess_html()
  * @param $variables
  * @param $hook
  */
+/**
+ * Implements hook_preprocess_html();
+ */
 function tp4_preprocess_html(&$variables, $hook) {
+
+  /* Add shared assets to all tp4 pages */
+  drupal_add_css(variable_get('shared_assets_path'), array('type' => 'external'));
 
   /* Grab node object if it exists */
   $node = menu_get_object();
@@ -116,6 +123,13 @@ function tp4_html_head_alter(&$head_elements) {
     $head_elements['metatag_og:type']['#weight'] = -740;
     $head_elements['metatag_og:image']['#weight'] = -730;
 
+	// Truncate descriptions that are too long for FB
+	$desc_length = 300;
+	$desc = $head_elements['metatag_og:description_0']['#value'];
+	if( strlen($desc) > $desc_length ) {
+		$desc = substr($desc, 0, $desc_length);
+		$head_elements['metatag_og:description_0']['#value'] = preg_replace('/\w+$/', '', $desc).'…';
+	}
 }
 
 /**
@@ -335,6 +349,24 @@ function tp4_preprocess_tp4_support_slim_nav(&$variables) {
  */
 
 function tp4_preprocess_node(&$variables, $hook) {
+
+	// Show an article without the UNPUBLISHED text and pink background if adding &preview=1 to the url
+	// Do this by auto-logging in the user as TPpreview
+	global $user;
+	if($_GET['preview'] == 1) {
+		drupal_session_start();
+		$user = user_load_by_name('tppreview');	// load the tppreview user
+		// redirect new user to an uncached version of the same page
+		drupal_goto(current_path());
+	} else if( isset($_GET['preview']) && $_GET['preview'] == 0) {
+		$user = user_load(0);
+		drupal_goto(current_path());
+	}
+	if( in_array('preview', $user->roles) ) {
+		$variables['unpublished'] = false;
+		$variables['classes_array'][] = 'node-preview';
+	}
+
   //only show facebook comments if node is published
   $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
   
@@ -726,11 +758,6 @@ function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
   }
 
 }
-
-
-
-
-
 
 
 

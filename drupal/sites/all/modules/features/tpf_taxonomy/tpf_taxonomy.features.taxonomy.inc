@@ -69,7 +69,7 @@ function tpf_taxonomy_taxonomy_default_vocabularies() {
       'name' => 'Video Series',
       'machine_name' => 'video_series',
       'description' => '',
-      'hierarchy' => 1,
+      'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => -1,
     ),

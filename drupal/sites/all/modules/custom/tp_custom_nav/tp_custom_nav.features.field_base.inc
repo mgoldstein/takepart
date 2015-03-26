@@ -17,7 +17,6 @@ function tp_custom_nav_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_slim_nav_bg_color',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'jquery_colorpicker',
@@ -33,7 +32,6 @@ function tp_custom_nav_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_slim_nav_font_color',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'jquery_colorpicker',
@@ -49,14 +47,6 @@ function tp_custom_nav_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_slim_nav_logo',
-    'foreign keys' => array(
-      'fid' => array(
-        'columns' => array(
-          'fid' => 'fid',
-        ),
-        'table' => 'file_managed',
-      ),
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -79,7 +69,6 @@ function tp_custom_nav_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_slim_nav_logo_url',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'link',
@@ -109,14 +98,6 @@ function tp_custom_nav_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_slim_nav_menu',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -138,7 +119,6 @@ function tp_custom_nav_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_slim_nav_mobile_bg',
-    'foreign keys' => array(),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'jquery_colorpicker',
@@ -154,14 +134,6 @@ function tp_custom_nav_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_slim_nav_social_menu',
-    'foreign keys' => array(
-      'format' => array(
-        'columns' => array(
-          'format' => 'format',
-        ),
-        'table' => 'filter_format',
-      ),
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
