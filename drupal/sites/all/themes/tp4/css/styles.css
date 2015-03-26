@@ -10222,37 +10222,40 @@ body.page-overlay-ad #page-wrap {
     overflow: hidden;
     position: relative;
     top: 0;
+    margin-bottom: 1em;
   }
-  /* line 156, ../sass/modules/_footer.scss */
+  /* line 157, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li:first-child {
     top: 0;
     margin-right: 64px;
+    margin-bottom: 1em;
   }
-  /* line 160, ../sass/modules/_footer.scss */
+  /* line 162, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li:nth-child(2) {
     top: 6px;
     margin-right: 47px;
+    margin-bottom: 1em;
   }
-  /* line 165, ../sass/modules/_footer.scss */
+  /* line 168, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a {
     display: block;
     text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
   }
-  /* line 171, ../sass/modules/_footer.scss */
+  /* line 174, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a.logos-participantmedia {
     height: 45px;
     width: 164px;
     background: url("/sites/all/themes/tp4/images/logos/pm_footer.png") no-repeat;
   }
-  /* line 176, ../sass/modules/_footer.scss */
+  /* line 179, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a.logos-pivot {
     height: 28px;
     width: 84px;
     background: url("/sites/all/themes/tp4/images/logos/pivot_footer.png") no-repeat;
   }
-  /* line 181, ../sass/modules/_footer.scss */
+  /* line 184, ../sass/modules/_footer.scss */
   .footer-bottom .footer-bottom-inner li a.logos-takepart {
     height: 28px;
     width: 120px;
