@@ -82,12 +82,12 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
     }
 
     // Set the widget's width, defaulting to 480px
-    $width = field_get_items('inline_content', $replacement, 'field_ic_tap_widget_width');
+    $width = field_get_items('inline_content', $replacement, 'field_ic_tap_widget_width'); 
     if ($width !== FALSE && count($width) > 0) {
       $data = reset($width);
-      $attributes['style'] = "width: {$data['value']}px;";
+      $attributes['data-widget-width'] = "{$data['value']}";
     } else {
-      $attributes['style'] = "width: 480px;";
+      $attributes['data-widget-width'] = "480";
     }
 
     // Set the widget's alignment, defaulting to center.
