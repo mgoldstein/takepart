@@ -483,21 +483,6 @@ function newsletter_campaign_theme() {
 }
 
 /**
- * Implements hook_block_info().
- */
-function newsletter_campaign_block_info() {
-  $blocks = array();
-  foreach (entity_load('newsletter_campaign') as $campaign) {
-    $blocks[$campaign->ncid] = array(
-      'info' => t('@title (Newsletter Campaign)',
-        array('@title' => $campaign->title)),
-      'cache' => DRUPAL_NO_CACHE,
-    );
-  }
-  return $blocks;
-}
-
-/**
  * Implements hook_block_view().
  */
 function newsletter_campaign_block_view($delta) {
