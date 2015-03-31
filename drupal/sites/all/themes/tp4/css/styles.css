@@ -1022,8 +1022,12 @@ a:hover, a:visited, a:active {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 7, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2994: moved partials to base theme
+=======
+/* line 8, ../../base/sass/base/normalize/_normalize.scss */
+>>>>>>> TP-2993: unstyled header
 =======
 /* line 8, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2993: unstyled header
@@ -1036,6 +1040,7 @@ a:hover, a:visited, a:active {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 4, ../../base/sass/normalize/_normalize.scss */
 =======
 /* line 10, ../../base/sass/base/normalize/_normalize.scss */
@@ -1049,6 +1054,9 @@ a:hover, a:visited, a:active {
 =======
 /* line 10, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2994: moved partials to base theme
+=======
+/* line 11, ../../base/sass/base/normalize/_normalize.scss */
+>>>>>>> TP-2993: unstyled header
 =======
 /* line 11, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2993: unstyled header
@@ -1061,6 +1069,7 @@ a:hover, a:visited, a:active {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 7, ../../base/sass/normalize/_normalize.scss */
 =======
 /* line 13, ../../base/sass/base/normalize/_normalize.scss */
@@ -1074,6 +1083,9 @@ a:hover, a:visited, a:active {
 =======
 /* line 13, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2994: moved partials to base theme
+=======
+/* line 14, ../../base/sass/base/normalize/_normalize.scss */
+>>>>>>> TP-2993: unstyled header
 =======
 /* line 14, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2993: unstyled header
@@ -1086,6 +1098,7 @@ a:hover, a:visited, a:active {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 10, ../../base/sass/normalize/_normalize.scss */
 =======
 /* line 16, ../../base/sass/base/normalize/_normalize.scss */
@@ -1099,6 +1112,9 @@ a:hover, a:visited, a:active {
 =======
 /* line 16, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2994: moved partials to base theme
+=======
+/* line 17, ../../base/sass/base/normalize/_normalize.scss */
+>>>>>>> TP-2993: unstyled header
 =======
 /* line 17, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2993: unstyled header
@@ -1111,6 +1127,7 @@ a:hover, a:visited, a:active {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 13, ../../base/sass/normalize/_normalize.scss */
 =======
 /* line 19, ../../base/sass/base/normalize/_normalize.scss */
@@ -1124,6 +1141,9 @@ a:hover, a:visited, a:active {
 =======
 /* line 19, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2994: moved partials to base theme
+=======
+/* line 20, ../../base/sass/base/normalize/_normalize.scss */
+>>>>>>> TP-2993: unstyled header
 =======
 /* line 20, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2993: unstyled header
@@ -1136,6 +1156,7 @@ a:hover, a:visited, a:active {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 16, ../../base/sass/normalize/_normalize.scss */
 =======
 /* line 22, ../../base/sass/base/normalize/_normalize.scss */
@@ -1149,6 +1170,9 @@ a:hover, a:visited, a:active {
 =======
 /* line 22, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2994: moved partials to base theme
+=======
+/* line 23, ../../base/sass/base/normalize/_normalize.scss */
+>>>>>>> TP-2993: unstyled header
 =======
 /* line 23, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2993: unstyled header
@@ -1161,6 +1185,7 @@ a:hover, a:visited, a:active {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* line 19, ../../base/sass/normalize/_normalize.scss */
 =======
 /* line 25, ../../base/sass/base/normalize/_normalize.scss */
@@ -1177,10 +1202,14 @@ a:hover, a:visited, a:active {
 =======
 /* line 26, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2993: unstyled header
+=======
+/* line 26, ../../base/sass/base/normalize/_normalize.scss */
+>>>>>>> TP-2993: unstyled header
 .pl-20 {
   padding-left: 20px;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1199,6 +1228,9 @@ a:hover, a:visited, a:active {
 =======
 /* line 28, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2994: moved partials to base theme
+=======
+/* line 29, ../../base/sass/base/normalize/_normalize.scss */
+>>>>>>> TP-2993: unstyled header
 =======
 /* line 29, ../../base/sass/base/normalize/_normalize.scss */
 >>>>>>> TP-2993: unstyled header
@@ -32097,9 +32129,21 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 .block-newsletter-campaign .social-links li a.youtube {
   background-position: 0 0;
 }
+<<<<<<< HEAD
 /* line 43, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .block-newsletter-campaign .social-links li a.youtube:hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray_hover, .block-newsletter-campaign .social-links li a.youtube.youtube-gray-hover {
   background-position: 0 -48px;
+=======
+
+/* Correct `inline-block` display not defined in IE 8/9. */
+/* line 43, ../sass/elements/_normalize.scss */
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+>>>>>>> TP-2993: unstyled header
 }
 /* line 85, ../sass/modules/_newsletter_campaign.scss */
 .block-newsletter-campaign .social-links li a.tumblr {
