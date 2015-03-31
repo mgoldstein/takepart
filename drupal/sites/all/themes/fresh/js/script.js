@@ -11,7 +11,7 @@ Drupal.behaviors.mobileMenuToggle = {
   attach: function(context, settings) {
 
     var $body = $('body');
-    $('.toggle-mobile-left').click(function(){
+    $('.toggle-menu.toggle-left').click(function(){
 
       if ($body.hasClass('mobile-menu-show')) {
         $body.removeClass("mobile-menu-show" );

@@ -17,7 +17,6 @@
       <?php print render($page['header']); ?>
     </header>
     <div id="main">
-      <div class="toggle-mobile-left"></div> <!-- temporary test -->
       <div id="content" class="column" role="main">
         <a id="main-content"></a>
         <?php print render($title_prefix); ?>

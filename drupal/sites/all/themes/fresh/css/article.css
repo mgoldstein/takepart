@@ -11,7 +11,6 @@
 /*
  *Misc
  */
-/* Helpers Overrides */
 /*
  * Variables File
  * Global variables should be defined in the base theme.  Variables specific to 'Fresh' should be added here
@@ -646,13 +645,138 @@ nav#mobile-menu .mobile-menu li {
   margin-left: 0;
 }
 
-/* For testing only */
-/* line 114, ../../base/sass/base/modules/_mobile-menu.scss */
-.toggle-mobile-left {
+/* line 1, ../sass/modules/_header.scss */
+header {
   display: block;
-  width: 100px;
-  height: 100px;
-  background: blue;
+  width: 100%;
+  height: 40px;
+}
+/* line 5, ../sass/modules/_header.scss */
+header .toggle-menu {
+  display: block;
+  width: 20px;
+  height: 3px;
+  border-top: 9px double #00c09d;
+  border-bottom: 3px solid #00c09d;
+  cursor: pointer;
+  float: left;
+  margin-right: 10px;
+  margin-top: 4px;
+}
+/* line 16, ../sass/modules/_header.scss */
+header .logo {
+  height: auto;
+  overflow: hidden;
+  display: block;
+  width: 121px;
+  float: left;
+}
+/* line 22, ../sass/modules/_header.scss */
+header .logo img {
+  width: 100%;
+}
+/* line 26, ../sass/modules/_header.scss */
+header .search {
+  display: none;
+}
+/* line 28, ../sass/modules/_header.scss */
+header .search.active {
+  font-size: .928571429em;
+  clear: both;
+  position: relative;
+}
+/* line 32, ../sass/modules/_header.scss */
+header .search.active .form-item-keys-2 {
+  display: inline-block;
+  background-color: white;
+  float: left;
+  height: auto;
+  overflow: hidden;
+  width: 100%;
+  vertical-align: bottom;
+  line-height: 23px;
+  font-weight: normal;
+  margin: 0;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 49, ../sass/modules/_header.scss */
+header .search.active [type=text] {
+  float: left;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  width: 100%;
+  color: #777;
+  text-indent: 6px;
+  font-size: 16px;
+  line-height: 21px;
+  background: #fff;
+}
+/* line 60, ../sass/modules/_header.scss */
+header .search.active [type=text]:focus {
+  outline: none;
+}
+@media all and (min-width: 768px) {
+  /* line 28, ../sass/modules/_header.scss */
+  header .search.active {
+    display: block;
+    float: right;
+    clear: right;
+    margin-top: 25px;
+  }
+  /* line 69, ../sass/modules/_header.scss */
+  header .search.active .form-item-keys-2 {
+    padding: 0;
+    width: auto;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  /* line 75, ../sass/modules/_header.scss */
+  header .search.active .form-item-keys-2:before {
+    content: "Search";
+    width: 45px;
+    height: 20px;
+    display: block;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    left: -45px;
+  }
+  /* line 86, ../sass/modules/_header.scss */
+  header .search.active [type=text] {
+    width: 140px;
+    -webkit-appearance: none;
+    height: 25px;
+    font-size: inherit;
+    line-height: normal;
+  }
+  /* line 93, ../sass/modules/_header.scss */
+  header .search.active [type=text]::-webkit-input-placeholder {
+    opacity: 0;
+  }
+  /* line 96, ../sass/modules/_header.scss */
+  header .search.active [type=text]:-moz-placeholder {
+    /* Firefox 18- */
+    opacity: 0;
+  }
+  /* line 99, ../sass/modules/_header.scss */
+  header .search.active [type=text]::-moz-placeholder {
+    /* Firefox 19+ */
+    opacity: 0;
+  }
+  /* line 102, ../sass/modules/_header.scss */
+  header .search.active [type=text] :-ms-input-placeholder {
+    color: red;
+  }
 }
 
 /*****************

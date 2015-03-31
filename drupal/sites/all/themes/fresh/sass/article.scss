@@ -1,12 +1,14 @@
 /*****************
  * Import Partials
  *****************/
+@import "compass/support";
+@import "compass/css3";
+
+
 
 /* Helpers from base */
 @import "base/helpers/variables";
 @import "base/helpers/mixins";
-
-/* Helpers Overrides */
 @import "helpers/variables";
 @import "helpers/mixins";
 
@@ -19,6 +21,7 @@
 
 /* Modules */
 @import "base/modules/mobile-menu";
+@import "modules/header";
 
 /*****************
  * Article Page

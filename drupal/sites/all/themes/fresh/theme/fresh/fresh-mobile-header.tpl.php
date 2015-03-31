@@ -1,12 +1,10 @@
 <div id="mobile-header" class="header">
 
-  <div class="menu-toggle"></div>
-  <div class="logo">
-    <a href="http://www.takepart.com" class="tplinkpos" name="logo"><img src="//www.takepart.com/sites/all/themes/tp4/images/takepart_logo.png"></a>
-  </div>
+  <div class="toggle-menu toggle-left"></div>
+  <a href="http://www.takepart.com" class="logo" name="logo"><img src="//www.takepart.com/sites/all/themes/tp4/images/takepart_logo.png"></a>
 
   <div class="search">
-    <div class="search-toggle"></div>
+    <div class="search-toggle"><span class="icon i-search"></span></div>
     <?php /* render form */ ?>
     <form action="/" method="post" id="search-api-page-search-form-site-search" accept-charset="UTF-8">
       <div>
