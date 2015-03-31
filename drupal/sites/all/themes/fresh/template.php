@@ -9,46 +9,22 @@
 
 
 /**
- * Implements hook_page_build
+ * Include common functions used through out theme.
  */
-function fresh_page_alter(&$page){
-  $node = menu_get_object();
-  if($node->type == 'openpublish_article'){
-    $path = drupal_get_path('theme', 'fresh'). '/css/article.css';
-    $page['content']['#attached']['css'][] = $path;
-  }
+include_once dirname(__FILE__) . '/theme/common.inc';
+
+
+/**
+ * Implements hook_theme()
+ */
+function fresh_theme(&$existing, $type, $theme, $path) {
+  base_include($theme, 'theme/registry.inc');
+  return _fresh_theme($existing, $type, $theme, $path);
 }
 
 
 /**
- * Implements hook_preprocess_page
+ * For various hook_alters
+ * Keep at end of file
  */
-function fresh_preprocess_page(&$variables) {
-
-  /* Statically add mobile menu on every page */
-  $mobile_menu = theme('tp4_support_mobile_menu_header');
-  $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
-
-  /* Statically add mobile menu */
-  $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
-  $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
-
-}
-
-
-/**
- * Implements hook_js_alter()
- */
-function fresh_js_alter(&$javascript){
-
-  /* Update our version of jQuery to 2.x */
-  $jquery_path = 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js';
-  $javascript['misc/jquery.js']['data'] = $jquery_path;
-  $javascript['misc/jquery.js']['type'] = 'external';
-  unset($javascript['sites/all/libraries/colorbox/colorbox/jquery.colorbox-min.js']);
-  unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox.js']);
-  unset($javascript['sites/all/modules/contrib/colorbox/styles/default/colorbox_default_style.js']);
-  unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_load.js']);
-  unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_inline.js']);
-
-}
+include_once dirname(__FILE__) . '/theme/alter.inc';
