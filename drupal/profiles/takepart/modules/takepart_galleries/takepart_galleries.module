@@ -252,22 +252,21 @@ function takepart_galleries_html_head_alter(&$head_elements) {
 		        }
 			}
 		}
+
+		// Generate an empty og:description if there is no field_subhead value
+		// This happens in galleries with no subhead and no cover slide
+		if( !$head_elements['metatag_og:description_0']['#id'] ) {
+			$head_elements['metatag_og:description_0'] = array(
+				'#theme' => 'metatag_property',
+				'#tag' => 'meta',
+				'#id' => 'metatag_og:description_0',
+				'#name' => 'og:description',
+				'#value' => $slide['desc'],
+				'#type' => 'html_tag',
+			);
+		}
+	
+		// Change the Twitter card type
+		$head_elements['metatag_twitter:card_0']['#value'] = 'gallery';
 	}
-
-	// Generate an empty og:description if there is no field_subhead value
-	// This happens in galleries with no subhead and no cover slide
-	if( !$head_elements['metatag_og:description_0']['#id'] ) {
-		$head_elements['metatag_og:description_0'] = array(
-			'#theme' => 'metatag_property',
-			'#tag' => 'meta',
-			'#id' => 'metatag_og:description_0',
-			'#name' => 'og:description',
-			'#value' => $slide['desc'],
-			'#type' => 'html_tag',
-		);
-	}
-
-	// Change the Twitter card type
-	$head_elements['metatag_twitter:card_0']['#value'] = 'gallery';
-
 }
