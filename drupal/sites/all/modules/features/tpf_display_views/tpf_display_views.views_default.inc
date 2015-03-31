@@ -467,7 +467,11 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '1800';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '1800';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -492,12 +496,6 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Page Headline */
-  $handler->display->display_options['fields']['field_flashcard_page_headline']['id'] = 'field_flashcard_page_headline';
-  $handler->display->display_options['fields']['field_flashcard_page_headline']['table'] = 'field_data_field_flashcard_page_headline';
-  $handler->display->display_options['fields']['field_flashcard_page_headline']['field'] = 'field_flashcard_page_headline';
-  $handler->display->display_options['fields']['field_flashcard_page_headline']['label'] = '';
-  $handler->display->display_options['fields']['field_flashcard_page_headline']['element_label_colon'] = FALSE;
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -540,15 +538,6 @@ function tpf_display_views_views_default_views() {
     'image_style' => '',
     'image_link' => '',
   );
-  /* Field: Content: Inline Content: Embedded Content */
-  $handler->display->display_options['fields']['inline_content_embedded']['id'] = 'inline_content_embedded';
-  $handler->display->display_options['fields']['inline_content_embedded']['table'] = 'node';
-  $handler->display->display_options['fields']['inline_content_embedded']['field'] = 'inline_content_embedded';
-  $handler->display->display_options['fields']['inline_content_embedded']['label'] = '';
-  $handler->display->display_options['fields']['inline_content_embedded']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['inline_content_embedded']['list']['separator'] = ',,,';
-  $handler->display->display_options['fields']['inline_content_embedded']['link_to_entity'] = 1;
-  $handler->display->display_options['fields']['inline_content_embedded']['view_mode'] = 'full';
   /* Field: Content: Related Stories */
   $handler->display->display_options['fields']['field_related_stories']['id'] = 'field_related_stories';
   $handler->display->display_options['fields']['field_related_stories']['table'] = 'field_data_field_related_stories';
@@ -558,26 +547,6 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_related_stories']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_related_stories']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_related_stories']['separator'] = ',,,';
-  /* Field: Global: PHP */
-  $handler->display->display_options['fields']['php']['id'] = 'php';
-  $handler->display->display_options['fields']['php']['table'] = 'views';
-  $handler->display->display_options['fields']['php']['field'] = 'php';
-  $handler->display->display_options['fields']['php']['label'] = '';
-  $handler->display->display_options['fields']['php']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['php']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['php']['alter']['text'] = '[field_related_stories][php][inline_content_embedded]';
-  $handler->display->display_options['fields']['php']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['php']['use_php_setup'] = 0;
-  $handler->display->display_options['fields']['php']['php_output'] = '<?php
-if (!empty($data->_field_data[\'nid\'][\'entity\']->field_related_stories) && !empty($data->_entity_properties[\'inline_content_embedded\'])) {
-  $separator = \',,,\';
-} else {
-  $separator = \'\';
-}
-echo $separator;
-?>';
-  $handler->display->display_options['fields']['php']['use_php_click_sortable'] = '0';
-  $handler->display->display_options['fields']['php']['php_click_sortable'] = '';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
