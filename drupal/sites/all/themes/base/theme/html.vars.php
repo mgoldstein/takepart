@@ -6,5 +6,7 @@
  */
 function base_preprocess_html(&$variables){
   /* Add shared assets to all tp4 pages */
-  drupal_add_css(variable_get('shared_assets_path'), array('type' => 'external'));
+  if($shared_assets = variable_get('shared_assets_path')){
+    drupal_add_css($shared_assets, array('type' => 'external'));
+  }
 }
