@@ -1,0 +1,7 @@
+name = More on TakePart
+description = Place editorially curated, site-wide, and Taboola links below articles
+core = 7.x
+package = Fresh
+version = 7.x-0.1
+
+dependencies[] = entity_autocomplete
