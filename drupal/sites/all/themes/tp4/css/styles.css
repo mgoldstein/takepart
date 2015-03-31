@@ -15400,20 +15400,16 @@ h3.video-title {
 }
 
 /* line 310, ../sass/modules/_video_playlist.scss */
-body #article-content .bx-wrapper .bx-controls a {
-  top: 47px !important;
-}
-/* line 313, ../sass/modules/_video_playlist.scss */
 body #article-content .inline-content-playlist {
   max-width: 500px;
   width: 100%;
 }
-/* line 317, ../sass/modules/_video_playlist.scss */
+/* line 314, ../sass/modules/_video_playlist.scss */
 body #article-content .inline-content-playlist.align-full {
   max-width: none;
 }
 @media all and (min-width: 980px) {
-  /* line 317, ../sass/modules/_video_playlist.scss */
+  /* line 314, ../sass/modules/_video_playlist.scss */
   body #article-content .inline-content-playlist.align-full {
     width: 912px !important;
   }
