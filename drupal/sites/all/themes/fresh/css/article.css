@@ -2087,6 +2087,19 @@ img {
   background-color: #0080a5;
 }
 
+/* line 118, ../sass/base/_normalize.scss */
+.social .icon {
+  with: 24px;
+  height: 24px;
+}
+
+/* line 124, ../sass/base/_normalize.scss */
+.horizontal-menu li {
+  margin: 0;
+  display: inline-block;
+  text-align: center;
+}
+
 /* Modules */
 /***********
 * New mobile menu
