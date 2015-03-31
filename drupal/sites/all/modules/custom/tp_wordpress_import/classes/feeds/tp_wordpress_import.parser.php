@@ -34,7 +34,7 @@ class tp_wordpress_import_parser extends FeedsParser {
         foreach ($rss->getElementsByTagName('item') as $node) {
           //variables
           $creator = $node->getElementsByTagName('creator')->item(0)->nodeValue;
-          $content_prefix_var = variable_get('tp_wordpress_import_content_prefix', 'This article was written by @author and it originally appeared on Dowser.org; a website focused on the practical and human elements of social innovation.');
+          $content_prefix_var = variable_get('tp_wordpress_import_content_prefix', '<i>This article was written by @author and it originally appeared on Dowser.org; a website focused on the practical and human elements of social innovation.<i>');
           
           //ensures that the message is different if user is admin
           if ($creator == 'admin') {
@@ -49,11 +49,12 @@ class tp_wordpress_import_parser extends FeedsParser {
                 'class' => 'importer-author',
           ))));
           
-          $allowed_tags = variable_get('tp_wordpress_import_allow_tags', '<iframe><a><h1><h2><h3><h4><h5>');
+          $allowed_tags = variable_get('tp_wordpress_import_allow_tags', '<i><iframe><a><h1><h2><h3><h4><h5>');
         
           //creates the item and adds it into the list
           //@dev: this area is where the items will be set to allow users to MAP items to the correct node.
           //use NODE mapping to map items such as title(xml) => title (node)
+          $content = preg_replace("/\[youtube\](.*?)\[\/youtube]/s", " ", $node->getElementsByTagName('encoded')->item(0)->nodeValue);
           $item = array (
             'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
             'author' => variable_get('tp_wordpress_import_author_nid', ''), 
@@ -61,7 +62,7 @@ class tp_wordpress_import_parser extends FeedsParser {
             'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
             'pubDate' => $node->getElementsByTagName('pubDate')->item(0)->nodeValue,
             'description' => $node->getElementsByTagName('description')->item(0)->nodeValue,
-            'content' => $content_prefix . nl2br(strip_tags($node->getElementsByTagName('encoded')->item(0)->nodeValue, $allowed_tags)),
+            'content' => $content_prefix . nl2br(strip_tags($content, $allowed_tags)),
             'admin_tag' => variable_get('tp_wordpress_import_admin_tag', 'Dowser'),
             'tagging' => variable_get('tp_wordpress_import_tagging', 'Social Justice')
           );
