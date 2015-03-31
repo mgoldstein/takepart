@@ -114,3 +114,16 @@ img{
   font-weight: normal;
   font-size: 14px;
 }
+
+.social .icon{
+  with: 24px;
+  height: 24px;
+}
+
+.horizontal-menu{
+  li{
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+  }
+}

@@ -17,11 +17,14 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
 
   /* Do not define template or path */
   $hook_theme = array(
-    'fresh_mobile_menu' => array(
+    'fresh_mobile_menu_header' => array(
       'variables' => array(
         'links' => array(),
-        'attributes' => array(),
-        'heading' => NULL,
+      ),
+    ),
+    'fresh_mobile_header' => array(
+      'variables' => array(
+        'links' => array(),
       ),
     ),
   );
