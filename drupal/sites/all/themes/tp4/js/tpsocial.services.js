@@ -194,7 +194,7 @@
         width: 460,
         height: 500,
         share: function(args) {
-            var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent(args.description) + '&url=' + args.url;
+            var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent($("meta[property='og:description']").attr("content")) + '&url=' + args.url;
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
