@@ -219,11 +219,6 @@ function tp4_preprocess_page(&$variables) {
   $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
   $variables['content_classes'] .= ($variables['sidebar'] ? ' with-sidebar' : '');
 
-  // Add Node-specific page templates
-  if (!empty($variables['node'])) {
-    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
-  }
-
   // override page titles on certain node templates
   $override_page_title_types = array(
       'openpublish_article',
@@ -401,13 +396,6 @@ function tp4_preprocess_node(&$variables, $hook) {
   // put the nodetype as a date type on the node object.
   // I'm Matt Wrather and I Approve This Hack.
   $variables['attributes_array']['data-contenttype'] = $variables['type'];
-
-  // Run node-type-specific preprocess functions, like
-  // tp4_preprocess_node__page() or tp4_preprocess_node__story().
-  $function = __FUNCTION__ . '__' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
-  }
 
   //address issue with title for photo gallery not showing the titles
   if ($variables['view_mode'] == 'inline_content' && !$variables['title'] && $variables['referencing_field'] == 'field_related_stories') {
