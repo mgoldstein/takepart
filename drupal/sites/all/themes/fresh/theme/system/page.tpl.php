@@ -41,7 +41,9 @@
           <?php print render($page['footer']); ?>
         </div>
       </div>
+      <?php print render($page['footer']); ?>
     </div>
   </div>
+
 </div>
 <?php print render($page['bottom']); ?>
