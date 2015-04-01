@@ -4,6 +4,7 @@
  * Implements hook_preprocess_node();
  */
 function fresh_preprocess_node(&$variables, $hook){
+  dpm($variables, 'variables 1');
   // Run node-type-specific preprocess functions, like
   // fresh_preprocess_node__page() or fresh_preprocess_node__story().
   $function = __FUNCTION__ . '__' . $variables['node']->type;
@@ -21,5 +22,5 @@ function fresh_preprocess_node(&$variables, $hook){
  */
 function fresh_preprocess_node__openpublish_article(&$variables){
   /* Set variables for node--openpublish-article.tpl.php */
-  
+//  $variables['author_teaser'] = theme('fresh_author_teaser', array('author' => $user, 'date' => $date));
 }

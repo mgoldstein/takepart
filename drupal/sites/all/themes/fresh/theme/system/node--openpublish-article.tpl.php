@@ -7,26 +7,33 @@
  * @see https://drupal.org/node/1728164
  */
 ?>
-<article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
-
-  <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
-    <header>
-      <?php print render($title_prefix); ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-      <?php print render($title_suffix); ?>
-
-      <?php if ($unpublished): ?>
-        <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
-      <?php endif; ?>
-    </header>
-  <?php endif; ?>
-
-  <?php
-  // We hide the comments and links now so that we can render them later.
-  hide($content['comments']);
-  hide($content['links']);
-  print render($content);
-  ?>
 
 
-</article>
+
+
+
+<div class="placeholder-ad">
+  <?php print theme('fresh_ad'); ?>
+</div>
+<div class="placeholder-author-teaser">
+  <?php print theme('fresh_author_teaser', array('author' => $user, 'date' => $date)); ?>
+</div>
+<div class="placeholder-related">
+  <?php print theme('fresh_ad'); ?>
+</div>
+<div class="placeholder-prev-next">
+  <?php print theme('fresh_ad'); ?>
+</div>
+<div class="placeholder-content-teaser">
+  <?php print theme('fresh_ad'); ?>
+</div>
+
+<ul>
+  <li>example 1</li>
+  <li>example 2</li>
+  <li>example 3</li>
+  <li>example 4</li>
+</ul>
+<blockquote>
+  I gave up butter long ago, but last year I heard that the saturated fat found in it isn't harmful, so I'm tempted to start eating it again.
+</blockquote>
