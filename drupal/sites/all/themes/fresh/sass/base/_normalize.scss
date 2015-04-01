@@ -101,6 +101,27 @@ img{
     font-weight: bold;
   }
 }
+
+/*
+* Advertisements
+*************************/
+.ad-wrapper{
+
+}
+.ad-label{
+  font-family: $AdelleSans;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: .01em;
+  margin: 0;
+  text-align: center;
+}
+.ad{
+  display: block;
+  margin: 0 auto;
+}
 .btn{
 
 }

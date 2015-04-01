@@ -1875,27 +1875,48 @@ img {
   font-weight: bold;
 }
 
-/* line 107, ../sass/base/_normalize.scss */
+/*
+* Advertisements
+*************************/
+/* line 111, ../sass/base/_normalize.scss */
+.ad-label {
+  font-family: "AdelleSans";
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: .01em;
+  margin: 0;
+  text-align: center;
+}
+
+/* line 121, ../sass/base/_normalize.scss */
+.ad {
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 128, ../sass/base/_normalize.scss */
 .btn-primary {
   font-family: "AdelleSans";
   font-weight: 900;
   font-size: 14px;
 }
 
-/* line 112, ../sass/base/_normalize.scss */
+/* line 133, ../sass/base/_normalize.scss */
 .btn-secondary {
   font-family: "AdelleSans";
   font-weight: normal;
   font-size: 14px;
 }
 
-/* line 118, ../sass/base/_normalize.scss */
+/* line 139, ../sass/base/_normalize.scss */
 .social .icon {
   with: 24px;
   height: 24px;
 }
 
-/* line 124, ../sass/base/_normalize.scss */
+/* line 145, ../sass/base/_normalize.scss */
 .horizontal-menu li {
   margin: 0;
   display: inline-block;
