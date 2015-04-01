@@ -4,7 +4,6 @@
  * Implements hook_preprocess_node();
  */
 function fresh_preprocess_node(&$variables, $hook){
-  dpm($variables, 'variables 1');
   // Run node-type-specific preprocess functions, like
   // fresh_preprocess_node__page() or fresh_preprocess_node__story().
   $function = __FUNCTION__ . '__' . $variables['node']->type;
