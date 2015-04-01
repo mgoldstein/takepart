@@ -767,15 +767,6 @@
         }
     }
 
-    // with hard-coded style attribute values for the take action widget,
-    // we need to make sure that the widget doesn't overflow the viewport
-    // when it's less than 500px wide (te max width of the TAP widget)
-    .takepart-take-action-widget {
-        @media (max-width: 499px) {
-            max-width: 100% !important;
-        }
-    }
-
     // INLINE CONTENT
     // related nodes
     .inline-content-nodes {
