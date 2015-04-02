@@ -20,6 +20,9 @@ function _base_theme(&$existing, $type, $theme, $path) {
         'attributes' => array(),
         'heading' => NULL,
       ),
+    ),
+    'base_topic_box' => array(
+      'render element' => 'element'
     )
   );
 
@@ -43,6 +46,7 @@ function _base_theme(&$existing, $type, $theme, $path) {
  *  - `template` if template file is found.
  */
 function base_hook_theme_complete(&$registry, $theme, $path) {
+
   $registry = drupal_array_merge_deep(
     $registry,
     base_find_theme_includes($registry, '.vars.php', $path),

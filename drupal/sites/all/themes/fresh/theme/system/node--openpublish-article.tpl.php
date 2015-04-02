@@ -10,24 +10,56 @@
 
 <article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
 
-  <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
-    <header>
-      <?php print render($title_prefix); ?>
-      <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
-      <?php print render($title_suffix); ?>
-
-      <?php if ($unpublished): ?>
-        <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
-      <?php endif; ?>
-    </header>
+  <?php if(!empty($variables['advertisement'])): ?>
+    <div class="advertisement">
+      <?php print $variables['advertisement']; ?>
+    </div>
   <?php endif; ?>
-
-  <?php
-  // We hide the comments and links now so that we can render them later.
-  hide($content['comments']);
-  hide($content['links']);
-  print render($content);
-  ?>
-
-
-</article>
+  <?php if(!empty($variables['topic_box'])): ?>
+    <div class="row">
+      <?php print $variables['topic_box']; ?>
+    </div>
+  <?php endif; ?>
+  <?php print render($title_prefix); ?>
+  <h1><?php print $title; ?></h1>
+  <?php print render($title_suffix); ?>
+  <?php if(!empty($variables['headline'])): ?>
+    <div class="row">
+      <?php print $variables['headline']; ?>
+    </div>
+  <?php endif; ?>
+  <?php if(!empty($variables['media'])): ?>
+    <div class="row">
+      <?php print $variables['media']; ?>
+    </div>
+  <?php endif; ?>
+  <?php if(!empty($variables['sponsored'])): ?>
+    <div class="row">
+      <?php print $variables['sponsored']; ?>
+    </div>
+  <?php endif; ?>
+  <?php if(!empty($variables['author_teaser'])): ?>
+    <div class="row">
+      <?php print $variables['author_teaser']; ?>
+    </div>
+  <?php endif; ?>
+  <?php if(!empty($variables['main-really'])): ?>
+    <div class="main-content">
+      <?php print $variables['main-really']; ?>
+    </div>
+  <?php endif; ?>
+  <?php if(!empty($variables['sponsor_disclosure'])): ?>
+    <div class="sponsor-disclosure">
+      <?php print $variables['sponsor_disclosure']; ?>
+    </div>
+  <?php endif; ?>
+  <?php if(!empty($variables['article_nav'])): ?>
+    <div class="article-navigation">
+      <?php print $variables['article_nav']; ?>
+    </div>
+  <?php endif; ?>
+  <?php if(!empty($variables['comments'])): ?>
+    <div class="comments">
+      <?php print $variables['comments']; ?>
+    </div>
+  <?php endif; ?>

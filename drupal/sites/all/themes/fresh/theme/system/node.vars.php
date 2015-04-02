@@ -24,6 +24,26 @@ function fresh_preprocess_node__openpublish_article(&$variables){
   /* Set variables for node--openpublish-article.tpl.php (Full View)*/
   if($variables['view_mode'] == 'full'){
 
+    /* Leader Ad */
+    /* TODO: Roger, change this how you want */
+    $variables['advertisement'] = theme('fresh_ad');
+
+    /* Topic Box */
+    if($topic_box = field_get_items('node', $variables['node'], 'field_topic_box')){
+      $variables['topic_box'] = theme('base_topic_box', array('tid' => $topic_box[0]['tid']));
+    }
+
+    /* Subheadline */
+    if($headline = field_get_items('node', $variables['node'], 'field_article_subhead')){
+      $variables['headline'] = $headline[0]['value'];
+    }
+
+    /* Media */
+    if($media = field_get_items('node', $variables['node'], 'field_article_main_image')){
+//      dpm($media, 'media');
+      $variables['media'] = $media[0]['value'];
+    }
+
     /* Author */
     $author_vars = array();
     if($authors = field_get_items('node', $variables['node'], 'field_author')){

@@ -1509,7 +1509,9 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
         _tp4_on_our_radar_block($variables);
 
         // provide topic box
-        _tp4_topic_box($variables);
+        if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
+          $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
+        }
 
         // provide a series prev/next nav if a series exists
         _tp4_series_nav($variables);
@@ -1623,7 +1625,9 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
         _tp4_on_our_radar_block($variables);
 
         // provide topic box
-        _tp4_topic_box($variables);
+        if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
+          $variables['topic_box_top'] = theme('btopic_box', array('tid' => $topic[0]['tid']));
+        }
     }
 }
 
@@ -1670,24 +1674,6 @@ function _tp4_on_our_radar_block(&$variables) {
       'weight' => 10
     )
   );
-}
-
-/**
- * Utility function to provide topic box to node templates
- */
-function _tp4_topic_box(&$variables) {
-    if (!empty($variables['field_topic_box'])) {
-        $topic = taxonomy_term_load($variables['field_topic_box']['und'][0]['tid']);
-
-        if (!empty($topic->field_topic_box_image['und'][0]['uri'])) {
-            $image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));
-            if (!empty($topic->field_topic_box_link)) {
-              $drupal_url = ( substr($topic->field_topic_box_link['und'][0]['url'], 0, 1) === "/") ? substr($topic->field_topic_box_link['und'][0]['url'], 1) : $topic->field_topic_box_link['und'][0]['url'];
-
-            }
-          $variables['field_topic_box_top'] = empty($drupal_url) ? $image : l($image, $drupal_url, array('html' => TRUE));
-        }
-    }
 }
 
 /**
