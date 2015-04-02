@@ -8,14 +8,16 @@ function fresh_preprocess_fresh_author_teaser(&$variables){
   if($account = $variables['author']){
 
     /* Format the image */
-    $image = field_get_items('node', $account, 'field_profile_photo');
-    $image = image_style_url('70x70_thumbnail', $image[0]['uri']);
-    $variables['image'] =  $image;
+    if($image = field_get_items('node', $account, 'field_profile_photo')){
+      $image = image_style_url('70x70_thumbnail', $image[0]['uri']);
+      $variables['image'] =  $image;
+    }
 
     /* Format the About Text */
-    $about = field_get_items('node', $account, 'body');
-    $about = $about[0]['summary'];
-    $variables['about'] = $about;
+    if($about = field_get_items('node', $account, 'body')){
+      $about = $about[0]['summary'];
+      $variables['about'] = $about;
+    }
 
     /* Format the links */
     $options = array(
@@ -39,7 +41,6 @@ function fresh_preprocess_fresh_author_teaser(&$variables){
   if($date = $variables['published_at']){
     /* Format the date */
     $variables['date'] = date('M j, Y, g:ia', $date);
-
   }
 
 }

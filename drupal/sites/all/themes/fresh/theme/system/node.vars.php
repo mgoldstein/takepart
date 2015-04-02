@@ -40,8 +40,8 @@ function fresh_preprocess_node__openpublish_article(&$variables){
 
     /* Media */
     if($media = field_get_items('node', $variables['node'], 'field_article_main_image')){
-//      dpm($media, 'media');
-      $variables['media'] = $media[0]['value'];
+      $image_url = image_style_url('large', $media[0]['file']->uri);
+      $variables['media'] =  theme('image', array('path' => $image_url));
     }
 
     /* Author */
