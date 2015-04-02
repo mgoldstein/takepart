@@ -31,6 +31,12 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
       'variables' => array(
         'ad_tag' => ''
       )
+    ),
+    'fresh_author_teaser' => array(
+      'variables' => array(
+        'author' => '',
+        'published_at' => ''
+      )
     )
   );
 

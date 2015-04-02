@@ -20,6 +20,21 @@ function fresh_preprocess_node(&$variables, $hook){
  * Implements hook_preprocess_node__NODE-TYPE()
  */
 function fresh_preprocess_node__openpublish_article(&$variables){
-  /* Set variables for node--openpublish-article.tpl.php */
-//  $variables['author_teaser'] = theme('fresh_author_teaser', array('author' => $user, 'date' => $date));
+
+  /* Set variables for node--openpublish-article.tpl.php (Full View)*/
+  if($variables['view_mode'] == 'full'){
+
+    /* Author */
+    $author_vars = array();
+    if($authors = field_get_items('node', $variables['node'], 'field_author')){
+      $author_vars['author'] =  node_load($authors[0]['nid']);
+    }
+    $author_vars['published_at'] = $variables['node']->published_at;
+    $variables['author_teaser'] = theme('fresh_author_teaser', $author_vars);
+
+    /* Article Navigation */
+  }
+
+
+
 }

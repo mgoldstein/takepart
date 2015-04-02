@@ -70,7 +70,7 @@
 }
 
 /* line 11, ../sass/bootstrap/mixins/_grid-framework.scss */
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xxs-1, .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xxs-2, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xxs-3, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xxs-4, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xxs-5, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xxs-6, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xxs-7, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xxs-8, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xxs-9, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xxs-10, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xxs-11, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xxs-12, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -1756,7 +1756,14 @@ a:hover, a:visited, a:active {
 }
 
 /* Overrides to the base normalize.scss */
-/* line 3, ../sass/base/_normalize.scss */
+/* line 2, ../sass/base/_normalize.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 7, ../sass/base/_normalize.scss */
 body, p {
   font-family: "Ashbury";
   font-weight: 100;
@@ -1765,7 +1772,7 @@ body, p {
   letter-spacing: -.01em;
 }
 
-/* line 10, ../sass/base/_normalize.scss */
+/* line 14, ../sass/base/_normalize.scss */
 h1 {
   font-family: "AdelleSans";
   font-weight: 900;
@@ -1773,7 +1780,7 @@ h1 {
   line-height: 38px;
 }
 
-/* line 16, ../sass/base/_normalize.scss */
+/* line 20, ../sass/base/_normalize.scss */
 h2 {
   font-family: "AdelleSans";
   font-weight: 900;
@@ -1781,7 +1788,7 @@ h2 {
   line-height: 30px;
 }
 
-/* line 22, ../sass/base/_normalize.scss */
+/* line 26, ../sass/base/_normalize.scss */
 h3 {
   font-family: "AdelleSans";
   font-weight: 900;
@@ -1789,7 +1796,7 @@ h3 {
   line-height: 28px;
 }
 
-/* line 28, ../sass/base/_normalize.scss */
+/* line 32, ../sass/base/_normalize.scss */
 h4, h5 {
   font-family: "AdelleSans";
   font-weight: 900;
@@ -1797,7 +1804,7 @@ h4, h5 {
   line-height: 20px;
 }
 
-/* line 34, ../sass/base/_normalize.scss */
+/* line 38, ../sass/base/_normalize.scss */
 blockquote {
   font-family: "Ashbury";
   font-weight: 100px;
@@ -1805,7 +1812,7 @@ blockquote {
   line-height: 27px;
 }
 
-/* line 40, ../sass/base/_normalize.scss */
+/* line 44, ../sass/base/_normalize.scss */
 .sponsor-label {
   font-family: "Brown";
   font-weight: 900;
@@ -1813,7 +1820,7 @@ blockquote {
   line-height: 20px;
 }
 
-/* line 46, ../sass/base/_normalize.scss */
+/* line 50, ../sass/base/_normalize.scss */
 .label {
   font-family: "AdelleSans";
   font-weight: 100;
@@ -1822,7 +1829,7 @@ blockquote {
   letter-spacing: .01em;
 }
 
-/* line 53, ../sass/base/_normalize.scss */
+/* line 57, ../sass/base/_normalize.scss */
 .caption {
   font-family: "Ashbury";
   font-weight: 100;
@@ -1830,31 +1837,49 @@ blockquote {
   line-height: 24px;
 }
 
-/* line 65, ../sass/base/_normalize.scss */
+/* line 66, ../sass/base/_normalize.scss */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 70, ../sass/base/_normalize.scss */
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 74, ../sass/base/_normalize.scss */
 hr {
   border-bottom: 1px solid #c7c7c7;
 }
-/* line 67, ../sass/base/_normalize.scss */
+/* line 76, ../sass/base/_normalize.scss */
 hr.special {
   color: #0080a5;
 }
 
-/* line 71, ../sass/base/_normalize.scss */
+/* line 80, ../sass/base/_normalize.scss */
 a {
   font-family: "Ashbury";
   font-weight: 100;
   color: #00a084;
 }
 
-/* line 76, ../sass/base/_normalize.scss */
+/* line 85, ../sass/base/_normalize.scss */
 img {
+  display: block;
   max-width: 100%;
+}
+
+/* line 89, ../sass/base/_normalize.scss */
+.img-circle {
+  border-radius: 50%;
 }
 
 /*
 * Components
 *************************/
-/* line 85, ../sass/base/_normalize.scss */
+/* line 98, ../sass/base/_normalize.scss */
 .pullquote {
   font-family: "Ashbury";
   font-weight: 100;
@@ -1863,14 +1888,14 @@ img {
   line-height: 36px;
 }
 
-/* line 95, ../sass/base/_normalize.scss */
+/* line 108, ../sass/base/_normalize.scss */
 .author-block {
   font-family: "Ashbury";
   font-weight: 100;
   font-size: 16px;
   line-height: 24px;
 }
-/* line 100, ../sass/base/_normalize.scss */
+/* line 113, ../sass/base/_normalize.scss */
 .author-block span {
   font-weight: bold;
 }
@@ -1878,49 +1903,124 @@ img {
 /*
 * Advertisements
 *************************/
-/* line 111, ../sass/base/_normalize.scss */
-.ad-label {
+/* line 121, ../sass/base/_normalize.scss */
+.ad-label, .author-teaser .published-at {
   font-family: "AdelleSans";
   font-weight: 100;
   text-transform: uppercase;
   font-size: 12px;
   line-height: 20px;
   letter-spacing: .01em;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   text-align: center;
+  color: #c7c7c7;
 }
 
-/* line 121, ../sass/base/_normalize.scss */
+/* line 133, ../sass/base/_normalize.scss */
 .ad {
   display: block;
   margin: 0 auto;
 }
 
-/* line 128, ../sass/base/_normalize.scss */
+/*
+* Buttons
+*************************/
+/* line 145, ../sass/base/_normalize.scss */
 .btn-primary {
   font-family: "AdelleSans";
   font-weight: 900;
   font-size: 14px;
 }
 
-/* line 133, ../sass/base/_normalize.scss */
+/* line 150, ../sass/base/_normalize.scss */
 .btn-secondary {
   font-family: "AdelleSans";
   font-weight: normal;
   font-size: 14px;
+  color: #00c09d;
+  border: 1px solid #00c09d;
+  border-radius: 3px;
+  padding: 5px 10px;
 }
 
-/* line 139, ../sass/base/_normalize.scss */
+/* line 160, ../sass/base/_normalize.scss */
 .social .icon {
   with: 24px;
   height: 24px;
 }
 
-/* line 145, ../sass/base/_normalize.scss */
+/*
+* Menus
+*************************/
+/* line 169, ../sass/base/_normalize.scss */
 .horizontal-menu li {
   margin: 0;
   display: inline-block;
   text-align: center;
+}
+
+/*
+* Author Block
+*************************/
+/* line 179, ../sass/base/_normalize.scss */
+.author-teaser {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+/* line 184, ../sass/base/_normalize.scss */
+.author-teaser .about {
+  font-family: "Ashbury";
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+/* line 191, ../sass/base/_normalize.scss */
+.author-teaser .about span {
+  font-weight: 900;
+}
+/* line 195, ../sass/base/_normalize.scss */
+.author-teaser .published-at {
+  margin-bottom: 5px;
+  text-align: left;
+}
+/* line 200, ../sass/base/_normalize.scss */
+.author-teaser .image {
+  padding-right: 0;
+}
+/* line 203, ../sass/base/_normalize.scss */
+.author-teaser img {
+  margin: 0 auto;
+}
+
+/*
+* Lines
+*************************/
+/* line 212, ../sass/base/_normalize.scss */
+.line {
+  height: 21px;
+  padding: 10px;
+  background-clip: content-box;
+  clear: both;
+}
+
+/* line 218, ../sass/base/_normalize.scss */
+.line-style-1 {
+  background-color: #c7c7c7;
+}
+
+/* line 221, ../sass/base/_normalize.scss */
+.line-style-2 {
+  background-color: #c7c7c7;
+}
+
+/* line 224, ../sass/base/_normalize.scss */
+.line-style-3 {
+  background-color: #0080a5;
 }
 
 /* Modules */

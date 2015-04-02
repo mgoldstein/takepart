@@ -1,5 +1,9 @@
 /* Overrides to the base normalize.scss */
-
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body, p{
   font-family: $Ashbury;
   font-weight: 100;
@@ -56,11 +60,16 @@ blockquote{
   font-size: 12px;
   line-height: 24px;
 }
-ul{
+.published-at{
 
 }
+ul{
+  margin: 0;
+  padding: 0;
+}
 li{
-
+  margin: 0;
+  padding: 0;
 }
 hr{
   border-bottom: 1px solid $light-gray;
@@ -74,7 +83,11 @@ a{
   color: $mint;
 }
 img{
+  display: block;
   max-width: 100%;
+}
+.img-circle{
+  border-radius: 50%;
 }
 
 
@@ -105,9 +118,6 @@ img{
 /*
 * Advertisements
 *************************/
-.ad-wrapper{
-
-}
 .ad-label{
   font-family: $AdelleSans;
   font-weight: 100;
@@ -115,13 +125,20 @@ img{
   font-size: 12px;
   line-height: 20px;
   letter-spacing: .01em;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   text-align: center;
+  color: $light-gray;
 }
 .ad{
   display: block;
   margin: 0 auto;
 }
+
+
+/*
+* Buttons
+*************************/
 .btn{
 
 }
@@ -134,6 +151,10 @@ img{
   font-family: $AdelleSans;
   font-weight: normal;
   font-size: 14px;
+  color: $light-mint;
+  border: 1px solid $light-mint;
+  border-radius: 3px;
+  padding: 5px 10px;
 }
 
 .social .icon{
@@ -141,10 +162,65 @@ img{
   height: 24px;
 }
 
+/*
+* Menus
+*************************/
 .horizontal-menu{
   li{
     margin: 0;
     display: inline-block;
     text-align: center;
   }
+}
+
+/*
+* Author Block
+*************************/
+.author-teaser{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  .about{
+    font-family: $Ashbury;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+    margin-bottom: 10px;
+    span{
+      font-weight: 900;
+    }
+  }
+  .published-at{
+    margin-bottom: 5px;
+    @extend .ad-label;
+    text-align: left;
+  }
+  .image{
+    padding-right: 0;
+  }
+  img{
+    margin: 0 auto;
+  }
+}
+
+
+/*
+* Lines
+*************************/
+.line{
+  height: 21px;
+  padding: 10px;
+  background-clip: content-box;
+  clear: both;
+}
+.line-style-1{
+  background-color: $light-gray;
+}
+.line-style-2{
+  background-color: $light-gray;
+}
+.line-style-3{
+  background-color: $blue;
 }
