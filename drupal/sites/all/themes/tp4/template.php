@@ -90,11 +90,24 @@ function tp4_preprocess_html(&$variables, $hook) {
 }
 
 function tp4_js_alter(&$javascript) {
+
+  /* Remove Google Analytics from iframed pages */
   $uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
   if (preg_match('/^\/entity_iframe/', $uri) ) {
     unset($javascript['sites/all/modules/contrib/google_analytics/googleanalytics.js']);
   }
-}
+
+  /* Update our version of jQuery to 2.x */
+  $jquery_path = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+  $javascript['misc/jquery.js']['data'] = $jquery_path;
+  $javascript['misc/jquery.js']['type'] = 'external';
+  unset($javascript['sites/all/libraries/colorbox/colorbox/jquery.colorbox-min.js']);
+  unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox.js']);
+  unset($javascript['sites/all/modules/contrib/colorbox/styles/default/colorbox_default_style.js']);
+  unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_load.js']);
+  unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_inline.js']);
+
+ }
 
 /*
  * Manually sort the order of the meta tags
@@ -205,11 +218,6 @@ function tp4_preprocess_page(&$variables) {
   $variables['content_classes'] = 'content';
   $variables['content_classes'] .= ($variables['skinny'] ? ' with-skinny' : '');
   $variables['content_classes'] .= ($variables['sidebar'] ? ' with-sidebar' : '');
-
-  // Add Node-specific page templates
-  if (!empty($variables['node'])) {
-    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
-  }
 
   // override page titles on certain node templates
   $override_page_title_types = array(
@@ -388,13 +396,6 @@ function tp4_preprocess_node(&$variables, $hook) {
   // put the nodetype as a date type on the node object.
   // I'm Matt Wrather and I Approve This Hack.
   $variables['attributes_array']['data-contenttype'] = $variables['type'];
-
-  // Run node-type-specific preprocess functions, like
-  // tp4_preprocess_node__page() or tp4_preprocess_node__story().
-  $function = __FUNCTION__ . '__' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
-  }
 
   //address issue with title for photo gallery not showing the titles
   if ($variables['view_mode'] == 'inline_content' && !$variables['title'] && $variables['referencing_field'] == 'field_related_stories') {
@@ -1508,7 +1509,9 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
         _tp4_on_our_radar_block($variables);
 
         // provide topic box
-        _tp4_topic_box($variables);
+        if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
+          $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
+        }
 
         // provide a series prev/next nav if a series exists
         _tp4_series_nav($variables);
@@ -1622,7 +1625,9 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
         _tp4_on_our_radar_block($variables);
 
         // provide topic box
-        _tp4_topic_box($variables);
+        if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
+          $variables['topic_box_top'] = theme('btopic_box', array('tid' => $topic[0]['tid']));
+        }
     }
 }
 
@@ -1669,24 +1674,6 @@ function _tp4_on_our_radar_block(&$variables) {
       'weight' => 10
     )
   );
-}
-
-/**
- * Utility function to provide topic box to node templates
- */
-function _tp4_topic_box(&$variables) {
-    if (!empty($variables['field_topic_box'])) {
-        $topic = taxonomy_term_load($variables['field_topic_box']['und'][0]['tid']);
-
-        if (!empty($topic->field_topic_box_image['und'][0]['uri'])) {
-            $image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));
-            if (!empty($topic->field_topic_box_link)) {
-              $drupal_url = ( substr($topic->field_topic_box_link['und'][0]['url'], 0, 1) === "/") ? substr($topic->field_topic_box_link['und'][0]['url'], 1) : $topic->field_topic_box_link['und'][0]['url'];
-
-            }
-          $variables['field_topic_box_top'] = empty($drupal_url) ? $image : l($image, $drupal_url, array('html' => TRUE));
-        }
-    }
 }
 
 /**

@@ -3,8 +3,8 @@
  */
 
 /* Helpers */
-@import "helpers/mixins";
-@import "helpers/variables";
+@import "base/helpers/mixins";
+@import "base/helpers/variables";
 
 body.campaign-display{
   $primary-color: #fff;

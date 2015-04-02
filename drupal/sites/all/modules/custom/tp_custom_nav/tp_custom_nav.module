@@ -51,15 +51,13 @@ function tp_custom_nav_preprocess_html(&$variables) {
  */
 function tp_custom_nav_preprocess_page(&$variables) {
   $node = $variables['node'];
-  global $theme;
   
   $tp_slim_nav_status = variable_get('tp_slim_nav_status', 1);
 
   //only override the menu if this content has the new field
-  if ($tp_slim_nav_status && isset($node->field_brand_category) && $theme == 'tp4') {
+  if ($tp_slim_nav_status && isset($node->field_brand_category) && !path_is_admin(current_path())) {
     $social_markup = '';
     $slim_nav = field_get_items('node', $node, 'field_brand_category');
-    $header = $variables['page']['header'];
 
     //overrides for campaign level
     _tp_custom_nav_campaign_level_handler($node, $slim_nav);
@@ -86,6 +84,7 @@ function tp_custom_nav_preprocess_page(&$variables) {
       $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#markup'] = $social_markup;
       $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#prefix'] = '<div class="tp_slim_nav_wrapper ' . $brand_class . '">';
       $variables['page']['left_drawer']['tp4_support_tp4_mobile_menu_header']['#suffix'] = '</div>';
+
       
       //slim nav menu
       $slim_nav_menu = field_get_items('taxonomy_term', $slim_nav_tax, 'field_slim_nav_menu');

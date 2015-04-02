@@ -28,7 +28,7 @@
           window['currentVideo_' + index] = $(this).data('video-number');
           playlist.find('.video-description .description-item').removeClass('active');
           playlist.find('ul.video-playlist .video-item').removeClass('active');
-          
+
           jwplayer(player_id).playlistItem(window['currentVideo_' + index]);
           
           updateVideo(window['currentVideo_' + index], playlist);

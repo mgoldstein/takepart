@@ -15,13 +15,11 @@
 @import "compass/typography/vertical_rhythm";
 @import "zen";
 
-/* Base */
-// @import "base/fonts";
-// @import "base/icons";
+/* Helpers */
+@import "base/helpers/mixins";
+@import "base/helpers/variables";
+@import "base/icons/icons";
 
-// /* Helpers */
-@import "helpers/mixins";
-@import "helpers/variables";
 
 /* Elements */
 @import "elements/typography";

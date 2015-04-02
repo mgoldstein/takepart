@@ -1,0 +1,232 @@
+/* Overrides to the base normalize.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body, p{
+  font-family: $Ashbury;
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: -.01em;
+}
+h1{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 38px;
+}
+h2{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 30px;
+}
+h3{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 28px;
+}
+h4, h5{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 20px;
+}
+blockquote{
+  font-family: $Ashbury;
+  font-weight: 100px;
+  font-size: 18px;
+  line-height: 27px;
+}
+.sponsor-label{
+  font-family: $Brown;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 20px;
+}
+.label{
+  font-family: $AdelleSans;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: .01em;
+}
+.caption{
+  font-family: $Ashbury;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 24px;
+}
+.published-at{
+
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
+li{
+  margin: 0;
+  padding: 0;
+}
+hr{
+  border-bottom: 1px solid $light-gray;
+  &.special{
+    color: $blue;
+  }
+}
+a{
+  font-family: $Ashbury;
+  font-weight: 100;
+  color: $mint;
+}
+img{
+  display: block;
+  max-width: 100%;
+}
+.img-circle{
+  border-radius: 50%;
+}
+
+
+
+/*
+* Components
+*************************/
+.pullquote{
+  font-family: $Ashbury;
+  font-weight: 100;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 36px;
+  span{
+
+  }
+}
+.author-block{
+  font-family: $Ashbury;
+  font-weight: 100;
+  font-size: 16px;
+  line-height: 24px;
+  span{
+    font-weight: bold;
+  }
+}
+
+/*
+* Advertisements
+*************************/
+.ad-label{
+  font-family: $AdelleSans;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: .01em;
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+  color: $light-gray;
+}
+.ad{
+  display: block;
+  margin: 0 auto;
+}
+
+
+/*
+* Buttons
+*************************/
+.btn{
+
+}
+.btn-primary{
+  font-family: $AdelleSans;
+  font-weight: 900;
+  font-size: 14px;
+}
+.btn-secondary{
+  font-family: $AdelleSans;
+  font-weight: normal;
+  font-size: 14px;
+  color: $light-mint;
+  border: 1px solid $light-mint;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+.social .icon{
+  with: 24px;
+  height: 24px;
+}
+
+/*
+* Menus
+*************************/
+.horizontal-menu{
+  li{
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+/*
+* Author Block
+*************************/
+.author-teaser{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  .about{
+    font-family: $Ashbury;
+    font-weight: 100;
+    font-size: 16px;
+    line-height: 24px;
+    margin: 0;
+    margin-bottom: 10px;
+    span{
+      font-weight: 900;
+    }
+  }
+  .published-at{
+    margin-bottom: 5px;
+    @extend .ad-label;
+    text-align: left;
+  }
+  .image{
+    padding-right: 0;
+  }
+  img{
+    margin: 0 auto;
+  }
+}
+/*
+* Topic Box
+*************************/
+.topic-box-wrapper{
+  margin: 20px inherit;
+}
+
+
+/*
+* Lines
+*************************/
+.line{
+  height: 21px;
+  padding: 10px;
+  background-clip: content-box;
+  clear: both;
+}
+.line-style-1{
+  background-color: $light-gray;
+}
+.line-style-2{
+  background-color: $light-gray;
+}
+.line-style-3{
+  background-color: $blue;
+}
