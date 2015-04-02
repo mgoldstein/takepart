@@ -6,8 +6,8 @@
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 /* line 15, ../sass/bootstrap/mixins/_clearfix.scss */
 .container:before, .container:after {
@@ -21,19 +21,19 @@
 @media (min-width: 768px) {
   /* line 13, ../sass/bootstrap/_grid.scss */
   .container {
-    width: 750px;
+    width: 740px;
   }
 }
 @media (min-width: 992px) {
   /* line 13, ../sass/bootstrap/_grid.scss */
   .container {
-    width: 970px;
+    width: 960px;
   }
 }
 @media (min-width: 1200px) {
   /* line 13, ../sass/bootstrap/_grid.scss */
   .container {
-    width: 1170px;
+    width: 1160px;
   }
 }
 
@@ -41,8 +41,8 @@
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 /* line 15, ../sass/bootstrap/mixins/_clearfix.scss */
 .container-fluid:before, .container-fluid:after {
@@ -56,8 +56,8 @@
 
 /* line 42, ../sass/bootstrap/_grid.scss */
 .row {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 /* line 15, ../sass/bootstrap/mixins/_clearfix.scss */
 .row:before, .row:after {
@@ -73,8 +73,8 @@
 .col-xxs-1, .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xxs-2, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xxs-3, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xxs-4, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xxs-5, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xxs-6, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xxs-7, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xxs-8, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xxs-9, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xxs-10, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xxs-11, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xxs-12, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /* line 27, ../sass/bootstrap/mixins/_grid-framework.scss */
@@ -1998,9 +1998,17 @@ img {
 }
 
 /*
+* Topic Box
+*************************/
+/* line 210, ../sass/base/_normalize.scss */
+.topic-box-wrapper {
+  margin: 20px inherit;
+}
+
+/*
 * Lines
 *************************/
-/* line 212, ../sass/base/_normalize.scss */
+/* line 218, ../sass/base/_normalize.scss */
 .line {
   height: 21px;
   padding: 10px;
@@ -2008,17 +2016,17 @@ img {
   clear: both;
 }
 
-/* line 218, ../sass/base/_normalize.scss */
+/* line 224, ../sass/base/_normalize.scss */
 .line-style-1 {
   background-color: #c7c7c7;
 }
 
-/* line 221, ../sass/base/_normalize.scss */
+/* line 227, ../sass/base/_normalize.scss */
 .line-style-2 {
   background-color: #c7c7c7;
 }
 
-/* line 224, ../sass/base/_normalize.scss */
+/* line 230, ../sass/base/_normalize.scss */
 .line-style-3 {
   background-color: #0080a5;
 }

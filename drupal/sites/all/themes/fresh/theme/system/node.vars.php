@@ -52,7 +52,10 @@ function fresh_preprocess_node__openpublish_article(&$variables){
     $author_vars['published_at'] = $variables['node']->published_at;
     $variables['author_teaser'] = theme('fresh_author_teaser', $author_vars);
 
-    /* Article Navigation */
+    /* Body */
+    if($body = field_get_items('node', $variables['node'], 'body')){
+      $variables['body'] =  $body[0]['value']; /* TODO: this won't make use of inline replacements */
+    }
   }
 
 
