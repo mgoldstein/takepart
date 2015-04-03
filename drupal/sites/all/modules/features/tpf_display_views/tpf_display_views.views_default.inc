@@ -781,9 +781,11 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['field_admin_tag_tid']['table'] = 'field_data_field_admin_tag';
   $handler->display->display_options['filters']['field_admin_tag_tid']['field'] = 'field_admin_tag_tid';
   $handler->display->display_options['filters']['field_admin_tag_tid']['value'] = array(
-    0 => '115599',
+    115599 => '115599',
+    116333 => '116333',
   );
   $handler->display->display_options['filters']['field_admin_tag_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_admin_tag_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_admin_tag_tid']['vocabulary'] = 'admin_tag';
   /* Filter criterion: Content: Post date */
   $handler->display->display_options['filters']['created']['id'] = 'created';
@@ -883,7 +885,8 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['field_admin_tag_tid']['table'] = 'field_data_field_admin_tag';
   $handler->display->display_options['filters']['field_admin_tag_tid']['field'] = 'field_admin_tag_tid';
   $handler->display->display_options['filters']['field_admin_tag_tid']['value'] = array(
-    0 => '115599',
+    115599 => '115599',
+    116333 => '116333',
   );
   $handler->display->display_options['filters']['field_admin_tag_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_admin_tag_tid']['type'] = 'select';
