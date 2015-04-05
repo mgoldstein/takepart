@@ -30,25 +30,6 @@
   # ..else..
   RewriteRule robots.txt robots.dev.txt [L]
 
-  # If we're running on one of the production webheads...
-  # ..AND the request is not for origin.prod.takepart.com, origin.takepart.com,
-  # www.takepart.com, nor for any of the internal IP's of the webheads
-  # (that's how the ELB health check forms it's requests),
-  # then redirect the client to "www.takepart.com":
-  RewriteCond /takepart/takepart.prod -f
-  RewriteCond %{HTTP_HOST} !^(10\.\d{1,3}\.\d{1,3}\.\d{1,3})$
-  RewriteCond %{HTTP_HOST} !^web(1|2|3|4).prod.takepart.com$
-  RewriteCond %{HTTP_HOST} !=www.takepart.com
-  RewriteCond %{HTTP_HOST} !=editors.takepart.com
-  RewriteCond %{HTTP_HOST} !=origin.takepart.com
-  #RewriteCond %{HTTP_HOST} !=tp-submit.takepart.com
-  #RewriteCond %{HTTP_HOST} !=betacf.takepart.com
-  #RewriteCond %{HTTP_HOST} !=foodinc.takepart.com
-  RewriteCond %{HTTP_HOST} !=stage.takepart.com
-  #RewriteCond %{HTTP_HOST} !=ssl.takepart.com
-  RewriteCond %{HTTP_HOST} !=origin.prod.takepart.com
-  RewriteRule (.*) http://www.takepart.com/$1 [R=301,L,NC]
-
   RewriteCond %{HTTP:X-Forwarded-Proto} =https
   RewriteCond %{REQUEST_URI} ^/(article|feature|flashcards|photos|video)
   RewriteRule (.*) http://%{HTTP_HOST}/$1 [R=301,L,NC]
