@@ -40,6 +40,7 @@ blockquote{
   font-weight: 100px;
   font-size: 18px;
   line-height: 27px;
+  margin: 30px 20px;
 }
 .sponsor-label{
   font-family: $Brown;
@@ -71,6 +72,11 @@ li{
   margin: 0;
   padding: 0;
 }
+ul.menu{
+  li{
+
+  }
+}
 hr{
   border-bottom: 1px solid $light-gray;
   &.special{
@@ -88,6 +94,9 @@ img{
 }
 .img-circle{
   border-radius: 50%;
+}
+#page-wrapper{
+  border-top: 5px solid $light-mint;
 }
 
 
