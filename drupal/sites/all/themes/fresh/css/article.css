@@ -1622,6 +1622,7 @@
 }
 /* line 71, ../../base/sass/base/icons/_icons.scss */
 <<<<<<< HEAD
+<<<<<<< HEAD
 .icon.i-photo-camera:after {
   content: '\e601';
 }
@@ -1636,6 +1637,14 @@
 .icon.i-video-camera:after {
   content: '\e302';
 >>>>>>> TP-2993: unstyled header
+=======
+.icon.i-photo-camera:after {
+  content: '\e601';
+}
+/* line 72, ../../base/sass/base/icons/_icons.scss */
+.icon.i-video-camera:after {
+  content: '\e602';
+>>>>>>> TP-2875 Added styling and (inactive) support for promoted content.
 }
 
 /* line 75, ../../base/sass/base/icons/_icons.scss */
@@ -2611,9 +2620,68 @@ body.mobile-search-show #header form {
   margin: 15px 0 0;
 }
 
+/* line 1, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart {
+  margin-bottom: 15px;
+  /*
+  	.promoted {
+  		color: #fff;
+  		font-size: 10px;
+  		font-weight: bold;
+  		line-height: 10px;
+  		font-family: $AdelleSans;
+  		background: $black;
+  		padding: 3px;
+  		margin: 0;
+  		border-radius: 3px;
+  		display: inline-block;
+  	}
+  */
+}
+/* line 3, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart div {
+  margin-top: 30px;
+}
+/* line 6, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .thumbnail {
+  position: relative;
+  margin: 0;
+}
+/* line 9, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .thumbnail img {
+  z-index: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: auto;
+}
+/* line 17, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .thumbnail .icon {
+  z-index: 1;
+  bottom: 3px;
+  right: 3px;
+  position: absolute;
+  color: #fff;
+  line-height: 10px;
+}
+/* line 26, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart a {
+  color: black;
+}
+/* line 29, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart h2 {
+  margin-bottom: 0;
+}
+/* line 32, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart h4 {
+  margin: 15px 0 0;
+}
+
 /*****************
  * Article Page
  *****************/
+<<<<<<< HEAD
 <<<<<<< HEAD
 /* line 31, ../sass/article.scss */
 .main-media {
@@ -2625,6 +2693,8 @@ body.mobile-search-show #header form {
 .headline {
   margin: 10px inherit;
 =======
+=======
+>>>>>>> TP-2875 Added styling and (inactive) support for promoted content.
 /* line 33, ../sass/article.scss */
 #comments {
   display: none;
