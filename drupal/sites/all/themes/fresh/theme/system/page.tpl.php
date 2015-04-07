@@ -10,15 +10,20 @@
     <?php print render($page['left_drawer']); ?>
   </div>
 </nav>
-
 <div id="page-wrapper">
-  <div class="row">
-    <div id="page" class="col-xs-12">
-      <header class="header" id="header" role="banner">
-        <?php print render($page['header']); ?>
-      </header>
-      <div id="main">
-        <div id="content" class="column" role="main">
+  <header class="header" id="header" role="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxs-12">
+          <?php print render($page['header']); ?>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="main-content" id="content" role="main">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxs-12">
           <a id="main-content"></a>
           <?php print render($title_prefix); ?>
           <?php print render($title_suffix); ?>
@@ -27,9 +32,16 @@
           <?php print render($page['content']); ?>
         </div>
       </div>
-      <?php print render($page['footer']); ?>
     </div>
   </div>
-
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxs-12">
+          <?php print render($page['footer']); ?>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <?php print render($page['bottom']); ?>

@@ -114,6 +114,18 @@ img{
     font-weight: bold;
   }
 }
+.container{
+  @include breakpoint($breakpoint-phablet){
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  @include breakpoint($breakpoint-tablet){
+    max-width: 750px;
+  }
+  @include breakpoint($breakpoint-desktop){
+    max-width: 1000px;
+  }
+}
 
 /*
 * Advertisements
