@@ -13,8 +13,8 @@
 
 <div id="page-wrapper">
   <div class="row">
-    <div id="page" class="col-xs-12">
-      <header class="header" id="header" role="banner">
+    <div id="page" class="col-xxs-12">
+      <header class="header col-xxs-12" id="header" role="banner">
         <?php print render($page['header']); ?>
       </header>
       <div id="main">
