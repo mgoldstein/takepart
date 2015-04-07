@@ -35,13 +35,20 @@ function fresh_preprocess_node__openpublish_article(&$variables){
 
     /* Subheadline */
     if($headline = field_get_items('node', $variables['node'], 'field_article_subhead')){
-      $variables['headline'] = $headline[0]['value'];
+      $variables['headline'] = theme('html_tag', array(
+        'element' => array(
+          '#tag' => 'div',
+          '#attributes' => array(
+            'class' => 'headline'
+          ),
+          '#value' => $headline[0]['value']
+      )));
     }
 
     /* Media */
     if($media = field_get_items('node', $variables['node'], 'field_article_main_image')){
       $image_url = image_style_url('large', $media[0]['file']->uri);
-      $variables['media'] =  theme('image', array('path' => $image_url));
+      $variables['media'] =  theme('image', array('path' => $image_url, 'attributes' => array('class' => 'main-media')));
     }
 
     /* Author */

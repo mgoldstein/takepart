@@ -71,6 +71,79 @@ li{
   margin: 0;
   padding: 0;
 }
+//ul.tabs{
+//  > li{
+//    list-style: none;
+//    display: inline-block;
+//    > a{
+//      position: relative;
+//      display: block;
+//      padding: 10px 15px;
+//      margin-right: 2px;
+//      line-height: 1.42857143;
+//      border: 1px solid transparent;
+//      border-radius: 4px 4px 0 0;
+//    }
+//  }
+//  > li.is-active{
+//    > a{
+//      color: #555;
+//      cursor: default;
+//      background-color: #fff;
+//      border: 1px solid #ddd;
+//      border-bottom-color: transparent;
+//    }
+//  }
+//}
+
+// Tabs
+// -------------------------
+
+// Give the tabs something to sit on
+ul.tabs {
+  border-bottom: 1px solid $light-gray;
+  font-size: 16px;
+  margin: 20px inherit;
+  > li {
+    list-style: none;
+    display: inline-block;
+    margin-bottom: -1px;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+    padding-bottom: 0;
+    > a {
+      margin-right: 2px;
+      line-height: 1.4em;
+    }
+    &.is-active{
+      color: $light-gray;
+      background-color: white;
+      border: 1px solid $light-gray;
+      border-bottom-color: transparent;
+      cursor: default;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 hr{
   border-bottom: 1px solid $light-gray;
   &.special{
@@ -112,6 +185,18 @@ img{
   line-height: 24px;
   span{
     font-weight: bold;
+  }
+}
+.container{
+  @include breakpoint($breakpoint-phablet){
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  @include breakpoint($breakpoint-tablet){
+    max-width: 750px;
+  }
+  @include breakpoint($breakpoint-desktop){
+    max-width: 1000px;
   }
 }
 
