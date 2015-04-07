@@ -37,6 +37,11 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'author' => '',
         'published_at' => ''
       )
+    ),
+    'fresh_pull_quote' => array(
+      'variables' => array(
+        'entity' => '',
+      )
     )
   );
 
