@@ -2096,7 +2096,7 @@ nav#mobile-menu .mobile-menu a {
   color: white;
   padding: 10px;
   border-color: #9c9c9c;
-  font-family: 'Apercu Medium', sans-serif;
+  font-family: "AdelleSans";
   font-size: 16px;
   text-transform: none;
   border-bottom: none;
@@ -2143,7 +2143,7 @@ nav#mobile-menu .mobile-menu li {
 }
 /* line 96, ../../base/sass/base/modules/_mobile-menu.scss */
 .mobile-menu-header .follow-us h2 {
-  font: normal 1em/1 "tradegothicbold",Verdana,Tahoma,"DejaVu Sans",sans-serif;
+  font: normal 1em/1 "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
   display: inline-block;
   vertical-align: middle;
