@@ -6,13 +6,8 @@
 .container {
   margin-right: auto;
   margin-left: auto;
-<<<<<<< HEAD
   padding-left: 10px;
   padding-right: 10px;
-=======
-  padding-left: 15px;
-  padding-right: 15px;
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 }
 /* line 15, ../sass/bootstrap/mixins/_clearfix.scss */
 .container:before, .container:after {
@@ -26,31 +21,19 @@
 @media (min-width: 768px) {
   /* line 13, ../sass/bootstrap/_grid.scss */
   .container {
-<<<<<<< HEAD
     width: 740px;
-=======
-    width: 750px;
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
   }
 }
 @media (min-width: 992px) {
   /* line 13, ../sass/bootstrap/_grid.scss */
   .container {
-<<<<<<< HEAD
     width: 960px;
-=======
-    width: 970px;
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
   }
 }
 @media (min-width: 1200px) {
   /* line 13, ../sass/bootstrap/_grid.scss */
   .container {
-<<<<<<< HEAD
     width: 1160px;
-=======
-    width: 1170px;
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
   }
 }
 
@@ -58,13 +41,8 @@
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
-<<<<<<< HEAD
   padding-left: 10px;
   padding-right: 10px;
-=======
-  padding-left: 15px;
-  padding-right: 15px;
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 }
 /* line 15, ../sass/bootstrap/mixins/_clearfix.scss */
 .container-fluid:before, .container-fluid:after {
@@ -78,13 +56,8 @@
 
 /* line 42, ../sass/bootstrap/_grid.scss */
 .row {
-<<<<<<< HEAD
   margin-left: -10px;
   margin-right: -10px;
-=======
-  margin-left: -15px;
-  margin-right: -15px;
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 }
 /* line 15, ../sass/bootstrap/mixins/_clearfix.scss */
 .row:before, .row:after {
@@ -97,19 +70,11 @@
 }
 
 /* line 11, ../sass/bootstrap/mixins/_grid-framework.scss */
-<<<<<<< HEAD
 .col-xxs-1, .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xxs-2, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xxs-3, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xxs-4, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xxs-5, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xxs-6, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xxs-7, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xxs-8, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xxs-9, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xxs-10, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xxs-11, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xxs-12, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 10px;
   padding-right: 10px;
-=======
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-  position: relative;
-  min-height: 1px;
-  padding-left: 15px;
-  padding-right: 15px;
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 }
 
 /* line 27, ../sass/bootstrap/mixins/_grid-framework.scss */
@@ -1621,30 +1586,12 @@
   content: '\e305';
 }
 /* line 71, ../../base/sass/base/icons/_icons.scss */
-<<<<<<< HEAD
-<<<<<<< HEAD
 .icon.i-photo-camera:after {
   content: '\e601';
 }
 /* line 72, ../../base/sass/base/icons/_icons.scss */
 .icon.i-video-camera:after {
   content: '\e602';
-=======
-.icon.i-poto-camera:after {
-  content: '\e301';
-}
-/* line 72, ../../base/sass/base/icons/_icons.scss */
-.icon.i-video-camera:after {
-  content: '\e302';
->>>>>>> TP-2993: unstyled header
-=======
-.icon.i-photo-camera:after {
-  content: '\e601';
-}
-/* line 72, ../../base/sass/base/icons/_icons.scss */
-.icon.i-video-camera:after {
-  content: '\e602';
->>>>>>> TP-2875 Added styling and (inactive) support for promoted content.
 }
 
 /* line 75, ../../base/sass/base/icons/_icons.scss */
@@ -1761,49 +1708,48 @@ body {
 /* line 5, ../../base/sass/base/normalize/_normalize.scss */
 a {
   color: #00a084;
-  text-decoration: none;
 }
-/* line 8, ../../base/sass/base/normalize/_normalize.scss */
+/* line 7, ../../base/sass/base/normalize/_normalize.scss */
 a:hover, a:visited, a:active {
   color: #00a084;
 }
 
-/* line 12, ../../base/sass/base/normalize/_normalize.scss */
+/* line 11, ../../base/sass/base/normalize/_normalize.scss */
 .pr-5 {
   padding-right: 5px;
 }
 
-/* line 15, ../../base/sass/base/normalize/_normalize.scss */
+/* line 14, ../../base/sass/base/normalize/_normalize.scss */
 .pr-10 {
   padding-right: 10px;
 }
 
-/* line 18, ../../base/sass/base/normalize/_normalize.scss */
+/* line 17, ../../base/sass/base/normalize/_normalize.scss */
 .pr-20 {
   padding-right: 20px;
 }
 
-/* line 21, ../../base/sass/base/normalize/_normalize.scss */
+/* line 20, ../../base/sass/base/normalize/_normalize.scss */
 .pr-30 {
   padding-right: 30px;
 }
 
-/* line 24, ../../base/sass/base/normalize/_normalize.scss */
+/* line 23, ../../base/sass/base/normalize/_normalize.scss */
 .pl-5 {
   padding-left: 5px;
 }
 
-/* line 27, ../../base/sass/base/normalize/_normalize.scss */
+/* line 26, ../../base/sass/base/normalize/_normalize.scss */
 .pl-10 {
   padding-left: 10px;
 }
 
-/* line 30, ../../base/sass/base/normalize/_normalize.scss */
+/* line 29, ../../base/sass/base/normalize/_normalize.scss */
 .pl-20 {
   padding-left: 20px;
 }
 
-/* line 33, ../../base/sass/base/normalize/_normalize.scss */
+/* line 32, ../../base/sass/base/normalize/_normalize.scss */
 .pl-30 {
   padding-left: 30px;
 }
@@ -1903,13 +1849,13 @@ li {
   padding: 0;
 }
 
-/* line 78, ../sass/base/_normalize.scss */
+/* line 75, ../sass/base/_normalize.scss */
 ul.tabs {
   border-bottom: 1px solid #c7c7c7;
   font-size: 16px;
   margin: 20px inherit;
 }
-/* line 82, ../sass/base/_normalize.scss */
+/* line 79, ../sass/base/_normalize.scss */
 ul.tabs > li {
   list-style: none;
   display: inline-block;
@@ -1919,12 +1865,12 @@ ul.tabs > li {
   padding: 10px;
   padding-bottom: 0;
 }
-/* line 90, ../sass/base/_normalize.scss */
+/* line 87, ../sass/base/_normalize.scss */
 ul.tabs > li > a {
   margin-right: 2px;
   line-height: 1.4em;
 }
-/* line 94, ../sass/base/_normalize.scss */
+/* line 91, ../sass/base/_normalize.scss */
 ul.tabs > li.is-active {
   color: #c7c7c7;
   background-color: white;
@@ -1933,42 +1879,55 @@ ul.tabs > li.is-active {
   cursor: default;
 }
 
-/* line 103, ../sass/base/_normalize.scss */
+/* line 100, ../sass/base/_normalize.scss */
 hr {
   border-bottom: 1px solid #c7c7c7;
 }
-/* line 105, ../sass/base/_normalize.scss */
+/* line 102, ../sass/base/_normalize.scss */
 hr.special {
   color: #0080a5;
 }
 
-/* line 109, ../sass/base/_normalize.scss */
+/* line 106, ../sass/base/_normalize.scss */
 a {
   font-family: "Ashbury";
   font-weight: 100;
   color: #00a084;
 }
 
-/* line 114, ../sass/base/_normalize.scss */
+/* line 111, ../sass/base/_normalize.scss */
 img {
   display: block;
   max-width: 100%;
 }
 
-/* line 118, ../sass/base/_normalize.scss */
+/* line 115, ../sass/base/_normalize.scss */
 .img-circle {
   border-radius: 50%;
 }
 
-/* line 121, ../sass/base/_normalize.scss */
+/* line 118, ../sass/base/_normalize.scss */
 #page-wrapper {
   border-top: 5px solid #00c09d;
 }
 
 /*
+* Helpers
+*************************/
+/* line 125, ../sass/base/_normalize.scss */
+.pull-right {
+  float: right !important;
+}
+
+/* line 128, ../sass/base/_normalize.scss */
+.text-center {
+  text-align: center;
+}
+
+/*
 * Components
 *************************/
-/* line 130, ../sass/base/_normalize.scss */
+/* line 136, ../sass/base/_normalize.scss */
 .pullquote {
   font-family: "Ashbury";
   font-weight: 100;
@@ -1977,33 +1936,64 @@ img {
   line-height: 36px;
 }
 
-/* line 140, ../sass/base/_normalize.scss */
+/* line 146, ../sass/base/_normalize.scss */
+aside.inline-content {
+  padding: 0;
+}
+@media all and (min-width: 480px) {
+  /* line 146, ../sass/base/_normalize.scss */
+  aside.inline-content {
+    padding: 0 10px;
+  }
+}
+/* line 151, ../sass/base/_normalize.scss */
+aside.inline-content .inline-label {
+  color: #0080a5;
+  font-family: "tradegothicbold";
+  font-size: 16px;
+  text-transform: uppercase;
+  margin: 10px inherit;
+}
+/* line 158, ../sass/base/_normalize.scss */
+aside.inline-content .inline-title {
+  color: black;
+}
+/* line 161, ../sass/base/_normalize.scss */
+aside.inline-content img {
+  margin: 0 auto;
+}
+/* line 164, ../sass/base/_normalize.scss */
+aside.inline-content .inline-content-inner {
+  padding: 0 20px;
+}
+
+/* line 168, ../sass/base/_normalize.scss */
 .author-block {
   font-family: "Ashbury";
   font-weight: 100;
   font-size: 16px;
   line-height: 24px;
 }
-/* line 145, ../sass/base/_normalize.scss */
+/* line 173, ../sass/base/_normalize.scss */
 .author-block span {
   font-weight: bold;
 }
 
 @media all and (min-width: 480px) {
-  /* line 149, ../sass/base/_normalize.scss */
+  /* line 177, ../sass/base/_normalize.scss */
   .container {
     max-width: 480px;
     margin: 0 auto;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 149, ../sass/base/_normalize.scss */
+  /* line 177, ../sass/base/_normalize.scss */
   .container {
     max-width: 750px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 149, ../sass/base/_normalize.scss */
+  /* line 177, ../sass/base/_normalize.scss */
   .container {
     max-width: 1000px;
   }
@@ -2012,7 +2002,7 @@ img {
 /*
 * Advertisements
 *************************/
-/* line 165, ../sass/base/_normalize.scss */
+/* line 193, ../sass/base/_normalize.scss */
 .ad-label, .author-teaser .published-at {
   font-family: "AdelleSans";
   font-weight: 100;
@@ -2022,11 +2012,10 @@ img {
   letter-spacing: .01em;
   margin-top: 0;
   margin-bottom: 0;
-  text-align: center;
   color: #c7c7c7;
 }
 
-/* line 177, ../sass/base/_normalize.scss */
+/* line 204, ../sass/base/_normalize.scss */
 .ad {
   display: block;
   margin: 0 auto;
@@ -2035,14 +2024,14 @@ img {
 /*
 * Buttons
 *************************/
-/* line 189, ../sass/base/_normalize.scss */
+/* line 216, ../sass/base/_normalize.scss */
 .btn-primary {
   font-family: "AdelleSans";
   font-weight: 900;
   font-size: 14px;
 }
 
-/* line 194, ../sass/base/_normalize.scss */
+/* line 221, ../sass/base/_normalize.scss */
 .btn-secondary {
   font-family: "AdelleSans";
   font-weight: normal;
@@ -2053,7 +2042,7 @@ img {
   padding: 5px 10px;
 }
 
-/* line 204, ../sass/base/_normalize.scss */
+/* line 231, ../sass/base/_normalize.scss */
 .social .icon {
   with: 24px;
   height: 24px;
@@ -2062,7 +2051,11 @@ img {
 /*
 * Menus
 *************************/
-/* line 213, ../sass/base/_normalize.scss */
+/* line 239, ../sass/base/_normalize.scss */
+.horizontal-menu {
+  margin: 10px inherit;
+}
+/* line 241, ../sass/base/_normalize.scss */
 .horizontal-menu li {
   margin: 0;
   display: inline-block;
@@ -2072,14 +2065,14 @@ img {
 /*
 * Author Block
 *************************/
-/* line 223, ../sass/base/_normalize.scss */
+/* line 251, ../sass/base/_normalize.scss */
 .author-teaser {
   margin-top: 10px;
   margin-bottom: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* line 228, ../sass/base/_normalize.scss */
+/* line 256, ../sass/base/_normalize.scss */
 .author-teaser .about {
   font-family: "Ashbury";
   font-weight: 100;
@@ -2088,20 +2081,20 @@ img {
   margin: 0;
   margin-bottom: 10px;
 }
-/* line 235, ../sass/base/_normalize.scss */
+/* line 263, ../sass/base/_normalize.scss */
 .author-teaser .about span {
   font-weight: 900;
 }
-/* line 239, ../sass/base/_normalize.scss */
+/* line 267, ../sass/base/_normalize.scss */
 .author-teaser .published-at {
   margin-bottom: 5px;
   text-align: left;
 }
-/* line 244, ../sass/base/_normalize.scss */
+/* line 272, ../sass/base/_normalize.scss */
 .author-teaser .image {
   padding-right: 0;
 }
-/* line 247, ../sass/base/_normalize.scss */
+/* line 275, ../sass/base/_normalize.scss */
 .author-teaser img {
   margin: 0 auto;
 }
@@ -2109,7 +2102,7 @@ img {
 /*
 * Topic Box
 *************************/
-/* line 254, ../sass/base/_normalize.scss */
+/* line 282, ../sass/base/_normalize.scss */
 .topic-box-wrapper {
   margin: 20px inherit;
 }
@@ -2117,53 +2110,27 @@ img {
 /*
 * Lines
 *************************/
-/* line 262, ../sass/base/_normalize.scss */
+/* line 290, ../sass/base/_normalize.scss */
 .line {
-  height: 21px;
-  padding: 10px;
+  height: 1px;
+  margin: 10px inherit;
   background-clip: content-box;
   clear: both;
 }
 
-/* line 268, ../sass/base/_normalize.scss */
+/* line 296, ../sass/base/_normalize.scss */
 .line-style-1 {
   background-color: #c7c7c7;
 }
 
-/* line 271, ../sass/base/_normalize.scss */
+/* line 299, ../sass/base/_normalize.scss */
 .line-style-2 {
   background-color: #c7c7c7;
 }
 
-/* line 274, ../sass/base/_normalize.scss */
+/* line 302, ../sass/base/_normalize.scss */
 .line-style-3 {
   background-color: #0080a5;
-}
-
-/* line 118, ../sass/base/_normalize.scss */
-.social .icon {
-  with: 24px;
-  height: 24px;
-}
-
-/* line 124, ../sass/base/_normalize.scss */
-.horizontal-menu li {
-  margin: 0;
-  display: inline-block;
-  text-align: center;
-}
-
-/* line 118, ../sass/base/_normalize.scss */
-.social .icon {
-  with: 24px;
-  height: 24px;
-}
-
-/* line 124, ../sass/base/_normalize.scss */
-.horizontal-menu li {
-  margin: 0;
-  display: inline-block;
-  text-align: center;
 }
 
 /* Modules */
@@ -2211,7 +2178,6 @@ nav#mobile-menu .mobile-menu ul {
   margin: 0;
   padding: 0;
 }
-<<<<<<< HEAD
 /* line 42, ../../base/sass/base/modules/_mobile-menu.scss */
 nav#mobile-menu .mobile-menu li:first-child {
   border-top: none;
@@ -2222,26 +2188,6 @@ nav#mobile-menu .mobile-menu li:last-child {
 }
 /* line 48, ../../base/sass/base/modules/_mobile-menu.scss */
 nav#mobile-menu .mobile-menu a {
-=======
-
-/* line 34, ../../base/sass/base/modules/_mobile-menu.scss */
-nav#mobile-menu {
-  top: 0;
-  width: 300px;
-  height: 100%;
-  left: -300px;
-}
-/* line 39, ../../base/sass/base/modules/_mobile-menu.scss */
-nav#mobile-menu li:first-child {
-  border-top: none;
-}
-/* line 42, ../../base/sass/base/modules/_mobile-menu.scss */
-nav#mobile-menu li:last-child {
-  border-bottom: none;
-}
-/* line 45, ../../base/sass/base/modules/_mobile-menu.scss */
-nav#mobile-menu a {
->>>>>>> TP-2993: unstyled header
   display: block;
   color: white;
   padding: 10px;
@@ -2252,20 +2198,12 @@ nav#mobile-menu a {
   border-bottom: none;
 }
 
-<<<<<<< HEAD
 /* line 60, ../../base/sass/base/modules/_mobile-menu.scss */
-=======
-/* line 56, ../../base/sass/base/modules/_mobile-menu.scss */
->>>>>>> TP-2993: unstyled header
 body.mobile-menu-show nav#mobile-menu {
   left: 0;
 }
 
-<<<<<<< HEAD
 /* line 63, ../../base/sass/base/modules/_mobile-menu.scss */
-=======
-/* line 59, ../../base/sass/base/modules/_mobile-menu.scss */
->>>>>>> TP-2993: unstyled header
 body.mobile-menu-show #page-wrapper {
   left: 280px;
 }
@@ -2273,11 +2211,7 @@ body.mobile-menu-show #page-wrapper {
 /**************
  * Mobile menu navigation
  **************/
-<<<<<<< HEAD
 /* line 73, ../../base/sass/base/modules/_mobile-menu.scss */
-=======
-/* line 69, ../../base/sass/base/modules/_mobile-menu.scss */
->>>>>>> TP-2993: unstyled header
 nav#mobile-menu .mobile-menu li {
   border-bottom: 1px solid #646464;
 }
@@ -2285,17 +2219,11 @@ nav#mobile-menu .mobile-menu li {
 /**************
  * Mobile menu social
  **************/
-<<<<<<< HEAD
 /* line 83, ../../base/sass/base/modules/_mobile-menu.scss */
 .mobile-menu-header .follow-us {
-=======
-/* line 79, ../../base/sass/base/modules/_mobile-menu.scss */
-.mobile-menu-header {
->>>>>>> TP-2993: unstyled header
   border-color: #9c9c9c;
   margin: 10px;
 }
-<<<<<<< HEAD
 /* line 86, ../../base/sass/base/modules/_mobile-menu.scss */
 .mobile-menu-header .follow-us > div > ul > li {
   width: 24px;
@@ -2333,31 +2261,6 @@ nav#mobile-menu .mobile-menu li {
 .follow-us a.icon {
   height: 27px;
   width: 27px;
-=======
-/* line 81, ../../base/sass/base/modules/_mobile-menu.scss */
-.mobile-menu-header > div > ul > li {
-  width: 24px;
-  margin-left: 3px;
-}
-/* line 84, ../../base/sass/base/modules/_mobile-menu.scss */
-.mobile-menu-header > div > ul > li a {
-  margin-left: 0;
-}
-/* line 86, ../../base/sass/base/modules/_mobile-menu.scss */
-.mobile-menu-header > div > ul > li a:hover {
-  background-color: #000;
-}
-
-/* line 93, ../../base/sass/base/modules/_mobile-menu.scss */
-.follow-us ul {
-  clear: both;
-}
-
-/* line 96, ../../base/sass/base/modules/_mobile-menu.scss */
-.follow-us ul li a {
-  height: 24px;
-  width: 24px;
->>>>>>> TP-2993: unstyled header
   display: block;
   white-space: nowrap;
   overflow: hidden;
@@ -2369,7 +2272,6 @@ nav#mobile-menu .mobile-menu li {
   border-radius: 50%;
   font-size: 15px;
 }
-<<<<<<< HEAD
 /* line 129, ../../base/sass/base/modules/_mobile-menu.scss */
 .follow-us li:first-child a {
   margin-left: 0;
@@ -2383,22 +2285,14 @@ nav#mobile-menu .mobile-menu li {
   margin: 10px inherit;
   border-bottom: 2px solid black;
 }
-<<<<<<< HEAD
 /* line 7, ../sass/modules/_header.scss */
-=======
-/* line 5, ../sass/modules/_header.scss */
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 #header .toggle-menu {
   display: block;
   cursor: pointer;
   float: left;
   color: #00c09d;
 }
-<<<<<<< HEAD
 /* line 13, ../sass/modules/_header.scss */
-=======
-/* line 16, ../sass/modules/_header.scss */
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 #header .logo {
   height: auto;
   overflow: hidden;
@@ -2406,7 +2300,6 @@ nav#mobile-menu .mobile-menu li {
   width: 121px;
   float: left;
 }
-<<<<<<< HEAD
 /* line 19, ../sass/modules/_header.scss */
 #header .logo img {
   width: 100%;
@@ -2425,52 +2318,27 @@ nav#mobile-menu .mobile-menu li {
 }
 /* line 34, ../sass/modules/_header.scss */
 #header .search .form-item {
-=======
-/* line 22, ../sass/modules/_header.scss */
-#header .logo img {
   width: 100%;
-}
-/* line 26, ../sass/modules/_header.scss */
-#header .search {
-  display: none;
-}
-/* line 28, ../sass/modules/_header.scss */
-#header .search.active {
-  font-size: .928571429em;
-  clear: both;
   position: relative;
-}
-/* line 32, ../sass/modules/_header.scss */
-#header .search.active .form-item-keys-2 {
-  display: inline-block;
-  background-color: white;
-  float: left;
-  height: auto;
-  overflow: hidden;
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
-  width: 100%;
+  z-index: 10;
   background: white;
   padding: 10px;
   height: auto;
   overflow: hidden;
   -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-<<<<<<< HEAD
-/* line 47, ../sass/modules/_header.scss */
+/* line 49, ../sass/modules/_header.scss */
 #header .search .form-submit {
   display: none;
 }
-/* line 50, ../sass/modules/_header.scss */
+/* line 52, ../sass/modules/_header.scss */
 #header .search input.form-text {
   width: 100%;
-=======
-/* line 49, ../sass/modules/_header.scss */
-#header .search.active [type=text] {
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
   float: left;
   height: 30px;
   border: 1px solid #ccc;
@@ -2481,143 +2349,14 @@ nav#mobile-menu .mobile-menu li {
   line-height: 21px;
   background: #fff;
 }
-<<<<<<< HEAD
-/* line 61, ../sass/modules/_header.scss */
+/* line 63, ../sass/modules/_header.scss */
 #header .search input.form-text:focus {
   outline: none;
 }
 
-/* line 67, ../sass/modules/_header.scss */
+/* line 69, ../sass/modules/_header.scss */
 body.mobile-search-show #header form {
-=======
-
-/* line 106, ../../base/sass/base/modules/_mobile-menu.scss */
-.follow-us ul li:first-child a {
-  margin-left: 0;
-}
-
-/* For testing only */
-/* line 114, ../../base/sass/base/modules/_mobile-menu.scss */
-.toggle-mobile-left {
->>>>>>> TP-2993: unstyled header
   display: block;
-=======
-/* line 60, ../sass/modules/_header.scss */
-#header .search.active [type=text]:focus {
-  outline: none;
-}
-@media all and (min-width: 768px) {
-  /* line 28, ../sass/modules/_header.scss */
-  #header .search.active {
-    display: block;
-    float: right;
-    clear: right;
-    margin-top: 25px;
-  }
-  /* line 69, ../sass/modules/_header.scss */
-  #header .search.active .form-item-keys-2 {
-    padding: 0;
-    width: auto;
-    background-color: transparent;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-  /* line 75, ../sass/modules/_header.scss */
-  #header .search.active .form-item-keys-2:before {
-    content: "Search";
-    width: 45px;
-    height: 20px;
-    display: block;
-    left: 0;
-    bottom: 0;
-    position: absolute;
-    left: -45px;
-  }
-  /* line 86, ../sass/modules/_header.scss */
-  #header .search.active [type=text] {
-    width: 140px;
-    -webkit-appearance: none;
-    height: 25px;
-    font-size: inherit;
-    line-height: normal;
-  }
-  /* line 93, ../sass/modules/_header.scss */
-  #header .search.active [type=text]::-webkit-input-placeholder {
-    opacity: 0;
-  }
-  /* line 96, ../sass/modules/_header.scss */
-  #header .search.active [type=text]:-moz-placeholder {
-    /* Firefox 18- */
-    opacity: 0;
-  }
-  /* line 99, ../sass/modules/_header.scss */
-  #header .search.active [type=text]::-moz-placeholder {
-    /* Firefox 19+ */
-    opacity: 0;
-  }
-  /* line 102, ../sass/modules/_header.scss */
-  #header .search.active [type=text] :-ms-input-placeholder {
-    color: red;
-  }
->>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
-}
-
-/* line 1, ../sass/modules/_tp_more_on_takepart.scss */
-#more-on-takepart {
-  margin-bottom: 15px;
-  /*
-  	.promoted {
-  		color: #fff;
-  		font-size: 10px;
-  		font-weight: bold;
-  		line-height: 10px;
-  		font-family: $AdelleSans;
-  		background: $black;
-  		padding: 3px;
-  		margin: 0;
-  		border-radius: 3px;
-  		display: inline-block;
-  	}
-  */
-}
-/* line 3, ../sass/modules/_tp_more_on_takepart.scss */
-#more-on-takepart div {
-  margin-top: 30px;
-}
-/* line 6, ../sass/modules/_tp_more_on_takepart.scss */
-#more-on-takepart .thumbnail {
-  position: relative;
-  margin: 0;
-}
-/* line 9, ../sass/modules/_tp_more_on_takepart.scss */
-#more-on-takepart .thumbnail img {
-  z-index: 0;
-  position: relative;
-  top: 0;
-  left: 0;
-  max-width: 100%;
-  height: auto;
-}
-/* line 17, ../sass/modules/_tp_more_on_takepart.scss */
-#more-on-takepart .thumbnail .icon {
-  z-index: 1;
-  bottom: 3px;
-  right: 3px;
-  position: absolute;
-  color: #fff;
-  line-height: 10px;
-}
-/* line 26, ../sass/modules/_tp_more_on_takepart.scss */
-#more-on-takepart a {
-  color: black;
-}
-/* line 29, ../sass/modules/_tp_more_on_takepart.scss */
-#more-on-takepart h2 {
-  margin-bottom: 0;
-}
-/* line 32, ../sass/modules/_tp_more_on_takepart.scss */
-#more-on-takepart h4 {
-  margin: 15px 0 0;
 }
 
 /* line 1, ../sass/modules/_tp_more_on_takepart.scss */
@@ -2681,22 +2420,13 @@ body.mobile-search-show #header form {
 /*****************
  * Article Page
  *****************/
-<<<<<<< HEAD
-<<<<<<< HEAD
-/* line 31, ../sass/article.scss */
+/* line 32, ../sass/article.scss */
 .main-media {
   display: block;
   margin: 0 auto;
 }
 
-/* line 35, ../sass/article.scss */
+/* line 36, ../sass/article.scss */
 .headline {
   margin: 10px inherit;
-=======
-=======
->>>>>>> TP-2875 Added styling and (inactive) support for promoted content.
-/* line 33, ../sass/article.scss */
-#comments {
-  display: none;
->>>>>>> TP-2875 Added styling and (inactive) support for promoted content.
 }
