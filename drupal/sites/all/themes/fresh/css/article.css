@@ -6,8 +6,13 @@
 .container {
   margin-right: auto;
   margin-left: auto;
+<<<<<<< HEAD
   padding-left: 10px;
   padding-right: 10px;
+=======
+  padding-left: 15px;
+  padding-right: 15px;
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 }
 /* line 15, ../sass/bootstrap/mixins/_clearfix.scss */
 .container:before, .container:after {
@@ -21,19 +26,31 @@
 @media (min-width: 768px) {
   /* line 13, ../sass/bootstrap/_grid.scss */
   .container {
+<<<<<<< HEAD
     width: 740px;
+=======
+    width: 750px;
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
   }
 }
 @media (min-width: 992px) {
   /* line 13, ../sass/bootstrap/_grid.scss */
   .container {
+<<<<<<< HEAD
     width: 960px;
+=======
+    width: 970px;
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
   }
 }
 @media (min-width: 1200px) {
   /* line 13, ../sass/bootstrap/_grid.scss */
   .container {
+<<<<<<< HEAD
     width: 1160px;
+=======
+    width: 1170px;
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
   }
 }
 
@@ -41,8 +58,13 @@
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
+<<<<<<< HEAD
   padding-left: 10px;
   padding-right: 10px;
+=======
+  padding-left: 15px;
+  padding-right: 15px;
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 }
 /* line 15, ../sass/bootstrap/mixins/_clearfix.scss */
 .container-fluid:before, .container-fluid:after {
@@ -56,8 +78,13 @@
 
 /* line 42, ../sass/bootstrap/_grid.scss */
 .row {
+<<<<<<< HEAD
   margin-left: -10px;
   margin-right: -10px;
+=======
+  margin-left: -15px;
+  margin-right: -15px;
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 }
 /* line 15, ../sass/bootstrap/mixins/_clearfix.scss */
 .row:before, .row:after {
@@ -70,11 +97,19 @@
 }
 
 /* line 11, ../sass/bootstrap/mixins/_grid-framework.scss */
+<<<<<<< HEAD
 .col-xxs-1, .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xxs-2, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xxs-3, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xxs-4, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xxs-5, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xxs-6, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xxs-7, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xxs-8, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xxs-9, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xxs-10, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xxs-11, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xxs-12, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-left: 10px;
   padding-right: 10px;
+=======
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 }
 
 /* line 27, ../sass/bootstrap/mixins/_grid-framework.scss */
@@ -1586,12 +1621,30 @@
   content: '\e305';
 }
 /* line 71, ../../base/sass/base/icons/_icons.scss */
+<<<<<<< HEAD
+<<<<<<< HEAD
+.icon.i-photo-camera:after {
+  content: '\e601';
+}
+/* line 72, ../../base/sass/base/icons/_icons.scss */
+.icon.i-video-camera:after {
+  content: '\e602';
+=======
 .icon.i-poto-camera:after {
   content: '\e301';
 }
 /* line 72, ../../base/sass/base/icons/_icons.scss */
 .icon.i-video-camera:after {
   content: '\e302';
+>>>>>>> TP-2993: unstyled header
+=======
+.icon.i-photo-camera:after {
+  content: '\e601';
+}
+/* line 72, ../../base/sass/base/icons/_icons.scss */
+.icon.i-video-camera:after {
+  content: '\e602';
+>>>>>>> TP-2875 Added styling and (inactive) support for promoted content.
 }
 
 /* line 75, ../../base/sass/base/icons/_icons.scss */
@@ -2087,6 +2140,32 @@ img {
   background-color: #0080a5;
 }
 
+/* line 118, ../sass/base/_normalize.scss */
+.social .icon {
+  with: 24px;
+  height: 24px;
+}
+
+/* line 124, ../sass/base/_normalize.scss */
+.horizontal-menu li {
+  margin: 0;
+  display: inline-block;
+  text-align: center;
+}
+
+/* line 118, ../sass/base/_normalize.scss */
+.social .icon {
+  with: 24px;
+  height: 24px;
+}
+
+/* line 124, ../sass/base/_normalize.scss */
+.horizontal-menu li {
+  margin: 0;
+  display: inline-block;
+  text-align: center;
+}
+
 /* Modules */
 /***********
 * New mobile menu
@@ -2132,6 +2211,7 @@ nav#mobile-menu .mobile-menu ul {
   margin: 0;
   padding: 0;
 }
+<<<<<<< HEAD
 /* line 42, ../../base/sass/base/modules/_mobile-menu.scss */
 nav#mobile-menu .mobile-menu li:first-child {
   border-top: none;
@@ -2142,6 +2222,26 @@ nav#mobile-menu .mobile-menu li:last-child {
 }
 /* line 48, ../../base/sass/base/modules/_mobile-menu.scss */
 nav#mobile-menu .mobile-menu a {
+=======
+
+/* line 34, ../../base/sass/base/modules/_mobile-menu.scss */
+nav#mobile-menu {
+  top: 0;
+  width: 300px;
+  height: 100%;
+  left: -300px;
+}
+/* line 39, ../../base/sass/base/modules/_mobile-menu.scss */
+nav#mobile-menu li:first-child {
+  border-top: none;
+}
+/* line 42, ../../base/sass/base/modules/_mobile-menu.scss */
+nav#mobile-menu li:last-child {
+  border-bottom: none;
+}
+/* line 45, ../../base/sass/base/modules/_mobile-menu.scss */
+nav#mobile-menu a {
+>>>>>>> TP-2993: unstyled header
   display: block;
   color: white;
   padding: 10px;
@@ -2152,12 +2252,20 @@ nav#mobile-menu .mobile-menu a {
   border-bottom: none;
 }
 
+<<<<<<< HEAD
 /* line 60, ../../base/sass/base/modules/_mobile-menu.scss */
+=======
+/* line 56, ../../base/sass/base/modules/_mobile-menu.scss */
+>>>>>>> TP-2993: unstyled header
 body.mobile-menu-show nav#mobile-menu {
   left: 0;
 }
 
+<<<<<<< HEAD
 /* line 63, ../../base/sass/base/modules/_mobile-menu.scss */
+=======
+/* line 59, ../../base/sass/base/modules/_mobile-menu.scss */
+>>>>>>> TP-2993: unstyled header
 body.mobile-menu-show #page-wrapper {
   left: 280px;
 }
@@ -2165,7 +2273,11 @@ body.mobile-menu-show #page-wrapper {
 /**************
  * Mobile menu navigation
  **************/
+<<<<<<< HEAD
 /* line 73, ../../base/sass/base/modules/_mobile-menu.scss */
+=======
+/* line 69, ../../base/sass/base/modules/_mobile-menu.scss */
+>>>>>>> TP-2993: unstyled header
 nav#mobile-menu .mobile-menu li {
   border-bottom: 1px solid #646464;
 }
@@ -2173,11 +2285,17 @@ nav#mobile-menu .mobile-menu li {
 /**************
  * Mobile menu social
  **************/
+<<<<<<< HEAD
 /* line 83, ../../base/sass/base/modules/_mobile-menu.scss */
 .mobile-menu-header .follow-us {
+=======
+/* line 79, ../../base/sass/base/modules/_mobile-menu.scss */
+.mobile-menu-header {
+>>>>>>> TP-2993: unstyled header
   border-color: #9c9c9c;
   margin: 10px;
 }
+<<<<<<< HEAD
 /* line 86, ../../base/sass/base/modules/_mobile-menu.scss */
 .mobile-menu-header .follow-us > div > ul > li {
   width: 24px;
@@ -2215,6 +2333,31 @@ nav#mobile-menu .mobile-menu li {
 .follow-us a.icon {
   height: 27px;
   width: 27px;
+=======
+/* line 81, ../../base/sass/base/modules/_mobile-menu.scss */
+.mobile-menu-header > div > ul > li {
+  width: 24px;
+  margin-left: 3px;
+}
+/* line 84, ../../base/sass/base/modules/_mobile-menu.scss */
+.mobile-menu-header > div > ul > li a {
+  margin-left: 0;
+}
+/* line 86, ../../base/sass/base/modules/_mobile-menu.scss */
+.mobile-menu-header > div > ul > li a:hover {
+  background-color: #000;
+}
+
+/* line 93, ../../base/sass/base/modules/_mobile-menu.scss */
+.follow-us ul {
+  clear: both;
+}
+
+/* line 96, ../../base/sass/base/modules/_mobile-menu.scss */
+.follow-us ul li a {
+  height: 24px;
+  width: 24px;
+>>>>>>> TP-2993: unstyled header
   display: block;
   white-space: nowrap;
   overflow: hidden;
@@ -2226,6 +2369,7 @@ nav#mobile-menu .mobile-menu li {
   border-radius: 50%;
   font-size: 15px;
 }
+<<<<<<< HEAD
 /* line 129, ../../base/sass/base/modules/_mobile-menu.scss */
 .follow-us li:first-child a {
   margin-left: 0;
@@ -2239,14 +2383,22 @@ nav#mobile-menu .mobile-menu li {
   margin: 10px inherit;
   border-bottom: 2px solid black;
 }
+<<<<<<< HEAD
 /* line 7, ../sass/modules/_header.scss */
+=======
+/* line 5, ../sass/modules/_header.scss */
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 #header .toggle-menu {
   display: block;
   cursor: pointer;
   float: left;
   color: #00c09d;
 }
+<<<<<<< HEAD
 /* line 13, ../sass/modules/_header.scss */
+=======
+/* line 16, ../sass/modules/_header.scss */
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
 #header .logo {
   height: auto;
   overflow: hidden;
@@ -2254,6 +2406,7 @@ nav#mobile-menu .mobile-menu li {
   width: 121px;
   float: left;
 }
+<<<<<<< HEAD
 /* line 19, ../sass/modules/_header.scss */
 #header .logo img {
   width: 100%;
@@ -2272,18 +2425,41 @@ nav#mobile-menu .mobile-menu li {
 }
 /* line 34, ../sass/modules/_header.scss */
 #header .search .form-item {
+=======
+/* line 22, ../sass/modules/_header.scss */
+#header .logo img {
+  width: 100%;
+}
+/* line 26, ../sass/modules/_header.scss */
+#header .search {
+  display: none;
+}
+/* line 28, ../sass/modules/_header.scss */
+#header .search.active {
+  font-size: .928571429em;
+  clear: both;
+  position: relative;
+}
+/* line 32, ../sass/modules/_header.scss */
+#header .search.active .form-item-keys-2 {
+  display: inline-block;
+  background-color: white;
+  float: left;
+  height: auto;
+  overflow: hidden;
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
   width: 100%;
   background: white;
   padding: 10px;
   height: auto;
   overflow: hidden;
   -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+<<<<<<< HEAD
 /* line 47, ../sass/modules/_header.scss */
 #header .search .form-submit {
   display: none;
@@ -2291,6 +2467,10 @@ nav#mobile-menu .mobile-menu li {
 /* line 50, ../sass/modules/_header.scss */
 #header .search input.form-text {
   width: 100%;
+=======
+/* line 49, ../sass/modules/_header.scss */
+#header .search.active [type=text] {
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
   float: left;
   height: 30px;
   border: 1px solid #ccc;
@@ -2301,6 +2481,7 @@ nav#mobile-menu .mobile-menu li {
   line-height: 21px;
   background: #fff;
 }
+<<<<<<< HEAD
 /* line 61, ../sass/modules/_header.scss */
 #header .search input.form-text:focus {
   outline: none;
@@ -2308,12 +2489,200 @@ nav#mobile-menu .mobile-menu li {
 
 /* line 67, ../sass/modules/_header.scss */
 body.mobile-search-show #header form {
+=======
+
+/* line 106, ../../base/sass/base/modules/_mobile-menu.scss */
+.follow-us ul li:first-child a {
+  margin-left: 0;
+}
+
+/* For testing only */
+/* line 114, ../../base/sass/base/modules/_mobile-menu.scss */
+.toggle-mobile-left {
+>>>>>>> TP-2993: unstyled header
   display: block;
+=======
+/* line 60, ../sass/modules/_header.scss */
+#header .search.active [type=text]:focus {
+  outline: none;
+}
+@media all and (min-width: 768px) {
+  /* line 28, ../sass/modules/_header.scss */
+  #header .search.active {
+    display: block;
+    float: right;
+    clear: right;
+    margin-top: 25px;
+  }
+  /* line 69, ../sass/modules/_header.scss */
+  #header .search.active .form-item-keys-2 {
+    padding: 0;
+    width: auto;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  /* line 75, ../sass/modules/_header.scss */
+  #header .search.active .form-item-keys-2:before {
+    content: "Search";
+    width: 45px;
+    height: 20px;
+    display: block;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    left: -45px;
+  }
+  /* line 86, ../sass/modules/_header.scss */
+  #header .search.active [type=text] {
+    width: 140px;
+    -webkit-appearance: none;
+    height: 25px;
+    font-size: inherit;
+    line-height: normal;
+  }
+  /* line 93, ../sass/modules/_header.scss */
+  #header .search.active [type=text]::-webkit-input-placeholder {
+    opacity: 0;
+  }
+  /* line 96, ../sass/modules/_header.scss */
+  #header .search.active [type=text]:-moz-placeholder {
+    /* Firefox 18- */
+    opacity: 0;
+  }
+  /* line 99, ../sass/modules/_header.scss */
+  #header .search.active [type=text]::-moz-placeholder {
+    /* Firefox 19+ */
+    opacity: 0;
+  }
+  /* line 102, ../sass/modules/_header.scss */
+  #header .search.active [type=text] :-ms-input-placeholder {
+    color: red;
+  }
+>>>>>>> TP-2993: using twitter bootstrap grid system to standardize between takepart and tap
+}
+
+/* line 1, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart {
+  margin-bottom: 15px;
+  /*
+  	.promoted {
+  		color: #fff;
+  		font-size: 10px;
+  		font-weight: bold;
+  		line-height: 10px;
+  		font-family: $AdelleSans;
+  		background: $black;
+  		padding: 3px;
+  		margin: 0;
+  		border-radius: 3px;
+  		display: inline-block;
+  	}
+  */
+}
+/* line 3, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart div {
+  margin-top: 30px;
+}
+/* line 6, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .thumbnail {
+  position: relative;
+  margin: 0;
+}
+/* line 9, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .thumbnail img {
+  z-index: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: auto;
+}
+/* line 17, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .thumbnail .icon {
+  z-index: 1;
+  bottom: 3px;
+  right: 3px;
+  position: absolute;
+  color: #fff;
+  line-height: 10px;
+}
+/* line 26, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart a {
+  color: black;
+}
+/* line 29, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart h2 {
+  margin-bottom: 0;
+}
+/* line 32, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart h4 {
+  margin: 15px 0 0;
+}
+
+/* line 1, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart {
+  margin-bottom: 15px;
+  /*
+  	.promoted {
+  		color: #fff;
+  		font-size: 10px;
+  		font-weight: bold;
+  		line-height: 10px;
+  		font-family: $AdelleSans;
+  		background: $black;
+  		padding: 3px;
+  		margin: 0;
+  		border-radius: 3px;
+  		display: inline-block;
+  	}
+  */
+}
+/* line 3, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart div {
+  margin-top: 30px;
+}
+/* line 6, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .thumbnail {
+  position: relative;
+  margin: 0;
+}
+/* line 9, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .thumbnail img {
+  z-index: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: auto;
+}
+/* line 17, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .thumbnail .icon {
+  z-index: 1;
+  bottom: 3px;
+  right: 3px;
+  position: absolute;
+  color: #fff;
+  line-height: 10px;
+}
+/* line 26, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart a {
+  color: black;
+}
+/* line 29, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart h2 {
+  margin-bottom: 0;
+}
+/* line 32, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart h4 {
+  margin: 15px 0 0;
 }
 
 /*****************
  * Article Page
  *****************/
+<<<<<<< HEAD
+<<<<<<< HEAD
 /* line 31, ../sass/article.scss */
 .main-media {
   display: block;
@@ -2323,4 +2692,11 @@ body.mobile-search-show #header form {
 /* line 35, ../sass/article.scss */
 .headline {
   margin: 10px inherit;
+=======
+=======
+>>>>>>> TP-2875 Added styling and (inactive) support for promoted content.
+/* line 33, ../sass/article.scss */
+#comments {
+  display: none;
+>>>>>>> TP-2875 Added styling and (inactive) support for promoted content.
 }

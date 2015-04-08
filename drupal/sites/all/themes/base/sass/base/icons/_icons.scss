@@ -68,8 +68,8 @@
   &.i-email:after { content: '\e305'; }
 
   // From Gizmo
-  &.i-poto-camera:after  { content: '\e301'; }
-  &.i-video-camera:after { content: '\e302'; }
+  &.i-photo-camera:after  { content: '\e601'; }
+  &.i-video-camera:after { content: '\e602'; }
 }
 
 .i-checkmark:after  { content: '\2713'; }
