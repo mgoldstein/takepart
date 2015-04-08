@@ -78,7 +78,7 @@
         $(item).once('mobile-ad', function() {
           if (!end) {
             var insert_key = (window[tp_count_insert] + parseInt(ads_object.ads[window[tp_count]]['placement']));
-            console.log(selector + '====' + i + '====' + insert_key);
+            
             //only add after the the correct key            
             if ((insert_key - 1) == i) {
               if (insert_pos == 'after') {
