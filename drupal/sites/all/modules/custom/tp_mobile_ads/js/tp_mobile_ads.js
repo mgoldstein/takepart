@@ -88,7 +88,6 @@
               }
               else {
                 //appends the markup after the selector
-                console.log('test');
                 $(this).append(ads_object.ads[window[tp_count]]['javascript']);
                 $(item).addClass('ad-inserted-append');
               }
