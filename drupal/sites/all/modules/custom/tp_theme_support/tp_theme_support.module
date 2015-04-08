@@ -40,7 +40,3 @@ function tp_theme_support_permission() {
 	);
 }
 
-function tp_theme_support_block() {
-	
-}
-
