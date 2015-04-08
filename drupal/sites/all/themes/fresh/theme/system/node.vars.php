@@ -4,12 +4,23 @@
  * Implements hook_preprocess_node();
  */
 function fresh_preprocess_node(&$variables, $hook){
-  // Run node-type-specific preprocess functions, like
-  // fresh_preprocess_node__page() or fresh_preprocess_node__story().
+
+  /* Template suggestions for view mode */
+  $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
+
+  /* Run view-mode-specific preprocess functions */
+  $function = __FUNCTION__ . '__' . $variables['view_mode'];
+  if (function_exists($function)) {
+    $function($variables, $hook);
+  }
+
+  /* Run node-type-specific preprocess functions */
   $function = __FUNCTION__ . '__' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
   }
+
+
 }
 
 
@@ -60,11 +71,27 @@ function fresh_preprocess_node__openpublish_article(&$variables){
     $variables['author_teaser'] = theme('fresh_author_teaser', $author_vars);
 
     /* Body */
-    if($body = field_get_items('node', $variables['node'], 'body')){
-      $variables['body'] =  $body[0]['value']; /* TODO: this won't make use of inline replacements */
-    }
+    $body_display = array(
+      'label' => 'hidden',
+      'type'  => 'text_with_inline_content',
+      'settings' => array(
+        'source' => 'field_inline_replacements'
+      )
+    );
+    $body = field_view_field('node', $variables['node'], 'body', $body_display);
+    $variables['body'] = drupal_render($body);
+
   }
+}
 
-
-
+/**
+ * Inline Content View Mode Preprocess
+ * Implements hook_preprocess_node__VIEW-MODE()
+ */
+function fresh_preprocess_node__inline_content(&$variables){
+  $variables['url'] = drupal_get_path_alias('node/'. $variables['nid']);
+  // Replace the $title with the promo headline if there is one
+  if($field_promo_headline = field_get_items('node' ,$variables['node'], 'field_promo_headline')){
+    $variables['title'] = $field_promo_headline[0]['value'];
+  }
 }
