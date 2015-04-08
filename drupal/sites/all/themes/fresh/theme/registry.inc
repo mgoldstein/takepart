@@ -44,6 +44,7 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'entity' => '',
       )
     )
+    'fresh_mobile_footer' => array(),
   );
 
 

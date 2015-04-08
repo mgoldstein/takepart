@@ -4,7 +4,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-body, p{
+body{
   font-family: $Ashbury;
   font-weight: 100;
   font-size: 20px;
@@ -104,8 +104,6 @@ hr{
   }
 }
 a{
-  font-family: $Ashbury;
-  font-weight: 100;
   color: $mint;
 }
 img{
