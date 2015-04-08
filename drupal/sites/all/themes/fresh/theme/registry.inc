@@ -29,7 +29,8 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
     ),
     'fresh_ad' => array(
       'variables' => array(
-        'ad_tag' => ''
+        'ad_tag' => '',
+        'class' => '',
       )
     ),
     'fresh_author_teaser' => array(
