@@ -56,7 +56,7 @@
     .footer-title {
         margin-bottom: 0;
     }
-    @include breakpoint($breakpoint-tablet) {    
+    @include breakpoint($breakpoint-tablet) {
         float: right;
         text-align: right;
         .footer-title {
@@ -121,7 +121,7 @@
                 &:nth-child(2) {
                     margin-bottom: 28px;
                 }
-                
+
                 a {
                     display: block;
                     margin: 0 auto;
@@ -150,17 +150,12 @@
                 display: inline-block;
                 height: auto;
                 width: auto;
-                overflow: hidden;
-                position: relative;
-                top: 0;
-                margin-bottom: 1em;
+                vertical-align: middle;
                 &:first-child {
-                    top: 0;
                     margin-right: 64px;
                     margin-bottom: 1em;
                 }
                 &:nth-child(2) {
-                    top: 6px;
                     margin-right: 47px;
                     margin-bottom: 1em;
                 }

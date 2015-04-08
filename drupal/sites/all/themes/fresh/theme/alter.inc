@@ -13,6 +13,12 @@ function fresh_page_alter(&$page){
   if($node->type == 'openpublish_article'){
     $path = drupal_get_path('theme', 'fresh'). '/css/article.css';
     $page['content']['#attached']['css'][] = $path;
+
+	// Add the FB init code from takepart_facebookapis.module
+    $page['page_top']['fb-init-code'] = array(
+    	'#type' => 'markup',
+    	'#markup' => takepart_facebookapis_init_code(variable_get('facebook_app_id')),
+    );
   }
 }
 

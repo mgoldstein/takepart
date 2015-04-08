@@ -24,7 +24,15 @@
 /* Modules */
 @import "base/modules/mobile-menu";
 @import "modules/header";
+@import "modules/tp_more_on_takepart";
 
 /*****************
  * Article Page
  *****************/
+.main-media{
+  display: block;
+  margin: 0 auto;
+}
+.headline{
+  margin: 10px inherit;
+}

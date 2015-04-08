@@ -40,6 +40,7 @@ blockquote{
   font-weight: 100px;
   font-size: 18px;
   line-height: 27px;
+  margin: 30px 20px;
 }
 .sponsor-label{
   font-family: $Brown;
@@ -71,6 +72,31 @@ li{
   margin: 0;
   padding: 0;
 }
+ul.tabs {
+  border-bottom: 1px solid $light-gray;
+  font-size: 16px;
+  margin: 20px inherit;
+  > li {
+    list-style: none;
+    display: inline-block;
+    margin-bottom: -1px;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    padding: 10px;
+    padding-bottom: 0;
+    > a {
+      margin-right: 2px;
+      line-height: 1.4em;
+    }
+    &.is-active{
+      color: $light-gray;
+      background-color: white;
+      border: 1px solid $light-gray;
+      border-bottom-color: transparent;
+      cursor: default;
+    }
+  }
+}
 hr{
   border-bottom: 1px solid $light-gray;
   &.special{
@@ -89,7 +115,19 @@ img{
 .img-circle{
   border-radius: 50%;
 }
+#page-wrapper{
+  border-top: 5px solid $light-mint;
+}
 
+/*
+* Helpers
+*************************/
+.pull-right{
+  float: right !important;
+}
+.text-center{
+  text-align: center;
+}
 
 
 /*
@@ -105,6 +143,28 @@ img{
 
   }
 }
+aside.inline-content{
+  padding: 0;
+  @include breakpoint($breakpoint-phablet){
+    padding: 0 $grid-gutter-width/2;
+  }
+  .inline-label{
+    color: $blue;
+    font-family: $TradeGothic;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 10px inherit;
+  }
+  .inline-title{
+    color: $black;
+  }
+  img{
+    margin: 0 auto;
+  }
+  .inline-content-inner{
+    padding: 0 20px;
+  }
+}
 .author-block{
   font-family: $Ashbury;
   font-weight: 100;
@@ -112,6 +172,18 @@ img{
   line-height: 24px;
   span{
     font-weight: bold;
+  }
+}
+.container{
+  @include breakpoint($breakpoint-phablet){
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  @include breakpoint($breakpoint-tablet){
+    max-width: 750px;
+  }
+  @include breakpoint($breakpoint-desktop){
+    max-width: 1000px;
   }
 }
 
@@ -127,7 +199,6 @@ img{
   letter-spacing: .01em;
   margin-top: 0;
   margin-bottom: 0;
-  text-align: center;
   color: $light-gray;
 }
 .ad{
@@ -166,6 +237,7 @@ img{
 * Menus
 *************************/
 .horizontal-menu{
+  margin: 10px inherit;
   li{
     margin: 0;
     display: inline-block;
@@ -216,8 +288,8 @@ img{
 * Lines
 *************************/
 .line{
-  height: 21px;
-  padding: 10px;
+  height: 1px;
+  margin: 10px inherit;
   background-clip: content-box;
   clear: both;
 }
