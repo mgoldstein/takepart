@@ -983,13 +983,13 @@ function tp4_support_menu() {
   );
 
   $items['admin/config/takepart'] = array(
-      'title' => 'Takepart Settings',
-      'weight' => 0,
-      'page callback' => 'system_admin_menu_block_page',
-      'access arguments' => array('access administration pages'),
-      'file' => 'system.admin.inc',
-      'file path' => drupal_get_path('module', 'system'),
-    );
+    'title' => 'Takepart Settings',
+    'weight' => 0,
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+  );
   $items['admin/config/takepart/action_feed'] = array(
     'title' => t('Action Feed Settings'),
     'description' => 'Settings for the cron script that unpublishes expired actions',
@@ -1008,18 +1008,17 @@ function tp4_support_menu() {
 }
 
 function tp4_support_iframes($arg) {
-
-	switch($arg) {
-		case 'header':
-		case 'slim-header':
-			$block = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav');
-			return '<div id="page-wrapper"><div class="slimnav slim-nav responsive">'.render($block['content']).'</div></div>';
-			break;
-		case 'footer':
-			$block = module_invoke('tp4_support', 'block_view', 'tp4_footer');
-			return '<div class="footer-wrapper"><footer id="footer" class="region region-footer"><div id="block-tp4-support-tp4-footer" class="block">'.render($block['content']).'</div><footer></div>';
-			break;
-	}
+  switch($arg) {
+    case 'header':
+    case 'slim-header':
+      $block = module_invoke('tp4_support', 'block_view', 'tp4_slim_nav');
+      return '<div id="page-wrapper"><div class="slimnav slim-nav responsive">'.render($block['content']).'</div></div>';
+      break;
+    case 'footer':
+      $block = module_invoke('tp4_support', 'block_view', 'tp4_footer');
+      return '<div class="footer-wrapper"><footer id="footer" class="region region-footer"><div id="block-tp4-support-tp4-footer" class="block">'.render($block['content']).'</div><footer></div>';
+      break;
+  }
 }
 
 /**
