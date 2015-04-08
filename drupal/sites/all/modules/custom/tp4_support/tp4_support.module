@@ -975,26 +975,36 @@ function tp4_support_node_reference_autocomplete($entity_type, $bundle, $field_n
  *  Implements hook_menu().
  */
 function tp4_support_menu() {
-	$items['iframes/%'] = array(
-		'type' => MENU_NORMAL_ITEM,
-		'page callback' => 'tp4_support_iframes',
-		'page arguments' => array(1),
-		'access callback' => TRUE,
-	);
+  $items['iframes/%'] = array(
+	'type' => MENU_NORMAL_ITEM,
+	'page callback' => 'tp4_support_iframes',
+	'page arguments' => array(1),
+	'access callback' => TRUE,
+  );
 
-  $items[TP_GENERAL_MENU] = array(
-    'title' => t('Takepart Settings'),
+  $items['admin/config/takepart'] = array(
+      'title' => 'Takepart Settings',
+      'weight' => 0,
+      'page callback' => 'system_admin_menu_block_page',
+      'access arguments' => array('access administration pages'),
+      'file' => 'system.admin.inc',
+      'file path' => drupal_get_path('module', 'system'),
+    );
+  $items['admin/config/takepart/action_feed'] = array(
+    'title' => t('Action Feed Settings'),
+    'description' => 'Settings for the cron script that unpublishes expired actions',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('tp4_support_admin_form'),
     'file' => 'tp4_support.admin.inc',
     'file path' => drupal_get_path('module', 'tp4_support') . '/forms',
     'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM
   );
   
   $items[TP_GENERAL_MENU . '/config'] = $items[TP_GENERAL_MENU];
   $items[TP_GENERAL_MENU . '/config']['type'] = MENU_DEFAULT_LOCAL_TASK;  
   
-	return $items;
+  return $items;
 }
 
 function tp4_support_iframes($arg) {

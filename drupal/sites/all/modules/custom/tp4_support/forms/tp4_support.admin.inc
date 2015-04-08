@@ -13,7 +13,7 @@ function tp4_support_admin_form($form, &$form_state)  {
     '#type' => 'textfield',
     '#title' => t('Action FEED URL'),
     '#description' => t('ACTION URL'),
-    '#default_value' => variable_get('tp4_support_action_url', 'http://takeaction.takepart.com/api/actions')
+    '#default_value' => variable_get('tp4_support_action_url', 'http://takeaction.takepart.com/api/actions?all=true')
   );
   
   //cron regen hour
