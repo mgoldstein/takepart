@@ -1,0 +1,46 @@
+<?php
+
+require_once('tp_theme_support.forms.inc');
+
+function tp_theme_support_menu() {
+	
+	$items = array();
+
+    $items['admin/config/tp_theme'] = array(
+		'title' => "TakePart 'Fresh' Theme Support",
+		'page callback' => 'system_admin_menu_block_page',
+		'access arguments' => array('access administration pages'),
+		'file' => 'system.admin.inc',
+		'file path' => drupal_get_path('module', 'system'),
+		'weight' => -17,
+    );
+
+    $items['admin/config/tp_theme/footer'] = array(
+		'title' => 'About Us',
+		'description' => 'About Us text block for footer',
+		'page callback' => 'drupal_get_form',
+		'page arguments' => array('tp_theme_support_footer_form'),
+		'access callback' => 'user_access',
+		'access arguments' => array('tp_theme_support configure settings'),
+    );
+	
+	return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tp_theme_support_permission() {
+	return array(
+		'tp_theme_support configure settings' => array(
+		'title' => t('Configure global settings'),
+		'description' => t("Configure global settings for 'Fresh' theme."),
+		'restrict access' => TRUE,
+		),
+	);
+}
+
+function tp_theme_support_block() {
+	
+}
+

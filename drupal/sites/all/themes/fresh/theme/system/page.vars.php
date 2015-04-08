@@ -16,4 +16,8 @@ function fresh_preprocess_page(&$variables) {
   $header = theme('fresh_mobile_header');
   $variables['page']['header']['header']['#markup'] = $header;
 
+  /* Statically add the mobile footer to all pages */
+  $footer = theme('fresh_mobile_footer');
+  $variables['page']['footer']['footer']['#markup'] = $footer;
+
 }
