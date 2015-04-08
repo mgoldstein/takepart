@@ -2,27 +2,80 @@
 
 /**
  *  @function:
+ *    @dev: currently displayed in the module level
+ */
+function tp_mobile_ads_admin_general_form() {
+  $form = array();
+  
+  return $form;
+}
+
+/**
+ *  @function:
  *    This function is used to provide an admin form for module.
  */
 function tp_mobile_ads_admin_form() {
   //variables
   $form = array();
   $settings = variable_get('tp_ads_settings', '');
+  $leader_settings = variable_get('tp_ads_article_leader', '');
   $i = 0;
   $break = FALSE;
   
   //js selector
   $form['tp_ads_settings_selector'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('tp_ads_settings_selector', '.field-name-body br'),
+    '#default_value' => variable_get('tp_ads_settings_selector', '.node-type-openpublish-article .main-content p'),
     '#description' => t('Selector for page')
   );
   
-  $form['tp_ads_settings'] = array(
+  //ad fieldset
+  $form['tp_ads_article_leader'] = array(
     '#tree' => TRUE,
-    '#type' => 'fieldset'
+    '#type' => 'fieldset',
+    '#title' => t('Leader Ad for Article')
+  );
+  
+  $form['tp_ads_article_leader']['ad_slot'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Ad Slot'),
+    '#description' => t('Such as TP_Mobile_320x50'),
+    '#default_value' => $leader_settings['ad_slot'],
+  ); 
+      
+  $form['tp_ads_article_leader']['ad_gpd_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Ad GPD ID'),
+    '#description' => t('Such as div-gpt-ad-1382144784236-0a'),
+    '#default_value' => $leader_settings['ad_gpd_id'],
+  ); 
+
+  $form['tp_ads_article_leader']['ad_width'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Ad Width'),
+    '#description' => t('Such as 320'),
+    '#default_value' => $leader_settings['ad_width'],
+  );
+  
+  $form['tp_ads_article_leader']['ad_height'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Ad Height'),
+    '#description' => t('Such as 50'),
+    '#default_value' => $leader_settings['ad_height'],
+  ); 
+    
+  $form['tp_ads_article_leader']['selector'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Selector to insert ad'),
+    '#default_value' => $leader_settings['selector'],
   );
 
+  $form['tp_ads_settings'] = array(
+    '#tree' => TRUE,
+    '#type' => 'fieldset',
+    '#title' => t('Ad Insertion')
+  ); 
+  
   //dynamicly generate the form elements
   do {
     //checks to ensures that the next one is not set

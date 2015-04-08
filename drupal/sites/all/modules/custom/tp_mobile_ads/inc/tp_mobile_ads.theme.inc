@@ -36,3 +36,15 @@ function theme_tp_mobile_ads_script($variables) {
   //returns output
   return theme('fresh_ad', array('ad_tag' => $output_wrapper));
 }
+
+/**
+ *  @function:
+ *    Theme function that creates the define slot for the ads
+ */
+function theme_tp_mobile_ads_header($variables) {
+  $output = '';
+  
+  $output = "googletag.defineSlot('/" . $variables['dpf_code'] . "/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "').addService(googletag.pubads());";
+  
+  return $output;
+}

@@ -25,8 +25,13 @@ function fresh_preprocess_node__openpublish_article(&$variables){
   if($variables['view_mode'] == 'full'){
 
     /* Leader Ad */
-    /* TODO: Roger, change this how you want */
-    $variables['advertisement'] = theme('fresh_ad');
+    $variables['advertisement'] = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => '',
+        '#attributes' => array(
+          'class' => 'mobile-article-ad',
+    ))));
 
     /* Topic Box */
     if($topic_box = field_get_items('node', $variables['node'], 'field_topic_box')){

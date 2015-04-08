@@ -14,15 +14,24 @@ function tp_mobile_ads_menu() {
   
   //main group menu
   $items[TP_MOBILE_ADS] = array(
-    'title' => t('TakePart - AD Settings'),
+    'title' => t('TakePart - Articles - AD Settings'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('tp_mobile_ads_admin_form'),
     'file' => 'tp_mobile_ads.admin.inc',
     'file path' => drupal_get_path('module', 'tp_mobile_ads') . '/forms',
-    //'access arguments' => array('administer site configuration'),
-    'access callback' => TRUE,
+    'access arguments' => array('administer site configuration'),
     'type' => MENU_LOCAL_TASK,
   );
+
+  /*disabled for now. @dev this can be enabled and used for other settings
+  $items[TP_MOBILE_ADS . '/settings'] = array(
+    'title' => t('TakePart - General Settings'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_mobile_ads_admin_general_form'),
+    'file' => 'tp_mobile_ads.admin.inc',
+    'file path' => drupal_get_path('module', 'tp_mobile_ads') . '/forms',
+    'access arguments' => array('administer site configuration'),
+  );*/
   
   return $items;
 }
@@ -35,6 +44,16 @@ function tp_mobile_ads_theme($existing, $type, $theme, $path) {
     //custom theme function that handles the script processing
     'tp_mobile_ads_script' => array(
       'variables' => array(
+        'ad_slot' => NULL,
+        'ad_gpd_id' => NULL,
+        'width' => NULL,
+        'height' => NULL,
+      ),
+      'file' => TP_ADS_THEME_FILE,
+    ),
+    'tp_mobile_ads_header' => array(
+      'variables' => array(
+        'dpf_code' => NULL,
         'ad_slot' => NULL,
         'ad_gpd_id' => NULL,
         'width' => NULL,
@@ -57,7 +76,7 @@ function tp_mobile_ads_preprocess_page(&$vars) {
   
     //variables
     $settings = variable_get('tp_ads_settings', '');
-    $selector = variable_get('tp_ads_settings_selector', '.field-name-body br');
+    $selector = variable_get('tp_ads_settings_selector', '.node-type-openpublish-article .main-content p');
     $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895'); //pulled from original module
     
     //processes the data for front end js
@@ -72,10 +91,17 @@ function tp_mobile_ads_preprocess_page(&$vars) {
       );
       
       //ensures that it removes any EOL
-      $value['mobile_javascript'] = str_replace(PHP_EOL, '', $script);
+      $value['javascript'] = str_replace(PHP_EOL, '', $script);
       
       //header script that is needed to define the ad slot
-      $header_script[] = "  googletag.defineSlot('/" . $dpf_code . "/" . $value['ad_slot'] . "', [" . $value['ad_width'] . ", " . $value['ad_height'] . "], '" . $value['ad_gpd_id'] . "').addService(googletag.pubads());";
+      $header_script[] = theme('tp_mobile_ads_header', array(
+        'dpf_code' => $dpf_code,
+        'ad_slot' => $value['ad_slot'],
+        'ad_gpd_id' => $value['ad_gpd_id'],
+        'width' => $value['ad_width'],
+        'height' => $value['ad_height'],
+        )
+      );
       
       $ads[] = $value;
     }
@@ -84,33 +110,88 @@ function tp_mobile_ads_preprocess_page(&$vars) {
     $ads_wrapper['ads'] = $ads;
     $ads_wrapper['selector'] = $selector;
     
-    //only adds the code if the takepart_ads module is turned off. this is to ensure no duplication
-    if (!module_exists('takepart_ads')) {
-      //taken from takeparts_ads.module.
-      drupal_add_js("<!-- \n var googletag = googletag || {};
-                googletag.cmd = googletag.cmd || [];
-                (function() {
-                var gads = document.createElement('script');
-                gads.async = true;
-                gads.type = 'text/javascript';
-                var useSSL = 'https:' == document.location.protocol;
-                gads.src = (useSSL ? 'https:' : 'http:') +
-                '//www.googletagservices.com/tag/js/gpt.js';
-                var node = document.getElementsByTagName('script')[0];
-                node.parentNode.insertBefore(gads, node);
-                })(); \n // -->", array('type' => 'inline', 'scope' => 'header'));
-    }
-    
-    //code pulled from takepart_ads.module
-    drupal_add_js("<!-- \n" . 'googletag.cmd.push(function() {' . "\n" .
-            implode($header_script, "\n") . "\n" .
-            '  googletag.pubads().collapseEmptyDivs();' .
-            '  googletag.pubads().enableSingleRequest();' . "\n" .
-            '  googletag.enableServices();' . "\n" . '});' . "\n" .
-            'var gpt_ad_tags = new Array();' . "\n // -->", array('type' => 'inline', 'scope' => 'header'));
+    //calls function to add header
+    _tp_mobile_ads_insert_leader_ad();
+    _tp_mobile_ads_insert_header($header_script);
     
     //adds the js
     drupal_add_js(array('tp_ad_settings' => $ads_wrapper), 'setting');
     drupal_add_js(drupal_get_path('module', 'tp_mobile_ads') .'/js/tp_mobile_ads.js');
   }
+}
+
+/**
+ *  @function:
+ *    Function is used to insert the ad
+ *
+ *  @dev: todo: improve logic to allow it to handle future calls
+ */
+function _tp_mobile_ads_insert_leader_ad() {
+  //variables
+  $leader_settings = variable_get('tp_ads_article_leader', '');
+  $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895'); //pulled from original module
+  
+  //adds the logic for targetting leader ad
+  if (!empty($leader_settings['selector'])) {
+    //calls theme to create markup
+    $script = theme('tp_mobile_ads_script', array(
+        'ad_slot' => $leader_settings['ad_slot'],
+        'ad_gpd_id' => $leader_settings['ad_gpd_id'],
+        'width' => $leader_settings['ad_width'],
+        'height' => $leader_settings['ad_height']
+      )
+    );
+    
+    //ensures that it removes any EOL
+    $leader_settings['javascript'] = str_replace(PHP_EOL, '', $script);
+    $leader_settings['placement'] = 1;
+    
+    //header script that is needed to define the ad slot
+    $leader_header_script[] = theme('tp_mobile_ads_header', array(
+      'dpf_code' => $dpf_code,
+      'ad_slot' => $leader_settings['ad_slot'],
+      'ad_gpd_id' => $leader_settings['ad_gpd_id'],
+      'width' => $leader_settings['ad_width'],
+      'height' => $leader_settings['ad_height'],
+      )
+    );
+    
+    //calls function to add header
+    _tp_mobile_ads_insert_header($leader_header_script);
+    
+    $leader_wrapper['ads'][0] = $leader_settings;
+    $leader_wrapper['selector'] = $leader_settings['selector'];
+    drupal_add_js(array('tp_leader_ad_settings' => $leader_wrapper), 'setting');
+  }
+}
+
+/**
+ *  @function:
+ *    This function is used to insert the javascript header
+ */
+function _tp_mobile_ads_insert_header($header_script) {
+  //only adds the code if the takepart_ads module is turned off. this is to ensure no duplication
+  if (!module_exists('takepart_ads')) {
+    //taken from takeparts_ads.module.
+    drupal_add_js("<!-- \n var googletag = googletag || {};
+              googletag.cmd = googletag.cmd || [];
+              (function() {
+              var gads = document.createElement('script');
+              gads.async = true;
+              gads.type = 'text/javascript';
+              var useSSL = 'https:' == document.location.protocol;
+              gads.src = (useSSL ? 'https:' : 'http:') +
+              '//www.googletagservices.com/tag/js/gpt.js';
+              var node = document.getElementsByTagName('script')[0];
+              node.parentNode.insertBefore(gads, node);
+              })(); \n // -->", array('type' => 'inline', 'scope' => 'header'));
+  }
+  
+  //code pulled from takepart_ads.module
+  drupal_add_js("<!-- \n" . 'googletag.cmd.push(function() {' . "\n" .
+          implode($header_script, "\n") . "\n" .
+          '  googletag.pubads().collapseEmptyDivs();' .
+          '  googletag.pubads().enableSingleRequest();' . "\n" .
+          '  googletag.enableServices();' . "\n" . '});' . "\n" .
+          'var gpt_ad_tags = new Array();' . "\n // -->", array('type' => 'inline', 'scope' => 'header'));
 }
