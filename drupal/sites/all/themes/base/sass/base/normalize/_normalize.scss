@@ -4,7 +4,8 @@ body{
 }
 a{
   color: $mint;
-  &:hover, &:visited, &:active {
+  text-decoration: none;
+  &:hover, &:active {
     color: $mint;
   }
 }
