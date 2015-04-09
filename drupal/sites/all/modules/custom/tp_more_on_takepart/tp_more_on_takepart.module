@@ -179,7 +179,6 @@ function tp_more_on_takepart_block_view($delta = '') {
 					case 'video';
 					case 'video_playlist';
 					case 'openpublish_video';
-					case 'openpublish_article';
 						$type = 'i-video-camera';
 						break;
 				}
