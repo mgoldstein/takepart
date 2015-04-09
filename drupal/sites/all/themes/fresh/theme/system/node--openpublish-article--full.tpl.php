@@ -15,7 +15,7 @@
       <?php print $variables['advertisement']; ?>
     </div>
   <?php endif; ?>
-  <div class="section col-xxs-12">
+  <div class="section">
     <?php if(!empty($variables['topic_box'])): ?>
         <?php print $variables['topic_box']; ?>
     <?php endif; ?>
@@ -32,7 +32,7 @@
         <?php print $variables['media']; ?>
       </div>
     <?php endif; ?>
-    <div class="section col-xxs-12">
+    <div class="section">
     <?php if(!empty($variables['sponsored'])): ?>
         <?php print $variables['sponsored']; ?>
     <?php endif; ?>

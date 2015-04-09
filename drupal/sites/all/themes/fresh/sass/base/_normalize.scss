@@ -11,7 +11,6 @@ body{
   line-height: 27px;
   letter-spacing: -.01em;
   -webkit-font-smoothing: antialiased;
-  color: #333;
 }
 h1{
   font-family: $AdelleSans;
@@ -128,6 +127,12 @@ img{
 .text-center{
   text-align: center;
 }
+.top{
+  margin-top: 0;
+}
+.bottom{
+  margin-bottom: 0;
+}
 
 
 /*
@@ -157,7 +162,8 @@ aside.inline-content{
     font-family: $TradeGothic;
     font-size: 16px;
     text-transform: uppercase;
-    margin: 10px inherit;
+    margin-top: 13px;
+    margin-bottom: 10px;
   }
   .inline-title{
     color: $black;
@@ -255,15 +261,12 @@ aside.inline-content{
 .author-teaser{
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
   .about{
     font-family: $Ashbury;
     font-weight: 100;
     font-size: 16px;
     line-height: 24px;
     margin: 0;
-    margin-bottom: 10px;
     span{
       font-weight: 900;
     }
