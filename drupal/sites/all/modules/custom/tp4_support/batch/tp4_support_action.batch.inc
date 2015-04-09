@@ -6,7 +6,7 @@
  */
 function _tp4_support_retrieve_file(&$context) {
   //default variable
-  $url = variable_get('tp4_support_action_url', 'http://takeaction.takepart.com/api/actions');
+  $url = variable_get('tp4_support_action_url', 'http://takeaction.takepart.com/api/actions?all=true');
 
   //retrieve the file
   $file = file_get_contents($url);
