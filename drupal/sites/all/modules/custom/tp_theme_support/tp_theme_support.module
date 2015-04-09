@@ -1,7 +1,5 @@
 <?php
 
-require_once('tp_theme_support.forms.inc');
-
 function tp_theme_support_menu() {
 	
 	$items = array();
@@ -22,6 +20,7 @@ function tp_theme_support_menu() {
 		'page arguments' => array('tp_theme_support_footer_form'),
 		'access callback' => 'user_access',
 		'access arguments' => array('tp_theme_support configure settings'),
+		'file' => 'tp_theme_support.forms.inc',
     );
 	
 	return $items;
