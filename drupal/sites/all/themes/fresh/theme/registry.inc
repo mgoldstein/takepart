@@ -42,7 +42,7 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
       'variables' => array(
         'entity' => '',
       )
-    )
+    ),
     'fresh_mobile_footer' => array(),
   );
 
