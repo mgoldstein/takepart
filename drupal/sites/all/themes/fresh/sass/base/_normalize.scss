@@ -10,6 +10,8 @@ body{
   font-size: 20px;
   line-height: 27px;
   letter-spacing: -.01em;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
 }
 h1{
   font-family: $AdelleSans;
@@ -131,14 +133,18 @@ img{
 /*
 * Components
 *************************/
-.pullquote{
-  font-family: $Ashbury;
-  font-weight: 100;
-  font-style: italic;
-  font-size: 22px;
-  line-height: 36px;
-  span{
-
+blockquote.pullquote{
+  p{
+    font-family: $Ashbury;
+    font-weight: 100;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 36px;
+    margin-bottom: 10px;
+  }
+  .cite{
+    margin-top: 10px;
+    text-transform: uppercase;
   }
 }
 aside.inline-content{
@@ -235,7 +241,7 @@ aside.inline-content{
 * Menus
 *************************/
 .horizontal-menu{
-  margin: 10px inherit;
+  margin: 10px 0;
   li{
     margin: 0;
     display: inline-block;
@@ -299,4 +305,18 @@ aside.inline-content{
 }
 .line-style-3{
   background-color: $blue;
+}
+
+/*
+* Separators
+*************************/
+.separator{
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+  height: 3px;
+}
+.separator-style-1{
+  background-color: $light-mint;
+  opacity: .3;
 }

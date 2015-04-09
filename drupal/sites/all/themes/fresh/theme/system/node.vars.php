@@ -94,7 +94,10 @@ function fresh_preprocess_node__openpublish_article(&$variables){
  * Implements hook_preprocess_node__VIEW-MODE()
  */
 function fresh_preprocess_node__inline_content(&$variables){
-  $variables['url'] = drupal_get_path_alias('node/'. $variables['nid']);
+  global $base_url;
+  $path = drupal_get_path_alias('node/'. $variables['nid']);
+  $variables['url'] = $base_url. '/'. $path;
+
   // Replace the $title with the promo headline if there is one
   if($field_promo_headline = field_get_items('node' ,$variables['node'], 'field_promo_headline')){
     $variables['title'] = $field_promo_headline[0]['value'];
