@@ -10,7 +10,8 @@
   height: 37px;
   width: 37px;
   margin-bottom: 5px;
-  i{
+
+  .i-take-action {
     line-height: 37px;
     text-align: center;
     display: text;
@@ -85,36 +86,33 @@
 .social{
   /* Influence overrides */
   li.takeaction{
-    @include breakpoint(480px){
+    @include breakpoint(480px) {
       position: absolute;
     }
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       position: relative;
     }
   }
   .social-wrapper li.share{
-    @include breakpoint($breakpoint-phablet){
+    @include breakpoint($breakpoint-phablet) {
       margin: 18px auto 0;
       float: right;
       display: inline-block;
-    }
-    @include breakpoint($breakpoint-tablet){
       min-width: 320px;
-      margin: 18px auto 0;
       text-align: right;
     }
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       margin: 5px auto 0;
       min-width: 40px;
       width: auto;
     }
     h3.share-headline {
-      @include breakpoint($breakpoint-phablet){
+      @include breakpoint($breakpoint-phablet) {
 	      display: inline-block;
 		  float: left;
 		  margin-top: 7px;
 	  }
-      @include breakpoint($breakpoint-desktop){
+      @include breakpoint($breakpoint-desktop) {
 	      display: inline;
 	      float: none;
 		  margin-top: 0;
@@ -163,7 +161,7 @@
     height: 51px;
     z-index: 9;
     transition: .25s;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       display: none;
     }
     .takepart-take-action,
@@ -193,16 +191,16 @@
 
 
 /** More Mobile */
-@include breakpoint($breakpoint-phablet){
+@include breakpoint($breakpoint-phablet) {
   .tp-social-link{
     margin-left: 5px;
     float: left;
   }
 }
-@include breakpoint($breakpoint-tablet){
+@include breakpoint($breakpoint-tablet) {
 
 }
-@include breakpoint($breakpoint-desktop){
+@include breakpoint($breakpoint-desktop) {
   .tp-social-link{
     float: none;
     margin-left: 0;
@@ -316,7 +314,7 @@
   right: 0;
 }
 .social-wrapper.mobile .tp-social{
-  @include breakpoint($breakpoint-mobile){
+  @include breakpoint($breakpoint-mobile) {
 	white-space: nowrap;
   }
   list-style-type: none;
@@ -360,50 +358,50 @@
 
 /* Social Global */
 aside.social{
-  @include breakpoint($breakpoint-phablet){
+  @include breakpoint($breakpoint-phablet) {
     height: 57px;
   }
-  @include breakpoint($breakpoint-tablet){
+  @include breakpoint($breakpoint-tablet) {
     border: none;
   }
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
     height: auto;
   }
   li.share{
-    @include breakpoint($breakpoint-phablet){
+    @include breakpoint($breakpoint-phablet) {
       min-width: 160px;
       margin: 5px auto 0;
     }
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       min-width: 320px;
     }
   }
   .tp-social-link,
   .trigger a {
-    @include breakpoint($breakpoint-phablet){
+    @include breakpoint($breakpoint-phablet) {
       margin: 0 0 7px 6px;
     }
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       margin: 0 auto 5px;
     }
   }
   li.takeaction{
-    @include breakpoint($breakpoint-phablet){
+    @include breakpoint($breakpoint-phablet) {
       position: relative;
       float: left;
     }
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       position: relative;
     }
   }
   .comments-link{
-    @include breakpoint($breakpoint-phablet){
+    @include breakpoint($breakpoint-phablet) {
       margin: 0;
       margin-left: 5px;
       display: block;
       float: left;
     }
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       float: none;
       margin-left: 0px;
     }
@@ -413,10 +411,10 @@ aside.social{
 /* Social Vertical */
 aside.social.social-vertical{
   height: auto;
-  @include breakpoint($breakpoint-phablet){
+  @include breakpoint($breakpoint-phablet) {
     width: 100%;
   }
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
     width: 40px;
     float: left;
     h3.tp-social-headline {
@@ -428,7 +426,7 @@ aside.social.social-vertical{
     }
   }
   li.share{
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       width: 40px;
     }
   }
@@ -443,14 +441,14 @@ aside.social.social-horizontal{
   margin-left: auto;
   margin-bottom: 5px;
   text-align: right;
-  @include breakpoint($breakpoint-phablet){
+  @include breakpoint($breakpoint-phablet) {
     width: 100%;
   }
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
     float: right;
   }
   li.share{
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       float: right;
     }
   }
@@ -462,7 +460,7 @@ aside.social.social-horizontal{
     display: inline;
     vertical-align: middle;
     margin-left: 5px;
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       float: none;
       margin-right: 5px;
       letter-spacing: 0px;
@@ -488,7 +486,7 @@ body.node-type-flashcard,
 body.node-type-video-playlist,
 body.node-type-feature-article{
   aside.social{
-    @include breakpoint($breakpoint-phablet){
+    @include breakpoint($breakpoint-phablet) {
       padding-bottom: 5px;
       border-top: 1px solid #cccccc;
       border-bottom: 1px solid #cccccc;
@@ -498,12 +496,12 @@ body.node-type-feature-article{
         display: none;
       }
     }
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       .comments-link{
         display: block;
       }
     }
-    @include breakpoint($breakpoint-desktop){
+    @include breakpoint($breakpoint-desktop) {
       border: none;
       height: auto;
     }
@@ -517,18 +515,18 @@ body.node-type-openpublish-photo-gallery{
       display: none;
     }
     li.share{
-      @include breakpoint($breakpoint-phablet){
+      @include breakpoint($breakpoint-phablet) {
         width: auto;
       }
-      @include breakpoint($breakpoint-tablet){
+      @include breakpoint($breakpoint-tablet) {
         width: auto;
       }
-      @include breakpoint($breakpoint-desktop){
+      @include breakpoint($breakpoint-desktop) {
         width: auto;
       }
     }
     li.takeaction{
-      @include breakpoint($breakpoint-phablet){
+      @include breakpoint($breakpoint-phablet) {
         display: none;
       }
     }
@@ -575,26 +573,25 @@ body.node-type-openpublish-photo-gallery{
 /****** Influence **********/
 .social-wrapper{
   position: relative;
-  @include breakpoint($breakpoint-phablet){
+  @include breakpoint($breakpoint-phablet) {
 	height: 57px;
   }
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
 	height: auto;
   }
 }
 .social-wrapper .tap-influence-overlay .popover{
   display: none;
   top: 0;
-  left: 0;
   margin-left: 58px;
   position: absolute;
   transition: top 0.2s ease-out;  //needed since #article-social is targeted
-  @include breakpoint($breakpoint-phablet){
+  @include breakpoint($breakpoint-phablet) {
     display: block;
   }
 }
 .social-wrapper .tap-influence-icon.icon:after{
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
     margin-left: 0;
   }
 }
@@ -602,39 +599,43 @@ body.node-type-openpublish-photo-gallery{
 .social-wrapper .tap-influence-icon{
   margin-top: 0;
   display: block;
-  @include breakpoint($breakpoint-mobile){
+  @include breakpoint($breakpoint-mobile) {
 	margin-top: 16px;
   }
-  @include breakpoint($breakpoint-phablet){
+  @include breakpoint($breakpoint-phablet) {
     text-align: center;
     display: inline-block;
   }
-  @include breakpoint($breakpoint-desktop){
+  @include breakpoint($breakpoint-desktop) {
     text-align: right;
     position: relative;
     width: 40px;
   }
 }
-.social-horizontal .social-wrapper .tap-influence-icon{
-  width: 35px;
-  @include breakpoint($breakpoint-phablet){
-    display: block;
-    width: 95px;
-    @include inline-block;
-    margin-top: 0px;
+.social-horizontal .social-wrapper {
+  .tap-influence-overlay {
+    right: 10px;
   }
-  h3 {
-	  float:left;
-	  text-align: center;
-	  width: 35px;
-	  display: inline-block;
-      letter-spacing: 0px;
-  }
-  &:after{
-    margin-top: 0px;
+  .tap-influence-icon {
+    width: 35px;
+    @include breakpoint($breakpoint-phablet) {
+      display: block;
+      width: 95px;
+      @include inline-block;
+      margin-top: 0px;
+    }
+    h3 {
+  	  float:left;
+  	  text-align: center;
+  	  width: 35px;
+  	  display: inline-block;
+        letter-spacing: 0px;
+    }
+    &:after{
+      margin-top: 0px;
+    }
   }
 }
-
 
 @mixin horizontalLayout {
   position: relative;
@@ -668,12 +669,30 @@ body.node-type-openpublish-photo-gallery{
 /* TakePart Article */
 .social-vertical .social-wrapper {
   .tap-influence-icon {
-    margin-top: 1em;
-	@include breakpoint($breakpoint-phablet){
-		margin-top: 0;
-	}
+    margin-top: 1ex;
+    @media (max-width: 1024px) {
+      margin-top: 1px;
+    }
     .tap-influence-count {
       top: 0px;
+      @include inline-block;
+      float: none;
+      @media (max-width: 1024px) {
+        margin-left: 1ex;
+      }
+    }
+  }
+  .popover {
+    left: 0;
+    .i-triangle-up {
+      display: none;
+    }
+    .i-triangle-left {
+      display: block;
+      left: -19px;
+      padding-top: 3px;
+      margin-top: 55px;
+      @include text-shadow(-3px 0 3px rgba(0,0,0,.25));
     }
   }
 }

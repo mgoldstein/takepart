@@ -31,7 +31,7 @@ function theme_tp_social_menu($variables){
     switch($element){
       case 'action':
 //        $elements['takeaction'] = '<p class="takepart-take-action"></p>';
-        $elements['takeaction'] = '<h3 class="tp-social-headline takeaction-headline">Take Action</h3><a class="takepart-custom-take-action-button"><i class="tpi icon i-take-action"></i></a>';
+        $elements['takeaction'] = '<h3 class="tp-social-headline takeaction-headline">Take Action</h3><a class="takepart-custom-take-action-button"><span class="tpi icon i-take-action"></span></a>';
 
         break;
       case 'share':
