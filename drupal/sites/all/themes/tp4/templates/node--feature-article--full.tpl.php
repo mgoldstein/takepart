@@ -63,6 +63,39 @@
         </nav>
     <?php endif; ?>
 
+    <footer id="article-footer">
+        <h3>Related Stories on TakePart</h3>
+        <?php print render($content['field_related_stories']); ?>
+        <h3>Get More</h3>
+        <ul class="topic-links links inline">
+            <?php print render($content['field_topic']); ?>
+            <?php print render($content['field_free_tag']); ?>
+        </ul>
+
+
+        <h3 class="top-border"><?php print t('Takepart&#8217;s Most Popular'); ?></h3>
+
+        <div id="taboola-below-article-thumbnails"></div>
+        <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push(
+                    {mode: 'organic-thumbnails-a', container: 'taboola-below-article-thumbnails', placement: 'Below Article Thumbnails', target_type: 'mix'}
+            );
+        </script>
+
+        <h3><?php print t('From The Web'); ?></h3>
+
+        <div id="taboola-below-article-thumbnails-2nd"></div>
+        <script type="text/javascript">
+            window._taboola = window._taboola || [];
+            _taboola.push(
+                    {mode: 'thumbnails-a', container: 'taboola-below-article-thumbnails-2nd', placement: 'Below Article Thumbnails 2nd', target_type: 'mix'}
+            );
+        </script>
+
+        <?php print render($on_our_radar); ?>
+    </footer>
+
     <?php if ($show_fb_comments): ?>
       <div id="article-comments">
           <h3 class="top-border">Comments <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
