@@ -667,6 +667,13 @@ function inline_content_theme() {
     'inline_content' => array(
       'render element' => 'element',
     ),
+    'inline_content_pullquote' => array(
+      'template' => 'inline-content-pullquote',
+      'variables' => array(
+        'quote' => '',
+        'cite' => ''
+      )
+    )
   );
 }
 

@@ -21,22 +21,14 @@ class InlineContentPullQuote extends InlineContentReplacementController {
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
     $quote = field_get_items('inline_content', $replacement, 'field_ic_quotation');
+    $quote = $quote[0]['value'];
     $cite = field_get_items('inline_content', $replacement, 'field_ic_citation');
+    $cite = $cite[0]['value'];
 
-    $attributes = array();
-    $attributes['class'][] = 'pull-quote-alt';
-    $attributes['class'][] = 'align-left';
-
-    // build up the markup string. We know we'll have a quote;
-    // not sure whether we'll have a cite.
-    $markup = '<p class="quotation">' . trim($quote[0]['safe_value']) . '</p>';
-    if ($cite) {
-      $markup .= '<cite>&mdash; ' . $cite[0]['safe_value'] . '</cite>';
-    }
-
+    $markup = theme('inline_content_pullquote', array('quote' => $quote, 'cite' => $cite));
     $content['#replacements'][] = array(
       '#type' => 'markup',
-      '#markup' => '<blockquote' . drupal_attributes($attributes) . '>' . $markup . '</blockquote>',
+      '#markup' => $markup,
     );
 
     return $content;
