@@ -1,14 +1,11 @@
-<footer>
+<footer class="container">
 
     <div class="footer-text">
-        <?php 
-	        print '<h2 class="footer-title">'.variable_get('tp_theme_support_about_us_title','').'</h2>';
-	        $body = variable_get('tp_theme_support_about_us_body','');
-	        print $body['value'];
-	    ?>
+        <h2 class="footer-title"><?php print $variables['title']; ?></h2>
+        <?php print $variables['body']; ?>
     </div>
 
-    <div class="follow-us footer-social">
+    <div class="follow-us">
 
         <h2 class="footer-title">follow us</h2>
 		<ul class="social menu horizontal-menu">
@@ -24,10 +21,7 @@
 	</div>
 
     <div class="footer-menu">
-		<?php
-		    $menu = variable_get('tp_theme_support_about_us_menu','');
-		    print theme('links', array('links' => menu_navigation_links($menu)));
-		?>
+		<?php print $variables['menu']; ?>
     </div>
 
     <div class="corporate-footer">

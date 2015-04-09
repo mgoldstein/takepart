@@ -2055,7 +2055,7 @@ aside.inline-content .inline-content-inner {
 
 /* line 229, ../sass/base/_normalize.scss */
 .social .icon {
-  with: 24px;
+  width: 24px;
   height: 24px;
 }
 
@@ -2282,8 +2282,9 @@ nav#mobile-menu .mobile-menu li {
   background: #7f7f7f;
   border-radius: 50%;
   font-size: 15px;
+  line-height: 27px;
 }
-/* line 129, ../../base/sass/base/modules/_mobile-menu.scss */
+/* line 130, ../../base/sass/base/modules/_mobile-menu.scss */
 .follow-us li:first-child a {
   margin-left: 0;
 }
@@ -2410,79 +2411,64 @@ body.mobile-search-show #header form {
 
 /* line 18, ../sass/modules/_footer.scss */
 footer {
-  max-width: 980px;
-  margin-left: auto;
-  margin-right: auto;
   padding: 0 10px;
   font-family: "AdelleSans";
   font-size: .928571429em;
   line-height: 1.384615385;
 }
-/* line 27, ../sass/modules/_footer.scss */
+/* line 24, ../sass/modules/_footer.scss */
 footer .footer-text {
   max-width: 600px;
   margin-bottom: 1em;
 }
 @media all and (min-width: 768px) {
-  /* line 27, ../sass/modules/_footer.scss */
+  /* line 24, ../sass/modules/_footer.scss */
   footer .footer-text {
     width: 61.2244898%;
     float: left;
   }
 }
-/* line 36, ../sass/modules/_footer.scss */
-footer .footer-social {
+/* line 33, ../sass/modules/_footer.scss */
+footer .follow-us {
   overflow: hidden;
   margin-bottom: 1em;
 }
-/* line 39, ../sass/modules/_footer.scss */
-footer .footer-social .footer-title {
+/* line 36, ../sass/modules/_footer.scss */
+footer .follow-us .footer-title {
   margin-bottom: .5em;
 }
-/* line 42, ../sass/modules/_footer.scss */
-footer .footer-social ul {
-  list-style: none;
-}
-/* line 44, ../sass/modules/_footer.scss */
-footer .footer-social ul li {
-  display: inline-block;
-}
-/* line 46, ../sass/modules/_footer.scss */
-footer .footer-social ul li a {
-  text-indent: 0;
-  padding-left: 0.5px;
-  margin-left: 4px;
+/* line 39, ../sass/modules/_footer.scss */
+footer .follow-us ul li a.icon {
+  margin-left: 5px;
   background: black;
-  color: #fff;
-  border-radius: 12px;
 }
 @media all and (min-width: 768px) {
-  /* line 36, ../sass/modules/_footer.scss */
-  footer .footer-social {
+  /* line 33, ../sass/modules/_footer.scss */
+  footer .follow-us {
     float: right;
     text-align: right;
   }
-  /* line 59, ../sass/modules/_footer.scss */
-  footer .footer-social .footer-title {
+  /* line 46, ../sass/modules/_footer.scss */
+  footer .follow-us .footer-title {
     float: right;
   }
-  /* line 62, ../sass/modules/_footer.scss */
-  footer .footer-social ul {
+  /* line 49, ../sass/modules/_footer.scss */
+  footer .follow-us ul {
     float: right;
   }
-  /* line 64, ../sass/modules/_footer.scss */
-  footer .footer-social ul li {
+  /* line 51, ../sass/modules/_footer.scss */
+  footer .follow-us ul li {
     float: left;
   }
 }
-/* line 71, ../sass/modules/_footer.scss */
+/* line 58, ../sass/modules/_footer.scss */
 footer .footer-menu {
   clear: both;
   overflow: hidden;
   font-size: .928571429em;
   line-height: 1.384615385;
 }
-/* line 77, ../sass/modules/_footer.scss */
+/* line 64, ../sass/modules/_footer.scss */
 footer .footer-menu li {
   display: inline-block;
   line-height: 1;
@@ -2491,17 +2477,17 @@ footer .footer-menu li {
   border-right: 1px solid black;
   padding-right: .5em;
 }
-/* line 84, ../sass/modules/_footer.scss */
+/* line 71, ../sass/modules/_footer.scss */
 footer .footer-menu li.last {
   border-right: none;
   margin-right: 0;
   padding-right: 0;
 }
-/* line 89, ../sass/modules/_footer.scss */
+/* line 76, ../sass/modules/_footer.scss */
 footer .footer-menu li a {
   white-space: nowrap;
 }
-/* line 95, ../sass/modules/_footer.scss */
+/* line 82, ../sass/modules/_footer.scss */
 footer .corporate-footer {
   text-align: center;
   clear: both;
@@ -2511,13 +2497,13 @@ footer .corporate-footer {
   padding-top: 20px;
   width: 100%;
 }
-/* line 105, ../sass/modules/_footer.scss */
+/* line 92, ../sass/modules/_footer.scss */
 footer .corporate-footer ul {
   display: block;
   overflow: hidden;
   position: static;
 }
-/* line 109, ../sass/modules/_footer.scss */
+/* line 96, ../sass/modules/_footer.scss */
 footer .corporate-footer ul li {
   top: 0;
   height: auto;
@@ -2525,11 +2511,11 @@ footer .corporate-footer ul li {
   display: inline-block;
   margin: 0 20px;
 }
-/* line 110, ../sass/modules/_footer.scss */
+/* line 97, ../sass/modules/_footer.scss */
 footer .corporate-footer ul li:first-child {
   top: -5px;
 }
-/* line 118, ../sass/modules/_footer.scss */
+/* line 105, ../sass/modules/_footer.scss */
 footer .corporate-footer ul li a {
   display: inline-block;
   text-indent: 100%;

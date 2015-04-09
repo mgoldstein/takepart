@@ -22,14 +22,16 @@ function tp_theme_support_footer_form($form, &$form_state) {
 		'#default_value' => variable_get('tp_theme_support_about_us_title', 'About Us'),
 	);
 
+	$body = variable_get('tp_theme_support_about_us_body', '');
+
 	$form['about_us']['tp_theme_support_about_us_body'] = array(
 		'#type' => 'text_format',
 		'#title' => t('About Us Body Text'),
 		'#description' => t('Rich text about us block for the site-wide footer.'),
 		'#required' => false,
 		'#rows' => 12,
-		'#format' => 'full_html',
-		'#default_value' => variable_get('tp_theme_support_about_us_body', ''),
+		'#format' => $body['format'],
+		'#default_value' => $body['value'],
 	);
 
 	$menus = menu_get_menus();
