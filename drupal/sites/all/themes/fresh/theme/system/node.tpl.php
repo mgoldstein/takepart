@@ -28,11 +28,4 @@
     print render($content);
   ?>
 
-  <?php if ($show_fb_comments): ?>
-	<p><a class="comments-count">
-	Show Comments (<fb:comments-count href="http://www.takepart.com/article/2015/03/17/why-starbucks-bold-race-talk-matters">0</fb:comments-count>)</a></p>
-
-	<fb:comments data-numposts="5" href="#" id="comments"></fb:comments>
-  <?php endif; ?>
-
 </article>
