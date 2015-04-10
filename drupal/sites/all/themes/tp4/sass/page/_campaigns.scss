@@ -757,13 +757,12 @@ body.campaign-display{
                     cursor: pointer;
                     background-color: #000;
                     color: white;
-                    width: 35px;
-                    height: 35px;
-                    @include border-radius(100px);
-
                     &:after {
                         font: normal 24px/150% "takepart";
                     }
+                    width: 40px;
+                    height: 40px;
+                    @include border-radius(100px);
 
                     &.left-arrow {
                         margin-right: 20px;
