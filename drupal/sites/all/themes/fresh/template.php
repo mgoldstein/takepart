@@ -22,6 +22,13 @@ function fresh_theme(&$existing, $type, $theme, $path) {
   return _fresh_theme($existing, $type, $theme, $path);
 }
 
+/**
+ * Implements hook_preprocess_html();
+ */
+function fresh_preprocess_html(&$variables, $hook) {
+  /* Add digital data layer to Fresh theme pages */
+  drupal_add_js('window.digitalData = ' . $tp_digital_data, 'inline');
+}
 
 /**
  * For various hook_alters
