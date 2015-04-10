@@ -44,6 +44,11 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'entity' => '',
       )
     ),
+    'fresh_fb_comments' => array(
+      'variables' => array(
+        'url' => '',
+      )
+    ),
     'fresh_mobile_footer' => array(
       'variables' => array(
         'title' => '',
