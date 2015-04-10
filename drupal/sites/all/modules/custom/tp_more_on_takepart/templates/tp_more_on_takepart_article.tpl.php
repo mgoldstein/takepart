@@ -63,7 +63,7 @@
  */
 ?>
 <div class="col-xxs-6 col-xs-3">
-	<a href="<?php echo url($result['url']['path']); ?>">
+	<a href="<?php echo url($result['url']['path']); ?>" class="<?php echo $result['promo_type']; ?>">
 		<div class="thumbnail">
 		    <?php print $result['thumbnail']; ?>
 		    <span class="icon <?php print $result['type']; ?>"></span>

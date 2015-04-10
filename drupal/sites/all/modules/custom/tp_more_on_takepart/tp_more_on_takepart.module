@@ -134,21 +134,21 @@ function tp_more_on_takepart_block_view($delta = '') {
 			$field_related_stories = field_get_items('node',$node,'field_related_stories');
 			$items[] = array(
 				'nid' => $field_related_stories[0]['nid'],
-				'type' => 'article',
+				'type' => 'related',
 			);
 			$items[] = array(
 				'nid' => $field_related_stories[1]['nid'],
-				'type' => 'article',
+				'type' => 'related',
 			);
 
 			// Load the two site-wide links from variables
 			$items[] = array(
 				'nid' => variable_get('more_on_takepart_global1', ''),
-				'type' => 'global',
+				'type' => 'promoted',
 			);
 			$items[] = array(
 				'nid' => variable_get('more_on_takepart_global2', ''),
-				'type' => 'global',
+				'type' => 'promoted',
 			);
 
 			// Load the Taboola JS
@@ -189,21 +189,22 @@ function tp_more_on_takepart_block_view($delta = '') {
 			        	'title' => $field_permanent_title,
 			        	'url' => entity_uri('node', $result),
 						'type' => $type,
+						'promo_type' => 'more_on_takepart_'.$item['type'],
 						'thumbnail' => theme('image_style', array(
 							'style_name' => 'homepage_featured_image',
 							'path' => $field_thumbnail->uri,
 							'alt' => $field_permanent_title,
 							'title' => $field_permanent_title,
 						)),
-#						'promoted' => $field_promoted,
+#						'sponsored' => $field_sponsored,
 		        	),
 		        ));
 			}
 
 			// Pass data through theme function.
 			$block['content'] = theme('tp_more_on_takepart', array(
-				'article' => $article,
-				'global' => $global,
+				'related' => $related,
+				'promoted' => $promoted,
 				'taboola' => $t,
 			));
 		}
