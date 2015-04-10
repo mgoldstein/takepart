@@ -10,12 +10,8 @@
 // wrapping it with an "anonymous closure". See:
 // - https://drupal.org/node/1446420
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
-(function ($, Drupal, window, document, undefined) {
-
-
 // To understand behaviors, see https://drupal.org/node/756722#behaviors
-Drupal.behaviors.my_custom_behavior = {
-  attach: function(context, settings) {
+$(document).ready(function() {
 
 	// Some general touch vars to set globally
     var isTouch = 'ontouchstart' in window || 'msmaxtouchpoints' in window.navigator;
@@ -33,8 +29,4 @@ Drupal.behaviors.my_custom_behavior = {
 		return false;
 	});
 
-  }
-};
-
-
-})(jQuery, Drupal, this, this.document);
+});

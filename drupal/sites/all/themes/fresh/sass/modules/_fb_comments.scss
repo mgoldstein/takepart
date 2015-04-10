@@ -1,17 +1,24 @@
-a.comments-count {
-	display: block;
-	clear: both;
-	text-align: center;
-	font-family: $AdelleSans;
-	font-size: 16px;
-	border-radius: 2px;
-	background: $light-mint;
-	color: #fff;
-	font-weight: bold;
-	padding: 8px 24px;
-	cursor: pointer;
-}
-
-#comments {
-	display: none;
+.comments {
+	display: table;
+	margin: 0 auto;
+	width: 100%;
+	@include breakpoint($screen-xs) {
+		width: auto;
+	}
+	a.comments-count {
+		display: block;
+		clear: both;
+		text-align: center;
+		font-family: $AdelleSans;
+		font-size: 16px;
+		border-radius: 2px;
+		background: $light-mint;
+		color: #fff;
+		font-weight: bold;
+		padding: 8px 14px;
+		cursor: pointer;
+	}
+	#comments {
+		display: none;
+	}
 }
