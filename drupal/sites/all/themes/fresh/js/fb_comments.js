@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 	$('.comments-count').on(click, function(e){
 		if(typeof FB != 'undefined') {
-			jQuery('fb:comments').attr('href', window.location.href);
+			jQuery('#comments').attr('href', window.location.href);
 			FB.XFBML.parse();
 			$('#comments').show();
 			$(this).hide();
