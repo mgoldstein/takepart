@@ -4,17 +4,17 @@ function tp_theme_support_menu() {
 	
 	$items = array();
 
-    $items['admin/config/tp_theme'] = array(
-		'title' => "TakePart 'Fresh' Theme Support",
+    $items['admin/config/fresh'] = array(
+		'title' => "Fresh Theme Support",
 		'page callback' => 'system_admin_menu_block_page',
 		'access arguments' => array('access administration pages'),
 		'file' => 'system.admin.inc',
 		'file path' => drupal_get_path('module', 'system'),
-		'weight' => -17,
+		'weight' => -18,
     );
 
-    $items['admin/config/tp_theme/footer'] = array(
-		'title' => 'About Us',
+    $items['admin/config/fresh/footer'] = array(
+		'title' => 'Footer',
 		'description' => 'About Us text block for footer',
 		'page callback' => 'drupal_get_form',
 		'page arguments' => array('tp_theme_support_footer_form'),
