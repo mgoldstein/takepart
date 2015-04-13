@@ -401,6 +401,11 @@ function tp4_preprocess_node(&$variables, $hook) {
   if ($variables['view_mode'] == 'inline_content' && !$variables['title'] && $variables['referencing_field'] == 'field_related_stories') {
     $variables['title'] = $variables['node']->title;
   }
+
+  $function = __FUNCTION__ . '__' . $variables['node']->type;
+  if (function_exists($function)) {
+    $function($variables, $hook);
+  }
 }
 
 function tp4_preprocess_node__campaign(&$variables, $hook) {
