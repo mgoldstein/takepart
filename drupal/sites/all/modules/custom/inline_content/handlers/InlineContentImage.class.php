@@ -29,64 +29,51 @@ class InlineContentImage extends InlineContentReplacementController {
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
-    // grab the file object from the replacement's image field
-    $file = field_get_items('inline_content', $replacement, 'field_ic_image');
-    $file = $file[0]['file'];
+    /* If an image exists render it, otherwise return nothing */
+    if($file = field_get_items('inline_content', $replacement, 'field_ic_image')){
+      $file = $file[0]['file'];
 
-    // get the caption, and alt values for theming
-    $image_caption = field_view_field('file', $file, 'field_media_caption', array('label' => 'hidden'), LANGUAGE_NONE);
-    $image_alt_items = field_get_items('file', $file, 'field_media_alt');
-    $image_alt = field_view_value('file', $file, 'field_media_alt', $image_alt_items[0], array('label' => 'hidden'), LANGUAGE_NONE);
-
-    // Grab the format
-    $format = field_get_items('inline_content', $replacement, 'field_ic_image_format');
-    $format = $format[0]['value'];
-    $alignment = field_get_items('inline_content', $replacement, 'field_ic_alignment');
-    $alignment = $alignment[0]['value'];
-
-    // build up image array for theming
-    $image = array(
-      'path' => $file->uri,
-      'alt' => drupal_render($image_alt),
-    );
-    if ($format != 'none') {
-      $image['style_name'] = 'feature_article_' . $format;
-      $image_markup = theme('image_style', $image);
-    } else {
-      $image_markup = theme('image', $image);
-    }
-
-    // wrap image caption in figcaption
-    $image_caption['#prefix'] = '<figcaption>';
-    $image_caption['#suffix'] = '</figcaption>';
-
-    // generate attributes for the wrapping <figure> element
-    $attributes = array();
-
-    $attributes['class'][] = 'inline-content-image';
-    $attributes['class'][] = 'image-' . $format;
-    $attributes['class'][] = 'align-' . $alignment;
-
-    if ($alignment == 'center') {
-      $image_info = image_get_info($file->uri);
-      if (is_array($image_info)) {
-        if ($format != 'none') {
-          image_style_transform_dimensions('feature_article_' . $format, $image_info);
+      /* Use image style based on format selection */
+      if($format = field_get_items('inline_content', $replacement, 'field_ic_image_format')){
+        /* Have to do it this way based on the way this was originally setup */
+        $format = $format[0]['value'];
+        if($format != 'none'){
+          $image_url = image_style_url('feature_article_' . $format, $file->uri);
+        }else{
+          $image_url = image_style_url('large', $file->uri);
         }
-        $attributes['style'][] = 'width: ' . $image_info['width'] . 'px;';          
+      }else{
+        /* If no format exists, use the default 'large' image style */
+        $image_url = image_style_url('large', $file->uri);
+      }
+
+      /* Setup the image */
+      $img_vars = array(
+        'path' => $image_url,
+        'attributes' => array(
+          'class' => array('inline-image')
+        ),
+        'title' => $file->title,
+        'alt' => $file->alt
+      );
+      $image =  theme('image', $img_vars);
+
+      /* Render caption if it exists */
+      if($caption = field_get_items('file', $file, 'field_media_caption')){
+        $caption = $caption[0]['value'];
+      }
+
+      /* Deprecated: Image alignment */
+      if($alignment = field_get_items('inline_content', $replacement, 'field_ic_alignment')){
+        $alignment = 'align-'. $alignment[0]['value'];
       }
     }
 
+    $markup = theme('inline_content_image', array('img' => $image, 'caption' => $caption, 'alignment' => $alignment));
     $content['#replacements'][] = array(
-      '#prefix' => '<figure' . drupal_attributes($attributes) . '>',
-      '#suffix' => '</figure>',
-      '0' => array(
-        '#weight' => -10,
-        '#markup' => $image_markup,
-      ),
-      '1' => $image_caption,
+      '#type' => 'markup',
+      '#markup' => $markup,
     );
-
     return $content;
   }
 }

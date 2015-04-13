@@ -23,15 +23,6 @@ function fresh_theme(&$existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_preprocess_html();
- */
-function fresh_preprocess_html(&$variables) {
-  // Pass the digital data to the HTML template.
-  $variables['tp_digital_data'] =  isset($variables['page']['tp_digital_data'])
-    ? $variables['page']['tp_digital_data'] : NULL;
-}
-
-/**
  * For various hook_alters
  * Keep at end of file
  */

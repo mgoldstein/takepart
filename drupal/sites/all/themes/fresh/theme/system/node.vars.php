@@ -63,8 +63,23 @@ function fresh_preprocess_node__openpublish_article(&$variables){
 
     /* Media */
     if($media = field_get_items('node', $variables['node'], 'field_article_main_image')){
-      $image_url = image_style_url('large', $media[0]['file']->uri);
+      $file = $media[0]['file'];
+      $image_url = image_style_url('large', $file->uri);
       $variables['media'] =  theme('image', array('path' => $image_url, 'attributes' => array('class' => 'main-media')));
+
+      /* Render a caption if it exists */
+      if($caption = field_get_items('file', $file, 'field_media_caption')){
+        $caption = theme('html_tag', array(
+          'element' => array(
+            '#tag' => 'div',
+            '#value' => $caption[0]['value'],
+            '#attributes' => array(
+              'class' => array('caption', 'col-xxs-12', 'text-right')
+            )
+          )
+        ));
+        $variables['media'] .= $caption;
+      }
     }
 
     /* Author */
