@@ -3,33 +3,33 @@
 /**
  *  Implements hook_menu().
  */
-DEFINE('TP_MOBILE_ADS', 'admin/config/takepart/mobile');
-DEFINE('TP_ADS_THEME_FILE', 'inc/tp_mobile_ads.theme.inc');
+DEFINE('TP_ADS', 'admin/config/takepart/mobile');
+DEFINE('TP_ADS_THEME_FILE', 'inc/tp_ads.theme.inc');
 
 /**
  *  Implements hook_menu().
  */
-function tp_mobile_ads_menu() {
+function tp_ads_menu() {
   $items = array();
   
   //main group menu
-  $items[TP_MOBILE_ADS] = array(
+  $items[TP_ADS] = array(
     'title' => t('TakePart - Articles - AD Settings'),
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('tp_mobile_ads_admin_form'),
-    'file' => 'tp_mobile_ads.admin.inc',
-    'file path' => drupal_get_path('module', 'tp_mobile_ads') . '/forms',
+    'page arguments' => array('tp_ads_admin_form'),
+    'file' => 'tp_ads.admin.inc',
+    'file path' => drupal_get_path('module', 'tp_ads') . '/forms',
     'access arguments' => array('administer site configuration'),
     'type' => MENU_LOCAL_TASK,
   );
 
   /*disabled for now. @dev this can be enabled and used for other settings
-  $items[TP_MOBILE_ADS . '/settings'] = array(
+  $items[tp_ads . '/settings'] = array(
     'title' => t('TakePart - General Settings'),
     'page callback' => 'drupal_get_form',
-    'page arguments' => array('tp_mobile_ads_admin_general_form'),
-    'file' => 'tp_mobile_ads.admin.inc',
-    'file path' => drupal_get_path('module', 'tp_mobile_ads') . '/forms',
+    'page arguments' => array('tp_ads_admin_general_form'),
+    'file' => 'tp_ads.admin.inc',
+    'file path' => drupal_get_path('module', 'tp_ads') . '/forms',
     'access arguments' => array('administer site configuration'),
   );*/
   
@@ -39,10 +39,10 @@ function tp_mobile_ads_menu() {
 /**
  *  Implements hook_theme().
  */
-function tp_mobile_ads_theme($existing, $type, $theme, $path) {
+function tp_ads_theme($existing, $type, $theme, $path) {
   return array(
     //custom theme function that handles the script processing
-    'tp_mobile_ads_script' => array(
+    'tp_ads_script' => array(
       'variables' => array(
         'ad_slot' => NULL,
         'ad_gpd_id' => NULL,
@@ -51,7 +51,7 @@ function tp_mobile_ads_theme($existing, $type, $theme, $path) {
       ),
       'file' => TP_ADS_THEME_FILE,
     ),
-    'tp_mobile_ads_header' => array(
+    'tp_ads_header' => array(
       'variables' => array(
         'dpf_code' => NULL,
         'ad_slot' => NULL,
@@ -67,7 +67,7 @@ function tp_mobile_ads_theme($existing, $type, $theme, $path) {
 /**
  *  Implements hook_preprocess_HOOK().
  */ 
-function tp_mobile_ads_preprocess_page(&$vars) {
+function tp_ads_preprocess_page(&$vars) {
   global $theme;
   
   //ensures that the only theme this appears on is fresh theme as the fresh theme will handle mobile display
@@ -80,30 +80,32 @@ function tp_mobile_ads_preprocess_page(&$vars) {
     $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895'); //pulled from original module
     
     //processes the data for front end js
-    foreach ($settings as $key => $value) {
-      //calls theme to create markup
-      $script = theme('tp_mobile_ads_script', array(
+    if (!empty($settings)) {
+      foreach ($settings as $key => $value) {
+        //calls theme to create markup
+        $script = theme('tp_ads_script', array(
+            'ad_slot' => $value['ad_slot'],
+            'ad_gpd_id' => $value['ad_gpd_id'],
+            'width' => $value['ad_width'],
+            'height' => $value['ad_height']
+          )
+        );
+        
+        //ensures that it removes any EOL
+        $value['javascript'] = str_replace(PHP_EOL, '', $script);
+        
+        //header script that is needed to define the ad slot
+        $header_script[] = theme('tp_ads_header', array(
+          'dpf_code' => $dpf_code,
           'ad_slot' => $value['ad_slot'],
           'ad_gpd_id' => $value['ad_gpd_id'],
           'width' => $value['ad_width'],
-          'height' => $value['ad_height']
-        )
-      );
-      
-      //ensures that it removes any EOL
-      $value['javascript'] = str_replace(PHP_EOL, '', $script);
-      
-      //header script that is needed to define the ad slot
-      $header_script[] = theme('tp_mobile_ads_header', array(
-        'dpf_code' => $dpf_code,
-        'ad_slot' => $value['ad_slot'],
-        'ad_gpd_id' => $value['ad_gpd_id'],
-        'width' => $value['ad_width'],
-        'height' => $value['ad_height'],
-        )
-      );
-      
-      $ads[] = $value;
+          'height' => $value['ad_height'],
+          )
+        );
+        
+        $ads[] = $value;
+      }
     }
     
     //creates the array needed
@@ -111,12 +113,12 @@ function tp_mobile_ads_preprocess_page(&$vars) {
     $ads_wrapper['selector'] = $selector;
     
     //calls function to add header
-    _tp_mobile_ads_insert_leader_ad();
-    _tp_mobile_ads_insert_header($header_script);
+    _tp_ads_insert_leader_ad();
+    _tp_ads_insert_header($header_script);
     
     //adds the js
     drupal_add_js(array('tp_ad_settings' => $ads_wrapper), 'setting');
-    drupal_add_js(drupal_get_path('module', 'tp_mobile_ads') .'/js/tp_mobile_ads.js');
+    drupal_add_js(drupal_get_path('module', 'tp_ads') .'/js/tp_ads.js');
   }
 }
 
@@ -126,7 +128,7 @@ function tp_mobile_ads_preprocess_page(&$vars) {
  *
  *  @dev: todo: improve logic to allow it to handle future calls
  */
-function _tp_mobile_ads_insert_leader_ad() {
+function _tp_ads_insert_leader_ad() {
   //variables
   $leader_settings = variable_get('tp_ads_article_leader', '');
   $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895'); //pulled from original module
@@ -134,7 +136,7 @@ function _tp_mobile_ads_insert_leader_ad() {
   //adds the logic for targetting leader ad
   if (!empty($leader_settings['selector'])) {
     //calls theme to create markup
-    $script = theme('tp_mobile_ads_script', array(
+    $script = theme('tp_ads_script', array(
         'ad_slot' => $leader_settings['ad_slot'],
         'ad_gpd_id' => $leader_settings['ad_gpd_id'],
         'width' => $leader_settings['ad_width'],
@@ -147,7 +149,7 @@ function _tp_mobile_ads_insert_leader_ad() {
     $leader_settings['placement'] = 1;
     
     //header script that is needed to define the ad slot
-    $leader_header_script[] = theme('tp_mobile_ads_header', array(
+    $leader_header_script[] = theme('tp_ads_header', array(
       'dpf_code' => $dpf_code,
       'ad_slot' => $leader_settings['ad_slot'],
       'ad_gpd_id' => $leader_settings['ad_gpd_id'],
@@ -157,7 +159,7 @@ function _tp_mobile_ads_insert_leader_ad() {
     );
     
     //calls function to add header
-    _tp_mobile_ads_insert_header($leader_header_script);
+    _tp_ads_insert_header($leader_header_script);
     
     $leader_wrapper['ads'][0] = $leader_settings;
     $leader_wrapper['selector'] = $leader_settings['selector'];
@@ -169,7 +171,7 @@ function _tp_mobile_ads_insert_leader_ad() {
  *  @function:
  *    This function is used to insert the javascript header
  */
-function _tp_mobile_ads_insert_header($header_script) {
+function _tp_ads_insert_header($header_script) {
   //only adds the code if the takepart_ads module is turned off. this is to ensure no duplication
   if (!module_exists('takepart_ads')) {
     //taken from takeparts_ads.module.
