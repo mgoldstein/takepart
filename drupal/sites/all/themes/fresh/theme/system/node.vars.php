@@ -86,7 +86,7 @@ function fresh_preprocess_node__openpublish_article(&$variables){
     $body = field_view_field('node', $variables['node'], 'body', $body_display);
     $variables['body'] = drupal_render($body);
 
-	$url = url('node/'.$node->nid);
+	$url = url('node/'.$variables['node']->nid, array('absolute' => true));
 	$variables['comments'] = theme('fresh_fb_comments', array('url' => $url) );
 
   }
