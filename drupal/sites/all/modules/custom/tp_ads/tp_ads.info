@@ -1,5 +1,5 @@
-name = TakePart4 API Endpoints
+name = TakePart - Fresh Ads Logic
 description = Custom module for handling custom APIs
 core = 7.x
 package = TP4
-version = 7.x-1.0
+version = 7.x-1.0-alpha1

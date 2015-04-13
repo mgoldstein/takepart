@@ -4,7 +4,7 @@
  *  @function:
  *    @dev: currently displayed in the module level
  */
-function tp_mobile_ads_admin_general_form() {
+function tp_ads_admin_general_form() {
   $form = array();
   
   return $form;
@@ -14,7 +14,7 @@ function tp_mobile_ads_admin_general_form() {
  *  @function:
  *    This function is used to provide an admin form for module.
  */
-function tp_mobile_ads_admin_form() {
+function tp_ads_admin_form() {
   //variables
   $form = array();
   $settings = variable_get('tp_ads_settings', '');
@@ -143,7 +143,7 @@ function tp_mobile_ads_admin_form() {
   } while (!$break);
   
   //adds custom submit handler to unset values that are empty
-  $form['#submit'][] = 'tp_mobile_ads_admin_form_submit';
+  $form['#submit'][] = 'tp_ads_admin_form_submit';
   
   //returns the system form
   return system_settings_form($form);
@@ -153,7 +153,7 @@ function tp_mobile_ads_admin_form() {
  *  @function:
  *    custom submit handler that it used to unset values before being saved
  */
-function tp_mobile_ads_admin_form_submit(&$form, &$form_state) {
+function tp_ads_admin_form_submit(&$form, &$form_state) {
   //variables
   $values = $form_state['values']['tp_ads_settings'];
   $values = array_reverse($values);

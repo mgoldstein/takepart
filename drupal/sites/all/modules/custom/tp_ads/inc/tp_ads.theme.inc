@@ -4,7 +4,7 @@
  *  @function:
  *    Theme function that is used to generate the div for the ads
  */
-function theme_tp_mobile_ads_script($variables) {
+function theme_tp_ads_script($variables) {
   //script generate
   $script = theme('html_tag', array(
     'element' => array(
@@ -41,7 +41,7 @@ function theme_tp_mobile_ads_script($variables) {
  *  @function:
  *    Theme function that creates the define slot for the ads
  */
-function theme_tp_mobile_ads_header($variables) {
+function theme_tp_ads_header($variables) {
   $output = '';
   
   $output = "googletag.defineSlot('/" . $variables['dpf_code'] . "/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "').addService(googletag.pubads());";

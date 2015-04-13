@@ -72,33 +72,36 @@
       var item = $(selector + ":nth-of-type(" + (i + 1) + ")")
       var offset = item.offset();
       
-      //only when in viewport
-      if (window[tp_count] < show_ads || (viewport.top < offset.top + view_offset && offset.top < viewport.bottom + view_offset)) {
-        //ensures to only add the ad once to address issue with scrolling backwards
-        $(item).once('mobile-ad', function() {
-          if (!end) {
-            var insert_key = (window[tp_count_insert] + parseInt(ads_object.ads[window[tp_count]]['placement']));
-            
-            //only add after the the correct key            
-            if ((insert_key - 1) == i) {
-              if (insert_pos == 'after') {
-                //appends the markup after the selector
-                $(this).after(ads_object.ads[window[tp_count]]['javascript']);
-                $(item).addClass('ad-inserted-after');
-              }
-              else {
-                //appends the markup after the selector
-                $(this).append(ads_object.ads[window[tp_count]]['javascript']);
-                $(item).addClass('ad-inserted-append');
-              }
-
+      //ensures that the offset is defined
+      if (typeof offset.top !== 'undefined') {
+        //only when in viewport
+        if (window[tp_count] < show_ads || (viewport.top < offset.top + view_offset && offset.top < viewport.bottom + view_offset)) {
+          //ensures to only add the ad once to address issue with scrolling backwards
+          $(item).once('mobile-ad', function() {
+            if (!end) {
+              var insert_key = (window[tp_count_insert] + parseInt(ads_object.ads[window[tp_count]]['placement']));
               
-              //increment counts
-              window[tp_count]++; //increment the ads for rotation
-              window[tp_count_insert] = insert_key; //update key once its been added
+              //only add after the the correct key            
+              if ((insert_key - 1) == i) {
+                if (insert_pos == 'after') {
+                  //appends the markup after the selector
+                  $(this).after(ads_object.ads[window[tp_count]]['javascript']);
+                  $(item).addClass('ad-inserted-after');
+                }
+                else {
+                  //appends the markup after the selector
+                  $(this).append(ads_object.ads[window[tp_count]]['javascript']);
+                  $(item).addClass('ad-inserted-append');
+                }
+  
+                
+                //increment counts
+                window[tp_count]++; //increment the ads for rotation
+                window[tp_count_insert] = insert_key; //update key once its been added
+              }
             }
-          }
-        });
+          });
+        }
       }
     });
   }
