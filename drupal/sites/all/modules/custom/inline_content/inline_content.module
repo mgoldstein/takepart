@@ -673,6 +673,14 @@ function inline_content_theme() {
         'quote' => '',
         'cite' => ''
       )
+    ),
+    'inline_content_image' => array(
+      'template' => 'inline-content-image',
+      'variables' => array(
+        'img' => '',
+        'caption' => '',
+        'alignment' => ''
+      )
     )
   );
 }
