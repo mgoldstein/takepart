@@ -7,7 +7,13 @@
 <div class="gallery-cover-slide">
   <aside class="social social-horizontal">
     <?php
-    $social_elements = array('action', 'share', 'subscribe', 'facebook', 'overlay');
+    $social_elements = array(
+        'share',
+        'action' => array(
+            'attributes' => array(
+                'data-desktop-pos' => '0',
+        'overlay'
+    )));
     $options = array('overlay' => TRUE);
     print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
     ?>
