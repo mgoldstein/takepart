@@ -1740,11 +1740,21 @@ function _tp4_series_nav(&$variables) {
 
         if (!empty($previous)) {
             $previous = '<div class="previous">' . (isset($previous->field_promo_headline['und'][0]['value']) ? $previous->field_promo_headline['und'][0]['value'] : drupal_render($previous->title)) . '</div>';
-            $series_nav .= l($previous, $previous_url, array('html' => true));
+            $series_nav .= l($previous, $previous_url, array(
+	        	'html' => TRUE, 
+				'attributes' => array(
+	        		'class' => 'series_navigation',
+				)
+			));
         }
         if (!empty($next)) {
             $next = '<div class="next">' . (isset($next->field_promo_headline['und'][0]['value']) ? $next->field_promo_headline['und'][0]['value'] : $next->title) . '</div>';
-            $series_nav .= l($next, $next_url, array('html' => true));
+            $series_nav .= l($next, $next_url, array(
+	        	'html' => TRUE, 
+				'attributes' => array(
+	        		'class' => 'series_navigation',
+				)
+			));
         }
 
         $variables['series_nav'] = $series_nav;
