@@ -382,9 +382,14 @@ aside.social{
     height: auto;
   }
   li.share{
-		@include breakpoint($breakpoint-desktop) {
-			padding-top: 70px;
-		}
+    @include breakpoint($breakpoint-desktop) {
+      padding-top: 70px;
+    }
+    .takepart-gallery-content & {
+      @include breakpoint($breakpoint-desktop) {
+        padding-top: 0;
+      }
+    }
     @include breakpoint($breakpoint-phablet){
       min-width: 270px;
       margin: 5px auto 0;
@@ -393,11 +398,12 @@ aside.social{
       min-width: 320px;
     }
   }
-	li.takeaction {
-		@include breakpoint($breakpoint-desktop) {
-			position: absolute !important;
-		}
-	}
+   
+  li.takeaction {
+    @include breakpoint($breakpoint-desktop) {
+    position: absolute !important;
+    }
+  }
   .tp-social-link,
   .trigger a {
     @include breakpoint($breakpoint-phablet) {
