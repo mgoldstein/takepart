@@ -185,11 +185,11 @@ function tpf_config_image_styles_image_default_styles() {
   $styles['inline_thumbnail'] = array(
     'label' => 'inline_thumbnail',
     'effects' => array(
-      57 => array(
+      60 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 150,
-          'height' => 100,
+          'width' => 480,
+          'height' => 320,
         ),
         'weight' => 1,
       ),
