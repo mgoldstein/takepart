@@ -1687,9 +1687,18 @@ function _tp4_on_our_radar_block(&$variables) {
 function _tp4_series_nav(&$variables) {
     if (!empty($variables['field_series'])) {
         $series = taxonomy_term_load($variables['field_series']['und'][0]['tid']);
-        $series_image = theme('image', array('path' => $series->field_series_graphic_header['und'][0]['uri']));
+
+        $series_image = theme('image', array(
+        	'path' => $series->field_series_graphic_header['und'][0]['uri'],
+        	'alt' => $series->name,
+        ));
         $termpath = taxonomy_term_uri($series);
-        $series_header = l($series_image, $termpath['path'], array('html' => TRUE) );
+        $series_header = l($series_image, $termpath['path'], array(
+        	'html' => TRUE, 
+			'attributes' => array(
+        		'id' => 'series_header',
+			)
+		));
         $created = $variables['created'];
 
         // find the next article, if any
