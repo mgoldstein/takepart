@@ -22,10 +22,10 @@
       $social_elements = array(
           'share',
           'action' => array(
-              'attributes' => array(
-                  'data-desktop-pos' => '0',
+              'data-desktop-pos' => '0',
+          ),
           'overlay'
-      )));
+      );
       $options = array('overlay' => TRUE);
       print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
       ?>

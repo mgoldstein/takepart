@@ -19,6 +19,7 @@
 @import "base/helpers/mixins";
 @import "base/normalize/normalize";
 @import "base/icons/icons";
+@import "base/icons/social-menu";
 
 /* Elements */
 @import "elements/typography";
@@ -53,5 +54,4 @@
 @import "modules/tpl-block";
 @import "modules/featured_campaigns";
 @import "modules/video_playlist";
-@import "modules/social-menu";
 @import "modules/newsletter_campaign";
