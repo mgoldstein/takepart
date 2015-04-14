@@ -179,6 +179,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 				$field_thumbnail = field_get_items('node', $result, $field);
 				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
 
+#				$field_promoted = field_get_items('node',$result,'field_promoted');
+#				$field_promoted = $field_permanent_title[0]['value'];
+
 				// set the icon for photo galleries/videos
 				switch($result->type) {
 					case 'openpublish_photo_gallery';
