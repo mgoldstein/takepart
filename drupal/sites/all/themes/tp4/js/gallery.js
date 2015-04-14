@@ -5,40 +5,42 @@
 
 (function($, Drupal, window, document, undefined) {
 
-    // social config
+// Setup Social Share Buttons
     var tp_social_config = {
-        url_append: '?cmpid=organic-share-{{name}}',
-        services: {
-            facebook: {
-                name: 'facebook',
-                description: '{current}',
-                image: '{current}',
-                url: '{current}'
-            },
-            twitter: {
-                name: 'twitter',
-                text: '{{title}}',
-                via: 'TakePart',
-                url: '{current}'
-            },
-            googleplus: {
-                name: 'googleplus',
-                url: '{current}'
-            },
-            pinterest: {
-                name: 'pinterest',
-                url: '{current}'
-            },
-            tumblr: {
-                name: 'tumblr',
-                url: '{current}'
-            },
-            mailto: {
-                name: 'mailto',
-                url: '{current}'
-            }
-        }
+      url_append: '?cmpid=organic-share-{{name}}',
+      services: [
+        {
+          name: 'facebook',
+          description: isFeatureArticle ? $('.field-name-field-article-subhead .field-item').text() : null
+        },
+
+        {
+          name: 'twitter',
+          text: '{{title}}',
+          via: 'TakePart'
+        },
+        {
+          name: 'mailto'
+        },
+        {
+          name: 'googleplus'
+        },
+        {
+          name: 'tumblr'
+        },
+        {
+          name: 'pinterest'
+        },
+      ]
     };
+    
+    //alters the config for the services based on content type
+    if ($('body').hasClass('node-type-openpublish-photo-gallery')) {
+      delete tp_social_config.services[4];
+    }
+    else {
+      delete tp_social_config.services[5];
+    }
 
     // utility function to update social share variables 
     var updateTpSocialMedia = function(imageSrc, shareDescription, shareHeadline) {

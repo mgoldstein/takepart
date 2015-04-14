@@ -47,9 +47,6 @@
             {
               name: 'pinterest'
             },
-            {
-              name: 'reddit'
-            }
           ]
         };
 
@@ -74,9 +71,6 @@
         else {
           delete tp_social_config.services[5];
         }
-        
-        //always remove reddit as it's not needed
-				delete tp_social_config.services[6]; //reddit
 
         /* Make sticky when screensize is greater than 768px */
           $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function() {
