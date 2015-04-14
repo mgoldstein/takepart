@@ -73,7 +73,7 @@
       var offset = item.offset();
       
       //ensures that the offset is defined
-      if (typeof offset.top !== 'undefined') {
+      if (offset != null) {
         //only when in viewport
         if (window[tp_count] < show_ads || (viewport.top < offset.top + view_offset && offset.top < viewport.bottom + view_offset)) {
           //ensures to only add the ad once to address issue with scrolling backwards

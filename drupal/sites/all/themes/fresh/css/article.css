@@ -2326,6 +2326,601 @@ nav#mobile-menu .mobile-menu li {
   margin-left: 0;
 }
 
+/**
+ * BxSlider v4.1.2 - Fully loaded, responsive content slider
+ * http://bxslider.com
+ *
+ * Written by: Steven Wanderski, 2014
+ * http://stevenwanderski.com
+ * (while drinking Belgian ales and listening to jazz)
+ *
+ * CEO and founder of bxCreative, LTD
+ * http://bxcreative.com
+ */
+/** RESET AND LAYOUT
+===================================*/
+/* line 17, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper {
+  position: relative;
+  margin: 0 auto 60px;
+  padding: 0 45px;
+  *zoom: 1;
+}
+
+/* line 24, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper img {
+  max-width: 100%;
+  display: block;
+}
+
+/** THEME
+===================================*/
+/* line 32, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-viewport {
+  background: #fff;
+  /*fix other elements on the page moving (on Chrome)*/
+  -webkit-transform: translatez(0);
+  -moz-transform: translatez(0);
+  -ms-transform: translatez(0);
+  -o-transform: translatez(0);
+  transform: translatez(0);
+}
+
+/* line 44, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+  position: absolute;
+  bottom: -30px;
+  width: 100%;
+}
+
+/* LOADER */
+/* line 52, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-loading {
+  min-height: 50px;
+  background: url('../images/bx_loader.gif') center center no-repeat white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+/* PAGER */
+/* line 66, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-pager {
+  text-align: center;
+  font-size: .85em;
+  font-family: Arial;
+  font-weight: bold;
+  color: #666;
+  padding-top: 20px;
+}
+
+/* line 76, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-pager .bx-pager-item,
+.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+}
+
+/* line 82, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-pager.bx-default-pager a {
+  background: #666;
+  text-indent: -9999px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  outline: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 96, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-pager.bx-default-pager a:hover,
+.bx-wrapper .bx-pager.bx-default-pager a.active {
+  background: #000;
+}
+
+/* DIRECTION CONTROLS (NEXT / PREV) */
+/* line 102, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-prev {
+  left: 0;
+  font-size: 2.2em;
+  line-height: 40%;
+  font-family: "takepart";
+}
+/* line 107, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-prev:after {
+  content: '\e605';
+  display: inline;
+  margin-left: 6px;
+}
+/* line 112, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-prev:hover {
+  text-decoration: none !important;
+  color: #00c09d;
+}
+
+/* line 118, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-next {
+  right: 10px;
+  font-size: 2.2em;
+  line-height: 40%;
+  font-family: "takepart";
+}
+/* line 123, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-next:after {
+  content: '\e606';
+  display: inline;
+  margin-left: 6px;
+}
+/* line 128, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-next:hover {
+  text-decoration: none !important;
+  color: #00c09d;
+}
+
+/* line 134, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-prev:hover {
+  background-position: 0 0;
+}
+
+/* line 138, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-next:hover {
+  background-position: -43px 0;
+}
+
+/* line 142, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-controls-direction a {
+  position: absolute;
+  top: 35%;
+  margin-top: -16px;
+  outline: 0;
+  width: 32px;
+  height: 32px;
+}
+
+/* line 151, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-controls-direction a.disabled {
+  display: none;
+}
+
+/* AUTO CONTROLS (START / STOP) */
+/* line 157, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-controls-auto {
+  text-align: center;
+}
+
+/* line 161, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-controls-auto .bx-start {
+  display: block;
+  text-indent: -9999px;
+  width: 10px;
+  height: 11px;
+  outline: 0;
+  background: url('../images/controls.png') -86px -11px no-repeat;
+  margin: 0 3px;
+}
+
+/* line 172, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-controls-auto .bx-start:hover,
+.bx-wrapper .bx-controls-auto .bx-start.active {
+  background-position: -86px 0;
+}
+
+/* line 176, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-controls-auto .bx-stop {
+  display: block;
+  text-indent: -9999px;
+  width: 9px;
+  height: 11px;
+  outline: 0;
+  background: url('../images/controls.png') -86px -44px no-repeat;
+  margin: 0 3px;
+}
+
+/* line 187, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-controls-auto .bx-stop:hover,
+.bx-wrapper .bx-controls-auto .bx-stop.active {
+  background-position: -86px -33px;
+}
+
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+/* line 193, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+  text-align: left;
+  width: 80%;
+}
+
+/* line 198, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+  right: 0;
+  width: 35px;
+}
+
+/* IMAGE CAPTIONS */
+/* line 205, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #666666 \9;
+  background: rgba(80, 80, 80, 0.75);
+  width: 100%;
+}
+
+/* line 214, ../../base/sass/base/modules/_bxslider.scss */
+.bx-wrapper .bx-caption span {
+  color: #fff;
+  font-family: Arial;
+  display: block;
+  font-size: .85em;
+  padding: 10px;
+}
+
+/* line 1, ../../base/sass/base/modules/_video_playlist.scss */
+.video-item {
+  float: left;
+  width: 155px;
+  height: auto;
+  overflow: hidden;
+}
+
+/* line 8, ../../base/sass/base/modules/_video_playlist.scss */
+.video-duration {
+  color: #555555;
+  font-size: 12px;
+  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  display: inline-block;
+  line-height: 100%;
+}
+
+/* line 16, ../../base/sass/base/modules/_video_playlist.scss */
+.video-placeholder {
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: black;
+}
+
+/* line 21, ../../base/sass/base/modules/_video_playlist.scss */
+.description-item {
+  display: none;
+}
+/* line 23, ../../base/sass/base/modules/_video_playlist.scss */
+.description-item.active {
+  display: block;
+}
+
+/* line 27, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist-wrapper-wrapper {
+  background: #555;
+  padding: 15px 7px;
+  margin-bottom: 30px;
+}
+@media all and (min-width: 768px) {
+  /* line 27, ../../base/sass/base/modules/_video_playlist.scss */
+  .playlist-wrapper-wrapper {
+    padding: 10px;
+    padding-bottom: 15px;
+    /* per Sasoon's comments */
+  }
+}
+
+/* line 37, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist {
+  background: #EFEFEF;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
+}
+@media all and (min-width: 980px) {
+  /* line 37, ../../base/sass/base/modules/_video_playlist.scss */
+  .playlist {
+    padding: 5px;
+  }
+}
+/* line 48, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist .bxslider {
+  display: none;
+}
+
+/* line 53, ../../base/sass/base/modules/_video_playlist.scss */
+h2.playlist-title {
+  color: white;
+  font-family: "Brown", Verdana, Tahoma, sans-serif;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 0 !important;
+  text-transform: lowercase;
+}
+
+/* line 62, ../../base/sass/base/modules/_video_playlist.scss */
+body .bx-wrapper .bx-viewport ul.video-playlist {
+  margin-top: 0;
+}
+
+/* line 67, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist-wrapper .playlist .current-video .video-description .description-item.active h3.video-title,
+h3.video-title {
+  margin-top: 12px;
+  margin-bottom: 10px;
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  line-height: 1.25em;
+  /* Per Sasoon's request */
+  line-spacing: 20px;
+}
+@media all and (min-width: 768px) {
+  /* line 67, ../../base/sass/base/modules/_video_playlist.scss */
+  .playlist-wrapper .playlist .current-video .video-description .description-item.active h3.video-title,
+  h3.video-title {
+    line-height: 1em;
+  }
+}
+
+/* line 80, ../../base/sass/base/modules/_video_playlist.scss */
+.video-description {
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
+  font-weight: 500;
+  margin-bottom: 15px;
+  padding-top: 6px;
+}
+
+/* line 87, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper {
+  padding: 0 25px;
+  padding-bottom: 5px;
+  /* per Sasoon's comment */
+}
+/* line 90, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper .bx-viewport {
+  background: transparent;
+}
+/* line 93, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper .bx-viewport .bx-wrapper {
+  padding: 0 !important;
+}
+/* line 96, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper .bx-viewport .bx-wrapper .bx-controls {
+  display: none;
+}
+/* line 104, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper .bx-controls .bx-controls-direction a {
+  margin-top: 0;
+  top: 47px;
+  color: #000;
+}
+/* line 108, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper .bx-controls .bx-controls-direction a:hover {
+  color: #00c09d;
+}
+/* line 115, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper .bx-next {
+  right: 0;
+}
+/* line 117, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper .bx-next:hover {
+  text-decoration: none;
+}
+/* line 122, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper .bx-prev {
+  left: -10px;
+}
+/* line 124, ../../base/sass/base/modules/_video_playlist.scss */
+.bx-wrapper .bx-prev:hover {
+  text-decoration: none;
+}
+
+/* line 135, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist.medium .bx-wrapper a.bx-prev, .playlist.medium .bx-wrapper a.bx-next {
+  top: 47px;
+}
+/* line 146, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist.large .bx-wrapper a.bx-prev, .playlist.large .bx-wrapper a.bx-next {
+  top: 58px;
+}
+
+/* TODO: convert to mixin for other use around TP */
+/* line 155, ../../base/sass/base/modules/_video_playlist.scss */
+.overlay {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  background: transparent;
+  overflow: hidden;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+/* line 166, ../../base/sass/base/modules/_video_playlist.scss */
+.video-item.active .overlay {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+/* line 169, ../../base/sass/base/modules/_video_playlist.scss */
+.now-playing, .play-me {
+  display: block;
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  color: #fff;
+  line-height: 50px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* line 182, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist {
+  padding-left: 15px;
+}
+/* line 184, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .image-wrapper {
+  position: relative;
+  float: left;
+  margin-bottom: 14px;
+  /* per Sasoon's request */
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+/* line 191, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .image-wrapper img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+/* line 200, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .overlay {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+}
+/* line 207, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .overlay .play-me,
+.video-playlist .overlay .now-playing {
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: 0 auto;
+  opacity: 0;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+/* line 220, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .video-item.active .image-wrapper .overlay {
+  opacity: 1;
+}
+/* line 223, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .video-item .image-wrapper .overlay .play-me {
+  top: 50%;
+  margin-top: -30px;
+  opacity: 1;
+}
+/* line 228, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .video-item.active .image-wrapper .overlay .now-playing {
+  top: 50%;
+  margin-top: -12px;
+  opacity: 1;
+}
+/* line 233, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .video-item.active .image-wrapper .overlay .play-me {
+  opacity: 0;
+}
+/* line 236, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .video-item .image-wrapper:hover .overlay {
+  opacity: 1;
+}
+/* line 239, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .video-item .now-playing, .video-playlist .video-item .promo-headline {
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
+  font-weight: 500;
+  display: inline;
+  font-size: 14px;
+  line-height: 18px;
+}
+/* line 247, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .video-item .promo-headline:after {
+  content: '\00a0 \00a0';
+  display: inline;
+}
+/* line 252, ../../base/sass/base/modules/_video_playlist.scss */
+.video-playlist .icon.i-triangle-right:after {
+  content: '\25B6';
+  background: #333;
+  opacity: .7;
+  width: 50px;
+  margin: 0 auto;
+  height: 20px;
+  vertical-align: middle;
+  line-height: 60px;
+  padding: 3px 10px;
+}
+
+/* Playlist responsive variations based on 'breakpoints' */
+/* line 266, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist.small {
+  padding: 5px 6px 10px 6px;
+}
+/* line 269, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist.small .video-playlist {
+  padding: 0;
+  overflow-y: auto;
+  height: 225px;
+}
+/* line 274, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist.small[data-playlist-type="basic"] .video-playlist {
+  padding-top: 15px;
+}
+/* line 277, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist.small .video-item {
+  clear: both;
+  width: 100%;
+  margin: 0;
+  height: auto;
+  padding-bottom: 10px;
+}
+/* line 284, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist.small .image-wrapper {
+  width: 40%;
+  margin-right: 20px;
+}
+/* line 288, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist.small .promo-headline {
+  width: 55%;
+}
+/* line 291, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist.small .video-playlist .image-wrapper img {
+  width: 100%;
+}
+
+/* Playlist View Mode Overrides */
+/* line 298, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist[data-playlist-type="basic"] .bx-wrapper {
+  padding-top: 10px;
+}
+
+/* line 302, ../../base/sass/base/modules/_video_playlist.scss */
+.playlist .jwplayer {
+  display: block !important;
+  height: auto;
+  overflow: hidden;
+}
+
+/* line 310, ../../base/sass/base/modules/_video_playlist.scss */
+body #article-content .inline-content-playlist {
+  max-width: 500px;
+  width: 100%;
+}
+/* line 314, ../../base/sass/base/modules/_video_playlist.scss */
+body #article-content .inline-content-playlist.align-full {
+  max-width: none;
+}
+@media all and (min-width: 980px) {
+  /* line 314, ../../base/sass/base/modules/_video_playlist.scss */
+  body #article-content .inline-content-playlist.align-full {
+    width: 912px !important;
+  }
+}
+
 /* line 1, ../sass/modules/_header.scss */
 #header {
   display: block;
@@ -2444,17 +3039,17 @@ body.mobile-search-show #header form {
   background: url('../images/logos-s3abcf13aa0.png') no-repeat;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -68px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -40px;
 }
@@ -2663,24 +3258,24 @@ footer .corporate-footer ul li a {
 /*****************
  * Article Page
  *****************/
-/* line 34, ../sass/article.scss */
+/* line 36, ../sass/article.scss */
 h1 {
   margin-top: 10px;
   margin-bottom: 15px;
 }
 
-/* line 38, ../sass/article.scss */
+/* line 40, ../sass/article.scss */
 .main-media {
   display: block;
   margin: 0 auto;
 }
 
-/* line 42, ../sass/article.scss */
+/* line 44, ../sass/article.scss */
 .headline {
   margin: 20px inherit;
 }
 
-/* line 45, ../sass/article.scss */
+/* line 47, ../sass/article.scss */
 .btn-secondary {
   display: block;
   width: 40px;
@@ -2689,17 +3284,17 @@ h1 {
   line-height: 31px;
 }
 
-/* line 52, ../sass/article.scss */
+/* line 54, ../sass/article.scss */
 .horizontal-menu {
   margin-bottom: 5px;
   margin-top: 6px;
 }
-/* line 55, ../sass/article.scss */
+/* line 57, ../sass/article.scss */
 .horizontal-menu li {
   margin-right: 4px;
 }
 
-/* line 59, ../sass/article.scss */
+/* line 61, ../sass/article.scss */
 .field-item > p:first-child {
   margin-top: 0;
 }

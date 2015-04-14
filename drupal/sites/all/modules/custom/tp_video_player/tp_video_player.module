@@ -26,6 +26,14 @@ function tp_video_player_init() {
       'weight' => 5,
     ));
   }
+  
+  $bx_path = drupal_get_path('module', 'tp_video_player') . '/js/jquery.bxslider/jquery.bxslider.min.js';
+  drupal_add_js($bx_path, array(
+    'type' => 'file',
+    'scope' => 'header',
+    'weight' => -5,
+    'every_page' => TRUE
+  ));
 
   $js_path = drupal_get_path('module', 'tp_video_player') . '/js/player.js';
   drupal_add_js($js_path, array(

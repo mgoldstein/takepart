@@ -76,7 +76,7 @@ function tp_ads_preprocess_page(&$vars) {
   
     //variables
     $settings = variable_get('tp_ads_settings', '');
-    $selector = variable_get('tp_ads_settings_selector', '.node-type-openpublish-article .main-content p');
+    $selector = variable_get('tp_ads_settings_selector', '.node-type-openpublish-article .main-content .field-item > p');
     $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895'); //pulled from original module
     
     //processes the data for front end js

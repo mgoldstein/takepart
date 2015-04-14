@@ -21,14 +21,7 @@ function tp_ads_admin_form() {
   $leader_settings = variable_get('tp_ads_article_leader', '');
   $i = 0;
   $break = FALSE;
-  
-  //js selector
-  $form['tp_ads_settings_selector'] = array(
-    '#type' => 'textfield',
-    '#default_value' => variable_get('tp_ads_settings_selector', '.node-type-openpublish-article .main-content p'),
-    '#description' => t('Selector for page')
-  );
-  
+    
   //ad fieldset
   $form['tp_ads_article_leader'] = array(
     '#tree' => TRUE,
@@ -70,6 +63,14 @@ function tp_ads_admin_form() {
     '#default_value' => $leader_settings['selector'],
   );
 
+  //js selector
+  $form['tp_ads_settings_selector'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Selector for Ad Logic'),
+    '#default_value' => variable_get('tp_ads_settings_selector', '.node-type-openpublish-article .main-content .field-item > p'),
+    '#description' => t('Selector for page')
+  );
+  
   $form['tp_ads_settings'] = array(
     '#tree' => TRUE,
     '#type' => 'fieldset',
