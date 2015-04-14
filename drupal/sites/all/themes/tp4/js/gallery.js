@@ -42,14 +42,6 @@
         }
 
     };
-    
-    //alters the config for the services based on content type
-    if ($('body').hasClass('node-type-openpublish-photo-gallery')) {
-      delete tp_social_config.services.tumblr;
-    }
-    else {
-      delete tp_social_config.services.pinterest;
-    }
 
     // utility function to update social share variables 
     var updateTpSocialMedia = function(imageSrc, shareDescription, shareHeadline) {
@@ -71,14 +63,30 @@
 		}
 
         imageSrc = imageSrc.split('?')[0].split('#')[0];
-        tp_social_config.services.pinterest.media = imageSrc;
-        tp_social_config.services.tumblr.source = imageSrc;
-        tp_social_config.services.pinterest.description = shareDescription;
-        tp_social_config.services.tumblr.caption = shareDescription;
+
+
+
         tp_social_config.services.facebook.description = shareDescription;
         tp_social_config.services.facebook.image = imageSrc;
         $("meta[property='og:image']").attr("content", imageSrc);
         $("meta[property='og:title']").attr("content", shareHeadline);
+        
+        
+        //alters the config for the services based on content type
+        if ($('body').hasClass('node-type-openpublish-photo-gallery')) {
+          delete tp_social_config.services.tumblr;
+          
+          tp_social_config.services.pinterest.media = imageSrc;
+          tp_social_config.services.pinterest.description = shareDescription;
+        }
+        else {
+          delete tp_social_config.services.pinterest;
+          
+          tp_social_config.services.tumblr.source = imageSrc;
+          tp_social_config.services.tumblr.caption = shareDescription;
+        }
+        
+        
         // Write the og:description if the tag doesn't exist
 		var og_desc = $("meta[property='og:description']");
 		og_desc = og_desc.length ? og_desc : $('<meta property="og:description" />').appendTo('head');

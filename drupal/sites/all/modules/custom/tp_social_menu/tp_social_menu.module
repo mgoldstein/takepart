@@ -18,7 +18,7 @@ function tp_social_menu_theme(){
  *  @function:
  *    Function is used to update and include the js files needed for social menu
  */
-function _tp_social_menu_include_js() {
+function tp_social_menu_init() {
   drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/smartresize.js',
     array('type' => 'file', 'scope' => 'header', 'weight' => -10)
   );
@@ -44,7 +44,7 @@ function _tp_social_menu_include_js() {
  */
 function theme_tp_social_menu($variables) {
   //adds the neccessary file
-  _tp_social_menu_include_js();
+  //_tp_social_menu_include_js();
   $items = array();
   
   $elements = array();
