@@ -16,7 +16,10 @@
 }
 
 footer {
-	padding: 0 10px;
+	max-width: 980px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 0px;
 	font-family: $AdelleSans;
 	font-size: .928571429em; // dumb comps have 13px text
 	line-height: 1.384615385; // but still have 18px leading
