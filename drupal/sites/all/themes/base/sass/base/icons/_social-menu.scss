@@ -294,6 +294,7 @@
 }
 .social-wrapper.mobile ul.parent-social-menu li.takeaction{
   background: #01bf9e;
+	height: 100%;
 }
 .social-wrapper ul.parent-social-menu li.facebook{
   display: none;
@@ -356,12 +357,18 @@
   display: none;
 }
 
-
-
-
-
-
-
+/**
+ *
+ *	Used to control the desktop display
+ *
+ */
+ul.parent-social-menu {
+	@include breakpoint($breakpoint-phablet) {
+		&.desktop-none {
+			display: none;
+		}
+	}
+}
 
 
 /* Social Global */

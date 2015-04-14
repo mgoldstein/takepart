@@ -11,12 +11,25 @@ function tp_social_menu_theme(){
         'options' => array()
       )
     ),
-    'tp_social_menu_menu' => array(
-      'variables' => array(
-        'items' => array()
-      ),
-      'template' => 'templates/social-menu'
-    ),
+  );
+}
+
+function _tp_social_menu_include_js() {
+  drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/smartresize.js',
+    array('type' => 'file', 'scope' => 'header', 'weight' => -10)
+  );
+  drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/tpsocial.jquery.js',
+    array('type' => 'file', 'scope' => 'header', 'weight' => -10)
+  ); 
+  drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/tpsocial.services.js'
+  ,
+    array('type' => 'file', 'scope' => 'footer', 'weight' => 5)
+  );
+  drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/jquery.tp4sticky.js',
+    array('type' => 'file', 'scope' => 'footer', 'weight' => 7)
+  );
+  drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/social-menu.js',
+    array('type' => 'file', 'scope' => 'footer', 'weight' => 10)
   );
 }
 
@@ -26,11 +39,15 @@ function tp_social_menu_theme(){
  * action, social, reach, subscribe, facebook
  */
 function theme_tp_social_menu($variables) {
+  //adds the neccessary file
+  _tp_social_menu_include_js();
+  $items = array();
+  
   $elements = array();
   
   //does for each element but add in optional data
   foreach ($variables['elements'] as $element => $value) {
-    $attr = '';
+    $attr = array();
     
     //addresses changes with optional data
     if (is_string($value)) {
@@ -38,16 +55,23 @@ function theme_tp_social_menu($variables) {
     }
     
     //creates attributes if it exists
-    if (is_array($value) && isset($value['attributes'])) {
-      $attr = drupal_attributes($value['attributes']);
+    if (is_array($value)) {
+      $attr = $value;
     }
-    
+    error_log(print_r($variables, 1));
     //switch based on type
     switch ($element) {
       //takeaction
       case 'action':
 //        $elements['takeaction'] = '<p class="takepart-take-action"></p>';
-        $elements['takeaction'] = '<h3 class="tp-social-headline takeaction-headline" ' . $attr . '>Take Action</h3><a class="takepart-custom-take-action-button"><i class="tpi icon i-take-action"></i></a>';
+        $elements['takeaction'] = '<h3 class="tp-social-headline takeaction-headline">Take Action</h3><a class="takepart-custom-take-action-button"><i class="tpi icon i-take-action"></i></a>';
+        
+        //add items into the list
+        $items[$element] = array(
+          'data' => $elements['takeaction'],
+          'class' => array('takeaction'),
+        );
+        $items[$element] = array_merge($items[$element], $attr);
         break;
       //share submenu. this is handled by the script.js
       case 'share':
@@ -62,24 +86,51 @@ function theme_tp_social_menu($variables) {
           $elements['share'] .= '<div class="tap-influence-overlay"></div>';
           $elements['share'] .= '<span class="tap-influence-icon icon i-influence"><h3 class="tp-social-headline reach">Your Reach</h3></span>';
         }
+        
+        //add items into the list
+        $items[$element] = array(
+          'data' => $elements['share'],
+          'class' => array('share'),
+        );
+        $items[$element] = array_merge($items[$element], $attr);
         break;
       //subscribe feature
       case 'subscribe':
         $subscribe = '<h3 class="tp-social-headline subscribe">Subscribe</h3><div></div>';
         $elements['subscribe'] = l($subscribe, '//go.takepart.com/form/66331/2481', array('html' => TRUE, 'attributes' => array('target' => '_blank')));
+        
+        //add items into the list
+        $items[$element] = array(
+          'data' => $elements['subscribe'],
+          'class' => array('subscribe'),
+        );
+        $items[$element] = array_merge($items[$element], $attr);
         break;
       //facebook feature
       case 'facebook':
         $elements['facebook'] .= '<div class="fb-like" data-href="https://www.facebook.com/takepart" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>';
         $elements['facebook'] .= '<h3 class="tp-social-headline subscribe">Us</h3>';
+        
+        //add items into the list
+        $items[$element] = array(
+          'data' => $elements['facebook'],
+          'class' => array('facebook'),
+        );
+        $items[$element] = array_merge($items[$element], $attr);
         break;
-//      case 'overlay':
-//        $elements['reach-overlay'] = '<div class="tap-influence-overlay"></div>';
-//        $elements['reach-overlay'] .= '<span class="tap-influence-icon icon i-influence"><h3 class="tp-social-headline reach">Your Reach</h3></span>';
-//        break;
     }
   }
   
-  $menu = theme('tp_social_menu_menu', array('items' => $elements));
-  return $menu;
+  //use theme_item_list to create the menu
+  $parent_ul = theme('item_list', array(
+    'items' => $items,
+    'attributes' => array(
+      'class' => 'parent-social-menu ' . (!empty($variables['options']['class']) ? $variables['options']['class'] : ''),
+    ),
+  ));
+
+  //needed since item list will not allow additional class so injecting via replacement  
+  $parent_ul = str_replace('item-list', 'item-list social-wrapper mobile', $parent_ul);
+
+  return $parent_ul;
 }

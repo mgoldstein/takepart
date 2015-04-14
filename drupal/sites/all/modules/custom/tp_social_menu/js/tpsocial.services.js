@@ -188,43 +188,39 @@
         }
     });
 
-    //allows easier switching between photo and non-photo
-    if (!$('body').hasClass('openpublish-photo-gallery')) {
-        $.tpsocial.add_service({
-            name: 'tumblr',
-            display: 'Tumblr',
-            width: 460,
-            height: 500,
-            share: function(args) {
-                var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent($("meta[property='og:description']").attr("content")) + '&url=' + args.url;
+    $.tpsocial.add_service({
+        name: 'pinterest',
+        display: 'Pinterest',
+        width: 760,
+        height: 316,
+        media: '',
+        description: '',
+        share: function(args) {
+            get_share_url(args.url, args.title, function(_new_url){ 
+                if ( !args.description ) args.description = args.title;
+                args.description = args.description + '';
+                if ( args.description.length > 499 ) {
+                    args.description = args.description.substring(0, 496) + '...';
+                }
+                var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(_new_url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
+
                 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-                window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
-            }
-        });
-    }
-    else {
-        $.tpsocial.add_service({
-            name: 'pinterest',
-            display: 'Pinterest',
-            width: 760,
-            height: 316,
-            media: '',
-            description: '',
-            share: function(args) {
-                get_share_url(args.url, args.title, function(_new_url){ 
-                    if ( !args.description ) args.description = args.title;
-                    args.description = args.description + '';
-                    if ( args.description.length > 499 ) {
-                        args.description = args.description.substring(0, 496) + '...';
-                    }
-                    var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(_new_url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
-    
-                    var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-                    window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
-                });
-            }
-        });
-    }
+                window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
+            });
+        }
+    });
+
+    $.tpsocial.add_service({
+        name: 'tumblr',
+        display: 'Tumblr',
+        width: 460,
+        height: 500,
+        share: function(args) {
+            var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent($("meta[property='og:description']").attr("content")) + '&url=' + args.url;
+            var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+            window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+        }
+    }); 
 
     $.tpsocial.add_service({
         name: 'googleplus',
