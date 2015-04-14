@@ -28,12 +28,13 @@ function fresh_preprocess_fresh_author_teaser(&$variables){
     );
     $links = array();
     $bio_path = drupal_get_path_alias('node/'. $account->nid);
-    $links[] = l('Bio', $bio_path, $options);
+    $bio_options = array_merge_recursive($options, array('attributes' => array('id'=>'author_bio')));
+    $links[] = l('Bio', $bio_path, $bio_options);
     if($twitter = field_get_items('node', $account, 'field_follow_twitter')){
-      $links[] = l('<span class="icon i-twitter"></span>', $twitter[0]['url'], $options);;
+      $links[] = l('<span class="icon i-twitter"></span>', $twitter[0]['url'], $options);
     }
     if($google = field_get_items('node', $account, 'field_follow_google')){
-      $links[] = l('<span class="icon i-google_plusone_share"></span>', $google[0]['url'], $options);;
+      $links[] = l('<span class="icon i-google_plusone_share"></span>', $google[0]['url'], $options);
     }
     $variables['links'] = $links;
   }
