@@ -5,9 +5,6 @@ body{
 a{
   color: $mint;
   text-decoration: none;
-  &:hover, &:active {
-    color: $mint;
-  }
 }
 .pr-5{
   padding-right: 5px;

@@ -76,6 +76,23 @@ li{
   margin: 0;
   padding: 0;
 }
+.field-item{
+  ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+  }
+
+  li {
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+  li:before {
+    content: "•";
+    color: $blue;
+    padding-right: .7em;
+  }
+}
 ul.tabs {
   border-bottom: 1px solid $light-gray;
   font-size: 16px;
@@ -308,6 +325,20 @@ aside.inline-content{
 }
 .line-style-2{
   background-color: $light-gray;
+  &:after{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 1px solid $light-gray;
+    display: block;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+    margin: 0 auto;
+    position: relative;
+    top: -5px;
+    background: white;
+  }
 }
 .line-style-3{
   background-color: $blue;
