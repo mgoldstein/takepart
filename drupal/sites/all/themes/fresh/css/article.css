@@ -4110,6 +4110,12 @@ body.mobile-search-show #header form {
   display: block;
 }
 
+/* line 74, ../sass/modules/_header.scss */
+body .user-menu.fresh-theme {
+  position: absolute;
+  right: 34px;
+}
+
 /* line 1, ../sass/modules/_fb_comments.scss */
 .comments {
   display: table;
