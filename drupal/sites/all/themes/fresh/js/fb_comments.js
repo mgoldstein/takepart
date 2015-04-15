@@ -17,12 +17,7 @@
 Drupal.behaviors.fb_comments = {
   attach: function(context, settings) {
 
-	// Some general touch vars to set globally
-    var isTouch = 'ontouchstart' in window || 'msmaxtouchpoints' in window.navigator;
-    var isTouchmove = false;
-    var click = isTouch ? "touchend" : "click";
-
-	$('.comments-count').on(click, function(e){
+	$('.comments-count').on('click', function(e){
 		if(typeof FB != 'undefined') {
 			jQuery('#comments').attr('href', window.location.href);
 			FB.XFBML.parse();
