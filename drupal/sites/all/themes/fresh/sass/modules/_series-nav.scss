@@ -1,6 +1,11 @@
 .series-navigation-wrapper{
-  max-width: 400px;
-  margin: 20px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  @include breakpoint($breakpoint-phablet){
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .series-navigation{
   .label{
@@ -12,6 +17,9 @@
   }
   a{
     color: $black;
+    width: 100%;
+    display: block;
+    height: 100%;
   }
   h4{
     margin: 5px 0 15px 0;
@@ -24,15 +32,16 @@
     width: 50%;
     box-sizing: border-box;
     border-bottom: 1px solid $light-gray;
+    padding: 0 10px;
   }
   .item-left{
     border-right: 1px solid $light-gray;
-    padding-right: 10px;
   }
-  .item-right{
-    padding-left: 10px;
-  }
-  .topic-box img{
+  img.topic-box{
     margin: 0 auto;
+  }
+  /* pixel pushing */
+  .i-double-arrow-left{
+    margin-right: 3px;
   }
 }
