@@ -162,6 +162,11 @@ function tp_more_on_takepart_block_view($delta = '') {
 
     			$result = node_load($item['nid']);
 
+					//ensures that if the node load comes back with nothing then go ahead and break this loop
+					if (!$result) {
+						break;
+					}
+					
 				$field_permanent_title = field_get_items('node',$result,'field_permanent_title');
 				$field_permanent_title = $field_permanent_title[0]['value'];
 				$field_permanent_title = $field_permanent_title ? $field_permanent_title : $result->title;
