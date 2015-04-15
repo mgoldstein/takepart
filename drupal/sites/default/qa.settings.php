@@ -39,4 +39,4 @@ $conf += array(
 $conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_qa/font.css';
 
 // Scream at the dev, maybe they'll fix something
-ini_set('error_reporting', E_ALL & ~E_NOTICE);
+// ini_set('error_reporting', E_ALL & ~E_NOTICE);
