@@ -101,9 +101,16 @@ function fresh_preprocess_node__openpublish_article(&$variables){
     $body = field_view_field('node', $variables['node'], 'body', $body_display);
     $variables['body'] = drupal_render($body);
 
-	$url = url('node/'.$variables['node']->nid, array('absolute' => true));
-	$variables['comments'] = theme('fresh_fb_comments', array('url' => $url) );
+    /* Series Navigation */
+    if($series = field_get_items('node', $variables['node'], 'field_series')){
+      $entity = $variables['node'];
+      $series = $series[0]['tid'];
+      $variables['series_navigation'] = theme('fresh_series_navigation', array('entity' => $entity, 'series' => $series));
+    }
 
+    /* Comments */
+    $url = url('node/'.$variables['node']->nid, array('absolute' => true));
+    $variables['comments'] = theme('fresh_fb_comments', array('url' => $url) );
   }
 }
 

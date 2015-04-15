@@ -52,9 +52,9 @@
       <?php print $variables['sponsor_disclosure']; ?>
     </div>
   <?php endif; ?>
-  <?php if(!empty($variables['article_nav'])): ?>
-    <div class="article-navigation">
-      <?php print $variables['article_nav']; ?>
+  <?php if(!empty($variables['series_navigation'])): ?>
+    <div class="series-navigation-wrapper">
+      <?php print $variables['series_navigation']; ?>
     </div>
   <?php endif; ?>
   <?php if(!empty($variables['comments'])): ?>
