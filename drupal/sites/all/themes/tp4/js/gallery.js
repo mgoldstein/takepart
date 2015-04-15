@@ -63,28 +63,15 @@
 		}
 
         imageSrc = imageSrc.split('?')[0].split('#')[0];
+        tp_social_config.services.pinterest.media = imageSrc;
 
-
-
+        tp_social_config.services.pinterest.description = shareDescription;
+        tp_social_config.services.tumblr.caption = shareDescription;
         tp_social_config.services.facebook.description = shareDescription;
         tp_social_config.services.facebook.image = imageSrc;
         $("meta[property='og:image']").attr("content", imageSrc);
         $("meta[property='og:title']").attr("content", shareHeadline);
         
-        
-        //alters the config for the services based on content type
-        if ($('body').hasClass('node-type-openpublish-photo-gallery')) {
-          delete tp_social_config.services.tumblr;
-          
-          tp_social_config.services.pinterest.media = imageSrc;
-          tp_social_config.services.pinterest.description = shareDescription;
-        }
-        else {
-          delete tp_social_config.services.pinterest;
-          
-          tp_social_config.services.tumblr.source = imageSrc;
-          tp_social_config.services.tumblr.caption = shareDescription;
-        }
         
         
         // Write the og:description if the tag doesn't exist
@@ -330,6 +317,7 @@
             gallery.currentCaption = slideHeadline;
             var slideContent = this.$currentSlide.find('.slide-caption-content').text().replace(/^\s+|\s+$/g, '').replace(/[\ |\t]+/g, ' ').replace(/[\n]+/g, "\n");
             updateTpSocialMedia(this.$currentSlide.find('img').attr('src'), slideContent, slideHeadline);
+            
             this.$galleryContent.find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
 
             // hide social buttons on the "next gallery slide"

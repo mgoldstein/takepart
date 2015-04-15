@@ -188,6 +188,13 @@
   }
 }
 
+body.node-type-openpublish-photo-gallery {
+	.social-wrapper.mobile {
+		.tp-social a.tp-social-tumblr {
+			display: none;
+		}
+	}
+}
 
 /** More Mobile */
 @include breakpoint($breakpoint-phablet) {
