@@ -154,6 +154,9 @@
 
         //reset the data-video-numbers
         $('.video-item', playlist).each(function(index, value) {
+          $('.image-wrapper', this).height($(this).height());
+          $('.image-wrapper .overlay', this).height($('img', this).height());
+          
           $(this).attr('data-video-number', index);
 
           //ensures that the first element is active

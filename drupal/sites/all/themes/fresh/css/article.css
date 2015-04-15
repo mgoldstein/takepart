@@ -3676,9 +3676,10 @@ nav#mobile-menu .mobile-menu li {
   width: 155px;
   height: auto;
   overflow: hidden;
+  list-style-type: none;
 }
 
-/* line 8, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 9, ../../base/sass/base/modules/_video_playlist.scss */
 .video-duration {
   color: #555555;
   font-size: 12px;
@@ -3687,30 +3688,30 @@ nav#mobile-menu .mobile-menu li {
   line-height: 100%;
 }
 
-/* line 16, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 17, ../../base/sass/base/modules/_video_playlist.scss */
 .video-placeholder {
   width: 100%;
   padding-bottom: 56.25%;
   background: black;
 }
 
-/* line 21, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 22, ../../base/sass/base/modules/_video_playlist.scss */
 .description-item {
   display: none;
 }
-/* line 23, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 24, ../../base/sass/base/modules/_video_playlist.scss */
 .description-item.active {
   display: block;
 }
 
-/* line 27, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 28, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist-wrapper-wrapper {
   background: #555;
   padding: 15px 7px;
   margin-bottom: 30px;
 }
 @media all and (min-width: 768px) {
-  /* line 27, ../../base/sass/base/modules/_video_playlist.scss */
+  /* line 28, ../../base/sass/base/modules/_video_playlist.scss */
   .playlist-wrapper-wrapper {
     padding: 10px;
     padding-bottom: 15px;
@@ -3718,7 +3719,7 @@ nav#mobile-menu .mobile-menu li {
   }
 }
 
-/* line 37, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 38, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist {
   background: #EFEFEF;
   padding: 10px;
@@ -3727,17 +3728,17 @@ nav#mobile-menu .mobile-menu li {
   box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.75);
 }
 @media all and (min-width: 980px) {
-  /* line 37, ../../base/sass/base/modules/_video_playlist.scss */
+  /* line 38, ../../base/sass/base/modules/_video_playlist.scss */
   .playlist {
     padding: 5px;
   }
 }
-/* line 48, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 49, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist .bxslider {
   display: none;
 }
 
-/* line 53, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 54, ../../base/sass/base/modules/_video_playlist.scss */
 h2.playlist-title {
   color: white;
   font-family: "Brown", Verdana, Tahoma, sans-serif;
@@ -3747,12 +3748,12 @@ h2.playlist-title {
   text-transform: lowercase;
 }
 
-/* line 62, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 63, ../../base/sass/base/modules/_video_playlist.scss */
 body .bx-wrapper .bx-viewport ul.video-playlist {
   margin-top: 0;
 }
 
-/* line 67, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 68, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist-wrapper .playlist .current-video .video-description .description-item.active h3.video-title,
 h3.video-title {
   margin-top: 12px;
@@ -3766,14 +3767,14 @@ h3.video-title {
   line-spacing: 20px;
 }
 @media all and (min-width: 768px) {
-  /* line 67, ../../base/sass/base/modules/_video_playlist.scss */
+  /* line 68, ../../base/sass/base/modules/_video_playlist.scss */
   .playlist-wrapper .playlist .current-video .video-description .description-item.active h3.video-title,
   h3.video-title {
     line-height: 1em;
   }
 }
 
-/* line 80, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 81, ../../base/sass/base/modules/_video_playlist.scss */
 .video-description {
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-weight: 500;
@@ -3781,62 +3782,62 @@ h3.video-title {
   padding-top: 6px;
 }
 
-/* line 87, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 88, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper {
   padding: 0 25px;
   padding-bottom: 5px;
   /* per Sasoon's comment */
 }
-/* line 90, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 91, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper .bx-viewport {
   background: transparent;
 }
-/* line 93, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 94, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper .bx-viewport .bx-wrapper {
   padding: 0 !important;
 }
-/* line 96, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 97, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper .bx-viewport .bx-wrapper .bx-controls {
   display: none;
 }
-/* line 104, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 105, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper .bx-controls .bx-controls-direction a {
   margin-top: 0;
   top: 47px;
   color: #000;
 }
-/* line 108, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 109, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper .bx-controls .bx-controls-direction a:hover {
   color: #00c09d;
 }
-/* line 115, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 116, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper .bx-next {
   right: 0;
 }
-/* line 117, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 118, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper .bx-next:hover {
   text-decoration: none;
 }
-/* line 122, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 123, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper .bx-prev {
   left: -10px;
 }
-/* line 124, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 125, ../../base/sass/base/modules/_video_playlist.scss */
 .bx-wrapper .bx-prev:hover {
   text-decoration: none;
 }
 
-/* line 135, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 136, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist.medium .bx-wrapper a.bx-prev, .playlist.medium .bx-wrapper a.bx-next {
   top: 47px;
 }
-/* line 146, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 147, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist.large .bx-wrapper a.bx-prev, .playlist.large .bx-wrapper a.bx-next {
   top: 58px;
 }
 
 /* TODO: convert to mixin for other use around TP */
-/* line 155, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 156, ../../base/sass/base/modules/_video_playlist.scss */
 .overlay {
   display: block;
   position: absolute;
@@ -3849,12 +3850,12 @@ h3.video-title {
   transition: all 0.5s;
 }
 
-/* line 166, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 167, ../../base/sass/base/modules/_video_playlist.scss */
 .video-item.active .overlay {
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* line 169, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 170, ../../base/sass/base/modules/_video_playlist.scss */
 .now-playing, .play-me {
   display: block;
   position: absolute;
@@ -3868,11 +3869,11 @@ h3.video-title {
   font-size: 20px;
 }
 
-/* line 182, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 183, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist {
   padding-left: 15px;
 }
-/* line 184, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 185, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .image-wrapper {
   position: relative;
   float: left;
@@ -3882,7 +3883,7 @@ h3.video-title {
   overflow: hidden;
   cursor: pointer;
 }
-/* line 191, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 192, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .image-wrapper img {
   display: block;
   margin: 0;
@@ -3891,7 +3892,7 @@ h3.video-title {
   height: auto;
   cursor: pointer;
 }
-/* line 200, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 201, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .overlay {
   top: 0;
   bottom: 0;
@@ -3899,7 +3900,7 @@ h3.video-title {
   right: 0;
   opacity: 0;
 }
-/* line 207, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 208, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .overlay .play-me,
 .video-playlist .overlay .now-playing {
   left: 0;
@@ -3912,31 +3913,31 @@ h3.video-title {
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
-/* line 220, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 221, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .video-item.active .image-wrapper .overlay {
   opacity: 1;
 }
-/* line 223, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 224, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .video-item .image-wrapper .overlay .play-me {
   top: 50%;
   margin-top: -30px;
   opacity: 1;
 }
-/* line 228, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 229, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .video-item.active .image-wrapper .overlay .now-playing {
   top: 50%;
   margin-top: -12px;
   opacity: 1;
 }
-/* line 233, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 234, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .video-item.active .image-wrapper .overlay .play-me {
   opacity: 0;
 }
-/* line 236, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 237, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .video-item .image-wrapper:hover .overlay {
   opacity: 1;
 }
-/* line 239, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 240, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .video-item .now-playing, .video-playlist .video-item .promo-headline {
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-weight: 500;
@@ -3944,12 +3945,12 @@ h3.video-title {
   font-size: 14px;
   line-height: 18px;
 }
-/* line 247, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 248, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .video-item .promo-headline:after {
   content: '\00a0 \00a0';
   display: inline;
 }
-/* line 252, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 253, ../../base/sass/base/modules/_video_playlist.scss */
 .video-playlist .icon.i-triangle-right:after {
   content: '\25B6';
   background: #333;
@@ -3963,21 +3964,21 @@ h3.video-title {
 }
 
 /* Playlist responsive variations based on 'breakpoints' */
-/* line 266, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 267, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist.small {
   padding: 5px 6px 10px 6px;
 }
-/* line 269, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 270, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist.small .video-playlist {
   padding: 0;
   overflow-y: auto;
   height: 225px;
 }
-/* line 274, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 275, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist.small[data-playlist-type="basic"] .video-playlist {
   padding-top: 15px;
 }
-/* line 277, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 278, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist.small .video-item {
   clear: both;
   width: 100%;
@@ -3985,44 +3986,44 @@ h3.video-title {
   height: auto;
   padding-bottom: 10px;
 }
-/* line 284, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 285, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist.small .image-wrapper {
   width: 40%;
   margin-right: 20px;
 }
-/* line 288, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 289, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist.small .promo-headline {
   width: 55%;
 }
-/* line 291, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 292, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist.small .video-playlist .image-wrapper img {
   width: 100%;
 }
 
 /* Playlist View Mode Overrides */
-/* line 298, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 299, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist[data-playlist-type="basic"] .bx-wrapper {
   padding-top: 10px;
 }
 
-/* line 302, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 303, ../../base/sass/base/modules/_video_playlist.scss */
 .playlist .jwplayer {
   display: block !important;
   height: auto;
   overflow: hidden;
 }
 
-/* line 310, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 311, ../../base/sass/base/modules/_video_playlist.scss */
 body #article-content .inline-content-playlist {
   max-width: 500px;
   width: 100%;
 }
-/* line 314, ../../base/sass/base/modules/_video_playlist.scss */
+/* line 315, ../../base/sass/base/modules/_video_playlist.scss */
 body #article-content .inline-content-playlist.align-full {
   max-width: none;
 }
 @media all and (min-width: 980px) {
-  /* line 314, ../../base/sass/base/modules/_video_playlist.scss */
+  /* line 315, ../../base/sass/base/modules/_video_playlist.scss */
   body #article-content .inline-content-playlist.align-full {
     width: 912px !important;
   }
