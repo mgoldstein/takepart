@@ -27,7 +27,7 @@ function tp_social_menu_init() {
   ); 
   drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/tpsocial.services.js'
   ,
-    array('type' => 'file', 'scope' => 'footer', 'weight' => 5)
+    array('type' => 'file', 'scope' => 'header', 'weight' => -7)
   );
   drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/jquery.tp4sticky.js',
     array('type' => 'file', 'scope' => 'footer', 'weight' => 7)
