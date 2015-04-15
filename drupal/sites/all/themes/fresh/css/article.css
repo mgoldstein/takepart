@@ -3975,63 +3975,59 @@ footer {
   font-size: .928571429em;
   line-height: 1.384615385;
 }
-/* line 27, ../sass/modules/_footer.scss */
-footer .container {
-  padding: 0;
-}
-/* line 31, ../sass/modules/_footer.scss */
+/* line 28, ../sass/modules/_footer.scss */
 footer .footer-text {
   max-width: 600px;
   margin-bottom: 1em;
 }
 @media all and (min-width: 768px) {
-  /* line 31, ../sass/modules/_footer.scss */
+  /* line 28, ../sass/modules/_footer.scss */
   footer .footer-text {
     width: 61.2244898%;
     float: left;
   }
 }
-/* line 40, ../sass/modules/_footer.scss */
+/* line 37, ../sass/modules/_footer.scss */
 footer .follow-us {
   overflow: hidden;
   margin-bottom: 1em;
 }
-/* line 43, ../sass/modules/_footer.scss */
+/* line 40, ../sass/modules/_footer.scss */
 footer .follow-us .footer-title {
   margin-bottom: .5em;
 }
-/* line 46, ../sass/modules/_footer.scss */
+/* line 43, ../sass/modules/_footer.scss */
 footer .follow-us ul li a.icon {
   margin-left: 5px;
   background: black;
 }
 @media all and (min-width: 768px) {
-  /* line 40, ../sass/modules/_footer.scss */
+  /* line 37, ../sass/modules/_footer.scss */
   footer .follow-us {
     float: right;
     text-align: right;
   }
-  /* line 53, ../sass/modules/_footer.scss */
+  /* line 50, ../sass/modules/_footer.scss */
   footer .follow-us .footer-title {
     float: right;
   }
-  /* line 56, ../sass/modules/_footer.scss */
+  /* line 53, ../sass/modules/_footer.scss */
   footer .follow-us ul {
     float: right;
   }
-  /* line 58, ../sass/modules/_footer.scss */
+  /* line 55, ../sass/modules/_footer.scss */
   footer .follow-us ul li {
     float: left;
   }
 }
-/* line 65, ../sass/modules/_footer.scss */
+/* line 62, ../sass/modules/_footer.scss */
 footer .footer-menu {
   clear: both;
   overflow: hidden;
   font-size: .928571429em;
   line-height: 1.384615385;
 }
-/* line 71, ../sass/modules/_footer.scss */
+/* line 68, ../sass/modules/_footer.scss */
 footer .footer-menu li {
   display: inline-block;
   line-height: 1;

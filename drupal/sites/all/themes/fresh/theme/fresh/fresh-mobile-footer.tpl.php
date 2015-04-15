@@ -1,4 +1,4 @@
-<footer class="container">
+<footer>
 
     <div class="footer-text">
         <h2 class="footer-title"><?php print $variables['title']; ?></h2>
