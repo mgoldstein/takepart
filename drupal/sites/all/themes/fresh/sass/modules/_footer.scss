@@ -24,6 +24,9 @@ footer {
     font-family: $AdelleSans;
     font-size: .928571429em; // dumb comps have 13px text
     line-height: 1.384615385; // but still have 18px leading
+    .container {
+		padding: 0;
+    }
 
     .footer-text {
         max-width: 600px;
