@@ -27,43 +27,47 @@ a {
   color: #018B73;
   text-decoration: none;
 }
+/* line 8, ../../base/sass/base/normalize/_normalize.scss */
+a:focus {
+  outline: none;
+}
 
-/* line 9, ../../base/sass/base/normalize/_normalize.scss */
+/* line 12, ../../base/sass/base/normalize/_normalize.scss */
 .pr-5 {
   padding-right: 5px;
 }
 
-/* line 12, ../../base/sass/base/normalize/_normalize.scss */
+/* line 15, ../../base/sass/base/normalize/_normalize.scss */
 .pr-10 {
   padding-right: 10px;
 }
 
-/* line 15, ../../base/sass/base/normalize/_normalize.scss */
+/* line 18, ../../base/sass/base/normalize/_normalize.scss */
 .pr-20 {
   padding-right: 20px;
 }
 
-/* line 18, ../../base/sass/base/normalize/_normalize.scss */
+/* line 21, ../../base/sass/base/normalize/_normalize.scss */
 .pr-30 {
   padding-right: 30px;
 }
 
-/* line 21, ../../base/sass/base/normalize/_normalize.scss */
+/* line 24, ../../base/sass/base/normalize/_normalize.scss */
 .pl-5 {
   padding-left: 5px;
 }
 
-/* line 24, ../../base/sass/base/normalize/_normalize.scss */
+/* line 27, ../../base/sass/base/normalize/_normalize.scss */
 .pl-10 {
   padding-left: 10px;
 }
 
-/* line 27, ../../base/sass/base/normalize/_normalize.scss */
+/* line 30, ../../base/sass/base/normalize/_normalize.scss */
 .pl-20 {
   padding-left: 20px;
 }
 
-/* line 30, ../../base/sass/base/normalize/_normalize.scss */
+/* line 33, ../../base/sass/base/normalize/_normalize.scss */
 .pl-30 {
   padding-left: 30px;
 }
@@ -5064,7 +5068,7 @@ a.cta span:before {
 .node-video.view-mode-full .field-name-body iframe,
 .node-video-playlist.view-mode-full .field-name-body iframe,
 .node-flashcard.view-mode-full .field-name-body iframe {
-  max-width: 100% !important;
+  max-width: 100%;
 }
 /* line 548, ../sass/page/_openpublish_article.scss */
 .node-takepart-page.view-mode-full .field-name-body ul,
@@ -5494,7 +5498,7 @@ a.cta span:before {
 .node-flashcard.view-mode-full .align-center {
   display: block;
   margin: 1em auto;
-  max-width: 100% !important;
+  max-width: 100%;
 }
 /* line 757, ../sass/page/_openpublish_article.scss */
 .node-takepart-page.view-mode-full .align-full,
@@ -6112,8 +6116,8 @@ a.cta span:before {
 /* line 1050, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .align-center {
   display: block;
-  margin: 1em auto !important;
-  max-width: 100% !important;
+  margin: 1em auto;
+  max-width: 100%;
 }
 @media all and (min-width: 980px) {
   /* line 1055, ../sass/page/_openpublish_article.scss */
