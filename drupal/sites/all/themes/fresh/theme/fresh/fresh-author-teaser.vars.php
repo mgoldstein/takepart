@@ -41,7 +41,7 @@ function fresh_preprocess_fresh_author_teaser(&$variables){
 
   if($date = $variables['published_at']){
     /* Format the date */
-    $variables['date'] = date('M j, Y, g:ia', $date);
+    $variables['date'] = date('M j, Y', $date);
   }
 
 }

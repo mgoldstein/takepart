@@ -63,10 +63,13 @@ blockquote{
   font-family: $Ashbury;
   font-weight: 100;
   font-size: 12px;
-  line-height: 24px;
-}
-.published-at{
-
+  line-height: 20px;
+  font-style: italic;
+  margin: 12px 0;
+  margin-bottom: 0;
+  p{
+    margin: 0;
+  }
 }
 ul{
   margin: 0;
@@ -77,20 +80,23 @@ li{
   padding: 0;
 }
 .field-item{
-  ul {
-    list-style: none;
+  > ul,  > ol{
     padding:0;
     margin:0;
+    font-size: 16px;
+    line-height: 24px;
   }
-
-  li {
-    padding-left: 1em;
-    text-indent: -1em;
-  }
-  li:before {
-    content: "•";
-    color: $blue;
-    padding-right: .7em;
+  > ul {
+    list-style: none;
+    > li {
+      padding-left: 1em;
+      text-indent: -1em;
+    }
+    > li:before {
+      content: "•";
+      color: $blue;
+      padding-right: .7em;
+    }
   }
 }
 ul.tabs {
@@ -295,6 +301,7 @@ aside.inline-content{
     margin-bottom: 5px;
     @extend .ad-label;
     text-align: left;
+    color: $dark-gray;
   }
   .image{
     padding-right: 0;

@@ -74,7 +74,7 @@ function fresh_preprocess_node__openpublish_article(&$variables){
             '#tag' => 'div',
             '#value' => $caption[0]['value'],
             '#attributes' => array(
-              'class' => array('caption', 'col-xxs-12', 'text-right')
+              'class' => array('caption', 'col-xxs-12', 'text-center')
             )
           )
         ));
