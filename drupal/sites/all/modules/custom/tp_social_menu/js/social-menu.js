@@ -57,7 +57,6 @@
         }
         /* If page is a campaign page, remove mailto, reddit and tumblr */
         if(isCampaignPage){
-          console.log(tp_social_config.services);
           delete tp_social_config.services[2]; //mailto
           delete tp_social_config.services[6]; //reddit
           delete tp_social_config.services[4]; //tumblr
