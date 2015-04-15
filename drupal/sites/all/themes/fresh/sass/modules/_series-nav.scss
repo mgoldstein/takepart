@@ -1,0 +1,38 @@
+.series-navigation-wrapper{
+  max-width: 400px;
+  margin: 20px auto;
+}
+.series-navigation{
+  .label{
+    font-family: tradegothicbold;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: $mint;
+  }
+  a{
+    color: $black;
+  }
+  h4{
+    margin: 5px 0 15px 0;
+  }
+  .navigation{
+    display: table;
+  }
+  .item{
+    display: table-cell;
+    width: 50%;
+    box-sizing: border-box;
+    border-bottom: 1px solid $light-gray;
+  }
+  .item-left{
+    border-right: 1px solid $light-gray;
+    padding-right: 10px;
+  }
+  .item-right{
+    padding-left: 10px;
+  }
+  .topic-box img{
+    margin: 0 auto;
+  }
+}

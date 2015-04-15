@@ -39,6 +39,12 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'published_at' => ''
       )
     ),
+    'fresh_series_navigation' => array(
+      'variables' => array(
+        'entity' => '',
+        'series' => ''
+      )
+    ),
     'fresh_pull_quote' => array(
       'variables' => array(
         'entity' => '',
