@@ -397,6 +397,16 @@ aside.social{
         padding-top: 0;
       }
     }
+    .takepart-gallery-cover-slide & {
+      @include breakpoint($breakpoint-desktop) {
+        padding-top: 0;
+      }
+    }
+    .takepart-gallery-support & {
+      @include breakpoint($breakpoint-desktop) {
+        padding-top: 0;
+      }
+    }
     @include breakpoint($breakpoint-phablet){
       min-width: 270px;
       margin: 5px auto 0;
@@ -405,7 +415,6 @@ aside.social{
       min-width: 320px;
     }
   }
-   
   li.takeaction {
     @include breakpoint($breakpoint-desktop) {
     position: absolute !important;
