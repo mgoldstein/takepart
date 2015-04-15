@@ -5,6 +5,9 @@ body{
 a{
   color: $mint;
   text-decoration: none;
+  &:focus{
+    outline: none;
+  }
 }
 .pr-5{
   padding-right: 5px;

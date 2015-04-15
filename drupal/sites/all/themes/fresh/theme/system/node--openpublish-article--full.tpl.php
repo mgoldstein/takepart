@@ -53,7 +53,7 @@
     </div>
   <?php endif; ?>
   <?php if(!empty($variables['series_navigation'])): ?>
-    <div class="series-navigation-wrapper">
+    <div class="series-navigation-wrapper row">
       <?php print $variables['series_navigation']; ?>
     </div>
   <?php endif; ?>
