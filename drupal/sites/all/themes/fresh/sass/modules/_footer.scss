@@ -3,116 +3,112 @@
 @include all-logos-sprites;
 
 .logos-takepart{
-	height: logos-sprite-height(takepart);
-	width: logos-sprite-width(takepart);
+    height: logos-sprite-height(takepart);
+    width: logos-sprite-width(takepart);
 }
 .logos-participantmedia{
-	height: logos-sprite-height(participantmedia);
-	width: logos-sprite-width(participantmedia);
+    height: logos-sprite-height(participantmedia);
+    width: logos-sprite-width(participantmedia);
 }
 .logos-pivot{
-	height: logos-sprite-height(pivot);
-	width: logos-sprite-width(pivot);
+    height: logos-sprite-height(pivot);
+    width: logos-sprite-width(pivot);
 }
 
 footer {
-	max-width: 980px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 0 0px;
-	font-family: $AdelleSans;
-	font-size: .928571429em; // dumb comps have 13px text
-	line-height: 1.384615385; // but still have 18px leading
+    max-width: 980px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+    padding: 0 0px;
+    font-family: $AdelleSans;
+    font-size: .928571429em; // dumb comps have 13px text
+    line-height: 1.384615385; // but still have 18px leading
 
-	.footer-text {
-		max-width: 600px;
-		margin-bottom: 1em;
-		@include breakpoint($breakpoint-tablet) {
-			width: 61.2244898%;
-			float: left;
-		}
-	}
-	
-	.follow-us {
-		overflow: hidden;
-		margin-bottom: 1em;
-		.footer-title {
-			margin-bottom: .5em;
-		}
-		ul li a.icon {
-			margin-left: 5px;
-			background: $black;
-		}
-	  @include breakpoint($breakpoint-tablet) {    
-	    float: right;
-	    text-align: right;
-	    .footer-title {
-	      float: right;
-	    }
-	    ul {
-	      float: right;
-	      li {
-	        float: left;
-	      }
-	    }
-	  }
-	}
+    .footer-text {
+        max-width: 600px;
+        margin-bottom: 1em;
+        @include breakpoint($breakpoint-tablet) {
+            width: 61.2244898%;
+            float: left;
+        }
+    }
 
-	.footer-menu {
-	  clear: both;
-	  overflow: hidden; // clearfix
-	  font-size: .928571429em; // dumb 13px text
-	  line-height: 1.384615385;
-	
-	  li {
-	    display: inline-block;
-	    line-height: 1;
-	    margin-bottom: .5em;
-	    margin-right: .5em;
-	    border-right: 1px solid black;
-	    padding-right: .5em;
-	    &.last {
-	      border-right: none;
-	      margin-right: 0;
-	      padding-right: 0;
-	    }
-	    a {
-	      white-space: nowrap;
-	    }
-	  }
-	}
-	
-	.corporate-footer {
-		text-align: center;
-		clear: both;
-		overflow: hidden; // clearfix
-		margin-top: 30px;
-		border-top: 1px solid $gray-line;
-		padding-top: 20px;
+    .follow-us {
+        overflow: hidden;
+        margin-bottom: 1em;
+        .footer-title {
+            margin-bottom: .5em;
+        }
+        ul li a.icon {
+            margin-left: 5px;
+            background: $black;
+        }
+        @include breakpoint($breakpoint-tablet) {
+            float: right;
+            text-align: right;
+            .footer-title {
+                float: right;
+            }
+            ul {
+                float: right;
+                li {
+                    float: left;
+                }
+            }
+        }
+    }
 
-		width: 100%;
+    .footer-menu {
+        clear: both;
+        overflow: hidden; // clearfix
+        font-size: .928571429em; // dumb 13px text
+        line-height: 1.384615385;
 
-		ul {
-			display: block;
-			overflow: hidden;
-			position: static;
-			li {
-				&:first-child {
-					top: -5px;
-				}
-				top: 0;
-				height: auto;
-				width: auto;
-				display: inline-block;
-				margin: 0 20px;
-				a {
-					display: inline-block;
-					text-indent: 100%;
-					white-space: nowrap;
-					overflow: hidden;
-					margin-bottom: 20px;
-				}
-			}
-		}
-	}
+        li {
+            display: inline-block;
+            line-height: 1;
+            margin-bottom: .5em;
+            margin-right: .5em;
+            border-right: 1px solid black;
+            padding-right: .5em;
+            &.last {
+                border-right: none;
+                margin-right: 0;
+                padding-right: 0;
+            }
+            a {
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .corporate-footer {
+        text-align: center;
+        clear: both;
+        overflow: hidden; // clearfix
+        margin-top: 30px;
+        border-top: 1px solid $gray-line;
+        padding-top: 20px;
+        width: 100%;
+
+        ul {
+            display: block;
+            overflow: hidden;
+            position: static;
+            li {
+                height: auto;
+                width: auto;
+                display: block;
+                margin-bottom: 1.5em;
+                a {
+                    display: block;
+                    text-indent: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
 }
