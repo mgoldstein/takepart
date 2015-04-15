@@ -2,6 +2,12 @@
 	margin-bottom: 15px;
 	.col-xxs-6:nth-child(2n){
 		clear: left;
+		padding-left: 0px;
+		padding-right: 5px;
+	}
+	.col-xxs-6:nth-child(2n+1){
+		padding-right: 0px;
+		padding-left: 5px;
 	}
 	@include breakpoint($screen-xs) {
 		.col-xs-3:nth-child(2n){
@@ -9,7 +15,7 @@
 		}
 	}
 	div {
-		margin-top: 30px;
+		margin: 15px 0 10px;
 	}
 	.thumbnail {
 		position: relative;
@@ -38,7 +44,7 @@
 		margin-bottom: 0;
 	}
 	h4 {
-		margin: 15px 0 0;
+		margin: 10px 0 0;
 	}
 /*
 	.promoted {

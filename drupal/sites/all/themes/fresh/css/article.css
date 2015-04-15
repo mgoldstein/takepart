@@ -4325,23 +4325,30 @@ footer .corporate-footer ul li a {
 /* line 3, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .col-xxs-6:nth-child(2n) {
   clear: left;
+  padding-left: 0px;
+  padding-right: 5px;
+}
+/* line 8, ../sass/modules/_tp_more_on_takepart.scss */
+#more-on-takepart .col-xxs-6:nth-child(2n+1) {
+  padding-right: 0px;
+  padding-left: 5px;
 }
 @media all and (min-width: 480px) {
-  /* line 7, ../sass/modules/_tp_more_on_takepart.scss */
+  /* line 13, ../sass/modules/_tp_more_on_takepart.scss */
   #more-on-takepart .col-xs-3:nth-child(2n) {
     clear: none;
   }
 }
-/* line 11, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 17, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart div {
-  margin-top: 30px;
+  margin: 15px 0 10px;
 }
-/* line 14, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 20, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .thumbnail {
   position: relative;
   margin: 0;
 }
-/* line 17, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 23, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .thumbnail img {
   z-index: 0;
   position: relative;
@@ -4350,7 +4357,7 @@ footer .corporate-footer ul li a {
   max-width: 100%;
   height: auto;
 }
-/* line 25, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 31, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .thumbnail .icon {
   z-index: 1;
   bottom: 3px;
@@ -4359,17 +4366,17 @@ footer .corporate-footer ul li a {
   color: #fff;
   line-height: 10px;
 }
-/* line 34, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 40, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart a {
   color: black;
 }
-/* line 37, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 43, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart h2 {
   margin-bottom: 0;
 }
-/* line 40, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 46, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart h4 {
-  margin: 15px 0 0;
+  margin: 10px 0 0;
 }
 
 /*****************
