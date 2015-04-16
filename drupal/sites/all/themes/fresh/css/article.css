@@ -4242,21 +4242,25 @@ footer .corporate-footer ul li a {
   color: #00a084;
 }
 /* line 18, ../sass/modules/_series-nav.scss */
+.series-navigation span {
+  vertical-align: middle;
+}
+/* line 21, ../sass/modules/_series-nav.scss */
 .series-navigation a {
   color: black;
   width: 100%;
   display: block;
   height: 100%;
 }
-/* line 24, ../sass/modules/_series-nav.scss */
+/* line 27, ../sass/modules/_series-nav.scss */
 .series-navigation h4 {
   margin: 5px 0 15px 0;
 }
-/* line 27, ../sass/modules/_series-nav.scss */
+/* line 30, ../sass/modules/_series-nav.scss */
 .series-navigation .navigation {
   display: table;
 }
-/* line 30, ../sass/modules/_series-nav.scss */
+/* line 33, ../sass/modules/_series-nav.scss */
 .series-navigation .item {
   display: table-cell;
   width: 50%;
@@ -4264,15 +4268,15 @@ footer .corporate-footer ul li a {
   border-bottom: 1px solid #c7c7c7;
   padding: 0 10px;
 }
-/* line 37, ../sass/modules/_series-nav.scss */
+/* line 40, ../sass/modules/_series-nav.scss */
 .series-navigation .item-left {
   border-right: 1px solid #c7c7c7;
 }
-/* line 40, ../sass/modules/_series-nav.scss */
+/* line 43, ../sass/modules/_series-nav.scss */
 .series-navigation img.topic-box {
   margin: 0 auto;
 }
-/* line 44, ../sass/modules/_series-nav.scss */
+/* line 47, ../sass/modules/_series-nav.scss */
 .series-navigation .i-double-arrow-left {
   margin-right: 3px;
 }
