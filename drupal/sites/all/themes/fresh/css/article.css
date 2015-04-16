@@ -3057,6 +3057,9 @@ aside.inline-content .inline-content-inner {
   display: block;
   border-top: none;
   border-left: none;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
   transform: rotate(45deg);
   margin: 0 auto;
   position: relative;
