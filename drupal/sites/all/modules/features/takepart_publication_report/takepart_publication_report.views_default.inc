@@ -27,6 +27,7 @@ function takepart_publication_report_views_default_views() {
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     7 => '7',
+    6 => '6',
   );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -37,8 +38,9 @@ function takepart_publication_report_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['inline'] = array(
     'published_at' => 'published_at',
-    'title' => 'title',
     'type' => 'type',
+    'title' => 'title',
+    'field_author' => 'field_author',
   );
   $handler->display->display_options['row_options']['separator'] = ' -- ';
   /* Header: Global: Text area */
@@ -80,6 +82,14 @@ Instead, select two dates to search for all content published between those date
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Author(s) */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['label'] = '';
+  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
   /* Sort criterion: Node: Published at */
   $handler->display->display_options['sorts']['published_at']['id'] = 'published_at';
   $handler->display->display_options['sorts']['published_at']['table'] = 'publication_date';
@@ -130,11 +140,12 @@ Instead, select two dates to search for all content published between those date
   $handler->display->display_options['filters']['type']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
     2 => 0,
-    5 => '5',
     6 => '6',
     7 => '7',
     1 => 0,
     3 => 0,
+    8 => 0,
+    5 => 0,
   );
   $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
   $handler->display->display_options['filters']['type']['group_info']['label'] = 'Type';
@@ -150,8 +161,8 @@ Instead, select two dates to search for all content published between those date
   $handler->display->display_options['filters']['published_at']['table'] = 'publication_date';
   $handler->display->display_options['filters']['published_at']['field'] = 'published_at';
   $handler->display->display_options['filters']['published_at']['operator'] = 'between';
-  $handler->display->display_options['filters']['published_at']['value']['min'] = '2014-01-01';
-  $handler->display->display_options['filters']['published_at']['value']['max'] = '2014-01-02';
+  $handler->display->display_options['filters']['published_at']['value']['min'] = '2015-01-01';
+  $handler->display->display_options['filters']['published_at']['value']['max'] = '2015-01-02';
   $handler->display->display_options['filters']['published_at']['exposed'] = TRUE;
   $handler->display->display_options['filters']['published_at']['expose']['operator_id'] = 'published_at_op';
   $handler->display->display_options['filters']['published_at']['expose']['label'] = 'Published between';
@@ -166,6 +177,7 @@ Instead, select two dates to search for all content published between those date
     7 => '7',
     1 => 0,
     3 => 0,
+    8 => 0,
   );
   /* Filter criterion: Field: Topic (field_topic) */
   $handler->display->display_options['filters']['field_topic_tid']['id'] = 'field_topic_tid';
@@ -203,6 +215,7 @@ Instead, select two dates to search for all content published between those date
     7 => '7',
     1 => 0,
     3 => 0,
+    8 => 0,
     5 => 0,
   );
 
@@ -260,6 +273,14 @@ Instead, select two dates to search for all content published between those date
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Author(s) */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['label'] = '';
+  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
   $handler->display->display_options['path'] = 'admin/reports/publication-report/export';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
