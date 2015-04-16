@@ -146,6 +146,15 @@ function fresh_preprocess_node__openpublish_article(&$variables){
     if (!empty($more_block['content'])) {
       $variables['more_on_takepart'] = $more_block['content'];
     }
+
+	/* Sponsored */
+    $field_sponsored = field_get_items('node', $variables['node'], 'field_sponsored');
+    $tid = $field_sponsored[0]['tid'];
+	if($tid) {
+		$variables['sponsored'] = theme('fresh_sponsor', array('tid' => $tid));
+		$variables['sponsor_disclosure'] = theme('fresh_sponsor_disclaimer', array('tid' => $tid));    
+	}
+
   }
 }
 
