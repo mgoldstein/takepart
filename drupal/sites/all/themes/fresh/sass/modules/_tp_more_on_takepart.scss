@@ -9,7 +9,7 @@
 		padding-right: 0px;
 		padding-left: 5px;
 	}
-	@include breakpoint($screen-xs) {
+	@include breakpoint($breakpoint-phablet) {
 		.col-xs-3:nth-child(2n){
 			clear: none;
 		}

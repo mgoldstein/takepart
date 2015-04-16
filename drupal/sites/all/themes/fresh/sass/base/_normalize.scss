@@ -82,7 +82,7 @@ li{
 .field-item{
   > ul, > ol{
 	margin: 20px 0 0;
-	@include breakpoint($screen-xs) {
+	@include breakpoint($breakpoint-phablet) {
 		margin: 20px 20px 0;
 	}
 	font-size: 16px;
