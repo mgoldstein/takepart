@@ -6,7 +6,6 @@
 
 (function ($, Drupal, window, document, undefined) {
 
-
   Drupal.behaviors.mobileMenuToggle = {
     attach: function(context, settings) {
 
@@ -42,7 +41,6 @@
         }
       });
 
-
       //makes the search go away on focus
       $('.search input').focus(function() {
         $(this).val('');
@@ -51,4 +49,28 @@
     }
   };
 
-})(jQuery, Drupal, this, this.document);
+  Drupal.behaviors.mobileMenuBehaviors = {
+    attach: function(context, settings) {
+      /* TODO: TP4 is unexpectedly dependent on the menu being 'exposed'.  Remove this dependency and use classes
+      that come with Drupal */
+
+      /* Prevent parent item from clicking through on initial click */
+      var curItem = false;
+      $('.mobile-menu > ul > li > a').on( 'click', function( e ) {
+        var item = $( this );
+        if( item[ 0 ] != curItem[ 0 ] ) {
+          e.preventDefault();
+          curItem = item;
+        }
+      });
+
+      /* Show child menu. See _mobile-menu.scss */
+      $('.mobile-menu > ul > li').click(function(){
+        if (!$(this).hasClass('show')) {
+          $(this).addClass("show" );
+        }
+      });
+    }
+  }
+
+  })(jQuery, Drupal, this, this.document);
