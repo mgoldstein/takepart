@@ -11,13 +11,13 @@ function fresh_preprocess_fresh_sponsor_disclaimer(&$variables){
 
 		// Get (default) disclaimer
 		if($sponsor->field_sponsor_disclaimer['und'][0]['value']) {
-			$disclaimer = trim($sponsor->field_sponsor_disclaimer['und'][0]['value']);
+			$disclaimer = $sponsor->description;
 		} else {
-	    	$default_disclaimer = taxonomy_term_load($sponsor->field_sponsor_type['und'][0]['target_id']);
+	    	$default_disclaimer = taxonomy_term_load($sponsor->field_sponsor_type['und'][0]['tid']);
 	    	$disclaimer = $default_disclaimer->description;
 		}
 
-		$variables['disclaimer'] = $disclaimer;
+		$variables['disclaimer'] = trim($disclaimer);
 	}
 
 }
