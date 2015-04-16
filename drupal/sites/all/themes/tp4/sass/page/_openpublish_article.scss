@@ -542,7 +542,7 @@
 
         // lock down iframes to 100%
         iframe {
-            max-width: 100% !important;
+            max-width: 100%;
         }
 
         ul {
@@ -752,7 +752,7 @@
     .align-center {
         display: block;
         margin: 1em auto;
-        max-width: 100% !important; // override style attribute for large images
+        max-width: 100%; // override style attribute for large images
     }
     .align-full {
         width: 100%;
@@ -1049,8 +1049,8 @@
     }
     .align-center {
         display: block;
-        margin: 1em auto !important;
-        max-width: 100% !important; // override style attribute for large images
+        margin: 1em auto;
+        max-width: 100%; // override style attribute for large images
     }
     .align-full {
         @include breakpoint($breakpoint-desktop) {

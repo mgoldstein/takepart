@@ -5215,7 +5215,7 @@ a.cta span:before {
 .node-video.view-mode-full .field-name-body iframe,
 .node-video-playlist.view-mode-full .field-name-body iframe,
 .node-flashcard.view-mode-full .field-name-body iframe {
-  max-width: 100% !important;
+  max-width: 100%;
 }
 /* line 548, ../sass/page/_openpublish_article.scss */
 .node-takepart-page.view-mode-full .field-name-body ul,
@@ -5645,7 +5645,7 @@ a.cta span:before {
 .node-flashcard.view-mode-full .align-center {
   display: block;
   margin: 1em auto;
-  max-width: 100% !important;
+  max-width: 100%;
 }
 /* line 757, ../sass/page/_openpublish_article.scss */
 .node-takepart-page.view-mode-full .align-full,
@@ -6263,8 +6263,8 @@ a.cta span:before {
 /* line 1050, ../sass/page/_openpublish_article.scss */
 .node-feature-article.view-mode-full .align-center {
   display: block;
-  margin: 1em auto !important;
-  max-width: 100% !important;
+  margin: 1em auto;
+  max-width: 100%;
 }
 @media all and (min-width: 980px) {
   /* line 1055, ../sass/page/_openpublish_article.scss */
