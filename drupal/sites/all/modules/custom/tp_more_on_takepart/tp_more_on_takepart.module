@@ -133,14 +133,20 @@ function tp_more_on_takepart_block_view($delta = '') {
 
 			// Load the first two field_related_articles for this node
 			$field_related_stories = field_get_items('node',$node,'field_related_stories');
-			$items[] = array(
-				'nid' => $field_related_stories[0]['nid'],
-				'type' => 'related',
-			);
-			$items[] = array(
-				'nid' => $field_related_stories[1]['nid'],
-				'type' => 'related',
-			);
+
+			if( $field_related_stories[0]['nid'] ) {
+				$items[] = array(
+					'nid' => $field_related_stories[0]['nid'],
+					'type' => 'related',
+				);
+			}
+
+			if( $field_related_stories[1]['nid'] ) {
+				$items[] = array(
+					'nid' => $field_related_stories[1]['nid'],
+					'type' => 'related',
+				);
+			}
 
 			// Load the two site-wide links from variables
 			$items[] = array(
