@@ -1,0 +1,27 @@
+.tp_sponsor {
+	text-align: center;
+	padding: auto 0;
+	font-family: $main-brand-font;
+	font-size: 14px;
+	font-weight: bold;
+	span {
+		text-transform: uppercase;
+		margin-right: .5em;
+	}
+	width: 100%;
+	img {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+.tp_sponsored_content_disclaimer {
+	margin-left: 53px;
+	p {
+		background-color:$light-gray;
+		padding: 10px 15px;
+		font-family: $primary-sans-font;
+		font-size: 14px;
+		font-style: italic;
+	}
+}

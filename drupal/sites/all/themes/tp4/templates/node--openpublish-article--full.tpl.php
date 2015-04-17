@@ -57,6 +57,8 @@
             <?php print render($content['field_video_list']); ?>
         <?php endif; ?>
 
+		<?php print isset($variables['content']['sponsored']) ? $variables['content']['sponsored'] : ''; ?>
+
         <?php print render($content['field_author']); ?>
 
         <?php
@@ -70,6 +72,8 @@
         ?>
 
     </div>
+
+	<?php print isset($variables['content']['sponsor_disclaimer']) ? $variables['content']['sponsor_disclaimer'] : ''; ?>
 
     <?php if (isset($series_nav)) : ?>
         <nav id="series-navigation">
