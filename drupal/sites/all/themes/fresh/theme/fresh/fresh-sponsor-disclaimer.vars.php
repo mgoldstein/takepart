@@ -10,7 +10,7 @@ function fresh_preprocess_fresh_sponsor_disclaimer(&$variables){
 		$sponsor = taxonomy_term_load($variables['tid']);
 
 		// Get (default) disclaimer
-		if($sponsor->field_sponsor_disclaimer['und'][0]['value']) {
+		if($sponsor->description) {
 			$disclaimer = $sponsor->description;
 		} else {
 	    	$default_disclaimer = taxonomy_term_load($sponsor->field_sponsor_type['und'][0]['tid']);
