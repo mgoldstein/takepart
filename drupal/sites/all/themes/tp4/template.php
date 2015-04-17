@@ -39,6 +39,20 @@ $card_types = array(
 define('CARDTYPES', serialize($card_types));
 
 
+function tp4_theme($existing, $type, $theme, $path) {
+	$path = drupal_get_path('theme', 'tp4') . '/templates/';
+
+    $items['tp4_sponsor'] = array(
+	    'template' => 'tp4-sponsor',
+        'path' => $path,
+    );
+    $items['tp4_sponsor_disclaimer'] = array(
+	    'template' => 'tp4-sponsor-disclaimer',
+        'path' => $path,
+    );
+    return $items;
+}
+
 
 /**
  * Invokes hook_preprocess_html()
@@ -1533,6 +1547,8 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
         // @see tp4_field__field_article_main_image__openpublish_article()
         // @see field-formatter--author-full.tpl.php
     } // if ($variables['view_mode'] == 'full')
+
+    _tp4_sponsor($variables);
 }
 
 /**
@@ -2423,3 +2439,46 @@ function tp4_page_alter(&$page) {
 	unset($page['content']['system_main']['pager']);
   }
 }
+
+
+function _tp4_sponsor(&$variables){
+
+	$s = field_get_items('node',$variables['node'],'field_sponsored');
+
+	$tid = $s[0]['tid'];
+
+	if($tid) {
+
+		$sponsor = taxonomy_term_load($tid);
+
+		$sponsored_by = $sponsor->field_sponsor_label['und'][0]['value'];
+
+		// Add the sponsor logo, or the name, if there isn't one
+		if( $sponsor->field_sponsor_logo['und'][0]['fid'] ) {
+			$logo = file_load($sponsor->field_sponsor_logo['und'][0]['fid']);
+			$logo = theme('image', array(
+					'style_name' => 'sponsor_logo',
+					'path' => $logo->uri,
+					'alt' => $sponsored_by.' '.$sponsor->name,
+					'title' => $sponsored_by.' '.$sponsor->name,
+			));
+		} else {
+			$logo = ' '.$sponsor->name;
+		}
+
+		$variables['content']['sponsored'] = theme('tp4_sponsor', array('sponsor' => $sponsored_by, 'logo' => $logo));
+
+		// Get (default) disclaimer
+		if($sponsor->description) {
+			$disclaimer = $sponsor->description;
+		} else {
+	    	$default_disclaimer = taxonomy_term_load($sponsor->field_sponsor_type['und'][0]['tid']);
+	    	$disclaimer = $default_disclaimer->description;
+		}
+
+		$variables['content']['sponsor_disclaimer'] = theme('tp4_sponsor_disclaimer', array('disclaimer' => trim($disclaimer)));
+
+	}
+
+}
+
