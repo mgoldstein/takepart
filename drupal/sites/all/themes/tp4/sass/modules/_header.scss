@@ -902,7 +902,7 @@ body {
       li {
         a {
           border-color: #9c9c9c;
-          font-family: 'Apercu Medium', sans-serif;
+          font-family: 'AdelleSans', sans-serif;
           font-size: 16px;
           text-transform: none;
           border-bottom: none;
@@ -910,7 +910,8 @@ body {
         &.level-0 {
           a {
             font-size: 24px;
-            font-family: 'Apercu Bold', sans-serif;
+            font-family: 'AdelleSans', sans-serif;
+            font-weight: bold;
             text-transform: uppercase;
           }
         }

@@ -12764,7 +12764,7 @@ header .search .form-submit {
 /* line 903, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li a {
   border-color: #9c9c9c;
-  font-family: 'Apercu Medium', sans-serif;
+  font-family: 'AdelleSans', sans-serif;
   font-size: 16px;
   text-transform: none;
   border-bottom: none;
@@ -12772,28 +12772,29 @@ body .snap-drawer-left #block-menu-menu-megamenu li a {
 /* line 911, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li.level-0 a {
   font-size: 24px;
-  font-family: 'Apercu Bold', sans-serif;
+  font-family: 'AdelleSans', sans-serif;
+  font-weight: bold;
   text-transform: uppercase;
 }
-/* line 921, ../sass/modules/_header.scss */
+/* line 922, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us {
   margin-right: 0px !important;
 }
-/* line 923, ../sass/modules/_header.scss */
+/* line 924, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us .title {
   margin-left: 0px;
 }
-/* line 926, ../sass/modules/_header.scss */
+/* line 927, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us li {
   margin-right: 8px;
 }
 
-/* line 938, ../sass/modules/_header.scss */
+/* line 939, ../sass/modules/_header.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image,
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   color: #01bf9e;
 }
-/* line 942, ../sass/modules/_header.scss */
+/* line 943, ../sass/modules/_header.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin ul.dropdown-menu {
   display: none;
 }
@@ -12801,11 +12802,11 @@ body.tploggedin .pivot-nav-theme .tpsLogin ul.dropdown-menu {
 /**
  *	Optimizing the login to limit the jump when TAP occurs
  */
-/* line 955, ../sass/modules/_header.scss */
+/* line 956, ../sass/modules/_header.scss */
 body .pivot-nav-theme .tpsLogin ul.dropdown-menu {
   display: none;
 }
-/* line 960, ../sass/modules/_header.scss */
+/* line 961, ../sass/modules/_header.scss */
 body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   display: block;
 }
