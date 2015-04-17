@@ -764,7 +764,16 @@ header {
         }
     }
 }
-
+#block-tp4-support-tp4-mobile-menu-header > div > ul > li {
+  width: 24px;
+  margin-left: 3px;
+  a {
+    margin-left: 0;
+    &:hover {
+      background-color: #000;
+    }
+  }
+}
 
 #block-tp-custom-nav-tp-custom-nav-takepart-collab {
     margin-bottom: 0;
@@ -852,8 +861,10 @@ header {
             }
         }
     }
-
-
+    //mobile menu
+    #block-tp4-support-tp4-mobile-menu-header {
+      border-color: #9c9c9c;
+    }
 
     //login
     .tpsLogin {
@@ -881,37 +892,76 @@ header {
     }
 }
 
+#block-menu-menu-megamenu > ul > li.menu__item.is-expanded.first.expanded > a {
+  border-bottom: 1px solid #646464;
+}
+
+body {
+  .snap-drawer-left {
+    #block-menu-menu-megamenu {
+      li {
+        a {
+          border-color: #9c9c9c;
+          font-family: 'AdelleSans', sans-serif;
+          font-size: 16px;
+          text-transform: none;
+          border-bottom: none;
+        }
+        &.level-0 {
+          a {
+            font-size: 24px;
+            font-family: 'AdelleSans', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+
+    .pivot-nav-theme {
+      .follow-us {
+        margin-right: 0px !important;
+        .title {
+          margin-left: 0px;
+        }
+        li {
+          margin-right: 8px;
+        }
+      }
+    }
+  }
+}
 
 body.tploggedin {
-    .pivot-nav-theme {
-        .tpsLogin {
-            .user_image,
-            .user_image:hover {
-                color: #01bf9e;
-            }
+  .pivot-nav-theme {
+    .tpsLogin {
+        .user_image,
+        .user_image:hover {
+            color: #01bf9e;
+        }
 
-            ul.dropdown-menu {
-                display: none;
-            }
+        ul.dropdown-menu {
+            display: none;
         }
     }
+  }
 }
 
 /**
  *	Optimizing the login to limit the jump when TAP occurs
  */
 body {
-    .pivot-nav-theme {
-        .tpsLogin {
-            ul.dropdown-menu {
-                display: none;
-            }
+  .pivot-nav-theme {
+    .tpsLogin {
+      ul.dropdown-menu {
+        display: none;
+      }
 
-            .open {
-                ul.dropdown-menu {
-                    display: block;
-                }
-            }
+      .open {
+        ul.dropdown-menu {
+            display: block;
         }
+      }
     }
+  }
 }
