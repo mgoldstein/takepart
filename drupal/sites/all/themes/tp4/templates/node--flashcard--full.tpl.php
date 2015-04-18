@@ -15,6 +15,8 @@
         <?php print render($content['field_article_subhead']); ?>
         <?php print render($title_suffix); ?>
 
+		<?php print isset($variables['content']['sponsored']) ? $variables['content']['sponsored'] : ''; ?>
+
         <?php if ($unpublished): ?>
             <mark class="unpublished"><?php print t('Unpublished'); ?></mark>
         <?php endif; ?>
@@ -43,5 +45,7 @@
     show($content['body']);
     print render($content['body']);
     ?>
+
+	<?php print isset($variables['content']['sponsor_disclaimer']) ? $variables['content']['sponsor_disclaimer'] : ''; ?>
 
 </article>

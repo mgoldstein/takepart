@@ -15786,3 +15786,8 @@ body #article-content .inline-content-playlist.align-full {
   font-size: 14px;
   font-style: italic;
 }
+
+/* line 30, ../sass/modules/_sponsored.scss */
+.node-openpublish-photo-gallery .tp_sponsored_content_disclaimer {
+  margin-left: 0;
+}

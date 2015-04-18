@@ -1649,6 +1649,8 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
         if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
           $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
         }
+
+		_tp4_sponsor($variables);
     }
 }
 
@@ -1671,6 +1673,8 @@ function tp4_preprocess_node__flashcard(&$variables) {
     if (empty($variables['content']['flashcard_related_content_primary'][0])) {
       unset($variables['content']['flashcard_related_content_primary']);
     }
+
+    _tp4_sponsor($variables);
 }
 
 /**
