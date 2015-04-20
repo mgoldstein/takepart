@@ -34,7 +34,7 @@ function _tp4_support_action_processor(&$context) {
     $action_id = array();
     foreach ($file_json as $key => $value) {
       //only adds published
-      if ($value->published) {
+      if ($value->published && !$value->expired) {
         $action_id[] = $value->action_id;
       }
     }
