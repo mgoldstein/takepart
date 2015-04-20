@@ -271,7 +271,14 @@ function tp4_support_preprocess_page(&$variables) {
 		$variables['theme_hook_suggestions'][] = 'page__entity_iframe__node';
 	}
   
-  drupal_add_js(drupal_get_path('module', 'tp4_support') .'/js/tp_url_changer.js');
+  //adds tp_url_changer into the scripts
+  drupal_add_js(
+    drupal_get_path('module', 'tp4_support') .'/js/tp_url_changer.js',
+    array(
+      'every_page' => TRUE,
+      'type' => 'file'
+    )
+  );
 }
 
 function tp4_menu_link__menu_takepart_links(array $variables) {
