@@ -13,8 +13,18 @@
         default_title = $("meta[name='twitter:title']").attr("content");
     }
 
-    // Default values
+    // Find subhead
+    var default_subhead = "";
+    // Try open graph data first
+    if ($("meta[property='og:description']").attr("content")) {
+        default_subhead = ': ' + $("meta[property='og:description']").attr("content");
+    }
+    // next try the Twitter meta data
+    else if (default_subhead === "" && $("meta[name='twitter:description']").attr("content")) {
+        default_subhead = ': ' + $("meta[name='twitter:description']").attr("content");
+    }
 
+    // Default values
     var default_url = document.location.href;
     var $rel_canonical = $('link[rel="canonical"]');
     if ($rel_canonical.length)
@@ -22,7 +32,8 @@
 
     var defaults = {
         url: default_url,
-        title: default_title
+        title: default_title,
+        subhead: default_subhead
     };
 
     // function to make social share link
@@ -102,7 +113,7 @@
                     data.prepare($link[0], data);
                 }
 
-                // Bind an event to the link 
+                // Bind an event to the link
                 $link
                         .bind('click', (function(srvc, $parent, $lnk) {
                             return function(e) {
@@ -129,7 +140,7 @@
                             }
                         })(srvc, $this, $link)
                       );
-                    
+
                 if (typeof data.hoverfocus == 'function') {
                     $link
                             .bind('mouseover focus', (function(srvc, $parent, $lnk) {

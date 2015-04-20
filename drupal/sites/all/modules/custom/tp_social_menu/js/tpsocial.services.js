@@ -19,7 +19,6 @@
                 text = text.replace(match, '');
             }
         }
-
         return text;
     };
 
@@ -41,9 +40,9 @@
                 url: window.TP.tabHost + "/share.json",
                 dataType: 'json',
                 data: {
-	                	url: url, 
-	                	title: title, 
-	                	shorten: shorten, 
+	                	url: url,
+	                	title: title,
+	                	shorten: shorten,
 	                	login_info: get_login_cookie()
 	                },
                 type: 'POST',
@@ -196,7 +195,7 @@
         media: '',
         description: '',
         share: function(args) {
-            get_share_url(args.url, args.title, function(_new_url){ 
+            get_share_url(args.url, args.title, function(_new_url){
                 if ( !args.description ) args.description = args.title;
                 args.description = args.description + '';
                 if ( args.description.length > 499 ) {
@@ -220,7 +219,7 @@
             var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
             window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
-    }); 
+    });
 
     $.tpsocial.add_service({
         name: 'googleplus',
@@ -228,7 +227,7 @@
         width: 600,
         height: 600,
         share: function(args) {
-            get_share_url(args.url, args.title, function(_new_url){ 
+            get_share_url(args.url, args.title, function(_new_url){
                 var url = 'https://plus.google.com/share?url=' + encodeURIComponent(_new_url);
                 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
                 window.open(url, undefined, [windowOptions,"width="+args.width,"height="+args.height].join(", "));
@@ -350,7 +349,14 @@
         name: 'mailto',
         display: 'Email App',
         share: function(args) {
-            var url = 'mailto:?body=' + encodeURIComponent(window.location) + '?cmpid=organic-share-mailto' + '&subject=' + encodeURIComponent(args.title);
+            var url = 'mailto:?body=I%20thought%20you\'d%20like%20this%20story%20on%20TakePart.com%0D%0A' +
+                    encodeURIComponent(args.title) +
+                    encodeURIComponent(args.subhead) +
+                    '%0D%0A' +
+                    encodeURIComponent(window.location) +
+                    '?cmpid=organic-share-mailto' +
+                    '&subject=TakePart:%20' +
+                    encodeURIComponent(args.title);
             location.href = url;
       }
     });
