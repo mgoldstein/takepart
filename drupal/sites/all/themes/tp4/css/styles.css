@@ -15780,7 +15780,7 @@ body #article-content .inline-content-playlist.align-full {
 }
 /* line 20, ../sass/modules/_sponsored.scss */
 .tp_sponsored_content_disclaimer p {
-  background-color: #949494;
+  background-color: #eeeeee;
   padding: 10px 15px;
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-size: 14px;
