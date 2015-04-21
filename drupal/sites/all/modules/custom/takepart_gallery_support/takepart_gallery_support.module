@@ -123,7 +123,7 @@ function template_preprocess_gallery_content(&$variables) {
     if (!empty($topic->field_topic_box_image['und'][0]['uri'])) {
       $image = theme('image', array('path' => $topic->field_topic_box_image['und'][0]['uri']));
       $url = !empty($topic->field_topic_box_link) ? url($topic->field_topic_box_link['und'][0]['url'], array('absolute' => TRUE)) : '';
-      $variables['field_topic_box'] = empty($url) ? $image : l($image, $url, array('html' => true));
+      $variables['topic_box_top'] = empty($url) ? $image : l($image, $url, array('html' => true));
     }
   }
 
