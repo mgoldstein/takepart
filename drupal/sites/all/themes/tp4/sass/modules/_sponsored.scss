@@ -15,6 +15,13 @@
 	}
 }
 
+// Flashcards, Photo Galleries
+.node-flashcard .tp_sponsor,
+.node-openpublish-photo-gallery .tp_sponsor {
+	text-align: left;
+	margin-bottom: 1.5em;
+}
+
 .tp_sponsored_content_disclaimer {
 	margin-left: 53px;
 	p {
@@ -26,7 +33,8 @@
 	}
 }
 
-// Kludge for Photo Galleries
+// Photo Galleries
 .node-openpublish-photo-gallery .tp_sponsored_content_disclaimer {
 	margin-left: 0;
 }
+
