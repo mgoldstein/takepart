@@ -6,9 +6,9 @@
 ?>
 <article id="node-<?php print $node->nid; ?>" class="gallery-content">
   <header id="gallery-header" class="gallery-header clearfix">
-    <?php if (isset($field_topic_box_top)) : ?>
+    <?php if (isset($variables['topic_box_top'])) : ?>
     <div class="topic-box">
-      <?php print $field_topic_box_top; ?>
+      <?php print $variables['topic_box_top']; ?>
     </div>
     <?php endif; ?>
     <h1 class="gallery-headline"><?php print $gallery_title; ?></h1>
