@@ -32,7 +32,8 @@
         <?php print $variables['media']; ?>
       </div>
     <?php endif; ?>
-    <div class="section">
+  </div>
+  <div class="section">
     <?php if(!empty($variables['sponsored'])): ?>
         <?php print $variables['sponsored']; ?>
     <?php endif; ?>
@@ -62,17 +63,13 @@
       <?php print $variables['comments']; ?>
     </div>
   <?php endif; ?>
-  
-  <aside class="social social-vertical stick">
-    <?php
-    $social_elements = array(
-        'share',
-        'action' => array(
-            'data-desktop-pos' => '0',
-        ),
-        'overlay'
-    );
-    $options = array('comments' => TRUE, 'overlay' => TRUE, 'class' => 'desktop-none');
-    print theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
-    ?>
-  </aside><!-- / #article-social -->
+
+  <?php if(!empty($variables['soical'])): ?>
+    <aside class="social social-vertical stick">
+      <?php print $variables['social']; ?>
+    </aside>
+  <?php endif; ?>
+</article>
+<?php if(!empty($variables['auto-scroll'])): ?>
+    <?php print $variables['auto-scroll']; ?>
+<?php endif; ?>
