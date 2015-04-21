@@ -64,7 +64,7 @@
     </div>
   <?php endif; ?>
 
-  <?php if(!empty($variables['soical'])): ?>
+  <?php if(!empty($variables['social'])): ?>
     <aside class="social social-vertical stick">
       <?php print $variables['social']; ?>
     </aside>

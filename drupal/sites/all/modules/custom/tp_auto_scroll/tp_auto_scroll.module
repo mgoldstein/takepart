@@ -23,12 +23,13 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
   $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
 
   /* If a cached version of the node exists, use it */
-  if($cached = cache_get('tp_auto_scroll_'. $view_mode. '_'.$node->nid, 'cache'))  {
+  $cache = 'autoscroll_'. $view_mode. '_'.$node->nid;
+  if($cached = cache_get($cache, 'cache'))  {
     $node_view = $cached->data;
   }
   if(empty($node_view)) {
     $node_view = drupal_render(node_view($node, $view_mode));
-    cache_set('tp_autoscroll_'.$view_mode. '_'. $node->nid, $node_view, 'cache', REQUEST_TIME + $cache_lifetime);
+    cache_set($cache, $node_view, 'cache', REQUEST_TIME + $cache_lifetime);
   }
   print $node_view;
   drupal_exit();
