@@ -1631,7 +1631,7 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 
         // provide topic box
         if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
-          $variables['topic_box_top'] = theme('btopic_box', array('tid' => $topic[0]['tid']));
+          $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
         }
     }
 }
