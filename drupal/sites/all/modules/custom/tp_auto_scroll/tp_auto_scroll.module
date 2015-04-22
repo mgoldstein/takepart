@@ -27,11 +27,24 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
   if($cached = cache_get($cache, 'cache'))  {
     $node_view = $cached->data;
   }
+  
   if(empty($node_view)) {
-    $node_view = drupal_render(node_view($node, $view_mode));
-    cache_set($cache, $node_view, 'cache', REQUEST_TIME + $cache_lifetime);
+    $node_view = node_view($node, $view_mode);
+    $node_view->disable_social = TRUE;
+    
+    //integrate tp-url changer
+    $node_view_wrapper = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => drupal_render($node_view),
+        '#attributes' => array(
+          'data-tp-url' => url('node/' . $node->nid),
+          'data-tp-url-title' => $node->title
+    ))));
+    
+    cache_set($cache, $node_view_wrapper, 'cache', REQUEST_TIME + $cache_lifetime);
   }
-  print $node_view;
+  print $node_view_wrapper;
   drupal_exit();
 
 }
