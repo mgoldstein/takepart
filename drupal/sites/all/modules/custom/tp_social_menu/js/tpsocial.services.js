@@ -349,7 +349,7 @@
         name: 'mailto',
         display: 'Email App',
         share: function(args) {
-            var url = 'mailto:?body=I%20thought%20you\'d%20like%20this%20story%20on%20TakePart.com%0D%0A' +
+            var url = 'mailto:?body=I%20thought%20you\'d%20like%20this%20story%20on%20TakePart.com%0D%0A%0D%0A' +
                     encodeURIComponent(args.title) +
                     encodeURIComponent(args.subhead) +
                     '%0D%0A' +
