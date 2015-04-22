@@ -631,7 +631,7 @@ body.node-type-openpublish-photo-gallery{
   .tap-influence-overlay .popover{
     display: none;
     top: 0;
-    margin-left: 58px;
+    margin-left: 20px;
     position: absolute;
     transition: top 0.2s ease-out;  //needed since #article-social is targeted
     @include breakpoint($breakpoint-phablet) {
@@ -743,7 +743,7 @@ body.node-type-openpublish-photo-gallery{
       display: block;
       left: -19px;
       padding-top: 7px;
-      margin-top: 51px;
+      margin-top: 40px;
       @include text-shadow(-3px 0 3px rgba(0,0,0,.25));
     }
   }
@@ -814,9 +814,6 @@ body.node-type-openpublish-photo-gallery{
   }
   #gallery-content-social {
     width: 255px;
-  }
-  .tap-influence-overlay .popover {
-    margin-top: 35px;
   }
   .tap-influence-icon.icon:after {
     margin-left: 0;

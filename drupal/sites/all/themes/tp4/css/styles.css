@@ -908,7 +908,7 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 .social-wrapper .tap-influence-overlay .popover {
   display: none;
   top: 0;
-  margin-left: 58px;
+  margin-left: 20px;
   position: absolute;
   transition: top 0.2s ease-out;
 }
@@ -1028,7 +1028,7 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   display: block;
   left: -19px;
   padding-top: 7px;
-  margin-top: 51px;
+  margin-top: 40px;
   text-shadow: -3px 0 3px rgba(0, 0, 0, 0.25);
 }
 
@@ -1139,55 +1139,51 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   width: 255px;
 }
 /* line 818, ../../base/sass/base/icons/_social-menu.scss */
-.gallery-content .tap-influence-overlay .popover, #gallery-cover-social .tap-influence-overlay .popover {
-  margin-top: 35px;
-}
-/* line 821, ../../base/sass/base/icons/_social-menu.scss */
 .gallery-content .tap-influence-icon.icon:after, #gallery-cover-social .tap-influence-icon.icon:after {
   margin-left: 0;
 }
 @media (max-width: 979px) {
-  /* line 826, ../../base/sass/base/icons/_social-menu.scss */
+  /* line 823, ../../base/sass/base/icons/_social-menu.scss */
   .gallery-content .tap-influence-overlay .popover, #gallery-cover-social .tap-influence-overlay .popover {
     right: 17px;
   }
-  /* line 829, ../../base/sass/base/icons/_social-menu.scss */
+  /* line 826, ../../base/sass/base/icons/_social-menu.scss */
   .gallery-content.social .headline, #gallery-cover-social.social .headline {
     width: auto;
   }
 }
 @media all and (min-width: 768px) {
-  /* line 834, ../../base/sass/base/icons/_social-menu.scss */
+  /* line 831, ../../base/sass/base/icons/_social-menu.scss */
   .gallery-content #gallery-content-social, #gallery-cover-social #gallery-content-social {
     width: 350px;
   }
-  /* line 837, ../../base/sass/base/icons/_social-menu.scss */
+  /* line 834, ../../base/sass/base/icons/_social-menu.scss */
   .gallery-content .tp-sharing-container, #gallery-cover-social .tp-sharing-container {
     float: left;
   }
 }
 
-/* line 843, ../../base/sass/base/icons/_social-menu.scss */
+/* line 840, ../../base/sass/base/icons/_social-menu.scss */
 #gallery-cover-social {
   width: 265px;
 }
-/* line 845, ../../base/sass/base/icons/_social-menu.scss */
+/* line 842, ../../base/sass/base/icons/_social-menu.scss */
 #gallery-cover-social .tap-influence-icon {
   margin-top: 5px;
 }
 
-/* line 849, ../../base/sass/base/icons/_social-menu.scss */
+/* line 846, ../../base/sass/base/icons/_social-menu.scss */
 .node-type-openpublish-photo-gallery .social {
   width: 260px;
   margin-top: 5px;
 }
-/* line 852, ../../base/sass/base/icons/_social-menu.scss */
+/* line 849, ../../base/sass/base/icons/_social-menu.scss */
 .node-type-openpublish-photo-gallery .social .tp-sharing-container {
   width: 180px;
   margin: 5px auto 0;
   float: left;
 }
-/* line 857, ../../base/sass/base/icons/_social-menu.scss */
+/* line 854, ../../base/sass/base/icons/_social-menu.scss */
 .node-type-openpublish-photo-gallery .social .headline {
   text-align: center;
   float: none;
@@ -1195,19 +1191,19 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   width: auto;
   display: block;
 }
-/* line 863, ../../base/sass/base/icons/_social-menu.scss */
+/* line 860, ../../base/sass/base/icons/_social-menu.scss */
 .node-type-openpublish-photo-gallery .social .headline.share-headline {
   margin: 0;
 }
 
 @media all and (min-width: 480px) {
-  /* line 869, ../../base/sass/base/icons/_social-menu.scss */
+  /* line 866, ../../base/sass/base/icons/_social-menu.scss */
   #gallery-cover-social {
     width: 360px;
   }
 }
 @media all and (min-width: 980px) {
-  /* line 875, ../../base/sass/base/icons/_social-menu.scss */
+  /* line 872, ../../base/sass/base/icons/_social-menu.scss */
   #gallery-cover-social {
     width: 315px;
   }
@@ -7030,8 +7026,7 @@ a.hover .gallery-cover-content .gallery-cover-enter {
 /* line 96, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-header {
   color: black;
-  overflow: hidden;
-  *zoom: 1;
+  clear: both;
 }
 /* line 100, ../sass/page/_openpublish_photo_gallery.scss */
 .gallery-content .gallery-headline {
