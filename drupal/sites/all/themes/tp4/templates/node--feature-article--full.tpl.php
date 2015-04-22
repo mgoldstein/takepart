@@ -43,9 +43,9 @@
     <div id="article-content">
         <?php print render($content['field_article_subhead']); ?>
 
-        <?php if (isset($field_topic_box_top)) : ?>
+        <?php if (isset($variables['topic_box_top'])) : ?>
             <div class="topic-box">
-                <?php print $field_topic_box_top; ?>
+                <?php print $variables['topic_box_top']; ?>
             </div>
         <?php endif; ?>
 

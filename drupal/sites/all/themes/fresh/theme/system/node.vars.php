@@ -19,11 +19,7 @@ function fresh_preprocess_node(&$variables, $hook){
   if (function_exists($function)) {
     $function($variables, $hook);
   }
-
-
 }
-
-
 
 /**
  * Article Node Preprocess
@@ -104,13 +100,34 @@ function fresh_preprocess_node__openpublish_article(&$variables){
     /* Series Navigation */
     if($series = field_get_items('node', $variables['node'], 'field_series')){
       $entity = $variables['node'];
-      $series = $series[0]['tid'];
+      $series = (int) $series[0]['tid'];
       $variables['series_navigation'] = theme('fresh_series_navigation', array('entity' => $entity, 'series' => $series));
     }
 
     /* Comments */
     $url = url('node/'.$variables['node']->nid, array('absolute' => true));
     $variables['comments'] = theme('fresh_fb_comments', array('url' => $url) );
+
+    /* Social Menu */
+    $social_elements = array(
+      'share',
+      'action' => array(
+        'data-desktop-pos' => '0',
+      ),
+      'overlay'
+    );
+    $options = array('comments' => TRUE, 'overlay' => TRUE, 'class' => 'desktop-none');
+    if(module_exists('tp_social_menu')){
+      $variables['social'] = theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
+    }
+
+    /* Enable AutoScroll */
+    if(module_exists('tp_auto_scroll')){
+      /* Don't need to run this for AJAX requested pages */
+      if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) || strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) != 'xmlhttprequest') {
+        $variables['auto-scroll'] = tp_auto_scroll_pager($variables['node']);
+      }
+    }
   }
 }
 

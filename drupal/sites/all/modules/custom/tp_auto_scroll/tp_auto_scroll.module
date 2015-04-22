@@ -1,0 +1,86 @@
+<?php
+/**
+ * Auto scroll for content on TakePart
+ */
+
+/**
+ * Implements hook_menu
+ */
+function tp_auto_scroll_menu(){
+  $items['autoscroll/%/%node'] = array(
+    'page callback' => 'tp_auto_scroll_handler',
+    'page arguments' => array(2, 1),
+    'access arguments' => array('access content')
+  );
+  return $items;
+}
+
+/**
+ * Menu callback for autoscroll
+ */
+function tp_auto_scroll_handler($node, $view_mode = 'full'){
+
+  $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
+
+  /* If a cached version of the node exists, use it */
+  $cache = 'autoscroll_'. $view_mode. '_'.$node->nid;
+  if($cached = cache_get($cache, 'cache'))  {
+    $node_view = $cached->data;
+  }
+  if(empty($node_view)) {
+    $node_view = drupal_render(node_view($node, $view_mode));
+    cache_set($cache, $node_view, 'cache', REQUEST_TIME + $cache_lifetime);
+  }
+  print $node_view;
+  drupal_exit();
+
+}
+
+/**
+ * Where we want autoscroll to show
+ */
+function tp_auto_scroll_pager($node){
+
+  $autoscroll_limit = variable_get('tp_auto_scroll_limit', 5);
+  $selector_id = 'next-article';
+
+  /* Queue the nodes */
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('status', 1)
+    ->entityCondition('bundle', 'openpublish_article')
+    ->propertyCondition('nid', $node->nid, '<>')
+    ->propertyOrderBy('created', 'DESC')
+    ->range(0, $autoscroll_limit);
+  $results = $query->execute();
+  $articles = array();
+  foreach($results['node'] as $key => $article){
+    $articles[] = '/autoscroll/full/'. $key;
+  }
+
+  /* Add the settings */
+  $settings = array(
+    'tpAutoScroll' => array(
+      array(
+        'articles' => $articles,
+        'next_selector' => '#'. $selector_id,
+        'content_selector' => 'article',
+        'limit' => $autoscroll_limit
+      ),
+    ),
+  );
+  drupal_add_js($settings, array('type' => 'setting', 'scope' => JS_DEFAULT));
+
+  /* Add the behaviors */
+  drupal_add_js(drupal_get_path('module', 'tp_auto_scroll'). '/js/tp_auto_scroll.js');
+
+  /* Return the tag where we want the content to load */
+  return theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#attributes' => array(
+        'id' => $selector_id
+      )
+    )
+  ));
+}
