@@ -104,7 +104,7 @@
               if (typeof tp_url_title !== 'undefined') {
                 title = tp_url_title;
               }
-              
+
               return;
             }
           }
@@ -140,7 +140,29 @@
       //change url with pushstate so that the page doesnt reload
       window.history.pushState({}, url, url);
       document.title = title;
+      
+      update_tp_social_media(title, window.location.href);
     }
-  }  
+  }
+  
+  /**
+   *  @function:
+   *    window function that is used to update the social links
+   */
+  window.update_tp_social_media = function(title, url) {
+    //changes to update the social links
+    $("meta[property='og:title']").attr("content", title);
+    $("meta[property='og:url']").attr("content", url);
+    $("meta[name='twitter:title']").attr("content", title);
+    $("meta[name='twitter:url']").attr("content", url);
+    
+    //updates the social config
+    tp_social_config.services.mailto.title = title;
+    tp_social_config.services.twitter.text = document.title;
+    tp_social_config.services.twitter.url = url;
+    
+    //refires to update
+    $('body').find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+  }
 
 })(jQuery, Drupal, this, this.document);

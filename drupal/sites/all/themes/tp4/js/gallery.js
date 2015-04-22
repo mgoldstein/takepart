@@ -72,8 +72,7 @@
         $("meta[property='og:image']").attr("content", imageSrc);
         $("meta[property='og:title']").attr("content", shareHeadline);
         
-        
-        
+
         // Write the og:description if the tag doesn't exist
 		var og_desc = $("meta[property='og:description']");
 		og_desc = og_desc.length ? og_desc : $('<meta property="og:description" />').appendTo('head');
