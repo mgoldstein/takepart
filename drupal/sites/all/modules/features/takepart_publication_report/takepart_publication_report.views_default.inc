@@ -218,6 +218,26 @@ Instead, select two dates to search for all content published between those date
     8 => 0,
     5 => 0,
   );
+  /* Filter criterion: Content: Admin Tag (field_admin_tag) */
+  $handler->display->display_options['filters']['field_admin_tag_tid']['id'] = 'field_admin_tag_tid';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['table'] = 'field_data_field_admin_tag';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['field'] = 'field_admin_tag_tid';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['operator_id'] = 'field_admin_tag_tid_op';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['label'] = 'Admin Tag';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['operator'] = 'field_admin_tag_tid_op';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['identifier'] = 'field_admin_tag_tid';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    8 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+  );
+  $handler->display->display_options['filters']['field_admin_tag_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['vocabulary'] = 'admin_tag';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
