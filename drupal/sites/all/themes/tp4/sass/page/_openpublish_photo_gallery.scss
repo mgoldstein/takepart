@@ -95,7 +95,7 @@
 .gallery-content {
     .gallery-header {
         color: black;
-        @include clearfix;
+        clear: both;
     }
     .gallery-headline {
         // desktop values;

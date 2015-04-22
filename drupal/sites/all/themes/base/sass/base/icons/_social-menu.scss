@@ -479,7 +479,7 @@ aside.social.social-vertical{
 
 
 /* Social Horizontal */
-aside.social.social-horizontal{
+aside.social.social-horizontal {
   float: none;
   max-width: 620px;
   margin-right: auto;
@@ -521,6 +521,9 @@ aside.social.social-horizontal{
     overflow: hidden;
     background-color: transparent;
     margin-left: 6px;
+  }
+  .tap-influence-icon .tap-influence-count {
+    top: auto;
   }
 }
 
@@ -616,50 +619,54 @@ body.node-type-openpublish-photo-gallery{
 
 
 /****** Influence **********/
-.social-wrapper{
+.social-wrapper {
   position: relative;
   @include breakpoint($breakpoint-phablet) {
-	height: 57px;
+	 height: 57px;
   }
   @include breakpoint($breakpoint-desktop) {
-	height: auto;
+  	height: auto;
   }
-}
-.social-wrapper .tap-influence-overlay .popover{
-  display: none;
-  top: 0;
-  margin-left: 58px;
-  position: absolute;
-  transition: top 0.2s ease-out;  //needed since #article-social is targeted
-  @include breakpoint($breakpoint-phablet) {
+
+  .tap-influence-overlay .popover{
+    display: none;
+    top: 0;
+    margin-left: 20px;
+    position: absolute;
+    transition: top 0.2s ease-out;  //needed since #article-social is targeted
+    @include breakpoint($breakpoint-phablet) {
+      display: block;
+    }
+  }
+
+  .tap-influence-icon {
+    margin-top: 0;
     display: block;
+    @include breakpoint($breakpoint-mobile) {
+    margin-top: 16px;
+    }
+    @include breakpoint($breakpoint-phablet) {
+      text-align: center;
+      display: inline-block;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      text-align: right;
+      position: relative;
+      width: 40px;
+    }
+    &.icon:after {
+      @include breakpoint($breakpoint-desktop) {
+        margin-left: 0;
+      }
+    }
   }
-}
-.social-wrapper .tap-influence-icon.icon:after{
-  @include breakpoint($breakpoint-desktop) {
-    margin-left: 0;
-  }
+
 }
 
-.social-wrapper .tap-influence-icon{
-  margin-top: 0;
-  display: block;
-  @include breakpoint($breakpoint-mobile) {
-	margin-top: 16px;
-  }
-  @include breakpoint($breakpoint-phablet) {
-    text-align: center;
-    display: inline-block;
-  }
-  @include breakpoint($breakpoint-desktop) {
-    text-align: right;
-    position: relative;
-    width: 40px;
-  }
-}
 .social-horizontal .social-wrapper {
   .tap-influence-overlay {
     right: 10px;
+    top: auto;
   }
   .tap-influence-icon {
     width: 35px;
@@ -734,9 +741,9 @@ body.node-type-openpublish-photo-gallery{
     }
     .i-triangle-left {
       display: block;
-      left: -19px;
-      padding-top: 3px;
-      margin-top: 55px;
+      left:-19px;
+      padding-top: 7px;
+      margin-top: 40px;
       @include text-shadow(-3px 0 3px rgba(0,0,0,.25));
     }
   }
@@ -787,10 +794,11 @@ body.node-type-openpublish-photo-gallery{
   .tap-influence-icon {
     width: auto;
     margin-left: 1em;
-    .tap-influence-count {
+    width: 65px;
+    text-align: center;
+    h3 {
       display: block;
-      float: left;
-      margin-top: 3px;
+      width: auto;
     }
   }
   &.from-influence-icon {
@@ -807,23 +815,8 @@ body.node-type-openpublish-photo-gallery{
   #gallery-content-social {
     width: 255px;
   }
-  .tap-influence-overlay .popover {
-    margin-top: 35px;
-  }
   .tap-influence-icon.icon:after {
     margin-left: 0;
-  }
-  .tap-influence-icon {
-    width: 65px;
-    text-align: center;
-    h3 {
-      display: block;
-      width: auto;
-    }
-    .tap-influence-count {
-      float: none;
-      margin: 17px auto 0;
-    }
   }
 
   @media (max-width: 979px) {
