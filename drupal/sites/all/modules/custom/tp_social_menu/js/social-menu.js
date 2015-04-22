@@ -22,32 +22,31 @@
 
 
         // Setup Social Share Buttons
-        var tp_social_config = {
+        window.tp_social_config = {
           url_append: '?cmpid=organic-share-{{name}}',
-          services: [
-            {
+          services: {
+            facebook: {
               name: 'facebook',
               description: isFeatureArticle ? $('.field-name-field-article-subhead .field-item').text() : null
             },
-
-            {
+            twitter: {
               name: 'twitter',
               text: '{{title}}',
               via: 'TakePart'
             },
-            {
+            mailto: {
               name: 'mailto'
             },
-            {
+            googleplus: {
               name: 'googleplus'
             },
-            {
+            tumblr: {
               name: 'tumblr'
             },
-            {
+            pinterest: {
               name: 'pinterest'
             },
-          ]
+          }
         };
 
         /* If page is a gallery, article or featured article, add Pinterest */
@@ -57,18 +56,18 @@
         }
         /* If page is a campaign page, remove mailto, reddit and tumblr */
         if(isCampaignPage){
-          delete tp_social_config.services[2]; //mailto
-          delete tp_social_config.services[6]; //reddit
-          delete tp_social_config.services[4]; //tumblr
-          delete tp_social_config.services[5]; //pinterest
+          delete tp_social_config.services.mailto; //mailto
+          delete tp_social_config.services.reddit; //reddit
+          delete tp_social_config.services.tumblr; //tumblr
+          delete tp_social_config.services.pinterest; //pinterest
         }
 				
         //alters the config for the services based on content type
         if ($('body').hasClass('node-type-openpublish-photo-gallery')) {
-          delete tp_social_config.services[4];
+          delete tp_social_config.services.tumblr;
         }
         else {
-          delete tp_social_config.services[5];
+          delete tp_social_config.services.pinterest;
         }
 
         /* Make sticky when screensize is greater than 768px */

@@ -116,9 +116,13 @@ function fresh_preprocess_node__openpublish_article(&$variables){
       ),
       'overlay'
     );
+    
     $options = array('comments' => TRUE, 'overlay' => TRUE, 'class' => 'desktop-none');
     if(module_exists('tp_social_menu')){
-      $variables['social'] = theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
+      //if disable is TRUE then exclude this
+      if (!$variables['disable_social']) {
+        $variables['social'] = theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
+      }
     }
 
     /* Enable AutoScroll */
