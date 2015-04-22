@@ -30,7 +30,6 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
   
   if(empty($node_view)) {
     $node_view = node_view($node, $view_mode);
-    $node_view->disable_social = TRUE;
     
     //integrate tp-url changer
     $node_view_wrapper = theme('html_tag', array(
