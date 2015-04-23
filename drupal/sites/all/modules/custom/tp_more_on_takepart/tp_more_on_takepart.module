@@ -164,14 +164,14 @@ function tp_more_on_takepart_block_view($delta = '') {
 			// Get human-readable names	
 			$types = node_type_get_types();
 
-	        foreach ($items as $item) {
+			foreach ($items as $item) {
 
-    			$result = node_load($item['nid']);
+				$result = node_load($item['nid']);
 
-					//ensures that if the node load comes back with nothing then go ahead and break this loop
-					if (!$result) {
-						break;
-					}
+				//ensures that if the node load comes back with nothing then go ahead and break this loop
+				if (!$result) {
+					break;
+				}
 					
 				$field_permanent_title = field_get_items('node',$result,'field_permanent_title');
 				$field_permanent_title = $field_permanent_title[0]['value'];
@@ -190,8 +190,8 @@ function tp_more_on_takepart_block_view($delta = '') {
 				$field_thumbnail = field_get_items('node', $result, $field);
 				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
 
-#				$field_promoted = field_get_items('node',$result,'field_promoted');
-#				$field_promoted = $field_permanent_title[0]['value'];
+				$field_sponsored = field_get_items('node',$result,'field_sponsored');
+				$field_sponsored = $field_sponsored[0]['tid'];
 
 				// set the icon for photo galleries/videos
 				switch($result->type) {
@@ -206,10 +206,10 @@ function tp_more_on_takepart_block_view($delta = '') {
 				}
 
 				// Add to the array names after this type
-		        ${$item['type']}[] = theme('tp_more_on_takepart_article', array(
-		        	'result' => array(
-			        	'title' => $field_permanent_title,
-			        	'url' => entity_uri('node', $result),
+				${$item['type']}[] = theme('tp_more_on_takepart_article', array(
+					'result' => array(
+						'title' => $field_permanent_title,
+						'url' => entity_uri('node', $result),
 						'type' => $type,
 						'promo_type' => 'more_on_takepart_'.$item['type'],
 						'thumbnail' => theme('image_style', array(
@@ -218,9 +218,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 							'alt' => $field_permanent_title,
 							'title' => $field_permanent_title,
 						)),
-#						'sponsored' => $field_sponsored,
-		        	),
-		        ));
+						'sponsored' => $field_sponsored,
+					),
+				));
 			}
 
 			// Pass data through theme function.
