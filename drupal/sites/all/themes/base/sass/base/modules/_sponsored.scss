@@ -1,0 +1,41 @@
+/* The Sponsored by: and Disclaimer appearing on content pages */
+
+.tp_sponsor {
+	text-align: center;
+	padding: auto 0;
+	font-family: $main-brand-font;
+	font-size: 14px;
+	font-weight: bold;
+	span {
+		text-transform: uppercase;
+		margin-right: .5em;
+	}
+	width: 100%;
+	img {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+.sponsor-disclosure .tp_sponsored_content_disclaimer p {
+	background-color:$gray-background;
+	padding: 10px 15px;
+	font-family: $primary-sans-font;
+	font-size: 14px;
+	font-style: italic;
+}
+
+/* The PROMOTED tag */
+
+.promoted {
+	font-family: $secondary-sans-font;
+	text-transform: uppercase;
+	font-size: 12px;
+	line-height: 12px;
+	color: #fff;
+	background: black;
+	border-radius: 1px;
+	padding: 2px 4px 1px;
+	display: inline;
+}
+

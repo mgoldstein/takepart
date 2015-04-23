@@ -1,19 +1,4 @@
-.tp_sponsor {
-	text-align: center;
-	padding: auto 0;
-	font-family: $main-brand-font;
-	font-size: 14px;
-	font-weight: bold;
-	span {
-		text-transform: uppercase;
-		margin-right: .5em;
-	}
-	width: 100%;
-	img {
-		display: inline-block;
-		vertical-align: middle;
-	}
-}
+/* Special cases and overrides for header/disclaimer on TP4 */
 
 // Flashcards, Photo Galleries
 .node-flashcard .tp_sponsor,
@@ -22,19 +7,33 @@
 	margin-bottom: 1.5em;
 }
 
+// Articles, gutter for social share
 .tp_sponsored_content_disclaimer {
 	margin-left: 53px;
-	p {
-		background-color:$gray-background;
-		padding: 10px 15px;
-		font-family: $primary-sans-font;
-		font-size: 14px;
-		font-style: italic;
-	}
 }
 
 // Photo Galleries
 .node-openpublish-photo-gallery .tp_sponsored_content_disclaimer {
 	margin-left: 0;
+}
+
+
+/* Sponsor Tag Exceptions */
+
+// Latest Articles/Views
+.views-field-field-sponsored,
+.views-field-field-promo-short-headline {
+	display: inline;
+	.field-content {
+		display: inline;
+		.promoted {
+		}
+	}	
+}
+// contextual links: Topic pages, Flashcards, etc
+.contextual-links-region .view-topic-listing .views-field.views-field-field-sponsored {
+	float:left;
+	display: block;
+	margin-left:18px;
 }
 

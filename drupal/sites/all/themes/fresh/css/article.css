@@ -3858,6 +3858,50 @@ body #article-content .inline-content-playlist.align-full {
   }
 }
 
+/* The Sponsored by: and Disclaimer appearing on content pages */
+/* line 3, ../../base/sass/base/modules/_sponsored.scss */
+.tp_sponsor {
+  text-align: center;
+  padding: auto 0;
+  font-family: "Brown", Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  width: 100%;
+}
+/* line 9, ../../base/sass/base/modules/_sponsored.scss */
+.tp_sponsor span {
+  text-transform: uppercase;
+  margin-right: .5em;
+}
+/* line 14, ../../base/sass/base/modules/_sponsored.scss */
+.tp_sponsor img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 20, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p {
+  background-color: #eeeeee;
+  padding: 10px 15px;
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* The PROMOTED tag */
+/* line 30, ../../base/sass/base/modules/_sponsored.scss */
+.promoted {
+  font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 12px;
+  color: #fff;
+  background: black;
+  border-radius: 1px;
+  padding: 2px 4px 1px;
+  display: inline;
+}
+
 /* line 1, ../sass/modules/_header.scss */
 #header {
   display: block;
@@ -4278,24 +4322,24 @@ footer .corporate-footer ul li a {
 /*****************
  * Article Page
  *****************/
-/* line 39, ../sass/article.scss */
+/* line 40, ../sass/article.scss */
 h1 {
   margin-top: 10px;
   margin-bottom: 15px;
 }
 
-/* line 43, ../sass/article.scss */
+/* line 44, ../sass/article.scss */
 .main-media {
   display: block;
   margin: 0 auto;
 }
 
-/* line 47, ../sass/article.scss */
+/* line 48, ../sass/article.scss */
 .headline {
   margin: 20px inherit;
 }
 
-/* line 50, ../sass/article.scss */
+/* line 51, ../sass/article.scss */
 .btn-secondary {
   display: block;
   width: 40px;
@@ -4304,17 +4348,17 @@ h1 {
   line-height: 31px;
 }
 
-/* line 57, ../sass/article.scss */
+/* line 58, ../sass/article.scss */
 .horizontal-menu {
   margin-bottom: 5px;
   margin-top: 6px;
 }
-/* line 60, ../sass/article.scss */
+/* line 61, ../sass/article.scss */
 .horizontal-menu li {
   margin-right: 4px;
 }
 
-/* line 64, ../sass/article.scss */
+/* line 65, ../sass/article.scss */
 .field-item > p:first-child {
   margin-top: 0;
 }

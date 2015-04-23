@@ -15754,7 +15754,8 @@ body #article-content .inline-content-playlist.align-full {
   border-bottom: none;
 }
 
-/* line 1, ../sass/modules/_sponsored.scss */
+/* The Sponsored by: and Disclaimer appearing on content pages */
+/* line 3, ../../base/sass/base/modules/_sponsored.scss */
 .tp_sponsor {
   text-align: center;
   padding: auto 0;
@@ -15763,30 +15764,19 @@ body #article-content .inline-content-playlist.align-full {
   font-weight: bold;
   width: 100%;
 }
-/* line 7, ../sass/modules/_sponsored.scss */
+/* line 9, ../../base/sass/base/modules/_sponsored.scss */
 .tp_sponsor span {
   text-transform: uppercase;
   margin-right: .5em;
 }
-/* line 12, ../sass/modules/_sponsored.scss */
+/* line 14, ../../base/sass/base/modules/_sponsored.scss */
 .tp_sponsor img {
   display: inline-block;
   vertical-align: middle;
 }
 
-/* line 20, ../sass/modules/_sponsored.scss */
-.node-flashcard .tp_sponsor,
-.node-openpublish-photo-gallery .tp_sponsor {
-  text-align: left;
-  margin-bottom: 1.5em;
-}
-
-/* line 25, ../sass/modules/_sponsored.scss */
-.tp_sponsored_content_disclaimer {
-  margin-left: 53px;
-}
-/* line 27, ../sass/modules/_sponsored.scss */
-.tp_sponsored_content_disclaimer p {
+/* line 20, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p {
   background-color: #eeeeee;
   padding: 10px 15px;
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
@@ -15794,7 +15784,53 @@ body #article-content .inline-content-playlist.align-full {
   font-style: italic;
 }
 
-/* line 37, ../sass/modules/_sponsored.scss */
+/* The PROMOTED tag */
+/* line 30, ../../base/sass/base/modules/_sponsored.scss */
+.promoted {
+  font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 12px;
+  color: #fff;
+  background: black;
+  border-radius: 1px;
+  padding: 2px 4px 1px;
+  display: inline;
+}
+
+/* Special cases and overrides for header/disclaimer on TP4 */
+/* line 5, ../sass/modules/_sponsored.scss */
+.node-flashcard .tp_sponsor,
+.node-openpublish-photo-gallery .tp_sponsor {
+  text-align: left;
+  margin-bottom: 1.5em;
+}
+
+/* line 11, ../sass/modules/_sponsored.scss */
+.tp_sponsored_content_disclaimer {
+  margin-left: 53px;
+}
+
+/* line 16, ../sass/modules/_sponsored.scss */
 .node-openpublish-photo-gallery .tp_sponsored_content_disclaimer {
   margin-left: 0;
+}
+
+/* Sponsor Tag Exceptions */
+/* line 25, ../sass/modules/_sponsored.scss */
+.views-field-field-sponsored,
+.views-field-field-promo-short-headline {
+  display: inline;
+}
+/* line 27, ../sass/modules/_sponsored.scss */
+.views-field-field-sponsored .field-content,
+.views-field-field-promo-short-headline .field-content {
+  display: inline;
+}
+
+/* line 34, ../sass/modules/_sponsored.scss */
+.contextual-links-region .view-topic-listing .views-field.views-field-field-sponsored {
+  float: left;
+  display: block;
+  margin-left: 18px;
 }
