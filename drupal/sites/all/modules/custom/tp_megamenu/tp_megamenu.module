@@ -227,6 +227,7 @@ function tp_megamenu_content_menu($entities, $type, $url){
 		$output .= '<div class="thumb">'. $thumb. '</div>';
 		$output .= '<div class="label">'. $label. '</div>';
 		$output .= '<div class="text">'. $text. '</div>';
+		$output .= _tp4_support_sponsor_flag($node);
 		$output .= '</a>'; //end .sub-category
 
 	}

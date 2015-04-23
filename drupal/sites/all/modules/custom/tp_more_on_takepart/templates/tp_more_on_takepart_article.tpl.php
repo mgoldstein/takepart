@@ -69,6 +69,6 @@
 		    <span class="icon <?php print $result['type']; ?>"></span>
 		</div>
 		<h4><?php print $result['title']; ?></h4>
-		<?php #echo ($result['promoted'] ? '<span class="promoted">PROMOTED</span>':''); ?>
+		<?php echo ($result['sponsored'] ? '<span class="promoted sponsor-'.$result['sponsored'].'">Promoted</span>':''); ?>
 	</a>
 </div>

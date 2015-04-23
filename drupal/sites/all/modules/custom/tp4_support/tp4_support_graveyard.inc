@@ -40,6 +40,10 @@ function tp4_support_graveyard() {
     }
 
     $article_promo = $article_promo ? $article_promo : $article->title;
+
+		// Add Promoted tag
+		$article_promo .= _tp4_support_sponsor_flag($article, true);
+
     $article_ids[] = $article->nid;
     $output .= '<div class="article-title">'. l($article_promo, 'node/'. $article->nid, array('html' => TRUE)) . '</div>';
     $output .= '</div>';

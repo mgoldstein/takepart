@@ -416,6 +416,11 @@ function tp4_preprocess_node(&$variables, $hook) {
     $variables['title'] = $variables['node']->title;
   }
 
+	// Add the sponsored tag to nodes employing the feature_secondary display
+  if($variables['view_mode'] == 'feature_secondary') {
+		$variables['node']->field_promo_headline['und'][0]['safe_value'] .= _tp4_support_sponsor_flag($variables['node']);
+	}
+
   $function = __FUNCTION__ . '__' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
@@ -1214,6 +1219,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center .= l($image, $path, array('html' => true));
       $center .= '<h3 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
       $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
+			$center .= _tp4_support_sponsor_flag($node);
 
     }
     else{ //multivalue
@@ -1267,6 +1273,8 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
           $file = file_load($file[0]['fid']);
           $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
         }
+
+				$headline .= _tp4_support_sponsor_flag($node);
 
         $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
         $image = file_create_url($file->uri);
