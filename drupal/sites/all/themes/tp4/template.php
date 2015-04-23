@@ -224,6 +224,11 @@ function tp4_preprocess_page(&$variables) {
   if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
     $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
     $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
+
+		$s = field_get_items('node', $variables['node'], 'field_sponsored');
+		if($s[0]['tid']) {
+			drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
+		}
   }
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
@@ -454,6 +459,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 
     }
   }
+
+	$s = field_get_items('node', $campaign_node, 'field_sponsored');
+	if($s[0]['tid']) {
+		drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
+	}
 
   // Check if subheadline is empty, if yes get meta description from campaign reference
   if($variables['field_article_subhead']['und'][0]['value'] == ''){
@@ -1554,9 +1564,8 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
         // @see tp4_field__field_article_main_image__feature_article()
         // @see tp4_field__field_article_main_image__openpublish_article()
         // @see field-formatter--author-full.tpl.php
-    } // if ($variables['view_mode'] == 'full')
-
-    _tp4_sponsor($variables);
+				_tp4_sponsor($variables);
+		}
 }
 
 /**
