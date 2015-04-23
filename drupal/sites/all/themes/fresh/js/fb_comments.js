@@ -17,14 +17,14 @@
 Drupal.behaviors.fb_comments = {
   attach: function(context, settings) {
 
-	$('.comments-count').on('click', function(e){
+	$('.comments-count').live('click', function(e){
 		if(typeof FB != 'undefined') {
-			jQuery('#comments').attr('href', window.location.href);
+			$(this).parent().find('#comments').attr('href', window.location.href);
 			FB.XFBML.parse();
-			$('#comments').show();
+			$(this).parent().find('#comments').show();
 			$(this).hide();
 		}
-		e.disableDefault();
+		e.preventDefault();
 		return false;
 	});
 
