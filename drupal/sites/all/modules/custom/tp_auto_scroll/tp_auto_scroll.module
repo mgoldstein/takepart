@@ -50,15 +50,27 @@ function tp_auto_scroll_pager($node){
   $autoscroll_limit = variable_get('tp_auto_scroll_limit', 5);
   $selector_id = 'next-article';
 
+  //loads the field topic based on node
+  $field_topics = field_get_items('node', $node, 'field_topic');
+ 
+  //preps the data correctly
+  $topics = array();
+  foreach ($field_topics as $key => $value) {
+    //adds to list so that the field condition can use it
+    $topics[] = $value['tid'];
+  }
+
   /* Queue the nodes */
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->propertyCondition('status', 1)
     ->entityCondition('bundle', 'openpublish_article')
+    ->fieldCondition('field_topic', 'tid', $topics, 'IN')
     ->propertyCondition('nid', $node->nid, '<>')
     ->propertyOrderBy('created', 'DESC')
     ->range(0, $autoscroll_limit);
   $results = $query->execute();
+  
   $articles = array();
   foreach($results['node'] as $key => $article){
     $articles[] = '/autoscroll/full/'. $key;
