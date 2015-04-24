@@ -156,4 +156,5 @@ function fresh_preprocess_node__inline_content(&$variables){
   if($field_promo_headline = field_get_items('node' ,$variables['node'], 'field_promo_headline')){
     $variables['title'] = $field_promo_headline[0]['value'];
   }
+  $variables['title'] .= _tp4_support_sponsor_flag($variables['node'], true);
 }
