@@ -5,18 +5,20 @@
  */
 function fresh_preprocess_fresh_author_teaser(&$variables){
 
-  if($account = $variables['author']){
+	foreach($variables['author'] as $account) {
+		
+		$author = array();
 
     /* Format the image */
     if($image = field_get_items('node', $account, 'field_profile_photo')){
       $image = image_style_url('70x70_thumbnail', $image[0]['uri']);
-      $variables['image'] =  $image;
+      $author['image'] =  $image;
     }
 
     /* Format the About Text */
     if($about = field_get_items('node', $account, 'body')){
       $about = $about[0]['summary'];
-      $variables['about'] = $about;
+      $author['about'] = $about;
     }
 
     /* Format the links */
@@ -36,7 +38,9 @@ function fresh_preprocess_fresh_author_teaser(&$variables){
     if($google = field_get_items('node', $account, 'field_follow_google')){
       $links[] = l('<span class="icon i-google_plusone_share"></span>', $google[0]['url'], $options);
     }
-    $variables['links'] = $links;
+    $author['links'] = $links;
+
+		$variables['authors'][] = $author;
   }
 
   if($date = $variables['published_at']){

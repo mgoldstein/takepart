@@ -81,7 +81,9 @@ function fresh_preprocess_node__openpublish_article(&$variables){
     /* Author */
     $author_vars = array();
     if($authors = field_get_items('node', $variables['node'], 'field_author')){
-      $author_vars['author'] =  node_load($authors[0]['nid']);
+	    foreach($authors as $author) {		    
+	      $author_vars['author'][] = node_load($author['nid']);
+	    }
     }
     $author_vars['published_at'] = $variables['node']->published_at;
     $variables['author_teaser'] = theme('fresh_author_teaser', $author_vars);
