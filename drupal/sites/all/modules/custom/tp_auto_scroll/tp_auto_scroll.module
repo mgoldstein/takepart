@@ -31,20 +31,9 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
   if(empty($node_view_wrapper)) {
     $node->disable_social = TRUE;
     $node_view = node_view($node, $view_mode);
-    
-    //loading the module view from more on takepart
-    $more_block = module_invoke('tp_more_on_takepart', 'block_view', 'more_on_takepart');
 
     //integrate tp-url changer
-    $node_view_wrapper = theme('html_tag', array(
-      'element' => array(
-        '#tag' => 'div',
-        '#value' => drupal_render($node_view),
-        '#value_suffix' => ($more_block['content']) ? $more_block['content'] : '',
-        '#attributes' => array(
-          'data-tp-url' => url('node/' . $node->nid),
-          'data-tp-url-title' => $node->title
-    ))));
+    $node_view_wrapper = drupal_render($node_view);
 
     cache_set($cache, $node_view_wrapper, 'cache', REQUEST_TIME + $cache_lifetime);
   }
