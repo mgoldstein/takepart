@@ -3902,6 +3902,61 @@ body #article-content .inline-content-playlist.align-full {
   display: inline;
 }
 
+/* Promoted image overlay */
+/* line 44, ../../base/sass/base/modules/_sponsored.scss */
+.promoted_overlay {
+  font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
+  text-transform: uppercase;
+  z-index: 1;
+  bottom: 6px;
+  left: 0px;
+  position: absolute;
+  width: 98%;
+  overflow: hidden;
+  color: #c7c7c7;
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 4px;
+  padding-left: 2%;
+  background: black;
+  background: black transparent;
+  background: rgba(0, 0, 0, 0.6);
+  /* For IE 5.5 - 7*/
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+/* line 67, ../../base/sass/base/modules/_sponsored.scss */
+.promoted_overlay span.sponsor_label {
+  margin-right: 1px;
+}
+/* line 70, ../../base/sass/base/modules/_sponsored.scss */
+.promoted_overlay span.sponsor_name {
+  font-size: 18px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Thumbnail image */
+/* line 81, ../../base/sass/base/modules/_sponsored.scss */
+.field-name-field-thumbnail,
+.views-field-field-thumbnail,
+.field-collection-item-field-featured-campaigns .content {
+  position: relative;
+  margin: 0;
+}
+/* line 85, ../../base/sass/base/modules/_sponsored.scss */
+.field-name-field-thumbnail a img,
+.views-field-field-thumbnail a img,
+.field-collection-item-field-featured-campaigns .content a img {
+  z-index: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: auto;
+}
+
 /* line 1, ../sass/modules/_header.scss */
 #header {
   display: block;

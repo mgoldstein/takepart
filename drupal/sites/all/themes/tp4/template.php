@@ -421,9 +421,11 @@ function tp4_preprocess_node(&$variables, $hook) {
     $variables['title'] = $variables['node']->title;
   }
 
-	// Add the sponsored tag to nodes employing the feature_secondary display
+	// Add the PROMOTED tag to nodes employing the feature_secondary display when not on the homepage
   if($variables['view_mode'] == 'feature_secondary') {
-		$variables['node']->field_promo_headline['und'][0]['safe_value'] .= _tp4_support_sponsor_flag($variables['node']);
+	  if( !drupal_is_front_page() ) {
+			$variables['node']->field_promo_headline['und'][0]['safe_value'] .= _tp4_support_sponsor_flag($variables['node']);
+	  }
 	}
 
   $function = __FUNCTION__ . '__' . $variables['node']->type;
