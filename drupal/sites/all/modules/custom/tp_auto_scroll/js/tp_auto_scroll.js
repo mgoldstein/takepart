@@ -91,7 +91,7 @@
           offset.bottom = $(this).height() + offset.top;
           
           //ensures that if the height is bigger then the div then change it to whichever is smaller
-          if (offset_pad < $(this).height() / 2) {
+          if (offset_pad > $(this).height() / 2) {
             offset_pad = -1 * $(this).height() / 2;
           }
           
