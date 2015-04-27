@@ -67,7 +67,7 @@ function tp_auto_scroll_pager($node){
     ->entityCondition('bundle', 'openpublish_article')
     ->fieldCondition('field_topic', 'tid', $topics, 'IN')
     ->propertyCondition('nid', $node->nid, '<>')
-    ->propertyOrderBy('created', 'DESC')
+    ->propertyOrderBy('changed', 'DESC')
     ->range(0, $autoscroll_limit);
   $results = $query->execute();
   
