@@ -1,13 +1,28 @@
 //defines function
 (function ($) {
   //does on document ready since variables from drupal setting not available til then
-  $(document).ready(function() {    
+  $(document).ready(function() {
+    window.tpScrollTop = 0;
     //on init
-    init_tp_ads();
+    init_tp_ads('down');
     
     //attaches a handler to the scroll functionality
     $(window).bind('scroll', function(event) {
-      init_tp_ads();
+      var viewport_top = $(window).scrollTop();
+      
+      //sets which direction user is scrolling
+      if (viewport_top < tpScrollTop) {
+        direction = 'up';
+      }
+      else {
+        direction = 'down';
+      }
+      
+      //updates the viewport_top for calculation for which direction the scroll is occurring on.
+      window.tpScrollTop = viewport_top;
+      
+      //calls the init based on direction so that we dont have a double call
+      init_tp_ads(direction);
     });
   });
   
@@ -15,15 +30,15 @@
    *  @function:
    *    this function is called on the init and on scroll bind
    */
-  window.init_tp_ads = function() {
+  window.init_tp_ads = function(direction) {
     //variables
     window.mobile_ads = Drupal.settings.tp_ad_settings;
     window.mobile_leader_ads = Drupal.settings.tp_leader_ad_settings;
   
-    tp_add_article_ads(window.mobile_leader_ads, 500, 'article_leader_ads', 'default', 1);
+    tp_add_article_ads(window.mobile_leader_ads, 500, 'article_leader_ads', 'default', 1, direction);
   
     //this is for the mobile article insert. ad will come when within 300 px of the viewport
-    tp_add_article_ads(window.mobile_ads, 500, 'article_ads', 'default', 1);
+    tp_add_article_ads(window.mobile_ads, 500, 'article_ads', 'default', 1, direction);
   }
   
   /**
@@ -38,7 +53,7 @@
    *    id - used to differiated the selectors
    *    show_ads - shows the ads starting from
    */
-  window.tp_add_article_ads = function(ads_object, viewport_offset, id, insert_pos, show_ads) {
+  window.tp_add_article_ads = function(ads_object, viewport_offset, id, insert_pos, show_ads, direction) {
     //variable
     var view_offset = viewport_offset;
     var selector = ads_object['selector'];
@@ -78,6 +93,14 @@
         $(this).parent().addClass('not-ad-active');
         //ensures that we remove the old ad so that we can reuse it
         $('.not-ad-active .mobile-ad-processed .tp-ad').remove();
+      }
+      
+      //if the direction is going back up this will remove the process class so that the js can add the ads back in
+      if (direction == 'up') {
+        //checks to see if there is already an ad present. if so do not add another one back in.
+        if ($('.ad-active .mobile-article-ad .tp-ad').length < 1) {
+          $('.ad-active .mobile-ad-processed').removeClass('mobile-ad-processed');
+        }
       }
       
       //does for each of the selector item
