@@ -21,7 +21,7 @@
             elTop = $('#next-article').offset().top;
 
           /* when the page scrolls to within 480px of #next-article */
-          if ($window.scrollTop() + $(window).height() + 480 > elTop && page < page_limit) {
+          if ($window.scrollTop() + $(window).height() + 480 + $('#footer').height() > elTop && page < page_limit) {
             if (alreadyloading == false) {
 
               /* Set the URL */
