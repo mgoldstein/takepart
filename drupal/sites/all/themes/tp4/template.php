@@ -1955,6 +1955,7 @@ function tp4_menu_link(array $variables) {
     return theme_menu_link($variables);
 }
 
+// I think this is overridden by tp4_support/field-formatter--author-full.tpl.php
 function tp4_field__field_author__openpublish_article($variables) {
     $output = '';
 
