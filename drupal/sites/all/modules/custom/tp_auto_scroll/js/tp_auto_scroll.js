@@ -160,6 +160,10 @@
     tp_social_config.services.mailto.title = title;
     tp_social_config.services.twitter.text = document.title;
     tp_social_config.services.twitter.url = url;
+    tp_social_config.services.facebook.title = title;
+    tp_social_config.services.facebook.url = url;
+    tp_social_config.services.googleplus.title = title;
+    tp_social_config.services.googleplus.url = url;
     
     //refires to update
     $('body').find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
