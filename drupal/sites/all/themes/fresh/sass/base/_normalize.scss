@@ -304,6 +304,11 @@ aside.inline-content{
 .author-teaser{
   margin-top: 10px;
   margin-bottom: 10px;
+  .author {
+	  &:nth-child(2n+1) {
+		  margin-top:35px;
+		}
+	}
   .about{
     font-family: $Ashbury;
     font-weight: 100;
