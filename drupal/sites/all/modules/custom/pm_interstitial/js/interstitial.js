@@ -48,7 +48,7 @@
 				// disallow scrolling on iOS when the modal is up
 				$(document).on('touchmove', function(e) {
 					if ($('.scrollable').has($(e.target)).length) {
-						if( $('#interstitial_modal_modal').css('display') != 'none' ) {
+						if(typeof $('#interstitial_modal_modal').css('display') != 'undefined' && $('#interstitial_modal_modal').css('display') != 'none' ) {
 							e.preventDefault();
 						}
 					}
