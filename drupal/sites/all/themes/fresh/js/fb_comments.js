@@ -17,7 +17,7 @@
 Drupal.behaviors.fb_comments = {
   attach: function(context, settings) {
 
-	$('.comments-count').live('click', function(e){
+	$('.comments').on('click', 'a.comments-count', function(e){
 		if(typeof FB != 'undefined') {
 			$(this).parent().find('#comments').attr('href', window.location.href);
 			FB.XFBML.parse();
