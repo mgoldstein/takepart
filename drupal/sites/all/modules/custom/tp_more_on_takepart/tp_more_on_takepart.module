@@ -209,6 +209,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 					case 'openpublish_video';
 						$type = 'i-video-camera';
 						break;
+					default:
+						$type = '';
+						break;
 				}
 
 				// Add to the array names after this type
