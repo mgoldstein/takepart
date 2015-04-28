@@ -72,6 +72,8 @@
       var article_offset = $(this).offset();
       article_offset.bottom = article_offset.top + $(this).height();
       var article_footer = $('footer', this).offset();
+      tp_count = tp_count + '_' + k;
+      tp_count = tp_count_insert + '_' + k;
       
       //adds class based if article is active in view
       if ((article_offset.top < viewport.bottom + viewport_offset && article_offset.bottom > viewport.bottom + viewport_offset)) {
@@ -101,13 +103,15 @@
         if ($('.ad-active .mobile-article-ad .tp-ad').length < 1) {
           $('.ad-active .mobile-ad-processed').removeClass('mobile-ad-processed');
         }
+        
+        if (!$(this).hasClass('ad-active')) {
+          window[tp_count] = 0;
+          window[tp_count_insert] = 0;
+        }
       }
       
       //does for each of the selector item
       $(selector).each(function(i, v) {
-        tp_count = tp_count + '_' + k;
-        tp_count = tp_count_insert + '_' + k;
-        
         //ensures that the article count is set to 0 and no more then the length of the array
         if (typeof window[tp_count] === 'undefined') {
           window[tp_count] = 0;
@@ -118,7 +122,6 @@
         else if (window[tp_count] + 1 > Object.keys(ads_object.ads).length) {
           //var end = true;
           window[tp_count] = 0;
-          window[tp_count_insert] = 0;
           window.article_ad = 0; //this is disabled as ads do not rotate back to the top of the stack
         }
         
@@ -129,7 +132,7 @@
         //ensures that the offset is defined
         if (offset != null) {
           //only when in viewport
-          if (window[tp_count] < show_ads || (viewport.top < offset.top + view_offset && offset.top < viewport.bottom + view_offset)) {
+          if (window[tp_count] < show_ads || (viewport.top < offset.top + view_offset && offset.top < viewport.bottom + view_offset) || direction == 'up') {
             //ensures to only add the ad once to address issue with scrolling backwards
             $(item).once('mobile-ad', function() {
               if (!end) {
