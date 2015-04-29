@@ -15905,3 +15905,8 @@ header.entry-header .promoted_overlay {
 .field-collection-item-field-featured-campaigns .content .promoted_overlay {
   margin-bottom: 120px;
 }
+
+/* line 57, ../sass/modules/_sponsored.scss */
+.flashcard-related-content-wrapper .promoted_overlay {
+  display: none;
+}

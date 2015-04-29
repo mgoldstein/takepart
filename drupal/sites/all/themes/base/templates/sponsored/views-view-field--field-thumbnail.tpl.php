@@ -24,6 +24,8 @@
 ?>
 <?php print $output; ?>
 <?php 
-	$n = node_load($row->nid);
-	print _tp4_support_sponsor_overlay($n);
+	if( drupal_is_front_page() ) {
+		$n = node_load($row->nid);
+		print _tp4_support_sponsor_overlay($n);
+	}
 ?>
