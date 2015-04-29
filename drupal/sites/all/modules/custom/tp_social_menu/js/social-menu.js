@@ -102,13 +102,6 @@
   Drupal.behaviors.mobileSocialNav = {
     attach: function(context, settings) {
 
-      $('li.share h3').toggle(function(){
-        $(this).parents('.social-wrapper').addClass('sharing');
-      }, function(){
-        $(this).parents('.social-wrapper').removeClass('sharing');
-      });
-
-
       // Show the mobile social nav bar when window scrolls down
       var didScroll;
       $(window).scroll(function(event){
