@@ -8,17 +8,23 @@
   margin: 0 auto;
   display: block;
   height: 31px;
-  width: 37px;
   padding-top: 6px;
   margin-bottom: 5px;
 
   .i-take-action {
     text-align: center;
-    display: text;
-    width: 100%;
+    display: block;
   }
 }
 
+
+.social-wrapper.mobile {
+	.takepart-custom-take-action-button {
+		.i-take-action {
+			width: 100%;
+		}
+	}
+}
 
 
 
@@ -214,9 +220,11 @@ body.node-type-openpublish-photo-gallery {
   }
 }
 .social-wrapper.mobile .takepart-custom-take-action-button{
-  margin-top: -10px;
+  margin-top: 0;
   line-height: 36px;
+	padding-top: 0;
   font-size: 15px;
+	width: auto;
 }
 .social-wrapper.mobile.nav-show{
   bottom: 0;

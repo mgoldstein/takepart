@@ -68,7 +68,7 @@ function theme_tp_social_menu($variables) {
       //takeaction
       case 'action':
 //        $elements['takeaction'] = '<p class="takepart-take-action"></p>';
-        $elements['takeaction'] = '<h3 class="tp-social-headline takeaction-headline">Take Action</h3><a class="takepart-custom-take-action-button"><i class="tpi icon i-take-action"></i></a>';
+        $elements['takeaction'] = '<a class="takepart-custom-take-action-button"><h3 class="tp-social-headline takeaction-headline">Take Action</h3><i class="tpi icon i-take-action"></i></a>';
         
         //add items into the list
         $items[$element] = array(
