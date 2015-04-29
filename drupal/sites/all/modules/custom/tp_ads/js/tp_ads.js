@@ -79,10 +79,6 @@
       if ((article_offset.top < viewport.bottom + viewport_offset && article_offset.bottom > viewport.bottom + viewport_offset)) {
         //add the class if it's not there
         if (!$(this).parent().hasClass('ad-active')) {
-          //removes all class so that it can refire
-          $(this).parent().find('.mobile-ad-processed').each(function(){
-              //$(this).removeClass('mobile-ad-processed');
-          });
           
           //adds correct classes
           $(this).parent().addClass('ad-active');
@@ -94,7 +90,7 @@
         $(this).parent().removeClass('ad-active');
         $(this).parent().addClass('not-ad-active');
         //ensures that we remove the old ad so that we can reuse it
-        $('.not-ad-active .mobile-ad-processed .tp-ad').remove();
+        //$('.not-ad-active .mobile-ad-processed .tp-ad').remove(); //@dev: disabled for now for single articles
       }
       
       //if the direction is going back up this will remove the process class so that the js can add the ads back in
