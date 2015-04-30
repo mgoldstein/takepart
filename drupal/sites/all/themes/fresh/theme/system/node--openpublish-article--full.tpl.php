@@ -7,7 +7,7 @@
  * @see https://drupal.org/node/1728164
  */
 ?>
-<div data-tp-url="<?php print $variables['data-tp-url']; ?>" data-tp-url-title="<?php print $variables['data-tp-url-title']; ?>">
+<div class="article-wrapper" data-tp-url="<?php print $variables['data-tp-url']; ?>" data-tp-url-title="<?php print $variables['data-tp-url-title']; ?>">
   <article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   
     <?php if(!empty($variables['advertisement'])): ?>
