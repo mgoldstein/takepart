@@ -38,7 +38,7 @@
     tp_add_article_ads(window.mobile_leader_ads, 500, 'article_leader_ads', 'default', 1, direction);
   
     //this is for the mobile article insert. ad will come when within 300 px of the viewport
-    tp_add_article_ads(window.mobile_ads, 500, 'article_ads', 'default', 4, direction);
+    tp_add_article_ads(window.mobile_ads, 500, 'article_ads', 'default', 3, direction);
   }
   
   /**
