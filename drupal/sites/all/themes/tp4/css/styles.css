@@ -4967,12 +4967,16 @@ a.cta span:before {
   margin-bottom: 0;
 }
 
-/* line 500, ../sass/page/_openpublish_article.scss */
+/* line 499, ../sass/page/_openpublish_article.scss */
+.node-openpublish-article.view-mode-full .field-name-body .inline-content-video {
+  overflow: hidden;
+}
+/* line 501, ../sass/page/_openpublish_article.scss */
 .node-openpublish-article.view-mode-full .field-name-body .inline-content-video.align-full {
   width: 100%;
 }
 
-/* line 513, ../sass/page/_openpublish_article.scss */
+/* line 514, ../sass/page/_openpublish_article.scss */
 .node-takepart-page.view-mode-full .field-name-body,
 .node-feature-article.view-mode-full .field-name-body,
 .node-openpublish-article.view-mode-full .field-name-body,
