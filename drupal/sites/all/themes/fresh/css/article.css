@@ -3742,6 +3742,10 @@ body #article-content .inline-content-playlist.align-full {
     width: 912px !important;
   }
 }
+/* line 323, ../../base/sass/base/modules/_video_playlist.scss */
+body .inline-content-video {
+  overflow: hidden;
+}
 
 /* line 1, ../sass/modules/_header.scss */
 #header {
