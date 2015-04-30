@@ -69,6 +69,19 @@
         else {
           delete tp_social_config.services.pinterest;
         }
+        
+        //only fix for iphone
+        if( /iPhone/i.test(navigator.userAgent)) {
+          //on load adjust the sticky with
+          var window_width = $(window).width();
+          $('.social-wrapper.mobile').width(window_width);
+          
+          //add bing to resize so that it resizes for iphone
+          $(window).smartresize(function() {
+            var window_width = $(window).width();
+            $('.social-wrapper.mobile').width(window_width);
+          });
+        }
 
         /* Make sticky when screensize is greater than 768px */
           $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function() {
