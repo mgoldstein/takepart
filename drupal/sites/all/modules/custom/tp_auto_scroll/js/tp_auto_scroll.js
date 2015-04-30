@@ -19,9 +19,11 @@
         $(window).scroll(function() {
           var $window = $(window),
             elTop = $('#next-article').offset().top;
+          var window_bottom = $window.scrollTop() + $window.height();
+          var last_article = $('.article-wrapper:last').height() / 2;
 
           /* when the page scrolls to within 480px of #next-article */
-          if ($window.scrollTop() + $(window).height() + 480 + $('#footer').height() > elTop && page < page_limit) {
+          if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
             if (alreadyloading == false) {
 
               /* Set the URL */
