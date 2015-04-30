@@ -60,7 +60,7 @@
   </span>
 <?php foreach($authors as $author): ?>
   <div class="bio-inner">
-    <div class="profile-photo"><img src="<?php print $author['thumb_src']; ?>"></div>
+    <div class="profile-photo"><img src="<?php print $author['thumb']; ?>"></div>
     <div class="bio">
       <?php print $author['summary']; ?>
       <div class="more-links">
