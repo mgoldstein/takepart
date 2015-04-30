@@ -16,7 +16,7 @@ function tp_wordpress_import_admin_form() {
     '#default_value' => variable_get('tp_wordpress_import_author_nid', ''),
   );
   
-  //author nid
+  //author prefix
   $form['tp_wordpress_import_content_prefix'] = array(
     '#type' => 'textarea',
     '#title' => t('Feeds - Takepart Wordpress Import - Content Prefix Message'),
