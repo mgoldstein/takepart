@@ -2866,7 +2866,7 @@ aside.inline-content .inline-content-inner {
   margin-bottom: 10px;
 }
 /* line 308, ../sass/base/_normalize.scss */
-.author-teaser .author:nth-child(2n+1) {
+.author-teaser .author:nth-child(n+3) {
   margin-top: 35px;
 }
 /* line 312, ../sass/base/_normalize.scss */

@@ -305,7 +305,7 @@ aside.inline-content{
   margin-top: 10px;
   margin-bottom: 10px;
   .author {
-	  &:nth-child(2n+1) {
+	  &:nth-child(n+3) {
 		  margin-top:35px;
 		}
 	}
