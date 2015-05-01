@@ -144,6 +144,7 @@
       document.title = title;
       
       update_tp_social_media(title, window.location.href);
+      update_fb_comments();
     }
   }
   
@@ -169,6 +170,14 @@
     
     //refires to update
     $('body').find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
+  }
+  
+	// You need to re-parse the FBXML that contains all FB metadata (e.g. comment count)
+	// And then attach existing JS Drupal.behaviors to new elements
+	// that didn't exist when the initial behaviors were attached at page load
+	update_fb_comments = function () {
+		FB.XFBML.parse();
+		Drupal.attachBehaviors(".fb_comments");
   }
 
 })(jQuery, Drupal, this, this.document);
