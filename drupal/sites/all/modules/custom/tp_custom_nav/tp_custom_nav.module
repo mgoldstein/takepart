@@ -37,14 +37,6 @@ function tp_custom_nav_theme($existing, $type, $theme, $path) {
   );
 }
 
-/**
- *  Implements hook_preprocess_html().
- */
-function tp_custom_nav_preprocess_html(&$variables) {
-  //adds new font
-  drupal_add_js("WebFontConfig = { fontdeck: { id: '50294' } };", array('type' => 'inline', 'scope'=> 'footer', 'weight' => 10));
-  drupal_add_js('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js', array('type' => 'external', 'scope' => 'footer', 'weight' => 11));
-}
 
 /**
  *  Implements hook_preprocess_page().
