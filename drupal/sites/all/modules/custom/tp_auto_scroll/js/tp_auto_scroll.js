@@ -176,8 +176,10 @@
 	// And then attach existing JS Drupal.behaviors to new elements
 	// that didn't exist when the initial behaviors were attached at page load
 	update_fb_comments = function () {
-		FB.XFBML.parse();
-		Drupal.attachBehaviors(".fb_comments");
-  }
+		if(typeof FB != 'undefined') {
+			FB.XFBML.parse();
+			Drupal.attachBehaviors(".fb_comments");
+		}
+	}
 
 })(jQuery, Drupal, this, this.document);
