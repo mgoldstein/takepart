@@ -26,13 +26,16 @@ function fresh_preprocess_fresh_author_teaser(&$variables){
       'html' => true,
       'attributes' => array(
         'class' => array('btn', 'btn-secondary'),
-        'target' => '_blank',
       )
     );
     $links = array();
     $bio_path = drupal_get_path_alias('node/'. $account->nid);
     $bio_options = array_merge_recursive($options, array('attributes' => array('id'=>'author_bio')));
     $links[] = l('Bio', $bio_path, $bio_options);
+
+    // Social links target a new window
+    $options['attributes']['target'] = '_blank';
+
     $twitter = field_get_items('node', $account, 'field_follow_twitter');
     if($twitter[0]['url']){
       $links[] = l('<span class="icon i-twitter"></span>', $twitter[0]['url'], $options);
