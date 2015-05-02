@@ -25,11 +25,11 @@
                 }
               };
               if(isMobile.any()) {
-                interstitial_init();
+			 // Do not display interstitial on mobile devices
+                // interstitial_init();
               }else{
                 interstitial_init();
               }
-
             });
 
             function GetQueryStringParams(sParam) {
