@@ -17,9 +17,10 @@ function theme_tp_ads_script($variables) {
     'element' => array(
       '#tag' => 'div',
       '#value' => $script,
+      '#value_prefix' => '<h5 class="ad-label text-center">Advertisement</h5>',
       '#attributes' => array(
         'id' => $variables['ad_gpd_id'],
-        'style' => 'width: ' . $variables['width'] . '; height: ' . $variables['height'] . ';'
+        'style' => 'width: ' . $variables['width'] . '; height: ' . ($variables['height'] + 20). ';'
   ))));
   
   //output wrapper
