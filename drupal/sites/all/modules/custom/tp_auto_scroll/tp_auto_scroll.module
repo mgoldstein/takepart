@@ -25,19 +25,35 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
   /* If a cached version of the node exists, use it */
   $cache = 'autoscroll_'. $view_mode. '_'.$node->nid;
   if($cached = cache_get($cache, 'cache'))  {
-    $node_view_wrapper = $cached->data;
+    $output = $cached->data;
   }
 
-  if(empty($node_view_wrapper)) {
+  if(empty($output)) {
     $node->disable_social = TRUE;
-    $node_view = node_view($node, $view_mode);
 
-    //integrate tp-url changer
+    /* Get the Node View */
+    $node_view = node_view($node, $view_mode);
     $node_view_wrapper = drupal_render($node_view);
 
-    cache_set($cache, $node_view_wrapper, 'cache', REQUEST_TIME + $cache_lifetime);
+    /* Get the DDL */
+    module_load_include('inc', 'tp_auto_scroll', 'inc/tp_auto_scroll_ddl');
+    $ddl = tp_auto_scroll_build_ddl_content($node);
+    $ddl_event = tp_auto_scroll_build_ddl_event($node->nid, $ddl);
+
+    /* Save output */
+    $output = array(
+      'success' => 'true',
+      'ddl' => $ddl_event,
+      'output' => $node_view_wrapper,
+    );
+
+    /* Cache it for later use */
+    cache_set($cache, $output, 'cache', REQUEST_TIME + $cache_lifetime);
   }
-  print $node_view_wrapper;
+
+  /* Return output in json format */
+//  drupal_json_output($output);
+  print drupal_json_encode($output);
   drupal_exit();
 
 }
@@ -101,4 +117,14 @@ function tp_auto_scroll_pager($node){
       )
     )
   ));
+}
+
+
+/**
+ * Implements hook_preprocess_node()
+ */
+function tp_auto_scroll_preprocess_node(&$variables){
+  /* Pass the ddl id */
+  $variables['attributes_array']['data-ddl-page-id'] = $variables['node']->nid;
+
 }

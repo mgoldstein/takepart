@@ -7,8 +7,9 @@
  * @see https://drupal.org/node/1728164
  */
 ?>
-<div class="article-wrapper" data-tp-url="<?php print $variables['data-tp-url']; ?>" data-tp-url-title="<?php print $variables['data-tp-url-title']; ?>">
-  <article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<?php /* Move other attributes to attributes_array like normal people */?>
+<div class="article-wrapper">
+  <article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?> data-tp-url="<?php print $variables['data-tp-url']; ?>" data-tp-url-title="<?php print $variables['data-tp-url-title']; ?>">
   
     <?php if(!empty($variables['advertisement'])): ?>
       <div class="advertisement">

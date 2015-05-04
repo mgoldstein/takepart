@@ -16,6 +16,9 @@
         var page = -1;
         var page_limit = settings.limit - 1;
 
+        /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
+        digitalData.pageInititial = digitalData.page;
+
         $(window).scroll(function() {
           var $window = $(window),
             elTop = $('#next-article').offset().top;
@@ -26,15 +29,30 @@
           if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
             if (alreadyloading == false) {
 
+
+
+              /* Add a pageload event with the the details within attributes */
+              /* Add a DDL pageload-id (nid) as a data element to the article tag */
+              /* In a different location, update update DDL page info with info from the page load event with the nid in the data attribute of the article tag */
+
+
               /* Set the URL */
               var url = settings.articles[page + 1];
               alreadyloading = true;
               $.post(url, function(data) {
-                /* Where to post */
-                $('#next-article').before(data);
+
+                /* Not returning a json object (Drupal is slow at that) so let's convert it here */
+                data = jQuery.parseJSON(data);
+
+                /* Create a new event in the DDL to be used when the user scolls to the article */
+                digitalData.event.push(data.ddl);
+
+                /* Return Article */
+                $('#next-article').before(data.output);
                 alreadyloading = false;
                 page++;
               });
+
             }
           }
         });
@@ -73,61 +91,57 @@
           left : win.scrollLeft(),
           bottom : win.scrollTop() + win.height()
         };
-        
-        //creates offset based on device height
-        var offset_pad = -1 * (win.height() / 2);
-        
-        //checks which direction the scroll is occurring on. note in use but built
-        if (viewport.top < lastScrollTop) {
-          direction = 'up';
-        }
-        else {
-          direction = 'down';
-        }
-        
-        //does for each data-tp-url
-        $('[data-tp-url]').each(function(index, value) {
-          var tp_url = $(this).data('tpUrl'); //maps to data-tp-url
-          var tp_url_title = $(this).data('tpUrlTitle'); //maps to data-tp-url-title
-          var offset = $(this).offset();
-          offset.bottom = $(this).height() + offset.top;
-          
-          //ensures that if the height is bigger then the div then change it to whichever is smaller
-          if (offset_pad > $(this).height() / 2) {
-            offset_pad = -1 * $(this).height() / 2;
-          }
-          
-          //ensures that the tp url is set before changing
-          if (typeof tp_url !== 'undefined') {
-            if (offset.top + offset_pad < viewport.top) {
-              url = tp_url;
-              
-              //only change the title if it's not undefined
-              if (typeof tp_url_title !== 'undefined') {
-                title = tp_url_title;
-              }
 
-              return;
+        
+        //For each article
+        $('article').each(function(index, value) {
+
+          /** Update active Article **/
+          var articleTop = $(this).offset().top;
+          var articleBottom = articleTop + $(this).height();
+          var offset = (viewport.bottom - viewport.top)/2;
+
+          if((viewport.top <= articleBottom - offset) && (viewport.top >= articleTop - offset)){
+            $(this).addClass('active');
+
+            /** Update the URL **/
+            /* if article is active and data-tp-url != url, update it */
+            var tp_url = $(this).data('tpUrl');
+            var tp_url_title = $(this).data('tp-url-title'); //maps to data-tp-url-title
+            if(tp_url){
+              //ensures that the tp url is set before changing
+              if (typeof tp_url !== 'undefined') {
+                url = tp_url;
+                //only change the title if it's not undefined
+                if (typeof tp_url_title !== 'undefined') {
+                  title = tp_url_title;
+                }
+              }
+              // Upate the URL, social links and DDL based on URL logic
+              if (url != window.location.pathname && url != '') {
+                /* Update the DDL */
+                tp_url_changer(url, title);
+              }
             }
-          }
-          
-          //changes back to original page if needed
-          if (index === 0) {
-            //ensures that if user scrolls back to the top that we have the original
-            if (offset.top + offset_pad > viewport.top) {
-              url = tp_url_orig;
-              title = tp_url_title_orig;
+
+            /** Update the sharing **/
+            if(title){
+              update_tp_social_media(title, window.location.href);
             }
+
+            /** Update the DDL **/
+            var page_id = $(this).data('ddl-page-id');
+            if(page_id){
+              update_tp_ddl(page_id);
+            }
+          }else{
+            $(this).removeClass('active');
           }
+
         });
         
         //updates the last scroll var
         lastScrollTop = viewport.top;
-        
-        //only change the url if it's not the same
-        if (url != window.location.pathname) {
-          tp_url_changer(url, title);
-        }
       });
     }
   }
@@ -137,14 +151,9 @@
    *  window function that is used to update the URL and is binded to the scroll.
    */
   window.tp_url_changer = function(url, title) {
-    //change url if not empty
-    if (url != '') {
-      //change url with pushstate so that the page doesnt reload
-      window.history.pushState({}, url, url);
-      document.title = title;
-      
-      update_tp_social_media(title, window.location.href);
-    }
+    //change url with pushstate so that the page doesnt reload
+    window.history.pushState({}, url, url);
+    document.title = title;
   }
   
   /**
@@ -171,4 +180,22 @@
     $('body').find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
   }
 
+  /**
+   *  @function:
+   *  Update PageInfo in DDL with the correct Page Load event data
+   */
+  window.update_tp_ddl = function(id) {
+    /* get the event with the page id */
+    for (var i=0; i < digitalData.event.length; i++) {
+      if(digitalData.event[i].eventInstanceID == id){
+        digitalData.page = digitalData.event[i].eventInfo.page;
+        return;
+      }
+      digitalData.page = digitalData.pageInitial;
+    }
+  }
+
 })(jQuery, Drupal, this, this.document);
+
+
+
