@@ -134,6 +134,25 @@
                   update_tp_ddl(page_id);
                 }
 
+		            // Update the TAP widget
+		            new TP.Bootstrapper().start();
+
+		            // Update fb_comments
+		            // vv Copied from fb_comments.js, because this doesn't work vv
+//		            Drupal.attachBehaviors("fb_comments");
+								$('a.comments-count', context).once('FBComments', function () {
+									$('a.comments-count').on('click', function(e){
+										if(typeof FB != 'undefined') {
+											$(this).parent().find('.fb_comments').attr('href', window.location.href);
+											FB.XFBML.parse();
+											$(this).parent().find('.fb_comments').show();
+											$(this).hide();
+										}
+										e.preventDefault();
+										return false;
+									});
+								});
+
               }
             }
 
