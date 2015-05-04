@@ -99,7 +99,9 @@
           /** Update active Article **/
           var articleTop = $(this).offset().top;
           var articleBottom = articleTop + $(this).height();
-          if((viewport.top <= articleBottom) && (viewport.top >= articleTop)){
+          var offset = (viewport.bottom - viewport.top)/2;
+
+          if((viewport.top <= articleBottom - offset) && (viewport.top >= articleTop - offset)){
             $(this).addClass('active');
 
             /** Update the URL **/
