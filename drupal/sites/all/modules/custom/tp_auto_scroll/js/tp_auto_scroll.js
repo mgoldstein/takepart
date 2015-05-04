@@ -137,6 +137,11 @@
             }
 
 
+            // Update the TAP widget
+            new TP.Bootstrapper().start();
+
+//            Drupal.attachBehaviors("fb_comments");
+
           }else{
             $(this).removeClass('active');
           }
