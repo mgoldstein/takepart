@@ -134,6 +134,11 @@
                   update_tp_ddl(page_id);
                 }
 
+		            // Update the TAP widget
+		            new TP.Bootstrapper().start();
+
+		            Drupal.attachBehaviors("fb_comments");
+
               }
             }
 
