@@ -16,19 +16,17 @@
 // To understand behaviors, see https://drupal.org/node/756722#behaviors
 Drupal.behaviors.fb_comments = {
   attach: function(context, settings) {
-		$('.comments', context).once('fb_comments', function () {
-			// Apply the fb_comments effect to the elements only once.
-			$('a.comments-count').on('click', function(e){
-				if(typeof FB != 'undefined') {
-					$(this).parent().find('.fb_comments').attr('href', window.location.href);
-					FB.XFBML.parse();
-					$(this).parent().find('.fb_comments').show();
-					$(this).hide();
-				}
-				e.preventDefault();
-				return false;
-			});
-		});
+
+	$('.comments').on('click', 'a.comments-count', function(e){
+		if(typeof FB != 'undefined') {
+			$(this).parent().find('#comments').attr('href', window.location.href);
+			FB.XFBML.parse();
+			$(this).parent().find('#comments').show();
+			$(this).hide();
+		}
+		e.preventDefault();
+		return false;
+	});
 
   }
 };
