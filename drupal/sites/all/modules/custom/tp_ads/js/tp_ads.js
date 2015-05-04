@@ -5,6 +5,7 @@
     window.tpScrollTop = 0;
     //on init
     init_tp_ads('down');
+    window.tp_ad_debug_mode = $.getUrlParam('debug-mode');
     
     //attaches a handler to the scroll functionality
     $(window).bind('scroll', function(event) {
@@ -39,6 +40,20 @@
   
     //this is for the mobile article insert. ad will come when within 300 px of the viewport
     tp_add_article_ads(window.mobile_ads, 500, 'article_ads', 'default', 3, direction);
+  }
+  
+  /**
+   *  @function:
+   *    jquery function extend to have get url parem
+   */
+  $.getUrlParam = function(name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+      return 0;
+    }
+    else {
+      return results[1] || 0;
+    }
   }
   
   /**
@@ -140,9 +155,8 @@
         }
         //ensures that if the length is larger then the amt to reset it back to zero before continuing
         else if (window[tp_count] + 1 > Object.keys(ads_object.ads).length) {
-          //var end = true;
+          var end = true;
           window[tp_count] = 0;
-          window.article_ad = 0; //this is disabled as ads do not rotate back to the top of the stack
         }
         
         //grabs the item
@@ -152,7 +166,7 @@
         //ensures that the offset is defined
         if (offset != null) {
           //only when in viewport
-          if (window[tp_count] < show_ads || (viewport.top < offset.top + view_offset && offset.top < viewport.bottom + view_offset) || direction == 'up') {
+          if (window[tp_count] < show_ads || offset.top > viewport.bottom + view_offset || offset.bottom < viewport.top - viewport_offset || direction == 'up') {
             //process item once
             $(item).once('mobile-ad', function() {
               if (!end) {
@@ -173,6 +187,9 @@
                   else {
                     //checks to see if the wrapper is in place before appending
                     if ($('.tp-ad-wrapper', this).length == 0) {
+                      if (window.tp_ad_debug_mode == "true") {
+                        js_markup = '<h5 class="ad-label text-center">Advertisement - ' + ad_slot + '</h5>' + js_markup;
+                      }
                       dynamic_js_markup = '<div class="tp-ad-wrapper">' + js_markup + '</div>';
                       $(this).append(dynamic_js_markup);
                     }
