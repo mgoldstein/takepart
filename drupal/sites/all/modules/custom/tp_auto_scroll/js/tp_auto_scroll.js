@@ -121,19 +121,22 @@
               if (url != window.location.pathname && url != '') {
                 /* Update the DDL */
                 tp_url_changer(url, title);
+
+                /** Update the sharing **/
+                if(title){
+                  update_tp_social_media(title, window.location.href);
+                }
+
+                /** Update the DDL **/
+                var page_id = $(this).data('ddl-page-id');
+                if(page_id){
+                  update_tp_ddl(page_id);
+                }
+
               }
             }
 
-            /** Update the sharing **/
-            if(title){
-              update_tp_social_media(title, window.location.href);
-            }
 
-            /** Update the DDL **/
-            var page_id = $(this).data('ddl-page-id');
-            if(page_id){
-              update_tp_ddl(page_id);
-            }
           }else{
             $(this).removeClass('active');
           }
@@ -187,11 +190,13 @@
   window.update_tp_ddl = function(id) {
     /* get the event with the page id */
     for (var i=0; i < digitalData.event.length; i++) {
-      if(digitalData.event[i].eventInstanceID == id){
+      if(typeof(digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id){
         digitalData.page = digitalData.event[i].eventInfo.page;
+        _satellite.track('autoload');
         return;
       }
       digitalData.page = digitalData.pageInitial;
+      _satellite.track('autoload');
     }
   }
 
