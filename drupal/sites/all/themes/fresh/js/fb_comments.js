@@ -19,9 +19,9 @@ Drupal.behaviors.fb_comments = {
 
 	$('.comments').on('click', 'a.comments-count', function(e){
 		if(typeof FB != 'undefined') {
-			$(this).parent().find('.fb_comments').attr('href', window.location.href);
+			$(this).parent().find('#comments').attr('href', window.location.href);
 			FB.XFBML.parse();
-			$(this).parent().find('.fb_comments').show();
+			$(this).parent().find('#comments').show();
 			$(this).hide();
 		}
 		e.preventDefault();
