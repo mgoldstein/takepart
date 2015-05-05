@@ -3863,7 +3863,7 @@ body .user-menu.fresh-theme {
   cursor: pointer;
 }
 /* line 21, ../sass/modules/_fb_comments.scss */
-.comments #comments {
+.comments .fb_comments {
   display: none;
 }
 
