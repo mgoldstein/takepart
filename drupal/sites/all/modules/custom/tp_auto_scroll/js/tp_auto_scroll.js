@@ -29,6 +29,8 @@
           if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
             if (alreadyloading == false) {
 
+	            // Update the TAP widget
+	            new TP.Bootstrapper().start();
 
 
               /* Add a pageload event with the the details within attributes */
@@ -132,9 +134,6 @@
                 if(page_id){
                   update_tp_ddl(page_id);
                 }
-
-		            // Update the TAP widget
-		            new TP.Bootstrapper().start();
 
               }
             }
