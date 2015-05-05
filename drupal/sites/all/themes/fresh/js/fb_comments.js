@@ -20,9 +20,8 @@ Drupal.behaviors.fb_comments = {
 			// Apply the fb_comments effect to the elements only once.
 			$('a.comments-count').on('click', function(e){
 				if(typeof FB != 'undefined') {
-					$(this).parent().find('.fb_comments').attr('href', window.location.href);
 					FB.XFBML.parse();
-					$(this).parent().find('.fb_comments').show();
+					$(this).siblings('.fb_comments').attr('href', window.location.href).show();
 					$(this).hide();
 				}
 				e.preventDefault();
