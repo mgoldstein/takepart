@@ -199,6 +199,8 @@
     tp_social_config.services.facebook.url = url;
     tp_social_config.services.googleplus.title = title;
     tp_social_config.services.googleplus.url = url;
+    tp_social_config.services.tumblr.title = title;
+    tp_social_config.services.tumblr.url = url;
     
     //refires to update
     $('body').find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
