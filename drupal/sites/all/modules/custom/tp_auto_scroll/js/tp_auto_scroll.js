@@ -31,9 +31,11 @@
 
 
 
-              /* Add a pageload event with the the details within attributes */
-              /* Add a DDL pageload-id (nid) as a data element to the article tag */
-              /* In a different location, update update DDL page info with info from the page load event with the nid in the data attribute of the article tag */
+              /* Add a pageload event with the details within attributes
+               * Add a DDL pageload-id (nid) as a data element to the article tag
+               * In a different location, update DDL page info with info from the page load event 
+               * with the nid in the data attribute of the article tag
+               */
 
 
               /* Set the URL */
@@ -49,29 +51,29 @@
 
                 /* Return Article */
                 $('#next-article').before(data.output);
-                alreadyloading = false;
-                page++;
-              });
 
-	            // Update the TAP widget
-	            new TP.Bootstrapper().start();
-
-	            // Update fb_comments
-	            // vv Copied from fb_comments.js, because this doesn't work vv
+		            // Update the TAP widget
+		            new TP.Bootstrapper().start();
+	
+		            // Update fb_comments
+		            // vv Copied from fb_comments.js, because this doesn't work vv
 //		            Drupal.attachBehaviors("fb_comments");
-							$('a.comments-count', context).once('FBComments', function () {
 								if(typeof FB != 'undefined') {
 									FB.XFBML.parse();
 								}
-								$('a.comments-count').on('click', function(e){
-									$(this).parent().find('.fb_comments').attr('href', window.location.href);
-									$(this).parent().find('.fb_comments').show();
-									$(this).hide();
-									e.preventDefault();
-									return false;
+								$('a.comments-count', context).once('FBComments', function () {
+									$('a.comments-count').on('click', function(e){
+										$(this).parent().find('.fb_comments').attr('href', window.location.href);
+										$(this).parent().find('.fb_comments').show();
+										$(this).hide();
+										e.preventDefault();
+										return false;
+									});
 								});
-							});
 
+                alreadyloading = false;
+                page++;
+              });
             }
           }
         });
