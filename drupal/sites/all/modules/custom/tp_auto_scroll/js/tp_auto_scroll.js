@@ -53,6 +53,9 @@
                 page++;
               });
 
+	            // Update the TAP widget
+	            new TP.Bootstrapper().start();
+
             }
           }
         });
