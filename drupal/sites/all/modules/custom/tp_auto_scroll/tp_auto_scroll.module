@@ -64,7 +64,7 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
  */
 function tp_auto_scroll_pager($node){
 
-  $autoscroll_limit = variable_get('tp_auto_scroll_limit', 5);
+  $autoscroll_limit = variable_get('tp_auto_scroll_limit', 4);
   $selector_id = 'next-article';
 
   //loads the field topic based on node
