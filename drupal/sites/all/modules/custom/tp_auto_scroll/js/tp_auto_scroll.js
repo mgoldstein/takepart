@@ -63,8 +63,7 @@
 								}
 								$('a.comments-count', context).once('FBComments', function () {
 									$('a.comments-count').on('click', function(e){
-										$(this).parent().find('.fb_comments').attr('href', window.location.href);
-										$(this).parent().find('.fb_comments').show();
+										$(this).siblings('.fb_comments').attr('href', window.location.href).show();
 										$(this).hide();
 										e.preventDefault();
 										return false;
