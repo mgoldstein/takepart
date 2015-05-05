@@ -56,6 +56,22 @@
 	            // Update the TAP widget
 	            new TP.Bootstrapper().start();
 
+	            // Update fb_comments
+	            // vv Copied from fb_comments.js, because this doesn't work vv
+//		            Drupal.attachBehaviors("fb_comments");
+							$('a.comments-count', context).once('FBComments', function () {
+								if(typeof FB != 'undefined') {
+									FB.XFBML.parse();
+								}
+								$('a.comments-count').on('click', function(e){
+									$(this).parent().find('.fb_comments').attr('href', window.location.href);
+									$(this).parent().find('.fb_comments').show();
+									$(this).hide();
+									e.preventDefault();
+									return false;
+								});
+							});
+
             }
           }
         });
@@ -136,25 +152,6 @@
                 if(page_id){
                   update_tp_ddl(page_id);
                 }
-
-		            // Update the TAP widget
-		            new TP.Bootstrapper().start();
-
-		            // Update fb_comments
-		            // vv Copied from fb_comments.js, because this doesn't work vv
-//		            Drupal.attachBehaviors("fb_comments");
-								$('a.comments-count', context).once('FBComments', function () {
-									if(typeof FB != 'undefined') {
-										FB.XFBML.parse();
-									}
-									$('a.comments-count').on('click', function(e){
-										$(this).parent().find('.fb_comments').attr('href', window.location.href);
-										$(this).parent().find('.fb_comments').show();
-										$(this).hide();
-										e.preventDefault();
-										return false;
-									});
-								});
 
               }
             }
