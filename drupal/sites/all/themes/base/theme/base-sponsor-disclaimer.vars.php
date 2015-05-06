@@ -3,7 +3,7 @@
 /**
  * Implements theme_preprocess_fresh_sponsor()
  */
-function fresh_preprocess_fresh_sponsor_disclaimer(&$variables){
+function base_preprocess_base_sponsor_disclaimer(&$variables){
 
 	if($variables['tid']) {
 		

@@ -55,16 +55,6 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'url' => '',
       )
     ),
-    'fresh_sponsor' => array(
-      'variables' => array(
-        'tid' => '',
-      )
-    ),
-    'fresh_sponsor_disclaimer' => array(
-      'variables' => array(
-        'tid' => '',
-      )
-    ),
     'fresh_mobile_footer' => array(
       'variables' => array(
         'title' => '',

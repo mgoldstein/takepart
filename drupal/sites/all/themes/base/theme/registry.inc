@@ -23,7 +23,17 @@ function _base_theme(&$existing, $type, $theme, $path) {
     ),
     'base_topic_box' => array(
       'render element' => 'element'
-    )
+    ),
+    'base_sponsor' => array(
+      'variables' => array(
+        'tid' => '',
+      )
+    ),
+    'base_sponsor_disclaimer' => array(
+      'variables' => array(
+        'tid' => '',
+      )
+    ),
   );
 
   // Process custom. This should be used again for any sub-themes.

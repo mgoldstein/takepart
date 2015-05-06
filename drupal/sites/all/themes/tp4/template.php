@@ -39,21 +39,6 @@ $card_types = array(
 define('CARDTYPES', serialize($card_types));
 
 
-function tp4_theme($existing, $type, $theme, $path) {
-	$path = drupal_get_path('theme', 'tp4') . '/templates/';
-
-    $items['tp4_sponsor'] = array(
-	    'template' => 'tp4-sponsor',
-        'path' => $path,
-    );
-    $items['tp4_sponsor_disclaimer'] = array(
-	    'template' => 'tp4-sponsor-disclaimer',
-        'path' => $path,
-    );
-    return $items;
-}
-
-
 /**
  * Invokes hook_preprocess_html()
  * @param $variables
@@ -2471,7 +2456,7 @@ function _tp4_sponsor(&$variables){
 			$logo = ' '.$sponsor->name;
 		}
 
-		$variables['content']['sponsored'] = theme('tp4_sponsor', array('sponsor' => $sponsored_by, 'logo' => $logo));
+		$variables['content']['sponsored'] = theme('base_sponsor', array('sponsor' => $sponsored_by, 'logo' => $logo));
 
 		// Get (default) disclaimer
 		if($sponsor->description) {
@@ -2481,7 +2466,7 @@ function _tp4_sponsor(&$variables){
 	    	$disclaimer = $default_disclaimer->description;
 		}
 
-		$variables['content']['sponsor_disclaimer'] = theme('tp4_sponsor_disclaimer', array('disclaimer' => trim($disclaimer)));
+		$variables['content']['sponsor_disclaimer'] = theme('base_sponsor_disclaimer', array('disclaimer' => trim($disclaimer)));
 
 	}
 
