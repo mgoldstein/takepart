@@ -101,71 +101,85 @@
       window.tp_url_title_orig = document.title;
       
       //binds to the scroll
+      var timer;
       $(window).bind('scroll', function() {
-        //default variables for this scope
-        var url = window.location.pathname;
-        var title = document.title;
-        var win = $(window);
-        var viewport = {
-          top : win.scrollTop(),
-          left : win.scrollLeft(),
-          bottom : win.scrollTop() + win.height()
-        };
 
-        
-        //For each article
-        $('article').each(function(index, value) {
+        /* Only process the code below every 100ms on scroll */
+        if(timer) {
+          window.clearTimeout(timer);
+        }
+        timer = window.setTimeout(function() {
+          //default variables for this scope
+          var url = window.location.pathname;
+          var title = document.title;
+          var win = $(window);
+          var viewport = {
+            top : win.scrollTop(),
+            left : win.scrollLeft(),
+            bottom : win.scrollTop() + win.height()
+          };
 
-          /** Update active Article **/
-          var articleTop = $(this).offset().top;
-          var articleBottom = articleTop + $(this).height();
-          var offset = (viewport.bottom - viewport.top)/2;
 
-          if((viewport.top <= articleBottom - offset) && (viewport.top >= articleTop - offset)){
-            $(this).addClass('active');
+          //For each article
+          $('article').each(function(index, value) {
 
-            /** Update the URL **/
-            /* if article is active and data-tp-url != url, update it */
-            var tp_url = $(this).data('tpUrl');
-            var tp_url_title = $(this).data('tp-url-title'); //maps to data-tp-url-title
-            if(tp_url){
-              //ensures that the tp url is set before changing
-              if (typeof tp_url !== 'undefined') {
-                url = tp_url;
-                //only change the title if it's not undefined
-                if (typeof tp_url_title !== 'undefined') {
-                  title = tp_url_title;
+            /** Update active Article **/
+            var articleTop = $(this).offset().top;
+            var articleBottom = articleTop + $(this).height();
+            var offset = (viewport.bottom - viewport.top)/2;
+
+            if((viewport.top <= articleBottom - offset) && (viewport.top >= articleTop - offset)){
+              $(this).addClass('active');
+
+              /** Update the URL **/
+              /* if article is active and data-tp-url != url, update it */
+              var tp_url = $(this).data('tpUrl');
+              var tp_url_title = $(this).data('tp-url-title'); //maps to data-tp-url-title
+              if(tp_url){
+                //ensures that the tp url is set before changing
+                if (typeof tp_url !== 'undefined') {
+                  url = tp_url;
+                  //only change the title if it's not undefined
+                  if (typeof tp_url_title !== 'undefined') {
+                    title = tp_url_title;
+                  }
+                }
+                // Upate the URL, social links and DDL based on URL logic
+                if (url != window.location.pathname && url != '') {
+
+                  /** Update the URL **/
+                  tp_url_changer(url, title);
+
+                  /** Update the sharing **/
+                  if(title){
+                    update_tp_social_media(title, window.location.href);
+                  }
+
+                  /** Update the DDL **/
+                  var page_id = $(this).data('ddl-page-id');
+                  if(page_id){
+                    update_tp_ddl(page_id);
+                  }
+
+                  /** Check for additional TAP widgets */
+                  // needs to happen after page info updates for DTM
+                  if(window.newTapWidgets == true){
+                    new TP.Bootstrapper().start();
+                    window.newTapWidgets = false;
+                  }
+
+
                 }
               }
-              // Upate the URL, social links and DDL based on URL logic
-              if (url != window.location.pathname && url != '') {
-                /* Update the DDL */
 
-                tp_url_changer(url, title);
-
-                /** Update the sharing **/
-                if(title){
-                  update_tp_social_media(title, window.location.href);
-                }
-
-                /** Update the DDL **/
-                var page_id = $(this).data('ddl-page-id');
-                if(page_id){
-                  update_tp_ddl(page_id);
-                }
-
-              }
+            }else{
+              $(this).removeClass('active');
             }
 
-
-          }else{
-            $(this).removeClass('active');
-          }
-
-        });
-        
-        //updates the last scroll var
-        lastScrollTop = viewport.top;
+          });
+          //updates the last scroll var
+          lastScrollTop = viewport.top;
+        }, 100);
       });
     }
   }
