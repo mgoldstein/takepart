@@ -488,7 +488,7 @@ function tp_custom_nav_tp_preprocess_slim_nav_alter(&$data) {
     $block_content = drupal_render(_block_get_renderable_array(_block_render_blocks(array($block))));
     
     //adds tap login
-    $tap_login = '<div class="tpsLogin"></div>';
+    $tap_login = '<div class="tpsLogin" data-layout="compact"></div>';
     
     //add it to the right_info
     $data['right_info'] = $block_content . $tap_login;
