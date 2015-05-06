@@ -4,7 +4,7 @@
   </div>
   <?php print $variables['logo']; ?>
   <div class="user-menu fresh-theme">
-    <div class="tpsLogin"></div>
+    <div class="tpsLogin" data-layout="compact"></div>
   </div>
   <div class="search">
     <div class="toggle-search"><span class="icon i-search"></span></div>
