@@ -523,8 +523,9 @@ function theme_tp4_support_featured_campaign(&$variables) {
   $content['headline']['#prefix'] = '<h2>';
   $content['headline']['#suffix'] = '</h2>';
 
-  // render the contents of the field collection item
-  $return = drupal_render($content['image']) . drupal_render($content['label']) . drupal_render($content['headline']);
+  // render the contents of the field collection item (but only if this links to a valid page)
+	$sponsored_by = $page ? _tp4_support_sponsor_overlay($page) : '';
+  $return = drupal_render($content['image']) . $sponsored_by . drupal_render($content['label']) . drupal_render($content['headline']);
 
   // render the outer link; check the override first
   if (!empty($content['link'])) {
@@ -1078,3 +1079,29 @@ function _tp4_support_action_batch() {
 
   batch_set($batch);
 }
+
+
+function _tp4_support_sponsor_flag($node, $newline = false) {
+	$s = field_get_items('node', $node, 'field_sponsored');
+	if($s[0]['tid']) {
+		// $newline adds a linebreak or a .25em span to offset the tag while allowing it to wrap without a margin
+		return ($newline ? '<br>':'<span style="width:.25em;display:inline-block;"></span>').'<span class="promoted sponsor-'.$s[0]['tid'].'">'.t('Promoted').'</span>';
+	}
+}
+
+// You've got to overload the 'image' theme function, too.
+// For that you need field--field-thumbnail.tpl.php
+function _tp4_support_sponsor_overlay($node) {
+	$s = field_get_items('node', $node, 'field_sponsored');
+
+	if($s[0]['tid']) {
+		$t = taxonomy_term_load($s[0]['tid']);
+		$name = $t->name;
+
+		return '<span class="promoted_overlay sponsor-'.$t->tid.'">
+			<span class="sponsor_label">'.t('Promoted by').'</span>
+			<span class="sponsor_name">'.$name.'</span>
+		</span>';
+	}
+}
+

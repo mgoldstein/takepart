@@ -209,6 +209,11 @@ function tp4_preprocess_page(&$variables) {
   if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
     $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
     $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
+
+    $s = field_get_items('node', $variables['node'], 'field_sponsored');
+    if($s[0]['tid']) {
+    	drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
+    }
   }
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
@@ -401,6 +406,13 @@ function tp4_preprocess_node(&$variables, $hook) {
     $variables['title'] = $variables['node']->title;
   }
 
+	// Add the PROMOTED tag to nodes employing the feature_secondary display when not on the homepage
+  if($variables['view_mode'] == 'feature_secondary') {
+	  if( !drupal_is_front_page() ) {
+			$variables['node']->field_promo_headline['und'][0]['safe_value'] .= _tp4_support_sponsor_flag($variables['node']);
+	  }
+	}
+
   $function = __FUNCTION__ . '__' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
@@ -434,6 +446,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 
     }
   }
+
+	$s = field_get_items('node', $campaign_node, 'field_sponsored');
+	if($s[0]['tid']) {
+		drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
+	}
 
   // Check if subheadline is empty, if yes get meta description from campaign reference
   if($variables['field_article_subhead']['und'][0]['value'] == ''){
@@ -1199,6 +1216,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center .= l($image, $path, array('html' => true));
       $center .= '<h3 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
       $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
+      $center .= _tp4_support_sponsor_flag($node);
 
     }
     else{ //multivalue
@@ -1252,6 +1270,8 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
           $file = file_load($file[0]['fid']);
           $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
         }
+
+        $headline .= _tp4_support_sponsor_flag($node);
 
         $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
         $image = file_create_url($file->uri);
@@ -1531,9 +1551,8 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
         // @see tp4_field__field_article_main_image__feature_article()
         // @see tp4_field__field_article_main_image__openpublish_article()
         // @see field-formatter--author-full.tpl.php
+        _tp4_sponsor($variables);
     } // if ($variables['view_mode'] == 'full')
-
-    _tp4_sponsor($variables);
 }
 
 /**
