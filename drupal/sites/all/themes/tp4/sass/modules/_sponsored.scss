@@ -26,6 +26,13 @@
 // Articles, gutter for social share
 .tp_sponsored_content_disclaimer {
 	margin-left: 53px;
+	p {
+		background-color:$gray-background;
+		padding: 10px 15px;
+		font-family: $primary-sans-font;
+		font-size: 14px;
+		font-style: italic;
+	}
 }
 
 // Photo Galleries
