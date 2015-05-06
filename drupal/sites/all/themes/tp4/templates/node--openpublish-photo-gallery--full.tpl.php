@@ -9,11 +9,17 @@
 ?>
 <div class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <?php if( $gallery_description =  render($content['body'])) : ?>
+
+  <?php print isset($variables['content']['sponsored']) ? $variables['content']['sponsored'] : ''; ?>
+
   <div id="gallery-description" class="gallery-description hidden">
     <?php print $gallery_description; ?>
     <p class="enter-link"><a id="gallery-description-enter-link" href="#enter-gallery">Enter Photo Gallery</a></p>
   </div>
   <?php endif; ?>
+
+  <?php print isset($variables['content']['sponsor_disclaimer']) ? $variables['content']['sponsor_disclaimer'] : ''; ?>
+
   <aside id="gallery-footer">
     <!-- related content? -->
 

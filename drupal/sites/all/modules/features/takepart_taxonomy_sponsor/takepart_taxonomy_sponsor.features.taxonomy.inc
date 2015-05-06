@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * tpf_display_context.features.taxonomy.inc
+ * takepart_taxonomy_sponsor.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function tpf_display_context_taxonomy_default_vocabularies() {
+function takepart_taxonomy_sponsor_taxonomy_default_vocabularies() {
   return array(
     'sponsor' => array(
       'name' => 'Sponsor',
