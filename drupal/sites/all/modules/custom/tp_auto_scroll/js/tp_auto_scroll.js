@@ -8,7 +8,7 @@
 
   Drupal.behaviors.tpAutoScroll = {
     attach: function(context, settings) {
-
+      window.newTapWidgets = true;
       /* Settings need to be set */
       if(Drupal.settings.tpAutoScroll.length == 1) {
         var settings = Drupal.settings.tpAutoScroll[0];
@@ -29,15 +29,6 @@
           if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
             if (alreadyloading == false) {
 
-
-
-              /* Add a pageload event with the details within attributes
-               * Add a DDL pageload-id (nid) as a data element to the article tag
-               * In a different location, update DDL page info with info from the page load event 
-               * with the nid in the data attribute of the article tag
-               */
-
-
               /* Set the URL */
               var url = settings.articles[page + 1];
               alreadyloading = true;
@@ -52,23 +43,22 @@
                 /* Return Article */
                 $('#next-article').before(data.output);
 
-		            // Update the TAP widget
-		            new TP.Bootstrapper().start();
-	
-		            // Update fb_comments
-		            // vv Copied from fb_comments.js, because this doesn't work vv
-//		            Drupal.attachBehaviors("fb_comments");
-								if(typeof FB != 'undefined') {
-									FB.XFBML.parse();
-								}
-								$('a.comments-count', context).once('FBComments', function () {
-									$('a.comments-count').on('click', function(e){
-										$(this).siblings('.fb_comments').attr('href', window.location.href).show();
-										$(this).hide();
-										e.preventDefault();
-										return false;
-									});
-								});
+                // Update fb_comments
+                // vv Copied from fb_comments.js, because this doesn't work vv
+                if(typeof FB != 'undefined') {
+                  FB.XFBML.parse();
+                }
+                $('a.comments-count', context).once('FBComments', function () {
+                  $('a.comments-count').on('click', function(e){
+                    $(this).siblings('.fb_comments').attr('href', window.location.href).show();
+                    $(this).hide();
+                    e.preventDefault();
+                    return false;
+                  });
+                });
+
+                /* There are new Tap Widgets available on the page.  Delay these calls until page is active */
+                window.newTapWidgets = true;
 
                 alreadyloading = false;
                 page++;
@@ -79,8 +69,7 @@
       }
     }
   }
-  
-  //creates a drupal behavior
+
   /**
    *
    *  @function:
@@ -223,8 +212,8 @@
    *  Update PageInfo in DDL with the correct Page Load event data
    */
   window.update_tp_ddl = function(id) {
+
     /* get the event with the page id */
-    var processed;
     for (var i=0; i < digitalData.event.length; i++) {
       if(typeof(digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id){
         digitalData.page = digitalData.event[i].eventInfo.page;
