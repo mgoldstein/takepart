@@ -131,6 +131,17 @@ class ddContent extends ddDefaultPage {
       $data['page']['pageInfo']['permanentTitle'] = $permanent_title[0]['value'];
     }
 
+    //Field Sponsor
+    $field_sponsor = field_info_instance('node', 'field_sponsored', $node->type);
+    if($field_sponsor != NULL){
+      $sponsor = field_get_items('node', $node, 'field_sponsored');
+      $sponsor_term = taxonomy_term_load($sponsor[0]['tid']);
+			if($sponsor_term->name) {
+	      $data['page']['pageInfo']['sponsor'] = $sponsor_term->name;
+			}
+      $data['page']['pageInfo']['sponsored'] = ($sponsor_term->tid ? "":"Not ")."Sponsored";
+    }
+
     $data['page']['pageInfo']['pageId'] = $pageID;
     $data['page']['pageInfo']['pageTitle'] = $node->title;
     $data['page']['pageInfo']['pageUrl'] = $url;
