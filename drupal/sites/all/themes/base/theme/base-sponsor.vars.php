@@ -21,7 +21,7 @@ function base_preprocess_base_sponsor(&$variables){
 					'title' => $sponsored_by.' '.$sponsor->name,
 			));
 		} else {
-			$logo = ' '.$sponsor->name;
+			$logo = $sponsor->name;
 		}
 
 		$variables['sponsor'] = $sponsored_by;
