@@ -125,7 +125,25 @@ function tp_auto_scroll_pager($node){
  * Implements hook_preprocess_node()
  */
 function tp_auto_scroll_preprocess_node(&$variables){
-  /* Pass the ddl id */
-  $variables['attributes_array']['data-ddl-page-id'] = $variables['node']->nid;
+  if($variables['view_mode'] == 'full'){
+    /* Pass the ddl id */
+    $variables['attributes_array']['data-ddl-page-id'] = $variables['node']->nid;
 
+    //Data elements for og tags
+    if(module_exists('metatag')){
+      $metatags = metatag_generate_entity_metatags($variables['node'], 'node');
+      if(isset($metatags['og:title'])){
+        $og_image = $metatags['og:title']['#attached']['drupal_add_html_head'][0][0]['#value'];
+        $variables['attributes_array']['data-tp-og-image'] = $og_image;
+      }
+      if(isset($metatags['og:url'])){
+        $og_image = $metatags['og:url']['#attached']['drupal_add_html_head'][0][0]['#value'];
+        $variables['attributes_array']['data-tp-og-image'] = $og_image;
+      }
+      if(isset($metatags['og:image'])){
+        $og_image = $metatags['og:image']['#attached']['drupal_add_html_head'][0][0]['#value'];
+        $variables['attributes_array']['data-tp-og-image'] = $og_image;
+      }
+    }
+  }
 }
