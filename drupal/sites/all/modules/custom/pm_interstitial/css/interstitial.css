@@ -60,7 +60,7 @@ header img {
   padding: 20px 40px 0;
   margin-bottom: 5px;
   font-size: 26px;
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+  font-family: "Ashbury", "Times New Roman", Times, Georgia, serif;
 }
 /* line 50, ../sass/interstitial.scss */
 #page .body p {
@@ -68,7 +68,7 @@ header img {
 }
 /* line 53, ../sass/interstitial.scss */
 #page p#dont {
-  font-family: Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+  font-family: "Times New Roman", Times, Georgia, serif;
   font-size: 12px;
   clear: both;
   margin: 0.5em 0;
