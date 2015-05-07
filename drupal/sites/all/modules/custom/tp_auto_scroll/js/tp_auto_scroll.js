@@ -122,27 +122,21 @@
 
               /** Update the URL **/
               /* if article is active and data-tp-url != url, update it */
-              var tp_url = $(this).data('tpUrl');
-              var tp_url_title = $(this).data('tp-url-title'); //maps to data-tp-url-title
-              if(tp_url){
-                //ensures that the tp url is set before changing
-                if (typeof tp_url !== 'undefined') {
-                  url = tp_url;
-                  //only change the title if it's not undefined
-                  if (typeof tp_url_title !== 'undefined') {
-                    title = tp_url_title;
-                  }
-                }
+              var tp_og_url = $(this).data('tp-og-url');
+              var tp_og_title = $(this).data('tp-og-title');
+              var tp_og_image = $(this).data('tp-og-image');
+              if(tp_og_url){
                 // Upate the URL, social links and DDL based on URL logic
-                if (url != window.location.pathname && url != '') {
+                if (tp_og_url != window.location.pathname && url != '') {
+                  /* Update the DDL */
 
-                  /** Update the URL **/
-                  tp_url_changer(url, title);
+                  tp_url_changer(tp_og_url, title);
 
                   /** Update the sharing **/
                   if(title){
-                    update_tp_social_media(title, window.location.href);
+                    update_tp_social_media(tp_og_title, window.location.href, tp_og_image);
                   }
+
 
                   /** Update the DDL **/
                   var page_id = $(this).data('ddl-page-id');
@@ -187,10 +181,20 @@
    *  @function:
    *    window function that is used to update the social links
    */
-  window.update_tp_social_media = function(title, url) {
+  window.update_tp_social_media = function(title, url, image) {
     //changes to update the social links
-    $("meta[property='og:title']").attr("content", title);
-    $("meta[property='og:url']").attr("content", url);
+    console.log(title);
+    console.log(url);
+    console.log(image);
+    if (typeof title !== 'undefined') {
+      $("meta[property='og:title']").attr("content", title);
+    }
+    if (typeof url !== 'undefined') {
+      $("meta[property='og:url']").attr("content", url);
+    }
+    if (typeof image !== 'undefined') {
+      $("meta[property='og:image']").attr("content", image);
+    }
     $("meta[name='twitter:title']").attr("content", title);
     $("meta[name='twitter:url']").attr("content", url);
     
