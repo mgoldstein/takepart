@@ -99,7 +99,7 @@
         }
         timer = window.setTimeout(function() {
           //default variables for this scope
-          var url = window.location.pathname;
+          var url = window.location.hostname+window.location.pathname;
           var title = document.title;
           var win = $(window);
           var viewport = {
@@ -126,7 +126,7 @@
               var tp_og_image = $(this).data('tp-og-image');
               var tp_og_description = $(this).data('tp-og-description');
               // Upate the URL, social links and DDL based on URL logic
-              if (typeof tp_og_url != 'undefined' && tp_og_url != window.location.pathname) {
+              if (typeof tp_og_url != 'undefined' && tp_og_url != window.location.hostname+window.location.pathname) {
                 /** Update the URL **/
                 tp_url_changer(tp_og_url, tp_og_title);
 
