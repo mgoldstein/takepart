@@ -151,6 +151,10 @@ function tp_auto_scroll_preprocess_node(&$variables){
         $og_title = $metatags['og:title']['#attached']['drupal_add_html_head'][0][0]['#value'];
         $variables['attributes_array']['data-tp-og-title'] = $og_title;
       }
+      if(isset($metatags['og:description'])){
+        $og_description = $metatags['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'];
+        $variables['attributes_array']['data-tp-og-description'] = $og_description;
+      }
       if(isset($metatags['og:image'])){
         $og_image = $metatags['og:image']['#attached']['drupal_add_html_head'][0][0]['#value'];
         $variables['attributes_array']['data-tp-og-image'] = $og_image;

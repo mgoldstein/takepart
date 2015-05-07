@@ -124,13 +124,14 @@
               var tp_og_url = $(this).data('tp-og-url');
               var tp_og_title = $(this).data('tp-og-title');
               var tp_og_image = $(this).data('tp-og-image');
+              var tp_og_description = $(this).data('tp-og-description');
               // Upate the URL, social links and DDL based on URL logic
               if (typeof tp_og_url != 'undefined' && tp_og_url != window.location.pathname) {
                 /** Update the URL **/
                 tp_url_changer(tp_og_url, tp_og_title);
 
                 /** Update the sharing **/
-                update_tp_social_media(tp_og_title, tp_og_url, tp_og_image);
+                update_tp_social_media(tp_og_title, tp_og_url, tp_og_image, tp_og_description);
 
                 /** Update the DDL **/
                 var page_id = $(this).data('ddl-page-id');
@@ -171,7 +172,7 @@
    *  @function:
    *    window function that is used to update the social links
    */
-  window.update_tp_social_media = function(title, url, image) {
+  window.update_tp_social_media = function(title, url, image, description) {
     //changes to update the social links
     if (typeof title !== 'undefined') {
       $("meta[property='og:title']").attr("content", title);
@@ -183,6 +184,9 @@
     }
     if (typeof image !== 'undefined') {
       $("meta[property='og:image']").attr("content", image);
+    }
+    if (typeof description !== 'undefined') {
+      $("meta[property='og:description']").attr("content", description);
     }
     
     //updates the social config
