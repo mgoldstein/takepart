@@ -70,11 +70,9 @@ function tp_auto_scroll_pager($node){
   //loads the field topic based on node
   $field_topics = field_get_items('node', $node, 'field_topic');
  
-  //preps the data correctly
-  $topics = array();
-  foreach ($field_topics as $key => $value) {
-    //adds to list so that the field condition can use it
-    $topics[] = $value['tid'];
+  //preps the data correctly. primary topic only
+    if (!empty($field_topics[0]['tid'])) {
+    $topics = array($field_topics[0]['tid']);
   }
 
   /* Queue the nodes */
