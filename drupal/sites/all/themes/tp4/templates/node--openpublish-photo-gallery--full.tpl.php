@@ -16,6 +16,10 @@
     <?php print $gallery_description; ?>
     <p class="enter-link"><a id="gallery-description-enter-link" href="#enter-gallery">Enter Photo Gallery</a></p>
   </div>
+  <?php else: ?>
+
+  <?php print isset($variables['content']['sponsored']) ? $variables['content']['sponsored'] : ''; ?>
+
   <?php endif; ?>
 
   <?php print isset($variables['content']['sponsor_disclaimer']) ? $variables['content']['sponsor_disclaimer'] : ''; ?>
