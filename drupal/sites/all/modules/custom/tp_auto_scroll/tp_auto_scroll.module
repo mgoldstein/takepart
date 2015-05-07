@@ -160,7 +160,8 @@ function tp_auto_scroll_preprocess_node(&$variables){
         $variables['attributes_array']['data-tp-og-image'] = $og_image;
       }
       /* Statically set the URL, otherwise the ajax url will get returned */
-      $variables['attributes_array']['data-tp-og-url'] = url('node/'. $variables['node']->nid);
+      global $base_url;
+      $variables['attributes_array']['data-tp-og-url'] = $base_url. url('node/'. $variables['node']->nid);
     }
   }
 }
