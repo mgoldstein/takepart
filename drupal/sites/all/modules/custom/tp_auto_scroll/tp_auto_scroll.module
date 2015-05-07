@@ -133,17 +133,15 @@ function tp_auto_scroll_preprocess_node(&$variables){
     if(module_exists('metatag')){
       $metatags = metatag_generate_entity_metatags($variables['node'], 'node');
       if(isset($metatags['og:title'])){
-        $og_image = $metatags['og:title']['#attached']['drupal_add_html_head'][0][0]['#value'];
-        $variables['attributes_array']['data-tp-og-image'] = $og_image;
-      }
-      if(isset($metatags['og:url'])){
-        $og_image = $metatags['og:url']['#attached']['drupal_add_html_head'][0][0]['#value'];
-        $variables['attributes_array']['data-tp-og-image'] = $og_image;
+        $og_title = $metatags['og:title']['#attached']['drupal_add_html_head'][0][0]['#value'];
+        $variables['attributes_array']['data-tp-og-title'] = $og_title;
       }
       if(isset($metatags['og:image'])){
         $og_image = $metatags['og:image']['#attached']['drupal_add_html_head'][0][0]['#value'];
         $variables['attributes_array']['data-tp-og-image'] = $og_image;
       }
+      /* Statically set the URL, otherwise the ajax url will get returned */
+      $variables['attributes_array']['data-tp-og-url'] = url('node/'. $variables['node']->nid);
     }
   }
 }
