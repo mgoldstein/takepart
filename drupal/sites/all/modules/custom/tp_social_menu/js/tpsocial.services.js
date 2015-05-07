@@ -68,18 +68,28 @@
             get_share_url(args.url, args.title, function(url) {
                 var parser = document.createElement("a");
                 parser.href = args.url;
-                FB.ui({
-                    method: 'share',
-					href: url,
-                },
-                function(response) {
-                    if (response && response.post_id) {
+                
+                //chrome ios
+                if (navigator.userAgent.match('CriOS')) {
+                    //testing facebook app id
+                    window.open('https://www.facebook.com/dialog/oauth?client_id=' + 247137505296280 + '&redirect_uri='+ url +'&scope=email,public_profile', '', null);
+                }
+                else {
+                    FB.ui(
+                    {
+                      method: 'share',
+                      href: url,
+                    },
+                    function(response) {
+                      if (response && response.post_id) {
                         // Post was published
-                        $window.trigger('tp-social-share', args);
-                    } else {
+                      $window.trigger('tp-social-share', args);
+                      }
+                      else {
                         //Post was not published
-                    }
-                });
+                      }
+                    });
+                }
             });
         }
     });
