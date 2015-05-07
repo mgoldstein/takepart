@@ -108,7 +108,6 @@
             bottom : win.scrollTop() + win.height()
           };
 
-
           //For each article
           $('article').each(function(index, value) {
 
@@ -125,40 +124,31 @@
               var tp_og_url = $(this).data('tp-og-url');
               var tp_og_title = $(this).data('tp-og-title');
               var tp_og_image = $(this).data('tp-og-image');
-              if(tp_og_url){
-                // Upate the URL, social links and DDL based on URL logic
-                if (tp_og_url != window.location.pathname && url != '') {
-                  /* Update the DDL */
+              // Upate the URL, social links and DDL based on URL logic
+              if (typeof tp_og_url != 'undefined' && tp_og_url != window.location.pathname) {
+                /** Update the URL **/
+                tp_url_changer(tp_og_url, tp_og_title);
 
-                  tp_url_changer(tp_og_url, title);
+                /** Update the sharing **/
+                update_tp_social_media(tp_og_title, tp_og_url, tp_og_image);
 
-                  /** Update the sharing **/
-                  if(title){
-                    update_tp_social_media(tp_og_title, window.location.href, tp_og_image);
-                  }
+                /** Update the DDL **/
+                var page_id = $(this).data('ddl-page-id');
+                if(page_id){
+                  update_tp_ddl(page_id);
+                }
 
-
-                  /** Update the DDL **/
-                  var page_id = $(this).data('ddl-page-id');
-                  if(page_id){
-                    update_tp_ddl(page_id);
-                  }
-
-                  /** Check for additional TAP widgets */
-                  // needs to happen after page info updates for DTM
-                  if(window.newTapWidgets == true){
-                    new TP.Bootstrapper().start();
-                    window.newTapWidgets = false;
-                  }
-
-
+                /** Check for additional TAP widgets */
+                // needs to happen after page info updates for DTM
+                if(window.newTapWidgets == true){
+                  new TP.Bootstrapper().start();
+                  window.newTapWidgets = false;
                 }
               }
 
             }else{
               $(this).removeClass('active');
             }
-
           });
           //updates the last scroll var
           lastScrollTop = viewport.top;
@@ -183,20 +173,17 @@
    */
   window.update_tp_social_media = function(title, url, image) {
     //changes to update the social links
-    console.log(title);
-    console.log(url);
-    console.log(image);
     if (typeof title !== 'undefined') {
       $("meta[property='og:title']").attr("content", title);
+      $("meta[name='twitter:title']").attr("content", title);
     }
     if (typeof url !== 'undefined') {
       $("meta[property='og:url']").attr("content", url);
+      $("meta[name='twitter:url']").attr("content", url);
     }
     if (typeof image !== 'undefined') {
       $("meta[property='og:image']").attr("content", image);
     }
-    $("meta[name='twitter:title']").attr("content", title);
-    $("meta[name='twitter:url']").attr("content", url);
     
     //updates the social config
     tp_social_config.services.mailto.title = title;
