@@ -1,5 +1,9 @@
 /* Special cases and overrides for header/disclaimer on TP4 */
 
+.tp_sponsor {
+	margin-top: 0px;
+}
+
 // Flashcards, Photo Galleries
 .node-flashcard .tp_sponsor,
 .node-openpublish-photo-gallery .tp_sponsor {
