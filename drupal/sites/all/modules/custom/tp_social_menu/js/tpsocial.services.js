@@ -69,14 +69,12 @@
                 var parser = document.createElement("a");
                 parser.href = args.url;
                 
-                var FB_ID = "247137505296280";
-                
                 function openFBLoginDialogManually() {
                     // Open your auth window containing FB auth page
                     // with forward URL to your Opened Window handler page (below)
                     var redirect_uri = "&redirect_uri=" + url + "fbjscomplete";
                     var scope = "&scope=public_profile,email,user_friends";
-                    var url = "https://www.facebook.com/dialog/oauth?client_id=" + FB_ID + redirect_uri + scope;
+                    var url = "https://www.facebook.com/dialog/oauth?client_id=" + "247137505296280" + redirect_uri + scope;
                      
                     // notice the lack of other param in window.open
                     // for some reason the opener is set to null
