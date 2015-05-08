@@ -20,16 +20,17 @@ function tp_auto_scroll_menu(){
  */
 function tp_auto_scroll_handler($node, $view_mode = 'full'){
 
-  $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
+  // $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
 
   /* If a cached version of the node exists AND user is anonymous */
+  /*
   $cache = 'autoscroll_'. $view_mode. '_'.$node->nid;
   global $user;
   if($cached = cache_get($cache, 'cache') && $user->uid == 0)  {
     $output = $cached->data;
   }
-
-  if(empty($output)) {
+  */
+  // if(empty($output)) {
     $node->disable_social = TRUE;
 
     /* Get the Node View */
@@ -49,8 +50,8 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
     );
 
     /* Cache it for later use */
-    cache_set($cache, $output, 'cache', REQUEST_TIME + $cache_lifetime);
-  }
+    // cache_set($cache, $output, 'cache', REQUEST_TIME + $cache_lifetime);
+  // }
 
   /* Return output in json format */
 //  drupal_json_output($output);
