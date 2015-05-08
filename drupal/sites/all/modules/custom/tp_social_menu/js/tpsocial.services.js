@@ -69,30 +69,67 @@
                 var parser = document.createElement("a");
                 parser.href = args.url;
                 
-                //chrome ios
-                if (navigator.userAgent.match('CriOS')) {
-                    //testing facebook app id
-                    window.open('https://www.facebook.com/dialog/oauth?client_id=' + 247137505296280 + '&redirect_uri='+ url +'&scope=email,public_profile', '', null);
+                var FB_ID = "247137505296280";
+                
+                function openFBLoginDialogManually() {
+                    // Open your auth window containing FB auth page
+                    // with forward URL to your Opened Window handler page (below)
+                    var redirect_uri = "&redirect_uri=" + url + "fbjscomplete";
+                    var scope = "&scope=public_profile,email,user_friends";
+                    var url = "https://www.facebook.com/dialog/oauth?client_id=" + FB_ID + redirect_uri + scope;
+                     
+                    // notice the lack of other param in window.open
+                    // for some reason the opener is set to null
+                    // and the opened window can NOT reference it
+                    // if params are passed. #Chrome iOS Bug
+                    window.open(url);  
                 }
-                else {
-                    FB.ui(
-                    {
-                      method: 'share',
-                      href: url,
-                    },
-                    function(response) {
-                      if (response && response.post_id) {
-                        // Post was published
-                      $window.trigger('tp-social-share', args);
-                      }
-                      else {
-                        //Post was not published
-                      }
+                 
+                function fbCompleteLogin(){
+                    FB.getLoginStatus(function(response) {
+                    // Calling this with the extra setting "true" forces
+                    // a non-cached request and updates the FB cache.
+                    // Since the auth login elsewhere validated the user
+                    // this update will now asyncronously mark the user as authed
+                    }, true);
+                }
+                 
+                function requireLogin(callback){
+                    FB.getLoginStatus(function(response) {
+                        if (response.status != "connected") {
+                            showLogin();
+                        }else{
+                            checkAuth(response.authResponse.accessToken, response.authResponse.userID, function(success){
+                            // Check FB tokens against your API to make sure user is valid
+                        });
+                        }
                     });
                 }
+                
+                //only do for crios
+                if (navigator.userAgent.match('CriOS')) {
+                    fbCompleteLogin();
+                }
+                
+                
+                FB.ui(
+                {
+                  method: 'share',
+                  href: url,
+                },
+                function(response) {
+                  if (response && response.post_id) {
+                    // Post was published
+                  $window.trigger('tp-social-share', args);
+                  }
+                  else {
+                    //Post was not published
+                  }
+                });
             });
         }
     });
+    
 
     $.tpsocial.add_service({
         name: 'twitter',
