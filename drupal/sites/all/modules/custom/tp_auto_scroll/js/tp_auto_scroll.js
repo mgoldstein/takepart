@@ -181,6 +181,7 @@
     if (typeof url !== 'undefined') {
       $("meta[property='og:url']").attr("content", url);
       $("meta[name='twitter:url']").attr("content", url);
+	 $("link[rel='canonical']").attr("href", url);
     }
     if (typeof image !== 'undefined') {
       $("meta[property='og:image']").attr("content", image);

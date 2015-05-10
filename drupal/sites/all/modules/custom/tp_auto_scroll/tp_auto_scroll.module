@@ -20,17 +20,15 @@ function tp_auto_scroll_menu(){
  */
 function tp_auto_scroll_handler($node, $view_mode = 'full'){
 
-  // $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
+  $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
 
   /* If a cached version of the node exists AND user is anonymous */
-  /*
   $cache = 'autoscroll_'. $view_mode. '_'.$node->nid;
   global $user;
   if($cached = cache_get($cache, 'cache') && $user->uid == 0)  {
     $output = $cached->data;
   }
-  */
-  // if(empty($output)) {
+  if(empty($output)) {
     $node->disable_social = TRUE;
 
     /* Get the Node View */
@@ -50,8 +48,8 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
     );
 
     /* Cache it for later use */
-    // cache_set($cache, $output, 'cache', REQUEST_TIME + $cache_lifetime);
-  // }
+    cache_set($cache, $output, 'cache', REQUEST_TIME + $cache_lifetime);
+  }
 
   /* Return output in json format */
 //  drupal_json_output($output);
@@ -148,4 +146,28 @@ function tp_auto_scroll_preprocess_node(&$variables){
       $variables['attributes_array']['data-tp-og-url'] = $base_url. url('node/'. $variables['node']->nid);
     }
   }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function tp_auto_scroll_token_info() {
+    $token_file_path = drupal_get_path("module", "tp_auto_scroll")
+    . "/inc/tp_auto_scroll.token.inc";
+
+  $info['types']['tp_auto_scroll'] = array(
+    'name' => t('TakePart Auto Scroll'),
+    'description' => t("Tokens used for setting autoscroll meta data"),
+  );
+
+  $info['tokens']['tp_auto_scroll']['clean_url'] = array(
+    'name' => t('Clean URL'),
+    'description' => t("Blocks URL of autoscroll JSON from infiltrating meta data"),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "tp_auto_scroll_clean_url",
+    ),
+  );
+  return $info;
 }
