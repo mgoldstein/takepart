@@ -25,6 +25,7 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
 		'openpublish_article',
 		'feature_article',
 		'campaign',
+		'campaign_page',
 		'openpublish_photo_gallery',
 		'openpublish_video',
 		'video',
@@ -193,12 +194,6 @@ function tp_more_on_takepart_block_view($delta = '') {
 						break;
 				}
 
-				$field_thumbnail = field_get_items('node', $result, $field);
-				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
-
-#				$field_promoted = field_get_items('node',$result,'field_promoted');
-#				$field_promoted = $field_permanent_title[0]['value'];
-
 				// set the icon for photo galleries/videos
 				switch($result->type) {
 					case 'openpublish_photo_gallery';
@@ -209,10 +204,33 @@ function tp_more_on_takepart_block_view($delta = '') {
 					case 'openpublish_video';
 						$type = 'i-video-camera';
 						break;
+					case 'campaign_page';
+						// Replace the campaign_page with its parent promo_headline and thumbnail if none exists
+						// Get the parent campaign
+						$field_campaign_reference = field_get_items('node' ,$result, 'field_campaign_reference');
+						$field_campaign_reference = $field_campaign_reference[0]['target_id'];
+						$campaign_node = node_load($field_campaign_reference);
+	
+						if( !field_get_items('node' ,$node, 'field_permanent_title') ) {
+							$field_permanent_title = field_get_items('node' ,$campaign_node, 'field_permanent_title');
+							$result->field_promo_headline[$node->language] = $field_permanent_title;
+						}
+	
+						if( !field_get_items('node',$result,'field_thumbnail') ) {
+							$field_thumbnail = field_get_items('node' ,$campaign_node, 'field_thumbnail');
+							$result->field_thumbnail[$node->language] = $field_thumbnail;
+						}
+						break;
 					default:
 						$type = '';
 						break;
 				}
+
+				$field_thumbnail = field_get_items('node', $result, $field);
+				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
+
+#				$field_promoted = field_get_items('node',$result,'field_promoted');
+#				$field_promoted = $field_permanent_title[0]['value'];
 
 				// Add to the array names after this type
 		        ${$item['type']}[] = theme('tp_more_on_takepart_article', array(
