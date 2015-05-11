@@ -180,9 +180,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 						break;
 					}
 					
-				$field_permanent_title = field_get_items('node',$result,'field_permanent_title');
-				$field_permanent_title = $field_permanent_title[0]['value'];
-				$field_permanent_title = $field_permanent_title ? $field_permanent_title : $result->title;
+				$field_promo_headline = field_get_items('node',$result,'field_promo_headline');
+				$field_promo_headline = $field_promo_headline[0]['value'];
+				$field_promo_headline = $field_promo_headline ? $field_promo_headline : $result->title;
 
 				// Select thumbnail field
 				switch($result->type) {
@@ -211,9 +211,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 						$field_campaign_reference = $field_campaign_reference[0]['target_id'];
 						$campaign_node = node_load($field_campaign_reference);
 	
-						if( !field_get_items('node' ,$node, 'field_permanent_title') ) {
-							$field_permanent_title = field_get_items('node' ,$campaign_node, 'field_permanent_title');
-							$result->field_promo_headline[$node->language] = $field_permanent_title;
+						if( !field_get_items('node' ,$node, 'field_promo_headline') ) {
+							$field_promo_headline = field_get_items('node' ,$campaign_node, 'field_promo_headline');
+							$result->field_promo_headline[$node->language] = $field_promo_headline;
 						}
 	
 						if( !field_get_items('node',$result,'field_thumbnail') ) {
@@ -230,20 +230,20 @@ function tp_more_on_takepart_block_view($delta = '') {
 				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
 
 #				$field_promoted = field_get_items('node',$result,'field_promoted');
-#				$field_promoted = $field_permanent_title[0]['value'];
+#				$field_promoted = $field_promoted[0]['value'];
 
 				// Add to the array names after this type
 		        ${$item['type']}[] = theme('tp_more_on_takepart_article', array(
 		        	'result' => array(
-			        	'title' => $field_permanent_title,
+			        	'title' => $field_promo_headline,
 			        	'url' => entity_uri('node', $result),
 						'type' => $type,
 						'promo_type' => 'more_on_takepart_'.$item['type'],
 						'thumbnail' => theme('image_style', array(
 							'style_name' => 'homepage_featured_image',
 							'path' => $field_thumbnail->uri,
-							'alt' => $field_permanent_title,
-							'title' => $field_permanent_title,
+							'alt' => $field_promo_headline,
+							'title' => $field_promo_headline,
 						)),
 #						'sponsored' => $field_sponsored,
 		        	),
