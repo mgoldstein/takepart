@@ -44,3 +44,4 @@ Disallow: /update.php
 Disallow: /xmlrpc.php
 Disallow: /api/*
 Disallow: /api/
+Disallow: /autoscroll/
