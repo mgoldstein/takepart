@@ -14,6 +14,24 @@ function takepart_og_image_token_info() {
             'function' => "takepart_og_image_thumbnail",
         ),
     );
+    $info['tokens']['tp_og_image']['thumbnail_width'] = array(
+        'name' => t('Thumbnail'),
+        'description' => t("Returns the URL of the thumbnail width attached to the node"),
+        'dynamic' => TRUE,
+        'function' => array(
+            'file' => drupal_get_path("module", "takepart_og_image") . "/takepart_og_image.module",
+            'function' => "takepart_og_image_thumbnail_width",
+        ),
+    );
+    $info['tokens']['tp_og_image']['thumbnail_height'] = array(
+        'name' => t('Thumbnail'),
+        'description' => t("Returns the URL of the thumbnail height attached to the node"),
+        'dynamic' => TRUE,
+        'function' => array(
+            'file' => drupal_get_path("module", "takepart_og_image") . "/takepart_og_image.module",
+            'function' => "takepart_og_image_thumbnail_height",
+        ),
+    );
     $info['tokens']['tp_og_image']['article_main_image'] = array(
         'name' => t('Article Main Image'),
         'description' => t("Returns the URL of the article main image"),
@@ -40,6 +58,56 @@ function takepart_og_image_thumbnail($nid) {
     } else {
         return null;
     }
+}
+
+/**
+ *  @function:
+ *    Function is used to return the thumbnail width.
+ *    This function is replicated from the thumbnail function token
+ */
+function takepart_og_image_thumbnail_width($nid) {
+  if (!is_numeric($nid)) {
+    return 'Not-A-Number';
+  }
+  $thisnode = node_load($nid);
+  if (!empty($thisnode->field_thumbnail)) {
+    $thisfile = $thisnode->field_thumbnail['und'][0]['fid'];
+    $thumb = file_load($thisfile);
+    if (isset($thumb->metadata['width'])) {
+      return $thumb->metadata['width'];
+    }
+    else {
+      return null;
+    }
+  }
+  else {
+    return null;
+  }
+}
+
+/**
+ *  @function:
+ *    Function is used to return the thumbnail height.
+ *    This function is replicated from the thumbnail function token
+ */
+function takepart_og_image_thumbnail_height($nid) {
+  if (!is_numeric($nid)) {
+      return 'Not-A-Number';
+  }
+  $thisnode = node_load($nid);
+  if (!empty($thisnode->field_thumbnail)) {
+    $thisfile = $thisnode->field_thumbnail['und'][0]['fid'];
+    $thumb = file_load($thisfile);
+    if (isset($thumb->metadata['height'])) {
+      return $thumb->metadata['height'];
+    }
+    else {
+      return null;
+    }
+  }
+  else {
+    return null;
+  }
 }
 
 function takepart_og_image_article_main($nid) {
