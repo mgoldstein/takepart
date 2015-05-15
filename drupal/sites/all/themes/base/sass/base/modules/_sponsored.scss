@@ -1,0 +1,94 @@
+/* The Sponsored by: and Disclaimer appearing on content pages */
+
+.tp_sponsor {
+	text-align: center;
+	padding: auto 0;
+	font-family: $main-brand-font;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 15px;
+	span {
+		text-transform: uppercase;
+		margin-right: .5em;
+	}
+	width: 100%;
+	img {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+.sponsor-disclosure .tp_sponsored_content_disclaimer p {
+	background-color:$gray-background;
+	padding: 10px 15px;
+	font-family: $primary-sans-font;
+	font-size: 14px;
+	font-style: italic;
+}
+
+/* The PROMOTED tag */
+
+.promoted {
+	font-family: $secondary-sans-font;
+	text-transform: uppercase;
+	font-size: 12px;
+	line-height: 12px;
+	color: #fff;
+	background: black;
+	border-radius: 1px;
+	padding: 2px 4px 1px;
+	display: inline;
+}
+
+/* Promoted image overlay */
+
+.promoted_overlay {
+	font-family: $secondary-sans-font;
+	text-transform: uppercase;
+	z-index: 1;
+  bottom: 6px;
+  left: 0px;
+  position: absolute;
+  width: 98%;
+	overflow: hidden;
+  color: $light-gray;
+	font-size: 14px;
+	line-height: 20px;
+	padding-top: 4px;
+	padding-left: 2%;
+	background: black;
+
+  background: rgb(0, 0, 0) transparent;
+  background: rgba(0, 0, 0, 0.6);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+
+	span.sponsor_label {
+		margin-right: 1px;
+	}
+	span.sponsor_name {
+		font-size: 18px;
+		color: #fff;
+		white-space:nowrap;
+	}
+}
+
+/* Thumbnail image */
+
+.field-name-field-thumbnail,
+.views-field-field-thumbnail,
+.field-collection-item-field-featured-campaigns .content {
+  position: relative;
+  margin: 0;
+// 	border: 1px solid red;
+	a img {
+		z-index: 0;
+		position: relative;
+		top: 0;
+		left: 0;
+		max-width: 100%;
+		height: auto;
+	}
+}

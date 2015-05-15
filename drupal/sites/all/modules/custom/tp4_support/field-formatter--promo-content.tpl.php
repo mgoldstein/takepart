@@ -32,7 +32,7 @@
       //Output
       $output = '<li>';
       $output .= '<div class="promo-image">'. l($promo_image, $path, array('html' => true)). '</div>';
-      $output .= '<div class="promo-headline">'. l($promo_headline, $path, array('html' => true)). '</div>';
+      $output .= '<div class="promo-headline">'. l($promo_headline, $path, array('html' => true)). '</div>'._tp4_support_sponsor_flag($node);
       $output .= '</li>';
 
       print $output;
