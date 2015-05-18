@@ -281,7 +281,9 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
             '#attributes' => array(
               'class' => 'video-duration',
         ))));
-    
+
+				$node_view['#suffix'] .= _tp4_support_sponsor_flag($node);
+
         $node_view['field_promo_headline'][0]['#markup'] = $node_view['field_promo_headline'][0]['#markup'] . ' '; 
     
         $displays[] = $node_view;

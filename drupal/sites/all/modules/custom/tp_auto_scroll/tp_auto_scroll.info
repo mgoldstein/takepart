@@ -1,3 +1,5 @@
 name = TakePart Auto Scroll
 description = Auto scroll on TakePart
 core = 7.x
+
+dependencies[] = token_function

@@ -28,7 +28,6 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
   if($cached = cache_get($cache, 'cache') && $user->uid == 0)  {
     $output = $cached->data;
   }
-
   if(empty($output)) {
     $node->disable_social = TRUE;
 
@@ -63,6 +62,7 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
  * Where we want autoscroll to show
  */
 function tp_auto_scroll_pager($node){
+  global $base_url;
 
   $autoscroll_limit = variable_get('tp_auto_scroll_limit', 4);
   $selector_id = 'next-article';
@@ -87,10 +87,24 @@ function tp_auto_scroll_pager($node){
   $results = $query->execute();
   
   $articles = array();
+  //original article
+  
+  //add based on a key name so the front end can use it correctly
+  $og_data[$base_url. url('node/'. $node->nid)] = array(
+    'width' => takepart_og_image_thumbnail_width($node->nid),
+    'height' => takepart_og_image_thumbnail_height($node->nid)
+  );
   foreach($results['node'] as $key => $article){
     $articles[] = '/autoscroll/full/'. $key;
+    
+    //does for each auto loaded articles
+    $og_data[$base_url. url('node/'. $key)] = array(
+      'width' => takepart_og_image_thumbnail_width($key), //this token function lives in takepart_og_image.module
+      'height' => takepart_og_image_thumbnail_height($key), //this token function lives in takepart_og_image.module
+    );
   }
 
+  
   /* Add the settings */
   $settings = array(
     'tpAutoScroll' => array(
@@ -98,10 +112,12 @@ function tp_auto_scroll_pager($node){
         'articles' => $articles,
         'next_selector' => '#'. $selector_id,
         'content_selector' => 'article',
-        'limit' => $autoscroll_limit
+        'limit' => $autoscroll_limit,
+        'og_images' => $og_data
       ),
     ),
   );
+  
   drupal_add_js($settings, array('type' => 'setting', 'scope' => JS_DEFAULT));
 
   /* Add the behaviors */
@@ -123,7 +139,52 @@ function tp_auto_scroll_pager($node){
  * Implements hook_preprocess_node()
  */
 function tp_auto_scroll_preprocess_node(&$variables){
-  /* Pass the ddl id */
-  $variables['attributes_array']['data-ddl-page-id'] = $variables['node']->nid;
+  if($variables['view_mode'] == 'full'){
+    /* Pass the ddl id */
+    $variables['attributes_array']['data-ddl-page-id'] = $variables['node']->nid;
 
+    //Data elements for og tags
+    if(module_exists('metatag')){
+      $metatags = metatag_generate_entity_metatags($variables['node'], 'node');
+      if(isset($metatags['og:title'])){
+        $og_title = $metatags['og:title']['#attached']['drupal_add_html_head'][0][0]['#value'];
+        $variables['attributes_array']['data-tp-og-title'] = $og_title;
+      }
+      if(isset($metatags['og:description'])){
+        $og_description = $metatags['og:description']['#attached']['drupal_add_html_head'][0][0]['#value'];
+        $variables['attributes_array']['data-tp-og-description'] = $og_description;
+      }
+      if(isset($metatags['og:image'])){
+        $og_image = $metatags['og:image']['#attached']['drupal_add_html_head'][0][0]['#value'];
+        $variables['attributes_array']['data-tp-og-image'] = $og_image;
+      }
+      /* Statically set the URL, otherwise the ajax url will get returned */
+      global $base_url;
+      $variables['attributes_array']['data-tp-og-url'] = $base_url. url('node/'. $variables['node']->nid);
+    }
+  }
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function tp_auto_scroll_token_info() {
+    $token_file_path = drupal_get_path("module", "tp_auto_scroll")
+    . "/inc/tp_auto_scroll.token.inc";
+
+  $info['types']['tp_auto_scroll'] = array(
+    'name' => t('TakePart Auto Scroll'),
+    'description' => t("Tokens used for setting autoscroll meta data"),
+  );
+
+  $info['tokens']['tp_auto_scroll']['clean_url'] = array(
+    'name' => t('Clean URL'),
+    'description' => t("Blocks URL of autoscroll JSON from infiltrating meta data"),
+    'dynamic' => TRUE,
+    'function' => array(
+      'file' => $token_file_path,
+      'function' => "tp_auto_scroll_clean_url",
+    ),
+  );
+  return $info;
 }

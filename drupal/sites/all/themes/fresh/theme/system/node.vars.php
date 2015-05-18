@@ -134,11 +134,7 @@ function fresh_preprocess_node__openpublish_article(&$variables){
         $variables['auto-scroll'] = tp_auto_scroll_pager($variables['node']);
       }
     }
-    
-    //add vars for autoload
-    $variables['data-tp-url'] = url('node/' . $variables['node']->nid);
-    $variables['data-tp-url-title'] = $variables['node']->title;
-    
+
     //loading the module view from more on takepart
     $more_block = module_invoke('tp_more_on_takepart', 'block_view', 'more_on_takepart');
     
@@ -151,11 +147,19 @@ function fresh_preprocess_node__openpublish_article(&$variables){
     $field_sponsored = field_get_items('node', $variables['node'], 'field_sponsored');
     $tid = $field_sponsored[0]['tid'];
 	if($tid) {
-		$variables['sponsored'] = theme('fresh_sponsor', array('tid' => $tid));
-		$variables['sponsor_disclosure'] = theme('fresh_sponsor_disclaimer', array('tid' => $tid));    
+		$variables['sponsored'] = theme('base_sponsor', array('tid' => $tid));
+		$variables['sponsor_disclosure'] = theme('base_sponsor_disclaimer', array('tid' => $tid));    
 	}
 
   }
+
+	/* Sponsored */
+    $field_sponsored = field_get_items('node', $variables['node'], 'field_sponsored');
+    $tid = $field_sponsored[0]['tid'];
+	if($tid) {
+		$variables['sponsored'] = theme('fresh_sponsor', array('tid' => $tid));
+		$variables['sponsor_disclosure'] = theme('fresh_sponsor_disclaimer', array('tid' => $tid));    
+	}
 }
 
 /**
@@ -171,4 +175,5 @@ function fresh_preprocess_node__inline_content(&$variables){
   if($field_promo_headline = field_get_items('node' ,$variables['node'], 'field_promo_headline')){
     $variables['title'] = $field_promo_headline[0]['value'];
   }
+  $variables['title'] .= _tp4_support_sponsor_flag($variables['node'], true);
 }

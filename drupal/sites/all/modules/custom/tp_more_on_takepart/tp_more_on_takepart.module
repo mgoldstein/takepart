@@ -171,14 +171,14 @@ function tp_more_on_takepart_block_view($delta = '') {
 			// Get human-readable names	
 			$types = node_type_get_types();
 
-	        foreach ($items as $item) {
+			foreach ($items as $item) {
 
-    			$result = node_load($item['nid']);
+				$result = node_load($item['nid']);
 
-					//ensures that if the node load comes back with nothing then go ahead and break this loop
-					if (!$result) {
-						break;
-					}
+				//ensures that if the node load comes back with nothing then go ahead and break this loop
+				if (!$result) {
+					break;
+				}
 					
 				$field_promo_headline = field_get_items('node',$result,'field_promo_headline');
 				$field_promo_headline = $field_promo_headline[0]['value'];
@@ -193,6 +193,12 @@ function tp_more_on_takepart_block_view($delta = '') {
 						$field = 'field_thumbnail';
 						break;
 				}
+
+				$field_thumbnail = field_get_items('node', $result, $field);
+				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
+
+				$field_sponsored = field_get_items('node',$result,'field_sponsored');
+				$field_sponsored = $field_sponsored[0]['tid'];
 
 				// set the icon for photo galleries/videos
 				switch($result->type) {
@@ -233,10 +239,10 @@ function tp_more_on_takepart_block_view($delta = '') {
 #				$field_promoted = $field_promoted[0]['value'];
 
 				// Add to the array names after this type
-		        ${$item['type']}[] = theme('tp_more_on_takepart_article', array(
-		        	'result' => array(
-			        	'title' => $field_promo_headline,
-			        	'url' => entity_uri('node', $result),
+				${$item['type']}[] = theme('tp_more_on_takepart_article', array(
+					'result' => array(
+						'title' => $field_permanent_title,
+						'url' => entity_uri('node', $result),
 						'type' => $type,
 						'promo_type' => 'more_on_takepart_'.$item['type'],
 						'thumbnail' => theme('image_style', array(
@@ -245,9 +251,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 							'alt' => $field_promo_headline,
 							'title' => $field_promo_headline,
 						)),
-#						'sponsored' => $field_sponsored,
-		        	),
-		        ));
+						'sponsored' => $field_sponsored,
+					),
+				));
 			}
 
 			// Pass data through theme function.

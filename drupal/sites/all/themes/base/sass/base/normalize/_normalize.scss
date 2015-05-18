@@ -33,3 +33,14 @@ a{
 .pl-30{
   padding-left: 30px;
 }
+
+
+/**
+ * TAP Overrides
+ */
+body .tpsLogin{
+  display: none;
+}
+body .tpsLogin.tpmodalRendered{
+  display: inline-block;
+}
