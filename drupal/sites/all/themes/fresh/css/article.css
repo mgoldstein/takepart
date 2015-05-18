@@ -2472,6 +2472,19 @@ a:focus {
   padding-left: 30px;
 }
 
+/**
+ * TAP Overrides
+ */
+/* line 41, ../../base/sass/base/normalize/_normalize.scss */
+body .tpsLogin {
+  display: none;
+}
+
+/* line 44, ../../base/sass/base/normalize/_normalize.scss */
+body .tpsLogin.tpmodalRendered {
+  display: inline-block;
+}
+
 /* Overrides to the base normalize.scss */
 /* line 2, ../sass/base/_normalize.scss */
 * {
@@ -3872,17 +3885,17 @@ body .user-menu.fresh-theme {
   background: url('../images/logos-s3abcf13aa0.png') no-repeat;
 }
 
-/* line 60, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 60, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -68px;
 }
 
-/* line 60, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -40px;
 }

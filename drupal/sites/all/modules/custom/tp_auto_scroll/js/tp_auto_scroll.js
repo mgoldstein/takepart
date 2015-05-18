@@ -99,7 +99,7 @@
         }
         timer = window.setTimeout(function() {
           //default variables for this scope
-          var url = window.location.pathname;
+          var url = window.location.href;
           var title = document.title;
           var win = $(window);
           var viewport = {
@@ -107,7 +107,6 @@
             left : win.scrollLeft(),
             bottom : win.scrollTop() + win.height()
           };
-
 
           //For each article
           $('article').each(function(index, value) {
@@ -122,49 +121,35 @@
 
               /** Update the URL **/
               /* if article is active and data-tp-url != url, update it */
-              var tp_url = $(this).data('tpUrl');
-              var tp_url_title = $(this).data('tp-url-title'); //maps to data-tp-url-title
-              if(tp_url){
-                //ensures that the tp url is set before changing
-                if (typeof tp_url !== 'undefined') {
-                  url = tp_url;
-                  //only change the title if it's not undefined
-                  if (typeof tp_url_title !== 'undefined') {
-                    title = tp_url_title;
-                  }
+              var tp_og_url = $(this).data('tp-og-url');
+              var tp_og_title = $(this).data('tp-og-title');
+              var tp_og_image = $(this).data('tp-og-image');
+              var tp_og_description = $(this).data('tp-og-description');
+              // Upate the URL, social links and DDL based on URL logic
+              if (typeof tp_og_url != 'undefined' && tp_og_url != window.location.href) {
+                /** Update the URL **/
+                tp_url_changer(tp_og_url, tp_og_title);
+
+                /** Update the sharing **/
+                update_tp_social_media(tp_og_title, tp_og_url, tp_og_image, tp_og_description);
+
+                /** Update the DDL **/
+                var page_id = $(this).data('ddl-page-id');
+                if(page_id){
+                  update_tp_ddl(page_id);
                 }
-                // Upate the URL, social links and DDL based on URL logic
-                if (url != window.location.pathname && url != '') {
 
-                  /** Update the URL **/
-                  tp_url_changer(url, title);
-
-                  /** Update the sharing **/
-                  if(title){
-                    update_tp_social_media(title, window.location.href);
-                  }
-
-                  /** Update the DDL **/
-                  var page_id = $(this).data('ddl-page-id');
-                  if(page_id){
-                    update_tp_ddl(page_id);
-                  }
-
-                  /** Check for additional TAP widgets */
-                  // needs to happen after page info updates for DTM
-                  if(window.newTapWidgets == true){
-                    new TP.Bootstrapper().start();
-                    window.newTapWidgets = false;
-                  }
-
-
+                /** Check for additional TAP widgets */
+                // needs to happen after page info updates for DTM
+                if(window.newTapWidgets == true){
+                  new TP.Bootstrapper().start();
+                  window.newTapWidgets = false;
                 }
               }
 
             }else{
               $(this).removeClass('active');
             }
-
           });
           //updates the last scroll var
           lastScrollTop = viewport.top;
@@ -187,12 +172,23 @@
    *  @function:
    *    window function that is used to update the social links
    */
-  window.update_tp_social_media = function(title, url) {
+  window.update_tp_social_media = function(title, url, image, description) {
     //changes to update the social links
-    $("meta[property='og:title']").attr("content", title);
-    $("meta[property='og:url']").attr("content", url);
-    $("meta[name='twitter:title']").attr("content", title);
-    $("meta[name='twitter:url']").attr("content", url);
+    if (typeof title !== 'undefined') {
+      $("meta[property='og:title']").attr("content", title);
+      $("meta[name='twitter:title']").attr("content", title);
+    }
+    if (typeof url !== 'undefined') {
+      $("meta[property='og:url']").attr("content", url);
+      $("meta[name='twitter:url']").attr("content", url);
+	 $("link[rel='canonical']").attr("href", url);
+    }
+    if (typeof image !== 'undefined') {
+      $("meta[property='og:image']").attr("content", image);
+    }
+    if (typeof description !== 'undefined') {
+      $("meta[property='og:description']").attr("content", description);
+    }
     
     //updates the social config
     tp_social_config.services.mailto.title = title;

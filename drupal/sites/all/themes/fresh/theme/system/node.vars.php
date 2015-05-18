@@ -134,11 +134,7 @@ function fresh_preprocess_node__openpublish_article(&$variables){
         $variables['auto-scroll'] = tp_auto_scroll_pager($variables['node']);
       }
     }
-    
-    //add vars for autoload
-    $variables['data-tp-url'] = url('node/' . $variables['node']->nid);
-    $variables['data-tp-url-title'] = $variables['node']->title;
-    
+
     //loading the module view from more on takepart
     $more_block = module_invoke('tp_more_on_takepart', 'block_view', 'more_on_takepart');
     
