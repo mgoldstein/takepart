@@ -3782,7 +3782,7 @@ body .inline-content-video {
 /* line 19, ../../base/sass/base/modules/_sponsored.scss */
 .sponsor-disclosure .tp_sponsored_content_disclaimer {
   clear: both;
-  background-color: #eeeeee;
+  background-color: #f7f7f7;
   margin: 10px 15px;
   padding: 5px 10px 8px;
 }
@@ -3800,9 +3800,13 @@ body .inline-content-video {
 .sponsor-disclosure .tp_sponsored_content_disclaimer p a {
   color: #00a084;
 }
+/* line 35, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p i, .sponsor-disclosure .tp_sponsored_content_disclaimer p em {
+  font-style: normal;
+}
 
 /* The PROMOTED tag */
-/* line 40, ../../base/sass/base/modules/_sponsored.scss */
+/* line 43, ../../base/sass/base/modules/_sponsored.scss */
 .promoted {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -3816,7 +3820,7 @@ body .inline-content-video {
 }
 
 /* Promoted image overlay */
-/* line 54, ../../base/sass/base/modules/_sponsored.scss */
+/* line 57, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -3839,11 +3843,11 @@ body .inline-content-video {
   /* For IE 8*/
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
-/* line 77, ../../base/sass/base/modules/_sponsored.scss */
+/* line 80, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay span.sponsor_label {
   margin-right: 1px;
 }
-/* line 80, ../../base/sass/base/modules/_sponsored.scss */
+/* line 83, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay span.sponsor_name {
   font-size: 18px;
   color: #fff;
@@ -3851,14 +3855,14 @@ body .inline-content-video {
 }
 
 /* Thumbnail image */
-/* line 91, ../../base/sass/base/modules/_sponsored.scss */
+/* line 94, ../../base/sass/base/modules/_sponsored.scss */
 .field-name-field-thumbnail,
 .views-field-field-thumbnail,
 .field-collection-item-field-featured-campaigns .content {
   position: relative;
   margin: 0;
 }
-/* line 95, ../../base/sass/base/modules/_sponsored.scss */
+/* line 98, ../../base/sass/base/modules/_sponsored.scss */
 .field-name-field-thumbnail a img,
 .views-field-field-thumbnail a img,
 .field-collection-item-field-featured-campaigns .content a img {

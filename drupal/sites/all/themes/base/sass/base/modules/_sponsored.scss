@@ -18,7 +18,7 @@
 
 .sponsor-disclosure .tp_sponsored_content_disclaimer {
 	clear: both;
-	background-color:$gray-background;
+	background-color:$lt-gray-background;
 	margin: 10px 15px;
 	padding: 5px 10px 8px;
 	p {
@@ -31,6 +31,9 @@
 		line-height: 20px;
 		a {
 			color: $mint;
+		}
+		i, em {
+			font-style: normal;
 		}
 	}
 }

@@ -15673,7 +15673,7 @@ body #article-content .inline-content-playlist.align-full {
 /* line 19, ../../base/sass/base/modules/_sponsored.scss */
 .sponsor-disclosure .tp_sponsored_content_disclaimer {
   clear: both;
-  background-color: #eeeeee;
+  background-color: #f7f7f7;
   margin: 10px 15px;
   padding: 5px 10px 8px;
 }
@@ -15691,9 +15691,13 @@ body #article-content .inline-content-playlist.align-full {
 .sponsor-disclosure .tp_sponsored_content_disclaimer p a {
   color: #018b73;
 }
+/* line 35, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p i, .sponsor-disclosure .tp_sponsored_content_disclaimer p em {
+  font-style: normal;
+}
 
 /* The PROMOTED tag */
-/* line 40, ../../base/sass/base/modules/_sponsored.scss */
+/* line 43, ../../base/sass/base/modules/_sponsored.scss */
 .promoted {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -15707,7 +15711,7 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* Promoted image overlay */
-/* line 54, ../../base/sass/base/modules/_sponsored.scss */
+/* line 57, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -15730,11 +15734,11 @@ body #article-content .inline-content-playlist.align-full {
   /* For IE 8*/
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
-/* line 77, ../../base/sass/base/modules/_sponsored.scss */
+/* line 80, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay span.sponsor_label {
   margin-right: 1px;
 }
-/* line 80, ../../base/sass/base/modules/_sponsored.scss */
+/* line 83, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay span.sponsor_name {
   font-size: 18px;
   color: #fff;
@@ -15742,14 +15746,14 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* Thumbnail image */
-/* line 91, ../../base/sass/base/modules/_sponsored.scss */
+/* line 94, ../../base/sass/base/modules/_sponsored.scss */
 .field-name-field-thumbnail,
 .views-field-field-thumbnail,
 .field-collection-item-field-featured-campaigns .content {
   position: relative;
   margin: 0;
 }
-/* line 95, ../../base/sass/base/modules/_sponsored.scss */
+/* line 98, ../../base/sass/base/modules/_sponsored.scss */
 .field-name-field-thumbnail a img,
 .views-field-field-thumbnail a img,
 .field-collection-item-field-featured-campaigns .content a img {
@@ -15781,31 +15785,30 @@ body #article-content .inline-content-playlist.align-full {
 }
 /* line 18, ../sass/modules/_sponsored.scss */
 .tp_sponsored_content_disclaimer p {
-  background-color: #eeeeee;
   padding: 10px 15px;
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-size: 14px;
   font-style: italic;
 }
 
-/* line 28, ../sass/modules/_sponsored.scss */
+/* line 27, ../sass/modules/_sponsored.scss */
 .node-openpublish-photo-gallery .tp_sponsored_content_disclaimer {
   margin-left: 0;
 }
 
 /* Sponsor Tag Exceptions */
-/* line 37, ../sass/modules/_sponsored.scss */
+/* line 36, ../sass/modules/_sponsored.scss */
 .views-field-field-sponsored,
 .views-field-field-promo-short-headline {
   display: inline;
 }
-/* line 39, ../sass/modules/_sponsored.scss */
+/* line 38, ../sass/modules/_sponsored.scss */
 .views-field-field-sponsored .field-content,
 .views-field-field-promo-short-headline .field-content {
   display: inline;
 }
 
-/* line 47, ../sass/modules/_sponsored.scss */
+/* line 46, ../sass/modules/_sponsored.scss */
 .contextual-links-region .view-topic-listing .views-field.views-field-field-sponsored,
 #block-views-topic-listing-block .view-topic-listing .views-field.views-field-field-sponsored {
   float: left;
@@ -15814,21 +15817,21 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* Promoted image overlay exceptions */
-/* line 57, ../sass/modules/_sponsored.scss */
+/* line 56, ../sass/modules/_sponsored.scss */
 header.entry-header .promoted_overlay {
   bottom: 28px;
 }
 
-/* line 62, ../sass/modules/_sponsored.scss */
+/* line 61, ../sass/modules/_sponsored.scss */
 .field-collection-item-field-featured-campaigns .content {
   min-height: 272px;
 }
-/* line 64, ../sass/modules/_sponsored.scss */
+/* line 63, ../sass/modules/_sponsored.scss */
 .field-collection-item-field-featured-campaigns .content .promoted_overlay {
   margin-bottom: 120px;
 }
 
-/* line 69, ../sass/modules/_sponsored.scss */
+/* line 68, ../sass/modules/_sponsored.scss */
 .flashcard-related-content-wrapper .promoted_overlay {
   display: none;
 }
