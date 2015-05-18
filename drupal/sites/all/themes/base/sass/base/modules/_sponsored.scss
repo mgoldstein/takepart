@@ -7,14 +7,12 @@
 	font-size: 14px;
 	font-weight: bold;
 	margin-top: 15px;
-	span {
-		text-transform: uppercase;
-		margin-right: .5em;
-	}
+	text-transform: uppercase;
 	width: 100%;
 	img {
 		display: inline-block;
 		vertical-align: middle;
+		margin-left: .5em;
 	}
 }
 
