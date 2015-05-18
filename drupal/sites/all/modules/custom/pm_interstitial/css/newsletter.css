@@ -20,7 +20,7 @@
 /* line 13, ../sass/newsletter.scss */
 form {
   color: #555;
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-size: 12px;
 }
 
@@ -41,7 +41,7 @@ form {
 .form-type-textfield input {
   max-width: 100%;
   font-size: 12px;
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   z-index: 1;
   border: 1px solid #ccc;
   box-shadow: inset 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
@@ -86,7 +86,7 @@ form.newsletter-signup .form-actions input {
   cursor: pointer;
   background: #01BF9E;
   font-size: 24px;
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
 }
 /* line 66, ../sass/newsletter.scss */
 form.newsletter-signup .form-actions input[type=submit]:hover {
