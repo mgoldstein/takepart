@@ -3880,16 +3880,29 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* line 20, ../../base/sass/base/modules/_sponsored.scss */
-.sponsor-disclosure .tp_sponsored_content_disclaimer p {
+.sponsor-disclosure .tp_sponsored_content_disclaimer {
+  clear: both;
   background-color: #eeeeee;
-  padding: 10px 15px;
+  margin: 10px 15px;
+  padding: 5px 10px 8px;
+}
+/* line 25, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p {
+  margin: 0;
+  padding-bottom: 7px;
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   font-style: italic;
+  font-weight: lighter;
+  line-height: 20px;
+}
+/* line 33, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p a {
+  color: #00a084;
 }
 
 /* The PROMOTED tag */
-/* line 30, ../../base/sass/base/modules/_sponsored.scss */
+/* line 41, ../../base/sass/base/modules/_sponsored.scss */
 .promoted {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -3903,7 +3916,7 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* Promoted image overlay */
-/* line 44, ../../base/sass/base/modules/_sponsored.scss */
+/* line 55, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -3926,11 +3939,11 @@ body #article-content .inline-content-playlist.align-full {
   /* For IE 8*/
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
-/* line 67, ../../base/sass/base/modules/_sponsored.scss */
+/* line 78, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay span.sponsor_label {
   margin-right: 1px;
 }
-/* line 70, ../../base/sass/base/modules/_sponsored.scss */
+/* line 81, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay span.sponsor_name {
   font-size: 18px;
   color: #fff;
@@ -3938,14 +3951,14 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* Thumbnail image */
-/* line 81, ../../base/sass/base/modules/_sponsored.scss */
+/* line 92, ../../base/sass/base/modules/_sponsored.scss */
 .field-name-field-thumbnail,
 .views-field-field-thumbnail,
 .field-collection-item-field-featured-campaigns .content {
   position: relative;
   margin: 0;
 }
-/* line 85, ../../base/sass/base/modules/_sponsored.scss */
+/* line 96, ../../base/sass/base/modules/_sponsored.scss */
 .field-name-field-thumbnail a img,
 .views-field-field-thumbnail a img,
 .field-collection-item-field-featured-campaigns .content a img {

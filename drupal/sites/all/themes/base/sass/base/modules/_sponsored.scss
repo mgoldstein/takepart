@@ -17,12 +17,23 @@
 	}
 }
 
-.sponsor-disclosure .tp_sponsored_content_disclaimer p {
+.sponsor-disclosure .tp_sponsored_content_disclaimer {
+	clear: both;
 	background-color:$gray-background;
-	padding: 10px 15px;
-	font-family: $primary-sans-font;
-	font-size: 14px;
-	font-style: italic;
+	margin: 10px 15px;
+	padding: 5px 10px 8px;
+	p {
+		margin: 0;
+		padding-bottom:7px;
+		font-family: $primary-sans-font;
+		font-size: 13px;
+		font-style: italic;
+		font-weight:lighter;
+		line-height: 20px;
+		a {
+			color: $mint;
+		}
+	}
 }
 
 /* The PROMOTED tag */
