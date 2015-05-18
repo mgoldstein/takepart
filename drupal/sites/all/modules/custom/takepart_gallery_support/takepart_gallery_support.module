@@ -191,7 +191,8 @@ function template_preprocess_gallery_content(&$variables) {
       if($slide['title']) {
         $slide['attributes']['data-token'] = pathauto_cleanstring($slide['title']);
       } else {
-        $slide['attributes']['data-token'] = pathauto_cleanstring($file->filename);
+        $filename = array_shift(explode(".", $file->filename));
+        $slide['attributes']['data-token'] = pathauto_cleanstring($filename);
       }
 
       $alt_text = $slide['title'];
