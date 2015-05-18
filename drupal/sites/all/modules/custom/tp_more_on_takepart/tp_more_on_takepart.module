@@ -126,10 +126,16 @@ function tp_more_on_takepart_block_view($delta = '') {
 	switch ($delta) {
 		case 'more_on_takepart':
 //		$block['subject'] = t('More on TakePart');	// Put everything inside the block
+
 		if (user_access('access content')) {
 
 			// get node taxonomy term from the node
 			$node = node_load(arg(1));
+
+			//adding bypass fix for autoload
+			if (empty($node) && arg(0) == 'autoscroll' && is_numeric(arg(2))) {
+				$node = node_load((int)arg(2));
+			}
 
 			// Load the first two field_related_articles for this node
 			$field_related_stories = field_get_items('node',$node,'field_related_stories');
@@ -202,6 +208,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 					case 'video_playlist';
 					case 'openpublish_video';
 						$type = 'i-video-camera';
+						break;
+					default:
+						$type = '';
 						break;
 				}
 

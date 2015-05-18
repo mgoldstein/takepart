@@ -497,9 +497,10 @@
 .node-openpublish-article.view-mode-full {
     .field-name-body {
         .inline-content-video {
-            &.align-full {
-                width: 100%;
-            }
+          overflow: hidden;
+          &.align-full {
+            width: 100%;
+          }
         }
     }
 }

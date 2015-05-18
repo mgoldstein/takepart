@@ -270,6 +270,11 @@ function tp4_support_preprocess_page(&$variables) {
 	if (arg(0) === 'iframes') {
 		$variables['theme_hook_suggestions'][] = 'page__entity_iframe__node';
 	}
+  
+  //always adds the spectrum lib if field exist
+  if (isset($variables['page']['content']['system_main']['field_campaign_bg_color'])) {
+    drupal_add_library('color_field', 'bgrins-spectrum');
+  }
 }
 
 function tp4_menu_link__menu_takepart_links(array $variables) {

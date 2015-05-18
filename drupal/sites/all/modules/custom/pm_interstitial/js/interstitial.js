@@ -25,11 +25,11 @@
                 }
               };
               if(isMobile.any()) {
-                interstitial_init();
+			 // Do not display interstitial on mobile devices
+                // interstitial_init();
               }else{
                 interstitial_init();
               }
-
             });
 
             function GetQueryStringParams(sParam) {
@@ -48,7 +48,7 @@
 				// disallow scrolling on iOS when the modal is up
 				$(document).on('touchmove', function(e) {
 					if ($('.scrollable').has($(e.target)).length) {
-						if( $('#interstitial_modal_modal').css('display') != 'none' ) {
+						if(typeof $('#interstitial_modal_modal').css('display') != 'undefined' && $('#interstitial_modal_modal').css('display') != 'none' ) {
 							e.preventDefault();
 						}
 					}

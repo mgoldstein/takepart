@@ -21,6 +21,7 @@ Disallow: /comment/reply/
 Disallow: /downloads/
 Disallow: /flash/
 Disallow: /health.php
+Disallow: /appstatus.php
 Disallow: /includes/
 Disallow: /lists/
 Disallow: /misc/
@@ -44,3 +45,4 @@ Disallow: /update.php
 Disallow: /xmlrpc.php
 Disallow: /api/*
 Disallow: /api/
+Disallow: /autoscroll/

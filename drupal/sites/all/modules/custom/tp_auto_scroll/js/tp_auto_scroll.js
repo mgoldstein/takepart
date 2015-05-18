@@ -8,7 +8,7 @@
 
   Drupal.behaviors.tpAutoScroll = {
     attach: function(context, settings) {
-
+      window.newTapWidgets = true;
       /* Settings need to be set */
       if(Drupal.settings.tpAutoScroll.length == 1) {
         var settings = Drupal.settings.tpAutoScroll[0];
@@ -16,20 +16,50 @@
         var page = -1;
         var page_limit = settings.limit - 1;
 
+        /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
+        digitalData.pageInititial = digitalData.page;
+
         $(window).scroll(function() {
           var $window = $(window),
             elTop = $('#next-article').offset().top;
+          var window_bottom = $window.scrollTop() + $window.height();
+          var last_article = $('.article-wrapper:last').height() / 2;
 
           /* when the page scrolls to within 480px of #next-article */
-          if ($window.scrollTop() + $(window).height() + 480 > elTop && page < page_limit) {
+          if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
             if (alreadyloading == false) {
 
               /* Set the URL */
               var url = settings.articles[page + 1];
               alreadyloading = true;
               $.post(url, function(data) {
-                /* Where to post */
-                $('#next-article').before(data);
+
+                /* Not returning a json object (Drupal is slow at that) so let's convert it here */
+                data = jQuery.parseJSON(data);
+
+                /* Create a new event in the DDL to be used when the user scolls to the article */
+                digitalData.event.push(data.ddl);
+
+                /* Return Article */
+                $('#next-article').before(data.output);
+
+                // Update fb_comments
+                // vv Copied from fb_comments.js, because this doesn't work vv
+                if(typeof FB != 'undefined') {
+                  FB.XFBML.parse();
+                }
+                $('a.comments-count', context).once('FBComments', function () {
+                  $('a.comments-count').on('click', function(e){
+                    $(this).siblings('.fb_comments').attr('href', window.location.href).show();
+                    $(this).hide();
+                    e.preventDefault();
+                    return false;
+                  });
+                });
+
+                /* There are new Tap Widgets available on the page.  Delay these calls until page is active */
+                window.newTapWidgets = true;
+
                 alreadyloading = false;
                 page++;
               });
@@ -39,8 +69,7 @@
       }
     }
   }
-  
-  //creates a drupal behavior
+
   /**
    *
    *  @function:
@@ -61,71 +90,70 @@
       window.tp_url_title_orig = document.title;
       
       //binds to the scroll
+      var timer;
       $(window).bind('scroll', function() {
-        //default variables for this scope
-        var url = window.location.pathname;
-        var title = document.title;
-        var win = $(window);
-        var viewport = {
-          top : win.scrollTop(),
-          left : win.scrollLeft(),
-          bottom : win.scrollTop() + win.height()
-        };
-        
-        //creates offset based on device height
-        var offset_pad = -1 * (win.height() / 2);
-        
-        //checks which direction the scroll is occurring on. note in use but built
-        if (viewport.top < lastScrollTop) {
-          direction = 'up';
+
+        /* Only process the code below every 100ms on scroll */
+        if(timer) {
+          window.clearTimeout(timer);
         }
-        else {
-          direction = 'down';
-        }
-        
-        //does for each data-tp-url
-        $('[data-tp-url]').each(function(index, value) {
-          var tp_url = $(this).data('tpUrl'); //maps to data-tp-url
-          var tp_url_title = $(this).data('tpUrlTitle'); //maps to data-tp-url-title
-          var offset = $(this).offset();
-          offset.bottom = $(this).height() + offset.top;
-          
-          //ensures that if the height is bigger then the div then change it to whichever is smaller
-          if (offset_pad < $(this).height() / 2) {
-            offset_pad = -1 * $(this).height() / 2;
-          }
-          
-          //ensures that the tp url is set before changing
-          if (typeof tp_url !== 'undefined') {
-            if (offset.top + offset_pad < viewport.top) {
-              url = tp_url;
-              
-              //only change the title if it's not undefined
-              if (typeof tp_url_title !== 'undefined') {
-                title = tp_url_title;
+        timer = window.setTimeout(function() {
+          //default variables for this scope
+          var url = window.location.href;
+          var title = document.title;
+          var win = $(window);
+          var viewport = {
+            top : win.scrollTop(),
+            left : win.scrollLeft(),
+            bottom : win.scrollTop() + win.height()
+          };
+
+          //For each article
+          $('article').each(function(index, value) {
+
+            /** Update active Article **/
+            var articleTop = $(this).offset().top;
+            var articleBottom = articleTop + $(this).height();
+            var offset = (viewport.bottom - viewport.top)/2;
+
+            if((viewport.top <= articleBottom - offset) && (viewport.top >= articleTop - offset)){
+              $(this).addClass('active');
+
+              /** Update the URL **/
+              /* if article is active and data-tp-url != url, update it */
+              var tp_og_url = $(this).data('tp-og-url');
+              var tp_og_title = $(this).data('tp-og-title');
+              var tp_og_image = $(this).data('tp-og-image');
+              var tp_og_description = $(this).data('tp-og-description');
+              // Upate the URL, social links and DDL based on URL logic
+              if (typeof tp_og_url != 'undefined' && tp_og_url != window.location.href) {
+                /** Update the URL **/
+                tp_url_changer(tp_og_url, tp_og_title);
+
+                /** Update the sharing **/
+                update_tp_social_media(tp_og_title, tp_og_url, tp_og_image, tp_og_description);
+
+                /** Update the DDL **/
+                var page_id = $(this).data('ddl-page-id');
+                if(page_id){
+                  update_tp_ddl(page_id);
+                }
+
+                /** Check for additional TAP widgets */
+                // needs to happen after page info updates for DTM
+                if(window.newTapWidgets == true){
+                  new TP.Bootstrapper().start();
+                  window.newTapWidgets = false;
+                }
               }
 
-              return;
+            }else{
+              $(this).removeClass('active');
             }
-          }
-          
-          //changes back to original page if needed
-          if (index === 0) {
-            //ensures that if user scrolls back to the top that we have the original
-            if (offset.top + offset_pad > viewport.top) {
-              url = tp_url_orig;
-              title = tp_url_title_orig;
-            }
-          }
-        });
-        
-        //updates the last scroll var
-        lastScrollTop = viewport.top;
-        
-        //only change the url if it's not the same
-        if (url != window.location.pathname) {
-          tp_url_changer(url, title);
-        }
+          });
+          //updates the last scroll var
+          lastScrollTop = viewport.top;
+        }, 100);
       });
     }
   }
@@ -135,34 +163,86 @@
    *  window function that is used to update the URL and is binded to the scroll.
    */
   window.tp_url_changer = function(url, title) {
-    //change url if not empty
-    if (url != '') {
-      //change url with pushstate so that the page doesnt reload
-      window.history.pushState({}, url, url);
-      document.title = title;
-      
-      update_tp_social_media(title, window.location.href);
-    }
+    //change url with pushstate so that the page doesnt reload
+    window.history.pushState({}, url, url);
+    document.title = title;
   }
   
   /**
    *  @function:
    *    window function that is used to update the social links
    */
-  window.update_tp_social_media = function(title, url) {
+  window.update_tp_social_media = function(title, url, image, description) {
     //changes to update the social links
-    $("meta[property='og:title']").attr("content", title);
-    $("meta[property='og:url']").attr("content", url);
-    $("meta[name='twitter:title']").attr("content", title);
-    $("meta[name='twitter:url']").attr("content", url);
+    if (typeof title !== 'undefined') {
+      $("meta[property='og:title']").attr("content", title);
+      $("meta[name='twitter:title']").attr("content", title);
+    }
+    if (typeof url !== 'undefined') {
+      $("meta[property='og:url']").attr("content", url);
+      $("meta[name='twitter:url']").attr("content", url);
+	 $("link[rel='canonical']").attr("href", url);
+    }
+    if (typeof image !== 'undefined') {
+      $("meta[property='og:image']").attr("content", image);
+    }
+    if (typeof description !== 'undefined') {
+      $("meta[property='og:description']").attr("content", description);
+    }
     
     //updates the social config
     tp_social_config.services.mailto.title = title;
     tp_social_config.services.twitter.text = document.title;
     tp_social_config.services.twitter.url = url;
+    tp_social_config.services.facebook.title = title;
+    tp_social_config.services.facebook.url = url;
+    tp_social_config.services.googleplus.title = title;
+    tp_social_config.services.googleplus.url = url;
+    tp_social_config.services.tumblr.title = title;
+    tp_social_config.services.tumblr.url = url;
+    
+    //only update the og metatag data if the url is set
+    if (Drupal.settings.tpAutoScroll[0]['og_images'][url] != undefined) {
+      var width = Drupal.settings.tpAutoScroll[0]['og_images'][url]['width'];
+      var height = Drupal.settings.tpAutoScroll[0]['og_images'][url]['height'];
+      
+      //ensures we only update if if the metatag exists before
+      if ($("meta[property='og:image:width']").length == 1) {
+        $("meta[property='og:image:width']").attr("content", width);
+      }
+      
+      //ensures we only update if if the metatag exists before
+      if ($("meta[property='og:image:height']").length == 1) {
+        $("meta[property='og:image:height']").attr("content", height);
+      }
+    }
     
     //refires to update
     $('body').find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
   }
 
+  /**
+   *  @function:
+   *  Update PageInfo in DDL with the correct Page Load event data
+   */
+  window.update_tp_ddl = function(id) {
+
+    /* get the event with the page id */
+    for (var i=0; i < digitalData.event.length; i++) {
+      if(typeof(digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id){
+        digitalData.page = digitalData.event[i].eventInfo.page;
+        _satellite.track('autoload');
+        return;
+      }
+    }
+
+    /* If no event exists then it is the initial page load */
+    digitalData.page = digitalData.pageInitial;
+    _satellite.track('autoload');
+
+  }
+
 })(jQuery, Drupal, this, this.document);
+
+
+

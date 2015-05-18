@@ -69,6 +69,19 @@
         else {
           delete tp_social_config.services.pinterest;
         }
+        
+        //only fix for iphone
+        if( /iPhone/i.test(navigator.userAgent)) {
+          //on load adjust the sticky with
+          var window_width = $(window).width();
+          $('.social-wrapper.mobile').width(window_width);
+          
+          //add bing to resize so that it resizes for iphone
+          $(window).smartresize(function() {
+            var window_width = $(window).width();
+            $('.social-wrapper.mobile').width(window_width);
+          });
+        }
 
         /* Make sticky when screensize is greater than 768px */
           $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function() {
@@ -101,13 +114,6 @@
   // To understand behaviors, see https://drupal.org/node/756722#behaviors
   Drupal.behaviors.mobileSocialNav = {
     attach: function(context, settings) {
-
-      $('li.share h3').toggle(function(){
-        $(this).parents('.social-wrapper').addClass('sharing');
-      }, function(){
-        $(this).parents('.social-wrapper').removeClass('sharing');
-      });
-
 
       // Show the mobile social nav bar when window scrolls down
       var didScroll;

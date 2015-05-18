@@ -32,8 +32,11 @@
       };
 
       $(window).on('scroll', function(e) {
+        //adding a conditional check to ensure that it doesn't stop the page.
+        //this functionality may not be in used anymore.
+        var bottom_el = ($bottomEl.offset() != null) ? $bottomEl.offset().top - $stickyEl.outerHeight(true) : $stickyEl.outerHeight(true);
         var isSticky = $stickyEl.hasClass(options.stickyClass),
-            stickyElLowestPoint = $bottomEl.offset().top - $stickyEl.outerHeight(true);
+            stickyElLowestPoint = bottom_el;
 
         // add/remove the sticky class
         if (window.scrollY > ($wrap.offset().top - options.offset)) {

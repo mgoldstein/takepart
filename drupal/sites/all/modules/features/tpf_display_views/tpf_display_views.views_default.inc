@@ -442,23 +442,27 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
   $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'Read More on TAKEPART';
   /* Field: Content: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['body']['alter']['text'] = '[body] <p>[view_node]</p>';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['body']['settings'] = array(
     'trim_length' => '1200',
   );
-  /* Field: Content: Link */
-  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
-  $handler->display->display_options['fields']['view_node']['label'] = 'Read More';
-  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['view_node']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['view_node']['text'] = 'Read More on TAKEPART';
   $handler->display->display_options['path'] = 'content/%/full_feed.xml ';
 
   /* Display: Yahoo Feed */

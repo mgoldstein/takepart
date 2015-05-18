@@ -39,21 +39,6 @@ $card_types = array(
 define('CARDTYPES', serialize($card_types));
 
 
-function tp4_theme($existing, $type, $theme, $path) {
-	$path = drupal_get_path('theme', 'tp4') . '/templates/';
-
-    $items['tp4_sponsor'] = array(
-	    'template' => 'tp4-sponsor',
-        'path' => $path,
-    );
-    $items['tp4_sponsor_disclaimer'] = array(
-	    'template' => 'tp4-sponsor-disclaimer',
-        'path' => $path,
-    );
-    return $items;
-}
-
-
 /**
  * Invokes hook_preprocess_html()
  * @param $variables
@@ -225,10 +210,10 @@ function tp4_preprocess_page(&$variables) {
     $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
     $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
 
-		$s = field_get_items('node', $variables['node'], 'field_sponsored');
-		if($s[0]['tid']) {
-			drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
-		}
+    $s = field_get_items('node', $variables['node'], 'field_sponsored');
+    if($s[0]['tid']) {
+    	drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
+    }
   }
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
@@ -1231,7 +1216,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center .= l($image, $path, array('html' => true));
       $center .= '<h3 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
       $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
-			$center .= _tp4_support_sponsor_flag($node);
+      $center .= _tp4_support_sponsor_flag($node);
 
     }
     else{ //multivalue
@@ -1286,7 +1271,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
           $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
         }
 
-				$headline .= _tp4_support_sponsor_flag($node);
+        $headline .= _tp4_support_sponsor_flag($node);
 
         $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
         $image = file_create_url($file->uri);
@@ -1566,8 +1551,8 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
         // @see tp4_field__field_article_main_image__feature_article()
         // @see tp4_field__field_article_main_image__openpublish_article()
         // @see field-formatter--author-full.tpl.php
-				_tp4_sponsor($variables);
-		}
+        _tp4_sponsor($variables);
+    } // if ($variables['view_mode'] == 'full')
 }
 
 /**
@@ -1994,6 +1979,7 @@ function tp4_menu_link(array $variables) {
     return theme_menu_link($variables);
 }
 
+// I think this is overridden by tp4_support/field-formatter--author-full.tpl.php
 function tp4_field__field_author__openpublish_article($variables) {
     $output = '';
 
@@ -2489,7 +2475,7 @@ function _tp4_sponsor(&$variables){
 			$logo = ' '.$sponsor->name;
 		}
 
-		$variables['content']['sponsored'] = theme('tp4_sponsor', array('sponsor' => $sponsored_by, 'logo' => $logo));
+		$variables['content']['sponsored'] = theme('base_sponsor', array('sponsor' => $sponsored_by, 'logo' => $logo));
 
 		// Get (default) disclaimer
 		if($sponsor->description) {
@@ -2499,7 +2485,7 @@ function _tp4_sponsor(&$variables){
 	    	$disclaimer = $default_disclaimer->description;
 		}
 
-		$variables['content']['sponsor_disclaimer'] = theme('tp4_sponsor_disclaimer', array('disclaimer' => trim($disclaimer)));
+		$variables['content']['sponsor_disclaimer'] = theme('base_sponsor_disclaimer', array('disclaimer' => trim($disclaimer)));
 
 	}
 

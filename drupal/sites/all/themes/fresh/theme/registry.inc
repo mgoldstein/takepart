@@ -35,7 +35,7 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
     ),
     'fresh_author_teaser' => array(
       'variables' => array(
-        'author' => '',
+        'authors' => '',
         'published_at' => ''
       )
     ),
