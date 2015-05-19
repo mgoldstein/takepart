@@ -3780,7 +3780,7 @@ body .inline-content-video {
 }
 
 /* line 19, ../../base/sass/base/modules/_sponsored.scss */
-.sponsor-disclosure .tp_sponsored_content_disclaimer {
+.tp_sponsored_content_disclaimer {
   clear: both;
   background-color: #f7f7f7;
   margin: 10px 0px;
@@ -3788,12 +3788,12 @@ body .inline-content-video {
 }
 @media all and (min-width: 480px) {
   /* line 19, ../../base/sass/base/modules/_sponsored.scss */
-  .sponsor-disclosure .tp_sponsored_content_disclaimer {
+  .tp_sponsored_content_disclaimer {
     margin: 10px 15px;
   }
 }
 /* line 27, ../../base/sass/base/modules/_sponsored.scss */
-.sponsor-disclosure .tp_sponsored_content_disclaimer p {
+.tp_sponsored_content_disclaimer p {
   margin: 0;
   padding-bottom: 7px;
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
@@ -3803,11 +3803,11 @@ body .inline-content-video {
   line-height: 20px;
 }
 /* line 35, ../../base/sass/base/modules/_sponsored.scss */
-.sponsor-disclosure .tp_sponsored_content_disclaimer p a {
+.tp_sponsored_content_disclaimer p a {
   color: #00a084;
 }
 /* line 38, ../../base/sass/base/modules/_sponsored.scss */
-.sponsor-disclosure .tp_sponsored_content_disclaimer p i, .sponsor-disclosure .tp_sponsored_content_disclaimer p em {
+.tp_sponsored_content_disclaimer p i, .tp_sponsored_content_disclaimer p em {
   font-style: normal;
 }
 
