@@ -53,9 +53,10 @@
 /* Promoted image overlay exceptions */
 
 header.entry-header {
-	.promoted_overlay {
-		bottom: 28px;
-	}
+  .promoted_overlay {
+    padding-bottom: 28px;
+    z-index: 0;
+  }
 }
 
 .field-collection-item-field-featured-campaigns .content {
