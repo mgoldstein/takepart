@@ -65,6 +65,10 @@
         imageSrc = imageSrc.split('?')[0].split('#')[0];
         tp_social_config.services.pinterest.media = imageSrc;
 
+        if( $("meta[property='sponsored']").attr("content") ) {
+	        shareHeadline = shareHeadline + ' (' + $("meta[property='sponsored']").attr("content") + ')';
+        }
+
         tp_social_config.services.pinterest.description = shareDescription;
         tp_social_config.services.tumblr.caption = shareDescription;
         tp_social_config.services.facebook.description = shareDescription;
