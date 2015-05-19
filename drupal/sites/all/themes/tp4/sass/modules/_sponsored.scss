@@ -6,7 +6,8 @@
 
 // Flashcards, Photo Galleries
 .node-flashcard .tp_sponsor,
-.node-openpublish-photo-gallery .tp_sponsor {
+.node-openpublish-photo-gallery .tp_sponsor,
+.node-feature-article .tp_sponsor {
 	text-align: left;
 	margin-bottom: 1.5em;
 }
@@ -15,7 +16,6 @@
 .tp_sponsored_content_disclaimer {
 	margin-left: 53px;
 	p {
-		background-color:$gray-background;
 		padding: 10px 15px;
 		font-family: $primary-sans-font;
 		font-size: 14px;
@@ -65,6 +65,7 @@ header.entry-header {
 	}
 }
 
-.flashcard-related-content-wrapper .promoted_overlay {
+.flashcard-related-content-wrapper .promoted_overlay,
+.flashcard-realted-content-primary .promoted_overlay {
 	display: none;
 }

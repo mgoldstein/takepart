@@ -1,5 +1,5 @@
 /* Helpers */
-@import "../../../../themes/tp4/sass/helpers/variables";
+@import "../../../../themes/base/sass/base/helpers/variables";
 
 body {
 	background: #fff;
@@ -51,7 +51,7 @@ header {
 		margin-bottom: 5px;
 	}
 	p#dont {
-		font-family: $times;
+		font-family: $times-new-roman;
 		font-size: 12px;
 		clear:both;
 		margin: 0.5em 0;

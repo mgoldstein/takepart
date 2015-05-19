@@ -90,21 +90,27 @@ function template_preprocess_gallery_cover_slide(&$variables) {
   $node = $variables['node'];
   $variables['gallery_title'] = check_plain($node->title);
 
-  if ($node->field_gallery_main_image) {
+  //ensures that the main or thumbnail is not empty
+  if (isset($node->field_gallery_main_image) && !empty($node->field_gallery_main_image)) {
     $cover_slide = field_get_items('node', $node, 'field_gallery_main_image');
-  } else {
+  }
+  else if (isset($node->field_thumbnail) && !empty($node->field_thumbnail)) {
     $cover_slide = field_get_items('node', $node, 'field_thumbnail');
   }
   $alt_text = $node->title;
-  if ($alt_items = field_get_items('file', $cover_slide[0]['file'], 'field_media_alt')) {
-    $alt_text = drupal_render(field_view_value('file', $cover_slide[0]['file'], 'field_media_alt', $alt_items[0]));
-  }
+  
+  //checks to see if there's a cover slide if not then dont add
+  if (!empty($cover_slide)) {
+    if ($alt_items = field_get_items('file', $cover_slide[0]['file'], 'field_media_alt')) {
+      $alt_text = drupal_render(field_view_value('file', $cover_slide[0]['file'], 'field_media_alt', $alt_items[0]));
+    }
 
-  $variables['gallery_cover_image'] = theme('image_style', array(
-    'path' => $cover_slide[0]['file']->uri,
-    'style_name' => 'tp_gallery_slide',
-    'alt' => $alt_text,
-  ));
+    $variables['gallery_cover_image'] = theme('image_style', array(
+      'path' => $cover_slide[0]['file']->uri,
+      'style_name' => 'tp_gallery_slide',
+      'alt' => $alt_text,
+    ));
+  }
 }
 
 /**
@@ -185,7 +191,8 @@ function template_preprocess_gallery_content(&$variables) {
       if($slide['title']) {
         $slide['attributes']['data-token'] = pathauto_cleanstring($slide['title']);
       } else {
-        $slide['attributes']['data-token'] = pathauto_cleanstring($file->filename);
+        $filename = array_shift(explode(".", $file->filename));
+        $slide['attributes']['data-token'] = pathauto_cleanstring($filename);
       }
 
       $alt_text = $slide['title'];

@@ -7,23 +7,38 @@
 	font-size: 14px;
 	font-weight: bold;
 	margin-top: 15px;
-	span {
-		text-transform: uppercase;
-		margin-right: .5em;
-	}
+	text-transform: uppercase;
 	width: 100%;
 	img {
 		display: inline-block;
 		vertical-align: middle;
+		margin-left: .5em;
 	}
 }
 
-.sponsor-disclosure .tp_sponsored_content_disclaimer p {
-	background-color:$gray-background;
-	padding: 10px 15px;
-	font-family: $primary-sans-font;
-	font-size: 14px;
-	font-style: italic;
+.sponsor-disclosure .tp_sponsored_content_disclaimer {
+	clear: both;
+	background-color:$lt-gray-background;
+	margin: 10px 0px;
+	@include breakpoint($breakpoint-phablet) {
+		margin: 10px 15px;
+	}
+	padding: 5px 10px 8px;
+	p {
+		margin: 0;
+		padding-bottom:7px;
+		font-family: $primary-sans-font;
+		font-size: 13px;
+		font-style: italic;
+		font-weight:lighter;
+		line-height: 20px;
+		a {
+			color: $mint;
+		}
+		i, em {
+			font-style: normal;
+		}
+	}
 }
 
 /* The PROMOTED tag */
