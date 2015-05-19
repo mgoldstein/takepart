@@ -276,9 +276,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'action' => 'action',
     'openpublish_article' => 'openpublish_article',
-    'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -376,7 +374,6 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
-    'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
@@ -691,7 +688,11 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['defaults']['use_ajax'] = FALSE;
   $handler->display->display_options['defaults']['group_by'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
@@ -3015,6 +3016,14 @@ print $value;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Sponsored */
+  $handler->display->display_options['fields']['field_sponsored']['id'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['table'] = 'field_data_field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['field'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['label'] = '';
+  $handler->display->display_options['fields']['field_sponsored']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sponsored']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_sponsored']['group_column'] = 'entity_id';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';

@@ -22,6 +22,7 @@ dependencies[] = node_reference
 dependencies[] = options
 dependencies[] = redirect
 dependencies[] = strongarm
+dependencies[] = takepart_sponsor
 dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = tpf_content_field_bases

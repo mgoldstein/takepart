@@ -134,6 +134,13 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['label'] = '';
   $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
+  /* Field: Content: Sponsored */
+  $handler->display->display_options['fields']['field_sponsored']['id'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['table'] = 'field_data_field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['field'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['label'] = '';
+  $handler->display->display_options['fields']['field_sponsored']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sponsored']['type'] = 'taxonomy_term_reference_plain';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -223,6 +230,13 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_promo_short_headline']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_promo_short_headline']['alter']['text'] = '<span class="[type]"><a href="[path]">[field_promo_short_headline]</a></span>';
   $handler->display->display_options['fields']['field_promo_short_headline']['element_label_colon'] = FALSE;
+  /* Field: Content: Sponsored */
+  $handler->display->display_options['fields']['field_sponsored']['id'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['table'] = 'field_data_field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['field'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['label'] = '';
+  $handler->display->display_options['fields']['field_sponsored']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sponsored']['type'] = 'taxonomy_term_reference_plain';
   /* Sort criterion: Nodequeue: Queue ID */
   $handler->display->display_options['sorts']['qid']['id'] = 'qid';
   $handler->display->display_options['sorts']['qid']['table'] = 'nodequeue_nodes';
@@ -349,6 +363,13 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_action_url']['alter']['absolute'] = TRUE;
   $handler->display->display_options['fields']['field_action_url']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_action_url']['click_sort_column'] = 'url';
+  /* Field: Content: Sponsored */
+  $handler->display->display_options['fields']['field_sponsored']['id'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['table'] = 'field_data_field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['field'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['label'] = '';
+  $handler->display->display_options['fields']['field_sponsored']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sponsored']['type'] = 'taxonomy_term_reference_plain';
   /* Sort criterion: Nodequeue: Position */
   $handler->display->display_options['sorts']['position']['id'] = 'position';
   $handler->display->display_options['sorts']['position']['table'] = 'nodequeue_nodes';
