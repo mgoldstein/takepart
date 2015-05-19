@@ -3760,6 +3760,126 @@ body .inline-content-video {
   overflow: hidden;
 }
 
+/* The Sponsored by: and Disclaimer appearing on content pages */
+/* line 3, ../../base/sass/base/modules/_sponsored.scss */
+.tp_sponsor {
+  text-align: center;
+  padding: auto 0;
+  font-family: "Brown", Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 15px;
+  text-transform: uppercase;
+  width: 100%;
+}
+/* line 12, ../../base/sass/base/modules/_sponsored.scss */
+.tp_sponsor img {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: .5em;
+}
+
+/* line 19, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer {
+  clear: both;
+  background-color: #f7f7f7;
+  margin: 10px 0px;
+  padding: 5px 10px 8px;
+}
+@media all and (min-width: 480px) {
+  /* line 19, ../../base/sass/base/modules/_sponsored.scss */
+  .sponsor-disclosure .tp_sponsored_content_disclaimer {
+    margin: 10px 15px;
+  }
+}
+/* line 27, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p {
+  margin: 0;
+  padding-bottom: 7px;
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: lighter;
+  line-height: 20px;
+}
+/* line 35, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p a {
+  color: #00a084;
+}
+/* line 38, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p i, .sponsor-disclosure .tp_sponsored_content_disclaimer p em {
+  font-style: normal;
+}
+
+/* The PROMOTED tag */
+/* line 46, ../../base/sass/base/modules/_sponsored.scss */
+.promoted {
+  font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 12px;
+  color: #fff;
+  background: black;
+  border-radius: 1px;
+  padding: 2px 4px 1px;
+  display: inline;
+}
+
+/* Promoted image overlay */
+/* line 60, ../../base/sass/base/modules/_sponsored.scss */
+.promoted_overlay {
+  font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
+  text-transform: uppercase;
+  z-index: 1;
+  bottom: 6px;
+  left: 0px;
+  position: absolute;
+  width: 98%;
+  overflow: hidden;
+  color: #c7c7c7;
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 4px;
+  padding-left: 2%;
+  background: black;
+  background: black transparent;
+  background: rgba(0, 0, 0, 0.6);
+  /* For IE 5.5 - 7*/
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+/* line 83, ../../base/sass/base/modules/_sponsored.scss */
+.promoted_overlay span.sponsor_label {
+  margin-right: 1px;
+}
+/* line 86, ../../base/sass/base/modules/_sponsored.scss */
+.promoted_overlay span.sponsor_name {
+  font-size: 18px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Thumbnail image */
+/* line 97, ../../base/sass/base/modules/_sponsored.scss */
+.field-name-field-thumbnail,
+.views-field-field-thumbnail,
+.field-collection-item-field-featured-campaigns .content {
+  position: relative;
+  margin: 0;
+}
+/* line 101, ../../base/sass/base/modules/_sponsored.scss */
+.field-name-field-thumbnail a img,
+.views-field-field-thumbnail a img,
+.field-collection-item-field-featured-campaigns .content a img {
+  z-index: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: auto;
+}
+
 /* line 1, ../sass/modules/_header.scss */
 #header {
   display: block;
@@ -3885,17 +4005,17 @@ body .user-menu.fresh-theme {
   background: url('../images/logos-s3abcf13aa0.png') no-repeat;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -68px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -40px;
 }
@@ -4184,24 +4304,24 @@ footer .corporate-footer ul li a {
 /*****************
  * Article Page
  *****************/
-/* line 39, ../sass/article.scss */
+/* line 40, ../sass/article.scss */
 h1 {
   margin-top: 10px;
   margin-bottom: 15px;
 }
 
-/* line 43, ../sass/article.scss */
+/* line 44, ../sass/article.scss */
 .main-media {
   display: block;
   margin: 0 auto;
 }
 
-/* line 47, ../sass/article.scss */
+/* line 48, ../sass/article.scss */
 .headline {
   margin: 20px inherit;
 }
 
-/* line 50, ../sass/article.scss */
+/* line 51, ../sass/article.scss */
 .btn-secondary {
   display: block;
   width: 40px;
@@ -4210,22 +4330,22 @@ h1 {
   line-height: 31px;
 }
 
-/* line 57, ../sass/article.scss */
+/* line 58, ../sass/article.scss */
 .horizontal-menu {
   margin-bottom: 5px;
   margin-top: 6px;
 }
-/* line 60, ../sass/article.scss */
+/* line 61, ../sass/article.scss */
 .horizontal-menu li {
   margin-right: 4px;
 }
 
-/* line 64, ../sass/article.scss */
+/* line 65, ../sass/article.scss */
 .field-item > p:first-child {
   margin-top: 0;
 }
 
-/* line 68, ../sass/article.scss */
+/* line 69, ../sass/article.scss */
 #more-on-takepart {
   margin-bottom: 5px;
   border-bottom: 1px solid #CCC;
