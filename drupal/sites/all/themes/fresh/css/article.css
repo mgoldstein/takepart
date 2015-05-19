@@ -3783,10 +3783,16 @@ body .inline-content-video {
 .sponsor-disclosure .tp_sponsored_content_disclaimer {
   clear: both;
   background-color: #f7f7f7;
-  margin: 10px 15px;
+  margin: 10px 0px;
   padding: 5px 10px 8px;
 }
-/* line 24, ../../base/sass/base/modules/_sponsored.scss */
+@media all and (min-width: 480px) {
+  /* line 19, ../../base/sass/base/modules/_sponsored.scss */
+  .sponsor-disclosure .tp_sponsored_content_disclaimer {
+    margin: 10px 15px;
+  }
+}
+/* line 27, ../../base/sass/base/modules/_sponsored.scss */
 .sponsor-disclosure .tp_sponsored_content_disclaimer p {
   margin: 0;
   padding-bottom: 7px;
@@ -3796,17 +3802,17 @@ body .inline-content-video {
   font-weight: lighter;
   line-height: 20px;
 }
-/* line 32, ../../base/sass/base/modules/_sponsored.scss */
+/* line 35, ../../base/sass/base/modules/_sponsored.scss */
 .sponsor-disclosure .tp_sponsored_content_disclaimer p a {
   color: #00a084;
 }
-/* line 35, ../../base/sass/base/modules/_sponsored.scss */
+/* line 38, ../../base/sass/base/modules/_sponsored.scss */
 .sponsor-disclosure .tp_sponsored_content_disclaimer p i, .sponsor-disclosure .tp_sponsored_content_disclaimer p em {
   font-style: normal;
 }
 
 /* The PROMOTED tag */
-/* line 43, ../../base/sass/base/modules/_sponsored.scss */
+/* line 46, ../../base/sass/base/modules/_sponsored.scss */
 .promoted {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -3820,7 +3826,7 @@ body .inline-content-video {
 }
 
 /* Promoted image overlay */
-/* line 57, ../../base/sass/base/modules/_sponsored.scss */
+/* line 60, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -3843,11 +3849,11 @@ body .inline-content-video {
   /* For IE 8*/
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
-/* line 80, ../../base/sass/base/modules/_sponsored.scss */
+/* line 83, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay span.sponsor_label {
   margin-right: 1px;
 }
-/* line 83, ../../base/sass/base/modules/_sponsored.scss */
+/* line 86, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay span.sponsor_name {
   font-size: 18px;
   color: #fff;
@@ -3855,14 +3861,14 @@ body .inline-content-video {
 }
 
 /* Thumbnail image */
-/* line 94, ../../base/sass/base/modules/_sponsored.scss */
+/* line 97, ../../base/sass/base/modules/_sponsored.scss */
 .field-name-field-thumbnail,
 .views-field-field-thumbnail,
 .field-collection-item-field-featured-campaigns .content {
   position: relative;
   margin: 0;
 }
-/* line 98, ../../base/sass/base/modules/_sponsored.scss */
+/* line 101, ../../base/sass/base/modules/_sponsored.scss */
 .field-name-field-thumbnail a img,
 .views-field-field-thumbnail a img,
 .field-collection-item-field-featured-campaigns .content a img {
