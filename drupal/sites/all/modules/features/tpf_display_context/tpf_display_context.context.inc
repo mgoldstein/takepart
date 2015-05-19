@@ -1172,6 +1172,12 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-9',
         ),
+        'pm_interstitial-interstitials' => array(
+          'module' => 'pm_interstitial',
+          'delta' => 'interstitials',
+          'region' => 'suffix',
+          'weight' => '-10',
+        ),
         'tp4_support-tp4_mobile_menu_header' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_mobile_menu_header',
@@ -1183,12 +1189,6 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'menu-megamenu',
           'region' => 'left_drawer',
           'weight' => '-9',
-        ),
-        'pm_interstitial-interstitials' => array(
-          'module' => 'pm_interstitial',
-          'delta' => 'interstitials',
-          'region' => 'suffix',
-          'weight' => '-10',
         ),
       ),
     ),
