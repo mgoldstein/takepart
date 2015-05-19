@@ -67,8 +67,6 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
                     $xml .= "\t\t\t<link><![CDATA[" . $poslink . "]]></link>\n";
                     $xml .= "\t\t\t<guid isPermaLink=\"true\">" . $poslink . "</guid>\n";
                 }
-			} else if ($id == 'field_sponsored') {
-                $xml = str_replace($headline."]]></title>\n", $headline." (Sponsored)]]></title>\n", $xml);
             } elseif ($id === 'field_author') {
                 $xml .= "\t\t\t<author><![CDATA[" . $object->content . "]]></author>\n";
             } elseif ($id === 'field_display_tag' && $object->content != '') {
