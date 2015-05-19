@@ -15785,35 +15785,40 @@ body #article-content .inline-content-playlist.align-full {
   margin-bottom: 1.5em;
 }
 
-/* line 16, ../sass/modules/_sponsored.scss */
-.tp_sponsored_content_disclaimer {
-  margin-left: 53px;
+@media all and (min-width: 480px) {
+  /* line 16, ../sass/modules/_sponsored.scss */
+  .tp_sponsored_content_disclaimer {
+    margin-left: 53px;
+    margin-right: 0px;
+  }
 }
 
-/* line 21, ../sass/modules/_sponsored.scss */
+/* line 24, ../sass/modules/_sponsored.scss */
 .node-openpublish-photo-gallery .tp_sponsored_content_disclaimer {
   margin-left: 0;
 }
 
-/* line 26, ../sass/modules/_sponsored.scss */
-.node-feature-article .tp_sponsored_content_disclaimer {
-  width: 780px;
-  margin-left: 134px;
+@media all and (min-width: 480px) {
+  /* line 29, ../sass/modules/_sponsored.scss */
+  .node-feature-article .tp_sponsored_content_disclaimer {
+    width: 780px;
+    margin-left: 134px;
+  }
 }
 
 /* Sponsor Tag Exceptions */
-/* line 36, ../sass/modules/_sponsored.scss */
+/* line 41, ../sass/modules/_sponsored.scss */
 .views-field-field-sponsored,
 .views-field-field-promo-short-headline {
   display: inline;
 }
-/* line 38, ../sass/modules/_sponsored.scss */
+/* line 43, ../sass/modules/_sponsored.scss */
 .views-field-field-sponsored .field-content,
 .views-field-field-promo-short-headline .field-content {
   display: inline;
 }
 
-/* line 46, ../sass/modules/_sponsored.scss */
+/* line 51, ../sass/modules/_sponsored.scss */
 .contextual-links-region .view-topic-listing .views-field.views-field-field-sponsored,
 #block-views-topic-listing-block .view-topic-listing .views-field.views-field-field-sponsored {
   float: left;
@@ -15822,22 +15827,22 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* Promoted image overlay exceptions */
-/* line 56, ../sass/modules/_sponsored.scss */
+/* line 61, ../sass/modules/_sponsored.scss */
 header.entry-header .promoted_overlay {
   padding-bottom: 28px;
   z-index: 0;
 }
 
-/* line 62, ../sass/modules/_sponsored.scss */
+/* line 67, ../sass/modules/_sponsored.scss */
 .field-collection-item-field-featured-campaigns .content {
   min-height: 272px;
 }
-/* line 64, ../sass/modules/_sponsored.scss */
+/* line 69, ../sass/modules/_sponsored.scss */
 .field-collection-item-field-featured-campaigns .content .promoted_overlay {
   margin-bottom: 120px;
 }
 
-/* line 70, ../sass/modules/_sponsored.scss */
+/* line 75, ../sass/modules/_sponsored.scss */
 .flashcard-related-content-wrapper .promoted_overlay,
 .flashcard-realted-content-primary .promoted_overlay {
   display: none;
