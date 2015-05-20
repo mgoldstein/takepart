@@ -419,7 +419,7 @@ function tp4_preprocess_node(&$variables, $hook) {
 			'#tag' => 'meta',
 			'#attributes' => array(
 			'property' => 'sponsored',
-			'content' => 'Sponsored',
+			'content' => 'Promoted',
 			)
 		);
 		drupal_add_html_head($sponsored_metatag, 'sponsored_metatag'); 

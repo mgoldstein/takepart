@@ -69,7 +69,7 @@
 	        shareHeadline = shareHeadline + ' (' + $("meta[property='sponsored']").attr("content") + ')';
         }
 
-        tp_social_config.services.pinterest.description = shareDescription;
+        tp_social_config.services.pinterest.description = ( $("meta[property='sponsored']").attr("content") ) ? ' (' + $("meta[property='sponsored']").attr("content") + ') ' + shareDescription : shareDescription;
         tp_social_config.services.tumblr.caption = shareDescription;
         tp_social_config.services.facebook.description = shareDescription;
         tp_social_config.services.facebook.image = imageSrc;
