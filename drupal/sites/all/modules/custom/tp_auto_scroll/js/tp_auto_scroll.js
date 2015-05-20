@@ -15,9 +15,11 @@
         var alreadyloading = false;
         var page = -1;
         var page_limit = settings.limit - 1;
+        var autoload_count = 2;  //Keeps track of how many pages have been loaded (initial page = 1)
 
         /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
-        digitalData.pageInititial = digitalData.page;
+        digitalData.pageInitial = digitalData.page.pageInfo;
+        digitalData.page.pageNumber = 1;
 
         $(window).scroll(function() {
           var $window = $(window),
@@ -36,6 +38,8 @@
 
                 /* Not returning a json object (Drupal is slow at that) so let's convert it here */
                 data = jQuery.parseJSON(data);
+                data.ddl.eventInfo.autoloadCount = autoload_count;
+                autoload_count++;
 
                 /* Create a new event in the DDL to be used when the user scolls to the article */
                 digitalData.event.push(data.ddl);
@@ -230,14 +234,16 @@
     /* get the event with the page id */
     for (var i=0; i < digitalData.event.length; i++) {
       if(typeof(digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id){
-        digitalData.page = digitalData.event[i].eventInfo.page;
+        digitalData.page.pageInfo = digitalData.event[i].eventInfo.page.pageInfo;
+        digitalData.page.pageNumber = digitalData.event[i].eventInfo.autoloadCount;
         _satellite.track('autoload');
         return;
       }
     }
 
     /* If no event exists then it is the initial page load */
-    digitalData.page = digitalData.pageInitial;
+    digitalData.page.pageInfo = digitalData.pageInitial;
+    digitalData.page.pageNumber = 1;
     _satellite.track('autoload');
 
   }
