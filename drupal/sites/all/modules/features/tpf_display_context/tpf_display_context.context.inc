@@ -1294,16 +1294,16 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-8',
         ),
+        'boxes-ga_mobile_320x50_relative' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50_relative',
+          'region' => 'header',
+          'weight' => '-7',
+        ),
         'tp4_support-tp4_footer' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_footer',
           'region' => 'footer',
-          'weight' => '-10',
-        ),
-        'menu-menu-megamenu' => array(
-          'module' => 'menu',
-          'delta' => 'menu-megamenu',
-          'region' => 'left_drawer',
           'weight' => '-10',
         ),
         'takepart_gallery_support-takepart_gallery_cover_slide' => array(
@@ -1330,12 +1330,6 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-8',
         ),
-        'boxes-box-1104adce' => array(
-          'module' => 'boxes',
-          'delta' => 'box-1104adce',
-          'region' => 'sidebar',
-          'weight' => '-7',
-        ),
         'pm_interstitial-interstitials' => array(
           'module' => 'pm_interstitial',
           'delta' => 'interstitials',
@@ -1347,6 +1341,12 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'bg_skin_sponsor',
           'region' => 'suffix',
           'weight' => '-9',
+        ),
+        'menu-menu-megamenu' => array(
+          'module' => 'menu',
+          'delta' => 'menu-megamenu',
+          'region' => 'left_drawer',
+          'weight' => '-10',
         ),
       ),
     ),
