@@ -14,18 +14,23 @@
 
 // Articles, gutter for social share
 .tp_sponsored_content_disclaimer {
-	margin-left: 53px;
-	p {
-		padding: 10px 15px;
-		font-family: $primary-sans-font;
-		font-size: 14px;
-		font-style: italic;
+	@include breakpoint($breakpoint-phablet) {
+		margin-left: 53px;
+		margin-right: 0px;
 	}
 }
 
 // Photo Galleries
 .node-openpublish-photo-gallery .tp_sponsored_content_disclaimer {
 	margin-left: 0;
+}
+
+// Featured Article
+.node-feature-article .tp_sponsored_content_disclaimer {
+	@include breakpoint($breakpoint-phablet) {
+		width: 780px;
+		margin-left: 134px;
+	}
 }
 
 
