@@ -44,7 +44,7 @@
 		display: inline;
 		.promoted {
 		}
-	}	
+	}
 }
 // contextual links: Topic pages, Flashcards, etc
 .contextual-links-region .view-topic-listing .views-field.views-field-field-sponsored,
@@ -61,6 +61,7 @@ header.entry-header {
   .promoted_overlay {
     padding-bottom: 28px;
     z-index: 0;
+    bottom: 4px;
   }
 }
 
