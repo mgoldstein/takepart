@@ -78,7 +78,8 @@
         tp_social_config.services.facebook.description = shareDescription;
         tp_social_config.services.facebook.image = imageSrc;
         $("meta[property='og:image']").attr("content", imageSrc);
-        $("meta[property='og:title']").attr("content", shareHeadline);
+	   var fbphotoslidetitle = ( $("meta[property='sponsored']").attr("content") ) ? shareHeadline  + ' (' + $("meta[property='sponsored']").attr("content") + ')' : shareHeadline;
+        $("meta[property='og:title']").attr("content", fbphotoslidetitle);
         
 
         // Write the og:description if the tag doesn't exist
