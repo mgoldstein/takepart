@@ -64,21 +64,29 @@
 
         imageSrc = imageSrc.split('?')[0].split('#')[0];
         tp_social_config.services.pinterest.media = imageSrc;
-
-        if( $("meta[property='sponsored']").attr("content") ) {
-	        shareHeadline = shareHeadline + ' (' + $("meta[property='sponsored']").attr("content") + ')';
+	   
+	   /*
+	    * Scan for sponsored meta tag and pull value if present
+	    */
+	   var sponsoredmetatag = $("meta[property='sponsored']").attr("content");
+        if (sponsoredmetatag) {
+	        shareHeadline = shareHeadline + ' (' + sponsoredmetatag + ')';
         }
 	   /*
 	    * Pinterest doesn't use the headline, only the description. They also truncate the description, 
 	    * so if I add the (promoted) label to the end of the field it will probably get cut off. I 
 	    * added the promoted label to the beginning of description for Pinterest.
 	    */
-        tp_social_config.services.pinterest.description = ( $("meta[property='sponsored']").attr("content") ) ? ' (' + $("meta[property='sponsored']").attr("content") + ') ' + shareDescription : shareDescription;
+        tp_social_config.services.pinterest.description = (sponsoredmetatag) ? ' (' + sponsoredmetatag + ') ' + shareDescription : shareDescription;
         tp_social_config.services.tumblr.caption = shareDescription;
         tp_social_config.services.facebook.description = shareDescription;
         tp_social_config.services.facebook.image = imageSrc;
         $("meta[property='og:image']").attr("content", imageSrc);
-	   var fbphotoslidetitle = ( $("meta[property='sponsored']").attr("content") ) ? shareHeadline  + ' (' + $("meta[property='sponsored']").attr("content") + ')' : shareHeadline;
+	   /*
+	    * Populate the og:title tag with the (promoted) label from the sponsored content 
+	    * meta tag, if present
+	    */
+	   var fbphotoslidetitle = (sponsoredmetatag) ? shareHeadline  + ' (' + sponsoredmetatag + ')' : shareHeadline;
         $("meta[property='og:title']").attr("content", fbphotoslidetitle);
         
 
