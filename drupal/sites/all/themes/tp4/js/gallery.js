@@ -68,7 +68,11 @@
         if( $("meta[property='sponsored']").attr("content") ) {
 	        shareHeadline = shareHeadline + ' (' + $("meta[property='sponsored']").attr("content") + ')';
         }
-
+	   /*
+	    * Pinterest doesn't use the headline, only the description. They also truncate the description, 
+	    * so if I add the (promoted) label to the end of the field it will probably get cut off. I 
+	    * added the promoted label to the beginning of description for Pinterest.
+	    */
         tp_social_config.services.pinterest.description = ( $("meta[property='sponsored']").attr("content") ) ? ' (' + $("meta[property='sponsored']").attr("content") + ') ' + shareDescription : shareDescription;
         tp_social_config.services.tumblr.caption = shareDescription;
         tp_social_config.services.facebook.description = shareDescription;
