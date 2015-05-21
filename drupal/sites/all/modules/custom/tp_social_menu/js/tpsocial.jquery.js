@@ -8,6 +8,7 @@
     var default_title = document.title;
     if ($("meta[property='og:title']").attr("content")) {
         default_title = $("meta[property='og:title']").attr("content");
+	   alert(default_title);
     }
     else if ($("meta[name='twitter:title']").attr("content")) {
         default_title = $("meta[name='twitter:title']").attr("content");
