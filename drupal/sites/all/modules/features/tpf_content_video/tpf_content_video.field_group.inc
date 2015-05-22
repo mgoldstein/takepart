@@ -24,8 +24,8 @@ function tpf_content_video_field_group_info() {
     'weight' => '12',
     'children' => array(
       0 => 'field_allowed_regions',
-      1 => 'field_sharing_inline',
-      2 => 'field_playlist_view_mode',
+      1 => 'field_playlist_view_mode',
+      2 => 'field_sharing_inline',
       3 => 'field_show_title',
     ),
     'format_type' => 'tab',
@@ -53,10 +53,10 @@ function tpf_content_video_field_group_info() {
     'label' => 'Playlist Settings',
     'weight' => '5',
     'children' => array(
-      0 => 'field_video_list',
-      1 => 'field_playlist_filter',
-      2 => 'field_playlist_filter_sorting',
-      3 => 'field_playlist_items_count',
+      0 => 'field_playlist_filter',
+      1 => 'field_playlist_filter_sorting',
+      2 => 'field_playlist_items_count',
+      3 => 'field_video_list',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -149,6 +149,7 @@ function tpf_content_video_field_group_info() {
       3 => 'field_significance',
       4 => 'field_topic',
       5 => 'field_topic_box',
+      6 => 'field_sponsored',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -181,6 +182,7 @@ function tpf_content_video_field_group_info() {
       3 => 'field_significance',
       4 => 'field_topic',
       5 => 'field_topic_box',
+      6 => 'field_sponsored',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -263,14 +265,7 @@ function tpf_content_video_field_group_info() {
   $field_group->data = array(
     'label' => 'Player Config Options',
     'weight' => '19',
-    'children' => array(
-      0 => 'field_allowed_regions',
-      1 => 'field_auto_play',
-      2 => 'field_mute_playback',
-      3 => 'field_player_embeddable',
-      4 => 'field_player_skin',
-      5 => 'field_share_url',
-    ),
+    'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
       'formatter' => 'collapsible',

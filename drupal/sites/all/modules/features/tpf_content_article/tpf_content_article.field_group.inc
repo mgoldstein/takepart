@@ -60,11 +60,11 @@ function tpf_content_article_field_group_info() {
     'label' => 'Deprecated',
     'weight' => '16',
     'children' => array(
-      0 => 'field_article_action',
-      1 => 'field_display_tag',
-      2 => 'field_related_actions',
-      3 => 'field_multi_page_campaign',
-      4 => 'field_html_title',
+      0 => 'field_display_tag',
+      1 => 'field_multi_page_campaign',
+      2 => 'field_article_action',
+      3 => 'field_html_title',
+      4 => 'field_related_actions',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -127,6 +127,7 @@ function tpf_content_article_field_group_info() {
       3 => 'field_significance',
       4 => 'field_topic_box',
       5 => 'field_admin_tag',
+      6 => 'field_sponsored',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -195,6 +195,7 @@ function tpf_content_flashcard_field_group_info() {
       2 => 'field_significance',
       3 => 'field_topic',
       4 => 'field_series',
+      5 => 'field_sponsored',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

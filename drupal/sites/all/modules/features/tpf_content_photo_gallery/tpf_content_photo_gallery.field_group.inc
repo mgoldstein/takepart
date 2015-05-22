@@ -174,6 +174,7 @@ function tpf_content_photo_gallery_field_group_info() {
       4 => 'field_display_tag',
       5 => 'field_admin_tag',
       6 => 'field_topic_box',
+      7 => 'field_sponsored',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

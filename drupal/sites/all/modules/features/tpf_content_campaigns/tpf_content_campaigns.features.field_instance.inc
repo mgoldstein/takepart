@@ -21241,7 +21241,7 @@ Note: If you manually reference more items than selected here, the number refere
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 

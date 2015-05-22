@@ -20,8 +20,14 @@ function tpf_content_video_metatag_export_default() {
       'abstract' => array(
         'value' => '[node:field_article_subhead]',
       ),
+      'fb:admins' => array(
+        'value' => 1327833247,
+      ),
       'og:type' => array(
         'value' => '',
+      ),
+      'og:title' => array(
+        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
       'og:description' => array(
         'value' => '[node:field_article_subhead]',
@@ -51,7 +57,7 @@ function tpf_content_video_metatag_export_default() {
         'value' => 'player',
       ),
       'twitter:title' => array(
-        'value' => '[node:title]',
+        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):] ',
       ),
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
