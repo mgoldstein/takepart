@@ -24,11 +24,14 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
 
   /* If a cached version of the node exists AND user is anonymous */
   $cache = 'autoscroll_'. $view_mode. '_'.$node->nid;
-  global $user;
-  if($cached = cache_get($cache, 'cache') && $user->uid == 0)  {
-    $output = $cached->data;
+  if($cached = cache_get($cache, 'cache'))  {
+    global $user;
+    if($user->uid == 0){
+      $output = $cached->data;
+    }
   }
   if(empty($output)) {
+
     $node->disable_social = TRUE;
 
     /* Get the Node View */
