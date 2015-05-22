@@ -32,7 +32,7 @@
               /* Set the URL */
               var url = settings.articles[page + 1];
               alreadyloading = true;
-              $.post(url, function(data) {
+              $.get(url, function(data) {
 
                 /* Not returning a json object (Drupal is slow at that) so let's convert it here */
                 data = jQuery.parseJSON(data);
