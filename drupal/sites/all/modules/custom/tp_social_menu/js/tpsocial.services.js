@@ -127,7 +127,6 @@
             });
         }
     });
-    
 
     $.tpsocial.add_service({
         name: 'twitter',
@@ -160,9 +159,9 @@
                 }
             }
 
-            if (text)
+            if (text) {
                 url_obj.text = text;
-
+		  }
             get_share_url(args.url, args.title, function(new_url) {
                 var url_parts = [];
                 url_obj.url = new_url;
