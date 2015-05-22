@@ -21,7 +21,7 @@ function tpf_content_campaigns_metatag_export_default() {
         'value' => '[tp4_support_tokens:campaign:field_article_subhead]',
       ),
       'og:title' => array(
-        'value' => '[tp4_support_tokens:campaign:field_promo_headline]',
+        'value' => '[tp4_support_tokens:campaign:field_promo_headline][f:bool:{node:field_sponsored}: (Promoted):] ',
       ),
       'og:description' => array(
         'value' => '[tp4_support_tokens:campaign:field_article_subhead]',
@@ -30,7 +30,7 @@ function tpf_content_campaigns_metatag_export_default() {
         'value' => '[tp_og_image:thumbnail:{tp4_support_tokens:campaign_thumbnail}]',
       ),
       'twitter:title' => array(
-        'value' => '[tp4_support_tokens:campaign:field_promo_headline]',
+        'value' => '[tp4_support_tokens:campaign:field_promo_headline][f:bool:{node:field_sponsored}: (Promoted):] ',
       ),
       'twitter:description' => array(
         'value' => '[tp4_support_tokens:campaign:field_article_subhead]',

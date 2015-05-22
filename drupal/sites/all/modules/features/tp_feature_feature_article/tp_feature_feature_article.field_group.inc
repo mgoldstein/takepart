@@ -86,6 +86,7 @@ function tp_feature_feature_article_field_group_info() {
       3 => 'field_significance',
       4 => 'field_topic',
       5 => 'field_topic_box',
+      6 => 'field_sponsored',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

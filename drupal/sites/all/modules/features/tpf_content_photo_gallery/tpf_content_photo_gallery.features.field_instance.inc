@@ -212,7 +212,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 64,
+      'weight' => 65,
     ),
   );
 
@@ -1177,7 +1177,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         ),
       ),
       'type' => 'context_field_select',
-      'weight' => 62,
+      'weight' => 63,
     ),
   );
 
@@ -2123,7 +2123,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 63,
+      'weight' => 64,
     ),
   );
 
@@ -2869,7 +2869,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 65,
+      'weight' => 66,
     ),
   );
 
