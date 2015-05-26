@@ -3881,6 +3881,12 @@ body .inline-content-video {
   height: auto;
 }
 
+/* A one off for the more on takepart section */
+/* line 113, ../../base/sass/base/modules/_sponsored.scss */
+#more-on-takepart .promoted {
+  margin-left: 5px;
+}
+
 /* line 1, ../sass/modules/_header.scss */
 #header {
   display: block;

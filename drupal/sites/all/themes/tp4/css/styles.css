@@ -15772,6 +15772,12 @@ body #article-content .inline-content-playlist.align-full {
   height: auto;
 }
 
+/* A one off for the more on takepart section */
+/* line 113, ../../base/sass/base/modules/_sponsored.scss */
+#more-on-takepart .promoted {
+  margin-left: 5px;
+}
+
 /* Special cases and overrides for header/disclaimer on TP4 */
 /* line 3, ../sass/modules/_sponsored.scss */
 .tp_sponsor {
@@ -15848,4 +15854,10 @@ header.entry-header .promoted_overlay {
 .flashcard-related-content-wrapper .promoted_overlay,
 .flashcard-realted-content-primary .promoted_overlay {
   display: none;
+}
+
+/* A one off for the more on takepart section */
+/* line 81, ../sass/modules/_sponsored.scss */
+#more-on-takepart .promoted {
+  margin-left: 0;
 }
