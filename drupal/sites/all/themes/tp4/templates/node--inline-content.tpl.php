@@ -11,7 +11,7 @@
 $field_promo_headline = field_get_items('node' ,$node, 'field_promo_headline');
 $field_promo_headline = $field_promo_headline[0]['value'];
 
-$promoted = _tp4_support_sponsor_flag($node, true);
+$promoted = _tp4_support_sponsor_flag($node, false);
 
 ?>
 <article class="node-<?php print $node->nid; ?> <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
