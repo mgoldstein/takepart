@@ -9,7 +9,7 @@
   <div class="text">Follow Us</div><?php print drupal_render(menu_tree('menu-social-header-follow')); ?>
 </div>
 <div class="user-menu">
-  <div class="tpsLogin" data-layout="compact"></div>
+  <div class="tpsLogin"></div>
 </div>
 <div class="search">
   <div class="search-toggle"></div>
