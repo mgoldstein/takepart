@@ -29,14 +29,6 @@
     //based on window size remove the desktop leaderboard
     $(window).smartresize(function() {
       var window_width = $(window).width();
-      
-      //hide the leaderboard if switching from desktop to mobile
-      if (window_width < 480) {
-        $('.leaderboard.desktop').hide();
-      }
-      else {
-        $('.leaderboard.desktop').show();
-      }
     });
   });
   

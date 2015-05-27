@@ -4254,11 +4254,25 @@ footer .corporate-footer ul li a {
   margin: 10px 0 0;
 }
 
+/**
+ *	Mobile first scss
+ */
 @media all and (min-width: 480px) {
-  /* line 3, ../sass/modules/_tp_ads.scss */
+  /* line 6, ../sass/modules/_tp_ads.scss */
   .tp-ad-wrapper.ad-right {
     float: right;
     margin: 20px;
+  }
+}
+
+/* line 14, ../sass/modules/_tp_ads.scss */
+.leaderboard .desktop {
+  display: none;
+}
+@media all and (min-width: 480px) {
+  /* line 14, ../sass/modules/_tp_ads.scss */
+  .leaderboard .desktop {
+    display: block;
   }
 }
 
