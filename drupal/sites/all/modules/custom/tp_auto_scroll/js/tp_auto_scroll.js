@@ -6,74 +6,69 @@
 
 (function ($, Drupal, window, document, undefined) {
 
-  Drupal.behaviors.tpAutoScroll = {
-    attach: function(context, settings) {
-      window.newTapWidgets = true;
-      /* Settings need to be set */
-      if(Drupal.settings.tpAutoScroll.length == 1) {
-        var settings = Drupal.settings.tpAutoScroll[0];
-        var alreadyloading = false;
-        var page = -1;
-        var page_limit = settings.limit - 1;
-        var autoload_count = 2;  //Keeps track of how many pages have been loaded (initial page = 1)
+  $( document ).ready(function() {
+    window.newTapWidgets = true;
+    /* Settings need to be set */
+    if(Drupal.settings.tpAutoScroll.length == 1) {
+      var settings = Drupal.settings.tpAutoScroll[0];
+      var alreadyloading = false;
+      var page = -1;
+      var page_limit = settings.limit - 1;
 
-        /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
-        digitalData.pageInitial = digitalData.page.pageInfo;
-        digitalData.page.pageNumber = 1;
+      /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
+      digitalData.pageInititial = digitalData.page;
 
-        $(window).scroll(function() {
-          var $window = $(window),
-            elTop = $('#next-article').offset().top;
-          var window_bottom = $window.scrollTop() + $window.height();
-          var last_article = $('.article-wrapper:last').height() / 2;
+      $(window).scroll(function() {
+        var $window = $(window),
+          elTop = $('#next-article').offset().top;
+        var window_bottom = $window.scrollTop() + $window.height();
+        var last_article = $('.article-wrapper:last').height() / 2;
 
-          /* when the page scrolls to within 480px of #next-article */
-          if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
-            if (alreadyloading == false) {
+        /* when the page scrolls to within 480px of #next-article */
+        if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
 
-              /* Set the URL */
-              var url = settings.articles[page + 1];
-              alreadyloading = true;
-              $.post(url, function(data) {
+          if (alreadyloading == false) {
+            alreadyloading = true;
 
-                /* Not returning a json object (Drupal is slow at that) so let's convert it here */
-                data = jQuery.parseJSON(data);
-                data.ddl.eventInfo.autoloadCount = autoload_count;
-                autoload_count++;
+            /* Set the URL */
+            var url = settings.articles[page + 1];
+            $.get(url, function(data) {
 
-                /* Create a new event in the DDL to be used when the user scolls to the article */
-                digitalData.event.push(data.ddl);
+              /* Not returning a json object (Drupal is slow at that) so let's convert it here */
+              data = jQuery.parseJSON(data);
 
-                /* Return Article */
-                $('#next-article').before(data.output);
+              /* Create a new event in the DDL to be used when the user scolls to the article */
+              digitalData.event.push(data.ddl);
 
-                // Update fb_comments
-                // vv Copied from fb_comments.js, because this doesn't work vv
-                if(typeof FB != 'undefined') {
-                	$('.fb_comments').attr('data-numposts', $(window).width() > Drupal.settings.tp_common.breakpoint_phablet ? 1 : 5);
-                  FB.XFBML.parse();
-                }
-                $('a.comments-count', context).once('FBComments', function () {
-                  $('a.comments-count').on('click', function(e){
-                    $(this).siblings('.fb_comments').attr('href', window.location.href).show();
-                    $(this).hide();
-                    e.preventDefault();
-                    return false;
-                  });
+              /* Return Article */
+              $('#next-article').before(data.output);
+
+              // Update fb_comments
+              // vv Copied from fb_comments.js, because this doesn't work vv
+              if(typeof FB != 'undefined') {
+                FB.XFBML.parse();
+              }
+              $('a.comments-count').once('FBComments', function () {
+                $('a.comments-count').on('click', function(e){
+                  $(this).siblings('.fb_comments').attr('href', window.location.href).show();
+                  $(this).hide();
+                  e.preventDefault();
+                  return false;
                 });
-
-                /* There are new Tap Widgets available on the page.  Delay these calls until page is active */
-                window.newTapWidgets = true;
-
-                alreadyloading = false;
-                page++;
               });
-            }
+
+              /* There are new Tap Widgets available on the page.  Delay these calls until page is active */
+              window.newTapWidgets = true;
+
+              alreadyloading = false;
+              page++;
+            });
           }
-        });
-      }
+        }
+      });
     }
-  }
+  });
+
 
   /**
    *

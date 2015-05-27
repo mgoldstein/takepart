@@ -386,7 +386,6 @@ function tpf_config_metatag_metatag_export_default() {
   // Exported Metatag config instance: global:403.
   $config['global:403'] = array(
     'instance' => 'global:403',
-    'disabled' => FALSE,
     'config' => array(
       'canonical' => array(
         'value' => '[site:url]',
@@ -415,7 +414,6 @@ function tpf_config_metatag_metatag_export_default() {
   // Exported Metatag config instance: global:404.
   $config['global:404'] = array(
     'instance' => 'global:404',
-    'disabled' => FALSE,
     'config' => array(
       'canonical' => array(
         'value' => '[site:url]',
@@ -599,8 +597,17 @@ function tpf_config_metatag_metatag_export_default() {
       'abstract' => array(
         'value' => '[node:field_subhead]',
       ),
+      'fb:admins' => array(
+        'value' => 1327833247,
+      ),
+      'og:title' => array(
+        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
+      ),
       'og:description' => array(
         'value' => '[node:field_subhead]',
+      ),
+      'twitter:title' => array(
+        'value' => '[current-page:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
     ),
   );
@@ -646,7 +653,6 @@ function tpf_config_metatag_metatag_export_default() {
   // Exported Metatag config instance: user.
   $config['user'] = array(
     'instance' => 'user',
-    'disabled' => FALSE,
     'config' => array(
       'title' => array(
         'value' => '[user:name] | [site:name]',

@@ -20,13 +20,14 @@
 	clear: both;
 	background-color:$lt-gray-background;
 	margin: 10px 0px;
+    padding: 15px 20px;
+    box-sizing: border-box;
 	@include breakpoint($breakpoint-phablet) {
 		margin: 10px 15px;
 	}
-	padding: 5px 10px 8px;
 	p {
 		margin: 0;
-		padding-bottom:7px;
+		padding:0;
 		font-family: $primary-sans-font;
 		font-size: 13px;
 		font-style: italic;
@@ -106,4 +107,9 @@
 		max-width: 100%;
 		height: auto;
 	}
+}
+
+/* A one off for the more on takepart section */
+#more-on-takepart .promoted{
+  margin-left: 5px;
 }

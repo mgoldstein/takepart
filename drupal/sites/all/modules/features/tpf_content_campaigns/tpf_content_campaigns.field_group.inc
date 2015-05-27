@@ -973,7 +973,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_article_subhead',
       1 => 'field_promo_headline',
@@ -1037,7 +1037,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'SEO',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_campaign_seo_title',
       1 => 'xmlsitemap',
@@ -1069,6 +1069,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_series',
       1 => 'field_topic',
+      2 => 'field_sponsored',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
