@@ -198,7 +198,9 @@ blockquote.pullquote{
 aside.inline-content{
   padding: 0;
   @include breakpoint($breakpoint-phablet){
-    padding: 0 $grid-gutter-width/2;
+    padding-left: 30px;
+    padding-right: 0px;
+    margin-top: 10px;
   }
   .inline-label{
     color: $blue;
@@ -225,6 +227,11 @@ aside.inline-content{
   line-height: 24px;
   span{
     font-weight: bold;
+  }
+}
+aside.inline-content + p{
+  @include breakpoint($breakpoint-phablet){
+    margin-top: 35px;
   }
 }
 .container{
