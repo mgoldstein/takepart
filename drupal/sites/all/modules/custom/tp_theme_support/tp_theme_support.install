@@ -1,0 +1,11 @@
+<?php
+
+/**
+* Implements hook_update_N().
+* Disable device detection for articles in themekey
+*/
+function tp_theme_support_update_7000() {
+  db_delete('themekey_properties')
+    ->condition('value', 'CloudFront-Is-Mobile-Viewer=true')
+    ->execute();
+}
