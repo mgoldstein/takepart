@@ -50,6 +50,7 @@
                 // Update fb_comments
                 // vv Copied from fb_comments.js, because this doesn't work vv
                 if(typeof FB != 'undefined') {
+                	$('.fb_comments').attr('data-numposts', $(window).width() > Drupal.settings.tp_common.breakpoint_phablet ? 1 : 5);
                   FB.XFBML.parse();
                 }
                 $('a.comments-count', context).once('FBComments', function () {

@@ -4,6 +4,13 @@
 * Implements hook_preprocess_page
 */
 function fresh_preprocess_page(&$variables) {
+
+	drupal_add_js(array(
+		'tp_common' => array(
+			'breakpoint_phablet' => 480,
+		)), 
+	'setting');
+
   /* Statically add mobile menu on every page */
   $mobile_menu = theme('fresh_mobile_menu_header');
   $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';

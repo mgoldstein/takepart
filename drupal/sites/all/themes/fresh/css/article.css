@@ -3769,6 +3769,32 @@ body .inline-content-video {
   font-size: 14px;
   font-weight: bold;
   margin-top: 15px;
+<<<<<<< HEAD
+  width: 100%;
+}
+/* line 10, ../../base/sass/base/modules/_sponsored.scss */
+.tp_sponsor span {
+  text-transform: uppercase;
+  margin-right: .5em;
+}
+/* line 15, ../../base/sass/base/modules/_sponsored.scss */
+.tp_sponsor img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 21, ../../base/sass/base/modules/_sponsored.scss */
+.sponsor-disclosure .tp_sponsored_content_disclaimer p {
+  background-color: #eeeeee;
+  padding: 10px 15px;
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* The PROMOTED tag */
+/* line 31, ../../base/sass/base/modules/_sponsored.scss */
+=======
   text-transform: uppercase;
   width: 100%;
 }
@@ -3813,6 +3839,7 @@ body .inline-content-video {
 
 /* The PROMOTED tag */
 /* line 46, ../../base/sass/base/modules/_sponsored.scss */
+>>>>>>> develop
 .promoted {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -3826,7 +3853,11 @@ body .inline-content-video {
 }
 
 /* Promoted image overlay */
+<<<<<<< HEAD
+/* line 45, ../../base/sass/base/modules/_sponsored.scss */
+=======
 /* line 60, ../../base/sass/base/modules/_sponsored.scss */
+>>>>>>> develop
 .promoted_overlay {
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   text-transform: uppercase;
@@ -3849,11 +3880,19 @@ body .inline-content-video {
   /* For IE 8*/
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
+<<<<<<< HEAD
+/* line 68, ../../base/sass/base/modules/_sponsored.scss */
+.promoted_overlay span.sponsor_label {
+  margin-right: 1px;
+}
+/* line 71, ../../base/sass/base/modules/_sponsored.scss */
+=======
 /* line 83, ../../base/sass/base/modules/_sponsored.scss */
 .promoted_overlay span.sponsor_label {
   margin-right: 1px;
 }
 /* line 86, ../../base/sass/base/modules/_sponsored.scss */
+>>>>>>> develop
 .promoted_overlay span.sponsor_name {
   font-size: 18px;
   color: #fff;
@@ -3861,14 +3900,22 @@ body .inline-content-video {
 }
 
 /* Thumbnail image */
+<<<<<<< HEAD
+/* line 82, ../../base/sass/base/modules/_sponsored.scss */
+=======
 /* line 97, ../../base/sass/base/modules/_sponsored.scss */
+>>>>>>> develop
 .field-name-field-thumbnail,
 .views-field-field-thumbnail,
 .field-collection-item-field-featured-campaigns .content {
   position: relative;
   margin: 0;
 }
+<<<<<<< HEAD
+/* line 86, ../../base/sass/base/modules/_sponsored.scss */
+=======
 /* line 101, ../../base/sass/base/modules/_sponsored.scss */
+>>>>>>> develop
 .field-name-field-thumbnail a img,
 .views-field-field-thumbnail a img,
 .field-collection-item-field-featured-campaigns .content a img {
@@ -3995,9 +4042,21 @@ body .user-menu.fresh-theme {
   padding: 8px 14px;
   cursor: pointer;
 }
-/* line 21, ../sass/modules/_fb_comments.scss */
+@media all and (min-width: 480px) {
+  /* line 8, ../sass/modules/_fb_comments.scss */
+  .comments a.comments-count {
+    display: none;
+  }
+}
+/* line 24, ../sass/modules/_fb_comments.scss */
 .comments .fb_comments {
   display: none;
+}
+@media all and (min-width: 480px) {
+  /* line 24, ../sass/modules/_fb_comments.scss */
+  .comments .fb_comments {
+    display: block;
+  }
 }
 
 /* line 58, logos/*.png */

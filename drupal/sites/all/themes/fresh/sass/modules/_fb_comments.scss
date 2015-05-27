@@ -17,8 +17,14 @@
 		font-weight: bold;
 		padding: 8px 14px;
 		cursor: pointer;
+		@include breakpoint($breakpoint-phablet) {
+			display: none;
+		}
 	}
 	.fb_comments {
+		@include breakpoint($breakpoint-phablet) {
+			display: block;
+		}
 		display: none;
 	}
 }
