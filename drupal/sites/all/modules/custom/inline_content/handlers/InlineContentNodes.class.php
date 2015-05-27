@@ -71,6 +71,26 @@ class InlineContentNodes extends InlineContentReplacementController {
         $nids[] = (int) $data['nid'];
       }
       foreach (node_load_multiple($nids) as $nid => $node) {
+
+	      // Replace the campaign_page with its parent promo_headline, thumbnail if none exists
+	      if($node->type == 'campaign_page') {
+
+					// Get the parent campaign
+					$field_campaign_reference = field_get_items('node' ,$node, 'field_campaign_reference');
+					$field_campaign_reference = $field_campaign_reference[0]['target_id'];
+					$campaign_node = node_load($field_campaign_reference);
+
+					if( !field_get_items('node' ,$node, 'field_promo_headline') ) {
+						$field_promo_headline = field_get_items('node' ,$campaign_node, 'field_promo_headline');
+						$node->field_promo_headline[$node->language] = $field_promo_headline;
+					}
+
+					if( !field_get_items('node',$node,'field_thumbnail') ) {
+						$field_thumbnail = field_get_items('node' ,$campaign_node, 'field_thumbnail');
+						$node->field_thumbnail[$node->language] = $field_thumbnail;
+					}
+
+	      }
         $content['#replacements'][] = node_view($node, 'inline_content');
       }
     }

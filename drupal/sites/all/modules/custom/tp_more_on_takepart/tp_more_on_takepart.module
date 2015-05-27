@@ -25,6 +25,7 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
 		'openpublish_article',
 		'feature_article',
 		'campaign',
+		'campaign_page',
 		'openpublish_photo_gallery',
 		'openpublish_video',
 		'video',
@@ -179,9 +180,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 					break;
 				}
 					
-				$field_permanent_title = field_get_items('node',$result,'field_permanent_title');
-				$field_permanent_title = $field_permanent_title[0]['value'];
-				$field_permanent_title = $field_permanent_title ? $field_permanent_title : $result->title;
+				$field_promo_headline = field_get_items('node',$result,'field_promo_headline');
+				$field_promo_headline = $field_promo_headline[0]['value'];
+				$field_promo_headline = $field_promo_headline ? $field_promo_headline : $result->title;
 
 				// Select thumbnail field
 				switch($result->type) {
@@ -209,10 +210,33 @@ function tp_more_on_takepart_block_view($delta = '') {
 					case 'openpublish_video';
 						$type = 'i-video-camera';
 						break;
+					case 'campaign_page';
+						// Replace the campaign_page with its parent promo_headline and thumbnail if none exists
+						// Get the parent campaign
+						$field_campaign_reference = field_get_items('node' ,$result, 'field_campaign_reference');
+						$field_campaign_reference = $field_campaign_reference[0]['target_id'];
+						$campaign_node = node_load($field_campaign_reference);
+	
+						if( !field_get_items('node' ,$node, 'field_promo_headline') ) {
+							$field_promo_headline = field_get_items('node' ,$campaign_node, 'field_promo_headline');
+							$result->field_promo_headline[$node->language] = $field_promo_headline;
+						}
+	
+						if( !field_get_items('node',$result,'field_thumbnail') ) {
+							$field_thumbnail = field_get_items('node' ,$campaign_node, 'field_thumbnail');
+							$result->field_thumbnail[$node->language] = $field_thumbnail;
+						}
+						break;
 					default:
 						$type = '';
 						break;
 				}
+
+				$field_thumbnail = field_get_items('node', $result, $field);
+				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
+
+#				$field_promoted = field_get_items('node',$result,'field_promoted');
+#				$field_promoted = $field_promoted[0]['value'];
 
 				// Add to the array names after this type
 				${$item['type']}[] = theme('tp_more_on_takepart_article', array(
@@ -224,8 +248,8 @@ function tp_more_on_takepart_block_view($delta = '') {
 						'thumbnail' => theme('image_style', array(
 							'style_name' => 'homepage_featured_image',
 							'path' => $field_thumbnail->uri,
-							'alt' => $field_permanent_title,
-							'title' => $field_permanent_title,
+							'alt' => $field_promo_headline,
+							'title' => $field_promo_headline,
 						)),
 						'sponsored' => $field_sponsored,
 					),
