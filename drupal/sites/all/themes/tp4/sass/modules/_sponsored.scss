@@ -37,21 +37,12 @@
 /* Sponsor Tag Exceptions */
 
 // Latest Articles/Views
-.views-field-field-sponsored,
-.views-field-field-promo-short-headline {
-	display: inline;
-	.field-content {
-		display: inline;
-		.promoted {
-		}
-	}
-}
-// contextual links: Topic pages, Flashcards, etc
-.contextual-links-region .view-topic-listing .views-field.views-field-field-sponsored,
-#block-views-topic-listing-block .view-topic-listing .views-field.views-field-field-sponsored {
-	float:left;
-	display: block;
-	margin-left:18px;
+.view-topic-listing .views-field-field-sponsored{
+  float: none;
+  margin-left: 117px;
+  .promoted{
+    float: left;
+  }
 }
 
 

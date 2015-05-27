@@ -15814,50 +15814,41 @@ body #article-content .inline-content-playlist.align-full {
 }
 
 /* Sponsor Tag Exceptions */
-/* line 41, ../sass/modules/_sponsored.scss */
-.views-field-field-sponsored,
-.views-field-field-promo-short-headline {
-  display: inline;
+/* line 40, ../sass/modules/_sponsored.scss */
+.view-topic-listing .views-field-field-sponsored {
+  float: none;
+  margin-left: 117px;
 }
 /* line 43, ../sass/modules/_sponsored.scss */
-.views-field-field-sponsored .field-content,
-.views-field-field-promo-short-headline .field-content {
-  display: inline;
-}
-
-/* line 51, ../sass/modules/_sponsored.scss */
-.contextual-links-region .view-topic-listing .views-field.views-field-field-sponsored,
-#block-views-topic-listing-block .view-topic-listing .views-field.views-field-field-sponsored {
+.view-topic-listing .views-field-field-sponsored .promoted {
   float: left;
-  display: block;
-  margin-left: 18px;
 }
 
 /* Promoted image overlay exceptions */
-/* line 61, ../sass/modules/_sponsored.scss */
+/* line 52, ../sass/modules/_sponsored.scss */
 header.entry-header .promoted_overlay {
   padding-bottom: 28px;
   z-index: 0;
   bottom: 4px;
 }
 
-/* line 68, ../sass/modules/_sponsored.scss */
+/* line 59, ../sass/modules/_sponsored.scss */
 .field-collection-item-field-featured-campaigns .content {
   min-height: 272px;
 }
-/* line 70, ../sass/modules/_sponsored.scss */
+/* line 61, ../sass/modules/_sponsored.scss */
 .field-collection-item-field-featured-campaigns .content .promoted_overlay {
   margin-bottom: 120px;
 }
 
-/* line 76, ../sass/modules/_sponsored.scss */
+/* line 67, ../sass/modules/_sponsored.scss */
 .flashcard-related-content-wrapper .promoted_overlay,
 .flashcard-realted-content-primary .promoted_overlay {
   display: none;
 }
 
 /* A one off for the more on takepart section */
-/* line 81, ../sass/modules/_sponsored.scss */
+/* line 72, ../sass/modules/_sponsored.scss */
 #more-on-takepart .promoted {
   margin-left: 0;
 }
