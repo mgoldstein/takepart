@@ -129,10 +129,10 @@ function tp_ads_preprocess_page(&$vars) {
         //header script that is needed to define the ad slot
         $header_script[] = theme('tp_ads_header', array(
           'dpf_code' => $dpf_code,
-          'ad_slot' => $ad_slot,
-          'ad_gpd_id' => $ad_gpd_id,
-          'width' => $width,
-          'height' => $height
+          'ad_slot' => $desktop_ad_slot,
+          'ad_gpd_id' => $desktop_ad_gpd_id,
+          'width' => $desktop_width,
+          'height' => $desktop_height
           )
         );
         

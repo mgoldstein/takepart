@@ -11,7 +11,7 @@ function theme_tp_ads_script($variables) {
       '#tag' => 'script',
       '#value' => "googletag.cmd.push(function () { googletag.display('" . $variables['ad_gpd_id'] . "'); });",
   )));
-  
+
   //output div
   $output = theme('html_tag', array(
     'element' => array(
@@ -21,7 +21,7 @@ function theme_tp_ads_script($variables) {
       '#attributes' => array(
         'id' => $variables['ad_gpd_id'],
         'style' => 'width: ' . $variables['width'] . 'px; height: ' . ($variables['height'] + 25). 'px; margin: 0 auto;',
-        'class' => $variables['class']
+        'class' => $variables['class'],
   ))));
   
   //output wrapper
@@ -31,12 +31,12 @@ function theme_tp_ads_script($variables) {
       '#value_prefix' => '<!--' . $variables['ad_slot'] .  '-->',
       '#value' => $output,
       '#attributes' => array(
-        'style' => 'text-align: center;'
+        'style' => 'text-align: center;',
       )
   )));
-  
+
   //returns output
-  return theme('fresh_ad', array('ad_tag' => $output_wrapper));
+  return theme('fresh_ad', array('ad_tag' => $output_wrapper, 'class' => $class));
 }
 
 /**

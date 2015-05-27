@@ -1,0 +1,8 @@
+.tp-ad-wrapper {
+	@include breakpoint($breakpoint-phablet) {
+		&.ad-right {
+			float: right;
+			margin: 20px;
+		}
+	}
+}

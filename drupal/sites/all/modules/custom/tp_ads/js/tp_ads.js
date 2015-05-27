@@ -192,10 +192,17 @@
                   if ((insert_key - 1) == i) {
                     //switch javascript based on window size on init
                     if ($(window).width() > 480) {
+                      var ad_class = '';
                       var js_markup = ads_object.ads[window[tp_count]]['javascript_desktop'];
+                      if (id != 'article_leader_ads') {
+                        ad_class = 'ad-right';
+                      }
                     }
                     else {
                       var js_markup = ads_object.ads[window[tp_count]]['javascript'];
+                      if (id != 'article_leader_ads') {
+                        ad_class = 'ad-right';
+                      }
                     }
                     
                     var ad_gpd_id = ads_object.ads[window[tp_count]]['ad_gpd_id'];
@@ -207,7 +214,7 @@
                       if (window.tp_ad_debug_mode == "true") {
                         js_markup = '<h5 class="ad-label text-center">Advertisement - ' + ad_slot + '</h5>' + js_markup;
                       }
-                      dynamic_js_markup = '<div class="tp-ad-wrapper">' + js_markup + '</div>';
+                      dynamic_js_markup = '<div class="tp-ad-wrapper ' + ad_class + '">' + js_markup + '</div>';
                       $(this).append(dynamic_js_markup);
                     }
                     else {
