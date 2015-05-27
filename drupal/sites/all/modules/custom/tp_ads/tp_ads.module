@@ -3,7 +3,7 @@
 /**
  *  Implements hook_menu().
  */
-DEFINE('TP_ADS', 'admin/config/takepart/mobile');
+DEFINE('TP_ADS', 'admin/config/takepart/advertisements');
 DEFINE('TP_ADS_THEME_FILE', 'inc/tp_ads.theme.inc');
 
 /**
@@ -14,7 +14,7 @@ function tp_ads_menu() {
   
   //main group menu
   $items[TP_ADS] = array(
-    'title' => t('TakePart - Articles - AD Settings'),
+    'title' => t('TakePart - Advertisements Settings'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('tp_ads_admin_form'),
     'file' => 'tp_ads.admin.inc',
@@ -48,6 +48,7 @@ function tp_ads_theme($existing, $type, $theme, $path) {
         'ad_gpd_id' => NULL,
         'width' => NULL,
         'height' => NULL,
+        'class' => NULL
       ),
       'file' => TP_ADS_THEME_FILE,
     ),
@@ -76,31 +77,62 @@ function tp_ads_preprocess_page(&$vars) {
   
     //variables
     $settings = variable_get('tp_ads_settings', '');
-    $selector = variable_get('tp_ads_settings_selector', '.node-type-openpublish-article .main-content .field-item > p');
+    $selector = $settings['tp_ads_settings_selector'];
     $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895'); //pulled from original module
     
     //processes the data for front end js
     if (!empty($settings)) {
       foreach ($settings as $key => $value) {
+        //ensure that we dont process the selector
+        if ($key == 'tp_ads_settings_selector') {
+          continue;
+        }
+        
+        //mobile
+        $ad_slot = $value['ad_slot'];
+        $ad_gpd_id = $value['ad_gpd_id'];
+        $width = $value['ad_width'];
+        $height = $value['ad_height'];
+        
+        //desktop
+        $desktop_ad_slot = (!empty($value['desktop_overrides']['ad_slot'])) ? $value['desktop_overrides']['ad_slot'] : $value['ad_slot'];
+        $desktop_ad_gpd_id = (!empty($value['desktop_overrides']['ad_gpd_id'])) ? $value['desktop_overrides']['ad_gpd_id'] : $value['ad_gpd_id'];
+        $desktop_width = (!empty($value['desktop_overrides']['ad_width'])) ? $value['desktop_overrides']['ad_width'] : $value['ad_width'];
+        $desktop_height = (!empty($value['desktop_overrides']['ad_height'])) ? $value['desktop_overrides']['ad_height'] : $value['ad_height'];
+        
         //calls theme to create markup
         $script = theme('tp_ads_script', array(
-            'ad_slot' => $value['ad_slot'],
-            'ad_gpd_id' => $value['ad_gpd_id'],
-            'width' => $value['ad_width'],
-            'height' => $value['ad_height']
+            'ad_slot' => $ad_slot,
+            'ad_gpd_id' => $ad_gpd_id,
+            'width' => $width,
+            'height' => $height,
+            'class' => 'mobile'
           )
         );
         
         //ensures that it removes any EOL
         $value['javascript'] = str_replace(PHP_EOL, '', $script);
         
+        //calls theme to create markup
+        $desktop_script = theme('tp_ads_script', array(
+            'ad_slot' => $desktop_ad_slot,
+            'ad_gpd_id' => $desktop_ad_gpd_id,
+            'width' => $desktop_width,
+            'height' => $desktop_height,
+            'class' => 'desktop'
+          )
+        );
+        
+        //ensures that it removes any EOL
+        $value['javascript_desktop'] = str_replace(PHP_EOL, '', $desktop_script);        
+        
         //header script that is needed to define the ad slot
         $header_script[] = theme('tp_ads_header', array(
           'dpf_code' => $dpf_code,
-          'ad_slot' => $value['ad_slot'],
-          'ad_gpd_id' => $value['ad_gpd_id'],
-          'width' => $value['ad_width'],
-          'height' => $value['ad_height'],
+          'ad_slot' => $desktop_ad_slot,
+          'ad_gpd_id' => $desktop_ad_gpd_id,
+          'width' => $desktop_width,
+          'height' => $desktop_height
           )
         );
         
@@ -140,12 +172,26 @@ function _tp_ads_insert_leader_ad() {
         'ad_slot' => $leader_settings['ad_slot'],
         'ad_gpd_id' => $leader_settings['ad_gpd_id'],
         'width' => $leader_settings['ad_width'],
-        'height' => $leader_settings['ad_height']
+        'height' => $leader_settings['ad_height'],
+        'class' => 'leaderboard mobile'
       )
     );
     
     //ensures that it removes any EOL
     $leader_settings['javascript'] = str_replace(PHP_EOL, '', $script);
+    
+    $desktop_script = theme('tp_ads_script', array(
+        'ad_slot' => $leader_settings['desktop']['ad_slot'],
+        'ad_gpd_id' => $leader_settings['desktop']['ad_gpd_id'],
+        'width' => $leader_settings['desktop']['ad_width'],
+        'height' => $leader_settings['desktop']['ad_height'],
+        'class' => 'leaderboard desktop'
+      )
+    );
+    
+    $leader_settings['javascript_desktop'] = str_replace(PHP_EOL, '', $desktop_script);
+    
+    //always have placement 1
     $leader_settings['placement'] = 1;
     
     //header script that is needed to define the ad slot
@@ -155,6 +201,16 @@ function _tp_ads_insert_leader_ad() {
       'ad_gpd_id' => $leader_settings['ad_gpd_id'],
       'width' => $leader_settings['ad_width'],
       'height' => $leader_settings['ad_height'],
+      )
+    );
+    
+    //adds the leaderboard for desktop
+    $leader_header_script[] = theme('tp_ads_header', array(
+      'dpf_code' => $dpf_code,
+      'ad_slot' => $leader_settings['desktop']['ad_slot'],
+      'ad_gpd_id' => $leader_settings['desktop']['ad_gpd_id'],
+      'width' => $leader_settings['desktop']['ad_width'],
+      'height' => $leader_settings['desktop']['ad_height'],
       )
     );
     

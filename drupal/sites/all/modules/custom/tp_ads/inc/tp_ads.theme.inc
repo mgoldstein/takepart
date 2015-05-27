@@ -11,7 +11,7 @@ function theme_tp_ads_script($variables) {
       '#tag' => 'script',
       '#value' => "googletag.cmd.push(function () { googletag.display('" . $variables['ad_gpd_id'] . "'); });",
   )));
-  
+
   //output div
   $output = theme('html_tag', array(
     'element' => array(
@@ -20,7 +20,8 @@ function theme_tp_ads_script($variables) {
       '#value_prefix' => '<h5 class="ad-label text-center">Advertisement</h5>',
       '#attributes' => array(
         'id' => $variables['ad_gpd_id'],
-        'style' => 'width: ' . $variables['width'] . '; height: ' . ($variables['height'] + 20). ';'
+        'style' => 'width: ' . $variables['width'] . 'px; height: ' . ($variables['height'] + 25). 'px; margin: 0 auto;',
+        'class' => $variables['class'],
   ))));
   
   //output wrapper
@@ -30,12 +31,12 @@ function theme_tp_ads_script($variables) {
       '#value_prefix' => '<!--' . $variables['ad_slot'] .  '-->',
       '#value' => $output,
       '#attributes' => array(
-        'style' => 'text-align: center;'
+        'style' => 'text-align: center;',
       )
   )));
-  
+
   //returns output
-  return theme('fresh_ad', array('ad_tag' => $output_wrapper));
+  return theme('fresh_ad', array('ad_tag' => $output_wrapper, 'class' => $class));
 }
 
 /**
@@ -45,7 +46,9 @@ function theme_tp_ads_script($variables) {
 function theme_tp_ads_header($variables) {
   $output = '';
   
-  $output = "googletag.defineSlot('/" . $variables['dpf_code'] . "/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "').addService(googletag.pubads());";
+  if (!empty($variables['dpf_code']) && !empty($variables['ad_slot']) && !empty($variables['width']) && !empty($variables['height'])) {
+    $output = "googletag.defineSlot('/" . $variables['dpf_code'] . "/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "').addService(googletag.pubads());";
+  }
   
   return $output;
 }

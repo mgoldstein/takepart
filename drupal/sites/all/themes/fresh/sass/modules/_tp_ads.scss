@@ -1,0 +1,22 @@
+/**
+ *	Mobile first scss
+ */
+.tp-ad-wrapper {
+	@include breakpoint($breakpoint-phablet) {
+		&.ad-right {
+			float: right;
+			margin: 20px;
+		}
+	}
+}
+
+.leaderboard {
+	.desktop {
+		display: none;
+		
+		//only show the leaderboard ad for bigger then 480
+		@include breakpoint($breakpoint-phablet) {
+			display: block;
+		}
+	}
+}

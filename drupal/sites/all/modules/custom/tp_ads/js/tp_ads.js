@@ -25,6 +25,11 @@
       //calls the init based on direction so that we dont have a double call
       init_tp_ads(direction);
     });
+    
+    //based on window size remove the desktop leaderboard
+    $(window).smartresize(function() {
+      var window_width = $(window).width();
+    });
   });
   
   /**
@@ -36,10 +41,11 @@
     window.mobile_ads = Drupal.settings.tp_ad_settings;
     window.mobile_leader_ads = Drupal.settings.tp_leader_ad_settings;
   
-    tp_add_article_ads(window.mobile_leader_ads, 500, 'article_leader_ads', 'default', 1, direction);
+    //this is for the leaderboard insert.
+    tp_add_article_ads(window.mobile_leader_ads, 300, 'article_leader_ads', 1, direction);
   
     //this is for the mobile article insert. ad will come when within 300 px of the viewport
-    tp_add_article_ads(window.mobile_ads, 500, 'article_ads', 'default', 3, direction);
+    tp_add_article_ads(window.mobile_ads, 300, 'article_ads', 5, direction);
   }
   
   /**
@@ -68,7 +74,7 @@
    *    id - used to differiated the selectors
    *    show_ads - shows the ads starting from
    */
-  window.tp_add_article_ads = function(ads_object, viewport_offset, id, insert_pos, show_ads, direction) {
+  window.tp_add_article_ads = function(ads_object, viewport_offset, id, show_ads, direction) {
     //variable
     var view_offset = viewport_offset;
     var selector = ads_object['selector'];
@@ -166,31 +172,41 @@
         //ensures that the offset is defined
         if (offset != null) {
           //only when in viewport
-          if (window[tp_count] < show_ads || offset.top > viewport.bottom + view_offset || offset.bottom < viewport.top - viewport_offset || direction == 'up') {
+          if (window[tp_count] < show_ads || (offset.top > viewport.bottom + view_offset || offset.bottom < viewport.top - viewport_offset) || direction == 'up') {
             //process item once
             $(item).once('mobile-ad', function() {
               if (!end) {
-                var insert_key = (window[tp_count_insert] + parseInt(ads_object.ads[window[tp_count]]['placement']));
-                
-                //only add after the the correct key            
-                if ((insert_key - 1) == i) {
-                  var js_markup = ads_object.ads[window[tp_count]]['javascript'];
-                  var ad_gpd_id = ads_object.ads[window[tp_count]]['ad_gpd_id'];
-                  var ad_slot = ads_object.ads[window[tp_count]]['ad_slot'];
-                  var dynamic_js_markup = '';
+                //ensures that the placement is defined before we continue
+                if (typeof ads_object.ads[window[tp_count]]['placement'] !== undefined) {
+                  var insert_key = (window[tp_count_insert] + parseInt(ads_object.ads[window[tp_count]]['placement']));
                   
-                  if (insert_pos == 'after') {
-                    //appends the markup after the selector
-                    $(this).after(dynamic_js_markup);
-                    $(item).addClass('ad-inserted-after');
-                  }
-                  else {
+                  //only add after the the correct key            
+                  if ((insert_key - 1) == i) {
+                    //switch javascript based on window size on init
+                    if ($(window).width() > 480) {
+                      var ad_class = '';
+                      var js_markup = ads_object.ads[window[tp_count]]['javascript_desktop'];
+                      if (id != 'article_leader_ads') {
+                        ad_class = 'ad-right';
+                      }
+                    }
+                    else {
+                      var js_markup = ads_object.ads[window[tp_count]]['javascript'];
+                      if (id != 'article_leader_ads') {
+                        ad_class = 'ad-right';
+                      }
+                    }
+                    
+                    var ad_gpd_id = ads_object.ads[window[tp_count]]['ad_gpd_id'];
+                    var ad_slot = ads_object.ads[window[tp_count]]['ad_slot'];
+                    var dynamic_js_markup = '';
+
                     //checks to see if the wrapper is in place before appending
                     if ($('.tp-ad-wrapper', this).length == 0) {
                       if (window.tp_ad_debug_mode == "true") {
                         js_markup = '<h5 class="ad-label text-center">Advertisement - ' + ad_slot + '</h5>' + js_markup;
                       }
-                      dynamic_js_markup = '<div class="tp-ad-wrapper">' + js_markup + '</div>';
+                      dynamic_js_markup = '<div class="tp-ad-wrapper ' + ad_class + '">' + js_markup + '</div>';
                       $(this).append(dynamic_js_markup);
                     }
                     else {
