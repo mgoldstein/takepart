@@ -17,7 +17,7 @@
  * $element['#attributes'] - The attributes (class, id, etc...) of the replacement
  */
 ?>
-<aside class="col-sm-4 inline-content">
+<aside class="inline-content col-sm-5 pull-right">
   <?php foreach ($element['#replacements'] as $key => $item): ?>
     <?php print render($item); ?>
   <?php endforeach; ?>
