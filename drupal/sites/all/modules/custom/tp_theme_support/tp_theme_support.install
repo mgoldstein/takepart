@@ -5,7 +5,90 @@
 * Disable device detection for articles in themekey
 */
 function tp_theme_support_update_7000() {
+  /* Remove Device detection from theme key */
   db_delete('themekey_properties')
     ->condition('value', 'CloudFront-Is-Mobile-Viewer=true')
     ->execute();
+
+  /* Enable picture module and it's dependent breakpoint module */
+  module_enable(array('breakpoints', 'picture'));
+
+  /* Add responsive image style for the 'large' image style */
+  $style_desktop = image_style_save(array('name' => 'large_responsive_desktop'));
+  $effect = array(
+    'name' => 'image_scale',
+    'data' => array(
+      'width' => 777,
+      'height' => 518,
+      'upscale' => FALSE,
+    ),
+    'isid' => $style_desktop['isid'],
+  );
+  image_effect_save($effect);
+
+  $style_tablet = image_style_save(array('name' => 'large_responsive_tablet'));
+  $effect = array(
+    'name' => 'image_scale',
+    'data' => array(
+      'width' => 600,
+      'height' => 400,
+      'upscale' => FALSE,
+    ),
+    'isid' => $style_tablet['isid'],
+  );
+  image_effect_save($effect);
+
+  $style_mobile = image_style_save(array('name' => 'large_responsive_mobile'));
+  $effect = array(
+    'name' => 'image_scale',
+    'data' => array(
+      'width' => 480,
+      'height' => 320,
+      'upscale' => FALSE,
+    ),
+    'isid' => $style_mobile['isid'],
+  );
+  image_effect_save($effect);
+
+  /* Update breakpoints that are part of the base theme */
+  $base = breakpoints_breakpoints_group_reload_from_theme('base');
+
+  $new_group = breakpoints_breakpoint_group_empty_object();
+  $new_group->machine_name = 'large';
+  $new_group->name = 'Large';
+  $new_group->type = 'custom';
+  $new_group->breakpoints = $base->breakpoints;
+  breakpoints_breakpoint_group_save($new_group);
+
+  menu_rebuild();
+
+  /* Map to the new image styles (picture) to breakpoints */
+  $picture_mapping = new PictureMapping();
+  $picture_mapping->disabled = FALSE; /* Edit this to true to make a default picture_mapping disabled initially */
+  $picture_mapping->api_version = 2;
+  $picture_mapping->label = 'large';
+  $picture_mapping->machine_name = 'large';
+  $picture_mapping->breakpoint_group = 'large';
+  $picture_mapping->mapping = array(
+    'breakpoints.theme.base.base_large_desktop' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'large_responsive_desktop',
+      ),
+    ),
+    'breakpoints.theme.base.base_large_tablet' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'large_responsive_tablet',
+      ),
+    ),
+    'breakpoints.theme.base.base_large_mobile' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'large_responsive_mobile',
+      ),
+    ),
+  );
+  $picture_mapping->save();
+
 }
