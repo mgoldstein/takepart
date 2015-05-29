@@ -23,6 +23,12 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'fresh' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'fresh',
+        'weight' => -83,
+      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,
@@ -45,6 +51,12 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'fresh' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'fresh',
+        'weight' => -82,
+      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,
@@ -65,6 +77,12 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'fresh' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'fresh',
+        'weight' => 0,
+      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,
@@ -85,6 +103,12 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'fresh' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'fresh',
+        'weight' => -87,
+      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,
@@ -105,6 +129,12 @@ function tpf_config_block_settings_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'fresh' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'fresh',
+        'weight' => 0,
+      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,

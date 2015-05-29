@@ -188,10 +188,14 @@ function tpf_feature_homepage_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'latest headlines';
-  $handler->display->display_options['css_class'] = 'latest-headlines';
+  $handler->display->display_options['css_class'] = 'view-all-feed';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '60';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '60';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
@@ -206,14 +210,6 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
     'latest_headlines' => 'latest_headlines',
   );
-  /* Field: Content: Path */
-  $handler->display->display_options['fields']['path']['id'] = 'path';
-  $handler->display->display_options['fields']['path']['table'] = 'node';
-  $handler->display->display_options['fields']['path']['field'] = 'path';
-  $handler->display->display_options['fields']['path']['label'] = '';
-  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
@@ -222,14 +218,6 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
-  /* Field: Content: Promo Short Headline */
-  $handler->display->display_options['fields']['field_promo_short_headline']['id'] = 'field_promo_short_headline';
-  $handler->display->display_options['fields']['field_promo_short_headline']['table'] = 'field_data_field_promo_short_headline';
-  $handler->display->display_options['fields']['field_promo_short_headline']['field'] = 'field_promo_short_headline';
-  $handler->display->display_options['fields']['field_promo_short_headline']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['text'] = '<span class="[type]"><a href="[path]">[field_promo_short_headline]</a></span>';
-  $handler->display->display_options['fields']['field_promo_short_headline']['element_label_colon'] = FALSE;
   /* Field: Content: Sponsored */
   $handler->display->display_options['fields']['field_sponsored']['id'] = 'field_sponsored';
   $handler->display->display_options['fields']['field_sponsored']['table'] = 'field_data_field_sponsored';
@@ -281,8 +269,126 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['filters']['field_promo_short_headline_value']['value'] = 'NULL';
   $handler->display->display_options['filters']['field_promo_short_headline_value']['group'] = 1;
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Homepage Block */
+  $handler = $view->new_display('block', 'Homepage Block', 'block');
+  $handler->display->display_options['defaults']['css_class'] = FALSE;
+  $handler->display->display_options['css_class'] = 'latest-headlines';
+  $handler->display->display_options['display_description'] = 'Latest headlines block for the homepage';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['absolute'] = TRUE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  /* Field: Content: Promo Short Headline */
+  $handler->display->display_options['fields']['field_promo_short_headline']['id'] = 'field_promo_short_headline';
+  $handler->display->display_options['fields']['field_promo_short_headline']['table'] = 'field_data_field_promo_short_headline';
+  $handler->display->display_options['fields']['field_promo_short_headline']['field'] = 'field_promo_short_headline';
+  $handler->display->display_options['fields']['field_promo_short_headline']['label'] = '';
+  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['text'] = '<span class="[type]"><a href="[path]">[field_promo_short_headline]</a></span>';
+  $handler->display->display_options['fields']['field_promo_short_headline']['element_label_colon'] = FALSE;
+  /* Field: Content: Sponsored */
+  $handler->display->display_options['fields']['field_sponsored']['id'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['table'] = 'field_data_field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['field'] = 'field_sponsored';
+  $handler->display->display_options['fields']['field_sponsored']['label'] = '';
+  $handler->display->display_options['fields']['field_sponsored']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_sponsored']['type'] = 'taxonomy_term_reference_plain';
+
+  /* Display: 404 page block */
+  $handler = $view->new_display('block', '404 page block', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['display_description'] = 'Latest headlines block for 404 page';
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['slave'] = TRUE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['label'] = 'Latest Stories';
+  $handler->display->display_options['header']['area']['empty'] = TRUE;
+  $handler->display->display_options['header']['area']['content'] = '<h2>Latest Stories from Takepart</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Field: Thumbnail Image */
+  $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
+  $handler->display->display_options['fields']['field_thumbnail']['label'] = '';
+  $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_thumbnail']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
+  $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
+    'image_style' => 'thumbnail',
+    'image_link' => 'content',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
+    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'video' => 'video',
+    'video_playlist' => 'video_playlist',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['block_description'] = 'Latest Headlines (404 page)';
+  $handler->display->display_options['block_caching'] = '-1';
   $export['latest_headlines'] = $view;
 
   $view = new view();

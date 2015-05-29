@@ -14,7 +14,7 @@ function tpf_display_context_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = '404_feed';
-  $context->description = 'The 10 most recent items from the /all/feed.xml on the 404 page.';
+  $context->description = 'The Latest Headlines view for the 404 page';
   $context->tag = 'TP4';
   $context->conditions = array(
     'error' => array(
@@ -31,9 +31,9 @@ function tpf_display_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-1ddb00ad04439c02e7ade3e99c6f2213' => array(
+        'views-latest_headlines-block_1' => array(
           'module' => 'views',
-          'delta' => '1ddb00ad04439c02e7ade3e99c6f2213',
+          'delta' => 'latest_headlines-block_1',
           'region' => 'content',
           'weight' => '-10',
         ),
@@ -45,7 +45,7 @@ function tpf_display_context_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('TP4');
-  t('The 10 most recent items from the /all/feed.xml on the 404 page.');
+  t('The Latest Headlines view for the 404 page');
   $export['404_feed'] = $context;
 
   $context = new stdClass();
