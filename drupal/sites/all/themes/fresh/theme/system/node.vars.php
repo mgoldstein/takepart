@@ -119,7 +119,7 @@ function fresh_preprocess_node__openpublish_article(&$variables){
       'overlay'
     );
     
-    $options = array('comments' => TRUE, 'overlay' => TRUE, 'class' => 'desktop-none');
+    $options = array('comments' => TRUE, 'overlay' => TRUE, 'class' => '');
     if(module_exists('tp_social_menu')){
       //if disable is TRUE then exclude this
       if (!$variables['disable_social']) {

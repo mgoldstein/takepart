@@ -8,6 +8,11 @@
  */
 ?>
 <div class="article-wrapper">
+  <?php if(!empty($variables['social'])): ?>
+    <aside class="social social-vertical stick">
+      <?php print $variables['social']; ?>
+    </aside>
+  <?php endif; ?>
   <article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   
     <?php if(!empty($variables['advertisement'])): ?>
@@ -62,14 +67,7 @@
       <div class="comments">
         <?php print $variables['comments']; ?>
       </div>
-    <?php endif; ?>
-  
-    <?php if(!empty($variables['social'])): ?>
-      <aside class="social social-vertical stick">
-        <?php print $variables['social']; ?>
-      </aside>
-    <?php endif; ?>
-    
+    <?php endif; ?>    
     <?php if(!empty($variables['more_on_takepart'])): ?>
         <?php print $variables['more_on_takepart']; ?>
     <?php endif; ?>
