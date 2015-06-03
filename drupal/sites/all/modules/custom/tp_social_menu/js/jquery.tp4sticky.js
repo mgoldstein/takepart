@@ -15,8 +15,14 @@
       wrapperClass: 'sticky-wrapper',
       stickyClass: 'sticky'
     },
+    
     options = $.extend({}, defaults, opts);
 
+    //overrides the stopat for fresh theme
+    if ($('.article-wrapper').length !== 0) {
+      options.stopAt = '.region-footer'; 
+    }
+    
     return this.each(function(index) {
 
       var $stickyEl = $(this),
@@ -49,7 +55,7 @@
             $stickyEl.removeClass(options.stickyClass);
           }
         }
-
+        
         if (isSticky && window.scrollY > stickyElLowestPoint) {
           $stickyEl.css('top', stickyElLowestPoint - window.scrollY);
         } else {

@@ -19,6 +19,80 @@
   }
 }
 
+body {
+  .article-wrapper {
+    @include breakpoint($breakpoint-phablet) {
+      article {
+        margin-left: 90px;
+      }
+      
+      .parent-social-menu {
+        list-style: none;
+      }
+      
+      aside.social.social-vertical {
+        width: 54px;
+        float: left;
+        margin-top: 80px;
+        
+        li {
+          &.share {
+            width: 54px;
+            min-width: 54px;
+            padding-top: 80px;
+          }
+          
+          &.takeaction {
+            position: absolute;
+          }
+        }
+        
+        .desktop {
+          .takepart-custom-take-action-button {
+            .i-take-action {
+              height: 54px;
+              width: 54px;
+              padding-top: 14px;
+            } 
+          }
+        
+          .tap-influence-icon {
+            width: 54px;
+            margin-top: 1em;
+            &:after {
+              width: inherit;
+            }
+          }
+          
+          .tp-social-link,
+          .comments-link a,
+          .trigger a {
+            width: 54px;
+            height: 54px;
+            text-indent: 0;
+            padding: 0;
+            margin: 0;
+            text-indent: 0;
+            font-size: 24px;
+            color: #FFF;
+            &:before {
+              height: 54px;
+              width: 54px;
+              display: block;
+              text-align: center;
+              padding-top: 12px;
+            }
+          }
+          
+          #article-comments-link {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
 .takepart-custom-take-action-button:hover {
 	text-decoration: none;
 }
@@ -103,6 +177,7 @@
     }
     @include breakpoint($breakpoint-desktop) {
       position: relative;
+			list-style: none;
     }
   }
   .social-wrapper li.share{
@@ -174,7 +249,7 @@
     z-index: 9;
     transition: .25s;
     @include breakpoint($breakpoint-tablet) {
-      display: none;
+      //display: none;
     }
     .takepart-take-action,
     .comments-link,

@@ -160,9 +160,13 @@
     if ($(window).width() <= mobile) {
       $(social_menu).addClass('mobile');
       $(main_menu).addClass('mobile');
+      $(social_menu).removeClass('desktop');
+      $(main_menu).removeClass('desktop');
     }else{
       $(social_menu).removeClass('mobile');
       $(main_menu).removeClass('mobile');
+      $(social_menu).addClass('desktop');
+      $(main_menu).addClass('desktop');
     }
 
   }
