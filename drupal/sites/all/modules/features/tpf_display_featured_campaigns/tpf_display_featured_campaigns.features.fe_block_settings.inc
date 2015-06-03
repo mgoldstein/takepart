@@ -21,6 +21,12 @@ function tpf_display_featured_campaigns_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
+      'fresh' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'fresh',
+        'weight' => 0,
+      ),
       'tp4' => array(
         'region' => '',
         'status' => 0,

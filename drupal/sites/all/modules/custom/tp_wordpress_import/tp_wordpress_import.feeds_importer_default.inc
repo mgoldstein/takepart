@@ -37,7 +37,7 @@ function tp_wordpress_import_feeds_importer_default() {
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
         'expire' => '-1',
-        'author' => '36759',
+        'author' => '442284',
         'authorize' => 0,
         'mappings' => array(
           0 => array(
