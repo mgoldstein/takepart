@@ -21,7 +21,12 @@ function fresh_preprocess_page(&$variables) {
 
   /* Statically add the mobile header to all pages */
   $header = theme('fresh_mobile_header');
-  $variables['page']['header']['header']['#markup'] = $header;
+  $variables['page']['header']['mobile_menu']['#markup'] = $header;
+
+  /* Statically add the Megaslim Menu to all pages */
+  if(module_exists('tp_megaslim_menu')){
+    $variables['page']['header']['megaslim']['#markup'] = tp_megaslim_menu_load_menu();
+  }
 
   /* Statically add the mobile footer to all pages */
   $footer = theme('fresh_mobile_footer');

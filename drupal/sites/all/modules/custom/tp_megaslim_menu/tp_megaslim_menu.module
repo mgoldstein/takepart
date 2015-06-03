@@ -18,6 +18,9 @@ function tp_megaslim_menu_menu(){
   return $items;
 }
 
+/*
+ * Page Callback for ajax/megaslim/%menu_link
+ */
 function tp_megaslim_menu_item($menu_item){
   /* Megaslim can use Taxonomy Terms or Nodes of type Section Front */
 
@@ -29,7 +32,7 @@ function tp_megaslim_menu_item($menu_item){
   if($cached = cache_get($cache, 'cache'))  {
      $megaslim = $cached->data;
   }else{
-    $megaslim = generate_megaslim($menu_item);
+    $megaslim = tp_megaslim_generate_megaslim($menu_item);
     cache_set($cache, $megaslim, 'cache', REQUEST_TIME + $cache_lifetime);
   }
 
@@ -39,7 +42,10 @@ function tp_megaslim_menu_item($menu_item){
 
 }
 
-function generate_megaslim($menu_item){
+/*
+ * Generate the megaslim menu item
+ */
+function tp_megaslim_generate_megaslim($menu_item){
   /* Generate teasers */
   $path = explode("/", $menu_item['link_path']);
   $teasers = array();
@@ -60,7 +66,7 @@ function generate_megaslim($menu_item){
       $teaser_items = entity_load('field_collection_item', $teaser_items_tmp);
 
       /* Return styled teasers */
-      $teasers = generate_teasers($teaser_items);
+      $teasers = tp_megaslim_generate_teasers($teaser_items);
     }
   }elseif($path[0] == 'taxonomy'){
     /* Generate teasers from the Taxonomy Term */
@@ -75,7 +81,7 @@ function generate_megaslim($menu_item){
       $teaser_items = entity_load('field_collection_item', $teaser_items_tmp);
 
       /* Return styled teasers */
-      $teasers = generate_teasers($teaser_items);
+      $teasers = tp_megaslim_generate_teasers($teaser_items);
     }
 
   }else{
@@ -93,8 +99,10 @@ function generate_megaslim($menu_item){
   return $megaslim;
 }
 
-
-function generate_teasers($teaser_items){
+/*
+ * Generate themed teaser items given an array of promo field collections
+ */
+function tp_megaslim_generate_teasers($teaser_items){
   $teasers = array();
 
   foreach($teaser_items as $teaser_item){
@@ -168,6 +176,44 @@ function generate_teasers($teaser_items){
   }
   $teasers = implode('', $teasers);
   return $teasers;
+}
+
+/*
+ * Generate the parent menu item.
+ * This is not a block.  We do not need the weight of the Drupal block system and context
+ */
+function tp_megaslim_menu_load_menu(){
+  /* Add the js */
+  $path = drupal_get_path('module', 'tp_megaslim_menu');
+  drupal_add_js($path. '/js/megaslim.js');
+
+  /* Return the parent items of the MegaSlim Menu */
+  $menu_items = menu_tree_all_data('menu-megamenu', null, 1);
+  $items = array();
+  foreach($menu_items as $key => $menu_item){
+    $mlid = $menu_item['link']['mlid'];
+    $path = $menu_item['link']['link_path'];
+    $title = $menu_item['link']['link_title'];
+
+    $elements = array(
+      'data' => l($title, $path, array('attributes' => array('data-mlid' => $mlid))),
+      'class' => array('mega-item'),
+    );
+    $items[$key] = $elements;
+
+  }
+
+  $menu = theme('item_list', array(
+    'items' => $items,
+    'type' => 'ul',
+    'attributes' => array(
+      'id' => 'megaslim'
+    )
+  ));
+
+  return $menu;
+
+
 }
 
 /*
