@@ -4,8 +4,14 @@
  * Documentation goes here
  */
 ?>
-<div class="megaslim">
-  <div class="submenu"><?php print $submenu; ?></div>
-  <div class="more-link"><?php print $more_link; ?></div>
-  <div class="teasers"><?php print $teasers; ?></div>
+<div class="megaslim-menu-item-content">
+  <div class="submenu col-xs-2">
+    <?php print $submenu; ?>
+    <div class="more-link"><?php print $more_link; ?></div>
+  </div>
+  <div class="teasers col-xs-10">
+    <div class="row">
+      <?php print $teasers; ?>
+    </div>
+  </div>
 </div>

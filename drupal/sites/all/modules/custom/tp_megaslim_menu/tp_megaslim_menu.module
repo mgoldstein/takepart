@@ -25,7 +25,7 @@ function tp_megaslim_menu_item($menu_item){
   /* Megaslim can use Taxonomy Terms or Nodes of type Section Front */
 
   /* Use the cached version of the MegaSlim menu if it exists */
-  $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 300);
+  $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
 
   /* If a cached version of the node exists AND user is anonymous */
   $cache = 'megaslim_'. $menu_item['mlid'];
@@ -197,7 +197,7 @@ function tp_megaslim_menu_load_menu(){
 
     $elements = array(
       'data' => l($title, $path, array('attributes' => array('data-mlid' => $mlid))),
-      'class' => array('mega-item'),
+      'class' => array('mega-item col-xs-2'),
     );
     $items[$key] = $elements;
 
