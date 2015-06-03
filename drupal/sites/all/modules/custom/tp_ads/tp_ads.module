@@ -180,11 +180,16 @@ function _tp_ads_insert_leader_ad() {
     //ensures that it removes any EOL
     $leader_settings['javascript'] = str_replace(PHP_EOL, '', $script);
     
+    $desktop_ad_slot = (!empty($leader_settings['desktop']['ad_slot'])) ? $leader_settings['desktop']['ad_slot'] : $leader_settings['ad_slot'];
+    $desktop_ad_gpd_id = (!empty($leader_settings['desktop']['ad_gpd_id'])) ? $leader_settings['desktop']['ad_gpd_id'] : $leader_settings['ad_gpd_id'];
+    $desktop_ad_width = (!empty($leader_settings['desktop']['ad_width'])) ? $leader_settings['desktop']['ad_width'] : $leader_settings['ad_width'];
+    $desktop_ad_height = (!empty($leader_settings['desktop']['ad_height'])) ? $leader_settings['desktop']['ad_height'] : $leader_settings['ad_height'];
+    
     $desktop_script = theme('tp_ads_script', array(
-        'ad_slot' => $leader_settings['desktop']['ad_slot'],
-        'ad_gpd_id' => $leader_settings['desktop']['ad_gpd_id'],
-        'width' => $leader_settings['desktop']['ad_width'],
-        'height' => $leader_settings['desktop']['ad_height'],
+        'ad_slot' => $desktop_ad_slot,
+        'ad_gpd_id' => $desktop_ad_gpd_id,
+        'width' => $desktop_ad_width,
+        'height' => $desktop_ad_height,
         'class' => 'leaderboard desktop'
       )
     );
