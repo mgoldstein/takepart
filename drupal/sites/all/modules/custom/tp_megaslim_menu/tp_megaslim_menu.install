@@ -1,0 +1,30 @@
+<?php
+/**
+ * @file
+ * Documentation goes here
+ */
+
+/**
+ * Implements hook_install()
+ */
+function tp_megaslim_menu_install(){
+  $style_mobile = image_style_save(array('name' => 'megaslim_thumbnail'));
+  $effect = array(
+    'name' => 'image_scale',
+    'data' => array(
+      'width' => 165,
+      'height' => 110,
+      'upscale' => FALSE,
+    ),
+    'isid' => $style_mobile['isid'],
+  );
+  image_effect_save($effect);
+}
+
+/**
+ * Implements hook_uninstall()
+ */
+function tp_megaslim_menu_uninstall(){
+  /* Delete the image style when this module is uninstalled */
+  image_style_delete(array('name' => 'megaslim_thumbnail'));
+}

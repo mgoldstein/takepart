@@ -92,3 +92,11 @@ function tp_theme_support_update_7000() {
   $picture_mapping->save();
 
 }
+
+/**
+ * Implements hook_update_N()
+ * Enable the MegaSlim Menu module
+ */
+function tp_theme_support_update_7001() {
+  module_enable(array('tp_megaslim_menu'), FALSE);
+}
