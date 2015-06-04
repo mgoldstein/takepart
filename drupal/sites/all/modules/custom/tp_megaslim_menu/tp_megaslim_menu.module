@@ -23,7 +23,6 @@ function tp_megaslim_menu_menu(){
  */
 function tp_megaslim_menu_item($menu_item){
   /* Megaslim can use Taxonomy Terms or Nodes of type Section Front */
-  $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 2);
 
   /* Use the cached version of the MegaSlim menu if it exists */
   $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
@@ -120,6 +119,11 @@ function tp_megaslim_generate_teasers($teaser_items){
       $teaser_node = node_load($teaser_content[0]['target_id']);
       $teaser_node_type = $teaser_node->type;
 
+      /* Return the link */
+      global $base_url;
+      $path = drupal_get_path_alias('node/'. $teaser_node->nid);
+      $path = $base_url. '/'. $path;
+
       /* Return the thumbnail */
       if($thumbnail = field_get_items('field_collection_item', $teaser_item, 'field_promo_thumbnail')){
         $thumbnail = file_load($thumbnail[0]['fid']);
@@ -137,7 +141,7 @@ function tp_megaslim_generate_teasers($teaser_items){
         }
       }
       $thumbnail = theme_image_style(array(
-        'style_name' => 'inline_thumbnail', //TODO: create a smaller image style
+        'style_name' => 'megaslim_thumbnail',
         'path' => $thumbnail->uri,
       ));
 
@@ -175,10 +179,11 @@ function tp_megaslim_generate_teasers($teaser_items){
           }
         }
       }
+
     }
 
     /* Theme the teasers */
-    $teasers[] = theme('tp_megaslim_menu_item', array('thumbnail' => $thumbnail, 'label' => $label, 'content' => $content));
+    $teasers[] = theme('tp_megaslim_menu_item', array('thumbnail' => $thumbnail, 'label' => $label, 'content' => $content, 'path' => $path));
   }
   $teasers = implode('', $teasers);
   return $teasers;
@@ -230,6 +235,7 @@ function tp_megaslim_menu_theme(){
     'tp_megaslim' => array(
       'template' => 'templates/tp-megaslim',
       'variables' => array(
+        'path' => '',
         'submenu' => '',
         'teasers' => '',
         'more_link' => ''

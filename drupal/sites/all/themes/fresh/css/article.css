@@ -4040,12 +4040,16 @@ body .inline-content-video {
   -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.5);
 }
-/* line 67, ../../base/sass/base/modules/_megaslim.scss */
+/* line 66, ../../base/sass/base/modules/_megaslim.scss */
+#megaslim .megaslim-menu-item-content a {
+  color: black;
+}
+/* line 70, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim .megaslim-content-teaser {
   border-left: 1px solid #CCC;
   height: 220px;
 }
-/* line 71, ../../base/sass/base/modules/_megaslim.scss */
+/* line 74, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim .mega-label {
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-size: 14px;
@@ -4056,25 +4060,25 @@ body .inline-content-video {
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 81, ../../base/sass/base/modules/_megaslim.scss */
+/* line 84, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim .text {
   font-family: "Ashbury", "Times New Roman", Times, Georgia, serif;
   text-align: left;
   line-height: 18px;
 }
-/* line 86, ../../base/sass/base/modules/_megaslim.scss */
+/* line 89, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim li.mega-item .megaslim-menu-item-content {
   display: none;
 }
-/* line 89, ../../base/sass/base/modules/_megaslim.scss */
+/* line 92, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim li.mega-item:hover {
   background: black;
 }
-/* line 91, ../../base/sass/base/modules/_megaslim.scss */
+/* line 94, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim li.mega-item:hover > a {
   color: white;
 }
-/* line 94, ../../base/sass/base/modules/_megaslim.scss */
+/* line 97, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim li.mega-item:hover .megaslim-menu-item-content {
   display: block;
 }
