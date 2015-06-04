@@ -124,7 +124,7 @@ function theme_tp_social_menu($variables) {
         break;
     }
   }
-  
+
   //use theme_item_list to create the menu
   $parent_ul = theme('item_list', array(
     'items' => $items,

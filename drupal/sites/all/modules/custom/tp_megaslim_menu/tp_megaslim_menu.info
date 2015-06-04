@@ -1,0 +1,3 @@
+name = TakePart MegaSlim Menu
+description = A lighter, lazy loaded version of the MegaMenu
+core = 7.x

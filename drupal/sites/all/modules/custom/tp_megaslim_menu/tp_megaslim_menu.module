@@ -1,0 +1,247 @@
+<?php
+/**
+ * @file
+ * MegaSlim Menu
+ */
+
+/*
+ * Implements hook_menu()
+ */
+function tp_megaslim_menu_menu(){
+
+  $items['ajax/megaslim/%menu_link'] = array(
+    'page callback' => 'tp_megaslim_menu_item',
+    'page arguments' => array(2),
+    'access callback' => true
+  );
+
+  return $items;
+}
+
+/*
+ * Page Callback for ajax/megaslim/%menu_link
+ */
+function tp_megaslim_menu_item($menu_item){
+  /* Megaslim can use Taxonomy Terms or Nodes of type Section Front */
+  $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 2);
+
+  /* Use the cached version of the MegaSlim menu if it exists */
+  $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
+
+  /* If a cached version of the node exists AND user is anonymous */
+  $cache = 'megaslim_'. $menu_item['mlid'];
+  if($cached = cache_get($cache, 'cache'))  {
+     $megaslim = $cached->data;
+  }else{
+    $megaslim = tp_megaslim_generate_megaslim($menu_item);
+    cache_set($cache, $megaslim, 'cache', REQUEST_TIME + $cache_lifetime);
+  }
+
+  /* Return encoded json */
+  print drupal_json_encode($megaslim);
+  drupal_exit();
+
+}
+
+/*
+ * Generate the megaslim menu item
+ */
+function tp_megaslim_generate_megaslim($menu_item){
+  /* Generate teasers */
+  $path = explode("/", $menu_item['link_path']);
+  $teasers = array();
+  if($path[0] == 'node'){
+    /* Generate teasers from the Section Front */
+    $node = node_load($path[1]);
+    /* Make sure node is of type Section Front */
+    if($node && $node->type != 'section_front'){
+      return drupal_set_message(t('Megamenu Error'), 'error');
+    }
+
+    /* Get list of teaser items */
+    if($teaser_items = field_get_items('node', $node, 'field_promo_content_collection')){
+      $teaser_items_tmp = array();
+      foreach($teaser_items as $teaser_item){
+        $teaser_items_tmp[] = $teaser_item['value'];
+      }
+      $teaser_items = entity_load('field_collection_item', $teaser_items_tmp);
+
+      /* Return styled teasers */
+      $teasers = tp_megaslim_generate_teasers($teaser_items);
+    }
+  }elseif($path[0] == 'taxonomy'){
+    /* Generate teasers from the Taxonomy Term */
+    $term = taxonomy_term_load($path[2]);
+
+    /* Get list of teaser items */
+    if($teaser_items = field_get_items('taxonomy_term', $term, 'field_promo_content_collection')){
+      $teaser_items_tmp = array();
+      foreach($teaser_items as $teaser_item){
+        $teaser_items_tmp[] = $teaser_item['value'];
+      }
+      $teaser_items = entity_load('field_collection_item', $teaser_items_tmp);
+
+      /* Return styled teasers */
+      $teasers = tp_megaslim_generate_teasers($teaser_items);
+    }
+
+  }else{
+    return drupal_set_message(t('Megamenu Error'), 'error');
+  }
+
+  /* Generate submenu */
+  $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 2);
+  $submenu = '';
+  foreach($mega_tree as $item){
+    if($item['link']['mlid'] == $menu_item['mlid']){
+      $submenu = render(menu_tree_output($item['below']));
+    }
+  }
+
+  /* Generate more link */
+  $more_link = 'more link';
+
+  $megaslim = theme('tp_megaslim', array('submenu' => $submenu, 'teasers' => $teasers, 'more_link' => $more_link));
+  return $megaslim;
+}
+
+/*
+ * Generate themed teaser items given an array of promo field collections
+ */
+function tp_megaslim_generate_teasers($teaser_items){
+  $teasers = array();
+
+  foreach($teaser_items as $teaser_item){
+
+    /* Field collection must have a reference to content */
+    if($teaser_content = field_get_items('field_collection_item', $teaser_item, 'field_promo_content')){
+
+      /* Load the teaser node */
+      $teaser_node = node_load($teaser_content[0]['target_id']);
+      $teaser_node_type = $teaser_node->type;
+
+      /* Return the thumbnail */
+      if($thumbnail = field_get_items('field_collection_item', $teaser_item, 'field_promo_thumbnail')){
+        $thumbnail = file_load($thumbnail[0]['fid']);
+      }else{
+        /* Use the field from the node */
+        if($teaser_node_type == 'action'){
+          /* Action node types use 'field_action_main_image' */
+          $thumbnail_field_name = 'field_action_main_image';
+        }else{
+          /* Non-action node types use 'field_thumbnail' */
+          $thumbnail_field_name = 'field_thumbnail';
+        }
+        if($thumbnail = field_get_items('node', $teaser_node, $thumbnail_field_name)){
+          $thumbnail = file_load($thumbnail[0]['fid']);
+        }
+      }
+      $thumbnail = theme_image_style(array(
+        'style_name' => 'inline_thumbnail', //TODO: create a smaller image style
+        'path' => $thumbnail->uri,
+      ));
+
+      /* Return the label */
+      if($label = field_get_items('field_collection_item', $teaser_item, 'field_promo_label')){
+        /* If a label override exists, use it */
+        $label = $label[0]['value'];
+      }else{
+        /* Use the field from the node */
+        if($teaser_node_type == 'action'){
+          /* For Action Content Type use the field_action_type term name that it references */
+          if($label = field_get_items('node', $teaser_node, 'field_action_type')){
+            $label = taxonomy_term_load($label[0]['tid']);
+            $label = $label->name;
+          }
+        }else{
+          /* Non-action node types use Node Title for a label */
+          $label = $teaser_node->title;
+        }
+      }
+
+      /* Return the text ('content') */
+      if($content = field_get_items('field_collection_item', $teaser_item, 'field_promo_headline')){
+        /* If a content override exists, use it */
+        $content = $content[0]['value'];
+      }else{
+        /* Use the field from the node */
+        if($teaser_node_type == 'action'){
+          /* For Action Content Type use the title of the action as the 'content'. */
+          $content = $teaser_node->title;
+        }else{
+          /* Non-action node types use the field_promo_headline field for 'content'. */
+          if($content = field_get_items('node', $teaser_node, 'field_promo_headline')){
+            $content = $content[0]['value'];
+          }
+        }
+      }
+    }
+
+    /* Theme the teasers */
+    $teasers[] = theme('tp_megaslim_menu_item', array('thumbnail' => $thumbnail, 'label' => $label, 'content' => $content));
+  }
+  $teasers = implode('', $teasers);
+  return $teasers;
+}
+
+/*
+ * Generate the parent menu item.
+ * This is not a block.  We do not need the weight of the Drupal block system and context
+ */
+function tp_megaslim_menu_load_menu(){
+  /* Add the js */
+  $path = drupal_get_path('module', 'tp_megaslim_menu');
+  drupal_add_js($path. '/js/megaslim.js');
+
+  /* Return the parent items of the MegaSlim Menu */
+  $menu_items = menu_tree_all_data('menu-megamenu', null, 1);
+  $items = array();
+  foreach($menu_items as $key => $menu_item){
+    $mlid = $menu_item['link']['mlid'];
+    $path = $menu_item['link']['link_path'];
+    $title = $menu_item['link']['link_title'];
+
+    $elements = array(
+      'data' => l($title, $path, array('attributes' => array('data-mlid' => $mlid))),
+      'class' => array('mega-item col-xs-2'),
+    );
+    $items[$key] = $elements;
+
+  }
+
+  $menu = theme('item_list', array(
+    'items' => $items,
+    'type' => 'ul',
+    'attributes' => array(
+      'id' => 'megaslim'
+    )
+  ));
+
+  return $menu;
+
+
+}
+
+/*
+ * Implements hook_theme()
+ */
+function tp_megaslim_menu_theme(){
+  return array(
+    'tp_megaslim' => array(
+      'template' => 'templates/tp-megaslim',
+      'variables' => array(
+        'submenu' => '',
+        'teasers' => '',
+        'more_link' => ''
+      )
+    ),
+    'tp_megaslim_menu_item' => array(
+      'template' => 'templates/tp-megaslim-menu-item',
+      'variables' => array(
+        'thumbnail' => '',
+        'label' => '',
+        'content' => ''
+      )
+    )
+  );
+}
