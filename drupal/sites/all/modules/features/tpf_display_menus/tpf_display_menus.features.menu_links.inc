@@ -539,16 +539,19 @@ function tpf_display_menus_menu_default_menu_links() {
     'router_path' => 'taxonomy/term/%',
     'link_title' => 'Lifestyle',
     'options' => array(
-      'attributes' => array(
-        'name' => 'See all Lifestyle',
+      'attributes' => array(),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
       ),
       'identifier' => 'menu-megamenu_lifestyle:taxonomy/term/18',
     ),
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
-    'has_children' => 1,
-    'expanded' => 1,
+    'has_children' => 0,
+    'expanded' => 0,
     'weight' => -47,
     'customized' => 1,
     'parent_identifier' => 'menu-megamenu_culture:taxonomy/term/108747',

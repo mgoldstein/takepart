@@ -4107,7 +4107,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'settings' => array(
       'referenceable_types' => array(
         'action' => 0,
-        'campaign' => 0,
+        'campaign' => 'campaign',
         'campaign_card_ad' => 0,
         'campaign_card_branding' => 0,
         'campaign_card_empty' => 0,
@@ -4119,7 +4119,7 @@ function tpf_content_field_bases_field_default_field_bases() {
         'campaign_card_tap_widget' => 0,
         'campaign_card_text' => 0,
         'campaign_card_twitter' => 0,
-        'campaign_page' => 0,
+        'campaign_page' => 'campaign_page',
         'campaign_tray' => 0,
         'feature_article' => 'feature_article',
         'feed' => 0,
