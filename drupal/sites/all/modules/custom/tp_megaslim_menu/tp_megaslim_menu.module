@@ -23,6 +23,7 @@ function tp_megaslim_menu_menu(){
  */
 function tp_megaslim_menu_item($menu_item){
   /* Megaslim can use Taxonomy Terms or Nodes of type Section Front */
+  $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 2);
 
   /* Use the cached version of the MegaSlim menu if it exists */
   $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
@@ -89,8 +90,13 @@ function tp_megaslim_generate_megaslim($menu_item){
   }
 
   /* Generate submenu */
-  $submenu = 'submenu';
-
+  $mega_tree = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 2);
+  $submenu = '';
+  foreach($mega_tree as $item){
+    if($item['link']['mlid'] == $menu_item['mlid']){
+      $submenu = render(menu_tree_output($item['below']));
+    }
+  }
 
   /* Generate more link */
   $more_link = 'more link';

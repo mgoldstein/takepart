@@ -8,7 +8,7 @@
   @include breakpoint($breakpoint-tablet){
     display: block;
   }
-  > li{
+  > li.mega-item{
     position: static;
     border-top: 1px solid #000;
     border-bottom: 2px solid #000;
@@ -38,6 +38,17 @@
     }
     &:last-child a:after{
       display: none;
+    }
+  }
+  .submenu{
+    font-family: $primary-sans-font;
+    text-align: left;
+    line-height: 26px;
+    li{
+      list-style: none;
+    }
+    a{
+      color: $black;
     }
   }
   .megaslim-menu-item-content{
