@@ -20,7 +20,7 @@
 
     //overrides the stopat for fresh theme
     if ($('.article-wrapper').length !== 0) {
-      options.stopAt = '.region-footer'; 
+      options.stopAt = '.footer'; 
     }
     
     return this.each(function(index) {
