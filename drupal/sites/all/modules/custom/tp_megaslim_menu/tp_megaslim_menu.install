@@ -10,7 +10,7 @@
 function tp_megaslim_menu_install(){
   $style_mobile = image_style_save(array('name' => 'megaslim_thumbnail'));
   $effect = array(
-    'name' => 'image_scale',
+    'name' => 'image_scale_and_crop',
     'data' => array(
       'width' => 165,
       'height' => 110,
@@ -26,5 +26,7 @@ function tp_megaslim_menu_install(){
  */
 function tp_megaslim_menu_uninstall(){
   /* Delete the image style when this module is uninstalled */
-  image_style_delete(array('name' => 'megaslim_thumbnail'));
+  $image_style = 'megaslim_thumbnail';
+  image_style_flush(array('name' => $image_style));
+  image_style_delete(array('name' => $image_style));
 }

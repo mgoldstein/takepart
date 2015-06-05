@@ -98,7 +98,22 @@ function tp_megaslim_generate_megaslim($menu_item){
   }
 
   /* Generate more link */
-  $more_link = 'more link';
+  $more_link_name = $menu_item['options']['attributes']['name'];
+  if(!isset($more_link_name) || empty($more_link_name)){
+    $more_link_name = t('See More '). $menu_item['title'];
+  }
+  $more_link = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'span',
+      '#attributes' => array(
+        'class' => 'icon i-double-arrow-right'
+      ),
+      '#value' => ''
+    )
+  ));
+  $more_path = drupal_get_path_alias($menu_item['link_path']);
+  $more_link .= l($more_link_name, '/'. $more_path);
+
 
   $megaslim = theme('tp_megaslim', array('submenu' => $submenu, 'teasers' => $teasers, 'more_link' => $more_link));
   return $megaslim;
@@ -120,9 +135,8 @@ function tp_megaslim_generate_teasers($teaser_items){
       $teaser_node_type = $teaser_node->type;
 
       /* Return the link */
-      global $base_url;
       $path = drupal_get_path_alias('node/'. $teaser_node->nid);
-      $path = $base_url. '/'. $path;
+      $path = '/'. $path;
 
       /* Return the thumbnail */
       if($thumbnail = field_get_items('field_collection_item', $teaser_item, 'field_promo_thumbnail')){
@@ -206,12 +220,23 @@ function tp_megaslim_menu_load_menu(){
     $path = $menu_item['link']['link_path'];
     $title = $menu_item['link']['link_title'];
 
+    if($mlid == 8326){
+      $title = $title. ' <span class="icon i-take-action"></span>';
+    }
+
     $elements = array(
-      'data' => l($title, $path, array('attributes' => array('data-mlid' => $mlid))),
+      'data' => l($title, $path, array(
+        'attributes' => array(
+          'data-mlid' => $mlid,
+          'class' => array(
+            'item-'. $mlid
+          )
+        ),
+        'html' => TRUE
+      )),
       'class' => array('mega-item col-xs-2'),
     );
     $items[$key] = $elements;
-
   }
 
   $menu = theme('item_list', array(
