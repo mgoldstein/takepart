@@ -215,11 +215,11 @@
                     }
                     //appends the markup after the selector
                     $(item).addClass('ad-inserted-append');
+                    
+                    //increment counts
+                    window[tp_count]++; //increment the ads for rotation
+                    window[tp_count_insert] = insert_key; //update key once its been added
                   }
-                  
-                  //increment counts
-                  window[tp_count]++; //increment the ads for rotation
-                  window[tp_count_insert] = insert_key; //update key once its been added
                 }
               }
             });
