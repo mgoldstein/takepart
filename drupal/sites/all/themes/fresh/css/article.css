@@ -3969,6 +3969,7 @@ body .inline-content-video {
   position: relative;
   max-width: 1000px;
   clear: both;
+  /* Deviations */
 }
 @media all and (min-width: 768px) {
   /* line 1, ../../base/sass/base/modules/_megaslim.scss */
@@ -4027,6 +4028,15 @@ body .inline-content-video {
   color: black;
 }
 /* line 54, ../../base/sass/base/modules/_megaslim.scss */
+#megaslim .more-link {
+  color: #00a084;
+  text-align: left;
+}
+/* line 57, ../../base/sass/base/modules/_megaslim.scss */
+#megaslim .more-link span {
+  display: inline-block;
+}
+/* line 61, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim .megaslim-menu-item-content {
   height: auto;
   overflow: hidden;
@@ -4037,19 +4047,29 @@ body .inline-content-video {
   top: 40px;
   z-index: 1;
   padding: 35px;
+  padding-bottom: 20px;
   -webkit-box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.5);
 }
-/* line 66, ../../base/sass/base/modules/_megaslim.scss */
+/* line 74, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim .megaslim-menu-item-content a {
   color: black;
 }
-/* line 70, ../../base/sass/base/modules/_megaslim.scss */
+/* line 76, ../../base/sass/base/modules/_megaslim.scss */
+#megaslim .megaslim-menu-item-content a:hover {
+  text-decoration: underline;
+}
+/* line 80, ../../base/sass/base/modules/_megaslim.scss */
+#megaslim .megaslim-menu-item-content .picture img {
+  width: 160px;
+  height: 105px;
+}
+/* line 85, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim .megaslim-content-teaser {
   border-left: 1px solid #CCC;
   height: 220px;
 }
-/* line 74, ../../base/sass/base/modules/_megaslim.scss */
+/* line 89, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim .mega-label {
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-size: 14px;
@@ -4060,27 +4080,35 @@ body .inline-content-video {
   white-space: nowrap;
   overflow: hidden;
 }
-/* line 84, ../../base/sass/base/modules/_megaslim.scss */
+/* line 99, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim .text {
   font-family: "Ashbury", "Times New Roman", Times, Georgia, serif;
   text-align: left;
   line-height: 18px;
 }
-/* line 89, ../../base/sass/base/modules/_megaslim.scss */
+/* line 104, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim li.mega-item .megaslim-menu-item-content {
   display: none;
 }
-/* line 92, ../../base/sass/base/modules/_megaslim.scss */
+/* line 107, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim li.mega-item:hover {
   background: black;
 }
-/* line 94, ../../base/sass/base/modules/_megaslim.scss */
+/* line 109, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim li.mega-item:hover > a {
   color: white;
 }
-/* line 97, ../../base/sass/base/modules/_megaslim.scss */
+/* line 112, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim li.mega-item:hover .megaslim-menu-item-content {
   display: block;
+}
+/* line 118, ../../base/sass/base/modules/_megaslim.scss */
+#megaslim .item-8326 {
+  vertical-align: top;
+}
+/* line 120, ../../base/sass/base/modules/_megaslim.scss */
+#megaslim .item-8326 .icon.i-take-action {
+  line-height: 40px;
 }
 
 /* line 1, ../sass/modules/_header.scss */
