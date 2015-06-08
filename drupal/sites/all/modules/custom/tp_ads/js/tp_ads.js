@@ -206,7 +206,7 @@
                       if (window.tp_ad_debug_mode == "true") {
                         js_markup = '<h5 class="ad-label text-center">Advertisement - ' + ad_slot + '</h5>' + js_markup;
                       }
-                      dynamic_js_markup = '<div class="tp-ad-wrapper ' + ad_class + '">' + js_markup + '</div>';
+                      dynamic_js_markup = '<div class="tp-ad-wrapper row' + ad_class + '">' + js_markup + '</div>';
                       $(this).append(dynamic_js_markup);
                     }
                     else {

@@ -2,27 +2,28 @@
  *	Mobile first scss
  */
 .tp-ad-wrapper {
-	@include breakpoint($breakpoint-phablet) {
-		&.ad-right {
-			float: right;
-			margin: 20px;
-		}
-		
-		.tp-ad {
-			&:after {
-				clear: none;
-			}
-		}
-	}
-}
+   @include breakpoint($breakpoint-phablet) {
+     margin: 20px;
+     &.ad-right {
+       float: right;
+       margin: 20px 0 20px 30px;
+     }
+
+     .tp-ad {
+       &:after {
+         clear: none;
+       }
+     }
+   }
+ }
 
 .leaderboard {
-	.desktop {
-		display: none;
-		
-		//only show the leaderboard ad for bigger then 480
-		@include breakpoint($breakpoint-phablet) {
-			display: block;
-		}
-	}
+  .desktop {
+    display: none;
+
+    //only show the leaderboard ad for bigger then 480
+    @include breakpoint($breakpoint-phablet) {
+      display: block;
+    }
+  }
 }

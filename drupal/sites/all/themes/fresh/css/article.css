@@ -4502,23 +4502,27 @@ footer .corporate-footer ul li a {
  *	Mobile first scss
  */
 @media all and (min-width: 480px) {
-  /* line 6, ../sass/modules/_tp_ads.scss */
-  .tp-ad-wrapper.ad-right {
-    float: right;
+  /* line 4, ../sass/modules/_tp_ads.scss */
+  .tp-ad-wrapper {
     margin: 20px;
   }
-  /* line 12, ../sass/modules/_tp_ads.scss */
+  /* line 7, ../sass/modules/_tp_ads.scss */
+  .tp-ad-wrapper.ad-right {
+    float: right;
+    margin: 20px 0 20px 30px;
+  }
+  /* line 13, ../sass/modules/_tp_ads.scss */
   .tp-ad-wrapper .tp-ad:after {
     clear: none;
   }
 }
 
-/* line 20, ../sass/modules/_tp_ads.scss */
+/* line 21, ../sass/modules/_tp_ads.scss */
 .leaderboard .desktop {
   display: none;
 }
 @media all and (min-width: 480px) {
-  /* line 20, ../sass/modules/_tp_ads.scss */
+  /* line 21, ../sass/modules/_tp_ads.scss */
   .leaderboard .desktop {
     display: block;
   }
