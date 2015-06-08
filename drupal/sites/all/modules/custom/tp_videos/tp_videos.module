@@ -7,6 +7,23 @@
 module_load_include('inc', 'tp_videos', 'tp_videos.tokens');
 module_load_include('inc', 'tp_videos', 'tp_videos.metadata');
 module_load_include('inc', 'tp_videos', 'tp_videos.player_config');
+module_load_include('inc', 'tp_videos', 'tp_videos.topic_promoted');
+
+/**
+ * Implements hook_menu().
+ */
+function tp_videos_menu() {
+  $items = array();
+  $items['admin/config/media/topic_video'] = array(
+    'title' => 'Topic Promoted Videos',
+    'description' => 'Promote one or more videos on nodes of a certain topic, or site-wide',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_videos_topic_promoted_admin_form'),
+    'access arguments' => array('access administration pages')
+  );
+
+  return $items;
+}
 
 /**
  * Implements hook_entity_insert().
