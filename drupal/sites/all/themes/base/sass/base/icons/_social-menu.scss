@@ -22,10 +22,7 @@
 body {
   .article-wrapper {
     @include breakpoint($breakpoint-phablet) {
-      article {
-        margin-left: 90px;
-      }
-      
+
       .parent-social-menu {
         list-style: none;
       }

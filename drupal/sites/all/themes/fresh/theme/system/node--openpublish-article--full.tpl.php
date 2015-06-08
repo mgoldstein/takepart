@@ -13,7 +13,7 @@
       <?php print $variables['social']; ?>
     </aside>
   <?php endif; ?>
-  <article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <article class="col-xs-10 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
   
     <?php if(!empty($variables['advertisement'])): ?>
       <div class="advertisement">
