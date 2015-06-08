@@ -1422,7 +1422,7 @@
 }
 /* line 20, ../../base/sass/base/icons/_icons.scss */
 .tp-social-link.tp-social-Facebook:before, .social .tp-social-link.tp-social-facebook:before, .tp-follow-link.tp-social-Facebook:before, .social .tp-follow-link.tp-social-facebook:before {
-  content: "\e301";
+  content: "";
 }
 /* line 21, ../../base/sass/base/icons/_icons.scss */
 .tp-social-link.tp-social-Twitter:before, .social .tp-social-link.tp-social-twitter:before, .tp-follow-link.tp-social-Twitter:before, .social .tp-follow-link.tp-social-twitter:before {
@@ -4310,17 +4310,17 @@ body .user-menu.fresh-theme {
   background-repeat: no-repeat;
 }
 
-/* line 84, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 84, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -40px;
 }
 
-/* line 84, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -68px;
 }
