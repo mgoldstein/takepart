@@ -1,6 +1,6 @@
 .comments {
 	display: table;
-	margin: 0 auto;
+	margin: 20px auto;
 	width: 100%;
 	@include breakpoint($breakpoint-phablet) {
 		width: auto;
