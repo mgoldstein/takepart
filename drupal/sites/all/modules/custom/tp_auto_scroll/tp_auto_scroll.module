@@ -22,11 +22,11 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
 
   $cache_lifetime = variable_get('tp_auto_scroll_cache_lifetime', 3600);
 
-  /* If a cached version of the node exists AND user is anonymous */
-  $cache = 'autoscroll_'. $view_mode. '_'.$node->nid;
-  if($cached = cache_get($cache, 'cache'))  {
-    global $user;
-    if($user->uid == 0){
+  /* If a cached version of the node exists AND user is anonymous, use the cached version */
+  global $user;
+  if($user->uid == 0){
+    $cache = 'autoscroll_'. $view_mode. '_'.$node->nid;
+    if($cached = cache_get($cache, 'cache'))  {
       $output = $cached->data;
     }
   }
@@ -51,11 +51,12 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
     );
 
     /* Cache it for later use */
-    cache_set($cache, $output, 'cache', REQUEST_TIME + $cache_lifetime);
+    if($user->uid == 0){
+      cache_set($cache, $output, 'cache', REQUEST_TIME + $cache_lifetime);
+    }
   }
 
   /* Return output in json format */
-//  drupal_json_output($output);
   print drupal_json_encode($output);
   drupal_exit();
 

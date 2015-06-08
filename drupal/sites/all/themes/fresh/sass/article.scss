@@ -39,6 +39,12 @@
 /*****************
  * Article Page
  *****************/
+.article-wrapper{
+  position: relative;
+  .sticky-wrapper{
+    position: absolute;
+  }
+}
 h1.title{
   margin-top: 10px;
   margin-bottom: 15px;
