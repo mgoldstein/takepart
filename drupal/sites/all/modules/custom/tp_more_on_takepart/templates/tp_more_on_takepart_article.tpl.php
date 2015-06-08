@@ -62,7 +62,7 @@
  * @see template_process()
  */
 ?>
-<div class="col-xxs-6 col-xs-3">
+<div class="item col-xxs-6 col-xs-3">
 	<a href="<?php echo url($result['url']['path']); ?>" class="<?php echo $result['promo_type']; ?>">
 		<div class="thumbnail">
 		    <?php print $result['thumbnail']; ?>

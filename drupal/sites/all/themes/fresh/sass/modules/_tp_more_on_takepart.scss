@@ -1,29 +1,9 @@
 #more-on-takepart {
-	margin-bottom: 15px;
-	margin-right: -10px;
-	margin-left: -10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	.col-xxs-6:nth-child(2n){
-		clear: left;
-		padding-left: 0px;
-		padding-right: 5px;
-	}
-	.col-xxs-6:nth-child(2n+1){
-		padding-right: 0px;
-		padding-left: 5px;
-	}
-	@include breakpoint($breakpoint-phablet) {
-		.col-xs-3:nth-child(2n){
-			clear: none;
-		}
-		.col-xs-3:nth-child(4){
-			padding-left: 10px;
-		}
-	}
-	div {
-		margin: 15px 0 10px;
-	}
+  max-width: 640px;
+  margin: 0 auto;
+  .item{
+    margin-bottom: 10px;
+  }
 	.thumbnail {
 		position: relative;
 		margin: 0;
@@ -53,18 +33,4 @@
 	h4 {
 		margin: 10px 0 0;
 	}
-/*
-	.promoted {
-		color: #fff;
-		font-size: 10px;
-		font-weight: bold;
-		line-height: 10px;
-		font-family: $AdelleSans;
-		background: $black;
-		padding: 3px;
-		margin: 0;
-		border-radius: 3px;
-		display: inline-block;
-	}
-*/
 }
