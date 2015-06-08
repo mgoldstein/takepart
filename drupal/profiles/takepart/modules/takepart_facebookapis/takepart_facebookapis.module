@@ -23,14 +23,13 @@ function takepart_facebookapis_page_alter(&$page) {
 }
 
 function takepart_facebookapis_init_code($app_id) {
-//  drupal_add_js('//connect.facebook.com/en_US/sdk.js', 'external');
   $code = <<<EOC
   <div id="fb-root"></div>
   <script type="text/javascript">
     window.fbAsyncInit = function() {
       FB.init({
         appId      : '{$app_id}',
-        version    : 'v2.1',
+        version    : 'v2.3',
         status     : true,
         cookie     : true,
         xfbml      : true
