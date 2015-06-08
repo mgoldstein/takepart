@@ -26,7 +26,7 @@
     return this.each(function(index) {
 
       var $stickyEl = $(this),
-          $wrap = $stickyEl.wrap('<div class="' + options.wrapperClass +  '" />').parent().css('position', 'static'),
+          $wrap = $stickyEl.wrap('<div class="' + options.wrapperClass +  '" />').parent().css('position', 'absolute'),
           $bottomEl = $(options.stopAt);
 
       var adjustWrapper = function() {
