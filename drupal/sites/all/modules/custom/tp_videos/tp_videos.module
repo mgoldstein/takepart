@@ -4,15 +4,9 @@
  * Video content.
  */
 
-/**
- * Include the token functions.
- */
-require_once __DIR__ . '/tp_videos.tokens.inc';
-
-/**
- * Include the video metadata functions.
- */
-require_once __DIR__ . '/tp_videos.metadata.inc';
+module_load_include('inc', 'tp_videos', 'tp_videos.tokens');
+module_load_include('inc', 'tp_videos', 'tp_videos.metadata');
+module_load_include('inc', 'tp_videos', 'tp_videos.player_config');
 
 /**
  * Implements hook_entity_insert().
@@ -113,7 +107,7 @@ function tp_videos_preprocess_node(&$variables) {
 
     //addressing only featured secondary. the field in the display is not visible as the conditional creates the playlist into the content.
     $show = ($variables['view_mode'] == 'feature_secondary') ? FALSE : TRUE;
-    
+
     if ($show) {
       //@dev: noting that the original code is injecting the playlist into the content so it does not depend on the display
       $variables['content']['field_video_list'] = $video_list;
@@ -126,7 +120,7 @@ function tp_videos_preprocess_node(&$variables) {
 
     $variables['thumbnail'] = '/' . drupal_get_path('theme', 'tp4') . '/images/ph_black.png';
     $items = field_get_items('node', $variables['node'], 'field_thumbnail');
-    
+
     if ($items !== FALSE && count($items) > 0) {
       $item = reset($items);
       if (!empty($item['file']->uri)) {
@@ -227,7 +221,7 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
   $files = array();
   $displays = array();
   $videos_used = array();
-  
+
   foreach ($videos as $node) {
 
     // Unpubished nodes must be skipped when rendering the page for anonymous
@@ -272,7 +266,7 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
       // Add the video to the navigation strip (if there is one).
       if ($view_mode !== 'hidelist') {
         $node_view = node_view($node, 'video_playlist_teaser', $langcode);
-        
+
         //adds video duration at the end
         $node_view['#suffix'] = theme('html_tag', array(
           'element' => array(
@@ -284,8 +278,8 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
 
 				$node_view['#suffix'] .= _tp4_support_sponsor_flag($node);
 
-        $node_view['field_promo_headline'][0]['#markup'] = $node_view['field_promo_headline'][0]['#markup'] . ' '; 
-    
+        $node_view['field_promo_headline'][0]['#markup'] = $node_view['field_promo_headline'][0]['#markup'] . ' ';
+
         $displays[] = $node_view;
       }
 
@@ -471,13 +465,13 @@ function tp_videos_form_video_node_form_alter(&$form, &$form_state, $form_id) {
 function _tp_videos_video_form_submit(&$form, &$form_state) {
   //default variables
   $lang = $form_state['values']['language'];
-  
+
   //only continue if a video exist
   if (isset($form_state['values']['field_video'][$lang][0])) {
     //loads the video
     $file_id = $form_state['values']['field_video'][$lang][0]['fid'];
     $file = file_load($file_id);
-    
+
     //checks to see if the file is from youtube if so uncheck the value
     if ($file->filemime == 'video/youtube') {
       //only change the value if field sharing is checked

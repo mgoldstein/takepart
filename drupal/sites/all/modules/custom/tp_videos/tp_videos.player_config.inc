@@ -3,10 +3,10 @@
 /**
  *  Implements hook_tp_video_player_config_alter().
  */
-function tp_video_logic_tp_video_player_config_alter(&$config, &$display, &$file) {
+function tp_videos_tp_video_player_config_alter(&$config, &$display, &$file) {
   //variables
   $menu_obj = menu_get_object();
-  
+
   /**
    *  Main Detail Pages override
    *
@@ -27,7 +27,7 @@ function tp_video_logic_tp_video_player_config_alter(&$config, &$display, &$file
   if (is_object($menu_obj) && $menu_obj->type == 'video' && $display == 'video_full_page') {
     //makes all video autostart only on detail page
     $config['autostart'] = TRUE;
-    
+
     //adds video source into the site cat variable
     $config['sitecatalyst']['videoSource'] = $file['filemime'];
   }
