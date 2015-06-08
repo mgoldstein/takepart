@@ -89,7 +89,9 @@
               $('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
             }
             });
-
+          
+          
+      window.tp_initSocialMenu();
     }
   };
 

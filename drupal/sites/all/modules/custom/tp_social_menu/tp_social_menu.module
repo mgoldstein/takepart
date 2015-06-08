@@ -134,7 +134,7 @@ function theme_tp_social_menu($variables) {
   ));
 
   //needed since item list will not allow additional class so injecting via replacement  
-  $parent_ul = str_replace('item-list', 'item-list social-wrapper mobile', $parent_ul);
+  $parent_ul = str_replace('item-list', 'item-list social-wrapper', $parent_ul);
 
   return $parent_ul;
 }
