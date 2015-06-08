@@ -23,7 +23,7 @@
   <div class="main-content" id="content" role="main">
     <div class="container">
       <div class="row">
-        <div class="col-xxs-12 col-xs-10 col-xs-offset-1">
+        <div class="col-xxs-12">
           <a id="main-content"></a>
           <?php print render($title_prefix); ?>
           <?php print render($title_suffix); ?>

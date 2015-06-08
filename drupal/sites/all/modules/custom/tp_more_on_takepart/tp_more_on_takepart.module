@@ -126,7 +126,6 @@ function tp_more_on_takepart_theme() {
 function tp_more_on_takepart_block_view($delta = '') {
 	switch ($delta) {
 		case 'more_on_takepart':
-//		$block['subject'] = t('More on TakePart');	// Put everything inside the block
 
 		if (user_access('access content')) {
 
@@ -168,9 +167,6 @@ function tp_more_on_takepart_block_view($delta = '') {
 			// Load the Taboola JS
 			$t = variable_get('more_on_takepart_taboola','');
 
-			// Get human-readable names	
-			$types = node_type_get_types();
-
 			foreach ($items as $item) {
 
 				$result = node_load($item['nid']);
@@ -193,9 +189,6 @@ function tp_more_on_takepart_block_view($delta = '') {
 						$field = 'field_thumbnail';
 						break;
 				}
-
-				$field_thumbnail = field_get_items('node', $result, $field);
-				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
 
 				$field_sponsored = field_get_items('node',$result,'field_sponsored');
 				$field_sponsored = $field_sponsored[0]['tid'];
@@ -235,13 +228,10 @@ function tp_more_on_takepart_block_view($delta = '') {
 				$field_thumbnail = field_get_items('node', $result, $field);
 				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
 
-#				$field_promoted = field_get_items('node',$result,'field_promoted');
-#				$field_promoted = $field_promoted[0]['value'];
-
 				// Add to the array names after this type
 				${$item['type']}[] = theme('tp_more_on_takepart_article', array(
 					'result' => array(
-						'title' => $field_permanent_title,
+						'title' => $result->title,
 						'url' => entity_uri('node', $result),
 						'type' => $type,
 						'promo_type' => 'more_on_takepart_'.$item['type'],

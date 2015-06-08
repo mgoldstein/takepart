@@ -13,7 +13,7 @@
       <?php print $variables['social']; ?>
     </aside>
   <?php endif; ?>
-  <article class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <article class="col-xs-10 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
   
     <?php if(!empty($variables['advertisement'])): ?>
       <div class="advertisement">
@@ -25,7 +25,7 @@
           <?php print $variables['topic_box']; ?>
       <?php endif; ?>
       <?php print render($title_prefix); ?>
-      <h1><?php print $title; ?></h1>
+      <h1 class="title"><?php print $title; ?></h1>
       <?php print render($title_suffix); ?>
       <?php if(!empty($variables['headline'])): ?>
           <?php print $variables['headline']; ?>
