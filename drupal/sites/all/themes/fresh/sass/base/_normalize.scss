@@ -53,6 +53,12 @@ figure{
 iframe{
   max-width: 100%;
 }
+.headline{
+  @include breakpoint($breakpoint-tablet){
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
 .sponsor-label{
   font-family: $Brown;
   font-weight: 900;
