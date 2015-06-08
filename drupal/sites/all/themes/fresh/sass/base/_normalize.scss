@@ -252,6 +252,9 @@ aside.inline-content + p{
     margin-top: 35px;
   }
 }
+.inline-html-wrapper > *{
+  margin: 0 auto;
+}
 .container{
   @include breakpoint($breakpoint-phablet){
     max-width: 750px;

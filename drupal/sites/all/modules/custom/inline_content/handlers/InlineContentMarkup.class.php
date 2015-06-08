@@ -38,6 +38,15 @@ class InlineContentMarkup extends InlineContentReplacementController {
       else {
         $markup = check_markup($item['value'], $item['format'], $langcode);
       }
+      $markup = theme('html_tag', array(
+        'element' => array(
+          '#tag' => 'div',
+          '#attributes' => array(
+            'class' => 'inline-html-wrapper'
+          ),
+          '#value' => $markup
+        )
+      ));
       $content['#replacements'][] = array(
         '#type' => 'markup',
         '#markup' => $markup,
