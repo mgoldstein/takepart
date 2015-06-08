@@ -2993,11 +2993,15 @@ aside.inline-content .inline-content-inner {
 .topic-box-wrapper {
   margin: 20px inherit;
 }
+/* line 352, ../sass/base/_normalize.scss */
+.topic-box-wrapper img {
+  margin: 0 auto;
+}
 
 /*
 * Lines
 *************************/
-/* line 358, ../sass/base/_normalize.scss */
+/* line 361, ../sass/base/_normalize.scss */
 .line {
   height: 1px;
   margin: 10px 0;
@@ -3005,16 +3009,16 @@ aside.inline-content .inline-content-inner {
   clear: both;
 }
 
-/* line 364, ../sass/base/_normalize.scss */
+/* line 367, ../sass/base/_normalize.scss */
 .line-style-1 {
   background-color: #c7c7c7;
 }
 
-/* line 367, ../sass/base/_normalize.scss */
+/* line 370, ../sass/base/_normalize.scss */
 .line-style-2 {
   background-color: #c7c7c7;
 }
-/* line 369, ../sass/base/_normalize.scss */
+/* line 372, ../sass/base/_normalize.scss */
 .line-style-2:after {
   content: '';
   width: 10px;
@@ -3033,7 +3037,7 @@ aside.inline-content .inline-content-inner {
   background: white;
 }
 
-/* line 387, ../sass/base/_normalize.scss */
+/* line 390, ../sass/base/_normalize.scss */
 .line-style-3 {
   background-color: #0080a5;
 }
@@ -3041,7 +3045,7 @@ aside.inline-content .inline-content-inner {
 /*
 * Separators
 *************************/
-/* line 394, ../sass/base/_normalize.scss */
+/* line 397, ../sass/base/_normalize.scss */
 .separator {
   width: 50px;
   display: block;
@@ -3049,7 +3053,7 @@ aside.inline-content .inline-content-inner {
   height: 3px;
 }
 
-/* line 400, ../sass/base/_normalize.scss */
+/* line 403, ../sass/base/_normalize.scss */
 .separator-style-1 {
   background-color: #00c09d;
   opacity: .3;
@@ -4570,23 +4574,35 @@ footer .corporate-footer ul li a {
  * Article Page
  *****************/
 /* line 42, ../sass/article.scss */
-h1 {
+h1.title {
   margin-top: 10px;
   margin-bottom: 15px;
 }
+@media all and (min-width: 768px) {
+  /* line 42, ../sass/article.scss */
+  h1.title {
+    text-align: center;
+  }
+}
 
-/* line 46, ../sass/article.scss */
+/* line 49, ../sass/article.scss */
 .main-media {
   display: block;
   margin: 0 auto;
 }
 
-/* line 50, ../sass/article.scss */
+/* line 53, ../sass/article.scss */
 .headline {
   margin: 20px inherit;
 }
+@media all and (min-width: 768px) {
+  /* line 53, ../sass/article.scss */
+  .headline {
+    text-align: center;
+  }
+}
 
-/* line 53, ../sass/article.scss */
+/* line 59, ../sass/article.scss */
 .btn-secondary {
   display: block;
   width: 40px;
@@ -4595,22 +4611,22 @@ h1 {
   line-height: 31px;
 }
 
-/* line 60, ../sass/article.scss */
+/* line 66, ../sass/article.scss */
 .horizontal-menu {
   margin-bottom: 5px;
   margin-top: 6px;
 }
-/* line 63, ../sass/article.scss */
+/* line 69, ../sass/article.scss */
 .horizontal-menu li {
   margin-right: 4px;
 }
 
-/* line 67, ../sass/article.scss */
+/* line 73, ../sass/article.scss */
 .field-item > p:first-child {
   margin-top: 0;
 }
 
-/* line 70, ../sass/article.scss */
+/* line 76, ../sass/article.scss */
 #more-on-takepart {
   margin-bottom: 5px;
   border-bottom: 1px solid #CCC;

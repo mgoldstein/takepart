@@ -25,7 +25,7 @@
           <?php print $variables['topic_box']; ?>
       <?php endif; ?>
       <?php print render($title_prefix); ?>
-      <h1><?php print $title; ?></h1>
+      <h1 class="title"><?php print $title; ?></h1>
       <?php print render($title_suffix); ?>
       <?php if(!empty($variables['headline'])): ?>
           <?php print $variables['headline']; ?>

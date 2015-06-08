@@ -39,9 +39,12 @@
 /*****************
  * Article Page
  *****************/
-h1{
+h1.title{
   margin-top: 10px;
   margin-bottom: 15px;
+  @include breakpoint($breakpoint-tablet){
+    text-align: center;
+  }
 }
 .main-media{
   display: block;
@@ -49,6 +52,9 @@ h1{
 }
 .headline{
   margin: 20px inherit;
+  @include breakpoint($breakpoint-tablet){
+    text-align: center;
+  }
 }
 .btn-secondary{
   display: block;
