@@ -256,10 +256,7 @@ aside.inline-content + p{
   margin: 0 auto;
 }
 .container{
-  @include breakpoint($breakpoint-phablet){
-    max-width: 750px;
-    margin: 0 auto;
-  }
+  width: 100%;
   @include breakpoint($breakpoint-desktop){
     max-width: 1000px;
   }
