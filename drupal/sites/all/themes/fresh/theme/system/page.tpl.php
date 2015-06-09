@@ -23,14 +23,12 @@
   <div class="main-content" id="content" role="main">
     <div class="container">
       <div class="row">
-        <div class="col-xxs-12">
-          <a id="main-content"></a>
-          <?php print render($title_prefix); ?>
-          <?php print render($title_suffix); ?>
-          <?php print $messages; ?>
-          <?php print render($tabs); ?>
-          <?php print render($page['content']); ?>
-        </div>
+        <a id="main-content"></a>
+        <?php print render($title_prefix); ?>
+        <?php print render($title_suffix); ?>
+        <?php print $messages; ?>
+        <?php print render($tabs); ?>
+        <?php print render($page['content']); ?>
       </div>
     </div>
   </div>
