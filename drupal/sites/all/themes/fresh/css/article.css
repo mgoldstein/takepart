@@ -2990,12 +2990,13 @@ aside.inline-content .inline-content-inner {
   margin-bottom: 5px;
   text-align: left;
   color: #5A5A5A;
+  padding-left: 0;
 }
-/* line 354, ../sass/base/_normalize.scss */
+/* line 355, ../sass/base/_normalize.scss */
 .author-teaser .image {
   padding-right: 0;
 }
-/* line 357, ../sass/base/_normalize.scss */
+/* line 358, ../sass/base/_normalize.scss */
 .author-teaser img {
   margin: 0 auto;
 }
@@ -3003,17 +3004,17 @@ aside.inline-content .inline-content-inner {
 /*
 * Topic Box
 *************************/
-/* line 364, ../sass/base/_normalize.scss */
+/* line 365, ../sass/base/_normalize.scss */
 .topic-box-wrapper {
   margin: 20px inherit;
 }
-/* line 366, ../sass/base/_normalize.scss */
+/* line 367, ../sass/base/_normalize.scss */
 .topic-box-wrapper img {
   margin: 0 auto;
 }
 
 @media all and (min-width: 768px) {
-  /* line 371, ../sass/base/_normalize.scss */
+  /* line 372, ../sass/base/_normalize.scss */
   .takepart-take-action-widget {
     float: left;
     margin-right: 30px;
@@ -3021,7 +3022,7 @@ aside.inline-content .inline-content-inner {
     margin-top: 10px;
   }
 
-  /* line 377, ../sass/base/_normalize.scss */
+  /* line 378, ../sass/base/_normalize.scss */
   .takepart-take-action-widget + p {
     margin-top: 55px;
   }
@@ -3029,7 +3030,7 @@ aside.inline-content .inline-content-inner {
 /*
 * Lines
 *************************/
-/* line 385, ../sass/base/_normalize.scss */
+/* line 386, ../sass/base/_normalize.scss */
 .line {
   height: 1px;
   margin: 10px 0;
@@ -3037,16 +3038,16 @@ aside.inline-content .inline-content-inner {
   clear: both;
 }
 
-/* line 391, ../sass/base/_normalize.scss */
+/* line 392, ../sass/base/_normalize.scss */
 .line-style-1 {
   background-color: #C7C7C7;
 }
 
-/* line 394, ../sass/base/_normalize.scss */
+/* line 395, ../sass/base/_normalize.scss */
 .line-style-2 {
   background-color: #C7C7C7;
 }
-/* line 396, ../sass/base/_normalize.scss */
+/* line 397, ../sass/base/_normalize.scss */
 .line-style-2:after {
   content: '';
   width: 10px;
@@ -3065,7 +3066,7 @@ aside.inline-content .inline-content-inner {
   background: white;
 }
 
-/* line 414, ../sass/base/_normalize.scss */
+/* line 415, ../sass/base/_normalize.scss */
 .line-style-3 {
   background-color: #0080A5;
 }
@@ -3073,7 +3074,7 @@ aside.inline-content .inline-content-inner {
 /*
 * Separators
 *************************/
-/* line 421, ../sass/base/_normalize.scss */
+/* line 422, ../sass/base/_normalize.scss */
 .separator {
   width: 50px;
   display: block;
@@ -3081,7 +3082,7 @@ aside.inline-content .inline-content-inner {
   height: 3px;
 }
 
-/* line 427, ../sass/base/_normalize.scss */
+/* line 428, ../sass/base/_normalize.scss */
 .separator-style-1 {
   background-color: #00C09D;
   opacity: .3;

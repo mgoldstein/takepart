@@ -6,8 +6,8 @@
     <?php if(!empty($variables['date'])): ?>
       <div class="published-at col-xxs-10"><?php print $variables['date']; ?></div>
     <?php endif; ?>
-    <div class="about col-xxs-10 col-xs-6"><?php print $author['about']; ?></div>
-    <div class="links col-xxs-10 col-xxs-offset-2 col-xs-4 col-xs-offset-0">
+    <div class="about col-xxs-10 col-xs-7"><?php print $author['about']; ?></div>
+    <div class="links col-xxs-10 col-xxs-offset-2 col-xs-3 col-xs-offset-0">
       <ul class="menu horizontal-menu">
         <?php foreach($author['links'] as $link): ?>
           <li><?php print $link; ?></li>
