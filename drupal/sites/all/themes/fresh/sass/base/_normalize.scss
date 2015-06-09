@@ -54,8 +54,8 @@ iframe{
   max-width: 100%;
 }
 .section{
-  height: auto;
-  overflow: hidden;
+//  height: auto;
+//  overflow: hidden;
 }
 .main-content{
   height: auto;
@@ -370,18 +370,17 @@ aside.inline-content + p{
     margin: 0 auto;
   }
 }
-
-.takepart-take-action-widget{
-  float: left;
-  margin-right: 30px;
-  margin-bottom: 20px;
-  margin-top: 10px;
+@include breakpoint($breakpoint-tablet){
+  .takepart-take-action-widget{
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+  .takepart-take-action-widget + p {
+    margin-top: 55px;
+  }
 }
-.takepart-take-action-widget + p {
-  margin-top: 55px;
-}
-
-
 
 /*
 * Lines
