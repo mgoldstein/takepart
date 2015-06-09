@@ -139,6 +139,47 @@ function tp_ads_preprocess_page(&$vars) {
         $ads[] = $value;
       }
     }
+
+    //loads the bg skin takeover from boxes
+    $takeover = boxes_box_load('bg_skin_sponsor');
+    
+    //checks to make sure the option is set
+    if (!empty($takeover->options['ga_ad_gpt_id'])) {
+      $takeover_id = $takeover->options['ga_ad_gpt_id'];
+      $takeover_ad_slot = $takeover->options['ga_ad_slot'];
+      
+      $header_script[] = theme('tp_ads_header', array(
+        'dpf_code' => $dpf_code,
+        'ad_slot' => $takeover_ad_slot,
+        'ad_gpd_id' => $takeover_id,
+        'width' => 1,
+        'height' => 1
+        )
+      );
+      
+      $vars['page']['footer']['#suffix'] = theme('tp_ads_script', array(
+          'ad_slot' => $takeover_ad_slot,
+          'ad_gpd_id' => $takeover_id,
+          'width' => 1,
+          'height' => 1,
+          'class' => 'desktop'
+        )
+      );
+    }
+
+  
+  
+    $vars['page']['footer']['#suffix'] = "<!-- TP3_ROS_Background_1x1 -->
+            <div id='div-gpt-ad-1391020952974-0' class='leaderboard-ad' style='width:1px; height:1px;'>
+            <script type='text/javascript'>
+              function qxghilytmn() {
+               if (typeof(googletag) !== 'undefined') {
+                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1391020952974-0'); });
+               }
+              }
+              qxghilytmn();
+            </script>
+            </div>";
     
     //creates the array needed
     $ads_wrapper['ads'] = $ads;
