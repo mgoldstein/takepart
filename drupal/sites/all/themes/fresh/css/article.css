@@ -4302,17 +4302,17 @@ body .user-menu.fresh-theme {
   background-repeat: no-repeat;
 }
 
-/* line 84, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 84, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -40px;
 }
 
-/* line 84, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -68px;
 }
@@ -4638,21 +4638,29 @@ h1.title {
 /* line 55, ../sass/article.scss */
 .main-media {
   display: block;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 /* line 59, ../sass/article.scss */
+#main-image {
+  width: 480px;
+  max-width: 100%;
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+/* line 65, ../sass/article.scss */
 .headline {
   margin: 20px inherit;
 }
 @media all and (min-width: 768px) {
-  /* line 59, ../sass/article.scss */
+  /* line 65, ../sass/article.scss */
   .headline {
     text-align: center;
   }
 }
 
-/* line 65, ../sass/article.scss */
+/* line 71, ../sass/article.scss */
 .btn-secondary {
   display: block;
   width: 40px;
@@ -4661,34 +4669,34 @@ h1.title {
   line-height: 31px;
 }
 
-/* line 72, ../sass/article.scss */
+/* line 78, ../sass/article.scss */
 .horizontal-menu {
   margin-bottom: 5px;
   margin-top: 6px;
 }
-/* line 75, ../sass/article.scss */
+/* line 81, ../sass/article.scss */
 .horizontal-menu li {
   margin-right: 4px;
 }
 
-/* line 79, ../sass/article.scss */
+/* line 85, ../sass/article.scss */
 .field-item > p:first-child {
   margin-top: 0;
 }
 
-/* line 82, ../sass/article.scss */
+/* line 88, ../sass/article.scss */
 #more-on-takepart {
   margin-bottom: 5px;
   border-bottom: 1px solid #CCC;
   padding-bottom: 15px;
 }
 
-/* line 87, ../sass/article.scss */
+/* line 93, ../sass/article.scss */
 .row.author .image {
   padding-left: 0;
 }
 
-/* line 90, ../sass/article.scss */
+/* line 96, ../sass/article.scss */
 .row.author .links {
   text-align: right;
   padding-left: 0;
