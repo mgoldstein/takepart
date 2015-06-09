@@ -4493,7 +4493,7 @@ footer .corporate-footer ul li a {
 }
 /* line 30, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart h2 {
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }
 /* line 33, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart h4 {
@@ -4711,7 +4711,7 @@ h1.title {
   padding-left: 0;
 }
 
-/* line 94, ../sass/article.scss */
+/* line 103, ../sass/article.scss */
 blockquote.pullquote {
   margin: 0;
   padding: 0;
