@@ -2634,7 +2634,7 @@ strong, b {
   /* line 67, ../sass/base/_normalize.scss */
   .headline {
     font-size: 22px;
-    line-height: 28px;
+    line-height: 34px;
   }
 }
 
@@ -4657,7 +4657,10 @@ h1.title {
 
 /* line 65, ../sass/article.scss */
 .headline {
-  margin: 20px inherit;
+  margin-top: 20px;
+  margin-right: inherit;
+  margin-left: inherit;
+  margin-bottom: 30px;
 }
 @media all and (min-width: 768px) {
   /* line 65, ../sass/article.scss */
@@ -4666,7 +4669,7 @@ h1.title {
   }
 }
 
-/* line 71, ../sass/article.scss */
+/* line 74, ../sass/article.scss */
 .btn-secondary {
   display: block;
   width: 40px;
@@ -4675,34 +4678,34 @@ h1.title {
   line-height: 31px;
 }
 
-/* line 78, ../sass/article.scss */
+/* line 81, ../sass/article.scss */
 .horizontal-menu {
   margin-bottom: 5px;
   margin-top: 6px;
 }
-/* line 81, ../sass/article.scss */
+/* line 84, ../sass/article.scss */
 .horizontal-menu li {
   margin-right: 4px;
 }
 
-/* line 85, ../sass/article.scss */
+/* line 88, ../sass/article.scss */
 .field-item > p:first-child {
   margin-top: 0;
 }
 
-/* line 88, ../sass/article.scss */
+/* line 91, ../sass/article.scss */
 #more-on-takepart {
   margin-bottom: 5px;
   border-bottom: 1px solid #CCC;
   padding-bottom: 15px;
 }
 
-/* line 93, ../sass/article.scss */
+/* line 96, ../sass/article.scss */
 .row.author .image {
   padding-left: 0;
 }
 
-/* line 96, ../sass/article.scss */
+/* line 99, ../sass/article.scss */
 .row.author .links {
   text-align: right;
   padding-left: 0;

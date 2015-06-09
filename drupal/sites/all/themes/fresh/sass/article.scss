@@ -63,7 +63,10 @@ h1.title{
   margin: 0 auto;
 }
 .headline{
-  margin: 20px inherit;
+  margin-top: 20px;
+  margin-right: inherit;
+  margin-left: inherit;
+  margin-bottom: 30px;
   @include breakpoint($breakpoint-tablet){
     text-align: center;
   }
