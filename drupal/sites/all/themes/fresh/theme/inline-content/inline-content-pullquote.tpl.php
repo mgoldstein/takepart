@@ -5,7 +5,7 @@
  * To override variables availabile use hook_preprocess_HOOK
  */
 ?>
-<blockquote class="pullquote text-center col-xs-10 col-xs-offset-1">
+<blockquote class="pullquote text-center col-xs-12 col-xs-offset-1">
   <div class="separator separator-style-1"></div>
   <p class="quotation"><?php print $quote; ?></p>
   <?php if($cite): ?>
