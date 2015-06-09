@@ -350,6 +350,7 @@ aside.inline-content + p{
     @extend .ad-label;
     text-align: left;
     color: $dark-gray;
+    padding-left: 0;
   }
   .image{
     padding-right: 0;
