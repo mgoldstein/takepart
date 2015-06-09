@@ -73,4 +73,80 @@
     }
   }
 
-  })(jQuery, Drupal, this, this.document);
+  /**
+   *  @function:
+   *    Function copied from tp_ad_takeover.jquery.js
+   */
+  window.tp_ad_takeover = function(bgcolor, bgimage, link) {
+    var $body = jQuery('body');
+    var $a = jQuery('<a id="tp_ad_takeover" href="' + link + '" target="_blank"></a>');
+    
+    $body.css({
+      background: bgcolor + ' url("' + bgimage + '") center top no-repeat',
+      backgroundAttachment: 'fixed'
+    }).addClass('tp_ad_takeover');
+    
+    $a.css({
+      position: 'fixed',
+      height: '100%',
+      width: '100%',
+      left: 0,
+      top: 0,
+      zIndex: 0
+    });
+    
+    jQuery('body #page-wrap').append($a);
+    
+    //only do on fresh theme with article-wrapper
+    if ($('.article-wrapper').length !== 0) {
+      jQuery('body #page-wrapper').append($a);
+      //variables
+      var background_image = new Image();
+      background_image.src = bgimage;
+      
+      //checks to see if the image is loaded
+      if (background_image.complete) {
+        var background_image_height = background_image.height;
+        takeover_ad(background_image_height);
+      }
+      //otherwise load image and then call function
+      else {  
+        $(background_image).load(function() {
+          var background_image_height = background_image.height;
+          takeover_ad(background_image_height);
+        });
+      }
+    }
+  };
+  
+  /**
+   *  @function:
+   *    Function is used to update the article only if on fresh
+   */
+  window.takeover_ad = function(background_image_height) {
+    //ensures that the height is defined
+    if (background_image_height != undefined) {
+      //binds a window scroll
+      $(window).bind('scroll', function() {
+        //variables
+        var first_article = $('article:first').offset();
+        var window_top = $(window).scrollTop();
+        var window_bottom = $(window).height() + window_top;
+        first_article.bottom = first_article.top + $('article:first').height();
+        var background_pos = first_article.bottom - background_image_height;
+        
+        //updates the background position
+        if (window_bottom > first_article.bottom) {
+          $('body').css('background-attachment', 'scroll');
+          $('body').css('background-position', 'center ' + background_pos + 'px');
+        }
+        else {
+          $('body').css('background-attachment', 'fixed');
+          $('body').css('background-position', 'center top');
+        }
+        
+      });
+    }
+  };
+  
+})(jQuery, Drupal, this, this.document);
