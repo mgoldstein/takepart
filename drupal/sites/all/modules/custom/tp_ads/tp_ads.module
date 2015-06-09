@@ -167,20 +167,6 @@ function tp_ads_preprocess_page(&$vars) {
       );
     }
 
-  
-  
-    $vars['page']['footer']['#suffix'] = "<!-- TP3_ROS_Background_1x1 -->
-            <div id='div-gpt-ad-1391020952974-0' class='leaderboard-ad' style='width:1px; height:1px;'>
-            <script type='text/javascript'>
-              function qxghilytmn() {
-               if (typeof(googletag) !== 'undefined') {
-                googletag.cmd.push(function() { googletag.display('div-gpt-ad-1391020952974-0'); });
-               }
-              }
-              qxghilytmn();
-            </script>
-            </div>";
-    
     //creates the array needed
     $ads_wrapper['ads'] = $ads;
     $ads_wrapper['selector'] = $selector;
