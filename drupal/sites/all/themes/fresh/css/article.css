@@ -4710,3 +4710,9 @@ h1.title {
   text-align: right;
   padding-left: 0;
 }
+
+/* line 94, ../sass/article.scss */
+blockquote.pullquote {
+  margin: 0;
+  padding: 0;
+}
