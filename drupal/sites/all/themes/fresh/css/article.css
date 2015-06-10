@@ -4189,6 +4189,9 @@ body .inline-content-video {
 
 /* line 1, ../sass/modules/_header.scss */
 #header {
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  color: #5A5A5A;
   display: block;
   width: 100%;
   height: auto;
@@ -4202,7 +4205,19 @@ body .inline-content-video {
     border-bottom: none;
   }
 }
-/* line 11, ../sass/modules/_header.scss */
+/* line 14, ../sass/modules/_header.scss */
+#header .header-inner {
+  height: auto;
+  overflow: hidden;
+}
+@media all and (min-width: 768px) {
+  /* line 14, ../sass/modules/_header.scss */
+  #header .header-inner {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+}
+/* line 22, ../sass/modules/_header.scss */
 #header .toggle-menu {
   display: block;
   cursor: pointer;
@@ -4210,12 +4225,12 @@ body .inline-content-video {
   color: #00c09d;
 }
 @media all and (min-width: 768px) {
-  /* line 11, ../sass/modules/_header.scss */
+  /* line 22, ../sass/modules/_header.scss */
   #header .toggle-menu {
     display: none;
   }
 }
-/* line 20, ../sass/modules/_header.scss */
+/* line 31, ../sass/modules/_header.scss */
 #header .logo {
   height: auto;
   overflow: hidden;
@@ -4223,17 +4238,17 @@ body .inline-content-video {
   width: 121px;
   float: left;
 }
-/* line 26, ../sass/modules/_header.scss */
+/* line 37, ../sass/modules/_header.scss */
 #header .logo img {
   width: 100%;
 }
 @media all and (min-width: 768px) {
-  /* line 20, ../sass/modules/_header.scss */
+  /* line 31, ../sass/modules/_header.scss */
   #header .logo {
     width: auto;
   }
 }
-/* line 33, ../sass/modules/_header.scss */
+/* line 44, ../sass/modules/_header.scss */
 #header .toggle-search {
   float: right;
   cursor: pointer;
@@ -4241,11 +4256,15 @@ body .inline-content-video {
   font-size: 18px;
   font-weight: 900;
 }
-/* line 41, ../sass/modules/_header.scss */
+/* line 51, ../sass/modules/_header.scss */
+#header .search {
+  /* Search for phablet and above */
+}
+/* line 52, ../sass/modules/_header.scss */
 #header .search form {
   display: none;
 }
-/* line 44, ../sass/modules/_header.scss */
+/* line 55, ../sass/modules/_header.scss */
 #header .search .form-item {
   width: 100%;
   position: relative;
@@ -4261,11 +4280,11 @@ body .inline-content-video {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 59, ../sass/modules/_header.scss */
+/* line 70, ../sass/modules/_header.scss */
 #header .search .form-submit {
   display: none;
 }
-/* line 62, ../sass/modules/_header.scss */
+/* line 73, ../sass/modules/_header.scss */
 #header .search input.form-text {
   width: 100%;
   float: left;
@@ -4278,20 +4297,115 @@ body .inline-content-video {
   line-height: 21px;
   background: #fff;
 }
-/* line 73, ../sass/modules/_header.scss */
+/* line 84, ../sass/modules/_header.scss */
 #header .search input.form-text:focus {
   outline: none;
 }
+@media all and (min-width: 768px) {
+  /* line 51, ../sass/modules/_header.scss */
+  #header .search {
+    float: right;
+    clear: right;
+  }
+  /* line 92, ../sass/modules/_header.scss */
+  #header .search form {
+    display: block;
+    float: right;
+  }
+  /* line 96, ../sass/modules/_header.scss */
+  #header .search .form-item {
+    width: 140px;
+    display: inline-block;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    vertical-align: middle;
+    padding: 0;
+  }
+  /* line 105, ../sass/modules/_header.scss */
+  #header .search input.form-text {
+    border-right: none;
+    height: 25px;
+  }
+  /* line 109, ../sass/modules/_header.scss */
+  #header .search .toggle-search {
+    display: none;
+  }
+  /* line 112, ../sass/modules/_header.scss */
+  #header .search .form-submit {
+    display: inline-block;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0;
+    color: #777;
+    text-indent: 6px;
+    font-size: 16px;
+    line-height: 21px;
+    background: #fff;
+    vertical-align: middle;
+    margin-left: -5px;
+  }
+}
+/* line 128, ../sass/modules/_header.scss */
+#header .user-menu {
+  position: absolute;
+  right: 34px;
+}
+@media all and (min-width: 768px) {
+  /* line 128, ../sass/modules/_header.scss */
+  #header .user-menu {
+    position: static;
+    float: right;
+  }
+}
+/* line 136, ../sass/modules/_header.scss */
+#header .follow-us {
+  display: none;
+}
+@media all and (min-width: 768px) {
+  /* line 136, ../sass/modules/_header.scss */
+  #header .follow-us {
+    display: block;
+    float: right;
+    clear: right;
+  }
+  /* line 142, ../sass/modules/_header.scss */
+  #header .follow-us .text {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 28px;
+    margin-right: 8px;
+  }
+  /* line 147, ../sass/modules/_header.scss */
+  #header .follow-us .text:before {
+    content: '|';
+    padding-right: 10px;
+  }
+  /* line 152, ../sass/modules/_header.scss */
+  #header .follow-us ul.menu {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0;
+  }
+  /* line 156, ../sass/modules/_header.scss */
+  #header .follow-us ul.menu li {
+    margin-right: 0;
+  }
+}
 
-/* line 79, ../sass/modules/_header.scss */
+/* line 163, ../sass/modules/_header.scss */
 body.mobile-search-show #header form {
   display: block;
 }
 
-/* line 84, ../sass/modules/_header.scss */
-body .user-menu.fresh-theme {
-  position: absolute;
-  right: 34px;
+/* TODO: don't let this get merged into develop */
+/* line 172, ../sass/modules/_header.scss */
+#header .search .form-submit {
+  background: url(/sites/all/themes/tp4/images/search-submit.png) no-repeat center center;
+  text-indent: -999px;
+  width: 33px;
+  cursor: pointer;
 }
 
 /* line 1, ../sass/modules/_fb_comments.scss */

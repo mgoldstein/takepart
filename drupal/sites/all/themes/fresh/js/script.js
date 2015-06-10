@@ -24,28 +24,39 @@
   Drupal.behaviors.mobileSearchToggle = {
     attach: function(context, settings) {
 
-      /* Show search field */
-      var $body = $('body');
-      $('.toggle-search').click(function(){
-        if ($body.hasClass('mobile-search-show')) {
-          $body.removeClass("mobile-search-show" );
-        }else{
-          $body.addClass("mobile-search-show" );
+      /* Search for mobile and Desktop */
+      tp_mobile_header_init();
+      if(typeof smartresize == 'function'){
+        $(window).smartresize(function() {
+            tp_mobile_header_init();
+        });
+      }
+
+      function tp_mobile_header_init(){
+        if($(window).width() < 481){
+          /* Show search field */
+          var $body = $('body');
+          $('.toggle-search').click(function(){
+            if ($body.hasClass('mobile-search-show')) {
+              $body.removeClass("mobile-search-show" );
+            }else{
+              $body.addClass("mobile-search-show" );
+            }
+          });
+
+          /* Hide search if clicked away from */
+          $(document).on('click', function(event) {
+            if (!$(event.target).closest('.search').length) {
+              $body.removeClass("mobile-search-show" );
+            }
+          });
+
+          //makes the search go away on focus
+          $('.search input').focus(function() {
+            $(this).val('');
+          });
         }
-      });
-
-      /* Hide search if clicked away from */
-      $(document).on('click', function(event) {
-        if (!$(event.target).closest('.search').length) {
-          $body.removeClass("mobile-search-show" );
-        }
-      });
-
-      //makes the search go away on focus
-      $('.search input').focus(function() {
-        $(this).val('');
-      });
-
+      }
     }
   };
 
