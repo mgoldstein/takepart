@@ -845,8 +845,8 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['field_admin_tag_tid']['table'] = 'field_data_field_admin_tag';
   $handler->display->display_options['filters']['field_admin_tag_tid']['field'] = 'field_admin_tag_tid';
   $handler->display->display_options['filters']['field_admin_tag_tid']['value'] = array(
+    116389 => '116389',
     115599 => '115599',
-    116333 => '116333',
   );
   $handler->display->display_options['filters']['field_admin_tag_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_admin_tag_tid']['type'] = 'select';
@@ -969,8 +969,8 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['field_admin_tag_tid']['table'] = 'field_data_field_admin_tag';
   $handler->display->display_options['filters']['field_admin_tag_tid']['field'] = 'field_admin_tag_tid';
   $handler->display->display_options['filters']['field_admin_tag_tid']['value'] = array(
+    116389 => '116389',
     115599 => '115599',
-    116333 => '116333',
   );
   $handler->display->display_options['filters']['field_admin_tag_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_admin_tag_tid']['type'] = 'select';
@@ -2260,7 +2260,7 @@ print $value;
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Indexed Content: Thumbnail */
+  /* Field: Indexed Content: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
@@ -2366,7 +2366,7 @@ print $value;
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nid']['hide_alter_empty'] = FALSE;
-  /* Field: Indexed Content: Thumbnail */
+  /* Field: Indexed Content: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'search_api_index_site_node_index';
   $handler->display->display_options['fields']['field_thumbnail']['field'] = 'field_thumbnail';
