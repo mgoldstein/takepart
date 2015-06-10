@@ -116,12 +116,15 @@
         border-left: none;
         border-radius: 0;
         color: #777;
-        text-indent: 6px;
         font-size: 16px;
         line-height: 21px;
         background: #fff;
         vertical-align: middle;
         margin-left: -5px;
+        background: url(/sites/all/themes/tp4/images/search-submit.png) no-repeat center center;
+        text-indent: -999px;
+        width: 33px;
+        cursor: pointer;
       }
     }
   }
@@ -162,16 +165,4 @@
 }
 body.mobile-search-show #header form{
   display: block;
-}
-
-
-
-
-
-/* TODO: don't let this get merged into develop */
-#header .search .form-submit{
-  background: url(/sites/all/themes/tp4/images/search-submit.png) no-repeat center center;
-  text-indent: -999px;
-  width: 33px;
-  cursor: pointer;
 }

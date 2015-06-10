@@ -4339,73 +4339,67 @@ body .inline-content-video {
     border-left: none;
     border-radius: 0;
     color: #777;
-    text-indent: 6px;
     font-size: 16px;
     line-height: 21px;
     background: #fff;
     vertical-align: middle;
     margin-left: -5px;
+    background: url(/sites/all/themes/tp4/images/search-submit.png) no-repeat center center;
+    text-indent: -999px;
+    width: 33px;
+    cursor: pointer;
   }
 }
-/* line 128, ../sass/modules/_header.scss */
+/* line 131, ../sass/modules/_header.scss */
 #header .user-menu {
   position: absolute;
   right: 34px;
 }
 @media all and (min-width: 768px) {
-  /* line 128, ../sass/modules/_header.scss */
+  /* line 131, ../sass/modules/_header.scss */
   #header .user-menu {
     position: static;
     float: right;
   }
 }
-/* line 136, ../sass/modules/_header.scss */
+/* line 139, ../sass/modules/_header.scss */
 #header .follow-us {
   display: none;
 }
 @media all and (min-width: 768px) {
-  /* line 136, ../sass/modules/_header.scss */
+  /* line 139, ../sass/modules/_header.scss */
   #header .follow-us {
     display: block;
     float: right;
     clear: right;
   }
-  /* line 142, ../sass/modules/_header.scss */
+  /* line 145, ../sass/modules/_header.scss */
   #header .follow-us .text {
     display: inline-block;
     vertical-align: top;
     line-height: 28px;
     margin-right: 8px;
   }
-  /* line 147, ../sass/modules/_header.scss */
+  /* line 150, ../sass/modules/_header.scss */
   #header .follow-us .text:before {
     content: '|';
     padding-right: 10px;
   }
-  /* line 152, ../sass/modules/_header.scss */
+  /* line 155, ../sass/modules/_header.scss */
   #header .follow-us ul.menu {
     display: inline-block;
     vertical-align: middle;
     margin-top: 0;
   }
-  /* line 156, ../sass/modules/_header.scss */
+  /* line 159, ../sass/modules/_header.scss */
   #header .follow-us ul.menu li {
     margin-right: 0;
   }
 }
 
-/* line 163, ../sass/modules/_header.scss */
+/* line 166, ../sass/modules/_header.scss */
 body.mobile-search-show #header form {
   display: block;
-}
-
-/* TODO: don't let this get merged into develop */
-/* line 172, ../sass/modules/_header.scss */
-#header .search .form-submit {
-  background: url(/sites/all/themes/tp4/images/search-submit.png) no-repeat center center;
-  text-indent: -999px;
-  width: 33px;
-  cursor: pointer;
 }
 
 /* line 1, ../sass/modules/_fb_comments.scss */
@@ -4456,17 +4450,17 @@ body.mobile-search-show #header form {
   background: url('../images/logos-s3abcf13aa0.png') no-repeat;
 }
 
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -68px;
 }
 
-/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -40px;
 }
