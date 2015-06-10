@@ -4701,15 +4701,11 @@ footer .corporate-footer ul li a {
 }
 
 /* line 32, ../sass/modules/_tp_ads.scss */
-.tp_ad_takeover #content, .tp_ad_takeover #header {
+.tp_ad_takeover #page-wrapper, .tp_ad_takeover #footer-wrapper {
   margin: 0 auto;
   max-width: 1000px;
   position: relative;
   z-index: 2;
-}
-/* line 38, ../sass/modules/_tp_ads.scss */
-.tp_ad_takeover #header {
-  z-index: 3;
 }
 
 /* line 1, ../sass/modules/_series-nav.scss */

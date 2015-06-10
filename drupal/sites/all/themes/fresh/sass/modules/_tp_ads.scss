@@ -29,13 +29,10 @@
 }
 
 .tp_ad_takeover {
-  #content, #header {
+  #page-wrapper, #footer-wrapper {
     margin: 0 auto;
     max-width: 1000px;
     position: relative;
     z-index: 2;
-  }
-  #header{
-    z-index: 3;
   }
 }

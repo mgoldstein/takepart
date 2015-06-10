@@ -106,11 +106,11 @@
       zIndex: 0
     });
     
-    jQuery('body #page-wrap').append($a);
+    jQuery('body #footer-wrapper').after($a);
     
     //only do on fresh theme with article-wrapper
     if ($('.article-wrapper').length !== 0) {
-      jQuery('body #page-wrapper').append($a);
+      jQuery('body #footer-wrapper').after($a);
       //variables
       var background_image = new Image();
       background_image.src = bgimage;

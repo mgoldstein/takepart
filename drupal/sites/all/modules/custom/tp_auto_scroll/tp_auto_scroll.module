@@ -133,7 +133,8 @@ function tp_auto_scroll_pager($node){
       '#tag' => 'div',
       '#attributes' => array(
         'id' => $selector_id
-      )
+      ),
+      '#value' => ''
     )
   ));
 }

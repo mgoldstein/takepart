@@ -32,14 +32,8 @@
       </div>
     </div>
   </div>
-  <div class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-xxs-12">
-          <?php print render($page['footer']); ?>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-<?php print render($page['bottom']); ?>
+<div id="footer-wrapper" class="footer">
+  <?php print render($page['footer']); ?>
+</div>
+<?php print render($page['page_bottom']); ?>
