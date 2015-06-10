@@ -95,15 +95,17 @@
     }
 
     //does for each of the playlist items to set quality
-    $(playlist).each(function(i, v) {
-      //only does if v.source is set
-      if (v.sources != undefined) {
-        //replace the correct width requested
-        file_url = v.sources[0]['file'];
-        file_url = file_url.replace('.mp4', file_width);
-        playlist[i].sources[0]['file'] = file_url;
-      }
-    });
+    if (typeof playlist != 'string') {
+      $(playlist).each(function(i, v) {
+        //only does if v.source is set
+        if (v.sources != undefined) {
+          //replace the correct width requested
+          file_url = v.sources[0]['file'];
+          file_url = file_url.replace('.mp4', file_width);
+          playlist[i].sources[0]['file'] = file_url;
+        }
+      });
+    }
 
     //assigns it back to the playlist
     settings.playlist = playlist;
