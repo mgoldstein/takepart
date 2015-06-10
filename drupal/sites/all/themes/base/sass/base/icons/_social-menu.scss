@@ -21,6 +21,18 @@
 
 body {
   .article-wrapper {
+    .icon.i-influence:after {
+      content: '\e116';
+      font-size: 26px;
+      color: $medium-gray;
+    }
+    .tp-social-headline {
+      width: 52px;
+      color: $medium-gray;
+      margin: 0 auto 5px;
+      letter-spacing: 0;
+      font-size: 12px
+    }
     @include breakpoint($breakpoint-phablet) {
 
       .parent-social-menu {
@@ -36,7 +48,7 @@ body {
           &.share {
             width: 54px;
             min-width: 54px;
-            padding-top: 80px;
+            padding-top: 90px;
           }
           
           &.takeaction {
@@ -60,7 +72,24 @@ body {
               width: inherit;
             }
           }
+          .tap-influence-count {
+            background-color: transparent;
+            color: $light-mint;
+            font: bold 25px/100% $primary-sans-font;
+            width: 100%;
+            margin-top: -10px;
+          }
           
+          .tap-influence-overlay .popover{
+            margin-left: 30px;
+            top: 110px;
+            .i-triangle-left {
+              margin-top: 0px;
+              left: -18px;
+              top: 265px !important;
+            }
+          }
+
           .tp-social-link,
           .comments-link a,
           .trigger a {
