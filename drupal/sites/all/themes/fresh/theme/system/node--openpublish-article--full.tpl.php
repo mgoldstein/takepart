@@ -64,7 +64,7 @@
       </div>
     <?php endif; ?>
     <?php if(!empty($variables['comments'])): ?>
-      <div class="comments">
+    <div class="comments"><a name="article-comments"></a>
         <?php print $variables['comments']; ?>
       </div>
     <?php endif; ?>    
