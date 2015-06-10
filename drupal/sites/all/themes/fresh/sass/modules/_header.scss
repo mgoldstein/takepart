@@ -12,8 +12,6 @@
     border-bottom: none;
   }
   .header-inner{
-    height: auto;
-    overflow: hidden;
     @include breakpoint($breakpoint-tablet){
       margin-top: 10px;
       margin-bottom: 5px;
@@ -39,6 +37,7 @@
     }
     @include breakpoint($breakpoint-tablet){
       width: auto;
+      margin-top: 5px;
     }
   }
   .toggle-search{
@@ -89,22 +88,35 @@
     @include breakpoint($breakpoint-tablet){
       float: right;
       clear: right;
+      margin-top: 10px;
       form{
         display: block;
         float: right;
       }
       .form-item{
-        width: 140px;
+        width: 190px;
         display: inline-block;
+        text-align: right;
+        float: none;
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
         vertical-align: middle;
         padding: 0;
+        &:before{
+          content: 'Search';
+
+        }
       }
       input.form-text{
         border-right: none;
+        float: none;
         height: 25px;
+        width: 140px;
+        &::-webkit-input-placeholder { color:transparent; }
+        &:-moz-placeholder { color:transparent; } /* FF 4-18 */
+        &::-moz-placeholder { color:transparent; } /* FF 19+ */
+        &:-ms-input-placeholder { color:transparent; } /* IE 10+ */
       }
       .toggle-search{
         display: none;
@@ -158,6 +170,9 @@
         margin-top: 0;
         li{
           margin-right: 0;
+          a{
+            background: #AAA;
+          }
         }
       }
     }
