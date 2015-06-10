@@ -25,16 +25,18 @@ body {
       content: '\e116';
       font-size: 26px;
       color: $medium-gray;
+      margin-left: 0;
     }
     .tp-social-headline {
       width: 52px;
       color: $medium-gray;
       margin: 0 auto 5px;
       letter-spacing: 0;
-      font-size: 12px
+      font-size: 13px;
+      line-height: 110%;
+      display: block;
     }
     @include breakpoint($breakpoint-phablet) {
-
       .parent-social-menu {
         list-style: none;
       }
@@ -49,6 +51,10 @@ body {
             width: 54px;
             min-width: 54px;
             padding-top: 90px;
+            margin-top: 0px;
+            h3.tp-social-headline {
+              margin-top: 7px;
+            }
           }
           
           &.takeaction {
@@ -82,11 +88,12 @@ body {
           
           .tap-influence-overlay .popover{
             margin-left: 30px;
-            top: 110px;
+            top: 113px;
+            min-height: 300px;
             .i-triangle-left {
               margin-top: 0px;
               left: -18px;
-              top: 265px !important;
+              top: 275px !important;
             }
           }
 
