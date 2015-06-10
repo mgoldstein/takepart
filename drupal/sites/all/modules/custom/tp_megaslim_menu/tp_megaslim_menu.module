@@ -173,7 +173,12 @@ function tp_megaslim_generate_teasers($teaser_items){
           }
         }else{
           /* Non-action node types use Node Title for a label */
-          $label = $teaser_node->title;
+          if($label = field_get_items('node', $teaser_node, 'field_topic')){
+            $label = taxonomy_term_load($label[0]['tid']);
+            $label = $label->name;
+          }else{
+            $label = $teaser_node->title;
+          }
         }
       }
 
@@ -195,7 +200,6 @@ function tp_megaslim_generate_teasers($teaser_items){
       }
 
     }
-
     /* Theme the teasers */
     $teasers[] = theme('tp_megaslim_menu_item', array('thumbnail' => $thumbnail, 'label' => $label, 'content' => $content, 'path' => $path));
   }
