@@ -27,7 +27,6 @@
  */
 function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
   $rows = $vars["rows"];
-  dd($rows);
   $options = $vars["options"];
   $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?" . ">\n";
   $xml .= "<rss version=\"2.0\"";
