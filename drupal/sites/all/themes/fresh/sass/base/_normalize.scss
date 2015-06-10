@@ -67,7 +67,7 @@ strong, b {
 .headline{
   @include breakpoint($breakpoint-tablet){
     font-size: 22px;
-    line-height: 28px;
+    line-height: 34px;
   }
 }
 .sponsor-label{
