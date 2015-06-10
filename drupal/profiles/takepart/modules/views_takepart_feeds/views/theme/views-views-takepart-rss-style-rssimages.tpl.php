@@ -16,8 +16,8 @@
     } elseif(preg_match('/Safari/i',$u_agent)) {
       drupal_add_http_header('Content-Type', 'text/xml; charset=utf-8');   
     } else { */
-      drupal_add_http_header('Content-Type', 'application/rss+xml; charset=utf-8');
-	 // drupal_add_http_header('Content-Type', 'text/xml');
+      // drupal_add_http_header('Content-Type', 'application/rss+xml; charset=utf-8');
+	 drupal_add_http_header('Content-Type', 'text/xml');
     //}
     print $xml;
     exit;
