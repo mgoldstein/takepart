@@ -7,14 +7,14 @@
  * @see https://drupal.org/node/1728164
  */
 ?>
-<div class="article-wrapper">
+<div class="article-wrapper clearfix">
   <?php if(!empty($variables['social'])): ?>
     <aside class="social social-vertical stick">
       <?php print $variables['social']; ?>
     </aside>
   <?php endif; ?>
   <article class="col-xs-10 col-xs-offset-1 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
-  
+
     <?php if(!empty($variables['advertisement'])): ?>
       <div class="advertisement">
         <?php print $variables['advertisement']; ?>
@@ -67,7 +67,7 @@
       <div class="comments">
         <?php print $variables['comments']; ?>
       </div>
-    <?php endif; ?>    
+    <?php endif; ?>
     <?php if(!empty($variables['more_on_takepart'])): ?>
         <?php print $variables['more_on_takepart']; ?>
     <?php endif; ?>
