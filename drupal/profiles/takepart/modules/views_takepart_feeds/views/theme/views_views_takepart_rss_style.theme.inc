@@ -67,7 +67,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 	   $headline = (array_key_exists('field_flashcard_page_headline', $row) ?
 		  $row['field_flashcard_page_headline']->content :
 		  $object->raw);
-	   $xml .= "\t\t\t<title>" . repl_only_ent($headline) . "</title>\n";
+	   $xml .= "\t\t\t<title>" . htmlentities($headline) . "</title>\n";
 	   $poslink = _takepart_rss_parseHref($object->content); // . "?cmpid=tp-rss";
 	   if ($poslink) {
 		$xml .= "\t\t\t<link>" . $poslink . "?cmpid=tp-rss</link>\n";
@@ -78,7 +78,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 	   $xml .= "\t\t\t<dc:creator>" . $object->content . "</dc:creator>\n";
 	 } elseif (($id === 'field_article_subhead' && $object->content != '') ||
 	   ($id == 'field_subhead' && $object->content != '')) {
-	   $xml .= "\t\t\t<description>" . repl_only_ent($object->content) . "</description>\n";
+	   $xml .= "\t\t\t<description>" . htmlentities($object->content) . "</description>\n";
 	 } elseif ($id === 'field_topic' && $object->content != '') {
 	   $xml .= _build_category_nodes($object->content);
 	 } elseif ($id == 'field_thumbnail' && $object->content != '') {
