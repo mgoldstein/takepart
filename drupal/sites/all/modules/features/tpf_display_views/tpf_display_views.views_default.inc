@@ -2685,10 +2685,13 @@ print $value;
   $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_blogpost_main_image']['id'] = 'field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['table'] = 'field_data_field_blogpost_main_image';
-  $handler->display->display_options['fields']['field_blogpost_main_image']['field'] = 'field_blogpost_main_image';
+  /* Field: Content: Subhead */
+  $handler->display->display_options['fields']['field_article_subhead']['id'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['table'] = 'field_data_field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['field'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['label'] = '';
+  $handler->display->display_options['fields']['field_article_subhead']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_subhead']['type'] = 'text_plain';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -2731,23 +2734,6 @@ print $value;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Field: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
@@ -2762,6 +2748,46 @@ print $value;
     'image_style' => 'large',
     'image_link' => '',
   );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Subhead */
+  $handler->display->display_options['fields']['field_article_subhead']['id'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['table'] = 'field_data_field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['field'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['label'] = '';
+  $handler->display->display_options['fields']['field_article_subhead']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_subhead']['type'] = 'text_plain';
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Content: Author(s) */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['label'] = '';
+  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
+  /* Field: Field: Topic */
+  $handler->display->display_options['fields']['field_topic']['id'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['table'] = 'field_data_field_topic';
+  $handler->display->display_options['fields']['field_topic']['field'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_topic']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_topic']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Series (field_series) */
   $handler->display->display_options['arguments']['field_series_tid']['id'] = 'field_series_tid';
@@ -2806,6 +2832,13 @@ print $value;
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Subhead */
+  $handler->display->display_options['fields']['field_article_subhead']['id'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['table'] = 'field_data_field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['field'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['label'] = '';
+  $handler->display->display_options['fields']['field_article_subhead']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_subhead']['type'] = 'text_plain';
   /* Field: Content: Post date */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'node';
@@ -2816,7 +2849,32 @@ print $value;
   $handler->display->display_options['fields']['created']['date_format'] = 'custom';
   $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Content: Author(s) */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['label'] = '';
+  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
+  /* Field: Field: Topic */
+  $handler->display->display_options['fields']['field_topic']['id'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['table'] = 'field_data_field_topic';
+  $handler->display->display_options['fields']['field_topic']['field'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_topic']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_topic']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Series (field_series) */
+  $handler->display->display_options['arguments']['field_series_tid']['id'] = 'field_series_tid';
+  $handler->display->display_options['arguments']['field_series_tid']['table'] = 'field_data_field_series';
+  $handler->display->display_options['arguments']['field_series_tid']['field'] = 'field_series_tid';
+  $handler->display->display_options['arguments']['field_series_tid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_series_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_series_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_series_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_series_tid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -2849,32 +2907,6 @@ print $value;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
-  /* Field: Field: Promo Text */
-  $handler->display->display_options['fields']['field_promo_text']['id'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['table'] = 'field_data_field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
-  $handler->display->display_options['fields']['field_promo_text']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_text']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_promo_text']['alter']['text'] = '<br/>[field_promo_text]';
-  $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_promo_text']['hide_alter_empty'] = FALSE;
   /* Field: Field: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
@@ -2889,12 +2921,54 @@ print $value;
     'image_style' => 'large',
     'image_link' => '',
   );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Subhead */
+  $handler->display->display_options['fields']['field_article_subhead']['id'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['table'] = 'field_data_field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['field'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['label'] = '';
+  $handler->display->display_options['fields']['field_article_subhead']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_subhead']['type'] = 'text_plain';
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Content: Author(s) */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['label'] = '';
+  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
+  /* Field: Field: Topic */
+  $handler->display->display_options['fields']['field_topic']['id'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['table'] = 'field_data_field_topic';
+  $handler->display->display_options['fields']['field_topic']['field'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_topic']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_topic']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Field: Topic (field_topic) */
   $handler->display->display_options['arguments']['field_topic_tid']['id'] = 'field_topic_tid';
   $handler->display->display_options['arguments']['field_topic_tid']['table'] = 'field_data_field_topic';
   $handler->display->display_options['arguments']['field_topic_tid']['field'] = 'field_topic_tid';
+  $handler->display->display_options['arguments']['field_topic_tid']['default_action'] = 'empty';
   $handler->display->display_options['arguments']['field_topic_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_topic_tid']['default_argument_options']['argument'] = 'all';
   $handler->display->display_options['arguments']['field_topic_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_topic_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_topic_tid']['summary_options']['items_per_page'] = '25';
@@ -2933,23 +3007,6 @@ print $value;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Post date */
-  $handler->display->display_options['fields']['created']['id'] = 'created';
-  $handler->display->display_options['fields']['created']['table'] = 'node';
-  $handler->display->display_options['fields']['created']['field'] = 'created';
-  $handler->display->display_options['fields']['created']['label'] = '';
-  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
-  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
-  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
   /* Field: Field: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
@@ -2962,6 +3019,46 @@ print $value;
   $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
     'file_view_mode' => 'default',
   );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Subhead */
+  $handler->display->display_options['fields']['field_article_subhead']['id'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['table'] = 'field_data_field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['field'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['label'] = '';
+  $handler->display->display_options['fields']['field_article_subhead']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_subhead']['type'] = 'text_plain';
+  /* Field: Content: Post date */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'node';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['label'] = '';
+  $handler->display->display_options['fields']['created']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['created']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['created']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['created']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['created']['second_date_format'] = 'long';
+  /* Field: Content: Author(s) */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['label'] = '';
+  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
+  /* Field: Field: Topic */
+  $handler->display->display_options['fields']['field_topic']['id'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['table'] = 'field_data_field_topic';
+  $handler->display->display_options['fields']['field_topic']['field'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_topic']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_topic']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Free Tag (field_free_tag) */
   $handler->display->display_options['arguments']['field_free_tag_tid']['id'] = 'field_free_tag_tid';

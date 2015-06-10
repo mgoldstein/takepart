@@ -12,20 +12,7 @@
  * @ingroup views_templates
  * @see views_xml.views.inc
  */
-function _build_list_for_yahoo_rss_feed($content) {
-  $parts = explode(',,,', $content);
-  $ret = '';
-  foreach ($parts as $part) {
-    $part = trim($part);
-    if ($part) {
-	 $ret .= '<p><strong>&bull; ' . $part . '</strong></p>';
-    }
-  }
-  if ($ret) {
-    return $ret;
-  }
-  return '';
-}
+
 
 /**
  * Template preprocess for RSS w/ Images
@@ -40,6 +27,7 @@ function _build_list_for_yahoo_rss_feed($content) {
  */
 function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
   $rows = $vars["rows"];
+  dd($rows);
   $options = $vars["options"];
   $xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?" . ">\n";
   $xml .= "<rss version=\"2.0\"";
@@ -93,7 +81,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 	   ($id == 'field_subhead' && $object->content != '')) {
 	   $xml .= "\t\t\t<description>" . repl_only_ent($object->content) . "</description>\n";
 	 } elseif ($id === 'field_topic' && $object->content != '') {
-	   $xml .= "\t\t\t<category>" . $object->content . "</category>\n";
+	   $xml .= _build_category_nodes($object->content);
 	 } elseif ($id == 'field_thumbnail' && $object->content != '') {
 	   $thumb = file_load($object->content);
 	   $xml .= "\t\t\t" . '<enclosure url="' . image_style_url("large", $thumb->uri) .

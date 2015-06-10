@@ -268,6 +268,33 @@ function hex_encode($str) {
     return $out;
 }
 
+function _build_category_nodes($topics) {
+  $catxml = "";
+  $ismulti = strrpos($topics, ",");
+  if ($ismulti) {
+    $topicArray = explode(", ", $topics);
+    
+    foreach ($topicArray as $topic) {
+	 $catxml .= "\t\t\t<category>" . $topic . "</category>\n";
+    }
+  }
+  return $catxml;
+}
+function _build_list_for_yahoo_rss_feed($content) {
+  $parts = explode(',,,', $content);
+  $ret = '';
+  foreach ($parts as $part) {
+    $part = trim($part);
+    if ($part) {
+	 $ret .= '<p><strong>&bull; ' . $part . '</strong></p>';
+    }
+  }
+  if ($ret) {
+    return $ret;
+  }
+  return '';
+}
+
 /*
  * Encode given string with htmlentities then parse with regex and pass each
  * html encoded character to hex_encode for conversion to hex encode
