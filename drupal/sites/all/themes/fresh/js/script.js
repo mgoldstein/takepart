@@ -145,15 +145,20 @@
         var window_bottom = $(window).height() + window_top;
         first_article.bottom = first_article.top + $('article:first').height();
         var background_pos = first_article.bottom - background_image_height;
+        $takeover_ad = $('#tp_ad_takeover');
         
         //updates the background position
         if (window_bottom > first_article.bottom) {
           $('body').css('background-attachment', 'scroll');
           $('body').css('background-position', 'center ' + background_pos + 'px');
+          $takeover_ad.css('position', 'absolute');
+          $takeover_ad.css('top', background_pos);
         }
         else {
           $('body').css('background-attachment', 'fixed');
           $('body').css('background-position', 'center top');
+          $takeover_ad.css('position', 'fixed');
+          $takeover_ad.css('top', 0);
         }
         
       });
