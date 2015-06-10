@@ -4059,16 +4059,16 @@ body .inline-content-video {
   border-top: 1px solid #000;
   border-bottom: 2px solid #000;
   height: 40px;
-  line-height: 45px;
   text-align: center;
   list-style: none;
   padding: 0;
 }
-/* line 20, ../../base/sass/base/modules/_megaslim.scss */
+/* line 19, ../../base/sass/base/modules/_megaslim.scss */
 #megaslim > li.mega-item > a {
   display: block;
   font-family: "tradegothicbold", Verdana, Tahoma, sans-serif;
   font-size: 22px;
+  line-height: 45px;
   text-transform: uppercase;
   white-space: nowrap;
   text-align: center;
@@ -4150,8 +4150,8 @@ body .inline-content-video {
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-size: 14px;
   font-weight: bold;
+  line-height: 30px;
   text-transform: uppercase;
-  margin-bottom: 4px;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
