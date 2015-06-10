@@ -1,4 +1,7 @@
 #header{
+  font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  color: #5A5A5A;
   display: block;
   width: 100%;
   height: auto;
@@ -7,6 +10,14 @@
   border-bottom: 2px solid $black;
   @include breakpoint($breakpoint-tablet){
     border-bottom: none;
+  }
+  .header-inner{
+    height: auto;
+    overflow: hidden;
+    @include breakpoint($breakpoint-tablet){
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
   }
   .toggle-menu{
     display: block;
@@ -74,15 +85,84 @@
         outline: none;
       }
     }
+    /* Search for phablet and above */
+    @include breakpoint($breakpoint-tablet){
+      float: right;
+      clear: right;
+      form{
+        display: block;
+        float: right;
+      }
+      .form-item{
+        width: 140px;
+        display: inline-block;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        vertical-align: middle;
+        padding: 0;
+      }
+      input.form-text{
+        border-right: none;
+        height: 25px;
+      }
+      .toggle-search{
+        display: none;
+      }
+      .form-submit{
+        display: inline-block;
+        height: 25px;
+        border: 1px solid #ccc;
+        border-left: none;
+        border-radius: 0;
+        color: #777;
+        font-size: 16px;
+        line-height: 21px;
+        background: #fff;
+        vertical-align: middle;
+        margin-left: -5px;
+        background: url(/sites/all/themes/tp4/images/search-submit.png) no-repeat center center;
+        text-indent: -999px;
+        width: 33px;
+        cursor: pointer;
+      }
+    }
+  }
+  .user-menu{
+    position: absolute;
+    right: 34px;
+    @include breakpoint($breakpoint-tablet){
+      position: static;
+      float: right;
+    }
+  }
+  .follow-us{
+    display: none;
+    @include breakpoint($breakpoint-tablet){
+      display: block;
+      float: right;
+      clear: right;
+      .text{
+        display: inline-block;
+        vertical-align: top;
+        line-height: 28px;
+        margin-right: 8px;
+        &:before{
+          content: '|';
+          padding-right: 10px;
+        }
+      }
+      ul.menu{
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: 0;
+        li{
+          margin-right: 0;
+        }
+      }
+    }
   }
 }
 body.mobile-search-show #header form{
   display: block;
-}
-
-body {
-  .user-menu.fresh-theme {
-    position: absolute;
-    right: 34px;
-  }
 }
