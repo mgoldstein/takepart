@@ -1,4 +1,4 @@
-<div class="header-inner">
+<div class="header-inner clearfix">
   <div class="toggle-menu toggle-left pr-10">
     <span class="icon i-hamburger"></span>
   </div>
