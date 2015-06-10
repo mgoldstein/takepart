@@ -33,7 +33,7 @@
     </div>
   </div>
 </div>
-<div id="footer-wrapper" class="footer container">
+<div id="footer-wrapper" class="footer">
   <?php print render($page['footer']); ?>
 </div>
 <?php print render($page['page_bottom']); ?>
