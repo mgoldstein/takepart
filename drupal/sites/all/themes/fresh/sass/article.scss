@@ -97,15 +97,6 @@ h1.title{
   border-bottom: 1px solid #CCC;
   padding-bottom: 15px;
 }
-.row.author .image {
-  padding-left: 0;
-}
-.row.author .links {
-  padding-left: 0;
-  @include breakpoint($breakpoint-phablet){
-    text-align: right;
-  }
-}
 blockquote.pullquote {
   margin: 0;
   padding: 0;
