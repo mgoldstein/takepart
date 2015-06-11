@@ -176,10 +176,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 					break;
 				}
 					
-				$field_promo_headline = field_get_items('node',$result,'field_promo_headline');
-				$field_promo_headline = $field_promo_headline[0]['value'];
-				$field_promo_headline = $field_promo_headline ? $field_promo_headline : $result->title;
-
+				$promo_headline = field_get_items('node', $result, 'field_promo_headline');
+				$field_promo_headline = $promo_headline[0]['value'];
+				
 				// Select thumbnail field
 				switch($result->type) {
 					case 'action':
@@ -209,10 +208,9 @@ function tp_more_on_takepart_block_view($delta = '') {
 						$field_campaign_reference = field_get_items('node' ,$result, 'field_campaign_reference');
 						$field_campaign_reference = $field_campaign_reference[0]['target_id'];
 						$campaign_node = node_load($field_campaign_reference);
-	
-						if( !field_get_items('node' ,$node, 'field_promo_headline') ) {
-							$field_promo_headline = field_get_items('node' ,$campaign_node, 'field_promo_headline');
-							$result->field_promo_headline[$node->language] = $field_promo_headline;
+						if( empty($field_promo_headline) ) {
+							$campaign_promo_headline = field_get_items('node' ,$campaign_node, 'field_promo_headline');
+							$field_promo_headline = $campaign_promo_headline[0]['value'];
 						}
 	
 						if( !field_get_items('node',$result,'field_thumbnail') ) {
@@ -231,7 +229,7 @@ function tp_more_on_takepart_block_view($delta = '') {
 				// Add to the array names after this type
 				${$item['type']}[] = theme('tp_more_on_takepart_article', array(
 					'result' => array(
-						'title' => $result->title,
+						'title' => (!empty($field_promo_headline)) ? $field_promo_headline : $result->title,
 						'url' => entity_uri('node', $result),
 						'type' => $type,
 						'promo_type' => 'more_on_takepart_'.$item['type'],
@@ -257,5 +255,3 @@ function tp_more_on_takepart_block_view($delta = '') {
 	}
 	return $block;
 }
-
-
