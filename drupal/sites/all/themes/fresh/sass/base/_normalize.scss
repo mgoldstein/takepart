@@ -343,7 +343,11 @@ aside.inline-content + p{
     font-size: 16px;
     line-height: 24px;
     margin: 0;
-    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    @include breakpoint($breakpoint-phablet){
+      padding: 0;
+    }
     span{
       font-weight: 900;
     }
@@ -357,6 +361,13 @@ aside.inline-content + p{
   }
   .image{
     padding-right: 0;
+    @include breakpoint($breakpoint-phablet){
+      padding: 0;
+    }
+  }
+  .author .links {
+    text-align: right;
+    padding-left: 0;
   }
   img{
     margin: 0 auto;
