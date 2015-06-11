@@ -101,8 +101,10 @@ h1.title{
   padding-left: 0;
 }
 .row.author .links {
-  text-align: right;
   padding-left: 0;
+  @include breakpoint($breakpoint-phablet){
+    text-align: right;
+  }
 }
 blockquote.pullquote {
   margin: 0;
