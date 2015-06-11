@@ -44,8 +44,7 @@ body {
       aside.social.social-vertical {
         width: 54px;
         float: left;
-        margin-top: 80px;
-        
+        margin-top: 5px;
         li {
           &.share {
             width: 54px;
@@ -709,6 +708,11 @@ body.node-type-openpublish-photo-gallery{
   z-index: 1;
   position: fixed;
   top: 7px;
+}
+.sticky-wrapper{
+  @include breakpoint($breakpoint-phablet) {
+    margin-top: 360px;
+  }
 }
 
 
