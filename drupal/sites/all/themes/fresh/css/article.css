@@ -3233,24 +3233,43 @@ aside.inline-content .inline-content-inner {
   margin-bottom: 5px;
   text-align: left;
   color: #c7c7c7;
-  padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-/* line 362, ../sass/base/_normalize.scss */
+@media all and (min-width: 480px) {
+  /* line 355, ../sass/base/_normalize.scss */
+  .author-teaser .published-at {
+    padding: 0;
+  }
+}
+/* line 366, ../sass/base/_normalize.scss */
 .author-teaser .image {
   padding-right: 0;
 }
 @media all and (min-width: 480px) {
-  /* line 362, ../sass/base/_normalize.scss */
+  /* line 366, ../sass/base/_normalize.scss */
   .author-teaser .image {
     padding: 0;
   }
 }
-/* line 368, ../sass/base/_normalize.scss */
-.author-teaser .author .links {
-  text-align: right;
-  padding-left: 0;
-}
 /* line 372, ../sass/base/_normalize.scss */
+.author-teaser .author .links {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media all and (min-width: 480px) {
+  /* line 372, ../sass/base/_normalize.scss */
+  .author-teaser .author .links {
+    text-align: right;
+  }
+}
+@media all and (min-width: 480px) {
+  /* line 372, ../sass/base/_normalize.scss */
+  .author-teaser .author .links {
+    padding: 0;
+  }
+}
+/* line 382, ../sass/base/_normalize.scss */
 .author-teaser img {
   margin: 0 auto;
 }
@@ -3258,17 +3277,17 @@ aside.inline-content .inline-content-inner {
 /*
 * Topic Box
 *************************/
-/* line 379, ../sass/base/_normalize.scss */
+/* line 389, ../sass/base/_normalize.scss */
 .topic-box-wrapper {
   margin: 20px inherit;
 }
-/* line 381, ../sass/base/_normalize.scss */
+/* line 391, ../sass/base/_normalize.scss */
 .topic-box-wrapper img {
   margin: 0 auto;
 }
 
 @media all and (min-width: 768px) {
-  /* line 386, ../sass/base/_normalize.scss */
+  /* line 396, ../sass/base/_normalize.scss */
   .takepart-take-action-widget {
     float: left;
     margin-right: 30px;
@@ -3276,7 +3295,7 @@ aside.inline-content .inline-content-inner {
     margin-top: 10px;
   }
 
-  /* line 392, ../sass/base/_normalize.scss */
+  /* line 402, ../sass/base/_normalize.scss */
   .takepart-take-action-widget + p {
     margin-top: 55px;
   }
@@ -3284,7 +3303,7 @@ aside.inline-content .inline-content-inner {
 /*
 * Lines
 *************************/
-/* line 400, ../sass/base/_normalize.scss */
+/* line 410, ../sass/base/_normalize.scss */
 .line {
   height: 1px;
   margin: 10px 0;
@@ -3292,16 +3311,16 @@ aside.inline-content .inline-content-inner {
   clear: both;
 }
 
-/* line 406, ../sass/base/_normalize.scss */
+/* line 416, ../sass/base/_normalize.scss */
 .line-style-1 {
   background-color: #c7c7c7;
 }
 
-/* line 409, ../sass/base/_normalize.scss */
+/* line 419, ../sass/base/_normalize.scss */
 .line-style-2 {
   background-color: #c7c7c7;
 }
-/* line 411, ../sass/base/_normalize.scss */
+/* line 421, ../sass/base/_normalize.scss */
 .line-style-2:after {
   content: '';
   width: 10px;
@@ -3320,7 +3339,7 @@ aside.inline-content .inline-content-inner {
   background: white;
 }
 
-/* line 429, ../sass/base/_normalize.scss */
+/* line 439, ../sass/base/_normalize.scss */
 .line-style-3 {
   background-color: #0080a5;
 }
@@ -3328,7 +3347,7 @@ aside.inline-content .inline-content-inner {
 /*
 * Separators
 *************************/
-/* line 436, ../sass/base/_normalize.scss */
+/* line 446, ../sass/base/_normalize.scss */
 .separator {
   width: 50px;
   display: block;
@@ -3336,7 +3355,7 @@ aside.inline-content .inline-content-inner {
   height: 3px;
 }
 
-/* line 442, ../sass/base/_normalize.scss */
+/* line 452, ../sass/base/_normalize.scss */
 .separator-style-1 {
   background-color: #00c09d;
   opacity: .3;
@@ -3345,23 +3364,23 @@ aside.inline-content .inline-content-inner {
 /*
 * Inline Replacements
 *************************/
-/* line 450, ../sass/base/_normalize.scss */
+/* line 460, ../sass/base/_normalize.scss */
 figure.align-center {
   margin: 0 auto;
 }
-/* line 452, ../sass/base/_normalize.scss */
+/* line 462, ../sass/base/_normalize.scss */
 figure.align-center .inline-feature-image {
   display: table;
   margin: 0 auto;
 }
 
-/* line 458, ../sass/base/_normalize.scss */
+/* line 468, ../sass/base/_normalize.scss */
 figure.align-right {
   float: right;
   margin: 0 0 1em 1em;
 }
 
-/* line 463, ../sass/base/_normalize.scss */
+/* line 473, ../sass/base/_normalize.scss */
 figure.align-left {
   float: left;
   margin: 0 1em 1em 0;

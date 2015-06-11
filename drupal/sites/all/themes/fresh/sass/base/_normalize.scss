@@ -357,7 +357,11 @@ aside.inline-content + p{
     @extend .ad-label;
     text-align: left;
     color: $light-gray;
-    padding: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    @include breakpoint($breakpoint-phablet){
+      padding: 0;
+    }
   }
   .image{
     padding-right: 0;
@@ -366,8 +370,14 @@ aside.inline-content + p{
     }
   }
   .author .links {
-    text-align: right;
-    padding-left: 0;
+    @include breakpoint($breakpoint-phablet){
+      text-align: right;
+    }
+    padding-left: 10px;
+    padding-right: 10px;
+    @include breakpoint($breakpoint-phablet){
+      padding: 0;
+    }
   }
   img{
     margin: 0 auto;
