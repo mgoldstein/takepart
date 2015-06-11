@@ -62,7 +62,6 @@ strong, b {
 }
 .main-content{
   height: auto;
-  overflow: hidden;
 }
 .headline{
   @include breakpoint($breakpoint-tablet){
