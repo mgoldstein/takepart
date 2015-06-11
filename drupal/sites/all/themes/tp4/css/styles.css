@@ -190,13 +190,20 @@ body .article-wrapper .icon.i-influence:after {
 }
 /* line 30, ../../base/sass/base/icons/_social-menu.scss */
 body .article-wrapper .tp-social-headline {
+<<<<<<< HEAD
   color: #888888;
+=======
+  width: 52px;
+  color: #888888;
+  margin: 0 auto 5px;
+>>>>>>> TAP-1719 centered read number on tablets.
   letter-spacing: 0;
   font-size: 13px;
   line-height: 110%;
   display: block;
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 30, ../../base/sass/base/icons/_social-menu.scss */
   body .article-wrapper .tp-social-headline {
     width: 52px;
@@ -209,17 +216,29 @@ body .article-wrapper .tp-social-headline {
     list-style: none;
   }
   /* line 46, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 40, ../../base/sass/base/icons/_social-menu.scss */
+  body .article-wrapper .parent-social-menu {
+    list-style: none;
+  }
+  /* line 44, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical {
     width: 54px;
     float: left;
     margin-top: 5px;
   }
+<<<<<<< HEAD
   /* line 51, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 50, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical li.share {
     width: 54px;
     min-width: 54px;
     padding-top: 90px;
     margin-top: 0px;
+<<<<<<< HEAD
   }
   /* line 56, ../../base/sass/base/icons/_social-menu.scss */
   body .article-wrapper aside.social.social-vertical li.share h3.tp-social-headline {
@@ -230,41 +249,79 @@ body .article-wrapper .tp-social-headline {
     position: absolute;
   }
   /* line 68, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  }
+  /* line 55, ../../base/sass/base/icons/_social-menu.scss */
+  body .article-wrapper aside.social.social-vertical li.share h3.tp-social-headline {
+    margin-top: 7px;
+  }
+  /* line 60, ../../base/sass/base/icons/_social-menu.scss */
+  body .article-wrapper aside.social.social-vertical li.takeaction {
+    position: absolute;
+  }
+  /* line 67, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical .desktop .takepart-custom-take-action-button .i-take-action {
     height: 54px;
     width: 54px;
     padding-top: 14px;
   }
+<<<<<<< HEAD
   /* line 75, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 74, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical .desktop .tap-influence-icon {
     width: 54px;
     margin-top: 1em;
   }
+<<<<<<< HEAD
   /* line 78, ../../base/sass/base/icons/_social-menu.scss */
   body .article-wrapper aside.social.social-vertical .desktop .tap-influence-icon:after {
     width: inherit;
   }
   /* line 82, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 77, ../../base/sass/base/icons/_social-menu.scss */
+  body .article-wrapper aside.social.social-vertical .desktop .tap-influence-icon:after {
+    width: inherit;
+  }
+  /* line 81, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical .desktop .tap-influence-count {
     background-color: transparent;
     color: #01bf9e;
     font: bold 25px/100% "AdelleSans", Verdana, Tahoma, sans-serif;
     width: 100%;
+<<<<<<< HEAD
     margin-top: -10px;
   }
   /* line 90, ../../base/sass/base/icons/_social-menu.scss */
+=======
+    margin: -10px 0 0;
+  }
+  /* line 89, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical .desktop .tap-influence-overlay .popover {
     margin-left: 30px;
     top: 113px;
     min-height: 300px;
   }
+<<<<<<< HEAD
   /* line 94, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 93, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical .desktop .tap-influence-overlay .popover .i-triangle-left {
     margin-top: 0px;
     left: -18px;
     top: 275px !important;
   }
+<<<<<<< HEAD
   /* line 103, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 102, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical .desktop .tp-social-link,
   body .article-wrapper aside.social.social-vertical .desktop .comments-link a,
   body .article-wrapper aside.social.social-vertical .desktop .trigger a {
@@ -277,7 +334,11 @@ body .article-wrapper .tp-social-headline {
     font-size: 24px;
     color: #FFF;
   }
+<<<<<<< HEAD
   /* line 112, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 111, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical .desktop .tp-social-link:before,
   body .article-wrapper aside.social.social-vertical .desktop .comments-link a:before,
   body .article-wrapper aside.social.social-vertical .desktop .trigger a:before {
@@ -287,105 +348,181 @@ body .article-wrapper .tp-social-headline {
     text-align: center;
     padding-top: 12px;
   }
+<<<<<<< HEAD
   /* line 121, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 120, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body .article-wrapper aside.social.social-vertical .desktop #article-comments-link {
     display: none;
   }
 }
 
+<<<<<<< HEAD
 /* line 130, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 129, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .takepart-custom-take-action-button:hover {
   text-decoration: none;
 }
 
+<<<<<<< HEAD
 /* line 136, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 135, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile .takepart-custom-take-action-button .i-take-action {
   width: 100%;
   margin-top: -7px;
 }
 
 /* Icons */
+<<<<<<< HEAD
 /* line 146, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 145, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-pinterest:before {
   background-color: #cc2127;
 }
 
+<<<<<<< HEAD
 /* line 151, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 150, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-facebook:before {
   background-color: #3b5998;
 }
 
+<<<<<<< HEAD
 /* line 156, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 155, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-twitter:before {
   background-color: #55acee;
 }
 
+<<<<<<< HEAD
 /* line 161, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 160, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-googleplus:before {
   background-color: #dd4b39;
 }
 
+<<<<<<< HEAD
 /* line 166, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 165, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-tumblr:before {
   background-color: #35465c;
 }
 
+<<<<<<< HEAD
 /* line 171, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 170, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-email:before {
   background-color: #000;
 }
 
+<<<<<<< HEAD
 /* line 175, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 174, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-mailto:before {
   background-color: #0080A4;
 }
 
+<<<<<<< HEAD
 /* line 179, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 178, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-linkedin:before {
   background-color: #00b488;
 }
 
+<<<<<<< HEAD
 /* line 184, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 183, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-vine:before {
   background-color: #00b488;
 }
 
+<<<<<<< HEAD
 /* line 189, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 188, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-instagram:before {
   background-color: #3f729b;
 }
 
+<<<<<<< HEAD
 /* line 194, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 193, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-youtube:before {
   background-color: #e52d27;
 }
 
+<<<<<<< HEAD
 /* line 199, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 198, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-reddit:before {
   background-color: #5f99cf;
 }
 
 /* Social Global */
+<<<<<<< HEAD
 /* line 206, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 205, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social {
   /* Influence overrides */
   /** Mobile **/
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 208, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 207, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social li.takeaction {
     position: absolute;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 208, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 207, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social li.takeaction {
     position: relative;
     list-style: none;
   }
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 217, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 216, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social .social-wrapper li.share {
     margin: 18px auto 0;
     float: right;
@@ -395,7 +532,11 @@ body .article-wrapper .tp-social-headline {
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 217, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 216, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social .social-wrapper li.share {
     margin: 5px auto 0;
     min-width: 40px;
@@ -403,7 +544,11 @@ body .article-wrapper .tp-social-headline {
   }
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 230, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 229, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social .social-wrapper li.share h3.share-headline {
     display: inline-block;
     float: left;
@@ -411,14 +556,22 @@ body .article-wrapper .tp-social-headline {
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 230, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 229, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social .social-wrapper li.share h3.share-headline {
     display: inline;
     float: none;
     margin-top: 0;
   }
 }
+<<<<<<< HEAD
 /* line 246, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 245, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-headline {
   text-align: center;
   float: none;
@@ -430,13 +583,21 @@ body .article-wrapper .tp-social-headline {
   text-transform: uppercase;
   letter-spacing: -1px;
 }
+<<<<<<< HEAD
 /* line 259, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 258, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-link,
 .social .comments-link a,
 .social .trigger a {
   margin: 0 auto 5px;
 }
+<<<<<<< HEAD
 /* line 264, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 263, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .tp-social-link,
 .social .comments-link a,
 .social .trigger a {
@@ -448,7 +609,11 @@ body .article-wrapper .tp-social-headline {
   text-indent: 24px;
   background-color: transparent;
 }
+<<<<<<< HEAD
 /* line 277, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 276, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .social-wrapper.mobile {
   position: fixed;
   bottom: 0px;
@@ -458,14 +623,22 @@ body .article-wrapper .tp-social-headline {
   z-index: 9;
   transition: .25s;
 }
+<<<<<<< HEAD
 /* line 291, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 290, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .social-wrapper.mobile .takepart-take-action,
 .social .social-wrapper.mobile .comments-link,
 .social .social-wrapper.mobile .comments-link a,
 .social .social-wrapper.mobile .trigger a {
   float: none;
 }
+<<<<<<< HEAD
 /* line 294, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 293, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .social-wrapper.mobile .tp-social-link {
   display: inline-block;
   width: 52px;
@@ -473,39 +646,63 @@ body .article-wrapper .tp-social-headline {
   padding: 0;
   margin: 0;
 }
+<<<<<<< HEAD
 /* line 301, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 300, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .social-wrapper.mobile .tp-social-headline {
   color: white;
   font-size: 15px;
   line-height: 18px;
   display: none;
 }
+<<<<<<< HEAD
 /* line 307, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 306, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social .social-wrapper.mobile .takepart-take-action {
   margin: -7px auto 0;
 }
 
+<<<<<<< HEAD
 /* line 315, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 314, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-social-tumblr {
   display: none;
 }
 
 /** More Mobile */
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 323, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 322, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .tp-social-link {
     margin-left: 5px;
     float: left;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 332, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 331, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .tp-social-link {
     float: none;
     margin-left: 0;
   }
 }
+<<<<<<< HEAD
 /* line 337, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 336, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile .takepart-custom-take-action-button {
   margin-top: 0;
   line-height: 36px;
@@ -515,18 +712,30 @@ body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-
   text-decoration: none;
 }
 
+<<<<<<< HEAD
 /* line 345, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 344, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile.nav-show {
   bottom: 0;
 }
 
+<<<<<<< HEAD
 /* line 348, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 347, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu {
   width: 100%;
   position: relative;
 }
 
+<<<<<<< HEAD
 /* line 352, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 351, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu > li {
   float: left;
   width: 70%;
@@ -539,52 +748,88 @@ body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-
   font-size: 13px;
   cursor: pointer;
 }
+<<<<<<< HEAD
 /* line 363, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 362, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu > li h3:after {
   font-family: takepart;
   display: block;
   font-size: 15px;
   margin-top: 0;
 }
+<<<<<<< HEAD
 /* line 373, ../../base/sass/base/icons/_social-menu.scss */
 .social-wrapper.mobile ul.parent-social-menu > li.takeaction {
   width: 30%;
 }
 /* line 376, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 372, ../../base/sass/base/icons/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu > li.takeaction {
+  width: 30%;
+}
+/* line 375, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu > li.takeaction h3 {
   display: block;
   margin-top: 5px;
 }
 
+<<<<<<< HEAD
 /* line 382, ../../base/sass/base/icons/_social-menu.scss */
 .social-wrapper.mobile ul.parent-social-menu li.share {
   background: #00b5cc;
 }
 /* line 384, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 381, ../../base/sass/base/icons/_social-menu.scss */
+.social-wrapper.mobile ul.parent-social-menu li.share {
+  background: #00b5cc;
+}
+/* line 383, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.share h3:after {
   content: '\e113';
 }
 
+<<<<<<< HEAD
 /* line 388, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 387, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper ul.parent-social-menu li.subscribe {
   display: none;
 }
 
+<<<<<<< HEAD
 /* line 391, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 390, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.subscribe {
   display: block;
   background: #018b73;
   position: relative;
   z-index: 0;
 }
+<<<<<<< HEAD
 /* line 396, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 395, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.subscribe h3:after {
   content: '\e305';
   top: 15px;
   left: 0;
   right: 0;
 }
+<<<<<<< HEAD
 /* line 402, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 401, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.subscribe a {
   position: absolute;
   left: 0;
@@ -593,46 +838,78 @@ body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-
   bottom: 0;
   color: white;
 }
+<<<<<<< HEAD
 /* line 409, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 408, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.subscribe a:hover {
   text-decoration: none;
 }
 
+<<<<<<< HEAD
 /* line 415, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 414, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.facebook iframe {
   height: 20px !important;
   display: block;
   width: 48px;
   margin: 0 auto;
 }
+<<<<<<< HEAD
 /* line 421, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 420, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.facebook .fb-like {
   width: 100%;
 }
 
+<<<<<<< HEAD
 /* line 426, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 425, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.takeaction {
   background: #01bf9e;
   height: 43px;
 }
 
+<<<<<<< HEAD
 /* line 430, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 429, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper ul.parent-social-menu li.facebook {
   display: none;
 }
 
+<<<<<<< HEAD
 /* line 433, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 432, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.facebook {
   display: block;
   background: #3c5a98;
 }
+<<<<<<< HEAD
 /* line 436, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 435, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu li.facebook h3 {
   font-size: 15px;
   margin-top: 1px;
 }
 
+<<<<<<< HEAD
 /* line 442, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 441, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile .share-submenu-wrapper {
   z-index: 1;
   right: -100%;
@@ -644,26 +921,42 @@ body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-
   transition: .5s;
 }
 
+<<<<<<< HEAD
 /* line 452, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 451, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile.sharing .share-submenu-wrapper {
   width: 75%;
   right: 0;
 }
 
+<<<<<<< HEAD
 /* line 456, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 455, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile .tp-social {
   list-style-type: none;
   overflow: auto;
   text-align: left;
 }
 @media all and (min-width: 320px) {
+<<<<<<< HEAD
   /* line 456, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 455, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-wrapper.mobile .tp-social {
     white-space: nowrap;
   }
 }
 
+<<<<<<< HEAD
 /* line 464, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 463, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile .tp-social a.tp-social-link {
   display: inline-block;
   line-height: 42px;
@@ -676,23 +969,39 @@ body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-
   background: none;
   text-align: center;
 }
+<<<<<<< HEAD
 /* line 475, ../../base/sass/base/icons/_social-menu.scss */
 .social-wrapper.mobile .tp-social a.tp-social-link:hover {
   text-decoration: none;
 }
 /* line 478, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 474, ../../base/sass/base/icons/_social-menu.scss */
+.social-wrapper.mobile .tp-social a.tp-social-link:hover {
+  text-decoration: none;
+}
+/* line 477, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile .tp-social a.tp-social-link:before {
   text-indent: 0;
   display: block;
 }
 
+<<<<<<< HEAD
 /* line 483, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 482, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile.sharing li.takeaction {
   margin-left: -25%;
   transition: .5s;
 }
 
+<<<<<<< HEAD
 /* line 487, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 486, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper.mobile ul.parent-social-menu > li.overlay {
   display: none;
 }
@@ -703,7 +1012,11 @@ body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-
  *
  */
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 498, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 497, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   ul.parent-social-menu.desktop-none {
     display: none;
   }
@@ -711,95 +1024,155 @@ body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-
 
 /* Social Global */
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 506, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 505, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social {
     height: 57px;
   }
 }
 @media all and (min-width: 768px) {
+<<<<<<< HEAD
   /* line 506, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 505, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social {
     border: none;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 506, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 505, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social {
     height: auto;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 516, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 515, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social li.share {
     padding-top: 70px;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 520, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 519, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .takepart-gallery-content aside.social li.share {
     padding-top: 0;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 525, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 524, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .takepart-gallery-cover-slide aside.social li.share {
     padding-top: 0;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 530, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 529, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .takepart-gallery-support aside.social li.share {
     padding-top: 0;
   }
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 516, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 515, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social li.share {
     min-width: 270px;
     margin: 5px auto 0;
   }
 }
 @media all and (min-width: 768px) {
+<<<<<<< HEAD
   /* line 516, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 515, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social li.share {
     min-width: 320px;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 543, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 542, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social li.takeaction {
     position: absolute !important;
   }
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 549, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 548, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social .tp-social-link,
   aside.social .trigger a {
     margin: 0 0 7px 6px;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 549, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 548, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social .tp-social-link,
   aside.social .trigger a {
     margin: 0 auto 5px;
   }
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 557, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 556, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social li.takeaction {
     position: relative;
     float: left;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 557, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 556, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social li.takeaction {
     position: relative;
   }
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 566, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 565, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social .comments-link {
     margin: 0;
     margin-left: 5px;
@@ -808,7 +1181,11 @@ body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 566, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 565, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social .comments-link {
     float: none;
     margin-left: 0px;
@@ -816,41 +1193,69 @@ body.node-type-openpublish-photo-gallery .social-wrapper.mobile .tp-social a.tp-
 }
 
 /* Social Vertical */
+<<<<<<< HEAD
 /* line 581, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 580, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 aside.social.social-vertical {
   height: auto;
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 581, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 580, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social.social-vertical {
     width: 100%;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 581, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 580, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social.social-vertical {
     width: 40px;
     float: left;
   }
+<<<<<<< HEAD
   /* line 589, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 588, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social.social-vertical h3.tp-social-headline {
     display: block;
     text-align: center;
   }
+<<<<<<< HEAD
   /* line 592, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 591, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social.social-vertical h3.tp-social-headline.share-headline {
     display: block;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 597, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 596, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social.social-vertical li.share {
     width: 40px;
   }
 }
 
 /* Social Horizontal */
+<<<<<<< HEAD
 /* line 606, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 605, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 aside.social.social-horizontal {
   float: none;
   max-width: 620px;
@@ -860,43 +1265,71 @@ aside.social.social-horizontal {
   text-align: right;
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 606, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 605, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social.social-horizontal {
     width: 100%;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 606, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 605, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social.social-horizontal {
     float: right;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 619, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 618, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social.social-horizontal li.share {
     float: right;
   }
 }
+<<<<<<< HEAD
 /* line 624, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 623, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 aside.social.social-horizontal .share-submenu-wrapper {
   display: inline-block;
   vertical-align: middle;
 }
+<<<<<<< HEAD
 /* line 628, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 627, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 aside.social.social-horizontal .tp-social-headline {
   display: inline;
   vertical-align: middle;
   margin-left: 5px;
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 628, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 627, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   aside.social.social-horizontal .tp-social-headline {
     float: none;
     margin-right: 5px;
     letter-spacing: 0px;
   }
 }
+<<<<<<< HEAD
 /* line 638, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 637, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 aside.social.social-horizontal .tp-social-link {
   display: inline-block;
   vertical-align: middle;
@@ -908,14 +1341,22 @@ aside.social.social-horizontal .tp-social-link {
   background-color: transparent;
   margin-left: 6px;
 }
+<<<<<<< HEAD
 /* line 649, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 648, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 aside.social.social-horizontal .tap-influence-icon .tap-influence-count {
   top: auto;
 }
 
 /* Content Specific Rules */
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 660, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 659, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body.node-type-article aside.social,
   body.node-type-video aside.social,
   body.node-type-flashcard aside.social,
@@ -925,7 +1366,11 @@ aside.social.social-horizontal .tap-influence-icon .tap-influence-count {
     border-top: 1px solid #cccccc;
     border-bottom: 1px solid #cccccc;
   }
+<<<<<<< HEAD
   /* line 667, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 666, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body.node-type-article aside.social .tp-social-reddit,
   body.node-type-article aside.social .tp-social-pinterest,
   body.node-type-article aside.social .comments-link,
@@ -945,7 +1390,11 @@ aside.social.social-horizontal .tap-influence-icon .tap-influence-count {
   }
 }
 @media all and (min-width: 768px) {
+<<<<<<< HEAD
   /* line 672, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 671, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body.node-type-article aside.social .comments-link,
   body.node-type-video aside.social .comments-link,
   body.node-type-flashcard aside.social .comments-link,
@@ -955,7 +1404,11 @@ aside.social.social-horizontal .tap-influence-icon .tap-influence-count {
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 660, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 659, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body.node-type-article aside.social,
   body.node-type-video aside.social,
   body.node-type-flashcard aside.social,
@@ -966,42 +1419,70 @@ aside.social.social-horizontal .tap-influence-icon .tap-influence-count {
   }
 }
 
+<<<<<<< HEAD
 /* line 683, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 682, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 body.node-type-openpublish-photo-gallery aside.social {
   border: none;
   height: auto;
 }
+<<<<<<< HEAD
 /* line 686, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 685, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   display: none;
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 689, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 688, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body.node-type-openpublish-photo-gallery aside.social li.share {
     width: auto;
   }
 }
 @media all and (min-width: 768px) {
+<<<<<<< HEAD
   /* line 689, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 688, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body.node-type-openpublish-photo-gallery aside.social li.share {
     width: auto;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 689, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 688, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body.node-type-openpublish-photo-gallery aside.social li.share {
     width: auto;
   }
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 700, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 699, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   body.node-type-openpublish-photo-gallery aside.social li.takeaction {
     display: none;
   }
 }
 
 /****** Override for sticky **********/
+<<<<<<< HEAD
 /* line 709, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 708, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social.sticky {
   z-index: 1;
   position: fixed;
@@ -1016,12 +1497,20 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 }
 
 /****** TEMP FOR STICKY HEADER **********/
+<<<<<<< HEAD
 /* line 723, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 717, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .header-wrapper {
   padding: 0;
 }
 
+<<<<<<< HEAD
 /* line 727, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 721, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .tp4-fat-header {
   padding: 10px;
   padding-bottom: 0;
@@ -1029,23 +1518,39 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 
 /* Sticky Header */
 /****** Influence **********/
+<<<<<<< HEAD
 /* line 751, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 745, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper {
   position: relative;
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 751, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 745, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-wrapper {
     height: 57px;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 751, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 745, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-wrapper {
     height: auto;
   }
 }
+<<<<<<< HEAD
 /* line 760, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 754, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper .tap-influence-overlay .popover {
   display: none;
   top: 0;
@@ -1054,31 +1559,51 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   transition: top 0.2s ease-out;
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 760, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 754, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-wrapper .tap-influence-overlay .popover {
     display: block;
   }
 }
+<<<<<<< HEAD
 /* line 771, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 765, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-wrapper .tap-influence-icon {
   margin-top: 0;
   display: block;
 }
 @media all and (min-width: 320px) {
+<<<<<<< HEAD
   /* line 771, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 765, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-wrapper .tap-influence-icon {
     margin-top: 16px;
   }
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 771, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 765, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-wrapper .tap-influence-icon {
     text-align: center;
     display: inline-block;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 771, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 765, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-wrapper .tap-influence-icon {
     text-align: right;
     position: relative;
@@ -1086,24 +1611,40 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 786, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 780, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-wrapper .tap-influence-icon.icon:after {
     margin-left: 0;
   }
 }
 
+<<<<<<< HEAD
 /* line 796, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 790, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-horizontal .social-wrapper .tap-influence-overlay {
   right: 0px;
   bottom: 0px;
   left: auto;
 }
+<<<<<<< HEAD
 /* line 801, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 795, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-horizontal .social-wrapper .tap-influence-icon {
   width: 35px;
 }
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 801, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 795, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-horizontal .social-wrapper .tap-influence-icon {
     display: block;
     width: 95px;
@@ -1116,7 +1657,11 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
     margin-top: 0px;
   }
 }
+<<<<<<< HEAD
 /* line 809, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 803, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-horizontal .social-wrapper .tap-influence-icon h3 {
   float: left;
   text-align: center;
@@ -1124,27 +1669,47 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   display: inline-block;
   letter-spacing: 0px;
 }
+<<<<<<< HEAD
 /* line 816, ../../base/sass/base/icons/_social-menu.scss */
 .social-horizontal .social-wrapper .tap-influence-icon:after {
   margin-top: 0px;
 }
 /* line 820, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 810, ../../base/sass/base/icons/_social-menu.scss */
+.social-horizontal .social-wrapper .tap-influence-icon:after {
+  margin-top: 0px;
+}
+/* line 814, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-horizontal .social-wrapper .tap-influence-overlay .popover .i-triangle-up {
   margin-left: 18px;
 }
 
 /* TakePart Article */
+<<<<<<< HEAD
 /* line 856, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 850, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-vertical .social-wrapper .tap-influence-icon {
   margin-top: 1ex;
 }
 @media (max-width: 1024px) {
+<<<<<<< HEAD
   /* line 856, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 850, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-vertical .social-wrapper .tap-influence-icon {
     margin-top: 1px;
   }
 }
+<<<<<<< HEAD
 /* line 861, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 855, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-vertical .social-wrapper .tap-influence-icon .tap-influence-count {
   top: 0px;
   display: -moz-inline-stack;
@@ -1156,11 +1721,16 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   float: none;
 }
 @media (max-width: 1024px) {
+<<<<<<< HEAD
   /* line 861, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 855, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   .social-vertical .social-wrapper .tap-influence-icon .tap-influence-count {
     margin-left: 1ex;
   }
 }
+<<<<<<< HEAD
 /* line 870, ../../base/sass/base/icons/_social-menu.scss */
 .social-vertical .social-wrapper .popover {
   left: 0;
@@ -1170,6 +1740,17 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   display: none;
 }
 /* line 875, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 864, ../../base/sass/base/icons/_social-menu.scss */
+.social-vertical .social-wrapper .popover {
+  left: 0;
+}
+/* line 866, ../../base/sass/base/icons/_social-menu.scss */
+.social-vertical .social-wrapper .popover .i-triangle-up {
+  display: none;
+}
+/* line 869, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .social-vertical .social-wrapper .popover .i-triangle-left {
   display: block;
   left: -19px;
@@ -1179,18 +1760,30 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
 }
 
 /* TakePart Gallery */
+<<<<<<< HEAD
 /* line 886, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 880, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .node-type-openpublish-photo-gallery .social {
   width: 260px;
   margin-top: 5px;
 }
+<<<<<<< HEAD
 /* line 889, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 883, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .node-type-openpublish-photo-gallery .social .tp-sharing-container {
   width: 180px;
   margin: 5px auto 0;
   float: left;
 }
+<<<<<<< HEAD
 /* line 894, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 888, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .node-type-openpublish-photo-gallery .social .headline {
   text-align: center;
   float: none;
@@ -1198,19 +1791,31 @@ body.node-type-openpublish-photo-gallery aside.social .tp-social-reddit {
   width: auto;
   display: block;
 }
+<<<<<<< HEAD
 /* line 900, ../../base/sass/base/icons/_social-menu.scss */
+=======
+/* line 894, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
 .node-type-openpublish-photo-gallery .social .headline.share-headline {
   margin: 0;
 }
 
 @media all and (min-width: 480px) {
+<<<<<<< HEAD
   /* line 906, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 900, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   #gallery-cover-social {
     width: 360px;
   }
 }
 @media all and (min-width: 980px) {
+<<<<<<< HEAD
   /* line 912, ../../base/sass/base/icons/_social-menu.scss */
+=======
+  /* line 906, ../../base/sass/base/icons/_social-menu.scss */
+>>>>>>> TAP-1719 centered read number on tablets.
   #gallery-cover-social {
     width: 315px;
   }
