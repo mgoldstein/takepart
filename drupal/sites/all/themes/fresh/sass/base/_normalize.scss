@@ -433,3 +433,24 @@ aside.inline-content + p{
   background-color: $light-mint;
   opacity: .3;
 }
+/*
+* Inline Replacements
+*************************/
+
+figure.align-center {
+    margin: 0 auto;
+    .inline-feature-image {
+	 display: table;
+	 margin: 0 auto;
+  }
+}
+
+figure.align-right {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+
+figure.align-left {
+  float: left;
+  margin: 0 1em 1em 0;
+}
