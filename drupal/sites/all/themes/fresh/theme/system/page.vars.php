@@ -32,4 +32,11 @@ function fresh_preprocess_page(&$variables) {
   $footer = theme('fresh_mobile_footer');
   $variables['page']['footer']['footer']['#markup'] = $footer;
 
+  $variables['page']['header']['#prefix'] = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => '',
+      '#attributes' => array(
+        'class' => 'fresh-first-ad',
+  ))));
 }

@@ -99,6 +99,13 @@ function tp_ads_admin_form() {
     '#default_value' => $leader_settings['desktop']['ad_height'],
   ); 
 
+  $form['tp_ads_article_leader']['desktop']['selector'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Desktop Selector Override'),
+    '#description' => t('.fresh-first-ad'),
+    '#default_value' => $leader_settings['desktop']['selector'],
+  ); 
+  
   //js selector
   $form['tp_ads_settings'] = array(
     '#tree' => TRUE,
