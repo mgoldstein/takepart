@@ -4919,3 +4919,9 @@ blockquote.pullquote {
   margin: 0;
   padding: 0;
 }
+
+/* line 107, ../sass/article.scss */
+.inline-html-wrapper {
+  display: table;
+  margin: 0 auto;
+}
