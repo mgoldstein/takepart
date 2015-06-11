@@ -61,7 +61,7 @@ function fresh_preprocess_node__openpublish_article(&$variables) {
     if ($media = field_get_items('node', $variables['node'], 'field_article_main_image')) {
 	 $file = $media[0]['file'];
 	 $image_url = image_style_url('large', $file->uri);
-	 $variables['media'] = '<div id="main-image">';
+	 $variables['media'] = '<div class="main-image">';
 	 $variables['media'] .= theme('image', array(
 	   'path' => $image_url, 'attributes' => array(
 		'class' => 'main-media'
