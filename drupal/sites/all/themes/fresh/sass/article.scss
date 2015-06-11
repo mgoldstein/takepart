@@ -56,16 +56,22 @@ h1.title{
   display: block;
   /* margin: 0 auto; */
 }
-#main-image {
+.main-image {
   display: table;
   margin: 0 auto;
+  .caption{
+    text-align: center;
+    @include breakpoint($breakpoint-phablet){
+      text-align: left;
+    }
+  }
 }
 .headline{
   margin-top: 20px;
   margin-right: inherit;
   margin-left: inherit;
   margin-bottom: 18px;
-  @include breakpoint($breakpoint-tablet){
+  @include breakpoint($breakpoint-phablet){
     text-align: center;
   }
 }
