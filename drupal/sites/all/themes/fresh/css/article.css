@@ -5068,9 +5068,10 @@ footer .corporate-footer ul li a {
 
 /* line 25, ../sass/modules/_series-nav.scss */
 .series-navigation {
+  clear: both;
   /* pixel pushing */
 }
-/* line 26, ../sass/modules/_series-nav.scss */
+/* line 27, ../sass/modules/_series-nav.scss */
 .series-navigation .label {
   font-family: tradegothicbold;
   font-size: 14px;
@@ -5078,26 +5079,26 @@ footer .corporate-footer ul li a {
   text-transform: uppercase;
   color: #00A084;
 }
-/* line 33, ../sass/modules/_series-nav.scss */
+/* line 34, ../sass/modules/_series-nav.scss */
 .series-navigation span {
   vertical-align: middle;
 }
-/* line 36, ../sass/modules/_series-nav.scss */
+/* line 37, ../sass/modules/_series-nav.scss */
 .series-navigation a {
   color: #000;
   width: 100%;
   display: block;
   height: 100%;
 }
-/* line 42, ../sass/modules/_series-nav.scss */
+/* line 43, ../sass/modules/_series-nav.scss */
 .series-navigation h4 {
   margin: 5px 0 15px 0;
 }
-/* line 45, ../sass/modules/_series-nav.scss */
+/* line 46, ../sass/modules/_series-nav.scss */
 .series-navigation .navigation {
   display: table;
 }
-/* line 48, ../sass/modules/_series-nav.scss */
+/* line 49, ../sass/modules/_series-nav.scss */
 .series-navigation .item {
   display: table-cell;
   width: 50%;
@@ -5105,15 +5106,15 @@ footer .corporate-footer ul li a {
   border-bottom: 1px solid #C7C7C7;
   padding: 0 10px;
 }
-/* line 55, ../sass/modules/_series-nav.scss */
+/* line 56, ../sass/modules/_series-nav.scss */
 .series-navigation .item-left {
   border-right: 1px solid #C7C7C7;
 }
-/* line 58, ../sass/modules/_series-nav.scss */
+/* line 59, ../sass/modules/_series-nav.scss */
 .series-navigation img.topic-box {
   margin: 0 auto;
 }
-/* line 62, ../sass/modules/_series-nav.scss */
+/* line 63, ../sass/modules/_series-nav.scss */
 .series-navigation .i-double-arrow-left {
   margin-right: 3px;
 }
