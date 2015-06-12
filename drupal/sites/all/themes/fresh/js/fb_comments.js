@@ -14,23 +14,20 @@
 
 
 // To understand behaviors, see https://drupal.org/node/756722#behaviors
-Drupal.behaviors.fb_comments = {
-  attach: function(context, settings) {
-		$('a.comments-count', context).once('FBComments', function () {
-			// Apply the fb_comments effect to the elements only once.
-			$('a.comments-count').on('click', function(e){
-				if(typeof FB != 'undefined') {
-					FB.XFBML.parse();
-					$(this).siblings('.fb_comments').attr('href', window.location.href).show();
-					$(this).hide();
-				}
-				e.preventDefault();
-				return false;
-			});
-		});
-
-  }
-};
-
-
+  Drupal.behaviors.fb_comments = {
+    attach: function (context, settings) {
+	 $('a.comments-count', context).once('FBComments', function () {
+	   // Apply the fb_comments effect to the elements only once.
+	   $('a.comments-count').on('click', function (e) {
+		if (typeof FB != 'undefined') {
+		  FB.XFBML.parse();
+		  $(this).siblings('.fb_comments').attr('href', window.location.href).show();
+		  $(this).hide();
+		}
+		e.preventDefault();
+		return false;
+	   });
+	 });
+    }
+  };
 })(jQuery, Drupal, this, this.document);
