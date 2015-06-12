@@ -38,6 +38,9 @@ body {
         margin: 0 auto 5px;
       }
     }
+    .tap-influence-overlay {
+      width: auto;
+    }
     @include breakpoint($breakpoint-phablet) {
       .parent-social-menu {
         list-style: none;
