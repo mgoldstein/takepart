@@ -1745,7 +1745,7 @@ body .article-wrapper .tp-social-headline {
     color: #00c09d;
     font: bold 25px/100% "AdelleSans", Verdana, Tahoma, sans-serif;
     width: 100%;
-    margin-top: -10px;
+    margin: -10px 0 0;
   }
   /* line 90, ../../base/sass/base/icons/_social-menu.scss */
   body .article-wrapper aside.social.social-vertical .desktop .tap-influence-overlay .popover {
@@ -4741,17 +4741,17 @@ body.mobile-search-show #header form {
   background: url('../images/logos-s3abcf13aa0.png') no-repeat;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -68px;
 }
 
-/* line 60, ../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.12.7/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 60, ../../../../../../../../.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -40px;
 }
