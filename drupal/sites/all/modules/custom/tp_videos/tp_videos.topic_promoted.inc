@@ -35,7 +35,7 @@ function tp_videos_topic_promoted_admin_form($form, &$form_state) {
     '#title' => t('Videos'),
     '#description' => t('The video(s) you enter here will be promoted on all the content that doesn\'t have a topic-specific video listed below.'),
     '#maxlength' => 1024,
-    '#value' => implode(', ', $global_field_values),
+    '#default_value' => implode(', ', $global_field_values),
 
     // hard-coded to match the values of topic taxonomy
     // field_featured_video
@@ -102,7 +102,7 @@ function tp_videos_topic_promoted_admin_form($form, &$form_state) {
  * Validate handler for the tp_videos_topic_promoted_admin_form.
  */
 function tp_videos_topic_promoted_admin_form_validate($form, &$form_state) {
-  // validate the the global video overide
+  // validate the the global video field
   $value = array();
 
   // We only do this if someone entered a value
@@ -113,7 +113,7 @@ function tp_videos_topic_promoted_admin_form_validate($form, &$form_state) {
       // Take the pattern "label (eid)" and match
       // the ID in the parentheses.
       if (preg_match("/.+\((\d+)\)/", $entity, $matches)) {
-        $value[] = array($matches[1]);
+        $value[] = $matches[1];
       } else {
         form_set_error('global_video', t('Your global videos aren\'t all actual videos. Use the autocomplete options!'));
       }
@@ -144,4 +144,33 @@ function tp_videos_topic_promoted_admin_form_submit($form, &$form_state) {
     }
   }
   drupal_set_message(t('Your featured video options have been saved.'));
+}
+
+/**
+ * Get the promoted video for a given content node.
+ *
+ * @param  StdClass $node A content node
+ * @return StdClass       The promoted video node for this
+ *                        content's topic.
+ */
+function tp_videos_get_topic_promoted_video($node) {
+  // first get the global videos
+  $videos = variable_get('tp_videos_global_video', array());
+
+  // if the global override isn't enabled
+  // AND the node has a topic
+  // AND the topic has featured videos,
+  // replace the global videos with the featured videos for that topic
+  if (
+    1 !== variable_get('tp_videos_global_video_override', 0) &&
+    ($items = field_get_items('node', $node, 'field_topic')) &&
+    ($topic_videos = field_get_items('taxonomy_term', $items[0]['taxonomy_term'], 'field_featured_video'))
+  ) {
+    // normalize the field values to an indexed array of node IDs
+    $videos = array_map(create_function('$item', 'return $item["target_id"];'), $topic_videos);
+  }
+
+  // randomly select a video and return a node object
+  $random_key = array_rand($videos);
+  return node_load($videos[$random_key]);
 }

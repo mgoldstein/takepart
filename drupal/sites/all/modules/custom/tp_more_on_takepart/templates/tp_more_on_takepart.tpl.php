@@ -7,4 +7,7 @@
 
     <?php print $variables['taboola']; ?>
   </div>
+
+  <?php print $variables['promoted_video']; ?>
+
 </div>

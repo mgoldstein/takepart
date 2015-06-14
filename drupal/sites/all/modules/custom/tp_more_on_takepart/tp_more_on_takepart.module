@@ -1,5 +1,5 @@
 <?php
-	
+
 /**
  * Implements hook_menu().
  */
@@ -72,7 +72,7 @@ function tp_more_on_takepart_settings_form_validate($form, &$form_state){
 	}
 }
 
-function tp_more_on_takepart_settings_form_submit($form, &$form_state){	
+function tp_more_on_takepart_settings_form_submit($form, &$form_state){
 	variable_set('more_on_takepart_global1', $form_state['values']['more_on_takepart_global1']);
 	variable_set('more_on_takepart_global2', $form_state['values']['more_on_takepart_global2']);
 	variable_set('more_on_takepart_taboola', $form_state['values']['more_on_takepart_taboola']['value']);
@@ -103,6 +103,7 @@ function tp_more_on_takepart_theme() {
 				'article' => NULL,
 				'global' => NULL,
 				'taboola' => NULL,
+        'promoted_video' => NULL,
 			),
 			'template' => 'templates/tp_more_on_takepart',
 		),
@@ -120,7 +121,7 @@ function tp_more_on_takepart_theme() {
 
 /**
  * Implements hook_block_view().
- * 
+ *
  * Prepares the contents of the block.
  */
 function tp_more_on_takepart_block_view($delta = '') {
@@ -175,10 +176,10 @@ function tp_more_on_takepart_block_view($delta = '') {
 				if (!$result) {
 					break;
 				}
-					
+
 				$promo_headline = field_get_items('node', $result, 'field_promo_headline');
 				$field_promo_headline = $promo_headline[0]['value'];
-				
+
 				// Select thumbnail field
 				switch($result->type) {
 					case 'action':
@@ -212,7 +213,7 @@ function tp_more_on_takepart_block_view($delta = '') {
 							$campaign_promo_headline = field_get_items('node' ,$campaign_node, 'field_promo_headline');
 							$field_promo_headline = $campaign_promo_headline[0]['value'];
 						}
-	
+
 						if( !field_get_items('node',$result,'field_thumbnail') ) {
 							$field_thumbnail = field_get_items('node' ,$campaign_node, 'field_thumbnail');
 							$result->field_thumbnail[$node->language] = $field_thumbnail;
@@ -244,11 +245,15 @@ function tp_more_on_takepart_block_view($delta = '') {
 				));
 			}
 
+      // load the promoted video for this node
+      $promoted_video = tp_videos_get_topic_promoted_video($node);
+
 			// Pass data through theme function.
 			$block['content'] = theme('tp_more_on_takepart', array(
 				'related' => $related,
 				'promoted' => $promoted,
 				'taboola' => $t,
+        'promoted_video' => '',
 			));
 		}
 		break;
