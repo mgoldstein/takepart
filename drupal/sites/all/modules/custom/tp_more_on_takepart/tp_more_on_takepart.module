@@ -33,51 +33,69 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
 		'action',
 	);
 
+  $form['featured_stories'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Featured Stories'),
+  );
+
 	// autocomplete list of articles, featured articles, etc.
-	$form['more_on_takepart_global1'] = array(
-#		'#type' => 'node_reference',
+	$form['featured_stories']['more_on_takepart_global1'] = array(
 		'#type' => 'entity_autocomplete',
 		'#entity_type' => 'node',
 		'#bundles' => $content_types,
 		'#title' => t('Site-wide featured content #1'),
-		'#default_value' => variable_get('more_on_takepart_global1', ''),
-	);
-	$form['more_on_takepart_global2'] = array(
-		'#type' => 'entity_autocomplete',
-		'#entity_type' => 'node',
-		'#bundles' => $content_types,
-		'#title' => t('Site-wide featured content #2'),
+    '#required' => true,
+    '#default_value' => variable_get('more_on_takepart_global1', ''),
+  );
+  $form['featured_stories']['more_on_takepart_global2'] = array(
+    '#type' => 'entity_autocomplete',
+    '#entity_type' => 'node',
+    '#bundles' => $content_types,
+    '#title' => t('Site-wide featured content #2'),
+    '#required' => true,
 		'#default_value' => variable_get('more_on_takepart_global2', ''),
 	);
 	$form['more_on_takepart_taboola'] = array(
-		'#type' => 'text_format',
+		'#type' => 'textarea',
 		'#title' => t('Taboola JS'),
-		'#format' => 'plain_text',
 		'#rows' => 8,
 		'#default_value' => variable_get('more_on_takepart_taboola', ''),
 	);
-	$form['submit_button'] = array(
-		'#type' => 'submit',
-		'#value' => t('Save Settings'),
-	);
-	return $form;
+
+  $form['featured_videos'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Featured Videos'),
+  );
+
+  $form['featured_videos']['more_on_takepart_video_cta_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('More Videos CTA Text'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('more_on_takepart_video_cta_text', 'Watch more videos'),
+  );
+
+  $form['featured_videos']['more_on_takepart_video_cta_link'] = array(
+    '#type' => 'textfield',
+    '#title' => t('More Videos CTA Link'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('more_on_takepart_video_cta_link', 'http://www.takepart.com/videos'),
+    '#element_validate' => array('_more_on_takepart_video_cta_link_validate'),
+  );
+
+  $form['featured_videos']['video_link'] = array(
+    '#markup' => l('Configure Videos', 'admin/config/media/topic_video'),
+  );
+
+	return system_settings_form($form);
 }
 
-function tp_more_on_takepart_settings_form_validate($form, &$form_state){
-	if ($form_state['values']['more_on_takepart_global1'] == '') {
-		form_set_error('more_on_takepart_global1', t('Please specify an article.'));
-	}
-	if ($form_state['values']['more_on_takepart_global2'] == '') {
-		form_set_error('more_on_takepart_global2', t('Please specify an article.'));
-	}
-}
-
-function tp_more_on_takepart_settings_form_submit($form, &$form_state){
-	variable_set('more_on_takepart_global1', $form_state['values']['more_on_takepart_global1']);
-	variable_set('more_on_takepart_global2', $form_state['values']['more_on_takepart_global2']);
-	variable_set('more_on_takepart_taboola', $form_state['values']['more_on_takepart_taboola']['value']);
-
-	drupal_set_message("Site-wide and Taboola links saved.");
+/**
+ * Custom validation function for more_on_takepart_video_cta_link.
+ */
+function _more_on_takepart_video_cta_link_validate($element, &$form_state, $form) {
+  if (!valid_url($element['#value'], true)) {
+    form_set_error('more_on_takepart_video_cta_link', t('Make sure the link is a valid URL, including "http://".'));
+  }
 }
 
 /**
