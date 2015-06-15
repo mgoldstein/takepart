@@ -714,12 +714,6 @@ body.node-type-openpublish-photo-gallery{
   position: fixed;
   top: 7px;
 }
-.sticky-wrapper{
-  @include breakpoint($breakpoint-phablet) {
-    margin-top: 360px;
-  }
-}
-
 
 /****** TEMP FOR STICKY HEADER **********/
 
