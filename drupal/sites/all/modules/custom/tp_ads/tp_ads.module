@@ -20,7 +20,7 @@ function tp_ads_menu() {
     'file' => 'tp_ads.admin.inc',
     'file path' => drupal_get_path('module', 'tp_ads') . '/forms',
     'access arguments' => array('administer site configuration'),
-    'type' => MENU_LOCAL_TASK,
+    'type' => MENU_NORMAL_ITEM,
   );
 
   /*disabled for now. @dev this can be enabled and used for other settings
@@ -172,7 +172,7 @@ function tp_ads_preprocess_page(&$vars) {
     $ads_wrapper['selector'] = $selector;
     
     //calls function to add header
-    _tp_ads_insert_leader_ad();
+    _tp_ads_insert_leader_ad($vars);
     _tp_ads_insert_header($header_script);
     
     //adds the js
@@ -187,7 +187,7 @@ function tp_ads_preprocess_page(&$vars) {
  *
  *  @dev: todo: improve logic to allow it to handle future calls
  */
-function _tp_ads_insert_leader_ad() {
+function _tp_ads_insert_leader_ad(&$vars) {
   //variables
   $leader_settings = variable_get('tp_ads_article_leader', '');
   $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895'); //pulled from original module
