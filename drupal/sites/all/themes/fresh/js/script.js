@@ -84,6 +84,14 @@
     }
   }
 
+  /* Position stick share */
+  $('document').ready(function(){
+    var stickyOffset = $(".main-media").offset().top - $(".main-content").offset().top;
+    $('.sticky-wrapper').css('margin-top', stickyOffset - 7);
+  });
+
+
+
   /**
    *  @function:
    *    Function copied from tp_ad_takeover.jquery.js
