@@ -2,6 +2,7 @@
 	display: table;
 	margin: 20px auto;
 	width: 100%;
+  min-height: 185px;
 	@include breakpoint($breakpoint-phablet) {
 		width: auto;
 	}
