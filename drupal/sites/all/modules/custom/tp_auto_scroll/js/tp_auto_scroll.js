@@ -45,12 +45,12 @@
 
               // Update fb_comments
               // vv Copied from fb_comments.js, because this doesn't work vv
-              if(typeof FB != 'undefined') {
-                FB.XFBML.parse();
-              }
               $('a.comments-count').once('FBComments', function () {
                 $('a.comments-count').on('click', function(e){
-                  $(this).siblings('.fb_comments').attr('href', window.location.href).show();
+			   if(typeof FB != 'undefined') {
+			     FB.XFBML.parse();
+			   }
+                  $(this).siblings('.fb_chat').attr('href', window.location.href).show();
                   $(this).hide();
                   e.preventDefault();
                   return false;
