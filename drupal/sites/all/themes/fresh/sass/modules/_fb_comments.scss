@@ -21,7 +21,7 @@
 			display: none;
 		}
 	}
-	.fb_comments {
+	.fb_chat {
 		@include breakpoint($breakpoint-phablet) {
 			display: block;
 		}

@@ -21,7 +21,7 @@
 	   $('a.comments-count').on('click', function (e) {
 		if (typeof FB != 'undefined') {
 		  FB.XFBML.parse();
-		  $(this).siblings('.fb_comments').attr('href', window.location.href).show();
+		  $(this).siblings('.fb_chat').attr('href', window.location.href).show();
 		  $(this).hide();
 		}
 		e.preventDefault();
