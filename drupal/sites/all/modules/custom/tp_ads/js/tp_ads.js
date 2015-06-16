@@ -11,6 +11,19 @@
     $(window).bind('scroll', function(event) {
       //calls the init
       init_tp_ads();
+      
+      //does for each main wrapper
+      $('.tp-main-ad-wrapper > div').each(function() {
+        var id = this.id;
+        
+        //ensures we have an id to call the google tag display on
+        if (id != '') {
+          //ensures we only fire the display if its empty
+          if ($('div', this).length == 0) {
+            googletag.display(id);
+          }
+        }
+      })
     });
   });
   

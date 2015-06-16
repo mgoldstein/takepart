@@ -9,7 +9,7 @@ function theme_tp_ads_script($variables) {
   $script = theme('html_tag', array(
     'element' => array(
       '#tag' => 'script',
-      '#value' => "googletag.cmd.push(function () { googletag.display('" . $variables['ad_gpd_id'] . "'); });",
+      '#value' => "googletag.cmd.push(function() { window. " . $variables['ad_slot'] . "  = googletag.pubads().display('/4355895/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "'); });"
   )));
 
   //output div
@@ -32,6 +32,7 @@ function theme_tp_ads_script($variables) {
       '#value' => $output,
       '#attributes' => array(
         'style' => 'text-align: center;',
+        'class' => 'tp-main-ad-wrapper'
       )
   )));
 
