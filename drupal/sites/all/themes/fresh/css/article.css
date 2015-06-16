@@ -4715,12 +4715,12 @@ body.mobile-search-show #header form {
   display: table;
   margin: 20px auto;
   width: 100%;
-  min-height: 185px;
 }
 @media all and (min-width: 480px) {
   /* line 1, ../sass/modules/_fb_comments.scss */
   .comments {
     width: auto;
+    min-height: 185px;
   }
 }
 /* line 9, ../sass/modules/_fb_comments.scss */
