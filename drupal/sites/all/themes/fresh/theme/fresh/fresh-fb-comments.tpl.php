@@ -7,7 +7,4 @@
   if (window.innerWidth > 480) {
     $(fb_chat).attr("data-width", 640);
   }
-  else {
-    $(fb_chat).attr("data-width", 320);
-  }
 </script>
