@@ -865,31 +865,6 @@ header {
     #block-tp4-support-tp4-mobile-menu-header {
       border-color: #9c9c9c;
     }
-
-    //login
-    .tpsLogin {
-        margin-top: 7px;
-
-        .tp_login {
-            background: transparent;
-            padding: 10px 0;
-            margin-top: -10px;
-
-            a {
-                background-color: transparent;
-            }
-
-            .user_image,
-            .user_image:hover {
-                color: #999999;
-            }
-
-            .dropdown-menu {
-                margin-top: 10px;
-                box-shadow: 2px 2px 2px;
-            }
-        }
-    }
 }
 
 #block-menu-menu-megamenu > ul > li.menu__item.is-expanded.first.expanded > a {

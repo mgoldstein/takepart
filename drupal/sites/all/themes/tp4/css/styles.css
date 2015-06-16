@@ -12722,37 +12722,13 @@ header .search .form-submit {
 .pivot-nav-theme #block-tp4-support-tp4-mobile-menu-header {
   border-color: #9c9c9c;
 }
-/* line 870, ../sass/modules/_header.scss */
-.pivot-nav-theme .tpsLogin {
-  margin-top: 7px;
-}
-/* line 873, ../sass/modules/_header.scss */
-.pivot-nav-theme .tpsLogin .tp_login {
-  background: transparent;
-  padding: 10px 0;
-  margin-top: -10px;
-}
-/* line 878, ../sass/modules/_header.scss */
-.pivot-nav-theme .tpsLogin .tp_login a {
-  background-color: transparent;
-}
-/* line 883, ../sass/modules/_header.scss */
-.pivot-nav-theme .tpsLogin .tp_login .user_image,
-.pivot-nav-theme .tpsLogin .tp_login .user_image:hover {
-  color: #999999;
-}
-/* line 887, ../sass/modules/_header.scss */
-.pivot-nav-theme .tpsLogin .tp_login .dropdown-menu {
-  margin-top: 10px;
-  box-shadow: 2px 2px 2px;
-}
 
-/* line 895, ../sass/modules/_header.scss */
+/* line 870, ../sass/modules/_header.scss */
 #block-menu-menu-megamenu > ul > li.menu__item.is-expanded.first.expanded > a {
   border-bottom: 1px solid #646464;
 }
 
-/* line 903, ../sass/modules/_header.scss */
+/* line 878, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li a {
   border-color: #9c9c9c;
   font-family: 'AdelleSans', sans-serif;
@@ -12760,32 +12736,32 @@ body .snap-drawer-left #block-menu-menu-megamenu li a {
   text-transform: none;
   border-bottom: none;
 }
-/* line 911, ../sass/modules/_header.scss */
+/* line 886, ../sass/modules/_header.scss */
 body .snap-drawer-left #block-menu-menu-megamenu li.level-0 a {
   font-size: 24px;
   font-family: 'AdelleSans', sans-serif;
   font-weight: bold;
   text-transform: uppercase;
 }
-/* line 922, ../sass/modules/_header.scss */
+/* line 897, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us {
   margin-right: 0px !important;
 }
-/* line 924, ../sass/modules/_header.scss */
+/* line 899, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us .title {
   margin-left: 0px;
 }
-/* line 927, ../sass/modules/_header.scss */
+/* line 902, ../sass/modules/_header.scss */
 body .snap-drawer-left .pivot-nav-theme .follow-us li {
   margin-right: 8px;
 }
 
-/* line 939, ../sass/modules/_header.scss */
+/* line 914, ../sass/modules/_header.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image,
 body.tploggedin .pivot-nav-theme .tpsLogin .user_image:hover {
   color: #01bf9e;
 }
-/* line 943, ../sass/modules/_header.scss */
+/* line 918, ../sass/modules/_header.scss */
 body.tploggedin .pivot-nav-theme .tpsLogin ul.dropdown-menu {
   display: none;
 }
@@ -12793,11 +12769,11 @@ body.tploggedin .pivot-nav-theme .tpsLogin ul.dropdown-menu {
 /**
  *	Optimizing the login to limit the jump when TAP occurs
  */
-/* line 956, ../sass/modules/_header.scss */
+/* line 931, ../sass/modules/_header.scss */
 body .pivot-nav-theme .tpsLogin ul.dropdown-menu {
   display: none;
 }
-/* line 961, ../sass/modules/_header.scss */
+/* line 936, ../sass/modules/_header.scss */
 body .pivot-nav-theme .tpsLogin .open ul.dropdown-menu {
   display: block;
 }
