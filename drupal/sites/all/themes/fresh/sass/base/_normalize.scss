@@ -217,6 +217,9 @@ blockquote.pullquote{
 }
 aside.inline-content{
   padding: 0;
+  &.pull-right{
+    clear: right;
+  }
   @include breakpoint($breakpoint-phablet){
     padding-left: 30px;
     padding-right: 0px;
