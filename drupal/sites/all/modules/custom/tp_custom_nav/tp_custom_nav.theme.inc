@@ -27,42 +27,42 @@ function theme_tp_slim_nav_colors($vars) {
     html body {
       border-top: none;
     }
-    
+
     body.campaign-display .header-wrapper {
       border-top: none;
     }
-    
+
     body #tp-drawers .snap-drawer {
       background-color: #' . $mobile_bg_color . ';
     }
-    
+
     body #tp-drawers .snap-drawer a {
       border-color: #' . $font_color . ';
     }
-    
+
     .header-wrapper .tp-slim-nav .menu-toggle {
       border-color: #' . $font_color . ';
     }
-    
+
     body #page-wrap .header-wrapper {
       background-color: #' . $bg_color . ';
     }
-    
+
     #header,
     .header-wrapper,
     .header-wrapper .tp-slim-nav,
-    .header-wrapper .tp-slim-nav a {
+    .header-wrapper .tp-slim-nav a:not(.user_image) {
       background-color: #' . $bg_color . ';
       color: #' . $font_color . ';
     }
-    
+
     .header-wrapper .mega-item.tp-hover,
     .header-wrapper .mega-item.tp-hover a,
     .header-wrapper .tpsLogin .tp_login.open {
       background-color: #' . $font_color .';
       color: #' . $bg_color . '
     }
-    
+
     .header-wrapper .tp-slim-nav .mega-content,
     .header-wrapper .tp-slim-nav .mega-content a {
       background-color: #' . $font_color .';
