@@ -47,6 +47,12 @@
       margin-left: 15px;
     }
   }
+  article{
+    color: #3A3A3A;
+    h1.title, #more-on-takepart h2{
+      color: $black;
+    }
+  }
 }
 h1.title{
   margin-top: 10px;

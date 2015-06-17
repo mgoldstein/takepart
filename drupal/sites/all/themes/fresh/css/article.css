@@ -5152,42 +5152,50 @@ footer .corporate-footer ul li a {
     margin-left: 15px;
   }
 }
+/* line 50, ../sass/article.scss */
+.article-wrapper article {
+  color: #3A3A3A;
+}
+/* line 52, ../sass/article.scss */
+.article-wrapper article h1.title, .article-wrapper article #more-on-takepart h2 {
+  color: black;
+}
 
-/* line 51, ../sass/article.scss */
+/* line 57, ../sass/article.scss */
 h1.title {
   margin-top: 10px;
   margin-bottom: 15px;
 }
 @media all and (min-width: 768px) {
-  /* line 51, ../sass/article.scss */
+  /* line 57, ../sass/article.scss */
   h1.title {
     text-align: center;
   }
 }
 
-/* line 58, ../sass/article.scss */
+/* line 64, ../sass/article.scss */
 .main-media {
   display: block;
   /* margin: 0 auto; */
 }
 
-/* line 62, ../sass/article.scss */
+/* line 68, ../sass/article.scss */
 .main-image {
   display: table;
   margin: 0 auto;
 }
-/* line 65, ../sass/article.scss */
+/* line 71, ../sass/article.scss */
 .main-image .caption {
   text-align: center;
 }
 @media all and (min-width: 480px) {
-  /* line 65, ../sass/article.scss */
+  /* line 71, ../sass/article.scss */
   .main-image .caption {
     text-align: left;
   }
 }
 
-/* line 72, ../sass/article.scss */
+/* line 78, ../sass/article.scss */
 .headline {
   margin-top: 20px;
   margin-right: inherit;
@@ -5195,13 +5203,13 @@ h1.title {
   margin-bottom: 18px;
 }
 @media all and (min-width: 480px) {
-  /* line 72, ../sass/article.scss */
+  /* line 78, ../sass/article.scss */
   .headline {
     text-align: center;
   }
 }
 
-/* line 81, ../sass/article.scss */
+/* line 87, ../sass/article.scss */
 .btn-secondary {
   display: block;
   width: 40px;
@@ -5210,35 +5218,35 @@ h1.title {
   line-height: 31px;
 }
 
-/* line 88, ../sass/article.scss */
+/* line 94, ../sass/article.scss */
 .horizontal-menu {
   margin-bottom: 5px;
   margin-top: 6px;
 }
-/* line 91, ../sass/article.scss */
+/* line 97, ../sass/article.scss */
 .horizontal-menu li {
   margin-right: 4px;
 }
 
-/* line 95, ../sass/article.scss */
+/* line 101, ../sass/article.scss */
 .field-item > p:first-child {
   margin-top: 0;
 }
 
-/* line 98, ../sass/article.scss */
+/* line 104, ../sass/article.scss */
 #more-on-takepart {
   margin-bottom: 5px;
   border-bottom: 1px solid #CCC;
   padding-bottom: 15px;
 }
 
-/* line 103, ../sass/article.scss */
+/* line 109, ../sass/article.scss */
 blockquote.pullquote {
   margin: 0;
   padding: 0;
 }
 
-/* line 107, ../sass/article.scss */
+/* line 113, ../sass/article.scss */
 .inline-html-wrapper {
   display: table;
   margin: 0 auto;
