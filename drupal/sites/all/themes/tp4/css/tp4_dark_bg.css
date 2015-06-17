@@ -70,7 +70,7 @@ body.campaign-display .branding-header.dark-background .share-headline {
   color: white;
 }
 /* line 70, ../sass/tp4_dark_bg.scss */
-body.campaign-display .branding-header.dark-background .icon.i-touch-menu:after {
+body.campaign-display .branding-header.dark-background .icon.campaign-menu-toggle:after {
   color: white;
 }
 /* line 75, ../sass/tp4_dark_bg.scss */
