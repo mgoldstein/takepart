@@ -141,7 +141,7 @@
 
                 /** Check for additional TAP widgets */
                 // needs to happen after page info updates for DTM
-                if(window.newTapWidgets == true){
+                if (window.newTapWidgets == true && TP.Bootstrapper) {
                   new TP.Bootstrapper().start();
                   window.newTapWidgets = false;
                 }
@@ -238,7 +238,8 @@
     }
 
     /* If no event exists then it is the initial page load */
-    digitalData.page.pageInfo = digitalData.pageInitial;
+    if ( digitalData.pageInitial )
+      digitalData.page.pageInfo = digitalData.pageInitial.pageInfo;
     digitalData.page.pageNumber = 1;
     _satellite.track('autoload');
 
