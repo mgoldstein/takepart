@@ -43,8 +43,12 @@
               /* Return Article */
               $('#next-article').before(data.output);
 
-              // Update fb_comments
-              // vv Copied from fb_comments.js, because this doesn't work vv
+              // Update fb_comments on load
+		    if(typeof FB != 'undefined') {
+		      FB.XFBML.parse();
+		    }
+		    
+              // Load comments box on button click for mobile display
               $('a.comments-count').once('FBComments', function () {
                 $('a.comments-count').on('click', function(e){
 			   if(typeof FB != 'undefined') {
