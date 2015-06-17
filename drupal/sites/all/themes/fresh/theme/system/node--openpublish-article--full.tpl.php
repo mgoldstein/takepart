@@ -34,7 +34,7 @@
       </div>
       <div class="section">
         <?php if(!empty($variables['media'])): ?>
-          <div class="row">
+          <div class="row row-remove-xs">
             <?php print $variables['media']; ?>
           </div>
         <?php endif; ?>
