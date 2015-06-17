@@ -4978,17 +4978,18 @@ footer .corporate-footer ul li a {
 #more-on-takepart {
   max-width: 640px;
   margin: 0 auto;
+  clear: both;
 }
-/* line 4, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 5, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .item {
   margin-bottom: 10px;
 }
-/* line 7, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 8, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .thumbnail {
   position: relative;
   margin: 0;
 }
-/* line 10, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 11, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .thumbnail img {
   z-index: 0;
   position: relative;
@@ -4997,7 +4998,7 @@ footer .corporate-footer ul li a {
   max-width: 100%;
   height: auto;
 }
-/* line 18, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 19, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .thumbnail .icon {
   z-index: 1;
   bottom: 3px;
@@ -5006,15 +5007,15 @@ footer .corporate-footer ul li a {
   color: #fff;
   line-height: 10px;
 }
-/* line 27, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 28, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart a {
   color: black;
 }
-/* line 30, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 31, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart h2 {
   margin-bottom: 13px;
 }
-/* line 33, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 34, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart h4 {
   margin: 10px 0 0;
 }
