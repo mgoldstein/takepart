@@ -260,6 +260,12 @@ aside.inline-content + p{
 .inline-html-wrapper > *{
   margin: 0 auto;
   display: block;
+  &.instagram-media{
+    margin: 0 auto !important;
+  }
+  &.twitter-tweet{
+    margin: 0 auto !important;
+  }
 }
 .container{
   width: 100%;
