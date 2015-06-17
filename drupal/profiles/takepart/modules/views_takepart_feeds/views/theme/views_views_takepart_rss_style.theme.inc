@@ -76,6 +76,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 	   }
 	 } elseif ($id === 'field_author') {
 	   $xml .= "\t\t\t<dc:creator>" . $object->content . "</dc:creator>\n";
+	   $xml .= "\t\t\t<author>" . $object->content . "</author>\n";
 	 } elseif (($id === 'field_article_subhead' && $object->content != '') ||
 	   ($id == 'field_subhead' && $object->content != '')) {
 	   $xml .= "\t\t\t<description><![CDATA[" . $object->content . "]]></description>\n";
