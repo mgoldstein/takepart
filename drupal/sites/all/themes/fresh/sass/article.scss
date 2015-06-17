@@ -60,7 +60,7 @@ h1.title{
   /* margin: 0 auto; */
 }
 .main-image {
-  display: table;
+  display: block;
   margin: 0 auto;
   .caption{
     text-align: center;
@@ -105,6 +105,6 @@ blockquote.pullquote {
   padding: 0;
 }
 .inline-html-wrapper {
-  display: table;
+  display: block;
   margin: 0 auto;
 }
