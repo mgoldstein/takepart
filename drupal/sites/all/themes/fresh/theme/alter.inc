@@ -13,7 +13,6 @@ function fresh_page_alter(&$page){
   if($node->type == 'openpublish_article'){
     $path = drupal_get_path('theme', 'fresh');
     $page['content']['#attached']['css'][] = $path.'/css/article.css';
-    $page['content']['#attached']['js'][] = $path.'/js/fb_comments.js';
   }
 }
 
