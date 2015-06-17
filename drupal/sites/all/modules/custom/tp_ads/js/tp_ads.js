@@ -206,12 +206,24 @@
       //defines variable to set width and height
       var height = $('.tp-ad', this).height();
       var width = $('.tp-ad', this).width();
+      var id = $(this).attr('id');
+      var win = $(window);
+      var viewport = {
+        top : win.scrollTop(),
+        left : win.scrollLeft(),
+      };
+      viewport.bottom = viewport.top + win.height();
       
-      //removes the ad
-      $('.tp-ad', this).remove();
+      var selector_item_offset = $('.tp-ad', this).offset();
+      selector_item_offset.bottom = selector_item_offset.top + height;
       
-      //removes the processed so that it can refire on scrolling
-      $(this).removeClass('tp-ad-processed');
+      //removes the ad only when out of view
+      if (selector_item_offset.bottom < viewport.top || selector_item_offset.top > viewport.bottom) {
+        $('.tp-ad', this).remove();
+        
+        //removes the processed so that it can refire on scrolling
+        $(this).removeClass('tp-ad-processed');
+      }
       
       //appends height and width
       $('.tp-ad-wrapper', this).css('height', height).css('width', width);
