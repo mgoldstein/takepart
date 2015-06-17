@@ -135,6 +135,9 @@
           takeover_ad(background_image_height);
         });
       }
+      
+      //triggers a scroll so the background takeover will go in place
+      $(window).scroll();
     }
   };
   

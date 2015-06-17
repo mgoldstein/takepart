@@ -174,15 +174,15 @@
           //ensures we only process the selector once
           $(selector_item).once('tp-ad', function() {
             var $this = this;
-            
+
             //allows debug mode
             if (window.tp_ad_debug_mode == "true") {
-              javascript = '<h5 class="ad-label text-center">Advertisement - ' + ad_slot + '</h5>' + javascript;
+              javascript = '<h5 class="ad-label text-center">Advertisement - ' + current_ad.ad_slot + '</h5>' + javascript;
             }
             
             //creates the wrapper and append. wrapper is used later for removal so that there's no jump on the screen.
             if ($('.tp-ad-wrapper', this).length == 0) {
-              javascript = '<div class="tp-ad-wrapper row' + ad_class + '">' + javascript + '</div>';
+              javascript = '<div id="' + current_ad.ad_slot.replace('-', '-') + '" class="tp-ad-wrapper row' + ad_class + '">' + javascript + '</div>';
               $($this).append(javascript);
             }
             //otherwise append back to the same wrapper
@@ -203,10 +203,12 @@
   window.tp_remove_ads = function(parent_selector) {
     //does for each tp-ad-processed in the selector
     $('.tp-ad-processed', parent_selector).each(function() {
+      googletag.pubads().refresh();
+      
       //defines variable to set width and height
       var height = $('.tp-ad', this).height();
       var width = $('.tp-ad', this).width();
-      var id = $(this).attr('id');
+      var id = $('.tp-ad-wrapper', this).attr('id');
       var win = $(window);
       var viewport = {
         top : win.scrollTop(),
