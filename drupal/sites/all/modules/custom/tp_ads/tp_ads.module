@@ -276,12 +276,4 @@ function _tp_ads_insert_header($header_script) {
               node.parentNode.insertBefore(gads, node);
               })(); \n // -->", array('type' => 'inline', 'scope' => 'header'));
   }
-  
-  //code pulled from takepart_ads.module
-  drupal_add_js("<!-- \n" . 'googletag.cmd.push(function() {' . "\n" .
-          implode($header_script, "\n") . "\n" .
-          '  googletag.pubads().collapseEmptyDivs();' .
-          '  googletag.pubads().enableSingleRequest();' . "\n" .
-          '  googletag.enableServices();' . "\n" . '});' . "\n" .
-          'var gpt_ad_tags = new Array();' . "\n // -->", array('type' => 'inline', 'scope' => 'header'));
 }
