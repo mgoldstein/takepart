@@ -152,6 +152,6 @@
       </div>
     </aside><!-- / #campaign-page-social -->
     <?php print $logo; ?>
-    <a href="#" class="campaign-menu-toggle icon i-touch-menu"></a>
+    <a href="#" class="campaign-menu-toggle icon i-hamburger"></a>
   </div>
 </div>
