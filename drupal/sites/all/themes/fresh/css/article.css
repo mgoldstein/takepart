@@ -3408,6 +3408,24 @@ figure.align-left {
   margin: 0 1em 1em 0;
 }
 
+/*
+ * Bootstrap Helpers
+ ***********************/
+@media all and (min-width: 480px) {
+  /* line 498, ../sass/base/_normalize.scss */
+  .row-remove-xs {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media all and (min-width: 480px) {
+  /* line 504, ../sass/base/_normalize.scss */
+  .article-wrapper article {
+    padding: 0 31px;
+  }
+}
+
 /* Modules */
 /***********
 * New mobile menu
@@ -5127,46 +5145,49 @@ footer .corporate-footer ul li a {
 .article-wrapper {
   position: relative;
 }
-/* line 44, ../sass/article.scss */
-.article-wrapper .sticky-wrapper {
-  position: absolute;
+@media all and (min-width: 480px) {
+  /* line 44, ../sass/article.scss */
+  .article-wrapper .sticky-wrapper {
+    position: absolute;
+    margin-left: 15px;
+  }
 }
 
-/* line 48, ../sass/article.scss */
+/* line 51, ../sass/article.scss */
 h1.title {
   margin-top: 10px;
   margin-bottom: 15px;
 }
 @media all and (min-width: 768px) {
-  /* line 48, ../sass/article.scss */
+  /* line 51, ../sass/article.scss */
   h1.title {
     text-align: center;
   }
 }
 
-/* line 55, ../sass/article.scss */
+/* line 58, ../sass/article.scss */
 .main-media {
   display: block;
   /* margin: 0 auto; */
 }
 
-/* line 59, ../sass/article.scss */
+/* line 62, ../sass/article.scss */
 .main-image {
   display: table;
   margin: 0 auto;
 }
-/* line 62, ../sass/article.scss */
+/* line 65, ../sass/article.scss */
 .main-image .caption {
   text-align: center;
 }
 @media all and (min-width: 480px) {
-  /* line 62, ../sass/article.scss */
+  /* line 65, ../sass/article.scss */
   .main-image .caption {
     text-align: left;
   }
 }
 
-/* line 69, ../sass/article.scss */
+/* line 72, ../sass/article.scss */
 .headline {
   margin-top: 20px;
   margin-right: inherit;
@@ -5174,13 +5195,13 @@ h1.title {
   margin-bottom: 18px;
 }
 @media all and (min-width: 480px) {
-  /* line 69, ../sass/article.scss */
+  /* line 72, ../sass/article.scss */
   .headline {
     text-align: center;
   }
 }
 
-/* line 78, ../sass/article.scss */
+/* line 81, ../sass/article.scss */
 .btn-secondary {
   display: block;
   width: 40px;
@@ -5189,35 +5210,35 @@ h1.title {
   line-height: 31px;
 }
 
-/* line 85, ../sass/article.scss */
+/* line 88, ../sass/article.scss */
 .horizontal-menu {
   margin-bottom: 5px;
   margin-top: 6px;
 }
-/* line 88, ../sass/article.scss */
+/* line 91, ../sass/article.scss */
 .horizontal-menu li {
   margin-right: 4px;
 }
 
-/* line 92, ../sass/article.scss */
+/* line 95, ../sass/article.scss */
 .field-item > p:first-child {
   margin-top: 0;
 }
 
-/* line 95, ../sass/article.scss */
+/* line 98, ../sass/article.scss */
 #more-on-takepart {
   margin-bottom: 5px;
   border-bottom: 1px solid #CCC;
   padding-bottom: 15px;
 }
 
-/* line 100, ../sass/article.scss */
+/* line 103, ../sass/article.scss */
 blockquote.pullquote {
   margin: 0;
   padding: 0;
 }
 
-/* line 104, ../sass/article.scss */
+/* line 107, ../sass/article.scss */
 .inline-html-wrapper {
   display: table;
   margin: 0 auto;
