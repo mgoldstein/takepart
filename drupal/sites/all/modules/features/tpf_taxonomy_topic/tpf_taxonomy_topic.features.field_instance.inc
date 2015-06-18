@@ -161,6 +161,49 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-topic-field_featured_video'
+  $field_instances['taxonomy_term-topic-field_featured_video'] = array(
+    'bundle' => 'topic',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_featured_video',
+    'label' => 'Featured Video',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete_tags',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'taxonomy_term-topic-field_html_title'
   $field_instances['taxonomy_term-topic-field_html_title'] = array(
     'bundle' => 'topic',
@@ -241,6 +284,7 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Featured Video');
   t('HTML title tag');
   t('Override for the promo label.
 Text that labels what the promo is ("Most Popular"  "Trending").');
