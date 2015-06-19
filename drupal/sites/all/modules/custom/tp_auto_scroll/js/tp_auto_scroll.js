@@ -168,7 +168,8 @@
    */
   window.tp_url_changer = function(url, title) {
     //change url with pushstate so that the page doesnt reload
-    window.history.pushState({}, url, url);
+    if ( window.history.pushState )
+      window.history.pushState({}, url, url);
     document.title = title;
   }
   
