@@ -4,6 +4,14 @@
  * TakePart module for functions related to flashcards.
  */
 
+/* Disable the parsing of article body text per TP-3321
+ * Commented out functions tp_flashcards_preprocess_node, 
+ * _tp_flashcards_get_replacement_pattern, _tp_flashcards_get_all, 
+ * tp_flashcards_preprocess_page, tp_flashcards_init,
+ * _tp_flashcards_parse_static_var, _tp_flashcards_get_synonyms, 
+ * and tp_flashcards_parse_html
+ */
+
 module_load_include('inc', 'tp_flashcards', 'tp_flashcards.block');
 
 /**
@@ -19,19 +27,25 @@ function tp_flashcards_help($path, $arg) {
 /**
  * Implements hook_init()
  */
+/* Disable the parsing of article body text per TP-3321 
+ */
+/*
 function tp_flashcards_init(){
-  /* Flashcards on every page */
+  // Flashcards on every page
   drupal_add_css(drupal_get_path('module', 'tp_flashcards') . '/css/tooltipster.css', array('every_page' => TRUE));
   drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/vendor/jquery.tooltipster.min.js', array('every_page' => TRUE));
   drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/tp_flashcards.js', array('every_page' => TRUE));
 }
-
+*/
 /**
  * Implements template_preprocess_page().
  *
  * Include flashcards JS/CSS in every page, and disable
  * the system_main block on flashcard node pages.
  */
+/* Disable the parsing of article body text per TP-3321 
+ */
+/*
 function tp_flashcards_preprocess_page(&$variables) {
   // build up the array of flashcard terms for the tooltip displays
   $data = array();
@@ -57,11 +71,12 @@ function tp_flashcards_preprocess_page(&$variables) {
   // the tp4_flashcards context (in a feature required by this module)
   // renders the system_main block in the preface region.
   // we can delete it from the content region on flashcard node pages
+  
   if (!path_is_admin(current_path()) && isset($variables['node']) && $variables['node']->type === 'flashcard') {
     unset($variables['page']['content']['system_main']);
   }
 }
-
+*/
 /**
  * Implements template_preprocess_node().
  *
@@ -71,6 +86,9 @@ function tp_flashcards_preprocess_page(&$variables) {
  *
  * @todo This probably should use hook_node_view().
  */
+/* Disable the parsing of article body text per TP-3321
+ */
+/*
 function tp_flashcards_preprocess_node(&$variables) {
   $types_to_flashcard = array(
     'openpublish_article',
@@ -99,7 +117,7 @@ function tp_flashcards_preprocess_node(&$variables) {
     }
   }
 }
-
+*/
 /**
  * Implements hook_node_view().
  *
@@ -162,6 +180,9 @@ function tp_flashcards_node_delete($node) {
  *
  * @return string       HTML with flashcard terms wrapped in links.
  */
+/* Disable the parsing of article body text per TP-3321
+ */
+/*
 function tp_flashcards_parse_html($html, $bypass = FALSE) {
   foreach(_tp_flashcards_get_all() as $nid => $flashcard) {
     //check to see if the flashcard is already used on the page
@@ -180,14 +201,16 @@ function tp_flashcards_parse_html($html, $bypass = FALSE) {
       }
     }
   }
-
   return $html;
 }
-
+*/
 /**
  *  @function:
  *    Function is used to help with the static variables that is needed for duplications
  */
+/* Disable the parsing of article body text per TP-3321
+ */
+/*
 function _tp_flashcards_parse_static_var($new_val = NULL, $action = 'get') {
   //default variables
   $return = FALSE;
@@ -209,7 +232,7 @@ function _tp_flashcards_parse_static_var($new_val = NULL, $action = 'get') {
 
   return $return;
 }
-
+*/
 /**
  * Return an associative array of flashcards.
  *
@@ -217,6 +240,9 @@ function _tp_flashcards_parse_static_var($new_val = NULL, $action = 'get') {
  *
  * @return $flashcards An associative array of flashcards
  */
+/* Disable the parsing of article body text per TP-3321
+ */
+/*
 function _tp_flashcards_get_all() {
   $flashcards = &drupal_static(__FUNCTION__);
 
@@ -247,7 +273,7 @@ function _tp_flashcards_get_all() {
 
   return $flashcards;
 }
-
+*/
 /**
  * Return an array of synonyms for a given flashcard.
  *
@@ -255,6 +281,9 @@ function _tp_flashcards_get_all() {
  *
  * @return $synonyms an associative array of synonyms
  */
+/* Disable the parsing of article body text per TP-3321
+ */
+/*
 function _tp_flashcards_get_synonyms($flashcard) {
   $synonyms = array();
 
@@ -264,7 +293,7 @@ function _tp_flashcards_get_synonyms($flashcard) {
 
   return $synonyms;
 }
-
+*/
 /**
  * Construct the regex pattern to match flashcard terms in editorial content.
  *
@@ -272,10 +301,13 @@ function _tp_flashcards_get_synonyms($flashcard) {
  *
  * @return string           The flashcard display pattern
  */
+/* Disable the parsing of article body text per TP-3321
+ */
+/*
 function _tp_flashcards_get_replacement_pattern($synonyms) {
 	return '#\b(?![^<>]*>)(?![^>]*(\/h2))(' . implode('|', $synonyms) . ')\b(?!(?:[^<]*(?:<([^\s]+)[^<]+</\2)|(?:</[^\s]+>))*[^<]*</a)#i';
 }
-
+*/
 /**
  * Get a render array for the flashcard Call to Action link
  *
