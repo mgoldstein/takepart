@@ -35,6 +35,11 @@ function tp_social_menu_init() {
   drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/social-menu.js',
     array('type' => 'file', 'scope' => 'footer', 'weight' => -7)
   );
+  /*
+  drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/whatsapp-button.js',
+    array('type' => 'file', 'scope' => 'footer', 'weight' => -7)
+  );
+   */
 }
 
 /**
@@ -67,7 +72,6 @@ function theme_tp_social_menu($variables) {
     switch ($element) {
       //takeaction
       case 'action':
-//        $elements['takeaction'] = '<p class="takepart-take-action"></p>';
         $elements['takeaction'] = '<a class="takepart-custom-take-action-button"><h3 class="tp-social-headline takeaction-headline">Take Action</h3><i class="tpi icon i-take-action"></i></a>';
         
         //add items into the list
