@@ -25,7 +25,7 @@ sftp-config.json
 
 # Theme Assets
 /drupal/sites/all/themes/*/css/*
-/drupal/sites/all/themes/*/images/sprites/**
+/drupal/sites/all/themes/*/images/sprites/*.*
 
 # Debug modules
 /drupal/debug.php

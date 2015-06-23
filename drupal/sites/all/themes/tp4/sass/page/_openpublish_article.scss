@@ -15,12 +15,10 @@
         #article-social {
             float: left;
             width: 40px;
-          background: green;
             &.sticky {
                 z-index: 1;
                 position: fixed;
                 top: 7px; // this corresponds to the offset value in tp4sticky.js's options
-              background: green;
             }
         }
         .social-sticky-wrapper {
