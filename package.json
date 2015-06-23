@@ -1,0 +1,19 @@
+{
+  "name": "takepart",
+  "version": "1.0.0",
+  "author": "TakePart Tech",
+  "homepage": "http://www.takepart.com.com",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:takepart/takepart-com.git"
+  },
+  "engines": {
+    "node": ">= 1.4.23"
+  },
+  "devDependencies": {
+      "grunt-contrib-compass": "v1.0.3",
+      "grunt-contrib-sass": "v0.9.2",
+      "grunt-contrib-watch": "v0.6.1",
+      "grunt-play": "0.1.0"
+  }
+}
