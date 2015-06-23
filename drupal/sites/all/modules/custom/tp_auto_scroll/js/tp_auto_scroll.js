@@ -129,8 +129,9 @@
               var tp_og_title = $(this).data('tp-og-title');
               var tp_og_image = $(this).data('tp-og-image');
               var tp_og_description = $(this).data('tp-og-description');
+              var current_path = location.protocol + '//' + location.host + location.pathname;
               // Upate the URL, social links and DDL based on URL logic
-              if (typeof tp_og_url != 'undefined' && tp_og_url != window.location.href) {
+              if (typeof tp_og_url != 'undefined' && tp_og_url != current_path) {
                 /** Update the URL **/
                 tp_url_changer(tp_og_url, tp_og_title);
 
