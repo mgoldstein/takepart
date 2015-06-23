@@ -26,7 +26,7 @@ if (isset($conf['memcache_servers']) && $conf['memcache_servers'] === FALSE) {
     'cache_class_cache_form' => 'DrupalDatabaseCache',
     'page_cache_without_database' => TRUE,
     'page_cache_invoke_hooks' => FALSE,
-    'lock_inc' => 'sites/all/modules/memcache/memcache-lock.inc',
+    'lock_inc' => 'sites/all/modules/contrib/memcache/memcache-lock.inc',
     'memcache_stampede_protection' => TRUE,
     /* 'session_inc' => './sites/all/modules/contrib/memcache/memcache-session.inc', */
     /* 'memcache_bins' => array(
