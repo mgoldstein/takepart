@@ -1646,7 +1646,7 @@
 }
 /* line 31, ../../base/sass/base/icons/_icons.scss */
 .tp-social-link.tp-social-Whatsapp:before, .social .tp-social-link.tp-social-whatsapp:before, .tp-follow-link.tp-social-Whatsapp:before, .social .tp-follow-link.tp-social-whatsapp:before {
-  content: "";
+  content: '\e310';
 }
 
 /* line 34, ../../base/sass/base/icons/_icons.scss */
