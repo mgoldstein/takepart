@@ -1,5 +1,5 @@
 <?php
-	
+
 /**
  * Implements hook_menu().
  */
@@ -33,51 +33,70 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
 		'action',
 	);
 
+  $form['featured_stories'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Featured Stories'),
+  );
+
 	// autocomplete list of articles, featured articles, etc.
-	$form['more_on_takepart_global1'] = array(
-#		'#type' => 'node_reference',
+	$form['featured_stories']['more_on_takepart_global1'] = array(
 		'#type' => 'entity_autocomplete',
 		'#entity_type' => 'node',
 		'#bundles' => $content_types,
 		'#title' => t('Site-wide featured content #1'),
-		'#default_value' => variable_get('more_on_takepart_global1', ''),
-	);
-	$form['more_on_takepart_global2'] = array(
-		'#type' => 'entity_autocomplete',
-		'#entity_type' => 'node',
-		'#bundles' => $content_types,
-		'#title' => t('Site-wide featured content #2'),
+    '#required' => true,
+    '#default_value' => variable_get('more_on_takepart_global1', ''),
+  );
+  $form['featured_stories']['more_on_takepart_global2'] = array(
+    '#type' => 'entity_autocomplete',
+    '#entity_type' => 'node',
+    '#bundles' => $content_types,
+    '#title' => t('Site-wide featured content #2'),
+    '#required' => true,
 		'#default_value' => variable_get('more_on_takepart_global2', ''),
 	);
 	$form['more_on_takepart_taboola'] = array(
-		'#type' => 'text_format',
+		'#type' => 'textarea',
 		'#title' => t('Taboola JS'),
-		'#format' => 'plain_text',
 		'#rows' => 8,
 		'#default_value' => variable_get('more_on_takepart_taboola', ''),
 	);
-	$form['submit_button'] = array(
-		'#type' => 'submit',
-		'#value' => t('Save Settings'),
-	);
-	return $form;
+
+  $form['featured_videos'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Featured Videos'),
+  );
+
+  $form['featured_videos']['more_on_takepart_video_cta_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('More Videos CTA Text'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('more_on_takepart_video_cta_text', 'Watch more videos'),
+  );
+
+  $form['featured_videos']['more_on_takepart_video_cta_link'] = array(
+    '#type' => 'textfield',
+    '#title' => t('More Videos CTA Link'),
+    '#descripiton' => t('Enter a drupal path like ("videos" or "node/5324" or an off-site URL.'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('more_on_takepart_video_cta_link', 'videos'),
+    '#element_validate' => array('_more_on_takepart_video_cta_link_validate'),
+  );
+
+  $form['featured_videos']['video_link'] = array(
+    '#markup' => l('Configure Videos', 'admin/config/media/topic_video'),
+  );
+
+	return system_settings_form($form);
 }
 
-function tp_more_on_takepart_settings_form_validate($form, &$form_state){
-	if ($form_state['values']['more_on_takepart_global1'] == '') {
-		form_set_error('more_on_takepart_global1', t('Please specify an article.'));
-	}
-	if ($form_state['values']['more_on_takepart_global2'] == '') {
-		form_set_error('more_on_takepart_global2', t('Please specify an article.'));
-	}
-}
-
-function tp_more_on_takepart_settings_form_submit($form, &$form_state){	
-	variable_set('more_on_takepart_global1', $form_state['values']['more_on_takepart_global1']);
-	variable_set('more_on_takepart_global2', $form_state['values']['more_on_takepart_global2']);
-	variable_set('more_on_takepart_taboola', $form_state['values']['more_on_takepart_taboola']['value']);
-
-	drupal_set_message("Site-wide and Taboola links saved.");
+/**
+ * Custom validation function for more_on_takepart_video_cta_link.
+ */
+function _more_on_takepart_video_cta_link_validate($element, &$form_state, $form) {
+  if (!drupal_valid_path(drupal_get_normal_path($element['#value']))) {
+    form_set_error('more_on_takepart_video_cta_link', t('Make sure the link is a valid drupal path or URL.'));
+  }
 }
 
 /**
@@ -94,33 +113,39 @@ function tp_more_on_takepart_block_info() {
 }
 
 /**
- * Implements hook_block_info().
+ * Implements hook_theme().
  */
 function tp_more_on_takepart_theme() {
 	return array(
 		'tp_more_on_takepart' => array(
 			'variables' => array(
-				'article' => NULL,
-				'global' => NULL,
+        'promos' => array(),
 				'taboola' => NULL,
+        'promoted_video' => NULL,
 			),
 			'template' => 'templates/tp_more_on_takepart',
 		),
-		'tp_more_on_takepart_article' => array(
+    'tp_more_on_takepart_article' => array(
+      'variables' => array(
+        'result' => array(),
+      ),
+      'template' => 'templates/tp_more_on_takepart_article',
+    ),
+		'tp_more_on_takepart_video' => array(
 			'variables' => array(
-				'article' => NULL,
-				'global' => NULL,
-				'taboola' => NULL,
+        'classes' => array(),
+        'node' => NULL,
+        'cta_text' => '',
+        'cta_link' => '',
 			),
-			'template' => 'templates/tp_more_on_takepart_article',
+			'template' => 'templates/tp_more_on_takepart_video',
 		),
 	);
 }
 
-
 /**
  * Implements hook_block_view().
- * 
+ *
  * Prepares the contents of the block.
  */
 function tp_more_on_takepart_block_view($delta = '') {
@@ -175,10 +200,10 @@ function tp_more_on_takepart_block_view($delta = '') {
 				if (!$result) {
 					break;
 				}
-					
+
 				$promo_headline = field_get_items('node', $result, 'field_promo_headline');
 				$field_promo_headline = $promo_headline[0]['value'];
-				
+
 				// Select thumbnail field
 				switch($result->type) {
 					case 'action':
@@ -189,8 +214,14 @@ function tp_more_on_takepart_block_view($delta = '') {
 						break;
 				}
 
-				$field_sponsored = field_get_items('node',$result,'field_sponsored');
-				$field_sponsored = $field_sponsored[0]['tid'];
+        $field_sponsored = array('#markup' => '');
+        if ($field_item = field_get_items('node', $result, 'field_sponsored')) {
+          $field_sponsored = array(
+            '#markup' => t('Promoted'),
+            '#prefix' => '<div class="promoted sponsor-' . $field_item[0]['tid'] . '">',
+            '#suffix' => '</div>',
+          );
+        }
 
 				// set the icon for photo galleries/videos
 				switch($result->type) {
@@ -212,7 +243,7 @@ function tp_more_on_takepart_block_view($delta = '') {
 							$campaign_promo_headline = field_get_items('node' ,$campaign_node, 'field_promo_headline');
 							$field_promo_headline = $campaign_promo_headline[0]['value'];
 						}
-	
+
 						if( !field_get_items('node',$result,'field_thumbnail') ) {
 							$field_thumbnail = field_get_items('node' ,$campaign_node, 'field_thumbnail');
 							$result->field_thumbnail[$node->language] = $field_thumbnail;
@@ -230,7 +261,6 @@ function tp_more_on_takepart_block_view($delta = '') {
 				${$item['type']}[] = theme('tp_more_on_takepart_article', array(
 					'result' => array(
 						'title' => (!empty($field_promo_headline)) ? $field_promo_headline : $result->title,
-						'url' => entity_uri('node', $result),
 						'type' => $type,
 						'promo_type' => 'more_on_takepart_'.$item['type'],
 						'thumbnail' => theme('image_style', array(
@@ -239,19 +269,91 @@ function tp_more_on_takepart_block_view($delta = '') {
 							'alt' => $field_promo_headline,
 							'title' => $field_promo_headline,
 						)),
-						'sponsored' => $field_sponsored,
-					),
+				'sponsored' => $field_sponsored,
+          ),
 				));
 			}
 
+      // load the promoted video for this node and theme the video block;
+      // otherwise, set the more on takepart block template variable to false
+      $featured_video_node = tp_videos_get_topic_promoted_video($node);
+
+      $promoted_video = array();
+      $promoted_nodes = array();
+
+
+      if ($featured_video_node) {
+        $promoted_video['#markup'] = theme('tp_more_on_takepart_video', array(
+          'classes' => array('col-xxs-12', 'col-md-6', 'tp-more__video'),
+          'node' => $featured_video_node,
+          'cta_link' => check_plain(url(variable_get('more_on_takepart_video_cta_link', 'videos'))),
+          'cta_text' => variable_get('more_on_takepart_video_cta_text', 'Watch more videos'),
+        ));
+
+        $promoted_nodes = array(
+          '#prefix' => '<div class="col-md-6"><div class="row">',
+          '#suffix' => '</div></div>',
+        );
+      }
+
+      foreach(array_merge($related, $promoted) as $markup) {
+        $promoted_nodes[] = array(
+          '#markup' => $markup,
+        );
+      }
+
 			// Pass data through theme function.
 			$block['content'] = theme('tp_more_on_takepart', array(
-				'related' => $related,
-				'promoted' => $promoted,
+        'promos' => $promoted_nodes,
 				'taboola' => $t,
+        'promoted_video' => $promoted_video,
 			));
 		}
 		break;
 	}
 	return $block;
+}
+
+/**
+ * Preprocess for template values.
+ */
+function tp_more_on_takepart_preprocess_tp_more_on_takepart_video(&$variables) {
+  foreach (field_get_items('node', $variables['node'], 'field_video') as $item) {
+    $variables['featured_video_player'] = field_view_value('node', $variables['node'], 'field_video', $item, 'default');
+  }
+
+  $variables['classes_array'] = array_merge($variables['classes_array'], $variables['classes']);
+
+  $variables['featured_video_title'] = array(
+    '#theme' => 'link',
+    '#text' => $variables['node']->title,
+    '#path' => check_plain(url('node/' . $variables['node']->nid)),
+    '#options' => array(
+      'attributes' => array(
+        'class' => array('tp-more__video-title-link'),
+      ),
+      'html' => false,
+    ),
+  );
+
+  $variables['sponsored'] = array('#markup' => '');
+  if ($item = field_get_items('node', $variables['node'], 'field_sponsored')) {
+    $variables['sponsored'] = array(
+      '#markup' => t('Promoted'),
+      '#prefix' => '<div class="promoted sponsor-' . $item[0]['tid'] . '">',
+      '#suffix' => '</div>',
+    );
+  }
+
+  $variables['video_link'] = array(
+    '#theme' => 'link',
+    '#text' => $variables['cta_text'],
+    '#path' => $variables['cta_link'],
+    '#options' => array(
+      'attributes' => array(
+        'class' => array('tp-more__video-cta-link'),
+      ),
+      'html' => false,
+    ),
+  );
 }

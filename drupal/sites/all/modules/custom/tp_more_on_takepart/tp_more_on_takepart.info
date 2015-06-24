@@ -6,3 +6,4 @@ version = 7.x-0.1
 
 dependencies[] = entity_autocomplete
 dependencies[] = tp_theme_support
+dependencies[] = tp_videos

@@ -62,12 +62,13 @@
  * @see template_process()
  */
 ?>
-<div class="item col-xxs-6 col-xs-3">
+<div class="col-xxs-6 tp-more__article">
 	<a href="<?php echo url($result['url']['path']); ?>" class="<?php echo $result['promo_type']; ?>">
 		<div class="thumbnail">
 		    <?php print $result['thumbnail']; ?>
 		    <span class="icon <?php print $result['type']; ?>"></span>
 		</div>
-		<h4><?php print $result['title'] . ($result['sponsored'] ? ' <span class="promoted sponsor-'.$result['sponsored'].'">Promoted</span>':''); ?></h4>
+		<h4 class="tp-more__article-title"><?php print $result['title']; ?></h4>
+    <?php print render($result['sponsored']); ?>
 	</a>
 </div>
