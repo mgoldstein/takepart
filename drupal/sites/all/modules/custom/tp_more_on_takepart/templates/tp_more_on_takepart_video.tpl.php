@@ -1,6 +1,6 @@
 <?php
 ?>
-<div class="col-xxs-12 col-md-6 tp-more__video">
+<div class="<?php print $classes; ?>">
   <?php print render($featured_video_player); ?>
   <h4 class="tp-more__video-title">
     <?php print render($featured_video_title); ?>

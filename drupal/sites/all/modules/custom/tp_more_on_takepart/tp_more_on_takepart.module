@@ -119,8 +119,7 @@ function tp_more_on_takepart_theme() {
 	return array(
 		'tp_more_on_takepart' => array(
 			'variables' => array(
-				'article' => NULL,
-				'global' => NULL,
+        'promos' => array(),
 				'taboola' => NULL,
         'promoted_video' => NULL,
 			),
@@ -128,14 +127,13 @@ function tp_more_on_takepart_theme() {
 		),
     'tp_more_on_takepart_article' => array(
       'variables' => array(
-        'article' => NULL,
-        'global' => NULL,
-        'taboola' => NULL,
+        'result' => array(),
       ),
       'template' => 'templates/tp_more_on_takepart_article',
     ),
 		'tp_more_on_takepart_video' => array(
 			'variables' => array(
+        'classes' => array(),
         'node' => NULL,
         'cta_text' => '',
         'cta_link' => '',
@@ -279,19 +277,34 @@ function tp_more_on_takepart_block_view($delta = '') {
       // load the promoted video for this node and theme the video block;
       // otherwise, set the more on takepart block template variable to false
       $featured_video_node = tp_videos_get_topic_promoted_video($node);
-      $promoted_video = false;
+
+      $promoted_video = array();
+      $promoted_nodes = array();
+
+
       if ($featured_video_node) {
-        $promoted_video = theme('tp_more_on_takepart_video', array(
+        $promoted_video['#markup'] = theme('tp_more_on_takepart_video', array(
+          'classes' => array('col-xxs-12', 'col-md-6', 'tp-more__video'),
           'node' => $featured_video_node,
           'cta_link' => check_plain(url(variable_get('more_on_takepart_video_cta_link', 'videos'))),
           'cta_text' => variable_get('more_on_takepart_video_cta_text', 'Watch more videos'),
         ));
+
+        $promoted_nodes = array(
+          '#prefix' => '<div class="col-md-6"><div class="row">',
+          '#suffix' => '</div></div>',
+        );
+      }
+
+      foreach(array_merge($related, $promoted) as $markup) {
+        $promoted_nodes[] = array(
+          '#markup' => $markup,
+        );
       }
 
 			// Pass data through theme function.
 			$block['content'] = theme('tp_more_on_takepart', array(
-				'related' => $related,
-				'promoted' => $promoted,
+        'promos' => $promoted_nodes,
 				'taboola' => $t,
         'promoted_video' => $promoted_video,
 			));
@@ -308,6 +321,8 @@ function tp_more_on_takepart_preprocess_tp_more_on_takepart_video(&$variables) {
   foreach (field_get_items('node', $variables['node'], 'field_video') as $item) {
     $variables['featured_video_player'] = field_view_value('node', $variables['node'], 'field_video', $item, 'default');
   }
+
+  $variables['classes_array'] = array_merge($variables['classes_array'], $variables['classes']);
 
   $variables['featured_video_title'] = array(
     '#theme' => 'link',
