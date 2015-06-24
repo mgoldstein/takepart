@@ -580,6 +580,12 @@ function inline_content_field_formatter_view($entity_type, $entity, $field,
       $langcode, $items, $display);
   }
 
+  if ( $entity_type == 'node' ) {
+    $nid = $entity->nid;
+  } else {
+    $nid = '';
+  }
+
   // Get the inline content beans.
   $replacements = array();
   $settings = $display['settings'];
@@ -619,6 +625,7 @@ function inline_content_field_formatter_view($entity_type, $entity, $field,
       $node_status = TRUE;
       $rebuild[] = array_shift($chunks);
       $replacement = array_shift($replacements);
+      $replacement->nid = $nid;
 
       //addresses issue with video inline replacement for unpublished nodes
       if (isset($replacement->field_ic_video)) {

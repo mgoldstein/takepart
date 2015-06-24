@@ -96,6 +96,7 @@ function takeaction_node_view($node, $view_mode, $langcode) {
       }
     }
     $override_js = "
+      TP.scope   = {$node->nid};
       TP.action1 = {$action[0]};
       TP.action2 = {$action[1]};
       TP.action3 = {$action[2]};
