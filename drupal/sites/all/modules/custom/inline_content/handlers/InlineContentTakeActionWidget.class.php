@@ -49,8 +49,10 @@ class InlineContentTakeActionWidget extends InlineContentReplacementController {
     );
 
     // Set the article-id attribute (to scope widgets for each article in autoscroll)
-    $nid = $replacement->nid;
-    $attributes['data-article-id'] = $nid;
+    if ( isset( $replacement->nid ) ) {
+      $nid = $replacement->nid;
+      $attributes['data-article-id'] = $nid;
+    }
 
     // Set the widget's initial state.
     $form_style = field_get_items('inline_content', $replacement, 'field_ic_expanded');
