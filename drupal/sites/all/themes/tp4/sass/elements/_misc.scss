@@ -11,9 +11,9 @@
 /**
  * Global Sprites.
  */
-@import "social/*.png";
+@import "sprites/social/*.png";
 @include all-social-sprites;
-@import "logos/*.png";
+@import "sprites/logos/*.png";
 @include all-logos-sprites;
 
 .follow-us{

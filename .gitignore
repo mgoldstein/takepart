@@ -23,6 +23,10 @@ sftp-config.json
 # Drush
 /drush/
 
+# Theme Assets
+/drupal/sites/all/themes/*/css/*
+/drupal/sites/all/themes/*/images/sprites/*.*
+
 # Debug modules
 /drupal/debug.php
 /drupal/sites/all/modules/contrib/cron_debug/
