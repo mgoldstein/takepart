@@ -516,16 +516,12 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  
-  if(!empty($instructional)){
-    $variables['instructional'] = tp_flashcards_parse_html($instructional);
-  }
+  $variables['instructional'] = $instructional;
 
   $media_photo = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
   if(empty($media_photo[0]['alt'])){
     $alt = $variables['title'];
   }
-
 
   $media_title = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_title');
   if(!empty($media_title)){
@@ -574,13 +570,11 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   );
   $description = field_view_field('node', $variables['node'], 'body', $description_display);
   $description = drupal_render($description);
-  if(!empty($description)){
-    if (function_exists('tp_flashcards_parse_html')) {
-      $description = tp_flashcards_parse_html($description);
-      $description = '<div class="description">'. $description. '</div>';
-    }else{
-      $description = '';
-    }
+  
+  if (!empty($description)) {
+    $description = '<div class="description">'. $description. '</div>';
+  } else {
+    $description = '';
   }
   //Grab Media Caption
   $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
@@ -798,14 +792,10 @@ function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  
-  if(!empty($instructional)){
-    $variables['instructional'] = tp_flashcards_parse_html($instructional);
-  }
+    $variables['instructional'] = $instructional;
   
   $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
   $slim_text = tp4_render_field_value('node', $variables['node'], 'field_slim_card_text');
-
 
   //Set Layout
   if($column_count == 'Two Column (even width)' || $column_count == 'Two Column (left side wide)' || $column_count == 'Two Column (right side wide)'){
@@ -821,16 +811,10 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
     // Return the left and right text columns if they exist
     $left = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
     if(!empty($left)){
-      if (function_exists('tp_flashcards_parse_html')) {
-        $left = tp_flashcards_parse_html($left, TRUE);
-      }
       $left = '<div class="text">'. $left. '</div>';
     }
     $right = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_right');
     if(!empty($right)){
-      if (function_exists('tp_flashcards_parse_html')) {
-        $right = tp_flashcards_parse_html($right, TRUE);
-      }
       $right = '<div class="text">'. $right. '</div>';
     }
 
@@ -841,9 +825,6 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   elseif($column_count == 'Single Column'){
     $center = tp4_render_field_value('node', $variables['node'], 'field_campaign_text_left');
     if(!empty($center)){
-      if (function_exists('tp_flashcards_parse_html')) {
-        $center = tp_flashcards_parse_html($center);
-      }
       $center = '<div class="text">'. $center. '</div>';
     }
 
@@ -868,13 +849,9 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
  * Override or insert variables into the campaign card social template
  */
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
-
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  
-  if(!empty($instructional)){
-    $variables['instructional'] = tp_flashcards_parse_html($instructional);
-  }
+  $variables['instructional'] = $instructional;
 
   $collections = array();
   $social_follows = field_get_items('node', $variables['node'], 'field_campaign_social_follow');
@@ -1068,9 +1045,6 @@ function tp4_preprocess_node__campaign_card_twitter(&$variables, $hook) {
  }
 
   $descriptive_text = tp4_render_field_value('node', $variables['node'], 'body');
-    if (function_exists('tp_flashcards_parse_html')) {
-      $descriptive_text = tp_flashcards_parse_html($descriptive_text);
-    }
   $variables['descriptive_text'] = $descriptive_text;
 }
 
@@ -1175,10 +1149,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
     //content
     $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-    
-    if(!empty($instructional)){
-      $variables['instructional'] = tp_flashcards_parse_html($instructional);
-    }
+    $variables['instructional'] = $instructional;
 
     // Is this card a single value news card or a multi-value news card?
     $news_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_type');
@@ -1305,9 +1276,6 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $center .= '</div>';
     }
     $more = tp4_render_field_value('node', $variables['node'], 'field_campaign_more_link');
-    if (function_exists('tp_flashcards_parse_html')) {
-      $more = tp_flashcards_parse_html($more);
-    }
     $more = '<div class="more-link">'. $more. '</div>';
     $center .= $more;
 
@@ -1324,13 +1292,9 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  $variables['instructional'] = $instructional;
   
-  if(!empty($instructional)){
-    $variables['instructional'] = tp_flashcards_parse_html($instructional);
-  }
-
   $center = '';
-
   $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
   $width = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_width');
   $iframe = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe');
@@ -1423,11 +1387,7 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  
-  if(!empty($instructional)){
-    $variables['instructional'] = tp_flashcards_parse_html($instructional);
-  }
-
+  $variables['instructional'] = $instructional;
   $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
   $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
   if(empty($item_width)){
