@@ -1,0 +1,13 @@
+name = TakePart Intercept Module
+description = Creates custom intercept
+core = 7.x
+package = TakePart
+version = 7.x-1.0-alpha0
+project = tp_intercept
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = field_group
+features[context][] = tp_intercept
+features[ctools][] = context:context:3
+features[features_api][] = api:2
+files[] = classes/tp_intercept.class.inc
