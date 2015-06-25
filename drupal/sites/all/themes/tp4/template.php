@@ -570,7 +570,12 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   );
   $description = field_view_field('node', $variables['node'], 'body', $description_display);
   $description = drupal_render($description);
-
+  
+  if (!empty($description)) {
+    $description = '<div class="description">'. $description. '</div>';
+  } else {
+    $description = '';
+  }
   //Grab Media Caption
   $media_caption = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_caption');
   if(!empty($media_caption)){
