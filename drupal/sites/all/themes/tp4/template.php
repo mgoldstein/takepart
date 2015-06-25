@@ -516,7 +516,8 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  
+  $variables['instructional'] = $instructional;
+
   $media_photo = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
   if(empty($media_photo[0]['alt'])){
     $alt = $variables['title'];
@@ -786,6 +787,7 @@ function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+    $variables['instructional'] = $instructional;
   
   $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
   $slim_text = tp4_render_field_value('node', $variables['node'], 'field_slim_card_text');
@@ -844,7 +846,8 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  
+  $variables['instructional'] = $instructional;
+
   $collections = array();
   $social_follows = field_get_items('node', $variables['node'], 'field_campaign_social_follow');
 
@@ -1141,6 +1144,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
     //content
     $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+    $variables['instructional'] = $instructional;
 
     // Is this card a single value news card or a multi-value news card?
     $news_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_type');
@@ -1283,6 +1287,8 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  $variables['instructional'] = $instructional;
+  
   $center = '';
   $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
   $width = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_width');
@@ -1376,6 +1382,7 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  $variables['instructional'] = $instructional;
   $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
   $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
   if(empty($item_width)){
