@@ -261,6 +261,7 @@ function tp_more_on_takepart_block_view($delta = '') {
 				${$item['type']}[] = theme('tp_more_on_takepart_article', array(
 					'result' => array(
 						'title' => (!empty($field_promo_headline)) ? $field_promo_headline : $result->title,
+						'url' => entity_uri('node', $result),
 						'type' => $type,
 						'promo_type' => 'more_on_takepart_'.$item['type'],
 						'thumbnail' => theme('image_style', array(
