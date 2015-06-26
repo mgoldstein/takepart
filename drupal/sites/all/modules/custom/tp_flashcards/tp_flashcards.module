@@ -1,14 +1,14 @@
 <?php
+
 /**
  * @file
  * TakePart module for functions related to flashcards.
  */
 
 /* Disable the parsing of article body text per TP-3321
- * Commented out functions tp_flashcards_preprocess_node, 
- * _tp_flashcards_get_replacement_pattern, _tp_flashcards_get_all, 
- * tp_flashcards_preprocess_page, tp_flashcards_init,
- * _tp_flashcards_parse_static_var, _tp_flashcards_get_synonyms, 
+ * 
+ * Removed functions _tp_flashcards_get_replacement_pattern, tp_flashcards_init,
+ * _tp_flashcards_parse_static_var, _tp_flashcards_get_synonyms,
  * and tp_flashcards_parse_html
  */
 
@@ -25,6 +25,89 @@ function tp_flashcards_help($path, $arg) {
 }
 
 /**
+ * Return an associative array of flashcards.
+ *
+ * Uses a static variable and a the database for caching.
+ *
+ * @return $flashcards An associative array of flashcards
+ */
+function _tp_flashcards_get_all() {
+  $flashcards = &drupal_static(__FUNCTION__);
+
+  if (!isset($flashcards)) {
+
+    // default value is empty
+    $flashcards = array();
+
+    if ($cache = cache_get('tp_flashcards_list')) {
+      $flashcards = $cache->data;
+    } else {
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'flashcard')
+        ->propertyCondition('status', 1);
+      $result = $query->execute();
+
+      if (isset($result['node'])) {
+        $nids = array_keys($result['node']);
+        $flashcards = entity_load('node', $nids);
+      }
+
+      // @todo make this CACHE_PERMANENT
+      // and clear the value on flashcard create/update/delete
+      cache_set('tp_flashcards_list', $flashcards, 'cache', CACHE_TEMPORARY);
+    }
+  }
+  return $flashcards;
+}
+
+/**
+ * Implements template_preprocess_page().
+ *
+ * Disable the system_main block on flashcard node pages.
+ */
+function tp_flashcards_preprocess_page(&$variables) {
+  // build up the array of flashcard terms for the tooltip displays
+  $data = array();
+  foreach (_tp_flashcards_get_all() as $nid => $flashcard) {
+    $card = array();
+    $items = field_get_items('node', $flashcard, 'field_flashcard_display_name');
+    $content = field_view_value('node', $flashcard, 'field_flashcard_display_name', $items[0]);
+    $card['title'] = drupal_render($content);
+    $items = field_get_items('node', $flashcard, 'field_flashcard_pronunciation');
+    $content = field_view_value('node', $flashcard, 'field_flashcard_pronunciation', $items[0]);
+    $card['pronunciation'] = drupal_render($content);
+    $items = field_get_items('node', $flashcard, 'field_flashcard_short_definition');
+    $content = field_view_value('node', $flashcard, 'field_flashcard_short_definition', $items[0]);
+    $card['definition'] = drupal_render($content);
+    $items = field_get_items('node', $flashcard, 'field_flashcard_page_headline');
+    $content = field_view_value('node', $flashcard, 'field_flashcard_page_headline', $items[0]);
+    $card['page_title'] = drupal_render($content);
+    $data[$nid] = $card;
+  }
+  
+  if (!path_is_admin(current_path()) && isset($variables['node']) && $variables['node']->type === 'flashcard') {
+    unset($variables['page']['content']['system_main']);
+  }
+}
+
+/**
+ * Implements template_preprocess_node().
+ *
+ * For flashcards, set up template variables and replace the title with the
+ * page_title field.
+ *
+ * @todo This probably should use hook_node_view().
+ */
+function tp_flashcards_preprocess_node(&$variables) {
+  if ($variables['type'] === 'flashcard') {
+    foreach (field_get_items('node', $variables['node'], 'field_flashcard_page_headline') as $item) {
+      $variables['title'] = drupal_render(field_view_value('node', $variables['node'], 'field_flashcard_page_headline', $item));
+    }
+  }
+}
+
+  /**
  * Implements hook_node_view().
  *
  * Alter the title of flashcards when loaded.
