@@ -63,7 +63,7 @@ function tp_intercept_context_plugins() {
   $plugins['tp_intercept_context'] = array(
   'handler' => array(
     'path' => drupal_get_path('module', 'tp_intercept'),
-    'file' => 'tp_intercept.context.inc',
+    'file' => 'tp_intercept_reaction.inc',
     'class' => 'tp_intercept_reaction',
     'parent' => 'context_reaction',
     ),
