@@ -59,21 +59,10 @@
 
   // function to make social share link
   var makeLink = function (args) {
-    if (args.name !== 'whatsapp') {
-	 var $link = $('<a href="#"/>')
-		    .addClass(cpre + args.name)
-		    .addClass(cpre + 'link')
-		    .html(args.display);
-    }
-    else {
-	 //var url = 'whatsapp://send?text=' + encodeURIComponent("Take a look at this awesome website: " + args.url + '&cmpid=organic-share-whatsapp');
-	 var $link = $('<a href="#"/>')
-		    .addClass(cpre + args.name)
-		    .addClass(cpre + 'link')
-		    .attr('data-text', 'Take a look at this awesome website:')
-		    .attr('data-href', args.url)
-		    .html('Share');
-    }
+    var $link = $('<a href="#"/>')
+		  .addClass(cpre + args.name)
+		  .addClass(cpre + 'link')
+		  .html(args.display);
     return $link;
   };
 

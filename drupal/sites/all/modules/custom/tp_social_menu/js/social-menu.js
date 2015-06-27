@@ -53,7 +53,6 @@
 	 /* If page is a gallery, article or featured article, add Pinterest */
 	 if (isGallery || isFeatureArticle || isOpenpublishArticle) {
 	   main_image = $('.field-name-field-article-main-image').find('img').attr('src');
-		// tp_social_config.services.push({"name":"pinterest", "media": main_image});
 	 }
 	 /* If page is a campaign page, remove mailto, reddit and tumblr */
 	 if (isCampaignPage) {
@@ -85,6 +84,10 @@
 	   });
 	 }
 
+	 if ($(window).width() >= 480) {
+	   delete tp_social_config.services.whatsapp;
+	 }
+	 
 	 /* Make sticky when screensize is greater than 768px */
 	 $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function () {
 	   if ($(window).width() > 980) {
@@ -131,7 +134,7 @@
 	 }, 250);
     }
   };
-  
+
   var lastScrollTop = 0;
   function hasScrolled(delta) {
     var st = $(this).scrollTop();

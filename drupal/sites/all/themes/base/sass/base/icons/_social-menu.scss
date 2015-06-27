@@ -72,7 +72,7 @@ body {
               height: 54px;
               width: 54px;
               padding-top: 14px;
-            } 
+            }
           }
 
           .tap-influence-icon {
@@ -124,7 +124,7 @@ body {
 		.tp-social-whatsapp {
 		  display: none;
 		}
-		
+
           #article-comments-link {
             display: none;
           }
@@ -238,10 +238,8 @@ body {
 	   float: none;
 	   margin-top: 0;
 	 }
-
     }
   }
-
 
   .tp-social-headline{
     text-align: center;
@@ -270,8 +268,6 @@ body {
     text-indent: 24px;
     background-color: transparent;
   }
-
-
 
   /** Mobile **/
   .social-wrapper.mobile{
@@ -498,7 +494,6 @@ ul.parent-social-menu {
   }
 }
 
-
 /* Social Global */
 aside.social{
   @include breakpoint($breakpoint-phablet) {
@@ -597,7 +592,6 @@ aside.social.social-vertical{
     }
   }
 }
-
 
 /* Social Horizontal */
 aside.social.social-horizontal {
@@ -719,24 +713,6 @@ body.node-type-openpublish-photo-gallery{
   padding: 10px;
   padding-bottom: 0;
 }
-/* Sticky Header */
-//.header-wrapper.mobile.nav-show .tp4-fat-header{
-//  position: fixed;
-//  top: 0;
-//  z-index: 999999999;
-//  background: white;
-//  width: 100%;
-//  box-sizing: border-box;
-//  height: 49px;
-//}
-//.header-wrapper.mobile.nav-show{
-//  padding-top: 49px;
-//}
-
-
-
-
-
 
 /****** Influence **********/
 .social-wrapper {
@@ -780,7 +756,6 @@ body.node-type-openpublish-photo-gallery{
       }
     }
   }
-
 }
 
 .social-horizontal .social-wrapper {
@@ -839,8 +814,6 @@ body.node-type-openpublish-photo-gallery{
     }
   }
 }
-
-
 
 /* TakePart Article */
 .social-vertical .social-wrapper {
