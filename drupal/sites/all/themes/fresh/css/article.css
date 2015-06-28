@@ -4796,17 +4796,17 @@ body.mobile-search-show #header form {
   background-repeat: no-repeat;
 }
 
-/* line 84, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-participantmedia {
   background-position: 0 0;
 }
 
-/* line 84, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-pivot {
   background-position: 0 -40px;
 }
 
-/* line 84, ../../../../../../../../.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
+/* line 84, ../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/utilities/sprites/_base.scss */
 .logos-takepart {
   background-position: 0 -68px;
 }
@@ -5053,20 +5053,20 @@ footer .corporate-footer ul li a {
 }
 @media all and (min-width: 768px) {
   /* line 50, ../sass/modules/_tp_more_on_takepart.scss */
-  #more-on-takepart .row .tp-more__article {
+  #more-on-takepart .col-md-6 .tp-more__article {
     width: 50%;
   }
   /* line 53, ../sass/modules/_tp_more_on_takepart.scss */
-  #more-on-takepart .row .tp-more__article:nth-of-type(1), #more-on-takepart .row .tp-more__article:nth-of-type(2), #more-on-takepart .row .tp-more__article:nth-of-type(3), #more-on-takepart .row .tp-more__article:nth-of-type(4) {
+  #more-on-takepart .col-md-6 .tp-more__article:nth-of-type(1), #more-on-takepart .col-md-6 .tp-more__article:nth-of-type(2), #more-on-takepart .col-md-6 .tp-more__article:nth-of-type(3), #more-on-takepart .col-md-6 .tp-more__article:nth-of-type(4) {
     padding: 0;
   }
   /* line 59, ../sass/modules/_tp_more_on_takepart.scss */
-  #more-on-takepart .row .tp-more__article:nth-of-type(2n+1) {
+  #more-on-takepart .col-md-6 .tp-more__article:nth-of-type(2n+1) {
     padding-right: 7.5px;
     clear: left;
   }
   /* line 63, ../sass/modules/_tp_more_on_takepart.scss */
-  #more-on-takepart .row .tp-more__article:nth-of-type(2n) {
+  #more-on-takepart .col-md-6 .tp-more__article:nth-of-type(2n) {
     padding-left: 7.5px;
   }
 }

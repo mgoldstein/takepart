@@ -46,8 +46,8 @@
   }
 
   // when there is a featured video, the featured articles
-  // are wrapped in div.row -- if not, then this rule won't apply
-  .row .tp-more__article {
+  // are wrapped in div.col-md-6 -- if not, then this rule won't apply
+  .col-md-6 .tp-more__article {
     @include breakpoint($breakpoint-tablet) {
       width: 50%;
       &:nth-of-type(1),
