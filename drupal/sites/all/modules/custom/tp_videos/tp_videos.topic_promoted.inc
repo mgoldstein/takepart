@@ -132,9 +132,12 @@ function tp_videos_topic_promoted_admin_form_submit($form, &$form_state) {
       if($value != $form['original_values']['#value'][$element_name]) {
         $tid = intval(str_replace('tax_term_', '', $element_name));
         $term_wrapper = new EntityDrupalWrapper('taxonomy_term', $tid);
-        foreach($value[LANGUAGE_NONE] as $index => $value) {
-          $term_wrapper->field_featured_video[$index]->set($value['target_id']);
+
+        $nids = array();
+        foreach($value[LANGUAGE_NONE] as $form_value) {
+          $nids[] = $form_value['target_id'];
         }
+        $term_wrapper->field_featured_video->set($nids);
         $term_wrapper->save();
       }
     } elseif ('global_video' === $element_name) {
