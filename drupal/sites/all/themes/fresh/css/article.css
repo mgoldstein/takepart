@@ -5128,19 +5128,20 @@ footer .corporate-footer ul li a {
 #more-on-takepart .tp-more__video .tp-more__video-cta {
   margin: 10px 0 5px;
   color: #00C09D;
+  font-size: 16px;
 }
-/* line 125, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 126, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .tp-more__video .tp-more__video-cta:after {
   content: '\0020\00BB';
   display: inline;
 }
-/* line 131, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 132, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .tp-more__video .tp-more__video-cta-link {
   color: #00C09D;
   font-family: "tradegothicbold";
   text-transform: uppercase;
 }
-/* line 136, ../sass/modules/_tp_more_on_takepart.scss */
+/* line 137, ../sass/modules/_tp_more_on_takepart.scss */
 #more-on-takepart .tp-more__video .tp-more__video-cta-link:hover {
   text-decoration: underline;
 }
@@ -5158,9 +5159,9 @@ footer .corporate-footer ul li a {
     padding-left: 15px;
     width: 50%;
   }
-  /* line 150, ../sass/modules/_tp_more_on_takepart.scss */
+  /* line 151, ../sass/modules/_tp_more_on_takepart.scss */
   #more-on-takepart .tp-more__video .tp-more__video-title {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.2;
   }
 }
