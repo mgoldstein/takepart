@@ -164,9 +164,9 @@
 
                        srvc.share(data);
                        $window.trigger(cpre + 'click', data);
-                       e.preventDefault();
                        return false;
                    }, 500);
+                   e.preventDefault();
 
                }
 
@@ -195,8 +195,8 @@
                         data.element = this;
 
                         srvc.hoverfocus(data);
-                        //e.preventDefault();
                     }, 500);
+                    e.preventDefault();
                 }
 			   })(srvc, $this, $link)
 					 );
