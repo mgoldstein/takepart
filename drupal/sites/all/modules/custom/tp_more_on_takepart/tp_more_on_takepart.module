@@ -280,7 +280,10 @@ function tp_more_on_takepart_block_view($delta = '') {
       $featured_video_node = tp_videos_get_topic_promoted_video($node);
 
       $promoted_video = array();
-      $promoted_nodes = array();
+      $promoted_nodes = array(
+        '#prefix' => '<div class="row">',
+        '#suffix' => '</div>',
+      );
 
 
       if ($featured_video_node) {

@@ -14,10 +14,22 @@ function tp_videos_topic_promoted_admin_form($form, &$form_state) {
   $field_name = 'field_featured_video';
   $langcode = LANGUAGE_NONE;
 
+  $form['intro'] = array(
+    '#markup' => implode('', array(
+      '<p>',
+      t('Type a few words of a video title and select it from the dropdown.'),
+      t('You can enter additional videos in a comma-separated list.'),
+      '</p>',
+    )),
+    '#theme_wrappers' => array('form_element'),
+    '#weight' => -99,
+  );
+
   // global video override
   $form['global'] = array(
     '#type' => 'fieldset',
     '#title' => t('Site-Wide Promoted Video'),
+    '#weight' => -98,
   );
 
   // get the global videos variable
@@ -26,7 +38,14 @@ function tp_videos_topic_promoted_admin_form($form, &$form_state) {
   $global_videos = variable_get('tp_videos_global_video', array());
   $global_video_nodes = node_load_multiple($global_videos);
   foreach ($global_video_nodes as $nid => $node) {
-    $global_field_values[] = "{$node->title} ($nid)";
+    $node_title = "{$node->title} ($nid)";
+
+    // wrap the value in quotes if it has a comma
+    if (strpos($node->title, ',')){
+      $node_title = '"' . $node_title . '"';
+    }
+
+    $global_field_values[] = $node_title;
   }
 
   $form['global']['global_video'] = array(
@@ -89,7 +108,8 @@ function tp_videos_topic_promoted_admin_form($form, &$form_state) {
     $form['tax_term_' . $term->tid][$langcode]['#title'] = $term->name;
   }
 
-  $form['submit'] = array(
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
     '#type' => 'submit',
     '#value' => t('Save'),
     '#weight' => 99,
@@ -132,9 +152,12 @@ function tp_videos_topic_promoted_admin_form_submit($form, &$form_state) {
       if($value != $form['original_values']['#value'][$element_name]) {
         $tid = intval(str_replace('tax_term_', '', $element_name));
         $term_wrapper = new EntityDrupalWrapper('taxonomy_term', $tid);
-        foreach($value[LANGUAGE_NONE] as $index => $value) {
-          $term_wrapper->field_featured_video[$index]->set($value['target_id']);
+
+        $nids = array();
+        foreach($value[LANGUAGE_NONE] as $form_value) {
+          $nids[] = $form_value['target_id'];
         }
+        $term_wrapper->field_featured_video->set($nids);
         $term_wrapper->save();
       }
     } elseif ('global_video' === $element_name) {

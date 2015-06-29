@@ -46,8 +46,8 @@
   }
 
   // when there is a featured video, the featured articles
-  // are wrapped in div.row -- if not, then this rule won't apply
-  .row .tp-more__article {
+  // are wrapped in div.col-md-6 -- if not, then this rule won't apply
+  .col-md-6 .tp-more__article {
     @include breakpoint($breakpoint-tablet) {
       width: 50%;
       &:nth-of-type(1),
@@ -122,6 +122,7 @@
     .tp-more__video-cta {
       margin: 10px 0 5px;
       color: $light-mint;
+      font-size: 16px;
       &:after {
         content: '\0020\00BB';
         display: inline;
@@ -148,7 +149,7 @@
       width: 50%;
 
       .tp-more__video-title {
-        font-size: 22px;
+        font-size: 20px;
         line-height: 1.2;
       }
     }
