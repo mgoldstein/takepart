@@ -3,8 +3,9 @@
   Drupal.behaviors.tp_video_player = {
     attach: function() {
       $('.tp-video-player').once('initialized', function(index, element) {
-        var element_id = $(element).attr('id');
-        var settings = Drupal.settings.tp_video_player.settings[element_id];
+        var $el = $(element);
+        var element_id = element.id;
+        var settings = JSON.parse($el.find('script').text());
 //        if (!window.s || !window.s.Media) {
 //          delete settings['sitecatalyst'];
 //        }
@@ -25,22 +26,22 @@
         settings = window.playlist_quality(settings);
 
         //moved code from pm-jwplayer over to new player.js
-        var regions = Drupal.settings.tp_video_player.settings[element_id].allowed_regions[0];
+        var regions = settings.allowed_regions[0];
         if (regions.length > 0 && !$('body').hasClass('node-type-video-playlist')) {
           var blockVideo = function() {
-            $(element).addClass('blocked').removeClass('loading');
+            $el.addClass('blocked').removeClass('loading');
           };
           var handleResponse = function(response) {
             if (!response.country || !response.country.iso_code) {
-              $(element).addClass('blocked').removeClass('loading');
+              $el.addClass('blocked').removeClass('loading');
               return false;
             }
             var code = response.country.iso_code.toLowerCase();
             if ($.inArray(code, regions) < 0) {
-              $(element).addClass('blocked').removeClass('loading');
+              $el.addClass('blocked').removeClass('loading');
             }
             else {
-              $(element).removeClass('loading');
+              $el.removeClass('loading');
               jwplayer.key = Drupal.settings.tp_video_player.key;
               tp_video_playlist_init(element, settings, index);
             }
