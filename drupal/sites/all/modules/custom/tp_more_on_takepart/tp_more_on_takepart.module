@@ -325,6 +325,8 @@ function tp_more_on_takepart_preprocess_tp_more_on_takepart_video(&$variables) {
   foreach (field_get_items('node', $variables['node'], 'field_video') as $item) {
     $variables['featured_video_player'] = field_view_value('node', $variables['node'], 'field_video', $item, 'default');
   }
+  // force video not to autoplay
+  $variables['featured_video_player']['#settings']['autostart'] = false;
 
   $variables['classes_array'] = array_merge($variables['classes_array'], $variables['classes']);
 
