@@ -9,20 +9,20 @@
    */
   Drupal.behaviors.megaMenuBehaviors = {
     attach: function(context, settings) {
-		//prevent ONLY parent links on megamenu from linking on touch, using doubletaptogo.js
-// 		$('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').doubleTapToGo();
+    //prevent ONLY parent links on megamenu from linking on touch, using doubletaptogo.js
+//     $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').doubleTapToGo();
 
-		var curItem = false;
+    var curItem = false;
 
-		$('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').on( 'click', function( e )
-		{
-			var item = $( this );
-			if( item[ 0 ] != curItem[ 0 ] )
-			{
-				e.preventDefault();
-				curItem = item;
-			}
-		});
+    $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').on( 'click', function( e )
+    {
+      var item = $( this );
+      if( item[ 0 ] != curItem[ 0 ] )
+      {
+        //e.preventDefault();
+        curItem = item;
+      }
+    });
 
       //ensures this is for mobile only
       if ($(window).width() < 768) {
@@ -44,7 +44,7 @@
           }
         });
         
-        //makes the search go away on focus			
+        //makes the search go away on focus      
         $('#search-api-page-search-form-site-search #edit-keys-2').focus(function() {
           $(this).val('');
         });
@@ -55,8 +55,18 @@
         $('.search-toggle').parent().removeClass('active');
       });
 
-      $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').click(function(event){
-        $(this).parent().children().not('li.expanded a').slideToggle('fast');
+      $('#block-menu-menu-megamenu ul li.level-0 a').click(function(event){
+        if ($(this).parent().attr('id') != '') {
+					
+          var id = $(this).parent().attr('id');
+          id = id.replace('menu-id-', '');
+          
+					if ($('#block-menu-menu-megamenu ul li.level-1.' + id).length !== 0) {
+						event.preventDefault();
+					}
+
+          $('#block-menu-menu-megamenu ul li.level-1.' + id).slideToggle('fast');
+        }
       });
       
       $('.search-toggle').parent().click(function(event){
@@ -128,7 +138,7 @@
         if ( snapper.state().state == "closed" ) {
           $('#campaign-drawers').hide();
           $('#tp-drawers').show();
-		  $('#block-menu-menu-megamenu ul li ul').hide();
+      $('#block-menu-menu-megamenu ul li ul').hide();
           snapper.open('left');
         }
         else {
