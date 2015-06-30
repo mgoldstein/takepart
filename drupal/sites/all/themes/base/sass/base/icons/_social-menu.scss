@@ -472,6 +472,9 @@ body.node-type-openpublish-photo-gallery {
     text-indent: 0;
     display: block;
   }
+  &.tp-social-whatsapp {
+    display: none;
+  }
 }
 .social-wrapper.mobile.sharing li.takeaction{
   margin-left: -25%;
