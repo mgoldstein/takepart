@@ -38,11 +38,11 @@
 		googleplus: {
 		  name: 'googleplus'
 		},
-		whatsapp: {
-		  name: 'whatsapp'
-		},
 		tumblr: {
 		  name: 'tumblr'
+		},
+		whatsapp: {
+		  name: 'whatsapp'
 		},
 		pinterest: {
 		  name: 'pinterest'
@@ -87,7 +87,7 @@
 	 if ($(window).width() >= 480) {
 	   delete tp_social_config.services.whatsapp;
 	 }
-	 
+
 	 /* Make sticky when screensize is greater than 768px */
 	 $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function () {
 	   if ($(window).width() > 980) {
