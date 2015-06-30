@@ -132,7 +132,7 @@
 
 	   // Bind an event to the link
 	   $link
-			 .bind('click', (function (srvc, $parent, $lnk) {
+			 .bind('touchstart click', (function (srvc, $parent, $lnk) {
                return function(e){
                    setTimeout(function (e) {
                        // TODO: reduce the code duplication
@@ -154,7 +154,7 @@
                        srvc.share(data);
                        $window.trigger(cpre + 'click', data);
                        return false;
-                   }, 500);
+                   }, 200);
                    e.preventDefault();
 
                }
@@ -166,7 +166,6 @@
 		$link
 			   .bind('mouseover focus', (function (srvc, $parent, $lnk) {
                 return function(e){
-                    setTimeout(function (e) {
                         var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
 
                         if (data.url == '{current}')
@@ -184,8 +183,6 @@
                         data.element = this;
 
                         srvc.hoverfocus(data);
-                    }, 500);
-                    e.preventDefault();
                 }
 			   })(srvc, $this, $link)
 					 );
