@@ -448,7 +448,7 @@ function _tp_custom_nav_menu_handler($menu = NULL) {
  *  @function:
  *    This function is used to parse the mobile menu as it was not pulling in the secondary levels
  */
-function _tp_custom_nav_menu_parser($mobile_menu, $level = 0) {
+function _tp_custom_nav_menu_parser($mobile_menu, $level = 0, $class = '') {
   //only allow level 1 to show in the menu
   if ($level > 1) {
     return NULL;
@@ -457,21 +457,25 @@ function _tp_custom_nav_menu_parser($mobile_menu, $level = 0) {
   $mobile_menu_processed = array();
   //does for each item
   foreach ($mobile_menu as $menu => $value) {
+    $parent_class = str_replace(' ', '-', (strtolower($value['link']['link_title'])));
+
     //creates the menu
     $mobile_menu_processed[$value['link']['mlid']] = array(
       '#title' => $value['link']['link_title'],
       '#href' => $value['link']['link_path'],
       '#theme' => 'menu_link__' . str_replace('-', '_', (strtolower($value['link']['menu_name']))),
-      '#attributes' => array(
-        'class' => $value['link']['options']['#attributes'],
-      ),
+      '#attributes' => $value['link']['options']['#attributes'],
       '#original_link' => $value['link'],
-      '#below' => (!empty($value['below'])) ? _tp_custom_nav_menu_parser($value['below'], $level + 1) : '',
+      '#below' => (!empty($value['below'])) ? _tp_custom_nav_menu_parser($value['below'], $level + 1, $parent_class) : '',
       '#localized_options' => $value['link']['localized_options']
     );
     
+    if ($level === 0) {
+      $mobile_menu_processed[$value['link']['mlid']]['#attributes']['id'][] = 'menu-id-' . $parent_class;
+    }
+    
     //ensures we add an extra class to be normal
-    $mobile_menu_processed[$value['link']['mlid']]['#attributes']['class'][] = 'normal level-' . $level;
+    $mobile_menu_processed[$value['link']['mlid']]['#attributes']['class'][] = 'normal level-' . $level . ' ' . $class;
   }
   
   return $mobile_menu_processed;
