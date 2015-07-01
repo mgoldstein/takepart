@@ -15,6 +15,14 @@ class tp_intercept_reaction extends context_reaction {
       '#markup' => t('TP Intercept Code JS')
     );
     
+    $form['enable_tp_intercept'] = array(
+      '#type' => 'select',
+      '#options' => array(
+        1 => 'Enable',
+      ),
+      '#default_value' => $values['enable_tp_intercept']
+    );
+    
     return $form;
   }
 
