@@ -28,7 +28,7 @@ tp.tp_intercept.prototype.insert = function(pos) {
  *  Class method for setting the cookie
  */
 tp.tp_intercept.prototype.set_cookie = function() {
-  jQuery.cookie('tp_intercept_cookie', 'true', { expires: this.freq });
+  jQuery.cookie('tp_intercept_cookie', 'true', { expires: parseInt(this.freq) });
 };
 
 //anonymous function declared
