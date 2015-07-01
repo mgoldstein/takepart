@@ -90,8 +90,14 @@ function tp_intercept_context_registry() {
  *  Implements hook_context_page_reaction().
  */
 function tp_intercept_context_page_reaction() {
-  if ($plugin = context_get_plugin('reaction', 'tp_intercept')) {
-    $plugin->execute();
+  //gets active context
+  $contexts = context_active_contexts();
+
+  //execute only if correct
+  if (array_key_exists('tp_intercept', $contexts)) {
+    if ($plugin = context_get_plugin('reaction', 'tp_intercept')) {
+      $plugin->execute();
+    }
   }
 }
 

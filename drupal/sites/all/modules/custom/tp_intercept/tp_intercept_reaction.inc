@@ -25,6 +25,8 @@ class tp_intercept_reaction extends context_reaction {
     //variables
     $api = variable_get('tp_intercept_js_path', 'api/intercept/intercept.js');
     
-    drupal_add_js($api);
+    drupal_add_js($api, array(
+      'preprocess' => FALSE
+    ));
   }
 }
