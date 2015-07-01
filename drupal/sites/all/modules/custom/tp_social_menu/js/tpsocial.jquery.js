@@ -132,7 +132,7 @@
 
 	   // Bind an event to the link
 	   $link
-			 .bind('touchstart click', (function (srvc, $parent, $lnk) {
+			 .on('touchstart click', (function (srvc, $parent, $lnk) {
                return function(e){
                    setTimeout(function (e) {
                        // TODO: reduce the code duplication
@@ -164,7 +164,7 @@
 
 	   if (typeof data.hoverfocus === 'function') {
 		$link
-			   .bind('mouseover focus', (function (srvc, $parent, $lnk) {
+			   .on('mouseover focus', (function (srvc, $parent, $lnk) {
                 return function(e){
                         var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
 
