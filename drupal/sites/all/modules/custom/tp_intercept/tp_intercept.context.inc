@@ -20,6 +20,8 @@ function tp_intercept_context_default_contexts() {
     'path' => array(
       'values' => array(
         '~<front>' => '~<front>',
+        '~interstitials' => '~interstitials',
+        '~interstitials/*' => '~interstitials/*',
       ),
     ),
     'sitewide' => array(
