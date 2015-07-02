@@ -1,7 +1,15 @@
 <?php
+
 /**
  * @file
  * TakePart module for functions related to flashcards.
+ */
+
+/* Disable the parsing of article body text per TP-3321
+ * 
+ * Removed functions _tp_flashcards_get_replacement_pattern, tp_flashcards_init,
+ * _tp_flashcards_parse_static_var, _tp_flashcards_get_synonyms,
+ * and tp_flashcards_parse_html
  */
 
 module_load_include('inc', 'tp_flashcards', 'tp_flashcards.block');
@@ -17,20 +25,46 @@ function tp_flashcards_help($path, $arg) {
 }
 
 /**
- * Implements hook_init()
+ * Return an associative array of flashcards.
+ *
+ * Uses a static variable and a the database for caching.
+ *
+ * @return $flashcards An associative array of flashcards
  */
-function tp_flashcards_init(){
-  /* Flashcards on every page */
-  drupal_add_css(drupal_get_path('module', 'tp_flashcards') . '/css/tooltipster.css', array('every_page' => TRUE));
-  drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/vendor/jquery.tooltipster.min.js', array('every_page' => TRUE));
-  drupal_add_js(drupal_get_path('module', 'tp_flashcards') . '/js/tp_flashcards.js', array('every_page' => TRUE));
+function _tp_flashcards_get_all() {
+  $flashcards = &drupal_static(__FUNCTION__);
+
+  if (!isset($flashcards)) {
+
+    // default value is empty
+    $flashcards = array();
+
+    if ($cache = cache_get('tp_flashcards_list')) {
+      $flashcards = $cache->data;
+    } else {
+      $query = new EntityFieldQuery();
+      $query->entityCondition('entity_type', 'node')
+        ->entityCondition('bundle', 'flashcard')
+        ->propertyCondition('status', 1);
+      $result = $query->execute();
+
+      if (isset($result['node'])) {
+        $nids = array_keys($result['node']);
+        $flashcards = entity_load('node', $nids);
+      }
+
+      // @todo make this CACHE_PERMANENT
+      // and clear the value on flashcard create/update/delete
+      cache_set('tp_flashcards_list', $flashcards, 'cache', CACHE_TEMPORARY);
+    }
+  }
+  return $flashcards;
 }
 
 /**
  * Implements template_preprocess_page().
  *
- * Include flashcards JS/CSS in every page, and disable
- * the system_main block on flashcard node pages.
+ * Disable the system_main block on flashcard node pages.
  */
 function tp_flashcards_preprocess_page(&$variables) {
   // build up the array of flashcard terms for the tooltip displays
@@ -51,12 +85,7 @@ function tp_flashcards_preprocess_page(&$variables) {
     $card['page_title'] = drupal_render($content);
     $data[$nid] = $card;
   }
-
-  drupal_add_js(array('flashcards' => $data), 'setting');
-
-  // the tp4_flashcards context (in a feature required by this module)
-  // renders the system_main block in the preface region.
-  // we can delete it from the content region on flashcard node pages
+  
   if (!path_is_admin(current_path()) && isset($variables['node']) && $variables['node']->type === 'flashcard') {
     unset($variables['page']['content']['system_main']);
   }
@@ -65,42 +94,20 @@ function tp_flashcards_preprocess_page(&$variables) {
 /**
  * Implements template_preprocess_node().
  *
- * For the full view of certain nodes, filter the node body
- * per flashcard. For flashcards, set up template variables and
- * replace the title with the page_title field.
+ * For flashcards, set up template variables and replace the title with the
+ * page_title field.
  *
  * @todo This probably should use hook_node_view().
  */
 function tp_flashcards_preprocess_node(&$variables) {
-  $types_to_flashcard = array(
-    'openpublish_article',
-    'feature_article',
-    'openpublish_photo_gallery',
-    'video',
-    'video_playlist',
-  );
-
-  // Replace flashcards on editorial content types
-  // and on fields that are being rendered in the templates.
-  // For fields that are being rendered elsewhere, you can call drectly:
-  // @see tp_flashcards_parse_html()
-  if (in_array($variables['type'], $types_to_flashcard) && $variables['view_mode'] === 'full') {
-    $variables['content']['body'][0]['#markup'] = tp_flashcards_parse_html($variables['content']['body'][0]['#markup']);
-  }
-
-  // setup
   if ($variables['type'] === 'flashcard') {
     foreach (field_get_items('node', $variables['node'], 'field_flashcard_page_headline') as $item) {
       $variables['title'] = drupal_render(field_view_value('node', $variables['node'], 'field_flashcard_page_headline', $item));
     }
-
-    if ($variables['view_mode'] === 'full') {
-      $variables['flashcard_cta_link'] = _tp_flashcards_get_cta_link($variables['node']);
-    }
   }
 }
 
-/**
+  /**
  * Implements hook_node_view().
  *
  * Alter the title of flashcards when loaded.
@@ -153,127 +160,6 @@ function tp_flashcards_node_delete($node) {
   if ($node->type == 'flashcard') {
     cache_clear_all('tp_flashcards_list', 'cache');
   }
-}
-
-/**
- * Parse HTML and replace flashcard terms with links.
- *
- * @param  string $html An HTML string
- *
- * @return string       HTML with flashcard terms wrapped in links.
- */
-function tp_flashcards_parse_html($html, $bypass = FALSE) {
-  foreach(_tp_flashcards_get_all() as $nid => $flashcard) {
-    //check to see if the flashcard is already used on the page
-    $exist = _tp_flashcards_parse_static_var($flashcard->nid);
-
-    //if its doesnt exist then do the following
-    if (!$exist || $bypass) {
-      $synonyms = array_map('preg_quote', _tp_flashcards_get_synonyms($flashcard));
-      $pattern = _tp_flashcards_get_replacement_pattern($synonyms);
-      $html_new = preg_replace($pattern, '<a data-flashcard="' . $nid . '" href="' . url('node/' . $nid). '" class="flashcard">$0</a>', $html, 1);
-
-      //if the markup has changed then update the html and static array
-      if ($html_new != $html) {
-        _tp_flashcards_parse_static_var($flashcard->nid, 'set');
-        $html = $html_new;
-      }
-    }
-  }
-
-  return $html;
-}
-
-/**
- *  @function:
- *    Function is used to help with the static variables that is needed for duplications
- */
-function _tp_flashcards_parse_static_var($new_val = NULL, $action = 'get') {
-  //default variables
-  $return = FALSE;
-  $tp_flashcards = &drupal_static(__FUNCTION__, array());
-
-  //switch based on action
-  switch ($action) {
-    case 'set':
-      // If a new value has been passed
-      if ($new_val) {
-        $tp_flashcards[$new_val] = $new_val;
-      }
-      break;
-    //default check if value exist
-    default:
-      $return = (isset($tp_flashcards[$new_val])) ? TRUE : FALSE;
-      break;
-  }
-
-  return $return;
-}
-
-/**
- * Return an associative array of flashcards.
- *
- * Uses a static variable and a the database for caching.
- *
- * @return $flashcards An associative array of flashcards
- */
-function _tp_flashcards_get_all() {
-  $flashcards = &drupal_static(__FUNCTION__);
-
-  if (!isset($flashcards)) {
-
-    // default value is empty
-    $flashcards = array();
-
-    if ($cache = cache_get('tp_flashcards_list')) {
-      $flashcards = $cache->data;
-    } else {
-      $query = new EntityFieldQuery();
-      $query->entityCondition('entity_type', 'node')
-        ->entityCondition('bundle', 'flashcard')
-        ->propertyCondition('status', 1);
-      $result = $query->execute();
-
-      if (isset($result['node'])) {
-        $nids = array_keys($result['node']);
-        $flashcards = entity_load('node', $nids);
-      }
-
-      // @todo make this CACHE_PERMANENT
-      // and clear the value on flashcard create/update/delete
-      cache_set('tp_flashcards_list', $flashcards, 'cache', CACHE_TEMPORARY);
-    }
-  }
-
-  return $flashcards;
-}
-
-/**
- * Return an array of synonyms for a given flashcard.
- *
- * @param StdClass $flashcard A node object of type "flashcard"
- *
- * @return $synonyms an associative array of synonyms
- */
-function _tp_flashcards_get_synonyms($flashcard) {
-  $synonyms = array();
-
-  foreach (field_get_items('node', $flashcard, 'field_flashcard_synonyms') as $item) {
-    $synonyms[] = drupal_render(field_view_value('node', $flashcard, 'field_flashcard_synonyms', $item, array('label' => 'hidden')));
-  }
-
-  return $synonyms;
-}
-
-/**
- * Construct the regex pattern to match flashcard terms in editorial content.
- *
- * @param  array  $synonyms An array of regex-escaped strings to match
- *
- * @return string           The flashcard display pattern
- */
-function _tp_flashcards_get_replacement_pattern($synonyms) {
-	return '#\b(?![^<>]*>)(?![^>]*(\/h2))(' . implode('|', $synonyms) . ')\b(?!(?:[^<]*(?:<([^\s]+)[^<]+</\2)|(?:</[^\s]+>))*[^<]*</a)#i';
 }
 
 /**

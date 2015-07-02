@@ -135,8 +135,15 @@ function tp_megaslim_generate_teasers($teaser_items){
       $teaser_node_type = $teaser_node->type;
 
       /* Return the link */
-      $path = drupal_get_path_alias('node/'. $teaser_node->nid);
-      $path = '/'. $path;
+      if($teaser_node_type == 'action'){
+        if($path = field_get_items('node', $teaser_node, 'field_action_url')){
+          $path = $path[0]['url'];
+        }
+      }
+      if(!isset($path)){
+        $path = drupal_get_path_alias('node/'. $teaser_node->nid);
+        $path = '/'. $path;
+      }
 
       /* Return the thumbnail */
       if($thumbnail = field_get_items('field_collection_item', $teaser_item, 'field_promo_thumbnail')){

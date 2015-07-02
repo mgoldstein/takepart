@@ -43,11 +43,16 @@
               /* Return Article */
               $('#next-article').before(data.output);
 
+              // init video players for auto-loaded content
+              if ('function' === typeof Drupal.behaviors.tp_video_player.attach) {
+                Drupal.behaviors.tp_video_player.attach();
+              }
+
               // Update fb_comments on load
 		    if(typeof FB != 'undefined') {
 		      FB.XFBML.parse();
 		    }
-		    
+
               // Load comments box on button click for mobile display
               $('a.comments-count').once('FBComments', function () {
                 $('a.comments-count').on('click', function(e){
@@ -92,7 +97,7 @@
       window.lastScrollTop = 0;
       window.tp_url_orig = window.location.href;
       window.tp_url_title_orig = document.title;
-      
+
       //binds to the scroll
       var timer;
       $(window).bind('scroll', function() {
@@ -129,8 +134,9 @@
               var tp_og_title = $(this).data('tp-og-title');
               var tp_og_image = $(this).data('tp-og-image');
               var tp_og_description = $(this).data('tp-og-description');
+              var current_path = location.protocol + '//' + location.host + location.pathname;
               // Upate the URL, social links and DDL based on URL logic
-              if (typeof tp_og_url != 'undefined' && tp_og_url != window.location.href) {
+              if (typeof tp_og_url != 'undefined' && tp_og_url != current_path) {
                 /** Update the URL **/
                 tp_url_changer(tp_og_url, tp_og_title);
 
@@ -145,7 +151,8 @@
 
                 /** Check for additional TAP widgets */
                 // needs to happen after page info updates for DTM
-                if (window.newTapWidgets == true && TP.Bootstrapper) {
+                if ( window.newTapWidgets == true && TP.Bootstrapper ) {
+                  TP.scope = $(value).data('ddlPageId');
                   new TP.Bootstrapper().start();
                   window.newTapWidgets = false;
                 }
@@ -161,17 +168,18 @@
       });
     }
   }
-  
+
   /**
    * @function:
    *  window function that is used to update the URL and is binded to the scroll.
    */
   window.tp_url_changer = function(url, title) {
     //change url with pushstate so that the page doesnt reload
-    window.history.pushState({}, url, url);
+    if ( window.history.pushState )
+      window.history.pushState({}, url, url);
     document.title = title;
   }
-  
+
   /**
    *  @function:
    *    window function that is used to update the social links
@@ -193,7 +201,7 @@
     if (typeof description !== 'undefined') {
       $("meta[property='og:description']").attr("content", description);
     }
-    
+
     //updates the social config
     tp_social_config.services.mailto.title = title;
     tp_social_config.services.twitter.text = document.title;
@@ -204,23 +212,23 @@
     tp_social_config.services.googleplus.url = url;
     tp_social_config.services.tumblr.title = title;
     tp_social_config.services.tumblr.url = url;
-    
+
     //only update the og metatag data if the url is set
     if (Drupal.settings.tpAutoScroll[0]['og_images'][url] != undefined) {
       var width = Drupal.settings.tpAutoScroll[0]['og_images'][url]['width'];
       var height = Drupal.settings.tpAutoScroll[0]['og_images'][url]['height'];
-      
+
       //ensures we only update if if the metatag exists before
       if ($("meta[property='og:image:width']").length == 1) {
         $("meta[property='og:image:width']").attr("content", width);
       }
-      
+
       //ensures we only update if if the metatag exists before
       if ($("meta[property='og:image:height']").length == 1) {
         $("meta[property='og:image:height']").attr("content", height);
       }
     }
-    
+
     //refires to update
     $('body').find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
   }

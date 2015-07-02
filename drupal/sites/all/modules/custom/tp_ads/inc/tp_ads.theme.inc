@@ -5,6 +5,8 @@
  *    Theme function that is used to generate the div for the ads
  */
 function theme_tp_ads_script($variables) {
+  $label = '';
+  
   //script generate
   $script = theme('html_tag', array(
     'element' => array(
@@ -12,12 +14,16 @@ function theme_tp_ads_script($variables) {
       '#value' => "googletag.cmd.push(function() { window." . str_replace('-', '_', $variables['ad_slot']) . "  = googletag.pubads().display('/4355895/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "'); });"
   )));
 
+  if (!$variables['disable_label']) {
+    $label = '<h5 class="ad-label text-center">Advertisement</h5>';
+  }
+  
   //output div
   $output = theme('html_tag', array(
     'element' => array(
       '#tag' => 'div',
       '#value' => $script,
-      '#value_prefix' => '<h5 class="ad-label text-center">Advertisement</h5>',
+      '#value_prefix' => $label,
       '#attributes' => array(
         'id' => $variables['ad_gpd_id'],
         'style' => 'width: ' . $variables['width'] . 'px; height: ' . ($variables['height'] + 25). 'px; margin: 0 auto;',

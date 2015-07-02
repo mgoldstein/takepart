@@ -48,7 +48,8 @@ function tp_ads_theme($existing, $type, $theme, $path) {
         'ad_gpd_id' => NULL,
         'width' => NULL,
         'height' => NULL,
-        'class' => NULL
+        'class' => NULL,
+        'disable_label' => NULL
       ),
       'file' => TP_ADS_THEME_FILE,
     ),
@@ -162,7 +163,8 @@ function tp_ads_preprocess_page(&$vars) {
           'ad_gpd_id' => $takeover_id,
           'width' => 1,
           'height' => 1,
-          'class' => 'desktop'
+          'class' => 'desktop',
+          'disable_label' => TRUE
         )
       );
     }

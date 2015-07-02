@@ -2,9 +2,70 @@
   max-width: 640px;
   margin: 0 auto;
   clear: both;
-  .item{
-    margin-bottom: 10px;
+
+  .tp-more__title {
+    margin-bottom: 15px;
   }
+
+  .tp-more__article {
+    float: left;
+    margin-bottom: 10px;
+    &:nth-of-type(2n+1) {
+      clear: left;
+    }
+    @include breakpoint($breakpoint-phablet) {
+      &:nth-of-type(2n+1) {
+        padding-left: 0;
+      }
+      &:nth-of-type(2n) {
+        padding-right: 0;
+      }
+    }
+    @include breakpoint($breakpoint-tablet) {
+      width: 25%;
+      &:nth-of-type(2n+1),
+      &:nth-of-type(2n) {
+        padding: 0;
+        clear: none;
+      }
+      &:nth-of-type(1) {
+        padding-right: 15px * .75;
+      }
+      &:nth-of-type(2) {
+        padding-left: 15px * .25;
+        padding-right: 15px * .5;
+      }
+      &:nth-of-type(3) {
+        padding-left: 15px * .5;
+        padding-right: 15px * .25;
+      }
+      &:nth-of-type(4) {
+        padding-left: 15px * .75;
+      }
+    }
+  }
+
+  // when there is a featured video, the featured articles
+  // are wrapped in div.col-md-6 -- if not, then this rule won't apply
+  .col-md-6 .tp-more__article {
+    @include breakpoint($breakpoint-tablet) {
+      width: 50%;
+      &:nth-of-type(1),
+      &:nth-of-type(2),
+      &:nth-of-type(3),
+      &:nth-of-type(4) {
+        padding: 0;
+      }
+      &:nth-of-type(2n+1) {
+        padding-right: 15px * .5;
+        clear: left;
+      }
+      &:nth-of-type(2n) {
+        padding-left: 15px * .5;
+      }
+    }
+  }
+
 	.thumbnail {
 		position: relative;
 		margin: 0;
@@ -28,10 +89,73 @@
 	a {
 		color: $black;
 	}
-	h2 {
-		margin-bottom: 13px;
-	}
-	h4 {
+
+	.tp-more__article-title {
 		margin: 10px 0 0;
 	}
+
+	.promoted {
+		color: #fff;
+		font-size: 13px;
+		font-weight: bold;
+		line-height: 12px;
+		font-family: $TradeGothic;
+    text-transform: upercase;
+		background: $black none;
+		padding: 3px;
+		margin: 0;
+		border-radius: 3px;
+		display: inline-block;
+	}
+
+  .tp-more__video {
+
+    .tp-more__video-title {
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+
+    .tp-more__video-title-link:hover {
+      text-decoration: underline;
+    }
+
+    .tp-more__video-cta {
+      margin: 10px 0 5px;
+      color: $light-mint;
+      font-size: 16px;
+      &:after {
+        content: '\0020\00BB';
+        display: inline;
+      }
+    }
+
+    .tp-more__video-cta-link {
+      color: $light-mint;
+      font-family: $TradeGothic;
+      text-transform: uppercase;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    @include breakpoint($breakpoint-phablet) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      float: left;
+      padding-left: 15px;
+      width: 50%;
+
+      .tp-more__video-title {
+        font-size: 20px;
+        line-height: 1.2;
+      }
+    }
+  }
+} // #more-on-takepart
+
+.tp-more-on-takepart-video .jwplayer{
+  overflow: hidden;
 }

@@ -157,7 +157,6 @@
   }
   .header {
      font-family: $main-brand-font;
-     font-weight: bold;
      font-size: 1.142857143em;
      background-color: $light-gray;
   }
@@ -687,7 +686,6 @@
             line-height: 1;
             text-align: center;
             font-family: $main-brand-font;
-            font-weight: bold;
             height: 12px;
             padding: 9px 0 15px;
             width: 75px;
@@ -742,7 +740,6 @@
     #article-comments {
         h2.block-title, h3 {
             font-family: $main-brand-font;
-            font-weight: bold;
             font-size: 1.5em;
             line-height: 1.2;
             margin: .667em 0; // account for different margins in the comp
@@ -1018,7 +1015,7 @@
     }
 
     .flashcard-branding {
-        font: bold normal 1.428571429em/1.2 $main-brand-font;
+        font: normal normal 1.428571429em/1.2 $main-brand-font;
         background: transparent inline-image("flashcards-brand-icon.png") no-repeat scroll left center;
         padding-left: 1.65em;
         margin: 1em 0 .5em;
@@ -1084,7 +1081,6 @@
 
         h2.section-header {
             font-family: $main-brand-font;
-            font-weight: bold;
             font-size: 1.5em;
             line-height: 1.2;
             margin: .667em 0; // account for different margins in the comp
