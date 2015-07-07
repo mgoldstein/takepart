@@ -104,3 +104,27 @@ $conf['bluehornet_api_accounts'] += array(
   ),
 );
 $conf += array('bluehornet_default_account' => 'takepart');
+
+
+if (!empty($conf['reverse_proxy_addresses'])) {
+$ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+  $ips = array_map('trim', $ips);
+  // Add REMOTE_ADDR to the X-Forwarded-For list (the ip_address function will
+  // also do this) in case it's a 10. internal AWS address; if it is we should
+  // add it to the list of reverse proxy addresses so that ip_address will
+  // ignore it.
+  $ips[] = $_SERVER['REMOTE_ADDR'];
+  // Work backwards through the list of IPs, adding 10. addresses to the proxy
+  // list but stop at the first non-10. address we find.
+  $ips = array_reverse($ips);
+  foreach ($ips as $ip) {
+    if (strpos($ip, '10.') === 0) {
+      if (!in_array($ip, $conf['reverse_proxy_addresses'])) {
+        $conf['reverse_proxy_addresses'][] = $ip;
+      }
+    } else {
+    // we hit the first non-10. address, so stop.
+    break;
+    }
+  }
+}
