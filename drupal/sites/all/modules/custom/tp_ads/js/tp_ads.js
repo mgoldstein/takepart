@@ -139,10 +139,12 @@
       };
       viewport.bottom = viewport.top + win.height();
       
-      var selector_item = $(article).find(selector).eq(ad_placement - 1);
+      var selector_item = $(article).find(selector).eq(parseInt(ad_placement) - 1);
+      //conditional check to ensure that the there are 2 more selectors after the placement
+      var conditional_check = $(article).find(selector).eq(parseInt(ad_placement) + 1);
       
       //ensures that we have an item that is defined
-      if (selector_item.length) {
+      if (selector_item.length) {        
         var selector_item_offset = $(selector_item).offset();
         
         //first condition allows a specific number ads to be shown.
@@ -151,6 +153,11 @@
             
           //overrides for desktop
           if ($(window).width() > 480) {
+            //break this if conditional if the conditional check comes back as 0
+            if (id != 'article_leader_ads' && !conditional_check.length) {
+              return;
+            }
+            
             javascript = current_ad.javascript_desktop;
             
             //override for non-leaderboard
