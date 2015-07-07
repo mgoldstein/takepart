@@ -319,7 +319,21 @@ function tp_more_on_takepart_block_view($delta = '') {
 }
 
 /**
- * Preprocess for template values.
+ * Preprocess values for tp_more_on_takepart template
+ */
+function tp_more_on_takepart_preprocess_tp_more_on_takepart(&$variables) {
+  $variables['attributes_array']['id'] = 'more-on-takepart';
+  $variables['classes_array'][] = 'row';
+
+  $variables['title_attributes_array']['class'] = 'tp-more__title';
+
+  if(!empty($variables['promoted_video'])) {
+    $variables['classes_array'][] = 'has-promoted-video';
+  }
+}
+
+/**
+ * Preprocess values for tp_more_on_takepart_video template
  */
 function tp_more_on_takepart_preprocess_tp_more_on_takepart_video(&$variables) {
   foreach (field_get_items('node', $variables['node'], 'field_video') as $item) {
