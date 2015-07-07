@@ -214,9 +214,9 @@
     tp_social_config.services.tumblr.url = url;
 
     //only update the og metatag data if the url is set
-    if (Drupal.settings.tpAutoScroll[0]['og_images'][url] != undefined) {
-      var width = Drupal.settings.tpAutoScroll[0]['og_images'][url]['width'];
-      var height = Drupal.settings.tpAutoScroll[0]['og_images'][url]['height'];
+    if (Drupal.settings.tpAutoScroll[0]['auto_updates'][url] != undefined) {
+      var width = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['width'];
+      var height = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['height'];
 
       //ensures we only update if if the metatag exists before
       if ($("meta[property='og:image:width']").length == 1) {
