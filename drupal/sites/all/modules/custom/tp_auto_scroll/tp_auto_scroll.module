@@ -96,16 +96,23 @@ function tp_auto_scroll_pager($node){
   //add based on a key name so the front end can use it correctly
   $og_data[$base_url. url('node/'. $node->nid)] = array(
     'width' => takepart_og_image_thumbnail_width($node->nid),
-    'height' => takepart_og_image_thumbnail_height($node->nid)
+    'height' => takepart_og_image_thumbnail_height($node->nid),
+    'page-title' => $node->title,
+    'type' => 'openpublish_article',
+    'topics' => _tp_auto_scroll_node_topics($node)
   );
   foreach($results['node'] as $key => $article){
     $articles[] = '/autoscroll/full/'. $key;
-    
+    $node_obj = node_load($key);
     //does for each auto loaded articles
     $og_data[$base_url. url('node/'. $key)] = array(
       'width' => takepart_og_image_thumbnail_width($key), //this token function lives in takepart_og_image.module
       'height' => takepart_og_image_thumbnail_height($key), //this token function lives in takepart_og_image.module
+      'page-title' => $node_obj->title,
+      'type' => 'openpublish_article',
+      'topics' => _tp_auto_scroll_node_topics($node_obj)
     );
+    unset($node_obj);
   }
 
   
@@ -117,7 +124,7 @@ function tp_auto_scroll_pager($node){
         'next_selector' => '#'. $selector_id,
         'content_selector' => 'article',
         'limit' => $autoscroll_limit,
-        'og_images' => $og_data
+        'auto_updates' => $og_data
       ),
     ),
   );
@@ -139,6 +146,20 @@ function tp_auto_scroll_pager($node){
   ));
 }
 
+/**
+ *  @function:
+ *    code is used to mimic takepart_ads.module
+ */
+function _tp_auto_scroll_node_topics($node) {
+  $field_topic = $node->field_topic['und'];
+  
+  foreach ($field_topic as $key => $value) {
+    $tterm = taxonomy_term_load($value['tid']);
+    $tterms[] = str_replace(" & ", "-", $tterm->name);
+  }
+  
+  return '["' . implode('", "', $tterms) . '"]';
+}
 
 /**
  * Implements hook_preprocess_node()

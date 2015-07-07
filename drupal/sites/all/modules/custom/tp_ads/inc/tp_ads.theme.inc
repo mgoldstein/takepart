@@ -11,7 +11,7 @@ function theme_tp_ads_script($variables) {
   $script = theme('html_tag', array(
     'element' => array(
       '#tag' => 'script',
-      '#value' => "googletag.cmd.push(function() { window." . str_replace('-', '_', $variables['ad_slot']) . "  = googletag.pubads().display('/4355895/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "'); });"
+      '#value' => "googletag.cmd.push(function() { window." . str_replace('-', '_', $variables['ad_slot']) . "  = googletag.pubads().display('/4355895/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "'); googletag.pubads().setTargeting('PageTitle', '[page-title]'); googletag.pubads().setTargeting('Type', '[type]'); googletag.pubads().setTargeting('Topic', [topics]);});"
   )));
 
   if (!$variables['disable_label']) {
