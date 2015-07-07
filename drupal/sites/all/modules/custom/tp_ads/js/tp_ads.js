@@ -173,7 +173,6 @@
           
           //overrides javascript to replace with current article for targetting
           var page_url = $('.ad-active article').data('tpOgUrl');
-          console.log(Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]);
           javascript = javascript.replace('[page-title]', Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['page-title']);
           javascript = javascript.replace('[type]', Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['type']);
           javascript = javascript.replace('[topics]', Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['topics']);
