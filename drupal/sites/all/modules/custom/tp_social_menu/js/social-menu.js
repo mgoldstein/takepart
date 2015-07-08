@@ -41,6 +41,9 @@
 		tumblr: {
 		  name: 'tumblr'
 		},
+		whatsapp: {
+		  name: 'whatsapp'
+		},
 		pinterest: {
 		  name: 'pinterest'
 		}
@@ -56,6 +59,7 @@
 	   delete tp_social_config.services.mailto;
 	   delete tp_social_config.services.reddit;
 	   delete tp_social_config.services.tumblr;
+	   delete tp_social_config.services.whatsapp;
 	   delete tp_social_config.services.pinterest;
 	 }
 
@@ -78,6 +82,10 @@
 		var window_width = $(window).width();
 		$('.social-wrapper.mobile').width(window_width);
 	   });
+	 }
+
+	 if ($(window).width() >= 480) {
+	   //delete tp_social_config.services.whatsapp;
 	 }
 
 	 /* Make sticky when screensize is greater than 768px */
