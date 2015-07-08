@@ -102,6 +102,11 @@ $conf['bluehornet_api_accounts'] += array(
     'key' => 'c0cf51a9f440562b91727bab1293ff29',
     'secret' => '28606de9e00dabcbf5049f7b734ff724',
   ),
+  'participant' => array(
+    'domain' => 'emails.participantmedia.com',
+    'key' => '326fda4d900200ddc59855ed494b3fad',
+    'secret' => '05ba67e07735907e703867bfde063765',
+  ),
 );
 $conf += array('bluehornet_default_account' => 'takepart');
 
