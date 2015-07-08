@@ -35,6 +35,11 @@ function tp_social_menu_init() {
   drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/social-menu.js',
     array('type' => 'file', 'scope' => 'footer', 'weight' => -7)
   );
+  /*
+  drupal_add_js(drupal_get_path('module', 'tp_social_menu') .'/js/whatsapp-button.js',
+    array('type' => 'file', 'scope' => 'footer', 'weight' => -7)
+  );
+   */
 }
 
 /**
