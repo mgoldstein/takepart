@@ -139,8 +139,7 @@ function tp_megaslim_generate_teasers($teaser_items){
         if($path = field_get_items('node', $teaser_node, 'field_action_url')){
           $path = $path[0]['url'];
         }
-      }
-      if(!isset($path)){
+      }else{
         $path = drupal_get_path_alias('node/'. $teaser_node->nid);
         $path = '/'. $path;
       }
