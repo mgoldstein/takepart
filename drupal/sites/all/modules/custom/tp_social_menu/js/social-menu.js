@@ -85,7 +85,7 @@
 	 }
 
 	 if ($(window).width() >= 480) {
-	   //delete tp_social_config.services.whatsapp;
+	   delete tp_social_config.services.whatsapp;
 	 }
 
 	 /* Make sticky when screensize is greater than 768px */
