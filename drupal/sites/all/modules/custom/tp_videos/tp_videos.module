@@ -22,6 +22,16 @@ function tp_videos_menu() {
     'access arguments' => array('access administration pages')
   );
 
+  $items['featured_video/autocomplete/tags/%/%/%'] = array(
+    'title' => 'Featured Video Autocomplete',
+    'page callback' => 'tp_videos_autocomplete_callback',
+    'page arguments' => array(2, 3, 4, 5),
+    'access callback' => 'entityreference_autocomplete_access_callback',
+    'access arguments' => array(2, 3, 4, 5),
+    'type' => MENU_CALLBACK,
+    'file' => 'tp_videos.ajax.inc',
+  );
+
   return $items;
 }
 
