@@ -40,8 +40,8 @@ function tp_videos_topic_promoted_admin_form($form, &$form_state) {
   foreach ($global_video_nodes as $nid => $node) {
     $node_title = "{$node->title} ($nid)";
 
-    // wrap the value in quotes if it has a comma
-    if (strpos($node->title, ',')){
+    // wrap the value in quotes if it has a comma or a double quote
+    if (false !== strpos($node->title, ',') || false !== strpos($node->title, '"')){
       $node_title = '"' . $node_title . '"';
     }
 
@@ -62,7 +62,7 @@ function tp_videos_topic_promoted_admin_form($form, &$form_state) {
     '#bundle' => $bundle_name,
     '#field' => $field_name,
     '#language' => $langcode,
-    '#autocomplete_path' => 'entityreference/autocomplete/tags/field_featured_video/taxonomy_term/topic/NULL',
+    '#autocomplete_path' => 'featured_video/autocomplete/tags/field_featured_video/taxonomy_term/topic/NULL',
   );
   $form['global']['topic_override'] = array(
     '#type' => 'checkbox',
@@ -93,7 +93,8 @@ function tp_videos_topic_promoted_admin_form($form, &$form_state) {
   // featured video field
   foreach ($tree as $index => $term) {
     $items = field_get_items($entity_type, $term, $field_name);
-    $field_form = field_default_form($entity_type, $entity, $field, $instance, $langcode, $items, $form, $form_state);
+    $fake_form = $fake_form_state = array();
+    $field_form = field_default_form($entity_type, $term, $field, $instance, $langcode, $items, $fake_form, $fake_form_state);
 
     // store the original value of the featured video field
     // (create a dummy array if the field is empty)
@@ -103,9 +104,13 @@ function tp_videos_topic_promoted_admin_form($form, &$form_state) {
     $form['original_values']['#value']['tax_term_' . $term->tid] = $default;
 
     // create the form element
-    $form['tax_term_' . $term->tid] = $field_form['field_featured_video'];
-    $form['tax_term_' . $term->tid]['#weight'] = $index;
-    $form['tax_term_' . $term->tid][$langcode]['#title'] = $term->name;
+    $row_name = 'tax_term_' . $term->tid;
+    $form[$row_name] = $field_form['field_featured_video'];
+    $form[$row_name]['#weight'] = $index;
+    $form[$row_name][$langcode]['#title'] = $term->name;
+
+    // use our custom ajax route for retrieving matches
+    $form[$row_name][$langcode]['#autocomplete_path'] = str_replace('entityreference', 'featured_video', $form[$row_name][$langcode]['#autocomplete_path']);
   }
 
   $form['actions'] = array('#type' => 'actions');
