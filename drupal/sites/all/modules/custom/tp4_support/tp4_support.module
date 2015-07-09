@@ -275,6 +275,18 @@ function tp4_support_preprocess_page(&$variables) {
   if (isset($variables['page']['content']['system_main']['field_campaign_bg_color'])) {
     drupal_add_library('color_field', 'bgrins-spectrum');
   }
+  
+  //by default set field_topic to others 115133
+  if (empty($variables['node']->field_topic)) {
+    $variables['node']->field_topic = array(
+      'und' => array(
+        array(
+          'tid' => 115133,
+          'taxonomy_term' => taxonomy_term_load(115133)
+        )
+      )
+    );
+  }
 }
 
 function tp4_menu_link__menu_takepart_links(array $variables) {
