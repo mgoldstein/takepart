@@ -65,75 +65,72 @@
     name: 'facebook',
     display: 'Facebook',
     share: function (args) {
-	 get_share_url(args.url, args.title, function (url) {
-	   var parser = document.createElement("a");
-	   parser.href = args.url;
+    	 get_share_url(args.url, args.title, function (url) {
+    	   var parser = document.createElement("a");
+    	   parser.href = args.url;
 
-	   function openFBLoginDialogManually() {
+    	   function openFBLoginDialogManually() {
+           if ($('body').hasClass('tploggedin')) {
+             var logged_class = '-influence';
+           }
+           else {
+             var logged_class = '';
+           }
 
-		if ($('body').hasClass('tploggedin')) {
-		  var logged_class = '-influence';
-		}
-		else {
-		  var logged_class = '';
-		}
+           // Open your auth window containing FB auth page
+           // with forward URL to your Opened Window handler page (below)
+           var redirect_uri = "&redirect_uri=" + url + "fbjscomplete";
+           var scope = "&scope=public_profile,email,user_friends";
+           var url = "https://www.facebook.com/dialog/oauth?client_id=" + "247137505296280" + redirect_uri + scope + '&cmpid=organic-share-facebook' + logged_class;
+           // notice the lack of other param in window.open
+           // for some reason the opener is set to null
+           // and the opened window can NOT reference it
+           // if params are passed. #Chrome iOS Bug
+           window.open(url);
+    	   }
 
-		// Open your auth window containing FB auth page
-		// with forward URL to your Opened Window handler page (below)
-		var redirect_uri = "&redirect_uri=" + url + "fbjscomplete";
-		var scope = "&scope=public_profile,email,user_friends";
-		var url = "https://www.facebook.com/dialog/oauth?client_id=" + "247137505296280" + redirect_uri + scope + '&cmpid=organic-share-facebook' + logged_class;
+    	   function fbCompleteLogin() {
+           FB.getLoginStatus(function (response) {
+             // Calling this with the extra setting "true" forces
+             // a non-cached request and updates the FB cache.
+             // Since the auth login elsewhere validated the user
+             // this update will now asyncronously mark the user as authed
+           }, true);
+    	   }
 
-		// notice the lack of other param in window.open
-		// for some reason the opener is set to null
-		// and the opened window can NOT reference it
-		// if params are passed. #Chrome iOS Bug
-		window.open(url);
-	   }
+    	   function requireLogin(callback) {
+      		FB.getLoginStatus(function (response) {
+      		  if (response.status !== "connected") {
+      		    showLogin();
+      		  } else {
+      		    checkAuth(response.authResponse.accessToken, response.authResponse.userID, function (success) {
+      		    // Check FB tokens against your API to make sure user is valid
+      		    });
+      		  }
+      		});
+    	   }
 
-	   function fbCompleteLogin() {
-		FB.getLoginStatus(function (response) {
-		  // Calling this with the extra setting "true" forces
-		  // a non-cached request and updates the FB cache.
-		  // Since the auth login elsewhere validated the user
-		  // this update will now asyncronously mark the user as authed
-		}, true);
-	   }
+    	   //only do for crios
+    	   if (navigator.userAgent.match('CriOS')) {
+    	     fbCompleteLogin();
+    	   }
 
-	   function requireLogin(callback) {
-		FB.getLoginStatus(function (response) {
-		  if (response.status !== "connected") {
-		    showLogin();
-		  } else {
-		    checkAuth(response.authResponse.accessToken, response.authResponse.userID, function (success) {
-		    // Check FB tokens against your API to make sure user is valid
-		    });
-		  }
-		});
-	   }
-
-	   //only do for crios
-	   if (navigator.userAgent.match('CriOS')) {
-		fbCompleteLogin();
-	   }
-
-
-	   FB.ui(
-			 {
-			   method: 'share',
-			   href: url
-			 },
-			 function (response) {
-			   if (response && response.post_id) {
-				// Post was published
-				$window.trigger('tp-social-share', args);
-			   }
-			   else {
-				//Post was not published
-			   }
-			 });
-	 });
-    }
+    	   FB.ui(
+    			 {
+    			   method: 'share',
+    			   href: url
+    			 },
+    			 function (response) {
+    			   if (response && response.post_id) {
+                 // Post was published
+                 $window.trigger('tp-social-share', args);
+              }
+              else {
+               //Post was not published
+              }
+           });
+    	 });
+      }
   });
 
   $.tpsocial.add_service({
@@ -418,15 +415,17 @@
     name: 'mailto',
     display: 'Email App',
     share: function (args) {
-	 var url = 'mailto:?body=I%20thought%20you\'d%20like%20this%20story%20on%20TakePart.com%0D%0A%0D%0A' +
-		    encodeURIComponent(args.title) +
-		    encodeURIComponent(args.subhead) +
-		    '%0D%0A%0D%0A' +
-		    encodeURIComponent(window.location) +
-		    '?cmpid=organic-share-mailto' +
-		    '&subject=TakePart:%20' +
-		    encodeURIComponent(args.title);
-	 location.href = url;
+      var longURL = window.location.href + '?cmpid=organic-share-mailto';
+       get_share_url( longURL, args.title, function (shortenedUrl) {
+         var url = 'mailto:?body=I%20thought%20you\'d%20like%20this%20story%20on%20TakePart.com%0D%0A%0D%0A' +
+            encodeURIComponent(args.title) +
+            encodeURIComponent(args.subhead) +
+            '%0D%0A%0D%0A' +
+             encodeURIComponent( shortenedUrl ) +
+            '&subject=TakePart:%20' +
+            encodeURIComponent(args.title);
+         location.href = url;
+       }, true);
     }
   });
 })(window, jQuery);
