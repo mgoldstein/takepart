@@ -50,7 +50,8 @@ define('CARDTYPES', serialize($card_types));
 function tp4_preprocess_html(&$variables, $hook) {
 
   /* Add shared assets to all tp4 pages */
-  drupal_add_css(variable_get('shared_assets_path'), array('type' => 'external'));
+  drupal_add_css(variable_get('shared_assets_path').'font.css',           array('type' => 'external'));
+  drupal_add_css(variable_get('shared_assets_path').'takepart_icons.css', array('type' => 'external'));
 
   /* Grab node object if it exists */
   $node = menu_get_object();

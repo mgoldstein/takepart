@@ -38,5 +38,5 @@ $conf += array(
 );
 
 // Shared Assets
-$conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_stage/font.css';
+$conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_stage/';
 
