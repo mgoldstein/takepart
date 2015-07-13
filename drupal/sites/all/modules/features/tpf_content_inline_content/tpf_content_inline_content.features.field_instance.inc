@@ -808,52 +808,6 @@ function tpf_content_inline_content_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'inline_content-take_action_widget-field_ic_tap_widget_width'
-  $field_instances['inline_content-take_action_widget-field_ic_tap_widget_width'] = array(
-    'bundle' => 'take_action_widget',
-    'default_value' => array(
-      0 => array(
-        'value' => 480,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Enter the widget\'s width, in pixels. Min: 300; Max: 500.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => ' ',
-        ),
-        'type' => 'number_integer',
-        'weight' => 4,
-      ),
-    ),
-    'entity_type' => 'inline_content',
-    'field_name' => 'field_ic_tap_widget_width',
-    'label' => 'Widget Width',
-    'required' => 0,
-    'settings' => array(
-      'max' => 500,
-      'min' => 300,
-      'prefix' => '',
-      'suffix' => 'px',
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'number',
-      'weight' => 6,
-    ),
-  );
-
   // Exported field_instance: 'inline_content-video-field_ic_alignment'
   $field_instances['inline_content-video-field_ic_alignment'] = array(
     'bundle' => 'video',
@@ -1088,7 +1042,6 @@ function tpf_content_inline_content_field_default_field_instances() {
   t('Content');
   t('Do not include a leading dash.');
   t('Do not wrap the text in quotation marks.');
-  t('Enter the widget\'s width, in pixels. Min: 300; Max: 500.');
   t('Expanded');
   t('Horizontal orientation will only work with <em>EXACTLY</em> 3 pieces of content.');
   t('Image');
@@ -1108,7 +1061,6 @@ function tpf_content_inline_content_field_default_field_instances() {
   t('Video');
   t('Widget Alignment');
   t('Widget Type');
-  t('Widget Width');
 
   return $field_instances;
 }

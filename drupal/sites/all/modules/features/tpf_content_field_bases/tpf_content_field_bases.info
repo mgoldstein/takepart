@@ -140,7 +140,6 @@ features[field_base][] = field_ic_playlist
 features[field_base][] = field_ic_quotation
 features[field_base][] = field_ic_tap_widget_alignment
 features[field_base][] = field_ic_tap_widget_type
-features[field_base][] = field_ic_tap_widget_width
 features[field_base][] = field_image_title
 features[field_base][] = field_inline_replacements
 features[field_base][] = field_listing_collection

@@ -493,3 +493,16 @@ table {
 a.edit-mini-panel-link{
   display: none !important;
 }
+
+/**
+ * TAP Widget
+ */
+.takepart-take-action-widget{
+  width: 100%;
+  &.align-center{
+    max-width: 480px;
+  }
+  &.align-right, &.align-left{
+    max-width: 300px !important;
+  }
+}

@@ -21,8 +21,15 @@ function takeaction_uninstall() {
 /**
  * Delete the table for tracking user actions (moved to tracking module).
  */
-function takeaction_update_7101(&$sandbox) {
+function takeaction_update_7101() {
   if (db_table_exists('takeaction_action_guid')) {
     db_drop_table('takeaction_action_guid');
   }
+}
+/**
+ * Implements hook_update_N
+ */
+function takeaction_update_7102() {
+  /* Remove field field_ic_tap_widget_width*/
+  field_delete_field('field_ic_tap_widget_width');
 }
