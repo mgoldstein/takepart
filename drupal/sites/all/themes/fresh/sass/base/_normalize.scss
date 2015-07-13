@@ -85,7 +85,7 @@ strong, b {
 .caption{
   font-family: $Ashbury;
   font-weight: 100;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 20px;
   font-style: italic;
   margin: 12px 0;
@@ -366,7 +366,7 @@ aside.inline-content + p{
     margin-bottom: 5px;
     @extend .ad-label;
     text-align: left;
-    color: $light-gray;
+    color: $gray;
     padding-left: 10px;
     padding-right: 10px;
     @include breakpoint($breakpoint-phablet){
