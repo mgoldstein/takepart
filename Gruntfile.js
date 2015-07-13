@@ -14,19 +14,6 @@ module.exports = function (grunt) {
             }
         },
         compass: {
-            fresh_dev: {
-                options: {
-                    sassDir: './drupal/sites/all/themes/fresh/sass',
-                    cssDir: './drupal/sites/all/themes/fresh/css',
-                    imagesDir: './drupal/sites/all/themes/fresh/images',
-                    raw: "add_import_path 'drupal/sites/all/themes/base/sass' \n" +
-                    "generated_images_dir = './drupal/sites/all/themes/fresh/images' \n" +
-                    "http_images_path = '/sites/all/themes/fresh/images' \n" +
-                    "http_generated_images_path = '/sites/all/themes/fresh/images'",
-                    environment: 'development',
-                    force: true
-                }
-            },
             fresh: {
                 options: {
                     sassDir: './drupal/sites/all/themes/fresh/sass',
@@ -36,21 +23,7 @@ module.exports = function (grunt) {
                     "generated_images_dir = './drupal/sites/all/themes/fresh/images' \n" +
                     "http_images_path = '/sites/all/themes/fresh/images' \n" +
                     "http_generated_images_path = '/sites/all/themes/fresh/images'",
-                    environment: 'production'
-                }
-            },
-            tp4_dev: {
-                options: {
-                    sassDir: './drupal/sites/all/themes/tp4/sass',
-                    cssDir: './drupal/sites/all/themes/tp4/css',
-                    imagesDir: './drupal/sites/all/themes/tp4/images',
-                    raw: "add_import_path 'drupal/sites/all/themes/base/sass' \n" +
-                    "require 'zen-grids' \n" +
-                    "generated_images_dir = './drupal/sites/all/themes/tp4/images' \n" +
-                    "http_images_path = '/sites/all/themes/tp4/images' \n" +
-                    "http_generated_images_path = '/sites/all/themes/tp4/images'",
-                    environment: 'development',
-                    force: true
+                    environment: 'development'
                 }
             },
             tp4: {
@@ -63,7 +36,7 @@ module.exports = function (grunt) {
                     "generated_images_dir = './drupal/sites/all/themes/tp4/images' \n" +
                     "http_images_path = '/sites/all/themes/tp4/images' \n" +
                     "http_generated_images_path = '/sites/all/themes/tp4/images'",
-                    environment: 'production'
+                    environment: 'development'
                 }
             }
         },
@@ -83,8 +56,8 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build_dev', [
-        'compass:fresh_dev',
-        'compass:tp4_dev',
+        'compass:fresh',
+        'compass:tp4',
         'shell:clear_cache'
     ]);
     grunt.registerTask('build_prod', [
