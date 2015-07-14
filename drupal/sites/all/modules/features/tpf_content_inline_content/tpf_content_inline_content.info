@@ -42,7 +42,6 @@ features[field_instance][] = inline_content-take_action_widget-field_ic_tap_widg
 features[field_instance][] = inline_content-take_action_widget-field_ic_tap_widget_sponsor_name
 features[field_instance][] = inline_content-take_action_widget-field_ic_tap_widget_sponsor_url
 features[field_instance][] = inline_content-take_action_widget-field_ic_tap_widget_type
-features[field_instance][] = inline_content-take_action_widget-field_ic_tap_widget_width
 features[field_instance][] = inline_content-video-field_ic_alignment
 features[field_instance][] = inline_content-video-field_ic_video
 features[field_instance][] = inline_content-video_playlist-field_ic_alignment

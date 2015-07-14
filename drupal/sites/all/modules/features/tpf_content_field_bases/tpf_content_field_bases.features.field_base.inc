@@ -2921,21 +2921,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_ic_tap_widget_width'
-  $field_bases['field_ic_tap_widget_width'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_ic_tap_widget_width',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'number',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'number_integer',
-  );
-
   // Exported field_base: 'field_image_title'
   $field_bases['field_image_title'] = array(
     'active' => 1,

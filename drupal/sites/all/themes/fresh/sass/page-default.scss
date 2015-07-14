@@ -1,0 +1,116 @@
+/*****************
+ * Import Partials
+ *****************/
+@import "compass/support";
+@import "compass/css3";
+
+/* Bootstrap Grid */
+@import "bootstrap/grid";
+
+
+/* Helpers from base */
+@import "base/helpers/variables";
+@import "base/helpers/mixins";
+@import "helpers/variables";
+@import "helpers/mixins";
+
+/* Fonts and Icons */
+@import "base/icons/icons";
+@import "base/icons/social-menu";
+
+
+@import "base/normalize/normalize";
+@import "base/normalize";
+
+
+/* Modules */
+@import "base/modules/mobile-menu";
+@import "base/modules/bxslider";
+@import "base/modules/video_playlist";
+@import "base/modules/sponsored";
+@import "base/modules/megaslim";
+@import "modules/header";
+@import "modules/fb_comments";
+@import "modules/footer";
+@import "modules/tp_more_on_takepart";
+@import "modules/tp_ads";
+@import "modules/series-nav";
+
+/*****************
+ * Article Page
+ *****************/
+.article-wrapper{
+  position: relative;
+  .sticky-wrapper{
+    @include breakpoint($breakpoint-phablet){
+      position: absolute;
+      margin-left: 15px;
+    }
+  }
+  article{
+    color: #3A3A3A;
+    h1.title, #more-on-takepart h2{
+      color: $black;
+    }
+  }
+}
+h1.title{
+  margin-top: 10px;
+  margin-bottom: 15px;
+  @include breakpoint($breakpoint-tablet){
+    text-align: center;
+  }
+}
+.main-media{
+  display: block;
+  /* margin: 0 auto; */
+}
+.main-image {
+  display: block;
+  margin: 0 auto;
+  .caption{
+    text-align: center;
+    @include breakpoint($breakpoint-phablet){
+      text-align: left;
+    }
+  }
+}
+.headline{
+  margin-top: 20px;
+  margin-right: inherit;
+  margin-left: inherit;
+  margin-bottom: 18px;
+  @include breakpoint($breakpoint-phablet){
+    text-align: center;
+  }
+}
+.btn-secondary{
+  display: block;
+  width: 40px;
+  padding: 0;
+  height: 31px;
+  line-height: 31px;
+}
+.horizontal-menu{
+  margin-bottom: 5px;
+  margin-top: 6px;
+  li{
+    margin-right: 4px;
+  }
+}
+.field-item > p:first-child{
+  margin-top: 0;
+}
+#more-on-takepart {
+  margin-bottom: 5px;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 15px;
+}
+blockquote.pullquote {
+  margin: 0;
+  padding: 0;
+}
+.inline-html-wrapper {
+  display: block;
+  margin: 0 auto;
+}

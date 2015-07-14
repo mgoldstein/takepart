@@ -12,7 +12,7 @@ function fresh_page_alter(&$page){
   $node = menu_get_object();
   if($node->type == 'openpublish_article'){
     $path = drupal_get_path('theme', 'fresh');
-    $page['content']['#attached']['css'][] = $path.'/css/article.css';
+    $page['content']['#attached']['css'][] = $path.'/css/page-article.css';
   }
 }
 
@@ -30,5 +30,19 @@ function fresh_js_alter(&$javascript){
   unset($javascript['sites/all/modules/contrib/colorbox/styles/default/colorbox_default_style.js']);
   unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_load.js']);
   unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_inline.js']);
+
+}
+
+
+/**
+ * Implements hook_css_alter()
+ */
+function fresh_css_alter(&$css){
+
+  /* Remove the page-default.css if article.css exists */
+  $theme_path = drupal_get_path('theme', 'fresh');
+  if(isset($css[$theme_path. '/css/page-article.css'])){
+    unset($css[$theme_path. '/css/page-default.css']);
+  }
 
 }
