@@ -84,10 +84,16 @@ function tp_auto_scroll_pager($node){
   $query->entityCondition('entity_type', 'node')
     ->propertyCondition('status', 1)
     ->entityCondition('bundle', 'openpublish_article')
-    ->fieldCondition('field_topic', 'tid', $topics, 'IN')
     ->propertyCondition('nid', $node->nid, '<>')
     ->propertyOrderBy('changed', 'DESC')
     ->range(0, $autoscroll_limit);
+    
+    
+  //only add field condition if topic is set otherwise it will pull latest
+  if (isset($topics) && !empty($topics)) {
+    $query->fieldCondition('field_topic', 'tid', $topics, 'IN');
+  }
+    
   $results = $query->execute();
   
   $articles = array();
