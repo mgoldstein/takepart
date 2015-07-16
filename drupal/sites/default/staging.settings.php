@@ -40,3 +40,14 @@ $conf += array(
 // Shared Assets
 $conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_stage/';
 
+// Solr Server settings
+$conf['search_api_solr_overrides'] = array(
+  'takepart_solr_production' => array(
+    'name' => t('TakePart SOLR Production (Stage settings)'),
+    'options' => array(
+      'host' => '10.1.15.30',
+      'port' => 8080,
+      'path' => '/solr',
+    ),
+  ),
+);
