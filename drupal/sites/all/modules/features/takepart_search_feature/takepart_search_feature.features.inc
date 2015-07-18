@@ -215,7 +215,7 @@ function takepart_search_feature_default_search_api_server() {
       "scheme" : "http",
       "host" : "10.2.5.30",
       "port" : "8080",
-      "path" : "\\/solr",
+      "path" : "\\/solr\\/takepart_core",
       "http_user" : "",
       "http_pass" : "",
       "excerpt" : 0,

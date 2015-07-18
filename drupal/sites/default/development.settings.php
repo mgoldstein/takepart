@@ -54,9 +54,9 @@ $conf['search_api_solr_overrides'] = array(
   'takepart_solr_production' => array(
     'name' => t('TakePart SOLR Production (dev settings)'),
     'options' => array(
-      'host' => '10.1.5.40',
+      'host' => '10.1.5.30',
       'port' => 8080,
-      'path' => '/solr/core0',
+      'path' => '/solr/takepart_core',
     ),
   ),
 );

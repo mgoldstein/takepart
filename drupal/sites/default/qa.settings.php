@@ -48,7 +48,7 @@ $conf['search_api_solr_overrides'] = array(
     'options' => array(
       'host' => '10.1.10.30',
       'port' => 8080,
-      'path' => '/solr',
+      'path' => '/solr/takepart_core',
     ),
   ),
 );
