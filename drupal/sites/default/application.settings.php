@@ -103,7 +103,7 @@ $conf['bluehornet_api_accounts'] += array(
     'secret' => '28606de9e00dabcbf5049f7b734ff724',
   ),
   'participant' => array(
-    'domain' => 'emails.participantmedia.com',
+    'domain' => 'echo.bluehornet.com',
     'key' => '326fda4d900200ddc59855ed494b3fad',
     'secret' => '05ba67e07735907e703867bfde063765',
   ),
