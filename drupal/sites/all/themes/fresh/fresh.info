@@ -14,8 +14,10 @@ stylesheets[all][] = system.theme.css
 stylesheets[all][] = css/page-default.css
 
 ; Optionally add some JavaScripts to your theme.
+scripts[] = js/tpanalytics.js
+scripts[] = js/jquery.tpinfographic.js
+scripts[] = js/tpmodal.jquery.js
 scripts[] = js/script.js
-
 
 regions[header]         = Header
 regions['left_drawer']  = Left Drawer
