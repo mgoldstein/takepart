@@ -11,8 +11,8 @@ $conf += array('facebook_app_id' => '247137505296280');
 
 // QA TAP and Services Integration
 $conf += array(
-  'takeaction_domain' => 'qa-tab.takepart.com',
-  'services_domain' => 'qa-api.takepart.com',
+  'takeaction_domain' => 'stage-takeaction.takepart.com',
+  'services_domain' => 'stage-api.takepart.com',
 );
 
 // TAP Integration
