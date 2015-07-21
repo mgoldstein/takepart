@@ -249,7 +249,7 @@ function takepart_ads_preprocess_page(&$vars) {
 
     if ($vars['node']->title != "") {
         $pageTitle = 'GA_googleAddAttr("PageTitle", "' . htmlspecialchars(trim($vars['node']->title), ENT_COMPAT, "UTF-8") . '");' . "\n";
-        $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "' . htmlspecialchars(trim($vars['node']->title), ENT_COMPAT, "UTF-8") . '");' . "\n";
+        $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "' . str_replace("", "", htmlspecialchars(trim($vars['node']->title), ENT_COMPAT, "UTF-8")) . '");' . "\n";
     }
     elseif (isset($vars['page']['content']['system_main']['#term']->name)) {
         $pageTitle = 'GA_googleAddAttr("PageTitle", "' . htmlspecialchars(trim($vars['page']['content']['system_main']['#term']->name), ENT_COMPAT, "UTF-8") . '");' . "\n";
@@ -318,9 +318,10 @@ function takepart_ads_preprocess_page(&$vars) {
                   })(); \n // -->", array('type' => 'inline', 'scope' => 'header'));
         drupal_add_js("<!-- \n" . 'googletag.cmd.push(function() {' . "\n" .
                 $gptad_html . "\n" .
+                
                 'googletag.pubads().enableSingleRequest();' . "\n" .
                 $gpt_targeting . // custom targeting
-                'googletag.enableServices();' . "\n" . '});' . "\n" .
+                'googletag.pubads().enableSingleRequest(); googletag.enableServices();' . "\n" . '});' . "\n" .
                 'var gpt_ad_tags = new Array();' . "\n // -->", array('type' => 'inline', 'scope' => 'header'));
 	}
 }

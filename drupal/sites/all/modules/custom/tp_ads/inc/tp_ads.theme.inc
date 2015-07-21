@@ -11,7 +11,11 @@ function theme_tp_ads_script($variables) {
   $script = theme('html_tag', array(
     'element' => array(
       '#tag' => 'script',
-      '#value' => "googletag.cmd.push(function() { window." . str_replace('-', '_', $variables['ad_slot']) . "  = googletag.pubads().display('/4355895/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "'); googletag.pubads().setTargeting('PageTitle', '[page-title]'); googletag.pubads().setTargeting('Type', '[type]'); googletag.pubads().setTargeting('Topic', [topics]);});"
+      '#value' => "googletag.cmd.push(function() { [targets]
+      window." . str_replace('-', '_', $variables['ad_slot']) . " = googletag.defineSlot('/4355895/" . $variables['ad_slot'] . "', [" . $variables['width'] . ", " . $variables['height'] . "], '" . $variables['ad_gpd_id'] . "').addService(googletag.pubads());
+        googletag.enableServices();
+        googletag.display('" . $variables['ad_gpd_id'] . "');
+        });"
   )));
 
   if (!$variables['disable_label']) {
@@ -23,7 +27,6 @@ function theme_tp_ads_script($variables) {
     'element' => array(
       '#tag' => 'div',
       '#value' => $script,
-      '#value_prefix' => $label,
       '#attributes' => array(
         'id' => $variables['ad_gpd_id'],
         'style' => 'width: ' . $variables['width'] . 'px; height: ' . ($variables['height'] + 25). 'px; margin: 0 auto;',
@@ -34,7 +37,7 @@ function theme_tp_ads_script($variables) {
   $output_wrapper = theme('html_tag', array(
     'element' => array(
       '#tag' => 'div',
-      '#value_prefix' => '<!--' . $variables['ad_slot'] .  '-->',
+      '#value_prefix' => '<!--' . $variables['ad_slot'] .  '-->' . $label,
       '#value' => $output,
       '#attributes' => array(
         'style' => 'text-align: center;',
