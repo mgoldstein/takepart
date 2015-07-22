@@ -88,12 +88,11 @@ function tp_auto_scroll_pager($node){
     ->propertyOrderBy('changed', 'DESC')
     ->range(0, $autoscroll_limit);
     
-    
   //only add field condition if topic is set otherwise it will pull latest
   if (isset($topics) && !empty($topics)) {
     $query->fieldCondition('field_topic', 'tid', $topics, 'IN');
   }
-    
+
   $results = $query->execute();
   
   $articles = array();
@@ -103,9 +102,14 @@ function tp_auto_scroll_pager($node){
   $og_data[$base_url. url('node/'. $node->nid)] = array(
     'width' => takepart_og_image_thumbnail_width($node->nid),
     'height' => takepart_og_image_thumbnail_height($node->nid),
-    'page-title' => str_replace("'", "\\'", $node->title),
-    'type' => 'openpublish_article',
-    'topics' => _tp_auto_scroll_node_topics($node)
+    'targets' => array(
+      'FreeTag' => _tp_auto_scroll_node_term_ads($node, 'field_free_tag'),
+      'PageTitle' => str_replace("'", "\\'", $node->title),
+      'Type' => 'openpublish_article',
+      'Topic' => _tp_auto_scroll_node_term_ads($node, 'field_topic'),
+      'Series' => _tp_auto_scroll_node_term_ads($node, 'field_serie'),
+      'Sponsor' => _tp_auto_scroll_node_term_ads($node, 'field_sponsored'),
+    )
   );
   foreach($results['node'] as $key => $article){
     $articles[] = '/autoscroll/full/'. $key;
@@ -114,9 +118,14 @@ function tp_auto_scroll_pager($node){
     $og_data[$base_url. url('node/'. $key)] = array(
       'width' => takepart_og_image_thumbnail_width($key), //this token function lives in takepart_og_image.module
       'height' => takepart_og_image_thumbnail_height($key), //this token function lives in takepart_og_image.module
-      'page-title' => str_replace("'", "\\'", $node_obj->title),
-      'type' => 'openpublish_article',
-      'topics' => _tp_auto_scroll_node_topics($node_obj)
+      'targets' => array(
+        'FreeTag' => _tp_auto_scroll_node_term_ads($node_obj, 'field_free_tag'),
+        'PageTitle' => str_replace("'", "\\'", $node_obj->title),
+        'Type' => 'openpublish_article',
+        'Topic' => _tp_auto_scroll_node_term_ads($node_obj, 'field_topic'),
+        'Series' => _tp_auto_scroll_node_term_ads($node_obj, 'field_serie'),
+        'Sponsor' => _tp_auto_scroll_node_term_ads($node_obj, 'field_sponsored'),
+      )
     );
     unset($node_obj);
   }
@@ -156,15 +165,26 @@ function tp_auto_scroll_pager($node){
  *  @function:
  *    code is used to mimic takepart_ads.module
  */
-function _tp_auto_scroll_node_topics($node) {
-  $field_topic = $node->field_topic['und'];
+function _tp_auto_scroll_node_term_ads($node, $field_name) {
+  $field = $node->{$field_name}['und'];
   
-  foreach ($field_topic as $key => $value) {
-    $tterm = taxonomy_term_load($value['tid']);
-    $tterms[] = str_replace(" & ", "-", $tterm->name);
+  //does for each value
+  foreach ($field as $key => $value) {
+    $term = taxonomy_term_load($value['tid']);
+    $terms[] = str_replace(" & ", "-", $term->name);
   }
   
-  return '["' . implode('", "', $tterms) . '"]';
+  //if empty return empty qoutes
+  if (empty($terms)) {
+    return '""';
+  }
+  //if one return term
+  elseif (count($terms) == 1) {
+    return $terms;
+  }
+  
+  //default return array
+  return '["' . implode('", "', $terms) . '"]';
 }
 
 /**

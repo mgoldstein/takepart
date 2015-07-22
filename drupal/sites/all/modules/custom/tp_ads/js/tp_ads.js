@@ -105,6 +105,33 @@
         //marks this article as not active and remove ads to reuse
         $(article_wrapper).removeClass('ad-active').addClass('not-ad-active').each(function() {});
       }
+      
+      //area for updating
+      if (article_offset.bottom > viewport.bottom) {
+        $(this).once('tp_ad_targetting', function() {
+          var page_url = $(this).data('tpOgUrl');
+          targets = '';
+          
+          //does for each target set from the backend
+          $.each(Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'], function(i, v) {
+            targets += ' googletag.pubads().clearTargeting(\'' + i + '\');';
+            if (v != '""') {
+              if (v.indexOf('[') >= 0) {
+                targets += 'googletag.pubads().setTargeting(\'' + i + '\', '+ v + ');';
+              }
+              else {
+                targets += 'googletag.pubads().setTargeting(\'' + i + '\', \'' + v + '\');';
+              }
+            }
+          });
+
+          //append script into cmd stack to be called.
+          $('<script>googletag.cmd.push(function() {' + targets + '});</' + 'script>').appendTo(document.body);
+        });
+      }
+      else {
+        $(this).removeClass('tp_ad_targetting-processed');
+      }
     });
     
     //removes the old ads from not active articles first so that we can reuse them
@@ -117,7 +144,7 @@
       window.tp_insert_ads(this, selector, ads_object, id, show_ads);
     });
   }
-      
+
   /**
    *  @function:
    *    Global function for inserting ads
@@ -177,12 +204,12 @@
               }
             }
           }
-          
-          //overrides javascript to replace with current article for targetting
+
+          //only replace call with refresh
           var page_url = $('.ad-active article').data('tpOgUrl');
-          javascript = javascript.replace('[page-title]', Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['page-title']);
-          javascript = javascript.replace('[type]', Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['type']);
-          javascript = javascript.replace('[topics]', Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['topics']);
+          var targets = '';
+          targets += 'googletag.pubads().refresh([' +  current_ad.ad_slot.replace('-', '-') + ']);'
+          javascript = javascript.replace('[targets]', targets);
           
           //ensures we only process the selector once
           $(selector_item).once('tp-ad', function() {
@@ -216,6 +243,7 @@
   window.tp_remove_ads = function(parent_selector) {
     //does for each tp-ad-processed in the selector
     $('.tp-ad-processed', parent_selector).each(function() {
+      //refresh ads if once removed
       googletag.pubads().refresh();
       
       //defines variable to set width and height
