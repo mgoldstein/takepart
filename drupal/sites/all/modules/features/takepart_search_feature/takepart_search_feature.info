@@ -1,8 +1,8 @@
 name = TakePart Search Feature
-description = Search API configuration - with new facets
+description = Search API configuration
 core = 7.x
 package = Features
-version = 7.x-1.5
+version = 7.x-1.6
 project = takepart_search_feature
 dependencies[] = context
 dependencies[] = ctools

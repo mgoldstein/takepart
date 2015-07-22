@@ -40,3 +40,15 @@ $conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_qa/';
 
 // Scream at the dev, maybe they'll fix something
 // ini_set('error_reporting', E_ALL & ~E_NOTICE);
+
+// Solr Server settings
+$conf['search_api_solr_overrides'] = array(
+  'takepart_solr_production' => array(
+    'name' => t('TakePart SOLR Production (QA settings)'),
+    'options' => array(
+      'host' => '10.1.10.30',
+      'port' => 8080,
+      'path' => '/solr/takepart_core',
+    ),
+  ),
+);
