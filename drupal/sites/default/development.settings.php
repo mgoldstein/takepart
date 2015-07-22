@@ -9,8 +9,8 @@ $conf += array(
 // TAP and Services don't have an integration environment, point at
 // QA by default or update settings.local.inc to point to local instances.
 $conf += array(
-    'takeaction_domain' => 'tab2dev.takepart.com',
-    'services_domain' => 'qa-api.takepart.com',
+    'takeaction_domain' => 'dev-takeaction.takepart.com',
+    'services_domain' => 'dev-api.takepart.com',
 );
 
 // TAP Integration
@@ -44,7 +44,7 @@ $conf += array(
 );
 
 // Shared Assets
-$conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_develop/';
+$conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets_dev/';
 
 // Scream at the dev, maybe they'll fix something
 ini_set('error_reporting', E_ALL & ~E_NOTICE);

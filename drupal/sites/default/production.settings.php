@@ -14,7 +14,7 @@ $conf += array('facebook_app_id' => '247137505296280');
 // Production TAP and Services Integration
 $conf += array(
   'takeaction_domain' => 'takeaction.takepart.com',
-  'services_domain' => 'accounts.takepart.com',
+  'services_domain' => 'api.takepart.com',
 );
 
 // TAP Integration
