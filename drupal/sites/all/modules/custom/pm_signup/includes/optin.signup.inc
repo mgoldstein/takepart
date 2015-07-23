@@ -7,26 +7,26 @@ class SimpleOptInSignup extends Signup {
     // No specific email or phone number field is required, validation will
     // check that something was provided.
     return array(
-      'email' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.area-code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.exchange' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.number' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
+	 'email' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
+	 'phone-number' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
+	 'phone-number.area-code' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
+	 'phone-number.exchange' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
+	 'phone-number.number' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
     );
   }
 
@@ -37,28 +37,28 @@ class SimpleOptInSignup extends Signup {
 
     // Check if the email or a phone number is set
     if (!isset($this['email']) && $this->getSanitizedPhoneNumber() === FALSE) {
-      throw new SignupValidationException(array('an email or phone number is required'));
+	 throw new SignupValidationException(array('an email or phone number is required'));
     }
   }
-}
 
+}
 
 class SimpleOptInSignupEndpoint extends SignupEndpoint {
 
   public function __construct($record = NULL) {
     parent::__construct($record);
     if (is_null($record)) {
-      $this->configuration = array('checked_by_default' => 1);
+	 $this->configuration = array('checked_by_default' => 1);
     }
   }
 
   public static function namedEnpoints() {
     return db_select('pm_signup_endpoint', 'ep')
-      ->fields('ep', array('name', 'label'))
-      ->condition('type', 'NewsletterCampaignSignupEndpoint')
-      ->isNotNull('name')
-      ->execute()
-      ->fetchAllKeyed();
+	   ->fields('ep', array('name', 'label'))
+	   ->condition('type', 'NewsletterCampaignSignupEndpoint')
+	   ->isNotNull('name')
+	   ->execute()
+	   ->fetchAllKeyed();
   }
 
   public static function fields() {
@@ -66,26 +66,26 @@ class SimpleOptInSignupEndpoint extends SignupEndpoint {
     // No specific email or phone number field is required, validation will
     // check that something was provided.
     return array(
-      'email' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.area-code' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.exchange' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
-      'phone-number.number' => array(
-        'required' => FALSE,
-        'default' => '',
-      ),
+	 'email' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
+	 'phone-number' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
+	 'phone-number.area-code' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
+	 'phone-number.exchange' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
+	 'phone-number.number' => array(
+	   'required' => FALSE,
+	   'default' => '',
+	 ),
     );
   }
 
@@ -96,7 +96,7 @@ class SimpleOptInSignupEndpoint extends SignupEndpoint {
 
     // Check if the email or a phone number is set
     if (!isset($signup['email']) && $signup->getSanitizedPhoneNumber() === FALSE) {
-      throw new SignupValidationException(array('an email or phone number is required'));
+	 throw new SignupValidationException(array('an email or phone number is required'));
     }
   }
 
@@ -113,7 +113,7 @@ class SimpleOptInSignupEndpoint extends SignupEndpoint {
 
   public function getCheckedByDefault() {
     if (isset($this->configuration['checked_by_default'])) {
-      return empty($this->configuration['checked_by_default']) ? 0 : 1;
+	 return empty($this->configuration['checked_by_default']) ? 0 : 1;
     }
     return 1;
   }
@@ -121,4 +121,16 @@ class SimpleOptInSignupEndpoint extends SignupEndpoint {
   public function setCheckedByDefault($checkedByDefault) {
     $this->configuration['checked_by_default'] = $checkedByDefault;
   }
+
+  public function getIncludeInPartnerExports() {
+    if (isset($this->configuration['include_in_partners'])) {
+	 return empty($this->configuration['include_in_partners']) ? 0 : 1;
+    }
+    return 0;
+  }
+
+  public function setIncludeInPartnerExports($includeInPartners) {
+    $this->configuration['include_in_partners'] = $includeInPartners;
+  }
+
 }

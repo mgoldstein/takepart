@@ -225,6 +225,14 @@ class SignupEndpointEditForm {
       '#default_value' => $this->workingEndpoint()->getCheckedByDefault(),
     );
   }
+  
+    public function includeInPartnerExportsField() {
+    return array(
+      '#title' => t('Include in Partner Exports'),
+      '#type' => 'checkbox',
+      '#default_value' => $this->workingEndpoint()->getIncludeInPartnerExports(),
+    );
+  }
 
   public function handlerClasses() {
     $classes = array();
@@ -304,6 +312,7 @@ class SignupEndpointEditForm {
     $form['name'] = $this->nameField();
     $form['prompt'] = $this->promptField();
     $form['checked_by_default'] = $this->checkedByDefaultField();
+    $form['include_in_partners'] = $this->includeInPartnerExportsField();
     $this->addHandlerFieldsets($form);
     $form['submit'] = $this->submitButton();
     return $form;
@@ -365,6 +374,7 @@ class SignupEndpointEditForm {
     $this->_endpoint->labelForExport($values['label'], $values['name']);
     $this->_endpoint->setUserPrompt($values['prompt']);
     $this->_endpoint->setCheckedByDefault($values['checked_by_default']);
+    $this->_endpoint->setIncludeInPartnerExports($values['include_in_partners']);
     foreach (array_keys($this->handlerClasses()) as $id) {
       $this->_prepareHandler($id, $values);
     }

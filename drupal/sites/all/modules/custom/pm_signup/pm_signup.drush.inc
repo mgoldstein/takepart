@@ -40,7 +40,7 @@ function pm_signup_drush_command() {
 }
 
 /**
- * Drush pubslish wordlet page
+ * Drush create signup endpoint
  */
 function drush_pm_signup_signup_endpoint_create($label, $name = NULL) {
 
@@ -59,7 +59,7 @@ function drush_pm_signup_signup_endpoint_create($label, $name = NULL) {
 }
 
 /**
- * Drush unpubslish wordlet page
+ * Drush delete signup endpoint
  */
 function drush_pm_signup_signup_endpoint_delete($name) {
   $endpoint = SignupEndpoint::loadByName($name);
