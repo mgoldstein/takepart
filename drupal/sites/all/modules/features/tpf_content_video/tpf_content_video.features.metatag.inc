@@ -32,12 +32,6 @@ function tpf_content_video_metatag_export_default() {
       'og:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
-      'og:image' => array(
-        'value' => '[node:attached-video-image]',
-      ),
-      'og:image:secure_url' => array(
-        'value' => '[node:attached-video-secure-image]',
-      ),
       'og:video' => array(
         'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-url}:]',
       ),
