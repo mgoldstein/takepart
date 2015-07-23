@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default theme implementation for displaying a single search result.
@@ -64,20 +63,30 @@
 ?>
 <div class="views-row <?php print $classes; ?>"<?php print $attributes; ?>>
 
-	<div class="views-field views-field-field-thumbnail">
-	    <span class="field-content"><?php print l($result['thumbnail'], $result['url']['path'], array('html' => true)); ?></span>
-	</div>
-	<div class="views-field views-field-type">
-		<span class="field-content"><?php print $result['type']; ?></span>
-	</div>
-    <div class="views-field views-field-url">
-	    <span class="field-content"<?php print $title_attributes; ?>>
-	    	<?php print render($title_prefix); ?>
-	    	<?php print ($result['url'] ? l($result['title'], $result['url']['path'], array('html' => true)) : $result['title']); ?>
-			<?php print render($title_suffix); ?>
-		</span>
-	</div>
-	<div class="views-field views-field-field-promo-text">
-	    <span class="field-content"></span>
-	</div>
+
+  <div class="views-field views-field-field-thumbnail">
+    <?php if (!empty($result['url']['options']['entity']->field_thumbnail)): ?>
+      <span class="field-content"><?php print l($result['thumbnail'], $result['url']['path'], array('html' => true)); ?></span>
+    <?php endif; ?>
+  </div>
+
+  <div class="views-field views-field-type">
+    <span class="field-content"><?php print $result['type']; ?></span>
+  </div>
+  <div class="views-field views-field-url">
+    <span class="field-content"<?php print $title_attributes; ?>>
+	 <?php
+	 if (!empty($title)) {
+	   $headline = $title;
+	 } else {
+	   $headline = $result['url']['options']['entity']->title;
+	 }
+	 ?>
+	 <?php print render($title_prefix); ?>
+	 <?php print ($result['url'] ? l($headline, $result['url']['path'], array('html' => true)) : $headline); ?>
+	 <?php
+	 print render($title_suffix);
+	 ?>
+    </span>
+  </div>
 </div>
