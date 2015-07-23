@@ -211,9 +211,9 @@ class SignupEndpointEditForm {
     return array(
       '#title' => t('User Prompt'),
       '#description' => t('Prompt shown to the user.'),
-      '#type' => 'textfield',
+      '#type' => 'text_format',
       '#required' => TRUE,
-      '#size' => 60,
+      '#rows' => 1,
       '#default_value' => $this->workingEndpoint()->getUserPrompt(),
     );
   }

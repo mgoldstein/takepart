@@ -102,7 +102,7 @@ class SimpleOptInSignupEndpoint extends SignupEndpoint {
 
   public function getUserPrompt() {
     if (isset($this->configuration['user_prompt'])) {
-      return $this->configuration['user_prompt'];
+      return $this->configuration['user_prompt']['value'];
     }
     return FALSE;
   }
