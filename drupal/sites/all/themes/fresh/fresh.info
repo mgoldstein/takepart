@@ -16,7 +16,6 @@ stylesheets[all][] = css/page-default.css
 ; Optionally add some JavaScripts to your theme.
 scripts[] = js/script.js
 
-
 regions[header]         = Header
 regions['left_drawer']  = Left Drawer
 regions[content]        = Content

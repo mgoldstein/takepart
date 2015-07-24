@@ -176,4 +176,13 @@
     }
   };
   
+   /**
+   * Handle TP Infographics
+   */
+  Drupal.behaviors.infographics = {
+    attach: function() {
+      $('.tpinfographic').tpInfographic();
+    }
+  };
+  
 })(jQuery, Drupal, this, this.document);

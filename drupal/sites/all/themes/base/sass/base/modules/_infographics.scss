@@ -1,0 +1,28 @@
+/* 
+    Created on : Jul 21, 2015, 4:30:35 PM
+    Author     : mgoldstein
+*/
+
+.tpmodal_overlay {
+  background: #000;
+}
+.tpmodal_content {
+  padding: 20px;
+  opacity: 1;
+}
+.tpmodal_modal {
+  background: #fff;
+  border-radius: 10px;
+  overflow: auto;
+  max-height: 100%;
+  max-width: 100%;
+  min-height: 40px;
+  min-width: 40px;
+}
+.tpmodal_close {
+  height: 13px;
+  width: 13px;
+  margin: 5px 5px 0 0;
+  text-indent: 100%;
+  overflow: hidden;
+}
