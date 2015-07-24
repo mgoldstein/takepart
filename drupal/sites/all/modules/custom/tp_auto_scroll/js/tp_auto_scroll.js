@@ -59,7 +59,7 @@
 			   if(typeof FB != 'undefined') {
 			     FB.XFBML.parse();
 			   }
-                  $(this).siblings('.fb_chat').attr('href', window.location.href).show();
+                  $(this).siblings('.fb-comments').attr('href', window.location.href).show();
                   $(this).hide();
                   e.preventDefault();
                   return false;

@@ -22,7 +22,7 @@
 			display: none;
 		}
 	}
-	.fb_chat {
+	.fb-comments {
 		@include breakpoint($breakpoint-phablet) {
 			display: block;
 		}
