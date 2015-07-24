@@ -1,5 +1,4 @@
 <?php
-// TakePart 3.45
 // Register our shutdown function so that no other shutdown functions run before this one.
 // This shutdown function calls exit(), immediately short-circuiting any other shutdown functions,
 // such as those registered by the devel.module for statistics.
@@ -17,24 +16,13 @@ drupal_bootstrap(DRUPAL_BOOTSTRAP_DATABASE);
 // Build up our list of errors.
 $errors = array();
 
-// Check that the main database is active.
+// Try reading from the database
 $result = db_query('SELECT * FROM {users} WHERE uid = 1 LIMIT 1')->fetch();
 if (!$result->uid == 1) {
-  $errors[] = 'Master database not responding.';
+  $errors[] = 'Database read not responding.';
 }
 
-// Check that the slave database is active.
-/*
-if (function_exists('db_query_slave')) {
-  $result = db_query_slave('SELECT * FROM {users} WHERE uid = 1');
-  $account = db_fetch_object($result);
-  if (!$account->uid == 1) {
-    $errors[] = 'Slave database not responding.';
-  }
-}
- */
-
-// Check that all memcache instances are running on this server.
+// Check memcache
 if ($conf['cache_default_class'] === 'MemCacheDrupal') {
   foreach ($conf['memcache_servers'] as $address => $bin) {
     list($ip, $port) = explode(':', $address);
@@ -44,7 +32,7 @@ if ($conf['cache_default_class'] === 'MemCacheDrupal') {
   }
 }
 
-// Check that the files directory is operating properly.
+// Check the files directory
 if ($test = tempnam(variable_get('file_directory_path', conf_path() .'/files'), 'status_check_')) {
   if (!strpos($test, '/data/takepart/files') === 0) {
     $errors[] = 'Files are not being saved in the NFS mount under /data/takepart/files';
@@ -68,6 +56,5 @@ else {
   // reading the source code if mod_php fails and then matching the string.
   print 'CONGRATULATIONS' . ' 200' . "\n";
 }
-print_r('<!-- TakePart 3.45.1 -->');
 // Exit immediately, note the shutdown function registered at the top of the file.
 exit();
