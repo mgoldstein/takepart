@@ -18,6 +18,10 @@ description = The base theme for TakePart themes
 core        = 7.x
 base theme  = zen
 
+; add some JavaScripts to the theme.
+scripts[] = js/tpanalytics.js
+scripts[] = js/jquery.tpinfographic.js
+scripts[] = js/tpmodal.jquery.js
 
 ; For Picture 2.x
 ; While this theme is disabled, the below breakpoints essentially dont do anything
