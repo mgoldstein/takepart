@@ -87,7 +87,8 @@ function tp_campaigns_tray_vars($entity){
 			}
 			$output = '';
 			$output .= '<div class="card-wrapper '. drupal_html_class($node->title). '">';
-			$output .= drupal_render(node_view($node, 'full', NULL));
+      $node_view = node_view($node, 'full', NULL);
+			$output .= drupal_render($node_view);
 			$output .= '</div>';
 			$tray_vars['cards'][] = $output;
 		}

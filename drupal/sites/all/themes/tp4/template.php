@@ -553,7 +553,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     //Check if photo has a link
     $image_url = field_get_items('node', $variables['node'], 'field_campaign_media_image_link');
     if(!empty($image_url) && !empty($image)){
-      $media = l('<img src="'. $image. '" alt="'.$alt.'">', $image_url[0]['url'], array('html' => true, 'attributes' => array('target' => $image_url[0]['attributes']['target'])));
+      $media = l('<img src="'. $image. '" alt="'.$alt.'">', $image_url[0]['url'], array('html' => true, 'attributes' => array('target' => $image_url[0]['attributes']['target'], 'class' => array('media'))));
     }
     else{
       $media = '<img src="'. $image. '" alt="'.$alt.'">';
@@ -1462,6 +1462,9 @@ function tp4_campaign_background_rules(&$variables){
     if($background_crop[0]['value'] == 1){
       $variables['classes_array'][] = 'background-crop';
     }
+  }
+  if(field_get_items('node', $variables['node'], 'field_campaign_full_width')){
+    $variables['classes_array'][] = 'content-full-width';
   }
 
   //Set the size of the background image

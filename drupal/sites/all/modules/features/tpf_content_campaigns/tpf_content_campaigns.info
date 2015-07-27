@@ -223,6 +223,7 @@ features[field_instance][] = node-campaign_card_media-field_campaign_bgw
 features[field_instance][] = node-campaign_card_media-field_campaign_bgw_image
 features[field_instance][] = node-campaign_card_media-field_campaign_card_title
 features[field_instance][] = node-campaign_card_media-field_campaign_content_side
+features[field_instance][] = node-campaign_card_media-field_campaign_full_width
 features[field_instance][] = node-campaign_card_media-field_campaign_instructional
 features[field_instance][] = node-campaign_card_media-field_campaign_media_caption
 features[field_instance][] = node-campaign_card_media-field_campaign_media_col

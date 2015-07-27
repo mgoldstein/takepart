@@ -54,6 +54,7 @@
       'style' => $slider_styles,
       'data-title' => $node->title,
     )) . '>';
-    print drupal_render(node_view($node, 'full', NULL));
+    $node_view = node_view($node, 'full', NULL);
+    print drupal_render($node_view);
     print '</div>';
   }?>
