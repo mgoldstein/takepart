@@ -10,7 +10,7 @@ module.exports = function (grunt) {
                     'drupal/sites/all/themes/fresh/sass/**/*.scss',
                     'drupal/sites/all/themes/tp4/sass/**/*.scss'
                 ],
-                tasks: ['compass:fresh_dev', 'compass:tp4_dev', 'play:toolman']
+                tasks: ['compass:fresh', 'compass:tp4', 'play:toolman']
             }
         },
         compass: {
