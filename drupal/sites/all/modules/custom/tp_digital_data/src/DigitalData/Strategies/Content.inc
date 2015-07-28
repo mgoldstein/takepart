@@ -82,11 +82,18 @@ class ddContent extends ddDefaultPage {
     //Field Topic
     $topic_instance = field_info_instance('node', 'field_topic', $node->type);
     if($topic_instance != NULL && $topics = field_get_items('node', $node, 'field_topic')){
-      $primary_topic = $topics[0]['taxonomy_term']->name;
       $topic_names = array();
       foreach($topics as $topic){
-        $topic_names[] = $topic['taxonomy_term']->name;
+        if (isset($topic['tid']) && is_numeric($topic['tid'])) {
+          $tax_obj = taxonomy_term_load($topic['tid']);
+          $topic_names[] = $tax = $tax_obj->name;
+        }
+        else {
+          $topic_names[] = $topic['taxonomy_term']->name;
+        }
       }
+      
+      $primary_topic = $topic_names[0];
       $topic_names = implode(',', $topic_names);
       $data['category']['primaryTopic'] = $primary_topic;
       $data['category']['topics'] = $topic_names;
@@ -108,11 +115,21 @@ class ddContent extends ddDefaultPage {
     //Field Free Tags
     $free_tags_instance = field_info_instance('node', 'field_free_tag', $node->type);
     if($free_tags_instance != NULL){
+      
       $free_tags = field_get_items('node', $node, 'field_free_tag');
       $free_tag_names = array();
+      
       foreach($free_tags as $free_tag){
-        $free_tag_names[] = $free_tag['taxonomy_term']->name;
+        if (isset($free_tag['tid']) && is_numeric($free_tag['tid'])) {
+          $tax_obj = taxonomy_term_load($free_tag['tid']);
+          $free_tag_names[] = $tax = $tax_obj->name;
+        }
+        else {
+          $free_tag_names[] = $free_tag['taxonomy_term']->name;
+        }
       }
+      
+      
       $free_tag_names = implode(',', $free_tag_names);
       $data['category']['freeTags'] = $free_tag_names;
     }
