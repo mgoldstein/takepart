@@ -1318,9 +1318,9 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'preface',
           'weight' => '-9',
         ),
-        'boxes-box-66c05d6f' => array(
+        'boxes-box-1104adce' => array(
           'module' => 'boxes',
-          'delta' => 'box-66c05d6f',
+          'delta' => 'box-1104adce',
           'region' => 'sidebar',
           'weight' => '-10',
         ),
@@ -1328,7 +1328,7 @@ function tpf_display_context_context_default_contexts() {
           'module' => 'newsletter_campaign',
           'delta' => '48',
           'region' => 'sidebar',
-          'weight' => '-8',
+          'weight' => '-9',
         ),
         'pm_interstitial-interstitials' => array(
           'module' => 'pm_interstitial',
