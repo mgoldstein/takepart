@@ -48,6 +48,7 @@
       $slider_class[] = 'has-multiple-cards';
       $slider_class[] = 'slider';
     }
+
     print '<div' . drupal_attributes(array(
       'id' => 'slider_' . $key,
       'class' => $slider_class,

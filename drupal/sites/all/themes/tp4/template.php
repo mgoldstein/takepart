@@ -529,6 +529,34 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
     $media_title = '<h4 class="media-title">'. $media_title. '</h4>';
   }
 
+  /* Background Video */
+  if($video = field_get_items('node', $variables['node'], 'field_campaign_bg_video')){
+    $video = $video[0]['uri'];
+    $video = file_create_url($video);
+    $poster = '';
+    if($poster = field_get_items('node', $variables['node'], 'field_campaign_bg_video_poster')){
+      $poster = $poster[0]['uri'];
+      $poster = file_create_url($poster);
+    }
+
+    $video = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'video',
+        '#attributes' => array(
+          'autoplay' => NULL,
+          'loop' => NULL,
+          'muted' => NULL,
+          'poster' => $poster,
+          'class' => array('background-video')
+        ),
+        '#value' =>  "<source src='$video' type='video/mp4'> Your browser does not support the video tag."
+      )
+    ));
+    $variables['video'] = $video;
+
+  }
+
+
   //Prepare Media
   $media_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_type');
   if($media_type == 'Video'){  //Media is a video
@@ -1463,8 +1491,11 @@ function tp4_campaign_background_rules(&$variables){
       $variables['classes_array'][] = 'background-crop';
     }
   }
-  if(field_get_items('node', $variables['node'], 'field_campaign_full_width')){
-    $variables['classes_array'][] = 'content-full-width';
+  /* Content Full Bleed */
+  if($content_full_width = field_get_items('node', $variables['node'], 'field_campaign_full_width')){
+    if($content_full_width[0]['value'] != 0){
+      $variables['classes_array'][] = 'content-full-width';
+    }
   }
 
   //Set the size of the background image
