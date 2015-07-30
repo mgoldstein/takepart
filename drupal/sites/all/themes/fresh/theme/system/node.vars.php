@@ -8,6 +8,8 @@ function fresh_preprocess_node(&$variables, $hook) {
   /* Template suggestions for view mode */
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
 
+  $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
+	 
   /* Run view-mode-specific preprocess functions */
   $function = __FUNCTION__ . '__' . $variables['view_mode'];
   if (function_exists($function)) {
@@ -65,7 +67,7 @@ function fresh_preprocess_node__openpublish_article(&$variables) {
 	 $variables['media'] .= theme('image', array(
 	   'path' => $image_url, 'attributes' => array(
 		'class' => 'main-media'
-	     )
+	   )
 	   )
 	 );
 
@@ -115,6 +117,8 @@ function fresh_preprocess_node__openpublish_article(&$variables) {
     /* Comments */
     $url = url('node/' . $variables['node']->nid, array('absolute' => true));
     $variables['comments'] = theme('fresh_fb_comments', array('url' => $url));
+
+    $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
 
     /* Social Menu */
     $social_elements = array(
