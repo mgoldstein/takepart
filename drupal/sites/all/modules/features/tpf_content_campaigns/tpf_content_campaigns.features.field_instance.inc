@@ -10073,7 +10073,9 @@ function tpf_content_campaigns_field_default_field_instances() {
           'colorbox_gallery' => 'post',
           'colorbox_gallery_custom' => '',
           'colorbox_image_style' => '',
+          'colorbox_multivalue_index' => NULL,
           'colorbox_node_style' => '',
+          'colorbox_node_style_first' => '',
         ),
         'type' => 'colorbox',
         'weight' => 2,
@@ -10955,7 +10957,9 @@ function tpf_content_campaigns_field_default_field_instances() {
           'colorbox_gallery' => 'post',
           'colorbox_gallery_custom' => '',
           'colorbox_image_style' => '',
+          'colorbox_multivalue_index' => NULL,
           'colorbox_node_style' => '',
+          'colorbox_node_style_first' => '',
         ),
         'type' => 'colorbox',
         'weight' => 3,
@@ -15561,7 +15565,9 @@ Note: If you manually reference more items than selected here, the number refere
           'colorbox_gallery' => 'post',
           'colorbox_gallery_custom' => '',
           'colorbox_image_style' => '',
+          'colorbox_multivalue_index' => NULL,
           'colorbox_node_style' => '',
+          'colorbox_node_style_first' => '',
         ),
         'type' => 'colorbox',
         'weight' => 3,
@@ -16569,7 +16575,9 @@ Note: If you manually reference more items than selected here, the number refere
           'colorbox_gallery' => 'post',
           'colorbox_gallery_custom' => '',
           'colorbox_image_style' => '',
+          'colorbox_multivalue_index' => NULL,
           'colorbox_node_style' => '',
+          'colorbox_node_style_first' => '',
         ),
         'type' => 'colorbox',
         'weight' => 13,
@@ -20643,7 +20651,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -20755,6 +20763,88 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_page-field_author'
+  $field_instances['node-campaign_page-field_author'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_author',
+    'label' => 'Author(s)',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'node_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'node_reference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'node_reference_autocomplete',
+      'weight' => 19,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_page-field_brand_category'
   $field_instances['node-campaign_page-field_brand_category'] = array(
     'bundle' => 'campaign_page',
@@ -20766,7 +20856,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -20864,7 +20954,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -20951,7 +21041,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -21038,7 +21128,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -21245,6 +21335,88 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_page-field_free_tag'
+  $field_instances['node-campaign_page-field_free_tag'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_free_tag',
+    'label' => 'Free Tag',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'content_taxonomy_autocomplete_new_terms' => 'allow',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 22,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_page-field_permanent_title'
   $field_instances['node-campaign_page-field_permanent_title'] = array(
     'bundle' => 'campaign_page',
@@ -21256,7 +21428,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -21379,7 +21551,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -21502,7 +21674,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -21626,7 +21798,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -21740,6 +21912,86 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_page-field_series'
+  $field_instances['node-campaign_page-field_series'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_series',
+    'label' => 'Series',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 21,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_page-field_tab_action_override'
   $field_instances['node-campaign_page-field_tab_action_override'] = array(
     'bundle' => 'campaign_page',
@@ -21751,7 +22003,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -21840,7 +22092,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -21946,6 +22198,91 @@ Note: If you manually reference more items than selected here, the number refere
       ),
       'type' => 'media_generic',
       'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign_page-field_topic'
+  $field_instances['node-campaign_page-field_topic'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 1,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_topic',
+    'label' => 'Topic',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'taxonomy_term_reference_sortable_widget',
+      'settings' => array(
+        'shs' => array(
+          'create_new_levels' => FALSE,
+          'create_new_terms' => FALSE,
+          'force_deepest' => FALSE,
+          'node_count' => FALSE,
+        ),
+      ),
+      'type' => 'taxonomy_term_reference_sortable_widget',
+      'weight' => 20,
     ),
   );
 
@@ -23002,6 +23339,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Admin Title');
   t('Anchor Tag');
   t('Authentication Link');
+  t('Author(s)');
   t('Background Image Position');
   t('Background Image Width');
   t('Background color');
@@ -23033,6 +23371,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Enable Facebook Comments for this Campaign Page');
   t('Filter');
   t('Fonts for CSS');
+  t('Free Tag');
   t('Height in pixels.  Do not include \'px\'');
   t('How many news articles do you want to display?
 Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
