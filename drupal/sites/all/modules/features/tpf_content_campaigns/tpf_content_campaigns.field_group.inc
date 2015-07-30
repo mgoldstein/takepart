@@ -141,7 +141,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = 'group_background';
   $field_group->data = array(
     'label' => 'Background Image',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
@@ -401,6 +401,314 @@ function tpf_content_campaigns_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_ad|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_ad';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '19',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_ad|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_branding|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_branding';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '13',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_branding|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_empty|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_empty';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_empty|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_iframe|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_iframe';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '24',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_iframe|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_media|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_media';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_media|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_multi_column|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_multi_column';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '12',
+    'children' => array(
+      0 => 'field_campaign_bg_video_poster',
+      1 => 'field_campaign_bg_video',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_multi_column|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_news|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_news';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_news|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_social|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_social';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_social|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_tap_widget|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_tap_widget';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_tap_widget|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_text|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_text';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_text|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_background_video|node|campaign_card_twitter|form';
+  $field_group->group_name = 'group_background_video';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign_card_twitter';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_background';
+  $field_group->data = array(
+    'label' => 'Background Video',
+    'weight' => '22',
+    'children' => array(
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-background-video field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_background_video|node|campaign_card_twitter|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_background|node|campaign_card_ad|form';
   $field_group->group_name = 'group_background';
   $field_group->entity_type = 'node';
@@ -413,7 +721,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_image',
+      2 => 'group_background_video',
+      3 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -442,7 +751,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_image',
+      2 => 'group_background_video',
+      3 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -471,7 +781,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_image',
+      2 => 'group_background_video',
+      3 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -500,7 +811,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_image',
+      2 => 'group_background_video',
+      3 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -531,6 +843,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_campaign_bgw',
       2 => 'field_campaign_bg_crop',
       3 => 'group_background_image',
+      4 => 'group_background_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -559,7 +872,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_image',
+      2 => 'group_background_video',
+      3 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -588,7 +902,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_image',
+      2 => 'group_background_video',
+      3 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -617,7 +932,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_image',
+      2 => 'group_background_video',
+      3 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -646,7 +962,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_image',
+      2 => 'group_background_video',
+      3 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -675,7 +992,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_image',
+      2 => 'group_background_video',
+      3 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -703,7 +1021,8 @@ function tpf_content_campaigns_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_campaign_bg_color',
-      1 => 'group_background_image',
+      1 => 'group_background_video',
+      2 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

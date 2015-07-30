@@ -1237,22 +1237,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '12',
+          'weight' => '10',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '8',
         ),
         'xmlsitemap' => array(
-          'weight' => '6',
+          'weight' => '7',
         ),
         'locations' => array(
-          'weight' => '14',
+          'weight' => '11',
         ),
       ),
       'display' => array(),
@@ -1414,22 +1414,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'locations' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
       ),
       'display' => array(),
@@ -1501,22 +1501,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'xmlsitemap' => array(
           'weight' => '9',
         ),
         'locations' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
       ),
       'display' => array(),
@@ -1588,22 +1588,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'redirect' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'xmlsitemap' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'locations' => array(
-          'weight' => '17',
+          'weight' => '18',
         ),
       ),
       'display' => array(),

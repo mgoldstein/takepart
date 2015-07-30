@@ -112,7 +112,8 @@ function tp_campaigns_card_content_tap_widget($variables){
  */
 function tp4_render_field_value($entity_type, $entity, $field_name){
 	$item = field_get_items($entity_type, $entity, $field_name);
-	return drupal_render(field_view_value($entity_type, $entity, $field_name, $item[0]));
+  $item = field_view_value($entity_type, $entity, $field_name, $item[0]);
+	return drupal_render($item);
 }
 /*
  * Helper function 2
@@ -142,6 +143,9 @@ function tp_campaigns_card_background(&$variables){
 			$variables['classes_array'][] = 'background-crop';
 		}
 	}
+  if(field_get_items('node', $variables['node'], 'field_campaign_full_width')){
+    $variables['classes_array'][] = 'content-full-width';
+  }
 
 	//Set the size of the background image
 	$bg_image_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw_image');
