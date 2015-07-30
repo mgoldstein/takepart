@@ -125,6 +125,17 @@
             }
           });
 
+          //if article is first then set target to true otherwise false
+          if (k === 0) {
+            targets += 'googletag.pubads().setTargeting(\'TopArticle\', \'true\');';
+          }
+          else {
+            targets += 'googletag.pubads().setTargeting(\'TopArticle\', \'false\');';
+          }
+          
+          //adding a article position targetting even if its not being used now its built
+          targets += 'googletag.pubads().setTargeting(\'articlePosition\', \'' + (k + 1) + '\');';
+          
           //append script into cmd stack to be called.
           $('<script>googletag.cmd.push(function() {' + targets + '});</' + 'script>').appendTo(document.body);
         });
