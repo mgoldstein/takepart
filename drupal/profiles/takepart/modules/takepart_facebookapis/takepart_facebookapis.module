@@ -28,10 +28,11 @@ function takepart_facebookapis_init_code($app_id) {
   <script type="text/javascript">
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '{$app_id}',
-        version    : 'v2.3',
-        status     : true,
-        cookie     : true
+        appId: '{$app_id}',
+        version: 'v2.3',
+        status: true,
+        cookie: true,
+	   xfbml: true
       });
     };
 
