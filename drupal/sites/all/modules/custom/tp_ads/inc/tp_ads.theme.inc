@@ -22,6 +22,8 @@ function theme_tp_ads_script($variables) {
     $label = '<h5 class="ad-label text-center">Advertisement</h5>';
   }
   
+  $styles = 'width: ' . $variables['width'] . 'px; height: ' . ($variables['height'] + 25). 'px; ';
+  
   //output div
   $output = theme('html_tag', array(
     'element' => array(
@@ -29,7 +31,7 @@ function theme_tp_ads_script($variables) {
       '#value' => $script,
       '#attributes' => array(
         'id' => $variables['ad_gpd_id'],
-        'style' => 'width: ' . $variables['width'] . 'px; height: ' . ($variables['height'] + 25). 'px; margin: 0 auto;',
+        'style' => (($variables['class'] == 'leaderboard desktop') ? '' : $styles) . 'margin: 0 auto;',
         'class' => $variables['class'],
   ))));
   
