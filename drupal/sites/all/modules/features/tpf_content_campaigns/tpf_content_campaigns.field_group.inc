@@ -299,12 +299,13 @@ function tpf_content_campaigns_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Background Image',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-background-image field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-background-image field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_background_image|node|campaign_card_text|form'] = $field_group;
@@ -664,7 +665,6 @@ function tpf_content_campaigns_field_group_info() {
     'weight' => '15',
     'children' => array(
       0 => 'field_campaign_bg_video',
-      1 => 'field_campaign_bg_video_poster',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1076,7 +1076,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Custom Styling',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_css',
       1 => 'field_fonts_for_css',
@@ -1107,7 +1107,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Header/Branding',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
@@ -1119,12 +1119,13 @@ function tpf_content_campaigns_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Header/Branding',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-header-branding field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-header-branding field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_header_branding|node|campaign|form'] = $field_group;
@@ -1324,7 +1325,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_article_subhead',
       1 => 'field_promo_headline',
@@ -1414,7 +1415,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_series',
       1 => 'field_topic',

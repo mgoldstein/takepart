@@ -215,6 +215,27 @@ function tp4_preprocess_page(&$variables) {
     if($s[0]['tid']) {
     	drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
     }
+
+    /* Check to see if Campaign Menu is toggled off */
+    if($campaign_ref = field_get_items('node', $variables['node'], 'field_campaign_reference')){
+      $campaign_ref = node_load($campaign_ref[0]['target_id']);
+      if($disable = field_get_items('node', $campaign_ref, 'field_campaign_disable_menu')){
+        if(!$disable[0]['value']){
+          $header = module_invoke('tp_campaigns', 'block_view', 'tp_campaigns_hero');
+          $campaign_menu = theme('html_tag', array(
+            'element' => array(
+              '#tag' => 'div',
+              '#value' => $header['content'],
+              '#attributes' => array(
+                'class' => 'block',
+                'id' => 'block-tp-campaigns-tp-campaigns-hero'
+              )
+            )
+          ));
+          $variables['page']['header']['campaign_header']['#markup'] = $campaign_menu;
+        }
+      }
+    }
   }
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
@@ -517,7 +538,10 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  $variables['instructional'] = $instructional;
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+    $variables['classes_array'][] = 'has-instructional';
+  }
 
   $media_photo = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
   if(empty($media_photo[0]['alt'])){
@@ -794,7 +818,10 @@ function tp4_preprocess_node__campaign_card_ad(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
     $variables['instructional'] = $instructional;
+    $variables['classes_array'][] = 'has-instructional';
+  }
   
   $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
   $slim_text = tp4_render_field_value('node', $variables['node'], 'field_slim_card_text');
@@ -853,7 +880,11 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_social(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  $variables['instructional'] = $instructional;
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+    $variables['classes_array'][] = 'has-instructional';
+  }
+
 
   $collections = array();
   $social_follows = field_get_items('node', $variables['node'], 'field_campaign_social_follow');
@@ -1151,7 +1182,10 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
     //content
     $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+  if(!empty($instructional)){
     $variables['instructional'] = $instructional;
+    $variables['classes_array'][] = 'has-instructional';
+  }
 
     // Is this card a single value news card or a multi-value news card?
     $news_type = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_type');
@@ -1294,7 +1328,10 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  $variables['instructional'] = $instructional;
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+    $variables['classes_array'][] = 'has-instructional';
+  }
   
   $center = '';
   $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
@@ -1389,7 +1426,11 @@ function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
 function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
-  $variables['instructional'] = $instructional;
+  if(!empty($instructional)){
+    $variables['instructional'] = $instructional;
+    $variables['classes_array'][] = 'has-instructional';
+  }
+
   $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
   $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
   if(empty($item_width)){
@@ -1431,8 +1472,13 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
 
 function tp4_preprocess_node__campaign_card_tap_widget(&$variables, $hook) {
   if(module_exists('tp_campaigns')){
-    $card_title = tp_campaigns_card_title($variables);
-    $variables['instructional'] = tp_campaigns_card_instructional($variables);
+
+    $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
+    if(!empty($instructional)){
+      $variables['instructional'] = $instructional;
+      $variables['classes_array'][] = 'has-instructional';
+    }
+
     $variables['card_content'] = tp_campaigns_card_content_tap_widget($variables);
     tp_campaigns_card_background($variables);
     $variables['theme_hook_suggestions'][] = 'node__campaign_card';
@@ -1490,36 +1536,20 @@ function tp4_campaign_background_rules(&$variables){
     $variables['styles'][] = 'background-position: '. $background_position. ';';
   }
 
-  $background = field_get_items('node', $variables['node'], 'field_campaign_background');
-  $variables['card_background'] = (!empty($background) ? file_create_url($background[0]['uri']) : '');
+  $background = '';
+  if($background = field_get_items('node', $variables['node'], 'field_campaign_background')){
+    $background = file_create_url($background[0]['uri']);
+    $variables['styles'][] = "background-image: url('$background');";
+  }
 
   /* Background Video */
   if($video = field_get_items('node', $variables['node'], 'field_campaign_bg_video')){
     $video = $video[0]['uri'];
     $video = file_create_url($video);
-    $poster = '';
-    if($poster = field_get_items('node', $variables['node'], 'field_campaign_bg_video_poster')){
-      $poster = $poster[0]['uri'];
-      $poster = file_create_url($poster);
-    }
 
-    $video = theme('html_tag', array(
-      'element' => array(
-        '#tag' => 'video',
-        '#attributes' => array(
-          'autoplay' => NULL,
-          'loop' => NULL,
-          'muted' => NULL,
-          'poster' => $poster,
-          'class' => array('background-video')
-        ),
-        '#value' =>  "<source src='$video' type='video/mp4'> Your browser does not support the video tag."
-      )
-    ));
-    $variables['video'] = $video;
-
+    $variables['attributes_array']['data-video-bg'] = "[\"$background\", \"$video\"]";
+    $variables['classes_array'][] = "has-videoBG";
   }
-
 }
 
 
@@ -2397,7 +2427,6 @@ function tp4_search_api_page_results(array &$variables) {
 
     if ($variables['view_mode'] == 'search_api_page_result') {
         entity_prepare_view($index->entity_type, $entities);
-	// dpm($results);
 
         foreach ($results['results'] as $item) {
 

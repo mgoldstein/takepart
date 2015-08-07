@@ -9,9 +9,6 @@
         return;
       }
 
-      //TODO: There is an error when testing videos with only 2 slides
-      //swipejs duplicates slides if only two exist throwing an error with videos
-
       var $sliders = $('.slider');
       var $swipes = $('.swipe');
 
@@ -159,6 +156,65 @@
       });
     }
   };
+
+
+    Drupal.behaviors.campaignVideoBG = {
+        attach: function() {
+
+            var Environment = {
+                //mobile or desktop compatible event name, to be used with '.on' function
+                TOUCH_DOWN_EVENT_NAME: 'mousedown touchstart',
+                TOUCH_UP_EVENT_NAME: 'mouseup touchend',
+                TOUCH_MOVE_EVENT_NAME: 'mousemove touchmove',
+                TOUCH_DOUBLE_TAB_EVENT_NAME: 'dblclick dbltap',
+
+                isAndroid: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                isBlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                isIOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                isOpera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                isWindows: function() {
+                    return navigator.userAgent.match(/IEMobile/i);
+                },
+                isMobile: function() {
+                    return (Environment.isAndroid() || Environment.isBlackBerry() || Environment.isIOS() || Environment.isOpera() || Environment.isWindows());
+                }
+            };
+
+            if(!Environment.isMobile()){
+                $('.card.has-videoBG').each( function( index, element ) {
+
+                    $prop = $(this).data('video-bg');
+                    var src = $prop[1];
+                    var poster =  $prop[0];
+
+                    var videoWrapper = document.createElement("div");
+                    var video = document.createElement("video");
+                    var videoSource = document.createElement("source");
+                    videoWrapper.className = 'videoBG_wrapper';
+                    videoSource.type = "video/mp4";
+                    videoSource.src = src;
+                    videoSource.poster = poster;
+                    video.className = 'background-video';
+                    video.setAttribute('autoplay', '');
+                    video.setAttribute('loop', '');
+                    video.setAttribute('muted', '');
+                    video.setAttribute('poster', poster);
+                    video.appendChild(videoSource);
+                    videoWrapper.appendChild(video);
+                    $(this).prepend(videoWrapper);
+                });
+            }
+
+        }
+    };
 
   Drupal.behaviors.campaignPageSocialShare = {
     attach: function() {

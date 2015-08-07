@@ -54,7 +54,6 @@ features[field_base][] = field_campaign_background
 features[field_base][] = field_campaign_base_url
 features[field_base][] = field_campaign_bg_color
 features[field_base][] = field_campaign_bg_video
-features[field_base][] = field_campaign_bg_video_poster
 features[field_base][] = field_campaign_bgw
 features[field_base][] = field_campaign_bgw_image
 features[field_base][] = field_campaign_branding_category
