@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * TakePart ads module.
@@ -134,11 +135,10 @@ function takepart_ads_preprocess_page(&$vars) {
             preg_match('/[0-9]+x[0-9]+/', $ad, $adsize);
             $lr = explode("x", $adsize[0]);
             $gptad_html .= 'if (ad_call_check('.$lr[0].')) { ';
-            
-            if ($ad === "TP_Mobile_Interstitial_1x1") {
-                $gptad_html .= 'if (window.innerWidth < 768) { ';
-                $gptad_html .= "googletag.defineSlot('/" . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', [" . $lr[0] . ', ' . $lr[1] . "], '" . $gptad . "').addService(googletag.pubads());\n";
-                $gptad_html .= "googletag.defineOutOfPageSlot('/" . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', '" . $gptad . "-oop').addService(googletag.pubads());\n}\n";
+
+           if ($ad === "VideoOverlay_HP") {
+			 $gptad_html .= "googletag.defineOutOfPageSlot('/" . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
+			   . '/' . $ad . "', '" . $gptad . "').addService(googletag.pubads());\n";
             }
             else if ($ad === "TP_Mobile_320x50") {
               /*
@@ -176,7 +176,7 @@ function takepart_ads_preprocess_page(&$vars) {
     $actionSponsor = isset($vars['node']->field_action_sponsor['und']) ? $vars['node']->field_action_sponsor['und'] : array();
     $petitionSponsor = isset($vars['node']->field_petition_sponsor['und']) ? $vars['node']->field_petition_sponsor['und'] : array();
     $field_series = isset($vars['node']->field_series['und']) ? $vars['node']->field_series['und'] : array();
-    
+
     $terms = array();
     if (isset($vars['node']->type)) {
         $contentType = 'GA_googleAddAttr("Type", "' . $vars['node']->type . '");' . "\n";
@@ -318,7 +318,7 @@ function takepart_ads_preprocess_page(&$vars) {
                   })(); \n // -->", array('type' => 'inline', 'scope' => 'header'));
         drupal_add_js("<!-- \n" . 'googletag.cmd.push(function() {' . "\n" .
                 $gptad_html . "\n" .
-                
+
                 'googletag.pubads().enableSingleRequest();' . "\n" .
                 $gpt_targeting . // custom targeting
                 'googletag.pubads().enableSingleRequest(); googletag.enableServices();' . "\n" . '});' . "\n" .

@@ -458,6 +458,45 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'optimizely_js';
+  $context->description = 'Quick fix for placing Optimizely code on Fresh';
+  $context->tag = 'Fresh';
+  $context->conditions = array(
+    'theme' => array(
+      'values' => array(
+        'fresh' => 'fresh',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-optimizely_fresh' => array(
+          'module' => 'boxes',
+          'delta' => 'optimizely_fresh',
+          'region' => 'header',
+          'weight' => '-10',
+        ),
+        'boxes-ga_ros_interstitial' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_ros_interstitial',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Fresh');
+  t('Quick fix for placing Optimizely code on Fresh');
+  $export['optimizely_js'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'series_default_context';
   $context->description = 'Default Context for series';
   $context->tag = 'Context Field Default';
@@ -1027,6 +1066,12 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
+        'boxes-ga_ros_interstitial' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_ros_interstitial',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
       ),
     ),
   );
@@ -1288,17 +1333,17 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-8',
         ),
-        'boxes-ga_mobile_320x50_relative' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50_relative',
-          'region' => 'header',
-          'weight' => '-7',
-        ),
         'tp4_support-tp4_footer' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_footer',
           'region' => 'footer',
           'weight' => '-10',
+        ),
+        'boxes-ga_ros_interstitial' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_ros_interstitial',
+          'region' => 'footer',
+          'weight' => '-9',
         ),
         'takepart_gallery_support-takepart_gallery_cover_slide' => array(
           'module' => 'takepart_gallery_support',
@@ -1316,13 +1361,13 @@ function tpf_display_context_context_default_contexts() {
           'module' => 'newsletter_campaign',
           'delta' => '48',
           'region' => 'sidebar',
-          'weight' => '-9',
+          'weight' => '-8',
         ),
         'boxes-box-1104adce' => array(
           'module' => 'boxes',
           'delta' => 'box-1104adce',
           'region' => 'sidebar',
-          'weight' => '-8',
+          'weight' => '-7',
         ),
         'pm_interstitial-interstitials' => array(
           'module' => 'pm_interstitial',
@@ -1388,6 +1433,12 @@ function tpf_display_context_context_default_contexts() {
           'module' => 'boxes',
           'delta' => 'takepart',
           'region' => 'header',
+          'weight' => '-10',
+        ),
+        'boxes-ga_ros_interstitial' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_ros_interstitial',
+          'region' => 'footer',
           'weight' => '-10',
         ),
       ),
