@@ -38,6 +38,12 @@ function tpf_feature_homepage_context_default_contexts() {
           'region' => 'content',
           'weight' => '-10',
         ),
+        'boxes-ga_ros_interstitial' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_ros_interstitial',
+          'region' => 'footer',
+          'weight' => '-9',
+        ),
         'tp4_support-tp4_dont_miss' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_dont_miss',
