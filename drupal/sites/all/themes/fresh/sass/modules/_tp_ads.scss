@@ -1,5 +1,5 @@
 /**
- *	Mobile first scss
+ *  Mobile first scss
  */
 .tp-ad-wrapper {
    @include breakpoint($breakpoint-phablet) {
@@ -35,5 +35,22 @@
     max-width: 1000px;
     position: relative;
     z-index: 2;
+  }
+}
+
+.fresh-first-ad {
+  .tp-ad-wrapper {
+    @include breakpoint($breakpoint-phablet) {
+      margin: 20px auto;
+    }
+    
+    .tp-main-ad-wrapper {
+      .leaderboard.desktop {
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+        width: 100%;
+      }
+    }
   }
 }
