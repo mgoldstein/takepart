@@ -1034,22 +1034,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'xmlsitemap' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'locations' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
       ),
       'display' => array(),

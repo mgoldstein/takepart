@@ -215,6 +215,27 @@ function tp4_preprocess_page(&$variables) {
     if($s[0]['tid']) {
     	drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
     }
+
+    /* Check to see if Campaign Menu is toggled off */
+    if($campaign_ref = field_get_items('node', $variables['node'], 'field_campaign_reference')){
+      $campaign_ref = node_load($campaign_ref[0]['target_id']);
+      if($disable = field_get_items('node', $campaign_ref, 'field_campaign_disable_menu')){
+        if(!$disable[0]['value']){
+          $header = module_invoke('tp_campaigns', 'block_view', 'tp_campaigns_hero');
+          $campaign_menu = theme('html_tag', array(
+            'element' => array(
+              '#tag' => 'div',
+              '#value' => $header['content'],
+              '#attributes' => array(
+                'class' => 'block',
+                'id' => 'block-tp-campaigns-tp-campaigns-hero'
+              )
+            )
+          ));
+          $variables['page']['header']['campaign_header']['#markup'] = $campaign_menu;
+        }
+      }
+    }
   }
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);

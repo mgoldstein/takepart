@@ -929,16 +929,16 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-8',
         ),
-        'tp_campaigns-tp_campaigns_hero' => array(
-          'module' => 'tp_campaigns',
-          'delta' => 'tp_campaigns_hero',
-          'region' => 'header',
-          'weight' => '-7',
-        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',
           'region' => 'content',
+          'weight' => '-10',
+        ),
+        'bean-featured-campaigns-module' => array(
+          'module' => 'bean',
+          'delta' => 'featured-campaigns-module',
+          'region' => 'footer',
           'weight' => '-10',
         ),
         'tp4_support-tp4_footer' => array(
@@ -947,10 +947,10 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-9',
         ),
-        'bean-featured-campaigns-module' => array(
-          'module' => 'bean',
-          'delta' => 'featured-campaigns-module',
-          'region' => 'footer',
+        'tp4_support-tp4_mobile_menu_header' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_mobile_menu_header',
+          'region' => 'left_drawer',
           'weight' => '-10',
         ),
         'menu-menu-megamenu' => array(
@@ -958,12 +958,6 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'menu-megamenu',
           'region' => 'left_drawer',
           'weight' => '-9',
-        ),
-        'tp4_support-tp4_mobile_menu_header' => array(
-          'module' => 'tp4_support',
-          'delta' => 'tp4_mobile_menu_header',
-          'region' => 'left_drawer',
-          'weight' => '-10',
         ),
       ),
     ),
