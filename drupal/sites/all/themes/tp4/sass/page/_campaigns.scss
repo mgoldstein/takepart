@@ -870,13 +870,20 @@ body.campaign-display{
             background-size: 1000px;
         }
     }
+    .card.has-videoBG {
+      position: relative;
+      height: 500px;
+      @include breakpoint($breakpoint-tablet) {
+        height: 600px;
+      }
+    }
     .card video.background-video{
       width: 100%;
+      min-width: 1067px;
       position: absolute;
-      top: 0;
-      z-index: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
-
     .card-inner{
       position: relative;
     }

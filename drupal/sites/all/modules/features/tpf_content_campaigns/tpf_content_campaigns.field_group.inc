@@ -299,12 +299,13 @@ function tpf_content_campaigns_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Background Image',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-background-image field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-background-image field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_background_image|node|campaign_card_text|form'] = $field_group;
@@ -664,7 +665,6 @@ function tpf_content_campaigns_field_group_info() {
     'weight' => '15',
     'children' => array(
       0 => 'field_campaign_bg_video',
-      1 => 'field_campaign_bg_video_poster',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

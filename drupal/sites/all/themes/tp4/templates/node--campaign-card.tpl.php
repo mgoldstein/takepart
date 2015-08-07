@@ -6,11 +6,8 @@
  * Variables created in template.php: $card_title, $variables['classes_array'], $instructional, $card_inner['classes_array'], $card_content
  */
 ?>
-<div class="card campaign-1col <?php print implode(' ', $variables['classes_array']). ' '. (isset($variables['instructional']) == true ? 'has-instructional' : ''); ?>" style="background-image: url('<?php print $variables['card_background']; ?>'); <?php print implode(' ', $variables['styles']); ?>">
+<div class="card campaign-1col <?php print implode(' ', $variables['classes_array']); ?>" style="<?php print implode(' ', $variables['styles']); ?>">
   <?php print render($title_prefix); ?>
-  <?php if(isset($variables['video']) && $variables['video'] != NULL): ?>
-    <?php print $variables['video']; ?>
-  <?php endif; ?>
   <article class="card-inner<?php if(isset($variables['slim_text'])){ print " ".$variables['slim_text']; }?>">
   <?php print render($title_suffix);  // contextual links ?>
     <?php if(isset($node->field_campaign_card_title['und'][0]['value']) == true): ?>
