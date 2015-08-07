@@ -317,6 +317,12 @@ function tp_video_player_schema() {
         'length' => 255,
         'not null' => TRUE,
       ),
+      'config' => array(
+        'description' => 'Additional configuration',
+        'type' => 'text',
+        'size' => 'normal',
+        'not null' => TRUE
+      ),
     ),
     'unique keys' => array(
       'configuration_id' => array('configuration_id'),
@@ -325,6 +331,20 @@ function tp_video_player_schema() {
   );
 
   return $schema;
+}
+
+/**
+ *  @function: Installs new configuration field for custom table
+ */
+function tp_video_player_update_7001(&$sandbox) {
+  $config = array(
+    'description' => 'Additional configuration',
+    'type' => 'text',
+    'size' => 'normal',
+    'not null' => TRUE
+  );
+  
+  db_add_field('tp_video_player_configuration', 'config', $config);
 }
 
 function tp_video_player_transfer_from_fields_sql() {

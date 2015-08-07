@@ -326,10 +326,61 @@ function tp_video_player_player_view($configuration, $files, $display = NULL) {
   $id = drupal_html_id('tp_video_player-' . time());
   $settings = tp_video_player_build_settings($configuration, $files, $display);
 
-  $elements = array(
+
+  //ensure that config is set and then chromeless is true
+  if (isset($configuration->config) && $configuration->config['chromeless'] == 1) {
+    $chromeless = TRUE;
+    $settings['chromeless'] = TRUE;
+    $settings['autostart'] = FALSE;
+    $settings['primary'] = 'html5';
+  }
+  else {
+    $chromeless = FALSE;
+    $settings['chromeless'] = FALSE;
+  }
+  
+  $video = array(
     '#theme' => 'tp_video_player',
     '#settings' => $settings,
     '#id' => $id,
+  );
+  
+  //chromeless controls
+  $play = l('pause', 'javascript:jwplayer("' . $id . '").pause();',
+    array(
+      'external' => TRUE,
+      'attributes' => array(
+        'class' => array('pause')
+      )
+    )
+  );
+  $turn_off = l('stop auto-play', 'javascript:jQuery.cookie("chromeless-autoplay", 0); jQuery(".stop-autoplay").hide();',
+    array(
+      'external' => TRUE,
+      'attributes' => array(
+        'class' => array('stop-autoplay')
+      )
+    )
+  );
+  
+  //chromeless player
+  $controls = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => $play . ' ' . $turn_off,
+      '#attributes' => array(
+        'class' => array('chromeless-controls')
+      )
+  )));
+  
+  $elements = array(
+    '#theme' => 'html_tag',
+    '#tag' => 'div',
+    '#value' => drupal_render($video) . (($chromeless) ? $controls : ''),
+    '#attributes' => array(
+      'class' => ($chromeless) ? 'chromeless-video' : '',
+      'data-video-control-id' => $id
+    )
   );
 
   return $elements;

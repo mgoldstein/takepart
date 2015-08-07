@@ -94,6 +94,18 @@ function tp_video_player_form_layout_fields($values, $is_default = FALSE) {
     '#description' => t('Setup JW Player for responsive design'),
     '#default_value' => $values['responsive'],
   );
+  
+  /**
+   *  @dev: noting that any small configuration can be in config so that it will store in the database without an alter.
+   */
+  
+  //chromeless feature.
+  $fields['config']['chromeless'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Chromeless'),
+    '#description' => t('By enabling chromeless, video will be shown in html5, advertisment will be turn off, and sharing will be disabled.'),
+    '#default_value' => $values['config']['chromeless'],
+  );
 
   $fields['width'] = array(
     '#type' => 'textfield',
@@ -612,6 +624,7 @@ function tp_video_player_configuration_form($form, &$form_state, $configuration,
 function tp_video_player_configuration_form_submit($form, $form_state) {
 
   $configuration = $form_state['storage']['tp_video_player_configuration'];
+  
   tp_video_player_update_configuration($configuration, $form_state['values']);
   tp_video_player_save_configuration($configuration);
 
@@ -694,4 +707,6 @@ function tp_video_player_update_configuration($configuration, $values) {
       $configuration->{$name} = $values[$group][$name];
     }
   }
+  
+  $configuration->config = $values['layout']['config'];
 }
