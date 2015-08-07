@@ -90,6 +90,9 @@ function tp_video_player_defaults($name = NULL) {
 function tp_video_player_create_configuration($values = array()) {
   $object = new StdClass();
   $values += array(
+    'config' => array(
+      'chromeless' => NULL
+    ),
 
     /* Keys */
     'id' => NULL,
@@ -147,6 +150,7 @@ function tp_video_player_create_configuration($values = array()) {
   foreach ($values as $name => $value) {
     $object->{$name} = $value;
   }
+  
   return $object;
 }
 
@@ -182,6 +186,11 @@ function tp_video_player_load_entity_configuration($entity_type, $entity_id, $vi
     ->range(0, 1)
     ->execute()
     ->fetchObject();
+    
+  if (isset($object->config)) {
+    $object->config = (array) json_decode($object->config);  
+  }
+  
   // Use NULL for not found instead of FALSE.
   return $object !== FALSE ? $object : NULL;
 }
@@ -228,6 +237,14 @@ function tp_video_player_delete_entity_configuration($entity_type, $entity_id) {
 
 function tp_video_player_save_configuration($configuration) {
   $values = (array) $configuration;
+  
+  //by default we want to json encode any additional data. this should only store small data so we wont need to alter the database again.
+  $values['config'] = json_encode($values['config']);
+
+  //fallback in case config schema hasnt been updated yet.
+  if (!db_field_exists('tp_video_player_configuration', 'config')) {
+    unset($values['config']);
+  }
   
   if (isset($values['id'])) {
     $configuration->updated_at = $values['updated_at'] = REQUEST_TIME;

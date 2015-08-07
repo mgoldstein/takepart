@@ -21,6 +21,11 @@
         if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
           settings['primary'] = 'flash';
         }
+        
+        //we will force it to use html5 as primary
+        if (settings['chromeless']) {
+          settings['primary'] = 'html5';
+        }
 
         //adjusts the playlist quality on load to handle caching
         settings = window.playlist_quality(settings);
@@ -54,6 +59,11 @@
           //init the playlist after processing
           tp_video_playlist_init(element, settings, index);
         }
+        
+        //bind the chromeless play at the end of the jwplayer init
+        $(window).bind('scroll', function() { 
+          tp_chromeless_play();
+        });
       });
 
       //fires the init for bxslider on ready
@@ -66,7 +76,6 @@
             window.tp_initslider();
           });
         }
-
       });
     }
   };
@@ -186,7 +195,7 @@
 
       //if it has passed all conditions then render a jwplayer
       jwplayer(element).setup(settings);
-      tp_init_jwplayer_callbacks(element, index);
+      tp_init_jwplayer_callbacks(element, index, settings);
     });
   }
 
@@ -194,14 +203,22 @@
    *  @function:
    *    This function is used to init the jwplayer callbacks
    */
-  function tp_init_jwplayer_callbacks(element, index){
+  function tp_init_jwplayer_callbacks(element, index, settings){
 
     var element_id = $(element).attr('id');
     var playlist = $('#' + element_id).parent().parent();
-
+    var chromeless = settings['chromeless'];
+    
     window['currentVideo_' + index] = 0;
     updateVideo(window['currentVideo_' + index], playlist);
-
+    
+    //only override controls if chromeless is set
+    if (chromeless) {
+      jwplayer(element_id).onPlay(function(event) {
+        jwplayer(element_id).setControls(false);
+      });
+    }
+    
     jwplayer(element_id).onComplete(function(event) {
       window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
 
@@ -221,7 +238,6 @@
       if( newValCurrentSlide != current_slide){
         window['bxslider_' + index].goToSlide(newValCurrentSlide);
       }
-
     });
 
   }
@@ -237,6 +253,55 @@
     }
     else if(playlistType == 'basic'){
       playlist.find('ul.video-playlist .video-item[data-video-number="' + current_video + '"]').addClass('active');
+    }
+  }
+  
+  /**
+   *  @function:
+   *    function used to play and trigger chromeless tp videos within the view
+   *
+   *    @todo: update code to only trigger correctly
+   */
+  window.tp_chromeless_play = function() {
+    //variables
+    var window_height = $(window).height();
+    var window_y_pos = window.pageYOffset;
+    var window_viewport = window_y_pos + window_height;
+    var window_mid_pos = window_y_pos + (window_height / 2);
+    
+    var autoplay = $.cookie('chromeless-autoplay');
+   
+    //only do autoplay if no cookie is set
+    if (autoplay == null) { 
+      //check each chromless video
+      $('.chromeless-video').each(function(key, value) {
+        //variables local to scope
+        var player_y_pos = $(this).offset();
+        var player_mid_height = $(this).height() / 2;
+        var player_mid_pos = player_y_pos.top + player_mid_height;  
+        var control_id = $(this).data('videoControlId');
+        
+        if (player_mid_pos > window_mid_pos - 100 && player_mid_pos < window_mid_pos + 100 ) {
+          var video_state = jwplayer(control_id).getState();
+          
+          //ensures we only play video once since play will pause
+          if (!$(this).hasClass('playing')) {
+            $(this).addClass('playing');
+            
+            //only want to play if it's not playing
+            if (video_state != "PLAYING") {
+              jwplayer(control_id).play();
+            }
+          }
+        }
+        else {
+          //we want to only pause if it has playing
+          if ($(this).hasClass('playing')) {
+            jwplayer(control_id).pause();
+            $(this).removeClass('playing');
+          }
+        }
+      });
     }
   }
 
