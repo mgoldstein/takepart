@@ -241,6 +241,11 @@ function tp_video_player_save_configuration($configuration) {
   //by default we want to json encode any additional data. this should only store small data so we wont need to alter the database again.
   $values['config'] = json_encode($values['config']);
 
+  //fallback in case config schema hasnt been updated yet.
+  if (!db_field_exists('tp_video_player_configuration', 'config')) {
+    unset($values['config']);
+  }
+  
   if (isset($values['id'])) {
     $configuration->updated_at = $values['updated_at'] = REQUEST_TIME;
     db_update('tp_video_player_configuration')
