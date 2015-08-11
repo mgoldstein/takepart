@@ -346,19 +346,20 @@ function tp_video_player_player_view($configuration, $files, $display = NULL) {
   );
   
   //chromeless controls
-  $play = l('pause', 'javascript:jwplayer("' . $id . '").pause();',
+  $play = l('pause', '#',
     array(
       'external' => TRUE,
       'attributes' => array(
-        'class' => array('pause')
+        'class' => array('pause'),
+        'data-player-id' => $id
       )
     )
   );
-  $turn_off = l('stop auto-play', 'javascript:jQuery.cookie("chromeless-autoplay", 0); jQuery(".stop-autoplay").hide();',
+  $turn_off = l('stop auto-play', '#',
     array(
       'external' => TRUE,
       'attributes' => array(
-        'class' => array('stop-autoplay')
+        'class' => array('stop-autoplay'),
       )
     )
   );

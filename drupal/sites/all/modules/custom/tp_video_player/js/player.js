@@ -1,4 +1,5 @@
 (function ($, Drupal, window, document, undefined) {
+  var chromeless_timer;
 
   Drupal.behaviors.tp_video_player = {
     attach: function() {
@@ -25,6 +26,7 @@
         //we will force it to use html5 as primary
         if (settings['chromeless']) {
           settings['primary'] = 'html5';
+          settings['controls'] = false;
         }
 
         //adjusts the playlist quality on load to handle caching
@@ -61,8 +63,16 @@
         }
         
         //bind the chromeless play at the end of the jwplayer init
-        $(window).bind('scroll', function() { 
-          tp_chromeless_play();
+        $(window).bind('scroll', function() {
+          if (chromeless_timer) {
+            window.clearTimeout(chromeless_timer);
+            chromeless_timer = null;
+          }
+          
+          chromeless_timer = setTimeout(function() {
+            tp_chromeless_play();
+          }, 100);
+          
         });
       });
 
@@ -192,7 +202,7 @@
         $(playlist).addClass('blocked');
         return;
       }
-
+      
       //if it has passed all conditions then render a jwplayer
       jwplayer(element).setup(settings);
       tp_init_jwplayer_callbacks(element, index, settings);
@@ -304,6 +314,29 @@
       });
     }
   }
+  
+  //document ready
+  $(document).ready(function() {
+    $('.chromeless-controls .pause').click(function() {
+      var player_id = $(this).data('playerId');
+      var video_state = jwplayer(player_id).getState();
+      jwplayer(player_id).pause();
+      
+      if (video_state == 'PLAYING') {
+        $(this).parent().parent().addClass('playing');
+      }
+      else {
+        $(this).parent().parent().removeClass('playing');
+      }
+      return false;
+    });
+    
+    $('.chromeless-controls .stop-autoplay').click(function() {
+      $.cookie("chromeless-autoplay", 0);
+      $(".stop-autoplay").hide();
+      return false;
+    });
+  });
 
   /**
    *  @function:
