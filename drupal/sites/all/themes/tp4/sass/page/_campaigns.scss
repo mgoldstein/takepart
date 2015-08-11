@@ -1389,17 +1389,6 @@ body.campaign-display{
                 @include breakpoint($breakpoint-desktop) {
                     float: none;
                 }
-
-                // // removed by matt 2014-06-18; can share same styling as rule below
-                // @media (min-width: 701px) {
-                //   float: none;
-                //   box-sizing: border-box;
-                //   width: 100%;
-                //   padding-right: 175px;
-                //   padding-left: 175px;
-                //   margin-left: auto;
-                //   margin-right: auto;
-                // }
             }
         }
         .branding-header:not(.has-menu){
@@ -1479,11 +1468,12 @@ body.campaign-display{
     //
     // Newsletter Signup Block
     //
-    .block-newsletter-campaign {
+    .block-newsletter-campaign, .card.campaign-1col .center-column .block-newsletter-campaign  {
         max-width: 550px;
         margin: 0 auto;
         text-align: center;
         margin-top: 20px;
+        float: none;
 	}
 }
 
