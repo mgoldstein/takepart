@@ -1,4 +1,5 @@
 (function ($, Drupal, window, document, undefined) {
+  var chromeless_timer;
 
   Drupal.behaviors.tp_video_player = {
     attach: function() {
@@ -62,8 +63,16 @@
         }
         
         //bind the chromeless play at the end of the jwplayer init
-        $(window).bind('scroll', function() { 
-          tp_chromeless_play();
+        $(window).bind('scroll', function() {
+          if (chromeless_timer) {
+            window.clearTimeout(chromeless_timer);
+            chromeless_timer = null;
+          }
+          
+          chromeless_timer = setTimeout(function() {
+            tp_chromeless_play();
+          }, 100);
+          
         });
       });
 
