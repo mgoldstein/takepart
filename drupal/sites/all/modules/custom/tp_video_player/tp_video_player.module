@@ -326,13 +326,14 @@ function tp_video_player_player_view($configuration, $files, $display = NULL) {
   $id = drupal_html_id('tp_video_player-' . time());
   $settings = tp_video_player_build_settings($configuration, $files, $display);
 
-
   //ensure that config is set and then chromeless is true
   if (isset($configuration->config) && $configuration->config['chromeless'] == 1) {
     $chromeless = TRUE;
     $settings['chromeless'] = TRUE;
     $settings['autostart'] = FALSE;
     $settings['primary'] = 'html5';
+    unset($settings['sharing']);
+    unset($settings['advertising']);
   }
   else {
     $chromeless = FALSE;
