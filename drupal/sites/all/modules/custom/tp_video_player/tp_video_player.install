@@ -321,7 +321,6 @@ function tp_video_player_schema() {
         'description' => 'Additional configuration',
         'type' => 'text',
         'size' => 'normal',
-        'not null' => TRUE
       ),
     ),
     'unique keys' => array(
@@ -341,7 +340,6 @@ function tp_video_player_update_7001(&$sandbox) {
     'description' => 'Additional configuration',
     'type' => 'text',
     'size' => 'normal',
-    'not null' => TRUE
   );
   
   db_add_field('tp_video_player_configuration', 'config', $config);
