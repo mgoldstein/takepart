@@ -25,6 +25,7 @@
         //we will force it to use html5 as primary
         if (settings['chromeless']) {
           settings['primary'] = 'html5';
+          settings['controls'] = false;
         }
 
         //adjusts the playlist quality on load to handle caching
@@ -192,7 +193,7 @@
         $(playlist).addClass('blocked');
         return;
       }
-
+      
       //if it has passed all conditions then render a jwplayer
       jwplayer(element).setup(settings);
       tp_init_jwplayer_callbacks(element, index, settings);
@@ -304,6 +305,29 @@
       });
     }
   }
+  
+  //document ready
+  $(document).ready(function() {
+    $('.chromeless-controls .pause').click(function() {
+      var player_id = $(this).data('playerId');
+      var video_state = jwplayer(player_id).getState();
+      jwplayer(player_id).pause();
+      
+      if (video_state == 'PLAYING') {
+        $(this).parent().parent().addClass('playing');
+      }
+      else {
+        $(this).parent().parent().removeClass('playing');
+      }
+      return false;
+    });
+    
+    $('.chromeless-controls .stop-autoplay').click(function() {
+      $.cookie("chromeless-autoplay", 0);
+      $(".stop-autoplay").hide();
+      return false;
+    });
+  });
 
   /**
    *  @function:
