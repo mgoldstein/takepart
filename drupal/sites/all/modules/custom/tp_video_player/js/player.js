@@ -71,7 +71,7 @@
           
           chromeless_timer = setTimeout(function() {
             tp_chromeless_play();
-          }, 100);
+          }, 75);
           
         });
       });
@@ -226,6 +226,11 @@
     if (chromeless) {
       jwplayer(element_id).onPlay(function(event) {
         jwplayer(element_id).setControls(false);
+        $('#' + element_id).parent().addClass('playing');
+      });
+      
+      jwplayer(element_id).onPause(function(event) {
+        $('#' + element_id).parent().removeClass('playing');
       });
     }
     
@@ -291,24 +296,23 @@
         var player_mid_pos = player_y_pos.top + player_mid_height;  
         var control_id = $(this).data('videoControlId');
         
+        //if it has class then dont continue
+        if ($(this).hasClass('disable-autoplay')) {
+          return;
+        }
+        
         if (player_mid_pos > window_mid_pos - 100 && player_mid_pos < window_mid_pos + 100 ) {
           var video_state = jwplayer(control_id).getState();
           
-          //ensures we only play video once since play will pause
-          if (!$(this).hasClass('playing')) {
-            $(this).addClass('playing');
-            
-            //only want to play if it's not playing
-            if (video_state != "PLAYING") {
-              jwplayer(control_id).play();
-            }
+          //only want to play if it's not playing
+          if (video_state != "PLAYING") {
+            jwplayer(control_id).play();
           }
         }
         else {
           //we want to only pause if it has playing
           if ($(this).hasClass('playing')) {
             jwplayer(control_id).pause();
-            $(this).removeClass('playing');
           }
         }
       });
@@ -319,15 +323,11 @@
   $(document).ready(function() {
     $('.chromeless-controls .pause').click(function() {
       var player_id = $(this).data('playerId');
-      var video_state = jwplayer(player_id).getState();
       jwplayer(player_id).pause();
       
-      if (video_state == 'PLAYING') {
-        $(this).parent().parent().addClass('playing');
-      }
-      else {
-        $(this).parent().parent().removeClass('playing');
-      }
+      //adds a class so that it disables autoplay
+      $(this).parent().parent().addClass('disable-autoplay');
+
       return false;
     });
     

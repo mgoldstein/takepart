@@ -1750,6 +1750,8 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
   margin: 0 auto;
   
   .chromeless-controls {
+    height: auto;
+    
     a {
       &.pause {
         background-image: url(/sites/all/themes/base/images/pause_play_stop_black.png);
@@ -1759,23 +1761,21 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
         display: block;
         text-indent: -99999px;
         float: left;
-        background-position-x: 0px;
+        background-position: 66px 0px;
         margin-right: 15px;
       }
       
       &.stop-autoplay {
         font-size: 12px;
-        float: left;
-        padding-top: 5px;
       }
     }
   }
   
   &.playing {
-  .chromeless-controls {
-    a.pause {
-      background-position-x: 32px;
+    .chromeless-controls {
+      a.pause {
+        background-position: 0px 0px;
+      }
     }
-  }
   }
 }
