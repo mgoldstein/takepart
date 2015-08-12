@@ -531,4 +531,73 @@
 
   });
 
+    /**
+     * Modal ad Behaviors
+     */
+    Drupal.behaviors.showModal = {
+        attach: function(context, settings) {
+
+            $(document).ready(function(){
+
+                /* Append Modal Background to Page */
+                var modalBG = document.createElement('div');
+                modalBG.className = 'modal-bg';
+                $('body').append(modalBG);
+
+                var closeButton = document.createElement('a');
+                closeButton.className = 'close-btn';
+                closeButton.innerHTML = '<div class="icon i-close"></div>';
+
+                /* Append overlay content to body */
+                $('.modal-content').each(function(){
+                    $(closeButton).appendTo(this);
+                    $(this).appendTo('body');
+                });
+
+
+                // function to show our popups
+                function showModal(whichmodal){
+                    var docHeight = $(document).height();
+                    var scrollTop = $(window).scrollTop();
+
+                    $('.modal-bg').fadeIn("slow").css({'height' : docHeight});
+                    $('#'+whichmodal).fadeIn("slow").css({'top': scrollTop+20+'px'});
+
+                    // if a video exists in the modal, play it
+                    if($('#'+whichmodal+ ' video').length){
+                        $('#'+whichmodal+ ' video')[0].play();
+                    }
+                }
+
+                // function to close our popups
+                function closeModal(){
+                    $('.modal-bg, .modal-content').fadeOut("slow");
+
+                    // if a video exists in modal, pause it
+                    if($('.modal-content video').length){
+                        $('.modal-content video')[0].pause();
+                    }
+                }
+
+                $('.show-modal').click(function(event){
+                    event.preventDefault();
+                    var selectedModal = $(this).data('showModal');
+
+                    showModal(selectedModal);
+                });
+
+                $('.close-btn, .modal-bg').click(function(){
+                    closeModal();
+                });
+
+                // hide the modal when user presses the esc key
+                $(document).keyup(function(e) {
+                    if (e.keyCode == 27) { // if user presses esc key
+                        closeModal();
+                    }
+                });
+            });
+        }
+    };
+
 })(jQuery, Drupal, this, this.document);
