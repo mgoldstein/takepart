@@ -227,6 +227,7 @@
       jwplayer(element_id).onPlay(function(event) {
         jwplayer(element_id).setControls(false);
         $('#' + element_id).parent().addClass('playing');
+        $('#' + element_id).css('background-color', 'white');
       });
       
       jwplayer(element_id).onPause(function(event) {
