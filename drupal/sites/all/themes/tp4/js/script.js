@@ -581,7 +581,7 @@
 
                 $('.show-modal').click(function(event){
                     event.preventDefault();
-                    var selectedModal = $(this).data('showModal');
+                    var selectedModal = $(this).data('show-modal');
 
                     showModal(selectedModal);
                 });
