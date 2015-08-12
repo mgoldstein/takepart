@@ -344,8 +344,44 @@ function tp_video_player_player_view($configuration, $files, $display = NULL) {
     '#theme' => 'tp_video_player',
     '#settings' => $settings,
     '#id' => $id,
+    '#chromeless' => $chromeless
   );
+
+  return $video;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tp_video_player_theme() {
+  return array(
+    'tp_video_player' => array(
+      'variables' => array(
+        'id' => NULL,
+        'settings' => array(),
+        'chromeless' => NULL
+      ),
+    ),
+  );
+}
+
+/**
+ * Theme hook for tp_video_player.
+ */
+function theme_tp_video_player($variables) {
+  if ($variables['chromeless']) {
+    $chromeless = TRUE;
+  }
+  else {
+    $chromeless = FALSE;
+  }
   
+  $id = $variables['id'];
+  $attributes = array(
+    'id' => $id,
+    'class' => array('tp-video-player'),
+  );
+
   //chromeless controls
   $play = l('pause', '#',
     array(
@@ -356,6 +392,7 @@ function tp_video_player_player_view($configuration, $files, $display = NULL) {
       )
     )
   );
+  
   $turn_off = l('stop auto-play', '#',
     array(
       'external' => TRUE,
@@ -369,53 +406,29 @@ function tp_video_player_player_view($configuration, $files, $display = NULL) {
   $controls = theme('html_tag', array(
     'element' => array(
       '#tag' => 'div',
-      '#value' => $play . ' ' . $turn_off,
+      '#value' => $play,
       '#attributes' => array(
         'class' => array('chromeless-controls')
       )
   )));
   
-  $elements = array(
+  $script = '<div' . drupal_attributes($attributes) . '>' .
+    '<script type="text/json">' .
+    json_encode($variables['settings']) .
+    '</script>' .
+    '</div>';
+    
+  $output = array(
     '#theme' => 'html_tag',
     '#tag' => 'div',
-    '#value' => drupal_render($video) . (($chromeless) ? $controls : ''),
+    '#value' => $script . (($chromeless) ? $controls : ''),
     '#attributes' => array(
       'class' => ($chromeless) ? 'chromeless-video' : '',
       'data-video-control-id' => $id
     )
   );
-
-  return $elements;
-}
-
-/**
- * Implements hook_theme().
- */
-function tp_video_player_theme() {
-  return array(
-    'tp_video_player' => array(
-      'variables' => array(
-        'id' => NULL,
-        'settings' => array(),
-      ),
-    ),
-  );
-}
-
-/**
- * Theme hook for tp_video_player.
- */
-function theme_tp_video_player($variables) {
-  $id = $variables['id'];
-  $attributes = array(
-    'id' => $id,
-    'class' => array('tp-video-player'),
-  );
-  return '<div' . drupal_attributes($attributes) . '>' .
-    '<script type="text/json">' .
-    json_encode($variables['settings']) .
-    '</script>' .
-    '</div>';
+  
+  return drupal_render($output);
 }
 
 /**
