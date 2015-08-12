@@ -392,6 +392,7 @@ function theme_tp_video_player($variables) {
       )
     )
   );
+  
   $turn_off = l('stop auto-play', '#',
     array(
       'external' => TRUE,
@@ -405,7 +406,7 @@ function theme_tp_video_player($variables) {
   $controls = theme('html_tag', array(
     'element' => array(
       '#tag' => 'div',
-      '#value' => $play . ' ' . $turn_off,
+      '#value' => $play,
       '#attributes' => array(
         'class' => array('chromeless-controls')
       )
