@@ -301,7 +301,7 @@
           return;
         }
         
-        if (player_mid_pos > window_mid_pos - 100 && player_mid_pos < window_mid_pos + 100 ) {
+        if (player_mid_pos > window_mid_pos - 150 && player_mid_pos < window_mid_pos + 150 ) {
           var video_state = jwplayer(control_id).getState();
           
           //only want to play if it's not playing

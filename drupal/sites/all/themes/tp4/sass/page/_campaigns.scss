@@ -1751,6 +1751,7 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
   
   .chromeless-controls {
     height: auto;
+    overflow: auto;
     
     a {
       &.pause {
