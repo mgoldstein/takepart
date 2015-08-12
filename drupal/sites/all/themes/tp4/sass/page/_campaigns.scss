@@ -231,7 +231,7 @@ body.campaign-display
     width: 100%;
     height: auto;
     overflow: hidden;
-    .media, .media > *{
+    .media, .media > *, .field-name-field-campaign-media-video, .field-name-field-campaign-media-video > *{
       width: 100%;
       margin: 0;
       padding-right: 0;
