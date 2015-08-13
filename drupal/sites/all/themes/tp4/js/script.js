@@ -580,6 +580,24 @@
                     if($('#'+whichmodal+ ' video').length){
                         $('#'+whichmodal+ ' video')[0].play();
                     }
+
+                    // if a jwplayer placeholder exists, play it
+                    if($('#'+whichmodal+ ' .jwp').length){
+
+                        /* Append Modal Background to Page */
+                        var playerElement = document.createElement('div');
+                        playerElement.setAttribute("id", whichmodal+"-inner");
+                        $('#'+whichmodal+ ' .jwp').append(playerElement);
+
+                        var file = $('#'+whichmodal+ ' .jwp').data('jwp-file');
+                        var playerInstance = jwplayer(whichmodal+"-inner").setup({
+                            file: file,
+                            width: '100%',
+                            aspectratio: '16:9',
+                            primary: 'html5'
+                        });
+                        playerInstance.play();
+                    }
                 }
 
                 // function to close our popups
