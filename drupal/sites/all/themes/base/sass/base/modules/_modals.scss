@@ -39,6 +39,10 @@
     max-width: 100%;
     display: block;
   }
+  .jwp .jwplayer{
+    display: block !important;
+    overflow: hidden;
+  }
   @include breakpoint($breakpoint-phablet) {
     width: 90%;
     margin: 0 5%;
