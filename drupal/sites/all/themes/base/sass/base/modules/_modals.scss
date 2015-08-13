@@ -1,51 +1,51 @@
 /* Modals */
-.modal-bg {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height:100%;
-  width: 100%;
-  cursor: pointer;
-  z-index: 1000; /* high z-index */
-  background: #000; /* fallback */
-  background: rgba(0,0,0,0.75);
-}
-.modal-content {
-  display: none;
-  background: #fff;
-  width: 90%;
-  position: absolute;
-  top: 15%;
-  left: 5%;
-  cursor: default;
-  z-index: 10001;
-  box-shadow: 0 0 5px rgba(0,0,0,0.7);
-  a.close-btn {
-    position: absolute;
-    top: 0;
-    right: -3%;
-    cursor: pointer;
-    padding: 10px;
-    color: white;
-    font-size: 20px;
-    line-height: 20px;
-    &:hover{
-      text-decoration: none;
+body {
+  &.not-front {
+    .modal-bg {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height:100%;
+      width: 100%;
+      cursor: pointer;
+      z-index: 1000; /* high z-index */
+      background: #000; /* fallback */
+      background: rgba(0,0,0,0.75);
     }
-  }
-  video {
-    width: 100%;
-    max-width: 100%;
-    display: block;
-  }
-  .jwp .jwplayer{
-    display: block !important;
-    overflow: hidden;
-  }
-  @include breakpoint($breakpoint-phablet) {
-    width: 90%;
-    margin: 0 5%;
-    left: 0;
+    .modal-content {
+      display: none;
+      background: #fff;
+      width: 90%;
+      position: absolute;
+      top: 15%;
+      left: 5%;
+      cursor: default;
+      z-index: 10001;
+      box-shadow: 0 0 5px rgba(0,0,0,0.7);
+      a.close-btn {
+        position: absolute;
+        top: 0;
+        right: -3%;
+        cursor: pointer;
+        padding: 10px;
+        color: white;
+        font-size: 20px;
+        line-height: 20px;
+        &:hover{
+          text-decoration: none;
+        }
+      }
+      video {
+        width: 100%;
+        max-width: 100%;
+        display: block;
+      }
+      @include breakpoint($breakpoint-phablet) {
+        width: 90%;
+        margin: 0 5%;
+        left: 0;
+      }
+    }    
   }
 }
