@@ -147,6 +147,12 @@ function tp_campaigns_card_background(&$variables){
     $variables['classes_array'][] = 'content-full-width';
   }
 
+  $background = '';
+  if($background = field_get_items('node', $variables['node'], 'field_campaign_background')) {
+    $background = file_create_url($background[0]['uri']);
+    $variables['styles'][] = "background-image: url('$background');";
+  }
+
 	//Set the size of the background image
 	$bg_image_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_bgw_image');
 	if($bg_image_width == 'Full Width'){
