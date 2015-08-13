@@ -539,20 +539,33 @@
 
             $(document).ready(function(){
 
-                /* Append Modal Background to Page */
-                var modalBG = document.createElement('div');
-                modalBG.className = 'modal-bg';
-                $('body').append(modalBG);
+                if($('body').hasClass('campaign-display')){
+                    /* Append Modal Background to Page */
+                    var modalBG = document.createElement('div');
+                    modalBG.className = 'modal-bg';
+                    $('body').append(modalBG);
 
-                var closeButton = document.createElement('a');
-                closeButton.className = 'close-btn';
-                closeButton.innerHTML = '<div class="icon i-close"></div>';
+                    var closeButton = document.createElement('a');
+                    closeButton.className = 'close-btn';
+                    closeButton.innerHTML = '<div class="icon i-close"></div>';
 
-                /* Append overlay content to body */
-                $('.modal-content').each(function(){
-                    $(closeButton).appendTo(this);
-                    $(this).appendTo('body');
-                });
+                    /* Append overlay content to body */
+                    $('.modal-content').each(function(){
+                        $(closeButton).appendTo(this);
+                        $(this).appendTo('body');
+                    });
+
+                    $('.show-modal').click(function(event){
+                        event.preventDefault();
+                        var selectedModal = $(this).data('show-modal');
+
+                        showModal(selectedModal);
+                    });
+
+                    $('.close-btn, .modal-bg').click(function(){
+                        closeModal();
+                    });
+                }
 
 
                 // function to show our popups
@@ -579,23 +592,6 @@
                     }
                 }
 
-                $('.show-modal').click(function(event){
-                    event.preventDefault();
-                    var selectedModal = $(this).data('show-modal');
-
-                    showModal(selectedModal);
-                });
-
-                $('.close-btn, .modal-bg').click(function(){
-                    closeModal();
-                });
-
-                // hide the modal when user presses the esc key
-                $(document).keyup(function(e) {
-                    if (e.keyCode == 27) { // if user presses esc key
-                        closeModal();
-                    }
-                });
             });
         }
     };
