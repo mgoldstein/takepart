@@ -872,9 +872,9 @@ body.campaign-display{
     }
     .card.has-videoBG {
       position: relative;
-      height: 600px;
+      min-height: 600px;
       @include breakpoint($breakpoint-desktop) {
-        height: 720px;
+        min-height: 720px;
       }
     }
     .card video.background-video{
