@@ -34,14 +34,14 @@
       text-decoration: none;
     }
   }
-  video{
+  video {
     width: 100%;
     max-width: 100%;
     display: block;
   }
   @include breakpoint($breakpoint-phablet) {
-    width: 96%;
-    margin: 0 2%;
+    width: 90%;
+    margin: 0 5%;
     left: 0;
   }
 }
