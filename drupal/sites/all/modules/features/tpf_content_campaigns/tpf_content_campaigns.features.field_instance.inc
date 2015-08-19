@@ -10389,7 +10389,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_campaign_full_width',
-    'label' => 'Extend Full Width',
+    'label' => 'Video Full Width',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -10401,7 +10401,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 12,
+      'weight' => 20,
     ),
   );
 
@@ -24786,7 +24786,6 @@ Note: If you manually reference more items than selected here, the number refere
   t('Disable Menu');
   t('Embed');
   t('Enable Facebook Comments for this Campaign Page');
-  t('Extend Full Width');
   t('Filter');
   t('Fonts for CSS');
   t('Free Tag');
@@ -24873,6 +24872,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Twitter Pin');
   t('Type');
   t('Username');
+  t('Video Full Width');
   t('Video file must be an mp4');
   t('What campaign does this page belong to?');
   t('Which side should the media content appear on (photo/video)?');

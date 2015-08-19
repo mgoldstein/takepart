@@ -1770,3 +1770,26 @@ body.campaign-display .card.campaign-1col.node-campaign-card-ad .block {
     }
   }
 }
+
+body.campaign-display .card.content-full-width {
+  .card-inner {
+    width: 100%;
+    max-width: none;
+    .center-column {
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+      .description{
+        max-width: 1000px;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+        > * {
+          @include zen-grid-item(10, 2);
+        }
+      }
+    }
+  }
+}
