@@ -126,12 +126,8 @@
           });
 
           //if article is first then set target to true otherwise false
-          if (k === 0) {
-            targets += 'googletag.pubads().setTargeting(\'TopArticle\', \'true\');';
-          }
-          else {
-            targets += 'googletag.pubads().setTargeting(\'TopArticle\', \'false\');';
-          }
+          var top_article = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['TopArticle'];
+          targets += 'googletag.pubads().setTargeting(\'TopArticle\', \'' + top_article + '\');';
           
           //adding a article position targetting even if its not being used now its built
           targets += 'googletag.pubads().setTargeting(\'articlePosition\', \'' + (k + 1) + '\');';
@@ -219,9 +215,27 @@
           //only replace call with refresh
           var page_url = $('.ad-active article').data('tpOgUrl');
           var targets = '';
+          
+          //does for each target set from the backend
+          $.each(Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'], function(i, v) {
+            targets += ' googletag.pubads().clearTargeting(\'' + i + '\');';
+            if (v != '""') {
+              if (v.indexOf('[') >= 0) {
+                targets += 'googletag.pubads().setTargeting(\'' + i + '\', '+ v + ');';
+              }
+              else {
+                targets += 'googletag.pubads().setTargeting(\'' + i + '\', \'' + v + '\');';
+              }
+            }
+          });
+
+          //if article is first then set target to true otherwise false
+          var top_article = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['TopArticle'];
+          targets += 'googletag.pubads().setTargeting(\'TopArticle\', \'' + top_article + '\');';
+          
           targets += 'googletag.pubads().refresh([' +  current_ad.ad_slot.replace('-', '-') + ']);'
           javascript = javascript.replace('[targets]', targets);
-          
+
           //ensures we only process the selector once
           $(selector_item).once('tp-ad', function() {
             var $this = this;
