@@ -525,7 +525,6 @@ function tpf_content_campaigns_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_campaign_bg_video',
-      1 => 'field_campaign_bg_video_poster',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -842,8 +841,8 @@ function tpf_content_campaigns_field_group_info() {
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
       2 => 'field_campaign_bg_crop',
-      3 => 'group_background_image',
-      4 => 'group_background_video',
+      3 => 'group_background_video',
+      4 => 'group_background_image',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1209,6 +1208,7 @@ function tpf_content_campaigns_field_group_info() {
       4 => 'field_campaign_media_title',
       5 => 'field_campaign_media_video',
       6 => 'field_media_video_playlist',
+      7 => 'field_campaign_full_width',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
