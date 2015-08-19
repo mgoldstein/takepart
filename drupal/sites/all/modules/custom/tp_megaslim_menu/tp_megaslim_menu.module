@@ -244,7 +244,7 @@ function tp_megaslim_menu_load_menu(){
         ),
         'html' => TRUE
       )),
-      'class' => array('mega-item col-xs-2'),
+      'class' => array('mega-item'),
     );
     $items[$key] = $elements;
   }
