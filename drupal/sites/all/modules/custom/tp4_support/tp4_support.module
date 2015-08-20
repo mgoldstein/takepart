@@ -56,9 +56,6 @@ function tp4_support_block_info(){
   $blocks['tp4_footer'] = array(
     'info' => t('Footer for Homepage Redesign'),
   );
-  $blocks['tp4_fat_header'] = array(
-    'info' => t('Fat Header for the new TP4 theme'),
-  );
   $blocks['tp4_dont_miss'] = array(
     'info' => t('Don\'t miss homepage promo'),
   );
@@ -82,9 +79,6 @@ function tp4_support_block_view($delta = ''){
   switch($delta){
     case 'tp4_footer':
       $block['content'] = theme('tp4_support_footer');
-    break;
-    case 'tp4_fat_header':
-      $block['content'] = tp4_support_fat_header();
     break;
     case 'tp4_dont_miss':
       $block['content'] = tp4_support_dont_miss();
@@ -206,16 +200,6 @@ function tp4_support_theme() {
         'corporate_links' => menu_tree('menu-corporate-footer'),
       ),
       'template' => 'tp4-support-footer'
-    ),
-    'tp4_support_fat_header' => array(
-      'arguments' => array(),
-      'template' => 'tp4-support-fat-header',
-      'variables' => array(
-        'logo' => $logo,
-        'user_links' => $user_links,
-        'search' => $search,
-        'megamenu' => $megamenu,
-      ),
     ),
     'tp4_support_slim_nav' => array(
       'arguments' => array(),
@@ -558,29 +542,6 @@ function theme_tp4_support_featured_campaign(&$variables) {
 
   // render() will just return a string if it's passed one
   return render($return);
-}
-
-function tp4_support_fat_header(){
-  global $base_url;
-  global $user;
-  $logo = $base_url . '/'. drupal_get_path('theme', 'tp4'). '/images/takepart_logo.png';
-  if($user->uid == 0){
-    $user_links = array();
-    $user_links = array(
-      '<li>'. l('Sign in', $base_url. '/user'). '</li>',
-    );
-  }
-  else {
-    $user_links = array(
-      '<li class="user">'. l($user->name, $base_url. '/user'). '</li>',
-      '<li>'. l('Sign out', $base_url. '/user/logout'). '</li>',
-    );
-    $search = drupal_render(drupal_get_form('search_block_form'));
-  }
-  $megamenu = module_invoke('tp_megamenu', 'block_view', 'tp_megamenu_megamenu');
-  $megamenu = $megamenu['content'];
-
-  return theme('tp4_support_fat_header', array('logo' => $logo, 'user_links' => $user_links, 'search' => $search, 'megamenu' => $megamenu));
 }
 
 function tp4_support_dont_miss(){

@@ -1187,12 +1187,6 @@ function tpf_display_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'tp4_support-tp4_fat_header' => array(
-          'module' => 'tp4_support',
-          'delta' => 'tp4_fat_header',
-          'region' => 'header',
-          'weight' => '-9',
-        ),
         'boxes-ga_mobile_320x50_relative' => array(
           'module' => 'boxes',
           'delta' => 'ga_mobile_320x50_relative',
@@ -1326,12 +1320,6 @@ function tpf_display_context_context_default_contexts() {
           'delta' => 'takepart',
           'region' => 'header',
           'weight' => '-9',
-        ),
-        'tp4_support-tp4_fat_header' => array(
-          'module' => 'tp4_support',
-          'delta' => 'tp4_fat_header',
-          'region' => 'header',
-          'weight' => '-8',
         ),
         'tp4_support-tp4_footer' => array(
           'module' => 'tp4_support',

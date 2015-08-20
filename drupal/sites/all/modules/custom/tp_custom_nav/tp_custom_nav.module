@@ -100,7 +100,6 @@ function tp_custom_nav_preprocess_page(&$variables) {
 
       //unsets the slim nav if one exists
       unset($variables['page']['header']['tp4_support_tp4_slim_nav']);
-      unset($variables['page']['header']['tp4_support_tp4_fat_header']);
       
       //load and render block
       $block = block_load('tp_custom_nav', 'tp_custom_nav_slim');
