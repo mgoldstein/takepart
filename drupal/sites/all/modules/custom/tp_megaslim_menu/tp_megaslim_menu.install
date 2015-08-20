@@ -30,3 +30,16 @@ function tp_megaslim_menu_uninstall(){
   image_style_flush(array('name' => $image_style));
   image_style_delete(array('name' => $image_style));
 }
+
+/**
+ * Implements hook_update_N().
+ */
+function tp_megaslim_menu_update_7000() {
+  /* Disable MegaMenu */
+  /* TODO: remove tp_megamenu from codebase after this has been deployed */
+  module_disable(array('tp_megamenu'));
+
+  $path = drupal_get_path('module', 'tp_megamenu');
+  file_unmanaged_delete_recursive($path);
+
+}
