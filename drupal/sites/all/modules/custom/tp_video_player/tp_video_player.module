@@ -247,6 +247,11 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
   $settings = $display['settings'];
   $menu_obj = menu_get_object();
 
+  //overrides the video iframe settings to pull the video full page setting
+  if ($settings['global_default'] == 'video_iframe') {
+    $settings['global_default'] = 'video_full_page';
+  }
+  
   if ($display['type'] === 'tp_video_player' && count($items) > 0) {
     // Load any available node specific configuration.
     $configuration = tp_video_player_load_entity_configuration($entity_type,
