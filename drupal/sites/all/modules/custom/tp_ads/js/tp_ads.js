@@ -57,6 +57,14 @@
     }
   }
   
+   /**
+   *  @function:
+   *    Escape all quotes in a string (for PageTitle)
+   */
+    window.addslashes = function(str) {
+    return (str + '').replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0');
+}
+
   /**
    *  @function:
    *    function is used to add the ads when in viewport
@@ -115,8 +123,11 @@
           //does for each target set from the backend
           $.each(Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'], function(i, v) {
             targets += ' googletag.pubads().clearTargeting(\'' + i + '\');';
-            if (v != '""') {
-              if (v.indexOf('[') >= 0) {
+            if (v !== '""') {
+		    if (i === 'PageTitle') {
+			 targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
+		    }
+              else if (v.indexOf('[') >= 0) {
                 targets += 'googletag.pubads().setTargeting(\'' + i + '\', '+ v + ');';
               }
               else {
@@ -219,8 +230,11 @@
           //does for each target set from the backend
           $.each(Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'], function(i, v) {
             targets += ' googletag.pubads().clearTargeting(\'' + i + '\');';
-            if (v != '""') {
-              if (v.indexOf('[') >= 0) {
+            if (v !== '""') {
+		    if (i === 'PageTitle') {
+			 targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
+		    }
+              else if (v.indexOf('[') >= 0) {
                 targets += 'googletag.pubads().setTargeting(\'' + i + '\', '+ v + ');';
               }
               else {
