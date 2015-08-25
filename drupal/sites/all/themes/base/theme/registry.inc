@@ -34,6 +34,11 @@ function _base_theme(&$existing, $type, $theme, $path) {
         'tid' => '',
       )
     ),
+    'base_mobile_header' => array(
+      'variables' => array(
+        'links' => array(),
+      ),
+    ),
   );
 
   // Process custom. This should be used again for any sub-themes.

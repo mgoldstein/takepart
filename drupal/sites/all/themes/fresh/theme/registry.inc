@@ -22,11 +22,6 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'links' => array(),
       ),
     ),
-    'fresh_mobile_header' => array(
-      'variables' => array(
-        'links' => array(),
-      ),
-    ),
     'fresh_ad' => array(
       'variables' => array(
         'ad_tag' => '',
