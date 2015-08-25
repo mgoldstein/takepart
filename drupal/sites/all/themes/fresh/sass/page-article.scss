@@ -5,8 +5,7 @@
 @import "compass/css3";
 
 /* Bootstrap Grid */
-@import "bootstrap/grid";
-
+@import "base/bootstrap/grid";
 
 /* Helpers from base */
 @import "base/helpers/variables";
@@ -17,11 +16,8 @@
 /* Fonts and Icons */
 @import "base/icons/icons";
 @import "base/icons/social-menu";
-
-
 @import "base/normalize/normalize";
 @import "base/normalize";
-
 
 /* Modules */
 @import "base/modules/mobile-menu";
