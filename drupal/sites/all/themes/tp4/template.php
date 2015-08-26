@@ -382,24 +382,6 @@ function tp4_preprocess_tp4_support_slim_nav(&$variables) {
  */
 
 function tp4_preprocess_node(&$variables, $hook) {
-
-	// Show an article without the UNPUBLISHED text and pink background if adding &preview=1 to the url
-	// Do this by auto-logging in the user as TPpreview
-	global $user;
-	if($_GET['preview'] == 1) {
-		drupal_session_start();
-		$user = user_load_by_name('tppreview');	// load the tppreview user
-		// redirect new user to an uncached version of the same page
-		drupal_goto(current_path());
-	} else if( isset($_GET['preview']) && $_GET['preview'] == 0) {
-		$user = user_load(0);
-		drupal_goto(current_path());
-	}
-	if( in_array('preview', $user->roles) ) {
-		$variables['unpublished'] = false;
-		$variables['classes_array'][] = 'node-preview';
-	}
-
   //only show facebook comments if node is published
   $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
   
