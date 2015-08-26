@@ -63,6 +63,8 @@ function tp_theme_support_preprocess_page(&$vars) {
           url: '" . $node_data['url'] . "',
           date: '" . $node_data['date'] . "',
           tags: '" . str_replace('\'', '"', $node_data['tags']) . "',
+					authors: '" . str_replace('\'', '"', $node_data['authors']) . "',
+					channels: '" . str_replace('\'', '"', $node_data['channels']) . "',
         };
         
         tp_reach_call(__reach_config);
