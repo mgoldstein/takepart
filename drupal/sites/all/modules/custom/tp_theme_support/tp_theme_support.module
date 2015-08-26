@@ -1,27 +1,28 @@
 <?php
 
 function tp_theme_support_menu() {
+  
   $items = array();
 
     $items['admin/config/fresh'] = array(
-		'title' => "TakePart Theme Support",
-		'page callback' => 'system_admin_menu_block_page',
-		'access arguments' => array('access administration pages'),
-		'file' => 'system.admin.inc',
-		'file path' => drupal_get_path('module', 'system'),
-		'weight' => -18,
+    'title' => "Fresh Theme Support",
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'weight' => -18,
     );
 
     $items['admin/config/fresh/footer'] = array(
-		'title' => 'Footer',
-		'description' => 'About Us text block for footer',
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array('tp_theme_support_footer_form'),
-		'access callback' => 'user_access',
-		'access arguments' => array('tp_theme_support configure settings'),
-		'file' => 'tp_theme_support.forms.inc',
+    'title' => 'Footer',
+    'description' => 'About Us text block for footer',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_theme_support_footer_form'),
+    'access callback' => 'user_access',
+    'access arguments' => array('tp_theme_support configure settings'),
+    'file' => 'tp_theme_support.forms.inc',
     );
-	
+
   return $items;
 }
 
@@ -29,13 +30,119 @@ function tp_theme_support_menu() {
  * Implements hook_permission().
  */
 function tp_theme_support_permission() {
-	return array(
-		'tp_theme_support configure settings' => array(
-		'title' => t('Configure global Theme settings'),
-		'description' => t("Configure global settings for TakePart themes."),
-		'restrict access' => TRUE,
-		),
-	);
+  return array(
+    'tp_theme_support configure settings' => array(
+    'title' => t('Configure global Theme settings'),
+    'description' => t("Configure global settings for TakePart themes."),
+    'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ *  Implements hook_preprocess_HOOK().
+ */
+function tp_theme_support_preprocess_page(&$vars) {
+  /**
+   *  Autoload articles are handled within the tp_auto_scroll.js file,
+   *  whereas all other content will be handled with inline script in the footer
+   */
+  $node = menu_get_object();
+  
+  //check to ensure that this is a node
+  if (isset($node->type)) {
+    //node data
+    $node_data = _tp_theme_support_reach_node_processor($node);
+    
+    //adds a dynamic inline function call to tp_reach_call
+    drupal_add_js(
+     "jQuery(document).ready(function () {
+        window['__reach_config'] = {
+          pid: '" . $node_data['pid'] . "',
+          title: '" . $node_data['title'] . "',
+          url: '" . $node_data['url'] . "',
+          date: '" . $node_data['date'] . "',
+          tags: '" . str_replace('\'', '"', $node_data['tags']) . "',
+        };
+        
+        tp_reach_call(__reach_config);
+      });"
+    ,array(
+      'type' => 'inline',
+      'scope' => 'footer',
+      'weight' => 10
+    ));
+    
+    //adds the library needed to the themes
+    drupal_add_js(
+      drupal_get_path('module', 'tp_theme_support') . '/js/tp_theme_support.js',
+      array(
+        'weight' => -10, //to ensure that this js file is before the auto load
+        'scope' => 'header'
+      )
+    );
+  }
+}
+
+/**
+ *  @function:
+ *    function is bult to standardize the data for the pid for reach
+ */
+function _tp_theme_support_reach_pid_handler($action = NULL) {
+  switch ($action) {
+    default:
+      return variable_get('tp_theme_support_reach_pid', '54e612da736b7938011a0000');
+      break;
+  }
+}
+
+/**
+ *  @function:
+ *    function is used to standardize the data that is used within the reach data
+ */
+function _tp_theme_support_reach_node_processor($node) {
+  //variables
+  global $base_url;
+  
+  //checks if its a node
+  if (is_object($node) && is_numeric($node->nid)) {
+    if (!empty($node->field_author)) {
+      //does for each author
+      foreach ($node->field_author[LANGUAGE_NONE] as $key => $value) {
+        $authors[] = $value['nid'];
+      };
+      
+      //grabs the raw data from the db
+      $authors_raw =  db_select('node', 'n')
+        ->fields('n', array('title'))
+        ->condition('nid', $authors, 'IN')
+        ->execute()
+        ->fetchAll();
+      
+      //process the authors data
+      $authors_process = array();
+      foreach ($authors_raw as $key => $value) {
+        $authors_process[] = $value->title;
+      }
+    }
+    
+    //data that is used for reach
+    $node_data = array(
+      'pid' => _tp_theme_support_reach_pid_handler(),
+      'title' => $node->title,
+      'url' => $base_url . url('node/'. $node->nid),
+      'tags' => _tp_auto_scroll_node_term_ads($node, 'field_free_tag', TRUE),
+      'date' => date('c', $node->published_at),
+      'authors' => '["' . implode('", "', $authors_process) . '"]',
+      'channels' => _tp_auto_scroll_node_term_ads($node, 'field_topic', TRUE),
+    );
+    
+    //return data
+    return $node_data;
+  }
+  
+  //by default return an empty array
+  return array();
 }
 
 function tp_theme_support_library_alter(&$javascript, $module) {
