@@ -212,8 +212,9 @@ class SignupEndpointEditForm {
       '#title' => t('User Prompt'),
       '#description' => t('Prompt shown to the user.'),
       '#type' => 'text_format',
+	 '#format' => 'no_wysiwg_full_html',
       '#required' => TRUE,
-      '#rows' => 1,
+      '#rows' => 5,
       '#default_value' => $this->workingEndpoint()->getUserPrompt(),
     );
   }
