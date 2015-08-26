@@ -443,18 +443,6 @@ function tp4_preprocess_node(&$variables, $hook) {
 	  }
 	}
 
-	if($variables['node']->field_sponsored[$variables['node']->language][0]['tid']) {
-		$sponsored_metatag = array(
-			'#type' => 'html_tag',
-			'#tag' => 'meta',
-			'#attributes' => array(
-			'property' => 'sponsored',
-			'content' => 'Promoted', /* The label for sponsored content is actually "Promoted" */
-			)
-		);
-		drupal_add_html_head($sponsored_metatag, 'sponsored_metatag'); 
-	}
-
   $function = __FUNCTION__ . '__' . $variables['node']->type;
   if (function_exists($function)) {
     $function($variables, $hook);
