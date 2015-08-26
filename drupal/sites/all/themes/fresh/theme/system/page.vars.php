@@ -20,7 +20,7 @@ function fresh_preprocess_page(&$variables) {
   $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
 
   /* Statically add the mobile header to all pages */
-  $header = theme('fresh_mobile_header');
+  $header = theme('base_mobile_header');
   $variables['page']['header']['mobile_menu']['#markup'] = $header;
 
   /* Statically add the Megaslim Menu to all pages */

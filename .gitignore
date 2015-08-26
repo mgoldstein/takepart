@@ -40,3 +40,6 @@ sftp-config.json
 
 # Ignore node_modules
 /node_modules
+
+# Ignore deleted modules
+/tp_megamenu

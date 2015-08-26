@@ -40,12 +40,12 @@
 
 /* Modules */
 @import "modules/bxslider";
-@import "modules/megamenu";
 @import "modules/interstitials";
 @import "modules/footer";
 @import "modules/_tp4_support_footer";
-@import "modules/header";
 @import "modules/slimnav";
+@import "base/modules/mobile-menu";
+@import "base/modules/header";
 @import "modules/sidebar";
 @import "modules/topic_features";
 @import "modules/left_drawer";
@@ -55,6 +55,8 @@
 @import "modules/featured_campaigns";
 @import "modules/video_playlist";
 @import "modules/newsletter_campaign";
+@import "base/bootstrap/grid";
+@import "base/modules/megaslim";
 @import "base/modules/sponsored";
 @import "modules/sponsored";
 @import "base/modules/infographics";

@@ -3,7 +3,7 @@
 /**
  * Implements theme_preprocess_fresh_mobile_header()
  */
-function fresh_preprocess_fresh_mobile_header(&$variables){
+function base_preprocess_base_mobile_header(&$variables){
   /* Grab the logo */
   global $base_url;
   $path = drupal_get_path('theme', 'base');

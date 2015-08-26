@@ -5,8 +5,7 @@
 @import "compass/css3";
 
 /* Bootstrap Grid */
-@import "bootstrap/grid";
-
+@import "base/bootstrap/grid";
 
 /* Helpers from base */
 @import "base/helpers/variables";
@@ -18,10 +17,8 @@
 @import "base/icons/icons";
 @import "base/icons/social-menu";
 
-
 @import "base/normalize/normalize";
 @import "base/normalize";
-
 
 /* Modules */
 @import "base/modules/mobile-menu";
@@ -29,7 +26,7 @@
 @import "base/modules/video_playlist";
 @import "base/modules/sponsored";
 @import "base/modules/megaslim";
-@import "modules/header";
+@import "base/modules/header";
 @import "modules/fb_comments";
 @import "modules/footer";
 @import "modules/tp_more_on_takepart";

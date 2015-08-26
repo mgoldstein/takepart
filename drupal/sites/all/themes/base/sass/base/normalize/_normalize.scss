@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body{
   margin: 0;
   padding: 0;
@@ -43,4 +46,19 @@ body .tpsLogin{
 }
 body .tpsLogin.tpmodalRendered{
   display: inline-block;
+}
+
+/*
+* Menus
+*************************/
+ul.horizontal-menu{
+  margin: 10px 0;
+  li{
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+    a.icon{
+      text-indent: 0; //TODO: remove this once tp4 menu gets cleaned up.  And the 'ul' portion of ul.horizontal-menu
+    }
+  }
 }

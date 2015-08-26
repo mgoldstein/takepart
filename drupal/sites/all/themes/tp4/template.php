@@ -207,6 +207,15 @@ function tp4_should_show_taboola_widget($variables) {
  */
 function tp4_preprocess_page(&$variables) {
 
+  /* Statically add the mobile header to all pages */
+  $header = theme('base_mobile_header');
+  $variables['page']['header']['mobile_menu']['#markup'] = $header;
+
+  /* Statically add the Megaslim Menu to all pages */
+  if(module_exists('tp_megaslim_menu')){
+    $variables['page']['header']['megaslim']['#markup'] = tp_megaslim_menu_load_menu();
+  }
+  
   if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
     $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
     $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
