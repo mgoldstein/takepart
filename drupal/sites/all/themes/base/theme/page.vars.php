@@ -10,16 +10,18 @@ function base_preprocess_page(&$variables) {
   /*
    * Adds <meta property="sponsored" content="Promoted" /> to sponsored content
    */
-  if (!empty($variables['node']->field_sponsored[$variables['node']->language][0]['tid'])) {
-    $sponsored_metatag = array(
-	 '#type' => 'html_tag',
-	 '#tag' => 'meta',
-	 '#attributes' => array(
-	   'property' => 'sponsored',
-	   'content' => 'Promoted',
-	 )
-    );
-    drupal_add_html_head($sponsored_metatag, 'sponsored_metatag');
+  if (isset($variables['node'])) {
+    if (!empty($variables['node']->field_sponsored[$variables['node']->language][0]['tid'])) {
+	 $sponsored_metatag = array(
+	   '#type' => 'html_tag',
+	   '#tag' => 'meta',
+	   '#attributes' => array(
+		'property' => 'sponsored',
+		'content' => 'Promoted',
+	   )
+	 );
+	 drupal_add_html_head($sponsored_metatag, 'sponsored_metatag');
+    }
   }
 
   // Add Node-specific page templates
