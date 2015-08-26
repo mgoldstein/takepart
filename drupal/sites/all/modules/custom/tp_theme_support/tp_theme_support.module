@@ -1,11 +1,10 @@
 <?php
 
 function tp_theme_support_menu() {
-	
-	$items = array();
+  $items = array();
 
     $items['admin/config/fresh'] = array(
-		'title' => "Fresh Theme Support",
+		'title' => "TakePart Theme Support",
 		'page callback' => 'system_admin_menu_block_page',
 		'access arguments' => array('access administration pages'),
 		'file' => 'system.admin.inc',
@@ -23,7 +22,7 @@ function tp_theme_support_menu() {
 		'file' => 'tp_theme_support.forms.inc',
     );
 	
-	return $items;
+  return $items;
 }
 
 /**
@@ -32,8 +31,8 @@ function tp_theme_support_menu() {
 function tp_theme_support_permission() {
 	return array(
 		'tp_theme_support configure settings' => array(
-		'title' => t('Configure global settings'),
-		'description' => t("Configure global settings for 'Fresh' theme."),
+		'title' => t('Configure global Theme settings'),
+		'description' => t("Configure global settings for TakePart themes."),
 		'restrict access' => TRUE,
 		),
 	);
@@ -43,4 +42,24 @@ function tp_theme_support_library_alter(&$javascript, $module) {
   // Replace jQuery Form plugin.
   $javascript['jquery.form']['js']['misc/jquery.form.js']['data'] = 'sites/all/modules/contrib/jquery_update/replace/misc/jquery.form.min.js';
   $javascript['jquery.form']['version'] = '2.69';
+}
+
+function tp_theme_support_preprocess_page(&$variables, $hook) {
+  // Show an article without the UNPUBLISHED text and pink background if adding &preview=1 to the url
+  // Do this by auto-logging in the user as TPpreview
+  global $user;
+  $ispreview = filter_input(INPUT_GET, 'preview', FILTER_SANITIZE_URL);
+  if ($ispreview == 1) {
+    drupal_session_start();
+    $user = user_load_by_name('tppreview'); // load the tppreview user
+    // redirect new user to an uncached version of the same page
+    drupal_goto(current_path());
+  } else if (isset($ispreview) && $ispreview == 0) {
+    $user = user_load(0);
+    drupal_goto(current_path());
+  }
+  if (in_array('preview', $user->roles)) {
+    $variables['unpublished'] = false;
+    $variables['classes_array'][] = 'node-preview';
+  }
 }
