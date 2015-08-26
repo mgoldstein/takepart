@@ -1,11 +1,9 @@
-name = TakePart 'Fresh' Theme Support
-description = Configuration settings for the 'Fresh' TakePart theme
+name = TakePart Theme Support
+description = Configuration settings for TakePart themes
 core = 7.x
-version = 7.x-0.1
+version = 7.x-0.2
 package = TakePart
 
 ;dependencies[] = tp_core
-
 ;scripts[] = js/tp_theme_support.js
-
 ;files[] = tp_theme_support.module
