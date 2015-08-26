@@ -1,5 +1,6 @@
 name = TakePart Auto Scroll
 description = Auto scroll on TakePart
-core = 7.x
+core = 7.x-1.0-alpha1
 
 dependencies[] = token_function
+dependencies[] = tp_theme_support

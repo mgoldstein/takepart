@@ -139,6 +139,14 @@
               if (typeof tp_og_url != 'undefined' && tp_og_url != current_path) {
                 /** Update the URL **/
                 tp_url_changer(tp_og_url, tp_og_title);
+                
+                /**
+                 *  check to ensure that the reach.js is fully ready
+                 */
+                if (typeof Drupal.settings.tpAutoScroll[0].auto_updates[tp_og_url] !== 'undefined') {
+                  var data = Drupal.settings.tpAutoScroll[0].auto_updates[tp_og_url].data;
+                  tp_reach_call(data);
+                }
 
                 /** Update the sharing **/
                 update_tp_social_media(tp_og_title, tp_og_url, tp_og_image, tp_og_description);
@@ -179,7 +187,7 @@
       window.history.pushState({}, url, url);
     document.title = title;
   }
-
+  
   /**
    *  @function:
    *    window function that is used to update the social links

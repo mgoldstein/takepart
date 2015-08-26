@@ -1,7 +1,7 @@
 name = TakePart Theme Support
 description = Configuration settings for TakePart themes
 core = 7.x
-version = 7.x-0.2
+version = 7.x-1.0-alpha2
 package = TakePart
 
 ;dependencies[] = tp_core

@@ -102,14 +102,8 @@ function tp_auto_scroll_pager($node){
   $og_data[$base_url. url('node/'. $node->nid)] = array(
     'width' => takepart_og_image_thumbnail_width($node->nid),
     'height' => takepart_og_image_thumbnail_height($node->nid),
-    'targets' => array(
-      'FreeTag' => _tp_auto_scroll_node_term_ads($node, 'field_free_tag'),
-      'PageTitle' => str_replace("'", "\\'", $node->title),
-      'Type' => $node->type,
-      'Topic' => _tp_auto_scroll_node_term_ads($node, 'field_topic'),
-      'Series' => _tp_auto_scroll_node_term_ads($node, 'field_serie'),
-      'Sponsor' => _tp_auto_scroll_node_term_ads($node, 'field_sponsored'),
-    ),
+    'targets' => _tp_auto_scroll_node_targets($node),
+    'data' => _tp_theme_support_reach_node_processor($node),
     'TopArticle' => TRUE
   );
   foreach($results['node'] as $key => $article){
@@ -119,14 +113,8 @@ function tp_auto_scroll_pager($node){
     $og_data[$base_url. url('node/'. $key)] = array(
       'width' => takepart_og_image_thumbnail_width($key), //this token function lives in takepart_og_image.module
       'height' => takepart_og_image_thumbnail_height($key), //this token function lives in takepart_og_image.module
-      'targets' => array(
-        'FreeTag' => _tp_auto_scroll_node_term_ads($node_obj, 'field_free_tag'),
-        'PageTitle' => str_replace("'", "\\'", $node_obj->title),
-        'Type' => $node_obj->type,
-        'Topic' => _tp_auto_scroll_node_term_ads($node_obj, 'field_topic'),
-        'Series' => _tp_auto_scroll_node_term_ads($node_obj, 'field_serie'),
-        'Sponsor' => _tp_auto_scroll_node_term_ads($node_obj, 'field_sponsored'),
-      ),
+      'targets' => _tp_auto_scroll_node_targets($node_obj),
+      'data' => _tp_theme_support_reach_node_processor($node_obj),
       'TopArticle' => FALSE
     );
     unset($node_obj);
@@ -165,9 +153,33 @@ function tp_auto_scroll_pager($node){
 
 /**
  *  @function:
+ *    function is used to set the node targeting
+ */
+function _tp_auto_scroll_node_targets($node) {
+  //ensures that this is a node
+  if (is_object($node) && is_numeric($node->nid)) {
+    $targets = array(
+      'FreeTag' => _tp_auto_scroll_node_term_ads($node, 'field_free_tag'),
+      'PageTitle' => str_replace("'", "\\'", $node->title),
+      'Type' => $node->type,
+      'Topic' => _tp_auto_scroll_node_term_ads($node, 'field_topic'),
+      'Series' => _tp_auto_scroll_node_term_ads($node, 'field_series'),
+      'Sponsor' => _tp_auto_scroll_node_term_ads($node, 'field_sponsored'),
+    );
+
+    //returns data
+    return $targets;
+  }
+  
+  //by default return an empty array
+  return array();
+}
+
+/**
+ *  @function:
  *    code is used to mimic takepart_ads.module
  */
-function _tp_auto_scroll_node_term_ads($node, $field_name) {
+function _tp_auto_scroll_node_term_ads($node, $field_name, $json = FALSE) {
   $field = $node->{$field_name}['und'];
   
   //does for each value
@@ -195,7 +207,7 @@ function _tp_auto_scroll_node_term_ads($node, $field_name) {
     return '""';
   }
   //if one return term
-  elseif (count($terms) == 1) {
+  elseif (count($terms) == 1 && !$json) {
     return $terms;
   }
   
