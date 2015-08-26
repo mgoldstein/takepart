@@ -2437,11 +2437,12 @@ function tp4_search_api_page_results(array &$variables) {
         entity_prepare_view($index->entity_type, $entities);
 
         foreach ($results['results'] as $item) {
-
 	        $result = $entities[$item['id']];
-
-			$field_permanent_title = field_get_items('node',$result,'field_permanent_title');
-			$field_permanent_title = $field_permanent_title[0]['value'];
+             $field_promo_title = field_get_items('node', $result, 'field_promo_headline');
+             $field_promo_title = $field_promo_title[0]['value'];
+	        if (empty($field_promo_title)) {
+	          $field_promo_title = $result->title;
+	        }
 
 			$field_thumbnail = field_get_items('node',$result,'field_thumbnail');
 			$field_thumbnail = file_load($field_thumbnail[0]['fid']);
@@ -2451,15 +2452,15 @@ function tp4_search_api_page_results(array &$variables) {
 
 	        $output .= theme('search_result', array(
 	        	'result' => array(
-		        	'title' => $field_permanent_title,
+		        	'title' => $field_promo_title,
 		        	'url' => entity_uri($index->item_type, $result),
 		        	'snippet' => $text,
 					'type' => $types[$result->type]->name,
 					'thumbnail' => theme('image_style', array(
 						'style_name' => 'topic_thumbnail',
 						'path' => $field_thumbnail->uri,
-						'alt' => $field_permanent_title,
-						'title' => $field_permanent_title,
+						'alt' => $field_promo_title,
+						'title' => $field_promo_title,
 					)),
 	        	),
 	        ));
