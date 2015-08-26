@@ -156,7 +156,6 @@ function tp_auto_scroll_pager($node){
  *    function is used to set the node targeting
  */
 function _tp_auto_scroll_node_targets($node) {
-  dpm($node);
   //ensures that this is a node
   if (is_object($node) && is_numeric($node->nid)) {
     $targets = array(
