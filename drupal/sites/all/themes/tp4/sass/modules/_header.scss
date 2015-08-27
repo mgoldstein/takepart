@@ -34,6 +34,14 @@ header {
         &.ad-large-center {
             margin-right: 0;
             width: 100%;
+            
+            .leaderboard-ad {
+                width: 100% !important;
+                
+                iframe {
+                    margin: 0 auto;
+                }
+            }
 
             .contextual-links-wrapper {
                 z-index: 99999;

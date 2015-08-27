@@ -1366,6 +1366,15 @@
     margin: 0 auto;
 }
 
+.ad-large-center .leaderboard-ad {
+    width: 100% !important;
+}
+
+.ad-large-center .leaderboard-ad iframe {
+    margin: 0 auto;
+    display: block;
+}
+
 .mashable-image { 
     padding: 0px; margin: 0px; border: none; 
 }
