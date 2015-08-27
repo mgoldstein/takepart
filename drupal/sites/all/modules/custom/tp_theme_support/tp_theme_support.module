@@ -50,10 +50,17 @@ function tp_theme_support_preprocess_page(&$vars) {
   $node = menu_get_object();
   
   //check to ensure that this is a node
-  if (isset($node->type)) {
+  if (isset($node->type) && !path_is_admin(current_path())) {
     //node data
     $node_data = _tp_theme_support_reach_node_processor($node);
     
+		//standardize the data and escape
+		foreach ($node_data as $key => $value) {
+			$value = str_replace('\'', '\\\'', $value);
+			
+			$node_data[$key] = $value;
+		}
+		
     //adds a dynamic inline function call to tp_reach_call
     drupal_add_js(
      "jQuery(document).ready(function () {
