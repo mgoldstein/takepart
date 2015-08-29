@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Marketing interstitials.
@@ -33,67 +34,72 @@ function pm_interstitial_help($path, $arg) {
  * Implements hook_menu().
  */
 function pm_interstitial_menu() {
-  $items = array();
 
-    $items['admin/config/participant-media'] = array(
-		'title' => 'Participant Media',
-		'page callback' => 'system_admin_menu_block_page',
-		'access arguments' => array('access administration pages'),
-		'file' => 'system.admin.inc',
-		'file path' => drupal_get_path('module', 'system'),
-		'weight' => -16,
-    );
-
+   $items['admin/config/participant-media'] = array(
+     'title' => t('Participant Media'),
+     'weight' => 0,
+     'page callback' => 'system_admin_menu_block_page',
+     'access arguments' => array('access administration pages'),
+     'file' => 'system.admin.inc',
+     'file path' => drupal_get_path('module', 'system'),
+   );
+   
     $items['admin/config/participant-media/interstitials'] = array(
-		'title' => 'Interstitial Settings',
-		'description' => 'Global settings for marketing interstitials',
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array('pm_interstitial_admin_form'),
-		'access callback' => 'user_access',
-		'access arguments' => array('pm_interstitial configure settings'),
+      'title' => t('Interstitial Settings'),
+	 'description' => t('Global settings for marketing interstitials'),
+	 'page callback' => 'drupal_get_form',
+	 'page arguments' => array('pm_interstitial_admin_form'),
+	 'access callback' => 'user_access',
+	 'access arguments' => array('pm_interstitial configure settings'),
+	 'weight' => 0,
     );
 
 	$items['admin/config/participant-media/interstitials/settings'] = array(
-		'title' => 'Global Settings',
-		'description' => 'Global settings for marketing interstitials',
-		'type' => MENU_DEFAULT_LOCAL_TASK,
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array('pm_interstitial_admin_form'),
-		'access callback' => 'user_access',
-		'access arguments' => array('pm_interstitial configure settings'),
-		'weight' => 1,
+	  'title' => t('Global Settings'),
+	  'description' => t('Global settings for marketing interstitials'),
+	  'page callback' => 'drupal_get_form',
+	  'page arguments' => array('pm_interstitial_admin_form'),
+	  'access callback' => 'user_access',
+	  'access arguments' => array('pm_interstitial configure settings'),
+	  'file' => 'pm_interstitial.forms.inc',
+	  'file path' => drupal_get_path('module', 'pm_interstitial'),
+	  'weight' => 0,
 	);
 
 	$items['admin/config/participant-media/interstitials/newsletter'] = array(
-		'title' => 'Newsletter',
-		'description' => 'Newsletter interstitial settings',
-		'type' => MENU_LOCAL_TASK,
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array('pm_interstitial_newsletter_form'),
-		'access callback' => 'user_access',
-		'access arguments' => array('pm_interstitial configure settings'),
-		'weight' => 2,
+	  'title' => t('Newsletter'),
+	  'description' => t('Newsletter interstitial settings'),
+	  'page callback' => 'drupal_get_form',
+	  'page arguments' => array('pm_interstitial_newsletter_form'),
+	  'access callback' => 'user_access',
+	  'access arguments' => array('pm_interstitial configure settings'),
+	  'file' => 'pm_interstitial.forms.inc',
+	  'file path' => drupal_get_path('module', 'pm_interstitial'),
+	  'weight' => 2,
 	);
 
 	$items['admin/config/participant-media/interstitials/social'] = array(
-		'title' => 'Social Follow',
-		'description' => 'Social Follow interstitial settings',
-		'type' => MENU_LOCAL_TASK,
-		'page callback' => 'drupal_get_form',
-		'page arguments' => array('pm_interstitial_social_form'),
-		'access callback' => 'user_access',
-		'access arguments' => array('pm_interstitial configure settings'),
-		'weight' => 3,
+	  'title' => t('Social Follow'),
+	  'description' => t('Social Follow interstitial settings'),
+	  'page callback' => 'drupal_get_form',
+	  'page arguments' => array('pm_interstitial_social_form'),
+	  'access callback' => 'user_access',
+	  'access arguments' => array('pm_interstitial configure settings'),
+	  'file' => 'pm_interstitial.forms.inc',
+	  'weight' => 3,
 	);
 
 	$items['interstitials/%'] = array(
-		'description' => t('interstitial iframe'),
-		'page callback' => 'pm_interstitial_page',
-		'page arguments' => array(1),
-		'access callback' => TRUE,
+	  'description' => t('interstitial iframe'),
+	  'page callback' => 'pm_interstitial_page',
+ 	  'page arguments' => array(1),
+	  'access callback' => TRUE,
 	);
 
-	return $items;
+  $items[TP_GENERAL_MENU . '/config'] = $items[TP_GENERAL_MENU];
+  $items[TP_GENERAL_MENU . '/config']['type'] = MENU_DEFAULT_LOCAL_TASK;
+
+  return $items;
 }
 
 
@@ -106,7 +112,6 @@ function pm_interstitial_page($type) {
 	drupal_add_css($path.'/css/interstitial.css');
 	drupal_add_css($path.'/css/'.$type.'.css');
 	drupal_add_js($path.'/js/'.$type.'.js');
-
 
 	switch($type) {
 	case 'newsletter':
@@ -158,7 +163,7 @@ function pm_interstitial_page($type) {
 					'html' => true,
 					'attributes' => array(
 						'data-service' => variable_get('pm_interstitial_social_fb_token', 'facebook'),
-						'class' => array('social-link', 'tplinkpos'), 
+						'class' => array('social-link', 'tplinkpos'),
 						'target' => '_blank',
 					),
 				)
@@ -170,7 +175,7 @@ function pm_interstitial_page($type) {
 					'html' => true,
 					'attributes' => array(
 						'data-service' => variable_get('pm_interstitial_social_twiter_token', 'twitter'),
-						'class' => array('social-link', 'tplinkpos'), 
+						'class' => array('social-link', 'tplinkpos'),
 						'target' => '_blank',
 					),
 				)
@@ -328,6 +333,7 @@ function pm_interstitial_block_view($delta = '') {
   if ($delta === 'interstitials') {
     foreach($interstitials as $type => $label) {
       $url = InterstitialReaction::get_interstitial($type);
+
       if ($url !== FALSE) {
         $links[] = l($label, $url, array(
           'attributes' => array(
