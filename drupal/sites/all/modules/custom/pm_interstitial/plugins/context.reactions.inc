@@ -34,11 +34,12 @@ class InterstitialReaction extends context_reaction {
 
     // Get the list of interstitials.
     $list = variable_get("pm_interstitial_{$type}_interstitials", '');
+    $published = variable_get("pm_interstitial_{$type}_published", 0);
     $interstitials = pm_split($list, "\n", array("\r\n", "\r"));
 
     // Randomly select one of the available interstitials.
     // Since there's only one, that's easy
-    if (count($interstitials) > 0) {
+    if (count($interstitials) > 0 && $published) {
       return $interstitials[0];
     }
 

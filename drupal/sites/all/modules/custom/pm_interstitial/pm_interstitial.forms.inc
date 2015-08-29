@@ -112,14 +112,14 @@ function pm_interstitial_newsletter_form($form, &$form_state) {
 		);
 
 	$form['newsletter_form']['pm_interstitial_newsletter_signup_name'] = array(
-		'#type' => 'select',
-	    '#title' => t('Signup Name'),
-	    '#description' => t('The name of the signup endpoint.'),
-		'#options' => array(
-			'newsletter_interstitial' => t('Newsletter Interstitial Signup'),
-		),
-	    '#required' => FALSE,
-		'#default_value' => variable_get('pm_interstitial_newsletter_signup_name', 'newsletter_interstitial'),
+	  '#type' => 'select',
+	  '#title' => t('Signup Name'),
+	  '#description' => t('The name of the signup endpoint.'),
+	  '#options' => array(
+		'newsletter_interstitial' => t('Newsletter Interstitial Signup'),
+	  ),
+	  '#required' => FALSE,
+	  '#default_value' => variable_get('pm_interstitial_newsletter_signup_name', 'newsletter_interstitial'),
 	);
 
 	$form['newsletter_form']['pm_interstitial_newsletter_name'] = array(
