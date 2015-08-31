@@ -45,6 +45,7 @@
 @import "modules/_tp4_support_footer";
 @import "base/modules/mobile-menu";
 @import "base/modules/header";
+//@import "modules/header"; TODO: fix the scss that is breaking the display of slim and non-slim headers
 @import "modules/slimnav";
 @import "modules/sidebar";
 @import "modules/topic_features";
