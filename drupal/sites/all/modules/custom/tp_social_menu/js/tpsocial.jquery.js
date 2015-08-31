@@ -57,6 +57,48 @@
     subhead: default_subhead
   };
 
+
+  /*
+   * function for tracking shares of UPS sponsored content
+   */ 
+  var upsShare = function (service) {
+    // Check for simplereach tags. If they don't exist, this isn't UPS sponsored
+    if (typeof __reach_config !== 'undefined' ||
+		  typeof __reach_config.tags !== 'undefined') {
+	 // If free tags are present for sponsored content
+	 if (__reach_config.tags.indexOf('Business') !== -1 ||
+		    __reach_config.tags.indexOf('UPS') !== -1) {
+
+	   var appID = '';
+	   var ebRand = Math.random() + '';
+	   ebRand = ebRand * 1000000;
+	   switch (service) {
+		case 'facebook':
+		  appID = '617974';
+		  break;
+
+		case 'twitter':
+		  appID = '617975';
+		  break;
+
+		case 'mailto':
+		  appID = '617978';
+		  break;
+
+		default:
+		  appID = '';
+	   }
+	   // Only fire UPS tracking for Facebook, Twitter, and email shares
+	   if (appID !== '') {
+		var s = document.createElement('script');
+		s.type = 'text/javascript';
+		s.src = document.location.protocol + '//bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=' + appID + '&amp;rnd=' + ebRand;
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
+	   }
+	 }
+    }
+  };
+
   // function to make social share link
   var makeLink = function (args) {
     var $link = $('<a href="#"/>')
@@ -133,31 +175,32 @@
 	   // Bind an event to the link
 	   $link
 			 .on('touchstart click', (function (srvc, $parent, $lnk) {
-               return function(e){
-                   setTimeout(function (e) {
-                       // TODO: reduce the code duplication
-                       var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
-                       data.element = this;
+			   return function (e) {
+				setTimeout(function (e) {
+				  // TODO: reduce the code duplication
+				  var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
+				  data.element = this;
 
-                       if (data.url == '{current}')
-                           data.url = document.location.href;
-                       if (data.url_append != undefined) {
-                           // TODO: more than just {{name}} replacement
-                           data.url_append = data.url_append.replace('{{name}}', data.name);
+				  if (data.url == '{current}')
+				    data.url = document.location.href;
+				  if (data.url_append != undefined) {
+				    // TODO: more than just {{name}} replacement
+				    data.url_append = data.url_append.replace('{{name}}', data.name);
 
-                           if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
-                               data.url_append = data.url_append.replace('?', '&');
-                           }
-                           data.url += data.url_append;
-                       }
+				    if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
+					 data.url_append = data.url_append.replace('?', '&');
+				    }
+				    data.url += data.url_append;
+				  }
 
-                       srvc.share(data);
-                       $window.trigger(cpre + 'click', data);
-                       return false;
-                   }, 200);
-                   e.preventDefault();
+				  srvc.share(data);
+				  $window.trigger(cpre + 'click', data);
+				  upsShare(data.name);
 
-               }
+				  return false;
+				}, 200);
+				e.preventDefault();
+			   }
 
 			 })(srvc, $this, $link)
 				    );
@@ -165,25 +208,25 @@
 	   if (typeof data.hoverfocus === 'function') {
 		$link
 			   .on('mouseover focus', (function (srvc, $parent, $lnk) {
-                return function(e){
-                        var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
+				return function (e) {
+				  var data = $.extend({}, defaults, args, srvc, get_data($parent, dpre + srvc.name, dpre), get_data($lnk, dpre + srvc.name, dpre));
 
-                        if (data.url == '{current}')
-                            data.url = document.location.href;
-                        if (data.url_append != undefined) {
-                            // TODO: more than just {{name}} replacement
-                            data.url_append = data.url_append.replace('{{name}}', data.name);
+				  if (data.url == '{current}')
+				    data.url = document.location.href;
+				  if (data.url_append != undefined) {
+				    // TODO: more than just {{name}} replacement
+				    data.url_append = data.url_append.replace('{{name}}', data.name);
 
-                            if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
-                                data.url_append = data.url_append.replace('?', '&');
-                            }
-                            data.url += data.url_append;
-                        }
+				    if (data.url.indexOf('?') !== -1 && data.url_append.indexOf('?') !== -1) {
+					 data.url_append = data.url_append.replace('?', '&');
+				    }
+				    data.url += data.url_append;
+				  }
 
-                        data.element = this;
+				  data.element = this;
 
-                        srvc.hoverfocus(data);
-                }
+				  srvc.hoverfocus(data);
+				}
 			   })(srvc, $this, $link)
 					 );
 	   }
