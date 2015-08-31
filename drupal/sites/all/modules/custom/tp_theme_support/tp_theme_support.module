@@ -1,7 +1,7 @@
 <?php
 
 function tp_theme_support_menu() {
-  
+
   $items = array();
 
     $items['admin/config/fresh'] = array(
@@ -48,19 +48,19 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
    *  whereas all other content will be handled with inline script in the footer
    */
   $node = menu_get_object();
-  
+
   //check to ensure that this is a node
   if (isset($node->type) && !path_is_admin(current_path())) {
     //node data
     $node_data = _tp_theme_support_reach_node_processor($node);
-    
+
 		//standardize the data and escape
 		foreach ($node_data as $key => $value) {
 			$value = str_replace('\'', '\\\'', $value);
-			
+
 			$node_data[$key] = $value;
 		}
-		
+
     //adds a dynamic inline function call to tp_reach_call
     drupal_add_js(
      "jQuery(document).ready(function () {
@@ -69,11 +69,11 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
           title: '" . $node_data['title'] . "',
           url: '" . $node_data['url'] . "',
           date: '" . $node_data['date'] . "',
-          tags: '" . str_replace('\'', '"', $node_data['tags']) . "',
-					authors: '" . str_replace('\'', '"', $node_data['authors']) . "',
-					channels: '" . str_replace('\'', '"', $node_data['channels']) . "',
+          tags: " . str_replace('\'', '"', $node_data['tags']) . ",
+          authors: " . str_replace('\'', '"', $node_data['authors']) . ",
+          channels: " . str_replace('\'', '"', $node_data['channels']) . ",
         };
-        
+
         tp_reach_call(__reach_config);
       });"
     ,array(
@@ -81,9 +81,9 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
       'scope' => 'footer',
       'weight' => 10
     ));
-    
-   /* 
-    * Show an article without the UNPUBLISHED text and pink background if adding 
+
+   /*
+    * Show an article without the UNPUBLISHED text and pink background if adding
     * &preview=1 to the url. Do this by auto-logging in the user as TPpreview
     */
   global $user;
@@ -101,7 +101,7 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
     $vars['unpublished'] = false;
     $vars['classes_array'][] = 'node-preview';
   }
-  
+
   //adds the library needed to the themes
     drupal_add_js(
       drupal_get_path('module', 'tp_theme_support') . '/js/tp_theme_support.js',
@@ -132,7 +132,7 @@ function _tp_theme_support_reach_pid_handler($action = NULL) {
 function _tp_theme_support_reach_node_processor($node) {
   //variables
   global $base_url;
-  
+
   //checks if its a node
   if (is_object($node) && is_numeric($node->nid)) {
     if (!empty($node->field_author)) {
@@ -140,21 +140,21 @@ function _tp_theme_support_reach_node_processor($node) {
       foreach ($node->field_author[LANGUAGE_NONE] as $key => $value) {
         $authors[] = $value['nid'];
       };
-      
+
       //grabs the raw data from the db
       $authors_raw =  db_select('node', 'n')
         ->fields('n', array('title'))
         ->condition('nid', $authors, 'IN')
         ->execute()
         ->fetchAll();
-      
+
       //process the authors data
       $authors_process = array();
       foreach ($authors_raw as $key => $value) {
         $authors_process[] = $value->title;
       }
     }
-    
+
     //data that is used for reach
     $node_data = array(
       'pid' => _tp_theme_support_reach_pid_handler(),
@@ -165,11 +165,11 @@ function _tp_theme_support_reach_node_processor($node) {
       'authors' => '["' . implode('", "', $authors_process) . '"]',
       'channels' => _tp_auto_scroll_node_term_ads($node, 'field_topic', TRUE),
     );
-    
+
     //return data
     return $node_data;
   }
-  
+
   //by default return an empty array
   return array();
 }
