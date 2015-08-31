@@ -14,6 +14,11 @@ function _base_theme(&$existing, $type, $theme, $path) {
   // Custom theme hooks:
   // Do not define the `path` or `template`.
   $hook_theme = array(
+    'base_social_follow' => array(
+      'variables' => array(
+        'links' => array(),
+      ),
+    ),
     'base_links' => array(
       'variables' => array(
         'links' => array(),

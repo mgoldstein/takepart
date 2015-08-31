@@ -12,7 +12,7 @@ function fresh_preprocess_page(&$variables) {
 	'setting');
 
   /* Statically add mobile menu on every page */
-  $mobile_menu = theme('fresh_mobile_menu_header');
+  $mobile_menu = theme('base_social_follow');
   $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
 
   /* Statically add mobile menu */

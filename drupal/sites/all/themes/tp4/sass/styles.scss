@@ -43,9 +43,10 @@
 @import "modules/interstitials";
 @import "modules/footer";
 @import "modules/_tp4_support_footer";
-@import "modules/slimnav";
 @import "base/modules/mobile-menu";
 @import "base/modules/header";
+//@import "modules/header"; TODO: fix the scss that is breaking the display of slim and non-slim headers
+@import "modules/slimnav";
 @import "modules/sidebar";
 @import "modules/topic_features";
 @import "modules/left_drawer";
