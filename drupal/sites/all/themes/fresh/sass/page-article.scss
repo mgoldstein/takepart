@@ -37,6 +37,14 @@
 /*****************
  * Article Page
  *****************/
+.field-name-body {
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 .article-wrapper{
   position: relative;
   .sticky-wrapper{

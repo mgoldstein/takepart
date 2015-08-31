@@ -152,17 +152,37 @@ body {
   @extend .tp-social-Facebook:before;
   background-color: #3b5998;
 }
+.social .tp-social-facebook:hover {
+	&:before {
+		background-color: #627ead;
+	}
+}
 .social .tp-social-twitter:before{
   @extend .tp-social-Twitter:before;
   background-color: #55acee;
+}
+.social .tp-social-twitter:hover {
+	&:before {
+		background-color: #6cc5e9;
+	}
 }
 .social .tp-social-googleplus:before{
   @extend .tp-social-GooglePlus:before;
   background-color: #dd4b39;
 }
+.social .tp-social-googleplus:hover {
+	&:before {
+		background-color: #f65542;
+	}
+}
 .social .tp-social-tumblr:before{
   @extend .tp-social-Tumblr:before;
   background-color: #35465c;
+}
+.social .tp-social-tumblr:hover {
+	&:before {
+		background-color: #63717c;
+	}
 }
 .social .tp-social-email:before{
   @extend .tp-social-Email:before;
@@ -171,6 +191,11 @@ body {
 .social .tp-social-mailto:before{
   @extend .tp-social-Mailto:before;
   background-color: #0080A4;
+}
+.social .tp-social-mailto:hover {
+	&:before {
+		background-color: #0198c3;
+	}
 }
 .social .tp-social-linkedin:before{
   @extend .tp-social-Linkedin:before;
