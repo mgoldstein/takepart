@@ -9,9 +9,9 @@
 	  </nav>
 	</div>
 	<div class="right">
-	  <div class="follow-us">
+	  <div class="follow-us horizontal-menu menu-horizontal">
 		<h2 class="follow-headline">Follow</h2>
-	    <?php print render($social_menu); ?>
+	    <?php print $social_menu; ?>
 	  </div>
 	  <div class="user-menu">
 	    <div class="tpsLogin" data-layout="compact"></div>

@@ -350,7 +350,7 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
       'href' => $base_url . '/user/logout',
     );
   }
-  $variables['social_menu'] = menu_tree('menu-social-header-follow');
+    $variables['social_menu'] = theme('base_social_follow');
 
   $slimnav = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 1);
   menu_tree_add_active_path($slimnav);

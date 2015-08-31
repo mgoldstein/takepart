@@ -17,11 +17,6 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
 
   /* Do not define template or path */
   $hook_theme = array(
-    'fresh_mobile_menu_header' => array(
-      'variables' => array(
-        'links' => array(),
-      ),
-    ),
     'fresh_ad' => array(
       'variables' => array(
         'ad_tag' => '',
