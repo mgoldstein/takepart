@@ -56,17 +56,15 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
 
 		//standardize the data and escape
 		foreach ($node_data as $key => $value) {
-			$value = str_replace('\'', '\\\'', $value);
-
-			$node_data[$key] = $value;
+			$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);	
+			$node_data[$key] = str_replace("'", "\\\'", $value);
 		}
-
     //adds a dynamic inline function call to tp_reach_call
     drupal_add_js(
      "jQuery(document).ready(function () {
         window['__reach_config'] = {
           pid: '" . $node_data['pid'] . "',
-          title: '" . $node_data['title'] . "',
+          title: \"" . $node_data['title'] . "\",
           url: '" . $node_data['url'] . "',
           date: '" . $node_data['date'] . "',
           tags: " . str_replace('\'', '"', $node_data['tags']) . ",
