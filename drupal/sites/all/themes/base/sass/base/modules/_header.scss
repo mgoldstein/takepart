@@ -216,6 +216,21 @@ body.mobile-search-show #header form{
     color: $dark-gray;
     border-bottom: 2px solid #000;
 
+    .menu-toggle{
+      display: block;
+      width: 20px;
+      height: 15px;
+      border-top: 9px double $light-mint;
+      border-bottom: 3px solid $light-mint;
+      cursor: pointer;
+      float: left;
+      margin-right: 10px;
+      margin-top: 4px;
+      @include breakpoint($breakpoint-desktop) {
+          display: none;
+      }
+    }
+    
     .slim-nav-inner {
         position: relative;
     }
@@ -237,8 +252,11 @@ body.mobile-search-show #header form{
     }
     
     .user-menu {
+      @include breakpoint($breakpoint-desktop) {
+        right: 215px;  
+      }
+      right: 15px;
       position: absolute;
-      right: 215px;
     }
 
     .logo {
