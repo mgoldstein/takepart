@@ -182,290 +182,25 @@ body.mobile-search-show #header form{
   display: block;
 }
 
-/**
- * Header (fat and slim)
- */
-@import "sprites/blue-social/*.png";
-@include all-blue-social-sprites;
 
-/*
- *Social
-*/
-.tp_ad_takeover {
-    .header-wrapper {
-        background-color: #FFF;
-        
-        @include breakpoint($breakpoint-desktop) {
-            padding-top: 0;
-            max-width: 980px;
-            margin: 0 auto;
-        }
-    }
-}
-
-header {
-    font-family: $primary-sans-font;
-    color: $dark-gray;
-    .block{
-        margin-bottom: 0em;
-        @include breakpoint($breakpoint-tablet) {
-            margin-bottom: 1.5em;
-        }
-    }
-    .leaderboard{
-        display: none;
-
-        &.ad-large-center {
-            margin-right: 0;
-            width: 100%;
-            
-            .leaderboard-ad {
-                width: 100% !important;
-                
-                iframe {
-                    margin: 0 auto;
-                }
-            }
-
-            .contextual-links-wrapper {
-                z-index: 99999;
-            }
-
-            .boxes-box {
-                .boxes-box-content {
-                    text-align: center;
-
-                    div:nth-child(1) {
-                        position: relative;
-                        z-index: 1000;
-                        width: 100% !important;
-                        display: inline-block;
-                    }
-                }
-            }
-
-            @include breakpoint($breakpoint-desktop) {
-                width: 1022px;
-                margin-left: -20px;
-            }
-        }
-
-        @include breakpoint($breakpoint-tablet) {
-            display: block;
-        }
-    }
-    .menu-toggle{
-        display: block;
-        width: 20px;
-        height: 3px;
-        border-top: 9px double $light-mint;
-        border-bottom: 3px solid $light-mint;
-        cursor: pointer;
-        float: left;
-        margin-right: 10px;
-        margin-top: 4px;
-        @include breakpoint($breakpoint-desktop) {
-            display: none;
-        }
-    }
-    .tp4-fat-header .menu-toggle {
-        @include breakpoint($breakpoint-tablet) {
-            display: none;
-        }
-    }
-    .logo{
-        float: left;
-        width: 121px;
-        margin-bottom: 4px;
-        @include breakpoint($breakpoint-tablet) {
-            width: auto;
-        }
-    }
-    .follow-us{
-        display: none;
-        @include breakpoint($breakpoint-tablet) {
-            display: block;
-            text-align: right;
-            float: right;
-            font-size: .928571429em; // 13px;
-            .text{
-                display: inline-block;
-                margin: 0 10px 0 0;
-                &:before{
-                    content: '|';
-                    padding-right: 10px;
-                }
-            }
-            ul{
-                margin-top: -5px;
-                float: right;
-                li{
-                    float: left;
-                }
-            }
-        }
-    }
-    &#header {
-      .search{
-          font-size: .928571429em;
-          clear: both;
-          position: relative;
-          .form-item-keys-2{
-              display: inline-block;
-              background-color: white;
-              float: left;
-              height: auto;
-              overflow: hidden;
-              width: 100%;
-              vertical-align: bottom;
-              line-height: 23px;
-              font-weight: normal;
-              margin: 0;
-              padding: 10px;
-              @include box-shadow(0px 0px 5px 1px rgba(0, 0, 0, .3));
-              @include box-sizing(border-box);
-              -moz-box-sizing: border-box;
-              box-sizing: border-box;
-          }
-          [type=text]{
-              float: left;
-              height: 30px;
-              border: 1px solid #ccc;
-              border-radius: 0;
-              width: 100%;
-              color: #777;
-              text-indent: 6px;
-              font-size: 16px;
-              line-height: 21px;
-              background: #fff;
-              &:focus{
-                  outline: none;
-              }
-          }
-          .form-submit{
-              position: absolute;
-              bottom: 0;
-              right: 0;
-              height: 0;
-              top: -51px;
-              padding-top: 48px;
-              color: white;
-              border: none;
-              background: image-url('mobile-search-hover.jpg') no-repeat center center;
-              background-color: #000;
-              border-radius: 0;
-              text-indent: 200%;
-              overflow: hidden;
-              width: 34px;
-          }
-          @include breakpoint($breakpoint-tablet) {
-              display: block;
-              float: right;
-              clear: right;
-              margin-top: 25px;
-              .form-item-keys-2{
-                  padding: 0;
-                  width: auto;
-                  background-color: transparent;
-                  -webkit-box-shadow: none;
-                  box-shadow: none;
-                  &:before{
-                      content: "Search";
-                      width: 45px;
-                      height: 20px;
-                      display: block;
-                      left: 0;
-                      bottom: 0;
-                      position: absolute;
-                      left: -45px;
-                  }
-              }
-              [type=text]{
-                  width: 140px;
-                  -webkit-appearance: none;
-  
-                  height: 25px;
-                  font-size: inherit;
-                  line-height: normal;
-                  &::-webkit-input-placeholder {
-                      opacity: 0;
-                  }
-  
-                  &:-moz-placeholder { /* Firefox 18- */
-                      opacity: 0;
-                  }
-                  &::-moz-placeholder {  /* Firefox 19+ */
-                      opacity: 0;
-                  }
-  
-                  :-ms-input-placeholder {  
-                      color: red;  
-                  }
-              }
-              .form-submit{
-                  display: block;
-                  float: left;
-                  width: 20px;
-                  height: 0;
-                  top: auto;
-                  padding-top: 24px;
-                  overflow: hidden;
-                  background-color: transparent;
-                  background: image-url('search-submit.png') no-repeat center center;
-              }
-          }
+#header {
+  .follow-us {
+    a {
+      &.i-facebook:hover {
+        background-color: #3c5a98; 
+      }
+      &.i-google_plusone_share:hover {
+        background-color: #da4935; 
+      }
+      &.i-twitter:hover {
+        background-color: #2ba9e1; 
+      }
+      &.i-email:hover {
+        background-color: #545454; 
       }
     }
+  }
 }
-
-@include breakpoint($breakpoint-mobile) {
-    .search-toggle{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        height: 48px;
-        color: white;
-        border: none;
-        background: image-url('mobile-search.jpg') no-repeat center center;
-        background-color: transparent;
-        border-radius: 0;
-        text-indent: 200%;
-        overflow: hidden;
-        width: 34px;
-    }
-    .search {
-        border-bottom: 2px solid #000;
-        form{
-            display: none;
-            position: absolute;
-            left: 0;
-            right: 0;
-            z-index: 100;
-        }
-    }
-    .search.active {
-        border-bottom: none;
-        form{
-            display: block;
-        }
-    }
-}
-@include breakpoint($breakpoint-tablet) {
-    .search-toggle{
-        display: none;
-    }
-    .search{
-        border-bottom: none;
-        form {
-            display: block;
-            position: initial;
-            left: auto;
-            right: auto;
-            z-index: auto;
-        }
-    }
-}
-
 //
 // Slim Nav
 //
@@ -500,23 +235,31 @@ header {
             width: auto;
         }
     }
+    
+    .user-menu {
+      position: absolute;
+      right: 215px;
+    }
 
     .logo {
         width: 121px; // <img> is already locked down to max-width 100%
     }
+    
     .follow-us {
         @include breakpoint($breakpoint-tablet) {
             display: none;
         }
         @include breakpoint($breakpoint-desktop) {
             display: block;
-            padding-right: 20px;
+            padding-right: 15px;
             padding-top: 0px;
         }
         ul {
             float: none;
             display: inline-block;
+            margin-top: -5px;
         }
+        margin-top: 2px;
     }
     .follow-headline {
         font: normal 1.076923077em/1 $secondary-sans-font;
@@ -528,13 +271,11 @@ header {
     }
     .search {
         float: none;
+        height: 35px;
         margin-top: 0px;
         position: absolute;
-        top: 0;
+        top: 0px;
         right: 0;
-        @include breakpoint($breakpoint-tablet) {
-            //      right: 20px;
-        }
         @include breakpoint($breakpoint-desktop) {
             right: 0;
         }
@@ -550,8 +291,8 @@ header {
                 width: 34px;
                 height: 38px;
                 position: absolute;
-                top: 0;
-                right: 0;
+                top: 0px;
+                right: 10px;
                 color: $mint;
                 font-size: 16px;
                 line-height: 30px;
@@ -583,6 +324,7 @@ header {
             @include box-sizing(border-box);
             [type=text]{
                 padding-top: .25em;
+                border-right: 1px solid #ccc;
                 &::-webkit-input-placeholder {
                     opacity: 1;
                 }
@@ -607,14 +349,30 @@ header {
             bottom: auto;
             padding: 19px 17px;
             text-indent: 100px;
+            border: 0;
             background: transparent none;
             @include breakpoint($breakpoint-tablet) {
                 padding: 19px 15px;
             }
         }
+        form {
+          display: none;
+        }
+        
         &.active {
+            form {
+              display: block;
+            }
             .form-item-keys-2{
                 display: block;
+                margin: 0px;
+                &:before {
+                  display: none;
+                }
+                
+                input {
+                  border-right: 1 solid #ccc;
+                }
             }
             .search-toggle{
                 display: none;
@@ -643,7 +401,7 @@ header {
             color: #000;
             position: relative;
             margin: 0;
-            padding: 0 1.8em 0 0;
+            padding: 0 1.2em 0 0;
             list-style-image: none;
             list-style-type: none;
             &:after{
@@ -653,7 +411,7 @@ header {
                 height: 20px;
                 width: auto;
                 position: absolute;
-                right: .9em;
+                right: .5em;
                 top: 0;
             }
             &:last-child {
@@ -678,18 +436,6 @@ header {
   }
 }
 
-
-.user-menu{
-    display: block;
-    margin-right: 34px;
-    float: right;
-    @include breakpoint($breakpoint-tablet) {
-        margin-right: 5px;
-    }
-    @include breakpoint($breakpoint-desktop) {
-
-    }
-}
 // different formatting for slim-nav
 .slim-nav .user-menu{
     margin-right: 24px;
@@ -701,10 +447,10 @@ header {
         display: block;
         position: absolute;
         right: 0;
-        height: 12px;
+        height: 20px;
         width: 0;
         border-right: 1px solid #949494;
-        top: 11px;
+        top: 2px;
     }
     @include breakpoint($breakpoint-desktop) {
         margin-right: 10px;
