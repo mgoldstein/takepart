@@ -137,19 +137,23 @@ nav#mobile-menu{
     clear: both;
   }
   a.icon{
-    height: 27px;
-    width: 27px;
+    height: 24px;
+    width: 24px;
     display: block;
     white-space: nowrap;
     overflow: hidden;
     float: left;
-    margin-left: 2px;
     padding: 0;
     color: white;
     background: $gray;
     border-radius: 50%;
     font-size: 15px;
 	line-height: 27px;
+		margin-left: 6px;
+		
+		&:hover {
+			text-decoration: none;
+		}
   }
   li:first-child a{
     margin-left: 0;

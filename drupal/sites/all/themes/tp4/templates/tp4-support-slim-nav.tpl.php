@@ -10,6 +10,7 @@
 	</div>
 	<div class="right">
 	  <div class="follow-us horizontal-menu menu-horizontal">
+			<h2 class="follow-headline">Follow</h2>
 	    <?php print $social_menu; ?>
 	  </div>
 	  <div class="user-menu">
