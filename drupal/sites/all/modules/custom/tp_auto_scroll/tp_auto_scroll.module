@@ -210,6 +210,9 @@ function _tp_auto_scroll_node_term_ads($node, $field_name, $json = FALSE) {
   elseif (count($terms) == 1 && !$json) {
     return $terms;
   }
+  elseif ($json) {
+    return $terms;
+  }
   
   //default return array
   return '["' . implode('", "', $terms) . '"]';
