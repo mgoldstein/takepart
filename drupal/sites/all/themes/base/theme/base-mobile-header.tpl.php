@@ -1,5 +1,5 @@
 <div class="header-inner clearfix">
-  <div class="toggle-menu toggle-left pr-10">
+  <div class="menu-toggle toggle-menu toggle-left pr-10">
     <span class="icon i-hamburger"></span>
   </div>
   <?php print $variables['logo']; ?>

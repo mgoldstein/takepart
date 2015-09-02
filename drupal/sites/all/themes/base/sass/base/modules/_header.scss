@@ -5,8 +5,6 @@
   display: block;
   width: 100%;
   height: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
   border-bottom: 2px solid $black;
   @include breakpoint($breakpoint-tablet){
     border-bottom: none;
@@ -22,10 +20,13 @@
     cursor: pointer;
     float: left;
     color: $light-mint;
-    @include breakpoint($breakpoint-tablet){
+    font-size: 20px;
+    @include breakpoint($breakpoint-tablet) {
       display: none;
     }
+    margin-left: 10px;
   }
+  
   .logo{
     height: auto;
     overflow: hidden;
@@ -46,8 +47,15 @@
     color: $light-mint;
     font-size: 18px;
     font-weight: 900;
+    margin-right: 10px;
   }
   .search{
+    &:active {
+      form {
+        display: block;
+      }
+    }
+    
     form{
       display: none;
     }
@@ -170,6 +178,7 @@
         margin-top: 0;
         li{
           margin-right: 0;
+          float: left;
           a{
             background: #AAA;
           }
@@ -178,7 +187,10 @@
     }
   }
 }
-body.mobile-search-show #header form{
+body.mobile-search-show #header form {
+  display: block;
+}
+body.mobile-search-show #header form .form-submit {
   display: block;
 }
 
@@ -215,6 +227,24 @@ body.mobile-search-show #header form{
     }
   }
 }
+
+#header {
+  .pivot-nav-theme {
+    .menu-toggle{
+      display: block;
+      width: 20px;
+      height: 15px;
+      border-top: 9px double $light-mint;
+      border-bottom: 3px solid $light-mint;
+      cursor: pointer;
+      float: left;
+      margin-right: 10px;
+      @include breakpoint($breakpoint-desktop) {
+          display: none;
+      }
+    }
+  }
+}
 //
 // Slim Nav
 //
@@ -239,7 +269,6 @@ body.mobile-search-show #header form{
       cursor: pointer;
       float: left;
       margin-right: 10px;
-      margin-top: 4px;
       @include breakpoint($breakpoint-desktop) {
           display: none;
       }

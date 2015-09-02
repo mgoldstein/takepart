@@ -33,7 +33,7 @@
       }
 
       function tp_mobile_header_init(){
-        if($(window).width() < 481){
+        if($(window).width() < 768){
           /* Show search field */
           var $body = $('body');
           $('.toggle-search').click(function(){
