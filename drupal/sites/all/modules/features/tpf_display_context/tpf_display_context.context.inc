@@ -458,6 +458,156 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'interstitial_exclusions';
+  $context->description = 'Pages that should not show an interstitial';
+  $context->tag = 'Interstitials';
+  $context->conditions = array(
+    'node' => array(
+      'values' => array(
+        'feed' => 'feed',
+        'feed_item' => 'feed_item',
+        'takepart_page' => 'takepart_page',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+    'path' => array(
+      'values' => array(
+        'admin/*' => 'admin/*',
+        'node/39373' => 'node/39373',
+        'teach' => 'teach',
+        'teach/*' => 'teach/*',
+        'now' => 'now',
+        'now/*' => 'now/*',
+        'place-at-the-table' => 'place-at-the-table',
+        'place-at-the-table/*' => 'place-at-the-table/*',
+      ),
+    ),
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+    'theme' => array(
+      'values' => array(
+        'fresh' => 'fresh',
+        'tp4' => 'tp4',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'theme_html' => array(
+      'class' => 'interstitials-exclude',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Interstitials');
+  t('Pages that should not show an interstitial');
+  $export['interstitial_exclusions'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'interstitial_referers';
+  $context->description = 'Pages that should be marked with an interstitial referer type';
+  $context->tag = 'Interstitials';
+  $context->conditions = array(
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'pm_interstitial_referer' => array(
+      'actve' => TRUE,
+    ),
+    'theme' => array(
+      'title' => '',
+      'subtitle' => '',
+    ),
+    'theme_html' => array(
+      'class' => '',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Interstitials');
+  t('Pages that should be marked with an interstitial referer type');
+  $export['interstitial_referers'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'interstitials';
+  $context->description = 'Pages that can show an interstitial';
+  $context->tag = 'Interstitials';
+  $context->conditions = array(
+    'context' => array(
+      'values' => array(
+        '~interstitial_exclusions' => '~interstitial_exclusions',
+      ),
+    ),
+    'node' => array(
+      'values' => array(
+        'action' => 'action',
+        'blog_front' => 'blog_front',
+        'mos_action' => 'mos_action',
+        'openpublish_article' => 'openpublish_article',
+        'openpublish_blog_post' => 'openpublish_blog_post',
+        'openpublish_photo' => 'openpublish_photo',
+        'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+        'openpublish_video' => 'openpublish_video',
+        'petition_action' => 'petition_action',
+        'pledge_action' => 'pledge_action',
+        'section_front' => 'section_front',
+        'section_front_wide' => 'section_front_wide',
+        'takepart_campaign' => 'takepart_campaign',
+        'takepart_list' => 'takepart_list',
+        'topic_front' => 'topic_front',
+        'venue' => 'venue',
+      ),
+      'options' => array(
+        'node_form' => '1',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'pm_interstitial-interstitials' => array(
+          'module' => 'pm_interstitial',
+          'delta' => 'interstitials',
+          'region' => 'content_bottom',
+          'weight' => 0,
+        ),
+      ),
+    ),
+    'theme' => array(
+      'title' => '',
+      'subtitle' => '',
+    ),
+    'theme_html' => array(
+      'class' => '',
+    ),
+  );
+  $context->condition_mode = 1;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Interstitials');
+  t('Pages that can show an interstitial');
+  $export['interstitials'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'optimizely_js';
   $context->description = 'Quick fix for placing Optimizely code on Fresh';
   $context->tag = 'Fresh';
