@@ -63,15 +63,16 @@
 	   .label {
 		text-decoration: none;
 	   }
-	 }
-	 a:hover {
-	   .label {
-		text-decoration: none;
+	   &:hover {
+		.label {
+		  text-decoration: none;
+		}
+		.series-nav-title {
+		  text-decoration: underline;
+		}
 	   }
-	   .series-nav-title {
-		text-decoration: underline;
-	   }
 	 }
+
     }
   }
 }

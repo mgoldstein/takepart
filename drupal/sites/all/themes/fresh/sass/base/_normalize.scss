@@ -57,8 +57,8 @@ strong, b {
   font-weight: bold;
 }
 .section{
-//  height: auto;
-//  overflow: hidden;
+  //  height: auto;
+  //  overflow: hidden;
 }
 .main-content{
   height: auto;
@@ -104,14 +104,14 @@ li{
 }
 .field-item{
   > ul, > ol{
-	margin: 20px 0 0;
-	@include breakpoint($breakpoint-phablet) {
-		margin: 20px 20px 0;
-	}
-	font-size: 16px;
+    margin: 20px 0 0;
+    @include breakpoint($breakpoint-phablet) {
+	 margin: 20px 20px 0;
+    }
+    font-size: 16px;
     line-height: 24px;
     li {
-	    margin-bottom: .75em;
+	 margin-bottom: .75em;
     }
   }
   > ul {
@@ -128,7 +128,7 @@ li{
     }
   }
   > ol {
-	padding: 0 20px;
+    padding: 0 20px;
   }
 }
 ul.tabs {
@@ -212,7 +212,7 @@ blockquote.pullquote{
     margin-top: 10px;
     text-transform: uppercase;
     font-weight: normal;
-	letter-spacing: .1em;
+    letter-spacing: .1em;
   }
 }
 aside.inline-content{
@@ -222,6 +222,13 @@ aside.inline-content{
   }
   a.inline-content-link {
     color: $black;
+    &:hover {
+	 text-decoration: none;
+
+	 h3.inline-title {
+	   text-decoration: underline;
+	 }
+    }
   }
   @include breakpoint($breakpoint-phablet){
     padding-left: 30px;
@@ -444,9 +451,9 @@ aside.inline-content + p{
     border-top: none;
     border-left: none;
     -webkit-transform: rotate(45deg);
-	    -ms-transform: rotate(45deg); // IE9 only
-	     -o-transform: rotate(45deg);
-			transform: rotate(45deg);
+    -ms-transform: rotate(45deg); // IE9 only
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
     margin: 0 auto;
     position: relative;
     top: -5px;
@@ -475,10 +482,10 @@ aside.inline-content + p{
 *************************/
 
 figure.align-center {
+  margin: 0 auto;
+  .inline-feature-image {
+    display: block;
     margin: 0 auto;
-    .inline-feature-image {
-	 display: block;
-	 margin: 0 auto;
   }
 }
 
