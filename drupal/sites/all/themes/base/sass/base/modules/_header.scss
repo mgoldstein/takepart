@@ -186,17 +186,31 @@ body.mobile-search-show #header form{
 #header {
   .follow-us {
     a {
-      &.i-facebook:hover {
-        background-color: #3c5a98; 
+      &.i-facebook {
+        font-size: 17px;
+        padding-right: 3px;
+        &:hover {
+          background-color: #3c5a98; 
+        }
       }
-      &.i-google_plusone_share:hover {
-        background-color: #da4935; 
+      &.i-google_plusone_share {
+        font-size: 16px;
+        padding-left: 3px;
+        &:hover {
+          background-color: #da4935; 
+        }
       }
-      &.i-twitter:hover {
-        background-color: #2ba9e1; 
+      &.i-twitter {
+        font-size: 16px;
+        &:hover {
+          background-color: #2ba9e1; 
+        }
       }
-      &.i-email:hover {
-        background-color: #545454; 
+      &.i-email {
+        font-size: 14px;
+        &:hover {
+          background-color: #545454; 
+        }
       }
     }
   }
