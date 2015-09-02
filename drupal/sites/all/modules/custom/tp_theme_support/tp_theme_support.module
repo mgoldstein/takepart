@@ -63,9 +63,9 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
           title: \"" . $node_data['title'] . "\",
           url: '" . $node_data['url'] . "',
           date: '" . $node_data['date'] . "',
-          tags: " . str_replace('\'', '"', $node_data['tags']) . ",
-          authors: " . str_replace('\'', '"', $node_data['authors']) . ",
-          channels: " . str_replace('\'', '"', $node_data['channels']) . ",
+          tags: " . str_replace('\'', '"', '["' . implode('", "', $node_data['tags']) . '"]') . ",
+          authors: " . str_replace('\'', '"', '["' . implode('", "', $node_data['authors']) . '"]') . ",
+          channels: " . str_replace('\'', '"', '["' . implode('", "', $node_data['channels']) . '"]') . "
         };
 
         tp_reach_call(__reach_config);
@@ -156,14 +156,16 @@ function _tp_theme_support_reach_node_processor($node) {
       'url' => $base_url . url('node/'. $node->nid),
       'tags' => _tp_auto_scroll_node_term_ads($node, 'field_free_tag', TRUE),
       'date' => date('c', $node->published_at),
-      'authors' => '["' . implode('", "', $authors_process) . '"]',
+      'authors' => $authors_process,
       'channels' => _tp_auto_scroll_node_term_ads($node, 'field_topic', TRUE),
     );
 		
 		//standardize the data and escape
 		foreach ($node_data as $key => $value) {
-			$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);	
-			$node_data[$key] = str_replace("'", "\\'", $value);
+			if (is_string($value)) {
+				$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);	
+				$node_data[$key] = str_replace("'", "\\'", $value);
+			}
 		}
 
     //return data

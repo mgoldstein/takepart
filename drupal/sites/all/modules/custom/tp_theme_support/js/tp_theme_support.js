@@ -10,7 +10,7 @@
     
     //break the function if it contains Business
     if (typeof __reach_config !== 'undefined' || typeof __reach_config.tags !== 'undefined') {
-      if (__reach_config.tags.indexOf('Business') == -1) {
+      if ($.inArray('Business', __reach_config.tags) == -1) {
         return;
       }
     }
