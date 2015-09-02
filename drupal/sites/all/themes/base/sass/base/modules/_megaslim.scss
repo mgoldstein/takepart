@@ -88,7 +88,11 @@
   }
   .megaslim-content-teaser{
     border-left: 1px solid #CCC;
-    height: 220px;
+    height: 210px;
+    
+    .promoted-wrapper {
+      text-align: left;
+    }
   }
   .mega-label{
     font-family: $primary-sans-font;
