@@ -207,7 +207,8 @@ function tp_megaslim_generate_teasers($teaser_items){
 
     }
     /* Theme the teasers */
-    $teasers[] = theme('tp_megaslim_menu_item', array('thumbnail' => $thumbnail, 'label' => $label, 'content' => $content, 'path' => $path));
+    $promoted = _tp4_support_sponsor_flag($teaser_node);
+    $teasers[] = theme('tp_megaslim_menu_item', array('thumbnail' => $thumbnail, 'label' => $label, 'content' => $content, 'path' => $path, 'promoted' => $promoted));
   }
   $teasers = implode('', $teasers);
   return $teasers;
@@ -281,7 +282,8 @@ function tp_megaslim_menu_theme(){
       'variables' => array(
         'thumbnail' => '',
         'label' => '',
-        'content' => ''
+        'content' => '',
+        'promoted' => ''
       )
     )
   );

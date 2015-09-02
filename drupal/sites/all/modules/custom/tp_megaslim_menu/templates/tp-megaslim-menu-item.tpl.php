@@ -8,4 +8,5 @@
   <div class="picture"><?php print $thumbnail; ?></div>
   <div class="mega-label"><?php print $label; ?></div>
   <div class="text"><?php print $content; ?></div>
+  <div class="promoted-wrapper"><?php print $promoted; ?></div>
 </a>
