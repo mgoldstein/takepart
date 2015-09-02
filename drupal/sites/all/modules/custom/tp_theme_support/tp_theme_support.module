@@ -53,12 +53,8 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
   if (isset($node->type) && !path_is_admin(current_path())) {
     //node data
     $node_data = _tp_theme_support_reach_node_processor($node);
+		$node_data['title'] = str_replace("\\", "\\\\", $node_data['title']);
 
-		//standardize the data and escape
-		foreach ($node_data as $key => $value) {
-			$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);	
-			$node_data[$key] = str_replace("'", "\\\'", $value);
-		}
     //adds a dynamic inline function call to tp_reach_call
     drupal_add_js(
      "jQuery(document).ready(function () {
@@ -163,6 +159,12 @@ function _tp_theme_support_reach_node_processor($node) {
       'authors' => '["' . implode('", "', $authors_process) . '"]',
       'channels' => _tp_auto_scroll_node_term_ads($node, 'field_topic', TRUE),
     );
+		
+		//standardize the data and escape
+		foreach ($node_data as $key => $value) {
+			$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);	
+			$node_data[$key] = str_replace("'", "\\'", $value);
+		}
 
     //return data
     return $node_data;
