@@ -220,6 +220,9 @@ aside.inline-content{
   &.pull-right{
     clear: right;
   }
+  a.inline-content-link {
+    color: $black;
+  }
   @include breakpoint($breakpoint-phablet){
     padding-left: 30px;
     padding-right: 0px;

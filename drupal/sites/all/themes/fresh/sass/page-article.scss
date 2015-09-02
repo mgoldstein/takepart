@@ -58,6 +58,21 @@
     h1.title, #more-on-takepart h2{
       color: $black;
     }
+    .series-navigation {
+	 a {
+	   .label {
+		text-decoration: none;
+	   }
+	 }
+	 a:hover {
+	   .label {
+		text-decoration: none;
+	   }
+	   .series-nav-title {
+		text-decoration: underline;
+	   }
+	 }
+    }
   }
 }
 h1.title{
