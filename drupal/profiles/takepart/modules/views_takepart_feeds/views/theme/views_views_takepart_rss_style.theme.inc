@@ -45,7 +45,7 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
   $xml .= "\t<link>http://www.takepart.com</link>\n";
   $xml .= "\t<atom:link href=\"" . _takepart_rss_selfURL() . "\" rel=\"self\" />\n";
   $xml .= "\t<description>Stories That Matter, Action That Counts</description>\n";
-  $xml .= "\t<lastBuildDate>" . _takepart_rss_LastUpdated($vars['view']->result[0]->node_created) . "</lastBuildDate>\n";
+  $xml .= "\t<lastBuildDate>" . _takepart_rss_LastUpdated($vars['view']->result[0]->publication_date_published_at) . "</lastBuildDate>\n";
   $xml .= "\t<language>en</language>\n";
   $xml .= "\t<copyright>Copyright " . date("Y") . " TakePart, LLC</copyright>\n";
   $xml .= "\t<webMaster>support@takepart.com (https://www.takepart.com/contact-us)</webMaster>\n";
