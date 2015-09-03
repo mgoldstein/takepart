@@ -413,11 +413,11 @@ function _tp_custom_nav_menu_handler($menu = NULL) {
     $mega_content_wrapper = theme('html_tag', array(
       'element' => array(
         '#tag' => 'div',
-        '#value' => $left_menu,
+        '#value' => $menu,
         '#attributes' => array(
           'class' => 'mega-content-wrapper',
     ))));
-        
+    
     $link_mega_wrapper = theme('html_tag', array(
       'element' => array(
         '#tag' => 'div',
