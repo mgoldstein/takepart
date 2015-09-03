@@ -63,32 +63,6 @@
         curItem = item;
       }
     });
-
-      //ensures this is for mobile only
-      if ($(window).width() < 768) {
-        //adding code that handles the submit for the search. code matches pivot
-        $('#search-api-page-search-form-site-search .form-submit').click(function() {
-          if ($('.search-toggle').parent().hasClass('active')) {
-            $('.search-toggle').parent().removeClass('active');
-            var search_input = $('#search-api-page-search-form-site-search #edit-keys-2').val();
-            
-            if (search_input == 'Search' || search_input == '') {
-              return false;
-            }
-            return true;
-          }
-          else {
-            $('.search-toggle').parent().addClass('active');
-            $('#search-api-page-search-form-site-search #edit-keys-2').val('Search');
-            return false;
-          }
-        });
-        
-        //makes the search go away on focus      
-        $('#search-api-page-search-form-site-search #edit-keys-2').focus(function() {
-          $(this).val('');
-        });
-      }
       
       //Toggle search on mobile
       $('html').click(function() {
@@ -113,12 +87,6 @@
         event.stopPropagation();
         $(this).addClass('active');
       });
-
-    $('.search-toggle').parent().hover(function(){
-        $(this).addClass('active');
-    }, function(){
-        $(this).removeClass('active');
-    });
 
       function makeTall(){$(this).find('.mega-content').fadeIn(100);}
       function makeShort(){$(this).find('.mega-content').fadeOut(100);}
