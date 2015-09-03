@@ -10,9 +10,9 @@
   }
   .header-inner{
     border-bottom: 2px solid $black;
+    margin-top: 10px;
     
-    @include breakpoint($breakpoint-tablet){
-      margin-top: 10px;
+    @include breakpoint($breakpoint-tablet) {
       border-bottom: 1px solid $black;
     }
   }
@@ -25,7 +25,7 @@
     @include breakpoint($breakpoint-tablet) {
       display: none;
     }
-    margin-left: 10px;
+    //margin-left: 10px;
   }
   
   .logo{
@@ -48,7 +48,6 @@
     color: $light-mint;
     font-size: 18px;
     font-weight: 900;
-    margin-right: 10px;
   }
   .search{
     &:active {
@@ -968,6 +967,10 @@ body {
       }
     }
   }
+}
+
+.header-wrapper.mobile {
+  padding: 0 10px;
 }
 
 #block-boxes-ga-homepage-header {
