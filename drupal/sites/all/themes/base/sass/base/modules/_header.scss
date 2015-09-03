@@ -188,8 +188,10 @@
     }
   }
 }
+
 body.mobile-search-show #header form {
   display: block;
+  position: relative;
 }
 body.mobile-search-show #header form .form-submit {
   display: block;
@@ -965,4 +967,8 @@ body {
       }
     }
   }
+}
+
+#block-boxes-ga-homepage-header {
+  margin-bottom: 0;
 }
