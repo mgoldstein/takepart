@@ -5,14 +5,15 @@
   display: block;
   width: 100%;
   height: auto;
-  border-bottom: 2px solid $black;
   @include breakpoint($breakpoint-tablet){
     border-bottom: none;
   }
   .header-inner{
+    border-bottom: 2px solid $black;
+    
     @include breakpoint($breakpoint-tablet){
       margin-top: 10px;
-      margin-bottom: 5px;
+      border-bottom: 1px solid $black;
     }
   }
   .toggle-menu{
@@ -246,8 +247,8 @@ body.mobile-search-show #header form .form-submit {
       display: block;
       width: 20px;
       height: 15px;
-      border-top: 9px double $light-mint;
-      border-bottom: 3px solid $light-mint;
+      border-top: 9px double #FFF;
+      border-bottom: 3px solid #FFF;
       cursor: pointer;
       float: left;
       margin-right: 10px;
