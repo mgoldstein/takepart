@@ -355,11 +355,11 @@ function tp_campaigns_hero(){
     }
     if ($items = field_get_items('node', $campaign_node, 'field_campaign_min_height')) {
       $min_height = field_view_value('node', $campaign_node, 'field_campaign_min_height', $items[0]);
-      $bg_settings['min_height'] = drupal_render($min_height) - 20;
+      $bg_settings['min_height'] = drupal_render($min_height);
     }
     if ($items = field_get_items('node', $campaign_node, 'field_campaign_mobile_min_height')) {
       $mobile_min_height = field_view_value('node', $campaign_node, 'field_campaign_mobile_min_height', $items[0]);
-      $bg_settings['mobile_min_height'] = drupal_render($mobile_min_height) - 20;
+      $bg_settings['mobile_min_height'] = drupal_render($mobile_min_height);
     }
     if ($items = field_get_items('node', $campaign_node, 'field_campaign_bgw')) {
       $bg_settings['bg_width'] = drupal_render(field_view_value('node', $campaign_node, 'field_campaign_bgw', $items[0]));

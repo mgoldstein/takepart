@@ -192,6 +192,15 @@ body.mobile-search-show #header form {
 }
 body.mobile-search-show #header form .form-submit {
   display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  color: #FFF;
+  border: none;
+  text-indent: 1000px;
+  overflow: hidden;
+  background-color: transparent;
+  width: 34px;
 }
 
 
