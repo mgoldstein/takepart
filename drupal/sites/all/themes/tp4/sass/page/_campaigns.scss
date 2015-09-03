@@ -1797,5 +1797,9 @@ body.campaign-display {
     #header {
         border-bottom: none;
         margin-bottom: -1px;
+        
+        .header-inner {
+            border: 0;
+        }
     }
 }
