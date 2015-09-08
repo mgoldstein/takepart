@@ -77,7 +77,7 @@
   }
 }
 h1.title{
-  margin-top: 10px;
+  margin-top: 20px; //Total spacing should be 30px accounting for font height gap
   margin-bottom: 15px;
   @include breakpoint($breakpoint-tablet){
     text-align: center;
