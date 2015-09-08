@@ -150,21 +150,37 @@ class TPVideoOembed {
         
     //check if url exist
     $original_url = $this->url;
+    
+    //adding watchdog debug
+    if (variable_get('takepart_oembed_debug_mode', 0)) {
+      watchdog('Takepart Oembed Debug','Requested Obj: <pre>' . print_r($this, 1) . '</pre>');
+    }
+    
     $url_params = parse_url($original_url);
-  
+
     //converts scheme to http to test if secure is on
     if ($this->standard_info['secure_request'] && stripos($base_url, 'http') === 0) {
       $original_url = str_replace('https:', 'http:' , $original_url);
     }
+    
+    //adding watchdog debug
+    if (variable_get('takepart_oembed_debug_mode', 0)) {
+      watchdog('Takepart Oembed Debug','Base URL: <pre>' . print_r($base_url, 1) . '</pre>');
+    }
 
     //ensures that the requested url has the base url
     if (stripos($original_url, $base_url) === 0) {
-      $requested_url = ltrim($url_params['path'], '/');
+      $original_url = ltrim($url_params['path'], '/');
+    }
+
+    //lookups the path
+    $url = drupal_lookup_path('source', $original_url);
+
+    //adding watchdog debug
+    if (variable_get('takepart_oembed_debug_mode', 0)) {
+      watchdog('Takepart Oembed Debug','Node Path: <pre>' . print_r($url, 1) . '</pre>');
     }
     
-    //lookups the path
-    $url = drupal_lookup_path('source', $requested_url);
-
     //ensures that the system url is returned
     if (!empty($url)) {
       $node_id = str_replace('node/', '', $url);
