@@ -28,12 +28,14 @@ body.campaign-display
         }
     }
     header#header{
-        max-width: 100%;
-        .slim-nav-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 10px;
-        }
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      .slim-nav-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 10px;
+      }
         .header-inner{
             max-width: 1000px;
             margin: 0 auto;
