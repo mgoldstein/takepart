@@ -9,12 +9,7 @@
     border-bottom: none;
   }
   .header-inner{
-    border-bottom: 2px solid $black;
-    margin-top: 10px;
-    
-    @include breakpoint($breakpoint-tablet) {
-      border-bottom: 1px solid $black;
-    }
+    margin-bottom: 10px;
   }
   .toggle-menu{
     display: block;
