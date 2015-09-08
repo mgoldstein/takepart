@@ -2,6 +2,7 @@
  *  Mobile first scss
  */
 .tp-ad-wrapper {
+  margin-top: 10px;
    @include breakpoint($breakpoint-phablet) {
      margin: 20px;
      &.ad-right {
