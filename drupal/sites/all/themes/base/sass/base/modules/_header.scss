@@ -10,8 +10,7 @@
   }
   .header-inner{
     margin-top: 15px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 4px;
     border-bottom: 2px solid $black;
     @include breakpoint($breakpoint-tablet) {
       padding-bottom: 0;
