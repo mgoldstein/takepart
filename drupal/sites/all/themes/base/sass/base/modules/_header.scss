@@ -9,7 +9,14 @@
     border-bottom: none;
   }
   .header-inner{
+    margin-top: 15px;
     margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid $black;
+    @include breakpoint($breakpoint-tablet) {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
   }
   .toggle-menu{
     display: block;
@@ -180,6 +187,17 @@
           }
         }
       }
+    }
+  }
+  .leaderboard div {
+    margin: 0 auto;
+  }
+
+  .ad-large-center {
+    width: 100%;
+    display: none;
+    @include breakpoint($breakpoint-tablet) {
+      display: block;
     }
   }
 }
