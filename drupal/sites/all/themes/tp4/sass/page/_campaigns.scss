@@ -28,9 +28,7 @@ body.campaign-display
         }
     }
     header#header{
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
+      max-width: 100%;
       .slim-nav-inner {
         max-width: 1000px;
         margin: 0 auto;
@@ -1804,4 +1802,12 @@ body.campaign-display {
             border: 0;
         }
     }
+}
+
+/**
+ * Header alignment for individual cards
+ */
+body.campaign-display:not(.node-type-campaign-page) header#header{
+  max-width: 1000px;
+  margin: 0 auto;
 }
