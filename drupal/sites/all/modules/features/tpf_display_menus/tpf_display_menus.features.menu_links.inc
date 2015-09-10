@@ -422,25 +422,6 @@ function tpf_display_menus_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-megamenu_business:taxonomy/term/117590',
   );
-  // Exported menu link: menu-megamenu_health--beauty:taxonomy/term/15
-  $menu_links['menu-megamenu_health--beauty:taxonomy/term/15'] = array(
-    'menu_name' => 'menu-megamenu',
-    'link_path' => 'taxonomy/term/15',
-    'router_path' => 'taxonomy/term/%',
-    'link_title' => 'Health & Beauty',
-    'options' => array(
-      'attributes' => array(),
-      'identifier' => 'menu-megamenu_health--beauty:taxonomy/term/15',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -47,
-    'customized' => 1,
-    'parent_identifier' => 'menu-megamenu_culture:taxonomy/term/108747',
-  );
   // Exported menu link: menu-megamenu_home:taxonomy/term/114840
   $menu_links['menu-megamenu_home:taxonomy/term/114840'] = array(
     'menu_name' => 'menu-megamenu',
@@ -1127,7 +1108,6 @@ function tpf_display_menus_menu_default_menu_links() {
   t('Food Policy');
   t('Google Plus');
   t('Green');
-  t('Health & Beauty');
   t('Home');
   t('Human Rights');
   t('Innovation');
