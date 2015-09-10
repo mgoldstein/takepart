@@ -1,6 +1,18 @@
 /**
  *  Mobile first scss
  */
+.tp-ad-visual {
+	background-color: blue;
+}
+
+.more-on-takepart {
+	&.override {
+		.tp-ad-wrapper {
+			margin: 0;
+		}
+	}
+}
+
 .tp-ad-wrapper {
   margin-top: 10px;
    @include breakpoint($breakpoint-phablet) {

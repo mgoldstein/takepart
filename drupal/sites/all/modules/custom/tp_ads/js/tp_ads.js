@@ -35,12 +35,19 @@
     //variables
     window.mobile_ads = Drupal.settings.tp_ad_settings;
     window.mobile_leader_ads = Drupal.settings.tp_leader_ad_settings;
+    
   
     //this is for the leaderboard insert.
     tp_add_article_ads(window.mobile_leader_ads, 300, 'article_leader_ads', 1);
   
     //this is for the mobile article insert. ad will come when within 300 px of the viewport
     tp_add_article_ads(window.mobile_ads, 300, 'article_ads', 1);
+    
+    //only fire code if setting exists
+    if (typeof Drupal.settings.tp_ad_more_on_takepart != 'undefined') {
+      window.more_on_takepart_ads = Drupal.settings.tp_ad_more_on_takepart;
+      tp_add_article_ads(window.more_on_takepart_ads, 300, 'more_on_takepart', 1);
+    }
   }
   
   /**
@@ -199,7 +206,7 @@
           //overrides for desktop
           if ($(window).width() > 480) {
             //break this if conditional if the conditional check comes back as 0
-            if (id != 'article_leader_ads' && !conditional_check.length) {
+            if (id != 'article_leader_ads' && id != 'more_on_takepart' && !conditional_check.length) {
               return;
             }
             
@@ -297,6 +304,23 @@
       viewport.bottom = viewport.top + win.height();
       
       var selector_item_offset = $('.tp-ad', this).offset();
+      
+      //override to check if tp-ad is undefined if so then try tp-ad-wrapper
+      if (typeof selector_item_offset == 'undefined') {
+        height = $('.tp-ad-wrapper', this).height();
+        selector_item_offset = $('.tp-ad-wrapper', this).offset();
+        selector_item_offset.bottom = selector_item_offset.top + height;
+        
+        //removes the ad only when out of view
+        if (selector_item_offset.bottom < viewport.top || selector_item_offset.top > viewport.bottom) {
+          $('.tp-ad-wrapper', this).remove();
+          //removes the processed so that it can refire on scrolling
+
+          $(this).removeClass('tp-ad-processed');
+        }
+        return;
+      }      
+      
       selector_item_offset.bottom = selector_item_offset.top + height;
       
       //removes the ad only when out of view
