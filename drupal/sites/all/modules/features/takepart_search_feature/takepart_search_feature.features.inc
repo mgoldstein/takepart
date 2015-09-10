@@ -14,6 +14,9 @@ function takepart_search_feature_ctools_plugin_api($module = NULL, $api = NULL) 
   if ($module == "facetapi" && $api == "facetapi_defaults") {
     return array("version" => "1");
   }
+  if ($module == "strongarm" && $api == "strongarm") {
+    return array("version" => "1");
+  }
 }
 
 /**
@@ -198,12 +201,45 @@ function takepart_search_feature_default_search_api_index() {
 }
 
 /**
+ * Implements hook_default_search_api_page().
+ */
+function takepart_search_feature_default_search_api_page() {
+  $items = array();
+  $items['site_search'] = entity_import('search_api_page', '{
+    "index_id" : "site_node_index",
+    "path" : "search",
+    "name" : "Site Search",
+    "machine_name" : "site_search",
+    "description" : "",
+    "options" : {
+      "mode" : "terms",
+      "fields" : {
+        "title" : "title",
+        "search_api_aggregation_1" : "search_api_aggregation_1",
+        "body:value" : "body:value",
+        "field_free_tag:name" : "field_free_tag:name",
+        "field_series:name" : "field_series:name",
+        "field_topic:name" : "field_topic:name",
+        "field_video_series:name" : "field_video_series:name",
+        "field_group_topic:name" : "field_group_topic:name"
+      },
+      "per_page" : "10",
+      "result_page_search_form" : 1,
+      "get_per_page" : 0,
+      "view_mode" : "search_api_page_result"
+    },
+    "enabled" : "1"
+  }');
+  return $items;
+}
+
+/**
  * Implements hook_default_search_api_server().
  */
 function takepart_search_feature_default_search_api_server() {
   $items = array();
   $items['takepart_solr_production'] = entity_import('search_api_server', '{
-    "name" : "TakePart SOLR Production",
+    "name" : "TakePart SOLR Local",
     "machine_name" : "takepart_solr_production",
     "description" : "Used for SOLR on TakePart.com",
     "class" : "search_api_solr_service",
@@ -213,8 +249,8 @@ function takepart_search_feature_default_search_api_server() {
       "site_hash_form" : [],
       "site_hash" : false,
       "scheme" : "http",
-      "host" : "10.2.5.30",
-      "port" : "8080",
+      "host" : "10.1.5.30",
+      "port" : 8080,
       "path" : "\\/solr\\/takepart_core",
       "http_user" : "",
       "http_pass" : "",
@@ -226,6 +262,74 @@ function takepart_search_feature_default_search_api_server() {
       "http_method" : "AUTO"
     },
     "enabled" : "1"
+  }');
+  return $items;
+}
+
+/**
+ * Implements hook_default_search_api_sort().
+ */
+function takepart_search_feature_default_search_api_sort() {
+  $items = array();
+  $items['site_node_index__created'] = entity_import('search_api_sort', '{
+    "index_id" : "site_node_index",
+    "field" : "created",
+    "name" : "Date",
+    "enabled" : "1",
+    "weight" : "0",
+    "identifier" : "site_node_index__created",
+    "default_sort" : "1",
+    "default_sort_no_terms" : "1",
+    "default_order" : "desc",
+    "options" : { "field_name" : "Date created" }
+  }');
+  $items['site_node_index__search_api_relevance'] = entity_import('search_api_sort', '{
+    "index_id" : "site_node_index",
+    "field" : "search_api_relevance",
+    "name" : "Relevance",
+    "enabled" : "1",
+    "weight" : "0",
+    "identifier" : "site_node_index__search_api_relevance",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "0",
+    "default_order" : "desc",
+    "options" : { "field_name" : "search_api_relevance" }
+  }');
+  $items['site_node_index__status'] = entity_import('search_api_sort', '{
+    "index_id" : "site_node_index",
+    "field" : "status",
+    "name" : "Published",
+    "enabled" : "0",
+    "weight" : "0",
+    "identifier" : "site_node_index__status",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "0",
+    "default_order" : "desc",
+    "options" : { "field_name" : "Status" }
+  }');
+  $items['site_node_index__title'] = entity_import('search_api_sort', '{
+    "index_id" : "site_node_index",
+    "field" : "title",
+    "name" : "Title",
+    "enabled" : "0",
+    "weight" : "0",
+    "identifier" : "site_node_index__title",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "0",
+    "default_order" : "desc",
+    "options" : { "field_name" : "Title" }
+  }');
+  $items['site_node_index__type'] = entity_import('search_api_sort', '{
+    "index_id" : "site_node_index",
+    "field" : "type",
+    "name" : "Type",
+    "enabled" : "0",
+    "weight" : "0",
+    "identifier" : "site_node_index__type",
+    "default_sort" : "0",
+    "default_sort_no_terms" : "0",
+    "default_order" : "desc",
+    "options" : { "field_name" : "Content type" }
   }');
   return $items;
 }
