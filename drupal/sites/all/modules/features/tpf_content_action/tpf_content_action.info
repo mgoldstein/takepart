@@ -1,5 +1,4 @@
 name = TakePart Content Action
-description = Settings for Action content type
 core = 7.x
 package = Content Types
 version = 7.x-1.2
@@ -27,6 +26,7 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_group][] = group_action_media|node|action|form
 features[field_group][] = group_actions_main|node|action|form
+features[field_group][] = group_deprecated|node|action|form
 features[field_group][] = group_tagging|node|action|form
 features[field_instance][] = node-action-field_action_icon
 features[field_instance][] = node-action-field_action_main_image
