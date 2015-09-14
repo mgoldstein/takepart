@@ -1,0 +1,42 @@
+<?php
+/**
+ * @file
+ * Install file to support tp_dfp.module.
+ *
+ */
+
+/*
+ * Implements hook_requirements()
+ */
+function tp_dfp_requirements($phase){
+
+  // Elements of the system may not have loaded yet.  Use get_t over t().
+  $t = get_t();
+
+  // Find Google's DFP lib.  Otherwise, use libraries API.
+  $googleads_lib_path = function_exists('libraries_get_path') ? libraries_get_path('googleads-php-lib') : 'sites/all/libraries/googleads-php-lib';
+  $googleads_dfp = $googleads_lib_path. '/src/Google/Api/Ads/Dfp';
+
+  if (!class_exists('DfpUser') && $googleads_dfp) {
+
+    set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path. '/src');
+    @require_once($googleads_dfp. '/Lib/DfpUser.php');
+  }
+  if (class_exists('DfpUser')) {
+    $status['description'] = $googleads_dfp;
+    $status['severity'] = REQUIREMENT_OK;
+  }
+  else {
+    $status['description'] = $t('Google Doubleclick for Publisher\'s PHP lib not found at %path.  See modules/custom/tp_dfp/README.txt', array(
+      '%path' => $googleads_dfp,
+    ));
+    $status['severity'] = REQUIREMENT_ERROR;
+    if ($phase == 'runtime') {
+      $status['value'] = $t('Not found');
+    }
+  }
+  $items[] = $status;
+
+  return $items;
+
+}
