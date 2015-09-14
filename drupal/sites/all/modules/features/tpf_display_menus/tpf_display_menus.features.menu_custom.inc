@@ -34,16 +34,24 @@ function tpf_display_menus_menu_default_menu_custom() {
     'title' => 'Social Header Follow',
     'description' => 'Global social follow menu for the tp4 theme.',
   );
+  // Exported menu: menu-takepart-links.
+  $menus['menu-takepart-links'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'title' => 'TakePart Footer Links',
+    'description' => 'List of TakePart links  - Footer',
+  );
   // Translatables
   // Included for use with string extractors like potx.
   t('Corporate Footer');
   t('Corporate menu at the very bottom of the page.');
   t('Global social follow menu for the tp4 theme.');
+  t('List of TakePart links  - Footer');
   t('MegaMenu');
   t('New to the tp4 theme.');
   t('Social Footer Follow');
   t('Social Header Follow');
   t('Social links in the footer');
+  t('TakePart Footer Links');
 
 
   return $menus;
