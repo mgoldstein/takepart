@@ -151,28 +151,16 @@ class TPVideoOembed {
     //check if url exist
     $original_url = $this->url;
     
-    //adding watchdog debug
-    if (variable_get('takepart_oembed_debug_mode', 0)) {
-      watchdog('Takepart Oembed Debug','Requested Obj: <pre>' . print_r($this, 1) . '</pre>');
-    }
+    //commented out for future use
+    //$debug_mode = variable_get('takepart_oembed_debug_mode', 0);
     
     $url_params = parse_url($original_url);
-    
-    //adding watchdog debug
-    if (variable_get('takepart_oembed_debug_mode', 0)) {
-      watchdog('Takepart Oembed Debug','Base URL: <pre>' . print_r($base_url, 1) . '</pre>');
-    }
 
     $original_url = ltrim($url_params['path'], '/');
 
     //lookups the path
     $url = drupal_lookup_path('source', $original_url);
 
-    //adding watchdog debug
-    if (variable_get('takepart_oembed_debug_mode', 0)) {
-      watchdog('Takepart Oembed Debug','Node Path: <pre>' . print_r($url, 1) . '</pre>');
-    }
-    
     //ensures that the system url is returned
     if (!empty($url)) {
       $node_id = str_replace('node/', '', $url);

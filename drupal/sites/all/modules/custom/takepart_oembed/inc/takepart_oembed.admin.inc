@@ -41,12 +41,13 @@ function takepart_oembed_admin_form($form, &$form_state)  {
     '#default_value' => variable_get('takepart_oembed_cache_time', 10)
   );
   
-  $form['takepart_oembed_debug_mode'] = array(
-    '#title' => t('Debug mode'),
-    '#type' => 'checkbox',
-    '#default_value' => variable_get('takepart_oembed_debug_mode', 0),
-    '#description' => t('Debug mode into watchdog for oembed')
-  );
+  //commenting out for future use
+  //$form['takepart_oembed_debug_mode'] = array(
+  //  '#title' => t('Debug mode'),
+  //  '#type' => 'checkbox',
+  //  '#default_value' => variable_get('takepart_oembed_debug_mode', 0),
+  //  '#description' => t('Debug mode into watchdog for oembed')
+  //);
   
   return system_settings_form($form);
 }
