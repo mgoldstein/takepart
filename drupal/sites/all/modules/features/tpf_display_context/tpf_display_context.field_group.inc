@@ -142,6 +142,43 @@ function tpf_display_context_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_deprecated|node|action|form';
+  $field_group->group_name = 'group_deprecated';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'action';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Deprecated',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_display_tag',
+      1 => 'body',
+      2 => 'field_actionheaderimg',
+      3 => 'field_actionheaderimghref',
+      4 => 'field_altcontent',
+      5 => 'field_featured',
+      6 => 'field_html_title',
+      7 => 'field_multi_page_campaign',
+      8 => 'field_short_introduction',
+      9 => 'field_tab_internal_title',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Deprecated',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => 'group-deprecated field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_deprecated|node|action|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_multi_page_campaign|node|takepart_campaign|form';
   $field_group->group_name = 'group_multi_page_campaign';
   $field_group->entity_type = 'node';
@@ -198,6 +235,37 @@ function tpf_display_context_field_group_info() {
     ),
   );
   $export['group_summary|node|action|medium_preview'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tagging|node|action|form';
+  $field_group->group_name = 'group_tagging';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'action';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Tagging',
+    'weight' => '7',
+    'children' => array(
+      0 => 'field_free_tag',
+      1 => 'field_topic',
+      2 => 'field_admin_tag',
+      3 => 'field_series',
+      4 => 'field_sponsored',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-tagging field-group-fieldset',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_tagging|node|action|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
