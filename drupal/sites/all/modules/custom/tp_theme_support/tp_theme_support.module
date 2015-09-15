@@ -40,6 +40,19 @@ function tp_theme_support_permission() {
 }
 
 /**
+ *	Implements hook_theme_HOOK().
+ */
+function tp_theme_support_preprocess_html(&$vars) {
+	global $user;
+	
+	//check if user has the role preview if so then add the class to the page
+  if (in_array('preview', $user->roles)) {
+    $vars['unpublished'] = false;
+    $vars['classes_array'][] = 'node-preview';
+  }
+}
+
+/**
  *  Implements hook_preprocess_HOOK().
  */
 function tp_theme_support_preprocess_page(&$vars, $hook) {
@@ -90,10 +103,6 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
   } else if (isset($ispreview) && $ispreview == 0) {
     $user = user_load(0);
     drupal_goto(current_path());
-  }
-  if (in_array('preview', $user->roles)) {
-    $vars['unpublished'] = false;
-    $vars['classes_array'][] = 'node-preview';
   }
 
   //adds the library needed to the themes
