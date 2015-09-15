@@ -15,9 +15,7 @@ if (file_exists($environment_settings_filename)) {
 // Define the global application settings.
 // +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 // Memcache
-if (isset($conf['memcache_servers']) && $conf['memcache_servers'] === FALSE) {
-  unset($conf['memcache_servers']);
-} else {
+if ($conf['memcache_servers'] !== FALSE) {
   $conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
   $conf += array(
     'cache_default_class' => 'MemCacheDrupal',
@@ -100,7 +98,7 @@ $conf['bluehornet_api_accounts'] += array(
 $conf += array('bluehornet_default_account' => 'takepart');
 
 if (!empty($conf['reverse_proxy_addresses'])) {
-$ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+  $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
   $ips = array_map('trim', $ips);
   // Add REMOTE_ADDR to the X-Forwarded-For list (the ip_address function will
   // also do this) in case it's a 10. internal AWS address; if it is we should
@@ -112,12 +110,12 @@ $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
   $ips = array_reverse($ips);
   foreach ($ips as $ip) {
     if (strpos($ip, '10.') === 0) {
-      if (!in_array($ip, $conf['reverse_proxy_addresses'])) {
-        $conf['reverse_proxy_addresses'][] = $ip;
-      }
+	 if (!in_array($ip, $conf['reverse_proxy_addresses'])) {
+	   $conf['reverse_proxy_addresses'][] = $ip;
+	 }
     } else {
-    // we hit the first non-10. address, so stop.
-    break;
+	 // we hit the first non-10. address, so stop.
+	 break;
     }
   }
 }
