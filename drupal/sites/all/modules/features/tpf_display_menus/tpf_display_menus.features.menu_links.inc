@@ -1085,13 +1085,241 @@ function tpf_display_menus_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
+  // Exported menu link: menu-takepart-links_about-us:node/246
+  $menu_links['menu-takepart-links_about-us:node/246'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'link_path' => 'node/246',
+    'router_path' => 'node/%',
+    'link_title' => 'About Us',
+    'options' => array(
+      'attributes' => array(
+        'target' => '_top',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-takepart-links_about-us:node/246',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-takepart-links_contact-us:node/41550
+  $menu_links['menu-takepart-links_contact-us:node/41550'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'link_path' => 'node/41550',
+    'router_path' => 'node/%',
+    'link_title' => 'Contact Us',
+    'options' => array(
+      'attributes' => array(
+        'target' => '_top',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-takepart-links_contact-us:node/41550',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -49,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-takepart-links_faq:node/238
+  $menu_links['menu-takepart-links_faq:node/238'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'link_path' => 'node/238',
+    'router_path' => 'node/%',
+    'link_title' => 'FAQ',
+    'options' => array(
+      'attributes' => array(
+        'target' => '_top',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-takepart-links_faq:node/238',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -48,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-takepart-links_interest-based-ads:node/36861
+  $menu_links['menu-takepart-links_interest-based-ads:node/36861'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'link_path' => 'node/36861',
+    'router_path' => 'node/%',
+    'link_title' => 'Interest-Based Ads',
+    'options' => array(
+      'fragment' => 'ads',
+      'attributes' => array(
+        'target' => '_top',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-takepart-links_interest-based-ads:node/36861',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -44,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-takepart-links_privacy-policy:node/36861
+  $menu_links['menu-takepart-links_privacy-policy:node/36861'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'link_path' => 'node/36861',
+    'router_path' => 'node/%',
+    'link_title' => 'Privacy Policy',
+    'options' => array(
+      'attributes' => array(
+        'target' => '_top',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-takepart-links_privacy-policy:node/36861',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -43,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-takepart-links_rss:node/19814
+  $menu_links['menu-takepart-links_rss:node/19814'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'link_path' => 'node/19814',
+    'router_path' => 'node/%',
+    'link_title' => 'RSS',
+    'options' => array(
+      'attributes' => array(
+        'title' => 'RSS',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-takepart-links_rss:node/19814',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -45,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-takepart-links_social-action-network:node/45749
+  $menu_links['menu-takepart-links_social-action-network:node/45749'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'link_path' => 'node/45749',
+    'router_path' => 'node/%',
+    'link_title' => 'Social Action Network',
+    'options' => array(
+      'attributes' => array(
+        'target' => '_top',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-takepart-links_social-action-network:node/45749',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -46,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-takepart-links_staff--contributors:node/20589
+  $menu_links['menu-takepart-links_staff--contributors:node/20589'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'link_path' => 'node/20589',
+    'router_path' => 'node/%',
+    'link_title' => 'Staff & Contributors',
+    'options' => array(
+      'attributes' => array(
+        'target' => '_top',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-takepart-links_staff--contributors:node/20589',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -47,
+    'customized' => 1,
+  );
+  // Exported menu link: menu-takepart-links_terms-of-service:node/36965
+  $menu_links['menu-takepart-links_terms-of-service:node/36965'] = array(
+    'menu_name' => 'menu-takepart-links',
+    'link_path' => 'node/36965',
+    'router_path' => 'node/%',
+    'link_title' => 'Terms of Service',
+    'options' => array(
+      'attributes' => array(
+        'target' => '_top',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+      'identifier' => 'menu-takepart-links_terms-of-service:node/36965',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -42,
+    'customized' => 1,
+  );
   // Translatables
   // Included for use with string extractors like potx.
+  t('About Us');
   t('Aid & Development');
   t('Animals');
   t('As Green as I Get');
   t('Business');
   t('Climate Change');
+  t('Contact Us');
   t('Cooking');
   t('Culture');
   t('Daily Fix');
@@ -1099,6 +1327,7 @@ function tpf_display_menus_menu_default_menu_links() {
   t('Email');
   t('Entertainment');
   t('Environment');
+  t('FAQ');
   t('Facebook');
   t('Farming');
   t('Fashion');
@@ -1112,6 +1341,7 @@ function tpf_display_menus_menu_default_menu_links() {
   t('Human Rights');
   t('Innovation');
   t('Innovation & Tech');
+  t('Interest-Based Ads');
   t('Jane Says');
   t('LGBT Rights');
   t('Lifestyle');
@@ -1125,11 +1355,16 @@ function tpf_display_menus_menu_default_menu_links() {
   t('Pledges');
   t('Poaching');
   t('Politics');
+  t('Privacy Policy');
+  t('RSS');
   t('Restaurants');
+  t('Social Action Network');
   t('Social Justice');
+  t('Staff & Contributors');
   t('Strange Behaviors');
   t('Take Action');
   t('TakePart');
+  t('Terms of Service');
   t('Track Your Impact');
   t('Tumblr');
   t('Twitter');
