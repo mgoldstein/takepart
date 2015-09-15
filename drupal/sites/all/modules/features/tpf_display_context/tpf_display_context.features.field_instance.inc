@@ -1268,99 +1268,6 @@ function tpf_display_context_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-action-field_sponsored'
-  $field_instances['node-action-field_sponsored'] = array(
-    'bundle' => 'action',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'The name of the content sponsor.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 50,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_sponsored',
-    'label' => 'Sponsored',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'content_taxonomy_opt_groups' => 1,
-      ),
-      'type' => 'options_select',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'node-action-field_tab_action'
   $field_instances['node-action-field_tab_action'] = array(
     'bundle' => 'action',
@@ -7550,7 +7457,6 @@ function tpf_display_context_field_default_field_instances() {
   t('Series');
   t('Short Introduction');
   t('Sort the topics in order of priority. The first topic in the list will be recognized in analytics reports as the primary topic for this piece of content.');
-  t('Sponsored');
   t('Spotlight HTML');
   t('Spotlight Image');
   t('Spotlight Nodes');
@@ -7560,7 +7466,6 @@ function tpf_display_context_field_default_field_instances() {
   t('The byline provides the name, and position of the writer of the article.');
   t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('The name as different from the title.');
-  t('The name of the content sponsor.');
   t('The title to show in the browser\'s title bar. If this field is empty, the Page Title will be used instead.');
   t('This can be used to organize content as it relates to another node in the system.  For example, a venue representing a store could be assigned to a node representing the city in which that store resides.');
   t('This marks an Action as eligible to be included as a TAB modal recommendation.');
