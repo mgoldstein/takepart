@@ -1,0 +1,6 @@
+[Sep 16 2015 16:29:46.000000 - ERROR] service=CreativeService method=getCreativesByStatement responseTime=124 requestId=64a7e01793e8434ee71b266c3c851472 server=ads.google.com isFault=1 faultMessage=[AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS @ ]
+[Sep 16 2015 16:35:17.000000 - ERROR] service=CreativeService method=getCreativesByStatement responseTime=119 requestId=5236effca84977c55fa87f7082ed8359 server=ads.google.com isFault=1 faultMessage=[AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS @ ]
+[Sep 16 2015 16:36:32.000000 - INFO] service=CreativeService method=getCreativesByStatement responseTime=4726 requestId=e985798c6127d0380c8f57fd0e9f0a06 server=ads.google.com isFault=0 faultMessage=null
+[Sep 16 2015 16:36:37.000000 - INFO] service=CreativeService method=getCreativesByStatement responseTime=4296 requestId=6066d2766c06d653cc9a849870cd08ad server=ads.google.com isFault=0 faultMessage=null
+[Sep 16 2015 16:36:41.000000 - INFO] service=CreativeService method=getCreativesByStatement responseTime=3890 requestId=b5340da48b404cf8f654d3defb78eb62 server=ads.google.com isFault=0 faultMessage=null
+[Sep 16 2015 16:36:42.000000 - ERROR] service=CreativeService method=getCreativesByStatement responseTime=310 requestId=f8235b4ec4f1008b1b3cdd1966c7987e server=ads.google.com isFault=1 faultMessage=[AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS @ ]

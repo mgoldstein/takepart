@@ -1,0 +1,225 @@
+[Sep 16 2015 16:29:46.000000 - ERROR] POST /apis/ads/publisher/v201508/CreativeService HTTP/1.1
+Host: ads.google.com
+Connection: Keep-Alive
+User-Agent: PHP-SOAP/5.5.27, gzip
+Accept-Encoding: gzip, deflate
+Content-Encoding: gzip
+Content-Type: text/xml; charset=utf-8
+SOAPAction: ""
+Content-Length: 452
+Authorization: Bearer ya29.8AHS4spn-4dNAJAFHvY-nw4gwGD7VZ-CsE9Rb1vq2l2GftuvEX50qRkJ02Nx6QsFxdrXcQ
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://www.google.com/apis/ads/publisher/v201508" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SOAP-ENV:Header>
+    <ns1:RequestHeader>
+      <ns1:networkCode>4355895</ns1:networkCode>
+      <ns1:applicationName>TakePart (DfpApi-PHP/6.3.0, Common-PHP/6.3.0, PHP/5.5.27)</ns1:applicationName>
+    </ns1:RequestHeader>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <ns1:getCreativesByStatement>
+      <ns1:filterStatement>
+        <ns1:query>WHERE creativeType = :creativeType ORDER BY id ASC LIMIT 500</ns1:query>
+        <ns1:values>
+          <ns1:key>creativeType</ns1:key>
+          <ns1:value xsi:type="ns1:TextValue">
+            <ns1:value>ImageCreative</ns1:value>
+          </ns1:value>
+        </ns1:values>
+      </ns1:filterStatement>
+    </ns1:getCreativesByStatement>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+HTTP/1.1 500 Internal Server Error
+Content-Type: text/xml; charset=UTF-8
+Content-Encoding: gzip
+Date: Wed, 16 Sep 2015 16:29:46 GMT
+Expires: Wed, 16 Sep 2015 16:29:46 GMT
+Cache-Control: private, max-age=0
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Content-Length: 428
+Server: GSE
+Alternate-Protocol: 443:quic,p=1
+Alt-Svc: quic=":443"; p="1"; ma=604800
+
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ResponseHeader xmlns="https://www.google.com/apis/ads/publisher/v201508">
+      <requestId>64a7e01793e8434ee71b266c3c851472</requestId>
+      <responseTime>124</responseTime>
+    </ResponseHeader>
+  </soap:Header>
+  <soap:Body>
+    <soap:Fault>
+      <faultcode>soap:Server</faultcode>
+      <faultstring>[AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS @ ]</faultstring>
+      <detail>
+        <ApiExceptionFault xmlns="https://www.google.com/apis/ads/publisher/v201508">
+          <message>[AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS @ ]</message>
+          <errors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AuthenticationError">
+            <fieldPath/>
+            <trigger/>
+            <errorString>AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS</errorString>
+            <reason>NOT_WHITELISTED_FOR_API_ACCESS</reason>
+          </errors>
+        </ApiExceptionFault>
+      </detail>
+    </soap:Fault>
+  </soap:Body>
+</soap:Envelope>
+
+[Sep 16 2015 16:35:17.000000 - ERROR] POST /apis/ads/publisher/v201508/CreativeService HTTP/1.1
+Host: ads.google.com
+Connection: Keep-Alive
+User-Agent: PHP-SOAP/5.5.27, gzip
+Accept-Encoding: gzip, deflate
+Content-Encoding: gzip
+Content-Type: text/xml; charset=utf-8
+SOAPAction: ""
+Content-Length: 452
+Authorization: Bearer ya29.8AHXRxcenZtD6-RPNKeLcPQap5_XSuz2-m2xPa1P4bmwLtlcgoIb0TDSILn7rdce3b1_-Q
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://www.google.com/apis/ads/publisher/v201508" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SOAP-ENV:Header>
+    <ns1:RequestHeader>
+      <ns1:networkCode>4355895</ns1:networkCode>
+      <ns1:applicationName>TakePart (DfpApi-PHP/6.3.0, Common-PHP/6.3.0, PHP/5.5.27)</ns1:applicationName>
+    </ns1:RequestHeader>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <ns1:getCreativesByStatement>
+      <ns1:filterStatement>
+        <ns1:query>WHERE creativeType = :creativeType ORDER BY id ASC LIMIT 500</ns1:query>
+        <ns1:values>
+          <ns1:key>creativeType</ns1:key>
+          <ns1:value xsi:type="ns1:TextValue">
+            <ns1:value>ImageCreative</ns1:value>
+          </ns1:value>
+        </ns1:values>
+      </ns1:filterStatement>
+    </ns1:getCreativesByStatement>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+HTTP/1.1 500 Internal Server Error
+Content-Type: text/xml; charset=UTF-8
+Content-Encoding: gzip
+Date: Wed, 16 Sep 2015 16:35:17 GMT
+Expires: Wed, 16 Sep 2015 16:35:17 GMT
+Cache-Control: private, max-age=0
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Content-Length: 427
+Server: GSE
+Alternate-Protocol: 443:quic,p=1
+Alt-Svc: quic=":443"; p="1"; ma=604800
+
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ResponseHeader xmlns="https://www.google.com/apis/ads/publisher/v201508">
+      <requestId>5236effca84977c55fa87f7082ed8359</requestId>
+      <responseTime>119</responseTime>
+    </ResponseHeader>
+  </soap:Header>
+  <soap:Body>
+    <soap:Fault>
+      <faultcode>soap:Server</faultcode>
+      <faultstring>[AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS @ ]</faultstring>
+      <detail>
+        <ApiExceptionFault xmlns="https://www.google.com/apis/ads/publisher/v201508">
+          <message>[AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS @ ]</message>
+          <errors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AuthenticationError">
+            <fieldPath/>
+            <trigger/>
+            <errorString>AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS</errorString>
+            <reason>NOT_WHITELISTED_FOR_API_ACCESS</reason>
+          </errors>
+        </ApiExceptionFault>
+      </detail>
+    </soap:Fault>
+  </soap:Body>
+</soap:Envelope>
+
+[Sep 16 2015 16:36:42.000000 - ERROR] POST /apis/ads/publisher/v201508/CreativeService HTTP/1.1
+Host: ads.google.com
+Connection: Keep-Alive
+User-Agent: PHP-SOAP/5.5.27, gzip
+Accept-Encoding: gzip, deflate
+Content-Encoding: gzip
+Content-Type: text/xml; charset=utf-8
+SOAPAction: ""
+Content-Length: 461
+Authorization: Bearer ya29.8AEstnXvvfY0MjElQY2sQYNIG7IB_RFqkMkE65A0gMyoC_JAnxJjX73t3Ko4BHcrdabbzg
+
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="https://www.google.com/apis/ads/publisher/v201508" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SOAP-ENV:Header>
+    <ns1:RequestHeader>
+      <ns1:networkCode>4355895</ns1:networkCode>
+      <ns1:applicationName>TakePart (DfpApi-PHP/6.3.0, Common-PHP/6.3.0, PHP/5.5.27)</ns1:applicationName>
+    </ns1:RequestHeader>
+  </SOAP-ENV:Header>
+  <SOAP-ENV:Body>
+    <ns1:getCreativesByStatement>
+      <ns1:filterStatement>
+        <ns1:query>WHERE creativeType = :creativeType ORDER BY id ASC LIMIT 500 OFFSET 1500</ns1:query>
+        <ns1:values>
+          <ns1:key>creativeType</ns1:key>
+          <ns1:value xsi:type="ns1:TextValue">
+            <ns1:value>ImageCreative</ns1:value>
+          </ns1:value>
+        </ns1:values>
+      </ns1:filterStatement>
+    </ns1:getCreativesByStatement>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+HTTP/1.1 500 Internal Server Error
+Content-Type: text/xml; charset=UTF-8
+Content-Encoding: gzip
+Date: Wed, 16 Sep 2015 16:36:41 GMT
+Expires: Wed, 16 Sep 2015 16:36:41 GMT
+Cache-Control: private, max-age=0
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+Content-Length: 429
+Server: GSE
+Alternate-Protocol: 443:quic,p=1
+Alt-Svc: quic=":443"; p="1"; ma=604800
+
+<?xml version="1.0"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <ResponseHeader xmlns="https://www.google.com/apis/ads/publisher/v201508">
+      <requestId>f8235b4ec4f1008b1b3cdd1966c7987e</requestId>
+      <responseTime>310</responseTime>
+    </ResponseHeader>
+  </soap:Header>
+  <soap:Body>
+    <soap:Fault>
+      <faultcode>soap:Server</faultcode>
+      <faultstring>[AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS @ ]</faultstring>
+      <detail>
+        <ApiExceptionFault xmlns="https://www.google.com/apis/ads/publisher/v201508">
+          <message>[AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS @ ]</message>
+          <errors xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AuthenticationError">
+            <fieldPath/>
+            <trigger/>
+            <errorString>AuthenticationError.NOT_WHITELISTED_FOR_API_ACCESS</errorString>
+            <reason>NOT_WHITELISTED_FOR_API_ACCESS</reason>
+          </errors>
+        </ApiExceptionFault>
+      </detail>
+    </soap:Fault>
+  </soap:Body>
+</soap:Envelope>
+

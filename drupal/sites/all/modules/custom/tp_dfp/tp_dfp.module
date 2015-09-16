@@ -33,58 +33,27 @@ function tp_dfp_entity_presave($entity, $type) {
   if($type == 'taxonomy_term' && $entity->vocabulary_machine_name == 'sponsor'){
     if(isset($entity->field_dfp_id['und'][0])){
 
-      // Set DFP user credentials
-      _dfp_get_user_credentials();
-
       // Get DFP creatives
-      $creatives = _dfp_get_creatives();
-      dpm($creatives, 'creatives');
+      $id = $entity->field_dfp_id['und'][0]['value'];
+      $creative = _dfp_get_creative($id);
 
-      //Get all templates to see if one already exists
+      if(isset($creative[0])){
+        // Update existing creative
 
-      //Create template if it hasn't been created
+      }else{
+        //create the new creative
+      }
 
-      //Update template if one already exists
     }
   }
 
-
-  // Setup DFP
-//  _dfp_init();
-
-  //Create the template if it hasn't been created, otherwise update the existing one
-
-
-}
-
-function _dfp_init(){
-
-  //TODO: Add drupal_static caching in the event that DFP has already been initialized
-
-  // Find Google's DFP lib.  Use libraries API if enabled.
-  $googleads_lib_path = function_exists('libraries_get_path') ? libraries_get_path('googleads-php-lib') : 'sites/all/libraries/googleads-php-lib';
-  $googleads_dfp = $googleads_lib_path. '/src/Google/Api/Ads/Dfp';
-
-  set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path. '/src');
-  if (!class_exists('DfpUser') && !@require_once($googleads_dfp. '/Lib/DfpUser.php')) {
-    $message = t('Failed to find the DFP php library at %filename.  Read the !readme', array(
-      '!readme' => '<a href='. base_path() . '/' . drupal_get_path('module', 'tp_dpf') . '/README.txt>README.txt</a>',
-      '%filename' => $googleads_dfp,
-    ));
-    drupal_set_message($message, 'error');
-    watchdog('tp_dfp', $message);
-    return NULL;
-  }
 }
 
 /**
  * Helper function that returns values for creatives
  */
-function _dfp_get_creatives(){
+function _dfp_get_creative($id){
 
-  // Needs version
-
-  //TODO: set version
   // Find Google's DFP lib.  Otherwise, use libraries API.
   $googleads_lib_path = function_exists('libraries_get_path') ? libraries_get_path('googleads-php-lib') : 'sites/all/libraries/googleads-php-lib';
   $googleads_dfp = $googleads_lib_path. '/src/Google/Api/Ads/Dfp';
@@ -92,9 +61,7 @@ function _dfp_get_creatives(){
   if ($googleads_dfp) {
     set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path. '/src');
     @require_once($googleads_dfp. '/Lib/DfpUser.php');
-    @require_once($googleads_dfp. '/Util/'. VERSION. '/StatementBuilder.php');
-  }else{
-    return;
+    @require_once($googleads_dfp. '/Util/v201508/StatementBuilder.php');
   }
 
   $results = array();
@@ -105,12 +72,14 @@ function _dfp_get_creatives(){
     $user = new DfpUser();
 
     // Get the CreativeService.
-    $creativeService = $user->GetService('CreativeService', VERSION);
+    $creativeService = $user->GetService('CreativeService', v201508);
 
     // Create a statement to select all creatives.
     $statementBuilder = new StatementBuilder();
-    $statementBuilder->OrderBy('id ASC')
-      ->Limit(StatementBuilder::SUGGESTED_PAGE_LIMIT);
+    $statementBuilder->Where('ID = :id')
+      ->OrderBy('id ASC')
+      ->Limit(StatementBuilder::SUGGESTED_PAGE_LIMIT)
+      ->WithBindVariableValue('id', $id);
 
     // Default for total result set size.
     $totalResultSetSize = 0;
@@ -136,43 +105,41 @@ function _dfp_get_creatives(){
     printf("%s\n", $e->getMessage());
   }
 
-  dpm($results, 'results');
   return $results;
 }
 
-function _dfp_create_creative(){
+
+
+
+
+/**
+ * Helper function to create creative
+ */
+function _dfp_create_creative($creativeTemplateName, $advertiserId, $creativeTemplateId, $variables){
 
   require_once 'Google/Api/Ads/Dfp/Lib/DfpUser.php';
   require_once 'Google/Api/Ads/Common/Util/MediaUtils.php';
   require_once dirname(__FILE__) . '/../../../Common/ExampleUtils.php';
-
-// Set the ID of the advertiser (company) that all creatives will be
-// assigned to.
-  $advertiserId = 'INSERT_ADVERTISER_COMPANY_ID_HERE';
 
   try {
     // Get DfpUser from credentials in "../auth.ini"
     // relative to the DfpUser.php file's directory.
     $user = new DfpUser();
 
-    // Log SOAP XML request and response.
-    $user->LogDefaults();
-
     // Get the CreativeService.
     $creativeService = $user->GetService('CreativeService', 'v201508');
 
-    // Use the image banner with optional third party tracking template.
-    $creativeTemplateId = 10000680;
-
     // Create the local custom creative object.
     $templateCreative = new TemplateCreative();
-    $templateCreative->name = 'Template creative';
+    $templateCreative->name = $creativeTemplateName;
     $templateCreative->advertiserId = $advertiserId;
     $templateCreative->creativeTemplateId = $creativeTemplateId;
 
     // Set the creative size.
+    // Make size static for now
     $templateCreative->size = new Size(300, 250, false);
 
+    // TODO: Values found in variables array
     // Create the asset variable value.
     $assetVariableValue = new AssetCreativeTemplateVariableValue();
     $assetVariableValue->uniqueName = 'Imagefile';
@@ -229,16 +196,16 @@ function _dfp_create_creative(){
 }
 
 
-function _dfp_update_creative(){
+/**
+ * Helper function to update creative
+ */
+function _dfp_update_creative($creativeId){
   $path = dirname(__FILE__) . '/../../../../lib';
   set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 
   require_once 'Google/Api/Ads/Dfp/Lib/DfpUser.php';
   require_once 'Google/Api/Ads/Dfp/Util/v201508/StatementBuilder.php';
   require_once dirname(__FILE__) . '/../../../Common/ExampleUtils.php';
-
-// Set the ID of the creative to update.
-  $creativeId = 'INSERT_CREATIVE_ID_HERE';
 
   try {
     // Get DfpUser from credentials in "../auth.ini"
@@ -263,7 +230,7 @@ function _dfp_update_creative(){
       $statementBuilder->ToStatement());
     $creative = $page->results[0];
 
-    // Only update the destination URL if it has one.
+    // TODO: update ALL fields if they exist
     if ($creative instanceof HasDestinationUrlCreative) {
       // Update the destination URL of the creative.
       $creative->destinationUrl = 'https://news.google.com';
@@ -285,46 +252,4 @@ function _dfp_update_creative(){
   } catch (Exception $e) {
     printf("%s\n", $e->getMessage());
   }
-}
-
-/*
- * Helper function get to get user credentials
- * Variables are set on the admin form at /admin/config/dfp
- */
-function _dfp_get_user_credentials(){
-
-  //Detailed descriptions of these properties can be found at:
-  //https://developers.google.com/doubleclick-publishers/docs/soap_xml
-
-  /* The header networkCode is needed for every request except
-   * NetworkService.makeTestNetwork and NetworkService.getAllNetworks
-   */
-  define('NETWORK_CODE', variable_get('dfp_network_code', '4355895'));
-
-  /*
-   * Any string of your choosing to identify your application to DFP.
-   */
-  define('APPLICATION_NAME', variable_get('dfp_application_name', 'TODO: set default'));
-
-  /*
-   * [OAUTH2]
-   * If you do not have a client ID or secret, please create one of type
-   * "installed application" in the Google API console:
-   * https://cloud.google.com/console
-   */
-  define('CLIENT_ID', variable_get('dfp_client_id', 'TODO: set default'));
-  define('CLIENT_SECRET', variable_get('dfp_client_secret', 'TODO: set default'));
-
-  /*
-   * If you already have a refresh token, enter it below. Otherwise, run
-   * GetRefreshToken.php.
-   */
-  define('REFRESH_TOKEN', variable_get('dfp_refresh_token', 'TODO: set default'));
-
-
-  /*
-   * Define the version we are using
-   */
-  define('VERSION', 'v201508');
-
 }
