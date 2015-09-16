@@ -144,3 +144,11 @@ blockquote.pullquote {
     }
   }
 }
+
+body {
+  &.node-preview {
+    .node-unpublished {
+      background-color: transparent;
+    }
+  }
+}
