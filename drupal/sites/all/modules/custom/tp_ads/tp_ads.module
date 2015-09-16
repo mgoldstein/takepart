@@ -176,11 +176,58 @@ function tp_ads_preprocess_page(&$vars) {
     //calls function to add header
     _tp_ads_insert_leader_ad($vars);
     _tp_ads_insert_header($header_script);
+    _tp_ads_insert_more_on_takepart();
     
     //adds the js
     drupal_add_js(array('tp_ad_settings' => $ads_wrapper), 'setting');
     drupal_add_js(drupal_get_path('module', 'tp_ads') .'/js/tp_ads.js');
   }
+}
+
+/**
+ *  @function:
+ *    Custom function that is used to insert the ad for more on takepart
+ */
+function _tp_ads_insert_more_on_takepart() {
+  $more_on_takepart = array();
+  $override = variable_get('tp_more_on_takepart_last_item', array());
+  
+  //break if empty
+  if (empty($override) || empty($override['ad_slot'])) {
+    return;
+  }
+
+  //variable for more on takepart overrid
+  $value['ad_slot'] = $override['ad_slot'];
+  $value['ad_gpd_id'] = $override['ad_gpd_id'];
+  $value['width'] = $override['ad_width'];
+  $value['height'] = $override['ad_height'];
+  
+  //calls theme to create markup
+  $script = theme('tp_ads_script', array(
+      'ad_slot' => $value['ad_slot'],
+      'ad_gpd_id' => $value['ad_gpd_id'],
+      'width' => $value['width'],
+      'height' => $value['height'],
+      //'disable_label' => TRUE,
+      //'class' => ''
+    )
+  );
+  
+  //ensures that it removes any EOL
+  $value['javascript'] = str_replace(PHP_EOL, '', $script);
+  
+  //ensures that it removes any EOL
+  $value['javascript_desktop'] = $value['javascript'];
+  $value['placement'] = 1;
+  
+  //populate the data for the more on takepart settings
+  $more_on_takepart[] = $value;
+  $more_on_takepart_wrapper['ads'] = $more_on_takepart;
+  $more_on_takepart_wrapper['selector'] = '.tp-more-on-takepart .more-on-takepart.override';
+  
+  //add js settings
+  drupal_add_js(array('tp_ad_more_on_takepart' => $more_on_takepart_wrapper), 'setting');
 }
 
 /**
