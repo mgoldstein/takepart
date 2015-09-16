@@ -36,9 +36,14 @@ sftp-config.json
 # Local Environment Modules
 /drupal/sites/all/modules/contrib/stage_file_proxy
 /drupal/info.php
+/drupal/sites/all/modules/contrib/admin_menu/
 
 # Ignore node_modules
 /node_modules
 
 # Ignore deleted modules
 /tp_megamenu
+
+#Sublime Project
+drupal/*.sublime-project
+drupal/*.sublime-workspace
