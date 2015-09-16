@@ -15,6 +15,18 @@ function tp_more_on_takepart_menu(){
 	return $items;
 }
 
+/**
+ *	Implements hook_element_info_alter().
+ */
+function tp_more_on_takepart_element_info_alter(&$type) {
+	//https://www.drupal.org/node/2554553
+	//fixing ajax issue after drupal core update https://www.drupal.org/drupal-7.39-release-notes
+  $type['entityreference']['#process'] = array(
+    'entityreference_autocomplete_process_entityreference',
+    'form_process_autocomplete',
+    'ajax_process_form'
+  );
+}
 
 /**
  * Set the global values for the internal/external legal disclaimers.
@@ -40,17 +52,17 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
 
 	// autocomplete list of articles, featured articles, etc.
 	$form['featured_stories']['more_on_takepart_global1'] = array(
-		'#type' => 'entity_autocomplete',
-		'#entity_type' => 'node',
-		'#bundles' => $content_types,
+		'#type' => 'entityreference',
+		'#era_entity_type' => 'node',
+		'#era_bundles' => $content_types,
 		'#title' => t('Site-wide featured content #1'),
     '#required' => true,
     '#default_value' => variable_get('more_on_takepart_global1', ''),
   );
   $form['featured_stories']['more_on_takepart_global2'] = array(
-    '#type' => 'entity_autocomplete',
-    '#entity_type' => 'node',
-    '#bundles' => $content_types,
+    '#type' => 'entityreference',
+		'#era_entity_type' => 'node',
+    '#era_bundles' => $content_types,
     '#title' => t('Site-wide featured content #2'),
     '#required' => true,
 		'#default_value' => variable_get('more_on_takepart_global2', ''),
