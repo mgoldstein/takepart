@@ -17,7 +17,8 @@ https://developers.google.com/doubleclick-publishers/?hl=en
 
 #How to use:
 1) Add or update the Template ID (from DFP) at admin/config/dfp
-1) Add a 'sponsor' taxonomy term- admin/structure/taxonomy/sponsor/add
-2) On the term add form, add a 'DFP Advertiser ID' (from DFP)
-3) Save the term
-*A 'success' message will get generated with a link to the freshly created creative on the DFP server
+2) Add a 'sponsor' taxonomy term- admin/structure/taxonomy/sponsor/add
+3) On the term add form, add a 'DFP Advertiser ID' (from DFP) and save
+4) Add a node (article) and for the 'Sponsored' field, reference the term created above
+*A 'success' message will get generated with a link to the freshly created creative on the DFP server when a published
+node gets saved
