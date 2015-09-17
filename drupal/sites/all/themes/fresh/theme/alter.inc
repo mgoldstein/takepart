@@ -14,6 +14,10 @@ function fresh_page_alter(&$page){
     $path = drupal_get_path('theme', 'fresh');
     $page['content']['#attached']['css'][] = $path.'/css/page-article.css';
   }
+  if($node->type == 'video'){
+    $path = drupal_get_path('theme', 'fresh');
+    $page['content']['#attached']['css'][] = $path.'/css/page-video.css';
+  }
 }
 
 /**
@@ -44,5 +48,7 @@ function fresh_css_alter(&$css){
   if(isset($css[$theme_path. '/css/page-article.css'])){
     unset($css[$theme_path. '/css/page-default.css']);
   }
-
+  if(isset($css[$theme_path. '/css/page-video.css'])){
+    unset($css[$theme_path. '/css/page-default.css']);
+  }
 }

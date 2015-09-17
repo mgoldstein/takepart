@@ -5,32 +5,50 @@
  */
 function fresh_preprocess_node(&$variables, $hook) {
 
-  /* Template suggestions for view mode */
-  $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
+  /* Template suggestions for view mode.
+  * Both Video and Article will use the same TPL & prepprocess function (autoload)
+  */
 
+  $node = $variables['node'];
   $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
-	 
-  /* Run view-mode-specific preprocess functions */
-  $function = __FUNCTION__ . '__' . $variables['view_mode'];
-  if (function_exists($function)) {
-    $function($variables, $hook);
+  if ($node->type == 'openpublish_article' || $node->type == 'video') {
+    $variables['theme_hook_suggestion'] = 'node__autoload__' . $variables['view_mode'];
+    $function = __FUNCTION__ . '__autoload';
+    if (function_exists($function)) {
+      $function($variables, $hook);
+    }
+
   }
+  //$variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
+
+  // $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
+
+  /* Run view-mode-specific preprocess functions */
+  // $function = __FUNCTION__ . '__' . $variables['view_mode'];
+  // if (function_exists($function)) {
+  //   $function($variables, $hook);
+  // }
 
   /* Run node-type-specific preprocess functions */
-  $function = __FUNCTION__ . '__' . $variables['node']->type;
-  if (function_exists($function)) {
-    $function($variables, $hook);
-  }
+
+  // $function = __FUNCTION__ . '__' . $variables['node']->type;
+  // if (function_exists($function)) {
+  //   $function($variables, $hook);
+  // }
 }
 
 /**
- * Article Node Preprocess
+ * Article & Video Node Preprocess
  * @see base/theme/node.vars.php
  * Implements hook_preprocess_node__NODE-TYPE()
  */
-function fresh_preprocess_node__openpublish_article(&$variables) {
-
-  /* Set variables for node--openpublish-article.tpl.php (Full View) */
+function fresh_preprocess_node__autoload(&$variables) {
+  //determine the content type --artcile or video
+  $node_type = $variables['node'] -> type;
+  if ($node_type == 'openpublish_article') {
+    $node_type = 'article';
+  }
+  /* Set variables for node--autoload.tpl.php (Full View) */
   if ($variables['view_mode'] == 'full') {
 
     /* Leader Ad */
@@ -60,6 +78,7 @@ function fresh_preprocess_node__openpublish_article(&$variables) {
     }
 
     /* Media */
+    if ($node_type == 'article') {
     if ($media = field_get_items('node', $variables['node'], 'field_article_main_image')) {
 	 $file = $media[0]['file'];
 	 $image_url = image_style_url('large', $file->uri);
@@ -85,6 +104,11 @@ function fresh_preprocess_node__openpublish_article(&$variables) {
 	   $variables['media'] .= $caption . '</div>';
 	 }
     }
+  }
+  else if ($node_type == 'video') {
+    //Replace Media with the video field
+     $variables['media'] = drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
+  }
 
     /* Author */
     $author_vars = array();
