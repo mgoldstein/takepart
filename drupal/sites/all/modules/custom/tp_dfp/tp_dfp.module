@@ -38,19 +38,19 @@ function tp_dfp_node_presave($node) {
 
       if ($ad_id = field_get_items('taxonomy_term', $sponsored, 'field_dfp_id')) {
 
+        // Generate variables array
+        //TODO: add image (promo image?, main image?, image style?)
+        $variables = array();
+        $variables['headline'] = $node->title;
+        $variables['content_type'] = $node->type;
+        $variables['destination_url'] = drupal_get_path_alias('node/'. $node->nid);
+        if($sponsored_text = field_get_items('node', $node, 'field')){
+          $variables['sponsored_text'] = $sponsored_text[0]['value'];
+        }
+
         // Get DFP creatives
         $ad_id = $ad_id[0]['value'];
         $creative = _dfp_get_creative($ad_id);
-
-        // Generate variables array
-        //TODO: work with marc on field mapping and values
-        $variables = array(
-          'sponsored_text' => 'sponsored text value',  // Get from fields in the term
-          'headline' => 'headline value',
-          'content_type' => 'content type value',
-          'destination_url' => 'destination url value',
-        );
-
         if (isset($creative[0])) {
 
           // Update existing creative
