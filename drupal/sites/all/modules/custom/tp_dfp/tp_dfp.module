@@ -36,15 +36,11 @@ function tp_dfp_node_presave($node) {
 
       $sponsored = taxonomy_term_load($sponsored[0]['tid']);
 
-      dpm($sponsored, 'sponsored');
-
       if ($ad_id = field_get_items('taxonomy_term', $sponsored, 'field_dfp_id')) {
 
         // Get DFP creatives
         $ad_id = $ad_id[0]['value'];
         $creative = _dfp_get_creative($ad_id);
-
-        dpm($creative, 'creative');
 
         // Generate variables array
         //TODO: work with marc on field mapping and values
@@ -58,9 +54,7 @@ function tp_dfp_node_presave($node) {
         if (isset($creative[0])) {
 
           // Update existing creative
-          $creativeId = 'test';
-
-          _dfp_update_creative($creativeId, $variables);
+          _dfp_update_creative($ad_id, $variables);
 
         } else {
 
