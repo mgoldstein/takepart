@@ -24,42 +24,54 @@ function tp_dfp_menu(){
 }
 
 /**
- * Implements hook_entity_presave()
+ * Implements hook_node_presave()
  */
-function tp_dfp_entity_presave($entity, $type) {
+function tp_dfp_node_presave($node) {
 
-  // Only run this on sponsored taxonomy terms
-  if($type == 'taxonomy_term' && $entity->vocabulary_machine_name == 'sponsor'){
-    if(isset($entity->field_dfp_id['und'][0])){
+  // Create or update the creative if node references a Sponsored taxonomy term containing a DFP ID.
+  //TODO: this will kill editor workflow... let's create a button on the edit page that will generate the creative instead
+  if($node->status) {
 
-      // Get DFP creatives
-      $id = $entity->field_dfp_id['und'][0]['value'];
-      $creative = _dfp_get_creative($id);
+    if ($sponsored = field_get_items('node', $node, 'field_sponsored')) {
 
-      // Generate variables array
-      //TODO: work with marc on field mapping and values
-      $variables = array(
-        'sponsored_text' => 'sponsored text value',  // Get from fields in the term
-        'headline' => 'headline value',
-        'content_type' => 'content type value',
-        'destination_url' => 'destination url value',
-      );
+      $sponsored = taxonomy_term_load($sponsored[0]['tid']);
 
-      if(isset($creative[0])){
+      dpm($sponsored, 'sponsored');
 
-        // Update existing creative
-        $creativeId = 'test';
+      if ($ad_id = field_get_items('taxonomy_term', $sponsored, 'field_dfp_id')) {
 
-        _dfp_update_creative($creativeId, $variables);
+        // Get DFP creatives
+        $ad_id = $ad_id[0]['value'];
+        $creative = _dfp_get_creative($ad_id);
 
-      }else{
+        dpm($creative, 'creative');
 
-        // Create the creative
-        $creativeName = $entity->name;  // Get from title of term
-        $advertiserId = $entity->field_dfp_id['und'][0]['value'];  // Get from field
-        $creativeTemplateId = variable_get('dfp_template_id', '10051895');  // Get from admin settings page
+        // Generate variables array
+        //TODO: work with marc on field mapping and values
+        $variables = array(
+          'sponsored_text' => 'sponsored text value',  // Get from fields in the term
+          'headline' => 'headline value',
+          'content_type' => 'content type value',
+          'destination_url' => 'destination url value',
+        );
 
-        _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
+        if (isset($creative[0])) {
+
+          // Update existing creative
+          $creativeId = 'test';
+
+          _dfp_update_creative($creativeId, $variables);
+
+        } else {
+
+          // Create the creative
+          $creativeName = $node->title;
+          $advertiserId = $ad_id;
+          $creativeTemplateId = variable_get('dfp_template_id', '10051895');
+
+          _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
+
+        }
 
       }
     }
