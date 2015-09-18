@@ -47,7 +47,18 @@ function tp_dfp_node_presave($node) {
           $variables['image_url'] = image_style_url('thumbnail', $image_url[0]['uri']);
         }
         $variables['destination_url'] = drupal_get_path_alias('node/'. $node->nid);
-        $variables['icon'] = 'i-something';
+        $icon = '';
+        switch($node->type){
+          case 'openpublish_photo_gallery';
+            $icon = 'i-photo-camera';
+            break;
+          case 'video';
+          case 'video_playlist';
+          case 'openpublish_video';
+            $icon = 'i-video-camera';
+            break;
+        }
+        $variables['icon'] = $icon;
 
         // Get DFP creatives
         if($creative_id = field_get_items('node', $node, 'field_dfp_creative_id')){
@@ -286,5 +297,4 @@ function _dfp_update_creative($creativeId, $variables){
     printf("%s\n", $e->getMessage());
   }
 
-  dpm($updatedCreative->name, 'results: updated creative');
 }
