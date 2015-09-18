@@ -64,18 +64,18 @@ function tp_dfp_node_presave($node) {
         if($creative_id = field_get_items('node', $node, 'field_dfp_creative_id')){
           $creative_id = $creative_id[0]['value'];
         }
-        $ad_id = $ad_id[0]['value'];
+
         $creative = _dfp_get_creative($ad_id);
         if (isset($creative[0]) && $creative[0]['value'] == $creative_id) {
 
           // Update existing creative
-          _dfp_update_creative($ad_id, $variables);
+          _dfp_update_creative($creative_id, $variables);
 
         } else {
 
           // Create the creative
           $creativeName = $node->title;
-          $advertiserId = $ad_id;
+          $advertiserId = $ad_id[0]['value'];
           $creativeTemplateId = variable_get('dfp_template_id', '10051775');
 
           $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
@@ -242,59 +242,47 @@ function _dfp_update_creative($creativeId, $variables){
     require_once 'Google/Api/Ads/Dfp/Util/v201508/StatementBuilder.php';
   }
 
-  try {
-    // Get DfpUser from credentials in "../auth.ini"
-    // relative to the DfpUser.php file's directory.
-    $user = new DfpUser();
+  // Get DfpUser from credentials in "../auth.ini"
+  // relative to the DfpUser.php file's directory.
+  $user = new DfpUser();
 
-    // Get the CreativeService.
-    $creativeService = $user->GetService('CreativeService', 'v201508');
+  // Get the CreativeService.
+  $creativeService = $user->GetService('CreativeService', 'v201508');
 
-    // Create a statement to select a single creative by ID.
-    $statementBuilder = new StatementBuilder();
-    $statementBuilder->Where('id = :id')
-      ->OrderBy('id ASC')
-      ->Limit(1)
-      ->WithBindVariableValue('id', $creativeId);
+  // Create a statement to select a single creative by ID.
+  $statementBuilder = new StatementBuilder();
+  $statementBuilder->Where('id = :id')
+    ->OrderBy('id ASC')
+    ->Limit(1)
+    ->WithBindVariableValue('id', $creativeId);
 
-    // Get the creative.
-    $page = $creativeService->getCreativesByStatement(
-      $statementBuilder->ToStatement());
-    $creative = $page->results[0];
+  // Get the creative.
+  $page = $creativeService->getCreativesByStatement(
+    $statementBuilder->ToStatement());
+  $creative = $page->results[0];
 
-    // TODO: look up 'instanceof'
-    if ($creative instanceof HasDestinationUrlCreative) {
-      // Update the destination URL of the creative.
+  if ($creative instanceof HasDestinationUrlCreative) {
+    // Update the destination URL of the creative.
 
-      $creative->Imagefile = MediaUtils::GetBase64Data(
-        'http://www.google.com/intl/en/adwords/select/images/samples/inline.jpg');
-      $creative->SponsoredText = $variables['sponsored_text'];
-      $creative->Headline = $variables['headline'];
-      $creative->ContentType = $variables['content_type'];
-      $creative->DestinationUrl = $variables['destination_url'];
+    $creative->Headline = $variables['headline'];
+    $creative->ImageURL = $variables['image_url'];
+    $creative->DestinationURL = $variables['destination_url'];
+    $creative->Icon = $variables['icon'];
 
-      // Update the creative on the server.
-      $creatives = $creativeService->updateCreatives(array($creative));
+    // Update the creative on the server.
+    $creatives = $creativeService->updateCreatives(array($creative));
 
-      foreach ($creatives as $updatedCreative) {
-        drupal_set_message(t('Creative with ID @id, and name @name was updated.'),
-          array(
-            '@id' => $updatedCreative->id,
-            '@name' => $updatedCreative->name,
-
-          ),
-          'success'
-        );
-      }
-    } else {
-      drupal_set_message(t('No creatives were updated.'));
+    foreach ($creatives as $updatedCreative) {
+      drupal_set_message(t('Creative with ID @id, and name @name was updated.'),
+        array(
+          '@id' => $updatedCreative->id,
+          '@name' => $updatedCreative->name,
+        ),
+        'success'
+      );
     }
-  } catch (OAuth2Exception $e) {
-    ExampleUtils::CheckForOAuth2Errors($e);
-  } catch (ValidationException $e) {
-    ExampleUtils::CheckForOAuth2Errors($e);
-  } catch (Exception $e) {
-    printf("%s\n", $e->getMessage());
+  } else {
+    drupal_set_message(t('No creatives were updated.'));
   }
 
 }
