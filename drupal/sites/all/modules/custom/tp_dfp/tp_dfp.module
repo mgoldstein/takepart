@@ -42,116 +42,51 @@ function tp_dfp_node_presave($node) {
         $variables = array();
         if($headline = field_get_items('node', $node, 'field_promo_headline')){
           $variables['headline'] = $headline[0]['value'];
+        }else{
+          $variables['headline'] = $node->title;
         }
         if($image_url = field_get_items('node', $node, 'field_thumbnail')){
           $variables['image_url'] = image_style_url('thumbnail', $image_url[0]['uri']);
+        }else{
+          $variables['image_url'] = 'null';
         }
         $variables['destination_url'] = drupal_get_path_alias('node/'. $node->nid);
-        $icon = '';
+
         switch($node->type){
           case 'openpublish_photo_gallery';
             $icon = 'i-photo-camera';
             break;
-          case 'video';
-          case 'video_playlist';
           case 'openpublish_video';
             $icon = 'i-video-camera';
             break;
+          default:
+            $icon = 'null';
         }
         $variables['icon'] = $icon;
 
         // Get DFP creatives
         if($creative_id = field_get_items('node', $node, 'field_dfp_creative_id')){
           $creative_id = $creative_id[0]['value'];
-        }
-
-        $creative = _dfp_get_creative($ad_id);
-        if (isset($creative[0]) && $creative[0]['value'] == $creative_id) {
 
           // Update existing creative
           _dfp_update_creative($creative_id, $variables);
 
-        } else {
-
-          // Create the creative
-          $creativeName = $node->title;
-          $advertiserId = $ad_id[0]['value'];
-          $creativeTemplateId = variable_get('dfp_template_id', '10051775');
-
-          $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
-
-          $original = $node->original;
-          $wrap = entity_metadata_wrapper('node', $original);
-          $var = $wrap->field_dfp_creative_id->value();
-          if ($var != NULL) {
-            $wrap->field_my_date->set(array('value' => $creative_id));
-            $wrap->save();
-          }
         }
+
+        // Create the creative
+        $creativeName = $node->title;
+        $advertiserId = $ad_id[0]['value'];
+        $creativeTemplateId = variable_get('dfp_template_id', '10051775');
+
+        $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
+
+        $node->field_dfp_creative_id['und'][0] = array('value' => $creative_id);
+        return $node;
+
       }
     }
   }
 }
-
-/**
- * Helper function that returns values for creatives
- */
-function _dfp_get_creative($id){
-
-  // Find Google's DFP lib.  Otherwise, use libraries API.
-  $googleads_lib_path = function_exists('libraries_get_path') ? libraries_get_path('googleads-php-lib') : 'sites/all/libraries/googleads-php-lib';
-  $googleads_dfp = $googleads_lib_path. '/src/Google/Api/Ads/Dfp';
-
-  if ($googleads_dfp) {
-    set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path. '/src');
-    @require_once($googleads_dfp. '/Lib/DfpUser.php');
-    @require_once($googleads_dfp. '/Util/v201508/StatementBuilder.php');
-  }
-
-  $results = array();
-
-  try {
-
-    // Get DfpUser from credentials
-    $user = new DfpUser();
-
-    // Get the CreativeService.
-    $creativeService = $user->GetService('CreativeService', v201508);
-
-    // Create a statement to select all creatives.
-    $statementBuilder = new StatementBuilder();
-    $statementBuilder->Where('ID = :id')
-      ->OrderBy('id ASC')
-      ->Limit(StatementBuilder::SUGGESTED_PAGE_LIMIT)
-      ->WithBindVariableValue('id', $id);
-
-    // Default for total result set size.
-    $totalResultSetSize = 0;
-
-    do {
-      // Get creatives by statement.
-      $page = $creativeService->getCreativesByStatement(
-        $statementBuilder->ToStatement());
-
-      // Display results.
-      if (isset($page->results)) {
-        $totalResultSetSize = $page->totalResultSetSize;
-        $i = $page->startIndex;
-        foreach ($page->results as $creative) {
-          $results[] = array($creative->id, $creative->name);
-        }
-      }
-
-      $statementBuilder->IncreaseOffsetBy(StatementBuilder::SUGGESTED_PAGE_LIMIT);
-    } while ($statementBuilder->GetOffset() < $totalResultSetSize);
-
-  } catch (Exception $e) {
-    printf("%s\n", $e->getMessage());
-  }
-
-  return $results;
-}
-
 
 /**
  * Helper function to create creative
