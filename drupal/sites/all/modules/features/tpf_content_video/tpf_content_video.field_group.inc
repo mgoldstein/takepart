@@ -21,7 +21,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Player Configuration',
-    'weight' => '12',
+    'weight' => '11',
     'children' => array(
       0 => 'field_allowed_regions',
       1 => 'field_playlist_view_mode',
@@ -51,7 +51,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Playlist Settings',
-    'weight' => '5',
+    'weight' => '4',
     'children' => array(
       0 => 'field_playlist_filter',
       1 => 'field_playlist_filter_sorting',
@@ -81,7 +81,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '10',
+    'weight' => '9',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -141,7 +141,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '11',
+    'weight' => '10',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',
@@ -264,7 +264,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Player Config Options',
-    'weight' => '19',
+    'weight' => '18',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(

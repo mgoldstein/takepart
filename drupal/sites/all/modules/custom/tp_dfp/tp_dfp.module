@@ -50,9 +50,12 @@ function tp_dfp_node_presave($node) {
         $variables['icon'] = 'i-something';
 
         // Get DFP creatives
+        if($creative_id = field_get_items('node', $node, 'field_dfp_creative_id')){
+          $creative_id = $creative_id[0]['value'];
+        }
         $ad_id = $ad_id[0]['value'];
         $creative = _dfp_get_creative($ad_id);
-        if (isset($creative[0])) {
+        if (isset($creative[0]) && $creative[0]['value'] == $creative_id) {
 
           // Update existing creative
           _dfp_update_creative($ad_id, $variables);
@@ -64,10 +67,16 @@ function tp_dfp_node_presave($node) {
           $advertiserId = $ad_id;
           $creativeTemplateId = variable_get('dfp_template_id', '10051775');
 
-          _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
+          $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
 
+          $original = $node->original;
+          $wrap = entity_metadata_wrapper('node', $original);
+          $var = $wrap->field_dfp_creative_id->value();
+          if ($var != NULL) {
+            $wrap->field_my_date->set(array('value' => $creative_id));
+            $wrap->save();
+          }
         }
-
       }
     }
   }
@@ -203,11 +212,7 @@ function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId,
         $templateCreative->previewUrl);
     }
 
-
-  dpm($templateCreative->id, 'results: created creative id');
-  dpm($templateCreative->name, 'results: created creative name');
-  dpm(get_class($templateCreative), 'results: created creative template');
-  dpm($templateCreative->previewUrl, 'results: created creative preview');
+  return $templateCreative->id;
 
 }
 
