@@ -39,14 +39,15 @@ function tp_dfp_node_presave($node) {
       if ($ad_id = field_get_items('taxonomy_term', $sponsored, 'field_dfp_id')) {
 
         // Generate variables array
-        //TODO: add image (promo image?, main image?, image style?)
         $variables = array();
-        $variables['headline'] = $node->title;
-        $variables['content_type'] = $node->type;
-        $variables['destination_url'] = drupal_get_path_alias('node/'. $node->nid);
-        if($sponsored_text = field_get_items('node', $node, 'field')){
-          $variables['sponsored_text'] = $sponsored_text[0]['value'];
+        if($headline = field_get_items('node', $node, 'field_promo_headline')){
+          $variables['headline'] = $headline[0]['value'];
         }
+        if($image_url = field_get_items('node', $node, 'field_thumbnail')){
+          $variables['image_url'] = image_style_url('thumbnail', $image_url[0]['uri']);
+        }
+        $variables['destination_url'] = drupal_get_path_alias('node/'. $node->nid);
+        $variables['icon'] = 'i-something';
 
         // Get DFP creatives
         $ad_id = $ad_id[0]['value'];
@@ -61,7 +62,7 @@ function tp_dfp_node_presave($node) {
           // Create the creative
           $creativeName = $node->title;
           $advertiserId = $ad_id;
-          $creativeTemplateId = variable_get('dfp_template_id', '10051895');
+          $creativeTemplateId = variable_get('dfp_template_id', '10051775');
 
           _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
 
@@ -135,7 +136,7 @@ function _dfp_get_creative($id){
 /**
  * Helper function to create creative
  */
-function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables){
+function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables) {
 
   // Find Google's DFP lib.  Otherwise, use libraries API.
   $googleads_lib_path = function_exists('libraries_get_path') ? libraries_get_path('googleads-php-lib') : 'sites/all/libraries/googleads-php-lib';
@@ -147,82 +148,67 @@ function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId,
     require_once($googleads_dfp. '/Common/Util/MediaUtils.php');
   }
 
-  try {
-    // Get DfpUser from credentials in "../auth.ini"
-    // relative to the DfpUser.php file's directory.
-    $user = new DfpUser();
+  // Get DfpUser from credentials in "../auth.ini"
+  // relative to the DfpUser.php file's directory.
+  $user = new DfpUser();
 
-    // Get the CreativeService.
-    $creativeService = $user->GetService('CreativeService', 'v201508');
+  // Get the CreativeService.
+  $creativeService = $user->GetService('CreativeService', 'v201508');
+  // Use the image banner with optional third party tracking template.
 
-    // Create the local custom creative object.
-    $templateCreative = new TemplateCreative();
-    $templateCreative->name = $creativeName;
-    $templateCreative->advertiserId = $advertiserId;
-    $templateCreative->creativeTemplateId = $creativeTemplateId;
+  // Create the local custom creative object.
+  $templateCreative = new TemplateCreative();
+  $templateCreative->name = $creativeName;
+  $templateCreative->advertiserId = $advertiserId;
+  $templateCreative->creativeTemplateId = $creativeTemplateId;
 
-    // Set the creative size.
-    // Make size static for now
-    $templateCreative->size = new Size(300, 250, false);
+  $creativeWidth = (int) variable_get('dfp_template_width', 300);
+  $creativeHeight = (int) variable_get('dfp_template_height', 250);
+  // Set the creative size.
+  $templateCreative->size = new Size($creativeWidth, $creativeHeight, false);
 
+  // Create the Headline variable value.
+  $headlineVariableValue = new StringCreativeTemplateVariableValue();
+  $headlineVariableValue->uniqueName = 'Headline';
+  $headlineVariableValue->value = $variables['headline'];
+  $templateCreative->creativeTemplateVariableValues[] =
+    $headlineVariableValue;
 
-    // Create the asset variable value.
-    $assetVariableValue = new AssetCreativeTemplateVariableValue();
-    $assetVariableValue->uniqueName = 'Imagefile';
-    $assetVariableValue->assetByteArray = MediaUtils::GetBase64Data(
-      'http://www.google.com/intl/en/adwords/select/images/samples/inline.jpg');
-    // Filenames must be unique.
-    $assetVariableValue->fileName = sprintf('image%s.jpg', uniqid());
-    $templateCreative->creativeTemplateVariableValues[] = $assetVariableValue;
+  // Create the Icon width variable value.
+  $iconVariableValue = new StringCreativeTemplateVariableValue();
+  $iconVariableValue->uniqueName = 'Icon';
+  $iconVariableValue->value = $variables['icon'];
+  $templateCreative->creativeTemplateVariableValues[] =
+    $iconVariableValue;
 
-    // Create the sponsored text width variable value.
-    $sponsoredTextVariableValue = new LongCreativeTemplateVariableValue();
-    $sponsoredTextVariableValue->uniqueName = 'SponsoredText';
-    $sponsoredTextVariableValue->value = $variables['sponsored_text'];
-    $templateCreative->creativeTemplateVariableValues[] =
-      $sponsoredTextVariableValue;
+  // Create the Destination URL variable value.
+  $destinationURLVariableValue = new UrlCreativeTemplateVariableValue();
+  $destinationURLVariableValue->uniqueName = 'DestinationURL';
+  $destinationURLVariableValue->value = $variables['destination_url'];
+  $templateCreative->creativeTemplateVariableValues[] = $destinationURLVariableValue;
 
-    // Create the headline variable value.
-    $headlineVariableValue = new LongCreativeTemplateVariableValue();
-    $headlineVariableValue->uniqueName = 'Headline';
-    $headlineVariableValue->value = $variables['headline'];
-    $templateCreative->creativeTemplateVariableValues[] =
-      $headlineVariableValue;
-
-    // Create the content type value.
-    $contentTypeVariableValue = new UrlCreativeTemplateVariableValue();
-    $contentTypeVariableValue->uniqueName = 'ContentType';
-    $contentTypeVariableValue->value = $variables['content_type'];
-    $templateCreative->creativeTemplateVariableValues[] = $contentTypeVariableValue;
-
-    // Create the destination url variable value.
-    $destinationUrlVariableValue = new StringCreativeTemplateVariableValue();
-    $destinationUrlVariableValue->uniqueName = 'DestinationUrl';
-    $destinationUrlVariableValue->value = $variables['destination_url'];
-    $templateCreative->creativeTemplateVariableValues[] =
-      $destinationUrlVariableValue;
+  // Create the Image URL variable value.
+  $imageURLVariableValue = new UrlCreativeTemplateVariableValue();
+  $imageURLVariableValue->uniqueName = 'ImageURL';
+  $imageURLVariableValue->value = $variables['image_url'];
+  $templateCreative->creativeTemplateVariableValues[] = $imageURLVariableValue;
 
     // Create the template creative on the server.
     $templateCreatives =
       $creativeService->createCreatives(array($templateCreative));
-
     foreach ($templateCreatives as $templateCreative) {
-      drupal_set_message(t('A template creative with ID @id , type @type and name @name was created and can be previewed at: @preview '),
-        array(
-          '@id' => $templateCreative->id,
-          '@name' => $templateCreative->name,
-          '@type' => get_class($templateCreative),
-          '@preview' => $templateCreative->previewUrl,
-
-        ), 'success');
+      printf("A template creative with ID '%s', name '%s', and type '%s' was "
+        . "created and can be previewed at: %s\n", $templateCreative->id,
+        $templateCreative->name, get_class($templateCreative),
+        $templateCreative->previewUrl);
     }
-  } catch (OAuth2Exception $e) {
-    ExampleUtils::CheckForOAuth2Errors($e);
-  } catch (ValidationException $e) {
-    ExampleUtils::CheckForOAuth2Errors($e);
-  } catch (Exception $e) {
-    printf("%s\n", $e->getMessage());
-  }
+
+
+  dpm($templateCreative->id, 'results: created creative id');
+  dpm($templateCreative->name, 'results: created creative name');
+  dpm(get_class($templateCreative), 'results: created creative template');
+  dpm($templateCreative->previewUrl, 'results: created creative preview');
+
 }
 
 /**
@@ -294,4 +280,6 @@ function _dfp_update_creative($creativeId, $variables){
   } catch (Exception $e) {
     printf("%s\n", $e->getMessage());
   }
+
+  dpm($updatedCreative->name, 'results: updated creative');
 }
