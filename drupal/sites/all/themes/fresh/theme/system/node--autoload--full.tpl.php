@@ -8,7 +8,11 @@
  */
 ?>
 
-<div class="article-wrapper clearfix">
+<div class="fresh-content-wrapper">
+  <?php
+    $node_type = $variables['type'];
+    $node_type = ($node_type == 'openpublish_article') ? 'article' : $node_type; ?>
+  <div class = "<?php print $node_type ?>-wrapper clearfix">
   <?php if (!empty($variables['social'])): ?>
     <aside class="social social-vertical stick">
    <?php print $variables['social']; ?>
@@ -77,7 +81,7 @@
    <?php print $variables['more_on_takepart']; ?>
     <?php endif; ?>
   </article>
-</div>
+</div></div>
 
 <?php if (!empty($variables['auto-scroll'])): ?>
   <?php print $variables['auto-scroll']; ?>
