@@ -47,3 +47,4 @@ sftp-config.json
 #Sublime Project
 drupal/*.sublime-project
 drupal/*.sublime-workspace
+drupal/*.sublime-projectcompletions

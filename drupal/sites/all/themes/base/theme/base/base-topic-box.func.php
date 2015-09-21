@@ -6,13 +6,13 @@
  */
 function base_base_topic_box(&$variables){
   $topic = taxonomy_term_load($variables['tid']);
-
+  $term = $topic->vocabulary_machine_name;
   /* Series and Topic Boxes have different fields */
   /* Todo: consolidate down to two fields */
-  if($topic->vocabulary_machine_name == 'topic_box'){
+  if($term == 'topic_box'){
     $image_field_name = 'field_topic_box_image';
     $link_field_name = 'field_topic_box_link';
-  }elseif($topic->vocabulary_machine_name == 'series'){
+  }elseif($term == 'series'){
     $image_field_name = 'field_series_graphic_header';
     $link_field_name = 'field_series_graphic_header_link';
   }else{
@@ -24,8 +24,12 @@ function base_base_topic_box(&$variables){
     if($link = field_get_items('taxonomy_term', $topic, $link_field_name)){
       $link = $link[0]['url'];
       $path = ( substr($link, 0, 1) === "/") ? substr($link, 1) : $link;
-      $image = l($image, $path, array('html' => true));
     }
+    else if ($term == 'series'){
+      //If Series Graphic Header Link is empty, default to series page.
+      $path = drupal_get_path_alias('taxonomy/term/' . $variables['tid']);
+    }
+    $image = l($image, $path, array('html' => true));
     $topic_box = theme('html_tag', array(
       'element' => array(
         '#tag' => 'div',
