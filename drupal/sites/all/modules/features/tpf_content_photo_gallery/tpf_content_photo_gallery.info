@@ -1,7 +1,7 @@
 name = TakePart Content Photo Gallery
 core = 7.x
 package = Content Types
-version = 7.x-1.0
+version = 7.x-1.1
 project = tpf_content_photo_gallery
 dependencies[] = context
 dependencies[] = context_field
@@ -36,6 +36,7 @@ features[field_group][] = group_photo_gallery_tagging|node|openpublish_photo_gal
 features[field_instance][] = node-openpublish_photo_gallery-body
 features[field_instance][] = node-openpublish_photo_gallery-field_admin_tag
 features[field_instance][] = node-openpublish_photo_gallery-field_author
+features[field_instance][] = node-openpublish_photo_gallery-field_dfp_creative_id
 features[field_instance][] = node-openpublish_photo_gallery-field_display_cover
 features[field_instance][] = node-openpublish_photo_gallery-field_display_tab_banner
 features[field_instance][] = node-openpublish_photo_gallery-field_display_tag

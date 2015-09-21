@@ -1,0 +1,223 @@
+<?php
+/**
+ * @file
+ * Google Doubleclick for Publishers integration with TakePart
+ *
+ */
+
+/**
+ * Implements hook_menu()
+ */
+function tp_dfp_menu(){
+  $items = array();
+
+  $items['admin/config/dfp'] = array(
+    'title' => t('DFP for TakePart'),
+    'description' => t('Backend integration with Google Doubleclick for Publishing'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_dfp_admin_config'),
+    'access arguments' => array('access administration pages'),
+    'file' => 'tp_dfp.admin.inc'
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_node_presave()
+ */
+function tp_dfp_node_presave($node) {
+
+  // Create or update the creative if node references a Sponsored taxonomy term containing a DFP ID.
+  //TODO: this will kill editor workflow... let's create a button on the edit page that will generate the creative instead
+  if($node->status) {
+
+    if ($sponsored = field_get_items('node', $node, 'field_sponsored')) {
+
+      $sponsored = taxonomy_term_load($sponsored[0]['tid']);
+
+      if ($ad_id = field_get_items('taxonomy_term', $sponsored, 'field_dfp_id')) {
+
+        // Generate variables array
+        $variables = array();
+        if($headline = field_get_items('node', $node, 'field_promo_headline')){
+          $variables['headline'] = $headline[0]['value'];
+        }else{
+          $variables['headline'] = $node->title;
+        }
+        if($image_url = field_get_items('node', $node, 'field_thumbnail')){
+          $variables['image_url'] = image_style_url('thumbnail', $image_url[0]['uri']);
+        }else{
+          $variables['image_url'] = 'null';
+        }
+        $variables['destination_url'] = drupal_get_path_alias('node/'. $node->nid);
+
+        switch($node->type){
+          case 'openpublish_photo_gallery';
+            $icon = 'i-photo-camera';
+            break;
+          case 'openpublish_video';
+            $icon = 'i-video-camera';
+            break;
+          default:
+            $icon = 'null';
+        }
+        $variables['icon'] = $icon;
+
+        // Get DFP creatives
+        if($creative_id = field_get_items('node', $node, 'field_dfp_creative_id')){
+          $creative_id = $creative_id[0]['value'];
+
+          // Update existing creative
+          _dfp_update_creative($creative_id, $variables);
+
+        }
+
+        // Create the creative
+        $creativeName = $node->title;
+        $advertiserId = $ad_id[0]['value'];
+        $creativeTemplateId = variable_get('dfp_template_id', '10051775');
+
+        $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
+
+        $node->field_dfp_creative_id['und'][0] = array('value' => $creative_id);
+        return $node;
+
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to create creative
+ */
+function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables) {
+
+  // Find Google's DFP lib.  Otherwise, use libraries API.
+  $googleads_lib_path = function_exists('libraries_get_path') ? libraries_get_path('googleads-php-lib') : 'sites/all/libraries/googleads-php-lib';
+  $googleads_dfp = $googleads_lib_path. '/src/Google/Api/Ads';
+
+  if ($googleads_dfp) {
+    set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path. '/src');
+    require_once($googleads_dfp. '/Dfp/Lib/DfpUser.php');
+    require_once($googleads_dfp. '/Common/Util/MediaUtils.php');
+  }
+
+  // Get DfpUser from credentials in "../auth.ini"
+  // relative to the DfpUser.php file's directory.
+  $user = new DfpUser();
+
+  // Get the CreativeService.
+  $creativeService = $user->GetService('CreativeService', 'v201508');
+  // Use the image banner with optional third party tracking template.
+
+  // Create the local custom creative object.
+  $templateCreative = new TemplateCreative();
+  $templateCreative->name = $creativeName;
+  $templateCreative->advertiserId = $advertiserId;
+  $templateCreative->creativeTemplateId = $creativeTemplateId;
+
+  $creativeWidth = (int) variable_get('dfp_template_width', 300);
+  $creativeHeight = (int) variable_get('dfp_template_height', 250);
+  // Set the creative size.
+  $templateCreative->size = new Size($creativeWidth, $creativeHeight, false);
+
+  // Create the Headline variable value.
+  $headlineVariableValue = new StringCreativeTemplateVariableValue();
+  $headlineVariableValue->uniqueName = 'Headline';
+  $headlineVariableValue->value = $variables['headline'];
+  $templateCreative->creativeTemplateVariableValues[] =
+    $headlineVariableValue;
+
+  // Create the Icon width variable value.
+  $iconVariableValue = new StringCreativeTemplateVariableValue();
+  $iconVariableValue->uniqueName = 'Icon';
+  $iconVariableValue->value = $variables['icon'];
+  $templateCreative->creativeTemplateVariableValues[] =
+    $iconVariableValue;
+
+  // Create the Destination URL variable value.
+  $destinationURLVariableValue = new UrlCreativeTemplateVariableValue();
+  $destinationURLVariableValue->uniqueName = 'DestinationURL';
+  $destinationURLVariableValue->value = $variables['destination_url'];
+  $templateCreative->creativeTemplateVariableValues[] = $destinationURLVariableValue;
+
+  // Create the Image URL variable value.
+  $imageURLVariableValue = new UrlCreativeTemplateVariableValue();
+  $imageURLVariableValue->uniqueName = 'ImageURL';
+  $imageURLVariableValue->value = $variables['image_url'];
+  $templateCreative->creativeTemplateVariableValues[] = $imageURLVariableValue;
+
+    // Create the template creative on the server.
+    $templateCreatives =
+      $creativeService->createCreatives(array($templateCreative));
+    foreach ($templateCreatives as $templateCreative) {
+      printf("A template creative with ID '%s', name '%s', and type '%s' was "
+        . "created and can be previewed at: %s\n", $templateCreative->id,
+        $templateCreative->name, get_class($templateCreative),
+        $templateCreative->previewUrl);
+    }
+
+  return $templateCreative->id;
+
+}
+
+/**
+ * Helper function to update creative
+ */
+function _dfp_update_creative($creativeId, $variables){
+
+  // Find Google's DFP lib.  Otherwise, use libraries API.
+  $googleads_lib_path = function_exists('libraries_get_path') ? libraries_get_path('googleads-php-lib') : 'sites/all/libraries/googleads-php-lib';
+  $googleads_dfp = $googleads_lib_path. '/src/Google/Api/Ads';
+
+  if ($googleads_dfp) {
+    set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path. '/src');
+    require_once($googleads_dfp. '/Dfp/Lib/DfpUser.php');
+    require_once 'Google/Api/Ads/Dfp/Util/v201508/StatementBuilder.php';
+  }
+
+  // Get DfpUser from credentials in "../auth.ini"
+  // relative to the DfpUser.php file's directory.
+  $user = new DfpUser();
+
+  // Get the CreativeService.
+  $creativeService = $user->GetService('CreativeService', 'v201508');
+
+  // Create a statement to select a single creative by ID.
+  $statementBuilder = new StatementBuilder();
+  $statementBuilder->Where('id = :id')
+    ->OrderBy('id ASC')
+    ->Limit(1)
+    ->WithBindVariableValue('id', $creativeId);
+
+  // Get the creative.
+  $page = $creativeService->getCreativesByStatement(
+    $statementBuilder->ToStatement());
+  $creative = $page->results[0];
+
+  if ($creative instanceof HasDestinationUrlCreative) {
+    // Update the destination URL of the creative.
+
+    $creative->Headline = $variables['headline'];
+    $creative->ImageURL = $variables['image_url'];
+    $creative->DestinationURL = $variables['destination_url'];
+    $creative->Icon = $variables['icon'];
+
+    // Update the creative on the server.
+    $creatives = $creativeService->updateCreatives(array($creative));
+
+    foreach ($creatives as $updatedCreative) {
+      drupal_set_message(t('Creative with ID @id, and name @name was updated.'),
+        array(
+          '@id' => $updatedCreative->id,
+          '@name' => $updatedCreative->name,
+        ),
+        'success'
+      );
+    }
+  } else {
+    drupal_set_message(t('No creatives were updated.'));
+  }
+
+}

@@ -135,19 +135,19 @@ function tpf_content_photo_gallery_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
-        ),
-        'xmlsitemap' => array(
           'weight' => '9',
         ),
-        'metatags' => array(
-          'weight' => '13',
-        ),
-        'redirect' => array(
+        'xmlsitemap' => array(
           'weight' => '10',
         ),
+        'metatags' => array(
+          'weight' => '14',
+        ),
+        'redirect' => array(
+          'weight' => '11',
+        ),
         'locations' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
       ),
       'display' => array(),
