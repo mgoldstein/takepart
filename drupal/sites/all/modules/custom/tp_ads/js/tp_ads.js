@@ -227,6 +227,11 @@
           var page_url = $('.ad-active article').data('tpOgUrl');
           var targets = '';
           
+          //break if the page url doesnt exist
+          if (typeof Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url] == 'undefined') {
+            return;
+          }
+          
           //does for each target set from the backend
           $.each(Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'], function(i, v) {
             targets += ' googletag.pubads().clearTargeting(\'' + i + '\');';
