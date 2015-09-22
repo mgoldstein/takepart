@@ -82,10 +82,10 @@ function fresh_preprocess_node__autoload(&$variables) {
     if ($media = field_get_items('node', $variables['node'], 'field_article_main_image')) {
 	 $file = $media[0]['file'];
 	 $image_url = image_style_url('large', $file->uri);
-	 $variables['media'] = '<div class="main-image">';
+	 $variables['media'] = '<div class="main-media">';
 	 $variables['media'] .= theme('image', array(
 	   'path' => $image_url, 'attributes' => array(
-		'class' => 'main-media'
+		'class' => 'main-image'
 	   )
 	   )
 	 );
@@ -107,7 +107,9 @@ function fresh_preprocess_node__autoload(&$variables) {
   }
   else if ($node_type == 'video') {
     //Replace Media with the video field
-     $variables['media'] = drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
+    $variables['media'] = '<div class="main-media">';
+    $variables['media'] .= drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
+    $variables['media'] .= '</div>';
   }
 
     /* Author */
