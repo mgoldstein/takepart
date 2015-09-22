@@ -99,12 +99,12 @@
   window.tp_ad_takeover = function(bgcolor, bgimage, link) {
     var $body = jQuery('body');
     var $a = jQuery('<a id="tp_ad_takeover" href="' + link + '" target="_blank"></a>');
-    
+
     $body.css({
       background: bgcolor + ' url("' + bgimage + '") center top no-repeat',
       backgroundAttachment: 'fixed'
     }).addClass('tp_ad_takeover');
-    
+
     $a.css({
       position: 'fixed',
       height: '100%',
@@ -113,34 +113,34 @@
       top: 0,
       zIndex: 0
     });
-    
+
     jQuery('body #footer-wrapper').after($a);
-    
-    //only do on fresh theme with article-wrapper
-    if ($('.article-wrapper').length !== 0) {
+
+    //only do on fresh theme with article-wrapper & video wrapper
+    if ($('.article-wrapper' , '.video-wrapper').length !== 0) {
       jQuery('body #footer-wrapper').after($a);
       //variables
       var background_image = new Image();
       background_image.src = bgimage;
-      
+
       //checks to see if the image is loaded
       if (background_image.complete) {
         var background_image_height = background_image.height;
         takeover_ad(background_image_height);
       }
       //otherwise load image and then call function
-      else {  
+      else {
         $(background_image).load(function() {
           var background_image_height = background_image.height;
           takeover_ad(background_image_height);
         });
       }
-      
+
       //triggers a scroll so the background takeover will go in place
       $(window).scroll();
     }
   };
-  
+
   /**
    *  @function:
    *    Function is used to update the article only if on fresh
@@ -157,7 +157,7 @@
         first_article.bottom = first_article.top + $('article:first').height();
         var background_pos = first_article.bottom - background_image_height;
         $takeover_ad = $('#tp_ad_takeover');
-        
+
         //updates the background position
         if (window_bottom > first_article.bottom) {
           $('body').css('background-attachment', 'scroll');
@@ -171,11 +171,11 @@
           $takeover_ad.css('position', 'fixed');
           $takeover_ad.css('top', 0);
         }
-        
+
       });
     }
   };
-  
+
    /**
    * Handle TP Infographics
    */
@@ -184,5 +184,5 @@
       $('.tpinfographic').tpInfographic();
     }
   };
-  
+
 })(jQuery, Drupal, this, this.document);

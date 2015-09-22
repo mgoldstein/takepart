@@ -15,14 +15,14 @@
       wrapperClass: 'sticky-wrapper',
       stickyClass: 'sticky'
     },
-    
+
     options = $.extend({}, defaults, opts);
 
     //overrides the stopat for fresh theme
-    if ($('.article-wrapper').length !== 0) {
-      options.stopAt = '.footer'; 
+    if ($('.fresh-content-wrapper').length !== 0) {
+      options.stopAt = '.footer';
     }
-    
+
     return this.each(function(index) {
 
       var $stickyEl = $(this),
@@ -33,7 +33,7 @@
         $wrap.css({
           height: $stickyEl.outerHeight(true) + 'px',
           'float': $stickyEl.css('float')
-        });        
+        });
       };
 
       $(window).on('scroll', function(e) {
@@ -47,14 +47,14 @@
         if (window.scrollY > ($wrap.offset().top - options.offset)) {
           if (!isSticky) {
             adjustWrapper();
-            isSticky || $stickyEl.addClass(options.stickyClass);            
+            isSticky || $stickyEl.addClass(options.stickyClass);
           }
         } else {
           if(isSticky) {
             $stickyEl.removeClass(options.stickyClass);
           }
         }
-        
+
         if (isSticky && window.scrollY > stickyElLowestPoint) {
           $stickyEl.css('top', stickyElLowestPoint - window.scrollY);
         } else {
