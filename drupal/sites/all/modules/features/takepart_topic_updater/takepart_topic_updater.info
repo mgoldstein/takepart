@@ -1,0 +1,15 @@
+name = TakePart Topic Updater
+description = For performing bulk operations on Topic data
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = takepart_topic_updater
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = views
+dependencies[] = views_bulk_operations
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = bulk_ops
