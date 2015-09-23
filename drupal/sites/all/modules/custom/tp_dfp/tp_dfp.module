@@ -29,7 +29,6 @@ function tp_dfp_menu(){
 function tp_dfp_node_presave($node) {
 
   // Create or update the creative if node references a Sponsored taxonomy term containing a DFP ID.
-  //TODO: this will kill editor workflow... let's create a button on the edit page that will generate the creative instead
   if($node->status) {
 
     if ($sponsored = field_get_items('node', $node, 'field_sponsored')) {
@@ -45,12 +44,17 @@ function tp_dfp_node_presave($node) {
         }else{
           $variables['headline'] = $node->title;
         }
-        if($image_url = field_get_items('node', $node, 'field_thumbnail')){
-          $variables['image_url'] = image_style_url('thumbnail', $image_url[0]['uri']);
+        if($image = field_get_items('node', $node, 'field_thumbnail')){
+          $image = file_load($image[0]['fid']);
+          $variables['image_url'] = image_style_url('thumbnail', $image->uri);
         }else{
           $variables['image_url'] = 'null';
         }
-        $variables['destination_url'] = drupal_get_path_alias('node/'. $node->nid);
+
+        $destination_base = variable_get('dfp_destination_url', 'www.takepart.com');
+        $destination_path = drupal_get_path_alias('node/'. $node->nid);
+        $variables['destination_url'] = $destination_base. '/'. $destination_path;
+
 
         switch($node->type){
           case 'openpublish_photo_gallery';
@@ -71,18 +75,17 @@ function tp_dfp_node_presave($node) {
           // Update existing creative
           _dfp_update_creative($creative_id, $variables);
 
+        }else{
+          // Create the creative
+          $creativeName = $node->title;
+          $advertiserId = $ad_id[0]['value'];
+          $creativeTemplateId = variable_get('dfp_template_id', '10051775');
+
+          $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
+
+          $node->field_dfp_creative_id['und'][0] = array('value' => $creative_id);
+          return $node;
         }
-
-        // Create the creative
-        $creativeName = $node->title;
-        $advertiserId = $ad_id[0]['value'];
-        $creativeTemplateId = variable_get('dfp_template_id', '10051775');
-
-        $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
-
-        $node->field_dfp_creative_id['und'][0] = array('value' => $creative_id);
-        return $node;
-
       }
     }
   }
