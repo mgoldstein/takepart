@@ -183,6 +183,7 @@ function tp_videos_topic_promoted_admin_form_submit($form, &$form_state) {
  */
 function tp_videos_get_topic_promoted_video($node) {
   // first get the global videos
+
   $videos = variable_get('tp_videos_global_video', array());
 
   // if the global override isn't enabled
@@ -191,14 +192,18 @@ function tp_videos_get_topic_promoted_video($node) {
   // replace the global videos with the featured videos for that topic
   if (
     1 !== variable_get('tp_videos_global_video_override', 0) &&
-    ($items = field_get_items('node', $node, 'field_topic')) &&
-    ($topic_videos = field_get_items('taxonomy_term', $items[0]['taxonomy_term'], 'field_featured_video'))
+    ($items = field_get_items('node', $node, 'field_topic'))
   ) {
-    // normalize the field values to an indexed array of node IDs
-    $videos = array_map(create_function('$item', 'return $item["target_id"];'), $topic_videos);
-  }
+    $term = taxonomy_term_load($items[0]['tid']);
+    if($topic_videos = field_get_items('taxonomy_term', $term, 'field_featured_video')){
+      // normalize the field values to an indexed array of node IDs
+      $videos = array_map(create_function('$item', 'return $item["target_id"];'), $topic_videos);
 
+    }
+  }
+  
   // randomly select a video and return a node object
   $random_key = array_rand($videos);
   return node_load($videos[$random_key]);
+
 }
