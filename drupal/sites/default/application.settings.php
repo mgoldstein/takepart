@@ -32,15 +32,9 @@ if ($conf['memcache_servers'] !== FALSE) {
 }
 
 // HTTPS
-if (!array_key_exists('https', $conf)) {
-  $conf['https'] = FALSE;
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+  $_SERVER['HTTPS'] = 'on';
 }
-if ($conf['https']) {
-  if (file_exists(dirname(__FILE__) . '/https.settings.php')) {
-    include_once dirname(__FILE__) . '/https.settings.php';
-  }
-}
-$conf['securepages_enable'] = $conf['https'];
 
 // JWPlatform API account
 $conf += array(
