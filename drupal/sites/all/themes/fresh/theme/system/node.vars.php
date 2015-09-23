@@ -105,11 +105,14 @@ function fresh_preprocess_node__autoload(&$variables) {
 	 }
     }
   }
+
   else if ($node_type == 'video') {
-    //Replace Media with the video field
-    $variables['media'] = '<div class="main-media">';
-    $variables['media'] .= drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
-    $variables['media'] .= '</div>';
+    if (!empty(drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page')))) {
+      $variables['media'] = '<div class="main-media">';
+      $variables['media'] .= drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
+      dpm($variables['media']);
+      $variables['media'] .= '</div>';
+    }
   }
 
     /* Author */
