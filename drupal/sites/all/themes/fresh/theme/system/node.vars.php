@@ -11,13 +11,22 @@ function fresh_preprocess_node(&$variables, $hook) {
 
   $node = $variables['node'];
   $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
-  if ($node->type == 'openpublish_article' || $node->type == 'video') {
-    $variables['theme_hook_suggestion'] = 'node__autoload__' . $variables['view_mode'];
-    $function = __FUNCTION__ . '__autoload';
+  if ($variables['view_mode'] == 'full') {
+    if ($node->type == 'openpublish_article' || $node->type == 'video') {
+      $variables['theme_hook_suggestion'] = 'node__autoload__' . $variables['view_mode'];
+      $function = __FUNCTION__ . '__autoload';
+      if (function_exists($function)) {
+        $function($variables, $hook);
+      }
+    }
+  }
+  else {
+    //inline-content mode
+    $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
+    $function = __FUNCTION__ . '__' . $variables['view_mode'];
     if (function_exists($function)) {
       $function($variables, $hook);
     }
-
   }
   //$variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
 
@@ -105,11 +114,13 @@ function fresh_preprocess_node__autoload(&$variables) {
 	 }
     }
   }
+
   else if ($node_type == 'video') {
-    //Replace Media with the video field
-    $variables['media'] = '<div class="main-media">';
-    $variables['media'] .= drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
-    $variables['media'] .= '</div>';
+    if (!empty(drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page')))) {
+      $variables['media'] = '<div class="main-media">';
+      $variables['media'] .= drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
+      $variables['media'] .= '</div>';
+    }
   }
 
     /* Author */
