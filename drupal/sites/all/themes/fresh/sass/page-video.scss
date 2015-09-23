@@ -132,6 +132,9 @@ h1.title{
   margin-bottom: 5px;
   border-bottom: 1px solid #CCC;
   padding-bottom: 15px;
+  .unpublished {
+    background-color: #fff4f4;
+  }
 }
 blockquote.pullquote {
   margin: 0;
