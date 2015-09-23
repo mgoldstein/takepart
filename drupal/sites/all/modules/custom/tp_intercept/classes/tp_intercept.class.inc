@@ -38,7 +38,7 @@ class tp_intercept {
    *  @method:
    *    Method used to get cache or set cache version
    */
-  public function cache($op = 'get', $data) {
+  public function cache($op = 'get', $data = NULL) {
     $cache_cid = 'tp_intercept';
     $cache_time = variable_get('tp_intercept_cache_time', 60);
     
