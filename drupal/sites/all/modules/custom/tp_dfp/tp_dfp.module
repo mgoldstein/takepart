@@ -98,55 +98,54 @@ function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId,
   $googleads_dfp = $googleads_lib_path. '/src/Google/Api/Ads';
 
   if ($googleads_dfp) {
-    set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path. '/src');
-    require_once($googleads_dfp. '/Dfp/Lib/DfpUser.php');
-    require_once($googleads_dfp. '/Common/Util/MediaUtils.php');
-  }
+    set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path . '/src');
+    require_once($googleads_dfp . '/Dfp/Lib/DfpUser.php');
+    require_once($googleads_dfp . '/Common/Util/MediaUtils.php');
 
-  // Get DfpUser from credentials in "../auth.ini"
-  // relative to the DfpUser.php file's directory.
-  $user = new DfpUser();
+    // Get DfpUser from credentials in "../auth.ini"
+    // relative to the DfpUser.php file's directory.
+    $user = new DfpUser();
 
-  // Get the CreativeService.
-  $creativeService = $user->GetService('CreativeService', 'v201508');
-  // Use the image banner with optional third party tracking template.
+    // Get the CreativeService.
+    $creativeService = $user->GetService('CreativeService', 'v201508');
+    // Use the image banner with optional third party tracking template.
 
-  // Create the local custom creative object.
-  $templateCreative = new TemplateCreative();
-  $templateCreative->name = $creativeName;
-  $templateCreative->advertiserId = $advertiserId;
-  $templateCreative->creativeTemplateId = $creativeTemplateId;
+    // Create the local custom creative object.
+    $templateCreative = new TemplateCreative();
+    $templateCreative->name = $creativeName;
+    $templateCreative->advertiserId = $advertiserId;
+    $templateCreative->creativeTemplateId = $creativeTemplateId;
 
-  $creativeWidth = (int) variable_get('dfp_template_width', 300);
-  $creativeHeight = (int) variable_get('dfp_template_height', 250);
-  // Set the creative size.
-  $templateCreative->size = new Size($creativeWidth, $creativeHeight, false);
+    $creativeWidth = (int)variable_get('dfp_template_width', 300);
+    $creativeHeight = (int)variable_get('dfp_template_height', 250);
+    // Set the creative size.
+    $templateCreative->size = new Size($creativeWidth, $creativeHeight, false);
 
-  // Create the Headline variable value.
-  $headlineVariableValue = new StringCreativeTemplateVariableValue();
-  $headlineVariableValue->uniqueName = 'Headline';
-  $headlineVariableValue->value = $variables['headline'];
-  $templateCreative->creativeTemplateVariableValues[] =
-    $headlineVariableValue;
+    // Create the Headline variable value.
+    $headlineVariableValue = new StringCreativeTemplateVariableValue();
+    $headlineVariableValue->uniqueName = 'Headline';
+    $headlineVariableValue->value = $variables['headline'];
+    $templateCreative->creativeTemplateVariableValues[] =
+      $headlineVariableValue;
 
-  // Create the Icon width variable value.
-  $iconVariableValue = new StringCreativeTemplateVariableValue();
-  $iconVariableValue->uniqueName = 'Icon';
-  $iconVariableValue->value = $variables['icon'];
-  $templateCreative->creativeTemplateVariableValues[] =
-    $iconVariableValue;
+    // Create the Icon width variable value.
+    $iconVariableValue = new StringCreativeTemplateVariableValue();
+    $iconVariableValue->uniqueName = 'Icon';
+    $iconVariableValue->value = $variables['icon'];
+    $templateCreative->creativeTemplateVariableValues[] =
+      $iconVariableValue;
 
-  // Create the Destination URL variable value.
-  $destinationURLVariableValue = new UrlCreativeTemplateVariableValue();
-  $destinationURLVariableValue->uniqueName = 'DestinationURL';
-  $destinationURLVariableValue->value = $variables['destination_url'];
-  $templateCreative->creativeTemplateVariableValues[] = $destinationURLVariableValue;
+    // Create the Destination URL variable value.
+    $destinationURLVariableValue = new UrlCreativeTemplateVariableValue();
+    $destinationURLVariableValue->uniqueName = 'DestinationURL';
+    $destinationURLVariableValue->value = $variables['destination_url'];
+    $templateCreative->creativeTemplateVariableValues[] = $destinationURLVariableValue;
 
-  // Create the Image URL variable value.
-  $imageURLVariableValue = new UrlCreativeTemplateVariableValue();
-  $imageURLVariableValue->uniqueName = 'ImageURL';
-  $imageURLVariableValue->value = $variables['image_url'];
-  $templateCreative->creativeTemplateVariableValues[] = $imageURLVariableValue;
+    // Create the Image URL variable value.
+    $imageURLVariableValue = new UrlCreativeTemplateVariableValue();
+    $imageURLVariableValue->uniqueName = 'ImageURL';
+    $imageURLVariableValue->value = $variables['image_url'];
+    $templateCreative->creativeTemplateVariableValues[] = $imageURLVariableValue;
 
     // Create the template creative on the server.
     $templateCreatives =
@@ -158,7 +157,8 @@ function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId,
         $templateCreative->previewUrl);
     }
 
-  return $templateCreative->id;
+    return $templateCreative->id;
+  }
 
 }
 
@@ -172,52 +172,53 @@ function _dfp_update_creative($creativeId, $variables){
   $googleads_dfp = $googleads_lib_path. '/src/Google/Api/Ads';
 
   if ($googleads_dfp) {
-    set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path. '/src');
-    require_once($googleads_dfp. '/Dfp/Lib/DfpUser.php');
+    set_include_path(get_include_path() . PATH_SEPARATOR . $googleads_lib_path . '/src');
+    require_once($googleads_dfp . '/Dfp/Lib/DfpUser.php');
     require_once 'Google/Api/Ads/Dfp/Util/v201508/StatementBuilder.php';
-  }
 
-  // Get DfpUser from credentials in "../auth.ini"
-  // relative to the DfpUser.php file's directory.
-  $user = new DfpUser();
 
-  // Get the CreativeService.
-  $creativeService = $user->GetService('CreativeService', 'v201508');
+    // Get DfpUser from credentials in "../auth.ini"
+    // relative to the DfpUser.php file's directory.
+    $user = new DfpUser();
 
-  // Create a statement to select a single creative by ID.
-  $statementBuilder = new StatementBuilder();
-  $statementBuilder->Where('id = :id')
-    ->OrderBy('id ASC')
-    ->Limit(1)
-    ->WithBindVariableValue('id', $creativeId);
+    // Get the CreativeService.
+    $creativeService = $user->GetService('CreativeService', 'v201508');
 
-  // Get the creative.
-  $page = $creativeService->getCreativesByStatement(
-    $statementBuilder->ToStatement());
-  $creative = $page->results[0];
+    // Create a statement to select a single creative by ID.
+    $statementBuilder = new StatementBuilder();
+    $statementBuilder->Where('id = :id')
+      ->OrderBy('id ASC')
+      ->Limit(1)
+      ->WithBindVariableValue('id', $creativeId);
 
-  if ($creative instanceof HasDestinationUrlCreative) {
-    // Update the destination URL of the creative.
+    // Get the creative.
+    $page = $creativeService->getCreativesByStatement(
+      $statementBuilder->ToStatement());
+    $creative = $page->results[0];
 
-    $creative->Headline = $variables['headline'];
-    $creative->ImageURL = $variables['image_url'];
-    $creative->DestinationURL = $variables['destination_url'];
-    $creative->Icon = $variables['icon'];
+    if ($creative instanceof HasDestinationUrlCreative) {
+      // Update the destination URL of the creative.
 
-    // Update the creative on the server.
-    $creatives = $creativeService->updateCreatives(array($creative));
+      $creative->Headline = $variables['headline'];
+      $creative->ImageURL = $variables['image_url'];
+      $creative->DestinationURL = $variables['destination_url'];
+      $creative->Icon = $variables['icon'];
 
-    foreach ($creatives as $updatedCreative) {
-      drupal_set_message(t('Creative with ID @id, and name @name was updated.'),
-        array(
-          '@id' => $updatedCreative->id,
-          '@name' => $updatedCreative->name,
-        ),
-        'success'
-      );
+      // Update the creative on the server.
+      $creatives = $creativeService->updateCreatives(array($creative));
+
+      foreach ($creatives as $updatedCreative) {
+        drupal_set_message(t('Creative with ID @id, and name @name was updated.'),
+          array(
+            '@id' => $updatedCreative->id,
+            '@name' => $updatedCreative->name,
+          ),
+          'success'
+        );
+      }
+    } else {
+      drupal_set_message(t('No creatives were updated.'));
     }
-  } else {
-    drupal_set_message(t('No creatives were updated.'));
   }
 
 }
