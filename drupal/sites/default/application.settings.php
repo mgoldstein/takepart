@@ -92,13 +92,20 @@ $conf['bluehornet_api_accounts'] += array(
 $conf += array('bluehornet_default_account' => 'takepart');
 
 /**
- * Use client IP and not the LB IP
+ * Don't use private IPs
  */
 if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
   $ips = $_SERVER['HTTP_X_FORWARDED_FOR'];
   $ips = explode ( ',', $ips);
   foreach($ips as $ip){
-    if (!strpos($ip, '10.')) {
+    $ipoop = (float) substr($ip, 0, 6);
+    if($ipoop >= 172.16 && $ipoo <= 172.31){
+      break;
+    }
+    elseif (!strpos($ip, '10.') ||
+        !strpos($ip, '192.168.') ||
+        !strpos($ip, '169.254.'
+    )) {
       $conf['reverse_proxy_addresses'][] = $ip;
     } else {
       break;
