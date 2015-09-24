@@ -116,9 +116,10 @@ function fresh_preprocess_node__autoload(&$variables) {
   }
 
   else if ($node_type == 'video') {
-    if (!empty(drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page')))) {
+    $video = drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
+    if (!empty($video)) {
       $variables['media'] = '<div class="main-media">';
-      $variables['media'] .= drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
+      $variables['media'] .= $video;
       $variables['media'] .= '</div>';
     }
   }
