@@ -19,6 +19,10 @@
 ?>
 <aside class="inline-content col-sm-5 pull-right">
   <?php foreach ($element['#replacements'] as $key => $item): ?>
-    <?php print render($item); ?>
+    <?php
+      // Add unpublished class for inline nodes
+      $published = $element['#replacements'][$key]['#node'] -> status; ?>
+    <div class = "inline-content-wrapper<?php print (!$published) ? " unpublished" : ""; ?>">
+      <?php print render($item); ?>
   <?php endforeach; ?>
-</aside>
+</div></aside>
