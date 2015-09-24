@@ -14,24 +14,6 @@ function tp_dfp_admin_config($form, &$form_state, $form_id){
     '#maxlength' => 128,
   );
 
-  //Template Width
-  $form['dfp_template_width'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Template Width'),
-    '#default_value' => variable_get('dfp_template_width', '300'),
-    '#size' => 60,
-    '#maxlength' => 128,
-  );
-
-  //Template Height
-  $form['dfp_template_height'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Template Height'),
-    '#default_value' => variable_get('dfp_template_height', '250'),
-    '#size' => 60,
-    '#maxlength' => 128,
-  );
-
   //Destination URL
   $form['dfp_destination_url'] = array(
     '#type' => 'select',

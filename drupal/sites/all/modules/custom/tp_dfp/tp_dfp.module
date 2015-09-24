@@ -124,6 +124,9 @@ function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId,
     // Set the creative size.
     $templateCreative->size = new Size($creativeWidth, $creativeHeight, false);
 
+    // Set the creative to be native
+    $templateCreative->isNativeEligible = TRUE;
+
     // Create the Headline variable value.
     $headlineVariableValue = new StringCreativeTemplateVariableValue();
     $headlineVariableValue->uniqueName = 'Headline';
