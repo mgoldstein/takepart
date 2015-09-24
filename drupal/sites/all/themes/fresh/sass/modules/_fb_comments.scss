@@ -3,8 +3,7 @@
 	margin: 20px auto;
 	width: 100%;
 	@include breakpoint($breakpoint-phablet) {
-	  width: auto;
-      min-height: 185px;
+    min-height: 185px;
 	}
 	a.comments-count {
 		display: block;
