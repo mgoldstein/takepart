@@ -10,7 +10,7 @@ module.exports = function (grunt) {
                     'drupal/sites/all/themes/fresh/sass/**/*.scss',
                     'drupal/sites/all/themes/tp4/sass/**/*.scss'
                 ],
-                tasks: ['compass:fresh', 'compass:tp4', 'play:toolman']
+                tasks: ['compass:fresh', 'compass:tp4']
             }
         },
         compass: {
@@ -46,11 +46,6 @@ module.exports = function (grunt) {
                     'cd drupal',
                     'drush cc css-js'
                 ].join('&&')
-            }
-        },
-        play: {
-            toolman: {
-                file: './grunt.mp3'
             }
         }
     });
