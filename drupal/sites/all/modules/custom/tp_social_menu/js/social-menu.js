@@ -72,25 +72,25 @@
 	 }
 
 	 //only fix for iphone
-	 if (/iPhone/i.test(navigator.userAgent)) {
-	   //on load adjust the sticky with
-	   var window_width = $(window).width();
-	   $('.social-wrapper.mobile').width(window_width);
+	//  if (/iPhone/i.test(navigator.userAgent)) {
+	//    //on load adjust the sticky with
+	//    var window_width = window.innerWidth;
+	//    $('.social-wrapper.mobile').width(window_width);
+   //
+	//    //add bing to resize so that it resizes for iphone
+	//    $(window).smartresize(function () {
+	// 	var window_width = window.innerWidth;
+	// 	$('.social-wrapper.mobile').width(window_width);
+	//    });
+	//  }
 
-	   //add bing to resize so that it resizes for iphone
-	   $(window).smartresize(function () {
-		var window_width = $(window).width();
-		$('.social-wrapper.mobile').width(window_width);
-	   });
-	 }
-
-	 if ($(window).width() >= 480) {
+	 if (window.innerWidth >= 480) {
 	   delete tp_social_config.services.whatsapp;
 	 }
 
 	 /* Make sticky when screensize is greater than 768px */
 	 $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function () {
-	   if ($(window).width() > 980) {
+	   if (window.innerWidth > 980) {
 		$('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
 	   }
 	 });
@@ -126,7 +126,7 @@
 	 });
 
 	 setInterval(function () {
-	   if (didScroll && $(window).width() < 768) {
+	   if (didScroll && window.innerWidth < 768) {
 		var delta = 5;
 		hasScrolled(delta);
 		didScroll = false;
@@ -159,7 +159,7 @@
     var main_menu = $('.header-wrapper');
 
     //mobile
-    if ($(window).width() <= mobile) {
+    if (window.innerWidth <= mobile) {
 	 $(social_menu).addClass('mobile');
 	 $(main_menu).addClass('mobile');
 	 $(social_menu).removeClass('desktop');
