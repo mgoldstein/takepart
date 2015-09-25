@@ -40,7 +40,9 @@ function tp_dfp_node_presave($node) {
         // Generate variables array
         $variables = array();
         if($headline = field_get_items('node', $node, 'field_promo_headline')){
-          $variables['headline'] = $headline[0]['value'];
+          $headline = $headline[0]['value'];
+          $headline = strlen($headline) > 50 ? substr($headline,0,50)."..." : $headline;
+          $variables['headline'] = $headline;
         }else{
           $variables['headline'] = $node->title;
         }
@@ -119,13 +121,10 @@ function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId,
     $templateCreative->advertiserId = $advertiserId;
     $templateCreative->creativeTemplateId = $creativeTemplateId;
 
-    $creativeWidth = (int)variable_get('dfp_template_width', 300);
-    $creativeHeight = (int)variable_get('dfp_template_height', 250);
+    $creativeWidth = 150;
+    $creativeHeight = 175;
     // Set the creative size.
-    $templateCreative->size = new Size($creativeWidth, $creativeHeight, false);
-
-    // Set the creative to be native
-    $templateCreative->isNativeEligible = TRUE;
+    $templateCreative->size = new Size($creativeWidth, $creativeHeight, TRUE); //creates a ratio from the width and height values
 
     // Create the Headline variable value.
     $headlineVariableValue = new StringCreativeTemplateVariableValue();
