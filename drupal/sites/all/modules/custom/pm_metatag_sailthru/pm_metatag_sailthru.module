@@ -3,7 +3,7 @@
 /**
  * Implements hook_ctools_plugin_api().
  */
-function pm_metatag_tap_ctools_plugin_api($owner, $api) {
+function pm_metatag_sailthru_ctools_plugin_api($owner, $api) {
   if ($owner == 'metatag' && $api == 'metatag') {
     return array('version' => 1);
   }
@@ -12,17 +12,17 @@ function pm_metatag_tap_ctools_plugin_api($owner, $api) {
 /**
  * Implements hook_theme().
  */
-function pm_metatag_tap_theme() {
-  $info['metatag_tab'] = array(
+function pm_metatag_sailthru_theme() {
+  $info['metatag_sailthru'] = array(
     'render element' => 'element',
   );
   return $info;
 }
 
 /**
- * Theme callback for a TAP  meta tag.
+ * Theme callback for SailThru metatag.
  */
-function theme_metatag_tab($variables) {
+function theme_metatag_sailthru($variables) {
   $element = &$variables['element'];
   element_set_attributes($element, array(
     '#name' => 'property',
@@ -32,4 +32,4 @@ function theme_metatag_tab($variables) {
   return theme('html_tag', $variables);
 }
 
-include_once('pm_metatag_tap.token.inc');
+include_once('pm_metatag_sailthru.token.inc');
