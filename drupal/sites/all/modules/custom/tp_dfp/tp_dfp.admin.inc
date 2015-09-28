@@ -29,7 +29,7 @@ function tp_dfp_admin_config($form, &$form_state, $form_id){
   $form['tp_dfp']['creative_height'] = array(
     '#type' => 'textfield',
     '#title' => t('Creative Height'),
-    '#default_value' => isset($tp_dfp['creative_height']) ? $tp_dfp['creative_height'] : '180',
+    '#default_value' => isset($tp_dfp['creative_height']) ? $tp_dfp['creative_height'] : '200',
     '#size' => 60,
     '#maxlength' => 128,
   );
