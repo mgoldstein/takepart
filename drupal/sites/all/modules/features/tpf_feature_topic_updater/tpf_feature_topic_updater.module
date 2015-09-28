@@ -4,4 +4,4 @@
  * Code for the TakePart Topic Updater feature.
  */
 
-include_once 'takepart_topic_updater.features.inc';
+include_once 'tpf_feature_topic_updater.features.inc';

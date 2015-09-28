@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * takepart_topic_updater.views_default.inc
+ * tpf_feature_topic_updater.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function takepart_topic_updater_views_default_views() {
+function tpf_feature_topic_updater_views_default_views() {
   $export = array();
 
   $view = new view();
