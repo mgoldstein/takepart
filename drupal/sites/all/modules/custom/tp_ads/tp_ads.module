@@ -200,8 +200,10 @@ function _tp_ads_insert_more_on_takepart() {
   //variable for more on takepart overrid
   $value['ad_slot'] = $override['ad_slot'];
   $value['ad_gpd_id'] = $override['ad_gpd_id'];
-  $value['width'] = $override['ad_width'];
-  $value['height'] = $override['ad_height'];
+
+  //Height and width values from DFP module (tp_dfp)
+  $value['width'] = variable_get('dfp_creative_width', '152');
+  $value['height'] = variable_get('dfp_creative_height', '180');
   
   //calls theme to create markup
   $script = theme('tp_ads_script', array(
