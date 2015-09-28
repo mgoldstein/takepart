@@ -15,6 +15,7 @@
     @include breakpoint($breakpoint-tablet) {
       padding-bottom: 0;
       border-bottom: none;
+      margin-bottom: 8px;
     }
   }
   .toggle-menu{
@@ -37,6 +38,7 @@
     float: left;
     img{
       width: 100%;
+      vertical-align: middle;
     }
     @include breakpoint($breakpoint-tablet){
       width: auto;
@@ -97,7 +99,7 @@
     @include breakpoint($breakpoint-tablet){
       float: right;
       clear: right;
-      margin-top: 10px;
+      margin-top: 13px;
       form{
         display: block;
         float: right;
