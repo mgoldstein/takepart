@@ -122,20 +122,6 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
     '#default_value' => $tp_more_on_takepart_last['ad_gpd_id'],
   );
 
-  $form['tp_more_on_takepart_last_item']['ad_width'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Ad Width'),
-    '#description' => t('Such as 320'),
-    '#default_value' => $tp_more_on_takepart_last['ad_width'],
-  );
-
-  $form['tp_more_on_takepart_last_item']['ad_height'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Ad Height'),
-    '#description' => t('Such as 50'),
-    '#default_value' => $tp_more_on_takepart_last['ad_height'],
-  );
-
 	return system_settings_form($form);
 }
 
