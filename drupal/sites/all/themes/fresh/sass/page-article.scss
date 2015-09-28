@@ -53,8 +53,22 @@
       margin-left: 15px;
     }
   }
+  aside.social.social-vertical {
+    @include breakpoint($breakpoint-phablet){
+      position: absolute;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      position: static;
+    }
+  }
   article{
     color: #3A3A3A;
+    @include breakpoint($breakpoint-phablet) {
+      margin-left: 54px;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      margin-left: 8.33%;
+    }
     h1.title, #more-on-takepart h2{
       color: $black;
     }
@@ -146,6 +160,11 @@ blockquote.pullquote {
       margin: 0 auto;
     }
   }
+}
+
+/****** Override for sticky **********/
+.social.sticky{
+  position: fixed !important;
 }
 
 body {
