@@ -29,8 +29,16 @@
        }
      }
    }
+   
  }
 
+ #Native_Promo_Unit {
+   float: none;
+   h5.ad-label {
+	display:none;
+   }
+ }
+ 
 .leaderboard {
   .desktop {
     display: none;
