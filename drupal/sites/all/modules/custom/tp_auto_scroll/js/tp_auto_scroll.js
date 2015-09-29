@@ -22,8 +22,8 @@
         var $window = $(window),
           elTop = $('#next-article').offset().top;
         var window_bottom = $window.scrollTop() + $window.height();
-        var last_article = $('.article-wrapper:last').height() / 2;
-
+        //var last_article = $('.article-wrapper:last').height() / 2;
+        var last_article = $('.fresh-content-wrapper:last').height() / 2;
         /* when the page scrolls to within 480px of #next-article */
         if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
 
@@ -139,7 +139,7 @@
               if (typeof tp_og_url != 'undefined' && tp_og_url != current_path) {
                 /** Update the URL **/
                 tp_url_changer(tp_og_url, tp_og_title);
-                
+
                 /**
                  *  check to ensure that the reach.js is fully ready
                  */
@@ -187,7 +187,7 @@
       window.history.pushState({}, url, url);
     document.title = title;
   }
-  
+
   /**
    *  @function:
    *    window function that is used to update the social links

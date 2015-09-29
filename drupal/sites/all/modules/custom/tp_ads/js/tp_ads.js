@@ -41,7 +41,7 @@
 
     //this is for the mobile article insert. ad will come when within 300 px of the viewport
     tp_add_article_ads(window.mobile_ads, 300, 'article_ads', 1);
-    
+
     //only fire code if setting exists
     if (typeof Drupal.settings.tp_ad_more_on_takepart != 'undefined') {
       window.more_on_takepart_ads = Drupal.settings.tp_ad_more_on_takepart;
@@ -105,7 +105,6 @@
       var article_offset = $(this).offset();
       article_offset.bottom = article_offset.top + $(this).height();
       var article_wrapper = $(this).parent();
-
       //adds class based if article is active in view
       if ((article_offset.top < viewport.bottom + viewport_offset && article_offset.bottom > viewport.bottom)) {
         //add the class if it's not there
@@ -168,8 +167,16 @@
       window.tp_remove_ads(this);
     });
 
+    $('.video-wrapper.not-ad-active').each(function() {
+      window.tp_remove_ads(this);
+    });
+
     //now process and add the ads back into the active article
     $('.article-wrapper.ad-active').each(function() {
+      window.tp_insert_ads(this, selector, ads_object, id, show_ads);
+    });
+
+    $('.video-wrapper.ad-active').each(function() {
       window.tp_insert_ads(this, selector, ads_object, id, show_ads);
     });
   }
@@ -313,13 +320,13 @@
       viewport.bottom = viewport.top + win.height();
 
       var selector_item_offset = $('.tp-ad', this).offset();
-      
+
       //override to check if tp-ad is undefined if so then try tp-ad-wrapper
       if (typeof selector_item_offset == 'undefined') {
         height = $('.tp-ad-wrapper', this).height();
         selector_item_offset = $('.tp-ad-wrapper', this).offset();
         selector_item_offset.bottom = selector_item_offset.top + height;
-        
+
         //removes the ad only when out of view
         if (selector_item_offset.bottom < viewport.top || selector_item_offset.top > viewport.bottom) {
           $('.tp-ad-wrapper', this).remove();
@@ -328,8 +335,8 @@
           $(this).removeClass('tp-ad-processed');
         }
         return;
-      }      
-      
+      }
+
       selector_item_offset.bottom = selector_item_offset.top + height;
 
       //removes the ad only when out of view
