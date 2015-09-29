@@ -25,7 +25,7 @@ function pm_metatag_sailthru_metatag_config_default_alter(array &$configs) {
       case 'node':
         $config->config += array(
           'sailthru.keywords' => array(
-            'value' => '[sailthru_metatags:tags_type:{node:nid}]'
+            'value' => '[sailthru_metatags:tags_type]'
           ),
         );
         break;
