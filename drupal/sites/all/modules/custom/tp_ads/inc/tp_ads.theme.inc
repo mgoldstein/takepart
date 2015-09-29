@@ -31,7 +31,7 @@ function theme_tp_ads_script($variables) {
       '#value' => $script,
       '#attributes' => array(
         'id' => $variables['ad_gpd_id'],
-        'style' => (($variables['class'] == 'leaderboard desktop') ? '' : $styles) . 'margin: 0 auto;',
+        'style' => (($variables['class'] == 'leaderboard desktop') ? '' : $styles),
         'class' => $variables['class'],
   ))));
   
