@@ -57,7 +57,7 @@ function pm_metatag_tap_metatag_config_default_alter(array &$configs) {
 function pm_metatag_tap_metatag_info() {
   $groups = array(
     'custom-tab' => array(
-      'label' => t('TAB Custom'),
+      'label' => t('TAP Custom'),
       'form' => array('#weight' => 50),
     ),
     'tp-analytics' => array(
@@ -68,8 +68,8 @@ function pm_metatag_tap_metatag_info() {
 
   $tags = array(
     'tab-keywords' => array(
-      'label' => t('TAB Keywords'),
-      'description' => t('Keywords for TAB platform recommendations'),
+      'label' => t('TAP Keywords'),
+      'description' => t('Keywords for TAP platform recommendations'),
       'class' => 'DrupalTextMetaTag',
       'group' => 'custom-tab',
       'element' => array('#theme' => 'metatag_tab'),

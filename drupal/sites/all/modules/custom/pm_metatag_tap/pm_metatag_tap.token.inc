@@ -2,8 +2,8 @@
 
 function pm_metatag_tap_token_info() {
   $info['types']['tab_metatags'] = array(
-    'name' => t('Custom TAB'),
-    'description' => t("Custom tokens for TAB metatags"),
+    'name' => t('Custom TAP'),
+    'description' => t("Custom tokens for TAP metatags"),
   );
   $info['tokens']['tab_metatags']['topic_freetags'] = array(
     'name' => t('Topic and Free Tags'),
