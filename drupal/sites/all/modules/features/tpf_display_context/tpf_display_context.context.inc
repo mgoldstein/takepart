@@ -1594,12 +1594,11 @@ function tpf_display_context_context_default_contexts() {
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'tp4_video';
-  $context->description = 'Right rail content and ad positions for TP4 videos and playlists';
+  $context->description = 'Right rail content and ad positions for TP4 playlists only.';
   $context->tag = 'TP4';
   $context->conditions = array(
     'node' => array(
       'values' => array(
-        'video' => 'video',
         'video_playlist' => 'video_playlist',
       ),
       'options' => array(
@@ -1653,7 +1652,7 @@ function tpf_display_context_context_default_contexts() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Right rail content and ad positions for TP4 videos and playlists');
+  t('Right rail content and ad positions for TP4 playlists only.');
   t('TP4');
   $export['tp4_video'] = $context;
 
