@@ -33,7 +33,7 @@
 @import "modules/series-nav";
 @import "base/modules/infographics";
 @import "base/modules/modals";
-
+$BP8: 800px;
 /*****************
  * Article Page
  *****************/
@@ -48,13 +48,13 @@
 .article-wrapper{
   position: relative;
   .sticky-wrapper{
-    @include breakpoint($breakpoint-phablet){
+    @include breakpoint($BP8){
       position: absolute;
       margin-left: 15px;
     }
   }
   aside.social.social-vertical {
-    @include breakpoint($breakpoint-phablet){
+    @include breakpoint($BP8){
       position: absolute;
     }
     @include breakpoint($breakpoint-desktop) {
