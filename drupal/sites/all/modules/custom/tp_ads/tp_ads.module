@@ -226,7 +226,7 @@ function _tp_ads_insert_more_on_takepart() {
   //populate the data for the more on takepart settings
   $more_on_takepart[] = $value;
   $more_on_takepart_wrapper['ads'] = $more_on_takepart;
-  $more_on_takepart_wrapper['selector'] = '.tp-more-on-takepart .more-on-takepart.override';
+  $more_on_takepart_wrapper['selector'] = '.tp-more-on-takepart .tp-more__article.override';
   
   //add js settings
   drupal_add_js(array('tp_ad_more_on_takepart' => $more_on_takepart_wrapper), 'setting');
