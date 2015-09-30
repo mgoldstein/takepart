@@ -316,24 +316,31 @@ function tp_more_on_takepart_block_view($delta = '') {
 
       $promoted_video = array();
       $promoted_nodes = array(
-        '#prefix' => '<div class="row">',
-        '#suffix' => '</div>',
-      );
-
+          '#prefix' => '<div class="row">',
+          '#suffix' => '</div>',
+        );
 
       if ($featured_video_node) {
         $promoted_video['#markup'] = theme('tp_more_on_takepart_video', array(
-          'classes' => array('col-xxs-12', 'col-md-6', 'tp-more__video'),
+          'classes' => array('mot-right', 'tp-more__video'),
           'node' => $featured_video_node,
           'cta_link' => check_plain(url(variable_get('more_on_takepart_video_cta_link', 'videos'))),
           'cta_text' => variable_get('more_on_takepart_video_cta_text', 'Watch more videos'),
         ));
 
         $promoted_nodes = array(
-          '#prefix' => '<div class="col-md-6"><div class="row">',
-          '#suffix' => '</div></div>',
+          '#prefix' => '<div class="mot-left">',
+          '#suffix' => '</div>',
         );
       }
+
+      //Height and width values from DFP module (tp_dfp)
+      $promoted_nodes_css =
+        '#more-on-takepart .tp-more__article {
+          width:'. variable_get('dfp_creative_width', '152'). 'px;
+          height:'. variable_get('dfp_creative_height', '200'). 'px;
+          }';
+      drupal_add_css($promoted_nodes_css, 'inline');
 
       foreach(array_merge($related, $promoted) as $markup) {
         $promoted_nodes[] = array(
@@ -368,7 +375,7 @@ function tp_more_on_takepart_tp_more_on_takepart_promoted_alter(&$promoted) {
 				'#tag' => 'div',
 				'#value' => '',
 				'#attributes' => array(
-					'class' => array('more-on-takepart', 'override', 'col-xxs-6'),
+					'class' => array('tp-more__article', 'override'),
 		))));
 	}
 }

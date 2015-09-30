@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_update_N()
+ */
+function tp_more_on_takepart_update_7000(){
+
+  // Enable the entityreference_autocomplete module
+  module_enable(array('entityreference_autocomplete'));
+
+}
