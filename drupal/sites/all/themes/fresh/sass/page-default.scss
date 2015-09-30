@@ -38,7 +38,8 @@
 /*****************
  * Article Page
  *****************/
-.fresh-content-wrapper{
+.article-wrapper,
+.video-wrapper {
   position: relative;
   .sticky-wrapper{
     @include breakpoint($breakpoint-phablet){

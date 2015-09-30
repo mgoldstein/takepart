@@ -117,7 +117,7 @@
     jQuery('body #footer-wrapper').after($a);
 
     //only do on fresh theme with article-wrapper & video wrapper
-    if ($('.article-wrapper' , '.video-wrapper').length !== 0) {
+    if ($('.article-wrapper').length !== 0 || $('.video-wrapper').length !== 0) {
       jQuery('body #footer-wrapper').after($a);
       //variables
       var background_image = new Image();

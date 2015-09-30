@@ -8,7 +8,7 @@
  */
 ?>
 
-<div class="fresh-content-wrapper">
+<!-- <div class="fresh-content-wrapper"> -->
   <?php
     $node_type = $variables['type'];
     $node_type = ($node_type == 'openpublish_article') ? 'article' : $node_type; ?>
@@ -81,7 +81,7 @@
    <?php print $variables['more_on_takepart']; ?>
     <?php endif; ?>
   </article>
-</div></div>
+</div><!-- </div> -->
 
 <?php if (!empty($variables['auto-scroll'])): ?>
   <?php print $variables['auto-scroll']; ?>

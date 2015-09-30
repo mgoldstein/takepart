@@ -513,8 +513,11 @@ figure.align-left {
     margin-right: 0px;
   }
 }
-.fresh-content-wrapper article{
-  @include breakpoint($breakpoint-phablet){
-    padding: 0 31px;
+.article-wrapper,
+.video-wrapper {
+  article{
+    @include breakpoint($breakpoint-phablet){
+      padding: 0 31px;
+    }
   }
 }

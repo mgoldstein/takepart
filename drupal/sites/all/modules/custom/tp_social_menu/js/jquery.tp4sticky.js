@@ -19,7 +19,7 @@
     options = $.extend({}, defaults, opts);
 
     //overrides the stopat for fresh theme
-    if ($('.fresh-content-wrapper').length !== 0) {
+    if ($('.article-wrapper').length !== 0 || $('.video-wrapper').length !== 0) {
       options.stopAt = '.footer';
     }
 
