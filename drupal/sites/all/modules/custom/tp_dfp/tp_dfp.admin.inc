@@ -20,7 +20,7 @@ function tp_dfp_admin_config($form, &$form_state, $form_id){
   $form['tp_dfp']['creative_width'] = array(
     '#type' => 'textfield',
     '#title' => t('Creative Width'),
-    '#default_value' => isset($tp_dfp['creative_width']) ? $tp_dfp['creative_width'] : '152',
+    '#default_value' => isset($tp_dfp['creative_width']) ? $tp_dfp['creative_width'] : '145',
     '#size' => 60,
     '#maxlength' => 128,
   );

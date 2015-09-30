@@ -123,7 +123,7 @@ function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId,
 
     // Set the creative size.
     $tp_dfp_vars = variable_get('tp_dfp', array());
-    $creativeWidth = isset($tp_dfp_vars['creative_width']) ? $tp_dfp_vars['creative_width'] : '152';
+    $creativeWidth = isset($tp_dfp_vars['creative_width']) ? $tp_dfp_vars['creative_width'] : '145';
     $creativeHeight = isset($tp_dfp_vars['creative_height']) ? $tp_dfp_vars['creative_height'] : '200';
     $templateCreative->size = new Size($creativeWidth, $creativeHeight, false);
 
