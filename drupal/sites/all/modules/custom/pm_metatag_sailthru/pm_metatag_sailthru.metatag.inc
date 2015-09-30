@@ -12,19 +12,19 @@ function pm_metatag_sailthru_metatag_config_default_alter(array &$configs) {
     switch ($config->instance) {
       case 'global':
         $config->config += array(
-          'sailthru.keywords' => array(),
+          'sailthru.tags' => array(),
         );
         break;
 
       case 'global:frontpage':
         $config->config += array(
-          'sailthru.keywords' => array(),
+          'sailthru.tags' => array(),
         );
         break;
 
       case 'node':
         $config->config += array(
-          'sailthru.keywords' => array(
+          'sailthru.tags' => array(
             'value' => '[sailthru_metatags:tags_type]'
           ),
         );
@@ -32,13 +32,13 @@ function pm_metatag_sailthru_metatag_config_default_alter(array &$configs) {
 
       case 'taxonomy_term':
         $config->config += array(
-          'sailthru.keywords' => array(),
+          'sailthru.tags' => array(),
         );
         break;
 
       case 'user':
         $config->config += array(
-          'sailthru.keywords' => array(),
+          'sailthru.tags' => array(),
         );
         break;
     }
@@ -57,7 +57,7 @@ function pm_metatag_sailthru_metatag_info() {
   );
 
   $tags = array(
-    'sailthru.keywords' => array(
+    'sailthru.tags' => array(
       'label' => t('SailThru Keywords'),
       'description' => t('Keywords for SailThru platform'),
       'class' => 'DrupalTextMetaTag',
