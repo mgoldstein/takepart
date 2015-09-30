@@ -375,7 +375,7 @@ function tp_more_on_takepart_tp_more_on_takepart_promoted_alter(&$promoted) {
 				'#tag' => 'div',
 				'#value' => '',
 				'#attributes' => array(
-					'class' => array('tp-more__article', 'override'),
+					'class' => array('more-on-takepart', 'tp-more__article', 'override'),
 		))));
 	}
 }
