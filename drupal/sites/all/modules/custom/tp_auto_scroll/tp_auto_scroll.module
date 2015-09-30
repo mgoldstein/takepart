@@ -34,6 +34,12 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
 
     $node->disable_social = TRUE;
 
+    /*
+    *This will belong to the node object. In Preprocesses you can see this by
+    *looking for variable['autoscroll_load']
+    */
+    $node->autoscroll_load = TRUE;
+
     /* Get the Node View */
     $node_view = node_view($node, $view_mode);
     $node_view_wrapper = drupal_render($node_view);
@@ -270,4 +276,17 @@ function tp_auto_scroll_token_info() {
     ),
   );
   return $info;
+}
+
+/**
+ *  Implements hook_tp_video_player_config_alter().
+ */
+function tp_auto_scroll_tp_video_player_config_alter(&$config, &$display, &$file) {
+  //Get the current path
+  $cur_path = current_path();
+
+  //If the current path is an autoscroll url(autoscroll/%/%node) than we will force auto start
+  if(strpos($cur_path, 'autoscroll/') !== FALSE) {
+    $config['autostart'] = FALSE;
+  }
 }
