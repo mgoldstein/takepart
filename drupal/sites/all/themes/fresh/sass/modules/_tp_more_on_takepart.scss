@@ -4,10 +4,12 @@
   clear: both;
 
   .mot-left, .mot-right{
-    width: 70%;
-    margin: 0 auto;
+    width: 300px;
     clear: left;
     text-align: center;
+    @include breakpoint($breakpoint-phablet) {
+      margin: 0 auto;
+    }
     @include breakpoint($breakpoint-desktop) {
       width: 50%;
       float: left;
@@ -30,8 +32,11 @@
 
   .tp-more__article {
     margin-bottom: 10px;
-    padding: 0 5px;
+    padding: 0;
     display: inline-block;
+    @include breakpoint($breakpoint-phablet) {
+      padding: 0 5px;
+    }
     @include breakpoint($breakpoint-desktop) {
       display: block;
       float: left;
