@@ -66,7 +66,7 @@
   //Add unpublished class
   $published = $result['url']['options']['entity']->status;
 ?>
-<div class="col-xxs-6 tp-more__article<?php print (!$published) ? " unpublished" : ""; ?>">
+<div class="tp-more__article<?php print (!$published) ? " unpublished" : ""; ?>">
 	<a href="<?php echo url($result['url']['path']); ?>" class="<?php echo $result['promo_type']; ?>">
 		<div class="thumbnail">
 		    <?php print $result['thumbnail']; ?>
