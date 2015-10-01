@@ -1477,6 +1477,12 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-10',
         ),
+	   'boxes-ga_mobile_320x50_relative' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50_relative',
+          'region' => 'header',
+          'weight' => '-7',
+        ),
         'boxes-ga_ros_interstitial' => array(
           'module' => 'boxes',
           'delta' => 'ga_ros_interstitial',
