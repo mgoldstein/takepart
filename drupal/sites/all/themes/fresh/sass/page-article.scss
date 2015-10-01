@@ -33,7 +33,7 @@
 @import "modules/series-nav";
 @import "base/modules/infographics";
 @import "base/modules/modals";
-$BP8: 800px;
+
 /*****************
  * Article Page
  *****************/
@@ -48,13 +48,13 @@ $BP8: 800px;
 .article-wrapper{
   position: relative;
   .sticky-wrapper{
-    @include breakpoint($BP8){
+    @include breakpoint($breakpoint-phablet){
       position: absolute;
       margin-left: 15px;
     }
   }
   aside.social.social-vertical {
-    @include breakpoint($BP8){
+    @include breakpoint($breakpoint-phablet){
       position: absolute;
     }
     @include breakpoint($breakpoint-desktop) {
@@ -165,6 +165,11 @@ blockquote.pullquote {
 /****** Override for sticky **********/
 .social.sticky{
   position: fixed !important;
+}
+
+/****** Hide the social until loaded **********/
+aside.social.social-vertical {
+  display: none;
 }
 
 body {

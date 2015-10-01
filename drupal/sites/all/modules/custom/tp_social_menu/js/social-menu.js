@@ -88,14 +88,16 @@
 	   delete tp_social_config.services.whatsapp;
 	 }
 
-	 /* Make sticky when screensize is greater than 800px */
+	 //Just Make Sticky. Will handle Mobile through CSS
 	 $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function () {
 
        $('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
-	   
+
 	 });
 
 	 window.tp_initSocialMenu();
+   //Show the social after everything is loaded.
+   $('.social').show();
   }
   };
 
@@ -126,7 +128,7 @@
 	 });
 
 	 setInterval(function () {
-	   if (didScroll && window.innerWidth < 800) {
+	   if (didScroll && window.innerWidth < 480) {
 		var delta = 5;
 		hasScrolled(delta);
 		didScroll = false;
@@ -154,12 +156,12 @@
   }
 
   window.tp_initSocialMenu = function () {
-    var mobile = 800;
+    var mobile = 480;
     var social_menu = $('.social-wrapper');
     var main_menu = $('.header-wrapper');
 
     //mobile
-    if (window.innerWidth <= mobile) {
+    if (window.innerWidth <= mobile || (typeof window.orientation != 'undefined' && window.orientation != 0 && window.innerHeight < 500)) {
   	 $(social_menu).addClass('mobile');
   	 $(main_menu).addClass('mobile');
   	 $(social_menu).removeClass('desktop');

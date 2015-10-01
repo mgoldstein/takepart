@@ -128,6 +128,41 @@ body {
         }
       }
     }
+    //Mobile Landscape under 500px in height
+    @media only screen AND (max-height: 500px) AND (orientation: landscape) {
+      .parent-social-menu {
+        list-style: none;
+      }
+
+      aside.social.social-vertical {
+        width: 0px;
+        float: none;
+        margin-top: 0;
+        li {
+          &.share,
+          &.takeaction {
+            float: left;
+            width: 70%;
+            text-align: center;
+            padding-top: 0;
+            color: white;
+            height: 43px;
+            display: block;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            h3.share-headline {
+              display: none;
+            }
+          }
+
+          &.takeaction {
+            width: 30%;
+            position: static;
+          }
+        }
+      }
+    }
   }
 }
 
