@@ -508,7 +508,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => 'article',
       ),
       'og:title' => array(
-        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):] ',
+        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
       'og:description' => array(
         'value' => '[node:field_page_subhead]',
@@ -520,10 +520,10 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '@TakePart',
       ),
       'twitter:title' => array(
-        'value' => '[current-page:title][f:bool:{node:field_sponsored}: (Promoted):] ',
+        'value' => '[current-page:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
       'sailthru.tags' => array(
-        'value' => '[sailthru_metatags:tags_type] ',
+        'value' => '[sailthru_metatags:tags_type]',
       ),
       'tab-keywords' => array(
         'value' => '[tab_metatags:topic_freetags:{node:field_topic}, {node:field_free_tag}]',
@@ -536,13 +536,13 @@ function tpf_config_metatag_metatag_export_default() {
     'instance' => 'node:feature_article',
     'config' => array(
       'og:title' => array(
-        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):] ',
+        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
       'og:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
       'twitter:title' => array(
-        'value' => '[current-page:title][f:bool:{node:field_sponsored}: (Promoted):] ',
+        'value' => '[current-page:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
@@ -573,7 +573,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[node:field_article_subhead]',
       ),
       'og:image:width' => array(
-        'value' => '[tp_og_image:thumbnail_width:{node:nid}] ',
+        'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
       ),
       'og:image:height' => array(
         'value' => '[tp_og_image:thumbnail_height:{node:nid}]',
@@ -582,7 +582,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
       'twitter:title' => array(
-        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):] ',
+        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
