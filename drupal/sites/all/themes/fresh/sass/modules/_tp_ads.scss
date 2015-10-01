@@ -2,43 +2,46 @@
  *  Mobile first scss
  */
 .tp-ad-visual {
-	background-color: blue;
+  background-color: blue;
 }
 
 .more-on-takepart {
-	&.override {
-		.tp-ad-wrapper {
-			margin: 0;
-		}
-	}
+  &.override {
+    .tp-ad-wrapper {
+	 margin: 0;
+    }
+  }
 }
 
 .tp-ad-wrapper {
   margin-top: 5px;
-   @include breakpoint($breakpoint-phablet) {
-     margin: 20px;
-     &.ad-right {
-       float: right;
-       clear: right;
-       margin: 20px 0 20px 30px;
-     }
+  .dfp-ad-tag {
+    margin: 0 auto;
+  }
 
-     .tp-ad {
-       &:after {
-         clear: none;
-       }
-     }
-   }
-   
- }
+  @include breakpoint($breakpoint-phablet) {
+    margin: 20px;
+    &.ad-right {
+	 float: right;
+	 clear: right;
+	 margin: 20px 0 20px 30px;
+    }
 
- #Native_Promo_Unit {
-   float: none;
-   h5.ad-label {
-	display:none;
-   }
- }
- 
+    .tp-ad {
+	 &:after {
+	   clear: none;
+	 }
+    }
+  }
+}
+
+#Native_Promo_Unit {
+  float: none;
+  h5.ad-label {
+    display:none;
+  }
+}
+
 .leaderboard {
   .desktop {
     display: none;
@@ -64,7 +67,7 @@
     @include breakpoint($breakpoint-phablet) {
       margin: 20px auto;
     }
-    
+
     .tp-main-ad-wrapper {
       .leaderboard.desktop {
         margin-left: auto;
