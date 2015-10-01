@@ -32,7 +32,7 @@ function theme_tp_ads_script($variables) {
       '#attributes' => array(
         'id' => $variables['ad_gpd_id'],
         'style' => (($variables['class'] == 'leaderboard desktop') ? '' : $styles),
-        'class' => $variables['class'],
+        'class' => $variables['class'] . ' dfp-ad-tag',
   ))));
   
   //output wrapper
