@@ -18,7 +18,9 @@ function _pm_metatag_sailthru_build($node) {
     foreach ($topics as $topic) {
 	 $tid = $topic['tid'];
 	 $term = taxonomy_term_load($tid);
-	 $tag_array[] = str_replace(" ", "-", $term->name);
+	 $stripamp = str_replace(" & ", " ", $term->name);
+	 $fname = str_replace(" ", "-", $stripamp);
+	 $tag_array[] = $fname;
     }
   }
 
@@ -27,7 +29,9 @@ function _pm_metatag_sailthru_build($node) {
     foreach ($freetags as $tag) {
 	 $tid = $tag['tid'];
 	 $term = taxonomy_term_load($tid);
-	 $tag_array[] = str_replace(" ", "-", $term->name);
+	 $stripamp = str_replace(" & ", " ", $term->name);
+	 $fname = str_replace(" ", "-", $stripamp);
+	 $tag_array[] = $fname;
     }
   }
 
