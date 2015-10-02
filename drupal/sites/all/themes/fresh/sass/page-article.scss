@@ -167,6 +167,11 @@ blockquote.pullquote {
   position: fixed !important;
 }
 
+/****** Hide the social until loaded **********/
+aside.social.social-vertical {
+  display: none;
+}
+
 body {
   &.node-preview {
     .node-unpublished {

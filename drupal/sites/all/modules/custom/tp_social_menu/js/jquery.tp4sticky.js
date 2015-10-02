@@ -44,7 +44,21 @@
             stickyElLowestPoint = bottom_el;
 
         // add/remove the sticky class
-        if (window.scrollY > ($wrap.offset().top - options.offset)) {
+        // Check if close to the top
+        // Check if in mobile state to prevent jumping mobile menu
+        if ((window.scrollY > ($wrap.offset().top - options.offset))
+          //Width is greater than 480px
+          && (window.innerWidth > 480)
+          //If no orientation meaning not tablet
+          && ((typeof window.orientation == 'undefined')
+            //OR landscape and the height is greater 500px
+            || ((typeof window.orientation != 'undefined' && window.orientation != 0)
+              && (window.innerHeight >= 499))
+            //OR portrait and the width is within 480px
+            || ((typeof window.orientation != 'undefined' && window.orientation == 0)
+              && (window.innerWidth > 480))
+          )
+        ) {
           if (!isSticky) {
             adjustWrapper();
             isSticky || $stickyEl.addClass(options.stickyClass);

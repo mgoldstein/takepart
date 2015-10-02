@@ -84,19 +84,21 @@
 	//    });
 	//  }
 
-	 if (window.innerWidth >= 480) {
+	 if (window.innerWidth >= 800) {
 	   delete tp_social_config.services.whatsapp;
 	 }
 
-	 /* Make sticky when screensize is greater than 768px */
+	 //Just Make Sticky. Will handle Mobile through CSS
 	 $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function () {
-	   if (window.innerWidth > 980) {
-		$('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
-	   }
+
+       $('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
+
 	 });
 
 	 window.tp_initSocialMenu();
-    }
+   //Show the social after everything is loaded.
+   $('.social').show();
+  }
   };
 
   /*
@@ -104,14 +106,14 @@
    */
   Drupal.behaviors.socialMenuBehaviors = {
     attach: function (context, settings) {
-	 //trigger tp_initSocialMenu
-	 $(document).ready(function () {
-	   window.tp_initSocialMenu();
+  	 //trigger tp_initSocialMenu
+  	 $(document).ready(function () {
+  	   window.tp_initSocialMenu();
 
-	   $(window).smartresize(function () {
-		window.tp_initSocialMenu();
-	   });
-	 });
+  	   $(window).smartresize(function () {
+  		    window.tp_initSocialMenu();
+  	   });
+  	 });
     }
   }
 
@@ -126,7 +128,7 @@
 	 });
 
 	 setInterval(function () {
-	   if (didScroll && window.innerWidth < 768) {
+	   if (didScroll && window.innerWidth < 480) {
 		var delta = 5;
 		hasScrolled(delta);
 		didScroll = false;
@@ -159,16 +161,16 @@
     var main_menu = $('.header-wrapper');
 
     //mobile
-    if (window.innerWidth <= mobile) {
-	 $(social_menu).addClass('mobile');
-	 $(main_menu).addClass('mobile');
-	 $(social_menu).removeClass('desktop');
-	 $(main_menu).removeClass('desktop');
+    if (window.innerWidth <= mobile || (typeof window.orientation != 'undefined' && window.orientation != 0 && window.innerHeight < 500)) {
+  	 $(social_menu).addClass('mobile');
+  	 $(main_menu).addClass('mobile');
+  	 $(social_menu).removeClass('desktop');
+  	 $(main_menu).removeClass('desktop');
     } else {
-	 $(social_menu).removeClass('mobile');
-	 $(main_menu).removeClass('mobile');
-	 $(social_menu).addClass('desktop');
-	 $(main_menu).addClass('desktop');
+  	 $(social_menu).removeClass('mobile');
+  	 $(main_menu).removeClass('mobile');
+  	 $(social_menu).addClass('desktop');
+  	 $(main_menu).addClass('desktop');
     }
   };
 })(jQuery, Drupal, this, this.document);
