@@ -1471,17 +1471,17 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-9',
         ),
+        'boxes-ga_mobile_320x50_relative' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_mobile_320x50_relative',
+          'region' => 'header',
+          'weight' => '-7',
+        ),
         'tp4_support-tp4_footer' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_footer',
           'region' => 'footer',
           'weight' => '-10',
-        ),
-	   'boxes-ga_mobile_320x50_relative' => array(
-          'module' => 'boxes',
-          'delta' => 'ga_mobile_320x50_relative',
-          'region' => 'header',
-          'weight' => '-7',
         ),
         'boxes-ga_ros_interstitial' => array(
           'module' => 'boxes',
@@ -1507,9 +1507,9 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-8',
         ),
-        'boxes-box-1104adce' => array(
+        'boxes-box-66c05d6f' => array(
           'module' => 'boxes',
-          'delta' => 'box-1104adce',
+          'delta' => 'box-66c05d6f',
           'region' => 'sidebar',
           'weight' => '-7',
         ),
