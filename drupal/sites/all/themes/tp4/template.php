@@ -220,34 +220,51 @@ function tp4_preprocess_page(&$variables) {
 
   
   if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
-    $campaign_nid = $variables['node']->field_campaign_reference['und'][0]['target_id'];
-    $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_nid);
 
-    $s = field_get_items('node', $variables['node'], 'field_sponsored');
-    if($s[0]['tid']) {
-    	drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
+    // Make sure the Campaign Page references a Campaign
+    if($campaign_ref = field_get_items('node', $variables['node'], 'field_campaign_reference')) {
+      $campaign_ref = node_load($campaign_ref[0]['target_id']);
+    }else {
+      return;
+    }
+
+    //Mobile Menu
+    $variables['campaign_menu'] = tp4_campaign_megamenu($campaign_ref->nid);
+
+    // Sponsored Content
+    if($s = field_get_items('node', $variables['node'], 'field_sponsored')) {
+      drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
     }
 
     /* Check to see if Campaign Menu is toggled off */
-    if($campaign_ref = field_get_items('node', $variables['node'], 'field_campaign_reference')){
-      $campaign_ref = node_load($campaign_ref[0]['target_id']);
-      $disable = field_get_items('node', $campaign_ref, 'field_campaign_disable_menu');
-      if(empty($disable) || $disable[0]['value'] != 1){
-        $header = module_invoke('tp_campaigns', 'block_view', 'tp_campaigns_hero');
-        $campaign_menu = theme('html_tag', array(
-          'element' => array(
-            '#tag' => 'div',
-            '#value' => $header['content'],
-            '#attributes' => array(
-              'class' => 'block',
-              'id' => 'block-tp-campaigns-tp-campaigns-hero'
-            )
+    $disable = field_get_items('node', $campaign_ref, 'field_campaign_disable_menu');
+    if(empty($disable) || $disable[0]['value'] != 1){
+
+      // Add StickUp.js for the fixed header
+      // TODO: stickup isn't necessary
+      drupal_add_js(array('tp_campaigns' => array(
+        'stickupParts' => (object) $variables['anchor_tags'],
+      )), 'setting');
+      drupal_add_js(drupal_get_path('theme', 'tp4'). '/js/vendor/stickUp/stickUp.js');
+
+
+
+      $header = module_invoke('tp_campaigns', 'block_view', 'tp_campaigns_hero');
+      $campaign_menu = theme('html_tag', array(
+        'element' => array(
+          '#tag' => 'div',
+          '#value' => $header['content'],
+          '#attributes' => array(
+            'class' => 'block',
+            'id' => 'block-tp-campaigns-tp-campaigns-hero'
           )
-        ));
-        $variables['page']['header']['campaign_header']['#markup'] = $campaign_menu;
-      }
+        )
+      ));
+      $variables['page']['header']['campaign_header']['#markup'] = $campaign_menu;
     }
   }
+
+
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
 

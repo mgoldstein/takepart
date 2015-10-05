@@ -7,9 +7,6 @@
  * @see https://drupal.org/node/1728148
  */
 
-  drupal_add_js(array('tp_campaigns' => array(
-      'stickupParts' => (object) $variables['anchor_tags'],
-    )), 'setting');
 ?>
 <div id="tp-drawers" class="snap-drawers scrollable">
     <div class="snap-drawer snap-drawer-left">  
