@@ -164,11 +164,11 @@
 
     //removes the old ads from not active articles first so that we can reuse them
     $('.article-wrapper.not-ad-active').each(function() {
-      window.tp_remove_ads(this);
+      window.tp_remove_ads(this, id);
     });
 
     $('.video-wrapper.not-ad-active').each(function() {
-      window.tp_remove_ads(this);
+      window.tp_remove_ads(this, id);
     });
 
     //now process and add the ads back into the active article
@@ -302,11 +302,20 @@
    *    Global function that removes ads based on selector passed
    *    Additional logic to keep height and width based on what comes in so that it doesnt jump
    */
-  window.tp_remove_ads = function(parent_selector) {
+  window.tp_remove_ads = function(parent_selector, id) {
+    var last_inserted = id
     //does for each tp-ad-processed in the selector
     $('.tp-ad-processed', parent_selector).each(function() {
       //refresh ads if once removed
-      googletag.pubads().refresh();
+
+      if ($('.article-wrapper.ad-active article.active').length != 0) {
+        //googletag.pubads().refresh([TP3_ROS_Leaderboard_728x90]);
+        //googletag.pubads().refresh([TP3_ROS_RR_ATF_300x250]);
+        googletag.pubads().refresh();
+      }
+      else if ($('.video-wrapper.ad-active article.active').length != 0) {
+        googletag.pubads().refresh();
+      }
 
       //defines variable to set width and height
       var height = $('.tp-ad', this).height();
