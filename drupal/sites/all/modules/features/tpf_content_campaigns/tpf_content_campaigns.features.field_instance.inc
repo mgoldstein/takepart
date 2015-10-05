@@ -7119,7 +7119,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'background-video',
-      'file_extensions' => 'mpr4',
+      'file_extensions' => 'mp4',
       'filefield_paths' => array(
         'active_updating' => 0,
         'file_name' => array(
