@@ -309,12 +309,14 @@
       //refresh ads if once removed
 
       if ($('.article-wrapper.ad-active article.active').length != 0) {
-        //googletag.pubads().refresh([TP3_ROS_Leaderboard_728x90]);
-        //googletag.pubads().refresh([TP3_ROS_RR_ATF_300x250]);
-        googletag.pubads().refresh();
+        if ( $(window).scrollTop() >= $('.article-wrapper.ad-active article.active').offset().top ) {
+          googletag.pubads().refresh();
+        }
       }
       else if ($('.video-wrapper.ad-active article.active').length != 0) {
-        googletag.pubads().refresh();
+        if ( $(window).scrollTop() >= $('.video-wrapper.ad-active article.active').offset().top ) {
+          googletag.pubads().refresh();
+        }
       }
 
       //defines variable to set width and height
