@@ -138,7 +138,7 @@
 			 targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
 		    }
               else if (v.indexOf('[') >= 0) {
-                targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
+                targets += 'googletag.pubads().setTargeting(\'' + i + '\', '+ v + ');';
               }
               else {
                 targets += 'googletag.pubads().setTargeting(\'' + i + '\', \'' + addslashes(v) + '\');';
@@ -258,7 +258,7 @@
 			 targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
 		    }
               else if (v.indexOf('[') >= 0) {
-                targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
+                targets += 'googletag.pubads().setTargeting(\'' + i + '\', '+ v + ');';
               }
               else {
                 targets += 'googletag.pubads().setTargeting(\'' + i + '\', \'' + addslashes(v) + '\');';
