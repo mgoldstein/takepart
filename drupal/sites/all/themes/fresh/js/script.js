@@ -176,6 +176,24 @@
     }
   };
 
+
+  Drupal.behaviors.scrollUp = {
+    attach: function(context, settings) {
+      var lastScrollTop = 0;
+      window.scrollUp = false;
+      $(window).scroll(function(event){
+         var st = $(this).scrollTop();
+         if (st > lastScrollTop){
+           window.scrollUp = false;
+         } else {
+           window.scrollUp = true;
+         }
+         lastScrollTop = st;
+      });
+    }
+  };
+
+
    /**
    * Handle TP Infographics
    */
