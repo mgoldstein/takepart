@@ -610,6 +610,7 @@ body.campaign-display{
         position: relative;
     }
     #main{
+
         // float: left;
         width: 100%;
         overflow: hidden;
@@ -1812,4 +1813,33 @@ body.campaign-display {
 body.campaign-display:not(.node-type-campaign-page) header#header{
   max-width: 1000px;
   margin: 0 auto;
+}
+
+
+
+
+/* Zen Grids kill FF */
+#header:before, #header:after,
+#preface:before,
+#preface:after,
+#main:before,
+#main:after,
+#suffix:before,
+#suffix:after,
+#footer:before,
+#footer:after {
+  content: none;
+  display: block;
+}
+
+#header:after,
+#preface:after,
+#main:after,
+#suffix:after,
+#footer:after {
+  clear: none;
+}
+
+#main, #suffix{
+  clear: both;
 }
