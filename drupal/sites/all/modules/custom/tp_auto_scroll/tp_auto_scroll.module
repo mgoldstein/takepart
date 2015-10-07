@@ -71,9 +71,9 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
 /**
  * Implements hook_query_TAG_alter()
  */
-function tp_auto_scroll_query_not_sponsored_tagged_alter(QueryAlterableInterface $query) {
-  $query->leftJoin('field_data_field_sponsored', 'o', 'node.nid = o.entity_id AND o.entity_type = :entity_type');
-  $query->isNull('o.field_sponsored');
+function tp_auto_scroll_query_not_sponsored_alter(QueryAlterableInterface $query) {
+  $query->leftJoin('field_data_field_sponsored', 'o', 'node.nid = o.entity_id');
+  $query->isNull('o.field_sponsored_tid');
 }
 
 /**
