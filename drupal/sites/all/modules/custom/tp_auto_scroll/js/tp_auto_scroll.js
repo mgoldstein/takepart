@@ -167,7 +167,11 @@
 
                 if(!window.scrollUp) {
                   googletag.pubads().refresh([TP3_ROS_Leaderboard_728x90]);
-                  googletag.pubads().refresh([TP3_ROS_RR_ATF_300x250]);
+                  //Check whether the 300x250 Ads exists.
+                  //TODO: Once we change the overal ad logic, the Ad names might get updated.
+                  if ($('.article-wrapper.ad-active #TP3_ROS_RR_ATF_300x250').length != 0) {
+                    googletag.pubads().refresh([TP3_ROS_RR_ATF_300x250]);
+                  }
                 }
               }
 
