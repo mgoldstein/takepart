@@ -12,7 +12,7 @@ function fresh_preprocess_node(&$variables, $hook) {
   $node = $variables['node'];
   $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
   if ($variables['view_mode'] == 'full') {
-    if ($node->type == 'openpublish_article' || $node->type == 'video') {
+    if ($node->type == 'openpublish_article' || $node->type == 'video' || $node->type == 'video_playlist') {
       $variables['theme_hook_suggestion'] = 'node__autoload__' . $variables['view_mode'];
       $function = __FUNCTION__ . '__autoload';
       if (function_exists($function)) {
@@ -120,6 +120,14 @@ function fresh_preprocess_node__autoload(&$variables) {
     if (!empty($video)) {
       $variables['media'] = '<div class="main-media">';
       $variables['media'] .= $video;
+      $variables['media'] .= '</div>';
+    }
+  }
+  else if ($node_type == 'video_playlist') {
+    $video_playlist = drupal_render(field_view_field('node', $variables['node'], 'field_video_list' , 'video_playlist'));
+    if (!empty($video_playlist)) {
+      $variables['media'] = '<div class="main-media">';
+      $variables['media'] .= $video_playlist;
       $variables['media'] .= '</div>';
     }
   }

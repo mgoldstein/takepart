@@ -164,21 +164,27 @@
 
     //removes the old ads from not active articles first so that we can reuse them
     $('.article-wrapper.not-ad-active').each(function() {
-      window.tp_remove_ads(this, id);
+      window.tp_remove_ads(this);
     });
 
     $('.video-wrapper.not-ad-active').each(function() {
-      window.tp_remove_ads(this, id);
+      window.tp_remove_ads(this);
+    });
+    $('.video_playlist-wrapper.not-ad-active').each(function() {
+      window.tp_remove_ads(this);
     });
 
     //now process and add the ads back into the active article
     $('.article-wrapper.ad-active').each(function() {
       window.tp_insert_ads(this, selector, ads_object, id, show_ads);
     });
-
     $('.video-wrapper.ad-active').each(function() {
       window.tp_insert_ads(this, selector, ads_object, id, show_ads);
     });
+    $('.video_playlist-wrapper.ad-active').each(function() {
+      window.tp_insert_ads(this, selector, ads_object, id, show_ads);
+    });
+
   }
 
   /**
@@ -302,14 +308,19 @@
    *    Global function that removes ads based on selector passed
    *    Additional logic to keep height and width based on what comes in so that it doesnt jump
    */
-  window.tp_remove_ads = function(parent_selector, id) {
-    var last_inserted = id
+  window.tp_remove_ads = function(parent_selector) {
+
     //does for each tp-ad-processed in the selector
     $('.tp-ad-processed', parent_selector).each(function() {
       //refresh ads if once removed
 
       if ($('.article-wrapper.ad-active article.active').length != 0) {
         if ( $(window).scrollTop() >= $('.article-wrapper.ad-active article.active').offset().top ) {
+          googletag.pubads().refresh();
+        }
+      }
+      else if ($('.video-wrapper.ad-active article.active').length != 0) {
+        if ( $(window).scrollTop() >= $('.video-wrapper.ad-active article.active').offset().top ) {
           googletag.pubads().refresh();
         }
       }
