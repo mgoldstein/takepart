@@ -36,7 +36,21 @@
         });
       };
 
-      $(window).on('scroll', function(e) {
+      $(window).on('touchend touchmove scroll', function(e) {
+        //Disable clicks of the share links when touch scrolling
+        //This does it by adding a disable class
+        //This should stop the Phantom Tumbler clicks
+        if(e.type == 'touchmove') {
+          $('.tp-social a').each(function(){
+            $(this).addClass('disabled');
+          });
+        }
+        if(e.type == 'touchend') {
+          $('.tp-social a').each(function(){
+            $(this).removeClass('disabled');
+          });
+        }
+
         //adding a conditional check to ensure that it doesn't stop the page.
         //this functionality may not be in used anymore.
         var bottom_el = ($bottomEl.offset() != null) ? $bottomEl.offset().top - $stickyEl.outerHeight(true) : $stickyEl.outerHeight(true);
