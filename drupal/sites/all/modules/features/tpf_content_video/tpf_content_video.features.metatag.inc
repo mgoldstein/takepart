@@ -20,14 +20,17 @@ function tpf_content_video_metatag_export_default() {
       'abstract' => array(
         'value' => '[node:field_article_subhead]',
       ),
+      'canonical' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
       'fb:admins' => array(
         'value' => 1327833247,
       ),
       'og:type' => array(
         'value' => '',
       ),
-      'og:title' => array(
-        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
+      'og:url' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
       'og:description' => array(
         'value' => '[node:field_article_subhead]',
@@ -49,6 +52,9 @@ function tpf_content_video_metatag_export_default() {
       ),
       'twitter:card' => array(
         'value' => 'player',
+      ),
+      'twitter:url' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
       'twitter:title' => array(
         'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):] ',
