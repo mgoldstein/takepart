@@ -201,6 +201,9 @@
       display: block;
     }
   }
+  .item-list {
+    min-height: 40px;
+  }
 }
 
 body.mobile-search-show #header form {
