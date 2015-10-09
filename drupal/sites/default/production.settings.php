@@ -42,3 +42,15 @@ ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED);
 // Shared Assets
 $conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets/';
 
+// Solr Server settings
+$conf['search_api_solr_overrides'] = array(
+  'takepart_solr_production' => array(
+    'name' => t('TakePart SOLR (Production settings)'),
+    'options' => array(
+      'host' => '10.2.5.50', // new host
+	 // 'host' => '10.2.5.30',  old host 
+      'port' => 8080,
+      'path' => '/solr/takepart_core',
+    ),
+  ),
+);
