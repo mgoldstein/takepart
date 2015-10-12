@@ -80,7 +80,6 @@ features[context][] = tp4_global
 features[context][] = tp4_global_not_front
 features[context][] = tp4_photo_gallery
 features[context][] = tp4_topic
-features[context][] = tp4_video
 features[ctools][] = boxes:box:1
 features[ctools][] = context:context:3
 features[ctools][] = field_group:field_group:1

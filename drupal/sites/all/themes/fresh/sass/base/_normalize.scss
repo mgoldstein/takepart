@@ -514,7 +514,8 @@ figure.align-left {
   }
 }
 .article-wrapper,
-.video-wrapper {
+.video-wrapper,
+.video_playlist-wrapper {
   article{
     @include breakpoint($breakpoint-phablet){
       padding: 0 31px;

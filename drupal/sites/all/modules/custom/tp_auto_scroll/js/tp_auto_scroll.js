@@ -166,8 +166,20 @@
                 }
 
                 if(!window.scrollUp) {
-                  googletag.pubads().refresh([TP3_ROS_Leaderboard_728x90]);
-                  googletag.pubads().refresh([TP3_ROS_RR_ATF_300x250]);
+                  //LeaderBoard Update on Desktop
+                  //TODO: Once we change the overal ad logic, the Ad names and this snippet will be removed.
+                  if ($(window).width() > 480) {
+                    googletag.pubads().refresh([TP3_ROS_Leaderboard_728x90]);
+                  }
+                  else {
+                    //mobile leaderboard update
+                    googletag.pubads().refresh([TP_Mobile_320x50]);
+                  }
+                  //Check whether the 300x250 Ads exists.
+                  //TODO: Once we change the overal ad logic, the Ad names might get updated.
+                  if ($('.article-wrapper.ad-active #TP3_ROS_RR_ATF_300x250').length != 0) {
+                    googletag.pubads().refresh([TP3_ROS_RR_ATF_300x250]);
+                  }
                 }
               }
 
