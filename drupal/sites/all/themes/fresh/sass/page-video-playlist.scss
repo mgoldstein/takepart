@@ -73,6 +73,16 @@
         height: 0;
         padding-bottom: 56.25%;
       }
+      .video-description {
+        @include breakpoint($breakpoint-mobile){
+          font-size: 15px;
+          line-height: 16px;
+        }
+        @include breakpoint($breakpoint-tablet){
+          font-size: 20px;
+          line-height: 27px;
+        }
+      }
     }
     .series-navigation {
    a {
