@@ -80,19 +80,33 @@ class InlineContentTapEmbed extends InlineContentReplacementController {
     //Alignment
     if ($align = field_get_items('inline_content', $replacement, 'field_ic_tap_widget_alignment')) {
       $align = reset($align);
-      $attributes['class'][] = 'align-' . $align['value'];
+      $wrapper_attr = array(
+        'class' => array('tap-action-wrapper')
+      );
+      $wrapper_attr['class'][] = 'align-' . $align['value'];
     } else {
-      $attributes['class'][] = 'align-center';
+      $wrapper_attr['class'][] = 'align-center';
     }
 
     //Generate tap-embed div
-    $markup = theme('html_tag', array(
+    $tapEmbed = theme('html_tag', array(
       'element' => array(
         '#tag' => 'div',
         '#value' => '',
         '#attributes' => $attributes
       )
     ));
+
+    //Generate Wrapper
+    $markup = theme('html_tag', array(
+      'element' => array(
+        '#tag' => 'div',
+        '#value' => $tapEmbed,
+        '#attributes' => $wrapper_attr
+      )
+    ));
+
+
 
     //Return the replacement
     $content['#replacements'][] = array(

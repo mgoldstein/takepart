@@ -48,13 +48,7 @@ function takeaction_init() {
     'weight' => 0,
   ));
   $tapEmbed_script = variable_get('tap_embed_script');
-  drupal_add_js($tapEmbed_script, array(
-    'type' => 'inline',
-    'group' => JS_LIBRARY,
-    'every_page' => TRUE,
-    'scope' => 'footer',
-    'weight' => 1
-  ));
+  drupal_add_js($tapEmbed_script, 'external');
   $awareness_script = variable_get('takeaction_awareness_script');
   drupal_add_js($awareness_script, array(
     'type' => 'file',
