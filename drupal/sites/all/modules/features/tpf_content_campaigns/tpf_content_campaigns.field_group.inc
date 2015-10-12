@@ -1387,12 +1387,12 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '14',
+    'weight' => '13',
     'children' => array(
-      0 => 'field_topic',
-      1 => 'field_series',
-      2 => 'field_free_tag',
-      3 => 'field_author',
+      0 => 'field_author',
+      1 => 'field_free_tag',
+      2 => 'field_series',
+      3 => 'field_topic',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
