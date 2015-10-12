@@ -21,6 +21,7 @@ $conf += array(
   'takeaction_publisher_id' => 'd84909c52edcceb20c7bba62052b1b01',
   'takeaction_widget_script' => '/assets/publisher.js?v=3.7',
   'takeaction_awareness_script' => "//{$conf['takeaction_domain']}/assets/awareness.js",
+  'tap_embed_script' => "https://{$conf['tapembed_domain']}/embed.js?publisher=d84909c52edcceb20c7bba62052b1b01",
 );
 
 // Define the global application settings.

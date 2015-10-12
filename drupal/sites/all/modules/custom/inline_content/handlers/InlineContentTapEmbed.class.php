@@ -45,22 +45,14 @@ class InlineContentTapEmbed extends InlineContentReplacementController {
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
-    //Set URL parameters
-    $parameters = array();
-
     //Set default attributes
-    $attributes = array(
-      'class' => array('tap-embed')
-    );
-
-    //Publisher ID
-    $publisher_id = variable_get('takeaction_publisher_id', '');
-    $parameters['publisher'] = $publisher_id;
+    $attributes = array();
+    $attributes['class'][] = 'tap-action';
 
     //Expanded
     if ($form_style = field_get_items('inline_content', $replacement, 'field_ic_expanded')) {
-      if (!empty($form_style['value'])) {
-        $parameters['expanded'] = 'TRUE';
+      if ($form_style[0]['value']) {
+        $attributes['data-expanded'] = 'TRUE';
       }
     }
 
@@ -69,21 +61,20 @@ class InlineContentTapEmbed extends InlineContentReplacementController {
       $action = reset($action);
       $mapping = SignatureActionMapping::loadByNodeId($action['nid']);
       if ($mapping !== FALSE) {
-        $parameters['actionId'] = $mapping->tapID();
+        $attributes['data-action-id'] = $mapping->tapID();
       }
-
     }
 
     //Title Override
     if ($title = field_get_items('inline_content', $replacement, 'field_ic_label')) {
       $title = reset($title);
-      $parameters['title'] = $title['value'];
+      $attributes['data-widget-title'] = $title['value'];
     }
 
     //Action URL
     if ($article_url = field_get_items('inline_content', $replacement, 'field_ic_article_url')) {
       $article_url = reset($article_url);
-      $parameters['url'] = $article_url['url'];
+      $attributes['data-article-url'] = $article_url['url'];
     }
 
     //Alignment
@@ -94,29 +85,11 @@ class InlineContentTapEmbed extends InlineContentReplacementController {
       $attributes['class'][] = 'align-center';
     }
 
-    //Generate the URL
-    $tapembed_domain = variable_get('tapembed_domain', '');
-    $url = url('https://'. $tapembed_domain. '/embed.js', array(
-      'query' => $parameters
-    ));
-
-    //Generate the script tag
-    $script = theme('html_tag', array(
-      'element' => array(
-        '#tag' => 'script',
-        '#value' => '',
-        '#attributes' => array(
-          'type' => 'text/javascript',
-          'src' => $url,
-        )
-      )
-    ));
-
-    //Generate wrapper
+    //Generate tap-embed div
     $markup = theme('html_tag', array(
       'element' => array(
         '#tag' => 'div',
-        '#value' => $script,
+        '#value' => '',
         '#attributes' => $attributes
       )
     ));
