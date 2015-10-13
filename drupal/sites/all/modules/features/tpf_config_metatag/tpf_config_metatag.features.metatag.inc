@@ -618,6 +618,122 @@ function tpf_config_metatag_metatag_export_default() {
     ),
   );
 
+  // Exported Metatag config instance: node:video.
+  $config['node:video'] = array(
+    'instance' => 'node:video',
+    'config' => array(
+      'description' => array(
+        'value' => '[node:field_article_subhead]',
+      ),
+      'abstract' => array(
+        'value' => '[node:field_article_subhead]',
+      ),
+      'canonical' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'fb:admins' => array(
+        'value' => 1327833247,
+      ),
+      'og:type' => array(
+        'value' => '',
+      ),
+      'og:url' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'og:description' => array(
+        'value' => '[node:field_article_subhead]',
+      ),
+      'og:video' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-url}:]',
+      ),
+      'og:video:secure_url' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-secure-url}:]',
+      ),
+      'og:video:width' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-width}:]',
+      ),
+      'og:video:height' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-height}:]',
+      ),
+      'og:video:type' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:application/x-shockwave-flash:]',
+      ),
+      'twitter:card' => array(
+        'value' => 'player',
+      ),
+      'twitter:url' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'twitter:title' => array(
+        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):] ',
+      ),
+      'twitter:description' => array(
+        'value' => '[node:field_article_subhead]',
+      ),
+      'twitter:image:src' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
+      ),
+      'twitter:player' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-src}:]',
+      ),
+      'twitter:player:width' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-width}:]',
+      ),
+      'twitter:player:height' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-height}:]',
+      ),
+      'twitter:player:stream' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-file-secure-url}:]',
+      ),
+      'twitter:player:stream:content_type' => array(
+        'value' => 'video/mp4',
+      ),
+    ),
+  );
+
+  // Exported Metatag config instance: node:video_playlist.
+  $config['node:video_playlist'] = array(
+    'instance' => 'node:video_playlist',
+    'config' => array(
+      'canonical' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'fb:admins' => array(
+        'value' => 1327833247,
+      ),
+      'og:url' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'twitter:card' => array(
+        'value' => 'player',
+      ),
+      'twitter:url' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'twitter:description' => array(
+        'value' => '[node:field_article_subhead]',
+      ),
+      'twitter:image:src' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
+      ),
+      'twitter:player' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-src}:]',
+      ),
+      'twitter:player:width' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-width}:]',
+      ),
+      'twitter:player:height' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-height}:]',
+      ),
+      'twitter:player:stream' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-file-secure-url}:]',
+      ),
+      'twitter:player:stream:content_type' => array(
+        'value' => 'video/mp4',
+      ),
+    ),
+  );
+
   // Exported Metatag config instance: taxonomy_term.
   $config['taxonomy_term'] = array(
     'instance' => 'taxonomy_term',
