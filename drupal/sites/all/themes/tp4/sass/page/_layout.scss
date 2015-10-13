@@ -250,14 +250,18 @@ body {
   }
   &.hide {
     display: none;
-    visibility: hidden; 
+    visibility: hidden;
   }
 }
 
+//override the block styles on topic pages
+.vocabulary-topic #block-boxes-ga-mobile-320x50-relative {
+  margin-bottom: 0
+}
 
 // Mobile ad position bottom sticky
 #block-boxes-ga-mobile-320x50 {
-  @include breakpoint($breakpoint-mobile) {  
+  @include breakpoint($breakpoint-mobile) {
     display: block;
     visibility: visible;
     position: fixed;
@@ -309,6 +313,6 @@ body {
   }
   &.hide {
     display: none;
-    visibility: hidden; 
+    visibility: hidden;
   }
 }
