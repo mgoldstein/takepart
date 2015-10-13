@@ -390,6 +390,9 @@ aside.inline-content + p{
       padding: 0;
     }
   }
+  .author ul.horizontal-menu li {
+    vertical-align: top;
+  }
   img{
     margin: 0 auto;
   }
