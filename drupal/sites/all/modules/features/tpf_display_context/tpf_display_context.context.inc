@@ -1167,6 +1167,39 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'tp4_climate_change';
+  $context->description = 'Context for TP4 Climate Change landing page';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'free-tags/climate-change' => 'free-tags/climate-change',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-mod_tracking' => array(
+          'module' => 'boxes',
+          'delta' => 'mod_tracking',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Context for TP4 Climate Change landing page');
+  t('TP4');
+  $export['tp4_climate_change'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tp4_dtm';
   $context->description = 'Expose DTM';
   $context->tag = 'DTM';
@@ -1185,6 +1218,39 @@ function tpf_display_context_context_default_contexts() {
   t('DTM');
   t('Expose DTM');
   $export['tp4_dtm'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_environment';
+  $context->description = 'Context for TP4 Environment landing page';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'environment' => 'environment',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-mod_tracking' => array(
+          'module' => 'boxes',
+          'delta' => 'mod_tracking',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Context for TP4 Environment landing page');
+  t('TP4');
+  $export['tp4_environment'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */

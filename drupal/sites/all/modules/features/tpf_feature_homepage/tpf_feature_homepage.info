@@ -22,6 +22,7 @@ dependencies[] = views
 features[box][] = ga_homepage_header
 features[box][] = ga_homepage_top_right
 features[box][] = ga_hp_1x1_background
+features[box][] = mod_tracking
 features[ccl][] = Edit Homepage Columns
 features[ccl][] = Edit Overrides
 features[ccl][] = Edit Photo Galleries Panel

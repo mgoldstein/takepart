@@ -44,6 +44,12 @@ function tpf_feature_homepage_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-9',
         ),
+        'boxes-mod_tracking' => array(
+          'module' => 'boxes',
+          'delta' => 'mod_tracking',
+          'region' => 'footer',
+          'weight' => '-8',
+        ),
         'tp4_support-tp4_dont_miss' => array(
           'module' => 'tp4_support',
           'delta' => 'tp4_dont_miss',
