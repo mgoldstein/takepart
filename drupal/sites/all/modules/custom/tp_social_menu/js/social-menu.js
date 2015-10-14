@@ -156,7 +156,7 @@
   }
 
   window.tp_initSocialMenu = function () {
-    var mobile = 480;
+    var mobile = 479;
     var social_menu = $('.social-wrapper');
     var main_menu = $('.header-wrapper');
 
