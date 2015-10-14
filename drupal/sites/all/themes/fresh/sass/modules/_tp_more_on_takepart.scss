@@ -6,7 +6,6 @@
   .mot-left, .mot-right{
     width: 300px;
     clear: left;
-    text-align: center;
     @include breakpoint($breakpoint-phablet) {
       margin: 0 auto;
     }
