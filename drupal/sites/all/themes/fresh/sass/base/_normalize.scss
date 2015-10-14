@@ -11,6 +11,9 @@ body{
   line-height: 27px;
   letter-spacing: -.01em;
   -webkit-font-smoothing: antialiased;
+  //this is for the mint border across all devices on fresh
+  border-top: 5px solid $light-mint;
+
 }
 h1{
   font-family: $AdelleSans;
@@ -171,9 +174,6 @@ img{
 }
 .img-circle{
   border-radius: 50%;
-}
-#page-wrapper{
-  border-top: 5px solid $light-mint;
 }
 
 /*
