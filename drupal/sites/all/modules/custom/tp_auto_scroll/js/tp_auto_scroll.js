@@ -165,10 +165,6 @@
                   window.newTapWidgets = false;
                 }
 
-                if(!window.scrollUp) {
-                  googletag.pubads().refresh([TP3_ROS_Leaderboard_728x90]);
-                  googletag.pubads().refresh([TP3_ROS_RR_ATF_300x250]);
-                }
               }
 
             }else{

@@ -100,27 +100,32 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
   );
 
 	//override section for last item
-	$tp_more_on_takepart_last = variable_get('tp_more_on_takepart_last_item', array());
-	$form['tp_more_on_takepart_last_item'] = array(
-		'#type' => 'fieldset',
-		'#tree' => TRUE,
-		'#description' => t('Enter an ad slot to override the last slot'),
-		'#title' => t('Override last slot for more on takepart')
-	);
+	//Loop through the 5 different autoload ads
+  for($ad = 0; $ad < TP_ADS_NO_AUTOLOAD; $ad++) {
+		$tp_more_on_takepart_last = variable_get('tp_more_on_takepart_last_item_'.$ad, array());
+		$form['tp_more_on_takepart_last_item']['tp_more_on_takepart_last_item_'.$ad] = array(
+			'#type' => 'fieldset',
+			'#tree' => TRUE,
+			'#description' => t('Enter an ad slot to override the last slot'),
+			'#title' => t('Override last slot for more on takepart for Ad '.($ad+1)),
+			'#collapsible' => TRUE,
+			'#collapsed' => TRUE
+		);
 
-	$form['tp_more_on_takepart_last_item']['ad_slot'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Ad Slot'),
-    '#description' => t('Such as TP_Mobile_320x50'),
-    '#default_value' => $tp_more_on_takepart_last['ad_slot'],
-  );
+		$form['tp_more_on_takepart_last_item']['tp_more_on_takepart_last_item_'.$ad]['ad_slot'] = array(
+	    '#type' => 'textfield',
+	    '#title' => t('Ad Slot'),
+	    '#description' => t('Such as TP_Mobile_320x50'),
+	    '#default_value' => $tp_more_on_takepart_last['ad_slot'],
+	  );
 
-  $form['tp_more_on_takepart_last_item']['ad_gpd_id'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Ad GPD ID'),
-    '#description' => t('Such as div-gpt-ad-1382144784236-0a'),
-    '#default_value' => $tp_more_on_takepart_last['ad_gpd_id'],
-  );
+	  $form['tp_more_on_takepart_last_item']['tp_more_on_takepart_last_item_'.$ad]['ad_gpd_id'] = array(
+	    '#type' => 'textfield',
+	    '#title' => t('Ad GPD ID'),
+	    '#description' => t('Such as div-gpt-ad-1382144784236-0a'),
+	    '#default_value' => $tp_more_on_takepart_last['ad_gpd_id'],
+	  );
+	}
 
 	return system_settings_form($form);
 }
@@ -367,7 +372,7 @@ function tp_more_on_takepart_block_view($delta = '') {
  *	Implements hook_tp_more_on_takepart_promoted_alter().
  */
 function tp_more_on_takepart_tp_more_on_takepart_promoted_alter(&$promoted) {
-	$override = variable_get('tp_more_on_takepart_last_item', array());
+	$override = variable_get('tp_more_on_takepart_last_item_0', array());
 	//replace item 3 (last item)
 	if (!empty($override['ad_slot']) && isset($promoted[3])) {
 		$promoted[3]['#markup'] = theme('html_tag', array(

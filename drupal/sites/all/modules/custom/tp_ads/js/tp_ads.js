@@ -77,8 +77,8 @@
    *
    *  @param:
    *    ads_object - object containing the ads
-   *         ads_object['selector] = jquery selector
-   *         ads_object.ads[0]['javascript'] = markup
+   *         ads_object[{Content Number}]['selector] = jquery selector
+   *         ads_object.ads[{Content Number}][0]['javascript'] = markup
    *    viewport_offset - the viewport offset to fire
    *    id - used to differiated the selectors
    *    show_ads - shows the ads starting from
@@ -87,14 +87,13 @@
     //variable
     var view_offset = viewport_offset;
     var selector = ads_object['selector'];
-    var tp_count = 'tp_ad_' + id;
-    var tp_count_insert = tp_count + '_insert';
 
     //conditional checks to ensure that
     var auto_scroll_status = !(Drupal.settings.tpAutoScroll == undefined);
 
     //does for each article thats on the page
     $('article').each(function(k, value) {
+
       //variable
       var win = $(window);
       var viewport = {
@@ -106,17 +105,22 @@
       article_offset.bottom = article_offset.top + $(this).height();
       var article_wrapper = $(this).parent();
       //adds class based if article is active in view
-      if ((article_offset.top < viewport.bottom + viewport_offset && article_offset.bottom > viewport.bottom)) {
+      if (article_offset.top < viewport.bottom && article_offset.bottom > viewport.bottom) {
         //add the class if it's not there
         if (!$(article_wrapper).hasClass('ad-active')) {
           //adds correct classes
+          //Only 1 Ad Active at a time
+          $('.ad-active').each(function(){
+            $(this).removeClass('ad-active');
+          });
+          //This will make sure ours keep the ad active class
           $(article_wrapper).removeClass('not-ad-active').addClass('ad-active');
         }
       }
       //removes the class if the article is not active within the viewport
       else {
         //marks this article as not active and remove ads to reuse
-        $(article_wrapper).removeClass('ad-active').addClass('not-ad-active').each(function() {});
+        $(article_wrapper).removeClass('ad-active').addClass('not-ad-active');
       }
 
       //area for updating
@@ -134,9 +138,9 @@
           $.each(Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'], function(i, v) {
             targets += ' googletag.pubads().clearTargeting(\'' + i + '\');';
             if (v !== '""') {
-		    if (i === 'PageTitle') {
-			 targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
-		    }
+      		    if (i === 'PageTitle') {
+      			    targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
+      		    }
               else if (v.indexOf('[') >= 0) {
                 targets += 'googletag.pubads().setTargeting(\'' + i + '\', '+ v + ');';
               }
@@ -158,27 +162,19 @@
         });
       }
       else {
-        $(this).removeClass('tp_ad_targetting-processed');
+        //$(this).removeClass('tp_ad_targetting-processed');
       }
+
+      //now process and add the ads back into the active article
+      $('.article-wrapper.ad-active').each(function() {
+        window.tp_insert_ads(this, ads_object[k]['selector'], ads_object[k], id, show_ads);
+      });
+
+      $('.video-wrapper.ad-active').each(function() {
+        window.tp_insert_ads(this, ads_object[k]['selector'], ads_object[k], id, show_ads);
+      });
     });
 
-    //removes the old ads from not active articles first so that we can reuse them
-    $('.article-wrapper.not-ad-active').each(function() {
-      window.tp_remove_ads(this, id);
-    });
-
-    $('.video-wrapper.not-ad-active').each(function() {
-      window.tp_remove_ads(this, id);
-    });
-
-    //now process and add the ads back into the active article
-    $('.article-wrapper.ad-active').each(function() {
-      window.tp_insert_ads(this, selector, ads_object, id, show_ads);
-    });
-
-    $('.video-wrapper.ad-active').each(function() {
-      window.tp_insert_ads(this, selector, ads_object, id, show_ads);
-    });
   }
 
   /**
@@ -233,11 +229,6 @@
               if ($(article).is(':first-of-type')) {
                 selector_item = $(current_ad.desktop.selector);
               }
-              //otherwise we remove the old one to reuse
-              else {
-                $('.tp-ad', current_ad.desktop.selector).remove();
-                $(current_ad.desktop.selector).removeClass('tp-ad-processed');
-              }
             }
           }
 
@@ -254,9 +245,9 @@
           $.each(Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'], function(i, v) {
             targets += ' googletag.pubads().clearTargeting(\'' + i + '\');';
             if (v !== '""') {
-		    if (i === 'PageTitle') {
-			 targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
-		    }
+      		    if (i === 'PageTitle') {
+      			    targets += 'googletag.pubads().setTargeting(\'' + i + '\', "'+ addslashes(v) + '");';
+      		    }
               else if (v.indexOf('[') >= 0) {
                 targets += 'googletag.pubads().setTargeting(\'' + i + '\', '+ v + ');';
               }
@@ -294,72 +285,6 @@
           });
         }
       }
-    });
-  }
-
-  /**
-   *  @function:
-   *    Global function that removes ads based on selector passed
-   *    Additional logic to keep height and width based on what comes in so that it doesnt jump
-   */
-  window.tp_remove_ads = function(parent_selector, id) {
-    var last_inserted = id
-    //does for each tp-ad-processed in the selector
-    $('.tp-ad-processed', parent_selector).each(function() {
-      //refresh ads if once removed
-
-      if ($('.article-wrapper.ad-active article.active').length != 0) {
-        if ( $(window).scrollTop() >= $('.article-wrapper.ad-active article.active').offset().top ) {
-          googletag.pubads().refresh();
-        }
-      }
-      else if ($('.video-wrapper.ad-active article.active').length != 0) {
-        if ( $(window).scrollTop() >= $('.video-wrapper.ad-active article.active').offset().top ) {
-          googletag.pubads().refresh();
-        }
-      }
-
-      //defines variable to set width and height
-      var height = $('.tp-ad', this).height();
-      var width = $('.tp-ad', this).width();
-      var id = $('.tp-ad-wrapper', this).attr('id');
-      var win = $(window);
-      var viewport = {
-        top : win.scrollTop(),
-        left : win.scrollLeft(),
-      };
-      viewport.bottom = viewport.top + win.height();
-
-      var selector_item_offset = $('.tp-ad', this).offset();
-
-      //override to check if tp-ad is undefined if so then try tp-ad-wrapper
-      if (typeof selector_item_offset == 'undefined') {
-        height = $('.tp-ad-wrapper', this).height();
-        selector_item_offset = $('.tp-ad-wrapper', this).offset();
-        selector_item_offset.bottom = selector_item_offset.top + height;
-
-        //removes the ad only when out of view
-        if (selector_item_offset.bottom < viewport.top || selector_item_offset.top > viewport.bottom) {
-          $('.tp-ad-wrapper', this).remove();
-          //removes the processed so that it can refire on scrolling
-
-          $(this).removeClass('tp-ad-processed');
-        }
-        return;
-      }
-
-      selector_item_offset.bottom = selector_item_offset.top + height;
-
-      //removes the ad only when out of view
-      if (selector_item_offset.bottom < viewport.top || selector_item_offset.top > viewport.bottom) {
-        $('.tp-ad', this).remove();
-
-        //removes the processed so that it can refire on scrolling
-        $(this).removeClass('tp-ad-processed');
-      }
-
-      //appends height and width
-      $('.tp-ad-wrapper', this).css('height', height).css('width', width);
     });
   }
 
