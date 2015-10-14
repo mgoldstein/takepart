@@ -407,6 +407,11 @@ aside.inline-content + p{
     margin: 0 auto;
   }
 }
+@include breakpoint($breakpoint-phablet){
+  .topic-box-wrapper{
+    margin-top: 30px;
+  }
+}
 @include breakpoint($breakpoint-tablet){
   .takepart-take-action-widget {
     margin-top: 10px;
