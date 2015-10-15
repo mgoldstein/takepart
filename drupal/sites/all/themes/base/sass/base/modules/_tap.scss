@@ -1,29 +1,30 @@
 /* TAP Widget and Embed */
 
-.tap-action-wrapper{
-  margin: 10px -15px 20px -15px;
+.tap-action-wrapper {
+  margin: 10px -15px 20px -5px;
+  @include breakpoint($breakpoint-phablet) {
+    margin-left: -15px;
+  }
   width: 100%;
-  &.align-center{
+  &.align-center {
     max-width: 500px;
-    @include breakpoint($breakpoint-phablet){
+    @include breakpoint($breakpoint-phablet) {
       margin: 0 auto;
     }
   }
-  &.align-left, &.align-right{
+  &.align-left, &.align-right {
     max-width: 417px;
   }
-  &.align-left{
-    float: left;
-    clear: left;
-    @include breakpoint($breakpoint-phablet){
+  &.align-left {
+    @include breakpoint($breakpoint-phablet) {
+      float: left;
+      clear: left;
       margin-right: 30px;
-    }
   }
-  &.align-right{
-    float: right;
-    clear: right;
-    @include breakpoint($breakpoint-phablet){
+  &.align-right  {
+    @include breakpoint($breakpoint-phablet) {
+      float: right;
+      clear: right;
       margin-left: 30px;
     }
-  }
 }
