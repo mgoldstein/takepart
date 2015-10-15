@@ -210,7 +210,7 @@
             }, 200);
 
             //if in Desktop view just do popup/But in mobile do a link click
-            if($('.social-wrapper').hasClass('desktop') || !ret) {
+            if($('.social-wrapper').hasClass('desktop') || !ret || $('body').hasClass('node-type-campaign-page')) {
               e.preventDefault();
               return false;
             }
