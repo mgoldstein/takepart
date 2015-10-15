@@ -72,7 +72,7 @@
          //Set the url to the link
          $('.tp-social .tp-social-facebook').attr('href',"http://facebook.com/share.php?u="+url);
          //Desktop view will do a window.open, but Mobile view will do a new tab
-         if($('.social-wrapper').hasClass('desktop')) {
+         if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
            FB.ui(
              {
                method: 'share',
@@ -192,7 +192,7 @@
         //Set the url to the link
         $('.tp-social .tp-social-twitter').attr('href',url);
         //Desktop view will do a window.open, but Mobile view will do a new tab
-        if($('.social-wrapper').hasClass('desktop')) {
+        if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
           window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height, "left=" + left, "top=" + tops].join(", "));
         }
 
@@ -213,7 +213,7 @@
       //Set the url to the link
       $('.tp-social .tp-social-aolmail').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -230,7 +230,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-yahoomail').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -247,7 +247,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-hotmail').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -264,7 +264,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-gmail').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -291,7 +291,7 @@
         var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
         $('.tp-social .tp-social-pinterest').attr('href',url);
         //Desktop view will do a window.open, but Mobile view will do a new tab
-        if($('.social-wrapper').hasClass('desktop')) {
+        if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
           window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
       });
@@ -315,7 +315,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-tumblr').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -330,7 +330,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-whatsapp').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -348,7 +348,7 @@
         var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
         $('.tp-social .tp-social-googleplus').attr('href',url);
         //Desktop view will do a window.open, but Mobile view will do a new tab
-        if($('.social-wrapper').hasClass('desktop')) {
+        if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
           window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
       });
@@ -367,7 +367,7 @@
         var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
         $('.tp-social .tp-social-reddit').attr('href',url);
         //Desktop view will do a window.open, but Mobile view will do a new tab
-        if($('.social-wrapper').hasClass('desktop')) {
+        if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
           window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
         }
       });
@@ -385,7 +385,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-myspace').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -402,7 +402,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-delicious').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -419,7 +419,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-linkedin').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -436,7 +436,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-myaol').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -453,7 +453,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-myaol').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -470,7 +470,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-digg').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -487,7 +487,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-stumbleupon').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
@@ -504,7 +504,7 @@
       var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
       $('.tp-social .tp-social-hyves').attr('href',url);
       //Desktop view will do a window.open, but Mobile view will do a new tab
-      if($('.social-wrapper').hasClass('desktop')) {
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
       }
       return true;
