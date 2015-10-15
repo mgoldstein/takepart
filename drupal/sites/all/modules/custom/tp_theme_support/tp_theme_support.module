@@ -93,18 +93,17 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
     * Show an article without the UNPUBLISHED text and pink background if adding
     * &preview=1 to the url. Do this by auto-logging in the user as TPpreview
     */
-    global $user;
-    $ispreview = filter_input(INPUT_GET, 'preview', FILTER_SANITIZE_URL);
-    if ($ispreview == 1 && !in_array('preview', $user->roles)) {
-      drupal_session_start();
-      $user = user_load_by_name('tppreview'); // load the tppreview user
-       // redirect new user to an uncached version of the same page
-      drupal_goto(current_path(), array('query' => array('preview' => 1)));
-    } elseif(in_array('preview', $user->roles) && $ispreview != 1) {
-      //if 'preview' is not given and user has role of preview, log them out and redirect to current page
-      session_destroy();
-      drupal_goto(current_path());
-    }
+  global $user;
+  $ispreview = filter_input(INPUT_GET, 'preview', FILTER_SANITIZE_URL);
+  if ($ispreview == 1) {
+    drupal_session_start();
+    $user = user_load_by_name('tppreview'); // load the tppreview user
+    // redirect new user to an uncached version of the same page
+    drupal_goto(current_path());
+  } else if (isset($ispreview) && $ispreview == 0) {
+    $user = user_load(0);
+    drupal_goto(current_path());
+  }
 
   //adds the library needed to the themes
     drupal_add_js(
