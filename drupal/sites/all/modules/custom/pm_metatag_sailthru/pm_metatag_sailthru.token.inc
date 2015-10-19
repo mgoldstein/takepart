@@ -11,7 +11,7 @@ function pm_metatag_sailthru_token_info() {
   );
   $info['tokens']['sailthru_metatags']['author'] = array(
     'name' => t('Content authors for Sailthru'),
-    'description' => t("Combines Topic, Free Tags, and Content Type values into comma separated string for metatag"),
+    'description' => t("Authors in a comma separated string for metatag fields"),
   );
   return $info;
 }

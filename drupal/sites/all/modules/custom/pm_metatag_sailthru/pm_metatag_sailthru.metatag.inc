@@ -73,7 +73,7 @@ function pm_metatag_sailthru_metatag_info() {
     
     'sailthru.author' => array(
 	 'label' => t('SailThru Author'),
-	 'description' => t('Content authors formatted for SaulThru'),
+	 'description' => t('Content authors formatted for SailThru'),
 	 'class' => 'DrupalTextMetaTag',
 	 'group' => 'custom-sailthru',
 	 'element' => array('#theme' => 'metatag_sailthru'),

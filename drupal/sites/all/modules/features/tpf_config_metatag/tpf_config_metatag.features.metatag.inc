@@ -535,20 +535,20 @@ function tpf_config_metatag_metatag_export_default() {
   $config['node:feature_article'] = array(
     'instance' => 'node:feature_article',
     'config' => array(
-      'og:title' => array(
-        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
+      'fb:admins' => array(
+        'value' => 1327833247,
       ),
       'og:description' => array(
         'value' => '[node:field_article_subhead]',
-      ),
-      'twitter:title' => array(
-        'value' => '[current-page:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
       'twitter:image:src' => array(
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
+      ),
+      'sailthru.author' => array(
+        'value' => '[sailthru_metatags:author]',
       ),
     ),
   );
@@ -565,6 +565,9 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'canonical' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'fb:admins' => array(
+        'value' => 1327833247,
       ),
       'og:url' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
@@ -590,6 +593,9 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:image:src' => array(
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
       ),
+      'sailthru.author' => array(
+        'value' => '[sailthru_metatags:author]',
+      ),
     ),
   );
 
@@ -606,14 +612,11 @@ function tpf_config_metatag_metatag_export_default() {
       'fb:admins' => array(
         'value' => 1327833247,
       ),
-      'og:title' => array(
-        'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
-      ),
       'og:description' => array(
         'value' => '[node:field_subhead]',
       ),
-      'twitter:title' => array(
-        'value' => '[current-page:title][f:bool:{node:field_sponsored}: (Promoted):]',
+      'sailthru.author' => array(
+        'value' => '[sailthru_metatags:author]',
       ),
     ),
   );
@@ -688,6 +691,9 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:player:stream:content_type' => array(
         'value' => 'video/mp4',
       ),
+      'sailthru.author' => array(
+        'value' => '[sailthru_metatags:author]',
+      ),
     ),
   );
 
@@ -730,6 +736,9 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'twitter:player:stream:content_type' => array(
         'value' => 'video/mp4',
+      ),
+      'sailthru.author' => array(
+        'value' => '[sailthru_metatags:author]',
       ),
     ),
   );
