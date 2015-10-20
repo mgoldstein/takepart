@@ -20,6 +20,7 @@
       float: left;
       clear: left;
       margin-right: 30px;
+    }
   }
   &.align-right  {
     @include breakpoint($breakpoint-phablet) {
@@ -27,4 +28,5 @@
       clear: right;
       margin-left: 30px;
     }
+  }
 }
