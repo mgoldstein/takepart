@@ -161,3 +161,55 @@ function takeaction_get_api() {
   }
   return $values['api'];
 }
+
+/**
+ * The display of the TAP Embed div tag.
+ *
+ * @param $overrides
+ *   An array of kev-value overrides for the TAP Embed
+ * @param $alignment
+ *   Optional, a string setting the alignment of the widget, must accompany CSS
+ *
+ * @return
+ *   The markup for the TAP embed with overrides
+ */
+function takeaction_view_tap_embed($overrides, $alignment = 'center') {
+
+  //Define TAP Embed class (required by TAP)
+  $attributes = array();
+  $attributes['class'][] = 'tap-action';
+
+  //Define wrapper class
+  $wrapper_attr = array(
+    'class' => array('tap-action-wrapper')
+  );
+
+  //Create override attributes
+  foreach($overrides as $key => $override){
+    $attributes[$key] = $override;
+  }
+
+  //Set alignment
+  $wrapper_attr['class'][] = 'align-'. $alignment;
+
+  //Generate tap-embed div
+  $tapEmbed = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => '',
+      '#attributes' => $attributes
+    )
+  ));
+
+  //Generate Wrapper
+  $markup = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => $tapEmbed,
+      '#attributes' => $wrapper_attr
+    )
+  ));
+
+  return $markup;
+
+}
