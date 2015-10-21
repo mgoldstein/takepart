@@ -111,7 +111,7 @@
           //adds correct classes
           //Only 1 Ad Active at a time
           $('.ad-active').each(function(){
-            $(this).removeClass('ad-active');
+            $(this).removeClass('ad-active').addClass('not-ad-active');
           });
           //This will make sure ours keep the ad active class
           $(article_wrapper).removeClass('not-ad-active').addClass('ad-active');
@@ -161,17 +161,11 @@
           $('<script>googletag.cmd.push(function() {' + targets + '});</' + 'script>').appendTo(document.body);
         });
       }
-      else {
-        //$(this).removeClass('tp_ad_targetting-processed');
-      }
 
-      //now process and add the ads back into the active article
-      $('.article-wrapper.ad-active').each(function() {
-        window.tp_insert_ads(this, ads_object[k]['selector'], ads_object[k], id, show_ads);
-      });
-
-      $('.video-wrapper.ad-active').each(function() {
-        window.tp_insert_ads(this, ads_object[k]['selector'], ads_object[k], id, show_ads);
+      $(article_wrapper).each(function(){
+        if($(this).hasClass('ad-active')) {
+          window.tp_insert_ads(this, ads_object[k]['selector'], ads_object[k], id, show_ads);
+        }
       });
     });
 

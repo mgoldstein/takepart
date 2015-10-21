@@ -56,14 +56,14 @@ function tp_ads_admin_form() {
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['ad_width'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad Width'),
-      '#description' => t('Such as 320'),
+      '#description' => t('Such as 320 or for multiple sizes use a comma separated list of sizes such as 768,320'),
       '#default_value' => $leader_settings['ad_width'],
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['ad_height'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad Height'),
-      '#description' => t('Such as 50'),
+      '#description' => t('Such as 50 or for multiple sizes use a comma separated list of sizes such as 50,60'),
       '#default_value' => $leader_settings['ad_height'],
     );
 
@@ -92,14 +92,14 @@ function tp_ads_admin_form() {
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['desktop']['ad_width'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad Width'),
-      '#description' => t('Such as 320'),
+      '#description' => t('Such as 320 or for multiple sizes use a comma separated list of sizes such as 768,320'),
       '#default_value' => $leader_settings['desktop']['ad_width'],
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['desktop']['ad_height'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad Height'),
-      '#description' => t('Such as 50'),
+      '#description' => t('Such as 50 or for multiple sizes use a comma separated list of sizes such as 50,60'),
       '#default_value' => $leader_settings['desktop']['ad_height'],
     );
 
@@ -188,14 +188,14 @@ function tp_ads_admin_form() {
       $form['tp_ads_settings']['tp_ads_settings_'.$ad]['tp_ads_setting_'.$ad.'_'.$i]['ad_width'] = array(
         '#type' => 'textfield',
         '#title' => t('Ad Width'),
-        '#description' => t('Such as 300'),
+        '#description' => t('Such as 300 or for multiple sizes use a comma separated list of sizes such as 300,320'),
         '#default_value' => $ad_width,
       );
 
       $form['tp_ads_settings']['tp_ads_settings_'.$ad]['tp_ads_setting_'.$ad.'_'.$i]['ad_height'] = array(
         '#type' => 'textfield',
         '#title' => t('Ad Height'),
-        '#description' => t('Such as 250'),
+        '#description' => t('Such as 250 or for multiple sizes use a comma separated list of sizes such as 250,600'),
         '#default_value' => $ad_height,
       );
 
@@ -230,14 +230,14 @@ function tp_ads_admin_form() {
       $form['tp_ads_settings']['tp_ads_settings_'.$ad]['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_width'] = array(
         '#type' => 'textfield',
         '#title' => t('Ad Width'),
-        '#description' => t('Such as 300'),
+        '#description' => t('Such as 300 or for multiple sizes use a comma separated list of sizes such as 300,320'),
         '#default_value' => $desktop_ad_width,
       );
 
       $form['tp_ads_settings']['tp_ads_settings_'.$ad]['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_height'] = array(
         '#type' => 'textfield',
         '#title' => t('Ad Height'),
-        '#description' => t('Such as 250'),
+        '#description' => t('Such as 250 or for multiple sizes use a comma separated list of sizes such as 250,600'),
         '#default_value' => $desktop_ad_height,
       );
 
@@ -247,6 +247,7 @@ function tp_ads_admin_form() {
 
   //adds custom submit handler to unset values that are empty
   $form['#submit'][] = 'tp_ads_admin_form_submit';
+  //$form['#validate'][] = 'tp_ads_admin_form_validate';
 
   //returns the system form
   return system_settings_form($form);
@@ -276,4 +277,134 @@ function tp_ads_admin_form_submit(&$form, &$form_state) {
     $form_state['values']['tp_ads_settings_'.$ad] = array_reverse($values);
   }
 
+}
+
+/**
+ *  @function:
+ *    custom validation handler that it used to not allow the same ad ids
+ */
+function tp_ads_admin_form_validate(&$form, &$form_state) {
+  //Loop through for each of the 5 autoload articles
+  //There will be a lot of repitive checks, but an identical
+  //ad tag will result in a broken site
+  //Lets check the leader ads first
+  foreach($form_state['values'] AS $name => $values) {
+    if(is_array($values)){
+      //The leader ads are a single array the articles are a double array
+      if(strpos($name,'leader') !== FALSE) {
+        $checkid = $values['ad_gpd_id'];
+        $dtcheckid = $values['desktop']['ad_gpd_id'];
+        //Loop through all the values again looking for doubles
+        foreach($form_state['values'] AS $name2 => $values2) {
+          //Do not want to check the id on itself
+          if($name2 != $name) {
+            //The leader ads are a single array the articles are a double array
+            if(strpos($name2,'leader') !== FALSE) {
+              if($values2['ad_gpd_id'] != '') {
+                //Do the final check for leader ads
+                if( $checkid == $values2['ad_gpd_id']
+                  || $dtcheckid == $values2['ad_gpd_id'] ) {
+                  //Error same gpd ids
+                  form_set_error($name, 'There are ads with the same Ad GPD ID. Leader '.$name.' to Leader '.$name2);
+                }
+              }
+              if($values2['desktop']['ad_gpd_id'] != '') {
+                //Do the final check for leader ads
+                if( $dtcheckid == $values2['desktop']['ad_gpd_id']
+                  || $checkid == $values2['desktop']['ad_gpd_id']) {
+                  //Error same gpd ids
+                  form_set_error($name, 'There are ads with the same Ad GPD ID. Leader '.$name.' to Leader '.$name2);
+                }
+              }
+            } else {
+              //Now do the check for article ads
+              foreach($values2 as $artn => $arti) {
+                //I do not care about the selector
+                if(strpos($artn, 'selector') === FALSE) {
+                  //Do the final check for leader ads to article ads
+                  if($arti['ad_gpd_id'] != '') {
+                    //Do the final check for leader ads
+                    if( $checkid == $arti['ad_gpd_id']
+                      || $dtcheckid == $arti['ad_gpd_id'] ) {
+                      //Error same gpd ids
+                      form_set_error($name, 'There are ads with the same Ad GPD ID. Leader '.$name.' to Article '.$artn);
+                    }
+                  }
+                  if($arti['desktop']['ad_gpd_id'] != '') {
+                    //Do the final check for leader ads
+                    if( $dtcheckid == $arti['desktop']['ad_gpd_id']
+                      || $checkid == $arti['desktop']['ad_gpd_id']) {
+                      //Error same gpd ids
+                      form_set_error($name, 'There are ads with the same Ad GPD ID Desktop. Leader '.$name.' to Article '.$artn);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      } else {
+        //Now do the check for article ads
+        foreach($values as $artn => $arti) {
+          //I do not care about the selector
+          if(strpos($artn, 'selector') === FALSE) {
+            $checkid = $arti['ad_gpd_id'];
+            $dtcheckid = $arti['desktop']['ad_gpd_id'];
+
+            foreach($form_state['values'] AS $name2 => $values2) {
+              //Do not want to check the id on itself
+              if($name2 != $artn) {
+                //The leader ads are a single array the articles are a double array
+                if(strpos($name2,'leader') !== FALSE) {
+                  if($values2['ad_gpd_id'] != '') {
+                    //Do the final check for leader ads
+                    if( $checkid == $values2['ad_gpd_id']
+                      || $dtcheckid == $values2['ad_gpd_id'] ) {
+                      //Error same gpd ids
+                      form_set_error($artn, 'There are ads with the same Ad GPD ID. Article '.$artn.' to Leader '.$name2);
+                    }
+                  }
+                  if($values2['desktop']['ad_gpd_id'] != '') {
+                    //Do the final check for leader ads
+                    if( $dtcheckid == $values2['desktop']['ad_gpd_id']
+                      || $checkid == $values2['desktop']['ad_gpd_id']) {
+                      //Error same gpd ids
+                      form_set_error($name, 'There are ads with the same Ad GPD ID Desktop. Article '.$artn.' to Leader '.$name2);
+                    }
+                  }
+                } else {
+                  //Now do the check for article ads
+                  foreach($values2 as $artn2 => $arti2) {
+                    //I do not care about the selector
+                    if(strpos($artn2, 'selector') === FALSE) {
+
+                      if($artn2 != $artn) {
+                        //Do the final check for leader ads to article ads
+                        if($arti2['ad_gpd_id'] != '') {
+                          //Do the final check for leader ads
+                          if( $checkid == $arti2['ad_gpd_id']
+                            || $dtcheckid == $arti2['ad_gpd_id'] ) {
+                            //Error same gpd ids
+                            form_set_error($artn, 'There are ads with the same Ad GPD ID. Article '.$artn.' to Article '.$artn2);
+                          }
+                        }
+                        if($arti2['desktop']['ad_gpd_id'] != '') {
+                          //Do the final check for leader ads
+                          if( $dtcheckid == $arti['desktop']['ad_gpd_id']
+                            || $checkid == $arti['desktop']['ad_gpd_id']) {
+                            //Error same gpd ids
+                            form_set_error($name, 'There are ads with the same Ad GPD ID Desktop. Leader '.$artn.' to Article '.$artn2);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
