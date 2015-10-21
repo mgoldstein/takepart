@@ -17428,7 +17428,7 @@ Note: If you manually reference more items than selected here, the number refere
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -18434,7 +18434,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -18652,7 +18652,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -18775,7 +18775,7 @@ Note: If you manually reference more items than selected here, the number refere
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -18880,7 +18880,7 @@ Note: If you manually reference more items than selected here, the number refere
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -18976,7 +18976,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 19,
+      'weight' => 13,
     ),
   );
 
@@ -19068,7 +19068,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 20,
+      'weight' => 14,
     ),
   );
 
@@ -19160,7 +19160,7 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -19173,9 +19173,11 @@ Note: If you manually reference more items than selected here, the number refere
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'tp_campaigns',
-        'settings' => array(),
-        'type' => 'tp_card_tab_widget_reference',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
         'weight' => 9,
       ),
       'feature_main' => array(
@@ -19250,6 +19252,91 @@ Note: If you manually reference more items than selected here, the number refere
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign_card_tap_widget-field_campaign_tap_widget_type'
+  $field_instances['node-campaign_card_tap_widget-field_campaign_tap_widget_type'] = array(
+    'bundle' => 'campaign_card_tap_widget',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 20,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_tap_widget_type',
+    'label' => 'TAP Widget Type',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+      ),
+      'type' => 'options_select',
       'weight' => 4,
     ),
   );
@@ -23867,10 +23954,9 @@ Note: If you manually reference more items than selected here, the number refere
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'text',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 16,
       ),
       'feature_main' => array(
@@ -26084,6 +26170,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Subhead');
   t('TAB Action Overrides');
   t('TAB Widget Expand');
+  t('TAP Widget Type');
   t('Tab Widget Reference');
   t('Text to override the global SMS copy.  The global legal copy will appear if this field is left blank.  Legal copy will only show if the SMS field has a value.');
   t('Text will appear on the left if two columns exist and in the center if only one exists.');
