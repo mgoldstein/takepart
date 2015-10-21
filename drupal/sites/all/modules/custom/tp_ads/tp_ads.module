@@ -5,13 +5,14 @@
  */
 DEFINE('TP_ADS', 'admin/config/takepart/advertisements');
 DEFINE('TP_ADS_THEME_FILE', 'inc/tp_ads.theme.inc');
+DEFINE('TP_ADS_NO_AUTOLOAD', 5);
 
 /**
  *  Implements hook_menu().
  */
 function tp_ads_menu() {
   $items = array();
-  
+
   //main group menu
   $items[TP_ADS] = array(
     'title' => t('TakePart - Advertisements Settings'),
@@ -32,7 +33,7 @@ function tp_ads_menu() {
     'file path' => drupal_get_path('module', 'tp_ads') . '/forms',
     'access arguments' => array('administer site configuration'),
   );*/
-  
+
   return $items;
 }
 
@@ -68,87 +69,91 @@ function tp_ads_theme($existing, $type, $theme, $path) {
 
 /**
  *  Implements hook_preprocess_HOOK().
- */ 
+ */
 function tp_ads_preprocess_page(&$vars) {
   global $theme;
-  
+
   //ensures that the only theme this appears on is fresh theme as the fresh theme will handle mobile display
-  if ($theme == 'fresh') {   
+  if ($theme == 'fresh') {
     $header_script = array();
-  
-    //variables
-    $settings = variable_get('tp_ads_settings', '');
-    $selector = $settings['tp_ads_settings_selector'];
+
     $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895'); //pulled from original module
-    
-    //processes the data for front end js
-    if (!empty($settings)) {
-      foreach ($settings as $key => $value) {
-        //ensure that we dont process the selector
-        if ($key == 'tp_ads_settings_selector') {
-          continue;
-        }
-        
-        //mobile
-        $ad_slot = $value['ad_slot'];
-        $ad_gpd_id = $value['ad_gpd_id'];
-        $width = $value['ad_width'];
-        $height = $value['ad_height'];
-        
-        //desktop
-        $desktop_ad_slot = (!empty($value['desktop_overrides']['ad_slot'])) ? $value['desktop_overrides']['ad_slot'] : $value['ad_slot'];
-        $desktop_ad_gpd_id = (!empty($value['desktop_overrides']['ad_gpd_id'])) ? $value['desktop_overrides']['ad_gpd_id'] : $value['ad_gpd_id'];
-        $desktop_width = (!empty($value['desktop_overrides']['ad_width'])) ? $value['desktop_overrides']['ad_width'] : $value['ad_width'];
-        $desktop_height = (!empty($value['desktop_overrides']['ad_height'])) ? $value['desktop_overrides']['ad_height'] : $value['ad_height'];
-        
-        //calls theme to create markup
-        $script = theme('tp_ads_script', array(
-            'ad_slot' => $ad_slot,
-            'ad_gpd_id' => $ad_gpd_id,
-            'width' => $width,
-            'height' => $height,
-            'class' => 'mobile'
-          )
-        );
-        
-        //ensures that it removes any EOL
-        $value['javascript'] = str_replace(PHP_EOL, '', $script);
-        
-        //calls theme to create markup
-        $desktop_script = theme('tp_ads_script', array(
+
+    //variables
+    for($ad = 0; $ad < TP_ADS_NO_AUTOLOAD; $ad++) {
+      $settings = variable_get('tp_ads_settings_'.$ad, '');
+      $selector = $settings['tp_ads_settings_selector'];
+
+      //processes the data for front end js
+      if (!empty($settings)) {
+        foreach ($settings as $key => $value) {
+          //ensure that we dont process the selector
+          if ($key == 'tp_ads_settings_selector') {
+            continue;
+          }
+
+          //mobile
+          $ad_slot = $value['ad_slot'];
+          $ad_gpd_id = $value['ad_gpd_id'];
+          $width = $value['ad_width'];
+          $height = $value['ad_height'];
+
+          //desktop
+          $desktop_ad_slot = (!empty($value['desktop_overrides']['ad_slot'])) ? $value['desktop_overrides']['ad_slot'] : $value['ad_slot'];
+          $desktop_ad_gpd_id = (!empty($value['desktop_overrides']['ad_gpd_id'])) ? $value['desktop_overrides']['ad_gpd_id'] : $value['ad_gpd_id'];
+          $desktop_width = (!empty($value['desktop_overrides']['ad_width'])) ? $value['desktop_overrides']['ad_width'] : $value['ad_width'];
+          $desktop_height = (!empty($value['desktop_overrides']['ad_height'])) ? $value['desktop_overrides']['ad_height'] : $value['ad_height'];
+
+          //calls theme to create markup
+          $script = theme('tp_ads_script', array(
+              'ad_slot' => $ad_slot,
+              'ad_gpd_id' => $ad_gpd_id,
+              'width' => $width,
+              'height' => $height,
+              'class' => 'mobile'
+            )
+          );
+
+          //ensures that it removes any EOL
+          $value['javascript'] = str_replace(PHP_EOL, '', $script);
+
+          //calls theme to create markup
+          $desktop_script = theme('tp_ads_script', array(
+              'ad_slot' => $desktop_ad_slot,
+              'ad_gpd_id' => $desktop_ad_gpd_id,
+              'width' => $desktop_width,
+              'height' => $desktop_height,
+              'class' => 'desktop'
+            )
+          );
+
+          //ensures that it removes any EOL
+          $value['javascript_desktop'] = str_replace(PHP_EOL, '', $desktop_script);
+
+          //header script that is needed to define the ad slot
+          $header_script[] = theme('tp_ads_header', array(
+            'dpf_code' => $dpf_code,
             'ad_slot' => $desktop_ad_slot,
             'ad_gpd_id' => $desktop_ad_gpd_id,
             'width' => $desktop_width,
-            'height' => $desktop_height,
-            'class' => 'desktop'
-          )
-        );
-        
-        //ensures that it removes any EOL
-        $value['javascript_desktop'] = str_replace(PHP_EOL, '', $desktop_script);        
-        
-        //header script that is needed to define the ad slot
-        $header_script[] = theme('tp_ads_header', array(
-          'dpf_code' => $dpf_code,
-          'ad_slot' => $desktop_ad_slot,
-          'ad_gpd_id' => $desktop_ad_gpd_id,
-          'width' => $desktop_width,
-          'height' => $desktop_height
-          )
-        );
-        
-        $ads[] = $value;
+            'height' => $desktop_height
+            )
+          );
+
+          $ads[$ad]['ads'][] = $value;
+          $ads[$ad]['selector'] = $selector;
+        }
       }
     }
 
     //loads the bg skin takeover from boxes
     $takeover = boxes_box_load('bg_skin_sponsor');
-    
+
     //checks to make sure the option is set
     if (!empty($takeover->options['ga_ad_gpt_id'])) {
       $takeover_id = $takeover->options['ga_ad_gpt_id'];
       $takeover_ad_slot = $takeover->options['ga_ad_slot'];
-      
+
       $header_script[] = theme('tp_ads_header', array(
         'dpf_code' => $dpf_code,
         'ad_slot' => $takeover_ad_slot,
@@ -157,7 +162,7 @@ function tp_ads_preprocess_page(&$vars) {
         'height' => 1
         )
       );
-      
+
       $vars['page']['footer']['#suffix'] = str_replace('[targets]', '', theme('tp_ads_script', array(
           'ad_slot' => $takeover_ad_slot,
           'ad_gpd_id' => $takeover_id,
@@ -170,14 +175,13 @@ function tp_ads_preprocess_page(&$vars) {
     }
 
     //creates the array needed
-    $ads_wrapper['ads'] = $ads;
-    $ads_wrapper['selector'] = $selector;
-    
+    $ads_wrapper = $ads;
+
     //calls function to add header
     _tp_ads_insert_leader_ad($vars);
     _tp_ads_insert_header($header_script);
     _tp_ads_insert_more_on_takepart();
-    
+
     //adds the js
     drupal_add_js(array('tp_ad_settings' => $ads_wrapper), 'setting');
     drupal_add_js(drupal_get_path('module', 'tp_ads') .'/js/tp_ads.js');
@@ -189,45 +193,49 @@ function tp_ads_preprocess_page(&$vars) {
  *    Custom function that is used to insert the ad for more on takepart
  */
 function _tp_ads_insert_more_on_takepart() {
-  $more_on_takepart = array();
-  $override = variable_get('tp_more_on_takepart_last_item', array());
-  
-  //break if empty
-  if (empty($override) || empty($override['ad_slot'])) {
-    return;
+
+  //variables
+  for($ad = 0; $ad < TP_ADS_NO_AUTOLOAD; $ad++) {
+    $more_on_takepart = array();
+    $override = variable_get('tp_more_on_takepart_last_item_'.$ad, array());
+
+    //break if empty
+    if (empty($override) || empty($override['ad_slot'])) {
+      return;
+    }
+
+    //variable for more on takepart overrid
+    $value['ad_slot'] = $override['ad_slot'];
+    $value['ad_gpd_id'] = $override['ad_gpd_id'];
+
+    //Height and width values from DFP module (tp_dfp)
+    $value['width'] = variable_get('dfp_creative_width', '145');
+    $value['height'] = variable_get('dfp_creative_height', '200');
+
+    //calls theme to create markup
+    $script = theme('tp_ads_script', array(
+        'ad_slot' => $value['ad_slot'],
+        'ad_gpd_id' => $value['ad_gpd_id'],
+        'width' => $value['width'],
+        'height' => $value['height'],
+        //'disable_label' => TRUE,
+        //'class' => ''
+      )
+    );
+
+    //ensures that it removes any EOL
+    $value['javascript'] = str_replace(PHP_EOL, '', $script);
+
+    //ensures that it removes any EOL
+    $value['javascript_desktop'] = $value['javascript'];
+    $value['placement'] = 1;
+
+    //populate the data for the more on takepart settings
+    $more_on_takepart[] = $value;
+    $more_on_takepart_wrapper[$ad]['ads'] = $more_on_takepart;
+    $more_on_takepart_wrapper[$ad]['selector'] = '.tp-more-on-takepart .tp-more__article.override';
   }
 
-  //variable for more on takepart overrid
-  $value['ad_slot'] = $override['ad_slot'];
-  $value['ad_gpd_id'] = $override['ad_gpd_id'];
-
-  //Height and width values from DFP module (tp_dfp)
-  $value['width'] = variable_get('dfp_creative_width', '145');
-  $value['height'] = variable_get('dfp_creative_height', '200');
-  
-  //calls theme to create markup
-  $script = theme('tp_ads_script', array(
-      'ad_slot' => $value['ad_slot'],
-      'ad_gpd_id' => $value['ad_gpd_id'],
-      'width' => $value['width'],
-      'height' => $value['height'],
-      //'disable_label' => TRUE,
-      //'class' => ''
-    )
-  );
-  
-  //ensures that it removes any EOL
-  $value['javascript'] = str_replace(PHP_EOL, '', $script);
-  
-  //ensures that it removes any EOL
-  $value['javascript_desktop'] = $value['javascript'];
-  $value['placement'] = 1;
-  
-  //populate the data for the more on takepart settings
-  $more_on_takepart[] = $value;
-  $more_on_takepart_wrapper['ads'] = $more_on_takepart;
-  $more_on_takepart_wrapper['selector'] = '.tp-more-on-takepart .tp-more__article.override';
-  
   //add js settings
   drupal_add_js(array('tp_ad_more_on_takepart' => $more_on_takepart_wrapper), 'setting');
 }
@@ -239,71 +247,74 @@ function _tp_ads_insert_more_on_takepart() {
  *  @dev: todo: improve logic to allow it to handle future calls
  */
 function _tp_ads_insert_leader_ad(&$vars) {
-  //variables
-  $leader_settings = variable_get('tp_ads_article_leader', '');
   $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895'); //pulled from original module
-  
-  //adds the logic for targetting leader ad
-  if (!empty($leader_settings['selector'])) {
-    //calls theme to create markup
-    $script = theme('tp_ads_script', array(
+  //Loop through the 5 different autoload ads
+  for($ad = 0; $ad < TP_ADS_NO_AUTOLOAD; $ad++) {
+    //variables
+    $leader_settings = variable_get('tp_ads_article_leader_'.$ad, '');
+
+    //adds the logic for targetting leader ad
+    if (!empty($leader_settings['selector'])) {
+      //calls theme to create markup
+      $script = theme('tp_ads_script', array(
+          'ad_slot' => $leader_settings['ad_slot'],
+          'ad_gpd_id' => $leader_settings['ad_gpd_id'],
+          'width' => $leader_settings['ad_width'],
+          'height' => $leader_settings['ad_height'],
+          'class' => 'leaderboard mobile'
+        )
+      );
+
+      //ensures that it removes any EOL
+      $leader_settings['javascript'] = str_replace(PHP_EOL, '', $script);
+
+      $desktop_ad_slot = (!empty($leader_settings['desktop']['ad_slot'])) ? $leader_settings['desktop']['ad_slot'] : $leader_settings['ad_slot'];
+      $desktop_ad_gpd_id = (!empty($leader_settings['desktop']['ad_gpd_id'])) ? $leader_settings['desktop']['ad_gpd_id'] : $leader_settings['ad_gpd_id'];
+      $desktop_ad_width = (!empty($leader_settings['desktop']['ad_width'])) ? $leader_settings['desktop']['ad_width'] : $leader_settings['ad_width'];
+      $desktop_ad_height = (!empty($leader_settings['desktop']['ad_height'])) ? $leader_settings['desktop']['ad_height'] : $leader_settings['ad_height'];
+
+      $desktop_script = theme('tp_ads_script', array(
+          'ad_slot' => $desktop_ad_slot,
+          'ad_gpd_id' => $desktop_ad_gpd_id,
+          'width' => $desktop_ad_width,
+          'height' => $desktop_ad_height,
+          'class' => 'leaderboard desktop'
+        )
+      );
+
+      $leader_settings['javascript_desktop'] = str_replace(PHP_EOL, '', $desktop_script);
+
+      //always have placement 1
+      $leader_settings['placement'] = 1;
+
+      //header script that is needed to define the ad slot
+      $leader_header_script[] = theme('tp_ads_header', array(
+        'dpf_code' => $dpf_code,
         'ad_slot' => $leader_settings['ad_slot'],
         'ad_gpd_id' => $leader_settings['ad_gpd_id'],
         'width' => $leader_settings['ad_width'],
         'height' => $leader_settings['ad_height'],
-        'class' => 'leaderboard mobile'
-      )
-    );
-    
-    //ensures that it removes any EOL
-    $leader_settings['javascript'] = str_replace(PHP_EOL, '', $script);
-    
-    $desktop_ad_slot = (!empty($leader_settings['desktop']['ad_slot'])) ? $leader_settings['desktop']['ad_slot'] : $leader_settings['ad_slot'];
-    $desktop_ad_gpd_id = (!empty($leader_settings['desktop']['ad_gpd_id'])) ? $leader_settings['desktop']['ad_gpd_id'] : $leader_settings['ad_gpd_id'];
-    $desktop_ad_width = (!empty($leader_settings['desktop']['ad_width'])) ? $leader_settings['desktop']['ad_width'] : $leader_settings['ad_width'];
-    $desktop_ad_height = (!empty($leader_settings['desktop']['ad_height'])) ? $leader_settings['desktop']['ad_height'] : $leader_settings['ad_height'];
-    
-    $desktop_script = theme('tp_ads_script', array(
-        'ad_slot' => $desktop_ad_slot,
-        'ad_gpd_id' => $desktop_ad_gpd_id,
-        'width' => $desktop_ad_width,
-        'height' => $desktop_ad_height,
-        'class' => 'leaderboard desktop'
-      )
-    );
-    
-    $leader_settings['javascript_desktop'] = str_replace(PHP_EOL, '', $desktop_script);
-    
-    //always have placement 1
-    $leader_settings['placement'] = 1;
-    
-    //header script that is needed to define the ad slot
-    $leader_header_script[] = theme('tp_ads_header', array(
-      'dpf_code' => $dpf_code,
-      'ad_slot' => $leader_settings['ad_slot'],
-      'ad_gpd_id' => $leader_settings['ad_gpd_id'],
-      'width' => $leader_settings['ad_width'],
-      'height' => $leader_settings['ad_height'],
-      )
-    );
-    
-    //adds the leaderboard for desktop
-    $leader_header_script[] = theme('tp_ads_header', array(
-      'dpf_code' => $dpf_code,
-      'ad_slot' => $leader_settings['desktop']['ad_slot'],
-      'ad_gpd_id' => $leader_settings['desktop']['ad_gpd_id'],
-      'width' => $leader_settings['desktop']['ad_width'],
-      'height' => $leader_settings['desktop']['ad_height'],
-      )
-    );
-    
-    //calls function to add header
-    _tp_ads_insert_header($leader_header_script);
-    
-    $leader_wrapper['ads'][0] = $leader_settings;
-    $leader_wrapper['selector'] = $leader_settings['selector'];
-    drupal_add_js(array('tp_leader_ad_settings' => $leader_wrapper), 'setting');
+        )
+      );
+
+      //adds the leaderboard for desktop
+      $leader_header_script[] = theme('tp_ads_header', array(
+        'dpf_code' => $dpf_code,
+        'ad_slot' => $leader_settings['desktop']['ad_slot'],
+        'ad_gpd_id' => $leader_settings['desktop']['ad_gpd_id'],
+        'width' => $leader_settings['desktop']['ad_width'],
+        'height' => $leader_settings['desktop']['ad_height'],
+        )
+      );
+
+      //calls function to add header
+      _tp_ads_insert_header($leader_header_script);
+
+      $leader_wrapper[$ad]['ads'][0] = $leader_settings;
+      $leader_wrapper[$ad]['selector'] = $leader_settings['selector'];
+    }
   }
+  drupal_add_js(array('tp_leader_ad_settings' => $leader_wrapper), 'setting');
 }
 
 /**
