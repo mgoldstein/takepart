@@ -254,9 +254,14 @@ body {
   }
 }
 
-//override the block styles on topic pages
-.vocabulary-topic #block-boxes-ga-mobile-320x50-relative {
-  margin-bottom: 0
+/* override the mobile ad block on page,taxonomy page, photo gallery,profile */
+.node-type-takepart-page,
+.page-taxonomy-term,
+.node-type-profile,
+.node-type-openpublish-photo-gallery {
+  #block-boxes-ga-mobile-320x50-relative {
+    margin-bottom: 0
+  }
 }
 
 // Mobile ad position bottom sticky
