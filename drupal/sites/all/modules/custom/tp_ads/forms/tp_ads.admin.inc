@@ -36,35 +36,35 @@ function tp_ads_admin_form() {
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['selector'] = array(
       '#type' => 'textfield',
       '#title' => t('Selector to insert ad'),
-      '#default_value' => $leader_settings['selector'],
+      '#default_value' => (isset($leader_settings['selector'])?$leader_settings['selector']:''),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['ad_slot'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad Slot'),
       '#description' => t('Such as TP_Mobile_320x50'),
-      '#default_value' => $leader_settings['ad_slot'],
+      '#default_value' => (isset($leader_settings['ad_slot'])?$leader_settings['ad_slot']:''),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['ad_gpd_id'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad GPD ID'),
       '#description' => t('Such as div-gpt-ad-1382144784236-0a'),
-      '#default_value' => $leader_settings['ad_gpd_id'],
+      '#default_value' => (isset($leader_settings['ad_gpd_id'])?$leader_settings['ad_gpd_id']:''),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['ad_width'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad Width'),
       '#description' => t('Such as 320 or for multiple sizes use a comma separated list of sizes such as 768,320'),
-      '#default_value' => $leader_settings['ad_width'],
+      '#default_value' => (isset($leader_settings['ad_width'])?$leader_settings['ad_width']:''),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['ad_height'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad Height'),
       '#description' => t('Such as 50 or for multiple sizes use a comma separated list of sizes such as 50,60'),
-      '#default_value' => $leader_settings['ad_height'],
+      '#default_value' => (isset($leader_settings['ad_height'])?$leader_settings['ad_height']:''),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['desktop'] = array(
@@ -79,35 +79,35 @@ function tp_ads_admin_form() {
       '#type' => 'textfield',
       '#title' => t('Ad Slot'),
       '#description' => t('Such as TP_Mobile_320x50'),
-      '#default_value' => $leader_settings['desktop']['ad_slot'],
+      '#default_value' => (isset($leader_settings['desktop']['ad_slot'])?$leader_settings['desktop']['ad_slot']:''),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['desktop']['ad_gpd_id'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad GPD ID'),
       '#description' => t('Such as div-gpt-ad-1382144784236-0a'),
-      '#default_value' => $leader_settings['desktop']['ad_gpd_id'],
+      '#default_value' => (isset($leader_settings['desktop']['ad_gpd_id'])?$leader_settings['desktop']['ad_gpd_id']:''),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['desktop']['ad_width'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad Width'),
       '#description' => t('Such as 320 or for multiple sizes use a comma separated list of sizes such as 768,320'),
-      '#default_value' => $leader_settings['desktop']['ad_width'],
+      '#default_value' => (isset($leader_settings['desktop']['ad_width'])?$leader_settings['desktop']['ad_width']:''),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['desktop']['ad_height'] = array(
       '#type' => 'textfield',
       '#title' => t('Ad Height'),
       '#description' => t('Such as 50 or for multiple sizes use a comma separated list of sizes such as 50,60'),
-      '#default_value' => $leader_settings['desktop']['ad_height'],
+      '#default_value' => (isset($leader_settings['desktop']['ad_height'])?$leader_settings['desktop']['ad_height']:''),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['desktop']['selector'] = array(
       '#type' => 'textfield',
       '#title' => t('Desktop Selector Override'),
       '#description' => t('.fresh-first-ad'),
-      '#default_value' => $leader_settings['desktop']['selector'],
+      '#default_value' => (isset($leader_settings['desktop']['selector'])?$leader_settings['desktop']['selector']:''),
     );
 
     //These are the ads that load inside the article
@@ -124,7 +124,7 @@ function tp_ads_admin_form() {
     $form['tp_ads_settings']['tp_ads_settings_'.$ad]['tp_ads_settings_selector'] = array(
       '#type' => 'textfield',
       '#title' => t('Selector for Ad Logic for Ad '.($ad+1)),
-      '#default_value' => $settings['tp_ads_settings_selector'],
+      '#default_value' => (isset($settings['tp_ads_settings_selector'])?$settings['tp_ads_settings_selector']:''),
       '#description' => t('Selector for page')
     );
 
@@ -149,18 +149,18 @@ function tp_ads_admin_form() {
       }
       else {
         //this is for the dynamic variable values
-        $ad_slot = $settings['tp_ads_setting_'.$ad.'_'.$i]['ad_slot'];
-        $ad_gpd_id = $settings['tp_ads_setting_'.$ad.'_'.$i]['ad_gpd_id'];
-        $ad_width = $settings['tp_ads_setting_'.$ad.'_'.$i]['ad_width'];
-        $ad_height = $settings['tp_ads_setting_'.$ad.'_'.$i]['ad_height'];
-        $placement = $settings['tp_ads_setting_'.$ad.'_'.$i]['placement'];
+        $ad_slot = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['ad_slot'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['ad_slot']:'');
+        $ad_gpd_id = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['ad_gpd_id'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['ad_gpd_id']:'');
+        $ad_width = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['ad_width'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['ad_width']:'');
+        $ad_height = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['ad_height'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['ad_height']:'');
+        $placement = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['placement'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['placement']:'');
 
         //desktop overrides
-        $desktop_ad_slot = $settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_slot'];
-        $desktop_ad_gpd_id = $settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_gpd_id'];
-        $desktop_ad_width = $settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_width'];
-        $desktop_ad_height = $settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_height'];
-        $desktop_placement = $settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['placement'];
+        $desktop_ad_slot = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_slot'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_slot']:'');
+        $desktop_ad_gpd_id = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_gpd_id'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_gpd_id']:'');
+        $desktop_ad_width = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_width'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_width']:'');
+        $desktop_ad_height = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_height'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['ad_height']:'');
+        $desktop_placement = (isset($settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['placement'])?$settings['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides']['placement']:'');
       }
 
       //each form item
