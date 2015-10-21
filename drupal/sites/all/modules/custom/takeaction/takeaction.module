@@ -162,8 +162,57 @@ function takeaction_get_api() {
   return $values['api'];
 }
 
+
+
 /**
- * The display of the TAP Embed div tag.
+ * The display of the TAP Widget div tag.
+ *
+ * @param $overrides
+ *   An array of kev-value overrides for the TAP Widget
+ *   'data-article-id' - The unique node/article ID for autoloaded articles
+ *   'data-form-style' - Expanded (TRUE or false)
+ *   'data-article-url' - Action URL override
+ *   'data-action-id' - Article override ID
+ *   'data-action-title' - Override the default title
+ *   'data-widget-type' - Override the widget type (defaults to actions_widget
+ * @param $alignment
+ *   Optional, a string setting the alignment of the widget, must accompany CSS
+ *
+ * @return
+ *   The markup for the TAP embed with overrides
+ */
+function takeaction_view_tap_widget($overrides, $alignment = 'center') {
+
+  //Define TAP Widget class (required by TAP)
+  $attributes = array(
+    'class' => array('takepart-take-action-widget')
+  );
+
+  //Create override attributes
+  foreach($overrides as $key => $override){
+    $attributes[$key] = $override;
+  }
+
+  //Set alignment
+  $attributes['class'][] = 'align-'. $alignment;
+
+  //Generate tap-embed div
+  $tapWidget = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'div',
+      '#value' => '',
+      '#attributes' => $attributes
+    )
+  ));
+
+
+  return $tapWidget;
+
+}
+
+
+/**
+ * The display of the TAP Embed (v2) div tag.
  *
  * @param $overrides
  *   An array of kev-value overrides for the TAP Embed
