@@ -390,6 +390,9 @@ aside.inline-content + p{
       padding: 0;
     }
   }
+  .author ul.horizontal-menu li {
+    vertical-align: top;
+  }
   img{
     margin: 0 auto;
   }
@@ -402,6 +405,11 @@ aside.inline-content + p{
   margin-bottom: 20px;
   img{
     margin: 0 auto;
+  }
+}
+@include breakpoint($breakpoint-phablet){
+  .topic-box-wrapper{
+    margin-top: 30px;
   }
 }
 @include breakpoint($breakpoint-tablet){
@@ -514,7 +522,8 @@ figure.align-left {
   }
 }
 .article-wrapper,
-.video-wrapper {
+.video-wrapper,
+.video_playlist-wrapper {
   article{
     @include breakpoint($breakpoint-phablet){
       padding: 0 31px;

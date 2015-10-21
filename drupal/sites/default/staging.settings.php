@@ -13,19 +13,9 @@ $conf += array('facebook_app_id' => '247137505296280');
 $conf += array(
   'takeaction_domain' => 'stage-takeaction.takepart.com',
   'services_domain' => 'stage-api.takepart.com',
+  'tapembed_domain' => 'stage-tapembed.takepart.com',
   );
 
-// TAP Integration
-$conf += array(
-  'takeaction_widget_host' => "https://{$conf['takeaction_domain']}",
-  'takeaction_influence_overlay_js' => "//{$conf['takeaction_domain']}/assets/influence.js",
-  'signature_action_import_tap_domain' => "{$conf['takeaction_domain']}",
-  'signature_import_feed' => "http://{$conf['takeaction_domain']}/api/actions",
-  'takeaction_publisher_id' => 'd84909c52edcceb20c7bba62052b1b01',
-  'takeaction_widget_script' => '/assets/publisher.js?v=3.7',
-  'takeaction_awareness_script' => "//{$conf['takeaction_domain']}/assets/awareness.js",
-);
-  
 // Log signups for debugging
 $conf += array('pm_signup_log' => TRUE);
 
@@ -45,7 +35,8 @@ $conf['search_api_solr_overrides'] = array(
   'takepart_solr_production' => array(
     'name' => t('TakePart SOLR Production (Stage settings)'),
     'options' => array(
-      'host' => '10.1.15.30',
+      'host' => '10.1.15.50', // new host
+	 // 'host' => '10.1.15.30', old host
       'port' => 8080,
       'path' => '/solr/takepart_core',
     ),

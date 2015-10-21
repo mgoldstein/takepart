@@ -10,14 +10,19 @@
  */
 function fresh_page_alter(&$page){
   $node = menu_get_object();
-  if($node->type == 'openpublish_article'){
-    $path = drupal_get_path('theme', 'fresh');
-    $page['content']['#attached']['css'][] = $path.'/css/page-article.css';
+  switch ($node -> type) {
+    case 'openpublish_article':
+      $css_file = 'page-article';
+      break;
+    case 'video':
+      $css_file = 'page-video';
+      break;
+    case 'video_playlist':
+      $css_file = 'page-video-playlist';
+      break;
   }
-  if($node->type == 'video'){
-    $path = drupal_get_path('theme', 'fresh');
-    $page['content']['#attached']['css'][] = $path.'/css/page-video.css';
-  }
+  $path = drupal_get_path('theme', 'fresh');
+  $page['content']['#attached']['css'][] = $path.'/css/' . $css_file . '.css';
 }
 
 /**
@@ -49,6 +54,9 @@ function fresh_css_alter(&$css){
     unset($css[$theme_path. '/css/page-default.css']);
   }
   if(isset($css[$theme_path. '/css/page-video.css'])){
+    unset($css[$theme_path. '/css/page-default.css']);
+  }
+  if(isset($css[$theme_path. '/css/page-video-playlist.css'])){
     unset($css[$theme_path. '/css/page-default.css']);
   }
 }

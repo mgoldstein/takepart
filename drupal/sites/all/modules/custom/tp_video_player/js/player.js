@@ -22,7 +22,7 @@
         if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
           settings['primary'] = 'flash';
         }
-        
+
         //we will force it to use html5 as primary
         if (settings['chromeless']) {
           settings['primary'] = 'html5';
@@ -61,18 +61,18 @@
           //init the playlist after processing
           tp_video_playlist_init(element, settings, index);
         }
-        
+
         //bind the chromeless play at the end of the jwplayer init
         $(window).bind('scroll', function() {
           if (chromeless_timer) {
             window.clearTimeout(chromeless_timer);
             chromeless_timer = null;
           }
-          
+
           chromeless_timer = setTimeout(function() {
             tp_chromeless_play();
           }, 75);
-          
+
         });
       });
 
@@ -137,7 +137,7 @@
    *    This function is used to process the settings
    */
   window.tp_video_playlist_init = function(element, settings, index) {
-    var playlist = $(element).parent().parent();
+    var playlist = $(element).parent().parent().parent();
 
     //initialize player only after geoip2 call
     geoip2.country(function(response) {
@@ -202,7 +202,7 @@
         $(playlist).addClass('blocked');
         return;
       }
-      
+
       //if it has passed all conditions then render a jwplayer
       jwplayer(element).setup(settings);
       tp_init_jwplayer_callbacks(element, index, settings);
@@ -214,14 +214,13 @@
    *    This function is used to init the jwplayer callbacks
    */
   function tp_init_jwplayer_callbacks(element, index, settings){
-
     var element_id = $(element).attr('id');
-    var playlist = $('#' + element_id).parent().parent();
+    var playlist = $('#' + element_id).parent().parent().parent();
     var chromeless = settings['chromeless'];
-    
+
     window['currentVideo_' + index] = 0;
     updateVideo(window['currentVideo_' + index], playlist);
-    
+
     //only override controls if chromeless is set
     if (chromeless) {
       jwplayer(element_id).onPlay(function(event) {
@@ -229,12 +228,12 @@
         $('#' + element_id).parent().addClass('playing');
         $('#' + element_id).css('background-color', 'white');
       });
-      
+
       jwplayer(element_id).onPause(function(event) {
         $('#' + element_id).parent().removeClass('playing');
       });
     }
-    
+
     jwplayer(element_id).onComplete(function(event) {
       window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
 
@@ -271,7 +270,7 @@
       playlist.find('ul.video-playlist .video-item[data-video-number="' + current_video + '"]').addClass('active');
     }
   }
-  
+
   /**
    *  @function:
    *    function used to play and trigger chromeless tp videos within the view
@@ -284,27 +283,27 @@
     var window_y_pos = window.pageYOffset;
     var window_viewport = window_y_pos + window_height;
     var window_mid_pos = window_y_pos + (window_height / 2);
-    
+
     var autoplay = $.cookie('chromeless-autoplay');
-   
+
     //only do autoplay if no cookie is set
-    if (autoplay == null) { 
+    if (autoplay == null) {
       //check each chromless video
       $('.chromeless-video').each(function(key, value) {
         //variables local to scope
         var player_y_pos = $(this).offset();
         var player_mid_height = $(this).height() / 2;
-        var player_mid_pos = player_y_pos.top + player_mid_height;  
+        var player_mid_pos = player_y_pos.top + player_mid_height;
         var control_id = $(this).data('videoControlId');
-        
+
         //if it has class then dont continue
         if ($(this).hasClass('disable-autoplay')) {
           return;
         }
-        
+
         if (player_mid_pos > window_mid_pos - 150 && player_mid_pos < window_mid_pos + 150 ) {
           var video_state = jwplayer(control_id).getState();
-          
+
           //only want to play if it's not playing
           if (video_state != "PLAYING") {
             jwplayer(control_id).play();
@@ -319,19 +318,19 @@
       });
     }
   }
-  
+
   //document ready
   $(document).ready(function() {
     $('.chromeless-controls .pause').click(function() {
       var player_id = $(this).data('playerId');
       jwplayer(player_id).pause();
-      
+
       //adds a class so that it disables autoplay
       $(this).parent().parent().addClass('disable-autoplay');
 
       return false;
     });
-    
+
     $('.chromeless-controls .stop-autoplay').click(function() {
       $.cookie("chromeless-autoplay", 0);
       $(".stop-autoplay").hide();

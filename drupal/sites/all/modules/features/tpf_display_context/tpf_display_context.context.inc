@@ -1167,6 +1167,39 @@ function tpf_display_context_context_default_contexts() {
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
+  $context->name = 'tp4_climate_change';
+  $context->description = 'Context for TP4 Climate Change landing page';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'free-tags/climate-change' => 'free-tags/climate-change',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-mod_tracking' => array(
+          'module' => 'boxes',
+          'delta' => 'mod_tracking',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Context for TP4 Climate Change landing page');
+  t('TP4');
+  $export['tp4_climate_change'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
   $context->name = 'tp4_dtm';
   $context->description = 'Expose DTM';
   $context->tag = 'DTM';
@@ -1185,6 +1218,39 @@ function tpf_display_context_context_default_contexts() {
   t('DTM');
   t('Expose DTM');
   $export['tp4_dtm'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'tp4_environment';
+  $context->description = 'Context for TP4 Environment landing page';
+  $context->tag = 'TP4';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        'environment' => 'environment',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'boxes-mod_tracking' => array(
+          'module' => 'boxes',
+          'delta' => 'mod_tracking',
+          'region' => 'footer',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Context for TP4 Environment landing page');
+  t('TP4');
+  $export['tp4_environment'] = $context;
 
   $context = new stdClass();
   $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
@@ -1595,72 +1661,6 @@ function tpf_display_context_context_default_contexts() {
   t('Ad positions for Topic Fronts');
   t('TP4');
   $export['tp4_topic'] = $context;
-
-  $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
-  $context->api_version = 3;
-  $context->name = 'tp4_video';
-  $context->description = 'Right rail content and ad positions for TP4 playlists only.';
-  $context->tag = 'TP4';
-  $context->conditions = array(
-    'node' => array(
-      'values' => array(
-        'video_playlist' => 'video_playlist',
-      ),
-      'options' => array(
-        'node_form' => '1',
-      ),
-    ),
-  );
-  $context->reactions = array(
-    'block' => array(
-      'blocks' => array(
-        'boxes-takepart' => array(
-          'module' => 'boxes',
-          'delta' => 'takepart',
-          'region' => 'header',
-          'weight' => '-11',
-        ),
-        'boxes-box-66c05d6f' => array(
-          'module' => 'boxes',
-          'delta' => 'box-66c05d6f',
-          'region' => 'sidebar',
-          'weight' => '-10',
-        ),
-        'newsletter_campaign-51' => array(
-          'module' => 'newsletter_campaign',
-          'delta' => '51',
-          'region' => 'sidebar',
-          'weight' => '-8',
-        ),
-        'bean--of-the-day' => array(
-          'module' => 'bean',
-          'delta' => '-of-the-day',
-          'region' => 'sidebar',
-          'weight' => '-7',
-        ),
-        'boxes-box-1104adce' => array(
-          'module' => 'boxes',
-          'delta' => 'box-1104adce',
-          'region' => 'sidebar',
-          'weight' => '-6',
-        ),
-        'boxes-bg_skin_sponsor' => array(
-          'module' => 'boxes',
-          'delta' => 'bg_skin_sponsor',
-          'region' => 'suffix',
-          'weight' => '-10',
-        ),
-      ),
-    ),
-  );
-  $context->condition_mode = 0;
-
-  // Translatables
-  // Included for use with string extractors like potx.
-  t('Right rail content and ad positions for TP4 playlists only.');
-  t('TP4');
-  $export['tp4_video'] = $context;
 
   return $export;
 }

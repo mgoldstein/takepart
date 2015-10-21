@@ -15,17 +15,7 @@ $conf += array('facebook_app_id' => '247137505296280');
 $conf += array(
   'takeaction_domain' => 'takeaction.takepart.com',
   'services_domain' => 'api.takepart.com',
-);
-
-// TAP Integration
-$conf += array(
-  'takeaction_widget_host' => "https://{$conf['takeaction_domain']}",
-  'takeaction_influence_overlay_js' => "//{$conf['takeaction_domain']}/assets/influence.js",
-  'signature_action_import_tap_domain' => "{$conf['takeaction_domain']}",
-  'signature_import_feed' => "http://{$conf['takeaction_domain']}/api/actions",
-  'takeaction_publisher_id' => 'd84909c52edcceb20c7bba62052b1b01',
-  'takeaction_widget_script' => '/assets/publisher.js?v=3.7',
-  'takeaction_awareness_script' => "//{$conf['takeaction_domain']}/assets/awareness.js",
+  'tapembed_domain' => 'tapembed.takepart.com',
 );
 
 // Do not log signups in production
@@ -42,3 +32,15 @@ ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED);
 // Shared Assets
 $conf['shared_assets_path'] = '//s3.amazonaws.com/tab_assets/shared_assets/';
 
+// Solr Server settings
+$conf['search_api_solr_overrides'] = array(
+  'takepart_solr_production' => array(
+    'name' => t('TakePart SOLR (Production settings)'),
+    'options' => array(
+      'host' => '10.2.5.50', // new host
+	 // 'host' => '10.2.5.30',  old host 
+      'port' => 8080,
+      'path' => '/solr/takepart_core',
+    ),
+  ),
+);

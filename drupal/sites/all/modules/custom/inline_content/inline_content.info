@@ -12,6 +12,7 @@ files[] = handlers/InlineContentMedia.class.php
 files[] = handlers/InlineContentNewsletter.class.php
 files[] = handlers/InlineContentNodes.class.php
 files[] = handlers/InlineContentTakeActionWidget.class.php
+files[] = handlers/InlineContentTapEmbed.class.php
 files[] = handlers/InlineContentImage.class.php
 files[] = handlers/InlineContentAdBlock.class.php
 files[] = handlers/InlineContentPullQuote.class.php

@@ -397,9 +397,15 @@ function inline_content_replacement_types() {
   );
 
   $types['take_action_widget'] = array(
-    'label' => t('Take Action Widget'),
-    'description' => t('Take Action Widget.'),
+    'label' => t('TAP Banner v1 - Donations and Influence'),
+    'description' => t('TAP Banner v1 - Donations and Influence'),
     'controller' => 'InlineContentTakeActionWidget',
+  );
+
+  $types['tap_embed'] = array(
+    'label' => t('Tap Banner v2 - All Actions but Donations and Influence'),
+    'description' => t('Tap Banner v2 - All Actions but Donations and Influence'),
+    'controller' => 'InlineContentTapEmbed',
   );
 
   $types['image'] = array(

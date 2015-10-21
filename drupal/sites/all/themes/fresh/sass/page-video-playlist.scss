@@ -20,7 +20,6 @@
 @import "base/normalize";
 
 /* Modules */
-@import "base/modules/tap";
 @import "base/modules/mobile-menu";
 @import "base/modules/bxslider";
 @import "base/modules/video_playlist";
@@ -46,7 +45,7 @@
   }
 }
 
-.video-wrapper{
+.video_playlist-wrapper{
   position: relative;
   .sticky-wrapper{
     @include breakpoint($breakpoint-phablet){
@@ -54,6 +53,7 @@
       margin-left: 15px;
     }
   }
+
   aside.social.social-vertical {
     @include breakpoint($breakpoint-phablet){
       position: absolute;
@@ -62,16 +62,27 @@
       position: static;
     }
   }
+
   article{
     color: #3A3A3A;
     h1.title, #more-on-takepart h2{
       color: $black;
     }
     .main-media {
-      margin-bottom: 8px;
-      height: 0;
-      padding-bottom: 56.25%;
-      overflow: hidden;
+      .current-video .jwplayer {
+        height: 0;
+        padding-bottom: 56.25%;
+      }
+      .video-description {
+        @include breakpoint($breakpoint-mobile){
+          font-size: 15px;
+          line-height: 16px;
+        }
+        @include breakpoint($breakpoint-tablet){
+          font-size: 20px;
+          line-height: 27px;
+        }
+      }
     }
     .series-navigation {
    a {
@@ -90,6 +101,50 @@
 
     }
   }
+  /*overwriting _video_playlist.scss*/
+  .bx-wrapper .bx-prev,
+  .bx-wrapper .bx-next {
+    font-size: 1.9em;
+  }
+  .bx-wrapper .bx-prev {
+    left: -13px;
+  }
+  .bx-wrapper .bx-next {
+    right: 6px;
+  }
+  [data-playlist-type="detailed"] {
+    @include breakpoint($breakpoint-phablet){
+      min-height: 588px;
+    }
+    @include breakpoint($breakpoint-mobile){
+      min-height: 588px;
+    }
+    @include breakpoint($breakpoint-desktop){
+      min-height: 780px;
+    }
+  }
+
+  [data-playlist-type="basic"] {
+    @include breakpoint($breakpoint-phablet){
+      min-height: 550px;
+    }
+    @include breakpoint($breakpoint-mobile){
+      min-height: 440px;
+    }
+    @include breakpoint($breakpoint-tablet){
+      min-height: 620px;
+    }
+    @include breakpoint($breakpoint-desktop){
+      min-height: 680px;
+    }
+  }
+
+  [data-playlist-type="hidelist"] {
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+
+
 }
 h1.title{
   margin-top: 20px; //Total spacing should be 30px accounting for font height gap

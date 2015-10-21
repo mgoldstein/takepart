@@ -1,6 +1,9 @@
 .vocabulary-topic {
   .page__title {
     margin-bottom: .67em;
+    @include breakpoint($breakpoint-tablet) {
+      padding-top: 30px;
+    }
   }
   .field-name-field-promo-content {
     @include clearfix();
@@ -103,7 +106,7 @@
     .views-field-field-flashcard-page-headline {
       font-size: 1.142857143em;
       line-height: 1.25;
-      
+
       .node-type-openpublish_photo_gallery {
         @include icon-photo-gallery();
       }
@@ -112,7 +115,7 @@
       }
 
       @include dashed-separator-after();
-      
+
     }
   } // .views-row
 

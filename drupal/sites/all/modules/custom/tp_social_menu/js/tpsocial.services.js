@@ -36,26 +36,26 @@
   var get_share_url = function (url, title, callback, _shorten) {
     var shorten = (typeof _shorten != 'undefined') ? _shorten : false;
     if (window.TP.tabHost) {
-	 $.ajax({
-	   url: window.TP.tabHost + "/share.json",
-	   dataType: 'json',
-	   data: {
-		url: url,
-		title: title,
-		shorten: shorten,
-		login_info: get_login_cookie()
-	   },
-	   type: 'POST',
-	   async: false,
-	   success: function (data) {
-		callback(data.share_url);
-	   },
-	   error: function () {
-		callback(url);
-	   }
-	 });
+      $.ajax({
+        url: window.TP.tabHost + "/share.json",
+        dataType: 'json',
+        data: {
+          url: url,
+          title: title,
+          shorten: shorten,
+          login_info: get_login_cookie()
+        },
+        type: 'POST',
+        async: false,
+        success: function (data) {
+          callback(data.share_url);
+        },
+        error: function () {
+          callback(url);
+        }
+      });
     } else {
-	 callback(url);
+      callback(url);
     }
   }
 
@@ -68,6 +68,26 @@
     	 get_share_url(args.url, args.title, function (url) {
     	   var parser = document.createElement("a");
     	   parser.href = args.url;
+
+         //Set the url to the link
+         $('.tp-social .tp-social-facebook').attr('href',"http://facebook.com/share.php?u="+url);
+         //Desktop view will do a window.open, but Mobile view will do a new tab
+         if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+           FB.ui(
+             {
+               method: 'share',
+               href: url
+             },
+             function (response) {
+               if (response && response.post_id) {
+                 // Post was published
+                 $window.trigger('tp-social-share', args);
+               }
+               else {
+                 //Post was not published
+               }
+             });
+          }
 
     	   function openFBLoginDialogManually() {
            if ($('body').hasClass('tploggedin')) {
@@ -114,22 +134,8 @@
     	   if (navigator.userAgent.match('CriOS')) {
     	     fbCompleteLogin();
     	   }
-
-    	   FB.ui(
-    			 {
-    			   method: 'share',
-    			   href: url
-    			 },
-    			 function (response) {
-    			   if (response && response.post_id) {
-                 // Post was published
-                 $window.trigger('tp-social-share', args);
-              }
-              else {
-               //Post was not published
-              }
-           });
     	 });
+       return true;
       }
   });
 
@@ -139,52 +145,60 @@
     width: 550,
     height: 420,
     share: function (args) {
-	 // Replace variables in twitter template
-	 var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
-	 var template_tplvar_clean_reg = /({{)|(}})/g;
+      // Replace variables in twitter template
+      var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
+      var template_tplvar_clean_reg = /({{)|(}})/g;
 
-	 var text = args.text || '{{title}}';
-	 var matches = text.match(twitter_tpl_reg);
-	 var url_obj = {
-	   url: args.url,
-	   via: args.via,
-	   in_reply_to: args.in_reply_to,
-	   hashtags: args.hashtags,
-	   related: args.related
-	 };
+      var text = args.text || '{{title}}';
+      var matches = text.match(twitter_tpl_reg);
+      var url_obj = {
+        url: args.url,
+        via: args.via,
+        in_reply_to: args.in_reply_to,
+        hashtags: args.hashtags,
+        related: args.related
+      };
 
-	 for (var i in matches) {
-	   var match = matches[i];
-	   var prop = match.replace(template_tplvar_clean_reg, '');
+      for (var i in matches) {
+        var match = matches[i];
+        var prop = match.replace(template_tplvar_clean_reg, '');
 
-	   if (match != 'text' && args[prop] != undefined && args[prop]) {
-		text = text.replace(match, args[prop]);
-	   } else {
-		text = text.replace(match, '');
-	   }
-	 }
+        if (match != 'text' && args[prop] != undefined && args[prop]) {
+          text = text.replace(match, args[prop]);
+        } else {
+          text = text.replace(match, '');
+        }
+      }
 
-	 if (text) {
-	   url_obj.text = text;
-	 }
-	 get_share_url(args.url, args.title, function (new_url) {
-	   var url_parts = [];
-	   url_obj.url = new_url;
-	   for (var i in url_obj) {
-		var val = url_obj[i];
-		if (val !== undefined && val)
-		  url_parts.push(i + '=' + encodeURIComponent(val));
-	   }
-	   var url = 'https://twitter.com/intent/tweet?' + url_parts.join('&');
+      if (text) {
+        url_obj.text = text;
+      }
 
-	   // Open twitter share
-	   var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes';
-	   var left = 0;
-	   var tops = Number((screen.height / 2) - (args.height / 2));
-	   window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height, "left=" + left, "top=" + tops].join(", "));
-	 }, true);
+      get_share_url(args.url, args.title, function (new_url) {
+        var url_parts = [];
+        url_obj.url = new_url;
+        for (var i in url_obj) {
+          var val = url_obj[i];
+          if (val !== undefined && val)
+          url_parts.push(i + '=' + encodeURIComponent(val));
+        }
+        var url = 'https://twitter.com/intent/tweet?' + url_parts.join('&');
 
-	 //$window.trigger('tp-social-share', args);
+        // Open twitter share
+        var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes';
+        var left = 0;
+        var tops = Number((screen.height / 2) - (args.height / 2));
+
+        //Set the url to the link
+        $('.tp-social .tp-social-twitter').attr('href',url);
+        //Desktop view will do a window.open, but Mobile view will do a new tab
+        if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+          window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height, "left=" + left, "top=" + tops].join(", "));
+        }
+
+      }, true);
+
+      return true;
     }
   });
 
@@ -194,9 +208,15 @@
     width: 1000,
     height: 650,
     share: function (args) {
-	 var url = 'http://mail.aol.com/compose-message.aspx?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'http://mail.aol.com/compose-message.aspx?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      //Set the url to the link
+      $('.tp-social .tp-social-aolmail').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -206,9 +226,14 @@
     width: 660,
     height: 650,
     share: function (args) {
-	 var url = 'http://compose.mail.yahoo.com/?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'http://compose.mail.yahoo.com/?subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-yahoomail').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -218,9 +243,14 @@
     width: 490,
     height: 600,
     share: function (args) {
-	 var url = 'https://mail.live.com/default.aspx?rru=compose&subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'https://mail.live.com/default.aspx?rru=compose&subject=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-hotmail').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -230,9 +260,14 @@
     width: 460,
     height: 500,
     share: function (args) {
-	 var url = 'https://mail.google.com/mail/?view=cm&ui=1&tf=0&fs=1&su=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'https://mail.google.com/mail/?view=cm&ui=1&tf=0&fs=1&su=' + encodeURIComponent(args.title) + '&body=' + encodeURIComponent(args.url);
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-gmail').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -244,18 +279,23 @@
     media: '',
     description: '',
     share: function (args) {
-	 get_share_url(args.url, args.title, function (_new_url) {
-	   if (!args.description)
-		args.description = args.title;
-	   args.description = args.description + '';
-	   if (args.description.length > 499) {
-		args.description = args.description.substring(0, 496) + '...';
-	   }
-	   var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(_new_url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
+      get_share_url(args.url, args.title, function (_new_url) {
+        if (!args.description)
+        args.description = args.title;
+        args.description = args.description + '';
+        if (args.description.length > 499) {
+          args.description = args.description.substring(0, 496) + '...';
+        }
+        var url = '//pinterest.com/pin/create/button/?url=' + encodeURIComponent(_new_url) + '&media=' + encodeURIComponent(args.media) + '&description=' + encodeURIComponent(args.description);
 
-	   var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	   window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
-	 });
+        var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+        $('.tp-social .tp-social-pinterest').attr('href',url);
+        //Desktop view will do a window.open, but Mobile view will do a new tab
+        if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+          window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+        }
+      });
+      return true;
     }
   });
 
@@ -265,15 +305,20 @@
     width: 460,
     height: 500,
     share: function (args) {
-	 if ($('body').hasClass('tploggedin')) {
-	   var logged_class = '-influence';
-	 }
-	 else {
-	   var logged_class = '';
-	 }
-	 var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent($("meta[property='og:description']").attr("content")) + '&url=' + args.url + '&cmpid=organic-share-tumblr' + logged_class;
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      if ($('body').hasClass('tploggedin')) {
+        var logged_class = '-influence';
+      }
+      else {
+        var logged_class = '';
+      }
+      var url = 'http://www.tumblr.com/share/link?name=' + encodeURIComponent(args.title) + '&description=' + encodeURIComponent($("meta[property='og:description']").attr("content")) + '&url=' + args.url + '&cmpid=organic-share-tumblr' + logged_class;
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-tumblr').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -281,23 +326,33 @@
     name: 'whatsapp',
     display: 'WhatsApp',
     share: function (args) {
-	 var url = 'whatsapp://send?text=' + encodeURIComponent("Take a look at this awesome website: " + args.url);
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'whatsapp://send?text=' + encodeURIComponent("Take a look at this awesome website: " + args.url);
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-whatsapp').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
-  
+
   $.tpsocial.add_service({
     name: 'googleplus',
     display: 'Google +1',
     width: 600,
     height: 600,
     share: function (args) {
-	 get_share_url(args.url, args.title, function (_new_url) {
-	   var url = 'https://plus.google.com/share?url=' + encodeURIComponent(_new_url);
-	   var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	   window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
-	 });
+      get_share_url(args.url, args.title, function (_new_url) {
+        var url = 'https://plus.google.com/share?url=' + encodeURIComponent(_new_url);
+        var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+        $('.tp-social .tp-social-googleplus').attr('href',url);
+        //Desktop view will do a window.open, but Mobile view will do a new tab
+        if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+          window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+        }
+      });
+      return true;
     }
   });
 
@@ -307,11 +362,16 @@
     width: 850,
     height: 600,
     share: function (args) {
-	 get_share_url(args.url, args.title, function (_new_url) {
-	   var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(_new_url) + '&title=' + encodeURIComponent(args.title);
-	   var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	   window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
-	 });
+      get_share_url(args.url, args.title, function (_new_url) {
+        var url = 'http://www.reddit.com/submit?url=' + encodeURIComponent(_new_url) + '&title=' + encodeURIComponent(args.title);
+        var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+        $('.tp-social .tp-social-reddit').attr('href',url);
+        //Desktop view will do a window.open, but Mobile view will do a new tab
+        if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+          window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+        }
+      });
+      return true;
     }
   });
 
@@ -321,9 +381,14 @@
     width: 550,
     height: 450,
     share: function (args) {
-	 var url = 'http://www.myspace.com/Modules/PostTo/Pages/?u=' + encodeURIComponent(args.url) + '&t=' + encodeURIComponent(args.title);
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'http://www.myspace.com/Modules/PostTo/Pages/?u=' + encodeURIComponent(args.url) + '&t=' + encodeURIComponent(args.title);
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-myspace').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -333,9 +398,14 @@
     width: 550,
     height: 420,
     share: function (args) {
-	 var url = 'https://delicious.com/post?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&notes=';
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'https://delicious.com/post?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&notes=';
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-delicious').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -345,9 +415,14 @@
     width: 600,
     height: 390,
     share: function (args) {
-	 var url = 'http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&ro=false&summary=&source=';
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'http://www.linkedin.com/shareArticle?mini=true&url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&ro=false&summary=&source=';
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-linkedin').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -357,9 +432,14 @@
     width: 600,
     height: 370,
     share: function (args) {
-	 var url = 'http://favorites.my.aol.com/ffclient/AddBookmark?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&description=';
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'http://favorites.my.aol.com/ffclient/AddBookmark?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&description=';
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-myaol').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -369,9 +449,14 @@
     width: 1020,
     height: 570,
     share: function (args) {
-	 var url = 'https://profile.live.com/P.mvc#!/badge?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'https://profile.live.com/P.mvc#!/badge?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-myaol').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -381,9 +466,14 @@
     width: 1070,
     height: 670,
     share: function (args) {
-	 var url = 'http://digg.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&bodytext=';
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'http://digg.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title) + '&bodytext=';
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-digg').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -393,9 +483,14 @@
     width: 790,
     height: 560,
     share: function (args) {
-	 var url = 'http://www.stumbleupon.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'http://www.stumbleupon.com/submit?url=' + encodeURIComponent(args.url) + '&title=' + encodeURIComponent(args.title);
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-stumbleupon').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
@@ -405,9 +500,14 @@
     width: 1030,
     height: 700,
     share: function (args) {
-	 var url = 'http://www.hyves.nl/profilemanage/add/tips/?name=' + encodeURIComponent(args.title) + '&text=' + encodeURIComponent(args.url) + '&type=12#';
-	 var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
-	 window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      var url = 'http://www.hyves.nl/profilemanage/add/tips/?name=' + encodeURIComponent(args.title) + '&text=' + encodeURIComponent(args.url) + '&type=12#';
+      var windowOptions = 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes';
+      $('.tp-social .tp-social-hyves').attr('href',url);
+      //Desktop view will do a window.open, but Mobile view will do a new tab
+      if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
+        window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      }
+      return true;
     }
   });
 
