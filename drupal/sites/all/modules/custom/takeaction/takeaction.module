@@ -205,7 +205,6 @@ function takeaction_view_tap_widget($overrides, $alignment = 'center') {
     )
   ));
 
-
   return $tapWidget;
 
 }
@@ -261,4 +260,38 @@ function takeaction_view_tap_embed($overrides, $alignment = 'center') {
 
   return $markup;
 
+}
+
+/**
+ * Implements hook_theme
+ */
+function takeaction_theme() {
+  return array(
+    'takeaction_widget' => array(
+      'variables' => array(
+        'type' => '', //'tap_embed' or 'tap_widget'
+        'overrides' => array(),
+        'alignment' => ''
+      )
+    )
+  );
+}
+
+/**
+ * Implements theme_HOOK
+ */
+function theme_takeaction_widget($variables){
+
+  //Define variables
+  $overrides = $variables['overrides'];
+  $alignment = $variables['alignment'];
+
+  switch($variables['type']){
+    case 'tap_embed':
+      //Return TAP Embed (v2)
+      return takeaction_view_tap_embed($overrides, $alignment);
+    default:
+      //Return TAP Widget
+      return takeaction_view_tap_widget($overrides, $alignment);
+  }
 }
