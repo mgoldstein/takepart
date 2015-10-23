@@ -959,12 +959,12 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_video',
-      3 => 'group_background_image',
+      2 => 'group_background_image',
+      3 => 'group_background_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

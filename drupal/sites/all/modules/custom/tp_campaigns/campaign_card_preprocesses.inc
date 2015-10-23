@@ -30,11 +30,54 @@ function tp_campaigns_card_title($variables){
  */
 function tp_campaigns_card_content_tap_widget($variables){
 
-	/* Render TAP Widget */
-	if($tap_widget = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_ref')){
-		$tap_widget = field_view_field('node', $variables['node'], 'field_campaign_tab_widget_ref', array('type' => 'tp_card_tab_widget_reference'));
-		$tap_widget = drupal_render($tap_widget);
-	}
+  //Get TAP Widget Type
+  $tap_type = field_get_items('node', $variables['node'], 'field_campaign_tap_widget_type');
+
+  //Get Action Override ID
+  if($tap_action = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_ref')){
+
+    $mapping = SignatureActionMapping::loadByNodeId($tap_action[0]['target_id']);
+    if ($mapping !== FALSE) {
+      $tap_action_id = $mapping->tapID();
+    }
+  }
+
+  //Get Expose value
+  if($tap_expanded = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_expose')){
+    $tap_expanded = $tap_expanded ? TRUE : FALSE;
+  }
+
+  //Set TAP version specific settings
+  $overrides = array();
+  if(!empty($tap_type) && $tap_type[0]['value'] == 2){
+    //Set type
+    $type = 'tap_embed';
+
+    //Set overrides specific to TAP Embed settings
+    $overrides['data-action-id'] = $tap_action_id;
+    $overrides['data-expanded'] = $tap_expanded;
+
+  }else { //Use original TAP
+    //Set type
+    $type = 'tap_widget';
+
+    //Set overrides specific to TAP Embed settings
+    $overrides['data-action-id'] = $tap_action_id;
+    $overrides['data-form-style'] = $tap_expanded;
+
+  }
+
+  //Set Alignment
+  $alignment = 'left';
+  if($alignment = field_get_items('node', $variables['node'], 'field_campaign_content_side')){
+    $alignment = ($alignment[0]['value'] == 0 ? 'left' : 'right');
+  }
+
+  $tap_widget = theme('takeaction_widget', array(
+    'type' => $type,
+    'overrides' => $overrides,
+    'alignment' => $alignment
+  ));
 
 	/* Render Image Field */
 	if($image = field_get_items('node', $variables['node'], 'field_campaign_media_photo')){
