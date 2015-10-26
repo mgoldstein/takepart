@@ -20,9 +20,7 @@
 }
 
 body {
-  .article-wrapper,
-  .video-wrapper,
-  .video_playlist-wrapper {
+  .fresh-content-wrapper {
     .icon.i-influence:after {
       content: '\e116';
       font-size: 26px;
