@@ -194,7 +194,10 @@ article{
 .video_playlist-wrapper,
 .article-wrapper,
 .video-wrapper {
-  max-width: 980px;
+  max-width: 960px;
+  // article {
+  //   padding: 0;
+  // }
   margin: 0 auto;
 }
 
