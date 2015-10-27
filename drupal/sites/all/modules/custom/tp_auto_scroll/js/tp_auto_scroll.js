@@ -22,8 +22,8 @@
         var $window = $(window),
           elTop = $('#next-article').offset().top;
         var window_bottom = $window.scrollTop() + $window.height();
-        var last_article = $('article:last').parent().height() / 2;
-        //var last_article = $('.fresh-content-wrapper:last').height() / 2;
+        var last_article = $('article').last().parent().height() / 2;
+        //var last_article = $('.fresh-content-wrapper').last().height() / 2;
         /* when the page scrolls to within 480px of #next-article */
         if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
 
