@@ -86,7 +86,6 @@
   window.tp_add_article_ads = function(ads_object, viewport_offset, id, show_ads) {
     //variable
     var view_offset = viewport_offset;
-    var selector = ads_object['selector'];
 
     //conditional checks to ensure that
     var auto_scroll_status = !(Drupal.settings.tpAutoScroll == undefined);
