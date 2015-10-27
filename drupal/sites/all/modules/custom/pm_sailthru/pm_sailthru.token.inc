@@ -20,19 +20,19 @@ function _pm_metatag_sailthru_build($node) {
   $topics = $node->field_topic['und'];
   if (!empty($topics)) {
     foreach ($topics as $topic) {
-	 $tid = $topic['tid'];
-	 $term = taxonomy_term_load($tid);
-	 $stripamp = str_replace(" & ", " ", $term->name);
-	 $tag_array[] = str_replace(" ", "-", $stripamp);
+      $tid = $topic['tid'];
+      $term = taxonomy_term_load($tid);
+      $stripamp = str_replace(" & ", " ", $term->name);
+      $tag_array[] = str_replace(" ", "-", $stripamp);
     }
   }
   $freetags = $node->field_free_tag['und'];
   if (!empty($freetags)) {
     foreach ($freetags as $tag) {
-	 $tid = $tag['tid'];
-	 $term = taxonomy_term_load($tid);
-	 $stripamp = str_replace(" & ", " ", $term->name);
-	 $tag_array[] = str_replace(" ", "-", $stripamp);
+      $tid = $tag['tid'];
+      $term = taxonomy_term_load($tid);
+      $stripamp = str_replace(" & ", " ", $term->name);
+      $tag_array[] = str_replace(" ", "-", $stripamp);
     }
   }
   $tag_array[] = $node->type;
@@ -48,8 +48,8 @@ function _pm_metatag_sailthru_get_authors($node) {
   if (!empty($aid)) {
     $authors = array();
     foreach ($aid as $nid) {
-	 $author = node_load($nid);
-	 $authors[] = $author->title;
+      $author = node_load($nid);
+      $authors[] = $author->title;
     }
   }
   return implode(', ', $authors);
@@ -59,15 +59,15 @@ function pm_metatag_sailthru_tokens($type, $tokens, array $data = array(), array
   $replacements = array();
   if ($type == 'sailthru_metatags') {
     foreach ($tokens as $name => $original) {
-	 switch ($name) {
-	   case 'tags_type':
-		$replacements[$original] = _pm_metatag_sailthru_build($data['node']);
-		break;
+      switch ($name) {
+        case 'tags_type':
+          $replacements[$original] = _pm_metatag_sailthru_build($data['node']);
+          break;
 
-	   case 'author':
-		$replacements[$original] = _pm_metatag_sailthru_get_authors($data['node']);
-		break;
-	 }
+        case 'author':
+          $replacements[$original] = _pm_metatag_sailthru_get_authors($data['node']);
+          break;
+      }
     }
     return $replacements;
   }

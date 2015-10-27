@@ -1,0 +1,6 @@
+name = SailThru
+description = Sailthru Integration
+package = TakePart
+core = 7.x
+dependencies[] = metatag
+dependencies[] = token_function

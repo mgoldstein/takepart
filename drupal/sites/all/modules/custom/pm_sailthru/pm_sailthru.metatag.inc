@@ -8,7 +8,7 @@
 /**
  * Implements hook_metatag_config_default_alter().
  */
-function pm_metatag_sailthru_metatag_config_default_alter(array &$configs) {
+function pm_sailthru_metatag_config_default_alter(array &$configs) {
   foreach ($configs as &$config) {
     switch ($config->instance) {
 	 case 'global':
@@ -54,7 +54,7 @@ function pm_metatag_sailthru_metatag_config_default_alter(array &$configs) {
 /**
  * Implements hook_metatag_info().
  */
-function pm_metatag_sailthru_metatag_info() {
+function pm_sailthru_metatag_info() {
   $groups = array(
     'custom-sailthru' => array(
 	 'label' => t('SailThru Custom'),
