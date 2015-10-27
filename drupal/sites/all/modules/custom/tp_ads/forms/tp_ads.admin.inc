@@ -28,7 +28,7 @@ function tp_ads_admin_form() {
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad] = array(
       '#tree' => TRUE,
       '#type' => 'fieldset',
-      '#title' => t('Leaderboard Advertisement For Ad '.($ad+1)),
+      '#title' => t('Leaderboard Advertisement For Article '.($ad+1)),
       '#collapsible' => TRUE,
       '#collapsed' => TRUE
     );
@@ -36,7 +36,7 @@ function tp_ads_admin_form() {
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['selector'] = array(
       '#type' => 'textfield',
       '#title' => t('Selector to insert ad'),
-      '#default_value' => (isset($leader_settings['selector'])?$leader_settings['selector']:''),
+      '#default_value' => (isset($leader_settings['selector'])?$leader_settings['selector']:'.mobile-article-ad'),
     );
 
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['ad_slot'] = array(
@@ -70,7 +70,7 @@ function tp_ads_admin_form() {
     $form['tp_ads_article_leader']['tp_ads_article_leader_'.$ad]['desktop'] = array(
       '#tree' => TRUE,
       '#type' => 'fieldset',
-      '#title' => t('Leader Ad for Article - Desktop'),
+      '#title' => t('Leader Ad Slot - Desktop'),
       '#collapsible' => TRUE,
       '#collapsed' => TRUE
     );
@@ -112,19 +112,20 @@ function tp_ads_admin_form() {
 
     //These are the ads that load inside the article
     $settings = variable_get('tp_ads_settings_'.$ad, '');
+
     //js selector
     $form['tp_ads_settings']['tp_ads_settings_'.$ad] = array(
       '#tree' => TRUE,
       '#type' => 'fieldset',
-      '#title' => t('Advertisement Insertion for Ad '.($ad+1)),
+      '#title' => t('Advertisement Insertion for Article '.($ad+1)),
       '#collapsible' => TRUE,
       '#collapsed' => TRUE
     );
 
     $form['tp_ads_settings']['tp_ads_settings_'.$ad]['tp_ads_settings_selector'] = array(
       '#type' => 'textfield',
-      '#title' => t('Selector for Ad Logic for Ad '.($ad+1)),
-      '#default_value' => (isset($settings['tp_ads_settings_selector'])?$settings['tp_ads_settings_selector']:''),
+      '#title' => t('Selector for Ad Logic for Article '.($ad+1)),
+      '#default_value' => (isset($settings['tp_ads_settings_selector'])?$settings['tp_ads_settings_selector']:'.main-content .field-item > p'),
       '#description' => t('Selector for page')
     );
 
@@ -166,7 +167,7 @@ function tp_ads_admin_form() {
       //each form item
       $form['tp_ads_settings']['tp_ads_settings_'.$ad]['tp_ads_setting_'.$ad.'_'.$i] = array(
         '#type' => 'fieldset',
-        '#title' => t('Advertisement - ' . ($i + 1) .  ' - ' . (!empty($ad_slot) ? $ad_slot : 'New Advertisement')),
+        '#title' => t('Ad Slot - ' . ($i + 1) .  ' - ' . (!empty($ad_slot) ? $ad_slot : 'New Ad Slot')),
         '#collapsible' => TRUE,
         '#collapsed' => (!empty($ad_slot)) ? TRUE : FALSE
       );
@@ -207,7 +208,7 @@ function tp_ads_admin_form() {
 
       $form['tp_ads_settings']['tp_ads_settings_'.$ad]['tp_ads_setting_'.$ad.'_'.$i]['desktop_overrides'] = array(
         '#type' => 'fieldset',
-        '#title' => t('Desktop Advertisement'),
+        '#title' => t('Desktop Ad Slot'),
         '#description' => t('If empty it will use same as mobile'),
         '#collapsible' => TRUE,
         '#collapsed' => TRUE
