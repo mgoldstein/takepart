@@ -296,6 +296,9 @@ article{
 
 .feature_article-wrapper{
   article{
+    .main-media .caption {
+      text-align: left;
+    }
     @include breakpoint($breakpoint-tablet){
       width: 100%;
       padding: 0;
@@ -474,6 +477,17 @@ article{
             margin: 15px 0 15px 0;
             text-align: left;
           }
+        }
+      }
+    }
+    //mobile overrides
+    .inline-image-wrapper {
+      @include breakpoint($breakpoint-mobile) {
+        .align-right {
+          margin: 15px 0;
+        }
+        .align-left {
+          margin: 15px 0;
         }
       }
     }
