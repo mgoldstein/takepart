@@ -42,28 +42,32 @@ function tp_campaigns_card_content_tap_widget($variables){
     }
   }
 
-  //Get Expose value
-  if($tap_expanded = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_expose')){
-    $tap_expanded = $tap_expanded ? TRUE : FALSE;
-  }
-
   //Set TAP version specific settings
   $overrides = array();
   if(!empty($tap_type) && $tap_type[0]['value'] == 2){
-    //Set type
+    //Set Type
     $type = 'tap_embed';
 
-    //Set overrides specific to TAP Embed settings
-    $overrides['data-action-id'] = $tap_action_id;
-    $overrides['data-expanded'] = $tap_expanded;
+    //Set Action ID
+    $overrides['data-action-id'] = isset($tap_action_id) ? $tap_action_id : '';
+
+    //Set Expanded value
+    if($tap_expanded = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_expose')){
+      $overrides['data-expanded'] = $tap_expanded[0]['value'] ? 'TRUE' : '';
+    }
+
 
   }else { //Use original TAP
     //Set type
     $type = 'tap_widget';
 
-    //Set overrides specific to TAP Embed settings
-    $overrides['data-action-id'] = $tap_action_id;
-    $overrides['data-form-style'] = $tap_expanded;
+    //Set Action ID
+    $overrides['data-action-id'] = isset($tap_action_id) ? $tap_action_id : '';
+
+    //Set Expanded value
+    if($tap_expanded = field_get_items('node', $variables['node'], 'field_campaign_tab_widget_expose')){
+      $overrides['data-form-style'] = $tap_expanded[0]['value'] ? 'expanded' : '';
+    }
 
   }
 
