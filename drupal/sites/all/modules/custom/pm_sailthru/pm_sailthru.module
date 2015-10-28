@@ -3,7 +3,7 @@
 /**
  * Implements hook_menu
  */
-function pm_sailthru_menu(&$items){
+function pm_sailthru_menu(){
   $items = array();
 
   $items['admin/config/sailthru/feed'] = array(
@@ -13,13 +13,13 @@ function pm_sailthru_menu(&$items){
     'page arguments' => array('pm_sailthru_settings_form'),
     'access arguments' => array('configure pm_sailthru'),
     'type' => MENU_NORMAL_ITEM,
-    'file' => 'pm_sailthru.admin.inc',
+    'file' => 'includes/pm_sailthru.admin.inc',
   );
 
   $items['sailthru/feed'] = array(
     'page callback' => 'pm_sailthru_feed',
     'access callback' => TRUE,
-    'file' => 'pm_sailthru.feed.inc',
+    'file' => 'includes/pm_sailthru.feed.inc',
   );
 
   return $items;

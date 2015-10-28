@@ -4,7 +4,7 @@
  * Sailthru Feed Page
  */
 function pm_sailthru_feed(){
-  
+
   //Get the variables that makeup the feed
   $range = variable_get('pm_sailthru_range', '100');
   $order = variable_get('pm_sailthru_types', 'DESC');
