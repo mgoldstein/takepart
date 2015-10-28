@@ -176,14 +176,8 @@
 
         //reset the data-video-numbers
         $('.video-item', playlist).each(function(index, value) {
-          // if ($(window).width() < 480) {
-          //   $('.image-wrapper', this).height($(this).height());
-          //   $('.image-wrapper .overlay', this).height($('img', this).height());
-          // }
-          // else {
             $('.image-wrapper', this).css('height', '');
             $('.image-wrapper .overlay', this).css('height', '');
-          //}
 
           $(this).attr('data-video-number', index);
 
@@ -357,12 +351,7 @@
       //mobile
       if (playlist.width() <= small) {
         viewMode = 'small';
-        //playlist.addClass(viewMode);
         slides = 2;
-        //destroy on small display
-        // if (window['bxslider_' + index]) {
-        //   window['bxslider_' + index].destroySlider();
-        // }
       }
       //tablet
       else if (playlist.width() < large) {
@@ -384,12 +373,6 @@
         playlist.addClass(viewMode);
         window['bxslider_' + index + '_view_mode'] = viewMode;
       }
-
-      //return if small
-      // if (viewMode == 'small') {
-      //   $(this).show();
-      //   return;
-      // }
 
       //destroy all slider
       if (window['bxslider_' + index] != undefined) {
