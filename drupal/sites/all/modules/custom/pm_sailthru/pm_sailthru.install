@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_install()
+ */
+function pm_sailthru_install(){
+  pm_sailthru_update_7001();
+}
+
+/**
+ * Disable deprecated pm_metatag_sailthru.  Do not delete until after release-3.59
+ */
+function pm_sailthru_update_7001(){
+  if(module_exists('pm_metatag_sailthru')){
+    module_disable(array('pm_metatag_sailthru'), FALSE);
+  }
+}

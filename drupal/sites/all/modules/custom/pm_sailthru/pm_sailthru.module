@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * Implements hook_menu
+ */
+function pm_sailthru_menu(){
+  $items = array();
+
+  $items['admin/config/sailthru/feed'] = array(
+    'title' => 'SailThru JSON Feed Settings',
+    'description' => 'Customize the settings for the JSON feed',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pm_sailthru_settings_form'),
+    'access arguments' => array('configure pm_sailthru'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'includes/pm_sailthru.admin.inc',
+  );
+
+  $items['sailthru/feed'] = array(
+    'page callback' => 'pm_sailthru_feed',
+    'access callback' => TRUE,
+    'file' => 'includes/pm_sailthru.feed.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function pm_sailthru_permission() {
+  return array(
+    'configure pm_sailthru' => array(
+      'title' => t('Configure Sailthru Settings'),
+      'description' => t('Configure settings for the Sailthru JSON feed'),
+      'restrict access' => TRUE,
+    ),
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function pm_sailthru_ctools_plugin_api($owner, $api) {
+  if ($owner == 'metatag' && $api == 'metatag') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function pm_sailthru_theme() {
+  $info['metatag_sailthru'] = array(
+    'render element' => 'element',
+  );
+  return $info;
+}
+
+/**
+ * Theme callback for SailThru metatag.
+ */
+function theme_sailthru($variables) {
+  $element = &$variables['element'];
+  element_set_attributes($element, array(
+    '#name' => 'property',
+    '#value' => 'content'
+  ));
+  unset($element['#value']);
+  return theme('html_tag', $variables);
+}
+
+include_once('pm_sailthru.token.inc');
