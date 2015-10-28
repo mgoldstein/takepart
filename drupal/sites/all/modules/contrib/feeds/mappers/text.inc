@@ -26,6 +26,15 @@ function text_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_nam
         'callback' => 'text_feeds_set_target',
         'description' => t('The @label field of the entity.', array('@label' => $instance['label'])),
       );
+      if ($info['type'] == 'text_with_summary') {
+        // Allow mapping to summary.
+        $targets[$name . ':summary'] = array(
+          'name' => t('@name: Summary', array('@name' => $instance['label'])),
+          'callback' => 'text_feeds_set_target',
+          'description' => t('The @label field of the entity.', array('@label' => $instance['label'])),
+          'real_target' => $name,
+        );
+      }
     }
   }
 }
