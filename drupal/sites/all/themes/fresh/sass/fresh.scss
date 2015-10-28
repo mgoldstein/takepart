@@ -308,10 +308,16 @@ article{
       margin-top: 20px;
     }
     .feature-article-small {
-      font-family: "AdelleSans";
-      font-size: 12px;
-      font-weight: 500;
-      margin: 0;
+     a,p {
+        font-family: "AdelleSans";
+        font-size: 12px;
+        font-weight: 500;
+        margin: 0;
+        color: #3A3A3A;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
     }
     .main-media {
       position: relative;
@@ -320,12 +326,25 @@ article{
         height: auto;
       }
       .caption {
-        padding: 0 15px;
+        padding: 10px 15px;
         position: relative;
       }
     }
+    .section.top {
+      margin: 10px 0 30px 0;
+      .topic-box-wrapper {
+        margin: 0;
+      }
+      .tp_sponsor {
+        margin-top: 5px;
+      }
+    }
+
     .article-header .title-block {
         padding: 0 15px;
+        h1.title {
+          margin-top: 15px;
+        }
     }
     @include breakpoint($breakpoint-tablet) {
       .series-navigation-wrapper,
@@ -453,14 +472,17 @@ article{
     }
       .article-header {
         position: relative;
-        .caption p {
-          position: absolute;
-          top: 10px;
-          @include breakpoint($breakpoint-desktop) {
-           left: 20%;
+        .caption {
+          padding: 0 15px;
+          p {
+            position: absolute;
+            top: 10px;
+            @include breakpoint($breakpoint-desktop) {
+              left: 20%;
+            }
+            left: 13%;
+            padding: 0;
           }
-          left: 13%;
-          padding: 0;
         }
         .title-block {
           padding: 0;
@@ -472,17 +494,26 @@ article{
           }
           left: 13%;
           max-width: 780px;
-          h1.title,.headline,.feature-article-small {
+          h1.title,.headline {
             color: $white;
             margin: 15px 0 15px 0;
             text-align: left;
           }
+          .feature-article-small {
+           a,p {
+            color: $white;
+            }
+          }
+          h1.title {
+            margin-top: 10px;
+          }
+
         }
       }
     }
     //mobile overrides
-    .inline-image-wrapper {
-      @include breakpoint($breakpoint-mobile) {
+    @include breakpoint($breakpoint-mobile) {
+      .inline-image-wrapper {
         .align-right {
           margin: 15px 0;
         }

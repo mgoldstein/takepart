@@ -22,7 +22,9 @@
           <?php if (!empty($variables['media'])): ?>
           <?php print $variables['media']; ?>
           <div class = "title-block">
-            <p class ="feature-article-small">FEATURE ARTICLE</p>
+            <?php if (!empty($variables['field_article_featured_link'])): ?>
+              <?php print $variables['field_article_featured_link']; ?>
+            <?php endif; ?>
             <?php print render($title_prefix); ?>
             <h1 class="title"><?php print $title; ?></h1>
             <?php print render($title_suffix); ?>

@@ -80,6 +80,13 @@ function fresh_preprocess_node__autoload(&$variables) {
 	 $variables['topic_box'] = theme('base_topic_box', array('tid' => $topic_box[0]['tid']));
     }
 
+    /*Featured Link*/
+    if ($node_type == 'feature_article') {
+      if ($featured_link = field_get_items('node' , $variables['node'] , 'field_article_featured_link')) {
+        $variables['field_article_featured_link'] = theme('fresh_featured_link' , $featured_link);
+      }
+    }
+
     /* Subheadline */
     if ($headline = field_get_items('node', $variables['node'], 'field_article_subhead')) {
 	 $variables['headline'] = theme('html_tag', array(
