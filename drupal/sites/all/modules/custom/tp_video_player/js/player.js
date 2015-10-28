@@ -176,14 +176,14 @@
 
         //reset the data-video-numbers
         $('.video-item', playlist).each(function(index, value) {
-          if ($(window).width() < 480) {
-            $('.image-wrapper', this).height($(this).height());
-            $('.image-wrapper .overlay', this).height($('img', this).height());
-          }
-          else {
+          // if ($(window).width() < 480) {
+          //   $('.image-wrapper', this).height($(this).height());
+          //   $('.image-wrapper .overlay', this).height($('img', this).height());
+          // }
+          // else {
             $('.image-wrapper', this).css('height', '');
             $('.image-wrapper .overlay', this).css('height', '');
-          }
+          //}
 
           $(this).attr('data-video-number', index);
 
@@ -245,6 +245,8 @@
       var slides;
       if(window['bxslider_' + index + '_view_mode'] == 'large'){
         slides = 4;
+      }else if(window['bxslider_' + index + '_view_mode'] == 'small'){
+        slides = 2;
       }else{
         slides = 3;
       }
@@ -355,12 +357,12 @@
       //mobile
       if (playlist.width() <= small) {
         viewMode = 'small';
-        playlist.addClass(viewMode);
-
+        //playlist.addClass(viewMode);
+        slides = 2;
         //destroy on small display
-        if (window['bxslider_' + index]) {
-          window['bxslider_' + index].destroySlider();
-        }
+        // if (window['bxslider_' + index]) {
+        //   window['bxslider_' + index].destroySlider();
+        // }
       }
       //tablet
       else if (playlist.width() < large) {
@@ -384,10 +386,10 @@
       }
 
       //return if small
-      if (viewMode == 'small') {
-        $(this).show();
-        return;
-      }
+      // if (viewMode == 'small') {
+      //   $(this).show();
+      //   return;
+      // }
 
       //destroy all slider
       if (window['bxslider_' + index] != undefined) {
@@ -405,8 +407,8 @@
       window['bxslider_' + index] = $(this).bxSlider({
         minSlides: slides,
         maxSlides: slides,
-        slideWidth: 200,
-        slideMargin: 15,
+        slideWidth: 228,
+        slideMargin: 4,
         infiniteLoop: false,
         hideControlOnEnd: true,
         pager: false,
@@ -416,13 +418,23 @@
       });
 
       //adjustment to auto correct location of slider control
-      setTimeout(function() {
-        var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
-        var img = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
-        var height = (img / 2) + 3;
+      $(window).resize(function(){
+        var all_slides = $('.bxslider');
 
-        $('.bx-controls a', bxslider_wrapper).css('top', height);
-      }, 500);
+        //does for each slider
+        all_slides.each(function(index) {
+          var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
+          var height = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
+
+          $('.bx-controls a', bxslider_wrapper).css('height', height);
+        });
+      });
+      setTimeout(function(){
+        var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
+        var height = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
+
+        $('.bx-controls a', bxslider_wrapper).css('height', height);
+      },500);
     });
   }
 })(jQuery, Drupal, this, this.document);
