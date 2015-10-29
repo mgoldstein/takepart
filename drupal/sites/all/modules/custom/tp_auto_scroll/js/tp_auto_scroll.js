@@ -159,10 +159,10 @@
 
                 /** Check for additional TAP widgets */
                 // needs to happen after page info updates for DTM
-                if ( window.newTapWidgets === true ) {
+                if ( window.newTapWidgets == true ) {
                   TP.scope = $(value).data('ddlPageId');
                   TP.Bootstrapper && new TP.Bootstrapper().start();
-+                  TAP.Widget && TAP.Widget.addWidgetsForScript();
+                  TAP.Widget      && TAP.Widget.addWidgets();
                   window.newTapWidgets = false;
                 }
 
