@@ -308,6 +308,25 @@ article{
         position: relative;
       }
     }
+    @include breakpoint($breakpoint-tablet){
+      .main-media:after {
+        content:'';
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background-image:
+          linear-gradient(top, rgba(0,0,0,0.3),rgba(0,0,0,0) 100px),
+          linear-gradient(bottom, rgba(0,0,0,0.6), rgba(0,0,0,0) 400px);
+        background-image:
+          -ms-webkit-linear-gradient(top, rgba(0,0,0,0.3),rgba(0,0,0,0) 100px),
+          -ms-webkit-linear-gradient(bottom, rgba(0,0,0,0.6), rgba(0,0,0,0) 400px);
+        background-image:
+          -moz-webkit-linear-gradient(top, rgba(0,0,0,0.3),rgba(0,0,0,0) 100px),
+          -moz-webkit-linear-gradient(bottom, rgba(0,0,0,0.6), rgba(0,0,0,0) 400px);
+      }
+    }
     .section.top {
       margin: 10px 0 30px 0;
       .topic-box-wrapper {
