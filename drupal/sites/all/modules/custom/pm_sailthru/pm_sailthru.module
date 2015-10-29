@@ -60,7 +60,7 @@ function pm_sailthru_theme() {
 /**
  * Theme callback for SailThru metatag.
  */
-function theme_sailthru($variables) {
+function theme_metatag_sailthru($variables) {
   $element = &$variables['element'];
   element_set_attributes($element, array(
     '#name' => 'property',

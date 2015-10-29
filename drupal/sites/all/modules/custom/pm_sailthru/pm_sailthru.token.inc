@@ -1,6 +1,6 @@
 <?php
 
-function pm_metatag_sailthru_token_info() {
+function pm_sailthru_token_info() {
   $info['types']['sailthru_metatags'] = array(
     'name' => t('Custom SailThru'),
     'description' => t("Custom tokens for SailThru metatags"),
@@ -55,7 +55,7 @@ function _pm_metatag_sailthru_get_authors($node) {
   return implode(', ', $authors);
 }
 
-function pm_metatag_sailthru_tokens($type, $tokens, array $data = array(), array $options = array()) {
+function pm_sailthru_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
   if ($type == 'sailthru_metatags') {
     foreach ($tokens as $name => $original) {
