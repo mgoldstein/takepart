@@ -54,15 +54,6 @@ class FeedsUserProcessor extends FeedsProcessor {
     if (empty($account->name) || empty($account->mail) || !valid_email_address($account->mail)) {
       throw new FeedsValidationException(t('User name missing or email not valid.'));
     }
-
-    if (!empty($uid)) {
-      $account->uid = $uid;
-    }
-
-    // If uid is set and a user with that id doesn't exist, flag as new.
-    if (!empty($account->uid) && !user_load($account->uid)) {
-      $account->is_new = TRUE;
-    }
   }
 
   /**
@@ -167,11 +158,6 @@ class FeedsUserProcessor extends FeedsProcessor {
   public function getMappingTargets() {
     $targets = parent::getMappingTargets();
     $targets += array(
-      'uid' => array(
-        'name' => t('User ID'),
-        'description' => t('The user ID. NOTE: use this feature with care, user IDs are usually assigned by Drupal.'),
-        'optional_unique' => TRUE,
-       ),
       'name' => array(
         'name' => t('User name'),
         'description' => t('Name of the user.'),
