@@ -23,7 +23,7 @@
           elTop = $('#next-article').offset().top;
         var window_bottom = $window.scrollTop() + $window.height();
         var last_article = $('article').last().parent().height() / 2;
-        //var last_article = $('.fresh-content-wrapper').last().height() / 2;
+
         /* when the page scrolls to within 480px of #next-article */
         if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
 
@@ -162,7 +162,7 @@
                 if ( window.newTapWidgets == true ) {
                   TP.scope = $(value).data('ddlPageId');
                   TP.Bootstrapper && new TP.Bootstrapper().start();
-                  TAP.Widget      && TAP.Widget.addWidgetsForScript()
+                  TAP.Widget      && TAP.Widget.addWidgets();
                   window.newTapWidgets = false;
                 }
 
@@ -178,7 +178,7 @@
         }, 100);
       });
     }
-  }
+  };
 
   /**
    * @function:
@@ -189,7 +189,7 @@
     if ( window.history.pushState )
       window.history.pushState({}, url, url);
     document.title = title;
-  }
+  };
 
   /**
    *  @function:
@@ -242,7 +242,7 @@
 
     //refires to update
     $('body').find('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config);
-  }
+  };
 
   /**
    *  @function:
@@ -266,6 +266,6 @@
     digitalData.page.pageNumber = 1;
     _satellite.track('autoload');
 
-  }
+  };
 
 })(jQuery, Drupal, this, this.document);
