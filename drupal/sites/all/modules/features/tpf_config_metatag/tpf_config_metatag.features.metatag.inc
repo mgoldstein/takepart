@@ -522,11 +522,14 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:title' => array(
         'value' => '[current-page:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
+      'tab-keywords' => array(
+        'value' => '[tab_metatags:topic_freetags:{node:field_topic}, {node:field_free_tag}]',
+      ),
       'sailthru.tags' => array(
         'value' => '[sailthru_metatags:tags_type]',
       ),
-      'tab-keywords' => array(
-        'value' => '[tab_metatags:topic_freetags:{node:field_topic}, {node:field_free_tag}]',
+      'sailthru.author' => array(
+        'value' => '[sailthru_metatags:author]',
       ),
     ),
   );
