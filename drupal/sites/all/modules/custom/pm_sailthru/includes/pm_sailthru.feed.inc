@@ -7,7 +7,7 @@ function pm_sailthru_feed(){
 
   //Get the variables that makeup the feed
   $range = variable_get('pm_sailthru_range', '100');
-  $order = variable_get('pm_sailthru_types', 'DESC');
+  $order = variable_get('pm_sailthru_order', 'DESC');
   $types = variable_get('pm_sailthru_types', array());
 
   //Create the query
@@ -61,12 +61,14 @@ function pm_sailthru_feed(){
     }
 
     //author - author, comma-delimited if multiple
+    $author = '';
     if($field_authors = field_get_items('node', $result, 'field_author')){
       $author_ids = array();
       foreach ($field_authors as $field_author) {
         $author_ids[] = $field_author['nid'];
       }
       $author_nodes = entity_load('node', $author_ids);
+      $authors = array();
       foreach($author_nodes as $author_node){
         $authors[] = $author_node->title;
       }
