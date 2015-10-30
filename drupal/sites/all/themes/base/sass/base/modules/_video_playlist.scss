@@ -66,21 +66,21 @@
   }
 }
 .playlist-wrapper-wrapper{
-  background: #555;
+  background: none;
   padding: 15px 7px;
   margin-bottom: 30px;
 
   @include breakpoint($breakpoint-tablet) {
-    padding: 10px;
+    padding: 0;
     padding-bottom: 15px; /* per Sasoon's comments */
   }
 }
 .playlist{
-  background: #EFEFEF;
-  padding: 10px;
-  -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
+  background: none;
+  padding: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 
   @include breakpoint($breakpoint-desktop) {
     padding: 5px;
@@ -92,7 +92,7 @@
 }
 
 h2.playlist-title{
-  color: white;
+  color: #3A3A3A;
   font-family: $main-brand-font;
   margin-bottom: 10px;
   margin-top: 0 !important;
@@ -108,25 +108,32 @@ h3.video-title{
   margin-top: 12px;
   margin-bottom: 10px;
   font-family: $primary-sans-font;
-  font-size: 14px;
+  font-size: 19px;
   font-weight: bold;
   font-style: normal;
-  line-height: 1.25em; /* Per Sasoon's request */
+  line-height: 1.25em;
   line-spacing: 20px;
   @include breakpoint($breakpoint-tablet) {
     line-height: 1em;
   }
 }
-.video-description{
-  font-family: $primary-sans-font;
+.video-description {
+  font-family: $primary-serif-font;
   font-weight: 500;
   margin-bottom: 15px;
   padding-top: 6px;
+  @include breakpoint($breakpoint-mobile){
+    font-size: 15px;
+    line-height: 20px;
+  }
+  @include breakpoint($breakpoint-tablet){
+    font-size: 16px;
+    line-height: 27px;
+  }
 }
 
 .bx-wrapper {
-  padding: 0 25px;
-  padding-bottom: 5px; /* per Sasoon's comment */
+  padding: 0 45px;
   .bx-viewport {
     background: transparent;
 
@@ -142,11 +149,22 @@ h3.video-title{
   .bx-controls {
     .bx-controls-direction {
       a {
+        color: #FFFFFF;
+        font-size: 14px;
+        width: 40px;
+        height: 0;
+        top: 0;
         margin-top: 0;
-        top: 47px;
-        color: #000;
-        &:hover {
-            color: $light-mint;
+        background-color: #C7C7C7;
+        &.disabled {
+          display: block;
+          background-color: rgba(199,199,199,0.5);
+          cursor: auto;
+        }
+        @include breakpoint($breakpoint-tablet){
+          &:hover {
+            background-color: rgba(199,199,199,0.5);
+          }
         }
       }
     }
@@ -157,12 +175,52 @@ h3.video-title{
     &:hover{
       text-decoration: none;
     }
+    &:after {
+      display: inline;
+      right: 25%;
+      position: absolute;
+      top: 50%;
+      margin-top: -2px;
+      margin-left: 0;
+    }
   }
 
   .bx-prev {
-    left: -10px;
+    left: 0;
     &:hover{
       text-decoration: none;
+    }
+    &:after {
+      display: inline;
+      left: 35%;
+      position: absolute;
+      top: 50%;
+      margin-top: -2px;
+      margin-left: -4px;
+    }
+  }
+}
+
+/*override for campaign pages*/
+body.campaign-display {
+  .card.dark-background {
+    .video-description,
+    .promo-headline {
+      color: #FFFFFF;
+    }
+    .video-item.active .promo-headline {
+      color: #1389AB;
+    }
+    .bx-controls-direction a {
+      color: #FFFFFF;
+    }
+    h2.playlist-title {
+      color: #FFFFFF;
+    }
+  }
+  .card.light-background {
+    .bx-controls-direction a {
+      color: #FFFFFF;
     }
   }
 }
@@ -176,10 +234,13 @@ h3.video-title{
     font-size: 1.9em;
   }
   .bx-wrapper .bx-prev {
-    left: -13px;
+    left: 0;
   }
   .bx-wrapper .bx-next {
-    right: 6px;
+    right: 0;
+  }
+  h2.playlist-title {
+    display: none;
   }
 }
 
@@ -189,7 +250,7 @@ h3.video-title{
       a {
         &.bx-prev,
         &.bx-next {
-          top: 47px;
+          top: 0;
         }
       }
     }
@@ -200,7 +261,7 @@ h3.video-title{
       a {
         &.bx-prev,
         &.bx-next {
-          top: 58px;
+          top: 0;
         }
       }
     }
@@ -240,7 +301,7 @@ h3.video-title{
   .image-wrapper {
     position: relative;
     float: left;
-    margin-bottom: 14px; /* per Sasoon's request */
+    margin-bottom: 14px;
     width: 100%;
     overflow: hidden;
     cursor: pointer;
@@ -251,6 +312,15 @@ h3.video-title{
       max-width: 100%;
       height: auto;
       cursor: pointer;
+    }
+    .video-duration {
+      @include border-radius(2px);
+      background-color: rgba(0, 0, 0, 0.8);
+      bottom: 4px;
+      color: #FFFFFF;
+      padding: 3px;
+      position: absolute;
+      right: 4px;
     }
   }
   .overlay {
@@ -265,7 +335,9 @@ h3.video-title{
       right: 0;
       top: 0;
       margin: 0 auto;
-      opacity: 0;
+      opacity: 1;
+      background-color: rgba(0,0,0,.5);
+      height: 100%;
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
       -o-transition: all 0.5s;
@@ -273,12 +345,15 @@ h3.video-title{
     }
   }
   .video-item{
+    line-height: 1;
     &.active .image-wrapper .overlay {
       opacity: 1;
+      background-color: rgba(255, 255, 255, 0.5);
+      border: 3px solid #1389AB;
     }
     .image-wrapper .overlay .play-me{
-      top: 50%;
-      margin-top: -30px;
+      top: 0;
+      margin-top: 0;
       opacity: 1;
     }
     &.active .image-wrapper .overlay .now-playing{
@@ -294,7 +369,8 @@ h3.video-title{
     }
     .now-playing, .promo-headline{
       font-family: $primary-sans-font;
-      font-weight: 500;
+      color: #3A3A3A;
+      font-weight: bold;
       display: inline;
       font-size: 14px;
       line-height: 18px;
@@ -304,17 +380,25 @@ h3.video-title{
       content: '\00a0 \00a0';
       display: inline;
     }
+
+    &.active .promo-headline {
+      color: #1389AB;
+    }
   }
   .icon.i-triangle-right:after{
     content: '\25B6';
-    background: #333;
-    opacity: .7;
-    width: 50px;
-    margin: 0 auto;
-    height: 20px;
+    color: #FFFFFF;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
     vertical-align: middle;
-    line-height: 60px;
-    padding: 3px 10px;
+    line-height: 1;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -12px;
+    opacity: 1;
   }
 }
 
@@ -352,7 +436,11 @@ h3.video-title{
 /* Playlist View Mode Overrides */
 .playlist[data-playlist-type="basic"]{
   .bx-wrapper{
-    padding-top: 10px;
+    padding-top: 4px;
+  }
+  .bx-wrapper .bx-prev,
+  .bx-wrapper .bx-next {
+    top: 4px;
   }
 }
 .playlist .jwplayer{
