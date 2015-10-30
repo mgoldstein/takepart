@@ -34,6 +34,7 @@
 @import "modules/series-nav";
 @import "base/modules/infographics";
 @import "base/modules/modals";
+@import "base/modules/newsletter";
 
 
 @include breakpoint($breakpoint-phablet){
@@ -510,7 +511,14 @@ article{
           }
         }
       }
-
+      /* Embedded - Newsletter. The rest of the styles in _newsletter.scss */
+      .block-newsletter-campaign {
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 780px;
+        }
+        margin: 0 auto;
+        max-width: 80%;
+      }
     } //Main-Content
       .article-header {
         position: relative;
