@@ -173,4 +173,36 @@
   	 $(main_menu).addClass('desktop');
     }
   };
+
+  /**
+   * Sticky Share Left Align
+   */
+  window.tp_shareLeftAlign = function() {
+    if(window.featureFirst) {
+      var leftAlign = (((window.innerWidth - 780)/2) - $('.sticky-wrapper aside').width()) - 35;
+      if(leftAlign > 0) {
+        $('.sticky-wrapper').css('left', leftAlign);
+      } else {
+        $('.sticky-wrapper').css('left', 0);
+      }
+    }
+  };
+
+  /**
+   * Sticky Share Top Offset
+   */
+  window.tp_shareTopOffset = function() {
+    $('article.node').each(function(index){
+      if(index == 0) {
+        if($(this).hasClass('node-feature-article')) {
+          window.featureFirst = true;
+          var stickyOffset = $(this).find('.author-teaser').offset().top + 10 - $(".main-content").offset().top;
+        } else {
+          window.featureFirst = false;
+          var stickyOffset = $(".main-media").offset().top - $(".main-content").offset().top;
+        }
+        $('.sticky-wrapper').css('margin-top', stickyOffset - 7);
+      }
+    });
+  };
 })(jQuery, Drupal, this, this.document);

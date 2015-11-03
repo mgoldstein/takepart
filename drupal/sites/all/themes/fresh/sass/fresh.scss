@@ -150,6 +150,11 @@ blockquote.pullquote {
 /****** Hide the social until loaded **********/
 aside.social.social-vertical {
   display: none;
+  background: rgba(255,255,255,.75);
+  @include border-radius(5px);
+  h3.tp-social-headline {
+    padding-top: 5px;
+  }
 }
 
 body {

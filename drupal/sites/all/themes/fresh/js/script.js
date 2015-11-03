@@ -86,11 +86,14 @@
 
   /* Position stick share */
   $('document').ready(function(){
-    var stickyOffset = $(".main-media").offset().top - $(".main-content").offset().top;
-    $('.sticky-wrapper').css('margin-top', stickyOffset - 7);
+    window.featureFirst = false;
+    window.tp_shareTopOffset();
+    window.tp_shareLeftAlign();
+    $(window).resize(function(){
+      window.tp_shareTopOffset();
+      window.tp_shareLeftAlign();
+    });
   });
-
-
 
   /**
    *  @function:
