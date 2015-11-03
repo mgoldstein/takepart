@@ -40,9 +40,12 @@ function tp_digital_data_page_build(&$page) {
   $path = current_path();
 
   // Skip if the page is part of the admin.
-  if (path_is_admin($path)) { return; }
+  if (path_is_admin($path) && !preg_match('/^entity_iframe\/node\/[0-9]+/', $path)) {
+    return;
+  }
 
   $factory = tp_digital_data_strategy_factory();
+
   if ($strategy = $factory->createForPage($path, $page)) {
 		
     $data = $strategy->build($page);
