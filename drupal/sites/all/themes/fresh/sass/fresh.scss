@@ -309,6 +309,13 @@ article{
         position: relative;
       }
     }
+      .tap-action-wrapper {
+        &.align-right, &.align-left, &.align-center {
+          max-width: 100%;
+          margin: 10px auto 20px auto;
+        }
+      }
+
     @include breakpoint($breakpoint-tablet){
       .main-media:after {
         content:'';
@@ -430,7 +437,7 @@ article{
       blockquote.pullquote.text-center {
         padding-top: 15px;
       }
-      /*inline-replacements*/
+      /*Image inline-replacements*/
       .inline-image-wrapper {
         //Tablet width
         max-width: 80%;
@@ -511,6 +518,72 @@ article{
           }
         }
       }
+
+      /*TAP Widget Inline Replacement*/
+      .takepart-take-action-widget {
+        margin: 0 auto;
+        &.align-left {
+          max-width: 80% !important;
+          float: none;
+          .takepart-take-action-widget-container {
+            width: 320px;
+            float: left;
+            margin: 0 20px 10px 0;
+          }
+        }
+        &.align-right {
+          max-width: 80% !important;
+          float: none;
+          .takepart-take-action-widget-container {
+            width: 320px;
+            float: right;
+            margin: 0 0px 10px 20px;
+          }
+        }
+        &.align-center {
+          max-width: 500px !important;
+        }
+
+        @include breakpoint($breakpoint-desktop) {
+          &.align-left, &.align-right {
+            max-width: 780px !important;
+          }
+        }
+      }
+      .tap-action-wrapper {
+        margin: 0 auto;
+        &.align-left {
+          max-width: 80%;
+          margin: 0 auto;
+          float: none;
+          .tap-action {
+            width: 320px !important;
+            max-width: 320px !important;
+            float: left;
+            margin: 0 25px 20px 0;
+          }
+        }
+        &.align-right {
+          max-width: 80%;
+          margin: 0 auto;
+          float: none;
+          .tap-action {
+            width: 320px !important;
+            max-width: 320px !important;
+            float: right;
+            margin: 0 0 20px 25px;
+          }
+        }
+        &.align-center {
+          max-width: 500px !important;
+        }
+        @include breakpoint($breakpoint-desktop) {
+          &.align-left, &.align-right {
+            max-width: 780px;
+          }
+        }
+      }
+
       /* Embedded - Newsletter. The rest of the styles in _newsletter.scss */
       .block-newsletter-campaign {
         @include breakpoint($breakpoint-desktop) {
