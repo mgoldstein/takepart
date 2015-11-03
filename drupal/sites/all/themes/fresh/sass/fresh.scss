@@ -422,6 +422,7 @@ article{
       margin-top: 35px;
       hr {
         max-width: 70%;
+        clear: both;
         @include breakpoint($breakpoint-desktop) {
           max-width: 620px;
        }
