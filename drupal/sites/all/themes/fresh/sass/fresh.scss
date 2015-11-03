@@ -55,6 +55,18 @@
  * All Content types on Fresh
  ****************************/
 
+.tp_ad_takeover #page-wrapper,
+#page-wrapper {
+  max-width: 100%;
+}
+
+/*Admin and editor tabs*/
+.messages,
+.tabs-primary {
+  max-width: 960px;
+  margin: 10px auto;
+}
+
 h1.title{
   margin-top: 20px; //Total spacing should be 30px accounting for font height gap
   margin-bottom: 15px;
