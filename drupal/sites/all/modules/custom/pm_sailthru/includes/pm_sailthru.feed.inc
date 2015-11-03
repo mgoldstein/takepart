@@ -38,18 +38,22 @@ function pm_sailthru_feed(){
     if($free_tags_instance != NULL) {
 
       $free_tags = field_get_items('node', $result, 'field_free_tag');
-      $free_tag_names = array();
+      $tag_array = array();
 
       foreach ($free_tags as $free_tag) {
         if (isset($free_tag['tid']) && is_numeric($free_tag['tid'])) {
           $tax_obj = taxonomy_term_load($free_tag['tid']);
-          $free_tag_names[] = $tax = $tax_obj->name;
+          $free_tag = $tax = $tax_obj->name;
         }
         else {
-          $free_tag_names[] = $free_tag['taxonomy_term']->name;
+          $free_tag = $free_tag['taxonomy_term']->name;
         }
+        $free_tag = str_replace(" & ", " ", $free_tag);
+        $free_tag = str_replace(" ", "-", $free_tag);
+        $tag_array[] = strtolower($free_tag);
       }
-      $tags = implode(',', $free_tag_names);
+      
+      $tags = implode(",", $tag_array);
     }
 
 
