@@ -584,6 +584,17 @@ article{
         }
       }
 
+      /* HTML Block - Inline Replacement*/
+      .inline-html-wrapper {
+        max-width: 80%;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 780px;
+        }
+        margin: 0 auto;
+        p {
+          max-width: 100%;
+        }
+      }
       /* Embedded - Newsletter. The rest of the styles in _newsletter.scss */
       .block-newsletter-campaign {
         @include breakpoint($breakpoint-desktop) {
