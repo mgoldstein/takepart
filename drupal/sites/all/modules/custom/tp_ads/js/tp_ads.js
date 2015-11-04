@@ -201,7 +201,11 @@
 
         //first condition allows a specific number ads to be shown.
         //second condition ensure that the ad is within the the viewport and offset by 500 px so that the ad is in place before its in view.
-        if (show_ads < ad_key || selector_item_offset.top > viewport.top && selector_item_offset.top < viewport.bottom + view_offset) {
+        //OVERRIDE Made more on takepart ads load early to ensure loaded before some gets there
+        if ((show_ads < ad_key
+          || selector_item_offset.top > viewport.top
+          && selector_item_offset.top < viewport.bottom + view_offset)
+          || id == 'more_on_takepart') {
 
           //overrides for desktop
           if ($(window).width() > 480) {
