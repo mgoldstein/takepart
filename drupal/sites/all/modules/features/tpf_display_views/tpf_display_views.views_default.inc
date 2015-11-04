@@ -139,15 +139,9 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_profile_photo']['alter']['text'] = '[field_profile_photo-fid]';
   $handler->display->display_options['fields']['field_profile_photo']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_profile_photo']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_profile_photo']['type'] = 'colorbox';
+  $handler->display->display_options['fields']['field_profile_photo']['type'] = 'file_rendered';
   $handler->display->display_options['fields']['field_profile_photo']['settings'] = array(
-    'colorbox_node_style' => '',
-    'colorbox_node_style_first' => '',
-    'colorbox_image_style' => '',
-    'colorbox_gallery' => 'post',
-    'colorbox_gallery_custom' => '',
-    'colorbox_caption' => 'auto',
-    'colorbox_caption_custom' => '',
+    'file_view_mode' => 'default',
   );
   /* Field: Content: Email Address */
   $handler->display->display_options['fields']['field_profile_email']['id'] = 'field_profile_email';
@@ -256,8 +250,8 @@ function tpf_display_views_views_default_views() {
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
-  $handler->display->display_options['pager']['options']['offset'] = '1';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
   $handler->display->display_options['style_options']['provide_file'] = 1;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
@@ -482,7 +476,7 @@ function tpf_display_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Author Content';
+  $handler->display->display_options['title'] = 'Lost Articles';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -569,10 +563,8 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_article_main_image']['label'] = 'main image';
   $handler->display->display_options['fields']['field_article_main_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_article_main_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_article_main_image']['type'] = 'image';
   $handler->display->display_options['fields']['field_article_main_image']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
+    'file_view_mode' => 'default',
   );
   /* Field: Content: Main Image Format */
   $handler->display->display_options['fields']['field_main_image_format']['id'] = 'field_main_image_format';
@@ -644,10 +636,8 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_thumbnail']['label'] = 'thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_thumbnail']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_thumbnail']['type'] = 'image';
   $handler->display->display_options['fields']['field_thumbnail']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
+    'file_view_mode' => 'default',
   );
   /* Field: Content: Admin Tag */
   $handler->display->display_options['fields']['field_admin_tag']['id'] = 'field_admin_tag';
@@ -736,7 +726,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
-  $handler->display->display_options['fields']['status']['label'] = 'published';
+  $handler->display->display_options['fields']['status']['label'] = 'status';
   $handler->display->display_options['fields']['status']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['status']['type'] = 'boolean';
   $handler->display->display_options['fields']['status']['not'] = 0;
@@ -746,6 +736,14 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['path']['field'] = 'path';
   $handler->display->display_options['fields']['path']['label'] = 'path';
   $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  /* Field: Node: Published at */
+  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
+  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
+  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
+  $handler->display->display_options['fields']['published_at']['label'] = 'published';
+  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['published_at']['date_format'] = 'long';
+  $handler->display->display_options['fields']['published_at']['second_date_format'] = 'long';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -801,17 +799,20 @@ function tpf_display_views_views_default_views() {
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '100';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
   $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = 'missing_articles.csv';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['style_options']['quote'] = 1;
   $handler->display->display_options['style_options']['trim'] = 1;
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 1;
-  $handler->display->display_options['path'] = 'admin/reports/articles-profiles/export';
+  $handler->display->display_options['path'] = 'admin/reports/articles/export';
+  $handler->display->display_options['sitename_title'] = 0;
   $export['clone_of_author_profiles_feed'] = $view;
 
   $view = new view();

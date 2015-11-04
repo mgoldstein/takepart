@@ -1,8 +1,8 @@
-name = tpf_feeds_content_import
+name = TakePart Content Import Feeds
 description = For recovering lost users and content
 core = 7.x
 package = Feeds
-version = 7.x-1.0-beta
+version = 7.x-1.0-beta1
 project = tpf_feeds_content_import
 dependencies[] = context
 dependencies[] = ctools
