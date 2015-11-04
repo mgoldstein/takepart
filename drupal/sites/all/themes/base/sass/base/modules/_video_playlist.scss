@@ -288,6 +288,9 @@ body.campaign-display {
 }
 .video-item.active .overlay{
   background: rgba(0, 0, 0, 0.6);
+  .now-playing {
+    display: block
+  }
 }
 .now-playing, .play-me {
   display: block;
@@ -301,7 +304,9 @@ body.campaign-display {
   font-weight: 700;
   font-size: 20px;
 }
-
+.now-playing {
+  display: none;
+}
 .video-playlist {
   padding-left: 15px;
   .image-wrapper {
@@ -335,7 +340,19 @@ body.campaign-display {
     left: 0;
     right: 0;
     opacity: 0;
-    .play-me,
+    .play-me{
+      left: 0;
+      right: 0;
+      top: 0;
+      margin: 0 auto;
+      opacity: 1;
+      background-color: rgba(0,0,0,.5);
+      height: 100%;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+    }
     .now-playing{
       left: 0;
       right: 0;
@@ -354,8 +371,6 @@ body.campaign-display {
     line-height: 1;
     &.active .image-wrapper .overlay {
       opacity: 1;
-      background-color: rgba(255, 255, 255, 0.5);
-      border: 3px solid #1389AB;
     }
     .image-wrapper .overlay .play-me{
       top: 0;
