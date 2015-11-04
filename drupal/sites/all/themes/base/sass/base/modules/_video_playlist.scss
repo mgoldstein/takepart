@@ -47,9 +47,9 @@
 }
 
 .video-duration {
-  color: #555555;
-  font-size: 12px;
-  font-family: "AdelleSans", Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-family: $primary-serif-font;
   display: inline-block;
   line-height: 100%;
 }
@@ -338,11 +338,11 @@ body.campaign-display {
     .video-duration {
       @include border-radius(2px);
       background-color: rgba(0, 0, 0, 0.8);
-      bottom: 4px;
+      bottom: 6px;
       color: #FFFFFF;
-      padding: 3px;
+      padding: 8px;
       position: absolute;
-      right: 4px;
+      right: 6px;
     }
   }
   .overlay {
@@ -398,6 +398,13 @@ body.campaign-display {
     }
     .image-wrapper:hover .overlay {
       opacity: 1;
+    }
+    .image-wrapper:hover .video-duration {
+      display: none;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;      
     }
     .now-playing, .promo-headline{
       font-family: $primary-sans-font;
