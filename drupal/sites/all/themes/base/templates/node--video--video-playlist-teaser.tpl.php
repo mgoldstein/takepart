@@ -9,8 +9,8 @@
 ?>
 <div class="image-wrapper">
 	<img src="<?php print $variables['thumbnail']; ?>">
-	<span class="video-duration"><?php print $variables['video_duration']; ?></span>
 	<div class="overlay">
+		<div class="now-playing"><?php print t('now playing'); ?></div>
 		<div class="play-me icon i-triangle-right"></div>
 	</div>
 </div>
