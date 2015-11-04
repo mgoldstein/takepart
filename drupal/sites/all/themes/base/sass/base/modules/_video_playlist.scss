@@ -155,16 +155,22 @@ h3.video-title{
         height: 0;
         top: 0;
         margin-top: 0;
-        background-color: #C7C7C7;
+        background-color: rgba(0,0,0,0.5);
         &.disabled {
           display: block;
-          background-color: rgba(199,199,199,0.5);
+          background-color: rgba(0,0,0,0.1);
           cursor: auto;
+          &:hover {
+            background-color: rgba(0,0,0,0.1);
+          }
         }
         @include breakpoint($breakpoint-tablet){
           &:hover {
-            background-color: rgba(199,199,199,0.5);
+            background-color: rgba(0,0,0,0.4);
           }
+        }
+        &:active {
+          background-color: rgba(0,0,0,0.8);
         }
       }
     }
