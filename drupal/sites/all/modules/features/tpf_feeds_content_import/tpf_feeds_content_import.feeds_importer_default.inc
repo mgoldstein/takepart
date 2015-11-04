@@ -74,84 +74,109 @@ function tpf_feeds_content_import_feeds_importer_default() {
             'unique' => FALSE,
           ),
           6 => array(
+            'source' => 'main image',
+            'target' => 'field_article_main_image:MediaFeedsLibraryProvider',
+            'unique' => FALSE,
+          ),
+          7 => array(
             'source' => 'body',
             'target' => 'body',
             'unique' => FALSE,
           ),
-          7 => array(
+          8 => array(
             'source' => 'inline replacements',
             'target' => 'field_inline_replacements:etid',
             'unique' => FALSE,
           ),
-          8 => array(
+          9 => array(
             'source' => 'related stories',
             'target' => 'field_related_stories:nid',
             'unique' => FALSE,
           ),
-          9 => array(
-            'source' => 'related stories',
-            'target' => 'field_tab_action_override:nid',
+          10 => array(
+            'source' => 'action overrides',
+            'target' => 'field_related_actions:nid',
             'unique' => FALSE,
           ),
-          10 => array(
+          11 => array(
             'source' => 'promo headline',
             'target' => 'field_promo_headline',
             'unique' => FALSE,
           ),
-          11 => array(
+          12 => array(
             'source' => 'short headline',
             'target' => 'field_promo_short_headline',
             'unique' => FALSE,
           ),
-          12 => array(
+          13 => array(
             'source' => 'promo text',
             'target' => 'field_promo_text',
             'unique' => FALSE,
           ),
-          13 => array(
-            'source' => 'status',
-            'target' => 'status',
-            'unique' => FALSE,
-          ),
           14 => array(
-            'source' => 'published',
-            'target' => 'created',
+            'source' => 'thumbnail',
+            'target' => 'field_thumbnail:MediaFeedsLibraryProvider',
             'unique' => FALSE,
           ),
           15 => array(
-            'source' => 'path',
-            'target' => 'path_alias',
-            'pathauto_override' => 1,
-          ),
-          16 => array(
             'source' => 'admin tag',
             'target' => 'field_admin_tag',
             'term_search' => '1',
             'autocreate' => 0,
           ),
-          17 => array(
+          16 => array(
             'source' => 'free tag',
             'target' => 'field_free_tag',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          18 => array(
+          17 => array(
             'source' => 'series',
             'target' => 'field_series',
             'term_search' => '1',
             'autocreate' => 0,
           ),
-          19 => array(
+          18 => array(
             'source' => 'sponsored',
             'target' => 'field_sponsored',
             'term_search' => '1',
             'autocreate' => 0,
           ),
-          20 => array(
+          19 => array(
             'source' => 'topic',
             'target' => 'field_topic',
             'term_search' => '1',
             'autocreate' => 0,
+          ),
+          20 => array(
+            'source' => 'dfp id',
+            'target' => 'field_dfp_creative_id',
+            'unique' => FALSE,
+          ),
+          21 => array(
+            'source' => 'newsletters',
+            'target' => 'field_newsletter_feed_exclude',
+            'unique' => FALSE,
+          ),
+          22 => array(
+            'source' => 'syndication',
+            'target' => 'field_syndication',
+            'unique' => FALSE,
+          ),
+          23 => array(
+            'source' => 'status',
+            'target' => 'status',
+            'unique' => FALSE,
+          ),
+          24 => array(
+            'source' => 'path',
+            'target' => 'path_alias',
+            'pathauto_override' => 1,
+          ),
+          25 => array(
+            'source' => 'published',
+            'target' => 'created',
+            'unique' => FALSE,
           ),
         ),
         'input_format' => 'full_html',
