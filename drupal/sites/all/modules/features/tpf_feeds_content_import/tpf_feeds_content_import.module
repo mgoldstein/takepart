@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the tpf_feeds_content_import feature.
+ */
+
+include_once 'tpf_feeds_content_import.features.inc';
