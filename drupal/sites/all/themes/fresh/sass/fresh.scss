@@ -408,7 +408,26 @@ article{
           width: 275px;
           @include breakpoint($breakpoint-desktop) {
             width: 321px;
-         }
+          }
+          padding-left: 30px;
+          margin: 10px 0;
+        }
+      }
+      .block-boxes-ga_ad {
+        max-width: 80%;
+        margin: 0 auto;
+        float: none !important; /*To override the float:right from _normalize*/
+        width: auto;
+        padding-left: 0;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 780px;
+        }
+        .boxes-box {
+          float: right;
+          width: 330px;
+          @include breakpoint($breakpoint-desktop) {
+            width: 330px;
+          }
           padding-left: 30px;
           margin: 10px 0;
         }
