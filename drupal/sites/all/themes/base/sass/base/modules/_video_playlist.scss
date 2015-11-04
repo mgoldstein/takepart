@@ -52,6 +52,10 @@
   font-family: $primary-serif-font;
   display: inline-block;
   line-height: 100%;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .video-placeholder{
@@ -183,7 +187,7 @@ h3.video-title{
     }
     &:after {
       display: inline;
-      right: 25%;
+      right: 34%;
       position: absolute;
       top: 50%;
       margin-top: -2px;
@@ -202,7 +206,7 @@ h3.video-title{
       position: absolute;
       top: 50%;
       margin-top: -2px;
-      margin-left: -4px;
+      margin-left: 0;
     }
   }
 }
@@ -404,7 +408,10 @@ body.campaign-display {
       -webkit-transition: all 0.5s;
       -moz-transition: all 0.5s;
       -o-transition: all 0.5s;
-      transition: all 0.5s;      
+      transition: all 0.5s;
+    }
+    &.active .image-wrapper:hover .video-duration {
+      display: inline-block;
     }
     .now-playing, .promo-headline{
       font-family: $primary-sans-font;
