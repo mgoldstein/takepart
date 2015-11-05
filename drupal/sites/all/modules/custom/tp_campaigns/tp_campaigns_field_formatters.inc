@@ -15,11 +15,7 @@ function tp_campaigns_field_formatter_info(){
 		'tp_card_reference' => array(
 			'label' => t('Card Reference'),
 			'field types' => array('entityreference'),
-		),
-		'tp_card_tab_widget_reference' => array(
-			'label' => t('TAB Widget Reference'),
-			'field types' => array('entityreference'),
-		),
+		)
 	);
 }
 
@@ -28,33 +24,26 @@ function tp_campaigns_field_formatter_info(){
  * Implements hook_field_formatter_view()
  */
 function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display){
-	$element = array();
-	$settings = $display['settings'];
-	switch($display['type']){
-		case 'tp_card_tray':
-			$element = array(
-				'#theme' => 'tp_card_tray',
-				'#items' => $items,
-				'#entity' => $entity,
-			);
-			break;
-		case 'tp_card_reference':
-			$element = array(
-				'#theme' => 'tp_card_reference',
-				'#items' => $items,
-				'#entity' => $entity,
-				'#tray_vars' => tp_campaigns_tray_vars($entity),
-			);
-			break;
-		case 'tp_card_tab_widget_reference':
-			$element = array(
-				'#theme' => 'tp_tap_widget',
-				'#tap_id' => tp_campaigns_tap_widget_id($items),
-				'#widget_exposed' => tp_campaigns_tap_widget_exposed($entity),
-			);
-			break;
-	}
-	return $element;
+  $element = array();
+  $settings = $display['settings'];
+  switch($display['type']){
+    case 'tp_card_tray':
+      $element = array(
+        '#theme' => 'tp_card_tray',
+        '#items' => $items,
+        '#entity' => $entity,
+      );
+      break;
+    case 'tp_card_reference':
+      $element = array(
+        '#theme' => 'tp_card_reference',
+        '#items' => $items,
+        '#entity' => $entity,
+        '#tray_vars' => tp_campaigns_tray_vars($entity),
+      );
+      break;
+  }
+  return $element;
 }
 
 /*
@@ -115,32 +104,4 @@ function tp_campaigns_tray_vars($entity){
 
 
 	return $tray_vars;
-}
-
-/*
- * Widget ID for the TAP widget reference
- */
-function tp_campaigns_tap_widget_id($items){
-//Grab Action ID
-	$tap_id = db_select('signature_node', 's')
-		->fields('s', array('tap_id'))
-		->condition('nid', $items[0]['target_id'],'=')
-		->execute()
-		->fetchAssoc();
-	$tap_id = $tap_id['tap_id'];
-	return $tap_id;
-}
-
-/*
- * Widget expose value for the TAP widget reference
- */
-function tp_campaigns_tap_widget_exposed($entity){
-
-  $widget_exposed = field_get_items('node', $entity, 'field_campaign_tab_widget_expose');
-	if($widget_exposed && $widget_exposed[0]['value'] == 1){
-		$widget_exposed = 'expanded';
-	}else{
-		$widget_exposed = '';
-	}
-	return $widget_exposed;
 }

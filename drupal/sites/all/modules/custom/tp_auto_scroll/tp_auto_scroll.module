@@ -69,14 +69,6 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
 }
 
 /**
- * Implements hook_query_TAG_alter()
- */
-function tp_auto_scroll_query_not_sponsored_alter(QueryAlterableInterface $query) {
-  $query->leftJoin('field_data_field_sponsored', 'o', 'node.nid = o.entity_id');
-  $query->isNull('o.field_sponsored_tid');
-}
-
-/**
  * Where we want autoscroll to show
  */
 function tp_auto_scroll_pager($node){
@@ -99,7 +91,6 @@ function tp_auto_scroll_pager($node){
     ->propertyCondition('status', 1)
     ->entityCondition('bundle', array('openpublish_article' , 'video' , 'video_playlist'), 'IN')
     ->propertyCondition('nid', $node->nid, '<>')
-    ->addTag('not_sponsored')
     ->propertyOrderBy('changed', 'DESC')
     ->range(0, $autoscroll_limit);
 

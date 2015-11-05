@@ -1762,22 +1762,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '24',
+          'weight' => '18',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '23',
+          'weight' => '17',
         ),
         'redirect' => array(
-          'weight' => '22',
+          'weight' => '16',
         ),
         'xmlsitemap' => array(
-          'weight' => '21',
+          'weight' => '15',
         ),
         'locations' => array(
-          'weight' => '25',
+          'weight' => '19',
         ),
       ),
       'display' => array(),

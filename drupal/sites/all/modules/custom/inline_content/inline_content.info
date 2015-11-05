@@ -21,3 +21,4 @@ files[] = handlers/InlineContentVideoPlaylist.class.php
 
 dependencies[] = inline_entity_form
 dependencies[] = entity
+dependencies[] = takeaction

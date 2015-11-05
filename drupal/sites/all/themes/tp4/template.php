@@ -1545,6 +1545,10 @@ function tp4_campaign_background_rules(&$variables){
     $video = $video[0]['uri'];
     $video = file_create_url($video);
 
+    if($video_poster = field_get_items('node', $variables['node'], 'field_campaign_bg_video_poster')){
+      $background = file_create_url($video_poster[0]['uri']);
+    }
+
     $variables['attributes_array']['data-video-bg'] = "[\"$background\", \"$video\"]";
     $variables['classes_array'][] = "has-videoBG";
   }

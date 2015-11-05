@@ -315,7 +315,7 @@ ul.secondary.tabs {
     font-size: 0.923em;
     padding: 0 3px 5px;
     line-height: 1.385em;
-    overflow: hidden;
+    overflow: visible;
     background-color: #fff;
     }
 

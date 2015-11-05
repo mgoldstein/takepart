@@ -1,0 +1,315 @@
+commit 94a82c932828f717e8dd8f08c79d2443be79db4f
+Author: Brückner Tamás <tamas.bruckner@integralvision.hu>
+Date:   Thu Jun 18 17:00:41 2015 +0200
+
+    Text with summary
+
+diff --git a/feeds.info b/feeds.info
+index 789d681..428def8 100644
+--- a/feeds.info
++++ b/feeds.info
+@@ -46,6 +46,7 @@ files[] = tests/feeds_processor_user.test
+ files[] = tests/feeds_push.test
+ files[] = tests/feeds_scheduler.test
+ files[] = tests/feeds_mapper_link.test
++files[] = tests/feeds_mapper_summary.test
+ files[] = tests/feeds_mapper_taxonomy.test
+ files[] = tests/parser_csv.test
+ 
+diff --git a/mappers/text.inc b/mappers/text.inc
+index 48447d7..33caae5 100644
+--- a/mappers/text.inc
++++ b/mappers/text.inc
+@@ -26,6 +26,15 @@ function text_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_nam
+         'callback' => 'text_feeds_set_target',
+         'description' => t('The @label field of the entity.', array('@label' => $instance['label'])),
+       );
++      if ($info['type'] == 'text_with_summary') {
++        // Allow mapping to summary.
++        $targets[$name . ':summary'] = array(
++          'name' => t('@name: Summary', array('@name' => $instance['label'])),
++          'callback' => 'text_feeds_set_target',
++          'description' => t('The @label field of the entity.', array('@label' => $instance['label'])),
++          'real_target' => $name,
++        );
++      }
+     }
+   }
+ }
+diff --git a/tests/feeds.test b/tests/feeds.test
+index 480a5db..1d353d7 100644
+--- a/tests/feeds.test
++++ b/tests/feeds.test
+@@ -89,6 +89,7 @@ class FeedsWebTestCase extends DrupalWebTestCase {
+     $permissions[] = 'administer taxonomy';
+     $permissions[] = 'administer users';
+     $permissions[] = 'administer feeds';
++    $permissions[] = 'administer filters';
+ 
+     // Create an admin user and log in.
+     $this->admin_user = $this->drupalCreateUser($permissions);
+@@ -379,6 +380,48 @@ class FeedsWebTestCase extends DrupalWebTestCase {
+     $this->assertEqual($config['processor']['plugin_key'], $processor, 'Correct processor');
+   }
+ 
++  /**
++   * Overrides DrupalWebTestCase::assertFieldByXPath().
++   *
++   * The core version has a bug, this is the D8 version.
++   */
++  protected function assertFieldByXPath($xpath, $value = NULL, $message = '', $group = 'Other') {
++    $fields = $this->xpath($xpath);
++
++    // If value specified then check array for match.
++    $found = TRUE;
++    if (isset($value)) {
++      $found = FALSE;
++      if ($fields) {
++        foreach ($fields as $field) {
++          if (isset($field['value']) && $field['value'] == $value) {
++            // Input element with correct value.
++            $found = TRUE;
++          }
++          elseif (isset($field->option) || isset($field->optgroup)) {
++            // Select element found.
++            $selected = $this->getSelectedItem($field);
++            if ($selected === FALSE) {
++              // No item selected so use first item.
++              $items = $this->getAllOptions($field);
++              if (!empty($items) && $items[0]['value'] == $value) {
++                $found = TRUE;
++              }
++            }
++            elseif ($selected == $value) {
++              $found = TRUE;
++            }
++          }
++          elseif ((string) $field == $value) {
++            // Text area with correct text.
++            $found = TRUE;
++          }
++        }
++      }
++    }
++    return $this->assertTrue($fields && $found, $message, $group);
++  }
++
+    /**
+     * Adds mappings to a given configuration.
+     *
+diff --git a/tests/feeds/node_summary.csv b/tests/feeds/node_summary.csv
+new file mode 100644
+index 0000000..5d59184
+--- /dev/null
++++ b/tests/feeds/node_summary.csv
+@@ -0,0 +1,4 @@
++"guid","title","summary","body"
++1,"Lorem ipsum","Lorem ipsum summary","Lorem ipsum body"
++2,"Ut wisi enim ad minim veniam","","Ut wisi enim ad minim veniam body"
++3,"Duis autem vel eum iriure dolor","",""
+\ No newline at end of file
+diff --git a/tests/feeds_mapper_summary.test b/tests/feeds_mapper_summary.test
+new file mode 100644
+index 0000000..548b5da
+--- /dev/null
++++ b/tests/feeds_mapper_summary.test
+@@ -0,0 +1,199 @@
++<?php
++
++/**
++ * @file
++ * Test case for mapping to node summary.
++ */
++
++/**
++ * Class for testing Feeds summary mapper.
++ */
++class FeedsMapperNodeSummaryTestCase extends FeedsMapperTestCase {
++  public static function getInfo() {
++    return array(
++      'name' => 'Mapper: Text with summary',
++      'description' => 'Test Feeds Mapper support for text with summary fields.',
++      'group' => 'Feeds',
++    );
++  }
++
++  /**
++   * Tests importing CSV files for text fields with summary.
++   */
++  public function test() {
++    // Create and configure importer.
++    $this->createImporterWithSummaryMapper();
++
++    // Create a new filter format.
++    $format = drupal_strtolower($this->randomName());
++    $edit = array(
++      'format' => $format,
++      'name' => $this->randomName(),
++      // Authenticated users.
++      'roles[2]' => TRUE,
++    );
++    $this->drupalPost('admin/config/content/formats/add', $edit, t('Save configuration'));
++
++    // The "update existing" and "skip hash check" are turned on so we can test
++    // later if the summaries of the nodes get overwritten with the values from
++    // the source.
++    $this->setSettings('syndication', 'FeedsNodeProcessor', array(
++      'update_existing' => 2,
++      'skip_hash_check' => TRUE,
++      'input_format' => $format,
++    ));
++
++    // Import CSV file.
++    $this->importFile('syndication', $this->absolutePath() . '/tests/feeds/node_summary.csv');
++    $this->assertText('Created 3 nodes');
++    $this->assertNodeSummaryValues();
++
++    // Check that text format is applied correctly.
++    $this->drupalGet('node/1/edit');
++    $this->assertNodeFieldValue('format', $format);
++
++    // Check the teasers of the three imported nodes, assumed to be all present
++    // on the front page.
++    $this->assertNodeTeaserValues();
++
++    // Set a summary and a text for each imported node.
++    $edit = array(
++      'body[und][0][summary]' => 'Nam liber tempor summary',
++      'body[und][0][value]' => 'Nam liber tempor body',
++    );
++    $this->drupalPost('node/1/edit', $edit, t('Save'));
++    $this->drupalPost('node/2/edit', $edit, t('Save'));
++    $this->drupalPost('node/3/edit', $edit, t('Save'));
++
++    // Import the same CSV file again.
++    $this->importFile('syndication', $this->absolutePath() . '/tests/feeds/node_summary.csv');
++    $this->assertText('Updated 3 nodes');
++    $this->assertNodeSummaryValues();
++    $this->assertNodeTeaserValues();
++
++    // The previous texts of the nodes should no longer be visible.
++    $this->assertNoText('Nam liber tempor summary');
++    $this->assertNoText('Nam liber tempor body');
++
++    // Check that text format is applied correctly.
++    $this->drupalGet('node/1/edit');
++    $this->assertNodeFieldValue('format', $format);
++
++    // Remove the body mapping to check that the text format doesn't get updated
++    // from the summary.
++    $this->removeMappings('syndication', array(
++      2 => array(
++        'source' => 'body',
++        'target' => 'body',
++      ),
++    ));
++
++    $this->setSettings('syndication', 'FeedsNodeProcessor', array(
++      'input_format' => 'plain_text',
++    ));
++    $this->importFile('syndication', $this->absolutePath() . '/tests/feeds/node_summary.csv');
++    $this->assertText('Updated 3 nodes');
++
++    // Check that text format is applied correctly.
++    $this->drupalGet('node/1/edit');
++    $this->assertNodeFieldValue('format', $format);
++  }
++
++  /**
++   * Creates an importer with a summary mapper.
++   *
++   * @param $name
++   *   The natural name of the feed.
++   * @param $id
++   *   The persistent id of the feed.
++   *
++   * @return void
++   */
++  protected function createImporterWithSummaryMapper($name = 'Syndication', $id = 'syndication') {
++    // Create content type. A field named "body" which is of type "Long text and summary"
++    // will be created by default, so we don't need to create a field of that type here.
++    $typename = $this->createContentType(array());
++
++    // Create and configure importer.
++    $this->createImporterConfiguration($name, $id);
++    $this->setSettings('syndication', NULL, array(
++      'content_type' => '',
++      'import_period' => FEEDS_SCHEDULE_NEVER,
++    ));
++    $this->setPlugin('syndication', 'FeedsFileFetcher');
++    $this->setPlugin('syndication', 'FeedsCSVParser');
++    $this->setSettings('syndication', 'FeedsNodeProcessor', array('bundle' => $typename));
++    $this->addMappings('syndication', array(
++      0 => array(
++        'source' => 'title',
++        'target' => 'title',
++      ),
++      1 => array(
++        'source' => 'summary',
++        'target' => 'body:summary',
++      ),
++      2 => array(
++        'source' => 'body',
++        'target' => 'body',
++      ),
++      3 => array(
++        'source' => 'guid',
++        'target' => 'guid',
++        'unique' => TRUE,
++      ),
++    ));
++  }
++
++  /**
++   * Overrides FeedsMapperTestCase::getFormFieldsNames().
++   *
++   * Returns different form field names for:
++   * - body
++   *   This field doesn't have the "field_" prefix.
++   * - summary
++   *   Which is part of the body field.
++   * - format
++   *   The format of the body field.
++   */
++  protected function getFormFieldsNames($field_name, $index) {
++    switch ($field_name) {
++      case 'body':
++        return array("body[und][{$index}][value]");
++
++      case 'summary':
++        return array("body[und][{$index}][summary]");
++
++      case 'format':
++        return array("body[und][{$index}][format]");
++    }
++
++    return parent::getFormFieldsNames($field_name, $index);
++  }
++
++  /**
++   * Checks that the nodes match the imported values.
++   */
++  protected function assertNodeSummaryValues() {
++    // Check the three imported nodes.
++    $this->drupalGet('node/1/edit');
++    $this->assertNodeFieldValue('summary', 'Lorem ipsum summary');
++    $this->assertNodeFieldValue('body', 'Lorem ipsum body');
++    $this->drupalGet('node/2/edit');
++    $this->assertNodeFieldValue('summary', '');
++    $this->assertNodeFieldValue('body', 'Ut wisi enim ad minim veniam body');
++    $this->drupalGet('node/3/edit');
++    $this->assertNodeFieldValue('summary', '');
++    $this->assertNodeFieldValue('body', '');
++  }
++
++  /**
++   * Checks the frontpage for teaser values.
++   */
++  protected function assertNodeTeaserValues() {
++    $this->drupalGet('');
++    $this->assertText('Lorem ipsum summary');
++    $this->assertNoText('Lorem ipsum body');
++    $this->assertText('Ut wisi enim ad minim veniam body');
++  }
++
++}

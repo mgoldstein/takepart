@@ -189,31 +189,36 @@
                 }
             };
 
-            if(!Environment.isMobile()){
-                $('.card.has-videoBG').each( function( index, element ) {
+            //Create ambient video backgrounds
+            $('.card.has-videoBG').each( function( index, element ) {
 
-                    $prop = $(this).data('video-bg');
-                    var src = $prop[1];
-                    var poster =  $prop[0];
+              $prop = $(this).data('video-bg');
+              var src = $prop[1];
+              var poster =  $prop[0];
 
-                    var videoWrapper = document.createElement("div");
-                    var video = document.createElement("video");
-                    var videoSource = document.createElement("source");
-                    videoWrapper.className = 'videoBG_wrapper';
-                    videoSource.type = "video/mp4";
-                    videoSource.src = src;
-                    videoSource.poster = poster;
-                    video.className = 'background-video';
-                    video.setAttribute('autoplay', '');
-                    video.setAttribute('loop', '');
-                    video.setAttribute('muted', '');
-                    video.setAttribute('poster', poster);
-                    video.appendChild(videoSource);
-                    videoWrapper.appendChild(video);
-                    $(this).prepend(videoWrapper);
-                });
-            }
+              if(!Environment.isMobile()){
 
+                var videoWrapper = document.createElement("div");
+                var video = document.createElement("video");
+                var videoSource = document.createElement("source");
+                videoWrapper.className = 'videoBG_wrapper';
+                videoSource.type = "video/mp4";
+                videoSource.src = src;
+                videoSource.poster = poster;
+                video.className = 'background-video';
+                video.setAttribute('autoplay', '');
+                video.setAttribute('loop', '');
+                video.setAttribute('muted', '');
+                video.setAttribute('poster', poster);
+                video.appendChild(videoSource);
+                videoWrapper.appendChild(video);
+                $(this).prepend(videoWrapper);
+
+              }else{
+                 //If a mobile device is detected AND the card has a video background then use the poster image as bg
+                $(this).css('background-image', 'url(' + poster + ')');
+              }
+            });
         }
     };
 

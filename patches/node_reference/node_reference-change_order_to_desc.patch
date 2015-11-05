@@ -1,0 +1,14 @@
+diff --git drupal/sites/all/modules/contrib/references/node_reference/node_reference.module drupal/sites/all/modules/contrib/references/node_reference/node_reference.module
+index 417f258..bb0ef02 100755
+--- drupal/sites/all/modules/contrib/references/node_reference/node_reference.module
++++ drupal/sites/all/modules/contrib/references/node_reference/node_reference.module
+@@ -872,8 +872,7 @@ function _node_reference_potential_references_standard($field, $options) {
+   }
+ 
+   $query
+-    ->orderBy($node_title_alias)
+-    ->orderBy($node_type_alias);
++    ->orderBy('created', 'DESC');
+ 
+   $result = $query->execute()->fetchAll();
+   $references = array();

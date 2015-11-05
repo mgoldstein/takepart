@@ -74,13 +74,6 @@ function tp_campaigns_theme() {
         'tray_vars' => '',
       )
     ),
-    'tp_tap_widget' => array(
-      'template' => 'field-formatters/field-formatter--tap-widget',
-      'variables' => array(
-        'tap_id' => '',
-        'widget_exposed' => '',
-      )
-    ),
     'tp_campaigns_hero' => array(
       'template' => 'campaign-hero',
       'variables' => array(
