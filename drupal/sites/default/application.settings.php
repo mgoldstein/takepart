@@ -110,8 +110,8 @@ if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
   $ips = $_SERVER['HTTP_X_FORWARDED_FOR'];
   $ips = explode ( ',', $ips);
   foreach($ips as $ip){
-    $ipoop = (float) substr($ip, 0, 6);
-    if($ipoop >= 172.16 && $ipoo <= 172.31){
+    $ip_start = (float) substr($ip, 0, 6);
+    if($ip_start >= 172.16 && $ip_start <= 172.31){
       break;
     }
     elseif (!strpos($ip, '10.') ||

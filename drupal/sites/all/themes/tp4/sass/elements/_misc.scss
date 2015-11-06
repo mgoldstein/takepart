@@ -221,6 +221,22 @@
   margin: 0;
 }
 
+/* Fix the spacing issue on title on page,taxonomy pages, photo gallery,profile */
+@include breakpoint($breakpoint-tablet) {
+  .node-type-takepart-page .page__title,
+  .page-taxonomy-term .page__title,
+  .page-taxonomy-term .field-name-field-series-graphic-header,
+  .page-flashcards .page__title,
+  .node-type-openpublish-photo-gallery .gallery-headline,
+  .node-type-profile .page__title,
+  .page-search .page__title {
+    padding-top: 30px;
+  }
+  .page-node.node-type-flashcard .flashcard-branding {
+    display: inline-block;
+  }
+}
+
 /**
  * Messages.
  */
@@ -911,7 +927,7 @@ tr.selected td {
     background-size: cover;
     height: 0;
     padding-bottom: 56.25%; /* 16:9 */
-    
+
     .jwmain {
       display: none;
     }
@@ -924,7 +940,7 @@ tr.selected td {
     background: image-url('video-blocked.gif') no-repeat center center;
     background-size: cover;
     height: 0;
-    
+
     object {
       display: none;
     }
@@ -937,7 +953,7 @@ tr.selected td {
     background: image-url('video-blocked.gif') no-repeat center center;
     background-size: cover;
     height: 0;
-    
+
     .jwmain {
       display: none;
     }

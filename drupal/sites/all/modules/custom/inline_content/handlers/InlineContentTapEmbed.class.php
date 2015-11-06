@@ -45,14 +45,16 @@ class InlineContentTapEmbed extends InlineContentReplacementController {
    */
   public function view($replacement, $content, $view_mode = 'default', $langcode = NULL) {
 
-    //Set default attributes
-    $attributes = array();
-    $attributes['class'][] = 'tap-action';
+    //Return if takeaction module isn't enabled
+    if(!module_exists('takeaction')) {
+      return;
+    }
+
 
     //Expanded
     if ($form_style = field_get_items('inline_content', $replacement, 'field_ic_expanded')) {
       if ($form_style[0]['value']) {
-        $attributes['data-expanded'] = 'TRUE';
+        $overrides['data-expanded'] = 'TRUE';
       }
     }
 
@@ -61,57 +63,36 @@ class InlineContentTapEmbed extends InlineContentReplacementController {
       $action = reset($action);
       $mapping = SignatureActionMapping::loadByNodeId($action['nid']);
       if ($mapping !== FALSE) {
-        $attributes['data-action-id'] = $mapping->tapID();
+        $overrides['data-action-id'] = $mapping->tapID();
       }
     }
 
     //Title Override
     if ($title = field_get_items('inline_content', $replacement, 'field_ic_label')) {
       $title = reset($title);
-      $attributes['data-widget-title'] = $title['value'];
+      $overrides['data-widget-title'] = $title['value'];
     }
 
     //Action URL
     if ($article_url = field_get_items('inline_content', $replacement, 'field_ic_article_url')) {
       $article_url = reset($article_url);
-      $attributes['data-article-url'] = $article_url['url'];
+      $overrides['data-article-url'] = $article_url['url'];
     }
 
     //Alignment
+    $alignment = '';
     if ($align = field_get_items('inline_content', $replacement, 'field_ic_tap_widget_alignment')) {
       $align = reset($align);
-      $wrapper_attr = array(
-        'class' => array('tap-action-wrapper')
-      );
-      $wrapper_attr['class'][] = 'align-' . $align['value'];
-    } else {
-      $wrapper_attr['class'][] = 'align-center';
+      $alignment = $align['value'];
     }
 
-    //Generate tap-embed div
-    $tapEmbed = theme('html_tag', array(
-      'element' => array(
-        '#tag' => 'div',
-        '#value' => '',
-        '#attributes' => $attributes
-      )
-    ));
-
-    //Generate Wrapper
-    $markup = theme('html_tag', array(
-      'element' => array(
-        '#tag' => 'div',
-        '#value' => $tapEmbed,
-        '#attributes' => $wrapper_attr
-      )
-    ));
-
-
+    //Generate TAP Embed
+    $tap_embed = takeaction_view_tap_embed($overrides, $alignment);
 
     //Return the replacement
     $content['#replacements'][] = array(
       '#type' => 'markup',
-      '#markup' => $markup,
+      '#markup' => $tap_embed,
     );
 
     return $content;

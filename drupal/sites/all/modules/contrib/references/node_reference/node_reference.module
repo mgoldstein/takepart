@@ -872,8 +872,7 @@ function _node_reference_potential_references_standard($field, $options) {
   }
 
   $query
-    ->orderBy($node_title_alias)
-    ->orderBy($node_type_alias);
+    ->orderBy('created', 'DESC');
 
   $result = $query->execute()->fetchAll();
   $references = array();

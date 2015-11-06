@@ -4,7 +4,10 @@ class ddContent extends ddDefaultPage {
 
   public static function claim($path, $page) {
     // Claim node pages.
-    return preg_match('/^node\/[0-9]+/', $path);
+    if(preg_match('/^node\/[0-9]+/', $path) || preg_match('/^entity_iframe\/node\/[0-9]+/', $path)){
+      return 1;
+    }
+    return FALSE;
   }
 
   protected function termList($node, $field_name) {
@@ -42,10 +45,21 @@ class ddContent extends ddDefaultPage {
     return array_key_exists($type, $categories) ? $categories[$type] : $type;
   }
 
+  protected function getNodefromPath() {
+    // Returns a node for node pages and iframe pages
+    $path = current_path();
+    if(preg_match('/^node\/[0-9]+/', $path)){
+      $node = menu_get_object();
+    }elseif(preg_match('/^entity_iframe\/node\/[0-9]+/', $path)) {
+      $node = node_load(arg(2));
+    }
+    return $node;
+  }
+
   public function build($page) {
 
     $data = array();
-    $node = menu_get_object();
+    $node = $this->getNodefromPath();
 
     $pageID = $node->nid;
 

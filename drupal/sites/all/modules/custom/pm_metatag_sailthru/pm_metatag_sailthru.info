@@ -1,6 +1,3 @@
-name = Metatag: SailThru Platform
-description = Provides custom meta tags for SailThru.
-package = SEO
+name = DEPRECATED Sailthru Metatag
+description = This module is deprecated.  Please remove after release-3.60
 core = 7.x
-dependencies[] = metatag
-dependencies[] = token_function

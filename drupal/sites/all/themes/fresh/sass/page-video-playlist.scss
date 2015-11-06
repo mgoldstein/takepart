@@ -73,6 +73,16 @@
         height: 0;
         padding-bottom: 56.25%;
       }
+      .video-description {
+        @include breakpoint($breakpoint-mobile){
+          font-size: 15px;
+          line-height: 16px;
+        }
+        @include breakpoint($breakpoint-tablet){
+          font-size: 20px;
+          line-height: 27px;
+        }
+      }
     }
     .series-navigation {
    a {
@@ -92,7 +102,16 @@
     }
   }
   /*overwriting _video_playlist.scss*/
-
+  .bx-wrapper .bx-prev,
+  .bx-wrapper .bx-next {
+    font-size: 1.9em;
+  }
+  .bx-wrapper .bx-prev {
+    left: -13px;
+  }
+  .bx-wrapper .bx-next {
+    right: 6px;
+  }
   [data-playlist-type="detailed"] {
     @include breakpoint($breakpoint-phablet){
       min-height: 588px;
@@ -127,7 +146,6 @@
 
 
 }
-
 h1.title{
   margin-top: 20px; //Total spacing should be 30px accounting for font height gap
   margin-bottom: 15px;

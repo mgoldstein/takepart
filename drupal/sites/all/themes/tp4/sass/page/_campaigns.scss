@@ -556,6 +556,9 @@ body.campaign-display{
                 overflow: visible;
                 #campaign-page-more-shares {
                     top: 100%;
+                    p {
+                        height: 56px;
+                    }
                 }
             }
         }

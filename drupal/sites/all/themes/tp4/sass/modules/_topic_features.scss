@@ -1,9 +1,6 @@
 .vocabulary-topic {
   .page__title {
     margin-bottom: .67em;
-    @include breakpoint($breakpoint-tablet) {
-      padding-top: 30px;
-    }
   }
   .field-name-field-promo-content {
     @include clearfix();

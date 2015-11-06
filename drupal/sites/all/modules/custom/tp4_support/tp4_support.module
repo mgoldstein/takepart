@@ -940,8 +940,8 @@ function tp4_support_node_reference_autocomplete($entity_type, $bundle, $field_n
     $suggestion = preg_replace('/<a href="([^<]*)">([^<]*)<\/a>/', '$2', $row['rendered']);
     
     //adds in additional status
-    $node = node_load($id);
-    $status = ($node->status) ? '[Published]' : '[Unpublished]';
+    $status = db_query('SELECT status FROM {node} WHERE nid = :nid', array(':nid' => $id))->fetchField();
+    $status = $status ? '[Published]' : '[Unpublished]';
     
     // Add a class wrapper for a few required CSS overrides.
     $matches[$row['title'] . " [nid:$id]"] = '<div class="reference-autocomplete">' . $suggestion . ' ' . $status .  '</div>';
