@@ -12,8 +12,14 @@ function fresh_preprocess_node(&$variables, $hook) {
   $node = $variables['node'];
   $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
   if ($variables['view_mode'] == 'full') {
-    if ($node->type == 'openpublish_article' || $node->type == 'video' || $node->type == 'video_playlist') {
-      $variables['theme_hook_suggestion'] = 'node__autoload__' . $variables['view_mode'];
+    if ($node->type == 'openpublish_article' || $node->type == 'video' || $node->type == 'video_playlist' || $node->type == 'feature_article') {
+      //Feature Artcile will use its own template
+      if ($node->type == 'feature_article') {
+        $variables['theme_hook_suggestion'] = 'node__feature__article__' . $variables['view_mode'];
+      }
+      else {
+        $variables['theme_hook_suggestion'] = 'node__autoload__' . $variables['view_mode'];
+      }
       $function = __FUNCTION__ . '__autoload';
       if (function_exists($function)) {
         $function($variables, $hook);
@@ -74,6 +80,13 @@ function fresh_preprocess_node__autoload(&$variables) {
 	 $variables['topic_box'] = theme('base_topic_box', array('tid' => $topic_box[0]['tid']));
     }
 
+    /*Featured Link*/
+    if ($node_type == 'feature_article') {
+      if ($featured_link = field_get_items('node' , $variables['node'] , 'field_article_featured_link')) {
+        $variables['field_article_featured_link'] = theme('fresh_featured_link' , $featured_link);
+      }
+    }
+
     /* Subheadline */
     if ($headline = field_get_items('node', $variables['node'], 'field_article_subhead')) {
 	 $variables['headline'] = theme('html_tag', array(
@@ -87,7 +100,7 @@ function fresh_preprocess_node__autoload(&$variables) {
     }
 
     /* Media */
-    if ($node_type == 'article') {
+    if ($node_type == 'article' || $node_type == 'feature_article') {
     if ($media = field_get_items('node', $variables['node'], 'field_article_main_image')) {
 	 $file = $media[0]['file'];
 	 $image_url = image_style_url('large', $file->uri);

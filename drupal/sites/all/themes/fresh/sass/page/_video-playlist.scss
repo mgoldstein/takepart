@@ -1,0 +1,44 @@
+/**************************************
+ * Video Playlist Content Type on Fresh
+ **************************************/
+
+.video_playlist-wrapper{
+  .main-media {
+    .current-video .jwplayer {
+      height: 0;
+      padding-bottom: 56.25%;
+    }
+  }
+  //Min-height added to prevent the page from jumping before video loads.
+  [data-playlist-type="detailed"] {
+    @include breakpoint($breakpoint-phablet){
+      min-height: 588px;
+    }
+    @include breakpoint($breakpoint-mobile){
+      min-height: 588px;
+    }
+    @include breakpoint($breakpoint-desktop){
+      min-height: 780px;
+    }
+  }
+
+  [data-playlist-type="basic"] {
+    @include breakpoint($breakpoint-phablet){
+      min-height: 550px;
+    }
+    @include breakpoint($breakpoint-mobile){
+      min-height: 440px;
+    }
+    @include breakpoint($breakpoint-tablet){
+      min-height: 620px;
+    }
+    @include breakpoint($breakpoint-desktop){
+      min-height: 680px;
+    }
+  }
+
+  [data-playlist-type="hidelist"] {
+    height: 0;
+    padding-bottom: 56.25%;
+  }
+}

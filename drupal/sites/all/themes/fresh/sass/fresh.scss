@@ -20,6 +20,7 @@
 @import "base/normalize";
 
 /* Modules */
+@import "base/modules/tap";
 @import "base/modules/mobile-menu";
 @import "base/modules/bxslider";
 @import "base/modules/video_playlist";
@@ -34,128 +35,47 @@
 @import "base/modules/infographics";
 @import "base/modules/modals";
 
-/*****************
- * Article Page
- *****************/
-.field-name-body {
-  a {
-    &:hover {
-      text-decoration: underline;
-    }
+/* Content Types */
+@import "page/video-playlist";
+@import "page/feature-article";
+@import "page/video";
+
+
+/*****************************
+ * All Content types on Fresh
+ ****************************/
+
+@include breakpoint($breakpoint-phablet){
+ .row {
+  margin: 0;
+ }
+}
+
+@include breakpoint($breakpoint-tablet){
+  #header {
+    max-width: 960px;
+    margin: 0 auto;
   }
 }
 
-.video_playlist-wrapper{
-  position: relative;
-  .sticky-wrapper{
-    @include breakpoint($breakpoint-phablet){
-      position: absolute;
-      margin-left: 15px;
-    }
-  }
-
-  aside.social.social-vertical {
-    @include breakpoint($breakpoint-phablet){
-      position: absolute;
-    }
-    @include breakpoint($breakpoint-desktop) {
-      position: static;
-    }
-  }
-
-  article{
-    color: #3A3A3A;
-    h1.title, #more-on-takepart h2{
-      color: $black;
-    }
-    .main-media {
-      .current-video .jwplayer {
-        height: 0;
-        padding-bottom: 56.25%;
-      }
-      .video-description {
-        @include breakpoint($breakpoint-mobile){
-          font-size: 15px;
-          line-height: 16px;
-        }
-        @include breakpoint($breakpoint-tablet){
-          font-size: 20px;
-          line-height: 27px;
-        }
-      }
-    }
-    .series-navigation {
-   a {
-     .label {
-    text-decoration: none;
-     }
-     &:hover {
-    .label {
-      text-decoration: none;
-    }
-    .series-nav-title {
-      text-decoration: underline;
-    }
-     }
-   }
-
-    }
-  }
-  /*overwriting _video_playlist.scss*/
-  .bx-wrapper .bx-prev,
-  .bx-wrapper .bx-next {
-    font-size: 1.9em;
-  }
-  .bx-wrapper .bx-prev {
-    left: -13px;
-  }
-  .bx-wrapper .bx-next {
-    right: 6px;
-  }
-  [data-playlist-type="detailed"] {
-    @include breakpoint($breakpoint-phablet){
-      min-height: 588px;
-    }
-    @include breakpoint($breakpoint-mobile){
-      min-height: 588px;
-    }
-    @include breakpoint($breakpoint-desktop){
-      min-height: 780px;
-    }
-  }
-
-  [data-playlist-type="basic"] {
-    @include breakpoint($breakpoint-phablet){
-      min-height: 550px;
-    }
-    @include breakpoint($breakpoint-mobile){
-      min-height: 440px;
-    }
-    @include breakpoint($breakpoint-tablet){
-      min-height: 620px;
-    }
-    @include breakpoint($breakpoint-desktop){
-      min-height: 680px;
-    }
-  }
-
-  [data-playlist-type="hidelist"] {
-    height: 0;
-    padding-bottom: 56.25%;
-  }
-
-
+.tp_ad_takeover #page-wrapper,
+#page-wrapper {
+  max-width: 100%;
 }
+
+/*Admin and editor tabs*/
+.messages,
+.tabs-primary {
+  max-width: 960px;
+  margin: 10px auto;
+}
+
 h1.title{
   margin-top: 20px; //Total spacing should be 30px accounting for font height gap
   margin-bottom: 15px;
   @include breakpoint($breakpoint-tablet){
     text-align: center;
   }
-}
-.main-image{
-  display: block;
-  /* margin: 0 auto; */
 }
 .main-media {
   display: block;
@@ -194,7 +114,7 @@ h1.title{
   margin-top: 0;
 }
 #more-on-takepart {
-  margin-bottom: 5px;
+  margin: 0 auto 5px auto;
   border-bottom: 1px solid #CCC;
   padding-bottom: 15px;
   .unpublished {
@@ -218,6 +138,13 @@ blockquote.pullquote {
   }
 }
 
+.field-name-body {
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
 /****** Override for sticky **********/
 .social.sticky{
   position: fixed !important;
@@ -226,6 +153,11 @@ blockquote.pullquote {
 /****** Hide the social until loaded **********/
 aside.social.social-vertical {
   display: none;
+  background: rgba(255,255,255,.75);
+   @include border-radius(5px);
+     h3.tp-social-headline {
+       padding-top: 5px;
+    }
 }
 
 body {
@@ -234,4 +166,55 @@ body {
       background-color: transparent;
     }
   }
+}
+.fresh-content-wrapper {
+  position: relative;
+}
+
+.sticky-wrapper{
+  @include breakpoint($breakpoint-phablet){
+    position: absolute;
+    margin-left: 15px;
+  }
+}
+aside.social.social-vertical {
+  @include breakpoint($breakpoint-phablet){
+    position: absolute;
+  }
+  @include breakpoint($breakpoint-desktop) {
+    position: static;
+  }
+}
+article{
+  color: #3A3A3A;
+  @include breakpoint($breakpoint-phablet) {
+    margin-left: 54px;
+  }
+  @include breakpoint($breakpoint-desktop) {
+    margin-left: 8.33%;
+  }
+  h1.title, #more-on-takepart h2{
+    color: $black;
+  }
+  .series-navigation {
+    a {
+       .label {
+        text-decoration: none;
+      }
+    &:hover {
+      .label {
+        text-decoration: none;
+      }
+      .series-nav-title {
+        text-decoration: underline;
+      }
+    }
+  }
+  }
+}
+.video_playlist-wrapper,
+.article-wrapper,
+.video-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
 }
