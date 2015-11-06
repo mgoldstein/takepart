@@ -1,0 +1,410 @@
+@import "base/modules/newsletter";
+
+/****************************************
+ * Feature Article Content Type on Fresh
+ ***************************************/
+ /* Header takes 100% if the Feature Article is the first Node*/
+
+.node-type-feature-article {
+  @include breakpoint($breakpoint-tablet){
+    #header {
+      max-width: 100%;
+    }
+  }
+}
+
+.feature_article-wrapper{
+  article{
+    .main-media .caption {
+      text-align: left;
+    }
+    @include breakpoint($breakpoint-tablet){
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+   .headline {
+      margin-top: 20px;
+    }
+    .feature-article-small {
+     a,p {
+        font-family: "AdelleSans";
+        font-size: 12px;
+        font-weight: 500;
+        margin: 0;
+        color: #3A3A3A;
+        text-transform: uppercase;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+    .main-media {
+      position: relative;
+      img.main-image {
+        width: 100%;
+        height: auto;
+      }
+      .caption {
+        padding: 10px 15px;
+        position: relative;
+      }
+    }
+      .tap-action-wrapper {
+        &.align-right, &.align-left, &.align-center {
+          max-width: 100%;
+          margin: 10px auto 20px auto;
+        }
+      }
+
+    @include breakpoint($breakpoint-tablet){
+      .main-media:after {
+        content:'';
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background-image:
+          linear-gradient(top, rgba(0,0,0,0.3),rgba(0,0,0,0) 100px),
+          linear-gradient(bottom, rgba(0,0,0,0.6), rgba(0,0,0,0) 400px);
+        background-image:
+          -ms-webkit-linear-gradient(top, rgba(0,0,0,0.3),rgba(0,0,0,0) 100px),
+          -ms-webkit-linear-gradient(bottom, rgba(0,0,0,0.6), rgba(0,0,0,0) 400px);
+        background-image:
+          -moz-webkit-linear-gradient(top, rgba(0,0,0,0.3),rgba(0,0,0,0) 100px),
+          -moz-webkit-linear-gradient(bottom, rgba(0,0,0,0.6), rgba(0,0,0,0) 400px);
+      }
+    }
+    .section.top {
+      margin: 10px 0 30px 0;
+      .topic-box-wrapper {
+        margin: 0;
+      }
+      .tp_sponsor {
+        margin-top: 5px;
+      }
+    }
+
+    .article-header .title-block {
+        padding: 0 15px;
+        h1.title {
+          margin-top: 15px;
+        }
+    }
+    .inline-content-video,
+    .inline-content-playlist {
+      float: none;
+      margin-left: -15px;
+      margin-right: -15px;
+      @include breakpoint($breakpoint-phablet) {
+        margin: 0;
+      }
+    }
+    .inline-image-wrapper {
+      .align-right,
+      .align-left {
+        float: none;
+        margin: 15px 0;
+      }
+    }
+    @include breakpoint($breakpoint-tablet) {
+      .series-navigation-wrapper,
+      #more-on-takepart,
+      .sponsor-disclosure {
+        max-width: 70%;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 620px;
+       }
+        margin: 0 auto;
+      }
+      aside.inline-content.pull-right {
+        max-width: 80%;
+        margin: 0 auto;
+        float: none !important; /*To override the float:right from _normalize*/
+        width: auto;
+        padding-left: 0;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 780px;
+        }
+        .inline-content-wrapper {
+          float: right;
+          width: 275px;
+          @include breakpoint($breakpoint-desktop) {
+            width: 321px;
+         }
+          padding-left: 30px;
+          margin: 10px 0;
+        }
+      }
+      .block-boxes-ga_ad {
+        max-width: 80%;
+        margin: 0 auto;
+        float: none !important; /*To override the float:right from _normalize*/
+        width: auto;
+        padding-left: 0;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 780px;
+        }
+        .boxes-box {
+          float: right;
+          width: 330px;
+          @include breakpoint($breakpoint-desktop) {
+            width: 330px;
+          }
+          padding-left: 30px;
+          margin: 10px 0;
+        }
+      }
+      .series-navigation .item {
+        padding: 0;
+      }
+      .tp_sponsored_content_disclaimer {
+        margin: 10px 0;
+      }
+    .section.top {
+      max-width: 750px;
+      margin: 65px auto 0;
+      padding: 0 15px;
+      .topic-box-wrapper {
+        margin-bottom: 10px;
+      }
+      .tp_sponsor {
+        margin: 5px 0 15px 0;
+        display: inline-block;
+      }
+    }
+    .section.header {
+      max-width: 100%;
+      padding: 0;
+    }
+    .section.main-content {
+      margin-top: 35px;
+      hr {
+        max-width: 70%;
+        clear: both;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 620px;
+       }
+        margin: 0 auto;
+      }
+      p {
+        max-width: 70%;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 620px;
+       }
+        margin: 20px auto;
+      }
+      blockquote.pullquote.text-center {
+        padding-top: 15px;
+      }
+      /*Image inline-replacements*/
+      .inline-image-wrapper {
+        //Tablet width
+        max-width: 80%;
+        margin: 0 auto;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 780px;
+        }
+        .align-right {
+          float: right;
+          margin: 15px 0 15px 35px;
+        }
+        .align-left {
+          float: left;
+          margin: 15px 35px 15px 0;
+        }
+        .align-center {
+          max-width: 620px;
+          margin: 50px auto 30px auto;
+        }
+        .align-full,
+        .align-full_width {
+          margin: 50px 0 30px;
+        }
+        &.full-width {
+          max-width: 100%;
+          margin: 0;
+          img.inline-image {
+            width: 100%;
+            height: auto;
+          }
+          .align-full_width .caption p {
+            max-width: 80%;
+            @include breakpoint($breakpoint-desktop) {
+              max-width: 780px;
+            }
+            margin: 0 auto;
+          }
+        }
+        .inline-feature-image {
+          .caption {
+            padding: 0 15px 0px 0;
+            margin-top: 20px;
+            p {
+              margin: 0;
+            }
+          }
+        }
+      }
+      /* Video Inline Replacement*/
+
+      .inline-content-video,
+      .inline-content-playlist {
+        max-width: 80%;
+        margin: 50px auto 30px auto;
+        &.align-center {
+          max-width: 70%;
+        }
+        &.align-left {
+          overflow: visible;
+          >div:first-of-type {
+            width: 50%;
+            float: left;
+            margin: 0px 35px 15px 0;
+          }
+        }
+        &.align-right {
+          overflow: visible;
+          >div:first-of-type {
+            width: 50%;
+            float: right;
+            margin: 0px 0 15px 35px;
+          }
+        }
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 780px;
+          &.align-center {
+            max-width: 620px;
+          }
+        }
+      }
+
+      /*TAP Widget Inline Replacement*/
+      .takepart-take-action-widget {
+        margin: 0 auto;
+        &.align-left {
+          max-width: 80% !important;
+          float: none;
+          .takepart-take-action-widget-container {
+            width: 320px;
+            float: left;
+            margin: 0 20px 10px 0;
+          }
+        }
+        &.align-right {
+          max-width: 80% !important;
+          float: none;
+          .takepart-take-action-widget-container {
+            width: 320px;
+            float: right;
+            margin: 0 0px 10px 20px;
+          }
+        }
+        &.align-center {
+          max-width: 500px !important;
+        }
+
+        @include breakpoint($breakpoint-desktop) {
+          &.align-left, &.align-right {
+            max-width: 780px !important;
+          }
+        }
+      }
+      .tap-action-wrapper {
+        margin: 0 auto;
+        &.align-left {
+          max-width: 80%;
+          margin: 0 auto;
+          float: none;
+          .tap-action {
+            width: 320px !important;
+            max-width: 320px !important;
+            float: left;
+            margin: 0 25px 20px 0;
+          }
+        }
+        &.align-right {
+          max-width: 80%;
+          margin: 0 auto;
+          float: none;
+          .tap-action {
+            width: 320px !important;
+            max-width: 320px !important;
+            float: right;
+            margin: 0 0 20px 25px;
+          }
+        }
+        &.align-center {
+          max-width: 500px !important;
+        }
+        @include breakpoint($breakpoint-desktop) {
+          &.align-left, &.align-right {
+            max-width: 780px;
+          }
+        }
+      }
+
+      /* HTML Block - Inline Replacement*/
+      .inline-html-wrapper {
+        max-width: 80%;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 780px;
+        }
+        margin: 0 auto;
+        p {
+          max-width: 100%;
+        }
+      }
+      /* Embedded - Newsletter. The rest of the styles in _newsletter.scss */
+      .block-newsletter-campaign {
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 780px;
+        }
+        margin: 0 auto;
+        max-width: 80%;
+      }
+    } //Main-Content
+      .article-header {
+        position: relative;
+        .caption {
+          padding: 0 15px;
+          p {
+            position: absolute;
+            top: 10px;
+            @include breakpoint($breakpoint-desktop) {
+              left: 20%;
+            }
+            left: 13%;
+            padding: 0;
+          }
+        }
+        .title-block {
+          padding: 0;
+          position: absolute;
+          margin: 0 35px 0 0;
+          bottom: 50px;
+         @include breakpoint($breakpoint-desktop) {
+           left: 20%;
+          }
+          left: 13%;
+          max-width: 780px;
+          h1.title,.headline {
+            color: $white;
+            margin: 15px 0 15px 0;
+            text-align: left;
+          }
+          .feature-article-small {
+           a,p {
+            color: $white;
+            }
+          }
+          h1.title {
+            margin-top: 10px;
+          }
+
+        }
+      }
+    }
+  }
+}

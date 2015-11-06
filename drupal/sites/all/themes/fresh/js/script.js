@@ -86,11 +86,14 @@
 
   /* Position stick share */
   $('document').ready(function(){
-    var stickyOffset = $(".main-media").offset().top - $(".main-content").offset().top;
-    $('.sticky-wrapper').css('margin-top', stickyOffset - 7);
+    window.featureFirst = false;
+    window.tp_shareTopOffset();
+    window.tp_shareLeftAlign();
+    $(window).resize(function(){
+      window.tp_shareTopOffset();
+      window.tp_shareLeftAlign();
+    });
   });
-
-
 
   /**
    *  @function:
@@ -117,7 +120,7 @@
     jQuery('body #footer-wrapper').after($a);
 
     //only do on fresh theme with article-wrapper & video wrapper
-    if ($('.article-wrapper').length !== 0 || $('.video-wrapper').length !== 0 || $('.video_playlist-wrapper').length !=0) {
+    if ($('.fresh-content-wrapper').length !=0) {
       jQuery('body #footer-wrapper').after($a);
       //variables
       var background_image = new Image();

@@ -20,9 +20,7 @@
 }
 
 body {
-  .article-wrapper,
-  .video-wrapper,
-  .video_playlist-wrapper {
+  .fresh-content-wrapper {
     .icon.i-influence:after {
       content: '\e116';
       font-size: 26px;
@@ -154,6 +152,9 @@ body {
             cursor: pointer;
             h3.share-headline {
               display: none;
+            }
+            h3.takeaction-headline {
+              padding-top: 0;
             }
           }
 
@@ -425,8 +426,9 @@ body.node-type-openpublish-photo-gallery {
     width: 30%;
 
     h3 {
-	 display: block;
-	 margin-top: 5px;
+      display: block;
+      margin-top: 5px;
+      padding-top: 0;
     }
   }
 }

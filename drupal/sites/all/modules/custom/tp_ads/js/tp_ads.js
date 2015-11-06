@@ -162,7 +162,9 @@
       }
 
       $(article_wrapper).each(function(){
-        if($(this).hasClass('ad-active')) {
+        if($(this).hasClass('ad-active')
+          && (!$(this).hasClass('feature_article-wrapper')
+            || id == 'more_on_takepart')) {
           window.tp_insert_ads(this, ads_object[k]['selector'], ads_object[k], id, show_ads);
         }
       });

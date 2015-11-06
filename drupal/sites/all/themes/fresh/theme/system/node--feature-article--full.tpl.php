@@ -8,10 +8,7 @@
  */
 ?>
 
-<!-- <div class="fresh-content-wrapper"> -->
-  <?php
-    $node_type = $variables['type'];
-    $node_type = ($node_type == 'openpublish_article') ? 'article' : $node_type; ?>
+  <?php $node_type = $variables['type']; ?>
   <div class = "<?php print $node_type ?>-wrapper fresh-content-wrapper clearfix">
   <?php if (!empty($variables['social'])): ?>
     <aside class="social social-vertical stick">
@@ -19,39 +16,40 @@
     </aside>
   <?php endif; ?>
   <article class="col-xs-10 col-xs-offset-1 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
-
-    <?php if (!empty($variables['advertisement'])): ?>
-      <div class="advertisement">
-     <?php print $variables['advertisement']; ?>
-      </div>
-    <?php endif; ?>
-    <div class="section">
-   <?php if (!empty($variables['topic_box'])): ?>
-     <?php print $variables['topic_box']; ?>
-   <?php endif; ?>
-   <?php print render($title_prefix); ?>
-      <h1 class="title"><?php print $title; ?></h1>
-   <?php print render($title_suffix); ?>
-   <?php if (!empty($variables['headline'])): ?>
-     <?php print $variables['headline']; ?>
-   <?php endif; ?>
-    </div>
-    <div class="section">
-   <?php if (!empty($variables['media'])): ?>
+    <div class="section header full-width">
      <div class="row row-remove-xs">
-    <?php print $variables['media']; ?>
-     </div>
-   <?php endif; ?>
+        <header class="article-header">
+          <?php if (!empty($variables['media'])): ?>
+          <?php print $variables['media']; ?>
+          <div class = "title-block">
+            <?php if (!empty($variables['field_article_featured_link'])): ?>
+              <?php print $variables['field_article_featured_link']; ?>
+            <?php endif; ?>
+            <?php print render($title_prefix); ?>
+            <h1 class="title"><?php print $title; ?></h1>
+            <?php print render($title_suffix); ?>
+            <?php if (!empty($variables['headline'])): ?>
+              <?php print $variables['headline']; ?>
+            <?php endif; ?>
+          </div>
+      <?php endif; ?>
+        </header>
+      </div>
     </div>
-    <div class="section">
-   <?php if (!empty($variables['sponsored'])): ?>
-     <?php print $variables['sponsored']; ?>
-   <?php endif; ?>
-   <?php if (!empty($variables['author_teaser'])): ?>
-     <div class="row">
-    <?php print $variables['author_teaser']; ?>
-     </div>
-   <?php endif; ?>
+    <div class="section top">
+      <?php if (!empty($variables['topic_box'])): ?>
+        <?php print $variables['topic_box']; ?>
+      <?php endif; ?>
+      <?php if (!empty($variables['author_teaser'])): ?>
+        <div class="row">
+          <?php print $variables['author_teaser']; ?>
+        </div>
+      <?php endif; ?>
+      <?php if (!empty($variables['sponsored'])): ?>
+        <?php print $variables['sponsored']; ?>
+      <?php endif; ?>
+    </div>
+  <div class="section main-content">
    <?php if (!empty($variables['body'])): ?>
      <div class="main-content">
     <?php print $variables['body']; ?>
@@ -81,7 +79,7 @@
    <?php print $variables['more_on_takepart']; ?>
     <?php endif; ?>
   </article>
-</div><!-- </div> -->
+</div>
 
 <?php if (!empty($variables['auto-scroll'])): ?>
   <?php print $variables['auto-scroll']; ?>

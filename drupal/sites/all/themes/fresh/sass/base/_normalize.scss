@@ -280,11 +280,14 @@ aside.inline-content + p{
     margin: 0 auto !important;
   }
 }
-.container{
+.container {
   width: 100%;
-  @include breakpoint($breakpoint-desktop){
-    max-width: 1000px;
+  @include breakpoint($breakpoint-tablet){
+    padding: 0;
   }
+  // @include breakpoint($breakpoint-desktop){
+  //   max-width: 1000px;
+  // }
 }
 
 /*
@@ -521,9 +524,7 @@ figure.align-left {
     margin-right: 0px;
   }
 }
-.article-wrapper,
-.video-wrapper,
-.video_playlist-wrapper {
+.fresh-content-wrapper {
   article{
     @include breakpoint($breakpoint-phablet){
       padding: 0 31px;
