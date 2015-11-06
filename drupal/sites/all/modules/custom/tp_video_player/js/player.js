@@ -391,7 +391,8 @@
 
       //destroy all slider
       if (window['bxslider_' + index] != undefined) {
-        window['bxslider_' + index].destroySlider();
+        //window['bxslider_' + index].destroySlider();
+        return;
       }
 
       if(null == window['bxslider_' + index + '_current']){
