@@ -107,10 +107,10 @@
     font-size: 1.9em;
   }
   .bx-wrapper .bx-prev {
-    left: -13px;
+    left: 0;
   }
   .bx-wrapper .bx-next {
-    right: 6px;
+    right: 0;
   }
   [data-playlist-type="detailed"] {
     @include breakpoint($breakpoint-phablet){
