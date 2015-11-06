@@ -147,7 +147,6 @@ h3.video-title{
     .bx-controls-direction {
       a {
         margin-top: 0;
-<<<<<<< HEAD
         background-color: rgba(0,0,0,0.5);
         &.disabled {
           display: block;
@@ -161,12 +160,6 @@ h3.video-title{
           &:hover {
             background-color: rgba(0,0,0,0.4);
           }
-=======
-        top: 47px;
-        color: #000;
-        &:hover {
-            color: $light-mint;
->>>>>>> develop
         }
         &:active {
           background-color: rgba(0,0,0,0.8);
@@ -180,7 +173,6 @@ h3.video-title{
     &:hover{
       text-decoration: none;
     }
-<<<<<<< HEAD
     &:after {
       display: inline;
       right: 34%;
@@ -189,8 +181,6 @@ h3.video-title{
       margin-top: -2px;
       margin-left: 0;
     }
-=======
->>>>>>> develop
   }
 
   .bx-prev {
@@ -198,7 +188,6 @@ h3.video-title{
     &:hover{
       text-decoration: none;
     }
-<<<<<<< HEAD
     &:after {
       display: inline;
       left: 35%;
@@ -232,8 +221,6 @@ body.campaign-display {
     .bx-controls-direction a {
       color: #FFFFFF;
     }
-=======
->>>>>>> develop
   }
 }
 
@@ -337,7 +324,6 @@ body.campaign-display {
       height: auto;
       cursor: pointer;
     }
-<<<<<<< HEAD
     .video-duration {
       @include border-radius(2px);
       background-color: rgba(0, 0, 0, 0.8);
@@ -347,8 +333,6 @@ body.campaign-display {
       position: absolute;
       right: 6px;
     }
-=======
->>>>>>> develop
   }
   .overlay {
     top: 0;
