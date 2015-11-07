@@ -47,7 +47,7 @@
           float: left;
         }
         @include breakpoint($breakpoint-desktop) {
-          width: 330px;
+          width: 329px;
           @-moz-document url-prefix() {
             width: 325px;
             }
