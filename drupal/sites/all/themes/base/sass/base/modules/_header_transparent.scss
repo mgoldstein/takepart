@@ -1,0 +1,97 @@
+.header-style-2 {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 1;
+  color: white;
+
+  .navbar-transparent {
+    height: 60px;
+    position: relative;
+    padding: 15px;
+  }
+
+  .nav-right {
+    float: right;
+  }
+
+  .menu-toggle {
+    display: inline-block;
+  }
+
+  .logo-transparent {
+    display: inline-block;
+    vertical-align: bottom;
+    background: url(/sites/all/themes/base/images/logo-transparent.png) no-repeat;
+    width: 100px;
+    height: 29px;
+  }
+
+
+  /****** SEARCH FORM *********/
+  #search-api-page-search-form-site-search {
+    display: none;
+    min-width: 240px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 2;
+    &.visible {
+      display: block;
+    }
+
+    input[type="text"] {
+      float: right;
+      height: 30px;
+      width: 200px;
+      margin: 0;
+      padding: 0 20px;
+      vertical-align: middle;
+      background: #fff;
+      border: 3px solid #fff;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 30px;
+      color: #888;
+      border-radius: 0px 3px 3px 0px;
+      -moz-border-radius: 0px 3px 3px 0px;
+      -webkit-border-radius: 0px 3px 3px 0px;
+      border: 0px solid #000000;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      -o-transition: all .3s;
+      -moz-transition: all .3s;
+      -webkit-transition: all .3s;
+      -ms-transition: all .3s;
+      transition: all .3s;
+    }
+
+    .form-submit {
+      float: left;
+      width: 40px;
+      height: 30px;
+      background: white url(/sites/all/themes/tp4/images/search-submit.png) no-repeat center center;
+      text-indent: -999px;
+      border: none;
+      margin: 0;
+      border-radius: 3px 0px 0px 3px;
+      -moz-border-radius: 3px 0px 0px 3px;
+      -webkit-border-radius: 3px 0px 0px 3px;
+      &:after {
+        content: '\e616';
+        font-family: takepart;
+      }
+    }
+
+
+  }
+
+
+}
+
+//TODO: move this to global
+.menu li {
+  list-style: none;
+  float: right;
+}

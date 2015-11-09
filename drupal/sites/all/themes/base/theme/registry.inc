@@ -44,6 +44,12 @@ function _base_theme(&$existing, $type, $theme, $path) {
         'links' => array(),
       ),
     ),
+    'base_header_transparent' => array(
+      'variables' => array(
+        'logo' => '',
+        'search' => ''
+      )
+    ),
   );
 
   // Process custom. This should be used again for any sub-themes.
