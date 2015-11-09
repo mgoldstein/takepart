@@ -189,11 +189,11 @@
        }
         margin: 0 auto;
       }
-      p {
+      p,ul,ol,em {
         max-width: 70%;
         @include breakpoint($breakpoint-desktop) {
           max-width: 620px;
-       }
+        }
         margin: 20px auto;
       }
       blockquote.pullquote.text-center {
