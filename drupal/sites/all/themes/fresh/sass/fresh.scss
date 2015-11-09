@@ -129,6 +129,12 @@ blockquote.pullquote {
 .inline-html-wrapper {
   display: block;
   margin: 0 auto;
+  .jwplayer {
+    overflow: hidden;
+    @include breakpoint($breakpoint-phablet) {
+      overflow: visible;
+    }
+  }
 }
 
 .align-center {
