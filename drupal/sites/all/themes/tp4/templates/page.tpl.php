@@ -16,7 +16,7 @@
 <div id="page-wrap">
 
   <div class="header-wrapper">
-    <header id="header">
+    <header id="header" class="header-style-1">
       <?php print render($page['header']); ?>
     </header>
   </div>

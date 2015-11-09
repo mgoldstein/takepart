@@ -1,4 +1,4 @@
-#header{
+#header.header-style-1{
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-size: 14px;
   color: #5A5A5A;
@@ -221,7 +221,7 @@ body.mobile-search-show #header form .form-submit {
 }
 
 
-#header {
+#header.header-style-1 {
   .follow-us {
     a {
       &.i-facebook {
@@ -254,7 +254,7 @@ body.mobile-search-show #header form .form-submit {
   }
 }
 
-#header {
+#header.style-1 {
   .pivot-nav-theme {
     .menu-toggle{
       display: block;
@@ -274,7 +274,7 @@ body.mobile-search-show #header form .form-submit {
 //
 // Slim Nav
 //
-#header {
+#header.header-style-1 {
   .slim-nav {
     height: auto;
     position: relative;
@@ -972,7 +972,7 @@ body {
   }
 }
 
-#header {
+#header.style-1 {
   .slim-nav {
     .left {
       .logo {

@@ -8,7 +8,8 @@ module.exports = function (grunt) {
             src: {
                 files: [
                     'drupal/sites/all/themes/fresh/sass/**/*.scss',
-                    'drupal/sites/all/themes/tp4/sass/**/*.scss'
+                    'drupal/sites/all/themes/tp4/sass/**/*.scss',
+                  'drupal/sites/all/themes/base/sass/**/*.scss'
                 ],
                 tasks: ['compass:fresh', 'compass:tp4']
             }
