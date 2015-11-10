@@ -152,16 +152,6 @@ blockquote.pullquote {
   position: fixed !important;
 }
 
-/****** Hide the social until loaded **********/
-aside.social.social-vertical {
-  display: none;
-  background: rgba(255,255,255,.75);
-   @include border-radius(5px);
-     h3.tp-social-headline {
-       padding-top: 5px;
-    }
-}
-
 body {
   &.node-preview {
     .node-unpublished {
@@ -179,12 +169,23 @@ body {
     margin-left: 15px;
   }
 }
-aside.social.social-vertical {
-  @include breakpoint($breakpoint-phablet){
-    position: absolute;
-  }
-  @include breakpoint($breakpoint-desktop) {
-    position: static;
+body.node-type-article,
+body.node-type-video,
+body.node-type-flashcard,
+body.node-type-video-playlist,
+body.node-type-feature-article {
+  aside.social.social-vertical {
+    display: none;
+    background: rgba(255,255,255,.75);
+    padding-top: 15px;
+    padding-bottom: 13px;
+
+    @include breakpoint($breakpoint-phablet){
+      position: absolute;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      position: static;
+    }
   }
 }
 article{
