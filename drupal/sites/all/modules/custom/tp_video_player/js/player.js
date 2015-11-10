@@ -438,6 +438,7 @@
       setTimeout(function(){
         var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
 
+        //Need to alter the default width to 100%
         $(bxslider_wrapper).css({'max-width':'100%'});
 
         var height = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
