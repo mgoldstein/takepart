@@ -113,12 +113,17 @@
     @include breakpoint($breakpoint-tablet) {
       .series-navigation-wrapper,
       #more-on-takepart,
-      .sponsor-disclosure {
+      .sponsor-disclosure,
+      .comments {
         max-width: 70%;
         @include breakpoint($breakpoint-desktop) {
           max-width: 620px;
        }
         margin: 0 auto;
+      }
+      .comments {
+        display: block;
+        margin: 20px auto;
       }
       aside.inline-content.pull-right {
         max-width: 80%;
