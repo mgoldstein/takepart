@@ -24,7 +24,10 @@
     }
 
     return this.each(function(index) {
-
+      //Add Sticky Share on page load only
+      if ($('.sticky-wrapper').length != 0) {
+        return;
+      }
       var $stickyEl = $(this),
           $wrap = $stickyEl.wrap('<div class="' + options.wrapperClass +  '" />').parent().css('position', 'absolute'),
           $bottomEl = $(options.stopAt);
