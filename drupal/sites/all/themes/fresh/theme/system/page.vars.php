@@ -11,13 +11,35 @@ function fresh_preprocess_page(&$variables) {
 		)), 
 	'setting');
 
-  /* Statically add mobile menu on every page */
-  $mobile_menu = theme('base_social_follow');
-  $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
 
-  /* Statically add mobile menu */
-  $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
-  $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
+  /* Add special mobile menu when nav is transparent */
+  if($variables['node'] && $variables['node']->type == 'feature_article'){
+
+    //Logo
+    //TODO: add the logo with a 'close' icon
+
+    //Menu
+    //TODO: if you want a different menu, then replace the below
+    $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
+    $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
+
+    //Descriptive Text
+    //TODO: change this to the correct text
+    $variables['page']['left_drawer']['text']['#markup'] = 'TakePart, a digital news & lifestyle magazine and social action platform...';
+
+    //Social Icons
+    $mobile_menu = theme('base_social_follow');
+    $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
+
+  }else{
+    //Social Icons
+    $mobile_menu = theme('base_social_follow');
+    $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
+
+    //Menu
+    $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
+    $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
+  }
 
   /* Add Transparent Nav to Featured Articles and MegaSlim to all others */
   if($variables['node'] && $variables['node']->type == 'feature_article'){
