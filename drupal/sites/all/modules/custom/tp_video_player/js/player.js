@@ -389,9 +389,9 @@
       //init slider
       $(this).show();
       window['bxslider_' + index] = $(this).bxSlider({
-        minSlides: 2,
+        minSlides: slides,
         maxSlides: slides,
-        slideWidth: 156,
+        slideWidth: 228,
         slideMargin: 4,
         infiniteLoop: false,
         hideControlOnEnd: true,
@@ -399,10 +399,7 @@
         pager: false,
         nextText: '',
         prevText: '',
-        startSlide: window['bxslider_' + index + '_current'],
-        onSliderResize: function() {
-          $(this).parents('.bx-wrapper').css('max-width','100%');
-        }
+        startSlide: window['bxslider_' + index + '_current']
       });
 
       //adjustment to auto correct location of slider control
@@ -437,9 +434,6 @@
       });
       setTimeout(function(){
         var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
-
-        //Need to alter the default width to 100%
-        $(bxslider_wrapper).css({'max-width':'100%'});
 
         var height = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
 
