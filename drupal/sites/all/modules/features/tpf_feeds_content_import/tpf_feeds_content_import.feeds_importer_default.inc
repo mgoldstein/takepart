@@ -44,136 +44,131 @@ function tpf_feeds_content_import_feeds_importer_default() {
         'expire' => '-1',
         'mappings' => array(
           0 => array(
-            'source' => 'guid',
-            'target' => 'guid',
-            'unique' => 1,
-          ),
-          1 => array(
             'source' => 'nid',
             'target' => 'nid',
             'unique' => 1,
           ),
-          2 => array(
+          1 => array(
             'source' => 'title',
             'target' => 'title',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'permanent title',
             'target' => 'field_permanent_title',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'subhead',
             'target' => 'field_article_subhead',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'author',
             'target' => 'field_author:nid',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'main image',
             'target' => 'field_article_main_image:MediaFeedsLibraryProvider',
             'unique' => FALSE,
           ),
-          7 => array(
+          6 => array(
             'source' => 'body',
             'target' => 'body',
             'unique' => FALSE,
           ),
-          8 => array(
+          7 => array(
             'source' => 'inline replacements',
             'target' => 'field_inline_replacements:etid',
             'unique' => FALSE,
           ),
-          9 => array(
+          8 => array(
             'source' => 'related stories',
             'target' => 'field_related_stories:nid',
             'unique' => FALSE,
           ),
-          10 => array(
+          9 => array(
             'source' => 'action overrides',
             'target' => 'field_related_actions:nid',
             'unique' => FALSE,
           ),
-          11 => array(
+          10 => array(
             'source' => 'promo headline',
             'target' => 'field_promo_headline',
             'unique' => FALSE,
           ),
-          12 => array(
+          11 => array(
             'source' => 'short headline',
             'target' => 'field_promo_short_headline',
             'unique' => FALSE,
           ),
-          13 => array(
+          12 => array(
             'source' => 'promo text',
             'target' => 'field_promo_text',
             'unique' => FALSE,
           ),
-          14 => array(
+          13 => array(
             'source' => 'thumbnail',
             'target' => 'field_thumbnail:MediaFeedsLibraryProvider',
             'unique' => FALSE,
           ),
-          15 => array(
+          14 => array(
             'source' => 'admin tag',
             'target' => 'field_admin_tag',
             'term_search' => '1',
             'autocreate' => 0,
           ),
-          16 => array(
+          15 => array(
             'source' => 'free tag',
             'target' => 'field_free_tag',
             'term_search' => '0',
             'autocreate' => 1,
           ),
-          17 => array(
+          16 => array(
             'source' => 'series',
             'target' => 'field_series',
             'term_search' => '1',
             'autocreate' => 0,
           ),
-          18 => array(
+          17 => array(
             'source' => 'sponsored',
             'target' => 'field_sponsored',
             'term_search' => '1',
             'autocreate' => 0,
           ),
-          19 => array(
+          18 => array(
             'source' => 'topic',
             'target' => 'field_topic',
             'term_search' => '1',
             'autocreate' => 0,
           ),
-          20 => array(
+          19 => array(
             'source' => 'dfp id',
             'target' => 'field_dfp_creative_id',
             'unique' => FALSE,
           ),
-          21 => array(
+          20 => array(
             'source' => 'newsletters',
             'target' => 'field_newsletter_feed_exclude',
             'unique' => FALSE,
           ),
-          22 => array(
+          21 => array(
             'source' => 'syndication',
             'target' => 'field_syndication',
             'unique' => FALSE,
           ),
-          23 => array(
+          22 => array(
             'source' => 'status',
             'target' => 'status',
             'unique' => FALSE,
           ),
-          24 => array(
+          23 => array(
             'source' => 'path',
             'target' => 'path_alias',
             'pathauto_override' => 1,
           ),
-          25 => array(
+          24 => array(
             'source' => 'published',
             'target' => 'created',
             'unique' => FALSE,
@@ -228,97 +223,87 @@ function tpf_feeds_content_import_feeds_importer_default() {
         'expire' => '-1',
         'mappings' => array(
           0 => array(
-            'source' => 'guid',
-            'target' => 'guid',
-            'unique' => 1,
-          ),
-          1 => array(
             'source' => 'nid',
             'target' => 'nid',
             'unique' => 1,
           ),
-          2 => array(
+          1 => array(
             'source' => 'HTML title tag',
             'target' => 'field_html_title',
             'unique' => FALSE,
           ),
-          3 => array(
+          2 => array(
             'source' => 'permanent title',
             'target' => 'field_permanent_title',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'title',
             'target' => 'title',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'first name',
             'target' => 'field_profile_first_name',
             'unique' => FALSE,
           ),
-          6 => array(
+          5 => array(
             'source' => 'last name',
             'target' => 'field_profile_last_name',
             'unique' => FALSE,
           ),
-          7 => array(
+          6 => array(
             'source' => 'organization',
             'target' => 'field_profile_organization',
             'unique' => FALSE,
           ),
-          8 => array(
+          7 => array(
             'source' => 'summary',
             'target' => 'body:summary',
             'unique' => FALSE,
           ),
-          9 => array(
+          8 => array(
             'source' => 'body',
             'target' => 'body',
             'unique' => FALSE,
           ),
-          10 => array(
-            'source' => 'photo',
-            'target' => 'field_profile_photo',
-            'unique' => FALSE,
-          ),
-          11 => array(
+          9 => array(
             'source' => 'email',
             'target' => 'field_profile_email',
             'unique' => FALSE,
           ),
-          12 => array(
+          10 => array(
             'source' => 'follow me google',
             'target' => 'field_follow_google:title',
             'unique' => FALSE,
           ),
-          13 => array(
+          11 => array(
             'source' => 'google url',
             'target' => 'field_follow_google:url',
             'unique' => FALSE,
           ),
-          14 => array(
+          12 => array(
             'source' => 'follow me twitter',
             'target' => 'field_follow_twitter:title',
             'unique' => FALSE,
           ),
-          15 => array(
+          13 => array(
             'source' => 'twitter url',
             'target' => 'field_follow_twitter:url',
             'unique' => FALSE,
           ),
-          16 => array(
+          14 => array(
             'source' => 'published',
             'target' => 'status',
             'unique' => FALSE,
           ),
-          17 => array(
+          15 => array(
             'source' => 'path',
             'target' => 'path_alias',
-            'unique' => FALSE,
+            'pathauto_override' => 1,
           ),
         ),
-        'input_format' => 'full_html',
+        'input_format' => 'plain_text',
         'author' => '179962',
         'authorize' => 0,
         'skip_hash_check' => 0,
@@ -390,6 +375,11 @@ function tpf_feeds_content_import_feeds_importer_default() {
           3 => array(
             'source' => 'created',
             'target' => 'created',
+            'unique' => FALSE,
+          ),
+          4 => array(
+            'source' => 'active',
+            'target' => 'status',
             'unique' => FALSE,
           ),
         ),
