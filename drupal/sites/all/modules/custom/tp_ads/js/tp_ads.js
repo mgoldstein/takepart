@@ -209,14 +209,23 @@
           && selector_item_offset.top < viewport.bottom + view_offset)
           || id == 'more_on_takepart') {
 
+          var adSlot = current_ad.ad_slot;
+
           //overrides for desktop
-          if ($(window).width() > 480) {
+          if (window.innerWidth > 480) {
             //break this if conditional if the conditional check comes back as 0
             if (id != 'article_leader_ads' && id != 'more_on_takepart' && !conditional_check.length) {
               return;
             }
 
             javascript = current_ad.javascript_desktop;
+
+            if(typeof current_ad.desktop != "undefined") {
+
+              if(current_ad.desktop.ad_slot != "") {
+                adSlot = current_ad.desktop.ad_slot;
+              }
+            }
 
             //override for non-leaderboard
             if (id != 'article_leader_ads') {
@@ -260,7 +269,7 @@
           var top_article = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['TopArticle'];
           targets += 'googletag.pubads().setTargeting(\'TopArticle\', \'' + top_article + '\');';
 
-          targets += 'googletag.pubads().refresh([' +  current_ad.ad_slot.replace('-', '-') + ']);'
+          targets += 'googletag.pubads().refresh([' +  adSlot.replace('-', '-') + ']);'
           javascript = javascript.replace('[targets]', targets);
 
           //ensures we only process the selector once
@@ -274,7 +283,7 @@
 
             //creates the wrapper and append. wrapper is used later for removal so that there's no jump on the screen.
             if ($('.tp-ad-wrapper', this).length == 0) {
-              javascript = '<div id="' + current_ad.ad_slot.replace('-', '-') + '" class="tp-ad-wrapper row' + ad_class + '">' + javascript + '</div>';
+              javascript = '<div id="' + adSlot.replace('-', '-') + '" class="tp-ad-wrapper row' + ad_class + '">' + javascript + '</div>';
               $($this).append(javascript);
             }
             //otherwise append back to the same wrapper
