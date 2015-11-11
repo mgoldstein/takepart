@@ -339,8 +339,8 @@
    *    This function is used to init the bxslider for video playlist
    */
   window.tp_initslider = function() {
-    var small = 401;
-    var large = 701;
+    var small = 480;
+    var large = 768;
     var all_slides = $('.bxslider');
 
     //does for each slider
@@ -395,7 +395,6 @@
         slideMargin: 4,
         infiniteLoop: false,
         hideControlOnEnd: true,
-        responsive: true,
         pager: false,
         nextText: '',
         prevText: '',
@@ -406,16 +405,19 @@
       $(window).resize(function(){
         //Mobile titles are too long so we are ellipissississing them
         if(window.innerWidth <= 480) {
-          $('.video-item .promo-headline').each(function(){
+          $('.video-item .promo-headline').each(function(index){
             $(this).text(decodeURIComponent($(this).attr('data-mobile')));
-            if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height()) {
+            if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height() || index == 0) {
               $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
             }
           });
         } else {
-          $('.video-item .promo-headline').each(function(){
+          $('.video-item .promo-headline').each(function(index){
             $(this).text(decodeURIComponent($(this).attr('data-full')));
-            if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height()) {
+            if(index == 0) {
+              $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
+            }
+            if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height() || index == 0) {
               $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
             }
           });
@@ -441,12 +443,18 @@
 
         //Mobile titles are too long so we are ellipissississing them
         if(window.innerWidth <= 480) {
-          $('.video-item .promo-headline').each(function(){
+          $('.video-item .promo-headline').each(function(index){
             $(this).text(decodeURIComponent($(this).attr('data-mobile')));
+            if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height() || index == 0) {
+              $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
+            }
           });
         } else {
           $('.video-item .promo-headline').each(function(){
             $(this).text(decodeURIComponent($(this).attr('data-full')));
+            if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height() || index == 0) {
+              $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
+            }
           });
         }
       },500);
