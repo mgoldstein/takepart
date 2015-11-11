@@ -415,7 +415,7 @@ function inline_content_replacement_types() {
   );
 
   $types['ad_block'] = array(
-    'label' => t('Ad Block'),
+    'label' => t('Ad Block - DO NOT USE NO LONGER WORKS'),
     'description' => t('300x250 advertisment floated right.'),
     'controller' => 'InlineContentAdBlock',
   );
