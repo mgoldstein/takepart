@@ -294,15 +294,6 @@ function tp_videos_build_playlist($playlist_configuration, $videos, $view_mode, 
       if ($view_mode !== 'hidelist') {
         $node_view = node_view($node, 'video_playlist_teaser', $langcode);
 
-        //adds video duration at the end
-        $node_view['#suffix'] = theme('html_tag', array(
-          'element' => array(
-            '#tag' => 'span',
-            '#value' => $node->video_duration,
-            '#attributes' => array(
-              'class' => 'video-duration',
-        ))));
-
 				$node_view['#suffix'] .= _tp4_support_sponsor_flag($node);
 
         $node_view['field_promo_headline'][0]['#markup'] = $node_view['field_promo_headline'][0]['#markup'] . ' ';
