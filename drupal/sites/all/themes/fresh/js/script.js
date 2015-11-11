@@ -84,7 +84,7 @@
     }
   }
 
-  /* Position stick share */
+  /* Position stick share Done here to not bother tp4 */
   $('document').ready(function(){
     window.featureFirst = false;
     window.tp_shareTopOffset();

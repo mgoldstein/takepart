@@ -121,19 +121,22 @@
   Drupal.behaviors.mobileSocialNav = {
     attach: function (context, settings) {
 
-	 // Show the mobile social nav bar when window scrolls down
-	 var didScroll;
-	 $(window).scroll(function (event) {
-	   didScroll = true;
-	 });
+      // Show the mobile social nav bar when window scrolls down
+      var didScroll;
+        $(window).scroll(function (event) {
+          didScroll = true;
+      });
 
-	 setInterval(function () {
-	   if (didScroll && window.innerWidth < 480) {
-		var delta = 5;
-		hasScrolled(delta);
-		didScroll = false;
-	   }
-	 }, 250);
+      setInterval(function () {
+        if (didScroll && window.innerWidth < 480) {
+          var delta = 5;
+          hasScrolled(delta);
+          didScroll = false;
+        }
+        if(didScroll) {
+          window.tp_shareFeatureHide();
+        }
+      }, 250);
     }
   };
 
@@ -143,15 +146,16 @@
 
     // Make sure they scroll more than delta
     if (Math.abs(lastScrollTop - st) <= delta)
-	 return;
+      return;
 
     if (st > lastScrollTop) {
-	 // Scroll Down
-	 $('.header-wrapper.mobile').removeClass('nav-show').addClass('nav-hide');
+      // Scroll Down
+      $('.header-wrapper.mobile').removeClass('nav-show').addClass('nav-hide');
     } else {
-	 // Scroll Up
-	 $('.header-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');
+      // Scroll Up
+      $('.header-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');
     }
+
     lastScrollTop = st;
   }
 
@@ -205,4 +209,33 @@
       }
     });
   };
+
+  /**
+   * Sticky Share hide if in presence of feature main image
+   */
+  window.tp_shareFeatureHide = function(){
+    var elem = $('.fresh-content-wrapper').nextAll(), count = elem.length, showSticky = true;
+    $('article.node').each(function(index){
+      if($(this).parent().hasClass('feature_article-wrapper')) {
+        var win = $(window);
+        var mITop = $(this).find('.section.header .main-media').offset().top;
+        var mIBot = $(this).find('.section.header .main-media').height() + mITop;
+        //Make it dissappear a little early to prevent blinky
+        var stickTop = $('.sticky-wrapper .social').offset().top;
+        //Setting static height because a hidden items height is negative
+        var stickBot = stickTop + 483;
+
+        if(stickBot > mITop-100 && stickTop < mIBot+50) {
+          $('.sticky-wrapper').hide();
+          showSticky = false;
+        }
+      }
+      if(!--count) {
+        if(showSticky == true) {
+          $('.sticky-wrapper').show();
+        }
+      }
+    });
+  };
+
 })(jQuery, Drupal, this, this.document);
