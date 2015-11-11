@@ -41,14 +41,14 @@
 
       /* Show search field */
       var $body = $('body');
-      $('.header-style-2 .toggle-search').click(function(){
-        $(this).parents('.navbar-transparent').addClass('visible');
+      $('.navbar-transparent .toggle-search').click(function(){
+        $(this).parents('.navbar-transparent').addClass('search-open');
       });
 
       /* Hide search if clicked away from */
       $(document).on('click', function(event) {
-        if (!$(event.target).closest('.header-style-2 .navbar-transparent').length) {
-          $('.header-style-2 .navbar-transparent').removeClass("visible");
+        if (!$(event.target).closest('.navbar-transparent').length) {
+          $('.navbar-transparent').removeClass("search-open");
         }
       });
 

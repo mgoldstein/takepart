@@ -1,21 +1,29 @@
-.header-style-2 {
-  position: absolute;
-  top: 0; right: 0; left: 0;
-  z-index: 1;
-  color: white;
-
-  .navbar-transparent {
-    height: 60px;
-    position: relative;
-    padding: 15px;
-    padding-right: 35px;
-    &.visible {
-      #search-api-page-search-form-site-search{
-        display: block;
-      }
-      .menu {
-        display: none;
-      }
+#header.transparent {
+  @include breakpoint($breakpoint-tablet) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    color: white;
+  }
+}
+.navbar-transparent {
+  display: none;
+  height: 60px;
+  position: relative;
+  padding: 15px;
+  padding-right: 35px;
+  @include breakpoint($breakpoint-tablet) {
+    display: block;
+  }
+  &.search-open {
+    #search-api-page-search-form-site-search,
+    #search-api-page-search-form-site-search--2 {
+      display: block;
+    }
+    .menu {
+      display: none;
     }
   }
 
@@ -50,7 +58,7 @@
   }
 
   /****** User Login **********/
-  .icon.i-user-avatar{
+  .icon.i-user-avatar {
     background: url(/sites/all/themes/base/images/user-avatar-transparent.png) no-repeat center center;
     &:after {
       content: '';
@@ -84,7 +92,7 @@
       }
     }
 
-    .tp_login>.dropdown-menu li.loggedOut a, .tp_login>.dropdown-menu li.loggedIn a {
+    .tp_login > .dropdown-menu li.loggedOut a, .tp_login > .dropdown-menu li.loggedIn a {
       color: black;
       font-weight: bold;
       line-height: 6px;
@@ -92,8 +100,8 @@
   }
 
   /****** SEARCH FORM *********/
-  #search-api-page-search-form-site-search {
-    display: none;  // .navbar-transparent.visible changes this to display: block;
+  #search-api-page-search-form-site-search--2 {
+    display: none; // .navbar-transparent.visible changes this to display: block;
     min-width: 240px;
     padding-bottom: 8px;
     border-bottom: 1px solid #fff;
@@ -137,11 +145,13 @@
       color: #fff;
     }
 
-    input:-moz-placeholder { /* Firefox 18- */
+    input:-moz-placeholder {
+      /* Firefox 18- */
       color: #fff;
     }
 
-    input::-moz-placeholder {  /* Firefox 19+ */
+    input::-moz-placeholder {
+      /* Firefox 19+ */
       color: #fff;
     }
 
@@ -180,4 +190,3 @@
     cursor: pointer;
   }
 }
-
