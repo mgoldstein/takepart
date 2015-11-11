@@ -125,6 +125,7 @@
       var didScroll;
         $(window).scroll(function (event) {
           didScroll = true;
+          window.tp_shareFeatureHide();
       });
 
       setInterval(function () {
@@ -132,9 +133,6 @@
           var delta = 5;
           hasScrolled(delta);
           didScroll = false;
-        }
-        if(didScroll) {
-          window.tp_shareFeatureHide();
         }
       }, 250);
     }
@@ -217,22 +215,23 @@
     var elem = $('.fresh-content-wrapper').nextAll(), count = elem.length, showSticky = true;
     $('article.node').each(function(index){
       if($(this).parent().hasClass('feature_article-wrapper')) {
-        var win = $(window);
         var mITop = $(this).find('.section.header .main-media').offset().top;
         var mIBot = $(this).find('.section.header .main-media').height() + mITop;
-        //Make it dissappear a little early to prevent blinky
-        var stickTop = $('.sticky-wrapper .social').offset().top;
-        //Setting static height because a hidden items height is negative
-        var stickBot = stickTop + 483;
+        window.stickTop = $('.sticky-wrapper .social').offset().top;
 
-        if(stickBot > mITop-100 && stickTop < mIBot+50) {
-          $('.sticky-wrapper').hide();
+        //Setting static height because a hidden items height is negative
+        window.stickBot = stickTop + 483;
+        //Test if the share bar is colliding with feature main image
+        //Using Visibility because .show()/.hide() causes a blinky
+        //share for 7 pixels when collision is detected
+        if(stickBot > mITop-25 && stickTop < mIBot+25) {
+          $('.sticky-wrapper').css('visibility', 'hidden');
           showSticky = false;
         }
       }
       if(!--count) {
         if(showSticky == true) {
-          $('.sticky-wrapper').show();
+          $('.sticky-wrapper').css('visibility', 'visible');
         }
       }
     });
