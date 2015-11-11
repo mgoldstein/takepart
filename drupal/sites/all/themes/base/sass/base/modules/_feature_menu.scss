@@ -1,0 +1,119 @@
+/* These styles are applied to the main menu on faeture article ONLY */
+
+.node-type-feature-article {
+  .mobile-menu-header.feature-destkop,
+  .left-drawer-control  {
+    display: none;
+  }
+@include breakpoint($breakpoint-tablet){
+  .feature-modal {
+    position: fixed;
+    display: none;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.6);
+    top: 0;
+    right: 0;
+    left: 280px;
+    bottom: 0;
+  }
+  nav#mobile-menu {
+    background: #f7f7f7;
+    border-top: none;
+      .left-drawer-control {
+        display: block;
+        padding: 12px 20px;
+        .i-close-x {
+          font-size: 26px;
+          padding-right: 15px;
+          cursor: pointer;
+        }
+        .logo-feature {
+          width: 102px;
+          height: 27px;
+          display: inline-block;
+          background: url(/sites/all/themes/base/images/feature-drawer-logo.png) no-repeat;
+          vertical-align: bottom;
+        }
+      }
+    .mobile-menu {
+      margin-top: 15px;
+      ul {
+        padding-left: 40px;
+        li {
+          border-bottom: none;
+          a {
+            color: #3a3a3a;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 6px 15px
+          }
+          &.first a {
+            padding-top: 0;
+          }
+          &.show {
+            a {
+              border-bottom: none;
+            }
+            ul {
+              padding-left: 0;
+              li {
+                a {
+                  font-size: 17px;
+                  font-weight: 500;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .mobile-menu-header {
+      display: none;
+      &.feature-destkop {
+        width: 200px;
+        margin: 4px 0 0 55px;
+        display: block;
+        p.follow {
+          font-family: "AdelleSans";
+          font-size: 12px;
+          font-weight: 600;
+          margin: 0;
+          letter-spacing: 0.2px;
+        }
+        .follow-us {
+          padding: 4px 0;
+          .horizontal-menu {
+            margin: 0;
+            li.item {
+              padding-right: 5px;
+              a.icon {
+                background: #000;
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+    span.about {
+      font-family: "AdelleSans";
+      font-size: 14px;
+      line-height: 23px;
+      color: #3a3a3a;
+      display: inline-block;
+      padding: 16px 25px 20px 55px;
+      letter-spacing: 0.2px;
+    }
+  }
+
+    &.mobile-menu-show {
+      @include breakpoint($breakpoint-desktop){
+        position: static;
+        overflow-y: hidden;
+      }
+      #page-wrapper {
+        left: 0;
+      }
+    }
+}
+}
