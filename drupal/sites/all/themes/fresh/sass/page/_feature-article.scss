@@ -6,6 +6,7 @@
  /* Header takes 100% if the Feature Article is the first Node*/
 
 .node-type-feature-article {
+  border-top: none;
   @include breakpoint($breakpoint-tablet){
     background: none !important;
     #header {

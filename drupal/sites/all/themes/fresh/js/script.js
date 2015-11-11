@@ -21,6 +21,28 @@
     }
   };
 
+  Drupal.behaviors.mobileSearchToggleStyleTwo = {
+    attach: function(context, settings) {
+
+
+      /* Show search field */
+      var $body = $('body');
+      $('.header-style-2 .toggle-search').click(function(){
+        $(this).parents('.navbar-transparent').addClass('visible');
+      });
+
+      /* Hide search if clicked away from */
+      $(document).on('click', function(event) {
+        if (!$(event.target).closest('.header-style-2 .navbar-transparent').length) {
+          $('.header-style-2 .navbar-transparent').removeClass("visible");
+        }
+      });
+
+
+    }
+  };
+
+
   Drupal.behaviors.mobileSearchToggle = {
     attach: function(context, settings) {
 
@@ -36,7 +58,7 @@
         if($(window).width() < 768){
           /* Show search field */
           var $body = $('body');
-          $('.toggle-search').click(function(){
+          $('.header-style-1 .toggle-search').click(function(){
             if ($body.hasClass('mobile-search-show')) {
               $body.removeClass("mobile-search-show" );
             }else{
