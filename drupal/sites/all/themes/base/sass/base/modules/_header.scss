@@ -38,21 +38,6 @@
     //margin-left: 10px;
   }
 
-  .logo {
-    height: auto;
-    overflow: hidden;
-    display: block;
-    width: 121px;
-    float: left;
-    img {
-      width: 100%;
-      vertical-align: middle;
-    }
-    @include breakpoint($breakpoint-tablet) {
-      width: auto;
-      margin-top: 5px;
-    }
-  }
   .toggle-search {
     float: right;
     cursor: pointer;
@@ -179,36 +164,6 @@
       float: right;
     }
   }
-  .follow-us {
-    display: none;
-    @include breakpoint($breakpoint-tablet) {
-      display: block;
-      float: right;
-      clear: right;
-      .text {
-        display: inline-block;
-        vertical-align: top;
-        line-height: 28px;
-        margin-right: 8px;
-        &:before:not(:first-child) {
-          content: '|';
-          padding-right: 10px;
-        }
-      }
-      ul.menu {
-        display: inline-block;
-        vertical-align: middle;
-        margin-top: 0;
-        li {
-          margin-right: 0;
-          float: left;
-          a {
-            background: #AAA;
-          }
-        }
-      }
-    }
-  }
   .leaderboard div {
     margin: 0 auto;
   }
@@ -241,7 +196,25 @@ body.mobile-search-show #header form .form-submit {
 }
 
 
-.navbar-fat {
+.navbar-fat, .slim-nav {
+
+  .logo {
+    height: auto;
+    overflow: hidden;
+    display: block;
+    width: 121px;
+    float: left;
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
+    @include breakpoint($breakpoint-tablet) {
+      width: auto;
+      margin-top: 5px;
+    }
+  }
+
+  
   .follow-us {
     a {
       &.i-facebook {
@@ -272,9 +245,39 @@ body.mobile-search-show #header form .form-submit {
       }
     }
   }
+  .follow-us {
+    display: none;
+    @include breakpoint($breakpoint-tablet) {
+      display: block;
+      float: right;
+      clear: right;
+      .text {
+        display: inline-block;
+        vertical-align: top;
+        line-height: 28px;
+        margin-right: 8px;
+        &:before:not(:first-child) {
+          content: '|';
+          padding-right: 10px;
+        }
+      }
+      ul.menu {
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: 0;
+        li {
+          margin-right: 0;
+          float: left;
+          a {
+            background: #AAA;
+          }
+        }
+      }
+    }
+  }
 }
 
-.navbar-fat {
+#header {
   .pivot-nav-theme {
     .menu-toggle{
       display: block;
@@ -294,7 +297,7 @@ body.mobile-search-show #header form .form-submit {
 //
 // Slim Nav
 //
-.navbar-fat {
+#header {
   .slim-nav {
     height: auto;
     position: relative;
@@ -306,7 +309,7 @@ body.mobile-search-show #header form .form-submit {
     color: $dark-gray;
     border-bottom: 2px solid #000;
 
-    .menu-toggle{
+    .menu-toggle {
       display: block;
       width: 20px;
       height: 15px;
@@ -316,233 +319,236 @@ body.mobile-search-show #header form .form-submit {
       float: left;
       margin-right: 10px;
       @include breakpoint($breakpoint-desktop) {
-          display: none;
+        display: none;
       }
     }
-    
+
     .slim-nav-inner {
-        position: relative;
+      position: relative;
     }
     .left {
-        float: left;
-        @include breakpoint($breakpoint-desktop) {
-            padding-left: 10px;
-            width: auto;
-        }
+      float: left;
+      @include breakpoint($breakpoint-desktop) {
+        padding-left: 10px;
+        width: auto;
+      }
     }
     .right {
-        float: right;
-        @include breakpoint($breakpoint-tablet) {
-            width: 40%;
-        }
-        @include breakpoint($breakpoint-desktop) {
-            width: auto;
-        }
+      float: right;
+      @include breakpoint($breakpoint-tablet) {
+        width: 40%;
+      }
+      @include breakpoint($breakpoint-desktop) {
+        width: auto;
+      }
     }
-    
+
     .user-menu {
       @include breakpoint($breakpoint-desktop) {
-        right: 215px;  
+        right: 215px;
       }
       right: 15px;
       position: absolute;
     }
 
     .logo {
-        width: 121px; // <img> is already locked down to max-width 100%
+      width: 121px; // <img> is already locked down to max-width 100%
     }
-    
+
     .follow-us {
-        @include breakpoint($breakpoint-tablet) {
-            display: none;
-        }
-        @include breakpoint($breakpoint-desktop) {
-            display: block;
-            padding-right: 15px;
-            padding-top: 0px;
-        }
-        ul {
-            float: none;
-            display: inline-block;
-            margin-top: -5px;
-        }
-        margin-top: 2px;
+      @include breakpoint($breakpoint-tablet) {
+        display: none;
+      }
+      @include breakpoint($breakpoint-desktop) {
+        display: block;
+        padding-right: 15px;
+        padding-top: 0px;
+      }
+      ul {
+        float: none;
+        display: inline-block;
+        margin-top: -5px;
+      }
+      margin-top: 2px;
     }
     .follow-headline {
-        font: normal 1.076923077em/1 $secondary-sans-font;
-        display: inline-block;
-        text-transform: uppercase;
-        color: $dark-gray;
-        margin: .285714286em .5em 0 0;
-        vertical-align: top;
+      font: normal 1.076923077em/1 $secondary-sans-font;
+      display: inline-block;
+      text-transform: uppercase;
+      color: $dark-gray;
+      margin: .285714286em .5em 0 0;
+      vertical-align: top;
     }
     .search {
-        float: none;
-        height: 35px;
-        margin-top: 0px;
-        position: absolute;
-        top: 0px;
+      float: none;
+      height: 35px;
+      margin-top: 0px;
+      position: absolute;
+      top: 0px;
+      right: 0;
+      @include breakpoint($breakpoint-desktop) {
         right: 0;
-        @include breakpoint($breakpoint-desktop) {
-            right: 0;
+      }
+      .search-toggle {
+        display: block;
+        z-index: 9;
+        top: -3px;
+        width: 34px;
+        height: 37px;
+        cursor: pointer;
+        &:before {
+          display: block;
+          width: 34px;
+          height: 38px;
+          position: absolute;
+          top: 0px;
+          right: 10px;
+          color: $mint;
+          font-size: 16px;
+          line-height: 30px;
+          content: "\e616";
+          font-family: "takepart";
+          display: block;
+          z-index: 9;
+          @include transform2d(scaleX(-1));
+          filter: FlipH;
+          -ms-filter: "FlipH";
         }
-        .search-toggle{
-            display: block;
-            z-index: 9;
-            top: -3px;
-            width: 34px;
-            height: 37px;
-            cursor: pointer;
-            &:before{
-                display: block;
-                width: 34px;
-                height: 38px;
-                position: absolute;
-                top: 0px;
-                right: 10px;
-                color: $mint;
-                font-size: 16px;
-                line-height: 30px;
-                content: "\e616";
-                font-family: "takepart";
-                display: block;
-                z-index: 9;
-                @include transform2d(scaleX(-1));
-                filter: FlipH;
-                -ms-filter: "FlipH";
-            }
-            @include breakpoint($breakpoint-tablet) {
-                height: 30px;
-                &:before {
-                    height: 30px;
-                }
-            }
+        @include breakpoint($breakpoint-tablet) {
+          height: 30px;
+          &:before {
+            height: 30px;
+          }
         }
-        .form-item-keys-2{
-            display: none;
-            position: absolute;
-            top: 38px;
-            right: 0;
-            z-index: 9;
-            width: 300px;
-            background-color: #000;
-            padding: 10px;
-            margin: 0;
-            @include box-shadow(0px 0px 5px 1px black);
-            @include box-sizing(border-box);
-            [type=text]{
-                padding-top: .25em;
-                border-right: 1px solid #ccc;
-                &::-webkit-input-placeholder {
-                    opacity: 1;
-                }
+      }
+      .form-item-keys-2 {
+        display: none;
+        position: absolute;
+        top: 38px;
+        right: 0;
+        z-index: 9;
+        width: 300px;
+        background-color: #000;
+        padding: 10px;
+        margin: 0;
+        @include box-shadow(0px 0px 5px 1px black);
+        @include box-sizing(border-box);
+        [type=text] {
+          padding-top: .25em;
+          border-right: 1px solid #ccc;
+          &::-webkit-input-placeholder {
+            opacity: 1;
+          }
 
-                &:-moz-placeholder { /* Firefox 18- */
-                    opacity: 1;
-                }
-                &::-moz-placeholder {  /* Firefox 19+ */
-                    opacity: 1;
-                }
-            }
-            @include breakpoint($breakpoint-tablet) {
-                background: #FFF;
-                width: 420px;
-                [type=text] {
-                    width: 400px;
-                }
-            }
+          &:-moz-placeholder {
+            /* Firefox 18- */
+            opacity: 1;
+          }
+          &::-moz-placeholder {
+            /* Firefox 19+ */
+            opacity: 1;
+          }
         }
-        .form-submit{
-            top: 0;
-            bottom: auto;
-            padding: 19px 17px;
-            text-indent: 100px;
-            border: 0;
-            background: transparent none;
-            @include breakpoint($breakpoint-tablet) {
-                padding: 19px 15px;
-            }
+        @include breakpoint($breakpoint-tablet) {
+          background: #FFF;
+          width: 420px;
+          [type=text] {
+            width: 400px;
+          }
         }
+      }
+      .form-submit {
+        top: 0;
+        bottom: auto;
+        padding: 19px 17px;
+        text-indent: 100px;
+        border: 0;
+        background: transparent none;
+        @include breakpoint($breakpoint-tablet) {
+          padding: 19px 15px;
+        }
+      }
+      form {
+        display: none;
+      }
+
+      &.active {
         form {
+          display: block;
+        }
+        .form-item-keys-2 {
+          display: block;
+          margin: 0px;
+          &:before {
+            display: none;
+          }
+
+          input {
+            border-right: 1 solid #ccc;
+          }
+        }
+        .search-toggle {
           display: none;
         }
-        
-        &.active {
-            form {
-              display: block;
-            }
-            .form-item-keys-2{
-                display: block;
-                margin: 0px;
-                &:before {
-                  display: none;
-                }
-                
-                input {
-                  border-right: 1 solid #ccc;
-                }
-            }
-            .search-toggle{
-                display: none;
-            }
-            .form-submit {
-                background: image-url('mobile-search-hover.jpg') no-repeat center center;
-                background-color: #000;
-            }
+        .form-submit {
+          background: image-url('mobile-search-hover.jpg') no-repeat center center;
+          background-color: #000;
         }
+      }
     }
-    #main-menu{
-        display: none;
-        @include breakpoint($breakpoint-desktop) {
-            display: block;
-            width: auto;
-            float: left;
-            padding: 0 0 0 20px;
-            line-height: 26px;
+    #main-menu {
+      display: none;
+      @include breakpoint($breakpoint-desktop) {
+        display: block;
+        width: auto;
+        float: left;
+        padding: 0 0 0 20px;
+        line-height: 26px;
+      }
+      li {
+        float: left;
+        font-family: $secondary-sans-font;
+        font-size: 17px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: #000;
+        position: relative;
+        margin: 0;
+        padding: 0 1.2em 0 0;
+        list-style-image: none;
+        list-style-type: none;
+        &:after {
+          content: '';
+          display: inline-block;
+          border-right: 1px solid $gray-line;
+          height: 20px;
+          width: auto;
+          position: absolute;
+          right: .5em;
+          top: 0;
         }
-        li{
-            float: left;
-            font-family: $secondary-sans-font;
-            font-size: 17px;
-            text-transform: uppercase;
-            white-space: nowrap;
-            color: #000;
-            position: relative;
-            margin: 0;
-            padding: 0 1.2em 0 0;
-            list-style-image: none;
-            list-style-type: none;
-            &:after{
-                content: '';
-                display: inline-block;
-                border-right: 1px solid $gray-line;
-                height: 20px;
-                width: auto;
-                position: absolute;
-                right: .5em;
-                top: 0;
-            }
-            &:last-child {
-                width: auto;
-                text-align: right;
-                padding-right: 0;
-                &:after {
-                    border-right: none;
-                }
-            }
-            a{
-                color: #000;
-                position: relative;
-                width: 100%;
-                display: block;
-                &:hover{
-                    text-decoration: none;
-                }
-            }
+        &:last-child {
+          width: auto;
+          text-align: right;
+          padding-right: 0;
+          &:after {
+            border-right: none;
+          }
         }
+        a {
+          color: #000;
+          position: relative;
+          width: 100%;
+          display: block;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
     }
   }
 }
+
 
 // different formatting for slim-nav
 .slim-nav .user-menu{
@@ -564,9 +570,7 @@ body.mobile-search-show #header form .form-submit {
         margin-right: 10px;
     }
 }
-.search-toggle{
 
-}
 .tp_login a.user_image{
     padding: 13px 8px;
 }
@@ -992,13 +996,11 @@ body {
   }
 }
 
-.navbar-fat {
-  .slim-nav {
-    .left {
-      .logo {
-        width: 121px;
-        margin-top: 0px;
-      }
+.slim-nav {
+  .left {
+    .logo {
+      width: 121px;
+      margin-top: 0px;
     }
   }
 }
