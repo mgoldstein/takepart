@@ -5,31 +5,31 @@
 */
 function fresh_preprocess_page(&$variables) {
 
-	drupal_add_js(array(
-		'tp_common' => array(
-			'breakpoint_phablet' => 480,
-		)), 
-	'setting');
+  drupal_add_js(array(
+    'tp_common' => array(
+      'breakpoint_phablet' => 480,
+    )),
+  'setting');
 
 
   /* Add special mobile menu when nav is transparent */
   if($variables['node'] && $variables['node']->type == 'feature_article'){
 
     //Logo
-    //TODO: add the logo with a 'close' icon
+     $variables['page']['left_drawer']['top-section']['#markup'] = '<div class = "left-drawer-control"><span class="icon i-close-x"></span><a href="/" class="logo-feature"></a></div>';
 
-    //Menu
-    //TODO: if you want a different menu, then replace the below
+    //Social Icons for mobile
+    $mobile_menu = theme('base_social_follow');
+    $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
     $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
     $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
 
     //Descriptive Text
-    //TODO: change this to the correct text
-    $variables['page']['left_drawer']['text']['#markup'] = 'TakePart, a digital news & lifestyle magazine and social action platform...';
+    $variables['page']['left_drawer']['text']['#markup'] = '<span class = "about">TakePart -- a digital news & lifestyle magazine and social action platform -- is a division of Participant Media, the company behind Pivot Television Network and important films such as An Inconvenient Truth, Waiting for Superman, Food, Inc., and many others.</span>';
 
-    //Social Icons
+    //Social Icons for Destkop - feature article
     $mobile_menu = theme('base_social_follow');
-    $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
+    $variables['page']['left_drawer']['social-desktop']['#markup'] = '<div class="mobile-menu-header feature-destkop"><p class = "follow">FOLLOW US</p>'. $mobile_menu. '</div>';
 
   }else{
     //Social Icons

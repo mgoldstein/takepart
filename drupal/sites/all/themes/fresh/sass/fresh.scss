@@ -28,6 +28,7 @@
 @import "base/modules/megaslim";
 @import "base/modules/header";
 @import "base/modules/header_transparent";
+@import "base/modules/feature_menu";
 @import "modules/fb_comments";
 @import "modules/footer";
 @import "modules/tp_more_on_takepart";
@@ -193,7 +194,7 @@ body.node-type-feature-article {
     }
   }
 }
-article{
+article {
   color: #3A3A3A;
   @include breakpoint($breakpoint-phablet) {
     margin-left: 54px;
