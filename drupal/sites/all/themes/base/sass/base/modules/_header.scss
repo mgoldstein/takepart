@@ -1,24 +1,32 @@
-#header.header-style-1{
+#header {
   font-family: "AdelleSans", Verdana, Tahoma, sans-serif;
   font-size: 14px;
   color: #5A5A5A;
   display: block;
   width: 100%;
   height: auto;
-  @include breakpoint($breakpoint-tablet){
+  @include breakpoint($breakpoint-tablet) {
     border-bottom: none;
   }
-  .header-inner{
-    margin-top: 15px;
-    padding-bottom: 4px;
-    border-bottom: 2px solid $black;
+}
+#header.transparent {
+  .navbar-fat {
     @include breakpoint($breakpoint-tablet) {
-      padding-bottom: 0;
-      border-bottom: none;
-      margin-bottom: 8px;
+      display: none;
     }
   }
-  .toggle-menu{
+}
+.navbar-fat {
+  margin-top: 15px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid $black;
+  @include breakpoint($breakpoint-tablet) {
+    padding-bottom: 0;
+    border-bottom: none;
+    margin-bottom: 8px;
+  }
+
+  .toggle-menu {
     display: block;
     cursor: pointer;
     float: left;
@@ -29,40 +37,40 @@
     }
     //margin-left: 10px;
   }
-  
-  .logo{
+
+  .logo {
     height: auto;
     overflow: hidden;
     display: block;
     width: 121px;
     float: left;
-    img{
+    img {
       width: 100%;
       vertical-align: middle;
     }
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       width: auto;
       margin-top: 5px;
     }
   }
-  .toggle-search{
+  .toggle-search {
     float: right;
     cursor: pointer;
     color: $light-mint;
     font-size: 18px;
     font-weight: 900;
   }
-  .search{
+  .search {
     &:active {
       form {
         display: block;
       }
     }
-    
-    form{
+
+    form {
       display: none;
     }
-    .form-item{
+    .form-item {
       width: 100%;
       position: relative;
       z-index: 10;
@@ -70,17 +78,17 @@
       padding: 10px;
       height: auto;
       overflow: hidden;
-      -webkit-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
-      -moz-box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
-      box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.3);
+      -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
     }
-    .form-submit{
+    .form-submit {
       display: none;
     }
-    input.form-text{
+    input.form-text {
       width: 100%;
       float: left;
       height: 30px;
@@ -91,20 +99,20 @@
       font-size: 16px;
       line-height: 21px;
       background: #fff;
-      &:focus{
+      &:focus {
         outline: none;
       }
     }
     /* Search for phablet and above */
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       float: right;
       clear: right;
       margin-top: 13px;
-      form{
+      form {
         display: block;
         float: right;
       }
-      .form-item{
+      .form-item {
         width: 190px;
         display: inline-block;
         text-align: right;
@@ -115,25 +123,36 @@
         vertical-align: middle;
         padding: 0;
         margin: 0;
-        &:before{
+        &:before {
           content: 'Search';
 
         }
       }
-      input.form-text{
+      input.form-text {
         border-right: none;
         float: none;
         height: 25px;
         width: 140px;
-        &::-webkit-input-placeholder { color:transparent; }
-        &:-moz-placeholder { color:transparent; } /* FF 4-18 */
-        &::-moz-placeholder { color:transparent; } /* FF 19+ */
-        &:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+        &::-webkit-input-placeholder {
+          color: transparent;
+        }
+        &:-moz-placeholder {
+          color: transparent;
+        }
+        /* FF 4-18 */
+        &::-moz-placeholder {
+          color: transparent;
+        }
+        /* FF 19+ */
+        &:-ms-input-placeholder {
+          color: transparent;
+        }
+        /* IE 10+ */
       }
-      .toggle-search{
+      .toggle-search {
         display: none;
       }
-      .form-submit{
+      .form-submit {
         display: inline-block;
         height: 25px;
         border: 1px solid #ccc;
@@ -152,38 +171,38 @@
       }
     }
   }
-  .user-menu{
+  .user-menu {
     position: absolute;
     right: 34px;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       position: static;
       float: right;
     }
   }
-  .follow-us{
+  .follow-us {
     display: none;
-    @include breakpoint($breakpoint-tablet){
+    @include breakpoint($breakpoint-tablet) {
       display: block;
       float: right;
       clear: right;
-      .text{
+      .text {
         display: inline-block;
         vertical-align: top;
         line-height: 28px;
         margin-right: 8px;
-        &:before:not(:first-child){
+        &:before:not(:first-child) {
           content: '|';
           padding-right: 10px;
         }
       }
-      ul.menu{
+      ul.menu {
         display: inline-block;
         vertical-align: middle;
         margin-top: 0;
-        li{
+        li {
           margin-right: 0;
           float: left;
-          a{
+          a {
             background: #AAA;
           }
         }
@@ -203,6 +222,7 @@
   }
 }
 
+
 body.mobile-search-show #header form {
   display: block;
   position: relative;
@@ -221,7 +241,7 @@ body.mobile-search-show #header form .form-submit {
 }
 
 
-#header.header-style-1 {
+.navbar-fat {
   .follow-us {
     a {
       &.i-facebook {
@@ -254,7 +274,7 @@ body.mobile-search-show #header form .form-submit {
   }
 }
 
-#header.style-1 {
+.navbar-fat {
   .pivot-nav-theme {
     .menu-toggle{
       display: block;
@@ -274,7 +294,7 @@ body.mobile-search-show #header form .form-submit {
 //
 // Slim Nav
 //
-#header.header-style-1 {
+.navbar-fat {
   .slim-nav {
     height: auto;
     position: relative;
@@ -972,7 +992,7 @@ body {
   }
 }
 
-#header.style-1 {
+.navbar-fat {
   .slim-nav {
     .left {
       .logo {

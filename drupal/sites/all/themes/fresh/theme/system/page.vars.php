@@ -41,13 +41,15 @@ function fresh_preprocess_page(&$variables) {
     $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
   }
 
+  //Header
+  $header = theme('base_mobile_header');
+  $variables['page']['header']['mobile_menu']['#markup'] = $header;
+
   /* Add Transparent Nav to Featured Articles and MegaSlim to all others */
   if($variables['node'] && $variables['node']->type == 'feature_article'){
     $variables['page']['header']['nav']['#markup'] = theme('base_header_transparent', array());
   }else{
-    //Header
-    $header = theme('base_mobile_header');
-    $variables['page']['header']['mobile_menu']['#markup'] = $header;
+
     //MegaSlim
     if(module_exists('tp_megaslim_menu')){
       $variables['page']['header']['megaslim']['#markup'] = tp_megaslim_menu_load_menu();
