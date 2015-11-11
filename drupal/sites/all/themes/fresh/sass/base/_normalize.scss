@@ -137,7 +137,8 @@ li{
 ul.tabs {
   border-bottom: 1px solid $light-gray;
   font-size: 16px;
-  margin: 20px inherit;
+  position: relative;
+  z-index: 2;
   > li {
     list-style: none;
     display: inline-block;
