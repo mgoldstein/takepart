@@ -15,6 +15,6 @@
 		<div class="play-me icon i-triangle-right"></div>
 	</div>
 </div>
-<div class="promo-headline">
+<div class="promo-headline" data-mobile="<?php print rawUrlEncode(truncate_utf8($variables['promo_headline'], 25, TRUE, TRUE)); ?>" data-full="<?php print rawUrlEncode($variables['promo_headline']); ?>">
 	<?php print $variables['promo_headline']; ?>
 </div>
