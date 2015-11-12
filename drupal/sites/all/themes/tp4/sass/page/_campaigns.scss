@@ -224,6 +224,19 @@ body.campaign-display
         }
         // Add more layouts here
     }
+    .card-video-playlist {
+      .card{
+        &.campaign-1col{
+          .center-column {
+            @include zen-grid-item(12, 1);
+            @include zen-clear();
+            @include breakpoint($breakpoint-phablet) {
+                @include zen-grid-item(10, 2);
+            }
+          }
+        }
+      }
+    }
 }
 
 body.node-type-campaign-page .card.node-campaign-card-news,
