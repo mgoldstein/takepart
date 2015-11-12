@@ -147,7 +147,10 @@ function tp_ads_preprocess_page(&$vars) {
     }
 
     //loads the bg skin takeover from boxes
-    $takeover = boxes_box_load('bg_skin_sponsor');
+    //Do not load on feature article
+    if($vars['node']->type != 'feature_article') {
+      $takeover = boxes_box_load('bg_skin_sponsor');
+    }
 
     //checks to make sure the option is set
     if (!empty($takeover->options['ga_ad_gpt_id'])) {

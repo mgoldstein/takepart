@@ -122,47 +122,51 @@
    *    Function copied from tp_ad_takeover.jquery.js
    */
   window.tp_ad_takeover = function(bgcolor, bgimage, link) {
-    var $body = jQuery('body');
-    var $a = jQuery('<a id="tp_ad_takeover" href="' + link + '" target="_blank"></a>');
+    //do not do on Feature Articles
+    if(typeof $('.fresh-content-wrapper') != 'undefined' && $('.fresh-content-wrapper').hasClass('feature_article-wrapper') == false) {
+      var $body = jQuery('body');
+      var $a = jQuery('<a id="tp_ad_takeover" href="' + link + '" target="_blank"></a>');
 
-    $body.css({
-      background: bgcolor + ' url("' + bgimage + '") center top no-repeat',
-      backgroundAttachment: 'fixed'
-    }).addClass('tp_ad_takeover');
+      $body.css({
+        background: bgcolor + ' url("' + bgimage + '") center top no-repeat',
+        backgroundAttachment: 'fixed'
+      }).addClass('tp_ad_takeover');
 
-    $a.css({
-      position: 'fixed',
-      height: '100%',
-      width: '100%',
-      left: 0,
-      top: 0,
-      zIndex: 0
-    });
+      $a.css({
+        position: 'fixed',
+        height: '100%',
+        width: '100%',
+        left: 0,
+        top: 0,
+        zIndex: 0
+      });
 
-    jQuery('body #footer-wrapper').after($a);
-
-    //only do on fresh theme with article-wrapper & video wrapper
-    if ($('.fresh-content-wrapper').length !=0) {
       jQuery('body #footer-wrapper').after($a);
-      //variables
-      var background_image = new Image();
-      background_image.src = bgimage;
 
-      //checks to see if the image is loaded
-      if (background_image.complete) {
-        var background_image_height = background_image.height;
-        takeover_ad(background_image_height);
-      }
-      //otherwise load image and then call function
-      else {
-        $(background_image).load(function() {
+      //only do on fresh theme
+      if ($('.fresh-content-wrapper').length != 0) {
+
+        jQuery('body #footer-wrapper').after($a);
+        //variables
+        var background_image = new Image();
+        background_image.src = bgimage;
+
+        //checks to see if the image is loaded
+        if (background_image.complete) {
           var background_image_height = background_image.height;
           takeover_ad(background_image_height);
-        });
-      }
+        }
+        //otherwise load image and then call function
+        else {
+          $(background_image).load(function() {
+            var background_image_height = background_image.height;
+            takeover_ad(background_image_height);
+          });
+        }
 
-      //triggers a scroll so the background takeover will go in place
-      $(window).scroll();
+        //triggers a scroll so the background takeover will go in place
+        $(window).scroll();
+      }
     }
   };
 
