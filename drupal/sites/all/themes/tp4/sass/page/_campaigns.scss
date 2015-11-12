@@ -1000,6 +1000,11 @@ body.campaign-display{
         .right {
 	        margin-top:21px;
         }
+        //Temp fix for new widget not centering
+        .left-full .tap-action-wrapper.align- {
+            margin: 0 auto;
+            max-width: 500px;
+        }
 
         @include breakpoint($breakpoint-tablet) {
             .left{
