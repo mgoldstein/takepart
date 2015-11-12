@@ -13,12 +13,13 @@
     background-color: rgba(0,0,0,0.6);
     top: 0;
     right: 0;
-    left: 280px;
+    left: 0px;
     bottom: 0;
   }
   nav#mobile-menu {
     background: #f7f7f7;
     border-top: none;
+    z-index: 101;
       .left-drawer-control {
         display: block;
         padding: 12px 20px;
@@ -113,6 +114,9 @@
       }
       #page-wrapper {
         left: 0;
+      }
+      .feature-modal {
+        display: block;
       }
     }
 }
