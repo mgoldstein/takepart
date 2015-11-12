@@ -832,14 +832,14 @@ function tpf_display_menus_menu_default_menu_links() {
     'weight' => -46,
     'customized' => 1,
   );
-  // Exported menu link: menu-social-footer-follow_email:http://go.takepart.com/clients/takepart/survey.htm
-  $menu_links['menu-social-footer-follow_email:http://go.takepart.com/clients/takepart/survey.htm'] = array(
+  // Exported menu link: menu-social-footer-follow_email: http://www.takepart.com/follow-us-email
+  $menu_links['menu-social-footer-follow_email:http://www.takepart.com/follow-us-email'] = array(
     'menu_name' => 'menu-social-footer-follow',
-    'link_path' => 'http://go.takepart.com/clients/takepart/survey.htm',
+    'link_path' => 'http://www.takepart.com/follow-us-email',
     'router_path' => '',
     'link_title' => 'Email',
     'options' => array(
-      'identifier' => 'menu-social-footer-follow_email:http://go.takepart.com/clients/takepart/survey.htm',
+      'identifier' => 'menu-social-footer-follow_email:http://www.takepart.com/follow-us-email',
       'attributes' => array(
         'class' => array(
           0 => 'social-email-black',
@@ -993,14 +993,14 @@ function tpf_display_menus_menu_default_menu_links() {
     'weight' => -44,
     'customized' => 1,
   );
-  // Exported menu link: menu-social-header-follow_email:http://go.takepart.com/clients/takepart/survey.htm
-  $menu_links['menu-social-header-follow_email:http://go.takepart.com/clients/takepart/survey.htm'] = array(
+  // Exported menu link: menu-social-header-follow_email:http://www.takepart.com/follow-us-email
+  $menu_links['menu-social-header-follow_email:http://www.takepart.com/follow-us-email'] = array(
     'menu_name' => 'menu-social-header-follow',
-    'link_path' => 'http://go.takepart.com/clients/takepart/survey.htm',
+    'link_path' => 'http://www.takepart.com/follow-us-email',
     'router_path' => '',
     'link_title' => 'Email',
     'options' => array(
-      'identifier' => 'menu-social-header-follow_email:http://go.takepart.com/clients/takepart/survey.htm',
+      'identifier' => 'menu-social-header-follow_email:http://www.takepart.com/follow-us-email',
       'attributes' => array(
         'class' => array(
           0 => 'social-email-gray',
