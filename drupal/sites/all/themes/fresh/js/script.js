@@ -57,6 +57,16 @@
         }
       });
 
+      // Close search
+      $('#search-api-page-search-form-site-search--2 input#edit-keys-2--2').click(function(e){
+        var offset = $(this).offset();
+        var width = $(this).outerWidth();
+        var pos_x = e.pageX - offset.left;
+
+        if(width - pos_x < 15) {
+          $('.navbar-transparent').removeClass("search-open");
+        }
+      });
 
     }
   };
