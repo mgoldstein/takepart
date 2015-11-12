@@ -15,10 +15,6 @@
           $body.removeClass("mobile-menu-show" );
           //enable scroll on tablet
           document.ontouchmove = function(e){ return true; }
-          //hide the modal
-          if ($('body.node-type-feature-article').length != 0) {
-            $('.feature-modal').hide();
-          }
         } else {
           $body.addClass("mobile-menu-show" );
           //disable scroll on tablet
@@ -28,7 +24,11 @@
             if ($('.feature-modal').length == 0) {
               $('body').append('<div class = "feature-modal"></div>');
             }
-            $('.feature-modal').show();
+            $('.feature-modal').click(function() {
+              if ($body.hasClass('mobile-menu-show')) {
+                $body.removeClass("mobile-menu-show" );
+              }
+            });
           }
         }
       });
