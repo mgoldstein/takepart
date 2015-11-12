@@ -101,32 +101,38 @@ function fresh_preprocess_node__autoload(&$variables) {
 
     /* Media */
     if ($node_type == 'article' || $node_type == 'feature_article') {
-    if ($media = field_get_items('node', $variables['node'], 'field_article_main_image')) {
-	 $file = $media[0]['file'];
-	 $image_url = image_style_url('large', $file->uri);
-	 $variables['media'] = '<div class="main-media">';
-	 $variables['media'] .= theme('image', array(
-	   'path' => $image_url, 'attributes' => array(
-		'class' => 'main-image'
-	   )
-	   )
-	 );
+      if ($media = field_get_items('node', $variables['node'], 'field_article_main_image')) {
+        $file = $media[0]['file'];
 
-	 /* Render a caption if it exists */
-	 if ($caption = field_get_items('file', $file, 'field_media_caption')) {
-	   $caption = theme('html_tag', array(
-		'element' => array(
-		  '#tag' => 'div',
-		  '#value' => $caption[0]['value'],
-		  '#attributes' => array(
-		    'class' => array('caption')
-		  )
-		)
-	   ));
-	   $variables['media'] .= $caption . '</div>';
-	 }
+        //Featured articles require original file path
+        if($node_type == 'feature_article') {
+          $image_url = file_create_url($file->uri);
+        }else {
+          $image_url = image_style_url('large', $file->uri);
+        }
+
+        $variables['media'] = '<div class="main-media">';
+        $variables['media'] .= theme('image', array(
+          'path' => $image_url, 'attributes' => array(
+            'class' => 'main-image'
+          )
+        ));
+
+        /* Render a caption if it exists */
+        if ($caption = field_get_items('file', $file, 'field_media_caption')) {
+         $caption = theme('html_tag', array(
+           'element' => array(
+             '#tag' => 'div',
+             '#value' => $caption[0]['value'],
+             '#attributes' => array(
+               'class' => array('caption')
+             )
+           )
+         ));
+          $variables['media'] .= $caption . '</div>';
+        }
+      }
     }
-  }
 
   else if ($node_type == 'video') {
     $video = drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
