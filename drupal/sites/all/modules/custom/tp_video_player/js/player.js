@@ -339,8 +339,8 @@
    *    This function is used to init the bxslider for video playlist
    */
   window.tp_initslider = function() {
-    var small = 480;
-    var large = 768;
+    var small = 401;
+    var large = 701;
     var all_slides = $('.bxslider');
 
     //does for each slider
@@ -392,9 +392,10 @@
         minSlides: slides,
         maxSlides: slides,
         slideWidth: 228,
-        slideMargin: 4,
+        slideMargin: 8,
         infiniteLoop: false,
         hideControlOnEnd: true,
+        responsive: true,
         pager: false,
         nextText: '',
         prevText: '',
