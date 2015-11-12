@@ -392,7 +392,7 @@
         minSlides: slides,
         maxSlides: slides,
         slideWidth: 228,
-        slideMargin: 4,
+        slideMargin: 8,
         infiniteLoop: false,
         hideControlOnEnd: true,
         responsive: true,
@@ -406,17 +406,23 @@
       $(window).resize(function(){
         //Mobile titles are too long so we are ellipissississing them
         if(window.innerWidth <= 480) {
-          $('.video-item .promo-headline').each(function(){
-            $(this).text(decodeURIComponent($(this).attr('data-mobile')));
-            if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height()) {
-              $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
+          $('.video-item .promo-headline').each(function(index){
+            var mobileTitle = decodeURIComponent($(this).attr('data-mobile'));
+            if(mobileTitle != $(this).text()) {
+              $(this).text(mobileTitle);
+              if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height() || index == 0) {
+                $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
+              }
             }
           });
         } else {
-          $('.video-item .promo-headline').each(function(){
-            $(this).text(decodeURIComponent($(this).attr('data-full')));
-            if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height()) {
-              $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
+          $('.video-item .promo-headline').each(function(index){
+            var fullTitle = decodeURIComponent($(this).attr('data-full')).trim();
+            if(fullTitle != $(this).text().trim()) {
+              $(this).text(fullTitle);
+              if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height() || index == 0) {
+                $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
+              }
             }
           });
         }
@@ -441,12 +447,24 @@
 
         //Mobile titles are too long so we are ellipissississing them
         if(window.innerWidth <= 480) {
-          $('.video-item .promo-headline').each(function(){
-            $(this).text(decodeURIComponent($(this).attr('data-mobile')));
+          $('.video-item .promo-headline').each(function(index){
+            var mobileTitle = decodeURIComponent($(this).attr('data-mobile'));
+            if(mobileTitle != $(this).text()) {
+              $(this).text(mobileTitle);
+              if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height() || index == 0) {
+                $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
+              }
+            }
           });
         } else {
-          $('.video-item .promo-headline').each(function(){
-            $(this).text(decodeURIComponent($(this).attr('data-full')));
+          $('.video-item .promo-headline').each(function(index){
+            var fullTitle = decodeURIComponent($(this).attr('data-full')).trim();
+            if(fullTitle != $(this).text().trim()) {
+              $(this).text(fullTitle);
+              if($(this).parents('.bx-viewport').height() < $(this).parent('.video-item').height() || index == 0) {
+                $(this).parents('.bx-viewport').height($(this).parent('.video-item').height());
+              }
+            }
           });
         }
       },500);

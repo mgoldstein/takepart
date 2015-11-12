@@ -11,29 +11,29 @@
   }
   //Min-height added to prevent the page from jumping before video loads.
   [data-playlist-type="detailed"] {
-    @include breakpoint($breakpoint-phablet){
-      min-height: 588px;
-    }
     @include breakpoint($breakpoint-mobile){
-      min-height: 588px;
+      min-height: 488px;
+    }
+    @include breakpoint($breakpoint-phablet){
+      min-height: 488px;
     }
     @include breakpoint($breakpoint-desktop){
-      min-height: 780px;
+      min-height: 680px;
     }
   }
 
   [data-playlist-type="basic"] {
-    @include breakpoint($breakpoint-phablet){
-      min-height: 550px;
-    }
     @include breakpoint($breakpoint-mobile){
-      min-height: 440px;
+      min-height: 370px;
+    }
+    @include breakpoint($breakpoint-phablet){
+      min-height: 503px;
     }
     @include breakpoint($breakpoint-tablet){
-      min-height: 620px;
+      min-height: 550px;
     }
     @include breakpoint($breakpoint-desktop){
-      min-height: 620px;
+      min-height: 550px;
     }
   }
 

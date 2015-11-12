@@ -265,10 +265,12 @@ body.campaign-display .card.node-campaign-card-media{
     }
 
     .playlist-wrapper-wrapper {
+        margin-bottom: 0;
         .bx-wrapper {
             ul {
                 li {
                     padding-left: 0;
+                    line-height: 18px;
                 }
             }
         }

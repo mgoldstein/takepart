@@ -72,7 +72,6 @@
 .playlist-wrapper-wrapper{
   background: none;
   padding: 15px 7px;
-  margin-bottom: 30px;
 
   @include breakpoint($breakpoint-tablet) {
     padding: 0;
@@ -213,6 +212,20 @@ h3.video-title{
 
 /*override for campaign pages*/
 body.campaign-display {
+  .video-duration {
+    display: none;
+    @include breakpoint($breakpoint-phablet) {
+      display: block
+    }
+  }
+  .video-item.active .overlay{
+    .now-playing {
+      display: none;
+      @include breakpoint($breakpoint-phablet) {
+        display: block
+      }
+    }
+  }
   .card.dark-background {
     .video-description,
     .promo-headline {
@@ -231,6 +244,7 @@ body.campaign-display {
       color: #FFFFFF;
     }
   }
+
 }
 
 /*override for video playlist embedded or autoloaded within the fresh theme*/
@@ -408,7 +422,9 @@ body.campaign-display {
       transition: all 0.5s;
     }
     &.active .image-wrapper:hover .video-duration {
-      display: inline-block;
+      @include breakpoint($breakpoint-phablet) {
+        display: inline-block;
+      }
     }
     .now-playing, .promo-headline{
       font-family: $primary-sans-font;
