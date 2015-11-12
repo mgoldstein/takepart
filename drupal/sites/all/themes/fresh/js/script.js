@@ -18,7 +18,12 @@
         } else {
           $body.addClass("mobile-menu-show" );
           //disable scroll on tablet
-          document.ontouchmove = function(e){ e.preventDefault(); }
+          //document.ontouchmove = function(e){ e.preventDefault(); }
+          $(document).on('touchstart touchmove', function(e) {
+            if (!$(e.target).parents('nav#mobile-menu')) {
+              e.preventDefault();
+            }
+          });
           //append a modal on feature articles
           if ($('body.node-type-feature-article').length != 0) {
             if ($('.feature-modal').length == 0) {
