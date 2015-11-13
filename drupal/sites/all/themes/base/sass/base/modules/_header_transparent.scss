@@ -1,0 +1,200 @@
+#header.transparent {
+  @include breakpoint($breakpoint-tablet) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    color: white;
+  }
+}
+.navbar-transparent {
+  display: none;
+  height: 60px;
+  position: relative;
+  padding: 15px;
+  padding-right: 35px;
+  @include breakpoint($breakpoint-tablet) {
+    display: block;
+  }
+  &.search-open {
+    #search-api-page-search-form-site-search,
+    #search-api-page-search-form-site-search--2 {
+      display: block;
+    }
+    .menu {
+      display: none;
+    }
+  }
+
+  .menu > li {
+    list-style: none;
+    float: right;
+    height: 30px;
+  }
+
+  li.user-menu.fresh-theme:after {
+    content: '';
+    float: right;
+    width: 5px;
+    height: 30px;
+    display: block;
+    background: url(/sites/all/themes/base/images/navbar-transparent-line.png) no-repeat center center;
+  }
+
+  .nav-right {
+    float: right;
+  }
+
+  .toggle-menu {
+    display: inline-block;
+    margin-top: -5px;
+    width: 40px;
+    height: 31px;
+    background: url(/sites/all/themes/base/images/navbar-transparent-menu.png) no-repeat center center;
+    cursor: pointer;
+  }
+
+  .logo-transparent {
+    display: inline-block;
+    vertical-align: bottom;
+    background: url(/sites/all/themes/base/images/navbar-transparent-logo.png) no-repeat center;
+    width: 100px;
+    height: 42px;
+    margin-top: -5px;
+  }
+
+  /****** User Login **********/
+  .icon.i-user-avatar {
+    background: url(/sites/all/themes/base/images/navbar-transparent-user.png) no-repeat center center;
+    &:after {
+      content: '';
+    }
+  }
+  .tp_login.open .user_image {
+    background-color: transparent;
+  }
+
+  .user-menu {
+    width: 30px;
+    ul.dropdown-menu {
+      .message {
+        font-size: 14px;
+        color: #777;
+      }
+      li {
+        float: left;
+      }
+    }
+
+    .tp_login {
+      position: static;
+
+      .dropdown-menu {
+        opacity: .9;
+        border-radius: 3px 3px 3px 3px;
+        -moz-border-radius: 3px 3px 3px 3px;
+        -webkit-border-radius: 3px 3px 3px 3px;
+        right: 5px;
+      }
+    }
+
+    .tp_login > .dropdown-menu li.loggedOut a, .tp_login > .dropdown-menu li.loggedIn a {
+      color: black;
+      font-weight: bold;
+      line-height: 6px;
+    }
+    
+    .avatarUsername{
+      display: none;
+    }
+  }
+
+  /****** SEARCH FORM *********/
+  #search-api-page-search-form-site-search--2 {
+    display: none; // .navbar-transparent.visible changes this to display: block;
+    min-width: 240px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #fff;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 2;
+
+    input[type="text"] {
+      float: right;
+      height: 18px;
+      width: 200px;
+      margin: 0;
+      padding: 0 20px;
+      vertical-align: middle;
+      background: transparent url(/sites/all/themes/base/images/navbar-transparent-x.png) no-repeat center right;;
+      border: none;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 18px;
+      color: #fff;
+      border-radius: 0px 3px 3px 0px;
+      -moz-border-radius: 0px 3px 3px 0px;
+      -webkit-border-radius: 0px 3px 3px 0px;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      -o-transition: all .3s;
+      -moz-transition: all .3s;
+      -webkit-transition: all .3s;
+      -ms-transition: all .3s;
+      transition: all .3s;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    input::-webkit-input-placeholder {
+      color: #fff;
+    }
+
+    input:-moz-placeholder {
+      /* Firefox 18- */
+      color: #fff;
+    }
+
+    input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #fff;
+    }
+
+    input:-ms-input-placeholder {
+      color: red !important;
+    }
+
+    .form-submit {
+      float: left;
+      width: 40px;
+      height: 18px;
+      background: url(/sites/all/themes/base/images/navbar-transparent-search.png) no-repeat center center;
+      text-indent: -999px;
+      border: none;
+      margin: 0;
+      border-radius: 3px 0px 0px 3px;
+      -moz-border-radius: 3px 0px 0px 3px;
+      -webkit-border-radius: 3px 0px 0px 3px;
+      border-right: 1px solid #fff;
+      &:after {
+        content: '\e616';
+        font-family: takepart;
+      }
+    }
+  }
+
+  .toggle-search {
+    cursor: pointer;
+    width: 40px;
+    height: 31px;
+    background: url(/sites/all/themes/base/images/navbar-transparent-search.png) no-repeat center center;
+  }
+
+
+}

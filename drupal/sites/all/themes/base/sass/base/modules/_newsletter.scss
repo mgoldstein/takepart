@@ -1,0 +1,100 @@
+/* Newsletter styles currently only showing up on Feature Articles and themed to match that grid */
+.block-newsletter-campaign {
+   h2.block-title,
+   .takepart-newsletter-wrapper {
+    float: none;
+    margin-right: 10px;
+    @include breakpoint($breakpoint-desktop) {
+      width: 445px;
+    }
+    @include breakpoint($breakpoint-tablet) {
+      width: 57%;
+      float: left;
+      margin-right: 30px;
+      padding: 0 12px;
+    }
+  }
+  .takepart-newsletter-wrapper {
+    padding: 0px 12px 22px 12px;
+    border-bottom: 2px solid #c7c7c7;
+    margin-bottom: 25px;
+    @include breakpoint($breakpoint-tablet) {
+      padding: 0px 12px 24px 12px;
+    }
+  }
+  h2.block-title {
+    border-top: 2px solid #c7c7c7;
+    padding: 23px 12px 0 12px;
+    margin-bottom: 10px;
+  }
+  .message {
+    font-size: 17px;
+    line-height: 26px;
+  }
+
+  .takepart-newsletter-form {
+    margin-top: 20px;
+      label {
+        display: none;
+      }
+      input[type="text"] {
+        width: 100%;
+        height: 47px;
+        float: none;
+        @include breakpoint($breakpoint-tablet) {
+          width: 70%;
+          height: 38px;
+          float: left;
+        }
+        @include breakpoint($breakpoint-desktop) {
+          width: 329px;
+          @-moz-document url-prefix() {
+            width: 325px;
+            }
+        }
+        border-radius: 2px;
+        border: 1px solid #c7c7c7;
+        margin-right: 10px;
+        text-indent: 14px;
+        font-size: 13px;
+      }
+      input[type="submit"] {
+        width: 100%;
+        margin-top: 13px;
+        height: 45px;
+        background: #01C09E;
+        border: none;
+        color: #fff;
+        @include breakpoint($breakpoint-tablet) {
+          width: auto;
+          margin-top: 0;
+          height: auto;
+        }
+        @include breakpoint($breakpoint-desktop) {
+          padding: 9px 15px;
+          @-moz-document url-prefix() {
+            padding: 8px 15px;
+          }
+        }
+        border-radius: 2px;
+        padding: 9px 13px;
+        font-family: AdelleSans;
+        font-weight: 700;
+        font-size: 14px;
+        -webkit-appearance: none;  //remove input shadow on iPad
+        -moz-appearance: none;
+      }
+  }
+    .terms-of-service {
+      font-family: "Ashbury";
+      font-weight: 100;
+      font-size: 14px;
+      line-height: 20px;
+      font-style: italic;
+      margin-top: 20px;
+    }
+    .error {
+      font-size: 17px;
+      color: #ff0000;
+    }
+}

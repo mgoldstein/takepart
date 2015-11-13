@@ -121,19 +121,20 @@
   Drupal.behaviors.mobileSocialNav = {
     attach: function (context, settings) {
 
-	 // Show the mobile social nav bar when window scrolls down
-	 var didScroll;
-	 $(window).scroll(function (event) {
-	   didScroll = true;
-	 });
+      // Show the mobile social nav bar when window scrolls down
+      var didScroll;
+        $(window).scroll(function (event) {
+          didScroll = true;
+          window.tp_shareFeatureHide();
+      });
 
-	 setInterval(function () {
-	   if (didScroll && window.innerWidth < 480) {
-		var delta = 5;
-		hasScrolled(delta);
-		didScroll = false;
-	   }
-	 }, 250);
+      setInterval(function () {
+        if (didScroll && window.innerWidth < 480) {
+          var delta = 5;
+          hasScrolled(delta);
+          didScroll = false;
+        }
+      }, 250);
     }
   };
 
@@ -143,15 +144,16 @@
 
     // Make sure they scroll more than delta
     if (Math.abs(lastScrollTop - st) <= delta)
-	 return;
+      return;
 
     if (st > lastScrollTop) {
-	 // Scroll Down
-	 $('.header-wrapper.mobile').removeClass('nav-show').addClass('nav-hide');
+      // Scroll Down
+      $('.header-wrapper.mobile').removeClass('nav-show').addClass('nav-hide');
     } else {
-	 // Scroll Up
-	 $('.header-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');
+      // Scroll Up
+      $('.header-wrapper.mobile').removeClass('nav-hide').addClass('nav-show');
     }
+
     lastScrollTop = st;
   }
 
@@ -173,4 +175,66 @@
   	 $(main_menu).addClass('desktop');
     }
   };
+
+  /**
+   * Sticky Share Left Align
+   */
+  window.tp_shareLeftAlign = function() {
+    if(window.featureFirst) {
+      var leftAlign = (((window.innerWidth - 780)/2) - $('.sticky-wrapper aside').width()) - 35;
+      if(leftAlign > 0) {
+        $('.sticky-wrapper').css('left', leftAlign);
+      } else {
+        $('.sticky-wrapper').css('left', 0);
+      }
+    }
+  };
+
+  /**
+   * Sticky Share Top Offset
+   */
+  window.tp_shareTopOffset = function() {
+    $('article.node').each(function(index){
+      if(index == 0) {
+        if($(this).hasClass('node-feature-article')) {
+          window.featureFirst = true;
+          var stickyOffset = $(this).find('.author-teaser').offset().top + 10 - $(".main-content").offset().top;
+        } else {
+          window.featureFirst = false;
+          var stickyOffset = $(".main-media").offset().top - $(".main-content").offset().top;
+        }
+        $('.sticky-wrapper').css('margin-top', stickyOffset - 7);
+      }
+    });
+  };
+
+  /**
+   * Sticky Share hide if in presence of feature main image
+   */
+  window.tp_shareFeatureHide = function(){
+    var elem = $('.fresh-content-wrapper').nextAll(), count = elem.length, showSticky = true;
+    $('article.node').each(function(index){
+      if($(this).parent().hasClass('feature_article-wrapper')) {
+        var mITop = $(this).find('.section.header .main-media').offset().top;
+        var mIBot = $(this).find('.section.header .main-media').height() + mITop;
+        window.stickTop = $('.sticky-wrapper .social').offset().top;
+
+        //Setting static height because a hidden items height is negative
+        window.stickBot = stickTop + 483;
+        //Test if the share bar is colliding with feature main image
+        //Using Visibility because .show()/.hide() causes a blinky
+        //share for 7 pixels when collision is detected
+        if(stickBot > mITop-25 && stickTop < mIBot+25) {
+          $('.sticky-wrapper').css('visibility', 'hidden');
+          showSticky = false;
+        }
+      }
+      if(!--count) {
+        if(showSticky == true) {
+          $('.sticky-wrapper').css('visibility', 'visible');
+        }
+      }
+    });
+  };
+
 })(jQuery, Drupal, this, this.document);

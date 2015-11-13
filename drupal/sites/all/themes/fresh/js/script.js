@@ -10,16 +10,67 @@
     attach: function(context, settings) {
 
       var $body = $('body');
-      $('.toggle-menu.toggle-left').click(function(){
-
+      $('.toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function(){
         if ($body.hasClass('mobile-menu-show')) {
           $body.removeClass("mobile-menu-show" );
+          //enable scroll on tablet
+          document.ontouchmove = function(e){ return true; }
         } else {
           $body.addClass("mobile-menu-show" );
+          //disable scroll on tablet
+          //document.ontouchmove = function(e){ e.preventDefault(); }
+          $(document).on('touchstart touchmove', function(e) {
+            if (!$(e.target).parents('nav#mobile-menu')) {
+              e.preventDefault();
+            }
+          });
+          //append a modal on feature articles
+          if ($('body.node-type-feature-article').length != 0) {
+            if ($('.feature-modal').length == 0) {
+              $('body').append('<div class = "feature-modal"></div>');
+            }
+            $('.feature-modal').click(function() {
+              if ($body.hasClass('mobile-menu-show')) {
+                $body.removeClass("mobile-menu-show" );
+              }
+            });
+          }
         }
       });
     }
   };
+
+  Drupal.behaviors.mobileSearchToggleStyleTwo = {
+    attach: function(context, settings) {
+
+
+      /* Show search field */
+      var $body = $('body');
+      $('.navbar-transparent .toggle-search').click(function(){
+        $(this).parents('.navbar-transparent').addClass('search-open');
+      });
+
+      /* Hide search if clicked away from */
+      $(document).on('click', function(event) {
+        if (!$(event.target).closest('.navbar-transparent').length) {
+          $('.navbar-transparent').removeClass("search-open");
+        }
+      });
+
+      // Close search
+      $('#search-api-page-search-form-site-search--2 input#edit-keys-2--2').click(function(e){
+        var offset = $(this).offset();
+        var width = $(this).outerWidth();
+        var pos_x = e.pageX - offset.left;
+
+        if(width - pos_x < 15) {
+          $('.navbar-transparent').removeClass("search-open");
+        }
+      });
+
+    }
+  };
+
 
   Drupal.behaviors.mobileSearchToggle = {
     attach: function(context, settings) {
@@ -36,7 +87,7 @@
         if($(window).width() < 768){
           /* Show search field */
           var $body = $('body');
-          $('.toggle-search').click(function(){
+          $('.header-style-1 .toggle-search').click(function(){
             if ($body.hasClass('mobile-search-show')) {
               $body.removeClass("mobile-search-show" );
             }else{
@@ -84,60 +135,67 @@
     }
   }
 
-  /* Position stick share */
+  /* Position stick share Done here to not bother tp4 */
   $('document').ready(function(){
-    var stickyOffset = $(".main-media").offset().top - $(".main-content").offset().top;
-    $('.sticky-wrapper').css('margin-top', stickyOffset - 7);
+    window.featureFirst = false;
+    window.tp_shareTopOffset();
+    window.tp_shareLeftAlign();
+    $(window).resize(function(){
+      window.tp_shareTopOffset();
+      window.tp_shareLeftAlign();
+    });
   });
-
-
 
   /**
    *  @function:
    *    Function copied from tp_ad_takeover.jquery.js
    */
   window.tp_ad_takeover = function(bgcolor, bgimage, link) {
-    var $body = jQuery('body');
-    var $a = jQuery('<a id="tp_ad_takeover" href="' + link + '" target="_blank"></a>');
+    //do not do on Feature Articles
+    if(typeof $('.fresh-content-wrapper') != 'undefined' && $('.fresh-content-wrapper').hasClass('feature_article-wrapper') == false) {
+      var $body = jQuery('body');
+      var $a = jQuery('<a id="tp_ad_takeover" href="' + link + '" target="_blank"></a>');
 
-    $body.css({
-      background: bgcolor + ' url("' + bgimage + '") center top no-repeat',
-      backgroundAttachment: 'fixed'
-    }).addClass('tp_ad_takeover');
+      $body.css({
+        background: bgcolor + ' url("' + bgimage + '") center top no-repeat',
+        backgroundAttachment: 'fixed'
+      }).addClass('tp_ad_takeover');
 
-    $a.css({
-      position: 'fixed',
-      height: '100%',
-      width: '100%',
-      left: 0,
-      top: 0,
-      zIndex: 0
-    });
+      $a.css({
+        position: 'fixed',
+        height: '100%',
+        width: '100%',
+        left: 0,
+        top: 0,
+        zIndex: 0
+      });
 
-    jQuery('body #footer-wrapper').after($a);
-
-    //only do on fresh theme with article-wrapper & video wrapper
-    if ($('.article-wrapper').length !== 0 || $('.video-wrapper').length !== 0 || $('.video_playlist-wrapper').length !=0) {
       jQuery('body #footer-wrapper').after($a);
-      //variables
-      var background_image = new Image();
-      background_image.src = bgimage;
 
-      //checks to see if the image is loaded
-      if (background_image.complete) {
-        var background_image_height = background_image.height;
-        takeover_ad(background_image_height);
-      }
-      //otherwise load image and then call function
-      else {
-        $(background_image).load(function() {
+      //only do on fresh theme
+      if ($('.fresh-content-wrapper').length != 0) {
+
+        jQuery('body #footer-wrapper').after($a);
+        //variables
+        var background_image = new Image();
+        background_image.src = bgimage;
+
+        //checks to see if the image is loaded
+        if (background_image.complete) {
           var background_image_height = background_image.height;
           takeover_ad(background_image_height);
-        });
-      }
+        }
+        //otherwise load image and then call function
+        else {
+          $(background_image).load(function() {
+            var background_image_height = background_image.height;
+            takeover_ad(background_image_height);
+          });
+        }
 
-      //triggers a scroll so the background takeover will go in place
-      $(window).scroll();
+        //triggers a scroll so the background takeover will go in place
+        $(window).scroll();
+      }
     }
   };
 

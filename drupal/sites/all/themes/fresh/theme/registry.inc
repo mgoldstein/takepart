@@ -62,6 +62,11 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'menu' => '',
       )
     ),
+    'fresh_featured_link' =>  array(
+      'variables' => array(
+        'link' => '',
+      )
+    ),
   );
 
 

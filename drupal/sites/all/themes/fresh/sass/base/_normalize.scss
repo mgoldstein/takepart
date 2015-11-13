@@ -137,7 +137,8 @@ li{
 ul.tabs {
   border-bottom: 1px solid $light-gray;
   font-size: 16px;
-  margin: 20px inherit;
+  position: relative;
+  z-index: 2;
   > li {
     list-style: none;
     display: inline-block;
@@ -280,11 +281,14 @@ aside.inline-content + p{
     margin: 0 auto !important;
   }
 }
-.container{
+.container {
   width: 100%;
-  @include breakpoint($breakpoint-desktop){
-    max-width: 1000px;
+  @include breakpoint($breakpoint-tablet){
+    padding: 0;
   }
+  // @include breakpoint($breakpoint-desktop){
+  //   max-width: 1000px;
+  // }
 }
 
 /*
@@ -521,9 +525,7 @@ figure.align-left {
     margin-right: 0px;
   }
 }
-.article-wrapper,
-.video-wrapper,
-.video_playlist-wrapper {
+.fresh-content-wrapper {
   article{
     @include breakpoint($breakpoint-phablet){
       padding: 0 31px;

@@ -19,12 +19,15 @@
     options = $.extend({}, defaults, opts);
 
     //overrides the stopat for fresh theme
-    if ($('.article-wrapper').length !== 0 || $('.video-wrapper').length !== 0 || $('.video_playlist-wrapper').length !=0) {
+    if ($('.fresh-content-wrapper').length !=0) {
       options.stopAt = '.footer';
     }
 
     return this.each(function(index) {
-
+      //Add Sticky Share on page load only
+      if ($('.sticky-wrapper').length != 0) {
+        return;
+      }
       var $stickyEl = $(this),
           $wrap = $stickyEl.wrap('<div class="' + options.wrapperClass +  '" />').parent().css('position', 'absolute'),
           $bottomEl = $(options.stopAt);

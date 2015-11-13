@@ -27,6 +27,8 @@
 @import "base/modules/sponsored";
 @import "base/modules/megaslim";
 @import "base/modules/header";
+@import "base/modules/header_transparent";
+@import "base/modules/feature_menu";
 @import "modules/fb_comments";
 @import "modules/footer";
 @import "modules/tp_more_on_takepart";
@@ -35,72 +37,50 @@
 @import "base/modules/infographics";
 @import "base/modules/modals";
 
-/*****************
- * Article Page
- *****************/
-.field-name-body {
-  a {
-    &:hover {
-      text-decoration: underline;
-    }
+/* Content Types */
+@import "page/video-playlist";
+@import "page/feature-article";
+@import "page/video";
+
+
+/*****************************
+ * All Content types on Fresh
+ ****************************/
+
+@include breakpoint($breakpoint-phablet){
+ .row {
+  margin-right: 0;
+  margin-left: 0;
+ }
+}
+
+@include breakpoint($breakpoint-tablet){
+  #header {
+    max-width: 960px;
+    margin: 0 auto;
   }
 }
 
-.video-wrapper{
+.tp_ad_takeover #page-wrapper,
+#page-wrapper {
+  max-width: 100%;
+}
+
+/*Admin and editor tabs*/
+.messages,
+.tabs-primary {
+  max-width: 960px;
+  margin: 10px auto;
+  z-index: 2;
   position: relative;
-  .sticky-wrapper{
-    @include breakpoint($breakpoint-phablet){
-      position: absolute;
-      margin-left: 15px;
-    }
-  }
-  aside.social.social-vertical {
-    @include breakpoint($breakpoint-phablet){
-      position: absolute;
-    }
-    @include breakpoint($breakpoint-desktop) {
-      position: static;
-    }
-  }
-  article{
-    color: #3A3A3A;
-    h1.title, #more-on-takepart h2{
-      color: $black;
-    }
-    .main-media {
-      margin-bottom: 8px;
-      height: 0;
-      padding-bottom: 56.25%;
-      overflow: hidden;
-    }
-    .series-navigation {
-   a {
-     .label {
-    text-decoration: none;
-     }
-     &:hover {
-    .label {
-      text-decoration: none;
-    }
-    .series-nav-title {
-      text-decoration: underline;
-    }
-     }
-   }
-
-    }
-  }
 }
+
 h1.title{
   margin-top: 20px; //Total spacing should be 30px accounting for font height gap
   margin-bottom: 15px;
   @include breakpoint($breakpoint-tablet){
     text-align: center;
   }
-}
-.main-image{
-  display: block;
-  /* margin: 0 auto; */
 }
 .main-media {
   display: block;
@@ -139,7 +119,7 @@ h1.title{
   margin-top: 0;
 }
 #more-on-takepart {
-  margin-bottom: 5px;
+  margin: 0 auto 5px auto;
   border-bottom: 1px solid #CCC;
   padding-bottom: 15px;
   .unpublished {
@@ -153,6 +133,12 @@ blockquote.pullquote {
 .inline-html-wrapper {
   display: block;
   margin: 0 auto;
+  .jwplayer {
+    overflow: hidden;
+    @include breakpoint($breakpoint-phablet) {
+      overflow: visible;
+    }
+  }
 }
 
 .align-center {
@@ -163,14 +149,16 @@ blockquote.pullquote {
   }
 }
 
+.field-name-body {
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
 /****** Override for sticky **********/
 .social.sticky{
   position: fixed !important;
-}
-
-/****** Hide the social until loaded **********/
-aside.social.social-vertical {
-  display: none;
 }
 
 body {
@@ -179,4 +167,65 @@ body {
       background-color: transparent;
     }
   }
+}
+.fresh-content-wrapper {
+  position: relative;
+}
+
+.sticky-wrapper{
+  @include breakpoint($breakpoint-phablet){
+    position: absolute;
+    margin-left: 15px;
+  }
+}
+body.node-type-article,
+body.node-type-video,
+body.node-type-video-playlist,
+body.node-type-feature-article {
+  aside.social.social-vertical {
+    display: none;
+    background: rgba(255,255,255,.75);
+    padding-top: 15px;
+    padding-bottom: 13px;
+
+    @include breakpoint($breakpoint-phablet){
+      position: absolute;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      position: static;
+    }
+  }
+}
+article {
+  color: #3A3A3A;
+  @include breakpoint($breakpoint-phablet) {
+    margin-left: 54px;
+  }
+  @include breakpoint($breakpoint-desktop) {
+    margin-left: 8.33%;
+  }
+  h1.title, #more-on-takepart h2{
+    color: $black;
+  }
+  .series-navigation {
+    a {
+       .label {
+        text-decoration: none;
+      }
+    &:hover {
+      .label {
+        text-decoration: none;
+      }
+      .series-nav-title {
+        text-decoration: underline;
+      }
+    }
+  }
+  }
+}
+.video_playlist-wrapper,
+.article-wrapper,
+.video-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
 }
