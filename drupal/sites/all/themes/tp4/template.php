@@ -82,7 +82,7 @@ function tp4_preprocess_html(&$variables, $hook) {
     drupal_add_library('system', 'jquery.cookie', true);
 
     $uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
-    if (preg_match('/^\/entity_iframe/', $uri) 
+    if (preg_match('/^\/entity_iframe/', $uri)
             ||  preg_match('/^\/iframes/', $uri)) {
         unset($variables['page']['page_bottom']['omniture']);
         unset($variables['page']['page_bottom']['quantcast']);
@@ -211,14 +211,14 @@ function tp4_preprocess_page(&$variables) {
     /* Statically add the mobile header to all pages */
     $header = theme('base_mobile_header');
     $variables['page']['header']['boxes_ga_mobile_320x50_relative']['#prefix'] = $header;
-    
+
     /* Statically add the Megaslim Menu to all pages */
     if(module_exists('tp_megaslim_menu')){
       $variables['page']['header']['megaslim']['#markup'] = tp_megaslim_menu_load_menu();
     }
   }
 
-  
+
   if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
 
     // Make sure the Campaign Page references a Campaign
@@ -357,7 +357,7 @@ function tp4_preprocess_page(&$variables) {
  *   An array of variables to pass to the theme template.
  */
 function tp4_preprocess_block(&$variables) {
-  
+
   $variables['title_attributes_array']['class'][] = 'section-header';
 
   // add slim nav class to slim nav block
@@ -413,7 +413,7 @@ function tp4_preprocess_tp4_support_slim_nav(&$variables) {
 function tp4_preprocess_node(&$variables, $hook) {
   //only show facebook comments if node is published
   $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
-  
+
   // Add template suggestions for view modes and
   // node types per view view mode.
   $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
@@ -560,7 +560,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 	elseif ($media_type == 'Video Playlist') {
 		//gets the video playlist value
 		$video_playlist = field_get_items('node', $variables['node'], 'field_media_video_playlist');
-		
+
 		//checks if its not empty
 		if (!empty($video_playlist[0]['target_id'])) {
 			//this function lives in tp_video_player.module.
@@ -594,7 +594,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   );
   $description = field_view_field('node', $variables['node'], 'body', $description_display);
   $description = drupal_render($description);
-  
+
   if (!empty($description)) {
     $description = '<div class="description">'. $description. '</div>';
   } else {
@@ -820,7 +820,7 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
     $variables['instructional'] = $instructional;
     $variables['classes_array'][] = 'has-instructional';
   }
-  
+
   $column_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_media_col');
   $slim_text = tp4_render_field_value('node', $variables['node'], 'field_slim_card_text');
 
@@ -1211,7 +1211,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       else{
         $file = field_get_items('node', $node, 'field_thumbnail');
         $file = file_load($file[0]['fid']);
-        
+
         //ensures that this field is set
         if (isset($node->field_article_subhead)) {
           $short_headline = tp4_render_field_value('node', $node, 'field_article_subhead');
@@ -1219,7 +1219,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         elseif (isset($node->field_subhead)) {
           $short_headline = tp4_render_field_value('node', $node, 'field_subhead');
         }
-        
+
         $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
       }
 
@@ -1249,7 +1249,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       // Query non referenced content (max 15)
       $max_count = tp4_render_field_value('node', $variables['node'], 'field_campaign_news_count');
       $count = (!empty($news_ref) ? count($news_ref) : 0);
-      
+
       if($max_count > $count) {
         $campaignNewsArticles = new EntityFieldQuery();
         $campaignNewsArticles->entityCondition('entity_type', 'node')
@@ -1260,18 +1260,18 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
           ->addTag($variables['nid'])
           ->addTag('promofilter')
           ->range(0, $max_count - $count);
-        
+
         //only add condition if nids is not empty
         if (!empty($nids)) {
           $campaignNewsArticles->entityCondition('entity_id', $nids, 'NOT IN');
         }
-        
+
         $articles = $campaignNewsArticles->execute();
       }
       foreach($articles['node'] as $key => $item){
         $nids[] = $item->nid;
       }
-  
+
       $nodes = node_load_multiple($nids);
       $center = '';
       $center .= '<div class="news-column-wrapper">';
@@ -1330,7 +1330,7 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
     $variables['instructional'] = $instructional;
     $variables['classes_array'][] = 'has-instructional';
   }
-  
+
   $center = '';
   $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
   $width = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_width');
@@ -1448,10 +1448,10 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
     $link = field_get_items('field_collection_item', $collection, 'field_campaign_multigrid_link');
     $target = (isset($link[0]['attributes']['target']) ? $link[0]['attributes']['target'] : '_self');
     if(!empty($link)){
-        $image = l($image, $link[0]['url'], array('html' => true, 'attributes' => array('target' => $target)));
+        $image = l($image, $link[0]['display_url'], array('html' => true, 'attributes' => array('target' => $target)));
     }
     $center .= '<div class="item" style="max-width:'. $item_width. 'px;">';
-    
+
     //conditional check to ensure there's an image before appending
     if (!empty($collection->field_promo_thumbnail)) {
       $center .= $image;
@@ -1675,13 +1675,13 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 								'source' => 'field_inline_replacements'
 							)
 						);
-						
+
 						//removes all body info and just has it do a replacement to add at the end
 						$node_clone = $variables['node'];
 						$lang = $node_clone->language;
 						$node_clone->body[$lang][0]['value'] = '';
 						$node_clone->body[$lang][0]['safe_value'] = '';
-						
+
 						$variables['gallery_tap_banner'] = field_view_field('node', $node_clone, 'body', $description_display);
         }
 
@@ -1724,7 +1724,7 @@ function tp4_preprocess_node__flashcard(&$variables) {
  * Utility function to provide "On Our Radar" block to node templates
  */
 function _tp4_on_our_radar_block(&$variables) {
-    
+
     $variables['on_our_radar'] = theme('html_tag', array(
       'element' => array(
         '#tag' => 'div',
@@ -1732,7 +1732,7 @@ function _tp4_on_our_radar_block(&$variables) {
         '#attributes' => array(
           'id' => 'pubexchange_related_links',
     ))));
-    
+
   drupal_add_js('(function(d, s, id)
                 { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
                 (document, "script", "pubexchange-jssdk"));',
@@ -1757,7 +1757,7 @@ function _tp4_series_nav(&$variables) {
         ));
         $termpath = taxonomy_term_uri($series);
         $series_header = l($series_image, $termpath['path'], array(
-        	'html' => TRUE, 
+        	'html' => TRUE,
 			'attributes' => array(
         		'id' => 'series_header',
 			)
@@ -1809,7 +1809,7 @@ function _tp4_series_nav(&$variables) {
         if (!empty($previous)) {
             $previous = '<div class="previous">' . (isset($previous->field_promo_headline['und'][0]['value']) ? $previous->field_promo_headline['und'][0]['value'] : drupal_render($previous->title)) . '</div>';
             $series_nav .= l($previous, $previous_url, array(
-	        	'html' => TRUE, 
+	        	'html' => TRUE,
 				'attributes' => array(
 	        		'class' => 'series_navigation',
 				)
@@ -1818,7 +1818,7 @@ function _tp4_series_nav(&$variables) {
         if (!empty($next)) {
             $next = '<div class="next">' . (isset($next->field_promo_headline['und'][0]['value']) ? $next->field_promo_headline['und'][0]['value'] : $next->title) . '</div>';
             $series_nav .= l($next, $next_url, array(
-	        	'html' => TRUE, 
+	        	'html' => TRUE,
 				'attributes' => array(
 	        		'class' => 'series_navigation',
 				)
@@ -2014,7 +2014,7 @@ function tp4_menu_link(array $variables) {
 
 	// Make urls absolute
 	$variables['element']['#localized_options']['absolute'] = true;
-	
+
     return theme_menu_link($variables);
 }
 
