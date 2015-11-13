@@ -16,7 +16,7 @@
         <a class="icon i-twitter" href="https://twitter.com/takepart" target="_blank" name="social"></a>
       </li>
       <li>
-        <a class="icon i-email" href="http://go.takepart.com/clients/takepart/survey.htm" target="_blank" name="social"></a>
+        <a class="icon i-email" href="/follow-us-email" target="_blank" name="social"></a>
       </li>
     </ul>
   </div>
