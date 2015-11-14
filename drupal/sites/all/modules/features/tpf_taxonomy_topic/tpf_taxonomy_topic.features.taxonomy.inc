@@ -12,7 +12,7 @@ function tpf_taxonomy_topic_taxonomy_default_vocabularies() {
     'topic' => array(
       'name' => 'Topic',
       'machine_name' => 'topic',
-      'description' => '',
+      'description' => 'Editorial verticle',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => -2,
