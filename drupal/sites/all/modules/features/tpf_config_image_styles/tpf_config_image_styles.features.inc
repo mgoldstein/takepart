@@ -212,6 +212,21 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: more_on_takepart_native_ad.
+  $styles['more_on_takepart_native_ad'] = array(
+    'label' => 'More on TakePart Native Ad',
+    'effects' => array(
+      67 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 145,
+          'height' => 200,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: portrait_main_image.
   $styles['portrait_main_image'] = array(
     'label' => 'portrait_main_image',
@@ -535,22 +550,6 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
-  // Exported image style: tp_quick_study_wide.
-  $styles['tp_quick_study_wide'] = array(
-    'label' => 'tp_quick_study_wide',
-    'effects' => array(
-      63 => array(
-        'name' => 'image_scale',
-        'data' => array(
-          'width' => 218,
-          'height' => '',
-          'upscale' => 1,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
   // Exported image style: tp_secondary_feature_thumbnail.
   $styles['tp_secondary_feature_thumbnail'] = array(
     'label' => 'tp_secondary_feature_thumbnail',
@@ -576,21 +575,6 @@ function tpf_config_image_styles_image_default_styles() {
           'width' => 90,
           'height' => '',
           'upscale' => 1,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
-  // Exported image style: venue_main.
-  $styles['venue_main'] = array(
-    'label' => 'venue_main',
-    'effects' => array(
-      35 => array(
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 640,
-          'height' => 380,
         ),
         'weight' => 1,
       ),

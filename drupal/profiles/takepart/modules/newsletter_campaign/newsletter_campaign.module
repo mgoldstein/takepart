@@ -699,7 +699,7 @@ function newsletter_campaign_signup_form_callback($form, $form_state) {
     else {
       // Inform the user that email signup failed.
       $message = '<div class="error">' . t('We were unable to process your subscription at this time,'
-        . ' please try again later.' . var_dump($campaign) . '</div>');
+        . ' please try again later.' . '</div>');
     }
   }
   else {
@@ -719,15 +719,17 @@ function newsletter_campaign_signup_form_callback($form, $form_state) {
 function newsletter_campaign_social_form_callback($form, $form_state) {
 
   $commands = array();
+
   $newsletter = $form_state['newsletter_campaign'];
+
   $errors = form_get_errors();
-  
   if (!empty($errors)) {
     // The form has validation errors.
     $selector = '#' . $form_state['complete form']['#id'];
     $markup = drupal_render($form);
   }
   elseif ($form_state['newsletter_campaign_signup_successful']) {
+
     // Fire the analytics events.
     $commands[] = ajax_command_invoke('body', 'trigger', array(
       'newsletter_social_signup', array(check_plain($newsletter->title)),
@@ -746,7 +748,7 @@ function newsletter_campaign_social_form_callback($form, $form_state) {
     $selector = "#takepart-newsletter-{$newsletter->ncid}-body";
     $markup = '<p class="error">'
       . t('We were unable to process your subscription at this time, please try again later.')
-      . var_dump($campaign) . '</p>';
+      . '</p>';
   }
 
   $commands[] = ajax_command_replace($selector, $markup);
