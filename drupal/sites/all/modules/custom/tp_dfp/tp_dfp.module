@@ -48,7 +48,7 @@ function tp_dfp_node_presave($node) {
         }
         if($image = field_get_items('node', $node, 'field_thumbnail')){
           $image = file_load($image[0]['fid']);
-          $variables['image_url'] = image_style_url('thumbnail', $image->uri);
+          $variables['image_url'] = image_style_url('more_on_takepart_native_ad', $image->uri);
         }else{
           $variables['image_url'] = 'null';
         }
