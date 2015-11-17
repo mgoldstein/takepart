@@ -219,8 +219,8 @@ function tpf_config_image_styles_image_default_styles() {
       67 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 145,
-          'height' => 200,
+          'width' => 135,
+          'height' => 90,
         ),
         'weight' => 1,
       ),
