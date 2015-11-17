@@ -1,0 +1,5 @@
+name = Participant API Endpoint
+description = Participant API functionality
+core = 7.x
+package = Customization
+version = 7.x-1.0
