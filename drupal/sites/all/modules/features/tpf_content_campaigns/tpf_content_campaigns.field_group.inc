@@ -1422,6 +1422,7 @@ function tpf_content_campaigns_field_group_info() {
       0 => 'field_series',
       1 => 'field_topic',
       2 => 'field_sponsored',
+      3 => 'field_campaign_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

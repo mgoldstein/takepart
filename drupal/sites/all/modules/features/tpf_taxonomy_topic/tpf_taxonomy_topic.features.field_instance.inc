@@ -286,8 +286,7 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
   // Included for use with string extractors like potx.
   t('Featured Video');
   t('HTML title tag');
-  t('Override for the promo label.
-Text that labels what the promo is ("Most Popular"  "Trending").');
+  t('Override for the promo label. Text that labels what the promo is ("Most Popular"  "Trending").');
   t('Override the Promo Headline that is being referenced.  If left blank, the Promo Headline from the content that is being referenced will be used.');
   t('Overrides the promo image in the content being referenced.');
   t('Promo Content');
