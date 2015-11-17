@@ -176,6 +176,7 @@ body {
   @include breakpoint($breakpoint-phablet){
     position: absolute;
     margin-left: 15px;
+    z-index: 2;
   }
 }
 body.node-type-article,
