@@ -23,7 +23,7 @@ class ParticipantAPI {
    */
   private function sendToServer($data) {
     //Make the data JSON
-    $vars = 'data='.json_encode($data);
+    $vars = 'post='.json_encode($data);
 
     //Submit call via CURL
     $ch = curl_init();
