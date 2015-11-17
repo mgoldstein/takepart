@@ -17,6 +17,17 @@
   @include breakpoint($breakpoint-tablet) {
     display: block;
   }
+  .search-close {
+    background: transparent url(/sites/all/themes/base/images/navbar-transparent-x.png) no-repeat;
+    width: 13px;
+    height: 13px;
+    display: none;
+    position: absolute;
+    top: 17px;
+    right: 17px;
+    z-index: 3;
+    cursor: pointer;
+  }
   &.search-open {
     #search-api-page-search-form-site-search,
     #search-api-page-search-form-site-search--2 {
@@ -24,6 +35,9 @@
     }
     .menu {
       display: none;
+    }
+    .search-close {
+      display: block;
     }
   }
 
@@ -104,7 +118,7 @@
       font-weight: bold;
       line-height: 6px;
     }
-    
+
     .avatarUsername{
       display: none;
     }
@@ -128,7 +142,7 @@
       margin: 0;
       padding: 0 20px;
       vertical-align: middle;
-      background: transparent url(/sites/all/themes/base/images/navbar-transparent-x.png) no-repeat center right;;
+      background: transparent;
       border: none;
       font-family: 'Roboto', sans-serif;
       font-size: 14px;

@@ -9,5 +9,6 @@
       <div class="tpsLogin"></div>
     </li>
   </ul>
+  <div class = "search-close"></div>
   <?php print $variables['search']; ?>
 </div>
