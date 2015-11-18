@@ -16,6 +16,11 @@
   .navbar-fat {
     border-bottom: none;
   }
+  .sticky-wrapper{
+    @include breakpoint($breakpoint-phablet){
+      z-index: 2;
+    }
+  }
 }
 
 .feature_article-wrapper{
