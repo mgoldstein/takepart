@@ -185,6 +185,7 @@ class ddContent extends ddDefaultPage {
     $data['page']['pageInfo']['pageTitle'] = $node->title;
     $data['page']['pageInfo']['pageUrl'] = $url;
     $data['page']['pageInfo']['pageUrlAlias'] = $request_path;  //first part of the URL
+    $data['page']['pageInfo']['referringURL'] = '%document.referrer';
     $data['page']['pageInfo']['siteSection'] = $site_section;
     $data['page']['pageInfo']['template'] = node_type_get_name($node);
     $data['page']['category']['primaryCategory'] = $this->categoryForContentType($node->type);
