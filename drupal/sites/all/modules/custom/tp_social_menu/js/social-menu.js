@@ -213,21 +213,24 @@
    */
   window.tp_shareFeatureHide = function(){
     var elem = $('.fresh-content-wrapper').nextAll(), count = elem.length, showSticky = true;
+    //First check for the main media image being collided with.
     $('article.node').each(function(index){
       if($(this).parent().hasClass('feature_article-wrapper')) {
-        var mITop = $(this).find('.section.header .main-media').offset().top;
-        var mIBot = $(this).find('.section.header .main-media').height() + mITop;
-        window.stickTop = $('.sticky-wrapper .social').offset().top;
+        $(this).find('.full-width').each(function(){
+          var mITop = $(this).offset().top;
+          var mIBot = $(this).height() + mITop;
+          window.stickTop = $('.sticky-wrapper .social').offset().top;
 
-        //Setting static height because a hidden items height is negative
-        window.stickBot = stickTop + 483;
-        //Test if the share bar is colliding with feature main image
-        //Using Visibility because .show()/.hide() causes a blinky
-        //share for 7 pixels when collision is detected
-        if(stickBot > mITop-25 && stickTop < mIBot+25) {
-          $('.sticky-wrapper').css('visibility', 'hidden');
-          showSticky = false;
-        }
+          //Setting static height because a hidden items height is negative
+          window.stickBot = stickTop + 483;
+          //Test if the share bar is colliding with feature main image
+          //Using Visibility because .show()/.hide() causes a blinky
+          //share for 7 pixels when collision is detected
+          if(stickBot > mITop-25 && stickTop < mIBot+25) {
+            $('.sticky-wrapper').css('visibility', 'hidden');
+            showSticky = false;
+          }
+        });
       }
       if(!--count) {
         if(showSticky == true) {
