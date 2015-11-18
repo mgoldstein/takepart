@@ -255,7 +255,8 @@
       if(typeof(digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id){
         digitalData.page.pageInfo = digitalData.event[i].eventInfo.page.pageInfo;
         digitalData.page.pageNumber = digitalData.event[i].eventInfo.autoloadCount;
-        _satellite.track('autoload');
+        _satellite.track('clear_vars');
+	    setTimeout(function(){ _satellite.track('autoload'); }, 1000);
         return;
       }
     }
@@ -264,7 +265,8 @@
     if ( digitalData.pageInitial )
       digitalData.page.pageInfo = digitalData.pageInitial.pageInfo;
     digitalData.page.pageNumber = 1;
-    _satellite.track('autoload');
+    _satellite.track('clear_vars');
+   setTimeout(function(){ _satellite.track('autoload'); }, 1000);
 
   };
 
