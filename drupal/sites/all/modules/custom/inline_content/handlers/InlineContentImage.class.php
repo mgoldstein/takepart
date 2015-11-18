@@ -32,15 +32,27 @@ class InlineContentImage extends InlineContentReplacementController {
     /* If an image exists render it, otherwise return nothing */
     if($file = field_get_items('inline_content', $replacement, 'field_ic_image')){
       $file = $file[0]['file'];
-
+      //Check the content type the image is getting inserted into
+      if ($replacement->nid) {
+        $node = node_load($replacement->nid);
+        $node_type = $node->type;
+      }
       /* Use image style based on format selection */
       if($format = field_get_items('inline_content', $replacement, 'field_ic_image_format')){
         /* Have to do it this way based on the way this was originally setup */
         $format = $format[0]['value'];
         if($format != 'none'){
           $image_url = image_style_url('feature_article_' . $format, $file->uri);
-        }else{
-          $image_url = image_style_url('large', $file->uri);
+        }else {
+          //Don't use large image style on full width images on feature article
+          if ($replacement->field_ic_alignment['und'][0]['value'] == 'full_width') {
+            if (isset($node_type) && $node_type == 'feature_article') {
+              $image_url = file_create_url($file->uri);
+            }
+          }
+          else {
+            $image_url = image_style_url('large', $file->uri);
+          }
         }
       }else{
         /* If no format exists, use the default 'large' image style */
