@@ -213,7 +213,7 @@
    */
   window.tp_shareFeatureHide = function(){
     //Only do this on Desktop so we check for mobile
-    if(!$('.sticky-wrapper').find('.social-wrapper').hasClass('mobile')) {
+    if(window.innerWidth >= 768) {
       var elem = $('.fresh-content-wrapper').nextAll(), count = elem.length, showSticky = true;
       //First check for the main media image being collided with.
       $('article.node').each(function(index){
