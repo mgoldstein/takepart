@@ -255,6 +255,7 @@
       if(typeof(digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id){
         digitalData.page.pageInfo = digitalData.event[i].eventInfo.page.pageInfo;
         digitalData.page.pageNumber = digitalData.event[i].eventInfo.autoloadCount;
+        digitalData.category = digitalData.event[i].eventInfo.category;
         _satellite.track('clear_vars');
 	    setTimeout(function(){ _satellite.track('autoload'); }, 1000);
         return;
