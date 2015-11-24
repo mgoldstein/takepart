@@ -38,7 +38,6 @@ $conf['search_api_solr_overrides'] = array(
     'name' => t('TakePart SOLR (Production settings)'),
     'options' => array(
       'host' => '10.2.5.50', // new host
-	 // 'host' => '10.2.5.30',  old host 
       'port' => 8080,
       'path' => '/solr/takepart_core',
     ),

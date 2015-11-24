@@ -3,5 +3,3 @@ description = TakePart Article content type support module
 core = 7.x
 package = TakePart
 version = 7.x-1.0
-
-dependencies[] = facebook_comments

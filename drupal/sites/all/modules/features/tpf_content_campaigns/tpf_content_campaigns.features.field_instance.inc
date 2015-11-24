@@ -3716,7 +3716,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'youtube' => 0,
         ),
         'allowed_types' => array(
-          'audio' => 0,
+		'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 0,
@@ -24991,7 +24991,7 @@ Note: If you manually reference more items than selected here, the number refere
           'youtube' => 0,
         ),
         'allowed_types' => array(
-          'audio' => 0,
+		'audio' => 0,
           'document' => 0,
           'image' => 'image',
           'video' => 0,
