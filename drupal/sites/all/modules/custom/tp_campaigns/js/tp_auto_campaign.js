@@ -62,30 +62,4 @@
        });
      }
    }
-  // Drupal.behaviors.tp_auto_changer = {
-  //   attach: function(context, settings) {
-  //     var ele = $('article.node-campaign-page.view-mode-full', context);
-  //     if(!ele.hasClass('autoloadCampaigns-processed')) {
-  //       var camps = JSON.stringify(Drupal.settings.autoloadCampaigns.targets);
-  //       var node = Drupal.settings.autoloadCampaigns;
-  //       $.get( "/autocampaign/"+node)
-  //         .done(function( data ) {console.log(data);
-  //           $.map(data,function(val,i){console.log(val);
-  //             //Add the ajax form settingss
-  //             if(val.command == "insert") {
-  //               //Append the other slides
-  //               ele.once('autoloadCampaigns').append(val.data);
-  //               //Reset behaviors
-  //               Drupal.attachBehaviors();
-  //             } else if(val.command == "alert") {
-  //               ele.once('autoloadCampaigns');
-  //               alert(val.text);
-  //             } else if(val.command == 'settings'){
-  //               jQuery.extend(Drupal.settings, val.settings);
-  //             }
-  //           });
-  //         });
-  //     }
-  //   }
-  // };
 })(jQuery, Drupal, this, this.document);
