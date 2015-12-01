@@ -56,9 +56,6 @@ function tp4_support_block_info(){
   $blocks['tp4_footer'] = array(
     'info' => t('Footer for Homepage Redesign'),
   );
-  $blocks['tp4_dont_miss'] = array(
-    'info' => t('Don\'t miss homepage promo'),
-  );
   $blocks['tp4_graveyard'] = array(
     'info' => t('Graveyard'),
   );
@@ -79,9 +76,6 @@ function tp4_support_block_view($delta = ''){
   switch($delta){
     case 'tp4_footer':
       $block['content'] = theme('tp4_support_footer');
-    break;
-    case 'tp4_dont_miss':
-      $block['content'] = tp4_support_dont_miss();
     break;
     case 'tp4_graveyard':
       module_load_include('inc', 'tp4_support', 'tp4_support_graveyard');
@@ -111,36 +105,6 @@ function tp4_support_block_configure($delta = ''){
       '#description' => t('Text for the footer region'),
     );
   }
-  if ($delta == 'tp4_dont_miss') {
-    $form['tp4_support_dont_miss_label'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Label'),
-      '#description' => t('Label for the promo'),
-      '#default_value' => variable_get('tp4_support_dont_miss_label', NULL),
-    );
-    $form['tp4_support_dont_miss_text'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Promo'),
-      '#description' => t('Text for the don\'t miss promo region'),
-      '#default_value' => variable_get('tp4_support_dont_miss_text', NULL),
-    );
-    $form['tp4_support_dont_miss_link'] = array(
-      '#type' => 'textfield',
-      '#title' => t('Link'),
-      '#description' => t('URL for the promo text'),
-      '#default_value' => variable_get('tp4_support_dont_miss_link', NULL),
-    );
-    $form['tp4_support_dont_miss_link_target'] = array(
-      '#type' => 'select',
-      '#title' => t('Link Target'),
-      '#options' => array(
-          0 => t('_blank'),
-          1 => t('_top'),
-       ),
-      '#description' => t('Target for the link'),
-      '#default_value' => variable_get('tp4_support_dont_miss_link_target', 1),
-    );
-  }
   return $form;
 }
 
@@ -152,12 +116,6 @@ function tp4_support_block_save($delta = '', $edit = array()) {
     $filtered_text = check_markup($edit['tp4_support_footer_text']['value'], $edit['tp4_support_footer_text']['format']);
     variable_set('tp4_support_footer_text_format', $edit['tp4_support_footer_text']['format']);
     variable_set('tp4_support_footer_text', $filtered_text);
-  }
-  if ($delta == 'tp4_dont_miss') {
-    variable_set('tp4_support_dont_miss_label', $edit['tp4_support_dont_miss_label']);
-    variable_set('tp4_support_dont_miss_text', $edit['tp4_support_dont_miss_text']);
-    variable_set('tp4_support_dont_miss_link', $edit['tp4_support_dont_miss_link']);
-    variable_set('tp4_support_dont_miss_link_target', $edit['tp4_support_dont_miss_link_target']);
   }
 }
 

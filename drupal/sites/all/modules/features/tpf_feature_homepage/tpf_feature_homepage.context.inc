@@ -50,12 +50,6 @@ function tpf_feature_homepage_context_default_contexts() {
           'region' => 'footer',
           'weight' => '-8',
         ),
-        'tp4_support-tp4_dont_miss' => array(
-          'module' => 'tp4_support',
-          'delta' => 'tp4_dont_miss',
-          'region' => 'preface',
-          'weight' => '-10',
-        ),
         'views-homepage_columns-block' => array(
           'module' => 'views',
           'delta' => 'homepage_columns-block',
