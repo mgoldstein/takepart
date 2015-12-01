@@ -1,3 +1,0 @@
-name = DEPRECATED Sailthru Metatag
-description = This module is deprecated.  Please remove after release-3.60
-core = 7.x
