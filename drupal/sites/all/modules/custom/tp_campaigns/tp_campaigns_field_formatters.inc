@@ -31,9 +31,10 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
 			//Get background images to preload
 			$bgimgs = tp_campaigns_preload_images(array_slice($items, 2));
 
+			//Add additional JS to the page
 			drupal_add_js(array('autoloadCampaigns' => $entity->nid,
 				'campaignPreload' => $bgimgs,
-				'campaignItemCount' => array_slice($items, 2)), 'setting');
+				'campaignItemCount' => count(array_slice($items, 2))), 'setting');
 			drupal_add_js(drupal_get_path('module', 'tp_campaigns').'/js/tp_auto_campaign.js', array('type' => 'file', 'scope' => 'footer'));
 			drupal_add_library('system', 'drupal.ajax');
 			drupal_add_library('system', 'drupal.form');
