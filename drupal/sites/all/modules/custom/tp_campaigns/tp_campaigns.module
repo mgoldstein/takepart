@@ -498,7 +498,8 @@ function tp_autoload_campaign_handler($nid, $itemnumb) {
           $output = theme('tp_card_tray', array('items' => $items, 'entity' => $entity));
           //After the entitys have rendered we need to get the ajax settings to
           //add to the command list.  Without this the default ajax settings
-          //gets wiped and the ajax forms will not work.  This also has to first.
+          //gets wiped and the ajax forms will not work.  This also has to be
+          //the first command in the command order.
           $settings = drupal_add_js();
           foreach($settings['settings']['data'] AS $key => $value) {
             if(key($value) == 'ajax') {
