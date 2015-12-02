@@ -70,10 +70,8 @@
     	   parser.href = args.url;
 
          //Set the url to the link
-         //$('.tp-social .tp-social-facebook').attr('href',"http://facebook.com/share.php?u="+url);
-         $('.tp-social .tp-social-facebook').attr('href',"https://www.facebook.com/dialog/share?app_id=247137505296280&display=popup&href="+url);
-	    
-	   //Desktop view will do a window.open, but Mobile view will do a new tab
+         $('.tp-social .tp-social-facebook').attr('href',"http://facebook.com/share.php?u="+url);
+         //Desktop view will do a window.open, but Mobile view will do a new tab
          if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
            FB.ui(
              {
