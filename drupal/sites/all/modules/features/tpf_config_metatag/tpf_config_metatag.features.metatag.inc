@@ -531,6 +531,9 @@ function tpf_config_metatag_metatag_export_default() {
       'sailthru.author' => array(
         'value' => '[sailthru_metatags:author]',
       ),
+      'sailthru.date' => array(
+        'value' => '[node:published:custom:Y-m-d H:i:s]',
+      ),
     ),
   );
 
