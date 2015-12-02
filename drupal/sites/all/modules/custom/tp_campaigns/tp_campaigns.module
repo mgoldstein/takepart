@@ -27,9 +27,9 @@ function tp_campaigns_menu(){
     'page arguments' => array('tp_campaigns_settings_form'),
     'access arguments' => array('administer site configuration'),
   );
-  $items['autocampaign/%'] = array(
+  $items['autocampaign/%/%'] = array(
     'page callback' => 'tp_autoload_campaign_handler',
-    'page arguments' => array(1),
+    'page arguments' => array(1,2),
     'access arguments' => array('access content')
   );
   return $items;
@@ -478,38 +478,45 @@ function tp_campaigns_settings_form_validate($form, &$form_state){
  * Function to autoload the Campaign cards
  * see https://api.drupal.org/api/drupal/includes%21ajax.inc/7 for ajax info
  */
-function tp_autoload_campaign_handler($nid) {
+function tp_autoload_campaign_handler($nid, $itemnumb) {
   //Error check if the nid being passed is numeric
   if(is_numeric($nid)) {
     //Get cached commands
-    if (($cache = cache_get("tp_autoload_campaign_handler_data_".$nid)) && !empty($cache->data)) {
+    if (($cache = cache_get("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb)) && !empty($cache->data)) {
       $ret = $cache->data;
     } else {
       $entity = entity_load('node', array($nid));
-      $items = array_slice($entity[$nid]->field_campaign_tray[LANGUAGE_NONE], 2);
-      //just want to ensure that the entity is a campaign page
-      //this is just a bit of security
-      if($entity[$nid]->type == "campaign_page") {
-        $output = theme('tp_card_tray', array('items' => $items, 'entity' => $entity));
-        //After the entitys have rendered we need to get the ajax settings to
-        //add to the command list.  Without this the default ajax settings
-        //gets wiped and the ajax forms will not work.  This also has to first.
-        $settings = drupal_add_js();
-        foreach($settings['settings']['data'] AS $key => $value) {
-          if(key($value) == 'ajax') {
-            $cmd[] = ajax_command_settings($value, TRUE);
-          }
-        }
-        //Set the append and invoke commands
-        $cmd[] = ajax_command_append('article.node-campaign-page.view-mode-full', $output);
-        $cmd[] = ajax_command_invoke('article.node-campaign-page.view-mode-full', 'trigger', array('TAPInvoke'));
+      //Check to make sure itemnumb is not 0 and that the next item exists
+      if($itemnumb > 0 &&
+        isset($entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb]) &&
+        !empty($entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb])) {
+        $items[0] = $entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb];
 
+        //just want to ensure that the entity is a campaign page
+        //this is just a bit of security
+        if($entity[$nid]->type == "campaign_page") {
+          $output = theme('tp_card_tray', array('items' => $items, 'entity' => $entity));
+          //After the entitys have rendered we need to get the ajax settings to
+          //add to the command list.  Without this the default ajax settings
+          //gets wiped and the ajax forms will not work.  This also has to first.
+          $settings = drupal_add_js();
+          foreach($settings['settings']['data'] AS $key => $value) {
+            if(key($value) == 'ajax') {
+              $cmd[] = ajax_command_settings($value, TRUE);
+            }
+          }
+          //Set the append and invoke commands
+          $cmd[] = ajax_command_append('article.node-campaign-page.view-mode-full', $output);
+          $cmd[] = ajax_command_invoke('article.node-campaign-page.view-mode-full', 'trigger', array('TAPInvoke'));
+        } else {
+          return ajax_deliver(array('#type' => 'ajax', '#error' => t("ERROR - Not a campaign page")));
+        }
       } else {
-        return ajax_deliver(array('#type' => 'ajax', '#error' => t("ERROR - Not a campaign page")));
+        return ajax_deliver(array('#type' => 'ajax', '#error' => t("ERROR - No Item Avaiable")));
       }
       $ret = array('#type' => 'ajax', '#commands' => $cmd);
       //Set the commands into cache
-      cache_set("tp_autoload_campaign_handler_data_".$nid, $ret, 'cache',  REQUEST_TIME  + (3600 * 24));
+      cache_set("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb, $ret, 'cache',  REQUEST_TIME  + (3600 * 24));
     }
   } else {
     return ajax_deliver(array('#type' => 'ajax', '#error' => t("ERROR - Node is not a number")));
