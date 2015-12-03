@@ -40,7 +40,7 @@ class ParticipantSignupHandler {
         $this->configuration['lists'], $this->configuration['source']);
 
       //Need to check for a type of response
-      if (!$response) {
+      if (!is_array($response)) {
         $message = t('Error sending email signup [@email] @response', array(
           '@email' => $signup['email'],
           '@response' => print_r($response, TRUE),

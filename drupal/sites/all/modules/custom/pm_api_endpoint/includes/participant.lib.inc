@@ -35,7 +35,7 @@ class ParticipantAPI {
     ),
     )));
 
-    return $result;
+    return json_decode($result);
   }
 
   /**
@@ -49,6 +49,6 @@ class ParticipantAPI {
 
     $response = $this->sendToServer($data);
 
-    return $response[0]['responseData'];
+    return $response;
   }
 }
