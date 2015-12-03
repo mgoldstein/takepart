@@ -12,7 +12,7 @@ class ParticipantAPI {
    */
   function __construct($api_domain, $api_key) {
     $this->apiKey = $api_key;
-    $this->apiURL = "https://$api_domain/v1/esp/list";
+    $this->apiURL = "https://$api_domain/v1/esp/lists";
     $this->responseType = 'json';
   }
 
@@ -23,25 +23,19 @@ class ParticipantAPI {
    */
   private function sendToServer($data) {
     //Make the data JSON
-    $vars = 'post='.json_encode($data);
+    $vars = json_encode($data);
 
-    //Submit call via CURL
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $this->apiURL);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $vars);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $result = file_get_contents($this->apiURL, null, stream_context_create(array(
+    'http' => array(
+    'method' => 'POST',
+    'header' => 'Content-Type: application/json' . "\r\n"
+    . 'Accept: application/json' . "\r\n"
+    . 'Content-Length: ' . strlen($vars) . "\r\n",
+    'content' => $vars,
+    ),
+    )));
 
-    $output = curl_exec($ch);
-
-    $this->error = curl_error($ch);
-
-    curl_close($ch);
-
-    $response = $output;
-
-    return $response;
+    return $result;
   }
 
   /**
