@@ -746,7 +746,7 @@ function tp4_support_page_delivery_callback_alter(&$callback) {
  * If homepage content is empty, return a 500 status code to prevent CDN caching.
  */
 function tp4_support_deliver_homepage($page_callback_result) {
-  if (empty($page_callback_result['content'])) {
+  if (empty($page_callback_result)) {
     drupal_add_http_header('Content-Type', 'text/plain');
     drupal_add_http_header('Status', '500 Internal Server Error');
   }
