@@ -15,6 +15,7 @@ function pm_sailthru_metatag_config_default_alter(array &$configs) {
 	   $config->config += array(
 		'sailthru.tags' => array(),
 		'sailthru.author' => array(),
+		'sailthru.date' => array(),
 	   );
 	   break;
 
@@ -22,6 +23,7 @@ function pm_sailthru_metatag_config_default_alter(array &$configs) {
 	   $config->config += array(
 		'sailthru.tags' => array(),
 		'sailthru.author' => array(),
+		'sailthru.date' => array(),
 	   );
 	   break;
 
@@ -30,7 +32,12 @@ function pm_sailthru_metatag_config_default_alter(array &$configs) {
 		'sailthru.tags' => array(
 		  'value' => '[sailthru_metatags:tags_type]'
 		),
-		'sailthru.author' => array(),
+		'sailthru.author' => array(
+		  'value' => '[sailthru_metatags:author]',
+		),
+		'sailthru.date' => array(
+		  'value' => '[node:published:custom:Y-m-d H:i:s]',
+		),
 	   );
 	   break;
 
@@ -38,6 +45,7 @@ function pm_sailthru_metatag_config_default_alter(array &$configs) {
 	   $config->config += array(
 		'sailthru.tags' => array(),
 		'sailthru.author' => array(),
+		'sailthru.date' => array(),
 	   );
 	   break;
 
@@ -45,6 +53,7 @@ function pm_sailthru_metatag_config_default_alter(array &$configs) {
 	   $config->config += array(
 		'sailthru.tags' => array(),
 		'sailthru.author' => array(),
+		'sailthru.date' => array(),
 	   );
 	   break;
     }
@@ -70,10 +79,16 @@ function pm_sailthru_metatag_info() {
 	 'group' => 'custom-sailthru',
 	 'element' => array('#theme' => 'metatag_sailthru'),
     ),
-    
     'sailthru.author' => array(
 	 'label' => t('SailThru Author'),
 	 'description' => t('Content authors formatted for SailThru'),
+	 'class' => 'DrupalTextMetaTag',
+	 'group' => 'custom-sailthru',
+	 'element' => array('#theme' => 'metatag_sailthru'),
+    ),
+    'sailthru.date' => array(
+	 'label' => t('SailThru Date'),
+	 'description' => t('Content publication date formatted for SailThru'),
 	 'class' => 'DrupalTextMetaTag',
 	 'group' => 'custom-sailthru',
 	 'element' => array('#theme' => 'metatag_sailthru'),

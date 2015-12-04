@@ -63,7 +63,7 @@ function pm_sailthru_theme() {
 function theme_metatag_sailthru($variables) {
   $element = &$variables['element'];
   element_set_attributes($element, array(
-    '#name' => 'property',
+    '#name' => 'name',
     '#value' => 'content'
   ));
   unset($element['#value']);
