@@ -96,6 +96,7 @@ function tp4_support_block_view($delta = ''){
   }
   return $block;
 }
+
 /**
  * Implements hook_block_configure
  */

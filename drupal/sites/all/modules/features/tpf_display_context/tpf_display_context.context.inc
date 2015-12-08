@@ -1100,24 +1100,6 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-10',
         ),
-        'tp_flashcards-flashcard_related_content' => array(
-          'module' => 'tp_flashcards',
-          'delta' => 'flashcard_related_content',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
-        'tp_flashcards-flashcard_get_more' => array(
-          'module' => 'tp_flashcards',
-          'delta' => 'flashcard_get_more',
-          'region' => 'content',
-          'weight' => '-9',
-        ),
-        'tp_flashcards-flashcard_comments' => array(
-          'module' => 'tp_flashcards',
-          'delta' => 'flashcard_comments',
-          'region' => 'content',
-          'weight' => '-8',
-        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',
