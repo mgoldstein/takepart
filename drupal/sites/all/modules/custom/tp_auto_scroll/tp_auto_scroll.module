@@ -52,6 +52,7 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
 
     //Get the ajax settings that need appending
     $settings = drupal_add_js();
+    $ajax = array();
     foreach($settings['settings']['data'] AS $key => $value) {
       if(key($value) == 'ajax') {
         //Change the id to be unique because the articles load the same
