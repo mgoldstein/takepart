@@ -189,7 +189,7 @@ function fresh_preprocess_node__autoload(&$variables) {
 
     /* Comments */
     $url = url('node/' . $variables['node']->nid, array('absolute' => true));
-    $variables['comments'] = theme('fresh_fb_comments', array('url' => $url));
+    $variables['comments'] = theme('fresh_fb_comments', array('url' => $url, 'nid' => $variables['node']->nid));
 
     $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
 
