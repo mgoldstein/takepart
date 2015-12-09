@@ -50,11 +50,28 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
     $ddl = tp_auto_scroll_build_ddl_content($node);
     $ddl_event = tp_auto_scroll_build_ddl_event($node->nid, $ddl);
 
+    //Get the ajax settings that need appending
+    $settings = drupal_add_js();
+    foreach($settings['settings']['data'] AS $key => $value) {
+      if(key($value) == 'ajax') {
+        //Change the id to be unique because the articles load the same
+        //form the submit button id needs to be unique for proper attaching.
+        foreach($value['ajax'] AS $id => $ajaxsettings) {
+          $ajax['ajax'][$id."_".$node->nid] = $ajaxsettings;
+          //Not Ideal, but we do not want to alter the forms because it will fail
+          //on normal load. This will only happen on autoscroll load.
+          $node_view_wrapper = str_replace('id="'.$id.'"','id="'.$id."_".$node->nid.'"',$node_view_wrapper);
+        }
+        $ajax['urlIsAjaxTrusted'] = $value['urlIsAjaxTrusted'];
+      }
+    }
+
     /* Save output */
     $output = array(
       'success' => 'true',
       'ddl' => $ddl_event,
       'output' => $node_view_wrapper,
+      'settings' => $ajax,
     );
 
     /* Cache it for later use */
@@ -98,7 +115,7 @@ function tp_auto_scroll_pager($node){
   $query = new EntityFieldQuery();
   $query->entityCondition('entity_type', 'node')
     ->propertyCondition('status', 1)
-    ->entityCondition('bundle', array('openpublish_article' , 'video' , 'video_playlist' , 'feature_article'), 'IN')
+    ->entityCondition('bundle', array('feature_article'), 'IN')
     ->propertyCondition('nid', $node->nid, '<>')
     ->addTag('NodeQuery')
     //->propertyOrderBy('changed', 'DESC')
