@@ -161,6 +161,11 @@ blockquote.pullquote {
   position: fixed !important;
 }
 
+/** Hide Share let the onload show it **/
+.social {
+  display: none;
+}
+
 body {
   &.node-preview {
     .node-unpublished {

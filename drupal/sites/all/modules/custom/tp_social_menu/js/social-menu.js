@@ -6,10 +6,9 @@
 (function ($, Drupal, window, document, undefined) {
 
   /**
-   * Behaviors for tpsocial shares
+   * Function for tpsocial shares
    */
-  Drupal.behaviors.tpsocialShares = {
-    attach: function () {
+  Drupal.tpsocialShares = function () {
 	 var $body = $('body'),
 		    isOpenpublishArticle = $body.is('.page-node.node-type-openpublish-article'),
 		    isFeatureArticle = $body.is('.page-node.node-type-feature-article'),
@@ -71,34 +70,14 @@
 	   delete tp_social_config.services.pinterest;
 	 }
 
-	 //only fix for iphone
-	//  if (/iPhone/i.test(navigator.userAgent)) {
-	//    //on load adjust the sticky with
-	//    var window_width = window.innerWidth;
-	//    $('.social-wrapper.mobile').width(window_width);
-   //
-	//    //add bing to resize so that it resizes for iphone
-	//    $(window).smartresize(function () {
-	// 	var window_width = window.innerWidth;
-	// 	$('.social-wrapper.mobile').width(window_width);
-	//    });
-	//  }
-
 	 if (window.innerWidth >= 800) {
 	   delete tp_social_config.services.whatsapp;
 	 }
 
 	 //Just Make Sticky. Will handle Mobile through CSS
 	 $.when($('.tp-social:not(.tp-social-skip)').tpsocial(tp_social_config)).done(function () {
-
-       $('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
-
+     $('.social-vertical.stick').tp4Sticky({offset: isFlashcard ? 0 : 7});
 	 });
-
-	 window.tp_initSocialMenu();
-   //Show the social after everything is loaded.
-   $('.social').show();
-  }
   };
 
   /*
@@ -108,11 +87,16 @@
     attach: function (context, settings) {
   	 //trigger tp_initSocialMenu
   	 $(document).ready(function () {
-  	   window.tp_initSocialMenu();
-
-  	   $(window).smartresize(function () {
-  		    window.tp_initSocialMenu();
-  	   });
+       //Not reloading social on Drupal Attach Behaviors
+       if(!$('.social').hasClass('socialMenu-processed')) {
+         Drupal.tpsocialShares();
+    	   window.tp_initSocialMenu();
+    	   $(window).smartresize(function () {
+    		    window.tp_initSocialMenu();
+    	   });
+         //Show the social after everything is loaded.
+         $('.social').once('socialMenu');
+       }
   	 });
     }
   }
