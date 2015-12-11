@@ -1,8 +1,8 @@
 <?php
+
 /**
  * Sigunup handler plugin for BlueHornet module.
  */
-
 $plugin = array(
   'handler' => array(
     'class' => 'ParticipantSignupHandler',
@@ -31,29 +31,28 @@ class ParticipantSignupHandler {
 
     if (isset($signup['email'])) {
 
-      $data = array('email' => $signup['email']);
+	 $data = array('email' => $signup['email']);
 
-      $account = isset($this->configuration['account'])
-        ? $this->configuration['account'] : NULL;
+	 $account = isset($this->configuration['account']) ? $this->configuration['account'] : NULL;
 
-      $response = ParticipantAPIWrapper::Api($account)->addUpdateSubscriber($data,
-        $this->configuration['lists'], $this->configuration['source']);
+	 $response = ParticipantAPIWrapper::Api($account)->addUpdateSubscriber($data, $this->configuration['lists'], $this->configuration['source'], $this->configuration['user_vars']);
 
-      //Need to check for a type of response
-      if (!is_array($response)) {
-        $message = t('Error sending email signup [@email] @response', array(
-          '@email' => $signup['email'],
-          '@response' => print_r($response, TRUE),
-        ));
-        throw new SignupHandlerException($message);
-      }
+	 //Need to check for a type of response
+	 if (!is_array($response)) {
+	   $message = t('Error sending email signup [@email] @response', array(
+		'@email' => $signup['email'],
+		'@response' => print_r($response, TRUE),
+	   ));
+	   throw new SignupHandlerException($message);
+	 }
     }
   }
 
   public function submit($signup) {
     $signup_type = get_class($signup);
     if ($signup_type === 'NewsletterCampaignSignup') {
-      $this->submitNewsletterCampaignSignup($signup);
+	 $this->submitNewsletterCampaignSignup($signup);
     }
   }
+
 }
