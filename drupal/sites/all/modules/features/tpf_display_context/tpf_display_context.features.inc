@@ -43,30 +43,6 @@ function tpf_display_context_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
-    'openpublish_video' => array(
-      'name' => t('Legacy Video'),
-      'base' => 'node_content',
-      'description' => t('Create content items with embedded video media assets.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'takepart_campaign' => array(
-      'name' => t('Legacy Campaigns'),
-      'base' => 'node_content',
-      'description' => '',
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
-    'venue' => array(
-      'name' => t('Venue'),
-      'base' => 'node_content',
-      'description' => t('Content that applies to a physical location, such as a business or event place.'),
-      'has_title' => '1',
-      'title_label' => t('Title'),
-      'help' => '',
-    ),
   );
   drupal_alter('node_info', $items);
   return $items;

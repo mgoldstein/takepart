@@ -50,7 +50,7 @@
     }
 
     print '<div' . drupal_attributes(array(
-      'id' => 'slider_' . $key,
+      'id' => 'slider_' . (arg(0) == "autocampaign"?$key+2:$key),
       'class' => $slider_class,
       'style' => $slider_styles,
       'data-title' => $node->title,

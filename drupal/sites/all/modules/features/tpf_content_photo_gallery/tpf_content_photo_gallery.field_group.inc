@@ -48,23 +48,27 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'body',
       1 => 'field_author',
       2 => 'field_gallery_main_image',
       3 => 'field_subhead',
-      4 => 'field_tp_campaign_show_title',
+      4 => 'field_tab_action_override',
       5 => 'field_display_cover',
-      6 => 'field_display_tab_banner',
+      6 => 'field_inline_replacements',
+      7 => 'field_display_tab_banner',
+      8 => 'field_related_stories',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Main',
       'instance_settings' => array(
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_photo_gallery_main|node|openpublish_photo_gallery|form'] = $field_group;
@@ -80,17 +84,19 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Photos',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_gallery_images',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Photos',
       'instance_settings' => array(
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_photo_gallery_photos|node|openpublish_photo_gallery|form'] = $field_group;
@@ -106,12 +112,14 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_text',
       2 => 'field_thumbnail',
       3 => 'field_promo_short_headline',
+      4 => 'field_newsletter_feed_exclude',
+      5 => 'field_dfp_creative_id',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -165,24 +173,23 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_series',
       1 => 'field_free_tag',
       2 => 'field_topic',
-      3 => 'field_multi_page_campaign',
-      4 => 'field_display_tag',
-      5 => 'field_admin_tag',
-      6 => 'field_topic_box',
-      7 => 'field_sponsored',
+      3 => 'field_admin_tag',
+      4 => 'field_sponsored',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'label' => 'Tagging',
       'instance_settings' => array(
-        'classes' => '',
         'required_fields' => 1,
+        'classes' => '',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_photo_gallery_tagging|node|openpublish_photo_gallery|form'] = $field_group;

@@ -34,6 +34,7 @@ features[fe_nodequeue][] = latest_headlines
 features[fe_nodequeue][] = photo_galleries_promo
 features[fe_nodequeue][] = takeaction_promo
 features[features_api][] = api:2
+features[image][] = featured_campaign
 features[image][] = homepage_featured_image
 features[user_permission][] = administer advanced pane settings
 features[user_permission][] = administer pane access

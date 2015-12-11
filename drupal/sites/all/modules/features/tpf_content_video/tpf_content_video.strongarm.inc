@@ -268,34 +268,25 @@ function tpf_content_video_strongarm() {
           'weight' => '18',
         ),
         'metatags' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '13',
-        ),
-        'redirect' => array(
           'weight' => '14',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '15',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '16',
         ),
       ),
       'display' => array(),
     ),
   );
   $export['field_bundle_settings_node__video_playlist'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_openpublish_video';
-  $strongarm->value = array(
-    0 => 'main-menu',
-  );
-  $export['menu_options_openpublish_video'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -318,13 +309,6 @@ function tpf_content_video_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_openpublish_video';
-  $strongarm->value = 'main-menu:0';
-  $export['menu_parent_openpublish_video'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_video';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_video'] = $strongarm;
@@ -335,13 +319,6 @@ function tpf_content_video_strongarm() {
   $strongarm->name = 'menu_parent_video_playlist';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_video_playlist'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_openpublish_video';
-  $strongarm->value = array();
-  $export['node_options_openpublish_video'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -370,13 +347,6 @@ function tpf_content_video_strongarm() {
   $strongarm->name = 'node_preview_video_playlist';
   $strongarm->value = '1';
   $export['node_preview_video_playlist'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_openpublish_video';
-  $strongarm->value = 1;
-  $export['node_submitted_openpublish_video'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

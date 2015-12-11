@@ -33,14 +33,6 @@ function tpf_taxonomy_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => -6,
     ),
-    'group_type' => array(
-      'name' => 'Group Type',
-      'machine_name' => 'group_type',
-      'description' => 'Used to store the different group types available.',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => -5,
-    ),
     'photo_credit' => array(
       'name' => 'Photo Credit',
       'machine_name' => 'photo_credit',
@@ -48,30 +40,6 @@ function tpf_taxonomy_taxonomy_default_vocabularies() {
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => -5,
-    ),
-    'significance' => array(
-      'name' => 'Significance',
-      'machine_name' => 'significance',
-      'description' => 'Taxonomy to describe the significance of a piece of content',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-    ),
-    'topic_box' => array(
-      'name' => 'Topic Box',
-      'machine_name' => 'topic_box',
-      'description' => 'Topic Box Badges',
-      'hierarchy' => 1,
-      'module' => 'taxonomy',
-      'weight' => 1,
-    ),
-    'video_series' => array(
-      'name' => 'Video Series',
-      'machine_name' => 'video_series',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => -1,
     ),
   );
 }

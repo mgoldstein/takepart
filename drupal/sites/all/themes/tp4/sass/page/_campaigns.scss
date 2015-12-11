@@ -879,10 +879,15 @@ body.campaign-display{
     }
     .card.has-videoBG {
       position: relative;
-      min-height: 600px;
-      @include breakpoint($breakpoint-desktop) {
-        min-height: 720px;
-      }
+      // min-height: 600px;
+      // @include breakpoint($breakpoint-desktop) {
+      //   min-height: 720px;
+      // }
+        min-height: inherit;
+        @media only screen and (max-width: 980px) {
+            min-height: inherit !important;
+            padding-bottom: 0;
+        }
     }
     .card video.background-video{
       width: 100%;

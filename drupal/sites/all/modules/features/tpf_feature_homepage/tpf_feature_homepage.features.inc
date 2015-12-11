@@ -137,6 +137,21 @@ function tpf_feature_homepage_fe_nodequeue_export_fields() {
 function tpf_feature_homepage_image_default_styles() {
   $styles = array();
 
+  // Exported image style: featured_campaign.
+  $styles['featured_campaign'] = array(
+    'label' => 'Featured Campaign',
+    'effects' => array(
+      68 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 250,
+          'height' => 167,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: homepage_featured_image.
   $styles['homepage_featured_image'] = array(
     'label' => 'Homepage Featured Image',

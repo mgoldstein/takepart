@@ -50,3 +50,4 @@ features[user_permission][] = use panels dashboard
 features[user_permission][] = use search_api_sorts
 features[user_permission][] = view any unpublished content
 features[user_role][] = preview
+features_exclude[dependencies][better_formats] = better_formats

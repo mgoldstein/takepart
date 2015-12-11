@@ -104,7 +104,7 @@ function tpf_feature_newsletter_curation_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 73,
     ),
   );
 
@@ -312,7 +312,7 @@ function tpf_feature_newsletter_curation_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 18,
+      'weight' => 13,
     ),
   );
 

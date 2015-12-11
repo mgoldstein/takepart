@@ -39,7 +39,6 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
 		'campaign',
 		'campaign_page',
 		'openpublish_photo_gallery',
-		'openpublish_video',
 		'video',
 		'video_playlist',
 		'action',
@@ -270,7 +269,6 @@ function tp_more_on_takepart_block_view($delta = '') {
 						break;
 					case 'video';
 					case 'video_playlist';
-					case 'openpublish_video';
 						$type = 'i-video-camera';
 						break;
 					case 'campaign_page';

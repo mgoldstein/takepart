@@ -28,12 +28,24 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
   $settings = $display['settings'];
   switch($display['type']){
     case 'tp_card_tray':
-      $element = array(
-        '#theme' => 'tp_card_tray',
-        '#items' => $items,
-        '#entity' => $entity,
-      );
-      break;
+			//Get background images to preload
+			$bgimgs = tp_campaigns_preload_images(array_slice($items, 2));
+
+			//Add additional JS to the page
+			drupal_add_js(array('autoloadCampaigns' => $entity->nid,
+				'campaignPreload' => $bgimgs,
+				'campaignItemCount' => count(array_slice($items, 2))), 'setting');
+			drupal_add_js(drupal_get_path('module', 'tp_campaigns').'/js/tp_auto_campaign.js', array('type' => 'file', 'scope' => 'footer'));
+			drupal_add_library('system', 'drupal.ajax');
+			drupal_add_library('system', 'drupal.form');
+			//Only load items 1 and 2
+			$items = array_slice($items, 0, 2);
+			$element = array(
+			  '#theme' => 'tp_card_tray',
+			  '#items' => $items,
+			  '#entity' => $entity,
+			);
+    break;
     case 'tp_card_reference':
       $element = array(
         '#theme' => 'tp_card_reference',
@@ -108,4 +120,74 @@ function tp_campaigns_tray_vars($entity){
 
 
 	return $tray_vars;
+}
+
+function tp_campaigns_preload_images($items) {
+	foreach($items AS $it) {
+		$inarr[] = $it['target_id'];
+	}
+	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type', 'node')
+		->entityCondition('bundle', 'campaign_tray')
+		->propertyCondition('status', 1)
+		->entityCondition('entity_id', $inarr, 'IN')
+		->fieldCondition('field_campaign_card_reference', 'target_id', 'NULL', '!=');
+	$result = $query->execute();
+	$ret = array();
+	if (isset($result['node'])) {
+		// // At first we need to get field's id. If you already know field id, you can ommit this step
+		// // Get all fields attached to a given node type
+		// $fields = field_info_instances('node', 'campaign_tray');
+		//
+		// // Get id of field
+		// $field_id = $fields['field_campaign_card_reference']['field_id'];
+
+		// Attach a field of selected id only to get value for it
+		field_attach_load('node', $result['node'], FIELD_LOAD_CURRENT, array('field_id' => 541));
+
+		foreach($result['node'] AS $k => $tray) {
+			// Get values of our node field
+			$output = field_get_items('node', $tray, 'field_campaign_card_reference');
+			$cards[] = $output[0]['target_id'];
+		}
+		$ret = tp_campaigns_get_preload_url($cards);
+	}
+	return $ret;
+}
+
+function tp_campaigns_get_preload_url($cards) {
+	$query = new EntityFieldQuery();
+	$query->entityCondition('entity_type', 'node')
+		->entityCondition('bundle', array('campaign_card_ad',
+			'campaign_card_branding',
+			'campaign_card_empty',
+			'campaign_card_iframe',
+			'campaign_card_media',
+			'campaign_card_multi_column',
+			'campaign_card_news',
+			'campaign_card_social',
+			'campaign_card_tap_widget',
+			'campaign_card_text',
+			'campaign_card_twitter'), 'IN')
+		->propertyCondition('status', 1)
+		->entityCondition('entity_id', $cards, 'IN')
+		->fieldCondition('field_campaign_background', 'fid', 'NULL', '!=');
+	$result = $query->execute();
+	$ret = array();
+	if (isset($result['node'])) {
+		$bgs = $result['node'];
+
+		// Attach a field of selected id only to get value for it
+		field_attach_load('node', $bgs, FIELD_LOAD_CURRENT, array('field_id' => 514));
+
+		foreach($bgs AS $bgimg) {
+			// Get values of our node field
+			$output = field_get_items('node', $bgimg, 'field_campaign_background');
+			if(isset($output[0]['uri']) && !empty($output[0]['uri'])) {
+				$background_image = $output[0]['uri'];
+				$ret[] = file_create_url($background_image);
+			}
+		}
+	}
+	return $ret;
 }
