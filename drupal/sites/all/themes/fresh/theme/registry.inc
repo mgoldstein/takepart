@@ -43,6 +43,7 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
     'fresh_fb_comments' => array(
       'variables' => array(
         'url' => '',
+        'nid' => '',
       )
     ),
     'fresh_sponsor' => array(

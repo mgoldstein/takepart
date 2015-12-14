@@ -56,17 +56,9 @@
                 Drupal.behaviors.tp_video_player.attach();
               }
 
-              // Update fb_comments on load
-        		    if(typeof FB != 'undefined') {
-        		      FB.XFBML.parse();
-        		    }
-
               // Load comments box on button click for mobile display
               $('a.comments-count').once('FBComments', function () {
                 $('a.comments-count').on('click', function(e){
-                  if(typeof FB != 'undefined') {
-                    FB.XFBML.parse();
-                  }
                   $(this).siblings('.fb-comments').attr('href', window.location.href).show();
                   $(this).hide();
                   e.preventDefault();
