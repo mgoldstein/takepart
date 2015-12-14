@@ -933,7 +933,7 @@ print $file;
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
   $handler->display->display_options['style_options']['provide_file'] = 1;
-  $handler->display->display_options['style_options']['filename'] = 'missing_articles_ibailey.csv';
+  $handler->display->display_options['style_options']['filename'] = 'missing_articles.csv';
   $handler->display->display_options['style_options']['parent_sort'] = 0;
   $handler->display->display_options['style_options']['quote'] = 1;
   $handler->display->display_options['style_options']['trim'] = 1;
