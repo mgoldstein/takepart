@@ -150,6 +150,8 @@
       window.tp_shareTopOffset();
       window.tp_shareLeftAlign();
     });
+    //Give the sticky share a fighting chance to load
+    setTimeout(function(){$('.social').show()},200);
   });
 
   /**
