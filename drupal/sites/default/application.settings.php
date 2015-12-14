@@ -114,7 +114,7 @@ switch(ENVIRONMENT) {
   case 'qa':
     $domain = 'qa-api.participant.com';
   break;
-  case 'stage':
+  case 'staging':
     $domain = 'stage-api.participant.com';
   break;
   case 'production':
