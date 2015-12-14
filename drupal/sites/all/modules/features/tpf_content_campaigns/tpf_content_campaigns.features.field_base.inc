@@ -27,7 +27,7 @@ function tpf_content_campaigns_field_default_field_bases() {
         'target' => 'default',
       ),
       'display' => array(
-        'url_cutoff' => '',
+        'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
       'title' => 'optional',
@@ -447,7 +447,7 @@ function tpf_content_campaigns_field_default_field_bases() {
         'target' => 'default',
       ),
       'display' => array(
-        'url_cutoff' => 80,
+        'url_cutoff' => '',
       ),
       'enable_tokens' => 1,
       'title' => 'optional',
