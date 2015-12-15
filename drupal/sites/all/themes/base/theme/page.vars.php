@@ -29,12 +29,12 @@ function base_preprocess_page(&$variables) {
     $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
   }
 
-  drupal_add_js("(function() { 
-    function loadHorizon() 
-    { var s = document.createElement('script'); 
-    s.type = 'text/javascript'; s.async = true; 
-    s.src = location.protocol + '//ak.sail-horizon.com/horizon/v1.js'; 
-    var x = document.getElementsByTagName('script')[0]; 
+  drupal_add_js("(function() {
+    function loadHorizon()
+    { var s = document.createElement('script');
+    s.type = 'text/javascript'; s.async = true;
+    s.src = location.protocol + '//ak.sail-horizon.com/horizon/v1.js';
+    var x = document.getElementsByTagName('script')[0];
     x.parentNode.insertBefore(s, x); }
     loadHorizon();
     var oldOnLoad = window.onload;
@@ -43,4 +43,14 @@ function base_preprocess_page(&$variables) {
     Sailthru.setup({ domain: 'horizon.takepart.com', useStoredTags: false });
     };
     })();", array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
+
+  // Find the title of the menu used by the secondary links.
+  $secondary_links = variable_get('menu_secondary_links_source', 'user-menu');
+  if ($secondary_links) {
+    $menus = function_exists('menu_get_menus') ? menu_get_menus() : menu_list_system_menus();
+    $variables['secondary_menu_heading'] = $menus[$secondary_links];
+  }
+  else {
+    $variables['secondary_menu_heading'] = '';
+  }
 }
