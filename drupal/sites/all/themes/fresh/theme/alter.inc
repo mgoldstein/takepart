@@ -33,6 +33,11 @@ function fresh_js_alter(&$javascript){
   unset($javascript['sites/all/modules/contrib/colorbox/styles/default/colorbox_default_style.js']);
   unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_load.js']);
   unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_inline.js']);
+  //Needed for this updated version of jquery. It will make sure the correct form.js
+  //is used for inline replacements.
+  if(!isset($javascript['sites/all/modules/contrib/jquery_update/replace/misc/jquery.form.min.js'])) {
+    drupal_add_js(drupal_get_path('module','jquery_update') . '/replace/misc/jquery.form.min.js');
+  }
 
 }
 
