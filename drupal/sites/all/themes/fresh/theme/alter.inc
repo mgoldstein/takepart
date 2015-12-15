@@ -24,19 +24,10 @@ function fresh_page_alter(&$page){
 */
 function fresh_js_alter(&$javascript){
 
-  /* Update our version of jQuery to 2.x */
-  $jquery_path = 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js';
-  $javascript['misc/jquery.js']['data'] = $jquery_path;
-  $javascript['misc/jquery.js']['type'] = 'external';
-  unset($javascript['sites/all/libraries/colorbox/colorbox/jquery.colorbox-min.js']);
-  unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox.js']);
-  unset($javascript['sites/all/modules/contrib/colorbox/styles/default/colorbox_default_style.js']);
-  unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_load.js']);
-  unset($javascript['sites/all/modules/contrib/colorbox/js/colorbox_inline.js']);
-  //Needed for this updated version of jquery. It will make sure the correct form.js
-  //is used for inline replacements.
-  if(!isset($javascript['sites/all/modules/contrib/jquery_update/replace/misc/jquery.form.min.js'])) {
-    drupal_add_js(drupal_get_path('module','jquery_update') . '/replace/misc/jquery.form.min.js');
+  //It will make sure the correct form.js is used for inline replacements.
+  //Some nodes will not add this in time just a forced update
+  if(!isset($javascript['sites/all/modules/contrib/jquery_update/replace/jquery.form/3/jquery.form.min.js'])) {
+    drupal_add_js(drupal_get_path('module','jquery_update'). '/replace/jquery.form/3/jquery.form.min.js');
   }
 
 }

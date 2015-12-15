@@ -172,10 +172,6 @@ function tp_auto_scroll_pager($node){
   /* Add the behaviors */
   drupal_add_js(drupal_get_path('module', 'tp_auto_scroll'). '/js/tp_auto_scroll.js');
 
-  /* will need ajax and form js for inline replacements */
-  drupal_add_library('system', 'drupal.ajax');
-  drupal_add_library('system', 'drupal.form');
-
   /* Return the tag where we want the content to load */
   return theme('html_tag', array(
     'element' => array(
