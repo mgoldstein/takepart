@@ -29,18 +29,12 @@ function base_preprocess_page(&$variables) {
     $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
   }
 
-  drupal_add_js("(function() { 
-    function loadHorizon() 
-    { var s = document.createElement('script'); 
-    s.type = 'text/javascript'; s.async = true; 
-    s.src = location.protocol + '//ak.sail-horizon.com/horizon/v1.js'; 
-    var x = document.getElementsByTagName('script')[0]; 
-    x.parentNode.insertBefore(s, x); }
-    loadHorizon();
-    var oldOnLoad = window.onload;
-    window.onload = function() {
-    if (typeof oldOnLoad === 'function') { oldOnLoad(); }
-    Sailthru.setup({ domain: 'horizon.takepart.com', useStoredTags: false });
-    };
-    })();", array('type' => 'inline', 'scope' => 'header', 'weight' => 0));
+  drupal_add_js('//ak.sail-horizon.com/horizon/v1.js', array('type' => 'external', 'scope' => 'header', 'weight' => 0));
+  drupal_add_js("
+    $(function() { 
+    if (window.Sailthru) { 
+      Sailthru.setup({ domain: 'horizon.takepart.com' });
+    }
+    });
+", array('type' => 'inline', 'scope' => 'header', 'weight' => 0));
 }
