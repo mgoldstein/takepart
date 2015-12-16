@@ -31,7 +31,7 @@ function base_preprocess_page(&$variables) {
 
   drupal_add_js('//ak.sail-horizon.com/horizon/v1.js', array('type' => 'external', 'scope' => 'header', 'weight' => 0));
   drupal_add_js("
-    $(function() { 
+    jQuery(function() { 
     if (window.Sailthru) { 
       Sailthru.setup({ domain: 'horizon.takepart.com' });
     }
