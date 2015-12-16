@@ -5,10 +5,12 @@
  * Implements hook_html_preprocess()
  */
 function base_preprocess_html(&$variables){
-  // Add variables and paths needed for HTML5 and responsive support.
-  $variables['base_path'] = base_path();
-  $variables['path_to_zen'] = drupal_get_path('theme', 'base');
-
+  /* Add shared assets to all tp4 pages */
+  if ($shared_assets = variable_get('shared_assets_path')) {
+    drupal_add_css($shared_assets.'font.css',           array('type' => 'external', 'weight' => -1));
+    drupal_add_css($shared_assets.'takepart_icons.css', array('type' => 'external', 'weight' => -1));
+  }
+  
   // Attributes for html element.
   $variables['html_attributes_array'] = array(
     'lang' => $variables['language']->language,
@@ -82,11 +84,5 @@ function base_preprocess_html(&$variables){
         $variables['classes_array'][] = 'page-panels';
         break;
     }
-  }
-
-  /* Add shared assets to all tp4 pages */
-  if ($shared_assets = variable_get('shared_assets_path')) {
-    drupal_add_css($shared_assets.'font.css',           array('type' => 'external', 'weight' => -1));
-    drupal_add_css($shared_assets.'takepart_icons.css', array('type' => 'external', 'weight' => -1));
   }
 }
