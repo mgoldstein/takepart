@@ -42,5 +42,5 @@ function base_preprocess_page(&$variables) {
     if (typeof oldOnLoad === 'function') { oldOnLoad(); }
     Sailthru.setup({ domain: 'horizon.takepart.com', useStoredTags: false });
     };
-    })();", array('type' => 'inline', 'scope' => 'footer', 'weight' => 5));
+    })();", array('type' => 'inline', 'scope' => 'header', 'weight' => 0));
 }
