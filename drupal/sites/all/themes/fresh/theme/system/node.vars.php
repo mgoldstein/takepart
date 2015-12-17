@@ -24,6 +24,9 @@ function fresh_preprocess_node(&$variables, $hook) {
       if (function_exists($function)) {
         $function($variables, $hook);
       }
+      /* will need ajax and form js for inline replacements */
+      drupal_add_library('system', 'drupal.ajax');
+      drupal_add_library('system', 'drupal.form');
     }
   }
   else {
