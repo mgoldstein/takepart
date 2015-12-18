@@ -228,6 +228,9 @@
     if (Drupal.settings.tpAutoScroll[0]['auto_updates'][url] != undefined) {
       var width = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['width'];
       var height = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['height'];
+      var sttags = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['sailthru_tags'];
+      var stauthors = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['sailthru_authors'];
+      var stdate = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['sailthru_date'];
 
       //ensures we only update if if the metatag exists before
       if ($("meta[property='og:image:width']").length == 1) {
@@ -237,6 +240,16 @@
       //ensures we only update if if the metatag exists before
       if ($("meta[property='og:image:height']").length == 1) {
         $("meta[property='og:image:height']").attr("content", height);
+      }
+
+      if($("meta[name='sailthru.tags']").length == 1) {
+        $("meta[name='sailthru.tags']").attr("content", sttags);
+      }
+      if($("meta[name='sailthru.author']").length == 1) {
+        $("meta[name='sailthru.author']").attr("content", stauthors);
+      }
+      if($("meta[name='sailthru.date']").length == 1) {
+        $("meta[name='sailthru.date']").attr("content", stdate);
       }
     }
 
