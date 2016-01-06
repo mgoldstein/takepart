@@ -141,7 +141,10 @@ h3.video-title{
 }
 
 .bx-wrapper {
-  padding: 0 45px;
+  padding: 0;
+  @include breakpoint($breakpoint-phablet){
+    padding: 0 45px;
+  }
   .bx-viewport {
     background: transparent;
 
@@ -160,10 +163,10 @@ h3.video-title{
         color: #FFFFFF;
         font-size: 14px;
         width: 40px;
-        height: 0;
+        height: 40px;
         top: 0;
         margin-top: 0;
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0,0,0,0.4);
         &.disabled {
           display: block;
           background-color: rgba(0,0,0,0.1);
@@ -171,6 +174,10 @@ h3.video-title{
           &:hover {
             background-color: rgba(0,0,0,0.1);
           }
+        }
+        @include breakpoint($breakpoint-phablet){
+          background-color: rgba(0,0,0,0.5);
+          height: 0;
         }
         @include breakpoint($breakpoint-tablet){
           &:hover {
