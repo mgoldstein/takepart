@@ -7224,7 +7224,6 @@ function tpf_content_campaigns_strongarm() {
     'block-menu-menu-takepart-links' => 0,
     'block-menu-menu-takepart-topics' => 0,
     'block-menu-contagion' => 0,
-
     'block-menu-intel_global_girls' => 0,
     'block-menu_block-1' => 0,
     'block-menu_block-2' => 0,
