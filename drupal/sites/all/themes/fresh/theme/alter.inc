@@ -24,7 +24,8 @@ function fresh_page_alter(&$page){
 */
 function fresh_js_alter(&$javascript){
 
-  /* Update our version of jQuery to 2.x */
+  /* Update our version of jQuery to 2.x
+  jQuery update will not work with other themes. */
   $jquery_path = 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js';
   $javascript['misc/jquery.js']['data'] = $jquery_path;
   $javascript['misc/jquery.js']['type'] = 'external';
