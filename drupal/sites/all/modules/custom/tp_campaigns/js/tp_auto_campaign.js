@@ -72,6 +72,7 @@
   var campaignPreload = function() {
     var imgs = Drupal.settings.campaignPreload;
     window.preloaded = 0;
+
     //If there are no images to preload just load campaignOnload
     if(window.preloaded >= Drupal.settings.campaignPreload.length) {
       campaignOnload();
@@ -87,8 +88,10 @@
 
   var campaignOnload = function() {
     window.preloaded++;
+
     //Check if all the images have been preloaded then let the trays load
-    if(window.preloaded >= Drupal.settings.campaignPreload.length) {
+    if(window.preloaded >= Drupal.settings.campaignPreload.length &&
+      Drupal.settings.campaignItemCount > 0) {
       window.campaignTray = 0;
       $(window).bind('scroll.campaignScroll', function(e) {
         var wrap = $('article.node-campaign-page.view-mode-full'),
