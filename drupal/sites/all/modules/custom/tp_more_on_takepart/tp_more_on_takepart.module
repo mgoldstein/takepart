@@ -39,7 +39,6 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
 		'campaign',
 		'campaign_page',
 		'openpublish_photo_gallery',
-		'openpublish_video',
 		'video',
 		'video_playlist',
 		'action',
@@ -270,7 +269,6 @@ function tp_more_on_takepart_block_view($delta = '') {
 						break;
 					case 'video';
 					case 'video_playlist';
-					case 'openpublish_video';
 						$type = 'i-video-camera';
 						break;
 					case 'campaign_page';
@@ -296,6 +294,23 @@ function tp_more_on_takepart_block_view($delta = '') {
 
 				$field_thumbnail = field_get_items('node', $result, $field);
 				$field_thumbnail = file_load($field_thumbnail[0]['fid']);
+				$img_vars = array(
+					'style_name' => 'homepage_featured_image',
+					'path' => $field_thumbnail->uri,
+					'alt' => $field_promo_headline,
+					'title' => $field_promo_headline,
+				);
+
+				if(module_exists('lazyloader')) {
+					$derivative_uri = image_style_path('homepage_featured_image', $field_thumbnail->uri);
+					$success        = file_exists($derivative_uri) || image_style_create_derivative(image_style_load($style), $field_thumbnail->uri, $derivative_uri);
+
+					$img_vars['path']  = file_create_url($derivative_uri);
+
+					$thumb = theme('lazyloader_image', $img_vars);
+				} else {
+					$thumb = theme('image_style', $img_vars);
+				}
 
 				// Add to the array names after this type
 				${$item['type']}[] = theme('tp_more_on_takepart_article', array(
@@ -304,13 +319,8 @@ function tp_more_on_takepart_block_view($delta = '') {
 						'url' => entity_uri('node', $result),
 						'type' => $type,
 						'promo_type' => 'more_on_takepart_'.$item['type'],
-						'thumbnail' => theme('image_style', array(
-							'style_name' => 'homepage_featured_image',
-							'path' => $field_thumbnail->uri,
-							'alt' => $field_promo_headline,
-							'title' => $field_promo_headline,
-						)),
-				'sponsored' => $field_sponsored,
+						'thumbnail' => $thumb,
+						'sponsored' => $field_sponsored,
           ),
 				));
 			}

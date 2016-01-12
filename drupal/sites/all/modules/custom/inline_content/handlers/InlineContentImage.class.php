@@ -68,7 +68,12 @@ class InlineContentImage extends InlineContentReplacementController {
         'title' => $file->title,
         'alt' => $file->alt
       );
-      $image =  theme('image', $img_vars);
+
+      if(module_exists('lazyloader')) {
+        $image =  theme('lazyloader_image', $img_vars);
+      } else {
+        $image =  theme('image', $img_vars);
+      }
 
       /* Render caption if it exists */
       if($caption = field_get_items('file', $file, 'field_media_caption')){

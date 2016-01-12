@@ -11,15 +11,30 @@ screenshot  = ace-of-base.jpg
 name        = Base
 description = The base theme for TakePart themes
 
-; This theme is compatible with Drupal 7 core. And it is a sub-theme of Zen.
+; This theme is compatible with Drupal 7 core.
 
 core        = 7.x
-base theme  = zen
+
 
 ; add some JavaScripts to the theme.
 scripts[] = js/tpanalytics.js
 scripts[] = js/jquery.tpinfographic.js
 scripts[] = js/tpmodal.jquery.js
+
+; settings
+settings[base_breadcrumb]           = yes
+settings[base_breadcrumb_separator] = ' › '
+settings[base_breadcrumb_home]      = 1
+settings[base_breadcrumb_trailing]  = 0
+settings[base_breadcrumb_title]     = 0
+settings[base_layout]               = base-responsive-sidebars
+settings[base_skip_link_anchor]     = main-menu
+settings[base_skip_link_text]       = Jump to navigation
+settings[base_html5_respond_meta][] = respond
+settings[base_html5_respond_meta][] = html5
+settings[base_html5_respond_meta][] = meta
+settings[base_rebuild_registry]     = 0
+settings[base_wireframes]           = 0
 
 ; For Picture 2.x
 ; While this theme is disabled, the below breakpoints essentially dont do anything

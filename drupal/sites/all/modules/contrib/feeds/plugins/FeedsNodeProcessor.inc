@@ -123,6 +123,7 @@ class FeedsNodeProcessor extends FeedsProcessor {
    * Save a node.
    */
   public function entitySave($entity) {
+    $entity->published_at = $entity->created;
     node_save($entity);
   }
 

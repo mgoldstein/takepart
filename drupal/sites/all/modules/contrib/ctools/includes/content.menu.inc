@@ -75,6 +75,7 @@ function _ctools_buildQuery($entity_type, $entity_info, $match = NULL, $match_op
   if (isset($match)) {
     if (isset($label_key)) {
       $query->condition($base_table . '.' . $label_key, '%' . $match . '%', $match_operator);
+      $query->orderBy('created', 'DESC');
     }
     // This should never happen, but double check just in case.
     else {

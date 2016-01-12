@@ -30,7 +30,7 @@ function pm_sailthru_metatag_config_default_alter(array &$configs) {
 	 case 'node':
 	   $config->config += array(
 		'sailthru.tags' => array(
-		  'value' => '[sailthru_metatags:tags_type]'
+		  'value' => '[sailthru_metatags:tags_type]',
 		),
 		'sailthru.author' => array(
 		  'value' => '[sailthru_metatags:author]',

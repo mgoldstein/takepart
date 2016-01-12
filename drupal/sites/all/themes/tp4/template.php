@@ -2432,33 +2432,38 @@ function tp4_search_api_page_results(array &$variables) {
 
         foreach ($results['results'] as $item) {
 	        $result = $entities[$item['id']];
-             $field_promo_title = field_get_items('node', $result, 'field_promo_headline');
-             $field_promo_title = $field_promo_title[0]['value'];
-	        if (empty($field_promo_title)) {
-	          $field_promo_title = $result->title;
-	        }
+          if(!empty($result)) {
+            $field_promo_title = field_get_items('node', $result, 'field_promo_headline');
+            if (empty($field_promo_title)) {
+	            $field_promo_title = $result->title;
+	          } else {
+              $field_promo_title = $field_promo_title[0]['value'];
+            }
+          } else {
+             $field_promo_title = $result->title;
+          }
 
-			$field_thumbnail = field_get_items('node',$result,'field_thumbnail');
-			$field_thumbnail = file_load($field_thumbnail[0]['fid']);
+		      $field_thumbnail = field_get_items('node',$result,'field_thumbnail');
+		      $field_thumbnail = file_load($field_thumbnail[0]['fid']);
 
-			$field_promo_text = field_get_items('node',$result,'field_promo_text');
-			$text = $result->excerpt ? $result->excerpt : $field_promo_text[0]['value'];
+		      $field_promo_text = field_get_items('node',$result,'field_promo_text');
+		      $text = $result->excerpt ? $result->excerpt : $field_promo_text[0]['value'];
 
-	        $output .= theme('search_result', array(
-	        	'result' => array(
-		        	'title' => $field_promo_title,
-		        	'url' => entity_uri($index->item_type, $result),
-		        	'snippet' => $text,
-					'type' => $types[$result->type]->name,
-					'thumbnail' => theme('image_style', array(
-						'style_name' => 'topic_thumbnail',
-						'path' => $field_thumbnail->uri,
-						'alt' => $field_promo_title,
-						'title' => $field_promo_title,
-					)),
-	        	),
-	        ));
-		}
+          $output .= theme('search_result', array(
+        	    'result' => array(
+	        	    'title' => $field_promo_title,
+	              'url' => entity_uri($index->item_type, $result),
+	        	    'snippet' => $text,
+				        'type' => $types[$result->type]->name,
+				        'thumbnail' => theme('image_style', array(
+					        'style_name' => 'topic_thumbnail',
+					        'path' => $field_thumbnail->uri,
+					        'alt' => $field_promo_title,
+					        'title' => $field_promo_title,
+				        )),
+        	    ),
+            ));
+		    }
     } else {
         $output .= render(entity_view($index->entity_type, $entities, $variables['view_mode']));
     }
@@ -2529,4 +2534,3 @@ function _tp4_sponsor(&$variables){
 	}
 
 }
-

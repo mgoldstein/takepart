@@ -445,7 +445,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 72,
     ),
   );
 
@@ -655,107 +655,6 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_display_tag'
-  $field_instances['node-openpublish_photo_gallery-field_display_tag'] = array(
-    'bundle' => 'openpublish_photo_gallery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 10,
-      ),
-      'embed' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_display_tag',
-    'label' => 'Display Tag',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'content_taxonomy_autocomplete_new_terms' => 'deny',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 60,
-    ),
-  );
-
   // Exported field_instance: 'node-openpublish_photo_gallery-field_free_tag'
   $field_instances['node-openpublish_photo_gallery-field_free_tag'] = array(
     'bundle' => 'openpublish_photo_gallery',
@@ -947,7 +846,7 @@ Change this only if you know what you are doing.',
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media_2x_widget_plupload',
+      'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
           'jwplatform-channel' => 0,
@@ -972,7 +871,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_2x_widget_plupload',
+      'type' => 'media_generic',
       'weight' => 42,
     ),
   );
@@ -1184,131 +1083,7 @@ Change this only if you know what you are doing.',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 15,
-    ),
-  );
-
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_multi_page_campaign'
-  $field_instances['node-openpublish_photo_gallery-field_multi_page_campaign'] = array(
-    'bundle' => 'openpublish_photo_gallery',
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'context_field',
-        'settings' => array(),
-        'type' => 'context_field_context',
-        'weight' => 4,
-      ),
-      'embed' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'context_field',
-        'settings' => array(),
-        'type' => 'context_field_context',
-        'weight' => 2,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 27,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_multi_page_campaign',
-    'label' => 'Multi Page Campaign',
-    'required' => 0,
-    'settings' => array(
-      'allowed_blocks' => array(
-        'Boxes for Box' => 0,
-        'Boxes for Screaming Headline' => 0,
-        'Boxes for View Box' => 0,
-        'addthis' => 0,
-        'boxes' => 0,
-        'comment' => 0,
-        'context_related_menu' => 0,
-        'context_ui' => 0,
-        'devel' => 0,
-        'diff' => 0,
-        'menu' => 0,
-        'node' => 0,
-        'search' => 0,
-        'search_api_facets' => 0,
-        'shortcut' => 0,
-        'system' => 0,
-        'user' => 0,
-        'views' => 0,
-      ),
-      'default_context' => 'multi_page_comapaign_default_context',
-      'use_default' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'context_field',
-      'settings' => array(
-        'form_element' => array(
-          'allow_create' => 0,
-          'category' => 'campaign',
-        ),
-      ),
-      'type' => 'context_field_select',
-      'weight' => 63,
+      'weight' => 7,
     ),
   );
 
@@ -1443,7 +1218,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -1548,7 +1323,7 @@ Change this only if you know what you are doing.',
         'widget_setting' => 'bob',
       ),
       'type' => 'views_field',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -1852,207 +1627,6 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_related_actions'
-  $field_instances['node-openpublish_photo_gallery-field_related_actions'] = array(
-    'bundle' => 'openpublish_photo_gallery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'node_reference',
-        'settings' => array(),
-        'type' => 'node_reference_default',
-        'weight' => 8,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_related_actions',
-    'label' => 'Related Actions',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'node_reference',
-      'settings' => array(
-        'autocomplete_match' => 'contains',
-        'autocomplete_path' => 'node_reference/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'node_reference_autocomplete',
-      'weight' => 56,
-    ),
-  );
-
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_related_content'
-  $field_instances['node-openpublish_photo_gallery-field_related_content'] = array(
-    'bundle' => 'openpublish_photo_gallery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Users can relate this node to one or more other nodes. These nodes are displayed in a block or inset on the Gallery page, atop an automatically-generated list of Related Content.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_related_content',
-    'label' => 'Related Content',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'node_reference',
-      'settings' => array(
-        'autocomplete_match' => 'contains',
-        'autocomplete_path' => 'node_reference/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'node_reference_autocomplete',
-      'weight' => 54,
-    ),
-  );
-
   // Exported field_instance: 'node-openpublish_photo_gallery-field_related_stories'
   $field_instances['node-openpublish_photo_gallery-field_related_stories'] = array(
     'bundle' => 'openpublish_photo_gallery',
@@ -2155,7 +1729,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 52,
+      'weight' => 8,
     ),
   );
 
@@ -2359,212 +1933,6 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_suggest_actions'
-  $field_instances['node-openpublish_photo_gallery-field_suggest_actions'] = array(
-    'bundle' => 'openpublish_photo_gallery',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 7,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_suggest_actions',
-    'label' => 'Suggest Related Actions?',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 55,
-    ),
-  );
-
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_suggest_content'
-  $field_instances['node-openpublish_photo_gallery-field_suggest_content'] = array(
-    'bundle' => 'openpublish_photo_gallery',
-    'default_value' => array(
-      0 => array(
-        'value' => 1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 9,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_suggest_content',
-    'label' => 'Suggest Related Content?',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 53,
-    ),
-  );
-
   // Exported field_instance: 'node-openpublish_photo_gallery-field_tab_action_override'
   $field_instances['node-openpublish_photo_gallery-field_tab_action_override'] = array(
     'bundle' => 'openpublish_photo_gallery',
@@ -2663,7 +2031,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 13,
+      'weight' => 9,
     ),
   );
 
@@ -2896,114 +2264,6 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_topic_box'
-  $field_instances['node-openpublish_photo_gallery-field_topic_box'] = array(
-    'bundle' => 'openpublish_photo_gallery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 20,
-      ),
-      'embed' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'vidpop_map' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_topic_box',
-    'label' => 'Topic Box',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'term_reference_tree',
-      'settings' => array(
-        'cascading_selection' => 0,
-        'filter_view' => '',
-        'leaves_only' => 0,
-        'max_depth' => '',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'parent_term_id' => '',
-        'select_parents' => 0,
-        'start_minimized' => 0,
-        'token_display' => '',
-        'track_list' => 0,
-      ),
-      'type' => 'term_reference_tree',
-      'weight' => 66,
-    ),
-  );
-
   // Exported field_instance: 'node-openpublish_photo_gallery-field_tp_campaign_show_title'
   $field_instances['node-openpublish_photo_gallery-field_tp_campaign_show_title'] = array(
     'bundle' => 'openpublish_photo_gallery',
@@ -3103,7 +2363,7 @@ Change this only if you know what you are doing.',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -3117,32 +2377,24 @@ Change this only if you know what you are doing.',
 Change this only if you know what you are doing.');
   t('Display Cover');
   t('Display TAB Banner');
-  t('Display Tag');
   t('Free Tags');
   t('Gallery Images');
   t('Inline Replacements');
   t('Main Image');
-  t('Multi Page Campaign');
   t('Permanent Title');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');
   t('Recommend size is 620x467');
-  t('Related Actions');
-  t('Related Content');
   t('Related Stories');
   t('Remove Headline from Display');
   t('Series');
   t('Slideshow');
   t('Sub Head');
-  t('Suggest Related Actions?');
-  t('Suggest Related Content?');
   t('TAB Action Overrides');
   t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('Thumbnail');
   t('Topic');
-  t('Topic Box');
-  t('Users can relate this node to one or more other nodes. These nodes are displayed in a block or inset on the Gallery page, atop an automatically-generated list of Related Content.');
 
   return $field_instances;
 }

@@ -96,6 +96,7 @@ function tp4_support_block_view($delta = ''){
   }
   return $block;
 }
+
 /**
  * Implements hook_block_configure
  */
@@ -261,7 +262,7 @@ function tp4_support_preprocess_page(&$variables) {
   }
 
   //by default set field_topic to others 115133
-  if (empty($variables['node']->field_topic)) {
+  if ((!empty($variables['node'])) && (empty($variables['node']->field_topic)) ) {
     $variables['node']->field_topic = array(
       'und' => array(
         array(
@@ -746,7 +747,7 @@ function tp4_support_page_delivery_callback_alter(&$callback) {
  * If homepage content is empty, return a 500 status code to prevent CDN caching.
  */
 function tp4_support_deliver_homepage($page_callback_result) {
-  if (empty($page_callback_result['content'])) {
+  if (empty($page_callback_result)) {
     drupal_add_http_header('Content-Type', 'text/plain');
     drupal_add_http_header('Status', '500 Internal Server Error');
   }
