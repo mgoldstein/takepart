@@ -37,7 +37,7 @@ if ($conf['memcache_servers'] !== FALSE) {
     'lock_inc' => 'sites/all/modules/contrib/memcache/memcache-lock.inc',
     'memcache_stampede_protection' => TRUE,
     'memcache_servers' => array(
-	 'localhost:11211' => 'default',
+   'localhost:11211' => 'default',
     ),
     'memcache_key_prefix' => 'local',
   );
@@ -141,7 +141,7 @@ $conf += array('participant_api_default_account' => 'takepart');
 
 // reverse proxy support to make sure the real ip gets logged by Drupal
 // The next line is commented out inside settings.php
-$conf['reverse_proxy'] = TRUE;
+/*$conf['reverse_proxy'] = TRUE;
 if (!is_array($conf['reverse_proxy_addresses'])) {
   $conf['reverse_proxy_addresses'] = array();
 }
@@ -164,4 +164,4 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
      break;
    }
  }
-}
+}*/
