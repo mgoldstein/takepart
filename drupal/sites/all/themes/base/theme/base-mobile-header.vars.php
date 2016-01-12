@@ -13,6 +13,6 @@ function base_preprocess_base_mobile_header(&$variables){
   $variables['logo'] = $logo;
 
   /* Grab the search form */
-  $search = module_invoke('search_api_page', 'block_view', '2');
+  $search = module_invoke('search_api_page', 'block_view', '4');
   $variables['search'] = drupal_render($search['content']);
 }
