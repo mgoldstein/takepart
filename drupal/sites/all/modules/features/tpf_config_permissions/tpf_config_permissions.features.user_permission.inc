@@ -110,6 +110,15 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'pathauto',
   );
 
+  // Exported permission: 'administer publication date'.
+  $permissions['administer publication date'] = array(
+    'name' => 'administer publication date',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'publication_date',
+  );
+
   // Exported permission: 'administer search'.
   $permissions['administer search'] = array(
     'name' => 'administer search',
@@ -190,6 +199,16 @@ function tpf_config_permissions_user_default_permissions() {
       'authenticated user' => 'authenticated user',
     ),
     'module' => 'search',
+  );
+
+  // Exported permission: 'set any published on date'.
+  $permissions['set any published on date'] = array(
+    'name' => 'set any published on date',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'publication_date',
   );
 
   // Exported permission: 'skip comment approval'.

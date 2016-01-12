@@ -100,6 +100,11 @@ h2.playlist-title{
   margin-bottom: 10px;
   margin-top: 0 !important;
   text-transform: lowercase;
+  .playlist-count {
+    font-size: 13px;
+    padding-left: 8px;
+    color: #7F7F7F;
+  }
 }
 
 body .bx-wrapper .bx-viewport ul.video-playlist {
@@ -237,6 +242,9 @@ body.campaign-display {
     h2.playlist-title,
     h3.video-title {
       color: #FFFFFF;
+      span {
+        color: #FFFFFF;
+      }
     }
   }
   .card.light-background {

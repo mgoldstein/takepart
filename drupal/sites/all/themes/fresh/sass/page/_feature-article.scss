@@ -16,6 +16,11 @@
   .navbar-fat {
     border-bottom: none;
   }
+  .sticky-wrapper{
+    @include breakpoint($breakpoint-phablet){
+      z-index: 2;
+    }
+  }
 }
 
 .feature_article-wrapper{
@@ -63,7 +68,7 @@
       }
 
     @include breakpoint($breakpoint-tablet){
-      .main-media:after {
+      .feature-image:after {
         content:'';
         position:absolute;
         left:0;
@@ -174,7 +179,7 @@
       }
     .section.top {
       max-width: 750px;
-      margin: 65px auto 0;
+      margin: 75px auto 0;
       padding: 0 15px;
       .topic-box-wrapper {
         margin-bottom: 10px;
@@ -211,6 +216,11 @@
       }
       blockquote.pullquote.text-center {
         padding-top: 15px;
+        margin: 0 auto;
+        max-width: 70%;
+        @include breakpoint($breakpoint-desktop) {
+          max-width: 620px;
+        }
       }
       /*Image inline-replacements*/
       .inline-image-wrapper {
@@ -388,15 +398,13 @@
       .article-header {
         position: relative;
         .caption {
-          padding: 0 15px;
-          p {
-            position: absolute;
-            top: 10px;
-            @include breakpoint($breakpoint-desktop) {
+          padding: 10px 15px;
+          left: 13%;
+          position: absolute;
+          max-width: 780px;
+          @include breakpoint($breakpoint-desktop) {
               left: 20%;
-            }
-            left: 13%;
-            padding: 0;
+              max-width: 820px;
           }
         }
         .title-block {
@@ -405,7 +413,8 @@
           margin: 0 35px 0 0;
           bottom: 50px;
          @include breakpoint($breakpoint-desktop) {
-           left: 20%;
+            bottom: 75px;
+            left: 20%;
           }
           left: 13%;
           max-width: 780px;

@@ -112,11 +112,19 @@ function fresh_preprocess_node__autoload(&$variables) {
         }
 
         $variables['media'] = '<div class="main-media">';
+        if($node_type == 'feature_article') {
+          $variables['media'] .= '<div class = "feature-image">';
+        }
+
         $variables['media'] .= theme('image', array(
           'path' => $image_url, 'attributes' => array(
             'class' => 'main-image'
           )
         ));
+
+        if($node_type == 'feature_article') {
+          $variables['media'] .= '</div>';
+        }
 
         /* Render a caption if it exists */
         if ($caption = field_get_items('file', $file, 'field_media_caption')) {

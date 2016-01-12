@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Auto scroll for content on TakePart
  */
@@ -68,6 +69,14 @@ function tp_auto_scroll_handler($node, $view_mode = 'full'){
 
 }
 
+/*
+ * Alter the node query to include the publication date
+ */
+function tp_auto_scroll_query_NodeQuery_alter(QueryAlterableInterface $query){
+  $query->leftJoin('publication_date', 'p', 'node.nid = p.nid');
+  $query->orderBy('published_at', 'DESC');
+}
+
 /**
  * Where we want autoscroll to show
  */
@@ -91,7 +100,8 @@ function tp_auto_scroll_pager($node){
     ->propertyCondition('status', 1)
     ->entityCondition('bundle', array('openpublish_article' , 'video' , 'video_playlist' , 'feature_article'), 'IN')
     ->propertyCondition('nid', $node->nid, '<>')
-    ->propertyOrderBy('changed', 'DESC')
+    ->addTag('NodeQuery')
+    //->propertyOrderBy('changed', 'DESC')
     ->range(0, $autoscroll_limit);
 
   //only add field condition if topic is set otherwise it will pull latest
@@ -100,7 +110,6 @@ function tp_auto_scroll_pager($node){
   }
 
   $results = $query->execute();
-
   $articles = array();
   //original article
 

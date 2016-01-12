@@ -103,6 +103,41 @@ $conf['bluehornet_api_accounts'] += array(
 );
 $conf += array('bluehornet_default_account' => 'takepart');
 
+// Participant API accounts
+if (!array_key_exists('participant_api_accounts', $conf)) {
+  $conf['participant_api_accounts'] = array();
+}
+switch(ENVIRONMENT) {
+  case 'development';
+    $domain = 'dev-api.participant.com';
+  break;
+  case 'qa':
+    $domain = 'qa-api.participant.com';
+  break;
+  case 'stage':
+    $domain = 'stage-api.participant.com';
+  break;
+  case 'production':
+  default:
+    $domain = 'api.participant.com';
+  break;
+}
+$conf['participant_api_accounts'] += array(
+  'takepart' => array(
+    'domain' => $domain,
+    'key' => 'db73d53413afcf95324c6d2c0f584cfb',
+  ),
+  'pivot' => array(
+    'domain' => $domain,
+    'key' => 'db73d53413afcf95324c6d2c0f584cfb',
+  ),
+  'participant' => array(
+    'domain' => $domain,
+    'key' => 'db73d53413afcf95324c6d2c0f584cfb',
+  ),
+);
+$conf += array('participant_api_default_account' => 'takepart');
+
 /**
  * Don't use private IPs
  */
