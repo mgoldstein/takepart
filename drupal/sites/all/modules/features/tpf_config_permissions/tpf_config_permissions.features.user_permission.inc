@@ -211,6 +211,27 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'publication_date',
   );
 
+  // Exported permission: 'show format selection for field_collection_item'.
+  $permissions['show format selection for field_collection_item'] = array(
+    'name' => 'show format selection for field_collection_item',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'better_formats',
+  );
+
+  // Exported permission: 'show format selection for inline_content'.
+  $permissions['show format selection for inline_content'] = array(
+    'name' => 'show format selection for inline_content',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'better_formats',
+  );
+
   // Exported permission: 'skip comment approval'.
   $permissions['skip comment approval'] = array(
     'name' => 'skip comment approval',
