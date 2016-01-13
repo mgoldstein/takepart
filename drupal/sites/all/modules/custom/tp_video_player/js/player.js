@@ -432,18 +432,32 @@
         //does for each slider
         all_slides.each(function(index) {
           var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
-          var height = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
+          if(window.innerWidth < 480) {
+            var height = 40;
+            var imgh = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
+            var toptemp = (imgh/2)-20;
+          } else {
+            var height = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
+            var toptemp = 0;
+          }
 
-          $('.bx-controls a', bxslider_wrapper).css('height', height);
+          $('.bx-controls a', bxslider_wrapper).css({'height': height,'top': toptemp});
 
         });
       });
       setTimeout(function(){
         var bxslider_wrapper = $(window['bxslider_' + index]).parent().parent();
 
-        var height = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
+        if(window.innerWidth < 480) {
+          var height = 40;
+          var imgh = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
+          var toptemp = (imgh/2)-20;
+        } else {
+          var height = $('.video-item[data-video-number="0"] img', bxslider_wrapper).height();
+          var toptemp = 0;
+        }
 
-        $('.bx-controls a', bxslider_wrapper).css('height', height);
+        $('.bx-controls a', bxslider_wrapper).css({'height': height,'top': toptemp});
 
         //Mobile titles are too long so we are ellipissississing them
         if(window.innerWidth <= 480) {

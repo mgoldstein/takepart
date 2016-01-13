@@ -147,8 +147,10 @@ function tp_ads_preprocess_page(&$vars) {
     }
 
     //loads the bg skin takeover from boxes
-    //Do not load on feature article
-    if($vars['node']->type != 'feature_article') {
+    //Do not load on fresh theme - on hold for now
+    // if($theme != 'fresh') {
+    // Do not load on feature article
+    if ($vars['node']->type != 'feature_article') {
       $takeover = boxes_box_load('bg_skin_sponsor');
     }
 

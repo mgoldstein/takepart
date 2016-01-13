@@ -37,13 +37,14 @@ if ($conf['memcache_servers'] !== FALSE) {
     'lock_inc' => 'sites/all/modules/contrib/memcache/memcache-lock.inc',
     'memcache_stampede_protection' => TRUE,
     'memcache_servers' => array(
-	 'localhost:11211' => 'default',
+   'localhost:11211' => 'default',
     ),
     'memcache_key_prefix' => 'local',
   );
 }
 
 // HTTPS
+$conf['https'] = TRUE;
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
   $_SERVER['HTTPS'] = 'on';
 }
@@ -114,7 +115,7 @@ switch(ENVIRONMENT) {
   case 'qa':
     $domain = 'qa-api.participant.com';
   break;
-  case 'stage':
+  case 'staging':
     $domain = 'stage-api.participant.com';
   break;
   case 'production':
@@ -138,24 +139,29 @@ $conf['participant_api_accounts'] += array(
 );
 $conf += array('participant_api_default_account' => 'takepart');
 
-/**
- * Don't use private IPs
- */
-if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
-  $ips = $_SERVER['HTTP_X_FORWARDED_FOR'];
-  $ips = explode ( ',', $ips);
-  foreach($ips as $ip){
-    $ip_start = (float) substr($ip, 0, 6);
-    if($ip_start >= 172.16 && $ip_start <= 172.31){
-      break;
-    }
-    elseif (!strpos($ip, '10.') ||
-        !strpos($ip, '192.168.') ||
-        !strpos($ip, '169.254.'
-    )) {
-      $conf['reverse_proxy_addresses'][] = $ip;
-    } else {
-      break;
-    }
-  }
+// reverse proxy support to make sure the real ip gets logged by Drupal
+// The next line is commented out inside settings.php
+/*$conf['reverse_proxy'] = TRUE;
+if (!is_array($conf['reverse_proxy_addresses'])) {
+  $conf['reverse_proxy_addresses'] = array();
 }
+if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+ $ips = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+ $ips = array_map('trim', $ips);
+ // Add REMOTE_ADDR to the X-Forwarded-For list
+ //if it is 10. we should add it to the list of reverse proxy addresses so that ip_address will ignore it.
+ $ips[] = $_SERVER['REMOTE_ADDR'];
+ // Work backwards through the list of IPs, adding 10. addresses to the proxy list
+ //  but stop at the first non-10. address we find.
+ $ips = array_reverse($ips);
+ foreach ($ips as $ip) {
+   if (strpos($ip, '10.') === 0) {
+     if (!in_array($ip, $conf['reverse_proxy_addresses'])) {
+       $conf['reverse_proxy_addresses'][] = $ip;
+     }
+   }
+   else {
+     break;
+   }
+ }
+}*/

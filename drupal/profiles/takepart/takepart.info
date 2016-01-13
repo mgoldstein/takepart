@@ -30,9 +30,7 @@ dependencies[] = statistics
 
 ; Contrib
 
-dependencies[] = addthis
-dependencies[] = apps
-dependencies[] = comment_notify
+
 dependencies[] = conditional_styles
 dependencies[] = context
 dependencies[] = ctools
@@ -46,17 +44,14 @@ dependencies[] = flag
 dependencies[] = field_group
 dependencies[] = imce
 dependencies[] = imce_wysiwyg
-dependencies[] = nodeblock
 dependencies[] = nodeconnect
 dependencies[] = nodequeue
-dependencies[] = openidadmin
 dependencies[] = pathauto
 dependencies[] = node_reference
 dependencies[] = strongarm
 dependencies[] = token
 dependencies[] = views
 dependencies[] = views_ui
-dependencies[] = views_content
 dependencies[] = wysiwyg
 dependencies[] = xmlsitemap
 
@@ -65,36 +60,4 @@ libraries[ckeditor][download][url] = http://download.cksource.com/CKEditor/CKEdi
 libraries[colorbox][download][type] = get
 libraries[colorbox][download][url] = http://colorpowered.com/colorbox/colorbox.zip
 
-dependencies[] = phase2_profile
-dependencies[] = openpublish_article
-dependencies[] = openpublish_author
-dependencies[] = openpublish_blog_post
-dependencies[] = openpublish_media
-dependencies[] = openpublish_section_fronts
-dependencies[] = openpublish_site_page
-
-; TakePart Features
-
-dependencies[] = takepart_action
-dependencies[] = takepart_article
-dependencies[] = takepart_audio
-dependencies[] = takepart_author
-dependencies[] = takepart_blog
-dependencies[] = takepart_campaign
-dependencies[] = takepart_custom
-dependencies[] = takepart_default_content
-dependencies[] = takepart_flag
-dependencies[] = takepart_gallery
-dependencies[] = takepart_group
-dependencies[] = takepart_image_media_asset
-dependencies[] = takepart_page
-dependencies[] = takepart_promo
-dependencies[] = takepart_quick_study
-dependencies[] = takepart_rotator_slide
-dependencies[] = takepart_search
-dependencies[] = takepart_topic_front
-dependencies[] = takepart_video
-
-; TakePart Modules
-dependencies[] = newsletter_campaign
 

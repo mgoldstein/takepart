@@ -10,21 +10,6 @@
 function tp_flashcards_block_info() {
   $blocks = array();
 
-  $blocks['flashcard_related_content'] = array(
-    'info' => t('Flashcard Related Content'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
-  $blocks['flashcard_get_more'] = array(
-    'info' => t('Flashcard Get More'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
-  $blocks['flashcard_comments'] = array(
-    'info' => t('Flashcard Comments'),
-    'cache' => DRUPAL_CACHE_PER_PAGE,
-  );
-
   return $blocks;
 }
 
@@ -33,21 +18,6 @@ function tp_flashcards_block_info() {
  */
 function tp_flashcards_block_view($delta = '') {
   $block = array();
-
-  switch ($delta) {
-    case 'flashcard_related_content':
-      $block['content'] = _tp_flashcards_related_content_block();
-      break;
-
-    case 'flashcard_get_more':
-      $block['subject'] = 'Get More';
-      $block['content'] = _tp_flashcards_get_more_block();
-      break;
-
-    case 'flashcard_comments':
-      $block['content'] = _tp_flashcards_comments_block();
-      break;
-  }
 
   return $block;
 }

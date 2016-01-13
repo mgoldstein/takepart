@@ -24,6 +24,9 @@ function fresh_preprocess_node(&$variables, $hook) {
       if (function_exists($function)) {
         $function($variables, $hook);
       }
+      /* will need ajax and form js for inline replacements */
+      drupal_add_library('system', 'drupal.ajax');
+      drupal_add_library('system', 'drupal.form');
     }
   }
   else {
@@ -189,7 +192,7 @@ function fresh_preprocess_node__autoload(&$variables) {
 
     /* Comments */
     $url = url('node/' . $variables['node']->nid, array('absolute' => true));
-    $variables['comments'] = theme('fresh_fb_comments', array('url' => $url));
+    $variables['comments'] = theme('fresh_fb_comments', array('url' => $url, 'nid' => $variables['node']->nid));
 
     $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
 

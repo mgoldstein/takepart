@@ -255,9 +255,8 @@ function takepart_omniture_campaign($nid) {
         } else {
             $campaign_name = $campaign_context_name;
         }
-    } else if ($node->type == 'takepart_campaign') {
-        $campaign_name = $node->title;
-    } else {
+    } 
+    else {
         $campaign_name = '';
     }
     return $campaign_name;

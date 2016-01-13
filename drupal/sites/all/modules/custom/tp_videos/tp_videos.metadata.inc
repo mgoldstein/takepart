@@ -104,19 +104,20 @@ function tp_videos_parse_wrapper_uri($uri) {
 }
 
 function tp_videos_fetch_youtube_video_length($token) {
-
-  $url = "http://gdata.youtube.com/feeds/api/videos/{$token}";
+  $api_key = variable_get('tp_youtubeapi_key','');
+  $url = "https://www.googleapis.com/youtube/v3/videos?id={$token}&key={$api_key}&part=contentDetails";
+  unset($api_key);
   $response = drupal_http_request($url);
   if ($response->code == 200) {
 
-    $dom = new SimpleXMLElement($response->data);
-    $dom->registerXPathNamespace('media', 'http://search.yahoo.com/mrss/');
-    $dom->registerXPathNamespace('yt', 'http://gdata.youtube.com/schemas/2007');
+    $data = json_decode($response->data);
 
-    $elements = $dom->xpath('//media:group/yt:duration[@seconds]');
-    if ($elements !== FALSE) {
-      $element = reset($elements);
-      return intval($element['seconds'] . '');
+    if (isset($data->items[0]->contentDetails->duration) && !empty($data->items[0]->contentDetails->duration)) {
+      $duration = $data->items[0]->contentDetails->duration;
+      $time = new DateTime('@0');
+      $time->add(new DateInterval($duration));
+      $timesecs = $time->format('H:i:s');
+      return strtotime("1970-01-01 $timesecs UTC");
     }
   }
   return 0;

@@ -37,28 +37,28 @@
               /* Not returning a json object (Drupal is slow at that) so let's convert it here */
               data = jQuery.parseJSON(data);
 
+              /* Append ajax settings */
+              jQuery.extend(Drupal.settings, data.settings);
+
               /* Create a new event in the DDL to be used when the user scolls to the article */
               digitalData.event.push(data.ddl);
 
               /* Return Article */
               $('#next-article').before(data.output);
 
+              /* Append Ajax behaviors */
+              if('function' === typeof Drupal.behaviors.AJAX.attach) {
+                Drupal.behaviors.AJAX.attach(document, Drupal.settings);
+              }
+
               // init video players for auto-loaded content
               if ('function' === typeof Drupal.behaviors.tp_video_player.attach) {
                 Drupal.behaviors.tp_video_player.attach();
               }
 
-              // Update fb_comments on load
-		    if(typeof FB != 'undefined') {
-		      FB.XFBML.parse();
-		    }
-
               // Load comments box on button click for mobile display
               $('a.comments-count').once('FBComments', function () {
                 $('a.comments-count').on('click', function(e){
-			   if(typeof FB != 'undefined') {
-			     FB.XFBML.parse();
-			   }
                   $(this).siblings('.fb-comments').attr('href', window.location.href).show();
                   $(this).hide();
                   e.preventDefault();
@@ -228,6 +228,9 @@
     if (Drupal.settings.tpAutoScroll[0]['auto_updates'][url] != undefined) {
       var width = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['width'];
       var height = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['height'];
+      var sttags = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['sailthru_tags'];
+      var stauthors = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['sailthru_authors'];
+      var stdate = Drupal.settings.tpAutoScroll[0]['auto_updates'][url]['sailthru_date'];
 
       //ensures we only update if if the metatag exists before
       if ($("meta[property='og:image:width']").length == 1) {
@@ -237,6 +240,16 @@
       //ensures we only update if if the metatag exists before
       if ($("meta[property='og:image:height']").length == 1) {
         $("meta[property='og:image:height']").attr("content", height);
+      }
+
+      if($("meta[name='sailthru.tags']").length == 1) {
+        $("meta[name='sailthru.tags']").attr("content", sttags);
+      }
+      if($("meta[name='sailthru.author']").length == 1) {
+        $("meta[name='sailthru.author']").attr("content", stauthors);
+      }
+      if($("meta[name='sailthru.date']").length == 1) {
+        $("meta[name='sailthru.date']").attr("content", stdate);
       }
     }
 
@@ -255,6 +268,7 @@
       if(typeof(digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id){
         digitalData.page.pageInfo = digitalData.event[i].eventInfo.page.pageInfo;
         digitalData.page.pageNumber = digitalData.event[i].eventInfo.autoloadCount;
+        digitalData.category = digitalData.event[i].eventInfo.category;
         _satellite.track('clear_vars');
 	    setTimeout(function(){ _satellite.track('autoload'); }, 1000);
         return;

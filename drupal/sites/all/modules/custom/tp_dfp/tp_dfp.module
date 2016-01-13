@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Google Doubleclick for Publishers integration with TakePart
@@ -57,13 +58,9 @@ function tp_dfp_node_presave($node) {
         $destination_path = drupal_get_path_alias('node/'. $node->nid);
         $variables['destination_url'] = $destination_base. '/'. $destination_path;
 
-
         switch($node->type){
           case 'openpublish_photo_gallery';
             $icon = 'i-photo-camera';
-            break;
-          case 'openpublish_video';
-            $icon = 'i-video-camera';
             break;
           default:
             $icon = 'null';

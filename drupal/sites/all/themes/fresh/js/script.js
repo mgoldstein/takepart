@@ -93,7 +93,7 @@
         if($(window).width() < 768){
           /* Show search field */
           var $body = $('body');
-          $('.header-style-1 .toggle-search').click(function(){
+          $('#header .toggle-search').click(function(){
             if ($body.hasClass('mobile-search-show')) {
               $body.removeClass("mobile-search-show" );
             }else{
