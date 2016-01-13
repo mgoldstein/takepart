@@ -363,7 +363,7 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
     0 => array(
       '#markup' => '<div class="search-toggle"></div>',
     ),
-    1 => module_invoke('search_api_page', 'block_view', '2'),
+    1 => module_invoke('search_api_page', 'block_view', '4'),
   );
 
   // replace some things with https:// if we're using iframes
