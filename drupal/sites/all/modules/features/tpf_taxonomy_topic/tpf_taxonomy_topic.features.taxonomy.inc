@@ -17,5 +17,13 @@ function tpf_taxonomy_topic_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => -2,
     ),
+    'topic_box' => array(
+      'name' => 'Topic Box',
+      'machine_name' => 'topic_box',
+      'description' => 'Topic Box Badges',
+      'hierarchy' => 1,
+      'module' => 'taxonomy',
+      'weight' => 1,
+    ),
   );
 }
