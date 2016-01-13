@@ -356,14 +356,14 @@ function template_preprocess_tp4_support_slim_nav(&$variables) {
   $slimnav = menu_tree_all_data('menu-megamenu', $link = NULL, $max_depth = 1);
   menu_tree_add_active_path($slimnav);
   $variables['slimnav'] = drupal_render(menu_tree_output($slimnav));
-
+  $block_delta = variable_get('search_api_page_block_delta',2);
   $variables['search'] = array(
     '#prefix' => '<div class="search">',
     '#suffix' => '</div>',
     0 => array(
       '#markup' => '<div class="search-toggle"></div>',
     ),
-    1 => module_invoke('search_api_page', 'block_view', '4'),
+    1 => module_invoke('search_api_page', 'block_view', $block_delta),
   );
 
   // replace some things with https:// if we're using iframes
