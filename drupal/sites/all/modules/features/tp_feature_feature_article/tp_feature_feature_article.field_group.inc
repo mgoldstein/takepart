@@ -83,10 +83,9 @@ function tp_feature_feature_article_field_group_info() {
       0 => 'field_admin_tag',
       1 => 'field_free_tag',
       2 => 'field_series',
-      3 => 'field_significance',
-      4 => 'field_topic',
+      3 => 'field_topic',
+      4 => 'field_sponsored',
       5 => 'field_topic_box',
-      6 => 'field_sponsored',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

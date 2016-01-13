@@ -58,7 +58,6 @@ function tpf_content_photo_gallery_field_group_info() {
       5 => 'field_display_cover',
       6 => 'field_inline_replacements',
       7 => 'field_display_tab_banner',
-      8 => 'field_related_stories',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -145,11 +144,7 @@ function tpf_content_photo_gallery_field_group_info() {
     'label' => 'Related',
     'weight' => '5',
     'children' => array(
-      0 => 'field_related_content',
-      1 => 'field_suggest_actions',
-      2 => 'field_related_actions',
-      3 => 'field_suggest_content',
-      4 => 'field_related_stories',
+      0 => 'field_related_stories',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -180,6 +175,7 @@ function tpf_content_photo_gallery_field_group_info() {
       2 => 'field_topic',
       3 => 'field_admin_tag',
       4 => 'field_sponsored',
+      5 => 'field_topic_box',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
