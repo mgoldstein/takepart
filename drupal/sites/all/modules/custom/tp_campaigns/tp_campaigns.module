@@ -482,7 +482,7 @@ function tp_autoload_campaign_handler($nid, $itemnumb) {
   //Error check if the nid being passed is numeric
   if(is_numeric($nid)) {
     //Get cached commands
-    if (($cache = cache_get("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb)) && !empty($cache->data)) {
+    if (($cache = cache_get("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb)) && !empty($cache->data) && !user_access('view the administration theme')) {
       $ret = $cache->data;
     } else {
       $entity = entity_load('node', array($nid));
@@ -517,7 +517,9 @@ function tp_autoload_campaign_handler($nid, $itemnumb) {
       }
       $ret = array('#type' => 'ajax', '#commands' => $cmd);
       //Set the commands into cache
-      cache_set("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb, $ret, 'cache',  REQUEST_TIME  + (3600 * 24));
+      if(!user_access('view the administration theme')) {
+        cache_set("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb, $ret, 'cache',  REQUEST_TIME  + (3600 * 24));
+      }
     }
   } else {
     return ajax_deliver(array('#type' => 'ajax', '#error' => t("ERROR - Node is not a number")));

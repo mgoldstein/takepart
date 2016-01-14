@@ -48,6 +48,7 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
 			drupal_add_js(drupal_get_path('module', 'tp_campaigns').'/js/tp_auto_campaign.js', array('type' => 'file', 'scope' => 'footer'));
 			drupal_add_library('system', 'drupal.ajax');
 			drupal_add_library('system', 'drupal.form');
+			drupal_add_library('system', 'jquery.form');
 
 			$element = array(
 			  '#theme' => 'tp_card_tray',
