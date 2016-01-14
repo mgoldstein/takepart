@@ -479,6 +479,8 @@ function tp_campaigns_settings_form_validate($form, &$form_state){
  * see https://api.drupal.org/api/drupal/includes%21ajax.inc/7 for ajax info
  */
 function tp_autoload_campaign_handler($nid, $itemnumb) {
+  //Need to change the q to reset the url as if you are on the node page
+  $_GET['q'] = "node/".$nid;
   //Error check if the nid being passed is numeric
   if(is_numeric($nid)) {
     //Get cached commands
