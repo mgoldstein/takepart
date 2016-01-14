@@ -184,3 +184,9 @@ function _tp_theme_support_reach_node_processor($node) {
   //by default return an empty array
   return array();
 }
+
+function tp_theme_support_library_alter(&$javascript, $module) {
+  // Replace jQuery Form plugin.
+  $javascript['jquery.form']['js']['misc/jquery.form.js']['data'] = 'sites/all/modules/contrib/jquery_update/replace/misc/jquery.form.min.js';
+  $javascript['jquery.form']['version'] = '2.69';
+}
