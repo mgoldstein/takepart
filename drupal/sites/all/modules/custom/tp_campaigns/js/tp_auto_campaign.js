@@ -56,12 +56,14 @@
    //This is called through the ajax commands sent from the server.
    Drupal.behaviors.tp_auto_changer = {
      attach: function (context, settings) {
-       $(document).delegate('article.node-campaign-page.view-mode-full', 'TAPInvoke', function(ev, data) {
+       $(document).delegate('article.node-campaign-page.view-mode-full', 'InvokeOthers', function(ev, data) {
          if ( window.newTapWidgets == true ) {
            TP.Bootstrapper && new TP.Bootstrapper().start();
            TAP.Widget      && TAP.Widget.addWidgets();
            window.newTapWidgets = false;
          }
+         //INIT Facebook again
+         window.fbAsyncInit();
        });
      }
    };

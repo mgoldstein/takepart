@@ -508,7 +508,7 @@ function tp_autoload_campaign_handler($nid, $itemnumb) {
           }
           //Set the append and invoke commands
           $cmd[] = ajax_command_append('article.node-campaign-page.view-mode-full', $output);
-          $cmd[] = ajax_command_invoke('article.node-campaign-page.view-mode-full', 'trigger', array('TAPInvoke'));
+          $cmd[] = ajax_command_invoke('article.node-campaign-page.view-mode-full', 'trigger', array('InvokeOthers'));
         } else {
           return ajax_deliver(array('#type' => 'ajax', '#error' => t("ERROR - Not a campaign page")));
         }
