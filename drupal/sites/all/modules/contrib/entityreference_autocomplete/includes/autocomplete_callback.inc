@@ -10,7 +10,20 @@
  * Page callback for the entityreference elements autocomplete path.
  */
 function entityreference_autocomplete_autocomplete_callback($entity_type, $bundles, $encoded_query_settings, $string = '') {
+  // If search string contains a slash "/", menu system will think it's a new
+  // argument. In such case, reassemble the whole search string.
+  $args = func_get_args();
+  if (count($args) > 4) {
+    array_shift($args);
+    array_shift($args);
+    array_shift($args);
+    $string = implode('/', $args);
+  }
+
   $matches = array();
+  // $context will hold the metadata of entities found, so that modules
+  // can alter the results in any way they want.
+  $context = array();
 
   // Decode the query settings passed and then parse the result string to get
   // the actual settings array.
@@ -66,6 +79,10 @@ function entityreference_autocomplete_autocomplete_callback($entity_type, $bundl
       $query->range(0, $query_settings['limit']);
     }
 
+    // Add a tag to the query so modules can alter it.
+    $query->addTag('era_query');
+    $query->addMetaData('era_search_string', $last_label);
+
     // Execute query and log any unexpected errors.
     try {
       $result = $query->execute();
@@ -77,9 +94,6 @@ function entityreference_autocomplete_autocomplete_callback($entity_type, $bundl
 
     if (!empty($result[$entity_type])) {
       $entities = entity_load($entity_type, array_keys($result[$entity_type]));
-      // $context will hold the metadata of entities found, so that modules
-      // can alter the results in any way they want.
-      $context = array();
 
       // Iterate through all entities retrieved and process the data to return
       // it as expected by Drupal javascript.
@@ -97,6 +111,7 @@ function entityreference_autocomplete_autocomplete_callback($entity_type, $bundl
           // Store metadata about the entity returned in a variable.
           list(, , $bundle) = entity_extract_ids($entity_type, $entity);
           $context[$prefix . $key] = array(
+            'entity' => $entity,
             'entity_id' => $entity_id,
             'entity_type' => $entity_type,
             'entity_bundle' => $bundle,

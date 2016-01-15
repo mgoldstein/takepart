@@ -2,13 +2,21 @@
 
 /**
  * @file
- * FeedsUserProcessor class.
+ * Contains FeedsUserProcessor.
  */
+
+/**
+ * Option to block users not found in the feed.
+ *
+ * @var string
+ */
+define('FEEDS_BLOCK_NON_EXISTENT', 'block');
 
 /**
  * Feeds processor plugin. Create users from feed items.
  */
 class FeedsUserProcessor extends FeedsProcessor {
+
   /**
    * Define entity type.
    */
@@ -53,15 +61,6 @@ class FeedsUserProcessor extends FeedsProcessor {
   protected function entityValidate($account) {
     if (empty($account->name) || empty($account->mail) || !valid_email_address($account->mail)) {
       throw new FeedsValidationException(t('User name missing or email not valid.'));
-    }
-
-    if (!empty($uid)) {
-      $account->uid = $uid;
-    }
-
-    // If uid is set and a user with that id doesn't exist, flag as new.
-    if (!empty($account->uid) && !user_load($account->uid)) {
-      $account->is_new = TRUE;
     }
   }
 
@@ -141,6 +140,7 @@ class FeedsUserProcessor extends FeedsProcessor {
       '#description' => t('This appends _test to all imported e-mail addresses to ensure they cannot be used as recipients.'),
       '#default_value' => $this->config['defuse_mail'],
     );
+    $form['update_non_existent']['#options'][FEEDS_BLOCK_NON_EXISTENT] = t('Block non-existent users');
     return $form;
   }
 
@@ -167,11 +167,6 @@ class FeedsUserProcessor extends FeedsProcessor {
   public function getMappingTargets() {
     $targets = parent::getMappingTargets();
     $targets += array(
-      'uid' => array(
-        'name' => t('User ID'),
-        'description' => t('The user ID. NOTE: use this feature with care, user IDs are usually assigned by Drupal.'),
-        'optional_unique' => TRUE,
-       ),
       'name' => array(
         'name' => t('User name'),
         'description' => t('Name of the user.'),
@@ -207,11 +202,7 @@ class FeedsUserProcessor extends FeedsProcessor {
        );
     }
 
-    // Let other modules expose mapping targets.
-    self::loadMappers();
-    $entity_type = $this->entityType();
-    $bundle = $this->bundle();
-    drupal_alter('feeds_processor_targets', $targets, $entity_type, $bundle);
+    $this->getHookTargets($targets);
 
     return $targets;
   }
@@ -245,4 +236,35 @@ class FeedsUserProcessor extends FeedsProcessor {
     }
     return 0;
   }
+
+  /**
+   * Overrides FeedsProcessor::clean().
+   *
+   * Block users instead of deleting them.
+   *
+   * @param FeedsState $state
+   *   The FeedsState object for the given stage.
+   */
+  protected function clean(FeedsState $state) {
+    // Delegate to parent if not blocking or option not set.
+    if (!isset($this->config['update_non_existent']) || $this->config['update_non_existent'] !== FEEDS_BLOCK_NON_EXISTENT) {
+      return parent::clean($state);
+    }
+
+    if (!empty($state->removeList)) {
+      // @see user_user_operations_block().
+      // The following foreach is copied from above function but with an added
+      // counter to count blocked users.
+      foreach (user_load_multiple($state->removeList) as $account) {
+        $this->loadItemInfo($account);
+        $account->feeds_item->hash = $this->config['update_non_existent'];
+        // For efficiency manually save the original account before applying any
+        // changes.
+        $account->original = clone $account;
+        user_save($account, array('status' => 0));
+        $state->blocked++;
+      }
+    }
+  }
+
 }
