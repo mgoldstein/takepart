@@ -13,7 +13,10 @@
 </div>
 <div class="search">
   <div class="search-toggle"></div>
-  <?php print drupal_render(module_invoke('search_api_page', 'block_view', '2')); ?>
+  <?php
+    $block_delta = variable_get('search_api_page_block_delta',2);
+    print drupal_render(module_invoke('search_api_page', 'block_view', $block_delta));
+  ?>
 </div>
 <nav id="megamenu">
   <?php print $megamenu; ?>

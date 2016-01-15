@@ -1796,6 +1796,9 @@ function nodequeue_api_autocomplete($queue, $subqueue, $string) {
     $query->where('LOWER(n.title) LIKE LOWER(:string)', array(':string' => '%' . db_like($string) . '%'));
   }
 
+  //Autocomplete Sorting Order
+  $query ->orderBy('created', 'DESC');
+
   // Call to the API.
   $function = $queue->owner . "_nodequeue_autocomplete";
   if (function_exists($function)) {

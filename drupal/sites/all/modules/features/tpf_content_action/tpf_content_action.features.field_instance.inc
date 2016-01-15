@@ -240,7 +240,7 @@ function tpf_content_action_field_default_field_instances() {
           'youtube' => 0,
         ),
         'allowed_types' => array(
-          'audio' => 0,
+		'audio' => 0,
           'default' => 0,
           'image' => 'image',
           'video' => 0,

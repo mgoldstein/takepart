@@ -44,7 +44,7 @@ function tp_theme_support_permission() {
  */
 function tp_theme_support_preprocess_html(&$vars) {
 	global $user;
-	
+
 	//check if user has the role preview if so then add the class to the page
   if (in_array('preview', $user->roles)) {
     $vars['unpublished'] = false;
@@ -168,11 +168,11 @@ function _tp_theme_support_reach_node_processor($node) {
       'authors' => $authors_process,
       'channels' => _tp_auto_scroll_node_term_ads($node, 'field_topic', TRUE),
     );
-		
+
 		//standardize the data and escape
 		foreach ($node_data as $key => $value) {
 			if (is_string($value)) {
-				$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);	
+				$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);
 				$node_data[$key] = str_replace("'", "\\'", $value);
 			}
 		}

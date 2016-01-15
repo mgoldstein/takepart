@@ -161,49 +161,6 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-topic-field_featured_video'
-  $field_instances['taxonomy_term-topic-field_featured_video'] = array(
-    'bundle' => 'topic',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'entityreference',
-        'settings' => array(
-          'link' => FALSE,
-        ),
-        'type' => 'entityreference_label',
-        'weight' => 5,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'field_featured_video',
-    'label' => 'Featured Video',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'entityreference',
-      'settings' => array(
-        'match_operator' => 'CONTAINS',
-        'path' => '',
-        'size' => 60,
-      ),
-      'type' => 'entityreference_autocomplete_tags',
-      'weight' => 31,
-    ),
-  );
-
   // Exported field_instance: 'taxonomy_term-topic-field_html_title'
   $field_instances['taxonomy_term-topic-field_html_title'] = array(
     'bundle' => 'topic',
@@ -282,11 +239,174 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-topic-field_topic_context'
+  $field_instances['taxonomy_term-topic-field_topic_context'] = array(
+    'bundle' => 'topic',
+    'default_value' => array(
+      0 => array(
+        'context' => '',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'context_field',
+        'settings' => array(),
+        'type' => 'context_field_context',
+        'weight' => 2,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_topic_context',
+    'label' => 'Context',
+    'required' => 0,
+    'settings' => array(
+      'allowed_blocks' => array(
+        'Boxes for Field Box' => 0,
+        'Boxes for View Box' => 0,
+        'addthis' => 0,
+        'boxes' => 'boxes',
+        'comment' => 0,
+        'context_ui' => 0,
+        'devel' => 0,
+        'diff' => 0,
+        'menu' => 0,
+        'node' => 0,
+        'search' => 0,
+        'search_api_facets' => 0,
+        'shortcut' => 0,
+        'system' => 0,
+        'user' => 0,
+        'views' => 'views',
+      ),
+      'default_context' => 'topic_default_context',
+      'use_default' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'context_field',
+      'settings' => array(
+        'form_element' => array(
+          'user_toggle' => 0,
+        ),
+        'widget_setting' => 'bob',
+      ),
+      'type' => 'context_field',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-topic_box-field_topic_box_image'
+  $field_instances['taxonomy_term-topic_box-field_topic_box_image'] = array(
+    'bundle' => 'topic_box',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'media_image_formatter',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_topic_box_image',
+    'label' => 'Topic Box Image',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 1,
+      'default_image' => 0,
+      'file_directory' => 'topic_box_images',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'required_for_pub' => FALSE,
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'taxonomy_term-topic_box-field_topic_box_link'
+  $field_instances['taxonomy_term-topic_box-field_topic_box_link'] = array(
+    'bundle' => 'topic_box',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_topic_box_link',
+    'label' => 'Topic Box Link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'required_for_pub' => FALSE,
+      'title' => 'none',
+      'title_label_use_field_label' => FALSE,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 2,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
-  t('Featured Video');
+  t('Context');
   t('HTML title tag');
-  t('Override for the promo label. Text that labels what the promo is ("Most Popular"  "Trending").');
+  t('Override for the promo label.
+Text that labels what the promo is ("Most Popular"  "Trending").');
   t('Override the Promo Headline that is being referenced.  If left blank, the Promo Headline from the content that is being referenced will be used.');
   t('Overrides the promo image in the content being referenced.');
   t('Promo Content');
@@ -294,6 +414,8 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
   t('Promo Label');
   t('Promo Thumbnail');
   t('Reference to promotional content.');
+  t('Topic Box Image');
+  t('Topic Box Link');
 
   return $field_instances;
 }

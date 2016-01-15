@@ -217,9 +217,6 @@ function _takepart_rss_FeedTitle($arg) {
     case "feature_article":
 	 $feed = 'TakePart - Feature Articles';
 	 break;
-    case "flashcard":
-	 $feed = 'TakePart - Flashcards';
-	 break;
     case "openpublish_photo_gallery":
 	 $feed = 'TakePart - Photo Galleries';
 	 break;

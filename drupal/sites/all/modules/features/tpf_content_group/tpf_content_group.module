@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Content Group feature.
- */
-
-include_once 'tpf_content_group.features.inc';

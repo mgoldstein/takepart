@@ -27,6 +27,11 @@ function tp_campaigns_menu(){
     'page arguments' => array('tp_campaigns_settings_form'),
     'access arguments' => array('administer site configuration'),
   );
+  $items['autocampaign/%/%'] = array(
+    'page callback' => 'tp_autoload_campaign_handler',
+    'page arguments' => array(1,2),
+    'access arguments' => array('access content')
+  );
   return $items;
 }
 
@@ -226,7 +231,7 @@ function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
   //     ),
   //   ),
   // );
-  
+
   //Campaign Media Card
   $form['field_campaign_media_photo']['#states'] = array(
     'visible' => array(
@@ -250,7 +255,7 @@ function tp_campaigns_form_alter(&$form, &$form_state, $form_id){
       ':input[name=field_campaign_media_type\[und\]]' => array('value' => 2),
     ),
   );
-  
+
   //Campaign News Card
   $form['field_campaign_single_news_ref']['#states'] = array(
     'visible' => array(
@@ -292,8 +297,8 @@ function tp_campaigns_form_campaign_node_form_alter(&$form, &$form_state){
  */
 function tp_campaigns_node_presave($node) {
   if($node->type == 'campaign' && isset($node->field_campaign_menu['und'][0]['value']) == true){
-  
-    //check to see if menu exists, if it doesn't, create it.  
+
+    //check to see if menu exists, if it doesn't, create it.
     $menu_name = $node->field_campaign_menu['und'][0]['value'];
     if(menu_tree_all_data($menu_name) == NULL){
       $menu = array(
@@ -417,13 +422,13 @@ function tp_campaigns_hero(){
             break;
         }
       }
-      
+
       $logo_image = '<img src="'. $logo_image. '" class="campaign-logo '. $logo_class. '">';
-        
+
       if ($homepage_link = field_get_items('node', $campaign_node, 'field_campaign_hp')) {
         $logo_image = l($logo_image, $homepage_link[0]['url'], array('html' => TRUE, 'attributes' => array('class' => array('big-link'))));
       }
-      
+
       $output .= theme('html_tag', array(
         'element' => array(
           '#tag' => 'div',
@@ -467,4 +472,60 @@ function tp_campaigns_settings_form($form, &$form_state){
 }
 function tp_campaigns_settings_form_validate($form, &$form_state){
   variable_set('sms_legal', $form_state['input']['legal_copy']['value']);
+}
+
+/**
+ * Function to autoload the Campaign cards
+ * see https://api.drupal.org/api/drupal/includes%21ajax.inc/7 for ajax info
+ */
+function tp_autoload_campaign_handler($nid, $itemnumb) {
+  //Need to change the q to reset the url as if you are on the node page
+  $_GET['q'] = "node/".$nid;
+  //Error check if the nid being passed is numeric
+  if(is_numeric($nid)) {
+    //Get cached commands
+    if (($cache = cache_get("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb)) && !empty($cache->data) && !user_access('view the administration theme')) {
+      $ret = $cache->data;
+    } else {
+      $entity = entity_load('node', array($nid));
+      //Check to make sure itemnumb is not 0 and that the next item exists
+      if($itemnumb > 0 &&
+        isset($entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb]) &&
+        !empty($entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb])) {
+        $items[0] = $entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb];
+
+        //just want to ensure that the entity is a campaign page
+        //this is just a bit of security
+        if($entity[$nid]->type == "campaign_page") {
+          $output = theme('tp_card_tray', array('items' => $items, 'entity' => $entity));
+          //After the entitys have rendered we need to get the ajax settings to
+          //add to the command list.  Without this the default ajax settings
+          //gets wiped and the ajax forms will not work.  This also has to be
+          //the first command in the command order.
+          $settings = drupal_add_js();
+          foreach($settings['settings']['data'] AS $key => $value) {
+            if(key($value) == 'ajax') {
+              $cmd[] = ajax_command_settings($value, TRUE);
+            }
+          }
+          //Set the append and invoke commands
+          $cmd[] = ajax_command_append('article.node-campaign-page.view-mode-full', $output);
+          $cmd[] = ajax_command_invoke('article.node-campaign-page.view-mode-full', 'trigger', array('InvokeOthers'));
+        } else {
+          return ajax_deliver(array('#type' => 'ajax', '#error' => t("ERROR - Not a campaign page")));
+        }
+      } else {
+        return ajax_deliver(array('#type' => 'ajax', '#error' => t("ERROR - No Item Avaiable")));
+      }
+      $ret = array('#type' => 'ajax', '#commands' => $cmd);
+      //Set the commands into cache
+      if(!user_access('view the administration theme')) {
+        cache_set("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb, $ret, 'cache',  REQUEST_TIME  + (3600 * 24));
+      }
+    }
+  } else {
+    return ajax_deliver(array('#type' => 'ajax', '#error' => t("ERROR - Node is not a number")));
+  }
+
+  return ajax_deliver($ret);
 }
