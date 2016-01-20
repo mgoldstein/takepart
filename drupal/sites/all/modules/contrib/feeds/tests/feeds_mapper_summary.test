@@ -2,13 +2,14 @@
 
 /**
  * @file
- * Test case for mapping to node summary.
+ * Contains FeedsMapperNodeSummaryTestCase.
  */
 
 /**
- * Class for testing Feeds summary mapper.
+ * Test case for mapping to node summary.
  */
 class FeedsMapperNodeSummaryTestCase extends FeedsMapperTestCase {
+
   public static function getInfo() {
     return array(
       'name' => 'Mapper: Text with summary',
@@ -78,6 +79,10 @@ class FeedsMapperNodeSummaryTestCase extends FeedsMapperTestCase {
     // Check that text format is applied correctly.
     $this->drupalGet('node/1/edit');
     $this->assertNodeFieldValue('format', $format);
+    $this->drupalGet('node/2/edit');
+    $this->assertNodeFieldValue('format', $format);
+    $this->drupalGet('node/3/edit');
+    $this->assertNodeFieldValue('format', $format);
 
     // Remove the body mapping to check that the text format doesn't get updated
     // from the summary.
@@ -88,14 +93,20 @@ class FeedsMapperNodeSummaryTestCase extends FeedsMapperTestCase {
       ),
     ));
 
+    // Change the text format and remove the body mapping to ensure that the
+    // text format doesn't change.
     $this->setSettings('syndication', 'FeedsNodeProcessor', array(
       'input_format' => 'plain_text',
     ));
     $this->importFile('syndication', $this->absolutePath() . '/tests/feeds/node_summary.csv');
     $this->assertText('Updated 3 nodes');
 
-    // Check that text format is applied correctly.
+    // Check that text format remains at its previous value.
     $this->drupalGet('node/1/edit');
+    $this->assertNodeFieldValue('format', $format);
+    $this->drupalGet('node/2/edit');
+    $this->assertNodeFieldValue('format', $format);
+    $this->drupalGet('node/3/edit');
     $this->assertNodeFieldValue('format', $format);
   }
 
