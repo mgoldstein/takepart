@@ -6,6 +6,8 @@ class boxes_ga_ad extends boxes_box {
     return array(
 	 'ga_ad_slot' => '',
 	 'ga_ad_gpt_id' => '',
+   'ga_ad_width' => '',
+   'ga_ad_height' => '',
     );
   }
 
@@ -35,6 +37,16 @@ class boxes_ga_ad extends boxes_box {
 	 '#type' => 'textfield',
 	 '#title' => 'GPT ID',
 	 '#default_value' => $this->options['ga_ad_gpt_id'],
+    );
+    $form['ga_ad_width'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Ad Width',
+    '#default_value' => $this->options['ga_ad_width'],
+    );
+    $form['ga_ad_height'] = array(
+    '#type' => 'textfield',
+    '#title' => 'Ad Height',
+    '#default_value' => $this->options['ga_ad_height'],
     );
     return $form;
   }
@@ -68,21 +80,27 @@ class boxes_ga_ad extends boxes_box {
 	 takepart_ads($slot);
 
 	 if ($gptid) {
-	   $adsize = '';
-	   preg_match('/[0-9]+x[0-9]+/', $slot, $adsize);
-	   $lr = explode("x", $adsize[0]);
-	   $gptfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
+     //Adding ad size to form. Keeping reg ex split for legacy
+     if($this->options['ga_ad_width'] && $this->options['ga_ad_height']) {
+       $lr = array($this->options['ga_ad_width'], $this->options['ga_ad_height']);
+     } else {
+       $adsize = '';
+       preg_match('/[0-9]+x[0-9]+/', $slot, $adsize);
+       $lr = explode("x", $adsize[0]);
+     }
 
-	   if ($slot === 'TP_Mobile_320x50') {
+     $gptfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
+
+	   if ($slot === 'TP_Mobile_320x50' || $slot === 'TP_Campaign_320x50_a') {
 		$content = <<<HTM
             <!-- $slot -->
-            <div id='$gptid[$slot]' style='width:320px; height:50px;'>
+            <div id='$gptid[$slot]' style='width:$lr[0]px; height:$lr[1]px;'>
             <script type='text/javascript'>
             function $gptfunction() {
               if (typeof(googletag) !== 'undefined') {
                 if (ad_call_check($lr[0])) {
                   googletag.cmd.push(function() {
-                    var slot1 = googletag.defineSlot('/4355895/$slot', [320, 50], '$gptid[$slot]').addService(googletag.pubads());
+                    var slot1 = googletag.defineSlot('/4355895/$slot', [$lr[0], $lr[1]], '$gptid[$slot]').addService(googletag.pubads());
                     googletag.pubads().enableSingleRequest();
                     googletag.enableServices();
                     googletag.display('$gptid[$slot]');
@@ -114,25 +132,25 @@ HTM;
             </div>
 HTM;
 	   } else {
-		$content = <<<HTM
-            <!-- $slot -->
-            <div id='$gptid[$slot]' class="leaderboard-ad" style='width:$lr[0]px; height:$lr[1]px;'>
-            <script type='text/javascript'>
-              function $gptfunction() {
-               if (typeof(googletag) !== 'undefined') {
-                 if (ad_call_check($lr[0])) {
-                   googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
-                 }
-                 else {
-                   jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
-                 }
+       $content = <<<HTM
+             <!-- $slot -->
+             <div id='$gptid[$slot]' class="leaderboard-ad" style='width:$lr[0]px; height:$lr[1]px;'>
+             <script type='text/javascript'>
+               function $gptfunction() {
+                if (typeof(googletag) !== 'undefined') {
+                  if (ad_call_check($lr[0])) {
+                    googletag.cmd.push(function() { googletag.display('$gptid[$slot]'); });
+                  }
+                  else {
+                    jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
+                  }
+                }
                }
-              }
-              $gptfunction();
-            </script>
-            </div>
+               $gptfunction();
+             </script>
+             </div>
 HTM;
-	   }
+     }
 	 } else {
 	   $content = <<<HTM
             <script type='text/javascript'>
