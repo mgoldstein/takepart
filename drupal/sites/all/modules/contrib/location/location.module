@@ -1432,12 +1432,6 @@ function location_save(&$location, $cow = TRUE, $criteria = array()) {
     unset($location['inhibit_geocode']);
   }
 
-  $force_geocode = FALSE;
-
-  if (isset($location['re_geocode_location']) && $location['re_geocode_location']) {
-    $force_geocode = TRUE;
-  }
-
   if (isset($location['delete_location']) && $location['delete_location']) {
     // Location is being deleted.
     // Consider it empty and return early.
@@ -1469,7 +1463,7 @@ function location_save(&$location, $cow = TRUE, $criteria = array()) {
   }
 
   $changed = array();
-  if (!location_calc_difference($oldloc, $location, $changed) && !$force_geocode) {
+  if (!location_calc_difference($oldloc, $location, $changed) && empty($location['re_geocode_location'])) {
     // We didn't actually need to save anything.
     if (!empty($location['lid'])) {
       return $location['lid'];
@@ -1483,7 +1477,7 @@ function location_save(&$location, $cow = TRUE, $criteria = array()) {
   }
 
   // Perform geocoding logic, coordinate normalization, etc.
-  _location_geo_logic($location, $changed, $filled, $inhibit_geocode, $force_geocode);
+  _location_geo_logic($location, $changed, $filled, $inhibit_geocode);
 
   // If we are in COW mode, we *probabaly* need to make a new lid.
   if ($cow) {
@@ -1725,7 +1719,7 @@ function location_normalize_settings(&$settings, $required = TRUE) {
 /**
  * Perform geocoding logic, etc., prior to storing in the database.
  */
-function _location_geo_logic(&$location, $changed, $filled, $inhibit_geocode = FALSE, $force_geocode = FALSE) {
+function _location_geo_logic(&$location, $changed, $filled, $inhibit_geocode = FALSE) {
 
   if (!$inhibit_geocode) {
     // Have any of the fields possibly affecting geocoding changed?
@@ -1733,7 +1727,7 @@ function _location_geo_logic(&$location, $changed, $filled, $inhibit_geocode = F
     if (!empty($changed['street']) || !empty($changed['additional']) ||
       !empty($changed['city']) || !empty($changed['province']) ||
       !empty($changed['country']) || !empty($changed['postal_code']) ||
-      $location['source'] == LOCATION_LATLON_USER_SUBMITTED || $force_geocode
+      $location['source'] == LOCATION_LATLON_USER_SUBMITTED
     ) {
 
       // Attempt exact geocoding.

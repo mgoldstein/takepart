@@ -74,9 +74,3 @@
     </div>
   <?php endif; ?>
 </div>
-<?php if (!empty($province_name) || (!empty($country))): ?>
-  <div class="location-hidden">
-        <?php if (!empty($province_name)): ?><?php print $province_name; ?><?php endif; ?>
-        <?php if (!empty($country)): ?><?php print strtoupper($country); ?><?php endif; ?>
-      </div>
-<?php endif; ?>

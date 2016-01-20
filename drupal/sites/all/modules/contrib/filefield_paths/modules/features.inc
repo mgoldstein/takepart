@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Features module integration.
@@ -10,10 +9,6 @@
  *
  * This determines whether exported fields contain File (Field) Paths settings
  * and if so adds File (Field) Paths as a dependency.
- *
- * @param $pipe
- * @param $data
- * @param $export
  */
 function filefield_paths_features_pipe_field_instance_alter(&$pipe, $data, &$export) {
   foreach ($data as $field_identifier) {
@@ -28,9 +23,7 @@ function filefield_paths_features_pipe_field_instance_alter(&$pipe, $data, &$exp
 /**
  * Implements hook_features_pipe_field_alter().
  *
- * @param $pipe
- * @param $data
- * @param $export
+ * @todo - Remove this in a future release.
  */
 function filefield_paths_features_pipe_field_alter(&$pipe, $data, &$export) {
   filefield_paths_features_pipe_field_instance_alter($pipe, $data, $export);

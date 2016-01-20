@@ -8,9 +8,9 @@ Formater
 
 Widget
 
-  Plain text
-  Pre-selected color boxes
-  Simple jquery color
+  Plain Text
+  Pre-selected Color Boxes
+  Simple Query Color 
   (http://recursive-design.com/projects/jquery-simple-color/)
 
 -----------------------------------------------------------------------------

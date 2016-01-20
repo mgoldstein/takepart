@@ -60,13 +60,6 @@ function entityreference_autocomplete_element_info() {
       'limit' => '50',
     ),
   );
-  // Since Drupal core 7.39, additional processing is necessary for
-  // autocomplete text fields. See https://www.drupal.org/node/2561431
-  // In prior versions of Drupal core, form_process_autocomplete() is not
-  // available.
-  if (function_exists('form_process_autocomplete')) {
-    $types['entityreference']['#process'][] = 'form_process_autocomplete';
-  }
   return $types;
 }
 
@@ -150,7 +143,7 @@ function entityreference_autocomplete_process_entityreference($element, &$form_s
     // Merge effective settings with the default settings array.
     $element_info = entityreference_autocomplete_element_info();
     $query_settings = array_merge($element_info['entityreference']['#era_query_settings'], $element['#era_query_settings']);
-    $autocomplete_path .= '/' . http_build_query($query_settings);
+    $autocomplete_path .= '/' . urlencode(http_build_query($query_settings));
     $element['#autocomplete_path'] = $autocomplete_path;
   }
   return $element;
@@ -217,10 +210,6 @@ function entityreference_autocomplete_validate_entityreference(&$element, &$form
         $query->fieldCondition($field_condition[0], $column, $value, $operator, $delta_group, $language_group);
       }
     }
-
-    // Add a tag to the query so modules can alter it.
-    $query->addTag('era_query');
-    $query->addMetaData('era_search_string', $entity_label);
 
     $matching_entities = $query->execute();
 
