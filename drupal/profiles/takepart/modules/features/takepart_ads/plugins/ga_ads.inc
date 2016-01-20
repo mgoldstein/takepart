@@ -91,16 +91,16 @@ class boxes_ga_ad extends boxes_box {
 
      $gptfunction = substr(str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 10);
 
-	   if ($slot === 'TP_Mobile_320x50' || $slot === 'TP_Campaign_320x50_a') {
+	   if ($slot === 'TP_Mobile_320x50') {
 		$content = <<<HTM
             <!-- $slot -->
-            <div id='$gptid[$slot]' style='width:$lr[0]px; height:$lr[1]px;'>
+            <div id='$gptid[$slot]' style='width:320px; height:50px;'>
             <script type='text/javascript'>
             function $gptfunction() {
               if (typeof(googletag) !== 'undefined') {
                 if (ad_call_check($lr[0])) {
                   googletag.cmd.push(function() {
-                    var slot1 = googletag.defineSlot('/4355895/$slot', [$lr[0], $lr[1]], '$gptid[$slot]').addService(googletag.pubads());
+                    var slot1 = googletag.defineSlot('/4355895/$slot', [320, 50], '$gptid[$slot]').addService(googletag.pubads());
                     googletag.pubads().enableSingleRequest();
                     googletag.enableServices();
                     googletag.display('$gptid[$slot]');
