@@ -13,18 +13,17 @@
     */
    Drupal.ajax.prototype.autoCampaign = function() {
      var ajax = this;
-     var traynumb = window.campaignTray + 2;
-     ajax.url = ajax.element_settings.url = ajax.options.url = '/autocampaign/'+Drupal.settings.autoloadCampaigns+'/'+traynumb;
 
      // Do not perform another ajax command if one is already in progress.
      if (ajax.ajaxing) {
        return false;
      }
-
+     var traynumb = window.campaignTray + 2;
+     ajax.url = ajax.element_settings.url = ajax.options.url = '/autocampaign/'+Drupal.settings.autoloadCampaigns+'/'+traynumb;
+     window.campaignTray++;
+     window.newTapWidgets = true;
      try {
-       window.newTapWidgets = true;
        $.ajax(ajax.options);
-       window.campaignTray++;
      }
      catch (err) {
        alert('An error occurred while attempting to process ' + ajax.options.url);
