@@ -3,6 +3,9 @@
 /**
  * @file
  * Module admin page callbacks.
+ *
+ * @ignore sniffer_commenting_functioncomment_missingparamtype:file
+ * @ignore sniffer_commenting_functioncomment_missingreturntype:file
  */
 
 /****************************************************************************/
@@ -12,7 +15,7 @@
 /**
  * Implements the settings page.
  *
- * @return array
+ * @return
  *   The form structure.
  */
 function password_policy_password_tab_admin_settings() {

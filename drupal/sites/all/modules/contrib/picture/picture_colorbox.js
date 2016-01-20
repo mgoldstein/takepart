@@ -1,4 +1,9 @@
+/*
+ * Lazy load picture element.
+ */
+
 (function ($) {
+
   Drupal.behaviors.pictureLazyloadPictures = {
     attach: function (context, settings) {
       $(context).bind('cbox_load', function () {
@@ -36,4 +41,5 @@
       });
     }
   };
+
 })(jQuery);
